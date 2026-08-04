@@ -1,20 +1,29 @@
 import type { Tile } from "./world.types";
 
 export interface Grid {
-  tiles: readonly Tile[];
-  width: number;
-  height: number;
+  readonly tiles: readonly Tile[];
+  readonly width: number;
+  readonly height: number;
 }
 
 export interface TileCoordinate {
-  tx: number;
-  ty: number;
+  readonly tx: number;
+  readonly ty: number;
 }
 
-export function getTile(_grid: Grid, _coordinate: TileCoordinate): Tile | null {
-  throw new Error("not implemented");
+export function isInBounds(grid: Grid, coordinate: TileCoordinate): boolean {
+  return (
+    Number.isInteger(coordinate.tx) &&
+    Number.isInteger(coordinate.ty) &&
+    coordinate.tx >= 0 &&
+    coordinate.ty >= 0 &&
+    coordinate.tx < grid.width &&
+    coordinate.ty < grid.height
+  );
 }
 
-export function isInBounds(_grid: Grid, _coordinate: TileCoordinate): boolean {
-  throw new Error("not implemented");
+export function getTile(grid: Grid, coordinate: TileCoordinate): Tile | null {
+  if (!isInBounds(grid, coordinate)) return null;
+
+  return grid.tiles[coordinate.ty * grid.width + coordinate.tx] ?? null;
 }

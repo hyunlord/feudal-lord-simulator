@@ -1,30 +1,48 @@
 import { createContext, createElement, useContext, useMemo, useReducer } from "react";
 
+import { placeBuilding, placeRoadLine } from "../engine/gameActions";
+import { advanceTick } from "../engine/tick";
 import type { GameState } from "../engine/engine.types";
+import { buildWorldGrid } from "../world/terrain";
 import type {
   GameAction,
   GameProviderProps,
   GameStoreContextValue,
 } from "./gameStore.types";
 
+const INITIAL_WORLD = buildWorldGrid({ width: 64, height: 64 });
+
 export const DEFAULT_GAME_STATE: GameState = {
   tick: 0,
   seed: 1,
-  tiles: [],
-  width: 0,
-  height: 0,
+  tiles: [...INITIAL_WORLD.tiles],
+  width: INITIAL_WORLD.width,
+  height: INITIAL_WORLD.height,
   buildings: [],
   houses: [],
   walkers: [],
   population: 0,
   idleWorkers: 0,
-  treasuryTimber: 0,
+  treasuryTimber: 160,
 };
 
 export const GameStoreContext = createContext<GameStoreContextValue | null>(null);
 
-function gameReducer(state: GameState, _action: GameAction): GameState {
-  return state;
+function assertNever(action: never): never {
+  throw new Error(`Unhandled game action: ${JSON.stringify(action)}`);
+}
+
+export function gameReducer(state: GameState, action: GameAction): GameState {
+  switch (action.type) {
+    case "advance_tick":
+      return advanceTick(state);
+    case "place_building":
+      return placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
+    case "place_road_line":
+      return placeRoadLine(state, action.start, action.destination);
+    default:
+      return assertNever(action);
+  }
 }
 
 export function GameProvider({ children }: GameProviderProps) {
