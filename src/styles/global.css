@@ -58,6 +58,76 @@ button {
   background-color: var(--palette-parchment-dark);
 }
 
+.economy-overlays {
+  position: absolute;
+  right: clamp(12px, 2vw, 28px);
+  bottom: 150px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  max-width: min(280px, calc(100% - 24px));
+  padding: 8px 10px;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  clip-path: polygon(2% 7%, 97% 0, 100% 91%, 4% 100%, 0 21%);
+}
+
+.overlay-heading {
+  color: var(--palette-vermilion);
+  font-size: 11px;
+  line-height: 1;
+  text-align: center;
+}
+
+.overlay-seals {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.overlay-seal {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 5px 7px;
+  color: var(--palette-ink);
+  cursor: pointer;
+  background-color: var(--palette-parchment);
+  border: 1px solid var(--palette-ink);
+}
+
+.overlay-seal[aria-pressed="true"] {
+  color: var(--palette-vermilion);
+  background-color: var(--palette-parchment-dark);
+}
+
+.overlay-seal:focus-visible {
+  outline: 2px solid var(--palette-gold);
+  outline-offset: 1px;
+}
+
+.overlay-label,
+.overlay-key,
+.overlay-legend {
+  overflow: hidden;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overlay-label {
+  font-size: 11px;
+}
+
+.overlay-key,
+.overlay-legend {
+  color: var(--palette-ink-light);
+  font-size: 9px;
+}
+
 .court-console {
   position: absolute;
   right: 0;

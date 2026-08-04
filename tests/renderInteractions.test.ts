@@ -27,6 +27,8 @@ const state = {
   population: 0,
   idleWorkers: 0,
   treasuryTimber: 20,
+  roadRevision: 0,
+  pathCache: {},
 } satisfies GameState;
 
 test("road preview reports out of bounds for invalid road drag endpoints", () => {

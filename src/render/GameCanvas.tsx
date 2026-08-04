@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import type { OverlayMode } from "../engine/engine.types";
 import type { CameraState, Point } from "./camera";
 import { clampPan, clientToCanvas } from "./camera";
 import {
@@ -16,7 +17,7 @@ import { renderFrame } from "./renderer";
 import { useGameStore } from "../state/gameStore";
 import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 import type { TileCoordinate } from "../world/grid";
-type GameCanvasProps = { readonly selectedTool?: PlacementTool };
+type GameCanvasProps = { readonly selectedTool?: PlacementTool; readonly overlayMode?: OverlayMode };
 
 type DragState = {
   readonly mode: "none" | "pan" | "road";
@@ -34,16 +35,18 @@ function resizeCanvas(canvas: HTMLCanvasElement, context: CanvasRenderingContext
   return pixelRatio;
 }
 
-export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL }: GameCanvasProps) {
+export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode = "none" }: GameCanvasProps) {
   const { state, dispatch } = useGameStore();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stateRef = useRef(state);
   const selectedToolRef = useRef(selectedTool);
+  const overlayModeRef = useRef(overlayMode);
 
   useEffect(() => {
     stateRef.current = state;
     selectedToolRef.current = selectedTool;
-  }, [selectedTool, state]);
+    overlayModeRef.current = overlayMode;
+  }, [overlayMode, selectedTool, state]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -94,6 +97,7 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL }: GameCanvas
         camera,
         viewport: bounds,
         preview,
+        overlayMode: overlayModeRef.current,
       });
       context.restore();
       frameId = requestAnimationFrame(drawFrame);

@@ -5,4 +5,5 @@ export interface House {
   hasWater: boolean;
   breadStock: number;
   lastServicedTick: number;
+  unmetRequirementTicks: number;
 }

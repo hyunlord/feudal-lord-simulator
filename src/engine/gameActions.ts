@@ -4,6 +4,7 @@ import {
   type BuildingDefinition,
   type BuildingKind,
 } from "../content/buildingConfig";
+import type { ResourceType } from "../content/resourceConfig";
 import { isInBounds, type TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
@@ -44,8 +45,27 @@ export function placeBuilding(
     ty: origin.ty,
     workers: 0,
     inventory: {},
+    reserved: {},
+    stockReserved: {},
     productionProgress: 0,
   };
+  const timberCost = definition.buildCost.timber ?? 0;
+  const paid = spendResource(state, "timber", timberCost);
+  const houses =
+    kind === "house"
+      ? [
+          ...state.houses,
+          {
+            buildingId: id,
+            level: 0,
+            residents: 0,
+            hasWater: false,
+            breadStock: 0,
+            lastServicedTick: state.tick,
+            unmetRequirementTicks: 0,
+          },
+        ]
+      : state.houses;
 
   return {
     ...state,
@@ -54,8 +74,9 @@ export function placeBuilding(
         ? { ...tile, buildingId: id }
         : tile,
     ),
-    buildings: [...state.buildings, building],
-    treasuryTimber: state.treasuryTimber - (definition.buildCost.timber ?? 0),
+    buildings: [...paid.buildings, building],
+    houses,
+    treasuryTimber: paid.treasuryTimber,
   };
 }
 
@@ -76,6 +97,8 @@ export function placeRoadLine(
         ? { ...tile, hasRoad: true }
         : tile,
     ),
+    roadRevision: state.roadRevision + 1,
+    pathCache: {},
   };
 }
 
@@ -85,4 +108,61 @@ export function canPlaceRoadLineEndpoints(
   destination: TileCoordinate,
 ): boolean {
   return isInBounds(state, start) && isInBounds(state, destination);
+}
+
+function spendResource(
+  state: GameState,
+  resource: ResourceType,
+  amount: number,
+): Pick<GameState, "buildings" | "treasuryTimber"> {
+  if (amount === 0) {
+    return {
+      buildings: state.buildings,
+      treasuryTimber: state.treasuryTimber,
+    };
+  }
+
+  const treasurySpent = Math.min(state.treasuryTimber, amount);
+  const remaining = amount - treasurySpent;
+  if (remaining === 0) {
+    return {
+      buildings: state.buildings,
+      treasuryTimber: state.treasuryTimber - treasurySpent,
+    };
+  }
+
+  let remainingStoredCost = remaining;
+  const spentById = new Map<string, number>();
+  [...state.buildings]
+    .sort((left, right) => left.id.localeCompare(right.id))
+    .forEach((building) => {
+      if (remainingStoredCost === 0) return building;
+
+      const stored = building.inventory[resource] ?? 0;
+      const spent = Math.min(stored, remainingStoredCost);
+      if (spent === 0) return building;
+
+      remainingStoredCost -= spent;
+      spentById.set(building.id, spent);
+      return building;
+    });
+
+  const buildings = state.buildings.map((building) => {
+    const spent = spentById.get(building.id) ?? 0;
+    if (spent === 0) return building;
+
+    const stored = building.inventory[resource] ?? 0;
+    return {
+      ...building,
+      inventory: {
+        ...building.inventory,
+        [resource]: stored - spent,
+      },
+    };
+  });
+
+  return {
+    buildings,
+    treasuryTimber: 0,
+  };
 }

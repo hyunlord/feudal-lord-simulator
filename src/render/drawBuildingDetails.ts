@@ -1,5 +1,7 @@
 import type { BuildingKind } from "../content/buildingConfig";
 import { PALETTE } from "../content/palette";
+import type { BuildingVisualState } from "./buildingVisualState";
+import { isProductionProblem } from "./buildingVisualState";
 import { ambientOffset, objectPhase } from "./renderMotion";
 import { applyInkOutline, shade, snapToPixel } from "./style";
 
@@ -20,9 +22,20 @@ export type BuildingDetailInput = {
   readonly center: Point;
   readonly kind: BuildingKind;
   readonly zoom: number;
+  readonly visualState: BuildingVisualState;
 };
 
 export function drawKindDetail(
+  context: CanvasRenderingContext2D,
+  input: BuildingDetailInput,
+): void {
+  drawBaseKindDetail(context, input);
+  if (isProductionProblem(input.visualState)) {
+    drawProblemMarker(context, input.center, input.zoom);
+  }
+}
+
+function drawBaseKindDetail(
   context: CanvasRenderingContext2D,
   input: BuildingDetailInput,
 ): void {
@@ -43,16 +56,39 @@ export function drawKindDetail(
       drawFieldRows(context, input.center, input.zoom);
       return;
     case "mill":
-      drawWheel(context, input.center, input.zoom);
-      drawFlag(context, input.tick, input.center, input.zoom);
+      if (input.visualState.production === "working") {
+        drawWheel(context, input.tick, input.center, input.zoom);
+        drawFlag(context, input.tick, input.center, input.zoom);
+      }
       return;
     case "logging_camp":
       drawLogs(context, input.center, input.zoom);
       return;
     case "sawmill":
-      drawSaw(context, input.center, input.zoom);
+      if (input.visualState.production === "working") {
+        drawSaw(context, input.tick, input.center, input.zoom);
+      }
       return;
   }
+}
+
+function drawProblemMarker(
+  context: CanvasRenderingContext2D,
+  center: Point,
+  zoom: number,
+): void {
+  context.fillStyle = PALETTE.vermilion;
+  context.beginPath();
+  context.arc(
+    snapToPixel(center.x + 16),
+    snapToPixel(center.y - 35),
+    snapToPixel(3),
+    0,
+    Math.PI * 2,
+  );
+  context.fill();
+  applyInkOutline(context, zoom);
+  context.stroke();
 }
 
 function drawDoor(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
@@ -94,7 +130,7 @@ function drawFlag(context: CanvasRenderingContext2D, tick: number, center: Point
   context.fillStyle = PALETTE.vermilion;
   traceTriangle(context, [
     { x: center.x, y: center.y - 62 },
-    { x: center.x + 18 + sway, y: center.y - 55 },
+    { x: center.x + 18, y: center.y - 55 + sway },
     { x: center.x, y: center.y - 48 },
   ]);
   context.fill();
@@ -102,7 +138,13 @@ function drawFlag(context: CanvasRenderingContext2D, tick: number, center: Point
   context.stroke();
 }
 
-function drawWheel(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
+function drawWheel(context: CanvasRenderingContext2D, tick: number, center: Point, zoom: number): void {
+  const turn = ambientOffset({
+    tick,
+    amplitude: 3,
+    frequency: 1.4,
+    phase: objectPhase("wheel", center.x, center.y),
+  });
   context.fillStyle = PALETTE.stoneDark;
   context.beginPath();
   context.arc(snapToPixel(center.x + 24), snapToPixel(center.y - 24), snapToPixel(11), 0, Math.PI * 2);
@@ -110,8 +152,8 @@ function drawWheel(context: CanvasRenderingContext2D, center: Point, zoom: numbe
   applyInkOutline(context, zoom);
   context.stroke();
   context.fillStyle = PALETTE.water;
-  fillOutlinedRect(context, { origin: { x: center.x + 22, y: center.y - 35 }, width: 4, height: 22, zoom });
-  fillOutlinedRect(context, { origin: { x: center.x + 13, y: center.y - 26 }, width: 22, height: 4, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x + 22 + turn, y: center.y - 35 }, width: 4, height: 22, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x + 13, y: center.y - 26 - turn }, width: 22, height: 4, zoom });
 }
 
 function drawLogs(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
@@ -120,12 +162,18 @@ function drawLogs(context: CanvasRenderingContext2D, center: Point, zoom: number
   fillOutlinedRect(context, { origin: { x: center.x - 16, y: center.y - 4 }, width: 32, height: 5, zoom });
 }
 
-function drawSaw(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
+function drawSaw(context: CanvasRenderingContext2D, tick: number, center: Point, zoom: number): void {
+  const travel = ambientOffset({
+    tick,
+    amplitude: 4,
+    frequency: 1.2,
+    phase: objectPhase("saw", center.x, center.y),
+  });
   context.fillStyle = PALETTE.stoneDark;
   traceTriangle(context, [
-    { x: center.x - 18, y: center.y - 12 },
-    { x: center.x + 18, y: center.y - 12 },
-    { x: center.x, y: center.y - 28 },
+    { x: center.x - 18 + travel, y: center.y - 12 },
+    { x: center.x + 18 + travel, y: center.y - 12 },
+    { x: center.x + travel, y: center.y - 28 },
   ]);
   context.fill();
   applyInkOutline(context, zoom);

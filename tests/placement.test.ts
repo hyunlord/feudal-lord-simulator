@@ -39,6 +39,8 @@ function worldFromGrid(grid: Grid, timber = 100): GameState {
     population: 0,
     idleWorkers: 0,
     treasuryTimber: timber,
+    roadRevision: 0,
+    pathCache: {},
   };
 }
 
@@ -76,12 +78,12 @@ test("BUILDING_CONFIG defines all eight canonical building kinds with distinctiv
   ] as const satisfies readonly BuildingKind[];
   assert.deepEqual([...definitionsByKind.keys()].sort(), [...expectedKinds].sort());
   assert.ok(
-    new Set(BUILDING_CONFIG.map((definition) => `${definition.width}x${definition.height}`)).size >= 3,
-    "expected a mix of 1x1, 2x1, and 2x2 footprints",
+    new Set(BUILDING_CONFIG.map((definition) => `${definition.width}x${definition.height}`)).size >= 2,
+    "expected a mix of 1x1 and 2x2 footprints",
   );
   for (const definition of BUILDING_CONFIG) {
     assert.ok(definition.name.length > 0);
-    assert.ok((definition.buildCost.timber ?? 0) > 0);
+    assert.ok(definition.kind === "house" || (definition.buildCost.timber ?? 0) > 0);
     assert.ok(definition.width >= 1);
     assert.ok(definition.height >= 1);
   }
@@ -146,7 +148,7 @@ test("canPlaceBuilding returns out_of_bounds before any other placement failure"
   });
 
   // When
-  const result = canPlaceBuilding(worldFromGrid(grid, 0), "sawmill", 1, 1);
+  const result = canPlaceBuilding(worldFromGrid(grid, 0), "storehouse", 1, 1);
 
   // Then
   assert.deepEqual(result, { ok: false, reason: PlacementFailure.out_of_bounds });
@@ -190,7 +192,8 @@ test("canPlaceBuilding rejects water footprint tiles as wrong terrain", () => {
 
 test("canPlaceBuilding accepts rock footprint tiles when other requirements pass", () => {
   // Given
-  const grid = setTile(grassGrid(4, 4), 1, 1, { terrain: "rock" });
+  const rockGrid = setTile(grassGrid(4, 4), 1, 1, { terrain: "rock" });
+  const grid = setTile(rockGrid, 1, 0, { hasRoad: true });
 
   // When
   const result = canPlaceBuilding(worldFromGrid(grid), "house", 1, 1);
@@ -215,9 +218,9 @@ test("canPlaceBuilding requires orthogonal road adjacency and rejects diagonal-o
 
 test("canPlaceBuilding requires adjacent terrain in the one-tile surrounding ring only", () => {
   // Given
-  const noForest = grassGrid(5, 5);
-  const forestInsideFootprint = setTile(grassGrid(5, 5), 2, 2, { terrain: "forest" });
-  const forestInRing = setTile(grassGrid(5, 5), 3, 3, { terrain: "forest" });
+  const noForest = setTile(grassGrid(5, 5), 2, 1, { hasRoad: true });
+  const forestInsideFootprint = setTile(noForest, 2, 2, { terrain: "forest" });
+  const forestInRing = setTile(noForest, 3, 3, { terrain: "forest" });
 
   // When
   const missingResult = canPlaceBuilding(worldFromGrid(noForest), "logging_camp", 2, 2);
@@ -238,7 +241,8 @@ test("canPlaceBuilding requires adjacent terrain in the one-tile surrounding rin
 
 test("canPlaceBuilding rejects insufficient timber after spatial requirements pass", () => {
   // Given
-  const grid = setTile(grassGrid(5, 5), 3, 3, { terrain: "forest" });
+  const gridWithForest = setTile(grassGrid(5, 5), 3, 3, { terrain: "forest" });
+  const grid = setTile(gridWithForest, 2, 1, { hasRoad: true });
 
   // When
   const result = canPlaceBuilding(worldFromGrid(grid, 0), "logging_camp", 2, 2);

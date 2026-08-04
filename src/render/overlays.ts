@@ -1,16 +1,40 @@
 import { PALETTE } from "../content/palette";
+import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { PlacementFailure } from "../world/placement";
 import type { TileCoordinate } from "../world/grid";
 import type { PlacementTool } from "./renderer";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
-import { applyInkOutline, snapToPixel, withAlpha } from "./style";
+import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./style";
 
-export function drawOverlay(
-  _context: CanvasRenderingContext2D,
-  _state: GameState,
-  _mode: OverlayMode,
-): void {}
+export type EconomyOverlayRenderInput = {
+  readonly context: CanvasRenderingContext2D;
+  readonly state: GameState;
+  readonly mode: OverlayMode;
+  readonly zoom: number;
+};
+
+type FootprintOverlayInput = {
+  readonly context: CanvasRenderingContext2D;
+  readonly building: Building;
+  readonly color: typeof PALETTE.vermilion;
+  readonly zoom: number;
+};
+
+export function drawOverlay(input: EconomyOverlayRenderInput): void {
+  switch (input.mode) {
+    case "none":
+    case "food":
+    case "roads":
+      return;
+    case "water":
+      drawWaterOverlay(input);
+      return;
+    case "labour":
+      drawLabourOverlay(input);
+      return;
+  }
+}
 
 export type PlacementPreview = {
   readonly tool: PlacementTool;
@@ -78,4 +102,66 @@ function traceDiamond(context: CanvasRenderingContext2D, coordinate: TileCoordin
   context.lineTo(snapToPixel(center.sx), snapToPixel(center.sy + TILE_H / 2));
   context.lineTo(snapToPixel(center.sx - TILE_W / 2), snapToPixel(center.sy));
   context.closePath();
+}
+
+function drawWaterOverlay(input: EconomyOverlayRenderInput): void {
+  input.context.save();
+  for (const well of input.state.buildings.filter((building) => building.kind === "well")) {
+    const center = buildingCenter(well);
+    const radius = BUILDING_CONFIG_BY_KIND.well.serviceRadius;
+    input.context.fillStyle = withAlpha(PALETTE.water, 0.16);
+    applyPaletteStroke(input.context, PALETTE.water, input.zoom);
+    input.context.beginPath();
+    input.context.ellipse(
+      snapToPixel(center.sx),
+      snapToPixel(center.sy),
+      radius * TILE_W,
+      radius * TILE_H,
+      0,
+      0,
+      Math.PI * 2,
+    );
+    input.context.fill();
+    input.context.stroke();
+  }
+  for (const house of input.state.houses) {
+    if (house.hasWater) continue;
+    const building = input.state.buildings.find((candidate) => candidate.id === house.buildingId);
+    if (building !== undefined) {
+      drawFootprint({ context: input.context, building, color: PALETTE.vermilion, zoom: input.zoom });
+    }
+  }
+  input.context.restore();
+}
+
+function drawLabourOverlay(input: EconomyOverlayRenderInput): void {
+  input.context.save();
+  for (const building of input.state.buildings) {
+    const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+    if (definition.workersRequired === 0) continue;
+    if (building.workers >= definition.workersRequired) continue;
+    drawFootprint({ context: input.context, building, color: PALETTE.vermilion, zoom: input.zoom });
+  }
+  input.context.restore();
+}
+
+function drawFootprint(input: FootprintOverlayInput): void {
+  const definition = BUILDING_CONFIG_BY_KIND[input.building.kind];
+  input.context.fillStyle = withAlpha(input.color, 0.42);
+  for (let ty = input.building.ty; ty < input.building.ty + definition.height; ty += 1) {
+    for (let tx = input.building.tx; tx < input.building.tx + definition.width; tx += 1) {
+      traceDiamond(input.context, { tx, ty });
+      input.context.fill();
+      applyInkOutline(input.context, input.zoom);
+      input.context.stroke();
+    }
+  }
+}
+
+function buildingCenter(building: Building): { readonly sx: number; readonly sy: number } {
+  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  return tileToScreen(
+    building.tx + (definition.width - 1) / 2,
+    building.ty + (definition.height - 1) / 2,
+  );
 }

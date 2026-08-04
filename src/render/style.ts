@@ -38,6 +38,17 @@ export function applyInkOutline(
   context.lineCap = "round";
 }
 
+export function applyPaletteStroke(
+  context: Pick<CanvasRenderingContext2D, "lineCap" | "lineJoin" | "lineWidth" | "strokeStyle">,
+  color: PaletteColor,
+  zoom: number,
+): void {
+  context.strokeStyle = color;
+  context.lineWidth = 1 / zoom;
+  context.lineJoin = "round";
+  context.lineCap = "round";
+}
+
 export function drawFlatDiamondShadow(
   context: Pick<
     CanvasRenderingContext2D,

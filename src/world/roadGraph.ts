@@ -53,6 +53,69 @@ export function getOrthogonalRoadNeighbors(
   return candidates.filter((candidate) => getTile(grid, candidate)?.hasRoad === true);
 }
 
+function roadCoordinateKey(coordinate: TileCoordinate): string {
+  return `${coordinate.tx},${coordinate.ty}`;
+}
+
+function isRoadTile(grid: Grid, coordinate: TileCoordinate): boolean {
+  return getTile(grid, coordinate)?.hasRoad === true;
+}
+
+function reconstructRoadPath(
+  parents: ReadonlyMap<string, TileCoordinate | null>,
+  startKey: string,
+  destination: TileCoordinate,
+): readonly TileCoordinate[] | null {
+  const path: TileCoordinate[] = [];
+  let current: TileCoordinate | null = destination;
+
+  while (current !== null) {
+    path.push(current);
+    const currentKey = roadCoordinateKey(current);
+    if (currentKey === startKey) return path.reverse();
+
+    const parent = parents.get(currentKey);
+    if (parent === undefined) return null;
+    current = parent;
+  }
+
+  return null;
+}
+
+export function findExistingRoadPath(
+  grid: Grid,
+  request: RoadPathRequest,
+): readonly TileCoordinate[] | null {
+  if (!isRoadTile(grid, request.start) || !isRoadTile(grid, request.destination)) {
+    return null;
+  }
+
+  const startKey = roadCoordinateKey(request.start);
+  const destinationKey = roadCoordinateKey(request.destination);
+  const frontier: TileCoordinate[] = [request.start];
+  const parents = new Map<string, TileCoordinate | null>([[startKey, null]]);
+
+  for (let queueIndex = 0; queueIndex < frontier.length; queueIndex += 1) {
+    const current = frontier[queueIndex];
+    if (current === undefined) return null;
+
+    const currentKey = roadCoordinateKey(current);
+    if (currentKey === destinationKey) {
+      return reconstructRoadPath(parents, startKey, request.destination);
+    }
+
+    for (const neighbor of getOrthogonalRoadNeighbors(grid, current)) {
+      const neighborKey = roadCoordinateKey(neighbor);
+      if (parents.has(neighborKey)) continue;
+
+      parents.set(neighborKey, current);
+      frontier.push(neighbor);
+    }
+  }
+
+  return null;
+}
+
 export function findRoadPath(
   grid: Grid,
   request: RoadPathRequest,

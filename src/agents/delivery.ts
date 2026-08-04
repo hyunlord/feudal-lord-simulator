@@ -1,5 +1,14 @@
 import type { Walker } from "./walker.types";
 
-export function planDelivery(_walker: Walker): Walker {
-  throw new Error("not implemented");
+export type {
+  DeliveryInventoryPort,
+  DeliveryRoutePort,
+  DeliveryStepInput,
+  DeliveryStepResult,
+} from "./deliveryTypes";
+export { spawnCarters } from "./deliverySpawn";
+export { stepCarters } from "./deliveryStep";
+
+export function planDelivery(walker: Walker): Walker {
+  return walker;
 }

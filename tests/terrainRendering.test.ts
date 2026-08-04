@@ -78,6 +78,8 @@ test("ground tiles use one coherent fill without per-tile ink outlines", () => {
     population: 0,
     idleWorkers: 0,
     treasuryTimber: 0,
+    roadRevision: 0,
+    pathCache: {},
   };
   const calls: string[] = [];
 

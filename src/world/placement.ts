@@ -1,9 +1,11 @@
 import {
   BUILDING_CONFIG_BY_KIND,
+  type Building,
   type BuildingDefinition,
   type BuildingKind,
 } from "../content/buildingConfig";
 import type { TerrainType } from "../content/terrainConfig";
+import type { ResourceType } from "../content/resourceConfig";
 import { getTile, isInBounds, type TileCoordinate } from "./grid";
 import type { Tile, WorldView } from "./world.types";
 
@@ -19,6 +21,10 @@ export enum PlacementFailure {
 export type PlacementResult =
   | { readonly ok: true }
   | { readonly ok: false; readonly reason: PlacementFailure };
+
+type ResourceWorldView = WorldView & {
+  readonly buildings?: readonly Building[];
+};
 
 function isBuildableTerrain(terrain: TerrainType): boolean {
   return terrain !== "water";
@@ -95,7 +101,7 @@ function hasOccupiedFootprint(tiles: readonly Tile[]): boolean {
 }
 
 export function canPlaceBuilding(
-  world: WorldView,
+  world: ResourceWorldView,
   kind: BuildingKind,
   tx: number,
   ty: number,
@@ -137,9 +143,17 @@ export function canPlaceBuilding(
   }
 
   const timberCost = definition.buildCost.timber ?? 0;
-  if (world.treasuryTimber < timberCost) {
+  if (availableResource(world, "timber") < timberCost) {
     return { ok: false, reason: PlacementFailure.insufficient_timber };
   }
 
   return { ok: true };
+}
+
+function availableResource(world: ResourceWorldView, resource: ResourceType): number {
+  const stored = world.buildings?.reduce(
+    (total, building) => total + (building.inventory[resource] ?? 0),
+    0,
+  ) ?? 0;
+  return world.treasuryTimber + stored;
 }

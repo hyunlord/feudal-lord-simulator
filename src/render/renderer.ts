@@ -1,5 +1,5 @@
 import type { BuildingKind } from "../content/buildingConfig";
-import type { GameState } from "../engine/engine.types";
+import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { CameraState } from "./camera";
 import { canvasToWorld } from "./camera";
 import { drawBuildings } from "./drawBuildings";
@@ -7,7 +7,7 @@ import { drawTerrain } from "./drawTerrain";
 import { drawWalkers } from "./drawWalkers";
 import { drawWorldVignette } from "./worldBackdrop";
 import { depthKey, screenToTile } from "./iso";
-import { drawPlacementOverlay, type PlacementPreview } from "./overlays";
+import { drawOverlay, drawPlacementOverlay, type PlacementPreview } from "./overlays";
 import type { Grid } from "../world/grid";
 import type { Tile } from "../world/world.types";
 
@@ -51,6 +51,7 @@ export type RenderFrameInput = {
   readonly camera: CameraState;
   readonly viewport: ViewportSize;
   readonly preview: PlacementPreview;
+  readonly overlayMode?: OverlayMode;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -77,7 +78,13 @@ export const renderFrame = (input: RenderFrameInput): void => {
         range,
         zoom: input.camera.zoom,
       }),
-    overhang: () => drawWalkers(input.context, input.state),
+    overhang: () => drawWalkers(input.context, input.state, input.camera.zoom),
+  });
+  drawOverlay({
+    context: input.context,
+    state: input.state,
+    mode: input.overlayMode ?? "none",
+    zoom: input.camera.zoom,
   });
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
 };

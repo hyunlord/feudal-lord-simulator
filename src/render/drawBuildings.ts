@@ -1,11 +1,15 @@
 import type { GameState } from "../engine/engine.types";
-import type { BuildingKind } from "../content/buildingConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { PALETTE } from "../content/palette";
 import type { Building } from "../economy/economy.types";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
+import {
+  buildBuildingVisualState,
+  buildingBodyProfile,
+  type BodyProfile,
+} from "./buildingVisualState";
 import { ambientOffset } from "./renderMotion";
 import { buildObjectRenderItems } from "./objectRenderOrder";
 import { buildForestLookup, buildTreeCluster, type ForestLookup, type TreeDescriptor } from "./treeLayout";
@@ -24,15 +28,11 @@ type Point = {
   readonly y: number;
 };
 
-type RoofShape = "none" | "triangle" | "flat" | "shed" | "tower";
-
-type BodyProfile = {
-  readonly width: number;
-  readonly height: number;
-  readonly roof: number;
-  readonly fill: PaletteColor;
-  readonly roofColor: PaletteColor;
-  readonly roofShape: RoofShape;
+type BuildingShapeInput = {
+  readonly center: Point;
+  readonly building: Building;
+  readonly houseLevel: number;
+  readonly zoom: number;
 };
 
 export function drawBuildings(
@@ -49,7 +49,7 @@ export function drawBuildings(
     if (item.kind === "tree") {
       drawTreeCluster(context, input.state.tick, item.tile, forestLookup, input.state.seed, input.zoom);
     } else {
-      drawBuilding(context, input.state.tick, item.building, input.zoom);
+      drawBuilding(context, input, item.building);
     }
   }
 }
@@ -121,60 +121,83 @@ function traceTreeCanopy(context: CanvasRenderingContext2D, tree: TreeDescriptor
   ]);
 }
 
-function drawBuilding(context: CanvasRenderingContext2D, tick: number, building: Building, zoom: number): void {
+function drawBuilding(
+  context: CanvasRenderingContext2D,
+  input: ObjectRenderInput,
+  building: Building,
+): void {
   const center = buildingCenter(building);
   const config = BUILDING_CONFIG_BY_KIND[building.kind];
+  const visualState = buildBuildingVisualState(building, input.state.houses);
   drawFlatDiamondShadow(context, {
     centerX: center.x,
     centerY: center.y + 10,
     radiusX: config.width * TILE_W * 0.34,
     radiusY: config.height * TILE_H * 0.28,
   });
-  drawBody(context, center, building.kind, zoom);
-  drawRoof(context, center, building.kind, zoom);
-  drawKindDetail(context, { tick, center, kind: building.kind, zoom });
+  const shape = {
+    center,
+    building,
+    houseLevel: visualState.houseLevel,
+    zoom: input.zoom,
+  };
+  drawBody(context, shape);
+  drawRoof(context, shape);
+  drawKindDetail(context, {
+    tick: input.state.tick,
+    center,
+    kind: building.kind,
+    zoom: input.zoom,
+    visualState,
+  });
 }
 
-function drawBody(context: CanvasRenderingContext2D, center: Point, kind: BuildingKind, zoom: number): void {
-  const body = buildingBody(kind);
-  const origin = { x: center.x - body.width / 2, y: center.y - body.height };
+function drawBody(
+  context: CanvasRenderingContext2D,
+  input: BuildingShapeInput,
+): void {
+  const body = buildingBodyProfile(input.building.kind, input.houseLevel);
+  const origin = { x: input.center.x - body.width / 2, y: input.center.y - body.height };
   context.fillStyle = body.fill;
   traceIsoFace(context, origin, body.width, body.height, "front");
   context.fill();
-  applyInkOutline(context, zoom);
+  applyInkOutline(context, input.zoom);
   context.stroke();
   context.fillStyle = shade(body.fill, 0.92);
   traceIsoFace(context, origin, body.width, body.height, "left");
   context.fill();
-  applyInkOutline(context, zoom);
+  applyInkOutline(context, input.zoom);
   context.stroke();
   context.fillStyle = shade(body.fill, 0.8);
   traceIsoFace(context, origin, body.width, body.height, "right");
   context.fill();
-  applyInkOutline(context, zoom);
+  applyInkOutline(context, input.zoom);
   context.stroke();
 }
 
-function drawRoof(context: CanvasRenderingContext2D, center: Point, kind: BuildingKind, zoom: number): void {
-  const body = buildingBody(kind);
+function drawRoof(
+  context: CanvasRenderingContext2D,
+  input: BuildingShapeInput,
+): void {
+  const body = buildingBodyProfile(input.building.kind, input.houseLevel);
   if (body.roofShape === "none") {
     return;
   }
   context.fillStyle = body.roofColor;
   if (body.roofShape === "flat") {
-    traceRect(context, { x: center.x - body.width / 2 - 4, y: center.y - body.height - 4 }, body.width + 8, 8);
+    traceRect(context, { x: input.center.x - body.width / 2 - 4, y: input.center.y - body.height - 4 }, body.width + 8, 8);
   } else if (body.roofShape === "shed") {
-    traceShedRoof(context, center, body);
+    traceShedRoof(context, input.center, body);
   } else {
     const peakLift = body.roofShape === "tower" ? body.roof + 12 : body.roof;
     traceTriangle(context, [
-      { x: center.x, y: center.y - body.height - peakLift },
-      { x: center.x + body.width / 2 + 5, y: center.y - body.height + 5 },
-      { x: center.x - body.width / 2 - 5, y: center.y - body.height + 5 },
+      { x: input.center.x, y: input.center.y - body.height - peakLift },
+      { x: input.center.x + body.width / 2 + 5, y: input.center.y - body.height + 5 },
+      { x: input.center.x - body.width / 2 - 5, y: input.center.y - body.height + 5 },
     ]);
   }
   context.fill();
-  applyInkOutline(context, zoom);
+  applyInkOutline(context, input.zoom);
   context.stroke();
 }
 
@@ -191,27 +214,6 @@ function buildingCenter(building: Building): Point {
   const config = BUILDING_CONFIG_BY_KIND[building.kind];
   const center = tileToScreen(building.tx + (config.width - 1) / 2, building.ty + (config.height - 1) / 2);
   return { x: center.sx, y: center.sy };
-}
-
-function buildingBody(kind: BuildingKind): BodyProfile {
-  switch (kind) {
-    case "house":
-      return { width: 30, height: 30, roof: 15, fill: PALETTE.parchmentDark, roofColor: PALETTE.earth, roofShape: "triangle" };
-    case "well":
-      return { width: 24, height: 16, roof: 0, fill: PALETTE.stone, roofColor: PALETTE.stoneDark, roofShape: "none" };
-    case "storehouse":
-      return { width: 60, height: 34, roof: 8, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "flat" };
-    case "granary":
-      return { width: 52, height: 40, roof: 14, fill: PALETTE.parchment, roofColor: PALETTE.goldDark, roofShape: "shed" };
-    case "wheat_farm":
-      return { width: 68, height: 14, roof: 0, fill: PALETTE.sageDark, roofColor: PALETTE.gold, roofShape: "none" };
-    case "mill":
-      return { width: 54, height: 58, roof: 20, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "tower" };
-    case "logging_camp":
-      return { width: 34, height: 22, roof: 10, fill: PALETTE.earth, roofColor: PALETTE.forest, roofShape: "shed" };
-    case "sawmill":
-      return { width: 62, height: 48, roof: 14, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "flat" };
-  }
 }
 
 function traceIsoFace(

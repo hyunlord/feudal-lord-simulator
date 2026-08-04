@@ -7,7 +7,6 @@ import {
   placeBuilding,
   placeRoadLine,
 } from "../src/engine/gameActions";
-import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { getTile } from "../src/world/grid";
 
@@ -23,11 +22,6 @@ const FORBIDDEN_STATE_FIELDS = [
   "motion",
 ] as const;
 
-function withoutTick(state: GameState): Omit<GameState, "tick"> {
-  const { tick: _tick, ...rest } = state;
-  return rest;
-}
-
 test("DEFAULT_GAME_STATE starts with a deterministic populated world and no presentation fields", () => {
   // Given / When
   const state = DEFAULT_GAME_STATE;
@@ -40,11 +34,43 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
   assert.equal(state.height, 64);
   assert.equal(state.tiles.length, 64 * 64);
   assert.deepEqual([...terrains].sort(), ["forest", "grass", "rock", "water"]);
-  assert.deepEqual(state.buildings, []);
-  assert.deepEqual(state.houses, []);
+  assert.deepEqual(state.buildings, [
+    {
+      id: "house-0-0-0",
+      kind: "house",
+      tx: 0,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+  ]);
+  assert.deepEqual(state.houses, [
+    {
+      buildingId: "house-0-0-0",
+      level: 0,
+      residents: 4,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+  ]);
   assert.deepEqual(state.walkers, []);
+  assert.equal(state.population, 4);
   assert.equal(state.treasuryTimber, 160);
-  assert.equal(state.tiles.every((tile) => tile.buildingId === null && !tile.hasRoad), true);
+  assert.equal(state.roadRevision, 0);
+  assert.deepEqual(state.pathCache, {});
+  assert.equal(getTile(state, { tx: 0, ty: 0 })?.buildingId, "house-0-0-0");
+  assert.equal(
+    state.tiles.every((tile) =>
+      tile.tx === 0 && tile.ty === 0 ? tile.buildingId === "house-0-0-0" : tile.buildingId === null,
+    ),
+    true,
+  );
+  assert.equal(state.tiles.every((tile) => !tile.hasRoad), true);
   for (const field of FORBIDDEN_STATE_FIELDS) {
     assert.equal(Object.hasOwn(state, field), false);
   }
@@ -52,42 +78,44 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
 
 test("placeBuilding immutably appends a deterministic building marks its footprint and spends only timber", () => {
   // Given
-  const state = DEFAULT_GAME_STATE;
-  const timberCost = BUILDING_CONFIG_BY_KIND.wheat_farm.buildCost.timber ?? 0;
+  const roaded = placeRoadLine(DEFAULT_GAME_STATE, { tx: 2, ty: 0 }, { tx: 4, ty: 0 });
+  const timberCost = BUILDING_CONFIG_BY_KIND.storehouse.buildCost.timber ?? 0;
 
   // When
-  const next = placeBuilding(state, "wheat_farm", { tx: 0, ty: 0 });
+  const next = placeBuilding(roaded, "storehouse", { tx: 2, ty: 1 });
 
   // Then
-  assert.notEqual(next, state);
-  assert.equal(state.buildings.length, 0);
-  assert.equal(state.treasuryTimber, 160);
-  assert.deepEqual(next.buildings, [
+  assert.notEqual(next, roaded);
+  assert.equal(roaded.buildings.length, 1);
+  assert.equal(roaded.treasuryTimber, 160);
+  assert.deepEqual(next.buildings.slice(1), [
     {
-      id: "wheat_farm-0-0-0",
-      kind: "wheat_farm",
-      tx: 0,
-      ty: 0,
+      id: "storehouse-2-1-1",
+      kind: "storehouse",
+      tx: 2,
+      ty: 1,
       workers: 0,
       inventory: {},
+      reserved: {},
+      stockReserved: {},
       productionProgress: 0,
     },
   ]);
   assert.equal(next.treasuryTimber, 160 - timberCost);
-  assert.equal(getTile(next, { tx: 0, ty: 0 })?.buildingId, "wheat_farm-0-0-0");
-  assert.equal(getTile(next, { tx: 1, ty: 0 })?.buildingId, "wheat_farm-0-0-0");
-  assert.equal(getTile(next, { tx: 0, ty: 1 })?.buildingId, "wheat_farm-0-0-0");
-  assert.equal(getTile(next, { tx: 1, ty: 1 })?.buildingId, "wheat_farm-0-0-0");
+  assert.equal(getTile(next, { tx: 2, ty: 1 })?.buildingId, "storehouse-2-1-1");
+  assert.equal(getTile(next, { tx: 3, ty: 1 })?.buildingId, "storehouse-2-1-1");
+  assert.equal(getTile(next, { tx: 2, ty: 2 })?.buildingId, "storehouse-2-1-1");
+  assert.equal(getTile(next, { tx: 3, ty: 2 })?.buildingId, "storehouse-2-1-1");
 });
 
 test("placeBuilding returns the original state when placement or timber validation fails", () => {
   // Given
-  const occupied = placeBuilding(DEFAULT_GAME_STATE, "house", { tx: 0, ty: 0 });
+  const occupied = DEFAULT_GAME_STATE;
   const poorState = { ...DEFAULT_GAME_STATE, treasuryTimber: 0 };
 
   // When
   const occupiedResult = placeBuilding(occupied, "house", { tx: 0, ty: 0 });
-  const timberResult = placeBuilding(poorState, "house", { tx: 2, ty: 0 });
+  const timberResult = placeBuilding(poorState, "well", { tx: 2, ty: 0 });
 
   // Then
   assert.equal(occupiedResult, occupied);
@@ -105,6 +133,8 @@ test("placeRoadLine immutably marks every normalized road tile without spending 
   assert.notEqual(next, state);
   assert.equal(state.tiles.some((tile) => tile.hasRoad), false);
   assert.equal(next.treasuryTimber, state.treasuryTimber);
+  assert.equal(next.roadRevision, state.roadRevision + 1);
+  assert.deepEqual(next.pathCache, {});
   assert.equal(getTile(next, { tx: 2, ty: 0 })?.hasRoad, true);
   assert.equal(getTile(next, { tx: 3, ty: 0 })?.hasRoad, true);
   assert.equal(getTile(next, { tx: 4, ty: 0 })?.hasRoad, true);
@@ -157,8 +187,8 @@ test("gameReducer routes typed domain actions and invalid placements preserve ob
   });
   const built = gameReducer(roaded, {
     type: "place_building",
-    kind: "house",
-    tx: 0,
+    kind: "well",
+    tx: 1,
     ty: 0,
   });
   const invalid = gameReducer(built, {
@@ -169,13 +199,13 @@ test("gameReducer routes typed domain actions and invalid placements preserve ob
 
   // Then
   assert.equal(getTile(roaded, { tx: 2, ty: 0 })?.hasRoad, true);
-  assert.equal(built.buildings[0]?.id, "house-0-0-0");
+  assert.equal(built.buildings.at(-1)?.id, "well-1-0-1");
   assert.equal(invalid, built);
 });
 
-test("advance tick returns a new state with only tick incremented and produces no timber", () => {
+test("advance tick allocates idle labour while preserving a production-free starting world", () => {
   // Given
-  const state = placeBuilding(DEFAULT_GAME_STATE, "house", { tx: 0, ty: 0 });
+  const state = DEFAULT_GAME_STATE;
   const timber = state.treasuryTimber;
 
   // When
@@ -185,5 +215,11 @@ test("advance tick returns a new state with only tick incremented and produces n
   assert.notEqual(next, state);
   assert.equal(next.tick, state.tick + 1);
   assert.equal(next.treasuryTimber, timber);
-  assert.deepEqual(withoutTick(next), withoutTick(state));
+  assert.equal(next.population, 4);
+  assert.equal(next.idleWorkers, 2);
+  assert.deepEqual(next.buildings, state.buildings);
+  assert.deepEqual(next.houses, state.houses);
+  assert.deepEqual(next.walkers, []);
+  assert.deepEqual(next.tiles, state.tiles);
+  assert.deepEqual(next.pathCache, state.pathCache);
 });

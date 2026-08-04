@@ -19,6 +19,8 @@ function building(id: string, kind: BuildingKind, tx: number, ty: number): Build
     ty,
     workers: 0,
     inventory: {},
+    reserved: {},
+    stockReserved: {},
     productionProgress: 0,
   };
 }

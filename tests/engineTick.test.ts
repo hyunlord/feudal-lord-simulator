@@ -1,0 +1,178 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import type { Building } from "../src/content/buildingConfig";
+import { advanceTick } from "../src/engine/tick";
+import type { GameState } from "../src/engine/engine.types";
+import type { House } from "../src/population/population.types";
+import type { Tile } from "../src/world/world.types";
+
+function tile(tx: number, ty: number, patch: Partial<Tile> = {}): Tile {
+  return {
+    tx,
+    ty,
+    terrain: "grass",
+    buildingId: null,
+    hasRoad: false,
+    ...patch,
+  };
+}
+
+function building(
+  id: string,
+  kind: Building["kind"],
+  tx: number,
+  ty: number,
+  patch: Partial<Building> = {},
+): Building {
+  return {
+    id,
+    kind,
+    tx,
+    ty,
+    workers: 0,
+    inventory: {},
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+    ...patch,
+  };
+}
+
+function house(buildingId: string, residents: number): House {
+  return {
+    buildingId,
+    level: 0,
+    residents,
+    hasWater: false,
+    breadStock: 0,
+    lastServicedTick: 0,
+    unmetRequirementTicks: 0,
+  };
+}
+
+function state(input: {
+  readonly width: number;
+  readonly height: number;
+  readonly buildings: readonly Building[];
+  readonly houses?: readonly House[];
+  readonly roads?: readonly [number, number][];
+  readonly tick?: number;
+}): GameState {
+  const roadKeys = new Set(input.roads?.map(([tx, ty]) => `${tx},${ty}`) ?? []);
+  return {
+    tick: input.tick ?? 0,
+    seed: 7,
+    width: input.width,
+    height: input.height,
+    tiles: Array.from({ length: input.width * input.height }, (_unused, index) => {
+      const tx = index % input.width;
+      const ty = Math.floor(index / input.width);
+      const owner = input.buildings.find((candidate) =>
+        candidate.tx === tx && candidate.ty === ty
+      );
+      return tile(tx, ty, {
+        buildingId: owner?.id ?? null,
+        hasRoad: roadKeys.has(`${tx},${ty}`),
+      });
+    }),
+    buildings: [...input.buildings],
+    houses: [...(input.houses ?? [])],
+    walkers: [],
+    population: input.houses?.reduce((total, item) => total + item.residents, 0) ?? 0,
+    idleWorkers: 0,
+    treasuryTimber: 0,
+    roadRevision: 1,
+    pathCache: {},
+  };
+}
+
+test("advanceTick allocates labour before production and runs one production step", () => {
+  // Given
+  const home = building("home", "house", 4, 4);
+  const farm = building("farm", "wheat_farm", 0, 0, {
+    productionProgress: 39,
+  });
+
+  // When
+  const next = advanceTick(
+    state({
+      width: 6,
+      height: 6,
+      buildings: [farm, home],
+      houses: [house(home.id, 8)],
+    }),
+  );
+
+  // Then
+  const updatedFarm = next.buildings.find(({ id }) => id === farm.id);
+  assert.equal(next.tick, 1);
+  assert.equal(updatedFarm?.workers, 4);
+  assert.equal(updatedFarm?.inventory.wheat, 1);
+  assert.equal(updatedFarm?.productionProgress, 0);
+  assert.equal(next.idleWorkers, 0);
+}
+);
+
+test("advanceTick spawns a carter from producer stock using road-access routes", () => {
+  // Given
+  const producer = building("producer", "logging_camp", 0, 0, {
+    inventory: { logs: 8 },
+  });
+  const store = building("store", "storehouse", 3, 0);
+
+  // When
+  const next = advanceTick(
+    state({
+      width: 6,
+      height: 4,
+      buildings: [producer, store],
+      roads: [[1, 0], [2, 0]],
+    }),
+  );
+
+  // Then
+  assert.equal(next.walkers[0]?.kind, "carter");
+  assert.deepEqual(next.walkers[0]?.cargo, { resource: "logs", amount: 8 });
+  assert.equal(next.buildings.find(({ id }) => id === producer.id)?.inventory.logs ?? 0, 0);
+  assert.equal(next.buildings.find(({ id }) => id === store.id)?.reserved.logs, 8);
+});
+
+test("advanceTick steps distributors before housing so bread service is visible same tick", () => {
+  // Given
+  const granary = building("granary", "granary", 0, 0);
+  const home = building("home", "house", 2, 1);
+  const distributor = {
+    id: "distributor:granary:120",
+    kind: "distributor" as const,
+    homeBuildingId: granary.id,
+    position: { tx: 2, ty: 0 },
+    path: [{ tx: 1, ty: 0 }, { tx: 2, ty: 0 }],
+    pathIndex: 1,
+    previousTile: { tx: 1, ty: 0 },
+    cargo: { resource: "bread" as const, amount: 2 },
+    spawnedTick: 120,
+    phase: "roaming" as const,
+    junctionVisits: 0,
+    tilesTravelled: 1,
+    priorTile: { tx: 1, ty: 0 },
+  };
+
+  // When
+  const next = advanceTick({
+    ...state({
+      width: 5,
+      height: 3,
+      buildings: [granary, home],
+      houses: [house(home.id, 1)],
+      roads: [[0, 0], [1, 0], [2, 0]],
+    }),
+    walkers: [distributor],
+  });
+
+  // Then
+  const updatedHouse = next.houses.find(({ buildingId }) => buildingId === home.id);
+  assert.equal(updatedHouse?.breadStock, 1);
+  assert.equal(updatedHouse?.lastServicedTick, 1);
+}
+);
