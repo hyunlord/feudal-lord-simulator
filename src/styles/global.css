@@ -80,30 +80,6 @@ button {
   isolation: isolate;
 }
 
-.court-console::before,
-.court-console::after {
-  position: absolute;
-  bottom: 4px;
-  z-index: 3;
-  width: 74px;
-  height: 74px;
-  pointer-events: none;
-  content: "";
-  background-image: url("/assets/ui/illumination_corner.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: 0.84;
-}
-
-.court-console::before {
-  left: 3px;
-}
-
-.court-console::after {
-  right: 3px;
-  transform: scaleX(-1);
-}
-
 .court-recess {
   position: relative;
   z-index: 1;
@@ -380,12 +356,6 @@ button {
     padding-left: 10px;
   }
 
-  .court-console::before,
-  .court-console::after {
-    width: 56px;
-    height: 56px;
-  }
-
   .map-shield {
     width: 78px;
     height: 94px;
@@ -416,12 +386,6 @@ button {
 
   .court-recess {
     height: 132px;
-  }
-
-  .court-console::before,
-  .court-console::after {
-    width: 42px;
-    height: 42px;
   }
 
   .map-shield {

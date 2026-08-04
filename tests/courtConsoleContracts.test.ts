@@ -68,6 +68,7 @@ test("the actual app renders one continuous accessible court console", () => {
   // Then
   assert.equal(markup.match(/class="court-console"/g)?.length, 1);
   assert.match(markup, /aria-label="Court console"/);
+  assert.equal(markup.match(/class="court-recess /g)?.length, 3);
   assert.match(markup, /class="map-shield"/);
   assert.match(markup, /class="build-seals"/);
   assert.match(markup, /class="court-ledger"/);
@@ -102,7 +103,6 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
     "seal_slot.png",
     "parchment_texture.png",
     "scroll_frame.png",
-    "illumination_corner.png",
   ];
 
   // Then
@@ -117,6 +117,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /grid-template-columns:\s*54px minmax\(126px, 1fr\) 102px;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4,/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*10px;/);
+  assert.doesNotMatch(css, /\.court-console::(?:before|after)/);
+  assert.doesNotMatch(css, /illumination_corner\.png/);
   assert.match(css, /\.court-ledger::after\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);[\s\S]*?opacity:\s*0\.86;/);
   assert.match(css, /\.court-ledger\s*>\s*\*\s*\{[\s\S]*?z-index:\s*1;/);
   assert.match(css, /\.shield-caption\s*\{[\s\S]*?bottom:\s*10px;/);
