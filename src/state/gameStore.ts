@@ -10,11 +10,12 @@ import type {
   GameStoreContextValue,
 } from "./gameStore.types";
 
-const INITIAL_WORLD = buildWorldGrid({ width: 64, height: 64 });
+const WORLD_SEED = 1;
+const INITIAL_WORLD = buildWorldGrid({ width: 64, height: 64, seed: WORLD_SEED });
 
 export const DEFAULT_GAME_STATE: GameState = {
   tick: 0,
-  seed: 1,
+  seed: WORLD_SEED,
   tiles: [...INITIAL_WORLD.tiles],
   width: INITIAL_WORLD.width,
   height: INITIAL_WORLD.height,

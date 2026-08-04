@@ -6,8 +6,8 @@ import { buildWorldGrid, generateTerrainTile, terrainVariation } from "../src/wo
 
 test("generateTerrainTile returns deterministic mixed terrain when building a 64x64 world", () => {
   // Given
-  const first = buildWorldGrid({ width: 64, height: 64 });
-  const second = buildWorldGrid({ width: 64, height: 64 });
+  const first = buildWorldGrid({ width: 64, height: 64, seed: 1 });
+  const second = buildWorldGrid({ width: 64, height: 64, seed: 1 });
 
   // When
   const firstTerrains = first.tiles.map((tile) => tile.terrain);
@@ -34,8 +34,8 @@ test("generateTerrainTile is stable for positive and negative coordinates", () =
 
   for (const sample of samples) {
     // Given / When
-    const first = generateTerrainTile(sample.tx, sample.ty);
-    const second = generateTerrainTile(sample.tx, sample.ty);
+    const first = generateTerrainTile(sample.tx, sample.ty, 1);
+    const second = generateTerrainTile(sample.tx, sample.ty, 1);
 
     // Then
     assert.equal(first, second);
@@ -58,13 +58,13 @@ test("terrainVariation is deterministic, bounded, and varies nearby tiles", () =
 
   // When
   const variations = coordinates.map((coordinate) =>
-    terrainVariation(coordinate.tx, coordinate.ty),
+    terrainVariation(coordinate.tx, coordinate.ty, 1),
   );
 
   // Then
   assert.deepEqual(
     variations,
-    coordinates.map((coordinate) => terrainVariation(coordinate.tx, coordinate.ty)),
+    coordinates.map((coordinate) => terrainVariation(coordinate.tx, coordinate.ty, 1)),
   );
   assert.ok(
     variations.every((variation) => variation >= -0.06 && variation <= 0.06),
@@ -75,7 +75,7 @@ test("terrainVariation is deterministic, bounded, and varies nearby tiles", () =
 
 test("buildWorldGrid stores terrain and occupancy only in row-major tile order", () => {
   // Given / When
-  const grid = buildWorldGrid({ width: 4, height: 3 });
+  const grid = buildWorldGrid({ width: 4, height: 3, seed: 1 });
 
   // Then
   assert.equal(grid.width, 4);

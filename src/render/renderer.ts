@@ -5,6 +5,7 @@ import { canvasToWorld } from "./camera";
 import { drawBuildings } from "./drawBuildings";
 import { drawTerrain } from "./drawTerrain";
 import { drawWalkers } from "./drawWalkers";
+import { drawWorldVignette } from "./worldBackdrop";
 import { depthKey, screenToTile } from "./iso";
 import { drawPlacementOverlay, type PlacementPreview } from "./overlays";
 import type { Grid } from "../world/grid";
@@ -60,13 +61,15 @@ export const renderFrame = (input: RenderFrameInput): void => {
   });
   const visibleTiles = visibleTilesInDrawOrder({ grid: input.state, range });
   runRenderPasses({
-    ground: () =>
+    ground: () => {
+      drawWorldVignette(input.context, input.state);
       drawTerrain(input.context, {
         state: input.state,
         tiles: visibleTiles,
         range,
         zoom: input.camera.zoom,
-      }),
+      });
+    },
     objects: () =>
       drawBuildings(input.context, {
         state: input.state,

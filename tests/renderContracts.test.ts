@@ -81,17 +81,17 @@ test("computeVisibleTileRange clips iteration so a small viewport never draws ev
   );
 });
 
-test("terrain variation remains within plus or minus six percent and frame-stable", () => {
+test("terrain variation remains within plus or minus five percent and frame-stable", () => {
   // Given
   const sample = { tx: 6, ty: 7 };
 
   // When
-  const firstFrame = terrainVariation(sample.tx, sample.ty);
-  const secondFrame = terrainVariation(sample.tx, sample.ty);
+  const firstFrame = terrainVariation(sample.tx, sample.ty, 73);
+  const secondFrame = terrainVariation(sample.tx, sample.ty, 73);
 
   // Then
-  assert.ok(firstFrame >= -0.06);
-  assert.ok(firstFrame <= 0.06);
+  assert.ok(firstFrame >= -0.05);
+  assert.ok(firstFrame <= 0.05);
   assert.deepEqual(secondFrame, firstFrame);
 });
 

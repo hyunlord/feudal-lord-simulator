@@ -14,6 +14,7 @@ import {
 import type { PlacementTool } from "./renderer";
 import { renderFrame } from "./renderer";
 import { useGameStore } from "../state/gameStore";
+import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 import type { TileCoordinate } from "../world/grid";
 type GameCanvasProps = { readonly selectedTool?: PlacementTool };
 
@@ -80,7 +81,8 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL }: GameCanvas
       const camera = cameraRef.current;
       const currentState = stateRef.current;
       const currentTool = selectedToolRef.current;
-      context.clearRect(0, 0, bounds.width, bounds.height);
+      context.fillStyle = CANVAS_SURROUND_COLOR;
+      context.fillRect(0, 0, bounds.width, bounds.height);
       context.save();
       context.setTransform(pixelRatioRef.current, 0, 0, pixelRatioRef.current, 0, 0);
       context.translate(camera.panX, camera.panY);
