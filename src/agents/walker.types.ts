@@ -38,11 +38,18 @@ export interface CarterSourceStockClaim {
   readonly amount: number;
 }
 
+export interface CarterCapacityClaim {
+  readonly buildingId: string;
+  readonly resource: ResourceType;
+  readonly amount: number;
+}
+
 export interface CarterReservation {
   readonly destinationBuildingId: string;
   readonly resource: ResourceType;
   readonly amount: number;
   readonly sourceStockClaim: CarterSourceStockClaim | null;
+  readonly homeCapacityClaim: CarterCapacityClaim | null;
 }
 
 export interface CarterCancellation {

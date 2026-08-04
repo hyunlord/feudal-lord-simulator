@@ -123,7 +123,13 @@ function productionVisualState(building: Building): ProductionVisualState {
   ) {
     return "no_input";
   }
-  if (sumStock(building.inventory) >= definition.storageCapacity) {
+  const occupied = sumStock(building.inventory) + sumStock(building.reserved);
+  const available = Math.max(0, definition.storageCapacity - occupied);
+  const inputReleased = production.input === null ? 0 : production.inputPerOutput;
+  if (
+    available + inputReleased < 1 &&
+    building.productionProgress >= production.ticksPerOutput
+  ) {
     return "storage_full";
   }
   return "working";

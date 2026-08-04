@@ -38,6 +38,39 @@ function firstTile(tiles: readonly TilePos[]): TilePos | null {
   return tiles[0] ?? null;
 }
 
+function tileKey(tile: TilePos): string {
+  return `${tile.tx},${tile.ty}`;
+}
+
+function roadComponentSize(state: GameState, start: TilePos): number {
+  const queue: TilePos[] = [start];
+  const visited = new Set<string>();
+  for (let index = 0; index < queue.length; index += 1) {
+    const current = queue[index];
+    if (current === undefined) continue;
+    const key = tileKey(current);
+    if (visited.has(key)) continue;
+    visited.add(key);
+    for (const neighbor of getOrthogonalRoadNeighbors(state, current)) {
+      if (!visited.has(tileKey(neighbor))) queue.push(neighbor);
+    }
+  }
+  return visited.size;
+}
+
+function roamingHomeAccess(state: GameState, building: Building): TilePos | null {
+  const accesses = buildingRoadAccessTiles(state, building);
+  let best = firstTile(accesses);
+  let bestSize = best === null ? 0 : roadComponentSize(state, best);
+  for (const access of accesses.slice(1)) {
+    const size = roadComponentSize(state, access);
+    if (size <= bestSize) continue;
+    best = access;
+    bestSize = size;
+  }
+  return best;
+}
+
 function stateWithCache(
   state: GameState,
   pathCache: RoadPathCache,
@@ -91,7 +124,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     homePath: (buildingId) => {
       const building = findBuilding(state.buildings, buildingId);
       if (building === null) return null;
-      const access = firstTile(buildingRoadAccessTiles(state, building));
+      const access = roamingHomeAccess(state, building);
       return access === null ? null : [access];
     },
     returnPath: routeToBuilding,

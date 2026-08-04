@@ -105,6 +105,7 @@ test("granary spawns one bread distributor on the interval while respecting max 
     amount: BALANCE.DISTRIBUTOR_CAPACITY,
   });
   assert.equal(first.buildings[0]?.inventory.bread, 8);
+  assert.equal(first.buildings[0]?.reserved.bread, 12);
   assert.equal(capped.walkers.length, 2);
   assert.equal(capped.buildings[0]?.inventory.bread, 8);
 });
@@ -193,6 +194,47 @@ test("a roaming distributor gives reverse a low deterministic weight instead of 
   assert.deepEqual((result.walkers[0] as DistributorWalker).path, [
     { tx: 1, ty: 0 },
     { tx: 0, ty: 0 },
+  ]);
+});
+
+test("a distributor continues forward on an ordinary road without a random junction choice", () => {
+  const walker = arrived({
+    id: "distributor:granary-a:120",
+    kind: "distributor",
+    homeBuildingId: "granary-a",
+    position: { tx: 1, ty: 0 },
+    path: [{ tx: 0, ty: 0 }, { tx: 1, ty: 0 }],
+    pathIndex: 1,
+    previousTile: { tx: 0, ty: 0 },
+    cargo: { resource: "bread", amount: 12 },
+    spawnedTick: 120,
+    phase: "roaming",
+    junctionVisits: 0,
+    tilesTravelled: 1,
+    priorTile: { tx: 0, ty: 0 },
+  });
+  let randomChoices = 0;
+
+  const result = stepDistributors({
+    tick: 122,
+    buildings: [building("granary-a")],
+    walkers: [walker],
+    houses: [],
+    routes: routes({
+      neighbors: {
+        "1,0": [{ tx: 0, ty: 0 }, { tx: 2, ty: 0 }],
+      },
+    }),
+    rngForJunction: () => {
+      randomChoices += 1;
+      return fixedRng(0);
+    },
+  });
+
+  assert.equal(randomChoices, 0);
+  assert.deepEqual((result.walkers[0] as DistributorWalker).path, [
+    { tx: 1, ty: 0 },
+    { tx: 2, ty: 0 },
   ]);
 });
 

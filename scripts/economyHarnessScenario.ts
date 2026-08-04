@@ -1,5 +1,9 @@
 import type { Walker } from "../src/agents/walker.types";
-import type { Building, BuildingKind } from "../src/content/buildingConfig";
+import {
+  BUILDING_CONFIG_BY_KIND,
+  type Building,
+  type BuildingKind,
+} from "../src/content/buildingConfig";
 import { BALANCE } from "../src/content/balanceConfig";
 import type { ResourceType } from "../src/content/resourceConfig";
 import type { GameState } from "../src/engine/engine.types";
@@ -44,50 +48,60 @@ function house(buildingId: string): House {
 
 function roadKeys(): ReadonlySet<string> {
   const roads = new Set<string>();
-  for (let tx = 2; tx <= 11; tx += 1) roads.add(`${tx},2`);
-  for (let ty = 3; ty <= 7; ty += 1) roads.add(`8,${ty}`);
-  for (let ty = 3; ty <= 5; ty += 1) roads.add(`4,${ty}`);
-  roads.add("8,1");
-  roads.add("9,6");
-  roads.add("10,6");
+  for (let tx = 1; tx <= 12; tx += 1) roads.add(`${tx},2`);
   return roads;
 }
 
 function buildings(): readonly Building[] {
   return [
-    building({ id: "house-0", kind: "house", tx: 7, ty: 1 }),
+    building({ id: "house-0", kind: "house", tx: 8, ty: 1 }),
     building({ id: "house-1", kind: "house", tx: 9, ty: 1 }),
-    building({ id: "house-2", kind: "house", tx: 8, ty: 0 }),
-    building({ id: "well-0", kind: "well", tx: 9, ty: 2 }),
-    building({ id: "logging_camp-0", kind: "logging_camp", tx: 2, ty: 1 }),
-    building({ id: "sawmill-0", kind: "sawmill", tx: 4, ty: 2 }),
+    building({ id: "house-2", kind: "house", tx: 8, ty: 3 }),
+    building({ id: "well-0", kind: "well", tx: 11, ty: 0 }),
+    building({ id: "logging_camp-0", kind: "logging_camp", tx: 1, ty: 1 }),
+    building({ id: "sawmill-0", kind: "sawmill", tx: 3, ty: 1 }),
     building({
       id: "storehouse-0",
       kind: "storehouse",
-      tx: 6,
-      ty: 2,
-      inventory: { timber: BALANCE.STARTING_TIMBER },
+      tx: 5,
+      ty: 0,
     }),
-    building({ id: "wheat_farm-0", kind: "wheat_farm", tx: 4, ty: 5 }),
-    building({ id: "wheat_farm-1", kind: "wheat_farm", tx: 6, ty: 5 }),
-    building({ id: "mill-0", kind: "mill", tx: 8, ty: 5 }),
+    building({ id: "wheat_farm-0", kind: "wheat_farm", tx: 3, ty: 3 }),
+    building({ id: "wheat_farm-1", kind: "wheat_farm", tx: 5, ty: 3 }),
+    building({ id: "mill-0", kind: "mill", tx: 7, ty: 3 }),
     building({
       id: "granary-0",
       kind: "granary",
-      tx: 8,
-      ty: 2,
+      tx: 9,
+      ty: 3,
+      inventory: { bread: 36 },
+    }),
+    building({
+      id: "granary-1",
+      kind: "granary",
+      tx: 11,
+      ty: 3,
       inventory: { bread: 36 },
     }),
   ];
 }
 
 function terrainAt(tx: number, ty: number): Tile["terrain"] {
-  if (tx === 1 && (ty === 1 || ty === 2 || ty === 3)) return "forest";
+  if (tx === 0 && (ty === 1 || ty === 2 || ty === 3)) return "forest";
   return "grass";
 }
 
 function ownerAt(buildingList: readonly Building[], tx: number, ty: number): string | null {
-  return buildingList.find((candidate) => candidate.tx === tx && candidate.ty === ty)?.id ?? null;
+  const owner = buildingList.find((candidate) => {
+    const definition = BUILDING_CONFIG_BY_KIND[candidate.kind];
+    return (
+      tx >= candidate.tx &&
+      tx < candidate.tx + definition.width &&
+      ty >= candidate.ty &&
+      ty < candidate.ty + definition.height
+    );
+  });
+  return owner?.id ?? null;
 }
 
 function tiles(buildingList: readonly Building[]): readonly Tile[] {
@@ -124,7 +138,7 @@ export function createEconomyHarnessScenario(
     walkers: [...walkers],
     population: houses.reduce((total, candidate) => total + candidate.residents, 0),
     idleWorkers: 0,
-    treasuryTimber: 0,
+    treasuryTimber: BALANCE.STARTING_TIMBER,
     roadRevision: 1,
     pathCache: {},
   };

@@ -1,6 +1,6 @@
 # Feudal Lord Simulator
 
-Feudal Lord Simulator is a medieval isometric city-building prototype. The current slice is Phase 2, "The Living Manuscript": a full-viewport Canvas 2D map with a court-console UI, manuscript-inspired palette, procedural terrain, camera controls, tile picking, and build placement for roads and buildings.
+Feudal Lord Simulator is a medieval isometric city-building prototype. The current slice is Phase 3, "The Economy Turns": a full-viewport Canvas 2D map with a court-console UI, manuscript-inspired palette, procedural terrain, camera controls, tile picking, build placement, and the active economy loop.
 
 ## Current capabilities
 
@@ -14,6 +14,17 @@ Feudal Lord Simulator is a medieval isometric city-building prototype. The curre
   - build seals for placement tools
   - court ledger
   - speed seals for tick control
+- Active economy loop with exactly two chains:
+  - wheat farm -> mill -> granary
+  - logging camp -> sawmill -> storehouse
+- Separate delivery carters and roaming distributors
+- Population, housing, and labour simulation with visible overlays
+- One authored level-2 opening household with 10 residents, yielding the five
+  workers required to start the logging-camp -> sawmill chain without changing
+  the locked building table or labour constants
+- A measured 205-timber opening grant: 185 timber buys one complete timber
+  chain, well, and food chain; the remaining 20 buys the second wheat farm
+  required for a stable default-map bootstrap
 - Generated UI art that is palette-quantised and reused across the console
 - Three-pass rendering structure for ground, objects, and overhangs
 
@@ -30,6 +41,23 @@ Feudal Lord Simulator is a medieval isometric city-building prototype. The curre
 - Place roads: select the road seal, then drag to draw a continuous line
 - Inspect build options: hover a seal to see its name and timber cost
 - Control time: use the speed seals in the ledger recess
+- Toggle overlays: `Digit1` for water, `Digit2` for labour
+
+## Economy harness
+
+```bash
+npm run harness
+```
+
+Current report:
+
+| Metric | Value | Status |
+| --- | --- | --- |
+| Determinism hash | `4d92c66f9408a603 == 4d92c66f9408a603` | PASS |
+| Food stability | `9.5% starving` | PASS |
+| Cargo thrashing | `0 cancellations/1200` | PASS |
+| Labour deadlock | `0 consecutive ticks` | PASS |
+| Housing oscillation | `1 changes/2000` | PASS |
 
 ## Run
 
@@ -37,6 +65,12 @@ Feudal Lord Simulator is a medieval isometric city-building prototype. The curre
 npm install
 npm run dev
 ```
+
+For the tested default-map opening, draw a road from `(1,2)` through `(13,2)`
+plus the starter-house spur `(0,1)` to `(0,2)`. Build the well, logging camp,
+sawmill, storehouse, wheat farm, mill, granary, and second wheat farm before
+adding houses. This spends the full 205-timber grant and keeps both economy
+chains staffed while bread distribution starts.
 
 On the DGX host, run:
 
@@ -57,12 +91,9 @@ npm run build
 
 ## Scope exclusions
 
-This slice is intentionally limited to presentation and placement.
+This slice is intentionally limited to the economy loop, population, walkers, and presentation.
 
-- No economy or production chains
-- No population or housing progression
-- No walkers or service simulation loop
-- No seasons, walls, or overlays yet
+- No politics, military, seasons, or walls yet
 - No scrollable card-based UI; the console is integrated into the art
 
 ## Docs

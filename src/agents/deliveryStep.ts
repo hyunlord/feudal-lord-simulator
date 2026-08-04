@@ -1,10 +1,13 @@
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import {
+  currentRoadTile,
   hasArrivedAtPathEnd,
+  lastReachedRoadTile,
   stepWalkerAlongPath,
 } from "./movement";
 import {
+  amountOf,
   deposit,
   findBuilding,
   releaseClaims,
@@ -18,6 +21,7 @@ import type {
   DeliveryStepResult,
 } from "./deliveryTypes";
 import type {
+  CarterCapacityClaim,
   CarterCancellationReason,
   CarterWalker,
   TilePos,
@@ -28,6 +32,80 @@ import type {
 interface CarterResult {
   readonly buildings: readonly Building[];
   readonly walker: CarterWalker | null;
+}
+
+interface ReturnCapacityResult {
+  readonly buildings: readonly Building[];
+  readonly carter: CarterWalker;
+}
+
+function returnCapacityClaim(
+  carter: CarterWalker,
+  home: Building,
+): CarterCapacityClaim | null {
+  const explicit = carter.reservation.homeCapacityClaim;
+  if (
+    explicit !== null &&
+    explicit.buildingId === home.id &&
+    (carter.cargo === null || explicit.resource === carter.cargo.resource)
+  ) {
+    return explicit;
+  }
+  if (
+    carter.mission === "fetch" &&
+    carter.reservation.destinationBuildingId === home.id &&
+    (carter.cargo === null ||
+      carter.reservation.resource === carter.cargo.resource)
+  ) {
+    return {
+      buildingId: home.id,
+      resource: carter.reservation.resource,
+      amount: carter.reservation.amount,
+    };
+  }
+  return null;
+}
+
+function heldReturnCapacity(home: Building, carter: CarterWalker): number {
+  const claim = returnCapacityClaim(carter, home);
+  return claim === null
+    ? 0
+    : Math.min(claim.amount, amountOf(home.reserved, claim.resource));
+}
+
+function reserveReturnCapacity(
+  buildings: readonly Building[],
+  carter: CarterWalker,
+  inventory: DeliveryInventoryPort,
+): ReturnCapacityResult {
+  if (carter.cargo === null) return { buildings, carter };
+  const home = findBuilding(buildings, carter.homeBuildingId);
+  if (home === null) return { buildings, carter };
+  const heldCapacity = heldReturnCapacity(home, carter);
+  if (heldCapacity >= carter.cargo.amount) return { buildings, carter };
+  const before = amountOf(home.reserved, carter.cargo.resource);
+  const reservedHome = inventory.reserveSpace(
+    home,
+    carter.cargo.resource,
+    carter.cargo.amount - heldCapacity,
+  );
+  const reservedAmount = heldCapacity +
+    amountOf(reservedHome.reserved, carter.cargo.resource) - before;
+  if (reservedAmount === 0) return { buildings, carter };
+  return {
+    buildings: replaceBuilding(buildings, reservedHome),
+    carter: {
+      ...carter,
+      reservation: {
+        ...carter.reservation,
+        homeCapacityClaim: {
+          buildingId: home.id,
+          resource: carter.cargo.resource,
+          amount: reservedAmount,
+        },
+      },
+    },
+  };
 }
 
 function returningWalker(
@@ -56,14 +134,23 @@ function completeReturn(
   const stocked = carter.cargo === null
     ? home
     : deposit(home, carter.cargo.resource, carter.cargo.amount);
-  const released = carter.mission === "fetch"
-    ? inventory.releaseSpace(
-        stocked,
-        carter.reservation.resource,
-        carter.reservation.amount,
-      )
-    : stocked;
+  const claim = returnCapacityClaim(carter, home);
+  const released = claim === null
+    ? stocked
+    : inventory.releaseSpace(stocked, claim.resource, claim.amount);
   return replaceBuilding(buildings, released);
+}
+
+function canCompleteReturn(
+  buildings: readonly Building[],
+  carter: CarterWalker,
+  inventory: DeliveryInventoryPort,
+): boolean {
+  if (carter.cargo === null) return true;
+  const home = findBuilding(buildings, carter.homeBuildingId);
+  if (home === null) return false;
+  const claimedSpace = heldReturnCapacity(home, carter);
+  return inventory.availableSpace(home) + claimedSpace >= carter.cargo.amount;
 }
 
 function beginReturn(
@@ -106,7 +193,25 @@ function cancelCarter(
       releasedReservation: true,
     },
   };
-  return beginReturn(released, cancelled, carter.cargo, inventory, routes);
+  const recovery = carter.cancellation === null
+    ? reserveReturnCapacity(released, cancelled, inventory)
+    : { buildings: released, carter: cancelled };
+  const recoveryCarter = recovery.carter;
+  const path = returnPath(recovery.buildings, recoveryCarter, routes);
+  if (path !== null) {
+    return {
+      buildings: recovery.buildings,
+      walker: returningWalker(recoveryCarter, path, carter.cargo),
+    };
+  }
+  const current =
+    lastReachedRoadTile(recoveryCarter) ??
+    currentRoadTile(recoveryCarter) ??
+    recoveryCarter.position;
+  return {
+    buildings: recovery.buildings,
+    walker: returningWalker(recoveryCarter, [current], carter.cargo),
+  };
 }
 
 function completeDelivery(
@@ -138,7 +243,22 @@ function completeDelivery(
     carter.reservation.amount,
   );
   const nextBuildings = replaceBuilding(buildings, released);
-  return beginReturn(nextBuildings, carter, null, inventory, routes);
+  const home = findBuilding(nextBuildings, carter.homeBuildingId);
+  const claim = home === null ? null : returnCapacityClaim(carter, home);
+  const releasedHome = home === null || claim === null
+    ? nextBuildings
+    : replaceBuilding(
+        nextBuildings,
+        inventory.releaseSpace(home, claim.resource, claim.amount),
+      );
+  const deliveredCarter: CarterWalker = {
+    ...carter,
+    reservation: {
+      ...carter.reservation,
+      homeCapacityClaim: null,
+    },
+  };
+  return beginReturn(releasedHome, deliveredCarter, null, inventory, routes);
 }
 
 function completeFetch(
@@ -210,12 +330,18 @@ function completeOutbound(
 }
 
 function routeIsIntact(
+  buildings: readonly Building[],
   carter: CarterWalker,
   routes: DeliveryRoutePort,
 ): boolean {
-  return carter.path
+  const remainingPathIsRoad = carter.path
     .slice(Math.max(0, carter.pathIndex))
     .every((tile) => routes.isRoad(tile));
+  if (!remainingPathIsRoad || carter.phase !== "outbound") {
+    return remainingPathIsRoad;
+  }
+
+  return returnPath(buildings, carter, routes) !== null;
 }
 
 export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
@@ -227,7 +353,19 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
       walkers.push(walker);
       continue;
     }
-    if (!routeIsIntact(walker, input.routes)) {
+    if (
+      walker.phase === "returning" &&
+      walker.cancellation !== null &&
+      hasArrivedAtPathEnd(walker)
+    ) {
+      if (!canCompleteReturn(buildings, walker, input.inventory)) {
+        walkers.push(walker);
+        continue;
+      }
+      buildings = completeReturn(buildings, walker, input.inventory);
+      continue;
+    }
+    if (!routeIsIntact(buildings, walker, input.routes)) {
       const cancelled = cancelCarter(
         input.tick,
         buildings,
@@ -247,6 +385,10 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
       continue;
     }
     if (moved.phase === "returning") {
+      if (!canCompleteReturn(buildings, moved, input.inventory)) {
+        walkers.push(moved);
+        continue;
+      }
       buildings = completeReturn(buildings, moved, input.inventory);
       continue;
     }

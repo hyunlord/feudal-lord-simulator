@@ -131,6 +131,7 @@ function returningCarter(homeBuildingId: string): CarterWalker {
       resource: "logs",
       amount: 0,
       sourceStockClaim: null,
+      homeCapacityClaim: null,
     },
     cancellation: null,
   };

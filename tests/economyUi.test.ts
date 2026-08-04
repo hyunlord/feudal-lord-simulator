@@ -7,7 +7,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { App } from "../src/App";
 import { PALETTE } from "../src/content/palette";
 import type { Building } from "../src/economy/economy.types";
-import { drawOverlay } from "../src/render/overlays";
+import { drawOverlay, wellCoverageTiles } from "../src/render/overlays";
 import type { RenderFrameInput } from "../src/render/renderer";
 import { withAlpha } from "../src/render/style";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
@@ -107,7 +107,7 @@ test("water overlay draws well coverage and marks dry houses in vermilion", () =
     ...DEFAULT_GAME_STATE,
     buildings: [
       building({ id: "house:dry", kind: "house", tx: 0, ty: 0, workers: 0 }),
-      building({ id: "well:1", kind: "well", tx: 2, ty: 0, workers: 0 }),
+      building({ id: "well:1", kind: "well", tx: 8, ty: 8, workers: 0 }),
     ],
     houses: [{
       buildingId: "house:dry",
@@ -124,10 +124,29 @@ test("water overlay draws well coverage and marks dry houses in vermilion", () =
   drawOverlay({ context, state, mode: "water", zoom: 1 });
 
   // Then
-  assert.ok(calls.some((call) => call.startsWith("ellipse:")), "well radius is visible");
+  assert.ok(
+    calls.some((call) => call.includes(withAlpha(PALETTE.water, 0.16))),
+    "well radius is visible",
+  );
   assert.ok(
     calls.some((call) => call.includes(withAlpha(PALETTE.vermilion, 0.42))),
     "dry house uses vermilion",
+  );
+});
+
+test("water coverage uses the same bounded Manhattan radius as well service", () => {
+  const well = building({ id: "well:1", kind: "well", tx: 8, ty: 8, workers: 0 });
+
+  const coverage = wellCoverageTiles(
+    { ...DEFAULT_GAME_STATE, width: 20, height: 20 },
+    well,
+  );
+
+  assert.equal(coverage.length, 85);
+  assert.ok(coverage.some(({ tx, ty }) => tx === 14 && ty === 8));
+  assert.ok(!coverage.some(({ tx, ty }) => tx === 15 && ty === 8));
+  assert.ok(
+    coverage.every(({ tx, ty }) => Math.abs(tx - 8) + Math.abs(ty - 8) <= 6),
   );
 });
 

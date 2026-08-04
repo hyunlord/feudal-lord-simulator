@@ -1,3 +1,4 @@
+import { BALANCE } from "../content/balanceConfig";
 import type { GameSpeed } from "../engine/engine.types";
 
 const SPEED_SEALS: readonly {
@@ -12,7 +13,7 @@ const SPEED_SEALS: readonly {
 ];
 
 export function speedToIntervalMs(speed: GameSpeed): number | null {
-  return speed === 0 ? null : 1_000 / speed;
+  return speed === 0 ? null : 1_000 / (BALANCE.TICKS_PER_SECOND * speed);
 }
 
 type SpeedSealsProps = {

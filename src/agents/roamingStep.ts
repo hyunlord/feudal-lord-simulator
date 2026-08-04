@@ -6,7 +6,10 @@ import {
   hasArrivedAtPathEnd,
   stepWalkerAlongPath,
 } from "./movement";
-import { restoreBread } from "./roamingCommon";
+import {
+  releaseBreadCapacity,
+  restoreBread,
+} from "./roamingCommon";
 import type {
   RoamingHouse,
   RoamingJunctionInput,
@@ -76,6 +79,12 @@ function chooseNextTile(
   const alternatives = priorTile === null || neighbors.length === 1
     ? neighbors
     : neighbors.filter((neighbor) => !sameTile(neighbor, priorTile));
+  if (neighbors.length === 1) {
+    return { tile: neighbors[0] ?? null, junction: false };
+  }
+  if (priorTile !== null && neighbors.length === 2 && alternatives.length > 0) {
+    return { tile: alternatives[0] ?? null, junction: false };
+  }
   const weighted = priorTile === null || alternatives.length === neighbors.length
     ? alternatives
     : [priorTile, ...alternatives, ...alternatives];
@@ -129,12 +138,29 @@ function stepDistributor(
   const moved = stepWalkerAlongPath(walker, BALANCE.DISTRIBUTOR_SPEED);
   if (!hasArrivedAtPathEnd(moved)) return { buildings, houses, walker: moved };
   if (moved.phase === "returning") {
-    return { buildings: restoreBread(buildings, moved), houses, walker: null };
+    const restored = restoreBread(buildings, moved);
+    return {
+      buildings: restored.buildings,
+      houses,
+      walker: restored.remaining === 0
+        ? null
+        : {
+            ...moved,
+            cargo: { resource: "bread", amount: restored.remaining },
+          },
+    };
   }
   const current = currentRoadTile(moved) ?? moved.position;
+  const cargoBeforeService = moved.cargo?.amount ?? 0;
   const serviced = serviceHouses({ tick, houses, walker: moved, tile: current });
-  return {
+  const cargoAfterService = serviced.walker.cargo?.amount ?? 0;
+  const buildingsAfterService = releaseBreadCapacity(
     buildings,
+    moved.homeBuildingId,
+    cargoBeforeService - cargoAfterService,
+  );
+  return {
+    buildings: buildingsAfterService,
     houses: serviced.houses,
     walker: continueRoaming(tick, serviced.walker, routes, rngForJunction),
   };

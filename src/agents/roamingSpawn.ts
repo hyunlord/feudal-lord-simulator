@@ -1,7 +1,12 @@
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import type { DistributorWalker, TilePos, Walker } from "./walker.types";
-import { breadStock, replaceBuilding, withBread } from "./roamingCommon";
+import {
+  breadStock,
+  replaceBuilding,
+  reserveBreadCapacity,
+  withBread,
+} from "./roamingCommon";
 import type { RoamingSpawnInput, RoamingSpawnResult } from "./roamingTypes";
 
 function activeDistributors(
@@ -51,7 +56,10 @@ export function spawnDistributors(input: RoamingSpawnInput): RoamingSpawnResult 
     if (path === null) continue;
     const amount = Math.min(BALANCE.DISTRIBUTOR_CAPACITY, breadStock(granary));
     if (amount === 0) continue;
-    const loaded = withBread(granary, breadStock(granary) - amount);
+    const loaded = reserveBreadCapacity(
+      withBread(granary, breadStock(granary) - amount),
+      amount,
+    );
     buildings = replaceBuilding(buildings, loaded);
     walkers.push(spawnDistributor(input.tick, loaded, path, amount));
   }

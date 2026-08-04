@@ -177,6 +177,25 @@ test("population grows every 50 ticks with water and leaves when bread is absent
   assert.equal(starving.residents, 4);
 });
 
+test("stale household bread does not suppress recency-based starvation", () => {
+  const stale = updateHouse(
+    house("home", {
+      level: 1,
+      residents: 5,
+      hasWater: true,
+      breadStock: 2,
+      lastServicedTick: 0,
+    }),
+    {
+      tick: BALANCE.STARVATION_WINDOW + BALANCE.GROWTH_INTERVAL,
+      hasGranaryNearby: false,
+    },
+  );
+
+  assert.equal(stale.breadStock, 2);
+  assert.equal(stale.residents, 4);
+});
+
 test("level three granary proximity includes the full 2x2 footprint", () => {
   const buildings = [
     building("home", "house", 2, 2),

@@ -31,8 +31,8 @@ const STARTING_HOUSE_BUILDING: Building = {
 
 const STARTING_HOUSE: House = {
   buildingId: STARTING_HOUSE_ID,
-  level: 0,
-  residents: 4,
+  level: 2,
+  residents: 10,
   hasWater: false,
   breadStock: 0,
   lastServicedTick: 0,

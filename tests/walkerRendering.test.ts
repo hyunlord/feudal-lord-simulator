@@ -77,6 +77,7 @@ function carter(input: Partial<Walker> = {}): Walker {
       resource: "logs",
       amount: 4,
       sourceStockClaim: null,
+      homeCapacityClaim: null,
     },
     cancellation: null,
     ...input,

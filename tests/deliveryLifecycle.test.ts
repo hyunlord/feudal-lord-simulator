@@ -35,7 +35,17 @@ test("delivery arrival deposits cargo, releases capacity, returns home, then des
     inventory: DELIVERY_INVENTORY,
     routes,
   });
-  const outboundArrival = arrived(spawned.walkers[0] as CarterWalker);
+  const outboundCarter = spawned.walkers[0] as CarterWalker;
+  assert.equal(
+    spawned.buildings.find(({ id }) => id === producer.id)?.reserved.logs,
+    8,
+  );
+  assert.deepEqual(outboundCarter.reservation.homeCapacityClaim, {
+    buildingId: producer.id,
+    resource: "logs",
+    amount: 8,
+  });
+  const outboundArrival = arrived(outboundCarter);
   const delivered = stepCarters({
     tick: 30,
     buildings: spawned.buildings,
@@ -55,6 +65,11 @@ test("delivery arrival deposits cargo, releases capacity, returns home, then des
   );
   assert.equal(returningCarter.phase, "returning");
   assert.equal(returningCarter.cargo, null);
+  assert.equal(returningCarter.reservation.homeCapacityClaim, null);
+  assert.equal(
+    delivered.buildings.find(({ id }) => id === producer.id)?.reserved.logs ?? 0,
+    0,
+  );
 
   const finished = stepCarters({
     tick: 31,
@@ -167,6 +182,10 @@ test("a broken outbound route releases every claim exactly once and returns carg
   assert.equal(
     finished.buildings.find(({ id }) => id === producer.id)?.inventory.logs,
     8,
+  );
+  assert.equal(
+    finished.buildings.find(({ id }) => id === producer.id)?.reserved.logs ?? 0,
+    0,
   );
   assert.equal(
     finished.buildings.find(({ id }) => id === store.id)?.reserved.logs ?? 0,

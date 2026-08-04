@@ -7,7 +7,7 @@ import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
-test("Phase 3 balance constants match the economy-turns foundation spec", () => {
+test("Phase 3 balance constants retain the foundation values plus the measured opening grant", () => {
   // Given / When / Then
   assert.deepEqual(BALANCE, {
     TICKS_PER_SECOND: 20,
@@ -22,7 +22,7 @@ test("Phase 3 balance constants match the economy-turns foundation spec", () => 
     GROWTH_INTERVAL: 50,
     STARVATION_WINDOW: 300,
     WORKERS_PER_RESIDENT: 0.5,
-    STARTING_TIMBER: 160,
+    STARTING_TIMBER: 205,
   });
 });
 
@@ -88,7 +88,7 @@ test("Phase 3 housing table matches the exact level requirements", () => {
   ]);
 });
 
-test("DEFAULT_GAME_STATE seeds one occupied level zero house and path cache fields", () => {
+test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fields", () => {
   // Given / When
   const state = DEFAULT_GAME_STATE;
   const startingHouse = state.buildings.find((building) => building.kind === "house");
@@ -112,8 +112,8 @@ test("DEFAULT_GAME_STATE seeds one occupied level zero house and path cache fiel
   assert.deepEqual(state.houses, [
     {
       buildingId: "house-0-0-0",
-      level: 0,
-      residents: 4,
+      level: 2,
+      residents: 10,
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,

@@ -38,6 +38,15 @@ test("a producer chooses the nearest valid store, reserves space, and loads at m
     4,
   );
   assert.equal(
+    result.buildings.find(({ id }) => id === producer.id)?.reserved.logs,
+    8,
+  );
+  assert.deepEqual(carter.reservation.homeCapacityClaim, {
+    buildingId: producer.id,
+    resource: "logs",
+    amount: 8,
+  });
+  assert.equal(
     result.buildings.find(({ id }) => id === near.id)?.reserved.logs,
     8,
   );
@@ -148,6 +157,7 @@ test("a converter fetches missing input from the nearest store and claims both s
       resource: "wheat",
       amount: 8,
     },
+    homeCapacityClaim: null,
   });
   assert.equal(
     result.buildings.find(({ id }) => id === mill.id)?.reserved.wheat,

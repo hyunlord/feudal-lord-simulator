@@ -132,6 +132,7 @@ function spawnFetch(params: {
           resource: params.inputResource,
           amount: claim,
         },
+        homeCapacityClaim: null,
       },
     }),
   };
@@ -153,25 +154,36 @@ function spawnDelivery(params: {
     params.routes,
   );
   if (candidate === null) return { buildings: params.buildings, walker: null };
-  const reservedDestination = params.inventory.reserveSpace(
-    candidate.building,
-    params.outputResource,
-    candidate.amount,
-  );
   const loadedHome = withStock(
     params.building,
     params.outputResource,
     amountOf(params.building.inventory, params.outputResource) - candidate.amount,
   );
+  const reservedHome = params.inventory.reserveSpace(
+    loadedHome,
+    params.outputResource,
+    candidate.amount,
+  );
+  const homeClaim =
+    amountOf(reservedHome.reserved, params.outputResource) -
+    amountOf(loadedHome.reserved, params.outputResource);
+  if (homeClaim !== candidate.amount) {
+    return { buildings: params.buildings, walker: null };
+  }
+  const reservedDestination = params.inventory.reserveSpace(
+    candidate.building,
+    params.outputResource,
+    candidate.amount,
+  );
   const buildings = replaceBuilding(
-    replaceBuilding(params.buildings, loadedHome),
+    replaceBuilding(params.buildings, reservedHome),
     reservedDestination,
   );
   return {
     buildings,
     walker: spawnCarter({
       tick: params.tick,
-      home: loadedHome,
+      home: reservedHome,
       destination: reservedDestination,
       path: candidate.path,
       mission: "deliver",
@@ -181,6 +193,11 @@ function spawnDelivery(params: {
         resource: params.outputResource,
         amount: candidate.amount,
         sourceStockClaim: null,
+        homeCapacityClaim: {
+          buildingId: reservedHome.id,
+          resource: params.outputResource,
+          amount: homeClaim,
+        },
       },
     }),
   };

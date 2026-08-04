@@ -5,6 +5,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { App } from "../src/App";
+import { BALANCE } from "../src/content/balanceConfig";
 import { PALETTE } from "../src/content/palette";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { PALETTE_CSS_VARIABLES } from "../src/styles/paletteVariables";
@@ -29,11 +30,11 @@ test("palette CSS variables expose every canonical colour exactly once", () => {
   assert.equal(Object.keys(PALETTE_CSS_VARIABLES).every((key) => key.startsWith("--palette-")), true);
 });
 
-test("game speed maps to a paused state or an inverse tick interval", () => {
+test("game speed multiplies the locked simulation tick rate", () => {
   assert.equal(speedToIntervalMs(0), null);
-  assert.equal(speedToIntervalMs(1), 1_000);
-  assert.equal(speedToIntervalMs(3), 1_000 / 3);
-  assert.equal(speedToIntervalMs(5), 200);
+  assert.equal(speedToIntervalMs(1), 1_000 / BALANCE.TICKS_PER_SECOND);
+  assert.equal(speedToIntervalMs(3), 1_000 / (BALANCE.TICKS_PER_SECOND * 3));
+  assert.equal(speedToIntervalMs(5), 1_000 / (BALANCE.TICKS_PER_SECOND * 5));
 });
 
 test("minimap sampling is bounded deterministic and terrain-derived", () => {

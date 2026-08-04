@@ -31,8 +31,8 @@ export interface RunEconomyHarnessInput {
 }
 
 interface RunTrace {
-  readonly finalState: GameState;
   readonly hash: string;
+  readonly breadProduced: boolean;
   readonly foodRatios: readonly number[];
   readonly cancellationEvents: readonly CancellationEvent[];
   readonly maxLabourDeadlock: number;
@@ -46,8 +46,10 @@ interface CancellationEvent {
 
 const assumptions = [
   "Three houses start at 14 residents each, level 2, with one bread stock to avoid a cold-start hunger false failure.",
-  "The granary starts with 36 bread so distributors can run before the first harvested wheat becomes bread.",
+  "Two granaries start with 36 bread each so distributors can run before the first harvested wheat becomes bread.",
+  "The 205-timber opening grant remains treasury and does not occupy building storage.",
   "No fake workers are injected after initialization; labour is recomputed from population each tick.",
+  "Cargo thrashing counts non-manual cancellation states returned by advanceTick; no-road recovery remains observable for one tick before logical recovery.",
 ] as const;
 
 function amount(record: Partial<Record<ResourceType, number>>, resource: ResourceType): number {
@@ -88,18 +90,36 @@ function normalizeHouse(house: House) {
 }
 
 function normalizeWalker(walker: Walker) {
-  return {
+  const common = {
     id: walker.id,
     kind: walker.kind,
     homeBuildingId: walker.homeBuildingId,
     position: walker.position,
     path: walker.path,
     pathIndex: walker.pathIndex,
+    previousTile: walker.previousTile,
     cargo: walker.cargo,
+    spawnedTick: walker.spawnedTick,
   };
+  return walker.kind === "carter"
+    ? {
+        ...common,
+        mission: walker.mission,
+        phase: walker.phase,
+        destinationBuildingId: walker.destinationBuildingId,
+        reservation: walker.reservation,
+        cancellation: walker.cancellation,
+      }
+    : {
+        ...common,
+        phase: walker.phase,
+        junctionVisits: walker.junctionVisits,
+        tilesTravelled: walker.tilesTravelled,
+        priorTile: walker.priorTile,
+      };
 }
 
-function hashState(state: GameState): string {
+export function hashEconomyState(state: GameState): string {
   const normalized = {
     tick: state.tick,
     population: state.population,
@@ -170,6 +190,22 @@ function maxLevelChanges(changes: Readonly<Record<string, readonly number[]>>): 
   return Object.values(changes).reduce((max, ticks) => Math.max(max, maxChangesInWindow(ticks, 2000)), 0);
 }
 
+function breadProductionCompleted(previous: GameState, next: GameState): boolean {
+  for (const before of previous.buildings) {
+    const definition = BUILDING_CONFIG_BY_KIND[before.kind];
+    if (definition.production?.output !== "bread") continue;
+    const after = next.buildings.find((building) => building.id === before.id);
+    if (after === undefined) continue;
+    if (
+      before.productionProgress >= definition.production.ticksPerOutput - 1 &&
+      after.productionProgress === 0
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function trackRun(initial: GameState, ticks: number, warmupTicks: number): RunTrace {
   let state = initial;
   let breadProduced = false;
@@ -183,8 +219,9 @@ function trackRun(initial: GameState, ticks: number, warmupTicks: number): RunTr
   const levelChanges: Record<string, number[]> = {};
 
   for (let step = 0; step < ticks; step += 1) {
+    const previous = state;
     state = advanceTick(state);
-    breadProduced = breadProduced || totalBread(state) > initialBread;
+    breadProduced = breadProduced || breadProductionCompleted(previous, state) || totalBread(state) > initialBread;
     if (state.tick > warmupTicks && breadProduced) foodRatios.push(starvingRatio(state));
     deadlockStreak = state.idleWorkers > 0 && state.buildings.some(productionUnderstaffed) ? deadlockStreak + 1 : 0;
     maxLabourDeadlock = Math.max(maxLabourDeadlock, deadlockStreak);
@@ -205,8 +242,8 @@ function trackRun(initial: GameState, ticks: number, warmupTicks: number): RunTr
   }
 
   return {
-    finalState: state,
-    hash: hashState(state),
+    hash: hashEconomyState(state),
+    breadProduced,
     foodRatios,
     cancellationEvents: events,
     maxLabourDeadlock,
@@ -224,6 +261,7 @@ export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarness
   const second = trackRun(input.scenario, input.ticks, input.warmupTicks);
   const averageFood = first.foodRatios.reduce((total, ratio) => total + ratio, 0) / Math.max(1, first.foodRatios.length);
   const rollingFood = rollingMax(first.foodRatios, 1200) / 1200;
+  const foodStability = Math.max(averageFood, rollingFood);
   const cancellationMax = maxCancellations(first.cancellationEvents);
   const oscillationMax = maxLevelChanges(first.levelChanges);
   return {
@@ -232,7 +270,11 @@ export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarness
     runtimeMs: Math.round(performance.now() - started),
     metrics: [
       metric("Determinism hash", `${first.hash} == ${second.hash}`, first.hash === second.hash),
-      metric("Food stability", `${Math.round(Math.max(averageFood, rollingFood) * 1000) / 10}% starving`, averageFood <= 0.2 && rollingFood <= 0.2),
+      metric(
+        "Food stability",
+        first.breadProduced ? `${Math.round(foodStability * 1000) / 10}% starving` : "no bread produced",
+        first.breadProduced && averageFood <= 0.2 && rollingFood <= 0.2,
+      ),
       metric("Cargo thrashing", `${cancellationMax} cancellations/1200`, cancellationMax < 5),
       metric("Labour deadlock", `${first.maxLabourDeadlock} consecutive ticks`, first.maxLabourDeadlock < 600),
       metric("Housing oscillation", `${oscillationMax} changes/2000`, oscillationMax < 4),

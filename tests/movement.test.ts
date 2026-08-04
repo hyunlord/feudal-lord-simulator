@@ -32,6 +32,7 @@ const carter: CarterWalker = {
     resource: "wheat",
     amount: 8,
     sourceStockClaim: null,
+    homeCapacityClaim: null,
   },
   cancellation: null,
 };

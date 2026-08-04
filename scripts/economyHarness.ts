@@ -7,6 +7,7 @@ import { createEconomyHarnessScenario } from "./economyHarnessScenario";
 export { createEconomyHarnessScenario } from "./economyHarnessScenario";
 export {
   formatEconomyHarnessReport,
+  hashEconomyState,
   runEconomyHarness,
 } from "./economyHarnessMetrics";
 export type {

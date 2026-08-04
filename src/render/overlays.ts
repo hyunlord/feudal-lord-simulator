@@ -5,7 +5,7 @@ import type { PlacementFailure } from "../world/placement";
 import type { TileCoordinate } from "../world/grid";
 import type { PlacementTool } from "./renderer";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
-import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./style";
+import { applyInkOutline, snapToPixel, withAlpha } from "./style";
 
 export type EconomyOverlayRenderInput = {
   readonly context: CanvasRenderingContext2D;
@@ -107,22 +107,11 @@ function traceDiamond(context: CanvasRenderingContext2D, coordinate: TileCoordin
 function drawWaterOverlay(input: EconomyOverlayRenderInput): void {
   input.context.save();
   for (const well of input.state.buildings.filter((building) => building.kind === "well")) {
-    const center = buildingCenter(well);
-    const radius = BUILDING_CONFIG_BY_KIND.well.serviceRadius;
     input.context.fillStyle = withAlpha(PALETTE.water, 0.16);
-    applyPaletteStroke(input.context, PALETTE.water, input.zoom);
-    input.context.beginPath();
-    input.context.ellipse(
-      snapToPixel(center.sx),
-      snapToPixel(center.sy),
-      radius * TILE_W,
-      radius * TILE_H,
-      0,
-      0,
-      Math.PI * 2,
-    );
-    input.context.fill();
-    input.context.stroke();
+    for (const coordinate of wellCoverageTiles(input.state, well)) {
+      traceDiamond(input.context, coordinate);
+      input.context.fill();
+    }
   }
   for (const house of input.state.houses) {
     if (house.hasWater) continue;
@@ -132,6 +121,22 @@ function drawWaterOverlay(input: EconomyOverlayRenderInput): void {
     }
   }
   input.context.restore();
+}
+
+export function wellCoverageTiles(
+  world: Pick<GameState, "width" | "height">,
+  well: Building,
+): readonly TileCoordinate[] {
+  const radius = BUILDING_CONFIG_BY_KIND.well.serviceRadius;
+  const coordinates: TileCoordinate[] = [];
+  for (let ty = well.ty - radius; ty <= well.ty + radius; ty += 1) {
+    for (let tx = well.tx - radius; tx <= well.tx + radius; tx += 1) {
+      if (tx < 0 || ty < 0 || tx >= world.width || ty >= world.height) continue;
+      if (Math.abs(tx - well.tx) + Math.abs(ty - well.ty) > radius) continue;
+      coordinates.push({ tx, ty });
+    }
+  }
+  return coordinates;
 }
 
 function drawLabourOverlay(input: EconomyOverlayRenderInput): void {
@@ -156,12 +161,4 @@ function drawFootprint(input: FootprintOverlayInput): void {
       input.context.stroke();
     }
   }
-}
-
-function buildingCenter(building: Building): { readonly sx: number; readonly sy: number } {
-  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
-  return tileToScreen(
-    building.tx + (definition.width - 1) / 2,
-    building.ty + (definition.height - 1) / 2,
-  );
 }

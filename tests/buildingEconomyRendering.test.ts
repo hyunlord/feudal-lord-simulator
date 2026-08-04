@@ -160,12 +160,40 @@ test("sawmill working detail appears only when staffed with input and capacity",
   const fullProducer = building("full-camp", "logging_camp", {
     workers: 3,
     inventory: { logs: 20 },
+    productionProgress: 50,
+  });
+  const inputFullConverter = building("input-full-sawmill", "sawmill", {
+    workers: 2,
+    inventory: { logs: 20 },
+  });
+  const inboundReservedProducer = building("reserved-camp", "logging_camp", {
+    workers: 3,
+    inventory: { logs: 19 },
+    reserved: { logs: 1 },
+    productionProgress: 50,
+  });
+  const fullButAdvancing = building("advancing-camp", "logging_camp", {
+    workers: 3,
+    inventory: { logs: 20 },
+    productionProgress: 49,
   });
 
   // When / Then
   assert.equal(buildBuildingVisualState(working, []).production, "working");
   assert.equal(buildBuildingVisualState(missingInput, []).production, "no_input");
   assert.equal(buildBuildingVisualState(fullProducer, []).production, "storage_full");
+  assert.equal(
+    buildBuildingVisualState(inputFullConverter, []).production,
+    "working",
+  );
+  assert.equal(
+    buildBuildingVisualState(inboundReservedProducer, []).production,
+    "storage_full",
+  );
+  assert.equal(
+    buildBuildingVisualState(fullButAdvancing, []).production,
+    "working",
+  );
 });
 
 test("problem marker is vermilion and only appears for actual blocked production", () => {

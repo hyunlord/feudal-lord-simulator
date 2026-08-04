@@ -8,7 +8,7 @@ import type { Building } from "../src/content/buildingConfig";
 
 function building(
   id: string,
-  input: { readonly bread?: number } = {},
+  input: { readonly bread?: number; readonly reservedBread?: number } = {},
 ): Building {
   return {
     id,
@@ -17,7 +17,9 @@ function building(
     ty: 0,
     workers: 0,
     inventory: { bread: input.bread ?? 0 },
-    reserved: {},
+    reserved: input.reservedBread === undefined
+      ? {}
+      : { bread: input.reservedBread },
     stockReserved: {},
     productionProgress: 0,
   };
@@ -134,4 +136,68 @@ test("a returning distributor restores leftover bread to its home granary", () =
   assert.deepEqual(result.walkers, []);
   assert.equal(result.buildings[0]?.inventory.bread, 12);
   assert.equal(result.houses[0]?.breadStock, 0);
+});
+
+test("a returning distributor releases its home claim without exceeding granary capacity", () => {
+  const granary = building("granary-a", { bread: 188, reservedBread: 12 });
+  const returning = arrived({
+    id: "distributor:granary-a:120",
+    kind: "distributor",
+    homeBuildingId: granary.id,
+    position: { tx: 0, ty: 0 },
+    path: [{ tx: 0, ty: 0 }],
+    pathIndex: 0,
+    previousTile: null,
+    cargo: { resource: "bread", amount: 12 },
+    spawnedTick: 120,
+    phase: "returning",
+    junctionVisits: 0,
+    tilesTravelled: 40,
+    priorTile: null,
+  });
+
+  const result = stepDistributors({
+    tick: 501,
+    buildings: [granary],
+    walkers: [returning],
+    houses: [],
+    routes: routes({}),
+    rngForJunction: fixedRngForJunction,
+  });
+
+  assert.deepEqual(result.walkers, []);
+  assert.equal(result.buildings[0]?.inventory.bread, 200);
+  assert.equal(result.buildings[0]?.reserved.bread ?? 0, 0);
+});
+
+test("an unreserved distributor waits rather than overfilling a full granary", () => {
+  const granary = building("granary-a", { bread: 200 });
+  const returning = arrived({
+    id: "distributor:granary-a:120",
+    kind: "distributor",
+    homeBuildingId: granary.id,
+    position: { tx: 0, ty: 0 },
+    path: [{ tx: 0, ty: 0 }],
+    pathIndex: 0,
+    previousTile: null,
+    cargo: { resource: "bread", amount: 12 },
+    spawnedTick: 120,
+    phase: "returning",
+    junctionVisits: 0,
+    tilesTravelled: 40,
+    priorTile: null,
+  });
+
+  const result = stepDistributors({
+    tick: 502,
+    buildings: [granary],
+    walkers: [returning],
+    houses: [],
+    routes: routes({}),
+    rngForJunction: fixedRngForJunction,
+  });
+
+  assert.equal(result.walkers.length, 1);
+  assert.deepEqual(result.walkers[0]?.cargo, { resource: "bread", amount: 12 });
+  assert.equal(result.buildings[0]?.inventory.bread, 200);
 });
