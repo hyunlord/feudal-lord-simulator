@@ -34,7 +34,7 @@ the release path does not procedurally redraw either replacement asset.
 | Asset | Candidates | Selected | Before | Final | Dimensions | Alpha | Scan result |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `scroll_frame` | 19 seed `52017411`, 20 seed `52017412`, 21 seed `52017413` | 19 | `docs/asset-evidence/before/scroll_frame.png` | `public/assets/ui/scroll_frame.png` | 512x512 | present, preserved | expected release gate: all nonzero-alpha RGB values are canonical palette colours |
-| `wood_console` | 10 seed `52024421`, 11 seed `52024422`, 12 seed `52024423` | 12 | `docs/asset-evidence/before/wood_console.png` | `public/assets/ui/wood_console.png` | 1920x160 | all-opaque, preserved | expected release gate: all RGB values are canonical palette colours |
+| `wood_console` | 10 seed `52024421`, 11 seed `52024422`, 12 seed `52024423` | 10 | `docs/asset-evidence/before/wood_console.png` | `public/assets/ui/wood_console.png` | 1920x160 | all-opaque, preserved | expected release gate: every pixel is one of `ink`, `inkLight`, `earth`, or `earthDark` |
 | `seal_slot` | 1 seed `52031470`, 2 seed `52031471`, 3 seed `52031472` | 2 | `docs/asset-evidence/before/seal_slot.png` | `public/assets/ui/seal_slot.png` | 64x64 | present, preserved | all nonzero-alpha RGB values are canonical palette colours |
 | `parchment_texture` | 1 seed `52040441`, 2 seed `52040442`, 3 seed `52040443`, 4 seed `52041444`, 5 seed `52041445`, 6 seed `52041446` | 4 | `docs/asset-evidence/before/parchment_texture.png` | `public/assets/ui/parchment_texture.png` | 512x512 | all-opaque, preserved | all RGB values are canonical palette colours |
 | `illumination_corner` | 1 seed `52050451`, 2 seed `52050452`, 3 seed `52050453`, 4 seed `52051454`, 5 seed `52051455`, 6 seed `52051456` | 5 | `docs/asset-evidence/before/illumination_corner.png` | `public/assets/ui/illumination_corner.png` | 128x128 | present, preserved | all nonzero-alpha RGB values are canonical palette colours |
@@ -84,9 +84,10 @@ Unchanged Phase 2 refinement candidates:
   retained page/center artifacts; guided candidates 10-15 skewed red; candidates
   16-18 were pale and generic. Candidates 19-21 correct the colour handling and
   restore the guide's light/dark accent masks after pixelization.
-- `wood_console`: selected candidate 12 is the cleanest continuous band from the
-  guided 10-12 set. Its structural contract is exactly three large dark wells in
-  one row, separated by two plain timber posts, with no decorative fragments or
+- `wood_console`: selected candidate 10 is the quietest continuous band from the
+  guided 10-12 set after the console-specific oak quantisation removes gold-like
+  highlights. Its structural contract is exactly three large dark wells in one
+  row, separated by two plain timber posts, with no decorative fragments or
   extra recesses. Earlier text-only/refinement candidates 1-9 were too busy or
   did not preserve the exact well count.
 - `seal_slot`: the original shrine/page-like candidates were superseded and removed from the active top-level candidate set. Replacement candidate 2 is selected because it reads most like a smaller wax-rim UI recess with an empty center. Defects: candidate 1 is too large and platter-like, candidate 3 reads more like a radial dial, and the selected final still has concentric line detail rather than a perfectly quiet icon well.
@@ -101,9 +102,8 @@ From the repository root, with the ComfyUI environment available locally:
 python3 scripts/generateUiAssets.py --generate-guided --target scroll_frame --target wood_console
 python3 scripts/generateUiAssets.py --prepare-selected --target scroll_frame --target wood_console
 mkdir -p public/assets/ui
-for key in scroll_frame wood_console; do
-  npx tsx scripts/quantisePalette.ts docs/asset-evidence/before/$key.png public/assets/ui/$key.png
-done
+npx tsx scripts/quantisePalette.ts docs/asset-evidence/before/scroll_frame.png public/assets/ui/scroll_frame.png
+npx tsx scripts/quantisePalette.ts docs/asset-evidence/before/wood_console.png public/assets/ui/wood_console.png wood-console
 npx tsx scripts/verifyUiAssets.ts /path/to/active-release-candidates docs/asset-evidence/uiAssetManifest.json
 ```
 

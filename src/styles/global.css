@@ -74,9 +74,10 @@ button {
   overflow: visible;
   background-color: var(--palette-earth-dark);
   background-image: url("/assets/ui/wood_console.png");
+  background-blend-mode: soft-light;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100% 100%;
+  background-size: 103% 100%;
   isolation: isolate;
 }
 
@@ -90,28 +91,6 @@ button {
   height: 126px;
   overflow: visible;
   isolation: isolate;
-}
-
-.court-recess::before,
-.court-recess::after {
-  position: absolute;
-  pointer-events: none;
-  content: "";
-  clip-path: polygon(4% 8%, 92% 2%, 98% 90%, 7% 98%, 1% 18%);
-}
-
-.court-recess::before {
-  inset: 5px 2px 1px 5px;
-  z-index: -2;
-  background-color: var(--palette-ink);
-  opacity: 0.76;
-}
-
-.court-recess::after {
-  inset: 1px 6px 6px 1px;
-  z-index: -1;
-  background-color: var(--palette-earth-dark);
-  opacity: 0.8;
 }
 
 .map-shield-wrap {
@@ -151,15 +130,18 @@ button {
 }
 
 .build-seals {
-  --seal-size: 36px;
+  --seal-size: 30px;
   display: grid;
-  grid-template-columns: repeat(4, var(--seal-size));
+  grid-template-columns: repeat(3, var(--seal-size));
   grid-auto-rows: var(--seal-size);
-  gap: 4px 6px;
+  gap: 3px 5px;
   place-content: center;
-  width: 100%;
-  height: 100%;
+  width: max-content;
+  max-width: 100%;
+  height: auto;
+  padding: 4px 6px;
   overflow: visible;
+  background-color: var(--palette-ink);
 }
 
 .build-seal,
@@ -377,9 +359,9 @@ button {
 
 @media (max-width: 600px) {
   .court-console {
-    gap: 3px;
+    gap: clamp(2px, 0.5vw, 3px);
     height: 150px;
-    padding: 7px 5px;
+    padding: 7px clamp(4px, 0.8vw, 5px);
   }
 
   .court-recess {
@@ -396,33 +378,34 @@ button {
   }
 
   .build-seals {
-    --seal-size: clamp(23px, 5vw, 30px);
-    grid-template-columns: repeat(4, var(--seal-size));
+    --seal-size: clamp(24px, 5vw, 30px);
+    grid-template-columns: repeat(3, var(--seal-size));
     grid-auto-rows: var(--seal-size);
-    gap: 3px 2px;
+    gap: 2px;
+    padding: 3px 4px;
   }
 
   .ledger-recess {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    padding: 11px 7px;
+    gap: clamp(2px, 0.5vw, 3px);
+    padding: clamp(8px, 1.8vw, 11px) clamp(4px, 1.2vw, 7px);
   }
 
   .court-ledger {
     width: 100%;
-    height: 78px;
-    padding: 14px 9px 8px;
+    height: clamp(72px, 13vw, 78px);
+    padding: clamp(11px, 2.2vw, 14px) clamp(6px, 1.5vw, 9px) 7px;
   }
 
   .ledger-heading {
     margin-bottom: 3px;
-    font-size: 11px;
+    font-size: clamp(10px, 1.9vw, 11px);
   }
 
   .court-ledger dl {
     gap: 0 3px;
-    font-size: 10px;
+    font-size: clamp(9px, 1.7vw, 10px);
   }
 
   .ledger-tool {
@@ -430,14 +413,15 @@ button {
   }
 
   .speed-seals {
-    grid-template-columns: repeat(4, 21px);
-    grid-auto-rows: 21px;
+    grid-template-columns: repeat(4, clamp(18px, 3.5vw, 21px));
+    grid-auto-rows: clamp(18px, 3.5vw, 21px);
     gap: 1px;
+    justify-content: center;
   }
 
   .speed-seal {
-    width: 21px;
-    height: 21px;
+    width: clamp(18px, 3.5vw, 21px);
+    height: clamp(18px, 3.5vw, 21px);
     padding: 3px;
   }
 

@@ -27,7 +27,35 @@ class TargetFilterContractTest(unittest.TestCase):
         module = load_generator()
 
         self.assertEqual(module.SELECTED["scroll_frame"], 19)
-        self.assertEqual(module.SELECTED["wood_console"], 12)
+        self.assertEqual(module.SELECTED["wood_console"], 10)
+
+    def test_comfy_output_path_stays_inside_the_configured_png_root(self) -> None:
+        """Given a normal Comfy result, its resolved PNG remains under COMFY_OUTPUT."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            module.COMFY_OUTPUT = Path(raw_tmp) / "output"
+            expected = (module.COMFY_OUTPUT / "phase2_ui" / "candidate.png").resolve()
+
+            self.assertEqual(
+                module.contained_output_path("phase2_ui", "candidate.png"),
+                expected,
+            )
+
+    def test_comfy_output_path_rejects_escape_and_non_png_results(self) -> None:
+        """Given an untrusted API path, traversal, absolute paths, and non-PNG files fail closed."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            module.COMFY_OUTPUT = Path(raw_tmp) / "output"
+            for subfolder, filename in (
+                ("../../outside", "candidate.png"),
+                ("", "/tmp/outside.png"),
+                ("phase2_ui", "candidate.txt"),
+            ):
+                with self.subTest(subfolder=subfolder, filename=filename):
+                    with self.assertRaisesRegex(RuntimeError, "Comfy output path"):
+                        module.contained_output_path(subfolder, filename)
 
     def test_generate_queues_only_targeted_assets_when_filter_is_supplied(self) -> None:
         """Given an asset filter, when generating, then only those assets are queued."""

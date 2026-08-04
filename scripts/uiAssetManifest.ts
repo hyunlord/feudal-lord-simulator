@@ -46,6 +46,25 @@ const requireString = (record: Record<string, unknown>, key: string): string => 
   return value;
 };
 
+const requireReleasePngPath = (
+  record: Record<string, unknown>,
+  key: "beforePath" | "finalPath",
+  directory: string,
+): string => {
+  const value = requireString(record, key);
+  const normalised = path.posix.normalize(value);
+  const isPortableRelativePath =
+    !path.isAbsolute(value)
+    && !path.win32.isAbsolute(value)
+    && !value.includes("\\")
+    && normalised.startsWith(`${directory}/`)
+    && path.posix.extname(normalised).toLowerCase() === ".png";
+  if (!isPortableRelativePath) {
+    throw new Error(`manifest ${key} must stay under ${directory} as a repo-relative PNG`);
+  }
+  return normalised;
+};
+
 const requireNumber = (record: Record<string, unknown>, key: string): number => {
   const value = record[key];
   if (typeof value !== "number" || !Number.isInteger(value) || value <= 0) {
@@ -87,8 +106,8 @@ const parseAsset = (value: unknown): AssetContract => {
     width: requireNumber(value, "width"),
     height: requireNumber(value, "height"),
     alpha: parseAlpha(requireString(value, "alpha")),
-    beforePath: requireString(value, "beforePath"),
-    finalPath: requireString(value, "finalPath"),
+    beforePath: requireReleasePngPath(value, "beforePath", "docs/asset-evidence/before"),
+    finalPath: requireReleasePngPath(value, "finalPath", "public/assets/ui"),
     selectedIndex: requireNumber(value, "selectedIndex"),
     candidates: candidatesValue.map(parseCandidate),
   };

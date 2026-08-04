@@ -6,6 +6,7 @@ import {
   assertManifestContract,
   assertReportAlignment,
   assertScrollFrameTransparency,
+  parseManifest,
   type AssetManifest,
 } from "../scripts/uiAssetManifest";
 
@@ -92,6 +93,30 @@ describe("verifyUiAssets", () => {
     assert.throws(
       () => assertManifestContract(absoluteManifest, sealAsset.key, []),
       /candidate path must be relative/,
+    );
+  });
+
+  it("rejects before and final PNG paths outside their release directories", () => {
+    const sealAsset = manifest.assets[0];
+    assert.ok(sealAsset);
+
+    assert.throws(
+      () => parseManifest({
+        assets: [{ ...sealAsset, beforePath: "../private/secret.png" }],
+      }),
+      /beforePath must stay under docs\/asset-evidence\/before/,
+    );
+    assert.throws(
+      () => parseManifest({
+        assets: [{ ...sealAsset, finalPath: "C:\\private\\secret.png" }],
+      }),
+      /finalPath must stay under public\/assets\/ui/,
+    );
+    assert.throws(
+      () => parseManifest({
+        assets: [{ ...sealAsset, finalPath: "public/assets/ui/not-an-image.txt" }],
+      }),
+      /finalPath must stay under public\/assets\/ui/,
     );
   });
 

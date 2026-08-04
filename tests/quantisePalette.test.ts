@@ -35,6 +35,27 @@ describe("quantisePalette", () => {
     assert.equal(nearest.hex, PALETTE.gold);
   });
 
+  it("keeps the wood console inside a quiet oak subset", () => {
+    // Given: highlights that canonical quantisation would preserve as gold.
+    const pixels = new Uint8Array([
+      212, 175, 55, 255,
+      168, 134, 42, 255,
+      58, 46, 31, 255,
+    ]);
+
+    // When: the console-specific palette profile is applied.
+    const quantised = quantiseRgba(pixels, "wood-console");
+
+    // Then: every pixel resolves to aged-oak earth or ink colours, never gold.
+    const allowed = new Set<string>([PALETTE.ink, PALETTE.inkLight, PALETTE.earth, PALETTE.earthDark]);
+    for (let index = 0; index < quantised.length; index += 4) {
+      const hex = `#${[quantised[index], quantised[index + 1], quantised[index + 2]]
+        .map((channel) => channel?.toString(16).padStart(2, "0"))
+        .join("")}`.toUpperCase();
+      assert.equal(allowed.has(hex), true);
+    }
+  });
+
   it("preserves the original alpha byte exactly", () => {
     // Given: two non-opaque pixels with distinct alpha bytes.
     const pixels = new Uint8Array([211, 173, 55, 17, 62, 80, 47, 0]);

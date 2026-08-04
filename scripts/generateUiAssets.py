@@ -8,7 +8,7 @@ import time
 import urllib.error
 import urllib.request
 from dataclasses import asdict, dataclass
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Final
 
 from PIL import Image, ImageDraw
@@ -35,7 +35,7 @@ NEGATIVE_PROMPT: Final = (
 )
 SELECTED: Final = {
     "scroll_frame": 19,
-    "wood_console": 12,
+    "wood_console": 10,
     "seal_slot": 2,
     "parchment_texture": 4,
     "illumination_corner": 5,
@@ -386,6 +386,16 @@ def queue_prompt(prompt: dict[str, dict[str, object]]) -> str:
     return prompt_id
 
 
+def contained_output_path(subfolder: str, filename: str) -> Path:
+    root = COMFY_OUTPUT.resolve()
+    if any(Path(part).is_absolute() or PureWindowsPath(part).is_absolute() for part in (subfolder, filename)):
+        raise RuntimeError("Comfy output path must be relative to COMFY_OUTPUT")
+    candidate = (root / subfolder / filename).resolve()
+    if root not in candidate.parents or candidate.suffix.lower() != ".png":
+        raise RuntimeError("Comfy output path must be a PNG inside COMFY_OUTPUT")
+    return candidate
+
+
 def wait_for_outputs(prompt_id: str) -> list[Path]:
     deadline = time.monotonic() + 900
     while time.monotonic() < deadline:
@@ -400,7 +410,7 @@ def wait_for_outputs(prompt_id: str) -> list[Path]:
                         for image in output["images"]:
                             if isinstance(image, dict) and isinstance(image.get("filename"), str):
                                 subfolder = image.get("subfolder") if isinstance(image.get("subfolder"), str) else ""
-                                paths.append(COMFY_OUTPUT / subfolder / image["filename"])
+                                paths.append(contained_output_path(subfolder, image["filename"]))
                 if paths:
                     return paths
         time.sleep(2)
