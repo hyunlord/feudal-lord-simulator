@@ -5,7 +5,9 @@
 The game should feel like a courtly manuscript that has begun to move: a flat,
 hand-painted world beneath a single carved command console. The world is the
 primary surface and fills the viewport. Ornament is concentrated at the bottom
-edge so the player reads terrain and placement first, then tools and status.
+edge so the player reads terrain and placement first, then tools and status. The
+lit map must read as one continuous landscape suspended in a quiet, ink-dark
+surround; the tile grid is construction geometry, never the dominant motif.
 
 Every visible element must appear to come from one workshop. Terrain,
 buildings, icon glyphs, hover marks, tooltips, and generated surface art share
@@ -42,7 +44,28 @@ Text is ink on parchment or vellum, with no pure black or pure white.
 Icon-only seals carry `aria-label` text, keyboard focus, and hover/focus
 tooltips. The visible control remains a glyph rather than a text button.
 
-## 4. Spacing and Layout
+## 4. Landscape Composition
+
+Terrain is generated from seeded, low-frequency coherent noise. A world seed is
+part of the visual identity: identical seeds produce identical terrain,
+brightness, and woodland composition. A typical 64 by 64 domain contains one
+connected lake system, one or two substantial woodland masses, and a rocky
+ridge. Tiny isolated patches are removed after classification so water never
+reads as blue confetti and forest or rock never reads as single-tile scatter.
+
+Tile brightness varies slowly across the land at roughly five percent. Adjacent
+tiles remain close enough in value to read as the same painted surface. Terrain
+transitions are sparse, material-specific marks drawn on the land side:
+earth along water, dark sage tufts along forest, and dark stone pebbles along
+rock.
+
+Forest tiles carry one to three deterministic trees. Interiors are denser than
+edges; each tile varies position, scale, silhouette, and sway phase. The result
+must read as a woodland canopy with an irregular boundary, not repeated stamps.
+Beyond the map, three stepped palette-dark bands form a soft vignette without
+gradients or blur.
+
+## 5. Spacing and Layout
 
 The world canvas occupies the complete viewport. A single continuous wood
 console overlays the bottom edge at approximately 150 pixels on desktop. It has
@@ -57,7 +80,12 @@ pixels the minimap and readouts become narrower and the seal grid remains
 usable in three rows. The document and every internal surface remain overflow
 free at all required widths.
 
-## 5. Components
+The console art is quiet and architectural: flat horizontal planks, restrained
+grain, three unmistakable sunken rectangular recesses, and iron only at the
+outer ends. Decorative fragments may not protrude from or be clipped by the far
+edges. Scroll art frames content only; its interior remains visually empty.
+
+## 6. Components
 
 - **World canvas:** three explicit passes: ground, depth-sorted objects, and an
   intentionally empty overhang pass reserved for future walls.
@@ -68,13 +96,14 @@ free at all required widths.
   universal outline/light rules.
 - **Placement mark:** translucent footprint, ink boundary, and a small
   parchment failure plaque positioned near the pointer.
-- **Court console:** one continuous generated wood surface, never a collection
-  of floating panels.
+- **Court console:** one continuous generated wood surface with three clearly
+  sunken recesses, never a collection of floating panels.
 - **Build seals:** generated seal recesses containing procedural SVG glyphs.
 - **Minimap shield:** non-rectangular overview set into the console.
-- **Ledger plaque:** compact readouts, not separate cards or pills.
+- **Ledger plaque:** compact readouts and speed controls, not separate cards or
+  pills.
 
-## 6. Motion
+## 7. Motion
 
 Camera motion is direct and restrained: middle-drag, space-drag, keyboard pan,
 and wheel zoom between 0.5x and 2x. It is presentation state owned by the render
@@ -86,7 +115,7 @@ amplitude, a frequency between 0.5 and 1.5 radians per second, and a stable
 phase derived from identity. Nothing bounces, eases elastically, or stores
 per-object animation state.
 
-## 7. Depth and Surface
+## 8. Depth and Surface
 
 Depth comes from geometry and value, not effects. Isometric tiles are sorted
 back-to-front. Buildings expose top, left, and twenty-percent-darker right
