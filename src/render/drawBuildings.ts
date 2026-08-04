@@ -6,8 +6,9 @@ import type { Building } from "../economy/economy.types";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
-import { ambientOffset, objectPhase } from "./renderMotion";
+import { ambientOffset } from "./renderMotion";
 import { buildObjectRenderItems } from "./objectRenderOrder";
+import { buildForestLookup, buildTreeCluster, type ForestLookup, type TreeDescriptor } from "./treeLayout";
 import type { TileRange } from "./renderer";
 import { applyInkOutline, drawFlatDiamondShadow, shade, snapToPixel } from "./style";
 
@@ -43,43 +44,81 @@ export function drawBuildings(
     buildings: input.state.buildings,
     range: input.range,
   });
+  const forestLookup = buildForestLookup(input.state.tiles);
   for (const item of items) {
     if (item.kind === "tree") {
-      drawTree(context, input.state.tick, item.tile, input.zoom);
+      drawTreeCluster(context, input.state.tick, item.tile, forestLookup, input.state.seed, input.zoom);
     } else {
       drawBuilding(context, input.state.tick, item.building, input.zoom);
     }
   }
 }
 
-function drawTree(context: CanvasRenderingContext2D, tick: number, tile: Tile, zoom: number): void {
-  const base = tileCenter(tile.tx, tile.ty);
+function drawTreeCluster(
+  context: CanvasRenderingContext2D,
+  tick: number,
+  tile: Tile,
+  forestLookup: ForestLookup,
+  seed: number,
+  zoom: number,
+): void {
+  for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
+    drawTree(context, tick, tree, zoom);
+  }
+}
+
+function drawTree(context: CanvasRenderingContext2D, tick: number, tree: TreeDescriptor, zoom: number): void {
   const sway = ambientOffset({
     tick,
-    amplitude: 2,
+    amplitude: 2 * tree.scale,
     frequency: 0.72,
-    phase: objectPhase("tree", tile.tx, tile.ty),
+    phase: tree.phase,
   });
   drawFlatDiamondShadow(context, {
-    centerX: base.x,
-    centerY: base.y + 7,
-    radiusX: 13,
-    radiusY: 5,
+    centerX: tree.x,
+    centerY: tree.y + 7 * tree.scale,
+    radiusX: 13 * tree.scale,
+    radiusY: 5 * tree.scale,
   });
   context.fillStyle = PALETTE.earthDark;
-  traceRect(context, { x: base.x - 2, y: base.y - 20 }, 4, 24);
+  traceRect(
+    context,
+    { x: tree.x - 2 * tree.scale, y: tree.y - 20 * tree.scale },
+    4 * tree.scale,
+    24 * tree.scale,
+  );
   context.fill();
   applyInkOutline(context, zoom);
   context.stroke();
-  context.fillStyle = PALETTE.forest;
+  context.fillStyle = PALETTE[tree.tone];
+  traceTreeCanopy(context, tree, sway);
+  context.fill();
+  applyInkOutline(context, zoom);
+  context.stroke();
+}
+
+function traceTreeCanopy(context: CanvasRenderingContext2D, tree: TreeDescriptor, sway: number): void {
+  if (tree.silhouette === "rounded") {
+    context.beginPath();
+    context.ellipse(
+      snapToPixel(tree.x + sway),
+      snapToPixel(tree.y - 28 * tree.scale),
+      17 * tree.scale,
+      14 * tree.scale,
+      0,
+      0,
+      Math.PI * 2,
+    );
+    return;
+  }
+  const width = tree.silhouette === "broad" ? 19 : 13;
+  const lift = 42;
+  const baseLift = tree.silhouette === "narrow" ? 10 : 12;
   traceTriangle(context, [
-    { x: base.x + sway, y: base.y - 42 },
-    { x: base.x + 16 + sway, y: base.y - 11 },
-    { x: base.x - 16 + sway, y: base.y - 11 },
+    { x: tree.x + sway, y: tree.y - lift * tree.scale },
+    { x: tree.x + width * tree.scale + sway, y: tree.y - baseLift * tree.scale },
+    { x: tree.x - width * tree.scale + sway, y: tree.y - baseLift * tree.scale },
   ]);
-  context.fill();
-  applyInkOutline(context, zoom);
-  context.stroke();
 }
 
 function drawBuilding(context: CanvasRenderingContext2D, tick: number, building: Building, zoom: number): void {
@@ -146,11 +185,6 @@ function traceShedRoof(context: CanvasRenderingContext2D, center: Point, body: B
   context.lineTo(snapToPixel(center.x + body.width / 2 + 8), snapToPixel(center.y - body.height + 4));
   context.lineTo(snapToPixel(center.x - body.width / 2 - 3), snapToPixel(center.y - body.height + body.roof * 0.5));
   context.closePath();
-}
-
-function tileCenter(tx: number, ty: number): Point {
-  const center = tileToScreen(tx, ty);
-  return { x: center.sx, y: center.sy };
 }
 
 function buildingCenter(building: Building): Point {
