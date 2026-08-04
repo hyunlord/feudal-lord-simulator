@@ -114,6 +114,74 @@ export const alphaPresent = (rgba: Uint8Array): boolean => {
   return false;
 };
 
+const requireRgbaDimensions = (
+  rgba: Uint8Array,
+  width: number,
+  height: number,
+): void => {
+  if (
+    !Number.isInteger(width) ||
+    !Number.isInteger(height) ||
+    width <= 0 ||
+    height <= 0 ||
+    rgba.length !== width * height * 4
+  ) {
+    throw new Error(
+      `RGBA dimensions ${width}x${height} did not match ${rgba.length} bytes`,
+    );
+  }
+};
+
+export const assertScrollFrameTransparency = (
+  rgba: Uint8Array,
+  width: number,
+  height: number,
+): void => {
+  requireRgbaDimensions(rgba, width, height);
+
+  const interior = {
+    left: Math.floor(width * 0.25),
+    top: Math.floor(height * 0.25),
+    right: Math.ceil(width * 0.75),
+    bottom: Math.ceil(height * 0.75),
+  };
+  let interiorPixels = 0;
+  let transparentInteriorPixels = 0;
+  for (let y = interior.top; y < interior.bottom; y += 1) {
+    for (let x = interior.left; x < interior.right; x += 1) {
+      interiorPixels += 1;
+      if (rgba[(y * width + x) * 4 + 3] === 0) {
+        transparentInteriorPixels += 1;
+      }
+    }
+  }
+  const interiorTransparency = transparentInteriorPixels / interiorPixels;
+  if (interiorTransparency < 0.7) {
+    throw new Error(
+      `scroll_frame interior transparency was ${(
+        interiorTransparency * 100
+      ).toFixed(1)}%, expected at least 70%`,
+    );
+  }
+
+  const exteriorBandX = Math.max(1, Math.ceil(width * 0.04));
+  const exteriorBandY = Math.max(1, Math.ceil(height * 0.04));
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const isExteriorBand =
+        x < exteriorBandX ||
+        x >= width - exteriorBandX ||
+        y < exteriorBandY ||
+        y >= height - exteriorBandY;
+      if (isExteriorBand && rgba[(y * width + x) * 4 + 3] !== 0) {
+        throw new Error(
+          `scroll_frame outside perimeter contains a non-transparent pixel at ${x},${y}`,
+        );
+      }
+    }
+  }
+};
+
 export const assertAlphaContract = (
   key: string,
   alpha: AlphaContract,

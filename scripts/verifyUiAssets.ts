@@ -10,6 +10,7 @@ import {
   assertExactManifestKeys,
   assertManifestContract,
   assertReportAlignment,
+  assertScrollFrameTransparency,
   parseManifest,
   type AssetContract,
   type AssetManifest,
@@ -60,6 +61,13 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
   assertDimensions(asset.key, "before", before.dimensions.width, before.dimensions.height, asset.width, asset.height);
   assertDimensions(asset.key, "final", after.dimensions.width, after.dimensions.height, asset.width, asset.height);
   assertAlphaContract(asset.key, asset.alpha, before.rgba, after.rgba);
+  if (asset.key === "scroll_frame") {
+    assertScrollFrameTransparency(
+      after.rgba,
+      after.dimensions.width,
+      after.dimensions.height,
+    );
+  }
 
   let opaquePaletteRgbCount = 0;
   for (let index = 0; index < after.rgba.length; index += 4) {

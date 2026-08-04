@@ -5,6 +5,7 @@ import {
   assertAlphaContract,
   assertManifestContract,
   assertReportAlignment,
+  assertScrollFrameTransparency,
   type AssetManifest,
 } from "../scripts/uiAssetManifest";
 
@@ -44,6 +45,29 @@ const manifest = {
     },
   ],
 } satisfies AssetManifest;
+
+const makeRgba = (width: number, height: number): Uint8Array => {
+  const rgba = new Uint8Array(width * height * 4);
+  for (let index = 3; index < rgba.length; index += 4) {
+    rgba[index] = 255;
+  }
+  return rgba;
+};
+
+const clearAlphaRect = (
+  rgba: Uint8Array,
+  width: number,
+  left: number,
+  top: number,
+  right: number,
+  bottom: number,
+): void => {
+  for (let y = top; y < bottom; y += 1) {
+    for (let x = left; x < right; x += 1) {
+      rgba[(y * width + x) * 4 + 3] = 0;
+    }
+  }
+};
 
 describe("verifyUiAssets", () => {
   it("rejects machine-specific absolute candidate paths", () => {
@@ -87,6 +111,69 @@ describe("verifyUiAssets", () => {
 
     // When / Then: the declared alpha contract is enforced.
     assert.throws(() => assertAlphaContract("seal_slot", "transparent", before, after), /expected transparency/);
+  });
+
+  it("accepts a scroll frame with a clear centre and fully transparent outside perimeter", () => {
+    const width = 100;
+    const height = 100;
+    const rgba = makeRgba(width, height);
+    clearAlphaRect(rgba, width, 25, 25, 75, 75);
+    clearAlphaRect(rgba, width, 0, 0, 100, 4);
+    clearAlphaRect(rgba, width, 0, 96, 100, 100);
+    clearAlphaRect(rgba, width, 0, 0, 4, 100);
+    clearAlphaRect(rgba, width, 96, 0, 100, 100);
+
+    assert.doesNotThrow(() => assertScrollFrameTransparency(rgba, width, height));
+  });
+
+  it("rejects a scroll frame whose centre is not at least seventy percent transparent", () => {
+    const width = 100;
+    const height = 100;
+    const rgba = makeRgba(width, height);
+    clearAlphaRect(rgba, width, 25, 25, 55, 75);
+    clearAlphaRect(rgba, width, 0, 0, 100, 4);
+    clearAlphaRect(rgba, width, 0, 96, 100, 100);
+    clearAlphaRect(rgba, width, 0, 0, 4, 100);
+    clearAlphaRect(rgba, width, 96, 0, 100, 100);
+
+    assert.throws(
+      () => assertScrollFrameTransparency(rgba, width, height),
+      /interior transparency/,
+    );
+  });
+
+  it("rejects any opaque pixel in a scroll frame outside perimeter band", () => {
+    const width = 100;
+    const height = 100;
+    const rgba = makeRgba(width, height);
+    clearAlphaRect(rgba, width, 25, 25, 75, 75);
+    clearAlphaRect(rgba, width, 0, 0, 100, 4);
+    clearAlphaRect(rgba, width, 0, 96, 100, 100);
+    clearAlphaRect(rgba, width, 0, 0, 4, 100);
+    clearAlphaRect(rgba, width, 96, 0, 100, 100);
+    rgba[(2 * width + 50) * 4 + 3] = 1;
+
+    assert.throws(
+      () => assertScrollFrameTransparency(rgba, width, height),
+      /outside perimeter/,
+    );
+  });
+
+  it("rounds the four-percent outside perimeter up at release dimensions", () => {
+    const width = 512;
+    const height = 512;
+    const rgba = makeRgba(width, height);
+    clearAlphaRect(rgba, width, 128, 128, 384, 384);
+    clearAlphaRect(rgba, width, 0, 0, width, 21);
+    clearAlphaRect(rgba, width, 0, height - 21, width, height);
+    clearAlphaRect(rgba, width, 0, 0, 21, height);
+    clearAlphaRect(rgba, width, width - 21, 0, width, height);
+    rgba[(20 * width + 256) * 4 + 3] = 1;
+
+    assert.throws(
+      () => assertScrollFrameTransparency(rgba, width, height),
+      /outside perimeter/,
+    );
   });
 
   it("rejects stale candidate seeds in the active file set", () => {
