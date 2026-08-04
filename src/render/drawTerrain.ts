@@ -1,0 +1,6 @@
+import type { GameState } from "../engine/engine.types";
+
+export function drawTerrain(
+  _context: CanvasRenderingContext2D,
+  _state: GameState,
+): void {}
