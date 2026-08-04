@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { PALETTE } from "../src/content/palette";
+import type { GameState } from "../src/engine/engine.types";
 import {
+  drawTerrain,
   terrainSeamFor,
   terrainSeamMarkCount,
 } from "../src/render/drawTerrain";
@@ -11,6 +13,38 @@ import {
   worldVignetteBands,
 } from "../src/render/worldBackdrop";
 import { shade } from "../src/render/style";
+import type { Tile } from "../src/world/world.types";
+
+function recordingContext(calls: string[]): CanvasRenderingContext2D {
+  let fillStyle = "";
+  let strokeStyle = "";
+
+  return {
+    get fillStyle() {
+      return fillStyle;
+    },
+    set fillStyle(value: string) {
+      fillStyle = value;
+      calls.push(`fillStyle:${value}`);
+    },
+    get strokeStyle() {
+      return strokeStyle;
+    },
+    set strokeStyle(value: string) {
+      strokeStyle = value;
+      calls.push(`strokeStyle:${value}`);
+    },
+    lineWidth: 0,
+    lineJoin: "miter",
+    lineCap: "butt",
+    beginPath: () => calls.push("beginPath"),
+    moveTo: (x: number, y: number) => calls.push(`moveTo:${x},${y}`),
+    lineTo: (x: number, y: number) => calls.push(`lineTo:${x},${y}`),
+    closePath: () => calls.push("closePath"),
+    fill: () => calls.push("fill"),
+    stroke: () => calls.push("stroke"),
+  } as unknown as CanvasRenderingContext2D;
+}
 
 test("terrain seams are material-specific and drawn only on the grass side", () => {
   assert.equal(terrainSeamFor("grass", "water"), "shoreline");
@@ -21,6 +55,43 @@ test("terrain seams are material-specific and drawn only on the grass side", () 
   assert.equal(terrainSeamFor("forest", "grass"), null);
   assert.equal(terrainSeamFor("rock", "grass"), null);
   assert.equal(terrainSeamFor("grass", "grass"), null);
+});
+
+test("ground tiles use one coherent fill without per-tile ink outlines", () => {
+  // Given
+  const tile: Tile = {
+    tx: 0,
+    ty: 0,
+    terrain: "grass",
+    buildingId: null,
+    hasRoad: false,
+  };
+  const state: GameState = {
+    tick: 0,
+    seed: 73,
+    tiles: [tile],
+    width: 1,
+    height: 1,
+    buildings: [],
+    houses: [],
+    walkers: [],
+    population: 0,
+    idleWorkers: 0,
+    treasuryTimber: 0,
+  };
+  const calls: string[] = [];
+
+  // When
+  drawTerrain(recordingContext(calls), {
+    state,
+    tiles: [tile],
+    range: { minTx: 0, maxTx: 0, minTy: 0, maxTy: 0 },
+    zoom: 1,
+  });
+
+  // Then
+  assert.equal(calls.filter((call) => call === "fill").length, 1);
+  assert.equal(calls.filter((call) => call === "stroke").length, 0);
 });
 
 test("forest seams use a deterministic two or three tuft cluster", () => {

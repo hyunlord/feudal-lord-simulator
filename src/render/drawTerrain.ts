@@ -81,7 +81,7 @@ export function drawTerrain(
   input: TerrainRenderInput,
 ): void {
   for (const tile of input.tiles) {
-    drawGroundDiamond(context, tile, input.state.seed, input.zoom);
+    drawGroundDiamond(context, tile, input.state.seed);
     drawTerrainTransitions(context, input.state, tile, input.zoom);
     if (tile.hasRoad) {
       drawRoad(context, input.state, tile, input.zoom);
@@ -93,22 +93,13 @@ function drawGroundDiamond(
   context: CanvasRenderingContext2D,
   tile: Tile,
   seed: number,
-  zoom: number,
 ): void {
   const center = tileCenter(tile);
   const base = baseTerrainColor(tile.terrain);
   const multiplier = 1 + terrainVariation(tile.tx, tile.ty, seed);
-  const lit = shade(base, multiplier);
-  const shaded = shade(base, multiplier * 0.8);
-  context.fillStyle = lit;
-  traceHalfDiamond(context, center, "upperLeft");
-  context.fill();
-  context.fillStyle = shaded;
-  traceHalfDiamond(context, center, "downRight");
-  context.fill();
-  applyInkOutline(context, zoom);
+  context.fillStyle = shade(base, multiplier);
   traceDiamond(context, center);
-  context.stroke();
+  context.fill();
 }
 
 function drawTerrainTransitions(
@@ -218,22 +209,6 @@ function traceDiamond(
   context.closePath();
 }
 
-function traceHalfDiamond(
-  context: CanvasRenderingContext2D,
-  center: Diamond,
-  side: "upperLeft" | "downRight",
-): void {
-  context.beginPath();
-  context.moveTo(snapToPixel(center.x), snapToPixel(center.y));
-  if (side === "upperLeft") {
-    context.lineTo(snapToPixel(center.x), snapToPixel(center.y - TILE_H / 2));
-    context.lineTo(snapToPixel(center.x - TILE_W / 2), snapToPixel(center.y));
-  } else {
-    context.lineTo(snapToPixel(center.x + TILE_W / 2), snapToPixel(center.y));
-    context.lineTo(snapToPixel(center.x), snapToPixel(center.y + TILE_H / 2));
-  }
-  context.closePath();
-}
 
 function traceSmallDiamond(
   context: CanvasRenderingContext2D,
