@@ -65,7 +65,7 @@ button {
   left: 0;
   z-index: 2;
   display: grid;
-  grid-template-columns: clamp(122px, 14vw, 180px) minmax(260px, 1fr) clamp(220px, 25vw, 330px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(8px, 1.4vw, 20px);
   align-items: center;
   width: 100%;
@@ -350,7 +350,6 @@ button {
 
 @media (max-width: 900px) {
   .court-console {
-    grid-template-columns: 108px minmax(220px, 1fr) 210px;
     gap: 6px;
     padding-right: 10px;
     padding-left: 10px;
@@ -378,7 +377,6 @@ button {
 
 @media (max-width: 600px) {
   .court-console {
-    grid-template-columns: 54px minmax(126px, 1fr) 102px;
     gap: 3px;
     height: 150px;
     padding: 7px 5px;
@@ -398,7 +396,7 @@ button {
   }
 
   .build-seals {
-    --seal-size: 30px;
+    --seal-size: clamp(23px, 5vw, 30px);
     grid-template-columns: repeat(4, var(--seal-size));
     grid-auto-rows: var(--seal-size);
     gap: 3px 2px;

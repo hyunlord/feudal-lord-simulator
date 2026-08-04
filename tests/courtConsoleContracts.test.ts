@@ -113,8 +113,16 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   );
 
   const mobileRules = css.match(/@media \(max-width: 600px\) \{([\s\S]+)\}\s*$/)?.[1] ?? "";
+  assert.equal(
+    css.match(/grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\);/g)?.length,
+    1,
+  );
+  assert.doesNotMatch(
+    css,
+    /grid-template-columns:\s*(?:clamp\(122px|108px|54px)/,
+  );
   assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*150px;/);
-  assert.match(mobileRules, /grid-template-columns:\s*54px minmax\(126px, 1fr\) 102px;/);
+  assert.match(mobileRules, /--seal-size:\s*clamp\(23px, 5vw, 30px\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4,/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*10px;/);
   assert.doesNotMatch(css, /\.court-console::(?:before|after)/);
