@@ -147,6 +147,23 @@ describe("terrain patterns", () => {
     assert.deepEqual(calls.filter((call) => call === "createPattern:grass"), ["createPattern:grass"]);
   });
 
+  it("Given repeated grass orientations When resolving patterns Then each transformed variant is created once", () => {
+    const calls: RecordedCall[] = [];
+    const context = recordingContext(calls);
+    const assets = readyAssets(["grass"]);
+
+    const first = getTerrainPattern(context, "grass", assets, 1);
+    const repeated = getTerrainPattern(context, "grass", assets, 1);
+    const second = getTerrainPattern(context, "grass", assets, 2);
+
+    assert.equal(first, repeated);
+    assert.notEqual(first, second);
+    assert.deepEqual(calls.filter((call) => call === "createPattern:grass"), [
+      "createPattern:grass", "createPattern:grass",
+    ]);
+    assert.equal(calls.filter((call) => call.startsWith("patternTransform:")).length, 2);
+  });
+
   it("Given createPattern returns null When requested again Then null is not cached", () => {
     const calls: RecordedCall[] = [];
     const context = nullThenRecordingContext(calls);

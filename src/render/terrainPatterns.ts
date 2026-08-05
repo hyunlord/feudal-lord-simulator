@@ -28,8 +28,10 @@ export type TerrainPatternAssets = {
 
 type PatternCacheEntry = {
   readonly image: CanvasImageSource;
-  readonly pattern: CanvasPattern;
+  readonly patterns: Map<"base" | 0 | 1 | 2 | 3, CanvasPattern>;
 };
+
+export type PatternQuarterTurn = 0 | 1 | 2 | 3;
 
 const TERRAIN_TO_TEXTURE = {
   grass: "grass",
@@ -60,6 +62,7 @@ export function getTerrainPattern(
   context: CanvasRenderingContext2D,
   key: TerrainTextureKey,
   assets: TerrainPatternAssets = worldAssetTerrainPatterns,
+  quarterTurn?: PatternQuarterTurn,
 ): CanvasPattern | null {
   const meta = assets.meta(key);
   if (meta?.status !== "ready") return null;
@@ -68,12 +71,28 @@ export function getTerrainPattern(
 
   const cache = cacheForContext(context);
   const cached = cache.get(key);
-  if (cached !== undefined && cached.image === image) return cached.pattern;
+  const variant = quarterTurn ?? "base";
+  if (cached !== undefined && cached.image === image) {
+    const cachedPattern = cached.patterns.get(variant);
+    if (cachedPattern !== undefined) return cachedPattern;
+  }
 
   const pattern = context.createPattern(image, "repeat");
   if (pattern === null) return null;
-  cache.set(key, { image, pattern });
+  if (quarterTurn !== undefined) pattern.setTransform(patternTransform(quarterTurn));
+  const patterns = cached?.image === image ? cached.patterns : new Map();
+  patterns.set(variant, pattern);
+  cache.set(key, { image, patterns });
   return pattern;
+}
+
+function patternTransform(turn: PatternQuarterTurn): DOMMatrix2DInit {
+  switch (turn) {
+    case 0: return { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 };
+    case 1: return { a: 0, b: 1, c: -1, d: 0, e: 256, f: 0 };
+    case 2: return { a: -1, b: 0, c: 0, d: -1, e: 256, f: 256 };
+    case 3: return { a: 0, b: -1, c: 1, d: 0, e: 0, f: 256 };
+  }
 }
 
 function cacheForContext(

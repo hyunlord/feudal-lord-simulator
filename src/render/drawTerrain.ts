@@ -59,12 +59,13 @@ function drawGroundDiamond(
     context,
     terrainTextureKeyFor(tile.terrain),
     terrainPatterns,
+    tile.terrain === "grass" ? grassPatternQuarterTurn(tile.tx, tile.ty, seed) : 0,
   );
   if (pattern !== null) {
     context.fillStyle = baseTerrainColor(tile.terrain);
     traceTerrainDiamond(context, tile);
     context.fill();
-    fillTerrainPattern(context, tile, seed, pattern);
+    fillTerrainPattern(context, tile, pattern);
     context.fillStyle = variationOverlayStyle(variation);
     traceTerrainDiamond(context, tile);
     context.fill();
@@ -79,7 +80,6 @@ function drawGroundDiamond(
 function fillTerrainPattern(
   context: CanvasRenderingContext2D,
   tile: Tile,
-  seed: number,
   pattern: CanvasPattern,
 ): void {
   const center = tileToScreen(tile.tx, tile.ty);
@@ -89,7 +89,6 @@ function fillTerrainPattern(
   try {
     context.clip();
     context.globalAlpha = previousAlpha * terrainTextureOpacity(tile.terrain);
-    pattern.setTransform(patternTransform(tile, seed));
     context.fillStyle = pattern;
     context.fillRect(
       snapToPixel(center.sx - TILE_W / 2),
@@ -112,16 +111,6 @@ export function grassPatternQuarterTurn(tx: number, ty: number, seed: number): 0
   hash ^= Math.imul(seed + 101_111, 83_492_791);
   hash = Math.imul(hash ^ (hash >>> 13), 1_274_126_177);
   return ((hash ^ (hash >>> 16)) >>> 0 & 3) as 0 | 1 | 2 | 3;
-}
-
-function patternTransform(tile: Tile, seed: number): DOMMatrix2DInit {
-  const turn = tile.terrain === "grass" ? grassPatternQuarterTurn(tile.tx, tile.ty, seed) : 0;
-  switch (turn) {
-    case 0: return { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 };
-    case 1: return { a: 0, b: 1, c: -1, d: 0, e: 256, f: 0 };
-    case 2: return { a: -1, b: 0, c: 0, d: -1, e: 256, f: 256 };
-    case 3: return { a: 0, b: -1, c: 1, d: 0, e: 0, f: 256 };
-  }
 }
 
 function traceTerrainDiamond(
