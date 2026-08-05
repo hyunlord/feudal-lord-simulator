@@ -1,0 +1,258 @@
+{
+  "models": {
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "ipadapter": "ip-adapter-plus_sdxl_vit-h.safetensors",
+    "clipVision": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+    "preset": "PLUS (high strength)"
+  },
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapterWeights": {
+      "building": 0.05,
+      "foliage": 0.02,
+      "terrain": 0.01
+    }
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "summary": {
+    "catalogJobs": 73,
+    "queuedJobs": 22,
+    "completedJobs": 22
+  },
+  "timing": {
+    "startedAtUtc": "2026-08-05T11:47:54.712483+00:00",
+    "finishedAtUtc": "2026-08-05T12:04:32.295917+00:00",
+    "elapsedSeconds": 997.583
+  },
+  "jobs": [
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 1,
+      "seed": 64050801,
+      "geometry": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+      "sourcePath": "building/sawmill_01.png",
+      "elapsedSeconds": 48.06,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 2,
+      "seed": 64050802,
+      "geometry": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+      "sourcePath": "building/sawmill_02.png",
+      "elapsedSeconds": 34.046,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 3,
+      "seed": 64050803,
+      "geometry": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+      "sourcePath": "building/sawmill_03.png",
+      "elapsedSeconds": 34.055,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 4,
+      "seed": 64050804,
+      "geometry": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+      "sourcePath": "building/sawmill_04.png",
+      "elapsedSeconds": 34.054,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 5,
+      "seed": 64050805,
+      "geometry": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+      "sourcePath": "building/sawmill_05.png",
+      "elapsedSeconds": 34.088,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 6,
+      "seed": 64050806,
+      "geometry": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+      "sourcePath": "building/sawmill_06.png",
+      "elapsedSeconds": 34.086,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_a",
+      "candidate": 1,
+      "seed": 64052501,
+      "geometry": "one low trunkless wide dense woodland shrub",
+      "sourcePath": "foliage/shrub_a_01.png",
+      "elapsedSeconds": 36.04,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_a",
+      "candidate": 2,
+      "seed": 64052502,
+      "geometry": "one low trunkless wide dense woodland shrub",
+      "sourcePath": "foliage/shrub_a_02.png",
+      "elapsedSeconds": 36.041,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_a",
+      "candidate": 3,
+      "seed": 64052503,
+      "geometry": "one low trunkless wide dense woodland shrub",
+      "sourcePath": "foliage/shrub_a_03.png",
+      "elapsedSeconds": 34.044,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_a",
+      "candidate": 4,
+      "seed": 64052504,
+      "geometry": "one low trunkless wide dense woodland shrub",
+      "sourcePath": "foliage/shrub_a_04.png",
+      "elapsedSeconds": 36.04,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_b",
+      "candidate": 1,
+      "seed": 64052601,
+      "geometry": "one smaller low trunkless wide sparse woodland shrub",
+      "sourcePath": "foliage/shrub_b_01.png",
+      "elapsedSeconds": 34.125,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_b",
+      "candidate": 2,
+      "seed": 64052602,
+      "geometry": "one smaller low trunkless wide sparse woodland shrub",
+      "sourcePath": "foliage/shrub_b_02.png",
+      "elapsedSeconds": 36.041,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_b",
+      "candidate": 3,
+      "seed": 64052603,
+      "geometry": "one smaller low trunkless wide sparse woodland shrub",
+      "sourcePath": "foliage/shrub_b_03.png",
+      "elapsedSeconds": 70.076,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_b",
+      "candidate": 4,
+      "seed": 64052604,
+      "geometry": "one smaller low trunkless wide sparse woodland shrub",
+      "sourcePath": "foliage/shrub_b_04.png",
+      "elapsedSeconds": 72.098,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "grass_tuft",
+      "candidate": 1,
+      "seed": 64052701,
+      "geometry": "one low isolated tuft of meadow grass",
+      "sourcePath": "foliage/grass_tuft_01.png",
+      "elapsedSeconds": 70.165,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "grass_tuft",
+      "candidate": 2,
+      "seed": 64052702,
+      "geometry": "one low isolated tuft of meadow grass",
+      "sourcePath": "foliage/grass_tuft_02.png",
+      "elapsedSeconds": 72.056,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "grass_tuft",
+      "candidate": 3,
+      "seed": 64052703,
+      "geometry": "one low isolated tuft of meadow grass",
+      "sourcePath": "foliage/grass_tuft_03.png",
+      "elapsedSeconds": 72.062,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "grass_tuft",
+      "candidate": 4,
+      "seed": 64052704,
+      "geometry": "one low isolated tuft of meadow grass",
+      "sourcePath": "foliage/grass_tuft_04.png",
+      "elapsedSeconds": 70.111,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "field_stone",
+      "candidate": 1,
+      "seed": 64052801,
+      "geometry": "one low isolated weathered field stone",
+      "sourcePath": "foliage/field_stone_01.png",
+      "elapsedSeconds": 36.049,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "field_stone",
+      "candidate": 2,
+      "seed": 64052802,
+      "geometry": "one low isolated weathered field stone",
+      "sourcePath": "foliage/field_stone_02.png",
+      "elapsedSeconds": 34.065,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "field_stone",
+      "candidate": 3,
+      "seed": 64052803,
+      "geometry": "one low isolated weathered field stone",
+      "sourcePath": "foliage/field_stone_03.png",
+      "elapsedSeconds": 36.065,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "field_stone",
+      "candidate": 4,
+      "seed": 64052804,
+      "geometry": "one low isolated weathered field stone",
+      "sourcePath": "foliage/field_stone_04.png",
+      "elapsedSeconds": 34.116,
+      "status": "completed"
+    }
+  ]
+}
