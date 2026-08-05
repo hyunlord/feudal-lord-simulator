@@ -57,7 +57,8 @@ const newBuildingKeys = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly BuildingSpriteKey[];
 const foliageKeys = [
-  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b", "shrub_a", "shrub_b",
+  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
+  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
 ] as const satisfies readonly FoliageSpriteKey[];
 
 const sourceForBuilding = (key: BuildingSpriteKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
@@ -162,7 +163,7 @@ const foliageAssets = (): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key, inde
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: { seed: 64052001 + index, candidate: 1 },
-    palettePolicy: "foliage-timber",
+    palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" },
   };

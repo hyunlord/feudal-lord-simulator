@@ -146,7 +146,7 @@ export type FoliageVariation = {
 };
 
 export type FoliageAsset = BaseAsset<FoliageKey, "foliage"> & {
-  readonly palettePolicy: "foliage-timber";
+  readonly palettePolicy: "foliage-timber" | "stone-earth";
   readonly alphaPolicy: "transparent-outline-179";
   readonly variation: FoliageVariation;
 };

@@ -112,7 +112,8 @@ def _build_jobs() -> tuple[Job, ...]:
     for index, (key, geometry) in enumerate(FOLIAGE_GEOMETRY.items(), start=1):
         candidate_count = 4 if key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"} else 1
         for candidate in range(1, candidate_count + 1):
-            jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(64052000 + index * 100 + candidate), candidate))
+            seed = 64052000 + index * 100 + candidate if candidate_count == 4 else 64052000 + index
+            jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(seed), candidate))
     for index, (key, geometry) in enumerate(TERRAIN_GEOMETRY.items(), start=1):
         jobs.append(Job(Category.TERRAIN, key, geometry, Seed(64053000 + index), 1))
     return tuple(jobs)

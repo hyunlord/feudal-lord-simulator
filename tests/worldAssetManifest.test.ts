@@ -55,7 +55,7 @@ const manifestFixture = (): WorldAssetManifest => ({
       anchor: { x: spec.width / 2, y: spec.baselineY },
       footprint: spec.footprint,
       source,
-      palettePolicy: "foliage-timber" as const,
+      palettePolicy: key === "field_stone" ? "stone-earth" as const : "foliage-timber" as const,
       alphaPolicy: "transparent-outline-179" as const,
       variation: {
         selection: "hash" as const,
@@ -136,6 +136,9 @@ describe("world asset manifest", () => {
         sway: "sine",
       });
     }
+    const stone = parsed.assets.find((entry) => entry.key === "field_stone");
+    assert.equal(stone?.category, "foliage");
+    if (stone?.category === "foliage") assert.equal(stone.palettePolicy, "stone-earth");
     const grass = parsed.assets.find((entry) => entry.key === "grass");
     assert.equal(grass?.category, "terrain");
     if (grass?.category === "terrain") {
@@ -218,6 +221,13 @@ describe("world asset manifest", () => {
     assert.throws(
       () => parseWorldAssetManifest({ ...valid, assets: wrongPolicy }),
       /tree_conifer_a palettePolicy/,
+    );
+    const wrongStonePolicy = valid.assets.map((entry) =>
+      entry.key === "field_stone" ? { ...entry, palettePolicy: "foliage-timber" } : entry
+    );
+    assert.throws(
+      () => parseWorldAssetManifest({ ...valid, assets: wrongStonePolicy }),
+      /field_stone palettePolicy/,
     );
     const missingSeams = valid.assets.map((entry) =>
       entry.key === "water" ? { ...entry, seamMetrics: undefined } : entry

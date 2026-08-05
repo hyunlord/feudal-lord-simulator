@@ -195,8 +195,9 @@ const parseAsset = (value: unknown): WorldAsset => {
     case "foliage": {
       if (!isMember(FOLIAGE_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a foliage key`);
       assertExactCommon(key, category, common, FOLIAGE_SPECS[key]);
-      if (record["palettePolicy"] !== "foliage-timber") {
-        throw new WorldAssetManifestError(`${key} palettePolicy must be foliage-timber`);
+      const palettePolicy = key === "field_stone" ? "stone-earth" : "foliage-timber";
+      if (record["palettePolicy"] !== palettePolicy) {
+        throw new WorldAssetManifestError(`${key} palettePolicy must be ${palettePolicy}`);
       }
       if (record["alphaPolicy"] !== "transparent-outline-179") {
         throw new WorldAssetManifestError(`${key} alphaPolicy must be transparent-outline-179`);
@@ -205,7 +206,7 @@ const parseAsset = (value: unknown): WorldAsset => {
         key,
         category,
         ...common,
-        palettePolicy: "foliage-timber",
+        palettePolicy,
         alphaPolicy: "transparent-outline-179",
         variation: parseVariation(record["variation"], key),
       };

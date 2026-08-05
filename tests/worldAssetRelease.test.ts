@@ -90,8 +90,14 @@ const fixture = (): Fixture => {
   for (const [key, [width, height]] of Object.entries({
     tree_conifer_a: [36, 70], tree_conifer_b: [38, 58], tree_broadleaf_a: [50, 60],
     tree_broadleaf_b: [44, 50], shrub_a: [30, 20], shrub_b: [24, 16],
+    grass_tuft: [22, 12], field_stone: [18, 10],
   } as const)) {
-    writeRawSprite(path.join(rawRoot, "foliage", `${key}.png`), width, height, RAMPS.foliage[2]);
+    writeRawSprite(
+      path.join(rawRoot, "foliage", `${key}.png`),
+      width,
+      height,
+      key === "field_stone" ? RAMPS.stone[2] : RAMPS.foliage[2],
+    );
   }
   for (const key of ["grass", "forest_floor", "water", "rock", "packed_earth_road"] as const) {
     const terrain = image(256, 256, [...rgb(RAMPS.earth[2]), 255]);

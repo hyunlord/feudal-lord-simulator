@@ -49,7 +49,8 @@ const NEW_BUILDING_KEYS = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly (keyof typeof BUILDING_SPRITE_CONTRACTS)[];
 const RELEASE_FOLIAGE_KEYS = [
-  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b", "shrub_a", "shrub_b",
+  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
+  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
 ] as const satisfies readonly (keyof typeof FOLIAGE_SPRITE_CONTRACTS)[];
 
 const assertExactPngSet = (directory: string, expectedKeys: readonly string[]): void => {
