@@ -116,12 +116,12 @@ const pngChunk = (type: string, data = Buffer.alloc(0)): Buffer => {
   return Buffer.concat([length, typeBuffer, data, checksum]);
 };
 
-const hexToRgb = (hex: string): Rgb => {
+export const hexToRgb = (hex: string): Rgb => {
   const parsed = Number.parseInt(hex.slice(1), 16);
   return { r: (parsed >> 16) & 255, g: (parsed >> 8) & 255, b: parsed & 255 };
 };
 
-const rgbKey = (rgb: Rgb): string => `${rgb.r},${rgb.g},${rgb.b}`;
+export const rgbKey = (rgb: Rgb): string => `${rgb.r},${rgb.g},${rgb.b}`;
 
 export const canonicalColors = (): readonly CanonicalColor[] => {
   const rampColours = Object.values(paletteSource.RAMPS ?? {}).flat();
@@ -141,7 +141,7 @@ const assertWholeImage = (image: RgbaImage): void => {
   }
 };
 
-const byteIndex = (dimensions: Dimensions, x: number, y: number): number =>
+export const byteIndex = (dimensions: Dimensions, x: number, y: number): number =>
   (y * dimensions.width + x) * 4;
 
 const colourDistance = (left: Rgb, right: Rgb): number =>
@@ -314,7 +314,7 @@ const nearestCanonical = (rgb: Rgb, colours = canonicalColors()): Rgb => {
   return best;
 };
 
-const quantiseVisiblePixels = (image: RgbaImage): RgbaImage => {
+export const quantiseVisiblePixels = (image: RgbaImage): RgbaImage => {
   const output = new Uint8Array(image.rgba);
   const colours = canonicalColors();
   for (let index = 0; index < output.length; index += 4) {
@@ -477,7 +477,7 @@ export const assertMillHeight = (image: RgbaImage): number => {
   return height;
 };
 
-const clearRowsBelowBaseline = (image: RgbaImage, baselineY: number): void => {
+export const clearRowsBelowBaseline = (image: RgbaImage, baselineY: number): void => {
   for (let y = baselineY + 1; y < image.dimensions.height; y += 1) {
     for (let x = 0; x < image.dimensions.width; x += 1) {
       image.rgba[byteIndex(image.dimensions, x, y) + 3] = 0;
