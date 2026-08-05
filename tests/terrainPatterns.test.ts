@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { SEMANTIC_PALETTE } from "../src/content/palette";
-import { drawTerrain } from "../src/render/drawTerrain";
+import { drawTerrain, grassPatternQuarterTurn, terrainTextureOpacity } from "../src/render/drawTerrain";
 import { drawRoadPath } from "../src/render/drawTerrainDetails";
 import { shade, withAlpha } from "../src/render/style";
 import { TERRAIN_TEXTURE_KEYS, getTerrainPattern, terrainTextureKeyFor, type TerrainPatternAssets, type TerrainTextureKey } from "../src/render/terrainPatterns";
@@ -15,7 +15,7 @@ type RecordedCall =
   | `fill` | `restore` | `save` | `stroke`
   | `fillRect:${number},${number},${number},${number}`
   | `fillStyle:${string}` | `lineTo:${number},${number}`
-  | `moveTo:${number},${number}` | `patternTransform:${string}`;
+  | `moveTo:${number},${number}` | `patternTransform:${string}` | `globalAlpha:${number}`;
 
 const tile = (tx: number, ty: number, terrain: Tile["terrain"], hasRoad = false): Tile => ({
   tx, ty, terrain, buildingId: null, hasRoad,
@@ -50,12 +50,18 @@ const readyImageAssets = (image: CanvasImageSource): TerrainPatternAssets => ({
 
 function recordingContext(calls: RecordedCall[]): CanvasRenderingContext2D {
   let fillStyle: string | CanvasGradient | CanvasPattern = "";
+  let globalAlpha = 1;
   return {
     canvas: { width: 300, height: 150 },
     get fillStyle() { return fillStyle; },
     set fillStyle(value: string | CanvasGradient | CanvasPattern) {
       fillStyle = value;
       calls.push(`fillStyle:${patternName(value)}`);
+    },
+    get globalAlpha() { return globalAlpha; },
+    set globalAlpha(value: number) {
+      globalAlpha = value;
+      calls.push(`globalAlpha:${value}`);
     },
     strokeStyle: "",
     lineWidth: 0,
@@ -198,8 +204,24 @@ describe("terrain patterns", () => {
 
     assert.ok(calls.includes("clip"));
     assert.ok(calls.includes("fillRect:0,0,64,32"));
+    assert.ok(calls.includes("globalAlpha:0.45"));
+    assert.ok(calls.indexOf(`fillStyle:${SEMANTIC_PALETTE.sage}`) < calls.indexOf("fillStyle:pattern:grass"));
     assert.ok(calls.indexOf("restore") < calls.indexOf(`fillStyle:${expectedOverlay}`));
-    assert.equal(calls.includes(`fillStyle:${shade(SEMANTIC_PALETTE.sage, 1 + variation)}`), false);
+  });
+
+  it("Given terrain materials When texture opacity is selected Then water stays faint and land stays near 45 percent", () => {
+    assert.equal(terrainTextureOpacity("grass"), 0.45);
+    assert.equal(terrainTextureOpacity("forest"), 0.45);
+    assert.equal(terrainTextureOpacity("rock"), 0.45);
+    assert.equal(terrainTextureOpacity("water"), 0.18);
+  });
+
+  it("Given grass tile coordinates When repeat orientation is selected Then a deterministic quarter-turn is used", () => {
+    const first = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn(index % 4, Math.floor(index / 4), 73));
+    const second = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn(index % 4, Math.floor(index / 4), 73));
+    assert.deepEqual(first, second);
+    assert.deepEqual([...new Set(first)].sort(), [0, 1, 2, 3]);
+    assert.notDeepEqual(first, Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn(index % 4, Math.floor(index / 4), 74)));
   });
 
   it("Given camera transforms differ When textured terrain draws Then pattern phase remains world anchored", () => {
@@ -221,8 +243,11 @@ describe("terrain patterns", () => {
       firstCalls.filter((call) => call.startsWith("fillRect:")),
       secondCalls.filter((call) => call.startsWith("fillRect:")),
     );
-    assert.equal(firstCalls.some((call) => call.startsWith("patternTransform:")), false);
-    assert.equal(secondCalls.some((call) => call.startsWith("patternTransform:")), false);
+    assert.ok(firstCalls.some((call) => call.startsWith("patternTransform:")));
+    assert.deepEqual(
+      firstCalls.filter((call) => call.startsWith("patternTransform:")),
+      secondCalls.filter((call) => call.startsWith("patternTransform:")),
+    );
   });
 
   it("Given a missing ground texture When terrain draws Then the old shade fill is preserved", () => {
