@@ -86,18 +86,16 @@ function drawBuilding(
     radiusX: config.width * TILE_W * 0.34,
     radiusY: config.height * TILE_H * 0.28,
   });
-  if (detailLevel !== "blocks") {
+  if (detailLevel === "full") {
     const spriteDrawn = drawWorldSprite(context, buildingSpriteKey(building, visualState.houseLevel), building.tx, building.ty, spriteOptions);
     if (spriteDrawn) {
-      if (detailLevel === "full") {
-        drawKindDetail(context, {
-          tick: input.state.tick,
-          center,
-          kind: building.kind,
-          zoom: input.zoom,
-          visualState,
-        });
-      }
+      drawKindDetail(context, {
+        tick: input.state.tick,
+        center,
+        kind: building.kind,
+        zoom: input.zoom,
+        visualState,
+      });
       return;
     }
   }

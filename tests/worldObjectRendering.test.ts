@@ -112,6 +112,20 @@ function state(): GameState {
   };
 }
 
+function drawHouseAtZoom(zoom: number): LoggedContext {
+  const context = loggedContext();
+  drawBuildings(context, {
+    state: state(),
+    tiles: [tile(0, 0, "grass", "house")],
+    range: { minTx: 0, minTy: 0, maxTx: 0, maxTy: 0 },
+    zoom,
+    camera: { zoom, panX: 200, panY: 120 },
+    viewport: { width: 512, height: 512 },
+    dpr: 1,
+  });
+  return context;
+}
+
 before(async () => {
   Object.defineProperty(globalThis, "Image", { configurable: true, value: ReadyImage });
   await preloadWorldAssets();
@@ -119,18 +133,7 @@ before(async () => {
 
 test("sprite-success building rendering keeps the procedural contact shadow", () => {
   // Given
-  const context = loggedContext();
-
-  // When
-  drawBuildings(context, {
-    state: state(),
-    tiles: [tile(0, 0, "grass", "house")],
-    range: { minTx: 0, minTy: 0, maxTx: 0, maxTy: 0 },
-    zoom: 0.6,
-    camera: { zoom: 0.6, panX: 200, panY: 120 },
-    viewport: { width: 512, height: 512 },
-    dpr: 1,
-  });
+  const context = drawHouseAtZoom(0.7001);
 
   // Then
   assert.ok(context.calls.includes("drawImage"));
@@ -138,4 +141,20 @@ test("sprite-success building rendering keeps the procedural contact shadow", ()
     context.calls.slice(0, 7),
     ["beginPath", "moveTo:0,1", "lineTo:22,10", "lineTo:0,19", "lineTo:-22,10", "closePath", "fill"],
   );
+});
+
+test("exact simplified LOD keeps ready building sprites on the procedural path", () => {
+  // Given / When
+  const context = drawHouseAtZoom(0.7);
+
+  // Then
+  assert.ok(!context.calls.includes("drawImage"));
+});
+
+test("full LOD just above the simplified boundary may use ready building sprites", () => {
+  // Given / When
+  const context = drawHouseAtZoom(0.7001);
+
+  // Then
+  assert.ok(context.calls.includes("drawImage"));
 });
