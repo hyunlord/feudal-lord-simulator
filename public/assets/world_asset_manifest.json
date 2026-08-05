@@ -1,0 +1,561 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "key": "house_l0",
+      "category": "building",
+      "path": "public/assets/buildings/house_l0.png",
+      "width": 96,
+      "height": 112,
+      "anchor": {
+        "x": 48,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64040103,
+        "candidate": 3
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l1",
+      "category": "building",
+      "path": "public/assets/buildings/house_l1.png",
+      "width": 96,
+      "height": 120,
+      "anchor": {
+        "x": 48,
+        "y": 104
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050101,
+        "candidate": 1
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l2",
+      "category": "building",
+      "path": "public/assets/buildings/house_l2.png",
+      "width": 96,
+      "height": 144,
+      "anchor": {
+        "x": 48,
+        "y": 128
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050203,
+        "candidate": 3
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l3",
+      "category": "building",
+      "path": "public/assets/buildings/house_l3.png",
+      "width": 160,
+      "height": 192,
+      "anchor": {
+        "x": 80,
+        "y": 176
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64050304,
+        "candidate": 4
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "mill",
+      "category": "building",
+      "path": "public/assets/buildings/mill.png",
+      "width": 96,
+      "height": 160,
+      "anchor": {
+        "x": 48,
+        "y": 144
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64040202,
+        "candidate": 2
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "barn",
+      "category": "building",
+      "path": "public/assets/buildings/barn.png",
+      "width": 160,
+      "height": 144,
+      "anchor": {
+        "x": 80,
+        "y": 128
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64040308,
+        "candidate": 8
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "well",
+      "category": "building",
+      "path": "public/assets/buildings/well.png",
+      "width": 72,
+      "height": 80,
+      "anchor": {
+        "x": 36,
+        "y": 64
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050405,
+        "candidate": 5
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "storehouse",
+      "category": "building",
+      "path": "public/assets/buildings/storehouse.png",
+      "width": 160,
+      "height": 136,
+      "anchor": {
+        "x": 80,
+        "y": 120
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64050501,
+        "candidate": 1
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "wheat_farm",
+      "category": "building",
+      "path": "public/assets/buildings/wheat_farm.png",
+      "width": 160,
+      "height": 96,
+      "anchor": {
+        "x": 80,
+        "y": 80
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64050601,
+        "candidate": 1
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "logging_camp",
+      "category": "building",
+      "path": "public/assets/buildings/logging_camp.png",
+      "width": 96,
+      "height": 104,
+      "anchor": {
+        "x": 48,
+        "y": 88
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050704,
+        "candidate": 4
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "sawmill",
+      "category": "building",
+      "path": "public/assets/buildings/sawmill.png",
+      "width": 112,
+      "height": 112,
+      "anchor": {
+        "x": 56,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050805,
+        "candidate": 5
+      },
+      "palettePolicy": "canonical-building",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "tree_conifer_a",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_conifer_a.png",
+      "width": 64,
+      "height": 96,
+      "anchor": {
+        "x": 32,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052001,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_conifer_b",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_conifer_b.png",
+      "width": 56,
+      "height": 80,
+      "anchor": {
+        "x": 28,
+        "y": 80
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052002,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_broadleaf_a",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_broadleaf_a.png",
+      "width": 72,
+      "height": 88,
+      "anchor": {
+        "x": 36,
+        "y": 88
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052003,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_broadleaf_b",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_broadleaf_b.png",
+      "width": 64,
+      "height": 72,
+      "anchor": {
+        "x": 32,
+        "y": 72
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052004,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "shrub_a",
+      "category": "foliage",
+      "path": "public/assets/foliage/shrub_a.png",
+      "width": 40,
+      "height": 36,
+      "anchor": {
+        "x": 20,
+        "y": 36
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052005,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "shrub_b",
+      "category": "foliage",
+      "path": "public/assets/foliage/shrub_b.png",
+      "width": 32,
+      "height": 28,
+      "anchor": {
+        "x": 16,
+        "y": 28
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052006,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "grass",
+      "category": "terrain",
+      "path": "public/assets/terrain/grass.png",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053001,
+        "candidate": 1
+      },
+      "palettePolicy": "terrain-foliage-earth",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 9.383951822916652,
+        "verticalJoinDelta": 2.864746093750004,
+        "horizontalInternalDelta": 10.370605468750027,
+        "verticalInternalDelta": 3.7255859375000124,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "forest_floor",
+      "category": "terrain",
+      "path": "public/assets/terrain/forest_floor.png",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053002,
+        "candidate": 1
+      },
+      "palettePolicy": "terrain-foliage-earth-timber",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 7.871256510416604,
+        "verticalJoinDelta": 7.754231770833263,
+        "horizontalInternalDelta": 11.493326822916726,
+        "verticalInternalDelta": 12.09114583333347,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "water",
+      "category": "terrain",
+      "path": "public/assets/terrain/water.png",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053003,
+        "candidate": 1
+      },
+      "palettePolicy": "terrain-water",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 4.448893229166667,
+        "verticalJoinDelta": 13.619303385416732,
+        "horizontalInternalDelta": 6.650878906250001,
+        "verticalInternalDelta": 23.97656249999999,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "rock",
+      "category": "terrain",
+      "path": "public/assets/terrain/rock.png",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053004,
+        "candidate": 1
+      },
+      "palettePolicy": "terrain-stone-slate",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 7.646809895833298,
+        "verticalJoinDelta": 9.29866536458333,
+        "horizontalInternalDelta": 8.922688802083316,
+        "verticalInternalDelta": 12.526041666666751,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "packed_earth_road",
+      "category": "terrain",
+      "path": "public/assets/terrain/packed_earth_road.png",
+      "width": 256,
+      "height": 256,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053005,
+        "candidate": 1
+      },
+      "palettePolicy": "terrain-earth-timber",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 8.204264322916602,
+        "verticalJoinDelta": 10.105468750000004,
+        "horizontalInternalDelta": 12.395182291666734,
+        "verticalInternalDelta": 11.829427083333426,
+        "threshold": 24,
+        "passed": true
+      }
+    }
+  ]
+}

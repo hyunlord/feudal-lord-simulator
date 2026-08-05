@@ -1,0 +1,823 @@
+{
+  "family": [
+    {
+      "bounds": [
+        24,
+        56,
+        96,
+        112
+      ],
+      "category": "buildings",
+      "key": "house_l0",
+      "renderedSize": [
+        96,
+        112
+      ],
+      "sourceSize": [
+        96,
+        112
+      ]
+    },
+    {
+      "bounds": [
+        136,
+        56,
+        96,
+        120
+      ],
+      "category": "buildings",
+      "key": "house_l1",
+      "renderedSize": [
+        96,
+        120
+      ],
+      "sourceSize": [
+        96,
+        120
+      ]
+    },
+    {
+      "bounds": [
+        248,
+        56,
+        96,
+        144
+      ],
+      "category": "buildings",
+      "key": "house_l2",
+      "renderedSize": [
+        96,
+        144
+      ],
+      "sourceSize": [
+        96,
+        144
+      ]
+    },
+    {
+      "bounds": [
+        360,
+        56,
+        160,
+        192
+      ],
+      "category": "buildings",
+      "key": "house_l3",
+      "renderedSize": [
+        160,
+        192
+      ],
+      "sourceSize": [
+        160,
+        192
+      ]
+    },
+    {
+      "bounds": [
+        536,
+        56,
+        96,
+        160
+      ],
+      "category": "buildings",
+      "key": "mill",
+      "renderedSize": [
+        96,
+        160
+      ],
+      "sourceSize": [
+        96,
+        160
+      ]
+    },
+    {
+      "bounds": [
+        648,
+        56,
+        160,
+        144
+      ],
+      "category": "buildings",
+      "key": "barn",
+      "renderedSize": [
+        160,
+        144
+      ],
+      "sourceSize": [
+        160,
+        144
+      ]
+    },
+    {
+      "bounds": [
+        824,
+        56,
+        72,
+        80
+      ],
+      "category": "buildings",
+      "key": "well",
+      "renderedSize": [
+        72,
+        80
+      ],
+      "sourceSize": [
+        72,
+        80
+      ]
+    },
+    {
+      "bounds": [
+        912,
+        56,
+        160,
+        136
+      ],
+      "category": "buildings",
+      "key": "storehouse",
+      "renderedSize": [
+        160,
+        136
+      ],
+      "sourceSize": [
+        160,
+        136
+      ]
+    },
+    {
+      "bounds": [
+        1088,
+        56,
+        160,
+        96
+      ],
+      "category": "buildings",
+      "key": "wheat_farm",
+      "renderedSize": [
+        160,
+        96
+      ],
+      "sourceSize": [
+        160,
+        96
+      ]
+    },
+    {
+      "bounds": [
+        1264,
+        56,
+        96,
+        104
+      ],
+      "category": "buildings",
+      "key": "logging_camp",
+      "renderedSize": [
+        96,
+        104
+      ],
+      "sourceSize": [
+        96,
+        104
+      ]
+    },
+    {
+      "bounds": [
+        1376,
+        56,
+        112,
+        112
+      ],
+      "category": "buildings",
+      "key": "sawmill",
+      "renderedSize": [
+        112,
+        112
+      ],
+      "sourceSize": [
+        112,
+        112
+      ]
+    },
+    {
+      "bounds": [
+        24,
+        318,
+        64,
+        96
+      ],
+      "category": "foliage",
+      "key": "tree_conifer_a",
+      "renderedSize": [
+        64,
+        96
+      ],
+      "sourceSize": [
+        64,
+        96
+      ]
+    },
+    {
+      "bounds": [
+        104,
+        318,
+        56,
+        80
+      ],
+      "category": "foliage",
+      "key": "tree_conifer_b",
+      "renderedSize": [
+        56,
+        80
+      ],
+      "sourceSize": [
+        56,
+        80
+      ]
+    },
+    {
+      "bounds": [
+        176,
+        318,
+        72,
+        88
+      ],
+      "category": "foliage",
+      "key": "tree_broadleaf_a",
+      "renderedSize": [
+        72,
+        88
+      ],
+      "sourceSize": [
+        72,
+        88
+      ]
+    },
+    {
+      "bounds": [
+        264,
+        318,
+        64,
+        72
+      ],
+      "category": "foliage",
+      "key": "tree_broadleaf_b",
+      "renderedSize": [
+        64,
+        72
+      ],
+      "sourceSize": [
+        64,
+        72
+      ]
+    },
+    {
+      "bounds": [
+        344,
+        318,
+        40,
+        36
+      ],
+      "category": "foliage",
+      "key": "shrub_a",
+      "renderedSize": [
+        40,
+        36
+      ],
+      "sourceSize": [
+        40,
+        36
+      ]
+    },
+    {
+      "bounds": [
+        400,
+        318,
+        32,
+        28
+      ],
+      "category": "foliage",
+      "key": "shrub_b",
+      "renderedSize": [
+        32,
+        28
+      ],
+      "sourceSize": [
+        32,
+        28
+      ]
+    },
+    {
+      "bounds": [
+        24,
+        484,
+        512,
+        512
+      ],
+      "category": "terrain",
+      "key": "grass",
+      "renderedSize": [
+        512,
+        512
+      ],
+      "sourceSize": [
+        256,
+        256
+      ],
+      "tileGrid": [
+        2,
+        2
+      ]
+    },
+    {
+      "bounds": [
+        552,
+        484,
+        512,
+        512
+      ],
+      "category": "terrain",
+      "key": "forest_floor",
+      "renderedSize": [
+        512,
+        512
+      ],
+      "sourceSize": [
+        256,
+        256
+      ],
+      "tileGrid": [
+        2,
+        2
+      ]
+    },
+    {
+      "bounds": [
+        1080,
+        484,
+        512,
+        512
+      ],
+      "category": "terrain",
+      "key": "water",
+      "renderedSize": [
+        512,
+        512
+      ],
+      "sourceSize": [
+        256,
+        256
+      ],
+      "tileGrid": [
+        2,
+        2
+      ]
+    },
+    {
+      "bounds": [
+        1608,
+        484,
+        512,
+        512
+      ],
+      "category": "terrain",
+      "key": "rock",
+      "renderedSize": [
+        512,
+        512
+      ],
+      "sourceSize": [
+        256,
+        256
+      ],
+      "tileGrid": [
+        2,
+        2
+      ]
+    },
+    {
+      "bounds": [
+        2136,
+        484,
+        512,
+        512
+      ],
+      "category": "terrain",
+      "key": "packed_earth_road",
+      "renderedSize": [
+        512,
+        512
+      ],
+      "sourceSize": [
+        256,
+        256
+      ],
+      "tileGrid": [
+        2,
+        2
+      ]
+    }
+  ],
+  "outputs": {
+    "family": "asset_family_sheet.png",
+    "ledger": "phase4c_placement_ledger.json",
+    "village": "village_composite.png"
+  },
+  "village": {
+    "adjacency": [
+      {
+        "left": "house_l0",
+        "opaqueGap": 4,
+        "right": "house_l1"
+      },
+      {
+        "left": "house_l1",
+        "opaqueGap": 4,
+        "right": "house_l2"
+      },
+      {
+        "left": "house_l2",
+        "opaqueGap": 4,
+        "right": "house_l3"
+      },
+      {
+        "left": "house_l3",
+        "opaqueGap": 4,
+        "right": "mill"
+      },
+      {
+        "left": "mill",
+        "opaqueGap": 4,
+        "right": "barn"
+      },
+      {
+        "left": "barn",
+        "opaqueGap": 4,
+        "right": "storehouse"
+      },
+      {
+        "left": "storehouse",
+        "opaqueGap": 4,
+        "right": "well"
+      },
+      {
+        "left": "well",
+        "opaqueGap": 4,
+        "right": "wheat_farm"
+      }
+    ],
+    "canvas": [
+      1280,
+      900
+    ],
+    "placements": [
+      {
+        "anchor": [
+          191,
+          648
+        ],
+        "canvasBounds": [
+          143,
+          536,
+          96,
+          112
+        ],
+        "category": "buildings",
+        "key": "house_l0",
+        "opaqueBounds": [
+          152,
+          558,
+          230,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          276,
+          648
+        ],
+        "canvasBounds": [
+          228,
+          528,
+          96,
+          120
+        ],
+        "category": "buildings",
+        "key": "house_l1",
+        "opaqueBounds": [
+          234,
+          528,
+          315,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          363,
+          648
+        ],
+        "canvasBounds": [
+          315,
+          504,
+          96,
+          144
+        ],
+        "category": "buildings",
+        "key": "house_l2",
+        "opaqueBounds": [
+          319,
+          504,
+          407,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          482,
+          648
+        ],
+        "canvasBounds": [
+          402,
+          456,
+          160,
+          192
+        ],
+        "category": "buildings",
+        "key": "house_l3",
+        "opaqueBounds": [
+          411,
+          471,
+          552,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          601,
+          648
+        ],
+        "canvasBounds": [
+          553,
+          488,
+          96,
+          160
+        ],
+        "category": "buildings",
+        "key": "mill",
+        "opaqueBounds": [
+          556,
+          561,
+          646,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          714,
+          648
+        ],
+        "canvasBounds": [
+          634,
+          504,
+          160,
+          144
+        ],
+        "category": "buildings",
+        "key": "barn",
+        "opaqueBounds": [
+          650,
+          524,
+          778,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          852,
+          648
+        ],
+        "canvasBounds": [
+          772,
+          512,
+          160,
+          136
+        ],
+        "category": "buildings",
+        "key": "storehouse",
+        "opaqueBounds": [
+          782,
+          528,
+          921,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          960,
+          648
+        ],
+        "canvasBounds": [
+          924,
+          568,
+          72,
+          80
+        ],
+        "category": "buildings",
+        "key": "well",
+        "opaqueBounds": [
+          925,
+          571,
+          995,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          1063,
+          648
+        ],
+        "canvasBounds": [
+          983,
+          552,
+          160,
+          96
+        ],
+        "category": "buildings",
+        "key": "wheat_farm",
+        "opaqueBounds": [
+          999,
+          552,
+          1127,
+          632
+        ]
+      },
+      {
+        "anchor": [
+          486,
+          378
+        ],
+        "canvasBounds": [
+          438,
+          274,
+          96,
+          104
+        ],
+        "category": "buildings",
+        "key": "logging_camp",
+        "opaqueBounds": [
+          442,
+          288,
+          530,
+          362
+        ]
+      },
+      {
+        "anchor": [
+          793,
+          378
+        ],
+        "canvasBounds": [
+          737,
+          266,
+          112,
+          112
+        ],
+        "category": "buildings",
+        "key": "sawmill",
+        "opaqueBounds": [
+          749,
+          289,
+          837,
+          362
+        ]
+      },
+      {
+        "anchor": [
+          70,
+          594
+        ],
+        "canvasBounds": [
+          38,
+          498,
+          64,
+          96
+        ],
+        "category": "foliage",
+        "key": "tree_conifer_a",
+        "opaqueBounds": [
+          38,
+          498,
+          101,
+          594
+        ]
+      },
+      {
+        "anchor": [
+          130,
+          648
+        ],
+        "canvasBounds": [
+          102,
+          568,
+          56,
+          80
+        ],
+        "category": "foliage",
+        "key": "tree_conifer_b",
+        "opaqueBounds": [
+          103,
+          568,
+          156,
+          648
+        ]
+      },
+      {
+        "anchor": [
+          1150,
+          630
+        ],
+        "canvasBounds": [
+          1114,
+          542,
+          72,
+          88
+        ],
+        "category": "foliage",
+        "key": "tree_broadleaf_a",
+        "opaqueBounds": [
+          1116,
+          542,
+          1183,
+          630
+        ]
+      },
+      {
+        "anchor": [
+          1210,
+          576
+        ],
+        "canvasBounds": [
+          1178,
+          504,
+          64,
+          72
+        ],
+        "category": "foliage",
+        "key": "tree_broadleaf_b",
+        "opaqueBounds": [
+          1182,
+          504,
+          1237,
+          576
+        ]
+      },
+      {
+        "anchor": [
+          190,
+          684
+        ],
+        "canvasBounds": [
+          170,
+          648,
+          40,
+          36
+        ],
+        "category": "foliage",
+        "key": "shrub_a",
+        "opaqueBounds": [
+          170,
+          654,
+          210,
+          684
+        ]
+      },
+      {
+        "anchor": [
+          1090,
+          684
+        ],
+        "canvasBounds": [
+          1074,
+          656,
+          32,
+          28
+        ],
+        "category": "foliage",
+        "key": "shrub_b",
+        "opaqueBounds": [
+          1074,
+          659,
+          1106,
+          684
+        ]
+      }
+    ],
+    "terrainSource": {
+      "name": "phase4c-terrain-default-zoom.png",
+      "sha256": "b4eabe082fdf5f0ede92af139ef8e3b2e7550e270682b97011cb833b8cedb26c",
+      "size": [
+        1280,
+        900
+      ]
+    }
+  }
+}

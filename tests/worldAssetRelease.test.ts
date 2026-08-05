@@ -124,6 +124,23 @@ describe("Phase 4C world asset release", () => {
 
       // Then: all exact keys validate and promoted assets remain byte-identical.
       assert.deepEqual(manifest.assets.map((asset) => asset.key), [...WORLD_ASSET_KEYS]);
+      assert.deepEqual(
+        Object.fromEntries(
+          manifest.assets
+            .filter((asset) => asset.category === "building" && asset.key in selections)
+            .map((asset) => [asset.key, asset.source]),
+        ),
+        {
+          house_l1: { seed: 64050101, candidate: 1 },
+          house_l2: { seed: 64050202, candidate: 2 },
+          house_l3: { seed: 64050303, candidate: 3 },
+          well: { seed: 64050404, candidate: 4 },
+          storehouse: { seed: 64050505, candidate: 5 },
+          wheat_farm: { seed: 64050606, candidate: 6 },
+          logging_camp: { seed: 64050701, candidate: 1 },
+          sawmill: { seed: 64050802, candidate: 2 },
+        },
+      );
       assert.doesNotThrow(() => verifyWorldAssets(test.root, test.phase4bRoot));
       for (const [key, bytes] of originals) {
         assert.deepEqual(readFileSync(path.join(test.root, "public", "assets", "buildings", `${key}.png`)), bytes);

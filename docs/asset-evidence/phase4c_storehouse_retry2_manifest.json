@@ -1,0 +1,98 @@
+{
+  "models": {
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "ipadapter": "ip-adapter-plus_sdxl_vit-h.safetensors",
+    "clipVision": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+    "preset": "PLUS (high strength)"
+  },
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapterWeights": {
+      "building": 0.05,
+      "foliage": 0.02,
+      "terrain": 0.01
+    }
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "summary": {
+    "catalogJobs": 59,
+    "queuedJobs": 6,
+    "completedJobs": 6
+  },
+  "timing": {
+    "startedAtUtc": "2026-08-05T08:03:22.777817+00:00",
+    "finishedAtUtc": "2026-08-05T08:06:47.488658+00:00",
+    "elapsedSeconds": 204.711
+  },
+  "jobs": [
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 1,
+      "seed": 64050501,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_01.png",
+      "elapsedSeconds": 34.059,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 2,
+      "seed": 64050502,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_02.png",
+      "elapsedSeconds": 34.099,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 3,
+      "seed": 64050503,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_03.png",
+      "elapsedSeconds": 34.137,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 4,
+      "seed": 64050504,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_04.png",
+      "elapsedSeconds": 34.174,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 5,
+      "seed": 64050505,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_05.png",
+      "elapsedSeconds": 34.089,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 6,
+      "seed": 64050506,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_06.png",
+      "elapsedSeconds": 34.154,
+      "status": "completed"
+    }
+  ]
+}

@@ -1,0 +1,628 @@
+{
+  "models": {
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "ipadapter": "ip-adapter-plus_sdxl_vit-h.safetensors",
+    "clipVision": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+    "preset": "PLUS (high strength)"
+  },
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapterWeights": {
+      "building": 0.05,
+      "foliage": 0.02,
+      "terrain": 0.01
+    }
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "summary": {
+    "catalogJobs": 59,
+    "queuedJobs": 59,
+    "completedJobs": 59
+  },
+  "timing": {
+    "startedAtUtc": "2026-08-05T07:16:29.579763+00:00",
+    "finishedAtUtc": "2026-08-05T07:50:45.248160+00:00",
+    "elapsedSeconds": 2055.668
+  },
+  "jobs": [
+    {
+      "category": "building",
+      "key": "house_l1",
+      "candidate": 1,
+      "seed": 64050101,
+      "geometry": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
+      "sourcePath": "building/house_l1_01.png",
+      "elapsedSeconds": 36.056,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l1",
+      "candidate": 2,
+      "seed": 64050102,
+      "geometry": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
+      "sourcePath": "building/house_l1_02.png",
+      "elapsedSeconds": 34.176,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l1",
+      "candidate": 3,
+      "seed": 64050103,
+      "geometry": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
+      "sourcePath": "building/house_l1_03.png",
+      "elapsedSeconds": 36.064,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l1",
+      "candidate": 4,
+      "seed": 64050104,
+      "geometry": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
+      "sourcePath": "building/house_l1_04.png",
+      "elapsedSeconds": 36.063,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l1",
+      "candidate": 5,
+      "seed": 64050105,
+      "geometry": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
+      "sourcePath": "building/house_l1_05.png",
+      "elapsedSeconds": 36.069,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l1",
+      "candidate": 6,
+      "seed": 64050106,
+      "geometry": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
+      "sourcePath": "building/house_l1_06.png",
+      "elapsedSeconds": 36.064,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l2",
+      "candidate": 1,
+      "seed": 64050201,
+      "geometry": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
+      "sourcePath": "building/house_l2_01.png",
+      "elapsedSeconds": 36.062,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l2",
+      "candidate": 2,
+      "seed": 64050202,
+      "geometry": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
+      "sourcePath": "building/house_l2_02.png",
+      "elapsedSeconds": 36.041,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l2",
+      "candidate": 3,
+      "seed": 64050203,
+      "geometry": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
+      "sourcePath": "building/house_l2_03.png",
+      "elapsedSeconds": 34.082,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l2",
+      "candidate": 4,
+      "seed": 64050204,
+      "geometry": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
+      "sourcePath": "building/house_l2_04.png",
+      "elapsedSeconds": 36.039,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l2",
+      "candidate": 5,
+      "seed": 64050205,
+      "geometry": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
+      "sourcePath": "building/house_l2_05.png",
+      "elapsedSeconds": 34.087,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l2",
+      "candidate": 6,
+      "seed": 64050206,
+      "geometry": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
+      "sourcePath": "building/house_l2_06.png",
+      "elapsedSeconds": 36.04,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l3",
+      "candidate": 1,
+      "seed": 64050301,
+      "geometry": "a large stone manor house, slate roof, a short square tower at one end, arched doorway",
+      "sourcePath": "building/house_l3_01.png",
+      "elapsedSeconds": 36.041,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l3",
+      "candidate": 2,
+      "seed": 64050302,
+      "geometry": "a large stone manor house, slate roof, a short square tower at one end, arched doorway",
+      "sourcePath": "building/house_l3_02.png",
+      "elapsedSeconds": 36.049,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l3",
+      "candidate": 3,
+      "seed": 64050303,
+      "geometry": "a large stone manor house, slate roof, a short square tower at one end, arched doorway",
+      "sourcePath": "building/house_l3_03.png",
+      "elapsedSeconds": 36.042,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l3",
+      "candidate": 4,
+      "seed": 64050304,
+      "geometry": "a large stone manor house, slate roof, a short square tower at one end, arched doorway",
+      "sourcePath": "building/house_l3_04.png",
+      "elapsedSeconds": 36.051,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l3",
+      "candidate": 5,
+      "seed": 64050305,
+      "geometry": "a large stone manor house, slate roof, a short square tower at one end, arched doorway",
+      "sourcePath": "building/house_l3_05.png",
+      "elapsedSeconds": 36.042,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "house_l3",
+      "candidate": 6,
+      "seed": 64050306,
+      "geometry": "a large stone manor house, slate roof, a short square tower at one end, arched doorway",
+      "sourcePath": "building/house_l3_06.png",
+      "elapsedSeconds": 34.045,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "well",
+      "candidate": 1,
+      "seed": 64050401,
+      "geometry": "a low circular stone wellhead with a small timber roof on two posts, rope and bucket",
+      "sourcePath": "building/well_01.png",
+      "elapsedSeconds": 34.092,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "well",
+      "candidate": 2,
+      "seed": 64050402,
+      "geometry": "a low circular stone wellhead with a small timber roof on two posts, rope and bucket",
+      "sourcePath": "building/well_02.png",
+      "elapsedSeconds": 34.048,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "well",
+      "candidate": 3,
+      "seed": 64050403,
+      "geometry": "a low circular stone wellhead with a small timber roof on two posts, rope and bucket",
+      "sourcePath": "building/well_03.png",
+      "elapsedSeconds": 34.128,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "well",
+      "candidate": 4,
+      "seed": 64050404,
+      "geometry": "a low circular stone wellhead with a small timber roof on two posts, rope and bucket",
+      "sourcePath": "building/well_04.png",
+      "elapsedSeconds": 34.043,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "well",
+      "candidate": 5,
+      "seed": 64050405,
+      "geometry": "a low circular stone wellhead with a small timber roof on two posts, rope and bucket",
+      "sourcePath": "building/well_05.png",
+      "elapsedSeconds": 34.052,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "well",
+      "candidate": 6,
+      "seed": 64050406,
+      "geometry": "a low circular stone wellhead with a small timber roof on two posts, rope and bucket",
+      "sourcePath": "building/well_06.png",
+      "elapsedSeconds": 34.075,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 1,
+      "seed": 64050501,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_01.png",
+      "elapsedSeconds": 34.074,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 2,
+      "seed": 64050502,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_02.png",
+      "elapsedSeconds": 34.062,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 3,
+      "seed": 64050503,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_03.png",
+      "elapsedSeconds": 34.052,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 4,
+      "seed": 64050504,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_04.png",
+      "elapsedSeconds": 34.053,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 5,
+      "seed": 64050505,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_05.png",
+      "elapsedSeconds": 34.041,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 6,
+      "seed": 64050506,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_06.png",
+      "elapsedSeconds": 34.077,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "wheat_farm",
+      "candidate": 1,
+      "seed": 64050601,
+      "geometry": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
+      "sourcePath": "building/wheat_farm_01.png",
+      "elapsedSeconds": 34.037,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "wheat_farm",
+      "candidate": 2,
+      "seed": 64050602,
+      "geometry": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
+      "sourcePath": "building/wheat_farm_02.png",
+      "elapsedSeconds": 34.097,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "wheat_farm",
+      "candidate": 3,
+      "seed": 64050603,
+      "geometry": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
+      "sourcePath": "building/wheat_farm_03.png",
+      "elapsedSeconds": 34.075,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "wheat_farm",
+      "candidate": 4,
+      "seed": 64050604,
+      "geometry": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
+      "sourcePath": "building/wheat_farm_04.png",
+      "elapsedSeconds": 34.066,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "wheat_farm",
+      "candidate": 5,
+      "seed": 64050605,
+      "geometry": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
+      "sourcePath": "building/wheat_farm_05.png",
+      "elapsedSeconds": 34.065,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "wheat_farm",
+      "candidate": 6,
+      "seed": 64050606,
+      "geometry": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
+      "sourcePath": "building/wheat_farm_06.png",
+      "elapsedSeconds": 34.064,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 1,
+      "seed": 64050701,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_01.png",
+      "elapsedSeconds": 34.092,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 2,
+      "seed": 64050702,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_02.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 3,
+      "seed": 64050703,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_03.png",
+      "elapsedSeconds": 34.042,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 4,
+      "seed": 64050704,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_04.png",
+      "elapsedSeconds": 34.066,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 5,
+      "seed": 64050705,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_05.png",
+      "elapsedSeconds": 34.065,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 6,
+      "seed": 64050706,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_06.png",
+      "elapsedSeconds": 34.066,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 1,
+      "seed": 64050801,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_01.png",
+      "elapsedSeconds": 34.064,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 2,
+      "seed": 64050802,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_02.png",
+      "elapsedSeconds": 34.067,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 3,
+      "seed": 64050803,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_03.png",
+      "elapsedSeconds": 34.054,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 4,
+      "seed": 64050804,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_04.png",
+      "elapsedSeconds": 34.048,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 5,
+      "seed": 64050805,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_05.png",
+      "elapsedSeconds": 34.037,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 6,
+      "seed": 64050806,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_06.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_conifer_a",
+      "candidate": 1,
+      "seed": 64052001,
+      "geometry": "one tall narrow evergreen tree",
+      "sourcePath": "foliage/tree_conifer_a.png",
+      "elapsedSeconds": 36.037,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_conifer_b",
+      "candidate": 1,
+      "seed": 64052002,
+      "geometry": "one shorter broader evergreen tree",
+      "sourcePath": "foliage/tree_conifer_b.png",
+      "elapsedSeconds": 36.044,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_broadleaf_a",
+      "candidate": 1,
+      "seed": 64052003,
+      "geometry": "one rounded deciduous tree canopy on a short trunk",
+      "sourcePath": "foliage/tree_broadleaf_a.png",
+      "elapsedSeconds": 36.058,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_broadleaf_b",
+      "candidate": 1,
+      "seed": 64052004,
+      "geometry": "one smaller sparser deciduous tree canopy on a short trunk",
+      "sourcePath": "foliage/tree_broadleaf_b.png",
+      "elapsedSeconds": 36.066,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_a",
+      "candidate": 1,
+      "seed": 64052005,
+      "geometry": "one low dense woodland bush",
+      "sourcePath": "foliage/shrub_a.png",
+      "elapsedSeconds": 36.061,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "shrub_b",
+      "candidate": 1,
+      "seed": 64052006,
+      "geometry": "one smaller sparse woodland bush",
+      "sourcePath": "foliage/shrub_b.png",
+      "elapsedSeconds": 36.037,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "grass",
+      "candidate": 1,
+      "seed": 64053001,
+      "geometry": "seamless tileable muted meadow grass texture, low contrast, no objects",
+      "sourcePath": "terrain/grass.png",
+      "elapsedSeconds": 36.024,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "forest_floor",
+      "candidate": 1,
+      "seed": 64053002,
+      "geometry": "seamless tileable forest floor texture with restrained leaf litter, low contrast, no objects",
+      "sourcePath": "terrain/forest_floor.png",
+      "elapsedSeconds": 36.036,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "water",
+      "candidate": 1,
+      "seed": 64053003,
+      "geometry": "seamless tileable calm shallow water texture with subtle ripples, low contrast, no shoreline",
+      "sourcePath": "terrain/water.png",
+      "elapsedSeconds": 34.159,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "rock",
+      "candidate": 1,
+      "seed": 64053004,
+      "geometry": "seamless tileable weathered rock texture, low contrast, no loose objects",
+      "sourcePath": "terrain/rock.png",
+      "elapsedSeconds": 36.042,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "packed_earth_road",
+      "candidate": 1,
+      "seed": 64053005,
+      "geometry": "seamless tileable packed earth road texture, low contrast, no road edges or markings",
+      "sourcePath": "terrain/packed_earth_road.png",
+      "elapsedSeconds": 34.116,
+      "status": "completed"
+    }
+  ]
+}

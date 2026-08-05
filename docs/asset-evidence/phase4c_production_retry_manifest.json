@@ -1,0 +1,218 @@
+{
+  "models": {
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "ipadapter": "ip-adapter-plus_sdxl_vit-h.safetensors",
+    "clipVision": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+    "preset": "PLUS (high strength)"
+  },
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapterWeights": {
+      "building": 0.05,
+      "foliage": 0.02,
+      "terrain": 0.01
+    }
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "summary": {
+    "catalogJobs": 59,
+    "queuedJobs": 18,
+    "completedJobs": 18
+  },
+  "timing": {
+    "startedAtUtc": "2026-08-05T07:52:06.131293+00:00",
+    "finishedAtUtc": "2026-08-05T08:02:41.542261+00:00",
+    "elapsedSeconds": 635.411
+  },
+  "jobs": [
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 1,
+      "seed": 64050501,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_01.png",
+      "elapsedSeconds": 36.066,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 2,
+      "seed": 64050502,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_02.png",
+      "elapsedSeconds": 34.182,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 3,
+      "seed": 64050503,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_03.png",
+      "elapsedSeconds": 36.045,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 4,
+      "seed": 64050504,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_04.png",
+      "elapsedSeconds": 36.042,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 5,
+      "seed": 64050505,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_05.png",
+      "elapsedSeconds": 34.157,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "storehouse",
+      "candidate": 6,
+      "seed": 64050506,
+      "geometry": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
+      "sourcePath": "building/storehouse_06.png",
+      "elapsedSeconds": 36.068,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 1,
+      "seed": 64050701,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_01.png",
+      "elapsedSeconds": 36.059,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 2,
+      "seed": 64050702,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_02.png",
+      "elapsedSeconds": 34.144,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 3,
+      "seed": 64050703,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_03.png",
+      "elapsedSeconds": 36.039,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 4,
+      "seed": 64050704,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_04.png",
+      "elapsedSeconds": 34.129,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 5,
+      "seed": 64050705,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_05.png",
+      "elapsedSeconds": 36.04,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "logging_camp",
+      "candidate": 6,
+      "seed": 64050706,
+      "geometry": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+      "sourcePath": "building/logging_camp_06.png",
+      "elapsedSeconds": 34.14,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 1,
+      "seed": 64050801,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_01.png",
+      "elapsedSeconds": 36.04,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 2,
+      "seed": 64050802,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_02.png",
+      "elapsedSeconds": 36.038,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 3,
+      "seed": 64050803,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_03.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 4,
+      "seed": 64050804,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_04.png",
+      "elapsedSeconds": 36.043,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 5,
+      "seed": 64050805,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_05.png",
+      "elapsedSeconds": 34.093,
+      "status": "completed"
+    },
+    {
+      "category": "building",
+      "key": "sawmill",
+      "candidate": 6,
+      "seed": 64050806,
+      "geometry": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+      "sourcePath": "building/sawmill_06.png",
+      "elapsedSeconds": 36.048,
+      "status": "completed"
+    }
+  ]
+}

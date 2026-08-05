@@ -63,7 +63,7 @@ const foliageKeys = [
 const sourceForBuilding = (key: BuildingSpriteKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
   const subject = newBuildingKeys.indexOf(key);
   if (subject < 0) throw new WorldAssetPreparationError(`Unknown building selection ${key}`);
-  return { seed: 64050100 + (subject + 1) * 100 + candidate, candidate };
+  return { seed: 64050100 + subject * 100 + candidate, candidate };
 };
 
 const sourceForReleaseBuilding = (
