@@ -304,12 +304,17 @@ def build_subject_guide(job: Job) -> Image.Image:
                     draw.ellipse((610, 735, 880, 820), fill=earth)
                     draw.ellipse((610, 780, 880, 865), fill=earth)
                 case "sawmill":
-                    draw.polygon(((220, 510), (500, 350), (805, 500), (520, 625)), fill=roof)
-                    draw.rectangle((255, 500, 305, 835), fill=dark)
-                    draw.rectangle((735, 490, 785, 820), fill=dark)
+                    draw.polygon(((220, 540), (512, 370), (805, 530), (520, 650)), fill=roof)
+                    draw.rectangle((255, 525, 305, 835), fill=dark)
+                    draw.rectangle((735, 515, 785, 820), fill=dark)
                     draw.rectangle((300, 610, 740, 790), fill=dark)
-                    draw.rectangle((355, 655, 675, 695), fill=wall)
-                    draw.rectangle((375, 735, 815, 780), fill=earth)
+                    draw.rectangle((455, 170, 490, 690), fill=dark)
+                    draw.rectangle((534, 170, 569, 690), fill=dark)
+                    draw.rectangle((455, 170, 569, 215), fill=dark)
+                    draw.rectangle((504, 390, 520, 720), fill=wall)
+                    draw.rectangle((335, 720, 455, 752), fill=wall)
+                    draw.rectangle((350, 758, 470, 790), fill=wall)
+                    draw.ellipse((535, 735, 760, 815), fill=earth)
                 case "house_l1" | "house_l2" | "house_l3":
                     wide = job.key in {"house_l3", "storehouse"}
                     tall = job.key in {"house_l2", "house_l3"}

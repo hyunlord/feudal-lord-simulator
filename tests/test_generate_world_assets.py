@@ -172,11 +172,25 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             with self.subTest(key=key):
                 job = next(candidate for candidate in module.JOBS if candidate.key == key)
                 guide = module.build_subject_guide(job)
-                self.assertEqual(guide.getpixel((512, 200)), module.CYAN_RGB)
-                self.assertEqual(guide.getpixel((512, 720)), (67, 54, 42))
+                if key == "sawmill":
+                    self.assertNotEqual(guide.getpixel((512, 200)), module.CYAN_RGB)
+                    self.assertEqual(guide.getpixel((512, 720)), (174, 151, 112))
+                else:
+                    self.assertEqual(guide.getpixel((512, 200)), module.CYAN_RGB)
+                    self.assertEqual(guide.getpixel((512, 720)), (67, 54, 42))
                 workflow = module.workflow_prompt(job, ("house.png", "mill.png", "barn.png"), "guide.png")
                 sampler = next(node for node in workflow.values() if node["class_type"] == "KSampler")
                 self.assertEqual(sampler["inputs"]["denoise"], 0.72)
+
+    def test_sawmill_guide_forces_a_vertical_frame_above_the_roofline(self) -> None:
+        module = load_generator()
+        job = next(candidate for candidate in module.JOBS if candidate.key == "sawmill")
+        guide = module.build_subject_guide(job)
+
+        self.assertNotEqual(guide.getpixel((512, 180)), module.CYAN_RGB)
+        self.assertNotEqual(guide.getpixel((470, 260)), module.CYAN_RGB)
+        self.assertEqual(guide.getpixel((512, 330)), module.CYAN_RGB)
+        self.assertNotEqual(guide.getpixel((512, 650)), module.CYAN_RGB)
 
     def test_storehouse_workflow_restores_open_bay_and_crates_after_inpaint(self) -> None:
         module = load_generator()
