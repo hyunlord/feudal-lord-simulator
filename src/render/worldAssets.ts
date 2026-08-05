@@ -23,10 +23,18 @@ type AssetRecord = {
 
 type JsonRecord = Readonly<Record<string, unknown>>;
 
-const EMPTY_RECORD: JsonRecord = {};
+export class WorldAssetManifestError extends Error {
+  readonly field: string;
+
+  constructor(field: string, message: string) {
+    super(`Invalid world asset manifest ${field}: ${message}`);
+    this.name = "WorldAssetManifestError";
+    this.field = field;
+  }
+}
 
 const records = new Map<string, AssetRecord>(
-  parseManifest(manifestData).map((meta) => [meta.key, { meta, status: "idle", image: null }]),
+  parseWorldAssetManifest(manifestData).map((meta) => [meta.key, { meta, status: "idle", image: null }]),
 );
 
 let preloadPromise: Promise<void> | null = null;
@@ -107,48 +115,51 @@ function markMissing(record: AssetRecord): void {
   record.image = null;
 }
 
-function parseManifest(value: unknown): readonly Omit<AssetMeta, "status">[] {
-  const manifest = requireRecord(value);
+export function parseWorldAssetManifest(value: unknown): readonly Omit<AssetMeta, "status">[] {
+  const manifest = requireRecord(value, "root");
   const assets = manifest["assets"];
-  if (!Array.isArray(assets)) return [];
-  return assets.map(parseAsset);
+  if (!Array.isArray(assets)) throw new WorldAssetManifestError("assets", "expected an array");
+  return assets.map((asset, index) => parseAsset(asset, `assets[${index}]`));
 }
 
-function parseAsset(value: unknown): Omit<AssetMeta, "status"> {
-  const asset = requireRecord(value);
-  const key = requireString(asset["key"]);
+function parseAsset(value: unknown, field: string): Omit<AssetMeta, "status"> {
+  const asset = requireRecord(value, field);
+  const key = requireString(asset["key"], `${field}.key`);
   return {
     key,
-    category: parseCategory(asset["category"]),
-    url: servedUrl(requireString(asset["path"])),
-    width: requireNumber(asset["width"]),
-    height: requireNumber(asset["height"]),
-    anchor: parseAnchor(asset["anchor"]),
-    footprint: parseFootprint(asset["footprint"]),
+    category: parseCategory(asset["category"], `${field}.category`),
+    url: servedUrl(requireAssetPath(asset["path"], `${field}.path`)),
+    width: requirePositiveInteger(asset["width"], `${field}.width`),
+    height: requirePositiveInteger(asset["height"], `${field}.height`),
+    anchor: parseAnchor(asset["anchor"], `${field}.anchor`),
+    footprint: parseFootprint(asset["footprint"], `${field}.footprint`),
   };
 }
 
-function parseAnchor(value: unknown): { readonly x: number; readonly y: number } {
-  const anchor = requireRecord(value);
-  return { x: requireNumber(anchor["x"]), y: requireNumber(anchor["y"]) };
-}
-
-function parseFootprint(value: unknown): { readonly width: number; readonly height: number } {
-  const footprint = requireRecord(value);
+function parseAnchor(value: unknown, field: string): { readonly x: number; readonly y: number } {
+  const anchor = requireRecord(value, field);
   return {
-    width: requireNumber(footprint["width"]),
-    height: requireNumber(footprint["height"]),
+    x: requireNonNegativeNumber(anchor["x"], `${field}.x`),
+    y: requireNonNegativeNumber(anchor["y"], `${field}.y`),
   };
 }
 
-function parseCategory(value: unknown): AssetCategory {
+function parseFootprint(value: unknown, field: string): { readonly width: number; readonly height: number } {
+  const footprint = requireRecord(value, field);
+  return {
+    width: requirePositiveInteger(footprint["width"], `${field}.width`),
+    height: requirePositiveInteger(footprint["height"], `${field}.height`),
+  };
+}
+
+function parseCategory(value: unknown, field: string): AssetCategory {
   switch (value) {
     case "building":
     case "foliage":
     case "terrain":
       return value;
     default:
-      return "terrain";
+      throw new WorldAssetManifestError(field, "expected building, foliage, or terrain");
   }
 }
 
@@ -156,16 +167,38 @@ function servedUrl(path: string): string {
   return path.startsWith("public/") ? `/${path.slice("public/".length)}` : `/${path}`;
 }
 
-function requireRecord(value: unknown): JsonRecord {
-  return isRecord(value) ? value : EMPTY_RECORD;
+function requireRecord(value: unknown, field: string): JsonRecord {
+  if (!isRecord(value)) throw new WorldAssetManifestError(field, "expected an object");
+  return value;
 }
 
-function requireString(value: unknown): string {
-  return typeof value === "string" ? value : "";
+function requireString(value: unknown, field: string): string {
+  if (typeof value !== "string" || value.length === 0) {
+    throw new WorldAssetManifestError(field, "expected a non-empty string");
+  }
+  return value;
 }
 
-function requireNumber(value: unknown): number {
-  return typeof value === "number" && Number.isFinite(value) ? value : 0;
+function requireAssetPath(value: unknown, field: string): string {
+  const path = requireString(value, field);
+  if (!path.startsWith("public/assets/") || path.includes("..") || path.includes("\\")) {
+    throw new WorldAssetManifestError(field, "expected a safe public/assets path");
+  }
+  return path;
+}
+
+function requirePositiveInteger(value: unknown, field: string): number {
+  if (typeof value !== "number" || !Number.isSafeInteger(value) || value <= 0) {
+    throw new WorldAssetManifestError(field, "expected a positive integer");
+  }
+  return value;
+}
+
+function requireNonNegativeNumber(value: unknown, field: string): number {
+  if (typeof value !== "number" || !Number.isFinite(value) || value < 0) {
+    throw new WorldAssetManifestError(field, "expected a non-negative finite number");
+  }
+  return value;
 }
 
 function isRecord(value: unknown): value is JsonRecord {

@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 
 import {
   getSprite,
+  parseWorldAssetManifest,
   preloadWorldAssets,
   spriteMeta,
   type LoadStatus,
@@ -68,6 +69,30 @@ console.log(JSON.stringify({
 };
 
 describe("browser world asset registry", () => {
+  it("Given an unsupported category When the manifest crosses the runtime boundary Then parsing rejects it", () => {
+    const invalid = {
+      assets: [assetFixture({ category: "character" })],
+    };
+
+    assert.throws(() => parseWorldAssetManifest(invalid), /category/);
+  });
+
+  it("Given an unsafe asset path When the manifest crosses the runtime boundary Then parsing rejects it", () => {
+    const invalid = {
+      assets: [assetFixture({ path: "../../private/house.png" })],
+    };
+
+    assert.throws(() => parseWorldAssetManifest(invalid), /path/);
+  });
+
+  it("Given non-positive image dimensions When the manifest crosses the runtime boundary Then parsing rejects it", () => {
+    const invalid = {
+      assets: [assetFixture({ width: 0 })],
+    };
+
+    assert.throws(() => parseWorldAssetManifest(invalid), /width/);
+  });
+
   it("Given the release manifest When metadata is queried before preload Then exact contracts are idle", () => {
     const status: LoadStatus = "idle";
 
@@ -132,3 +157,16 @@ describe("browser world asset registry", () => {
     assert.equal(result["grassStatus"], "missing");
   });
 });
+
+function assetFixture(overrides: Readonly<Record<string, unknown>> = {}): Readonly<Record<string, unknown>> {
+  return {
+    key: "house_l0",
+    category: "building",
+    path: "public/assets/buildings/house_l0.png",
+    width: 96,
+    height: 112,
+    anchor: { x: 48, y: 96 },
+    footprint: { width: 1, height: 1 },
+    ...overrides,
+  };
+}

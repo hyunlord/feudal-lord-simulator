@@ -21,6 +21,9 @@ unchanged.
   `0.5 < zoom <= 0.7`, and full sprites/details above `0.7`.
 - A successful building sprite retains the hard procedural contact shadow.
   Missing or loading assets fall through to the previous procedural shapes.
+- Malformed runtime manifest records fail closed with field-specific errors;
+  unsupported categories, unsafe paths, and non-positive dimensions cannot be
+  reinterpreted as valid fallback metadata.
 
 ## Visual acceptance
 
@@ -30,12 +33,16 @@ unchanged.
 | [Close adjacent buildings](assets/phase4d_close_buildings.png) | The starting house, a new house, and a well share adjacent road-space anchors without floating or detached contact. |
 | [0.5x block LOD](assets/phase4d_lod_0_5x.png) | Buildings become compact blocks and ground-cover sprites disappear at the exact overview boundary. |
 | [Walker depth](assets/phase4d_walker_depth.png) | Live fivefold simulation produces multiple cargo walkers that sort among the nearby buildings and foliage rather than in a separate top layer. |
+| [375px responsive canvas](assets/phase4d_responsive_375.png) | The real canvas, overlay plaque, minimap, build controls, ledger, and speed controls remain framed inside the narrow viewport without horizontal overflow. |
+| [768px responsive canvas](assets/phase4d_responsive_768.png) | The same live sprite path keeps the world readable and the court console non-overlapping at the intermediate breakpoint. |
 
 The camera-edge clearing is stable because tree density is derived from the
 full world before visible-range and building-clearing filters are applied.
 Every building footprint also clears its one-tile apron. The live browser
 reported no console warnings or errors, and all 22 manifest PNG URLs returned
-HTTP 200 with `image/png` content.
+HTTP 200 with `image/png` content. Browser layout metrics also confirmed exact
+375x720 and 768x720 CSS viewports with matching canvas bounds and no horizontal
+overflow.
 
 ## Regression evidence
 
@@ -45,7 +52,7 @@ HTTP 200 with `image/png` content.
   - determinism hash: `4d92c66f9408a603 == 4d92c66f9408a603`
   - food stability, cargo thrashing, labour deadlock, and housing oscillation:
     PASS
-- `npm test`: 331/335 PASS locally. The four remaining tests all stop at
+- `npm test`: 336/340 PASS locally. The four remaining tests all stop at
   `spawnSync ffmpeg ENOENT`; they are release-pipeline file-boundary tests and
   do not represent assertion failures. They must be rerun on the DGX host where
   the asset toolchain is installed before delivery is declared complete.
