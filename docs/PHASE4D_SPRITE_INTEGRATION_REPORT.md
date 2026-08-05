@@ -54,8 +54,11 @@ overflow.
     PASS
 - `npm test`: 336/340 PASS locally. The four remaining tests all stop at
   `spawnSync ffmpeg ENOENT`; they are release-pipeline file-boundary tests and
-  do not represent assertion failures. They must be rerun on the DGX host where
-  the asset toolchain is installed before delivery is declared complete.
+  do not represent assertion failures.
+- DGX `npm test`: 340/340 PASS with `/usr/bin/ffmpeg` available.
+- DGX `npm run typecheck`, `npm run build`, and `npm run harness`: PASS.
+- DGX runtime: `0.0.0.0:3200`, root HTML and both HTML-referenced modules
+  return HTTP 200, and all 22 manifest PNGs return `image/png`.
 
 ## Performance
 
@@ -81,6 +84,6 @@ profiling risk; it is not hidden by the average.
 ## Known issues
 
 1. Local macOS verification cannot run the four ffmpeg-backed pipeline tests
-   because no `ffmpeg` executable is installed.
+   because no `ffmpeg` executable is installed; the same tests pass on DGX.
 2. The new manifest presentation increases worst-frame render cost; rare
    samples reached 12.4-13.0 ms in the acceptance fixture.
