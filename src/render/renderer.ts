@@ -8,6 +8,8 @@ import { drawWorldVignette } from "./worldBackdrop";
 import { TILE_H, depthKey, screenToTile } from "./iso";
 import { drawOverlay, drawPlacementOverlay, type PlacementPreview } from "./overlays";
 import { maxSpriteAnchorY } from "./worldAssets";
+import { renderDetailLevel } from "./buildingVisualState";
+import { buildObjectRenderItems } from "./objectRenderOrder";
 import type { Grid } from "../world/grid";
 import type { Tile } from "../world/world.types";
 
@@ -61,6 +63,15 @@ export const renderFrame = (input: RenderFrameInput): void => {
     world: input.state,
   });
   const visibleTiles = visibleTilesInDrawOrder({ grid: input.state, range });
+  const objectRenderItems = buildObjectRenderItems({
+    tiles: visibleTiles,
+    worldTiles: input.state.tiles,
+    buildings: input.state.buildings,
+    walkers: input.state.walkers,
+    range,
+    seed: input.state.seed,
+    includeGroundCover: renderDetailLevel(input.camera.zoom) === "full",
+  });
   runRenderPasses({
     ground: () => {
       drawWorldVignette(input.context, input.state);
@@ -69,6 +80,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         tiles: visibleTiles,
         range,
         zoom: input.camera.zoom,
+        objectRenderItems,
       });
     },
     objects: () =>
@@ -80,6 +92,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         camera: input.camera,
         dpr: devicePixelRatioFor(input.context, input.viewport),
         viewport: input.viewport,
+        objectRenderItems,
       }),
     overhang: () => undefined,
   });

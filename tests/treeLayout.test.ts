@@ -21,7 +21,7 @@ const fullForest = [
   tile(0, 2), tile(1, 2), tile(2, 2),
 ];
 
-test("forest interiors draw denser tree clusters than exposed forest edges", () => {
+test("forest interiors draw one or two trees while exposed forest edges stay thin", () => {
   const interior = tile(1, 1);
   const exposedEdge = tile(8, 8);
   const fullForestLookup = buildForestLookup(fullForest);
@@ -29,7 +29,7 @@ test("forest interiors draw denser tree clusters than exposed forest edges", () 
 
   assert.equal(forestTreeCount(exposedEdge, exposedLookup, 73), 1);
   assert.ok(forestTreeCount(interior, fullForestLookup, 73) > forestTreeCount(exposedEdge, exposedLookup, 73));
-  assert.ok(forestTreeCount(interior, fullForestLookup, 73) <= 3);
+  assert.ok(forestTreeCount(interior, fullForestLookup, 73) <= 2);
 });
 
 test("tree density ignores diagonal forest neighbors", () => {
@@ -62,11 +62,11 @@ test("tree clusters are deterministic for one seed and change with another seed"
 });
 
 test("tree descriptors vary safely inside the isometric tile footprint", () => {
-  const descriptors = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 2 });
+  const descriptors = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 0 });
   const silhouettes = new Set(descriptors.map((descriptor) => descriptor.silhouette));
 
-  assert.ok(descriptors.length >= 2 && descriptors.length <= 3);
-  assert.equal(descriptors.length, 3);
+  assert.ok(descriptors.length >= 1 && descriptors.length <= 2);
+  assert.equal(descriptors.length, 2);
   assert.ok(silhouettes.size >= 2);
   for (const descriptor of descriptors) {
     assert.ok(Math.abs(descriptor.offsetX) <= TILE_W * 0.35);
@@ -87,23 +87,25 @@ test("multi-tree clusters are sorted by local y position for stable overlap", ()
   assert.deepEqual(descriptors, sorted);
 });
 
-test("multi-tree canopy tones alternate between forest and sage dark", () => {
-  const descriptors = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 });
-  const tones = new Set(descriptors.map((descriptor) => descriptor.tone));
+test("multi-tree canopy tones walk the full foliage ramp deterministically", () => {
+  const first = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 });
+  const repeat = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 });
+  const otherTile = buildTreeCluster({ tile: tile(2, 2), forestLookup: buildForestLookup(fullForest), seed: 73 });
+  const tones = first.map((descriptor) => descriptor.tone);
 
-  assert.equal(descriptors.length, 3);
-  assert.deepEqual(tones, new Set(["forest", "sageDark"]));
-  for (let index = 1; index < descriptors.length; index += 1) {
-    assert.notEqual(descriptors[index]?.tone, descriptors[index - 1]?.tone);
-  }
+  assert.equal(first.length, 2);
+  assert.deepEqual(repeat.map((descriptor) => descriptor.tone), tones);
+  assert.ok(tones.every((tone) => /^#[0-9A-F]{6}$/.test(tone)));
+  assert.notDeepEqual(otherTile.map((descriptor) => descriptor.tone), tones);
 });
 
 test("tree and shrub sprite variants are assigned from separate deterministic slots", () => {
   const descriptors = [
     ...buildTreeCluster({ tile: tile(0, 0), forestLookup: buildForestLookup([tile(0, 0)]), seed: 1 }),
     ...buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 }),
-    ...buildTreeCluster({ tile: tile(4, 4), forestLookup: buildForestLookup([tile(4, 4)]), seed: 74 }),
-    ...buildTreeCluster({ tile: tile(5, 4), forestLookup: buildForestLookup([tile(5, 4)]), seed: 75 }),
+    ...buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 0 }),
+    ...buildTreeCluster({ tile: tile(4, 4), forestLookup: buildForestLookup([tile(4, 4)]), seed: 0 }),
+    ...buildTreeCluster({ tile: tile(5, 4), forestLookup: buildForestLookup([tile(5, 4)]), seed: 1 }),
   ];
   const groundCover = Array.from({ length: 4_096 }, (_, index) =>
     buildGroundCover({ tile: tile(index % 64, Math.floor(index / 64), "grass"), seed: 73 }),

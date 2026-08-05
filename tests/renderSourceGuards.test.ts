@@ -75,3 +75,18 @@ test("GameCanvas starts world asset preload without blocking first paint", async
   assert.equal(startsPreloaderWithoutAwait, true);
   assert.equal(awaitsPreloader, false);
 });
+
+test("renderFrame computes the object queue once and reuses it across ground and object passes", async () => {
+  // Given
+  const source = await readFile(new URL("../src/render/renderer.ts", import.meta.url), "utf8");
+
+  // When
+  const queueBuilds = source.match(/\bbuildObjectRenderItems\s*\(/g) ?? [];
+  const passesQueueToTerrain = /drawTerrain\([\s\S]*objectRenderItems/.test(source);
+  const passesQueueToObjects = /drawBuildings\([\s\S]*objectRenderItems/.test(source);
+
+  // Then
+  assert.equal(queueBuilds.length, 1);
+  assert.equal(passesQueueToTerrain, true);
+  assert.equal(passesQueueToObjects, true);
+});

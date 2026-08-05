@@ -37,6 +37,7 @@ export type ProductionVisualState =
 
 export type BuildingVisualState = {
   readonly houseLevel: number;
+  readonly houseProblem: "water" | "bread" | null;
   readonly production: ProductionVisualState;
 };
 
@@ -44,8 +45,10 @@ export function buildBuildingVisualState(
   building: Building,
   houses: readonly House[],
 ): BuildingVisualState {
+  const house = houses.find((candidate) => candidate.buildingId === building.id);
   return {
-    houseLevel: houseLevel(building, houses),
+    houseLevel: house?.level ?? 0,
+    houseProblem: houseProblem(building, house),
     production: productionVisualState(building),
   };
 }
@@ -130,9 +133,14 @@ const towerHouseProfile = {
   roofShape: "tower",
 } as const satisfies BodyProfile;
 
-function houseLevel(building: Building, houses: readonly House[]): number {
-  if (building.kind !== "house") return 0;
-  return houses.find((house) => house.buildingId === building.id)?.level ?? 0;
+function houseProblem(
+  building: Building,
+  house: House | undefined,
+): "water" | "bread" | null {
+  if (building.kind !== "house" || house === undefined) return null;
+  if (!house.hasWater) return "water";
+  if (house.level >= 1 && house.breadStock <= 0) return "bread";
+  return null;
 }
 
 function productionVisualState(building: Building): ProductionVisualState {

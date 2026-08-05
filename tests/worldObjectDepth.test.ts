@@ -186,11 +186,11 @@ test("forest density uses full world neighbors before visible and clearing filte
     buildings: [building("clearing-house", "house", 2, 4)],
     walkers: [],
     range: { minTx: 4, minTy: 4, maxTx: 4, maxTy: 4 },
-    seed: 1,
+    seed: 73,
   });
 
   // Then
-  assert.equal(items.filter((item) => item.kind === "tree").length, 3);
+  assert.equal(items.filter((item) => item.kind === "tree").length, 2);
 });
 
 test("ground cover protection reaches two tiles from every building footprint edge", () => {

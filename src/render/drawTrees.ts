@@ -9,7 +9,7 @@ import {
   type GroundCoverDescriptor,
   type TreeDescriptor,
 } from "./treeLayout";
-import { applyInkOutline, drawFlatDiamondShadow, snapToPixel } from "./style";
+import { applyInkOutline, snapToPixel } from "./style";
 import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
 
 export function drawTreeCluster(
@@ -46,6 +46,7 @@ export function drawTreeDescriptor(
       drawWorldSpriteAtWorldAnchor(context, input.tree.spriteKey, anchor.tx, anchor.ty, {
         ...input.spriteOptions,
         scale: input.tree.scale,
+        tint: input.tree.tone,
       })
     ) {
       return;
@@ -84,7 +85,7 @@ function drawTree(
   zoom: number,
 ): void {
   if (renderDetailLevel(zoom) !== "full") {
-    context.fillStyle = SEMANTIC_PALETTE[tree.tone];
+    context.fillStyle = tree.tone;
     context.beginPath();
     context.ellipse(
       snapToPixel(tree.x),
@@ -101,18 +102,12 @@ function drawTree(
     return;
   }
   const sway = ambientOffset({ tick, amplitude: 2 * tree.scale, frequency: 0.72, phase: tree.phase });
-  drawFlatDiamondShadow(context, {
-    centerX: tree.x,
-    centerY: tree.y + 7 * tree.scale,
-    radiusX: 13 * tree.scale,
-    radiusY: 5 * tree.scale,
-  });
   context.fillStyle = SEMANTIC_PALETTE.earthDark;
   traceRect(context, tree.x - 2 * tree.scale, tree.y - 20 * tree.scale, 4 * tree.scale, 24 * tree.scale);
   context.fill();
   applyInkOutline(context, zoom);
   context.stroke();
-  context.fillStyle = SEMANTIC_PALETTE[tree.tone];
+  context.fillStyle = tree.tone;
   traceTreeCanopy(context, tree, sway);
   context.fill();
   applyInkOutline(context, zoom);

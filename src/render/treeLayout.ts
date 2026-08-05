@@ -1,9 +1,10 @@
+import { RAMPS, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
 
 export type TreeSilhouette = "narrow" | "broad" | "rounded";
-export type TreeTone = "forest" | "sageDark";
+export type TreeTone = PaletteColor;
 export type TreeSpriteKey =
   | "tree_broadleaf_a"
   | "tree_broadleaf_b"
@@ -50,7 +51,8 @@ type TreeClusterInput = {
 };
 
 const SILHOUETTES: readonly TreeSilhouette[] = ["narrow", "broad", "rounded"];
-const TREE_TONES: readonly TreeTone[] = ["forest", "sageDark"];
+const TREE_TONES: readonly TreeTone[] = RAMPS.foliage;
+const FIRST_TREE_TONE: TreeTone = RAMPS.foliage[0] ?? SEMANTIC_PALETTE.forest;
 const GROUND_COVER_SPRITES: readonly GroundCoverSpriteKey[] = [
   "shrub_a",
   "shrub_b",
@@ -98,7 +100,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       offsetY,
       scale,
       silhouette,
-      tone: "forest",
+      tone: FIRST_TREE_TONE,
       phase: objectPhase(`tree:${input.seed}:${index}:${silhouette}`, input.tile.tx, input.tile.ty),
       sortY: y + scale * 8,
       anchorTx: anchor.tx,
@@ -109,7 +111,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
 
   const result = descriptors
     .sort((left, right) => left.sortY - right.sortY || left.id.localeCompare(right.id))
-    .map((tree, index) => ({ ...tree, tone: TREE_TONES[(toneOffset + index) % TREE_TONES.length] ?? "forest" }));
+    .map((tree, index) => ({ ...tree, tone: treeToneAt(toneOffset + index) }));
   const tileCache = treeClusterCache.get(input.tile) ?? new Map();
   tileCache.set(cacheKey, result);
   treeClusterCache.set(input.tile, tileCache);
@@ -172,15 +174,12 @@ export function buildForestLookup(tiles: readonly Tile[]): ForestLookup {
   return lookup;
 }
 
-export function forestTreeCount(tile: Tile, forestLookup: ForestLookup, seed: number): 1 | 2 | 3 {
+export function forestTreeCount(tile: Tile, forestLookup: ForestLookup, seed: number): 1 | 2 {
   const neighborCount = forestNeighborCount(tile, forestLookup);
   const densityRoll = hashUnit(tile.tx, tile.ty, seed, 0, 59);
 
-  if (neighborCount >= 4) {
-    return 3;
-  }
   if (neighborCount >= 2) {
-    return densityRoll > 0.78 ? 3 : 2;
+    return densityRoll > 0.33 ? 2 : 1;
   }
   return 1;
 }
@@ -251,6 +250,10 @@ function treeSpriteKey(
     return variant === 0 ? "tree_conifer_a" : "tree_conifer_b";
   }
   return variant === 0 ? "tree_broadleaf_a" : "tree_broadleaf_b";
+}
+
+function treeToneAt(index: number): TreeTone {
+  return TREE_TONES[index % TREE_TONES.length] ?? FIRST_TREE_TONE;
 }
 
 function hashUnit(tx: number, ty: number, seed: number, index: number, salt: number): number {

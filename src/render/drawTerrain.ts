@@ -1,8 +1,12 @@
+import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { terrainVariation } from "../world/terrain";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { buildingSpriteKey } from "./buildingSprites";
+import { buildBuildingVisualState, buildingBodyProfile } from "./buildingVisualState";
+import type { ObjectRenderItem } from "./objectRenderOrder";
 import type { TileRange } from "./renderer";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawGroundDecalDetail, drawRoadPath } from "./drawTerrainDetails";
@@ -11,7 +15,8 @@ import {
   terrainTextureKeyFor,
   type TerrainPatternAssets,
 } from "./terrainPatterns";
-import { shade, snapToPixel, withAlpha } from "./style";
+import { drawGroundingShadow, shade, snapToPixel, withAlpha } from "./style";
+import { spriteMeta } from "./worldAssets";
 
 export {
   terrainSeamFor,
@@ -25,6 +30,7 @@ type TerrainRenderInput = {
   readonly range: TileRange;
   readonly zoom: number;
   readonly terrainPatterns?: TerrainPatternAssets;
+  readonly objectRenderItems?: readonly ObjectRenderItem[];
 };
 
 const baseTerrainColor = (terrain: Tile["terrain"]): PaletteColor => {
@@ -46,6 +52,50 @@ export function drawTerrain(
     drawTerrainTransitions(context, input.state, tile, input.zoom);
     if (tile.hasRoad) drawRoadPath(context, input.state, tile, input.terrainPatterns);
   }
+  drawObjectGrounding(context, input);
+}
+
+function drawObjectGrounding(
+  context: CanvasRenderingContext2D,
+  input: TerrainRenderInput,
+): void {
+  for (const item of input.objectRenderItems ?? []) {
+    if (item.kind === "tree") {
+      const meta = spriteMeta(item.descriptor.spriteKey);
+      drawGroundingShadow(context, {
+        centerX: item.descriptor.x,
+        centerY: item.descriptor.y + 7 * item.descriptor.scale,
+        height: meta?.height ?? 44,
+        scale: item.descriptor.scale,
+        baseRadiusX: 13 * item.descriptor.scale,
+        baseRadiusY: 5 * item.descriptor.scale,
+      });
+    } else if (item.kind === "building") {
+      const config = BUILDING_CONFIG_BY_KIND[item.building.kind];
+      const center = buildingCenter(item);
+      const visualState = buildBuildingVisualState(item.building, input.state.houses);
+      const meta = spriteMeta(buildingSpriteKey(item.building, visualState.houseLevel));
+      const body = buildingBodyProfile(item.building.kind, visualState.houseLevel);
+      drawGroundingShadow(context, {
+        centerX: center.sx,
+        centerY: center.sy + 10,
+        height: meta?.height ?? body.height,
+        baseRadiusX: config.width * TILE_W * 0.3,
+        baseRadiusY: config.height * TILE_H * 0.26,
+      });
+    }
+  }
+}
+
+function buildingCenter(item: Extract<ObjectRenderItem, { readonly kind: "building" }>): {
+  readonly sx: number;
+  readonly sy: number;
+} {
+  const config = BUILDING_CONFIG_BY_KIND[item.building.kind];
+  return tileToScreen(
+    item.building.tx + (config.width - 1) / 2,
+    item.building.ty + (config.height - 1) / 2,
+  );
 }
 
 function drawGroundDiamond(

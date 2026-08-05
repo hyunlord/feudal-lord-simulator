@@ -12,7 +12,8 @@ import {
   CANVAS_SURROUND_COLOR,
   worldVignetteBands,
 } from "../src/render/worldBackdrop";
-import { shade } from "../src/render/style";
+import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
+import { shade, withAlpha } from "../src/render/style";
 import type { Tile } from "../src/world/world.types";
 
 function recordingContext(calls: string[]): CanvasRenderingContext2D {
@@ -38,6 +39,8 @@ function recordingContext(calls: string[]): CanvasRenderingContext2D {
     lineJoin: "miter",
     lineCap: "butt",
     beginPath: () => calls.push("beginPath"),
+    ellipse: (x: number, y: number, radiusX: number, radiusY: number) =>
+      calls.push(`ellipse:${x},${y},${radiusX},${radiusY}`),
     moveTo: (x: number, y: number) => calls.push(`moveTo:${x},${y}`),
     lineTo: (x: number, y: number) => calls.push(`lineTo:${x},${y}`),
     closePath: () => calls.push("closePath"),
@@ -94,6 +97,71 @@ test("ground tiles use one coherent fill without per-tile ink outlines", () => {
   // Then
   assert.equal(calls.filter((call) => call === "fill").length, 1);
   assert.equal(calls.filter((call) => call === "stroke").length, 0);
+});
+
+test("object grounding is painted after all terrain tiles using the shared object queue", () => {
+  // Given
+  const forestTile: Tile = {
+    tx: 0,
+    ty: 0,
+    terrain: "forest",
+    buildingId: null,
+    hasRoad: false,
+  };
+  const grassTile: Tile = {
+    tx: 1,
+    ty: 0,
+    terrain: "grass",
+    buildingId: null,
+    hasRoad: false,
+  };
+  const state: GameState = {
+    tick: 0,
+    seed: 73,
+    tiles: [forestTile, grassTile],
+    width: 2,
+    height: 1,
+    buildings: [],
+    houses: [],
+    walkers: [],
+    population: 0,
+    idleWorkers: 0,
+    treasuryTimber: 0,
+    roadRevision: 0,
+    pathCache: {},
+  };
+  const renderItems = buildObjectRenderItems({
+    tiles: [forestTile, grassTile],
+    worldTiles: state.tiles,
+    buildings: [],
+    walkers: [],
+    range: { minTx: 0, minTy: 0, maxTx: 1, maxTy: 0 },
+    seed: state.seed,
+    includeGroundCover: false,
+  });
+  const calls: string[] = [];
+
+  // When
+  drawTerrain(recordingContext(calls), {
+    state,
+    tiles: [forestTile, grassTile],
+    range: { minTx: 0, maxTx: 1, minTy: 0, maxTy: 0 },
+    zoom: 1,
+    objectRenderItems: renderItems,
+  });
+
+  // Then
+  const firstTerrainFill = calls.indexOf("fill");
+  const secondTerrainFill = calls.indexOf("fill", firstTerrainFill + 1);
+  const haloIndex = calls.indexOf(`fillStyle:${withAlpha(SEMANTIC_PALETTE.earth, 0.16)}`);
+  const coreIndex = calls.indexOf(`fillStyle:${withAlpha(SEMANTIC_PALETTE.earthDark, 0.32)}`);
+  const contactIndex = calls.indexOf(`fillStyle:${withAlpha(PALETTE.ink, 0.18)}`);
+  assert.equal(renderItems.filter((item) => item.kind === "tree").length, 1);
+  assert.notEqual(firstTerrainFill, -1);
+  assert.notEqual(secondTerrainFill, -1);
+  assert.ok(haloIndex > secondTerrainFill);
+  assert.ok(coreIndex > haloIndex);
+  assert.ok(contactIndex > coreIndex);
 });
 
 test("forest seams use a deterministic two or three tuft cluster", () => {

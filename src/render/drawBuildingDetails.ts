@@ -1,7 +1,6 @@
 import type { BuildingKind } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { BuildingVisualState } from "./buildingVisualState";
-import { isProductionProblem } from "./buildingVisualState";
 import { ambientOffset, objectPhase } from "./renderMotion";
 import { applyInkOutline, shade, snapToPixel } from "./style";
 
@@ -17,6 +16,8 @@ type RectShape = {
   readonly zoom: number;
 };
 
+type ProblemMarkerKind = "water" | "bread" | "labour" | "storage";
+
 export type BuildingDetailInput = {
   readonly tick: number;
   readonly center: Point;
@@ -30,8 +31,14 @@ export function drawKindDetail(
   input: BuildingDetailInput,
 ): void {
   drawBaseKindDetail(context, input);
-  if (isProductionProblem(input.visualState)) {
-    drawProblemMarker(context, input.center, input.zoom);
+  const marker = problemMarkerKind(input);
+  if (marker !== null) {
+    drawProblemMarker(context, {
+      center: input.center,
+      kind: marker,
+      pulse: markerPulse(input.tick),
+      zoom: input.zoom,
+    });
   }
 }
 
@@ -98,22 +105,124 @@ function drawHouseDetails(
   }
 }
 
+function problemMarkerKind(input: BuildingDetailInput): ProblemMarkerKind | null {
+  if (input.visualState.houseProblem !== null) return input.visualState.houseProblem;
+  switch (input.visualState.production) {
+    case "no_workers":
+      return "labour";
+    case "storage_full":
+      return "storage";
+    case "no_input":
+      return input.kind === "mill" ? "bread" : null;
+    case "idle":
+    case "working":
+      return null;
+  }
+}
+
+function markerPulse(tick: number): number {
+  return 1 + Math.sin(tick * 0.18) * 0.18;
+}
+
 function drawProblemMarker(
   context: CanvasRenderingContext2D,
-  center: Point,
-  zoom: number,
+  input: {
+    readonly center: Point;
+    readonly kind: ProblemMarkerKind;
+    readonly pulse: number;
+    readonly zoom: number;
+  },
 ): void {
+  const markerCenter = {
+    x: input.center.x + 16,
+    y: input.center.y - 39,
+  };
   context.fillStyle = PALETTE.vermilion;
+  if (input.kind === "water") {
+    traceWaterDrop(context, markerCenter, input.pulse);
+  } else if (input.kind === "bread") {
+    traceBreadLoaf(context, markerCenter, input.pulse);
+  } else if (input.kind === "labour") {
+    traceWorkerFigure(context, markerCenter, input.pulse);
+  } else {
+    traceFullCrate(context, markerCenter, input.pulse);
+  }
+  applyInkOutline(context, input.zoom);
+  context.stroke();
+}
+
+function traceWaterDrop(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
+  const width = 7 * pulse;
+  const height = 14 * pulse;
   context.beginPath();
-  context.arc(
-    snapToPixel(center.x + 16),
-    snapToPixel(center.y - 35),
-    snapToPixel(3),
+  context.moveTo(snapToPixel(center.x), snapToPixel(center.y - height));
+  context.lineTo(snapToPixel(center.x + width), snapToPixel(center.y - 2 * pulse));
+  context.arc(snapToPixel(center.x), snapToPixel(center.y), snapToPixel(width), 0, Math.PI);
+  context.lineTo(snapToPixel(center.x - width), snapToPixel(center.y - 2 * pulse));
+  context.closePath();
+  context.fill();
+}
+
+function traceBreadLoaf(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
+  context.beginPath();
+  context.ellipse(
+    snapToPixel(center.x),
+    snapToPixel(center.y),
+    snapToPixel(10 * pulse),
+    snapToPixel(7 * pulse),
+    0,
     0,
     Math.PI * 2,
   );
   context.fill();
-  applyInkOutline(context, zoom);
+  applyInkOutline(context, 1);
+  context.stroke();
+  context.fillStyle = SEMANTIC_PALETTE.gold;
+  for (const offset of [-4, 0, 4]) {
+    fillOutlinedRect(context, {
+      origin: { x: center.x + offset * pulse - pulse, y: center.y - 3 * pulse },
+      width: 2 * pulse,
+      height: 6 * pulse,
+      zoom: 1,
+    });
+  }
+  context.fillStyle = PALETTE.vermilion;
+}
+
+function traceWorkerFigure(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
+  context.beginPath();
+  context.arc(
+    snapToPixel(center.x),
+    snapToPixel(center.y - 4 * pulse),
+    snapToPixel(5 * pulse),
+    0,
+    Math.PI * 2,
+  );
+  context.fill();
+  fillOutlinedRect(context, {
+    origin: { x: center.x - 4 * pulse, y: center.y + 1 * pulse },
+    width: 8 * pulse,
+    height: 10 * pulse,
+    zoom: 1,
+  });
+}
+
+function traceFullCrate(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
+  const half = 8 * pulse;
+  context.beginPath();
+  context.moveTo(snapToPixel(center.x - half), snapToPixel(center.y - half));
+  context.lineTo(snapToPixel(center.x + half), snapToPixel(center.y - half));
+  context.lineTo(snapToPixel(center.x + half), snapToPixel(center.y + half));
+  context.lineTo(snapToPixel(center.x - half), snapToPixel(center.y + half));
+  context.closePath();
+  context.fill();
+  applyInkOutline(context, 1);
+  context.stroke();
+  context.beginPath();
+  context.moveTo(snapToPixel(center.x - half), snapToPixel(center.y - half));
+  context.lineTo(snapToPixel(center.x + half), snapToPixel(center.y + half));
+  context.moveTo(snapToPixel(center.x + half), snapToPixel(center.y - half));
+  context.lineTo(snapToPixel(center.x - half), snapToPixel(center.y + half));
   context.stroke();
 }
 

@@ -70,6 +70,8 @@ function loggedContext(): LoggedContext {
     lineCap: "butt",
     beginPath: () => calls.push("beginPath"),
     closePath: () => calls.push("closePath"),
+    ellipse: (x: number, y: number, radiusX: number, radiusY: number) =>
+      calls.push(`ellipse:${x},${y},${radiusX},${radiusY}`),
     fill: () => calls.push("fill"),
     stroke: () => calls.push("stroke"),
     moveTo: (x: number, y: number) => calls.push(`moveTo:${x},${y}`),
@@ -221,6 +223,94 @@ test("problem marker is vermilion and only appears for actual blocked production
 
   // Then
   assert.ok(blockedContext.calls.includes(`fillStyle:${PALETTE.vermilion}`));
-  assert.ok(blockedContext.calls.some((call) => call === "arc:96,55,3"));
+  assert.ok(blockedContext.calls.some((call) => call === "arc:96,47,5"));
   assert.ok(inactiveContext.calls.every((call) => call !== `fillStyle:${PALETTE.vermilion}`));
+});
+
+test("problem markers use enlarged true-condition glyphs with a gentle pulse", () => {
+  // Given
+  const dryHouse = house("home", 1);
+  const hungryHouse = { ...house("hungry", 2), breadStock: 0 };
+  const noWorkers = building("camp", "logging_camp", { workers: 1 });
+  const fullCamp = building("full-camp", "logging_camp", {
+    workers: 3,
+    inventory: { logs: 20 },
+    productionProgress: 50,
+  });
+  const dryContext = loggedContext();
+  const breadContext = loggedContext();
+  const labourContext = loggedContext();
+  const storageContext = loggedContext();
+
+  // When
+  drawKindDetail(dryContext, {
+    tick: 0,
+    center: { x: 80, y: 90 },
+    kind: "house",
+    zoom: 1,
+    visualState: buildBuildingVisualState(building("home", "house"), [{ ...dryHouse, hasWater: false }]),
+  });
+  drawKindDetail(breadContext, {
+    tick: 0,
+    center: { x: 80, y: 90 },
+    kind: "house",
+    zoom: 1,
+    visualState: buildBuildingVisualState(building("hungry", "house"), [hungryHouse]),
+  });
+  drawKindDetail(labourContext, {
+    tick: 0,
+    center: { x: 80, y: 90 },
+    kind: "logging_camp",
+    zoom: 1,
+    visualState: buildBuildingVisualState(noWorkers, []),
+  });
+  drawKindDetail(storageContext, {
+    tick: 0,
+    center: { x: 80, y: 90 },
+    kind: "logging_camp",
+    zoom: 1,
+    visualState: buildBuildingVisualState(fullCamp, []),
+  });
+
+  // Then
+  assert.ok(dryContext.calls.some((call) => call === "moveTo:96,37"), "water drop has a pointed top");
+  assert.ok(breadContext.calls.some((call) => call.startsWith("ellipse:96,51,")), "bread loaf uses a rounded loaf silhouette");
+  assert.ok(labourContext.calls.some((call) => call.startsWith("arc:96,47,")), "worker figure has a head glyph");
+  assert.ok(storageContext.calls.some((call) => call === "lineTo:104,59"), "full crate has a boxed corner");
+  assert.ok(
+    [...dryContext.calls, ...breadContext.calls, ...labourContext.calls, ...storageContext.calls]
+      .some((call) => /(?:arc|ellipse):[^,]+,[^,]+,(?:8|9|10|11)/.test(call)),
+    "markers are larger than the old radius-three dot",
+  );
+});
+
+test("problem marker pulse changes glyph size without changing the true condition", () => {
+  // Given
+  const noWorkers = building("camp", "logging_camp", { workers: 1 });
+  const firstContext = loggedContext();
+  const laterContext = loggedContext();
+  const visualState = buildBuildingVisualState(noWorkers, []);
+
+  // When
+  drawKindDetail(firstContext, {
+    tick: 0,
+    center: { x: 80, y: 90 },
+    kind: "logging_camp",
+    zoom: 1,
+    visualState,
+  });
+  drawKindDetail(laterContext, {
+    tick: 13,
+    center: { x: 80, y: 90 },
+    kind: "logging_camp",
+    zoom: 1,
+    visualState,
+  });
+
+  // Then
+  assert.notDeepEqual(
+    laterContext.calls.filter((call) => call.startsWith("arc:")),
+    firstContext.calls.filter((call) => call.startsWith("arc:")),
+  );
+  assert.deepEqual(visualState, buildBuildingVisualState(noWorkers, []));
 });

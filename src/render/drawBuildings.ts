@@ -3,7 +3,7 @@ import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { Building } from "../economy/economy.types";
 import type { Tile } from "../world/world.types";
 import type { CameraState } from "./camera";
-import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
 import {
   buildBuildingVisualState,
@@ -13,11 +13,11 @@ import {
   type BodyProfile,
 } from "./buildingVisualState";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
-import { buildObjectRenderItems } from "./objectRenderOrder";
+import { buildObjectRenderItems, type ObjectRenderItem } from "./objectRenderOrder";
 import { drawGroundCoverDescriptor, drawTreeDescriptor } from "./drawTrees";
 import { drawWalker } from "./drawWalkers";
 import type { TileRange, ViewportSize } from "./renderer";
-import { applyInkOutline, drawFlatDiamondShadow, shade, snapToPixel } from "./style";
+import { applyInkOutline, shade, snapToPixel } from "./style";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 
 type ObjectRenderInput = {
@@ -28,6 +28,7 @@ type ObjectRenderInput = {
   readonly camera?: CameraState;
   readonly dpr?: number;
   readonly viewport?: ViewportSize;
+  readonly objectRenderItems?: readonly ObjectRenderItem[];
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -38,7 +39,7 @@ export function drawBuildings(
   context: CanvasRenderingContext2D,
   input: ObjectRenderInput,
 ): void {
-  const items = buildObjectRenderItems({
+  const items = input.objectRenderItems ?? buildObjectRenderItems({
     tiles: input.tiles,
     worldTiles: input.state.tiles,
     buildings: input.state.buildings,
@@ -77,15 +78,8 @@ function drawBuilding(
   spriteOptions: WorldSpriteOptions,
 ): void {
   const center = buildingCenter(building);
-  const config = BUILDING_CONFIG_BY_KIND[building.kind];
   const visualState = buildBuildingVisualState(building, input.state.houses);
   const detailLevel = renderDetailLevel(input.zoom);
-  drawFlatDiamondShadow(context, {
-    centerX: center.x,
-    centerY: center.y + 10,
-    radiusX: config.width * TILE_W * 0.34,
-    radiusY: config.height * TILE_H * 0.28,
-  });
   if (detailLevel === "full") {
     const spriteDrawn = drawWorldSprite(context, buildingSpriteKey(building, visualState.houseLevel), building.tx, building.ty, spriteOptions);
     if (spriteDrawn) {

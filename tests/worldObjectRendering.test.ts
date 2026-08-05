@@ -3,6 +3,9 @@ import { before, test } from "node:test";
 
 import type { GameState } from "../src/engine/engine.types";
 import { drawBuildings } from "../src/render/drawBuildings";
+import { drawTerrain } from "../src/render/drawTerrain";
+import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
+import type { TerrainPatternAssets } from "../src/render/terrainPatterns";
 import { preloadWorldAssets } from "../src/render/worldAssets";
 import type { Tile } from "../src/world/world.types";
 
@@ -23,6 +26,11 @@ class ReadyImage {
 
 type LoggedContext = CanvasRenderingContext2D & {
   readonly calls: readonly string[];
+};
+
+const noTerrainPatterns: TerrainPatternAssets = {
+  meta: () => null,
+  sprite: () => null,
 };
 
 function loggedContext(): LoggedContext {
@@ -114,14 +122,34 @@ function state(): GameState {
 
 function drawHouseAtZoom(zoom: number): LoggedContext {
   const context = loggedContext();
+  const gameState = state();
+  const tiles = [tile(0, 0, "grass", "house")];
+  const range = { minTx: 0, minTy: 0, maxTx: 0, maxTy: 0 };
+  const objectRenderItems = buildObjectRenderItems({
+    tiles,
+    worldTiles: gameState.tiles,
+    buildings: gameState.buildings,
+    walkers: gameState.walkers,
+    range,
+    seed: gameState.seed,
+  });
+  drawTerrain(context, {
+    state: gameState,
+    tiles,
+    range,
+    zoom,
+    objectRenderItems,
+    terrainPatterns: noTerrainPatterns,
+  });
   drawBuildings(context, {
-    state: state(),
-    tiles: [tile(0, 0, "grass", "house")],
-    range: { minTx: 0, minTy: 0, maxTx: 0, maxTy: 0 },
+    state: gameState,
+    tiles,
+    range,
     zoom,
     camera: { zoom, panX: 200, panY: 120 },
     viewport: { width: 512, height: 512 },
     dpr: 1,
+    objectRenderItems,
   });
   return context;
 }
@@ -131,16 +159,21 @@ before(async () => {
   await preloadWorldAssets();
 });
 
-test("sprite-success building rendering keeps the procedural contact shadow", () => {
+test("sprite-success building rendering keeps ground-pass contact before the sprite", () => {
   // Given
   const context = drawHouseAtZoom(0.7001);
 
   // Then
-  assert.ok(context.calls.includes("drawImage"));
-  assert.deepEqual(
-    context.calls.slice(0, 7),
-    ["beginPath", "moveTo:0,1", "lineTo:22,10", "lineTo:0,19", "lineTo:-22,10", "closePath", "fill"],
-  );
+  const firstDrawImage = context.calls.indexOf("drawImage");
+  const priorEllipses = context.calls
+    .slice(0, firstDrawImage)
+    .filter((call) => call.startsWith("ellipse:"));
+  assert.notEqual(firstDrawImage, -1);
+  assert.deepEqual(priorEllipses.slice(-3), [
+    "ellipse:-4,13,33,12",
+    "ellipse:0,10,23,10",
+    "ellipse:0,10,14,3",
+  ]);
 });
 
 test("exact simplified LOD keeps ready building sprites on the procedural path", () => {

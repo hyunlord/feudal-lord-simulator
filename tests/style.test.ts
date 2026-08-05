@@ -5,6 +5,7 @@ import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import {
   applyInkOutline,
   drawFlatDiamondShadow,
+  drawGroundingShadow,
   shade,
   snapToPixel,
   withAlpha,
@@ -19,6 +20,7 @@ interface MockCanvasContext {
   readonly calls: readonly string[];
   beginPath(): void;
   closePath(): void;
+  ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number): void;
   fill(): void;
   lineTo(x: number, y: number): void;
   moveTo(x: number, y: number): void;
@@ -35,6 +37,8 @@ function createMockContext(): MockCanvasContext {
     calls,
     beginPath: () => calls.push("beginPath"),
     closePath: () => calls.push("closePath"),
+    ellipse: (x: number, y: number, radiusX: number, radiusY: number) =>
+      calls.push(`ellipse:${x},${y},${radiusX},${radiusY}`),
     fill: () => calls.push("fill"),
     lineTo: (x: number, y: number) => calls.push(`lineTo:${x},${y}`),
     moveTo: (x: number, y: number) => calls.push(`moveTo:${x},${y}`),
@@ -90,5 +94,59 @@ test("drawFlatDiamondShadow uses a snapped translucent diamond path", () => {
     "lineTo:4,21",
     "closePath",
     "fill",
+  ]);
+});
+
+test("drawGroundingShadow stacks warm ellipses plus a separate contact band", () => {
+  const context = createMockContext();
+
+  drawGroundingShadow(context, {
+    centerX: 10,
+    centerY: 20,
+    height: 96,
+    scale: 0.75,
+    baseRadiusX: 14,
+    baseRadiusY: 5,
+  });
+
+  assert.deepEqual(context.calls, [
+    "beginPath",
+    "ellipse:7,22,23,8",
+    "fill",
+    "beginPath",
+    "ellipse:10,20,17,6",
+    "fill",
+    "beginPath",
+    "ellipse:10,20,10,2",
+    "fill",
+  ]);
+  assert.equal(context.fillStyle, withAlpha(PALETTE.ink, 0.18));
+});
+
+test("drawGroundingShadow exposes the darker earth core at alpha 0.32", () => {
+  const fillStyles: string[] = [];
+  const context = {
+    ...createMockContext(),
+    set fillStyle(value: string) {
+      fillStyles.push(value);
+    },
+    get fillStyle() {
+      return fillStyles.at(-1) ?? "";
+    },
+  };
+
+  drawGroundingShadow(context, {
+    centerX: 10,
+    centerY: 20,
+    height: 96,
+    scale: 0.75,
+    baseRadiusX: 14,
+    baseRadiusY: 5,
+  });
+
+  assert.deepEqual(fillStyles, [
+    withAlpha(SEMANTIC_PALETTE.earth, 0.16),
+    withAlpha(SEMANTIC_PALETTE.earthDark, 0.32),
+    withAlpha(PALETTE.ink, 0.18),
   ]);
 });

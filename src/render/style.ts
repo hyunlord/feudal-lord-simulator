@@ -1,10 +1,19 @@
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 
 export interface DiamondShadow {
   readonly centerX: number;
   readonly centerY: number;
   readonly radiusX: number;
   readonly radiusY: number;
+}
+
+export interface GroundingShadow {
+  readonly centerX: number;
+  readonly centerY: number;
+  readonly height: number;
+  readonly scale?: number;
+  readonly baseRadiusX: number;
+  readonly baseRadiusY: number;
 }
 
 export function snapToPixel(value: number): number {
@@ -80,6 +89,65 @@ export function drawFlatDiamondShadow(
     snapToPixel(shadow.centerY),
   );
   context.closePath();
+  context.fill();
+}
+
+export function drawGroundingShadow(
+  context: Pick<
+    CanvasRenderingContext2D,
+    | "beginPath"
+    | "ellipse"
+    | "fill"
+    | "fillStyle"
+  >,
+  shadow: GroundingShadow,
+): void {
+  const scale = shadow.scale ?? 1;
+  const height = shadow.height * scale;
+  drawWarmEllipse(context, {
+    centerX: shadow.centerX - height * 0.04,
+    centerY: shadow.centerY + height * 0.03,
+    radiusX: shadow.baseRadiusX + height * 0.12,
+    radiusY: shadow.baseRadiusY + height * 0.035,
+    color: withAlpha(SEMANTIC_PALETTE.earth, 0.16),
+  });
+  drawWarmEllipse(context, {
+    centerX: shadow.centerX,
+    centerY: shadow.centerY,
+    radiusX: shadow.baseRadiusX + height * 0.035,
+    radiusY: shadow.baseRadiusY + height * 0.012,
+    color: withAlpha(SEMANTIC_PALETTE.earthDark, 0.32),
+  });
+  drawWarmEllipse(context, {
+    centerX: shadow.centerX,
+    centerY: shadow.centerY,
+    radiusX: shadow.baseRadiusX * 0.72,
+    radiusY: Math.max(1.5, shadow.baseRadiusY * 0.34),
+    color: withAlpha(SEMANTIC_PALETTE.ink, 0.18),
+  });
+}
+
+function drawWarmEllipse(
+  context: Pick<
+    CanvasRenderingContext2D,
+    | "beginPath"
+    | "ellipse"
+    | "fill"
+    | "fillStyle"
+  >,
+  shadow: DiamondShadow & { readonly color: string },
+): void {
+  context.fillStyle = shadow.color;
+  context.beginPath();
+  context.ellipse(
+    snapToPixel(shadow.centerX),
+    snapToPixel(shadow.centerY),
+    snapToPixel(shadow.radiusX),
+    snapToPixel(shadow.radiusY),
+    0,
+    0,
+    Math.PI * 2,
+  );
   context.fill();
 }
 
