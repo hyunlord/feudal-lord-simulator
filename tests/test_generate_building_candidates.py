@@ -24,22 +24,30 @@ def load_generator():
 
 
 class BuildingCandidateGeneratorContractTest(unittest.TestCase):
-    def test_subjects_are_exactly_house_mill_and_granary_with_six_seeds(self) -> None:
-        """Given the Phase 4A generator, its subject set and candidate count are fixed."""
+    def test_phase4b_uses_eight_seeds_and_exact_subject_geometry(self) -> None:
+        """Given Phase 4B, each retained subject has eight candidates and locked geometry wording."""
         module = load_generator()
 
         self.assertEqual([spec.key for spec in module.SUBJECTS], ["house", "mill", "granary"])
         for spec in module.SUBJECTS:
             with self.subTest(subject=spec.key):
-                self.assertEqual(len(spec.seeds), 6)
-                self.assertEqual(len(set(spec.seeds)), 6)
+                self.assertEqual(len(spec.seeds), 8)
+                self.assertEqual(len(set(spec.seeds)), 8)
                 self.assertTrue(all(str(seed).startswith("6404") for seed in spec.seeds))
         granary = next(spec for spec in module.SUBJECTS if spec.key == "granary")
         house = next(spec for spec in module.SUBJECTS if spec.key == "house")
         self.assertIn("single-storey", house.subject_clause)
         self.assertIn("one-room", house.subject_clause)
-        self.assertIn("wide 2x2", granary.subject_clause)
-        self.assertIn("rounded barrel roof", granary.subject_clause)
+        self.assertEqual(
+            granary.subject_clause,
+            "a long rectangular medieval storage barn, timber-framed plaster walls, a curved barrel-vaulted thatch roof running the length of the building, wide double doors on the long side, raised on low stone footings",
+        )
+        self.assertNotRegex(granary.subject_clause.lower(), r"\b(granary|silo|vat|tower)\b")
+        mill = next(spec for spec in module.SUBJECTS if spec.key == "mill")
+        self.assertIn("watermill beside the building", mill.subject_clause)
+        self.assertIn("side face", mill.subject_clause)
+        self.assertIn("1.2 tiles wide", mill.subject_clause)
+        self.assertIn("2.2 tiles tall", mill.subject_clause)
 
     def test_workflow_uses_sdxl_base_without_lora_and_exact_sampler_settings(self) -> None:
         """Given any subject candidate, the Comfy workflow stays reproducible and LoRA-free."""
@@ -154,14 +162,14 @@ class BuildingCandidateGeneratorContractTest(unittest.TestCase):
 
             module.generate(output_root=tmp / "candidates", targets=frozenset({"mill"}))
 
-            self.assertEqual([prefix.split("/")[1] for prefix in queued_prefixes], ["mill"] * 6)
+            self.assertEqual([prefix.split("/")[1] for prefix in queued_prefixes], ["mill"] * 8)
             manifest_text = (tmp / "candidates" / "manifest.json").read_text(encoding="utf-8")
             self.assertNotIn("prompt_id", manifest_text)
             self.assertNotIn("secret-prompt-id", manifest_text)
             self.assertNotIn(str(tmp), manifest_text)
             manifest = json.loads(manifest_text)
             self.assertEqual([asset["key"] for asset in manifest["assets"]], ["mill"])
-            self.assertEqual(len(manifest["assets"][0]["candidates"]), 6)
+            self.assertEqual(len(manifest["assets"][0]["candidates"]), 8)
             first_candidate = manifest["assets"][0]["candidates"][0]
             self.assertEqual(first_candidate["sourcePath"], "mill/mill_01.png")
             self.assertEqual(first_candidate["releasePath"], "mill_01.png")

@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
 import { deflateSync, inflateSync } from "node:zlib";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -38,6 +38,8 @@ export type ProcessOptions = {
   readonly threshold: number;
   readonly softEdge: number;
   readonly outline: boolean;
+  readonly contentWidth?: number;
+  readonly contentHeight?: number;
 };
 
 type Placement = Dimensions & {
@@ -68,6 +70,13 @@ const EXPECTED_SPRITES = {
   mill: { width: 96, height: 160, baselineY: 144 },
   granary: { width: 160, height: 144, baselineY: 128 },
 } as const;
+export type BuildingSubject = keyof typeof EXPECTED_SPRITES;
+const VISIBLE_WIDTH_BANDS: Readonly<Record<BuildingSubject, readonly [number, number]>> = {
+  house: [64, 90],
+  mill: [64, 90],
+  granary: [115, 141],
+};
+export const OUTLINE_ALPHA = 179;
 
 const paletteSource: PaletteSource = paletteModule;
 
@@ -179,6 +188,9 @@ export const removeChromaKey = (image: RgbaImage, options: ChromaOptions): RgbaI
     }
     const distance = colourDistance({ r, g, b }, options.key);
     if (distance <= options.threshold) {
+      output[index] = 0;
+      output[index + 1] = 0;
+      output[index + 2] = 0;
       output[index + 3] = 0;
       continue;
     }
@@ -232,6 +244,22 @@ export const fitOpaqueBounds = (bounds: Bounds | null, target: Dimensions, basel
     left: Math.floor((target.width - width) / 2),
     top: baselineY - height,
   };
+};
+
+const fitOpaqueBoundsToWidth = (
+  bounds: Bounds,
+  target: Dimensions,
+  baselineY: number,
+  contentWidth: number | undefined,
+  contentHeight: number | undefined,
+): Placement => {
+  if (contentWidth === undefined) return fitOpaqueBounds(bounds, target, baselineY);
+  const sourceWidth = bounds.right - bounds.left;
+  const sourceHeight = bounds.bottom - bounds.top;
+  const scale = Math.min(contentWidth / sourceWidth, (contentHeight ?? baselineY) / sourceHeight, baselineY / sourceHeight);
+  const width = Math.max(1, Math.round(sourceWidth * scale));
+  const height = Math.max(1, Math.round(sourceHeight * scale));
+  return { width, height, left: Math.floor((target.width - width) / 2), top: baselineY - height };
 };
 
 const crop = (image: RgbaImage, bounds: Bounds): RgbaImage => {
@@ -292,6 +320,13 @@ const quantiseVisiblePixels = (image: RgbaImage): RgbaImage => {
   for (let index = 0; index < output.length; index += 4) {
     const alpha = output[index + 3];
     if (alpha !== undefined && alpha > 0) {
+      if (alpha < 128) {
+        output[index] = 0;
+        output[index + 1] = 0;
+        output[index + 2] = 0;
+        output[index + 3] = 0;
+        continue;
+      }
       const r = output[index];
       const g = output[index + 1];
       const b = output[index + 2];
@@ -302,6 +337,7 @@ const quantiseVisiblePixels = (image: RgbaImage): RgbaImage => {
       output[index] = nearest.r;
       output[index + 1] = nearest.g;
       output[index + 2] = nearest.b;
+      output[index + 3] = 255;
     }
   }
   return { dimensions: image.dimensions, rgba: output };
@@ -310,10 +346,39 @@ const quantiseVisiblePixels = (image: RgbaImage): RgbaImage => {
 export const addSilhouetteOutline = (image: RgbaImage): RgbaImage => {
   const output = new Uint8Array(image.rgba);
   const ink = hexToRgb(paletteSource.PALETTE.ink ?? "#3A2E1F");
+  const bounds = findOpaqueBounds(image);
+  if (bounds === null) return { dimensions: image.dimensions, rgba: output };
+  const lowerThird = bounds.top + Math.floor((bounds.bottom - bounds.top) * 2 / 3);
+  const exterior = new Uint8Array(image.dimensions.width * image.dimensions.height);
+  const queue: Array<readonly [number, number]> = [];
+  const enqueue = (x: number, y: number): void => {
+    const pixelIndex = y * image.dimensions.width + x;
+    if (exterior[pixelIndex] === 1 || image.rgba[byteIndex(image.dimensions, x, y) + 3] !== 0) return;
+    exterior[pixelIndex] = 1;
+    queue.push([x, y]);
+  };
+  for (let x = 0; x < image.dimensions.width; x += 1) {
+    enqueue(x, 0);
+    enqueue(x, image.dimensions.height - 1);
+  }
+  for (let y = 0; y < image.dimensions.height; y += 1) {
+    enqueue(0, y);
+    enqueue(image.dimensions.width - 1, y);
+  }
+  for (let cursor = 0; cursor < queue.length; cursor += 1) {
+    const point = queue[cursor];
+    if (point === undefined) continue;
+    const [x, y] = point;
+    for (const [dx, dy] of [[0, -1], [-1, 0], [1, 0], [0, 1]] as const) {
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx >= 0 && nx < image.dimensions.width && ny >= 0 && ny < image.dimensions.height) enqueue(nx, ny);
+    }
+  }
   for (let y = 0; y < image.dimensions.height; y += 1) {
     for (let x = 0; x < image.dimensions.width; x += 1) {
       const index = byteIndex(image.dimensions, x, y);
-      if (image.rgba[index + 3] !== 0) {
+      if (image.rgba[index + 3] !== 0 || y >= lowerThird || exterior[y * image.dimensions.width + x] !== 1) {
         continue;
       }
       const neighbours = [[0, -1], [-1, 0], [1, 0], [0, 1]] as const;
@@ -326,11 +391,90 @@ export const addSilhouetteOutline = (image: RgbaImage): RgbaImage => {
         output[index] = ink.r;
         output[index + 1] = ink.g;
         output[index + 2] = ink.b;
-        output[index + 3] = 255;
+        output[index + 3] = OUTLINE_ALPHA;
       }
     }
   }
   return { dimensions: image.dimensions, rgba: output };
+};
+
+export type RampProfile = Readonly<Record<string, { readonly count: number; readonly proportion: number }>>;
+
+export const rampProfile = (image: RgbaImage): RampProfile => {
+  const rampByColour = new Map<string, string>();
+  for (const [ramp, colours] of Object.entries(paletteSource.RAMPS ?? {})) {
+    for (const hex of colours) rampByColour.set(rgbKey(hexToRgb(hex)), ramp);
+  }
+  const counts = new Map<string, number>();
+  let visible = 0;
+  for (let index = 0; index < image.rgba.length; index += 4) {
+    const alpha = image.rgba[index + 3];
+    if (alpha === undefined || alpha === 0) continue;
+    visible += 1;
+    const key = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
+    const ramp = rampByColour.get(key);
+    if (ramp !== undefined) counts.set(ramp, (counts.get(ramp) ?? 0) + 1);
+  }
+  return Object.fromEntries([...counts.entries()].map(([ramp, count]) => [ramp, { count, proportion: count / visible }]));
+};
+
+export const enforceFamilyMaterials = (image: RgbaImage, _subject: BuildingSubject): RgbaImage => {
+  const bounds = findOpaqueBounds(image);
+  if (bounds === null || paletteSource.RAMPS === undefined) return image;
+  const output = new Uint8Array(image.rgba);
+  const sourceLookup = new Map<string, { ramp: string; index: number }>();
+  for (const [ramp, colours] of Object.entries(paletteSource.RAMPS)) {
+    colours.forEach((hex, index) => sourceLookup.set(rgbKey(hexToRgb(hex)), { ramp, index }));
+  }
+  const roofCutoff = bounds.top + Math.floor((bounds.bottom - bounds.top) * 0.55);
+  const footingStart = bounds.top + Math.floor((bounds.bottom - bounds.top) * 0.88);
+  const quietTimber = hexToRgb(paletteSource.RAMPS.timber?.[2] ?? "#765638");
+  const accentKeys = new Set([paletteSource.PALETTE.vermilion, paletteSource.PALETTE.ultramarine]
+    .filter((hex): hex is string => hex !== undefined)
+    .map((hex) => rgbKey(hexToRgb(hex))));
+  for (let y = bounds.top; y < bounds.bottom; y += 1) {
+    for (let x = bounds.left; x < bounds.right; x += 1) {
+      const index = byteIndex(image.dimensions, x, y);
+      if (output[index + 3] !== 255) continue;
+      const colourKey = `${output[index]},${output[index + 1]},${output[index + 2]}`;
+      if (accentKeys.has(colourKey)) {
+        output[index] = quietTimber.r;
+        output[index + 1] = quietTimber.g;
+        output[index + 2] = quietTimber.b;
+        continue;
+      }
+      const source = sourceLookup.get(colourKey);
+      if (source === undefined || (source.ramp !== "stone" && source.ramp !== "slate")) continue;
+      const targetName = y <= roofCutoff ? "thatch" : y < footingStart ? "plaster" : undefined;
+      if (targetName === undefined) continue;
+      const targetHex = paletteSource.RAMPS[targetName]?.[source.index];
+      if (targetHex === undefined) continue;
+      const target = hexToRgb(targetHex);
+      output[index] = target.r;
+      output[index + 1] = target.g;
+      output[index + 2] = target.b;
+    }
+  }
+  return { dimensions: image.dimensions, rgba: output };
+};
+
+export const assertVisibleWidthBand = (image: RgbaImage, subject: BuildingSubject): number => {
+  const bounds = findOpaqueBounds(image);
+  if (bounds === null) throw new Error(`${subject} has no visible mass`);
+  const width = bounds.right - bounds.left;
+  const [minimum, maximum] = VISIBLE_WIDTH_BANDS[subject];
+  if (width < minimum || width > maximum) {
+    throw new Error(`${subject} visible width ${width}px is outside scale band ${minimum}..${maximum}px`);
+  }
+  return width;
+};
+
+export const assertMillHeight = (image: RgbaImage): number => {
+  const bounds = findOpaqueBounds(image);
+  if (bounds === null) throw new Error("mill has no visible mass");
+  const height = bounds.bottom - bounds.top;
+  if (height > 71) throw new Error(`mill visible height ${height}px exceeds 2.2-tile cap 71px`);
+  return height;
 };
 
 const clearRowsBelowBaseline = (image: RgbaImage, baselineY: number): void => {
@@ -351,7 +495,7 @@ export const processSpriteRgba = (source: RgbaImage, options: ProcessOptions): R
   const bounds = findOpaqueBounds(cleaned);
   const canvas: RgbaImage = { dimensions: options.target, rgba: new Uint8Array(options.target.width * options.target.height * 4) };
   if (bounds !== null) {
-    const placement = fitOpaqueBounds(bounds, options.target, options.baselineY);
+    const placement = fitOpaqueBoundsToWidth(bounds, options.target, options.baselineY, options.contentWidth, options.contentHeight);
     paste(resizeNearest(crop(cleaned, bounds), placement), canvas, placement);
   }
   clearRowsBelowBaseline(canvas, options.baselineY);
@@ -375,7 +519,7 @@ export const processSpriteImage = (
   const bounds = findOpaqueBounds(cleaned);
   const canvas: RgbaImage = { dimensions: options.target, rgba: new Uint8Array(options.target.width * options.target.height * 4) };
   if (bounds !== null) {
-    const placement = fitOpaqueBounds(bounds, options.target, options.baselineY);
+    const placement = fitOpaqueBoundsToWidth(bounds, options.target, options.baselineY, options.contentWidth, options.contentHeight);
     paste(resize(crop(cleaned, bounds), placement), canvas, placement);
   }
   clearRowsBelowBaseline(canvas, options.baselineY);
@@ -563,12 +707,18 @@ export const processSpriteFile = (inputPath: string, outputPath: string, options
 
 const expectedFileNames = (): readonly string[] =>
   Object.keys(EXPECTED_SPRITES).flatMap((subject) =>
-    Array.from({ length: 6 }, (_, index) => `${subject}_${String(index + 1).padStart(2, "0")}.png`),
+    Array.from({ length: 8 }, (_, index) => `${subject}_${String(index + 1).padStart(2, "0")}.png`),
   );
 
 export const assertBuildingSpriteSet = (root: string): void => {
+  const expected = expectedFileNames();
+  const sortedExpected = [...expected].sort();
+  const actual = readdirSync(root).filter((fileName) => fileName.endsWith(".png")).sort();
+  if (actual.length !== expected.length || actual.some((fileName, index) => fileName !== sortedExpected[index])) {
+    throw new Error(`Building sprite set must contain exactly ${expected.length} expected PNG files`);
+  }
   const allowed = new Set(canonicalColors().map((colour) => colour.key));
-  for (const fileName of expectedFileNames()) {
+  for (const fileName of expected) {
     const filePath = path.join(root, fileName);
     if (!existsSync(filePath)) {
       throw new Error(`Missing expected building sprite ${fileName}`);
@@ -582,6 +732,8 @@ export const assertBuildingSpriteSet = (root: string): void => {
     if (image.dimensions.width !== contract.width || image.dimensions.height !== contract.height) {
       throw new Error(`${fileName} dimensions were ${image.dimensions.width}x${image.dimensions.height}, expected ${contract.width}x${contract.height}`);
     }
+    assertVisibleWidthBand(image, subject as BuildingSubject);
+    if (subject === "mill") assertMillHeight(image);
     let visiblePixels = 0;
     for (let y = 0; y < image.dimensions.height; y += 1) {
       for (let x = 0; x < image.dimensions.width; x += 1) {
@@ -600,6 +752,12 @@ export const assertBuildingSpriteSet = (root: string): void => {
           const key = `${r},${g},${b}`;
           if (!allowed.has(key)) {
             throw new Error(`${fileName} has non-canonical RGB ${key} at ${x},${y}`);
+          }
+          if (alpha !== 255 && alpha !== OUTLINE_ALPHA) {
+            throw new Error(`${fileName} has unsupported alpha ${alpha} at ${x},${y}`);
+          }
+          if (alpha === OUTLINE_ALPHA && key !== rgbKey(hexToRgb(paletteSource.PALETTE.ink ?? "#3A2E1F"))) {
+            throw new Error(`${fileName} has non-ink outline RGB ${key} at ${x},${y}`);
           }
           visiblePixels += 1;
         }

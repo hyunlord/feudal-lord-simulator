@@ -19,13 +19,14 @@ COMFY_ROOT: Final = Path(os.environ.get("COMFYUI_ROOT", str(Path.home() / "Comfy
 COMFY_URL: Final = os.environ.get("COMFYUI_URL", "http://127.0.0.1:8188")
 COMFY_OUTPUT: Final = Path(os.environ.get("COMFYUI_OUTPUT", str(COMFY_ROOT / "output")))
 COMFY_INPUT: Final = Path(os.environ.get("COMFYUI_INPUT", str(COMFY_ROOT / "input")))
-DEFAULT_OUTPUT_ROOT: Final = Path(os.environ.get("BUILDING_CANDIDATE_OUTPUT_ROOT", "/tmp/feudal-phase4a-building-candidates"))
+DEFAULT_OUTPUT_ROOT: Final = Path(os.environ.get("BUILDING_CANDIDATE_OUTPUT_ROOT", "/tmp/feudal-phase4b-building-candidates"))
 CHECKPOINT: Final = "sd_xl_base_1.0.safetensors"
 BASE_PROMPT: Final = (
     "one single small humble painterly realistic medieval European building, object-only game sprite, "
     "Caesar III/Anno visual language, no settlement and no second structure, "
     "exact 2:1 isometric camera looking down from upper-left, upper-left light, "
-    "visible material textures, isolated complete building, centered with generous padding, "
+    "visible material textures, walls predominantly plaster and timber with stone only on low foundations and slate only on roofs, "
+    "isolated complete building, centered with generous padding, "
     "clean readable silhouette, perfectly flat uniform #00FFFF chroma field with no gradient or floor plane"
 )
 CYAN_RGB: Final = (0, 255, 255)
@@ -41,24 +42,24 @@ NEGATIVE_PROMPT: Final = (
 class SubjectSpec:
     key: str
     subject_clause: str
-    seeds: tuple[int, int, int, int, int, int]
+    seeds: tuple[int, ...]
 
 
 SUBJECTS: Final = (
     SubjectSpec(
         key="house",
         subject_clause="level-zero one-room single-storey thatched peasant hut with low timber frame, weathered plaster walls, small stone hearth chimney",
-        seeds=(64040101, 64040102, 64040103, 64040104, 64040105, 64040106),
+        seeds=(64040101, 64040102, 64040103, 64040104, 64040105, 64040106, 64040107, 64040108),
     ),
     SubjectSpec(
         key="mill",
-        subject_clause="level-zero medieval water mill with timber wheel, stone base, thatched roof, wooden grain chute",
-        seeds=(64040201, 64040202, 64040203, 64040204, 64040205, 64040206),
+        subject_clause="a wide short single-storey medieval workshop, the watermill beside the building has a timber wheel mounted in 2:1 perspective on the visible side face, the building body is about 1.2 tiles wide and no more than 2.2 tiles tall including its low thatched roof, timber-framed plaster walls on low stone footings",
+        seeds=(64040201, 64040202, 64040203, 64040204, 64040205, 64040206, 64040207, 64040208),
     ),
     SubjectSpec(
         key="granary",
-        subject_clause="wide 2x2 medieval granary with a rounded barrel roof, timber supports, weathered plaster and stone lower walls",
-        seeds=(64040301, 64040302, 64040303, 64040304, 64040305, 64040306),
+        subject_clause="a long rectangular medieval storage barn, timber-framed plaster walls, a curved barrel-vaulted thatch roof running the length of the building, wide double doors on the long side, raised on low stone footings",
+        seeds=(64040301, 64040302, 64040303, 64040304, 64040305, 64040306, 64040307, 64040308),
     ),
 )
 
@@ -123,18 +124,26 @@ def build_guide(spec: SubjectSpec) -> Image.Image:
         draw.polygon(((285, 550), (520, 350), (748, 550), (520, 625)), fill=roof)
         draw.rectangle((608, 340, 650, 470), fill=dark)
     elif spec.key == "mill":
-        draw.polygon(((350, 410), (515, 330), (655, 410), (655, 770), (515, 850), (350, 770)), fill=wall)
-        draw.polygon(((310, 415), (515, 250), (700, 415), (515, 510)), fill=roof)
-        draw.ellipse((585, 555, 825, 795), fill=dark)
-        draw.ellipse((635, 605, 775, 745), fill=CYAN_RGB)
-        draw.rectangle((680, 548, 710, 802), fill=dark)
-        draw.rectangle((578, 660, 832, 690), fill=dark)
+        draw.polygon(((285, 530), (520, 420), (735, 520), (735, 690), (520, 795), (285, 690)), fill=wall)
+        draw.polygon(((250, 530), (515, 340), (770, 520), (520, 625)), fill=roof)
+        draw.ellipse((640, 535, 825, 755), fill=dark)
+        draw.ellipse((680, 585, 785, 705), fill=CYAN_RGB)
+        draw.line(((666, 552), (800, 735)), fill=dark, width=24)
+        draw.line(((650, 690), (815, 590)), fill=dark, width=24)
     elif spec.key == "granary":
-        draw.polygon(((245, 500), (515, 385), (790, 500), (790, 720), (515, 835), (245, 720)), fill=wall)
-        draw.rounded_rectangle((220, 315, 815, 560), radius=120, fill=roof)
-        draw.polygon(((220, 440), (515, 315), (815, 440), (515, 565)), fill=roof)
-        for x in (305, 455, 610, 755):
-            draw.rectangle((x, 690, x + 38, 820), fill=dark)
+        draw.polygon(((200, 570), (400, 570), (400, 760), (200, 760)), fill=wall)
+        draw.polygon(((400, 570), (800, 370), (800, 560), (400, 760)), fill=(151, 129, 96))
+        near_arch = ((200, 570), (204, 535), (216, 504), (238, 478), (267, 460), (300, 452), (333, 460), (362, 478), (384, 504), (396, 535), (400, 570))
+        far_arch = tuple((x + 400, y - 200) for x, y in near_arch)
+        roof_bands = ((94, 65, 38), (103, 71, 40), (111, 77, 43), (126, 87, 47), (137, 96, 52), (137, 96, 52), (126, 87, 47), (111, 77, 43), (103, 71, 40), (94, 65, 38))
+        for index, band in enumerate(roof_bands):
+            draw.polygon((near_arch[index], near_arch[index + 1], far_arch[index + 1], far_arch[index]), fill=band)
+        draw.polygon(near_arch, fill=roof)
+        draw.polygon(((500, 540), (548, 516), (548, 646), (500, 670)), fill=dark)
+        draw.polygon(((554, 513), (602, 489), (602, 619), (554, 643)), fill=dark)
+        draw.rectangle((220, 742, 264, 760), fill=dark)
+        draw.polygon(((420, 730), (464, 708), (464, 726), (420, 748)), fill=dark)
+        draw.polygon(((756, 554), (800, 532), (800, 550), (756, 572)), fill=dark)
     else:
         raise ValueError(f"No guide shape for {spec.key}")
     return image
@@ -247,12 +256,12 @@ def generate(output_root: Path = DEFAULT_OUTPUT_ROOT, targets: BuildingTargets =
     }
     for spec in selected_subjects(targets):
         subject_dir = output_root / spec.key
-        guide_name = f"phase4a_{spec.key}_guide.png"
+        guide_name = f"phase4b_{spec.key}_guide.png"
         build_guide(spec).save(COMFY_INPUT / guide_name)
         candidates: list[dict[str, object]] = []
         for index, seed in enumerate(spec.seeds, start=1):
             filename = f"{spec.key}_{index:02d}.png"
-            prefix = f"phase4_buildings/{spec.key}/{spec.key}_{index:02d}"
+            prefix = f"phase4b_buildings/{spec.key}/{spec.key}_{index:02d}"
             prompt_id = queue_prompt(guided_workflow_prompt(spec, seed, prefix, guide_name))
             source = wait_for_outputs(prompt_id)[0]
             save_candidate(source, subject_dir / filename)
@@ -271,8 +280,8 @@ def parse_targets(values: list[str] | None) -> BuildingTargets:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate reproducible Phase 4A ComfyUI building candidates.")
-    parser.add_argument("--generate", action="store_true", help="queue six Comfy candidates for every selected building")
+    parser = argparse.ArgumentParser(description="Generate reproducible Phase 4B ComfyUI building candidates.")
+    parser.add_argument("--generate", action="store_true", help="queue eight Comfy candidates for every selected building")
     parser.add_argument("--target", action="append", choices=sorted({spec.key for spec in SUBJECTS}), help="limit generation to one building; repeat for multiple buildings")
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT, help="candidate output directory")
     args = parser.parse_args()
