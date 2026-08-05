@@ -256,7 +256,27 @@ def build_subject_guide(job: Job) -> Image.Image:
                     draw.polygon(((120, 600), (500, 410), (905, 610), (520, 820)), fill=earth)
                     draw.rectangle((155, 430, 330, 620), fill=wall)
                     draw.polygon(((125, 450), (245, 330), (365, 450), (245, 520)), fill=roof)
-                case "house_l1" | "house_l2" | "house_l3" | "storehouse" | "logging_camp" | "sawmill":
+                case "storehouse":
+                    draw.polygon(((180, 580), (500, 420), (850, 580), (850, 790), (520, 900), (180, 790)), fill=wall)
+                    draw.polygon(((145, 565), (500, 350), (885, 565), (520, 665)), fill=roof)
+                    draw.polygon(((470, 590), (820, 575), (820, 765), (520, 865), (470, 835)), fill=dark)
+                    draw.rectangle((560, 700, 650, 790), fill=earth)
+                    draw.rectangle((665, 650, 755, 755), fill=earth)
+                case "logging_camp":
+                    draw.polygon(((235, 505), (500, 330), (780, 505), (515, 620)), fill=roof)
+                    draw.rectangle((270, 495, 320, 825), fill=dark)
+                    draw.rectangle((700, 495, 750, 825), fill=dark)
+                    draw.rectangle((300, 620, 720, 745), fill=dark)
+                    draw.ellipse((610, 735, 880, 820), fill=earth)
+                    draw.ellipse((610, 780, 880, 865), fill=earth)
+                case "sawmill":
+                    draw.polygon(((220, 510), (500, 350), (805, 500), (520, 625)), fill=roof)
+                    draw.rectangle((255, 500, 305, 835), fill=dark)
+                    draw.rectangle((735, 490, 785, 820), fill=dark)
+                    draw.rectangle((300, 610, 740, 790), fill=dark)
+                    draw.rectangle((355, 655, 675, 695), fill=wall)
+                    draw.rectangle((375, 735, 815, 780), fill=earth)
+                case "house_l1" | "house_l2" | "house_l3":
                     wide = job.key in {"house_l3", "storehouse"}
                     tall = job.key in {"house_l2", "house_l3"}
                     left, right = (220, 804) if wide else (310, 714)
@@ -266,8 +286,6 @@ def build_subject_guide(job: Job) -> Image.Image:
                     if job.key == "house_l3":
                         draw.rectangle((665, 210, 820, 610), fill=wall)
                         draw.polygon(((630, 250), (742, 115), (855, 250), (742, 335)), fill=roof)
-                    if job.key in {"logging_camp", "sawmill"}:
-                        draw.ellipse((650, 650, 875, 740), fill=dark)
                 case unreachable:
                     assert_never(unreachable)
         case Category.TERRAIN:

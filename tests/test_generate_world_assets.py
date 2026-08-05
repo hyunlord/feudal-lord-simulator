@@ -156,6 +156,16 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
                 self.assertGreater(non_cyan, 20_000)
                 self.assertLess(non_cyan, 520_000)
 
+    def test_production_guides_keep_shallow_open_workspaces(self) -> None:
+        module = load_generator()
+
+        for key in ("storehouse", "logging_camp", "sawmill"):
+            with self.subTest(key=key):
+                job = next(candidate for candidate in module.JOBS if candidate.key == key)
+                guide = module.build_subject_guide(job)
+                self.assertEqual(guide.getpixel((512, 200)), module.CYAN_RGB)
+                self.assertEqual(guide.getpixel((512, 720)), (67, 54, 42))
+
     def test_target_filter_and_timed_manifest_are_portable(self) -> None:
         module = load_generator()
 
