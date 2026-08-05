@@ -147,6 +147,23 @@ describe("Phase 4C world asset release", () => {
           sawmill: { seed: 64050802, candidate: 2 },
         },
       );
+      assert.deepEqual(
+        Object.fromEntries(
+          manifest.assets
+            .filter((asset) => asset.category === "foliage")
+            .map((asset) => [asset.key, asset.source]),
+        ),
+        {
+          tree_conifer_a: { seed: 64052001, candidate: 1 },
+          tree_conifer_b: { seed: 64052002, candidate: 1 },
+          tree_broadleaf_a: { seed: 64052003, candidate: 1 },
+          tree_broadleaf_b: { seed: 64052004, candidate: 1 },
+          shrub_a: { seed: 64052501, candidate: 1 },
+          shrub_b: { seed: 64052601, candidate: 1 },
+          grass_tuft: { seed: 64052701, candidate: 1 },
+          field_stone: { seed: 64052801, candidate: 1 },
+        },
+      );
       assert.doesNotThrow(() => verifyWorldAssets(test.root, test.phase4bRoot));
       for (const [key, bytes] of originals) {
         assert.deepEqual(readFileSync(path.join(test.root, "public", "assets", "buildings", `${key}.png`)), bytes);

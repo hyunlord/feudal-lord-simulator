@@ -152,7 +152,18 @@ const buildingAssets = (selections: BuildingSelections): readonly BuildingAsset[
   };
 });
 
-const foliageAssets = (): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key, index) => {
+const FOLIAGE_SOURCE_SEEDS = {
+  tree_conifer_a: 64052001,
+  tree_conifer_b: 64052002,
+  tree_broadleaf_a: 64052003,
+  tree_broadleaf_b: 64052004,
+  shrub_a: 64052501,
+  shrub_b: 64052601,
+  grass_tuft: 64052701,
+  field_stone: 64052801,
+} as const satisfies Readonly<Record<FoliageSpriteKey, number>>;
+
+const foliageAssets = (): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
   const spec = FOLIAGE_SPECS[key];
   return {
     key,
@@ -162,7 +173,7 @@ const foliageAssets = (): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key, inde
     height: spec.height,
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
-    source: { seed: 64052001 + index, candidate: 1 },
+    source: { seed: FOLIAGE_SOURCE_SEEDS[key], candidate: 1 },
     palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" },
