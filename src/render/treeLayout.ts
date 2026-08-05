@@ -1,9 +1,15 @@
 import type { Tile } from "../world/world.types";
-import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
 
 export type TreeSilhouette = "narrow" | "broad" | "rounded";
 export type TreeTone = "forest" | "sageDark";
+export type TreeSpriteKey =
+  | "tree_broadleaf_a"
+  | "tree_broadleaf_b"
+  | "tree_conifer_a"
+  | "tree_conifer_b";
+export type GroundCoverSpriteKey = "shrub_a" | "shrub_b";
 
 export type TreeDescriptor = {
   readonly id: string;
@@ -16,6 +22,23 @@ export type TreeDescriptor = {
   readonly tone: TreeTone;
   readonly phase: number;
   readonly sortY: number;
+  readonly anchorTx: number;
+  readonly anchorTy: number;
+  readonly spriteKey: TreeSpriteKey;
+};
+
+export type GroundCoverDescriptor = {
+  readonly id: string;
+  readonly x: number;
+  readonly y: number;
+  readonly offsetX: number;
+  readonly offsetY: number;
+  readonly scale: number;
+  readonly phase: number;
+  readonly sortY: number;
+  readonly anchorTx: number;
+  readonly anchorTy: number;
+  readonly spriteKey: GroundCoverSpriteKey;
 };
 
 export type ForestLookup = ReadonlySet<string>;
@@ -28,6 +51,7 @@ type TreeClusterInput = {
 
 const SILHOUETTES: readonly TreeSilhouette[] = ["narrow", "broad", "rounded"];
 const TREE_TONES: readonly TreeTone[] = ["forest", "sageDark"];
+const SHRUB_SPRITES: readonly GroundCoverSpriteKey[] = ["shrub_a", "shrub_b"];
 const MAX_OFFSET_X = TILE_W * 0.35;
 const MAX_OFFSET_Y = TILE_H * 0.35;
 const SAFE_DIAMOND_RADIUS = 0.7;
@@ -40,10 +64,10 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
   const toneOffset = Math.floor(hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 67) * TREE_TONES.length) % TREE_TONES.length;
 
   for (let index = 0; index < treeCount; index += 1) {
-    const anchor = treeAnchor(treeCount, index);
+    const localAnchor = treeAnchor(treeCount, index);
     const offset = constrainToDiamond({
-      x: clamp(anchor.x + jitter(input.tile.tx, input.tile.ty, input.seed, index, 11) * 8, -MAX_OFFSET_X, MAX_OFFSET_X),
-      y: clamp(anchor.y + jitter(input.tile.tx, input.tile.ty, input.seed, index, 23) * 5, -MAX_OFFSET_Y, MAX_OFFSET_Y),
+      x: clamp(localAnchor.x + jitter(input.tile.tx, input.tile.ty, input.seed, index, 11) * 8, -MAX_OFFSET_X, MAX_OFFSET_X),
+      y: clamp(localAnchor.y + jitter(input.tile.tx, input.tile.ty, input.seed, index, 23) * 5, -MAX_OFFSET_Y, MAX_OFFSET_Y),
     });
     const { x: offsetX, y: offsetY } = offset;
     const scale = 0.75 + hashUnit(input.tile.tx, input.tile.ty, input.seed, index, 37) * 0.5;
@@ -53,6 +77,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
     const silhouette = SILHOUETTES[silhouetteIndex] ?? "narrow";
     const x = center.sx + offsetX;
     const y = center.sy + offsetY;
+    const anchor = screenToTile(x, y);
 
     descriptors.push({
       id: `tree:${input.tile.tx}:${input.tile.ty}:${input.seed}:${index}`,
@@ -65,12 +90,52 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       tone: "forest",
       phase: objectPhase(`tree:${input.seed}:${index}:${silhouette}`, input.tile.tx, input.tile.ty),
       sortY: y + scale * 8,
+      anchorTx: anchor.tx,
+      anchorTy: anchor.ty,
+      spriteKey: treeSpriteKey(input.tile.tx, input.tile.ty, input.seed, index, silhouette),
     });
   }
 
   return descriptors
     .sort((left, right) => left.sortY - right.sortY || left.id.localeCompare(right.id))
     .map((tree, index) => ({ ...tree, tone: TREE_TONES[(toneOffset + index) % TREE_TONES.length] ?? "forest" }));
+}
+
+export function buildGroundCover(input: {
+  readonly tile: Tile;
+  readonly seed: number;
+}): readonly GroundCoverDescriptor[] {
+  if (input.tile.terrain === "water" || input.tile.buildingId !== null || input.tile.hasRoad) {
+    return [];
+  }
+  const roll = hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 83);
+  if (roll < 0.62) {
+    return [];
+  }
+  const center = tileToScreen(input.tile.tx, input.tile.ty);
+  const offset = constrainToDiamond({
+    x: jitter(input.tile.tx, input.tile.ty, input.seed, 0, 89) * TILE_W * 0.24,
+    y: jitter(input.tile.tx, input.tile.ty, input.seed, 0, 97) * TILE_H * 0.24,
+  });
+  const x = center.sx + offset.x;
+  const y = center.sy + offset.y;
+  const anchor = screenToTile(x, y);
+  const scale = 0.75 + hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 101) * 0.5;
+  const spriteIndex = Math.floor(hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 103) * SHRUB_SPRITES.length) % SHRUB_SPRITES.length;
+  const spriteKey = SHRUB_SPRITES[spriteIndex] ?? "shrub_a";
+  return [{
+    id: `groundCover:${input.tile.tx}:${input.tile.ty}:${input.seed}:0`,
+    x,
+    y,
+    offsetX: offset.x,
+    offsetY: offset.y,
+    scale,
+    phase: objectPhase(`groundCover:${input.seed}:${spriteKey}`, input.tile.tx, input.tile.ty),
+    sortY: y + scale * 2,
+    anchorTx: anchor.tx,
+    anchorTy: anchor.ty,
+    spriteKey,
+  }];
 }
 
 export function buildForestLookup(tiles: readonly Tile[]): ForestLookup {
@@ -135,6 +200,20 @@ function tileKey(tx: number, ty: number): string {
 
 function jitter(tx: number, ty: number, seed: number, index: number, salt: number): number {
   return hashUnit(tx, ty, seed, index, salt) * 2 - 1;
+}
+
+function treeSpriteKey(
+  tx: number,
+  ty: number,
+  seed: number,
+  index: number,
+  silhouette: TreeSilhouette,
+): TreeSpriteKey {
+  const variant = Math.floor(hashUnit(tx, ty, seed, index, 37) * 997) % 2;
+  if (silhouette === "narrow") {
+    return variant === 0 ? "tree_conifer_a" : "tree_conifer_b";
+  }
+  return variant === 0 ? "tree_broadleaf_a" : "tree_broadleaf_b";
 }
 
 function hashUnit(tx: number, ty: number, seed: number, index: number, salt: number): number {

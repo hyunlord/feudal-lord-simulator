@@ -1,45 +1,97 @@
+import type { Walker } from "../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import type { Tile } from "../world/world.types";
 import { depthKey } from "./iso";
 import type { TileRange } from "./renderer";
+import {
+  buildForestLookup,
+  buildGroundCover,
+  buildTreeCluster,
+  type GroundCoverDescriptor,
+  type TreeDescriptor,
+} from "./treeLayout";
+import { walkerVisualAnchor } from "./walkerAnchor";
 
 export type ObjectRenderItem =
   | {
       readonly kind: "tree";
       readonly id: string;
-      readonly tile: Tile;
+      readonly descriptor: TreeDescriptor;
       readonly depth: number;
+      readonly anchorTx: number;
+    }
+  | {
+      readonly kind: "groundCover";
+      readonly id: string;
+      readonly descriptor: GroundCoverDescriptor;
+      readonly depth: number;
+      readonly anchorTx: number;
     }
   | {
       readonly kind: "building";
       readonly id: string;
       readonly building: Building;
       readonly depth: number;
+      readonly anchorTx: number;
+    }
+  | {
+      readonly kind: "walker";
+      readonly id: string;
+      readonly walker: Walker;
+      readonly depth: number;
+      readonly anchorTx: number;
     };
 
 type ObjectRenderInput = {
   readonly tiles: readonly Tile[];
+  readonly worldTiles?: readonly Tile[];
   readonly buildings: readonly Building[];
+  readonly walkers?: readonly Walker[];
   readonly range: TileRange;
+  readonly seed?: number;
+  readonly includeGroundCover?: boolean;
 };
 
 export function buildObjectRenderItems(input: ObjectRenderInput): readonly ObjectRenderItem[] {
   const items: ObjectRenderItem[] = [];
   const clearedTiles = clearedTreeTileKeys(input.buildings);
+  const seed = input.seed ?? 0;
+  const foliageTiles = input.tiles.filter((tile) => isFoliageCandidate(tile, input.range, clearedTiles));
+  const forestLookup = buildForestLookup(input.worldTiles ?? input.tiles);
 
-  for (const tile of input.tiles) {
-    if (
-      tileIsWithinRange(tile, input.range) &&
-      tile.terrain === "forest" &&
-      tile.buildingId === null &&
-      !tile.hasRoad &&
-      !clearedTiles.has(tileKey(tile.tx, tile.ty))
-    ) {
+  for (const tile of foliageTiles) {
+    if (tile.terrain === "forest") {
+      for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
+        items.push({
+          kind: "tree",
+          id: tree.id,
+          descriptor: tree,
+          depth: depthKey(tree.anchorTx, tree.anchorTy),
+          anchorTx: tree.anchorTx,
+        });
+      }
+    } else if (input.includeGroundCover ?? true) {
+      for (const groundCover of buildGroundCover({ tile, seed })) {
+        items.push({
+          kind: "groundCover",
+          id: groundCover.id,
+          descriptor: groundCover,
+          depth: depthKey(groundCover.anchorTx, groundCover.anchorTy),
+          anchorTx: groundCover.anchorTx,
+        });
+      }
+    }
+  }
+
+  for (const walker of input.walkers ?? []) {
+    if (tilePosIsWithinRange(walker.position.tx, walker.position.ty, input.range)) {
+      const anchor = walkerVisualAnchor(walker.position);
       items.push({
-        kind: "tree",
-        id: `tree:${tile.tx}:${tile.ty}`,
-        tile,
-        depth: depthKey(tile.tx, tile.ty),
+        kind: "walker",
+        id: walker.id,
+        walker,
+        depth: depthKey(anchor.tx, anchor.ty),
+        anchorTx: anchor.tx,
       });
     }
   }
@@ -54,6 +106,7 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
       id: building.id,
       building,
       depth: depthKey(building.tx + config.width - 1, building.ty + config.height - 1),
+      anchorTx: building.tx + config.width - 1,
     });
   }
 
@@ -77,17 +130,25 @@ function compareRenderItems(left: ObjectRenderItem, right: ObjectRenderItem): nu
   const depthDifference = left.depth - right.depth;
   if (depthDifference !== 0) return depthDifference;
 
-  const kindDifference = left.kind.localeCompare(right.kind);
-  return kindDifference !== 0 ? kindDifference : left.id.localeCompare(right.id);
+  const anchorDifference = left.anchorTx - right.anchorTx;
+  return anchorDifference !== 0 ? anchorDifference : left.id.localeCompare(right.id);
 }
 
-function tileIsWithinRange(tile: Tile, range: TileRange): boolean {
+function isFoliageCandidate(
+  tile: Tile,
+  range: TileRange,
+  clearedTiles: ReadonlySet<string>,
+): boolean {
   return (
-    tile.tx >= range.minTx &&
-    tile.tx <= range.maxTx &&
-    tile.ty >= range.minTy &&
-    tile.ty <= range.maxTy
+    tilePosIsWithinRange(tile.tx, tile.ty, range) &&
+    tile.buildingId === null &&
+    !tile.hasRoad &&
+    !clearedTiles.has(tileKey(tile.tx, tile.ty))
   );
+}
+
+function tilePosIsWithinRange(tx: number, ty: number, range: TileRange): boolean {
+  return tx >= range.minTx && tx <= range.maxTx && ty >= range.minTy && ty <= range.maxTy;
 }
 
 function footprintOverlapsRange(

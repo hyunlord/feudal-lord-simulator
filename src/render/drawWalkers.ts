@@ -2,8 +2,8 @@ import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
-import { TILE_H, tileToScreen } from "./iso";
 import { applyInkOutline, snapToPixel } from "./style";
+import { walkerVisualAnchor } from "./walkerAnchor";
 
 const CARGO_COLOR_BY_RESOURCE = {
   wheat: PALETTE.gold,
@@ -31,22 +31,24 @@ export function walkerScaleForZoom(zoom: number): number {
 }
 
 function compareWalkersForRender(left: Walker, right: Walker): number {
+  const leftAnchor = walkerVisualAnchor(left.position);
+  const rightAnchor = walkerVisualAnchor(right.position);
   return (
-    left.position.tx + left.position.ty - (right.position.tx + right.position.ty) ||
-    left.position.ty - right.position.ty ||
-    left.position.tx - right.position.tx ||
+    leftAnchor.tx + leftAnchor.ty - (rightAnchor.tx + rightAnchor.ty) ||
+    leftAnchor.ty - rightAnchor.ty ||
+    leftAnchor.tx - rightAnchor.tx ||
     left.id.localeCompare(right.id)
   );
 }
 
-function drawWalker(
+export function drawWalker(
   context: CanvasRenderingContext2D,
   walker: Walker,
   zoom: number,
 ): void {
-  const center = tileToScreen(walker.position.tx, walker.position.ty);
-  const footX = snapToPixel(center.sx);
-  const footY = snapToPixel(center.sy + TILE_H * 0.18);
+  const anchor = walkerVisualAnchor(walker.position);
+  const footX = snapToPixel(anchor.sx);
+  const footY = snapToPixel(anchor.sy);
   const scale = walkerScaleForZoom(zoom);
 
   drawWalkerShadow(context, footX, footY, scale);

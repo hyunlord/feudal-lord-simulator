@@ -4,6 +4,7 @@ import test from "node:test";
 import { TILE_H, TILE_W } from "../src/render/iso";
 import {
   buildForestLookup,
+  buildGroundCover,
   buildTreeCluster,
   forestTreeCount,
   orthogonalForestNeighborCount,
@@ -93,5 +94,38 @@ test("multi-tree canopy tones alternate between forest and sage dark", () => {
   assert.deepEqual(tones, new Set(["forest", "sageDark"]));
   for (let index = 1; index < descriptors.length; index += 1) {
     assert.notEqual(descriptors[index]?.tone, descriptors[index - 1]?.tone);
+  }
+});
+
+test("tree and shrub sprite variants are assigned from separate deterministic slots", () => {
+  const descriptors = [
+    ...buildTreeCluster({ tile: tile(0, 0), forestLookup: buildForestLookup([tile(0, 0)]), seed: 1 }),
+    ...buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 }),
+    ...buildTreeCluster({ tile: tile(4, 4), forestLookup: buildForestLookup([tile(4, 4)]), seed: 74 }),
+    ...buildTreeCluster({ tile: tile(5, 4), forestLookup: buildForestLookup([tile(5, 4)]), seed: 75 }),
+  ];
+  const groundCover = buildGroundCover({ tile: tile(3, 0, "grass"), seed: 73 });
+
+  assert.ok(descriptors.length > 0);
+  assert.ok(groundCover.length > 0);
+  assert.deepEqual(
+    new Set(descriptors.map((descriptor) => descriptor.spriteKey)),
+    new Set(["tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b"]),
+  );
+  assert.ok(descriptors.every((descriptor) => !descriptor.spriteKey.startsWith("shrub_")));
+  assert.ok(groundCover.every((descriptor) => descriptor.spriteKey === "shrub_a" || descriptor.spriteKey === "shrub_b"));
+});
+
+test("tree sprite family follows the selected silhouette", () => {
+  // Given
+  const descriptors = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 2 });
+
+  // When / Then
+  for (const descriptor of descriptors) {
+    if (descriptor.silhouette === "narrow") {
+      assert.match(descriptor.spriteKey, /^tree_conifer_[ab]$/);
+    } else {
+      assert.match(descriptor.spriteKey, /^tree_broadleaf_[ab]$/);
+    }
   }
 });

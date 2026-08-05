@@ -81,6 +81,18 @@ test("computeVisibleTileRange clips iteration so a small viewport never draws ev
   );
 });
 
+test("computeVisibleTileRange includes tall sprite anchors whose tops overhang the viewport", () => {
+  // Given / When
+  const range = computeVisibleTileRange({
+    camera: { zoom: 1, panX: 0, panY: 0 },
+    viewport: { width: 64, height: 32 },
+    world: { width: 20, height: 20 },
+  });
+
+  // Then
+  assert.ok(range.maxTy >= 5, `expected house_l3 at ty=5 to stay visible, got ${range.maxTy}`);
+});
+
 test("terrain variation remains within plus or minus five percent and frame-stable", () => {
   // Given
   const sample = { tx: 6, ty: 7 };

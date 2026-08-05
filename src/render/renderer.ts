@@ -4,10 +4,10 @@ import type { CameraState } from "./camera";
 import { canvasToWorld } from "./camera";
 import { drawBuildings } from "./drawBuildings";
 import { drawTerrain } from "./drawTerrain";
-import { drawWalkers } from "./drawWalkers";
 import { drawWorldVignette } from "./worldBackdrop";
-import { depthKey, screenToTile } from "./iso";
+import { TILE_H, depthKey, screenToTile } from "./iso";
 import { drawOverlay, drawPlacementOverlay, type PlacementPreview } from "./overlays";
+import { maxSpriteAnchorY } from "./worldAssets";
 import type { Grid } from "../world/grid";
 import type { Tile } from "../world/world.types";
 
@@ -44,7 +44,7 @@ export type RenderPasses = {
   readonly overhang: () => void;
 };
 
-const RANGE_MARGIN_TILES = 3;
+const RANGE_MARGIN_TILES = Math.max(3, Math.ceil(maxSpriteAnchorY() / TILE_H));
 export type RenderFrameInput = {
   readonly context: CanvasRenderingContext2D;
   readonly state: GameState;
@@ -77,8 +77,11 @@ export const renderFrame = (input: RenderFrameInput): void => {
         tiles: visibleTiles,
         range,
         zoom: input.camera.zoom,
+        camera: input.camera,
+        dpr: devicePixelRatioFor(input.context, input.viewport),
+        viewport: input.viewport,
       }),
-    overhang: () => drawWalkers(input.context, input.state, input.camera.zoom),
+    overhang: () => undefined,
   });
   drawOverlay({
     context: input.context,
@@ -142,3 +145,12 @@ const screenToTilePoint = (point: { readonly x: number; readonly y: number }) =>
 
 const clampTile = (value: number, size: number): number =>
   Math.max(0, Math.min(size - 1, value));
+
+const devicePixelRatioFor = (
+  context: CanvasRenderingContext2D,
+  viewport: ViewportSize,
+): number => {
+  if (viewport.width <= 0) return 1;
+  const dpr = context.canvas.width / viewport.width;
+  return Number.isFinite(dpr) && dpr > 0 ? dpr : 1;
+};

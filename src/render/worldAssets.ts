@@ -46,6 +46,14 @@ export function spriteMeta(key: string): AssetMeta | null {
   return record === undefined ? null : { ...record.meta, status: record.status };
 }
 
+export function maxSpriteAnchorY(): number {
+  let maxAnchorY = 0;
+  for (const record of records.values()) {
+    maxAnchorY = Math.max(maxAnchorY, record.meta.anchor.y);
+  }
+  return maxAnchorY;
+}
+
 function loadRecord(record: AssetRecord): Promise<void> {
   if (record.status !== "idle") return Promise.resolve();
   if (typeof globalThis.Image !== "function") {

@@ -1,13 +1,16 @@
 import { SEMANTIC_PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
 import { renderDetailLevel } from "./buildingVisualState";
+import { screenToTile } from "./iso";
 import { ambientOffset } from "./renderMotion";
 import {
   buildTreeCluster,
   type ForestLookup,
+  type GroundCoverDescriptor,
   type TreeDescriptor,
 } from "./treeLayout";
 import { applyInkOutline, drawFlatDiamondShadow, snapToPixel } from "./style";
+import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
 
 export function drawTreeCluster(
   context: CanvasRenderingContext2D,
@@ -20,6 +23,58 @@ export function drawTreeCluster(
   for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
     drawTree(context, tick, tree, zoom);
   }
+}
+
+export function drawTreeDescriptor(
+  context: CanvasRenderingContext2D,
+  input: {
+    readonly tick: number;
+    readonly tree: TreeDescriptor;
+    readonly zoom: number;
+    readonly spriteOptions: WorldSpriteOptions;
+  },
+): void {
+  if (renderDetailLevel(input.zoom) === "full") {
+    const sway = ambientOffset({
+      tick: input.tick,
+      amplitude: 2 * input.tree.scale,
+      frequency: 0.72,
+      phase: input.tree.phase,
+    });
+    const anchor = screenToTile(input.tree.x + sway, input.tree.y);
+    if (
+      drawWorldSpriteAtWorldAnchor(context, input.tree.spriteKey, anchor.tx, anchor.ty, {
+        ...input.spriteOptions,
+        scale: input.tree.scale,
+      })
+    ) {
+      return;
+    }
+  }
+  drawTree(context, input.tick, input.tree, input.zoom);
+}
+
+export function drawGroundCoverDescriptor(
+  context: CanvasRenderingContext2D,
+  input: {
+    readonly descriptor: GroundCoverDescriptor;
+    readonly zoom: number;
+    readonly spriteOptions: WorldSpriteOptions;
+  },
+): void {
+  if (renderDetailLevel(input.zoom) !== "full") return;
+  if (
+    drawWorldSpriteAtWorldAnchor(
+      context,
+      input.descriptor.spriteKey,
+      input.descriptor.anchorTx,
+      input.descriptor.anchorTy,
+      { ...input.spriteOptions, scale: input.descriptor.scale },
+    )
+  ) {
+    return;
+  }
+  drawGroundCoverPrimitive(context, input.descriptor, input.zoom);
 }
 
 function drawTree(
@@ -59,6 +114,27 @@ function drawTree(
   context.stroke();
   context.fillStyle = SEMANTIC_PALETTE[tree.tone];
   traceTreeCanopy(context, tree, sway);
+  context.fill();
+  applyInkOutline(context, zoom);
+  context.stroke();
+}
+
+function drawGroundCoverPrimitive(
+  context: CanvasRenderingContext2D,
+  descriptor: GroundCoverDescriptor,
+  zoom: number,
+): void {
+  context.fillStyle = SEMANTIC_PALETTE.sageDark;
+  context.beginPath();
+  context.ellipse(
+    snapToPixel(descriptor.x),
+    snapToPixel(descriptor.y - 4 * descriptor.scale),
+    snapToPixel(8 * descriptor.scale),
+    snapToPixel(5 * descriptor.scale),
+    0,
+    0,
+    Math.PI * 2,
+  );
   context.fill();
   applyInkOutline(context, zoom);
   context.stroke();
