@@ -15,6 +15,7 @@ import { speedToIntervalMs } from "../src/ui/SpeedControls";
 import type { Tile } from "../src/world/world.types";
 
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
+const INDEX_HTML = new URL("../index.html", import.meta.url);
 
 function tile(tx: number, ty: number, terrain: Tile["terrain"]): Tile {
   return { tx, ty, terrain, buildingId: null, hasRoad: false };
@@ -145,4 +146,12 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.court-ledger::after\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);[\s\S]*?opacity:\s*0\.86;/);
   assert.match(css, /\.court-ledger\s*>\s*\*\s*\{[\s\S]*?z-index:\s*1;/);
   assert.match(css, /\.shield-caption\s*\{[\s\S]*?bottom:\s*10px;/);
+});
+
+test("the browser shell declares a request-free favicon for clean fresh-load QA", async () => {
+  // Given / When
+  const html = await readFile(INDEX_HTML, "utf8");
+
+  // Then
+  assert.match(html, /<link rel="icon" href="data:," \/>/);
 });
