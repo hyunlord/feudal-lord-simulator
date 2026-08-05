@@ -173,6 +173,12 @@ def _style_condition(category: Category) -> tuple[float, float]:
             assert_never(unreachable)
 
 
+def _guide_denoise(job: Job) -> float:
+    if job.category is Category.BUILDING and job.key == "storehouse":
+        return 0.48
+    return 0.72
+
+
 def workflow_prompt(job: Job, reference_names: tuple[str, str, str], guide_name: str | None) -> Workflow:
     positive, negative = _prompt_text(job)
     style_weight, style_end = _style_condition(job.category)
@@ -222,7 +228,7 @@ def workflow_prompt(job: Job, reference_names: tuple[str, str, str], guide_name:
         }
         latent_node = ["18", 0]
         decoded_node = ["19", 0]
-        workflow["9"]["inputs"]["denoise"] = 0.72
+        workflow["9"]["inputs"]["denoise"] = _guide_denoise(job)
     workflow["9"]["inputs"]["latent_image"] = latent_node
     workflow["14"]["inputs"]["images"] = decoded_node
     return workflow

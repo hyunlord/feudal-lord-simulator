@@ -165,6 +165,10 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
                 guide = module.build_subject_guide(job)
                 self.assertEqual(guide.getpixel((512, 200)), module.CYAN_RGB)
                 self.assertEqual(guide.getpixel((512, 720)), (67, 54, 42))
+                workflow = module.workflow_prompt(job, ("house.png", "mill.png", "barn.png"), "guide.png")
+                sampler = next(node for node in workflow.values() if node["class_type"] == "KSampler")
+                expected = 0.48 if key == "storehouse" else 0.72
+                self.assertEqual(sampler["inputs"]["denoise"], expected)
 
     def test_target_filter_and_timed_manifest_are_portable(self) -> None:
         module = load_generator()
