@@ -167,8 +167,19 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
                 self.assertEqual(guide.getpixel((512, 720)), (67, 54, 42))
                 workflow = module.workflow_prompt(job, ("house.png", "mill.png", "barn.png"), "guide.png")
                 sampler = next(node for node in workflow.values() if node["class_type"] == "KSampler")
-                expected = 0.48 if key == "storehouse" else 0.72
-                self.assertEqual(sampler["inputs"]["denoise"], expected)
+                self.assertEqual(sampler["inputs"]["denoise"], 0.72)
+
+    def test_storehouse_workflow_restores_open_bay_and_crates_after_inpaint(self) -> None:
+        module = load_generator()
+        job = next(candidate for candidate in module.JOBS if candidate.key == "storehouse")
+        workflow = module.workflow_prompt(job, ("house.png", "mill.png", "barn.png"), "guide.png")
+        preserved_colours = {
+            node["inputs"]["color"]
+            for node in workflow.values()
+            if node["class_type"] == "ImageColorToMask"
+        }
+
+        self.assertEqual(preserved_colours, {65535, 4404778, 8675386})
 
     def test_target_filter_and_timed_manifest_are_portable(self) -> None:
         module = load_generator()

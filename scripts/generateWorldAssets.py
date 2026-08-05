@@ -173,12 +173,6 @@ def _style_condition(category: Category) -> tuple[float, float]:
             assert_never(unreachable)
 
 
-def _guide_denoise(job: Job) -> float:
-    if job.category is Category.BUILDING and job.key == "storehouse":
-        return 0.48
-    return 0.72
-
-
 def workflow_prompt(job: Job, reference_names: tuple[str, str, str], guide_name: str | None) -> Workflow:
     positive, negative = _prompt_text(job)
     style_weight, style_end = _style_condition(job.category)
@@ -228,7 +222,19 @@ def workflow_prompt(job: Job, reference_names: tuple[str, str, str], guide_name:
         }
         latent_node = ["18", 0]
         decoded_node = ["19", 0]
-        workflow["9"]["inputs"]["denoise"] = _guide_denoise(job)
+        workflow["9"]["inputs"]["denoise"] = 0.72
+        if job.category is Category.BUILDING and job.key == "storehouse":
+            workflow["20"] = {"class_type": "ImageColorToMask", "inputs": {"image": ["15", 0], "color": 4404778}}
+            workflow["21"] = {
+                "class_type": "ImageCompositeMasked",
+                "inputs": {"destination": ["19", 0], "source": ["15", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["20", 0]},
+            }
+            workflow["22"] = {"class_type": "ImageColorToMask", "inputs": {"image": ["15", 0], "color": 8675386}}
+            workflow["23"] = {
+                "class_type": "ImageCompositeMasked",
+                "inputs": {"destination": ["21", 0], "source": ["15", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["22", 0]},
+            }
+            decoded_node = ["23", 0]
     workflow["9"]["inputs"]["latent_image"] = latent_node
     workflow["14"]["inputs"]["images"] = decoded_node
     return workflow
