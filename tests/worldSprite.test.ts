@@ -157,7 +157,7 @@ describe("world sprite blitter", () => {
     });
 
     assert.equal(drawn, true);
-    assert.deepEqual(recorder.drawCalls[0], { dx: 52, dy: 96, width: 16, height: 14 });
+    assert.deepEqual(recorder.drawCalls[0], { dx: 52, dy: 99, width: 16, height: 11 });
     assert.ok(recorder.calls.includes("globalAlpha:0.105"));
     assert.ok(recorder.calls.includes("smoothing:false"));
     assert.equal(recorder.context.globalAlpha, 0.42);

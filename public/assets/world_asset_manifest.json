@@ -226,8 +226,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64050805,
-        "candidate": 5
+        "seed": 64050802,
+        "candidate": 2
       },
       "palettePolicy": "canonical-building",
       "alphaPolicy": "transparent-outline-179"
@@ -357,17 +357,17 @@
       "category": "foliage",
       "path": "public/assets/foliage/shrub_a.png",
       "width": 40,
-      "height": 36,
+      "height": 28,
       "anchor": {
         "x": 20,
-        "y": 36
+        "y": 28
       },
       "footprint": {
         "width": 1,
         "height": 1
       },
       "source": {
-        "seed": 64052005,
+        "seed": 64052501,
         "candidate": 1
       },
       "palettePolicy": "foliage-timber",
@@ -387,20 +387,80 @@
       "category": "foliage",
       "path": "public/assets/foliage/shrub_b.png",
       "width": 32,
-      "height": 28,
+      "height": 22,
       "anchor": {
         "x": 16,
-        "y": 28
+        "y": 22
       },
       "footprint": {
         "width": 1,
         "height": 1
       },
       "source": {
-        "seed": 64052006,
+        "seed": 64052601,
         "candidate": 1
       },
       "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "grass_tuft",
+      "category": "foliage",
+      "path": "public/assets/foliage/grass_tuft.png",
+      "width": 28,
+      "height": 18,
+      "anchor": {
+        "x": 14,
+        "y": 18
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052701,
+        "candidate": 1
+      },
+      "palettePolicy": "foliage-timber",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.75,
+          "max": 1.25
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "field_stone",
+      "category": "foliage",
+      "path": "public/assets/foliage/field_stone.png",
+      "width": 24,
+      "height": 16,
+      "anchor": {
+        "x": 12,
+        "y": 16
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052803,
+        "candidate": 3
+      },
+      "palettePolicy": "stone-earth",
       "alphaPolicy": "transparent-outline-179",
       "variation": {
         "selection": "hash",
