@@ -227,6 +227,20 @@ test("ground cover protection reaches two tiles from roads", () => {
   assert.equal(protectedTiles.has("7:4"), false);
 });
 
+test("ground cover protection reuses immutable world geometry across simulation ticks", () => {
+  // Given
+  const worldTiles = [{ ...tile(4, 4), hasRoad: true }];
+  const firstBuildings = [building("house-before-tick", "house", 8, 8)];
+  const nextTickBuildings = [building("house-after-tick", "house", 8, 8)];
+
+  // When
+  const first = groundCoverProtectedTileKeys(worldTiles, firstBuildings);
+  const repeat = groundCoverProtectedTileKeys(worldTiles, nextTickBuildings);
+
+  // Then
+  assert.equal(repeat, first);
+});
+
 test("the object queue excludes cover within two tiles and permits distance three", () => {
   // Given
   const road = { ...tile(4, 4), hasRoad: true };

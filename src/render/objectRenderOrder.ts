@@ -59,6 +59,16 @@ type TileArea = {
   readonly height: number;
 };
 
+type GroundCoverProtectionCacheEntry = {
+  readonly buildingSignature: string;
+  readonly keys: ReadonlySet<string>;
+};
+
+const groundCoverProtectionCache = new WeakMap<
+  readonly Tile[],
+  GroundCoverProtectionCacheEntry
+>();
+
 export function buildObjectRenderItems(input: ObjectRenderInput): readonly ObjectRenderItem[] {
   const items: ObjectRenderItem[] = [];
   const clearedTiles = clearedTreeTileKeys(input.buildings);
@@ -142,6 +152,13 @@ export function groundCoverProtectedTileKeys(
   tiles: readonly Tile[],
   buildings: readonly Building[],
 ): ReadonlySet<string> {
+  const buildingSignature = buildings
+    .map((building) => `${building.kind}:${building.tx}:${building.ty}`)
+    .join("|");
+  const cached = groundCoverProtectionCache.get(tiles);
+  if (cached?.buildingSignature === buildingSignature) {
+    return cached.keys;
+  }
   const keys = new Set<string>();
   for (const tile of tiles) {
     if (tile.hasRoad) {
@@ -157,6 +174,7 @@ export function groundCoverProtectedTileKeys(
       height: config.height,
     });
   }
+  groundCoverProtectionCache.set(tiles, { buildingSignature, keys });
   return keys;
 }
 
