@@ -60,9 +60,15 @@ const GROUND_COVER_SPRITES: readonly GroundCoverSpriteKey[] = [
 const MAX_OFFSET_X = TILE_W * 0.35;
 const MAX_OFFSET_Y = TILE_H * 0.35;
 const SAFE_DIAMOND_RADIUS = 0.7;
+const treeClusterCache = new WeakMap<Tile, Map<string, readonly TreeDescriptor[]>>();
+const groundCoverCache = new WeakMap<Tile, Map<number, readonly GroundCoverDescriptor[]>>();
+const forestLookupCache = new WeakMap<readonly Tile[], ForestLookup>();
 
 export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescriptor[] {
   const treeCount = forestTreeCount(input.tile, input.forestLookup, input.seed);
+  const cacheKey = `${input.seed}:${treeCount}`;
+  const cached = treeClusterCache.get(input.tile)?.get(cacheKey);
+  if (cached !== undefined) return cached;
   const center = tileToScreen(input.tile.tx, input.tile.ty);
   const descriptors: TreeDescriptor[] = [];
   const silhouetteOffset = Math.floor(hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 41) * SILHOUETTES.length) % SILHOUETTES.length;
@@ -101,26 +107,32 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
     });
   }
 
-  return descriptors
+  const result = descriptors
     .sort((left, right) => left.sortY - right.sortY || left.id.localeCompare(right.id))
     .map((tree, index) => ({ ...tree, tone: TREE_TONES[(toneOffset + index) % TREE_TONES.length] ?? "forest" }));
+  const tileCache = treeClusterCache.get(input.tile) ?? new Map();
+  tileCache.set(cacheKey, result);
+  treeClusterCache.set(input.tile, tileCache);
+  return result;
 }
 
 export function buildGroundCover(input: {
   readonly tile: Tile;
   readonly seed: number;
 }): readonly GroundCoverDescriptor[] {
+  const cached = groundCoverCache.get(input.tile)?.get(input.seed);
+  if (cached !== undefined) return cached;
   if (
     input.tile.terrain === "water" ||
     input.tile.terrain === "forest" ||
     input.tile.buildingId !== null ||
     input.tile.hasRoad
   ) {
-    return [];
+    return cacheGroundCover(input.tile, input.seed, []);
   }
   const roll = hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 83);
   if (roll < 0.92) {
-    return [];
+    return cacheGroundCover(input.tile, input.seed, []);
   }
   const center = tileToScreen(input.tile.tx, input.tile.ty);
   const offset = constrainToDiamond({
@@ -134,7 +146,7 @@ export function buildGroundCover(input: {
   const variantRoll = hashUnit(input.tile.ty, input.tile.tx, input.seed + 17_171, 1, 149);
   const spriteIndex = Math.floor(variantRoll * GROUND_COVER_SPRITES.length) % GROUND_COVER_SPRITES.length;
   const spriteKey = GROUND_COVER_SPRITES[spriteIndex] ?? "shrub_a";
-  return [{
+  return cacheGroundCover(input.tile, input.seed, [{
     id: `groundCover:${input.tile.tx}:${input.tile.ty}:${input.seed}:0`,
     x,
     y,
@@ -146,15 +158,19 @@ export function buildGroundCover(input: {
     anchorTx: anchor.tx,
     anchorTy: anchor.ty,
     spriteKey,
-  }];
+  }]);
 }
 
 export function buildForestLookup(tiles: readonly Tile[]): ForestLookup {
-  return new Set(
+  const cached = forestLookupCache.get(tiles);
+  if (cached !== undefined) return cached;
+  const lookup = new Set(
     tiles
       .filter((tile) => tile.terrain === "forest" && tile.buildingId === null && !tile.hasRoad)
       .map((tile) => tileKey(tile.tx, tile.ty)),
   );
+  forestLookupCache.set(tiles, lookup);
+  return lookup;
 }
 
 export function forestTreeCount(tile: Tile, forestLookup: ForestLookup, seed: number): 1 | 2 | 3 {
@@ -194,6 +210,17 @@ function treeAnchor(treeCount: number, index: number): { readonly x: number; rea
     default:
       return { x: 13, y: 4 };
   }
+}
+
+function cacheGroundCover(
+  tile: Tile,
+  seed: number,
+  descriptors: readonly GroundCoverDescriptor[],
+): readonly GroundCoverDescriptor[] {
+  const tileCache = groundCoverCache.get(tile) ?? new Map();
+  tileCache.set(seed, descriptors);
+  groundCoverCache.set(tile, tileCache);
+  return descriptors;
 }
 
 const forestNeighborCount = orthogonalForestNeighborCount;

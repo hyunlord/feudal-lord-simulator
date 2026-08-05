@@ -56,6 +56,7 @@ test("tree clusters are deterministic for one seed and change with another seed"
   const repeat = buildTreeCluster({ tile: target, forestLookup: fullForestLookup, seed: 73 });
   const otherSeed = buildTreeCluster({ tile: target, forestLookup: fullForestLookup, seed: 901 });
 
+  assert.equal(repeat, first);
   assert.deepEqual(repeat, first);
   assert.notDeepEqual(otherSeed, first);
 });
@@ -158,9 +159,26 @@ test("ground cover descriptors repeat exactly for equal tile and seed inputs", (
   // When
   const first = inputs.flatMap((input) => buildGroundCover(input));
   const repeat = inputs.flatMap((input) => buildGroundCover(input));
+  const occupiedInput = inputs.find((input) => buildGroundCover(input).length > 0);
 
   // Then
   assert.deepEqual(repeat, first);
+  assert.notEqual(occupiedInput, undefined);
+  if (occupiedInput !== undefined) {
+    assert.equal(buildGroundCover(occupiedInput), buildGroundCover(occupiedInput));
+  }
+});
+
+test("forest lookup reuses immutable world tiles", () => {
+  // Given
+  const worldTiles = [...fullForest];
+
+  // When
+  const first = buildForestLookup(worldTiles);
+  const repeat = buildForestLookup(worldTiles);
+
+  // Then
+  assert.equal(repeat, first);
 });
 
 test("tree sprite family follows the selected silhouette", () => {
