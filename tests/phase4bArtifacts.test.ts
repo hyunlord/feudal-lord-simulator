@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { describe, it } from "node:test";
@@ -24,12 +23,21 @@ describe("Phase 4B release artifacts", () => {
     assert.equal(profile.candidates.length, 24);
   });
 
-  it("keeps the procedural building renderer byte-identical and sprite-free", () => {
-    const buildings = readFileSync(path.join(root, "src/render/drawBuildings.ts"));
-    const renderer = readFileSync(path.join(root, "src/render/renderer.ts"));
-    assert.equal(createHash("sha256").update(buildings).digest("hex"), "0a07e98420e6025cc696176b97d5045fabd9d4c1adc60a47e8020d67cf85caba");
-    assert.equal(createHash("sha256").update(renderer).digest("hex"), "0a9ba537a2ef599539f90cb279f5071fcb8a7c655d39353dc22e405047a1baf3");
-    assert.doesNotMatch(buildings.toString("utf8"), /drawImage|candidates_v2|\.png/);
-    assert.doesNotMatch(renderer.toString("utf8"), /drawImage|candidates_v2|\.png/);
+  it("keeps Phase 4B candidate evidence separate from Phase 4D runtime sprites", () => {
+    const candidateRuntimeReferences: string[] = [];
+    const renderFiles = readdirSync(path.join(root, "src/render"))
+      .filter((name) => name.endsWith(".ts") || name.endsWith(".tsx"));
+
+    for (const fileName of renderFiles) {
+      const source = readFileSync(path.join(root, "src/render", fileName), "utf8");
+      if (/candidates_v2|building_candidates_v2|building_old_new_v2|building_in_context_v2/.test(source)) {
+        candidateRuntimeReferences.push(fileName);
+      }
+    }
+
+    assert.deepEqual(candidateRuntimeReferences, []);
+    assert.equal(existsSync(path.join(root, "public/assets/buildings/house_l0.png")), true);
+    assert.equal(existsSync(path.join(root, "public/assets/buildings/mill.png")), true);
+    assert.equal(existsSync(path.join(root, "public/assets/buildings/barn.png")), true);
   });
 });

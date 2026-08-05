@@ -87,14 +87,25 @@ edges. Scroll art frames content only; its interior remains visually empty.
 
 ## 6. Components
 
-- **World canvas:** three explicit passes: ground, depth-sorted objects, and an
-  overhang pass for walkers so moving goods remain visible above structures.
+- **World canvas:** three explicit render passes: ground, one depth-sorted
+  object pass, and a reserved overhang pass. Buildings, individual trees,
+  shrubs, and walkers enter one stable object queue so adjacent sprites and
+  moving goods share the same tile-depth contract instead of separate ad-hoc
+  painter layers.
+- **World asset loader:** Phase 4C manifest assets preload from the canvas
+  lifecycle without blocking the first procedural paint. The loader is a
+  singleton; missing, loading, or failed images always leave the procedural
+  renderer in control.
 - **Terrain tiles:** procedural isometric diamonds with deterministic brightness
   variation, lower-right depth edges, four-neighbour transition marks, and
-  connection-aware roads.
+  connection-aware roads. When terrain textures are ready, clipped
+  world-anchored `CanvasPattern` fills tint the same procedural diamonds;
+  missing textures preserve the original flat paint path exactly.
 - **Buildings:** each visual kind varies footprint proportion, height, and roof
   form; signature details confirm identity under the universal outline/light
-  rules. At 0.5x they collapse to category-coloured city-mass blocks.
+  rules. At `zoom <= 0.5` they collapse to category-coloured city-mass blocks,
+  at `0.5 < zoom <= 0.7` they use simplified procedural forms, and above
+  `0.7` they may use manifest sprites with procedural fallback.
 - **Ground details:** deterministic sparse grass tufts, rocks, shoreline earth,
   and connection-aware worn paths. Details disappear below 0.7x.
 - **Building inspector:** a quiet parchment hover plaque with Korean identity,

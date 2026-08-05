@@ -83,7 +83,7 @@ export function buildingBodyProfile(
 
 export function renderDetailLevel(zoom: number): RenderDetailLevel {
   if (zoom <= 0.5) return "blocks";
-  return zoom < 0.7 ? "simplified" : "full";
+  return zoom <= 0.7 ? "simplified" : "full";
 }
 
 export function buildingLodColor(kind: BuildingKind): PaletteColor {

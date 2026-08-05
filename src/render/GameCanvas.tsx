@@ -24,6 +24,7 @@ import {
   resizeCanvas,
   type DragState,
 } from "./canvasRuntime";
+import { preloadWorldAssets } from "./worldAssets";
 type GameCanvasProps = { readonly selectedTool?: PlacementTool; readonly overlayMode?: OverlayMode };
 
 export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode = "none" }: GameCanvasProps) {
@@ -42,6 +43,8 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d") ?? null;
     if (canvas === null || context === null) return undefined;
+
+    void preloadWorldAssets();
 
     const cameraRef = { current: initialCamera(canvas, stateRef.current) };
     const hoverRef: { current: TileCoordinate | null } = { current: null };

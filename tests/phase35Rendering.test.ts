@@ -53,7 +53,8 @@ test("zoom detail policy preserves city mass at overview scale", () => {
   assert.equal(renderDetailLevel(0.49), "blocks");
   assert.equal(renderDetailLevel(0.5), "blocks");
   assert.equal(renderDetailLevel(0.69), "simplified");
-  assert.equal(renderDetailLevel(0.7), "full");
+  assert.equal(renderDetailLevel(0.7), "simplified");
+  assert.equal(renderDetailLevel(0.7001), "full");
   assert.equal(buildingLodColor("house"), SEMANTIC_PALETTE.parchmentDark);
   assert.equal(buildingLodColor("storehouse"), SEMANTIC_PALETTE.stone);
   assert.equal(buildingLodColor("mill"), SEMANTIC_PALETTE.earth);
