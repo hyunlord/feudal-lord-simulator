@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "environment": {
+    "host": "aitopatom-d6bb",
+    "browser": "HeadlessChrome 151",
+    "viewport": "1280x720",
+    "warmupFrames": 20,
+    "measuredFrames": 120,
+    "budgetMs": 12
+  },
+  "baselineEvidence": "docs/asset-evidence/phase4e_part1_performance.json",
+  "finalRevision": "f95c594",
+  "entities": {
+    "buildings": 40,
+    "roads": 127,
+    "trees": 451,
+    "groundCover": 154,
+    "walkers": 20
+  },
+  "canonicalComparison": {
+    "baseline": {
+      "groundCover": 853,
+      "1x": { "averageMs": 10.345, "p95Ms": 11.4, "worstMs": 31.3 },
+      "5x": { "averageMs": 10.448, "p95Ms": 11.8, "worstMs": 14.3 }
+    },
+    "part1": {
+      "groundCover": 154,
+      "1x": { "averageMs": 9.533, "p95Ms": 10.3, "worstMs": 31.4 },
+      "5x": { "averageMs": 9.647, "p95Ms": 10.8, "worstMs": 13.2 }
+    },
+    "final": {
+      "groundCover": 154,
+      "1x": { "averageMs": 10.746, "p95Ms": 11.4, "worstMs": 30.9, "overBudgetFrames": 6 },
+      "5x": { "averageMs": 10.655, "p95Ms": 11.9, "worstMs": 14.3, "overBudgetFrames": 6 }
+    }
+  },
+  "finalRuns": [
+    {
+      "run": 1,
+      "1x": { "averageMs": 10.701, "p95Ms": 11.9, "worstMs": 31.9, "overBudgetFrames": 5 },
+      "5x": { "averageMs": 10.728, "p95Ms": 12.8, "worstMs": 15.1, "overBudgetFrames": 8 }
+    },
+    {
+      "run": 2,
+      "1x": { "averageMs": 10.746, "p95Ms": 11.4, "worstMs": 30.9, "overBudgetFrames": 6 },
+      "5x": { "averageMs": 10.655, "p95Ms": 11.9, "worstMs": 14.3, "overBudgetFrames": 6 }
+    },
+    {
+      "run": 3,
+      "1x": { "averageMs": 10.688, "p95Ms": 11.9, "worstMs": 30.7, "overBudgetFrames": 6 },
+      "5x": { "averageMs": 10.797, "p95Ms": 13.1, "worstMs": 17.1, "overBudgetFrames": 9 }
+    }
+  ],
+  "optimization": {
+    "trigger": "The first full-art run averaged 12.817ms at 1x and 12.688ms at 5x.",
+    "change": "Cache four transformed CanvasPattern variants per context and source image instead of mutating the pattern per visible tile.",
+    "result": "All six final average measurements are below 12ms. Rare outliers remain and are reported without filtering."
+  }
+}
