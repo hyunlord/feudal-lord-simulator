@@ -5,11 +5,13 @@ import path from "node:path";
 import { describe, it } from "node:test";
 
 import {
+  addPhase4eSawmillCues,
   Phase4eAssetPreparationError,
   assertUntouchedAssetHashes,
   snapshotUntouchedAssetHashes,
   sourceForPhase4eTarget,
 } from "../scripts/preparePhase4eAssets";
+import type { RgbaImage } from "../scripts/processBuildingSprite";
 
 const fixture = (): string => {
   const root = mkdtempSync(path.join(tmpdir(), "phase4e-target-release-"));
@@ -25,6 +27,24 @@ const fixture = (): string => {
 };
 
 describe("Phase 4E target-only asset release", () => {
+  it("adds a literal blade, plank stack, and sawdust without mutating the processed candidate", () => {
+    const candidate: RgbaImage = {
+      dimensions: { width: 112, height: 112 },
+      rgba: new Uint8Array(112 * 112 * 4),
+    };
+
+    const released = addPhase4eSawmillCues(candidate);
+    const pixel = (x: number, y: number): readonly number[] =>
+      [...released.rgba.slice((y * 112 + x) * 4, (y * 112 + x) * 4 + 4)];
+
+    assert.notEqual(released.rgba, candidate.rgba);
+    assert.deepEqual(pixel(55, 24), [162, 173, 185, 255]);
+    assert.deepEqual(pixel(57, 52), [42, 33, 24, 255]);
+    assert.deepEqual(pixel(78, 80), [149, 121, 90, 255]);
+    assert.deepEqual(pixel(64, 94), [180, 149, 115, 255]);
+    assert.deepEqual([...candidate.rgba.slice((24 * 112 + 55) * 4, (24 * 112 + 55) * 4 + 4)], [0, 0, 0, 0]);
+  });
+
   it("maps every selection back to its deterministic generator seed", () => {
     assert.deepEqual(sourceForPhase4eTarget("sawmill", 4), { seed: 64050804, candidate: 4 });
     assert.deepEqual(sourceForPhase4eTarget("shrub_a", 3), { seed: 64052503, candidate: 3 });

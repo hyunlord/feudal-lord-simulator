@@ -3,7 +3,7 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { readPng, writePng } from "./processBuildingSprite";
+import { readPng, writePng, type RgbaImage } from "./processBuildingSprite";
 import {
   BUILDING_SPECS,
   FOLIAGE_SPECS,
@@ -41,6 +41,48 @@ const TARGET_PATHS = new Set([
 ]);
 
 const sha256 = (filePath: string): string => createHash("sha256").update(readFileSync(filePath)).digest("hex");
+
+const RGBA = {
+  ink: [42, 33, 24, 255],
+  blade: [162, 173, 185, 255],
+  plank: [149, 121, 90, 255],
+  plankLight: [178, 149, 120, 255],
+  sawdust: [180, 149, 115, 255],
+} as const;
+
+export const addPhase4eSawmillCues = (candidate: RgbaImage): RgbaImage => {
+  if (candidate.dimensions.width !== 112 || candidate.dimensions.height !== 112) {
+    throw new Phase4eAssetPreparationError("processed sawmill must be 112x112");
+  }
+  const rgba = new Uint8Array(candidate.rgba);
+  const setPixel = (x: number, y: number, color: readonly [number, number, number, number]): void => {
+    const offset = (y * candidate.dimensions.width + x) * 4;
+    rgba.set(color, offset);
+  };
+  const plank = (x: number, y: number, width: number, color: readonly [number, number, number, number]): void => {
+    for (let py = y; py < y + 4; py += 1) {
+      for (let px = x; px < x + width; px += 1) {
+        const border = py === y || py === y + 3 || px === x || px === x + width - 1;
+        setPixel(px, py, border ? RGBA.ink : color);
+      }
+    }
+  };
+
+  for (let y = 18; y <= 78; y += 1) {
+    setPixel(55, y, RGBA.blade);
+    setPixel(56, y, RGBA.blade);
+  }
+  for (let y = 52; y <= 76; y += 4) setPixel(57, y, RGBA.ink);
+  plank(74, 78, 24, RGBA.plank);
+  plank(77, 83, 21, RGBA.plankLight);
+  plank(72, 88, 24, RGBA.plank);
+  for (let y = 93; y <= 95; y += 1) {
+    for (let x = 60; x <= 78; x += 1) {
+      if ((x + y) % 3 !== 0) setPixel(x, y, RGBA.sawdust);
+    }
+  }
+  return { dimensions: candidate.dimensions, rgba };
+};
 
 export const snapshotUntouchedAssetHashes = (repoRoot: string): ReadonlyMap<string, string> => {
   const hashes = new Map<string, string>();
@@ -122,7 +164,8 @@ export const preparePhase4eAssets = (options: PreparePhase4eAssetOptions): World
     const raw = path.join(options.rawRoot, category, `${key}_${String(options.selections[key]).padStart(2, "0")}.png`);
     const destination = path.join(options.repoRoot, asset.path);
     mkdirSync(path.dirname(destination), { recursive: true });
-    writePng(destination, processWorldSprite(readPng(raw), key));
+    const processed = processWorldSprite(readPng(raw), key);
+    writePng(destination, key === "sawmill" ? addPhase4eSawmillCues(processed) : processed);
     existing.set(key, asset);
   }
 

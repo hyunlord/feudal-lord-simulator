@@ -107,7 +107,9 @@ export function terrainTextureOpacity(terrain: Tile["terrain"]): number {
 }
 
 export function grassPatternQuarterTurn(tx: number, ty: number, seed: number): 0 | 1 | 2 | 3 {
-  let hash = Math.imul(tx + 40_961, 73_856_093) ^ Math.imul(ty + 73_121, 19_349_663);
+  const regionTx = Math.floor(tx / 8);
+  const regionTy = Math.floor(ty / 8);
+  let hash = Math.imul(regionTx + 40_961, 73_856_093) ^ Math.imul(regionTy + 73_121, 19_349_663);
   hash ^= Math.imul(seed + 101_111, 83_492_791);
   hash = Math.imul(hash ^ (hash >>> 13), 1_274_126_177);
   return ((hash ^ (hash >>> 16)) >>> 0 & 3) as 0 | 1 | 2 | 3;

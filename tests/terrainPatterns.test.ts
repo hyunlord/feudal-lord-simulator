@@ -234,11 +234,12 @@ describe("terrain patterns", () => {
   });
 
   it("Given grass tile coordinates When repeat orientation is selected Then a deterministic quarter-turn is used", () => {
-    const first = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn(index % 4, Math.floor(index / 4), 73));
-    const second = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn(index % 4, Math.floor(index / 4), 73));
+    const first = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn((index % 4) * 8, Math.floor(index / 4) * 8, 73));
+    const second = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn((index % 4) * 8, Math.floor(index / 4) * 8, 73));
     assert.deepEqual(first, second);
     assert.deepEqual([...new Set(first)].sort(), [0, 1, 2, 3]);
-    assert.notDeepEqual(first, Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn(index % 4, Math.floor(index / 4), 74)));
+    assert.equal(grassPatternQuarterTurn(0, 0, 73), grassPatternQuarterTurn(7, 7, 73));
+    assert.notDeepEqual(first, Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn((index % 4) * 8, Math.floor(index / 4) * 8, 74)));
   });
 
   it("Given camera transforms differ When textured terrain draws Then pattern phase remains world anchored", () => {
