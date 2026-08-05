@@ -17,6 +17,8 @@ interface MockContext {
   closePath(): void;
   fill(): void;
   fillRect(x: number, y: number, w: number, h: number): void;
+  arc(x: number, y: number, radius: number): void;
+  ellipse(x: number, y: number, rx: number, ry: number): void;
   lineTo(x: number, y: number): void;
   moveTo(x: number, y: number): void;
   stroke(): void;
@@ -36,6 +38,8 @@ function createMockContext(): MockContext {
     closePath: () => calls.push("closePath"),
     fill: () => calls.push("fill"),
     fillRect: (x, y, w, h) => calls.push(`fillRect:${x},${y},${w},${h}`),
+    arc: (x, y, radius) => calls.push(`arc:${x},${y},${radius}`),
+    ellipse: (x, y, rx, ry) => calls.push(`ellipse:${x},${y},${rx},${ry}`),
     lineTo: (x, y) => calls.push(`lineTo:${x},${y}`),
     moveTo: (x, y) => calls.push(`moveTo:${x},${y}`),
     stroke: () => calls.push("stroke"),
@@ -118,10 +122,11 @@ test("drawWalkers renders cargo squares at fractional tile screen positions", ()
     walkers: [carter(), distributor()],
   });
 
-  assert.ok(context.calls.includes("fillRect:41,49,14,6"));
-  assert.ok(context.calls.includes("fillRect:44,39,8,8"));
-  assert.ok(context.calls.includes("fillRect:-4,15,8,8"));
-  assert.ok(context.calls.includes("stroke"));
+  assert.ok(context.calls.includes("ellipse:48,62,5,2"));
+  assert.ok(context.calls.includes("fillRect:46,55,4,7"));
+  assert.ok(context.calls.includes("fillRect:46,45,5,5"));
+  assert.ok(context.calls.includes("fillRect:-2,21,5,5"));
+  assert.ok(context.calls.includes("fillRect:-4,30,8,3"));
 });
 
 test("walker outlines stay one screen pixel across camera zoom", () => {

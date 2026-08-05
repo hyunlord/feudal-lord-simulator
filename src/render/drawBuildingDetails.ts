@@ -41,7 +41,7 @@ function drawBaseKindDetail(
 ): void {
   switch (input.kind) {
     case "house":
-      drawDoor(context, input.center, input.zoom);
+      drawHouseDetails(context, input);
       return;
     case "well":
       drawWellRim(context, input.center, input.zoom);
@@ -56,19 +56,45 @@ function drawBaseKindDetail(
       drawFieldRows(context, input.center, input.zoom);
       return;
     case "mill":
+      drawWheel(context, input.tick, input.center, input.zoom);
       if (input.visualState.production === "working") {
-        drawWheel(context, input.tick, input.center, input.zoom);
         drawFlag(context, input.tick, input.center, input.zoom);
       }
       return;
     case "logging_camp":
-      drawLogs(context, input.center, input.zoom);
+      drawLoggingRack(context, input.center, input.zoom);
       return;
     case "sawmill":
-      if (input.visualState.production === "working") {
-        drawSaw(context, input.tick, input.center, input.zoom);
-      }
+      drawSaw(context, input.tick, input.center, input.zoom);
+      drawPlanks(context, input.center, input.zoom);
       return;
+  }
+}
+
+function drawHouseDetails(
+  context: CanvasRenderingContext2D,
+  input: BuildingDetailInput,
+): void {
+  drawDoor(context, input.center, input.zoom);
+  if (input.visualState.houseLevel >= 2) {
+    context.fillStyle = PALETTE.water;
+    for (const offset of [-15, 0, 15]) {
+      fillOutlinedRect(context, {
+        origin: { x: input.center.x + offset - 3, y: input.center.y - 28 },
+        width: 6,
+        height: 7,
+        zoom: input.zoom,
+      });
+    }
+  }
+  if (input.visualState.houseLevel >= 3) {
+    context.fillStyle = PALETTE.stone;
+    fillOutlinedRect(context, {
+      origin: { x: input.center.x + 12, y: input.center.y - 68 },
+      width: 14,
+      height: 30,
+      zoom: input.zoom,
+    });
   }
 }
 
@@ -98,13 +124,22 @@ function drawDoor(context: CanvasRenderingContext2D, center: Point, zoom: number
 
 function drawWellRim(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
   context.fillStyle = shade(PALETTE.stone, 0.8);
-  fillOutlinedRect(context, { origin: { x: center.x - 12, y: center.y - 23 }, width: 24, height: 10, zoom });
+  context.beginPath();
+  context.arc(snapToPixel(center.x), snapToPixel(center.y - 12), 12, 0, Math.PI * 2);
+  context.fill();
+  applyInkOutline(context, zoom);
+  context.stroke();
+  context.fillStyle = PALETTE.inkLight;
+  context.beginPath();
+  context.arc(snapToPixel(center.x), snapToPixel(center.y - 12), 6, 0, Math.PI * 2);
+  context.fill();
 }
 
 function drawCrates(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
   context.fillStyle = PALETTE.goldDark;
-  fillOutlinedRect(context, { origin: { x: center.x - 18, y: center.y - 14 }, width: 12, height: 10, zoom });
-  fillOutlinedRect(context, { origin: { x: center.x + 6, y: center.y - 14 }, width: 12, height: 10, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x - 18, y: center.y - 40 }, width: 12, height: 10, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x - 4, y: center.y - 36 }, width: 12, height: 10, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x + 10, y: center.y - 40 }, width: 12, height: 10, zoom });
 }
 
 function drawStilts(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
@@ -118,6 +153,8 @@ function drawFieldRows(context: CanvasRenderingContext2D, center: Point, zoom: n
   for (let row = 0; row < 3; row += 1) {
     fillOutlinedRect(context, { origin: { x: center.x - 26, y: center.y - 8 + row * 7 }, width: 52, height: 3, zoom });
   }
+  context.fillStyle = PALETTE.parchmentDark;
+  fillOutlinedRect(context, { origin: { x: center.x + 20, y: center.y - 22 }, width: 14, height: 12, zoom });
 }
 
 function drawFlag(context: CanvasRenderingContext2D, tick: number, center: Point, zoom: number): void {
@@ -156,10 +193,28 @@ function drawWheel(context: CanvasRenderingContext2D, tick: number, center: Poin
   fillOutlinedRect(context, { origin: { x: center.x + 13, y: center.y - 26 - turn }, width: 22, height: 4, zoom });
 }
 
-function drawLogs(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
+function drawLoggingRack(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
+  context.fillStyle = PALETTE.earth;
+  fillOutlinedRect(context, { origin: { x: center.x - 27, y: center.y - 30 }, width: 54, height: 4, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x - 24, y: center.y - 27 }, width: 4, height: 24, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x + 20, y: center.y - 27 }, width: 4, height: 24, zoom });
   context.fillStyle = PALETTE.earthDark;
   fillOutlinedRect(context, { origin: { x: center.x - 20, y: center.y - 10 }, width: 40, height: 5, zoom });
   fillOutlinedRect(context, { origin: { x: center.x - 16, y: center.y - 4 }, width: 32, height: 5, zoom });
+  context.fillStyle = PALETTE.goldDark;
+  for (const end of [{ x: 20, y: -8 }, { x: 16, y: -2 }]) {
+    context.beginPath();
+    context.arc(snapToPixel(center.x + end.x), snapToPixel(center.y + end.y), 3, 0, Math.PI * 2);
+    context.fill();
+    applyInkOutline(context, zoom);
+    context.stroke();
+  }
+}
+
+function drawPlanks(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
+  context.fillStyle = PALETTE.earth;
+  fillOutlinedRect(context, { origin: { x: center.x + 12, y: center.y - 8 }, width: 28, height: 4, zoom });
+  fillOutlinedRect(context, { origin: { x: center.x + 16, y: center.y - 2 }, width: 24, height: 4, zoom });
 }
 
 function drawSaw(context: CanvasRenderingContext2D, tick: number, center: Point, zoom: number): void {

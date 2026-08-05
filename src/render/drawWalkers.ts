@@ -2,7 +2,7 @@ import { PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
-import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { TILE_H, tileToScreen } from "./iso";
 import { applyInkOutline, snapToPixel } from "./style";
 
 const CARGO_COLOR_BY_RESOURCE = {
@@ -26,6 +26,10 @@ export function cargoColor(resource: ResourceType): PaletteColor {
   return CARGO_COLOR_BY_RESOURCE[resource];
 }
 
+export function walkerScaleForZoom(zoom: number): number {
+  return zoom < 0.8 ? 0.8 / Math.max(zoom, 0.01) : 1;
+}
+
 function compareWalkersForRender(left: Walker, right: Walker): number {
   return (
     left.position.tx + left.position.ty - (right.position.tx + right.position.ty) ||
@@ -43,58 +47,75 @@ function drawWalker(
   const center = tileToScreen(walker.position.tx, walker.position.ty);
   const footX = snapToPixel(center.sx);
   const footY = snapToPixel(center.sy + TILE_H * 0.18);
+  const scale = walkerScaleForZoom(zoom);
 
-  if (walker.kind === "carter") {
-    drawCarter(context, footX, footY, zoom);
-  } else {
-    drawDistributor(context, footX, footY, zoom);
-  }
+  drawWalkerShadow(context, footX, footY, scale);
+  drawBody(context, footX, footY, scale, zoom);
+  if (walker.kind === "distributor") drawDistributorMark(context, footX, footY, scale, zoom);
   if (walker.cargo !== null) {
-    drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), zoom);
+    drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
   }
 }
 
-function drawCarter(
+function drawWalkerShadow(
   context: CanvasRenderingContext2D,
   footX: number,
   footY: number,
-  zoom: number,
+  scale: number,
 ): void {
   context.fillStyle = PALETTE.earthDark;
+  context.beginPath();
+  context.ellipse(footX, footY, 5 * scale, 2 * scale, 0, 0, Math.PI * 2);
+  context.fill();
+}
+
+function drawBody(
+  context: CanvasRenderingContext2D,
+  footX: number,
+  footY: number,
+  scale: number,
+  zoom: number,
+): void {
+  context.fillStyle = PALETTE.ink;
+  context.beginPath();
+  context.arc(footX, snapToPixel(footY - 8 * scale), 2 * scale, 0, Math.PI * 2);
+  context.fill();
   context.fillRect(
-    snapToPixel(footX - TILE_W * 0.11),
-    snapToPixel(footY - TILE_H * 0.42),
-    snapToPixel(TILE_W * 0.22),
-    snapToPixel(TILE_H * 0.18),
+    snapToPixel(footX - 2 * scale),
+    snapToPixel(footY - 7 * scale),
+    snapToPixel(4 * scale),
+    snapToPixel(7 * scale),
   );
   applyInkOutline(context, zoom);
   context.strokeRect(
-    snapToPixel(footX - TILE_W * 0.11),
-    snapToPixel(footY - TILE_H * 0.42),
-    snapToPixel(TILE_W * 0.22),
-    snapToPixel(TILE_H * 0.18),
+    snapToPixel(footX - 2 * scale),
+    snapToPixel(footY - 7 * scale),
+    snapToPixel(4 * scale),
+    snapToPixel(7 * scale),
   );
-  context.fillStyle = PALETTE.inkLight;
-  context.fillRect(snapToPixel(footX - 7), snapToPixel(footY - 8), 5, 5);
-  context.fillRect(snapToPixel(footX + 2), snapToPixel(footY - 8), 5, 5);
 }
 
-function drawDistributor(
+function drawDistributorMark(
   context: CanvasRenderingContext2D,
   footX: number,
   footY: number,
+  scale: number,
   zoom: number,
 ): void {
-  context.fillStyle = PALETTE.sageDark;
-  context.beginPath();
-  context.moveTo(footX, snapToPixel(footY - TILE_H * 0.48));
-  context.lineTo(snapToPixel(footX + TILE_W * 0.08), snapToPixel(footY - TILE_H * 0.22));
-  context.lineTo(footX, snapToPixel(footY - TILE_H * 0.06));
-  context.lineTo(snapToPixel(footX - TILE_W * 0.08), snapToPixel(footY - TILE_H * 0.22));
-  context.closePath();
-  context.fill();
+  context.fillStyle = PALETTE.vermilion;
+  context.fillRect(
+    snapToPixel(footX - 4 * scale),
+    snapToPixel(footY - 8 * scale),
+    snapToPixel(8 * scale),
+    snapToPixel(3 * scale),
+  );
   applyInkOutline(context, zoom);
-  context.stroke();
+  context.strokeRect(
+    snapToPixel(footX - 4 * scale),
+    snapToPixel(footY - 8 * scale),
+    snapToPixel(8 * scale),
+    snapToPixel(3 * scale),
+  );
 }
 
 function drawCargo(
@@ -102,10 +123,14 @@ function drawCargo(
   footX: number,
   footY: number,
   color: PaletteColor,
+  scale: number,
   zoom: number,
 ): void {
+  const size = 5 * scale;
+  const x = snapToPixel(footX - size / 2);
+  const y = snapToPixel(footY - 17 * scale);
   context.fillStyle = color;
-  context.fillRect(snapToPixel(footX - 4), snapToPixel(footY - TILE_H * 0.72), 8, 8);
+  context.fillRect(x, y, snapToPixel(size), snapToPixel(size));
   applyInkOutline(context, zoom);
-  context.strokeRect(snapToPixel(footX - 4), snapToPixel(footY - TILE_H * 0.72), 8, 8);
+  context.strokeRect(x, y, snapToPixel(size), snapToPixel(size));
 }

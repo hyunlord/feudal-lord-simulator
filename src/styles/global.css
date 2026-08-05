@@ -58,6 +58,44 @@ button {
   background-color: var(--palette-parchment-dark);
 }
 
+.building-inspector {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  gap: 4px;
+  width: 218px;
+  padding: 10px 12px;
+  pointer-events: none;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 4%, 98% 0, 100% 94%, 3% 100%, 0 18%);
+}
+
+.building-inspector strong {
+  color: var(--palette-vermilion);
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.building-inspector span,
+.building-inspector li {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.building-inspector ul {
+  display: grid;
+  gap: 2px;
+  padding: 5px 0 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid var(--palette-parchment-dark);
+}
+
 .economy-overlays {
   position: absolute;
   right: clamp(12px, 2vw, 28px);

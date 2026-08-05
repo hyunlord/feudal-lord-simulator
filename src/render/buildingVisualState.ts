@@ -7,7 +7,17 @@ import { PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
 import type { House } from "../population/population.types";
 
-export type RoofShape = "none" | "triangle" | "flat" | "shed" | "tower";
+export type RoofShape =
+  | "none"
+  | "triangle"
+  | "gable"
+  | "flat"
+  | "shed"
+  | "dome"
+  | "cone"
+  | "tower";
+
+export type RenderDetailLevel = "full" | "simplified" | "blocks";
 
 export type BodyProfile = {
   readonly width: number;
@@ -71,39 +81,52 @@ export function buildingBodyProfile(
   return nonHouseBodyProfile(kind);
 }
 
+export function renderDetailLevel(zoom: number): RenderDetailLevel {
+  if (zoom <= 0.5) return "blocks";
+  return zoom < 0.7 ? "simplified" : "full";
+}
+
+export function buildingLodColor(kind: BuildingKind): PaletteColor {
+  if (kind === "house") return PALETTE.parchmentDark;
+  if (kind === "storehouse" || kind === "granary" || kind === "well") {
+    return PALETTE.stone;
+  }
+  return PALETTE.earth;
+}
+
 const hutProfile = {
-  width: 30,
-  height: 26,
-  roof: 12,
+  width: 28,
+  height: 20,
+  roof: 16,
+  fill: PALETTE.earth,
+  roofColor: PALETTE.earthDark,
+  roofShape: "triangle",
+} as const satisfies BodyProfile;
+
+const farmHouseProfile = {
+  width: 32,
+  height: 30,
+  roof: 18,
   fill: PALETTE.parchmentDark,
   roofColor: PALETTE.earth,
   roofShape: "triangle",
 } as const satisfies BodyProfile;
 
-const farmHouseProfile = {
-  width: 34,
-  height: 32,
+const civicHouseProfile = {
+  width: 44,
+  height: 42,
   roof: 16,
   fill: PALETTE.parchmentDark,
-  roofColor: PALETTE.earthDark,
-  roofShape: "triangle",
-} as const satisfies BodyProfile;
-
-const civicHouseProfile = {
-  width: 42,
-  height: 39,
-  roof: 14,
-  fill: PALETTE.parchment,
-  roofColor: PALETTE.goldDark,
-  roofShape: "shed",
+  roofColor: PALETTE.stone,
+  roofShape: "gable",
 } as const satisfies BodyProfile;
 
 const towerHouseProfile = {
-  width: 48,
-  height: 48,
-  roof: 22,
-  fill: PALETTE.vellum,
-  roofColor: PALETTE.goldDark,
+  width: 54,
+  height: 52,
+  roof: 20,
+  fill: PALETTE.parchment,
+  roofColor: PALETTE.stoneDark,
   roofShape: "tower",
 } as const satisfies BodyProfile;
 
@@ -152,18 +175,18 @@ function stock(
 function nonHouseBodyProfile(kind: Exclude<BuildingKind, "house">): BodyProfile {
   switch (kind) {
     case "well":
-      return { width: 24, height: 16, roof: 0, fill: PALETTE.stone, roofColor: PALETTE.stoneDark, roofShape: "none" };
+      return { width: 26, height: 12, roof: 0, fill: PALETTE.stoneDark, roofColor: PALETTE.stone, roofShape: "none" };
     case "storehouse":
-      return { width: 60, height: 34, roof: 8, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "flat" };
+      return { width: 64, height: 30, roof: 6, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "flat" };
     case "granary":
-      return { width: 52, height: 40, roof: 14, fill: PALETTE.parchment, roofColor: PALETTE.goldDark, roofShape: "shed" };
+      return { width: 58, height: 32, roof: 16, fill: PALETTE.parchment, roofColor: PALETTE.goldDark, roofShape: "dome" };
     case "wheat_farm":
-      return { width: 68, height: 14, roof: 0, fill: PALETTE.sageDark, roofColor: PALETTE.gold, roofShape: "none" };
+      return { width: 72, height: 10, roof: 0, fill: PALETTE.earth, roofColor: PALETTE.gold, roofShape: "none" };
     case "mill":
-      return { width: 54, height: 58, roof: 20, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "tower" };
+      return { width: 38, height: 62, roof: 24, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "cone" };
     case "logging_camp":
-      return { width: 34, height: 22, roof: 10, fill: PALETTE.earth, roofColor: PALETTE.forest, roofShape: "shed" };
+      return { width: 38, height: 20, roof: 12, fill: PALETTE.earth, roofColor: PALETTE.forest, roofShape: "shed" };
     case "sawmill":
-      return { width: 62, height: 48, roof: 14, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "flat" };
+      return { width: 66, height: 32, roof: 14, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "shed" };
   }
 }

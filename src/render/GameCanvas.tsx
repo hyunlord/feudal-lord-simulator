@@ -1,8 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { OverlayMode } from "../engine/engine.types";
-import type { CameraState, Point } from "./camera";
-import { clampPan, clientToCanvas } from "./camera";
+import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
 import {
   DEFAULT_PLACEMENT_TOOL,
   panByKey,
@@ -17,30 +16,21 @@ import { renderFrame } from "./renderer";
 import { useGameStore } from "../state/gameStore";
 import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 import type { TileCoordinate } from "../world/grid";
+import { getTile } from "../world/grid";
+import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
+import {
+  hoveredBuildingPosition,
+  initialCamera,
+  resizeCanvas,
+  type DragState,
+} from "./canvasRuntime";
 type GameCanvasProps = { readonly selectedTool?: PlacementTool; readonly overlayMode?: OverlayMode };
-
-type DragState = {
-  readonly mode: "none" | "pan" | "road";
-  readonly lastCanvasPoint: Point | null;
-  readonly roadStart: { readonly tx: number; readonly ty: number } | null;
-  readonly moved: boolean;
-};
-
-function resizeCanvas(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): number {
-  const bounds = canvas.getBoundingClientRect();
-  const pixelRatio = Math.max(1, window.devicePixelRatio);
-  canvas.width = Math.round(bounds.width * pixelRatio);
-  canvas.height = Math.round(bounds.height * pixelRatio);
-  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-  return pixelRatio;
-}
 
 export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode = "none" }: GameCanvasProps) {
   const { state, dispatch } = useGameStore();
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const stateRef = useRef(state);
-  const selectedToolRef = useRef(selectedTool);
-  const overlayModeRef = useRef(overlayMode);
+  const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null), stateRef = useRef(state);
+  const selectedToolRef = useRef(selectedTool), overlayModeRef = useRef(overlayMode);
 
   useEffect(() => {
     stateRef.current = state;
@@ -53,13 +43,7 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
     const context = canvas?.getContext("2d") ?? null;
     if (canvas === null || context === null) return undefined;
 
-    const cameraRef = {
-      current: clampPan(
-        { zoom: 1, panX: canvas.clientWidth / 2, panY: 80 },
-        { width: canvas.clientWidth, height: canvas.clientHeight },
-        worldBounds(stateRef.current.width, stateRef.current.height),
-      ),
-    };
+    const cameraRef = { current: initialCamera(canvas, stateRef.current) };
     const hoverRef: { current: TileCoordinate | null } = { current: null };
     const dragRef: { current: DragState } = {
       current: { mode: "none", lastCanvasPoint: null, roadStart: null, moved: false },
@@ -90,7 +74,14 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
       context.setTransform(pixelRatioRef.current, 0, 0, pixelRatioRef.current, 0, 0);
       context.translate(camera.panX, camera.panY);
       context.scale(camera.zoom, camera.zoom);
-      const preview = placementPreview(currentState, currentTool, hoverRef.current, dragRef.current.roadStart);
+      const hoveredTile = hoverRef.current;
+      const inspectingBuilding = hoveredTile !== null && getTile(currentState, hoveredTile)?.buildingId !== null;
+      const preview = placementPreview(
+        currentState,
+        currentTool,
+        inspectingBuilding ? null : hoveredTile,
+        dragRef.current.roadStart,
+      );
       renderFrame({
         context,
         state: currentState,
@@ -106,6 +97,13 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
       clientToCanvas(event, canvas.getBoundingClientRect());
     const updateHover = (event: MouseEvent) => {
       hoverRef.current = pointerTile(event, canvas.getBoundingClientRect(), cameraRef.current);
+      const buildingId = hoverRef.current === null
+        ? null : getTile(stateRef.current, hoverRef.current)?.buildingId ?? null;
+      if (buildingId === null) {
+        setHoveredBuilding(null);
+        return;
+      }
+      setHoveredBuilding({ buildingId, ...hoveredBuildingPosition(event, canvas.getBoundingClientRect()) });
     };
     const clearSuppressClickTimeout = () => {
       if (suppressClickTimeout !== null) {
@@ -119,23 +117,20 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
     const startDrag = (event: MouseEvent) => {
       updateHover(event);
       const point = canvasPoint(event);
-      if (event.button === 1 || (event.button === 0 && spacePressed.current)) {
+      const panning = event.button === 1 || (event.button === 0 && spacePressed.current);
+      if (panning) {
         dragRef.current = { mode: "pan", lastCanvasPoint: point, roadStart: null, moved: false };
         event.preventDefault();
         return;
       }
       if (event.button === 0 && selectedToolRef.current === "road") {
-        dragRef.current = {
-          mode: "road", lastCanvasPoint: point, roadStart: hoverRef.current, moved: false,
-        };
+        dragRef.current = { mode: "road", lastCanvasPoint: point, roadStart: hoverRef.current, moved: false };
       }
     };
     const movePointer = (event: MouseEvent) => {
       updateHover(event);
       const drag = dragRef.current;
-      if (drag.mode === "none" || drag.lastCanvasPoint === null) {
-        return;
-      }
+      if (drag.mode === "none" || drag.lastCanvasPoint === null) return;
       const point = canvasPoint(event);
       const moved = drag.moved || point.x !== drag.lastCanvasPoint.x || point.y !== drag.lastCanvasPoint.y;
       if (moved) suppressClick.current = true;
@@ -174,9 +169,7 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
         clearSuppressClickTimeout();
         return;
       }
-      if (spacePressed.current) {
-        return;
-      }
+      if (spacePressed.current) return;
       const drag = dragRef.current;
       const hover = hoverRef.current;
       const currentTool = selectedToolRef.current;
@@ -210,17 +203,18 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
       });
     };
     const keyUp = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
-        spacePressed.current = false;
-        event.preventDefault();
-      }
+      if (event.code !== "Space") return;
+      spacePressed.current = false;
+      event.preventDefault();
     };
     const leaveCanvas = () => {
       hoverRef.current = null;
+      setHoveredBuilding(null);
     };
     const blurWindow = () => {
       spacePressed.current = false;
       hoverRef.current = null;
+      setHoveredBuilding(null);
       suppressClick.current = false;
       clearSuppressClickTimeout();
       resetDrag();
@@ -254,5 +248,10 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
     };
   }, [dispatch]);
 
-  return <canvas ref={canvasRef} className="game-canvas" aria-label="Simulation canvas" />;
+  return (
+    <>
+      <canvas ref={canvasRef} className="game-canvas" aria-label="Simulation canvas" />
+      <BuildingInspector state={state} hover={hoveredBuilding} />
+    </>
+  );
 }

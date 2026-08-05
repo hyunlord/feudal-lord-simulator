@@ -88,10 +88,10 @@ test("house body profile visibly changes for each housing level", () => {
   assert.deepEqual(
     profiles.map(({ height, roof, roofShape }) => ({ height, roof, roofShape })),
     [
-      { height: 26, roof: 12, roofShape: "triangle" },
-      { height: 32, roof: 16, roofShape: "triangle" },
-      { height: 39, roof: 14, roofShape: "shed" },
-      { height: 48, roof: 22, roofShape: "tower" },
+      { height: 20, roof: 16, roofShape: "triangle" },
+      { height: 30, roof: 18, roofShape: "triangle" },
+      { height: 42, roof: 16, roofShape: "gable" },
+      { height: 52, roof: 20, roofShape: "tower" },
     ],
   );
 });

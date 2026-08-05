@@ -1,18 +1,19 @@
 import type { GameState } from "../engine/engine.types";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import { PALETTE } from "../content/palette";
 import type { Building } from "../economy/economy.types";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
 import {
   buildBuildingVisualState,
+  buildingLodColor,
   buildingBodyProfile,
+  renderDetailLevel,
   type BodyProfile,
 } from "./buildingVisualState";
-import { ambientOffset } from "./renderMotion";
 import { buildObjectRenderItems } from "./objectRenderOrder";
-import { buildForestLookup, buildTreeCluster, type ForestLookup, type TreeDescriptor } from "./treeLayout";
+import { buildForestLookup } from "./treeLayout";
+import { drawTreeCluster } from "./drawTrees";
 import type { TileRange } from "./renderer";
 import { applyInkOutline, drawFlatDiamondShadow, shade, snapToPixel } from "./style";
 
@@ -54,73 +55,6 @@ export function drawBuildings(
   }
 }
 
-function drawTreeCluster(
-  context: CanvasRenderingContext2D,
-  tick: number,
-  tile: Tile,
-  forestLookup: ForestLookup,
-  seed: number,
-  zoom: number,
-): void {
-  for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
-    drawTree(context, tick, tree, zoom);
-  }
-}
-
-function drawTree(context: CanvasRenderingContext2D, tick: number, tree: TreeDescriptor, zoom: number): void {
-  const sway = ambientOffset({
-    tick,
-    amplitude: 2 * tree.scale,
-    frequency: 0.72,
-    phase: tree.phase,
-  });
-  drawFlatDiamondShadow(context, {
-    centerX: tree.x,
-    centerY: tree.y + 7 * tree.scale,
-    radiusX: 13 * tree.scale,
-    radiusY: 5 * tree.scale,
-  });
-  context.fillStyle = PALETTE.earthDark;
-  traceRect(
-    context,
-    { x: tree.x - 2 * tree.scale, y: tree.y - 20 * tree.scale },
-    4 * tree.scale,
-    24 * tree.scale,
-  );
-  context.fill();
-  applyInkOutline(context, zoom);
-  context.stroke();
-  context.fillStyle = PALETTE[tree.tone];
-  traceTreeCanopy(context, tree, sway);
-  context.fill();
-  applyInkOutline(context, zoom);
-  context.stroke();
-}
-
-function traceTreeCanopy(context: CanvasRenderingContext2D, tree: TreeDescriptor, sway: number): void {
-  if (tree.silhouette === "rounded") {
-    context.beginPath();
-    context.ellipse(
-      snapToPixel(tree.x + sway),
-      snapToPixel(tree.y - 28 * tree.scale),
-      17 * tree.scale,
-      14 * tree.scale,
-      0,
-      0,
-      Math.PI * 2,
-    );
-    return;
-  }
-  const width = tree.silhouette === "broad" ? 19 : 13;
-  const lift = 42;
-  const baseLift = tree.silhouette === "narrow" ? 10 : 12;
-  traceTriangle(context, [
-    { x: tree.x + sway, y: tree.y - lift * tree.scale },
-    { x: tree.x + width * tree.scale + sway, y: tree.y - baseLift * tree.scale },
-    { x: tree.x - width * tree.scale + sway, y: tree.y - baseLift * tree.scale },
-  ]);
-}
-
 function drawBuilding(
   context: CanvasRenderingContext2D,
   input: ObjectRenderInput,
@@ -141,15 +75,35 @@ function drawBuilding(
     houseLevel: visualState.houseLevel,
     zoom: input.zoom,
   };
+  const detailLevel = renderDetailLevel(input.zoom);
+  if (detailLevel === "blocks") {
+    drawLodBlock(context, shape);
+    return;
+  }
   drawBody(context, shape);
   drawRoof(context, shape);
-  drawKindDetail(context, {
-    tick: input.state.tick,
-    center,
-    kind: building.kind,
-    zoom: input.zoom,
-    visualState,
-  });
+  if (detailLevel === "full") {
+    drawKindDetail(context, {
+      tick: input.state.tick,
+      center,
+      kind: building.kind,
+      zoom: input.zoom,
+      visualState,
+    });
+  }
+}
+
+function drawLodBlock(
+  context: CanvasRenderingContext2D,
+  input: BuildingShapeInput,
+): void {
+  const body = buildingBodyProfile(input.building.kind, input.houseLevel);
+  const origin = { x: input.center.x - body.width / 2, y: input.center.y - 12 };
+  context.fillStyle = buildingLodColor(input.building.kind);
+  traceIsoFace(context, origin, body.width, 14, "front");
+  context.fill();
+  applyInkOutline(context, input.zoom);
+  context.stroke();
 }
 
 function drawBody(
@@ -188,8 +142,20 @@ function drawRoof(
     traceRect(context, { x: input.center.x - body.width / 2 - 4, y: input.center.y - body.height - 4 }, body.width + 8, 8);
   } else if (body.roofShape === "shed") {
     traceShedRoof(context, input.center, body);
+  } else if (body.roofShape === "dome") {
+    context.beginPath();
+    context.ellipse(
+      snapToPixel(input.center.x),
+      snapToPixel(input.center.y - body.height + 2),
+      body.width / 2 + 4,
+      body.roof,
+      0,
+      Math.PI,
+      Math.PI * 2,
+    );
+    context.closePath();
   } else {
-    const peakLift = body.roofShape === "tower" ? body.roof + 12 : body.roof;
+    const peakLift = body.roofShape === "tower" ? body.roof + 8 : body.roof;
     traceTriangle(context, [
       { x: input.center.x, y: input.center.y - body.height - peakLift },
       { x: input.center.x + body.width / 2 + 5, y: input.center.y - body.height + 5 },

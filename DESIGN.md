@@ -88,12 +88,18 @@ edges. Scroll art frames content only; its interior remains visually empty.
 ## 6. Components
 
 - **World canvas:** three explicit passes: ground, depth-sorted objects, and an
-  intentionally empty overhang pass reserved for future walls.
+  overhang pass for walkers so moving goods remain visible above structures.
 - **Terrain tiles:** procedural isometric diamonds with deterministic brightness
   variation, lower-right depth edges, four-neighbour transition marks, and
   connection-aware roads.
-- **Buildings:** procedural boxes and roofs with distinct silhouettes and the
-  universal outline/light rules.
+- **Buildings:** each visual kind varies footprint proportion, height, and roof
+  form; signature details confirm identity under the universal outline/light
+  rules. At 0.5x they collapse to category-coloured city-mass blocks.
+- **Ground details:** deterministic sparse grass tufts, rocks, shoreline earth,
+  and connection-aware worn paths. Details disappear below 0.7x.
+- **Building inspector:** a quiet parchment hover plaque with Korean identity,
+  purpose, labour, stock, progress, and house service facts. It follows the
+  pointer, ignores pointer input, and never enters simulation state.
 - **Placement mark:** translucent footprint, ink boundary, and a small
   parchment failure plaque positioned near the pointer.
 - **Court console:** one continuous generated wood surface with three clearly

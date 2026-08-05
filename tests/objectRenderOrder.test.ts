@@ -30,7 +30,7 @@ const range: TileRange = { minTx: 0, minTy: 0, maxTx: 3, maxTy: 3 };
 test("object render order draws rear buildings before foreground trees regardless input order", () => {
   // Given
   const tiles = [
-    tile(1, 1, "forest"),
+    tile(2, 2, "forest"),
     tile(0, 0, "grass", "rear"),
   ];
 

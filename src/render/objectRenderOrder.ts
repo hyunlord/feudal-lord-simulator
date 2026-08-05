@@ -25,13 +25,15 @@ type ObjectRenderInput = {
 
 export function buildObjectRenderItems(input: ObjectRenderInput): readonly ObjectRenderItem[] {
   const items: ObjectRenderItem[] = [];
+  const clearedTiles = clearedTreeTileKeys(input.buildings);
 
   for (const tile of input.tiles) {
     if (
       tileIsWithinRange(tile, input.range) &&
       tile.terrain === "forest" &&
       tile.buildingId === null &&
-      !tile.hasRoad
+      !tile.hasRoad &&
+      !clearedTiles.has(tileKey(tile.tx, tile.ty))
     ) {
       items.push({
         kind: "tree",
@@ -56,6 +58,19 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
   }
 
   return items.sort(compareRenderItems);
+}
+
+export function clearedTreeTileKeys(buildings: readonly Building[]): ReadonlySet<string> {
+  const keys = new Set<string>();
+  for (const building of buildings) {
+    const config = BUILDING_CONFIG_BY_KIND[building.kind];
+    for (let ty = building.ty - 1; ty <= building.ty + config.height; ty += 1) {
+      for (let tx = building.tx - 1; tx <= building.tx + config.width; tx += 1) {
+        keys.add(tileKey(tx, ty));
+      }
+    }
+  }
+  return keys;
 }
 
 function compareRenderItems(left: ObjectRenderItem, right: ObjectRenderItem): number {
@@ -88,4 +103,8 @@ function footprintOverlapsRange(
     ty <= range.maxTy &&
     ty + height - 1 >= range.minTy
   );
+}
+
+function tileKey(tx: number, ty: number): string {
+  return `${tx}:${ty}`;
 }
