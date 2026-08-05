@@ -28,6 +28,9 @@ export type Phase4eBenchmarkResult = FrameSummary & {
   readonly measuredFrames: 120;
   readonly viewport: { readonly width: 1280; readonly height: 720 };
   readonly entities: BenchmarkEntityCounts;
+  readonly overBudgetFrames: number;
+  readonly simulation: FrameSummary;
+  readonly render: FrameSummary;
 };
 
 const BUILDING_KINDS = [
@@ -65,6 +68,13 @@ export function summarizeFrameTimes(frameTimes: readonly number[]): FrameSummary
   };
 }
 
+export function countFramesOverBudget(
+  frameTimes: readonly number[],
+  budgetMs: number,
+): number {
+  return frameTimes.filter((frameTime) => frameTime > budgetMs).length;
+}
+
 export async function runPhase4eRenderBenchmark(
   competition: "1x" | "5x",
 ): Promise<Phase4eBenchmarkResult> {
@@ -80,10 +90,12 @@ export async function runPhase4eRenderBenchmark(
   let state = benchmarkState();
   const initialEntityCounts = benchmarkEntityCounts(state, camera);
   const ticksPerFrame = competition === "5x" ? 5 : 1;
-  const render = (): void => {
+  const advanceSimulation = (): void => {
     for (let tick = 0; tick < ticksPerFrame; tick += 1) {
       state = advanceTick(state);
     }
+  };
+  const render = (): void => {
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, VIEWPORT.width, VIEWPORT.height);
     context.save();
@@ -92,12 +104,22 @@ export async function runPhase4eRenderBenchmark(
     renderFrame({ context, state, camera, viewport: VIEWPORT, preview: EMPTY_PREVIEW });
     context.restore();
   };
-  for (let frame = 0; frame < 20; frame += 1) render();
+  for (let frame = 0; frame < 20; frame += 1) {
+    advanceSimulation();
+    render();
+  }
   const frameTimes: number[] = [];
+  const simulationTimes: number[] = [];
+  const renderTimes: number[] = [];
   for (let frame = 0; frame < 120; frame += 1) {
     const startedAt = performance.now();
+    advanceSimulation();
+    const simulationFinishedAt = performance.now();
     render();
-    frameTimes.push(performance.now() - startedAt);
+    const renderFinishedAt = performance.now();
+    simulationTimes.push(simulationFinishedAt - startedAt);
+    renderTimes.push(renderFinishedAt - simulationFinishedAt);
+    frameTimes.push(renderFinishedAt - startedAt);
   }
   return {
     competition,
@@ -105,6 +127,9 @@ export async function runPhase4eRenderBenchmark(
     measuredFrames: 120,
     viewport: VIEWPORT,
     entities: initialEntityCounts,
+    overBudgetFrames: countFramesOverBudget(frameTimes, 12),
+    simulation: summarizeFrameTimes(simulationTimes),
+    render: summarizeFrameTimes(renderTimes),
     ...summarizeFrameTimes(frameTimes),
   };
 }
