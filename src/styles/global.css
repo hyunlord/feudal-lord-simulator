@@ -97,14 +97,11 @@ button {
 }
 
 .economy-overlays {
-  position: absolute;
-  right: clamp(12px, 2vw, 28px);
-  bottom: 150px;
-  z-index: 2;
   display: grid;
   gap: 4px;
-  max-width: min(280px, calc(100% - 24px));
-  padding: 8px 10px;
+  min-width: 96px;
+  max-width: 124px;
+  padding: 4px 5px;
   color: var(--palette-ink);
   background-color: var(--palette-vellum);
   background-image: url("/assets/ui/parchment_texture.png");
@@ -122,15 +119,15 @@ button {
 
 .overlay-seals {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3px;
 }
 
 .overlay-seal {
   display: grid;
   gap: 2px;
   min-width: 0;
-  padding: 5px 7px;
+  padding: 3px 5px;
   color: var(--palette-ink);
   cursor: pointer;
   background-color: var(--palette-parchment);
@@ -157,13 +154,84 @@ button {
 }
 
 .overlay-label {
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .overlay-key,
 .overlay-legend {
   color: var(--palette-ink-light);
   font-size: 9px;
+}
+
+.settlement-status {
+  position: absolute;
+  right: clamp(12px, 2vw, 28px);
+  bottom: 158px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  max-width: min(440px, calc(100% - 24px));
+  padding: 7px 11px;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 7%, 97% 0, 100% 91%, 4% 100%, 0 21%);
+}
+
+.settlement-target,
+.settlement-priority {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.settlement-target {
+  color: var(--palette-vermilion);
+}
+
+.settlement-objective {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 2px 7px;
+  color: var(--palette-ink);
+  text-align: center;
+  background-color: var(--palette-vellum);
+  border: 1px solid var(--palette-ink);
+}
+
+.settlement-objective .settlement-target,
+.settlement-complete {
+  justify-content: center;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.settlement-complete {
+  color: var(--palette-gold-dark);
+}
+
+.problem-glyph {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--palette-vermilion);
+  font-size: 18px;
+  line-height: 1;
 }
 
 .court-console {
@@ -252,6 +320,30 @@ button {
   background-color: var(--palette-ink);
 }
 
+.build-group {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  min-width: 0;
+}
+
+.build-group-label {
+  max-width: calc(var(--seal-size) * 2 + 4px);
+  overflow: hidden;
+  color: var(--palette-parchment);
+  font-size: 8px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.build-group-seals {
+  display: grid;
+  grid-template-columns: repeat(2, var(--seal-size));
+  grid-auto-rows: var(--seal-size);
+  gap: 2px;
+}
+
 .build-seal,
 .speed-seal {
   position: relative;
@@ -279,6 +371,11 @@ button {
   color: var(--palette-vermilion);
 }
 
+.build-seal[aria-disabled="true"] {
+  color: var(--palette-ink-light);
+  cursor: default;
+}
+
 .build-seal[aria-pressed="true"],
 .speed-seal[aria-pressed="true"] {
   color: var(--palette-gold-dark);
@@ -303,12 +400,12 @@ button {
   left: 50%;
   z-index: 12;
   width: max-content;
-  max-width: 180px;
+  max-width: 220px;
   padding: 5px 9px;
   color: var(--palette-ink);
   font-size: 11px;
   line-height: 1.2;
-  white-space: nowrap;
+  white-space: normal;
   pointer-events: none;
   visibility: hidden;
   background-color: var(--palette-vellum);
@@ -318,6 +415,10 @@ button {
   clip-path: polygon(3% 8%, 97% 1%, 99% 88%, 6% 100%, 0 19%);
   opacity: 0;
   transform: translateX(-50%);
+}
+
+.seal-tooltip span {
+  display: block;
 }
 
 .build-seal:hover .seal-tooltip,
@@ -339,16 +440,51 @@ button {
 
 .ledger-recess {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 7px;
+  grid-template-columns: minmax(210px, 1fr) auto;
+  gap: 5px;
   padding: 11px 14px;
+}
+
+.ledger-stack {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ledger-stack .economy-overlays {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 3px;
+  width: 100%;
+  max-width: none;
+  padding: 2px 4px;
+}
+
+.ledger-stack .overlay-heading {
+  align-self: center;
+  font-size: 9px;
+}
+
+.ledger-stack .overlay-seals {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.ledger-stack .overlay-seal {
+  grid-template-columns: auto auto;
+  gap: 0 3px;
+  padding: 1px 3px;
+}
+
+.ledger-stack .overlay-legend {
+  grid-column: 1 / -1;
+  font-size: 8px;
 }
 
 .court-ledger {
   position: relative;
   min-width: 0;
-  height: 94px;
-  padding: 17px 17px 12px;
+  height: 76px;
+  padding: 12px 17px 9px;
   overflow: hidden;
   color: var(--palette-ink);
   background-color: var(--palette-parchment);
@@ -390,7 +526,7 @@ button {
 
 .ledger-heading {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   color: var(--palette-vermilion);
   font-size: 12px;
   line-height: 1;
@@ -403,7 +539,7 @@ button {
   gap: 1px 6px;
   margin: 0;
   font-size: 11px;
-  line-height: 1.25;
+  line-height: 1.1;
 }
 
 .court-ledger dt,
@@ -463,17 +599,22 @@ button {
     padding-right: 9px;
     padding-left: 9px;
   }
+
+  .settlement-status {
+    right: 10px;
+    bottom: 156px;
+  }
 }
 
 @media (max-width: 600px) {
   .court-console {
     gap: clamp(2px, 0.5vw, 3px);
-    height: 150px;
+    height: 188px;
     padding: 7px clamp(4px, 0.8vw, 5px);
   }
 
   .court-recess {
-    height: 132px;
+    height: 170px;
   }
 
   .map-shield {
@@ -493,11 +634,32 @@ button {
     padding: 3px 4px;
   }
 
+  .build-group-label {
+    font-size: 7px;
+  }
+
   .ledger-recess {
     display: flex;
     flex-direction: column;
     gap: clamp(2px, 0.5vw, 3px);
     padding: clamp(8px, 1.8vw, 11px) clamp(4px, 1.2vw, 7px);
+  }
+
+  .ledger-stack {
+    width: 100%;
+  }
+
+  .economy-overlays {
+    max-width: 100%;
+    padding: 3px 4px;
+  }
+
+  .ledger-stack .overlay-heading {
+    font-size: 8px;
+  }
+
+  .overlay-seals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .court-ledger {
@@ -537,5 +699,23 @@ button {
     max-width: 150px;
     padding: 4px 6px;
     font-size: 9px;
+  }
+
+  .settlement-status {
+    right: 6px;
+    bottom: 192px;
+    left: 6px;
+    justify-content: center;
+    padding: 5px 8px;
+  }
+
+  .settlement-target,
+  .settlement-priority {
+    font-size: 10px;
+  }
+
+  .problem-glyph {
+    width: 20px;
+    height: 20px;
   }
 }

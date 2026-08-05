@@ -13,6 +13,10 @@ import { withAlpha } from "../src/render/style";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { toggleOverlayByKey } from "../src/ui/EconomyOverlayControls";
 import { CourtLedger } from "../src/ui/InfoPanel";
+import {
+  settlementGuidance,
+  settlementProblemGlyphs,
+} from "../src/ui/settlementGuidanceModel";
 
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
 
@@ -98,6 +102,145 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.equal(toggleOverlayByKey("Digit2", "water"), "labour");
   assert.equal(toggleOverlayByKey("KeyW", "water"), "water");
   assert.equal(toggleOverlayByKey("ArrowUp", "labour"), "labour");
+});
+
+test("economy overlay controls render inside the right console recess instead of as persistent floating UI", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
+
+  // Then
+  assert.ok(markup.indexOf('class="ledger-recess"') < markup.indexOf('aria-label="Economy overlays"'));
+  assert.ok(markup.indexOf('class="court-ledger"') < markup.indexOf('aria-label="Economy overlays"'));
+  assert.ok(markup.indexOf('aria-label="Economy overlays"') < markup.indexOf('class="speed-seals"'));
+});
+
+test("the population objective stays in the right console while only the status line floats", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
+
+  // Then
+  const statusIndex = markup.indexOf('aria-label="Settlement status"');
+  const consoleIndex = markup.indexOf('aria-label="Court console"');
+  const objectiveIndex = markup.indexOf('aria-label="Population objective"');
+  assert.ok(statusIndex >= 0 && statusIndex < consoleIndex);
+  assert.ok(objectiveIndex > consoleIndex);
+  assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
+  assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
+  assert.match(markup.slice(objectiveIndex), /목표: 인구 50명/);
+});
+
+test("settlement guidance advances population targets and samples priority on a sixty tick cadence", () => {
+  // Given
+  const state = {
+    ...DEFAULT_GAME_STATE,
+    tick: 260,
+    population: 50,
+    houses: DEFAULT_GAME_STATE.houses.map((house) => ({
+      ...house,
+      hasWater: true,
+      breadStock: 0,
+      lastServicedTick: 0,
+    })),
+  };
+
+  // When
+  const guidance = settlementGuidance(state);
+
+  // Then
+  assert.equal(guidance.populationGoal, 120);
+  assert.equal(guidance.completedGoal, 50);
+  assert.equal(guidance.sampledTick, 240);
+  assert.equal(guidance.statusLine, "식량이 부족합니다");
+});
+
+test("settlement guidance priority follows the exact Phase 4F blocker order", () => {
+  // Given
+  const hydratedHouse = DEFAULT_GAME_STATE.houses.map((house) => ({
+    ...house,
+    hasWater: true,
+    breadStock: 1,
+    lastServicedTick: 0,
+  }));
+  const granary = {
+    ...building({ id: "granary", kind: "granary", tx: 2, ty: 2, workers: 2 }),
+    inventory: {},
+  };
+  const farm = building({ id: "farm", kind: "wheat_farm", tx: 3, ty: 3, workers: 1 });
+  const openingHouse = DEFAULT_GAME_STATE.buildings[0];
+  assert.ok(openingHouse);
+  const stable = {
+    ...DEFAULT_GAME_STATE,
+    tick: 10,
+    houses: hydratedHouse,
+    buildings: [openingHouse, granary],
+    treasuryTimber: 30,
+    idleWorkers: 0,
+  };
+
+  // When / Then
+  assert.equal(
+    settlementGuidance({ ...stable, houses: hydratedHouse.map((house) => ({ ...house, hasWater: false })) }).statusLine,
+    "우물이 필요합니다",
+  );
+  assert.equal(
+    settlementGuidance({
+      ...stable,
+      tick: 200,
+      houses: hydratedHouse.map((house) => ({ ...house, breadStock: 0, lastServicedTick: 0 })),
+    }).statusLine,
+    "식량이 부족합니다",
+  );
+  assert.equal(
+    settlementGuidance({ ...stable, buildings: [...stable.buildings, farm], idleWorkers: 1 }).statusLine,
+    "일꾼이 놀고 있습니다 — 길이 끊겼는지 확인하세요",
+  );
+  assert.equal(settlementGuidance({ ...stable, buildings: [openingHouse] }).statusLine, "곡창이 필요합니다");
+  assert.equal(settlementGuidance({ ...stable, treasuryTimber: 29 }).statusLine, "목재가 부족합니다");
+  assert.equal(settlementGuidance(stable).statusLine, "정착지는 안정적입니다");
+});
+
+test("settlement problem glyphs appear only for real water bread labour and storage conditions", () => {
+  // Given
+  const healthy = {
+    ...DEFAULT_GAME_STATE,
+    tick: 10,
+    houses: DEFAULT_GAME_STATE.houses.map((house) => ({
+      ...house,
+      hasWater: true,
+      breadStock: 1,
+      lastServicedTick: 10,
+    })),
+    buildings: DEFAULT_GAME_STATE.buildings.map((item) => ({ ...item, workers: 0 })),
+  };
+  const troubled = {
+    ...healthy,
+    tick: 260,
+    houses: healthy.houses.map((house) => ({
+      ...house,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+    })),
+    buildings: [
+      ...healthy.buildings,
+      building({ id: "farm", kind: "wheat_farm", tx: 3, ty: 3, workers: 1 }),
+      {
+        ...building({ id: "granary", kind: "granary", tx: 5, ty: 5, workers: 2 }),
+        inventory: { bread: 200 },
+      },
+    ],
+  };
+
+  // When
+  const healthyGlyphs = settlementProblemGlyphs(healthy);
+  const troubledGlyphs = settlementProblemGlyphs(troubled);
+
+  // Then
+  assert.deepEqual(healthyGlyphs, []);
+  assert.deepEqual(
+    troubledGlyphs.map((glyph) => glyph.kind),
+    ["water", "bread", "labour", "storage"],
+  );
 });
 
 test("water overlay draws well coverage and marks dry houses in vermilion", () => {
@@ -200,7 +343,8 @@ test("economy overlay CSS stays fixed and tokenized", async () => {
 
   // Then
   assert.match(css, /\.economy-overlays/);
-  assert.match(css, /position:\s*absolute;/);
-  assert.match(css, /bottom:\s*150px;/);
+  assert.doesNotMatch(css, /\.economy-overlays\s*\{[^}]*position:\s*absolute;/);
+  assert.match(css, /\.problem-glyph/);
+  assert.match(css, /font-size:\s*18px;/);
   assert.doesNotMatch(css, /#[0-9a-f]{3,8}|\b(?:rgb|hsl)a?\(|box-shadow|backdrop-filter|blur\(/i);
 });

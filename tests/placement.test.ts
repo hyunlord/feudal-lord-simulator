@@ -5,7 +5,11 @@ import { BUILDING_CONFIG, type BuildingKind } from "../src/content/buildingConfi
 import type { TerrainType } from "../src/content/terrainConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { getTile, type Grid } from "../src/world/grid";
-import { canPlaceBuilding, PlacementFailure } from "../src/world/placement";
+import {
+  canPlaceBuilding,
+  placementSpendableResource,
+  PlacementFailure,
+} from "../src/world/placement";
 import type { Tile } from "../src/world/world.types";
 
 function tile(
@@ -252,4 +256,54 @@ test("canPlaceBuilding rejects insufficient timber after spatial requirements pa
     ok: false,
     reason: PlacementFailure.insufficient_timber,
   });
+});
+
+test("placement spendable timber matches building placement and excludes walker cargo", () => {
+  // Given
+  const gridWithForest = setTile(grassGrid(5, 5), 3, 3, { terrain: "forest" });
+  const grid = setTile(gridWithForest, 2, 1, { hasRoad: true });
+  const world = {
+    ...worldFromGrid(grid, 5),
+    buildings: [{
+      id: "store",
+      kind: "storehouse" as const,
+      tx: 0,
+      ty: 0,
+      workers: 0,
+      inventory: { timber: 10 },
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    }],
+    walkers: [{
+      id: "cargo",
+      kind: "carter" as const,
+      homeBuildingId: "store",
+      position: { tx: 0, ty: 0 },
+      path: [],
+      pathIndex: 0,
+      previousTile: null,
+      cargo: { resource: "timber" as const, amount: 90 },
+      spawnedTick: 0,
+      mission: "deliver" as const,
+      phase: "outbound" as const,
+      destinationBuildingId: "store",
+      reservation: {
+        destinationBuildingId: "store",
+        resource: "timber" as const,
+        amount: 90,
+        sourceStockClaim: null,
+        homeCapacityClaim: null,
+      },
+      cancellation: null,
+    }],
+  };
+
+  // When
+  const spendable = placementSpendableResource(world, "timber");
+  const result = canPlaceBuilding(world, "logging_camp", 2, 2);
+
+  // Then
+  assert.equal(spendable, 15);
+  assert.deepEqual(result, { ok: true });
 });

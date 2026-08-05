@@ -98,11 +98,11 @@ export function panByKey(input: KeyboardPanInput): CameraState {
 
 export function placementPreview(
   state: GameState,
-  tool: PlacementTool,
+  tool: PlacementTool | null,
   tile: TileCoordinate | null,
   roadStart: TileCoordinate | null,
 ): PlacementPreview {
-  if (tile === null) {
+  if (tool === null || tile === null) {
     return emptyPreview(tool);
   }
   if (tool === "road") {
@@ -122,7 +122,7 @@ export function placementPreview(
   };
 }
 
-function emptyPreview(tool: PlacementTool): PlacementPreview {
+function emptyPreview(tool: PlacementTool | null): PlacementPreview {
   return { tool, tile: null, footprint: [], roadPath: [], ok: true, reason: null, cursor: null };
 }
 

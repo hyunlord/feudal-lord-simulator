@@ -40,6 +40,22 @@ test("road preview reports out of bounds for invalid road drag endpoints", () =>
   assert.equal(preview.reason, PlacementFailure.out_of_bounds);
 });
 
+test("cancelled placement preview is inert even when hovering a buildable tile", () => {
+  // Given / When
+  const preview = placementPreview(state, null, { tx: 0, ty: 0 }, null);
+
+  // Then
+  assert.deepEqual(preview, {
+    tool: null,
+    tile: null,
+    footprint: [],
+    roadPath: [],
+    ok: true,
+    reason: null,
+    cursor: null,
+  });
+});
+
 test("road preview reports occupied for existing structures or roads", () => {
   // Given / When
   const preview = placementPreview(state, "road", { tx: 0, ty: 1 }, null);

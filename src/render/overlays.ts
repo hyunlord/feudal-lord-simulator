@@ -37,7 +37,7 @@ export function drawOverlay(input: EconomyOverlayRenderInput): void {
 }
 
 export type PlacementPreview = {
-  readonly tool: PlacementTool;
+  readonly tool: PlacementTool | null;
   readonly tile: TileCoordinate | null;
   readonly footprint: readonly TileCoordinate[];
   readonly roadPath: readonly TileCoordinate[];

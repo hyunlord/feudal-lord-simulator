@@ -25,7 +25,7 @@ import {
   type DragState,
 } from "./canvasRuntime";
 import { preloadWorldAssets } from "./worldAssets";
-type GameCanvasProps = { readonly selectedTool?: PlacementTool; readonly overlayMode?: OverlayMode };
+type GameCanvasProps = { readonly selectedTool?: PlacementTool | null; readonly overlayMode?: OverlayMode };
 
 export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode = "none" }: GameCanvasProps) {
   const { state, dispatch } = useGameStore();
@@ -176,7 +176,7 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
       const drag = dragRef.current;
       const hover = hoverRef.current;
       const currentTool = selectedToolRef.current;
-      if (drag.mode === "none" && hover !== null && currentTool !== "road") {
+      if (drag.mode === "none" && hover !== null && currentTool !== null && currentTool !== "road") {
         dispatch({ type: "place_building", kind: currentTool, tx: hover.tx, ty: hover.ty });
       }
     };

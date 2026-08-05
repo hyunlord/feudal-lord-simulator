@@ -143,17 +143,17 @@ export function canPlaceBuilding(
   }
 
   const timberCost = definition.buildCost.timber ?? 0;
-  if (availableResource(world, "timber") < timberCost) {
+  if (placementSpendableResource(world, "timber") < timberCost) {
     return { ok: false, reason: PlacementFailure.insufficient_timber };
   }
 
   return { ok: true };
 }
 
-function availableResource(world: ResourceWorldView, resource: ResourceType): number {
+export function placementSpendableResource(world: ResourceWorldView, resource: ResourceType): number {
   const stored = world.buildings?.reduce(
     (total, building) => total + (building.inventory[resource] ?? 0),
     0,
   ) ?? 0;
-  return world.treasuryTimber + stored;
+  return resource === "timber" ? world.treasuryTimber + stored : stored;
 }
