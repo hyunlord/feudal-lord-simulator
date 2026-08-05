@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "revision": "b2253459541fa54725607882a4ced6129486de21",
+  "generatedAt": "2026-08-05T14:07:35.465Z",
+  "environment": {
+    "host": "aitopatom-d6bb",
+    "browser": "HeadlessChrome 151",
+    "viewport": "1280x720",
+    "warmupFrames": 20,
+    "measuredFrames": 120
+  },
+  "verification": {
+    "node": { "passed": 383, "failed": 0 },
+    "python": { "passed": 52, "failed": 0 },
+    "typecheck": "passed",
+    "build": "passed",
+    "uiAssets": "passed",
+    "worldAssets": "passed",
+    "determinismHash": "4d92c66f9408a603"
+  },
+  "entities": {
+    "buildings": 40,
+    "roads": 127,
+    "trees": 451,
+    "groundCover": 154,
+    "walkers": 20
+  },
+  "runs": [
+    {
+      "run": 1,
+      "1x": { "averageMs": 11.358, "p95Ms": 14.1, "worstMs": 30.5, "overBudgetFrames": 9 },
+      "5x": { "averageMs": 11.399, "p95Ms": 13.4, "worstMs": 14.8, "overBudgetFrames": 11 }
+    },
+    {
+      "run": 2,
+      "1x": { "averageMs": 11.393, "p95Ms": 12.7, "worstMs": 29.4, "overBudgetFrames": 9 },
+      "5x": { "averageMs": 11.521, "p95Ms": 13.7, "worstMs": 19.1, "overBudgetFrames": 13 }
+    },
+    {
+      "run": 3,
+      "1x": { "averageMs": 11.372, "p95Ms": 12.8, "worstMs": 29.6, "overBudgetFrames": 10 },
+      "5x": { "averageMs": 11.557, "p95Ms": 13.5, "worstMs": 16.7, "overBudgetFrames": 14 }
+    }
+  ],
+  "averages": {
+    "1xMs": 11.374,
+    "5xMs": 11.492,
+    "baseline5xMs": 10.918,
+    "fiveXDeltaPercent": 5.26,
+    "fiveXGateMs": 12,
+    "fiveXGate": "passed"
+  },
+  "visualDiff": {
+    "reference": "docs/assets/phase4e_default_open_ground.png",
+    "actual": "docs/assets/phase4f_visual_diff_1280x720.png",
+    "dimensionsMatch": true,
+    "similarityScore": 61,
+    "diffRatio": 0.3857,
+    "alphaChannelIntact": true,
+    "interpretation": "Intentional console, guidance, foliage tint, density, and grounding changes dominate the diff."
+  }
+}
