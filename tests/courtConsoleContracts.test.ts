@@ -118,7 +118,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   const mobileRules = css.match(/@media \(max-width: 600px\) \{([\s\S]+)\}\s*$/)?.[1] ?? "";
   assert.match(consoleRule, /background-size:\s*103% 100%;/);
   assert.match(buildSealsRule, /--seal-size:\s*30px;/);
-  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(3, var\(--seal-size\)\);/);
+  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
   assert.match(buildSealsRule, /gap:\s*3px 5px;/);
   assert.match(buildSealsRule, /width:\s*max-content;/);
   assert.match(buildSealsRule, /padding:\s*4px 6px;/);
@@ -131,9 +131,9 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
     css,
     /grid-template-columns:\s*(?:clamp\(122px|108px|54px)/,
   );
-  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*150px;/);
+  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*188px;/);
   assert.match(mobileRules, /--seal-size:\s*clamp\(24px, 5vw, 30px\);/);
-  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*2px;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*clamp\(8px, 1\.8vw, 11px\) clamp\(4px, 1\.2vw, 7px\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*clamp\(9px, 1\.7vw, 10px\);/);

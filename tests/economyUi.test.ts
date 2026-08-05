@@ -19,6 +19,7 @@ import {
 } from "../src/ui/settlementGuidanceModel";
 
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
+const APP_SOURCE = new URL("../src/App.tsx", import.meta.url);
 
 function contextRecorder(): { readonly calls: readonly string[]; readonly context: CanvasRenderingContext2D } {
   const calls: string[] = [];
@@ -127,6 +128,24 @@ test("the population objective stays in the right console while only the status 
   assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
   assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
   assert.match(markup.slice(objectiveIndex), /목표: 인구 50명/);
+});
+
+test("sixty-tick guidance sampling does not schedule state from an effect on every simulation tick", async () => {
+  // Given / When
+  const source = await readFile(APP_SOURCE, "utf8");
+
+  // Then
+  assert.doesNotMatch(source, /setGuidanceSnapshot/);
+  assert.match(source, /guidanceSnapshotRef/);
+});
+
+test("build groups reserve their full two-seal width so neighboring buttons cannot intercept clicks", async () => {
+  // Given / When
+  const stylesheet = await readFile(STYLESHEET, "utf8");
+
+  // Then
+  assert.match(stylesheet, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 2px\)\)/);
+  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\)/);
 });
 
 test("settlement guidance advances population targets and samples priority on a sixty tick cadence", () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import type { GameSpeed, OverlayMode } from "./engine/engine.types";
 import { GameCanvas } from "./render/GameCanvas";
@@ -19,10 +19,13 @@ export function App() {
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
   const [speed, setSpeed] = useState<GameSpeed>(0);
   const guidanceSample = Math.floor(state.tick / 60);
-  const [guidanceSnapshot, setGuidanceSnapshot] = useState(() => ({
+  const guidanceSnapshotRef = useRef({
     sample: guidanceSample,
     state,
-  }));
+  });
+  if (guidanceSnapshotRef.current.sample !== guidanceSample) {
+    guidanceSnapshotRef.current = { sample: guidanceSample, state };
+  }
 
   useEffect(() => {
     const intervalMs = speedToIntervalMs(speed);
@@ -30,12 +33,6 @@ export function App() {
     const interval = window.setInterval(() => dispatch({ type: "advance_tick" }), intervalMs);
     return () => window.clearInterval(interval);
   }, [dispatch, speed]);
-
-  useEffect(() => {
-    setGuidanceSnapshot((current) =>
-      current.sample === guidanceSample ? current : { sample: guidanceSample, state },
-    );
-  }, [guidanceSample, state]);
 
   useEffect(() => {
     const keyDown = (event: KeyboardEvent) => {
@@ -63,7 +60,7 @@ export function App() {
     >
       <h1 className="visually-hidden">Feudal Lord Simulator</h1>
       <GameCanvas selectedTool={selectedTool} overlayMode={overlayMode} />
-      <SettlementStatusLine state={guidanceSnapshot.state} />
+      <SettlementStatusLine state={guidanceSnapshotRef.current.state} />
       <aside className="court-console" aria-label="Court console">
         <div className="court-recess map-recess">
           <MapShield grid={state} />

@@ -308,8 +308,8 @@ button {
 .build-seals {
   --seal-size: 30px;
   display: grid;
-  grid-template-columns: repeat(3, var(--seal-size));
-  grid-auto-rows: var(--seal-size);
+  grid-template-columns: repeat(4, calc(var(--seal-size) * 2 + 2px));
+  grid-auto-rows: auto;
   gap: 3px 5px;
   place-content: center;
   width: max-content;
@@ -628,8 +628,8 @@ button {
 
   .build-seals {
     --seal-size: clamp(24px, 5vw, 30px);
-    grid-template-columns: repeat(3, var(--seal-size));
-    grid-auto-rows: var(--seal-size);
+    grid-template-columns: repeat(2, calc(var(--seal-size) * 2 + 2px));
+    grid-auto-rows: auto;
     gap: 2px;
     padding: 3px 4px;
   }
