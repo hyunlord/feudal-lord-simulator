@@ -174,6 +174,15 @@ describe("worldSpritePipeline", () => {
     assert.throws(() => assertGroundCoverSilhouette(tall, "shrub_a"), /wider than tall/);
   });
 
+  it("removes timber-coloured trunks from shrubs and grass tufts", () => {
+    const shrub = contractImage("shrub_b", 24);
+    fill(shrub, 12, 15, 20, 22, [...rgb(RAMPS.timber[2]), 255]);
+    const processed = enforceWorldMaterialPolicy(shrub, "shrub_b");
+    assert.doesNotThrow(() => assertSpriteContract(processed, "shrub_b"));
+    setPixel(processed, 15, 18, [...rgb(RAMPS.timber[2]), 255]);
+    assert.throws(() => assertSpriteContract(processed, "shrub_b"), /foliage-only/);
+  });
+
   it("keeps field stones in stone or earth ramps", () => {
     const stone = contractImage("field_stone", 18);
     const processed = enforceWorldMaterialPolicy(stone, "field_stone");

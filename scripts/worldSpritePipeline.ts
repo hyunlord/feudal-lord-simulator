@@ -113,11 +113,21 @@ const enforceFieldStoneMaterialPolicy = (image: RgbaImage): RgbaImage => {
   return { dimensions: image.dimensions, rgba };
 };
 
+const enforceLeafyGroundCoverMaterialPolicy = (image: RgbaImage): RgbaImage => {
+  const rgba = new Uint8Array(image.rgba);
+  for (let index = 0; index < rgba.length; index += 4) {
+    if (rgba[index + 3] === 255) setRampColour(rgba, index, "foliage");
+  }
+  return { dimensions: image.dimensions, rgba };
+};
+
 export const enforceWorldMaterialPolicy = (image: RgbaImage, key: WorldSpriteKey): RgbaImage =>
   isBuildingSpriteKey(key)
     ? enforceBuildingMaterialPolicy(image, key)
     : key === "field_stone"
       ? enforceFieldStoneMaterialPolicy(image)
+      : key === "shrub_a" || key === "shrub_b" || key === "grass_tuft"
+        ? enforceLeafyGroundCoverMaterialPolicy(image)
       : enforceFoliageMaterialPolicy(image);
 
 export const processWorldSprite = (
@@ -254,11 +264,12 @@ const assertFoliageMaterials = (image: RgbaImage, key: FoliageSpriteKey): void =
     if (image.rgba[index + 3] !== 255) continue;
     const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
     const ramp = RAMP_BY_RGB.get(colour)?.name;
+    const foliageOnly = key === "shrub_a" || key === "shrub_b" || key === "grass_tuft";
     const allowed = key === "field_stone"
       ? ramp === "stone" || ramp === "earth"
-      : ramp === "foliage" || ramp === "timber";
+      : foliageOnly ? ramp === "foliage" : ramp === "foliage" || ramp === "timber";
     if (!allowed) {
-      const policy = key === "field_stone" ? "stone or earth" : "foliage or timber";
+      const policy = key === "field_stone" ? "stone or earth" : foliageOnly ? "foliage-only" : "foliage or timber";
       throw new Error(`${key} interior must use ${policy} interior colours`);
     }
     if (colour === INK_KEY) throw new Error(`${key} ink is allowed only at alpha ${OUTLINE_ALPHA}`);
