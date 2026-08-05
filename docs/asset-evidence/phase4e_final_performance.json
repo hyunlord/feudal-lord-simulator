@@ -9,7 +9,7 @@
     "budgetMs": 12
   },
   "baselineEvidence": "docs/asset-evidence/phase4e_part1_performance.json",
-  "finalRevision": "f95c594",
+  "finalRevision": "b9c320a",
   "entities": {
     "buildings": 40,
     "roads": 127,
@@ -30,25 +30,25 @@
     },
     "final": {
       "groundCover": 154,
-      "1x": { "averageMs": 10.746, "p95Ms": 11.4, "worstMs": 30.9, "overBudgetFrames": 6 },
-      "5x": { "averageMs": 10.655, "p95Ms": 11.9, "worstMs": 14.3, "overBudgetFrames": 6 }
+      "1x": { "averageMs": 10.74, "p95Ms": 11.7, "worstMs": 29.3, "overBudgetFrames": 6 },
+      "5x": { "averageMs": 10.742, "p95Ms": 11.9, "worstMs": 15.4, "overBudgetFrames": 6 }
     }
   },
   "finalRuns": [
     {
       "run": 1,
-      "1x": { "averageMs": 10.701, "p95Ms": 11.9, "worstMs": 31.9, "overBudgetFrames": 5 },
-      "5x": { "averageMs": 10.728, "p95Ms": 12.8, "worstMs": 15.1, "overBudgetFrames": 8 }
+      "1x": { "averageMs": 10.77, "p95Ms": 12.1, "worstMs": 31, "overBudgetFrames": 7 },
+      "5x": { "averageMs": 10.72, "p95Ms": 12.3, "worstMs": 15.6, "overBudgetFrames": 7 }
     },
     {
       "run": 2,
-      "1x": { "averageMs": 10.746, "p95Ms": 11.4, "worstMs": 30.9, "overBudgetFrames": 6 },
-      "5x": { "averageMs": 10.655, "p95Ms": 11.9, "worstMs": 14.3, "overBudgetFrames": 6 }
+      "1x": { "averageMs": 10.74, "p95Ms": 11.7, "worstMs": 29.3, "overBudgetFrames": 6 },
+      "5x": { "averageMs": 10.742, "p95Ms": 11.9, "worstMs": 15.4, "overBudgetFrames": 6 }
     },
     {
       "run": 3,
-      "1x": { "averageMs": 10.688, "p95Ms": 11.9, "worstMs": 30.7, "overBudgetFrames": 6 },
-      "5x": { "averageMs": 10.797, "p95Ms": 13.1, "worstMs": 17.1, "overBudgetFrames": 9 }
+      "1x": { "averageMs": 10.798, "p95Ms": 12.1, "worstMs": 30.8, "overBudgetFrames": 7 },
+      "5x": { "averageMs": 10.678, "p95Ms": 12.5, "worstMs": 14.6, "overBudgetFrames": 7 }
     }
   ],
   "optimization": {

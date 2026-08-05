@@ -54,10 +54,10 @@ Canonical 120-frame measurements after 20 warm-up frames:
 | Phase 4D baseline | 5x | 853 | 10.448ms | 11.8ms | 14.3ms |
 | Phase 4E Part 1 | 1x | 154 | 9.533ms | 10.3ms | 31.4ms |
 | Phase 4E Part 1 | 5x | 154 | 9.647ms | 10.8ms | 13.2ms |
-| Phase 4E final | 1x | 154 | 10.746ms | 11.4ms | 30.9ms |
-| Phase 4E final | 5x | 154 | 10.655ms | 11.9ms | 14.3ms |
+| Phase 4E final | 1x | 154 | 10.740ms | 11.7ms | 29.3ms |
+| Phase 4E final | 5x | 154 | 10.742ms | 11.9ms | 15.4ms |
 
-The first full-art measurement exceeded the 12ms average budget, so pattern transforms were cached instead of being reassigned per visible tile. Across three final runs, 1x averages were 10.688–10.746ms and 5x averages were 10.655–10.797ms. Rare worst-frame outliers remain visible in the evidence; none were removed or winsorized.
+The first full-art measurement exceeded the 12ms average budget, so pattern transforms were cached instead of being reassigned per visible tile. Across three final runs on the release implementation, 1x averages were 10.740–10.798ms and 5x averages were 10.678–10.742ms. Rare worst-frame outliers remain visible in the evidence; none were removed or winsorized.
 
 Raw summary evidence is in `docs/asset-evidence/phase4e_final_performance.json`; baseline and Part 1 runs remain in `docs/asset-evidence/phase4e_part1_performance.json`.
 
@@ -74,8 +74,8 @@ The DGX browser run recorded zero page errors and zero failed requests. Chromium
 
 ## Verification
 
-- Node tests: 360/360 passed on DGX.
-- Python generator tests: 12/12 passed on DGX.
+- Node tests: 361/361 passed on DGX.
+- Python tests: 45/45 passed on DGX, including all 12 world-generator tests.
 - `npm run typecheck`: passed.
 - `npm run build`: passed.
 - `npm run harness`: passed with `4d92c66f9408a603`.
@@ -85,4 +85,4 @@ The DGX browser run recorded zero page errors and zero failed requests. Chromium
 
 Branch: `codex/phase4e-land-breathe`
 
-Implementation tip before evidence-only report commit: `f95c594`.
+Implementation tip before evidence-only report commit: `b9c320a`.
