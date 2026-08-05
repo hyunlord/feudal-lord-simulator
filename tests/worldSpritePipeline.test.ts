@@ -6,6 +6,7 @@ import {
   BUILDING_SPRITE_CONTRACTS,
   FOLIAGE_SPRITE_CONTRACTS,
   assertBuildingRoofPolicy,
+  assertGroundCoverSilhouette,
   assertHouseHeightProgression,
   assertSpriteContract,
   assertWheatFieldDominance,
@@ -83,8 +84,10 @@ describe("worldSpritePipeline", () => {
       tree_conifer_b: { width: 56, height: 80, baselineY: 80 },
       tree_broadleaf_a: { width: 72, height: 88, baselineY: 88 },
       tree_broadleaf_b: { width: 64, height: 72, baselineY: 72 },
-      shrub_a: { width: 40, height: 36, baselineY: 36 },
-      shrub_b: { width: 32, height: 28, baselineY: 28 },
+      shrub_a: { width: 40, height: 28, baselineY: 28 },
+      shrub_b: { width: 32, height: 22, baselineY: 22 },
+      grass_tuft: { width: 28, height: 18, baselineY: 18 },
+      field_stone: { width: 24, height: 16, baselineY: 16 },
     });
   });
 
@@ -161,6 +164,20 @@ describe("worldSpritePipeline", () => {
     assert.doesNotThrow(() => assertSpriteContract(remapped, "tree_conifer_a"));
     setPixel(remapped, 20, 78, [...rgb(PALETTE.ink), 255]);
     assert.throws(() => assertSpriteContract(remapped, "tree_conifer_a"), /foliage or timber interior/);
+  });
+
+  it("requires both shrub alpha silhouettes to be wider than tall", () => {
+    const wide = contractImage("shrub_a", 30);
+    assert.doesNotThrow(() => assertGroundCoverSilhouette(wide, "shrub_a"));
+    const tall = image(40, 28);
+    fill(tall, 17, 2, 23, 28, [...rgb(RAMPS.foliage[2]), 255]);
+    assert.throws(() => assertGroundCoverSilhouette(tall, "shrub_a"), /wider than tall/);
+  });
+
+  it("keeps field stones in stone or earth ramps", () => {
+    const stone = contractImage("field_stone", 18);
+    const processed = enforceWorldMaterialPolicy(stone, "field_stone");
+    assert.doesNotThrow(() => assertSpriteContract(processed, "field_stone"));
   });
 
   it("reports the final opaque bounds used by the contract", () => {

@@ -4,7 +4,7 @@
 # dependencies = ["pillow"]
 # ///
 # How to run: python3 scripts/generateWorldAssets.py --generate --repo-root . --output-root /tmp/phase4c-raw
-# noqa: SIZE_OK — fixed 59-job contract and its ComfyUI adapter stay together for release auditability.
+# noqa: SIZE_OK — fixed 73-job contract and its ComfyUI adapter stay together for release auditability.
 from __future__ import annotations
 
 import argparse
@@ -83,15 +83,17 @@ BUILDING_GEOMETRY: Final = {
     "storehouse": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
     "wheat_farm": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
     "logging_camp": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
-    "sawmill": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+    "sawmill": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
 }
 FOLIAGE_GEOMETRY: Final = {
     "tree_conifer_a": "one tall narrow evergreen tree",
     "tree_conifer_b": "one shorter broader evergreen tree",
     "tree_broadleaf_a": "one rounded deciduous tree canopy on a short trunk",
     "tree_broadleaf_b": "one smaller sparser deciduous tree canopy on a short trunk",
-    "shrub_a": "one low dense woodland bush",
-    "shrub_b": "one smaller sparse woodland bush",
+    "shrub_a": "one low trunkless wide dense woodland shrub",
+    "shrub_b": "one smaller low trunkless wide sparse woodland shrub",
+    "grass_tuft": "one low isolated tuft of meadow grass",
+    "field_stone": "one low isolated weathered field stone",
 }
 TERRAIN_GEOMETRY: Final = {
     "grass": "seamless tileable muted meadow grass texture, low contrast, no objects",
@@ -108,7 +110,9 @@ def _build_jobs() -> tuple[Job, ...]:
         for candidate in range(1, 7):
             jobs.append(Job(Category.BUILDING, key, geometry, Seed(64050000 + subject_index * 100 + candidate), candidate))
     for index, (key, geometry) in enumerate(FOLIAGE_GEOMETRY.items(), start=1):
-        jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(64052000 + index), 1))
+        candidate_count = 4 if key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"} else 1
+        for candidate in range(1, candidate_count + 1):
+            jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(64052000 + index * 100 + candidate), candidate))
     for index, (key, geometry) in enumerate(TERRAIN_GEOMETRY.items(), start=1):
         jobs.append(Job(Category.TERRAIN, key, geometry, Seed(64053000 + index), 1))
     return tuple(jobs)
@@ -141,15 +145,26 @@ def _prompt_text(job: Job) -> tuple[str, str]:
         case Category.BUILDING:
             return f"{BASE_PROMPT}, {job.geometry}, perfectly flat uniform #00FFFF chroma field", NEGATIVE_PROMPT
         case Category.FOLIAGE:
-            subject_constraint = (
-                "one waist-high bush made only of a few connected leafy clumps, no ground beneath it"
-                if job.key.startswith("shrub_")
-                else "one standalone tree with one trunk and one connected canopy, no ground beneath it"
-            )
+            if job.key.startswith("shrub_"):
+                subject_constraint = "one ankle-high trunkless bush made only of connected leafy clumps, distinctly wider than tall, no ground beneath it"
+                material_constraint = "foliage and timber colours only"
+                extra_negative = "stone,"
+            elif job.key == "grass_tuft":
+                subject_constraint = "one ankle-high connected grass clump, distinctly wider than tall, no ground beneath it"
+                material_constraint = "foliage and timber colours only"
+                extra_negative = "stone,"
+            elif job.key == "field_stone":
+                subject_constraint = "one knee-low rounded stone, distinctly wider than tall, no ground beneath it"
+                material_constraint = "stone and earth colours only"
+                extra_negative = "tree trunk, leaves,"
+            else:
+                subject_constraint = "one standalone tree with one trunk and one connected canopy, no ground beneath it"
+                material_constraint = "foliage and timber colours only"
+                extra_negative = "stone,"
             return (
-                f"{FOLIAGE_PROMPT}, {job.geometry}, {subject_constraint}, foliage and timber colours only, "
+                f"{FOLIAGE_PROMPT}, {job.geometry}, {subject_constraint}, {material_constraint}, "
                 "perfectly flat uniform #00FFFF chroma field",
-                f"{NEGATIVE_PROMPT}, architecture, building, stone, plaster, slate, forest scene, landscape, diorama, "
+                f"{NEGATIVE_PROMPT}, architecture, building, {extra_negative} plaster, slate, forest scene, landscape, diorama, "
                 "terrain island, cliff, ground, grass field, multiple trees",
             )
         case Category.TERRAIN:
@@ -252,11 +267,17 @@ def build_subject_guide(job: Job) -> Image.Image:
                     draw.polygon(((512, 175), (300, 700), (724, 700)), fill=green)
                 else:
                     draw.ellipse((275, 180, 750, 690), fill=green)
-            else:
-                draw.ellipse((340, 545, 520, 735), fill=green)
-                draw.ellipse((445, 485, 625, 735), fill=green)
-                draw.ellipse((555, 550, 700, 735), fill=green)
-                draw.rectangle((380, 655, 665, 750), fill=green)
+            elif job.key.startswith("shrub_"):
+                draw.ellipse((300, 590, 480, 735), fill=green)
+                draw.ellipse((420, 550, 610, 735), fill=green)
+                draw.ellipse((555, 595, 735, 735), fill=green)
+                draw.rectangle((345, 670, 695, 755), fill=green)
+            elif job.key == "grass_tuft":
+                for offset in range(0, 241, 40):
+                    draw.polygon(((390 + offset, 755), (410 + offset, 590), (430 + offset, 755)), fill=green)
+            elif job.key == "field_stone":
+                draw.ellipse((335, 590, 690, 790), fill=wall)
+                draw.polygon(((355, 690), (470, 575), (650, 625), (690, 735), (560, 790), (380, 760)), fill=earth)
         case Category.BUILDING:
             match job.key:
                 case "well":
@@ -399,7 +420,8 @@ def selected_jobs(targets: frozenset[str] | None) -> tuple[Job, ...]:
 
 
 def _release_name(job: Job) -> str:
-    return f"{job.key}_{job.candidate:02d}.png" if job.category is Category.BUILDING else f"{job.key}.png"
+    is_ground_cover = job.category is Category.FOLIAGE and job.key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"}
+    return f"{job.key}_{job.candidate:02d}.png" if job.category is Category.BUILDING or is_ground_cover else f"{job.key}.png"
 
 
 def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None = None) -> None:

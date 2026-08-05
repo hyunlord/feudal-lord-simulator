@@ -19,6 +19,8 @@ export const FOLIAGE_KEYS = [
   "tree_broadleaf_b",
   "shrub_a",
   "shrub_b",
+  "grass_tuft",
+  "field_stone",
 ] as const;
 
 export const TERRAIN_KEYS = [
@@ -86,8 +88,10 @@ export const FOLIAGE_SPECS = {
   tree_conifer_b: { width: 56, height: 80, baselineY: 80, footprint: oneByOne },
   tree_broadleaf_a: { width: 72, height: 88, baselineY: 88, footprint: oneByOne },
   tree_broadleaf_b: { width: 64, height: 72, baselineY: 72, footprint: oneByOne },
-  shrub_a: { width: 40, height: 36, baselineY: 36, footprint: oneByOne },
-  shrub_b: { width: 32, height: 28, baselineY: 28, footprint: oneByOne },
+  shrub_a: { width: 40, height: 28, baselineY: 28, footprint: oneByOne },
+  shrub_b: { width: 32, height: 22, baselineY: 22, footprint: oneByOne },
+  grass_tuft: { width: 28, height: 18, baselineY: 18, footprint: oneByOne },
+  field_stone: { width: 24, height: 16, baselineY: 16, footprint: oneByOne },
 } as const satisfies Readonly<Record<FoliageKey, SpriteSpec>>;
 
 export const TERRAIN_SPECS = {

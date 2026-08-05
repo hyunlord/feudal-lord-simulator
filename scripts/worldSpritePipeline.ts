@@ -31,8 +31,10 @@ export const FOLIAGE_SPRITE_CONTRACTS = {
   tree_conifer_b: { width: 56, height: 80, baselineY: 80 },
   tree_broadleaf_a: { width: 72, height: 88, baselineY: 88 },
   tree_broadleaf_b: { width: 64, height: 72, baselineY: 72 },
-  shrub_a: { width: 40, height: 36, baselineY: 36 },
-  shrub_b: { width: 32, height: 28, baselineY: 28 },
+  shrub_a: { width: 40, height: 28, baselineY: 28 },
+  shrub_b: { width: 32, height: 22, baselineY: 22 },
+  grass_tuft: { width: 28, height: 18, baselineY: 18 },
+  field_stone: { width: 24, height: 16, baselineY: 16 },
 } as const;
 
 const WORLD_SPRITE_CONTRACTS = {
@@ -100,8 +102,23 @@ export const enforceFoliageMaterialPolicy = (image: RgbaImage): RgbaImage => {
   return { dimensions: image.dimensions, rgba };
 };
 
+const enforceFieldStoneMaterialPolicy = (image: RgbaImage): RgbaImage => {
+  const rgba = new Uint8Array(image.rgba);
+  for (let index = 0; index < rgba.length; index += 4) {
+    if (rgba[index + 3] !== 255) continue;
+    const key = `${rgba[index]},${rgba[index + 1]},${rgba[index + 2]}`;
+    const ramp = RAMP_BY_RGB.get(key)?.name;
+    if (ramp !== "earth") setRampColour(rgba, index, "stone");
+  }
+  return { dimensions: image.dimensions, rgba };
+};
+
 export const enforceWorldMaterialPolicy = (image: RgbaImage, key: WorldSpriteKey): RgbaImage =>
-  isBuildingSpriteKey(key) ? enforceBuildingMaterialPolicy(image, key) : enforceFoliageMaterialPolicy(image);
+  isBuildingSpriteKey(key)
+    ? enforceBuildingMaterialPolicy(image, key)
+    : key === "field_stone"
+      ? enforceFieldStoneMaterialPolicy(image)
+      : enforceFoliageMaterialPolicy(image);
 
 export const processWorldSprite = (
   source: RgbaImage,
@@ -237,9 +254,26 @@ const assertFoliageMaterials = (image: RgbaImage, key: FoliageSpriteKey): void =
     if (image.rgba[index + 3] !== 255) continue;
     const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
     const ramp = RAMP_BY_RGB.get(colour)?.name;
-    if (ramp !== "foliage" && ramp !== "timber") throw new Error(`${key} interior must use foliage or timber interior colours`);
+    const allowed = key === "field_stone"
+      ? ramp === "stone" || ramp === "earth"
+      : ramp === "foliage" || ramp === "timber";
+    if (!allowed) {
+      const policy = key === "field_stone" ? "stone or earth" : "foliage or timber";
+      throw new Error(`${key} interior must use ${policy} interior colours`);
+    }
     if (colour === INK_KEY) throw new Error(`${key} ink is allowed only at alpha ${OUTLINE_ALPHA}`);
   }
+};
+
+export const assertGroundCoverSilhouette = (
+  image: RgbaImage,
+  key: "shrub_a" | "shrub_b",
+): void => {
+  const bounds = findOpaqueBounds(image);
+  if (bounds === null) throw new Error(`${key} has no visible mass`);
+  const width = bounds.right - bounds.left;
+  const height = bounds.bottom - bounds.top;
+  if (width <= height) throw new Error(`${key} silhouette must be wider than tall`);
 };
 
 export const assertSpriteContract = (image: RgbaImage, key: WorldSpriteKey): void => {
@@ -252,6 +286,7 @@ export const assertSpriteContract = (image: RgbaImage, key: WorldSpriteKey): voi
     return;
   }
   assertFoliageMaterials(image, key);
+  if (key === "shrub_a" || key === "shrub_b") assertGroundCoverSilhouette(image, key);
 };
 
 type HouseProgression = Readonly<Record<"house_l0" | "house_l1" | "house_l2" | "house_l3", RgbaImage>>;

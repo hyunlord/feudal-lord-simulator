@@ -28,15 +28,15 @@ def load_generator():
 
 
 class WorldAssetGeneratorContractTest(unittest.TestCase):
-    def test_catalog_has_exact_59_jobs_and_locked_geometry(self) -> None:
+    def test_catalog_has_exact_73_jobs_and_locked_geometry(self) -> None:
         module = load_generator()
 
         buildings = [job for job in module.JOBS if job.category.value == "building"]
         foliage = [job for job in module.JOBS if job.category.value == "foliage"]
         terrain = [job for job in module.JOBS if job.category.value == "terrain"]
-        self.assertEqual(len(module.JOBS), 59)
+        self.assertEqual(len(module.JOBS), 73)
         self.assertEqual(len(buildings), 48)
-        self.assertEqual(len(foliage), 6)
+        self.assertEqual(len(foliage), 20)
         self.assertEqual(len(terrain), 5)
         self.assertEqual(
             sorted({job.key for job in buildings}),
@@ -46,6 +46,10 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             seeds = [job.seed for job in buildings if job.key == key]
             self.assertEqual(len(seeds), 6)
             self.assertEqual(len(set(seeds)), 6)
+        for key in ("shrub_a", "shrub_b", "grass_tuft", "field_stone"):
+            candidates = [job for job in foliage if job.key == key]
+            self.assertEqual([job.candidate for job in candidates], [1, 2, 3, 4])
+            self.assertEqual(len({job.seed for job in candidates}), 4)
         expected_clauses = {
             "house_l1": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
             "house_l2": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
@@ -54,7 +58,7 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             "storehouse": "a rectangular open-fronted timber warehouse, plank walls, shallow shingle roof, stacked crates visible inside",
             "wheat_farm": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
             "logging_camp": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
-            "sawmill": "a low timber workshop with a large horizontal saw frame under a lean-to roof, plank stacks outside",
+            "sawmill": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
         }
         for key, clause in expected_clauses.items():
             matching = [job for job in buildings if job.key == key]
@@ -139,6 +143,11 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
         self.assertIn("foliage and timber colours only", positive)
         self.assertTrue(any("sprite sheet" in negative and "multiple objects" in negative for negative in negatives))
         self.assertTrue(any("diorama" in negative and "terrain island" in negative for negative in negatives))
+
+        stone_job = next(candidate for candidate in module.JOBS if candidate.key == "field_stone")
+        stone_workflow = module.workflow_prompt(stone_job, ("house.png", "mill.png", "barn.png"), "guide.png")
+        stone_positive = str(next(node for node in stone_workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+        self.assertIn("stone and earth colours only", stone_positive)
 
     def test_subject_guides_lock_one_bounded_non_cyan_silhouette(self) -> None:
         module = load_generator()
@@ -229,6 +238,15 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             self.assertIn("finishedAtUtc", manifest["timing"])
             self.assertGreaterEqual(manifest["timing"]["elapsedSeconds"], 0)
             self.assertEqual(manifest["jobs"][0]["sourcePath"], "terrain/grass.png")
+
+    def test_ground_cover_candidates_have_unique_portable_release_names(self) -> None:
+        module = load_generator()
+
+        jobs = [job for job in module.JOBS if job.key == "shrub_a"]
+        self.assertEqual(
+            [module._release_name(job) for job in jobs],
+            ["shrub_a_01.png", "shrub_a_02.png", "shrub_a_03.png", "shrub_a_04.png"],
+        )
 
     def test_output_path_rejects_escape_absolute_and_non_png(self) -> None:
         module = load_generator()

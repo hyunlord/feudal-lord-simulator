@@ -99,9 +99,10 @@ describe("world asset manifest", () => {
     // When: the untrusted JSON value crosses the manifest boundary.
     const parsed = parseWorldAssetManifest(input);
 
-    // Then: all 22 exact keys and their bottom-centre contracts are preserved.
+    // Then: all 24 exact keys and their bottom-centre contracts are preserved.
     assert.doesNotThrow(() => assertExactWorldAssetKeys(parsed.assets));
     assert.deepEqual(parsed.assets.map((entry) => entry.key).sort(), [...WORLD_ASSET_KEYS].sort());
+    assert.equal(parsed.assets.length, 24);
     const manor = parsed.assets.find((entry) => entry.key === "house_l3");
     assert.deepEqual(manor, {
       key: "house_l3",
