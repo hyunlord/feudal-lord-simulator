@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { PALETTE } from "../src/content/palette";
+import { CANONICAL_PALETTE } from "../src/content/palette";
 import { decodePngToRgba } from "./quantisePalette";
 import {
   alphaPresent,
@@ -10,7 +10,9 @@ import {
   assertExactManifestKeys,
   assertManifestContract,
   assertReportAlignment,
+  assertScrollFrameFinalArt,
   assertScrollFrameTransparency,
+  assertWoodConsoleFinalArt,
   parseManifest,
   type AssetContract,
   type AssetManifest,
@@ -32,7 +34,8 @@ const hexToRgbKey = (hex: string): string => {
   return `${(parsed >> 16) & 255},${(parsed >> 8) & 255},${parsed & 255}`;
 };
 
-const paletteRgb = new Set(Object.values(PALETTE).map(hexToRgbKey));
+const paletteRgb = new Set(CANONICAL_PALETTE.map(hexToRgbKey));
+const PHASE4F_REGENERATED_KEYS = new Set(["scroll_frame", "wood_console"]);
 
 const readManifest = (manifestPath: string): AssetManifest => {
   const parsed: unknown = JSON.parse(readFileSync(manifestPath, "utf8"));
@@ -67,6 +70,18 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
       after.dimensions.width,
       after.dimensions.height,
     );
+    assertScrollFrameFinalArt(
+      after.rgba,
+      after.dimensions.width,
+      after.dimensions.height,
+    );
+  }
+  if (asset.key === "wood_console") {
+    assertWoodConsoleFinalArt(
+      after.rgba,
+      after.dimensions.width,
+      after.dimensions.height,
+    );
   }
 
   let opaquePaletteRgbCount = 0;
@@ -83,7 +98,7 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
         throw new Error(`${asset.finalPath} ended with an incomplete RGB pixel`);
       }
       const rgbKey = `${r},${g},${b}`;
-      if (!paletteRgb.has(rgbKey)) {
+      if (PHASE4F_REGENERATED_KEYS.has(asset.key) && !paletteRgb.has(rgbKey)) {
         throw new Error(`${asset.finalPath} has non-palette RGB ${rgbKey} at byte ${index}`);
       }
       opaquePaletteRgbCount += 1;

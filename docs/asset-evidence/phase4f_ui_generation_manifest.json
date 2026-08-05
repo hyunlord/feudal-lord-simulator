@@ -1,0 +1,74 @@
+{
+  "phase": "4F",
+  "runtime": {
+    "hostClass": "DGX Spark",
+    "comfyUiVersion": "0.19.1",
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "lora": "pixel-art-xl.safetensors",
+    "ipAdapterPreset": "PLUS (high strength)",
+    "steps": 22,
+    "cfg": 5.5,
+    "sampler": "euler",
+    "scheduler": "normal"
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "assets": [
+    {
+      "key": "scroll_frame",
+      "selectedIndex": 22,
+      "selectionReason": "balanced illuminated accents with the cleanest corner and rail geometry",
+      "candidates": [
+        {
+          "index": 22,
+          "seed": 52018411,
+          "sha256": "f4b7846f7f02ab3a3e7eedd2d860461edf06966988149eb14099a751e548275f"
+        },
+        {
+          "index": 23,
+          "seed": 52018412,
+          "sha256": "9ceb85e7c8347ca52a4b095242e39e3fd80d9f3699beef60e30cfc5929ed4b36"
+        },
+        {
+          "index": 24,
+          "seed": 52018413,
+          "sha256": "aa74ed3c0fae6dbd40bbc940db4799531f549599183338943d8c423e74de718d"
+        }
+      ],
+      "contactSheetSha256": "1cdb4bdc87f4d29c2e8dbafa84fc965b17d6257e1f2c96a7d20a446f84d36f56",
+      "rejectedBatch": "Candidates 19-21 passed geometry but lost the three illuminated accent families."
+    },
+    {
+      "key": "wood_console",
+      "selectedIndex": 10,
+      "selectionReason": "cleanest three-recess structure with visible grain and raised upper edge",
+      "candidates": [
+        {
+          "index": 10,
+          "seed": 52024421,
+          "sha256": "de709c84f172eee14885a8f8723fda8a40fd18b9b1d90aa859a9fba7758b299f"
+        },
+        {
+          "index": 11,
+          "seed": 52024422,
+          "sha256": "5d33b1c99cbc32b564bc29e4441c5635ac997161ac627124eac0b01d7905fc7a"
+        },
+        {
+          "index": 12,
+          "seed": 52024423,
+          "sha256": "96b4a08f7208e20f0ddd67b6e402d1b1a4a89dad5b0681977a5d62911b7c6859"
+        }
+      ],
+      "contactSheetSha256": "dfb9d6eef28763414c769d1d9362e0820f2eb52d409ff5a58ff99100d7bcdadf"
+    }
+  ],
+  "release": {
+    "scrollFrameBeforeSha256": "dd74f2509aeca154a044cc0138b5e89c6a12511c297ad38ff15860f9c6304f7d",
+    "scrollFrameFinalSha256": "a3aade9ab452c00f8114638b4f032c67c54ed7554d3329ee14b99cb31f8e60d6",
+    "woodConsoleBeforeSha256": "31d46e32adc7b67ef9a42ec411ec6a7cc1bbecaa6dbdc86d413e701a52f0bb10",
+    "woodConsoleFinalSha256": "7115c910c020c592a5b2317c27c821e5f0889c7f411c0f929ed6bbfe46ad1434"
+  }
+}

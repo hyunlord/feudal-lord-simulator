@@ -26,7 +26,7 @@ class TargetFilterContractTest(unittest.TestCase):
     def test_release_selection_points_to_approved_guided_candidates(self) -> None:
         module = load_generator()
 
-        self.assertEqual(module.SELECTED["scroll_frame"], 19)
+        self.assertEqual(module.SELECTED["scroll_frame"], 22)
         self.assertEqual(module.SELECTED["wood_console"], 10)
 
     def test_comfy_output_path_stays_inside_the_configured_png_root(self) -> None:
@@ -331,7 +331,7 @@ class TargetFilterContractTest(unittest.TestCase):
     def test_guided_workflow_uses_masks_and_expected_denoise(self) -> None:
         module = load_generator(); wood = next(spec for spec in module.ASSETS if spec.key == "wood_console"); scroll = next(spec for spec in module.ASSETS if spec.key == "scroll_frame")
         wood_workflow = module.guided_workflow_prompt(wood, 52024421, 0.28, "phase2_ui/wood_console/probe", "wood.png")
-        scroll_workflow = module.guided_workflow_prompt(scroll, 52017411, 0.12, "phase2_ui/scroll_frame/probe", "scroll.png")
+        scroll_workflow = module.guided_workflow_prompt(scroll, 52018411, 0.12, "phase2_ui/scroll_frame/probe", "scroll.png")
         self.assertEqual(wood_workflow["7"]["class_type"], "VAEEncode"); self.assertEqual(scroll_workflow["8"]["class_type"], "VAEEncodeForInpaint")
         self.assertEqual(scroll_workflow["7"]["class_type"], "InvertMask"); self.assertEqual(wood_workflow["13"]["class_type"], "ImageCompositeMasked")
         self.assertEqual(scroll_workflow["13"]["class_type"], "ImageCompositeMasked"); self.assertEqual(wood_workflow["9"]["inputs"]["denoise"], 0.28); self.assertEqual(scroll_workflow["9"]["inputs"]["denoise"], 0.12)
@@ -345,8 +345,174 @@ class TargetFilterContractTest(unittest.TestCase):
         self.assertEqual(scroll_workflow["16"]["class_type"], "ImageCompositeMasked")
         self.assertEqual(scroll_workflow["17"]["class_type"], "ImageColorToMask")
         self.assertEqual(scroll_workflow["18"]["class_type"], "ImageCompositeMasked")
-        self.assertEqual(scroll_workflow["14"]["inputs"]["images"], ["18", 0])
+        self.assertEqual(scroll_workflow["14"]["inputs"]["images"], ["31", 0])
         self.assertNotIn("15", wood_workflow)
+
+    def test_guided_scroll_restores_illuminated_accent_masks_after_light_and_dark(self) -> None:
+        """Given generated scroll pixels, guide accent masks are restored before saving."""
+        module = load_generator()
+        scroll = next(spec for spec in module.ASSETS if spec.key == "scroll_frame")
+
+        workflow = module.guided_workflow_prompt(scroll, 52018411, 0.12, "phase2_ui/scroll_frame/probe", "scroll.png")
+
+        self.assertEqual(workflow["26"]["class_type"], "ImageColorToMask")
+        self.assertEqual(workflow["26"]["inputs"]["color"], module.rgb_to_mask_int(module.SCROLL_GOLD_RGB))
+        self.assertEqual(workflow["27"]["class_type"], "ImageCompositeMasked")
+        self.assertEqual(workflow["27"]["inputs"]["destination"], ["18", 0])
+        self.assertEqual(workflow["28"]["class_type"], "ImageColorToMask")
+        self.assertEqual(workflow["28"]["inputs"]["color"], module.rgb_to_mask_int(module.SCROLL_ULTRAMARINE_RGB))
+        self.assertEqual(workflow["29"]["class_type"], "ImageCompositeMasked")
+        self.assertEqual(workflow["29"]["inputs"]["destination"], ["27", 0])
+        self.assertEqual(workflow["30"]["class_type"], "ImageColorToMask")
+        self.assertEqual(workflow["30"]["inputs"]["color"], module.rgb_to_mask_int(module.SCROLL_VERMILION_RGB))
+        self.assertEqual(workflow["31"]["class_type"], "ImageCompositeMasked")
+        self.assertEqual(workflow["31"]["inputs"]["destination"], ["29", 0])
+        self.assertEqual(workflow["14"]["inputs"]["images"], ["31", 0])
+
+    def test_guided_workflow_routes_building_references_through_ipadapter(self) -> None:
+        """Given accepted building art, the workflow wires it as the style reference batch."""
+        module = load_generator()
+        scroll = next(spec for spec in module.ASSETS if spec.key == "scroll_frame")
+
+        workflow = module.guided_workflow_prompt(
+            scroll,
+            52018411,
+            0.12,
+            "phase2_ui/scroll_frame/probe",
+            "scroll.png",
+            ("phase4c_ref_house.png", "phase4c_ref_mill.png", "phase4c_ref_granary.png"),
+        )
+
+        classes = [node["class_type"] for node in workflow.values()]
+        self.assertIn("IPAdapterUnifiedLoader", classes)
+        self.assertIn("IPAdapterAdvanced", classes)
+        self.assertEqual(classes.count("ImageBatch"), 2)
+        self.assertEqual(workflow["21"]["inputs"]["image"], "phase4c_ref_house.png")
+        self.assertEqual(workflow["22"]["inputs"]["image"], "phase4c_ref_mill.png")
+        self.assertEqual(workflow["23"]["inputs"]["image"], "phase4c_ref_granary.png")
+        adapter = next(node for node in workflow.values() if node["class_type"] == "IPAdapterAdvanced")
+        sampler = workflow["9"]
+        self.assertEqual(adapter["inputs"]["image"], ["25", 0])
+        self.assertEqual(adapter["inputs"]["weight_type"], "style transfer precise")
+        self.assertEqual(adapter["inputs"]["combine_embeds"], "average")
+        self.assertEqual(sampler["inputs"]["model"], ["20", 0])
+        self.assertEqual(workflow["5"]["inputs"]["image"], "scroll.png")
+        self.assertEqual(workflow["6"]["inputs"]["image"], ["5", 0])
+
+    def test_guided_scroll_prompt_restores_illuminated_accent_language(self) -> None:
+        """Given Phase 4F scroll guidance, the prompt restores accents without banning them."""
+        module = load_generator()
+        scroll = next(spec for spec in module.ASSETS if spec.key == "scroll_frame")
+
+        workflow = module.guided_workflow_prompt(scroll, 52018411, 0.12, "phase2_ui/scroll_frame/probe", "scroll.png")
+
+        positive = str(workflow["3"]["inputs"]["text"]).lower()
+        negative = str(workflow["4"]["inputs"]["text"]).lower()
+        for required in ("restrained gold", "ultramarine", "vermilion", "illuminated", "medallion", "border"):
+            self.assertIn(required, positive)
+        for allowed_accent in ("gold", "blue", "ultramarine", "vermilion"):
+            self.assertNotIn(allowed_accent, negative)
+        self.assertIn("cyan center", positive)
+        self.assertIn("cyan outside", positive)
+
+    def test_scroll_guide_contains_restrained_gold_blue_and_red_accents(self) -> None:
+        """Given the guided scroll frame, accent swatches make the reference explicit."""
+        module = load_generator()
+
+        image = module.build_scroll_frame_guide()
+        colors = image.getcolors(maxcolors=image.width * image.height)
+        self.assertIsNotNone(colors)
+        assert colors is not None
+        opaque_colors = {color for _count, color in colors if color != module.CYAN_RGB}
+
+        self.assertIn(module.SCROLL_GOLD_RGB, opaque_colors)
+        self.assertIn(module.SCROLL_ULTRAMARINE_RGB, opaque_colors)
+        self.assertIn(module.SCROLL_VERMILION_RGB, opaque_colors)
+
+    def test_guided_manifest_documents_building_style_reference_mode(self) -> None:
+        """Given UI assets with exact masks, manifest metadata records the building references."""
+        module = load_generator()
+
+        guide = module.build_scroll_frame_guide()
+        metadata = module.guide_metadata(
+            "scroll_frame",
+            guide,
+            52018411,
+            0.12,
+            "phase2_5_scroll_frame_guide.png",
+            "scroll_frame/candidate_22_seed_52018411.png",
+            ("phase4c_ref_house.png", "phase4c_ref_mill.png", "phase4c_ref_granary.png"),
+        )
+
+        self.assertEqual(metadata["referenceMode"], module.BUILDING_STYLE_REFERENCE_MODE)
+        self.assertEqual(
+            metadata["buildingReferencePaths"],
+            [path.as_posix() for path in module.BUILDING_REFERENCE_PATHS],
+        )
+
+    def test_generate_guided_uploads_building_references_once(self) -> None:
+        """Given guided generation, accepted building references are uploaded before queueing."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            tmp = Path(raw_tmp)
+            repo_root = tmp / "repo"
+            for relative in module.BUILDING_REFERENCE_PATHS:
+                path = repo_root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                Image.new("RGBA", (16, 16), (180, 120, 70, 255)).save(path)
+            source_image = tmp / "source.png"
+            Image.new("RGB", (16, 16), (180, 120, 70)).save(source_image)
+            observed_reference_batches: list[tuple[str, str, str]] = []
+
+            module.REPO_ROOT = repo_root
+            module.STAGE_DIR = tmp / "stage"
+            module.CONTACT_DIR = tmp / "contact"
+            module.COMFY_INPUT_DIR = tmp / "input"
+            module.queue_prompt = lambda prompt: observed_reference_batches.append((
+                str(prompt["21"]["inputs"]["image"]),
+                str(prompt["22"]["inputs"]["image"]),
+                str(prompt["23"]["inputs"]["image"]),
+            )) or "guided-with-building-refs"
+            module.wait_for_outputs = lambda _prompt_id: [source_image]
+            module.make_contact_sheet = lambda _spec, _paths, sheet_name="contact_sheet.png": None
+
+            module.generate_guided(frozenset({"scroll_frame"}))
+
+            self.assertEqual(
+                observed_reference_batches,
+                [module.BUILDING_REFERENCE_NAMES] * 3,
+            )
+            self.assertEqual(
+                sorted(path.name for path in module.COMFY_INPUT_DIR.glob("phase4c_ref_*.png")),
+                sorted(module.BUILDING_REFERENCE_NAMES),
+            )
+
+    def test_wood_guide_preserves_three_recesses_with_grain_and_top_highlight(self) -> None:
+        """Given the guided wood console, material detail does not add recesses."""
+        module = load_generator()
+
+        image = module.build_wood_console_guide()
+        pixels = image.load()
+        dark_runs = []
+        inside = False
+        start = 0
+        for x in range(image.width):
+            dark = pixels[x, 80] == module.DARK_WELL_RGB
+            if dark and not inside:
+                inside = True
+                start = x
+            if inside and (not dark or x == image.width - 1):
+                end = x if not dark else x + 1
+                if end - start > 200:
+                    dark_runs.append((start, end))
+                inside = False
+        top_edge_values = [pixels[x, 20] for x in range(80, 1840, 40)]
+        plank_values = [pixels[x, 18] for x in range(80, 1840, 40)]
+
+        self.assertEqual(len(dark_runs), 3)
+        self.assertGreater(len(set(plank_values)), 3)
+        self.assertGreater(sum(sum(pixel) for pixel in top_edge_values) / len(top_edge_values), sum(module.WOOD_BASE_RGB))
 
     def test_guided_generation_target_filter_and_manifest_hygiene(self) -> None:
         module = load_generator()
@@ -378,8 +544,12 @@ class TargetFilterContractTest(unittest.TestCase):
             module.generate_guided(frozenset({"scroll_frame"}))
 
             produced = sorted((module.STAGE_DIR / "scroll_frame").glob("candidate_*.png"))
-            self.assertEqual([path.name.split("_")[1] for path in produced], ["19", "20", "21"])
-            self.assertEqual(observed_sheets, [([path.name for path in produced], "guided_19_21_contact_sheet.png")])
+            self.assertEqual([path.name.split("_")[1] for path in produced], ["22", "23", "24"])
+            self.assertEqual(
+                [path.name.split("_")[3].removesuffix(".png") for path in produced],
+                ["52018411", "52018412", "52018413"],
+            )
+            self.assertEqual(observed_sheets, [([path.name for path in produced], "guided_22_24_contact_sheet.png")])
 
     def test_base_generation_contact_sheet_excludes_stale_candidates(self) -> None:
         module = load_generator()

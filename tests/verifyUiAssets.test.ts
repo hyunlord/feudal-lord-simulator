@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import {
+  assertScrollFrameFinalArt,
+  assertWoodConsoleFinalArt,
   assertAlphaContract,
   assertManifestContract,
   assertReportAlignment,
@@ -68,6 +70,75 @@ const clearAlphaRect = (
       rgba[(y * width + x) * 4 + 3] = 0;
     }
   }
+};
+
+const setPixel = (
+  rgba: Uint8Array,
+  width: number,
+  x: number,
+  y: number,
+  rgb: readonly [number, number, number],
+  alpha = 255,
+): void => {
+  const index = (y * width + x) * 4;
+  rgba[index] = rgb[0];
+  rgba[index + 1] = rgb[1];
+  rgba[index + 2] = rgb[2];
+  rgba[index + 3] = alpha;
+};
+
+const fillRect = (
+  rgba: Uint8Array,
+  width: number,
+  left: number,
+  top: number,
+  right: number,
+  bottom: number,
+  rgb: readonly [number, number, number],
+  alpha = 255,
+): void => {
+  for (let y = top; y < bottom; y += 1) {
+    for (let x = left; x < right; x += 1) {
+      setPixel(rgba, width, x, y, rgb, alpha);
+    }
+  }
+};
+
+const makeValidScrollFrame = (): Uint8Array => {
+  const width = 100;
+  const height = 100;
+  const rgba = makeRgba(width, height);
+  fillRect(rgba, width, 0, 0, width, height, [220, 211, 193], 0);
+  fillRect(rgba, width, 20, 8, 80, 20, [196, 186, 168]);
+  fillRect(rgba, width, 20, 80, 80, 92, [196, 186, 168]);
+  fillRect(rgba, width, 8, 20, 20, 80, [196, 186, 168]);
+  fillRect(rgba, width, 80, 20, 92, 80, [196, 186, 168]);
+  fillRect(rgba, width, 14, 14, 22, 22, [201, 162, 39]);
+  fillRect(rgba, width, 78, 14, 86, 22, [42, 74, 138]);
+  fillRect(rgba, width, 14, 78, 22, 86, [168, 50, 50]);
+  fillRect(rgba, width, 78, 78, 86, 86, [42, 33, 24]);
+  clearAlphaRect(rgba, width, 25, 25, 75, 75);
+  return rgba;
+};
+
+const makeValidWoodConsole = (): Uint8Array => {
+  const width = 120;
+  const height = 20;
+  const rgba = makeRgba(width, height);
+  fillRect(rgba, width, 0, 0, width, height, [94, 74, 51]);
+  fillRect(rgba, width, 0, 1, width, 3, [178, 149, 120]);
+  for (let x = 0; x < width; x += 1) {
+    const grain: readonly [number, number, number] = x % 3 === 0 ? [120, 96, 68] : [70, 54, 37];
+    setPixel(rgba, width, x, 6, grain);
+    setPixel(rgba, width, x, 14, grain);
+  }
+  fillRect(rgba, width, 8, 5, 32, 16, [42, 33, 24]);
+  fillRect(rgba, width, 48, 5, 72, 16, [42, 33, 24]);
+  fillRect(rgba, width, 88, 5, 112, 16, [42, 33, 24]);
+  fillRect(rgba, width, 8, 4, 32, 5, [178, 149, 120]);
+  fillRect(rgba, width, 48, 4, 72, 5, [178, 149, 120]);
+  fillRect(rgba, width, 88, 4, 112, 5, [178, 149, 120]);
+  return rgba;
 };
 
 describe("verifyUiAssets", () => {
@@ -182,6 +253,63 @@ describe("verifyUiAssets", () => {
       () => assertScrollFrameTransparency(rgba, width, height),
       /outside perimeter/,
     );
+  });
+
+  it("rejects a three-colour beige scroll frame without illuminated accent families", () => {
+    // Given: a transparent scroll shell whose opaque pixels are only beige/ink colours.
+    const width = 100;
+    const height = 100;
+    const rgba = makeRgba(width, height);
+    fillRect(rgba, width, 0, 0, width, height, [220, 211, 193], 0);
+    fillRect(rgba, width, 20, 8, 80, 20, [196, 186, 168]);
+    fillRect(rgba, width, 20, 80, 80, 92, [196, 186, 168]);
+    fillRect(rgba, width, 8, 20, 20, 80, [169, 159, 142]);
+    fillRect(rgba, width, 80, 20, 92, 80, [42, 33, 24]);
+    clearAlphaRect(rgba, width, 25, 25, 75, 75);
+
+    // When / Then: final-art verification requires the restored accent families.
+    assert.throws(() => assertScrollFrameFinalArt(rgba, width, height), /accent families/);
+  });
+
+  it("accepts a scroll frame with gold ultramarine and vermilion accents", () => {
+    // Given: opaque scroll pixels include the canonical illuminated accent families.
+    const rgba = makeValidScrollFrame();
+
+    // When / Then: the palette diversity contract accepts quantized illuminated art.
+    assert.doesNotThrow(() => assertScrollFrameFinalArt(rgba, 100, 100));
+  });
+
+  it("rejects a flat wood console without grain or raised edge variation", () => {
+    // Given: a console with three recesses but otherwise flat timber pixels.
+    const width = 120;
+    const height = 20;
+    const rgba = makeRgba(width, height);
+    fillRect(rgba, width, 0, 0, width, height, [94, 74, 51]);
+    fillRect(rgba, width, 8, 5, 32, 16, [42, 33, 24]);
+    fillRect(rgba, width, 48, 5, 72, 16, [42, 33, 24]);
+    fillRect(rgba, width, 88, 5, 112, 16, [42, 33, 24]);
+
+    // When / Then: final-art verification rejects flat wood even with correct recess count.
+    assert.throws(() => assertWoodConsoleFinalArt(rgba, width, height), /grain variation/);
+  });
+
+  it("rejects wood console art with fewer than three recess runs", () => {
+    // Given: material detail is present but one dark recess is missing.
+    const width = 120;
+    const height = 20;
+    const rgba = makeValidWoodConsole();
+    fillRect(rgba, width, 88, 5, 112, 16, [94, 74, 51]);
+
+    // When / Then: exactly three dark recess runs are required.
+    assert.throws(() => assertWoodConsoleFinalArt(rgba, width, height), /three dark recess/);
+  });
+
+  it("accepts wood console art with three recesses raised edge and grain", () => {
+    // Given: synthetic quantized wood art preserves three recesses and material variation.
+    const rgba = makeValidWoodConsole();
+
+    // When / Then: final-art verification accepts the required material signals.
+    assert.doesNotThrow(() => assertWoodConsoleFinalArt(rgba, 120, 20));
   });
 
   it("rounds the four-percent outside perimeter up at release dimensions", () => {

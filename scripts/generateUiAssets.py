@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import time
 import urllib.error
 import urllib.request
@@ -22,6 +23,18 @@ STAGE_DIR: Final = Path(os.environ.get("UI_ASSET_STAGE_DIR", "/tmp/feudal-phase2
 REPO_ROOT: Final = Path(__file__).resolve().parents[1]
 BEFORE_DIR: Final = REPO_ROOT / "docs" / "asset-evidence" / "before"
 CONTACT_DIR: Final = Path("/tmp/feudal-phase2-evidence/assets")
+UI_IPADAPTER_PRESET: Final = "PLUS (high strength)"
+BUILDING_REFERENCE_PATHS: Final = (
+    Path("public/assets/buildings/candidates_v2/house_03.png"),
+    Path("public/assets/buildings/candidates_v2/mill_02.png"),
+    Path("public/assets/buildings/candidates_v2/granary_08.png"),
+)
+BUILDING_REFERENCE_NAMES: Final = (
+    "phase4c_ref_house.png",
+    "phase4c_ref_mill.png",
+    "phase4c_ref_granary.png",
+)
+BUILDING_STYLE_REFERENCE_MODE: Final = "building-style reference batch from accepted house/mill/granary sprites"
 COMMON_PROMPT: Final = (
     "living illuminated manuscript, hand-painted medieval court artifact, "
     "exact flat game UI surface, ink outlines, upper-left light, restrained gold leaf, "
@@ -34,7 +47,7 @@ NEGATIVE_PROMPT: Final = (
     "high detail clutter, labels, letters, numbers"
 )
 SELECTED: Final = {
-    "scroll_frame": 19,
+    "scroll_frame": 22,
     "wood_console": 10,
     "seal_slot": 2,
     "parchment_texture": 4,
@@ -88,22 +101,26 @@ GUIDED: Final = {
         "seeds": (52024421, 52024422, 52024423),
         "denoise": (0.28, 0.32, 0.36),
         "lora_strength": 0.45,
-        "prompt": "pixel art medieval oak command bar preserving exact guide layout, three dark empty wells in one row, two thick plain vertical timber posts, minimal generated oak grain only",
+        "prompt": "pixel art medieval oak command bar preserving exact guide layout, exactly three dark empty wells in one row, two thick plain vertical timber posts, visible plank grain, raised upper-edge highlight and handmade material detail",
         "negative": "two wells, four wells, extra wells, horizontal bands, multiple rows, windows, doors, icons, shields, gems, gold, vines, ornament, carving, text, symbols, paper, parchment, scene",
     },
     "scroll_frame": {
-        "start_index": 19,
-        "seeds": (52017411, 52017412, 52017413),
+        "start_index": 22,
+        "seeds": (52018411, 52018412, 52018413),
         "denoise": (0.12, 0.18, 0.24),
         "lora_strength": 0.25,
-        "prompt": "aged beige tan ochre parchment scroll border only, curled ribbon edges and four small medieval corner medallions, hollow empty cyan center, warm natural parchment, restrained ink accents",
-        "negative": "red, orange, coral, vermilion, scarlet, pink, blue, ultramarine, metal, picture frame, plastic, filled center, text, lines, parchment page, textured center, scene, icon, figure",
+        "prompt": "aged beige tan ochre parchment scroll border only, curled ribbon edges and four small illuminated corner medallions, restrained gold ultramarine vermilion border detail, hollow empty cyan center and flat cyan outside silhouette, warm natural parchment, restrained ink accents",
+        "negative": "metal, picture frame, plastic, filled center, text, lines, parchment page, textured center, scene, icon, figure",
     },
 }
 DARK_WELL_RGB: Final = (42, 31, 24)
 CYAN_RGB: Final = (0, 255, 255)
+WOOD_BASE_RGB: Final = (142, 96, 54)
 SCROLL_LIGHT_RGB: Final = (218, 181, 122)
 SCROLL_DARK_RGB: Final = (114, 78, 45)
+SCROLL_GOLD_RGB: Final = (201, 162, 39)
+SCROLL_ULTRAMARINE_RGB: Final = (42, 74, 138)
+SCROLL_VERMILION_RGB: Final = (168, 50, 50)
 COMFY_INPUT_DIR: Final = Path(os.environ.get("COMFYUI_INPUT", str(COMFY_ROOT / "input")))
 
 @dataclass(frozen=True, slots=True)
@@ -204,10 +221,25 @@ def rgb_to_mask_int(rgb: tuple[int, int, int]) -> int:
 
 
 def build_wood_console_guide() -> Image.Image:
-    image = Image.new("RGB", (1920, 160), (142, 96, 54))
+    image = Image.new("RGB", (1920, 160), WOOD_BASE_RGB)
     draw = ImageDraw.Draw(image)
-    for y in (28, 80, 132):
-        draw.line((24, y, 1896, y), fill=(156, 108, 63), width=2)
+    for y, color in (
+        (18, (128, 84, 49)),
+        (24, (177, 128, 78)),
+        (42, (105, 69, 41)),
+        (64, (159, 111, 65)),
+        (104, (121, 78, 45)),
+        (140, (172, 119, 70)),
+    ):
+        draw.line((30, y, 1888, y), fill=color, width=2)
+    for x in range(48, 1872, 96):
+        draw.arc((x, 40, x + 58, 78), 190, 350, fill=(112, 73, 43), width=2)
+        draw.arc((x + 12, 96, x + 76, 130), 15, 175, fill=(168, 117, 68), width=2)
+    for index, x in enumerate(range(72, 1850, 40)):
+        grain_color = ((118, 78, 46), (154, 103, 60), (92, 61, 38), (181, 126, 74))[index % 4]
+        draw.line((x, 18, x + 28, 18), fill=grain_color, width=2)
+    draw.line((30, 14, 1888, 14), fill=(198, 148, 94), width=4)
+    draw.line((30, 20, 1888, 20), fill=(184, 135, 83), width=2)
     margin, gap, well_y0, well_y1 = 72, 44, 32, 128
     well_w = (1920 - margin * 2 - gap * 2) // 3
     for index in range(3):
@@ -235,7 +267,15 @@ def build_scroll_frame_guide() -> Image.Image:
         draw.rounded_rectangle((x0, y0, x1, y1), radius=8, fill=light)
     for cx, cy in ((76, 76), (436, 76), (76, 436), (436, 436)):
         draw.ellipse((cx - 31, cy - 31, cx + 31, cy + 31), fill=light, outline=dark, width=5)
-        draw.ellipse((cx - 14, cy - 14, cx + 14, cy + 14), fill=tan, outline=dark, width=4)
+        draw.ellipse((cx - 14, cy - 14, cx + 14, cy + 14), fill=SCROLL_GOLD_RGB, outline=dark, width=4)
+    draw.ellipse((62, 62, 90, 90), fill=SCROLL_GOLD_RGB, outline=SCROLL_VERMILION_RGB, width=4)
+    draw.ellipse((422, 62, 450, 90), fill=SCROLL_ULTRAMARINE_RGB, outline=SCROLL_GOLD_RGB, width=4)
+    draw.ellipse((62, 422, 90, 450), fill=SCROLL_VERMILION_RGB, outline=SCROLL_GOLD_RGB, width=4)
+    draw.ellipse((422, 422, 450, 450), fill=SCROLL_GOLD_RGB, outline=SCROLL_ULTRAMARINE_RGB, width=4)
+    for x0, y0, x1, y1 in ((120, 62, 392, 70), (120, 442, 392, 450)):
+        for x in range(x0, x1, 48):
+            draw.rectangle((x, y0, x + 12, y1), fill=SCROLL_ULTRAMARINE_RGB)
+            draw.rectangle((x + 18, y0, x + 30, y1), fill=SCROLL_VERMILION_RGB)
     for cx, cy in ((116, 68), (396, 68), (116, 444), (396, 444)):
         draw.arc((cx - 22, cy - 16, cx + 22, cy + 16), 20, 340, fill=dark, width=4)
     draw.rectangle((108, 108, 404, 404), fill=CYAN_RGB)
@@ -248,12 +288,39 @@ def build_guide(asset: str) -> Image.Image:
     raise ValueError(f"No guided generation for {asset}")
 
 
-def guide_metadata(asset: str, image: Image.Image, seed: int, denoise: float, guide_name: str, candidate_name: str) -> dict[str, object]:
+def guide_metadata(
+    asset: str,
+    image: Image.Image,
+    seed: int,
+    denoise: float,
+    guide_name: str,
+    candidate_name: str,
+    reference_names: tuple[str, str, str] = BUILDING_REFERENCE_NAMES,
+) -> dict[str, object]:
     import hashlib
-    return {"asset": asset, "guide": guide_name, "candidate": candidate_name, "guideSha256": hashlib.sha256(image.tobytes()).hexdigest(), "dimensions": [image.width, image.height], "mode": image.mode, "seed": seed, "denoise": denoise}
+    return {
+        "asset": asset,
+        "guide": guide_name,
+        "candidate": candidate_name,
+        "guideSha256": hashlib.sha256(image.tobytes()).hexdigest(),
+        "dimensions": [image.width, image.height],
+        "mode": image.mode,
+        "seed": seed,
+        "denoise": denoise,
+        "referenceMode": BUILDING_STYLE_REFERENCE_MODE,
+        "buildingReferenceNames": list(reference_names),
+        "buildingReferencePaths": [path.as_posix() for path in BUILDING_REFERENCE_PATHS],
+    }
 
 
-def guided_workflow_prompt(spec: AssetSpec, seed: int, denoise: float, prefix: str, guide_name: str) -> dict[str, dict[str, object]]:
+def guided_workflow_prompt(
+    spec: AssetSpec,
+    seed: int,
+    denoise: float,
+    prefix: str,
+    guide_name: str,
+    reference_names: tuple[str, str, str] = BUILDING_REFERENCE_NAMES,
+) -> dict[str, dict[str, object]]:
     guided = GUIDED[spec.key]
     lora_strength = float(guided["lora_strength"])
     is_scroll = spec.key == "scroll_frame"
@@ -267,7 +334,27 @@ def guided_workflow_prompt(spec: AssetSpec, seed: int, denoise: float, prefix: s
         "4": {"class_type": "CLIPTextEncode", "inputs": {"clip": ["2", 1], "text": f"{NEGATIVE_PROMPT}, {guided['negative']}"}},
         "5": {"class_type": "LoadImage", "inputs": {"image": guide_name}},
         "6": {"class_type": "ImageColorToMask", "inputs": {"image": ["5", 0], "color": rgb_to_mask_int(restore_color)}},
-        "9": {"class_type": "KSampler", "inputs": {"model": ["2", 0], "positive": ["3", 0], "negative": ["4", 0], "latent_image": [latent_node, 0], "seed": seed, "steps": 22, "cfg": 5.5, "sampler_name": "euler", "scheduler": "normal", "denoise": denoise}},
+        "19": {"class_type": "IPAdapterUnifiedLoader", "inputs": {"model": ["2", 0], "preset": UI_IPADAPTER_PRESET}},
+        "21": {"class_type": "LoadImage", "inputs": {"image": reference_names[0]}},
+        "22": {"class_type": "LoadImage", "inputs": {"image": reference_names[1]}},
+        "23": {"class_type": "LoadImage", "inputs": {"image": reference_names[2]}},
+        "24": {"class_type": "ImageBatch", "inputs": {"image1": ["21", 0], "image2": ["22", 0]}},
+        "25": {"class_type": "ImageBatch", "inputs": {"image1": ["24", 0], "image2": ["23", 0]}},
+        "20": {
+            "class_type": "IPAdapterAdvanced",
+            "inputs": {
+                "model": ["19", 0],
+                "ipadapter": ["19", 1],
+                "image": ["25", 0],
+                "weight": 0.08,
+                "start_at": 0.0,
+                "end_at": 0.35,
+                "weight_type": "style transfer precise",
+                "combine_embeds": "average",
+                "embeds_scaling": "K+V w/ C penalty",
+            },
+        },
+        "9": {"class_type": "KSampler", "inputs": {"model": ["20", 0], "positive": ["3", 0], "negative": ["4", 0], "latent_image": [latent_node, 0], "seed": seed, "steps": 22, "cfg": 5.5, "sampler_name": "euler", "scheduler": "normal", "denoise": denoise}},
         "10": {"class_type": "VAEDecode", "inputs": {"samples": ["9", 0], "vae": ["1", 2]}},
         "11": {"class_type": "Pixelization", "inputs": {"image": ["10", 0], "pixel_size": 4, "upscale_after": True, "copy_hue": is_scroll, "copy_sat": is_scroll, "copy_val": False, "restore_dark": 15, "restore_bright": 1}},
         "13": {"class_type": "ImageCompositeMasked", "inputs": {"destination": [pixel_source, 0], "source": ["5", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["6", 0]}},
@@ -281,15 +368,29 @@ def guided_workflow_prompt(spec: AssetSpec, seed: int, denoise: float, prefix: s
         workflow["16"] = {"class_type": "ImageCompositeMasked", "inputs": {"destination": ["13", 0], "source": ["5", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["15", 0]}}
         workflow["17"] = {"class_type": "ImageColorToMask", "inputs": {"image": ["5", 0], "color": rgb_to_mask_int(SCROLL_DARK_RGB)}}
         workflow["18"] = {"class_type": "ImageCompositeMasked", "inputs": {"destination": ["16", 0], "source": ["5", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["17", 0]}}
-        workflow["14"]["inputs"]["images"] = ["18", 0]
+        workflow["26"] = {"class_type": "ImageColorToMask", "inputs": {"image": ["5", 0], "color": rgb_to_mask_int(SCROLL_GOLD_RGB)}}
+        workflow["27"] = {"class_type": "ImageCompositeMasked", "inputs": {"destination": ["18", 0], "source": ["5", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["26", 0]}}
+        workflow["28"] = {"class_type": "ImageColorToMask", "inputs": {"image": ["5", 0], "color": rgb_to_mask_int(SCROLL_ULTRAMARINE_RGB)}}
+        workflow["29"] = {"class_type": "ImageCompositeMasked", "inputs": {"destination": ["27", 0], "source": ["5", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["28", 0]}}
+        workflow["30"] = {"class_type": "ImageColorToMask", "inputs": {"image": ["5", 0], "color": rgb_to_mask_int(SCROLL_VERMILION_RGB)}}
+        workflow["31"] = {"class_type": "ImageCompositeMasked", "inputs": {"destination": ["29", 0], "source": ["5", 0], "x": 0, "y": 0, "resize_source": False, "mask": ["30", 0]}}
+        workflow["14"]["inputs"]["images"] = ["31", 0]
     else:
         workflow["7"] = {"class_type": "VAEEncode", "inputs": {"pixels": ["5", 0], "vae": ["1", 2]}}
     return workflow
 
 
+def upload_building_reference_images(repo_root: Path = REPO_ROOT) -> tuple[str, str, str]:
+    COMFY_INPUT_DIR.mkdir(parents=True, exist_ok=True)
+    for relative, name in zip(BUILDING_REFERENCE_PATHS, BUILDING_REFERENCE_NAMES, strict=True):
+        shutil.copyfile(repo_root / relative, COMFY_INPUT_DIR / name)
+    return BUILDING_REFERENCE_NAMES
+
+
 def generate_guided(targets: AssetTargets = None) -> None:
     STAGE_DIR.mkdir(parents=True, exist_ok=True); CONTACT_DIR.mkdir(parents=True, exist_ok=True); COMFY_INPUT_DIR.mkdir(parents=True, exist_ok=True)
     manifest: dict[str, object] = {"assets": []}
+    reference_names = upload_building_reference_images(REPO_ROOT)
     for spec in selected_asset_specs(targets):
         if spec.key not in GUIDED: continue
         guided = GUIDED[spec.key]; asset_dir = STAGE_DIR / spec.key; asset_dir.mkdir(parents=True, exist_ok=True)
@@ -299,12 +400,12 @@ def generate_guided(targets: AssetTargets = None) -> None:
         candidates: list[dict[str, object]] = []; candidate_paths: list[Path] = []
         for offset, (seed, denoise) in enumerate(zip(seeds, denoises, strict=True), start=start_index):
             prefix = f"phase2_ui/{spec.key}/{spec.key}_guided_seed_{seed}"
-            prompt_id = queue_prompt(guided_workflow_prompt(spec, int(seed), float(denoise), prefix, guide_name))
+            prompt_id = queue_prompt(guided_workflow_prompt(spec, int(seed), float(denoise), prefix, guide_name, reference_names))
             output_path = wait_for_outputs(prompt_id)[0]
             candidate_path = asset_dir / f"candidate_{offset}_seed_{seed}.png"
             Image.open(output_path).save(candidate_path)
             candidate_paths.append(candidate_path)
-            candidates.append(guide_metadata(spec.key, guide, int(seed), float(denoise), guide_name, f"{spec.key}/{candidate_path.name}"))
+            candidates.append(guide_metadata(spec.key, guide, int(seed), float(denoise), guide_name, f"{spec.key}/{candidate_path.name}", reference_names))
         end_index = start_index + len(candidate_paths) - 1
         make_contact_sheet(spec, candidate_paths, sheet_name=f"guided_{start_index}_{end_index}_contact_sheet.png")
         manifest["assets"].append({"key": spec.key, "candidates": candidates})

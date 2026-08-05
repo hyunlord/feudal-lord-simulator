@@ -1,5 +1,7 @@
 import path from "node:path";
 
+import { PALETTE, RAMPS } from "../src/content/palette";
+
 export { assertReportAlignment } from "./uiAssetReportRow";
 
 const EXPECTED_KEYS = [
@@ -198,6 +200,147 @@ export const assertScrollFrameTransparency = (
         );
       }
     }
+  }
+};
+
+const hexToRgbKey = (hex: string): string => {
+  const parsed = Number.parseInt(hex.slice(1), 16);
+  return `${(parsed >> 16) & 255},${(parsed >> 8) & 255},${parsed & 255}`;
+};
+
+const rgbKeyAt = (rgba: Uint8Array, width: number, x: number, y: number): string => {
+  const index = (y * width + x) * 4;
+  const r = rgba[index];
+  const g = rgba[index + 1];
+  const b = rgba[index + 2];
+  if (r === undefined || g === undefined || b === undefined) {
+    throw new Error(`RGBA pixel ${x},${y} was incomplete`);
+  }
+  return `${r},${g},${b}`;
+};
+
+const alphaAt = (rgba: Uint8Array, width: number, x: number, y: number): number => {
+  const alpha = rgba[(y * width + x) * 4 + 3];
+  if (alpha === undefined) {
+    throw new Error(`RGBA pixel ${x},${y} was incomplete`);
+  }
+  return alpha;
+};
+
+const luminanceFromKey = (rgbKey: string): number => {
+  const [r, g, b] = rgbKey.split(",").map(Number);
+  if (r === undefined || g === undefined || b === undefined) {
+    throw new Error(`RGB key ${rgbKey} was incomplete`);
+  }
+  return r * 0.299 + g * 0.587 + b * 0.114;
+};
+
+const average = (values: readonly number[]): number => {
+  if (values.length === 0) {
+    throw new Error("cannot average an empty luminance set");
+  }
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+};
+
+const scrollAccentKeys = new Set([
+  hexToRgbKey(PALETTE.gold),
+  hexToRgbKey(PALETTE.ultramarine),
+  hexToRgbKey(PALETTE.vermilion),
+]);
+
+export const assertScrollFrameFinalArt = (
+  rgba: Uint8Array,
+  width: number,
+  height: number,
+): void => {
+  assertScrollFrameTransparency(rgba, width, height);
+
+  const opaqueRgbKeys = new Set<string>();
+  const presentAccents = new Set<string>();
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      if (alphaAt(rgba, width, x, y) > 0) {
+        const rgbKey = rgbKeyAt(rgba, width, x, y);
+        opaqueRgbKeys.add(rgbKey);
+        if (scrollAccentKeys.has(rgbKey)) {
+          presentAccents.add(rgbKey);
+        }
+      }
+    }
+  }
+  if (presentAccents.size !== scrollAccentKeys.size) {
+    throw new Error("scroll_frame opaque pixels must include gold, ultramarine, and vermilion accent families");
+  }
+  if (opaqueRgbKeys.size < 5) {
+    throw new Error(`scroll_frame opaque palette diversity was ${opaqueRgbKeys.size}, expected at least 5 colours`);
+  }
+};
+
+const darkWoodKeys = new Set([
+  hexToRgbKey(PALETTE.ink),
+  hexToRgbKey(RAMPS.timber[0]),
+]);
+
+const countDarkRecessRuns = (rgba: Uint8Array, width: number, y: number): number => {
+  const minRunWidth = Math.max(3, Math.floor(width * 0.1));
+  let runs = 0;
+  let runStart: number | undefined;
+  for (let x = 0; x < width; x += 1) {
+    const isDark = darkWoodKeys.has(rgbKeyAt(rgba, width, x, y)) && alphaAt(rgba, width, x, y) === 255;
+    if (isDark && runStart === undefined) {
+      runStart = x;
+    }
+    if ((!isDark || x === width - 1) && runStart !== undefined) {
+      const runEnd = isDark && x === width - 1 ? x + 1 : x;
+      if (runEnd - runStart >= minRunWidth) {
+        runs += 1;
+      }
+      runStart = undefined;
+    }
+  }
+  return runs;
+};
+
+export const assertWoodConsoleFinalArt = (
+  rgba: Uint8Array,
+  width: number,
+  height: number,
+): void => {
+  requireRgbaDimensions(rgba, width, height);
+
+  const scanY = Math.floor(height * 0.5);
+  const darkRuns = countDarkRecessRuns(rgba, width, scanY);
+  if (darkRuns !== 3) {
+    throw new Error(`wood_console expected three dark recess runs, found ${darkRuns}`);
+  }
+
+  const nonRecessRgbKeys = new Set<string>();
+  const nonRecessLuminance: number[] = [];
+  const topLuminance: number[] = [];
+  const topLimit = Math.max(1, Math.floor(height * 0.18));
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      if (alphaAt(rgba, width, x, y) !== 255) {
+        throw new Error("wood_console expected fully opaque alpha");
+      }
+      const rgbKey = rgbKeyAt(rgba, width, x, y);
+      if (!darkWoodKeys.has(rgbKey)) {
+        nonRecessRgbKeys.add(rgbKey);
+        const luminance = luminanceFromKey(rgbKey);
+        nonRecessLuminance.push(luminance);
+        if (y > 0 && y <= topLimit) {
+          topLuminance.push(luminance);
+        }
+      }
+    }
+  }
+  if (nonRecessRgbKeys.size < 4) {
+    throw new Error(`wood_console grain variation used ${nonRecessRgbKeys.size} non-recess colours, expected at least 4`);
+  }
+  const bodyLuminance = average(nonRecessLuminance);
+  const raisedEdgeLuminance = average(topLuminance);
+  if (raisedEdgeLuminance <= bodyLuminance + 8) {
+    throw new Error("wood_console raised upper-edge highlight is not visibly brighter than the body");
   }
 };
 
