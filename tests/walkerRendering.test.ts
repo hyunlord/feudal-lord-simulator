@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Walker } from "../src/agents/walker.types";
-import { PALETTE } from "../src/content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { GameState } from "../src/engine/engine.types";
 import { cargoColor, drawWalkers } from "../src/render/drawWalkers";
 
@@ -109,9 +109,9 @@ function distributor(input: Partial<Walker> = {}): Walker {
 
 test("cargo colour mapping stays tied to canonical palette tokens", () => {
   assert.equal(cargoColor("wheat"), PALETTE.gold);
-  assert.equal(cargoColor("bread"), PALETTE.earth);
-  assert.equal(cargoColor("logs"), PALETTE.forest);
-  assert.equal(cargoColor("timber"), PALETTE.earthDark);
+  assert.equal(cargoColor("bread"), SEMANTIC_PALETTE.earth);
+  assert.equal(cargoColor("logs"), SEMANTIC_PALETTE.forest);
+  assert.equal(cargoColor("timber"), SEMANTIC_PALETTE.earthDark);
 });
 
 test("drawWalkers renders cargo squares at fractional tile screen positions", () => {

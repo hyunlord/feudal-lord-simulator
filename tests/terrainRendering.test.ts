@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { PALETTE } from "../src/content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { GameState } from "../src/engine/engine.types";
 import {
   drawTerrain,
@@ -122,9 +122,9 @@ test("world vignette uses three palette-derived tile bands inside an ink surroun
   assert.deepEqual(
     bands.map((band) => band.color),
     [
-      shade(PALETTE.earthDark, 0.55),
-      shade(PALETTE.earthDark, 0.65),
-      shade(PALETTE.earthDark, 0.75),
+      shade(SEMANTIC_PALETTE.earthDark, 0.55),
+      shade(SEMANTIC_PALETTE.earthDark, 0.65),
+      shade(SEMANTIC_PALETTE.earthDark, 0.75),
     ],
   );
 

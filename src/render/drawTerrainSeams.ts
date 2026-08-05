@@ -1,4 +1,4 @@
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import type { Tile } from "../world/world.types";
@@ -146,8 +146,8 @@ function tileCenter(tile: Tile): Point {
 }
 
 function seamColor(seam: TerrainSeamKind): PaletteColor {
-  if (seam === "shoreline") return PALETTE.earth;
-  return seam === "forestTufts" ? PALETTE.sageDark : PALETTE.stoneDark;
+  if (seam === "shoreline") return SEMANTIC_PALETTE.earth;
+  return seam === "forestTufts" ? SEMANTIC_PALETTE.sageDark : SEMANTIC_PALETTE.stoneDark;
 }
 
 function seamHash(tx: number, ty: number, dx: number, dy: number, seed: number): number {

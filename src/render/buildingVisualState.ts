@@ -3,7 +3,7 @@ import {
   type Building,
   type BuildingKind,
 } from "../content/buildingConfig";
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
 import type { House } from "../population/population.types";
 
@@ -87,19 +87,19 @@ export function renderDetailLevel(zoom: number): RenderDetailLevel {
 }
 
 export function buildingLodColor(kind: BuildingKind): PaletteColor {
-  if (kind === "house") return PALETTE.parchmentDark;
+  if (kind === "house") return SEMANTIC_PALETTE.parchmentDark;
   if (kind === "storehouse" || kind === "granary" || kind === "well") {
-    return PALETTE.stone;
+    return SEMANTIC_PALETTE.stone;
   }
-  return PALETTE.earth;
+  return SEMANTIC_PALETTE.earth;
 }
 
 const hutProfile = {
   width: 28,
   height: 20,
   roof: 16,
-  fill: PALETTE.earth,
-  roofColor: PALETTE.earthDark,
+  fill: SEMANTIC_PALETTE.earth,
+  roofColor: SEMANTIC_PALETTE.earthDark,
   roofShape: "triangle",
 } as const satisfies BodyProfile;
 
@@ -107,8 +107,8 @@ const farmHouseProfile = {
   width: 32,
   height: 30,
   roof: 18,
-  fill: PALETTE.parchmentDark,
-  roofColor: PALETTE.earth,
+  fill: SEMANTIC_PALETTE.parchmentDark,
+  roofColor: SEMANTIC_PALETTE.earth,
   roofShape: "triangle",
 } as const satisfies BodyProfile;
 
@@ -116,8 +116,8 @@ const civicHouseProfile = {
   width: 44,
   height: 42,
   roof: 16,
-  fill: PALETTE.parchmentDark,
-  roofColor: PALETTE.stone,
+  fill: SEMANTIC_PALETTE.parchmentDark,
+  roofColor: SEMANTIC_PALETTE.stone,
   roofShape: "gable",
 } as const satisfies BodyProfile;
 
@@ -125,8 +125,8 @@ const towerHouseProfile = {
   width: 54,
   height: 52,
   roof: 20,
-  fill: PALETTE.parchment,
-  roofColor: PALETTE.stoneDark,
+  fill: SEMANTIC_PALETTE.parchment,
+  roofColor: SEMANTIC_PALETTE.stoneDark,
   roofShape: "tower",
 } as const satisfies BodyProfile;
 
@@ -175,18 +175,18 @@ function stock(
 function nonHouseBodyProfile(kind: Exclude<BuildingKind, "house">): BodyProfile {
   switch (kind) {
     case "well":
-      return { width: 26, height: 12, roof: 0, fill: PALETTE.stoneDark, roofColor: PALETTE.stone, roofShape: "none" };
+      return { width: 26, height: 12, roof: 0, fill: SEMANTIC_PALETTE.stoneDark, roofColor: SEMANTIC_PALETTE.stone, roofShape: "none" };
     case "storehouse":
-      return { width: 64, height: 30, roof: 6, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "flat" };
+      return { width: 64, height: 30, roof: 6, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "flat" };
     case "granary":
-      return { width: 58, height: 32, roof: 16, fill: PALETTE.parchment, roofColor: PALETTE.goldDark, roofShape: "dome" };
+      return { width: 58, height: 32, roof: 16, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.goldDark, roofShape: "dome" };
     case "wheat_farm":
-      return { width: 72, height: 10, roof: 0, fill: PALETTE.earth, roofColor: PALETTE.gold, roofShape: "none" };
+      return { width: 72, height: 10, roof: 0, fill: SEMANTIC_PALETTE.earth, roofColor: PALETTE.gold, roofShape: "none" };
     case "mill":
-      return { width: 38, height: 62, roof: 24, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "cone" };
+      return { width: 38, height: 62, roof: 24, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "cone" };
     case "logging_camp":
-      return { width: 38, height: 20, roof: 12, fill: PALETTE.earth, roofColor: PALETTE.forest, roofShape: "shed" };
+      return { width: 38, height: 20, roof: 12, fill: SEMANTIC_PALETTE.earth, roofColor: SEMANTIC_PALETTE.forest, roofShape: "shed" };
     case "sawmill":
-      return { width: 66, height: 32, roof: 14, fill: PALETTE.parchmentDark, roofColor: PALETTE.earthDark, roofShape: "shed" };
+      return { width: 66, height: 32, roof: 14, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
   }
 }

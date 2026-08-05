@@ -1,4 +1,4 @@
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { terrainVariation } from "../world/terrain";
 import type { Tile } from "../world/world.types";
@@ -23,10 +23,10 @@ type TerrainRenderInput = {
 
 const baseTerrainColor = (terrain: Tile["terrain"]): PaletteColor => {
   switch (terrain) {
-    case "grass": return PALETTE.sage;
-    case "forest": return PALETTE.forest;
-    case "water": return PALETTE.water;
-    case "rock": return PALETTE.stone;
+    case "grass": return SEMANTIC_PALETTE.sage;
+    case "forest": return SEMANTIC_PALETTE.forest;
+    case "water": return SEMANTIC_PALETTE.water;
+    case "rock": return SEMANTIC_PALETTE.stone;
   }
 };
 

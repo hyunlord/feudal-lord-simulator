@@ -2,7 +2,7 @@ import { spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 
-import { PALETTE } from "../src/content/palette";
+import { CANONICAL_PALETTE } from "../src/content/palette";
 
 export type Rgb = {
   readonly r: number;
@@ -21,8 +21,6 @@ export type PaletteMatch = {
   readonly hex: string;
   readonly rgb: Rgb;
 };
-
-export type PaletteProfile = "canonical" | "wood-console";
 
 type PngDimensions = {
   readonly width: number;
@@ -79,29 +77,18 @@ export const rgbToLab = (rgb: Rgb): Lab => {
 const deltaE76 = (left: Lab, right: Lab): number =>
   Math.hypot(left.l - right.l, left.a - right.a, left.b - right.b);
 
-type PaletteName = keyof typeof PALETTE;
-
-const PROFILE_PALETTES: Record<PaletteProfile, readonly PaletteName[]> = {
-  canonical: Object.keys(PALETTE) as PaletteName[],
-  "wood-console": ["ink", "inkLight", "earth", "earthDark"],
-};
-
-const paletteEntries = Object.entries(PALETTE).map(([name, hex]) => {
+const paletteEntries = CANONICAL_PALETTE.map((hex, index) => {
   const rgb = hexToRgb(hex);
-  return { name, hex, rgb, lab: rgbToLab(rgb) };
+  return { name: `canonical-${index}`, hex, rgb, lab: rgbToLab(rgb) };
 });
 
-const isPaletteProfile = (value: string): value is PaletteProfile => value in PROFILE_PALETTES;
-
-export const nearestPalette = (lab: Lab, profile: PaletteProfile = "canonical"): PaletteMatch => {
-  const allowedNames = new Set<string>(PROFILE_PALETTES[profile]);
-  const candidates = paletteEntries.filter((entry) => allowedNames.has(entry.name));
-  let best = candidates[0];
+export const nearestPalette = (lab: Lab): PaletteMatch => {
+  let best = paletteEntries[0];
   if (best === undefined) {
-    throw new QuantiseError(`Palette profile ${profile} is empty`);
+    throw new QuantiseError("Canonical palette is empty");
   }
 
-  for (const entry of candidates.slice(1)) {
+  for (const entry of paletteEntries.slice(1)) {
     if (deltaE76(lab, entry.lab) < deltaE76(lab, best.lab)) {
       best = entry;
     }
@@ -110,10 +97,7 @@ export const nearestPalette = (lab: Lab, profile: PaletteProfile = "canonical"):
   return { name: best.name, hex: best.hex, rgb: best.rgb };
 };
 
-export const quantiseRgba = (
-  rgba: Uint8Array,
-  profile: PaletteProfile = "canonical",
-): Uint8Array => {
+export const quantiseRgba = (rgba: Uint8Array): Uint8Array => {
   if (rgba.length % 4 !== 0) {
     throw new QuantiseError(`RGBA buffer length must be divisible by 4, got ${rgba.length}`);
   }
@@ -127,7 +111,7 @@ export const quantiseRgba = (
     if (r === undefined || g === undefined || b === undefined || a === undefined) {
       throw new QuantiseError(`Incomplete RGBA pixel at byte ${index}`);
     }
-    const nearest = nearestPalette(rgbToLab({ r, g, b }), profile);
+    const nearest = nearestPalette(rgbToLab({ r, g, b }));
     output[index] = nearest.rgb.r;
     output[index + 1] = nearest.rgb.g;
     output[index + 2] = nearest.rgb.b;
@@ -206,29 +190,25 @@ const encodeRgbaToPng = (path: string, dimensions: PngDimensions, rgba: Uint8Arr
 export const quantisePngFile = (
   inputPath: string,
   outputPath: string,
-  profile: PaletteProfile = "canonical",
 ): void => {
   const decoded = decodePngToRgba(inputPath);
-  encodeRgbaToPng(outputPath, decoded.dimensions, quantiseRgba(decoded.rgba, profile));
+  encodeRgbaToPng(outputPath, decoded.dimensions, quantiseRgba(decoded.rgba));
 };
 
 const main = (): number => {
-  const [, , inputPath, outputPath, requestedProfile = "canonical"] = process.argv;
+  const [, , inputPath, outputPath] = process.argv;
   if (
     inputPath === undefined
     || outputPath === undefined
     || process.argv.length < 4
-    || process.argv.length > 5
+    || process.argv.length > 4
   ) {
-    writeFileSync(2, "Usage: tsx scripts/quantisePalette.ts <input.png> <output.png> [canonical|wood-console]\n");
+    writeFileSync(2, "Usage: tsx scripts/quantisePalette.ts <input.png> <output.png>\n");
     return 2;
   }
 
   try {
-    if (!isPaletteProfile(requestedProfile)) {
-      throw new QuantiseError(`Unknown palette profile: ${requestedProfile}`);
-    }
-    quantisePngFile(inputPath, outputPath, requestedProfile);
+    quantisePngFile(inputPath, outputPath);
     return 0;
   } catch (caught) {
     if (caught instanceof Error) {

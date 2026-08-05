@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { PALETTE } from "../src/content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import {
   applyInkOutline,
   drawFlatDiamondShadow,
@@ -48,16 +48,16 @@ test("snapToPixel rounds canvas coordinates to integers", () => {
 });
 
 test("shade deterministically darkens down-right faces by twenty percent", () => {
-  assert.equal(shade(PALETTE.gold, 0.8), "#AA8C2C");
-  assert.equal(shade(PALETTE.parchment, 0.8), "#BAB09A");
-  assert.equal(shade(PALETTE.ink, 0.8), "#2E2519");
+  assert.equal(shade(PALETTE.gold, 0.8), "#A1821F");
+  assert.equal(shade(SEMANTIC_PALETTE.parchment, 0.8), "#B0A99A");
+  assert.equal(shade(PALETTE.ink, 0.8), "#221A13");
 });
 
 test("withAlpha derives translucent colours from the canonical palette", () => {
-  assert.equal(withAlpha(PALETTE.ink, 0.18), "rgba(58, 46, 31, 0.18)");
-  assert.equal(withAlpha(PALETTE.snow, 1.25), "rgba(220, 228, 232, 1)");
-  assert.equal(withAlpha(PALETTE.vermilion, -0.2), "rgba(200, 16, 46, 0)");
-  assert.equal(withAlpha(PALETTE.water, Number.NaN), "rgba(74, 107, 124, 0)");
+  assert.equal(withAlpha(PALETTE.ink, 0.18), "rgba(42, 33, 24, 0.18)");
+  assert.equal(withAlpha(SEMANTIC_PALETTE.snow, 1.25), "rgba(239, 232, 216, 1)");
+  assert.equal(withAlpha(PALETTE.vermilion, -0.2), "rgba(168, 50, 50, 0)");
+  assert.equal(withAlpha(SEMANTIC_PALETTE.water, Number.NaN), "rgba(77, 117, 138, 0)");
 });
 
 test("applyInkOutline owns the canonical ink stroke at zoom scale", () => {

@@ -1,4 +1,4 @@
-import { PALETTE } from "../content/palette";
+import { SEMANTIC_PALETTE } from "../content/palette";
 
 type PaletteVariableName = `--palette-${string}`;
 
@@ -8,7 +8,7 @@ function toKebabCase(name: string): string {
 
 export const PALETTE_CSS_VARIABLES = Object.freeze(
   Object.fromEntries(
-    Object.entries(PALETTE).map(([name, colour]) => [
+    Object.entries(SEMANTIC_PALETTE).map(([name, colour]) => [
       `--palette-${toKebabCase(name)}`,
       colour,
     ]),

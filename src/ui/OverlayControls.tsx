@@ -1,6 +1,6 @@
 import { useId, useMemo } from "react";
 
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { TerrainType } from "../content/terrainConfig";
 import type { Grid } from "../world/grid";
 
@@ -74,9 +74,9 @@ export function MapShield({ grid }: MapShieldProps) {
 
 function terrainColour(terrain: TerrainType): PaletteColor {
   switch (terrain) {
-    case "grass": return PALETTE.sage;
-    case "forest": return PALETTE.forest;
-    case "water": return PALETTE.water;
-    case "rock": return PALETTE.stone;
+    case "grass": return SEMANTIC_PALETTE.sage;
+    case "forest": return SEMANTIC_PALETTE.forest;
+    case "water": return SEMANTIC_PALETTE.water;
+    case "rock": return SEMANTIC_PALETTE.stone;
   }
 }

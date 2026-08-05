@@ -1,4 +1,4 @@
-import { PALETTE } from "../content/palette";
+import { SEMANTIC_PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
 import { renderDetailLevel } from "./buildingVisualState";
 import { ambientOffset } from "./renderMotion";
@@ -29,7 +29,7 @@ function drawTree(
   zoom: number,
 ): void {
   if (renderDetailLevel(zoom) !== "full") {
-    context.fillStyle = PALETTE[tree.tone];
+    context.fillStyle = SEMANTIC_PALETTE[tree.tone];
     context.beginPath();
     context.ellipse(
       snapToPixel(tree.x),
@@ -52,12 +52,12 @@ function drawTree(
     radiusX: 13 * tree.scale,
     radiusY: 5 * tree.scale,
   });
-  context.fillStyle = PALETTE.earthDark;
+  context.fillStyle = SEMANTIC_PALETTE.earthDark;
   traceRect(context, tree.x - 2 * tree.scale, tree.y - 20 * tree.scale, 4 * tree.scale, 24 * tree.scale);
   context.fill();
   applyInkOutline(context, zoom);
   context.stroke();
-  context.fillStyle = PALETTE[tree.tone];
+  context.fillStyle = SEMANTIC_PALETTE[tree.tone];
   traceTreeCanopy(context, tree, sway);
   context.fill();
   applyInkOutline(context, zoom);

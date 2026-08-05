@@ -1,5 +1,5 @@
 import type { BuildingKind } from "../content/buildingConfig";
-import { PALETTE } from "../content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { BuildingVisualState } from "./buildingVisualState";
 import { isProductionProblem } from "./buildingVisualState";
 import { ambientOffset, objectPhase } from "./renderMotion";
@@ -77,7 +77,7 @@ function drawHouseDetails(
 ): void {
   drawDoor(context, input.center, input.zoom);
   if (input.visualState.houseLevel >= 2) {
-    context.fillStyle = PALETTE.water;
+    context.fillStyle = SEMANTIC_PALETTE.water;
     for (const offset of [-15, 0, 15]) {
       fillOutlinedRect(context, {
         origin: { x: input.center.x + offset - 3, y: input.center.y - 28 },
@@ -88,7 +88,7 @@ function drawHouseDetails(
     }
   }
   if (input.visualState.houseLevel >= 3) {
-    context.fillStyle = PALETTE.stone;
+    context.fillStyle = SEMANTIC_PALETTE.stone;
     fillOutlinedRect(context, {
       origin: { x: input.center.x + 12, y: input.center.y - 68 },
       width: 14,
@@ -118,32 +118,32 @@ function drawProblemMarker(
 }
 
 function drawDoor(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
-  context.fillStyle = PALETTE.inkLight;
+  context.fillStyle = SEMANTIC_PALETTE.inkLight;
   fillOutlinedRect(context, { origin: { x: center.x - 5, y: center.y - 15 }, width: 10, height: 15, zoom });
 }
 
 function drawWellRim(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
-  context.fillStyle = shade(PALETTE.stone, 0.8);
+  context.fillStyle = shade(SEMANTIC_PALETTE.stone, 0.8);
   context.beginPath();
   context.arc(snapToPixel(center.x), snapToPixel(center.y - 12), 12, 0, Math.PI * 2);
   context.fill();
   applyInkOutline(context, zoom);
   context.stroke();
-  context.fillStyle = PALETTE.inkLight;
+  context.fillStyle = SEMANTIC_PALETTE.inkLight;
   context.beginPath();
   context.arc(snapToPixel(center.x), snapToPixel(center.y - 12), 6, 0, Math.PI * 2);
   context.fill();
 }
 
 function drawCrates(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
-  context.fillStyle = PALETTE.goldDark;
+  context.fillStyle = SEMANTIC_PALETTE.goldDark;
   fillOutlinedRect(context, { origin: { x: center.x - 18, y: center.y - 40 }, width: 12, height: 10, zoom });
   fillOutlinedRect(context, { origin: { x: center.x - 4, y: center.y - 36 }, width: 12, height: 10, zoom });
   fillOutlinedRect(context, { origin: { x: center.x + 10, y: center.y - 40 }, width: 12, height: 10, zoom });
 }
 
 function drawStilts(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
-  context.fillStyle = PALETTE.earthDark;
+  context.fillStyle = SEMANTIC_PALETTE.earthDark;
   fillOutlinedRect(context, { origin: { x: center.x - 18, y: center.y - 6 }, width: 5, height: 16, zoom });
   fillOutlinedRect(context, { origin: { x: center.x + 13, y: center.y - 6 }, width: 5, height: 16, zoom });
 }
@@ -153,7 +153,7 @@ function drawFieldRows(context: CanvasRenderingContext2D, center: Point, zoom: n
   for (let row = 0; row < 3; row += 1) {
     fillOutlinedRect(context, { origin: { x: center.x - 26, y: center.y - 8 + row * 7 }, width: 52, height: 3, zoom });
   }
-  context.fillStyle = PALETTE.parchmentDark;
+  context.fillStyle = SEMANTIC_PALETTE.parchmentDark;
   fillOutlinedRect(context, { origin: { x: center.x + 20, y: center.y - 22 }, width: 14, height: 12, zoom });
 }
 
@@ -182,26 +182,26 @@ function drawWheel(context: CanvasRenderingContext2D, tick: number, center: Poin
     frequency: 1.4,
     phase: objectPhase("wheel", center.x, center.y),
   });
-  context.fillStyle = PALETTE.stoneDark;
+  context.fillStyle = SEMANTIC_PALETTE.stoneDark;
   context.beginPath();
   context.arc(snapToPixel(center.x + 24), snapToPixel(center.y - 24), snapToPixel(11), 0, Math.PI * 2);
   context.fill();
   applyInkOutline(context, zoom);
   context.stroke();
-  context.fillStyle = PALETTE.water;
+  context.fillStyle = SEMANTIC_PALETTE.water;
   fillOutlinedRect(context, { origin: { x: center.x + 22 + turn, y: center.y - 35 }, width: 4, height: 22, zoom });
   fillOutlinedRect(context, { origin: { x: center.x + 13, y: center.y - 26 - turn }, width: 22, height: 4, zoom });
 }
 
 function drawLoggingRack(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
-  context.fillStyle = PALETTE.earth;
+  context.fillStyle = SEMANTIC_PALETTE.earth;
   fillOutlinedRect(context, { origin: { x: center.x - 27, y: center.y - 30 }, width: 54, height: 4, zoom });
   fillOutlinedRect(context, { origin: { x: center.x - 24, y: center.y - 27 }, width: 4, height: 24, zoom });
   fillOutlinedRect(context, { origin: { x: center.x + 20, y: center.y - 27 }, width: 4, height: 24, zoom });
-  context.fillStyle = PALETTE.earthDark;
+  context.fillStyle = SEMANTIC_PALETTE.earthDark;
   fillOutlinedRect(context, { origin: { x: center.x - 20, y: center.y - 10 }, width: 40, height: 5, zoom });
   fillOutlinedRect(context, { origin: { x: center.x - 16, y: center.y - 4 }, width: 32, height: 5, zoom });
-  context.fillStyle = PALETTE.goldDark;
+  context.fillStyle = SEMANTIC_PALETTE.goldDark;
   for (const end of [{ x: 20, y: -8 }, { x: 16, y: -2 }]) {
     context.beginPath();
     context.arc(snapToPixel(center.x + end.x), snapToPixel(center.y + end.y), 3, 0, Math.PI * 2);
@@ -212,7 +212,7 @@ function drawLoggingRack(context: CanvasRenderingContext2D, center: Point, zoom:
 }
 
 function drawPlanks(context: CanvasRenderingContext2D, center: Point, zoom: number): void {
-  context.fillStyle = PALETTE.earth;
+  context.fillStyle = SEMANTIC_PALETTE.earth;
   fillOutlinedRect(context, { origin: { x: center.x + 12, y: center.y - 8 }, width: 28, height: 4, zoom });
   fillOutlinedRect(context, { origin: { x: center.x + 16, y: center.y - 2 }, width: 24, height: 4, zoom });
 }
@@ -224,7 +224,7 @@ function drawSaw(context: CanvasRenderingContext2D, tick: number, center: Point,
     frequency: 1.2,
     phase: objectPhase("saw", center.x, center.y),
   });
-  context.fillStyle = PALETTE.stoneDark;
+  context.fillStyle = SEMANTIC_PALETTE.stoneDark;
   traceTriangle(context, [
     { x: center.x - 18 + travel, y: center.y - 12 },
     { x: center.x + 18 + travel, y: center.y - 12 },

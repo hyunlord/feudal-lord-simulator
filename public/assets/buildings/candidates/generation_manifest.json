@@ -1,0 +1,171 @@
+{
+  "model": "sd_xl_base_1.0.safetensors",
+  "lora": null,
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "denoise": 0.82,
+    "workflow": "guided-inpaint"
+  },
+  "basePrompt": "one single small humble painterly realistic medieval European building, object-only game sprite, Caesar III/Anno visual language, no settlement and no second structure, exact 2:1 isometric camera looking down from upper-left, upper-left light, visible material textures, isolated complete building, centered with generous padding, clean readable silhouette, perfectly flat uniform #00FFFF chroma field with no gradient or floor plane",
+  "negativePrompt": "ground, terrain, road, path, grass, dirt, contact shadow, cast shadow, drop shadow, ambient occlusion puddle, Roman architecture, columns, aqueduct, marble temple, fantasy, magic, glowing runes, text, letters, numbers, watermark, frame, people, animals, multi-storey, two-storey, townhouse, villa, mansion, hip roof, tiled roof, city, village",
+  "assets": [
+    {
+      "key": "house",
+      "subjectClause": "level-zero one-room single-storey thatched peasant hut with low timber frame, weathered plaster walls, small stone hearth chimney",
+      "guide": "phase4a_house_guide.png",
+      "seeds": [
+        64040101,
+        64040102,
+        64040103,
+        64040104,
+        64040105,
+        64040106
+      ],
+      "candidates": [
+        {
+          "index": 1,
+          "seed": 64040101,
+          "sourcePath": "house/house_01.png",
+          "releasePath": "house_01.png"
+        },
+        {
+          "index": 2,
+          "seed": 64040102,
+          "sourcePath": "house/house_02.png",
+          "releasePath": "house_02.png"
+        },
+        {
+          "index": 3,
+          "seed": 64040103,
+          "sourcePath": "house/house_03.png",
+          "releasePath": "house_03.png"
+        },
+        {
+          "index": 4,
+          "seed": 64040104,
+          "sourcePath": "house/house_04.png",
+          "releasePath": "house_04.png"
+        },
+        {
+          "index": 5,
+          "seed": 64040105,
+          "sourcePath": "house/house_05.png",
+          "releasePath": "house_05.png"
+        },
+        {
+          "index": 6,
+          "seed": 64040106,
+          "sourcePath": "house/house_06.png",
+          "releasePath": "house_06.png"
+        }
+      ]
+    },
+    {
+      "key": "mill",
+      "subjectClause": "level-zero medieval water mill with timber wheel, stone base, thatched roof, wooden grain chute",
+      "guide": "phase4a_mill_guide.png",
+      "seeds": [
+        64040201,
+        64040202,
+        64040203,
+        64040204,
+        64040205,
+        64040206
+      ],
+      "candidates": [
+        {
+          "index": 1,
+          "seed": 64040201,
+          "sourcePath": "mill/mill_01.png",
+          "releasePath": "mill_01.png"
+        },
+        {
+          "index": 2,
+          "seed": 64040202,
+          "sourcePath": "mill/mill_02.png",
+          "releasePath": "mill_02.png"
+        },
+        {
+          "index": 3,
+          "seed": 64040203,
+          "sourcePath": "mill/mill_03.png",
+          "releasePath": "mill_03.png"
+        },
+        {
+          "index": 4,
+          "seed": 64040204,
+          "sourcePath": "mill/mill_04.png",
+          "releasePath": "mill_04.png"
+        },
+        {
+          "index": 5,
+          "seed": 64040205,
+          "sourcePath": "mill/mill_05.png",
+          "releasePath": "mill_05.png"
+        },
+        {
+          "index": 6,
+          "seed": 64040206,
+          "sourcePath": "mill/mill_06.png",
+          "releasePath": "mill_06.png"
+        }
+      ]
+    },
+    {
+      "key": "granary",
+      "subjectClause": "wide 2x2 medieval granary with a rounded barrel roof, timber supports, weathered plaster and stone lower walls",
+      "guide": "phase4a_granary_guide.png",
+      "seeds": [
+        64040301,
+        64040302,
+        64040303,
+        64040304,
+        64040305,
+        64040306
+      ],
+      "candidates": [
+        {
+          "index": 1,
+          "seed": 64040301,
+          "sourcePath": "granary/granary_01.png",
+          "releasePath": "granary_01.png"
+        },
+        {
+          "index": 2,
+          "seed": 64040302,
+          "sourcePath": "granary/granary_02.png",
+          "releasePath": "granary_02.png"
+        },
+        {
+          "index": 3,
+          "seed": 64040303,
+          "sourcePath": "granary/granary_03.png",
+          "releasePath": "granary_03.png"
+        },
+        {
+          "index": 4,
+          "seed": 64040304,
+          "sourcePath": "granary/granary_04.png",
+          "releasePath": "granary_04.png"
+        },
+        {
+          "index": 5,
+          "seed": 64040305,
+          "sourcePath": "granary/granary_05.png",
+          "releasePath": "granary_05.png"
+        },
+        {
+          "index": 6,
+          "seed": 64040306,
+          "sourcePath": "granary/granary_06.png",
+          "releasePath": "granary_06.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { PALETTE } from "../content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { shade, snapToPixel } from "./style";
 
@@ -28,9 +28,9 @@ export interface WorldVignetteBand {
 export const CANVAS_SURROUND_COLOR = PALETTE.ink;
 
 const VIGNETTE_BANDS = [
-  { marginTiles: 3, color: shade(PALETTE.earthDark, 0.55) },
-  { marginTiles: 2, color: shade(PALETTE.earthDark, 0.65) },
-  { marginTiles: 1, color: shade(PALETTE.earthDark, 0.75) },
+  { marginTiles: 3, color: shade(SEMANTIC_PALETTE.earthDark, 0.55) },
+  { marginTiles: 2, color: shade(SEMANTIC_PALETTE.earthDark, 0.65) },
+  { marginTiles: 1, color: shade(SEMANTIC_PALETTE.earthDark, 0.75) },
 ] as const;
 
 export function worldVignetteBands(

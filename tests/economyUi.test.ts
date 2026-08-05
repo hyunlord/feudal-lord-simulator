@@ -5,7 +5,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { App } from "../src/App";
-import { PALETTE } from "../src/content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { Building } from "../src/economy/economy.types";
 import { drawOverlay, wellCoverageTiles } from "../src/render/overlays";
 import type { RenderFrameInput } from "../src/render/renderer";
@@ -125,7 +125,7 @@ test("water overlay draws well coverage and marks dry houses in vermilion", () =
 
   // Then
   assert.ok(
-    calls.some((call) => call.includes(withAlpha(PALETTE.water, 0.16))),
+    calls.some((call) => call.includes(withAlpha(SEMANTIC_PALETTE.water, 0.16))),
     "well radius is visible",
   );
   assert.ok(

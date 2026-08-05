@@ -1,4 +1,4 @@
-import { PALETTE, type PaletteColor } from "../content/palette";
+import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
@@ -7,9 +7,9 @@ import { applyInkOutline, snapToPixel } from "./style";
 
 const CARGO_COLOR_BY_RESOURCE = {
   wheat: PALETTE.gold,
-  bread: PALETTE.earth,
-  logs: PALETTE.forest,
-  timber: PALETTE.earthDark,
+  bread: SEMANTIC_PALETTE.earth,
+  logs: SEMANTIC_PALETTE.forest,
+  timber: SEMANTIC_PALETTE.earthDark,
 } as const satisfies Record<ResourceType, PaletteColor>;
 
 export function drawWalkers(
@@ -63,7 +63,7 @@ function drawWalkerShadow(
   footY: number,
   scale: number,
 ): void {
-  context.fillStyle = PALETTE.earthDark;
+  context.fillStyle = SEMANTIC_PALETTE.earthDark;
   context.beginPath();
   context.ellipse(footX, footY, 5 * scale, 2 * scale, 0, 0, Math.PI * 2);
   context.fill();

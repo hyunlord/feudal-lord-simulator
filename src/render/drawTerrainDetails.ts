@@ -1,4 +1,4 @@
-import { PALETTE } from "../content/palette";
+import { SEMANTIC_PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { getTile } from "../world/grid";
 import type { Tile } from "../world/world.types";
@@ -32,12 +32,12 @@ export function drawGroundDecalDetail(
   const offsetX = ((decal.variant >>> 3) % 17) - 8;
   const offsetY = ((decal.variant >>> 9) % 7) - 3;
   if (decal.kind === "rock") {
-    context.fillStyle = PALETTE.stoneDark;
+    context.fillStyle = SEMANTIC_PALETTE.stoneDark;
     traceSmallDiamond(context, { x: center.x + offsetX, y: center.y + offsetY }, 3, 2);
     context.fill();
     return;
   }
-  context.fillStyle = PALETTE.sageDark;
+  context.fillStyle = SEMANTIC_PALETTE.sageDark;
   context.beginPath();
   for (let index = 0; index < decal.count; index += 1) {
     const x = center.x + offsetX + index * 3 - decal.count * 1.5;
@@ -60,11 +60,11 @@ export function drawRoadPath(
     .map(({ dx, dy }) => getTile(state, { tx: tile.tx + dx, ty: tile.ty + dy }))
     .filter((candidate): candidate is Tile => candidate !== null);
   const arms = roadConnectionArms(tile, neighbours);
-  context.fillStyle = PALETTE.earth;
+  context.fillStyle = SEMANTIC_PALETTE.earth;
   traceSmallDiamond(context, center, TILE_W / 2, TILE_H / 2);
   context.fill();
 
-  context.fillStyle = PALETTE.earthDark;
+  context.fillStyle = SEMANTIC_PALETTE.earthDark;
   traceSmallDiamond(context, center, 8, 3);
   context.fill();
   for (const direction of arms) {
@@ -72,7 +72,7 @@ export function drawRoadPath(
     context.fill();
   }
 
-  context.fillStyle = PALETTE.stoneDark;
+  context.fillStyle = SEMANTIC_PALETTE.stoneDark;
   for (const [index, variant] of roadPebbleVariants(tile.tx, tile.ty, state.seed).entries()) {
     const x = center.x + ((variant >>> 4) % 19) - 9;
     const y = center.y + ((variant >>> 10) % 9) - 4 + index;

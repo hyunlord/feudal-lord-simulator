@@ -1,4 +1,4 @@
-import { PALETTE } from "../content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { PlacementFailure } from "../world/placement";
@@ -56,7 +56,7 @@ export function drawPlacementOverlay(
   input: PlacementOverlayInput,
 ): void {
   const coordinates = input.preview.tool === "road" ? input.preview.roadPath : input.preview.footprint;
-  context.fillStyle = withAlpha(input.preview.ok ? PALETTE.sage : PALETTE.vermilion, 0.35);
+  context.fillStyle = withAlpha(input.preview.ok ? SEMANTIC_PALETTE.sage : PALETTE.vermilion, 0.35);
   for (const coordinate of coordinates) {
     traceDiamond(context, coordinate);
     context.fill();
@@ -86,7 +86,7 @@ function drawFailureText(
   const plaqueWidth = snapToPixel(context.measureText(label).width + padding * 2);
   const plaqueHeight = snapToPixel(fontSize + padding * 2);
 
-  context.fillStyle = PALETTE.vellum;
+  context.fillStyle = SEMANTIC_PALETTE.vellum;
   context.fillRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
   applyInkOutline(context, zoom);
   context.strokeRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
@@ -107,7 +107,7 @@ function traceDiamond(context: CanvasRenderingContext2D, coordinate: TileCoordin
 function drawWaterOverlay(input: EconomyOverlayRenderInput): void {
   input.context.save();
   for (const well of input.state.buildings.filter((building) => building.kind === "well")) {
-    input.context.fillStyle = withAlpha(PALETTE.water, 0.16);
+    input.context.fillStyle = withAlpha(SEMANTIC_PALETTE.water, 0.16);
     for (const coordinate of wellCoverageTiles(input.state, well)) {
       traceDiamond(input.context, coordinate);
       input.context.fill();

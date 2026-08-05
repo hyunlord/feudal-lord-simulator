@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { BuildingKind } from "../src/content/buildingConfig";
-import { PALETTE } from "../src/content/palette";
+import { SEMANTIC_PALETTE } from "../src/content/palette";
 import { depthKey } from "../src/render/iso";
 import { drawPlacementOverlay } from "../src/render/overlays";
 import {
@@ -212,7 +212,7 @@ test("invalid placement reasons use a zoom-stable vellum plaque", () => {
   });
 
   // Then
-  assert.ok(calls.includes(`fillStyle:${PALETTE.vellum}`), "plaque uses canonical vellum");
+  assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.vellum}`), "plaque uses canonical vellum");
   assert.ok(calls.some((call) => call.startsWith("fillRect:")), "plaque fills behind the label");
   assert.ok(calls.some((call) => call.startsWith("strokeRect:")), "plaque uses the sanctioned outline");
   assert.ok(calls.includes("font:28px Georgia, serif"), "14 CSS-pixel text is preserved at 0.5x zoom");

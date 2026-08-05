@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building, BuildingKind } from "../src/content/buildingConfig";
-import { PALETTE } from "../src/content/palette";
+import { SEMANTIC_PALETTE } from "../src/content/palette";
 import {
   buildingBodyProfile,
   buildingLodColor,
@@ -54,9 +54,9 @@ test("zoom detail policy preserves city mass at overview scale", () => {
   assert.equal(renderDetailLevel(0.5), "blocks");
   assert.equal(renderDetailLevel(0.69), "simplified");
   assert.equal(renderDetailLevel(0.7), "full");
-  assert.equal(buildingLodColor("house"), PALETTE.parchmentDark);
-  assert.equal(buildingLodColor("storehouse"), PALETTE.stone);
-  assert.equal(buildingLodColor("mill"), PALETTE.earth);
+  assert.equal(buildingLodColor("house"), SEMANTIC_PALETTE.parchmentDark);
+  assert.equal(buildingLodColor("storehouse"), SEMANTIC_PALETTE.stone);
+  assert.equal(buildingLodColor("mill"), SEMANTIC_PALETTE.earth);
 });
 
 test("building footprints clear their eight-neighbour apron from trees", () => {

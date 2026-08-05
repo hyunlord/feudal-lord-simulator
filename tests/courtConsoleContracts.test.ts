@@ -6,7 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { App } from "../src/App";
 import { BALANCE } from "../src/content/balanceConfig";
-import { PALETTE } from "../src/content/palette";
+import { SEMANTIC_PALETTE } from "../src/content/palette";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { PALETTE_CSS_VARIABLES } from "../src/styles/paletteVariables";
 import { BuildSeals } from "../src/ui/BuildMenu";
@@ -20,13 +20,13 @@ function tile(tx: number, ty: number, terrain: Tile["terrain"]): Tile {
   return { tx, ty, terrain, buildingId: null, hasRoad: false };
 }
 
-test("palette CSS variables expose every canonical colour exactly once", () => {
+test("palette CSS variables expose every semantic compatibility colour", () => {
   // Given / When
   const variableValues = Object.values(PALETTE_CSS_VARIABLES);
 
   // Then
-  assert.equal(Object.keys(PALETTE_CSS_VARIABLES).length, Object.keys(PALETTE).length);
-  assert.deepEqual([...variableValues].sort(), [...Object.values(PALETTE)].sort());
+  assert.equal(Object.keys(PALETTE_CSS_VARIABLES).length, Object.keys(SEMANTIC_PALETTE).length);
+  assert.deepEqual([...variableValues].sort(), [...Object.values(SEMANTIC_PALETTE)].sort());
   assert.equal(Object.keys(PALETTE_CSS_VARIABLES).every((key) => key.startsWith("--palette-")), true);
 });
 

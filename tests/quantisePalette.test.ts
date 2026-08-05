@@ -4,14 +4,14 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
 
-import { PALETTE } from "../src/content/palette";
+import { CANONICAL_PALETTE, PALETTE, RAMPS } from "../src/content/palette";
 import { nearestPalette, quantiseRgba, readPngDimensions, rgbToLab } from "../scripts/quantisePalette";
 
 describe("quantisePalette", () => {
-  it("keeps exact palette RGB values unchanged", () => {
+  it("keeps every canonical ramp and accent RGB value unchanged", () => {
     // Given: one opaque pixel for every canonical palette colour.
     const pixels = new Uint8Array(
-      Object.values(PALETTE).flatMap((hex) => {
+      CANONICAL_PALETTE.flatMap((hex) => {
         const parsed = Number.parseInt(hex.slice(1), 16);
         return [(parsed >> 16) & 0xff, (parsed >> 8) & 0xff, parsed & 0xff, 255];
       }),
@@ -24,36 +24,26 @@ describe("quantisePalette", () => {
     assert.deepEqual(quantised, pixels);
   });
 
-  it("maps near colours to the perceptually closest canonical colour", () => {
-    // Given: a colour just off the manuscript gold swatch.
+  it("maps near colours to the perceptually closest canonical ramp colour", () => {
+    // Given: a colour just off the fourth water ramp swatch.
+    const nearWater = { r: 78, g: 117, b: 137 };
+
+    // When: the nearest palette entry is requested.
+    const nearest = nearestPalette(rgbToLab(nearWater));
+
+    // Then: the water ramp colour wins.
+    assert.equal(nearest.hex, RAMPS.water[3]);
+  });
+
+  it("maps near colours to the perceptually closest accent colour", () => {
+    // Given: a colour just off the manuscript gold accent.
     const nearGold = { r: 211, g: 173, b: 55 };
 
     // When: the nearest palette entry is requested.
     const nearest = nearestPalette(rgbToLab(nearGold));
 
-    // Then: the gold palette colour wins.
+    // Then: the gold accent colour wins.
     assert.equal(nearest.hex, PALETTE.gold);
-  });
-
-  it("keeps the wood console inside a quiet oak subset", () => {
-    // Given: highlights that canonical quantisation would preserve as gold.
-    const pixels = new Uint8Array([
-      212, 175, 55, 255,
-      168, 134, 42, 255,
-      58, 46, 31, 255,
-    ]);
-
-    // When: the console-specific palette profile is applied.
-    const quantised = quantiseRgba(pixels, "wood-console");
-
-    // Then: every pixel resolves to aged-oak earth or ink colours, never gold.
-    const allowed = new Set<string>([PALETTE.ink, PALETTE.inkLight, PALETTE.earth, PALETTE.earthDark]);
-    for (let index = 0; index < quantised.length; index += 4) {
-      const hex = `#${[quantised[index], quantised[index + 1], quantised[index + 2]]
-        .map((channel) => channel?.toString(16).padStart(2, "0"))
-        .join("")}`.toUpperCase();
-      assert.equal(allowed.has(hex), true);
-    }
   });
 
   it("preserves the original alpha byte exactly", () => {
