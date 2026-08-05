@@ -260,10 +260,10 @@ def build_subject_guide(job: Job) -> Image.Image:
         case Category.BUILDING:
             match job.key:
                 case "well":
-                    draw.ellipse((350, 570, 674, 790), fill=wall)
-                    draw.rectangle((385, 320, 430, 650), fill=dark)
-                    draw.rectangle((594, 320, 639, 650), fill=dark)
-                    draw.polygon(((330, 380), (512, 230), (694, 380), (512, 480)), fill=roof)
+                    draw.ellipse((250, 600, 774, 800), fill=wall)
+                    draw.rectangle((300, 420, 350, 660), fill=dark)
+                    draw.rectangle((674, 420, 724, 660), fill=dark)
+                    draw.polygon(((240, 430), (512, 330), (784, 430), (512, 540)), fill=roof)
                 case "wheat_farm":
                     draw.polygon(((120, 600), (500, 410), (905, 610), (520, 820)), fill=earth)
                     draw.rectangle((155, 430, 330, 620), fill=wall)

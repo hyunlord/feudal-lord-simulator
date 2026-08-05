@@ -181,6 +181,21 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
 
         self.assertEqual(preserved_colours, {65535, 4404778, 8675386})
 
+    def test_well_guide_is_low_and_wide_enough_for_the_one_tile_scale_band(self) -> None:
+        module = load_generator()
+        job = next(candidate for candidate in module.JOBS if candidate.key == "well")
+        guide = module.build_subject_guide(job)
+        points = [
+            (x, y)
+            for y in range(guide.height)
+            for x in range(guide.width)
+            if guide.getpixel((x, y)) != module.CYAN_RGB
+        ]
+        width = max(x for x, _ in points) - min(x for x, _ in points) + 1
+        height = max(y for _, y in points) - min(y for _, y in points) + 1
+
+        self.assertGreaterEqual(width, height)
+
     def test_target_filter_and_timed_manifest_are_portable(self) -> None:
         module = load_generator()
 
