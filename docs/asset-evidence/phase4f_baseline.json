@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "revision": "7c7cd4690a47c322691f691ebb2f0d5c1cf9dbb0",
+  "environment": {
+    "host": "aitopatom-d6bb",
+    "browser": "HeadlessChrome 151",
+    "viewport": "1280x720",
+    "warmupFrames": 20,
+    "measuredFrames": 120
+  },
+  "verification": {
+    "node": { "passed": 361, "failed": 0 },
+    "python": { "passed": 45, "failed": 0 },
+    "typecheck": "passed",
+    "build": "passed",
+    "determinismHash": "4d92c66f9408a603"
+  },
+  "entities": {
+    "buildings": 40,
+    "roads": 127,
+    "trees": 451,
+    "groundCover": 154,
+    "walkers": 20
+  },
+  "runs": [
+    {
+      "run": 1,
+      "1x": { "averageMs": 10.813, "p95Ms": 12.4, "worstMs": 30.5, "overBudgetFrames": 7 },
+      "5x": { "averageMs": 10.975, "p95Ms": 12.3, "worstMs": 14.4, "overBudgetFrames": 7 }
+    },
+    {
+      "run": 2,
+      "1x": { "averageMs": 11.007, "p95Ms": 12.2, "worstMs": 30.9, "overBudgetFrames": 7 },
+      "5x": { "averageMs": 10.914, "p95Ms": 12.0, "worstMs": 15.6, "overBudgetFrames": 6 }
+    },
+    {
+      "run": 3,
+      "1x": { "averageMs": 10.716, "p95Ms": 12.4, "worstMs": 29.8, "overBudgetFrames": 7 },
+      "5x": { "averageMs": 10.866, "p95Ms": 12.0, "worstMs": 16.1, "overBudgetFrames": 6 }
+    }
+  ],
+  "baselineScreenshots": [
+    "docs/assets/phase4e_default_open_ground.png",
+    "docs/assets/phase4e_settlement_clearing.png",
+    "docs/assets/phase4e_sawmill_storehouse.png",
+    "docs/assets/phase4e_squint_terrain.png"
+  ]
+}

@@ -32,7 +32,10 @@ project implements those nineteen values exactly and invents no twentieth.
 
 All Canvas coordinates are integer-snapped. Outlines are one CSS pixel at 1x
 zoom and use `ink`. Lit faces point up-left; down-right faces are twenty percent
-darker. Shadows are flat translucent diamonds.
+darker. Object shadows use two cheap earth-tinted isometric ellipses: a faint
+lower-left halo and a darker contact core. Their reach derives from manifest
+sprite height and display scale, not footprint alone. A narrow terrain contact
+mark is painted in the ground pass immediately beneath every building and tree.
 
 ## 3. Typography
 
@@ -59,8 +62,9 @@ transitions are sparse, material-specific marks drawn on the land side:
 earth along water, dark sage tufts along forest, and dark stone pebbles along
 rock.
 
-Forest tiles carry one to three deterministic trees. Interiors are denser than
-edges; each tile varies position, scale, silhouette, and sway phase. The result
+Forest tiles carry one or two deterministic trees. Exposed edges carry one and
+connected interiors choose one or two; each tree varies position, scale,
+silhouette, full-ramp foliage tint, and sway phase. The result
 must read as a woodland canopy with an irregular boundary, not repeated stamps.
 Beyond the map, three stepped palette-dark bands form a soft vignette without
 gradients or blur.
@@ -73,7 +77,8 @@ three carved recesses:
 
 1. a shield-shaped minimap at the left;
 2. a compact four-column build-seal matrix in the centre;
-3. timber, tick, camera, and speed readouts at the right.
+3. objective, ledger, blocker status context, overlay legend, and speed readouts
+   at the right.
 
 At 768 pixels the recesses compress without horizontal scrolling. At 375
 pixels the minimap and readouts become narrower and the seal grid remains
@@ -116,9 +121,20 @@ edges. Scroll art frames content only; its interior remains visually empty.
 - **Court console:** one continuous generated wood surface with three clearly
   sunken recesses, never a collection of floating panels.
 - **Build seals:** generated seal recesses containing procedural SVG glyphs.
+- **Build guidance:** seals are grouped by dwelling, production, storage, and
+  service. Hover or keyboard focus reveals Korean name, exact timber cost or
+  shortfall, one-line purpose, and road or forest requirement. Unaffordable
+  seals remain focusable but cannot be selected; Escape cancels placement.
 - **Minimap shield:** non-rectangular overview set into the console.
 - **Ledger plaque:** compact readouts and speed controls, not separate cards or
   pills.
+- **Settlement guidance:** the normal screen persistently shows the current
+  population target and one highest-priority Korean blocker line, sampled every
+  sixty simulation ticks without adding presentation fields to `GameState`.
+  Reaching 50 quietly advances the goal to 120 and never ends the game.
+- **Problem glyphs:** true water, bread, labour, and storage failures use larger
+  deterministic manuscript glyphs with a gentle pulse; no generic warning dot
+  appears without a real condition.
 
 ## 7. Motion
 
@@ -139,6 +155,7 @@ back-to-front. Buildings expose top, left, and twenty-percent-darker right
 faces. Terrain gains a dark lower-right edge. Generated parchment and wood
 textures stay low contrast so procedural ink remains dominant.
 
-All shadows are hard-edged translucent diamonds. No gradient, blur, glow,
-drop-shadow, rounded dashboard container, or one-pixel separator may substitute
-for the carved and painted shape language.
+All shadows are hard-edged, earth-tinted, stacked isometric ellipses with a
+narrow contact mark. No gradient, blur, glow, drop-shadow, rounded dashboard
+container, or one-pixel separator may substitute for the carved and painted
+shape language.
