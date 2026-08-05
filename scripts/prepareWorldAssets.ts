@@ -60,6 +60,12 @@ const foliageKeys = [
   "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
   "shrub_a", "shrub_b", "grass_tuft", "field_stone",
 ] as const satisfies readonly FoliageSpriteKey[];
+const candidateFoliageKeys = new Set<FoliageSpriteKey>([
+  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
+]);
+
+export const rawFoliageFileName = (key: FoliageSpriteKey): string =>
+  candidateFoliageKeys.has(key) ? `${key}_01.png` : `${key}.png`;
 
 const sourceForBuilding = (key: BuildingSpriteKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
   const subject = newBuildingKeys.indexOf(key);
@@ -115,7 +121,7 @@ const copyPromotions = (options: PrepareWorldAssetOptions): void => {
 
 const processFoliage = (options: PrepareWorldAssetOptions): void => {
   for (const key of foliageKeys) {
-    const input = path.join(options.rawRoot, "foliage", `${key}.png`);
+    const input = path.join(options.rawRoot, "foliage", rawFoliageFileName(key));
     writePng(outputPath(options.repoRoot, "foliage", key), processWorldSprite(readPng(input), key));
   }
 };

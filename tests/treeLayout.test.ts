@@ -136,15 +136,16 @@ test("ground cover occupies roughly eight percent of eligible open grass", () =>
   assert.ok(density >= 0.07 && density <= 0.09, `expected density near 8%, received ${density}`);
 });
 
-test("ground cover never occupies forest water roads or building tiles", () => {
+test("ground cover never occupies non-grass roads or building tiles", () => {
   // Given
   const forest = tile(19, 7, "forest");
   const water = tile(19, 7, "water");
+  const rock = tile(5, 0, "rock");
   const road = { ...tile(19, 7, "grass"), hasRoad: true };
   const occupied = { ...tile(19, 7, "grass"), buildingId: "house-1" };
 
   // When / Then
-  for (const blocked of [forest, water, road, occupied]) {
+  for (const blocked of [forest, water, rock, road, occupied]) {
     assert.deepEqual(buildGroundCover({ tile: blocked, seed: 73 }), []);
   }
 });

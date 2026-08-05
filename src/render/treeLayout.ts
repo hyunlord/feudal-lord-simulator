@@ -123,8 +123,7 @@ export function buildGroundCover(input: {
   const cached = groundCoverCache.get(input.tile)?.get(input.seed);
   if (cached !== undefined) return cached;
   if (
-    input.tile.terrain === "water" ||
-    input.tile.terrain === "forest" ||
+    input.tile.terrain !== "grass" ||
     input.tile.buildingId !== null ||
     input.tile.hasRoad
   ) {

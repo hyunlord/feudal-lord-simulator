@@ -5,7 +5,11 @@ import path from "node:path";
 import { describe, it } from "node:test";
 
 import { RAMPS } from "../src/content/palette";
-import { prepareWorldAssets, type BuildingSelections } from "../scripts/prepareWorldAssets";
+import {
+  prepareWorldAssets,
+  rawFoliageFileName,
+  type BuildingSelections,
+} from "../scripts/prepareWorldAssets";
 import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
 import { verifyWorldAssets } from "../scripts/verifyWorldAssets";
 import { WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
@@ -92,8 +96,11 @@ const fixture = (): Fixture => {
     tree_broadleaf_b: [44, 50], shrub_a: [30, 20], shrub_b: [24, 16],
     grass_tuft: [22, 12], field_stone: [18, 10],
   } as const)) {
+    const fileName = ["shrub_a", "shrub_b", "grass_tuft", "field_stone"].includes(key)
+      ? `${key}_01.png`
+      : `${key}.png`;
     writeRawSprite(
-      path.join(rawRoot, "foliage", `${key}.png`),
+      path.join(rawRoot, "foliage", fileName),
       width,
       height,
       key === "field_stone" ? RAMPS.stone[2] : RAMPS.foliage[2],
@@ -110,6 +117,14 @@ const fixture = (): Fixture => {
 };
 
 describe("Phase 4C world asset release", () => {
+  it("maps generated ground-cover candidates and single-source trees to their raw filenames", () => {
+    assert.equal(rawFoliageFileName("tree_conifer_a"), "tree_conifer_a.png");
+    assert.equal(rawFoliageFileName("shrub_a"), "shrub_a_01.png");
+    assert.equal(rawFoliageFileName("shrub_b"), "shrub_b_01.png");
+    assert.equal(rawFoliageFileName("grass_tuft"), "grass_tuft_01.png");
+    assert.equal(rawFoliageFileName("field_stone"), "field_stone_01.png");
+  });
+
   it("prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest", () => {
     // Given: explicit building selections, raw category inputs, and the three accepted Phase 4B files.
     const test = fixture();
