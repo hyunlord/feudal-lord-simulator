@@ -9,7 +9,7 @@ export type TreeSpriteKey =
   | "tree_broadleaf_b"
   | "tree_conifer_a"
   | "tree_conifer_b";
-export type GroundCoverSpriteKey = "shrub_a" | "shrub_b";
+export type GroundCoverSpriteKey = "shrub_a" | "shrub_b" | "grass_tuft" | "field_stone";
 
 export type TreeDescriptor = {
   readonly id: string;
@@ -51,7 +51,12 @@ type TreeClusterInput = {
 
 const SILHOUETTES: readonly TreeSilhouette[] = ["narrow", "broad", "rounded"];
 const TREE_TONES: readonly TreeTone[] = ["forest", "sageDark"];
-const SHRUB_SPRITES: readonly GroundCoverSpriteKey[] = ["shrub_a", "shrub_b"];
+const GROUND_COVER_SPRITES: readonly GroundCoverSpriteKey[] = [
+  "shrub_a",
+  "shrub_b",
+  "grass_tuft",
+  "field_stone",
+];
 const MAX_OFFSET_X = TILE_W * 0.35;
 const MAX_OFFSET_Y = TILE_H * 0.35;
 const SAFE_DIAMOND_RADIUS = 0.7;
@@ -105,11 +110,16 @@ export function buildGroundCover(input: {
   readonly tile: Tile;
   readonly seed: number;
 }): readonly GroundCoverDescriptor[] {
-  if (input.tile.terrain === "water" || input.tile.buildingId !== null || input.tile.hasRoad) {
+  if (
+    input.tile.terrain === "water" ||
+    input.tile.terrain === "forest" ||
+    input.tile.buildingId !== null ||
+    input.tile.hasRoad
+  ) {
     return [];
   }
   const roll = hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 83);
-  if (roll < 0.62) {
+  if (roll < 0.92) {
     return [];
   }
   const center = tileToScreen(input.tile.tx, input.tile.ty);
@@ -121,8 +131,9 @@ export function buildGroundCover(input: {
   const y = center.sy + offset.y;
   const anchor = screenToTile(x, y);
   const scale = 0.75 + hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 101) * 0.5;
-  const spriteIndex = Math.floor(hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 103) * SHRUB_SPRITES.length) % SHRUB_SPRITES.length;
-  const spriteKey = SHRUB_SPRITES[spriteIndex] ?? "shrub_a";
+  const variantRoll = hashUnit(input.tile.ty, input.tile.tx, input.seed + 17_171, 1, 149);
+  const spriteIndex = Math.floor(variantRoll * GROUND_COVER_SPRITES.length) % GROUND_COVER_SPRITES.length;
+  const spriteKey = GROUND_COVER_SPRITES[spriteIndex] ?? "shrub_a";
   return [{
     id: `groundCover:${input.tile.tx}:${input.tile.ty}:${input.seed}:0`,
     x,

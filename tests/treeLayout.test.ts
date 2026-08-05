@@ -104,7 +104,9 @@ test("tree and shrub sprite variants are assigned from separate deterministic sl
     ...buildTreeCluster({ tile: tile(4, 4), forestLookup: buildForestLookup([tile(4, 4)]), seed: 74 }),
     ...buildTreeCluster({ tile: tile(5, 4), forestLookup: buildForestLookup([tile(5, 4)]), seed: 75 }),
   ];
-  const groundCover = buildGroundCover({ tile: tile(3, 0, "grass"), seed: 73 });
+  const groundCover = Array.from({ length: 4_096 }, (_, index) =>
+    buildGroundCover({ tile: tile(index % 64, Math.floor(index / 64), "grass"), seed: 73 }),
+  ).flat();
 
   assert.ok(descriptors.length > 0);
   assert.ok(groundCover.length > 0);
@@ -113,7 +115,52 @@ test("tree and shrub sprite variants are assigned from separate deterministic sl
     new Set(["tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b"]),
   );
   assert.ok(descriptors.every((descriptor) => !descriptor.spriteKey.startsWith("shrub_")));
-  assert.ok(groundCover.every((descriptor) => descriptor.spriteKey === "shrub_a" || descriptor.spriteKey === "shrub_b"));
+  assert.deepEqual(
+    new Set(groundCover.map((descriptor) => descriptor.spriteKey)),
+    new Set(["shrub_a", "shrub_b", "grass_tuft", "field_stone"]),
+  );
+});
+
+test("ground cover occupies roughly eight percent of eligible open grass", () => {
+  // Given
+  const sampleSize = 10_000;
+
+  // When
+  const occupied = Array.from({ length: sampleSize }, (_, index) =>
+    buildGroundCover({ tile: tile(index % 100, Math.floor(index / 100), "grass"), seed: 73 }).length,
+  ).reduce((total, count) => total + count, 0);
+
+  // Then
+  const density = occupied / sampleSize;
+  assert.ok(density >= 0.07 && density <= 0.09, `expected density near 8%, received ${density}`);
+});
+
+test("ground cover never occupies forest water roads or building tiles", () => {
+  // Given
+  const forest = tile(19, 7, "forest");
+  const water = tile(19, 7, "water");
+  const road = { ...tile(19, 7, "grass"), hasRoad: true };
+  const occupied = { ...tile(19, 7, "grass"), buildingId: "house-1" };
+
+  // When / Then
+  for (const blocked of [forest, water, road, occupied]) {
+    assert.deepEqual(buildGroundCover({ tile: blocked, seed: 73 }), []);
+  }
+});
+
+test("ground cover descriptors repeat exactly for equal tile and seed inputs", () => {
+  // Given
+  const inputs = Array.from({ length: 1_024 }, (_, index) => ({
+    tile: tile(index % 32, Math.floor(index / 32), "grass"),
+    seed: 901,
+  }));
+
+  // When
+  const first = inputs.flatMap((input) => buildGroundCover(input));
+  const repeat = inputs.flatMap((input) => buildGroundCover(input));
+
+  // Then
+  assert.deepEqual(repeat, first);
 });
 
 test("tree sprite family follows the selected silhouette", () => {

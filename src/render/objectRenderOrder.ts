@@ -52,15 +52,24 @@ type ObjectRenderInput = {
   readonly includeGroundCover?: boolean;
 };
 
+type TileArea = {
+  readonly tx: number;
+  readonly ty: number;
+  readonly width: number;
+  readonly height: number;
+};
+
 export function buildObjectRenderItems(input: ObjectRenderInput): readonly ObjectRenderItem[] {
   const items: ObjectRenderItem[] = [];
   const clearedTiles = clearedTreeTileKeys(input.buildings);
   const seed = input.seed ?? 0;
-  const foliageTiles = input.tiles.filter((tile) => isFoliageCandidate(tile, input.range, clearedTiles));
-  const forestLookup = buildForestLookup(input.worldTiles ?? input.tiles);
+  const worldTiles = input.worldTiles ?? input.tiles;
+  const foliageTiles = input.tiles.filter((tile) => tilePosIsWithinRange(tile.tx, tile.ty, input.range));
+  const forestLookup = buildForestLookup(worldTiles);
+  const protectedGroundCoverTiles = groundCoverProtectedTileKeys(worldTiles, input.buildings);
 
   for (const tile of foliageTiles) {
-    if (tile.terrain === "forest") {
+    if (tile.terrain === "forest" && isTreeCandidate(tile, clearedTiles)) {
       for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
         items.push({
           kind: "tree",
@@ -70,7 +79,10 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
           anchorTx: tree.anchorTx,
         });
       }
-    } else if (input.includeGroundCover ?? true) {
+    } else if (
+      (input.includeGroundCover ?? true) &&
+      !protectedGroundCoverTiles.has(tileKey(tile.tx, tile.ty))
+    ) {
       for (const groundCover of buildGroundCover({ tile, seed })) {
         items.push({
           kind: "groundCover",
@@ -126,6 +138,28 @@ export function clearedTreeTileKeys(buildings: readonly Building[]): ReadonlySet
   return keys;
 }
 
+export function groundCoverProtectedTileKeys(
+  tiles: readonly Tile[],
+  buildings: readonly Building[],
+): ReadonlySet<string> {
+  const keys = new Set<string>();
+  for (const tile of tiles) {
+    if (tile.hasRoad) {
+      addGroundCoverApron(keys, { tx: tile.tx, ty: tile.ty, width: 1, height: 1 });
+    }
+  }
+  for (const building of buildings) {
+    const config = BUILDING_CONFIG_BY_KIND[building.kind];
+    addGroundCoverApron(keys, {
+      tx: building.tx,
+      ty: building.ty,
+      width: config.width,
+      height: config.height,
+    });
+  }
+  return keys;
+}
+
 function compareRenderItems(left: ObjectRenderItem, right: ObjectRenderItem): number {
   const depthDifference = left.depth - right.depth;
   if (depthDifference !== 0) return depthDifference;
@@ -134,17 +168,21 @@ function compareRenderItems(left: ObjectRenderItem, right: ObjectRenderItem): nu
   return anchorDifference !== 0 ? anchorDifference : left.id.localeCompare(right.id);
 }
 
-function isFoliageCandidate(
-  tile: Tile,
-  range: TileRange,
-  clearedTiles: ReadonlySet<string>,
-): boolean {
+function isTreeCandidate(tile: Tile, clearedTiles: ReadonlySet<string>): boolean {
   return (
-    tilePosIsWithinRange(tile.tx, tile.ty, range) &&
     tile.buildingId === null &&
     !tile.hasRoad &&
     !clearedTiles.has(tileKey(tile.tx, tile.ty))
   );
+}
+
+function addGroundCoverApron(keys: Set<string>, area: TileArea): void {
+  const radius = 2;
+  for (let apronTy = area.ty - radius; apronTy < area.ty + area.height + radius; apronTy += 1) {
+    for (let apronTx = area.tx - radius; apronTx < area.tx + area.width + radius; apronTx += 1) {
+      keys.add(tileKey(apronTx, apronTy));
+    }
+  }
 }
 
 function tilePosIsWithinRange(tx: number, ty: number, range: TileRange): boolean {

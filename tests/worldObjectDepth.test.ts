@@ -4,7 +4,10 @@ import test from "node:test";
 import type { Walker } from "../src/agents/walker.types";
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
-import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
+import {
+  buildObjectRenderItems,
+  groundCoverProtectedTileKeys,
+} from "../src/render/objectRenderOrder";
 import type { TileRange } from "../src/render/renderer";
 import type { Tile } from "../src/world/world.types";
 
@@ -129,11 +132,13 @@ test("individual trees and ground cover enter the shared object queue", () => {
     tile(1, 0, "forest"),
     tile(1, 2, "forest"),
   ];
-  const grassTile = tile(3, 0, "grass");
+  const grassTiles = Array.from({ length: 49 }, (_, index) =>
+    tile(index % 7, Math.floor(index / 7), "grass"),
+  );
 
   // When
   const items = buildObjectRenderItems({
-    tiles: [...forestTiles, grassTile],
+    tiles: [...forestTiles, ...grassTiles],
     buildings: [],
     walkers: [],
     range,
@@ -186,4 +191,80 @@ test("forest density uses full world neighbors before visible and clearing filte
 
   // Then
   assert.equal(items.filter((item) => item.kind === "tree").length, 3);
+});
+
+test("ground cover protection reaches two tiles from every building footprint edge", () => {
+  // Given
+  const house = building("protected-house", "house", 4, 4);
+
+  // When
+  const protectedTiles = groundCoverProtectedTileKeys([], [house]);
+
+  // Then
+  for (let ty = 2; ty <= 6; ty += 1) {
+    for (let tx = 2; tx <= 6; tx += 1) {
+      assert.equal(protectedTiles.has(`${tx}:${ty}`), true, `missing ${tx}:${ty}`);
+    }
+  }
+  assert.equal(protectedTiles.has("1:4"), false);
+  assert.equal(protectedTiles.has("7:4"), false);
+});
+
+test("ground cover protection reaches two tiles from roads", () => {
+  // Given
+  const road = { ...tile(4, 4), hasRoad: true };
+
+  // When
+  const protectedTiles = groundCoverProtectedTileKeys([road], []);
+
+  // Then
+  for (let ty = 2; ty <= 6; ty += 1) {
+    for (let tx = 2; tx <= 6; tx += 1) {
+      assert.equal(protectedTiles.has(`${tx}:${ty}`), true, `missing ${tx}:${ty}`);
+    }
+  }
+  assert.equal(protectedTiles.has("1:4"), false);
+  assert.equal(protectedTiles.has("7:4"), false);
+});
+
+test("the object queue excludes cover within two tiles and permits distance three", () => {
+  // Given
+  const road = { ...tile(4, 4), hasRoad: true };
+  const candidates = Array.from({ length: 4_096 }, (_, index) =>
+    tile(index % 64, Math.floor(index / 64)),
+  );
+  const worldTiles = [...candidates, road];
+
+  // When
+  const items = buildObjectRenderItems({
+    tiles: candidates,
+    worldTiles,
+    buildings: [],
+    walkers: [],
+    range: { minTx: 0, minTy: 0, maxTx: 63, maxTy: 63 },
+    seed: 73,
+  });
+  const coveredTiles = new Set(
+    items
+      .filter((item) => item.kind === "groundCover")
+      .map((item) => {
+        const [, tx, ty] = item.id.split(":");
+        return `${tx}:${ty}`;
+      }),
+  );
+
+  // Then
+  for (let ty = 2; ty <= 6; ty += 1) {
+    for (let tx = 2; tx <= 6; tx += 1) {
+      assert.equal(coveredTiles.has(`${tx}:${ty}`), false);
+    }
+  }
+  assert.ok(
+    [...coveredTiles].some((key) => {
+      const [txText, tyText] = key.split(":");
+      const tx = Number(txText);
+      const ty = Number(tyText);
+      return Math.max(Math.abs(tx - 4), Math.abs(ty - 4)) >= 3;
+    }),
+  );
 });
