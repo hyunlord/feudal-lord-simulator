@@ -2,6 +2,11 @@ import { stepCarters, spawnCarters } from "../agents/delivery";
 import { spawnDistributors, stepDistributors } from "../agents/roaming";
 import type { RoamingHouse, RoamingJunctionInput } from "../agents/roaming";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import {
+  advanceConstructionSites,
+  completeEligibleConstruction,
+  recomputeConstructionStalls,
+} from "./constructionLifecycle";
 import { stepProduction } from "../economy/production";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
@@ -118,12 +123,19 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     idleWorkers: labour.idleWorkers,
     treasuryTimber: movedCarters.treasuryTimber,
   });
+  const progressed = {
+    ...produced,
+    constructionSites: recomputeConstructionStalls({
+      ...produced,
+      constructionSites: advanceConstructionSites(produced),
+    }),
+  };
   const spawnedCarters = spawnCarters({
     tick,
-    buildings: produced.buildings,
-    constructionSites: produced.constructionSites,
-    walkers: produced.walkers,
-    treasuryTimber: produced.treasuryTimber,
+    buildings: progressed.buildings,
+    constructionSites: progressed.constructionSites,
+    walkers: progressed.walkers,
+    treasuryTimber: progressed.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
   });
@@ -135,7 +147,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
   });
 
   return {
-    ...produced,
+    ...progressed,
     buildings: [...spawnedDistributors.buildings],
     constructionSites: [...spawnedCarters.constructionSites],
     walkers: [...spawnedDistributors.walkers],
@@ -145,5 +157,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
 }
 
 export function advanceTick(state: GameState): GameState {
-  return advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 });
+  return completeEligibleConstruction(
+    advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }),
+  );
 }

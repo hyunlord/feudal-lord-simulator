@@ -3,7 +3,6 @@ import test from "node:test";
 
 import { BUILDING_CONFIG, type BuildingKind } from "../src/content/buildingConfig";
 import {
-  canCompleteConstruction,
   createConstructionSite,
   type ConstructionSite,
 } from "../src/economy/construction";
@@ -215,7 +214,7 @@ test("advanceTick advances one simulation tick and one wall tick for direct harn
   assert.equal(wallTick(next), wallTick(state) + 1);
 });
 
-test("sixty direct advanceTick calls satisfy the construction wall-time floor", () => {
+test("sixty direct advanceTick calls satisfy the construction wall-time floor and complete ready sites", () => {
   // Given
   const initialSite = createConstructionSite({
     ordinal: 1,
@@ -240,7 +239,7 @@ test("sixty direct advanceTick calls satisfy the construction wall-time floor", 
   }
 
   // Then
-  const [site] = constructionSites(state);
   assert.equal(wallTick(state), 60);
-  assert.equal(site === undefined ? false : canCompleteConstruction(site, wallTick(state)), true);
+  assert.deepEqual(constructionSites(state), []);
+  assert.equal(state.buildings.find(({ id }) => id === readySite.id)?.kind, "well");
 });

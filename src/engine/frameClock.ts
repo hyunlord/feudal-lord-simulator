@@ -1,4 +1,5 @@
 import type { GameSpeed, GameState } from "./engine.types";
+import { completeEligibleConstruction } from "./constructionLifecycle";
 import { advanceSimulationSubstep } from "./tick";
 
 export function advanceFrame(state: GameState, speed: GameSpeed): GameState {
@@ -8,5 +9,5 @@ export function advanceFrame(state: GameState, speed: GameSpeed): GameState {
   for (let substep = 0; substep < speed; substep += 1) {
     nextState = advanceSimulationSubstep(nextState);
   }
-  return nextState;
+  return completeEligibleConstruction(nextState);
 }
