@@ -61,6 +61,30 @@ function isRoadTile(grid: Grid, coordinate: TileCoordinate): boolean {
   return getTile(grid, coordinate)?.hasRoad === true;
 }
 
+export function existingRoadComponent(
+  grid: Grid,
+  starts: readonly TileCoordinate[],
+): readonly TileCoordinate[] {
+  const frontier = starts.filter((start) => isRoadTile(grid, start));
+  const component: TileCoordinate[] = [];
+  const visited = new Set<string>();
+
+  for (let queueIndex = 0; queueIndex < frontier.length; queueIndex += 1) {
+    const current = frontier[queueIndex];
+    if (current === undefined) continue;
+    const currentKey = roadCoordinateKey(current);
+    if (visited.has(currentKey)) continue;
+    visited.add(currentKey);
+    component.push(current);
+
+    for (const neighbor of getOrthogonalRoadNeighbors(grid, current)) {
+      if (!visited.has(roadCoordinateKey(neighbor))) frontier.push(neighbor);
+    }
+  }
+
+  return component;
+}
+
 function reconstructRoadPath(
   parents: ReadonlyMap<string, TileCoordinate | null>,
   startKey: string,
