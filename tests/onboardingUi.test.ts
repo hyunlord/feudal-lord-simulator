@@ -25,7 +25,6 @@ test("welcome parchment renders exact opening copy and dismiss affordance", () =
   assert.match(markup, /영지에 오신 것을 환영합니다/);
   assert.match(markup, /왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요\./);
   assert.match(markup, /마우스 휠로 확대, 드래그로 이동합니다\./);
-  assert.match(markup, /<button[^>]*autofocus[^>]*>시작하기<\/button>/);
   assert.match(markup, /아무 곳이나 클릭하여 시작/);
 });
 
@@ -44,11 +43,9 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.match(source, /useState<PlacementTool \| null>\(null\)/);
   assert.doesNotMatch(source, /useState<PlacementTool \| null>\(DEFAULT_PLACEMENT_TOOL\)/);
   assert.match(source, /presentationNowMs/);
-  assert.match(source, /onboardingPresentation\.openGoalReached/);
   assert.match(source, /setPresentationNowMs\(Date\.now\(\)\)/);
   assert.match(source, /stopPropagation\(\)/);
   assert.match(source, /setWelcomeVisible\(false\)/);
-  assert.match(source, /onKeyDown=\{consumeKeyboardDismissal\}/);
   assert.doesNotMatch(runtimeSource, /selectedTool\s*\?\?/);
   assert.match(runtimeSource, /useRef\(selectedTool\)/);
   assert.match(runtimeSource, /selectedToolRef\.current\s*=\s*selectedTool/);

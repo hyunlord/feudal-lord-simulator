@@ -529,12 +529,9 @@ export const processSpriteImage = (
   return outlined;
 };
 
-const runFfmpeg = (args: readonly string[], input?: Uint8Array): Buffer | null => {
+const runFfmpeg = (args: readonly string[], input?: Uint8Array): Buffer => {
   const result = spawnSync(FFMPEG_PATH, args, { input, maxBuffer: 1024 * 1024 * 512 });
   if (result.error !== undefined) {
-    if (result.error.message.includes("ENOENT")) {
-      return null;
-    }
     throw new Error(`ffmpeg failed to start: ${result.error.message}`);
   }
   if (result.status !== 0) {
@@ -555,9 +552,6 @@ export const resizeRgbaLanczos = (image: RgbaImage, target: Dimensions): RgbaIma
     "-pix_fmt", "rgba",
     "pipe:1",
   ], image.rgba);
-  if (raw === null) {
-    return resizeNearest(image, target);
-  }
   const expected = target.width * target.height * 4;
   if (raw.length !== expected) {
     throw new Error(`Lanczos resize returned ${raw.length} bytes, expected ${expected}`);

@@ -25,7 +25,6 @@ const PHASE5_RENDER_FILES = [
   "tests/renderContracts.test.ts",
   "tests/renderVisibility.test.ts",
   "tests/renderObjectFrameCache.test.ts",
-  "tests/renderObjectFrameCacheCache.test.ts",
   "tests/onboardingGuidanceOverlay.test.ts",
   "tests/renderSourceGuards.test.ts",
 ] as const;

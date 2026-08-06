@@ -82,35 +82,53 @@ function worldState(input: {
   };
 }
 
-test("objectRenderItemsForFrame sorts walker items by the render comparator", () => {
+test("objectRenderItemsForFrame reuses the static object queue when only walkers move", () => {
   // Given
   const tiles = [
     tile(0, 0, "grass", "building-1"),
-    tile(1, 0, "grass"),
-    tile(0, 1, "grass"),
-    tile(1, 1, "grass"),
+    tile(1, 0, "forest"),
+    tile(0, 1),
+    tile(1, 1),
   ];
   const state = worldState({
     seed: 7,
     tiles,
     width: 2,
     height: 2,
-    walkers: [walker("walker-b", 0, 0), walker("walker-a", 0, 0)],
+    buildings: [building("building-1", "house", 0, 0)],
+    walkers: [walker("walker-1", 0, 1)],
   });
   const range = { minTx: 0, minTy: 0, maxTx: 1, maxTy: 1 } as const;
+  objectRenderItemsForFrame({ state, visibleTiles: tiles, range, includeGroundCover: false });
+  const originalSort = Array.prototype.sort;
+  let sortCalls = 0;
+  const countingSort: typeof Array.prototype.sort = function <T>(
+    this: T[],
+    compareFn?: (left: T, right: T) => number,
+  ): T[] {
+    sortCalls += 1;
+    return originalSort.call(this, compareFn);
+  };
+  let secondFrame: ReturnType<typeof objectRenderItemsForFrame> = [];
 
   // When
-  const items = objectRenderItemsForFrame({
-    state,
-    visibleTiles: tiles,
-    range,
-    includeGroundCover: false,
-  });
+  Array.prototype.sort = countingSort;
+  try {
+    secondFrame = objectRenderItemsForFrame({
+      state: { ...state, tick: 1, walkers: [walker("walker-1", 1, 1)] },
+      visibleTiles: tiles,
+      range,
+      includeGroundCover: false,
+    });
+  } finally {
+    Array.prototype.sort = originalSort;
+  }
 
   // Then
+  assert.equal(sortCalls, 0, `expected static queue cache to avoid Array.sort, got ${sortCalls}`);
   assert.deepEqual(
-    items.map((item) => `${item.kind}:${item.id}`),
-    ["walker:walker-a", "walker:walker-b"],
+    secondFrame.map((item) => `${item.kind}:${item.id}`),
+    ["building:building-1", "walker:walker-1"],
   );
 });
 
