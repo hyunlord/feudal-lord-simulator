@@ -8,6 +8,10 @@ import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
 import type { House } from "../src/population/population.types";
 
+function assertNever(value: never): never {
+  throw new Error(`Unhandled harness variant: ${JSON.stringify(value)}`);
+}
+
 export interface HarnessMetric {
   readonly label: string;
   readonly value: string;
@@ -101,22 +105,33 @@ function normalizeWalker(walker: Walker) {
     cargo: walker.cargo,
     spawnedTick: walker.spawnedTick,
   };
-  return walker.kind === "carter"
-    ? {
+  switch (walker.kind) {
+    case "builder":
+      return {
+        ...common,
+        siteId: walker.siteId,
+        slotIndex: walker.slotIndex,
+      };
+    case "carter":
+      return {
         ...common,
         mission: walker.mission,
         phase: walker.phase,
         destination: walker.destination,
         reservation: walker.reservation,
         cancellation: walker.cancellation,
-      }
-    : {
+      };
+    case "distributor":
+      return {
         ...common,
         phase: walker.phase,
         junctionVisits: walker.junctionVisits,
         tilesTravelled: walker.tilesTravelled,
         priorTile: walker.priorTile,
       };
+    default:
+      return assertNever(walker);
+  }
 }
 
 export function hashEconomyState(state: GameState): string {

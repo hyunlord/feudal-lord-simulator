@@ -53,8 +53,9 @@ export function drawWalker(
 
   drawWalkerShadow(context, footX, footY, scale);
   drawBody(context, footX, footY, scale, zoom);
+  if (walker.kind === "builder") drawBuilderMark(context, footX, footY, scale, zoom);
   if (walker.kind === "distributor") drawDistributorMark(context, footX, footY, scale, zoom);
-  if (walker.cargo !== null) {
+  if (walker.kind !== "builder" && walker.cargo !== null) {
     drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
   }
 }
@@ -117,6 +118,29 @@ function drawDistributorMark(
     snapToPixel(footY - 8 * scale),
     snapToPixel(8 * scale),
     snapToPixel(3 * scale),
+  );
+}
+
+function drawBuilderMark(
+  context: CanvasRenderingContext2D,
+  footX: number,
+  footY: number,
+  scale: number,
+  zoom: number,
+): void {
+  context.fillStyle = PALETTE.gold;
+  context.fillRect(
+    snapToPixel(footX - 4 * scale),
+    snapToPixel(footY - 9 * scale),
+    snapToPixel(8 * scale),
+    snapToPixel(2 * scale),
+  );
+  applyInkOutline(context, zoom);
+  context.strokeRect(
+    snapToPixel(footX - 4 * scale),
+    snapToPixel(footY - 9 * scale),
+    snapToPixel(8 * scale),
+    snapToPixel(2 * scale),
   );
 }
 

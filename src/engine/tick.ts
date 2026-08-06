@@ -5,7 +5,10 @@ import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { stepProduction } from "../economy/production";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
-import { allocateBuildingLabour } from "../population/labour";
+import {
+  allocateBuildingAndConstructionLabour,
+  builderWalkersForSites,
+} from "../population/labour";
 import { createMulberry32, createRoamingJunctionSeed } from "./prng";
 import {
   createDeliveryInventoryPort,
@@ -77,7 +80,9 @@ export function advanceSimulationSubstep(state: GameState): GameState {
   const movedCarters = stepCarters({
     tick,
     buildings: state.buildings,
+    constructionSites: state.constructionSites,
     walkers: state.walkers,
+    treasuryTimber: state.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
   });
@@ -95,20 +100,30 @@ export function advanceSimulationSubstep(state: GameState): GameState {
   });
   const servedHouses = mergeRoamingHouses(state.houses, movedDistributors.houses);
   const housing = updateHousing(servedHouses, movedDistributors.buildings, tick);
-  const labour = allocateBuildingLabour(movedDistributors.buildings, housing.population);
+  const labour = allocateBuildingAndConstructionLabour(
+    movedDistributors.buildings,
+    movedCarters.constructionSites,
+    housing.population,
+  );
+  const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
+  const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
   const produced = runProduction({
     ...state,
     tick,
     buildings: [...labour.buildings],
+    constructionSites: [...labour.constructionSites],
     houses: [...housing.houses],
-    walkers: [...movedDistributors.walkers],
+    walkers,
     population: housing.population,
     idleWorkers: labour.idleWorkers,
+    treasuryTimber: movedCarters.treasuryTimber,
   });
   const spawnedCarters = spawnCarters({
     tick,
     buildings: produced.buildings,
+    constructionSites: produced.constructionSites,
     walkers: produced.walkers,
+    treasuryTimber: produced.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
   });
@@ -122,7 +137,9 @@ export function advanceSimulationSubstep(state: GameState): GameState {
   return {
     ...produced,
     buildings: [...spawnedDistributors.buildings],
+    constructionSites: [...spawnedCarters.constructionSites],
     walkers: [...spawnedDistributors.walkers],
+    treasuryTimber: spawnedCarters.treasuryTimber,
     pathCache: routePorts.getPathCache(),
   };
 }

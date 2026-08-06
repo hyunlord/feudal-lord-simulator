@@ -61,3 +61,52 @@ test("building and empty tile clicks select or dismiss deterministically", () =>
   );
   assert.equal(selectWorldAtTile(STATE, { tx: 1, ty: 0 }), null);
 });
+
+test("builder walkers do not open blank walker or phantom building selections", () => {
+  // Given
+  const builder = {
+    id: "builder:construction-site-000001:0",
+    kind: "builder",
+    homeBuildingId: "construction-site-000001",
+    siteId: "construction-site-000001",
+    slotIndex: 0,
+    position: { tx: 0, ty: 0 },
+    path: [],
+    pathIndex: 0,
+    previousTile: null,
+    cargo: null,
+    spawnedTick: 0,
+  } as const;
+  const constructionTileState = {
+    ...STATE,
+    tiles: [{ ...STATE.tiles[0], buildingId: "construction-site-000001" }],
+    buildings: [],
+    walkers: [builder],
+  } satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "walkers">;
+
+  // When / Then
+  assert.equal(selectWorldAtTile(constructionTileState, { tx: 0, ty: 0 }), null);
+});
+
+test("clicking through a builder can still resolve an underlying finished building", () => {
+  // Given
+  const builder = {
+    id: "builder:construction-site-000001:0",
+    kind: "builder",
+    homeBuildingId: "construction-site-000001",
+    siteId: "construction-site-000001",
+    slotIndex: 0,
+    position: { tx: 0, ty: 0 },
+    path: [],
+    pathIndex: 0,
+    previousTile: null,
+    cargo: null,
+    spawnedTick: 0,
+  } as const;
+
+  // When / Then
+  assert.deepEqual(
+    selectWorldAtTile({ ...STATE, walkers: [builder] }, { tx: 0, ty: 0 }),
+    { kind: "building", buildingId: "house" },
+  );
+});

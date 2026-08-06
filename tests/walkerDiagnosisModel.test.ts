@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type {
+  BuilderWalker,
   CarterCancellationReason,
   CarterWalker,
   DistributorWalker,
@@ -75,6 +76,22 @@ function distributor(): DistributorWalker {
     junctionVisits: 7,
     tilesTravelled: 18,
     priorTile: { tx: 3, ty: 3 },
+  };
+}
+
+function builder(): BuilderWalker {
+  return {
+    id: "builder:construction-site-000001:0",
+    kind: "builder",
+    homeBuildingId: "construction-site-000001",
+    siteId: "construction-site-000001",
+    slotIndex: 0,
+    position: { tx: 2.25, ty: 2.25 },
+    path: [],
+    pathIndex: 0,
+    previousTile: null,
+    cargo: null,
+    spawnedTick: 0,
   };
 }
 
@@ -200,4 +217,12 @@ test("Carter diagnosis exposes its existing cancellation instead of a generic st
   assert.ok(model !== null);
   assert.equal(model.cancellationLabel, "도로가 끊김");
   assert.equal(model.statusLabel, "배송 취소");
+});
+
+test("Builder walkers are excluded from walker diagnosis cards", () => {
+  // Given
+  const input = gameState([builder()]);
+
+  // When / Then
+  assert.equal(walkerDiagnosisModel(input, "builder:construction-site-000001:0"), null);
 });

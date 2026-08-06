@@ -12,11 +12,12 @@ export type AnchoredWorldSelection = WorldSelection & {
 };
 
 export function selectWorldAtTile(
-  state: Pick<GameState, "tiles" | "width" | "height" | "walkers">,
+  state: Pick<GameState, "buildings" | "tiles" | "width" | "height" | "walkers">,
   tile: TileCoordinate,
 ): WorldSelection | null {
   const walker = [...state.walkers]
     .reverse()
+    .filter((candidate) => candidate.kind !== "builder")
     .find((candidate) => {
       const anchor = walkerVisualAnchor(candidate.position);
       const renderedTile = pickTile({ x: anchor.sx, y: anchor.sy });
@@ -25,5 +26,8 @@ export function selectWorldAtTile(
   if (walker !== undefined) return { kind: "walker", walkerId: walker.id };
 
   const buildingId = getTile(state, tile)?.buildingId ?? null;
-  return buildingId === null ? null : { kind: "building", buildingId };
+  if (buildingId === null) return null;
+  return state.buildings.some((building) => building.id === buildingId)
+    ? { kind: "building", buildingId }
+    : null;
 }

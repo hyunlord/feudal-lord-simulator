@@ -1,6 +1,6 @@
 import type { ResourceType } from "../content/resourceConfig";
 
-export type WalkerKind = "carter" | "distributor";
+export type WalkerKind = "builder" | "carter" | "distributor";
 
 export interface TilePos {
   readonly tx: number;
@@ -96,4 +96,11 @@ export interface DistributorWalker extends WalkerBase {
   readonly priorTile: TilePos | null;
 }
 
-export type Walker = CarterWalker | DistributorWalker;
+export interface BuilderWalker extends WalkerBase {
+  readonly id: string;
+  readonly kind: "builder";
+  readonly siteId: string;
+  readonly slotIndex: number;
+}
+
+export type Walker = BuilderWalker | CarterWalker | DistributorWalker;

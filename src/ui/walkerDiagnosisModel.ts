@@ -55,6 +55,7 @@ function distance(left: TilePos, right: TilePos): number {
 }
 
 function remainingPathDistance(walker: Walker): number {
+  if (walker.kind === "builder") return 0;
   const next = walker.path[walker.pathIndex + 1];
   if (next === undefined) return 0;
   let total = distance(walker.position, next);
@@ -83,6 +84,7 @@ function destinationLabel(state: GameState, destination: CarterDestination): str
 }
 
 function cargoLabel(walker: Walker): string {
+  if (walker.kind === "builder") return "화물 없음";
   if (walker.cargo === null) return "화물 없음";
   return `${RESOURCE_LABELS[walker.cargo.resource]} ${walker.cargo.amount}`;
 }
@@ -100,6 +102,7 @@ function carterStatus(walker: CarterWalker): string {
 }
 
 function adjacentHouseCount(state: GameState, walker: Walker): number {
+  if (walker.kind === "builder") return 0;
   const adjacent = state.houses.filter((house) => {
     const building = state.buildings.find((candidate) => candidate.id === house.buildingId);
     return building !== undefined && walker.path.some((tile) => distance(building, tile) <= 1);
@@ -143,6 +146,8 @@ export function walkerDiagnosisModel(
   if (walker === undefined) return null;
   const remainingDistance = remainingPathDistance(walker);
   switch (walker.kind) {
+    case "builder":
+      return null;
     case "carter":
       return carterDiagnosis(state, walker, remainingDistance);
     case "distributor":
