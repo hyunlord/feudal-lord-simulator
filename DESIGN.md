@@ -116,6 +116,24 @@ edges. Scroll art frames content only; its interior remains visually empty.
 - **Building inspector:** a quiet parchment hover plaque with Korean identity,
   purpose, labour, stock, progress, and house service facts. It follows the
   pointer, ignores pointer input, and never enters simulation state.
+- **Persistent diagnosis card:** clicking a house, production building, or
+  walker opens one dismissible parchment card. Houses state the exact water
+  and bread cause chain, production buildings distinguish missing labour,
+  disconnected labour or supply, and full output storage, and walkers show
+  their live role, cargo, route, status, distance, ETA, and cancellation cause.
+  The card is presentation-only, gives walker selection priority over an
+  overlapping building, and becomes a bottom sheet above the court console at
+  narrow widths.
+- **Population event ledger:** a capped, presentation-only event list groups
+  consecutive equal population changes, states the unit delta and immediate
+  cause, and highlights the related houses when an entry is selected. It is
+  derived from successive simulation snapshots and never adds fields to
+  `GameState`.
+- **Diagnostic overlays:** road-component and distributor-range modes reuse the
+  exact road graph and footprint geometry used by routing. The former isolates
+  the selected building's connected road component; the latter shows every
+  road tile reachable within the canonical distributor range. Both remain
+  optional presentation layers and do not alter pathfinding or balance.
 - **Placement mark:** translucent footprint, ink boundary, and a small
   parchment failure plaque positioned near the pointer.
 - **Welcome parchment:** a centered parchment card above the world and the

@@ -55,7 +55,7 @@ export function GameCanvas({
         className={selectedTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
         aria-label="Simulation canvas"
       />
-      <BuildingInspector state={state} hover={hoveredBuilding} />
+      <BuildingInspector state={state} hover={selection === null ? hoveredBuilding : null} />
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard model={cardModel} position={selection.position} />
       ) : null}
