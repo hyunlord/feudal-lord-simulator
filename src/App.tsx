@@ -1,4 +1,12 @@
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type PointerEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent,
+  type PointerEvent,
+} from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
 import { GameCanvas } from "./render/GameCanvas";
@@ -55,9 +63,10 @@ export function App() {
   }, [dispatch, speed]);
 
   useEffect(() => {
+    if (onboardingPresentation.openGoalReached) return undefined;
     const interval = window.setInterval(() => setPresentationNowMs(Date.now()), 100);
     return () => window.clearInterval(interval);
-  }, []);
+  }, [onboardingPresentation.openGoalReached]);
 
   useEffect(() => {
     const nextPresentation = nextOnboardingPresentationCommit({
@@ -138,17 +147,28 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
     event.stopPropagation();
     onDismiss();
   };
+  const consumeKeyboardDismissal = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.code !== "Enter" && event.code !== "Space" && event.code !== "Escape") return;
+    event.preventDefault();
+    event.stopPropagation();
+    onDismiss();
+  };
 
   return (
     <div
       className="welcome-dismiss-layer"
       onPointerDown={consumeDismissal}
       onClick={consumeDismissal}
+      onKeyDown={consumeKeyboardDismissal}
+      tabIndex={0}
     >
       <section className="welcome-parchment" aria-label="Opening guidance">
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
+        <button type="button" className="welcome-dismiss-button" autoFocus onClick={onDismiss}>
+          시작하기
+        </button>
         <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
       </section>
     </div>

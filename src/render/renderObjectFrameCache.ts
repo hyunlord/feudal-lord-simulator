@@ -68,7 +68,7 @@ const walkerRenderItemsForFrame = (
   for (const walker of walkers) {
     if (!tileIsVisibleInRange(walker.position.tx, walker.position.ty, range)) continue;
     const anchor = walkerVisualAnchor(walker.position);
-    items.push({
+    insertSortedObjectRenderItem(items, {
       kind: "walker",
       id: walker.id,
       walker,
@@ -77,6 +77,22 @@ const walkerRenderItemsForFrame = (
     });
   }
   return items;
+};
+
+const insertSortedObjectRenderItem = (
+  items: ObjectRenderItem[],
+  item: ObjectRenderItem,
+): void => {
+  let index = items.length;
+  while (index > 0) {
+    const previous = items[index - 1];
+    if (previous === undefined || compareObjectRenderItems(previous, item) <= 0) {
+      break;
+    }
+    items[index] = previous;
+    index -= 1;
+  }
+  items[index] = item;
 };
 
 const mergeObjectRenderItems = (
