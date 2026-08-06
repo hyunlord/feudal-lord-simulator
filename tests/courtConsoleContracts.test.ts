@@ -197,7 +197,7 @@ test("ledger recess keeps responsive controls inside the viewport", async () => 
 
   // Then
   assert.match(ledgerRecessRule, /grid-template-columns:\s*minmax\(0, 1fr\) auto;/);
-  assert.match(ledgerRecessRule, /align-items:\s*end;/);
+  assert.match(ledgerRecessRule, /align-content:\s*end;/);
   assert.doesNotMatch(ledgerRecessRule, /minmax\(210px, 1fr\)/);
 });
 

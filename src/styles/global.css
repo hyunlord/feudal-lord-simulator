@@ -640,7 +640,7 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 5px;
-  align-items: end;
+  align-content: end;
   padding: 11px 14px;
 }
 
