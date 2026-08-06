@@ -115,19 +115,20 @@ test("economy overlay controls render inside the right console recess instead of
   assert.ok(markup.indexOf('aria-label="Economy overlays"') < markup.indexOf('class="speed-seals"'));
 });
 
-test("the population objective stays in the right console while only the status line floats", () => {
+test("the onboarding task list replaces the distant population objective in the right console", () => {
   // Given / When
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
   const statusIndex = markup.indexOf('aria-label="Settlement status"');
   const consoleIndex = markup.indexOf('aria-label="Court console"');
-  const objectiveIndex = markup.indexOf('aria-label="Population objective"');
+  const tasksIndex = markup.indexOf('aria-label="Onboarding tasks"');
   assert.ok(statusIndex >= 0 && statusIndex < consoleIndex);
-  assert.ok(objectiveIndex > consoleIndex);
+  assert.ok(tasksIndex > consoleIndex);
   assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
   assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
-  assert.match(markup.slice(objectiveIndex), /목표: 인구 50명/);
+  assert.match(markup.slice(tasksIndex), /길을 놓아 오두막을 이으세요/);
+  assert.match(markup.slice(tasksIndex), /숲 옆에 벌목소를 지으세요/);
 });
 
 test("sixty-tick guidance sampling does not schedule state from an effect on every simulation tick", async () => {

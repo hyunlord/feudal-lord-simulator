@@ -2,7 +2,11 @@ import type { Walker } from "../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import type { Tile } from "../world/world.types";
 import { depthKey } from "./iso";
-import type { TileRange } from "./renderer";
+import {
+  footprintHasVisibleTile,
+  tileIsVisibleInRange,
+  type TileRange,
+} from "./renderVisibility";
 import {
   buildForestLookup,
   buildGroundCover,
@@ -74,7 +78,9 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
   const clearedTiles = clearedTreeTileKeys(input.buildings);
   const seed = input.seed ?? 0;
   const worldTiles = input.worldTiles ?? input.tiles;
-  const foliageTiles = input.tiles.filter((tile) => tilePosIsWithinRange(tile.tx, tile.ty, input.range));
+  const foliageTiles = input.tiles.filter((tile) =>
+    tileIsVisibleInRange(tile.tx, tile.ty, input.range),
+  );
   const forestLookup = buildForestLookup(worldTiles);
   const protectedGroundCoverTiles = groundCoverProtectedTileKeys(worldTiles, input.buildings);
 
@@ -106,7 +112,7 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
   }
 
   for (const walker of input.walkers ?? []) {
-    if (tilePosIsWithinRange(walker.position.tx, walker.position.ty, input.range)) {
+    if (tileIsVisibleInRange(walker.position.tx, walker.position.ty, input.range)) {
       const anchor = walkerVisualAnchor(walker.position);
       items.push({
         kind: "walker",
@@ -120,7 +126,14 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
 
   for (const building of input.buildings) {
     const config = BUILDING_CONFIG_BY_KIND[building.kind];
-    if (!footprintOverlapsRange(building.tx, building.ty, config.width, config.height, input.range)) {
+    if (
+      !footprintHasVisibleTile({
+        tx: building.tx,
+        ty: building.ty,
+        width: config.width,
+        height: config.height,
+      }, input.range)
+    ) {
       continue;
     }
     items.push({
@@ -201,25 +214,6 @@ function addGroundCoverApron(keys: Set<string>, area: TileArea): void {
       keys.add(tileKey(apronTx, apronTy));
     }
   }
-}
-
-function tilePosIsWithinRange(tx: number, ty: number, range: TileRange): boolean {
-  return tx >= range.minTx && tx <= range.maxTx && ty >= range.minTy && ty <= range.maxTy;
-}
-
-function footprintOverlapsRange(
-  tx: number,
-  ty: number,
-  width: number,
-  height: number,
-  range: TileRange,
-): boolean {
-  return (
-    tx <= range.maxTx &&
-    tx + width - 1 >= range.minTx &&
-    ty <= range.maxTy &&
-    ty + height - 1 >= range.minTy
-  );
 }
 
 function tileKey(tx: number, ty: number): string {

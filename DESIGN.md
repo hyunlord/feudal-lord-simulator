@@ -118,6 +118,49 @@ edges. Scroll art frames content only; its interior remains visually empty.
   pointer, ignores pointer input, and never enters simulation state.
 - **Placement mark:** translucent footprint, ink boundary, and a small
   parchment failure plaque positioned near the pointer.
+- **Welcome parchment:** a centered parchment card above the world and the
+  court console. It introduces the first interaction, uses the existing
+  parchment and ink tokens only, and dismisses locally on click or pointer
+  down without affecting the simulation.
+- **Onboarding tasks:** the right console shows the current task, the next
+  task, the completion flourish, or the open-goal state in that order. Current
+  tasks receive the strongest emphasis, next tasks remain legible but quieter,
+  and the open goal replaces the ordered list once all tasks are complete.
+- **Road seal:** the road tool is visually distinct from building seals so the
+  player can find it quickly. It keeps the same token family as the other seals
+  but reads as a separate path/utility action instead of a structure.
+- **Armed seal:** the selected seal is inset and tinted so the active tool is
+  unmistakable. Relevant onboarding tools pulse subtly while the onboarding
+  task points at them, but only the armed seal receives the active inset and
+  crosshair treatment.
+- **Placement feedback:** valid and invalid placement states remain legible at
+  both pointer scale and console scale. The palette tokens for these messages
+  stay within the canonical parchment, vellum, ink, sage, and vermilion set;
+  no new colours, blur, or shadow effects are introduced for feedback.
+- **Opening road target:** while the first onboarding task is incomplete, the
+  world marks one actually buildable cardinal road tile beside the canonical
+  starting house with a gold-outlined parchment diamond and the vellum plaque
+  `여기에 길을 놓으세요`. The marker is presentation only and disappears as
+  soon as any cardinal road touches that house.
+- **Onboarding world targets:** after the opening road, the current incomplete
+  onboarding task may mark deterministic, actually buildable world origins for
+  the required building kind. Food-chain onboarding may show the missing
+  밀밭, 방앗간, and 곡창 targets at once when currently valid and
+  non-overlapping, and it may add the same four numbered 오두막 prep targets
+  used by the population task so houses can begin growing before the food
+  chain is finished. If one more road is required before those six-minute
+  prep markers are all actually buildable, the guidance keeps showing the
+  presentation-only road extension first. These targets reuse the same
+  gold-outlined parchment diamond and concise Korean vellum plaque language,
+  remain presentation-only, and are derived from the existing placement rules
+  rather than mutating economy, camera, control, or simulation state.
+- **Population onboarding targets:** once road, production, storage, water, and
+  food-chain tasks are satisfied, the population-30 task marks up to four new
+  actually buildable 오두막 origins at once. Watered candidates within the
+  existing well radius are preferred when enough exist; otherwise the same
+  placement-rule scan falls back to the nearest buildable origins. Labels use
+  the compact `오두막 n/4` pattern so the player builds the batch first, then
+  immediately uses 5배속 without waiting through serial road-extension hints.
 - **Court console:** one continuous generated wood surface with three clearly
   sunken recesses, never a collection of floating panels.
 - **Build seals:** generated seal recesses containing procedural SVG glyphs.

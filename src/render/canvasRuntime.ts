@@ -1,6 +1,16 @@
 import type { GameState } from "../engine/engine.types";
-import { clampPan, type CameraState, type Point } from "./camera";
+import { clampPan, clampZoom, type CameraState, type Point } from "./camera";
 import { worldBounds } from "./interactions";
+import { TILE_H, TILE_W, tileToScreen } from "./iso";
+
+const STARTING_HOUSE_ID = "house-0-0-0";
+const DESKTOP_CONSOLE_HEIGHT = 150;
+const MOBILE_CONSOLE_HEIGHT = 188;
+const MOBILE_MAX_WIDTH = 600;
+const TARGET_ISO_TILE_SPAN = 20;
+
+type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">;
+type InitialCameraState = Pick<GameState, "width" | "height" | "buildings">;
 
 export type DragState = {
   readonly mode: "none" | "pan" | "road";
@@ -22,11 +32,74 @@ export function resizeCanvas(
 }
 
 export function initialCamera(
-  canvas: Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">,
-  state: Pick<GameState, "width" | "height">,
+  canvas: InitialCameraCanvas,
+  state: InitialCameraState,
 ): CameraState {
+  return cameraForStartingHouse(canvas, state);
+}
+
+export function cameraForStartingHouse(
+  canvas: InitialCameraCanvas,
+  state: InitialCameraState,
+): CameraState {
+  const zoom = startingHouseZoom(canvas);
+  const house = startingHouse(state.buildings);
+  if (house === null) {
+    return genericInitialCamera(canvas, state, zoom);
+  }
+  const anchor = tileToScreen(house.tx, house.ty);
+  const center = usableViewportCenter(canvas);
+
+  return {
+    zoom,
+    panX: center.x - anchor.sx * zoom,
+    panY: center.y - anchor.sy * zoom,
+  };
+}
+
+function startingHouseZoom(canvas: InitialCameraCanvas): number {
+  const usableHeight = usableViewportHeight(canvas);
+  return clampZoom(
+    Math.min(
+      canvas.clientWidth / (TILE_W * TARGET_ISO_TILE_SPAN),
+      usableHeight / (TILE_H * TARGET_ISO_TILE_SPAN),
+    ),
+  );
+}
+
+function usableViewportCenter(canvas: InitialCameraCanvas): Point {
+  return {
+    x: canvas.clientWidth / 2,
+    y: usableViewportHeight(canvas) / 2,
+  };
+}
+
+function usableViewportHeight(canvas: InitialCameraCanvas): number {
+  const consoleHeight = canvas.clientWidth <= MOBILE_MAX_WIDTH
+    ? MOBILE_CONSOLE_HEIGHT
+    : DESKTOP_CONSOLE_HEIGHT;
+  return Math.max(1, canvas.clientHeight - consoleHeight);
+}
+
+function startingHouse(
+  buildings: InitialCameraState["buildings"],
+): InitialCameraState["buildings"][number] | null {
+  return (
+    buildings.find((building) => building.id === STARTING_HOUSE_ID && building.kind === "house") ??
+    buildings.find((building) => building.kind === "house") ??
+    null
+  );
+}
+
+function genericInitialCamera(
+  canvas: InitialCameraCanvas,
+  state: Pick<GameState, "width" | "height">,
+  zoom: number,
+): CameraState {
+  // With no house anchor, keep the previous world-bounds clamp behavior so the
+  // fallback is finite and generic instead of inventing a synthetic target.
   return clampPan(
-    { zoom: 1, panX: canvas.clientWidth / 2, panY: 80 },
+    { zoom, panX: canvas.clientWidth / 2, panY: 80 },
     { width: canvas.clientWidth, height: canvas.clientHeight },
     worldBounds(state.width, state.height),
   );

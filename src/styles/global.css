@@ -36,6 +36,52 @@ button {
   background-color: var(--palette-parchment-dark);
 }
 
+.welcome-dismiss-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.welcome-parchment {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(192px, 27vh, 252px);
+  display: grid;
+  gap: 6px;
+  width: min(420px, calc(100% - 32px));
+  padding: 14px 18px 15px;
+  color: var(--palette-ink);
+  text-align: center;
+  pointer-events: none;
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 6%, 98% 0, 100% 94%, 4% 100%, 0 20%);
+  transform: translateX(-50%);
+  isolation: isolate;
+}
+
+.welcome-parchment h2 {
+  margin: 0;
+  color: var(--palette-vermilion);
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.05;
+}
+
+.welcome-parchment p {
+  margin: 0;
+  font-size: clamp(12px, 1.1vw, 14px);
+  line-height: 1.3;
+}
+
+.welcome-dismiss {
+  color: var(--palette-ink-light);
+  font-size: clamp(10px, 0.95vw, 12px);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -224,6 +270,98 @@ button {
   color: var(--palette-gold-dark);
 }
 
+.onboarding-tasks {
+  min-width: 0;
+}
+
+.onboarding-tasks[data-onboarding-state="ordered"] {
+  display: grid;
+  gap: 4px;
+}
+
+.onboarding-tasks[data-onboarding-state="ordered"] ol {
+  display: grid;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.onboarding-tasks[data-onboarding-state="open-goal"] {
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  padding: 5px 8px;
+  color: var(--palette-ink);
+  text-align: center;
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 7%, 97% 0, 100% 91%, 4% 100%, 0 21%);
+}
+
+.onboarding-task {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding: 5px 7px 6px;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 7%, 97% 0, 100% 92%, 4% 100%, 0 21%);
+}
+
+.onboarding-task--current {
+  color: var(--palette-ink);
+  background-color: var(--palette-parchment);
+}
+
+.onboarding-task--next {
+  color: var(--palette-ink-light);
+  background-color: var(--palette-vellum);
+}
+
+.onboarding-task-title,
+.onboarding-task-hint,
+.onboarding-task-flourish {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.onboarding-task-title {
+  font-size: 11px;
+  line-height: 1.05;
+}
+
+.onboarding-task--current .onboarding-task-title {
+  color: var(--palette-vermilion);
+}
+
+.onboarding-task--next .onboarding-task-title {
+  color: var(--palette-ink);
+}
+
+.onboarding-task-hint {
+  font-size: 9px;
+  line-height: 1.25;
+}
+
+.onboarding-task-flourish {
+  justify-self: start;
+  padding: 1px 5px;
+  color: var(--palette-gold-dark);
+  font-size: 8px;
+  line-height: 1;
+  background-color: var(--palette-parchment-dark);
+  border: 1px solid var(--palette-ink);
+}
+
 .problem-glyph {
   display: inline-grid;
   place-items: center;
@@ -320,6 +458,12 @@ button {
   background-color: var(--palette-ink);
 }
 
+.road-tool {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+}
+
 .build-group {
   display: grid;
   gap: 2px;
@@ -364,6 +508,45 @@ button {
 .build-seal {
   width: var(--seal-size);
   height: var(--seal-size);
+}
+
+.build-seal--road {
+  width: calc(var(--seal-size) * 2 + 2px);
+  height: calc(var(--seal-size) - 2px);
+  padding-inline: 8px;
+  color: var(--palette-ink-light);
+  background-color: var(--palette-parchment-dark);
+  clip-path: polygon(4% 16%, 96% 8%, 100% 50%, 96% 92%, 4% 84%, 0 50%);
+}
+
+.build-seal--selected {
+  color: var(--palette-gold-dark);
+  background-color: var(--palette-parchment-dark);
+  transform: translateY(1px);
+}
+
+.build-seal--selected::before,
+.build-seal--selected::after {
+  position: absolute;
+  z-index: 1;
+  content: "";
+  background-color: currentColor;
+  pointer-events: none;
+}
+
+.build-seal--selected::before {
+  width: 42%;
+  height: 1px;
+}
+
+.build-seal--selected::after {
+  width: 1px;
+  height: 42%;
+}
+
+.build-seal--highlighted {
+  color: var(--palette-gold-dark);
+  animation: sealPulse 1.8s ease-in-out infinite;
 }
 
 .build-seal:hover,
@@ -436,6 +619,17 @@ button {
   right: 0;
   left: auto;
   transform: none;
+}
+
+@keyframes sealPulse {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .ledger-recess {
@@ -519,6 +713,18 @@ button {
   opacity: 0.86;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .build-seal--highlighted {
+    animation: none;
+  }
+
+  .build-seal,
+  .speed-seal,
+  .welcome-parchment {
+    transition: none;
+  }
+}
+
 .court-ledger > * {
   position: relative;
   z-index: 1;
@@ -575,6 +781,20 @@ button {
 }
 
 @media (max-width: 900px) {
+  .welcome-parchment {
+    bottom: clamp(186px, 24vh, 224px);
+    width: min(372px, calc(100% - 24px));
+    padding: 12px 14px 13px;
+  }
+
+  .welcome-parchment h2 {
+    font-size: clamp(17px, 2.2vw, 19px);
+  }
+
+  .welcome-parchment p {
+    font-size: clamp(11px, 1.45vw, 12px);
+  }
+
   .court-console {
     gap: 6px;
     padding-right: 10px;
@@ -607,6 +827,21 @@ button {
 }
 
 @media (max-width: 600px) {
+  .welcome-parchment {
+    bottom: 230px;
+    width: min(320px, calc(100% - 18px));
+    gap: 5px;
+    padding: 10px 12px 11px;
+  }
+
+  .welcome-parchment h2 {
+    font-size: 17px;
+  }
+
+  .welcome-parchment p {
+    font-size: 11px;
+  }
+
   .court-console {
     gap: clamp(2px, 0.5vw, 3px);
     height: 188px;
@@ -638,20 +873,31 @@ button {
     font-size: 7px;
   }
 
+  .road-tool {
+    margin-top: 1px;
+  }
+
+  .build-seal--road {
+    width: min(100%, calc(var(--seal-size) * 4 + 8px));
+    height: calc(var(--seal-size) - 1px);
+  }
+
   .ledger-recess {
     display: flex;
     flex-direction: column;
-    gap: clamp(2px, 0.5vw, 3px);
-    padding: clamp(8px, 1.8vw, 11px) clamp(4px, 1.2vw, 7px);
+    gap: 2px;
+    padding: 6px clamp(4px, 1.2vw, 7px);
   }
 
   .ledger-stack {
     width: 100%;
+    gap: 2px;
   }
 
   .economy-overlays {
     max-width: 100%;
-    padding: 3px 4px;
+    gap: 2px;
+    padding: 2px 4px;
   }
 
   .ledger-stack .overlay-heading {
@@ -664,8 +910,8 @@ button {
 
   .court-ledger {
     width: 100%;
-    height: clamp(72px, 13vw, 78px);
-    padding: clamp(11px, 2.2vw, 14px) clamp(6px, 1.5vw, 9px) 7px;
+    height: 56px;
+    padding: 9px clamp(6px, 1.5vw, 9px) 6px;
   }
 
   .ledger-heading {
@@ -687,6 +933,7 @@ button {
     grid-auto-rows: clamp(18px, 3.5vw, 21px);
     gap: 1px;
     justify-content: center;
+    margin-bottom: 2px;
   }
 
   .speed-seal {
@@ -702,7 +949,7 @@ button {
   }
 
   .settlement-status {
-    right: 6px;
+    right: calc(33.333% + 4px);
     bottom: 192px;
     left: 6px;
     justify-content: center;
@@ -717,5 +964,28 @@ button {
   .problem-glyph {
     width: 20px;
     height: 20px;
+  }
+
+  .onboarding-task {
+    gap: 1px;
+    padding: 3px 6px;
+  }
+
+  .onboarding-task-title {
+    font-size: 10px;
+  }
+
+  .onboarding-task-hint {
+    font-size: 8px;
+    line-height: 1.1;
+  }
+
+  .onboarding-task--next .onboarding-task-hint {
+    display: none;
+  }
+
+  .onboarding-task-flourish {
+    padding: 1px 4px;
+    font-size: 7px;
   }
 }

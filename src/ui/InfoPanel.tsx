@@ -1,7 +1,12 @@
 import type { EconomyStockTotals } from "./ledgerModel";
 import type { PlacementTool } from "../render/renderer";
+import {
+  getPlacementToolStatus,
+  type PlacementTool as FeedbackPlacementTool,
+} from "../render/placementFeedback";
 import { BUILD_TOOL_OPTIONS } from "./buildMenuModel";
 import type { GameState } from "../engine/engine.types";
+import type { OnboardingTaskView } from "./onboardingTaskModel";
 import { settlementGuidance } from "./settlementGuidanceModel";
 
 type CourtLedgerProps = {
@@ -48,12 +53,27 @@ export function CourtLedger({
   );
 }
 
-export function SettlementStatusLine({ state }: { readonly state: GameState }) {
+type SettlementStatusLineProps = {
+  readonly state: GameState;
+  readonly selectedTool?: PlacementTool | null;
+  readonly placementFeedbackMessage?: string | null;
+};
+
+export function SettlementStatusLine({
+  state,
+  selectedTool = null,
+  placementFeedbackMessage = null,
+}: SettlementStatusLineProps) {
   const guidance = settlementGuidance(state);
+  const activeToolStatus =
+    selectedTool === null ? null : getPlacementToolStatus(feedbackPlacementTool(selectedTool));
+  const statusLine = activeToolStatus ?? placementFeedbackMessage ?? guidance.statusLine;
+  const showProblemGlyph = activeToolStatus === null && placementFeedbackMessage === null;
+
   return (
     <section className="settlement-status" aria-label="Settlement status">
       <span className="settlement-priority">
-        {guidance.priority === null ? null : (
+        {guidance.priority === null || !showProblemGlyph ? null : (
           <span
             className={`problem-glyph problem-glyph--${guidance.priority.kind}`}
             aria-label={guidance.priority.label}
@@ -61,8 +81,40 @@ export function SettlementStatusLine({ state }: { readonly state: GameState }) {
             {guidance.priority.glyph}
           </span>
         )}
-        <span>{guidance.statusLine}</span>
+        <span>{statusLine}</span>
       </span>
+    </section>
+  );
+}
+
+export function OnboardingTasks({ view }: { readonly view: OnboardingTaskView }) {
+  if (view.openGoal !== null) {
+    return (
+      <section className="onboarding-tasks" aria-label="Onboarding tasks" data-onboarding-state="open-goal">
+        <span className="settlement-target">{view.openGoal.title}</span>
+      </section>
+    );
+  }
+
+  return (
+    <section className="onboarding-tasks" aria-label="Onboarding tasks" data-onboarding-state="ordered">
+      <ol>
+        {view.current === null ? null : (
+          <li className="onboarding-task onboarding-task--current" data-task-state="current">
+            <span className="onboarding-task-title">{view.current.title}</span>
+            <span className="onboarding-task-hint">{view.current.hint}</span>
+            {view.current.flourishLabel === null ? null : (
+              <span className="onboarding-task-flourish">{view.current.flourishLabel}</span>
+            )}
+          </li>
+        )}
+        {view.next === null ? null : (
+          <li className="onboarding-task onboarding-task--next" data-task-state="next">
+            <span className="onboarding-task-title">{view.next.title}</span>
+            <span className="onboarding-task-hint">{view.next.hint}</span>
+          </li>
+        )}
+      </ol>
     </section>
   );
 }
@@ -79,4 +131,9 @@ export function SettlementObjective({ state }: { readonly state: GameState }) {
       )}
     </section>
   );
+}
+
+function feedbackPlacementTool(tool: PlacementTool): FeedbackPlacementTool {
+  if (tool === "road") return { kind: "road" };
+  return { kind: "building", buildingKind: tool };
 }

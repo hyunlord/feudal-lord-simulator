@@ -8,8 +8,14 @@ import type { CameraState, CanvasRect, Point, ViewportBounds, WorldBounds } from
 import { canvasToWorld, clampPan, clientToCanvas, clampZoom } from "./camera";
 import { TILE_H, TILE_W } from "./iso";
 import { pickTile } from "./picking";
+import {
+  createPlacementFeedback,
+  formatPlacementFailure,
+  type PlacementFeedback,
+} from "./placementFeedback";
 import type { PlacementPreview } from "./overlays";
 import type { PlacementTool } from "./renderer";
+import type { GameAction } from "../state/gameStore.types";
 
 export type PointerLike = {
   readonly clientX: number;
@@ -32,6 +38,27 @@ export type KeyboardPanInput = {
 };
 
 export const DEFAULT_PLACEMENT_TOOL: PlacementTool = "house";
+export const MODELED_ROAD_TIMBER_COST = 0;
+
+type BuildingPlacementAttemptInput = {
+  readonly state: GameState;
+  readonly tool: Exclude<PlacementTool, "road">;
+  readonly tile: TileCoordinate;
+  readonly nowMs: number;
+};
+
+type RoadPlacementAttemptInput = {
+  readonly state: GameState;
+  readonly start: TileCoordinate;
+  readonly destination: TileCoordinate;
+  readonly nowMs: number;
+};
+
+export type PlacementAttemptOutcome = {
+  readonly action: GameAction | null;
+  readonly feedback: PlacementFeedback;
+  readonly keepToolArmed: true;
+};
 
 export function worldBounds(width: number, height: number): WorldBounds {
   return {
@@ -108,7 +135,16 @@ export function placementPreview(
   if (tool === "road") {
     const path = roadStart === null ? [tile] : roadLine(roadStart, tile);
     const ok = path.every((coordinate) => canPlaceRoad(state, coordinate));
-    return { tool, tile, footprint: [], roadPath: path, ok, reason: ok ? null : roadFailure(state, path), cursor: tile };
+    return {
+      tool,
+      tile,
+      footprint: [],
+      roadPath: path,
+      ok,
+      reason: ok ? null : roadFailure(state, path),
+      cursor: tile,
+      timberCost: MODELED_ROAD_TIMBER_COST,
+    };
   }
   const placement = canPlaceBuilding(state, tool, tile.tx, tile.ty);
   return {
@@ -119,11 +155,80 @@ export function placementPreview(
     ok: placement.ok,
     reason: placement.ok ? null : placement.reason,
     cursor: tile,
+    timberCost: null,
+  };
+}
+
+export function resolveBuildingPlacementAttempt(
+  input: BuildingPlacementAttemptInput,
+): PlacementAttemptOutcome {
+  const placement = canPlaceBuilding(input.state, input.tool, input.tile.tx, input.tile.ty);
+  if (!placement.ok) {
+    return {
+      action: null,
+      feedback: createPlacementFeedback({
+        kind: "failure",
+        message: formatPlacementFailure(placement.reason, input.tool),
+        anchor: { kind: "tile", tile: input.tile },
+        nowMs: input.nowMs,
+      }),
+      keepToolArmed: true,
+    };
+  }
+
+  return {
+    action: { type: "place_building", kind: input.tool, tx: input.tile.tx, ty: input.tile.ty },
+    feedback: createPlacementFeedback({
+      kind: "success",
+      message: "건설했습니다",
+      anchor: { kind: "tile", tile: input.tile },
+      nowMs: input.nowMs,
+    }),
+    keepToolArmed: true,
+  };
+}
+
+export function resolveRoadPlacementAttempt(
+  input: RoadPlacementAttemptInput,
+): PlacementAttemptOutcome {
+  const path = roadLine(input.start, input.destination);
+  const failure = roadFailure(input.state, path);
+  if (failure !== null) {
+    return {
+      action: null,
+      feedback: createPlacementFeedback({
+        kind: "failure",
+        message: formatPlacementFailure(failure, "house"),
+        anchor: { kind: "path", path },
+        nowMs: input.nowMs,
+      }),
+      keepToolArmed: true,
+    };
+  }
+
+  return {
+    action: { type: "place_road_line", start: input.start, destination: input.destination },
+    feedback: createPlacementFeedback({
+      kind: "success",
+      message: `길을 놓았습니다 · 목재 ${MODELED_ROAD_TIMBER_COST}`,
+      anchor: { kind: "path", path },
+      nowMs: input.nowMs,
+    }),
+    keepToolArmed: true,
   };
 }
 
 function emptyPreview(tool: PlacementTool | null): PlacementPreview {
-  return { tool, tile: null, footprint: [], roadPath: [], ok: true, reason: null, cursor: null };
+  return {
+    tool,
+    tile: null,
+    footprint: [],
+    roadPath: [],
+    ok: true,
+    reason: null,
+    cursor: null,
+    timberCost: tool === "road" ? MODELED_ROAD_TIMBER_COST : null,
+  };
 }
 
 function buildingFootprint(tool: Exclude<PlacementTool, "road">, origin: TileCoordinate): readonly TileCoordinate[] {
@@ -137,7 +242,7 @@ function buildingFootprint(tool: Exclude<PlacementTool, "road">, origin: TileCoo
   return tiles;
 }
 
-function roadFailure(state: GameState, path: readonly TileCoordinate[]): PlacementFailure {
+function roadFailure(state: GameState, path: readonly TileCoordinate[]): PlacementFailure | null {
   for (const coordinate of path) {
     if (!isInBounds(state, coordinate)) {
       return PlacementFailure.out_of_bounds;
@@ -153,5 +258,5 @@ function roadFailure(state: GameState, path: readonly TileCoordinate[]): Placeme
       return PlacementFailure.wrong_terrain;
     }
   }
-  return PlacementFailure.occupied;
+  return null;
 }

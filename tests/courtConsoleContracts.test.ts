@@ -97,6 +97,24 @@ test("reusable console controls create unique referenced DOM and SVG ids", () =>
   assert.equal(references.every((reference) => ids.includes(reference)), true);
 });
 
+test("build seals surface the road and armed styling states for the console layout", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(
+    createElement(BuildSeals, {
+      selectedTool: "road",
+      highlightedTools: ["road", "house"],
+      onSelect: () => undefined,
+    }),
+  );
+
+  // Then
+  assert.match(
+    markup,
+    /class="build-seal build-seal--selected build-seal--highlighted build-seal--road"/,
+  );
+  assert.match(markup, /class="road-tool"/);
+});
+
 test("console CSS uses every generated surface and rejects web-dashboard styling", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
@@ -124,6 +142,18 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(buildSealsRule, /width:\s*max-content;/);
   assert.match(buildSealsRule, /padding:\s*4px 6px;/);
   assert.match(buildSealsRule, /background-color:\s*var\(--palette-ink\);/);
+  assert.match(css, /\.welcome-parchment\s*\{[\s\S]*?left:\s*50%;[\s\S]*?bottom:\s*clamp\(/);
+  assert.match(css, /\.welcome-parchment h2\s*\{[\s\S]*?text-align:\s*center;/);
+  assert.match(css, /\.onboarding-tasks\[data-onboarding-state="ordered"\]\s*\{/);
+  assert.match(css, /\.onboarding-task--current\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);/);
+  assert.match(css, /\.onboarding-task--next\s*\{[\s\S]*?background-color:\s*var\(--palette-vellum\);/);
+  assert.match(css, /\.onboarding-task-flourish\s*\{[\s\S]*?color:\s*var\(--palette-gold-dark\);/);
+  assert.match(css, /\.onboarding-tasks\[data-onboarding-state="open-goal"\]\s*\{/);
+  assert.match(css, /\.road-tool\s*\{[\s\S]*?grid-column:\s*1 \/ -1;/);
+  assert.match(css, /\.build-seal--road\s*\{[\s\S]*?clip-path:/);
+  assert.match(css, /\.build-seal--selected::before\s*\{/);
+  assert.match(css, /\.build-seal--selected::after\s*\{/);
+  assert.match(css, /\.build-seal--highlighted\s*\{[\s\S]*?animation:/);
   assert.equal(
     css.match(/grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\);/g)?.length,
     1,
@@ -136,10 +166,12 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /--seal-size:\s*clamp\(24px, 5vw, 30px\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*2px;/);
-  assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*clamp\(8px, 1\.8vw, 11px\) clamp\(4px, 1\.2vw, 7px\);/);
+  assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*6px clamp\(4px, 1\.2vw, 7px\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*clamp\(9px, 1\.7vw, 10px\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, clamp\(18px, 3\.5vw, 21px\)\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?justify-content:\s*center;/);
+  assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?right:\s*calc\(33\.333% \+ 4px\);/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)\s*\{[\s\S]*?animation:\s*none;/);
   assert.doesNotMatch(css, /\.court-console::(?:before|after)/);
   assert.doesNotMatch(css, /\.court-recess::(?:before|after)/);
   assert.doesNotMatch(css, /illumination_corner\.png/);

@@ -2,7 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { GameState } from "../src/engine/engine.types";
-import { placementPreview, releaseTileFromMouseUp } from "../src/render/interactions";
+import {
+  placementPreview,
+  releaseTileFromMouseUp,
+  resolveBuildingPlacementAttempt,
+  resolveRoadPlacementAttempt,
+} from "../src/render/interactions";
 import { PlacementFailure } from "../src/world/placement";
 import type { Tile } from "../src/world/world.types";
 
@@ -31,6 +36,17 @@ const state = {
   pathCache: {},
 } satisfies GameState;
 
+const roadState = {
+  ...state,
+  width: 3,
+  height: 1,
+  tiles: [
+    tile(0, 0, "grass"),
+    tile(1, 0, "grass"),
+    tile(2, 0, "grass"),
+  ],
+} satisfies GameState;
+
 test("road preview reports out of bounds for invalid road drag endpoints", () => {
   // Given / When
   const preview = placementPreview(state, "road", { tx: 3, ty: 1 }, { tx: 1, ty: 1 });
@@ -38,6 +54,18 @@ test("road preview reports out of bounds for invalid road drag endpoints", () =>
   // Then
   assert.equal(preview.ok, false);
   assert.equal(preview.reason, PlacementFailure.out_of_bounds);
+});
+
+test("road preview covers every path tile and reports the modeled zero timber cost", () => {
+  // Given / When
+  const preview = placementPreview(state, "road", { tx: 1, ty: 1 }, { tx: 1, ty: 0 });
+
+  // Then
+  assert.deepEqual(preview.roadPath, [
+    { tx: 1, ty: 0 },
+    { tx: 1, ty: 1 },
+  ]);
+  assert.equal(preview.timberCost, 0);
 });
 
 test("cancelled placement preview is inert even when hovering a buildable tile", () => {
@@ -53,6 +81,7 @@ test("cancelled placement preview is inert even when hovering a buildable tile",
     ok: true,
     reason: null,
     cursor: null,
+    timberCost: null,
   });
 });
 
@@ -96,4 +125,110 @@ test("road release endpoint is ignored when mouseup lands outside the canvas rec
 
   // Then
   assert.equal(tile, null);
+});
+
+test("building placement attempts preflight invalid outcomes without dispatching and keep the tool armed", () => {
+  // Given / When
+  const attempt = resolveBuildingPlacementAttempt({
+    state,
+    tool: "house",
+    tile: { tx: 1, ty: 0 },
+    nowMs: 10,
+  });
+
+  // Then
+  assert.equal(attempt.action, null);
+  assert.equal(attempt.keepToolArmed, true);
+  assert.deepEqual(attempt.feedback, {
+    kind: "failure",
+    message: "물 위에는 지을 수 없습니다",
+    anchor: { kind: "tile", tile: { tx: 1, ty: 0 } },
+    createdAtMs: 10,
+    expiresAtMs: 4510,
+  });
+});
+
+test("building placement attempts dispatch a valid building exactly once with success feedback", () => {
+  // Given / When
+  const attempt = resolveBuildingPlacementAttempt({
+    state,
+    tool: "well",
+    tile: { tx: 0, ty: 0 },
+    nowMs: 20,
+  });
+
+  // Then
+  assert.deepEqual(attempt.action, {
+    type: "place_building",
+    kind: "well",
+    tx: 0,
+    ty: 0,
+  });
+  assert.equal(attempt.keepToolArmed, true);
+  assert.deepEqual(attempt.feedback, {
+    kind: "success",
+    message: "건설했습니다",
+    anchor: { kind: "tile", tile: { tx: 0, ty: 0 } },
+    createdAtMs: 20,
+    expiresAtMs: 620,
+  });
+});
+
+test("road placement attempts evaluate the whole path before dispatching", () => {
+  // Given / When
+  const attempt = resolveRoadPlacementAttempt({
+    state,
+    start: { tx: 0, ty: 0 },
+    destination: { tx: 1, ty: 0 },
+    nowMs: 30,
+  });
+
+  // Then
+  assert.equal(attempt.action, null);
+  assert.equal(attempt.keepToolArmed, true);
+  assert.deepEqual(attempt.feedback, {
+    kind: "failure",
+    message: "물 위에는 지을 수 없습니다",
+    anchor: {
+      kind: "path",
+      path: [
+        { tx: 0, ty: 0 },
+        { tx: 1, ty: 0 },
+      ],
+    },
+    createdAtMs: 30,
+    expiresAtMs: 4530,
+  });
+});
+
+test("road placement attempts dispatch a valid road once and keep modeled road cost zero", () => {
+  // Given / When
+  const attempt = resolveRoadPlacementAttempt({
+    state: roadState,
+    start: { tx: 0, ty: 0 },
+    destination: { tx: 2, ty: 0 },
+    nowMs: 40,
+  });
+
+  // Then
+  assert.deepEqual(attempt.action, {
+    type: "place_road_line",
+    start: { tx: 0, ty: 0 },
+    destination: { tx: 2, ty: 0 },
+  });
+  assert.equal(attempt.keepToolArmed, true);
+  assert.deepEqual(attempt.feedback, {
+    kind: "success",
+    message: "길을 놓았습니다 · 목재 0",
+    anchor: {
+      kind: "path",
+      path: [
+        { tx: 0, ty: 0 },
+        { tx: 1, ty: 0 },
+        { tx: 2, ty: 0 },
+      ],
+    },
+    createdAtMs: 40,
+    expiresAtMs: 640,
+  });
 });

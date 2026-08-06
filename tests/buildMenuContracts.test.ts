@@ -7,6 +7,7 @@ import { BUILDING_CONFIG } from "../src/content/buildingConfig";
 import { App } from "../src/App";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { GameProvider } from "../src/state/gameStore";
+import { BuildSeals } from "../src/ui/BuildMenu";
 import {
   buildMenuGroups,
   buildToolTooltipLines,
@@ -43,10 +44,14 @@ test("the real app renders every placement tool as an accessible control", () =>
   for (const option of BUILD_TOOL_OPTIONS) {
     assert.match(markup, new RegExp(`aria-label="${option.label}"`));
   }
-  assert.match(markup, /aria-pressed="true"/);
+  const placementMarkup = markup.slice(
+    markup.indexOf('aria-label="Placement seals"'),
+    markup.indexOf("ledger-recess"),
+  );
+  assert.doesNotMatch(placementMarkup, /aria-pressed="true"/);
 });
 
-test("build menu groups tools and renders Korean purpose, requirements, and shortfall tooltips", () => {
+test("build menu groups buildings while road stays in a dedicated zero-cost control", () => {
   // Given
   const poorState = { ...DEFAULT_GAME_STATE, treasuryTimber: 5 };
 
@@ -61,8 +66,12 @@ test("build menu groups tools and renders Korean purpose, requirements, and shor
   assert.deepEqual(groups.map((group) => group.label), ["주거", "생산", "저장", "서비스"]);
   assert.deepEqual(
     groups.map((group) => group.options.map((option) => option.tool)),
-    [["house"], ["wheat_farm", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well", "road"]],
+    [["house"], ["wheat_farm", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well"]],
   );
+  assert.match(appMarkup, /class="road-tool"/);
+  assert.match(appMarkup, /aria-label="길"/);
+  assert.match(appMarkup, /aria-pressed="false"/);
+  assert.match(appMarkup, /비용 목재 0/);
   assert.ok(loggingTooltip.some((line) => line.includes("벌목소")));
   assert.ok(loggingTooltip.some((line) => line.includes("목재 15")));
   assert.ok(loggingTooltip.some((line) => line.includes("목적")));
@@ -70,4 +79,26 @@ test("build menu groups tools and renders Korean purpose, requirements, and shor
   assert.ok(loggingTooltip.some((line) => line.includes("숲")));
   assert.ok(loggingTooltip.some((line) => line.includes("부족 10")));
   assert.match(appMarkup, /class="build-group"/);
+});
+
+test("task-driven highlights are semantic attributes and keep unaffordable seals focusable", () => {
+  // Given
+  const poorState = { ...DEFAULT_GAME_STATE, treasuryTimber: 0 };
+
+  // When
+  const markup = renderToStaticMarkup(
+    createElement(BuildSeals, {
+      selectedTool: null,
+      state: poorState,
+      highlightedTools: ["house", "logging_camp", "road"],
+      onSelect: () => undefined,
+    }),
+  );
+
+  // Then
+  assert.match(markup, /data-highlighted="house"/);
+  assert.match(markup, /data-highlighted="logging_camp"/);
+  assert.match(markup, /data-highlighted="road"/);
+  assert.match(markup, /aria-disabled="true"/);
+  assert.doesNotMatch(markup, /disabled=""/);
 });

@@ -65,27 +65,31 @@ function requirementsFor(kind: BuildingKind): readonly string[] {
   return requirements.length === 0 ? ["요구 조건 없음"] : requirements;
 }
 
+export const ROAD_TOOL_OPTION: BuildToolOption = {
+  tool: "road",
+  label: "길",
+  timberCost: 0,
+  group: "service",
+  purpose: TOOL_PURPOSES.road,
+  requirements: ["요구 조건 없음"],
+};
+
+const BUILDING_TOOL_OPTIONS: readonly BuildToolOption[] = BUILDING_CONFIG.map((definition) => ({
+  tool: definition.kind,
+  label: definition.name,
+  timberCost: definition.buildCost.timber ?? 0,
+  group: TOOL_GROUPS[definition.kind],
+  purpose: TOOL_PURPOSES[definition.kind],
+  requirements: requirementsFor(definition.kind),
+}));
+
 export const BUILD_TOOL_OPTIONS: readonly BuildToolOption[] = [
-  ...BUILDING_CONFIG.map((definition) => ({
-    tool: definition.kind,
-    label: definition.name,
-    timberCost: definition.buildCost.timber ?? 0,
-    group: TOOL_GROUPS[definition.kind],
-    purpose: TOOL_PURPOSES[definition.kind],
-    requirements: requirementsFor(definition.kind),
-  })),
-  {
-    tool: "road",
-    label: "길",
-    timberCost: 0,
-    group: "service",
-    purpose: TOOL_PURPOSES.road,
-    requirements: ["요구 조건 없음"],
-  },
+  ...BUILDING_TOOL_OPTIONS,
+  ROAD_TOOL_OPTION,
 ];
 
 export function buildMenuGroups(state: GameState): readonly BuildToolGroup[] {
-  const options = BUILD_TOOL_OPTIONS.map((option) => ({
+  const options = BUILDING_TOOL_OPTIONS.map((option) => ({
     ...option,
     affordable: buildToolAffordability(option.tool, state).affordable,
   }));
