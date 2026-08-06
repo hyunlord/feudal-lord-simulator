@@ -1,0 +1,30 @@
+{
+  "stage": "stage2-building-takes-time",
+  "task": "task-10",
+  "harnessHash": "5a393f13af3e61be",
+  "legacyHash": "4d92c66f9408a603",
+  "runs": [
+    {
+      "run": 1,
+      "hashA": "5a393f13af3e61be",
+      "hashB": "5a393f13af3e61be"
+    },
+    {
+      "run": 2,
+      "hashA": "5a393f13af3e61be",
+      "hashB": "5a393f13af3e61be"
+    }
+  ],
+  "metrics": [
+    { "label": "Determinism hash", "value": "5a393f13af3e61be == 5a393f13af3e61be", "status": "PASS" },
+    { "label": "Food stability", "value": "9.5% starving", "status": "PASS" },
+    { "label": "Cargo thrashing", "value": "0 cancellations/1200", "status": "PASS" },
+    { "label": "Labour deadlock", "value": "0 consecutive ticks", "status": "PASS" },
+    { "label": "Housing oscillation", "value": "1 changes/2000", "status": "PASS" },
+    { "label": "Stall duration", "value": "152 consecutive ticks", "status": "PASS" },
+    { "label": "Builder starvation", "value": "0 consecutive ticks", "status": "PASS" },
+    { "label": "Material deadlock", "value": "0 consecutive ticks", "status": "PASS" },
+    { "label": "Completion rate", "value": "2/2 scripted sites (100%)", "status": "PASS" }
+  ],
+  "evidence": "/Users/rexxa/github/feudal-lord-simulator/.omo/evidence/stage2-building-takes-time/task-10/harness.txt"
+}

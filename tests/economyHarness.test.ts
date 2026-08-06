@@ -50,7 +50,7 @@ test("economy harness fixed scenario is deterministic and passes every metric", 
   assert.equal(report.determinism.hashA, report.determinism.hashB);
   assert.deepEqual(
     report.metrics.map((metric) => metric.status),
-    ["PASS", "PASS", "PASS", "PASS", "PASS"],
+    ["PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "PASS"],
   );
 });
 
@@ -119,7 +119,7 @@ test("economy harness food stability fails when no bread is ever produced", () =
   assert.equal(report.metrics.find((metric) => metric.label === "Food stability")?.status, "FAIL");
 });
 
-test("economy harness prints the required five-row metric table", () => {
+test("economy harness prints the required metric table", () => {
   // Given: a completed deterministic harness report.
   const report = runEconomyHarness({
     scenario: createEconomyHarnessScenario({ seed: 3 }),
@@ -130,13 +130,17 @@ test("economy harness prints the required five-row metric table", () => {
   // When: the report is formatted for CLI output.
   const output = formatEconomyHarnessReport(report);
 
-  // Then: the shape names the exact five Phase 3 harness rows.
+  // Then: the shape names the exact Phase 3 and Stage 2 harness rows.
   assert.match(output, /^Metric\s+Value\s+Status/m);
   assert.match(output, /^Determinism hash\s+\S+ == \S+\s+PASS/m);
   assert.match(output, /^Food stability\s+.+\s+PASS/m);
   assert.match(output, /^Cargo thrashing\s+.+\s+PASS/m);
   assert.match(output, /^Labour deadlock\s+.+\s+PASS/m);
   assert.match(output, /^Housing oscillation\s+.+\s+PASS/m);
+  assert.match(output, /^Stall duration\s+.+\s+PASS/m);
+  assert.match(output, /^Builder starvation\s+.+\s+PASS/m);
+  assert.match(output, /^Material deadlock\s+.+\s+PASS/m);
+  assert.match(output, /^Completion rate\s+.+\s+PASS/m);
 });
 
 test("economy harness hash includes carter lifecycle and reservation state", () => {
