@@ -190,6 +190,17 @@ test("app shell cannot scroll focused console controls out of the viewport", asy
   assert.doesNotMatch(appShellRule, /overflow:\s*hidden;/);
 });
 
+test("ledger recess keeps responsive controls inside the viewport", async () => {
+  // Given / When
+  const css = await readFile(STYLESHEET, "utf8");
+  const ledgerRecessRule = css.match(/\.ledger-recess\s*\{([^}]*)\}/)?.[1] ?? "";
+
+  // Then
+  assert.match(ledgerRecessRule, /grid-template-columns:\s*minmax\(0, 1fr\) auto;/);
+  assert.match(ledgerRecessRule, /align-items:\s*end;/);
+  assert.doesNotMatch(ledgerRecessRule, /minmax\(210px, 1fr\)/);
+});
+
 test("the browser shell declares a request-free favicon for clean fresh-load QA", async () => {
   // Given / When
   const html = await readFile(INDEX_HTML, "utf8");
