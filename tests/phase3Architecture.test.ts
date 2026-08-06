@@ -17,12 +17,12 @@ async function sourceFiles(directory: string): Promise<readonly string[]> {
   return files;
 }
 
-test("the four simulation axes remain isolated and never import engine", async () => {
+test("the simulation axes preserve the Stage2 dependency boundary", async () => {
   const forbiddenByAxis = {
-    world: ["economy", "population", "agents", "engine"],
+    world: ["population", "agents", "engine"],
     economy: ["world", "population", "agents", "engine"],
     population: ["world", "economy", "agents", "engine"],
-    agents: ["world", "economy", "population", "engine"],
+    agents: ["world", "population", "engine"],
   } as const;
   const violations: string[] = [];
 

@@ -6,6 +6,7 @@ import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { placementSpendableResource } from "../src/world/placement";
 
 test("Phase 3 balance constants retain the foundation values plus the measured opening grant", () => {
   // Given / When / Then
@@ -122,7 +123,7 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
   ]);
 });
 
-test("placeBuilding creates newly placed houses empty with hysteresis state initialized", () => {
+test("placeBuilding creates newly placed houses as pending construction sites", () => {
   // Given
   const roaded = placeRoadLine(DEFAULT_GAME_STATE, { tx: 2, ty: 0 }, { tx: 2, ty: 1 });
 
@@ -131,29 +132,25 @@ test("placeBuilding creates newly placed houses empty with hysteresis state init
 
   // Then
   assert.notEqual(next, roaded);
-  assert.deepEqual(next.buildings.at(-1), {
-    id: "house-1-0-1",
+  assert.deepEqual(next.buildings, roaded.buildings);
+  assert.deepEqual(next.constructionSites.at(-1), {
+    id: "construction-site-000001",
     kind: "house",
     tx: 1,
     ty: 0,
-    workers: 0,
-    inventory: {},
+    required: {},
+    delivered: {},
     reserved: {},
-    stockReserved: {},
-    productionProgress: 0,
+    builderTicks: 0,
+    requiredBuilderTicks: 240,
+    assignedBuilders: 0,
+    stall: "no_builders",
+    startedTick: 0,
   });
-  assert.deepEqual(next.houses.at(-1), {
-    buildingId: "house-1-0-1",
-    level: 0,
-    residents: 0,
-    hasWater: false,
-    breadStock: 0,
-    lastServicedTick: 0,
-    unmetRequirementTicks: 0,
-  });
+  assert.deepEqual(next.houses, roaded.houses);
 });
 
-test("placeBuilding spends treasury timber before stored timber without duplicating stock", () => {
+test("placeBuilding commits timber without duplicating physical stock", () => {
   // Given
   const storage = {
     id: "storehouse-4-4-1",
@@ -177,9 +174,10 @@ test("placeBuilding spends treasury timber before stored timber without duplicat
 
   // Then
   assert.notEqual(next, state);
-  assert.equal(next.treasuryTimber, 0);
-  assert.equal(next.buildings.find((building) => building.id === storage.id)?.inventory.timber, 3);
-  assert.equal(next.buildings.find((building) => building.kind === "well")?.inventory.timber, undefined);
+  assert.equal(next.treasuryTimber, 5);
+  assert.equal(next.buildings.find((building) => building.id === storage.id)?.inventory.timber, 8);
+  assert.deepEqual(next.constructionSites.at(-1)?.required, { timber: 10 });
+  assert.equal(placementSpendableResource(next, "timber"), 3);
 });
 
 test("placeRoadLine increments road revision and clears cached paths only when a road is placed", () => {

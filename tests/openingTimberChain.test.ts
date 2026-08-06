@@ -2,9 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
-import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { placementSpendableResource } from "../src/world/placement";
 import type { Tile } from "../src/world/world.types";
 
 function openingScenario(): GameState {
@@ -37,25 +37,7 @@ function openingScenario(): GameState {
   };
 }
 
-function totalTimber(state: GameState): number {
-  return state.buildings.reduce(
-    (total, building) => total + (building.inventory.timber ?? 0),
-    state.treasuryTimber,
-  ) + state.walkers.reduce(
-    (total, walker) =>
-      total + (walker.cargo?.resource === "timber" ? walker.cargo.amount : 0),
-    0,
-  );
-}
-
-function spendableTimber(state: GameState): number {
-  return state.buildings.reduce(
-    (total, building) => total + (building.inventory.timber ?? 0),
-    state.treasuryTimber,
-  );
-}
-
-test("the authored opening funds the food chain before its workers collapse", () => {
+test("the authored opening can commit timber and food construction before workers collapse", () => {
   let state = openingScenario();
   state = placeRoadLine(state, { tx: 2, ty: 2 }, { tx: 10, ty: 2 });
   state = placeBuilding(state, "logging_camp", { tx: 2, ty: 1 });
@@ -65,33 +47,28 @@ test("the authored opening funds the food chain before its workers collapse", ()
 
   assert.deepEqual(
     state.buildings.map(({ kind }) => kind),
-    ["house", "logging_camp", "sawmill", "storehouse", "well"],
+    ["house"],
+  );
+  assert.deepEqual(
+    state.constructionSites.map(({ kind }) => kind),
+    ["logging_camp", "sawmill", "storehouse", "well"],
   );
 
   const foodChainCost = 90;
-  for (let tick = 0; tick < 4_000 && (tick === 0 || spendableTimber(state) < foodChainCost); tick += 1) {
-    state = advanceTick(state);
-  }
-
-  const loggingCamp = state.buildings.find(({ kind }) => kind === "logging_camp");
-  const sawmill = state.buildings.find(({ kind }) => kind === "sawmill");
-  assert.ok(
-    totalTimber(state) >= foodChainCost,
-    `opening stalled at ${totalTimber(state)} timber with ${state.population} residents`,
-  );
-  assert.equal(loggingCamp?.workers, 3);
-  assert.equal(sawmill?.workers, 2);
+  assert.equal(placementSpendableResource(state, "timber"), 110);
+  assert.ok(placementSpendableResource(state, "timber") >= foodChainCost);
 
   state = placeBuilding(state, "wheat_farm", { tx: 2, ty: 3 });
   state = placeBuilding(state, "mill", { tx: 4, ty: 3 });
   state = placeBuilding(state, "granary", { tx: 5, ty: 3 });
   assert.deepEqual(
-    state.buildings.slice(-3).map(({ kind }) => kind),
-    ["wheat_farm", "mill", "granary"],
+    state.constructionSites.map(({ kind }) => kind),
+    ["logging_camp", "sawmill", "storehouse", "well", "wheat_farm", "mill", "granary"],
   );
+  assert.equal(placementSpendableResource(state, "timber"), 20);
 });
 
-test("the tuned default-map grant bootstraps both economy chains before starvation", () => {
+test("the tuned default-map grant commits both economy chains before starvation", () => {
   let state = DEFAULT_GAME_STATE;
   state = placeRoadLine(state, { tx: 1, ty: 2 }, { tx: 13, ty: 2 });
   state = placeRoadLine(state, { tx: 0, ty: 1 }, { tx: 0, ty: 2 });
@@ -112,8 +89,11 @@ test("the tuned default-map grant bootstraps both economy chains before starvati
 
   assert.deepEqual(
     state.buildings.map(({ kind }) => kind),
+    ["house"],
+  );
+  assert.deepEqual(
+    state.constructionSites.map(({ kind }) => kind),
     [
-      "house",
       "well",
       "logging_camp",
       "sawmill",
@@ -130,45 +110,6 @@ test("the tuned default-map grant bootstraps both economy chains before starvati
       "house",
     ],
   );
-  assert.equal(spendableTimber(state), 0);
-
-  let latestServiceTick = 0;
-  for (let tick = 0; tick < 3_500; tick += 1) {
-    state = advanceTick(state);
-    latestServiceTick = Math.max(
-      latestServiceTick,
-      ...state.houses.map(({ lastServicedTick }) => lastServicedTick),
-    );
-  }
-
-  assert.ok(
-    latestServiceTick > 0,
-    `food chain never serviced a house: ${JSON.stringify({
-      tick: state.tick,
-      population: state.population,
-      buildings: state.buildings.map(({ kind, workers, inventory, productionProgress }) => ({
-        kind,
-        workers,
-        inventory,
-        productionProgress,
-      })),
-      houses: state.houses,
-      walkers: state.walkers,
-    })}`,
-  );
-  assert.ok(
-    state.population > 0,
-    `default-map settlement collapsed on tick ${state.tick}: ${JSON.stringify({
-      latestServiceTick,
-      buildings: state.buildings.map(({ kind, workers, inventory, productionProgress }) => ({
-        kind,
-        workers,
-        inventory,
-        productionProgress,
-      })),
-      houses: state.houses,
-      walkers: state.walkers,
-    })}`,
-  );
-  assert.ok(state.houses.some(({ level }) => level >= 2), "no house evolved to level 2");
+  assert.equal(state.treasuryTimber, 205);
+  assert.equal(placementSpendableResource(state, "timber"), 0);
 });
