@@ -6,8 +6,8 @@ export type EconomyOverlayControlsProps = {
 };
 
 type EconomyOverlayOption = {
-  readonly mode: Extract<OverlayMode, "water" | "labour">;
-  readonly keyCode: "Digit1" | "Digit2";
+  readonly mode: Extract<OverlayMode, "water" | "labour" | "distribution" | "road_component">;
+  readonly keyCode: "Digit1" | "Digit2" | "Digit3" | "Digit4";
   readonly label: string;
   readonly legend: string;
 };
@@ -24,6 +24,18 @@ const ECONOMY_OVERLAYS = [
     keyCode: "Digit2",
     label: "Labour",
     legend: "understaffed worksites",
+  },
+  {
+    mode: "distribution",
+    keyCode: "Digit3",
+    label: "Distribution",
+    legend: "granary road reach",
+  },
+  {
+    mode: "road_component",
+    keyCode: "Digit4",
+    label: "Road component",
+    legend: "selected building network",
   },
 ] as const satisfies readonly EconomyOverlayOption[];
 

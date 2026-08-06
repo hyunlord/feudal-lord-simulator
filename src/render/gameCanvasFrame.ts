@@ -18,6 +18,7 @@ type GameCanvasFrameInput = {
   readonly overlayMode: OverlayMode;
   readonly placementFeedback: PlacementFeedback | null;
   readonly nowMs: number;
+  readonly selectedBuildingId?: string | null;
 };
 
 export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
@@ -45,6 +46,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     overlayMode: input.overlayMode,
     placementFeedback: input.placementFeedback,
     nowMs: input.nowMs,
+    selectedBuildingId: input.selectedBuildingId ?? null,
   });
   input.context.restore();
 }

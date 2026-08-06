@@ -98,9 +98,15 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.match(markup, /Labour/);
   assert.match(markup, /Digit1/);
   assert.match(markup, /Digit2/);
+  assert.match(markup, /Distribution/);
+  assert.match(markup, /Road component/);
+  assert.match(markup, /Digit3/);
+  assert.match(markup, /Digit4/);
   assert.equal(toggleOverlayByKey("Digit1", "none"), "water");
   assert.equal(toggleOverlayByKey("Digit1", "water"), "none");
   assert.equal(toggleOverlayByKey("Digit2", "water"), "labour");
+  assert.equal(toggleOverlayByKey("Digit3", "none"), "distribution");
+  assert.equal(toggleOverlayByKey("Digit4", "distribution"), "road_component");
   assert.equal(toggleOverlayByKey("KeyW", "water"), "water");
   assert.equal(toggleOverlayByKey("ArrowUp", "labour"), "labour");
 });

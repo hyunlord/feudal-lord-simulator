@@ -45,6 +45,7 @@ export type RenderFrameInput = {
   readonly overlayMode?: OverlayMode;
   readonly placementFeedback?: PlacementFeedback | null;
   readonly nowMs?: number;
+  readonly selectedBuildingId?: string | null;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -89,6 +90,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     state: input.state,
     mode: input.overlayMode ?? "none",
     zoom: input.camera.zoom,
+    selectedBuildingId: input.selectedBuildingId ?? null,
   });
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   drawOnboardingGuidanceOverlay(input.context, {

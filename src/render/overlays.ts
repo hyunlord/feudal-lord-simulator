@@ -7,6 +7,7 @@ import {
   drawPlacementPreviewOverlay,
 } from "./placementFeedbackOverlay";
 import { drawLabourOverlay, drawWaterOverlay } from "./economyOverlays";
+import { drawDistributionReach, drawSelectedRoadComponent } from "./diagnosticOverlays";
 
 export { wellCoverageTiles } from "./economyOverlays";
 
@@ -15,6 +16,7 @@ export type EconomyOverlayRenderInput = {
   readonly state: GameState;
   readonly mode: OverlayMode;
   readonly zoom: number;
+  readonly selectedBuildingId?: string | null;
 };
 
 export function drawOverlay(input: EconomyOverlayRenderInput): void {
@@ -28,6 +30,12 @@ export function drawOverlay(input: EconomyOverlayRenderInput): void {
       return;
     case "labour":
       drawLabourOverlay(input);
+      return;
+    case "distribution":
+      drawDistributionReach({ ...input, selectedBuildingId: input.selectedBuildingId ?? null });
+      return;
+    case "road_component":
+      drawSelectedRoadComponent({ ...input, selectedBuildingId: input.selectedBuildingId ?? null });
       return;
   }
 }
