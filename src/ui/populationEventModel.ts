@@ -99,14 +99,17 @@ export function groupPopulationEvents(
 }
 
 export function populationGroupLabel(group: PopulationEventGroup): string {
+  const tickLabel = group.firstTick === group.lastTick
+    ? `틱 ${group.firstTick}`
+    : `틱 ${group.firstTick}~${group.lastTick}`;
   switch (group.cause) {
     case "growth":
-      return `인구 ${group.count}명 증가 — 성장`;
+      return `인구 ${group.count}명 증가 — 성장 (${tickLabel})`;
     case "starvation":
-      return `인구 ${group.count}명 감소 — 굶주림`;
+      return `인구 ${group.count}명 감소 — 굶주림 (${tickLabel})`;
     case "no_water":
-      return `인구 ${group.count}명 감소 — 물 부족`;
+      return `인구 ${group.count}명 감소 — 물 부족 (${tickLabel})`;
     case "recruited":
-      return `인구 ${group.count}명 증가 — 정착`;
+      return `인구 ${group.count}명 증가 — 정착 (${tickLabel})`;
   }
 }

@@ -20,13 +20,14 @@ test("diagnostic card placement stays in viewport and outside its selected targe
 
 test("house card renders its complete water and bread cause chain result", () => {
   const markup = renderToStaticMarkup(createElement(DiagnosticCard, {
-    position: { x: 8, y: 8 },
+    position: { x: 640, y: 8 },
     model: {
       kind: "house",
       value: {
         buildingId: "house", name: "오두막", level: 1, residents: 3,
         water: { kind: "well_too_far", label: "우물이 너무 멉니다 — 거리 8 / 범위 6", distance: 8, serviceRadius: 6 },
         bread: { kind: "road_disconnected", label: "곡창에서 이 집까지 도로가 이어지지 않음" },
+        population: { kind: "declining", label: "감소 중 — 식량 없음, 340틱 경과", elapsedTicks: 340 },
       },
     },
   }));
@@ -34,6 +35,12 @@ test("house card renders its complete water and bread cause chain result", () =>
   assert.match(markup, /주민 3명/);
   assert.match(markup, /우물이 너무 멉니다 — 거리 8 \/ 범위 6/);
   assert.match(markup, /곡창에서 이 집까지 도로가 이어지지 않음/);
+  assert.match(markup, /인구/);
+  assert.match(markup, /감소 중 — 식량 없음, 340틱 경과/);
+  assert.match(
+    markup,
+    /left:min\(640px, calc\(100% - min\(300px, calc\(100% - 16px\)\) - 8px\)\)/,
+  );
 });
 
 test("walker card renders route, mission and cancellation facts", () => {

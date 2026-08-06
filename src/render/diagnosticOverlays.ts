@@ -32,9 +32,10 @@ function drawTiles(
   context: CanvasRenderingContext2D,
   coordinates: readonly TileCoordinate[],
   color: PaletteColor,
+  alpha = 0.3,
 ): void {
   context.save();
-  context.fillStyle = withAlpha(color, 0.3);
+  context.fillStyle = withAlpha(color, alpha);
   for (const coordinate of coordinates) {
     traceDiamond(context, coordinate);
     context.fill();
@@ -51,6 +52,7 @@ export function drawSelectedRoadComponent(input: DiagnosticOverlayInput): void {
     input.context,
     selectedBuildingRoadComponent(input.state, input.selectedBuildingId),
     PALETTE.ultramarine,
+    0.55,
   );
 }
 

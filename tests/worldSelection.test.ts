@@ -30,6 +30,30 @@ test("walker hit wins over a building occupying the same tile", () => {
   });
 });
 
+test("moving walker remains selectable on the tile under its rendered feet", () => {
+  const movingWalker = {
+    ...STATE.walkers[0],
+    position: { tx: 0.32, ty: 0 },
+  };
+
+  assert.deepEqual(
+    selectWorldAtTile({ ...STATE, walkers: [movingWalker] }, { tx: 0, ty: 0 }),
+    { kind: "walker", walkerId: "walker" },
+  );
+});
+
+test("moving walker selection follows the next rendered tile", () => {
+  const movingWalker = {
+    ...STATE.walkers[0],
+    position: { tx: 0.8, ty: 0 },
+  };
+
+  assert.deepEqual(
+    selectWorldAtTile({ ...STATE, walkers: [movingWalker] }, { tx: 1, ty: 0 }),
+    { kind: "walker", walkerId: "walker" },
+  );
+});
+
 test("building and empty tile clicks select or dismiss deterministically", () => {
   assert.deepEqual(
     selectWorldAtTile({ ...STATE, walkers: [] }, { tx: 0, ty: 0 }),

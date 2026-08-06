@@ -1,4 +1,5 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { House } from "../population/population.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
@@ -7,7 +8,7 @@ import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 
 export type WaterDiagnosis =
-  | { readonly kind: "supplied"; readonly label: "우물 공급 중" }
+  | { readonly kind: "supplied"; readonly label: string; readonly distance: number }
   | { readonly kind: "no_well"; readonly label: "우물이 없습니다" }
   | {
       readonly kind: "well_too_far";
@@ -39,7 +40,13 @@ export type HouseDiagnosisModel = {
   readonly residents: number;
   readonly water: WaterDiagnosis;
   readonly bread: BreadDiagnosis;
+  readonly population: PopulationDiagnosis;
 };
+
+export type PopulationDiagnosis =
+  | { readonly kind: "declining"; readonly label: string; readonly elapsedTicks: number }
+  | { readonly kind: "growth_blocked"; readonly label: "성장 정체 — 물 부족" }
+  | { readonly kind: "stable"; readonly label: "유지 또는 성장 중" };
 
 const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택"] as const;
 
@@ -57,7 +64,7 @@ function servingWaterDiagnosis(
   const distances = wells.map((well) => buildingFootprintDistance(home, well));
   const distance = Math.min(...distances);
   if (house.hasWater || distance <= serviceRadius) {
-    return { kind: "supplied", label: "우물 공급 중" };
+    return { kind: "supplied", label: `우물에서 ${distance}칸`, distance };
   }
   return {
     kind: "well_too_far",
@@ -65,6 +72,20 @@ function servingWaterDiagnosis(
     distance,
     serviceRadius,
   };
+}
+
+function populationDiagnosis(state: GameState, house: House): PopulationDiagnosis {
+  const elapsedTicks = Math.max(0, state.tick - house.lastServicedTick);
+  if (elapsedTicks > BALANCE.STARVATION_WINDOW) {
+    return {
+      kind: "declining",
+      label: `감소 중 — 식량 없음, ${elapsedTicks}틱 경과`,
+      elapsedTicks,
+    };
+  }
+  return house.hasWater
+    ? { kind: "stable", label: "유지 또는 성장 중" }
+    : { kind: "growth_blocked", label: "성장 정체 — 물 부족" };
 }
 
 function connectedToBreadGranary(
@@ -120,5 +141,6 @@ export function houseDiagnosisModel(
       state.buildings.filter((building) => building.kind === "well"),
     ),
     bread: servingBreadDiagnosis(state, house, home),
+    population: populationDiagnosis(state, house),
   };
 }

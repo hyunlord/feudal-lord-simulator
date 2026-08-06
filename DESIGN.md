@@ -116,10 +116,11 @@ edges. Scroll art frames content only; its interior remains visually empty.
 - **Building inspector:** a quiet parchment hover plaque with Korean identity,
   purpose, labour, stock, progress, and house service facts. It follows the
   pointer, ignores pointer input, and never enters simulation state.
-- **Persistent diagnosis card:** clicking a house, production building, or
-  walker opens one dismissible parchment card. Houses state the exact water
-  and bread cause chain, production buildings distinguish missing labour,
-  disconnected labour or supply, and full output storage, and walkers show
+- **Cause diagnosis surfaces:** clicking a house or walker opens one
+  dismissible parchment card. Houses state the exact water, bread, and
+  population cause chain. Production-building hover plaques distinguish
+  missing labour, disconnected labour or supply, and blocked output storage.
+  Walker cards show
   their live role, cargo, route, status, distance, ETA, and cancellation cause.
   The card is presentation-only, gives walker selection priority over an
   overlapping building, and becomes a bottom sheet above the court console at

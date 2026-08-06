@@ -47,6 +47,7 @@ function HouseCard({ model }: { readonly model: HouseDiagnosisModel }): ReactEle
       <dl>
         <div><dt>물</dt><dd>{model.water.label}</dd></div>
         <div><dt>빵</dt><dd>{model.bread.label}</dd></div>
+        <div><dt>인구</dt><dd>{model.population.label}</dd></div>
       </dl>
     </aside>
   );
@@ -78,8 +79,10 @@ export function DiagnosticCard({
   model,
   position,
 }: Readonly<{ model: DiagnosticCardModel; position: Position }>): ReactElement {
+  const clampedLeft = `min(${position.x}px, calc(100% - min(300px, calc(100% - 16px)) - 8px))`;
+
   return (
-    <div className="diagnostic-card-position" style={{ left: position.x, top: position.y }}>
+    <div className="diagnostic-card-position" style={{ left: clampedLeft, top: position.y }}>
       {model.kind === "house"
         ? <HouseCard model={model.value} />
         : <WalkerCard model={model.value} />}

@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { PALETTE } from "../src/content/palette";
 import type { Building } from "../src/economy/economy.types";
 import type { GameState } from "../src/engine/engine.types";
+import { drawSelectedRoadComponent } from "../src/render/diagnosticOverlays";
+import { withAlpha } from "../src/render/style";
 import {
   distributionReachTiles,
   highlightedHouseTiles,
@@ -95,4 +98,22 @@ test("selected building overlay returns only its adjacent road component", () =>
   assert.deepEqual(keys(selectedBuildingRoadComponent(state, "isolated")), ["43,4", "44,4"]);
   assert.deepEqual(selectedBuildingRoadComponent(state, "missing"), []);
   assert.deepEqual(selectedBuildingRoadComponent(state, null), []);
+});
+
+test("selected road component uses a presentation-strength ultramarine fill", () => {
+  const fillStyles: string[] = [];
+  const context = {
+    save() {}, restore() {}, beginPath() {}, closePath() {}, fill() {},
+    moveTo() {}, lineTo() {},
+    set fillStyle(value: string) { fillStyles.push(value); },
+  } as unknown as CanvasRenderingContext2D;
+
+  drawSelectedRoadComponent({
+    context,
+    state: roadWorld(),
+    zoom: 1,
+    selectedBuildingId: "connected",
+  });
+
+  assert.ok(fillStyles.includes(withAlpha(PALETTE.ultramarine, 0.55)));
 });

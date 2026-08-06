@@ -166,7 +166,8 @@ test("house diagnosis reports active well service", () => {
 
   // Then
   assert.equal(model.water.kind, "supplied");
-  assert.equal(model.water.label, "우물 공급 중");
+  assert.equal(model.water.distance, 2);
+  assert.equal(model.water.label, "우물에서 2칸");
 });
 
 test("house diagnosis reports that no well exists", () => {
@@ -197,4 +198,28 @@ test("house diagnosis reports the nearest out-of-range well distance", () => {
   assert.equal(model.water.kind, "well_too_far");
   assert.equal(model.water.distance, 8);
   assert.equal(model.water.label, "우물이 너무 멉니다 — 거리 8 / 범위 6");
+});
+
+test("house diagnosis names starvation as the active population decline", () => {
+  // Given
+  const input = state({ house: house({ hasWater: true, lastServicedTick: 20 }) });
+
+  // When
+  const model = diagnose(input);
+
+  // Then
+  assert.equal(model.population.kind, "declining");
+  assert.equal(model.population.label, "감소 중 — 식량 없음, 330틱 경과");
+});
+
+test("house diagnosis distinguishes water-blocked growth from active decline", () => {
+  // Given
+  const input = state({ house: house({ hasWater: false, lastServicedTick: 300 }) });
+
+  // When
+  const model = diagnose(input);
+
+  // Then
+  assert.equal(model.population.kind, "growth_blocked");
+  assert.equal(model.population.label, "성장 정체 — 물 부족");
 });
