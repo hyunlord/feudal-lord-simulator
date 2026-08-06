@@ -19,6 +19,7 @@ type GameCanvasFrameInput = {
   readonly placementFeedback: PlacementFeedback | null;
   readonly nowMs: number;
   readonly selectedBuildingId?: string | null;
+  readonly selectedWalkerId?: string | null;
 };
 
 export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
@@ -47,6 +48,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     placementFeedback: input.placementFeedback,
     nowMs: input.nowMs,
     selectedBuildingId: input.selectedBuildingId ?? null,
+    selectedWalkerId: input.selectedWalkerId ?? null,
   });
   input.context.restore();
 }

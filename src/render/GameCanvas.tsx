@@ -6,12 +6,17 @@ import type { PlacementTool } from "./renderer";
 import { useGameStore } from "../state/gameStore";
 import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
+import { DiagnosticCard, type DiagnosticCardModel } from "./DiagnosticCard";
+import type { AnchoredWorldSelection } from "./worldSelection";
+import { houseDiagnosisModel } from "../ui/houseDiagnosisModel";
+import { walkerDiagnosisModel } from "../ui/walkerDiagnosisModel";
 
 type GameCanvasProps = { readonly selectedTool?: PlacementTool | null; readonly overlayMode?: OverlayMode };
 
 export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode = "none" }: GameCanvasProps) {
   const { state, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
+  const [selection, setSelection] = useState<AnchoredWorldSelection | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useGameCanvasRuntime({
@@ -21,7 +26,18 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
     selectedTool,
     overlayMode,
     setHoveredBuilding,
+    selection,
+    setSelection,
   });
+
+  let cardModel: DiagnosticCardModel | null = null;
+  if (selection?.kind === "building") {
+    const value = houseDiagnosisModel(state, selection.buildingId);
+    if (value !== null) cardModel = { kind: "house", value };
+  } else if (selection?.kind === "walker") {
+    const value = walkerDiagnosisModel(state, selection.walkerId);
+    if (value !== null) cardModel = { kind: "walker", value };
+  }
 
   return (
     <>
@@ -31,6 +47,9 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
         aria-label="Simulation canvas"
       />
       <BuildingInspector state={state} hover={hoveredBuilding} />
+      {selection !== null && cardModel !== null ? (
+        <DiagnosticCard model={cardModel} position={selection.position} />
+      ) : null}
     </>
   );
 }

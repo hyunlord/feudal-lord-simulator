@@ -20,6 +20,11 @@ import type { PlacementTool } from "./renderer";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
 import { drawGameCanvasFrame } from "./gameCanvasFrame";
 import { preloadWorldAssets } from "./worldAssets";
+import { placeDiagnosticCard } from "./DiagnosticCard";
+import {
+  selectWorldAtTile,
+  type AnchoredWorldSelection,
+} from "./worldSelection";
 
 type GameCanvasRuntimeInput = {
   readonly canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -28,6 +33,8 @@ type GameCanvasRuntimeInput = {
   readonly selectedTool: PlacementTool | null;
   readonly overlayMode: OverlayMode;
   readonly setHoveredBuilding: Dispatch<SetStateAction<HoveredBuilding | null>>;
+  readonly selection: AnchoredWorldSelection | null;
+  readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;
 };
 
 type CanvasMutableRefs = {
@@ -41,16 +48,27 @@ type CanvasMutableRefs = {
 };
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
-  const { canvasRef, dispatch, overlayMode, selectedTool, setHoveredBuilding, state } = input;
+  const {
+    canvasRef,
+    dispatch,
+    overlayMode,
+    selectedTool,
+    selection,
+    setHoveredBuilding,
+    setSelection,
+    state,
+  } = input;
   const stateRef = useRef(state);
   const selectedToolRef = useRef(selectedTool);
   const overlayModeRef = useRef(overlayMode);
+  const selectionRef = useRef(selection);
 
   useEffect(() => {
     stateRef.current = state;
     selectedToolRef.current = selectedTool;
     overlayModeRef.current = overlayMode;
-  }, [overlayMode, selectedTool, state]);
+    selectionRef.current = selection;
+  }, [overlayMode, selectedTool, selection, state]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -101,6 +119,12 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         overlayMode: overlayModeRef.current,
         placementFeedback: refs.feedbackRef.current,
         nowMs,
+        selectedBuildingId: selectionRef.current?.kind === "building"
+          ? selectionRef.current.buildingId
+          : null,
+        selectedWalkerId: selectionRef.current?.kind === "walker"
+          ? selectionRef.current.walkerId
+          : null,
       });
       frameId = requestAnimationFrame(drawFrame);
     };
@@ -181,7 +205,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         suppressClickTimeout = null;
       }, 0);
     };
-    const clickCanvas = () => {
+    const clickCanvas = (event: MouseEvent) => {
       if (refs.suppressClick.current) {
         refs.suppressClick.current = false;
         clearSuppressClickTimeout();
@@ -191,6 +215,22 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       const drag = refs.dragRef.current;
       const hover = refs.hoverRef.current;
       const currentTool = selectedToolRef.current;
+      if (drag.mode === "none" && hover !== null && currentTool === null) {
+        const selected = selectWorldAtTile(stateRef.current, hover);
+        if (selected === null) {
+          setSelection(null);
+        } else {
+          const bounds = canvas.getBoundingClientRect();
+          const point = canvasPoint(event);
+          const position = placeDiagnosticCard(
+            { width: bounds.width, height: bounds.height },
+            { x: point.x - 12, y: point.y - 12, width: 24, height: 24 },
+            { width: 300, height: 260 },
+          );
+          setSelection({ ...selected, position });
+        }
+        return;
+      }
       if (drag.mode === "none" && hover !== null && currentTool !== null && currentTool !== "road") {
         const attempt = resolveBuildingPlacementAttempt({
           state: stateRef.current,
@@ -217,6 +257,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         refs.spacePressed.current = true;
         event.preventDefault();
       }
+      if (event.code === "Escape") setSelection(null);
       if (/^(?:w|a|s|d|ArrowUp|ArrowDown|ArrowLeft|ArrowRight)$/.test(event.key)) {
         event.preventDefault();
       }
@@ -254,5 +295,5 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       disposeEvents();
       clearSuppressClickTimeout();
     };
-  }, [canvasRef, dispatch, setHoveredBuilding]);
+  }, [canvasRef, dispatch, setHoveredBuilding, setSelection]);
 }

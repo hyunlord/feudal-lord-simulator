@@ -6,7 +6,7 @@ type GameCanvasEventHandlers = {
   readonly startDrag: (event: MouseEvent) => void;
   readonly movePointer: (event: MouseEvent) => void;
   readonly leaveCanvas: () => void;
-  readonly clickCanvas: () => void;
+  readonly clickCanvas: (event: MouseEvent) => void;
   readonly wheel: (event: WheelEvent) => void;
   readonly finishDrag: (event: MouseEvent) => void;
 };

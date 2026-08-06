@@ -17,6 +17,7 @@ import { objectRenderItemsForFrame } from "./renderObjectFrameCache";
 import { computeVisibleTileRange, visibleTilesInDrawOrder } from "./renderVisibility";
 import type { ViewportSize } from "./renderVisibility";
 import { onboardingWorldGuidanceTargets } from "../ui/onboardingWorldGuidance";
+import { drawSelectedWalkerPath } from "./diagnosticPathOverlay";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -46,6 +47,7 @@ export type RenderFrameInput = {
   readonly placementFeedback?: PlacementFeedback | null;
   readonly nowMs?: number;
   readonly selectedBuildingId?: string | null;
+  readonly selectedWalkerId?: string | null;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -92,6 +94,12 @@ export const renderFrame = (input: RenderFrameInput): void => {
     zoom: input.camera.zoom,
     selectedBuildingId: input.selectedBuildingId ?? null,
   });
+  const selectedWalker = input.selectedWalkerId === undefined || input.selectedWalkerId === null
+    ? undefined
+    : input.state.walkers.find((walker) => walker.id === input.selectedWalkerId);
+  if (selectedWalker !== undefined) {
+    drawSelectedWalkerPath(input.context, selectedWalker, input.camera.zoom);
+  }
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   drawOnboardingGuidanceOverlay(input.context, {
     targets: onboardingWorldGuidanceTargets(input.state),
