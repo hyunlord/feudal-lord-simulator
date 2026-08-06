@@ -2,7 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import type { GameState } from "../engine/engine.types";
 import type { House } from "../population/population.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
-import { buildingFootprintDistance } from "../world/buildingDistance";
+import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 

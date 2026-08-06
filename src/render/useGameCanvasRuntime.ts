@@ -7,24 +7,20 @@ import type { HoveredBuilding } from "./BuildingInspector";
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
 import { hoveredBuildingPosition, initialCamera, resizeCanvas, type DragState } from "./canvasRuntime";
 import {
-  panByKey,
   pointerTile,
   releaseTileFromMouseUp,
-  resolveBuildingPlacementAttempt,
-  resolveRoadPlacementAttempt,
   worldBounds,
   zoomAtPoint,
 } from "./interactions";
-import { isPlacementFeedbackVisible, type PlacementFeedback } from "./placementFeedback";
+import type { PlacementFeedback } from "./placementFeedback";
 import type { PlacementTool } from "./renderer";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
-import { drawGameCanvasFrame } from "./gameCanvasFrame";
 import { preloadWorldAssets } from "./worldAssets";
-import { placeDiagnosticCard } from "./DiagnosticCard";
-import {
-  selectWorldAtTile,
-  type AnchoredWorldSelection,
-} from "./worldSelection";
+import type { AnchoredWorldSelection } from "./worldSelection";
+import { resolveCanvasClick } from "./canvasClickResolution";
+import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
+import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
+import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 
 type GameCanvasRuntimeInput = {
   readonly canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -103,32 +99,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.cameraRef.current = clampCamera(refs.cameraRef.current);
     };
     const drawFrame = () => {
-      const bounds = canvas.getBoundingClientRect();
-      const camera = refs.cameraRef.current;
-      const currentState = stateRef.current;
-      const currentTool = selectedToolRef.current;
-      const nowMs = performance.now();
-      if (!isPlacementFeedbackVisible(refs.feedbackRef.current, nowMs)) {
-        refs.feedbackRef.current = null;
-      }
-      drawGameCanvasFrame({
+      drawCurrentCanvasFrame({
+        canvas,
         context,
-        state: currentState,
-        camera,
-        viewport: bounds,
-        pixelRatio: refs.pixelRatioRef.current,
-        hoveredTile: refs.hoverRef.current,
-        roadStart: refs.dragRef.current.roadStart,
-        selectedTool: currentTool,
+        refs,
+        state: stateRef.current,
+        selectedTool: selectedToolRef.current,
         overlayMode: overlayModeRef.current,
-        placementFeedback: refs.feedbackRef.current,
-        nowMs,
-        selectedBuildingId: selectionRef.current?.kind === "building"
-          ? selectionRef.current.buildingId
-          : null,
-        selectedWalkerId: selectionRef.current?.kind === "walker"
-          ? selectionRef.current.walkerId
-          : null,
+        selection: selectionRef.current,
         highlightedHouseIds: highlightedHouseIdsRef.current,
       });
       frameId = requestAnimationFrame(drawFrame);
@@ -156,45 +134,32 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const startDrag = (event: MouseEvent) => {
       updateHover(event);
-      const point = canvasPoint(event);
-      const panning = event.button === 1 || (event.button === 0 && refs.spacePressed.current);
-      if (panning) {
-        refs.dragRef.current = { mode: "pan", lastCanvasPoint: point, roadStart: null, moved: false };
-        event.preventDefault();
-        return;
-      }
-      if (event.button === 0 && selectedToolRef.current === "road") {
-        refs.dragRef.current = { mode: "road", lastCanvasPoint: point, roadStart: refs.hoverRef.current, moved: false };
-      }
+      const result = beginCanvasDrag({
+        button: event.button,
+        point: canvasPoint(event),
+        hover: refs.hoverRef.current,
+        spacePressed: refs.spacePressed.current,
+        selectedTool: selectedToolRef.current,
+      });
+      refs.dragRef.current = result.drag;
+      if (result.preventDefault) event.preventDefault();
     };
     const movePointer = (event: MouseEvent) => {
       updateHover(event);
-      const drag = refs.dragRef.current;
-      if (drag.mode === "none" || drag.lastCanvasPoint === null) return;
-      const point = canvasPoint(event);
-      const moved = drag.moved || point.x !== drag.lastCanvasPoint.x || point.y !== drag.lastCanvasPoint.y;
-      if (moved) refs.suppressClick.current = true;
-      if (drag.mode === "road") {
-        refs.dragRef.current = { ...drag, lastCanvasPoint: point, moved };
-        return;
-      }
-      refs.cameraRef.current = clampCamera({
-        ...refs.cameraRef.current,
-        panX: refs.cameraRef.current.panX + point.x - drag.lastCanvasPoint.x,
-        panY: refs.cameraRef.current.panY + point.y - drag.lastCanvasPoint.y,
+      const result = advanceCanvasDrag({
+        drag: refs.dragRef.current,
+        point: canvasPoint(event),
+        camera: refs.cameraRef.current,
       });
-      refs.dragRef.current = { ...drag, lastCanvasPoint: point, moved };
+      refs.dragRef.current = result.drag;
+      refs.cameraRef.current = clampCamera(result.camera);
+      if (result.suppressClick) refs.suppressClick.current = true;
     };
     const finishDrag = (event: MouseEvent) => {
       const drag = refs.dragRef.current;
       const destination = releaseTileFromMouseUp(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
-      if (drag.mode === "road" && drag.roadStart !== null && destination !== null) {
-        const attempt = resolveRoadPlacementAttempt({
-          state: stateRef.current,
-          start: drag.roadStart,
-          destination,
-          nowMs: performance.now(),
-        });
+      const attempt = finishedRoadAttempt(stateRef.current, drag, destination, performance.now());
+      if (attempt !== null) {
         refs.feedbackRef.current = attempt.feedback;
         if (attempt.action !== null) dispatch(attempt.action);
       }
@@ -211,41 +176,30 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       }, 0);
     };
     const clickCanvas = (event: MouseEvent) => {
-      if (refs.suppressClick.current) {
+      const bounds = canvas.getBoundingClientRect();
+      const resolution = resolveCanvasClick({
+        suppressClick: refs.suppressClick.current,
+        spacePressed: refs.spacePressed.current,
+        dragMode: refs.dragRef.current.mode,
+        hover: refs.hoverRef.current,
+        selectedTool: selectedToolRef.current,
+        state: stateRef.current,
+        point: canvasPoint(event),
+        viewport: bounds,
+        nowMs: performance.now(),
+      });
+      if (resolution.kind === "ignored") {
+        if (!resolution.clearSuppression) return;
         refs.suppressClick.current = false;
         clearSuppressClickTimeout();
         return;
       }
-      if (refs.spacePressed.current) return;
-      const drag = refs.dragRef.current;
-      const hover = refs.hoverRef.current;
-      const currentTool = selectedToolRef.current;
-      if (drag.mode === "none" && hover !== null && currentTool === null) {
-        const selected = selectWorldAtTile(stateRef.current, hover);
-        if (selected === null) {
-          setSelection(null);
-        } else {
-          const bounds = canvas.getBoundingClientRect();
-          const point = canvasPoint(event);
-          const position = placeDiagnosticCard(
-            { width: bounds.width, height: bounds.height },
-            { x: point.x - 12, y: point.y - 12, width: 24, height: 24 },
-            { width: 300, height: 260 },
-          );
-          setSelection({ ...selected, position });
-        }
+      if (resolution.kind === "selection") {
+        setSelection(resolution.selection);
         return;
       }
-      if (drag.mode === "none" && hover !== null && currentTool !== null && currentTool !== "road") {
-        const attempt = resolveBuildingPlacementAttempt({
-          state: stateRef.current,
-          tool: currentTool,
-          tile: hover,
-          nowMs: performance.now(),
-        });
-        refs.feedbackRef.current = attempt.feedback;
-        if (attempt.action !== null) dispatch(attempt.action);
-      }
+      refs.feedbackRef.current = resolution.attempt.feedback;
+      if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
     };
     const wheel = (event: WheelEvent) => {
       event.preventDefault();
@@ -258,20 +212,18 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       });
     };
     const keyDown = (event: KeyboardEvent) => {
-      if (event.code === "Space") {
-        refs.spacePressed.current = true;
-        event.preventDefault();
-      }
-      if (event.code === "Escape") setSelection(null);
-      if (/^(?:w|a|s|d|ArrowUp|ArrowDown|ArrowLeft|ArrowRight)$/.test(event.key)) {
-        event.preventDefault();
-      }
-      refs.cameraRef.current = panByKey({
-        camera: refs.cameraRef.current,
+      const result = resolveCanvasKeyDown({
+        code: event.code,
         key: event.key,
+        camera: refs.cameraRef.current,
+        spacePressed: refs.spacePressed.current,
         viewport: viewport(),
         world: worldBounds(stateRef.current.width, stateRef.current.height),
       });
+      refs.cameraRef.current = result.camera;
+      refs.spacePressed.current = result.spacePressed;
+      if (result.dismissSelection) setSelection(null);
+      if (result.preventDefault) event.preventDefault();
     };
     const keyUp = (event: KeyboardEvent) => {
       if (event.code !== "Space") return;

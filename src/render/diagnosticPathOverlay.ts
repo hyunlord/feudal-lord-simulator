@@ -1,8 +1,9 @@
 import type { Walker } from "../agents/walker.types";
 import { PALETTE } from "../content/palette";
 import { tileToScreen } from "./iso";
+import { applyPaletteStroke, type PaletteStrokeContext } from "./style";
 
-export type DiagnosticPathContext = Pick<
+export type DiagnosticPathContext = PaletteStrokeContext & Pick<
   CanvasRenderingContext2D,
   | "beginPath"
   | "lineCap"
@@ -13,7 +14,6 @@ export type DiagnosticPathContext = Pick<
   | "restore"
   | "save"
   | "stroke"
-  | "strokeStyle"
 >;
 
 export function selectedWalkerPath(walker: Walker): Walker["path"] {
@@ -30,10 +30,7 @@ export function drawSelectedWalkerPath(
   if (first === undefined) return;
 
   context.save();
-  context.strokeStyle = PALETTE.gold;
-  context.lineWidth = 2 / Math.max(zoom, 0.01);
-  context.lineCap = "round";
-  context.lineJoin = "round";
+  applyPaletteStroke(context, PALETTE.gold, Math.max(zoom, 0.01) / 2);
   context.beginPath();
   const start = tileToScreen(first.tx, first.ty);
   context.moveTo(start.sx, start.sy);

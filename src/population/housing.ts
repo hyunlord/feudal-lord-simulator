@@ -8,7 +8,7 @@ import {
   type HousingDefinition,
   type HousingRequirement,
 } from "../content/housingConfig";
-import { buildingFootprintDistance } from "../world/buildingDistance";
+import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import type { House } from "./population.types";
 
 export type HouseUpdateContext = {

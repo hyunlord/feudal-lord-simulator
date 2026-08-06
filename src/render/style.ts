@@ -16,6 +16,11 @@ export interface GroundingShadow {
   readonly baseRadiusY: number;
 }
 
+export type PaletteStrokeContext = Pick<
+  CanvasRenderingContext2D,
+  "lineCap" | "lineJoin" | "lineWidth" | "strokeStyle"
+>;
+
 export function snapToPixel(value: number): number {
   return Math.round(value);
 }
@@ -48,7 +53,7 @@ export function applyInkOutline(
 }
 
 export function applyPaletteStroke(
-  context: Pick<CanvasRenderingContext2D, "lineCap" | "lineJoin" | "lineWidth" | "strokeStyle">,
+  context: PaletteStrokeContext,
   color: PaletteColor,
   zoom: number,
 ): void {

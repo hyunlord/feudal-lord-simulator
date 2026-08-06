@@ -160,7 +160,7 @@ button {
   gap: 8px;
   width: 100%;
   padding: 14px 16px;
-  overflow: auto;
+  overflow: hidden;
   color: var(--palette-ink);
   background-color: var(--palette-vellum);
   background-image: url("/assets/ui/parchment_texture.png");
@@ -216,7 +216,7 @@ button {
   width: min(292px, calc(100% - 24px));
   max-height: min(30vh, 230px);
   padding: 10px 12px;
-  overflow: auto;
+  overflow: hidden;
   color: var(--palette-ink);
   background-color: var(--palette-vellum);
   background-image: url("/assets/ui/parchment_texture.png");
