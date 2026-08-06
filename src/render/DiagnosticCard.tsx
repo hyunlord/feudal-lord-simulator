@@ -87,7 +87,7 @@ function ConstructionSiteCard({
   return (
     <aside className="diagnostic-card diagnostic-card--site" aria-label={`${model.name} 건설 진단`}>
       <h2>{model.name}</h2>
-      <p>정체 {model.currentStall}</p>
+      {model.currentStallLabel === "" ? null : <p>{model.currentStallLabel}</p>}
       <dl>
         {model.rows.map((row) => (
           <div key={row.label}><dt>{row.label}</dt><dd>{row.value}</dd></div>

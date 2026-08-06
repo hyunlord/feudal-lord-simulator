@@ -2,7 +2,7 @@ import {
   BUILDING_CONFIG_BY_KIND,
 } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
-import type { ConstructionSite, ConstructionStall } from "../economy/construction";
+import { constructionOnSiteLabel, type ConstructionSite } from "../economy/construction";
 
 const RESOURCE_LABELS = {
   wheat: "밀",
@@ -19,7 +19,7 @@ export type ConstructionSiteCardRow = Readonly<{
 export type ConstructionSiteCardModel = Readonly<{
   siteId: string;
   name: string;
-  currentStall: ConstructionStall;
+  currentStallLabel: string;
   rows: readonly ConstructionSiteCardRow[];
 }>;
 
@@ -53,8 +53,7 @@ function deliveryLabel(site: ConstructionSite): string {
     );
     return remaining > 0 ? `${RESOURCE_LABELS[resource]} ${remaining} 남음` : null;
   });
-  const summary = parts.length === 0 ? "배달 대기 없음" : parts.join(" · ");
-  return `${summary} · 정체 ${site.stall}`;
+  return parts.length === 0 ? "배달 대기 없음" : parts.join(" · ");
 }
 
 export function constructionSiteCardModel(site: ConstructionSite): ConstructionSiteCardModel {
@@ -62,7 +61,7 @@ export function constructionSiteCardModel(site: ConstructionSite): ConstructionS
   return {
     siteId: site.id,
     name: `${name} 부지`,
-    currentStall: site.stall,
+    currentStallLabel: constructionOnSiteLabel(site),
     rows: [
       { label: "부지", value: `${site.tx}, ${site.ty} · ${name}` },
       { label: "자재 확보", value: securedLabel(site) },
