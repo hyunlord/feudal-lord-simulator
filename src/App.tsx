@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
 import { GameCanvas } from "./render/GameCanvas";
@@ -133,18 +133,14 @@ export function App() {
 }
 
 function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
-  const consumeDismissal = (event: PointerEvent | MouseEvent) => {
+  const consumeDismissal = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
     onDismiss();
   };
 
   return (
-    <div
-      className="welcome-dismiss-layer"
-      onPointerDown={consumeDismissal}
-      onClick={consumeDismissal}
-    >
+    <div className="welcome-dismiss-layer" onClick={consumeDismissal}>
       <section className="welcome-parchment" aria-label="Opening guidance">
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.</p>

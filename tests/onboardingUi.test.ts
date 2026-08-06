@@ -46,6 +46,8 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.match(source, /setPresentationNowMs\(Date\.now\(\)\)/);
   assert.match(source, /stopPropagation\(\)/);
   assert.match(source, /setWelcomeVisible\(false\)/);
+  assert.doesNotMatch(source, /onPointerDown=/);
+  assert.match(source, /onClick=\{consumeDismissal\}/);
   assert.doesNotMatch(runtimeSource, /selectedTool\s*\?\?/);
   assert.match(runtimeSource, /useRef\(selectedTool\)/);
   assert.match(runtimeSource, /selectedToolRef\.current\s*=\s*selectedTool/);
