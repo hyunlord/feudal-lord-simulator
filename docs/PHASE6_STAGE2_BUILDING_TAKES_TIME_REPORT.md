@@ -26,7 +26,7 @@ Part 7: the economy harness serializes construction state and now reports four c
 - 375px focused responsive card: [stage2_responsive_375_focused.jpg](assets/stage2_responsive_375_focused.jpg)
 - 768px responsive card: [stage2_responsive_768_card.jpg](assets/stage2_responsive_768_card.jpg)
 
-Raw browser capture evidence: [stage2_precise_stage_captures.json](asset-evidence/stage2_precise_stage_captures.json), [stage2_browser_responsive_verdict.json](asset-evidence/stage2_browser_responsive_verdict.json).
+Raw browser capture evidence: [stage2_precise_stage_captures.json](asset-evidence/stage2_precise_stage_captures.json), [stage2_browser_responsive_verdict.json](asset-evidence/stage2_browser_responsive_verdict.json), and [stage2_final_remediation_verification.txt](asset-evidence/stage2_final_remediation_verification.txt).
 
 ## 3. New determinism hash, with the old one for comparison
 Old Stage 1 hash: `4d92c66f9408a603`.
@@ -59,9 +59,9 @@ Measured on DGX with speed `5` and `3` builders: `frames=60`, `wallTicks=60`, `s
 The result proves the 60-wall-tick floor holds even though simulation substeps advanced to 300 at 5x. Evidence: [stage2_lifecycle_speed5_builders3.json](asset-evidence/stage2_lifecycle_speed5_builders3.json).
 
 ## 6. Test output, typecheck/build results, frame time at 5x
-DGX `npm test`: `548` tests passed, `0` failed. Evidence: [stage2_dgx_npm_test.log](asset-evidence/stage2_dgx_npm_test.log).
+DGX `npm test`: `549` tests passed, `0` failed after the final card-label regression was added. Evidence: [stage2_final_remediation_verification.txt](asset-evidence/stage2_final_remediation_verification.txt); the earlier 548-test delivery run remains in [stage2_dgx_npm_test.log](asset-evidence/stage2_dgx_npm_test.log).
 
-DGX `npm run typecheck`: passed. DGX `npm run build`: passed with Vite production output `dist/assets/index-CIMnXIcl.css` and `dist/assets/index-Cw4-VtsX.js`. Evidence: [stage2_dgx_typecheck_build_harness.log](asset-evidence/stage2_dgx_typecheck_build_harness.log).
+DGX `npm run typecheck`: passed. DGX `npm run build`: passed with Vite production output `dist/assets/index-CIMnXIcl.css` and `dist/assets/index-BKIagSXR.js`. Evidence: [stage2_final_remediation_verification.txt](asset-evidence/stage2_final_remediation_verification.txt).
 
 DGX ffmpeg-backed asset tests and release verifiers: `22` tests passed, building sprite verification passed, and world asset release verification passed. Evidence: [stage2_dgx_ffmpeg_gate.log](asset-evidence/stage2_dgx_ffmpeg_gate.log).
 
@@ -76,15 +76,15 @@ DGX ffmpeg-backed asset tests and release verifiers: `22` tests passed, building
 Evidence: [stage2_frame_benchmark_1.json](asset-evidence/stage2_frame_benchmark_1.json), [stage2_frame_benchmark_2.json](asset-evidence/stage2_frame_benchmark_2.json), [stage2_frame_benchmark_3.json](asset-evidence/stage2_frame_benchmark_3.json).
 
 ## 7. Commit hash, branch, remote-landing confirmation, GitHub URL, dev server URL
-Code candidate commit: `6b59f152632d431156b3ab3d4d2e0091aac0f57a`.
+Final code candidate commit: `082de6ae79f8affd19337cac51b28737bdecfa81`.
 
-Code candidate tree: `8d1df12d9255f771b27f436a93f946ef94292a6e`.
+Final code candidate tree: `5204ee9cd29aef1e01ebcbbaa30dd2a4278393b3`.
 
 Branch used for implementation: `codex/stage2-building-takes-time`.
 
 Remote: `https://github.com/hyunlord/feudal-lord-simulator.git`.
 
-Candidate remote landing: `git push origin HEAD:main` succeeded and `git ls-remote origin refs/heads/main` returned `6b59f152632d431156b3ab3d4d2e0091aac0f57a` before this report/evidence commit.
+Candidate remote landing: `git push origin HEAD:main` succeeded and `git ls-remote origin refs/heads/main` returned `082de6ae79f8affd19337cac51b28737bdecfa81` before this final report/evidence refresh.
 
 GitHub URL: `https://github.com/hyunlord/feudal-lord-simulator`.
 

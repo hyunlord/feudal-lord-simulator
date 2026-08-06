@@ -1,0 +1,38 @@
+Phase 6 Stage 2 final remediation verification
+
+Code candidate
+- Commit: 082de6ae79f8affd19337cac51b28737bdecfa81
+- Tree: 5204ee9cd29aef1e01ebcbbaa30dd2a4278393b3
+- Branch: codex/stage2-building-takes-time
+- GitHub main after code push: 082de6ae79f8affd19337cac51b28737bdecfa81
+- DGX code candidate after fast-forward: 082de6ae79f8affd19337cac51b28737bdecfa81
+
+RED/GREEN regression
+- RED command: ./node_modules/.bin/tsx --test tests/constructionSiteCardModel.test.ts tests/diagnosticCard.test.ts
+- RED result before production fix: 7 tests, 3 passed, 4 failed because currentStallLabel was absent and the actionable Korean labels did not render.
+- GREEN command: npx tsx --test tests/constructionModel.test.ts tests/constructionSiteCardModel.test.ts tests/diagnosticCard.test.ts
+- GREEN result: 19 passed, 0 failed.
+
+DGX gates
+- npm test: 549 passed, 0 failed.
+- npm run typecheck: passed.
+- npm run build: passed; index-CIMnXIcl.css and index-BKIagSXR.js.
+- npm run harness, run 1: determinism 5a393f13af3e61be == 5a393f13af3e61be; all metrics PASS.
+- npm run harness, run 2: determinism 5a393f13af3e61be == 5a393f13af3e61be; all metrics PASS.
+- Restarted tmux session feudal-sim; 0.0.0.0:3200 listening; root HTTP 200.
+
+Real Chromium QA against http://100.70.109.50:3200/
+- 1280x720: card rect left=667 right=967 width=300; body scrollWidth=clientWidth=1280; every row scrollWidth=clientWidth; raw enum leak=false.
+- 768x720: card rect left=460 right=760 width=300; body scrollWidth=clientWidth=768; every row scrollWidth=clientWidth; raw enum leak=false.
+- 375x812: card rect left=8 right=367 width=359; body scrollWidth=clientWidth=375; every row scrollWidth=clientWidth; raw enum leak=false.
+- no_route scenario: visible card text includes `🚧 창고에서 길이 이어지지 않음`; raw enum leak=false.
+- no_builders scenario: visible card text includes `👷 일꾼 없음`; raw enum leak=false.
+- Four rows remained visible: 부지, 자재 확보, 자재 배달, 건축 작업.
+
+Updated screenshot SHA256
+- stage2_no_route.jpg: dd0931648e14d15fd30746342192fdaa9373922974543bac16ea55148ccf0300
+- stage2_four_track_card.jpg: 58153be18732d477493e07376350f0f940589fc760e64a184a60fae65e7d5bc9
+- stage2_responsive_375_focused.jpg: d566d090b17b75c011f47d797488d168f737799c4a7f4c1d551de36394770975
+
+Uncommitted raw browser artifacts were retained outside the repository at:
+/Users/rexxa/github/feudal-lord-simulator/.omo/evidence/stage2-building-takes-time/final-remediation/
