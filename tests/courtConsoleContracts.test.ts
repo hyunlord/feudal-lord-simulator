@@ -144,6 +144,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(buildSealsRule, /background-color:\s*var\(--palette-ink\);/);
   assert.match(css, /\.welcome-parchment\s*\{[\s\S]*?left:\s*50%;[\s\S]*?bottom:\s*clamp\(/);
   assert.match(css, /\.welcome-parchment h2\s*\{[\s\S]*?text-align:\s*center;/);
+  assert.match(css, /\.welcome-parchment p\s*\{[\s\S]*?word-break:\s*keep-all;/);
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="ordered"\]\s*\{/);
   assert.match(css, /\.onboarding-task--current\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);/);
   assert.match(css, /\.onboarding-task--next\s*\{[\s\S]*?background-color:\s*var\(--palette-vellum\);/);
