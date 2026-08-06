@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "scenario": "Fresh game at fivefold speed until the first starvation decline",
+  "viewport": "1280x720",
+  "event": "인구 1명 감소 — 굶주림 (틱 350)",
+  "screenOnlyPath": [
+    "Read the visible population event",
+    "Click the population event group",
+    "Click the highlighted house",
+    "Read the persistent house diagnosis card"
+  ],
+  "result": {
+    "interactionElapsedMs": 5218,
+    "budgetMs": 30000,
+    "status": "PASS",
+    "diagnosis": [
+      "굶주림",
+      "곡창이 없습니다",
+      "감소 중 — 식량 없음, 367틱 경과"
+    ]
+  },
+  "honesty": {
+    "codeOrStateInspectionDuringTimedPath": false,
+    "freshGameWasUsed": true,
+    "independentHumanTester": false,
+    "firstEvidenceCaptureWallClockMs": 31572,
+    "firstEvidenceCaptureNote": "This wall-clock included two separate automation round trips and PNG evidence capture. The repeated interaction-only clock kept the same visible event and excluded screenshot encoding."
+  }
+}
