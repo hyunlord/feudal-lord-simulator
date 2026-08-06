@@ -21,10 +21,15 @@ const PHASE5_RENDER_FILES = [
   "src/render/placementFeedbackOverlay.ts",
   "src/render/drawTerrain.ts",
   "src/render/drawBuildings.ts",
+  "src/render/drawObjectRenderItems.ts",
+  "src/render/constructionRenderItems.ts",
+  "src/render/drawConstructionSites.ts",
   "src/render/buildingSprites.ts",
   "tests/renderContracts.test.ts",
   "tests/renderVisibility.test.ts",
   "tests/renderObjectFrameCache.test.ts",
+  "tests/constructionRendering.test.ts",
+  "tests/constructionRenderCache.test.ts",
   "tests/onboardingGuidanceOverlay.test.ts",
   "tests/renderSourceGuards.test.ts",
 ] as const;
@@ -40,6 +45,9 @@ const PHASE5_IMPLEMENTATION_FILES = [
   "src/render/gameCanvasFrame.ts",
   "src/render/useGameCanvasRuntime.ts",
   "src/render/economyOverlays.ts",
+  "src/render/drawObjectRenderItems.ts",
+  "src/render/constructionRenderItems.ts",
+  "src/render/drawConstructionSites.ts",
   "src/render/placementFeedbackOverlay.ts",
 ] as const;
 
@@ -143,7 +151,7 @@ test("renderFrame computes the object queue once and reuses it across ground and
   const queueBuilds = source.match(/\bbuildObjectRenderItems\s*\(/g) ?? [];
   const cacheQueueBuilds = cacheSource.match(/\bbuildObjectRenderItems\s*\(/g) ?? [];
   const passesQueueToTerrain = /drawTerrain\([\s\S]*objectRenderItems/.test(source);
-  const passesQueueToObjects = /drawBuildings\([\s\S]*objectRenderItems/.test(source);
+  const passesQueueToObjects = /drawObjectRenderItems\([\s\S]*objectRenderItems/.test(source);
 
   // Then
   assert.equal(queueBuilds.length, 0);

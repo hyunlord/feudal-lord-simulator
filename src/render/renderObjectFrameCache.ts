@@ -1,7 +1,11 @@
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import { depthKey } from "./iso";
-import { buildObjectRenderItems, type ObjectRenderItem } from "./objectRenderOrder";
+import {
+  buildObjectRenderItems,
+  type ObjectRenderItem,
+  type RenderQueueItem,
+} from "./objectRenderOrder";
 import type { TileRange } from "./renderVisibility";
 import { tileIsVisibleInRange } from "./renderVisibility";
 import { walkerVisualAnchor } from "./walkerAnchor";
@@ -15,16 +19,17 @@ type ObjectRenderFrameInput = {
 
 type StaticObjectRenderCacheEntry = {
   readonly buildings: GameState["buildings"];
+  readonly constructionSites: GameState["constructionSites"];
   readonly visibleTiles: readonly Tile[];
   readonly cacheKey: string;
-  readonly items: readonly ObjectRenderItem[];
+  readonly items: readonly RenderQueueItem[];
 };
 
 const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderCacheEntry>();
 
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
-): readonly ObjectRenderItem[] => {
+): readonly RenderQueueItem[] => {
   const staticItems = staticObjectRenderItemsForFrame(input);
   const walkerItems = walkerRenderItemsForFrame(input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
@@ -32,11 +37,12 @@ export const objectRenderItemsForFrame = (
 
 const staticObjectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
-): readonly ObjectRenderItem[] => {
+): readonly RenderQueueItem[] => {
   const cacheKey = objectRenderCacheKey(input);
   const cached = staticObjectRenderCache.get(input.state.tiles);
   if (
     cached?.buildings === input.state.buildings &&
+    cached.constructionSites === input.state.constructionSites &&
     cached.visibleTiles === input.visibleTiles &&
     cached.cacheKey === cacheKey
   ) {
@@ -46,6 +52,7 @@ const staticObjectRenderItemsForFrame = (
     tiles: input.visibleTiles,
     worldTiles: input.state.tiles,
     buildings: input.state.buildings,
+    constructionSites: input.state.constructionSites,
     walkers: [],
     range: input.range,
     seed: input.state.seed,
@@ -53,6 +60,7 @@ const staticObjectRenderItemsForFrame = (
   });
   staticObjectRenderCache.set(input.state.tiles, {
     buildings: input.state.buildings,
+    constructionSites: input.state.constructionSites,
     visibleTiles: input.visibleTiles,
     cacheKey,
     items,
@@ -80,10 +88,10 @@ const walkerRenderItemsForFrame = (
 };
 
 const mergeObjectRenderItems = (
-  left: readonly ObjectRenderItem[],
+  left: readonly RenderQueueItem[],
   right: readonly ObjectRenderItem[],
-): readonly ObjectRenderItem[] => {
-  const merged: ObjectRenderItem[] = [];
+): readonly RenderQueueItem[] => {
+  const merged: RenderQueueItem[] = [];
   let leftIndex = 0;
   let rightIndex = 0;
   while (leftIndex < left.length && rightIndex < right.length) {
@@ -109,7 +117,7 @@ const mergeObjectRenderItems = (
   return merged;
 };
 
-const compareObjectRenderItems = (left: ObjectRenderItem, right: ObjectRenderItem): number => {
+const compareObjectRenderItems = (left: RenderQueueItem, right: RenderQueueItem): number => {
   const depthDifference = left.depth - right.depth;
   if (depthDifference !== 0) return depthDifference;
   const anchorDifference = left.anchorTx - right.anchorTx;

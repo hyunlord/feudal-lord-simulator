@@ -6,7 +6,7 @@ import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { buildingSpriteKey } from "./buildingSprites";
 import { buildBuildingVisualState, buildingBodyProfile } from "./buildingVisualState";
-import type { ObjectRenderItem } from "./objectRenderOrder";
+import type { ObjectRenderItem, RenderQueueItem } from "./objectRenderOrder";
 import type { TileRange } from "./renderer";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawGroundDecalDetail, drawRoadPath } from "./drawTerrainDetails";
@@ -30,7 +30,7 @@ type TerrainRenderInput = {
   readonly range: TileRange;
   readonly zoom: number;
   readonly terrainPatterns?: TerrainPatternAssets;
-  readonly objectRenderItems?: readonly ObjectRenderItem[];
+  readonly objectRenderItems?: readonly RenderQueueItem[];
 };
 
 const baseTerrainColor = (terrain: Tile["terrain"]): PaletteColor => {

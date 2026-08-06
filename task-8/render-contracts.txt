@@ -1,0 +1,40 @@
+Task 8 construction rendering evidence
+
+Red gate:
+- Added failing construction rendering/order/cache/source-guard tests before production code.
+- Initial focused run failed on missing drawConstructionSites module and missing construction_site render items.
+
+Canvas-recorder signatures:
+- plot: moveTo:48,48 / moveTo:88,52 / fillRect:63,37,10,8 / fillRect:67,29,2,8
+- foundation: rect:33,44,70,12 / moveTo:46,40 / fillRect:63,37,10,8 / fillRect:67,29,2,8
+- frame: rect:41,10,10,40 / rect:86,10,10,40 / fillRect:63,37,10,8 / fillRect:67,29,2,8
+- roof: moveTo:36,14 / lineTo:69,-10 / fillRect:63,37,10,8 / fillRect:67,29,2,8
+- current stall label: fillText:🪵 목재 오는 중 (12/40),10,-16
+
+Verification:
+- npx tsx --test tests/constructionRendering.test.ts tests/constructionRenderCache.test.ts tests/objectRenderOrder.test.ts tests/renderObjectFrameCache.test.ts tests/renderSourceGuards.test.ts
+  Result: pass, 22 tests, 0 fail. Run twice after implementation.
+- npm run typecheck
+  Result: pass, tsc --noEmit.
+- npm run build
+  Result: pass, tsc --noEmit and Vite production build.
+- LSP diagnostics:
+  Result: unavailable; both lsp/diagnostics and omx_code_intel/lsp_diagnostics returned Transport closed. Typecheck/build used as fallback diagnostics evidence.
+- Palette/source guard:
+  Result: no new hex, gradients, shadowBlur, or drawImage usage in Todo8 render sources. The only scan hit was the guard regex itself.
+- Pure LOC:
+  src/render/drawConstructionSites.ts 235
+  src/render/drawObjectRenderItems.ts 38
+  src/render/constructionRenderItems.ts 34
+  src/render/objectRenderOrder.ts 237
+  src/render/renderObjectFrameCache.ts 132
+  src/render/renderer.ts 143
+  src/render/drawTerrain.ts 171
+  tests/constructionRendering.test.ts 144
+  tests/constructionRenderCache.test.ts 83
+  tests/renderObjectFrameCache.test.ts 234
+  tests/renderSourceGuards.test.ts 153
+
+Scope notes:
+- drawBuildings.ts has no final diff.
+- No Todo9-owned world selection, UI card/component, state store/type, App.tsx, GameCanvas runtime interaction, or Todo9 test files were edited.

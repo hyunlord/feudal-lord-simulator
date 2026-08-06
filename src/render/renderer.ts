@@ -1,7 +1,7 @@
 import type { BuildingKind } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { CameraState } from "./camera";
-import { drawBuildings } from "./drawBuildings";
+import { drawObjectRenderItems } from "./drawObjectRenderItems";
 import { drawTerrain } from "./drawTerrain";
 import { drawWorldVignette } from "./worldBackdrop";
 import {
@@ -19,6 +19,10 @@ import type { ViewportSize } from "./renderVisibility";
 import { onboardingWorldGuidanceTargets } from "../ui/onboardingWorldGuidance";
 import { drawSelectedWalkerPath } from "./diagnosticPathOverlay";
 import { drawHighlightedHouses } from "./diagnosticOverlays";
+import {
+  constructionCompletionEffectsForFrame,
+  drawConstructionCompletionEffects,
+} from "./drawConstructionSites";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -65,6 +69,10 @@ export const renderFrame = (input: RenderFrameInput): void => {
     range,
     includeGroundCover: renderDetailLevel(input.camera.zoom) === "full",
   });
+  const constructionEffects = constructionCompletionEffectsForFrame(
+    input.state.constructionSites,
+    input.nowMs ?? performance.now(),
+  );
   runRenderPasses({
     ground: () => {
       drawWorldVignette(input.context, input.state);
@@ -77,7 +85,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
       });
     },
     objects: () =>
-      drawBuildings(input.context, {
+      drawObjectRenderItems(input.context, {
         state: input.state,
         tiles: visibleTiles,
         range,
@@ -87,7 +95,11 @@ export const renderFrame = (input: RenderFrameInput): void => {
         viewport: input.viewport,
         objectRenderItems,
       }),
-    overhang: () => undefined,
+    overhang: () =>
+      drawConstructionCompletionEffects(input.context, {
+        effects: constructionEffects,
+        zoom: input.camera.zoom,
+      }),
   });
   drawOverlay({
     context: input.context,

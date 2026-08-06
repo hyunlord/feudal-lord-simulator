@@ -1,6 +1,11 @@
 import type { Walker } from "../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import type { ConstructionSite } from "../economy/construction";
 import type { Tile } from "../world/world.types";
+import {
+  constructionSiteRenderItem,
+  type ConstructionSiteRenderItem,
+} from "./constructionRenderItems";
 import { depthKey } from "./iso";
 import {
   footprintHasVisibleTile,
@@ -45,15 +50,20 @@ export type ObjectRenderItem =
       readonly depth: number;
       readonly anchorTx: number;
     };
+export type RenderQueueItem = ObjectRenderItem | ConstructionSiteRenderItem;
 
 type ObjectRenderInput = {
   readonly tiles: readonly Tile[];
   readonly worldTiles?: readonly Tile[];
   readonly buildings: readonly Building[];
+  readonly constructionSites?: readonly ConstructionSite[] | undefined;
   readonly walkers?: readonly Walker[];
   readonly range: TileRange;
   readonly seed?: number;
   readonly includeGroundCover?: boolean;
+};
+type ObjectRenderInputWithoutConstruction = Omit<ObjectRenderInput, "constructionSites"> & {
+  readonly constructionSites?: undefined;
 };
 
 type TileArea = {
@@ -68,21 +78,27 @@ type GroundCoverProtectionCacheEntry = {
   readonly keys: ReadonlySet<string>;
 };
 
-const groundCoverProtectionCache = new WeakMap<
-  readonly Tile[],
-  GroundCoverProtectionCacheEntry
->();
+const groundCoverProtectionCache = new WeakMap<readonly Tile[], GroundCoverProtectionCacheEntry>();
 
-export function buildObjectRenderItems(input: ObjectRenderInput): readonly ObjectRenderItem[] {
-  const items: ObjectRenderItem[] = [];
-  const clearedTiles = clearedTreeTileKeys(input.buildings);
+export function buildObjectRenderItems(
+  input: ObjectRenderInputWithoutConstruction,
+): readonly ObjectRenderItem[];
+export function buildObjectRenderItems(
+  input: ObjectRenderInput & { readonly constructionSites: readonly ConstructionSite[] },
+): readonly RenderQueueItem[];
+export function buildObjectRenderItems(
+  input: ObjectRenderInput,
+): readonly RenderQueueItem[] {
+  const items: RenderQueueItem[] = [];
+  const constructionSites = input.constructionSites ?? [];
+  const clearedTiles = clearedTreeTileKeys(input.buildings, constructionSites);
   const seed = input.seed ?? 0;
   const worldTiles = input.worldTiles ?? input.tiles;
   const foliageTiles = input.tiles.filter((tile) =>
     tileIsVisibleInRange(tile.tx, tile.ty, input.range),
   );
   const forestLookup = buildForestLookup(worldTiles);
-  const protectedGroundCoverTiles = groundCoverProtectedTileKeys(worldTiles, input.buildings);
+  const protectedGroundCoverTiles = groundCoverProtectedTileKeys(worldTiles, input.buildings, constructionSites);
 
   for (const tile of foliageTiles) {
     if (tile.terrain === "forest" && isTreeCandidate(tile, clearedTiles)) {
@@ -145,15 +161,23 @@ export function buildObjectRenderItems(input: ObjectRenderInput): readonly Objec
     });
   }
 
+  for (const site of constructionSites) {
+    const item = constructionSiteRenderItem(site, input.range);
+    if (item !== null) items.push(item);
+  }
+
   return items.sort(compareRenderItems);
 }
 
-export function clearedTreeTileKeys(buildings: readonly Building[]): ReadonlySet<string> {
+export function clearedTreeTileKeys(
+  buildings: readonly Building[],
+  constructionSites: readonly ConstructionSite[] = [],
+): ReadonlySet<string> {
   const keys = new Set<string>();
-  for (const building of buildings) {
-    const config = BUILDING_CONFIG_BY_KIND[building.kind];
-    for (let ty = building.ty - 1; ty <= building.ty + config.height; ty += 1) {
-      for (let tx = building.tx - 1; tx <= building.tx + config.width; tx += 1) {
+  for (const object of [...buildings, ...constructionSites]) {
+    const config = BUILDING_CONFIG_BY_KIND[object.kind];
+    for (let ty = object.ty - 1; ty <= object.ty + config.height; ty += 1) {
+      for (let tx = object.tx - 1; tx <= object.tx + config.width; tx += 1) {
         keys.add(tileKey(tx, ty));
       }
     }
@@ -164,9 +188,10 @@ export function clearedTreeTileKeys(buildings: readonly Building[]): ReadonlySet
 export function groundCoverProtectedTileKeys(
   tiles: readonly Tile[],
   buildings: readonly Building[],
+  constructionSites: readonly ConstructionSite[] = [],
 ): ReadonlySet<string> {
-  const buildingSignature = buildings
-    .map((building) => `${building.kind}:${building.tx}:${building.ty}`)
+  const buildingSignature = [...buildings, ...constructionSites]
+    .map((object) => `${object.kind}:${object.tx}:${object.ty}`)
     .join("|");
   const cached = groundCoverProtectionCache.get(tiles);
   if (cached?.buildingSignature === buildingSignature) {
@@ -187,11 +212,20 @@ export function groundCoverProtectedTileKeys(
       height: config.height,
     });
   }
+  for (const site of constructionSites) {
+    const config = BUILDING_CONFIG_BY_KIND[site.kind];
+    addGroundCoverApron(keys, {
+      tx: site.tx,
+      ty: site.ty,
+      width: config.width,
+      height: config.height,
+    });
+  }
   groundCoverProtectionCache.set(tiles, { buildingSignature, keys });
   return keys;
 }
 
-function compareRenderItems(left: ObjectRenderItem, right: ObjectRenderItem): number {
+function compareRenderItems(left: RenderQueueItem, right: RenderQueueItem): number {
   const depthDifference = left.depth - right.depth;
   if (depthDifference !== 0) return depthDifference;
 

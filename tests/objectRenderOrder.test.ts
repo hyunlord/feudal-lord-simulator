@@ -3,6 +3,7 @@ import test from "node:test";
 
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
+import type { ConstructionSite } from "../src/economy/construction";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import type { TileRange } from "../src/render/renderer";
 import type { Tile } from "../src/world/world.types";
@@ -22,6 +23,23 @@ function building(id: string, kind: BuildingKind, tx: number, ty: number): Build
     reserved: {},
     stockReserved: {},
     productionProgress: 0,
+  };
+}
+
+function constructionSite(id: string, kind: BuildingKind, tx: number, ty: number): ConstructionSite {
+  return {
+    id,
+    kind,
+    tx,
+    ty,
+    required: { timber: 40 },
+    delivered: {},
+    reserved: {},
+    builderTicks: 0,
+    requiredBuilderTicks: 800,
+    assignedBuilders: 0,
+    stall: "awaiting_materials",
+    startedTick: 0,
   };
 }
 
@@ -82,4 +100,40 @@ test("buildings render when any configured footprint tile overlaps the visible r
 
   // Then
   assert.deepEqual(items.map((item) => item.id), ["field"]);
+});
+
+test("construction site order is stable and independent of input order", () => {
+  // Given
+  const first = [
+    constructionSite("near-site", "storehouse", 2, 1),
+    constructionSite("far-site", "storehouse", 0, 0),
+  ];
+  const second = [
+    constructionSite("far-site", "storehouse", 0, 0),
+    constructionSite("near-site", "storehouse", 2, 1),
+  ];
+
+  // When
+  const firstOrder = buildObjectRenderItems({
+    tiles: [],
+    buildings: [],
+    constructionSites: first,
+    range,
+  });
+  const secondOrder = buildObjectRenderItems({
+    tiles: [],
+    buildings: [],
+    constructionSites: second,
+    range,
+  });
+
+  // Then
+  assert.deepEqual(
+    firstOrder.map((item) => `${item.kind}:${item.id}`),
+    secondOrder.map((item) => `${item.kind}:${item.id}`),
+  );
+  assert.deepEqual(firstOrder.map((item) => `${item.kind}:${item.id}`), [
+    "construction_site:far-site",
+    "construction_site:near-site",
+  ]);
 });
