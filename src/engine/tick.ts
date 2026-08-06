@@ -70,7 +70,7 @@ function rngForState(state: GameState) {
     );
 }
 
-export function advanceTick(state: GameState): GameState {
+export function advanceSimulationSubstep(state: GameState): GameState {
   const tick = state.tick + 1;
   const inventory = createDeliveryInventoryPort();
   const routePorts = createSimulationRoutePorts(state);
@@ -125,4 +125,8 @@ export function advanceTick(state: GameState): GameState {
     walkers: [...spawnedDistributors.walkers],
     pathCache: routePorts.getPathCache(),
   };
+}
+
+export function advanceTick(state: GameState): GameState {
+  return advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 });
 }

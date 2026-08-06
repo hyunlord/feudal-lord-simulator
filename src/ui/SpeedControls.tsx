@@ -13,7 +13,7 @@ const SPEED_SEALS: readonly {
 ];
 
 export function speedToIntervalMs(speed: GameSpeed): number | null {
-  return speed === 0 ? null : 1_000 / (BALANCE.TICKS_PER_SECOND * speed);
+  return speed === 0 ? null : 1_000 / BALANCE.TICKS_PER_SECOND;
 }
 
 type SpeedSealsProps = {

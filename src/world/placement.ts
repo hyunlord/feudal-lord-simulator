@@ -4,6 +4,10 @@ import {
   type BuildingDefinition,
   type BuildingKind,
 } from "../content/buildingConfig";
+import {
+  constructionDeliveryNeed,
+  type ConstructionSite,
+} from "../economy/construction";
 import type { TerrainType } from "../content/terrainConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import { getTile, isInBounds, type TileCoordinate } from "./grid";
@@ -24,6 +28,7 @@ export type PlacementResult =
 
 type ResourceWorldView = WorldView & {
   readonly buildings?: readonly Building[];
+  readonly constructionSites?: readonly ConstructionSite[];
 };
 
 function isBuildableTerrain(terrain: TerrainType): boolean {
@@ -100,6 +105,20 @@ function hasOccupiedFootprint(tiles: readonly Tile[]): boolean {
   return tiles.some((tile) => tile.buildingId !== null || tile.hasRoad);
 }
 
+function footprintsIntersect(
+  origin: TileCoordinate,
+  definition: BuildingDefinition,
+  site: ConstructionSite,
+): boolean {
+  const siteDefinition = BUILDING_CONFIG_BY_KIND[site.kind];
+  return (
+    origin.tx < site.tx + siteDefinition.width &&
+    origin.tx + definition.width > site.tx &&
+    origin.ty < site.ty + siteDefinition.height &&
+    origin.ty + definition.height > site.ty
+  );
+}
+
 export function canPlaceBuilding(
   world: ResourceWorldView,
   kind: BuildingKind,
@@ -124,6 +143,14 @@ export function canPlaceBuilding(
   }
 
   if (hasOccupiedFootprint(footprintTileValues)) {
+    return { ok: false, reason: PlacementFailure.occupied };
+  }
+
+  if (
+    world.constructionSites?.some((site) =>
+      footprintsIntersect(origin, definition, site),
+    ) === true
+  ) {
     return { ok: false, reason: PlacementFailure.occupied };
   }
 
@@ -152,8 +179,18 @@ export function canPlaceBuilding(
 
 export function placementSpendableResource(world: ResourceWorldView, resource: ResourceType): number {
   const stored = world.buildings?.reduce(
-    (total, building) => total + (building.inventory[resource] ?? 0),
+    (total, building) =>
+      total +
+      Math.max(
+        0,
+        (building.inventory[resource] ?? 0) - (building.stockReserved[resource] ?? 0),
+      ),
     0,
   ) ?? 0;
-  return resource === "timber" ? world.treasuryTimber + stored : stored;
+  const committed = world.constructionSites?.reduce(
+    (total, site) => total + (constructionDeliveryNeed(site)[resource] ?? 0),
+    0,
+  ) ?? 0;
+  const available = resource === "timber" ? world.treasuryTimber + stored : stored;
+  return Math.max(0, available - committed);
 }

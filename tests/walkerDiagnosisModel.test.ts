@@ -99,6 +99,9 @@ function gameState(walkers: GameState["walkers"]): GameState {
       building("house-near", "house", 1, 1),
       building("house-far", "house", 5, 5),
     ],
+    constructionSites: [],
+    wallTick: 0,
+    nextConstructionOrdinal: 1,
     houses: [
       {
         buildingId: "house-near",

@@ -2,7 +2,7 @@ import type { Walker } from "../src/agents/walker.types";
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
 import type { GameState } from "../src/engine/engine.types";
-import { advanceTick } from "../src/engine/tick";
+import { advanceFrame } from "../src/engine/frameClock";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import { renderFrame, visibleTilesInDrawOrder, computeVisibleTileRange } from "../src/render/renderer";
 import { preloadWorldAssets } from "../src/render/worldAssets";
@@ -91,9 +91,7 @@ export async function runPhase4eRenderBenchmark(
   const initialEntityCounts = benchmarkEntityCounts(state, camera);
   const ticksPerFrame = competition === "5x" ? 5 : 1;
   const advanceSimulation = (): void => {
-    for (let tick = 0; tick < ticksPerFrame; tick += 1) {
-      state = advanceTick(state);
-    }
+    state = advanceFrame(state, ticksPerFrame);
   };
   const render = (): void => {
     context.setTransform(1, 0, 0, 1, 0, 0);
@@ -158,6 +156,9 @@ function benchmarkState(): GameState {
     width: 64,
     height: 64,
     buildings,
+    constructionSites: [],
+    wallTick: 0,
+    nextConstructionOrdinal: 1,
     houses: [],
     walkers: benchmarkWalkers(),
     population: 0,

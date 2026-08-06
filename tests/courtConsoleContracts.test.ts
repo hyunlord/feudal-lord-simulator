@@ -31,11 +31,11 @@ test("palette CSS variables expose every semantic compatibility colour", () => {
   assert.equal(Object.keys(PALETTE_CSS_VARIABLES).every((key) => key.startsWith("--palette-")), true);
 });
 
-test("game speed multiplies the locked simulation tick rate", () => {
+test("game speed keeps a fixed frame interval while speed controls substeps", () => {
   assert.equal(speedToIntervalMs(0), null);
   assert.equal(speedToIntervalMs(1), 1_000 / BALANCE.TICKS_PER_SECOND);
-  assert.equal(speedToIntervalMs(3), 1_000 / (BALANCE.TICKS_PER_SECOND * 3));
-  assert.equal(speedToIntervalMs(5), 1_000 / (BALANCE.TICKS_PER_SECOND * 5));
+  assert.equal(speedToIntervalMs(3), 1_000 / BALANCE.TICKS_PER_SECOND);
+  assert.equal(speedToIntervalMs(5), 1_000 / BALANCE.TICKS_PER_SECOND);
 });
 
 test("minimap sampling is bounded deterministic and terrain-derived", () => {

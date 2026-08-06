@@ -77,6 +77,9 @@ function state(input: {
       });
     }),
     buildings: [...input.buildings],
+    constructionSites: [],
+    wallTick: 0,
+    nextConstructionOrdinal: 1,
     houses: [...(input.houses ?? [])],
     walkers: [],
     population: input.houses?.reduce((total, item) => total + item.residents, 0) ?? 0,

@@ -59,7 +59,7 @@ export function App() {
   useEffect(() => {
     const intervalMs = speedToIntervalMs(speed);
     if (intervalMs === null) return undefined;
-    const interval = window.setInterval(() => dispatch({ type: "advance_tick" }), intervalMs);
+    const interval = window.setInterval(() => dispatch({ type: "advance_frame", speed }), intervalMs);
     return () => window.clearInterval(interval);
   }, [dispatch, speed]);
 

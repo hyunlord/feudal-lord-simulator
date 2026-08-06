@@ -1,5 +1,6 @@
 import type { Walker } from "../agents/walker.types";
 import type { Building } from "../economy/economy.types";
+import type { ConstructionSite } from "../economy/construction";
 import type { House } from "../population/population.types";
 import type { TileCoordinate } from "../world/grid";
 import type { Tile } from "../world/world.types";
@@ -22,11 +23,14 @@ export interface GameState {
   width: number;
   height: number;
   buildings: Building[];
+  constructionSites: ConstructionSite[];
   houses: House[];
   walkers: Walker[];
   population: number;
   idleWorkers: number;
   treasuryTimber: number;
+  wallTick: number;
+  nextConstructionOrdinal: number;
   roadRevision: number;
   pathCache: RoadPathCache;
 }

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../src/content/buildingConfig";
-import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
+import { placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import type { TileCoordinate } from "../src/world/grid";
@@ -17,6 +17,7 @@ import {
   onboardingRoadTargetLabel,
 } from "../src/ui/onboardingWorldGuidance";
 import { canPlaceRoad } from "../src/world/roadGraph";
+import { placeFinishedBuilding } from "./finishedBuildingFixture";
 
 function stateWith(input: {
   readonly buildings?: readonly Building[];
@@ -160,12 +161,10 @@ test("onboardingWorldGuidanceTargets returns non-overlapping buildable markers f
   assert.ok(foodTargets.length >= 1);
   assert.ok(foodTargets.every((target) => ["wheat_farm", "mill", "granary"].includes(target.kind)));
   for (const target of foodTargets) {
-    assert.equal(isBuildingTarget(target), true);
-    if (isBuildingTarget(target)) {
-      assert.equal(canPlaceBuilding(state, target.kind, target.origin.tx, target.origin.ty).ok, true);
-    }
+    assert.notEqual(target.kind, "road");
+    if (target.kind !== "road") assert.equal(canPlaceBuilding(state, target.kind, target.origin.tx, target.origin.ty).ok, true);
   }
-  assert.equal(hasOverlappingFootprints(targets.filter(isBuildingTarget)), false);
+  assert.equal(hasOverlappingFootprints(targets), false);
 });
 
 test("onboardingWorldGuidanceTargets keeps task six buildable when houses are placed before food targets", () => {
@@ -181,7 +180,7 @@ test("onboardingWorldGuidanceTargets keeps task six buildable when houses are pl
     targets.filter((target) => target.kind === "house").map((target) => target.label),
     ["오두막 1/4", "오두막 2/4", "오두막 3/4", "오두막 4/4"],
   );
-  assert.equal(hasOverlappingFootprints(targets.filter(isBuildingTarget)), false);
+  assert.equal(hasOverlappingFootprints(targets), false);
 
   let settlement = placeGuidedTargets(state, targets.filter((target) => target.kind === "house"));
   for (const kind of ["wheat_farm", "mill", "granary"] as const) {
@@ -223,7 +222,7 @@ test("onboardingWorldGuidanceTargets guides four new houses together for the pop
     targets.map((target) => target.kind),
     ["house", "house", "house", "house"],
   );
-  assert.equal(hasOverlappingFootprints(targets.filter(isBuildingTarget)), false);
+  assert.equal(hasOverlappingFootprints(targets), false);
 
   const settlement = placeGuidedTargets(state, targets);
   assert.equal(settlement.houses.length, state.houses.length + 4);
@@ -243,9 +242,9 @@ function placeGuidedTargets(
 ): GameState {
   let state = initialState;
   for (const target of targets) {
-    if (!isBuildingTarget(target)) throw new Error("Expected building guidance target");
+    if (target.kind === "road") throw new Error("Expected building guidance target");
     assert.equal(canPlaceBuilding(state, target.kind, target.origin.tx, target.origin.ty).ok, true);
-    state = placeBuilding(state, target.kind, target.origin);
+    state = placeFinishedBuilding(state, target.kind, target.origin);
   }
   return state;
 }
@@ -284,17 +283,11 @@ function placeGuidedMarkersUntilKind(
     assert.equal(target?.kind, kind);
     assert.equal(canPlaceBuilding(state, kind, target.origin.tx, target.origin.ty).ok, true);
     return {
-      state: placeBuilding(state, kind, target.origin),
+      state: placeFinishedBuilding(state, kind, target.origin),
       finalTarget: { kind: target.kind, label: target.label },
     };
   }
   throw new Error(`No guided ${kind} marker reached`);
-}
-
-function isBuildingTarget(
-  target: OnboardingGuidanceTarget,
-): target is OnboardingGuidanceTarget & { readonly kind: BuildingKind } {
-  return target.kind !== "road";
 }
 
 function placeGuidedRoad(state: GameState): GameState {
@@ -304,11 +297,10 @@ function placeGuidedRoad(state: GameState): GameState {
   return placeRoadLine(state, target.origin, target.origin);
 }
 
-function hasOverlappingFootprints(
-  targets: readonly { readonly kind: Exclude<BuildingKind | "road", "road">; readonly origin: TileCoordinate }[],
-): boolean {
+function hasOverlappingFootprints(targets: readonly OnboardingGuidanceTarget[]): boolean {
   const occupied = new Set<string>();
   for (const target of targets) {
+    if (target.kind === "road") continue;
     const definition = BUILDING_CONFIG_BY_KIND[target.kind];
     for (let dy = 0; dy < definition.height; dy += 1) {
       for (let dx = 0; dx < definition.width; dx += 1) {

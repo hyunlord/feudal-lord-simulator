@@ -81,6 +81,9 @@ function makeState(input: {
       };
     }),
     buildings: [...input.buildings],
+    constructionSites: [],
+    wallTick: 0,
+    nextConstructionOrdinal: 1,
     houses: [...(input.houses ?? [])],
     walkers: [...(input.walkers ?? [])],
     population: input.houses?.reduce((total, house) => total + house.residents, 0) ?? 0,

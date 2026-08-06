@@ -13,6 +13,9 @@ function state(building: Building): GameState {
     height: 1,
     tiles: [{ tx: 0, ty: 0, terrain: "grass", buildingId: building.id, hasRoad: false }],
     buildings: [building],
+    constructionSites: [],
+    wallTick: 0,
+    nextConstructionOrdinal: 1,
     houses: building.kind === "house" ? [{
       buildingId: building.id,
       level: 2,

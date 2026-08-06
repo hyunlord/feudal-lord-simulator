@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BALANCE } from "../src/content/balanceConfig";
-import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import {
   canPlaceRoadLineEndpoints,
   placeBuilding,
@@ -48,6 +47,7 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
       productionProgress: 0,
     },
   ]);
+  assert.deepEqual(state.constructionSites, []);
   assert.deepEqual(state.houses, [
     {
       buildingId: "house-0-0-0",
@@ -62,6 +62,8 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
   assert.deepEqual(state.walkers, []);
   assert.equal(state.population, 10);
   assert.equal(state.treasuryTimber, BALANCE.STARTING_TIMBER);
+  assert.equal(state.wallTick, 0);
+  assert.equal(state.nextConstructionOrdinal, 1);
   assert.equal(state.roadRevision, 0);
   assert.deepEqual(state.pathCache, {});
   assert.equal(getTile(state, { tx: 0, ty: 0 })?.buildingId, "house-0-0-0");
@@ -77,10 +79,9 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
   }
 });
 
-test("placeBuilding immutably appends a deterministic building marks its footprint and spends only timber", () => {
+test("placeBuilding immutably appends a deterministic construction site and preserves stock", () => {
   // Given
   const roaded = placeRoadLine(DEFAULT_GAME_STATE, { tx: 2, ty: 0 }, { tx: 4, ty: 0 });
-  const timberCost = BUILDING_CONFIG_BY_KIND.storehouse.buildCost.timber ?? 0;
 
   // When
   const next = placeBuilding(roaded, "storehouse", { tx: 2, ty: 1 });
@@ -89,24 +90,30 @@ test("placeBuilding immutably appends a deterministic building marks its footpri
   assert.notEqual(next, roaded);
   assert.equal(roaded.buildings.length, 1);
   assert.equal(roaded.treasuryTimber, BALANCE.STARTING_TIMBER);
-  assert.deepEqual(next.buildings.slice(1), [
+  assert.deepEqual(next.buildings, roaded.buildings);
+  assert.deepEqual(next.houses, roaded.houses);
+  assert.deepEqual(next.constructionSites, [
     {
-      id: "storehouse-2-1-1",
+      id: "construction-site-000001",
       kind: "storehouse",
       tx: 2,
       ty: 1,
-      workers: 0,
-      inventory: {},
+      required: { timber: 40 },
+      delivered: {},
       reserved: {},
-      stockReserved: {},
-      productionProgress: 0,
+      builderTicks: 0,
+      requiredBuilderTicks: 800,
+      assignedBuilders: 0,
+      stall: "awaiting_materials",
+      startedTick: 0,
     },
   ]);
-  assert.equal(next.treasuryTimber, BALANCE.STARTING_TIMBER - timberCost);
-  assert.equal(getTile(next, { tx: 2, ty: 1 })?.buildingId, "storehouse-2-1-1");
-  assert.equal(getTile(next, { tx: 3, ty: 1 })?.buildingId, "storehouse-2-1-1");
-  assert.equal(getTile(next, { tx: 2, ty: 2 })?.buildingId, "storehouse-2-1-1");
-  assert.equal(getTile(next, { tx: 3, ty: 2 })?.buildingId, "storehouse-2-1-1");
+  assert.equal(next.nextConstructionOrdinal, 2);
+  assert.equal(next.treasuryTimber, BALANCE.STARTING_TIMBER);
+  assert.equal(getTile(next, { tx: 2, ty: 1 })?.buildingId, "construction-site-000001");
+  assert.equal(getTile(next, { tx: 3, ty: 1 })?.buildingId, "construction-site-000001");
+  assert.equal(getTile(next, { tx: 2, ty: 2 })?.buildingId, "construction-site-000001");
+  assert.equal(getTile(next, { tx: 3, ty: 2 })?.buildingId, "construction-site-000001");
 });
 
 test("placeBuilding returns the original state when placement or timber validation fails", () => {
@@ -200,7 +207,8 @@ test("gameReducer routes typed domain actions and invalid placements preserve ob
 
   // Then
   assert.equal(getTile(roaded, { tx: 2, ty: 0 })?.hasRoad, true);
-  assert.equal(built.buildings.at(-1)?.id, "well-1-0-1");
+  assert.equal(built.constructionSites.at(-1)?.id, "construction-site-000001");
+  assert.equal(built.constructionSites.at(-1)?.kind, "well");
   assert.equal(invalid, built);
 });
 

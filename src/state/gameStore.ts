@@ -2,6 +2,7 @@ import { createContext, createElement, useContext, useMemo, useReducer } from "r
 
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
+import { advanceFrame } from "../engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../engine/gameActions";
 import { advanceTick } from "../engine/tick";
 import type { GameState } from "../engine/engine.types";
@@ -50,11 +51,14 @@ export const DEFAULT_GAME_STATE: GameState = {
   width: INITIAL_WORLD.width,
   height: INITIAL_WORLD.height,
   buildings: [STARTING_HOUSE_BUILDING],
+  constructionSites: [],
   houses: [STARTING_HOUSE],
   walkers: [],
   population: STARTING_HOUSE.residents,
   idleWorkers: 0,
   treasuryTimber: BALANCE.STARTING_TIMBER,
+  wallTick: 0,
+  nextConstructionOrdinal: 1,
   roadRevision: 0,
   pathCache: {},
 };
@@ -69,6 +73,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
     case "advance_tick":
       return advanceTick(state);
+    case "advance_frame":
+      return advanceFrame(state, action.speed);
     case "place_building":
       return placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
     case "place_road_line":

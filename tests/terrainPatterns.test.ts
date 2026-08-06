@@ -26,6 +26,9 @@ const state = (tiles: readonly Tile[]): GameState => ({
   tiles: [...tiles],
   width: 3, height: 3,
   buildings: [], houses: [], walkers: [],
+  constructionSites: [],
+  wallTick: 0,
+  nextConstructionOrdinal: 1,
   population: 0, idleWorkers: 0, treasuryTimber: 0, roadRevision: 0,
   pathCache: {},
 });
