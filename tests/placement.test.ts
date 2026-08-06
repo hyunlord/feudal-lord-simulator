@@ -290,9 +290,9 @@ test("placement spendable timber matches building placement and excludes walker 
       spawnedTick: 0,
       mission: "deliver" as const,
       phase: "outbound" as const,
-      destinationBuildingId: "store",
+      destination: { kind: "building", buildingId: "store" },
       reservation: {
-        destinationBuildingId: "store",
+        destination: { kind: "building", buildingId: "store" },
         resource: "timber" as const,
         amount: 90,
         sourceStockClaim: null,

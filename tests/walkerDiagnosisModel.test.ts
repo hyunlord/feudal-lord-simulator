@@ -33,7 +33,7 @@ function carter(reason: CarterCancellationReason | null = null): CarterWalker {
     id: "carter",
     kind: "carter",
     homeBuildingId: "camp",
-    destinationBuildingId: "store",
+    destination: { kind: "building", buildingId: "store" },
     mission: "deliver",
     phase: "outbound",
     position: { tx: 0.5, ty: 0 },
@@ -48,7 +48,7 @@ function carter(reason: CarterCancellationReason | null = null): CarterWalker {
     cargo: { resource: "logs", amount: 4 },
     spawnedTick: 20,
     reservation: {
-      destinationBuildingId: "store",
+      destination: { kind: "building", buildingId: "store" },
       resource: "logs",
       amount: 4,
       sourceStockClaim: null,

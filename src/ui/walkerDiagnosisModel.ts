@@ -1,5 +1,6 @@
 import type {
   CarterCancellationReason,
+  CarterDestination,
   CarterWalker,
   TilePos,
   Walker,
@@ -70,6 +71,17 @@ function buildingLabel(state: GameState, buildingId: string): string {
   return building === undefined ? buildingId : BUILDING_CONFIG_BY_KIND[building.kind].name;
 }
 
+function destinationLabel(state: GameState, destination: CarterDestination): string {
+  switch (destination.kind) {
+    case "building":
+      return buildingLabel(state, destination.buildingId);
+    case "construction_site":
+      return destination.siteId;
+    default:
+      return assertNever(destination);
+  }
+}
+
 function cargoLabel(walker: Walker): string {
   if (walker.cargo === null) return "화물 없음";
   return `${RESOURCE_LABELS[walker.cargo.resource]} ${walker.cargo.amount}`;
@@ -100,18 +112,18 @@ function carterDiagnosis(
   walker: CarterWalker,
   remainingDistance: number,
 ): WalkerDiagnosisModel {
-  const sourceId = walker.mission === "deliver"
-    ? walker.homeBuildingId
-    : walker.destinationBuildingId;
-  const destinationId = walker.mission === "deliver"
-    ? walker.destinationBuildingId
-    : walker.homeBuildingId;
+  const sourceLabel = walker.mission === "deliver"
+    ? buildingLabel(state, walker.homeBuildingId)
+    : destinationLabel(state, walker.destination);
+  const destination = walker.mission === "deliver"
+    ? destinationLabel(state, walker.destination)
+    : buildingLabel(state, walker.homeBuildingId);
   return {
     walkerId: walker.id,
     roleLabel: "운반인",
     cargoLabel: cargoLabel(walker),
-    sourceLabel: buildingLabel(state, sourceId),
-    destinationLabel: buildingLabel(state, destinationId),
+    sourceLabel,
+    destinationLabel: destination,
     statusLabel: carterStatus(walker),
     remainingDistance,
     etaTicks: Math.ceil(remainingDistance / BALANCE.CARTER_SPEED),

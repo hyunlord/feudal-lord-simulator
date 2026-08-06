@@ -13,7 +13,7 @@ function walker(): CarterWalker {
     id: "carter",
     kind: "carter",
     homeBuildingId: "source",
-    destinationBuildingId: "destination",
+    destination: { kind: "building", buildingId: "destination" },
     mission: "deliver",
     phase: "outbound",
     position: { tx: 1.5, ty: 0 },
@@ -28,7 +28,7 @@ function walker(): CarterWalker {
     cargo: null,
     spawnedTick: 0,
     reservation: {
-      destinationBuildingId: "destination",
+      destination: { kind: "building", buildingId: "destination" },
       resource: "timber",
       amount: 1,
       sourceStockClaim: null,

@@ -106,7 +106,7 @@ function normalizeWalker(walker: Walker) {
         ...common,
         mission: walker.mission,
         phase: walker.phase,
-        destinationBuildingId: walker.destinationBuildingId,
+        destination: walker.destination,
         reservation: walker.reservation,
         cancellation: walker.cancellation,
       }

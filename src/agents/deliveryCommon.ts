@@ -1,11 +1,12 @@
 import type { Building } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
+import type { ConstructionSite } from "../economy/construction";
 import {
   currentRoadTile,
   lastReachedRoadTile,
 } from "./movement";
 import type { DeliveryInventoryPort, DeliveryRoutePort } from "./deliveryTypes";
-import type { CarterWalker, TilePos, Walker } from "./walker.types";
+import type { CarterDestination, CarterWalker, TilePos, Walker } from "./walker.types";
 
 export const amountOf = (
   record: Partial<Record<ResourceType, number>>,
@@ -55,7 +56,7 @@ export function activeCarterHomes(walkers: readonly Walker[]): Set<string> {
 export function spawnCarter(params: {
   readonly tick: number;
   readonly home: Building;
-  readonly destination: Building;
+  readonly destination: CarterDestination;
   readonly path: readonly TilePos[];
   readonly mission: CarterWalker["mission"];
   readonly cargo: CarterWalker["cargo"];
@@ -67,7 +68,7 @@ export function spawnCarter(params: {
     mission: params.mission,
     phase: "outbound",
     homeBuildingId: params.home.id,
-    destinationBuildingId: params.destination.id,
+    destination: params.destination,
     reservation: params.reservation,
     position: params.path[0] ?? { tx: params.home.tx, ty: params.home.ty },
     path: params.path,
@@ -86,35 +87,146 @@ export function findBuilding(
   return buildings.find((building) => building.id === id) ?? null;
 }
 
+export function findSite(
+  sites: readonly ConstructionSite[],
+  id: string,
+): ConstructionSite | null {
+  return sites.find((site) => site.id === id) ?? null;
+}
+
+export function replaceSite(
+  sites: readonly ConstructionSite[],
+  replacement: ConstructionSite,
+): readonly ConstructionSite[] {
+  return sites.map((site) => (site.id === replacement.id ? replacement : site));
+}
+
+function withSiteResource(
+  site: ConstructionSite,
+  field: "delivered" | "reserved",
+  resource: ResourceType,
+  amount: number,
+): ConstructionSite {
+  const nextAmount = Math.max(0, Math.floor(amount));
+  const current = site[field];
+  if (nextAmount === 0) {
+    const { [resource]: _removed, ...remaining } = current;
+    return { ...site, [field]: remaining };
+  }
+  return { ...site, [field]: { ...current, [resource]: nextAmount } };
+}
+
+export function reserveSiteResource(
+  site: ConstructionSite,
+  resource: ResourceType,
+  amount: number,
+): ConstructionSite {
+  return withSiteResource(
+    site,
+    "reserved",
+    resource,
+    amountOf(site.reserved, resource) + amount,
+  );
+}
+
+export function releaseSiteResource(
+  site: ConstructionSite,
+  resource: ResourceType,
+  amount: number,
+): ConstructionSite {
+  return withSiteResource(
+    site,
+    "reserved",
+    resource,
+    amountOf(site.reserved, resource) - amount,
+  );
+}
+
+export function deliverSiteResource(
+  site: ConstructionSite,
+  resource: ResourceType,
+  amount: number,
+): ConstructionSite {
+  return withSiteResource(
+    releaseSiteResource(site, resource, amount),
+    "delivered",
+    resource,
+    amountOf(site.delivered, resource) + amount,
+  );
+}
+
+export interface DeliveryResourceState {
+  readonly buildings: readonly Building[];
+  readonly constructionSites: readonly ConstructionSite[];
+  readonly treasuryTimber: number;
+}
+
 export function releaseClaims(
-  buildings: readonly Building[],
+  state: DeliveryResourceState,
   carter: CarterWalker,
   inventory: DeliveryInventoryPort,
-): readonly Building[] {
-  const destination = findBuilding(
-    buildings,
-    carter.reservation.destinationBuildingId,
-  );
-  let nextBuildings = buildings;
-  if (destination !== null) {
-    nextBuildings = replaceBuilding(
-      nextBuildings,
-      inventory.releaseSpace(
-        destination,
-        carter.reservation.resource,
-        carter.reservation.amount,
-      ),
-    );
+): DeliveryResourceState {
+  let nextState = state;
+  switch (carter.reservation.destination.kind) {
+    case "building": {
+      const destination = findBuilding(
+        nextState.buildings,
+        carter.reservation.destination.buildingId,
+      );
+      if (destination !== null) {
+        nextState = {
+          ...nextState,
+          buildings: replaceBuilding(
+            nextState.buildings,
+            inventory.releaseSpace(
+              destination,
+              carter.reservation.resource,
+              carter.reservation.amount,
+            ),
+          ),
+        };
+      }
+      break;
+    }
+    case "construction_site": {
+      const destination = findSite(
+        nextState.constructionSites,
+        carter.reservation.destination.siteId,
+      );
+      if (destination !== null) {
+        nextState = {
+          ...nextState,
+          constructionSites: replaceSite(
+            nextState.constructionSites,
+            releaseSiteResource(
+              destination,
+              carter.reservation.resource,
+              carter.reservation.amount,
+            ),
+          ),
+        };
+      }
+      break;
+    }
   }
   const claim = carter.reservation.sourceStockClaim;
-  if (claim === null) return nextBuildings;
-  const source = findBuilding(nextBuildings, claim.buildingId);
-  return source === null
-    ? nextBuildings
-    : replaceBuilding(
-        nextBuildings,
-        inventory.releaseStock(source, claim.resource, claim.amount),
-      );
+  if (claim === null) return nextState;
+  switch (claim.kind) {
+    case "building": {
+      const source = findBuilding(nextState.buildings, claim.buildingId);
+      return source === null
+        ? nextState
+        : {
+            ...nextState,
+            buildings: replaceBuilding(
+              nextState.buildings,
+              inventory.releaseStock(source, claim.resource, claim.amount),
+            ),
+          };
+    }
+    case "treasury":
+      return nextState;
+  }
 }
 
 export function deposit(
@@ -133,5 +245,8 @@ export function returnPath(
   const home = findBuilding(buildings, carter.homeBuildingId);
   const current = lastReachedRoadTile(carter) ?? currentRoadTile(carter);
   if (home === null || current === null) return null;
-  return routes.fromTileToBuilding(current, home.id);
+  return routes.fromTileToDestination(current, {
+    kind: "building",
+    buildingId: home.id,
+  });
 }

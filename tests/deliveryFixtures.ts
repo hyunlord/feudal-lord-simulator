@@ -66,11 +66,25 @@ export function routePort(
   roadTiles: readonly TilePos[] = Object.values(paths).flat(),
 ): DeliveryRoutePort {
   const roads = new Set(roadTiles.map(tileKey));
+  const destinationId = (
+    destination: Parameters<DeliveryRoutePort["fromBuildingToDestination"]>[1],
+  ): string => {
+    switch (destination.kind) {
+      case "building":
+        return destination.buildingId;
+      case "construction_site":
+        return destination.siteId;
+    }
+  };
   return {
     betweenBuildings: (fromBuildingId, toBuildingId) =>
       paths[`${fromBuildingId}->${toBuildingId}`] ?? null,
+    fromBuildingToDestination: (fromBuildingId, destination) =>
+      paths[`${fromBuildingId}->${destinationId(destination)}`] ?? null,
     fromTileToBuilding: (start, toBuildingId) =>
       paths[`${tileKey(start)}->${toBuildingId}`] ?? null,
+    fromTileToDestination: (start, destination) =>
+      paths[`${tileKey(start)}->${destinationId(destination)}`] ?? null,
     isRoad: (tile) => roads.has(tileKey(tile)),
   };
 }

@@ -37,7 +37,7 @@ function walker(id: string, tx: number, ty: number): Walker {
     id,
     kind: "carter",
     homeBuildingId: "building-1",
-    destinationBuildingId: "building-1",
+    destination: { kind: "building", buildingId: "building-1" },
     mission: "deliver",
     phase: "outbound",
     cargo: null,
@@ -47,7 +47,7 @@ function walker(id: string, tx: number, ty: number): Walker {
     position: { tx, ty },
     spawnedTick: 0,
     reservation: {
-      destinationBuildingId: "building-1",
+      destination: { kind: "building", buildingId: "building-1" },
       resource: "timber",
       amount: 0,
       sourceStockClaim: null,

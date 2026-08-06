@@ -26,9 +26,9 @@ const carter: CarterWalker = {
   spawnedTick: 10,
   mission: "deliver",
   phase: "outbound",
-  destinationBuildingId: "granary-1",
+  destination: { kind: "building", buildingId: "granary-1" },
   reservation: {
-    destinationBuildingId: "granary-1",
+    destination: { kind: "building", buildingId: "granary-1" },
     resource: "wheat",
     amount: 8,
     sourceStockClaim: null,

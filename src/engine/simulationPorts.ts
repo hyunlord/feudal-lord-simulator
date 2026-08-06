@@ -17,9 +17,12 @@ import { getOrthogonalRoadNeighbors } from "../world/roadGraph";
 import type { GameState, RoadPathCache } from "./engine.types";
 import {
   buildingRoadAccessTiles,
+  resolveBuildingToConstructionSiteRoute,
   resolveBuildingRoute,
+  resolveRoadToConstructionSiteRoute,
   resolveRoadToBuildingRoute,
 } from "./routing";
+import type { CarterDestination } from "../agents/walker.types";
 
 export interface SimulationRoutePorts {
   readonly delivery: DeliveryRoutePort;
@@ -32,6 +35,13 @@ function findBuilding(
   buildingId: string,
 ): Building | null {
   return buildings.find((building) => building.id === buildingId) ?? null;
+}
+
+function findSite(
+  state: GameState,
+  siteId: string,
+) {
+  return state.constructionSites.find((site) => site.id === siteId) ?? null;
 }
 
 function firstTile(tiles: readonly TilePos[]): TilePos | null {
@@ -106,6 +116,22 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       : resolveRoadToBuildingRoute(routeState(), start, destination);
   };
 
+  const routeToDestination = (
+    start: TilePos,
+    destination: CarterDestination,
+  ): readonly TilePos[] | null => {
+    switch (destination.kind) {
+      case "building":
+        return routeToBuilding(start, destination.buildingId);
+      case "construction_site": {
+        const site = findSite(state, destination.siteId);
+        return site === null
+          ? null
+          : resolveRoadToConstructionSiteRoute(routeState(), start, site);
+      }
+    }
+  };
+
   const delivery: DeliveryRoutePort = {
     betweenBuildings: (fromBuildingId, toBuildingId) => {
       const from = findBuilding(state.buildings, fromBuildingId);
@@ -116,7 +142,26 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       pathCache = resolved.pathCache;
       return resolved.path;
     },
+    fromBuildingToDestination: (fromBuildingId, destination) => {
+      switch (destination.kind) {
+        case "building":
+          return delivery.betweenBuildings(fromBuildingId, destination.buildingId);
+        case "construction_site": {
+          const from = findBuilding(state.buildings, fromBuildingId);
+          const to = findSite(state, destination.siteId);
+          if (from === null || to === null) return null;
+          const resolved = resolveBuildingToConstructionSiteRoute(
+            routeState(),
+            from,
+            to,
+          );
+          pathCache = resolved.pathCache;
+          return resolved.path;
+        }
+      }
+    },
     fromTileToBuilding: routeToBuilding,
+    fromTileToDestination: routeToDestination,
     isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
   };
 

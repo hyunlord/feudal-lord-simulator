@@ -122,7 +122,7 @@ function returningCarter(homeBuildingId: string): CarterWalker {
     mission: "deliver",
     phase: "returning",
     homeBuildingId,
-    destinationBuildingId: "store",
+    destination: { kind: "building", buildingId: "store" },
     position: { tx: 1, ty: 1 },
     path: [{ tx: 1, ty: 1 }],
     pathIndex: 0,
@@ -130,7 +130,7 @@ function returningCarter(homeBuildingId: string): CarterWalker {
     cargo: null,
     spawnedTick: 1,
     reservation: {
-      destinationBuildingId: "store",
+      destination: { kind: "building", buildingId: "store" },
       resource: "logs",
       amount: 0,
       sourceStockClaim: null,

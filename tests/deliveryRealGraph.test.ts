@@ -150,7 +150,7 @@ test("a producer chooses the nearest valid store through the real road graph", (
   const next = advanceTick(state);
   const carter = onlyCarter(next);
 
-  assert.equal(carter.destinationBuildingId, near.id);
+  assert.deepEqual(carter.destination, { kind: "building", buildingId: near.id });
   assert.deepEqual(carter.path, [road(3, 2), road(4, 2)]);
   assert.equal(findBuilding(next, near.id).reserved.logs, 8);
 });
@@ -172,7 +172,10 @@ test("equal road-distance ties choose the ascending destination building id", ()
 
   const next = advanceTick(state);
 
-  assert.equal(onlyCarter(next).destinationBuildingId, storeA.id);
+  assert.deepEqual(onlyCarter(next).destination, {
+    kind: "building",
+    buildingId: storeA.id,
+  });
 });
 
 test("reservations prevent two producers competing for one final storage slot", () => {

@@ -22,7 +22,7 @@ const carter: CarterWalker = {
   id: "carter:producer:1",
   kind: "carter",
   homeBuildingId: "producer",
-  destinationBuildingId: "store",
+  destination: { kind: "building", buildingId: "store" },
   mission: "deliver",
   phase: "outbound",
   position: { tx: 0, ty: 0 },
@@ -31,7 +31,7 @@ const carter: CarterWalker = {
   previousTile: null,
   cargo: { resource: "wheat", amount: 8 },
   reservation: {
-    destinationBuildingId: "store",
+    destination: { kind: "building", buildingId: "store" },
     resource: "wheat",
     amount: 8,
     sourceStockClaim: null,

@@ -33,10 +33,19 @@ export type CarterCancellationReason =
   | "source_unavailable";
 
 export interface CarterSourceStockClaim {
+  readonly kind: "building";
   readonly buildingId: string;
   readonly resource: ResourceType;
   readonly amount: number;
 }
+
+export interface CarterTreasuryStockClaim {
+  readonly kind: "treasury";
+  readonly resource: "timber";
+  readonly amount: number;
+}
+
+export type CarterStockClaim = CarterSourceStockClaim | CarterTreasuryStockClaim;
 
 export interface CarterCapacityClaim {
   readonly buildingId: string;
@@ -44,11 +53,21 @@ export interface CarterCapacityClaim {
   readonly amount: number;
 }
 
+export type CarterDestination =
+  | {
+      readonly kind: "building";
+      readonly buildingId: string;
+    }
+  | {
+      readonly kind: "construction_site";
+      readonly siteId: string;
+    };
+
 export interface CarterReservation {
-  readonly destinationBuildingId: string;
+  readonly destination: CarterDestination;
   readonly resource: ResourceType;
   readonly amount: number;
-  readonly sourceStockClaim: CarterSourceStockClaim | null;
+  readonly sourceStockClaim: CarterStockClaim | null;
   readonly homeCapacityClaim: CarterCapacityClaim | null;
 }
 
@@ -62,7 +81,7 @@ export interface CarterWalker extends WalkerBase {
   readonly kind: "carter";
   readonly mission: CarterMission;
   readonly phase: CarterPhase;
-  readonly destinationBuildingId: string;
+  readonly destination: CarterDestination;
   readonly reservation: CarterReservation;
   readonly cancellation: CarterCancellation | null;
 }

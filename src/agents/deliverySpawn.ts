@@ -1,12 +1,8 @@
-import { BALANCE } from "../content/balanceConfig";
 import {
   BUILDING_CONFIG_BY_KIND,
   type Building,
 } from "../content/buildingConfig";
-import {
-  STORAGE_KIND_BY_RESOURCE,
-  type ResourceType,
-} from "../content/resourceConfig";
+import type { ResourceType } from "../content/resourceConfig";
 import {
   activeCarterHomes,
   amountOf,
@@ -15,71 +11,15 @@ import {
   spawnCarter,
   withStock,
 } from "./deliveryCommon";
+import { deliverCandidate, fetchCandidate } from "./deliveryBuildingCandidates";
+import { spawnSiteDelivery } from "./deliveryConstruction";
 import type {
   DeliveryInventoryPort,
   DeliveryRoutePort,
   DeliveryStepInput,
   DeliveryStepResult,
-  RouteCandidate,
 } from "./deliveryTypes";
 import type { CarterWalker, Walker } from "./walker.types";
-
-function bestCandidate(candidates: readonly RouteCandidate[]): RouteCandidate | null {
-  return [...candidates].sort((left, right) => {
-    if (left.path.length !== right.path.length) {
-      return left.path.length - right.path.length;
-    }
-    return left.building.id.localeCompare(right.building.id);
-  })[0] ?? null;
-}
-
-function deliverCandidate(
-  producer: Building,
-  resource: ResourceType,
-  buildings: readonly Building[],
-  inventory: DeliveryInventoryPort,
-  routes: DeliveryRoutePort,
-): RouteCandidate | null {
-  const stock = amountOf(producer.inventory, resource);
-  if (stock === 0) return null;
-  const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
-  const candidates = buildings.flatMap((building) => {
-    if (building.kind !== storeKind) return [];
-    const path = routes.betweenBuildings(producer.id, building.id);
-    if (path === null || path.length === 0) return [];
-    const amount = Math.min(
-      BALANCE.CARTER_CAPACITY,
-      stock,
-      inventory.availableSpace(building),
-    );
-    return amount > 0 ? [{ building, path, amount }] : [];
-  });
-  return bestCandidate(candidates);
-}
-
-function fetchCandidate(
-  converter: Building,
-  resource: ResourceType,
-  buildings: readonly Building[],
-  inventory: DeliveryInventoryPort,
-  routes: DeliveryRoutePort,
-): RouteCandidate | null {
-  const homeSpace = inventory.availableSpace(converter);
-  if (homeSpace === 0) return null;
-  const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
-  const candidates = buildings.flatMap((building) => {
-    if (building.kind !== storeKind) return [];
-    const path = routes.betweenBuildings(converter.id, building.id);
-    if (path === null || path.length === 0) return [];
-    const amount = Math.min(
-      BALANCE.CARTER_CAPACITY,
-      homeSpace,
-      inventory.availableStock(building, resource),
-    );
-    return amount > 0 ? [{ building, path, amount }] : [];
-  });
-  return bestCandidate(candidates);
-}
 
 function spawnFetch(params: {
   readonly tick: number;
@@ -119,15 +59,16 @@ function spawnFetch(params: {
     walker: spawnCarter({
       tick: params.tick,
       home: reservedHome,
-      destination: reservedSource,
+      destination: { kind: "building", buildingId: reservedSource.id },
       path: candidate.path,
       mission: "fetch",
       cargo: null,
       reservation: {
-        destinationBuildingId: reservedHome.id,
+        destination: { kind: "building", buildingId: reservedHome.id },
         resource: params.inputResource,
         amount: claim,
         sourceStockClaim: {
+          kind: "building",
           buildingId: reservedSource.id,
           resource: params.inputResource,
           amount: claim,
@@ -184,12 +125,12 @@ function spawnDelivery(params: {
     walker: spawnCarter({
       tick: params.tick,
       home: reservedHome,
-      destination: reservedDestination,
+      destination: { kind: "building", buildingId: reservedDestination.id },
       path: candidate.path,
       mission: "deliver",
       cargo: { resource: params.outputResource, amount: candidate.amount },
       reservation: {
-        destinationBuildingId: reservedDestination.id,
+        destination: { kind: "building", buildingId: reservedDestination.id },
         resource: params.outputResource,
         amount: candidate.amount,
         sourceStockClaim: null,
@@ -238,8 +179,28 @@ function spawnForBuilding(
 
 export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
   let buildings = input.buildings;
+  let constructionSites = input.constructionSites ?? [];
+  let treasuryTimber = input.treasuryTimber ?? 0;
   const walkers: Walker[] = [...input.walkers];
   const busyHomes = activeCarterHomes(walkers);
+
+  const siteDispatch = spawnSiteDelivery({
+    tick: input.tick,
+    buildings,
+    constructionSites,
+    treasuryTimber,
+    inventory: input.inventory,
+    routes: input.routes,
+    busyHomeIds: busyHomes,
+  });
+  const siteWalker = siteDispatch?.walkers[0] ?? null;
+  if (siteDispatch !== null && siteWalker !== null && !busyHomes.has(siteWalker.homeBuildingId)) {
+    buildings = siteDispatch.buildings;
+    constructionSites = siteDispatch.constructionSites;
+    treasuryTimber = siteDispatch.treasuryTimber;
+    walkers.push(siteWalker);
+    busyHomes.add(siteWalker.homeBuildingId);
+  }
 
   for (const building of [...buildings].sort(byId)) {
     if (busyHomes.has(building.id)) continue;
@@ -258,5 +219,5 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     }
   }
 
-  return { buildings, walkers: walkers.sort(byId) };
+  return { buildings, constructionSites, walkers: walkers.sort(byId), treasuryTimber };
 }

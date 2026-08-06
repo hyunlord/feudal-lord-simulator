@@ -31,7 +31,7 @@ test("a producer chooses the nearest valid store, reserves space, and loads at m
   const carter = result.walkers[0] as CarterWalker;
 
   assert.equal(carter.kind, "carter");
-  assert.equal(carter.destinationBuildingId, near.id);
+  assert.deepEqual(carter.destination, { kind: "building", buildingId: near.id });
   assert.deepEqual(carter.cargo, { resource: "logs", amount: 8 });
   assert.equal(
     result.buildings.find(({ id }) => id === producer.id)?.inventory.logs,
@@ -69,10 +69,10 @@ test("equal road distance ties break by ascending destination building id", () =
     }),
   });
 
-  assert.equal(
-    (result.walkers[0] as CarterWalker).destinationBuildingId,
-    "granary-a",
-  );
+  assert.deepEqual((result.walkers[0] as CarterWalker).destination, {
+    kind: "building",
+    buildingId: "granary-a",
+  });
 });
 
 test("reservations prevent two producers claiming the same final slot", () => {
@@ -146,13 +146,17 @@ test("a converter fetches missing input from the nearest store and claims both s
   const carter = result.walkers[0] as CarterWalker;
 
   assert.equal(carter.mission, "fetch");
-  assert.equal(carter.destinationBuildingId, granary.id);
+  assert.deepEqual(carter.destination, {
+    kind: "building",
+    buildingId: granary.id,
+  });
   assert.equal(carter.cargo, null);
   assert.deepEqual(carter.reservation, {
-    destinationBuildingId: mill.id,
+    destination: { kind: "building", buildingId: mill.id },
     resource: "wheat",
     amount: 8,
     sourceStockClaim: {
+      kind: "building",
       buildingId: granary.id,
       resource: "wheat",
       amount: 8,

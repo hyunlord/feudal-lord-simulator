@@ -1,5 +1,6 @@
 import type { Building } from "../content/buildingConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import type { ConstructionSite } from "../economy/construction";
 import type { Grid, TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
 import { findExistingRoadPath } from "../world/roadGraph";
@@ -21,10 +22,10 @@ function sameCoordinate(left: TileCoordinate, right: TileCoordinate): boolean {
 
 function cacheKey(
   roadRevision: number,
-  source: Building,
-  destination: Building,
+  sourceId: string,
+  destinationId: string,
 ): string {
-  return `road:${roadRevision}:${source.id}->${destination.id}`;
+  return `road:${roadRevision}:${sourceId}->${destinationId}`;
 }
 
 function reversedPath(
@@ -68,6 +69,26 @@ export function buildingRoadAccessTiles(
   return dedupeSortedRoads(grid, candidates);
 }
 
+export function constructionSiteRoadAccessTiles(
+  grid: Grid,
+  site: ConstructionSite,
+): readonly TileCoordinate[] {
+  const definition = BUILDING_CONFIG_BY_KIND[site.kind];
+  const candidates: TileCoordinate[] = [];
+
+  for (let dx = 0; dx < definition.width; dx += 1) {
+    candidates.push({ tx: site.tx + dx, ty: site.ty - 1 });
+    candidates.push({ tx: site.tx + dx, ty: site.ty + definition.height });
+  }
+
+  for (let dy = 0; dy < definition.height; dy += 1) {
+    candidates.push({ tx: site.tx - 1, ty: site.ty + dy });
+    candidates.push({ tx: site.tx + definition.width, ty: site.ty + dy });
+  }
+
+  return dedupeSortedRoads(grid, candidates);
+}
+
 function shortestRoadPathBetweenAccessTiles(
   grid: Grid,
   starts: readonly TileCoordinate[],
@@ -93,7 +114,7 @@ export function resolveBuildingRoute(
   source: Building,
   destination: Building,
 ): RouteResolution {
-  const forwardKey = cacheKey(state.roadRevision, source, destination);
+  const forwardKey = cacheKey(state.roadRevision, source.id, destination.id);
   const forwardPath = state.pathCache[forwardKey];
   if (forwardPath !== undefined) {
     return {
@@ -102,7 +123,7 @@ export function resolveBuildingRoute(
     };
   }
 
-  const reverseKey = cacheKey(state.roadRevision, destination, source);
+  const reverseKey = cacheKey(state.roadRevision, destination.id, source.id);
   const reversePath = state.pathCache[reverseKey];
   if (reversePath !== undefined) {
     const path = reversedPath(reversePath);
@@ -132,6 +153,34 @@ export function resolveBuildingRoute(
       [forwardKey]: path,
     },
   };
+}
+
+export function resolveBuildingToConstructionSiteRoute(
+  state: GameState,
+  source: Building,
+  destination: ConstructionSite,
+): RouteResolution {
+  const destinationId = `construction_site:${destination.id}`;
+  const forwardKey = cacheKey(state.roadRevision, source.id, destinationId);
+  const forwardPath = state.pathCache[forwardKey];
+  if (forwardPath !== undefined) {
+    return { path: forwardPath, pathCache: state.pathCache };
+  }
+
+  const starts = buildingRoadAccessTiles(state, source);
+  const destinations = constructionSiteRoadAccessTiles(state, destination);
+  const path = shortestRoadPathBetweenAccessTiles(state, starts, destinations);
+  if (path === null) return { path: null, pathCache: state.pathCache };
+  return { path, pathCache: { ...state.pathCache, [forwardKey]: path } };
+}
+
+export function resolveRoadToConstructionSiteRoute(
+  state: GameState,
+  currentRoadTile: TileCoordinate,
+  destination: ConstructionSite,
+): readonly TileCoordinate[] | null {
+  const destinations = constructionSiteRoadAccessTiles(state, destination);
+  return shortestRoadPathBetweenAccessTiles(state, [currentRoadTile], destinations);
 }
 
 export function resolveRoadToBuildingRoute(

@@ -147,9 +147,9 @@ test("economy harness hash includes carter lifecycle and reservation state", () 
     mission: "deliver",
     phase: "returning",
     homeBuildingId: "logging_camp-0",
-    destinationBuildingId: "storehouse-0",
+    destination: { kind: "building", buildingId: "storehouse-0" },
     reservation: {
-      destinationBuildingId: "logging_camp-0",
+      destination: { kind: "building", buildingId: "logging_camp-0" },
       resource: "logs",
       amount: 8,
       sourceStockClaim: null,

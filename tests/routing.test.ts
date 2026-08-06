@@ -2,10 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building } from "../src/content/buildingConfig";
+import type { ConstructionSite } from "../src/economy/construction";
 import type { GameState, RoadPathCache } from "../src/engine/engine.types";
 import {
   buildingRoadAccessTiles,
+  resolveBuildingToConstructionSiteRoute,
   resolveBuildingRoute,
+  resolveRoadToConstructionSiteRoute,
   resolveRoadToBuildingRoute,
 } from "../src/engine/routing";
 import type { Grid, TileCoordinate } from "../src/world/grid";
@@ -52,10 +55,31 @@ function building(
   };
 }
 
+function constructionSite(
+  id: string,
+  origin: TileCoordinate,
+): ConstructionSite {
+  return {
+    id,
+    kind: "well",
+    tx: origin.tx,
+    ty: origin.ty,
+    required: { timber: 10 },
+    delivered: {},
+    reserved: {},
+    builderTicks: 0,
+    requiredBuilderTicks: 200,
+    assignedBuilders: 0,
+    stall: "awaiting_materials",
+    startedTick: 0,
+  };
+}
+
 function worldFromGrid(
   grid: Grid,
   buildings: readonly Building[],
   pathCache: RoadPathCache = {},
+  constructionSites: readonly ConstructionSite[] = [],
 ): GameState {
   return {
     tick: 0,
@@ -64,7 +88,7 @@ function worldFromGrid(
     width: grid.width,
     height: grid.height,
     buildings: [...buildings],
-    constructionSites: [],
+    constructionSites: [...constructionSites],
     wallTick: 0,
     nextConstructionOrdinal: 1,
     houses: [],
@@ -229,4 +253,42 @@ test("resolveBuildingRoute ignores stale revision cache entries and returns null
   // Then
   assert.equal(result.path, null);
   assert.deepEqual(result.pathCache, state.pathCache);
+});
+
+test("construction-site routes use tagged cache keys and road-to-site access", () => {
+  // Given
+  const source = building("storehouse-a", "storehouse", { tx: 1, ty: 1 });
+  const target = constructionSite("construction-site-000001", { tx: 5, ty: 1 });
+  const grid = setRoads(grassGrid(8, 4), [
+    { tx: 3, ty: 1 },
+    { tx: 4, ty: 1 },
+  ]);
+  const state = worldFromGrid(grid, [source], {}, [target]);
+
+  // When
+  const first = resolveBuildingToConstructionSiteRoute(state, source, target);
+  const cached = resolveBuildingToConstructionSiteRoute(
+    { ...state, pathCache: first.pathCache },
+    source,
+    target,
+  );
+  const roadToSite = resolveRoadToConstructionSiteRoute(
+    state,
+    { tx: 3, ty: 1 },
+    target,
+  );
+
+  // Then
+  assert.deepEqual(first.path, [
+    { tx: 3, ty: 1 },
+    { tx: 4, ty: 1 },
+  ]);
+  assert.deepEqual(cached.path, first.path);
+  assert.deepEqual(cached.pathCache, {
+    "road:7:storehouse-a->construction_site:construction-site-000001": first.path,
+  });
+  assert.deepEqual(roadToSite, [
+    { tx: 3, ty: 1 },
+    { tx: 4, ty: 1 },
+  ]);
 });

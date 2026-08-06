@@ -70,7 +70,7 @@ function carter(input: Partial<Walker> = {}): Walker {
     id: "carter-a",
     kind: "carter",
     homeBuildingId: "logging-camp",
-    destinationBuildingId: "storehouse",
+    destination: { kind: "building", buildingId: "storehouse" },
     mission: "deliver",
     phase: "outbound",
     position: { tx: 2.5, ty: 1 },
@@ -80,7 +80,7 @@ function carter(input: Partial<Walker> = {}): Walker {
     cargo: { resource: "logs", amount: 4 },
     spawnedTick: 10,
     reservation: {
-      destinationBuildingId: "storehouse",
+      destination: { kind: "building", buildingId: "storehouse" },
       resource: "logs",
       amount: 4,
       sourceStockClaim: null,
