@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { App } from "../src/App";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
+import { GameCanvas } from "../src/render/GameCanvas";
 import { getPlacementToolStatus } from "../src/render/placementFeedback";
 import { OnboardingTasks, SettlementStatusLine } from "../src/ui/InfoPanel";
 
@@ -51,6 +52,20 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.doesNotMatch(runtimeSource, /selectedTool\s*\?\?/);
   assert.match(runtimeSource, /useRef\(selectedTool\)/);
   assert.match(runtimeSource, /selectedToolRef\.current\s*=\s*selectedTool/);
+});
+
+test("world canvas exposes crosshair styling only while a placement tool is armed", () => {
+  // Given / When
+  const armedMarkup = renderToStaticMarkup(
+    createElement(GameProvider, null, createElement(GameCanvas, { selectedTool: "logging_camp" })),
+  );
+  const idleMarkup = renderToStaticMarkup(
+    createElement(GameProvider, null, createElement(GameCanvas, { selectedTool: null })),
+  );
+
+  // Then
+  assert.match(armedMarkup, /class="game-canvas game-canvas--placement-armed"/);
+  assert.doesNotMatch(idleMarkup, /game-canvas--placement-armed/);
 });
 
 test("status line prioritizes armed tool copy before feedback and blocker fallback", () => {

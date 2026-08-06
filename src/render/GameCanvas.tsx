@@ -25,7 +25,11 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
 
   return (
     <>
-      <canvas ref={canvasRef} className="game-canvas" aria-label="Simulation canvas" />
+      <canvas
+        ref={canvasRef}
+        className={selectedTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
+        aria-label="Simulation canvas"
+      />
       <BuildingInspector state={state} hover={hoveredBuilding} />
     </>
   );

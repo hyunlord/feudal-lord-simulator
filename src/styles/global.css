@@ -104,6 +104,10 @@ button {
   background-color: var(--palette-parchment-dark);
 }
 
+.game-canvas--placement-armed {
+  cursor: crosshair;
+}
+
 .building-inspector {
   position: absolute;
   z-index: 3;
