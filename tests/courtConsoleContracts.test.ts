@@ -180,6 +180,16 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.shield-caption\s*\{[\s\S]*?bottom:\s*10px;/);
 });
 
+test("app shell cannot scroll focused console controls out of the viewport", async () => {
+  // Given / When
+  const css = await readFile(STYLESHEET, "utf8");
+  const appShellRule = css.match(/\.app-shell\s*\{([^}]*)\}/)?.[1] ?? "";
+
+  // Then
+  assert.match(appShellRule, /overflow:\s*clip;/);
+  assert.doesNotMatch(appShellRule, /overflow:\s*hidden;/);
+});
+
 test("the browser shell declares a request-free favicon for clean fresh-load QA", async () => {
   // Given / When
   const html = await readFile(INDEX_HTML, "utf8");
