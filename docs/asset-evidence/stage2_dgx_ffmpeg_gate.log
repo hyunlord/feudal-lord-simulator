@@ -1,0 +1,258 @@
+FFMPEG_GATE_START 2026-08-07T07:26:44+09:00
+===== COMMAND_START git_head 2026-08-07T07:26:44+09:00 =====
+COMMAND: git rev-parse HEAD
+6b59f152632d431156b3ab3d4d2e0091aac0f57a
+EXIT_CODE git_head: 0
+===== COMMAND_END git_head 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START git_branch 2026-08-07T07:26:44+09:00 =====
+COMMAND: git branch --show-current
+codex/stage2-building-takes-time-task11-fixed
+EXIT_CODE git_branch: 0
+===== COMMAND_END git_branch 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START git_status 2026-08-07T07:26:44+09:00 =====
+COMMAND: git status --short --branch
+## codex/stage2-building-takes-time-task11-fixed
+?? .omo/
+?? .omx/
+EXIT_CODE git_status: 0
+===== COMMAND_END git_status 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START untracked_omo_omx 2026-08-07T07:26:44+09:00 =====
+COMMAND: bash -lc echo\ \"UNTRACKED\ .omo/.omx\ COUNT\"\;\ git\ ls-files\ --others\ --exclude-standard\ .omo\ .omx\ \|\ wc\ -l\;\ echo\ \"UNTRACKED\ .omo/.omx\ SAMPLE\"\;\ git\ ls-files\ --others\ --exclude-standard\ .omo\ .omx\ \|\ sed\ -n\ \"1\,40p\"
+UNTRACKED .omo/.omx COUNT
+379
+UNTRACKED .omo/.omx SAMPLE
+.omo/evidence/phase5-baseline/command-ledger.tsv
+.omo/evidence/phase5-baseline/determinism-hash.txt
+.omo/evidence/phase5-baseline/git-baseline.tsv
+.omo/evidence/phase5-baseline/git-status-after-harness.txt
+.omo/evidence/phase5-baseline/git-status-after-http.txt
+.omo/evidence/phase5-baseline/git-status-after-npm-test.txt
+.omo/evidence/phase5-baseline/git-status-before.txt
+.omo/evidence/phase5-baseline/git-status-final-with-report.txt
+.omo/evidence/phase5-baseline/git-status-final.txt
+.omo/evidence/phase5-baseline/git-status-tracked-after-harness.txt
+.omo/evidence/phase5-baseline/git-status-tracked-after-http.txt
+.omo/evidence/phase5-baseline/git-status-tracked-after-npm-test.txt
+.omo/evidence/phase5-baseline/git-status-tracked-before.txt
+.omo/evidence/phase5-baseline/git-status-tracked-final-with-report.txt
+.omo/evidence/phase5-baseline/git-status-tracked-final.txt
+.omo/evidence/phase5-baseline/http-asset-__vite_client.curl-i.txt
+.omo/evidence/phase5-baseline/http-asset-__vite_client.stderr.txt
+.omo/evidence/phase5-baseline/http-asset-_src_main.tsx.curl-i.txt
+.omo/evidence/phase5-baseline/http-asset-_src_main.tsx.stderr.txt
+.omo/evidence/phase5-baseline/http-assets-summary.tsv
+.omo/evidence/phase5-baseline/http-assets.txt
+.omo/evidence/phase5-baseline/http-root.curl-i.txt
+.omo/evidence/phase5-baseline/http-root.stderr.txt
+.omo/evidence/phase5-baseline/http.meta.txt
+.omo/evidence/phase5-baseline/manual-qa-report.json
+.omo/evidence/phase5-baseline/npm-run-harness.meta.txt
+.omo/evidence/phase5-baseline/npm-run-harness.stderr.txt
+.omo/evidence/phase5-baseline/npm-run-harness.stdout.txt
+.omo/evidence/phase5-baseline/npm-test.meta.txt
+.omo/evidence/phase5-baseline/npm-test.stderr.txt
+.omo/evidence/phase5-baseline/npm-test.stdout.txt
+.omo/evidence/task-1-phase5-first-five-minutes/baseline-economyUi.txt
+.omo/evidence/task-1-phase5-first-five-minutes/cleanup-receipt.txt
+.omo/evidence/task-1-phase5-first-five-minutes/corrected-transport-receipt.txt
+.omo/evidence/task-1-phase5-first-five-minutes/done-claim.json
+.omo/evidence/task-1-phase5-first-five-minutes/final-cleanup-receipt.txt
+.omo/evidence/task-1-phase5-first-five-minutes/focused-onboardingTaskModel-run2.txt
+.omo/evidence/task-1-phase5-first-five-minutes/focused-onboardingTaskModel-run3.txt
+.omo/evidence/task-1-phase5-first-five-minutes/green-onboardingTaskModel-1.txt
+.omo/evidence/task-1-phase5-first-five-minutes/manual-qa-assertions.txt
+EXIT_CODE untracked_omo_omx: 0
+===== COMMAND_END untracked_omo_omx 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START ffmpeg_path 2026-08-07T07:26:44+09:00 =====
+COMMAND: command -v ffmpeg
+/usr/bin/ffmpeg
+EXIT_CODE ffmpeg_path: 0
+===== COMMAND_END ffmpeg_path 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START ffmpeg_version 2026-08-07T07:26:44+09:00 =====
+COMMAND: bash -lc ffmpeg\ -version\ \|\ head\ -n\ 1
+ffmpeg version 6.1.1-3ubuntu5+esm7 Copyright (c) 2000-2023 the FFmpeg developers
+EXIT_CODE ffmpeg_version: 0
+===== COMMAND_END ffmpeg_version 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START ffmpeg_test_search 2026-08-07T07:26:44+09:00 =====
+COMMAND: bash -lc git\ grep\ -n\ \"ffmpeg\\\|resizeRgbaLanczos\\\|processTerrainFile\\\|prepareWorldAssets\"\ --\ tests\ scripts\ \|\ sed\ -n\ \"1\,160p\"
+scripts/prepareWorldAssets.ts:5:import { processTerrainFile } from "./terrainTexturePipeline";
+scripts/prepareWorldAssets.ts:129:const processTerrain = (options: PrepareWorldAssetOptions): ReadonlyMap<(typeof TERRAIN_KEYS)[number], ReturnType<typeof processTerrainFile>> => {
+scripts/prepareWorldAssets.ts:130:  const metrics = new Map<(typeof TERRAIN_KEYS)[number], ReturnType<typeof processTerrainFile>>();
+scripts/prepareWorldAssets.ts:134:      processTerrainFile(
+scripts/prepareWorldAssets.ts:190:  metrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], ReturnType<typeof processTerrainFile>>,
+scripts/prepareWorldAssets.ts:217:export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
+scripts/prepareWorldAssets.ts:269:        "Usage: tsx scripts/prepareWorldAssets.ts <repo-root> <raw-root> <phase4b-root> <selections.json>",
+scripts/prepareWorldAssets.ts:272:    prepareWorldAssets({ repoRoot, rawRoot, phase4bRoot, selections: parseSelections(selectionsPath) });
+scripts/processBuildingSprite.ts:60:// allow: SIZE_OK - offline sprite pipeline keeps PNG, RGBA, ffmpeg, and CLI contracts together.
+scripts/processBuildingSprite.ts:61:const FFMPEG_PATH = process.env.FFMPEG_PATH ?? "ffmpeg";
+scripts/processBuildingSprite.ts:511:  resize: (image: RgbaImage, target: Dimensions) => RgbaImage = resizeRgbaLanczos,
+scripts/processBuildingSprite.ts:535:    throw new Error(`ffmpeg failed to start: ${result.error.message}`);
+scripts/processBuildingSprite.ts:538:    throw new Error(`ffmpeg exited ${result.status}: ${result.stderr.toString("utf8").trim()}`);
+scripts/processBuildingSprite.ts:543:export const resizeRgbaLanczos = (image: RgbaImage, target: Dimensions): RgbaImage => {
+scripts/quantisePalette.ts:37:const FFMPEG_PATH = "/usr/bin/ffmpeg";
+scripts/quantisePalette.ts:147:    throw new QuantiseError(`ffmpeg failed to start: ${result.error.message}`);
+scripts/quantisePalette.ts:150:    throw new QuantiseError(`ffmpeg exited ${result.status}: ${result.stderr.toString("utf8").trim()}`);
+scripts/terrainTexturePipeline.ts:4:  resizeRgbaLanczos,
+scripts/terrainTexturePipeline.ts:222:  resize: (image: RgbaImage, target: Dimensions) => RgbaImage = resizeRgbaLanczos,
+scripts/terrainTexturePipeline.ts:235:export const processTerrainFile = (inputPath: string, outputPath: string, key: TerrainKey): TerrainSeamMetrics => {
+tests/terrainTexturePipeline.test.ts:12:  processTerrainFile,
+tests/terrainTexturePipeline.test.ts:154:    const metrics = processTerrainFile(inputPath, outputPath, "grass");
+tests/worldAssetRelease.test.ts:9:  prepareWorldAssets,
+tests/worldAssetRelease.test.ts:12:} from "../scripts/prepareWorldAssets";
+tests/worldAssetRelease.test.ts:139:      const manifest = prepareWorldAssets({
+tests/worldAssetRelease.test.ts:196:      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections });
+tests/worldAssetRelease.test.ts:213:      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections });
+EXIT_CODE ffmpeg_test_search: 0
+===== COMMAND_END ffmpeg_test_search 2026-08-07T07:26:44+09:00 =====
+===== COMMAND_START ffmpeg_asset_tests 2026-08-07T07:26:44+09:00 =====
+COMMAND: npx tsx --test tests/processBuildingSprite.test.ts tests/terrainTexturePipeline.test.ts tests/worldAssetRelease.test.ts
+TAP version 13
+# Subtest: processBuildingSprite
+    # Subtest: expands generated RGB pixels to opaque RGBA before chroma processing
+    ok 1 - expands generated RGB pixels to opaque RGBA before chroma processing
+      ---
+      duration_ms: 0.729375
+      ...
+    # Subtest: removes cyan chroma-key pixels and despills retained edge colour
+    ok 2 - removes cyan chroma-key pixels and despills retained edge colour
+      ---
+      duration_ms: 0.238928
+      ...
+    # Subtest: detects opaque bounds and computes bottom-centred aspect fit
+    ok 3 - detects opaque bounds and computes bottom-centred aspect fit
+      ---
+      duration_ms: 0.187615
+      ...
+    # Subtest: adds a one-pixel ink outline only outside transparent silhouette neighbours
+    ok 4 - adds a one-pixel ink outline only outside transparent silhouette neighbours
+      ---
+      duration_ms: 0.377248
+      ...
+    # Subtest: omits exterior outline in the lower third and never outlines an internal hole
+    ok 5 - omits exterior outline in the lower third and never outlines an internal hole
+      ---
+      duration_ms: 0.199343
+      ...
+    # Subtest: rejects final visible mass outside the subject scale band
+    ok 6 - rejects final visible mass outside the subject scale band
+      ---
+      duration_ms: 3.611241
+      ...
+    # Subtest: reports exact per-ramp pixel counts and proportions
+    ok 7 - reports exact per-ramp pixel counts and proportions
+      ---
+      duration_ms: 0.353279
+      ...
+    # Subtest: keeps stone at footings but remaps grey roof and wall pixels into family ramps
+    ok 8 - keeps stone at footings but remaps grey roof and wall pixels into family ramps
+      ---
+      duration_ms: 0.259487
+      ...
+    # Subtest: quantises visible pixels, preserves transparency, and clears rows below baseline
+    ok 9 - quantises visible pixels, preserves transparency, and clears rows below baseline
+      ---
+      duration_ms: 0.649535
+      ...
+    # Subtest: delegates file-pipeline resizing to the Lanczos boundary target
+    ok 10 - delegates file-pipeline resizing to the Lanczos boundary target
+      ---
+      duration_ms: 0.669902
+      ...
+    # Subtest: verifies the 24 processed building candidate contracts
+    ok 11 - verifies the 24 processed building candidate contracts
+      ---
+      duration_ms: 28.160261
+      ...
+    # Subtest: rejects non-canonical RGB and opaque pixels below a candidate baseline
+    ok 12 - rejects non-canonical RGB and opaque pixels below a candidate baseline
+      ---
+      duration_ms: 6.71317
+      ...
+    1..12
+ok 1 - processBuildingSprite
+  ---
+  duration_ms: 42.727799
+  type: 'suite'
+  ...
+# Subtest: terrainTexturePipeline
+    # Subtest: produces an opaque 256px texture restricted to the terrain policy ramps
+    ok 1 - produces an opaque 256px texture restricted to the terrain policy ramps
+      ---
+      duration_ms: 192.118143
+      ...
+    # Subtest: moves generated borders inward before making opposing edges exactly compatible
+    ok 2 - moves generated borders inward before making opposing edges exactly compatible
+      ---
+      duration_ms: 33.623338
+      ...
+    # Subtest: constructs a byte-identical 2x2 tiling buffer
+    ok 3 - constructs a byte-identical 2x2 tiling buffer
+      ---
+      duration_ms: 29.47701
+      ...
+    # Subtest: reports opposing-edge, join-band, and internal-reference deltas for both axes
+    ok 4 - reports opposing-edge, join-band, and internal-reference deltas for both axes
+      ---
+      duration_ms: 2.227996
+      ...
+    # Subtest: rejects a synthetic visible seam even when the first and last pixels match
+    ok 5 - rejects a synthetic visible seam even when the first and last pixels match
+      ---
+      duration_ms: 2.401867
+      ...
+    # Subtest: writes a resized periodic PNG through the real file boundary
+    ok 6 - writes a resized periodic PNG through the real file boundary
+      ---
+      duration_ms: 70.567501
+      ...
+    1..6
+ok 2 - terrainTexturePipeline
+  ---
+  duration_ms: 331.041964
+  type: 'suite'
+  ...
+# Subtest: Phase 4C world asset release
+    # Subtest: maps generated ground-cover candidates and single-source trees to their raw filenames
+    ok 1 - maps generated ground-cover candidates and single-source trees to their raw filenames
+      ---
+      duration_ms: 0.287392
+      ...
+    # Subtest: prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest
+    ok 2 - prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest
+      ---
+      duration_ms: 1224.567275
+      ...
+    # Subtest: rejects an unexpected top-level PNG without treating historical candidate folders as release files
+    ok 3 - rejects an unexpected top-level PNG without treating historical candidate folders as release files
+      ---
+      duration_ms: 1194.24278
+      ...
+    # Subtest: rejects a category-invalid asset even when its filename and dimensions are correct
+    ok 4 - rejects a category-invalid asset even when its filename and dimensions are correct
+      ---
+      duration_ms: 1203.622829
+      ...
+    1..4
+ok 3 - Phase 4C world asset release
+  ---
+  duration_ms: 3623.357873
+  type: 'suite'
+  ...
+1..3
+# tests 22
+# suites 3
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3774.387495
+EXIT_CODE ffmpeg_asset_tests: 0
+===== COMMAND_END ffmpeg_asset_tests 2026-08-07T07:26:48+09:00 =====
+===== COMMAND_START asset_release_scripts 2026-08-07T07:26:48+09:00 =====
+COMMAND: bash -lc npx\ tsx\ scripts/verifyBuildingSprites.ts\ public/assets/buildings/candidates_v2\ \&\&\ npx\ tsx\ scripts/verifyWorldAssets.ts\ .\ public/assets/buildings/candidates_v2
+Building sprite verification passed
+World asset release verification passed
+EXIT_CODE asset_release_scripts: 0
+===== COMMAND_END asset_release_scripts 2026-08-07T07:26:48+09:00 =====
+FFMPEG_GATE_DONE 2026-08-07T07:26:48+09:00 failed=0

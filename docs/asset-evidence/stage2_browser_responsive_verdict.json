@@ -1,0 +1,34 @@
+{
+  "url": "http://100.70.109.50:3200/",
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "width": 768,
+      "height": 720
+    },
+    {
+      "width": 375,
+      "height": 812
+    }
+  ],
+  "siteCard": {
+    "heading": "오두막 부지",
+    "stall": "no_builders",
+    "tracks": [
+      "부지",
+      "자재 확보",
+      "자재 배달",
+      "건축 작업"
+    ],
+    "cancel": "공사 포기"
+  },
+  "domAssertions": {
+    "card": true,
+    "cancel": true,
+    "fourTracks": true
+  },
+  "note": "Real DGX browser evidence; viewport reset to 1280x720."
+}

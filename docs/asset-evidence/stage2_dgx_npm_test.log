@@ -1,0 +1,2840 @@
+DGX_NPM_TEST_FIXED_START 2026-08-07T07:06:30+09:00
+
+> feudal-lord-simulator@0.1.0 test
+> tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: paused presentation clock has no onboarding commit while the current task is unchanged
+ok 1 - paused presentation clock has no onboarding commit while the current task is unchanged
+  ---
+  duration_ms: 1.311643
+  ...
+# Subtest: build menu exposes all building tools plus road in reachable order
+ok 2 - build menu exposes all building tools plus road in reachable order
+  ---
+  duration_ms: 1.514493
+  ...
+# Subtest: build menu options provide accessible labels for every selectable tool
+ok 3 - build menu options provide accessible labels for every selectable tool
+  ---
+  duration_ms: 0.098833
+  ...
+# Subtest: the real app renders every placement tool as an accessible control
+ok 4 - the real app renders every placement tool as an accessible control
+  ---
+  duration_ms: 14.671436
+  ...
+# Subtest: build menu groups buildings while road stays in a dedicated zero-cost control
+ok 5 - build menu groups buildings while road stays in a dedicated zero-cost control
+  ---
+  duration_ms: 7.388766
+  ...
+# Subtest: task-driven highlights are semantic attributes and keep unaffordable seals focusable
+ok 6 - task-driven highlights are semantic attributes and keep unaffordable seals focusable
+  ---
+  duration_ms: 3.510285
+  ...
+# Subtest: house body profile visibly changes for each housing level
+ok 7 - house body profile visibly changes for each housing level
+  ---
+  duration_ms: 1.299403
+  ...
+# Subtest: building visual state derives house level from matching house record
+ok 8 - building visual state derives house level from matching house record
+  ---
+  duration_ms: 0.326739
+  ...
+# Subtest: working mill detail animates only when production can advance
+ok 9 - working mill detail animates only when production can advance
+  ---
+  duration_ms: 0.971768
+  ...
+# Subtest: sawmill working detail appears only when staffed with input and capacity
+ok 10 - sawmill working detail appears only when staffed with input and capacity
+  ---
+  duration_ms: 0.30453
+  ...
+# Subtest: problem marker is vermilion and only appears for actual blocked production
+ok 11 - problem marker is vermilion and only appears for actual blocked production
+  ---
+  duration_ms: 0.659621
+  ...
+# Subtest: problem markers use enlarged true-condition glyphs with a gentle pulse
+ok 12 - problem markers use enlarged true-condition glyphs with a gentle pulse
+  ---
+  duration_ms: 0.988168
+  ...
+# Subtest: problem marker pulse changes glyph size without changing the true condition
+ok 13 - problem marker pulse changes glyph size without changing the true condition
+  ---
+  duration_ms: 0.49626
+  ...
+# Subtest: clampZoom clamps zoom to the supported range
+ok 14 - clampZoom clamps zoom to the supported range
+  ---
+  duration_ms: 0.37682
+  ...
+# Subtest: worldToCanvas applies zoom before pan
+ok 15 - worldToCanvas applies zoom before pan
+  ---
+  duration_ms: 0.100881
+  ...
+# Subtest: canvasToWorld removes pan before zoom
+ok 16 - canvasToWorld removes pan before zoom
+  ---
+  duration_ms: 0.057073
+  ...
+# Subtest: clientToCanvas converts client coordinates to canvas CSS pixels
+ok 17 - clientToCanvas converts client coordinates to canvas CSS pixels
+  ---
+  duration_ms: 0.277074
+  ...
+# Subtest: clientToCanvas uses CSS pixels without device pixel scaling
+ok 18 - clientToCanvas uses CSS pixels without device pixel scaling
+  ---
+  duration_ms: 0.121313
+  ...
+# Subtest: camera transforms client points into world screen coordinates
+ok 19 - camera transforms client points into world screen coordinates
+  ---
+  duration_ms: 0.04784
+  ...
+# Subtest: clampPan keeps a large world anchored within a visible margin
+ok 20 - clampPan keeps a large world anchored within a visible margin
+  ---
+  duration_ms: 0.104689
+  ...
+# Subtest: clampPan centers a small world inside the viewport
+ok 21 - clampPan centers a small world inside the viewport
+  ---
+  duration_ms: 0.047873
+  ...
+# Subtest: context menu resolves the pointed construction site while placement stays armed
+ok 22 - context menu resolves the pointed construction site while placement stays armed
+  ---
+  duration_ms: 0.643285
+  ...
+# Subtest: context menu ignores non-site tiles and still clears stale diagnostic selection
+ok 23 - context menu ignores non-site tiles and still clears stale diagnostic selection
+  ---
+  duration_ms: 0.088529
+  ...
+# Subtest: cameraForStartingHouse centers the edge starting house in the desktop usable viewport
+ok 24 - cameraForStartingHouse centers the edge starting house in the desktop usable viewport
+  ---
+  duration_ms: 1.146506
+  ...
+# Subtest: cameraForStartingHouse keeps the edge starting house visible on mobile
+ok 25 - cameraForStartingHouse keeps the edge starting house visible on mobile
+  ---
+  duration_ms: 0.260642
+  ...
+# Subtest: cameraForStartingHouse prefers house-0-0-0 before another house
+ok 26 - cameraForStartingHouse prefers house-0-0-0 before another house
+  ---
+  duration_ms: 0.20845
+  ...
+# Subtest: cameraForStartingHouse falls back to the first house when the canonical id is absent
+ok 27 - cameraForStartingHouse falls back to the first house when the canonical id is absent
+  ---
+  duration_ms: 0.232354
+  ...
+# Subtest: cameraForStartingHouse returns a finite generic fallback when no house exists
+ok 28 - cameraForStartingHouse returns a finite generic fallback when no house exists
+  ---
+  duration_ms: 3.276331
+  ...
+# Subtest: cancelConstruction refunds delivered sixty percent and stranded reservations fully to nearest compatible stores
+ok 29 - cancelConstruction refunds delivered sixty percent and stranded reservations fully to nearest compatible stores
+  ---
+  duration_ms: 3.233499
+  ...
+# Subtest: cancelConstruction uses id tie-breaks, skips full stores, and explicitly drops non-timber no-destination refunds
+ok 30 - cancelConstruction uses id tie-breaks, skips full stores, and explicitly drops non-timber no-destination refunds
+  ---
+  duration_ms: 9.682466
+  ...
+# Subtest: cancelConstruction falls timber back to treasury only when no compatible store accepts it
+ok 31 - cancelConstruction falls timber back to treasury only when no compatible store accepts it
+  ---
+  duration_ms: 0.567941
+  ...
+# Subtest: cancelConstruction manually cancels active site carters and leaves in-flight cargo to the return lifecycle
+ok 32 - cancelConstruction manually cancels active site carters and leaves in-flight cargo to the return lifecycle
+  ---
+  duration_ms: 1.131961
+  ...
+# Subtest: cancelConstruction is idempotent after the site is already absent
+ok 33 - cancelConstruction is idempotent after the site is already absent
+  ---
+  duration_ms: 0.520388
+  ...
+# Subtest: site material dispatch takes priority over normal building transfers
+ok 34 - site material dispatch takes priority over normal building transfers
+  ---
+  duration_ms: 9.637378
+  ...
+# Subtest: an active normal carter is not preempted by a new construction site
+ok 35 - an active normal carter is not preempted by a new construction site
+  ---
+  duration_ms: 0.332083
+  ...
+# Subtest: construction site arrival moves cargo from reserved to delivered exactly once
+ok 36 - construction site arrival moves cargo from reserved to delivered exactly once
+  ---
+  duration_ms: 0.365587
+  ...
+# Subtest: treasury timber dispatch and cancelled return preserve the bootstrap total
+ok 37 - treasury timber dispatch and cancelled return preserve the bootstrap total
+  ---
+  duration_ms: 0.266658
+  ...
+# Subtest: disconnected construction stock does not spawn or leak reservations
+ok 38 - disconnected construction stock does not spawn or leak reservations
+  ---
+  duration_ms: 0.089153
+  ...
+# Subtest: material source exposure distinguishes absent stock from disconnected stock
+ok 39 - material source exposure distinguishes absent stock from disconnected stock
+  ---
+  duration_ms: 0.320931
+  ...
+# Subtest: busy first site source falls through to the next idle source before normal delivery
+ok 40 - busy first site source falls through to the next idle source before normal delivery
+  ---
+  duration_ms: 5.44787
+  ...
+# Subtest: busy first treasury home falls through to the next idle home
+ok 41 - busy first treasury home falls through to the next idle home
+  ---
+  duration_ms: 0.315058
+  ...
+# Subtest: advanceTick advances construction work after delivery and completes without duplicate material spend
+ok 42 - advanceTick advances construction work after delivery and completes without duplicate material spend
+  ---
+  duration_ms: 6.244693
+  ...
+# Subtest: advanceTick freezes site work while materials are missing
+ok 43 - advanceTick freezes site work while materials are missing
+  ---
+  duration_ms: 0.281506
+  ...
+# Subtest: advanceTick reports no_route then resumes delivery after reconnect without duplicate cargo
+ok 44 - advanceTick reports no_route then resumes delivery after reconnect without duplicate cargo
+  ---
+  duration_ms: 3.702351
+  ...
+# Subtest: advanceFrame at 5x cannot complete a fully staffed house before sixty wall ticks
+ok 45 - advanceFrame at 5x cannot complete a fully staffed house before sixty wall ticks
+  ---
+  duration_ms: 13.584915
+  ...
+# Subtest: BUILDING_CONFIG keeps the construction recipe inputs that the domain model mirrors
+ok 46 - BUILDING_CONFIG keeps the construction recipe inputs that the domain model mirrors
+  ---
+  duration_ms: 3.75384
+  ...
+# Subtest: CONSTRUCTION constants pin builder capacity, visibility floor, and required work by building kind
+ok 47 - CONSTRUCTION constants pin builder capacity, visibility floor, and required work by building kind
+  ---
+  duration_ms: 0.159873
+  ...
+# Subtest: createConstructionSite mirrors recipes and stores wall startedTick without creating finished progress
+ok 48 - createConstructionSite mirrors recipes and stores wall startedTick without creating finished progress
+  ---
+  duration_ms: 0.144801
+  ...
+# Subtest: constructionSiteId uses zero-padded ordinals so 9 sorts before 10 and increasing ordinals never reuse ids
+ok 49 - constructionSiteId uses zero-padded ordinals so 9 sorts before 10 and increasing ordinals never reuse ids
+  ---
+  duration_ms: 0.152289
+  ...
+# Subtest: constructionMaterialStatus reports delivered completeness and outstanding delivery need separately from reservations
+ok 50 - constructionMaterialStatus reports delivered completeness and outstanding delivery need separately from reservations
+  ---
+  duration_ms: 0.162593
+  ...
+# Subtest: constructionStall exercises all five exact stall values and separates source absence from missing routes
+ok 51 - constructionStall exercises all five exact stall values and separates source absence from missing routes
+  ---
+  duration_ms: 0.183585
+  ...
+# Subtest: constructionOnSiteLabel returns exact Korean labels for each blocking cause
+ok 52 - constructionOnSiteLabel returns exact Korean labels for each blocking cause
+  ---
+  duration_ms: 0.137585
+  ...
+# Subtest: constructionStage changes display-only appearance exactly at 25, 55, and 85 percent
+ok 53 - constructionStage changes display-only appearance exactly at 25, 55, and 85 percent
+  ---
+  duration_ms: 0.063776
+  ...
+# Subtest: advanceConstructionWork requires complete materials and assigned builders before accumulating work
+ok 54 - advanceConstructionWork requires complete materials and assigned builders before accumulating work
+  ---
+  duration_ms: 0.132641
+  ...
+# Subtest: canCompleteConstruction enforces atomic material, builder tick, and minimum wall tick prerequisites
+ok 55 - canCompleteConstruction enforces atomic material, builder tick, and minimum wall tick prerequisites
+  ---
+  duration_ms: 0.089697
+  ...
+# Subtest: constructionCancellationRefunds floors 60 percent delivered refunds and releases reserved materials fully
+ok 56 - constructionCancellationRefunds floors 60 percent delivered refunds and releases reserved materials fully
+  ---
+  duration_ms: 0.226242
+  ...
+# Subtest: construction helpers handle every resource without unsafe parser fallbacks
+ok 57 - construction helpers handle every resource without unsafe parser fallbacks
+  ---
+  duration_ms: 0.078641
+  ...
+# Subtest: placement identity site creation and direct tick semantics are explicit
+ok 58 - placement identity site creation and direct tick semantics are explicit
+  ---
+  duration_ms: 4.334884
+  ...
+# Subtest: placeBuilding creates one occupied construction site without finished consumers
+ok 59 - placeBuilding creates one occupied construction site without finished consumers
+  ---
+  duration_ms: 1.731311
+  ...
+# Subtest: placeBuilding routes every building kind through site placement including houses
+ok 60 - placeBuilding routes every building kind through site placement including houses
+  ---
+  duration_ms: 1.768735
+  ...
+# Subtest: construction site ids are stable zero-padded ordinals that sort after nine
+ok 61 - construction site ids are stable zero-padded ordinals that sort after nine
+  ---
+  duration_ms: 0.31557
+  ...
+# Subtest: site commitments reject overcommitted placement without mutating state
+ok 62 - site commitments reject overcommitted placement without mutating state
+  ---
+  duration_ms: 2.188754
+  ...
+# Subtest: delivered and reserved construction materials reduce only uncommitted placement spend
+ok 63 - delivered and reserved construction materials reduce only uncommitted placement spend
+  ---
+  duration_ms: 0.333266
+  ...
+# Subtest: advance frame applies speed as deterministic substeps while wall time advances once
+ok 64 - advance frame applies speed as deterministic substeps while wall time advances once
+  ---
+  duration_ms: 0.449043
+  ...
+# Subtest: advanceTick advances one simulation tick and one wall tick for direct harness paths
+ok 65 - advanceTick advances one simulation tick and one wall tick for direct harness paths
+  ---
+  duration_ms: 0.135265
+  ...
+# Subtest: sixty direct advanceTick calls satisfy the construction wall-time floor and complete ready sites
+ok 66 - sixty direct advanceTick calls satisfy the construction wall-time floor and complete ready sites
+  ---
+  duration_ms: 4.676392
+  ...
+# Subtest: objectRenderItemsForFrame invalidates static cache when construction sites change
+ok 67 - objectRenderItemsForFrame invalidates static cache when construction sites change
+  ---
+  duration_ms: 0.979528
+  ...
+# Subtest: constructionSiteRenderSignature exposes the exact four visual stage names
+ok 68 - constructionSiteRenderSignature exposes the exact four visual stage names
+  ---
+  duration_ms: 0.392851
+  ...
+# Subtest: drawConstructionSite records distinct plot foundation frame and roof signatures with a builder mark
+ok 69 - drawConstructionSite records distinct plot foundation frame and roof signatures with a builder mark
+  ---
+  duration_ms: 0.968136
+  ...
+# Subtest: drawConstructionSite writes the exact current stall label with delivered and required counts
+ok 70 - drawConstructionSite writes the exact current stall label with delivered and required counts
+  ---
+  duration_ms: 0.130417
+  ...
+# Subtest: constructionCompletionEffects derives a short pop and dust from previous and current snapshots only
+ok 71 - constructionCompletionEffects derives a short pop and dust from previous and current snapshots only
+  ---
+  duration_ms: 0.111729
+  ...
+# Subtest: construction site card model exposes four separate progress rows and the exact stall
+ok 72 - construction site card model exposes four separate progress rows and the exact stall
+  ---
+  duration_ms: 0.699494
+  ...
+# Subtest: construction site card model keeps no-material sites split without inventing a combined bar
+ok 73 - construction site card model keeps no-material sites split without inventing a combined bar
+  ---
+  duration_ms: 0.099505
+  ...
+# Subtest: palette CSS variables expose every semantic compatibility colour
+ok 74 - palette CSS variables expose every semantic compatibility colour
+  ---
+  duration_ms: 0.66047
+  ...
+# Subtest: game speed keeps a fixed frame interval while speed controls substeps
+ok 75 - game speed keeps a fixed frame interval while speed controls substeps
+  ---
+  duration_ms: 0.07336
+  ...
+# Subtest: minimap sampling is bounded deterministic and terrain-derived
+ok 76 - minimap sampling is bounded deterministic and terrain-derived
+  ---
+  duration_ms: 0.136705
+  ...
+# Subtest: the actual app renders one continuous accessible court console
+ok 77 - the actual app renders one continuous accessible court console
+  ---
+  duration_ms: 11.071597
+  ...
+# Subtest: reusable console controls create unique referenced DOM and SVG ids
+ok 78 - reusable console controls create unique referenced DOM and SVG ids
+  ---
+  duration_ms: 17.557492
+  ...
+# Subtest: build seals surface the road and armed styling states for the console layout
+ok 79 - build seals surface the road and armed styling states for the console layout
+  ---
+  duration_ms: 3.299372
+  ...
+# Subtest: console CSS uses every generated surface and rejects web-dashboard styling
+ok 80 - console CSS uses every generated surface and rejects web-dashboard styling
+  ---
+  duration_ms: 4.245956
+  ...
+# Subtest: app shell cannot scroll focused console controls out of the viewport
+ok 81 - app shell cannot scroll focused console controls out of the viewport
+  ---
+  duration_ms: 0.808919
+  ...
+# Subtest: ledger recess keeps responsive controls inside the viewport
+ok 82 - ledger recess keeps responsive controls inside the viewport
+  ---
+  duration_ms: 0.68391
+  ...
+# Subtest: the browser shell declares a request-free favicon for clean fresh-load QA
+ok 83 - the browser shell declares a request-free favicon for clean fresh-load QA
+  ---
+  duration_ms: 0.500372
+  ...
+# Subtest: an outbound carter without a road path home cancels before delivery
+ok 84 - an outbound carter without a road path home cancels before delivery
+  ---
+  duration_ms: 5.812673
+  ...
+# Subtest: a vanished fetch source cancels without leaking either reservation
+ok 85 - a vanished fetch source cancels without leaking either reservation
+  ---
+  duration_ms: 0.426772
+  ...
+# Subtest: a cancellation with no road home remains observable for one tick before logical recovery
+ok 86 - a cancellation with no road home remains observable for one tick before logical recovery
+  ---
+  duration_ms: 0.19477
+  ...
+# Subtest: cancelled cargo reserves its home capacity until the returning carter restores it
+ok 87 - cancelled cargo reserves its home capacity until the returning carter restores it
+  ---
+  duration_ms: 0.279762
+  ...
+# Subtest: an outbound delivery protects enough home capacity for later cancellation
+ok 88 - an outbound delivery protects enough home capacity for later cancellation
+  ---
+  duration_ms: 1.217946
+  ...
+# Subtest: an unreserved returning carter waits rather than overfilling a full home
+ok 89 - an unreserved returning carter waits rather than overfilling a full home
+  ---
+  duration_ms: 0.108945
+  ...
+# Subtest: delivery arrival deposits cargo, releases capacity, returns home, then despawns
+ok 90 - delivery arrival deposits cargo, releases capacity, returns home, then despawns
+  ---
+  duration_ms: 5.589519
+  ...
+# Subtest: fetch arrival withdraws the claimed source stock and delivers it into reserved home space
+ok 91 - fetch arrival withdraws the claimed source stock and delivers it into reserved home space
+  ---
+  duration_ms: 0.392195
+  ...
+# Subtest: a broken outbound route releases every claim exactly once and returns cargo home
+ok 92 - a broken outbound route releases every claim exactly once and returns cargo home
+  ---
+  duration_ms: 0.242386
+  ...
+# Subtest: a broken fetch route releases both the home capacity and source stock claims
+ok 93 - a broken fetch route releases both the home capacity and source stock claims
+  ---
+  duration_ms: 0.141985
+  ...
+# Subtest: a producer chooses the nearest valid store, reserves space, and loads at most eight
+ok 94 - a producer chooses the nearest valid store, reserves space, and loads at most eight
+  ---
+  duration_ms: 8.113333
+  ...
+# Subtest: equal road distance ties break by ascending destination building id
+ok 95 - equal road distance ties break by ascending destination building id
+  ---
+  duration_ms: 0.275538
+  ...
+# Subtest: reservations prevent two producers claiming the same final slot
+ok 96 - reservations prevent two producers claiming the same final slot
+  ---
+  duration_ms: 0.149441
+  ...
+# Subtest: a producer with no reachable unreserved destination does not spawn
+ok 97 - a producer with no reachable unreserved destination does not spawn
+  ---
+  duration_ms: 0.144802
+  ...
+# Subtest: a converter fetches missing input from the nearest store and claims both stock and home space
+ok 98 - a converter fetches missing input from the nearest store and claims both stock and home space
+  ---
+  duration_ms: 0.232114
+  ...
+# Subtest: the reversed fetch rule also keeps the timber chain operable
+ok 99 - the reversed fetch rule also keeps the timber chain operable
+  ---
+  duration_ms: 0.093425
+  ...
+# Subtest: a converter with enough input delivers finished output instead of fetching
+ok 100 - a converter with enough input delivers finished output instead of fetching
+  ---
+  duration_ms: 0.175361
+  ...
+# Subtest: an active carter prevents a second carter from spawning for the same home
+ok 101 - an active carter prevents a second carter from spawning for the same home
+  ---
+  duration_ms: 0.192722
+  ...
+# Subtest: a producer chooses the nearest valid store through the real road graph
+ok 102 - a producer chooses the nearest valid store through the real road graph
+  ---
+  duration_ms: 6.28207
+  ...
+# Subtest: equal road-distance ties choose the ascending destination building id
+ok 103 - equal road-distance ties choose the ascending destination building id
+  ---
+  duration_ms: 0.365683
+  ...
+# Subtest: reservations prevent two producers competing for one final storage slot
+ok 104 - reservations prevent two producers competing for one final storage slot
+  ---
+  duration_ms: 0.298706
+  ...
+# Subtest: a producer with no real road route leaves stock and reservations unchanged
+ok 105 - a producer with no real road route leaves stock and reservations unchanged
+  ---
+  duration_ms: 0.18325
+  ...
+# Subtest: road removal mid-journey releases claims and conserves cargo until home arrival despawns
+ok 106 - road removal mid-journey releases claims and conserves cargo until home arrival despawns
+  ---
+  duration_ms: 1.253706
+  ...
+# Subtest: removing the home access behind an outbound carter cancels before delivery
+ok 107 - removing the home access behind an outbound carter cancels before delivery
+  ---
+  duration_ms: 1.234058
+  ...
+# Subtest: baseline normal delivery keeps observable building mission behavior
+ok 108 - baseline normal delivery keeps observable building mission behavior
+  ---
+  duration_ms: 12.070278
+  ...
+# Subtest: diagnostic card placement stays in viewport and outside its selected target
+ok 109 - diagnostic card placement stays in viewport and outside its selected target
+  ---
+  duration_ms: 3.439405
+  ...
+# Subtest: house card renders its complete water and bread cause chain result
+ok 110 - house card renders its complete water and bread cause chain result
+  ---
+  duration_ms: 13.567955
+  ...
+# Subtest: walker card renders route, mission and cancellation facts
+ok 111 - walker card renders route, mission and cancellation facts
+  ---
+  duration_ms: 1.629342
+  ...
+# Subtest: construction site card renders four named rows and a cancel control
+ok 112 - construction site card renders four named rows and a cancel control
+  ---
+  duration_ms: 1.908928
+  ...
+# Subtest: distribution reach is an exact bounded multi-source road BFS
+ok 113 - distribution reach is an exact bounded multi-source road BFS
+  ---
+  duration_ms: 1.728542
+  ...
+# Subtest: population event highlight includes only the involved house footprints
+ok 114 - population event highlight includes only the involved house footprints
+  ---
+  duration_ms: 0.788903
+  ...
+# Subtest: selected building overlay returns only its adjacent road component
+ok 115 - selected building overlay returns only its adjacent road component
+  ---
+  duration_ms: 0.711942
+  ...
+# Subtest: selected road component uses a presentation-strength ultramarine fill
+ok 116 - selected road component uses a presentation-strength ultramarine fill
+  ---
+  duration_ms: 0.828535
+  ...
+# Subtest: selected Walker path is the exact current path object
+ok 117 - selected Walker path is the exact current path object
+  ---
+  duration_ms: 0.532436
+  ...
+# Subtest: selected Walker path drawing traces every actual path point in order
+ok 118 - selected Walker path drawing traces every actual path point in order
+  ---
+  duration_ms: 0.244546
+  ...
+# Subtest: existing road component matches an independent BFS for multiple starts
+ok 119 - existing road component matches an independent BFS for multiple starts
+  ---
+  duration_ms: 1.939792
+  ...
+# Subtest: existing road component ignores duplicate and non-road starts
+ok 120 - existing road component ignores duplicate and non-road starts
+  ---
+  duration_ms: 0.220913
+  ...
+# Subtest: findNearestSource ignores reserved or empty stock and ties by building id
+ok 121 - findNearestSource ignores reserved or empty stock and ties by building id
+  ---
+  duration_ms: 6.413718
+  ...
+# Subtest: findNearestSource uses a caller road-distance and rejects unreachable candidates
+ok 122 - findNearestSource uses a caller road-distance and rejects unreachable candidates
+  ---
+  duration_ms: 0.104369
+  ...
+# Subtest: economy harness fixed scenario is deterministic and passes every metric
+ok 123 - economy harness fixed scenario is deterministic and passes every metric
+  ---
+  duration_ms: 613.514291
+  ...
+# Subtest: economy harness fixed scenario has legal building footprints
+ok 124 - economy harness fixed scenario has legal building footprints
+  ---
+  duration_ms: 0.978744
+  ...
+# Subtest: economy harness never exceeds a building storage capacity
+ok 125 - economy harness never exceeds a building storage capacity
+  ---
+  duration_ms: 163.196243
+  ...
+# Subtest: economy harness food stability fails when no bread is ever produced
+ok 126 - economy harness food stability fails when no bread is ever produced
+  ---
+  duration_ms: 225.715428
+  ...
+# Subtest: economy harness prints the required metric table
+ok 127 - economy harness prints the required metric table
+  ---
+  duration_ms: 229.781687
+  ...
+# Subtest: economy harness hash includes carter lifecycle and reservation state
+ok 128 - economy harness hash includes carter lifecycle and reservation state
+  ---
+  duration_ms: 0.446004
+  ...
+# Subtest: economy harness hash changes for every construction field
+ok 129 - economy harness hash changes for every construction field
+  ---
+  duration_ms: 10.051077
+  ...
+# Subtest: economy harness reports construction metrics and completes scripted sites
+ok 130 - economy harness reports construction metrics and completes scripted sites
+  ---
+  duration_ms: 656.805089
+  ...
+# Subtest: economy harness fails only material deadlock for disconnected construction routes
+ok 131 - economy harness fails only material deadlock for disconnected construction routes
+  ---
+  duration_ms: 326.553944
+  ...
+# Subtest: economy harness fails only material deadlock when construction materials cannot exist
+ok 132 - economy harness fails only material deadlock when construction materials cannot exist
+  ---
+  duration_ms: 98.214686
+  ...
+# Subtest: construction resource ledger includes site commitments without double-counting claims
+ok 133 - construction resource ledger includes site commitments without double-counting claims
+  ---
+  duration_ms: 0.369139
+  ...
+# Subtest: production hard-stops when a building is even one worker short
+ok 134 - production hard-stops when a building is even one worker short
+  ---
+  duration_ms: 0.619637
+  ...
+# Subtest: a converter does not progress without its full local input recipe
+ok 135 - a converter does not progress without its full local input recipe
+  ---
+  duration_ms: 0.096576
+  ...
+# Subtest: raw production advances exactly one progress per staffed tick
+ok 136 - raw production advances exactly one progress per staffed tick
+  ---
+  duration_ms: 0.076833
+  ...
+# Subtest: converter completion consumes two input, creates one output, and resets
+ok 137 - converter completion consumes two input, creates one output, and resets
+  ---
+  duration_ms: 0.091713
+  ...
+# Subtest: a full raw producer holds at full progress until local space exists
+ok 138 - a full raw producer holds at full progress until local space exists
+  ---
+  duration_ms: 0.125313
+  ...
+# Subtest: converter completion may consume input to make room while total storage is full
+ok 139 - converter completion may consume input to make room while total storage is full
+  ---
+  duration_ms: 0.057217
+  ...
+# Subtest: reserved inbound capacity blocks raw output rather than overbooking storage
+ok 140 - reserved inbound capacity blocks raw output rather than overbooking storage
+  ---
+  duration_ms: 0.051504
+  ...
+# Subtest: non-production buildings are stable
+ok 141 - non-production buildings are stable
+  ---
+  duration_ms: 0.041553
+  ...
+# Subtest: granaries accept only food and storehouses accept only materials
+ok 142 - granaries accept only food and storehouses accept only materials
+  ---
+  duration_ms: 0.831079
+  ...
+# Subtest: available space is shared across resources and subtracts inbound reservations
+ok 143 - available space is shared across resources and subtracts inbound reservations
+  ---
+  duration_ms: 0.245218
+  ...
+# Subtest: reservation claims only valid unreserved space and prevents a second last-slot claim
+ok 144 - reservation claims only valid unreserved space and prevents a second last-slot claim
+  ---
+  duration_ms: 0.565493
+  ...
+# Subtest: reservation release clamps at zero and is idempotent
+ok 145 - reservation release clamps at zero and is idempotent
+  ---
+  duration_ms: 0.188834
+  ...
+# Subtest: converter local storage may reserve its own input or output without becoming a public store
+ok 146 - converter local storage may reserve its own input or output without becoming a public store
+  ---
+  duration_ms: 0.500084
+  ...
+# Subtest: outbound stock reservations prevent duplicate fetch claims
+ok 147 - outbound stock reservations prevent duplicate fetch claims
+  ---
+  duration_ms: 0.206721
+  ...
+# Subtest: withdrawing reserved stock is atomic and conserves the source inventory
+ok 148 - withdrawing reserved stock is atomic and conserves the source inventory
+  ---
+  duration_ms: 0.209186
+  ...
+# Subtest: advanceTick leaves an under-staffed producer stopped
+ok 149 - advanceTick leaves an under-staffed producer stopped
+  ---
+  duration_ms: 12.04735
+  ...
+# Subtest: advanceTick steps an existing returning carter before spawning a new one
+ok 150 - advanceTick steps an existing returning carter before spawning a new one
+  ---
+  duration_ms: 2.110642
+  ...
+# Subtest: advanceTick returns deep-equal states for identical inputs
+ok 151 - advanceTick returns deep-equal states for identical inputs
+  ---
+  duration_ms: 0.623029
+  ...
+# Subtest: advanceTick caches delivery road paths by road revision and building pair
+ok 152 - advanceTick caches delivery road paths by road revision and building pair
+  ---
+  duration_ms: 0.794055
+  ...
+# Subtest: advanceTick keeps population as house census rather than walker count
+ok 153 - advanceTick keeps population as house census rather than walker count
+  ---
+  duration_ms: 0.927208
+  ...
+# Subtest: advanceTick conserves resource units while cargo moves across ticks
+ok 154 - advanceTick conserves resource units while cargo moves across ticks
+  ---
+  duration_ms: 0.660053
+  ...
+# Subtest: CourtLedger keeps old call sites and can display the Phase 3 economy totals
+ok 155 - CourtLedger keeps old call sites and can display the Phase 3 economy totals
+  ---
+  duration_ms: 8.892251
+  ...
+# Subtest: economy overlay controls expose visible water and labour toggles without camera-key collisions
+ok 156 - economy overlay controls expose visible water and labour toggles without camera-key collisions
+  ---
+  duration_ms: 18.75787
+  ...
+# Subtest: economy overlay controls render inside the right console recess instead of as persistent floating UI
+ok 157 - economy overlay controls render inside the right console recess instead of as persistent floating UI
+  ---
+  duration_ms: 24.6024
+  ...
+# Subtest: the onboarding task list replaces the distant population objective in the right console
+ok 158 - the onboarding task list replaces the distant population objective in the right console
+  ---
+  duration_ms: 10.283783
+  ...
+# Subtest: sixty-tick guidance sampling does not schedule state from an effect on every simulation tick
+ok 159 - sixty-tick guidance sampling does not schedule state from an effect on every simulation tick
+  ---
+  duration_ms: 8.719417
+  ...
+# Subtest: build groups reserve their full two-seal width so neighboring buttons cannot intercept clicks
+ok 160 - build groups reserve their full two-seal width so neighboring buttons cannot intercept clicks
+  ---
+  duration_ms: 1.822399
+  ...
+# Subtest: settlement guidance advances population targets and samples priority on a sixty tick cadence
+ok 161 - settlement guidance advances population targets and samples priority on a sixty tick cadence
+  ---
+  duration_ms: 0.323187
+  ...
+# Subtest: settlement guidance priority follows the exact Phase 4F blocker order
+ok 162 - settlement guidance priority follows the exact Phase 4F blocker order
+  ---
+  duration_ms: 0.398676
+  ...
+# Subtest: settlement problem glyphs appear only for real water bread labour and storage conditions
+ok 163 - settlement problem glyphs appear only for real water bread labour and storage conditions
+  ---
+  duration_ms: 0.820679
+  ...
+# Subtest: water overlay draws well coverage and marks dry houses in vermilion
+ok 164 - water overlay draws well coverage and marks dry houses in vermilion
+  ---
+  duration_ms: 5.456542
+  ...
+# Subtest: water coverage uses the same bounded Manhattan radius as well service
+ok 165 - water coverage uses the same bounded Manhattan radius as well service
+  ---
+  duration_ms: 0.16845
+  ...
+# Subtest: labour overlay highlights only buildings below their worker requirement
+ok 166 - labour overlay highlights only buildings below their worker requirement
+  ---
+  duration_ms: 0.156481
+  ...
+# Subtest: renderer overlay input is optional so existing renderFrame callers remain source-compatible
+ok 167 - renderer overlay input is optional so existing renderFrame callers remain source-compatible
+  ---
+  duration_ms: 0.072849
+  ...
+# Subtest: economy overlay CSS stays fixed and tokenized
+ok 168 - economy overlay CSS stays fixed and tokenized
+  ---
+  duration_ms: 5.91621
+  ...
+# Subtest: advanceTick allocates labour before production and runs one production step
+ok 169 - advanceTick allocates labour before production and runs one production step
+  ---
+  duration_ms: 11.470769
+  ...
+# Subtest: advanceTick spawns a carter from producer stock using road-access routes
+ok 170 - advanceTick spawns a carter from producer stock using road-access routes
+  ---
+  duration_ms: 1.512973
+  ...
+# Subtest: advanceTick steps distributors before housing so bread service is visible same tick
+ok 171 - advanceTick steps distributors before housing so bread service is visible same tick
+  ---
+  duration_ms: 0.97092
+  ...
+# Subtest: advanceTick assigns post-production builders and derives stable builder walkers
+ok 172 - advanceTick assigns post-production builders and derives stable builder walkers
+  ---
+  duration_ms: 1.374076
+  ...
+# Subtest: advanceTick never starves active production for construction builders
+ok 173 - advanceTick never starves active production for construction builders
+  ---
+  duration_ms: 1.064281
+  ...
+# Subtest: DEFAULT_GAME_STATE starts with a deterministic populated world and no presentation fields
+ok 174 - DEFAULT_GAME_STATE starts with a deterministic populated world and no presentation fields
+  ---
+  duration_ms: 1.868288
+  ...
+# Subtest: placeBuilding immutably appends a deterministic construction site and preserves stock
+ok 175 - placeBuilding immutably appends a deterministic construction site and preserves stock
+  ---
+  duration_ms: 4.04461
+  ...
+# Subtest: gameReducer cancel_construction removes the site and clears occupied tiles
+ok 176 - gameReducer cancel_construction removes the site and clears occupied tiles
+  ---
+  duration_ms: 2.206962
+  ...
+# Subtest: placeBuilding returns the original state when placement or timber validation fails
+ok 177 - placeBuilding returns the original state when placement or timber validation fails
+  ---
+  duration_ms: 0.187377
+  ...
+# Subtest: placeRoadLine immutably marks every normalized road tile without spending timber
+ok 178 - placeRoadLine immutably marks every normalized road tile without spending timber
+  ---
+  duration_ms: 1.525997
+  ...
+# Subtest: placeRoadLine is atomic and returns the original state when any normalized tile is invalid
+ok 179 - placeRoadLine is atomic and returns the original state when any normalized tile is invalid
+  ---
+  duration_ms: 0.298963
+  ...
+# Subtest: placeRoadLine endpoint validation rejects fractional and extreme out-of-bounds endpoints
+ok 180 - placeRoadLine endpoint validation rejects fractional and extreme out-of-bounds endpoints
+  ---
+  duration_ms: 0.159425
+  ...
+# Subtest: gameReducer routes typed domain actions and invalid placements preserve object identity
+ok 181 - gameReducer routes typed domain actions and invalid placements preserve object identity
+  ---
+  duration_ms: 1.458604
+  ...
+# Subtest: advance tick exposes five opening workers while preserving a production-free starting world
+ok 182 - advance tick exposes five opening workers while preserving a production-free starting world
+  ---
+  duration_ms: 1.784543
+  ...
+# Subtest: house diagnosis reports bread already held by the household
+ok 183 - house diagnosis reports bread already held by the household
+  ---
+  duration_ms: 1.259066
+  ...
+# Subtest: house diagnosis reports a missing granary before route causes
+ok 184 - house diagnosis reports a missing granary before route causes
+  ---
+  duration_ms: 0.21637
+  ...
+# Subtest: house diagnosis reports empty granaries before route causes
+ok 185 - house diagnosis reports empty granaries before route causes
+  ---
+  duration_ms: 0.195057
+  ...
+# Subtest: house diagnosis reports a disconnected road component
+ok 186 - house diagnosis reports a disconnected road component
+  ---
+  duration_ms: 0.390691
+  ...
+# Subtest: house diagnosis reports an unserviced connected household
+ok 187 - house diagnosis reports an unserviced connected household
+  ---
+  duration_ms: 0.225202
+  ...
+# Subtest: house diagnosis reports active well service
+ok 188 - house diagnosis reports active well service
+  ---
+  duration_ms: 0.202514
+  ...
+# Subtest: house diagnosis reports that no well exists
+ok 189 - house diagnosis reports that no well exists
+  ---
+  duration_ms: 0.166178
+  ...
+# Subtest: house diagnosis reports the nearest out-of-range well distance
+ok 190 - house diagnosis reports the nearest out-of-range well distance
+  ---
+  duration_ms: 0.897608
+  ...
+# Subtest: house diagnosis names starvation as the active population decline
+ok 191 - house diagnosis names starvation as the active population decline
+  ---
+  duration_ms: 0.280418
+  ...
+# Subtest: house diagnosis distinguishes water-blocked growth from active decline
+ok 192 - house diagnosis distinguishes water-blocked growth from active decline
+  ---
+  duration_ms: 0.167073
+  ...
+# Subtest: well service uses a direct Manhattan radius of exactly six tiles
+ok 193 - well service uses a direct Manhattan radius of exactly six tiles
+  ---
+  duration_ms: 1.459692
+  ...
+# Subtest: a house immediately evolves to the highest currently satisfied level
+ok 194 - a house immediately evolves to the highest currently satisfied level
+  ---
+  duration_ms: 0.3897
+  ...
+# Subtest: bread recency does not treat a never-served tick-zero house as fed
+ok 195 - bread recency does not treat a never-served tick-zero house as fed
+  ---
+  duration_ms: 0.158193
+  ...
+# Subtest: devolution waits for 400 continuous unmet ticks
+ok 196 - devolution waits for 400 continuous unmet ticks
+  ---
+  duration_ms: 1.058521
+  ...
+# Subtest: a recovered requirement resets the devolution streak
+ok 197 - a recovered requirement resets the devolution streak
+  ---
+  duration_ms: 0.201105
+  ...
+# Subtest: population grows every 50 ticks with water and leaves when bread is absent over 300 ticks
+ok 198 - population grows every 50 ticks with water and leaves when bread is absent over 300 ticks
+  ---
+  duration_ms: 0.180129
+  ...
+# Subtest: stale household bread does not suppress recency-based starvation
+ok 199 - stale household bread does not suppress recency-based starvation
+  ---
+  duration_ms: 0.139474
+  ...
+# Subtest: level three granary proximity includes the full 2x2 footprint
+ok 200 - level three granary proximity includes the full 2x2 footprint
+  ---
+  duration_ms: 0.400739
+  ...
+# Subtest: tileToScreen maps known tile coordinates
+ok 201 - tileToScreen maps known tile coordinates
+  ---
+  duration_ms: 0.645445
+  ...
+# Subtest: screenToTile inverts tileToScreen for integer tiles
+ok 202 - screenToTile inverts tileToScreen for integer tiles
+  ---
+  duration_ms: 0.257619
+  ...
+# Subtest: screenToTile preserves fractional tile coordinates
+ok 203 - screenToTile preserves fractional tile coordinates
+  ---
+  duration_ms: 0.058544
+  ...
+# Subtest: depthKey orders tiles back-to-front
+ok 204 - depthKey orders tiles back-to-front
+  ---
+  duration_ms: 0.063633
+  ...
+# Subtest: available workers are half the population rounded down
+ok 205 - available workers are half the population rounded down
+  ---
+  duration_ms: 0.837447
+  ...
+# Subtest: labour fills each request in ascending building-id order
+ok 206 - labour fills each request in ascending building-id order
+  ---
+  duration_ms: 9.323007
+  ...
+# Subtest: building labour applies exact config requirements and reports idle workers
+ok 207 - building labour applies exact config requirements and reports idle workers
+  ---
+  duration_ms: 0.386147
+  ...
+# Subtest: partial staffing is visible but never skips ahead to another building
+ok 208 - partial staffing is visible but never skips ahead to another building
+  ---
+  duration_ms: 0.247682
+  ...
+# Subtest: construction labour starts only after production and follows ascending site ids
+ok 209 - construction labour starts only after production and follows ascending site ids
+  ---
+  duration_ms: 0.585829
+  ...
+# Subtest: construction labour caps each site at three and leaves excess workers idle
+ok 210 - construction labour caps each site at three and leaves excess workers idle
+  ---
+  duration_ms: 0.219794
+  ...
+# Subtest: production exhaustion leaves construction unassigned without changing production workers
+ok 211 - production exhaustion leaves construction unassigned without changing production workers
+  ---
+  duration_ms: 0.262866
+  ...
+# Subtest: builder walkers are one per assigned slot at deterministic site-relative anchors
+ok 212 - builder walkers are one per assigned slot at deterministic site-relative anchors
+  ---
+  duration_ms: 0.551797
+  ...
+# Subtest: unassigned construction slots disappear from derived builder walkers
+ok 213 - unassigned construction slots disappear from derived builder walkers
+  ---
+  duration_ms: 0.338707
+  ...
+# Subtest: ledger totals treasury, building inventory, and walker cargo without counting claims
+ok 214 - ledger totals treasury, building inventory, and walker cargo without counting claims
+  ---
+  duration_ms: 0.658678
+  ...
+# Subtest: stepWalkerAlongPath advances across multiple road waypoints when distance exceeds one tile
+ok 215 - stepWalkerAlongPath advances across multiple road waypoints when distance exceeds one tile
+  ---
+  duration_ms: 0.675557
+  ...
+# Subtest: stepWalkerAlongPath preserves axis isolation on each road segment
+ok 216 - stepWalkerAlongPath preserves axis isolation on each road segment
+  ---
+  duration_ms: 0.085649
+  ...
+# Subtest: stepWalkerAlongPath clamps at arrival and reports the final road tile
+ok 217 - stepWalkerAlongPath clamps at arrival and reports the final road tile
+  ---
+  duration_ms: 0.070161
+  ...
+# Subtest: valueNoise2D is deterministic, seed-aware, and bounded
+ok 218 - valueNoise2D is deterministic, seed-aware, and bounded
+  ---
+  duration_ms: 4.220756
+  ...
+# Subtest: valueNoise2D remains continuous across lattice boundaries
+ok 219 - valueNoise2D remains continuous across lattice boundaries
+  ---
+  duration_ms: 0.117329
+  ...
+# Subtest: fbm is deterministic, normalized, and combines coherent octaves
+ok 220 - fbm is deterministic, normalized, and combines coherent octaves
+  ---
+  duration_ms: 0.930136
+  ...
+# Subtest: fbm rejects non-positive or fractional octave counts
+ok 221 - fbm rejects non-positive or fractional octave counts
+  ---
+  duration_ms: 0.257171
+  ...
+# Subtest: object render order draws rear buildings before foreground trees regardless input order
+ok 222 - object render order draws rear buildings before foreground trees regardless input order
+  ---
+  duration_ms: 2.432837
+  ...
+# Subtest: building order is independent of construction insertion order
+ok 223 - building order is independent of construction insertion order
+  ---
+  duration_ms: 0.382643
+  ...
+# Subtest: roads suppress forest tree render items
+ok 224 - roads suppress forest tree render items
+  ---
+  duration_ms: 0.224066
+  ...
+# Subtest: buildings render when any configured footprint tile overlaps the visible range
+ok 225 - buildings render when any configured footprint tile overlaps the visible range
+  ---
+  duration_ms: 0.245618
+  ...
+# Subtest: construction site order is stable and independent of input order
+ok 226 - construction site order is stable and independent of input order
+  ---
+  duration_ms: 0.473156
+  ...
+# Subtest: drawOnboardingGuidanceOverlay paints the Korean road target as a gold parchment isometric marker
+ok 227 - drawOnboardingGuidanceOverlay paints the Korean road target as a gold parchment isometric marker
+  ---
+  duration_ms: 1.422332
+  ...
+# Subtest: drawOnboardingGuidanceOverlay paints every returned onboarding target label
+ok 228 - drawOnboardingGuidanceOverlay paints every returned onboarding target label
+  ---
+  duration_ms: 0.836375
+  ...
+# Subtest: onboarding tasks expose the exact ordered Phase 5 titles and highlights
+ok 229 - onboarding tasks expose the exact ordered Phase 5 titles and highlights
+  ---
+  duration_ms: 0.642613
+  ...
+# Subtest: onboarding task predicates match the ordered first-five-minute settlement milestones
+ok 230 - onboarding task predicates match the ordered first-five-minute settlement milestones
+  ---
+  duration_ms: 0.296323
+  ...
+# Subtest: presentation state holds completion flourish for 600ms and advances only one task at a time
+ok 231 - presentation state holds completion flourish for 600ms and advances only one task at a time
+  ---
+  duration_ms: 0.203601
+  ...
+# Subtest: presentation state reaches the Phase 4F open goal only after task eight completes
+ok 232 - presentation state reaches the Phase 4F open goal only after task eight completes
+  ---
+  duration_ms: 0.197186
+  ...
+# Subtest: welcome parchment renders exact opening copy and dismiss affordance
+ok 233 - welcome parchment renders exact opening copy and dismiss affordance
+  ---
+  duration_ms: 32.057983
+  ...
+# Subtest: app starts with no armed placement tool and consumes welcome dismissal locally
+ok 234 - app starts with no armed placement tool and consumes welcome dismissal locally
+  ---
+  duration_ms: 9.562465
+  ...
+# Subtest: world canvas exposes crosshair styling only while a placement tool is armed
+ok 235 - world canvas exposes crosshair styling only while a placement tool is armed
+  ---
+  duration_ms: 0.658182
+  ...
+# Subtest: status line prioritizes armed tool copy before feedback and blocker fallback
+ok 236 - status line prioritizes armed tool copy before feedback and blocker fallback
+  ---
+  duration_ms: 0.38938
+  ...
+# Subtest: right console renders current and next onboarding tasks before the open goal
+ok 237 - right console renders current and next onboarding tasks before the open goal
+  ---
+  duration_ms: 10.596537
+  ...
+# Subtest: onboarding task panel renders completion flourish and the post-task open goal
+ok 238 - onboarding task panel renders completion flourish and the post-task open goal
+  ---
+  duration_ms: 0.544772
+  ...
+# Subtest: firstRoadTargetForOnboarding chooses the deterministic first buildable cardinal tile beside the starting house
+ok 239 - firstRoadTargetForOnboarding chooses the deterministic first buildable cardinal tile beside the starting house
+  ---
+  duration_ms: 1.435948
+  ...
+# Subtest: firstRoadTargetForOnboarding skips water occupied out-of-bounds and already-road candidates through the road placement rule
+ok 240 - firstRoadTargetForOnboarding skips water occupied out-of-bounds and already-road candidates through the road placement rule
+  ---
+  duration_ms: 0.603686
+  ...
+# Subtest: firstRoadTargetForOnboarding returns null as soon as any cardinal road touches the starting house
+ok 241 - firstRoadTargetForOnboarding returns null as soon as any cardinal road touches the starting house
+  ---
+  duration_ms: 3.428701
+  ...
+# Subtest: onboardingWorldGuidanceTargets advances from the road marker to an actually buildable logging camp marker
+ok 242 - onboardingWorldGuidanceTargets advances from the road marker to an actually buildable logging camp marker
+  ---
+  duration_ms: 5.420589
+  ...
+# Subtest: onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers
+ok 243 - onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers
+  ---
+  duration_ms: 51.430227
+  ...
+# Subtest: onboardingWorldGuidanceTargets returns non-overlapping buildable markers for available missing food-chain buildings
+ok 244 - onboardingWorldGuidanceTargets returns non-overlapping buildable markers for available missing food-chain buildings
+  ---
+  duration_ms: 336.429308
+  ...
+# Subtest: onboardingWorldGuidanceTargets keeps task six buildable when houses are placed before food targets
+ok 245 - onboardingWorldGuidanceTargets keeps task six buildable when houses are placed before food targets
+  ---
+  duration_ms: 358.617863
+  ...
+# Subtest: onboardingWorldGuidanceTargets marks another buildable house after the food chain exists
+ok 246 - onboardingWorldGuidanceTargets marks another buildable house after the food chain exists
+  ---
+  duration_ms: 255.469215
+  ...
+# Subtest: onboardingWorldGuidanceTargets guides four new houses together for the population thirty task
+ok 247 - onboardingWorldGuidanceTargets guides four new houses together for the population thirty task
+  ---
+  duration_ms: 247.932223
+  ...
+# Subtest: the authored opening can commit timber and food construction before workers collapse
+ok 248 - the authored opening can commit timber and food construction before workers collapse
+  ---
+  duration_ms: 2.365956
+  ...
+# Subtest: the tuned default-map grant commits both economy chains before starvation
+ok 249 - the tuned default-map grant commits both economy chains before starvation
+  ---
+  duration_ms: 3.950098
+  ...
+# Subtest: RAMPS expose exactly eight named six-step material ramps
+ok 250 - RAMPS expose exactly eight named six-step material ramps
+  ---
+  duration_ms: 4.647559
+  ...
+# Subtest: PALETTE exposes only ink and the three canonical accent colours
+ok 251 - PALETTE exposes only ink and the three canonical accent colours
+  ---
+  duration_ms: 0.23485
+  ...
+# Subtest: canonical colours are unique and avoid pure black or white
+ok 252 - canonical colours are unique and avoid pure black or white
+  ---
+  duration_ms: 0.174801
+  ...
+# Subtest: semantic compatibility colours resolve to canonical entries
+ok 253 - semantic compatibility colours resolve to canonical entries
+  ---
+  duration_ms: 0.192321
+  ...
+# Subtest: source hex literals live only in src/content/palette.ts
+ok 254 - source hex literals live only in src/content/palette.ts
+  ---
+  duration_ms: 111.410446
+  ...
+# Subtest: source CSS colour function literals live only in src/render/style.ts
+ok 255 - source CSS colour function literals live only in src/render/style.ts
+  ---
+  duration_ms: 21.135027
+  ...
+# Subtest: house inspector exposes Korean identity and service state
+ok 256 - house inspector exposes Korean identity and service state
+  ---
+  duration_ms: 1.588397
+  ...
+# Subtest: production inspector exposes workers stock and progress
+ok 257 - production inspector exposes workers stock and progress
+  ---
+  duration_ms: 0.461747
+  ...
+# Subtest: never-served houses do not pretend bread arrived on the current tick
+ok 258 - never-served houses do not pretend bread arrived on the current tick
+  ---
+  duration_ms: 0.279058
+  ...
+# Subtest: production inspector appends the exact marked problem cause
+ok 259 - production inspector appends the exact marked problem cause
+  ---
+  duration_ms: 0.227634
+  ...
+# Subtest: every building kind and house level has a unique body and roof signature
+ok 260 - every building kind and house level has a unique body and roof signature
+  ---
+  duration_ms: 0.427572
+  ...
+# Subtest: zoom detail policy preserves city mass at overview scale
+ok 261 - zoom detail policy preserves city mass at overview scale
+  ---
+  duration_ms: 0.079505
+  ...
+# Subtest: building footprints clear their eight-neighbour apron from trees
+ok 262 - building footprints clear their eight-neighbour apron from trees
+  ---
+  duration_ms: 0.124609
+  ...
+# Subtest: ground decals are deterministic and sparse
+ok 263 - ground decals are deterministic and sparse
+  ---
+  duration_ms: 1.847807
+  ...
+# Subtest: road arms distinguish a straight run from a junction and reject diagonals
+ok 264 - road arms distinguish a straight run from a junction and reject diagonals
+  ---
+  duration_ms: 0.139105
+  ...
+# Subtest: walker marks keep at least their 0.8x on-screen size
+ok 265 - walker marks keep at least their 0.8x on-screen size
+  ---
+  duration_ms: 0.0464
+  ...
+# Subtest: the simulation axes preserve the Stage2 dependency boundary
+ok 266 - the simulation axes preserve the Stage2 dependency boundary
+  ---
+  duration_ms: 12.504746
+  ...
+# Subtest: simulation and engine modules stay free of React, DOM, and Canvas APIs
+ok 267 - simulation and engine modules stay free of React, DOM, and Canvas APIs
+  ---
+  duration_ms: 11.137966
+  ...
+# Subtest: screen-coordinate transforms remain confined to render
+ok 268 - screen-coordinate transforms remain confined to render
+  ---
+  duration_ms: 5.942338
+  ...
+# Subtest: Phase 3 balance constants retain the foundation values plus the measured opening grant
+ok 269 - Phase 3 balance constants retain the foundation values plus the measured opening grant
+  ---
+  duration_ms: 1.157258
+  ...
+# Subtest: Phase 3 building table matches the exact foundation definitions
+ok 270 - Phase 3 building table matches the exact foundation definitions
+  ---
+  duration_ms: 0.308899
+  ...
+# Subtest: Phase 3 housing table matches the exact level requirements
+ok 271 - Phase 3 housing table matches the exact level requirements
+  ---
+  duration_ms: 0.093472
+  ...
+# Subtest: DEFAULT_GAME_STATE seeds the authored opening household and path cache fields
+ok 272 - DEFAULT_GAME_STATE seeds the authored opening household and path cache fields
+  ---
+  duration_ms: 0.109712
+  ...
+# Subtest: placeBuilding creates newly placed houses as pending construction sites
+ok 273 - placeBuilding creates newly placed houses as pending construction sites
+  ---
+  duration_ms: 3.38686
+  ...
+# Subtest: placeBuilding commits timber without duplicating physical stock
+ok 274 - placeBuilding commits timber without duplicating physical stock
+  ---
+  duration_ms: 0.955352
+  ...
+# Subtest: placeRoadLine increments road revision and clears cached paths only when a road is placed
+ok 275 - placeRoadLine increments road revision and clears cached paths only when a road is placed
+  ---
+  duration_ms: 1.212747
+  ...
+# Subtest: Phase 4B release artifacts
+    # Subtest: commits exactly eight processed candidates for each of three subjects
+    ok 1 - commits exactly eight processed candidates for each of three subjects
+      ---
+      duration_ms: 0.446723
+      ...
+    # Subtest: commits candidate, old-new, and live context evidence plus 24 profiles
+    ok 2 - commits candidate, old-new, and live context evidence plus 24 profiles
+      ---
+      duration_ms: 0.23101
+      ...
+    # Subtest: keeps Phase 4B candidate evidence separate from Phase 4D runtime sprites
+    ok 3 - keeps Phase 4B candidate evidence separate from Phase 4D runtime sprites
+      ---
+      duration_ms: 1.099609
+      ...
+    1..3
+ok 276 - Phase 4B release artifacts
+  ---
+  duration_ms: 2.410164
+  type: 'suite'
+  ...
+# Subtest: Phase 4E target-only asset release
+    # Subtest: adds a literal blade, plank stack, and sawdust without mutating the processed candidate
+    ok 1 - adds a literal blade, plank stack, and sawdust without mutating the processed candidate
+      ---
+      duration_ms: 0.756822
+      ...
+    # Subtest: maps every selection back to its deterministic generator seed
+    ok 2 - maps every selection back to its deterministic generator seed
+      ---
+      duration_ms: 0.212162
+      ...
+    # Subtest: ignores five approved targets but rejects any non-target byte drift
+    ok 3 - ignores five approved targets but rejects any non-target byte drift
+      ---
+      duration_ms: 16.483259
+      ...
+    1..3
+ok 277 - Phase 4E target-only asset release
+  ---
+  duration_ms: 21.084338
+  type: 'suite'
+  ...
+# Subtest: Given measured frames When summarized Then average p95 and worst stay independently visible
+ok 278 - Given measured frames When summarized Then average p95 and worst stay independently visible
+  ---
+  duration_ms: 0.684582
+  ...
+# Subtest: Given unsorted frame times When summarized Then percentile uses numeric order
+ok 279 - Given unsorted frame times When summarized Then percentile uses numeric order
+  ---
+  duration_ms: 0.081889
+  ...
+# Subtest: Given a strict frame budget When counted Then only exceeding samples are reported
+ok 280 - Given a strict frame budget When counted Then only exceeding samples are reported
+  ---
+  duration_ms: 0.069425
+  ...
+# Subtest: tileCenter returns the isometric tile centre
+ok 281 - tileCenter returns the isometric tile centre
+  ---
+  duration_ms: 1.270346
+  ...
+# Subtest: pickTile picks tile centres exactly
+ok 282 - pickTile picks tile centres exactly
+  ---
+  duration_ms: 0.464467
+  ...
+# Subtest: pickTile handles negative tile coordinates
+ok 283 - pickTile handles negative tile coordinates
+  ---
+  duration_ms: 0.20653
+  ...
+# Subtest: containsPointInTile includes points just inside all four diamond edges
+ok 284 - containsPointInTile includes points just inside all four diamond edges
+  ---
+  duration_ms: 0.445012
+  ...
+# Subtest: pickTile returns a tile whose diamond contains sampled world points
+ok 285 - pickTile returns a tile whose diamond contains sampled world points
+  ---
+  duration_ms: 5.321037
+  ...
+# Subtest: pickTile accepts world points derived from camera-transformed client points
+ok 286 - pickTile accepts world points derived from camera-transformed client points
+  ---
+  duration_ms: 7.494783
+  ...
+# Subtest: BUILDING_CONFIG defines all eight canonical building kinds with distinctive footprints and timber costs
+ok 287 - BUILDING_CONFIG defines all eight canonical building kinds with distinctive footprints and timber costs
+  ---
+  duration_ms: 1.611693
+  ...
+# Subtest: getTile and isInBounds use row-major coordinates without wrapping negative inputs
+ok 288 - getTile and isInBounds use row-major coordinates without wrapping negative inputs
+  ---
+  duration_ms: 4.304677
+  ...
+# Subtest: canPlaceBuilding rejects fractional tile anchors as out_of_bounds
+ok 289 - canPlaceBuilding rejects fractional tile anchors as out_of_bounds
+  ---
+  duration_ms: 0.54554
+  ...
+# Subtest: canPlaceBuilding rejects incomplete row-major tile arrays as out_of_bounds
+ok 290 - canPlaceBuilding rejects incomplete row-major tile arrays as out_of_bounds
+  ---
+  duration_ms: 0.227122
+  ...
+# Subtest: canPlaceBuilding returns out_of_bounds before any other placement failure
+ok 291 - canPlaceBuilding returns out_of_bounds before any other placement failure
+  ---
+  duration_ms: 0.449156
+  ...
+# Subtest: canPlaceBuilding rejects occupied footprint tiles before terrain checks
+ok 292 - canPlaceBuilding rejects occupied footprint tiles before terrain checks
+  ---
+  duration_ms: 0.260434
+  ...
+# Subtest: canPlaceBuilding rejects roads as occupied footprint tiles
+ok 293 - canPlaceBuilding rejects roads as occupied footprint tiles
+  ---
+  duration_ms: 0.365011
+  ...
+# Subtest: canPlaceBuilding rejects water footprint tiles as wrong terrain
+ok 294 - canPlaceBuilding rejects water footprint tiles as wrong terrain
+  ---
+  duration_ms: 0.248115
+  ...
+# Subtest: canPlaceBuilding accepts rock footprint tiles when other requirements pass
+ok 295 - canPlaceBuilding accepts rock footprint tiles when other requirements pass
+  ---
+  duration_ms: 0.477908
+  ...
+# Subtest: canPlaceBuilding requires orthogonal road adjacency and rejects diagonal-only roads
+ok 296 - canPlaceBuilding requires orthogonal road adjacency and rejects diagonal-only roads
+  ---
+  duration_ms: 0.764135
+  ...
+# Subtest: canPlaceBuilding requires adjacent terrain in the one-tile surrounding ring only
+ok 297 - canPlaceBuilding requires adjacent terrain in the one-tile surrounding ring only
+  ---
+  duration_ms: 0.620198
+  ...
+# Subtest: canPlaceBuilding rejects insufficient timber after spatial requirements pass
+ok 298 - canPlaceBuilding rejects insufficient timber after spatial requirements pass
+  ---
+  duration_ms: 0.277634
+  ...
+# Subtest: placement spendable timber matches building placement and excludes walker cargo
+ok 299 - placement spendable timber matches building placement and excludes walker cargo
+  ---
+  duration_ms: 0.370979
+  ...
+# Subtest: formatPlacementFailure returns the six Korean placement messages when failures occur
+ok 300 - formatPlacementFailure returns the six Korean placement messages when failures occur
+  ---
+  duration_ms: 1.002472
+  ...
+# Subtest: getPlacementToolStatus returns exact building road and fallback statuses
+ok 301 - getPlacementToolStatus returns exact building road and fallback statuses
+  ---
+  duration_ms: 0.22893
+  ...
+# Subtest: createPlacementFeedback anchors success and failure feedback with presentation-clock lifetimes
+ok 302 - createPlacementFeedback anchors success and failure feedback with presentation-clock lifetimes
+  ---
+  duration_ms: 0.73143
+  ...
+# Subtest: isPlacementFeedbackVisible expires success at 600ms and failure at 4500ms without tick input
+ok 303 - isPlacementFeedbackVisible expires success at 600ms and failure at 4500ms without tick input
+  ---
+  duration_ms: 0.221106
+  ...
+# Subtest: population diff records one growth event for an existing house
+ok 304 - population diff records one growth event for an existing house
+  ---
+  duration_ms: 0.664486
+  ...
+# Subtest: population diff records starvation when bread service is stale
+ok 305 - population diff records starvation when bread service is stale
+  ---
+  duration_ms: 0.095617
+  ...
+# Subtest: population diff can distinguish a constructed recent-bread no-water loss
+ok 306 - population diff can distinguish a constructed recent-bread no-water loss
+  ---
+  duration_ms: 0.065184
+  ...
+# Subtest: population diff expands each resident change into signed unit events
+ok 307 - population diff expands each resident change into signed unit events
+  ---
+  duration_ms: 0.078369
+  ...
+# Subtest: population diff marks populated new houses as recruited without backfilling existing state
+ok 308 - population diff marks populated new houses as recruited without backfilling existing state
+  ---
+  duration_ms: 0.180642
+  ...
+# Subtest: population history retains only the newest 200 presentation events
+ok 309 - population history retains only the newest 200 presentation events
+  ---
+  duration_ms: 0.102513
+  ...
+# Subtest: population grouping merges only consecutive equal causes
+ok 310 - population grouping merges only consecutive equal causes
+  ---
+  duration_ms: 0.109089
+  ...
+# Subtest: population panel always renders an intentional empty state
+ok 311 - population panel always renders an intentional empty state
+  ---
+  duration_ms: 4.365045
+  ...
+# Subtest: population panel renders newest grouped causes as house-selecting buttons
+ok 312 - population panel renders newest grouped causes as house-selecting buttons
+  ---
+  duration_ms: 0.678566
+  ...
+# Subtest: createMulberry32 repeats the same bounded sequence for the same seed
+ok 313 - createMulberry32 repeats the same bounded sequence for the same seed
+  ---
+  duration_ms: 0.647973
+  ...
+# Subtest: createMulberry32 derives range, int, and pick from the deterministic stream
+ok 314 - createMulberry32 derives range, int, and pick from the deterministic stream
+  ---
+  duration_ms: 0.095617
+  ...
+# Subtest: createRoamingJunctionSeed is stateless and sensitive to every roaming input
+ok 315 - createRoamingJunctionSeed is stateless and sensitive to every roaming input
+  ---
+  duration_ms: 0.157633
+  ...
+# Subtest: labour cause distinguishes no available labour from a disconnected idle pool
+ok 316 - labour cause distinguishes no available labour from a disconnected idle pool
+  ---
+  duration_ms: 1.056633
+  ...
+# Subtest: input cause distinguishes empty supply from an unreachable supply
+ok 317 - input cause distinguishes empty supply from an unreachable supply
+  ---
+  duration_ms: 0.479716
+  ...
+# Subtest: input cause names a connected supply that is waiting for transport
+ok 318 - input cause names a connected supply that is waiting for transport
+  ---
+  duration_ms: 0.601077
+  ...
+# Subtest: completed production names the missing destination store
+ok 319 - completed production names the missing destination store
+  ---
+  duration_ms: 0.270018
+  ...
+# Subtest: completed production distinguishes full disconnected and waiting destinations
+ok 320 - completed production distinguishes full disconnected and waiting destinations
+  ---
+  duration_ms: 0.422051
+  ...
+# Subtest: processBuildingSprite
+    # Subtest: expands generated RGB pixels to opaque RGBA before chroma processing
+    ok 1 - expands generated RGB pixels to opaque RGBA before chroma processing
+      ---
+      duration_ms: 0.774711
+      ...
+    # Subtest: removes cyan chroma-key pixels and despills retained edge colour
+    ok 2 - removes cyan chroma-key pixels and despills retained edge colour
+      ---
+      duration_ms: 0.24677
+      ...
+    # Subtest: detects opaque bounds and computes bottom-centred aspect fit
+    ok 3 - detects opaque bounds and computes bottom-centred aspect fit
+      ---
+      duration_ms: 0.248578
+      ...
+    # Subtest: adds a one-pixel ink outline only outside transparent silhouette neighbours
+    ok 4 - adds a one-pixel ink outline only outside transparent silhouette neighbours
+      ---
+      duration_ms: 0.364723
+      ...
+    # Subtest: omits exterior outline in the lower third and never outlines an internal hole
+    ok 5 - omits exterior outline in the lower third and never outlines an internal hole
+      ---
+      duration_ms: 0.203537
+      ...
+    # Subtest: rejects final visible mass outside the subject scale band
+    ok 6 - rejects final visible mass outside the subject scale band
+      ---
+      duration_ms: 7.513647
+      ...
+    # Subtest: reports exact per-ramp pixel counts and proportions
+    ok 7 - reports exact per-ramp pixel counts and proportions
+      ---
+      duration_ms: 0.352995
+      ...
+    # Subtest: keeps stone at footings but remaps grey roof and wall pixels into family ramps
+    ok 8 - keeps stone at footings but remaps grey roof and wall pixels into family ramps
+      ---
+      duration_ms: 0.27349
+      ...
+    # Subtest: quantises visible pixels, preserves transparency, and clears rows below baseline
+    ok 9 - quantises visible pixels, preserves transparency, and clears rows below baseline
+      ---
+      duration_ms: 0.769255
+      ...
+    # Subtest: delegates file-pipeline resizing to the Lanczos boundary target
+    ok 10 - delegates file-pipeline resizing to the Lanczos boundary target
+      ---
+      duration_ms: 0.767862
+      ...
+    # Subtest: verifies the 24 processed building candidate contracts
+    ok 11 - verifies the 24 processed building candidate contracts
+      ---
+      duration_ms: 38.954793
+      ...
+    # Subtest: rejects non-canonical RGB and opaque pixels below a candidate baseline
+    ok 12 - rejects non-canonical RGB and opaque pixels below a candidate baseline
+      ---
+      duration_ms: 7.038411
+      ...
+    1..12
+ok 321 - processBuildingSprite
+  ---
+  duration_ms: 58.114539
+  type: 'suite'
+  ...
+# Subtest: quantisePalette
+    # Subtest: keeps every canonical ramp and accent RGB value unchanged
+    ok 1 - keeps every canonical ramp and accent RGB value unchanged
+      ---
+      duration_ms: 5.706993
+      ...
+    # Subtest: maps near colours to the perceptually closest canonical ramp colour
+    ok 2 - maps near colours to the perceptually closest canonical ramp colour
+      ---
+      duration_ms: 0.100817
+      ...
+    # Subtest: maps near colours to the perceptually closest accent colour
+    ok 3 - maps near colours to the perceptually closest accent colour
+      ---
+      duration_ms: 0.057633
+      ...
+    # Subtest: preserves the original alpha byte exactly
+    ok 4 - preserves the original alpha byte exactly
+      ---
+      duration_ms: 0.067888
+      ...
+    # Subtest: rejects buffers that are not whole RGBA pixels
+    ok 5 - rejects buffers that are not whole RGBA pixels
+      ---
+      duration_ms: 0.171378
+      ...
+    # Subtest: reads PNG dimensions from the IHDR boundary
+    ok 6 - reads PNG dimensions from the IHDR boundary
+      ---
+      duration_ms: 0.803895
+      ...
+    1..6
+ok 322 - quantisePalette
+  ---
+  duration_ms: 7.783858
+  type: 'suite'
+  ...
+# Subtest: ambientOffset uses the exact deterministic sine equation with stable object phases
+ok 323 - ambientOffset uses the exact deterministic sine equation with stable object phases
+  ---
+  duration_ms: 0.909255
+  ...
+# Subtest: runRenderPasses calls ground objects and the empty overhang seam in explicit order
+ok 324 - runRenderPasses calls ground objects and the empty overhang seam in explicit order
+  ---
+  duration_ms: 0.904375
+  ...
+# Subtest: PlacementTool is a focused tool union owned outside GameState
+ok 325 - PlacementTool is a focused tool union owned outside GameState
+  ---
+  duration_ms: 0.204418
+  ...
+# Subtest: invalid placement reasons use a zoom-stable vellum plaque
+ok 326 - invalid placement reasons use a zoom-stable vellum plaque
+  ---
+  duration_ms: 0.617973
+  ...
+# Subtest: placement feedback reaches the overlay with gold success expansion and expiry
+ok 327 - placement feedback reaches the overlay with gold success expansion and expiry
+  ---
+  duration_ms: 0.571876
+  ...
+# Subtest: placement failure feedback uses vermilion flash and cursor-near Korean message until expiry
+ok 328 - placement failure feedback uses vermilion flash and cursor-near Korean message until expiry
+  ---
+  duration_ms: 0.439283
+  ...
+# Subtest: road preview reports out of bounds for invalid road drag endpoints
+ok 329 - road preview reports out of bounds for invalid road drag endpoints
+  ---
+  duration_ms: 0.516484
+  ...
+# Subtest: road preview covers every path tile and reports the modeled zero timber cost
+ok 330 - road preview covers every path tile and reports the modeled zero timber cost
+  ---
+  duration_ms: 0.317747
+  ...
+# Subtest: cancelled placement preview is inert even when hovering a buildable tile
+ok 331 - cancelled placement preview is inert even when hovering a buildable tile
+  ---
+  duration_ms: 0.069777
+  ...
+# Subtest: road preview reports occupied for existing structures or roads
+ok 332 - road preview reports occupied for existing structures or roads
+  ---
+  duration_ms: 0.056832
+  ...
+# Subtest: road preview reports wrong terrain for water tiles
+ok 333 - road preview reports wrong terrain for water tiles
+  ---
+  duration_ms: 0.116129
+  ...
+# Subtest: road release endpoint is recomputed from an inside mouseup event
+ok 334 - road release endpoint is recomputed from an inside mouseup event
+  ---
+  duration_ms: 0.148417
+  ...
+# Subtest: road release endpoint is ignored when mouseup lands outside the canvas rect
+ok 335 - road release endpoint is ignored when mouseup lands outside the canvas rect
+  ---
+  duration_ms: 0.042096
+  ...
+# Subtest: building placement attempts preflight invalid outcomes without dispatching and keep the tool armed
+ok 336 - building placement attempts preflight invalid outcomes without dispatching and keep the tool armed
+  ---
+  duration_ms: 0.249699
+  ...
+# Subtest: building placement attempts dispatch a valid building exactly once with success feedback
+ok 337 - building placement attempts dispatch a valid building exactly once with success feedback
+  ---
+  duration_ms: 0.151233
+  ...
+# Subtest: road placement attempts evaluate the whole path before dispatching
+ok 338 - road placement attempts evaluate the whole path before dispatching
+  ---
+  duration_ms: 0.168802
+  ...
+# Subtest: road placement attempts dispatch a valid road once and keep modeled road cost zero
+ok 339 - road placement attempts dispatch a valid road once and keep modeled road cost zero
+  ---
+  duration_ms: 0.193025
+  ...
+# Subtest: objectRenderItemsForFrame reuses the static object queue when only walkers move
+ok 340 - objectRenderItemsForFrame reuses the static object queue when only walkers move
+  ---
+  duration_ms: 1.021737
+  ...
+# Subtest: objectRenderItemsForFrame invalidates static cache when culling changes visible tiles
+ok 341 - objectRenderItemsForFrame invalidates static cache when culling changes visible tiles
+  ---
+  duration_ms: 0.558964
+  ...
+# Subtest: objectRenderItemsForFrame excludes buildings outside depth and diagonal culling
+ok 342 - objectRenderItemsForFrame excludes buildings outside depth and diagonal culling
+  ---
+  duration_ms: 0.166625
+  ...
+# Subtest: objectRenderItemsForFrame excludes walkers outside depth and diagonal culling
+ok 343 - objectRenderItemsForFrame excludes walkers outside depth and diagonal culling
+  ---
+  duration_ms: 0.089728
+  ...
+# Subtest: objectRenderItemsForFrame includes a building when any footprint tile is visible
+ok 344 - objectRenderItemsForFrame includes a building when any footprint tile is visible
+  ---
+  duration_ms: 0.172882
+  ...
+# Subtest: render modules do not bypass the universal style helper for direct strokes or effects
+ok 345 - render modules do not bypass the universal style helper for direct strokes or effects
+  ---
+  duration_ms: 90.436013
+  ...
+# Subtest: source files keep palette literals and sprite blits behind the Phase 4D boundaries
+ok 346 - source files keep palette literals and sprite blits behind the Phase 4D boundaries
+  ---
+  duration_ms: 58.2239
+  ...
+# Subtest: GameCanvas starts world asset preload without blocking first paint
+ok 347 - GameCanvas starts world asset preload without blocking first paint
+  ---
+  duration_ms: 0.967352
+  ...
+# Subtest: renderFrame derives and draws onboarding world guidance without changing its public input
+ok 348 - renderFrame derives and draws onboarding world guidance without changing its public input
+  ---
+  duration_ms: 0.855639
+  ...
+# Subtest: renderFrame computes the object queue once and reuses it across ground and object passes
+ok 349 - renderFrame computes the object queue once and reuses it across ground and object passes
+  ---
+  duration_ms: 0.601445
+  ...
+# Subtest: Phase 5 render files stay below the pure LOC ceiling
+ok 350 - Phase 5 render files stay below the pure LOC ceiling
+  ---
+  duration_ms: 5.721377
+  ...
+# Subtest: Phase 5 render implementation files avoid TypeScript escape hatches
+ok 351 - Phase 5 render implementation files avoid TypeScript escape hatches
+  ---
+  duration_ms: 5.696144
+  ...
+# Subtest: computeVisibleTileRange clips iteration so a small viewport never draws every world tile
+ok 352 - computeVisibleTileRange clips iteration so a small viewport never draws every world tile
+  ---
+  duration_ms: 1.169433
+  ...
+# Subtest: computeVisibleTileRange includes tall sprite anchors whose tops overhang the viewport
+ok 353 - computeVisibleTileRange includes tall sprite anchors whose tops overhang the viewport
+  ---
+  duration_ms: 0.208738
+  ...
+# Subtest: terrain variation remains within plus or minus five percent and frame-stable
+ok 354 - terrain variation remains within plus or minus five percent and frame-stable
+  ---
+  duration_ms: 0.66351
+  ...
+# Subtest: visibleTilesInDrawOrder returns visible tiles back-to-front by depth key
+ok 355 - visibleTilesInDrawOrder returns visible tiles back-to-front by depth key
+  ---
+  duration_ms: 0.514373
+  ...
+# Subtest: visibleTilesInDrawOrder reads only row-major indices inside the clipped range
+ok 356 - visibleTilesInDrawOrder reads only row-major indices inside the clipped range
+  ---
+  duration_ms: 0.321907
+  ...
+# Subtest: visibleTilesInDrawOrder skips range corners outside viewport depth and diagonal bounds
+ok 357 - visibleTilesInDrawOrder skips range corners outside viewport depth and diagonal bounds
+  ---
+  duration_ms: 0.240466
+  ...
+# Subtest: visibleTilesInDrawOrder derives clipped draw order without per-frame sorting
+ok 358 - visibleTilesInDrawOrder derives clipped draw order without per-frame sorting
+  ---
+  duration_ms: 0.440259
+  ...
+# Subtest: visibleTilesInDrawOrder caches repeated visible ranges by tiles identity
+ok 359 - visibleTilesInDrawOrder caches repeated visible ranges by tiles identity
+  ---
+  duration_ms: 0.299682
+  ...
+# Subtest: findExistingRoadPath returns the deterministic NESW shortest road path
+ok 360 - findExistingRoadPath returns the deterministic NESW shortest road path
+  ---
+  duration_ms: 2.14445
+  ...
+# Subtest: findExistingRoadPath returns null when endpoints are not connected road tiles
+ok 361 - findExistingRoadPath returns null when endpoints are not connected road tiles
+  ---
+  duration_ms: 0.111713
+  ...
+# Subtest: canPlaceRoad accepts in-bounds unoccupied grass forest and rock tiles
+ok 362 - canPlaceRoad accepts in-bounds unoccupied grass forest and rock tiles
+  ---
+  duration_ms: 1.271259
+  ...
+# Subtest: canPlaceRoad rejects water tiles
+ok 363 - canPlaceRoad rejects water tiles
+  ---
+  duration_ms: 0.227329
+  ...
+# Subtest: canPlaceRoad rejects fractional and missing row-major tile coordinates
+ok 364 - canPlaceRoad rejects fractional and missing row-major tile coordinates
+  ---
+  duration_ms: 0.18501
+  ...
+# Subtest: roadLine returns continuous inclusive horizontal and vertical lines
+ok 365 - roadLine returns continuous inclusive horizontal and vertical lines
+  ---
+  duration_ms: 0.789319
+  ...
+# Subtest: roadLine normalizes diagonal drags onto the dominant axis with horizontal tie break
+ok 366 - roadLine normalizes diagonal drags onto the dominant axis with horizontal tie break
+  ---
+  duration_ms: 0.634934
+  ...
+# Subtest: getOrthogonalRoadNeighbors returns north east south west roads and rejects diagonals
+ok 367 - getOrthogonalRoadNeighbors returns north east south west roads and rejects diagonals
+  ---
+  duration_ms: 0.426868
+  ...
+# Subtest: findRoadPath keeps API compatibility by returning a buildable normalized road line
+ok 368 - findRoadPath keeps API compatibility by returning a buildable normalized road line
+  ---
+  duration_ms: 0.285267
+  ...
+# Subtest: a granary distributor starts from the connected access when the first access road is isolated
+ok 369 - a granary distributor starts from the connected access when the first access road is isolated
+  ---
+  duration_ms: 4.2101
+  ...
+# Subtest: a granary distributor chooses the largest road component over a sorted-first dead end
+ok 370 - a granary distributor chooses the largest road component over a sorted-first dead end
+  ---
+  duration_ms: 0.763158
+  ...
+# Subtest: granary spawns one bread distributor on the interval while respecting max active walkers
+ok 371 - granary spawns one bread distributor on the interval while respecting max active walkers
+  ---
+  duration_ms: 4.767177
+  ...
+# Subtest: a roaming distributor picks a deterministic non-reverse road at a junction
+ok 372 - a roaming distributor picks a deterministic non-reverse road at a junction
+  ---
+  duration_ms: 0.745958
+  ...
+# Subtest: a roaming distributor gives reverse a low deterministic weight instead of banning it
+ok 373 - a roaming distributor gives reverse a low deterministic weight instead of banning it
+  ---
+  duration_ms: 5.426862
+  ...
+# Subtest: a distributor continues forward on an ordinary road without a random junction choice
+ok 374 - a distributor continues forward on an ordinary road without a random junction choice
+  ---
+  duration_ms: 0.294338
+  ...
+# Subtest: a distributor serves only houses adjacent to its actual route and does not seek hunger
+ok 375 - a distributor serves only houses adjacent to its actual route and does not seek hunger
+  ---
+  duration_ms: 0.390035
+  ...
+# Subtest: a distributor returns after its roaming range and despawns at home
+ok 376 - a distributor returns after its roaming range and despawns at home
+  ---
+  duration_ms: 1.905024
+  ...
+# Subtest: a returning distributor restores leftover bread to its home granary
+ok 377 - a returning distributor restores leftover bread to its home granary
+  ---
+  duration_ms: 0.310803
+  ...
+# Subtest: a returning distributor releases its home claim without exceeding granary capacity
+ok 378 - a returning distributor releases its home claim without exceeding granary capacity
+  ---
+  duration_ms: 0.253186
+  ...
+# Subtest: an unreserved distributor waits rather than overfilling a full granary
+ok 379 - an unreserved distributor waits rather than overfilling a full granary
+  ---
+  duration_ms: 0.333507
+  ...
+# Subtest: buildingRoadAccessTiles enumerates 2x2 orthogonal road access sorted by y then x
+ok 380 - buildingRoadAccessTiles enumerates 2x2 orthogonal road access sorted by y then x
+  ---
+  duration_ms: 6.144404
+  ...
+# Subtest: resolveBuildingRoute chooses the shortest deterministic access-pair road path
+ok 381 - resolveBuildingRoute chooses the shortest deterministic access-pair road path
+  ---
+  duration_ms: 6.179668
+  ...
+# Subtest: resolveRoadToBuildingRoute connects the current road tile to the nearest building access
+ok 382 - resolveRoadToBuildingRoute connects the current road tile to the nearest building access
+  ---
+  duration_ms: 0.405636
+  ...
+# Subtest: resolveBuildingRoute reuses forward and reverse cached building-pair paths
+ok 383 - resolveBuildingRoute reuses forward and reverse cached building-pair paths
+  ---
+  duration_ms: 0.350371
+  ...
+# Subtest: resolveBuildingRoute ignores stale revision cache entries and returns null without caching failures
+ok 384 - resolveBuildingRoute ignores stale revision cache entries and returns null without caching failures
+  ---
+  duration_ms: 0.257682
+  ...
+# Subtest: construction-site routes use tagged cache keys and road-to-site access
+ok 385 - construction-site routes use tagged cache keys and road-to-site access
+  ---
+  duration_ms: 0.771542
+  ...
+# Subtest: delivery inventory port wraps space and stock reservations
+ok 386 - delivery inventory port wraps space and stock reservations
+  ---
+  duration_ms: 0.52746
+  ...
+# Subtest: delivery route port resolves building routes and exposes updated cache
+ok 387 - delivery route port resolves building routes and exposes updated cache
+  ---
+  duration_ms: 3.940738
+  ...
+# Subtest: route ports expose road-to-building paths, road checks, and NESW roaming neighbors
+ok 388 - route ports expose road-to-building paths, road checks, and NESW roaming neighbors
+  ---
+  duration_ms: 0.383635
+  ...
+# Subtest: snapToPixel rounds canvas coordinates to integers
+ok 389 - snapToPixel rounds canvas coordinates to integers
+  ---
+  duration_ms: 0.348771
+  ...
+# Subtest: shade deterministically darkens down-right faces by twenty percent
+ok 390 - shade deterministically darkens down-right faces by twenty percent
+  ---
+  duration_ms: 0.101041
+  ...
+# Subtest: withAlpha derives translucent colours from the canonical palette
+ok 391 - withAlpha derives translucent colours from the canonical palette
+  ---
+  duration_ms: 0.074737
+  ...
+# Subtest: applyInkOutline owns the canonical ink stroke at zoom scale
+ok 392 - applyInkOutline owns the canonical ink stroke at zoom scale
+  ---
+  duration_ms: 0.16061
+  ...
+# Subtest: drawFlatDiamondShadow uses a snapped translucent diamond path
+ok 393 - drawFlatDiamondShadow uses a snapped translucent diamond path
+  ---
+  duration_ms: 0.326355
+  ...
+# Subtest: drawGroundingShadow stacks warm ellipses plus a separate contact band
+ok 394 - drawGroundingShadow stacks warm ellipses plus a separate contact band
+  ---
+  duration_ms: 0.115169
+  ...
+# Subtest: drawGroundingShadow exposes the darker earth core at alpha 0.32
+ok 395 - drawGroundingShadow exposes the darker earth core at alpha 0.32
+  ---
+  duration_ms: 0.152929
+  ...
+# Subtest: generateTerrainTile returns deterministic mixed terrain when building a 64x64 world
+ok 396 - generateTerrainTile returns deterministic mixed terrain when building a 64x64 world
+  ---
+  duration_ms: 20.772784
+  ...
+# Subtest: generateTerrainTile is stable for positive and negative coordinates
+ok 397 - generateTerrainTile is stable for positive and negative coordinates
+  ---
+  duration_ms: 2.581045
+  ...
+# Subtest: terrainVariation is deterministic, bounded, and varies nearby tiles
+ok 398 - terrainVariation is deterministic, bounded, and varies nearby tiles
+  ---
+  duration_ms: 0.344931
+  ...
+# Subtest: buildWorldGrid stores terrain and occupancy only in row-major tile order
+ok 399 - buildWorldGrid stores terrain and occupancy only in row-major tile order
+  ---
+  duration_ms: 0.464356
+  ...
+# Subtest: seeded world generation is reproducible and different seeds diverge
+ok 400 - seeded world generation is reproducible and different seeds diverge
+  ---
+  duration_ms: 39.328589
+  ...
+# Subtest: raw terrain classification is deterministic and seed-aware
+ok 401 - raw terrain classification is deterministic and seed-aware
+  ---
+  duration_ms: 0.26421
+  ...
+# Subtest: cleanupTerrainRegions replaces deliberately undersized material islands
+ok 402 - cleanupTerrainRegions replaces deliberately undersized material islands
+  ---
+  duration_ms: 0.177649
+  ...
+# Subtest: terrain cleanup removes undersized water, forest, and rock regions
+ok 403 - terrain cleanup removes undersized water, forest, and rock regions
+  ---
+  duration_ms: 14.441706
+  ...
+# Subtest: terrain cleanup fills grass cells enclosed by orthogonal water
+ok 404 - terrain cleanup fills grass cells enclosed by orthogonal water
+  ---
+  duration_ms: 9.542784
+  ...
+# Subtest: representative 64x64 seeds contain readable proportions and major regions
+ok 405 - representative 64x64 seeds contain readable proportions and major regions
+  ---
+  duration_ms: 10.795115
+  ...
+# Subtest: terrain patterns
+    # Subtest: Given terrain materials When resolving texture keys Then manifest keys are exact
+    ok 1 - Given terrain materials When resolving texture keys Then manifest keys are exact
+      ---
+      duration_ms: 0.830343
+      ...
+    # Subtest: Given a ready texture When reused on one context Then createPattern is cached per key
+    ok 2 - Given a ready texture When reused on one context Then createPattern is cached per key
+      ---
+      duration_ms: 0.243522
+      ...
+    # Subtest: Given repeated grass orientations When resolving patterns Then each transformed variant is created once
+    ok 3 - Given repeated grass orientations When resolving patterns Then each transformed variant is created once
+      ---
+      duration_ms: 0.993113
+      ...
+    # Subtest: Given createPattern returns null When requested again Then null is not cached
+    ok 4 - Given createPattern returns null When requested again Then null is not cached
+      ---
+      duration_ms: 0.178977
+      ...
+    # Subtest: Given a ready texture source changes When the same key is requested Then the pattern is replaced
+    ok 5 - Given a ready texture source changes When the same key is requested Then the pattern is replaced
+      ---
+      duration_ms: 0.074769
+      ...
+    # Subtest: Given missing or loading textures When requested Then procedural fallback does not create patterns
+    ok 6 - Given missing or loading textures When requested Then procedural fallback does not create patterns
+      ---
+      duration_ms: 0.085217
+      ...
+    # Subtest: Given ready ground textures When terrain draws Then diamonds clip texture and overlay deterministic brightness
+    ok 7 - Given ready ground textures When terrain draws Then diamonds clip texture and overlay deterministic brightness
+      ---
+      duration_ms: 0.609477
+      ...
+    # Subtest: Given terrain materials When texture opacity is selected Then water stays faint and land stays near 45 percent
+    ok 8 - Given terrain materials When texture opacity is selected Then water stays faint and land stays near 45 percent
+      ---
+      duration_ms: 0.041488
+      ...
+    # Subtest: Given grass tile coordinates When repeat orientation is selected Then a deterministic quarter-turn is used
+    ok 9 - Given grass tile coordinates When repeat orientation is selected Then a deterministic quarter-turn is used
+      ---
+      duration_ms: 0.161825
+      ...
+    # Subtest: Given camera transforms differ When textured terrain draws Then pattern phase remains world anchored
+    ok 10 - Given camera transforms differ When textured terrain draws Then pattern phase remains world anchored
+      ---
+      duration_ms: 0.449155
+      ...
+    # Subtest: Given a missing ground texture When terrain draws Then the old shade fill is preserved
+    ok 11 - Given a missing ground texture When terrain draws Then the old shade fill is preserved
+      ---
+      duration_ms: 0.133553
+      ...
+    # Subtest: Given connected roads When packed-earth texture is ready Then centre and arms are pattern-filled before ruts
+    ok 12 - Given connected roads When packed-earth texture is ready Then centre and arms are pattern-filled before ruts
+      ---
+      duration_ms: 0.306434
+      ...
+    # Subtest: Given the road texture is missing When roads draw Then earth fallback still renders arms and ruts
+    ok 13 - Given the road texture is missing When roads draw Then earth fallback still renders arms and ruts
+      ---
+      duration_ms: 0.166321
+      ...
+    # Subtest: Given zoom is at the boundary When terrain draws Then decals appear only above 0.7
+    ok 14 - Given zoom is at the boundary When terrain draws Then decals appear only above 0.7
+      ---
+      duration_ms: 0.205298
+      ...
+    1..14
+ok 406 - terrain patterns
+  ---
+  duration_ms: 5.172028
+  type: 'suite'
+  ...
+# Subtest: terrain seams are material-specific and drawn only on the grass side
+ok 407 - terrain seams are material-specific and drawn only on the grass side
+  ---
+  duration_ms: 1.672974
+  ...
+# Subtest: ground tiles use one coherent fill without per-tile ink outlines
+ok 408 - ground tiles use one coherent fill without per-tile ink outlines
+  ---
+  duration_ms: 0.579957
+  ...
+# Subtest: object grounding is painted after all terrain tiles using the shared object queue
+ok 409 - object grounding is painted after all terrain tiles using the shared object queue
+  ---
+  duration_ms: 0.818951
+  ...
+# Subtest: forest seams use a deterministic two or three tuft cluster
+ok 410 - forest seams use a deterministic two or three tuft cluster
+  ---
+  duration_ms: 0.433284
+  ...
+# Subtest: world vignette uses three palette-derived tile bands inside an ink surround
+ok 411 - world vignette uses three palette-derived tile bands inside an ink surround
+  ---
+  duration_ms: 0.139553
+  ...
+# Subtest: terrainTexturePipeline
+    # Subtest: produces an opaque 256px texture restricted to the terrain policy ramps
+    ok 1 - produces an opaque 256px texture restricted to the terrain policy ramps
+      ---
+      duration_ms: 238.998308
+      ...
+    # Subtest: moves generated borders inward before making opposing edges exactly compatible
+    ok 2 - moves generated borders inward before making opposing edges exactly compatible
+      ---
+      duration_ms: 31.168407
+      ...
+    # Subtest: constructs a byte-identical 2x2 tiling buffer
+    ok 3 - constructs a byte-identical 2x2 tiling buffer
+      ---
+      duration_ms: 29.445017
+      ...
+    # Subtest: reports opposing-edge, join-band, and internal-reference deltas for both axes
+    ok 4 - reports opposing-edge, join-band, and internal-reference deltas for both axes
+      ---
+      duration_ms: 1.927936
+      ...
+    # Subtest: rejects a synthetic visible seam even when the first and last pixels match
+    ok 5 - rejects a synthetic visible seam even when the first and last pixels match
+      ---
+      duration_ms: 2.277507
+      ...
+    # Subtest: writes a resized periodic PNG through the real file boundary
+    ok 6 - writes a resized periodic PNG through the real file boundary
+      ---
+      duration_ms: 74.211604
+      ...
+    1..6
+ok 412 - terrainTexturePipeline
+  ---
+  duration_ms: 378.729617
+  type: 'suite'
+  ...
+# Subtest: terrain variation is deterministic, seed-aware, and limited to five percent
+ok 413 - terrain variation is deterministic, seed-aware, and limited to five percent
+  ---
+  duration_ms: 10.844523
+  ...
+# Subtest: orthogonally adjacent terrain variation differs by at most a few percent
+ok 414 - orthogonally adjacent terrain variation differs by at most a few percent
+  ---
+  duration_ms: 4.896682
+  ...
+# Subtest: forest interiors draw one or two trees while exposed forest edges stay thin
+ok 415 - forest interiors draw one or two trees while exposed forest edges stay thin
+  ---
+  duration_ms: 0.513445
+  ...
+# Subtest: tree density ignores diagonal forest neighbors
+ok 416 - tree density ignores diagonal forest neighbors
+  ---
+  duration_ms: 0.072289
+  ...
+# Subtest: tree clusters are deterministic for one seed and change with another seed
+ok 417 - tree clusters are deterministic for one seed and change with another seed
+  ---
+  duration_ms: 0.612149
+  ...
+# Subtest: tree descriptors vary safely inside the isometric tile footprint
+ok 418 - tree descriptors vary safely inside the isometric tile footprint
+  ---
+  duration_ms: 0.182322
+  ...
+# Subtest: multi-tree clusters are sorted by local y position for stable overlap
+ok 419 - multi-tree clusters are sorted by local y position for stable overlap
+  ---
+  duration_ms: 0.086241
+  ...
+# Subtest: multi-tree canopy tones walk the full foliage ramp deterministically
+ok 420 - multi-tree canopy tones walk the full foliage ramp deterministically
+  ---
+  duration_ms: 0.314722
+  ...
+# Subtest: tree and shrub sprite variants are assigned from separate deterministic slots
+ok 421 - tree and shrub sprite variants are assigned from separate deterministic slots
+  ---
+  duration_ms: 5.750736
+  ...
+# Subtest: ground cover occupies roughly eight percent of eligible open grass
+ok 422 - ground cover occupies roughly eight percent of eligible open grass
+  ---
+  duration_ms: 13.582994
+  ...
+# Subtest: ground cover never occupies non-grass roads or building tiles
+ok 423 - ground cover never occupies non-grass roads or building tiles
+  ---
+  duration_ms: 0.213842
+  ...
+# Subtest: ground cover descriptors repeat exactly for equal tile and seed inputs
+ok 424 - ground cover descriptors repeat exactly for equal tile and seed inputs
+  ---
+  duration_ms: 2.225347
+  ...
+# Subtest: forest lookup reuses immutable world tiles
+ok 425 - forest lookup reuses immutable world tiles
+  ---
+  duration_ms: 0.085345
+  ...
+# Subtest: tree sprite family follows the selected silhouette
+ok 426 - tree sprite family follows the selected silhouette
+  ---
+  duration_ms: 0.221058
+  ...
+# Subtest: verifyUiAssets
+    # Subtest: rejects machine-specific absolute candidate paths
+    ok 1 - rejects machine-specific absolute candidate paths
+      ---
+      duration_ms: 0.765543
+      ...
+    # Subtest: rejects before and final PNG paths outside their release directories
+    ok 2 - rejects before and final PNG paths outside their release directories
+      ---
+      duration_ms: 0.299442
+      ...
+    # Subtest: rejects alpha byte mismatch between before and final images
+    ok 3 - rejects alpha byte mismatch between before and final images
+      ---
+      duration_ms: 0.084224
+      ...
+    # Subtest: rejects an unexpectedly opaque transparent asset
+    ok 4 - rejects an unexpectedly opaque transparent asset
+      ---
+      duration_ms: 0.893976
+      ...
+    # Subtest: accepts a scroll frame with a clear centre and fully transparent outside perimeter
+    ok 5 - accepts a scroll frame with a clear centre and fully transparent outside perimeter
+      ---
+      duration_ms: 1.328524
+      ...
+    # Subtest: rejects a scroll frame whose centre is not at least seventy percent transparent
+    ok 6 - rejects a scroll frame whose centre is not at least seventy percent transparent
+      ---
+      duration_ms: 0.185073
+      ...
+    # Subtest: rejects any opaque pixel in a scroll frame outside perimeter band
+    ok 7 - rejects any opaque pixel in a scroll frame outside perimeter band
+      ---
+      duration_ms: 0.121313
+      ...
+    # Subtest: rejects a three-colour beige scroll frame without illuminated accent families
+    ok 8 - rejects a three-colour beige scroll frame without illuminated accent families
+      ---
+      duration_ms: 2.217682
+      ...
+    # Subtest: accepts a scroll frame with gold ultramarine and vermilion accents
+    ok 9 - accepts a scroll frame with gold ultramarine and vermilion accents
+      ---
+      duration_ms: 0.728438
+      ...
+    # Subtest: rejects a flat wood console without grain or raised edge variation
+    ok 10 - rejects a flat wood console without grain or raised edge variation
+      ---
+      duration_ms: 3.135995
+      ...
+    # Subtest: rejects wood console art with fewer than three recess runs
+    ok 11 - rejects wood console art with fewer than three recess runs
+      ---
+      duration_ms: 0.198257
+      ...
+    # Subtest: accepts wood console art with three recesses raised edge and grain
+    ok 12 - accepts wood console art with three recesses raised edge and grain
+      ---
+      duration_ms: 1.519372
+      ...
+    # Subtest: rounds the four-percent outside perimeter up at release dimensions
+    ok 13 - rounds the four-percent outside perimeter up at release dimensions
+      ---
+      duration_ms: 0.829575
+      ...
+    # Subtest: rejects stale candidate seeds in the active file set
+    ok 14 - rejects stale candidate seeds in the active file set
+      ---
+      duration_ms: 0.133121
+      ...
+    # Subtest: rejects a missing selected candidate entry
+    ok 15 - rejects a missing selected candidate entry
+      ---
+      duration_ms: 0.063904
+      ...
+    # Subtest: rejects a wrong or missing manifest asset entry
+    ok 16 - rejects a wrong or missing manifest asset entry
+      ---
+      duration_ms: 0.05816
+      ...
+    # Subtest: rejects a candidate seed field that does not match its path basename
+    ok 17 - rejects a candidate seed field that does not match its path basename
+      ---
+      duration_ms: 0.062817
+      ...
+    # Subtest: rejects a stale seal table row even when another row masks the selected index
+    ok 18 - rejects a stale seal table row even when another row masks the selected index
+      ---
+      duration_ms: 0.350339
+      ...
+    1..18
+ok 427 - verifyUiAssets
+  ---
+  duration_ms: 13.748853
+  type: 'suite'
+  ...
+# Subtest: Carter diagnosis reports its real mission route cargo and ETA
+ok 428 - Carter diagnosis reports its real mission route cargo and ETA
+  ---
+  duration_ms: 1.515149
+  ...
+# Subtest: Distributor diagnosis reports roaming facts without inventing a fixed destination
+ok 429 - Distributor diagnosis reports roaming facts without inventing a fixed destination
+  ---
+  duration_ms: 0.488597
+  ...
+# Subtest: Carter cancellation reasons have exact distinct Korean labels
+ok 430 - Carter cancellation reasons have exact distinct Korean labels
+  ---
+  duration_ms: 0.666182
+  ...
+# Subtest: Carter diagnosis exposes its existing cancellation instead of a generic status
+ok 431 - Carter diagnosis exposes its existing cancellation instead of a generic status
+  ---
+  duration_ms: 0.245026
+  ...
+# Subtest: Builder walkers are excluded from walker diagnosis cards
+ok 432 - Builder walkers are excluded from walker diagnosis cards
+  ---
+  duration_ms: 0.214914
+  ...
+# Subtest: cargo colour mapping stays tied to canonical palette tokens
+ok 433 - cargo colour mapping stays tied to canonical palette tokens
+  ---
+  duration_ms: 0.979672
+  ...
+# Subtest: drawWalkers renders cargo squares at fractional tile screen positions
+ok 434 - drawWalkers renders cargo squares at fractional tile screen positions
+  ---
+  duration_ms: 0.797943
+  ...
+# Subtest: walker outlines stay one screen pixel across camera zoom
+ok 435 - walker outlines stay one screen pixel across camera zoom
+  ---
+  duration_ms: 0.236178
+  ...
+# Subtest: world asset manifest
+    # Subtest: parses the exact release keys, dimensions, anchors, and footprints
+    ok 1 - parses the exact release keys, dimensions, anchors, and footprints
+      ---
+      duration_ms: 2.740487
+      ...
+    # Subtest: preserves the exact foliage variation and terrain seam contracts
+    ok 2 - preserves the exact foliage variation and terrain seam contracts
+      ---
+      duration_ms: 0.894232
+      ...
+    # Subtest: rejects duplicate and missing release keys
+    ok 3 - rejects duplicate and missing release keys
+      ---
+      duration_ms: 0.978472
+      ...
+    # Subtest: rejects wrong dimensions and non-bottom-centre anchors
+    ok 4 - rejects wrong dimensions and non-bottom-centre anchors
+      ---
+      duration_ms: 0.365379
+      ...
+    # Subtest: rejects path traversal and machine-specific paths
+    ok 5 - rejects path traversal and machine-specific paths
+      ---
+      duration_ms: 1.165801
+      ...
+    # Subtest: rejects category-policy mismatches and incomplete category metadata
+    ok 6 - rejects category-policy mismatches and incomplete category metadata
+      ---
+      duration_ms: 0.708646
+      ...
+    # Subtest: rejects nonexistent files and PNGs whose on-disk dimensions drift
+    ok 7 - rejects nonexistent files and PNGs whose on-disk dimensions drift
+      ---
+      duration_ms: 23.774745
+      ...
+    1..7
+ok 436 - world asset manifest
+  ---
+  duration_ms: 31.829597
+  type: 'suite'
+  ...
+# Subtest: Phase 4C world asset release
+    # Subtest: maps generated ground-cover candidates and single-source trees to their raw filenames
+    ok 1 - maps generated ground-cover candidates and single-source trees to their raw filenames
+      ---
+      duration_ms: 0.708406
+      ...
+    # Subtest: prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest
+    ok 2 - prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest
+      ---
+      duration_ms: 1246.927482
+      ...
+    # Subtest: rejects an unexpected top-level PNG without treating historical candidate folders as release files
+    ok 3 - rejects an unexpected top-level PNG without treating historical candidate folders as release files
+      ---
+      duration_ms: 1189.37752
+      ...
+    # Subtest: rejects a category-invalid asset even when its filename and dimensions are correct
+    ok 4 - rejects a category-invalid asset even when its filename and dimensions are correct
+      ---
+      duration_ms: 1244.785537
+      ...
+    1..4
+ok 437 - Phase 4C world asset release
+  ---
+  duration_ms: 3682.861658
+  type: 'suite'
+  ...
+# Subtest: browser world asset registry
+    # Subtest: Given an unsupported category When the manifest crosses the runtime boundary Then parsing rejects it
+    ok 1 - Given an unsupported category When the manifest crosses the runtime boundary Then parsing rejects it
+      ---
+      duration_ms: 0.49426
+      ...
+    # Subtest: Given an unsafe asset path When the manifest crosses the runtime boundary Then parsing rejects it
+    ok 2 - Given an unsafe asset path When the manifest crosses the runtime boundary Then parsing rejects it
+      ---
+      duration_ms: 0.086672
+      ...
+    # Subtest: Given non-positive image dimensions When the manifest crosses the runtime boundary Then parsing rejects it
+    ok 3 - Given non-positive image dimensions When the manifest crosses the runtime boundary Then parsing rejects it
+      ---
+      duration_ms: 0.066289
+      ...
+    # Subtest: Given the release manifest When metadata is queried before preload Then exact contracts are idle
+    ok 4 - Given the release manifest When metadata is queried before preload Then exact contracts are idle
+      ---
+      duration_ms: 0.329106
+      ...
+    # Subtest: Given concurrent callers When images load Then every asset loads once and remains cached
+    ok 5 - Given concurrent callers When images load Then every asset loads once and remains cached
+      ---
+      duration_ms: 139.358762
+      ...
+    # Subtest: Given browser image errors When preload runs Then it resolves and marks assets missing
+    ok 6 - Given browser image errors When preload runs Then it resolves and marks assets missing
+      ---
+      duration_ms: 96.640961
+      ...
+    # Subtest: Given Image construction throws When preload runs Then it resolves and marks assets missing
+    ok 7 - Given Image construction throws When preload runs Then it resolves and marks assets missing
+      ---
+      duration_ms: 92.781313
+      ...
+    # Subtest: Given assigning Image src throws When preload runs Then it resolves and marks assets missing
+    ok 8 - Given assigning Image src throws When preload runs Then it resolves and marks assets missing
+      ---
+      duration_ms: 111.272061
+      ...
+    1..8
+ok 438 - browser world asset registry
+  ---
+  duration_ms: 441.84423
+  type: 'suite'
+  ...
+# Subtest: walkers sort between buildings by fractional anchor depth
+ok 439 - walkers sort between buildings by fractional anchor depth
+  ---
+  duration_ms: 2.366004
+  ...
+# Subtest: building depth uses the forwardmost footprint tile
+ok 440 - building depth uses the forwardmost footprint tile
+  ---
+  duration_ms: 0.390819
+  ...
+# Subtest: walker depth uses the same visual foot anchor as drawing
+ok 441 - walker depth uses the same visual foot anchor as drawing
+  ---
+  duration_ms: 0.330787
+  ...
+# Subtest: stable id breaks ties after depth and anchor tx
+ok 442 - stable id breaks ties after depth and anchor tx
+  ---
+  duration_ms: 8.767514
+  ...
+# Subtest: individual trees and ground cover enter the shared object queue
+ok 443 - individual trees and ground cover enter the shared object queue
+  ---
+  duration_ms: 2.249027
+  ...
+# Subtest: ground cover descriptors can be skipped outside full detail
+ok 444 - ground cover descriptors can be skipped outside full detail
+  ---
+  duration_ms: 0.240162
+  ...
+# Subtest: forest density uses full world neighbors before visible and clearing filters
+ok 445 - forest density uses full world neighbors before visible and clearing filters
+  ---
+  duration_ms: 0.421379
+  ...
+# Subtest: ground cover protection reaches two tiles from every building footprint edge
+ok 446 - ground cover protection reaches two tiles from every building footprint edge
+  ---
+  duration_ms: 0.348915
+  ...
+# Subtest: ground cover protection reaches two tiles from roads
+ok 447 - ground cover protection reaches two tiles from roads
+  ---
+  duration_ms: 0.478068
+  ...
+# Subtest: ground cover protection reuses immutable world geometry across simulation ticks
+ok 448 - ground cover protection reuses immutable world geometry across simulation ticks
+  ---
+  duration_ms: 0.362531
+  ...
+# Subtest: the object queue excludes cover within two tiles and permits distance three
+ok 449 - the object queue excludes cover within two tiles and permits distance three
+  ---
+  duration_ms: 8.621353
+  ...
+# Subtest: sprite-success building rendering keeps ground-pass contact before the sprite
+ok 450 - sprite-success building rendering keeps ground-pass contact before the sprite
+  ---
+  duration_ms: 1.622878
+  ...
+# Subtest: exact simplified LOD keeps ready building sprites on the procedural path
+ok 451 - exact simplified LOD keeps ready building sprites on the procedural path
+  ---
+  duration_ms: 0.371875
+  ...
+# Subtest: full LOD just above the simplified boundary may use ready building sprites
+ok 452 - full LOD just above the simplified boundary may use ready building sprites
+  ---
+  duration_ms: 0.200562
+  ...
+# Subtest: walker hit wins over a building occupying the same tile
+ok 453 - walker hit wins over a building occupying the same tile
+  ---
+  duration_ms: 0.663813
+  ...
+# Subtest: moving walker remains selectable on the tile under its rendered feet
+ok 454 - moving walker remains selectable on the tile under its rendered feet
+  ---
+  duration_ms: 0.107153
+  ...
+# Subtest: moving walker selection follows the next rendered tile
+ok 455 - moving walker selection follows the next rendered tile
+  ---
+  duration_ms: 0.071168
+  ...
+# Subtest: building and empty tile clicks select or dismiss deterministically
+ok 456 - building and empty tile clicks select or dismiss deterministically
+  ---
+  duration_ms: 0.178194
+  ...
+# Subtest: construction sites are selectable beneath builder walkers
+ok 457 - construction sites are selectable beneath builder walkers
+  ---
+  duration_ms: 0.083889
+  ...
+# Subtest: construction site selection wins over a stale finished building id match
+ok 458 - construction site selection wins over a stale finished building id match
+  ---
+  duration_ms: 0.057056
+  ...
+# Subtest: clicking through a builder can still resolve an underlying finished building
+ok 459 - clicking through a builder can still resolve an underlying finished building
+  ---
+  duration_ms: 0.049329
+  ...
+# Subtest: world sprite blitter
+    # Subtest: Given an unknown sprite When drawing Then false performs no draw
+    ok 1 - Given an unknown sprite When drawing Then false performs no draw
+      ---
+      duration_ms: 1.167498
+      ...
+    # Subtest: Given 1x1 and 2x2 sprites When drawing Then manifest bottom-center anchors meet forward tile anchors
+    ok 2 - Given 1x1 and 2x2 sprites When drawing Then manifest bottom-center anchors meet forward tile anchors
+      ---
+      duration_ms: 0.731318
+      ...
+    # Subtest: Given pan zoom and DPR When drawing Then destination rectangles snap in device space
+    ok 3 - Given pan zoom and DPR When drawing Then destination rectangles snap in device space
+      ---
+      duration_ms: 0.367603
+      ...
+    # Subtest: Given a culled destination When drawing Then no image draw occurs and state is restored
+    ok 4 - Given a culled destination When drawing Then no image draw occurs and state is restored
+      ---
+      duration_ms: 0.255042
+      ...
+    # Subtest: Given scale alpha and a foliage world anchor When drawing Then draw state is temporary
+    ok 5 - Given scale alpha and a foliage world anchor When drawing Then draw state is temporary
+      ---
+      duration_ms: 0.282563
+      ...
+    # Subtest: Given drawImage throws When drawing Then canvas state is still restored
+    ok 6 - Given drawImage throws When drawing Then canvas state is still restored
+      ---
+      duration_ms: 0.687622
+      ...
+    1..6
+ok 460 - world sprite blitter
+  ---
+  duration_ms: 6.176244
+  type: 'suite'
+  ...
+# Subtest: worldSpritePipeline
+    # Subtest: declares every exact Phase 4C canvas and baseline
+    ok 1 - declares every exact Phase 4C canvas and baseline
+      ---
+      duration_ms: 0.896056
+      ...
+    # Subtest: enforces one-tile and two-tile visible-width bands
+    ok 2 - enforces one-tile and two-tile visible-width bands
+      ---
+      duration_ms: 26.302158
+      ...
+    # Subtest: requires house alpha-bbox heights to increase from L0 through L3
+    ok 3 - requires house alpha-bbox heights to increase from L0 through L3
+      ---
+      duration_ms: 1.379707
+      ...
+    # Subtest: processes a sprite to its exact canvas with a transparent post-baseline margin
+    ok 4 - processes a sprite to its exact canvas with a transparent post-baseline margin
+      ---
+      duration_ms: 28.197567
+      ...
+    # Subtest: keeps alpha-179 ink only on the exterior upper outline
+    ok 5 - keeps alpha-179 ink only on the exterior upper outline
+      ---
+      duration_ms: 3.062602
+      ...
+    # Subtest: makes the worked field dominate wheat-farm visible mass
+    ok 6 - makes the worked field dominate wheat-farm visible mass
+      ---
+      duration_ms: 1.314939
+      ...
+    # Subtest: enforces the declared roof ramp for each building kind
+    ok 7 - enforces the declared roof ramp for each building kind
+      ---
+      duration_ms: 0.639493
+      ...
+    # Subtest: restricts foliage interiors to foliage or timber and reserves ink for its outline
+    ok 8 - restricts foliage interiors to foliage or timber and reserves ink for its outline
+      ---
+      duration_ms: 1.441661
+      ...
+    # Subtest: requires both shrub alpha silhouettes to be wider than tall
+    ok 9 - requires both shrub alpha silhouettes to be wider than tall
+      ---
+      duration_ms: 0.269618
+      ...
+    # Subtest: removes timber-coloured trunks from shrubs and grass tufts
+    ok 10 - removes timber-coloured trunks from shrubs and grass tufts
+      ---
+      duration_ms: 0.359475
+      ...
+    # Subtest: keeps field stones in stone or earth ramps
+    ok 11 - keeps field stones in stone or earth ramps
+      ---
+      duration_ms: 0.204946
+      ...
+    # Subtest: reports the final opaque bounds used by the contract
+    ok 12 - reports the final opaque bounds used by the contract
+      ---
+      duration_ms: 0.233602
+      ...
+    1..12
+ok 461 - worldSpritePipeline
+  ---
+  duration_ms: 64.969734
+  type: 'suite'
+  ...
+1..461
+# tests 548
+# suites 12
+# pass 548
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5099.075086
+DGX_NPM_TEST_FIXED_DONE 2026-08-07T07:06:36+09:00

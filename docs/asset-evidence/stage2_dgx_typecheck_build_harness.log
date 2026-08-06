@@ -1,0 +1,50 @@
+TYPECHECK_START 2026-08-07T07:07:08+09:00
+
+> feudal-lord-simulator@0.1.0 typecheck
+> tsc --noEmit
+
+BUILD_START 2026-08-07T07:07:08+09:00
+
+> feudal-lord-simulator@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.2.0 building client environment for production...
+[2Ktransforming...✓ 129 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:   0.35 kB
+dist/assets/index-CIMnXIcl.css   17.69 kB │ gzip:   3.71 kB
+dist/assets/index-Cw4-VtsX.js   345.55 kB │ gzip: 106.01 kB
+
+✓ built in 101ms
+HARNESS1_START 2026-08-07T07:07:09+09:00
+
+> feudal-lord-simulator@0.1.0 harness
+> tsx scripts/economyHarness.ts
+
+Metric               Value                                 Status
+Determinism hash     5a393f13af3e61be == 5a393f13af3e61be  PASS
+Food stability       9.5% starving                         PASS
+Cargo thrashing      0 cancellations/1200                  PASS
+Labour deadlock      0 consecutive ticks                   PASS
+Housing oscillation  1 changes/2000                        PASS
+Stall duration       152 consecutive ticks                 PASS
+Builder starvation   0 consecutive ticks                   PASS
+Material deadlock    0 consecutive ticks                   PASS
+Completion rate      2/2 scripted sites (100%)             PASS
+HARNESS2_START 2026-08-07T07:07:09+09:00
+
+> feudal-lord-simulator@0.1.0 harness
+> tsx scripts/economyHarness.ts
+
+Metric               Value                                 Status
+Determinism hash     5a393f13af3e61be == 5a393f13af3e61be  PASS
+Food stability       9.5% starving                         PASS
+Cargo thrashing      0 cancellations/1200                  PASS
+Labour deadlock      0 consecutive ticks                   PASS
+Housing oscillation  1 changes/2000                        PASS
+Stall duration       152 consecutive ticks                 PASS
+Builder starvation   0 consecutive ticks                   PASS
+Material deadlock    0 consecutive ticks                   PASS
+Completion rate      2/2 scripted sites (100%)             PASS
+BASIC_GATES_DONE 2026-08-07T07:07:10+09:00

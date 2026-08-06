@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "revision": "6b59f152632d431156b3ab3d4d2e0091aac0f57a",
+  "generatedAt": "2026-08-06T22:10:35.440Z",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "runs": [
+    {
+      "competition": "1x",
+      "warmupFrames": 20,
+      "measuredFrames": 120,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      },
+      "overBudgetFrames": 0,
+      "simulation": {
+        "averageMs": 0.088,
+        "p95Ms": 0.2,
+        "worstMs": 1
+      },
+      "render": {
+        "averageMs": 4.765,
+        "p95Ms": 5.3,
+        "worstMs": 8.1
+      },
+      "averageMs": 4.853,
+      "p95Ms": 5.4,
+      "worstMs": 8.1
+    },
+    {
+      "competition": "5x",
+      "warmupFrames": 20,
+      "measuredFrames": 120,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      },
+      "overBudgetFrames": 0,
+      "simulation": {
+        "averageMs": 0.282,
+        "p95Ms": 0.4,
+        "worstMs": 2.6
+      },
+      "render": {
+        "averageMs": 4.607,
+        "p95Ms": 5.2,
+        "worstMs": 7.5
+      },
+      "averageMs": 4.888,
+      "p95Ms": 5.5,
+      "worstMs": 8.3
+    }
+  ]
+}

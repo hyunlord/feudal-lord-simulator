@@ -1,0 +1,31 @@
+RUN 1
+
+> feudal-lord-simulator@0.1.0 harness
+> tsx scripts/economyHarness.ts
+
+Metric               Value                                 Status
+Determinism hash     5a393f13af3e61be == 5a393f13af3e61be  PASS
+Food stability       9.5% starving                         PASS
+Cargo thrashing      0 cancellations/1200                  PASS
+Labour deadlock      0 consecutive ticks                   PASS
+Housing oscillation  1 changes/2000                        PASS
+Stall duration       152 consecutive ticks                 PASS
+Builder starvation   0 consecutive ticks                   PASS
+Material deadlock    0 consecutive ticks                   PASS
+Completion rate      2/2 scripted sites (100%)             PASS
+
+RUN 2
+
+> feudal-lord-simulator@0.1.0 harness
+> tsx scripts/economyHarness.ts
+
+Metric               Value                                 Status
+Determinism hash     5a393f13af3e61be == 5a393f13af3e61be  PASS
+Food stability       9.5% starving                         PASS
+Cargo thrashing      0 cancellations/1200                  PASS
+Labour deadlock      0 consecutive ticks                   PASS
+Housing oscillation  1 changes/2000                        PASS
+Stall duration       152 consecutive ticks                 PASS
+Builder starvation   0 consecutive ticks                   PASS
+Material deadlock    0 consecutive ticks                   PASS
+Completion rate      2/2 scripted sites (100%)             PASS
