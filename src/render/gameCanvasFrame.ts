@@ -20,6 +20,7 @@ type GameCanvasFrameInput = {
   readonly nowMs: number;
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
+  readonly highlightedHouseIds?: readonly string[];
 };
 
 export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
@@ -49,6 +50,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     nowMs: input.nowMs,
     selectedBuildingId: input.selectedBuildingId ?? null,
     selectedWalkerId: input.selectedWalkerId ?? null,
+    highlightedHouseIds: input.highlightedHouseIds ?? [],
   });
   input.context.restore();
 }

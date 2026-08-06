@@ -35,6 +35,7 @@ type GameCanvasRuntimeInput = {
   readonly setHoveredBuilding: Dispatch<SetStateAction<HoveredBuilding | null>>;
   readonly selection: AnchoredWorldSelection | null;
   readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;
+  readonly highlightedHouseIds: readonly string[];
 };
 
 type CanvasMutableRefs = {
@@ -51,6 +52,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
     canvasRef,
     dispatch,
+    highlightedHouseIds,
     overlayMode,
     selectedTool,
     selection,
@@ -62,13 +64,15 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const selectedToolRef = useRef(selectedTool);
   const overlayModeRef = useRef(overlayMode);
   const selectionRef = useRef(selection);
+  const highlightedHouseIdsRef = useRef(highlightedHouseIds);
 
   useEffect(() => {
     stateRef.current = state;
     selectedToolRef.current = selectedTool;
     overlayModeRef.current = overlayMode;
     selectionRef.current = selection;
-  }, [overlayMode, selectedTool, selection, state]);
+    highlightedHouseIdsRef.current = highlightedHouseIds;
+  }, [highlightedHouseIds, overlayMode, selectedTool, selection, state]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -125,6 +129,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         selectedWalkerId: selectionRef.current?.kind === "walker"
           ? selectionRef.current.walkerId
           : null,
+        highlightedHouseIds: highlightedHouseIdsRef.current,
       });
       frameId = requestAnimationFrame(drawFrame);
     };

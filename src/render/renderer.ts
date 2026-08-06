@@ -18,6 +18,7 @@ import { computeVisibleTileRange, visibleTilesInDrawOrder } from "./renderVisibi
 import type { ViewportSize } from "./renderVisibility";
 import { onboardingWorldGuidanceTargets } from "../ui/onboardingWorldGuidance";
 import { drawSelectedWalkerPath } from "./diagnosticPathOverlay";
+import { drawHighlightedHouses } from "./diagnosticOverlays";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -48,6 +49,7 @@ export type RenderFrameInput = {
   readonly nowMs?: number;
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
+  readonly highlightedHouseIds?: readonly string[];
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -100,6 +102,13 @@ export const renderFrame = (input: RenderFrameInput): void => {
   if (selectedWalker !== undefined) {
     drawSelectedWalkerPath(input.context, selectedWalker, input.camera.zoom);
   }
+  drawHighlightedHouses({
+    context: input.context,
+    state: input.state,
+    zoom: input.camera.zoom,
+    selectedBuildingId: input.selectedBuildingId ?? null,
+    houseIds: input.highlightedHouseIds ?? [],
+  });
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   drawOnboardingGuidanceOverlay(input.context, {
     targets: onboardingWorldGuidanceTargets(input.state),

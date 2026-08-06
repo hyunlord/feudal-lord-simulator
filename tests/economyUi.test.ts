@@ -102,6 +102,7 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.match(markup, /Road component/);
   assert.match(markup, /Digit3/);
   assert.match(markup, /Digit4/);
+  assert.match(markup, /aria-label="인구 변화 기록"/);
   assert.equal(toggleOverlayByKey("Digit1", "none"), "water");
   assert.equal(toggleOverlayByKey("Digit1", "water"), "none");
   assert.equal(toggleOverlayByKey("Digit2", "water"), "labour");

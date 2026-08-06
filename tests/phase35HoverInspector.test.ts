@@ -81,3 +81,9 @@ test("never-served houses do not pretend bread arrived on the current tick", () 
 
   assert.equal(model?.rows.at(-1), "빵 배급 전");
 });
+
+test("production inspector appends the exact marked problem cause", () => {
+  const mill = { ...building("mill"), workers: 0 };
+  const model = buildingInspectorModel(state(mill), mill.id);
+  assert.equal(model?.rows.at(-1), "원인: 가용 일꾼이 없습니다");
+});

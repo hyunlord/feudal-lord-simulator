@@ -206,6 +206,65 @@ button {
   color: var(--palette-ink-light);
 }
 
+.population-event-panel {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  display: grid;
+  gap: 5px;
+  width: min(292px, calc(100% - 24px));
+  max-height: min(30vh, 230px);
+  padding: 10px 12px;
+  overflow: auto;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 4%, 98% 0, 100% 94%, 3% 100%, 0 18%);
+}
+
+.population-event-panel h2,
+.population-event-panel p,
+.population-event-panel ol {
+  margin: 0;
+}
+
+.population-event-panel h2 {
+  color: var(--palette-vermilion);
+  font-size: 14px;
+}
+
+.population-event-panel p,
+.population-event-panel button {
+  font-size: 11px;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.population-event-panel ol {
+  display: grid;
+  gap: 3px;
+  padding: 0;
+  list-style: none;
+}
+
+.population-event-panel button {
+  width: 100%;
+  padding: 4px 6px;
+  color: var(--palette-ink);
+  text-align: left;
+  cursor: pointer;
+  background-color: var(--palette-parchment);
+  border: 1px solid var(--palette-parchment-dark);
+}
+
+.population-event-panel button:focus-visible {
+  outline: 2px solid var(--palette-gold);
+}
+
 @media (max-width: 600px) {
   .diagnostic-card-position {
     right: 8px;

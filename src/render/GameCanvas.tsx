@@ -11,9 +11,17 @@ import type { AnchoredWorldSelection } from "./worldSelection";
 import { houseDiagnosisModel } from "../ui/houseDiagnosisModel";
 import { walkerDiagnosisModel } from "../ui/walkerDiagnosisModel";
 
-type GameCanvasProps = { readonly selectedTool?: PlacementTool | null; readonly overlayMode?: OverlayMode };
+type GameCanvasProps = {
+  readonly selectedTool?: PlacementTool | null;
+  readonly overlayMode?: OverlayMode;
+  readonly highlightedHouseIds?: readonly string[];
+};
 
-export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode = "none" }: GameCanvasProps) {
+export function GameCanvas({
+  selectedTool = DEFAULT_PLACEMENT_TOOL,
+  overlayMode = "none",
+  highlightedHouseIds = [],
+}: GameCanvasProps) {
   const { state, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
   const [selection, setSelection] = useState<AnchoredWorldSelection | null>(null);
@@ -28,6 +36,7 @@ export function GameCanvas({ selectedTool = DEFAULT_PLACEMENT_TOOL, overlayMode 
     setHoveredBuilding,
     selection,
     setSelection,
+    highlightedHouseIds,
   });
 
   let cardModel: DiagnosticCardModel | null = null;

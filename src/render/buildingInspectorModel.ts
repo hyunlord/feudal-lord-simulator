@@ -1,6 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
+import { buildingProblemCause } from "../ui/problemCauseModel";
 
 export type BuildingInspectorModel = {
   readonly name: string;
@@ -53,12 +54,16 @@ export function buildingInspectorModel(
     .filter((resource) => (building.inventory[resource] ?? 0) > 0)
     .map((resource) => `${RESOURCE_NAMES[resource]} ${building.inventory[resource] ?? 0}`)
     .join(" · ") || "없음";
+  const problemCause = buildingProblemCause(state, building.id);
   const rows = [
     ...(config.workersRequired > 0 ? [`일꾼 ${building.workers}/${config.workersRequired}`] : []),
     `재고 ${stock}`,
     ...(config.production === null
       ? []
       : [`생산 ${building.productionProgress}/${config.production.ticksPerOutput}`]),
+    ...(problemCause === null
+      ? []
+      : [`원인: ${problemCause}`]),
   ];
   return { name: config.name, purpose: PURPOSES[building.kind], rows };
 }

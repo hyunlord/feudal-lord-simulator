@@ -1,4 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
+import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
@@ -43,4 +44,20 @@ export function selectedBuildingRoadComponent(
   const building = state.buildings.find((candidate) => candidate.id === selectedBuildingId);
   if (building === undefined) return [];
   return existingRoadComponent(state, buildingRoadAccessTiles(state, building));
+}
+
+export function highlightedHouseTiles(
+  state: GameState,
+  houseIds: readonly string[],
+): readonly TileCoordinate[] {
+  const selected = new Set(houseIds);
+  return state.buildings
+    .filter((building) => building.kind === "house" && selected.has(building.id))
+    .flatMap((building) => {
+      const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+      return Array.from({ length: definition.width * definition.height }, (_unused, index) => ({
+        tx: building.tx + index % definition.width,
+        ty: building.ty + Math.floor(index / definition.width),
+      }));
+    });
 }

@@ -17,6 +17,12 @@ import {
 } from "./ui/onboardingTaskModel";
 import { MapShield } from "./ui/OverlayControls";
 import { SpeedSeals, speedToIntervalMs } from "./ui/SpeedControls";
+import { PopulationEventPanel } from "./ui/PopulationEventPanel";
+import {
+  appendPopulationEvents,
+  diffPopulationEvents,
+  type PopulationEvent,
+} from "./ui/populationEventModel";
 
 export function nextOnboardingPresentationCommit(input: {
   readonly gameState: GameState;
@@ -33,6 +39,9 @@ export function App() {
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
   const [speed, setSpeed] = useState<GameSpeed>(0);
   const [welcomeVisible, setWelcomeVisible] = useState(true);
+  const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
+  const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
+  const previousPopulationStateRef = useRef(state);
   const [presentationNowMs, setPresentationNowMs] = useState(() => Date.now());
   const [onboardingPresentation, setOnboardingPresentation] = useState(
     createOnboardingPresentationState,
@@ -53,6 +62,14 @@ export function App() {
     const interval = window.setInterval(() => dispatch({ type: "advance_tick" }), intervalMs);
     return () => window.clearInterval(interval);
   }, [dispatch, speed]);
+
+  useEffect(() => {
+    const incoming = diffPopulationEvents(previousPopulationStateRef.current, state);
+    previousPopulationStateRef.current = state;
+    if (incoming.length > 0) {
+      setPopulationEvents((existing) => appendPopulationEvents(existing, incoming));
+    }
+  }, [state]);
 
   useEffect(() => {
     const interval = window.setInterval(() => setPresentationNowMs(Date.now()), 100);
@@ -97,7 +114,12 @@ export function App() {
       style={PALETTE_CSS_VARIABLES as CSSProperties}
     >
       <h1 className="visually-hidden">Feudal Lord Simulator</h1>
-      <GameCanvas selectedTool={selectedTool} overlayMode={overlayMode} />
+      <GameCanvas
+        selectedTool={selectedTool}
+        overlayMode={overlayMode}
+        highlightedHouseIds={highlightedHouseIds}
+      />
+      <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
       <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
       {welcomeVisible ? <WelcomeParchment onDismiss={() => setWelcomeVisible(false)} /> : null}
       <aside className="court-console" aria-label="Court console">

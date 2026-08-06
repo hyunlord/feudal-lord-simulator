@@ -2,6 +2,7 @@ import { PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import {
   distributionReachTiles,
+  highlightedHouseTiles,
   selectedBuildingRoadComponent,
 } from "../ui/diagnosticOverlayModel";
 import type { TileCoordinate } from "../world/grid";
@@ -51,4 +52,10 @@ export function drawSelectedRoadComponent(input: DiagnosticOverlayInput): void {
     selectedBuildingRoadComponent(input.state, input.selectedBuildingId),
     PALETTE.ultramarine,
   );
+}
+
+export function drawHighlightedHouses(
+  input: DiagnosticOverlayInput & { readonly houseIds: readonly string[] },
+): void {
+  drawTiles(input.context, highlightedHouseTiles(input.state, input.houseIds), PALETTE.vermilion);
 }

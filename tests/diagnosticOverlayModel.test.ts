@@ -5,6 +5,7 @@ import type { Building } from "../src/economy/economy.types";
 import type { GameState } from "../src/engine/engine.types";
 import {
   distributionReachTiles,
+  highlightedHouseTiles,
   selectedBuildingRoadComponent,
 } from "../src/ui/diagnosticOverlayModel";
 
@@ -74,6 +75,12 @@ test("distribution reach is an exact bounded multi-source road BFS", () => {
   assert.equal(reached.has("41,2"), true); // 40
   assert.equal(reached.has("42,2"), false); // 41
   assert.equal(reached.has("43,4"), false); // disconnected
+});
+
+test("population event highlight includes only the involved house footprints", () => {
+  const state = roadWorld();
+  assert.deepEqual(keys(highlightedHouseTiles(state, ["connected"])), ["45,1"]);
+  assert.deepEqual(highlightedHouseTiles(state, ["granary", "missing"]), []);
 });
 
 test("selected building overlay returns only its adjacent road component", () => {
