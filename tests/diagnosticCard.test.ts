@@ -61,3 +61,31 @@ test("walker card renders route, mission and cancellation facts", () => {
     assert.match(markup, new RegExp(label));
   }
 });
+
+test("construction site card renders four named rows and a cancel control", () => {
+  const markup = renderToStaticMarkup(createElement(DiagnosticCard, {
+    position: { x: 8, y: 8 },
+    model: {
+      kind: "construction_site",
+      value: {
+        siteId: "construction-site-000001",
+        name: "제재소 부지",
+        currentStall: "no_route",
+        rows: [
+          { label: "부지", value: "4, 7 · 제재소" },
+          { label: "자재 확보", value: "목재 12/30 확보 · 예약 8" },
+          { label: "자재 배달", value: "목재 10 남음 · 정체 no_route" },
+          { label: "건축 작업", value: "120/600틱 · 일꾼 2명" },
+        ],
+      },
+    },
+  }));
+
+  assert.match(markup, /aria-label="제재소 부지 건설 진단"/);
+  for (const label of ["부지", "자재 확보", "자재 배달", "건축 작업"]) {
+    assert.match(markup, new RegExp(`<dt>${label}</dt>`));
+  }
+  assert.match(markup, /정체 no_route/);
+  assert.match(markup, /data-action="cancel-construction"/);
+  assert.match(markup, /공사 포기/);
+});

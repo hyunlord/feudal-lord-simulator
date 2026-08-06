@@ -177,6 +177,24 @@ button {
   margin: 0;
 }
 
+.diagnostic-card-cancel {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 4px 9px;
+  color: var(--palette-ink);
+  cursor: pointer;
+  background-color: var(--palette-parchment-dark);
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(5% 10%, 96% 0, 100% 85%, 8% 100%, 0 24%);
+}
+
+.diagnostic-card-cancel:hover,
+.diagnostic-card-cancel:focus-visible {
+  color: var(--palette-vermilion);
+  outline: 1px solid var(--palette-gold);
+  outline-offset: 1px;
+}
+
 .diagnostic-card h2 {
   color: var(--palette-vermilion);
   font-size: 17px;

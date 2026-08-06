@@ -10,6 +10,7 @@ import { DiagnosticCard, type DiagnosticCardModel } from "./DiagnosticCard";
 import type { AnchoredWorldSelection } from "./worldSelection";
 import { houseDiagnosisModel } from "../ui/houseDiagnosisModel";
 import { walkerDiagnosisModel } from "../ui/walkerDiagnosisModel";
+import { constructionSiteCardModel } from "../ui/constructionSiteCardModel";
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
@@ -46,7 +47,15 @@ export function GameCanvas({
   } else if (selection?.kind === "walker") {
     const value = walkerDiagnosisModel(state, selection.walkerId);
     if (value !== null) cardModel = { kind: "walker", value };
+  } else if (selection?.kind === "construction_site") {
+    const site = state.constructionSites.find((candidate) => candidate.id === selection.siteId);
+    if (site !== undefined) cardModel = { kind: "construction_site", value: constructionSiteCardModel(site) };
   }
+
+  const cancelConstruction = (siteId: string) => {
+    dispatch({ type: "cancel_construction", siteId });
+    setSelection(null);
+  };
 
   return (
     <>
@@ -57,7 +66,11 @@ export function GameCanvas({
       />
       <BuildingInspector state={state} hover={selection === null ? hoveredBuilding : null} />
       {selection !== null && cardModel !== null ? (
-        <DiagnosticCard model={cardModel} position={selection.position} />
+        <DiagnosticCard
+          model={cardModel}
+          onCancelConstruction={cancelConstruction}
+          position={selection.position}
+        />
       ) : null}
     </>
   );

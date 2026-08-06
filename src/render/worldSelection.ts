@@ -5,14 +5,15 @@ import { walkerVisualAnchor } from "./walkerAnchor";
 
 export type WorldSelection =
   | { readonly kind: "building"; readonly buildingId: string }
-  | { readonly kind: "walker"; readonly walkerId: string };
+  | { readonly kind: "walker"; readonly walkerId: string }
+  | { readonly kind: "construction_site"; readonly siteId: string };
 
 export type AnchoredWorldSelection = WorldSelection & {
   readonly position: { readonly x: number; readonly y: number };
 };
 
 export function selectWorldAtTile(
-  state: Pick<GameState, "buildings" | "tiles" | "width" | "height" | "walkers">,
+  state: Pick<GameState, "buildings" | "constructionSites" | "tiles" | "width" | "height" | "walkers">,
   tile: TileCoordinate,
 ): WorldSelection | null {
   const walker = [...state.walkers]
@@ -27,6 +28,8 @@ export function selectWorldAtTile(
 
   const buildingId = getTile(state, tile)?.buildingId ?? null;
   if (buildingId === null) return null;
+  const site = state.constructionSites.find((candidate) => candidate.id === buildingId);
+  if (site !== undefined) return { kind: "construction_site", siteId: site.id };
   return state.buildings.some((building) => building.id === buildingId)
     ? { kind: "building", buildingId }
     : null;

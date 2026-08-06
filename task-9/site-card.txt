@@ -1,0 +1,34 @@
+Task 9 site card evidence
+
+HEAD before Todo9 work:
+742055e229c851d7c68c7f8c1ae8d649d923ddd1
+
+Implemented surface:
+- world selection adds construction_site while preserving walker priority.
+- pure constructionSiteCardModel emits four separate rows labeled exactly:
+  부지, 자재 확보, 자재 배달, 건축 작업.
+- diagnostic card renders construction-site rows and 공사 포기 control.
+- contextmenu preventDefault path resolves pointed construction site independent of armed placement tool, dispatches cancel_construction, and clears stale selection.
+- useGameCanvasRuntime final size: 250 physical lines, 242 pure LOC.
+
+Focused verification:
+npx tsx --test tests/worldSelection.test.ts tests/constructionSiteCardModel.test.ts tests/canvasContextMenuResolution.test.ts tests/diagnosticCard.test.ts
+Result: 15 tests passed, 0 failed.
+
+Diagnostics:
+mcp__lsp.diagnostics on Todo9 files
+Result: TypeScript LSP server is not installed; user previously declined installation, so LSP diagnostics unavailable.
+
+Typecheck/build blockers outside Todo9:
+npm run typecheck
+Result: blocked by Todo8/shared worktree file tests/constructionRenderCache.test.ts:94:1 TS1005 ')' expected.
+
+npm run build
+Result: blocked by the same tests/constructionRenderCache.test.ts syntax error before Vite build.
+
+Additional narrow TypeScript check:
+npx tsc --noEmit --ignoreConfig ... Todo9 file list
+Result: reached Todo8-owned src/render/drawConstructionSites.ts:53:26 exhaustive-switch error through the render import graph.
+
+Shared ownership guard:
+No Todo8-owned renderer/order/cache/draw files were edited by Todo9.

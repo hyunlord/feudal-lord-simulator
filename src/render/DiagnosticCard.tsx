@@ -2,6 +2,7 @@ import type { ReactElement } from "react";
 
 import type { HouseDiagnosisModel } from "../ui/houseDiagnosisModel";
 import type { WalkerDiagnosisModel } from "../ui/walkerDiagnosisModel";
+import type { ConstructionSiteCardModel } from "../ui/constructionSiteCardModel";
 
 type Size = Readonly<{ width: number; height: number }>;
 type Rect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -9,7 +10,8 @@ type Position = Readonly<{ x: number; y: number }>;
 
 export type DiagnosticCardModel =
   | { readonly kind: "house"; readonly value: HouseDiagnosisModel }
-  | { readonly kind: "walker"; readonly value: WalkerDiagnosisModel };
+  | { readonly kind: "walker"; readonly value: WalkerDiagnosisModel }
+  | { readonly kind: "construction_site"; readonly value: ConstructionSiteCardModel };
 
 function fits(position: Position, viewport: Size, card: Size): boolean {
   return position.x >= 8
@@ -75,17 +77,54 @@ function WalkerCard({ model }: { readonly model: WalkerDiagnosisModel }): ReactE
   );
 }
 
+function ConstructionSiteCard({
+  model,
+  onCancelConstruction,
+}: {
+  readonly model: ConstructionSiteCardModel;
+  readonly onCancelConstruction?: (siteId: string) => void;
+}): ReactElement {
+  return (
+    <aside className="diagnostic-card diagnostic-card--site" aria-label={`${model.name} 건설 진단`}>
+      <h2>{model.name}</h2>
+      <p>정체 {model.currentStall}</p>
+      <dl>
+        {model.rows.map((row) => (
+          <div key={row.label}><dt>{row.label}</dt><dd>{row.value}</dd></div>
+        ))}
+      </dl>
+      <button
+        type="button"
+        className="diagnostic-card-cancel"
+        data-action="cancel-construction"
+        onClick={() => onCancelConstruction?.(model.siteId)}
+      >
+        공사 포기
+      </button>
+    </aside>
+  );
+}
+
 export function DiagnosticCard({
   model,
+  onCancelConstruction,
   position,
-}: Readonly<{ model: DiagnosticCardModel; position: Position }>): ReactElement {
+}: Readonly<{
+  model: DiagnosticCardModel;
+  onCancelConstruction?: (siteId: string) => void;
+  position: Position;
+}>): ReactElement {
   const clampedLeft = `min(${position.x}px, calc(100% - min(300px, calc(100% - 16px)) - 8px))`;
 
   return (
     <div className="diagnostic-card-position" style={{ left: clampedLeft, top: position.y }}>
-      {model.kind === "house"
-        ? <HouseCard model={model.value} />
-        : <WalkerCard model={model.value} />}
+      {model.kind === "house" ? <HouseCard model={model.value} /> : null}
+      {model.kind === "walker" ? <WalkerCard model={model.value} /> : null}
+      {model.kind === "construction_site"
+        ? onCancelConstruction === undefined
+          ? <ConstructionSiteCard model={model.value} />
+          : <ConstructionSiteCard model={model.value} onCancelConstruction={onCancelConstruction} />
+        : null}
     </div>
   );
 }

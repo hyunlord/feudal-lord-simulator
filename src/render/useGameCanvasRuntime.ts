@@ -2,22 +2,23 @@ import { useEffect, useRef, type Dispatch, type RefObject, type SetStateAction }
 
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { GameAction } from "../state/gameStore.types";
-import { getTile, type TileCoordinate } from "../world/grid";
+import { getTile } from "../world/grid";
 import type { HoveredBuilding } from "./BuildingInspector";
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
-import { hoveredBuildingPosition, initialCamera, resizeCanvas, type DragState } from "./canvasRuntime";
+import { hoveredBuildingPosition, initialCamera, resizeCanvas } from "./canvasRuntime";
+import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
 import {
   pointerTile,
   releaseTileFromMouseUp,
   worldBounds,
   zoomAtPoint,
 } from "./interactions";
-import type { PlacementFeedback } from "./placementFeedback";
 import type { PlacementTool } from "./renderer";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
 import { preloadWorldAssets } from "./worldAssets";
 import type { AnchoredWorldSelection } from "./worldSelection";
 import { resolveCanvasClick } from "./canvasClickResolution";
+import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
@@ -32,16 +33,6 @@ type GameCanvasRuntimeInput = {
   readonly selection: AnchoredWorldSelection | null;
   readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;
   readonly highlightedHouseIds: readonly string[];
-};
-
-type CanvasMutableRefs = {
-  readonly cameraRef: { current: CameraState };
-  readonly hoverRef: { current: TileCoordinate | null };
-  readonly feedbackRef: { current: PlacementFeedback | null };
-  readonly dragRef: { current: DragState };
-  readonly spacePressed: { current: boolean };
-  readonly suppressClick: { current: boolean };
-  readonly pixelRatioRef: { current: number };
 };
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
@@ -201,6 +192,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.feedbackRef.current = resolution.attempt.feedback;
       if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
     };
+    const contextMenuCanvas = createCanvasContextMenuHandler({
+      canvas, dispatch, refs, selectedToolRef, setSelection, stateRef,
+    });
     const wheel = (event: WheelEvent) => {
       event.preventDefault();
       refs.cameraRef.current = zoomAtPoint({
@@ -244,7 +238,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     resize();
     const disposeEvents = bindGameCanvasEvents({
       canvas,
-      handlers: { resize, keyDown, keyUp, blurWindow, startDrag, movePointer, leaveCanvas, clickCanvas, wheel, finishDrag },
+      handlers: { resize, keyDown, keyUp, blurWindow, startDrag, movePointer, leaveCanvas, clickCanvas, contextMenuCanvas, wheel, finishDrag },
     });
     frameId = requestAnimationFrame(drawFrame);
     return () => {

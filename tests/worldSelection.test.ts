@@ -15,13 +15,14 @@ const STATE = {
     id: "house", kind: "house", tx: 0, ty: 0, workers: 0,
     inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0,
   }],
+  constructionSites: [],
   walkers: [{
     id: "walker", kind: "distributor", homeBuildingId: "granary",
     position: { tx: 0, ty: 0 }, path: [{ tx: 0, ty: 0 }], pathIndex: 0,
     previousTile: null, cargo: null, spawnedTick: 0, phase: "roaming",
     junctionVisits: 0, tilesTravelled: 0, priorTile: null,
   }],
-} as const satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "walkers">;
+} as const satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "constructionSites" | "walkers">;
 
 test("walker hit wins over a building occupying the same tile", () => {
   assert.deepEqual(selectWorldAtTile(STATE, { tx: 0, ty: 0 }), {
@@ -62,7 +63,7 @@ test("building and empty tile clicks select or dismiss deterministically", () =>
   assert.equal(selectWorldAtTile(STATE, { tx: 1, ty: 0 }), null);
 });
 
-test("builder walkers do not open blank walker or phantom building selections", () => {
+test("construction sites are selectable beneath builder walkers", () => {
   // Given
   const builder = {
     id: "builder:construction-site-000001:0",
@@ -81,11 +82,62 @@ test("builder walkers do not open blank walker or phantom building selections", 
     ...STATE,
     tiles: [{ ...STATE.tiles[0], buildingId: "construction-site-000001" }],
     buildings: [],
+    constructionSites: [{
+      id: "construction-site-000001",
+      kind: "sawmill",
+      tx: 0,
+      ty: 0,
+      required: { timber: 30 },
+      delivered: { timber: 12 },
+      reserved: { timber: 8 },
+      builderTicks: 0,
+      requiredBuilderTicks: 600,
+      assignedBuilders: 0,
+      stall: "awaiting_materials",
+      startedTick: 4,
+    }],
     walkers: [builder],
-  } satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "walkers">;
+  } satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "constructionSites" | "walkers">;
 
   // When / Then
-  assert.equal(selectWorldAtTile(constructionTileState, { tx: 0, ty: 0 }), null);
+  assert.deepEqual(selectWorldAtTile(constructionTileState, { tx: 0, ty: 0 }), {
+    kind: "construction_site",
+    siteId: "construction-site-000001",
+  });
+});
+
+test("construction site selection wins over a stale finished building id match", () => {
+  // Given
+  const state = {
+    ...STATE,
+    tiles: [{ ...STATE.tiles[0], buildingId: "construction-site-000001" }],
+    buildings: [{
+      ...STATE.buildings[0],
+      id: "construction-site-000001",
+      kind: "sawmill",
+    }],
+    constructionSites: [{
+      id: "construction-site-000001",
+      kind: "sawmill",
+      tx: 0,
+      ty: 0,
+      required: { timber: 30 },
+      delivered: {},
+      reserved: {},
+      builderTicks: 0,
+      requiredBuilderTicks: 600,
+      assignedBuilders: 0,
+      stall: "no_route",
+      startedTick: 4,
+    }],
+    walkers: [],
+  } satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "constructionSites" | "walkers">;
+
+  // When / Then
+  assert.deepEqual(selectWorldAtTile(state, { tx: 0, ty: 0 }), {
+    kind: "construction_site",
+    siteId: "construction-site-000001",
+  });
 });
 
 test("clicking through a builder can still resolve an underlying finished building", () => {

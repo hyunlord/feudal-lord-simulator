@@ -7,6 +7,7 @@ type GameCanvasEventHandlers = {
   readonly movePointer: (event: MouseEvent) => void;
   readonly leaveCanvas: () => void;
   readonly clickCanvas: (event: MouseEvent) => void;
+  readonly contextMenuCanvas: (event: MouseEvent) => void;
   readonly wheel: (event: WheelEvent) => void;
   readonly finishDrag: (event: MouseEvent) => void;
 };
@@ -26,6 +27,7 @@ export function bindGameCanvasEvents(input: GameCanvasEventsInput): () => void {
   canvas.addEventListener("mousemove", handlers.movePointer);
   canvas.addEventListener("mouseleave", handlers.leaveCanvas);
   canvas.addEventListener("click", handlers.clickCanvas);
+  canvas.addEventListener("contextmenu", handlers.contextMenuCanvas);
   canvas.addEventListener("wheel", handlers.wheel, { passive: false });
   window.addEventListener("mouseup", handlers.finishDrag);
 
@@ -38,6 +40,7 @@ export function bindGameCanvasEvents(input: GameCanvasEventsInput): () => void {
     canvas.removeEventListener("mousemove", handlers.movePointer);
     canvas.removeEventListener("mouseleave", handlers.leaveCanvas);
     canvas.removeEventListener("click", handlers.clickCanvas);
+    canvas.removeEventListener("contextmenu", handlers.contextMenuCanvas);
     canvas.removeEventListener("wheel", handlers.wheel);
     window.removeEventListener("mouseup", handlers.finishDrag);
   };
