@@ -116,6 +116,21 @@ test("placeBuilding immutably appends a deterministic construction site and pres
   assert.equal(getTile(next, { tx: 3, ty: 2 })?.buildingId, "construction-site-000001");
 });
 
+test("gameReducer cancel_construction removes the site and clears occupied tiles", () => {
+  // Given
+  const placed = placeBuilding(DEFAULT_GAME_STATE, "well", { tx: 2, ty: 0 });
+
+  // When
+  const next = gameReducer(placed, {
+    type: "cancel_construction",
+    siteId: "construction-site-000001",
+  });
+
+  // Then
+  assert.deepEqual(next.constructionSites, []);
+  assert.equal(getTile(next, { tx: 2, ty: 0 })?.buildingId, null);
+});
+
 test("placeBuilding returns the original state when placement or timber validation fails", () => {
   // Given
   const occupied = DEFAULT_GAME_STATE;

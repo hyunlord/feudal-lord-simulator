@@ -21,6 +21,10 @@ export type GameAction =
       readonly type: "place_road_line";
       readonly start: TileCoordinate;
       readonly destination: TileCoordinate;
+    }
+  | {
+      readonly type: "cancel_construction";
+      readonly siteId: string;
     };
 
 export interface GameStoreContextValue {

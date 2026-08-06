@@ -2,10 +2,15 @@ import { createContext, createElement, useContext, useMemo, useReducer } from "r
 
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
+import { cancelConstruction } from "../engine/constructionCancellation";
 import { advanceFrame } from "../engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../engine/gameActions";
 import { advanceTick } from "../engine/tick";
 import type { GameState } from "../engine/engine.types";
+import {
+  createDeliveryInventoryPort,
+  createSimulationRoutePorts,
+} from "../engine/simulationPorts";
 import type { House } from "../population/population.types";
 import { buildWorldGrid } from "../world/terrain";
 import type {
@@ -79,6 +84,15 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
     case "place_road_line":
       return placeRoadLine(state, action.start, action.destination);
+    case "cancel_construction": {
+      const routes = createSimulationRoutePorts(state);
+      return cancelConstruction({
+        state,
+        siteId: action.siteId,
+        inventory: createDeliveryInventoryPort(),
+        routes: routes.delivery,
+      }).state;
+    }
     default:
       return assertNever(action);
   }
