@@ -1,25 +1,20 @@
 # Task 10 Red/Green Ledger
 
-## Red Observations
+## Red
 
-- Focused renderer tests initially failed around hard-coded water RGB expectations and context logging that did not capture style state.
-- The first browser proof draft failed with a `Cannot access 'CdpClient' before initialization` reference error.
-- Split middle-button/space pan attempts did not prove deterministic pan-away/pan-back identity; the canvas either did not change or failed to restore exactly.
-- DGX Chromium initially failed under sandbox constraints; the benchmark script now launches owned headless Chrome with `--no-sandbox`.
-- DGX Node 20 did not expose native `WebSocket`; the script supports `WS_MODULE_PATH` and used the existing DGX `ws` module path.
-- Typecheck initially failed because a placement-tool set rejected the renderer-only `"ford"` string; the test now asserts absence through a string set.
-- A residue probe found the owned DGX temp dir and Vite process still present after benchmark capture; cleanup was rerun and verified clean.
+- Stale root task-10 evidence files and obsolete child directories were present before cleanup.
+- The browser hash manifest included references to files that were not part of the final retained evidence set.
 
-## Green Evidence
+## Green
 
-- `green-focused-renderer-tests.log`: `86` tests, `86` pass, `0` fail.
-- `green-full-npm-test.log`: `669` tests, `669` pass, `0` fail.
-- `green-typecheck.log`: `tsc --noEmit` passed.
-- `green-build.log`: production Vite build passed.
-- `green-strict-world-assets.log`: strict asset verifier passed.
-- `local-pan-pixel-proof.json`: pan-away changed the canvas and pan-back restored hash `c7efd475`.
-- `local-browser-benchmark.json`: five local 5x average samples under `12ms`.
-- `dgx-browser-benchmark.json`: five DGX 5x average samples under `12ms`, with zero over-budget frames.
-- `local-vite.stderr.log` and `dgx-vite.stderr.log`: both zero bytes.
-- `residue-scan.log`: local server stopped, no local process match, DGX temp clean.
-- `secret-scan.log`: scoped intended-file scan found no credential patterns.
+- Retained browser evidence is limited to six PNG screenshots, `browser-qa-results.json`, `manualQa.json`, and a refreshed `sha256sum.txt`.
+- Retained DGX evidence is limited to `summary.md`, `manualQa-dgx-132abf.json`, `dgx-browser-benchmark.json`, `benchmark-assertion.json`, `remote-forced-write-tree.txt`, and `remote-cleanup-verify.txt`.
+- Browser QA: PASS with pan hash `882602d7 -> f58ca132 -> 882602d7`, zoom hash `23ef64e7`, responsive hash `840bc9a8`, and zero browser errors.
+- DGX benchmark: PASS with averages `4.936`, `4.792`, `4.785`, `4.732`, `4.698` ms, all under the 12 ms threshold and zero over-budget frames.
+- DGX tree proof: PASS, `remote-forced-write-tree.txt` equals `e717384c92cea821a5530b3925dfba7f0ea7f129`.
+- Regression gates: full `681/681`, typecheck, build, harness, contrast, and assets PASS.
+- Review gate: PASS with no critical/high findings.
+
+## Final State
+
+Task-10 evidence is now a compact final bundle for revision `132abf70edd833cd056557c641551fb5c4f85a0e` and tree `e717384c92cea821a5530b3925dfba7f0ea7f129`.

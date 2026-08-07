@@ -1,0 +1,128 @@
+{
+  "surfaceEvidence": [
+    {
+      "scenarioId": "T10-BROWSER-001",
+      "criterionReference": "Todo10 welcome/dismiss/readable opening scene",
+      "surface": "Headless Chrome via CDP against local Vite",
+      "exactInvocation": "node .omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/run-final-browser-qa.mjs",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "welcome-1280",
+        "dismissed-ford-1280",
+        "browser-results"
+      ]
+    },
+    {
+      "scenarioId": "T10-BROWSER-002",
+      "criterionReference": "Todo10 trusted pan away/back and callback no-reset regression",
+      "surface": "Chrome CDP trusted Input.dispatchKeyEvent and Input.dispatchMouseEvent on canvas",
+      "exactInvocation": "Space keydown + left mouse drag 640,360 -> 760,430; inverse drag 760,430 -> 640,360",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "pan-away-1280",
+        "pan-return-1280",
+        "browser-results"
+      ]
+    },
+    {
+      "scenarioId": "T10-BROWSER-003",
+      "criterionReference": "Todo10 trusted wheel zoom on canvas",
+      "surface": "Chrome CDP trusted mouseWheel on canvas",
+      "exactInvocation": "Input.dispatchMouseEvent type=mouseWheel x=640 y=360 deltaY=-520",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "wheel-zoom-1280",
+        "browser-results"
+      ]
+    },
+    {
+      "scenarioId": "T10-BROWSER-004",
+      "criterionReference": "Todo10 responsive 640x375",
+      "surface": "Headless Chrome viewport 640x375 via CDP",
+      "exactInvocation": "Emulation.setDeviceMetricsOverride width=640 height=375 deviceScaleFactor=1 mobile=false",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "responsive-640",
+        "browser-results"
+      ]
+    }
+  ],
+  "adversarialCases": [
+    {
+      "scenarioId": "T10-ADV-001",
+      "criterionReference": "No runtime/import/resource failures",
+      "adversarialClass": "Runtime diagnostics",
+      "expectedBehavior": "No console errors, window errors, unhandled rejections, or failed resource entries.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "browser-results"
+      ]
+    },
+    {
+      "scenarioId": "T10-ADV-002",
+      "criterionReference": "Callback fix prevents camera reset after inverse pan",
+      "adversarialClass": "Interaction regression",
+      "expectedBehavior": "After right/down pan and inverse drag, stable canvas hash and camera transform match initial dismissed state.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "pan-return-1280",
+        "browser-results"
+      ]
+    },
+    {
+      "scenarioId": "T10-ADV-003",
+      "criterionReference": "Narrow viewport layout",
+      "adversarialClass": "Responsive overflow",
+      "expectedBehavior": "640x375 render has no horizontal overflow and still exposes canvas.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "responsive-640",
+        "browser-results"
+      ]
+    }
+  ],
+  "artifactRefs": [
+    {
+      "id": "welcome-1280",
+      "kind": "screenshot",
+      "description": "Welcome parchment at 1280x720",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/01-welcome-1280x720.png"
+    },
+    {
+      "id": "dismissed-ford-1280",
+      "kind": "screenshot",
+      "description": "Dismissed opening scene including ford at 1280x720",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/02-dismissed-initial-ford-1280x720.png"
+    },
+    {
+      "id": "pan-away-1280",
+      "kind": "screenshot",
+      "description": "Trusted right/down Space-left-drag pan away",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/03-space-drag-right-down-away-1280x720.png"
+    },
+    {
+      "id": "pan-return-1280",
+      "kind": "screenshot",
+      "description": "Trusted inverse Space-left-drag return",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/04-space-drag-inverse-return-1280x720.png"
+    },
+    {
+      "id": "wheel-zoom-1280",
+      "kind": "screenshot",
+      "description": "Trusted wheel zoom-in on canvas",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/05-trusted-wheel-zoom-in-1280x720.png"
+    },
+    {
+      "id": "responsive-640",
+      "kind": "screenshot",
+      "description": "Responsive 640x375 scene",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/06-responsive-640x375.png"
+    },
+    {
+      "id": "browser-results",
+      "kind": "json",
+      "description": "QA hashes, camera transforms, diagnostics, action log",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/browser-qa-results.json"
+    }
+  ]
+}

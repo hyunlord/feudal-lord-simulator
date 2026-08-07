@@ -1,0 +1,408 @@
+{
+  "revision": "132abf70edd833cd056557c641551fb5c4f85a0e",
+  "tree": "e717384c92cea821a5530b3925dfba7f0ea7f129",
+  "startedAt": "2026-08-07T18:32:53.251Z",
+  "endedAt": "2026-08-07T18:33:02.706Z",
+  "baseUrl": "http://127.0.0.1:33412",
+  "viewport1280": {
+    "width": 1280,
+    "height": 720
+  },
+  "welcomeDom": {
+    "title": "Feudal Lord Simulator",
+    "hasWelcome": true,
+    "welcomeText": "영지에 오신 것을 환영합니다왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.마우스 휠로 확대, 드래그로 이동합니다.(아무 곳이나 클릭하여 시작)",
+    "bodyText": "Feudal Lord Simulator\n水\n우물이 필요합니다\n현재 시대\n촌락\n인구\n12/60\n곡창\n0/1\n예배당\n0/1\n목재\n205/250\n\n선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)\n\n목책 시대 선포 준비\n인구 12/60\n숲 옆에 벌목소를 지으세요\n벌목소 도장을 고르고 숲 가장자리를 클릭하세요.\n제재소를 지어 목재를 만드세요\n제재소가 통나무를 목재로 바꿉니다.\nRoyal Demesne\n오두막\n밀밭\n방앗간\n벌목소\n제재소\n창고\n곡창\n우물\n예배당\n길\nRoyal Ledger\n인구 기록\nTimber\n205\nPopulation\n12\nIdle\n0\nWheat\n0\nBread\n0\nLogs\n0\nTick\n0\nSeal\n없음\nOverlays\nWater\nDigit1\nwell radius, dry houses\nLabour\nDigit2\nunderstaffed worksites\nDistribution\nDigit3\ngranary road reach\nRoad component\nDigit4\nselected building network\n영지에 오신 것을 환영합니다\n\n왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.\n\n마우스 휠로 확대, 드래그로 이동합니다.\n\n(아무 곳이나 클릭하여 시작)"
+  },
+  "initial": {
+    "label": "initial after welcome dismiss",
+    "hash": "882602d7",
+    "sha256": "595a864f1c120f4e6f5b02d1a517295e98f75b1fcc966547bd385c88ccb23559",
+    "visiblePixels": 921600,
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "cssWidth": 1280,
+      "cssHeight": 720
+    },
+    "camera": {
+      "zoomX": 0.890625,
+      "zoomY": 0.890625,
+      "panX": 526,
+      "panY": -940.5
+    }
+  },
+  "panAway": {
+    "label": "trusted Space + left drag right/down pan away",
+    "hash": "f58ca132",
+    "sha256": "d6a5aa643f7cc154393fa02df9ce468f9ee6c8a12d6396d9883beb6287e8aaaf",
+    "visiblePixels": 921600,
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "cssWidth": 1280,
+      "cssHeight": 720
+    },
+    "camera": {
+      "zoomX": 0.890625,
+      "zoomY": 0.890625,
+      "panX": 646,
+      "panY": -870.5
+    }
+  },
+  "panBack": {
+    "label": "trusted inverse Space + left drag return",
+    "hash": "882602d7",
+    "sha256": "f2745e8931970ab0bb6495a67ab2885041c936b868118c40ee23fb63c8446f4e",
+    "visiblePixels": 921600,
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "cssWidth": 1280,
+      "cssHeight": 720
+    },
+    "camera": {
+      "zoomX": 0.890625,
+      "zoomY": 0.890625,
+      "panX": 526,
+      "panY": -940.5
+    }
+  },
+  "returned": {
+    "label": "after inverse pan return",
+    "hash": "882602d7",
+    "sha256": "d7e488160fbe4f5f4b1b6188ab2ddd43b2c29534bef251e02aaf6969d0976599",
+    "visiblePixels": 921600,
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "cssWidth": 1280,
+      "cssHeight": 720
+    },
+    "camera": {
+      "zoomX": 0.890625,
+      "zoomY": 0.890625,
+      "panX": 526,
+      "panY": -940.5
+    }
+  },
+  "zoomed": {
+    "label": "after trusted wheel zoom",
+    "hash": "23ef64e7",
+    "sha256": "1c6c67b6a454c999f58ad033afe68e9cd9119d5c2d587d3eadbdc8943a2ade52",
+    "visiblePixels": 921600,
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "cssWidth": 1280,
+      "cssHeight": 720
+    },
+    "camera": {
+      "zoomX": 0.9796875,
+      "zoomY": 0.9796875,
+      "panX": 514.6,
+      "panY": -1070.55
+    }
+  },
+  "responsive": {
+    "label": "responsive 640x375",
+    "hash": "840bc9a8",
+    "sha256": "883726b6ccbe27e4f3bd1fa945ce1b7b6bf7a26bf0166fa299eea61655d50d92",
+    "visiblePixels": 240000,
+    "canvas": {
+      "width": 640,
+      "height": 375,
+      "cssWidth": 640,
+      "cssHeight": 375
+    },
+    "camera": {
+      "zoomX": 0.9796875,
+      "zoomY": 0.9796875,
+      "panX": 514.6,
+      "panY": -1070.55
+    }
+  },
+  "assertions": {
+    "panAwayChanged": true,
+    "panBackReturnedHash": true,
+    "panBackReturnedCamera": true,
+    "zoomChanged": true,
+    "responsiveViewport": true,
+    "noRuntimeErrors": true,
+    "noConsoleErrors": true,
+    "noFailedResources": true,
+    "hasCanvas": true,
+    "noHorizontalOverflowAt640": true
+  },
+  "diagnostics": {
+    "console": [],
+    "errors": [],
+    "unhandled": [],
+    "failedResources": [],
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "url": "http://127.0.0.1:33412/"
+  },
+  "sceneChecks": {
+    "hasCanvas": true,
+    "canvasRect": {
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 375
+    },
+    "bodyWidth": 640,
+    "bodyHeight": 375,
+    "includesFord": false,
+    "includesPalisade": true,
+    "koreanSample": "Feudal Lord Simulator\n水\n우물이 필요합니다\n현재 시대\n촌락\n인구\n12/60\n곡창\n0/1\n예배당\n0/1\n목재\n205/250\n\n선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)\n\n목책 시대 선포 준비\n인구 12/60\n숲 옆에 벌목소를 지으세요\n벌목소 도장을 고르고 숲 가장자리를 클릭하세요.\n제재소를 지어 목재를 만드세요\n제재소가 통나무를 목재로 바꿉니다.\nRoyal Demesne\n오두막\n밀밭\n방앗간\n벌목소\n제재소\n창고\n곡창\n우물\n예배당\n길\nRoyal Ledger\n인구 기록\nTimber\n205\nPopulation\n12\nIdle\n0\nWheat\n0\nBread\n0\nLogs\n0\nTick\n0\nSeal\n없음\nOverlays\nWater\nDigit1\nwell radius, dry houses\nLabour\nDigit2\nunderstaffed worksites\nDistribution\nDigit3\ngranary road reach\nRoad component\nDigit4\nsel",
+    "overflowX": 0
+  },
+  "actions": [
+    {
+      "type": "viewport",
+      "width": 1280,
+      "height": 720,
+      "at": "2026-08-07T18:32:55.248Z"
+    },
+    {
+      "type": "trusted-click",
+      "label": "dismiss welcome by page click",
+      "x": 640,
+      "y": 360,
+      "at": "2026-08-07T18:32:56.632Z"
+    },
+    {
+      "type": "trusted-space-left-drag",
+      "label": "trusted Space + left drag right/down pan away",
+      "fromX": 640,
+      "fromY": 360,
+      "toX": 760,
+      "toY": 430,
+      "at": "2026-08-07T18:32:57.494Z"
+    },
+    {
+      "type": "trusted-space-left-drag",
+      "label": "trusted inverse Space + left drag return",
+      "fromX": 760,
+      "fromY": 430,
+      "toX": 640,
+      "toY": 360,
+      "at": "2026-08-07T18:32:59.180Z"
+    },
+    {
+      "type": "trusted-wheel",
+      "label": "trusted wheel zoom in on canvas",
+      "x": 640,
+      "y": 360,
+      "deltaY": -520,
+      "at": "2026-08-07T18:33:01.084Z"
+    },
+    {
+      "type": "viewport",
+      "width": 640,
+      "height": 375,
+      "at": "2026-08-07T18:33:01.943Z"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "git-status-before-txt",
+      "kind": "text/plain",
+      "description": "git status before QA",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/git-status-before.txt",
+      "bytes": 1699
+    },
+    {
+      "id": "http-root-txt",
+      "kind": "text/plain",
+      "description": "curl-equivalent HTTP root sample",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/http-root.txt",
+      "bytes": 824
+    },
+    {
+      "id": "01-welcome-1280x720-png",
+      "kind": "screenshot",
+      "description": "Welcome parchment before dismissal at 1280x720",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/01-welcome-1280x720.png",
+      "bytes": 672727
+    },
+    {
+      "id": "02-dismissed-initial-ford-1280x720-png",
+      "kind": "screenshot",
+      "description": "Dismissed opening scene with readable ford",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/02-dismissed-initial-ford-1280x720.png",
+      "bytes": 686258
+    },
+    {
+      "id": "03-space-drag-right-down-away-1280x720-png",
+      "kind": "screenshot",
+      "description": "After trusted Space-left-drag right/down",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/03-space-drag-right-down-away-1280x720.png",
+      "bytes": 664829
+    },
+    {
+      "id": "04-space-drag-inverse-return-1280x720-png",
+      "kind": "screenshot",
+      "description": "After inverse Space-left-drag return",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/04-space-drag-inverse-return-1280x720.png",
+      "bytes": 683939
+    },
+    {
+      "id": "05-trusted-wheel-zoom-in-1280x720-png",
+      "kind": "screenshot",
+      "description": "After trusted wheel zoom-in on canvas",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/05-trusted-wheel-zoom-in-1280x720.png",
+      "bytes": 681973
+    },
+    {
+      "id": "06-responsive-640x375-png",
+      "kind": "screenshot",
+      "description": "Responsive 640x375 opening scene",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/06-responsive-640x375.png",
+      "bytes": 108483
+    },
+    {
+      "id": "git-status-after-txt",
+      "kind": "text/plain",
+      "description": "git status after QA",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/git-status-after.txt",
+      "bytes": 1699
+    },
+    {
+      "id": "manualQa-json",
+      "kind": "application/json",
+      "description": "manual QA matrix",
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/manualQa.json",
+      "bytes": 5364
+    }
+  ],
+  "manualQa": {
+    "surfaceEvidence": [
+      {
+        "scenarioId": "T10-BROWSER-001",
+        "criterionReference": "Todo10 welcome/dismiss/readable opening scene",
+        "surface": "Headless Chrome via CDP against local Vite",
+        "exactInvocation": "node .omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/run-final-browser-qa.mjs",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "welcome-1280",
+          "dismissed-ford-1280",
+          "browser-results"
+        ]
+      },
+      {
+        "scenarioId": "T10-BROWSER-002",
+        "criterionReference": "Todo10 trusted pan away/back and callback no-reset regression",
+        "surface": "Chrome CDP trusted Input.dispatchKeyEvent and Input.dispatchMouseEvent on canvas",
+        "exactInvocation": "Space keydown + left mouse drag 640,360 -> 760,430; inverse drag 760,430 -> 640,360",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "pan-away-1280",
+          "pan-return-1280",
+          "browser-results"
+        ]
+      },
+      {
+        "scenarioId": "T10-BROWSER-003",
+        "criterionReference": "Todo10 trusted wheel zoom on canvas",
+        "surface": "Chrome CDP trusted mouseWheel on canvas",
+        "exactInvocation": "Input.dispatchMouseEvent type=mouseWheel x=640 y=360 deltaY=-520",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "wheel-zoom-1280",
+          "browser-results"
+        ]
+      },
+      {
+        "scenarioId": "T10-BROWSER-004",
+        "criterionReference": "Todo10 responsive 640x375",
+        "surface": "Headless Chrome viewport 640x375 via CDP",
+        "exactInvocation": "Emulation.setDeviceMetricsOverride width=640 height=375 deviceScaleFactor=1 mobile=false",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "responsive-640",
+          "browser-results"
+        ]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "scenarioId": "T10-ADV-001",
+        "criterionReference": "No runtime/import/resource failures",
+        "adversarialClass": "Runtime diagnostics",
+        "expectedBehavior": "No console errors, window errors, unhandled rejections, or failed resource entries.",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "browser-results"
+        ]
+      },
+      {
+        "scenarioId": "T10-ADV-002",
+        "criterionReference": "Callback fix prevents camera reset after inverse pan",
+        "adversarialClass": "Interaction regression",
+        "expectedBehavior": "After right/down pan and inverse drag, stable canvas hash and camera transform match initial dismissed state.",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "pan-return-1280",
+          "browser-results"
+        ]
+      },
+      {
+        "scenarioId": "T10-ADV-003",
+        "criterionReference": "Narrow viewport layout",
+        "adversarialClass": "Responsive overflow",
+        "expectedBehavior": "640x375 render has no horizontal overflow and still exposes canvas.",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "responsive-640",
+          "browser-results"
+        ]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "welcome-1280",
+        "kind": "screenshot",
+        "description": "Welcome parchment at 1280x720",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/01-welcome-1280x720.png"
+      },
+      {
+        "id": "dismissed-ford-1280",
+        "kind": "screenshot",
+        "description": "Dismissed opening scene including ford at 1280x720",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/02-dismissed-initial-ford-1280x720.png"
+      },
+      {
+        "id": "pan-away-1280",
+        "kind": "screenshot",
+        "description": "Trusted right/down Space-left-drag pan away",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/03-space-drag-right-down-away-1280x720.png"
+      },
+      {
+        "id": "pan-return-1280",
+        "kind": "screenshot",
+        "description": "Trusted inverse Space-left-drag return",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/04-space-drag-inverse-return-1280x720.png"
+      },
+      {
+        "id": "wheel-zoom-1280",
+        "kind": "screenshot",
+        "description": "Trusted wheel zoom-in on canvas",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/05-trusted-wheel-zoom-in-1280x720.png"
+      },
+      {
+        "id": "responsive-640",
+        "kind": "screenshot",
+        "description": "Responsive 640x375 scene",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/06-responsive-640x375.png"
+      },
+      {
+        "id": "browser-results",
+        "kind": "json",
+        "description": "QA hashes, camera transforms, diagnostics, action log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-browser/browser-qa-results.json"
+      }
+    ]
+  },
+  "verdict": "PASS"
+}

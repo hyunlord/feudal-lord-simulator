@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "revision": "132abf70edd833cd056557c641551fb5c4f85a0e",
+  "hostLabel": "dgx-aitopatom-d6bb",
+  "sampleCount": 5,
+  "averages": [
+    4.936,
+    4.792,
+    4.785,
+    4.732,
+    4.698
+  ],
+  "p95": [
+    5.4,
+    5.2,
+    5.1,
+    4.9,
+    4.9
+  ],
+  "worst": [
+    8.6,
+    8.9,
+    7.9,
+    9.8,
+    8.9
+  ],
+  "maxAverage": 4.936,
+  "overBudgetFrames": 0
+}

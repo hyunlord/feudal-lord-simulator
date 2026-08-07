@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "task": "phase8-presentation-completion/task-10",
+  "verdict": "PASS",
+  "surfaces": [
+    {
+      "id": "T10-BROWSER",
+      "surface": "Headless Chrome via CDP against local Vite",
+      "verdict": "PASS",
+      "evidence": [
+        "final-132abf-browser/browser-qa-results.json",
+        "final-132abf-browser/manualQa.json",
+        "final-132abf-browser/sha256sum.txt"
+      ],
+      "assertions": {
+        "welcomeAndDismissedScene": true,
+        "trustedPanAwayChangedHash": "f58ca132",
+        "trustedPanBackReturnedHash": "882602d7",
+        "trustedWheelZoomHash": "23ef64e7",
+        "responsive640x375Hash": "840bc9a8",
+        "runtimeErrors": 0,
+        "consoleErrors": 0,
+        "failedResources": 0
+      }
+    },
+    {
+      "id": "T10-DGX",
+      "surface": "DGX headless Chromium via CDP against Vite localhost",
+      "verdict": "PASS",
+      "evidence": [
+        "final-132abf-dgx/summary.md",
+        "final-132abf-dgx/manualQa-dgx-132abf.json",
+        "final-132abf-dgx/dgx-browser-benchmark.json",
+        "final-132abf-dgx/benchmark-assertion.json",
+        "final-132abf-dgx/remote-forced-write-tree.txt",
+        "final-132abf-dgx/remote-cleanup-verify.txt"
+      ],
+      "assertions": {
+        "revision": "132abf70edd833cd056557c641551fb5c4f85a0e",
+        "tree": "e717384c92cea821a5530b3925dfba7f0ea7f129",
+        "sampleCount": 5,
+        "averagesMs": [
+          4.936,
+          4.792,
+          4.785,
+          4.732,
+          4.698
+        ],
+        "thresholdMs": 12,
+        "overBudgetFrames": 0,
+        "remoteCleanup": "ABSENT"
+      }
+    }
+  ],
+  "adversarialCases": [
+    {
+      "id": "T10-ADV-REVISION",
+      "risk": "stale benchmark or browser artifact from a different revision",
+      "expected": "all retained browser and DGX JSON identify revision 132abf70edd833cd056557c641551fb5c4f85a0e",
+      "verdict": "PASS"
+    },
+    {
+      "id": "T10-ADV-TREE",
+      "risk": "ignored/generated files contaminate DGX proof",
+      "expected": "forced DGX write-tree equals e717384c92cea821a5530b3925dfba7f0ea7f129",
+      "verdict": "PASS"
+    },
+    {
+      "id": "T10-ADV-RUNTIME",
+      "risk": "browser QA hides runtime failures",
+      "expected": "zero console errors, runtime errors, unhandled rejections, and failed resources",
+      "verdict": "PASS"
+    },
+    {
+      "id": "T10-ADV-CLEANUP",
+      "risk": "owned DGX temporary directory remains after run",
+      "expected": "remote cleanup verification reports ABSENT",
+      "verdict": "PASS"
+    }
+  ]
+}

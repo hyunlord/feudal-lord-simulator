@@ -1,0 +1,543 @@
+{
+  "manualQa": {
+    "surfaceEvidence": [
+      {
+        "scenarioId": "T10-132-DGX-PREFLIGHT",
+        "criterionReference": "DGX reachable without shared ControlMaster",
+        "surface": "DGX shell via ssh -o ControlMaster=no -o ControlPath=none -o BatchMode=yes hyunlord@100.70.109.50",
+        "exactInvocation": "hostname; uname -a; command -v node; node --version; command -v npm; npm --version",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A33",
+          "A31"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-ARCHIVE-TREE",
+        "criterionReference": "Exact committed tree transferred to DGX",
+        "surface": "local git archive + scp + DGX git forced index write-tree",
+        "exactInvocation": "git archive 132abf70edd833cd056557c641551fb5c4f85a0e; scp source.tar; tar -xf; git init; GIT_INDEX_FILE=.git/forced-verify.index git add -A -f .; GIT_INDEX_FILE=.git/forced-verify.index git write-tree",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A23",
+          "A24",
+          "A22",
+          "A37",
+          "A03",
+          "A04"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-NPM-CI",
+        "criterionReference": "Fresh dependency install in exact DGX archive",
+        "surface": "DGX shell in extracted archive",
+        "exactInvocation": "npm ci",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A28"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-HTTP-ROOT",
+        "criterionReference": "Vite dev server served game root on owned loopback port",
+        "surface": "DGX localhost HTTP curl -i",
+        "exactInvocation": "npm run dev -- --host 127.0.0.1 --port 33349; curl -i http://127.0.0.1:33349",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A21",
+          "A20",
+          "A18"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-5X-BENCHMARK",
+        "criterionReference": "Five 5x browser benchmark samples each average under 12ms at exact revision",
+        "surface": "DGX headless Chromium via CDP against Vite localhost",
+        "exactInvocation": "BENCHMARK_REVISION=132abf70edd833cd056557c641551fb5c4f85a0e BENCHMARK_HOST_LABEL=dgx-$(hostname) BENCHMARK_URL=http://127.0.0.1:33349 BENCHMARK_THRESHOLD_MS=12 BENCHMARK_CHROME_PORT=39449 CHROME_PATH=$(cat chrome-path.txt) WS_MODULE_PATH=$(cat ws-path.txt) node scripts/phase8Task10BrowserBenchmark.mjs",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A15",
+          "A10"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-CLEANUP",
+        "criterionReference": "Owned DGX temp/process cleanup",
+        "surface": "DGX shell cleanup verification",
+        "exactInvocation": "REMOTE_DIR=/tmp/phase8-t10-132abf-pluwtd python3 - <guarded shutil.rmtree script>; assert path absent",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A13",
+          "A35",
+          "A12"
+        ]
+      }
+    ],
+    "adversarialCases": [
+      {
+        "scenarioId": "T10-132-DGX-A1",
+        "criterionReference": "Stale revision rejection",
+        "adversarialClass": "benchmark artifact could be from another commit",
+        "expectedBehavior": "benchmark revision equals requested 40-hex HEAD",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A15"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-A2",
+        "criterionReference": "Dirty or ignored file contamination",
+        "adversarialClass": "archive extraction could include ignored/generated files",
+        "expectedBehavior": "forced-index write-tree equals expected committed tree",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A37"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-A3",
+        "criterionReference": "Performance budget boundary",
+        "adversarialClass": "one or more benchmark samples over budget",
+        "expectedBehavior": "five samples, every average <12ms, overBudgetFrames 0",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A10"
+        ]
+      },
+      {
+        "scenarioId": "T10-132-DGX-A4",
+        "criterionReference": "Owned resource cleanup",
+        "adversarialClass": "DGX temp directory remains after run",
+        "expectedBehavior": "owned temp path absent after cleanup",
+        "verdict": "PASS",
+        "artifactRefs": [
+          "A35"
+        ]
+      }
+    ],
+    "artifactRefs": [
+      {
+        "id": "A01",
+        "kind": "file",
+        "description": "archive.sha256.local.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.sha256.local.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A02",
+        "kind": "file",
+        "description": "archive.sha256.local.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.sha256.local.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A03",
+        "kind": "file",
+        "description": "archive.sha256.local.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.sha256.local.stdout.log",
+        "bytes": 273
+      },
+      {
+        "id": "A04",
+        "kind": "file",
+        "description": "archive.sha256.remote",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.sha256.remote",
+        "bytes": 77
+      },
+      {
+        "id": "A05",
+        "kind": "file",
+        "description": "archive.size.local.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.size.local.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A06",
+        "kind": "file",
+        "description": "archive.size.local.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.size.local.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A07",
+        "kind": "file",
+        "description": "archive.size.local.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/archive.size.local.stdout.log",
+        "bytes": 217
+      },
+      {
+        "id": "A08",
+        "kind": "file",
+        "description": "artifact-list.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/artifact-list.txt",
+        "bytes": 614
+      },
+      {
+        "id": "A09",
+        "kind": "file",
+        "description": "artifact-paths.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/artifact-paths.txt",
+        "bytes": 9496
+      },
+      {
+        "id": "A10",
+        "kind": "file",
+        "description": "benchmark-assertion.json",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/benchmark-assertion.json",
+        "bytes": 379
+      },
+      {
+        "id": "A11",
+        "kind": "file",
+        "description": "chrome-path.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/chrome-path.txt",
+        "bytes": 70
+      },
+      {
+        "id": "A12",
+        "kind": "file",
+        "description": "cleanup.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/cleanup.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A13",
+        "kind": "file",
+        "description": "cleanup.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/cleanup.txt",
+        "bytes": 28
+      },
+      {
+        "id": "A14",
+        "kind": "file",
+        "description": "curl-wait.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/curl-wait.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A15",
+        "kind": "file",
+        "description": "dgx-browser-benchmark.json",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/dgx-browser-benchmark.json",
+        "bytes": 2316
+      },
+      {
+        "id": "A16",
+        "kind": "file",
+        "description": "dgx-browser-benchmark.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/dgx-browser-benchmark.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A17",
+        "kind": "file",
+        "description": "dgx-vite.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/dgx-vite.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A18",
+        "kind": "file",
+        "description": "dgx-vite.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/dgx-vite.stdout.log",
+        "bytes": 146
+      },
+      {
+        "id": "A19",
+        "kind": "file",
+        "description": "host.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/host.txt",
+        "bytes": 15
+      },
+      {
+        "id": "A20",
+        "kind": "file",
+        "description": "http-root-i.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/http-root-i.stderr.log",
+        "bytes": 317
+      },
+      {
+        "id": "A21",
+        "kind": "file",
+        "description": "http-root-i.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/http-root-i.txt",
+        "bytes": 1001
+      },
+      {
+        "id": "A22",
+        "kind": "file",
+        "description": "local-forced-write-tree.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/local-forced-write-tree.txt",
+        "bytes": 41
+      },
+      {
+        "id": "A23",
+        "kind": "file",
+        "description": "local-head.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/local-head.txt",
+        "bytes": 41
+      },
+      {
+        "id": "A24",
+        "kind": "file",
+        "description": "local-tree.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/local-tree.txt",
+        "bytes": 41
+      },
+      {
+        "id": "A25",
+        "kind": "file",
+        "description": "manualQa-dgx-132abf.json",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/manualQa-dgx-132abf.json",
+        "bytes": 21704
+      },
+      {
+        "id": "A26",
+        "kind": "file",
+        "description": "node-version.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/node-version.txt",
+        "bytes": 9
+      },
+      {
+        "id": "A27",
+        "kind": "file",
+        "description": "npm-ci.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/npm-ci.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A28",
+        "kind": "file",
+        "description": "npm-ci.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/npm-ci.stdout.log",
+        "bytes": 143
+      },
+      {
+        "id": "A29",
+        "kind": "file",
+        "description": "npm-version.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/npm-version.txt",
+        "bytes": 8
+      },
+      {
+        "id": "A30",
+        "kind": "file",
+        "description": "package-lock-version.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/package-lock-version.txt",
+        "bytes": 2
+      },
+      {
+        "id": "A31",
+        "kind": "file",
+        "description": "preflight.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/preflight.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A32",
+        "kind": "file",
+        "description": "preflight.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/preflight.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A33",
+        "kind": "file",
+        "description": "preflight.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/preflight.stdout.log",
+        "bytes": 193
+      },
+      {
+        "id": "A34",
+        "kind": "file",
+        "description": "remote-cleanup-verify.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-cleanup-verify.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A35",
+        "kind": "file",
+        "description": "remote-cleanup-verify.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-cleanup-verify.txt",
+        "bytes": 7
+      },
+      {
+        "id": "A36",
+        "kind": "file",
+        "description": "remote-dir.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-dir.txt",
+        "bytes": 30
+      },
+      {
+        "id": "A37",
+        "kind": "file",
+        "description": "remote-forced-write-tree.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-forced-write-tree.txt",
+        "bytes": 41
+      },
+      {
+        "id": "A38",
+        "kind": "file",
+        "description": "remote-mktemp.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-mktemp.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A39",
+        "kind": "file",
+        "description": "remote-mktemp.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-mktemp.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A40",
+        "kind": "file",
+        "description": "remote-mktemp.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-mktemp.stdout.log",
+        "bytes": 30
+      },
+      {
+        "id": "A41",
+        "kind": "file",
+        "description": "remote-run.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-run.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A42",
+        "kind": "file",
+        "description": "remote-run.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-run.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A43",
+        "kind": "file",
+        "description": "remote-run.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/remote-run.stdout.log",
+        "bytes": 0
+      },
+      {
+        "id": "A44",
+        "kind": "file",
+        "description": "results-scp.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/results-scp.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A45",
+        "kind": "file",
+        "description": "results-scp.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/results-scp.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A46",
+        "kind": "file",
+        "description": "results-scp.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/results-scp.stdout.log",
+        "bytes": 0
+      },
+      {
+        "id": "A47",
+        "kind": "file",
+        "description": "scp.exit",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/scp.exit",
+        "bytes": 2
+      },
+      {
+        "id": "A48",
+        "kind": "file",
+        "description": "scp.stderr.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/scp.stderr.log",
+        "bytes": 0
+      },
+      {
+        "id": "A49",
+        "kind": "file",
+        "description": "scp.stdout.log",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/scp.stdout.log",
+        "bytes": 0
+      },
+      {
+        "id": "A50",
+        "kind": "file",
+        "description": "started-at.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/started-at.txt",
+        "bytes": 25
+      },
+      {
+        "id": "A51",
+        "kind": "file",
+        "description": "summary.md",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/summary.md",
+        "bytes": 499
+      },
+      {
+        "id": "A52",
+        "kind": "file",
+        "description": "uname.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/uname.txt",
+        "bytes": 134
+      },
+      {
+        "id": "A53",
+        "kind": "file",
+        "description": "vite.pid",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/vite.pid",
+        "bytes": 8
+      },
+      {
+        "id": "A54",
+        "kind": "file",
+        "description": "ws-path.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/ws-path.txt",
+        "bytes": 47
+      },
+      {
+        "id": "A55",
+        "kind": "file",
+        "description": "zero-byte-files.txt",
+        "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-10/final-132abf-dgx/zero-byte-files.txt",
+        "bytes": 2671
+      }
+    ],
+    "result": "PASS"
+  },
+  "summary": {
+    "revision": "132abf70edd833cd056557c641551fb5c4f85a0e",
+    "tree": "e717384c92cea821a5530b3925dfba7f0ea7f129",
+    "host": "aitopatom-d6bb",
+    "assertion": {
+      "pass": true,
+      "revision": "132abf70edd833cd056557c641551fb5c4f85a0e",
+      "hostLabel": "dgx-aitopatom-d6bb",
+      "sampleCount": 5,
+      "averages": [
+        4.936,
+        4.792,
+        4.785,
+        4.732,
+        4.698
+      ],
+      "p95": [
+        5.4,
+        5.2,
+        5.1,
+        4.9,
+        4.9
+      ],
+      "worst": [
+        8.6,
+        8.9,
+        7.9,
+        9.8,
+        8.9
+      ],
+      "maxAverage": 4.936,
+      "overBudgetFrames": 0
+    },
+    "createdAt": "2026-08-08T03:22:31.079443+09:00",
+    "updatedAt": "2026-08-08T03:22:44.149216+09:00"
+  }
+}

@@ -1,59 +1,44 @@
-# Phase 8 Presentation Completion - Task 10 Evidence
+# Task 10 Evidence Summary
 
-## Scope
+Status: PASS
 
-- Completed the renderer/evidence gaps without changing gameplay state or build tools.
-- Preserved the current dirty renderer/test implementation and excluded the unrelated `.omo/evidence/phase8-presentation-completion-gate-review.md` note from intended evidence.
+Scope: Phase 8 presentation completion task-10 evidence for commit `132abf70edd833cd056557c641551fb5c4f85a0e`.
 
-## Renderer Proofs
+## Provenance
 
-- Renderer-only ford landmark:
-  - `src/render/drawStartingLandmarks.ts`
-  - `src/render/objectRenderOrder.ts`
-  - `src/render/objectRenderTypes.ts`
-  - `src/render/drawBuildings.ts`
-- The ford is queued as a `starting_landmark` render item and remains absent from building config, build tools, default building state, and tile occupancy.
-- Tree scale endpoint proof asserts the exact `0.7` to `1.3` Phase 8 range, including both endpoints.
-- Missing tree/stump sprite tests prove visible procedural fallbacks while the strict release verifier still rejects incomplete release assets.
+- Code revision: `132abf70edd833cd056557c641551fb5c4f85a0e`
+- Code tree: `e717384c92cea821a5530b3925dfba7f0ea7f129`
+- Evidence cleanup: retained only `final-132abf-browser/`, `final-132abf-dgx/`, and this root summary set.
 
-## Browser Proofs
+## Browser QA
 
-- Local Vite:
-  - URL: `http://127.0.0.1:3200`
-  - stderr bytes: `0`
-  - pan proof: initial `c7efd475`, away `f93425a2`, restored `c7efd475`, `identity=true`, `awayChanged=true`
-- Local benchmark:
-  - revision: `3e92090e35bc-dirty`
-  - average ms samples: `3.671, 3.882, 3.551, 3.391, 3.442`
-  - render average ms samples: `3.303, 3.502, 3.228, 3.121, 3.160`
-  - worst ms samples: `5.9, 6.3, 6.0, 6.2, 5.9`
+- Verdict: PASS
+- Surface: Headless Chrome via CDP against local Vite.
+- Retained screenshots: six PNGs covering welcome, dismissed opening scene, trusted pan away, trusted inverse pan return, trusted wheel zoom, and 640x375 responsive render.
+- Hash sequence: initial `882602d7`, pan away `f58ca132`, pan return `882602d7`, zoom `23ef64e7`, responsive `840bc9a8`.
+- Diagnostics: zero runtime errors, zero console errors, zero unhandled rejections, zero failed resources.
 
-## DGX Proof
+## DGX QA
 
-- Host: `aitopatom-d6bb`
-- Revision label: `3e92090-dirty`
-- Remote temp: `/tmp/phase8-task10-20260808013358-97499`
-- DGX Vite:
-  - URL: `http://127.0.0.1:33200`
-  - stderr bytes: `0`
-- DGX benchmark average ms samples: `4.958, 4.827, 4.812, 4.686, 4.708`
-- DGX benchmark render average ms samples: `4.663, 4.548, 4.573, 4.473, 4.491`
-- DGX benchmark worst ms samples: `8.8, 8.9, 8.5, 9.2, 8.9`
-- DGX over-budget frames: `0, 0, 0, 0, 0`
-- Cleanup: `remote-temp-clean`
+- Verdict: PASS
+- Host label: `dgx-aitopatom-d6bb`
+- Exact archive/tree proof: `remote-forced-write-tree.txt` equals `e717384c92cea821a5530b3925dfba7f0ea7f129`.
+- Five 5x benchmark averages, ms: `4.936`, `4.792`, `4.785`, `4.732`, `4.698`.
+- Benchmark threshold: 12 ms average.
+- Over-budget frames: 0.
+- Remote cleanup proof: `remote-cleanup-verify.txt` reports `ABSENT`.
 
-## Final Gates
+## Regression Gates
 
-- Focused renderer/asset tests: `86` pass, `0` fail.
-- Full `npm test`: `669` pass, `0` fail.
-- Typecheck: `npm run typecheck` passed.
-- Build: `npm run build` passed.
-- Strict verifier: `World asset release verification passed`.
-- Diff check: no whitespace issues.
-- Secret scan: `41` intended files scanned, `NO_MATCH`.
-- Residue scan: local Vite stopped, local process matches `NO_MATCH`, remote temp clean.
+- Full test suite: PASS, `681/681`.
+- Typecheck: PASS.
+- Build: PASS.
+- Harness: PASS.
+- Contrast/assets gates: PASS.
+- Review: PASS with no critical/high findings.
 
-## Notes
+## Retained Evidence
 
-- LSP diagnostics were unavailable in this session due tool transport closure; `npm run typecheck` (`tsc --noEmit`) was used as the TypeScript diagnostics gate.
-- No production deployment or push was performed.
+- `final-132abf-browser/`: six PNGs, `browser-qa-results.json`, `manualQa.json`, `sha256sum.txt`.
+- `final-132abf-dgx/`: `summary.md`, `manualQa-dgx-132abf.json`, `dgx-browser-benchmark.json`, `benchmark-assertion.json`, `remote-forced-write-tree.txt`, `remote-cleanup-verify.txt`.
+- Root: `summary.md`, `provenance.json`, `manualQa.json`, `code-review.md`, `red-green-ledger.md`.
