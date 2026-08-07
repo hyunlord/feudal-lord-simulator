@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 
 import type { OverlayMode } from "../engine/engine.types";
 import { DEFAULT_PLACEMENT_TOOL } from "./interactions";
@@ -6,6 +6,7 @@ import type { PlacementTool } from "./renderer";
 import { useGameStore } from "../state/gameStore";
 import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
+import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import { DiagnosticCard, type DiagnosticCardModel } from "./DiagnosticCard";
 import type { AnchoredWorldSelection } from "./worldSelection";
 import { houseDiagnosisModel } from "../ui/houseDiagnosisModel";
@@ -19,12 +20,18 @@ type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
   readonly overlayMode?: OverlayMode;
   readonly highlightedHouseIds?: readonly string[];
+  readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>>;
+  readonly onPalisadeDraftCancel?: () => void;
 };
 
 export function GameCanvas({
   selectedTool = DEFAULT_PLACEMENT_TOOL,
   overlayMode = "none",
   highlightedHouseIds = [],
+  palisadeDraft = null,
+  onPalisadeDraftChange,
+  onPalisadeDraftCancel,
 }: GameCanvasProps) {
   const { state, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
@@ -41,6 +48,9 @@ export function GameCanvas({
     selection,
     setSelection,
     highlightedHouseIds,
+    palisadeDraft,
+    onPalisadeDraftChange,
+    onPalisadeDraftCancel,
   });
 
   let cardModel: DiagnosticCardModel | null = null;

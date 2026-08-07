@@ -44,7 +44,7 @@ export function advanceCanvasDrag(input: Readonly<{
     || input.point.x !== drag.lastCanvasPoint.x
     || input.point.y !== drag.lastCanvasPoint.y;
   const nextDrag = { ...drag, lastCanvasPoint: input.point, moved };
-  if (drag.mode === "road") {
+  if (drag.mode === "road" || drag.mode === "palisade") {
     return { drag: nextDrag, camera: input.camera, suppressClick: moved };
   }
   return {

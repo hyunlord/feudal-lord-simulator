@@ -13,7 +13,7 @@ type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight
 type InitialCameraState = Pick<GameState, "width" | "height" | "buildings">;
 
 export type DragState = {
-  readonly mode: "none" | "pan" | "road";
+  readonly mode: "none" | "pan" | "road" | "palisade";
   readonly lastCanvasPoint: Point | null;
   readonly roadStart: { readonly tx: number; readonly ty: number } | null;
   readonly moved: boolean;

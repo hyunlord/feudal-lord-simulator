@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
+import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
+import { initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
@@ -17,6 +19,8 @@ import {
 } from "./ui/onboardingTaskModel";
 import { MapShield } from "./ui/OverlayControls";
 import { SpeedSeals, speedToIntervalMs } from "./ui/SpeedControls";
+import { EraConsole, buildEraConsoleModel } from "./ui/EraConsole";
+import { palisadeFootprintsForState, proposalSummaryForState } from "./ui/eraConsoleModel";
 import { PopulationEventPanel } from "./ui/PopulationEventPanel";
 import {
   appendPopulationEvents,
@@ -39,6 +43,7 @@ export function App() {
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
   const [speed, setSpeed] = useState<GameSpeed>(0);
   const [welcomeVisible, setWelcomeVisible] = useState(true);
+  const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
   const previousPopulationStateRef = useRef(state);
@@ -91,6 +96,7 @@ export function App() {
     const keyDown = (event: KeyboardEvent) => {
       if (event.code === "Escape") {
         event.preventDefault();
+        setPalisadeDraft(null);
         setSelectedTool(null);
         return;
       }
@@ -106,6 +112,21 @@ export function App() {
   const stockTotals = economyStockTotals(state);
   const onboardingView = getOnboardingTaskView(state, onboardingPresentation);
   const highlightedTools = onboardingView.current?.highlightTools ?? [];
+  const eraModel = buildEraConsoleModel({ state, draft: palisadeDraft });
+  const beginPalisadeProposal = () => {
+    const footprints = palisadeFootprintsForState(state);
+    const proposal = proposalSummaryForState(state, footprints);
+    if (!proposal.ok) return;
+    const validation = validatePalisadeCandidate(state, proposal.path, footprints);
+    if (!validation.ok) return;
+    setSelectedTool(null);
+    setPalisadeDraft(initialPalisadeDraft(validation.candidate));
+  };
+  const confirmPalisadeProposal = () => {
+    if (palisadeDraft === null) return;
+    dispatch({ type: "confirm_palisade_proclamation", candidatePath: palisadeDraft.candidate.path });
+    setPalisadeDraft(null);
+  };
 
   return (
     <main
@@ -118,6 +139,9 @@ export function App() {
         selectedTool={selectedTool}
         overlayMode={overlayMode}
         highlightedHouseIds={highlightedHouseIds}
+        palisadeDraft={palisadeDraft}
+        onPalisadeDraftChange={setPalisadeDraft}
+        onPalisadeDraftCancel={() => setPalisadeDraft(null)}
       />
       <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
       <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
@@ -136,6 +160,12 @@ export function App() {
         </div>
         <div className="court-recess ledger-recess">
           <div className="ledger-stack">
+            <EraConsole
+              model={eraModel}
+              onBeginProposal={beginPalisadeProposal}
+              onConfirmProposal={confirmPalisadeProposal}
+              onCancelProposal={() => setPalisadeDraft(null)}
+            />
             <OnboardingTasks view={onboardingView} />
             <CourtLedger
               tick={state.tick}

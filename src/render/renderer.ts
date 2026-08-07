@@ -23,6 +23,8 @@ import {
   constructionCompletionEffectsForFrame,
   drawConstructionCompletionEffects,
 } from "./constructionCompletionEffects";
+import { drawPalisadeRun } from "./drawPalisadeSegments";
+import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -54,6 +56,7 @@ export type RenderFrameInput = {
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
   readonly highlightedHouseIds?: readonly string[];
+  readonly palisadeDraft?: PalisadeDraftState | null;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -121,6 +124,13 @@ export const renderFrame = (input: RenderFrameInput): void => {
     selectedBuildingId: input.selectedBuildingId ?? null,
     houseIds: input.highlightedHouseIds ?? [],
   });
+  if (input.palisadeDraft !== undefined && input.palisadeDraft !== null) {
+    drawPalisadeRun(input.context, {
+      path: input.palisadeDraft.candidate.path,
+      style: "plot",
+      zoom: input.camera.zoom,
+    });
+  }
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   drawOnboardingGuidanceOverlay(input.context, {
     targets: onboardingWorldGuidanceTargets(input.state),

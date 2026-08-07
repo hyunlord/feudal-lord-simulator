@@ -798,6 +798,117 @@ button {
   min-width: 0;
 }
 
+.era-console {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  max-height: 92px;
+  padding: 7px 10px 6px;
+  overflow: hidden;
+  color: var(--palette-ink);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  clip-path: polygon(2% 8%, 97% 0, 100% 88%, 5% 100%, 0 18%);
+}
+
+.era-console__header,
+.era-requirements,
+.era-actions {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  min-width: 0;
+}
+
+.era-console__header {
+  justify-content: space-between;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.era-console__kicker,
+.era-action-reason {
+  color: var(--palette-ink-light);
+}
+
+.era-requirements {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+
+.era-requirement {
+  min-width: 0;
+  padding: 2px 3px;
+  background-color: var(--palette-parchment);
+}
+
+.era-requirement--met {
+  background-color: var(--palette-parchment-dark);
+}
+
+.era-requirement dt,
+.era-requirement dd {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 9px;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.era-requirement dd {
+  color: var(--palette-ink-light);
+}
+
+.era-tooltip,
+.era-proposal,
+.era-draft-status,
+.era-wall-progress,
+.era-diagnostic,
+.era-irrevocable,
+.era-action-reason {
+  margin: 0;
+  overflow: hidden;
+  font-size: 9px;
+  line-height: 1.12;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.era-proposal,
+.era-draft-status,
+.era-wall-progress {
+  color: var(--palette-vermilion);
+}
+
+.era-action {
+  min-width: 0;
+  padding: 2px 6px;
+  color: var(--palette-ink);
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.1;
+  cursor: pointer;
+  background-color: var(--palette-parchment-dark);
+  border: 1px solid var(--palette-ink);
+}
+
+.era-action:disabled {
+  color: var(--palette-ink-light);
+  cursor: default;
+  background-color: var(--palette-parchment);
+}
+
+.era-action--secondary {
+  background-color: var(--palette-vellum);
+}
+
 .ledger-stack .economy-overlays {
   grid-template-columns: auto minmax(0, 1fr);
   gap: 3px;

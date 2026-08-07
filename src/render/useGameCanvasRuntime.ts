@@ -22,6 +22,12 @@ import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
+import {
+  dragDraftRunByTiles,
+  selectDraftRun,
+  type PalisadeDraftState,
+} from "./palisadeDraftInteraction";
+import { palisadeFootprintsForState } from "../ui/eraConsoleModel";
 
 type GameCanvasRuntimeInput = {
   readonly canvasRef: RefObject<HTMLCanvasElement | null>;
@@ -33,6 +39,9 @@ type GameCanvasRuntimeInput = {
   readonly selection: AnchoredWorldSelection | null;
   readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;
   readonly highlightedHouseIds: readonly string[];
+  readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>> | undefined;
+  readonly onPalisadeDraftCancel?: (() => void) | undefined;
 };
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
@@ -46,12 +55,16 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     setHoveredBuilding,
     setSelection,
     state,
+    palisadeDraft = null,
+    onPalisadeDraftChange,
+    onPalisadeDraftCancel,
   } = input;
   const stateRef = useRef(state);
   const selectedToolRef = useRef(selectedTool);
   const overlayModeRef = useRef(overlayMode);
   const selectionRef = useRef(selection);
   const highlightedHouseIdsRef = useRef(highlightedHouseIds);
+  const palisadeDraftRef = useRef(palisadeDraft);
 
   useEffect(() => {
     stateRef.current = state;
@@ -59,7 +72,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     overlayModeRef.current = overlayMode;
     selectionRef.current = selection;
     highlightedHouseIdsRef.current = highlightedHouseIds;
-  }, [highlightedHouseIds, overlayMode, selectedTool, selection, state]);
+    palisadeDraftRef.current = palisadeDraft;
+  }, [highlightedHouseIds, overlayMode, palisadeDraft, selectedTool, selection, state]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -99,6 +113,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         overlayMode: overlayModeRef.current,
         selection: selectionRef.current,
         highlightedHouseIds: highlightedHouseIdsRef.current,
+        palisadeDraft: palisadeDraftRef.current,
       });
       frameId = requestAnimationFrame(drawFrame);
     };
@@ -125,6 +140,17 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const startDrag = (event: MouseEvent) => {
       updateHover(event);
+      if (event.button === 0 && palisadeDraftRef.current !== null && refs.hoverRef.current !== null) {
+        const selectedDraft = selectDraftRun({
+          draft: palisadeDraftRef.current,
+          point: { x: refs.hoverRef.current.tx, y: refs.hoverRef.current.ty },
+        });
+        palisadeDraftRef.current = selectedDraft;
+        onPalisadeDraftChange?.(selectedDraft);
+        refs.dragRef.current = { mode: "palisade", lastCanvasPoint: canvasPoint(event), roadStart: null, moved: false };
+        event.preventDefault();
+        return;
+      }
       const result = beginCanvasDrag({
         button: event.button,
         point: canvasPoint(event),
@@ -137,6 +163,22 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const movePointer = (event: MouseEvent) => {
       updateHover(event);
+      if (
+        refs.dragRef.current.mode === "palisade"
+        && palisadeDraftRef.current !== null
+        && palisadeDraftRef.current.dragStartTile !== null
+        && refs.hoverRef.current !== null
+      ) {
+        const nextDraft = dragDraftRunByTiles({
+          grid: stateRef.current,
+          draft: palisadeDraftRef.current,
+          startTile: palisadeDraftRef.current.dragStartTile,
+          currentTile: refs.hoverRef.current,
+          footprints: palisadeFootprintsForState(stateRef.current),
+        });
+        palisadeDraftRef.current = nextDraft;
+        onPalisadeDraftChange?.(nextDraft);
+      }
       const result = advanceCanvasDrag({
         drag: refs.dragRef.current,
         point: canvasPoint(event),
@@ -167,11 +209,12 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       }, 0);
     };
     const clickCanvas = (event: MouseEvent) => {
+      if (palisadeDraftRef.current !== null) return;
       const bounds = canvas.getBoundingClientRect();
       const resolution = resolveCanvasClick({
         suppressClick: refs.suppressClick.current,
         spacePressed: refs.spacePressed.current,
-        dragMode: refs.dragRef.current.mode,
+        dragMode: refs.dragRef.current.mode === "palisade" ? "none" : refs.dragRef.current.mode,
         hover: refs.hoverRef.current,
         selectedTool: selectedToolRef.current,
         state: stateRef.current,
@@ -217,6 +260,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.cameraRef.current = result.camera;
       refs.spacePressed.current = result.spacePressed;
       if (result.dismissSelection) setSelection(null);
+      if (event.code === "Escape" && palisadeDraftRef.current !== null) {
+        palisadeDraftRef.current = null;
+        onPalisadeDraftCancel?.();
+      }
       if (result.preventDefault) event.preventDefault();
     };
     const keyUp = (event: KeyboardEvent) => {
@@ -246,5 +293,5 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       disposeEvents();
       clearSuppressClickTimeout();
     };
-  }, [canvasRef, dispatch, setHoveredBuilding, setSelection]);
+  }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection]);
 }
