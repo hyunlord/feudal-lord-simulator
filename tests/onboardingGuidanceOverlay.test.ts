@@ -4,6 +4,10 @@ import test from "node:test";
 import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import { drawOnboardingGuidanceOverlay } from "../src/render/onboardingGuidanceOverlay";
 import { withAlpha } from "../src/render/style";
+import {
+  createOnboardingGuidancePlaqueContext,
+  plaqueDrawFrom,
+} from "./helpers/onboardingGuidanceOverlayContext";
 
 test("drawOnboardingGuidanceOverlay paints the Korean road target as a gold parchment isometric marker", () => {
   // Given
@@ -191,6 +195,59 @@ test("drawOnboardingGuidanceOverlay keeps Korean plaques out of the right rail a
   const [, , textX] = fillText.split(/[:,]/);
   assert.ok(Number(rectX) + Number(rectWidth) <= usableRight);
   assert.ok(Number(textX) <= usableRight);
+});
+
+test("drawOnboardingGuidanceOverlay keeps tablet plaque placement stable across high DPR canvas transforms", () => {
+  // Given
+  const dpr1 = createOnboardingGuidancePlaqueContext({
+    canvasClientWidth: 768,
+    canvasClientHeight: 375,
+    transform: { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 },
+  });
+  const dpr2 = createOnboardingGuidancePlaqueContext({
+    canvasClientWidth: 768,
+    canvasClientHeight: 375,
+    canvasPixelWidth: 1_536,
+    canvasPixelHeight: 750,
+    transform: { a: 2, b: 0, c: 0, d: 2, e: 0, f: 0 },
+  });
+  const input = {
+    targets: [{ kind: "logging_camp" as const, label: "여기에 벌목소를 지으세요", origin: { tx: 13, ty: 0 } }],
+    zoom: 1,
+    safeRightInset: 348,
+  };
+
+  // When
+  drawOnboardingGuidanceOverlay(dpr1.context, input);
+  drawOnboardingGuidanceOverlay(dpr2.context, input);
+
+  // Then
+  const dpr1Plaque = plaqueDrawFrom(dpr1.calls);
+  const dpr2Plaque = plaqueDrawFrom(dpr2.calls);
+  assert.deepEqual(dpr2Plaque, dpr1Plaque);
+  assert.deepEqual(dpr2Plaque, { rectX: 302, rectWidth: 118, textX: 307 });
+});
+
+test("drawOnboardingGuidanceOverlay derives the safe inset from an overlapping right rail at high DPR", () => {
+  // Given
+  const { calls, context } = createOnboardingGuidancePlaqueContext({
+    canvasClientWidth: 768,
+    canvasClientHeight: 375,
+    canvasPixelWidth: 1_536,
+    canvasPixelHeight: 750,
+    transform: { a: 2, b: 0, c: 0, d: 2, e: 0, f: 0 },
+    railBounds: { left: 420, top: 0, right: 768, bottom: 375 },
+  });
+
+  // When
+  drawOnboardingGuidanceOverlay(context, {
+    targets: [{ kind: "logging_camp", label: "여기에 벌목소를 지으세요", origin: { tx: 13, ty: 0 } }],
+    zoom: 1,
+  });
+
+  // Then
+  const plaque = plaqueDrawFrom(calls);
+  assert.deepEqual(plaque, { rectX: 302, rectWidth: 118, textX: 307 });
 });
 
 test("drawOnboardingGuidanceOverlay suppresses an unfit mobile plaque without hiding the marker", () => {

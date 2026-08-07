@@ -90,20 +90,31 @@ function drawTargetPlaque(
 }
 
 function plaqueBounds(context: CanvasRenderingContext2D, explicitInset: number | undefined): PlaqueBounds {
-  const canvasWidth = context.canvas?.clientWidth ?? context.canvas?.width ?? Number.POSITIVE_INFINITY;
-  const canvasHeight = context.canvas?.clientHeight ?? context.canvas?.height ?? Number.POSITIVE_INFINITY;
+  const canvas = context.canvas;
+  const canvasWidth = canvas?.clientWidth ?? canvas?.width ?? Number.POSITIVE_INFINITY;
+  const canvasHeight = canvas?.clientHeight ?? canvas?.height ?? Number.POSITIVE_INFINITY;
   const safeScreenRight = Math.max(0, canvasWidth - safeRightInset(context, explicitInset));
   const transform = context.getTransform?.() ?? null;
   if (transform === null || transform.a === 0 || transform.d === 0 || transform.b !== 0 || transform.c !== 0) {
     return { left: 0, top: 0, right: safeScreenRight, bottom: canvasHeight };
   }
 
+  const xPixelScale = canvasPixelScale(canvasWidth, canvas?.width);
+  const yPixelScale = canvasPixelScale(canvasHeight, canvas?.height);
+  const safeCanvasRight = safeScreenRight * xPixelScale;
+  const safeCanvasBottom = canvasHeight * yPixelScale;
+
   return {
     left: (0 - transform.e) / transform.a,
     top: (0 - transform.f) / transform.d,
-    right: (safeScreenRight - transform.e) / transform.a,
-    bottom: (canvasHeight - transform.f) / transform.d,
+    right: (safeCanvasRight - transform.e) / transform.a,
+    bottom: (safeCanvasBottom - transform.f) / transform.d,
   };
+}
+
+function canvasPixelScale(cssSize: number, backingSize: number | undefined): number {
+  if (!Number.isFinite(cssSize) || cssSize <= 0 || backingSize === undefined || backingSize <= 0) return 1;
+  return backingSize / cssSize;
 }
 
 function safeRightInset(context: CanvasRenderingContext2D, explicitInset: number | undefined): number {
