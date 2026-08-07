@@ -53,39 +53,41 @@ export function CourtLedger({
   const timberTotal = stockTotals?.timber ?? timber;
 
   return (
-    <div className="court-ledger" aria-label="Court ledger">
-      <span className="ledger-heading">Royal Ledger</span>
-      {onPopulationDrawerToggle === undefined ? null : (
-        <button
-          className="ledger-population-toggle"
-          type="button"
-          aria-expanded={populationDrawerOpen}
-          aria-controls="population-ledger-drawer"
-          onClick={onPopulationDrawerToggle}
-        >
-          인구 기록
-        </button>
-      )}
+    <>
+      <div className="court-ledger" aria-label="Court ledger">
+        <span className="ledger-heading">Royal Ledger</span>
+        {onPopulationDrawerToggle === undefined ? null : (
+          <button
+            className="ledger-population-toggle"
+            type="button"
+            aria-expanded={populationDrawerOpen}
+            aria-controls="population-ledger-drawer"
+            onClick={onPopulationDrawerToggle}
+          >
+            인구 기록
+          </button>
+        )}
+        <dl>
+          <LedgerRow full="Timber" compact="Tim." value={timberTotal} />
+          {population !== undefined ? <LedgerRow full="Population" compact="Pop." value={population} /> : null}
+          {idleWorkers !== undefined ? <LedgerRow full="Idle" compact="Idle" value={idleWorkers} /> : null}
+          {stockTotals !== undefined ? (
+            <>
+              <LedgerRow full="Wheat" compact="Wh." value={stockTotals.wheat} secondary />
+              <LedgerRow full="Bread" compact="Br." value={stockTotals.bread} secondary />
+              <LedgerRow full="Logs" compact="Log" value={stockTotals.logs} secondary />
+            </>
+          ) : null}
+          <LedgerRow full="Tick" compact="Tck" value={tick} secondary />
+          <dt className="ledger-tool">Seal</dt><dd className="ledger-tool">{selectedName}</dd>
+        </dl>
+      </div>
       {populationDrawerOpen ? (
         <div id="population-ledger-drawer" className="ledger-population-drawer">
           <PopulationEventPanel events={populationEvents} onSelectHouseIds={onSelectPopulationHouseIds} />
         </div>
       ) : null}
-      <dl>
-        <LedgerRow full="Timber" compact="Tim." value={timberTotal} />
-        {population !== undefined ? <LedgerRow full="Population" compact="Pop." value={population} /> : null}
-        {idleWorkers !== undefined ? <LedgerRow full="Idle" compact="Idle" value={idleWorkers} /> : null}
-        {stockTotals !== undefined ? (
-          <>
-            <LedgerRow full="Wheat" compact="Wh." value={stockTotals.wheat} secondary />
-            <LedgerRow full="Bread" compact="Br." value={stockTotals.bread} secondary />
-            <LedgerRow full="Logs" compact="Log" value={stockTotals.logs} secondary />
-          </>
-        ) : null}
-        <LedgerRow full="Tick" compact="Tck" value={tick} secondary />
-        <dt className="ledger-tool">Seal</dt><dd className="ledger-tool">{selectedName}</dd>
-      </dl>
-    </div>
+    </>
   );
 }
 

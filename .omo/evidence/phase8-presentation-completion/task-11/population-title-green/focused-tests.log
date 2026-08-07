@@ -1,0 +1,31 @@
+✔ CourtLedger keeps old call sites and can display the Phase 3 economy totals (4.25675ms)
+✔ CourtLedger exposes compact primary labels and marks secondary rows for narrow consoles (1.015542ms)
+✔ CourtLedger keeps full semantic term names when compact labels are aria-hidden (0.915041ms)
+✔ economy overlay controls expose visible water and labour toggles without camera-key collisions (17.255083ms)
+✔ economy overlay controls expose compact visible labels without changing accessible names (7.464167ms)
+✔ economy overlay controls render inside the right console recess instead of as persistent floating UI (6.64225ms)
+✔ the onboarding task list replaces the distant population objective in the right console (4.185625ms)
+✔ sixty-tick guidance sampling does not schedule state from an effect on every simulation tick (3.785084ms)
+✔ build groups use explicit containers so neighboring buttons cannot intercept clicks (0.507792ms)
+✔ settlement guidance advances population targets and samples priority on a sixty tick cadence (0.13375ms)
+✔ settlement guidance priority follows the exact Phase 4F blocker order (0.155375ms)
+✔ settlement problem glyphs appear only for real water bread labour and storage conditions (0.703333ms)
+✔ water overlay draws well coverage and marks dry houses in vermilion (0.592708ms)
+✔ water coverage uses the same bounded Manhattan radius as well service (0.083292ms)
+✔ labour overlay highlights only buildings below their worker requirement (0.090625ms)
+✔ renderer overlay input is optional so existing renderFrame callers remain source-compatible (0.042375ms)
+✔ economy overlay CSS stays fixed and tokenized (0.87075ms)
+✔ Given 375px console CSS When compact overrides apply Then build seals remain 48px horizontal scroll controls (3.894541ms)
+✔ Given 375px portrait CSS When compact overrides apply Then settlement status clears the court console by eight pixels (0.800917ms)
+✔ Given 640px low-height landscape CSS When responsive overrides apply Then rails do not overlap the court console (0.650417ms)
+✔ Given mobile era rail CSS When content wraps Then the top console does not self-clip actions or guidance text (0.441792ms)
+✔ population panel always renders an intentional empty state (3.4955ms)
+✔ population panel renders newest grouped causes as house-selecting buttons (0.706708ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 348.715042

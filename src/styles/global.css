@@ -937,6 +937,7 @@ button {
 }
 
 .ledger-stack {
+  position: relative;
   display: grid;
   gap: 3px;
   align-self: start;
@@ -1143,7 +1144,7 @@ button {
   isolation: isolate;
 }
 
-.court-ledger .population-event-panel {
+.ledger-population-drawer .population-event-panel {
   position: static;
   width: 100%;
   max-height: min(34vh, 230px);

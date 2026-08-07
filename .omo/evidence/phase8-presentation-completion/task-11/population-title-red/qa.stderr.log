@@ -1,0 +1,9 @@
+file:///Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/phase8Task11MobileLedgerQa.mjs:67
+        throw new Error(`mobile ledger readability failed; see ${resultPath}`);
+              ^
+
+Error: mobile ledger readability failed; see .omo/evidence/phase8-presentation-completion/task-11/population-title-red/browser-ledger-readability.json
+    at main (file:///Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/phase8Task11MobileLedgerQa.mjs:67:15)
+    at async file:///Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/phase8Task11MobileLedgerQa.mjs:21:3
+
+Node.js v25.8.2

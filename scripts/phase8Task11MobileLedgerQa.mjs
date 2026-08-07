@@ -50,13 +50,15 @@ async function main() {
       for (const viewport of VIEWPORTS) {
         scenarios.push(await captureScenario(client, baseUrl, outputDir, viewport));
       }
+      const populationTitleScenario = await capturePopulationTitleScenario(client, baseUrl, outputDir);
 
       const result = {
         schemaVersion: 1,
         invocation: "LEDGER_QA_URL=<url> LEDGER_QA_OUTPUT_DIR=<dir> node scripts/phase8Task11MobileLedgerQa.mjs",
         baseUrl,
         viewports: scenarios,
-        verdict: scenarios.every((scenario) => scenario.pass) ? "PASS" : "FAIL",
+        populationTitleScenario,
+        verdict: [...scenarios, populationTitleScenario].every((scenario) => scenario.pass) ? "PASS" : "FAIL",
       };
       const resultPath = path.join(outputDir, "browser-ledger-readability.json");
       await writeFile(resultPath, `${JSON.stringify(result, null, 2)}\n`);
@@ -81,6 +83,35 @@ async function captureScenario(client, baseUrl, outputDir, viewport) {
   });
   await navigate(client, baseUrl);
   const metrics = await client.evaluate(readabilityExpression(viewport), true);
+  const screenshot = await client.send("Page.captureScreenshot", {
+    format: "png",
+    captureBeyondViewport: false,
+  });
+  const screenshotPath = path.join(outputDir, `${viewport.id}.png`);
+  await writeFile(screenshotPath, screenshot.data, "base64");
+  return {
+    ...metrics,
+    screenshotPath,
+    pass: metrics.failures.length === 0,
+  };
+}
+
+async function capturePopulationTitleScenario(client, baseUrl, outputDir) {
+  const viewport = { id: "desktop-population-title-1280x720", width: 1280, height: 720 };
+  await client.send("Emulation.setDeviceMetricsOverride", {
+    width: viewport.width,
+    height: viewport.height,
+    deviceScaleFactor: 1,
+    mobile: false,
+  });
+  await navigate(client, baseUrl);
+  await client.evaluate(`(() => {
+    const toggle = document.querySelector(".ledger-population-toggle");
+    if (!(toggle instanceof HTMLButtonElement)) throw new Error("population ledger toggle missing");
+    toggle.click();
+  })()`, false);
+  await frames(6);
+  const metrics = await client.evaluate(populationTitleExpression(viewport), true);
   const screenshot = await client.send("Page.captureScreenshot", {
     format: "png",
     captureBeyondViewport: false,
@@ -245,6 +276,97 @@ function readabilityExpression(viewport) {
       ledgerTextOverlaps,
       ledgerAccessibleNames,
       visibleSecondaryLedgerRows: secondaryLedgerRows.length,
+      failures,
+    };
+  })()`;
+}
+
+function populationTitleExpression(viewport) {
+  return `(() => {
+    const viewport = ${JSON.stringify(viewport)};
+    const minimumPadding = 4;
+    const failures = [];
+    const rectOf = (element) => {
+      if (element === null) return null;
+      const rect = element.getBoundingClientRect();
+      return {
+        top: Math.round(rect.top * 100) / 100,
+        right: Math.round(rect.right * 100) / 100,
+        bottom: Math.round(rect.bottom * 100) / 100,
+        left: Math.round(rect.left * 100) / 100,
+        width: Math.round(rect.width * 100) / 100,
+        height: Math.round(rect.height * 100) / 100,
+      };
+    };
+    const visible = (element) => {
+      if (element === null) return false;
+      const style = getComputedStyle(element);
+      const rect = element.getBoundingClientRect();
+      return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+    };
+    const insetBy = (outer, inner) => outer === null || inner === null ? null : ({
+      top: Math.round((inner.top - outer.top) * 100) / 100,
+      right: Math.round((outer.right - inner.right) * 100) / 100,
+      bottom: Math.round((outer.bottom - inner.bottom) * 100) / 100,
+      left: Math.round((inner.left - outer.left) * 100) / 100,
+    });
+    const assertInset = (label, inset) => {
+      if (inset === null) {
+        failures.push(label + " missing");
+        return;
+      }
+      for (const side of ["top", "right", "bottom", "left"]) {
+        if (inset[side] < minimumPadding) {
+          failures.push(label + " " + side + " padding " + inset[side] + "px below " + minimumPadding + "px");
+        }
+      }
+    };
+
+    const drawer = document.querySelector("#population-ledger-drawer");
+    const panel = document.querySelector("#population-ledger-drawer .population-event-panel");
+    const title = document.querySelector("#population-ledger-drawer .population-event-panel h2");
+    const consolePanel = document.querySelector(".court-console");
+    const ledger = document.querySelector(".court-ledger");
+    const drawerRect = rectOf(drawer);
+    const panelRect = rectOf(panel);
+    const titleRect = rectOf(title);
+    const consoleRect = rectOf(consolePanel);
+    const ledgerRect = rectOf(ledger);
+    const drawerTitleInset = insetBy(drawerRect, titleRect);
+    const panelTitleInset = insetBy(panelRect, titleRect);
+
+    if (!visible(drawer)) failures.push("population drawer is not visible");
+    if (!visible(panel)) failures.push("population panel is not visible");
+    if (!visible(title)) failures.push("population title is not visible");
+    assertInset("title inside drawer", drawerTitleInset);
+    assertInset("title inside panel", panelTitleInset);
+    if (consoleRect !== null && titleRect !== null && titleRect.bottom > consoleRect.top - minimumPadding) {
+      failures.push("title overlaps court-console seam by " + Math.round((titleRect.bottom - consoleRect.top) * 100) / 100 + "px");
+    }
+    if (ledgerRect !== null && titleRect !== null && titleRect.bottom > ledgerRect.top - minimumPadding) {
+      failures.push("title overlaps ledger seam by " + Math.round((titleRect.bottom - ledgerRect.top) * 100) / 100 + "px");
+    }
+    if (drawerRect !== null && panelRect !== null) {
+      if (panelRect.left < drawerRect.left || panelRect.right > drawerRect.right || panelRect.top < drawerRect.top || panelRect.bottom > drawerRect.bottom) {
+        failures.push("population panel escapes drawer containment");
+      }
+    }
+
+    return {
+      id: viewport.id,
+      viewport,
+      minimumPadding,
+      rects: {
+        console: consoleRect,
+        ledger: ledgerRect,
+        drawer: drawerRect,
+        panel: panelRect,
+        title: titleRect,
+      },
+      insets: {
+        drawerTitle: drawerTitleInset,
+        panelTitle: panelTitleInset,
+      },
       failures,
     };
   })()`;
