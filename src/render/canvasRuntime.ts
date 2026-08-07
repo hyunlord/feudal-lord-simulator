@@ -1,9 +1,9 @@
 import type { GameState } from "../engine/engine.types";
+import { OPENING_VILLAGE_CENTER, STARTING_HOUSE_ID } from "../state/openingVillage";
 import { clampPan, clampZoom, type CameraState, type Point } from "./camera";
 import { worldBounds } from "./interactions";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 
-const STARTING_HOUSE_ID = "house-0-0-0";
 const DESKTOP_CONSOLE_HEIGHT = 150;
 const MOBILE_CONSOLE_HEIGHT = 224;
 const MOBILE_MAX_WIDTH = 600;
@@ -47,7 +47,10 @@ export function cameraForStartingHouse(
   if (house === null) {
     return genericInitialCamera(canvas, state, zoom);
   }
-  const anchor = tileToScreen(house.tx, house.ty);
+  const anchorCoordinate = house.id === STARTING_HOUSE_ID
+    ? OPENING_VILLAGE_CENTER
+    : { tx: house.tx, ty: house.ty };
+  const anchor = tileToScreen(anchorCoordinate.tx, anchorCoordinate.ty);
   const center = usableViewportCenter(canvas);
 
   return {

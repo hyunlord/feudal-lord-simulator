@@ -72,7 +72,6 @@ test("the tuned default-map grant commits both economy chains before starvation"
   let state = DEFAULT_GAME_STATE;
   state = placeRoadLine(state, { tx: 1, ty: 2 }, { tx: 13, ty: 2 });
   state = placeRoadLine(state, { tx: 0, ty: 1 }, { tx: 0, ty: 2 });
-  state = placeBuilding(state, "well", { tx: 6, ty: 0 });
   state = placeBuilding(state, "logging_camp", { tx: 2, ty: 1 });
   state = placeBuilding(state, "sawmill", { tx: 2, ty: 3 });
   state = placeBuilding(state, "storehouse", { tx: 9, ty: 0 });
@@ -89,12 +88,11 @@ test("the tuned default-map grant commits both economy chains before starvation"
 
   assert.deepEqual(
     state.buildings.map(({ kind }) => kind),
-    ["house"],
+    ["house", "house", "house", "house", "well"],
   );
   assert.deepEqual(
     state.constructionSites.map(({ kind }) => kind),
     [
-      "well",
       "logging_camp",
       "sawmill",
       "storehouse",
@@ -111,5 +109,5 @@ test("the tuned default-map grant commits both economy chains before starvation"
     ],
   );
   assert.equal(state.treasuryTimber, 205);
-  assert.equal(placementSpendableResource(state, "timber"), 0);
+  assert.equal(placementSpendableResource(state, "timber"), 10);
 });

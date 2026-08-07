@@ -63,15 +63,15 @@ function tile(
   };
 }
 
-test("firstRoadTargetForOnboarding chooses the deterministic first buildable cardinal tile beside the starting house", () => {
-  // Given: the canonical default house at the map edge has north and west out of bounds.
+test("firstRoadTargetForOnboarding returns null for the authored opening road", () => {
+  // Given: the canonical default village already has a road beside the first house.
   const state = DEFAULT_GAME_STATE;
 
   // When
   const target = firstRoadTargetForOnboarding(state);
 
   // Then
-  assert.deepEqual(target, { tx: 1, ty: 0 });
+  assert.equal(target, null);
   assert.equal(onboardingRoadTargetLabel, "여기에 길을 놓으세요");
 });
 
@@ -134,8 +134,8 @@ test("onboardingWorldGuidanceTargets advances from the road marker to an actuall
 
 test("onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers", () => {
   // Given
-  let state = placeRoadLine(DEFAULT_GAME_STATE, { tx: 1, ty: 0 }, { tx: 1, ty: 0 });
-  const expectedKinds = ["logging_camp", "sawmill", "storehouse", "well"] as const satisfies readonly BuildingKind[];
+  let state = DEFAULT_GAME_STATE;
+  const expectedKinds = ["logging_camp", "sawmill", "storehouse"] as const satisfies readonly BuildingKind[];
 
   for (const kind of expectedKinds) {
     // When
@@ -178,7 +178,7 @@ test("onboardingWorldGuidanceTargets keeps task six buildable when houses are pl
   assert.ok(targets.some((target) => target.kind === "wheat_farm"));
   assert.deepEqual(
     targets.filter((target) => target.kind === "house").map((target) => target.label),
-    ["오두막 1/4", "오두막 2/4", "오두막 3/4", "오두막 4/4"],
+    ["오두막 1/1"],
   );
   assert.equal(hasOverlappingFootprints(targets), false);
 
@@ -186,7 +186,7 @@ test("onboardingWorldGuidanceTargets keeps task six buildable when houses are pl
   for (const kind of ["wheat_farm", "mill", "granary"] as const) {
     settlement = placeGuidedTargets(settlement, [requiredGuidanceTarget(settlement, kind)]);
   }
-  assert.equal(settlement.houses.length, state.houses.length + 4);
+  assert.equal(settlement.houses.length, state.houses.length + 1);
   assert.equal(ONBOARDING_TASKS[5]?.isComplete(settlement), true);
 });
 
@@ -199,7 +199,7 @@ test("onboardingWorldGuidanceTargets marks another buildable house after the foo
 
   // Then
   assert.equal(result.finalTarget.kind, "house");
-  assert.equal(result.finalTarget.label, "오두막 1/4");
+  assert.equal(result.finalTarget.label, "오두막 1/1");
 });
 
 test("onboardingWorldGuidanceTargets guides four new houses together for the population thirty task", () => {
@@ -216,16 +216,16 @@ test("onboardingWorldGuidanceTargets guides four new houses together for the pop
   // Then
   assert.deepEqual(
     targets.map((target) => target.label),
-    ["오두막 1/4", "오두막 2/4", "오두막 3/4", "오두막 4/4"],
+    ["오두막 1/1"],
   );
   assert.deepEqual(
     targets.map((target) => target.kind),
-    ["house", "house", "house", "house"],
+    ["house"],
   );
   assert.equal(hasOverlappingFootprints(targets), false);
 
   const settlement = placeGuidedTargets(state, targets);
-  assert.equal(settlement.houses.length, state.houses.length + 4);
+  assert.equal(settlement.houses.length, state.houses.length + 1);
 });
 
 function stateAfterFoodChain(): GameState {
@@ -256,8 +256,8 @@ function requiredGuidanceTarget(state: GameState, kind: BuildingKind): Onboardin
 }
 
 function stateAtFoodChainTargets(): GameState {
-  let state = placeRoadLine(DEFAULT_GAME_STATE, { tx: 1, ty: 0 }, { tx: 1, ty: 0 });
-  for (const kind of ["logging_camp", "sawmill", "storehouse", "well"] as const) {
+  let state = DEFAULT_GAME_STATE;
+  for (const kind of ["logging_camp", "sawmill", "storehouse"] as const) {
     state = placeGuidedMarkersUntilKind(state, kind).state;
   }
   while (onboardingWorldGuidanceTargets(state)[0]?.kind === "road") {

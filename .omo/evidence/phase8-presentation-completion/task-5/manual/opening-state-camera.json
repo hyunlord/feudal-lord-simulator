@@ -1,0 +1,139 @@
+{
+  "buildings": [
+    {
+      "id": "house-44-40-0",
+      "kind": "house",
+      "tx": 44,
+      "ty": 40
+    },
+    {
+      "id": "house-46-40-0",
+      "kind": "house",
+      "tx": 46,
+      "ty": 40
+    },
+    {
+      "id": "house-44-42-0",
+      "kind": "house",
+      "tx": 44,
+      "ty": 42
+    },
+    {
+      "id": "house-46-42-0",
+      "kind": "house",
+      "tx": 46,
+      "ty": 42
+    },
+    {
+      "id": "well-45-41-0",
+      "kind": "well",
+      "tx": 45,
+      "ty": 41
+    }
+  ],
+  "houses": [
+    {
+      "buildingId": "house-46-40-0",
+      "level": 0,
+      "residents": 3,
+      "hasWater": false,
+      "breadStock": 0,
+      "lastServicedTick": 0,
+      "unmetRequirementTicks": 0
+    },
+    {
+      "buildingId": "house-44-40-0",
+      "level": 0,
+      "residents": 3,
+      "hasWater": false,
+      "breadStock": 0,
+      "lastServicedTick": 0,
+      "unmetRequirementTicks": 0
+    },
+    {
+      "buildingId": "house-44-42-0",
+      "level": 0,
+      "residents": 3,
+      "hasWater": false,
+      "breadStock": 0,
+      "lastServicedTick": 0,
+      "unmetRequirementTicks": 0
+    },
+    {
+      "buildingId": "house-46-42-0",
+      "level": 0,
+      "residents": 3,
+      "hasWater": false,
+      "breadStock": 0,
+      "lastServicedTick": 0,
+      "unmetRequirementTicks": 0
+    }
+  ],
+  "roads": [
+    {
+      "tx": 45,
+      "ty": 41,
+      "terrain": "grass",
+      "buildingId": "well-45-41-0"
+    },
+    {
+      "tx": 46,
+      "ty": 41,
+      "terrain": "grass",
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 41,
+      "terrain": "grass",
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 41,
+      "terrain": "forest",
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 41,
+      "terrain": "forest",
+      "buildingId": null
+    },
+    {
+      "tx": 50,
+      "ty": 41,
+      "terrain": "forest",
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 41,
+      "terrain": "forest",
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 41,
+      "terrain": "forest",
+      "buildingId": null
+    }
+  ],
+  "ford": [
+    {
+      "kind": "ford",
+      "tx": 53,
+      "ty": 41,
+      "label": "나루터"
+    }
+  ],
+  "camera": {
+    "zoom": 0.890625,
+    "panX": 526,
+    "panY": -940.5
+  },
+  "population": 12,
+  "timber": 205,
+  "economyHash": "e25e31c364e626d0",
+  "openingHash": "b96ecf8b914bb99d"
+}

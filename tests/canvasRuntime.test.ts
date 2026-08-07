@@ -85,10 +85,10 @@ test("cameraForStartingHouse keeps the edge starting house visible on mobile", (
   assert.ok(camera.zoom >= 0.5 && camera.zoom <= 2);
 });
 
-test("cameraForStartingHouse prefers house-0-0-0 before another house", () => {
-  // Given: another house appears before the canonical starting house.
+test("cameraForStartingHouse prefers the authored Phase 8 starting house before another house", () => {
+  // Given: another house appears before the authored starting house.
   const firstHouse = houseAt("house-9-9-0", 9, 9);
-  const startingHouse = houseAt("house-0-0-0", 0, 0);
+  const startingHouse = houseAt("house-46-40-0", 46, 40);
 
   // When: the camera is derived.
   const camera = cameraForStartingHouse(
@@ -99,9 +99,10 @@ test("cameraForStartingHouse prefers house-0-0-0 before another house", () => {
       buildings: [firstHouse, startingHouse],
     },
   );
-  const anchor = transformedAnchor(startingHouse, camera);
+  const openingCenter = houseAt("opening-center", 45, 41);
+  const anchor = transformedAnchor(openingCenter, camera);
 
-  // Then: the canonical starting house, not the first house, is centered.
+  // Then: the authored village center, not the first house, is centered.
   assertAlmostEqual(anchor.x, 720);
   assertAlmostEqual(anchor.y, 375);
 });

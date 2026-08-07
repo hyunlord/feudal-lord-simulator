@@ -181,3 +181,29 @@ export function hashEconomyState(state: GameState): string {
   };
   return createHash("sha256").update(JSON.stringify(normalized)).digest("hex").slice(0, 16);
 }
+
+export function hashOpeningState(state: GameState): string {
+  const normalized = {
+    seed: state.seed,
+    width: state.width,
+    height: state.height,
+    population: state.population,
+    treasuryTimber: state.treasuryTimber,
+    buildings: [...state.buildings]
+      .sort((left, right) => left.id.localeCompare(right.id))
+      .map(({ id, kind, tx, ty, workers }) => ({ id, kind, tx, ty, workers })),
+    houses: [...state.houses]
+      .sort((left, right) => left.buildingId.localeCompare(right.buildingId))
+      .map(({ buildingId, level, residents, hasWater }) => ({
+        buildingId,
+        level,
+        residents,
+        hasWater,
+      })),
+    roads: state.tiles
+      .filter((tile) => tile.hasRoad)
+      .map(({ tx, ty }) => ({ tx, ty }))
+      .sort((left, right) => left.ty - right.ty || left.tx - right.tx),
+  };
+  return createHash("sha256").update(JSON.stringify(normalized)).digest("hex").slice(0, 16);
+}
