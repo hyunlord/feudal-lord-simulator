@@ -13,9 +13,11 @@ import { drawPalisadeConstructionSite } from "./drawPalisadeConstructionSites";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel, withAlpha } from "./style";
 export {
+  createConstructionCompletionTracker,
   constructionCompletionEffects,
   constructionCompletionEffectsForFrame,
   drawConstructionCompletionEffects,
+  type ConstructionCompletionTracker,
   type ConstructionCompletionEffect,
 } from "./constructionCompletionEffects";
 

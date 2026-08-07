@@ -21,10 +21,18 @@ type ConstructionCompletionInput = {
 };
 
 const COMPLETION_EFFECT_MS = 200;
-let previousSites: readonly ConstructionSite[] = [];
-let activeCompletionEffects: readonly (Omit<ConstructionCompletionEffect, "ageMs"> & {
+type ActiveCompletionEffect = Omit<ConstructionCompletionEffect, "ageMs"> & {
   readonly startedAtMs: number;
-})[] = [];
+};
+
+export type ConstructionCompletionTracker = {
+  previousSites: readonly ConstructionSite[];
+  activeCompletionEffects: readonly ActiveCompletionEffect[];
+};
+
+export function createConstructionCompletionTracker(): ConstructionCompletionTracker {
+  return { previousSites: [], activeCompletionEffects: [] };
+}
 
 export function constructionCompletionEffects(
   input: ConstructionCompletionInput,
@@ -41,21 +49,22 @@ export function constructionCompletionEffects(
 }
 
 export function constructionCompletionEffectsForFrame(
+  tracker: ConstructionCompletionTracker,
   current: readonly ConstructionSite[],
   nowMs: number,
 ): readonly ConstructionCompletionEffect[] {
   const currentIds = new Set(current.map((site) => site.id));
-  const newEffects = previousSites
+  const newEffects = tracker.previousSites
     .filter((site) => !currentIds.has(site.id))
     .map((site) => {
       const anchor = constructionSiteAnchor(site);
       return { id: site.id, tx: anchor.tx, ty: anchor.ty, startedAtMs: nowMs };
     });
-  previousSites = current;
-  activeCompletionEffects = [...activeCompletionEffects, ...newEffects].filter(
+  tracker.previousSites = current;
+  tracker.activeCompletionEffects = [...tracker.activeCompletionEffects, ...newEffects].filter(
     (effect) => nowMs - effect.startedAtMs < COMPLETION_EFFECT_MS,
   );
-  return activeCompletionEffects.map((effect) => ({
+  return tracker.activeCompletionEffects.map((effect) => ({
     id: effect.id,
     tx: effect.tx,
     ty: effect.ty,

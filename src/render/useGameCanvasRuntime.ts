@@ -15,6 +15,7 @@ import { advancePalisadeDraftDrag, beginPalisadeDraftDrag } from "./canvasPalisa
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
+import { createConstructionCompletionTracker } from "./constructionCompletionEffects";
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
@@ -51,6 +52,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       spacePressed: { current: false },
       suppressClick: { current: false },
       pixelRatioRef: { current: 1 },
+      completionTracker: createConstructionCompletionTracker(),
     };
     let frameId = 0;
     let suppressClickTimeout: number | null = null;
@@ -248,9 +250,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     });
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      cancelAnimationFrame(frameId);
-      disposeEvents();
-      clearSuppressClickTimeout();
+      cancelAnimationFrame(frameId); disposeEvents(); clearSuppressClickTimeout();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection]);
 }

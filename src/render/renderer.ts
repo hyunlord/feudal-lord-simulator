@@ -20,8 +20,10 @@ import { onboardingWorldGuidanceTargets } from "../ui/onboardingWorldGuidance";
 import { drawSelectedWalkerPath } from "./diagnosticPathOverlay";
 import { drawHighlightedHouses } from "./diagnosticOverlays";
 import {
+  createConstructionCompletionTracker,
   constructionCompletionEffectsForFrame,
   drawConstructionCompletionEffects,
+  type ConstructionCompletionTracker,
 } from "./constructionCompletionEffects";
 import { drawPalisadeGateFlourish, drawPalisadeRun } from "./drawPalisadeSegments";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
@@ -60,6 +62,7 @@ export type RenderFrameInput = {
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
+  readonly completionTracker?: ConstructionCompletionTracker;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -76,6 +79,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     includeGroundCover: renderDetailLevel(input.camera.zoom) === "full",
   });
   const constructionEffects = constructionCompletionEffectsForFrame(
+    input.completionTracker ?? createConstructionCompletionTracker(),
     input.state.constructionSites,
     input.nowMs ?? performance.now(),
   );

@@ -8,6 +8,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PlacementTool } from "./renderer";
 import type { AnchoredWorldSelection } from "./worldSelection";
+import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 
 export type CanvasFrameRefs = Readonly<{
   cameraRef: { current: CameraState };
@@ -15,6 +16,7 @@ export type CanvasFrameRefs = Readonly<{
   feedbackRef: { current: PlacementFeedback | null };
   dragRef: { current: DragState };
   pixelRatioRef: { current: number };
+  completionTracker: ConstructionCompletionTracker;
 }>;
 
 export function drawCurrentCanvasFrame(input: Readonly<{
@@ -52,5 +54,6 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     palisadeDraft: input.palisadeDraft ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
+    completionTracker: input.refs.completionTracker,
   });
 }

@@ -1,11 +1,11 @@
 import {
   BUILDING_CONFIG_BY_KIND,
   type Building,
-  type BuildingKind,
 } from "../content/buildingConfig";
 import { BALANCE } from "../content/balanceConfig";
-import type { ResourceType } from "../content/resourceConfig";
-import type { TileCoordinate } from "../geometry/tileGeometry";
+import { RESOURCE_TYPES } from "../content/resourceConfig";
+import type { ConstructionSite } from "../domain/constructionSite";
+import { palisadeConstructionSchedule } from "../domain/palisadeConstructionSchedule";
 export {
   builderWalkersForSites,
   type BuilderLabourWalker,
@@ -16,7 +16,6 @@ import {
   type PalisadeEraLabourDiagnostics,
   type PalisadeEraLabourOptions,
 } from "./eraLabour";
-import { palisadeLabourSiteIsQueued } from "./palisadeLabour";
 
 export interface LabourRequest {
   readonly buildingId: string;
@@ -46,30 +45,7 @@ export type LabourDiagnostics = {
 
 export type ConstructionLabourStall = "awaiting_materials" | "no_builders" | "none";
 
-type ConstructionLabourAmounts = Partial<Record<ResourceType, number>>;
-
-type ConstructionLabourSiteCommon = {
-  readonly id: string;
-  readonly required: ConstructionLabourAmounts;
-  readonly delivered: ConstructionLabourAmounts;
-  readonly assignedBuilders: number;
-  readonly stall: string;
-};
-
-type BuildingConstructionLabourSite = ConstructionLabourSiteCommon & {
-  readonly kind: BuildingKind;
-  readonly tx: number;
-  readonly ty: number;
-};
-
-type PalisadeConstructionLabourSite = ConstructionLabourSiteCommon & {
-  readonly kind: "palisade_segment";
-  readonly anchor: TileCoordinate;
-};
-
-export type ConstructionLabourSite =
-  | BuildingConstructionLabourSite
-  | PalisadeConstructionLabourSite;
+export type ConstructionLabourSite = ConstructionSite;
 
 const wholeNonnegative = (value: number): number =>
   Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
@@ -135,21 +111,9 @@ export function allocateBuildingLabour(
 
 const MAX_BUILDERS_PER_SITE = 3;
 
-function materialAmount(value: unknown): number {
-  return typeof value === "number" && Number.isFinite(value) ? Math.max(0, value) : 0;
-}
-
-function materialAmounts(source: object): ReadonlyMap<string, number> {
-  return new Map(
-    Object.entries(source).map(([resource, amount]) => [resource, materialAmount(amount)]),
-  );
-}
-
 function materialsComplete(site: ConstructionLabourSite): boolean {
-  const delivered = materialAmounts(site.delivered);
-  return Object.entries(site.required).every(
-    ([resource, required]) =>
-      (delivered.get(resource) ?? 0) >= materialAmount(required),
+  return RESOURCE_TYPES.every(
+    (resource) => (site.delivered[resource] ?? 0) >= (site.required[resource] ?? 0),
   );
 }
 
@@ -195,7 +159,7 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   let palisadeAssignedBuilders = 0;
 
   for (const site of [...constructionSites].sort((left, right) => left.id.localeCompare(right.id))) {
-    if (palisadeLabourSiteIsQueued(site, constructionSites)) {
+    if (palisadeConstructionSchedule(site, constructionSites).kind === "queued") {
       allocations.set(site.id, 0);
       continue;
     }

@@ -200,10 +200,30 @@ function pathPointAt(
   const first = points[0];
   const last = points[points.length - 1];
   if (first === undefined || last === undefined) return { x: 0, y: 0 };
-  return {
-    x: first.x + (last.x - first.x) * ratio,
-    y: first.y + (last.y - first.y) * ratio,
-  };
+  const lengths = points.slice(1).map((point, index) => {
+    const previous = points[index] ?? first;
+    return Math.hypot(point.x - previous.x, point.y - previous.y);
+  });
+  const totalLength = lengths.reduce((total, length) => total + length, 0);
+  if (totalLength === 0) return first;
+
+  const target = totalLength * Math.max(0, Math.min(1, ratio));
+  let traversed = 0;
+  for (let index = 0; index < lengths.length; index += 1) {
+    const length = lengths[index];
+    const start = points[index];
+    const end = points[index + 1];
+    if (length === undefined || start === undefined || end === undefined || length === 0) continue;
+    if (target <= traversed + length) {
+      const segmentRatio = (target - traversed) / length;
+      return {
+        x: start.x + (end.x - start.x) * segmentRatio,
+        y: start.y + (end.y - start.y) * segmentRatio,
+      };
+    }
+    traversed += length;
+  }
+  return last;
 }
 
 function strokeColor(style: Exclude<PalisadeRunStyle, "completed">): PaletteColor {

@@ -7,6 +7,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderFrame, type PlacementTool } from "./renderer";
 import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
+import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -26,6 +27,7 @@ type GameCanvasFrameInput = {
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
+  readonly completionTracker: ConstructionCompletionTracker;
 };
 
 export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
@@ -59,6 +61,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     palisadeDraft: input.palisadeDraft ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
+    completionTracker: input.completionTracker,
   });
   input.context.restore();
 }
