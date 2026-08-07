@@ -196,3 +196,20 @@ test("economy harness hash includes carter lifecycle and reservation state", () 
     hashEconomyState({ ...scenario, walkers: [withHomeClaim] }),
   );
 });
+
+test("economy harness hash includes era proclamation state", () => {
+  // Given: two otherwise identical gameplay states split by the Stage 3 era event.
+  const scenario = createEconomyHarnessScenario({ seed: 3 });
+  const proclaimed = {
+    ...scenario,
+    era: "palisade",
+    eraProclaimedTick: 600,
+  } satisfies GameState;
+
+  // When: both states are normalized for the deterministic harness.
+  const hamletHash = hashEconomyState(scenario);
+  const proclaimedHash = hashEconomyState(proclaimed);
+
+  // Then: the gameplay-visible era transition changes the hash.
+  assert.notEqual(proclaimedHash, hamletHash);
+});

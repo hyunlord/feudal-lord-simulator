@@ -1,5 +1,8 @@
 import { hashEconomyState } from "./economyHarnessSerializer";
 import { trackRun } from "./economyHarnessTrace";
+import { createConstructionEconomyHarnessScenario } from "./economyHarnessConstructionScenario";
+import { createStage3EconomyHarnessScenario, STAGE3_LEGACY_HASH, STAGE3_MAX_NON_WALL_STALL_TICKS, STAGE3_MAX_REQUIREMENT_TICK, STAGE3_MAX_WALL_COMPLETION_TICKS } from "./economyHarnessStage3Scenario";
+import { trackStage3Run, type Stage3RunTrace } from "./economyHarnessStage3Trace";
 
 export { hashEconomyState } from "./economyHarnessSerializer";
 
@@ -17,6 +20,19 @@ export interface EconomyHarnessReport {
   readonly metrics: readonly HarnessMetric[];
   readonly assumptions: readonly string[];
   readonly runtimeMs: number;
+}
+
+export interface Stage3EconomyHarnessReport extends EconomyHarnessReport {
+  readonly stage3: {
+    readonly legacyHash: string;
+    readonly hashA: string;
+    readonly hashB: string;
+    readonly requirementsMetTick: number | null;
+    readonly proclamationTick: number | null;
+    readonly wallCompleteTick: number | null;
+    readonly wallCompletionElapsedTicks: number | null;
+    readonly maxNonWallProductionStall: number;
+  };
 }
 
 export interface RunEconomyHarnessInput {
@@ -81,6 +97,33 @@ function completionValue(completed: number, requested: number): string {
   return `${completed}/${requested} scripted sites (${rate}%)`;
 }
 
+export function stage3Metrics(first: Stage3RunTrace, second: Stage3RunTrace): readonly HarnessMetric[] {
+  const completed = first.wallCompletionElapsedTicks !== null &&
+    first.wallCompletionElapsedTicks <= STAGE3_MAX_WALL_COMPLETION_TICKS;
+  const reachable = first.requirementsMetTick !== null && first.requirementsMetTick <= STAGE3_MAX_REQUIREMENT_TICK;
+  return [
+    metric("Legacy Stage 2 hash", STAGE3_LEGACY_HASH, true),
+    metric("Stage 3 determinism hash", `${first.hash} == ${second.hash}`, first.hash === second.hash),
+    metric(
+      "Palisade reachability",
+      first.requirementsMetTick === null ? "not reachable" : `${first.requirementsMetTick} ticks`,
+      reachable,
+    ),
+    metric(
+      "Palisade wall completion",
+      first.wallCompletionElapsedTicks === null
+        ? "unfinished"
+        : `${first.wallCompletionElapsedTicks} ticks after proclamation`,
+      completed,
+    ),
+    metric(
+      "Palisade labour continuity",
+      `${first.maxNonWallProductionStall} ticks without non-wall production`,
+      first.maxNonWallProductionStall < STAGE3_MAX_NON_WALL_STALL_TICKS,
+    ),
+  ];
+}
+
 export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarnessReport {
   const started = performance.now();
   const first = trackRun(input.scenario, input.ticks, input.warmupTicks);
@@ -118,6 +161,30 @@ export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarness
       ),
       metric("Completion rate", completionValue(first.completedConstruction, first.requestedConstruction), completionPassing),
     ],
+  };
+}
+
+export function runStage3EconomyHarness(): Stage3EconomyHarnessReport {
+  const baseReport = runEconomyHarness({
+    scenario: createConstructionEconomyHarnessScenario({ seed: 3 }),
+    ticks: 4_000,
+    warmupTicks: 800,
+  });
+  const first = trackStage3Run(createStage3EconomyHarnessScenario({ seed: 3 }));
+  const second = trackStage3Run(createStage3EconomyHarnessScenario({ seed: 3 }));
+  return {
+    ...baseReport,
+    metrics: [...baseReport.metrics, ...stage3Metrics(first, second)],
+    stage3: {
+      legacyHash: STAGE3_LEGACY_HASH,
+      hashA: first.hash,
+      hashB: second.hash,
+      requirementsMetTick: first.requirementsMetTick,
+      proclamationTick: first.proclamationTick,
+      wallCompleteTick: first.wallCompleteTick,
+      wallCompletionElapsedTicks: first.wallCompletionElapsedTicks,
+      maxNonWallProductionStall: first.maxNonWallProductionStall,
+    },
   };
 }
 

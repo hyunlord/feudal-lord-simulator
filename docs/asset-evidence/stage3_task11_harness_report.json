@@ -1,0 +1,100 @@
+{
+  "task": "stage3_task11_harness",
+  "legacyHash": "5a393f13af3e61be",
+  "baseDeterminism": {
+    "hashA": "87534771560041e7",
+    "hashB": "87534771560041e7"
+  },
+  "stage3": {
+    "legacyHash": "5a393f13af3e61be",
+    "hashA": "b8347aef1a6a5cd6",
+    "hashB": "b8347aef1a6a5cd6",
+    "requirementsMetTick": 0,
+    "proclamationTick": 600,
+    "wallCompleteTick": 1859,
+    "wallCompletionElapsedTicks": 1259,
+    "maxNonWallProductionStall": 0
+  },
+  "metrics": [
+    {
+      "label": "Determinism hash",
+      "value": "87534771560041e7 == 87534771560041e7",
+      "status": "PASS"
+    },
+    {
+      "label": "Food stability",
+      "value": "9.5% starving",
+      "status": "PASS"
+    },
+    {
+      "label": "Cargo thrashing",
+      "value": "0 cancellations/1200",
+      "status": "PASS"
+    },
+    {
+      "label": "Labour deadlock",
+      "value": "0 consecutive ticks",
+      "status": "PASS"
+    },
+    {
+      "label": "Housing oscillation",
+      "value": "1 changes/2000",
+      "status": "PASS"
+    },
+    {
+      "label": "Stall duration",
+      "value": "152 consecutive ticks",
+      "status": "PASS"
+    },
+    {
+      "label": "Builder starvation",
+      "value": "0 consecutive ticks",
+      "status": "PASS"
+    },
+    {
+      "label": "Material deadlock",
+      "value": "0 consecutive ticks",
+      "status": "PASS"
+    },
+    {
+      "label": "Completion rate",
+      "value": "2/2 scripted sites (100%)",
+      "status": "PASS"
+    },
+    {
+      "label": "Legacy Stage 2 hash",
+      "value": "5a393f13af3e61be",
+      "status": "PASS"
+    },
+    {
+      "label": "Stage 3 determinism hash",
+      "value": "b8347aef1a6a5cd6 == b8347aef1a6a5cd6",
+      "status": "PASS"
+    },
+    {
+      "label": "Palisade reachability",
+      "value": "0 ticks",
+      "status": "PASS"
+    },
+    {
+      "label": "Palisade wall completion",
+      "value": "1259 ticks after proclamation",
+      "status": "PASS"
+    },
+    {
+      "label": "Palisade labour continuity",
+      "value": "0 ticks without non-wall production",
+      "status": "PASS"
+    }
+  ],
+  "allMetricsPass": true,
+  "rawHarnessRunSha256": "11ca471e85dffbefeffe0e31b5206ba2748ad6806ff46791df425284cd9e1178",
+  "rawHarnessRunPaths": [
+    "/Users/rexxa/github/feudal-lord-simulator/.omo/evidence/stage3-palisade-age/task-11/harness-run-1.txt",
+    "/Users/rexxa/github/feudal-lord-simulator/.omo/evidence/stage3-palisade-age/task-11/harness-run-2.txt"
+  ],
+  "redEvidence": {
+    "command": "npx tsx --test tests/economyHarness.test.ts",
+    "failure": "era proclamation mutation produced the same hash 6ed711bf7c2d6637 before serializer coverage was added"
+  }
+}

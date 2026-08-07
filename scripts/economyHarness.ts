@@ -1,20 +1,22 @@
 import {
   formatEconomyHarnessReport,
-  runEconomyHarness,
+  runStage3EconomyHarness,
 } from "./economyHarnessMetrics";
-import { createConstructionEconomyHarnessScenario } from "./economyHarnessConstructionScenario";
 
 export { createConstructionEconomyHarnessScenario } from "./economyHarnessConstructionScenario";
 export { createEconomyHarnessScenario } from "./economyHarnessScenario";
+export { createStage3EconomyHarnessScenario } from "./economyHarnessStage3Scenario";
 export {
   formatEconomyHarnessReport,
   hashEconomyState,
   runEconomyHarness,
+  runStage3EconomyHarness,
 } from "./economyHarnessMetrics";
 export type {
   EconomyHarnessReport,
   HarnessMetric,
   RunEconomyHarnessInput,
+  Stage3EconomyHarnessReport,
 } from "./economyHarnessMetrics";
 
 function isCliEntry(): boolean {
@@ -22,10 +24,6 @@ function isCliEntry(): boolean {
 }
 
 if (isCliEntry()) {
-  const report = runEconomyHarness({
-    scenario: createConstructionEconomyHarnessScenario({ seed: 3 }),
-    ticks: 4000,
-    warmupTicks: 800,
-  });
+  const report = runStage3EconomyHarness();
   console.log(formatEconomyHarnessReport(report));
 }

@@ -4,7 +4,7 @@ import type { Walker } from "../src/agents/walker.types";
 import type { Building } from "../src/content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../src/content/resourceConfig";
 import type { ConstructionSite } from "../src/economy/construction";
-import type { GameState } from "../src/engine/engine.types";
+import type { GameState, PalisadeSegment, PalisadeState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
 
 function assertNever(value: never): never {
@@ -96,6 +96,30 @@ function normalizeHouse(house: House) {
   };
 }
 
+function normalizePalisadeSegment(segment: PalisadeSegment) {
+  return {
+    id: segment.id,
+    order: segment.order,
+    edgePath: segment.edgePath,
+    tileCount: segment.tileCount,
+    completed: segment.completed,
+    constructionSiteId: segment.constructionSiteId,
+  };
+}
+
+function normalizePalisade(palisade: PalisadeState | null) {
+  return palisade === null
+    ? null
+    : {
+        id: palisade.id,
+        polygon: palisade.polygon,
+        gate: palisade.gate,
+        segments: [...palisade.segments]
+          .sort((left, right) => left.order - right.order || left.id.localeCompare(right.id))
+          .map(normalizePalisadeSegment),
+      };
+}
+
 function normalizeWalker(walker: Walker) {
   const common = {
     id: walker.id,
@@ -141,6 +165,9 @@ export function hashEconomyState(state: GameState): string {
   const normalized = {
     tick: state.tick,
     wallTick: state.wallTick,
+    era: state.era,
+    eraProclaimedTick: state.eraProclaimedTick,
+    palisade: normalizePalisade(state.palisade),
     nextConstructionOrdinal: state.nextConstructionOrdinal,
     population: state.population,
     idleWorkers: state.idleWorkers,
