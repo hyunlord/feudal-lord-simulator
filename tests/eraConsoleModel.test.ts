@@ -137,7 +137,7 @@ test("era console reports wall progress queued active diagnostic and irreversibl
 
   // When / Then
   assert.equal(model.currentEraLabel, "목책마을");
-  assert.equal(model.wallProgress, "성벽 1/3");
+  assert.equal(model.wallProgress, "성벽 1 / 3 구간");
   assert.match(model.diagnostic ?? "", /활성 구간 2\/3/);
   assert.match(model.diagnostic ?? "", /대기 1구간/);
   assert.match(model.irreversibleNotice ?? "", /선포 후 성벽 구간은 취소할 수 없습니다/);
@@ -152,6 +152,10 @@ test("era console source uses presentation-only draft state and canvas runtime h
   assert.match(appSource, /useState<PalisadeDraftState \| null>\(/);
   assert.match(appSource, /setPalisadeDraft/);
   assert.match(appSource, /type: "confirm_palisade_proclamation"/);
+  assert.match(
+    appSource,
+    /if \(confirmPalisadeProclamation\(state, candidatePath\) === state\) return;/,
+  );
   assert.doesNotMatch(appSource, /palisadeDraft:\s*state/);
   assert.match(runtimeSource, /palisadeDraftRef/);
   assert.match(runtimeSource, /onPalisadeDraftCancel/);

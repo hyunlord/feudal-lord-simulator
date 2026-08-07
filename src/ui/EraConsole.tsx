@@ -185,7 +185,7 @@ function selectedRunLabel(draft: PalisadeDraftState | null): string | null {
 function wallProgress(state: GameState): string | null {
   if (state.palisade === null) return null;
   const completed = state.palisade.segments.filter((segment) => segment.completed).length;
-  return `성벽 ${completed}/${state.palisade.segments.length}`;
+  return `성벽 ${completed} / ${state.palisade.segments.length} 구간`;
 }
 
 function wallDiagnostic(state: GameState): string | null {

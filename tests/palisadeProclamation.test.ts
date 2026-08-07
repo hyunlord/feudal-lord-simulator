@@ -153,6 +153,22 @@ test("Given an eligible hamlet and a 40-step candidate When confirming Then proc
   assert.equal(next.nextConstructionOrdinal, state.nextConstructionOrdinal + 1);
 });
 
+test("Given exactly 250 spendable timber When proclaiming a 600-timber wall Then every site starts and later delivery owns the shortfall", () => {
+  // Given: the published era threshold is met, but the full enclosure is not prepaid.
+  const state = eligibleState({ treasuryTimber: 250 });
+
+  // When
+  const next = proclaim(state);
+
+  // Then: proclamation commits the plan without inventing or immediately spending timber.
+  assert.notEqual(next, state);
+  assert.equal(next.era, "palisade");
+  assert.equal(next.treasuryTimber, 250);
+  assert.equal(next.constructionSites.length, 10);
+  assert.equal(next.constructionSites.reduce((total, site) => total + (site.required.timber ?? 0), 0), 600);
+  assert.equal(next.constructionSites.every((site) => (site.delivered.timber ?? 0) === 0), true);
+});
+
 test("Given perimeter lengths When segmenting Then each site covers at most four steps and partial tails keep exact timber", () => {
   // Given
   const pathWithSteps = (steps: number): PalisadePath => [{ x: 2, y: 2 }, { x: 2 + steps, y: 2 }];
@@ -249,7 +265,7 @@ test("Given invalid or unmet confirmation When reducing Then the exact same stat
   const unmet = eligibleState({ population: 59 });
   const repeated = eligibleState({ era: "palisade" });
   const committed = createConstructionSite({ ordinal: 99, kind: "well", tx: 1, ty: 1, startedTick: 0 });
-  const insufficient = eligibleState({ treasuryTimber: 600, constructionSites: [{ ...committed, required: { timber: 1 }, delivered: {}, reserved: {} }] });
+  const insufficient = eligibleState({ treasuryTimber: 250, constructionSites: [{ ...committed, required: { timber: 1 }, delivered: {}, reserved: {} }] });
 
   // When / Then
   assert.equal(proclaim(valid, invalidPolygon), valid);

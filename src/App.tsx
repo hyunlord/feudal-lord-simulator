@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
+import { confirmPalisadeProclamation } from "./engine/palisade";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
 import { initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
@@ -147,7 +148,9 @@ export function App() {
   };
   const confirmPalisadeProposal = () => {
     if (palisadeDraft === null) return;
-    dispatch({ type: "confirm_palisade_proclamation", candidatePath: palisadeDraft.candidate.path });
+    const candidatePath = palisadeDraft.candidate.path;
+    if (confirmPalisadeProclamation(state, candidatePath) === state) return;
+    dispatch({ type: "confirm_palisade_proclamation", candidatePath });
     setPalisadeDraft(null);
   };
 

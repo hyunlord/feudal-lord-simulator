@@ -3,7 +3,7 @@ import {
   createPalisadeConstructionSite,
   type PalisadeConstructionSite,
 } from "../economy/construction";
-import { canProclaimPalisadeEra, spendableTimberForEraRequirement } from "./era";
+import { canProclaimPalisadeEra } from "./era";
 import type { GameState, PalisadeSegment } from "./engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import {
@@ -232,8 +232,6 @@ export function confirmPalisadeProclamation(
   const wallId = wallIdForOrdinal(state.nextConstructionOrdinal);
   const wallSegments = orderedSegments(validation.candidate.path, gate);
   const sites = createWallSites(wallId, wallSegments, state.tick);
-  const timberRequired = sites.reduce((total, site) => total + (site.required.timber ?? 0), 0);
-  if (spendableTimberForEraRequirement(state) < timberRequired) return state;
 
   return {
     ...state,
