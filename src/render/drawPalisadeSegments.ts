@@ -109,6 +109,7 @@ function drawLine(
     context.lineTo(snapToPixel(point.x), snapToPixel(point.y));
   }
   applyPaletteStroke(context, strokeColor(style), zoom);
+  if (style === "plot") context.lineWidth = 2 / zoom;
   context.stroke();
   context.setLineDash([]);
   context.restore();

@@ -11,7 +11,7 @@ import {
   constructionSiteRenderSignature,
   drawConstructionSite,
 } from "../src/render/drawConstructionSites";
-import { drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
+import { drawPalisadeRun, drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
 
 type LoggedContext = CanvasRenderingContext2D & {
   readonly calls: readonly string[];
@@ -81,6 +81,22 @@ function loggedContext(): LoggedContext {
   };
   return context as unknown as LoggedContext;
 }
+
+test("proposal plot remains visibly distinct at minimum zoom", () => {
+  // Given
+  const context = loggedContext();
+
+  // When
+  drawPalisadeRun(context, {
+    path: [{ x: 1, y: 1 }, { x: 5, y: 1 }],
+    style: "plot",
+    zoom: 0.5,
+  });
+
+  // Then
+  assert.ok(context.calls.includes("setLineDash:8,8"));
+  assert.equal(context.lineWidth, 4);
+});
 
 function site(patch: Partial<BuildingConstructionSite> = {}): BuildingConstructionSite {
   return {
