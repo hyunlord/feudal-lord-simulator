@@ -6,6 +6,16 @@ import {
 import { BALANCE } from "../content/balanceConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import type { TileCoordinate } from "../geometry/tileGeometry";
+export {
+  builderWalkersForSites,
+  type BuilderLabourWalker,
+} from "./builderLabourWalkers";
+import {
+  palisadeEraLabourReservation,
+  palisadeEraLabourWithAssignment,
+  type PalisadeEraLabourDiagnostics,
+  type PalisadeEraLabourOptions,
+} from "./eraLabour";
 import { palisadeLabourSiteIsQueued } from "./palisadeLabour";
 
 export interface LabourRequest {
@@ -27,6 +37,11 @@ export type BuildingAndConstructionLabourResult = {
   readonly buildings: readonly Building[];
   readonly constructionSites: readonly ConstructionLabourSite[];
   readonly idleWorkers: number;
+  readonly diagnostics: LabourDiagnostics;
+};
+
+export type LabourDiagnostics = {
+  readonly palisadeEraLabour: PalisadeEraLabourDiagnostics;
 };
 
 export type ConstructionLabourStall = "awaiting_materials" | "no_builders" | "none";
@@ -55,20 +70,6 @@ type PalisadeConstructionLabourSite = ConstructionLabourSiteCommon & {
 export type ConstructionLabourSite =
   | BuildingConstructionLabourSite
   | PalisadeConstructionLabourSite;
-
-export type BuilderLabourWalker = {
-  readonly id: string;
-  readonly kind: "builder";
-  readonly homeBuildingId: string;
-  readonly siteId: string;
-  readonly slotIndex: number;
-  readonly position: { readonly tx: number; readonly ty: number };
-  readonly path: readonly [];
-  readonly pathIndex: 0;
-  readonly previousTile: null;
-  readonly cargo: null;
-  readonly spawnedTick: 0;
-};
 
 const wholeNonnegative = (value: number): number =>
   Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
@@ -160,52 +161,62 @@ function siteStall(
   return assignedBuilders === 0 ? "no_builders" : "none";
 }
 
-function assertNever(value: never): never {
-  throw new Error(`Unhandled construction labour site variant: ${JSON.stringify(value)}`);
-}
-
-function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordinate {
-  switch (site.kind) {
-    case "palisade_segment":
-      return site.anchor;
-    case "house":
-    case "well":
-    case "storehouse":
-    case "granary":
-    case "chapel":
-    case "wheat_farm":
-    case "mill":
-    case "logging_camp":
-    case "sawmill":
-      return { tx: site.tx, ty: site.ty };
-    default:
-      return assertNever(site);
-  }
-}
-
 export function allocateBuildingAndConstructionLabour<TSite extends ConstructionLabourSite>(
   buildings: readonly Building[],
   constructionSites: readonly TSite[],
   population: number,
+  options?: PalisadeEraLabourOptions,
 ): BuildingAndConstructionLabourResult & {
   readonly constructionSites: readonly (TSite & {
     readonly assignedBuilders: number;
     readonly stall: ConstructionLabourStall | string;
   })[];
 } {
-  const buildingResult = allocateBuildingLabour(buildings, population);
+  const available = availableWorkers(population);
+  const reservation = options === undefined
+    ? palisadeEraLabourReservation({
+        constructionSites,
+        availableWorkers: available,
+        tick: 0,
+        eraProclaimedTick: null,
+      })
+    : palisadeEraLabourReservation({
+        constructionSites,
+        availableWorkers: available,
+        tick: options.tick,
+        eraProclaimedTick: options.eraProclaimedTick,
+      });
+  const buildingResult = allocateBuildingLabour(
+    buildings,
+    Math.max(0, available - reservation.reservedWorkers) / BALANCE.WORKERS_PER_RESIDENT,
+  );
   let remaining = buildingResult.idleWorkers;
   const allocations = new Map<string, number>();
+  let palisadeAssignedBuilders = 0;
 
   for (const site of [...constructionSites].sort((left, right) => left.id.localeCompare(right.id))) {
     if (palisadeLabourSiteIsQueued(site, constructionSites)) {
       allocations.set(site.id, 0);
       continue;
     }
-    const assignedBuilders = Math.min(remaining, MAX_BUILDERS_PER_SITE);
-    remaining -= assignedBuilders;
+    const assignedBuilders = site.id === reservation.activeSiteId
+      ? Math.min(
+          reservation.reservedWorkers,
+          MAX_BUILDERS_PER_SITE,
+          materialsComplete(site) ? Number.POSITIVE_INFINITY : 0,
+        )
+      : Math.min(remaining, MAX_BUILDERS_PER_SITE);
+    if (site.id === reservation.activeSiteId) {
+      palisadeAssignedBuilders = assignedBuilders;
+    } else {
+      remaining -= assignedBuilders;
+    }
     allocations.set(site.id, assignedBuilders);
   }
+  const palisadeEraLabour = palisadeEraLabourWithAssignment(
+    reservation,
+    palisadeAssignedBuilders,
+  );
 
   return {
     buildings: buildingResult.buildings,
@@ -218,36 +229,6 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
       };
     }),
     idleWorkers: remaining,
+    diagnostics: { palisadeEraLabour },
   };
-}
-
-const BUILDER_ANCHORS = [
-  { tx: 0.25, ty: 0.25 },
-  { tx: 0.65, ty: 0.35 },
-  { tx: 0.45, ty: 0.7 },
-] as const;
-
-export function builderWalkersForSites(
-  constructionSites: readonly ConstructionLabourSite[],
-): readonly BuilderLabourWalker[] {
-  return [...constructionSites]
-    .sort((left, right) => left.id.localeCompare(right.id))
-    .flatMap((site) => {
-      const siteAnchor = constructionLabourSiteAnchor(site);
-      return BUILDER_ANCHORS.slice(0, wholeNonnegative(site.assignedBuilders)).map(
-        (anchor, slotIndex): BuilderLabourWalker => ({
-          id: `builder:${site.id}:${slotIndex}`,
-          kind: "builder",
-          homeBuildingId: site.id,
-          siteId: site.id,
-          slotIndex,
-          position: { tx: siteAnchor.tx + anchor.tx, ty: siteAnchor.ty + anchor.ty },
-          path: [],
-          pathIndex: 0,
-          previousTile: null,
-          cargo: null,
-          spawnedTick: 0,
-        }),
-      );
-    });
 }

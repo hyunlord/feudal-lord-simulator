@@ -1,0 +1,15 @@
+{
+  "task": "stage3-task-6-palisade-era-labour",
+  "ticks": 600,
+  "productionDipTicks": 449,
+  "farmProgressTicks": 585,
+  "longestStall": 0,
+  "finalTick": 600,
+  "finalWallBuilders": 0,
+  "assertions": {
+    "productionDip": true,
+    "no120ConsecutiveStall": true
+  },
+  "evidenceDir": "/tmp/feudal-stage3-task-6-evidence",
+  "csv": "/tmp/feudal-stage3-task-6-evidence/task-6-trace.csv"
+}

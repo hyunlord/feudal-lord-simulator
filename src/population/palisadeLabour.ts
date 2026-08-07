@@ -36,7 +36,7 @@ function palisadeLabourSiteComplete(site: PalisadeConstructionLabourSite): boole
   return materialsComplete(site) && site.builderTicks >= site.requiredBuilderTicks;
 }
 
-function activePalisadeLabourSiteId(
+export function activePalisadeLabourSiteId(
   sites: readonly ConstructionLabourSite[],
   wallId: string,
 ): string | null {
