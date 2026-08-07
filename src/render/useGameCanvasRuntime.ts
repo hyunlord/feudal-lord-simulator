@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { getTile } from "../world/grid";
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
-import { hoveredBuildingPosition, initialCamera, resizeCanvas } from "./canvasRuntime";
+import { cameraAfterViewportResize, hoveredBuildingPosition, initialCamera, resizeCanvas } from "./canvasRuntime";
 import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
 import { pointerTile, releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
@@ -54,17 +54,16 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       pixelRatioRef: { current: 1 },
       completionTracker: createConstructionCompletionTracker(),
     };
-    let frameId = 0;
-    let suppressClickTimeout: number | null = null;
+    let frameId = 0, suppressClickTimeout: number | null = null;
+    let userControlledCamera = false;
     const viewport = () => {
-      const bounds = canvas.getBoundingClientRect();
-      return { width: bounds.width, height: bounds.height };
+      const { width, height } = canvas.getBoundingClientRect();
+      return { width, height };
     };
-    const clampCamera = (camera: CameraState): CameraState =>
-      clampPan(camera, viewport(), worldBounds(stateRef.current.width, stateRef.current.height));
+    const clampCamera = (camera: CameraState): CameraState => clampPan(camera, viewport(), worldBounds(stateRef.current.width, stateRef.current.height));
     const resize = () => {
       refs.pixelRatioRef.current = resizeCanvas(canvas, context);
-      refs.cameraRef.current = clampCamera(refs.cameraRef.current);
+      refs.cameraRef.current = cameraAfterViewportResize({ camera: refs.cameraRef.current, canvas, state: stateRef.current, userControlled: userControlledCamera });
     };
     const drawFrame = () => {
       drawCurrentCanvasFrame({
@@ -100,9 +99,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         suppressClickTimeout = null;
       }
     };
-    const resetDrag = () => {
-      refs.dragRef.current = { mode: "none", lastCanvasPoint: null, roadStart: null, moved: false };
-    };
+    const resetDrag = () => { refs.dragRef.current = { mode: "none", lastCanvasPoint: null, roadStart: null, moved: false }; };
     const startDrag = (event: MouseEvent) => {
       updateHover(event);
       const palisadeDrag = beginPalisadeDraftDrag({
@@ -145,6 +142,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         point: canvasPoint(event),
         camera: refs.cameraRef.current,
       });
+      if (refs.dragRef.current.mode === "pan" && result.drag.moved) userControlledCamera = true;
       refs.dragRef.current = result.drag;
       refs.cameraRef.current = clampCamera(result.camera);
       if (result.suppressClick) refs.suppressClick.current = true;
@@ -201,6 +199,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     });
     const wheel = (event: WheelEvent) => {
       event.preventDefault();
+      userControlledCamera = true;
       refs.cameraRef.current = zoomAtPoint({
         camera: refs.cameraRef.current,
         canvasPoint: canvasPoint(event),
@@ -218,6 +217,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         viewport: viewport(),
         world: worldBounds(stateRef.current.width, stateRef.current.height),
       });
+      if (result.camera !== refs.cameraRef.current) userControlledCamera = true;
       refs.cameraRef.current = result.camera;
       refs.spacePressed.current = result.spacePressed;
       if (result.dismissSelection) setSelection(null);

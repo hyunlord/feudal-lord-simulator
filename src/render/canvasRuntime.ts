@@ -1,24 +1,39 @@
 import type { GameState } from "../engine/engine.types";
-import { OPENING_VILLAGE_CENTER, STARTING_HOUSE_ID } from "../state/openingVillage";
+import {
+  OPENING_VILLAGE_CENTER,
+  STARTING_HOUSE_ID,
+  openingVillageBuildings,
+} from "../state/openingVillage";
 import { clampPan, clampZoom, type CameraState, type Point } from "./camera";
 import { worldBounds } from "./interactions";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { STARTING_LANDMARKS } from "./startingLandmarks";
 
 const DESKTOP_CONSOLE_HEIGHT = 150;
 const TABLET_CONSOLE_HEIGHT = 276;
 const MOBILE_CONSOLE_HEIGHT = 224;
 const MOBILE_MAX_WIDTH = 600;
 const TABLET_MAX_WIDTH = 900;
+const MOBILE_TOP_RAIL_SAFE_INSET = 176;
+const LOW_HEIGHT_MAX = 400;
 const TARGET_ISO_TILE_SPAN = 20;
 
 type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">;
 type InitialCameraState = Pick<GameState, "width" | "height" | "buildings">;
+type ScreenBounds = { readonly minX: number; readonly maxX: number; readonly minY: number; readonly maxY: number };
 
 export type DragState = {
   readonly mode: "none" | "pan" | "road" | "palisade";
   readonly lastCanvasPoint: Point | null;
   readonly roadStart: { readonly tx: number; readonly ty: number } | null;
   readonly moved: boolean;
+};
+
+export type ViewportResizeCameraInput = {
+  readonly camera: CameraState;
+  readonly canvas: InitialCameraCanvas;
+  readonly state: InitialCameraState;
+  readonly userControlled: boolean;
 };
 
 export function resizeCanvas(
@@ -53,13 +68,26 @@ export function cameraForStartingHouse(
     ? OPENING_VILLAGE_CENTER
     : { tx: house.tx, ty: house.ty };
   const anchor = tileToScreen(anchorCoordinate.tx, anchorCoordinate.ty);
-  const center = usableViewportCenter(canvas);
+  const center = house.id === STARTING_HOUSE_ID
+    ? openingTableauViewportCenter(canvas, zoom)
+    : usableViewportCenter(canvas);
 
   return {
     zoom,
     panX: center.x - anchor.sx * zoom,
     panY: center.y - anchor.sy * zoom,
   };
+}
+
+export function cameraAfterViewportResize(input: ViewportResizeCameraInput): CameraState {
+  if (!input.userControlled) {
+    return cameraForStartingHouse(input.canvas, input.state);
+  }
+  return clampPan(
+    input.camera,
+    { width: input.canvas.clientWidth, height: input.canvas.clientHeight },
+    worldBounds(input.state.width, input.state.height),
+  );
 }
 
 function startingHouseZoom(canvas: InitialCameraCanvas): number {
@@ -76,6 +104,41 @@ function usableViewportCenter(canvas: InitialCameraCanvas): Point {
   return {
     x: canvas.clientWidth / 2,
     y: usableViewportHeight(canvas) / 2,
+  };
+}
+
+function openingTableauViewportCenter(canvas: InitialCameraCanvas, zoom: number): Point {
+  if (!usesCompactOpeningTableauFit(canvas)) return usableViewportCenter(canvas);
+  const bounds = openingTableauBounds();
+  const anchor = tileToScreen(OPENING_VILLAGE_CENTER.tx, OPENING_VILLAGE_CENTER.ty);
+  const safeTop = openingTopInset(canvas);
+  const safeBottom = usableViewportHeight(canvas);
+  return {
+    x: (canvas.clientWidth - (bounds.minX + bounds.maxX - anchor.sx * 2) * zoom) / 2,
+    y: (safeTop + safeBottom - (bounds.minY + bounds.maxY - anchor.sy * 2) * zoom) / 2,
+  };
+}
+
+function usesCompactOpeningTableauFit(canvas: InitialCameraCanvas): boolean {
+  return canvas.clientWidth <= MOBILE_MAX_WIDTH || canvas.clientHeight <= LOW_HEIGHT_MAX;
+}
+
+function openingTopInset(canvas: InitialCameraCanvas): number {
+  return canvas.clientWidth <= MOBILE_MAX_WIDTH && canvas.clientHeight > LOW_HEIGHT_MAX
+    ? MOBILE_TOP_RAIL_SAFE_INSET
+    : 0;
+}
+
+function openingTableauBounds(): ScreenBounds {
+  const points = [
+    ...openingVillageBuildings().map(({ tx, ty }) => tileToScreen(tx, ty)),
+    ...STARTING_LANDMARKS.map(({ tx, ty }) => tileToScreen(tx, ty)),
+  ];
+  return {
+    minX: Math.min(...points.map((point) => point.sx)),
+    maxX: Math.max(...points.map((point) => point.sx)),
+    minY: Math.min(...points.map((point) => point.sy)),
+    maxY: Math.max(...points.map((point) => point.sy)),
   };
 }
 
