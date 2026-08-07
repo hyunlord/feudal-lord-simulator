@@ -94,15 +94,16 @@ function plaqueBounds(context: CanvasRenderingContext2D, explicitInset: number |
   const canvasWidth = canvas?.clientWidth ?? canvas?.width ?? Number.POSITIVE_INFINITY;
   const canvasHeight = canvas?.clientHeight ?? canvas?.height ?? Number.POSITIVE_INFINITY;
   const safeScreenRight = Math.max(0, canvasWidth - safeRightInset(context, explicitInset));
+  const safeScreenBottom = safeBottomLimit(context, canvasHeight);
   const transform = context.getTransform?.() ?? null;
   if (transform === null || transform.a === 0 || transform.d === 0 || transform.b !== 0 || transform.c !== 0) {
-    return { left: 0, top: 0, right: safeScreenRight, bottom: canvasHeight };
+    return { left: 0, top: 0, right: safeScreenRight, bottom: safeScreenBottom };
   }
 
   const xPixelScale = canvasPixelScale(canvasWidth, canvas?.width);
   const yPixelScale = canvasPixelScale(canvasHeight, canvas?.height);
   const safeCanvasRight = safeScreenRight * xPixelScale;
-  const safeCanvasBottom = canvasHeight * yPixelScale;
+  const safeCanvasBottom = safeScreenBottom * yPixelScale;
 
   return {
     left: (0 - transform.e) / transform.a,
@@ -123,17 +124,34 @@ function safeRightInset(context: CanvasRenderingContext2D, explicitInset: number
   const canvas = context.canvas;
   if (canvas === undefined) return 0;
 
-  const rail = canvas.parentElement?.querySelector(".right-info-rail") ?? null;
+  const rail = canvasOverlayElement(canvas, ".right-info-rail");
   if (rail === null) return 0;
 
   const canvasBounds = canvas.getBoundingClientRect();
   const railBounds = rail.getBoundingClientRect();
-  const overlapsCanvas =
-    railBounds.right > canvasBounds.left &&
-    railBounds.left < canvasBounds.right &&
-    railBounds.bottom > canvasBounds.top &&
-    railBounds.top < canvasBounds.bottom;
-  if (!overlapsCanvas) return 0;
+  if (!rectsOverlap(canvasBounds, railBounds)) return 0;
 
   return Math.max(0, canvasBounds.right - Math.max(canvasBounds.left, railBounds.left));
+}
+
+function safeBottomLimit(context: CanvasRenderingContext2D, fallback: number): number {
+  const canvas = context.canvas;
+  if (canvas === undefined) return fallback;
+
+  const courtConsole = canvasOverlayElement(canvas, ".court-console");
+  if (courtConsole === null) return fallback;
+
+  const canvasBounds = canvas.getBoundingClientRect();
+  const consoleBounds = courtConsole.getBoundingClientRect();
+  if (!rectsOverlap(canvasBounds, consoleBounds)) return fallback;
+
+  return Math.max(0, Math.min(fallback, consoleBounds.top - canvasBounds.top));
+}
+
+function rectsOverlap(a: DOMRect, b: DOMRect): boolean {
+  return b.right > a.left && b.left < a.right && b.bottom > a.top && b.top < a.bottom;
+}
+
+function canvasOverlayElement(canvas: HTMLCanvasElement, selector: string): Element | null {
+  return canvas.parentElement?.querySelector(selector) ?? canvas.closest?.(".app-shell")?.querySelector(selector) ?? null;
 }

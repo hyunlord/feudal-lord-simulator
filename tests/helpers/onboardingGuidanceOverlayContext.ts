@@ -23,12 +23,20 @@ type PlaqueContextOptions = {
   readonly transform?: TestTransform;
   readonly canvasBounds?: TestRect;
   readonly railBounds?: TestRect;
+  readonly consoleBounds?: TestRect;
+  readonly overlayRoot?: "parent" | "app-shell";
 };
 
 export type PlaqueDraw = {
   readonly rectX: number;
   readonly rectWidth: number;
   readonly textX: number;
+};
+
+export type PlaqueBox = PlaqueDraw & {
+  readonly rectY: number;
+  readonly rectHeight: number;
+  readonly textY: number;
 };
 
 export function createOnboardingGuidancePlaqueContext(
@@ -45,12 +53,27 @@ export function createOnboardingGuidancePlaqueContext(
   const rail = options.railBounds === undefined ? null : {
     getBoundingClientRect: () => options.railBounds,
   };
+  const courtConsole = options.consoleBounds === undefined ? null : {
+    getBoundingClientRect: () => options.consoleBounds,
+  };
+  const overlayRoot = {
+    querySelector: (selector: string) => {
+      if (selector === ".right-info-rail") return rail;
+      if (selector === ".court-console") return courtConsole;
+      return null;
+    },
+  };
   const canvas = {
     clientWidth: options.canvasClientWidth,
     clientHeight: options.canvasClientHeight,
     width: options.canvasPixelWidth ?? options.canvasClientWidth,
     height: options.canvasPixelHeight ?? options.canvasClientHeight,
-    parentElement: { querySelector: (selector: string) => selector === ".right-info-rail" ? rail : null },
+    parentElement: {
+      querySelector: (selector: string) =>
+        options.overlayRoot === "app-shell" ? null : overlayRoot.querySelector(selector),
+    },
+    closest: (selector: string) =>
+      selector === ".app-shell" && options.overlayRoot === "app-shell" ? overlayRoot : null,
     getBoundingClientRect: () => canvasBounds,
   };
   const context = {
@@ -60,12 +83,12 @@ export function createOnboardingGuidancePlaqueContext(
     lineWidth: 0,
     lineJoin: "miter",
     lineCap: "butt",
-    beginPath: () => undefined,
+    beginPath: () => calls.push("beginPath"),
     moveTo: () => undefined,
     lineTo: () => undefined,
     closePath: () => undefined,
-    fill: () => undefined,
-    stroke: () => undefined,
+    fill: () => calls.push("fill"),
+    stroke: () => calls.push("stroke"),
     measureText: () => ({ width: measuredTextWidth }),
     fillRect: (x: number, y: number, width: number, height: number) =>
       calls.push(`fillRect:${x},${y},${width},${height}`),
@@ -80,15 +103,29 @@ export function createOnboardingGuidancePlaqueContext(
 }
 
 export function plaqueDrawFrom(calls: readonly string[]): PlaqueDraw | null {
+  const box = plaqueBoxFrom(calls);
+  if (box === null) return null;
+
+  return {
+    rectX: box.rectX,
+    rectWidth: box.rectWidth,
+    textX: box.textX,
+  };
+}
+
+export function plaqueBoxFrom(calls: readonly string[]): PlaqueBox | null {
   const fillRect = calls.find((call) => call.startsWith("fillRect:"));
   const fillText = calls.find((call) => call.startsWith("fillText:"));
   if (fillRect === undefined || fillText === undefined) return null;
 
-  const [, rectX, , rectWidth] = fillRect.split(/[:,]/);
-  const [, , textX] = fillText.split(/[:,]/);
+  const [, rectX, rectY, rectWidth, rectHeight] = fillRect.split(/[:,]/);
+  const [, , textX, textY] = fillText.split(/[:,]/);
   return {
     rectX: Number(rectX),
+    rectY: Number(rectY),
     rectWidth: Number(rectWidth),
+    rectHeight: Number(rectHeight),
     textX: Number(textX),
+    textY: Number(textY),
   };
 }
