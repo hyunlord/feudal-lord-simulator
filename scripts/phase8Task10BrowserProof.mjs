@@ -7,67 +7,73 @@ import {
   waitForChrome,
 } from "./phase8Task10CdpClient.mjs";
 
-const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const baseUrl = process.env.PROOF_URL ?? "http://127.0.0.1:3200";
-const revision = requiredRevision();
-const hostLabel = process.env.PROOF_HOST_LABEL ?? "local";
-const remoteDebuggingPort = Number.parseInt(process.env.PROOF_CHROME_PORT ?? "9229", 10);
-const chromeSession = await launchChrome({
-  chromePath,
-  remoteDebuggingPort,
-  userDataPrefix: "phase8-task10-chrome-",
-});
+if (isDirectRun()) {
+  await main();
+}
 
-try {
-  await waitForChrome(remoteDebuggingPort, chromeSession.stderr);
-  const target = await createTarget(remoteDebuggingPort);
-  const client = await createCdpClient(target.webSocketDebuggerUrl);
+async function main() {
+  const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+  const baseUrl = process.env.PROOF_URL ?? "http://127.0.0.1:3200";
+  const revision = readProofRevision(process.env);
+  const hostLabel = process.env.PROOF_HOST_LABEL ?? "local";
+  const remoteDebuggingPort = Number.parseInt(process.env.PROOF_CHROME_PORT ?? "9229", 10);
+  const chromeSession = await launchChrome({
+    chromePath,
+    remoteDebuggingPort,
+    userDataPrefix: "phase8-task10-chrome-",
+  });
+
   try {
-    await client.send("Page.enable");
-    await client.send("Runtime.enable");
-    await client.send("Emulation.setDeviceMetricsOverride", {
-      width: 1280,
-      height: 720,
-      deviceScaleFactor: 1,
-      mobile: false,
-    });
-    await client.send("Page.addScriptToEvaluateOnNewDocument", {
-      source: "localStorage.setItem('feudal-lord-simulator:welcome-dismissed:v1', 'true');",
-    });
-    await navigate(client, baseUrl);
-    await waitForCanvas(client);
-    const initial = await stableCanvasHash(client);
-    const away = await panAwayAndBack(client, {
-      fromX: 640,
-      fromY: 360,
-      toX: 760,
-      toY: 430,
-    });
-    const restored = await stableCanvasHash(client);
-    if (initial.hash === away.hash) {
-      throw new Error("pan-away canvas hash did not change");
+    await waitForChrome(remoteDebuggingPort, chromeSession.stderr);
+    const target = await createTarget(remoteDebuggingPort);
+    const client = await createCdpClient(target.webSocketDebuggerUrl);
+    try {
+      await client.send("Page.enable");
+      await client.send("Runtime.enable");
+      await client.send("Emulation.setDeviceMetricsOverride", {
+        width: 1280,
+        height: 720,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      await client.send("Page.addScriptToEvaluateOnNewDocument", {
+        source: "localStorage.setItem('feudal-lord-simulator:welcome-dismissed:v1', 'true');",
+      });
+      await navigate(client, baseUrl);
+      await waitForCanvas(client);
+      const initial = await stableCanvasHash(client);
+      const away = await panAwayAndBack(client, {
+        fromX: 640,
+        fromY: 360,
+        toX: 760,
+        toY: 430,
+      });
+      const restored = await stableCanvasHash(client);
+      if (initial.hash === away.hash) {
+        throw new Error("pan-away canvas hash did not change");
+      }
+      if (initial.hash !== restored.hash) {
+        throw new Error(`pan-back hash mismatch: initial=${initial.hash} restored=${restored.hash}`);
+      }
+      process.stdout.write(`${JSON.stringify({
+        schemaVersion: 1,
+        hostLabel,
+        revision,
+        baseUrl,
+        userAgent: await userAgent(client),
+        viewport: { width: 1280, height: 720 },
+        initial,
+        away,
+        restored,
+        identity: initial.hash === restored.hash,
+        awayChanged: initial.hash !== away.hash,
+      }, null, 2)}\n`);
+    } finally {
+      client.close();
     }
-    if (initial.hash !== restored.hash) {
-      throw new Error(`pan-back hash mismatch: initial=${initial.hash} restored=${restored.hash}`);
-    }
-    process.stdout.write(`${JSON.stringify({
-      schemaVersion: 1,
-      hostLabel,
-      revision,
-      baseUrl,
-      userAgent: await userAgent(client),
-      viewport: { width: 1280, height: 720 },
-      initial,
-      away,
-      restored,
-      identity: initial.hash === restored.hash,
-      awayChanged: initial.hash !== away.hash,
-    }, null, 2)}\n`);
   } finally {
-    client.close();
+    await closeChrome(chromeSession);
   }
-} finally {
-  await closeChrome(chromeSession);
 }
 
 async function navigate(client, url) {
@@ -193,11 +199,16 @@ async function userAgent(client) {
   return client.evaluate("navigator.userAgent", false);
 }
 
-function requiredRevision() {
-  const value = process.env.PROOF_REVISION ?? process.env.PHASE8_REVISION ?? "";
+export function readProofRevision(env) {
+  const value = env.PROOF_REVISION ?? env.PHASE8_REVISION ?? "";
   const normalized = value.trim();
-  if (normalized === "" || normalized === "dirty" || normalized === "unknown") {
-    throw new Error("Set PROOF_REVISION or PHASE8_REVISION to a clean, known revision.");
+  if (!/^[0-9a-f]{40}$/i.test(normalized)) {
+    throw new Error("Set PROOF_REVISION or PHASE8_REVISION to a clean 40-hex revision.");
   }
   return normalized;
+}
+
+function isDirectRun() {
+  const entryPath = process.argv[1];
+  return entryPath !== undefined && import.meta.url === new URL(entryPath, "file:").href;
 }
