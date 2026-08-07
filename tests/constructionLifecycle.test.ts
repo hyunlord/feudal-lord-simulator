@@ -4,6 +4,7 @@ import test from "node:test";
 import type { Building } from "../src/content/buildingConfig";
 import {
   constructionSiteFootprint,
+  createPalisadeConstructionSite,
   type BuildingConstructionSite,
   type ConstructionSite,
 } from "../src/economy/construction";
@@ -285,4 +286,201 @@ test("advanceFrame at 5x cannot complete a fully staffed house before sixty wall
   assert.equal(beforeFloor.buildings.some(({ id }) => id === target.id), false);
   assert.equal(current.wallTick, 60);
   assert.equal(current.buildings.find(({ id }) => id === target.id)?.kind, "house");
+});
+
+test("advanceTick completes a ready palisade segment as wall state without creating a building or house", () => {
+  // Given
+  const home = building("home", "house", 0, 0);
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 2, y: 0 }, { x: 4, y: 0 }],
+    startedTick: 0,
+  });
+  const before = state({
+    width: 6,
+    height: 3,
+    buildings: [home],
+    constructionSites: [{
+      ...wallSite,
+      delivered: { timber: 30 },
+      builderTicks: 120,
+      assignedBuilders: 3,
+    }],
+    houses: [house(home.id, 6)],
+    wallTick: 59,
+  });
+  const proclaimed = {
+    ...before,
+    era: "palisade",
+    eraProclaimedTick: 0,
+    palisade: {
+      id: "wall-a",
+      polygon: [{ x: 2, y: 0 }, { x: 4, y: 0 }, { x: 4, y: 2 }, { x: 2, y: 2 }, { x: 2, y: 0 }],
+      gate: { x: 2, y: 0 },
+      segments: [{
+        id: "wall-a-segment-000",
+        order: 0,
+        edgePath: wallSite.path,
+        tileCount: 2,
+        completed: false,
+        constructionSiteId: wallSite.id,
+      }],
+    },
+  } satisfies GameState;
+
+  // When
+  const next = advanceTick(proclaimed);
+
+  // Then
+  assert.deepEqual(next.constructionSites, []);
+  assert.equal(next.buildings.some(({ id }) => id === wallSite.id), false);
+  assert.equal(next.houses.some(({ buildingId }) => buildingId === wallSite.id), false);
+  assert.deepEqual(next.palisade?.segments, [{
+    id: "wall-a-segment-000",
+    order: 0,
+    edgePath: wallSite.path,
+    tileCount: 2,
+    completed: true,
+    constructionSiteId: null,
+  }]);
+  assert.deepEqual(next.walkers.filter(({ kind }) => kind === "builder"), []);
+  assert.deepEqual(constructionCompletionEvents(proclaimed, next), []);
+});
+
+test("advanceFrame at 5x keeps a ready palisade segment visible until sixty wall ticks", () => {
+  // Given
+  const home = building("home", "house", 0, 0);
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 2, y: 0 }, { x: 4, y: 0 }],
+    startedTick: 0,
+  });
+  let current: GameState = {
+    ...state({
+      width: 6,
+      height: 3,
+      buildings: [home],
+      constructionSites: [{
+        ...wallSite,
+        delivered: { timber: 30 },
+        builderTicks: 120,
+        assignedBuilders: 3,
+      }],
+      houses: [house(home.id, 6)],
+      wallTick: 0,
+    }),
+    era: "palisade",
+    eraProclaimedTick: 0,
+    palisade: {
+      id: "wall-a",
+      polygon: [{ x: 2, y: 0 }, { x: 4, y: 0 }, { x: 4, y: 2 }, { x: 2, y: 2 }, { x: 2, y: 0 }],
+      gate: { x: 2, y: 0 },
+      segments: [{
+        id: "wall-a-segment-000",
+        order: 0,
+        edgePath: wallSite.path,
+        tileCount: 2,
+        completed: false,
+        constructionSiteId: wallSite.id,
+      }],
+    },
+  };
+
+  // When
+  for (let index = 0; index < 59; index += 1) {
+    current = advanceFrame(current, 5);
+  }
+  const beforeFloor = current;
+  current = advanceFrame(current, 5);
+
+  // Then
+  assert.equal(beforeFloor.wallTick, 59);
+  assert.equal(beforeFloor.constructionSites.length, 1);
+  assert.equal(beforeFloor.palisade?.segments[0]?.completed, false);
+  assert.equal(current.wallTick, 60);
+  assert.equal(current.constructionSites.length, 0);
+  assert.equal(current.palisade?.segments[0]?.completed, true);
+});
+
+test("palisade aggregate completes only after the last planned segment completes", () => {
+  // Given
+  const firstSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 2, y: 0 }, { x: 4, y: 0 }],
+    startedTick: 0,
+  });
+  const secondSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-001",
+    wallId: "wall-a",
+    segmentIndex: 1,
+    gateDistance: 4,
+    order: 1,
+    path: [{ x: 4, y: 0 }, { x: 6, y: 0 }],
+    startedTick: 0,
+  });
+  const base = {
+    ...state({
+      width: 8,
+      height: 3,
+      buildings: [building("home", "house", 0, 0)],
+      constructionSites: [
+        { ...firstSite, delivered: { timber: 30 }, builderTicks: 120 },
+        { ...secondSite, delivered: { timber: 30 }, builderTicks: 119, assignedBuilders: 1 },
+      ],
+      wallTick: 59,
+    }),
+    era: "palisade",
+    eraProclaimedTick: 0,
+    palisade: {
+      id: "wall-a",
+      polygon: [{ x: 2, y: 0 }, { x: 6, y: 0 }, { x: 6, y: 2 }, { x: 2, y: 2 }, { x: 2, y: 0 }],
+      gate: { x: 2, y: 0 },
+      segments: [
+        {
+          id: "wall-a-segment-000",
+          order: 0,
+          edgePath: firstSite.path,
+          tileCount: 2,
+          completed: false,
+          constructionSiteId: firstSite.id,
+        },
+        {
+          id: "wall-a-segment-001",
+          order: 1,
+          edgePath: secondSite.path,
+          tileCount: 2,
+          completed: false,
+          constructionSiteId: secondSite.id,
+        },
+      ],
+    },
+  } satisfies GameState;
+
+  // When
+  const partial = advanceTick(base);
+  const final = advanceTick({
+    ...partial,
+    constructionSites: partial.constructionSites.map((candidate) =>
+      candidate.id === secondSite.id ? { ...candidate, builderTicks: 120 } : candidate,
+    ),
+    wallTick: 59,
+  });
+
+  // Then
+  assert.deepEqual(partial.palisade?.segments.map(({ completed }) => completed), [true, false]);
+  assert.equal(partial.constructionSites.map(({ id }) => id).includes(secondSite.id), true);
+  assert.deepEqual(final.palisade?.segments.map(({ completed }) => completed), [true, true]);
+  assert.deepEqual(final.constructionSites, []);
 });

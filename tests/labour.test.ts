@@ -11,6 +11,7 @@ import {
 } from "../src/population/labour";
 import type {
   BuildingConstructionSite,
+  PalisadeConstructionSite,
 } from "../src/economy/construction";
 
 function building(id: string, kind: BuildingKind): Building {
@@ -38,6 +39,32 @@ function site(id: string, patch: Partial<BuildingConstructionSite> = {}): Buildi
     reserved: {},
     builderTicks: 0,
     requiredBuilderTicks: 200,
+    assignedBuilders: 99,
+    stall: "no_builders",
+    startedTick: 0,
+    ...patch,
+  };
+}
+
+function wallSite(
+  id: string,
+  order: number,
+  patch: Partial<PalisadeConstructionSite> = {},
+): PalisadeConstructionSite {
+  return {
+    id,
+    kind: "palisade_segment",
+    wallId: "wall-a",
+    segmentIndex: order,
+    gateDistance: order * 4,
+    order,
+    path: [{ x: order, y: 0 }, { x: order + 1, y: 0 }],
+    anchor: { tx: order, ty: 0 },
+    required: {},
+    delivered: {},
+    reserved: {},
+    builderTicks: 0,
+    requiredBuilderTicks: 120,
     assignedBuilders: 99,
     stall: "no_builders",
     startedTick: 0,
@@ -248,4 +275,62 @@ test("unassigned construction slots disappear from derived builder walkers", () 
     "builder:construction-site-000001:0",
     "builder:construction-site-000001:1",
   ]);
+});
+
+test("palisade construction labour assigns only the earliest incomplete wall segment", () => {
+  // Given
+  const first = wallSite("wall-a-segment-000", 0, {
+    builderTicks: 119,
+    delivered: { timber: 15 },
+    required: { timber: 15 },
+  });
+  const second = wallSite("wall-a-segment-001", 1, {
+    delivered: { timber: 15 },
+    required: { timber: 15 },
+  });
+
+  // When
+  const result = allocateBuildingAndConstructionLabour([], [second, first], 20);
+
+  // Then
+  assert.deepEqual(
+    result.constructionSites.map(({ id, assignedBuilders, stall }) => ({
+      id,
+      assignedBuilders,
+      stall,
+    })),
+    [
+      { id: "wall-a-segment-001", assignedBuilders: 0, stall: "no_builders" },
+      { id: "wall-a-segment-000", assignedBuilders: 3, stall: "none" },
+    ],
+  );
+});
+
+test("palisade construction labour advances to the next segment after the prior segment is complete", () => {
+  // Given
+  const first = wallSite("wall-a-segment-000", 0, {
+    builderTicks: 120,
+    delivered: { timber: 15 },
+    required: { timber: 15 },
+  });
+  const second = wallSite("wall-a-segment-001", 1, {
+    delivered: { timber: 15 },
+    required: { timber: 15 },
+  });
+
+  // When
+  const result = allocateBuildingAndConstructionLabour([], [second, first], 20);
+
+  // Then
+  assert.deepEqual(
+    result.constructionSites.map(({ id, assignedBuilders, stall }) => ({
+      id,
+      assignedBuilders,
+      stall,
+    })),
+    [
+      { id: "wall-a-segment-001", assignedBuilders: 3, stall: "none" },
+      { id: "wall-a-segment-000", assignedBuilders: 0, stall: "no_builders" },
+    ],
+  );
 });

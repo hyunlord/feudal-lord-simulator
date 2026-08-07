@@ -6,6 +6,7 @@ import {
 import { BALANCE } from "../content/balanceConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import type { TileCoordinate } from "../geometry/tileGeometry";
+import { palisadeLabourSiteIsQueued } from "./palisadeLabour";
 
 export interface LabourRequest {
   readonly buildingId: string;
@@ -197,6 +198,10 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   const allocations = new Map<string, number>();
 
   for (const site of [...constructionSites].sort((left, right) => left.id.localeCompare(right.id))) {
+    if (palisadeLabourSiteIsQueued(site, constructionSites)) {
+      allocations.set(site.id, 0);
+      continue;
+    }
     const assignedBuilders = Math.min(remaining, MAX_BUILDERS_PER_SITE);
     remaining -= assignedBuilders;
     allocations.set(site.id, assignedBuilders);

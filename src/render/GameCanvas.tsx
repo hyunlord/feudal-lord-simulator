@@ -10,7 +10,10 @@ import { DiagnosticCard, type DiagnosticCardModel } from "./DiagnosticCard";
 import type { AnchoredWorldSelection } from "./worldSelection";
 import { houseDiagnosisModel } from "../ui/houseDiagnosisModel";
 import { walkerDiagnosisModel } from "../ui/walkerDiagnosisModel";
-import { constructionSiteCardModel } from "../ui/constructionSiteCardModel";
+import {
+  constructionCancellationDisabledReason,
+  constructionSiteCardModel,
+} from "../ui/constructionSiteCardModel";
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
@@ -49,7 +52,17 @@ export function GameCanvas({
     if (value !== null) cardModel = { kind: "walker", value };
   } else if (selection?.kind === "construction_site") {
     const site = state.constructionSites.find((candidate) => candidate.id === selection.siteId);
-    if (site !== undefined) cardModel = { kind: "construction_site", value: constructionSiteCardModel(site) };
+    if (site !== undefined) {
+      cardModel = {
+        kind: "construction_site",
+        value: constructionSiteCardModel(site, {
+          constructionSites: state.constructionSites,
+          cancellationDisabledReason: state.palisade === null
+            ? null
+            : constructionCancellationDisabledReason(site),
+        }),
+      };
+    }
   }
 
   const cancelConstruction = (siteId: string) => {

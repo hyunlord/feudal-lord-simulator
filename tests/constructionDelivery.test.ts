@@ -300,3 +300,54 @@ test("wall construction sites use the existing construction delivery destination
   assert.deepEqual(carter.cargo, { resource: "timber", amount: 8 });
   assert.deepEqual(result.constructionSites[0]?.reserved, { timber: 8 });
 });
+
+test("wall material dispatch can reserve a queued later segment before the active gate segment is supplied", () => {
+  // Given
+  const source = building("store", "storehouse", {
+    inventory: { timber: 30 },
+  });
+  const active = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 1, y: 1 }, { x: 3, y: 1 }],
+    startedTick: 0,
+  });
+  const queued = createPalisadeConstructionSite({
+    id: "wall-a-segment-001",
+    wallId: "wall-a",
+    segmentIndex: 1,
+    gateDistance: 4,
+    order: 1,
+    path: [{ x: 3, y: 1 }, { x: 5, y: 1 }],
+    startedTick: 0,
+  });
+  const routes = routePort({
+    "store->wall-a-segment-001": line([0, 0], [1, 0]),
+  });
+
+  // When
+  const result = spawnCarters({
+    tick: 140,
+    buildings: [source],
+    constructionSites: [active, queued],
+    walkers: [],
+    treasuryTimber: 0,
+    inventory: DELIVERY_INVENTORY,
+    routes,
+  });
+  const carter = result.walkers[0] as CarterWalker;
+
+  // Then
+  assert.equal(result.walkers.length, 1);
+  assert.deepEqual(carter.destination, {
+    kind: "construction_site",
+    siteId: queued.id,
+  });
+  assert.deepEqual(result.constructionSites.map((candidate) => candidate.reserved), [
+    {},
+    { timber: 8 },
+  ]);
+});

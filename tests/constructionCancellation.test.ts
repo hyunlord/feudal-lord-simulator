@@ -5,6 +5,7 @@ import { cancelConstruction } from "../src/engine/constructionCancellation";
 import type { GameState } from "../src/engine/engine.types";
 import {
   constructionSiteAnchor,
+  createPalisadeConstructionSite,
   type BuildingConstructionSite,
   type ConstructionSite,
 } from "../src/economy/construction";
@@ -240,4 +241,61 @@ test("cancelConstruction is idempotent after the site is already absent", () => 
   assert.deepEqual(second.ledger.deliveredRefund, {});
   assert.deepEqual(second.ledger.reservedRefund, {});
   assert.deepEqual(second.ledger.dropped, {});
+});
+
+test("cancelConstruction leaves proclaimed palisade segments unchanged without refunds or cargo cleanup", () => {
+  // Given
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 2, y: 3 }, { x: 4, y: 3 }],
+    startedTick: 0,
+  });
+  const current = state({
+    constructionSite: {
+      ...wallSite,
+      delivered: { timber: 12 },
+      reserved: { timber: 8 },
+      assignedBuilders: 3,
+    },
+    buildings: [building("store-a", "storehouse", { tx: 0, ty: 0 })],
+    walkers: [siteCarter({ cargoAmount: 8 })],
+    idleWorkers: 1,
+  });
+  const proclaimed: GameState = {
+    ...current,
+    era: "palisade",
+    eraProclaimedTick: 0,
+    palisade: {
+      id: "wall-a",
+      polygon: [{ x: 2, y: 3 }, { x: 4, y: 3 }, { x: 4, y: 5 }, { x: 2, y: 5 }, { x: 2, y: 3 }],
+      gate: { x: 2, y: 3 },
+      segments: [{
+        id: "wall-a-segment-000",
+        order: 0,
+        edgePath: wallSite.path,
+        tileCount: 2,
+        completed: false,
+        constructionSiteId: wallSite.id,
+      }],
+    },
+  };
+
+  // When
+  const result = cancelConstruction({
+    state: proclaimed,
+    siteId: wallSite.id,
+    inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "2,0->store-a": line([2, 0], [1, 0], [0, 0]) }),
+  });
+
+  // Then
+  assert.equal(result.state, proclaimed);
+  assert.deepEqual(result.ledger.deliveredRefund, {});
+  assert.deepEqual(result.ledger.reservedRefund, {});
+  assert.deepEqual(result.ledger.treasuryRefund, {});
+  assert.deepEqual(result.ledger.dropped, {});
 });

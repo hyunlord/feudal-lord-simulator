@@ -7,6 +7,7 @@ import {
   refundSiteMaterials,
   type ConstructionCancellationLedger,
 } from "./constructionCancellationRefunds";
+import { isPalisadeConstructionSite } from "../economy/palisadeConstruction";
 import type { GameState } from "./engine.types";
 
 export type ConstructionCancellationResult = {
@@ -71,6 +72,9 @@ export function cancelConstruction(input: {
 }): ConstructionCancellationResult {
   const site = input.state.constructionSites.find(({ id }) => id === input.siteId) ?? null;
   if (site === null) {
+    return { state: input.state, ledger: EMPTY_CONSTRUCTION_CANCELLATION_LEDGER };
+  }
+  if (isPalisadeConstructionSite(site) && input.state.palisade !== null) {
     return { state: input.state, ledger: EMPTY_CONSTRUCTION_CANCELLATION_LEDGER };
   }
 

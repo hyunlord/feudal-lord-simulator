@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { ConstructionSite } from "../src/economy/construction";
+import { createPalisadeConstructionSite } from "../src/economy/construction";
 import { constructionSiteCardModel } from "../src/ui/constructionSiteCardModel";
 
 const SITE = {
@@ -90,4 +91,40 @@ test("construction site card model reuses resource-aware material stall labels",
     constructionSiteCardModel({ ...materialSite, stall: "no_material_source" }).currentStallLabel,
     "🪵 창고에 목재 없음",
   );
+});
+
+test("queued palisade segment model identifies gate-outward position without adding a stall state", () => {
+  // Given
+  const active = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 0, y: 0 }, { x: 2, y: 0 }],
+    startedTick: 0,
+  });
+  const queued = createPalisadeConstructionSite({
+    id: "wall-a-segment-001",
+    wallId: "wall-a",
+    segmentIndex: 1,
+    gateDistance: 4,
+    order: 1,
+    path: [{ x: 2, y: 0 }, { x: 4, y: 0 }],
+    startedTick: 0,
+  });
+
+  // When
+  const model = constructionSiteCardModel(queued, {
+    constructionSites: [active, queued],
+    cancellationDisabledReason: "목책 시대 선포 후에는 성벽 구간 공사를 취소할 수 없습니다",
+  });
+
+  // Then
+  assert.equal(queued.stall, "awaiting_materials");
+  assert.equal(model.currentStallLabel, "대기 중 · 성문 기준 2번째 구간");
+  assert.deepEqual(model.cancellation, {
+    enabled: false,
+    reason: "목책 시대 선포 후에는 성벽 구간 공사를 취소할 수 없습니다",
+  });
 });

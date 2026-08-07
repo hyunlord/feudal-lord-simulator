@@ -8,9 +8,14 @@ import {
   isBuildingConstructionSite,
   type BuildingConstructionSite,
   type ConstructionSite,
+  type PalisadeConstructionSite,
 } from "../economy/construction";
+import {
+  isPalisadeConstructionSite,
+  palisadeConstructionSchedule,
+} from "../economy/palisadeConstruction";
 import type { House } from "../population/population.types";
-import type { GameState } from "./engine.types";
+import type { GameState, PalisadeState } from "./engine.types";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
 
 export type ConstructionCompletionEvent = {
@@ -51,7 +56,11 @@ function houseFromSite(site: BuildingConstructionSite): House | null {
 }
 
 export function advanceConstructionSites(state: GameState): ConstructionSite[] {
-  return state.constructionSites.map(advanceConstructionWork);
+  return state.constructionSites.map((site) =>
+    palisadeConstructionSchedule(site, state.constructionSites).kind === "queued"
+      ? site
+      : advanceConstructionWork(site),
+  );
 }
 
 export function recomputeConstructionStalls(state: GameState): ConstructionSite[] {
@@ -73,13 +82,21 @@ export function recomputeConstructionStalls(state: GameState): ConstructionSite[
 }
 
 export function completeEligibleConstruction(state: GameState): GameState {
-  const completed = state.constructionSites
+  const completedBuildings = state.constructionSites
     .filter(isBuildingConstructionSite)
     .filter((site) => canCompleteConstruction(site, state.wallTick));
-  if (completed.length === 0) return state;
+  const completedPalisadeSites = state.palisade === null
+    ? []
+    : state.constructionSites
+        .filter(isPalisadeConstructionSite)
+        .filter((site) => canCompleteConstruction(site, state.wallTick));
+  if (completedBuildings.length === 0 && completedPalisadeSites.length === 0) return state;
 
-  const completedIds = new Set(completed.map((site) => site.id));
-  const completedHouses = completed.flatMap((site) => {
+  const completedIds = new Set([
+    ...completedBuildings.map((site) => site.id),
+    ...completedPalisadeSites.map((site) => site.id),
+  ]);
+  const completedHouses = completedBuildings.flatMap((site) => {
     const house = houseFromSite(site);
     return house === null ? [] : [house];
   });
@@ -89,10 +106,27 @@ export function completeEligibleConstruction(state: GameState): GameState {
 
   return {
     ...state,
-    buildings: [...state.buildings, ...completed.map(buildingFromSite)],
+    buildings: [...state.buildings, ...completedBuildings.map(buildingFromSite)],
     constructionSites: state.constructionSites.filter((site) => !completedIds.has(site.id)),
     houses: [...state.houses, ...completedHouses],
     walkers: activeWalkers,
+    palisade: completePalisadeSegments(state.palisade, completedPalisadeSites),
+  };
+}
+
+function completePalisadeSegments(
+  palisade: PalisadeState | null,
+  completedSites: readonly PalisadeConstructionSite[],
+): PalisadeState | null {
+  if (palisade === null || completedSites.length === 0) return palisade;
+  const completedIds = new Set(completedSites.map((site) => site.id));
+  return {
+    ...palisade,
+    segments: palisade.segments.map((segment) =>
+      segment.constructionSiteId !== null && completedIds.has(segment.constructionSiteId)
+        ? { ...segment, completed: true, constructionSiteId: null }
+        : segment,
+    ),
   };
 }
 

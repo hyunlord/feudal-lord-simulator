@@ -84,6 +84,8 @@ function ConstructionSiteCard({
   readonly model: ConstructionSiteCardModel;
   readonly onCancelConstruction?: (siteId: string) => void;
 }): ReactElement {
+  const cancellation = model.cancellation ?? { enabled: true, reason: null };
+  const cancellationEnabled = cancellation.enabled;
   return (
     <aside className="diagnostic-card diagnostic-card--site" aria-label={`${model.name} 건설 진단`}>
       <h2>{model.name}</h2>
@@ -97,10 +99,15 @@ function ConstructionSiteCard({
         type="button"
         className="diagnostic-card-cancel"
         data-action="cancel-construction"
-        onClick={() => onCancelConstruction?.(model.siteId)}
+        disabled={!cancellationEnabled}
+        title={cancellation.reason ?? undefined}
+        onClick={() => {
+          if (cancellationEnabled) onCancelConstruction?.(model.siteId);
+        }}
       >
-        공사 포기
+        {cancellationEnabled ? "공사 포기" : "공사 포기 불가"}
       </button>
+      {cancellation.reason === null ? null : <p>{cancellation.reason}</p>}
     </aside>
   );
 }
