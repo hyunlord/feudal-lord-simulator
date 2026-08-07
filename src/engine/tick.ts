@@ -104,7 +104,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     rngForJunction: rngForState({ ...state, tick }),
   });
   const servedHouses = mergeRoamingHouses(state.houses, movedDistributors.houses);
-  const housing = updateHousing(servedHouses, movedDistributors.buildings, tick);
+  const housing = updateHousing(servedHouses, movedDistributors.buildings, tick, state.palisade);
   const labour = allocateBuildingAndConstructionLabour(
     movedDistributors.buildings,
     movedCarters.constructionSites,

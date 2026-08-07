@@ -9,11 +9,17 @@ import {
   type HousingRequirement,
 } from "../content/housingConfig";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
+import {
+  palisadeProtectionForBuilding,
+  type PalisadeProtection,
+  type PalisadeProtectionSource,
+} from "../geometry/palisadeProtection";
 import type { House } from "./population.types";
 
 export type HouseUpdateContext = {
   readonly tick: number;
   readonly hasGranaryNearby: boolean;
+  readonly palisadeProtection?: PalisadeProtection;
 };
 
 export type HousingUpdate = {
@@ -108,7 +114,11 @@ export function updateHouse(
   house: House,
   context: HouseUpdateContext,
 ): House {
-  const targetLevel = supportedLevel(house, context);
+  const supported = supportedLevel(house, context);
+  const targetLevel =
+    context.palisadeProtection === "outside" && house.level < 3
+      ? Math.min(supported, 2)
+      : supported;
   let updated = house;
 
   if (targetLevel > house.level) {
@@ -156,14 +166,18 @@ export function updateHousing(
   houses: readonly House[],
   buildings: readonly Building[],
   tick: number,
+  palisade: PalisadeProtectionSource = null,
 ): HousingUpdate {
   const watered = applyWellService(houses, buildings);
-  const updated = watered.map((house) =>
-    updateHouse(house, {
+  const updated = watered.map((house) => {
+    const home = houseBuilding(house, buildings);
+    return updateHouse(house, {
       tick,
       hasGranaryNearby: hasGranaryNearby(house, buildings),
-    }),
-  );
+      palisadeProtection:
+        home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
+    });
+  });
   return {
     houses: updated,
     population: updated.reduce(

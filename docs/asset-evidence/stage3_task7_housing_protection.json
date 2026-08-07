@@ -1,0 +1,59 @@
+{
+  "task": "stage3-task-7-housing-protection",
+  "branch": "codex/stage3-palisade-age",
+  "baseHead": "0492230fc655ec31d94f2e9640036d1676fd3ed9",
+  "boundaryRule": "A completed palisade classifies a finished building as inside only when every footprint corner is inside or on the polygon boundary; boundary/on-edge points are treated as inside.",
+  "red": {
+    "command": "npx tsx --test tests/housingPalisadeProtection.test.ts",
+    "log": "/tmp/feudal-stage3-task-7-evidence/housing-integration-red.log",
+    "result": "4 passed, 1 failed",
+    "failure": "Given a completed wall in the simulation tick When an outside serviced home updates Then the level-three cap is applied: expected 2, actual 3"
+  },
+  "verification": [
+    {
+      "command": "npx tsx --test tests/housing.test.ts tests/housingPalisadeProtection.test.ts tests/houseDiagnosisModel.test.ts",
+      "log": "/tmp/feudal-stage3-task-7-evidence/focused-housing-diagnosis.log",
+      "result": "26 passed, 0 failed"
+    },
+    {
+      "command": "npx tsx --test tests/phase3Architecture.test.ts",
+      "log": "/tmp/feudal-stage3-task-7-evidence/phase3Architecture.log",
+      "result": "3 passed, 0 failed"
+    },
+    {
+      "command": "npx tsx --test tests/palisadeGeometry.test.ts tests/palisadeProclamation.test.ts",
+      "log": "/tmp/feudal-stage3-task-7-evidence/todo3-palisade-gate.log",
+      "result": "17 passed, 0 failed",
+      "note": "Todo3-equivalent gate; no explicit Todo3 command was present in the repository."
+    },
+    {
+      "command": "npm run typecheck",
+      "log": "/tmp/feudal-stage3-task-7-evidence/typecheck.log",
+      "result": "passed"
+    },
+    {
+      "command": "npm run build",
+      "log": "/tmp/feudal-stage3-task-7-evidence/build.log",
+      "result": "passed"
+    },
+    {
+      "command": "npm run harness",
+      "log": "/tmp/feudal-stage3-task-7-evidence/harness.log",
+      "result": "passed; determinism hash 5a393f13af3e61be matched both runs"
+    },
+    {
+      "command": "npm test",
+      "log": "/tmp/feudal-stage3-task-7-evidence/npm-test.log",
+      "result": "590 passed, 4 failed",
+      "failure": "All 4 failures are existing asset-pipeline tests blocked by missing ffmpeg: spawnSync ffmpeg ENOENT."
+    }
+  ],
+  "lspDiagnostics": {
+    "result": "not run",
+    "reason": "typescript LSP server is not installed; project fallback npm run typecheck passed."
+  },
+  "noExcuseChecker": {
+    "result": "not run",
+    "reason": "bun is not installed; tsx fallback could not resolve the external script's typescript dependency from the plugin cache path."
+  }
+}

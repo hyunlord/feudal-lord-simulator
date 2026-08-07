@@ -2,11 +2,20 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building } from "../src/content/buildingConfig";
-import type { GameState } from "../src/engine/engine.types";
+import type { GameState, PalisadeState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
 import { houseDiagnosisModel } from "../src/ui/houseDiagnosisModel";
 import type { TileCoordinate } from "../src/world/grid";
+import type { PalisadePath } from "../src/world/palisadeGeometry";
 import type { Tile } from "../src/world/world.types";
+
+const WALL_PATH: PalisadePath = [
+  { x: 0, y: 0 },
+  { x: 4, y: 0 },
+  { x: 4, y: 4 },
+  { x: 0, y: 4 },
+  { x: 0, y: 0 },
+];
 
 function building(
   id: string,
@@ -41,10 +50,30 @@ function house(input: Partial<House> = {}): House {
   };
 }
 
+function palisade(completed: boolean): PalisadeState {
+  return {
+    id: "palisade-a",
+    polygon: WALL_PATH,
+    gate: { x: 2, y: 0 },
+    segments: [
+      {
+        id: "segment-a",
+        order: 0,
+        edgePath: WALL_PATH,
+        tileCount: 16,
+        completed,
+        constructionSiteId: completed ? null : "palisade-a-segment-000",
+      },
+    ],
+  };
+}
+
 function state(input: {
   readonly house?: House;
+  readonly home?: Building;
   readonly extraBuildings?: readonly Building[];
   readonly roads?: readonly TileCoordinate[];
+  readonly palisade?: PalisadeState | null;
 } = {}): GameState {
   const roads = input.roads ?? [];
   const tiles: Tile[] = Array.from({ length: 60 }, (_unused, index) => {
@@ -58,7 +87,7 @@ function state(input: {
       hasRoad: roads.some((road) => road.tx === tx && road.ty === ty),
     };
   });
-  const home = building("house", "house", 1, 2);
+  const home = input.home ?? building("house", "house", 1, 2);
   const household = input.house ?? house();
   return {
     tick: 350,
@@ -71,7 +100,7 @@ function state(input: {
     wallTick: 0,
     era: "hamlet",
     eraProclaimedTick: null,
-    palisade: null,
+    palisade: input.palisade ?? null,
     nextConstructionOrdinal: 1,
     houses: [household],
     walkers: [],
@@ -228,4 +257,49 @@ test("house diagnosis distinguishes water-blocked growth from active decline", (
   // Then
   assert.equal(model.population.kind, "growth_blocked");
   assert.equal(model.population.label, "성장 정체 — 물 부족");
+});
+
+test("house diagnosis reports completed-wall inside protection with exact amenity label", () => {
+  // Given
+  const input = state({ palisade: palisade(true) });
+
+  // When
+  const model = diagnose(input);
+
+  // Then
+  assert.equal(model.protection.kind, "inside");
+  assert.equal(model.protection.label, "성벽 안 ✅ 편의 +2");
+  assert.equal(model.protection.amenityBonus, 2);
+});
+
+test("house diagnosis reports completed-wall outside protection with exact cap label", () => {
+  // Given
+  const input = state({
+    home: building("house", "house", 5, 2),
+    palisade: palisade(true),
+  });
+
+  // When
+  const model = diagnose(input);
+
+  // Then
+  assert.equal(model.protection.kind, "outside");
+  assert.equal(model.protection.label, "성벽 밖 — 3등급 불가");
+  assert.equal(model.protection.amenityBonus, 0);
+});
+
+test("house diagnosis does not report protection before the wall is complete", () => {
+  // Given
+  const beforeWall = state();
+  const duringWall = state({ palisade: palisade(false) });
+
+  // When
+  const beforeModel = diagnose(beforeWall);
+  const duringModel = diagnose(duringWall);
+
+  // Then
+  assert.equal(beforeModel.protection.kind, "inactive");
+  assert.equal(beforeModel.protection.label, "성벽 미완성");
+  assert.equal(duringModel.protection.kind, "inactive");
+  assert.equal(duringModel.protection.label, "성벽 미완성");
 });

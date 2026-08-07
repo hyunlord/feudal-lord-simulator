@@ -4,6 +4,7 @@ import type { GameState } from "../engine/engine.types";
 import type { House } from "../population/population.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
+import { palisadeProtectionForBuilding } from "../geometry/palisadeProtection";
 import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 
@@ -41,12 +42,18 @@ export type HouseDiagnosisModel = {
   readonly water: WaterDiagnosis;
   readonly bread: BreadDiagnosis;
   readonly population: PopulationDiagnosis;
+  readonly protection: ProtectionDiagnosis;
 };
 
 export type PopulationDiagnosis =
   | { readonly kind: "declining"; readonly label: string; readonly elapsedTicks: number }
   | { readonly kind: "growth_blocked"; readonly label: "성장 정체 — 물 부족" }
   | { readonly kind: "stable"; readonly label: "유지 또는 성장 중" };
+
+export type ProtectionDiagnosis =
+  | { readonly kind: "inactive"; readonly label: "성벽 미완성"; readonly amenityBonus: 0 }
+  | { readonly kind: "inside"; readonly label: "성벽 안 ✅ 편의 +2"; readonly amenityBonus: 2 }
+  | { readonly kind: "outside"; readonly label: "성벽 밖 — 3등급 불가"; readonly amenityBonus: 0 };
 
 const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택"] as const;
 
@@ -86,6 +93,18 @@ function populationDiagnosis(state: GameState, house: House): PopulationDiagnosi
   return house.hasWater
     ? { kind: "stable", label: "유지 또는 성장 중" }
     : { kind: "growth_blocked", label: "성장 정체 — 물 부족" };
+}
+
+function protectionDiagnosis(state: GameState, home: Building): ProtectionDiagnosis {
+  const protection = palisadeProtectionForBuilding(home, state.palisade);
+  switch (protection) {
+    case "inactive":
+      return { kind: "inactive", label: "성벽 미완성", amenityBonus: 0 };
+    case "inside":
+      return { kind: "inside", label: "성벽 안 ✅ 편의 +2", amenityBonus: 2 };
+    case "outside":
+      return { kind: "outside", label: "성벽 밖 — 3등급 불가", amenityBonus: 0 };
+  }
 }
 
 function connectedToBreadGranary(
@@ -142,5 +161,6 @@ export function houseDiagnosisModel(
     ),
     bread: servingBreadDiagnosis(state, house, home),
     population: populationDiagnosis(state, house),
+    protection: protectionDiagnosis(state, home),
   };
 }
