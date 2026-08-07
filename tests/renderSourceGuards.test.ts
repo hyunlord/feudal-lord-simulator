@@ -122,6 +122,15 @@ test("GameCanvas starts world asset preload without blocking first paint", async
   assert.equal(awaitsPreloader, false);
 });
 
+test("runtime world asset registry uses bundled generated data instead of importing from public", async () => {
+  // Given
+  const source = await readFile(new URL("../src/render/worldAssets.ts", import.meta.url), "utf8");
+
+  // When / Then
+  assert.doesNotMatch(source, /\.\.\/\.\.\/public\/assets\/world_asset_manifest\.json/);
+  assert.match(source, /from "\.\/worldAssetManifest\.generated"/);
+});
+
 test("renderFrame derives and draws onboarding world guidance without changing its public input", async () => {
   // Given
   const source = await readFile(new URL("../src/render/renderer.ts", import.meta.url), "utf8");

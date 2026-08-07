@@ -1,10 +1,15 @@
 import assert from "node:assert/strict";
 import { before, test } from "node:test";
 
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { GameState } from "../src/engine/engine.types";
 import { drawBuildings } from "../src/render/drawBuildings";
+import { drawStartingLandmark } from "../src/render/drawStartingLandmarks";
 import { drawTerrain } from "../src/render/drawTerrain";
+import { drawStumpDescriptor, drawTreeDescriptor } from "../src/render/drawTrees";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
+import type { StartingLandmark } from "../src/render/startingLandmarks";
+import { withAlpha } from "../src/render/style";
 import type { TerrainPatternAssets } from "../src/render/terrainPatterns";
 import { preloadWorldAssets } from "../src/render/worldAssets";
 import type { Tile } from "../src/world/world.types";
@@ -37,14 +42,36 @@ function loggedContext(): LoggedContext {
   const calls: string[] = [];
   let globalAlpha = 1;
   let imageSmoothingEnabled = true;
+  let fillStyle = "";
+  let font = "";
+  let strokeStyle = "";
   const context = {
     canvas: { width: 512, height: 512 },
     calls,
-    fillStyle: "",
+    get fillStyle() {
+      return fillStyle;
+    },
+    set fillStyle(value: string) {
+      fillStyle = value;
+      calls.push(`fillStyle:${value}`);
+    },
     lineCap: "butt",
     lineJoin: "miter",
     lineWidth: 0,
-    strokeStyle: "",
+    get font() {
+      return font;
+    },
+    set font(value: string) {
+      font = value;
+      calls.push(`font:${value}`);
+    },
+    get strokeStyle() {
+      return strokeStyle;
+    },
+    set strokeStyle(value: string) {
+      strokeStyle = value;
+      calls.push(`strokeStyle:${value}`);
+    },
     get globalAlpha() {
       return globalAlpha;
     },
@@ -79,6 +106,7 @@ function loggedContext(): LoggedContext {
       calls.push(`fillRect:${x},${y},${width},${height}`),
     strokeRect: (x: number, y: number, width: number, height: number) =>
       calls.push(`strokeRect:${x},${y},${width},${height}`),
+    fillText: (text: string, x: number, y: number) => calls.push(`fillText:${text},${x},${y}`),
   };
   return context as unknown as LoggedContext;
 }
@@ -197,4 +225,67 @@ test("full LOD just above the simplified boundary may use ready building sprites
 
   // Then
   assert.ok(context.calls.includes("drawImage"));
+});
+
+test("renderer-only ford landmark draws visible water stones and label", () => {
+  // Given
+  const context = loggedContext();
+  const landmark = { kind: "ford", tx: 53, ty: 41, label: "나루터" } as const satisfies StartingLandmark;
+
+  // When
+  drawStartingLandmark(context, landmark, 1);
+
+  // Then
+  assert.ok(context.calls.includes(`fillStyle:${withAlpha(SEMANTIC_PALETTE.water, 0.72)}`));
+  assert.ok(context.calls.includes(`fillStyle:${SEMANTIC_PALETTE.stone}`));
+  assert.ok(context.calls.includes(`fillStyle:${PALETTE.ink}`));
+  assert.ok(context.calls.some((call) => call.startsWith("fillText:나루터,")));
+});
+
+test("visible missing tree and stump sprites fall back to procedural marks", () => {
+  // Given
+  const context = loggedContext();
+
+  // When
+  drawTreeDescriptor(context, {
+    tick: 0,
+    tree: {
+      id: "tree:missing",
+      x: 0,
+      y: 0,
+      offsetX: 0,
+      offsetY: 0,
+      scale: 1,
+      silhouette: "rounded",
+      tone: SEMANTIC_PALETTE.forest,
+      phase: 0,
+      sortY: 0,
+      anchorTx: 0,
+      anchorTy: 0,
+      spriteKey: "tree_oak_large",
+    },
+    zoom: 1,
+    spriteOptions: { camera: { zoom: 1, panX: -10_000, panY: -10_000 }, viewport: { width: 64, height: 64 } },
+  });
+  drawStumpDescriptor(context, {
+    descriptor: {
+      id: "stump:missing",
+      x: 20,
+      y: 20,
+      scale: 1,
+      sortY: 20,
+      anchorTx: 0,
+      anchorTy: 0,
+      spriteKey: "stump_fresh",
+    },
+    zoom: 1,
+    spriteOptions: { camera: { zoom: 1, panX: -10_000, panY: -10_000 }, viewport: { width: 64, height: 64 } },
+  });
+
+  // Then
+  assert.equal(context.calls.includes("drawImage"), false);
+  assert.ok(context.calls.includes(`fillStyle:${SEMANTIC_PALETTE.forest}`));
+  assert.ok(context.calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`));
+  assert.ok(context.calls.some((call) => call.startsWith("ellipse:0,-28,")));
+  assert.ok(context.calls.includes("ellipse:20,17,11,5"));
 });

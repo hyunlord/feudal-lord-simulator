@@ -3,6 +3,7 @@ import type { Tile } from "../world/world.types";
 import { depthKey } from "./iso";
 import {
   buildObjectRenderItems,
+  forestHarvestAgeSignature,
   type ObjectRenderItem,
   type RenderQueueItem,
 } from "./objectRenderOrder";
@@ -61,6 +62,8 @@ const staticObjectRenderItemsForFrame = (
     walkers: [],
     range: input.range,
     seed: input.state.seed,
+    tick: input.state.tick,
+    forestHarvests: input.state.forestHarvests,
     includeGroundCover: input.includeGroundCover,
   });
   staticObjectRenderCache.set(input.state.tiles, {
@@ -136,6 +139,7 @@ const objectRenderCacheKey = (input: ObjectRenderFrameInput): string =>
     input.state.width,
     input.state.height,
     input.state.seed,
+    forestHarvestAgeSignature(input.state.forestHarvests, input.state.tick),
     input.includeGroundCover ? 1 : 0,
     input.range.minTx,
     input.range.minTy,

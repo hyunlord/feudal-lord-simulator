@@ -4,6 +4,7 @@ import test from "node:test";
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
 import type { ConstructionSite } from "../src/economy/construction";
+import { STUMP_OLD_AFTER_TICKS } from "../src/engine/forestHarvests";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import type { TileRange } from "../src/render/renderer";
 import type { Tile } from "../src/world/world.types";
@@ -85,6 +86,66 @@ test("roads suppress forest tree render items", () => {
 
   // Then
   assert.deepEqual(items, []);
+});
+
+test("recorded harvested forest tiles render as tick-aged stumps instead of trees", () => {
+  // Given
+  const harvests = [
+    { tx: 1, ty: 1, harvestedAtTick: 100 },
+    { tx: 2, ty: 1, harvestedAtTick: 100 },
+  ] as const;
+  const tiles = [tile(1, 1, "forest"), tile(2, 1, "forest")];
+
+  // When
+  const freshItems = buildObjectRenderItems({
+    tiles,
+    buildings: [],
+    range,
+    seed: 7,
+    tick: 100 + STUMP_OLD_AFTER_TICKS - 1,
+    forestHarvests: harvests,
+  });
+  const oldItems = buildObjectRenderItems({
+    tiles,
+    buildings: [],
+    range,
+    seed: 7,
+    tick: 100 + STUMP_OLD_AFTER_TICKS,
+    forestHarvests: harvests,
+  });
+
+  // Then
+  assert.deepEqual(freshItems.map((item) => `${item.kind}:${item.id}`), [
+    "stump:stump:1:1:100",
+    "stump:stump:2:1:100",
+  ]);
+  assert.deepEqual(
+    freshItems.map((item) => item.kind === "stump" ? item.descriptor.spriteKey : null),
+    ["stump_fresh", "stump_fresh"],
+  );
+  assert.deepEqual(
+    oldItems.map((item) => item.kind === "stump" ? item.descriptor.spriteKey : null),
+    ["stump_old", "stump_old"],
+  );
+});
+
+test("stump rendering reads harvest history without mutating the input array", () => {
+  // Given
+  const harvests = [{ tx: 1, ty: 1, harvestedAtTick: 100 }] as const;
+  const before = JSON.stringify(harvests);
+
+  // When
+  buildObjectRenderItems({
+    tiles: [tile(1, 1, "forest")],
+    buildings: [],
+    range,
+    seed: 7,
+    tick: 100,
+    forestHarvests: harvests,
+  });
+
+  // Then
+  assert.equal(JSON.stringify(harvests), before);
 });
 
 test("buildings render when any configured footprint tile overlaps the visible range", () => {

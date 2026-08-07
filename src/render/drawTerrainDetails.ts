@@ -9,7 +9,7 @@ import {
   roadPebbleVariants,
   type CardinalDirection,
 } from "./terrainDetails";
-import { getTerrainPattern, type TerrainPatternAssets } from "./terrainPatterns";
+import { getTerrainPattern, terrainPatternQuarterTurn, type TerrainPatternAssets } from "./terrainPatterns";
 import { snapToPixel } from "./style";
 
 type Point = { readonly x: number; readonly y: number };
@@ -62,7 +62,12 @@ export function drawRoadPath(
     .map(({ dx, dy }) => getTile(state, { tx: tile.tx + dx, ty: tile.ty + dy }))
     .filter((candidate): candidate is Tile => candidate !== null);
   const arms = roadConnectionArms(tile, neighbours);
-  const pattern = getTerrainPattern(context, "packed_earth_road", terrainPatterns);
+  const pattern = getTerrainPattern(
+    context,
+    "packed_earth_road",
+    terrainPatterns,
+    terrainPatternQuarterTurn("packed_earth_road", tile.tx, tile.ty, state.seed),
+  );
   if (pattern === null) {
     context.fillStyle = SEMANTIC_PALETTE.earth;
     traceRoadBase(context, center, arms);
@@ -99,6 +104,7 @@ function fillRoadPattern(
   try {
     context.clip();
     context.fillStyle = pattern;
+    context.globalAlpha *= 0.45;
     context.fillRect(
       snapToPixel(center.x - TILE_W / 2),
       snapToPixel(center.y - TILE_H / 2),

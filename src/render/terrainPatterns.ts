@@ -58,6 +58,21 @@ export function terrainTextureKeyFor(terrain: TerrainType): TerrainTextureKey {
   return TERRAIN_TO_TEXTURE[terrain];
 }
 
+export function terrainPatternQuarterTurn(
+  key: TerrainTextureKey,
+  tx: number,
+  ty: number,
+  seed: number,
+): PatternQuarterTurn {
+  const regionTx = Math.floor(tx / 8);
+  const regionTy = Math.floor(ty / 8);
+  let hash = Math.imul(regionTx + 40_961, 73_856_093) ^ Math.imul(regionTy + 73_121, 19_349_663);
+  hash ^= Math.imul(seed + 101_111, 83_492_791);
+  hash ^= materialSalt(key);
+  hash = Math.imul(hash ^ (hash >>> 13), 1_274_126_177);
+  return ((hash ^ (hash >>> 16)) >>> 0 & 3) as PatternQuarterTurn;
+}
+
 export function getTerrainPattern(
   context: CanvasRenderingContext2D,
   key: TerrainTextureKey,
@@ -107,4 +122,14 @@ function cacheForContext(
 
 function isLoadStatus(value: string): value is LoadStatus {
   return value === "idle" || value === "loading" || value === "ready" || value === "missing";
+}
+
+function materialSalt(key: TerrainTextureKey): number {
+  switch (key) {
+    case "grass": return 0;
+    case "forest_floor": return 1_001;
+    case "water": return 2_003;
+    case "rock": return 3_007;
+    case "packed_earth_road": return 4_009;
+  }
 }

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "hostLabel": "aitopatom-d6bb",
+  "revision": "3e92090-dirty",
+  "baseUrl": "http://127.0.0.1:33200",
+  "thresholdMs": 12,
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "samples": [
+    {
+      "index": 1,
+      "competition": "5x",
+      "averageMs": 4.958,
+      "p95Ms": 5.4,
+      "worstMs": 8.8,
+      "renderAverageMs": 4.663,
+      "simulationAverageMs": 0.294,
+      "overBudgetFrames": 0,
+      "measuredFrames": 120,
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      }
+    },
+    {
+      "index": 2,
+      "competition": "5x",
+      "averageMs": 4.827,
+      "p95Ms": 5.1,
+      "worstMs": 8.9,
+      "renderAverageMs": 4.548,
+      "simulationAverageMs": 0.279,
+      "overBudgetFrames": 0,
+      "measuredFrames": 120,
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      }
+    },
+    {
+      "index": 3,
+      "competition": "5x",
+      "averageMs": 4.812,
+      "p95Ms": 5.2,
+      "worstMs": 8.5,
+      "renderAverageMs": 4.573,
+      "simulationAverageMs": 0.238,
+      "overBudgetFrames": 0,
+      "measuredFrames": 120,
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      }
+    },
+    {
+      "index": 4,
+      "competition": "5x",
+      "averageMs": 4.686,
+      "p95Ms": 4.9,
+      "worstMs": 9.2,
+      "renderAverageMs": 4.473,
+      "simulationAverageMs": 0.213,
+      "overBudgetFrames": 0,
+      "measuredFrames": 120,
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      }
+    },
+    {
+      "index": 5,
+      "competition": "5x",
+      "averageMs": 4.708,
+      "p95Ms": 5,
+      "worstMs": 8.9,
+      "renderAverageMs": 4.491,
+      "simulationAverageMs": 0.217,
+      "overBudgetFrames": 0,
+      "measuredFrames": 120,
+      "entities": {
+        "buildings": 40,
+        "roads": 127,
+        "trees": 126,
+        "groundCover": 30,
+        "walkers": 20
+      }
+    }
+  ]
+}

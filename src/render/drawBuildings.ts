@@ -5,21 +5,16 @@ import type { Tile } from "../world/world.types";
 import type { CameraState } from "./camera";
 import { tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
-import {
-  buildBuildingVisualState,
-  buildingLodColor,
-  buildingBodyProfile,
-  renderDetailLevel,
-  type BodyProfile,
-} from "./buildingVisualState";
+import { buildBuildingVisualState, renderDetailLevel } from "./buildingVisualState";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
-import { drawGroundCoverDescriptor, drawTreeDescriptor } from "./drawTrees";
+import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } from "./drawTrees";
+import { drawStartingLandmark } from "./drawStartingLandmarks";
 import { drawWalker } from "./drawWalkers";
 import type { TileRange, ViewportSize } from "./renderer";
-import { applyInkOutline, shade, snapToPixel } from "./style";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
+import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -36,13 +31,6 @@ type ObjectRenderInput = {
 
 type Point = { readonly x: number; readonly y: number };
 
-type BuildingShapeInput = {
-  readonly center: Point;
-  readonly building: Building;
-  readonly visualState: ReturnType<typeof buildBuildingVisualState>;
-  readonly zoom: number;
-};
-
 export function drawBuildings(
   context: CanvasRenderingContext2D,
   input: ObjectRenderInput,
@@ -58,7 +46,9 @@ export function drawBuildings(
   });
   const spriteOptions = spriteOptionsFor(input);
   for (const item of items) {
-    if (item.kind === "tree") {
+    if (item.kind === "starting_landmark") {
+      drawStartingLandmark(context, item.landmark, input.zoom);
+    } else if (item.kind === "tree") {
       drawTreeDescriptor(context, {
         tick: input.state.tick,
         tree: item.descriptor,
@@ -67,6 +57,12 @@ export function drawBuildings(
       });
     } else if (item.kind === "groundCover") {
       drawGroundCoverDescriptor(context, {
+        descriptor: item.descriptor,
+        zoom: input.zoom,
+        spriteOptions,
+      });
+    } else if (item.kind === "stump") {
+      drawStumpDescriptor(context, {
         descriptor: item.descriptor,
         zoom: input.zoom,
         spriteOptions,
@@ -108,7 +104,8 @@ function drawBuilding(
   const shape = {
     center,
     building,
-    visualState,
+    houseLevel: visualState.houseLevel,
+    houseMaterialEra: visualState.houseMaterialEra,
     zoom: input.zoom,
   };
   if (detailLevel === "blocks") {
@@ -128,136 +125,8 @@ function drawBuilding(
   }
 }
 
-function drawLodBlock(
-  context: CanvasRenderingContext2D,
-  input: BuildingShapeInput,
-): void {
-  const body = buildingBodyProfile(input.building.kind, input.visualState.houseLevel, input.visualState.houseMaterialEra);
-  const origin = { x: input.center.x - body.width / 2, y: input.center.y - 12 };
-  context.fillStyle = buildingLodColor(input.building.kind);
-  traceIsoFace(context, origin, body.width, 14, "front");
-  context.fill();
-  applyInkOutline(context, input.zoom);
-  context.stroke();
-}
-
-function drawBody(
-  context: CanvasRenderingContext2D,
-  input: BuildingShapeInput,
-): void {
-  const body = buildingBodyProfile(input.building.kind, input.visualState.houseLevel, input.visualState.houseMaterialEra);
-  const origin = { x: input.center.x - body.width / 2, y: input.center.y - body.height };
-  context.fillStyle = body.fill;
-  traceIsoFace(context, origin, body.width, body.height, "front");
-  context.fill();
-  applyInkOutline(context, input.zoom);
-  context.stroke();
-  context.fillStyle = shade(body.fill, 0.92);
-  traceIsoFace(context, origin, body.width, body.height, "left");
-  context.fill();
-  applyInkOutline(context, input.zoom);
-  context.stroke();
-  context.fillStyle = shade(body.fill, 0.8);
-  traceIsoFace(context, origin, body.width, body.height, "right");
-  context.fill();
-  applyInkOutline(context, input.zoom);
-  context.stroke();
-}
-
-function drawRoof(
-  context: CanvasRenderingContext2D,
-  input: BuildingShapeInput,
-): void {
-  const body = buildingBodyProfile(input.building.kind, input.visualState.houseLevel, input.visualState.houseMaterialEra);
-  if (body.roofShape === "none") {
-    return;
-  }
-  context.fillStyle = body.roofColor;
-  if (body.roofShape === "flat") {
-    traceRect(context, { x: input.center.x - body.width / 2 - 4, y: input.center.y - body.height - 4 }, body.width + 8, 8);
-  } else if (body.roofShape === "shed") {
-    traceShedRoof(context, input.center, body);
-  } else if (body.roofShape === "dome") {
-    context.beginPath();
-    context.ellipse(
-      snapToPixel(input.center.x),
-      snapToPixel(input.center.y - body.height + 2),
-      body.width / 2 + 4,
-      body.roof,
-      0,
-      Math.PI,
-      Math.PI * 2,
-    );
-    context.closePath();
-  } else {
-    const peakLift = body.roofShape === "tower" ? body.roof + 8 : body.roof;
-    traceTriangle(context, [
-      { x: input.center.x, y: input.center.y - body.height - peakLift },
-      { x: input.center.x + body.width / 2 + 5, y: input.center.y - body.height + 5 },
-      { x: input.center.x - body.width / 2 - 5, y: input.center.y - body.height + 5 },
-    ]);
-  }
-  context.fill();
-  applyInkOutline(context, input.zoom);
-  context.stroke();
-}
-
-function traceShedRoof(context: CanvasRenderingContext2D, center: Point, body: BodyProfile): void {
-  context.beginPath();
-  context.moveTo(snapToPixel(center.x - body.width / 2 - 5), snapToPixel(center.y - body.height + 2));
-  context.lineTo(snapToPixel(center.x + body.width / 2 + 6), snapToPixel(center.y - body.height - body.roof));
-  context.lineTo(snapToPixel(center.x + body.width / 2 + 8), snapToPixel(center.y - body.height + 4));
-  context.lineTo(snapToPixel(center.x - body.width / 2 - 3), snapToPixel(center.y - body.height + body.roof * 0.5));
-  context.closePath();
-}
-
 function buildingCenter(building: Building): Point {
   const config = BUILDING_CONFIG_BY_KIND[building.kind];
   const center = tileToScreen(building.tx + (config.width - 1) / 2, building.ty + (config.height - 1) / 2);
   return { x: center.sx, y: center.sy };
-}
-
-function traceIsoFace(
-  context: CanvasRenderingContext2D,
-  origin: Point,
-  width: number,
-  height: number,
-  face: "front" | "left" | "right",
-): void {
-  const inset = height * 0.28;
-  context.beginPath();
-  if (face === "front") {
-    context.moveTo(snapToPixel(origin.x), snapToPixel(origin.y + inset));
-    context.lineTo(snapToPixel(origin.x + width), snapToPixel(origin.y + inset));
-    context.lineTo(snapToPixel(origin.x + width), snapToPixel(origin.y + height));
-    context.lineTo(snapToPixel(origin.x), snapToPixel(origin.y + height));
-  } else if (face === "left") {
-    context.moveTo(snapToPixel(origin.x), snapToPixel(origin.y + inset));
-    context.lineTo(snapToPixel(origin.x + width * 0.18), snapToPixel(origin.y));
-    context.lineTo(snapToPixel(origin.x + width * 0.18), snapToPixel(origin.y + height - inset));
-    context.lineTo(snapToPixel(origin.x), snapToPixel(origin.y + height));
-  } else {
-    context.moveTo(snapToPixel(origin.x + width), snapToPixel(origin.y + inset));
-    context.lineTo(snapToPixel(origin.x + width * 0.82), snapToPixel(origin.y));
-    context.lineTo(snapToPixel(origin.x + width * 0.82), snapToPixel(origin.y + height - inset));
-    context.lineTo(snapToPixel(origin.x + width), snapToPixel(origin.y + height));
-  }
-  context.closePath();
-}
-
-function traceRect(context: CanvasRenderingContext2D, origin: Point, width: number, height: number): void {
-  context.beginPath();
-  context.moveTo(snapToPixel(origin.x), snapToPixel(origin.y));
-  context.lineTo(snapToPixel(origin.x + width), snapToPixel(origin.y));
-  context.lineTo(snapToPixel(origin.x + width), snapToPixel(origin.y + height));
-  context.lineTo(snapToPixel(origin.x), snapToPixel(origin.y + height));
-  context.closePath();
-}
-
-function traceTriangle(context: CanvasRenderingContext2D, points: readonly [Point, Point, Point]): void {
-  context.beginPath();
-  context.moveTo(snapToPixel(points[0].x), snapToPixel(points[0].y));
-  context.lineTo(snapToPixel(points[1].x), snapToPixel(points[1].y));
-  context.lineTo(snapToPixel(points[2].x), snapToPixel(points[2].y));
-  context.closePath();
 }

@@ -6,12 +6,14 @@ import {
   type ConstructionSite,
 } from "../economy/construction";
 import type { PalisadeState } from "../engine/engine.types";
+import type { ForestHarvest } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import {
   constructionSiteRenderItem,
 } from "./constructionRenderItems";
 import { depthKey } from "./iso";
 import { palisadeSegmentRenderItems } from "./palisadeObjectRenderItems";
+import { STARTING_LANDMARKS } from "./startingLandmarks";
 import type {
   ObjectRenderItem,
   RenderQueueItem,
@@ -27,7 +29,9 @@ import {
   buildGroundCover,
   buildTreeCluster,
 } from "./treeLayout";
+import { forestHarvestLookup, stumpRenderItemForTile } from "./stumpRenderItems";
 import { walkerVisualAnchor } from "./walkerAnchor";
+export { forestHarvestAgeSignature } from "./stumpRenderItems";
 export type { ObjectRenderItem, RenderQueueItem, WorldObjectRenderItem };
 
 type ObjectRenderInput = {
@@ -39,6 +43,8 @@ type ObjectRenderInput = {
   readonly walkers?: readonly Walker[];
   readonly range: TileRange;
   readonly seed?: number;
+  readonly tick?: number;
+  readonly forestHarvests?: readonly ForestHarvest[];
   readonly includeGroundCover?: boolean;
 };
 type ObjectRenderInputWithoutConstruction = Omit<ObjectRenderInput, "constructionSites"> & {
@@ -70,15 +76,32 @@ export function buildObjectRenderItems(
   const constructionSites = input.constructionSites ?? [];
   const clearedTiles = clearedTreeTileKeys(input.buildings, constructionSites);
   const seed = input.seed ?? 0;
+  const tick = input.tick ?? 0;
   const worldTiles = input.worldTiles ?? input.tiles;
+  const harvests = input.forestHarvests ?? [];
+  const harvestLookup = forestHarvestLookup(harvests);
   const foliageTiles = input.tiles.filter((tile) =>
     tileIsVisibleInRange(tile.tx, tile.ty, input.range),
   );
   const forestLookup = buildForestLookup(worldTiles);
   const protectedGroundCoverTiles = groundCoverProtectedTileKeys(worldTiles, input.buildings, constructionSites);
 
+  for (const landmark of STARTING_LANDMARKS) {
+    if (!tileIsVisibleInRange(landmark.tx, landmark.ty, input.range)) continue;
+    items.push({
+      kind: "starting_landmark",
+      id: `starting-landmark:${landmark.kind}:${landmark.tx}:${landmark.ty}`,
+      landmark,
+      depth: depthKey(landmark.tx, landmark.ty),
+      anchorTx: landmark.tx,
+    });
+  }
+
   for (const tile of foliageTiles) {
-    if (tile.terrain === "forest" && isTreeCandidate(tile, clearedTiles)) {
+    const stumpItem = stumpRenderItemForTile(tile, harvestLookup, clearedTiles, tick);
+    if (stumpItem !== null) {
+      items.push(stumpItem);
+    } else if (tile.terrain === "forest" && isTreeCandidate(tile, clearedTiles)) {
       for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
         items.push({
           kind: "tree",

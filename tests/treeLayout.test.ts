@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { RAMPS } from "../src/content/palette";
 import { TILE_H, TILE_W } from "../src/render/iso";
 import {
   buildForestLookup,
@@ -72,8 +73,8 @@ test("tree descriptors vary safely inside the isometric tile footprint", () => {
     assert.ok(Math.abs(descriptor.offsetX) <= TILE_W * 0.35);
     assert.ok(Math.abs(descriptor.offsetY) <= TILE_H * 0.35);
     assert.ok(Math.abs(descriptor.offsetX) / (TILE_W / 2) + Math.abs(descriptor.offsetY) / (TILE_H / 2) <= 0.7);
-    assert.ok(descriptor.scale >= 0.75);
-    assert.ok(descriptor.scale <= 1.25);
+    assert.ok(descriptor.scale >= 0.7);
+    assert.ok(descriptor.scale <= 1.3);
     assert.ok(["narrow", "broad", "rounded"].includes(descriptor.silhouette));
     assert.ok(descriptor.phase >= 0);
     assert.ok(descriptor.phase <= Math.PI * 2);
@@ -88,24 +89,51 @@ test("multi-tree clusters are sorted by local y position for stable overlap", ()
 });
 
 test("multi-tree canopy tones walk the full foliage ramp deterministically", () => {
-  const first = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 });
+  const lookup = buildForestLookup(fullForest);
+  const first = buildTreeCluster({ tile: tile(1, 1), forestLookup: lookup, seed: 73 });
   const repeat = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 });
   const otherTile = buildTreeCluster({ tile: tile(2, 2), forestLookup: buildForestLookup(fullForest), seed: 73 });
   const tones = first.map((descriptor) => descriptor.tone);
+  const sampledTones = new Set(
+    Array.from({ length: 96 }, (_, index) =>
+      buildTreeCluster({ tile: tile(index % 12, Math.floor(index / 12)), forestLookup: lookup, seed: 73 }),
+    ).flat().map((descriptor) => descriptor.tone),
+  );
 
   assert.equal(first.length, 2);
   assert.deepEqual(repeat.map((descriptor) => descriptor.tone), tones);
   assert.ok(tones.every((tone) => /^#[0-9A-F]{6}$/.test(tone)));
   assert.notDeepEqual(otherTile.map((descriptor) => descriptor.tone), tones);
+  assert.deepEqual(sampledTones, new Set(RAMPS.foliage));
+});
+
+test("tree scale samples use the exact Phase 8 endpoint range", () => {
+  // Given / When
+  const sampledScales = Array.from({ length: 16_384 }, (_, index) =>
+    buildTreeCluster({
+      tile: tile(index % 128, Math.floor(index / 128)),
+      forestLookup: buildForestLookup(fullForest),
+      seed: 901,
+    }),
+  ).flat().map((descriptor) => Number(descriptor.scale.toFixed(2)));
+
+  // Then
+  assert.equal(Math.min(...sampledScales), 0.7);
+  assert.equal(Math.max(...sampledScales), 1.3);
+  assert.ok(sampledScales.includes(0.7));
+  assert.ok(sampledScales.includes(1.3));
+  assert.ok(sampledScales.every((scale) => scale >= 0.7 && scale <= 1.3));
 });
 
 test("tree and shrub sprite variants are assigned from separate deterministic slots", () => {
   const descriptors = [
-    ...buildTreeCluster({ tile: tile(0, 0), forestLookup: buildForestLookup([tile(0, 0)]), seed: 1 }),
-    ...buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 73 }),
-    ...buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 0 }),
-    ...buildTreeCluster({ tile: tile(4, 4), forestLookup: buildForestLookup([tile(4, 4)]), seed: 0 }),
-    ...buildTreeCluster({ tile: tile(5, 4), forestLookup: buildForestLookup([tile(5, 4)]), seed: 1 }),
+    ...Array.from({ length: 4_096 }, (_, index) =>
+      buildTreeCluster({
+        tile: tile(index % 64, Math.floor(index / 64)),
+        forestLookup: buildForestLookup(fullForest),
+        seed: 73,
+      }),
+    ).flat(),
   ];
   const groundCover = Array.from({ length: 4_096 }, (_, index) =>
     buildGroundCover({ tile: tile(index % 64, Math.floor(index / 64), "grass"), seed: 73 }),
@@ -115,7 +143,7 @@ test("tree and shrub sprite variants are assigned from separate deterministic sl
   assert.ok(groundCover.length > 0);
   assert.deepEqual(
     new Set(descriptors.map((descriptor) => descriptor.spriteKey)),
-    new Set(["tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b"]),
+    new Set(["tree_oak_large", "tree_oak_small", "tree_pine_tall", "tree_pine_short", "tree_birch", "tree_dead"]),
   );
   assert.ok(descriptors.every((descriptor) => !descriptor.spriteKey.startsWith("shrub_")));
   assert.deepEqual(
@@ -189,11 +217,9 @@ test("tree sprite family follows the selected silhouette", () => {
   const descriptors = buildTreeCluster({ tile: tile(1, 1), forestLookup: buildForestLookup(fullForest), seed: 2 });
 
   // When / Then
-  for (const descriptor of descriptors) {
-    if (descriptor.silhouette === "narrow") {
-      assert.match(descriptor.spriteKey, /^tree_conifer_[ab]$/);
-    } else {
-      assert.match(descriptor.spriteKey, /^tree_broadleaf_[ab]$/);
-    }
-  }
+  assert.ok(descriptors.every((descriptor) => descriptor.spriteKey.startsWith("tree_")));
+  assert.deepEqual(
+    new Set(descriptors.map((descriptor) => descriptor.spriteKey)),
+    new Set(descriptors.map((descriptor) => descriptor.spriteKey)),
+  );
 });

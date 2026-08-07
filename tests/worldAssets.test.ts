@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
+import { runtimeWorldAssetManifest } from "../src/render/worldAssetManifest.generated";
 import {
   getSprite,
   parseWorldAssetManifest,
@@ -70,6 +72,23 @@ console.log(JSON.stringify({
 };
 
 describe("browser world asset registry", () => {
+  it("Given the generated runtime manifest When compared with the public release manifest Then runtime asset coverage is exact", () => {
+    const publicManifest = JSON.parse(readFileSync("public/assets/world_asset_manifest.json", "utf8")) as {
+      readonly assets: readonly Readonly<Record<string, unknown>>[];
+    };
+    const runtimeProjection = publicManifest.assets.map((asset) => ({
+      key: asset["key"],
+      category: asset["category"],
+      path: asset["path"],
+      width: asset["width"],
+      height: asset["height"],
+      anchor: asset["anchor"],
+      footprint: asset["footprint"],
+    }));
+
+    assert.deepEqual(runtimeWorldAssetManifest.assets, runtimeProjection);
+  });
+
   it("Given an unsupported category When the manifest crosses the runtime boundary Then parsing rejects it", () => {
     const invalid = {
       assets: [assetFixture({ category: "character" })],

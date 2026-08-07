@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
 import { SEMANTIC_PALETTE } from "../src/content/palette";
-import { drawTerrain, grassPatternQuarterTurn, terrainTextureOpacity } from "../src/render/drawTerrain";
+import { drawTerrain, grassPatternQuarterTurn, terrainPatternQuarterTurn, terrainTextureOpacity } from "../src/render/drawTerrain";
 import { drawRoadPath } from "../src/render/drawTerrainDetails";
 import { shade, withAlpha } from "../src/render/style";
 import { TERRAIN_TEXTURE_KEYS, getTerrainPattern, terrainTextureKeyFor, type TerrainPatternAssets, type TerrainTextureKey } from "../src/render/terrainPatterns";
@@ -233,20 +233,29 @@ describe("terrain patterns", () => {
     assert.ok(calls.indexOf("restore") < calls.indexOf(`fillStyle:${expectedOverlay}`));
   });
 
-  it("Given terrain materials When texture opacity is selected Then water stays faint and land stays near 45 percent", () => {
+  it("Given terrain materials When texture opacity is selected Then every texture composites at 45 percent", () => {
     assert.equal(terrainTextureOpacity("grass"), 0.45);
     assert.equal(terrainTextureOpacity("forest"), 0.45);
     assert.equal(terrainTextureOpacity("rock"), 0.45);
-    assert.equal(terrainTextureOpacity("water"), 0.18);
+    assert.equal(terrainTextureOpacity("water"), 0.45);
   });
 
-  it("Given grass tile coordinates When repeat orientation is selected Then a deterministic quarter-turn is used", () => {
-    const first = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn((index % 4) * 8, Math.floor(index / 4) * 8, 73));
-    const second = Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn((index % 4) * 8, Math.floor(index / 4) * 8, 73));
-    assert.deepEqual(first, second);
-    assert.deepEqual([...new Set(first)].sort(), [0, 1, 2, 3]);
-    assert.equal(grassPatternQuarterTurn(0, 0, 73), grassPatternQuarterTurn(7, 7, 73));
-    assert.notDeepEqual(first, Array.from({ length: 16 }, (_, index) => grassPatternQuarterTurn((index % 4) * 8, Math.floor(index / 4) * 8, 74)));
+  it("Given terrain tile coordinates When repeat orientation is selected Then every material gets deterministic quarter-turn variants", () => {
+    for (const key of TERRAIN_TEXTURE_KEYS) {
+      const first = Array.from({ length: 16 }, (_, index) =>
+        terrainPatternQuarterTurn(key, (index % 4) * 8, Math.floor(index / 4) * 8, 73),
+      );
+      const second = Array.from({ length: 16 }, (_, index) =>
+        terrainPatternQuarterTurn(key, (index % 4) * 8, Math.floor(index / 4) * 8, 73),
+      );
+      assert.deepEqual(first, second);
+      assert.deepEqual([...new Set(first)].sort(), [0, 1, 2, 3]);
+      assert.equal(terrainPatternQuarterTurn(key, 0, 0, 73), terrainPatternQuarterTurn(key, 7, 7, 73));
+      assert.notDeepEqual(first, Array.from({ length: 16 }, (_, index) =>
+        terrainPatternQuarterTurn(key, (index % 4) * 8, Math.floor(index / 4) * 8, 74),
+      ));
+    }
+    assert.equal(grassPatternQuarterTurn(7, 7, 73), terrainPatternQuarterTurn("grass", 7, 7, 73));
   });
 
   it("Given camera transforms differ When textured terrain draws Then pattern phase remains world anchored", () => {
@@ -300,6 +309,7 @@ describe("terrain patterns", () => {
     assert.deepEqual(calls.filter((call) => call === "createPattern:packed_earth_road"), [
       "createPattern:packed_earth_road",
     ]);
+    assert.ok(calls.includes("globalAlpha:0.45"));
     assert.ok(calls.includes("fillStyle:pattern:packed_earth_road"));
     assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`));
     assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.stoneDark}`));

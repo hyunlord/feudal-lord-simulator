@@ -7,6 +7,7 @@ import {
   buildTreeCluster,
   type ForestLookup,
   type GroundCoverDescriptor,
+  type StumpDescriptor,
   type TreeDescriptor,
 } from "./treeLayout";
 import { applyInkOutline, snapToPixel } from "./style";
@@ -78,6 +79,28 @@ export function drawGroundCoverDescriptor(
   drawGroundCoverPrimitive(context, input.descriptor, input.zoom);
 }
 
+export function drawStumpDescriptor(
+  context: CanvasRenderingContext2D,
+  input: {
+    readonly descriptor: StumpDescriptor;
+    readonly zoom: number;
+    readonly spriteOptions: WorldSpriteOptions;
+  },
+): void {
+  if (
+    drawWorldSpriteAtWorldAnchor(
+      context,
+      input.descriptor.spriteKey,
+      input.descriptor.anchorTx,
+      input.descriptor.anchorTy,
+      { ...input.spriteOptions, scale: input.descriptor.scale },
+    )
+  ) {
+    return;
+  }
+  drawStumpPrimitive(context, input.descriptor, input.zoom);
+}
+
 function drawTree(
   context: CanvasRenderingContext2D,
   tick: number,
@@ -126,6 +149,27 @@ function drawGroundCoverPrimitive(
     snapToPixel(descriptor.y - 4 * descriptor.scale),
     snapToPixel(8 * descriptor.scale),
     snapToPixel(5 * descriptor.scale),
+    0,
+    0,
+    Math.PI * 2,
+  );
+  context.fill();
+  applyInkOutline(context, zoom);
+  context.stroke();
+}
+
+function drawStumpPrimitive(
+  context: CanvasRenderingContext2D,
+  descriptor: StumpDescriptor,
+  zoom: number,
+): void {
+  context.fillStyle = SEMANTIC_PALETTE.earthDark;
+  context.beginPath();
+  context.ellipse(
+    snapToPixel(descriptor.x),
+    snapToPixel(descriptor.y - 3),
+    snapToPixel(11),
+    snapToPixel(5),
     0,
     0,
     Math.PI * 2,

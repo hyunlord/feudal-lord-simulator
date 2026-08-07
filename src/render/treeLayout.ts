@@ -1,4 +1,6 @@
 import { RAMPS, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
+import type { ForestHarvest } from "../engine/engine.types";
+import { stumpAgeAt } from "../engine/forestHarvests";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
@@ -6,10 +8,13 @@ import { objectPhase } from "./renderMotion";
 export type TreeSilhouette = "narrow" | "broad" | "rounded";
 export type TreeTone = PaletteColor;
 export type TreeSpriteKey =
-  | "tree_broadleaf_a"
-  | "tree_broadleaf_b"
-  | "tree_conifer_a"
-  | "tree_conifer_b";
+  | "tree_oak_large"
+  | "tree_oak_small"
+  | "tree_pine_tall"
+  | "tree_pine_short"
+  | "tree_birch"
+  | "tree_dead";
+export type StumpSpriteKey = "stump_fresh" | "stump_old";
 export type GroundCoverSpriteKey = "shrub_a" | "shrub_b" | "grass_tuft" | "field_stone";
 
 export type TreeDescriptor = {
@@ -42,6 +47,17 @@ export type GroundCoverDescriptor = {
   readonly spriteKey: GroundCoverSpriteKey;
 };
 
+export type StumpDescriptor = {
+  readonly id: string;
+  readonly x: number;
+  readonly y: number;
+  readonly scale: number;
+  readonly sortY: number;
+  readonly anchorTx: number;
+  readonly anchorTy: number;
+  readonly spriteKey: StumpSpriteKey;
+};
+
 export type ForestLookup = ReadonlySet<string>;
 
 type TreeClusterInput = {
@@ -53,6 +69,14 @@ type TreeClusterInput = {
 const SILHOUETTES: readonly TreeSilhouette[] = ["narrow", "broad", "rounded"];
 const TREE_TONES: readonly TreeTone[] = RAMPS.foliage;
 const FIRST_TREE_TONE: TreeTone = RAMPS.foliage[0] ?? SEMANTIC_PALETTE.forest;
+const TREE_SPRITES: readonly TreeSpriteKey[] = [
+  "tree_oak_large",
+  "tree_oak_small",
+  "tree_pine_tall",
+  "tree_pine_short",
+  "tree_birch",
+  "tree_dead",
+];
 const GROUND_COVER_SPRITES: readonly GroundCoverSpriteKey[] = [
   "shrub_a",
   "shrub_b",
@@ -83,7 +107,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       y: clamp(localAnchor.y + jitter(input.tile.tx, input.tile.ty, input.seed, index, 23) * 5, -MAX_OFFSET_Y, MAX_OFFSET_Y),
     });
     const { x: offsetX, y: offsetY } = offset;
-    const scale = 0.75 + hashUnit(input.tile.tx, input.tile.ty, input.seed, index, 37) * 0.5;
+    const scale = treeScale(input.tile.tx, input.tile.ty, input.seed, index);
     const silhouetteIndex = treeCount === SILHOUETTES.length
       ? (silhouetteOffset + index) % SILHOUETTES.length
       : Math.floor(hashUnit(input.tile.tx, input.tile.ty, input.seed, index, 41) * SILHOUETTES.length) % SILHOUETTES.length;
@@ -116,6 +140,24 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
   tileCache.set(cacheKey, result);
   treeClusterCache.set(input.tile, tileCache);
   return result;
+}
+
+export function buildStumpDescriptor(input: {
+  readonly harvest: ForestHarvest;
+  readonly tick: number;
+}): StumpDescriptor {
+  const center = tileToScreen(input.harvest.tx, input.harvest.ty);
+  const spriteKey = stumpAgeAt(input.harvest, input.tick) === "old" ? "stump_old" : "stump_fresh";
+  return {
+    id: `stump:${input.harvest.tx}:${input.harvest.ty}:${input.harvest.harvestedAtTick}`,
+    x: center.sx,
+    y: center.sy,
+    scale: 1,
+    sortY: center.sy + 3,
+    anchorTx: input.harvest.tx,
+    anchorTy: input.harvest.ty,
+    spriteKey,
+  };
 }
 
 export function buildGroundCover(input: {
@@ -245,11 +287,15 @@ function treeSpriteKey(
   index: number,
   silhouette: TreeSilhouette,
 ): TreeSpriteKey {
-  const variant = Math.floor(hashUnit(tx, ty, seed, index, 37) * 997) % 2;
-  if (silhouette === "narrow") {
-    return variant === 0 ? "tree_conifer_a" : "tree_conifer_b";
-  }
-  return variant === 0 ? "tree_broadleaf_a" : "tree_broadleaf_b";
+  const silhouetteOffset = silhouette === "narrow" ? 0 : silhouette === "broad" ? 2 : 4;
+  const hashSlot = Math.floor(hashUnit(tx, ty, seed, index, 109) * 997);
+  const variant = positiveModulo(hashSlot + tx + ty + seed + index + silhouetteOffset, TREE_SPRITES.length);
+  return TREE_SPRITES[variant] ?? "tree_oak_large";
+}
+
+function treeScale(tx: number, ty: number, seed: number, index: number): number {
+  const bucket = Math.min(60, Math.floor(hashUnit(tx, ty, seed, index, 37) * 61));
+  return 0.7 + bucket / 100;
 }
 
 function treeToneAt(index: number): TreeTone {
@@ -268,6 +314,10 @@ function hashUnit(tx: number, ty: number, seed: number, index: number, salt: num
   hash = Math.imul(hash, 16_777_619);
   hash ^= Math.imul(salt + 97, 1_597_334_677);
   return (hash >>> 0) / 4_294_967_295;
+}
+
+function positiveModulo(value: number, divisor: number): number {
+  return ((value % divisor) + divisor) % divisor;
 }
 
 function clamp(value: number, min: number, max: number): number {

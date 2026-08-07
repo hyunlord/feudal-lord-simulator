@@ -3,9 +3,11 @@ import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { cameraForStartingHouse } from "../src/render/canvasRuntime";
+import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import { TILE_H, TILE_W, tileToScreen } from "../src/render/iso";
 import { STARTING_LANDMARKS } from "../src/render/startingLandmarks";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { BUILD_TOOL_OPTIONS } from "../src/ui/buildMenuModel";
 import {
   hashEconomyState,
   hashOpeningState,
@@ -72,9 +74,25 @@ test("the decorative ford is renderer-only and absent from gameplay registries",
   // Given: Phase 8 adds a ford landmark only for the opening tableau.
   const ford = STARTING_LANDMARKS.find((landmark) => landmark.kind === "ford");
 
-  // When / Then: it has no building/tool/economy representation.
+  // When: the object queue sees the tile that owns the landmark.
+  const renderItems = buildObjectRenderItems({
+    tiles: DEFAULT_GAME_STATE.tiles.filter((tile) => tile.tx === 53 && tile.ty === 41),
+    worldTiles: DEFAULT_GAME_STATE.tiles,
+    buildings: DEFAULT_GAME_STATE.buildings,
+    walkers: DEFAULT_GAME_STATE.walkers,
+    range: { minTx: 53, minTy: 41, maxTx: 53, maxTy: 41 },
+    seed: DEFAULT_GAME_STATE.seed,
+    includeGroundCover: false,
+  });
+
+  // Then: it renders, but has no building/tool/economy representation.
   assert.deepEqual(ford, { kind: "ford", tx: 53, ty: 41, label: "나루터" });
+  assert.deepEqual(
+    renderItems.filter((item) => item.kind === "starting_landmark").map((item) => item.id),
+    ["starting-landmark:ford:53:41"],
+  );
   assert.equal("ford" in BUILDING_CONFIG_BY_KIND, false);
+  assert.equal(new Set<string>(BUILD_TOOL_OPTIONS.map((option) => option.tool)).has("ford"), false);
   assert.equal(new Set<string>(DEFAULT_GAME_STATE.buildings.map((building) => building.kind)).has("ford"), false);
   assert.equal(DEFAULT_GAME_STATE.tiles.some((tile) => tile.buildingId === "ford"), false);
 });

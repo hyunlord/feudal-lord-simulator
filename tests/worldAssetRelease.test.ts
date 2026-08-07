@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, unlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
@@ -265,6 +265,20 @@ describe("Phase 4C world asset release", () => {
 
       // When / Then: exact top-level release membership rejects only the stray release file.
       assert.throws(() => verifyWorldAssets(test.root, test.phase4bRoot), /unexpected PNG.*unexpected\.png/);
+    } finally {
+      rmSync(test.root, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects an incomplete release even though runtime foliage fallbacks are visible", () => {
+    // Given: a complete prepared release with one required stump PNG removed.
+    const test = fixture();
+    try {
+      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections });
+      unlinkSync(path.join(test.root, "public", "assets", "foliage", "stump_old.png"));
+
+      // When / Then: the strict verifier still requires every manifest sprite file.
+      assert.throws(() => verifyWorldAssets(test.root, test.phase4bRoot), /missing .*stump_old\.png/);
     } finally {
       rmSync(test.root, { recursive: true, force: true });
     }

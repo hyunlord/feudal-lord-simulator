@@ -12,6 +12,7 @@ import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawGroundDecalDetail, drawRoadPath } from "./drawTerrainDetails";
 import {
   getTerrainPattern,
+  terrainPatternQuarterTurn,
   terrainTextureKeyFor,
   type TerrainPatternAssets,
 } from "./terrainPatterns";
@@ -23,6 +24,7 @@ export {
   terrainSeamMarkCount,
   type TerrainSeamKind,
 } from "./drawTerrainSeams";
+export { terrainPatternQuarterTurn } from "./terrainPatterns";
 
 type TerrainRenderInput = {
   readonly state: GameState;
@@ -70,6 +72,15 @@ function drawObjectGrounding(
         baseRadiusX: 13 * item.descriptor.scale,
         baseRadiusY: 5 * item.descriptor.scale,
       });
+    } else if (item.kind === "stump") {
+      drawGroundingShadow(context, {
+        centerX: item.descriptor.x,
+        centerY: item.descriptor.y + 2,
+        height: 20,
+        scale: item.descriptor.scale,
+        baseRadiusX: 8,
+        baseRadiusY: 3,
+      });
     } else if (item.kind === "building") {
       const config = BUILDING_CONFIG_BY_KIND[item.building.kind];
       const center = buildingCenter(item);
@@ -109,7 +120,7 @@ function drawGroundDiamond(
     context,
     terrainTextureKeyFor(tile.terrain),
     terrainPatterns,
-    tile.terrain === "grass" ? grassPatternQuarterTurn(tile.tx, tile.ty, seed) : 0,
+    terrainPatternQuarterTurn(terrainTextureKeyFor(tile.terrain), tile.tx, tile.ty, seed),
   );
   if (pattern !== null) {
     context.fillStyle = baseTerrainColor(tile.terrain);
@@ -153,16 +164,17 @@ function fillTerrainPattern(
 }
 
 export function terrainTextureOpacity(terrain: Tile["terrain"]): number {
-  return terrain === "water" ? 0.18 : 0.45;
+  switch (terrain) {
+    case "grass":
+    case "forest":
+    case "water":
+    case "rock":
+      return 0.45;
+  }
 }
 
 export function grassPatternQuarterTurn(tx: number, ty: number, seed: number): 0 | 1 | 2 | 3 {
-  const regionTx = Math.floor(tx / 8);
-  const regionTy = Math.floor(ty / 8);
-  let hash = Math.imul(regionTx + 40_961, 73_856_093) ^ Math.imul(regionTy + 73_121, 19_349_663);
-  hash ^= Math.imul(seed + 101_111, 83_492_791);
-  hash = Math.imul(hash ^ (hash >>> 13), 1_274_126_177);
-  return ((hash ^ (hash >>> 16)) >>> 0 & 3) as 0 | 1 | 2 | 3;
+  return terrainPatternQuarterTurn("grass", tx, ty, seed);
 }
 
 function traceTerrainDiamond(

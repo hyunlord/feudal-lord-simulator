@@ -1,4 +1,4 @@
-import manifestData from "../../public/assets/world_asset_manifest.json";
+import { runtimeWorldAssetManifest } from "./worldAssetManifest.generated";
 
 export type LoadStatus = "idle" | "loading" | "ready" | "missing";
 
@@ -34,7 +34,7 @@ export class WorldAssetManifestError extends Error {
 }
 
 const records = new Map<string, AssetRecord>(
-  parseWorldAssetManifest(manifestData).map((meta) => [meta.key, { meta, status: "idle", image: null }]),
+  parseWorldAssetManifest(runtimeWorldAssetManifest).map((meta) => [meta.key, { meta, status: "idle", image: null }]),
 );
 
 let preloadPromise: Promise<void> | null = null;
