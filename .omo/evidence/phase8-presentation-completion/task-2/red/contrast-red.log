@@ -1,0 +1,125 @@
+✖ baseline: current text panels still declare repeated parchment imagery (5.315834ms)
+✖ release contrast gate exists and reports audited selector ratios (335.72775ms)
+✔ text-bearing CSS zones use flat audited backgrounds (1.380625ms)
+✖ numeric ledger text is monospace right-aligned and darker than labels (0.547042ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 440.8375
+
+✖ failing tests:
+
+test at tests/contrastGate.test.ts:1:218
+✖ baseline: current text panels still declare repeated parchment imagery (5.315834ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + []
+  - [
+  -   '.welcome-parchment',
+  -   '.population-event-panel',
+  -   '.court-ledger'
+  - ]
+
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/contrastGate.test.ts:24:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '.welcome-parchment', '.population-event-panel', '.court-ledger' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/contrastGate.test.ts:1:789
+✖ release contrast gate exists and reports audited selector ratios (335.72775ms)
+  AssertionError [ERR_ASSERTION]: .app-shell: text selector missing contrast-audit entry
+  .build-seal--highlighted: text selector missing contrast-audit entry
+  .build-seal--road: text selector missing contrast-audit entry
+  .build-seal[aria-disabled="true"]: text selector missing contrast-audit entry
+  .build-seals: text selector missing contrast-audit entry
+  .building-inspector li: text selector missing contrast-audit entry
+  .court-console: text selector missing contrast-audit entry
+  .diagnostic-card-cancel: text selector missing contrast-audit entry
+  .era-action--secondary: text selector missing contrast-audit entry
+  .era-action-reason: text selector missing contrast-audit entry
+  .era-ceremony: text selector missing contrast-audit entry
+  .era-diagnostic: text selector missing contrast-audit entry
+  .era-draft-status: text selector missing contrast-audit entry
+  .era-irrevocable: text selector missing contrast-audit entry
+  .era-requirement dt: text selector missing contrast-audit entry
+  .era-wall-progress: text selector missing contrast-audit entry
+  .ledger-stack .overlay-heading: text selector missing contrast-audit entry
+  .ledger-stack .overlay-label: text selector missing contrast-audit entry
+  .ledger-stack .overlay-legend: text selector missing contrast-audit entry
+  .map-shield: text selector missing contrast-audit entry
+  .onboarding-task--current: text selector missing contrast-audit entry
+  .onboarding-task--next .onboarding-task-title: text selector missing contrast-audit entry
+  .overlay-seal: text selector missing contrast-audit entry
+  .settlement-objective .settlement-target: text selector missing contrast-audit entry
+  .settlement-priority: text selector missing contrast-audit entry
+  .settlement-target: text selector missing contrast-audit entry
+  .shield-caption: text selector missing contrast-audit entry
+  .speed-seal: text selector missing contrast-audit entry
+  .building-inspector span: missing CSS rule
+  .diagnostic-card p: missing CSS rule
+  .population-event-panel p: missing CSS rule
+  .overlay-heading: 5.43 contrast is below 8.0
+  .overlay-key: missing CSS rule
+  .era-console__kicker: missing CSS rule
+  .era-requirement dd: numeric text must use the declared tabular serif stack
+  .era-requirement dd: numeric text must use tabular numbers
+  .era-requirement dd: numeric text must align right
+  .era-tooltip: missing CSS rule
+  .era-proposal: 5.43 contrast is below 8.0
+  .era-proposal: missing CSS rule
+  .ledger-heading: 4.46 contrast is below 8.0
+  .court-ledger dt: 5.65 contrast is below 8.0
+  .court-ledger dd: numeric text must use the declared tabular serif stack
+  .court-ledger dd: numeric text must use tabular numbers
+  .court-ledger dd: numeric text must align right
+
+
+  1 !== 0
+
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/contrastGate.test.ts:39:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/contrastGate.test.ts:1:1812
+✖ numeric ledger text is monospace right-aligned and darker than labels (0.547042ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /color:\s*var\(--palette-ink-light\);/. Input:
+
+  '\n' +
+    '  min-width: 0;\n' +
+    '  margin: 0;\n' +
+    '  overflow: hidden;\n' +
+    '  text-overflow: ellipsis;\n' +
+    '  white-space: nowrap;\n'
+
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/contrastGate.test.ts:74:10)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n  min-width: 0;\n  margin: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n',
+    expected: /color:\s*var\(--palette-ink-light\);/,
+    operator: 'match',
+    diff: 'simple'
+  }

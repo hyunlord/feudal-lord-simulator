@@ -49,8 +49,11 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.match(source, /presentationNowMs/);
   assert.match(source, /setPresentationNowMs\(Date\.now\(\)\)/);
   assert.match(source, /stopPropagation\(\)/);
+  assert.match(source, /feudal-lord-simulator:welcome-dismissed:v1/);
+  assert.match(source, /localStorage\.setItem\(WELCOME_DISMISSED_KEY, "1"\)/);
+  assert.match(source, /localStorage\.getItem\(WELCOME_DISMISSED_KEY\) === "1"/);
   assert.match(source, /setWelcomeVisible\(false\)/);
-  assert.doesNotMatch(source, /onPointerDown=/);
+  assert.match(source, /onPointerDown=\{consumeDismissal\}/);
   assert.match(source, /onClick=\{consumeDismissal\}/);
   assert.doesNotMatch(runtimeSource, /selectedTool\s*\?\?/);
   assert.match(runtimeRefsSource, /useRef\(input\.selectedTool\)/);
@@ -100,18 +103,44 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
   assert.equal(getPlacementToolStatus({ kind: "road" }), "드래그하여 길을 놓으세요 · 취소하려면 Esc");
 });
 
-test("right console renders current and next onboarding tasks before the open goal", () => {
+test("right rail renders era gauges plus current and next onboarding tasks", () => {
   // Given / When
   const markup = renderApp();
+  const railMarkup = markup.slice(
+    markup.indexOf('aria-label="Information rail"'),
+    markup.indexOf('aria-label="Court console"'),
+  );
+
+  // Then
+  assert.match(railMarkup, /aria-label="Era console"/);
+  assert.equal((railMarkup.match(/class="era-requirement(?: era-requirement--met)?"/g) ?? []).length, 4);
+  assert.match(railMarkup, /aria-label="Onboarding tasks"/);
+  assert.match(railMarkup, /data-task-state="current"/);
+  assert.match(railMarkup, /길을 놓아 오두막을 이으세요/);
+  assert.match(railMarkup, /data-task-state="next"/);
+  assert.match(railMarkup, /숲 옆에 벌목소를 지으세요/);
+  assert.doesNotMatch(railMarkup, /목표: 인구 50명 · 현재/);
+});
+
+test("population history is opened only from the ledger drawer", () => {
+  // Given / When
+  const markup = renderApp();
+  const beforeConsole = markup.slice(0, markup.indexOf('aria-label="Court console"'));
   const consoleMarkup = markup.slice(markup.indexOf('aria-label="Court console"'));
 
   // Then
-  assert.match(consoleMarkup, /aria-label="Onboarding tasks"/);
-  assert.match(consoleMarkup, /data-task-state="current"/);
-  assert.match(consoleMarkup, /길을 놓아 오두막을 이으세요/);
-  assert.match(consoleMarkup, /data-task-state="next"/);
-  assert.match(consoleMarkup, /숲 옆에 벌목소를 지으세요/);
-  assert.doesNotMatch(consoleMarkup, /목표: 인구 50명 · 현재/);
+  assert.doesNotMatch(beforeConsole, /aria-label="인구 변화 기록"/);
+  assert.match(consoleMarkup, /class="ledger-population-toggle"/);
+  assert.match(consoleMarkup, /aria-expanded="false"/);
+  assert.doesNotMatch(consoleMarkup, /id="population-ledger-drawer"/);
+});
+
+test("population drawer toggle stays above ledger text for pointer access", async () => {
+  // Given / When
+  const css = await readFile(GLOBAL_CSS_SOURCE, "utf8");
+
+  // Then
+  assert.match(css, /\.court-ledger > \.ledger-population-toggle\s*\{[\s\S]*?z-index:\s*2;/);
 });
 
 test("hidden seal tooltips do not inflate responsive console scroll width", async () => {
@@ -132,9 +161,9 @@ test("tablet seal layout folds before it can widen the console recess", async ()
 
   // Then
   assert.match(tabletRules, /\.build-seals\s*\{/);
-  assert.match(tabletRules, /grid-template-columns:\s*repeat\(2,\s*calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
+  assert.match(tabletRules, /grid-template-columns:\s*repeat\(2,\s*calc\(var\(--seal-size\) \* 2 \+ 4px\)\);/);
   assert.match(tabletRules, /\.build-seal--road\s*\{/);
-  assert.match(tabletRules, /width:\s*min\(100%,\s*calc\(var\(--seal-size\) \* 4 \+ 8px\)\);/);
+  assert.match(tabletRules, /width:\s*min\(100%,\s*calc\(var\(--seal-size\) \* 4 \+ 12px\)\);/);
 });
 
 test("onboarding task panel renders completion flourish and the post-task open goal", () => {

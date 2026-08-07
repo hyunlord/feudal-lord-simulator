@@ -33,6 +33,7 @@ export const CANONICAL_PALETTE = [
 
 export const SEMANTIC_PALETTE = {
   ink: PALETTE.ink,
+  inkMuted: RAMPS.timber[1],
   inkLight: RAMPS.timber[2],
   parchment: RAMPS.plaster[4],
   parchmentDark: RAMPS.plaster[3],

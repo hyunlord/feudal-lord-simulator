@@ -7,7 +7,10 @@ import { createOnboardingPresentationState } from "../src/ui/onboardingTaskModel
 
 test("paused presentation clock has no onboarding commit while the current task is unchanged", () => {
   // Given
-  const presentation = createOnboardingPresentationState();
+  const presentation = {
+    ...createOnboardingPresentationState(),
+    completedTaskIds: ["task-1"] as const,
+  };
 
   // When
   const firstTick = nextOnboardingPresentationCommit({

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type PointerEvent } from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
@@ -30,12 +30,13 @@ import {
   visibleEraCeremony,
 } from "./ui/eraCeremonyModel";
 import { palisadeFootprintsForState, proposalSummaryForState } from "./ui/eraConsoleModel";
-import { PopulationEventPanel } from "./ui/PopulationEventPanel";
 import {
   appendPopulationEvents,
   diffPopulationEvents,
   type PopulationEvent,
 } from "./ui/populationEventModel";
+
+const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
 
 export function nextOnboardingPresentationCommit(input: {
   readonly gameState: GameState;
@@ -51,9 +52,10 @@ export function App() {
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
   const [speed, setSpeed] = useState<GameSpeed>(0);
-  const [welcomeVisible, setWelcomeVisible] = useState(true);
+  const [welcomeVisible, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
+  const [populationDrawerOpen, setPopulationDrawerOpen] = useState(false);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
   const [eraPresentation, setEraPresentation] = useState(() => createEraCeremonyPresentation(state.era));
   const previousPopulationStateRef = useRef(state);
@@ -153,6 +155,10 @@ export function App() {
     dispatch({ type: "confirm_palisade_proclamation", candidatePath });
     setPalisadeDraft(null);
   };
+  const dismissWelcome = () => {
+    writeWelcomeDismissed();
+    setWelcomeVisible(false);
+  };
 
   return (
     <main
@@ -171,14 +177,22 @@ export function App() {
         onPalisadeDraftChange={setPalisadeDraft}
         onPalisadeDraftCancel={() => setPalisadeDraft(null)}
       />
-      <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
       <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
       <EraCeremonyBanner
         ceremony={visibleCeremony}
         nowMs={presentationNowMs}
         onDismiss={() => setEraPresentation(dismissEraCeremony)}
       />
-      {welcomeVisible ? <WelcomeParchment onDismiss={() => setWelcomeVisible(false)} /> : null}
+      {welcomeVisible ? <WelcomeParchment onDismiss={dismissWelcome} /> : null}
+      <aside className="right-info-rail" aria-label="Information rail">
+        <EraConsole
+          model={eraModel}
+          onBeginProposal={beginPalisadeProposal}
+          onConfirmProposal={confirmPalisadeProposal}
+          onCancelProposal={() => setPalisadeDraft(null)}
+        />
+        <OnboardingTasks view={onboardingView} />
+      </aside>
       <aside className="court-console" aria-label="Court console">
         <div className="court-recess map-recess">
           <MapShield grid={state} />
@@ -193,13 +207,6 @@ export function App() {
         </div>
         <div className="court-recess ledger-recess">
           <div className="ledger-stack">
-            <EraConsole
-              model={eraModel}
-              onBeginProposal={beginPalisadeProposal}
-              onConfirmProposal={confirmPalisadeProposal}
-              onCancelProposal={() => setPalisadeDraft(null)}
-            />
-            <OnboardingTasks view={onboardingView} />
             <CourtLedger
               tick={state.tick}
               timber={state.treasuryTimber}
@@ -207,6 +214,10 @@ export function App() {
               population={state.population}
               idleWorkers={state.idleWorkers}
               stockTotals={stockTotals}
+              populationEvents={populationEvents}
+              populationDrawerOpen={populationDrawerOpen}
+              onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
+              onSelectPopulationHouseIds={setHighlightedHouseIds}
             />
             <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} />
           </div>
@@ -218,14 +229,14 @@ export function App() {
 }
 
 function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
-  const consumeDismissal = (event: MouseEvent) => {
+  const consumeDismissal = (event: MouseEvent | PointerEvent) => {
     event.preventDefault();
     event.stopPropagation();
     onDismiss();
   };
 
   return (
-    <div className="welcome-dismiss-layer" onClick={consumeDismissal}>
+    <div className="welcome-dismiss-layer" onPointerDown={consumeDismissal} onClick={consumeDismissal}>
       <section className="welcome-parchment" aria-label="Opening guidance">
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.</p>
@@ -234,4 +245,22 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
       </section>
     </div>
   );
+}
+
+function readWelcomeDismissed(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem(WELCOME_DISMISSED_KEY) === "1";
+  } catch (_error) {
+    return false;
+  }
+}
+
+function writeWelcomeDismissed(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(WELCOME_DISMISSED_KEY, "1");
+  } catch (_error) {
+    return;
+  }
 }

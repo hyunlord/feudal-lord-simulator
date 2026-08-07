@@ -73,6 +73,8 @@ test("the actual app renders one continuous accessible court console", () => {
   assert.equal(markup.match(/class="court-recess /g)?.length, 3);
   assert.match(markup, /class="map-shield"/);
   assert.match(markup, /class="build-seals"/);
+  assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
+  assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
   assert.match(markup, /class="court-ledger"/);
   assert.match(markup, /aria-label="Pause"/);
   assert.match(markup, /aria-label="Fivefold speed"/);
@@ -121,7 +123,6 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   const assets = [
     "wood_console.png",
     "seal_slot.png",
-    "parchment_texture.png",
     "scroll_frame.png",
   ];
 
@@ -136,9 +137,9 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   const buildSealsRule = css.match(/\.build-seals\s*\{([^}]*)\}/)?.[1] ?? "";
   const mobileRules = css.match(/@media \(max-width: 600px\) \{([\s\S]+)\}\s*$/)?.[1] ?? "";
   assert.match(consoleRule, /background-size:\s*103% 100%;/);
-  assert.match(buildSealsRule, /--seal-size:\s*30px;/);
-  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
-  assert.match(buildSealsRule, /gap:\s*3px 5px;/);
+  assert.match(buildSealsRule, /--seal-size:\s*48px;/);
+  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 4px\)\);/);
+  assert.match(buildSealsRule, /gap:\s*4px 8px;/);
   assert.match(buildSealsRule, /width:\s*max-content;/);
   assert.match(buildSealsRule, /padding:\s*4px 6px;/);
   assert.match(buildSealsRule, /background-color:\s*var\(--palette-ink\);/);
@@ -148,7 +149,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="ordered"\]\s*\{/);
   assert.match(css, /\.onboarding-task--current\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);/);
   assert.match(css, /\.onboarding-task--next\s*\{[\s\S]*?background-color:\s*var\(--palette-vellum\);/);
-  assert.match(css, /\.onboarding-task-flourish\s*\{[\s\S]*?color:\s*var\(--palette-gold-dark\);/);
+  assert.match(css, /\.onboarding-task-flourish\s*\{[\s\S]*?color:\s*var\(--palette-ink\);/);
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="open-goal"\]\s*\{/);
   assert.match(css, /\.road-tool\s*\{[\s\S]*?grid-column:\s*1 \/ -1;/);
   assert.match(css, /\.build-seal--road\s*\{[\s\S]*?clip-path:/);
@@ -167,15 +168,15 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*224px;/);
   assert.match(mobileRules, /\.court-recess\s*\{[\s\S]*?height:\s*206px;/);
   assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
-  assert.match(mobileRules, /--seal-size:\s*clamp\(24px, 5vw, 30px\);/);
-  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
-  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*2px;/);
+  assert.match(mobileRules, /--seal-size:\s*48px;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-x:\s*auto;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*4px;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?justify-content:\s*flex-start;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*4px;/);
   assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?max-height:\s*72px;/);
   assert.match(mobileRules, /\.court-ledger\s*\{[\s\S]*?height:\s*48px;/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
-  assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*9px;/);
+  assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*10px;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seal\s*\{[^}]*width:\s*100%;[^}]*overflow:\s*hidden;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-key,[\s\S]*?\.ledger-stack \.overlay-legend\s*\{[\s\S]*?display:\s*none;/);

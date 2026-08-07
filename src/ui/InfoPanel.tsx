@@ -7,6 +7,8 @@ import {
 import { BUILD_TOOL_OPTIONS } from "./buildMenuModel";
 import type { GameState } from "../engine/engine.types";
 import type { OnboardingTaskView } from "./onboardingTaskModel";
+import { PopulationEventPanel } from "./PopulationEventPanel";
+import type { PopulationEvent } from "./populationEventModel";
 import { settlementGuidance } from "./settlementGuidanceModel";
 
 type CourtLedgerProps = {
@@ -16,6 +18,10 @@ type CourtLedgerProps = {
   readonly population?: number;
   readonly idleWorkers?: number;
   readonly stockTotals?: EconomyStockTotals;
+  readonly populationEvents?: readonly PopulationEvent[];
+  readonly populationDrawerOpen?: boolean;
+  readonly onPopulationDrawerToggle?: () => void;
+  readonly onSelectPopulationHouseIds?: (houseIds: readonly string[]) => void;
 };
 
 export function CourtLedger({
@@ -25,6 +31,10 @@ export function CourtLedger({
   population,
   idleWorkers,
   stockTotals,
+  populationEvents = [],
+  populationDrawerOpen = false,
+  onPopulationDrawerToggle,
+  onSelectPopulationHouseIds = () => undefined,
 }: CourtLedgerProps) {
   const selectedName =
     selectedTool === null
@@ -35,6 +45,22 @@ export function CourtLedger({
   return (
     <div className="court-ledger" aria-label="Court ledger">
       <span className="ledger-heading">Royal Ledger</span>
+      {onPopulationDrawerToggle === undefined ? null : (
+        <button
+          className="ledger-population-toggle"
+          type="button"
+          aria-expanded={populationDrawerOpen}
+          aria-controls="population-ledger-drawer"
+          onClick={onPopulationDrawerToggle}
+        >
+          인구 기록
+        </button>
+      )}
+      {populationDrawerOpen ? (
+        <div id="population-ledger-drawer" className="ledger-population-drawer">
+          <PopulationEventPanel events={populationEvents} onSelectHouseIds={onSelectPopulationHouseIds} />
+        </div>
+      ) : null}
       <dl>
         <dt>Timber</dt><dd>{timberTotal}</dd>
         {population !== undefined ? <><dt>Population</dt><dd>{population}</dd></> : null}

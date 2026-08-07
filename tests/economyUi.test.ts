@@ -102,7 +102,8 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.match(markup, /Road component/);
   assert.match(markup, /Digit3/);
   assert.match(markup, /Digit4/);
-  assert.match(markup, /aria-label="인구 변화 기록"/);
+  assert.match(markup, /class="ledger-population-toggle"/);
+  assert.match(markup, /aria-expanded="false"/);
   assert.equal(toggleOverlayByKey("Digit1", "none"), "water");
   assert.equal(toggleOverlayByKey("Digit1", "water"), "none");
   assert.equal(toggleOverlayByKey("Digit2", "water"), "labour");
@@ -129,9 +130,11 @@ test("the onboarding task list replaces the distant population objective in the 
   // Then
   const statusIndex = markup.indexOf('aria-label="Settlement status"');
   const consoleIndex = markup.indexOf('aria-label="Court console"');
+  const railIndex = markup.indexOf('aria-label="Information rail"');
   const tasksIndex = markup.indexOf('aria-label="Onboarding tasks"');
   assert.ok(statusIndex >= 0 && statusIndex < consoleIndex);
-  assert.ok(tasksIndex > consoleIndex);
+  assert.ok(railIndex >= 0 && railIndex < consoleIndex);
+  assert.ok(tasksIndex > railIndex && tasksIndex < consoleIndex);
   assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
   assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
   assert.match(markup.slice(tasksIndex), /길을 놓아 오두막을 이으세요/);
@@ -152,8 +155,8 @@ test("build groups reserve their full two-seal width so neighboring buttons cann
   const stylesheet = await readFile(STYLESHEET, "utf8");
 
   // Then
-  assert.match(stylesheet, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 2px\)\)/);
-  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\)/);
+  assert.match(stylesheet, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 4px\)\)/);
+  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-seals\s*\{[\s\S]*overflow-x:\s*auto;/);
 });
 
 test("settlement guidance advances population targets and samples priority on a sixty tick cadence", () => {

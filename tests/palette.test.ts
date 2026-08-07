@@ -30,6 +30,7 @@ const EXPECTED_RAMPS = {
 
 const EXPECTED_SEMANTIC_PALETTE = {
   ink: EXPECTED_PALETTE.ink,
+  inkMuted: EXPECTED_RAMPS.timber[1],
   inkLight: EXPECTED_RAMPS.timber[2],
   parchment: EXPECTED_RAMPS.plaster[4],
   parchmentDark: EXPECTED_RAMPS.plaster[3],

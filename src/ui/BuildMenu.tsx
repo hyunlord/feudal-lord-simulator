@@ -92,6 +92,7 @@ function renderSeal(input: RenderSealInput) {
       }}
     >
       <BuildGlyph tool={input.option.tool} />
+      <span className="build-seal-label" aria-hidden="true">{input.option.label}</span>
       <span id={tooltipId} className="seal-tooltip" role="tooltip">
         {buildToolTooltipLines(input.option.tool, input.menuState).map((line) => (
           <span key={line}>{line}</span>
