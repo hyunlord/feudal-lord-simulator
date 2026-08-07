@@ -1,0 +1,20 @@
+▶ world asset manifest
+  ✔ parses the exact release keys, dimensions, anchors, and footprints (2.444ms)
+  ✔ preserves non-tree ground cover while replacing runtime tree and stump release keys (0.0795ms)
+  ✔ requires accepted references, eight candidates per tree or stump, hashes, and parchment metrics (0.453125ms)
+  ✔ rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties (0.369375ms)
+  ✔ preserves the exact foliage variation and terrain seam contracts (0.248667ms)
+  ✔ rejects duplicate and missing release keys (0.367708ms)
+  ✔ rejects wrong dimensions and non-bottom-centre anchors (0.807583ms)
+  ✔ rejects path traversal and machine-specific paths (0.580125ms)
+  ✔ rejects category-policy mismatches and incomplete category metadata (0.41175ms)
+  ✔ rejects nonexistent files and PNGs whose on-disk dimensions drift (10.97325ms)
+✔ world asset manifest (17.441334ms)
+ℹ tests 10
+ℹ suites 1
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 131.718958

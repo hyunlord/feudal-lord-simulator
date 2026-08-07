@@ -1,0 +1,58 @@
+Preparing worktree (detached HEAD 49095a8)
+HEAD is now at 49095a8 Keep every main build publicly playable
+ M scripts/generateWorldAssets.py
+ M scripts/preparePhase4eAssets.ts
+ M scripts/prepareWorldAssets.ts
+ M scripts/verifyWorldAssets.ts
+ M scripts/worldAssetContracts.ts
+ M scripts/worldAssetManifest.ts
+ M scripts/worldSpritePipeline.ts
+ M tests/test_generate_world_assets.py
+ M tests/worldAssetManifest.test.ts
+ M tests/worldAssetRelease.test.ts
+ M tests/worldSpritePipeline.test.ts
+
+added 31 packages, and audited 32 packages in 562ms
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+TAP version 13
+# Subtest: Phase 4C world asset release
+    # Subtest: maps every Phase 8 release foliage key to its selected raw candidate filename
+    ok 1 - maps every Phase 8 release foliage key to its selected raw candidate filename
+      ---
+      duration_ms: 0.688484
+      ...
+    # Subtest: prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest
+    ok 2 - prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest
+      ---
+      duration_ms: 1463.177983
+      ...
+    # Subtest: rejects an unexpected top-level PNG without treating historical candidate folders as release files
+    ok 3 - rejects an unexpected top-level PNG without treating historical candidate folders as release files
+      ---
+      duration_ms: 1336.530161
+      ...
+    # Subtest: rejects a category-invalid asset even when its filename and dimensions are correct
+    ok 4 - rejects a category-invalid asset even when its filename and dimensions are correct
+      ---
+      duration_ms: 1357.367605
+      ...
+    1..4
+ok 1 - Phase 4C world asset release
+  ---
+  duration_ms: 4158.837168
+  type: 'suite'
+  ...
+1..1
+# tests 4
+# suites 1
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4303.592818
+cleanup=removed path=/tmp/phase8-todo7-dgx.996oGD

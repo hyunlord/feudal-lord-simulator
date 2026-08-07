@@ -1,0 +1,91 @@
+▶ world asset manifest
+  ✖ parses the exact release keys, dimensions, anchors, and footprints (4.258875ms)
+  ✔ preserves non-tree ground cover while replacing runtime tree and stump release keys (0.073958ms)
+  ✔ requires accepted references, eight candidates per tree or stump, hashes, and parchment metrics (0.369125ms)
+  ✖ rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties (0.496917ms)
+  ✔ preserves the exact foliage variation and terrain seam contracts (0.255167ms)
+  ✔ rejects duplicate and missing release keys (0.757875ms)
+  ✔ rejects wrong dimensions and non-bottom-centre anchors (0.290333ms)
+  ✔ rejects path traversal and machine-specific paths (0.399167ms)
+  ✔ rejects category-policy mismatches and incomplete category metadata (0.390958ms)
+  ✔ rejects nonexistent files and PNGs whose on-disk dimensions drift (12.881833ms)
+✖ world asset manifest (20.841375ms)
+ℹ tests 10
+ℹ suites 1
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 130.262041
+
+✖ failing tests:
+
+test at tests/worldAssetManifest.test.ts:1:3440
+✖ parses the exact release keys, dimensions, anchors, and footprints (4.258875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      alphaPolicy: 'transparent-outline-179',
+      anchor: {
+        x: 80,
+        y: 176
+  ...
+      path: 'public/assets/buildings/house_l3.png',
+  -   sha256: '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef',
+      source: {
+        candidate: 1,
+        seed: 64050101
+      },
+      width: 160
+  
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetManifest.test.ts:181:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at node:internal/test_runner/test:1617:71
+      at node:internal/per_context/primordials:466:82
+      at new Promise (<anonymous>)
+      at new SafePromise (node:internal/per_context/primordials:435:3)
+      at node:internal/per_context/primordials:466:9
+      at Array.map (<anonymous>) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { key: 'house_l3', category: 'building', path: 'public/assets/buildings/house_l3.png', width: 160, height: 192, anchor: { x: 80, y: 176 }, footprint: { width: 2, height: 2 }, source: { seed: 64050101, candidate: 1 }, palettePolicy: 'canonical-building', alphaPolicy: 'transparent-outline-179' },
+    expected: { key: 'house_l3', category: 'building', path: 'public/assets/buildings/house_l3.png', width: 160, height: 192, anchor: { x: 80, y: 176 }, footprint: { width: 2, height: 2 }, source: { seed: 64050101, candidate: 1 }, sha256: '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef', palettePolicy: 'canonical-building', alphaPolicy: 'transparent-outline-179' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/worldAssetManifest.test.ts:1:5271
+✖ rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties (0.496917ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /tree_oak_large selected candidate must use lowest seed among top score/. Input:
+  
+  'WorldAssetManifestError: tree_oak_large candidate 1 rubric total must equal 7'
+  
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetManifest.test.ts:278:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: WorldAssetManifestError: tree_oak_large candidate 1 rubric total must equal 7
+        at parseRubric (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldAssetManifest.ts:244:11)
+        at parseFoliageCandidate (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldAssetManifest.ts:265:13)
+        at <anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldAssetManifest.ts:286:57)
+        at Array.map (<anonymous>)
+        at <anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldAssetManifest.ts:286:38)
+        at Array.map (<anonymous>)
+        at parseFoliageSelections (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldAssetManifest.ts:273:28)
+        at parseWorldAssetManifest (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldAssetManifest.ts:447:29)
+        at <anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetManifest.test.ts:279:13)
+        at getActual (node:assert:586:5),
+    expected: /tree_oak_large selected candidate must use lowest seed among top score/,
+    operator: 'throws',
+    diff: 'simple'
+  }

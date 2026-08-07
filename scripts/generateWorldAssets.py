@@ -85,16 +85,23 @@ BUILDING_GEOMETRY: Final = {
     "logging_camp": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
     "sawmill": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
 }
-FOLIAGE_GEOMETRY: Final = {
-    "tree_conifer_a": "one tall narrow evergreen tree",
-    "tree_conifer_b": "one shorter broader evergreen tree",
-    "tree_broadleaf_a": "one rounded deciduous tree canopy on a short trunk",
-    "tree_broadleaf_b": "one smaller sparser deciduous tree canopy on a short trunk",
+TREE_STUMP_GEOMETRY: Final = {
+    "tree_oak_large": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+    "tree_oak_small": "younger oak, narrower crown, slender straight trunk",
+    "tree_pine_tall": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+    "tree_pine_short": "shorter dense conifer, branches near ground",
+    "tree_birch": "slender birch, pale banded trunk, light airy canopy",
+    "tree_dead": "bare dead tree, pale twisted limbs",
+    "stump_fresh": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+    "stump_old": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+}
+GROUND_COVER_GEOMETRY: Final = {
     "shrub_a": "one low trunkless wide dense woodland shrub",
     "shrub_b": "one smaller low trunkless wide sparse woodland shrub",
     "grass_tuft": "one low isolated tuft of meadow grass",
     "field_stone": "one low isolated weathered field stone",
 }
+FOLIAGE_GEOMETRY: Final = {**TREE_STUMP_GEOMETRY, **GROUND_COVER_GEOMETRY}
 TERRAIN_GEOMETRY: Final = {
     "grass": "seamless tileable muted meadow grass texture, low contrast, no objects",
     "forest_floor": "seamless tileable forest floor texture with restrained leaf litter, low contrast, no objects",
@@ -110,9 +117,9 @@ def _build_jobs() -> tuple[Job, ...]:
         for candidate in range(1, 7):
             jobs.append(Job(Category.BUILDING, key, geometry, Seed(64050000 + subject_index * 100 + candidate), candidate))
     for index, (key, geometry) in enumerate(FOLIAGE_GEOMETRY.items(), start=1):
-        candidate_count = 4 if key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"} else 1
+        candidate_count = 8 if key in TREE_STUMP_GEOMETRY else 4
         for candidate in range(1, candidate_count + 1):
-            seed = 64052000 + index * 100 + candidate if candidate_count == 4 else 64052000 + index
+            seed = 64052000 + index * 100 + candidate
             jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(seed), candidate))
     for index, (key, geometry) in enumerate(TERRAIN_GEOMETRY.items(), start=1):
         jobs.append(Job(Category.TERRAIN, key, geometry, Seed(64053000 + index), 1))
@@ -150,6 +157,10 @@ def _prompt_text(job: Job) -> tuple[str, str]:
                 subject_constraint = "one ankle-high trunkless bush made only of connected leafy clumps, distinctly wider than tall, no ground beneath it"
                 material_constraint = "foliage and timber colours only"
                 extra_negative = "stone,"
+            elif job.key.startswith("stump_"):
+                subject_constraint = "one low cut stump with visible timber grain, distinctly wider than tall, no ground beneath it"
+                material_constraint = "foliage and timber colours only"
+                extra_negative = "stone, leaves, canopy,"
             elif job.key == "grass_tuft":
                 subject_constraint = "one ankle-high connected grass clump, distinctly wider than tall, no ground beneath it"
                 material_constraint = "foliage and timber colours only"
@@ -264,10 +275,14 @@ def build_subject_guide(job: Job) -> Image.Image:
         case Category.FOLIAGE:
             if job.key.startswith("tree_"):
                 draw.rectangle((480, 575, 545, 820), fill=dark)
-                if "conifer" in job.key:
+                if "pine" in job.key:
                     draw.polygon(((512, 175), (300, 700), (724, 700)), fill=green)
                 else:
                     draw.ellipse((275, 180, 750, 690), fill=green)
+            elif job.key.startswith("stump_"):
+                draw.ellipse((365, 650, 665, 790), fill=earth)
+                draw.rectangle((395, 605, 635, 725), fill=dark)
+                draw.ellipse((395, 575, 635, 660), fill=wall)
             elif job.key.startswith("shrub_"):
                 draw.ellipse((300, 590, 480, 735), fill=green)
                 draw.ellipse((420, 550, 610, 735), fill=green)
@@ -426,8 +441,33 @@ def selected_jobs(targets: frozenset[str] | None) -> tuple[Job, ...]:
 
 
 def _release_name(job: Job) -> str:
-    is_ground_cover = job.category is Category.FOLIAGE and job.key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"}
-    return f"{job.key}_{job.candidate:02d}.png" if job.category is Category.BUILDING or is_ground_cover else f"{job.key}.png"
+    has_candidates = job.category is Category.BUILDING or job.category is Category.FOLIAGE
+    return f"{job.key}_{job.candidate:02d}.png" if has_candidates else f"{job.key}.png"
+
+
+def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonValue]:
+    jobs = selected_jobs(targets)
+    tree_stump_jobs = [job for job in JOBS if job.category is Category.FOLIAGE and job.key in TREE_STUMP_GEOMETRY]
+    return {
+        "summary": {
+            "catalogJobs": len(JOBS),
+            "queuedJobs": len(jobs),
+            "treeStumpSubjects": len(TREE_STUMP_GEOMETRY),
+            "treeStumpCandidates": len(tree_stump_jobs),
+            "comfyuiRequests": 0,
+        },
+        "jobs": [
+            {
+                "category": job.category.value,
+                "key": job.key,
+                "candidate": job.candidate,
+                "seed": job.seed,
+                "geometry": job.geometry,
+                "sourcePath": (Path(job.category.value) / _release_name(job)).as_posix(),
+            }
+            for job in jobs
+        ],
+    }
 
 
 def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None = None) -> None:
@@ -466,14 +506,18 @@ def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None 
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate the deterministic Phase 4C world-asset batch through ComfyUI IPAdapter.")
+    parser = argparse.ArgumentParser(description="Generate the deterministic Phase 8 world-asset batch through ComfyUI IPAdapter.")
     parser.add_argument("--generate", action="store_true")
+    parser.add_argument("--dry-run", action="store_true", help="Print the deterministic job manifest without contacting ComfyUI")
     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--target", action="append", help="category:key; repeat to select multiple subjects")
     args = parser.parse_args()
+    targets = None if args.target is None else frozenset(args.target)
+    if args.dry_run:
+        print(json.dumps(dry_run_manifest(targets), indent=2, ensure_ascii=False))
+        return
     if args.generate:
-        targets = None if args.target is None else frozenset(args.target)
         generate(args.output_root, args.repo_root.resolve(), targets)
 
 

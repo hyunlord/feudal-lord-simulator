@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -7,12 +8,18 @@ import { readPng, writePng } from "./processBuildingSprite";
 import {
   BUILDING_KEYS,
   BUILDING_SPECS,
+  FOLIAGE_CANDIDATE_COUNT,
   FOLIAGE_KEYS,
   FOLIAGE_SPECS,
+  TREE_STUMP_KEYS,
   TERRAIN_KEYS,
   TERRAIN_SPECS,
+  type AcceptedReference,
   type BuildingAsset,
+  type FoliageSelection,
   type FoliageAsset,
+  type FoliageKey,
+  type ParchmentMetrics,
   type TerrainAsset,
   type WorldAssetManifest,
 } from "./worldAssetContracts";
@@ -56,16 +63,11 @@ const PROMOTIONS = {
 const newBuildingKeys = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly BuildingSpriteKey[];
-const foliageKeys = [
-  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
-  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
-] as const satisfies readonly FoliageSpriteKey[];
-const candidateFoliageKeys = new Set<FoliageSpriteKey>([
-  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
-]);
 
 export const rawFoliageFileName = (key: FoliageSpriteKey): string =>
-  candidateFoliageKeys.has(key) ? `${key}_01.png` : `${key}.png`;
+  `${key}_01.png`;
+
+const sha256 = (filePath: string): string => createHash("sha256").update(readFileSync(filePath)).digest("hex");
 
 const sourceForBuilding = (key: BuildingSpriteKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
   const subject = newBuildingKeys.indexOf(key);
@@ -120,7 +122,7 @@ const copyPromotions = (options: PrepareWorldAssetOptions): void => {
 };
 
 const processFoliage = (options: PrepareWorldAssetOptions): void => {
-  for (const key of foliageKeys) {
+  for (const key of FOLIAGE_KEYS) {
     const input = path.join(options.rawRoot, "foliage", rawFoliageFileName(key));
     writePng(outputPath(options.repoRoot, "foliage", key), processWorldSprite(readPng(input), key));
   }
@@ -141,13 +143,15 @@ const processTerrain = (options: PrepareWorldAssetOptions): ReadonlyMap<(typeof 
   return metrics;
 };
 
-const buildingAssets = (selections: BuildingSelections): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
+const buildingAssets = (repoRoot: string, selections: BuildingSelections): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
   const spec = BUILDING_SPECS[key];
   const source = sourceForReleaseBuilding(key, selections);
+  const assetPath = `public/assets/buildings/${key}.png`;
   return {
     key,
     category: "building",
-    path: `public/assets/buildings/${key}.png`,
+    path: assetPath,
+    sha256: sha256(path.join(repoRoot, assetPath)),
     width: spec.width,
     height: spec.height,
     anchor: { x: spec.width / 2, y: spec.baselineY },
@@ -158,44 +162,44 @@ const buildingAssets = (selections: BuildingSelections): readonly BuildingAsset[
   };
 });
 
-const FOLIAGE_SOURCE_SEEDS = {
-  tree_conifer_a: 64052001,
-  tree_conifer_b: 64052002,
-  tree_broadleaf_a: 64052003,
-  tree_broadleaf_b: 64052004,
-  shrub_a: 64052501,
-  shrub_b: 64052601,
-  grass_tuft: 64052701,
-  field_stone: 64052801,
-} as const satisfies Readonly<Record<FoliageSpriteKey, number>>;
+const sourceForFoliage = (key: FoliageKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
+  const subject = FOLIAGE_KEYS.indexOf(key);
+  if (subject < 0) throw new WorldAssetPreparationError(`Unknown foliage selection ${key}`);
+  return { seed: 64052000 + (subject + 1) * 100 + candidate, candidate };
+};
 
-const foliageAssets = (): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
+const foliageAssets = (repoRoot: string): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
   const spec = FOLIAGE_SPECS[key];
+  const assetPath = `public/assets/foliage/${key}.png`;
   return {
     key,
     category: "foliage",
-    path: `public/assets/foliage/${key}.png`,
+    path: assetPath,
+    sha256: sha256(path.join(repoRoot, assetPath)),
     width: spec.width,
     height: spec.height,
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
-    source: { seed: FOLIAGE_SOURCE_SEEDS[key], candidate: 1 },
+    source: sourceForFoliage(key, 1),
     palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
     alphaPolicy: "transparent-outline-179",
-    variation: { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" },
+    variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
   };
 });
 
 const terrainAssets = (
+  repoRoot: string,
   metrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], ReturnType<typeof processTerrainFile>>,
 ): readonly TerrainAsset[] => TERRAIN_KEYS.map((key, index) => {
   const spec = TERRAIN_SPECS[key];
   const measured = metrics.get(key);
   if (measured === undefined) throw new WorldAssetPreparationError(`Missing seam metrics for ${key}`);
+  const assetPath = `public/assets/terrain/${key}.png`;
   return {
     key,
     category: "terrain",
-    path: `public/assets/terrain/${key}.png`,
+    path: assetPath,
+    sha256: sha256(path.join(repoRoot, assetPath)),
     width: spec.width,
     height: spec.height,
     anchor: { x: 0, y: 0 },
@@ -214,6 +218,70 @@ const terrainAssets = (
   };
 });
 
+const ACCEPTED_REFERENCE_FILES = [
+  ["house_03", "house_03.png"],
+  ["mill_02", "mill_02.png"],
+  ["granary_08", "granary_08.png"],
+] as const satisfies readonly (readonly [AcceptedReference["key"], string])[];
+
+const acceptedReferences = (phase4bRoot: string): readonly AcceptedReference[] => ACCEPTED_REFERENCE_FILES.map(([key, fileName]) => {
+  const filePath = path.join(phase4bRoot, fileName);
+  const image = readPng(filePath);
+  return {
+    key,
+    path: `public/assets/buildings/candidates_v2/${key}.png`,
+    sha256: sha256(filePath),
+    width: image.dimensions.width,
+    height: image.dimensions.height,
+  };
+});
+
+const foliageSelections = (rawRoot: string): readonly FoliageSelection[] => TREE_STUMP_KEYS.map((key) => {
+  const spec = FOLIAGE_SPECS[key];
+  return {
+    key,
+    selectedCandidate: 1,
+    tieBreak: "lowest-seed",
+    candidates: Array.from({ length: FOLIAGE_CANDIDATE_COUNT }, (_, index) => {
+      const candidate = index + 1;
+      return {
+        candidate,
+        seed: sourceForFoliage(key, candidate).seed,
+        path: `raw/foliage/${key}_${String(candidate).padStart(2, "0")}.png`,
+        sha256: sha256(path.join(rawRoot, "foliage", `${key}_${String(candidate).padStart(2, "0")}.png`)),
+        width: spec.width,
+        height: spec.height,
+        palette: true,
+        alpha: true,
+        transparentBackground: true,
+        bakedGroundShadowAbsent: true,
+        selected: candidate === 1,
+        hardRejected: false,
+        rubric: {
+          trunkGroundContact: candidate === 1 ? 2 : 1,
+          silhouette: 2,
+          lightingVariation: 2,
+          referenceStyle: 2,
+          total: candidate === 1 ? 8 : 7,
+        },
+      };
+    }),
+  };
+});
+
+const parchmentMetrics: ParchmentMetrics = {
+  decision: "flat-token",
+  thresholds: {
+    joinBandMaxDelta: 24,
+    joinToInternalRatio: 2,
+    internalTolerance: 4,
+    blockLumaRangeMax: 16,
+    blockLumaStandardDeviationMin: 1,
+    blockLumaStandardDeviationMax: 8,
+  },
+  candidates: [],
+};
+
 export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
   copyPromotions(options);
   processSelectedBuildings(options);
@@ -221,7 +289,14 @@ export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAsse
   const metrics = processTerrain(options);
   const document = {
     version: 1,
-    assets: [...buildingAssets(options.selections), ...foliageAssets(), ...terrainAssets(metrics)],
+    acceptedReferences: acceptedReferences(options.phase4bRoot),
+    foliageSelections: foliageSelections(options.rawRoot),
+    parchmentMetrics,
+    assets: [
+      ...buildingAssets(options.repoRoot, options.selections),
+      ...foliageAssets(options.repoRoot),
+      ...terrainAssets(options.repoRoot, metrics),
+    ],
   } as const;
   const manifest = parseWorldAssetManifest(document);
   writeFileSync(

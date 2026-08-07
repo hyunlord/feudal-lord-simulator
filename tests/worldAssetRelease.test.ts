@@ -12,7 +12,7 @@ import {
 } from "../scripts/prepareWorldAssets";
 import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
 import { verifyWorldAssets } from "../scripts/verifyWorldAssets";
-import { WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
+import { FOLIAGE_KEYS, TREE_STUMP_KEYS, WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
 
 const selections = {
   house_l1: 1,
@@ -92,19 +92,20 @@ const fixture = (): Fixture => {
     );
   }
   for (const [key, [width, height]] of Object.entries({
-    tree_conifer_a: [36, 70], tree_conifer_b: [38, 58], tree_broadleaf_a: [50, 60],
-    tree_broadleaf_b: [44, 50], shrub_a: [30, 20], shrub_b: [24, 16],
+    tree_oak_large: [56, 86], tree_oak_small: [42, 60], tree_pine_tall: [38, 94],
+    tree_pine_short: [36, 64], tree_birch: [34, 74], tree_dead: [34, 58],
+    stump_fresh: [30, 14], stump_old: [28, 12], shrub_a: [30, 20], shrub_b: [24, 16],
     grass_tuft: [22, 12], field_stone: [18, 10],
   } as const)) {
-    const fileName = ["shrub_a", "shrub_b", "grass_tuft", "field_stone"].includes(key)
-      ? `${key}_01.png`
-      : `${key}.png`;
-    writeRawSprite(
-      path.join(rawRoot, "foliage", fileName),
-      width,
-      height,
-      key === "field_stone" ? RAMPS.stone[2] : RAMPS.foliage[2],
-    );
+    const candidates = TREE_STUMP_KEYS.some((candidateKey) => candidateKey === key) ? 8 : 1;
+    for (let candidate = 1; candidate <= candidates; candidate += 1) {
+      writeRawSprite(
+        path.join(rawRoot, "foliage", `${key}_${String(candidate).padStart(2, "0")}.png`),
+        width,
+        height,
+        key === "field_stone" ? RAMPS.stone[2] : RAMPS.foliage[2],
+      );
+    }
   }
   for (const key of ["grass", "forest_floor", "water", "rock", "packed_earth_road"] as const) {
     const terrain = image(256, 256, [...rgb(RAMPS.earth[2]), 255]);
@@ -117,12 +118,8 @@ const fixture = (): Fixture => {
 };
 
 describe("Phase 4C world asset release", () => {
-  it("maps generated ground-cover candidates and single-source trees to their raw filenames", () => {
-    assert.equal(rawFoliageFileName("tree_conifer_a"), "tree_conifer_a.png");
-    assert.equal(rawFoliageFileName("shrub_a"), "shrub_a_01.png");
-    assert.equal(rawFoliageFileName("shrub_b"), "shrub_b_01.png");
-    assert.equal(rawFoliageFileName("grass_tuft"), "grass_tuft_01.png");
-    assert.equal(rawFoliageFileName("field_stone"), "field_stone_01.png");
+  it("maps every Phase 8 release foliage key to its selected raw candidate filename", () => {
+    for (const key of FOLIAGE_KEYS) assert.equal(rawFoliageFileName(key), `${key}_01.png`);
   });
 
   it("prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest", () => {
@@ -169,14 +166,18 @@ describe("Phase 4C world asset release", () => {
             .map((asset) => [asset.key, asset.source]),
         ),
         {
-          tree_conifer_a: { seed: 64052001, candidate: 1 },
-          tree_conifer_b: { seed: 64052002, candidate: 1 },
-          tree_broadleaf_a: { seed: 64052003, candidate: 1 },
-          tree_broadleaf_b: { seed: 64052004, candidate: 1 },
-          shrub_a: { seed: 64052501, candidate: 1 },
-          shrub_b: { seed: 64052601, candidate: 1 },
-          grass_tuft: { seed: 64052701, candidate: 1 },
-          field_stone: { seed: 64052801, candidate: 1 },
+          tree_oak_large: { seed: 64052101, candidate: 1 },
+          tree_oak_small: { seed: 64052201, candidate: 1 },
+          tree_pine_tall: { seed: 64052301, candidate: 1 },
+          tree_pine_short: { seed: 64052401, candidate: 1 },
+          tree_birch: { seed: 64052501, candidate: 1 },
+          tree_dead: { seed: 64052601, candidate: 1 },
+          stump_fresh: { seed: 64052701, candidate: 1 },
+          stump_old: { seed: 64052801, candidate: 1 },
+          shrub_a: { seed: 64052901, candidate: 1 },
+          shrub_b: { seed: 64053001, candidate: 1 },
+          grass_tuft: { seed: 64053101, candidate: 1 },
+          field_stone: { seed: 64053201, candidate: 1 },
         },
       );
       assert.doesNotThrow(() => verifyWorldAssets(test.root, test.phase4bRoot));

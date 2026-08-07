@@ -28,15 +28,17 @@ def load_generator():
 
 
 class WorldAssetGeneratorContractTest(unittest.TestCase):
-    def test_catalog_has_exact_73_jobs_and_locked_geometry(self) -> None:
+    def test_catalog_has_exact_133_jobs_and_locked_geometry(self) -> None:
         module = load_generator()
 
         buildings = [job for job in module.JOBS if job.category.value == "building"]
         foliage = [job for job in module.JOBS if job.category.value == "foliage"]
         terrain = [job for job in module.JOBS if job.category.value == "terrain"]
-        self.assertEqual(len(module.JOBS), 73)
+        tree_stumps = [job for job in foliage if job.key in module.TREE_STUMP_GEOMETRY]
+        self.assertEqual(len(module.JOBS), 133)
         self.assertEqual(len(buildings), 48)
-        self.assertEqual(len(foliage), 20)
+        self.assertEqual(len(foliage), 80)
+        self.assertEqual(len(tree_stumps), 64)
         self.assertEqual(len(terrain), 5)
         self.assertEqual(
             sorted({job.key for job in buildings}),
@@ -46,6 +48,19 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             seeds = [job.seed for job in buildings if job.key == key]
             self.assertEqual(len(seeds), 6)
             self.assertEqual(len(set(seeds)), 6)
+        for key in (
+            "tree_oak_large",
+            "tree_oak_small",
+            "tree_pine_tall",
+            "tree_pine_short",
+            "tree_birch",
+            "tree_dead",
+            "stump_fresh",
+            "stump_old",
+        ):
+            candidates = [job for job in foliage if job.key == key]
+            self.assertEqual([job.candidate for job in candidates], list(range(1, 9)))
+            self.assertEqual(len({job.seed for job in candidates}), 8)
         for key in ("shrub_a", "shrub_b", "grass_tuft", "field_stone"):
             candidates = [job for job in foliage if job.key == key]
             self.assertEqual([job.candidate for job in candidates], [1, 2, 3, 4])
@@ -65,6 +80,24 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             self.assertEqual({job.geometry for job in matching}, {clause})
         for job in buildings:
             self.assertNotRegex(job.geometry.lower(), r"\b(asset|icon|sprite|game function)\b")
+
+    def test_dry_run_enumerates_64_tree_stump_candidates_without_comfy_network(self) -> None:
+        module = load_generator()
+        calls: list[str] = []
+
+        def fail_api(path: str, body=None):
+            calls.append(path)
+            raise AssertionError("dry run must not contact ComfyUI")
+
+        module.api_json = fail_api
+        document = module.dry_run_manifest(frozenset({"foliage:tree_oak_large"}))
+
+        self.assertEqual(document["summary"]["treeStumpSubjects"], 8)
+        self.assertEqual(document["summary"]["treeStumpCandidates"], 64)
+        self.assertEqual(document["summary"]["comfyuiRequests"], 0)
+        tree_jobs = [job for job in document["jobs"] if job["key"] == "tree_oak_large"]
+        self.assertEqual([job["candidate"] for job in tree_jobs], list(range(1, 9)))
+        self.assertEqual(calls, [])
 
     def test_canvas_settings_models_and_reference_family_are_fixed(self) -> None:
         module = load_generator()
@@ -131,7 +164,7 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
         module = load_generator()
 
         workflow = module.workflow_prompt(
-            next(candidate for candidate in module.JOBS if candidate.category.value == "foliage"),
+            next(candidate for candidate in module.JOBS if candidate.key == "tree_oak_large"),
             ("phase4c_ref_house.png", "phase4c_ref_mill.png", "phase4c_ref_granary.png"),
             "phase4c_foliage_guide.png",
         )
@@ -260,6 +293,24 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
         self.assertEqual(
             [module._release_name(job) for job in jobs],
             ["shrub_a_01.png", "shrub_a_02.png", "shrub_a_03.png", "shrub_a_04.png"],
+        )
+
+    def test_tree_stump_candidates_have_unique_portable_release_names(self) -> None:
+        module = load_generator()
+
+        jobs = [job for job in module.JOBS if job.key == "tree_oak_large"]
+        self.assertEqual(
+            [module._release_name(job) for job in jobs],
+            [
+                "tree_oak_large_01.png",
+                "tree_oak_large_02.png",
+                "tree_oak_large_03.png",
+                "tree_oak_large_04.png",
+                "tree_oak_large_05.png",
+                "tree_oak_large_06.png",
+                "tree_oak_large_07.png",
+                "tree_oak_large_08.png",
+            ],
         )
 
     def test_output_path_rejects_escape_absolute_and_non_png(self) -> None:

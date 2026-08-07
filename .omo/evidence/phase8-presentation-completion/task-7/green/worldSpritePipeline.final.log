@@ -1,0 +1,22 @@
+▶ worldSpritePipeline
+  ✔ declares every exact Phase 8 canvas and baseline (1.109417ms)
+  ✔ enforces one-tile and two-tile visible-width bands (17.849167ms)
+  ✔ requires house alpha-bbox heights to increase from L0 through L3 (0.763042ms)
+  ✔ processes a sprite to its exact canvas with a transparent post-baseline margin (14.117625ms)
+  ✔ keeps alpha-179 ink only on the exterior upper outline (6.494125ms)
+  ✔ makes the worked field dominate wheat-farm visible mass (1.320916ms)
+  ✔ enforces the declared roof ramp for each building kind (0.256666ms)
+  ✔ restricts foliage interiors to foliage or timber and reserves ink for its outline (2.74175ms)
+  ✔ requires both shrub alpha silhouettes to be wider than tall (0.210708ms)
+  ✔ removes timber-coloured trunks from shrubs and grass tufts (0.342458ms)
+  ✔ keeps field stones in stone or earth ramps (0.18125ms)
+  ✔ reports the final opaque bounds used by the contract (0.144708ms)
+✔ worldSpritePipeline (46.351ms)
+ℹ tests 12
+ℹ suites 1
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 153.84575

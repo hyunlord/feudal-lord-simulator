@@ -20,6 +20,7 @@ export const PHASE4E_GROUND_COVER_KEYS = ["shrub_a", "shrub_b", "grass_tuft", "f
 export type Phase4eGroundCoverKey = (typeof PHASE4E_GROUND_COVER_KEYS)[number];
 export type Phase4eTargetKey = Phase4eGroundCoverKey | "sawmill";
 export type Phase4eSelections = Readonly<Record<Phase4eTargetKey, number>>;
+type Phase4eTargetAsset = Omit<WorldAsset, "sha256">;
 
 export type PreparePhase4eAssetOptions = {
   readonly repoRoot: string;
@@ -116,7 +117,7 @@ export const sourceForPhase4eTarget = (
   return { seed: base + subject * 100 + candidate, candidate };
 };
 
-const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): FoliageAsset => {
+const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): Omit<FoliageAsset, "sha256"> => {
   const spec = FOLIAGE_SPECS[key];
   return {
     key,
@@ -129,13 +130,13 @@ const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): Foliag
     source: sourceForPhase4eTarget(key, candidate),
     palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
     alphaPolicy: "transparent-outline-179",
-    variation: { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" },
+    variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
   };
 };
 
-const targetAssets = (selections: Phase4eSelections): ReadonlyMap<Phase4eTargetKey, WorldAsset> => {
+const targetAssets = (selections: Phase4eSelections): ReadonlyMap<Phase4eTargetKey, Phase4eTargetAsset> => {
   const sawmill = BUILDING_SPECS.sawmill;
-  return new Map<Phase4eTargetKey, WorldAsset>([
+  return new Map<Phase4eTargetKey, Phase4eTargetAsset>([
     ["sawmill", {
       key: "sawmill",
       category: "building",
@@ -166,7 +167,7 @@ export const preparePhase4eAssets = (options: PreparePhase4eAssetOptions): World
     mkdirSync(path.dirname(destination), { recursive: true });
     const processed = processWorldSprite(readPng(raw), key);
     writePng(destination, key === "sawmill" ? addPhase4eSawmillCues(processed) : processed);
-    existing.set(key, asset);
+    existing.set(key, { ...asset, sha256: sha256(destination) } as WorldAsset);
   }
 
   const document = {

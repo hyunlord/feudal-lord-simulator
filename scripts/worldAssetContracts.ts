@@ -13,14 +13,29 @@ export const BUILDING_KEYS = [
 ] as const;
 
 export const FOLIAGE_KEYS = [
-  "tree_conifer_a",
-  "tree_conifer_b",
-  "tree_broadleaf_a",
-  "tree_broadleaf_b",
+  "tree_oak_large",
+  "tree_oak_small",
+  "tree_pine_tall",
+  "tree_pine_short",
+  "tree_birch",
+  "tree_dead",
+  "stump_fresh",
+  "stump_old",
   "shrub_a",
   "shrub_b",
   "grass_tuft",
   "field_stone",
+] as const;
+
+export const TREE_STUMP_KEYS = [
+  "tree_oak_large",
+  "tree_oak_small",
+  "tree_pine_tall",
+  "tree_pine_short",
+  "tree_birch",
+  "tree_dead",
+  "stump_fresh",
+  "stump_old",
 ] as const;
 
 export const TERRAIN_KEYS = [
@@ -40,6 +55,7 @@ export const WORLD_ASSET_KEYS = [
 export type BuildingKey = (typeof BUILDING_KEYS)[number];
 export type FoliageKey = (typeof FOLIAGE_KEYS)[number];
 export type TerrainKey = (typeof TERRAIN_KEYS)[number];
+export type TreeStumpKey = (typeof TREE_STUMP_KEYS)[number];
 export type WorldAssetKey = (typeof WORLD_ASSET_KEYS)[number];
 
 export type Dimensions = {
@@ -84,10 +100,14 @@ export const BUILDING_SPECS = {
 } as const satisfies Readonly<Record<BuildingKey, SpriteSpec>>;
 
 export const FOLIAGE_SPECS = {
-  tree_conifer_a: { width: 64, height: 96, baselineY: 96, footprint: oneByOne },
-  tree_conifer_b: { width: 56, height: 80, baselineY: 80, footprint: oneByOne },
-  tree_broadleaf_a: { width: 72, height: 88, baselineY: 88, footprint: oneByOne },
-  tree_broadleaf_b: { width: 64, height: 72, baselineY: 72, footprint: oneByOne },
+  tree_oak_large: { width: 88, height: 112, baselineY: 112, footprint: oneByOne },
+  tree_oak_small: { width: 64, height: 80, baselineY: 80, footprint: oneByOne },
+  tree_pine_tall: { width: 64, height: 120, baselineY: 120, footprint: oneByOne },
+  tree_pine_short: { width: 56, height: 88, baselineY: 88, footprint: oneByOne },
+  tree_birch: { width: 60, height: 96, baselineY: 96, footprint: oneByOne },
+  tree_dead: { width: 56, height: 80, baselineY: 80, footprint: oneByOne },
+  stump_fresh: { width: 40, height: 24, baselineY: 24, footprint: oneByOne },
+  stump_old: { width: 36, height: 20, baselineY: 20, footprint: oneByOne },
   shrub_a: { width: 40, height: 28, baselineY: 28, footprint: oneByOne },
   shrub_b: { width: 32, height: 22, baselineY: 22, footprint: oneByOne },
   grass_tuft: { width: 28, height: 18, baselineY: 18, footprint: oneByOne },
@@ -122,10 +142,81 @@ export type AssetSource = {
   readonly candidate: number;
 };
 
+export type Sha256 = string;
+
+export const ACCEPTED_REFERENCE_KEYS = ["house_03", "mill_02", "granary_08"] as const;
+export type AcceptedReferenceKey = (typeof ACCEPTED_REFERENCE_KEYS)[number];
+
+export type AcceptedReference = Dimensions & {
+  readonly key: AcceptedReferenceKey;
+  readonly path: string;
+  readonly sha256: Sha256;
+};
+
+export const FOLIAGE_CANDIDATE_COUNT = 8;
+
+export type CandidateChecks = Dimensions & {
+  readonly sha256: Sha256;
+  readonly palette: true;
+  readonly alpha: true;
+  readonly transparentBackground: true;
+  readonly bakedGroundShadowAbsent: true;
+};
+
+export type SelectionRubric = {
+  readonly trunkGroundContact: 0 | 1 | 2;
+  readonly silhouette: 0 | 1 | 2;
+  readonly lightingVariation: 0 | 1 | 2;
+  readonly referenceStyle: 0 | 1 | 2;
+  readonly total: number;
+};
+
+export type FoliageCandidate = CandidateChecks & {
+  readonly candidate: number;
+  readonly seed: number;
+  readonly path: string;
+  readonly selected: boolean;
+  readonly hardRejected: boolean;
+  readonly rubric: SelectionRubric;
+};
+
+export type FoliageSelection = {
+  readonly key: TreeStumpKey;
+  readonly selectedCandidate: number;
+  readonly candidates: readonly FoliageCandidate[];
+  readonly tieBreak: "lowest-seed";
+};
+
+export type ParchmentCandidateMetrics = Dimensions & {
+  readonly candidate: number;
+  readonly path: string;
+  readonly sha256: Sha256;
+  readonly opposingEdgesByteCompatible: boolean;
+  readonly joinBandMaxDelta: number;
+  readonly internalBandMaxDelta: number;
+  readonly blockLumaRange: number;
+  readonly blockLumaStandardDeviation: number;
+  readonly passed: boolean;
+};
+
+export type ParchmentMetrics = {
+  readonly decision: "flat-token" | "generated-texture";
+  readonly thresholds: {
+    readonly joinBandMaxDelta: 24;
+    readonly joinToInternalRatio: 2;
+    readonly internalTolerance: 4;
+    readonly blockLumaRangeMax: 16;
+    readonly blockLumaStandardDeviationMin: 1;
+    readonly blockLumaStandardDeviationMax: 8;
+  };
+  readonly candidates: readonly ParchmentCandidateMetrics[];
+};
+
 type BaseAsset<Key extends WorldAssetKey, Category extends string> = {
   readonly key: Key;
   readonly category: Category;
   readonly path: string;
+  readonly sha256: Sha256;
   readonly width: number;
   readonly height: number;
   readonly anchor: Anchor;
@@ -140,7 +231,7 @@ export type BuildingAsset = BaseAsset<BuildingKey, "building"> & {
 
 export type FoliageVariation = {
   readonly selection: "hash";
-  readonly scale: { readonly min: 0.75; readonly max: 1.25 };
+  readonly scale: { readonly min: 0.7; readonly max: 1.3 };
   readonly offset: "in-tile";
   readonly sway: "sine";
 };
@@ -170,5 +261,8 @@ export type WorldAsset = BuildingAsset | FoliageAsset | TerrainAsset;
 
 export type WorldAssetManifest = {
   readonly version: 1;
+  readonly acceptedReferences: readonly AcceptedReference[];
+  readonly foliageSelections: readonly FoliageSelection[];
+  readonly parchmentMetrics: ParchmentMetrics;
   readonly assets: readonly WorldAsset[];
 };

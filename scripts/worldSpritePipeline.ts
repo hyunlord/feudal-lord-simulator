@@ -27,10 +27,14 @@ export const BUILDING_SPRITE_CONTRACTS = {
 } as const;
 
 export const FOLIAGE_SPRITE_CONTRACTS = {
-  tree_conifer_a: { width: 64, height: 96, baselineY: 96 },
-  tree_conifer_b: { width: 56, height: 80, baselineY: 80 },
-  tree_broadleaf_a: { width: 72, height: 88, baselineY: 88 },
-  tree_broadleaf_b: { width: 64, height: 72, baselineY: 72 },
+  tree_oak_large: { width: 88, height: 112, baselineY: 112 },
+  tree_oak_small: { width: 64, height: 80, baselineY: 80 },
+  tree_pine_tall: { width: 64, height: 120, baselineY: 120 },
+  tree_pine_short: { width: 56, height: 88, baselineY: 88 },
+  tree_birch: { width: 60, height: 96, baselineY: 96 },
+  tree_dead: { width: 56, height: 80, baselineY: 80 },
+  stump_fresh: { width: 40, height: 24, baselineY: 24 },
+  stump_old: { width: 36, height: 20, baselineY: 20 },
   shrub_a: { width: 40, height: 28, baselineY: 28 },
   shrub_b: { width: 32, height: 22, baselineY: 22 },
   grass_tuft: { width: 28, height: 18, baselineY: 18 },

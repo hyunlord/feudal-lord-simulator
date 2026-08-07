@@ -49,7 +49,8 @@ const NEW_BUILDING_KEYS = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly (keyof typeof BUILDING_SPRITE_CONTRACTS)[];
 const RELEASE_FOLIAGE_KEYS = [
-  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
+  "tree_oak_large", "tree_oak_small", "tree_pine_tall", "tree_pine_short",
+  "tree_birch", "tree_dead", "stump_fresh", "stump_old",
   "shrub_a", "shrub_b", "grass_tuft", "field_stone",
 ] as const satisfies readonly (keyof typeof FOLIAGE_SPRITE_CONTRACTS)[];
 

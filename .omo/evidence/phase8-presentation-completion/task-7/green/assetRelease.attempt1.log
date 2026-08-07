@@ -1,0 +1,99 @@
+▶ Phase 4C world asset release
+  ✖ maps generated ground-cover candidates and single-source trees to their raw filenames (2.298708ms)
+  ✖ prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest (24.822959ms)
+  ✖ rejects an unexpected top-level PNG without treating historical candidate folders as release files (19.932ms)
+  ✖ rejects a category-invalid asset even when its filename and dimensions are correct (19.24325ms)
+✖ Phase 4C world asset release (66.843625ms)
+▶ worldSpritePipeline
+  ✔ declares every exact Phase 8 canvas and baseline (1.030875ms)
+  ✔ enforces one-tile and two-tile visible-width bands (18.719292ms)
+  ✔ requires house alpha-bbox heights to increase from L0 through L3 (0.77575ms)
+  ✔ processes a sprite to its exact canvas with a transparent post-baseline margin (14.93275ms)
+  ✔ keeps alpha-179 ink only on the exterior upper outline (6.412333ms)
+  ✔ makes the worked field dominate wheat-farm visible mass (1.339667ms)
+  ✔ enforces the declared roof ramp for each building kind (0.277834ms)
+  ✔ restricts foliage interiors to foliage or timber and reserves ink for its outline (3.164083ms)
+  ✔ requires both shrub alpha silhouettes to be wider than tall (0.200833ms)
+  ✔ removes timber-coloured trunks from shrubs and grass tufts (0.3445ms)
+  ✔ keeps field stones in stone or earth ramps (0.186917ms)
+  ✔ reports the final opaque bounds used by the contract (0.157333ms)
+✔ worldSpritePipeline (48.326916ms)
+ℹ tests 16
+ℹ suites 2
+ℹ pass 12
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 227.804875
+
+✖ failing tests:
+
+test at tests/worldAssetRelease.test.ts:1:3641
+✖ maps generated ground-cover candidates and single-source trees to their raw filenames (2.298708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'tree_conifer_a_01.png'
+  - 'tree_conifer_a.png'
+                   ^
+  
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetRelease.test.ts:121:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at node:internal/test_runner/test:1617:71
+      at node:internal/per_context/primordials:466:82
+      at new Promise (<anonymous>)
+      at new SafePromise (node:internal/per_context/primordials:435:3)
+      at node:internal/per_context/primordials:466:9
+      at Array.map (<anonymous>) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'tree_conifer_a_01.png',
+    expected: 'tree_conifer_a.png',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/worldAssetRelease.test.ts:1:4069
+✖ prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest (24.822959ms)
+  Error: ffmpeg failed to start: spawnSync ffmpeg ENOENT
+      at runFfmpeg (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:535:11)
+      at resizeRgbaLanczos (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:544:15)
+      at processSpriteImage (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:523:11)
+      at processWorldSprite (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldSpritePipeline.ts:157:7)
+      at processSelectedBuildings (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/prepareWorldAssets.ts:111:23)
+      at prepareWorldAssets (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/prepareWorldAssets.ts:285:3)
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetRelease.test.ts:139:24)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+
+test at tests/worldAssetRelease.test.ts:1:5905
+✖ rejects an unexpected top-level PNG without treating historical candidate folders as release files (19.932ms)
+  Error: ffmpeg failed to start: spawnSync ffmpeg ENOENT
+      at runFfmpeg (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:535:11)
+      at resizeRgbaLanczos (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:544:15)
+      at processSpriteImage (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:523:11)
+      at processWorldSprite (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldSpritePipeline.ts:157:7)
+      at processSelectedBuildings (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/prepareWorldAssets.ts:111:23)
+      at prepareWorldAssets (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/prepareWorldAssets.ts:285:3)
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetRelease.test.ts:196:7)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+
+test at tests/worldAssetRelease.test.ts:1:6581
+✖ rejects a category-invalid asset even when its filename and dimensions are correct (19.24325ms)
+  Error: ffmpeg failed to start: spawnSync ffmpeg ENOENT
+      at runFfmpeg (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:535:11)
+      at resizeRgbaLanczos (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:544:15)
+      at processSpriteImage (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/processBuildingSprite.ts:523:11)
+      at processWorldSprite (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/worldSpritePipeline.ts:157:7)
+      at processSelectedBuildings (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/prepareWorldAssets.ts:111:23)
+      at prepareWorldAssets (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/prepareWorldAssets.ts:285:3)
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetRelease.test.ts:213:7)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)

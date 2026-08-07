@@ -68,7 +68,7 @@ const contractImage = (key: WorldSpriteKey, visibleWidth: number): RgbaImage => 
 };
 
 describe("worldSpritePipeline", () => {
-  it("declares every exact Phase 4C canvas and baseline", () => {
+  it("declares every exact Phase 8 canvas and baseline", () => {
     assert.deepEqual(BUILDING_SPRITE_CONTRACTS, {
       house_l1: { width: 96, height: 120, baselineY: 104, footprint: 1 },
       house_l2: { width: 96, height: 144, baselineY: 128, footprint: 1 },
@@ -80,10 +80,14 @@ describe("worldSpritePipeline", () => {
       sawmill: { width: 112, height: 112, baselineY: 96, footprint: 1 },
     });
     assert.deepEqual(FOLIAGE_SPRITE_CONTRACTS, {
-      tree_conifer_a: { width: 64, height: 96, baselineY: 96 },
-      tree_conifer_b: { width: 56, height: 80, baselineY: 80 },
-      tree_broadleaf_a: { width: 72, height: 88, baselineY: 88 },
-      tree_broadleaf_b: { width: 64, height: 72, baselineY: 72 },
+      tree_oak_large: { width: 88, height: 112, baselineY: 112 },
+      tree_oak_small: { width: 64, height: 80, baselineY: 80 },
+      tree_pine_tall: { width: 64, height: 120, baselineY: 120 },
+      tree_pine_short: { width: 56, height: 88, baselineY: 88 },
+      tree_birch: { width: 60, height: 96, baselineY: 96 },
+      tree_dead: { width: 56, height: 80, baselineY: 80 },
+      stump_fresh: { width: 40, height: 24, baselineY: 24 },
+      stump_old: { width: 36, height: 20, baselineY: 20 },
       shrub_a: { width: 40, height: 28, baselineY: 28 },
       shrub_b: { width: 32, height: 22, baselineY: 22 },
       grass_tuft: { width: 28, height: 18, baselineY: 18 },
@@ -157,13 +161,13 @@ describe("worldSpritePipeline", () => {
   });
 
   it("restricts foliage interiors to foliage or timber and reserves ink for its outline", () => {
-    const tree = contractImage("tree_conifer_a", 40);
+    const tree = contractImage("tree_oak_large", 40);
     fill(tree, 12, 72, 52, 89, [...rgb(RAMPS.plaster[2]), 255]);
     const remapped = enforceFoliageMaterialPolicy(tree);
     setPixel(remapped, 11, 74, [...rgb(PALETTE.ink), OUTLINE_ALPHA]);
-    assert.doesNotThrow(() => assertSpriteContract(remapped, "tree_conifer_a"));
+    assert.doesNotThrow(() => assertSpriteContract(remapped, "tree_oak_large"));
     setPixel(remapped, 20, 78, [...rgb(PALETTE.ink), 255]);
-    assert.throws(() => assertSpriteContract(remapped, "tree_conifer_a"), /foliage or timber interior/);
+    assert.throws(() => assertSpriteContract(remapped, "tree_oak_large"), /foliage or timber interior/);
   });
 
   it("requires both shrub alpha silhouettes to be wider than tall", () => {
