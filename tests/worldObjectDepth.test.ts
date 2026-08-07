@@ -4,6 +4,7 @@ import test from "node:test";
 import type { Walker } from "../src/agents/walker.types";
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
+import type { PalisadeState } from "../src/engine/engine.types";
 import {
   buildObjectRenderItems,
   groundCoverProtectedTileKeys,
@@ -46,6 +47,22 @@ function walker(id: string, tx: number, ty: number): Walker {
     junctionVisits: 0,
     tilesTravelled: 0,
     priorTile: null,
+  };
+}
+
+function palisade(): PalisadeState {
+  return {
+    id: "wall-a",
+    polygon: [{ x: 1, y: 1 }, { x: 5, y: 1 }, { x: 5, y: 5 }, { x: 1, y: 1 }],
+    gate: { x: 3, y: 1 },
+    segments: [{
+      id: "wall-a-segment-000",
+      order: 0,
+      edgePath: [{ x: 1, y: 1 }, { x: 5, y: 1 }],
+      tileCount: 4,
+      completed: true,
+      constructionSiteId: null,
+    }],
   };
 }
 
@@ -121,6 +138,28 @@ test("stable id breaks ties after depth and anchor tx", () => {
 
   // Then
   assert.deepEqual(items.map((item) => item.id), ["walker-a", "walker-b"]);
+});
+
+test("completed palisade segments join the shared object queue at their forward edge seam", () => {
+  // Given
+  const rear = building("rear-house", "house", 1, 1);
+  const front = building("front-house", "house", 5, 3);
+
+  // When
+  const items = buildObjectRenderItems({
+    tiles: [],
+    buildings: [front, rear],
+    palisade: palisade(),
+    walkers: [],
+    range,
+    seed: 19,
+  });
+
+  // Then
+  assert.deepEqual(
+    items.map((item) => `${item.kind}:${item.id}`),
+    ["building:rear-house", "palisade_segment:wall-a-segment-000", "building:front-house"],
+  );
 });
 
 test("individual trees and ground cover enter the shared object queue", () => {

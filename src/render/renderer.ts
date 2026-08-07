@@ -22,7 +22,7 @@ import { drawHighlightedHouses } from "./diagnosticOverlays";
 import {
   constructionCompletionEffectsForFrame,
   drawConstructionCompletionEffects,
-} from "./drawConstructionSites";
+} from "./constructionCompletionEffects";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {

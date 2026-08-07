@@ -13,7 +13,7 @@ import {
   type BodyProfile,
 } from "./buildingVisualState";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
-import { buildObjectRenderItems, type ObjectRenderItem } from "./objectRenderOrder";
+import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
 import { drawGroundCoverDescriptor, drawTreeDescriptor } from "./drawTrees";
 import { drawWalker } from "./drawWalkers";
 import type { TileRange, ViewportSize } from "./renderer";
@@ -28,7 +28,7 @@ type ObjectRenderInput = {
   readonly camera?: CameraState;
   readonly dpr?: number;
   readonly viewport?: ViewportSize;
-  readonly objectRenderItems?: readonly ObjectRenderItem[];
+  readonly objectRenderItems?: readonly WorldObjectRenderItem[];
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -65,7 +65,7 @@ export function drawBuildings(
       });
     } else if (item.kind === "walker") {
       drawWalker(context, item.walker, input.zoom);
-    } else {
+    } else if (item.kind === "building") {
       drawBuilding(context, input, item.building, spriteOptions);
     }
   }

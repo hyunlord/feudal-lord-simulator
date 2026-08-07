@@ -5,12 +5,18 @@ import {
   constructionSiteFootprint,
   type ConstructionSite,
 } from "../economy/construction";
+import type { PalisadeState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import {
   constructionSiteRenderItem,
-  type ConstructionSiteRenderItem,
 } from "./constructionRenderItems";
 import { depthKey } from "./iso";
+import { palisadeSegmentRenderItems } from "./palisadeObjectRenderItems";
+import type {
+  ObjectRenderItem,
+  RenderQueueItem,
+  WorldObjectRenderItem,
+} from "./objectRenderTypes";
 import {
   footprintHasVisibleTile,
   tileIsVisibleInRange,
@@ -20,46 +26,15 @@ import {
   buildForestLookup,
   buildGroundCover,
   buildTreeCluster,
-  type GroundCoverDescriptor,
-  type TreeDescriptor,
 } from "./treeLayout";
 import { walkerVisualAnchor } from "./walkerAnchor";
-
-export type ObjectRenderItem =
-  | {
-      readonly kind: "tree";
-      readonly id: string;
-      readonly descriptor: TreeDescriptor;
-      readonly depth: number;
-      readonly anchorTx: number;
-    }
-  | {
-      readonly kind: "groundCover";
-      readonly id: string;
-      readonly descriptor: GroundCoverDescriptor;
-      readonly depth: number;
-      readonly anchorTx: number;
-    }
-  | {
-      readonly kind: "building";
-      readonly id: string;
-      readonly building: Building;
-      readonly depth: number;
-      readonly anchorTx: number;
-    }
-  | {
-      readonly kind: "walker";
-      readonly id: string;
-      readonly walker: Walker;
-      readonly depth: number;
-      readonly anchorTx: number;
-    };
-export type RenderQueueItem = ObjectRenderItem | ConstructionSiteRenderItem;
+export type { ObjectRenderItem, RenderQueueItem, WorldObjectRenderItem };
 
 type ObjectRenderInput = {
   readonly tiles: readonly Tile[];
   readonly worldTiles?: readonly Tile[];
   readonly buildings: readonly Building[];
+  readonly palisade?: PalisadeState | null;
   readonly constructionSites?: readonly ConstructionSite[] | undefined;
   readonly walkers?: readonly Walker[];
   readonly range: TileRange;
@@ -84,7 +59,7 @@ const groundCoverProtectionCache = new WeakMap<readonly Tile[], {
 
 export function buildObjectRenderItems(
   input: ObjectRenderInputWithoutConstruction,
-): readonly ObjectRenderItem[];
+): readonly WorldObjectRenderItem[];
 export function buildObjectRenderItems(
   input: ObjectRenderInput & { readonly constructionSites: readonly ConstructionSite[] },
 ): readonly RenderQueueItem[];
@@ -163,8 +138,10 @@ export function buildObjectRenderItems(
     });
   }
 
+  items.push(...palisadeSegmentRenderItems(input.palisade, input.range));
+
   for (const site of constructionSites) {
-    const item = constructionSiteRenderItem(site, input.range);
+    const item = constructionSiteRenderItem(site, constructionSites, input.range);
     if (item !== null) items.push(item);
   }
 

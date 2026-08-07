@@ -3,6 +3,7 @@ import type { Tile } from "../world/world.types";
 import type { CameraState } from "./camera";
 import { drawBuildings } from "./drawBuildings";
 import { drawConstructionSite } from "./drawConstructionSites";
+import { drawPalisadeSegment } from "./drawPalisadeSegments";
 import type { RenderQueueItem } from "./objectRenderOrder";
 import type { TileRange, ViewportSize } from "./renderer";
 
@@ -23,7 +24,19 @@ export function drawObjectRenderItems(
 ): void {
   for (const item of input.objectRenderItems) {
     if (item.kind === "construction_site") {
-      drawConstructionSite(context, { site: item.site, zoom: input.zoom });
+      drawConstructionSite(context, {
+        site: item.site,
+        schedule: item.schedule,
+        zoom: input.zoom,
+      });
+      continue;
+    }
+    if (item.kind === "palisade_segment") {
+      drawPalisadeSegment(context, {
+        segment: item.segment,
+        gate: item.gate,
+        zoom: input.zoom,
+      });
       continue;
     }
     drawBuildings(context, {

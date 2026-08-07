@@ -1,45 +1,36 @@
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import {
   constructionOnSiteLabel,
-  constructionSiteAnchor,
   constructionSiteFootprint,
   constructionStage,
   type ConstructionSite,
 } from "../economy/construction";
+import {
+  isPalisadeConstructionSite,
+  type PalisadeConstructionSchedule,
+} from "../economy/palisadeConstruction";
+import { drawPalisadeConstructionSite } from "./drawPalisadeConstructionSites";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel, withAlpha } from "./style";
+export {
+  constructionCompletionEffects,
+  constructionCompletionEffectsForFrame,
+  drawConstructionCompletionEffects,
+  type ConstructionCompletionEffect,
+} from "./constructionCompletionEffects";
 
 export type ConstructionRenderSignature = "plot" | "foundation" | "frame" | "roof";
 
-export type ConstructionCompletionEffect = {
-  readonly id: string;
-  readonly tx: number;
-  readonly ty: number;
-  readonly ageMs: number;
-};
-
 type DrawConstructionSiteInput = {
   readonly site: ConstructionSite;
+  readonly schedule?: PalisadeConstructionSchedule;
   readonly zoom: number;
-};
-
-type ConstructionCompletionInput = {
-  readonly previous: readonly ConstructionSite[];
-  readonly current: readonly ConstructionSite[];
-  readonly nowMs: number;
-  readonly startedAtMs: number;
 };
 
 type Point = {
   readonly x: number;
   readonly y: number;
 };
-
-const COMPLETION_EFFECT_MS = 200;
-let previousSites: readonly ConstructionSite[] = [];
-let activeCompletionEffects: readonly (Omit<ConstructionCompletionEffect, "ageMs"> & {
-  readonly startedAtMs: number;
-})[] = [];
 
 export function constructionSiteRenderSignature(
   site: ConstructionSite,
@@ -63,6 +54,14 @@ export function drawConstructionSite(
   context: CanvasRenderingContext2D,
   input: DrawConstructionSiteInput,
 ): void {
+  if (isPalisadeConstructionSite(input.site)) {
+    drawPalisadeConstructionSite(context, {
+      site: input.site,
+      schedule: input.schedule ?? { kind: "active" },
+      zoom: input.zoom,
+    });
+    return;
+  }
   const anchor = siteAnchor(input.site);
   const footprint = constructionSiteFootprint(input.site);
   drawGroundingShadow(context, {
@@ -79,73 +78,6 @@ export function drawConstructionSite(
     zoom: input.zoom,
   });
   drawBuilderMarker(context, anchor, input.zoom);
-}
-
-export function constructionCompletionEffects(
-  input: ConstructionCompletionInput,
-): readonly ConstructionCompletionEffect[] {
-  const currentIds = new Set(input.current.map((site) => site.id));
-  const ageMs = input.nowMs - input.startedAtMs;
-  if (ageMs < 0 || ageMs >= COMPLETION_EFFECT_MS) return [];
-  return input.previous
-    .filter((site) => !currentIds.has(site.id))
-    .map((site) => {
-      const anchor = constructionSiteAnchor(site);
-      return { id: site.id, tx: anchor.tx, ty: anchor.ty, ageMs };
-    });
-}
-
-export function constructionCompletionEffectsForFrame(
-  current: readonly ConstructionSite[],
-  nowMs: number,
-): readonly ConstructionCompletionEffect[] {
-  const currentIds = new Set(current.map((site) => site.id));
-  const newEffects = previousSites
-    .filter((site) => !currentIds.has(site.id))
-    .map((site) => {
-      const anchor = constructionSiteAnchor(site);
-      return { id: site.id, tx: anchor.tx, ty: anchor.ty, startedAtMs: nowMs };
-    });
-  previousSites = current;
-  activeCompletionEffects = [...activeCompletionEffects, ...newEffects].filter(
-    (effect) => nowMs - effect.startedAtMs < COMPLETION_EFFECT_MS,
-  );
-  return activeCompletionEffects.map((effect) => ({
-    id: effect.id,
-    tx: effect.tx,
-    ty: effect.ty,
-    ageMs: nowMs - effect.startedAtMs,
-  }));
-}
-
-export function drawConstructionCompletionEffects(
-  context: CanvasRenderingContext2D,
-  input: {
-    readonly effects: readonly ConstructionCompletionEffect[];
-    readonly zoom: number;
-  },
-): void {
-  for (const effect of input.effects) {
-    const anchor = siteAnchor(effect);
-    const progress = effect.ageMs / COMPLETION_EFFECT_MS;
-    context.save();
-    context.globalAlpha = Math.max(0, 1 - progress);
-    context.fillStyle = withAlpha(SEMANTIC_PALETTE.earthDark, 0.32);
-    context.beginPath();
-    context.ellipse(
-      snapToPixel(anchor.x + 36),
-      snapToPixel(anchor.y + 3),
-      snapToPixel(10 + progress * 14),
-      snapToPixel(3 + progress * 5),
-      0,
-      0,
-      Math.PI * 2,
-    );
-    context.fill();
-    applyInkOutline(context, input.zoom);
-    context.stroke();
-    context.restore();
-  }
 }
 
 function drawStage(
@@ -255,9 +187,9 @@ function drawSiteLabel(
   context.fillText(label, x, y);
 }
 
-function siteAnchor(site: ConstructionSite | Pick<ConstructionCompletionEffect, "tx" | "ty">): Point {
-  const anchor = "kind" in site ? constructionSiteAnchor(site) : site;
-  const screen = tileToScreen(anchor.tx, anchor.ty);
+function siteAnchor(site: ConstructionSite): Point {
+  const origin = constructionSiteFootprint(site);
+  const screen = tileToScreen(origin.tx, origin.ty);
   return { x: screen.sx, y: screen.sy };
 }
 

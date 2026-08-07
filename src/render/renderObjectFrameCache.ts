@@ -20,6 +20,7 @@ type ObjectRenderFrameInput = {
 type StaticObjectRenderCacheEntry = {
   readonly buildings: GameState["buildings"];
   readonly constructionSites: GameState["constructionSites"];
+  readonly palisade: GameState["palisade"];
   readonly visibleTiles: readonly Tile[];
   readonly cacheKey: string;
   readonly items: readonly RenderQueueItem[];
@@ -43,6 +44,7 @@ const staticObjectRenderItemsForFrame = (
   if (
     cached?.buildings === input.state.buildings &&
     cached.constructionSites === input.state.constructionSites &&
+    cached.palisade === input.state.palisade &&
     cached.visibleTiles === input.visibleTiles &&
     cached.cacheKey === cacheKey
   ) {
@@ -52,6 +54,7 @@ const staticObjectRenderItemsForFrame = (
     tiles: input.visibleTiles,
     worldTiles: input.state.tiles,
     buildings: input.state.buildings,
+    palisade: input.state.palisade,
     constructionSites: input.state.constructionSites,
     walkers: [],
     range: input.range,
@@ -61,6 +64,7 @@ const staticObjectRenderItemsForFrame = (
   staticObjectRenderCache.set(input.state.tiles, {
     buildings: input.state.buildings,
     constructionSites: input.state.constructionSites,
+    palisade: input.state.palisade,
     visibleTiles: input.visibleTiles,
     cacheKey,
     items,

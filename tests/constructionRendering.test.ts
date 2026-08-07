@@ -3,12 +3,15 @@ import test from "node:test";
 
 import type {
   BuildingConstructionSite,
+  PalisadeConstructionSite,
 } from "../src/economy/construction";
+import { createPalisadeConstructionSite } from "../src/economy/construction";
 import {
   constructionCompletionEffects,
   constructionSiteRenderSignature,
   drawConstructionSite,
 } from "../src/render/drawConstructionSites";
+import { drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
 
 type LoggedContext = CanvasRenderingContext2D & {
   readonly calls: readonly string[];
@@ -71,6 +74,7 @@ function loggedContext(): LoggedContext {
       calls.push(`rect:${x},${y},${width},${height}`),
     restore: () => calls.push("restore"),
     save: () => calls.push("save"),
+    setLineDash: (segments: number[]) => calls.push(`setLineDash:${segments.join(",")}`),
     stroke: () => calls.push("stroke"),
     strokeRect: (x: number, y: number, width: number, height: number) =>
       calls.push(`strokeRect:${x},${y},${width},${height}`),
@@ -92,6 +96,21 @@ function site(patch: Partial<BuildingConstructionSite> = {}): BuildingConstructi
     assignedBuilders: 0,
     stall: "awaiting_materials",
     startedTick: 0,
+    ...patch,
+  };
+}
+
+function wallSite(patch: Partial<PalisadeConstructionSite> = {}): PalisadeConstructionSite {
+  return {
+    ...createPalisadeConstructionSite({
+      id: "wall-a-segment-000",
+      wallId: "wall-a",
+      segmentIndex: 0,
+      gateDistance: 0,
+      order: 0,
+      path: [{ x: 1, y: 1 }, { x: 5, y: 1 }],
+      startedTick: 0,
+    }),
     ...patch,
   };
 }
@@ -154,6 +173,96 @@ test("drawConstructionSite writes the exact current stall label with delivered a
   // Then
   assert.ok(context.calls.includes("measureText:🪵 목재 오는 중 (12/40)"));
   assert.ok(context.calls.includes("fillText:🪵 목재 오는 중 (12/40),10,-16"));
+});
+
+test("drawConstructionSite gives queued palisade segments a dashed gate-order label without a stall label", () => {
+  // Given
+  const context = loggedContext();
+
+  // When
+  drawConstructionSite(context, {
+    site: wallSite(),
+    schedule: { kind: "queued", position: 2 },
+    zoom: 1,
+  });
+
+  // Then
+  assert.ok(context.calls.includes("setLineDash:6,4"));
+  assert.ok(context.calls.includes("measureText:성벽 2번째 대기"));
+  assert.ok(context.calls.includes("fillText:성벽 2번째 대기,42,0"));
+  assert.equal(context.calls.some((call) => call.includes("목재 오는 중")), false);
+});
+
+test("drawConstructionSite records four active palisade construction stages along the wall edge", () => {
+  // Given
+  const stages = [
+    wallSite({ builderTicks: 0, delivered: { timber: 60 }, stall: "no_builders" }),
+    wallSite({ builderTicks: 30, delivered: { timber: 60 }, stall: "no_builders" }),
+    wallSite({ builderTicks: 72, delivered: { timber: 60 }, stall: "none" }),
+    wallSite({ builderTicks: 108, delivered: { timber: 60 }, assignedBuilders: 1, stall: "none" }),
+  ] as const;
+
+  // When
+  const signatures = stages.map((stageSite) => {
+    const context = loggedContext();
+    drawConstructionSite(context, {
+      site: stageSite,
+      schedule: { kind: "active" },
+      zoom: 1,
+    });
+    return context.calls;
+  });
+
+  // Then
+  assert.deepEqual(signatures.map((signature) => signature.includes("moveTo:0,16")), [
+    true,
+    true,
+    true,
+    true,
+  ]);
+  assert.deepEqual(signatures.map((signature) => signature.includes("lineTo:128,80")), [
+    true,
+    true,
+    true,
+    true,
+  ]);
+  assert.ok(signatures[0]?.includes("setLineDash:4,4"));
+  assert.ok(signatures[1]?.includes("fillRect:61,34,7,16"));
+  assert.ok(signatures[2]?.includes("fillRect:29,-4,6,38"));
+  assert.ok(signatures[2]?.includes("fillRect:93,28,6,38"));
+  assert.ok(signatures[3]?.includes("fillRect:61,43,10,8"));
+  assert.ok(signatures[3]?.includes("fillRect:65,35,2,8"));
+});
+
+test("drawPalisadeSegment renders a completed timber run and exactly one gate marker", () => {
+  // Given
+  const plainContext = loggedContext();
+  const gateContext = loggedContext();
+  const segment = {
+    id: "wall-a-segment-000",
+    order: 0,
+    edgePath: [{ x: 1, y: 1 }, { x: 5, y: 1 }],
+    tileCount: 4,
+    completed: true,
+    constructionSiteId: null,
+  } as const;
+
+  // When
+  drawPalisadeSegment(plainContext, {
+    segment,
+    gate: null,
+    zoom: 1,
+  });
+  drawPalisadeSegment(gateContext, {
+    segment,
+    gate: { x: 3, y: 1 },
+    zoom: 1,
+  });
+
+  // Then
+  assert.equal(plainContext.calls.filter((call) => call.startsWith("fillRect:")).length, 4);
+  assert.equal(gateContext.calls.filter((call) => call.startsWith("fillRect:")).length, 5);
+  assert.ok(gateContext.calls.includes("fillRect:61,43,12,16"));
 });
 
 test("constructionCompletionEffects derives a short pop and dust from previous and current snapshots only", () => {
