@@ -1,0 +1,1360 @@
+{
+  "baseUrl": "http://127.0.0.1:5179",
+  "generatedAt": "2026-08-07T14:39:46.592Z",
+  "results": [
+    {
+      "url": "http://127.0.0.1:5179/",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "welcomeCount": 0,
+      "rects": {
+        "app": {
+          "left": 0,
+          "right": 1280,
+          "top": 0,
+          "bottom": 720,
+          "width": 1280,
+          "height": 720
+        },
+        "rail": {
+          "left": 932,
+          "right": 1268,
+          "top": 12,
+          "bottom": 205.59375,
+          "width": 336,
+          "height": 193.59375
+        },
+        "console": {
+          "left": 0,
+          "right": 1280,
+          "top": 570,
+          "bottom": 720,
+          "width": 1280,
+          "height": 150
+        },
+        "sealRecess": {
+          "left": 445.421875,
+          "right": 834.5625,
+          "top": 582,
+          "bottom": 708,
+          "width": 389.140625,
+          "height": 126
+        },
+        "buildSeals": {
+          "left": 505.984375,
+          "right": 773.984375,
+          "top": 591,
+          "bottom": 699,
+          "width": 268,
+          "height": 108
+        },
+        "ledgerRecess": {
+          "left": 852.46875,
+          "right": 1241.59375,
+          "top": 582,
+          "bottom": 708,
+          "width": 389.125,
+          "height": 126
+        },
+        "ledger": {
+          "left": 866.46875,
+          "right": 1159.59375,
+          "top": 593,
+          "bottom": 661,
+          "width": 293.125,
+          "height": 68
+        },
+        "ledgerDrawer": null,
+        "status": {
+          "left": 1104.59375,
+          "right": 1254.40625,
+          "top": 524,
+          "bottom": 562,
+          "width": 149.8125,
+          "height": 38
+        }
+      },
+      "buildButtons": [
+        {
+          "text": "오두막오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "오두막",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 511.984375,
+          "right": 559.984375,
+          "top": 595,
+          "bottom": 643,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "밀밭밀밭비용 목재 20목적 밀을 길러 방앗간에 보냅니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "밀밭",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 563.984375,
+          "right": 611.984375,
+          "top": 595,
+          "bottom": 643,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "방앗간방앗간비용 목재 30목적 밀을 빵으로 바꿔 배급을 돕습니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "방앗간",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 615.984375,
+          "right": 663.984375,
+          "top": 595,
+          "bottom": 643,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "벌목소벌목소비용 목재 15목적 숲 가장자리에서 통나무를 냅니다조건 길 인접 필요, 숲 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "벌목소",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 667.984375,
+          "right": 715.984375,
+          "top": 595,
+          "bottom": 643,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "제재소제재소비용 목재 30목적 통나무를 목재로 켭니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "제재소",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 719.984375,
+          "right": 767.984375,
+          "top": 595,
+          "bottom": 643,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "창고창고비용 목재 40목적 목재와 통나무를 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "창고",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 511.984375,
+          "right": 559.984375,
+          "top": 647,
+          "bottom": 695,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "곡창곡창비용 목재 40목적 밀과 빵을 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "곡창",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 563.984375,
+          "right": 611.984375,
+          "top": 647,
+          "bottom": 695,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "우물우물비용 목재 10목적 주변 집에 물을 공급합니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": "우물",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 615.984375,
+          "right": 663.984375,
+          "top": 647,
+          "bottom": 695,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "예배당예배당비용 목재 40목적 목책마을 선포 조건을 준비합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "예배당",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 667.984375,
+          "right": 715.984375,
+          "top": 647,
+          "bottom": 695,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "길길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": "길",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 719.984375,
+          "right": 767.984375,
+          "top": 647,
+          "bottom": 695,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "speedButtons": [
+        {
+          "text": "",
+          "ariaLabel": "Pause",
+          "ariaDisabled": null,
+          "ariaPressed": "true",
+          "left": 1164.59375,
+          "right": 1194.59375,
+          "top": 625.296875,
+          "bottom": 655.296875,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "text": "",
+          "ariaLabel": "Normal speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 1197.59375,
+          "right": 1227.59375,
+          "top": 624.296875,
+          "bottom": 654.296875,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "text": "",
+          "ariaLabel": "Threefold speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 1164.59375,
+          "right": 1194.59375,
+          "top": 657.296875,
+          "bottom": 687.296875,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "text": "",
+          "ariaLabel": "Fivefold speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 1197.59375,
+          "right": 1227.59375,
+          "top": 657.296875,
+          "bottom": 687.296875,
+          "width": 30,
+          "height": 30
+        }
+      ],
+      "tooltips": [
+        {
+          "text": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "밀밭비용 목재 20목적 밀을 길러 방앗간에 보냅니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "방앗간비용 목재 30목적 밀을 빵으로 바꿔 배급을 돕습니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "벌목소비용 목재 15목적 숲 가장자리에서 통나무를 냅니다조건 길 인접 필요, 숲 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "제재소비용 목재 30목적 통나무를 목재로 켭니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "창고비용 목재 40목적 목재와 통나무를 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "곡창비용 목재 40목적 밀과 빵을 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "우물비용 목재 10목적 주변 집에 물을 공급합니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "예배당비용 목재 40목적 목책마을 선포 조건을 준비합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "ledgerToggle": [
+        {
+          "text": "인구 기록",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 873.46875,
+          "right": 931.84375,
+          "top": 629,
+          "bottom": 645,
+          "width": 58.375,
+          "height": 16
+        }
+      ],
+      "styles": {
+        "buildSeals": {
+          "overflowX": "auto",
+          "overflowY": "hidden",
+          "display": "grid",
+          "pointerEvents": "auto"
+        },
+        "tooltip": {
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "display": "none",
+          "pointerEvents": "none"
+        }
+      },
+      "bodyScrollWidth": 1280,
+      "buildSealsMetrics": {
+        "clientWidth": 268,
+        "scrollWidth": 268,
+        "beforeScroll": 0,
+        "afterScroll": 0,
+        "overflowX": "auto"
+      },
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "url": "http://127.0.0.1:5179/",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "welcomeCount": 0,
+      "rects": {
+        "app": {
+          "left": 0,
+          "right": 768,
+          "top": 0,
+          "bottom": 1024,
+          "width": 768,
+          "height": 1024
+        },
+        "rail": {
+          "left": 420,
+          "right": 756,
+          "top": 12,
+          "bottom": 205.59375,
+          "width": 336,
+          "height": 193.59375
+        },
+        "console": {
+          "left": 0,
+          "right": 768,
+          "top": 748,
+          "bottom": 1024,
+          "width": 768,
+          "height": 276
+        },
+        "sealRecess": {
+          "left": 261.328125,
+          "right": 506.65625,
+          "top": 760,
+          "bottom": 1012,
+          "width": 245.328125,
+          "height": 252
+        },
+        "buildSeals": {
+          "left": 277.984375,
+          "right": 489.984375,
+          "top": 806,
+          "bottom": 966,
+          "width": 212,
+          "height": 160
+        },
+        "ledgerRecess": {
+          "left": 512.65625,
+          "right": 757.984375,
+          "top": 760,
+          "bottom": 1012,
+          "width": 245.328125,
+          "height": 252
+        },
+        "ledger": {
+          "left": 521.65625,
+          "right": 680.984375,
+          "top": 771,
+          "bottom": 839,
+          "width": 159.328125,
+          "height": 68
+        },
+        "ledgerDrawer": null,
+        "status": {
+          "left": 608.1875,
+          "right": 758,
+          "top": 704,
+          "bottom": 742,
+          "width": 149.8125,
+          "height": 38
+        }
+      },
+      "buildButtons": [
+        {
+          "text": "오두막오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "오두막",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 281.984375,
+          "right": 329.984375,
+          "top": 810,
+          "bottom": 858,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "밀밭밀밭비용 목재 20목적 밀을 길러 방앗간에 보냅니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "밀밭",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 333.984375,
+          "right": 381.984375,
+          "top": 810,
+          "bottom": 858,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "방앗간방앗간비용 목재 30목적 밀을 빵으로 바꿔 배급을 돕습니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "방앗간",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 385.984375,
+          "right": 433.984375,
+          "top": 810,
+          "bottom": 858,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "벌목소벌목소비용 목재 15목적 숲 가장자리에서 통나무를 냅니다조건 길 인접 필요, 숲 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "벌목소",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 437.984375,
+          "right": 485.984375,
+          "top": 810,
+          "bottom": 858,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "제재소제재소비용 목재 30목적 통나무를 목재로 켭니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "제재소",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 281.984375,
+          "right": 329.984375,
+          "top": 862,
+          "bottom": 910,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "창고창고비용 목재 40목적 목재와 통나무를 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "창고",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 333.984375,
+          "right": 381.984375,
+          "top": 862,
+          "bottom": 910,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "곡창곡창비용 목재 40목적 밀과 빵을 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "곡창",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 385.984375,
+          "right": 433.984375,
+          "top": 862,
+          "bottom": 910,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "우물우물비용 목재 10목적 주변 집에 물을 공급합니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": "우물",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 437.984375,
+          "right": 485.984375,
+          "top": 862,
+          "bottom": 910,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "예배당예배당비용 목재 40목적 목책마을 선포 조건을 준비합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "예배당",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 281.984375,
+          "right": 329.984375,
+          "top": 914,
+          "bottom": 962,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "길길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": "길",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 333.984375,
+          "right": 381.984375,
+          "top": 914,
+          "bottom": 962,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "speedButtons": [
+        {
+          "text": "",
+          "ariaLabel": "Pause",
+          "ariaDisabled": null,
+          "ariaPressed": "true",
+          "left": 685.984375,
+          "right": 715.984375,
+          "top": 803.296875,
+          "bottom": 833.296875,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "text": "",
+          "ariaLabel": "Normal speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 718.984375,
+          "right": 748.984375,
+          "top": 802.296875,
+          "bottom": 832.296875,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "text": "",
+          "ariaLabel": "Threefold speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 685.984375,
+          "right": 715.984375,
+          "top": 835.296875,
+          "bottom": 865.296875,
+          "width": 30,
+          "height": 30
+        },
+        {
+          "text": "",
+          "ariaLabel": "Fivefold speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 718.984375,
+          "right": 748.984375,
+          "top": 835.296875,
+          "bottom": 865.296875,
+          "width": 30,
+          "height": 30
+        }
+      ],
+      "tooltips": [
+        {
+          "text": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "밀밭비용 목재 20목적 밀을 길러 방앗간에 보냅니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "방앗간비용 목재 30목적 밀을 빵으로 바꿔 배급을 돕습니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "벌목소비용 목재 15목적 숲 가장자리에서 통나무를 냅니다조건 길 인접 필요, 숲 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "제재소비용 목재 30목적 통나무를 목재로 켭니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "창고비용 목재 40목적 목재와 통나무를 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "곡창비용 목재 40목적 밀과 빵을 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "우물비용 목재 10목적 주변 집에 물을 공급합니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "예배당비용 목재 40목적 목책마을 선포 조건을 준비합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "ledgerToggle": [
+        {
+          "text": "인구 기록",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 528.65625,
+          "right": 587.03125,
+          "top": 807,
+          "bottom": 823,
+          "width": 58.375,
+          "height": 16
+        }
+      ],
+      "styles": {
+        "buildSeals": {
+          "overflowX": "auto",
+          "overflowY": "hidden",
+          "display": "grid",
+          "pointerEvents": "auto"
+        },
+        "tooltip": {
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "display": "none",
+          "pointerEvents": "none"
+        }
+      },
+      "bodyScrollWidth": 768,
+      "buildSealsMetrics": {
+        "clientWidth": 212,
+        "scrollWidth": 212,
+        "beforeScroll": 0,
+        "afterScroll": 0,
+        "overflowX": "auto"
+      },
+      "failures": [],
+      "warnings": []
+    },
+    {
+      "url": "http://127.0.0.1:5179/",
+      "viewport": {
+        "width": 375,
+        "height": 812
+      },
+      "welcomeCount": 0,
+      "rects": {
+        "app": {
+          "left": 0,
+          "right": 375,
+          "top": 0,
+          "bottom": 812,
+          "width": 375,
+          "height": 812
+        },
+        "rail": {
+          "left": 27,
+          "right": 363,
+          "top": 12,
+          "bottom": 154.796875,
+          "width": 336,
+          "height": 142.796875
+        },
+        "console": {
+          "left": 0,
+          "right": 375,
+          "top": 588,
+          "bottom": 812,
+          "width": 375,
+          "height": 224
+        },
+        "sealRecess": {
+          "left": 3,
+          "right": 255,
+          "top": 597,
+          "bottom": 803,
+          "width": 252,
+          "height": 206
+        },
+        "buildSeals": {
+          "left": 3,
+          "right": 255,
+          "top": 649,
+          "bottom": 751,
+          "width": 252,
+          "height": 102
+        },
+        "ledgerRecess": {
+          "left": 256,
+          "right": 373,
+          "top": 597,
+          "bottom": 803,
+          "width": 117,
+          "height": 206
+        },
+        "ledger": {
+          "left": 260,
+          "right": 369,
+          "top": 601,
+          "bottom": 649,
+          "width": 109,
+          "height": 48
+        },
+        "ledgerDrawer": null,
+        "status": {
+          "left": 6,
+          "right": 246.015625,
+          "top": 552,
+          "bottom": 584,
+          "width": 240.015625,
+          "height": 32
+        }
+      },
+      "buildButtons": [
+        {
+          "text": "오두막오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "오두막",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 5,
+          "right": 53,
+          "top": 651,
+          "bottom": 699,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "밀밭밀밭비용 목재 20목적 밀을 길러 방앗간에 보냅니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "밀밭",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 55,
+          "right": 103,
+          "top": 651,
+          "bottom": 699,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "방앗간방앗간비용 목재 30목적 밀을 빵으로 바꿔 배급을 돕습니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "방앗간",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 105,
+          "right": 153,
+          "top": 651,
+          "bottom": 699,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "벌목소벌목소비용 목재 15목적 숲 가장자리에서 통나무를 냅니다조건 길 인접 필요, 숲 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "벌목소",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 155,
+          "right": 203,
+          "top": 651,
+          "bottom": 699,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "제재소제재소비용 목재 30목적 통나무를 목재로 켭니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "제재소",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 205,
+          "right": 253,
+          "top": 651,
+          "bottom": 699,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "창고창고비용 목재 40목적 목재와 통나무를 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "창고",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 5,
+          "right": 53,
+          "top": 701,
+          "bottom": 749,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "곡창곡창비용 목재 40목적 밀과 빵을 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "곡창",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 55,
+          "right": 103,
+          "top": 701,
+          "bottom": 749,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "우물우물비용 목재 10목적 주변 집에 물을 공급합니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": "우물",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 105,
+          "right": 153,
+          "top": 701,
+          "bottom": 749,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "예배당예배당비용 목재 40목적 목책마을 선포 조건을 준비합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": "예배당",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 155,
+          "right": 203,
+          "top": 701,
+          "bottom": 749,
+          "width": 48,
+          "height": 48
+        },
+        {
+          "text": "길길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": "길",
+          "ariaDisabled": "false",
+          "ariaPressed": "false",
+          "left": 205,
+          "right": 253,
+          "top": 701,
+          "bottom": 749,
+          "width": 48,
+          "height": 48
+        }
+      ],
+      "speedButtons": [
+        {
+          "text": "",
+          "ariaLabel": "Pause",
+          "ariaDisabled": null,
+          "ariaPressed": "true",
+          "left": 277,
+          "right": 295,
+          "top": 683,
+          "bottom": 701,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "text": "",
+          "ariaLabel": "Normal speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 296,
+          "right": 314,
+          "top": 682,
+          "bottom": 700,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "text": "",
+          "ariaLabel": "Threefold speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 315,
+          "right": 333,
+          "top": 682,
+          "bottom": 700,
+          "width": 18,
+          "height": 18
+        },
+        {
+          "text": "",
+          "ariaLabel": "Fivefold speed",
+          "ariaDisabled": null,
+          "ariaPressed": "false",
+          "left": 334,
+          "right": 352,
+          "top": 682,
+          "bottom": 700,
+          "width": 18,
+          "height": 18
+        }
+      ],
+      "tooltips": [
+        {
+          "text": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "밀밭비용 목재 20목적 밀을 길러 방앗간에 보냅니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "방앗간비용 목재 30목적 밀을 빵으로 바꿔 배급을 돕습니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "벌목소비용 목재 15목적 숲 가장자리에서 통나무를 냅니다조건 길 인접 필요, 숲 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "제재소비용 목재 30목적 통나무를 목재로 켭니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "창고비용 목재 40목적 목재와 통나무를 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "곡창비용 목재 40목적 밀과 빵을 보관합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "우물비용 목재 10목적 주변 집에 물을 공급합니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "예배당비용 목재 40목적 목책마을 선포 조건을 준비합니다조건 길 인접 필요건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        {
+          "text": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "ledgerToggle": [
+        {
+          "text": "인구 기록",
+          "ariaLabel": null,
+          "ariaDisabled": null,
+          "ariaPressed": null,
+          "left": 255,
+          "right": 313.375,
+          "top": 633,
+          "bottom": 649,
+          "width": 58.375,
+          "height": 16
+        }
+      ],
+      "styles": {
+        "buildSeals": {
+          "overflowX": "auto",
+          "overflowY": "hidden",
+          "display": "grid",
+          "pointerEvents": "auto"
+        },
+        "tooltip": {
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "display": "none",
+          "pointerEvents": "none"
+        }
+      },
+      "bodyScrollWidth": 375,
+      "buildSealsMetrics": {
+        "clientWidth": 252,
+        "scrollWidth": 252,
+        "beforeScroll": 0,
+        "afterScroll": 0,
+        "overflowX": "auto"
+      },
+      "failures": [],
+      "warnings": []
+    }
+  ],
+  "interaction": {
+    "keyboardFocusedLabel": "오두막",
+    "keyboardPressed": "true",
+    "statusText": "지을 곳을 클릭하세요 — 오두막 · 취소하려면 Esc",
+    "disabledBuildLabel": null,
+    "disabledBuildText": null
+  },
+  "consoleMessages": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    }
+  ],
+  "pageErrors": [],
+  "fatalConsole": [],
+  "verdict": "PASS",
+  "unaffordableHarness": {
+    "harnessPath": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/ui-lane-fix/build-menu-harness.html",
+    "before": {
+      "pressed": "false",
+      "selected": "none"
+    },
+    "after": {
+      "ariaDisabled": "true",
+      "ariaPressed": "false",
+      "dataAffordable": "false",
+      "label": "예배당",
+      "selected": "none",
+      "tooltipText": "예배당 비용 목재 40 건설 불가 · 부족 40",
+      "button": {
+        "left": 520,
+        "right": 568,
+        "top": 290.21875,
+        "bottom": 338.21875,
+        "width": 48,
+        "height": 48
+      }
+    },
+    "failures": [],
+    "warnings": []
+  }
+}

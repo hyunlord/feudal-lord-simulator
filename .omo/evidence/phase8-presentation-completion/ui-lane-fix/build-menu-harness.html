@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build Menu Harness</title>
+  <style>
+    :root {
+      --palette-ink: #2c1b13;
+      --palette-ink-light: #6f5642;
+      --palette-parchment: #e4cfa3;
+      --palette-vellum: #eadbb7;
+      --palette-gold: #c69232;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--palette-vellum);
+    }
+    .build-seal {
+      position: relative;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      padding: 4px;
+      color: var(--palette-ink-light);
+      cursor: default;
+      appearance: none;
+      background: var(--palette-parchment);
+      border: 1px solid var(--palette-ink);
+      opacity: 0.58;
+    }
+    .build-seal-label {
+      max-width: 100%;
+      overflow: hidden;
+      color: var(--palette-ink);
+      font-size: 10px;
+      line-height: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .seal-tooltip {
+      display: block;
+      width: min(220px, calc(100vw - 24px));
+      padding: 5px 9px;
+      color: var(--palette-ink);
+      font-size: 11px;
+      line-height: 1.2;
+      background: var(--palette-vellum);
+      border: 1px solid var(--palette-ink);
+    }
+    .seal-tooltip span {
+      display: block;
+    }
+    #state {
+      margin-top: 12px;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <button
+      class="build-seal"
+      type="button"
+      aria-label="예배당"
+      aria-describedby="chapel-tip"
+      aria-disabled="true"
+      aria-pressed="false"
+      data-affordable="false"
+    >
+      <span aria-hidden="true">⌂</span>
+      <span class="build-seal-label" aria-hidden="true">예배당</span>
+    </button>
+    <span id="chapel-tip" class="seal-tooltip" role="tooltip">
+      <span>예배당</span>
+      <span>비용 목재 40</span>
+      <span>건설 불가 · 부족 40</span>
+    </span>
+    <p id="state" data-selected="none">selected:none</p>
+  </main>
+  <script>
+    const seal = document.querySelector(".build-seal");
+    const state = document.querySelector("#state");
+    seal.addEventListener("click", () => {
+      if (seal.dataset.affordable === "true") {
+        seal.setAttribute("aria-pressed", "true");
+        state.dataset.selected = seal.getAttribute("aria-label");
+        state.textContent = "selected:" + state.dataset.selected;
+      }
+    });
+  </script>
+</body>
+</html>

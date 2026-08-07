@@ -1,0 +1,62 @@
+✖ release contrast gate exists and reports audited selector ratios (360.342041ms)
+✔ text-bearing CSS zones use flat audited backgrounds (3.72825ms)
+✖ numeric ledger and era gauges use monospace right-aligned darker digits (1.340917ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 508.137292
+
+✖ failing tests:
+
+test at tests/contrastGate.test.ts:1:810
+✖ release contrast gate exists and reports audited selector ratios (360.342041ms)
+  AssertionError [ERR_ASSERTION]: .era-requirement dd: numeric text must use the declared monospace stack
+  .court-ledger dd: numeric text must use the declared monospace stack
+  
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/contrastGate.test.ts:29:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.start (node:internal/test_runner/test:1096:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/contrastGate.test.ts:1:1836
+✖ numeric ledger and era gauges use monospace right-aligned darker digits (1.340917ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /font-family:\s*ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;/. Input:
+  
+  '\n' +
+    '  min-width: 0;\n' +
+    '  margin: 0;\n' +
+    '  overflow: hidden;\n' +
+    '  text-overflow: ellipsis;\n' +
+    '  white-space: nowrap;\n' +
+    '\n' +
+    '\n' +
+    '  color: var(--palette-ink);\n' +
+    '  font-family: Georgia, "Times New Roman", serif;\n' +
+    '  font-variant-numeric: tabular-nums;\n' +
+    '  text-align: right;\n'
+  
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/contrastGate.test.ts:69:12)
+      at async Test.run (node:internal/test_runner/test:1208:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '\n  min-width: 0;\n  margin: 0;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n\n\n  color: var(--palette-ink);\n  font-family: Georgia, "Times New Roman", serif;\n  font-variant-numeric: tabular-nums;\n  text-align: right;\n',
+    expected: /font-family:\s*ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;/,
+    operator: 'match',
+    diff: 'simple'
+  }

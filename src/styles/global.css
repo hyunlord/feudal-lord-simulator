@@ -712,14 +712,14 @@ button {
 .build-seals {
   --seal-size: 48px;
   display: grid;
-  grid-template-columns: repeat(4, calc(var(--seal-size) * 2 + 4px));
+  grid-template-columns: repeat(5, var(--seal-size));
   grid-auto-rows: auto;
-  gap: 4px 8px;
+  gap: 4px;
   place-content: center;
   width: max-content;
   max-width: 100%;
   max-height: 100%;
-  height: 100%;
+  height: auto;
   padding: 4px 6px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -728,21 +728,16 @@ button {
 }
 
 .road-tool {
-  grid-column: 1 / -1;
-  display: flex;
-  align-self: end;
-  justify-content: center;
+  display: contents;
 }
 
 .build-group {
-  display: grid;
-  gap: 4px;
-  justify-items: center;
-  min-width: 0;
+  display: contents;
 }
 
 /* contrast-audit selector=".build-group-label" fg="--palette-vellum" bg="--palette-ink" size="13" role="body" */
 .build-group-label {
+  display: none;
   max-width: calc(var(--seal-size) * 2 + 8px);
   overflow: hidden;
   color: var(--palette-parchment);
@@ -753,10 +748,7 @@ button {
 }
 
 .build-group-seals {
-  display: grid;
-  grid-template-columns: repeat(2, var(--seal-size));
-  grid-auto-rows: var(--seal-size);
-  gap: 4px;
+  display: contents;
 }
 
 .build-seal,
@@ -785,9 +777,9 @@ button {
 }
 
 .build-seal--road {
-  width: calc(var(--seal-size) * 2 + 4px);
+  width: var(--seal-size);
   height: var(--seal-size);
-  padding-inline: 8px;
+  padding-inline: 4px;
   color: var(--palette-ink-light);
   background-color: var(--palette-parchment-dark);
   clip-path: polygon(4% 16%, 96% 8%, 100% 50%, 96% 92%, 4% 84%, 0 50%);
@@ -932,13 +924,14 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 5px;
-  align-content: end;
+  align-content: start;
   padding: 11px 14px;
 }
 
 .ledger-stack {
   display: grid;
   gap: 3px;
+  align-self: start;
   min-width: 0;
 }
 
@@ -1298,13 +1291,13 @@ button {
   }
 
   .build-seals {
-    grid-template-columns: repeat(2, calc(var(--seal-size) * 2 + 4px));
+    grid-template-columns: repeat(4, var(--seal-size));
     gap: 4px;
     padding: 4px;
   }
 
   .build-seal--road {
-    width: min(100%, calc(var(--seal-size) * 4 + 12px));
+    width: var(--seal-size);
   }
 
   .settlement-status {
@@ -1334,10 +1327,10 @@ button {
   }
 
   .court-console {
-    grid-template-columns: minmax(72px, 0.75fr) minmax(112px, 1.1fr) minmax(0, 1.45fr);
-    gap: clamp(2px, 0.5vw, 3px);
+    grid-template-columns: 0 252px minmax(0, 1fr);
+    gap: 1px;
     height: 224px;
-    padding: 7px clamp(4px, 0.8vw, 5px);
+    padding: 7px 2px;
   }
 
   .court-recess {
@@ -1345,8 +1338,7 @@ button {
   }
 
   .map-shield {
-    width: 54px;
-    height: 66px;
+    display: none;
   }
 
   .shield-caption {
@@ -1355,18 +1347,17 @@ button {
 
   .build-seals {
     --seal-size: 48px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, var(--seal-size));
+    grid-auto-rows: var(--seal-size);
+    gap: 2px;
+    place-content: center;
+    width: max-content;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: thin;
-    grid-template-columns: none;
-    grid-auto-rows: auto;
-    gap: 4px;
-    padding: 4px;
+    padding: 2px;
   }
 
   .build-group-label {
@@ -1374,11 +1365,11 @@ button {
   }
 
   .road-tool {
-    margin-top: 1px;
+    display: contents;
   }
 
   .build-seal--road {
-    width: calc(var(--seal-size) * 2 + 4px);
+    width: var(--seal-size);
     height: var(--seal-size);
   }
 

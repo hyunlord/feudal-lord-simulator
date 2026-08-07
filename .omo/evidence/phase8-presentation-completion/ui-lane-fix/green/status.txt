@@ -1,0 +1,13 @@
+generatedAt=2026-08-07T14:39:46.592Z
+playwrightVerdict=PASS
+viewport=1280x720 failures=0 warnings=0
+viewport=768x1024 failures=0 warnings=0
+viewport=375x812 failures=0 warnings=0
+unaffordableHarnessFailures=0
+fatalConsole=0
+pageErrors=0
+tests=npx tsx --test tests/onboardingUi.test.ts tests/buildMenuContracts.test.ts tests/contrastGate.test.ts => pass 20
+contrast=npx tsx scripts/checkContrast.ts => pass
+typecheck=npm run typecheck => pass
+build=npm run build => pass
+cleanup=port 5179 clear
