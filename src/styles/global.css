@@ -1264,7 +1264,9 @@ button {
 
   .ledger-stack .overlay-seal {
     display: block;
+    width: 100%;
     padding: 2px;
+    overflow: hidden;
   }
 
   .ledger-stack .overlay-label {

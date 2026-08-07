@@ -177,6 +177,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*9px;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\);/);
+  assert.match(mobileRules, /\.ledger-stack \.overlay-seal\s*\{[^}]*width:\s*100%;[^}]*overflow:\s*hidden;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-key,[\s\S]*?\.ledger-stack \.overlay-legend\s*\{[\s\S]*?display:\s*none;/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, clamp\(18px, 3\.5vw, 21px\)\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?justify-content:\s*center;/);
