@@ -5,8 +5,10 @@ import { worldBounds } from "./interactions";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 
 const DESKTOP_CONSOLE_HEIGHT = 150;
+const TABLET_CONSOLE_HEIGHT = 276;
 const MOBILE_CONSOLE_HEIGHT = 224;
 const MOBILE_MAX_WIDTH = 600;
+const TABLET_MAX_WIDTH = 900;
 const TARGET_ISO_TILE_SPAN = 20;
 
 type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">;
@@ -78,10 +80,18 @@ function usableViewportCenter(canvas: InitialCameraCanvas): Point {
 }
 
 function usableViewportHeight(canvas: InitialCameraCanvas): number {
-  const consoleHeight = canvas.clientWidth <= MOBILE_MAX_WIDTH
-    ? MOBILE_CONSOLE_HEIGHT
-    : DESKTOP_CONSOLE_HEIGHT;
+  const consoleHeight = courtConsoleHeightForCanvasWidth(canvas.clientWidth);
   return Math.max(1, canvas.clientHeight - consoleHeight);
+}
+
+function courtConsoleHeightForCanvasWidth(canvasWidth: number): number {
+  if (canvasWidth <= MOBILE_MAX_WIDTH) {
+    return MOBILE_CONSOLE_HEIGHT;
+  }
+  if (canvasWidth <= TABLET_MAX_WIDTH) {
+    return TABLET_CONSOLE_HEIGHT;
+  }
+  return DESKTOP_CONSOLE_HEIGHT;
 }
 
 function startingHouse(

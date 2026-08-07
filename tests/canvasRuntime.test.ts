@@ -66,6 +66,37 @@ test("cameraForStartingHouse centers the edge starting house in the desktop usab
   assert.ok(camera.zoom >= 0.5 && camera.zoom <= 2);
 });
 
+test("cameraForStartingHouse centers the opening focus in the responsive viewport above the court console", () => {
+  // Given: the measured court-console layout contract at each responsive breakpoint.
+  const startingHouse = houseAt("house-0-0-0", 0, 0);
+  const scenarios = [
+    { width: 901, height: 600, consoleHeight: 150 },
+    { width: 900, height: 375, consoleHeight: 276 },
+    { width: 640, height: 375, consoleHeight: 276 },
+    { width: 601, height: 500, consoleHeight: 276 },
+    { width: 600, height: 812, consoleHeight: 224 },
+    { width: 375, height: 812, consoleHeight: 224 },
+  ];
+
+  for (const scenario of scenarios) {
+    const canvas = { clientWidth: scenario.width, clientHeight: scenario.height };
+
+    // When: the render runtime derives the first camera.
+    const camera = cameraForStartingHouse(canvas, {
+      width: 64,
+      height: 64,
+      buildings: [startingHouse],
+    });
+    const anchor = transformedAnchor(startingHouse, camera);
+
+    // Then: the opening focus is centered in the canvas area that remains visible above the console.
+    assertAlmostEqual(anchor.x, scenario.width / 2);
+    assertAlmostEqual(anchor.y, (scenario.height - scenario.consoleHeight) / 2);
+    assert.ok(anchor.y >= 0 && anchor.y <= scenario.height - scenario.consoleHeight);
+    assert.ok(camera.zoom >= 0.5 && camera.zoom <= 2);
+  }
+});
+
 test("cameraForStartingHouse keeps the edge starting house visible on mobile", () => {
   // Given: the canonical edge starting house and a mobile canvas with a 224px console.
   const startingHouse = houseAt("house-0-0-0", 0, 0);
