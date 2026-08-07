@@ -6,6 +6,14 @@ import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./s
 export type OnboardingGuidanceOverlayInput = {
   readonly targets: readonly OnboardingGuidanceTarget[];
   readonly zoom: number;
+  readonly safeRightInset?: number;
+};
+
+type PlaqueBounds = {
+  readonly left: number;
+  readonly top: number;
+  readonly right: number;
+  readonly bottom: number;
 };
 
 export function drawOnboardingGuidanceOverlay(
@@ -17,7 +25,7 @@ export function drawOnboardingGuidanceOverlay(
   context.save();
   for (const target of input.targets) {
     drawTargetDiamond(context, target, input.zoom);
-    drawTargetPlaque(context, target, input.zoom);
+    drawTargetPlaque(context, target, input);
   }
   context.restore();
 }
@@ -45,8 +53,9 @@ function drawTargetDiamond(
 function drawTargetPlaque(
   context: CanvasRenderingContext2D,
   target: OnboardingGuidanceTarget,
-  zoom: number,
+  input: OnboardingGuidanceOverlayInput,
 ): void {
+  const { zoom } = input;
   const center = tileToScreen(target.origin.tx, target.origin.ty);
   const fontSize = 14 / zoom;
   const padding = 5 / zoom;
@@ -56,15 +65,18 @@ function drawTargetPlaque(
 
   const plaqueWidth = snapToPixel(context.measureText(target.label).width + padding * 2);
   const plaqueHeight = snapToPixel(fontSize + padding * 2);
-  const canvasWidth = context.canvas?.clientWidth ?? context.canvas?.width ?? Number.POSITIVE_INFINITY;
-  const canvasHeight = context.canvas?.clientHeight ?? context.canvas?.height ?? Number.POSITIVE_INFINITY;
+  const bounds = plaqueBounds(context, input.safeRightInset);
+  const usableWidth = Math.max(0, bounds.right - bounds.left);
+  const usableHeight = Math.max(0, bounds.bottom - bounds.top);
+  if (plaqueWidth > usableWidth || plaqueHeight > usableHeight) return;
+
   const rawPlaqueX = labelX - padding;
   const rawPlaqueY = labelY - fontSize - padding;
   const plaqueX = snapToPixel(
-    Math.min(Math.max(0, rawPlaqueX), Math.max(0, canvasWidth - plaqueWidth)),
+    Math.min(Math.max(bounds.left, rawPlaqueX), Math.max(bounds.left, bounds.right - plaqueWidth)),
   );
   const plaqueY = snapToPixel(
-    Math.min(Math.max(0, rawPlaqueY), Math.max(0, canvasHeight - plaqueHeight)),
+    Math.min(Math.max(bounds.top, rawPlaqueY), Math.max(bounds.top, bounds.bottom - plaqueHeight)),
   );
   const textX = snapToPixel(plaqueX + padding);
   const textY = snapToPixel(plaqueY + fontSize + padding);
@@ -75,4 +87,42 @@ function drawTargetPlaque(
   context.strokeRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
   context.fillStyle = SEMANTIC_PALETTE.ink;
   context.fillText(target.label, textX, textY);
+}
+
+function plaqueBounds(context: CanvasRenderingContext2D, explicitInset: number | undefined): PlaqueBounds {
+  const canvasWidth = context.canvas?.clientWidth ?? context.canvas?.width ?? Number.POSITIVE_INFINITY;
+  const canvasHeight = context.canvas?.clientHeight ?? context.canvas?.height ?? Number.POSITIVE_INFINITY;
+  const safeScreenRight = Math.max(0, canvasWidth - safeRightInset(context, explicitInset));
+  const transform = context.getTransform?.() ?? null;
+  if (transform === null || transform.a === 0 || transform.d === 0 || transform.b !== 0 || transform.c !== 0) {
+    return { left: 0, top: 0, right: safeScreenRight, bottom: canvasHeight };
+  }
+
+  return {
+    left: (0 - transform.e) / transform.a,
+    top: (0 - transform.f) / transform.d,
+    right: (safeScreenRight - transform.e) / transform.a,
+    bottom: (canvasHeight - transform.f) / transform.d,
+  };
+}
+
+function safeRightInset(context: CanvasRenderingContext2D, explicitInset: number | undefined): number {
+  if (explicitInset !== undefined) return Math.max(0, explicitInset);
+
+  const canvas = context.canvas;
+  if (canvas === undefined) return 0;
+
+  const rail = canvas.parentElement?.querySelector(".right-info-rail") ?? null;
+  if (rail === null) return 0;
+
+  const canvasBounds = canvas.getBoundingClientRect();
+  const railBounds = rail.getBoundingClientRect();
+  const overlapsCanvas =
+    railBounds.right > canvasBounds.left &&
+    railBounds.left < canvasBounds.right &&
+    railBounds.bottom > canvasBounds.top &&
+    railBounds.top < canvasBounds.bottom;
+  if (!overlapsCanvas) return 0;
+
+  return Math.max(0, canvasBounds.right - Math.max(canvasBounds.left, railBounds.left));
 }

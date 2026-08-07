@@ -148,3 +148,85 @@ test("drawOnboardingGuidanceOverlay clamps plaque text inside the canvas on narr
   assert.ok(Number(textX) >= Number(rectX));
   assert.ok(Number(textX) <= 200);
 });
+
+test("drawOnboardingGuidanceOverlay keeps Korean plaques out of the right rail at tablet width", () => {
+  // Given
+  const calls: string[] = [];
+  const context = {
+    canvas: { clientWidth: 768, clientHeight: 375 },
+    fillStyle: "",
+    font: "",
+    lineWidth: 0,
+    lineJoin: "miter",
+    lineCap: "butt",
+    beginPath: () => undefined,
+    moveTo: () => undefined,
+    lineTo: () => undefined,
+    closePath: () => undefined,
+    fill: () => undefined,
+    stroke: () => undefined,
+    measureText: () => ({ width: 108 }),
+    fillRect: (x: number, y: number, width: number, height: number) =>
+      calls.push(`fillRect:${x},${y},${width},${height}`),
+    strokeRect: () => undefined,
+    fillText: (text: string, x: number, y: number) => calls.push(`fillText:${text},${x},${y}`),
+    save: () => undefined,
+    restore: () => undefined,
+  } as unknown as CanvasRenderingContext2D;
+
+  // When
+  drawOnboardingGuidanceOverlay(context, {
+    targets: [{ kind: "logging_camp", label: "여기에 벌목소를 지으세요", origin: { tx: 13, ty: 0 } }],
+    zoom: 1,
+    safeRightInset: 348,
+  });
+
+  // Then
+  const usableRight = 420;
+  const fillRect = calls.find((call) => call.startsWith("fillRect:"));
+  const fillText = calls.find((call) => call.startsWith("fillText:"));
+  assert.ok(fillRect);
+  assert.ok(fillText);
+  const [, rectX, , rectWidth] = fillRect.split(/[:,]/);
+  const [, , textX] = fillText.split(/[:,]/);
+  assert.ok(Number(rectX) + Number(rectWidth) <= usableRight);
+  assert.ok(Number(textX) <= usableRight);
+});
+
+test("drawOnboardingGuidanceOverlay suppresses an unfit mobile plaque without hiding the marker", () => {
+  // Given
+  const calls: string[] = [];
+  const context = {
+    canvas: { clientWidth: 375, clientHeight: 667 },
+    fillStyle: "",
+    font: "",
+    lineWidth: 0,
+    lineJoin: "miter",
+    lineCap: "butt",
+    beginPath: () => calls.push("beginPath"),
+    moveTo: () => undefined,
+    lineTo: () => undefined,
+    closePath: () => undefined,
+    fill: () => calls.push("fill"),
+    stroke: () => undefined,
+    measureText: () => ({ width: 120 }),
+    fillRect: () => calls.push("fillRect"),
+    strokeRect: () => undefined,
+    fillText: () => calls.push("fillText"),
+    save: () => undefined,
+    restore: () => undefined,
+  } as unknown as CanvasRenderingContext2D;
+
+  // When
+  drawOnboardingGuidanceOverlay(context, {
+    targets: [{ kind: "logging_camp", label: "여기에 벌목소를 지으세요", origin: { tx: 13, ty: 0 } }],
+    zoom: 1,
+    safeRightInset: 348,
+  });
+
+  // Then
+  assert.ok(calls.includes("beginPath"));
+  assert.ok(calls.includes("fill"));
+  assert.equal(calls.includes("fillRect"), false);
+  assert.equal(calls.includes("fillText"), false);
+});
