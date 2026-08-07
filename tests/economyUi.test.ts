@@ -85,7 +85,29 @@ test("CourtLedger keeps old call sites and can display the Phase 3 economy total
   assert.match(phase3, /Wheat/);
   assert.match(phase3, /Bread/);
   assert.match(phase3, /Logs/);
-  assert.ok(phase3.includes("<dt>Timber</dt><dd>12</dd>"));
+  assert.match(phase3, /Timber[\s\S]*<dd class="ledger-row ledger-value">12<\/dd>/);
+});
+
+test("CourtLedger exposes compact primary labels and marks secondary rows for narrow consoles", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(
+    createElement(CourtLedger, {
+      tick: 8,
+      timber: 11,
+      selectedTool: "mill",
+      population: 6,
+      idleWorkers: 2,
+      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12 },
+    }),
+  );
+
+  // Then
+  assert.match(markup, /class="ledger-label ledger-label--full">Timber/);
+  assert.match(markup, /class="ledger-label ledger-label--compact" aria-hidden="true">Tim\./);
+  assert.match(markup, /class="ledger-label ledger-label--full">Population/);
+  assert.match(markup, /class="ledger-label ledger-label--compact" aria-hidden="true">Pop\./);
+  assert.match(markup, /class="ledger-row ledger-row--secondary"/);
+  assert.match(markup, /class="[^"]*\bledger-value\b[^"]*"/);
 });
 
 test("economy overlay controls expose visible water and labour toggles without camera-key collisions", () => {
@@ -111,6 +133,19 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.equal(toggleOverlayByKey("Digit4", "distribution"), "road_component");
   assert.equal(toggleOverlayByKey("KeyW", "water"), "water");
   assert.equal(toggleOverlayByKey("ArrowUp", "labour"), "labour");
+});
+
+test("economy overlay controls expose compact visible labels without changing accessible names", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
+
+  // Then
+  assert.match(markup, /aria-label="Distribution overlay Digit3"/);
+  assert.match(markup, /aria-label="Road component overlay Digit4"/);
+  assert.match(markup, /class="overlay-label overlay-label--full">Distribution/);
+  assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">Reach/);
+  assert.match(markup, /class="overlay-label overlay-label--full">Road component/);
+  assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">Roads/);
 });
 
 test("economy overlay controls render inside the right console recess instead of as persistent floating UI", () => {

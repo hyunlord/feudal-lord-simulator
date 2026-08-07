@@ -190,8 +190,13 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-ledger\s*\{[\s\S]*?height:\s*48px;/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*10px;/);
+  assert.match(mobileRules, /\.ledger-label--full\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(mobileRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*inline;/);
+  assert.match(mobileRules, /\.ledger-row--secondary\s*\{[\s\S]*?display:\s*none;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seal\s*\{[^}]*width:\s*100%;[^}]*overflow:\s*hidden;/);
+  assert.match(mobileRules, /\.overlay-label--full\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(mobileRules, /\.overlay-label--compact\s*\{[\s\S]*?display:\s*inline;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-key,[\s\S]*?\.ledger-stack \.overlay-legend\s*\{[\s\S]*?display:\s*none;/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, clamp\(18px, 3\.5vw, 21px\)\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?justify-content:\s*center;/);
@@ -226,6 +231,25 @@ test("ledger recess keeps responsive controls inside the viewport", async () => 
   assert.match(ledgerRecessRule, /grid-template-columns:\s*minmax\(0, 1fr\) auto;/);
   assert.match(ledgerRecessRule, /align-content:\s*start;/);
   assert.doesNotMatch(ledgerRecessRule, /minmax\(210px, 1fr\)/);
+});
+
+test("short landscape consoles use the same compact readable ledger and overlay labels", async () => {
+  // Given / When
+  const css = await readFile(STYLESHEET, "utf8");
+  const shortLandscapeRules = css.match(
+    /@media \(max-width: 720px\), \(max-width: 900px\) and \(max-height: 420px\) \{([\s\S]*?)\n\}/,
+  )?.[1] ?? "";
+
+  // Then
+  assert.match(shortLandscapeRules, /\.ledger-label--full\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(shortLandscapeRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*inline;/);
+  assert.match(shortLandscapeRules, /\.ledger-row--secondary\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(shortLandscapeRules, /\.court-ledger > \.ledger-population-toggle\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(shortLandscapeRules, /\.ledger-stack \.economy-overlays\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\);/);
+  assert.match(shortLandscapeRules, /\.ledger-stack \.overlay-heading\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(shortLandscapeRules, /\.overlay-label--full\s*\{[\s\S]*?display:\s*none;/);
+  assert.match(shortLandscapeRules, /\.overlay-label--compact\s*\{[\s\S]*?display:\s*inline;/);
+  assert.match(shortLandscapeRules, /\.ledger-stack \.overlay-key,[\s\S]*?\.ledger-stack \.overlay-legend\s*\{[\s\S]*?display:\s*none;/);
 });
 
 test("the browser shell declares a request-free favicon for clean fresh-load QA", async () => {

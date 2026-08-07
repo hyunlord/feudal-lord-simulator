@@ -9,6 +9,7 @@ type EconomyOverlayOption = {
   readonly mode: Extract<OverlayMode, "water" | "labour" | "distribution" | "road_component">;
   readonly keyCode: "Digit1" | "Digit2" | "Digit3" | "Digit4";
   readonly label: string;
+  readonly compactLabel: string;
   readonly legend: string;
 };
 
@@ -17,24 +18,28 @@ const ECONOMY_OVERLAYS = [
     mode: "water",
     keyCode: "Digit1",
     label: "Water",
+    compactLabel: "Water",
     legend: "well radius, dry houses",
   },
   {
     mode: "labour",
     keyCode: "Digit2",
     label: "Labour",
+    compactLabel: "Work",
     legend: "understaffed worksites",
   },
   {
     mode: "distribution",
     keyCode: "Digit3",
     label: "Distribution",
+    compactLabel: "Reach",
     legend: "granary road reach",
   },
   {
     mode: "road_component",
     keyCode: "Digit4",
     label: "Road component",
+    compactLabel: "Roads",
     legend: "selected building network",
   },
 ] as const satisfies readonly EconomyOverlayOption[];
@@ -65,7 +70,8 @@ export function EconomyOverlayControls({
             aria-label={`${option.label} overlay ${option.keyCode}`}
             onClick={() => onChange(overlayMode === option.mode ? "none" : option.mode)}
           >
-            <span className="overlay-label">{option.label}</span>
+            <span className="overlay-label overlay-label--full">{option.label}</span>
+            <span className="overlay-label overlay-label--compact" aria-hidden="true">{option.compactLabel}</span>
             <span className="overlay-key">{option.keyCode}</span>
             <span className="overlay-legend">{option.legend}</span>
           </button>

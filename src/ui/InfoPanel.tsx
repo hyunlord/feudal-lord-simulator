@@ -24,6 +24,16 @@ type CourtLedgerProps = {
   readonly onSelectPopulationHouseIds?: (houseIds: readonly string[]) => void;
 };
 
+type LedgerLabelProps = {
+  readonly full: string;
+  readonly compact: string;
+};
+
+type LedgerRowProps = LedgerLabelProps & {
+  readonly value: string | number;
+  readonly secondary?: boolean;
+};
+
 export function CourtLedger({
   tick,
   timber,
@@ -62,20 +72,47 @@ export function CourtLedger({
         </div>
       ) : null}
       <dl>
-        <dt>Timber</dt><dd>{timberTotal}</dd>
-        {population !== undefined ? <><dt>Population</dt><dd>{population}</dd></> : null}
-        {idleWorkers !== undefined ? <><dt>Idle</dt><dd>{idleWorkers}</dd></> : null}
+        <LedgerRow full="Timber" compact="Tim." value={timberTotal} />
+        {population !== undefined ? <LedgerRow full="Population" compact="Pop." value={population} /> : null}
+        {idleWorkers !== undefined ? <LedgerRow full="Idle" compact="Idle" value={idleWorkers} /> : null}
         {stockTotals !== undefined ? (
           <>
-            <dt>Wheat</dt><dd>{stockTotals.wheat}</dd>
-            <dt>Bread</dt><dd>{stockTotals.bread}</dd>
-            <dt>Logs</dt><dd>{stockTotals.logs}</dd>
+            <LedgerRow full="Wheat" compact="Wh." value={stockTotals.wheat} secondary />
+            <LedgerRow full="Bread" compact="Br." value={stockTotals.bread} secondary />
+            <LedgerRow full="Logs" compact="Log" value={stockTotals.logs} secondary />
           </>
         ) : null}
-        <dt>Tick</dt><dd>{tick}</dd>
+        <LedgerRow full="Tick" compact="Tck" value={tick} secondary />
         <dt className="ledger-tool">Seal</dt><dd className="ledger-tool">{selectedName}</dd>
       </dl>
     </div>
+  );
+}
+
+function LedgerRow({
+  full,
+  compact,
+  value,
+  secondary = false,
+}: LedgerRowProps) {
+  const rowClassName = secondary ? "ledger-row ledger-row--secondary" : "ledger-row";
+
+  return (
+    <>
+      <dt className={rowClassName}>
+        <LedgerLabel full={full} compact={compact} />
+      </dt>
+      <dd className={`${rowClassName} ledger-value`}>{value}</dd>
+    </>
+  );
+}
+
+function LedgerLabel({ full, compact }: LedgerLabelProps) {
+  return (
+    <>
+      <span className="ledger-label ledger-label--full">{full}</span>
+      <span className="ledger-label ledger-label--compact" aria-hidden="true">{compact}</span>
+    </>
   );
 }
 
