@@ -1,55 +1,11 @@
-selector foreground background size ratio floor
-.welcome-parchment --palette-ink --palette-vellum 12px 12.94 8.0
-.welcome-parchment h2 --palette-vermilion --palette-vellum 18px 5.43 4.5
-.welcome-parchment p --palette-ink --palette-vellum 12px 12.94 8.0
-.welcome-dismiss --palette-ink --palette-vellum 10px 12.94 8.0
-.era-ceremony__banner --palette-ink --palette-vellum 12px 12.94 8.0
-.era-ceremony__kicker --palette-ink --palette-vellum 11px 12.94 8.0
-.era-ceremony h2 --palette-vermilion --palette-vellum 20px 5.43 4.5
-.era-ceremony p --palette-ink --palette-vellum 12px 12.94 8.0
-.building-inspector --palette-ink --palette-vellum 11px 12.94 8.0
-.building-inspector strong --palette-vermilion --palette-vellum 14px 5.43 4.5
-.building-inspector span --palette-ink --palette-vellum 11px 12.94 8.0
-.diagnostic-card --palette-ink --palette-vellum 12px 12.94 8.0
-.diagnostic-card-cancel --palette-ink --palette-parchment-dark 12px 8.23 8.0
-.diagnostic-card h2 --palette-vermilion --palette-vellum 17px 5.43 4.5
-.diagnostic-card p --palette-ink --palette-vellum 12px 12.94 8.0
-.diagnostic-card dt --palette-ink --palette-vellum 12px 12.94 8.0
-.population-event-panel --palette-ink --palette-vellum 11px 12.94 8.0
-.population-event-panel h2 --palette-vermilion --palette-vellum 14px 5.43 4.5
-.population-event-panel p --palette-ink --palette-vellum 11px 12.94 8.0
-.economy-overlays --palette-ink --palette-vellum 10px 12.94 8.0
-.overlay-heading --palette-ink --palette-vellum 11px 12.94 8.0
-.overlay-legend --palette-ink --palette-vellum 9px 12.94 8.0
-.overlay-label --palette-ink --palette-vellum 10px 12.94 8.0
-.overlay-key --palette-ink --palette-vellum 9px 12.94 8.0
-.settlement-status --palette-ink --palette-vellum 12px 12.94 8.0
-.settlement-objective --palette-ink --palette-vellum 10px 12.94 8.0
-.settlement-complete --palette-ink --palette-vellum 10px 12.94 8.0
-.onboarding-tasks[data-onboarding-state=open-goal] --palette-ink --palette-vellum 10px 12.94 8.0
-.onboarding-task --palette-ink --palette-vellum 11px 12.94 8.0
-.onboarding-task-title --palette-ink --palette-vellum 11px 12.94 8.0
-.onboarding-task-hint --palette-ink --palette-vellum 9px 12.94 8.0
-.onboarding-task-flourish --palette-ink --palette-parchment-dark 8px 8.23 8.0
-.problem-glyph --palette-vermilion --palette-vellum 18px 5.43 4.5
-.build-group-label --palette-vellum --palette-ink 13px 12.94 7.0
-.build-seal-label --palette-ink --palette-parchment 10px 10.63 8.0
-.seal-tooltip --palette-ink --palette-vellum 11px 12.94 8.0
-.era-console --palette-ink --palette-vellum 9px 12.94 8.0
-.era-console__header --palette-ink --palette-vellum 11px 12.94 8.0
-.era-console__kicker --palette-ink --palette-vellum 9px 12.94 8.0
-.era-requirement --palette-ink --palette-parchment 9px 10.63 8.0
-.era-requirement dd --palette-ink --palette-parchment 9px 10.63 8.0
-.era-tooltip --palette-ink --palette-vellum 9px 12.94 8.0
-.era-draft-status --palette-ink --palette-vellum 9px 12.94 8.0
-.era-wall-progress --palette-ink --palette-vellum 9px 12.94 8.0
-.era-diagnostic --palette-ink --palette-vellum 9px 12.94 8.0
-.era-irrevocable --palette-ink --palette-vellum 9px 12.94 8.0
-.era-action-reason --palette-ink --palette-vellum 9px 12.94 8.0
-.era-proposal --palette-ink --palette-vellum 9px 12.94 8.0
-.era-action --palette-ink --palette-parchment-dark 9px 8.23 8.0
-.ledger-population-toggle --palette-ink --palette-parchment-dark 10px 8.23 8.0
-.court-ledger --palette-ink --palette-parchment 13px 10.63 7.0
-.ledger-heading --palette-ink --palette-parchment 13px 10.63 4.5
-.court-ledger dt --palette-ink-muted --palette-parchment 13px 7.79 7.0
-.court-ledger dd --palette-ink --palette-parchment 13px 10.63 7.0
+✔ release contrast gate exists and reports audited selector ratios (4352.364709ms)
+✔ text-bearing CSS zones use flat audited backgrounds (34.392834ms)
+✔ numeric ledger and era gauges use monospace right-aligned darker digits (3.869083ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5071.7345

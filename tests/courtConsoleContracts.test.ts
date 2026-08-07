@@ -164,7 +164,13 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
     css,
     /grid-template-columns:\s*(?:clamp\(122px|108px|54px)/,
   );
-  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*0 252px minmax\(0, 1fr\);/);
+  const compactColumns = mobileRules.match(
+    /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*(\d+)px\s+minmax\(0,\s*1fr\)\s+96px;/,
+  );
+  assert.notEqual(compactColumns, null);
+  assert.ok(Number(compactColumns?.[1]) > 0);
+  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*40px minmax\(0, 1fr\) 96px;/);
+  assert.doesNotMatch(mobileRules, /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*0\s+/);
   assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*224px;/);
   assert.match(mobileRules, /\.court-recess\s*\{[\s\S]*?height:\s*206px;/);
   assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
@@ -177,6 +183,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.build-group-seals\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex:\s*0 0 auto;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?justify-content:\s*flex-start;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*4px;/);
+  assert.match(mobileRules, /\.ledger-stack\s*\{[\s\S]*?align-self:\s*stretch;/);
+  assert.match(mobileRules, /\.ledger-stack\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\);/);
   assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?max-height:\s*72px;/);
   assert.match(mobileRules, /\.court-ledger\s*\{[\s\S]*?height:\s*48px;/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);

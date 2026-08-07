@@ -1,6 +1,6 @@
 {
-  "baseUrl": "http://127.0.0.1:5179/",
-  "generatedAt": "2026-08-07T15:11:33.635Z",
+  "baseUrl": "http://127.0.0.1:5179",
+  "generatedAt": "2026-08-07T15:29:29.495Z",
   "results": [
     {
       "url": "http://127.0.0.1:5179/",
@@ -33,6 +33,22 @@
           "bottom": 720,
           "width": 1280,
           "height": 150
+        },
+        "mapRecess": {
+          "left": 38.390625,
+          "right": 427.515625,
+          "top": 582,
+          "bottom": 708,
+          "width": 389.125,
+          "height": 126
+        },
+        "mapShield": {
+          "left": 180.953125,
+          "right": 284.953125,
+          "top": 589,
+          "bottom": 701,
+          "width": 104,
+          "height": 112
         },
         "sealRecess": {
           "left": 445.421875,
@@ -385,16 +401,36 @@
         }
       ],
       "styles": {
+        "mapRecess": {
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "mapShield": {
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
         "buildSeals": {
           "overflowX": "auto",
           "overflowY": "hidden",
           "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
           "pointerEvents": "auto"
         },
         "tooltip": {
           "overflowX": "visible",
           "overflowY": "visible",
           "display": "none",
+          "visibility": "hidden",
+          "opacity": "0",
           "pointerEvents": "none"
         }
       },
@@ -484,6 +520,22 @@
           "bottom": 1024,
           "width": 768,
           "height": 276
+        },
+        "mapRecess": {
+          "left": 10,
+          "right": 255.328125,
+          "top": 760,
+          "bottom": 1012,
+          "width": 245.328125,
+          "height": 252
+        },
+        "mapShield": {
+          "left": 93.65625,
+          "right": 171.65625,
+          "top": 839,
+          "bottom": 933,
+          "width": 78,
+          "height": 94
         },
         "sealRecess": {
           "left": 261.328125,
@@ -836,16 +888,36 @@
         }
       ],
       "styles": {
+        "mapRecess": {
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "mapShield": {
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
         "buildSeals": {
           "overflowX": "auto",
           "overflowY": "hidden",
           "display": "grid",
+          "visibility": "visible",
+          "opacity": "1",
           "pointerEvents": "auto"
         },
         "tooltip": {
           "overflowX": "visible",
           "overflowY": "visible",
           "display": "none",
+          "visibility": "hidden",
+          "opacity": "0",
           "pointerEvents": "none"
         }
       },
@@ -936,36 +1008,52 @@
           "width": 375,
           "height": 224
         },
-        "sealRecess": {
-          "left": 3,
-          "right": 255,
+        "mapRecess": {
+          "left": 2,
+          "right": 42,
           "top": 597,
           "bottom": 803,
-          "width": 252,
+          "width": 40,
+          "height": 206
+        },
+        "mapShield": {
+          "left": 8,
+          "right": 36,
+          "top": 683,
+          "bottom": 717,
+          "width": 28,
+          "height": 34
+        },
+        "sealRecess": {
+          "left": 43,
+          "right": 276,
+          "top": 597,
+          "bottom": 803,
+          "width": 233,
           "height": 206
         },
         "buildSeals": {
-          "left": 3,
-          "right": 255,
+          "left": 43,
+          "right": 276,
           "top": 672,
           "bottom": 728,
-          "width": 252,
+          "width": 233,
           "height": 56
         },
         "ledgerRecess": {
-          "left": 256,
+          "left": 277,
           "right": 373,
           "top": 597,
           "bottom": 803,
-          "width": 117,
+          "width": 96,
           "height": 206
         },
         "ledger": {
-          "left": 260,
+          "left": 281,
           "right": 369,
           "top": 601,
           "bottom": 649,
-          "width": 109,
+          "width": 88,
           "height": 48
         },
         "ledgerDrawer": null,
@@ -984,8 +1072,8 @@
           "ariaLabel": "오두막",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 7,
-          "right": 55,
+          "left": 47,
+          "right": 95,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -996,8 +1084,8 @@
           "ariaLabel": "밀밭",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 59,
-          "right": 107,
+          "left": 99,
+          "right": 147,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1008,8 +1096,8 @@
           "ariaLabel": "방앗간",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 111,
-          "right": 159,
+          "left": 151,
+          "right": 199,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1020,8 +1108,8 @@
           "ariaLabel": "벌목소",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 163,
-          "right": 211,
+          "left": 203,
+          "right": 251,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1032,8 +1120,8 @@
           "ariaLabel": "제재소",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 215,
-          "right": 263,
+          "left": 255,
+          "right": 303,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1044,8 +1132,8 @@
           "ariaLabel": "창고",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 267,
-          "right": 315,
+          "left": 307,
+          "right": 355,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1056,8 +1144,8 @@
           "ariaLabel": "곡창",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 319,
-          "right": 367,
+          "left": 359,
+          "right": 407,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1068,8 +1156,8 @@
           "ariaLabel": "우물",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 371,
-          "right": 419,
+          "left": 411,
+          "right": 459,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1080,8 +1168,8 @@
           "ariaLabel": "예배당",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 423,
-          "right": 471,
+          "left": 463,
+          "right": 511,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1092,8 +1180,8 @@
           "ariaLabel": "길",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 475,
-          "right": 523,
+          "left": 515,
+          "right": 563,
           "top": 676,
           "bottom": 724,
           "width": 48,
@@ -1106,8 +1194,8 @@
           "ariaLabel": "Pause",
           "ariaDisabled": null,
           "ariaPressed": "true",
-          "left": 277,
-          "right": 295,
+          "left": 287.5,
+          "right": 305.5,
           "top": 683,
           "bottom": 701,
           "width": 18,
@@ -1118,8 +1206,8 @@
           "ariaLabel": "Normal speed",
           "ariaDisabled": null,
           "ariaPressed": "false",
-          "left": 296,
-          "right": 314,
+          "left": 306.5,
+          "right": 324.5,
           "top": 682,
           "bottom": 700,
           "width": 18,
@@ -1130,8 +1218,8 @@
           "ariaLabel": "Threefold speed",
           "ariaDisabled": null,
           "ariaPressed": "false",
-          "left": 315,
-          "right": 333,
+          "left": 325.5,
+          "right": 343.5,
           "top": 682,
           "bottom": 700,
           "width": 18,
@@ -1142,8 +1230,8 @@
           "ariaLabel": "Fivefold speed",
           "ariaDisabled": null,
           "ariaPressed": "false",
-          "left": 334,
-          "right": 352,
+          "left": 344.5,
+          "right": 362.5,
           "top": 682,
           "bottom": 700,
           "width": 18,
@@ -1278,31 +1366,51 @@
           "ariaLabel": null,
           "ariaDisabled": null,
           "ariaPressed": null,
-          "left": 255,
-          "right": 313.375,
-          "top": 633,
-          "bottom": 649,
-          "width": 58.375,
-          "height": 16
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
         }
       ],
       "styles": {
+        "mapRecess": {
+          "overflowX": "visible",
+          "overflowY": "visible",
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
+        "mapShield": {
+          "overflowX": "hidden",
+          "overflowY": "hidden",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "pointerEvents": "auto"
+        },
         "buildSeals": {
           "overflowX": "auto",
           "overflowY": "hidden",
           "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
           "pointerEvents": "auto"
         },
         "tooltip": {
           "overflowX": "visible",
           "overflowY": "visible",
           "display": "none",
+          "visibility": "hidden",
+          "opacity": "0",
           "pointerEvents": "none"
         }
       },
       "bodyScrollWidth": 375,
       "buildSealsMetrics": {
-        "clientWidth": 252,
+        "clientWidth": 233,
         "scrollWidth": 524,
         "beforeScroll": 0,
         "afterScroll": 64,
@@ -1312,8 +1420,8 @@
         {
           "label": "오두막",
           "button": {
-            "left": 7,
-            "right": 55,
+            "left": 47,
+            "right": 95,
             "top": 676,
             "bottom": 724,
             "width": 48,
@@ -1333,8 +1441,8 @@
         {
           "label": "길",
           "button": {
-            "left": 203,
-            "right": 251,
+            "left": 224,
+            "right": 272,
             "top": 676,
             "bottom": 724,
             "width": 48,

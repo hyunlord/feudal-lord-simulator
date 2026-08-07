@@ -233,6 +233,8 @@ async function collectViewport(page, viewport) {
         overflowX: s.overflowX,
         overflowY: s.overflowY,
         display: s.display,
+        visibility: s.visibility,
+        opacity: s.opacity,
         pointerEvents: s.pointerEvents,
       };
     };
@@ -246,6 +248,8 @@ async function collectViewport(page, viewport) {
         app: rectOf(".app-shell"),
         rail: rectOf(".right-info-rail"),
         console: rectOf(".court-console"),
+        mapRecess: rectOf(".map-recess"),
+        mapShield: rectOf(".map-shield"),
         sealRecess: rectOf(".seal-recess"),
         buildSeals: rectOf(".build-seals"),
         ledgerRecess: rectOf(".ledger-recess"),
@@ -258,6 +262,8 @@ async function collectViewport(page, viewport) {
       tooltips: allRects(".seal-tooltip"),
       ledgerToggle: allRects(".ledger-population-toggle"),
       styles: {
+        mapRecess: styles(".map-recess"),
+        mapShield: styles(".map-shield"),
         buildSeals: styles(".build-seals"),
         tooltip: styles(".seal-tooltip"),
       },
@@ -401,6 +407,21 @@ async function collectViewport(page, viewport) {
     }
   }
   if (viewport.width === 375) {
+    for (const [name, selector] of [
+      ["mapRecess", ".map-recess"],
+      ["mapShield", ".map-shield"],
+    ]) {
+      const rect = rects[name];
+      const style = data.styles[name];
+      if (!rect || rect.width <= 0 || rect.height <= 0) {
+        failures.push(`mobile ${selector} collapsed: ${rectText(rect)}`);
+      }
+      if (!style || style.display === "none" || style.visibility !== "visible" || Number(style.opacity) <= 0) {
+        failures.push(
+          `mobile ${selector} hidden: display=${style?.display ?? "missing"} visibility=${style?.visibility ?? "missing"} opacity=${style?.opacity ?? "missing"}`,
+        );
+      }
+    }
     const metrics = data.buildSealsMetrics;
     if (!metrics) {
       failures.push("mobile buildSeals metrics missing");
@@ -669,6 +690,7 @@ async function run() {
     `welcomeAfterDismiss=dialogCount:${welcomeProof.afterDismiss.dialogCount} inert:${welcomeProof.afterDismiss.interactionLayerInert} aria-hidden:${welcomeProof.afterDismiss.interactionLayerAriaHidden} focusableBuild:${welcomeProof.afterDismiss.focusableBuildLabel}`,
     ...results.flatMap((item) => [
       `viewport=${item.viewport.width}x${item.viewport.height} failures=${item.failures.length} warnings=${item.warnings.length} scrollWidth=${item.buildSealsMetrics?.scrollWidth ?? "missing"} clientWidth=${item.buildSealsMetrics?.clientWidth ?? "missing"} beforeScroll=${item.buildSealsMetrics?.beforeScroll ?? "missing"} afterScroll=${item.buildSealsMetrics?.afterScroll ?? "missing"}`,
+      `minimap=${item.viewport.width}x${item.viewport.height}:mapRecess=${rectText(item.rects.mapRecess)} mapShield=${rectText(item.rects.mapShield)} mapRecessStyle=${item.styles.mapRecess?.display ?? "missing"}/${item.styles.mapRecess?.visibility ?? "missing"}/${item.styles.mapRecess?.opacity ?? "missing"} mapShieldStyle=${item.styles.mapShield?.display ?? "missing"}/${item.styles.mapShield?.visibility ?? "missing"}/${item.styles.mapShield?.opacity ?? "missing"}`,
       ...item.tooltipProofs.map(
         (proof) =>
           `tooltip=${item.viewport.width}x${item.viewport.height}:${proof.label} display=${proof.tooltipDisplay} rect=${proof.tooltip?.left ?? "missing"},${proof.tooltip?.top ?? "missing"},${proof.tooltip?.width ?? "missing"}x${proof.tooltip?.height ?? "missing"}`,

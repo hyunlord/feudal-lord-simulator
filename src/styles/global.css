@@ -1331,7 +1331,7 @@ button {
   }
 
   .court-console {
-    grid-template-columns: 0 252px minmax(0, 1fr);
+    grid-template-columns: 40px minmax(0, 1fr) 96px;
     gap: 1px;
     height: 224px;
     padding: 7px 2px;
@@ -1413,9 +1413,13 @@ button {
   }
 
   .ledger-stack {
+    align-self: stretch;
+    grid-template-columns: minmax(0, 1fr);
     width: 100%;
+    max-width: 100%;
     gap: 2px;
     min-height: 0;
+    overflow: hidden;
   }
 
   .era-console {
@@ -1465,8 +1469,13 @@ button {
 
   .court-ledger {
     width: 100%;
+    max-width: 100%;
     height: 48px;
     padding: 7px 5px 4px;
+  }
+
+  .court-ledger > .ledger-population-toggle {
+    display: none;
   }
 
   .ledger-heading {

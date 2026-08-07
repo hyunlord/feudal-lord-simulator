@@ -1,0 +1,4 @@
+scenario=RED broken 375 compact minimap grid uses zero-width first column
+inputGrid=0 252px minmax(0, 1fr)
+compactColumnsMatched=false
+expectedFailure=positive minimap column contract rejects broken grid

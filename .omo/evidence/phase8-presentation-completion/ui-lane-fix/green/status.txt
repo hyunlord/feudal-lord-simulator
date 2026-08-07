@@ -1,16 +1,19 @@
-generatedAt=2026-08-07T15:11:33.635Z
+generatedAt=2026-08-07T15:29:29.495Z
 playwrightVerdict=PASS
 welcomeFailures=0
 welcomeBefore=role:dialog aria-modal:true tabindex:-1 activeRole:dialog inert:true aria-hidden:true armedBuilds:0
 welcomeAfterKeyboard=dialogCount:1 armedBuilds:0
 welcomeAfterDismiss=dialogCount:0 inert:false aria-hidden:null focusableBuild:오두막
 viewport=1280x720 failures=0 warnings=0 scrollWidth=268 clientWidth=268 beforeScroll=0 afterScroll=0
+minimap=1280x720:mapRecess=x=38.4 y=582.0 w=389.1 h=126.0 mapShield=x=181.0 y=589.0 w=104.0 h=112.0 mapRecessStyle=flex/visible/1 mapShieldStyle=block/visible/1
 tooltip=1280x720:오두막 display=block rect=358.390625,204,220x75.9375
 tooltip=1280x720:길 display=block rect=358.390625,204,220x75.9375
 viewport=768x1024 failures=0 warnings=0 scrollWidth=212 clientWidth=212 beforeScroll=0 afterScroll=0
+minimap=768x1024:mapRecess=x=10.0 y=760.0 w=245.3 h=252.0 mapShield=x=93.7 y=839.0 w=78.0 h=94.0 mapRecessStyle=flex/visible/1 mapShieldStyle=block/visible/1
 tooltip=768x1024:오두막 display=block rect=215.03125,204,220x75.9375
 tooltip=768x1024:길 display=block rect=215.03125,204,220x75.9375
-viewport=375x812 failures=0 warnings=0 scrollWidth=524 clientWidth=252 beforeScroll=0 afterScroll=64
+viewport=375x812 failures=0 warnings=0 scrollWidth=524 clientWidth=233 beforeScroll=0 afterScroll=64
+minimap=375x812:mapRecess=x=2.0 y=597.0 w=40.0 h=206.0 mapShield=x=8.0 y=683.0 w=28.0 h=34.0 mapRecessStyle=flex/visible/1 mapShieldStyle=block/visible/1
 tooltip=375x812:오두막 display=block rect=105,154,150x72.78125
 tooltip=375x812:길 display=block rect=105,154,150x72.78125
 unaffordableHarnessFailures=0
