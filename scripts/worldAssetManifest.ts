@@ -1,4 +1,5 @@
-import { existsSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 
 import { readPng } from "./processBuildingSprite";
@@ -474,6 +475,10 @@ export const assertWorldAssetFiles = (manifest: WorldAssetManifest, repoRoot: st
       throw new WorldAssetManifestError(
         `${asset.key} file dimensions ${image.dimensions.width}x${image.dimensions.height} did not match ${asset.width}x${asset.height}`,
       );
+    }
+    const actualSha256 = createHash("sha256").update(readFileSync(filePath)).digest("hex");
+    if (actualSha256 !== asset.sha256) {
+      throw new WorldAssetManifestError(`${asset.key} file sha256 ${actualSha256} did not match ${asset.sha256}`);
     }
   }
 };

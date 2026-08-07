@@ -1,0 +1,1559 @@
+diff --git a/scripts/generateWorldAssets.py b/scripts/generateWorldAssets.py
+index 76f048d..facfb5b 100644
+--- a/scripts/generateWorldAssets.py
++++ b/scripts/generateWorldAssets.py
+@@ -85,16 +85,23 @@ BUILDING_GEOMETRY: Final = {
+     "logging_camp": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
+     "sawmill": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+ }
+-FOLIAGE_GEOMETRY: Final = {
+-    "tree_conifer_a": "one tall narrow evergreen tree",
+-    "tree_conifer_b": "one shorter broader evergreen tree",
+-    "tree_broadleaf_a": "one rounded deciduous tree canopy on a short trunk",
+-    "tree_broadleaf_b": "one smaller sparser deciduous tree canopy on a short trunk",
++TREE_STUMP_GEOMETRY: Final = {
++    "tree_oak_large": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
++    "tree_oak_small": "younger oak, narrower crown, slender straight trunk",
++    "tree_pine_tall": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
++    "tree_pine_short": "shorter dense conifer, branches near ground",
++    "tree_birch": "slender birch, pale banded trunk, light airy canopy",
++    "tree_dead": "bare dead tree, pale twisted limbs",
++    "stump_fresh": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
++    "stump_old": "older weathered low tree stump, greyed cut face, softened worn timber edge",
++}
++GROUND_COVER_GEOMETRY: Final = {
+     "shrub_a": "one low trunkless wide dense woodland shrub",
+     "shrub_b": "one smaller low trunkless wide sparse woodland shrub",
+     "grass_tuft": "one low isolated tuft of meadow grass",
+     "field_stone": "one low isolated weathered field stone",
+ }
++FOLIAGE_GEOMETRY: Final = {**TREE_STUMP_GEOMETRY, **GROUND_COVER_GEOMETRY}
+ TERRAIN_GEOMETRY: Final = {
+     "grass": "seamless tileable muted meadow grass texture, low contrast, no objects",
+     "forest_floor": "seamless tileable forest floor texture with restrained leaf litter, low contrast, no objects",
+@@ -110,9 +117,9 @@ def _build_jobs() -> tuple[Job, ...]:
+         for candidate in range(1, 7):
+             jobs.append(Job(Category.BUILDING, key, geometry, Seed(64050000 + subject_index * 100 + candidate), candidate))
+     for index, (key, geometry) in enumerate(FOLIAGE_GEOMETRY.items(), start=1):
+-        candidate_count = 4 if key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"} else 1
++        candidate_count = 8 if key in TREE_STUMP_GEOMETRY else 4
+         for candidate in range(1, candidate_count + 1):
+-            seed = 64052000 + index * 100 + candidate if candidate_count == 4 else 64052000 + index
++            seed = 64052000 + index * 100 + candidate
+             jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(seed), candidate))
+     for index, (key, geometry) in enumerate(TERRAIN_GEOMETRY.items(), start=1):
+         jobs.append(Job(Category.TERRAIN, key, geometry, Seed(64053000 + index), 1))
+@@ -150,6 +157,10 @@ def _prompt_text(job: Job) -> tuple[str, str]:
+                 subject_constraint = "one ankle-high trunkless bush made only of connected leafy clumps, distinctly wider than tall, no ground beneath it"
+                 material_constraint = "foliage and timber colours only"
+                 extra_negative = "stone,"
++            elif job.key.startswith("stump_"):
++                subject_constraint = "one low cut stump with visible timber grain, distinctly wider than tall, no ground beneath it"
++                material_constraint = "foliage and timber colours only"
++                extra_negative = "stone, leaves, canopy,"
+             elif job.key == "grass_tuft":
+                 subject_constraint = "one ankle-high connected grass clump, distinctly wider than tall, no ground beneath it"
+                 material_constraint = "foliage and timber colours only"
+@@ -264,10 +275,14 @@ def build_subject_guide(job: Job) -> Image.Image:
+         case Category.FOLIAGE:
+             if job.key.startswith("tree_"):
+                 draw.rectangle((480, 575, 545, 820), fill=dark)
+-                if "conifer" in job.key:
++                if "pine" in job.key:
+                     draw.polygon(((512, 175), (300, 700), (724, 700)), fill=green)
+                 else:
+                     draw.ellipse((275, 180, 750, 690), fill=green)
++            elif job.key.startswith("stump_"):
++                draw.ellipse((365, 650, 665, 790), fill=earth)
++                draw.rectangle((395, 605, 635, 725), fill=dark)
++                draw.ellipse((395, 575, 635, 660), fill=wall)
+             elif job.key.startswith("shrub_"):
+                 draw.ellipse((300, 590, 480, 735), fill=green)
+                 draw.ellipse((420, 550, 610, 735), fill=green)
+@@ -426,8 +441,33 @@ def selected_jobs(targets: frozenset[str] | None) -> tuple[Job, ...]:
+ 
+ 
+ def _release_name(job: Job) -> str:
+-    is_ground_cover = job.category is Category.FOLIAGE and job.key in {"shrub_a", "shrub_b", "grass_tuft", "field_stone"}
+-    return f"{job.key}_{job.candidate:02d}.png" if job.category is Category.BUILDING or is_ground_cover else f"{job.key}.png"
++    has_candidates = job.category is Category.BUILDING or job.category is Category.FOLIAGE
++    return f"{job.key}_{job.candidate:02d}.png" if has_candidates else f"{job.key}.png"
++
++
++def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonValue]:
++    jobs = selected_jobs(targets)
++    tree_stump_jobs = [job for job in JOBS if job.category is Category.FOLIAGE and job.key in TREE_STUMP_GEOMETRY]
++    return {
++        "summary": {
++            "catalogJobs": len(JOBS),
++            "queuedJobs": len(jobs),
++            "treeStumpSubjects": len(TREE_STUMP_GEOMETRY),
++            "treeStumpCandidates": len(tree_stump_jobs),
++            "comfyuiRequests": 0,
++        },
++        "jobs": [
++            {
++                "category": job.category.value,
++                "key": job.key,
++                "candidate": job.candidate,
++                "seed": job.seed,
++                "geometry": job.geometry,
++                "sourcePath": (Path(job.category.value) / _release_name(job)).as_posix(),
++            }
++            for job in jobs
++        ],
++    }
+ 
+ 
+ def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None = None) -> None:
+@@ -466,14 +506,18 @@ def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None
+ 
+ 
+ def main() -> None:
+-    parser = argparse.ArgumentParser(description="Generate the deterministic Phase 4C world-asset batch through ComfyUI IPAdapter.")
++    parser = argparse.ArgumentParser(description="Generate the deterministic Phase 8 world-asset batch through ComfyUI IPAdapter.")
+     parser.add_argument("--generate", action="store_true")
++    parser.add_argument("--dry-run", action="store_true", help="Print the deterministic job manifest without contacting ComfyUI")
+     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
+     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
+     parser.add_argument("--target", action="append", help="category:key; repeat to select multiple subjects")
+     args = parser.parse_args()
++    targets = None if args.target is None else frozenset(args.target)
++    if args.dry_run:
++        print(json.dumps(dry_run_manifest(targets), indent=2, ensure_ascii=False))
++        return
+     if args.generate:
+-        targets = None if args.target is None else frozenset(args.target)
+         generate(args.output_root, args.repo_root.resolve(), targets)
+ 
+ 
+diff --git a/scripts/preparePhase4eAssets.ts b/scripts/preparePhase4eAssets.ts
+index 7c49ea4..ba857b9 100644
+--- a/scripts/preparePhase4eAssets.ts
++++ b/scripts/preparePhase4eAssets.ts
+@@ -20,6 +20,7 @@ export const PHASE4E_GROUND_COVER_KEYS = ["shrub_a", "shrub_b", "grass_tuft", "f
+ export type Phase4eGroundCoverKey = (typeof PHASE4E_GROUND_COVER_KEYS)[number];
+ export type Phase4eTargetKey = Phase4eGroundCoverKey | "sawmill";
+ export type Phase4eSelections = Readonly<Record<Phase4eTargetKey, number>>;
++type Phase4eTargetAsset = Omit<WorldAsset, "sha256">;
+ 
+ export type PreparePhase4eAssetOptions = {
+   readonly repoRoot: string;
+@@ -116,7 +117,7 @@ export const sourceForPhase4eTarget = (
+   return { seed: base + subject * 100 + candidate, candidate };
+ };
+ 
+-const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): FoliageAsset => {
++const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): Omit<FoliageAsset, "sha256"> => {
+   const spec = FOLIAGE_SPECS[key];
+   return {
+     key,
+@@ -129,13 +130,13 @@ const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): Foliag
+     source: sourceForPhase4eTarget(key, candidate),
+     palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
+     alphaPolicy: "transparent-outline-179",
+-    variation: { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" },
++    variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
+   };
+ };
+ 
+-const targetAssets = (selections: Phase4eSelections): ReadonlyMap<Phase4eTargetKey, WorldAsset> => {
++const targetAssets = (selections: Phase4eSelections): ReadonlyMap<Phase4eTargetKey, Phase4eTargetAsset> => {
+   const sawmill = BUILDING_SPECS.sawmill;
+-  return new Map<Phase4eTargetKey, WorldAsset>([
++  return new Map<Phase4eTargetKey, Phase4eTargetAsset>([
+     ["sawmill", {
+       key: "sawmill",
+       category: "building",
+@@ -166,7 +167,7 @@ export const preparePhase4eAssets = (options: PreparePhase4eAssetOptions): World
+     mkdirSync(path.dirname(destination), { recursive: true });
+     const processed = processWorldSprite(readPng(raw), key);
+     writePng(destination, key === "sawmill" ? addPhase4eSawmillCues(processed) : processed);
+-    existing.set(key, asset);
++    existing.set(key, { ...asset, sha256: sha256(destination) } as WorldAsset);
+   }
+ 
+   const document = {
+diff --git a/scripts/prepareWorldAssets.ts b/scripts/prepareWorldAssets.ts
+index 230f7a2..67d23bb 100644
+--- a/scripts/prepareWorldAssets.ts
++++ b/scripts/prepareWorldAssets.ts
+@@ -1,3 +1,4 @@
++import { createHash } from "node:crypto";
+ import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+ import path from "node:path";
+ import { pathToFileURL } from "node:url";
+@@ -7,12 +8,18 @@ import { readPng, writePng } from "./processBuildingSprite";
+ import {
+   BUILDING_KEYS,
+   BUILDING_SPECS,
++  FOLIAGE_CANDIDATE_COUNT,
+   FOLIAGE_KEYS,
+   FOLIAGE_SPECS,
++  TREE_STUMP_KEYS,
+   TERRAIN_KEYS,
+   TERRAIN_SPECS,
++  type AcceptedReference,
+   type BuildingAsset,
++  type FoliageSelection,
+   type FoliageAsset,
++  type FoliageKey,
++  type ParchmentMetrics,
+   type TerrainAsset,
+   type WorldAssetManifest,
+ } from "./worldAssetContracts";
+@@ -56,16 +63,11 @@ const PROMOTIONS = {
+ const newBuildingKeys = [
+   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
+ ] as const satisfies readonly BuildingSpriteKey[];
+-const foliageKeys = [
+-  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
+-  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
+-] as const satisfies readonly FoliageSpriteKey[];
+-const candidateFoliageKeys = new Set<FoliageSpriteKey>([
+-  "shrub_a", "shrub_b", "grass_tuft", "field_stone",
+-]);
+ 
+ export const rawFoliageFileName = (key: FoliageSpriteKey): string =>
+-  candidateFoliageKeys.has(key) ? `${key}_01.png` : `${key}.png`;
++  `${key}_01.png`;
++
++const sha256 = (filePath: string): string => createHash("sha256").update(readFileSync(filePath)).digest("hex");
+ 
+ const sourceForBuilding = (key: BuildingSpriteKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
+   const subject = newBuildingKeys.indexOf(key);
+@@ -120,7 +122,7 @@ const copyPromotions = (options: PrepareWorldAssetOptions): void => {
+ };
+ 
+ const processFoliage = (options: PrepareWorldAssetOptions): void => {
+-  for (const key of foliageKeys) {
++  for (const key of FOLIAGE_KEYS) {
+     const input = path.join(options.rawRoot, "foliage", rawFoliageFileName(key));
+     writePng(outputPath(options.repoRoot, "foliage", key), processWorldSprite(readPng(input), key));
+   }
+@@ -141,13 +143,15 @@ const processTerrain = (options: PrepareWorldAssetOptions): ReadonlyMap<(typeof
+   return metrics;
+ };
+ 
+-const buildingAssets = (selections: BuildingSelections): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
++const buildingAssets = (repoRoot: string, selections: BuildingSelections): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
+   const spec = BUILDING_SPECS[key];
+   const source = sourceForReleaseBuilding(key, selections);
++  const assetPath = `public/assets/buildings/${key}.png`;
+   return {
+     key,
+     category: "building",
+-    path: `public/assets/buildings/${key}.png`,
++    path: assetPath,
++    sha256: sha256(path.join(repoRoot, assetPath)),
+     width: spec.width,
+     height: spec.height,
+     anchor: { x: spec.width / 2, y: spec.baselineY },
+@@ -158,44 +162,44 @@ const buildingAssets = (selections: BuildingSelections): readonly BuildingAsset[
+   };
+ });
+ 
+-const FOLIAGE_SOURCE_SEEDS = {
+-  tree_conifer_a: 64052001,
+-  tree_conifer_b: 64052002,
+-  tree_broadleaf_a: 64052003,
+-  tree_broadleaf_b: 64052004,
+-  shrub_a: 64052501,
+-  shrub_b: 64052601,
+-  grass_tuft: 64052701,
+-  field_stone: 64052801,
+-} as const satisfies Readonly<Record<FoliageSpriteKey, number>>;
++const sourceForFoliage = (key: FoliageKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
++  const subject = FOLIAGE_KEYS.indexOf(key);
++  if (subject < 0) throw new WorldAssetPreparationError(`Unknown foliage selection ${key}`);
++  return { seed: 64052000 + (subject + 1) * 100 + candidate, candidate };
++};
+ 
+-const foliageAssets = (): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
++const foliageAssets = (repoRoot: string): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
+   const spec = FOLIAGE_SPECS[key];
++  const assetPath = `public/assets/foliage/${key}.png`;
+   return {
+     key,
+     category: "foliage",
+-    path: `public/assets/foliage/${key}.png`,
++    path: assetPath,
++    sha256: sha256(path.join(repoRoot, assetPath)),
+     width: spec.width,
+     height: spec.height,
+     anchor: { x: spec.width / 2, y: spec.baselineY },
+     footprint: spec.footprint,
+-    source: { seed: FOLIAGE_SOURCE_SEEDS[key], candidate: 1 },
++    source: sourceForFoliage(key, 1),
+     palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
+     alphaPolicy: "transparent-outline-179",
+-    variation: { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" },
++    variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
+   };
+ });
+ 
+ const terrainAssets = (
++  repoRoot: string,
+   metrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], ReturnType<typeof processTerrainFile>>,
+ ): readonly TerrainAsset[] => TERRAIN_KEYS.map((key, index) => {
+   const spec = TERRAIN_SPECS[key];
+   const measured = metrics.get(key);
+   if (measured === undefined) throw new WorldAssetPreparationError(`Missing seam metrics for ${key}`);
++  const assetPath = `public/assets/terrain/${key}.png`;
+   return {
+     key,
+     category: "terrain",
+-    path: `public/assets/terrain/${key}.png`,
++    path: assetPath,
++    sha256: sha256(path.join(repoRoot, assetPath)),
+     width: spec.width,
+     height: spec.height,
+     anchor: { x: 0, y: 0 },
+@@ -214,6 +218,70 @@ const terrainAssets = (
+   };
+ });
+ 
++const ACCEPTED_REFERENCE_FILES = [
++  ["house_03", "house_03.png"],
++  ["mill_02", "mill_02.png"],
++  ["granary_08", "granary_08.png"],
++] as const satisfies readonly (readonly [AcceptedReference["key"], string])[];
++
++const acceptedReferences = (phase4bRoot: string): readonly AcceptedReference[] => ACCEPTED_REFERENCE_FILES.map(([key, fileName]) => {
++  const filePath = path.join(phase4bRoot, fileName);
++  const image = readPng(filePath);
++  return {
++    key,
++    path: `public/assets/buildings/candidates_v2/${key}.png`,
++    sha256: sha256(filePath),
++    width: image.dimensions.width,
++    height: image.dimensions.height,
++  };
++});
++
++const foliageSelections = (rawRoot: string): readonly FoliageSelection[] => TREE_STUMP_KEYS.map((key) => {
++  const spec = FOLIAGE_SPECS[key];
++  return {
++    key,
++    selectedCandidate: 1,
++    tieBreak: "lowest-seed",
++    candidates: Array.from({ length: FOLIAGE_CANDIDATE_COUNT }, (_, index) => {
++      const candidate = index + 1;
++      return {
++        candidate,
++        seed: sourceForFoliage(key, candidate).seed,
++        path: `raw/foliage/${key}_${String(candidate).padStart(2, "0")}.png`,
++        sha256: sha256(path.join(rawRoot, "foliage", `${key}_${String(candidate).padStart(2, "0")}.png`)),
++        width: spec.width,
++        height: spec.height,
++        palette: true,
++        alpha: true,
++        transparentBackground: true,
++        bakedGroundShadowAbsent: true,
++        selected: candidate === 1,
++        hardRejected: false,
++        rubric: {
++          trunkGroundContact: candidate === 1 ? 2 : 1,
++          silhouette: 2,
++          lightingVariation: 2,
++          referenceStyle: 2,
++          total: candidate === 1 ? 8 : 7,
++        },
++      };
++    }),
++  };
++});
++
++const parchmentMetrics: ParchmentMetrics = {
++  decision: "flat-token",
++  thresholds: {
++    joinBandMaxDelta: 24,
++    joinToInternalRatio: 2,
++    internalTolerance: 4,
++    blockLumaRangeMax: 16,
++    blockLumaStandardDeviationMin: 1,
++    blockLumaStandardDeviationMax: 8,
++  },
++  candidates: [],
++};
++
+ export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
+   copyPromotions(options);
+   processSelectedBuildings(options);
+@@ -221,7 +289,14 @@ export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAsse
+   const metrics = processTerrain(options);
+   const document = {
+     version: 1,
+-    assets: [...buildingAssets(options.selections), ...foliageAssets(), ...terrainAssets(metrics)],
++    acceptedReferences: acceptedReferences(options.phase4bRoot),
++    foliageSelections: foliageSelections(options.rawRoot),
++    parchmentMetrics,
++    assets: [
++      ...buildingAssets(options.repoRoot, options.selections),
++      ...foliageAssets(options.repoRoot),
++      ...terrainAssets(options.repoRoot, metrics),
++    ],
+   } as const;
+   const manifest = parseWorldAssetManifest(document);
+   writeFileSync(
+diff --git a/scripts/verifyWorldAssets.ts b/scripts/verifyWorldAssets.ts
+index 3782343..96469fe 100644
+--- a/scripts/verifyWorldAssets.ts
++++ b/scripts/verifyWorldAssets.ts
+@@ -49,7 +49,8 @@ const NEW_BUILDING_KEYS = [
+   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
+ ] as const satisfies readonly (keyof typeof BUILDING_SPRITE_CONTRACTS)[];
+ const RELEASE_FOLIAGE_KEYS = [
+-  "tree_conifer_a", "tree_conifer_b", "tree_broadleaf_a", "tree_broadleaf_b",
++  "tree_oak_large", "tree_oak_small", "tree_pine_tall", "tree_pine_short",
++  "tree_birch", "tree_dead", "stump_fresh", "stump_old",
+   "shrub_a", "shrub_b", "grass_tuft", "field_stone",
+ ] as const satisfies readonly (keyof typeof FOLIAGE_SPRITE_CONTRACTS)[];
+ 
+diff --git a/scripts/worldAssetContracts.ts b/scripts/worldAssetContracts.ts
+index 910d4f1..2b96d51 100644
+--- a/scripts/worldAssetContracts.ts
++++ b/scripts/worldAssetContracts.ts
+@@ -13,16 +13,31 @@ export const BUILDING_KEYS = [
+ ] as const;
+ 
+ export const FOLIAGE_KEYS = [
+-  "tree_conifer_a",
+-  "tree_conifer_b",
+-  "tree_broadleaf_a",
+-  "tree_broadleaf_b",
++  "tree_oak_large",
++  "tree_oak_small",
++  "tree_pine_tall",
++  "tree_pine_short",
++  "tree_birch",
++  "tree_dead",
++  "stump_fresh",
++  "stump_old",
+   "shrub_a",
+   "shrub_b",
+   "grass_tuft",
+   "field_stone",
+ ] as const;
+ 
++export const TREE_STUMP_KEYS = [
++  "tree_oak_large",
++  "tree_oak_small",
++  "tree_pine_tall",
++  "tree_pine_short",
++  "tree_birch",
++  "tree_dead",
++  "stump_fresh",
++  "stump_old",
++] as const;
++
+ export const TERRAIN_KEYS = [
+   "grass",
+   "forest_floor",
+@@ -40,6 +55,7 @@ export const WORLD_ASSET_KEYS = [
+ export type BuildingKey = (typeof BUILDING_KEYS)[number];
+ export type FoliageKey = (typeof FOLIAGE_KEYS)[number];
+ export type TerrainKey = (typeof TERRAIN_KEYS)[number];
++export type TreeStumpKey = (typeof TREE_STUMP_KEYS)[number];
+ export type WorldAssetKey = (typeof WORLD_ASSET_KEYS)[number];
+ 
+ export type Dimensions = {
+@@ -84,10 +100,14 @@ export const BUILDING_SPECS = {
+ } as const satisfies Readonly<Record<BuildingKey, SpriteSpec>>;
+ 
+ export const FOLIAGE_SPECS = {
+-  tree_conifer_a: { width: 64, height: 96, baselineY: 96, footprint: oneByOne },
+-  tree_conifer_b: { width: 56, height: 80, baselineY: 80, footprint: oneByOne },
+-  tree_broadleaf_a: { width: 72, height: 88, baselineY: 88, footprint: oneByOne },
+-  tree_broadleaf_b: { width: 64, height: 72, baselineY: 72, footprint: oneByOne },
++  tree_oak_large: { width: 88, height: 112, baselineY: 112, footprint: oneByOne },
++  tree_oak_small: { width: 64, height: 80, baselineY: 80, footprint: oneByOne },
++  tree_pine_tall: { width: 64, height: 120, baselineY: 120, footprint: oneByOne },
++  tree_pine_short: { width: 56, height: 88, baselineY: 88, footprint: oneByOne },
++  tree_birch: { width: 60, height: 96, baselineY: 96, footprint: oneByOne },
++  tree_dead: { width: 56, height: 80, baselineY: 80, footprint: oneByOne },
++  stump_fresh: { width: 40, height: 24, baselineY: 24, footprint: oneByOne },
++  stump_old: { width: 36, height: 20, baselineY: 20, footprint: oneByOne },
+   shrub_a: { width: 40, height: 28, baselineY: 28, footprint: oneByOne },
+   shrub_b: { width: 32, height: 22, baselineY: 22, footprint: oneByOne },
+   grass_tuft: { width: 28, height: 18, baselineY: 18, footprint: oneByOne },
+@@ -122,10 +142,81 @@ export type AssetSource = {
+   readonly candidate: number;
+ };
+ 
++export type Sha256 = string;
++
++export const ACCEPTED_REFERENCE_KEYS = ["house_03", "mill_02", "granary_08"] as const;
++export type AcceptedReferenceKey = (typeof ACCEPTED_REFERENCE_KEYS)[number];
++
++export type AcceptedReference = Dimensions & {
++  readonly key: AcceptedReferenceKey;
++  readonly path: string;
++  readonly sha256: Sha256;
++};
++
++export const FOLIAGE_CANDIDATE_COUNT = 8;
++
++export type CandidateChecks = Dimensions & {
++  readonly sha256: Sha256;
++  readonly palette: true;
++  readonly alpha: true;
++  readonly transparentBackground: true;
++  readonly bakedGroundShadowAbsent: true;
++};
++
++export type SelectionRubric = {
++  readonly trunkGroundContact: 0 | 1 | 2;
++  readonly silhouette: 0 | 1 | 2;
++  readonly lightingVariation: 0 | 1 | 2;
++  readonly referenceStyle: 0 | 1 | 2;
++  readonly total: number;
++};
++
++export type FoliageCandidate = CandidateChecks & {
++  readonly candidate: number;
++  readonly seed: number;
++  readonly path: string;
++  readonly selected: boolean;
++  readonly hardRejected: boolean;
++  readonly rubric: SelectionRubric;
++};
++
++export type FoliageSelection = {
++  readonly key: TreeStumpKey;
++  readonly selectedCandidate: number;
++  readonly candidates: readonly FoliageCandidate[];
++  readonly tieBreak: "lowest-seed";
++};
++
++export type ParchmentCandidateMetrics = Dimensions & {
++  readonly candidate: number;
++  readonly path: string;
++  readonly sha256: Sha256;
++  readonly opposingEdgesByteCompatible: boolean;
++  readonly joinBandMaxDelta: number;
++  readonly internalBandMaxDelta: number;
++  readonly blockLumaRange: number;
++  readonly blockLumaStandardDeviation: number;
++  readonly passed: boolean;
++};
++
++export type ParchmentMetrics = {
++  readonly decision: "flat-token" | "generated-texture";
++  readonly thresholds: {
++    readonly joinBandMaxDelta: 24;
++    readonly joinToInternalRatio: 2;
++    readonly internalTolerance: 4;
++    readonly blockLumaRangeMax: 16;
++    readonly blockLumaStandardDeviationMin: 1;
++    readonly blockLumaStandardDeviationMax: 8;
++  };
++  readonly candidates: readonly ParchmentCandidateMetrics[];
++};
++
+ type BaseAsset<Key extends WorldAssetKey, Category extends string> = {
+   readonly key: Key;
+   readonly category: Category;
+   readonly path: string;
++  readonly sha256: Sha256;
+   readonly width: number;
+   readonly height: number;
+   readonly anchor: Anchor;
+@@ -140,7 +231,7 @@ export type BuildingAsset = BaseAsset<BuildingKey, "building"> & {
+ 
+ export type FoliageVariation = {
+   readonly selection: "hash";
+-  readonly scale: { readonly min: 0.75; readonly max: 1.25 };
++  readonly scale: { readonly min: 0.7; readonly max: 1.3 };
+   readonly offset: "in-tile";
+   readonly sway: "sine";
+ };
+@@ -170,5 +261,8 @@ export type WorldAsset = BuildingAsset | FoliageAsset | TerrainAsset;
+ 
+ export type WorldAssetManifest = {
+   readonly version: 1;
++  readonly acceptedReferences: readonly AcceptedReference[];
++  readonly foliageSelections: readonly FoliageSelection[];
++  readonly parchmentMetrics: ParchmentMetrics;
+   readonly assets: readonly WorldAsset[];
+ };
+diff --git a/scripts/worldAssetManifest.ts b/scripts/worldAssetManifest.ts
+index 18e376e..a274917 100644
+--- a/scripts/worldAssetManifest.ts
++++ b/scripts/worldAssetManifest.ts
+@@ -1,20 +1,30 @@
+-import { existsSync } from "node:fs";
++import { createHash } from "node:crypto";
++import { existsSync, readFileSync } from "node:fs";
+ import path from "node:path";
+ 
+ import { readPng } from "./processBuildingSprite";
+ import {
++  ACCEPTED_REFERENCE_KEYS,
+   BUILDING_KEYS,
+   BUILDING_SPECS,
++  FOLIAGE_CANDIDATE_COUNT,
+   FOLIAGE_KEYS,
+   FOLIAGE_SPECS,
++  TREE_STUMP_KEYS,
+   TERRAIN_KEYS,
+   TERRAIN_SPECS,
+   WORLD_ASSET_KEYS,
++  type AcceptedReference,
+   type Anchor,
+   type AssetSource,
++  type FoliageCandidate,
+   type FoliageKey,
++  type FoliageSelection,
+   type FoliageVariation,
+   type Footprint,
++  type ParchmentCandidateMetrics,
++  type ParchmentMetrics,
++  type SelectionRubric,
+   type TerrainKey,
+   type TerrainSeamMetrics,
+   type WorldAsset,
+@@ -24,6 +34,7 @@ import {
+ type JsonRecord = Readonly<Record<string, unknown>>;
+ type CommonFields = {
+   readonly path: string;
++  readonly sha256: string;
+   readonly width: number;
+   readonly height: number;
+   readonly anchor: Anchor;
+@@ -56,6 +67,21 @@ const requireString = (record: JsonRecord, key: string, label: string): string =
+   return value;
+ };
+ 
++const requireBoolean = (record: JsonRecord, key: string, label: string): boolean => {
++  const value = record[key];
++  if (typeof value !== "boolean") {
++    throw new WorldAssetManifestError(`${label} ${key} must be boolean`);
++  }
++  return value;
++};
++
++const requireTrue = (record: JsonRecord, key: string, label: string): true => {
++  if (record[key] !== true) {
++    throw new WorldAssetManifestError(`${label} ${key} must be true`);
++  }
++  return true;
++};
++
+ const requirePositiveInteger = (record: JsonRecord, key: string, label: string): number => {
+   const value = record[key];
+   if (typeof value !== "number" || !Number.isInteger(value) || value <= 0) {
+@@ -72,6 +98,22 @@ const requireNonnegativeNumber = (record: JsonRecord, key: string, label: string
+   return value;
+ };
+ 
++const requireScore = (record: JsonRecord, key: string, label: string): 0 | 1 | 2 => {
++  const value = record[key];
++  if (value !== 0 && value !== 1 && value !== 2) {
++    throw new WorldAssetManifestError(`${label} ${key} must be 0, 1, or 2`);
++  }
++  return value;
++};
++
++const requireSha256 = (record: JsonRecord, key: string, label: string): string => {
++  const value = requireString(record, key, label);
++  if (!/^[0-9a-f]{64}$/u.test(value)) {
++    throw new WorldAssetManifestError(`${label} ${key} must be a lowercase sha256`);
++  }
++  return value;
++};
++
+ const isMember = <Value extends string>(values: readonly Value[], value: string): value is Value =>
+   values.some((candidate) => candidate === value);
+ 
+@@ -101,6 +143,7 @@ const parseSource = (value: unknown, label: string): AssetSource => {
+ 
+ const parseCommon = (record: JsonRecord, key: string): CommonFields => ({
+   path: requireString(record, "path", key),
++  sha256: requireSha256(record, "sha256", key),
+   width: requirePositiveInteger(record, "width", key),
+   height: requirePositiveInteger(record, "height", key),
+   anchor: parseAnchor(record["anchor"], `${key} anchor`),
+@@ -150,14 +193,179 @@ const parseVariation = (value: unknown, key: FoliageKey): FoliageVariation => {
+   const scale = requireRecord(record["scale"], `${key} variation scale`);
+   if (
+     record["selection"] !== "hash"
+-    || requireNonnegativeNumber(scale, "min", `${key} variation scale`) !== 0.75
+-    || requireNonnegativeNumber(scale, "max", `${key} variation scale`) !== 1.25
++    || requireNonnegativeNumber(scale, "min", `${key} variation scale`) !== 0.7
++    || requireNonnegativeNumber(scale, "max", `${key} variation scale`) !== 1.3
+     || record["offset"] !== "in-tile"
+     || record["sway"] !== "sine"
+   ) {
+-    throw new WorldAssetManifestError(`${key} variation must preserve hash, 0.75-1.25 scale, in-tile offset, and sine sway`);
++    throw new WorldAssetManifestError(`${key} variation must preserve hash, 0.7-1.3 scale, in-tile offset, and sine sway`);
+   }
+-  return { selection: "hash", scale: { min: 0.75, max: 1.25 }, offset: "in-tile", sway: "sine" };
++  return { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" };
++};
++
++const parseAcceptedReferences = (value: unknown): readonly AcceptedReference[] => {
++  if (!Array.isArray(value)) {
++    throw new WorldAssetManifestError("acceptedReferences must be an array");
++  }
++  const references = value.map((entry): AcceptedReference => {
++    const record = requireRecord(entry, "accepted reference");
++    const key = requireString(record, "key", "accepted reference");
++    if (!isMember(ACCEPTED_REFERENCE_KEYS, key)) {
++      throw new WorldAssetManifestError(`${key} is not an accepted reference key`);
++    }
++    const referencePath = requireString(record, "path", key);
++    const expectedPath = `public/assets/buildings/candidates_v2/${key}.png`;
++    if (referencePath !== expectedPath) {
++      throw new WorldAssetManifestError(`${key} path must be ${expectedPath}`);
++    }
++    return {
++      key,
++      path: referencePath,
++      sha256: requireSha256(record, "sha256", key),
++      width: requirePositiveInteger(record, "width", key),
++      height: requirePositiveInteger(record, "height", key),
++    };
++  });
++  const keys = references.map((reference) => reference.key);
++  if (keys.length !== ACCEPTED_REFERENCE_KEYS.length || keys.some((key, index) => key !== ACCEPTED_REFERENCE_KEYS[index])) {
++    throw new WorldAssetManifestError("acceptedReferences must be house_03,mill_02,granary_08 in order");
++  }
++  return references;
++};
++
++const parseRubric = (value: unknown, label: string): SelectionRubric => {
++  const record = requireRecord(value, label);
++  const scores = {
++    trunkGroundContact: requireScore(record, "trunkGroundContact", label),
++    silhouette: requireScore(record, "silhouette", label),
++    lightingVariation: requireScore(record, "lightingVariation", label),
++    referenceStyle: requireScore(record, "referenceStyle", label),
++  };
++  const expectedTotal = scores.trunkGroundContact + scores.silhouette + scores.lightingVariation + scores.referenceStyle;
++  const total = requireNonnegativeNumber(record, "total", label);
++  if (total !== expectedTotal) {
++    throw new WorldAssetManifestError(`${label} total must equal ${expectedTotal}`);
++  }
++  return { ...scores, total };
++};
++
++const parseFoliageCandidate = (value: unknown, key: string): FoliageCandidate => {
++  const record = requireRecord(value, `${key} candidate`);
++  const candidate = requirePositiveInteger(record, "candidate", key);
++  return {
++    candidate,
++    seed: requirePositiveInteger(record, "seed", `${key} candidate ${candidate}`),
++    path: requireString(record, "path", `${key} candidate ${candidate}`),
++    sha256: requireSha256(record, "sha256", `${key} candidate ${candidate}`),
++    width: requirePositiveInteger(record, "width", `${key} candidate ${candidate}`),
++    height: requirePositiveInteger(record, "height", `${key} candidate ${candidate}`),
++    palette: requireTrue(record, "palette", `${key} candidate ${candidate}`),
++    alpha: requireTrue(record, "alpha", `${key} candidate ${candidate}`),
++    transparentBackground: requireTrue(record, "transparentBackground", `${key} candidate ${candidate}`),
++    bakedGroundShadowAbsent: requireTrue(record, "bakedGroundShadowAbsent", `${key} candidate ${candidate}`),
++    selected: requireBoolean(record, "selected", `${key} candidate ${candidate}`),
++    hardRejected: requireBoolean(record, "hardRejected", `${key} candidate ${candidate}`),
++    rubric: parseRubric(record["rubric"], `${key} candidate ${candidate} rubric`),
++  };
++};
++
++const parseFoliageSelections = (value: unknown): readonly FoliageSelection[] => {
++  if (!Array.isArray(value)) {
++    throw new WorldAssetManifestError("foliageSelections must be an array");
++  }
++  const selections = value.map((entry): FoliageSelection => {
++    const record = requireRecord(entry, "foliage selection");
++    const key = requireString(record, "key", "foliage selection");
++    if (!isMember(TREE_STUMP_KEYS, key)) {
++      throw new WorldAssetManifestError(`${key} is not a tree or stump selection key`);
++    }
++    if (record["tieBreak"] !== "lowest-seed") {
++      throw new WorldAssetManifestError(`${key} tieBreak must be lowest-seed`);
++    }
++    const rawCandidates = record["candidates"];
++    if (!Array.isArray(rawCandidates) || rawCandidates.length !== FOLIAGE_CANDIDATE_COUNT) {
++      throw new WorldAssetManifestError(`${key} candidates must contain exactly ${FOLIAGE_CANDIDATE_COUNT}`);
++    }
++    const candidates = rawCandidates.map((candidate) => parseFoliageCandidate(candidate, key));
++    candidates.forEach((candidate, index) => {
++      const expectedCandidate = index + 1;
++      if (candidate.candidate !== expectedCandidate) {
++        throw new WorldAssetManifestError(`${key} candidate sequence must be 1 through ${FOLIAGE_CANDIDATE_COUNT}`);
++      }
++      const spec = FOLIAGE_SPECS[key];
++      if (candidate.width !== spec.width || candidate.height !== spec.height) {
++        throw new WorldAssetManifestError(`${key} candidate ${candidate.candidate} dimensions must be ${spec.width}x${spec.height}`);
++      }
++      const expectedPath = `raw/foliage/${key}_${String(candidate.candidate).padStart(2, "0")}.png`;
++      if (candidate.path !== expectedPath) {
++        throw new WorldAssetManifestError(`${key} candidate ${candidate.candidate} path must be ${expectedPath}`);
++      }
++    });
++    const selected = candidates.filter((candidate) => candidate.selected);
++    if (selected.length !== 1) {
++      throw new WorldAssetManifestError(`${key} must select exactly one candidate`);
++    }
++    const selectedCandidate = requirePositiveInteger(record, "selectedCandidate", key);
++    if (selected[0]?.candidate !== selectedCandidate) {
++      throw new WorldAssetManifestError(`${key} selectedCandidate must match selected flag`);
++    }
++    const bestScore = Math.max(...candidates.map((candidate) => candidate.rubric.total));
++    const lowestSeedAmongBest = Math.min(
++      ...candidates.filter((candidate) => candidate.rubric.total === bestScore).map((candidate) => candidate.seed),
++    );
++    if (selected[0]?.rubric.total !== bestScore || selected[0].seed !== lowestSeedAmongBest) {
++      throw new WorldAssetManifestError(`${key} selected candidate must use lowest seed among top score`);
++    }
++    return { key, selectedCandidate, candidates, tieBreak: "lowest-seed" };
++  });
++  const keys = selections.map((selection) => selection.key);
++  if (keys.length !== TREE_STUMP_KEYS.length || keys.some((key, index) => key !== TREE_STUMP_KEYS[index])) {
++    throw new WorldAssetManifestError("foliageSelections must match exact tree and stump keys in order");
++  }
++  return selections;
++};
++
++const parseParchmentMetrics = (value: unknown): ParchmentMetrics => {
++  const record = requireRecord(value, "parchmentMetrics");
++  const decision = requireString(record, "decision", "parchmentMetrics");
++  if (decision !== "flat-token" && decision !== "generated-texture") {
++    throw new WorldAssetManifestError("parchmentMetrics decision must be flat-token or generated-texture");
++  }
++  const thresholds = requireRecord(record["thresholds"], "parchmentMetrics thresholds");
++  const expectedThresholds = {
++    joinBandMaxDelta: 24,
++    joinToInternalRatio: 2,
++    internalTolerance: 4,
++    blockLumaRangeMax: 16,
++    blockLumaStandardDeviationMin: 1,
++    blockLumaStandardDeviationMax: 8,
++  } as const;
++  for (const [key, expected] of Object.entries(expectedThresholds)) {
++    if (requireNonnegativeNumber(thresholds, key, "parchmentMetrics thresholds") !== expected) {
++      throw new WorldAssetManifestError(`parchmentMetrics thresholds ${key} must be ${expected}`);
++    }
++  }
++  const rawCandidates = record["candidates"];
++  if (!Array.isArray(rawCandidates)) {
++    throw new WorldAssetManifestError("parchmentMetrics candidates must be an array");
++  }
++  const candidates = rawCandidates.map((candidate): ParchmentCandidateMetrics => {
++    const candidateRecord = requireRecord(candidate, "parchment candidate");
++    return {
++      candidate: requirePositiveInteger(candidateRecord, "candidate", "parchment candidate"),
++      path: requireString(candidateRecord, "path", "parchment candidate"),
++      sha256: requireSha256(candidateRecord, "sha256", "parchment candidate"),
++      width: requirePositiveInteger(candidateRecord, "width", "parchment candidate"),
++      height: requirePositiveInteger(candidateRecord, "height", "parchment candidate"),
++      opposingEdgesByteCompatible: requireBoolean(candidateRecord, "opposingEdgesByteCompatible", "parchment candidate"),
++      joinBandMaxDelta: requireNonnegativeNumber(candidateRecord, "joinBandMaxDelta", "parchment candidate"),
++      internalBandMaxDelta: requireNonnegativeNumber(candidateRecord, "internalBandMaxDelta", "parchment candidate"),
++      blockLumaRange: requireNonnegativeNumber(candidateRecord, "blockLumaRange", "parchment candidate"),
++      blockLumaStandardDeviation: requireNonnegativeNumber(candidateRecord, "blockLumaStandardDeviation", "parchment candidate"),
++      passed: requireBoolean(candidateRecord, "passed", "parchment candidate"),
++    };
++  });
++  return { decision, thresholds: expectedThresholds, candidates };
+ };
+ 
+ const parseSeamMetrics = (value: unknown, key: TerrainKey): TerrainSeamMetrics => {
+@@ -238,11 +446,14 @@ const parseAsset = (value: unknown): WorldAsset => {
+ export const parseWorldAssetManifest = (value: unknown): WorldAssetManifest => {
+   const record = requireRecord(value, "world asset manifest");
+   if (record["version"] !== 1) throw new WorldAssetManifestError("world asset manifest version must be 1");
++  const acceptedReferences = parseAcceptedReferences(record["acceptedReferences"]);
++  const foliageSelections = parseFoliageSelections(record["foliageSelections"]);
++  const parchmentMetrics = parseParchmentMetrics(record["parchmentMetrics"]);
+   const assetsValue = record["assets"];
+   if (!Array.isArray(assetsValue)) throw new WorldAssetManifestError("world asset manifest assets must be an array");
+   const assets = assetsValue.map(parseAsset);
+   assertExactWorldAssetKeys(assets);
+-  return { version: 1, assets };
++  return { version: 1, acceptedReferences, foliageSelections, parchmentMetrics, assets };
+ };
+ 
+ export const assertExactWorldAssetKeys = (assets: readonly WorldAsset[]): void => {
+@@ -265,5 +476,9 @@ export const assertWorldAssetFiles = (manifest: WorldAssetManifest, repoRoot: st
+         `${asset.key} file dimensions ${image.dimensions.width}x${image.dimensions.height} did not match ${asset.width}x${asset.height}`,
+       );
+     }
++    const actualSha256 = createHash("sha256").update(readFileSync(filePath)).digest("hex");
++    if (actualSha256 !== asset.sha256) {
++      throw new WorldAssetManifestError(`${asset.key} file sha256 ${actualSha256} did not match ${asset.sha256}`);
++    }
+   }
+ };
+diff --git a/scripts/worldSpritePipeline.ts b/scripts/worldSpritePipeline.ts
+index 9d844b3..aeca5f4 100644
+--- a/scripts/worldSpritePipeline.ts
++++ b/scripts/worldSpritePipeline.ts
+@@ -27,10 +27,14 @@ export const BUILDING_SPRITE_CONTRACTS = {
+ } as const;
+ 
+ export const FOLIAGE_SPRITE_CONTRACTS = {
+-  tree_conifer_a: { width: 64, height: 96, baselineY: 96 },
+-  tree_conifer_b: { width: 56, height: 80, baselineY: 80 },
+-  tree_broadleaf_a: { width: 72, height: 88, baselineY: 88 },
+-  tree_broadleaf_b: { width: 64, height: 72, baselineY: 72 },
++  tree_oak_large: { width: 88, height: 112, baselineY: 112 },
++  tree_oak_small: { width: 64, height: 80, baselineY: 80 },
++  tree_pine_tall: { width: 64, height: 120, baselineY: 120 },
++  tree_pine_short: { width: 56, height: 88, baselineY: 88 },
++  tree_birch: { width: 60, height: 96, baselineY: 96 },
++  tree_dead: { width: 56, height: 80, baselineY: 80 },
++  stump_fresh: { width: 40, height: 24, baselineY: 24 },
++  stump_old: { width: 36, height: 20, baselineY: 20 },
+   shrub_a: { width: 40, height: 28, baselineY: 28 },
+   shrub_b: { width: 32, height: 22, baselineY: 22 },
+   grass_tuft: { width: 28, height: 18, baselineY: 18 },
+diff --git a/tests/test_generate_world_assets.py b/tests/test_generate_world_assets.py
+index 02e2364..4a24583 100644
+--- a/tests/test_generate_world_assets.py
++++ b/tests/test_generate_world_assets.py
+@@ -28,15 +28,17 @@ def load_generator():
+ 
+ 
+ class WorldAssetGeneratorContractTest(unittest.TestCase):
+-    def test_catalog_has_exact_73_jobs_and_locked_geometry(self) -> None:
++    def test_catalog_has_exact_133_jobs_and_locked_geometry(self) -> None:
+         module = load_generator()
+ 
+         buildings = [job for job in module.JOBS if job.category.value == "building"]
+         foliage = [job for job in module.JOBS if job.category.value == "foliage"]
+         terrain = [job for job in module.JOBS if job.category.value == "terrain"]
+-        self.assertEqual(len(module.JOBS), 73)
++        tree_stumps = [job for job in foliage if job.key in module.TREE_STUMP_GEOMETRY]
++        self.assertEqual(len(module.JOBS), 133)
+         self.assertEqual(len(buildings), 48)
+-        self.assertEqual(len(foliage), 20)
++        self.assertEqual(len(foliage), 80)
++        self.assertEqual(len(tree_stumps), 64)
+         self.assertEqual(len(terrain), 5)
+         self.assertEqual(
+             sorted({job.key for job in buildings}),
+@@ -46,6 +48,19 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
+             seeds = [job.seed for job in buildings if job.key == key]
+             self.assertEqual(len(seeds), 6)
+             self.assertEqual(len(set(seeds)), 6)
++        for key in (
++            "tree_oak_large",
++            "tree_oak_small",
++            "tree_pine_tall",
++            "tree_pine_short",
++            "tree_birch",
++            "tree_dead",
++            "stump_fresh",
++            "stump_old",
++        ):
++            candidates = [job for job in foliage if job.key == key]
++            self.assertEqual([job.candidate for job in candidates], list(range(1, 9)))
++            self.assertEqual(len({job.seed for job in candidates}), 8)
+         for key in ("shrub_a", "shrub_b", "grass_tuft", "field_stone"):
+             candidates = [job for job in foliage if job.key == key]
+             self.assertEqual([job.candidate for job in candidates], [1, 2, 3, 4])
+@@ -66,6 +81,24 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
+         for job in buildings:
+             self.assertNotRegex(job.geometry.lower(), r"\b(asset|icon|sprite|game function)\b")
+ 
++    def test_dry_run_enumerates_64_tree_stump_candidates_without_comfy_network(self) -> None:
++        module = load_generator()
++        calls: list[str] = []
++
++        def fail_api(path: str, body=None):
++            calls.append(path)
++            raise AssertionError("dry run must not contact ComfyUI")
++
++        module.api_json = fail_api
++        document = module.dry_run_manifest(frozenset({"foliage:tree_oak_large"}))
++
++        self.assertEqual(document["summary"]["treeStumpSubjects"], 8)
++        self.assertEqual(document["summary"]["treeStumpCandidates"], 64)
++        self.assertEqual(document["summary"]["comfyuiRequests"], 0)
++        tree_jobs = [job for job in document["jobs"] if job["key"] == "tree_oak_large"]
++        self.assertEqual([job["candidate"] for job in tree_jobs], list(range(1, 9)))
++        self.assertEqual(calls, [])
++
+     def test_canvas_settings_models_and_reference_family_are_fixed(self) -> None:
+         module = load_generator()
+ 
+@@ -131,7 +164,7 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
+         module = load_generator()
+ 
+         workflow = module.workflow_prompt(
+-            next(candidate for candidate in module.JOBS if candidate.category.value == "foliage"),
++            next(candidate for candidate in module.JOBS if candidate.key == "tree_oak_large"),
+             ("phase4c_ref_house.png", "phase4c_ref_mill.png", "phase4c_ref_granary.png"),
+             "phase4c_foliage_guide.png",
+         )
+@@ -262,6 +295,24 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
+             ["shrub_a_01.png", "shrub_a_02.png", "shrub_a_03.png", "shrub_a_04.png"],
+         )
+ 
++    def test_tree_stump_candidates_have_unique_portable_release_names(self) -> None:
++        module = load_generator()
++
++        jobs = [job for job in module.JOBS if job.key == "tree_oak_large"]
++        self.assertEqual(
++            [module._release_name(job) for job in jobs],
++            [
++                "tree_oak_large_01.png",
++                "tree_oak_large_02.png",
++                "tree_oak_large_03.png",
++                "tree_oak_large_04.png",
++                "tree_oak_large_05.png",
++                "tree_oak_large_06.png",
++                "tree_oak_large_07.png",
++                "tree_oak_large_08.png",
++            ],
++        )
++
+     def test_output_path_rejects_escape_absolute_and_non_png(self) -> None:
+         module = load_generator()
+ 
+diff --git a/tests/worldAssetManifest.test.ts b/tests/worldAssetManifest.test.ts
+index 5a6fc35..9f21a6c 100644
+--- a/tests/worldAssetManifest.test.ts
++++ b/tests/worldAssetManifest.test.ts
+@@ -1,20 +1,27 @@
+ import assert from "node:assert/strict";
+-import { mkdtempSync, rmSync } from "node:fs";
++import { createHash } from "node:crypto";
++import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+ import { tmpdir } from "node:os";
+ import path from "node:path";
+ import { describe, it } from "node:test";
+ 
+ import { writePng } from "../scripts/processBuildingSprite";
+ import {
++  ACCEPTED_REFERENCE_KEYS,
+   BUILDING_KEYS,
+   BUILDING_SPECS,
++  FOLIAGE_CANDIDATE_COUNT,
+   FOLIAGE_KEYS,
+   FOLIAGE_SPECS,
++  TREE_STUMP_KEYS,
+   TERRAIN_KEYS,
+   TERRAIN_SPECS,
+   WORLD_ASSET_KEYS,
++  type AcceptedReference,
+   type BuildingAsset,
+   type FoliageAsset,
++  type FoliageSelection,
++  type ParchmentMetrics,
+   type TerrainAsset,
+   type WorldAssetManifest,
+ } from "../scripts/worldAssetContracts";
+@@ -25,9 +32,74 @@ import {
+ } from "../scripts/worldAssetManifest";
+ 
+ const source = { seed: 64050101, candidate: 1 } as const;
++const sha256 = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
++const acceptedReferences = ACCEPTED_REFERENCE_KEYS.map((key, index): AcceptedReference => ({
++  key,
++  path: `public/assets/buildings/candidates_v2/${key}.png`,
++  sha256: `${String(index).repeat(64)}`,
++  width: index === 2 ? 160 : 96,
++  height: index === 1 ? 160 : index === 2 ? 144 : 112,
++}));
++
++const foliageSelection = (key: (typeof TREE_STUMP_KEYS)[number]): FoliageSelection => ({
++  key,
++  selectedCandidate: 2,
++  tieBreak: "lowest-seed",
++  candidates: Array.from({ length: FOLIAGE_CANDIDATE_COUNT }, (_, index) => ({
++    candidate: index + 1,
++    seed: 65000000 + index + 1,
++    path: `raw/foliage/${key}_${String(index + 1).padStart(2, "0")}.png`,
++    sha256: `${(index + 1).toString(16).repeat(64).slice(0, 64)}`,
++    width: FOLIAGE_SPECS[key].width,
++    height: FOLIAGE_SPECS[key].height,
++    palette: true,
++    alpha: true,
++    transparentBackground: true,
++    bakedGroundShadowAbsent: true,
++    selected: index === 1,
++    hardRejected: false,
++    rubric: {
++      trunkGroundContact: index === 1 ? 2 : 1,
++      silhouette: 2,
++      lightingVariation: 2,
++      referenceStyle: 2,
++      total: index === 1 ? 8 : 7,
++    },
++  })),
++});
++
++const parchmentMetrics: ParchmentMetrics = {
++  decision: "flat-token",
++  thresholds: {
++    joinBandMaxDelta: 24,
++    joinToInternalRatio: 2,
++    internalTolerance: 4,
++    blockLumaRangeMax: 16,
++    blockLumaStandardDeviationMin: 1,
++    blockLumaStandardDeviationMax: 8,
++  },
++  candidates: [
++    {
++      candidate: 1,
++      path: "raw/parchment/parchment_01.png",
++      sha256,
++      width: 256,
++      height: 256,
++      opposingEdgesByteCompatible: true,
++      joinBandMaxDelta: 20,
++      internalBandMaxDelta: 9,
++      blockLumaRange: 12,
++      blockLumaStandardDeviation: 3,
++      passed: true,
++    },
++  ],
++};
+ 
+ const manifestFixture = (): WorldAssetManifest => ({
+   version: 1,
++  acceptedReferences,
++  foliageSelections: TREE_STUMP_KEYS.map(foliageSelection),
++  parchmentMetrics,
+   assets: [
+     ...BUILDING_KEYS.map((key): BuildingAsset => {
+       const spec = BUILDING_SPECS[key];
+@@ -40,6 +112,7 @@ const manifestFixture = (): WorldAssetManifest => ({
+       anchor: { x: spec.width / 2, y: spec.baselineY },
+       footprint: spec.footprint,
+       source,
++      sha256,
+       palettePolicy: "canonical-building" as const,
+       alphaPolicy: "transparent-outline-179" as const,
+       };
+@@ -55,11 +128,12 @@ const manifestFixture = (): WorldAssetManifest => ({
+       anchor: { x: spec.width / 2, y: spec.baselineY },
+       footprint: spec.footprint,
+       source,
++      sha256,
+       palettePolicy: key === "field_stone" ? "stone-earth" as const : "foliage-timber" as const,
+       alphaPolicy: "transparent-outline-179" as const,
+       variation: {
+         selection: "hash" as const,
+-        scale: { min: 0.75, max: 1.25 },
++        scale: { min: 0.7, max: 1.3 },
+         offset: "in-tile" as const,
+         sway: "sine" as const,
+       },
+@@ -76,6 +150,7 @@ const manifestFixture = (): WorldAssetManifest => ({
+       anchor: { x: 0, y: 0 },
+       footprint: spec.footprint,
+       source,
++      sha256,
+       palettePolicy: spec.palettePolicy,
+       alphaPolicy: "opaque" as const,
+       seamMetrics: {
+@@ -91,6 +166,30 @@ const manifestFixture = (): WorldAssetManifest => ({
+   ],
+ });
+ 
++const fileSha256 = (filePath: string): string =>
++  createHash("sha256").update(readFileSync(filePath)).digest("hex");
++
++const writeManifestPngs = (
++  manifest: WorldAssetManifest,
++  root: string,
++  dimensionsForKey: (asset: WorldAssetManifest["assets"][number]) => { readonly width: number; readonly height: number },
++): WorldAssetManifest => {
++  for (const asset of manifest.assets) {
++    const dimensions = dimensionsForKey(asset);
++    writePng(path.join(root, asset.path), {
++      dimensions,
++      rgba: new Uint8Array(dimensions.width * dimensions.height * 4),
++    });
++  }
++  return {
++    ...manifest,
++    assets: manifest.assets.map((asset) => ({
++      ...asset,
++      sha256: fileSha256(path.join(root, asset.path)),
++    })),
++  };
++};
++
+ describe("world asset manifest", () => {
+   it("parses the exact release keys, dimensions, anchors, and footprints", () => {
+     // Given: a complete release manifest generated from the declared contracts.
+@@ -99,10 +198,10 @@ describe("world asset manifest", () => {
+     // When: the untrusted JSON value crosses the manifest boundary.
+     const parsed = parseWorldAssetManifest(input);
+ 
+-    // Then: all 24 exact keys and their bottom-centre contracts are preserved.
++    // Then: all 28 exact keys and their bottom-centre contracts are preserved.
+     assert.doesNotThrow(() => assertExactWorldAssetKeys(parsed.assets));
+     assert.deepEqual(parsed.assets.map((entry) => entry.key).sort(), [...WORLD_ASSET_KEYS].sort());
+-    assert.equal(parsed.assets.length, 24);
++    assert.equal(parsed.assets.length, 28);
+     const manor = parsed.assets.find((entry) => entry.key === "house_l3");
+     assert.deepEqual(manor, {
+       key: "house_l3",
+@@ -113,11 +212,114 @@ describe("world asset manifest", () => {
+       anchor: { x: 80, y: 176 },
+       footprint: { width: 2, height: 2 },
+       source,
++      sha256,
+       palettePolicy: "canonical-building",
+       alphaPolicy: "transparent-outline-179",
+     });
+   });
+ 
++  it("preserves non-tree ground cover while replacing runtime tree and stump release keys", () => {
++    // Given: the Phase 8 release key contract.
++    const expectedFoliage = [
++      "tree_oak_large",
++      "tree_oak_small",
++      "tree_pine_tall",
++      "tree_pine_short",
++      "tree_birch",
++      "tree_dead",
++      "stump_fresh",
++      "stump_old",
++      "shrub_a",
++      "shrub_b",
++      "grass_tuft",
++      "field_stone",
++    ];
++
++    // When / Then: old generic tree aliases are gone, and ground-cover keys remain.
++    assert.deepEqual([...FOLIAGE_KEYS], expectedFoliage);
++    assert.equal(FOLIAGE_SPECS.tree_oak_large.width, 88);
++    assert.equal(FOLIAGE_SPECS.tree_oak_large.height, 112);
++    assert.equal(FOLIAGE_SPECS.tree_pine_tall.height, 120);
++    assert.equal(FOLIAGE_SPECS.stump_old.width, 36);
++    assert.equal(FOLIAGE_SPECS.shrub_a.width, 40);
++  });
++
++  it("requires accepted references, eight candidates per tree or stump, hashes, and parchment metrics", () => {
++    // Given: a complete synthetic Phase 8 manifest.
++    const valid = manifestFixture();
++
++    // When: the manifest is parsed.
++    const parsed = parseWorldAssetManifest(valid);
++
++    // Then: metadata that drives later DGX selection remains exact and auditable.
++    assert.deepEqual(parsed.acceptedReferences.map((entry) => entry.key), [...ACCEPTED_REFERENCE_KEYS]);
++    assert.equal(parsed.foliageSelections.length, 8);
++    assert.equal(parsed.foliageSelections.every((selection) => selection.candidates.length === 8), true);
++    assert.equal(parsed.parchmentMetrics.thresholds.joinBandMaxDelta, 24);
++    assert.equal(parsed.parchmentMetrics.thresholds.blockLumaStandardDeviationMax, 8);
++  });
++
++  it("rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties", () => {
++    // Given: a valid strict manifest fixture.
++    const valid = manifestFixture();
++
++    // When / Then: each required audit field is a hard manifest boundary.
++    assert.throws(
++      () => parseWorldAssetManifest({
++        ...valid,
++        acceptedReferences: valid.acceptedReferences.map((entry) =>
++          entry.key === "house_03" ? { ...entry, sha256: "" } : entry
++        ),
++      }),
++      /house_03 sha256/,
++    );
++    assert.throws(
++      () => parseWorldAssetManifest({
++        ...valid,
++        foliageSelections: valid.foliageSelections.map((entry) =>
++          entry.key === "tree_oak_large" ? { ...entry, candidates: entry.candidates.slice(1) } : entry
++        ),
++      }),
++      /tree_oak_large candidates must contain exactly 8/,
++    );
++    assert.throws(
++      () => parseWorldAssetManifest({
++        ...valid,
++        foliageSelections: valid.foliageSelections.map((selection) =>
++          selection.key === "tree_oak_large"
++            ? {
++              ...selection,
++              candidates: selection.candidates.map((candidate) =>
++                candidate.candidate === 2
++                  ? { ...candidate, rubric: { ...candidate.rubric, total: 7 } }
++                  : candidate
++              ),
++            }
++            : selection
++        ),
++      }),
++      /tree_oak_large candidate 2 rubric total/,
++    );
++    assert.throws(
++      () => parseWorldAssetManifest({
++        ...valid,
++        foliageSelections: valid.foliageSelections.map((selection) =>
++          selection.key === "tree_oak_large"
++            ? {
++              ...selection,
++              candidates: selection.candidates.map((candidate) =>
++                candidate.candidate === 1
++                  ? { ...candidate, seed: 1, rubric: { ...candidate.rubric, trunkGroundContact: 2, total: 8 }, selected: false }
++                  : candidate
++              ),
++            }
++            : selection
++        ),
++      }),
++      /tree_oak_large selected candidate must use lowest seed among top score/,
++    );
++  });
++
+   it("preserves the exact foliage variation and terrain seam contracts", () => {
+     // Given: valid foliage and terrain metadata.
+     const input = manifestFixture();
+@@ -131,7 +333,7 @@ describe("world asset manifest", () => {
+     if (shrub?.category === "foliage") {
+       assert.deepEqual(shrub.variation, {
+         selection: "hash",
+-        scale: { min: 0.75, max: 1.25 },
++        scale: { min: 0.7, max: 1.3 },
+         offset: "in-tile",
+         sway: "sine",
+       });
+@@ -207,7 +409,7 @@ describe("world asset manifest", () => {
+   it("rejects category-policy mismatches and incomplete category metadata", () => {
+     // Given: category fields copied across incompatible asset classes.
+     const valid = manifestFixture();
+-    const foliageIndex = valid.assets.findIndex((entry) => entry.key === "tree_conifer_a");
++    const foliageIndex = valid.assets.findIndex((entry) => entry.key === "tree_oak_large");
+     const terrainIndex = valid.assets.findIndex((entry) => entry.key === "water");
+     const foliage = valid.assets[foliageIndex];
+     const terrain = valid.assets[terrainIndex];
+@@ -216,11 +418,11 @@ describe("world asset manifest", () => {
+ 
+     // When / Then: policy and category-only evidence cannot silently drift.
+     const wrongPolicy = valid.assets.map((entry) =>
+-      entry.key === "tree_conifer_a" ? { ...entry, palettePolicy: "canonical-building" } : entry
++      entry.key === "tree_oak_large" ? { ...entry, palettePolicy: "canonical-building" } : entry
+     );
+     assert.throws(
+       () => parseWorldAssetManifest({ ...valid, assets: wrongPolicy }),
+-      /tree_conifer_a palettePolicy/,
++      /tree_oak_large palettePolicy/,
+     );
+     const wrongStonePolicy = valid.assets.map((entry) =>
+       entry.key === "field_stone" ? { ...entry, palettePolicy: "foliage-timber" } : entry
+@@ -246,19 +448,35 @@ describe("world asset manifest", () => {
+       // When / Then: no declared file may be absent.
+       assert.throws(() => assertWorldAssetFiles(parsed, root), /missing world asset file/);
+ 
+-      // Given: all declared PNGs exist, except one has stale dimensions.
+-      for (const asset of parsed.assets) {
+-        const dimensions = asset.key === "house_l1"
++      // Given: all declared PNGs exist with matching hashes, except one has stale dimensions.
++      const hashed = writeManifestPngs(parsed, root, (asset) =>
++        asset.key === "house_l1"
+           ? { width: asset.width - 1, height: asset.height }
+-          : { width: asset.width, height: asset.height };
+-        writePng(path.join(root, asset.path), {
+-          dimensions,
+-          rgba: new Uint8Array(dimensions.width * dimensions.height * 4),
+-        });
+-      }
++          : { width: asset.width, height: asset.height }
++      );
+ 
+       // When / Then: the decoded PNG dimensions must match the manifest.
+-      assert.throws(() => assertWorldAssetFiles(parsed, root), /house_l1 file dimensions/);
++      assert.throws(() => assertWorldAssetFiles(hashed, root), /house_l1 file dimensions/);
++    } finally {
++      rmSync(root, { recursive: true, force: true });
++    }
++  });
++
++  it("rejects PNG files whose bytes do not match the manifest sha256", () => {
++    // Given: every declared PNG exists at the exact declared dimensions.
++    const parsed = parseWorldAssetManifest(manifestFixture());
++    const root = mkdtempSync(path.join(tmpdir(), "phase8-manifest-hash-"));
++    try {
++      const hashed = writeManifestPngs(parsed, root, (asset) => ({ width: asset.width, height: asset.height }));
++      const mismatched = {
++        ...hashed,
++        assets: hashed.assets.map((asset) =>
++          asset.key === "house_l1" ? { ...asset, sha256: "f".repeat(64) } : asset
++        ),
++      };
++
++      // When / Then: a syntactically valid but incorrect digest is rejected.
++      assert.throws(() => assertWorldAssetFiles(mismatched, root), /house_l1 file sha256/);
+     } finally {
+       rmSync(root, { recursive: true, force: true });
+     }
+diff --git a/tests/worldAssetRelease.test.ts b/tests/worldAssetRelease.test.ts
+index 9d55da4..00c1946 100644
+--- a/tests/worldAssetRelease.test.ts
++++ b/tests/worldAssetRelease.test.ts
+@@ -1,5 +1,6 @@
+ import assert from "node:assert/strict";
+-import { mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
++import { createHash } from "node:crypto";
++import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+ import { tmpdir } from "node:os";
+ import path from "node:path";
+ import { describe, it } from "node:test";
+@@ -12,7 +13,8 @@ import {
+ } from "../scripts/prepareWorldAssets";
+ import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
+ import { verifyWorldAssets } from "../scripts/verifyWorldAssets";
+-import { WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
++import { FOLIAGE_KEYS, TREE_STUMP_KEYS, WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
++import { parseWorldAssetManifest } from "../scripts/worldAssetManifest";
+ 
+ const selections = {
+   house_l1: 1,
+@@ -30,6 +32,9 @@ const rgb = (hex: string): readonly [number, number, number] => {
+   return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
+ };
+ 
++const fileSha256 = (filePath: string): string =>
++  createHash("sha256").update(readFileSync(filePath)).digest("hex");
++
+ const image = (width: number, height: number, background: readonly [number, number, number, number]): RgbaImage => {
+   const rgba = new Uint8Array(width * height * 4);
+   for (let index = 0; index < rgba.length; index += 4) rgba.set(background, index);
+@@ -92,19 +97,20 @@ const fixture = (): Fixture => {
+     );
+   }
+   for (const [key, [width, height]] of Object.entries({
+-    tree_conifer_a: [36, 70], tree_conifer_b: [38, 58], tree_broadleaf_a: [50, 60],
+-    tree_broadleaf_b: [44, 50], shrub_a: [30, 20], shrub_b: [24, 16],
++    tree_oak_large: [56, 86], tree_oak_small: [42, 60], tree_pine_tall: [38, 94],
++    tree_pine_short: [36, 64], tree_birch: [34, 74], tree_dead: [34, 58],
++    stump_fresh: [30, 14], stump_old: [28, 12], shrub_a: [30, 20], shrub_b: [24, 16],
+     grass_tuft: [22, 12], field_stone: [18, 10],
+   } as const)) {
+-    const fileName = ["shrub_a", "shrub_b", "grass_tuft", "field_stone"].includes(key)
+-      ? `${key}_01.png`
+-      : `${key}.png`;
+-    writeRawSprite(
+-      path.join(rawRoot, "foliage", fileName),
+-      width,
+-      height,
+-      key === "field_stone" ? RAMPS.stone[2] : RAMPS.foliage[2],
+-    );
++    const candidates = TREE_STUMP_KEYS.some((candidateKey) => candidateKey === key) ? 8 : 1;
++    for (let candidate = 1; candidate <= candidates; candidate += 1) {
++      writeRawSprite(
++        path.join(rawRoot, "foliage", `${key}_${String(candidate).padStart(2, "0")}.png`),
++        width,
++        height,
++        key === "field_stone" ? RAMPS.stone[2] : RAMPS.foliage[2],
++      );
++    }
+   }
+   for (const key of ["grass", "forest_floor", "water", "rock", "packed_earth_road"] as const) {
+     const terrain = image(256, 256, [...rgb(RAMPS.earth[2]), 255]);
+@@ -117,12 +123,8 @@ const fixture = (): Fixture => {
+ };
+ 
+ describe("Phase 4C world asset release", () => {
+-  it("maps generated ground-cover candidates and single-source trees to their raw filenames", () => {
+-    assert.equal(rawFoliageFileName("tree_conifer_a"), "tree_conifer_a.png");
+-    assert.equal(rawFoliageFileName("shrub_a"), "shrub_a_01.png");
+-    assert.equal(rawFoliageFileName("shrub_b"), "shrub_b_01.png");
+-    assert.equal(rawFoliageFileName("grass_tuft"), "grass_tuft_01.png");
+-    assert.equal(rawFoliageFileName("field_stone"), "field_stone_01.png");
++  it("maps every Phase 8 release foliage key to its selected raw candidate filename", () => {
++    for (const key of FOLIAGE_KEYS) assert.equal(rawFoliageFileName(key), `${key}_01.png`);
+   });
+ 
+   it("prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest", () => {
+@@ -169,14 +171,18 @@ describe("Phase 4C world asset release", () => {
+             .map((asset) => [asset.key, asset.source]),
+         ),
+         {
+-          tree_conifer_a: { seed: 64052001, candidate: 1 },
+-          tree_conifer_b: { seed: 64052002, candidate: 1 },
+-          tree_broadleaf_a: { seed: 64052003, candidate: 1 },
+-          tree_broadleaf_b: { seed: 64052004, candidate: 1 },
+-          shrub_a: { seed: 64052501, candidate: 1 },
+-          shrub_b: { seed: 64052601, candidate: 1 },
+-          grass_tuft: { seed: 64052701, candidate: 1 },
+-          field_stone: { seed: 64052801, candidate: 1 },
++          tree_oak_large: { seed: 64052101, candidate: 1 },
++          tree_oak_small: { seed: 64052201, candidate: 1 },
++          tree_pine_tall: { seed: 64052301, candidate: 1 },
++          tree_pine_short: { seed: 64052401, candidate: 1 },
++          tree_birch: { seed: 64052501, candidate: 1 },
++          tree_dead: { seed: 64052601, candidate: 1 },
++          stump_fresh: { seed: 64052701, candidate: 1 },
++          stump_old: { seed: 64052801, candidate: 1 },
++          shrub_a: { seed: 64052901, candidate: 1 },
++          shrub_b: { seed: 64053001, candidate: 1 },
++          grass_tuft: { seed: 64053101, candidate: 1 },
++          field_stone: { seed: 64053201, candidate: 1 },
+         },
+       );
+       assert.doesNotThrow(() => verifyWorldAssets(test.root, test.phase4bRoot));
+@@ -215,6 +221,15 @@ describe("Phase 4C world asset release", () => {
+       const terrain = readPng(terrainPath);
+       terrain.rgba[3] = 0;
+       writePng(terrainPath, terrain);
++      const manifestPath = path.join(test.root, "public", "assets", "world_asset_manifest.json");
++      const manifest = parseWorldAssetManifest(JSON.parse(readFileSync(manifestPath, "utf8")));
++      const updatedManifest = {
++        ...manifest,
++        assets: manifest.assets.map((asset) =>
++          asset.key === "water" ? { ...asset, sha256: fileSha256(terrainPath) } : asset
++        ),
++      };
++      writeFileSync(manifestPath, `${JSON.stringify(updatedManifest, null, 2)}\n`);
+ 
+       // When / Then: the terrain validator rejects non-opaque release pixels.
+       assert.throws(() => verifyWorldAssets(test.root, test.phase4bRoot), /water.*opaque/);
+diff --git a/tests/worldSpritePipeline.test.ts b/tests/worldSpritePipeline.test.ts
+index 5dea5eb..6dbb834 100644
+--- a/tests/worldSpritePipeline.test.ts
++++ b/tests/worldSpritePipeline.test.ts
+@@ -68,7 +68,7 @@ const contractImage = (key: WorldSpriteKey, visibleWidth: number): RgbaImage =>
+ };
+ 
+ describe("worldSpritePipeline", () => {
+-  it("declares every exact Phase 4C canvas and baseline", () => {
++  it("declares every exact Phase 8 canvas and baseline", () => {
+     assert.deepEqual(BUILDING_SPRITE_CONTRACTS, {
+       house_l1: { width: 96, height: 120, baselineY: 104, footprint: 1 },
+       house_l2: { width: 96, height: 144, baselineY: 128, footprint: 1 },
+@@ -80,10 +80,14 @@ describe("worldSpritePipeline", () => {
+       sawmill: { width: 112, height: 112, baselineY: 96, footprint: 1 },
+     });
+     assert.deepEqual(FOLIAGE_SPRITE_CONTRACTS, {
+-      tree_conifer_a: { width: 64, height: 96, baselineY: 96 },
+-      tree_conifer_b: { width: 56, height: 80, baselineY: 80 },
+-      tree_broadleaf_a: { width: 72, height: 88, baselineY: 88 },
+-      tree_broadleaf_b: { width: 64, height: 72, baselineY: 72 },
++      tree_oak_large: { width: 88, height: 112, baselineY: 112 },
++      tree_oak_small: { width: 64, height: 80, baselineY: 80 },
++      tree_pine_tall: { width: 64, height: 120, baselineY: 120 },
++      tree_pine_short: { width: 56, height: 88, baselineY: 88 },
++      tree_birch: { width: 60, height: 96, baselineY: 96 },
++      tree_dead: { width: 56, height: 80, baselineY: 80 },
++      stump_fresh: { width: 40, height: 24, baselineY: 24 },
++      stump_old: { width: 36, height: 20, baselineY: 20 },
+       shrub_a: { width: 40, height: 28, baselineY: 28 },
+       shrub_b: { width: 32, height: 22, baselineY: 22 },
+       grass_tuft: { width: 28, height: 18, baselineY: 18 },
+@@ -157,13 +161,13 @@ describe("worldSpritePipeline", () => {
+   });
+ 
+   it("restricts foliage interiors to foliage or timber and reserves ink for its outline", () => {
+-    const tree = contractImage("tree_conifer_a", 40);
++    const tree = contractImage("tree_oak_large", 40);
+     fill(tree, 12, 72, 52, 89, [...rgb(RAMPS.plaster[2]), 255]);
+     const remapped = enforceFoliageMaterialPolicy(tree);
+     setPixel(remapped, 11, 74, [...rgb(PALETTE.ink), OUTLINE_ALPHA]);
+-    assert.doesNotThrow(() => assertSpriteContract(remapped, "tree_conifer_a"));
++    assert.doesNotThrow(() => assertSpriteContract(remapped, "tree_oak_large"));
+     setPixel(remapped, 20, 78, [...rgb(PALETTE.ink), 255]);
+-    assert.throws(() => assertSpriteContract(remapped, "tree_conifer_a"), /foliage or timber interior/);
++    assert.throws(() => assertSpriteContract(remapped, "tree_oak_large"), /foliage or timber interior/);
+   });
+ 
+   it("requires both shrub alpha silhouettes to be wider than tall", () => {

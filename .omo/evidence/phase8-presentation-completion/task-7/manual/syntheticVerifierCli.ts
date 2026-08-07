@@ -1,4 +1,5 @@
-import { mkdirSync, mkdtempSync, rmSync, unlinkSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
@@ -28,6 +29,7 @@ const SCENARIOS = ["valid", "bad-hash", "bad-dimension", "exact-set", "missing-f
 type Scenario = (typeof SCENARIOS)[number];
 
 const hex = (index: number): string => (index % 16).toString(16).repeat(64);
+const wrongSha256 = "f".repeat(64);
 
 const isScenario = (value: string): value is Scenario =>
   SCENARIOS.some((scenario) => scenario === value);
@@ -42,6 +44,9 @@ const writeAssetPng = (repoRoot: string, relativePath: string, width: number, he
   mkdirSync(path.dirname(filePath), { recursive: true });
   writePng(filePath, image(width, height));
 };
+
+const fileSha256 = (filePath: string): string =>
+  createHash("sha256").update(readFileSync(filePath)).digest("hex");
 
 const acceptedReferences = (): readonly AcceptedReference[] =>
   ACCEPTED_REFERENCE_KEYS.map((key, index) => ({
@@ -162,27 +167,35 @@ const terrainAssets = (): readonly TerrainAsset[] =>
     };
   });
 
-const writeFiles = (repoRoot: string, assets: readonly WorldAsset[]): void => {
+const writeFiles = (repoRoot: string, assets: readonly WorldAsset[], scenario: Scenario): void => {
   for (const reference of acceptedReferences()) {
     writeAssetPng(repoRoot, reference.path, reference.width, reference.height);
   }
   for (const asset of assets) {
-    writeAssetPng(repoRoot, asset.path, asset.width, asset.height);
+    const dimensions = scenario === "bad-dimension" && asset.key === "tree_oak_large"
+      ? { width: asset.width + 1, height: asset.height }
+      : { width: asset.width, height: asset.height };
+    writeAssetPng(repoRoot, asset.path, dimensions.width, dimensions.height);
   }
 };
+
+const withProductionFileHashes = (manifest: WorldAssetManifest, repoRoot: string, scenario: Scenario): WorldAssetManifest => ({
+  ...manifest,
+  assets: manifest.assets.map((asset) => ({
+    ...asset,
+    sha256: scenario === "bad-hash" && asset.key === "house_l1"
+      ? wrongSha256
+      : fileSha256(path.join(repoRoot, asset.path)),
+  })),
+});
 
 const fixture = (scenario: Scenario): WorldAssetManifest => {
   const references = acceptedReferences();
   const assets: readonly WorldAsset[] = [...buildingAssets(), ...foliageAssets(), ...terrainAssets()];
-  const mutatedReferences = scenario === "bad-hash"
-    ? references.map((reference) => reference.key === "house_03" ? { ...reference, sha256: "bad" } : reference)
-    : references;
-  const mutatedAssets = scenario === "bad-dimension"
-    ? assets.map((asset) => asset.key === "tree_oak_large" ? { ...asset, width: asset.width + 1 } : asset)
-    : scenario === "exact-set" ? assets.slice(1) : assets;
+  const mutatedAssets = scenario === "exact-set" ? assets.slice(1) : assets;
   return {
     version: 1,
-    acceptedReferences: mutatedReferences,
+    acceptedReferences: references,
     foliageSelections: foliageSelections(),
     parchmentMetrics,
     assets: mutatedAssets,
@@ -193,11 +206,12 @@ const run = (scenario: Scenario): number => {
   const repoRoot = mkdtempSync(path.join(tmpdir(), "phase8-synthetic-world-assets-"));
   try {
     const manifest = fixture(scenario);
-    writeFiles(repoRoot, manifest.assets);
+    writeFiles(repoRoot, manifest.assets, scenario);
+    const hashedManifest = withProductionFileHashes(manifest, repoRoot, scenario);
     if (scenario === "missing-file") {
       unlinkSync(path.join(repoRoot, "public/assets/terrain/water.png"));
     }
-    const parsed = parseWorldAssetManifest(manifest);
+    const parsed = parseWorldAssetManifest(hashedManifest);
     assertWorldAssetFiles(parsed, repoRoot);
     console.log(`SYNTHETIC_VERIFIER_PASS scenario=${scenario} assets=${parsed.assets.length} selections=${parsed.foliageSelections.length}`);
     return 0;

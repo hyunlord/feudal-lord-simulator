@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
@@ -164,6 +165,30 @@ const manifestFixture = (): WorldAssetManifest => ({
     }),
   ],
 });
+
+const fileSha256 = (filePath: string): string =>
+  createHash("sha256").update(readFileSync(filePath)).digest("hex");
+
+const writeManifestPngs = (
+  manifest: WorldAssetManifest,
+  root: string,
+  dimensionsForKey: (asset: WorldAssetManifest["assets"][number]) => { readonly width: number; readonly height: number },
+): WorldAssetManifest => {
+  for (const asset of manifest.assets) {
+    const dimensions = dimensionsForKey(asset);
+    writePng(path.join(root, asset.path), {
+      dimensions,
+      rgba: new Uint8Array(dimensions.width * dimensions.height * 4),
+    });
+  }
+  return {
+    ...manifest,
+    assets: manifest.assets.map((asset) => ({
+      ...asset,
+      sha256: fileSha256(path.join(root, asset.path)),
+    })),
+  };
+};
 
 describe("world asset manifest", () => {
   it("parses the exact release keys, dimensions, anchors, and footprints", () => {
@@ -423,19 +448,35 @@ describe("world asset manifest", () => {
       // When / Then: no declared file may be absent.
       assert.throws(() => assertWorldAssetFiles(parsed, root), /missing world asset file/);
 
-      // Given: all declared PNGs exist, except one has stale dimensions.
-      for (const asset of parsed.assets) {
-        const dimensions = asset.key === "house_l1"
+      // Given: all declared PNGs exist with matching hashes, except one has stale dimensions.
+      const hashed = writeManifestPngs(parsed, root, (asset) =>
+        asset.key === "house_l1"
           ? { width: asset.width - 1, height: asset.height }
-          : { width: asset.width, height: asset.height };
-        writePng(path.join(root, asset.path), {
-          dimensions,
-          rgba: new Uint8Array(dimensions.width * dimensions.height * 4),
-        });
-      }
+          : { width: asset.width, height: asset.height }
+      );
 
       // When / Then: the decoded PNG dimensions must match the manifest.
-      assert.throws(() => assertWorldAssetFiles(parsed, root), /house_l1 file dimensions/);
+      assert.throws(() => assertWorldAssetFiles(hashed, root), /house_l1 file dimensions/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects PNG files whose bytes do not match the manifest sha256", () => {
+    // Given: every declared PNG exists at the exact declared dimensions.
+    const parsed = parseWorldAssetManifest(manifestFixture());
+    const root = mkdtempSync(path.join(tmpdir(), "phase8-manifest-hash-"));
+    try {
+      const hashed = writeManifestPngs(parsed, root, (asset) => ({ width: asset.width, height: asset.height }));
+      const mismatched = {
+        ...hashed,
+        assets: hashed.assets.map((asset) =>
+          asset.key === "house_l1" ? { ...asset, sha256: "f".repeat(64) } : asset
+        ),
+      };
+
+      // When / Then: a syntactically valid but incorrect digest is rejected.
+      assert.throws(() => assertWorldAssetFiles(mismatched, root), /house_l1 file sha256/);
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

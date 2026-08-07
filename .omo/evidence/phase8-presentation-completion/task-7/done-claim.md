@@ -46,6 +46,33 @@ Worktree: `/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stag
 | Final TypeScript integration | `npm run typecheck` | `tsc --noEmit` exited 0 | `.omo/evidence/phase8-presentation-completion/task-7/green/typecheck.final.log` |
 | Final owned diff whitespace sanity | `git diff --check -- <Todo7 asset files and evidence>` | exited 0 with empty output | `.omo/evidence/phase8-presentation-completion/task-7/green/diff-check.final.log` |
 
+## Hash-fix follow-up after adversarial rejection
+
+AdversarialVerify rejected the first Todo7 claim because `assertWorldAssetFiles()` accepted syntactically valid but incorrect `sha256` manifest values. The fix now hashes every production PNG byte stream and requires exact equality against the manifest digest while retaining exact-set and PNG-dimension checks.
+
+Changed Todo7-owned files:
+
+- `scripts/worldAssetManifest.ts`
+- `tests/worldAssetManifest.test.ts`
+- `tests/worldAssetRelease.test.ts`
+- `.omo/evidence/phase8-presentation-completion/task-7/manual/syntheticVerifierCli.ts`
+
+| Scenario | Invocation | Binary observable | Artifact |
+| --- | --- | --- | --- |
+| TDD red: valid-looking wrong digest was previously accepted | `npx tsx --test tests/worldAssetManifest.test.ts` before implementation | `fail 1`; new test missing expected exception | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/red/worldAssetManifest.hash-red.log` |
+| Strict manifest hash equality | `npx tsx --test tests/worldAssetManifest.test.ts` | `tests 11`, `pass 11`, `fail 0` | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/green/worldAssetManifest.hash-final.log` |
+| Focused release filename slice | `npx tsx --test --test-name-pattern 'maps every Phase 8 release foliage key' tests/worldAssetRelease.test.ts` | `tests 1`, `pass 1`, `fail 0` | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/green/worldAssetRelease.filename-slice.hash-final.log` |
+| Generator suite unchanged | `python3 tests/test_generate_world_assets.py` | `Ran 14 tests`, `OK` | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/green/generateWorldAssets.hash-final.log` |
+| TypeScript integration | `npm run typecheck` | `tsc --noEmit` exited 0 | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/green/typecheck.hash-final.log` |
+| Production build | `npm run build` | `vite build` emitted `dist/index.html`, CSS, JS | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/green/build.hash-final.log` |
+| Synthetic valid surface | `npx tsx .omo/evidence/phase8-presentation-completion/task-7/manual/syntheticVerifierCli.ts valid` | `SYNTHETIC_VERIFIER_PASS scenario=valid assets=28 selections=8` | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/manual/synthetic-valid.hash-final.log` |
+| Synthetic wrong valid digest rejection | `npx tsx .omo/evidence/phase8-presentation-completion/task-7/manual/syntheticVerifierCli.ts bad-hash` | nonzero; `house_l1 file sha256 ... did not match ffff...` | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/manual/synthetic-bad-hash.summary.log` |
+| Synthetic mutation regression checks | `npx tsx ... syntheticVerifierCli.ts bad-dimension|exact-set|missing-file` | each scenario exited nonzero as expected | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/manual/synthetic-mutations.summary.log` |
+| DGX ffmpeg-backed release verifier | `ssh -o ControlMaster=no -o ControlPath=none ... 'timeout 240 ... npx tsx --test tests/worldAssetRelease.test.ts'` against a temp worktree patched with Todo7 owned code only | `tests 4`, `pass 4`, `fail 0`; temp worktree and uploaded patch cleanup recorded | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/dgx/worldAssetRelease.ffmpeg.hash-final.log` |
+| Owned diff whitespace sanity | `git diff --check -- scripts/worldAssetManifest.ts tests/worldAssetManifest.test.ts tests/worldAssetRelease.test.ts .omo/evidence/phase8-presentation-completion/task-7` | exited 0; `PASS git diff --check Todo7 owned hash-fix paths` | `.omo/evidence/phase8-presentation-completion/task-7/hash-fix/green/diff-check.hash-final.log` |
+
+Hash-fix commit: recorded in final handoff after commit creation.
+
 ## Not run / blocked
 
 - Full `tests/worldAssetRelease.test.ts` was not claimed green locally because the local machine lacks `ffmpeg`.

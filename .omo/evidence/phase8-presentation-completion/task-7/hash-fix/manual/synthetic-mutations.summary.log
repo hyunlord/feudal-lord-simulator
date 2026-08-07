@@ -1,0 +1,3 @@
+scenario=bad-dimension expected_failure status=1
+scenario=exact-set expected_failure status=1
+scenario=missing-file expected_failure status=1

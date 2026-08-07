@@ -1,0 +1,41 @@
+▶ world asset manifest
+  ✔ parses the exact release keys, dimensions, anchors, and footprints (2.287583ms)
+  ✔ preserves non-tree ground cover while replacing runtime tree and stump release keys (0.060125ms)
+  ✔ requires accepted references, eight candidates per tree or stump, hashes, and parchment metrics (0.345875ms)
+  ✔ rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties (0.357042ms)
+  ✔ preserves the exact foliage variation and terrain seam contracts (0.23575ms)
+  ✔ rejects duplicate and missing release keys (0.787583ms)
+  ✔ rejects wrong dimensions and non-bottom-centre anchors (0.278ms)
+  ✔ rejects path traversal and machine-specific paths (0.39025ms)
+  ✔ rejects category-policy mismatches and incomplete category metadata (0.380167ms)
+  ✔ rejects nonexistent files and PNGs whose on-disk dimensions drift (12.618ms)
+  ✖ rejects PNG files whose bytes do not match the manifest sha256 (19.53825ms)
+✖ world asset manifest (37.866667ms)
+ℹ tests 11
+ℹ suites 1
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 191.082083
+
+✖ failing tests:
+
+test at tests/worldAssetManifest.test.ts:1:11092
+✖ rejects PNG files whose bytes do not match the manifest sha256 (19.53825ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/worldAssetManifest.test.ts:483:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Suite.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /house_l1 file sha256/,
+    operator: 'throws',
+    diff: 'simple'
+  }

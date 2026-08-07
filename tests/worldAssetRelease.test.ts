@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
@@ -13,6 +14,7 @@ import {
 import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
 import { verifyWorldAssets } from "../scripts/verifyWorldAssets";
 import { FOLIAGE_KEYS, TREE_STUMP_KEYS, WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
+import { parseWorldAssetManifest } from "../scripts/worldAssetManifest";
 
 const selections = {
   house_l1: 1,
@@ -29,6 +31,9 @@ const rgb = (hex: string): readonly [number, number, number] => {
   const value = Number.parseInt(hex.slice(1), 16);
   return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
 };
+
+const fileSha256 = (filePath: string): string =>
+  createHash("sha256").update(readFileSync(filePath)).digest("hex");
 
 const image = (width: number, height: number, background: readonly [number, number, number, number]): RgbaImage => {
   const rgba = new Uint8Array(width * height * 4);
@@ -216,6 +221,15 @@ describe("Phase 4C world asset release", () => {
       const terrain = readPng(terrainPath);
       terrain.rgba[3] = 0;
       writePng(terrainPath, terrain);
+      const manifestPath = path.join(test.root, "public", "assets", "world_asset_manifest.json");
+      const manifest = parseWorldAssetManifest(JSON.parse(readFileSync(manifestPath, "utf8")));
+      const updatedManifest = {
+        ...manifest,
+        assets: manifest.assets.map((asset) =>
+          asset.key === "water" ? { ...asset, sha256: fileSha256(terrainPath) } : asset
+        ),
+      };
+      writeFileSync(manifestPath, `${JSON.stringify(updatedManifest, null, 2)}\n`);
 
       // When / Then: the terrain validator rejects non-opaque release pixels.
       assert.throws(() => verifyWorldAssets(test.root, test.phase4bRoot), /water.*opaque/);
