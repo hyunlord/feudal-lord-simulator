@@ -107,6 +107,7 @@ function state(input: {
     population: household.residents,
     idleWorkers: 0,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     roadRevision: 0,
     pathCache: {},
     forestHarvests: [],

@@ -91,6 +91,11 @@ test("Phase 3 building table includes chapel without changing ordinary building 
       production: { output: "stone", input: "stone_raw", inputPerOutput: 2, ticksPerOutput: 45 },
       storageCapacity: 20, serviceRadius: 0,
     },
+    market: {
+      kind: "market", name: "시장", width: 2, height: 2, workersRequired: 3, buildCost: { timber: 60 },
+      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "palisade",
+      production: null, storageCapacity: 0, serviceRadius: 8,
+    },
   });
 });
 
@@ -216,6 +221,7 @@ test("placeBuilding commits timber without duplicating physical stock", () => {
     ...DEFAULT_GAME_STATE,
     buildings: [...DEFAULT_GAME_STATE.buildings, storage],
     treasuryTimber: 5,
+    treasuryCoin: 0,
   };
 
   // When

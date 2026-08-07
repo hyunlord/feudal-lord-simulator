@@ -127,6 +127,7 @@ function state(): GameState {
     tick: 0,
     seed: 1,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     buildings: [{
       id: "house",
       kind: "house",

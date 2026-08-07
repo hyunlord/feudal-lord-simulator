@@ -52,6 +52,7 @@ function state(input: {
     population: 0,
     idleWorkers: 0,
     treasuryTimber: input.treasuryTimber ?? 500,
+    treasuryCoin: 0,
     wallTick: 0,
     era: input.era ?? "hamlet",
     eraProclaimedTick: null,
@@ -130,6 +131,31 @@ test("Phase 9 stone buildings have exact palisade-era config", () => {
     storageCapacity: 20,
     serviceRadius: 0,
   });
+});
+
+test("Phase 9 market has exact palisade-era config and visible menu copy", () => {
+  // Given
+  const palisade = state({ era: "palisade" });
+
+  // When / Then
+  assert.deepEqual(BUILDING_CONFIG_BY_KIND.market, {
+    kind: "market",
+    name: "시장",
+    width: 2,
+    height: 2,
+    workersRequired: 3,
+    buildCost: { timber: 60 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    unlockEra: "palisade",
+    production: null,
+    storageCapacity: 0,
+    serviceRadius: 8,
+  });
+  assert.equal(buildMenuGroups(state({ era: "hamlet" })).some((group) => group.options.some((option) => option.tool === "market")), false);
+  assert.equal(buildMenuGroups(palisade).some((group) => group.options.some((option) => option.tool === "market" && option.label === "시장")), true);
+  assert.ok(buildToolTooltipLines("market", palisade).some((line) => line.includes("금화")));
+  assert.deepEqual(buildingBodyProfile("market", 0).roofColor, SEMANTIC_PALETTE.goldDark);
 });
 
 test("Phase 9 unlock and quarry rock placement rules are enforced in placement and menu models", () => {

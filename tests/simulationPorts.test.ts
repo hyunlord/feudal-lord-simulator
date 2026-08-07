@@ -75,6 +75,7 @@ function stateFromGrid(
     population: 0,
     idleWorkers: 0,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     roadRevision: 7,
     pathCache,
     forestHarvests: [],

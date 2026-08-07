@@ -32,6 +32,7 @@ function state(building: Building): GameState {
     population: 7,
     idleWorkers: 0,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     roadRevision: 0,
     pathCache: {},
     forestHarvests: [],

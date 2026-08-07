@@ -46,6 +46,7 @@ function state(tick: number, houses: readonly House[]): GameState {
     population: houses.reduce((sum, candidate) => sum + candidate.residents, 0),
     idleWorkers: 0,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     roadRevision: 0,
     pathCache: {},
     forestHarvests: [],

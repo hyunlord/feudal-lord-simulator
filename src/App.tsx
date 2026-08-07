@@ -224,6 +224,7 @@ export function App() {
               <CourtLedger
                 tick={state.tick}
                 timber={state.treasuryTimber}
+                coin={state.treasuryCoin}
                 selectedTool={selectedTool}
                 population={state.population}
                 idleWorkers={state.idleWorkers}

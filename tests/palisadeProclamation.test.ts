@@ -65,6 +65,7 @@ function eligibleState(patch: Partial<GameState> = {}): GameState {
     walkers: [],
     population: 60,
     treasuryTimber: 600,
+    treasuryCoin: 0,
     nextConstructionOrdinal: 3,
     ...patch,
   };

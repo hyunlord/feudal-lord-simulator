@@ -71,6 +71,7 @@ function noConstructionMaterials(state: GameState): GameState {
     ),
     walkers: state.walkers.filter((walker) => walker.kind !== "carter"),
     treasuryTimber: 0,
+    treasuryCoin: 0,
   };
 }
 
@@ -190,6 +191,7 @@ test("construction resource ledger includes site commitments without double-coun
         cancellation: null,
       }],
       treasuryTimber: 20,
+    treasuryCoin: 0,
     },
     (site) => ({ ...site, delivered: { timber: 2 }, reserved: { timber: 3 } }),
   );

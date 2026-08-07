@@ -14,11 +14,13 @@ import {
   type PalisadeProtection,
   type PalisadeProtectionSource,
 } from "../geometry/palisadeProtection";
+import { hasMarketAccess } from "./marketAccess";
 import type { House } from "./population.types";
 
 export type HouseUpdateContext = {
   readonly tick: number;
   readonly hasGranaryNearby: boolean;
+  readonly hasMarketAccess?: boolean;
   readonly palisadeProtection?: PalisadeProtection;
 };
 
@@ -174,6 +176,7 @@ export function updateHousing(
     return updateHouse(house, {
       tick,
       hasGranaryNearby: hasGranaryNearby(house, buildings),
+      hasMarketAccess: home === null ? false : hasMarketAccess(home, buildings),
       palisadeProtection:
         home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
     });

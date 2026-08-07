@@ -145,6 +145,7 @@ export function createEconomyHarnessScenario(
     population: houses.reduce((total, candidate) => total + candidate.residents, 0),
     idleWorkers: 0,
     treasuryTimber: BALANCE.STARTING_TIMBER,
+    treasuryCoin: 0,
     roadRevision: 1,
     pathCache: {},
     forestHarvests: [],

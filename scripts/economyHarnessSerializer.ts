@@ -77,6 +77,7 @@ function normalizeConstructionSite(site: ConstructionSite) {
     case "sawmill":
     case "quarry":
     case "masonry":
+    case "market":
       return {
         ...common,
         tx: site.tx,
@@ -183,6 +184,7 @@ export function hashEconomyState(state: GameState): string {
     population: state.population,
     idleWorkers: state.idleWorkers,
     treasuryTimber: state.treasuryTimber,
+    treasuryCoin: state.treasuryCoin,
     buildings: [...state.buildings].sort((left, right) => left.id.localeCompare(right.id)).map(normalizeBuilding),
     constructionSites: [...state.constructionSites]
       .sort((left, right) => left.id.localeCompare(right.id))
@@ -203,6 +205,7 @@ export function hashOpeningState(state: GameState): string {
     height: state.height,
     population: state.population,
     treasuryTimber: state.treasuryTimber,
+    treasuryCoin: state.treasuryCoin,
     buildings: [...state.buildings]
       .sort((left, right) => left.id.localeCompare(right.id))
       .map(({ id, kind, tx, ty, workers }) => ({ id, kind, tx, ty, workers })),

@@ -8,6 +8,7 @@ import {
   recomputeConstructionStalls,
 } from "./constructionLifecycle";
 import { stepProduction } from "../economy/production";
+import { settleMarkets } from "./marketSettlement";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
 import {
@@ -112,10 +113,18 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     routes: routePorts.roaming,
     rngForJunction: rngForState({ ...state, tick }),
   });
+  const marketSettled = settleMarkets({
+    ...state,
+    tick,
+    buildings: [...movedDistributors.buildings],
+    walkers: [...movedDistributors.walkers],
+    treasuryTimber: movedCarters.treasuryTimber,
+    treasuryCoin: state.treasuryCoin,
+  });
   const servedHouses = mergeRoamingHouses(state.houses, movedDistributors.houses);
-  const housing = updateHousing(servedHouses, movedDistributors.buildings, tick, state.palisade);
+  const housing = updateHousing(servedHouses, marketSettled.buildings, tick, state.palisade);
   const labour = allocateBuildingAndConstructionLabour(
-    movedDistributors.buildings,
+    marketSettled.buildings,
     movedCarters.constructionSites,
     housing.population,
     { tick, eraProclaimedTick: state.eraProclaimedTick },
@@ -132,6 +141,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     population: housing.population,
     idleWorkers: labour.idleWorkers,
     treasuryTimber: movedCarters.treasuryTimber,
+    treasuryCoin: marketSettled.treasuryCoin,
   });
   const progressed = {
     ...produced,
@@ -162,6 +172,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     constructionSites: [...spawnedCarters.constructionSites],
     walkers: [...spawnedDistributors.walkers],
     treasuryTimber: spawnedCarters.treasuryTimber,
+    treasuryCoin: progressed.treasuryCoin,
     pathCache: routePorts.getPathCache(),
   };
 }

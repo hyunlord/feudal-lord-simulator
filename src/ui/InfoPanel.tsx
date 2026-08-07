@@ -14,6 +14,7 @@ import { settlementGuidance } from "./settlementGuidanceModel";
 type CourtLedgerProps = {
   readonly tick: number;
   readonly timber: number;
+  readonly coin?: number;
   readonly selectedTool: PlacementTool | null;
   readonly population?: number;
   readonly idleWorkers?: number;
@@ -37,6 +38,7 @@ type LedgerRowProps = LedgerLabelProps & {
 export function CourtLedger({
   tick,
   timber,
+  coin = 0,
   selectedTool,
   population,
   idleWorkers,
@@ -69,6 +71,7 @@ export function CourtLedger({
         )}
         <dl>
           <LedgerRow full="Timber" compact="Tim." value={timberTotal} />
+          <LedgerRow full="Coin" compact="Coin" value={stockTotals?.coin ?? coin} />
           {population !== undefined ? <LedgerRow full="Population" compact="Pop." value={population} /> : null}
           {idleWorkers !== undefined ? <LedgerRow full="Idle" compact="Idle" value={idleWorkers} /> : null}
           {stockTotals !== undefined ? (

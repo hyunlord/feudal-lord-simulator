@@ -75,6 +75,7 @@ test("economy harness fixed scenario has legal building footprints", () => {
         tile.buildingId === building.id ? { ...tile, buildingId: null } : tile,
       ),
       treasuryTimber: 1_000,
+    treasuryCoin: 0,
     };
     assert.deepEqual(canPlaceBuilding(clearedSelf, building.kind, building.tx, building.ty), { ok: true });
 

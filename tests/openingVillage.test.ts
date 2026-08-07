@@ -18,7 +18,7 @@ import {
 import { ONBOARDING_TASKS } from "../src/ui/onboardingTaskModel";
 
 const OPENING_CENTER = { tx: 45, ty: 41 } as const;
-const EXPECTED_OPENING_HASH = "b96ecf8b914bb99d";
+const EXPECTED_OPENING_HASH = "f0cd4b1b189c579b";
 type Rect = {
   readonly left: number;
   readonly right: number;

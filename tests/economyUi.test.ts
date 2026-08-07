@@ -262,6 +262,7 @@ test("settlement guidance priority follows the exact Phase 4F blocker order", ()
     houses: hydratedHouse,
     buildings: [openingHouse, granary],
     treasuryTimber: 30,
+    treasuryCoin: 0,
     idleWorkers: 0,
   };
 

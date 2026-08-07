@@ -61,6 +61,7 @@ test("ledger totals treasury, building inventory, and walker cargo without count
   const totals = economyStockTotals({
     ...DEFAULT_GAME_STATE,
     treasuryTimber: 5,
+    treasuryCoin: 7,
     buildings: [store],
     walkers: [carter, distributor],
     houses: [{
@@ -81,6 +82,6 @@ test("ledger totals treasury, building inventory, and walker cargo without count
     timber: 11,
     stone_raw: 0,
     stone: 0,
-    coin: 0,
+    coin: 7,
   });
 });

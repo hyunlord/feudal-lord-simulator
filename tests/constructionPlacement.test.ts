@@ -24,6 +24,7 @@ const VALID_ORIGINS = {
   sawmill: { tx: 18, ty: 1 },
   quarry: { tx: 20, ty: 1 },
   masonry: { tx: 23, ty: 1 },
+  market: { tx: 24, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {

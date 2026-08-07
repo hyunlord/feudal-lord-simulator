@@ -98,6 +98,7 @@ function state(input: {
     population: workforceHouse.residents,
     idleWorkers: 0,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     wallTick: 0,
     era: "palisade",
     eraProclaimedTick: 0,

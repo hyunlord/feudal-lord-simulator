@@ -54,6 +54,7 @@ const stateBase: Omit<GameState, "walkers"> = {
   tick: 30,
   seed: 1,
   treasuryTimber: 0,
+    treasuryCoin: 0,
   buildings: [],
   constructionSites: [],
   wallTick: 0,

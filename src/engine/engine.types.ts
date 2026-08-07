@@ -63,6 +63,7 @@ export interface GameState {
   population: number;
   idleWorkers: number;
   treasuryTimber: number;
+  treasuryCoin: number;
   wallTick: number;
   era: Era;
   eraProclaimedTick: number | null;

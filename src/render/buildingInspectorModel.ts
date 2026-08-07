@@ -22,6 +22,7 @@ const PURPOSES = {
   sawmill: "통나무를 목재로 가공",
   quarry: "바위에서 원석을 채굴",
   masonry: "원석을 석재로 가공",
+  market: "잉여 물자를 팔아 금화를 확보",
 } as const;
 const RESOURCE_NAMES = {
   wheat: "밀",

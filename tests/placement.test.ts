@@ -50,6 +50,7 @@ function worldFromGrid(grid: Grid, timber = 100): GameState {
     population: 0,
     idleWorkers: 0,
     treasuryTimber: timber,
+    treasuryCoin: 0,
     roadRevision: 0,
     pathCache: {},
     forestHarvests: [],
@@ -90,6 +91,7 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
     "sawmill",
     "quarry",
     "masonry",
+    "market",
   ] as const satisfies readonly BuildingKind[];
   assert.deepEqual([...definitionsByKind.keys()].sort(), [...expectedKinds].sort());
   assert.ok(

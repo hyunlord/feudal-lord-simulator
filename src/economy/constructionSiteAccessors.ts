@@ -27,6 +27,7 @@ export function isBuildingConstructionSite(
     case "sawmill":
     case "quarry":
     case "masonry":
+    case "market":
       return true;
     default:
       return assertNever(site);
@@ -48,6 +49,7 @@ export function constructionSiteAnchor(site: ConstructionSite): TileCoordinate {
     case "sawmill":
     case "quarry":
     case "masonry":
+    case "market":
       return { tx: site.tx, ty: site.ty };
     default:
       return assertNever(site);
@@ -78,7 +80,8 @@ export function constructionSiteFootprint(site: ConstructionSite): ConstructionS
     case "logging_camp":
     case "sawmill":
     case "quarry":
-    case "masonry": {
+    case "masonry":
+    case "market": {
       const definition = BUILDING_CONFIG_BY_KIND[site.kind];
       return { tx: site.tx, ty: site.ty, width: definition.width, height: definition.height };
     }
@@ -102,6 +105,7 @@ export function constructionSiteDisplayName(site: ConstructionSite): string {
     case "sawmill":
     case "quarry":
     case "masonry":
+    case "market":
       return BUILDING_CONFIG_BY_KIND[site.kind].name;
     default:
       return assertNever(site);
@@ -130,6 +134,7 @@ export function constructionSiteCacheKey(site: ConstructionSite): string {
     case "sawmill":
     case "quarry":
     case "masonry":
+    case "market":
       return `${site.kind}:${site.id}:${site.tx}:${site.ty}`;
     default:
       return assertNever(site);

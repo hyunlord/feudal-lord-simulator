@@ -78,6 +78,11 @@ function drawBaseKindDetail(
       drawSaw(context, input.tick, input.center, input.zoom);
       drawPlanks(context, input.center, input.zoom);
       return;
+    case "quarry":
+    case "masonry":
+    case "market":
+      drawCrates(context, input.center, input.zoom);
+      return;
   }
 }
 

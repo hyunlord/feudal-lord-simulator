@@ -22,6 +22,7 @@ const stockAmount = (amount: number | undefined): number =>
 export function economyStockTotals(state: GameState): EconomyStockTotals {
   const totals = emptyTotals();
   totals.timber += stockAmount(state.treasuryTimber);
+  totals.coin += stockAmount(state.treasuryCoin);
 
   for (const building of state.buildings) {
     for (const resource of RESOURCE_TYPES) {

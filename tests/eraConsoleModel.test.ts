@@ -47,6 +47,7 @@ function state(overrides: Partial<GameState> = {}): GameState {
     population: 60,
     idleWorkers: 0,
     treasuryTimber: 800,
+    treasuryCoin: 0,
     wallTick: 0,
     era: "hamlet",
     eraProclaimedTick: null,

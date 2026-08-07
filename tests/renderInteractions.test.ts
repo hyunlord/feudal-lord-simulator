@@ -38,6 +38,7 @@ const state = {
   population: 0,
   idleWorkers: 0,
   treasuryTimber: 20,
+    treasuryCoin: 0,
   roadRevision: 0,
   pathCache: {},
   forestHarvests: [],

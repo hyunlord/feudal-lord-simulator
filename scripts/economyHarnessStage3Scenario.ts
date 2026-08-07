@@ -127,6 +127,7 @@ export function createStage3EconomyHarnessScenario(
     tiles: [...stage3Tiles(base.tiles, buildings)],
     population: houses.reduce((total, candidate) => total + candidate.residents, 0),
     treasuryTimber: 1_200,
+    treasuryCoin: 0,
     pathCache: {},
   };
 }

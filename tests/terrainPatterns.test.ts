@@ -32,7 +32,7 @@ const state = (tiles: readonly Tile[]): GameState => ({
   eraProclaimedTick: null,
   palisade: null,
   nextConstructionOrdinal: 1,
-  population: 0, idleWorkers: 0, treasuryTimber: 0, roadRevision: 0,
+  population: 0, idleWorkers: 0, treasuryTimber: 0, treasuryCoin: 0, roadRevision: 0,
   pathCache: {},
   forestHarvests: [],
 });

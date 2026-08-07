@@ -41,6 +41,7 @@ const state = {
   population: 0,
   idleWorkers: 0,
   treasuryTimber: 0,
+    treasuryCoin: 0,
   wallTick: 0,
   era: "hamlet",
   eraProclaimedTick: null,

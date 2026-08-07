@@ -13,7 +13,8 @@ export type BuildingKind =
   | "logging_camp"
   | "sawmill"
   | "quarry"
-  | "masonry";
+  | "masonry"
+  | "market";
 
 export interface ProductionSpec {
   readonly output: ResourceType;
@@ -233,6 +234,20 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     },
     storageCapacity: 20,
     serviceRadius: 0,
+  },
+  market: {
+    kind: "market",
+    name: "시장",
+    width: 2,
+    height: 2,
+    workersRequired: 3,
+    buildCost: { timber: 60 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    unlockEra: "palisade",
+    production: null,
+    storageCapacity: 0,
+    serviceRadius: 8,
   },
 };
 

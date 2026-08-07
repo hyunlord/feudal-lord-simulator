@@ -130,6 +130,7 @@ function state(input: {
     population: input.houses?.reduce((total, item) => total + item.residents, 0) ?? 0,
     idleWorkers: 0,
     treasuryTimber: 0,
+    treasuryCoin: 0,
     roadRevision: 1,
     pathCache: {},
     forestHarvests: [],

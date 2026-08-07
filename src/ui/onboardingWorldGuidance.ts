@@ -41,6 +41,7 @@ const BUILDING_TARGET_LABELS = {
   sawmill: "여기에 제재소를 지으세요",
   quarry: "여기에 채석장을 지으세요",
   masonry: "여기에 석공소를 지으세요",
+  market: "여기에 시장을 지으세요",
 } as const satisfies Readonly<Record<BuildingKind, string>>;
 type GuidanceWorld = Pick<
   GameState,

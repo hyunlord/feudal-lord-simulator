@@ -39,6 +39,7 @@ test("evaluateEraRequirements returns four independent gauges at exact threshold
   const justShort = state({
     population: 59,
     treasuryTimber: 249,
+    treasuryCoin: 0,
     buildings: [
       ...DEFAULT_GAME_STATE.buildings,
       building({ id: "granary", kind: "granary" }),
@@ -48,6 +49,7 @@ test("evaluateEraRequirements returns four independent gauges at exact threshold
   const exactlyMet = state({
     population: 60,
     treasuryTimber: 250,
+    treasuryCoin: 0,
     buildings: [
       ...DEFAULT_GAME_STATE.buildings,
       building({ id: "granary", kind: "granary" }),
@@ -81,6 +83,7 @@ test("evaluateEraRequirements counts finished granaries and chapels but not cons
   const unfinishedOnly = state({
     population: 60,
     treasuryTimber: 250,
+    treasuryCoin: 0,
     constructionSites: [
       {
         id: "construction-site-000001",
@@ -143,6 +146,7 @@ test("evaluateEraRequirements uses named spendable timber minus stock reservatio
   const eligible = state({
     population: 60,
     treasuryTimber: 195,
+    treasuryCoin: 0,
     buildings: [
       ...DEFAULT_GAME_STATE.buildings,
       building({ id: "granary", kind: "granary" }),

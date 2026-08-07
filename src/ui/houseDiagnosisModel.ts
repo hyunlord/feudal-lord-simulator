@@ -5,6 +5,10 @@ import type { House } from "../population/population.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { palisadeProtectionForBuilding } from "../geometry/palisadeProtection";
+import {
+  marketAccessDiagnosis,
+  type MarketAccessDiagnosis,
+} from "../population/marketAccess";
 import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 
@@ -43,6 +47,7 @@ export type HouseDiagnosisModel = {
   readonly bread: BreadDiagnosis;
   readonly population: PopulationDiagnosis;
   readonly protection: ProtectionDiagnosis;
+  readonly market: MarketAccessDiagnosis;
 };
 
 export type PopulationDiagnosis =
@@ -162,5 +167,6 @@ export function houseDiagnosisModel(
     bread: servingBreadDiagnosis(state, house, home),
     population: populationDiagnosis(state, house),
     protection: protectionDiagnosis(state, home),
+    market: marketAccessDiagnosis(home, state.buildings),
   };
 }
