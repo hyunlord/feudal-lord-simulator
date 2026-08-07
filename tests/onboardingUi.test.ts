@@ -125,6 +125,18 @@ test("hidden seal tooltips do not inflate responsive console scroll width", asyn
   assert.match(hoverRule, /display:\s*block;/);
 });
 
+test("tablet seal layout folds before it can widen the console recess", async () => {
+  // Given / When
+  const css = await readFile(GLOBAL_CSS_SOURCE, "utf8");
+  const tabletRules = css.match(/@media \(max-width: 900px\) \{[\s\S]*?\n\}/)?.[0] ?? "";
+
+  // Then
+  assert.match(tabletRules, /\.build-seals\s*\{/);
+  assert.match(tabletRules, /grid-template-columns:\s*repeat\(2,\s*calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
+  assert.match(tabletRules, /\.build-seal--road\s*\{/);
+  assert.match(tabletRules, /width:\s*min\(100%,\s*calc\(var\(--seal-size\) \* 4 \+ 8px\)\);/);
+});
+
 test("onboarding task panel renders completion flourish and the post-task open goal", () => {
   // Given
   const flourishMarkup = renderToStaticMarkup(

@@ -1145,6 +1145,16 @@ button {
     padding-left: 9px;
   }
 
+  .build-seals {
+    grid-template-columns: repeat(2, calc(var(--seal-size) * 2 + 2px));
+    gap: 2px;
+    padding: 3px 4px;
+  }
+
+  .build-seal--road {
+    width: min(100%, calc(var(--seal-size) * 4 + 8px));
+  }
+
   .settlement-status {
     right: 10px;
     bottom: 156px;
