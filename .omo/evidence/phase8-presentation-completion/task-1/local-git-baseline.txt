@@ -1,0 +1,82 @@
+Fri Aug  7 12:36:08 UTC 2026
+/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age
+origin	https://github.com/hyunlord/feudal-lord-simulator.git (fetch)
+origin	https://github.com/hyunlord/feudal-lord-simulator.git (push)
+codex/phase8-presentation-completion
+## codex/phase8-presentation-completion
+?? .omo/
+?? docs/plans/2026-08-07-phase8-finish-what-started-design.md
+49095a851ecc8a05f921b899b07bcbbc1e200d70
+2900c789c9dd337890be215a3ccc39d1cf10f880
+49095a851ecc8a05f921b899b07bcbbc1e200d70	refs/heads/main
+49095a851ecc8a05f921b899b07bcbbc1e200d70
+49095a8 Keep every main build publicly playable
+The project needs a stable public review surface without changing the root-based DGX development server. A conditional Vite base and the official GitHub Pages artifact workflow preserve both deployment shapes while gating publication on the complete verification suite.
+
+Constraint: GitHub Pages serves this repository below /feudal-lord-simulator/
+
+Constraint: The existing DGX port 3200 development server must not be restarted
+
+Rejected: Add a 404 fallback | The app has no router or supported deep links
+
+Confidence: high
+
+Scope-risk: narrow
+
+Reversibility: clean
+
+Directive: Keep public asset references Vite-managed so future assets inherit the configured base path
+
+Tested: DGX npm ci, typecheck, 634 tests, and GitHub Pages build; local root and Pages build assertions; economy harness
+
+Not-tested: Live GitHub Pages URL before this commit triggers its first deployment
+
+---
+6396510 Report the remediated Palisade Age evidence honestly
+The release report now names the early-proclamation tradeoff, refreshed candidate and capture revisions, authoritative DGX gate counts, measured frame timings, and the verified 7-of-14 stall-to-completion browser path.
+
+Constraint: Report claims must match the final audited evidence
+Rejected: Preserve the original immediate-button assessment unchanged | ignored the restored build-now versus wait decision
+Confidence: high
+Scope-risk: narrow
+Directive: Refresh final SHA identity after this report commit lands on main
+Tested: DGX 634 tests, 20 asset tests, two deterministic harnesses, three benchmarks, Chromium responsive QA
+Not-tested: Final main deployment identity at commit creation time
+
+---
+4ac81e9 Replace ambiguous Stage 3 captures with verified state evidence
+The visual set now records the exact wall progress copy, a genuine 7-of-14 construction state with a no-material-source stall, and a recovered 14-of-14 enclosure from the DGX browser path.
+
+Constraint: Half-built evidence must show both half completion and an actual engine stall
+Rejected: Fixed-tick screenshot with supplied active site | did not prove a construction stall
+Confidence: high
+Scope-risk: narrow
+Directive: Keep browser verdicts tied to explicit domain state, not screenshot labels alone
+Tested: Chromium 1280/768/375, overflow and interaction probes, inspected five scene captures
+Not-tested: Final main SHA deployment
+
+---
+a22797e Keep palisade scheduling and rendering instance-safe
+A shared construction domain now owns the canonical site union and wall schedule without crossing the simulation-axis boundary. Bent wall posts follow cumulative polyline distance, and completion effects retain history per canvas instance.
+
+Constraint: Population modules cannot depend on the economy axis
+Rejected: Duplicate projected wall-site types and schedule logic | drifted from the canonical construction union
+Confidence: high
+Scope-risk: moderate
+Directive: Add construction scheduling rules to the shared domain rather than population adapters
+Tested: 69 focused tests, architecture and LOC guards, TypeScript, production build
+Not-tested: DGX full suite and browser visual evidence
+
+---
+f11a8ad Preserve the early palisade proclamation decision
+The era transition now treats the 250-timber threshold as an eligibility gate while construction delivery owns the larger wall requirement. Rejected confirmations retain the editable draft, and progress copy matches the specified segment format.
+
+Constraint: Proclamation must remain available at exactly 250 spendable timber
+Rejected: Require the complete wall cost up front | removes the intended build-now versus wait tradeoff
+Confidence: high
+Scope-risk: narrow
+Directive: Keep proclamation eligibility separate from construction material fulfillment
+Tested: Focused proclamation and era-console tests, TypeScript, production build
+Not-tested: Browser interaction at this commit alone
+
+---42e0209688544210c39ef0ee7d191a2e3bfe10dcf8c8b3893bd07b115ea34266  docs/plans/2026-08-07-phase8-finish-what-started-design.md

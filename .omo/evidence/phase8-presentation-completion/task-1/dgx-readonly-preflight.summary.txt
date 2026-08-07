@@ -1,0 +1,22 @@
+cmd=ssh -o ControlMaster=no -o ControlPath=none -o BatchMode=yes -o ConnectTimeout=10 hyunlord@100.70.109.50 <read-only preflight>
+exit=0
+DGX_PRECHECK_START 2026-08-07T21:35:32+09:00
+HOST=aitopatom-d6bb
+MAIN_REPO=/home/hyunlord/work/feudal-lord-simulator
+REMOTE
+BRANCH=main
+STATUS
+HEAD=639651001b01850624607407234d469933ad93c6
+TREE=15f4a08c300d34115c88fb92de4b33c0e334540a
+feudal-sim: 1 windows (created Fri Aug  7 19:40:00 2026)
+PORT_3200
+FFMPEG
+COMFYUI_EXIT=0
+NODE_NPM
+v20.20.0
+11.10.1
+DISK
+MEMORY
+ISOLATED_WORKTREE
+absent
+DGX_PRECHECK_END 2026-08-07T21:35:32+09:00

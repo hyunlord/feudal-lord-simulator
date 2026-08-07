@@ -1,0 +1,5 @@
+cmd=npm run typecheck
+exit=0
+
+> feudal-lord-simulator@0.1.0 typecheck
+> tsc --noEmit

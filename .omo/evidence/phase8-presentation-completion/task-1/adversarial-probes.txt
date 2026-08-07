@@ -1,0 +1,9 @@
+adversarial_probes:
+- dirty_worktree: local git status captured before branch switch and after baseline; untracked approved design doc and evidence dir only before build; dist ignored/expected after build, status captured separately.
+- stale_state: git fetch origin main run locally before branch creation; local HEAD/merge-base/origin-main all 49095a851ecc8a05f921b899b07bcbbc1e200d70; DGX had stale main checkout 6396510 but fetched origin/main before isolated worktree creation.
+- hung_long_commands: SSH used BatchMode and ConnectTimeout=10; curl used --max-time 5/15; npm gates completed under bounded exec waits with logs.
+- misleading_success_output: initial zsh PIPESTATUS wrapper masked npm test nonzero; rerun under bash recorded exit=1 with 634 tests, 630 pass, 4 fail due ffmpeg ENOENT. DGX ComfyUI pipe masking corrected with direct curl capture exit=7.
+- cancel_resume_repeated_interruptions: resume point recorded in this file and parent status checkpoint sent; all work is reconstructible from task-1 summaries and artifact names.
+- prompt_injection: no untrusted remote/page text executed as shell; GitHub Pages HTML was parsed as data by an evidence-local Node script.
+- malformed_input: asset parser resolves URLs via URL(raw, root) and filters expected extensions; failures are recorded per asset.
+- flaky_baseline: npm test failure reason is environmental local ffmpeg ENOENT repeated in rerun; DGX ffmpeg availability separately verified. Harness determinism hashes matched in one run.

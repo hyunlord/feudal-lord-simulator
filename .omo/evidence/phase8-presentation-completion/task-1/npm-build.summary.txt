@@ -1,0 +1,15 @@
+cmd=npm run build
+exit=0
+
+> feudal-lord-simulator@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.2.0 building client environment for production...
+[2Ktransforming...✓ 153 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:   0.36 kB
+dist/assets/index-CXVjm0AI.css   21.27 kB │ gzip:   4.26 kB
+dist/assets/index-CrOpMDz5.js   382.52 kB │ gzip: 116.60 kB
+
+✓ built in 113ms

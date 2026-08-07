@@ -1,0 +1,19 @@
+cmd=ssh -o ControlMaster=no -o ControlPath=none -o BatchMode=yes -o ConnectTimeout=10 hyunlord@100.70.109.50 <fetch expected SHA and create isolated worktree>
+exit=0
+From https://github.com/hyunlord/feudal-lord-simulator
+ * branch            main       -> FETCH_HEAD
+   6396510..49095a8  main       -> origin/main
+Preparing worktree (new branch 'codex/phase8-presentation-completion')
+HEAD is now at 49095a8 Keep every main build publicly playable
+PATH=/home/hyunlord/worktrees/feudal-phase8
+REMOTE
+origin	https://github.com/hyunlord/feudal-lord-simulator.git (fetch)
+origin	https://github.com/hyunlord/feudal-lord-simulator.git (push)
+BRANCH=codex/phase8-presentation-completion
+STATUS
+HEAD=49095a851ecc8a05f921b899b07bcbbc1e200d70
+TREE=2900c789c9dd337890be215a3ccc39d1cf10f880
+WORKTREE_LIST
+worktree /home/hyunlord/worktrees/feudal-phase8
+HEAD 49095a851ecc8a05f921b899b07bcbbc1e200d70
+branch refs/heads/codex/phase8-presentation-completion

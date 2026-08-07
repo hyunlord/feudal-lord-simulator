@@ -1,0 +1,21 @@
+cmd=npm run harness
+exit=0
+
+> feudal-lord-simulator@0.1.0 harness
+> tsx scripts/economyHarness.ts
+
+Metric                      Value                                 Status
+Determinism hash            87534771560041e7 == 87534771560041e7  PASS
+Food stability              9.5% starving                         PASS
+Cargo thrashing             0 cancellations/1200                  PASS
+Labour deadlock             0 consecutive ticks                   PASS
+Housing oscillation         1 changes/2000                        PASS
+Stall duration              152 consecutive ticks                 PASS
+Builder starvation          0 consecutive ticks                   PASS
+Material deadlock           0 consecutive ticks                   PASS
+Completion rate             2/2 scripted sites (100%)             PASS
+Legacy Stage 2 hash         5a393f13af3e61be                      PASS
+Stage 3 determinism hash    b8347aef1a6a5cd6 == b8347aef1a6a5cd6  PASS
+Palisade reachability       0 ticks                               PASS
+Palisade wall completion    1259 ticks after proclamation         PASS
+Palisade labour continuity  0 ticks without non-wall production   PASS

@@ -1,0 +1,3 @@
+cmd=ssh -o ControlMaster=no -o ControlPath=none -o BatchMode=yes -o ConnectTimeout=10 hyunlord@100.70.109.50 <create /home/hyunlord/worktrees/feudal-phase8 if absent>
+exit=128
+fatal: invalid reference: 49095a851ecc8a05f921b899b07bcbbc1e200d70

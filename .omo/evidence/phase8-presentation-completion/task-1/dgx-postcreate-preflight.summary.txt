@@ -1,0 +1,37 @@
+cmd=ssh -o ControlMaster=no -o ControlPath=none -o BatchMode=yes -o ConnectTimeout=10 hyunlord@100.70.109.50 <post-create exact preflight>
+exit=0
+DGX_POSTCREATE_START 2026-08-07T21:36:46+09:00
+MAIN
+BRANCH=main
+HEAD=639651001b01850624607407234d469933ad93c6
+STATUS
+?? .omo/
+?? .omx/
+PORT_3200_PROCESS
+LISTEN 0      511                        0.0.0.0:3200       0.0.0.0:*    users:(("node",pid=1469648,fd=18))
+PORT_EXIT=0
+TMUX_FEUDAL_SIM
+TMUX_HAS_EXIT=0
+feudal-sim: 1 windows (created Fri Aug  7 19:40:00 2026)
+COMFYUI_HEALTH_EXACT
+COMFYUI_CURL_EXIT=7
+COMFYUI_OUTPUT_PREFIX=curl: (7) Failed to connect to 127.0.0.1 port 8188 after 0 ms: Couldn't connect to server
+TOOLCHAIN
+ffmpeg version 6.1.1-3ubuntu5+esm7 Copyright (c) 2000-2023 the FFmpeg developers
+v20.20.0
+11.10.1
+DISK
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p2  3.7T  2.4T  1.2T  67% /
+/dev/nvme0n1p2  3.7T  2.4T  1.2T  67% /
+MEMORY
+               total        used        free      shared  buff/cache   available
+Mem:           119Gi       6.3Gi        90Gi       3.3Mi        23Gi       113Gi
+Swap:           15Gi          0B        15Gi
+ISOLATED
+PATH=/home/hyunlord/worktrees/feudal-phase8
+BRANCH=codex/phase8-presentation-completion
+HEAD=49095a851ecc8a05f921b899b07bcbbc1e200d70
+TREE=2900c789c9dd337890be215a3ccc39d1cf10f880
+STATUS
+DGX_POSTCREATE_END 2026-08-07T21:36:46+09:00

@@ -1,0 +1,54 @@
+cmd=cleanup/status receipt
+branch=codex/phase8-presentation-completion
+head=49095a851ecc8a05f921b899b07bcbbc1e200d70
+tree=2900c789c9dd337890be215a3ccc39d1cf10f880
+status_short:
+?? .omo/
+?? docs/plans/2026-08-07-phase8-finish-what-started-design.md
+local_ports_3200_5173_4173:
+COMMAND   PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+node    82970 rexxa   26u  IPv6 0x57d149c9f8aaf230      0t0  TCP [::1]:5173 (LISTEN)
+temp_residue_probe:
+evidence_files:
+.omo/evidence/phase8-presentation-completion/task-1/adversarial-probes.txt
+.omo/evidence/phase8-presentation-completion/task-1/asset-hashes.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/branch-after-switch.txt
+.omo/evidence/phase8-presentation-completion/task-1/build-baseline.log
+.omo/evidence/phase8-presentation-completion/task-1/capture-pages-assets.mjs
+.omo/evidence/phase8-presentation-completion/task-1/cleanup-receipt.txt
+.omo/evidence/phase8-presentation-completion/task-1/dgx-isolated-worktree-create-retry.log
+.omo/evidence/phase8-presentation-completion/task-1/dgx-isolated-worktree-create-retry.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/dgx-isolated-worktree-create.log
+.omo/evidence/phase8-presentation-completion/task-1/dgx-isolated-worktree-create.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/dgx-postcreate-preflight.log
+.omo/evidence/phase8-presentation-completion/task-1/dgx-postcreate-preflight.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/dgx-readonly-preflight.log
+.omo/evidence/phase8-presentation-completion/task-1/dgx-readonly-preflight.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/dist.sha256
+.omo/evidence/phase8-presentation-completion/task-1/harness-baseline.log
+.omo/evidence/phase8-presentation-completion/task-1/local-authority.txt
+.omo/evidence/phase8-presentation-completion/task-1/local-git-baseline.txt
+.omo/evidence/phase8-presentation-completion/task-1/npm-build.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-build.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/npm-harness.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-harness.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/npm-test-baseline.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-test.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-test.rerun.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-test.rerun.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/npm-test.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/npm-typecheck.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-typecheck.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/npm-verify-assets.log
+.omo/evidence/phase8-presentation-completion/task-1/npm-verify-assets.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/pages-assets.json
+.omo/evidence/phase8-presentation-completion/task-1/pages-assets.log
+.omo/evidence/phase8-presentation-completion/task-1/pages-assets.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/pages-root-body.html
+.omo/evidence/phase8-presentation-completion/task-1/pages-root-curl-i.log
+.omo/evidence/phase8-presentation-completion/task-1/pages-root-curl-i.summary.txt
+.omo/evidence/phase8-presentation-completion/task-1/pages-root-headers.txt
+.omo/evidence/phase8-presentation-completion/task-1/pages-root.html
+.omo/evidence/phase8-presentation-completion/task-1/public-assets.sha256
+.omo/evidence/phase8-presentation-completion/task-1/typecheck-baseline.log
+.omo/evidence/phase8-presentation-completion/task-1/verify-assets-baseline.log
