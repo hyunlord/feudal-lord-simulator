@@ -1,0 +1,678 @@
+{
+  "models": {
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "ipadapter": "ip-adapter-plus_sdxl_vit-h.safetensors",
+    "clipVision": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+    "preset": "PLUS (high strength)"
+  },
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapterWeights": {
+      "building": 0.05,
+      "foliage": 0.02,
+      "terrain": 0.01
+    }
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "summary": {
+    "catalogJobs": 133,
+    "queuedJobs": 64,
+    "completedJobs": 64
+  },
+  "timing": {
+    "startedAtUtc": "2026-08-07T13:45:32.646164+00:00",
+    "finishedAtUtc": "2026-08-07T14:22:05.752255+00:00",
+    "elapsedSeconds": 2193.106
+  },
+  "jobs": [
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 1,
+      "seed": 64052101,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_01.png",
+      "elapsedSeconds": 48.065,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 2,
+      "seed": 64052102,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_02.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 3,
+      "seed": 64052103,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_03.png",
+      "elapsedSeconds": 34.036,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 4,
+      "seed": 64052104,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_04.png",
+      "elapsedSeconds": 34.037,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 5,
+      "seed": 64052105,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_05.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 6,
+      "seed": 64052106,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_06.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 7,
+      "seed": 64052107,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_07.png",
+      "elapsedSeconds": 34.04,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_large",
+      "candidate": 8,
+      "seed": 64052108,
+      "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+      "sourcePath": "foliage/tree_oak_large_08.png",
+      "elapsedSeconds": 34.043,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 1,
+      "seed": 64052201,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_01.png",
+      "elapsedSeconds": 34.059,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 2,
+      "seed": 64052202,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_02.png",
+      "elapsedSeconds": 34.071,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 3,
+      "seed": 64052203,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_03.png",
+      "elapsedSeconds": 34.061,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 4,
+      "seed": 64052204,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_04.png",
+      "elapsedSeconds": 34.062,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 5,
+      "seed": 64052205,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_05.png",
+      "elapsedSeconds": 34.055,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 6,
+      "seed": 64052206,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_06.png",
+      "elapsedSeconds": 34.045,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 7,
+      "seed": 64052207,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_07.png",
+      "elapsedSeconds": 34.044,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_oak_small",
+      "candidate": 8,
+      "seed": 64052208,
+      "geometry": "younger oak, narrower crown, slender straight trunk",
+      "sourcePath": "foliage/tree_oak_small_08.png",
+      "elapsedSeconds": 34.047,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 1,
+      "seed": 64052301,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_01.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 2,
+      "seed": 64052302,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_02.png",
+      "elapsedSeconds": 34.036,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 3,
+      "seed": 64052303,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_03.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 4,
+      "seed": 64052304,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_04.png",
+      "elapsedSeconds": 34.049,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 5,
+      "seed": 64052305,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_05.png",
+      "elapsedSeconds": 34.063,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 6,
+      "seed": 64052306,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_06.png",
+      "elapsedSeconds": 34.036,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 7,
+      "seed": 64052307,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_07.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_tall",
+      "candidate": 8,
+      "seed": 64052308,
+      "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+      "sourcePath": "foliage/tree_pine_tall_08.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 1,
+      "seed": 64052401,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_01.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 2,
+      "seed": 64052402,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_02.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 3,
+      "seed": 64052403,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_03.png",
+      "elapsedSeconds": 34.037,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 4,
+      "seed": 64052404,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_04.png",
+      "elapsedSeconds": 34.036,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 5,
+      "seed": 64052405,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_05.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 6,
+      "seed": 64052406,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_06.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 7,
+      "seed": 64052407,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_07.png",
+      "elapsedSeconds": 34.042,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_pine_short",
+      "candidate": 8,
+      "seed": 64052408,
+      "geometry": "shorter dense conifer, branches near ground",
+      "sourcePath": "foliage/tree_pine_short_08.png",
+      "elapsedSeconds": 34.063,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 1,
+      "seed": 64052501,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_01.png",
+      "elapsedSeconds": 34.062,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 2,
+      "seed": 64052502,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_02.png",
+      "elapsedSeconds": 34.064,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 3,
+      "seed": 64052503,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_03.png",
+      "elapsedSeconds": 34.062,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 4,
+      "seed": 64052504,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_04.png",
+      "elapsedSeconds": 34.061,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 5,
+      "seed": 64052505,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_05.png",
+      "elapsedSeconds": 34.067,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 6,
+      "seed": 64052506,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_06.png",
+      "elapsedSeconds": 34.06,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 7,
+      "seed": 64052507,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_07.png",
+      "elapsedSeconds": 34.068,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_birch",
+      "candidate": 8,
+      "seed": 64052508,
+      "geometry": "slender birch, pale banded trunk, light airy canopy",
+      "sourcePath": "foliage/tree_birch_08.png",
+      "elapsedSeconds": 34.063,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 1,
+      "seed": 64052601,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_01.png",
+      "elapsedSeconds": 34.059,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 2,
+      "seed": 64052602,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_02.png",
+      "elapsedSeconds": 34.037,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 3,
+      "seed": 64052603,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_03.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 4,
+      "seed": 64052604,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_04.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 5,
+      "seed": 64052605,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_05.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 6,
+      "seed": 64052606,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_06.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 7,
+      "seed": 64052607,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_07.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "tree_dead",
+      "candidate": 8,
+      "seed": 64052608,
+      "geometry": "bare dead tree, pale twisted limbs",
+      "sourcePath": "foliage/tree_dead_08.png",
+      "elapsedSeconds": 34.043,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 1,
+      "seed": 64052701,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_01.png",
+      "elapsedSeconds": 34.036,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 2,
+      "seed": 64052702,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_02.png",
+      "elapsedSeconds": 34.036,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 3,
+      "seed": 64052703,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_03.png",
+      "elapsedSeconds": 34.038,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 4,
+      "seed": 64052704,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_04.png",
+      "elapsedSeconds": 34.049,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 5,
+      "seed": 64052705,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_05.png",
+      "elapsedSeconds": 34.061,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 6,
+      "seed": 64052706,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_06.png",
+      "elapsedSeconds": 34.065,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 7,
+      "seed": 64052707,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_07.png",
+      "elapsedSeconds": 34.061,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_fresh",
+      "candidate": 8,
+      "seed": 64052708,
+      "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
+      "sourcePath": "foliage/stump_fresh_08.png",
+      "elapsedSeconds": 34.051,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 1,
+      "seed": 64052801,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_01.png",
+      "elapsedSeconds": 34.05,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 2,
+      "seed": 64052802,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_02.png",
+      "elapsedSeconds": 34.071,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 3,
+      "seed": 64052803,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_03.png",
+      "elapsedSeconds": 34.054,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 4,
+      "seed": 64052804,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_04.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 5,
+      "seed": 64052805,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_05.png",
+      "elapsedSeconds": 34.039,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 6,
+      "seed": 64052806,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_06.png",
+      "elapsedSeconds": 34.047,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 7,
+      "seed": 64052807,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_07.png",
+      "elapsedSeconds": 34.064,
+      "status": "completed"
+    },
+    {
+      "category": "foliage",
+      "key": "stump_old",
+      "candidate": 8,
+      "seed": 64052808,
+      "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
+      "sourcePath": "foliage/stump_old_08.png",
+      "elapsedSeconds": 34.059,
+      "status": "completed"
+    }
+  ]
+}

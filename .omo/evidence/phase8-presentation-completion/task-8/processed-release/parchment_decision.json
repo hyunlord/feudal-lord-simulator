@@ -1,0 +1,65 @@
+{
+  "decision": "flat-token",
+  "thresholds": {
+    "joinBandMaxDelta": 24,
+    "joinToInternalRatio": 2,
+    "internalTolerance": 4,
+    "blockLumaRangeMax": 16,
+    "blockLumaStandardDeviationMin": 1,
+    "blockLumaStandardDeviationMax": 8
+  },
+  "candidates": [
+    {
+      "candidate": 1,
+      "path": "raw/parchment/parchment_01.png",
+      "sha256": "df56925d53c579e6800bdfb62f06c6f3ac89209b5f77d285d4e3c29790a67b93",
+      "width": 256,
+      "height": 256,
+      "opposingEdgesByteCompatible": false,
+      "joinBandMaxDelta": 6,
+      "internalBandMaxDelta": 8,
+      "blockLumaRange": 0.013671875,
+      "blockLumaStandardDeviation": 0.004186139697139221,
+      "passed": false
+    },
+    {
+      "candidate": 2,
+      "path": "raw/parchment/parchment_02.png",
+      "sha256": "ced7e6748e8029c7ac2d57baf53e7fbbd3806dd23dc2fe80e55bcbde67f96a78",
+      "width": 256,
+      "height": 256,
+      "opposingEdgesByteCompatible": false,
+      "joinBandMaxDelta": 6,
+      "internalBandMaxDelta": 8,
+      "blockLumaRange": 0.013671875,
+      "blockLumaStandardDeviation": 0.00418789134225269,
+      "passed": false
+    },
+    {
+      "candidate": 3,
+      "path": "raw/parchment/parchment_03.png",
+      "sha256": "79974f11c2e3e782cbbb30df818eb2f49eb7a3abac2464e618f6638f41dda349",
+      "width": 256,
+      "height": 256,
+      "opposingEdgesByteCompatible": false,
+      "joinBandMaxDelta": 6,
+      "internalBandMaxDelta": 8,
+      "blockLumaRange": 0.013671875,
+      "blockLumaStandardDeviation": 0.004271125584775557,
+      "passed": false
+    },
+    {
+      "candidate": 4,
+      "path": "raw/parchment/parchment_04.png",
+      "sha256": "f58fe1e13b751b4e99f57504df736641b6d1f3d3992fd69d510edd3cbd755967",
+      "width": 256,
+      "height": 256,
+      "opposingEdgesByteCompatible": false,
+      "joinBandMaxDelta": 6,
+      "internalBandMaxDelta": 8,
+      "blockLumaRange": 0.013671875,
+      "blockLumaStandardDeviation": 0.004201878215621746,
+      "passed": false
+    }
+  ]
+}
