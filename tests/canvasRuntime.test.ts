@@ -67,7 +67,7 @@ test("cameraForStartingHouse centers the edge starting house in the desktop usab
 });
 
 test("cameraForStartingHouse keeps the edge starting house visible on mobile", () => {
-  // Given: the canonical edge starting house and a mobile canvas with a 188px console.
+  // Given: the canonical edge starting house and a mobile canvas with a 224px console.
   const startingHouse = houseAt("house-0-0-0", 0, 0);
   const canvas = { clientWidth: 375, clientHeight: 812 };
 
@@ -81,7 +81,7 @@ test("cameraForStartingHouse keeps the edge starting house visible on mobile", (
 
   // Then: the anchor remains in the usable viewport above the console.
   assert.ok(anchor.x >= 0 && anchor.x <= canvas.clientWidth);
-  assert.ok(anchor.y >= 0 && anchor.y <= canvas.clientHeight - 188);
+  assert.ok(anchor.y >= 0 && anchor.y <= canvas.clientHeight - 224);
   assert.ok(camera.zoom >= 0.5 && camera.zoom <= 2);
 });
 

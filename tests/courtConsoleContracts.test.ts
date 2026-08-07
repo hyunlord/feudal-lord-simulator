@@ -163,7 +163,10 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
     css,
     /grid-template-columns:\s*(?:clamp\(122px|108px|54px)/,
   );
-  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*188px;/);
+  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*minmax\(72px, 0\.75fr\) minmax\(112px, 1\.1fr\) minmax\(0, 1\.45fr\);/);
+  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*224px;/);
+  assert.match(mobileRules, /\.court-recess\s*\{[\s\S]*?height:\s*206px;/);
+  assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
   assert.match(mobileRules, /--seal-size:\s*clamp\(24px, 5vw, 30px\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*2px;/);
@@ -172,6 +175,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, clamp\(18px, 3\.5vw, 21px\)\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?justify-content:\s*center;/);
   assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?right:\s*calc\(33\.333% \+ 4px\);/);
+  assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?bottom:\s*228px;/);
+  assert.match(mobileRules, /\.welcome-parchment\s*\{[\s\S]*?bottom:\s*266px;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)\s*\{[\s\S]*?animation:\s*none;/);
   assert.doesNotMatch(css, /\.court-console::(?:before|after)/);
   assert.doesNotMatch(css, /\.court-recess::(?:before|after)/);

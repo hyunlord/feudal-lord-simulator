@@ -345,7 +345,7 @@ button {
 @media (max-width: 600px) {
   .diagnostic-card-position {
     right: 8px;
-    bottom: 196px;
+    bottom: 232px;
     left: 8px !important;
     top: auto !important;
     width: auto;
@@ -1163,7 +1163,7 @@ button {
 
 @media (max-width: 600px) {
   .welcome-parchment {
-    bottom: 230px;
+    bottom: 266px;
     width: min(320px, calc(100% - 18px));
     gap: 5px;
     padding: 10px 12px 11px;
@@ -1178,13 +1178,14 @@ button {
   }
 
   .court-console {
+    grid-template-columns: minmax(72px, 0.75fr) minmax(112px, 1.1fr) minmax(0, 1.45fr);
     gap: clamp(2px, 0.5vw, 3px);
-    height: 188px;
+    height: 224px;
     padding: 7px clamp(4px, 0.8vw, 5px);
   }
 
   .court-recess {
-    height: 170px;
+    height: 206px;
   }
 
   .map-shield {
@@ -1285,7 +1286,7 @@ button {
 
   .settlement-status {
     right: calc(33.333% + 4px);
-    bottom: 192px;
+    bottom: 228px;
     left: 6px;
     justify-content: center;
     padding: 5px 8px;

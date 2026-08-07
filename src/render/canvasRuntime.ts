@@ -5,7 +5,7 @@ import { TILE_H, TILE_W, tileToScreen } from "./iso";
 
 const STARTING_HOUSE_ID = "house-0-0-0";
 const DESKTOP_CONSOLE_HEIGHT = 150;
-const MOBILE_CONSOLE_HEIGHT = 188;
+const MOBILE_CONSOLE_HEIGHT = 224;
 const MOBILE_MAX_WIDTH = 600;
 const TARGET_ISO_TILE_SPAN = 20;
 
