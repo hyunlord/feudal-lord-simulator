@@ -54,16 +54,20 @@ test("text-bearing CSS zones use flat audited backgrounds", async () => {
   assert.deepEqual(repeated, []);
 });
 
-test("numeric ledger text is monospace right-aligned and darker than labels", async () => {
+test("numeric ledger and era gauges use monospace right-aligned darker digits", async () => {
   // Given / When
   const css = await readFile(STYLESHEET, "utf8");
-  const dtRule = selectorRuleBodies(css, ".court-ledger dt");
-  const ddRule = selectorRuleBodies(css, ".court-ledger dd");
+  const ledgerLabelRule = selectorRuleBodies(css, ".court-ledger dt");
+  const ledgerNumericRule = selectorRuleBodies(css, ".court-ledger dd");
+  const eraNumericRule = selectorRuleBodies(css, ".era-requirement dd");
+  const monospaceStack = /font-family:\s*ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;/;
 
   // Then
-  assert.match(dtRule, /color:\s*var\(--palette-ink-muted\);/);
-  assert.match(ddRule, /color:\s*var\(--palette-ink\);/);
-  assert.match(ddRule, /font-family:\s*Georgia, "Times New Roman", serif;/);
-  assert.match(ddRule, /font-variant-numeric:\s*tabular-nums;/);
-  assert.match(ddRule, /text-align:\s*right;/);
+  assert.match(ledgerLabelRule, /color:\s*var\(--palette-ink-muted\);/);
+  for (const numericRule of [ledgerNumericRule, eraNumericRule]) {
+    assert.match(numericRule, /color:\s*var\(--palette-ink\);/);
+    assert.match(numericRule, monospaceStack);
+    assert.match(numericRule, /font-variant-numeric:\s*tabular-nums;/);
+    assert.match(numericRule, /text-align:\s*right;/);
+  }
 });

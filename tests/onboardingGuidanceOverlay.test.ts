@@ -99,3 +99,52 @@ test("drawOnboardingGuidanceOverlay paints every returned onboarding target labe
     "여기에 곡창을 지으세요",
   ]);
 });
+
+test("drawOnboardingGuidanceOverlay clamps plaque text inside the canvas on narrow views", () => {
+  // Given
+  const calls: string[] = [];
+  const context = {
+    canvas: { clientWidth: 200, clientHeight: 120 },
+    fillStyle: "",
+    font: "",
+    lineWidth: 0,
+    lineJoin: "miter",
+    lineCap: "butt",
+    beginPath: () => undefined,
+    moveTo: () => undefined,
+    lineTo: () => undefined,
+    closePath: () => undefined,
+    fill: () => undefined,
+    stroke: () => undefined,
+    measureText: (text: string) => {
+      calls.push(`measureText:${text}`);
+      return { width: 70 };
+    },
+    fillRect: (x: number, y: number, width: number, height: number) =>
+      calls.push(`fillRect:${x},${y},${width},${height}`),
+    strokeRect: (x: number, y: number, width: number, height: number) =>
+      calls.push(`strokeRect:${x},${y},${width},${height}`),
+    fillText: (text: string, x: number, y: number) => calls.push(`fillText:${text},${x},${y}`),
+    save: () => undefined,
+    restore: () => undefined,
+  } as unknown as CanvasRenderingContext2D;
+
+  // When
+  drawOnboardingGuidanceOverlay(context, {
+    targets: [{ kind: "road", label: "여기에 길을 놓으세요", origin: { tx: 1, ty: 0 } }],
+    zoom: 1,
+  });
+
+  // Then
+  const fillRect = calls.find((call) => call.startsWith("fillRect:"));
+  const fillText = calls.find((call) => call.startsWith("fillText:"));
+  assert.ok(fillRect);
+  assert.ok(fillText);
+  const [, rectX, , rectWidth] = fillRect.split(/[:,]/);
+  const [, text, textX] = fillText.split(/[:,]/);
+  assert.equal(text, "여기에 길을 놓으세요");
+  assert.ok(Number(rectX) >= 0);
+  assert.ok(Number(rectX) + Number(rectWidth) <= 200);
+  assert.ok(Number(textX) >= Number(rectX));
+  assert.ok(Number(textX) <= 200);
+});

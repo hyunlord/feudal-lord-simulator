@@ -54,15 +54,25 @@ function drawTargetPlaque(
   const labelY = snapToPixel(center.sy - TILE_H / 2 - 6 / zoom);
   context.font = `${fontSize}px Georgia, serif`;
 
-  const plaqueX = snapToPixel(labelX - padding);
-  const plaqueY = snapToPixel(labelY - fontSize - padding);
   const plaqueWidth = snapToPixel(context.measureText(target.label).width + padding * 2);
   const plaqueHeight = snapToPixel(fontSize + padding * 2);
+  const canvasWidth = context.canvas?.clientWidth ?? context.canvas?.width ?? Number.POSITIVE_INFINITY;
+  const canvasHeight = context.canvas?.clientHeight ?? context.canvas?.height ?? Number.POSITIVE_INFINITY;
+  const rawPlaqueX = labelX - padding;
+  const rawPlaqueY = labelY - fontSize - padding;
+  const plaqueX = snapToPixel(
+    Math.min(Math.max(0, rawPlaqueX), Math.max(0, canvasWidth - plaqueWidth)),
+  );
+  const plaqueY = snapToPixel(
+    Math.min(Math.max(0, rawPlaqueY), Math.max(0, canvasHeight - plaqueHeight)),
+  );
+  const textX = snapToPixel(plaqueX + padding);
+  const textY = snapToPixel(plaqueY + fontSize + padding);
 
   context.fillStyle = SEMANTIC_PALETTE.vellum;
   context.fillRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
   applyInkOutline(context, zoom);
   context.strokeRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
   context.fillStyle = SEMANTIC_PALETTE.ink;
-  context.fillText(target.label, labelX, labelY);
+  context.fillText(target.label, textX, textY);
 }

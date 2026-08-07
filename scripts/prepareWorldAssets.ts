@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -19,7 +19,10 @@ import {
   type FoliageSelection,
   type FoliageAsset,
   type FoliageKey,
+  type FoliageCandidate,
   type ParchmentMetrics,
+  type ParchmentCandidateMetrics,
+  type SelectionRubric,
   type TerrainAsset,
   type WorldAssetManifest,
 } from "./worldAssetContracts";
@@ -50,6 +53,52 @@ export class WorldAssetPreparationError extends Error {
 const isRecord = (value: unknown): value is Readonly<Record<string, unknown>> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
+const requireRecord = (value: unknown, label: string): Readonly<Record<string, unknown>> => {
+  if (!isRecord(value)) throw new WorldAssetPreparationError(`${label} must be an object`);
+  return value;
+};
+
+const requireNumber = (record: Readonly<Record<string, unknown>>, key: string, label: string): number => {
+  const value = record[key];
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    throw new WorldAssetPreparationError(`${label} ${key} must be a finite number`);
+  }
+  return value;
+};
+
+const requirePositiveInteger = (record: Readonly<Record<string, unknown>>, key: string, label: string): number => {
+  const value = requireNumber(record, key, label);
+  if (!Number.isInteger(value) || value <= 0) {
+    throw new WorldAssetPreparationError(`${label} ${key} must be a positive integer`);
+  }
+  return value;
+};
+
+const requireBoolean = (record: Readonly<Record<string, unknown>>, key: string, label: string): boolean => {
+  const value = record[key];
+  if (typeof value !== "boolean") throw new WorldAssetPreparationError(`${label} ${key} must be boolean`);
+  return value;
+};
+
+const requireString = (record: Readonly<Record<string, unknown>>, key: string, label: string): string => {
+  const value = record[key];
+  if (typeof value !== "string" || value.length === 0) {
+    throw new WorldAssetPreparationError(`${label} ${key} must be a nonempty string`);
+  }
+  return value;
+};
+
+const requireTrue = (record: Readonly<Record<string, unknown>>, key: string, label: string): true => {
+  if (record[key] !== true) throw new WorldAssetPreparationError(`${label} ${key} must be true`);
+  return true;
+};
+
+const requireScore = (record: Readonly<Record<string, unknown>>, key: string, label: string): 0 | 1 | 2 => {
+  const value = record[key];
+  if (value !== 0 && value !== 1 && value !== 2) throw new WorldAssetPreparationError(`${label} ${key} must be 0, 1, or 2`);
+  return value;
+};
+
 const PROMOTIONS = {
   house_l0: { fileName: "house_03.png", seed: 64040103, candidate: 3 },
   mill: { fileName: "mill_02.png", seed: 64040202, candidate: 2 },
@@ -64,8 +113,8 @@ const newBuildingKeys = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly BuildingSpriteKey[];
 
-export const rawFoliageFileName = (key: FoliageSpriteKey): string =>
-  `${key}_01.png`;
+export const rawFoliageFileName = (key: FoliageSpriteKey, candidate = 1): string =>
+  `${key}_${String(candidate).padStart(2, "0")}.png`;
 
 const sha256 = (filePath: string): string => createHash("sha256").update(readFileSync(filePath)).digest("hex");
 
@@ -121,10 +170,26 @@ const copyPromotions = (options: PrepareWorldAssetOptions): void => {
   }
 };
 
-const processFoliage = (options: PrepareWorldAssetOptions): void => {
+const copyOrProcessWorldSprite = (input: string, output: string, key: FoliageSpriteKey): void => {
+  const source = readPng(input);
+  const spec = FOLIAGE_SPECS[key];
+  if (source.dimensions.width === spec.width && source.dimensions.height === spec.height) {
+    writePng(output, source);
+    return;
+  }
+  writePng(output, processWorldSprite(source, key));
+};
+
+const processFoliage = (
+  options: PrepareWorldAssetOptions,
+  selections: ReadonlyMap<(typeof TREE_STUMP_KEYS)[number], FoliageSelection>,
+): void => {
   for (const key of FOLIAGE_KEYS) {
-    const input = path.join(options.rawRoot, "foliage", rawFoliageFileName(key));
-    writePng(outputPath(options.repoRoot, "foliage", key), processWorldSprite(readPng(input), key));
+    const selected = TREE_STUMP_KEYS.some((candidate) => candidate === key)
+      ? selections.get(key as (typeof TREE_STUMP_KEYS)[number])?.selectedCandidate ?? 1
+      : 1;
+    const input = path.join(options.rawRoot, "foliage", rawFoliageFileName(key, selected));
+    copyOrProcessWorldSprite(input, outputPath(options.repoRoot, "foliage", key), key);
   }
 };
 
@@ -168,9 +233,15 @@ const sourceForFoliage = (key: FoliageKey, candidate: number): { readonly seed: 
   return { seed: 64052000 + (subject + 1) * 100 + candidate, candidate };
 };
 
-const foliageAssets = (repoRoot: string): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
+const foliageAssets = (
+  repoRoot: string,
+  selections: ReadonlyMap<(typeof TREE_STUMP_KEYS)[number], FoliageSelection>,
+): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
   const spec = FOLIAGE_SPECS[key];
   const assetPath = `public/assets/foliage/${key}.png`;
+  const selected = TREE_STUMP_KEYS.some((candidate) => candidate === key)
+    ? selections.get(key as (typeof TREE_STUMP_KEYS)[number])?.selectedCandidate ?? 1
+    : 1;
   return {
     key,
     category: "foliage",
@@ -180,7 +251,7 @@ const foliageAssets = (repoRoot: string): readonly FoliageAsset[] => FOLIAGE_KEY
     height: spec.height,
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
-    source: sourceForFoliage(key, 1),
+    source: sourceForFoliage(key, selected),
     palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
@@ -236,7 +307,69 @@ const acceptedReferences = (phase4bRoot: string): readonly AcceptedReference[] =
   };
 });
 
-const foliageSelections = (rawRoot: string): readonly FoliageSelection[] => TREE_STUMP_KEYS.map((key) => {
+const parseRubric = (value: unknown, label: string): SelectionRubric => {
+  const record = requireRecord(value, label);
+  const scores = {
+    trunkGroundContact: requireScore(record, "trunkGroundContact", label),
+    silhouette: requireScore(record, "silhouette", label),
+    lightingVariation: requireScore(record, "lightingVariation", label),
+    referenceStyle: requireScore(record, "referenceStyle", label),
+  };
+  const total = requireNumber(record, "total", label);
+  const expected = scores.trunkGroundContact + scores.silhouette + scores.lightingVariation + scores.referenceStyle;
+  if (total !== expected) throw new WorldAssetPreparationError(`${label} total must equal ${expected}`);
+  return { ...scores, total };
+};
+
+const parseFoliageCandidate = (value: unknown, key: (typeof TREE_STUMP_KEYS)[number]): FoliageCandidate => {
+  const record = requireRecord(value, `${key} candidate`);
+  const candidate = requirePositiveInteger(record, "candidate", key);
+  return {
+    candidate,
+    seed: requirePositiveInteger(record, "seed", `${key} candidate ${candidate}`),
+    path: requireString(record, "path", `${key} candidate ${candidate}`),
+    sha256: requireString(record, "sha256", `${key} candidate ${candidate}`),
+    width: requirePositiveInteger(record, "width", `${key} candidate ${candidate}`),
+    height: requirePositiveInteger(record, "height", `${key} candidate ${candidate}`),
+    palette: requireTrue(record, "palette", `${key} candidate ${candidate}`),
+    alpha: requireTrue(record, "alpha", `${key} candidate ${candidate}`),
+    transparentBackground: requireTrue(record, "transparentBackground", `${key} candidate ${candidate}`),
+    bakedGroundShadowAbsent: requireTrue(record, "bakedGroundShadowAbsent", `${key} candidate ${candidate}`),
+    selected: requireBoolean(record, "selected", `${key} candidate ${candidate}`),
+    hardRejected: requireBoolean(record, "hardRejected", `${key} candidate ${candidate}`),
+    rubric: parseRubric(record["rubric"], `${key} candidate ${candidate} rubric`),
+  };
+};
+
+const parseFoliageLedger = (rawRoot: string): readonly FoliageSelection[] | null => {
+  const filePath = path.join(rawRoot, "foliage_selection_ledger.json");
+  if (!existsSync(filePath)) return null;
+  const parsed: unknown = JSON.parse(readFileSync(filePath, "utf8"));
+  const record = requireRecord(parsed, "foliage selection ledger");
+  if (record["version"] !== 1) throw new WorldAssetPreparationError("foliage selection ledger version must be 1");
+  const rawSelections = record["selections"];
+  if (!Array.isArray(rawSelections)) throw new WorldAssetPreparationError("foliage selection ledger selections must be an array");
+  return rawSelections.map((entry, index): FoliageSelection => {
+    const selection = requireRecord(entry, "foliage selection");
+    const key = TREE_STUMP_KEYS[index];
+    if (key === undefined || selection["key"] !== key) {
+      throw new WorldAssetPreparationError("foliage selection ledger must follow TREE_STUMP_KEYS order");
+    }
+    if (selection["tieBreak"] !== "lowest-seed") throw new WorldAssetPreparationError(`${key} tieBreak must be lowest-seed`);
+    const rawCandidates = selection["candidates"];
+    if (!Array.isArray(rawCandidates) || rawCandidates.length !== FOLIAGE_CANDIDATE_COUNT) {
+      throw new WorldAssetPreparationError(`${key} candidates must contain exactly ${FOLIAGE_CANDIDATE_COUNT}`);
+    }
+    return {
+      key,
+      selectedCandidate: requirePositiveInteger(selection, "selectedCandidate", key),
+      tieBreak: "lowest-seed",
+      candidates: rawCandidates.map((candidate) => parseFoliageCandidate(candidate, key)),
+    };
+  });
+};
+
+const fallbackFoliageSelections = (rawRoot: string): readonly FoliageSelection[] => TREE_STUMP_KEYS.map((key) => {
   const spec = FOLIAGE_SPECS[key];
   return {
     key,
@@ -269,7 +402,7 @@ const foliageSelections = (rawRoot: string): readonly FoliageSelection[] => TREE
   };
 });
 
-const parchmentMetrics: ParchmentMetrics = {
+const defaultParchmentMetrics: ParchmentMetrics = {
   decision: "flat-token",
   thresholds: {
     joinBandMaxDelta: 24,
@@ -282,19 +415,51 @@ const parchmentMetrics: ParchmentMetrics = {
   candidates: [],
 };
 
+const parseParchmentCandidate = (value: unknown): ParchmentCandidateMetrics => {
+  const record = requireRecord(value, "parchment candidate");
+  return {
+    candidate: requirePositiveInteger(record, "candidate", "parchment candidate"),
+    path: requireString(record, "path", "parchment candidate"),
+    sha256: requireString(record, "sha256", "parchment candidate"),
+    width: requirePositiveInteger(record, "width", "parchment candidate"),
+    height: requirePositiveInteger(record, "height", "parchment candidate"),
+    opposingEdgesByteCompatible: requireBoolean(record, "opposingEdgesByteCompatible", "parchment candidate"),
+    joinBandMaxDelta: requireNumber(record, "joinBandMaxDelta", "parchment candidate"),
+    internalBandMaxDelta: requireNumber(record, "internalBandMaxDelta", "parchment candidate"),
+    blockLumaRange: requireNumber(record, "blockLumaRange", "parchment candidate"),
+    blockLumaStandardDeviation: requireNumber(record, "blockLumaStandardDeviation", "parchment candidate"),
+    passed: requireBoolean(record, "passed", "parchment candidate"),
+  };
+};
+
+const parchmentMetrics = (rawRoot: string): ParchmentMetrics => {
+  const filePath = path.join(rawRoot, "parchment_decision.json");
+  if (!existsSync(filePath)) return defaultParchmentMetrics;
+  const parsed: unknown = JSON.parse(readFileSync(filePath, "utf8"));
+  const record = requireRecord(parsed, "parchment decision");
+  const metrics = {
+    ...defaultParchmentMetrics,
+    decision: record["decision"] === "generated-texture" ? "generated-texture" as const : "flat-token" as const,
+    candidates: Array.isArray(record["candidates"]) ? record["candidates"].map(parseParchmentCandidate) : [],
+  };
+  return metrics;
+};
+
 export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
+  const selections = parseFoliageLedger(options.rawRoot) ?? fallbackFoliageSelections(options.rawRoot);
+  const selectionByKey = new Map(selections.map((selection) => [selection.key, selection]));
   copyPromotions(options);
   processSelectedBuildings(options);
-  processFoliage(options);
+  processFoliage(options, selectionByKey);
   const metrics = processTerrain(options);
   const document = {
     version: 1,
     acceptedReferences: acceptedReferences(options.phase4bRoot),
-    foliageSelections: foliageSelections(options.rawRoot),
-    parchmentMetrics,
+    foliageSelections: selections,
+    parchmentMetrics: parchmentMetrics(options.rawRoot),
     assets: [
       ...buildingAssets(options.repoRoot, options.selections),
-      ...foliageAssets(options.repoRoot),
+      ...foliageAssets(options.repoRoot, selectionByKey),
       ...terrainAssets(options.repoRoot, metrics),
     ],
   } as const;

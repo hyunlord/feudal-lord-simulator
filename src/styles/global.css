@@ -26,6 +26,7 @@ button {
 }
 
 .app-shell {
+  --seal-tooltip-top: 204px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -668,6 +669,10 @@ button {
   isolation: isolate;
 }
 
+.seal-recess {
+  overflow: hidden;
+}
+
 .map-shield-wrap {
   position: relative;
   display: flex;
@@ -713,15 +718,19 @@ button {
   place-content: center;
   width: max-content;
   max-width: 100%;
-  height: auto;
+  max-height: 100%;
+  height: 100%;
   padding: 4px 6px;
-  overflow: visible;
+  overflow-x: auto;
+  overflow-y: hidden;
   background-color: var(--palette-ink);
+  scrollbar-width: thin;
 }
 
 .road-tool {
   grid-column: 1 / -1;
   display: flex;
+  align-self: end;
   justify-content: center;
 }
 
@@ -857,13 +866,13 @@ button {
 
 /* contrast-audit selector=".seal-tooltip" fg="--palette-ink" bg="--palette-vellum" size="11" role="body" */
 .seal-tooltip {
-  position: absolute;
-  bottom: calc(100% + 7px);
-  left: 50%;
+  position: fixed;
+  top: var(--seal-tooltip-top, 204px);
+  left: clamp(12px, 28vw, 360px);
   z-index: 12;
   display: none;
-  width: max-content;
-  max-width: 220px;
+  width: min(220px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
   padding: 5px 9px;
   color: var(--palette-ink);
   font-size: 11px;
@@ -877,7 +886,7 @@ button {
   background-size: auto;
   clip-path: polygon(3% 8%, 97% 1%, 99% 88%, 6% 100%, 0 19%);
   opacity: 0;
-  transform: translateX(-50%);
+  transform: none;
 }
 
 .seal-tooltip span {
@@ -892,13 +901,19 @@ button {
 }
 
 .build-seal:nth-child(4n + 1) .seal-tooltip {
-  left: 0;
+  left: clamp(12px, 28vw, 360px);
   transform: none;
 }
 
 .build-seal:nth-child(4n) .seal-tooltip {
-  right: 0;
-  left: auto;
+  right: auto;
+  left: clamp(12px, 28vw, 360px);
+  transform: none;
+}
+
+.build-group:last-of-type .seal-tooltip {
+  right: auto;
+  left: clamp(12px, 28vw, 360px);
   transform: none;
 }
 
@@ -998,7 +1013,7 @@ button {
 /* contrast-audit selector=".era-requirement dd" fg="--palette-ink" bg="--palette-parchment" size="9" role="numeric" */
 .era-requirement dd {
   color: var(--palette-ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -1115,8 +1130,8 @@ button {
 .court-ledger {
   position: relative;
   min-width: 0;
-  height: 76px;
-  padding: 12px 17px 9px;
+  height: 68px;
+  padding: 9px 17px 7px;
   overflow: hidden;
   color: var(--palette-ink);
   background-color: var(--palette-parchment);
@@ -1210,7 +1225,7 @@ button {
 /* contrast-audit selector=".court-ledger dd" fg="--palette-ink" bg="--palette-parchment" size="13" role="numeric" */
 .court-ledger dd {
   color: var(--palette-ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
@@ -1254,8 +1269,13 @@ button {
 
   .court-console {
     gap: 6px;
+    height: 276px;
     padding-right: 10px;
     padding-left: 10px;
+  }
+
+  .court-recess {
+    height: 252px;
   }
 
   .map-shield {
@@ -1289,11 +1309,15 @@ button {
 
   .settlement-status {
     right: 10px;
-    bottom: 156px;
+    bottom: 282px;
   }
 }
 
 @media (max-width: 600px) {
+  .app-shell {
+    --seal-tooltip-top: 154px;
+  }
+
   .welcome-parchment {
     bottom: 266px;
     width: min(320px, calc(100% - 18px));
@@ -1337,7 +1361,7 @@ button {
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     scrollbar-width: thin;
     grid-template-columns: none;
     grid-auto-rows: auto;
@@ -1454,9 +1478,18 @@ button {
   }
 
   .seal-tooltip {
+    top: var(--seal-tooltip-top, 154px);
+    z-index: 18;
     max-width: 150px;
     padding: 4px 6px;
     font-size: 9px;
+  }
+
+  .build-group:last-of-type .seal-tooltip,
+  .road-tool .seal-tooltip {
+    right: auto;
+    left: clamp(12px, 28vw, 360px);
+    transform: none;
   }
 
   .settlement-status {

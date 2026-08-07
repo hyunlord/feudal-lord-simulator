@@ -166,6 +166,36 @@ test("tablet seal layout folds before it can widen the console recess", async ()
   assert.match(tabletRules, /width:\s*min\(100%,\s*calc\(var\(--seal-size\) \* 4 \+ 12px\)\);/);
 });
 
+test("seal tray and tooltips stay inside their assigned geometry lanes", async () => {
+  // Given / When
+  const css = await readFile(GLOBAL_CSS_SOURCE, "utf8");
+  const sealRecessRule = css.match(/\.seal-recess\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  const buildSealsRule = css.match(/\.build-seals\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  const tooltipRule = css.match(/\.seal-tooltip\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  const mobileRules = [...css.matchAll(/@media \(max-width: 600px\) \{[\s\S]*?\n\}/g)]
+    .map((match) => match[0])
+    .join("\n");
+
+  // Then
+  assert.match(sealRecessRule, /overflow:\s*hidden;/);
+  assert.match(buildSealsRule, /max-height:\s*100%;/);
+  assert.match(buildSealsRule, /overflow-x:\s*auto;/);
+  assert.match(buildSealsRule, /overflow-y:\s*hidden;/);
+  assert.match(tooltipRule, /position:\s*fixed;/);
+  assert.match(tooltipRule, /top:\s*var\(--seal-tooltip-top,\s*204px\);/);
+  assert.match(tooltipRule, /left:\s*clamp\(12px,\s*28vw,\s*360px\);/);
+  assert.match(mobileRules, /--seal-tooltip-top:\s*154px;/);
+});
+
+test("desktop ledger plaque height fits inside the carved ledger recess", async () => {
+  // Given / When
+  const css = await readFile(GLOBAL_CSS_SOURCE, "utf8");
+  const ledgerRule = css.match(/\.court-ledger\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+
+  // Then
+  assert.match(ledgerRule, /height:\s*68px;/);
+});
+
 test("onboarding task panel renders completion flourish and the post-task open goal", () => {
   // Given
   const flourishMarkup = renderToStaticMarkup(

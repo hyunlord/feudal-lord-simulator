@@ -17,6 +17,7 @@ const AUDIT_PATTERN = /\/\*\s*contrast-audit\s+([^*]+?)\s*\*\//g;
 const FIELD_PATTERN = /([a-z]+)="([^"]+)"/g;
 const CSS_RULE_PATTERN = /([^{}]+)\{([^{}]*)\}/g;
 const TEXT_RULE_PATTERN = /([^{}]+)\{([^{}]*(?:font-size|color)[^{}]*)\}/g;
+const NUMERIC_FONT_PATTERN = /font-family:\s*ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace/;
 const EXEMPT_SELECTOR_PATTERN = /::|:disabled|:focus|:hover|:root|html|body|button|visually-hidden|game-canvas|seal-glyph|svg|@|--/;
 const PRESENTATION_ONLY_PATTERN = /\.app-shell|\.court-console|\.build-seals|\.map-shield|\.shield-caption|\.build-seal|\.speed-seal|\.road-tool|\.overlay-seal|\.era-ceremony$|\.onboarding-task--|\.settlement-target|\.settlement-priority/;
 
@@ -126,8 +127,8 @@ function assertRuleIntegrity(css: string, entry: AuditEntry): readonly string[] 
     errors.push(`${entry.selector}: vermilion body text is forbidden`);
   }
   if (entry.role === "numeric") {
-    if (!/font-family:\s*Georgia, "Times New Roman", serif/.test(rule)) {
-      errors.push(`${entry.selector}: numeric text must use the declared tabular serif stack`);
+    if (!NUMERIC_FONT_PATTERN.test(rule)) {
+      errors.push(`${entry.selector}: numeric text must use the declared monospace stack`);
     }
     if (!/font-variant-numeric:\s*tabular-nums/.test(rule)) {
       errors.push(`${entry.selector}: numeric text must use tabular numbers`);

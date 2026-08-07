@@ -13,7 +13,7 @@ import {
 } from "../scripts/prepareWorldAssets";
 import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
 import { verifyWorldAssets } from "../scripts/verifyWorldAssets";
-import { FOLIAGE_KEYS, TREE_STUMP_KEYS, WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
+import { FOLIAGE_KEYS, FOLIAGE_SPECS, TREE_STUMP_KEYS, WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
 import { parseWorldAssetManifest } from "../scripts/worldAssetManifest";
 
 const selections = {
@@ -125,6 +125,64 @@ const fixture = (): Fixture => {
 describe("Phase 4C world asset release", () => {
   it("maps every Phase 8 release foliage key to its selected raw candidate filename", () => {
     for (const key of FOLIAGE_KEYS) assert.equal(rawFoliageFileName(key), `${key}_01.png`);
+  });
+
+  it("uses the Phase 8 foliage selection ledger when preparing tree and stump releases", () => {
+    // Given: a complete raw fixture and a ledger selecting non-default tree/stump candidates.
+    const test = fixture();
+    try {
+      const candidate = 3;
+      const ledger = {
+        version: 1,
+        selections: TREE_STUMP_KEYS.map((key) => ({
+          key,
+          selectedCandidate: candidate,
+          tieBreak: "lowest-seed",
+          candidates: Array.from({ length: 8 }, (_, index) => ({
+            candidate: index + 1,
+            seed: 64052000 + (TREE_STUMP_KEYS.indexOf(key) + 1) * 100 + index + 1,
+            path: `raw/foliage/${key}_${String(index + 1).padStart(2, "0")}.png`,
+            sha256: `${(index + 1).toString(16).repeat(64).slice(0, 64)}`,
+            width: FOLIAGE_SPECS[key].width,
+            height: FOLIAGE_SPECS[key].height,
+            palette: true,
+            alpha: true,
+            transparentBackground: true,
+            bakedGroundShadowAbsent: true,
+            selected: index + 1 === candidate,
+            hardRejected: false,
+            rubric: {
+              trunkGroundContact: index + 1 === candidate ? 2 : 1,
+              silhouette: 2,
+              lightingVariation: 2,
+              referenceStyle: 2,
+              total: index + 1 === candidate ? 8 : 7,
+            },
+          })),
+        })),
+      };
+      writeFileSync(path.join(test.rawRoot, "foliage_selection_ledger.json"), `${JSON.stringify(ledger, null, 2)}\n`);
+
+      // When: the release preparation boundary builds the manifest.
+      const manifest = prepareWorldAssets({
+        repoRoot: test.root,
+        rawRoot: test.rawRoot,
+        phase4bRoot: test.phase4bRoot,
+        selections,
+      });
+
+      // Then: tree/stump release sources and selection metadata use the ledger pick.
+      for (const key of TREE_STUMP_KEYS) {
+        const asset = manifest.assets.find((entry) => entry.key === key);
+        assert.deepEqual(asset?.source, {
+          seed: 64052000 + (TREE_STUMP_KEYS.indexOf(key) + 1) * 100 + candidate,
+          candidate,
+        });
+        assert.equal(manifest.foliageSelections.find((entry) => entry.key === key)?.selectedCandidate, candidate);
+      }
+    } finally {
+      rmSync(test.root, { recursive: true, force: true });
+    }
   });
 
   it("prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest", () => {
