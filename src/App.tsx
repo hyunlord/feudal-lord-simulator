@@ -7,6 +7,7 @@ import { initialPalisadeDraft, type PalisadeDraftState } from "./render/palisade
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
+import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMaterialWave";
 import { BuildSeals } from "./ui/BuildMenu";
 import { EconomyOverlayControls, toggleOverlayByKey } from "./ui/EconomyOverlayControls";
 import { CourtLedger, OnboardingTasks, SettlementStatusLine } from "./ui/InfoPanel";
@@ -20,6 +21,13 @@ import {
 import { MapShield } from "./ui/OverlayControls";
 import { SpeedSeals, speedToIntervalMs } from "./ui/SpeedControls";
 import { EraConsole, buildEraConsoleModel } from "./ui/EraConsole";
+import {
+  createEraCeremonyPresentation,
+  dismissEraCeremony,
+  EraCeremonyBanner,
+  observeEraCeremonyTransition,
+  visibleEraCeremony,
+} from "./ui/eraCeremonyModel";
 import { palisadeFootprintsForState, proposalSummaryForState } from "./ui/eraConsoleModel";
 import { PopulationEventPanel } from "./ui/PopulationEventPanel";
 import {
@@ -46,6 +54,7 @@ export function App() {
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
+  const [eraPresentation, setEraPresentation] = useState(() => createEraCeremonyPresentation(state.era));
   const previousPopulationStateRef = useRef(state);
   const [presentationNowMs, setPresentationNowMs] = useState(() => Date.now());
   const [onboardingPresentation, setOnboardingPresentation] = useState(
@@ -93,6 +102,12 @@ export function App() {
   }, [presentationNowMs, state]);
 
   useEffect(() => {
+    setEraPresentation((presentation) =>
+      observeEraCeremonyTransition({ presentation, era: state.era, nowMs: presentationNowMs }),
+    );
+  }, [presentationNowMs, state.era]);
+
+  useEffect(() => {
     const keyDown = (event: KeyboardEvent) => {
       if (event.code === "Escape") {
         event.preventDefault();
@@ -110,6 +125,14 @@ export function App() {
   }, [overlayMode]);
 
   const stockTotals = economyStockTotals(state);
+  const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
+  const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null
+    ? null
+    : createHouseMaterialWave({
+      buildings: state.buildings,
+      center: palisadeCenter(state.palisade.polygon),
+      startedAtMs: eraPresentation.ceremony.startedAtMs,
+    });
   const onboardingView = getOnboardingTaskView(state, onboardingPresentation);
   const highlightedTools = onboardingView.current?.highlightTools ?? [];
   const eraModel = buildEraConsoleModel({ state, draft: palisadeDraft });
@@ -140,11 +163,18 @@ export function App() {
         overlayMode={overlayMode}
         highlightedHouseIds={highlightedHouseIds}
         palisadeDraft={palisadeDraft}
+        houseMaterialWave={houseMaterialWave}
+        palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}
         onPalisadeDraftChange={setPalisadeDraft}
         onPalisadeDraftCancel={() => setPalisadeDraft(null)}
       />
       <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
       <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
+      <EraCeremonyBanner
+        ceremony={visibleCeremony}
+        nowMs={presentationNowMs}
+        onDismiss={() => setEraPresentation(dismissEraCeremony)}
+      />
       {welcomeVisible ? <WelcomeParchment onDismiss={() => setWelcomeVisible(false)} /> : null}
       <aside className="court-console" aria-label="Court console">
         <div className="court-recess map-recess">

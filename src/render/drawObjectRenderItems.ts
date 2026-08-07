@@ -4,6 +4,7 @@ import type { CameraState } from "./camera";
 import { drawBuildings } from "./drawBuildings";
 import { drawConstructionSite } from "./drawConstructionSites";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { RenderQueueItem } from "./objectRenderOrder";
 import type { TileRange, ViewportSize } from "./renderer";
 
@@ -16,6 +17,8 @@ type DrawObjectRenderItemsInput = {
   readonly dpr: number;
   readonly viewport: ViewportSize;
   readonly objectRenderItems: readonly RenderQueueItem[];
+  readonly houseMaterialWave?: HouseMaterialWave | null;
+  readonly nowMs?: number;
 };
 
 export function drawObjectRenderItems(
@@ -48,6 +51,8 @@ export function drawObjectRenderItems(
       dpr: input.dpr,
       viewport: input.viewport,
       objectRenderItems: [item],
+      houseMaterialWave: input.houseMaterialWave ?? null,
+      nowMs: input.nowMs ?? 0,
     });
   }
 }

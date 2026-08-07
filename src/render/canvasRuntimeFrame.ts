@@ -5,6 +5,7 @@ import type { DragState } from "./canvasRuntime";
 import { drawGameCanvasFrame } from "./gameCanvasFrame";
 import { isPlacementFeedbackVisible, type PlacementFeedback } from "./placementFeedback";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PlacementTool } from "./renderer";
 import type { AnchoredWorldSelection } from "./worldSelection";
 
@@ -26,6 +27,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   selection: AnchoredWorldSelection | null;
   highlightedHouseIds: readonly string[];
   palisadeDraft?: PalisadeDraftState | null;
+  houseMaterialWave?: HouseMaterialWave | null;
+  palisadeCeremonyStartedAtMs?: number | null;
 }>): void {
   const nowMs = performance.now();
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {
@@ -47,5 +50,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     selectedWalkerId: input.selection?.kind === "walker" ? input.selection.walkerId : null,
     highlightedHouseIds: input.highlightedHouseIds,
     palisadeDraft: input.palisadeDraft ?? null,
+    houseMaterialWave: input.houseMaterialWave ?? null,
+    palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
   });
 }

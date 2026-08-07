@@ -83,6 +83,65 @@ button {
   font-size: clamp(10px, 0.95vw, 12px);
 }
 
+.era-ceremony {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  cursor: pointer;
+  background-color: color-mix(in srgb, var(--palette-ink) 44%, transparent);
+}
+
+.era-ceremony__banner {
+  display: grid;
+  gap: 7px;
+  width: min(430px, calc(100% - 28px));
+  padding: 17px 20px 18px;
+  color: var(--palette-ink);
+  text-align: center;
+  word-break: keep-all;
+  background-color: var(--palette-vellum);
+  background-image: url("/assets/ui/parchment_texture.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border: 1px solid var(--palette-ink);
+  clip-path: polygon(2% 6%, 98% 0, 100% 91%, 4% 100%, 0 20%);
+  transform: translateY(calc(var(--ceremony-progress, 0) * -8px));
+}
+
+.era-ceremony__kicker {
+  color: var(--palette-ink-light);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.era-ceremony h2,
+.era-ceremony p {
+  margin: 0;
+}
+
+.era-ceremony h2 {
+  color: var(--palette-vermilion);
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.05;
+}
+
+.era-ceremony p {
+  font-size: clamp(12px, 1.2vw, 14px);
+  line-height: 1.3;
+}
+
+.era-ceremony button {
+  justify-self: center;
+  padding: 4px 11px;
+  color: var(--palette-ink);
+  cursor: pointer;
+  background-color: var(--palette-parchment-dark);
+  border: 1px solid var(--palette-ink);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

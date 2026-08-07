@@ -1,0 +1,56 @@
+{
+  "task": "stage3_task10_ceremony_material_wave",
+  "recordedAt": "2026-08-07T17:44:18+09:00",
+  "scope": [
+    "presentation-only palisade ceremony",
+    "render-only house material wave",
+    "gate flourish during the ceremony",
+    "no gameplay-state persistence for presentation clocks"
+  ],
+  "acceptance": {
+    "ceremonyStartsOnlyOnObservedHamletToPalisade": "tests/palisadeCeremonyPresentation.test.ts",
+    "loadedPalisadeDoesNotReplayCeremonyOrWave": "tests/palisadeCeremonyPresentation.test.ts and tests/buildingMaterialWave.test.ts",
+    "ceremonyAutoEndsAfterMs": 2000,
+    "materialWaveCompletesAfterMs": 4000,
+    "materialWaveOrdering": "center distance, then building id tie break",
+    "houseMaterialsArePureEraAndLevel": "tests/buildingMaterialWave.test.ts",
+    "presentationClocksExcludedFromGameplayHash": "tests/economyHarnessStage3.test.ts"
+  },
+  "verification": [
+    {
+      "command": "npx tsx --test tests/palisadeCeremonyPresentation.test.ts tests/buildingMaterialWave.test.ts tests/economyHarnessStage3.test.ts tests/renderContracts.test.ts tests/renderSourceGuards.test.ts tests/renderObjectFrameCache.test.ts tests/constructionRendering.test.ts tests/eraConsoleModel.test.ts tests/onboardingUi.test.ts tests/buildingEconomyRendering.test.ts",
+      "result": "pass",
+      "summary": "56 tests passed, 0 failed"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "pass",
+      "summary": "tsc --noEmit"
+    },
+    {
+      "command": "npm run build",
+      "result": "pass",
+      "summary": "vite built 153 modules; dist/assets/index-CaQ88O38.css and dist/assets/index-Cm0gmPq7.js"
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass",
+      "summary": "no whitespace errors"
+    },
+    {
+      "command": "npm test",
+      "result": "known_environment_failure",
+      "summary": "623 passed, 4 failed; all failures are ffmpeg failed to start: spawnSync ffmpeg ENOENT in terrainTexturePipeline/worldAssetRelease tests"
+    }
+  ],
+  "visualEvidence": {
+    "realBrowserScreenshots": "deferred_to_stage3_todo13",
+    "staticTimingEvidence": "covered by deterministic presentation and material-wave tests"
+  },
+  "nonGoals": [
+    "no new dependencies",
+    "no audio",
+    "no persisted ceremony or material-wave fields in GameState",
+    "no replay-triggered ceremony for already-palisade loads"
+  ]
+}

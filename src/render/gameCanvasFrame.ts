@@ -4,6 +4,7 @@ import type { CameraState } from "./camera";
 import { placementPreview } from "./interactions";
 import type { PlacementFeedback } from "./placementFeedback";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderFrame, type PlacementTool } from "./renderer";
 import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 
@@ -23,6 +24,8 @@ type GameCanvasFrameInput = {
   readonly selectedWalkerId?: string | null;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly houseMaterialWave?: HouseMaterialWave | null;
+  readonly palisadeCeremonyStartedAtMs?: number | null;
 };
 
 export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
@@ -54,6 +57,8 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     selectedWalkerId: input.selectedWalkerId ?? null,
     highlightedHouseIds: input.highlightedHouseIds ?? [],
     palisadeDraft: input.palisadeDraft ?? null,
+    houseMaterialWave: input.houseMaterialWave ?? null,
+    palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
   });
   input.context.restore();
 }

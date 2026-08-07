@@ -4,6 +4,8 @@ import {
   type BuildingKind,
 } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
+import type { HouseMaterialEra, HouseMaterialWave } from "./buildingMaterialWave";
+import { houseMaterialEraForBuilding } from "./buildingMaterialWave";
 import type { ResourceType } from "../content/resourceConfig";
 import type { House } from "../population/population.types";
 
@@ -37,6 +39,7 @@ export type ProductionVisualState =
 
 export type BuildingVisualState = {
   readonly houseLevel: number;
+  readonly houseMaterialEra: HouseMaterialEra;
   readonly houseProblem: "water" | "bread" | null;
   readonly production: ProductionVisualState;
 };
@@ -44,10 +47,17 @@ export type BuildingVisualState = {
 export function buildBuildingVisualState(
   building: Building,
   houses: readonly House[],
+  input: { readonly era?: HouseMaterialEra; readonly nowMs?: number; readonly wave?: HouseMaterialWave | null } = {},
 ): BuildingVisualState {
   const house = houses.find((candidate) => candidate.buildingId === building.id);
   return {
     houseLevel: house?.level ?? 0,
+    houseMaterialEra: houseMaterialEraForBuilding({
+      building,
+      wave: input.wave ?? null,
+      nowMs: input.nowMs ?? 0,
+      era: input.era ?? "hamlet",
+    }),
     houseProblem: houseProblem(building, house),
     production: productionVisualState(building),
   };
@@ -61,7 +71,14 @@ export function isProductionProblem(state: BuildingVisualState): boolean {
   );
 }
 
-export function houseBodyProfile(level: number): BodyProfile {
+export function houseBodyProfile(input: number | { readonly era: HouseMaterialEra; readonly level: number }): BodyProfile {
+  const profileInput = typeof input === "number" ? { era: "hamlet" as const, level: input } : input;
+  const level = profileInput.level;
+  if (profileInput.era === "palisade") {
+    if (level >= 3) return palisadeTowerHouseProfile;
+    if (level === 2) return palisadeCivicHouseProfile;
+    if (level === 1) return palisadeFarmHouseProfile;
+  }
   if (level >= 3) {
     return towerHouseProfile;
   }
@@ -77,9 +94,10 @@ export function houseBodyProfile(level: number): BodyProfile {
 export function buildingBodyProfile(
   kind: BuildingKind,
   houseLevel: number,
+  houseMaterialEra: HouseMaterialEra = "hamlet",
 ): BodyProfile {
   if (kind === "house") {
-    return houseBodyProfile(houseLevel);
+    return houseBodyProfile({ era: houseMaterialEra, level: houseLevel });
   }
   return nonHouseBodyProfile(kind);
 }
@@ -129,6 +147,33 @@ const towerHouseProfile = {
   height: 52,
   roof: 20,
   fill: SEMANTIC_PALETTE.parchment,
+  roofColor: SEMANTIC_PALETTE.stoneDark,
+  roofShape: "tower",
+} as const satisfies BodyProfile;
+
+const palisadeFarmHouseProfile = {
+  width: 34,
+  height: 32,
+  roof: 16,
+  fill: SEMANTIC_PALETTE.parchmentDark,
+  roofColor: SEMANTIC_PALETTE.earthDark,
+  roofShape: "gable",
+} as const satisfies BodyProfile;
+
+const palisadeCivicHouseProfile = {
+  width: 46,
+  height: 44,
+  roof: 18,
+  fill: SEMANTIC_PALETTE.parchment,
+  roofColor: SEMANTIC_PALETTE.stoneDark,
+  roofShape: "gable",
+} as const satisfies BodyProfile;
+
+const palisadeTowerHouseProfile = {
+  width: 56,
+  height: 54,
+  roof: 20,
+  fill: SEMANTIC_PALETTE.vellum,
   roofColor: SEMANTIC_PALETTE.stoneDark,
   roofShape: "tower",
 } as const satisfies BodyProfile;

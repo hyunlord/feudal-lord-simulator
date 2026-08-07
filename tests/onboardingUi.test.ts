@@ -12,6 +12,7 @@ import { OnboardingTasks, SettlementStatusLine } from "../src/ui/InfoPanel";
 
 const APP_SOURCE = new URL("../src/App.tsx", import.meta.url);
 const CANVAS_RUNTIME_SOURCE = new URL("../src/render/useGameCanvasRuntime.ts", import.meta.url);
+const CANVAS_RUNTIME_REFS_SOURCE = new URL("../src/render/useGameCanvasRuntimeRefs.ts", import.meta.url);
 
 function renderApp(): string {
   return renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
@@ -34,6 +35,7 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   const markup = renderApp();
   const source = await readFile(APP_SOURCE, "utf8");
   const runtimeSource = await readFile(CANVAS_RUNTIME_SOURCE, "utf8");
+  const runtimeRefsSource = await readFile(CANVAS_RUNTIME_REFS_SOURCE, "utf8");
   const placementMarkup = markup.slice(
     markup.indexOf('aria-label="Placement seals"'),
     markup.indexOf("ledger-recess"),
@@ -50,8 +52,8 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.doesNotMatch(source, /onPointerDown=/);
   assert.match(source, /onClick=\{consumeDismissal\}/);
   assert.doesNotMatch(runtimeSource, /selectedTool\s*\?\?/);
-  assert.match(runtimeSource, /useRef\(selectedTool\)/);
-  assert.match(runtimeSource, /selectedToolRef\.current\s*=\s*selectedTool/);
+  assert.match(runtimeRefsSource, /useRef\(input\.selectedTool\)/);
+  assert.match(runtimeRefsSource, /selectedToolRef\.current\s*=\s*input\.selectedTool/);
 });
 
 test("world canvas exposes crosshair styling only while a placement tool is armed", () => {

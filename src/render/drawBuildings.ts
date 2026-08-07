@@ -12,6 +12,7 @@ import {
   renderDetailLevel,
   type BodyProfile,
 } from "./buildingVisualState";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
 import { drawGroundCoverDescriptor, drawTreeDescriptor } from "./drawTrees";
@@ -29,11 +30,18 @@ type ObjectRenderInput = {
   readonly dpr?: number;
   readonly viewport?: ViewportSize;
   readonly objectRenderItems?: readonly WorldObjectRenderItem[];
+  readonly houseMaterialWave?: HouseMaterialWave | null;
+  readonly nowMs?: number;
 };
 
 type Point = { readonly x: number; readonly y: number };
 
-type BuildingShapeInput = { readonly center: Point; readonly building: Building; readonly houseLevel: number; readonly zoom: number };
+type BuildingShapeInput = {
+  readonly center: Point;
+  readonly building: Building;
+  readonly visualState: ReturnType<typeof buildBuildingVisualState>;
+  readonly zoom: number;
+};
 
 export function drawBuildings(
   context: CanvasRenderingContext2D,
@@ -78,7 +86,11 @@ function drawBuilding(
   spriteOptions: WorldSpriteOptions,
 ): void {
   const center = buildingCenter(building);
-  const visualState = buildBuildingVisualState(building, input.state.houses);
+  const visualState = buildBuildingVisualState(building, input.state.houses, {
+    era: input.state.era,
+    wave: input.houseMaterialWave ?? null,
+    nowMs: input.nowMs ?? 0,
+  });
   const detailLevel = renderDetailLevel(input.zoom);
   if (detailLevel === "full") {
     const spriteDrawn = drawWorldSprite(context, buildingSpriteKey(building, visualState.houseLevel), building.tx, building.ty, spriteOptions);
@@ -96,7 +108,7 @@ function drawBuilding(
   const shape = {
     center,
     building,
-    houseLevel: visualState.houseLevel,
+    visualState,
     zoom: input.zoom,
   };
   if (detailLevel === "blocks") {
@@ -120,7 +132,7 @@ function drawLodBlock(
   context: CanvasRenderingContext2D,
   input: BuildingShapeInput,
 ): void {
-  const body = buildingBodyProfile(input.building.kind, input.houseLevel);
+  const body = buildingBodyProfile(input.building.kind, input.visualState.houseLevel, input.visualState.houseMaterialEra);
   const origin = { x: input.center.x - body.width / 2, y: input.center.y - 12 };
   context.fillStyle = buildingLodColor(input.building.kind);
   traceIsoFace(context, origin, body.width, 14, "front");
@@ -133,7 +145,7 @@ function drawBody(
   context: CanvasRenderingContext2D,
   input: BuildingShapeInput,
 ): void {
-  const body = buildingBodyProfile(input.building.kind, input.houseLevel);
+  const body = buildingBodyProfile(input.building.kind, input.visualState.houseLevel, input.visualState.houseMaterialEra);
   const origin = { x: input.center.x - body.width / 2, y: input.center.y - body.height };
   context.fillStyle = body.fill;
   traceIsoFace(context, origin, body.width, body.height, "front");
@@ -156,7 +168,7 @@ function drawRoof(
   context: CanvasRenderingContext2D,
   input: BuildingShapeInput,
 ): void {
-  const body = buildingBodyProfile(input.building.kind, input.houseLevel);
+  const body = buildingBodyProfile(input.building.kind, input.visualState.houseLevel, input.visualState.houseMaterialEra);
   if (body.roofShape === "none") {
     return;
   }

@@ -70,6 +70,24 @@ export function drawPalisadeRun(
   }
 }
 
+export function drawPalisadeGateFlourish(
+  context: CanvasRenderingContext2D,
+  input: { readonly gate: TileEdgePoint; readonly zoom: number; readonly progress: number },
+): void {
+  const screen = palisadeScreenPath([input.gate])[0];
+  if (screen === undefined) return;
+  const radius = 10 + Math.max(0, Math.min(1, input.progress)) * 14;
+  context.save();
+  context.globalAlpha = Math.max(0, 1 - input.progress * 0.55);
+  context.fillStyle = SEMANTIC_PALETTE.gold;
+  context.beginPath();
+  context.ellipse(snapToPixel(screen.x + 3), snapToPixel(screen.y - 5), radius, radius * 0.45, 0, 0, Math.PI * 2);
+  context.fill();
+  applyInkOutline(context, input.zoom);
+  context.stroke();
+  context.restore();
+}
+
 function drawLine(
   context: CanvasRenderingContext2D,
   path: PalisadeRenderPath,

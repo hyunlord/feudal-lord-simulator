@@ -3,6 +3,7 @@ import type { Dispatch, RefObject, SetStateAction } from "react";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { GameAction } from "../state/gameStore.types";
 import type { HoveredBuilding } from "./BuildingInspector";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { PlacementTool } from "./renderer";
 import type { AnchoredWorldSelection } from "./worldSelection";
@@ -18,6 +19,8 @@ export type GameCanvasRuntimeInput = {
   readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;
   readonly highlightedHouseIds: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly houseMaterialWave?: HouseMaterialWave | null;
+  readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>> | undefined;
   readonly onPalisadeDraftCancel?: (() => void) | undefined;
 };

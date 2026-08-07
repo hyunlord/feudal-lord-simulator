@@ -28,11 +28,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     setSelection,
     state,
     palisadeDraft = null,
+    houseMaterialWave = null,
+    palisadeCeremonyStartedAtMs = null,
     onPalisadeDraftChange,
     onPalisadeDraftCancel,
   } = input;
-  const { highlightedHouseIdsRef, overlayModeRef, palisadeDraftRef, selectedToolRef, selectionRef, stateRef } =
-    useGameCanvasRuntimeRefs({ state, selectedTool, overlayMode, selection, highlightedHouseIds, palisadeDraft });
+  const { highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, selectedToolRef, selectionRef, stateRef } =
+    useGameCanvasRuntimeRefs({ state, selectedTool, overlayMode, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -73,6 +75,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         selection: selectionRef.current,
         highlightedHouseIds: highlightedHouseIdsRef.current,
         palisadeDraft: palisadeDraftRef.current,
+        houseMaterialWave: houseMaterialWaveRef.current,
+        palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current,
       });
       frameId = requestAnimationFrame(drawFrame);
     };

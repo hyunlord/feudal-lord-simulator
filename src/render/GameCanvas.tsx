@@ -6,6 +6,7 @@ import type { PlacementTool } from "./renderer";
 import { useGameStore } from "../state/gameStore";
 import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import { DiagnosticCard, type DiagnosticCardModel } from "./DiagnosticCard";
 import type { AnchoredWorldSelection } from "./worldSelection";
@@ -21,6 +22,8 @@ type GameCanvasProps = {
   readonly overlayMode?: OverlayMode;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly houseMaterialWave?: HouseMaterialWave | null;
+  readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>>;
   readonly onPalisadeDraftCancel?: () => void;
 };
@@ -30,6 +33,8 @@ export function GameCanvas({
   overlayMode = "none",
   highlightedHouseIds = [],
   palisadeDraft = null,
+  houseMaterialWave = null,
+  palisadeCeremonyStartedAtMs = null,
   onPalisadeDraftChange,
   onPalisadeDraftCancel,
 }: GameCanvasProps) {
@@ -49,6 +54,8 @@ export function GameCanvas({
     setSelection,
     highlightedHouseIds,
     palisadeDraft,
+    houseMaterialWave,
+    palisadeCeremonyStartedAtMs,
     onPalisadeDraftChange,
     onPalisadeDraftCancel,
   });

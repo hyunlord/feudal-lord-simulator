@@ -23,8 +23,9 @@ import {
   constructionCompletionEffectsForFrame,
   drawConstructionCompletionEffects,
 } from "./constructionCompletionEffects";
-import { drawPalisadeRun } from "./drawPalisadeSegments";
+import { drawPalisadeGateFlourish, drawPalisadeRun } from "./drawPalisadeSegments";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
+import type { HouseMaterialWave } from "./buildingMaterialWave";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -57,6 +58,8 @@ export type RenderFrameInput = {
   readonly selectedWalkerId?: string | null;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly houseMaterialWave?: HouseMaterialWave | null;
+  readonly palisadeCeremonyStartedAtMs?: number | null;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -97,6 +100,8 @@ export const renderFrame = (input: RenderFrameInput): void => {
         dpr: devicePixelRatioFor(input.context, input.viewport),
         viewport: input.viewport,
         objectRenderItems,
+        houseMaterialWave: input.houseMaterialWave ?? null,
+        nowMs: input.nowMs ?? 0,
       }),
     overhang: () =>
       drawConstructionCompletionEffects(input.context, {
@@ -129,6 +134,13 @@ export const renderFrame = (input: RenderFrameInput): void => {
       path: input.palisadeDraft.candidate.path,
       style: "plot",
       zoom: input.camera.zoom,
+    });
+  }
+  if (input.palisadeCeremonyStartedAtMs !== undefined && input.palisadeCeremonyStartedAtMs !== null && input.state.palisade !== null) {
+    drawPalisadeGateFlourish(input.context, {
+      gate: input.state.palisade.gate,
+      zoom: input.camera.zoom,
+      progress: Math.max(0, Math.min(1, ((input.nowMs ?? 0) - input.palisadeCeremonyStartedAtMs) / 2_000)),
     });
   }
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
