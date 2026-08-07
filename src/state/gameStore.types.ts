@@ -3,6 +3,7 @@ import type { Dispatch, ReactNode } from "react";
 import type { BuildingKind } from "../content/buildingConfig";
 import type { GameSpeed, GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
+import type { PalisadePath } from "../world/palisadeGeometry";
 
 export interface GameProviderProps {
   children: ReactNode;
@@ -25,6 +26,10 @@ export type GameAction =
   | {
       readonly type: "cancel_construction";
       readonly siteId: string;
+    }
+  | {
+      readonly type: "confirm_palisade_proclamation";
+      readonly candidatePath: PalisadePath;
     };
 
 export interface GameStoreContextValue {

@@ -5,6 +5,7 @@ import type { Building } from "../content/buildingConfig";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { advanceFrame } from "../engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../engine/gameActions";
+import { confirmPalisadeProclamation } from "../engine/palisade";
 import { advanceTick } from "../engine/tick";
 import type { GameState } from "../engine/engine.types";
 import {
@@ -96,6 +97,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         routes: routes.delivery,
       }).state;
     }
+    case "confirm_palisade_proclamation":
+      return confirmPalisadeProclamation(state, action.candidatePath);
     default:
       return assertNever(action);
   }
