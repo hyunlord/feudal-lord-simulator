@@ -1,5 +1,7 @@
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import type { ConstructionSite } from "../economy/construction";
+import {
+  constructionSiteFootprint,
+  type ConstructionSite,
+} from "../economy/construction";
 import { depthKey } from "./iso";
 import { footprintHasVisibleTile, type TileRange } from "./renderVisibility";
 
@@ -15,14 +17,9 @@ export function constructionSiteRenderItem(
   site: ConstructionSite,
   range: TileRange,
 ): ConstructionSiteRenderItem | null {
-  const config = BUILDING_CONFIG_BY_KIND[site.kind];
+  const footprint = constructionSiteFootprint(site);
   if (
-    !footprintHasVisibleTile({
-      tx: site.tx,
-      ty: site.ty,
-      width: config.width,
-      height: config.height,
-    }, range)
+    !footprintHasVisibleTile(footprint, range)
   ) {
     return null;
   }
@@ -30,7 +27,7 @@ export function constructionSiteRenderItem(
     kind: "construction_site",
     id: site.id,
     site,
-    depth: depthKey(site.tx + config.width - 1, site.ty + config.height - 1),
-    anchorTx: site.tx + config.width - 1,
+    depth: depthKey(footprint.tx + footprint.width - 1, footprint.ty + footprint.height - 1),
+    anchorTx: footprint.tx + footprint.width - 1,
   };
 }

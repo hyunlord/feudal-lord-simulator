@@ -9,7 +9,9 @@ import {
   availableWorkers,
   builderWalkersForSites,
 } from "../src/population/labour";
-import type { ConstructionSite } from "../src/economy/construction";
+import type {
+  BuildingConstructionSite,
+} from "../src/economy/construction";
 
 function building(id: string, kind: BuildingKind): Building {
   return {
@@ -25,7 +27,7 @@ function building(id: string, kind: BuildingKind): Building {
   };
 }
 
-function site(id: string, patch: Partial<ConstructionSite> = {}): ConstructionSite {
+function site(id: string, patch: Partial<BuildingConstructionSite> = {}): BuildingConstructionSite {
   return {
     id,
     kind: "well",

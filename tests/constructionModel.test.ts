@@ -18,6 +18,7 @@ import {
   constructionStage,
   constructionStall,
   createConstructionSite,
+  createPalisadeConstructionSite,
   requiredConstructionMaterials,
 } from "../src/economy/construction";
 
@@ -278,4 +279,126 @@ test("construction helpers handle every resource without unsafe parser fallbacks
   // When / Then
   assert.deepEqual(constructionMaterialStatus(site).outstanding, { wheat: 3, logs: 2 });
   assert.deepEqual(constructionDeliveryNeed(site), { wheat: 2, logs: 1 });
+});
+
+test("createPalisadeConstructionSite costs each path step without becoming a building", () => {
+  // Given
+  const oneStepPath = [{ x: 2, y: 2 }, { x: 3, y: 2 }] as const;
+  const fourStepPath = [{ x: 2, y: 2 }, { x: 6, y: 2 }] as const;
+
+  // When
+  const oneStep = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: oneStepPath,
+    startedTick: 90,
+  });
+  const fourStep = createPalisadeConstructionSite({
+    id: "wall-a-segment-001",
+    wallId: "wall-a",
+    segmentIndex: 1,
+    gateDistance: 1,
+    order: 1,
+    path: fourStepPath,
+    startedTick: 90,
+  });
+
+  // Then
+  assert.deepEqual(oneStep, {
+    id: "wall-a-segment-000",
+    kind: "palisade_segment",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: oneStepPath,
+    anchor: { tx: 2, ty: 2 },
+    required: { timber: 15 },
+    delivered: {},
+    reserved: {},
+    builderTicks: 0,
+    requiredBuilderTicks: 120,
+    assignedBuilders: 0,
+    stall: "awaiting_materials",
+    startedTick: 90,
+  });
+  assert.deepEqual(fourStep.required, { timber: 60 });
+});
+
+test("createPalisadeConstructionSite rejects empty open and oversized paths", () => {
+  // Given
+  const emptyPath = [] as const;
+  const openPath = [{ x: 2, y: 2 }] as const;
+  const oversizedPath = [{ x: 2, y: 2 }, { x: 7, y: 2 }] as const;
+
+  // When / Then
+  assert.throws(() =>
+    createPalisadeConstructionSite({
+      id: "empty",
+      wallId: "wall-a",
+      segmentIndex: 0,
+      gateDistance: 0,
+      order: 0,
+      path: emptyPath,
+      startedTick: 0,
+    }),
+  );
+  assert.throws(() =>
+    createPalisadeConstructionSite({
+      id: "open",
+      wallId: "wall-a",
+      segmentIndex: 0,
+      gateDistance: 0,
+      order: 0,
+      path: openPath,
+      startedTick: 0,
+    }),
+  );
+  assert.throws(() =>
+    createPalisadeConstructionSite({
+      id: "oversized",
+      wallId: "wall-a",
+      segmentIndex: 0,
+      gateDistance: 0,
+      order: 0,
+      path: oversizedPath,
+      startedTick: 0,
+    }),
+  );
+});
+
+test("common construction material stall work and refund helpers accept wall sites", () => {
+  // Given
+  const wallSite = {
+    ...createPalisadeConstructionSite({
+      id: "wall-a-segment-000",
+      wallId: "wall-a",
+      segmentIndex: 0,
+      gateDistance: 0,
+      order: 0,
+      path: [{ x: 2, y: 2 }, { x: 6, y: 2 }],
+      startedTick: 10,
+    }),
+    delivered: { timber: 17 },
+    reserved: { timber: 5 },
+    builderTicks: 119,
+    assignedBuilders: 3,
+  };
+
+  // When / Then
+  assert.deepEqual(constructionMaterialStatus(wallSite).outstanding, { timber: 43 });
+  assert.deepEqual(constructionDeliveryNeed(wallSite), { timber: 38 });
+  assert.equal(
+    constructionStall(wallSite, [{ id: "store-1", stock: { timber: 12 }, hasRoute: false }]),
+    "no_route",
+  );
+  assert.equal(advanceConstructionWork(wallSite).builderTicks, 119);
+  assert.deepEqual(constructionCancellationRefunds(wallSite), {
+    deliveredRefund: { timber: 10 },
+    deliveredLost: { timber: 7 },
+    reservedRelease: { timber: 5 },
+  });
 });

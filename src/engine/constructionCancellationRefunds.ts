@@ -5,7 +5,10 @@ import {
   type Building,
 } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
-import type { ConstructionSite } from "../economy/construction";
+import {
+  constructionSiteAnchor,
+  type ConstructionSite,
+} from "../economy/construction";
 import { acceptsResource, availableSpace } from "../economy/storage";
 import type { GameState } from "./engine.types";
 
@@ -77,7 +80,8 @@ function inFlightReservations(
 }
 
 function manhattan(left: ConstructionSite, right: Building): number {
-  return Math.abs(left.tx - right.tx) + Math.abs(left.ty - right.ty);
+  const anchor = constructionSiteAnchor(left);
+  return Math.abs(anchor.tx - right.tx) + Math.abs(anchor.ty - right.ty);
 }
 
 function depositToStore(

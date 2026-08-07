@@ -42,11 +42,9 @@ function normalizeBuilding(building: Building) {
 }
 
 function normalizeConstructionSite(site: ConstructionSite) {
-  return {
+  const common = {
     id: site.id,
     kind: site.kind,
-    tx: site.tx,
-    ty: site.ty,
     required: sortedResources(site.required),
     delivered: sortedResources(site.delivered),
     reserved: sortedResources(site.reserved),
@@ -56,6 +54,34 @@ function normalizeConstructionSite(site: ConstructionSite) {
     stall: site.stall,
     startedTick: site.startedTick,
   };
+  switch (site.kind) {
+    case "palisade_segment":
+      return {
+        ...common,
+        wallId: site.wallId,
+        segmentIndex: site.segmentIndex,
+        gateDistance: site.gateDistance,
+        order: site.order,
+        path: site.path,
+        anchor: site.anchor,
+      };
+    case "house":
+    case "well":
+    case "storehouse":
+    case "granary":
+    case "chapel":
+    case "wheat_farm":
+    case "mill":
+    case "logging_camp":
+    case "sawmill":
+      return {
+        ...common,
+        tx: site.tx,
+        ty: site.ty,
+      };
+    default:
+      return assertNever(site);
+  }
 }
 
 function normalizeHouse(house: House) {

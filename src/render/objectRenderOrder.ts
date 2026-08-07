@@ -1,6 +1,10 @@
 import type { Walker } from "../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
-import type { ConstructionSite } from "../economy/construction";
+import {
+  constructionSiteCacheKey,
+  constructionSiteFootprint,
+  type ConstructionSite,
+} from "../economy/construction";
 import type { Tile } from "../world/world.types";
 import {
   constructionSiteRenderItem,
@@ -73,12 +77,10 @@ type TileArea = {
   readonly height: number;
 };
 
-type GroundCoverProtectionCacheEntry = {
+const groundCoverProtectionCache = new WeakMap<readonly Tile[], {
   readonly buildingSignature: string;
   readonly keys: ReadonlySet<string>;
-};
-
-const groundCoverProtectionCache = new WeakMap<readonly Tile[], GroundCoverProtectionCacheEntry>();
+}>();
 
 export function buildObjectRenderItems(
   input: ObjectRenderInputWithoutConstruction,
@@ -174,10 +176,18 @@ export function clearedTreeTileKeys(
   constructionSites: readonly ConstructionSite[] = [],
 ): ReadonlySet<string> {
   const keys = new Set<string>();
-  for (const object of [...buildings, ...constructionSites]) {
-    const config = BUILDING_CONFIG_BY_KIND[object.kind];
-    for (let ty = object.ty - 1; ty <= object.ty + config.height; ty += 1) {
-      for (let tx = object.tx - 1; tx <= object.tx + config.width; tx += 1) {
+  for (const building of buildings) {
+    const config = BUILDING_CONFIG_BY_KIND[building.kind];
+    for (let ty = building.ty - 1; ty <= building.ty + config.height; ty += 1) {
+      for (let tx = building.tx - 1; tx <= building.tx + config.width; tx += 1) {
+        keys.add(tileKey(tx, ty));
+      }
+    }
+  }
+  for (const site of constructionSites) {
+    const footprint = constructionSiteFootprint(site);
+    for (let ty = footprint.ty - 1; ty <= footprint.ty + footprint.height; ty += 1) {
+      for (let tx = footprint.tx - 1; tx <= footprint.tx + footprint.width; tx += 1) {
         keys.add(tileKey(tx, ty));
       }
     }
@@ -190,8 +200,10 @@ export function groundCoverProtectedTileKeys(
   buildings: readonly Building[],
   constructionSites: readonly ConstructionSite[] = [],
 ): ReadonlySet<string> {
-  const buildingSignature = [...buildings, ...constructionSites]
-    .map((object) => `${object.kind}:${object.tx}:${object.ty}`)
+  const buildingSignature = [
+    ...buildings.map((building) => `${building.kind}:${building.tx}:${building.ty}`),
+    ...constructionSites.map(constructionSiteCacheKey),
+  ]
     .join("|");
   const cached = groundCoverProtectionCache.get(tiles);
   if (cached?.buildingSignature === buildingSignature) {
@@ -213,12 +225,12 @@ export function groundCoverProtectedTileKeys(
     });
   }
   for (const site of constructionSites) {
-    const config = BUILDING_CONFIG_BY_KIND[site.kind];
+    const footprint = constructionSiteFootprint(site);
     addGroundCoverApron(keys, {
-      tx: site.tx,
-      ty: site.ty,
-      width: config.width,
-      height: config.height,
+      tx: footprint.tx,
+      ty: footprint.ty,
+      width: footprint.width,
+      height: footprint.height,
     });
   }
   groundCoverProtectionCache.set(tiles, { buildingSignature, keys });

@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
-import type { ConstructionSite } from "../src/economy/construction";
+import type { Building } from "../src/content/buildingConfig";
+import {
+  constructionSiteFootprint,
+  type BuildingConstructionSite,
+  type ConstructionSite,
+} from "../src/economy/construction";
 import { constructionCompletionEvents } from "../src/engine/constructionLifecycle";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceFrame } from "../src/engine/frameClock";
@@ -54,7 +58,7 @@ function tile(tx: number, ty: number, patch: Partial<Tile> = {}): Tile {
   };
 }
 
-function site(id: string, patch: Partial<ConstructionSite> = {}): ConstructionSite {
+function site(id: string, patch: Partial<BuildingConstructionSite> = {}): BuildingConstructionSite {
   return {
     id,
     kind: "well",
@@ -78,11 +82,11 @@ function siteAtTile(
   ty: number,
 ): ConstructionSite | null {
   return sites.find((candidate) => {
-    const definition = BUILDING_CONFIG_BY_KIND[candidate.kind];
-    return tx >= candidate.tx &&
-      tx < candidate.tx + definition.width &&
-      ty >= candidate.ty &&
-      ty < candidate.ty + definition.height;
+    const footprint = constructionSiteFootprint(candidate);
+    return tx >= footprint.tx &&
+      tx < footprint.tx + footprint.width &&
+      ty >= footprint.ty &&
+      ty < footprint.ty + footprint.height;
   }) ?? null;
 }
 

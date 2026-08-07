@@ -6,6 +6,7 @@ import { spawnCarters, stepCarters } from "../src/agents/delivery";
 import type { CarterWalker } from "../src/agents/walker.types";
 import {
   constructionStall,
+  createPalisadeConstructionSite,
   type ConstructionSite,
 } from "../src/economy/construction";
 import {
@@ -258,4 +259,44 @@ test("material source exposure distinguishes absent stock from disconnected stoc
   // Then
   assert.equal(constructionStall(target, withoutStock), "no_material_source");
   assert.equal(constructionStall(target, disconnectedStock), "no_route");
+});
+
+test("wall construction sites use the existing construction delivery destination", () => {
+  // Given
+  const source = building("store", "storehouse", {
+    inventory: { timber: 30 },
+  });
+  const target = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 1, y: 1 }, { x: 3, y: 1 }],
+    startedTick: 0,
+  });
+  const routes = routePort({
+    "store->wall-a-segment-000": line([0, 0], [1, 0]),
+  });
+
+  // When
+  const result = spawnCarters({
+    tick: 139,
+    buildings: [source],
+    constructionSites: [target],
+    walkers: [],
+    treasuryTimber: 0,
+    inventory: DELIVERY_INVENTORY,
+    routes,
+  });
+  const carter = result.walkers[0] as CarterWalker;
+
+  // Then
+  assert.equal(result.walkers.length, 1);
+  assert.deepEqual(carter.destination, {
+    kind: "construction_site",
+    siteId: target.id,
+  });
+  assert.deepEqual(carter.cargo, { resource: "timber", amount: 8 });
+  assert.deepEqual(result.constructionSites[0]?.reserved, { timber: 8 });
 });

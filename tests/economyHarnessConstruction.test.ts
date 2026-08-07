@@ -11,24 +11,30 @@ import {
   constructionCommitmentLedger,
   resourceLedger,
 } from "../scripts/economyHarnessLedger";
-import type { ConstructionSite } from "../src/economy/construction";
+import {
+  isBuildingConstructionSite,
+  type BuildingConstructionSite,
+} from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 
-function firstSite(state: GameState): ConstructionSite {
+function firstSite(state: GameState): BuildingConstructionSite {
   const site = state.constructionSites[0];
   if (site === undefined) throw new Error("Expected at least one construction site");
+  if (!isBuildingConstructionSite(site)) {
+    throw new Error("Expected a building construction site");
+  }
   return site;
 }
 
 function withFirstSite(
   state: GameState,
-  mutate: (site: ConstructionSite) => ConstructionSite,
+  mutate: (site: BuildingConstructionSite) => BuildingConstructionSite,
 ): GameState {
   const site = firstSite(state);
   return {
     ...state,
     constructionSites: state.constructionSites.map((candidate) =>
-      candidate.id === site.id ? mutate(candidate) : candidate,
+      candidate.id === site.id ? mutate(site) : candidate,
     ),
   };
 }

@@ -3,7 +3,11 @@ import test from "node:test";
 
 import { cancelConstruction } from "../src/engine/constructionCancellation";
 import type { GameState } from "../src/engine/engine.types";
-import type { ConstructionSite } from "../src/economy/construction";
+import {
+  constructionSiteAnchor,
+  type BuildingConstructionSite,
+  type ConstructionSite,
+} from "../src/economy/construction";
 import type { CarterWalker, Walker } from "../src/agents/walker.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { DELIVERY_INVENTORY, building, line, routePort } from "./deliveryFixtures";
@@ -14,7 +18,7 @@ function site(
     readonly reserved?: ConstructionSite["reserved"];
     readonly assignedBuilders?: number;
   } = {},
-): ConstructionSite {
+): BuildingConstructionSite {
   return {
     id: "construction-site-000001",
     kind: "well",
@@ -39,6 +43,7 @@ function state(input: {
   readonly treasuryTimber?: number;
 }): GameState {
   const target = input.constructionSite;
+  const anchor = constructionSiteAnchor(target);
   return {
     ...DEFAULT_GAME_STATE,
     buildings: [...(input.buildings ?? [])],
@@ -47,7 +52,7 @@ function state(input: {
     idleWorkers: input.idleWorkers ?? 0,
     treasuryTimber: input.treasuryTimber ?? 0,
     tiles: DEFAULT_GAME_STATE.tiles.map((tile) =>
-      tile.tx === target.tx && tile.ty === target.ty
+      tile.tx === anchor.tx && tile.ty === anchor.ty
         ? { ...tile, buildingId: target.id }
         : tile,
     ),

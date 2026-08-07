@@ -6,6 +6,7 @@ import {
 } from "../content/buildingConfig";
 import {
   constructionDeliveryNeed,
+  isBuildingConstructionSite,
   type ConstructionSite,
 } from "../economy/construction";
 import type { TerrainType } from "../content/terrainConfig";
@@ -110,6 +111,7 @@ function footprintsIntersect(
   definition: BuildingDefinition,
   site: ConstructionSite,
 ): boolean {
+  if (!isBuildingConstructionSite(site)) return false;
   const siteDefinition = BUILDING_CONFIG_BY_KIND[site.kind];
   return (
     origin.tx < site.tx + siteDefinition.width &&

@@ -1,6 +1,10 @@
 import type { Building } from "../content/buildingConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import type { ConstructionSite } from "../economy/construction";
+import {
+  isBuildingConstructionSite,
+  type PalisadeConstructionSite,
+  type ConstructionSite,
+} from "../economy/construction";
 import type { Grid, TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
 import { findExistingRoadPath } from "../world/roadGraph";
@@ -49,6 +53,22 @@ function dedupeSortedRoads(
   return roads.sort(compareCoordinates);
 }
 
+function dedupeSortedNonWaterRoads(
+  grid: Grid,
+  candidates: readonly TileCoordinate[],
+): readonly TileCoordinate[] {
+  const roads: TileCoordinate[] = [];
+
+  for (const candidate of candidates) {
+    const tile = getTile(grid, candidate);
+    if (tile?.hasRoad !== true || tile.terrain === "water") continue;
+    if (roads.some((road) => sameCoordinate(road, candidate))) continue;
+    roads.push(candidate);
+  }
+
+  return roads.sort(compareCoordinates);
+}
+
 export function buildingRoadAccessTiles(
   grid: Grid,
   building: Building,
@@ -73,6 +93,9 @@ export function constructionSiteRoadAccessTiles(
   grid: Grid,
   site: ConstructionSite,
 ): readonly TileCoordinate[] {
+  if (!isBuildingConstructionSite(site)) {
+    return palisadeSegmentRoadAccessTiles(grid, site.path);
+  }
   const definition = BUILDING_CONFIG_BY_KIND[site.kind];
   const candidates: TileCoordinate[] = [];
 
@@ -87,6 +110,54 @@ export function constructionSiteRoadAccessTiles(
   }
 
   return dedupeSortedRoads(grid, candidates);
+}
+
+function palisadeSegmentRoadAccessTiles(
+  grid: Grid,
+  path: PalisadeConstructionSite["path"],
+): readonly TileCoordinate[] {
+  const candidates: TileCoordinate[] = [];
+  for (let index = 1; index < path.length; index += 1) {
+    const from = path[index - 1];
+    const to = path[index];
+    if (from === undefined || to === undefined) continue;
+    let current = from;
+    while (current.x !== to.x || current.y !== to.y) {
+      const next = {
+        x: current.x + Math.sign(to.x - current.x),
+        y: current.y + Math.sign(to.y - current.y),
+      };
+      candidates.push(...palisadeStepAdjacentTiles(current, next));
+      current = next;
+    }
+  }
+  return dedupeSortedNonWaterRoads(grid, candidates);
+}
+
+function palisadeStepAdjacentTiles(
+  from: { readonly x: number; readonly y: number },
+  to: { readonly x: number; readonly y: number },
+): readonly TileCoordinate[] {
+  const minX = Math.min(from.x, to.x);
+  const minY = Math.min(from.y, to.y);
+  if (from.y === to.y) {
+    return [
+      { tx: minX, ty: from.y - 1 },
+      { tx: minX, ty: from.y },
+    ];
+  }
+  if (from.x === to.x) {
+    return [
+      { tx: from.x - 1, ty: minY },
+      { tx: from.x, ty: minY },
+    ];
+  }
+  return [
+    { tx: minX, ty: minY },
+    { tx: minX + 1, ty: minY },
+    { tx: minX, ty: minY + 1 },
+    { tx: minX + 1, ty: minY + 1 },
+  ];
 }
 
 function shortestRoadPathBetweenAccessTiles(

@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type { ConstructionSite } from "../src/economy/construction";
+import type {
+  BuildingConstructionSite,
+} from "../src/economy/construction";
 import {
   constructionCompletionEffects,
   constructionSiteRenderSignature,
@@ -76,7 +78,7 @@ function loggedContext(): LoggedContext {
   return context as unknown as LoggedContext;
 }
 
-function site(patch: Partial<ConstructionSite> = {}): ConstructionSite {
+function site(patch: Partial<BuildingConstructionSite> = {}): BuildingConstructionSite {
   return {
     id: "construction-site-000001",
     kind: "storehouse",

@@ -1,8 +1,10 @@
-import {
-  BUILDING_CONFIG_BY_KIND,
-} from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
-import { constructionOnSiteLabel, type ConstructionSite } from "../economy/construction";
+import {
+  constructionOnSiteLabel,
+  constructionSiteAnchor,
+  constructionSiteDisplayName,
+  type ConstructionSite,
+} from "../economy/construction";
 
 const RESOURCE_LABELS = {
   wheat: "밀",
@@ -57,13 +59,14 @@ function deliveryLabel(site: ConstructionSite): string {
 }
 
 export function constructionSiteCardModel(site: ConstructionSite): ConstructionSiteCardModel {
-  const name = BUILDING_CONFIG_BY_KIND[site.kind].name;
+  const name = constructionSiteDisplayName(site);
+  const anchor = constructionSiteAnchor(site);
   return {
     siteId: site.id,
     name: `${name} 부지`,
     currentStallLabel: constructionOnSiteLabel(site),
     rows: [
-      { label: "부지", value: `${site.tx}, ${site.ty} · ${name}` },
+      { label: "부지", value: `${anchor.tx}, ${anchor.ty} · ${name}` },
       { label: "자재 확보", value: securedLabel(site) },
       { label: "자재 배달", value: deliveryLabel(site) },
       { label: "건축 작업", value: `${site.builderTicks}/${site.requiredBuilderTicks}틱 · 일꾼 ${site.assignedBuilders}명` },

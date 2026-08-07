@@ -5,6 +5,8 @@ import {
   advanceConstructionWork,
   canCompleteConstruction,
   constructionStall,
+  isBuildingConstructionSite,
+  type BuildingConstructionSite,
   type ConstructionSite,
 } from "../economy/construction";
 import type { House } from "../population/population.types";
@@ -20,7 +22,7 @@ export type ConstructionCompletionEvent = {
   readonly completedWallTick: number;
 };
 
-function buildingFromSite(site: ConstructionSite): Building {
+function buildingFromSite(site: BuildingConstructionSite): Building {
   return {
     id: site.id,
     kind: site.kind,
@@ -34,7 +36,7 @@ function buildingFromSite(site: ConstructionSite): Building {
   };
 }
 
-function houseFromSite(site: ConstructionSite): House | null {
+function houseFromSite(site: BuildingConstructionSite): House | null {
   return site.kind === "house"
     ? {
         buildingId: site.id,
@@ -71,9 +73,9 @@ export function recomputeConstructionStalls(state: GameState): ConstructionSite[
 }
 
 export function completeEligibleConstruction(state: GameState): GameState {
-  const completed = state.constructionSites.filter((site) =>
-    canCompleteConstruction(site, state.wallTick),
-  );
+  const completed = state.constructionSites
+    .filter(isBuildingConstructionSite)
+    .filter((site) => canCompleteConstruction(site, state.wallTick));
   if (completed.length === 0) return state;
 
   const completedIds = new Set(completed.map((site) => site.id));
@@ -100,6 +102,7 @@ export function constructionCompletionEvents(
 ): readonly ConstructionCompletionEvent[] {
   const afterBuildingIds = new Set(after.buildings.map((building) => building.id));
   return before.constructionSites
+    .filter(isBuildingConstructionSite)
     .filter((site) => afterBuildingIds.has(site.id))
     .map((site) => ({
       siteId: site.id,

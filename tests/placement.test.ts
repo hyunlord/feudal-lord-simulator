@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BUILDING_CONFIG, type BuildingKind } from "../src/content/buildingConfig";
+import { createPalisadeConstructionSite } from "../src/economy/construction";
 import type { TerrainType } from "../src/content/terrainConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { getTile, type Grid } from "../src/world/grid";
@@ -312,5 +313,32 @@ test("placement spendable timber matches building placement and excludes walker 
 
   // Then
   assert.equal(spendable, 15);
+  assert.deepEqual(result, { ok: true });
+});
+
+test("placement spendable timber treats wall construction commitment like building sites", () => {
+  // Given
+  const gridWithForest = setTile(grassGrid(8, 5), 4, 3, { terrain: "forest" });
+  const grid = setTile(gridWithForest, 3, 1, { hasRoad: true });
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 1, y: 1 }, { x: 5, y: 1 }],
+    startedTick: 0,
+  });
+  const world = {
+    ...worldFromGrid(grid, 100),
+    constructionSites: [wallSite],
+  };
+
+  // When
+  const spendable = placementSpendableResource(world, "timber");
+  const result = canPlaceBuilding(world, "logging_camp", 3, 2);
+
+  // Then
+  assert.equal(spendable, 40);
   assert.deepEqual(result, { ok: true });
 });

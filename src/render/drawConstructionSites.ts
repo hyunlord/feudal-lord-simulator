@@ -1,7 +1,11 @@
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
-import type { ConstructionSite } from "../economy/construction";
-import { constructionOnSiteLabel, constructionStage } from "../economy/construction";
+import {
+  constructionOnSiteLabel,
+  constructionSiteAnchor,
+  constructionSiteFootprint,
+  constructionStage,
+  type ConstructionSite,
+} from "../economy/construction";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel, withAlpha } from "./style";
 
@@ -60,13 +64,13 @@ export function drawConstructionSite(
   input: DrawConstructionSiteInput,
 ): void {
   const anchor = siteAnchor(input.site);
-  const definition = BUILDING_CONFIG_BY_KIND[input.site.kind];
+  const footprint = constructionSiteFootprint(input.site);
   drawGroundingShadow(context, {
-    centerX: anchor.x + definition.width * 18,
-    centerY: anchor.y + definition.height * 6,
+    centerX: anchor.x + footprint.width * 18,
+    centerY: anchor.y + footprint.height * 6,
     height: 28,
-    baseRadiusX: 20 + definition.width * 15,
-    baseRadiusY: 5 + definition.height * 3,
+    baseRadiusX: 20 + footprint.width * 15,
+    baseRadiusY: 5 + footprint.height * 3,
   });
   drawSiteLabel(context, input.site, anchor, input.zoom);
   drawStage(context, {
@@ -85,7 +89,10 @@ export function constructionCompletionEffects(
   if (ageMs < 0 || ageMs >= COMPLETION_EFFECT_MS) return [];
   return input.previous
     .filter((site) => !currentIds.has(site.id))
-    .map((site) => ({ id: site.id, tx: site.tx, ty: site.ty, ageMs }));
+    .map((site) => {
+      const anchor = constructionSiteAnchor(site);
+      return { id: site.id, tx: anchor.tx, ty: anchor.ty, ageMs };
+    });
 }
 
 export function constructionCompletionEffectsForFrame(
@@ -95,7 +102,10 @@ export function constructionCompletionEffectsForFrame(
   const currentIds = new Set(current.map((site) => site.id));
   const newEffects = previousSites
     .filter((site) => !currentIds.has(site.id))
-    .map((site) => ({ id: site.id, tx: site.tx, ty: site.ty, startedAtMs: nowMs }));
+    .map((site) => {
+      const anchor = constructionSiteAnchor(site);
+      return { id: site.id, tx: anchor.tx, ty: anchor.ty, startedAtMs: nowMs };
+    });
   previousSites = current;
   activeCompletionEffects = [...activeCompletionEffects, ...newEffects].filter(
     (effect) => nowMs - effect.startedAtMs < COMPLETION_EFFECT_MS,
@@ -245,8 +255,9 @@ function drawSiteLabel(
   context.fillText(label, x, y);
 }
 
-function siteAnchor(site: Pick<ConstructionSite, "tx" | "ty">): Point {
-  const screen = tileToScreen(site.tx, site.ty);
+function siteAnchor(site: ConstructionSite | Pick<ConstructionCompletionEffect, "tx" | "ty">): Point {
+  const anchor = "kind" in site ? constructionSiteAnchor(site) : site;
+  const screen = tileToScreen(anchor.tx, anchor.ty);
   return { x: screen.sx, y: screen.sy };
 }
 

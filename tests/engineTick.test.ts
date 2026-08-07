@@ -2,7 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building } from "../src/content/buildingConfig";
-import type { ConstructionSite } from "../src/economy/construction";
+import type {
+  BuildingConstructionSite,
+  ConstructionSite,
+} from "../src/economy/construction";
 import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
@@ -95,7 +98,7 @@ function state(input: {
   };
 }
 
-function site(id: string, patch: Partial<ConstructionSite> = {}): ConstructionSite {
+function site(id: string, patch: Partial<BuildingConstructionSite> = {}): BuildingConstructionSite {
   return {
     id,
     kind: "well",

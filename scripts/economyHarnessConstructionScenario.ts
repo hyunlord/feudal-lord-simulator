@@ -4,7 +4,7 @@ import {
   type BuildingKind,
 } from "../src/content/buildingConfig";
 import { createConstructionSite } from "../src/economy/construction";
-import type { ConstructionSite } from "../src/economy/construction";
+import type { BuildingConstructionSite } from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 import type { TileCoordinate } from "../src/world/grid";
 import type { Tile } from "../src/world/world.types";
@@ -38,7 +38,7 @@ function tileIsInFootprint(
 
 function occupySiteTiles(
   tiles: readonly Tile[],
-  site: ConstructionSite,
+  site: BuildingConstructionSite,
 ): readonly Tile[] {
   const definition = BUILDING_CONFIG_BY_KIND[site.kind];
   return tiles.map((tile) =>

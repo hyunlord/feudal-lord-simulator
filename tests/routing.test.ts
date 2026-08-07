@@ -2,10 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building } from "../src/content/buildingConfig";
-import type { ConstructionSite } from "../src/economy/construction";
+import {
+  createPalisadeConstructionSite,
+  type ConstructionSite,
+} from "../src/economy/construction";
 import type { GameState, RoadPathCache } from "../src/engine/engine.types";
 import {
   buildingRoadAccessTiles,
+  constructionSiteRoadAccessTiles,
   resolveBuildingToConstructionSiteRoute,
   resolveBuildingRoute,
   resolveRoadToConstructionSiteRoute,
@@ -294,4 +298,80 @@ test("construction-site routes use tagged cache keys and road-to-site access", (
     { tx: 3, ty: 1 },
     { tx: 4, ty: 1 },
   ]);
+});
+
+test("palisade construction access is sorted road-only adjacent tiles without water access", () => {
+  // Given
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 2, y: 2 }, { x: 6, y: 2 }],
+    startedTick: 0,
+  });
+  const gridWithRoads = setRoads(grassGrid(9, 5), [
+    { tx: 4, ty: 1 },
+    { tx: 2, ty: 2 },
+    { tx: 3, ty: 2 },
+    { tx: 4, ty: 2 },
+    { tx: 5, ty: 2 },
+    { tx: 6, ty: 2 },
+    { tx: 2, ty: 3 },
+  ]);
+  const grid = {
+    ...gridWithRoads,
+    tiles: gridWithRoads.tiles.map((candidate) =>
+      candidate.tx === 4 && candidate.ty === 2
+        ? { ...candidate, terrain: "water" as const }
+        : candidate,
+    ),
+  };
+
+  // When
+  const accessTiles = constructionSiteRoadAccessTiles(grid, wallSite);
+
+  // Then
+  assert.deepEqual(accessTiles, [
+    { tx: 4, ty: 1 },
+    { tx: 2, ty: 2 },
+    { tx: 3, ty: 2 },
+    { tx: 5, ty: 2 },
+  ]);
+});
+
+test("palisade construction route uses access roads without mutating road tiles", () => {
+  // Given
+  const source = building("storehouse-a", "storehouse", { tx: 1, ty: 1 });
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 4, y: 2 }, { x: 8, y: 2 }],
+    startedTick: 0,
+  });
+  const grid = setRoads(grassGrid(10, 5), [
+    { tx: 3, ty: 1 },
+    { tx: 4, ty: 1 },
+    { tx: 5, ty: 1 },
+  ]);
+  const state = worldFromGrid(grid, [source], {}, [wallSite]);
+
+  // When
+  const first = resolveBuildingToConstructionSiteRoute(state, source, wallSite);
+  const roadToSite = resolveRoadToConstructionSiteRoute(state, { tx: 3, ty: 1 }, wallSite);
+
+  // Then
+  assert.deepEqual(first.path, [
+    { tx: 3, ty: 1 },
+    { tx: 4, ty: 1 },
+  ]);
+  assert.deepEqual(roadToSite, [
+    { tx: 3, ty: 1 },
+    { tx: 4, ty: 1 },
+  ]);
+  assert.deepEqual(state.tiles, grid.tiles);
 });

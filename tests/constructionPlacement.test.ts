@@ -235,7 +235,7 @@ test("sixty direct advanceTick calls satisfy the construction wall-time floor an
     delivered: initialSite.required,
     builderTicks: initialSite.requiredBuilderTicks,
   };
-  let state = Object.assign(buildableSettlement(), {
+  let state: GameState = Object.assign(buildableSettlement(), {
     constructionSites: [readySite],
     wallTick: 0,
   });

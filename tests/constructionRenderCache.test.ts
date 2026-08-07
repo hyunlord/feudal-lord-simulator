@@ -4,7 +4,10 @@ import test from "node:test";
 import type { Walker } from "../src/agents/walker.types";
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
-import type { ConstructionSite } from "../src/economy/construction";
+import {
+  createPalisadeConstructionSite,
+  type ConstructionSite,
+} from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 import { objectRenderItemsForFrame } from "../src/render/renderObjectFrameCache";
 import type { Tile } from "../src/world/world.types";
@@ -92,5 +95,39 @@ test("objectRenderItemsForFrame invalidates static cache when construction sites
   // Then
   assert.deepEqual(items.map((item) => `${item.kind}:${item.id}`), [
     "construction_site:site-b",
+  ]);
+});
+
+test("objectRenderItemsForFrame accepts palisade construction sites without building config lookup", () => {
+  // Given
+  const tiles = Array.from({ length: 25 }, (_, index) => tile(index % 5, Math.floor(index / 5)));
+  const wallSite = createPalisadeConstructionSite({
+    id: "wall-a-segment-000",
+    wallId: "wall-a",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 1, y: 1 }, { x: 5, y: 1 }],
+    startedTick: 0,
+  });
+  const state = worldState({
+    seed: 23,
+    tiles,
+    width: 5,
+    height: 5,
+    constructionSites: [wallSite],
+  });
+
+  // When
+  const items = objectRenderItemsForFrame({
+    state,
+    visibleTiles: tiles,
+    range: { minTx: 0, minTy: 0, maxTx: 4, maxTy: 4 },
+    includeGroundCover: false,
+  });
+
+  // Then
+  assert.deepEqual(items.map((item) => `${item.kind}:${item.id}`), [
+    "construction_site:wall-a-segment-000",
   ]);
 });

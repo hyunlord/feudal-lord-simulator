@@ -3,6 +3,10 @@ import {
   type Building,
 } from "../content/buildingConfig";
 import { BALANCE } from "../content/balanceConfig";
+import {
+  constructionSiteAnchor,
+  type ConstructionSite,
+} from "../economy/construction";
 
 export interface LabourRequest {
   readonly buildingId: string;
@@ -27,15 +31,7 @@ export type BuildingAndConstructionLabourResult = {
 
 export type ConstructionLabourStall = "awaiting_materials" | "no_builders" | "none";
 
-export type ConstructionLabourSite = {
-  readonly id: string;
-  readonly tx: number;
-  readonly ty: number;
-  readonly required: object;
-  readonly delivered: object;
-  readonly assignedBuilders: number;
-  readonly stall: string;
-};
+export type ConstructionLabourSite = ConstructionSite;
 
 export type BuilderLabourWalker = {
   readonly id: string;
@@ -186,21 +182,22 @@ export function builderWalkersForSites(
 ): readonly BuilderLabourWalker[] {
   return [...constructionSites]
     .sort((left, right) => left.id.localeCompare(right.id))
-    .flatMap((site) =>
-      BUILDER_ANCHORS.slice(0, wholeNonnegative(site.assignedBuilders)).map(
+    .flatMap((site) => {
+      const siteAnchor = constructionSiteAnchor(site);
+      return BUILDER_ANCHORS.slice(0, wholeNonnegative(site.assignedBuilders)).map(
         (anchor, slotIndex): BuilderLabourWalker => ({
           id: `builder:${site.id}:${slotIndex}`,
           kind: "builder",
           homeBuildingId: site.id,
           siteId: site.id,
           slotIndex,
-          position: { tx: site.tx + anchor.tx, ty: site.ty + anchor.ty },
+          position: { tx: siteAnchor.tx + anchor.tx, ty: siteAnchor.ty + anchor.ty },
           path: [],
           pathIndex: 0,
           previousTile: null,
           cargo: null,
           spawnedTick: 0,
         }),
-      ),
-    );
+      );
+    });
 }

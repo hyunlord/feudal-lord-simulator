@@ -1,30 +1,33 @@
-import {
-  BUILDING_CONFIG_BY_KIND,
-  type BuildingKind,
-} from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
-
-export type ConstructionStall =
-  | "none"
-  | "awaiting_materials"
-  | "no_material_source"
-  | "no_route"
-  | "no_builders";
-
-export interface ConstructionSite {
-  readonly id: string;
-  readonly kind: BuildingKind;
-  readonly tx: number;
-  readonly ty: number;
-  readonly required: Partial<Record<ResourceType, number>>;
-  readonly delivered: Partial<Record<ResourceType, number>>;
-  readonly reserved: Partial<Record<ResourceType, number>>;
-  readonly builderTicks: number;
-  readonly requiredBuilderTicks: number;
-  readonly assignedBuilders: number;
-  readonly stall: ConstructionStall;
-  readonly startedTick: number;
-}
+import {
+  CONSTRUCTION,
+  type ConstructionResourceAmounts,
+  type ConstructionSite,
+  type ConstructionStall,
+} from "./constructionSites";
+export {
+  CONSTRUCTION,
+  InvalidPalisadeConstructionSiteError,
+  constructionSiteId,
+  createConstructionSite,
+  createPalisadeConstructionSite,
+  requiredConstructionMaterials,
+  type BuildingConstructionSite,
+  type ConstructionResourceAmounts,
+  type ConstructionSite,
+  type ConstructionSiteFootprint,
+  type ConstructionStall,
+  type CreateConstructionSiteInput,
+  type CreatePalisadeConstructionSiteInput,
+  type PalisadeConstructionSite,
+} from "./constructionSites";
+export {
+  constructionSiteAnchor,
+  constructionSiteCacheKey,
+  constructionSiteDisplayName,
+  constructionSiteFootprint,
+  isBuildingConstructionSite,
+} from "./constructionSiteAccessors";
 
 export type ConstructionStage =
   | "marked_plot"
@@ -40,42 +43,14 @@ export type MaterialSource = {
 
 export type ConstructionMaterialStatus = {
   readonly complete: boolean;
-  readonly delivered: Partial<Record<ResourceType, number>>;
-  readonly outstanding: Partial<Record<ResourceType, number>>;
+  readonly delivered: ConstructionResourceAmounts;
+  readonly outstanding: ConstructionResourceAmounts;
 };
 
 export type ConstructionRefunds = {
-  readonly deliveredRefund: Partial<Record<ResourceType, number>>;
-  readonly deliveredLost: Partial<Record<ResourceType, number>>;
-  readonly reservedRelease: Partial<Record<ResourceType, number>>;
-};
-
-export type CreateConstructionSiteInput = {
-  readonly ordinal: number;
-  readonly kind: BuildingKind;
-  readonly tx: number;
-  readonly ty: number;
-  readonly startedTick: number;
-};
-
-export const CONSTRUCTION = {
-  MAX_BUILDERS_PER_SITE: 3,
-  MIN_VISIBLE_TICKS: 60,
-  REQUIRED_BUILDER_TICKS: {
-    house: 240,
-    well: 200,
-    logging_camp: 400,
-    sawmill: 600,
-    mill: 600,
-    storehouse: 800,
-    granary: 800,
-    chapel: 600,
-    wheat_farm: 500,
-  },
-} as const satisfies {
-  readonly MAX_BUILDERS_PER_SITE: number;
-  readonly MIN_VISIBLE_TICKS: number;
-  readonly REQUIRED_BUILDER_TICKS: Record<BuildingKind, number>;
+  readonly deliveredRefund: ConstructionResourceAmounts;
+  readonly deliveredLost: ConstructionResourceAmounts;
+  readonly reservedRelease: ConstructionResourceAmounts;
 };
 
 const RESOURCE_LABELS = {
@@ -102,37 +77,6 @@ function positiveResourceAmounts(
     if (value > 0) result[resource] = value;
   }
   return result;
-}
-
-export function requiredConstructionMaterials(
-  kind: BuildingKind,
-): Partial<Record<ResourceType, number>> {
-  return positiveResourceAmounts(
-    (resource) => BUILDING_CONFIG_BY_KIND[kind].buildCost[resource] ?? 0,
-  );
-}
-
-export function constructionSiteId(ordinal: number): string {
-  return `construction-site-${String(ordinal).padStart(6, "0")}`;
-}
-
-export function createConstructionSite(input: CreateConstructionSiteInput): ConstructionSite {
-  const required = requiredConstructionMaterials(input.kind);
-  const hasMaterialNeed = RESOURCE_TYPES.some((resource) => amount(required, resource) > 0);
-  return {
-    id: constructionSiteId(input.ordinal),
-    kind: input.kind,
-    tx: input.tx,
-    ty: input.ty,
-    required,
-    delivered: {},
-    reserved: {},
-    builderTicks: 0,
-    requiredBuilderTicks: CONSTRUCTION.REQUIRED_BUILDER_TICKS[input.kind],
-    assignedBuilders: 0,
-    stall: hasMaterialNeed ? "awaiting_materials" : "no_builders",
-    startedTick: input.startedTick,
-  };
 }
 
 export function constructionMaterialStatus(site: ConstructionSite): ConstructionMaterialStatus {
