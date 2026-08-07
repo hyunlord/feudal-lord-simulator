@@ -196,7 +196,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, clamp\(18px, 3\.5vw, 21px\)\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?justify-content:\s*center;/);
   assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?right:\s*calc\(33\.333% \+ 4px\);/);
-  assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?bottom:\s*228px;/);
+  assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?bottom:\s*232px;/);
   assert.match(mobileRules, /\.welcome-parchment\s*\{[\s\S]*?bottom:\s*266px;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)\s*\{[\s\S]*?animation:\s*none;/);
   assert.doesNotMatch(css, /\.court-console::(?:before|after)/);

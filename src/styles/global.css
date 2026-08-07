@@ -1534,7 +1534,7 @@ button {
 
   .settlement-status {
     right: calc(33.333% + 4px);
-    bottom: 228px;
+    bottom: 232px;
     left: 6px;
     justify-content: center;
     padding: 5px 8px;
@@ -1682,8 +1682,18 @@ button {
 
   .settlement-status {
     right: calc(33.333% + 4px);
-    bottom: 220px;
+    bottom: 232px;
     left: 4px;
     padding: 4px 6px;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 420px) {
+  .right-info-rail {
+    display: none;
+  }
+
+  .settlement-status {
+    bottom: 284px;
   }
 }

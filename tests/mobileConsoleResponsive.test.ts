@@ -5,7 +5,8 @@ import test from "node:test";
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
 
 function mediaBlocks(css: string, query: string): string {
-  const marker = `@media (${query}) {`;
+  const condition = query.startsWith("(") ? query : `(${query})`;
+  const marker = `@media ${condition} {`;
   const blocks: string[] = [];
   let searchStart = 0;
 
@@ -53,6 +54,12 @@ function cssRule(block: string, selector: string): string {
   assert.fail(`${selector} rule closes`);
 }
 
+function pxDeclaration(rule: string, property: string): number {
+  const match = rule.match(new RegExp(`${property}:\\s*(\\d+)px;`));
+  assert.notEqual(match, null, `${property} px declaration exists`);
+  return Number(match?.[1]);
+}
+
 test("Given 375px console CSS When compact overrides apply Then build seals remain 48px horizontal scroll controls", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
@@ -71,6 +78,40 @@ test("Given 375px console CSS When compact overrides apply Then build seals rema
   assert.doesNotMatch(buildSealsRule, /overflow:\s*hidden;/);
   assert.match(buildSealRule, /min-width:\s*48px;/);
   assert.match(buildSealRule, /min-height:\s*48px;/);
+});
+
+test("Given 375px portrait CSS When compact overrides apply Then settlement status clears the court console by eight pixels", async () => {
+  // Given
+  const css = await readFile(STYLESHEET, "utf8");
+  const compactRules = mediaBlocks(css, "max-width: 420px");
+  const consoleRule = cssRule(mediaBlocks(css, "max-width: 600px"), ".court-console");
+  const statusRule = cssRule(compactRules, ".settlement-status");
+
+  // When
+  const consoleHeight = pxDeclaration(consoleRule, "height");
+  const statusBottom = pxDeclaration(statusRule, "bottom");
+
+  // Then
+  assert.equal(consoleHeight, 224);
+  assert.ok(statusBottom >= consoleHeight + 8);
+});
+
+test("Given 640px low-height landscape CSS When responsive overrides apply Then rails do not overlap the court console", async () => {
+  // Given
+  const css = await readFile(STYLESHEET, "utf8");
+  const landscapeRules = mediaBlocks(css, "(max-width: 900px) and (max-height: 420px)");
+  const consoleRule = cssRule(mediaBlocks(css, "max-width: 900px"), ".court-console");
+  const statusRule = cssRule(landscapeRules, ".settlement-status");
+  const railRule = cssRule(landscapeRules, ".right-info-rail");
+
+  // When
+  const consoleHeight = pxDeclaration(consoleRule, "height");
+  const statusBottom = pxDeclaration(statusRule, "bottom");
+
+  // Then
+  assert.equal(consoleHeight, 276);
+  assert.ok(statusBottom >= consoleHeight + 8);
+  assert.match(railRule, /display:\s*none;/);
 });
 
 test("Given mobile era rail CSS When content wraps Then the top console does not self-clip actions or guidance text", async () => {
