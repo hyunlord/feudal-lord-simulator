@@ -1,5 +1,9 @@
-generatedAt=2026-08-07T14:44:57.770Z
+generatedAt=2026-08-07T15:11:33.635Z
 playwrightVerdict=PASS
+welcomeFailures=0
+welcomeBefore=role:dialog aria-modal:true tabindex:-1 activeRole:dialog inert:true aria-hidden:true armedBuilds:0
+welcomeAfterKeyboard=dialogCount:1 armedBuilds:0
+welcomeAfterDismiss=dialogCount:0 inert:false aria-hidden:null focusableBuild:오두막
 viewport=1280x720 failures=0 warnings=0 scrollWidth=268 clientWidth=268 beforeScroll=0 afterScroll=0
 tooltip=1280x720:오두막 display=block rect=358.390625,204,220x75.9375
 tooltip=1280x720:길 display=block rect=358.390625,204,220x75.9375
@@ -12,8 +16,3 @@ tooltip=375x812:길 display=block rect=105,154,150x72.78125
 unaffordableHarnessFailures=0
 fatalConsole=0
 pageErrors=0
-tests=npx tsx --test tests/onboardingUi.test.ts tests/buildMenuContracts.test.ts tests/contrastGate.test.ts => pass 20
-contrast=npx tsx scripts/checkContrast.ts => pass
-typecheck=npm run typecheck => pass
-build=npm run build => pass
-cleanup=port 5179 clear

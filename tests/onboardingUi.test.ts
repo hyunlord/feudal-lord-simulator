@@ -25,6 +25,10 @@ test("welcome parchment renders exact opening copy and dismiss affordance", () =
 
   // Then
   assert.match(markup, /aria-label="Opening guidance"/);
+  assert.match(markup, /role="dialog"/);
+  assert.match(markup, /aria-modal="true"/);
+  assert.match(markup, /tabindex="-1"/);
+  assert.match(markup, /class="app-interaction-layer" inert="" aria-hidden="true"/);
   assert.match(markup, /영지에 오신 것을 환영합니다/);
   assert.match(markup, /왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요\./);
   assert.match(markup, /마우스 휠로 확대, 드래그로 이동합니다\./);
@@ -49,6 +53,10 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.match(source, /presentationNowMs/);
   assert.match(source, /setPresentationNowMs\(Date\.now\(\)\)/);
   assert.match(source, /stopPropagation\(\)/);
+  assert.match(source, /dialogRef\.current\?\.focus\(\)/);
+  assert.match(source, /onKeyDown=\{containKeyboard\}/);
+  assert.match(source, /inert=\{welcomeVisible \? true : undefined\}/);
+  assert.match(source, /aria-hidden=\{welcomeVisible \? true : undefined\}/);
   assert.match(source, /feudal-lord-simulator:welcome-dismissed:v1/);
   assert.match(source, /localStorage\.setItem\(WELCOME_DISMISSED_KEY, "1"\)/);
   assert.match(source, /localStorage\.getItem\(WELCOME_DISMISSED_KEY\) === "1"/);
@@ -147,7 +155,7 @@ test("hidden seal tooltips do not inflate responsive console scroll width", asyn
   // Given / When
   const css = await readFile(GLOBAL_CSS_SOURCE, "utf8");
   const tooltipRule = css.match(/\.seal-tooltip\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
-  const hoverRule = css.match(/\.build-seal:hover \.seal-tooltip,\s*\n\.build-seal:focus-visible \.seal-tooltip\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  const hoverRule = css.match(/\.build-seal:hover \+ \.seal-tooltip,[\s\S]*?\.build-seal:focus-visible \+ \.seal-tooltip\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
 
   // Then
   assert.match(tooltipRule, /display:\s*none;/);
@@ -177,7 +185,7 @@ test("seal tray and tooltips stay inside their assigned geometry lanes", async (
     .join("\n");
 
   // Then
-  assert.match(sealRecessRule, /overflow:\s*hidden;/);
+  assert.match(sealRecessRule, /overflow:\s*visible;/);
   assert.match(buildSealsRule, /max-height:\s*100%;/);
   assert.match(buildSealsRule, /overflow-x:\s*auto;/);
   assert.match(buildSealsRule, /overflow-y:\s*hidden;/);

@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { Fragment, useId } from "react";
 
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
@@ -77,27 +77,28 @@ function renderSeal(input: RenderSealInput) {
   ].filter((item) => item !== null).join(" ");
 
   return (
-    <button
-      key={input.option.tool}
-      className={className}
-      type="button"
-      aria-label={input.option.label}
-      aria-describedby={tooltipId}
-      aria-disabled={!affordability.affordable}
-      aria-pressed={isSelected}
-      data-affordable={affordability.affordable ? "true" : "false"}
-      data-highlighted={isHighlighted ? input.option.tool : undefined}
-      onClick={() => {
-        if (affordability.affordable) input.onSelect(input.option.tool);
-      }}
-    >
-      <BuildGlyph tool={input.option.tool} />
-      <span className="build-seal-label" aria-hidden="true">{input.option.label}</span>
+    <Fragment key={input.option.tool}>
+      <button
+        className={className}
+        type="button"
+        aria-label={input.option.label}
+        aria-describedby={tooltipId}
+        aria-disabled={!affordability.affordable}
+        aria-pressed={isSelected}
+        data-affordable={affordability.affordable ? "true" : "false"}
+        data-highlighted={isHighlighted ? input.option.tool : undefined}
+        onClick={() => {
+          if (affordability.affordable) input.onSelect(input.option.tool);
+        }}
+      >
+        <BuildGlyph tool={input.option.tool} />
+        <span className="build-seal-label" aria-hidden="true">{input.option.label}</span>
+      </button>
       <span id={tooltipId} className="seal-tooltip" role="tooltip">
         {buildToolTooltipLines(input.option.tool, input.menuState).map((line) => (
           <span key={line}>{line}</span>
         ))}
       </span>
-    </button>
+    </Fragment>
   );
 }

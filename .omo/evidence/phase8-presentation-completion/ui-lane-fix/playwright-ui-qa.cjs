@@ -291,6 +291,9 @@ async function collectViewport(page, viewport) {
     const button = page.locator(`.build-seal[aria-label="${label}"]`).first();
     await button.scrollIntoViewIfNeeded();
     await button.hover({ force: true });
+    await page
+      .locator(`.build-seal[aria-label="${label}"] + .seal-tooltip`)
+      .waitFor({ state: "visible", timeout: 1_000 });
     await page.screenshot({
       path: path.join(outDir, screenshotName),
       fullPage: true,
@@ -472,6 +475,90 @@ async function collectUnaffordableHarness(page) {
   return { harnessPath, before, after, failures, warnings: [] };
 }
 
+async function collectWelcomeProof(page) {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto(baseUrl, { waitUntil: "load" });
+  await page.evaluate(() =>
+    localStorage.removeItem("feudal-lord-simulator:welcome-dismissed:v1"),
+  );
+  await page.reload({ waitUntil: "load" });
+  await page.locator(".welcome-parchment").waitFor({ state: "visible", timeout: 10_000 });
+  await page.screenshot({
+    path: path.join(outDir, "welcome-modal-first-load.png"),
+    fullPage: true,
+  });
+
+  const beforeKeyboard = await page.evaluate(() => {
+    const dialog = document.querySelector(".welcome-parchment");
+    const layer = document.querySelector(".app-interaction-layer");
+    const active = document.activeElement;
+    return {
+      dialogCount: document.querySelectorAll(".welcome-parchment").length,
+      dialogRole: dialog?.getAttribute("role") ?? null,
+      dialogAriaModal: dialog?.getAttribute("aria-modal") ?? null,
+      dialogTabIndex: dialog?.getAttribute("tabindex") ?? null,
+      activeClass: active?.getAttribute("class") ?? active?.tagName ?? null,
+      activeRole: active?.getAttribute("role") ?? null,
+      interactionLayerInert: layer?.hasAttribute("inert") ?? false,
+      interactionLayerAriaHidden: layer?.getAttribute("aria-hidden") ?? null,
+      pressedLabels: Array.from(document.querySelectorAll('.build-seal[aria-pressed="true"]')).map(
+        (item) => item.getAttribute("aria-label"),
+      ),
+    };
+  });
+
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Enter");
+  await page.screenshot({
+    path: path.join(outDir, "welcome-keyboard-blocked.png"),
+    fullPage: true,
+  });
+  const afterKeyboard = await page.evaluate(() => {
+    const active = document.activeElement;
+    return {
+      dialogCount: document.querySelectorAll(".welcome-parchment").length,
+      activeClass: active?.getAttribute("class") ?? active?.tagName ?? null,
+      activeRole: active?.getAttribute("role") ?? null,
+      pressedLabels: Array.from(document.querySelectorAll('.build-seal[aria-pressed="true"]')).map(
+        (item) => item.getAttribute("aria-label"),
+      ),
+    };
+  });
+
+  await page.locator(".welcome-dismiss-layer").click({ position: { x: 8, y: 8 }, force: true });
+  await page.locator(".welcome-parchment").waitFor({ state: "detached", timeout: 5_000 });
+  const afterDismiss = await page.evaluate(() => {
+    const layer = document.querySelector(".app-interaction-layer");
+    const firstBuild = document.querySelector(".build-seal");
+    firstBuild?.focus();
+    const active = document.activeElement;
+    return {
+      dialogCount: document.querySelectorAll(".welcome-parchment").length,
+      interactionLayerInert: layer?.hasAttribute("inert") ?? false,
+      interactionLayerAriaHidden: layer?.getAttribute("aria-hidden") ?? null,
+      focusableBuildLabel: active?.getAttribute("aria-label") ?? null,
+      focusableBuildClass: active?.getAttribute("class") ?? active?.tagName ?? null,
+    };
+  });
+
+  const failures = [];
+  if (beforeKeyboard.dialogCount !== 1) failures.push(`welcome dialog count before keyboard=${beforeKeyboard.dialogCount}`);
+  if (beforeKeyboard.dialogRole !== "dialog") failures.push(`welcome role=${beforeKeyboard.dialogRole}`);
+  if (beforeKeyboard.dialogAriaModal !== "true") failures.push(`welcome aria-modal=${beforeKeyboard.dialogAriaModal}`);
+  if (beforeKeyboard.dialogTabIndex !== "-1") failures.push(`welcome tabindex=${beforeKeyboard.dialogTabIndex}`);
+  if (beforeKeyboard.activeRole !== "dialog") failures.push(`welcome did not receive initial focus: activeRole=${beforeKeyboard.activeRole} activeClass=${beforeKeyboard.activeClass}`);
+  if (!beforeKeyboard.interactionLayerInert) failures.push("interaction layer missing inert while welcome is visible");
+  if (beforeKeyboard.interactionLayerAriaHidden !== "true") failures.push(`interaction layer aria-hidden=${beforeKeyboard.interactionLayerAriaHidden}`);
+  if (afterKeyboard.dialogCount !== 1) failures.push(`Tab/Enter dismissed welcome before click: count=${afterKeyboard.dialogCount}`);
+  if (afterKeyboard.pressedLabels.length > 0) failures.push(`Tab/Enter armed build before dismiss: ${afterKeyboard.pressedLabels.join(",")}`);
+  if (afterDismiss.dialogCount !== 0) failures.push(`welcome still present after click dismiss: count=${afterDismiss.dialogCount}`);
+  if (afterDismiss.interactionLayerInert) failures.push("interaction layer still inert after dismiss");
+  if (afterDismiss.interactionLayerAriaHidden !== null) failures.push(`interaction layer aria-hidden still set after dismiss=${afterDismiss.interactionLayerAriaHidden}`);
+  if (!afterDismiss.focusableBuildLabel) failures.push(`build seal not focusable after dismiss: active=${afterDismiss.focusableBuildClass}`);
+
+  return { beforeKeyboard, afterKeyboard, afterDismiss, failures, warnings: [] };
+}
+
 async function run() {
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
@@ -490,6 +577,7 @@ async function run() {
       text: `${req.url()} ${req.failure()?.errorText ?? ""}`.trim(),
     });
   });
+  const welcomeProof = await collectWelcomeProof(page);
   const results = [];
   for (const viewport of viewports) {
     results.push(await collectViewport(page, viewport));
@@ -539,14 +627,23 @@ async function run() {
     fatalConsole,
     verdict:
       results.every((item) => item.failures.length === 0) &&
+      welcomeProof.failures.length === 0 &&
       interaction.keyboardPressed === "true" &&
       unaffordableHarness.failures.length === 0 &&
       pageErrors.length === 0 &&
       fatalConsole.length === 0
         ? "PASS"
         : "FAIL",
+    welcomeProof,
     unaffordableHarness,
   };
+  if (welcomeProof.failures.length > 0) {
+    result.results.push({
+      viewport: { width: 375, height: 812, fixture: "welcome-first-load" },
+      failures: welcomeProof.failures,
+      warnings: [],
+    });
+  }
   if (interaction.keyboardPressed !== "true") {
     result.results.push({
       viewport: { width: 1280, height: 720 },
@@ -563,8 +660,28 @@ async function run() {
       warnings: [],
     });
   }
+  const statusLines = [
+    `generatedAt=${result.generatedAt}`,
+    `playwrightVerdict=${result.verdict}`,
+    `welcomeFailures=${welcomeProof.failures.length}`,
+    `welcomeBefore=role:${welcomeProof.beforeKeyboard.dialogRole} aria-modal:${welcomeProof.beforeKeyboard.dialogAriaModal} tabindex:${welcomeProof.beforeKeyboard.dialogTabIndex} activeRole:${welcomeProof.beforeKeyboard.activeRole} inert:${welcomeProof.beforeKeyboard.interactionLayerInert} aria-hidden:${welcomeProof.beforeKeyboard.interactionLayerAriaHidden} armedBuilds:${welcomeProof.beforeKeyboard.pressedLabels.length}`,
+    `welcomeAfterKeyboard=dialogCount:${welcomeProof.afterKeyboard.dialogCount} armedBuilds:${welcomeProof.afterKeyboard.pressedLabels.length}`,
+    `welcomeAfterDismiss=dialogCount:${welcomeProof.afterDismiss.dialogCount} inert:${welcomeProof.afterDismiss.interactionLayerInert} aria-hidden:${welcomeProof.afterDismiss.interactionLayerAriaHidden} focusableBuild:${welcomeProof.afterDismiss.focusableBuildLabel}`,
+    ...results.flatMap((item) => [
+      `viewport=${item.viewport.width}x${item.viewport.height} failures=${item.failures.length} warnings=${item.warnings.length} scrollWidth=${item.buildSealsMetrics?.scrollWidth ?? "missing"} clientWidth=${item.buildSealsMetrics?.clientWidth ?? "missing"} beforeScroll=${item.buildSealsMetrics?.beforeScroll ?? "missing"} afterScroll=${item.buildSealsMetrics?.afterScroll ?? "missing"}`,
+      ...item.tooltipProofs.map(
+        (proof) =>
+          `tooltip=${item.viewport.width}x${item.viewport.height}:${proof.label} display=${proof.tooltipDisplay} rect=${proof.tooltip?.left ?? "missing"},${proof.tooltip?.top ?? "missing"},${proof.tooltip?.width ?? "missing"}x${proof.tooltip?.height ?? "missing"}`,
+      ),
+    ]),
+    `unaffordableHarnessFailures=${unaffordableHarness.failures.length}`,
+    `fatalConsole=${fatalConsole.length}`,
+    `pageErrors=${pageErrors.length}`,
+  ];
   fs.writeFileSync(path.join(outDir, "ui-playwright-result.json"), JSON.stringify(result, null, 2));
   fs.writeFileSync(path.join(outDir, "browser-geometry.json"), JSON.stringify(result, null, 2));
+  fs.writeFileSync(path.join(outDir, "playwright-ui-qa.stdout.json"), JSON.stringify(result, null, 2));
+  fs.writeFileSync(path.join(outDir, "green", "status.txt"), `${statusLines.join("\n")}\n`);
   if (result.verdict !== "PASS") {
     console.error(JSON.stringify(result, null, 2));
     process.exit(1);

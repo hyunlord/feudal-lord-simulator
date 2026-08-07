@@ -25,6 +25,10 @@ button {
   font: inherit;
 }
 
+.app-interaction-layer {
+  display: contents;
+}
+
 .app-shell {
   --seal-tooltip-top: 204px;
   position: relative;
@@ -670,7 +674,7 @@ button {
 }
 
 .seal-recess {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .map-shield-wrap {
@@ -885,8 +889,8 @@ button {
   display: block;
 }
 
-.build-seal:hover .seal-tooltip,
-.build-seal:focus-visible .seal-tooltip {
+.build-seal:hover + .seal-tooltip,
+.build-seal:focus-visible + .seal-tooltip {
   display: block;
   visibility: visible;
   opacity: 1;
@@ -1338,7 +1342,8 @@ button {
   }
 
   .map-shield {
-    display: none;
+    width: 28px;
+    height: 34px;
   }
 
   .shield-caption {

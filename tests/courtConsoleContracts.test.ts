@@ -138,8 +138,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   const mobileRules = css.match(/@media \(max-width: 600px\) \{([\s\S]+)\}\s*$/)?.[1] ?? "";
   assert.match(consoleRule, /background-size:\s*103% 100%;/);
   assert.match(buildSealsRule, /--seal-size:\s*48px;/);
-  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 4px\)\);/);
-  assert.match(buildSealsRule, /gap:\s*4px 8px;/);
+  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(5, var\(--seal-size\)\);/);
+  assert.match(buildSealsRule, /gap:\s*4px;/);
   assert.match(buildSealsRule, /width:\s*max-content;/);
   assert.match(buildSealsRule, /padding:\s*4px 6px;/);
   assert.match(buildSealsRule, /background-color:\s*var\(--palette-ink\);/);
@@ -151,7 +151,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.onboarding-task--next\s*\{[\s\S]*?background-color:\s*var\(--palette-vellum\);/);
   assert.match(css, /\.onboarding-task-flourish\s*\{[\s\S]*?color:\s*var\(--palette-ink\);/);
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="open-goal"\]\s*\{/);
-  assert.match(css, /\.road-tool\s*\{[\s\S]*?grid-column:\s*1 \/ -1;/);
+  assert.match(css, /\.road-tool\s*\{[\s\S]*?display:\s*contents;/);
   assert.match(css, /\.build-seal--road\s*\{[\s\S]*?clip-path:/);
   assert.match(css, /\.build-seal--selected::before\s*\{/);
   assert.match(css, /\.build-seal--selected::after\s*\{/);
@@ -164,13 +164,17 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
     css,
     /grid-template-columns:\s*(?:clamp\(122px|108px|54px)/,
   );
-  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*minmax\(72px, 0\.75fr\) minmax\(112px, 1\.1fr\) minmax\(0, 1\.45fr\);/);
+  assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?grid-template-columns:\s*0 252px minmax\(0, 1fr\);/);
   assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*224px;/);
   assert.match(mobileRules, /\.court-recess\s*\{[\s\S]*?height:\s*206px;/);
   assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
   assert.match(mobileRules, /--seal-size:\s*48px;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?display:\s*flex;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?flex-wrap:\s*nowrap;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-x:\s*auto;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*4px;/);
+  assert.match(mobileRules, /\.build-group\s*\{[\s\S]*?display:\s*grid;[\s\S]*?flex:\s*0 0 auto;/);
+  assert.match(mobileRules, /\.build-group-seals\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex:\s*0 0 auto;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?justify-content:\s*flex-start;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*4px;/);
   assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?max-height:\s*72px;/);
@@ -211,7 +215,7 @@ test("ledger recess keeps responsive controls inside the viewport", async () => 
 
   // Then
   assert.match(ledgerRecessRule, /grid-template-columns:\s*minmax\(0, 1fr\) auto;/);
-  assert.match(ledgerRecessRule, /align-content:\s*end;/);
+  assert.match(ledgerRecessRule, /align-content:\s*start;/);
   assert.doesNotMatch(ledgerRecessRule, /minmax\(210px, 1fr\)/);
 });
 

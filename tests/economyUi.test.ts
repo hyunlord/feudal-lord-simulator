@@ -150,13 +150,15 @@ test("sixty-tick guidance sampling does not schedule state from an effect on eve
   assert.match(source, /guidanceSnapshotRef/);
 });
 
-test("build groups reserve their full two-seal width so neighboring buttons cannot intercept clicks", async () => {
+test("build groups use explicit containers so neighboring buttons cannot intercept clicks", async () => {
   // Given / When
   const stylesheet = await readFile(STYLESHEET, "utf8");
 
   // Then
-  assert.match(stylesheet, /grid-template-columns:\s*repeat\(4, calc\(var\(--seal-size\) \* 2 \+ 4px\)\)/);
-  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-seals\s*\{[\s\S]*overflow-x:\s*auto;/);
+  assert.match(stylesheet, /\.build-seals\s*\{[\s\S]*grid-template-columns:\s*repeat\(5, var\(--seal-size\)\)/);
+  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-seals\s*\{[\s\S]*display:\s*flex;[\s\S]*flex-wrap:\s*nowrap;[\s\S]*overflow-x:\s*auto;/);
+  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-group\s*\{[\s\S]*display:\s*grid;[\s\S]*flex:\s*0 0 auto;/);
+  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-group-seals\s*\{[\s\S]*display:\s*flex;[\s\S]*gap:\s*4px;/);
 });
 
 test("settlement guidance advances population targets and samples priority on a sixty tick cadence", () => {

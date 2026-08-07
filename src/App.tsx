@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type MouseEvent, type PointerEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent, type PointerEvent } from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
@@ -166,78 +166,104 @@ export function App() {
       aria-label="Feudal Lord Simulator"
       style={PALETTE_CSS_VARIABLES as CSSProperties}
     >
-      <h1 className="visually-hidden">Feudal Lord Simulator</h1>
-      <GameCanvas
-        selectedTool={selectedTool}
-        overlayMode={overlayMode}
-        highlightedHouseIds={highlightedHouseIds}
-        palisadeDraft={palisadeDraft}
-        houseMaterialWave={houseMaterialWave}
-        palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}
-        onPalisadeDraftChange={setPalisadeDraft}
-        onPalisadeDraftCancel={() => setPalisadeDraft(null)}
-      />
-      <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
-      <EraCeremonyBanner
-        ceremony={visibleCeremony}
-        nowMs={presentationNowMs}
-        onDismiss={() => setEraPresentation(dismissEraCeremony)}
-      />
-      {welcomeVisible ? <WelcomeParchment onDismiss={dismissWelcome} /> : null}
-      <aside className="right-info-rail" aria-label="Information rail">
-        <EraConsole
-          model={eraModel}
-          onBeginProposal={beginPalisadeProposal}
-          onConfirmProposal={confirmPalisadeProposal}
-          onCancelProposal={() => setPalisadeDraft(null)}
+      <div
+        className="app-interaction-layer"
+        inert={welcomeVisible ? true : undefined}
+        aria-hidden={welcomeVisible ? true : undefined}
+      >
+        <h1 className="visually-hidden">Feudal Lord Simulator</h1>
+        <GameCanvas
+          selectedTool={selectedTool}
+          overlayMode={overlayMode}
+          highlightedHouseIds={highlightedHouseIds}
+          palisadeDraft={palisadeDraft}
+          houseMaterialWave={houseMaterialWave}
+          palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}
+          onPalisadeDraftChange={setPalisadeDraft}
+          onPalisadeDraftCancel={() => setPalisadeDraft(null)}
         />
-        <OnboardingTasks view={onboardingView} />
-      </aside>
-      <aside className="court-console" aria-label="Court console">
-        <div className="court-recess map-recess">
-          <MapShield grid={state} />
-        </div>
-        <div className="court-recess seal-recess">
-          <BuildSeals
-            selectedTool={selectedTool}
-            state={state}
-            highlightedTools={highlightedTools}
-            onSelect={setSelectedTool}
+        <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
+        <EraCeremonyBanner
+          ceremony={visibleCeremony}
+          nowMs={presentationNowMs}
+          onDismiss={() => setEraPresentation(dismissEraCeremony)}
+        />
+        <aside className="right-info-rail" aria-label="Information rail">
+          <EraConsole
+            model={eraModel}
+            onBeginProposal={beginPalisadeProposal}
+            onConfirmProposal={confirmPalisadeProposal}
+            onCancelProposal={() => setPalisadeDraft(null)}
           />
-        </div>
-        <div className="court-recess ledger-recess">
-          <div className="ledger-stack">
-            <CourtLedger
-              tick={state.tick}
-              timber={state.treasuryTimber}
-              selectedTool={selectedTool}
-              population={state.population}
-              idleWorkers={state.idleWorkers}
-              stockTotals={stockTotals}
-              populationEvents={populationEvents}
-              populationDrawerOpen={populationDrawerOpen}
-              onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
-              onSelectPopulationHouseIds={setHighlightedHouseIds}
-            />
-            <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} />
+          <OnboardingTasks view={onboardingView} />
+        </aside>
+        <aside className="court-console" aria-label="Court console">
+          <div className="court-recess map-recess">
+            <MapShield grid={state} />
           </div>
-          <SpeedSeals speed={speed} onChange={setSpeed} />
-        </div>
-      </aside>
+          <div className="court-recess seal-recess">
+            <BuildSeals
+              selectedTool={selectedTool}
+              state={state}
+              highlightedTools={highlightedTools}
+              onSelect={setSelectedTool}
+            />
+          </div>
+          <div className="court-recess ledger-recess">
+            <div className="ledger-stack">
+              <CourtLedger
+                tick={state.tick}
+                timber={state.treasuryTimber}
+                selectedTool={selectedTool}
+                population={state.population}
+                idleWorkers={state.idleWorkers}
+                stockTotals={stockTotals}
+                populationEvents={populationEvents}
+                populationDrawerOpen={populationDrawerOpen}
+                onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
+                onSelectPopulationHouseIds={setHighlightedHouseIds}
+              />
+              <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} />
+            </div>
+            <SpeedSeals speed={speed} onChange={setSpeed} />
+          </div>
+        </aside>
+      </div>
+      {welcomeVisible ? <WelcomeParchment onDismiss={dismissWelcome} /> : null}
     </main>
   );
 }
 
 function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
+  const dialogRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    dialogRef.current?.focus();
+  }, []);
+
   const consumeDismissal = (event: MouseEvent | PointerEvent) => {
     event.preventDefault();
     event.stopPropagation();
     onDismiss();
   };
+  const containKeyboard = (event: ReactKeyboardEvent) => {
+    event.stopPropagation();
+  };
 
   return (
-    <div className="welcome-dismiss-layer" onPointerDown={consumeDismissal} onClick={consumeDismissal}>
-      <section className="welcome-parchment" aria-label="Opening guidance">
+    <div
+      className="welcome-dismiss-layer"
+      onPointerDown={consumeDismissal}
+      onClick={consumeDismissal}
+      onKeyDown={containKeyboard}
+    >
+      <section
+        ref={dialogRef}
+        className="welcome-parchment"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Opening guidance"
+        tabIndex={-1}
+      >
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
