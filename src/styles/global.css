@@ -1424,8 +1424,18 @@ button {
 
   .era-console {
     gap: 2px;
-    max-height: 72px;
+    max-height: none;
     padding: 4px 6px;
+    overflow: visible;
+  }
+
+  .era-actions {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .era-action {
+    min-height: 24px;
   }
 
   .onboarding-tasks[data-onboarding-state="open-goal"] {
@@ -1585,21 +1595,21 @@ button {
   }
 
   .build-seals {
-    --seal-size: 44px;
-    display: grid;
-    grid-template-columns: repeat(4, var(--seal-size));
-    grid-auto-rows: var(--seal-size);
-    place-content: start center;
-    gap: 3px;
+    --seal-size: 48px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 4px;
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
-    padding: 4px 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px;
   }
 
   .build-seal {
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 48px;
+    min-height: 48px;
     padding: 3px;
   }
 

@@ -185,7 +185,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*4px;/);
   assert.match(mobileRules, /\.ledger-stack\s*\{[\s\S]*?align-self:\s*stretch;/);
   assert.match(mobileRules, /\.ledger-stack\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\);/);
-  assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?max-height:\s*72px;/);
+  assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?max-height:\s*none;/);
+  assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?overflow:\s*visible;/);
   assert.match(mobileRules, /\.court-ledger\s*\{[\s\S]*?height:\s*48px;/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*10px;/);
