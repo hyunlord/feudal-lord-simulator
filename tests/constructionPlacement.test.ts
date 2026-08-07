@@ -17,6 +17,7 @@ const VALID_ORIGINS = {
   well: { tx: 3, ty: 1 },
   storehouse: { tx: 5, ty: 1 },
   granary: { tx: 8, ty: 1 },
+  chapel: { tx: 10, ty: 1 },
   wheat_farm: { tx: 11, ty: 1 },
   mill: { tx: 14, ty: 1 },
   logging_camp: { tx: 16, ty: 1 },
@@ -66,6 +67,9 @@ function siteWorldWithCommitment(site: ConstructionSite, treasuryTimber: number)
   return Object.assign(buildableSettlement(treasuryTimber), {
     constructionSites: [site],
     wallTick: 0,
+    era: "hamlet",
+    eraProclaimedTick: null,
+    palisade: null,
     nextConstructionOrdinal: 2,
   });
 }
@@ -133,6 +137,9 @@ test("construction site ids are stable zero-padded ordinals that sort after nine
   let state: GameState = Object.assign(buildableSettlement(), {
     constructionSites: [],
     wallTick: 0,
+    era: "hamlet",
+    eraProclaimedTick: null,
+    palisade: null,
     nextConstructionOrdinal: 9,
   });
 

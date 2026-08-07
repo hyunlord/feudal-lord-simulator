@@ -17,7 +17,8 @@ function state(target: Building, patch: Partial<GameState> = {}): GameState {
     tick: 0, seed: 1, width: 1, height: 1,
     tiles: [{ tx: 0, ty: 0, terrain: "grass", buildingId: target.id, hasRoad: false }],
     buildings: [target], houses: [], walkers: [], population: 0, idleWorkers: 0,
-    treasuryTimber: 0, constructionSites: [], wallTick: 0, nextConstructionOrdinal: 1,
+    treasuryTimber: 0, constructionSites: [], wallTick: 0,
+    era: "hamlet", eraProclaimedTick: null, palisade: null, nextConstructionOrdinal: 1,
     roadRevision: 0, pathCache: {}, ...patch,
   };
 }

@@ -15,6 +15,9 @@ function state(building: Building): GameState {
     buildings: [building],
     constructionSites: [],
     wallTick: 0,
+    era: "hamlet",
+    eraProclaimedTick: null,
+    palisade: null,
     nextConstructionOrdinal: 1,
     houses: building.kind === "house" ? [{
       buildingId: building.id,

@@ -69,6 +69,7 @@ export const CONSTRUCTION = {
     mill: 600,
     storehouse: 800,
     granary: 800,
+    chapel: 600,
     wheat_farm: 500,
   },
 } as const satisfies {

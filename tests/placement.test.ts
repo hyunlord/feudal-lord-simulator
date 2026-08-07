@@ -40,6 +40,9 @@ function worldFromGrid(grid: Grid, timber = 100): GameState {
     buildings: [],
     constructionSites: [],
     wallTick: 0,
+    era: "hamlet",
+    eraProclaimedTick: null,
+    palisade: null,
     nextConstructionOrdinal: 1,
     houses: [],
     walkers: [],
@@ -68,7 +71,7 @@ function grassGrid(width: number, height: number): Grid {
   );
 }
 
-test("BUILDING_CONFIG defines all eight canonical building kinds with distinctive footprints and timber costs", () => {
+test("BUILDING_CONFIG defines all canonical building kinds with distinctive footprints and timber costs", () => {
   // Given / When
   const definitionsByKind = new Map(BUILDING_CONFIG.map((definition) => [definition.kind, definition]));
 
@@ -78,6 +81,7 @@ test("BUILDING_CONFIG defines all eight canonical building kinds with distinctiv
     "well",
     "storehouse",
     "granary",
+    "chapel",
     "wheat_farm",
     "mill",
     "logging_camp",

@@ -27,7 +27,7 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
   });
 });
 
-test("Phase 3 building table matches the exact foundation definitions", () => {
+test("Phase 3 building table includes chapel without changing ordinary building economics", () => {
   // Given / When / Then
   assert.deepEqual(BUILDING_CONFIG_BY_KIND, {
     house: {
@@ -45,6 +45,10 @@ test("Phase 3 building table matches the exact foundation definitions", () => {
     granary: {
       kind: "granary", name: "곡창", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
       requiresAdjacentTerrain: null, requiresRoad: true, production: null, storageCapacity: 200, serviceRadius: 0,
+    },
+    chapel: {
+      kind: "chapel", name: "예배당", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 40 },
+      requiresAdjacentTerrain: null, requiresRoad: true, production: null, storageCapacity: 0, serviceRadius: 0,
     },
     wheat_farm: {
       kind: "wheat_farm", name: "밀밭", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 20 },
@@ -98,6 +102,9 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
   assert.equal(state.treasuryTimber, BALANCE.STARTING_TIMBER);
   assert.equal(state.roadRevision, 0);
   assert.deepEqual(state.pathCache, {});
+  assert.equal(state.era, "hamlet");
+  assert.equal(state.eraProclaimedTick, null);
+  assert.equal(state.palisade, null);
   assert.ok(startingHouse);
   assert.deepEqual(startingHouse, {
     id: "house-0-0-0",

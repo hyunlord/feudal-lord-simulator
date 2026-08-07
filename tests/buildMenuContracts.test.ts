@@ -30,7 +30,7 @@ test("build menu options provide accessible labels for every selectable tool", (
   const labels = BUILD_TOOL_OPTIONS.map((option) => option.label.trim());
 
   // Then
-  assert.equal(labels.length, 9);
+  assert.equal(labels.length, 10);
   assert.equal(labels.every((label) => label.length > 0), true);
 });
 
@@ -66,7 +66,7 @@ test("build menu groups buildings while road stays in a dedicated zero-cost cont
   assert.deepEqual(groups.map((group) => group.label), ["주거", "생산", "저장", "서비스"]);
   assert.deepEqual(
     groups.map((group) => group.options.map((option) => option.tool)),
-    [["house"], ["wheat_farm", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well"]],
+    [["house"], ["wheat_farm", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well", "chapel"]],
   );
   assert.match(appMarkup, /class="road-tool"/);
   assert.match(appMarkup, /aria-label="길"/);

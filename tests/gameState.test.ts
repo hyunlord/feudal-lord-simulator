@@ -66,6 +66,9 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
   assert.equal(state.nextConstructionOrdinal, 1);
   assert.equal(state.roadRevision, 0);
   assert.deepEqual(state.pathCache, {});
+  assert.equal(state.era, "hamlet");
+  assert.equal(state.eraProclaimedTick, null);
+  assert.equal(state.palisade, null);
   assert.equal(getTile(state, { tx: 0, ty: 0 })?.buildingId, "house-0-0-0");
   assert.equal(
     state.tiles.every((tile) =>
@@ -248,4 +251,7 @@ test("advance tick exposes five opening workers while preserving a production-fr
   assert.deepEqual(next.walkers, []);
   assert.deepEqual(next.tiles, state.tiles);
   assert.deepEqual(next.pathCache, state.pathCache);
+  assert.equal(next.era, "hamlet");
+  assert.equal(next.eraProclaimedTick, null);
+  assert.equal(next.palisade, null);
 });

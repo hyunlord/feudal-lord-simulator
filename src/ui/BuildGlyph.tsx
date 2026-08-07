@@ -5,6 +5,7 @@ const GLYPH_PATHS: Record<PlacementTool, readonly string[]> = {
   well: ["M5 10q7-4 14 0v7q-7 4-14 0Z", "M7 10V6m10 4V6", "M6 6q6-4 12 0"],
   storehouse: ["M3 10 12 4l9 6v10H3Z", "M8 20v-7h8v7", "M5 11h14"],
   granary: ["M6 7q6-5 12 0v11H6Z", "M8 18v3m8-3v3", "M6 11h12M6 15h12"],
+  chapel: ["M12 3v5", "M8 8h8l3 4v9H5v-9Z", "M9 21v-6h6v6"],
   wheat_farm: ["M12 22V4", "M12 8 8 5m4 7 5-3m-5 7-5-3m5 7 5-3", "M5 22h14"],
   mill: ["M4 20h11V9L9 5 4 9Z", "M16 13a4 4 0 1 0 0 8 4 4 0 0 0 0-8", "M16 13v8m-4-4h8"],
   logging_camp: ["M4 17 9 8l5 9Z", "M9 8l3-4 3 4", "M5 21l14-4m-12 4 14-4"],

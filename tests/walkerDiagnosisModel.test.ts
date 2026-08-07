@@ -118,6 +118,9 @@ function gameState(walkers: GameState["walkers"]): GameState {
     ],
     constructionSites: [],
     wallTick: 0,
+    era: "hamlet",
+    eraProclaimedTick: null,
+    palisade: null,
     nextConstructionOrdinal: 1,
     houses: [
       {

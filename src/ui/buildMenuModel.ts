@@ -41,6 +41,7 @@ const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
   sawmill: "production",
   storehouse: "storage",
   granary: "storage",
+  chapel: "service",
   well: "service",
   road: "service",
 };
@@ -53,6 +54,7 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   sawmill: "통나무를 목재로 켭니다",
   storehouse: "목재와 통나무를 보관합니다",
   granary: "밀과 빵을 보관합니다",
+  chapel: "목책마을 선포 조건을 준비합니다",
   well: "주변 집에 물을 공급합니다",
   road: "일꾼과 짐꾼이 이동할 길을 잇습니다",
 };

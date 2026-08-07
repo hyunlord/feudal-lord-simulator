@@ -6,6 +6,7 @@ export type BuildingKind =
   | "well"
   | "storehouse"
   | "granary"
+  | "chapel"
   | "wheat_farm"
   | "mill"
   | "logging_camp"
@@ -95,6 +96,19 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     requiresRoad: true,
     production: null,
     storageCapacity: 200,
+    serviceRadius: 0,
+  },
+  chapel: {
+    kind: "chapel",
+    name: "예배당",
+    width: 1,
+    height: 1,
+    workersRequired: 0,
+    buildCost: { timber: 40 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    production: null,
+    storageCapacity: 0,
     serviceRadius: 0,
   },
   wheat_farm: {

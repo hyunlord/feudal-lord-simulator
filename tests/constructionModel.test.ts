@@ -29,6 +29,7 @@ const BUILDING_KINDS = [
   "mill",
   "storehouse",
   "granary",
+  "chapel",
   "wheat_farm",
 ] as const satisfies readonly BuildingKind[];
 
@@ -42,6 +43,7 @@ test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model
     mill: { timber: 30 },
     storehouse: { timber: 40 },
     granary: { timber: 40 },
+    chapel: { timber: 40 },
     wheat_farm: { timber: 20 },
   } as const satisfies Record<BuildingKind, object>;
 
@@ -69,6 +71,7 @@ test("CONSTRUCTION constants pin builder capacity, visibility floor, and require
     mill: 600,
     storehouse: 800,
     granary: 800,
+    chapel: 600,
     wheat_farm: 500,
   } satisfies Record<BuildingKind, number>);
 });

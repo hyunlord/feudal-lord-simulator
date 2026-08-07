@@ -59,6 +59,9 @@ function drawBaseKindDetail(
     case "granary":
       drawStilts(context, input.center, input.zoom);
       return;
+    case "chapel":
+      drawFlag(context, input.tick, input.center, input.zoom);
+      return;
     case "wheat_farm":
       drawFieldRows(context, input.center, input.zoom);
       return;

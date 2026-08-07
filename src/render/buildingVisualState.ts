@@ -188,6 +188,8 @@ function nonHouseBodyProfile(kind: Exclude<BuildingKind, "house">): BodyProfile 
       return { width: 64, height: 30, roof: 6, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "flat" };
     case "granary":
       return { width: 58, height: 32, roof: 16, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.goldDark, roofShape: "dome" };
+    case "chapel":
+      return { width: 42, height: 48, roof: 18, fill: SEMANTIC_PALETTE.parchment, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "cone" };
     case "wheat_farm":
       return { width: 72, height: 10, roof: 0, fill: SEMANTIC_PALETTE.earth, roofColor: PALETTE.gold, roofShape: "none" };
     case "mill":
