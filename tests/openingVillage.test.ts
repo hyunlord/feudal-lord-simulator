@@ -3,9 +3,12 @@ import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { cameraForStartingHouse } from "../src/render/canvasRuntime";
+import { drawStartingLandmark } from "../src/render/drawStartingLandmarks";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import { TILE_H, TILE_W, tileToScreen } from "../src/render/iso";
 import { STARTING_LANDMARKS } from "../src/render/startingLandmarks";
+import type { StartingLandmark } from "../src/render/startingLandmarks";
+import { spriteMeta } from "../src/render/worldAssets";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { BUILD_TOOL_OPTIONS } from "../src/ui/buildMenuModel";
 import {
@@ -16,12 +19,93 @@ import { ONBOARDING_TASKS } from "../src/ui/onboardingTaskModel";
 
 const OPENING_CENTER = { tx: 45, ty: 41 } as const;
 const EXPECTED_OPENING_HASH = "b96ecf8b914bb99d";
+type Rect = {
+  readonly left: number;
+  readonly right: number;
+  readonly top: number;
+  readonly bottom: number;
+};
+type LoggedContext = CanvasRenderingContext2D & {
+  readonly calls: readonly string[];
+};
 
 function roadKeys(): readonly string[] {
   return DEFAULT_GAME_STATE.tiles
     .filter((tile) => tile.hasRoad)
     .map((tile) => `${tile.tx},${tile.ty}`)
     .sort((left, right) => left.localeCompare(right));
+}
+
+function intersects(left: Rect, right: Rect): boolean {
+  return !(
+    left.right < right.left ||
+    left.left > right.right ||
+    left.bottom < right.top ||
+    left.top > right.bottom
+  );
+}
+
+function fordProtectedRects(landmark: StartingLandmark): readonly Rect[] {
+  const center = tileToScreen(landmark.tx, landmark.ty);
+  return [
+    {
+      left: center.sx - 26,
+      right: center.sx + 26,
+      top: center.sy - 30,
+      bottom: center.sy - 8,
+    },
+    {
+      left: center.sx - TILE_W * 0.42,
+      right: center.sx + TILE_W * 0.42,
+      top: center.sy - TILE_H * 0.26,
+      bottom: center.sy + TILE_H * 0.34,
+    },
+  ];
+}
+
+function loggedContext(): LoggedContext {
+  const calls: string[] = [];
+  let fillStyle = "";
+  let font = "";
+  let strokeStyle = "";
+  const context = {
+    calls,
+    get fillStyle() {
+      return fillStyle;
+    },
+    set fillStyle(value: string) {
+      fillStyle = value;
+      calls.push(`fillStyle:${value}`);
+    },
+    lineCap: "butt",
+    lineJoin: "miter",
+    lineWidth: 0,
+    get font() {
+      return font;
+    },
+    set font(value: string) {
+      font = value;
+      calls.push(`font:${value}`);
+    },
+    get strokeStyle() {
+      return strokeStyle;
+    },
+    set strokeStyle(value: string) {
+      strokeStyle = value;
+      calls.push(`strokeStyle:${value}`);
+    },
+    beginPath: () => calls.push("beginPath"),
+    ellipse: (x: number, y: number, rx: number, ry: number) =>
+      calls.push(`ellipse:${x},${y},${rx},${ry}`),
+    fill: () => calls.push("fill"),
+    fillRect: (x: number, y: number, width: number, height: number) =>
+      calls.push(`fillRect:${x},${y},${width},${height}`),
+    fillText: (text: string, x: number, y: number) => calls.push(`fillText:${text},${x},${y}`),
+    stroke: () => calls.push("stroke"),
+    strokeRect: (x: number, y: number, width: number, height: number) =>
+      calls.push(`strokeRect:${x},${y},${width},${height}`),
+  };
+  return context as unknown as LoggedContext;
 }
 
 test("DEFAULT_GAME_STATE opens with the authored four-cottage village around the centre", () => {
@@ -95,6 +179,67 @@ test("the decorative ford is renderer-only and absent from gameplay registries",
   assert.equal(new Set<string>(BUILD_TOOL_OPTIONS.map((option) => option.tool)).has("ford"), false);
   assert.equal(new Set<string>(DEFAULT_GAME_STATE.buildings.map((building) => building.kind)).has("ford"), false);
   assert.equal(DEFAULT_GAME_STATE.tiles.some((tile) => tile.buildingId === "ford"), false);
+});
+
+test("opening ford clearance keeps tree descriptors off the readable landmark label and footprint", () => {
+  // Given: the 1280px opening route reaches the renderer-only ford through forest.
+  const ford = STARTING_LANDMARKS.find((landmark) => landmark.kind === "ford");
+  if (ford === undefined) throw new Error("ford landmark missing");
+  const range = {
+    minTx: ford.tx - 4,
+    minTy: ford.ty - 4,
+    maxTx: ford.tx + 4,
+    maxTy: ford.ty + 4,
+  };
+  const visibleTiles = DEFAULT_GAME_STATE.tiles.filter((tile) =>
+    tile.tx >= range.minTx &&
+    tile.tx <= range.maxTx &&
+    tile.ty >= range.minTy &&
+    tile.ty <= range.maxTy,
+  );
+
+  // When: the object queue builds the same tree descriptors used by the first frame.
+  const renderItems = buildObjectRenderItems({
+    tiles: visibleTiles,
+    worldTiles: DEFAULT_GAME_STATE.tiles,
+    buildings: DEFAULT_GAME_STATE.buildings,
+    walkers: DEFAULT_GAME_STATE.walkers,
+    range,
+    seed: DEFAULT_GAME_STATE.seed,
+    includeGroundCover: false,
+  });
+  const protectedRects = fordProtectedRects(ford);
+  const occludingTreeIds = renderItems.flatMap((item) => {
+    if (item.kind !== "tree") return [];
+    const meta = spriteMeta(item.descriptor.spriteKey);
+    if (meta === null) throw new Error(`missing tree sprite metadata for ${item.descriptor.spriteKey}`);
+    const bounds = {
+      left: item.descriptor.x - meta.anchor.x * item.descriptor.scale,
+      right: item.descriptor.x + (meta.width - meta.anchor.x) * item.descriptor.scale,
+      top: item.descriptor.y - meta.anchor.y * item.descriptor.scale,
+      bottom: item.descriptor.y,
+    };
+    return protectedRects.some((rect) => intersects(bounds, rect)) ? [item.id] : [];
+  });
+
+  // Then: tree placement leaves the ford landmark readable without changing it into gameplay data.
+  assert.deepEqual(ford, { kind: "ford", tx: 53, ty: 41, label: "나루터" });
+  assert.deepEqual(occludingTreeIds, []);
+});
+
+test("ford landmark label is painted on an opaque plate before text", () => {
+  // Given
+  const context = loggedContext();
+  const landmark = { kind: "ford", tx: 53, ty: 41, label: "나루터" } as const satisfies StartingLandmark;
+
+  // When
+  drawStartingLandmark(context, landmark, 1);
+
+  // Then
+  const plateIndex = context.calls.findIndex((call) => call.startsWith("fillRect:"));
+  const labelIndex = context.calls.findIndex((call) => call.startsWith("fillText:나루터,"));
+  assert.ok(plateIndex >= 0);
+  assert.ok(labelIndex > plateIndex);
 });
 
 test("initial camera centres the authored village with roughly twenty visible isometric tiles", () => {

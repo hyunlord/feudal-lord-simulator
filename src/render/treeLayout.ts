@@ -4,6 +4,7 @@ import { stumpAgeAt } from "../engine/forestHarvests";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
+import { treeClearsStartingLandmarks } from "./treeLandmarkClearance";
 
 export type TreeSilhouette = "narrow" | "broad" | "rounded";
 export type TreeTone = PaletteColor;
@@ -15,7 +16,6 @@ export type TreeSpriteKey =
   | "tree_birch"
   | "tree_dead";
 export type StumpSpriteKey = "stump_fresh" | "stump_old";
-export type GroundCoverSpriteKey = "shrub_a" | "shrub_b" | "grass_tuft" | "field_stone";
 
 export type TreeDescriptor = {
   readonly id: string;
@@ -31,20 +31,6 @@ export type TreeDescriptor = {
   readonly anchorTx: number;
   readonly anchorTy: number;
   readonly spriteKey: TreeSpriteKey;
-};
-
-export type GroundCoverDescriptor = {
-  readonly id: string;
-  readonly x: number;
-  readonly y: number;
-  readonly offsetX: number;
-  readonly offsetY: number;
-  readonly scale: number;
-  readonly phase: number;
-  readonly sortY: number;
-  readonly anchorTx: number;
-  readonly anchorTy: number;
-  readonly spriteKey: GroundCoverSpriteKey;
 };
 
 export type StumpDescriptor = {
@@ -77,18 +63,19 @@ const TREE_SPRITES: readonly TreeSpriteKey[] = [
   "tree_birch",
   "tree_dead",
 ];
-const GROUND_COVER_SPRITES: readonly GroundCoverSpriteKey[] = [
-  "shrub_a",
-  "shrub_b",
-  "grass_tuft",
-  "field_stone",
-];
+const TREE_SPRITE_FAMILY_OFFSETS: Readonly<Record<TreeSilhouette, number>> = {
+  narrow: 0,
+  broad: 2,
+  rounded: 4,
+};
 const MAX_OFFSET_X = TILE_W * 0.35;
 const MAX_OFFSET_Y = TILE_H * 0.35;
 const SAFE_DIAMOND_RADIUS = 0.7;
 const treeClusterCache = new WeakMap<Tile, Map<string, readonly TreeDescriptor[]>>();
-const groundCoverCache = new WeakMap<Tile, Map<number, readonly GroundCoverDescriptor[]>>();
 const forestLookupCache = new WeakMap<readonly Tile[], ForestLookup>();
+
+export { buildGroundCover } from "./groundCoverLayout";
+export type { GroundCoverDescriptor, GroundCoverSpriteKey } from "./groundCoverLayout";
 
 export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescriptor[] {
   const treeCount = forestTreeCount(input.tile, input.forestLookup, input.seed);
@@ -134,6 +121,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
   }
 
   const result = descriptors
+    .filter((tree) => treeClearsStartingLandmarks(tree))
     .sort((left, right) => left.sortY - right.sortY || left.id.localeCompare(right.id))
     .map((tree, index) => ({ ...tree, tone: treeToneAt(toneOffset + index) }));
   const tileCache = treeClusterCache.get(input.tile) ?? new Map();
@@ -160,50 +148,6 @@ export function buildStumpDescriptor(input: {
   };
 }
 
-export function buildGroundCover(input: {
-  readonly tile: Tile;
-  readonly seed: number;
-}): readonly GroundCoverDescriptor[] {
-  const cached = groundCoverCache.get(input.tile)?.get(input.seed);
-  if (cached !== undefined) return cached;
-  if (
-    input.tile.terrain !== "grass" ||
-    input.tile.buildingId !== null ||
-    input.tile.hasRoad
-  ) {
-    return cacheGroundCover(input.tile, input.seed, []);
-  }
-  const roll = hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 83);
-  if (roll < 0.92) {
-    return cacheGroundCover(input.tile, input.seed, []);
-  }
-  const center = tileToScreen(input.tile.tx, input.tile.ty);
-  const offset = constrainToDiamond({
-    x: jitter(input.tile.tx, input.tile.ty, input.seed, 0, 89) * TILE_W * 0.24,
-    y: jitter(input.tile.tx, input.tile.ty, input.seed, 0, 97) * TILE_H * 0.24,
-  });
-  const x = center.sx + offset.x;
-  const y = center.sy + offset.y;
-  const anchor = screenToTile(x, y);
-  const scale = 0.75 + hashUnit(input.tile.tx, input.tile.ty, input.seed, 0, 101) * 0.5;
-  const variantRoll = hashUnit(input.tile.ty, input.tile.tx, input.seed + 17_171, 1, 149);
-  const spriteIndex = Math.floor(variantRoll * GROUND_COVER_SPRITES.length) % GROUND_COVER_SPRITES.length;
-  const spriteKey = GROUND_COVER_SPRITES[spriteIndex] ?? "shrub_a";
-  return cacheGroundCover(input.tile, input.seed, [{
-    id: `groundCover:${input.tile.tx}:${input.tile.ty}:${input.seed}:0`,
-    x,
-    y,
-    offsetX: offset.x,
-    offsetY: offset.y,
-    scale,
-    phase: objectPhase(`groundCover:${input.seed}:${spriteKey}`, input.tile.tx, input.tile.ty),
-    sortY: y + scale * 2,
-    anchorTx: anchor.tx,
-    anchorTy: anchor.ty,
-    spriteKey,
-  }]);
-}
-
 export function buildForestLookup(tiles: readonly Tile[]): ForestLookup {
   const cached = forestLookupCache.get(tiles);
   if (cached !== undefined) return cached;
@@ -217,7 +161,7 @@ export function buildForestLookup(tiles: readonly Tile[]): ForestLookup {
 }
 
 export function forestTreeCount(tile: Tile, forestLookup: ForestLookup, seed: number): 1 | 2 {
-  const neighborCount = forestNeighborCount(tile, forestLookup);
+  const neighborCount = orthogonalForestNeighborCount(tile, forestLookup);
   const densityRoll = hashUnit(tile.tx, tile.ty, seed, 0, 59);
 
   if (neighborCount >= 2) {
@@ -252,19 +196,6 @@ function treeAnchor(treeCount: number, index: number): { readonly x: number; rea
   }
 }
 
-function cacheGroundCover(
-  tile: Tile,
-  seed: number,
-  descriptors: readonly GroundCoverDescriptor[],
-): readonly GroundCoverDescriptor[] {
-  const tileCache = groundCoverCache.get(tile) ?? new Map();
-  tileCache.set(seed, descriptors);
-  groundCoverCache.set(tile, tileCache);
-  return descriptors;
-}
-
-const forestNeighborCount = orthogonalForestNeighborCount;
-
 function constrainToDiamond(offset: { readonly x: number; readonly y: number }): { readonly x: number; readonly y: number } {
   const diamondRadius = Math.abs(offset.x) / (TILE_W / 2) + Math.abs(offset.y) / (TILE_H / 2);
   if (diamondRadius <= SAFE_DIAMOND_RADIUS) return offset;
@@ -287,7 +218,7 @@ function treeSpriteKey(
   index: number,
   silhouette: TreeSilhouette,
 ): TreeSpriteKey {
-  const silhouetteOffset = silhouette === "narrow" ? 0 : silhouette === "broad" ? 2 : 4;
+  const silhouetteOffset = TREE_SPRITE_FAMILY_OFFSETS[silhouette];
   const hashSlot = Math.floor(hashUnit(tx, ty, seed, index, 109) * 997);
   const variant = positiveModulo(hashSlot + tx + ty + seed + index + silhouetteOffset, TREE_SPRITES.length);
   return TREE_SPRITES[variant] ?? "tree_oak_large";

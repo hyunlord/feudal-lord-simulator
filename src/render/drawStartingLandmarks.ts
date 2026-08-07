@@ -54,6 +54,20 @@ function drawFord(
   }
 
   context.font = `${snapToPixel(12 / Math.max(zoom, 0.5))}px Georgia, serif`;
+  context.fillStyle = SEMANTIC_PALETTE.vellum;
+  context.fillRect(
+    snapToPixel(center.sx - 24),
+    snapToPixel(center.sy - 28),
+    snapToPixel(48),
+    snapToPixel(18),
+  );
+  applyInkOutline(context, zoom);
+  context.strokeRect(
+    snapToPixel(center.sx - 24),
+    snapToPixel(center.sy - 28),
+    snapToPixel(48),
+    snapToPixel(18),
+  );
   context.fillStyle = PALETTE.ink;
   context.fillText(landmark.label, snapToPixel(center.sx - 18), snapToPixel(center.sy - 13));
 }

@@ -1,95 +1,25 @@
-import { createHash } from "node:crypto";
-import { mkdtemp, rm } from "node:fs/promises";
-import { createRequire } from "node:module";
-import { tmpdir } from "node:os";
-import path from "node:path";
-import { setTimeout as delay } from "node:timers/promises";
-import { spawn } from "node:child_process";
+import {
+  closeChrome,
+  createCdpClient,
+  createTarget,
+  frames,
+  launchChrome,
+  waitForChrome,
+} from "./phase8Task10CdpClient.mjs";
 
 const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const baseUrl = process.env.PROOF_URL ?? "http://127.0.0.1:3200";
-const revision = process.env.PROOF_REVISION ?? "unknown";
+const revision = requiredRevision();
 const hostLabel = process.env.PROOF_HOST_LABEL ?? "local";
 const remoteDebuggingPort = Number.parseInt(process.env.PROOF_CHROME_PORT ?? "9229", 10);
-const require = createRequire(import.meta.url);
-
-const userDataDir = await mkdtemp(path.join(tmpdir(), "phase8-task10-chrome-"));
-const chrome = spawn(chromePath, [
-  "--headless=new",
-  "--disable-gpu",
-  "--disable-dev-shm-usage",
-  "--no-first-run",
-  "--no-default-browser-check",
-  `--remote-debugging-port=${remoteDebuggingPort}`,
-  `--user-data-dir=${userDataDir}`,
-  "about:blank",
-], { stdio: ["ignore", "ignore", "pipe"] });
-
-let stderr = "";
-chrome.stderr.on("data", (chunk) => {
-  stderr += chunk.toString();
+const chromeSession = await launchChrome({
+  chromePath,
+  remoteDebuggingPort,
+  userDataPrefix: "phase8-task10-chrome-",
 });
 
-async function createCdpClient(webSocketUrl) {
-  const WebSocketConstructor = globalThis.WebSocket ?? require(process.env.WS_MODULE_PATH ?? "ws");
-  const socket = new WebSocketConstructor(webSocketUrl);
-  await new Promise((resolve, reject) => {
-    socket.addEventListener("open", resolve, { once: true });
-    socket.addEventListener("error", reject, { once: true });
-  });
-  let nextId = 1;
-  const pending = new Map();
-  const waiters = new Map();
-  socket.addEventListener("message", (event) => {
-    const message = JSON.parse(event.data);
-    if (message.id !== undefined) {
-      const request = pending.get(message.id);
-      if (request === undefined) return;
-      pending.delete(message.id);
-      if (message.error !== undefined) {
-        request.reject(new Error(message.error.message));
-      } else {
-        request.resolve(message.result);
-      }
-      return;
-    }
-    const eventWaiters = waiters.get(message.method);
-    if (eventWaiters === undefined || eventWaiters.length === 0) return;
-    waiters.set(message.method, []);
-    for (const resolve of eventWaiters) resolve(message.params);
-  });
-  const send = (method, params = {}) => {
-    const id = nextId;
-    nextId += 1;
-    socket.send(JSON.stringify({ id, method, params }));
-    return new Promise((resolve, reject) => {
-      pending.set(id, { resolve, reject });
-    });
-  };
-  return {
-    send,
-    evaluate: async (expression, awaitPromise) => {
-      const response = await send("Runtime.evaluate", {
-        expression,
-        awaitPromise,
-        returnByValue: true,
-      });
-      if (response.exceptionDetails !== undefined) {
-        throw new Error(response.exceptionDetails.text ?? "Runtime.evaluate failed");
-      }
-      return response.result.value;
-    },
-    waitFor: (method) => new Promise((resolve) => {
-      const eventWaiters = waiters.get(method) ?? [];
-      eventWaiters.push(resolve);
-      waiters.set(method, eventWaiters);
-    }),
-    close: () => socket.close(),
-  };
-}
-
 try {
-  await waitForChrome(remoteDebuggingPort);
+  await waitForChrome(remoteDebuggingPort, chromeSession.stderr);
   const target = await createTarget(remoteDebuggingPort);
   const client = await createCdpClient(target.webSocketDebuggerUrl);
   try {
@@ -137,30 +67,7 @@ try {
     client.close();
   }
 } finally {
-  chrome.kill("SIGTERM");
-  await onceExit(chrome);
-  await rm(userDataDir, { recursive: true, force: true });
-}
-
-async function waitForChrome(port) {
-  for (let attempt = 0; attempt < 80; attempt += 1) {
-    try {
-      const response = await fetch(`http://127.0.0.1:${port}/json/version`);
-      if (response.ok) return;
-    } catch {
-      // Chrome is still starting.
-    }
-    await delay(100);
-  }
-  throw new Error(`Chrome did not expose CDP on ${port}: ${stderr}`);
-}
-
-async function createTarget(port) {
-  const response = await fetch(`http://127.0.0.1:${port}/json/new?${encodeURIComponent("about:blank")}`, {
-    method: "PUT",
-  });
-  if (!response.ok) throw new Error(`Unable to create Chrome target: HTTP ${response.status}`);
-  return response.json();
+  await closeChrome(chromeSession);
 }
 
 async function navigate(client, url) {
@@ -286,16 +193,11 @@ async function userAgent(client) {
   return client.evaluate("navigator.userAgent", false);
 }
 
-async function frames(count) {
-  await delay(Math.max(50, count * 16));
-}
-
-async function onceExit(child) {
-  if (child.exitCode !== null || child.signalCode !== null) return;
-  await Promise.race([
-    new Promise((resolve) => child.once("exit", resolve)),
-    delay(2_000).then(() => {
-      child.kill("SIGKILL");
-    }),
-  ]);
+function requiredRevision() {
+  const value = process.env.PROOF_REVISION ?? process.env.PHASE8_REVISION ?? "";
+  const normalized = value.trim();
+  if (normalized === "" || normalized === "dirty" || normalized === "unknown") {
+    throw new Error("Set PROOF_REVISION or PHASE8_REVISION to a clean, known revision.");
+  }
+  return normalized;
 }
