@@ -793,6 +793,7 @@ button {
   bottom: calc(100% + 7px);
   left: 50%;
   z-index: 12;
+  display: none;
   width: max-content;
   max-width: 220px;
   padding: 5px 9px;
@@ -817,6 +818,7 @@ button {
 
 .build-seal:hover .seal-tooltip,
 .build-seal:focus-visible .seal-tooltip {
+  display: block;
   visibility: visible;
   opacity: 1;
 }

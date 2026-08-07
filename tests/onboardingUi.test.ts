@@ -13,6 +13,7 @@ import { OnboardingTasks, SettlementStatusLine } from "../src/ui/InfoPanel";
 const APP_SOURCE = new URL("../src/App.tsx", import.meta.url);
 const CANVAS_RUNTIME_SOURCE = new URL("../src/render/useGameCanvasRuntime.ts", import.meta.url);
 const CANVAS_RUNTIME_REFS_SOURCE = new URL("../src/render/useGameCanvasRuntimeRefs.ts", import.meta.url);
+const GLOBAL_CSS_SOURCE = new URL("../src/styles/global.css", import.meta.url);
 
 function renderApp(): string {
   return renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
@@ -111,6 +112,17 @@ test("right console renders current and next onboarding tasks before the open go
   assert.match(consoleMarkup, /data-task-state="next"/);
   assert.match(consoleMarkup, /숲 옆에 벌목소를 지으세요/);
   assert.doesNotMatch(consoleMarkup, /목표: 인구 50명 · 현재/);
+});
+
+test("hidden seal tooltips do not inflate responsive console scroll width", async () => {
+  // Given / When
+  const css = await readFile(GLOBAL_CSS_SOURCE, "utf8");
+  const tooltipRule = css.match(/\.seal-tooltip\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+  const hoverRule = css.match(/\.build-seal:hover \.seal-tooltip,\s*\n\.build-seal:focus-visible \.seal-tooltip\s*\{[\s\S]*?\n\}/)?.[0] ?? "";
+
+  // Then
+  assert.match(tooltipRule, /display:\s*none;/);
+  assert.match(hoverRule, /display:\s*block;/);
 });
 
 test("onboarding task panel renders completion flourish and the post-task open goal", () => {
