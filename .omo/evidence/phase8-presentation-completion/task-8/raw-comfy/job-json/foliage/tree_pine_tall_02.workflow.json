@@ -1,0 +1,226 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "IPAdapterUnifiedLoader",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "preset": "PLUS (high strength)"
+    }
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "phase4c_ref_house.png"
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "phase4c_ref_mill.png"
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "phase4c_ref_granary.png"
+    }
+  },
+  "11": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "3",
+        0
+      ],
+      "image2": [
+        "4",
+        0
+      ]
+    }
+  },
+  "12": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "11",
+        0
+      ],
+      "image2": [
+        "5",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "IPAdapterAdvanced",
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "ipadapter": [
+        "2",
+        1
+      ],
+      "image": [
+        "12",
+        0
+      ],
+      "weight": 0.02,
+      "start_at": 0.0,
+      "end_at": 0.3,
+      "weight_type": "style transfer precise",
+      "combine_embeds": "average",
+      "embeds_scaling": "K+V w/ C penalty"
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "exactly one subject only, one isolated painterly pixel-art woodland game asset, exact 2:1 isometric camera from upper-left, upper-left light, organic foliage and timber material detail, crisp readable silhouette matching the supplied reference family's muted colour temperature and edge treatment, centered with generous padding, tall pine, layered horizontal branches narrowing to a point, bare lower trunk, one standalone tree with one trunk and one connected canopy, no ground beneath it, foliage and timber colours only, perfectly flat uniform #00FFFF chroma field"
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "people, animals, text, letters, numbers, watermark, frame, modern object, fantasy glow, Roman columns, settlement, second structure, multiple objects, variants, grid, contact sheet, sprite sheet, asset collection, perspective mismatch, cast shadow, contact shadow, floor plane, gradient background, architecture, building, stone, plaster, slate, forest scene, landscape, diorama, terrain island, cliff, ground, grass field, multiple trees"
+    }
+  },
+  "8": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "9": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "13",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "18",
+        0
+      ],
+      "seed": 64052302,
+      "steps": 30,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.72
+    }
+  },
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "19",
+        0
+      ],
+      "filename_prefix": "phase4c/foliage/tree_pine_tall_02"
+    }
+  },
+  "15": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "phase4c_guide_tree_pine_tall_02.png"
+    }
+  },
+  "16": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "15",
+        0
+      ],
+      "color": 65535
+    }
+  },
+  "17": {
+    "class_type": "InvertMask",
+    "inputs": {
+      "mask": [
+        "16",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "VAEEncodeForInpaint",
+    "inputs": {
+      "pixels": [
+        "15",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ],
+      "mask": [
+        "17",
+        0
+      ],
+      "grow_mask_by": 6
+    }
+  },
+  "19": {
+    "class_type": "ImageCompositeMasked",
+    "inputs": {
+      "destination": [
+        "10",
+        0
+      ],
+      "source": [
+        "15",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "mask": [
+        "16",
+        0
+      ]
+    }
+  }
+}

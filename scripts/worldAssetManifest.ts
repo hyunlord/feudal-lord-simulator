@@ -365,6 +365,13 @@ const parseParchmentMetrics = (value: unknown): ParchmentMetrics => {
       passed: requireBoolean(candidateRecord, "passed", "parchment candidate"),
     };
   });
+  const passedCandidateCount = candidates.filter((candidate) => candidate.passed).length;
+  if (decision === "flat-token" && passedCandidateCount > 0) {
+    throw new WorldAssetManifestError("parchmentMetrics flat-token decision cannot include passing generated candidates");
+  }
+  if (decision === "generated-texture" && passedCandidateCount === 0) {
+    throw new WorldAssetManifestError("parchmentMetrics generated-texture decision requires a passing generated candidate");
+  }
   return { decision, thresholds: expectedThresholds, candidates };
 };
 

@@ -22,6 +22,29 @@ type CliOptions = {
   readonly outputRoot: string;
 };
 
+type OpaqueBounds = NonNullable<ReturnType<typeof findOpaqueBounds>>;
+
+type ReferenceStyleEvidence = {
+  readonly criterion: "opaque-fill-ratio-and-palette-variety";
+  readonly opaqueFillRatio: number;
+  readonly uniqueOpaqueColours: number;
+  readonly minimumFillRatio: number;
+  readonly maximumFillRatio: number;
+  readonly strongMinimumFillRatio: number;
+  readonly strongMaximumFillRatio: number;
+  readonly minimumUniqueOpaqueColours: number;
+  readonly strongMinimumUniqueOpaqueColours: number;
+  readonly score: 0 | 1 | 2;
+};
+
+type AuditedFoliageCandidate = FoliageSelection["candidates"][number] & {
+  readonly referenceStyleEvidence: ReferenceStyleEvidence;
+};
+
+type AuditedFoliageSelection = Omit<FoliageSelection, "candidates"> & {
+  readonly candidates: readonly AuditedFoliageCandidate[];
+};
+
 class Phase8SelectionError extends Error {
   constructor(message: string) {
     super(message);
@@ -53,10 +76,46 @@ const uniqueOpaqueColours = (image: RgbaImage): number => {
   return colours.size;
 };
 
-const rubricFor = (image: RgbaImage, key: TreeStumpKey): SelectionRubric => {
+const referenceStyleEvidence = (
+  image: RgbaImage,
+  key: TreeStumpKey,
+  bounds: OpaqueBounds,
+  uniqueColours: number,
+): ReferenceStyleEvidence => {
+  const stump = key.startsWith("stump_");
+  const opaqueArea = opaquePixels(image).reduce((sum, value) => sum + value, 0);
+  const boundingArea = Math.max(1, (bounds.right - bounds.left) * (bounds.bottom - bounds.top));
+  const opaqueFillRatio = Number((opaqueArea / boundingArea).toFixed(4));
+  const minimumFillRatio = stump ? 0.35 : 0.28;
+  const maximumFillRatio = stump ? 0.92 : 0.88;
+  const strongMinimumFillRatio = stump ? 0.45 : 0.38;
+  const strongMaximumFillRatio = stump ? 0.86 : 0.82;
+  const minimumUniqueOpaqueColours = 3;
+  const strongMinimumUniqueOpaqueColours = 5;
+  const inLooseBand = opaqueFillRatio >= minimumFillRatio && opaqueFillRatio <= maximumFillRatio;
+  const inStrongBand = opaqueFillRatio >= strongMinimumFillRatio && opaqueFillRatio <= strongMaximumFillRatio;
+  const scoreValue = score(inLooseBand && uniqueColours >= minimumUniqueOpaqueColours, inStrongBand && uniqueColours >= strongMinimumUniqueOpaqueColours);
+  return {
+    criterion: "opaque-fill-ratio-and-palette-variety",
+    opaqueFillRatio,
+    uniqueOpaqueColours: uniqueColours,
+    minimumFillRatio,
+    maximumFillRatio,
+    strongMinimumFillRatio,
+    strongMaximumFillRatio,
+    minimumUniqueOpaqueColours,
+    strongMinimumUniqueOpaqueColours,
+    score: scoreValue,
+  };
+};
+
+const rubricFor = (image: RgbaImage, key: TreeStumpKey): { readonly rubric: SelectionRubric; readonly referenceStyleEvidence: ReferenceStyleEvidence | null } => {
   const bounds = findOpaqueBounds(image);
   if (bounds === null) {
-    return { trunkGroundContact: 0, silhouette: 0, lightingVariation: 0, referenceStyle: 0, total: 0 };
+    return {
+      rubric: { trunkGroundContact: 0, silhouette: 0, lightingVariation: 0, referenceStyle: 0, total: 0 },
+      referenceStyleEvidence: null,
+    };
   }
   const rows = opaquePixels(image);
   const bottomRows = rows.slice(Math.max(0, bounds.bottom - 4), bounds.bottom);
@@ -66,13 +125,17 @@ const rubricFor = (image: RgbaImage, key: TreeStumpKey): SelectionRubric => {
   const colourCount = uniqueOpaqueColours(image);
   const stump = key.startsWith("stump_");
   const silhouetteStrong = stump ? width > height * 1.5 : height > width * 0.85;
+  const evidence = referenceStyleEvidence(image, key, bounds, colourCount);
   const scores = {
     trunkGroundContact: score(bottomContact > 0, bottomContact >= (stump ? 12 : 6)),
     silhouette: score(width > 0 && height > 0, silhouetteStrong),
     lightingVariation: score(colourCount >= 3, colourCount >= 5),
-    referenceStyle: score(true, true),
+    referenceStyle: evidence.score,
   };
-  return { ...scores, total: scores.trunkGroundContact + scores.silhouette + scores.lightingVariation + scores.referenceStyle };
+  return {
+    rubric: { ...scores, total: scores.trunkGroundContact + scores.silhouette + scores.lightingVariation + scores.referenceStyle },
+    referenceStyleEvidence: evidence,
+  };
 };
 
 const sourceForFoliage = (key: (typeof FOLIAGE_KEYS)[number], candidate: number): { readonly seed: number; readonly candidate: number } => {
@@ -81,7 +144,7 @@ const sourceForFoliage = (key: (typeof FOLIAGE_KEYS)[number], candidate: number)
   return { seed: 64052000 + (subject + 1) * 100 + candidate, candidate };
 };
 
-const processTreeCandidate = (options: CliOptions, key: TreeStumpKey, candidate: number): FoliageSelection["candidates"][number] => {
+const processTreeCandidate = (options: CliOptions, key: TreeStumpKey, candidate: number): AuditedFoliageCandidate => {
   const fileName = `${key}_${String(candidate).padStart(2, "0")}.png`;
   const input = path.join(options.comfyRoot, "foliage", fileName);
   const output = path.join(options.outputRoot, "foliage", fileName);
@@ -90,6 +153,7 @@ const processTreeCandidate = (options: CliOptions, key: TreeStumpKey, candidate:
   assertSpriteContract(processed, key);
   writePng(output, processed);
   const metrics = rubricFor(processed, key);
+  if (metrics.referenceStyleEvidence === null) throw new Phase8SelectionError(`${key}_${String(candidate).padStart(2, "0")} has no opaque pixels`);
   return {
     candidate,
     seed: sourceForFoliage(key, candidate).seed,
@@ -103,11 +167,12 @@ const processTreeCandidate = (options: CliOptions, key: TreeStumpKey, candidate:
     bakedGroundShadowAbsent: true,
     selected: false,
     hardRejected: false,
-    rubric: metrics,
+    rubric: metrics.rubric,
+    referenceStyleEvidence: metrics.referenceStyleEvidence,
   };
 };
 
-const selectFoliage = (options: CliOptions): readonly FoliageSelection[] =>
+const selectFoliage = (options: CliOptions): readonly AuditedFoliageSelection[] =>
   TREE_STUMP_KEYS.map((key) => {
     const candidates = Array.from({ length: 8 }, (_, index) => processTreeCandidate(options, key, index + 1));
     const best = [...candidates].sort((left, right) =>

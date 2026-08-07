@@ -19,14 +19,27 @@
     }
   },
   "references": [
-    "public/assets/buildings/candidates_v2/house_03.png",
-    "public/assets/buildings/candidates_v2/mill_02.png",
-    "public/assets/buildings/candidates_v2/granary_08.png"
+    {
+      "identifier": "phase4c_ref_house.png",
+      "repoPath": "public/assets/buildings/candidates_v2/house_03.png",
+      "sha256": "417da9d910a6d87bedd99cff3838ec9505ad1e7c547c751d4e88d548b9f304ce"
+    },
+    {
+      "identifier": "phase4c_ref_mill.png",
+      "repoPath": "public/assets/buildings/candidates_v2/mill_02.png",
+      "sha256": "794be4b5670e5d8b305fddbd2812f964eb9cb49f463697c9d93337f5ccac6f5c"
+    },
+    {
+      "identifier": "phase4c_ref_granary.png",
+      "repoPath": "public/assets/buildings/candidates_v2/granary_08.png",
+      "sha256": "ac167ef0d025d649bcd3e815a20983046b50ec5a8ab8a63b69040a5490b5eac0"
+    }
   ],
   "summary": {
     "catalogJobs": 133,
     "queuedJobs": 64,
-    "completedJobs": 64
+    "completedJobs": 64,
+    "auditedRawPngs": 64
   },
   "timing": {
     "startedAtUtc": "2026-08-07T13:45:32.646164+00:00",
@@ -41,7 +54,15 @@
       "seed": 64052101,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_01.png",
-      "elapsedSeconds": 48.065,
+      "sha256": "46a2564a15693242c3becaf36e78e4f63079f095ca9cf812df0b318e6aa5a22f",
+      "promptPath": "job-json/foliage/tree_oak_large_01.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -51,7 +72,15 @@
       "seed": 64052102,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_02.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "f5d441070134e1bcc9a3be6ec199659dba0a4ff91c4602ccfb76c3fe7536be5b",
+      "promptPath": "job-json/foliage/tree_oak_large_02.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -61,7 +90,15 @@
       "seed": 64052103,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_03.png",
-      "elapsedSeconds": 34.036,
+      "sha256": "7e60b97a6cd377168a028f90c3cab05f5fccc5965fbfbe078c7240faeb9d0cfb",
+      "promptPath": "job-json/foliage/tree_oak_large_03.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -71,7 +108,15 @@
       "seed": 64052104,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_04.png",
-      "elapsedSeconds": 34.037,
+      "sha256": "12f13d5a704a353457e14c597482021d4bfc1ddd6728e77797acf8286adad316",
+      "promptPath": "job-json/foliage/tree_oak_large_04.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -81,7 +126,15 @@
       "seed": 64052105,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_05.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "3b2ed63a06724447ba97187312c34bc6509f70512828ad5e8db84e87715b9345",
+      "promptPath": "job-json/foliage/tree_oak_large_05.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -91,7 +144,15 @@
       "seed": 64052106,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_06.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "8f2ec8b9a2045f11f4a8f1b62eca109e23988b72d635f956ec5abc9cb0752db5",
+      "promptPath": "job-json/foliage/tree_oak_large_06.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -101,7 +162,15 @@
       "seed": 64052107,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_07.png",
-      "elapsedSeconds": 34.04,
+      "sha256": "e32862dfef4f0dbd77f4bd1edaea370c408f93bb8602647213503e23b73afd61",
+      "promptPath": "job-json/foliage/tree_oak_large_07.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -111,7 +180,15 @@
       "seed": 64052108,
       "geometry": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
       "sourcePath": "foliage/tree_oak_large_08.png",
-      "elapsedSeconds": 34.043,
+      "sha256": "d0ffcf7429ef2b2bb62fb84897419df33e53c83800598d50e668db55faf95a2e",
+      "promptPath": "job-json/foliage/tree_oak_large_08.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_large_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_large_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -121,7 +198,15 @@
       "seed": 64052201,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_01.png",
-      "elapsedSeconds": 34.059,
+      "sha256": "d878f0ef7aff940dda79c81560284c47c2e81326b809429745bb62e2f8abaab3",
+      "promptPath": "job-json/foliage/tree_oak_small_01.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -131,7 +216,15 @@
       "seed": 64052202,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_02.png",
-      "elapsedSeconds": 34.071,
+      "sha256": "e00f6a42975769f16d5a71df41e02809bba5414d4dd3e0538f0e50bab880a70e",
+      "promptPath": "job-json/foliage/tree_oak_small_02.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -141,7 +234,15 @@
       "seed": 64052203,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_03.png",
-      "elapsedSeconds": 34.061,
+      "sha256": "6802936d823953dfb9fae3047fdd6f9c13f35df0fca2d11d1548607a5b599b70",
+      "promptPath": "job-json/foliage/tree_oak_small_03.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -151,7 +252,15 @@
       "seed": 64052204,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_04.png",
-      "elapsedSeconds": 34.062,
+      "sha256": "dc43ac42b1fcc2cd5487ca6b9b1a7a7e10512ad9602cd6c3c67843a08cab8b5a",
+      "promptPath": "job-json/foliage/tree_oak_small_04.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -161,7 +270,15 @@
       "seed": 64052205,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_05.png",
-      "elapsedSeconds": 34.055,
+      "sha256": "e7a0667eef033cf63e38353d0cd7cb6549668ef2228a940f6cf9f30e129b58dc",
+      "promptPath": "job-json/foliage/tree_oak_small_05.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -171,7 +288,15 @@
       "seed": 64052206,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_06.png",
-      "elapsedSeconds": 34.045,
+      "sha256": "d6096763a1946366fe0738e6b79ee677ae223f764a52eabf28cfe289d2d36cf7",
+      "promptPath": "job-json/foliage/tree_oak_small_06.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -181,7 +306,15 @@
       "seed": 64052207,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_07.png",
-      "elapsedSeconds": 34.044,
+      "sha256": "dff0509657209e09bb55e0233059562057fa4f64f345d06259e6dcc231710e85",
+      "promptPath": "job-json/foliage/tree_oak_small_07.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -191,7 +324,15 @@
       "seed": 64052208,
       "geometry": "younger oak, narrower crown, slender straight trunk",
       "sourcePath": "foliage/tree_oak_small_08.png",
-      "elapsedSeconds": 34.047,
+      "sha256": "284009fcc9317adf28d752a622d86a78456ab523049750339f89a7bca2371ca0",
+      "promptPath": "job-json/foliage/tree_oak_small_08.prompt.json",
+      "workflowPath": "job-json/foliage/tree_oak_small_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_oak_small_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -201,7 +342,15 @@
       "seed": 64052301,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_01.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "8c879f0116e40e826171f29f0838b6351d647a9e08dd34cf513cb6dfccf49a6e",
+      "promptPath": "job-json/foliage/tree_pine_tall_01.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -211,7 +360,15 @@
       "seed": 64052302,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_02.png",
-      "elapsedSeconds": 34.036,
+      "sha256": "50fe9bedb6b38c8b10bbbf94033d87a68fe70a9e4406cc035a39217d143a9a0f",
+      "promptPath": "job-json/foliage/tree_pine_tall_02.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -221,7 +378,15 @@
       "seed": 64052303,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_03.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "f8cdf306508d26de34325f9dd2accf75af3bbe83e2d1db419d5ac40a2f338962",
+      "promptPath": "job-json/foliage/tree_pine_tall_03.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -231,7 +396,15 @@
       "seed": 64052304,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_04.png",
-      "elapsedSeconds": 34.049,
+      "sha256": "3b5f2dcdc62bbb39d8b1468af95455ca0fcacbb0cbc71baa6f4e60136f120020",
+      "promptPath": "job-json/foliage/tree_pine_tall_04.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -241,7 +414,15 @@
       "seed": 64052305,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_05.png",
-      "elapsedSeconds": 34.063,
+      "sha256": "23b76164632a26c7584559ba892079cab3a263aa0922c6c28adf02331d7fc7b4",
+      "promptPath": "job-json/foliage/tree_pine_tall_05.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -251,7 +432,15 @@
       "seed": 64052306,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_06.png",
-      "elapsedSeconds": 34.036,
+      "sha256": "8719219569972915f7547ab121ca6be4d16f507f78d98558e8b04cb5731eca5f",
+      "promptPath": "job-json/foliage/tree_pine_tall_06.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -261,7 +450,15 @@
       "seed": 64052307,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_07.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "da59cce186542d7028f4b8fd5d2205334b05084c2cb555b90742c940d158c374",
+      "promptPath": "job-json/foliage/tree_pine_tall_07.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -271,7 +468,15 @@
       "seed": 64052308,
       "geometry": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
       "sourcePath": "foliage/tree_pine_tall_08.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "c626eaeb8e160b8354a6517a7a7d88382f0b80bb50bcee7b37d171193906ae6d",
+      "promptPath": "job-json/foliage/tree_pine_tall_08.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_tall_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_tall_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -281,7 +486,15 @@
       "seed": 64052401,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_01.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "6e78161eb358c1087fc5d4dfa37fed18efb21cd11a0878b9cf473514aa699f43",
+      "promptPath": "job-json/foliage/tree_pine_short_01.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -291,7 +504,15 @@
       "seed": 64052402,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_02.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "3bae52011edb7de7b704becdbdd7542d3a2f84d14142f992ff33fd9edb6ef5b8",
+      "promptPath": "job-json/foliage/tree_pine_short_02.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -301,7 +522,15 @@
       "seed": 64052403,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_03.png",
-      "elapsedSeconds": 34.037,
+      "sha256": "e1d906c602fb14524a977bac8dccb43738921e90d2801d815bdd25b8ada63a2f",
+      "promptPath": "job-json/foliage/tree_pine_short_03.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -311,7 +540,15 @@
       "seed": 64052404,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_04.png",
-      "elapsedSeconds": 34.036,
+      "sha256": "cd06da74addc7d6fe03eaedc12cfc522dd040f16aeac0325b01e5e50aae5a557",
+      "promptPath": "job-json/foliage/tree_pine_short_04.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -321,7 +558,15 @@
       "seed": 64052405,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_05.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "c3c2c1ece871a691333cbb0fa0aea746c68ff6ff427db2e9457df39f5d058dc6",
+      "promptPath": "job-json/foliage/tree_pine_short_05.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -331,7 +576,15 @@
       "seed": 64052406,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_06.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "9df825e2601a9084336ec669f1193475b0127232922501b4c9bc5fd1b7a0eaa6",
+      "promptPath": "job-json/foliage/tree_pine_short_06.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -341,7 +594,15 @@
       "seed": 64052407,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_07.png",
-      "elapsedSeconds": 34.042,
+      "sha256": "fcef031e6340d6b4629975255bdc7a1b3b1c635c10ecc3d4797e14d47be0083f",
+      "promptPath": "job-json/foliage/tree_pine_short_07.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -351,7 +612,15 @@
       "seed": 64052408,
       "geometry": "shorter dense conifer, branches near ground",
       "sourcePath": "foliage/tree_pine_short_08.png",
-      "elapsedSeconds": 34.063,
+      "sha256": "ce94da678b13f1fdb9eb0d51cf2cbc4be13ad36474b88bda0f2fd64fbb52f0bb",
+      "promptPath": "job-json/foliage/tree_pine_short_08.prompt.json",
+      "workflowPath": "job-json/foliage/tree_pine_short_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_pine_short_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -361,7 +630,15 @@
       "seed": 64052501,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_01.png",
-      "elapsedSeconds": 34.062,
+      "sha256": "60c5d121e2427d075b1aa0fa7aa38be8f27b1977d451eaafc1e10aadbc9c396c",
+      "promptPath": "job-json/foliage/tree_birch_01.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -371,7 +648,15 @@
       "seed": 64052502,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_02.png",
-      "elapsedSeconds": 34.064,
+      "sha256": "2329cf29cc456b4bd3ab5557a2d47db342ad97bf3860478e0f86db0abb977443",
+      "promptPath": "job-json/foliage/tree_birch_02.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -381,7 +666,15 @@
       "seed": 64052503,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_03.png",
-      "elapsedSeconds": 34.062,
+      "sha256": "a458db42d2d7fe8ce31ecc2f9655aaba9f09620db32f77bfe7aa72e40d86885f",
+      "promptPath": "job-json/foliage/tree_birch_03.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -391,7 +684,15 @@
       "seed": 64052504,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_04.png",
-      "elapsedSeconds": 34.061,
+      "sha256": "9a32d83471f6e8776d451be267b51dc2ef05594d00d8cf3e8a78c967b6051fe8",
+      "promptPath": "job-json/foliage/tree_birch_04.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -401,7 +702,15 @@
       "seed": 64052505,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_05.png",
-      "elapsedSeconds": 34.067,
+      "sha256": "cbbad19ca0491a04cae107b1e52c8b6e21842d0a0d4722a7313371e40ca91310",
+      "promptPath": "job-json/foliage/tree_birch_05.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -411,7 +720,15 @@
       "seed": 64052506,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_06.png",
-      "elapsedSeconds": 34.06,
+      "sha256": "923b8e27591f7250531cc0806e803c3657dafea19bda82e73477965567136375",
+      "promptPath": "job-json/foliage/tree_birch_06.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -421,7 +738,15 @@
       "seed": 64052507,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_07.png",
-      "elapsedSeconds": 34.068,
+      "sha256": "1bcf23b74fbb3c16130881c85d74a497c681cb0c0eecc798bf478d3221ec1308",
+      "promptPath": "job-json/foliage/tree_birch_07.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -431,7 +756,15 @@
       "seed": 64052508,
       "geometry": "slender birch, pale banded trunk, light airy canopy",
       "sourcePath": "foliage/tree_birch_08.png",
-      "elapsedSeconds": 34.063,
+      "sha256": "7c3b30782cd156e6a9e53d66db091770f5f649ee733e4e420d89446b38d2b8ce",
+      "promptPath": "job-json/foliage/tree_birch_08.prompt.json",
+      "workflowPath": "job-json/foliage/tree_birch_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_birch_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -441,7 +774,15 @@
       "seed": 64052601,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_01.png",
-      "elapsedSeconds": 34.059,
+      "sha256": "e9b93888174ed2c0f3be316947cfdf05b5c2275682d2d8af57e36b1d80bee368",
+      "promptPath": "job-json/foliage/tree_dead_01.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -451,7 +792,15 @@
       "seed": 64052602,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_02.png",
-      "elapsedSeconds": 34.037,
+      "sha256": "183898f418251c3b0850f6c298f5e78148bd4b15cf1e457d24a655967473145e",
+      "promptPath": "job-json/foliage/tree_dead_02.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -461,7 +810,15 @@
       "seed": 64052603,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_03.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "6750746baa11d25971e4f4baeedb26c2a94a7007757eac7effb9e567dac8a90d",
+      "promptPath": "job-json/foliage/tree_dead_03.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -471,7 +828,15 @@
       "seed": 64052604,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_04.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "fb958d53a865f3c8140fd24e328c5b5c14ff7e80ec7de13b5628b6c784b8e319",
+      "promptPath": "job-json/foliage/tree_dead_04.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -481,7 +846,15 @@
       "seed": 64052605,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_05.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "42f723cf3443667608e8a3b044ff9f4fbacc976418a587c4750b72d58fe5b220",
+      "promptPath": "job-json/foliage/tree_dead_05.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -491,7 +864,15 @@
       "seed": 64052606,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_06.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "c15f74849266dd1cd6954bca9ef84483bf1255a6bcc971ce6b350abfae5f06f4",
+      "promptPath": "job-json/foliage/tree_dead_06.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -501,7 +882,15 @@
       "seed": 64052607,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_07.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "e54bc14f255f3d63947ab951c80723911e62b3fb8f0f9d64c5ec566892f61c4a",
+      "promptPath": "job-json/foliage/tree_dead_07.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -511,7 +900,15 @@
       "seed": 64052608,
       "geometry": "bare dead tree, pale twisted limbs",
       "sourcePath": "foliage/tree_dead_08.png",
-      "elapsedSeconds": 34.043,
+      "sha256": "cedd64d37fffbdcfe8561635b041e3046cb8a5afb03f5a9cce40c3527839777f",
+      "promptPath": "job-json/foliage/tree_dead_08.prompt.json",
+      "workflowPath": "job-json/foliage/tree_dead_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_tree_dead_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -521,7 +918,15 @@
       "seed": 64052701,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_01.png",
-      "elapsedSeconds": 34.036,
+      "sha256": "590fba7a2f7c4ab744021b5a7ed10d05b4b3ba5724dd2d017b6ec15e7272dd00",
+      "promptPath": "job-json/foliage/stump_fresh_01.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -531,7 +936,15 @@
       "seed": 64052702,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_02.png",
-      "elapsedSeconds": 34.036,
+      "sha256": "c35a28440cf6abbdc9c878495de6c340c8dbcf26e241cf6136d4690667c217e2",
+      "promptPath": "job-json/foliage/stump_fresh_02.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -541,7 +954,15 @@
       "seed": 64052703,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_03.png",
-      "elapsedSeconds": 34.038,
+      "sha256": "c91275e2f591f1cc1355f1019bfe7b68f66bc02aeceeab1fae38613daadf8e2e",
+      "promptPath": "job-json/foliage/stump_fresh_03.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -551,7 +972,15 @@
       "seed": 64052704,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_04.png",
-      "elapsedSeconds": 34.049,
+      "sha256": "c7aaea5630f8fa86c66e282ac320e2cdb53095d32ff4b04571b6231b43213487",
+      "promptPath": "job-json/foliage/stump_fresh_04.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -561,7 +990,15 @@
       "seed": 64052705,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_05.png",
-      "elapsedSeconds": 34.061,
+      "sha256": "74295811b66b7c7b98852603e24fc26e2db5a6badc8400b48dc7e14be5e03e4e",
+      "promptPath": "job-json/foliage/stump_fresh_05.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -571,7 +1008,15 @@
       "seed": 64052706,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_06.png",
-      "elapsedSeconds": 34.065,
+      "sha256": "e0cfc9d17da594e108485c7e6306235659ae224d2487b3c9224c588f10701249",
+      "promptPath": "job-json/foliage/stump_fresh_06.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -581,7 +1026,15 @@
       "seed": 64052707,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_07.png",
-      "elapsedSeconds": 34.061,
+      "sha256": "b1797edeff266c7241a01f19b001d478d667ab721e21834c85d1d9ff4dce4abf",
+      "promptPath": "job-json/foliage/stump_fresh_07.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -591,7 +1044,15 @@
       "seed": 64052708,
       "geometry": "freshly cut low tree stump, bright exposed cut face, splintered timber edge",
       "sourcePath": "foliage/stump_fresh_08.png",
-      "elapsedSeconds": 34.051,
+      "sha256": "32a0e8e3e9355122fc31879c93ba2d21ba00089c4d35aa2ac3459e469e5dfa4e",
+      "promptPath": "job-json/foliage/stump_fresh_08.prompt.json",
+      "workflowPath": "job-json/foliage/stump_fresh_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_fresh_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -601,7 +1062,15 @@
       "seed": 64052801,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_01.png",
-      "elapsedSeconds": 34.05,
+      "sha256": "c4a54431e40666a5cf603b5eb31d566992d140da527aa0d1784d297f9a189ccf",
+      "promptPath": "job-json/foliage/stump_old_01.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_01.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_01.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -611,7 +1080,15 @@
       "seed": 64052802,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_02.png",
-      "elapsedSeconds": 34.071,
+      "sha256": "dd97fb2a70ebb7a11faef620afecaf26c47b921ffa762afd84e2968887008982",
+      "promptPath": "job-json/foliage/stump_old_02.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_02.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_02.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -621,7 +1098,15 @@
       "seed": 64052803,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_03.png",
-      "elapsedSeconds": 34.054,
+      "sha256": "efdbdb93b50167e2d0f729e5a6b27b23724b452a472ba5c23c8cbaa50c50d266",
+      "promptPath": "job-json/foliage/stump_old_03.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_03.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_03.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -631,7 +1116,15 @@
       "seed": 64052804,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_04.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "b09f70abb41f26f6093961ce3d780dadccbeff29db5e58b4354b14555bdc3083",
+      "promptPath": "job-json/foliage/stump_old_04.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_04.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_04.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -641,7 +1134,15 @@
       "seed": 64052805,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_05.png",
-      "elapsedSeconds": 34.039,
+      "sha256": "46e125d49fb2d07d82ad9d94b4e5191a31a80c690f70a3ac6abe05e4007bf53a",
+      "promptPath": "job-json/foliage/stump_old_05.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_05.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_05.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -651,7 +1152,15 @@
       "seed": 64052806,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_06.png",
-      "elapsedSeconds": 34.047,
+      "sha256": "7ab629e3496a95cd36da10017c40811af2bdff4fa52f783277b023cd6d7e7182",
+      "promptPath": "job-json/foliage/stump_old_06.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_06.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_06.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -661,7 +1170,15 @@
       "seed": 64052807,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_07.png",
-      "elapsedSeconds": 34.064,
+      "sha256": "533c5c0ab7792c68f923d917ed33c196762a0c5bb41dd75a99f1a187fd1652e3",
+      "promptPath": "job-json/foliage/stump_old_07.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_07.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_07.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     },
     {
@@ -671,7 +1188,15 @@
       "seed": 64052808,
       "geometry": "older weathered low tree stump, greyed cut face, softened worn timber edge",
       "sourcePath": "foliage/stump_old_08.png",
-      "elapsedSeconds": 34.059,
+      "sha256": "d0f142b58b52eb329151d49ab766aeede2631d4c1858b61930c3ea7c14fa011d",
+      "promptPath": "job-json/foliage/stump_old_08.prompt.json",
+      "workflowPath": "job-json/foliage/stump_old_08.workflow.json",
+      "guideIdentifier": "phase4c_guide_stump_old_08.png",
+      "referenceIdentifiers": [
+        "phase4c_ref_house.png",
+        "phase4c_ref_mill.png",
+        "phase4c_ref_granary.png"
+      ],
       "status": "completed"
     }
   ]

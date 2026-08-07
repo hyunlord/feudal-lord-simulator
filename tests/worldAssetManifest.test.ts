@@ -69,7 +69,7 @@ const foliageSelection = (key: (typeof TREE_STUMP_KEYS)[number]): FoliageSelecti
 });
 
 const parchmentMetrics: ParchmentMetrics = {
-  decision: "flat-token",
+  decision: "generated-texture",
   thresholds: {
     joinBandMaxDelta: 24,
     joinToInternalRatio: 2,
@@ -257,6 +257,20 @@ describe("world asset manifest", () => {
     assert.equal(parsed.foliageSelections.every((selection) => selection.candidates.length === 8), true);
     assert.equal(parsed.parchmentMetrics.thresholds.joinBandMaxDelta, 24);
     assert.equal(parsed.parchmentMetrics.thresholds.blockLumaStandardDeviationMax, 8);
+  });
+
+  it("rejects flat parchment fallback when a generated candidate passed", () => {
+    // Given: parchment metrics with a candidate that satisfies the generation thresholds.
+    const valid = manifestFixture();
+
+    // When / Then: a flat-token decision cannot override a passing generated texture candidate.
+    assert.throws(
+      () => parseWorldAssetManifest({
+        ...valid,
+        parchmentMetrics: { ...valid.parchmentMetrics, decision: "flat-token" },
+      }),
+      /parchmentMetrics flat-token decision cannot include passing generated candidates/,
+    );
   });
 
   it("rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties", () => {

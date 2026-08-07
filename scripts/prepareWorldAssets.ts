@@ -3,7 +3,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { processTerrainFile } from "./terrainTexturePipeline";
+import { assertTerrainSeams, measureTerrainSeams, processTerrainFile } from "./terrainTexturePipeline";
 import { readPng, writePng } from "./processBuildingSprite";
 import {
   BUILDING_KEYS,
@@ -258,9 +258,16 @@ const foliageAssets = (
   };
 });
 
+type AssetTerrainMetrics = {
+  readonly horizontalJoinBandDelta: number;
+  readonly verticalJoinBandDelta: number;
+  readonly horizontalInternalBandDelta: number;
+  readonly verticalInternalBandDelta: number;
+};
+
 const terrainAssets = (
   repoRoot: string,
-  metrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], ReturnType<typeof processTerrainFile>>,
+  metrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics>,
 ): readonly TerrainAsset[] => TERRAIN_KEYS.map((key, index) => {
   const spec = TERRAIN_SPECS[key];
   const measured = metrics.get(key);
@@ -288,6 +295,21 @@ const terrainAssets = (
     },
   };
 });
+
+const measureExistingTerrain = (repoRoot: string): ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics> => {
+  const metrics = new Map<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics>();
+  for (const key of TERRAIN_KEYS) {
+    const measured = measureTerrainSeams(readPng(outputPath(repoRoot, "terrain", key)));
+    assertTerrainSeams(measured);
+    metrics.set(key, {
+      horizontalJoinBandDelta: measured.horizontalJoinBandDelta,
+      verticalJoinBandDelta: measured.verticalJoinBandDelta,
+      horizontalInternalBandDelta: measured.horizontalInternalBandDelta,
+      verticalInternalBandDelta: measured.verticalInternalBandDelta,
+    });
+  }
+  return metrics;
+};
 
 const ACCEPTED_REFERENCE_FILES = [
   ["house_03", "house_03.png"],
@@ -445,13 +467,12 @@ const parchmentMetrics = (rawRoot: string): ParchmentMetrics => {
   return metrics;
 };
 
-export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
-  const selections = parseFoliageLedger(options.rawRoot) ?? fallbackFoliageSelections(options.rawRoot);
+const writeManifestFromReleaseFiles = (
+  options: PrepareWorldAssetOptions,
+  selections: readonly FoliageSelection[],
+  terrainMetrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics>,
+): WorldAssetManifest => {
   const selectionByKey = new Map(selections.map((selection) => [selection.key, selection]));
-  copyPromotions(options);
-  processSelectedBuildings(options);
-  processFoliage(options, selectionByKey);
-  const metrics = processTerrain(options);
   const document = {
     version: 1,
     acceptedReferences: acceptedReferences(options.phase4bRoot),
@@ -460,7 +481,7 @@ export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAsse
     assets: [
       ...buildingAssets(options.repoRoot, options.selections),
       ...foliageAssets(options.repoRoot, selectionByKey),
-      ...terrainAssets(options.repoRoot, metrics),
+      ...terrainAssets(options.repoRoot, terrainMetrics),
     ],
   } as const;
   const manifest = parseWorldAssetManifest(document);
@@ -469,6 +490,21 @@ export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAsse
     `${JSON.stringify(manifest, null, 2)}\n`,
   );
   return verifyWorldAssets(options.repoRoot, options.phase4bRoot);
+};
+
+export const refreshWorldAssetManifest = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
+  const selections = parseFoliageLedger(options.rawRoot) ?? fallbackFoliageSelections(options.rawRoot);
+  return writeManifestFromReleaseFiles(options, selections, measureExistingTerrain(options.repoRoot));
+};
+
+export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
+  const selections = parseFoliageLedger(options.rawRoot) ?? fallbackFoliageSelections(options.rawRoot);
+  const selectionByKey = new Map(selections.map((selection) => [selection.key, selection]));
+  copyPromotions(options);
+  processSelectedBuildings(options);
+  processFoliage(options, selectionByKey);
+  const metrics = processTerrain(options);
+  return writeManifestFromReleaseFiles(options, selections, metrics);
 };
 
 const parseSelections = (filePath: string): BuildingSelections => {
@@ -503,13 +539,15 @@ const parseSelections = (filePath: string): BuildingSelections => {
 
 const main = (): number => { // no-excuse-ok: catch
   try {
-    const [, , repoRoot, rawRoot, phase4bRoot, selectionsPath] = process.argv;
+    const [, , repoRoot, rawRoot, phase4bRoot, selectionsPath, mode] = process.argv;
     if (repoRoot === undefined || rawRoot === undefined || phase4bRoot === undefined || selectionsPath === undefined) {
       throw new WorldAssetPreparationError(
-        "Usage: tsx scripts/prepareWorldAssets.ts <repo-root> <raw-root> <phase4b-root> <selections.json>",
+        "Usage: tsx scripts/prepareWorldAssets.ts <repo-root> <raw-root> <phase4b-root> <selections.json> [--refresh-manifest-only]",
       );
     }
-    prepareWorldAssets({ repoRoot, rawRoot, phase4bRoot, selections: parseSelections(selectionsPath) });
+    const options = { repoRoot, rawRoot, phase4bRoot, selections: parseSelections(selectionsPath) };
+    if (mode === "--refresh-manifest-only") refreshWorldAssetManifest(options);
+    else prepareWorldAssets(options);
     writeFileSync(1, "World asset preparation passed\n");
     return 0;
   } catch (caught) {

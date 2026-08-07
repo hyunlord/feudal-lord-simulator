@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -470,6 +471,89 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
     }
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def reference_records(repo_root: Path) -> list[dict[str, JsonValue]]:
+    names = ("phase4c_ref_house.png", "phase4c_ref_mill.png", "phase4c_ref_granary.png")
+    records: list[dict[str, JsonValue]] = []
+    for relative, name in zip(REFERENCE_PATHS, names, strict=True):
+        file_path = repo_root / relative
+        records.append({"identifier": name, "repoPath": relative.as_posix(), "sha256": sha256_file(file_path)})
+    return records
+
+
+def audit_existing_raw_foliage(output_root: Path, repo_root: Path, targets: frozenset[str] | None = None) -> None:
+    output_root.mkdir(parents=True, exist_ok=True)
+    prompt_root = output_root / "job-json" / "foliage"
+    prompt_root.mkdir(parents=True, exist_ok=True)
+    reference_names = ("phase4c_ref_house.png", "phase4c_ref_mill.png", "phase4c_ref_granary.png")
+    foliage_targets = frozenset(f"foliage:{key}" for key in TREE_STUMP_GEOMETRY) if targets is None else targets
+    jobs = tuple(job for job in selected_jobs(foliage_targets) if job.category is Category.FOLIAGE and job.key in TREE_STUMP_GEOMETRY)
+    records: list[dict[str, JsonValue]] = []
+    for job in jobs:
+        source_path = Path(job.category.value) / _release_name(job)
+        raw_path = output_root / source_path
+        if not raw_path.is_file():
+            raise GeneratorContractError(f"Missing raw foliage PNG for audit: {source_path.as_posix()}")
+        guide_name = f"phase4c_guide_{job.key}_{job.candidate:02d}.png"
+        positive, negative = _prompt_text(job)
+        prompt_path = prompt_root / f"{job.key}_{job.candidate:02d}.prompt.json"
+        workflow_path = prompt_root / f"{job.key}_{job.candidate:02d}.workflow.json"
+        prompt_document: dict[str, JsonValue] = {
+            "category": job.category.value,
+            "key": job.key,
+            "candidate": job.candidate,
+            "seed": job.seed,
+            "geometry": job.geometry,
+            "positive": positive,
+            "negative": negative,
+            "guideIdentifier": guide_name,
+            "referenceIdentifiers": list(reference_names),
+        }
+        prompt_path.write_text(json.dumps(prompt_document, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        workflow_path.write_text(
+            json.dumps(workflow_prompt(job, reference_names, guide_name), indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        records.append({
+            "category": job.category.value,
+            "key": job.key,
+            "candidate": job.candidate,
+            "seed": job.seed,
+            "geometry": job.geometry,
+            "sourcePath": source_path.as_posix(),
+            "sha256": sha256_file(raw_path),
+            "promptPath": prompt_path.relative_to(output_root).as_posix(),
+            "workflowPath": workflow_path.relative_to(output_root).as_posix(),
+            "guideIdentifier": guide_name,
+            "referenceIdentifiers": list(reference_names),
+            "status": "completed",
+        })
+    manifest_path = output_root / "manifest.json"
+    if manifest_path.exists():
+        parsed: JsonValue = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if not isinstance(parsed, dict):
+            raise GeneratorContractError("Existing raw manifest must be a JSON object")
+        manifest = parsed
+    else:
+        manifest = {}
+    manifest["references"] = reference_records(repo_root)
+    manifest["summary"] = {
+        "catalogJobs": len(JOBS),
+        "queuedJobs": len(records),
+        "completedJobs": len(records),
+        "auditedRawPngs": len(records),
+    }
+    manifest["jobs"] = records
+    manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None = None) -> None:
     output_root.mkdir(parents=True, exist_ok=True)
     reference_names = upload_reference_images(repo_root)
@@ -509,6 +593,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate the deterministic Phase 8 world-asset batch through ComfyUI IPAdapter.")
     parser.add_argument("--generate", action="store_true")
     parser.add_argument("--dry-run", action="store_true", help="Print the deterministic job manifest without contacting ComfyUI")
+    parser.add_argument("--audit-existing-raw-foliage", action="store_true", help="Persist prompt, workflow, seed, reference, and SHA256 audit JSON for existing raw tree and stump PNGs")
     parser.add_argument("--repo-root", type=Path, default=Path.cwd())
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--target", action="append", help="category:key; repeat to select multiple subjects")
@@ -516,6 +601,9 @@ def main() -> None:
     targets = None if args.target is None else frozenset(args.target)
     if args.dry_run:
         print(json.dumps(dry_run_manifest(targets), indent=2, ensure_ascii=False))
+        return
+    if args.audit_existing_raw_foliage:
+        audit_existing_raw_foliage(args.output_root, args.repo_root.resolve(), targets)
         return
     if args.generate:
         generate(args.output_root, args.repo_root.resolve(), targets)
