@@ -1,0 +1,88 @@
+{
+  "models": {
+    "checkpoint": "sd_xl_base_1.0.safetensors",
+    "ipadapter": "ip-adapter-plus_sdxl_vit-h.safetensors",
+    "clipVision": "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+    "preset": "PLUS (high strength)"
+  },
+  "settings": {
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "cfg": 6.0,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "ipadapterWeights": {
+      "building": 0.05,
+      "foliage": 0.02,
+      "terrain": 0.01
+    }
+  },
+  "references": [
+    "public/assets/buildings/candidates_v2/house_03.png",
+    "public/assets/buildings/candidates_v2/mill_02.png",
+    "public/assets/buildings/candidates_v2/granary_08.png"
+  ],
+  "summary": {
+    "catalogJobs": 133,
+    "queuedJobs": 5,
+    "completedJobs": 5
+  },
+  "timing": {
+    "startedAtUtc": "2026-08-07T14:24:07.125822+00:00",
+    "finishedAtUtc": "2026-08-07T14:26:59.359020+00:00",
+    "elapsedSeconds": 172.233
+  },
+  "jobs": [
+    {
+      "category": "terrain",
+      "key": "grass",
+      "candidate": 1,
+      "seed": 64053001,
+      "geometry": "seamless tileable muted meadow grass texture, low contrast, no objects",
+      "sourcePath": "terrain/grass.png",
+      "elapsedSeconds": 36.04,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "forest_floor",
+      "candidate": 1,
+      "seed": 64053002,
+      "geometry": "seamless tileable forest floor texture with restrained leaf litter, low contrast, no objects",
+      "sourcePath": "terrain/forest_floor.png",
+      "elapsedSeconds": 34.029,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "water",
+      "candidate": 1,
+      "seed": 64053003,
+      "geometry": "seamless tileable calm shallow water texture with subtle ripples, low contrast, no shoreline",
+      "sourcePath": "terrain/water.png",
+      "elapsedSeconds": 34.049,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "rock",
+      "candidate": 1,
+      "seed": 64053004,
+      "geometry": "seamless tileable weathered rock texture, low contrast, no loose objects",
+      "sourcePath": "terrain/rock.png",
+      "elapsedSeconds": 34.075,
+      "status": "completed"
+    },
+    {
+      "category": "terrain",
+      "key": "packed_earth_road",
+      "candidate": 1,
+      "seed": 64053005,
+      "geometry": "seamless tileable packed earth road texture, low contrast, no road edges or markings",
+      "sourcePath": "terrain/packed_earth_road.png",
+      "elapsedSeconds": 34.04,
+      "status": "completed"
+    }
+  ]
+}
