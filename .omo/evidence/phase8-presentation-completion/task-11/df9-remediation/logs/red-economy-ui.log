@@ -1,0 +1,48 @@
+✔ CourtLedger keeps old call sites and can display the Phase 3 economy totals (4.687292ms)
+✔ CourtLedger exposes compact primary labels and marks secondary rows for narrow consoles (0.978583ms)
+✖ CourtLedger keeps full semantic term names when compact labels are aria-hidden (2.82675ms)
+✔ economy overlay controls expose visible water and labour toggles without camera-key collisions (15.905084ms)
+✔ economy overlay controls expose compact visible labels without changing accessible names (7.338792ms)
+✔ economy overlay controls render inside the right console recess instead of as persistent floating UI (6.547625ms)
+✔ the onboarding task list replaces the distant population objective in the right console (4.099833ms)
+✔ sixty-tick guidance sampling does not schedule state from an effect on every simulation tick (3.840083ms)
+✔ build groups use explicit containers so neighboring buttons cannot intercept clicks (0.528583ms)
+✔ settlement guidance advances population targets and samples priority on a sixty tick cadence (0.160417ms)
+✔ settlement guidance priority follows the exact Phase 4F blocker order (0.151417ms)
+✔ settlement problem glyphs appear only for real water bread labour and storage conditions (0.708792ms)
+✔ water overlay draws well coverage and marks dry houses in vermilion (0.613625ms)
+✔ water coverage uses the same bounded Manhattan radius as well service (0.103ms)
+✔ labour overlay highlights only buildings below their worker requirement (0.089125ms)
+✔ renderer overlay input is optional so existing renderFrame callers remain source-compatible (0.043209ms)
+✔ economy overlay CSS stays fixed and tokenized (0.960916ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 309.012375
+
+✖ failing tests:
+
+test at tests/economyUi.test.ts:1:3464
+✖ CourtLedger keeps full semantic term names when compact labels are aria-hidden (2.82675ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /<dt class="ledger-row" aria-label="Timber">/. Input:
+  
+  '<div class="court-ledger" aria-label="Court ledger"><span class="ledger-heading">Royal Ledger</span><dl><dt class="ledger-row"><span class="ledger-label ledger-label--full">Timber</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Tim.</span></dt><dd class="ledger-row ledger-value">12</dd><dt class="ledger-row"><span class="ledger-label ledger-label--full">Population</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Pop.</span></dt><dd class="ledger-row ledger-value">6</dd><dt class="ledger-row"><span class="ledger-label ledger-label--full">Idle</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Idle</span></dt><dd class="ledger-row ledger-value">2</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Wheat</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Wh.</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">3</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Bread</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Br.</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">4</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Logs</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Log</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">5</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Tick</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Tck</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">8</dd><dt class="ledger-tool">Seal</dt><dd class="ledger-tool">방앗간</dd></dl></div>'
+  
+      at TestContext.<anonymous> (/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/tests/economyUi.test.ts:127:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1201:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:831:18)
+      at Test.postRun (node:internal/test_runner/test:1330:19)
+      at Test.run (node:internal/test_runner/test:1258:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:831:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '<div class="court-ledger" aria-label="Court ledger"><span class="ledger-heading">Royal Ledger</span><dl><dt class="ledger-row"><span class="ledger-label ledger-label--full">Timber</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Tim.</span></dt><dd class="ledger-row ledger-value">12</dd><dt class="ledger-row"><span class="ledger-label ledger-label--full">Population</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Pop.</span></dt><dd class="ledger-row ledger-value">6</dd><dt class="ledger-row"><span class="ledger-label ledger-label--full">Idle</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Idle</span></dt><dd class="ledger-row ledger-value">2</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Wheat</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Wh.</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">3</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Bread</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Br.</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">4</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Logs</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Log</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">5</dd><dt class="ledger-row ledger-row--secondary"><span class="ledger-label ledger-label--full">Tick</span><span class="ledger-label ledger-label--compact" aria-hidden="true">Tck</span></dt><dd class="ledger-row ledger-row--secondary ledger-value">8</dd><dt class="ledger-tool">Seal</dt><dd class="ledger-tool">방앗간</dd></dl></div>',
+    expected: /<dt class="ledger-row" aria-label="Timber">/,
+    operator: 'match',
+    diff: 'simple'
+  }

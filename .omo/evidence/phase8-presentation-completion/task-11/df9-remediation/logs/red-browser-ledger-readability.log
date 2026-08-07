@@ -1,0 +1,1722 @@
+{
+  "schemaVersion": 1,
+  "invocation": "LEDGER_QA_URL=<url> LEDGER_QA_OUTPUT_DIR=<dir> node scripts/phase8Task11MobileLedgerQa.mjs",
+  "baseUrl": "http://127.0.0.1:4321",
+  "viewports": [
+    {
+      "id": "mobile-375x812",
+      "viewport": {
+        "id": "mobile-375x812",
+        "width": 375,
+        "height": 812
+      },
+      "document": {
+        "clientWidth": 375,
+        "scrollWidth": 375
+      },
+      "rects": {
+        "console": {
+          "top": 588,
+          "right": 375,
+          "bottom": 812,
+          "left": 0,
+          "width": 375,
+          "height": 224
+        },
+        "ledger": {
+          "top": 601,
+          "right": 369,
+          "bottom": 647,
+          "left": 269,
+          "width": 100,
+          "height": 46
+        },
+        "overlay": {
+          "top": 649,
+          "right": 369,
+          "bottom": 705,
+          "left": 269,
+          "width": 100,
+          "height": 56
+        },
+        "buildTray": {
+          "top": 597,
+          "right": 266,
+          "bottom": 803,
+          "left": 37,
+          "width": 229,
+          "height": 206
+        },
+        "speed": {
+          "top": 707,
+          "right": 352.5,
+          "bottom": 723,
+          "left": 285.5,
+          "width": 67,
+          "height": 16
+        }
+      },
+      "compact": true,
+      "compactLedger": true,
+      "compactOverlay": true,
+      "compactLedgerLabels": [
+        {
+          "text": "Tim.",
+          "rect": {
+            "top": 618,
+            "right": 291.56,
+            "bottom": 628,
+            "left": 273,
+            "width": 18.56,
+            "height": 10
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Pop.",
+          "rect": {
+            "top": 618,
+            "right": 337.73,
+            "bottom": 628,
+            "left": 319.81,
+            "width": 17.92,
+            "height": 10
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Idle",
+          "rect": {
+            "top": 627.89,
+            "right": 288.61,
+            "bottom": 637.89,
+            "left": 273,
+            "width": 15.61,
+            "height": 10
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        }
+      ],
+      "fullLedgerLabels": [],
+      "compactOverlayLabels": [
+        {
+          "text": "Water",
+          "rect": {
+            "top": 663,
+            "right": 305.02,
+            "bottom": 671,
+            "left": 285.98,
+            "width": 19.03,
+            "height": 8
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Work",
+          "rect": {
+            "top": 663,
+            "right": 351.11,
+            "bottom": 671,
+            "left": 333.88,
+            "width": 17.23,
+            "height": 8
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Reach",
+          "rect": {
+            "top": 690,
+            "right": 305.03,
+            "bottom": 698,
+            "left": 285.95,
+            "width": 19.08,
+            "height": 8
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Roads",
+          "rect": {
+            "top": 690,
+            "right": 352.13,
+            "bottom": 698,
+            "left": 332.86,
+            "width": 19.27,
+            "height": 8
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        }
+      ],
+      "fullOverlayLabels": [],
+      "overlayButtons": [
+        {
+          "text": "WaterWaterDigit1well radius, dry houses",
+          "rect": {
+            "top": 651,
+            "right": 318,
+            "bottom": 676,
+            "left": 273,
+            "width": 45,
+            "height": 25
+          },
+          "ariaLabel": "Water overlay Digit1",
+          "clientWidth": 43,
+          "scrollWidth": 43,
+          "fits": true
+        },
+        {
+          "text": "LabourWorkDigit2understaffed worksites",
+          "rect": {
+            "top": 651,
+            "right": 365,
+            "bottom": 676,
+            "left": 320,
+            "width": 45,
+            "height": 25
+          },
+          "ariaLabel": "Labour overlay Digit2",
+          "clientWidth": 43,
+          "scrollWidth": 43,
+          "fits": true
+        },
+        {
+          "text": "DistributionReachDigit3granary road reach",
+          "rect": {
+            "top": 678,
+            "right": 318,
+            "bottom": 703,
+            "left": 273,
+            "width": 45,
+            "height": 25
+          },
+          "ariaLabel": "Distribution overlay Digit3",
+          "clientWidth": 43,
+          "scrollWidth": 43,
+          "fits": true
+        },
+        {
+          "text": "Road componentRoadsDigit4selected building network",
+          "rect": {
+            "top": 678,
+            "right": 365,
+            "bottom": 703,
+            "left": 320,
+            "width": 45,
+            "height": 25
+          },
+          "ariaLabel": "Road component overlay Digit4",
+          "clientWidth": 43,
+          "scrollWidth": 43,
+          "fits": true
+        }
+      ],
+      "ledgerTerms": [
+        {
+          "text": "TimberTim.",
+          "rect": {
+            "top": 619,
+            "right": 291.56,
+            "bottom": 628.89,
+            "left": 273,
+            "width": 18.56,
+            "height": 9.89
+          },
+          "ariaLabel": null,
+          "clientWidth": 19,
+          "scrollWidth": 19,
+          "fits": true
+        },
+        {
+          "text": "PopulationPop.",
+          "rect": {
+            "top": 619,
+            "right": 337.73,
+            "bottom": 628.89,
+            "left": 319.81,
+            "width": 17.92,
+            "height": 9.89
+          },
+          "ariaLabel": null,
+          "clientWidth": 18,
+          "scrollWidth": 18,
+          "fits": true
+        },
+        {
+          "text": "IdleIdle",
+          "rect": {
+            "top": 628.89,
+            "right": 291.56,
+            "bottom": 638.78,
+            "left": 273,
+            "width": 18.56,
+            "height": 9.89
+          },
+          "ariaLabel": null,
+          "clientWidth": 19,
+          "scrollWidth": 19,
+          "fits": true
+        }
+      ],
+      "ledgerValues": [
+        {
+          "text": "205",
+          "rect": {
+            "top": 619,
+            "right": 318.81,
+            "bottom": 628.89,
+            "left": 292.56,
+            "width": 26.25,
+            "height": 9.89
+          },
+          "ariaLabel": null,
+          "clientWidth": 26,
+          "scrollWidth": 26,
+          "fits": true
+        },
+        {
+          "text": "12",
+          "rect": {
+            "top": 619,
+            "right": 365,
+            "bottom": 628.89,
+            "left": 338.73,
+            "width": 26.27,
+            "height": 9.89
+          },
+          "ariaLabel": null,
+          "clientWidth": 26,
+          "scrollWidth": 26,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 628.89,
+            "right": 318.81,
+            "bottom": 638.78,
+            "left": 292.56,
+            "width": 26.25,
+            "height": 9.89
+          },
+          "ariaLabel": null,
+          "clientWidth": 26,
+          "scrollWidth": 26,
+          "fits": true
+        }
+      ],
+      "ledgerTextOverlaps": [
+        [
+          "Tim.",
+          "Idle"
+        ]
+      ],
+      "ledgerAccessibleNames": [],
+      "visibleSecondaryLedgerRows": 0,
+      "failures": [
+        "ledger text boxes overlap: [[\"Tim.\",\"Idle\"]]",
+        "compact ledger lost accessible term name: Timber",
+        "compact ledger lost accessible term name: Population",
+        "compact ledger lost accessible term name: Idle"
+      ],
+      "screenshotPath": ".omo/evidence/phase8-presentation-completion/task-11/df9-remediation/red/mobile-375x812.png",
+      "pass": false
+    },
+    {
+      "id": "short-640x375",
+      "viewport": {
+        "id": "short-640x375",
+        "width": 640,
+        "height": 375
+      },
+      "document": {
+        "clientWidth": 640,
+        "scrollWidth": 640
+      },
+      "rects": {
+        "console": {
+          "top": 99,
+          "right": 640,
+          "bottom": 375,
+          "left": 0,
+          "width": 640,
+          "height": 276
+        },
+        "ledger": {
+          "top": 122,
+          "right": 553,
+          "bottom": 190,
+          "left": 436.33,
+          "width": 116.67,
+          "height": 68
+        },
+        "overlay": {
+          "top": 193,
+          "right": 553,
+          "bottom": 240,
+          "left": 436.33,
+          "width": 116.67,
+          "height": 47
+        },
+        "buildTray": {
+          "top": 157,
+          "right": 421.33,
+          "bottom": 317,
+          "left": 218.66,
+          "width": 202.67,
+          "height": 160
+        },
+        "speed": {
+          "top": 149.5,
+          "right": 621,
+          "bottom": 212.5,
+          "left": 558,
+          "width": 63,
+          "height": 63
+        }
+      },
+      "compact": true,
+      "compactLedger": true,
+      "compactOverlay": true,
+      "compactLedgerLabels": [
+        {
+          "text": "Tim.",
+          "rect": {
+            "top": 145,
+            "right": 480.14,
+            "bottom": 160,
+            "left": 453.33,
+            "width": 26.81,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Pop.",
+          "rect": {
+            "top": 160.3,
+            "right": 479.2,
+            "bottom": 175.3,
+            "left": 453.33,
+            "width": 25.88,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Idle",
+          "rect": {
+            "top": 175.59,
+            "right": 475.88,
+            "bottom": 190.59,
+            "left": 453.33,
+            "width": 22.55,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        }
+      ],
+      "fullLedgerLabels": [],
+      "compactOverlayLabels": [
+        {
+          "text": "Water",
+          "rect": {
+            "top": 199.5,
+            "right": 480.33,
+            "bottom": 210.5,
+            "left": 453.14,
+            "width": 27.19,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 27,
+          "scrollWidth": 27,
+          "fits": true
+        },
+        {
+          "text": "Work",
+          "rect": {
+            "top": 199.5,
+            "right": 534.88,
+            "bottom": 210.5,
+            "left": 510.27,
+            "width": 24.61,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 25,
+          "scrollWidth": 25,
+          "fits": true
+        },
+        {
+          "text": "Reach",
+          "rect": {
+            "top": 222.5,
+            "right": 480.38,
+            "bottom": 233.5,
+            "left": 453.11,
+            "width": 27.27,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 27,
+          "scrollWidth": 27,
+          "fits": true
+        },
+        {
+          "text": "Roads",
+          "rect": {
+            "top": 222.5,
+            "right": 536.33,
+            "bottom": 233.5,
+            "left": 508.81,
+            "width": 27.52,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 28,
+          "scrollWidth": 28,
+          "fits": true
+        }
+      ],
+      "fullOverlayLabels": [],
+      "overlayButtons": [
+        {
+          "text": "WaterWaterDigit1well radius, dry houses",
+          "rect": {
+            "top": 195,
+            "right": 493.16,
+            "bottom": 215,
+            "left": 440.33,
+            "width": 52.83,
+            "height": 20
+          },
+          "ariaLabel": "Water overlay Digit1",
+          "clientWidth": 51,
+          "scrollWidth": 51,
+          "fits": true
+        },
+        {
+          "text": "LabourWorkDigit2understaffed worksites",
+          "rect": {
+            "top": 195,
+            "right": 549,
+            "bottom": 215,
+            "left": 496.16,
+            "width": 52.84,
+            "height": 20
+          },
+          "ariaLabel": "Labour overlay Digit2",
+          "clientWidth": 51,
+          "scrollWidth": 51,
+          "fits": true
+        },
+        {
+          "text": "DistributionReachDigit3granary road reach",
+          "rect": {
+            "top": 218,
+            "right": 493.16,
+            "bottom": 238,
+            "left": 440.33,
+            "width": 52.83,
+            "height": 20
+          },
+          "ariaLabel": "Distribution overlay Digit3",
+          "clientWidth": 51,
+          "scrollWidth": 51,
+          "fits": true
+        },
+        {
+          "text": "Road componentRoadsDigit4selected building network",
+          "rect": {
+            "top": 218,
+            "right": 549,
+            "bottom": 238,
+            "left": 496.16,
+            "width": 52.84,
+            "height": 20
+          },
+          "ariaLabel": "Road component overlay Digit4",
+          "clientWidth": 51,
+          "scrollWidth": 51,
+          "fits": true
+        }
+      ],
+      "ledgerTerms": [
+        {
+          "text": "TimberTim.",
+          "rect": {
+            "top": 146,
+            "right": 480.14,
+            "bottom": 160.3,
+            "left": 453.33,
+            "width": 26.81,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 27,
+          "scrollWidth": 27,
+          "fits": true
+        },
+        {
+          "text": "PopulationPop.",
+          "rect": {
+            "top": 161.3,
+            "right": 480.14,
+            "bottom": 175.59,
+            "left": 453.33,
+            "width": 26.81,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 27,
+          "scrollWidth": 27,
+          "fits": true
+        },
+        {
+          "text": "IdleIdle",
+          "rect": {
+            "top": 176.59,
+            "right": 480.14,
+            "bottom": 190.89,
+            "left": 453.33,
+            "width": 26.81,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 27,
+          "scrollWidth": 27,
+          "fits": true
+        }
+      ],
+      "ledgerValues": [
+        {
+          "text": "205",
+          "rect": {
+            "top": 146,
+            "right": 536,
+            "bottom": 160.3,
+            "left": 486.14,
+            "width": 49.86,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "fits": true
+        },
+        {
+          "text": "12",
+          "rect": {
+            "top": 161.3,
+            "right": 536,
+            "bottom": 175.59,
+            "left": 486.14,
+            "width": 49.86,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 176.59,
+            "right": 536,
+            "bottom": 190.89,
+            "left": 486.14,
+            "width": 49.86,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 50,
+          "scrollWidth": 50,
+          "fits": true
+        }
+      ],
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [],
+      "visibleSecondaryLedgerRows": 0,
+      "failures": [
+        "compact ledger lost accessible term name: Timber",
+        "compact ledger lost accessible term name: Population",
+        "compact ledger lost accessible term name: Idle"
+      ],
+      "screenshotPath": ".omo/evidence/phase8-presentation-completion/task-11/df9-remediation/red/short-640x375.png",
+      "pass": false
+    },
+    {
+      "id": "tablet-768x1024",
+      "viewport": {
+        "id": "tablet-768x1024",
+        "width": 768,
+        "height": 1024
+      },
+      "document": {
+        "clientWidth": 768,
+        "scrollWidth": 768
+      },
+      "rects": {
+        "console": {
+          "top": 748,
+          "right": 768,
+          "bottom": 1024,
+          "left": 0,
+          "width": 768,
+          "height": 276
+        },
+        "ledger": {
+          "top": 771,
+          "right": 680.98,
+          "bottom": 839,
+          "left": 521.66,
+          "width": 159.33,
+          "height": 68
+        },
+        "overlay": {
+          "top": 842,
+          "right": 680.98,
+          "bottom": 896.59,
+          "left": 521.66,
+          "width": 159.33,
+          "height": 54.59
+        },
+        "buildTray": {
+          "top": 806,
+          "right": 489.98,
+          "bottom": 966,
+          "left": 277.98,
+          "width": 212,
+          "height": 160
+        },
+        "speed": {
+          "top": 802.3,
+          "right": 748.98,
+          "bottom": 865.3,
+          "left": 685.98,
+          "width": 63,
+          "height": 63
+        }
+      },
+      "compact": true,
+      "compactLedger": false,
+      "compactOverlay": true,
+      "compactLedgerLabels": [],
+      "fullLedgerLabels": [
+        {
+          "text": "Timber",
+          "rect": {
+            "top": 814,
+            "right": 580.86,
+            "bottom": 829,
+            "left": 538.66,
+            "width": 42.2,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Population",
+          "rect": {
+            "top": 829.3,
+            "right": 601.77,
+            "bottom": 844.3,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Idle",
+          "rect": {
+            "top": 844.59,
+            "right": 561.2,
+            "bottom": 859.59,
+            "left": 538.66,
+            "width": 22.55,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Wheat",
+          "rect": {
+            "top": 859.89,
+            "right": 576.23,
+            "bottom": 874.89,
+            "left": 538.66,
+            "width": 37.58,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Bread",
+          "rect": {
+            "top": 875.19,
+            "right": 572.78,
+            "bottom": 890.19,
+            "left": 538.66,
+            "width": 34.13,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Logs",
+          "rect": {
+            "top": 890.48,
+            "right": 565.75,
+            "bottom": 905.48,
+            "left": 538.66,
+            "width": 27.09,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Tick",
+          "rect": {
+            "top": 905.78,
+            "right": 563.38,
+            "bottom": 920.78,
+            "left": 538.66,
+            "width": 24.72,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        }
+      ],
+      "compactOverlayLabels": [],
+      "fullOverlayLabels": [
+        {
+          "text": "Water",
+          "rect": {
+            "top": 846,
+            "right": 589.47,
+            "bottom": 857,
+            "left": 567.3,
+            "width": 22.17,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 22,
+          "scrollWidth": 27,
+          "fits": false
+        },
+        {
+          "text": "Labour",
+          "rect": {
+            "top": 846,
+            "right": 647.81,
+            "bottom": 857,
+            "left": 625.64,
+            "width": 22.17,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 22,
+          "scrollWidth": 32,
+          "fits": false
+        },
+        {
+          "text": "Distribution",
+          "rect": {
+            "top": 872.8,
+            "right": 589.47,
+            "bottom": 883.8,
+            "left": 567.3,
+            "width": 22.17,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 22,
+          "scrollWidth": 54,
+          "fits": false
+        },
+        {
+          "text": "Road component",
+          "rect": {
+            "top": 872.8,
+            "right": 647.81,
+            "bottom": 883.8,
+            "left": 625.64,
+            "width": 22.17,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 22,
+          "scrollWidth": 76,
+          "fits": false
+        }
+      ],
+      "overlayButtons": [
+        {
+          "text": "WaterWaterDigit1well radius, dry houses",
+          "rect": {
+            "top": 844,
+            "right": 618.64,
+            "bottom": 867.8,
+            "left": 563.3,
+            "width": 55.34,
+            "height": 23.8
+          },
+          "ariaLabel": "Water overlay Digit1",
+          "clientWidth": 53,
+          "scrollWidth": 53,
+          "fits": true
+        },
+        {
+          "text": "LabourWorkDigit2understaffed worksites",
+          "rect": {
+            "top": 844,
+            "right": 676.98,
+            "bottom": 867.8,
+            "left": 621.64,
+            "width": 55.34,
+            "height": 23.8
+          },
+          "ariaLabel": "Labour overlay Digit2",
+          "clientWidth": 53,
+          "scrollWidth": 53,
+          "fits": true
+        },
+        {
+          "text": "DistributionReachDigit3granary road reach",
+          "rect": {
+            "top": 870.8,
+            "right": 618.64,
+            "bottom": 894.59,
+            "left": 563.3,
+            "width": 55.34,
+            "height": 23.8
+          },
+          "ariaLabel": "Distribution overlay Digit3",
+          "clientWidth": 53,
+          "scrollWidth": 53,
+          "fits": true
+        },
+        {
+          "text": "Road componentRoadsDigit4selected building network",
+          "rect": {
+            "top": 870.8,
+            "right": 676.98,
+            "bottom": 894.59,
+            "left": 621.64,
+            "width": 55.34,
+            "height": 23.8
+          },
+          "ariaLabel": "Road component overlay Digit4",
+          "clientWidth": 53,
+          "scrollWidth": 53,
+          "fits": true
+        }
+      ],
+      "ledgerTerms": [
+        {
+          "text": "TimberTim.",
+          "rect": {
+            "top": 815,
+            "right": 601.77,
+            "bottom": 829.3,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "PopulationPop.",
+          "rect": {
+            "top": 830.3,
+            "right": 601.77,
+            "bottom": 844.59,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "IdleIdle",
+          "rect": {
+            "top": 845.59,
+            "right": 601.77,
+            "bottom": 859.89,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "WheatWh.",
+          "rect": {
+            "top": 860.89,
+            "right": 601.77,
+            "bottom": 875.19,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "BreadBr.",
+          "rect": {
+            "top": 876.19,
+            "right": 601.77,
+            "bottom": 890.48,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "LogsLog",
+          "rect": {
+            "top": 891.48,
+            "right": 601.77,
+            "bottom": 905.78,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "TickTck",
+          "rect": {
+            "top": 906.78,
+            "right": 601.77,
+            "bottom": 921.08,
+            "left": 538.66,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        }
+      ],
+      "ledgerValues": [
+        {
+          "text": "205",
+          "rect": {
+            "top": 815,
+            "right": 663.98,
+            "bottom": 829.3,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        },
+        {
+          "text": "12",
+          "rect": {
+            "top": 830.3,
+            "right": 663.98,
+            "bottom": 844.59,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 845.59,
+            "right": 663.98,
+            "bottom": 859.89,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 860.89,
+            "right": 663.98,
+            "bottom": 875.19,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 876.19,
+            "right": 663.98,
+            "bottom": 890.48,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 891.48,
+            "right": 663.98,
+            "bottom": 905.78,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 906.78,
+            "right": 663.98,
+            "bottom": 921.08,
+            "left": 607.77,
+            "width": 56.22,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 56,
+          "scrollWidth": 56,
+          "fits": true
+        }
+      ],
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [],
+      "visibleSecondaryLedgerRows": 8,
+      "failures": [
+        "compact overlay labels are not visible",
+        "full overlay labels are visible in compact overlay layout",
+        "compact overlay lost label: Water",
+        "compact overlay lost label: Work",
+        "compact overlay lost label: Reach",
+        "compact overlay lost label: Roads",
+        "visible text overflows: Water",
+        "visible text overflows: Labour",
+        "visible text overflows: Distribution",
+        "visible text overflows: Road component"
+      ],
+      "screenshotPath": ".omo/evidence/phase8-presentation-completion/task-11/df9-remediation/red/tablet-768x1024.png",
+      "pass": false
+    },
+    {
+      "id": "desktop-1280x720",
+      "viewport": {
+        "id": "desktop-1280x720",
+        "width": 1280,
+        "height": 720
+      },
+      "document": {
+        "clientWidth": 1280,
+        "scrollWidth": 1280
+      },
+      "rects": {
+        "console": {
+          "top": 570,
+          "right": 1280,
+          "bottom": 720,
+          "left": 0,
+          "width": 1280,
+          "height": 150
+        },
+        "ledger": {
+          "top": 593,
+          "right": 1159.59,
+          "bottom": 661,
+          "left": 866.47,
+          "width": 293.13,
+          "height": 68
+        },
+        "overlay": {
+          "top": 664,
+          "right": 1159.59,
+          "bottom": 718.59,
+          "left": 866.47,
+          "width": 293.13,
+          "height": 54.59
+        },
+        "buildTray": {
+          "top": 591,
+          "right": 773.98,
+          "bottom": 699,
+          "left": 505.98,
+          "width": 268,
+          "height": 108
+        },
+        "speed": {
+          "top": 624.3,
+          "right": 1227.59,
+          "bottom": 687.3,
+          "left": 1164.59,
+          "width": 63,
+          "height": 63
+        }
+      },
+      "compact": false,
+      "compactLedger": false,
+      "compactOverlay": false,
+      "compactLedgerLabels": [],
+      "fullLedgerLabels": [
+        {
+          "text": "Timber",
+          "rect": {
+            "top": 636,
+            "right": 925.67,
+            "bottom": 651,
+            "left": 883.47,
+            "width": 42.2,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Population",
+          "rect": {
+            "top": 651.3,
+            "right": 946.58,
+            "bottom": 666.3,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Idle",
+          "rect": {
+            "top": 666.59,
+            "right": 906.02,
+            "bottom": 681.59,
+            "left": 883.47,
+            "width": 22.55,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Wheat",
+          "rect": {
+            "top": 681.89,
+            "right": 921.05,
+            "bottom": 696.89,
+            "left": 883.47,
+            "width": 37.58,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Bread",
+          "rect": {
+            "top": 697.19,
+            "right": 917.59,
+            "bottom": 712.19,
+            "left": 883.47,
+            "width": 34.13,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Logs",
+          "rect": {
+            "top": 712.48,
+            "right": 910.56,
+            "bottom": 727.48,
+            "left": 883.47,
+            "width": 27.09,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        },
+        {
+          "text": "Tick",
+          "rect": {
+            "top": 727.78,
+            "right": 908.19,
+            "bottom": 742.78,
+            "left": 883.47,
+            "width": 24.72,
+            "height": 15
+          },
+          "ariaLabel": null,
+          "clientWidth": 0,
+          "scrollWidth": 0,
+          "fits": true
+        }
+      ],
+      "compactOverlayLabels": [],
+      "fullOverlayLabels": [
+        {
+          "text": "Water",
+          "rect": {
+            "top": 668,
+            "right": 969.53,
+            "bottom": 679,
+            "left": 912.11,
+            "width": 57.42,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 57,
+          "scrollWidth": 57,
+          "fits": true
+        },
+        {
+          "text": "Labour",
+          "rect": {
+            "top": 668,
+            "right": 1096.55,
+            "bottom": 679,
+            "left": 1037.34,
+            "width": 59.2,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 59,
+          "scrollWidth": 59,
+          "fits": true
+        },
+        {
+          "text": "Distribution",
+          "rect": {
+            "top": 694.8,
+            "right": 982.52,
+            "bottom": 705.8,
+            "left": 912.11,
+            "width": 70.41,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 70,
+          "scrollWidth": 70,
+          "fits": true
+        },
+        {
+          "text": "Road component",
+          "rect": {
+            "top": 694.8,
+            "right": 1118.34,
+            "bottom": 705.8,
+            "left": 1037.34,
+            "width": 81,
+            "height": 11
+          },
+          "ariaLabel": null,
+          "clientWidth": 81,
+          "scrollWidth": 81,
+          "fits": true
+        }
+      ],
+      "overlayButtons": [
+        {
+          "text": "WaterWaterDigit1well radius, dry houses",
+          "rect": {
+            "top": 666,
+            "right": 1030.34,
+            "bottom": 689.8,
+            "left": 908.11,
+            "width": 122.23,
+            "height": 23.8
+          },
+          "ariaLabel": "Water overlay Digit1",
+          "clientWidth": 120,
+          "scrollWidth": 120,
+          "fits": true
+        },
+        {
+          "text": "LabourWorkDigit2understaffed worksites",
+          "rect": {
+            "top": 666,
+            "right": 1155.59,
+            "bottom": 689.8,
+            "left": 1033.34,
+            "width": 122.25,
+            "height": 23.8
+          },
+          "ariaLabel": "Labour overlay Digit2",
+          "clientWidth": 120,
+          "scrollWidth": 120,
+          "fits": true
+        },
+        {
+          "text": "DistributionReachDigit3granary road reach",
+          "rect": {
+            "top": 692.8,
+            "right": 1030.34,
+            "bottom": 716.59,
+            "left": 908.11,
+            "width": 122.23,
+            "height": 23.8
+          },
+          "ariaLabel": "Distribution overlay Digit3",
+          "clientWidth": 120,
+          "scrollWidth": 120,
+          "fits": true
+        },
+        {
+          "text": "Road componentRoadsDigit4selected building network",
+          "rect": {
+            "top": 692.8,
+            "right": 1155.59,
+            "bottom": 716.59,
+            "left": 1033.34,
+            "width": 122.25,
+            "height": 23.8
+          },
+          "ariaLabel": "Road component overlay Digit4",
+          "clientWidth": 120,
+          "scrollWidth": 120,
+          "fits": true
+        }
+      ],
+      "ledgerTerms": [
+        {
+          "text": "TimberTim.",
+          "rect": {
+            "top": 637,
+            "right": 946.58,
+            "bottom": 651.3,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "PopulationPop.",
+          "rect": {
+            "top": 652.3,
+            "right": 946.58,
+            "bottom": 666.59,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "IdleIdle",
+          "rect": {
+            "top": 667.59,
+            "right": 946.58,
+            "bottom": 681.89,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "WheatWh.",
+          "rect": {
+            "top": 682.89,
+            "right": 946.58,
+            "bottom": 697.19,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "BreadBr.",
+          "rect": {
+            "top": 698.19,
+            "right": 946.58,
+            "bottom": 712.48,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "LogsLog",
+          "rect": {
+            "top": 713.48,
+            "right": 946.58,
+            "bottom": 727.78,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        },
+        {
+          "text": "TickTck",
+          "rect": {
+            "top": 728.78,
+            "right": 946.58,
+            "bottom": 743.08,
+            "left": 883.47,
+            "width": 63.11,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 63,
+          "scrollWidth": 63,
+          "fits": true
+        }
+      ],
+      "ledgerValues": [
+        {
+          "text": "205",
+          "rect": {
+            "top": 637,
+            "right": 1142.59,
+            "bottom": 651.3,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        },
+        {
+          "text": "12",
+          "rect": {
+            "top": 652.3,
+            "right": 1142.59,
+            "bottom": 666.59,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 667.59,
+            "right": 1142.59,
+            "bottom": 681.89,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 682.89,
+            "right": 1142.59,
+            "bottom": 697.19,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 698.19,
+            "right": 1142.59,
+            "bottom": 712.48,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 713.48,
+            "right": 1142.59,
+            "bottom": 727.78,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        },
+        {
+          "text": "0",
+          "rect": {
+            "top": 728.78,
+            "right": 1142.59,
+            "bottom": 743.08,
+            "left": 952.58,
+            "width": 190.02,
+            "height": 14.3
+          },
+          "ariaLabel": null,
+          "clientWidth": 190,
+          "scrollWidth": 190,
+          "fits": true
+        }
+      ],
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [],
+      "visibleSecondaryLedgerRows": 8,
+      "failures": [],
+      "screenshotPath": ".omo/evidence/phase8-presentation-completion/task-11/df9-remediation/red/desktop-1280x720.png",
+      "pass": true
+    }
+  ],
+  "verdict": "FAIL"
+}
+file:///Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/phase8Task11MobileLedgerQa.mjs:65
+        throw new Error(`mobile ledger readability failed; see ${resultPath}`);
+              ^
+
+Error: mobile ledger readability failed; see .omo/evidence/phase8-presentation-completion/task-11/df9-remediation/red/browser-ledger-readability.json
+    at main (file:///Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/phase8Task11MobileLedgerQa.mjs:65:15)
+    at async file:///Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/scripts/phase8Task11MobileLedgerQa.mjs:21:3
+
+Node.js v25.8.2

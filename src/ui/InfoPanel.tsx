@@ -99,7 +99,7 @@ function LedgerRow({
 
   return (
     <>
-      <dt className={rowClassName}>
+      <dt className={rowClassName} aria-label={full}>
         <LedgerLabel full={full} compact={compact} />
       </dt>
       <dd className={`${rowClassName} ledger-value`}>{value}</dd>

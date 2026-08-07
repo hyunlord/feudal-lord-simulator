@@ -1312,6 +1312,27 @@ button {
     width: var(--seal-size);
   }
 
+  .ledger-stack .overlay-label--full {
+    display: none;
+  }
+
+  .ledger-stack .overlay-label--compact {
+    display: inline;
+  }
+
+  .ledger-stack .overlay-key,
+  .ledger-stack .overlay-legend {
+    display: none;
+  }
+
+  .ledger-stack .overlay-seal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+    text-align: center;
+  }
+
   .settlement-status {
     right: 10px;
     bottom: 282px;
@@ -1324,7 +1345,7 @@ button {
   }
 
   .ledger-label--compact {
-    display: inline;
+    display: block;
   }
 
   .ledger-row--secondary {
@@ -1554,8 +1575,9 @@ button {
 
   .court-ledger dl {
     grid-template-columns: repeat(2, auto minmax(0, 1fr));
-    gap: 0 2px;
+    gap: 1px 2px;
     font-size: 10px;
+    line-height: 1;
   }
 
   .ledger-tool {

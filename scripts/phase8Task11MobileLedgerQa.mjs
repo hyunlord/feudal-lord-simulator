@@ -132,12 +132,25 @@ function readabilityExpression(viewport) {
       .map((element) => ({
         text: element.textContent?.trim() ?? "",
         rect: rectOf(element),
+        ariaLabel: element.getAttribute("aria-label"),
         clientWidth: element.clientWidth,
         scrollWidth: element.scrollWidth,
         fits: element.scrollWidth <= element.clientWidth + 1,
       }));
+    const intersectingPairs = (items) => {
+      const pairs = [];
+      for (let outer = 0; outer < items.length; outer += 1) {
+        for (let inner = outer + 1; inner < items.length; inner += 1) {
+          if (overlaps(items[outer].rect, items[inner].rect)) {
+            pairs.push([items[outer].text, items[inner].text]);
+          }
+        }
+      }
+      return pairs;
+    };
 
-    const compact = viewport.width <= 720 || (viewport.width <= 900 && viewport.height <= 420);
+    const compactLedger = viewport.width <= 720 || (viewport.width <= 900 && viewport.height <= 420);
+    const compactOverlay = viewport.width <= 900;
     const ledger = document.querySelector(".court-ledger");
     const overlay = document.querySelector(".economy-overlays");
     const buildTray = document.querySelector(".build-seals");
@@ -149,6 +162,14 @@ function readabilityExpression(viewport) {
     const fullOverlayLabels = visibleTextFits(".overlay-label--full");
     const secondaryLedgerRows = Array.from(document.querySelectorAll(".ledger-row--secondary")).filter(visible);
     const overlayButtons = visibleTextFits(".overlay-seal");
+    const ledgerTerms = visibleTextFits(".court-ledger dt.ledger-row");
+    const ledgerValues = visibleTextFits(".court-ledger dd.ledger-row");
+    const ledgerTextItems = [...compactLedgerLabels, ...fullLedgerLabels, ...ledgerValues];
+    const ledgerTextOverlaps = intersectingPairs(ledgerTextItems);
+    const visibleOverlayText = [...compactOverlayLabels, ...fullOverlayLabels];
+    const ledgerAccessibleNames = Array.from(document.querySelectorAll(".court-ledger dt.ledger-row"))
+      .map((element) => element.getAttribute("aria-label") ?? "")
+      .filter((label) => label.length > 0);
     const compactTexts = [
       ...compactLedgerLabels.map((item) => item.text),
       ...compactOverlayLabels.map((item) => item.text),
@@ -161,24 +182,39 @@ function readabilityExpression(viewport) {
     if (overlaps(rectOf(overlay), rectOf(speed))) failures.push("overlay controls overlap speed controls");
     if (overlaps(rectOf(buildTray), rectOf(ledger))) failures.push("build tray overlaps ledger");
 
-    if (compact) {
+    if (ledgerTextOverlaps.length > 0) failures.push("ledger text boxes overlap: " + JSON.stringify(ledgerTextOverlaps));
+
+    if (compactLedger) {
       if (compactLedgerLabels.length < 2) failures.push("compact ledger labels are not visible");
-      if (compactOverlayLabels.length !== 4) failures.push("compact overlay labels are not visible");
       if (fullLedgerLabels.length > 0) failures.push("full ledger labels are visible in compact layout");
-      if (fullOverlayLabels.length > 0) failures.push("full overlay labels are visible in compact layout");
       if (secondaryLedgerRows.length > 0) failures.push("secondary ledger rows are visible in compact layout");
-      if (compactTexts.some((text) => /Timber|Population|Distribution|Road component/.test(text))) {
-        failures.push("long compact labels leaked into constrained layout");
+      for (const expected of ["Timber", "Population", "Idle"]) {
+        if (!ledgerAccessibleNames.includes(expected)) {
+          failures.push("compact ledger lost accessible term name: " + expected);
+        }
       }
     } else {
       if (!fullLedgerLabels.some((item) => item.text === "Timber")) failures.push("desktop/tablet ledger lost full Timber label");
-      if (!fullOverlayLabels.some((item) => item.text === "Distribution")) failures.push("desktop/tablet overlay lost full Distribution label");
-      if (compactLedgerLabels.length > 0 || compactOverlayLabels.length > 0) {
-        failures.push("compact labels are visible outside compact layout");
-      }
+      if (compactLedgerLabels.length > 0) failures.push("compact ledger labels are visible outside compact ledger layout");
     }
 
-    for (const item of [...compactLedgerLabels, ...compactOverlayLabels, ...overlayButtons]) {
+    if (compactOverlay) {
+      if (compactOverlayLabels.length !== 4) failures.push("compact overlay labels are not visible");
+      if (fullOverlayLabels.length > 0) failures.push("full overlay labels are visible in compact overlay layout");
+      if (compactTexts.some((text) => /Timber|Population|Distribution|Road component/.test(text))) {
+        failures.push("long compact labels leaked into constrained layout");
+      }
+      for (const expected of ["Water", "Work", "Reach", "Roads"]) {
+        if (!compactOverlayLabels.some((item) => item.text === expected)) {
+          failures.push("compact overlay lost label: " + expected);
+        }
+      }
+    } else {
+      if (!fullOverlayLabels.some((item) => item.text === "Distribution")) failures.push("desktop/tablet overlay lost full Distribution label");
+      if (compactOverlayLabels.length > 0) failures.push("compact overlay labels are visible outside compact overlay layout");
+    }
+
+    for (const item of [...ledgerTextItems, ...visibleOverlayText, ...overlayButtons]) {
       if (!item.fits) failures.push("visible text overflows: " + item.text);
     }
 
@@ -196,12 +232,18 @@ function readabilityExpression(viewport) {
         buildTray: rectOf(buildTray),
         speed: rectOf(speed),
       },
-      compact,
+      compact: compactLedger || compactOverlay,
+      compactLedger,
+      compactOverlay,
       compactLedgerLabels,
       fullLedgerLabels,
       compactOverlayLabels,
       fullOverlayLabels,
       overlayButtons,
+      ledgerTerms,
+      ledgerValues,
+      ledgerTextOverlaps,
+      ledgerAccessibleNames,
       visibleSecondaryLedgerRows: secondaryLedgerRows.length,
       failures,
     };

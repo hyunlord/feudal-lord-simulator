@@ -1,0 +1,109 @@
+{
+  "verdict": "PASS",
+  "scenarios": [
+    {
+      "id": "mobile-375x812",
+      "failures": [],
+      "compactLedger": true,
+      "compactOverlay": true,
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [
+        "Timber",
+        "Population",
+        "Idle",
+        "Wheat",
+        "Bread",
+        "Logs",
+        "Tick"
+      ],
+      "compactLedgerLabels": [
+        "Tim.",
+        "Pop.",
+        "Idle"
+      ],
+      "compactOverlayLabels": [
+        "Water",
+        "Work",
+        "Reach",
+        "Roads"
+      ],
+      "fullOverlayLabels": []
+    },
+    {
+      "id": "short-640x375",
+      "failures": [],
+      "compactLedger": true,
+      "compactOverlay": true,
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [
+        "Timber",
+        "Population",
+        "Idle",
+        "Wheat",
+        "Bread",
+        "Logs",
+        "Tick"
+      ],
+      "compactLedgerLabels": [
+        "Tim.",
+        "Pop.",
+        "Idle"
+      ],
+      "compactOverlayLabels": [
+        "Water",
+        "Work",
+        "Reach",
+        "Roads"
+      ],
+      "fullOverlayLabels": []
+    },
+    {
+      "id": "tablet-768x1024",
+      "failures": [],
+      "compactLedger": false,
+      "compactOverlay": true,
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [
+        "Timber",
+        "Population",
+        "Idle",
+        "Wheat",
+        "Bread",
+        "Logs",
+        "Tick"
+      ],
+      "compactLedgerLabels": [],
+      "compactOverlayLabels": [
+        "Water",
+        "Work",
+        "Reach",
+        "Roads"
+      ],
+      "fullOverlayLabels": []
+    },
+    {
+      "id": "desktop-1280x720",
+      "failures": [],
+      "compactLedger": false,
+      "compactOverlay": false,
+      "ledgerTextOverlaps": [],
+      "ledgerAccessibleNames": [
+        "Timber",
+        "Population",
+        "Idle",
+        "Wheat",
+        "Bread",
+        "Logs",
+        "Tick"
+      ],
+      "compactLedgerLabels": [],
+      "compactOverlayLabels": [],
+      "fullOverlayLabels": [
+        "Water",
+        "Labour",
+        "Distribution",
+        "Road component"
+      ]
+    }
+  ]
+}

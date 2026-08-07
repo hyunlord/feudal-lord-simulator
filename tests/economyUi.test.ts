@@ -110,6 +110,27 @@ test("CourtLedger exposes compact primary labels and marks secondary rows for na
   assert.match(markup, /class="[^"]*\bledger-value\b[^"]*"/);
 });
 
+test("CourtLedger keeps full semantic term names when compact labels are aria-hidden", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(
+    createElement(CourtLedger, {
+      tick: 8,
+      timber: 11,
+      selectedTool: "mill",
+      population: 6,
+      idleWorkers: 2,
+      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12 },
+    }),
+  );
+
+  // Then
+  assert.match(markup, /<dt class="ledger-row" aria-label="Timber">/);
+  assert.match(markup, /<dt class="ledger-row" aria-label="Population">/);
+  assert.match(markup, /<dt class="ledger-row" aria-label="Idle">/);
+  assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">Tim\.<\/span>/);
+  assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">Pop\.<\/span>/);
+});
+
 test("economy overlay controls expose visible water and labour toggles without camera-key collisions", () => {
   // Given / When
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));

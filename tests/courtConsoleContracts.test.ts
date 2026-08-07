@@ -191,7 +191,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*10px;/);
   assert.match(mobileRules, /\.ledger-label--full\s*\{[\s\S]*?display:\s*none;/);
-  assert.match(mobileRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*inline;/);
+  assert.match(mobileRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*block;/);
   assert.match(mobileRules, /\.ledger-row--secondary\s*\{[\s\S]*?display:\s*none;/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.ledger-stack \.overlay-seal\s*\{[^}]*width:\s*100%;[^}]*overflow:\s*hidden;/);
@@ -242,7 +242,7 @@ test("short landscape consoles use the same compact readable ledger and overlay 
 
   // Then
   assert.match(shortLandscapeRules, /\.ledger-label--full\s*\{[\s\S]*?display:\s*none;/);
-  assert.match(shortLandscapeRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*inline;/);
+  assert.match(shortLandscapeRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*block;/);
   assert.match(shortLandscapeRules, /\.ledger-row--secondary\s*\{[\s\S]*?display:\s*none;/);
   assert.match(shortLandscapeRules, /\.court-ledger > \.ledger-population-toggle\s*\{[\s\S]*?display:\s*none;/);
   assert.match(shortLandscapeRules, /\.ledger-stack \.economy-overlays\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0, 1fr\);/);
