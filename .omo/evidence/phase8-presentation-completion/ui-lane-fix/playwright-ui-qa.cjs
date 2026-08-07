@@ -58,11 +58,11 @@ function contains(outer, inner) {
   );
 }
 
-function isHorizontallyOffscreenWithin(outer, inner) {
+function isHorizontallyClippedWithin(outer, inner) {
   if (!outer || !inner) return false;
-  const verticallyVisible = inner.bottom > outer.top + tolerance && inner.top < outer.bottom - tolerance;
-  const horizontallyOutside = inner.right <= outer.left + tolerance || inner.left >= outer.right - tolerance;
-  return verticallyVisible && horizontallyOutside;
+  const verticallyContained = inner.top >= outer.top - tolerance && inner.bottom <= outer.bottom + tolerance;
+  const horizontallyClipped = inner.left < outer.left - tolerance || inner.right > outer.right + tolerance;
+  return verticallyContained && horizontallyClipped;
 }
 
 function rectText(rect) {
@@ -286,6 +286,48 @@ async function collectViewport(page, viewport) {
     };
   });
 
+  const tooltipProofs = [];
+  async function recordTooltipProof(label, screenshotName) {
+    const button = page.locator(`.build-seal[aria-label="${label}"]`).first();
+    await button.scrollIntoViewIfNeeded();
+    await button.hover({ force: true });
+    await page.screenshot({
+      path: path.join(outDir, screenshotName),
+      fullPage: true,
+    });
+    const proof = await page.evaluate((buttonLabel) => {
+      const button = Array.from(document.querySelectorAll(".build-seal")).find(
+        (candidate) => candidate.getAttribute("aria-label") === buttonLabel,
+      );
+      const tooltipId = button?.getAttribute("aria-describedby");
+      const tooltip = tooltipId ? document.getElementById(tooltipId) : null;
+      const buttonRect = button?.getBoundingClientRect();
+      const tooltipRect = tooltip?.getBoundingClientRect();
+      const rect = (r) =>
+        r
+          ? {
+              left: r.left,
+              right: r.right,
+              top: r.top,
+              bottom: r.bottom,
+              width: r.width,
+              height: r.height,
+            }
+          : null;
+      return {
+        label: buttonLabel,
+        button: rect(buttonRect),
+        tooltip: rect(tooltipRect),
+        tooltipDisplay: tooltip ? getComputedStyle(tooltip).display : null,
+        tooltipText: tooltip?.textContent?.replace(/\s+/g, " ").trim() ?? "",
+      };
+    }, label);
+    tooltipProofs.push(proof);
+  }
+
+  await recordTooltipProof("오두막", `${viewport.id}-first-hover.png`);
+  await recordTooltipProof("길", `${viewport.id}-road-hover.png`);
+
   const failures = [];
   const warnings = [];
   const { rects } = data;
@@ -332,10 +374,22 @@ async function collectViewport(page, viewport) {
     if (button.width < 48 - tolerance || button.height < 48 - tolerance) {
       failures.push(`button below 48px: ${button.ariaLabel || button.text} ${rectText(button)}`);
     }
-    const scrollableOffscreen =
-      mobileScrollable && rects.sealRecess && isHorizontallyOffscreenWithin(rects.sealRecess, button);
-    if (rects.sealRecess && !scrollableOffscreen && !contains(rects.sealRecess, button)) {
+    const scrollableClipped =
+      mobileScrollable && rects.sealRecess && isHorizontallyClippedWithin(rects.sealRecess, button);
+    if (rects.sealRecess && !scrollableClipped && !contains(rects.sealRecess, button)) {
       failures.push(`build button not contained by seal recess: ${button.ariaLabel || button.text} ${rectText(button)} recess ${rectText(rects.sealRecess)}`);
+    }
+  }
+  for (const proof of tooltipProofs) {
+    if (!proof.tooltip || proof.tooltip.width <= 0 || proof.tooltip.height <= 0 || proof.tooltipDisplay !== "block") {
+      failures.push(`tooltip not visible for ${proof.label}: display=${proof.tooltipDisplay} rect=${rectText(proof.tooltip)}`);
+      continue;
+    }
+    if (!contains(viewportRect, proof.tooltip)) {
+      failures.push(`hover tooltip outside viewport for ${proof.label}: ${rectText(proof.tooltip)}`);
+    }
+    if (!proof.button || proof.button.width < 48 - tolerance || proof.button.height < 48 - tolerance) {
+      failures.push(`hover target below 48px for ${proof.label}: ${rectText(proof.button)}`);
     }
   }
   for (const tip of data.tooltips) {
@@ -348,7 +402,10 @@ async function collectViewport(page, viewport) {
     if (!metrics) {
       failures.push("mobile buildSeals metrics missing");
     } else {
-      if (metrics.scrollWidth > metrics.clientWidth && !(metrics.afterScroll > metrics.beforeScroll)) {
+      if (!(metrics.scrollWidth > metrics.clientWidth)) {
+        failures.push(`mobile build tray not horizontally scrollable: scrollWidth=${metrics.scrollWidth} clientWidth=${metrics.clientWidth}`);
+      }
+      if (!(metrics.afterScroll > metrics.beforeScroll)) {
         failures.push(`mobile build tray scrollLeft did not change: before=${metrics.beforeScroll} after=${metrics.afterScroll}`);
       }
     }
@@ -356,7 +413,7 @@ async function collectViewport(page, viewport) {
   if (data.bodyScrollWidth > viewport.width + 1) {
     warnings.push(`document horizontal overflow scrollWidth=${data.bodyScrollWidth} viewport=${viewport.width}`);
   }
-  return { ...data, failures, warnings };
+  return { ...data, tooltipProofs, failures, warnings };
 }
 
 async function collectUnaffordableHarness(page) {

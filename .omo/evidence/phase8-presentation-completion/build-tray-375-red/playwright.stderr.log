@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://127.0.0.1:5179",
-  "generatedAt": "2026-08-07T14:44:57.770Z",
+  "generatedAt": "2026-08-07T14:43:28.343Z",
   "results": [
     {
       "url": "http://127.0.0.1:5179/",
@@ -406,50 +406,6 @@
         "afterScroll": 0,
         "overflowX": "auto"
       },
-      "tooltipProofs": [
-        {
-          "label": "오두막",
-          "button": {
-            "left": 511.984375,
-            "right": 559.984375,
-            "top": 595,
-            "bottom": 643,
-            "width": 48,
-            "height": 48
-          },
-          "tooltip": {
-            "left": 358.390625,
-            "right": 578.390625,
-            "top": 204,
-            "bottom": 279.9375,
-            "width": 220,
-            "height": 75.9375
-          },
-          "tooltipDisplay": "block",
-          "tooltipText": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205"
-        },
-        {
-          "label": "길",
-          "button": {
-            "left": 719.984375,
-            "right": 767.984375,
-            "top": 647,
-            "bottom": 695,
-            "width": 48,
-            "height": 48
-          },
-          "tooltip": {
-            "left": 358.390625,
-            "right": 578.390625,
-            "top": 204,
-            "bottom": 279.9375,
-            "width": 220,
-            "height": 75.9375
-          },
-          "tooltipDisplay": "block",
-          "tooltipText": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205"
-        }
-      ],
       "failures": [],
       "warnings": []
     },
@@ -857,50 +813,6 @@
         "afterScroll": 0,
         "overflowX": "auto"
       },
-      "tooltipProofs": [
-        {
-          "label": "오두막",
-          "button": {
-            "left": 281.984375,
-            "right": 329.984375,
-            "top": 810,
-            "bottom": 858,
-            "width": 48,
-            "height": 48
-          },
-          "tooltip": {
-            "left": 215.03125,
-            "right": 435.03125,
-            "top": 204,
-            "bottom": 279.9375,
-            "width": 220,
-            "height": 75.9375
-          },
-          "tooltipDisplay": "block",
-          "tooltipText": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205"
-        },
-        {
-          "label": "길",
-          "button": {
-            "left": 333.984375,
-            "right": 381.984375,
-            "top": 914,
-            "bottom": 962,
-            "width": 48,
-            "height": 48
-          },
-          "tooltip": {
-            "left": 215.03125,
-            "right": 435.03125,
-            "top": 204,
-            "bottom": 279.9375,
-            "width": 220,
-            "height": 75.9375
-          },
-          "tooltipDisplay": "block",
-          "tooltipText": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205"
-        }
-      ],
       "failures": [],
       "warnings": []
     },
@@ -1308,51 +1220,9 @@
         "afterScroll": 64,
         "overflowX": "auto"
       },
-      "tooltipProofs": [
-        {
-          "label": "오두막",
-          "button": {
-            "left": 7,
-            "right": 55,
-            "top": 676,
-            "bottom": 724,
-            "width": 48,
-            "height": 48
-          },
-          "tooltip": {
-            "left": 105,
-            "right": 255,
-            "top": 154,
-            "bottom": 226.78125,
-            "width": 150,
-            "height": 72.78125
-          },
-          "tooltipDisplay": "block",
-          "tooltipText": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205"
-        },
-        {
-          "label": "길",
-          "button": {
-            "left": 203,
-            "right": 251,
-            "top": 676,
-            "bottom": 724,
-            "width": 48,
-            "height": 48
-          },
-          "tooltip": {
-            "left": 105,
-            "right": 255,
-            "top": 154,
-            "bottom": 226.78125,
-            "width": 150,
-            "height": 72.78125
-          },
-          "tooltipDisplay": "block",
-          "tooltipText": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205"
-        }
+      "failures": [
+        "build button not contained by seal recess: 제재소 x=215.0 y=676.0 w=48.0 h=48.0 recess x=3.0 y=597.0 w=252.0 h=206.0"
       ],
-      "failures": [],
       "warnings": []
     }
   ],
@@ -1369,12 +1239,12 @@
       "text": "[vite] connecting..."
     },
     {
-      "type": "info",
-      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
-    },
-    {
       "type": "debug",
       "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
     },
     {
       "type": "debug",
@@ -1463,9 +1333,9 @@
   ],
   "pageErrors": [],
   "fatalConsole": [],
-  "verdict": "PASS",
+  "verdict": "FAIL",
   "unaffordableHarness": {
-    "harnessPath": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/ui-lane-fix/build-menu-harness.html",
+    "harnessPath": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/build-tray-375-red/build-menu-harness.html",
     "before": {
       "pressed": "false",
       "selected": "none"

@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://127.0.0.1:5179",
-  "generatedAt": "2026-08-07T14:39:46.592Z",
+  "generatedAt": "2026-08-07T14:44:57.770Z",
   "results": [
     {
       "url": "http://127.0.0.1:5179/",
@@ -406,6 +406,50 @@
         "afterScroll": 0,
         "overflowX": "auto"
       },
+      "tooltipProofs": [
+        {
+          "label": "오두막",
+          "button": {
+            "left": 511.984375,
+            "right": 559.984375,
+            "top": 595,
+            "bottom": 643,
+            "width": 48,
+            "height": 48
+          },
+          "tooltip": {
+            "left": 358.390625,
+            "right": 578.390625,
+            "top": 204,
+            "bottom": 279.9375,
+            "width": 220,
+            "height": 75.9375
+          },
+          "tooltipDisplay": "block",
+          "tooltipText": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205"
+        },
+        {
+          "label": "길",
+          "button": {
+            "left": 719.984375,
+            "right": 767.984375,
+            "top": 647,
+            "bottom": 695,
+            "width": 48,
+            "height": 48
+          },
+          "tooltip": {
+            "left": 358.390625,
+            "right": 578.390625,
+            "top": 204,
+            "bottom": 279.9375,
+            "width": 220,
+            "height": 75.9375
+          },
+          "tooltipDisplay": "block",
+          "tooltipText": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205"
+        }
+      ],
       "failures": [],
       "warnings": []
     },
@@ -813,6 +857,50 @@
         "afterScroll": 0,
         "overflowX": "auto"
       },
+      "tooltipProofs": [
+        {
+          "label": "오두막",
+          "button": {
+            "left": 281.984375,
+            "right": 329.984375,
+            "top": 810,
+            "bottom": 858,
+            "width": 48,
+            "height": 48
+          },
+          "tooltip": {
+            "left": 215.03125,
+            "right": 435.03125,
+            "top": 204,
+            "bottom": 279.9375,
+            "width": 220,
+            "height": 75.9375
+          },
+          "tooltipDisplay": "block",
+          "tooltipText": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205"
+        },
+        {
+          "label": "길",
+          "button": {
+            "left": 333.984375,
+            "right": 381.984375,
+            "top": 914,
+            "bottom": 962,
+            "width": 48,
+            "height": 48
+          },
+          "tooltip": {
+            "left": 215.03125,
+            "right": 435.03125,
+            "top": 204,
+            "bottom": 279.9375,
+            "width": 220,
+            "height": 75.9375
+          },
+          "tooltipDisplay": "block",
+          "tooltipText": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205"
+        }
+      ],
       "failures": [],
       "warnings": []
     },
@@ -859,10 +947,10 @@
         "buildSeals": {
           "left": 3,
           "right": 255,
-          "top": 649,
-          "bottom": 751,
+          "top": 672,
+          "bottom": 728,
           "width": 252,
-          "height": 102
+          "height": 56
         },
         "ledgerRecess": {
           "left": 256,
@@ -896,10 +984,10 @@
           "ariaLabel": "오두막",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 5,
-          "right": 53,
-          "top": 651,
-          "bottom": 699,
+          "left": 7,
+          "right": 55,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -908,10 +996,10 @@
           "ariaLabel": "밀밭",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 55,
-          "right": 103,
-          "top": 651,
-          "bottom": 699,
+          "left": 59,
+          "right": 107,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -920,10 +1008,10 @@
           "ariaLabel": "방앗간",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 105,
-          "right": 153,
-          "top": 651,
-          "bottom": 699,
+          "left": 111,
+          "right": 159,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -932,10 +1020,10 @@
           "ariaLabel": "벌목소",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 155,
-          "right": 203,
-          "top": 651,
-          "bottom": 699,
+          "left": 163,
+          "right": 211,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -944,10 +1032,10 @@
           "ariaLabel": "제재소",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 205,
-          "right": 253,
-          "top": 651,
-          "bottom": 699,
+          "left": 215,
+          "right": 263,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -956,10 +1044,10 @@
           "ariaLabel": "창고",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 5,
-          "right": 53,
-          "top": 701,
-          "bottom": 749,
+          "left": 267,
+          "right": 315,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -968,10 +1056,10 @@
           "ariaLabel": "곡창",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 55,
-          "right": 103,
-          "top": 701,
-          "bottom": 749,
+          "left": 319,
+          "right": 367,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -980,10 +1068,10 @@
           "ariaLabel": "우물",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 105,
-          "right": 153,
-          "top": 701,
-          "bottom": 749,
+          "left": 371,
+          "right": 419,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -992,10 +1080,10 @@
           "ariaLabel": "예배당",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 155,
-          "right": 203,
-          "top": 701,
-          "bottom": 749,
+          "left": 423,
+          "right": 471,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         },
@@ -1004,10 +1092,10 @@
           "ariaLabel": "길",
           "ariaDisabled": "false",
           "ariaPressed": "false",
-          "left": 205,
-          "right": 253,
-          "top": 701,
-          "bottom": 749,
+          "left": 475,
+          "right": 523,
+          "top": 676,
+          "bottom": 724,
           "width": 48,
           "height": 48
         }
@@ -1202,7 +1290,7 @@
         "buildSeals": {
           "overflowX": "auto",
           "overflowY": "hidden",
-          "display": "grid",
+          "display": "flex",
           "pointerEvents": "auto"
         },
         "tooltip": {
@@ -1215,11 +1303,55 @@
       "bodyScrollWidth": 375,
       "buildSealsMetrics": {
         "clientWidth": 252,
-        "scrollWidth": 252,
+        "scrollWidth": 524,
         "beforeScroll": 0,
-        "afterScroll": 0,
+        "afterScroll": 64,
         "overflowX": "auto"
       },
+      "tooltipProofs": [
+        {
+          "label": "오두막",
+          "button": {
+            "left": 7,
+            "right": 55,
+            "top": 676,
+            "bottom": 724,
+            "width": 48,
+            "height": 48
+          },
+          "tooltip": {
+            "left": 105,
+            "right": 255,
+            "top": 154,
+            "bottom": 226.78125,
+            "width": 150,
+            "height": 72.78125
+          },
+          "tooltipDisplay": "block",
+          "tooltipText": "오두막비용 목재 0목적 주민을 받아 인구 목표를 늘립니다조건 길 인접 필요건설 가능 · 보유 목재 205"
+        },
+        {
+          "label": "길",
+          "button": {
+            "left": 203,
+            "right": 251,
+            "top": 676,
+            "bottom": 724,
+            "width": 48,
+            "height": 48
+          },
+          "tooltip": {
+            "left": 105,
+            "right": 255,
+            "top": 154,
+            "bottom": 226.78125,
+            "width": 150,
+            "height": 72.78125
+          },
+          "tooltipDisplay": "block",
+          "tooltipText": "길비용 목재 0목적 일꾼과 짐꾼이 이동할 길을 잇습니다조건 요구 조건 없음건설 가능 · 보유 목재 205"
+        }
+      ],
       "failures": [],
       "warnings": []
     }
@@ -1237,12 +1369,12 @@
       "text": "[vite] connecting..."
     },
     {
-      "type": "debug",
-      "text": "[vite] connected."
-    },
-    {
       "type": "info",
       "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
     },
     {
       "type": "debug",

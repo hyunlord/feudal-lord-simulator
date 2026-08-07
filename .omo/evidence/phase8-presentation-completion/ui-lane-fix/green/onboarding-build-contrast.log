@@ -1,23 +1,23 @@
-✔ build menu exposes all building tools plus road in reachable order (1.188291ms)
-✔ build menu options provide accessible labels for every selectable tool (0.08075ms)
-✔ the real app renders every placement tool as an accessible control (16.581792ms)
-✔ build menu groups buildings while road stays in a dedicated zero-cost control (7.603959ms)
-✔ task-driven highlights are semantic attributes and keep unaffordable seals focusable (1.726875ms)
-✔ release contrast gate exists and reports audited selector ratios (349.273125ms)
-✔ text-bearing CSS zones use flat audited backgrounds (4.600792ms)
-✔ numeric ledger and era gauges use monospace right-aligned darker digits (1.027ms)
-✔ welcome parchment renders exact opening copy and dismiss affordance (17.384125ms)
-✔ app starts with no armed placement tool and consumes welcome dismissal locally (11.168667ms)
-✔ world canvas exposes crosshair styling only while a placement tool is armed (0.584875ms)
-✔ status line prioritizes armed tool copy before feedback and blocker fallback (0.36675ms)
-✔ right rail renders era gauges plus current and next onboarding tasks (6.660917ms)
-✔ population history is opened only from the ledger drawer (6.094958ms)
-✔ population drawer toggle stays above ledger text for pointer access (0.820041ms)
-✔ hidden seal tooltips do not inflate responsive console scroll width (0.617959ms)
-✔ tablet seal layout folds before it can widen the console recess (0.416125ms)
-✔ seal tray and tooltips stay inside their assigned geometry lanes (0.623542ms)
-✔ desktop ledger plaque height fits inside the carved ledger recess (0.378125ms)
-✔ onboarding task panel renders completion flourish and the post-task open goal (0.342ms)
+✔ build menu exposes all building tools plus road in reachable order (1.618416ms)
+✔ build menu options provide accessible labels for every selectable tool (0.154708ms)
+✔ the real app renders every placement tool as an accessible control (23.000458ms)
+✔ build menu groups buildings while road stays in a dedicated zero-cost control (9.940292ms)
+✔ task-driven highlights are semantic attributes and keep unaffordable seals focusable (2.781708ms)
+✔ release contrast gate exists and reports audited selector ratios (490.825375ms)
+✔ text-bearing CSS zones use flat audited backgrounds (5.114709ms)
+✔ numeric ledger and era gauges use monospace right-aligned darker digits (1.290875ms)
+✔ welcome parchment renders exact opening copy and dismiss affordance (22.795ms)
+✔ app starts with no armed placement tool and consumes welcome dismissal locally (15.408875ms)
+✔ world canvas exposes crosshair styling only while a placement tool is armed (0.891541ms)
+✔ status line prioritizes armed tool copy before feedback and blocker fallback (0.601125ms)
+✔ right rail renders era gauges plus current and next onboarding tasks (8.380083ms)
+✔ population history is opened only from the ledger drawer (7.773792ms)
+✔ population drawer toggle stays above ledger text for pointer access (0.95225ms)
+✔ hidden seal tooltips do not inflate responsive console scroll width (0.586375ms)
+✔ tablet seal layout folds before it can widen the console recess (0.424375ms)
+✔ seal tray and tooltips stay inside their assigned geometry lanes (0.695334ms)
+✔ desktop ledger plaque height fits inside the carved ledger recess (0.476958ms)
+✔ onboarding task panel renders completion flourish and the post-task open goal (0.447666ms)
 ℹ tests 20
 ℹ suites 0
 ℹ pass 20
@@ -25,4 +25,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 458.566875
+ℹ duration_ms 632.186584
