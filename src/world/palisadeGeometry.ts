@@ -64,6 +64,13 @@ const CARDINAL_AND_DIAGONAL_STEPS = [
   { x: 1, y: 1 },
 ] as const satisfies readonly TileEdgePoint[];
 
+const PROPOSAL_MARGIN_TILES = 3;
+
+type ProposalClearance = {
+  readonly footprints: readonly PalisadeFootprint[];
+  readonly margin: number;
+};
+
 function samePoint(a: TileEdgePoint, b: TileEdgePoint): boolean {
   return a.x === b.x && a.y === b.y;
 }
@@ -150,25 +157,13 @@ export function clockwisePath(vertices: readonly TileEdgePoint[]): PalisadePath 
   return pathArea(closed) >= 0 ? closed : [...closed].reverse();
 }
 
-function offsetHull(hull: readonly TileEdgePoint[], margin: number): readonly TileEdgePoint[] {
-  if (hull.length < 3) {
-    const xs = hull.map((point) => point.x);
-    const ys = hull.map((point) => point.y);
-    const minX = Math.min(...xs) - margin;
-    const maxX = Math.max(...xs) + margin;
-    const minY = Math.min(...ys) - margin;
-    const maxY = Math.max(...ys) + margin;
-    return clockwisePath([{ x: minX, y: minY }, { x: maxX, y: minY }, { x: maxX, y: maxY }, { x: minX, y: maxY }]).slice(0, -1);
-  }
-
-  const center = hull.reduce(
-    (sum, point) => ({ x: sum.x + point.x / hull.length, y: sum.y + point.y / hull.length }),
-    { x: 0, y: 0 },
-  );
-  return hull.map((point) => ({
-    x: point.x + Math.sign(point.x - center.x) * margin,
-    y: point.y + Math.sign(point.y - center.y) * margin,
-  }));
+function expandedFootprintCorners(footprint: PalisadeFootprint, margin: number): readonly TileEdgePoint[] {
+  return [
+    { x: footprint.tx - margin, y: footprint.ty - margin },
+    { x: footprint.tx + footprint.width + margin, y: footprint.ty - margin },
+    { x: footprint.tx + footprint.width + margin, y: footprint.ty + footprint.height + margin },
+    { x: footprint.tx - margin, y: footprint.ty + footprint.height + margin },
+  ];
 }
 
 function rasterSegment(from: TileEdgePoint, to: TileEdgePoint): readonly TileEdgePoint[] {
@@ -211,6 +206,18 @@ function isWaterTile(grid: Grid, tx: number, ty: number): boolean {
   return getTile(grid, { tx, ty })?.terrain === "water";
 }
 
+function clearanceFromFootprint(point: TileEdgePoint, footprint: PalisadeFootprint): number {
+  const right = footprint.tx + footprint.width;
+  const bottom = footprint.ty + footprint.height;
+  const dx = point.x < footprint.tx ? footprint.tx - point.x : point.x > right ? point.x - right : 0;
+  const dy = point.y < footprint.ty ? footprint.ty - point.y : point.y > bottom ? point.y - bottom : 0;
+  return Math.max(dx, dy);
+}
+
+function hasProposalClearance(point: TileEdgePoint, clearance: ProposalClearance | null): boolean {
+  return clearance === null || clearance.footprints.every((footprint) => clearanceFromFootprint(point, footprint) >= clearance.margin);
+}
+
 function hasWaterMoat(grid: Grid, footprint: PalisadeFootprint): boolean {
   const perimeterTiles: TileEdgePoint[] = [];
   for (let tx = footprint.tx - 1; tx <= footprint.tx + footprint.width; tx += 1) {
@@ -245,8 +252,14 @@ function edgeCrossesWater(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): b
   return false;
 }
 
-function routeEdge(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): readonly TileEdgePoint[] | null {
-  if (!edgeCrossesWater(grid, from, to)) return rasterSegment(from, to);
+function routeEdge(
+  grid: Grid,
+  from: TileEdgePoint,
+  to: TileEdgePoint,
+  clearance: ProposalClearance | null,
+): readonly TileEdgePoint[] | null {
+  const direct = rasterSegment(from, to);
+  if (!edgeCrossesWater(grid, from, to) && direct.every((point) => hasProposalClearance(point, clearance))) return direct;
   const margin = Math.max(6, segmentSteps(from, to) + 3);
   const minX = Math.max(0, Math.min(from.x, to.x) - margin);
   const maxX = Math.min(grid.width, Math.max(from.x, to.x) + margin);
@@ -264,7 +277,7 @@ function routeEdge(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): readonly
     for (const step of CARDINAL_AND_DIAGONAL_STEPS) {
       const next = { x: current.x + step.x, y: current.y + step.y };
       if (next.x < minX || next.x > maxX || next.y < minY || next.y > maxY) continue;
-      if (!edgeInBounds(grid, next) || stepCrossesWater(grid, current, next)) continue;
+      if (!edgeInBounds(grid, next) || stepCrossesWater(grid, current, next) || !hasProposalClearance(next, clearance)) continue;
       const key = pointKey(next);
       if (visited.has(key)) continue;
       visited.add(key);
@@ -274,14 +287,18 @@ function routeEdge(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): readonly
   return null;
 }
 
-function routeClosedPath(grid: Grid, vertices: readonly TileEdgePoint[]): PalisadePath | null {
+function routeClosedPath(
+  grid: Grid,
+  vertices: readonly TileEdgePoint[],
+  clearance: ProposalClearance | null = null,
+): PalisadePath | null {
   const closed = clockwisePath(vertices);
   const routed: TileEdgePoint[] = [];
   for (let index = 1; index < closed.length; index += 1) {
     const previous = closed[index - 1];
     const current = closed[index];
     if (previous === undefined || current === undefined) continue;
-    const segment = routeEdge(grid, previous, current);
+    const segment = routeEdge(grid, previous, current, clearance);
     if (segment === null) return null;
     routed.push(...(routed.length === 0 ? segment : segment.slice(1)));
   }
@@ -392,9 +409,9 @@ export function computePalisadeProposal(
 ): PalisadeProposalResult {
   if (footprints.length === 0) return { ok: false, reason: "no_footprints" };
   if (footprints.some((footprint) => hasWaterMoat(grid, footprint))) return { ok: false, reason: "water_crossing" };
-  const hull = convexHull(footprints.flatMap(footprintCorners));
+  const hull = convexHull(footprints.flatMap((footprint) => expandedFootprintCorners(footprint, PROPOSAL_MARGIN_TILES)));
   if (hull.length < 2) return { ok: false, reason: "collinear_footprints" };
-  const routed = routeClosedPath(grid, offsetHull(hull, 3));
+  const routed = routeClosedPath(grid, hull, { footprints, margin: PROPOSAL_MARGIN_TILES });
   if (routed === null) return { ok: false, reason: "water_crossing" };
   const validation = validatePalisadeCandidate(grid, routed, footprints);
   if (!validation.ok) return validation;

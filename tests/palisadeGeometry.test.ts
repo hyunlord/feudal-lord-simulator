@@ -85,6 +85,57 @@ function assertAxisOrDiagonal(path: PalisadePath): void {
   }
 }
 
+function rasterizedPathPoints(path: PalisadePath): readonly TileEdgePoint[] {
+  const points: TileEdgePoint[] = [];
+  for (let index = 1; index < path.length; index += 1) {
+    const previous = path[index - 1];
+    const current = path[index];
+    assert.ok(previous !== undefined);
+    assert.ok(current !== undefined);
+    let cursor = previous;
+    if (points.length === 0) points.push(cursor);
+    while (cursor.x !== current.x || cursor.y !== current.y) {
+      cursor = {
+        x: cursor.x + Math.sign(current.x - cursor.x),
+        y: cursor.y + Math.sign(current.y - cursor.y),
+      };
+      points.push(cursor);
+    }
+  }
+  return points;
+}
+
+function clearanceFromFootprint(point: TileEdgePoint, building: PalisadeFootprint): number {
+  const right = building.tx + building.width;
+  const bottom = building.ty + building.height;
+  const dx =
+    point.x < building.tx ? building.tx - point.x : point.x > right ? point.x - right : 0;
+  const dy =
+    point.y < building.ty ? building.ty - point.y : point.y > bottom ? point.y - bottom : 0;
+  return Math.max(dx, dy);
+}
+
+function minimumProposalClearance(
+  path: PalisadePath,
+  footprints: readonly PalisadeFootprint[],
+): number {
+  return Math.min(
+    ...rasterizedPathPoints(path).flatMap((point) =>
+      footprints.map((building) => clearanceFromFootprint(point, building)),
+    ),
+  );
+}
+
+function assertProposalClearance(
+  path: PalisadePath,
+  footprints: readonly PalisadeFootprint[],
+): void {
+  assert.ok(
+    minimumProposalClearance(path, footprints) >= 3,
+    `minimum proposal clearance ${minimumProposalClearance(path, footprints)}`,
+  );
+}
+
 test("palisade geometry relies on row-major integer grid bounds and water terrain", () => {
   // Given
   const world = grid(3, 2, ["1,0"]);
@@ -148,6 +199,8 @@ test("proposal encloses one and concave settlements with exact three-tile margin
   assert.ok(single.some((point) => point.x === 13));
   assert.ok(single.some((point) => point.y === 5));
   assert.ok(single.some((point) => point.y === 13));
+  assertProposalClearance(single, [footprint("lone", 8, 8, 2, 2)]);
+  assertProposalClearance(concave, settlement);
   for (const building of settlement) {
     for (const corner of footprintCorners(building)) {
       assert.equal(isPointInsidePalisade(corner, concave), true, building.id);
@@ -165,9 +218,32 @@ test("proposal reports concrete failures for absent footprints and clipped margi
   assert.deepEqual(clipped, { ok: false, reason: "out_of_bounds" });
 });
 
+test("proposal preserves three-tile clearance for verifier regression with water detour", () => {
+  // Given
+  const world = grid(24, 24, ["5,12", "5,13", "5,14", "6,12", "6,13", "6,14"]);
+  const buildings = [
+    footprint("b0", 6, 3, 1, 2),
+    footprint("b1", 12, 15, 1, 2),
+    footprint("b2", 3, 14),
+    footprint("b3", 4, 11, 2, 1),
+    footprint("b4", 5, 11),
+  ];
+
+  // When
+  const proposal = computePalisadeProposal(world, buildings);
+
+  // Then
+  assert.equal(proposal.ok, true, proposal.ok ? undefined : proposal.reason);
+  if (proposal.ok) {
+    assertAxisOrDiagonal(proposal.path);
+    assert.equal(validatePalisadeCandidate(world, proposal.path, buildings).ok, true);
+    assertProposalClearance(proposal.path, buildings);
+  }
+});
+
 test("proposal detours deterministically around water and reports impossible enclosure", () => {
   // Given
-  const lake = grid(24, 24, ["16,7"]);
+  const lake = grid(24, 24, ["16,13"]);
   const dry = grid(24, 24);
   const blocked = grid(10, 10, ["3,3", "4,3", "5,3", "3,4", "5,4", "3,5", "4,5", "5,5"]);
   const buildings = [footprint("a", 8, 8), footprint("b", 14, 8), footprint("c", 11, 13)];
