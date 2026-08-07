@@ -11,6 +11,7 @@ import {
 } from "../economy/construction";
 import type { TerrainType } from "../content/terrainConfig";
 import type { ResourceType } from "../content/resourceConfig";
+import type { Era } from "../content/eraConfig";
 import { getTile, isInBounds, type TileCoordinate } from "./grid";
 import type { Tile, WorldView } from "./world.types";
 
@@ -21,6 +22,7 @@ export enum PlacementFailure {
   needs_road = "needs_road",
   needs_adjacent_terrain = "needs_adjacent_terrain",
   insufficient_timber = "insufficient_timber",
+  locked_era = "locked_era",
 }
 
 export type PlacementResult =
@@ -30,7 +32,20 @@ export type PlacementResult =
 type ResourceWorldView = WorldView & {
   readonly buildings?: readonly Building[];
   readonly constructionSites?: readonly ConstructionSite[];
+  readonly era?: Era;
 };
+
+const ERA_ORDER = {
+  hamlet: 0,
+  palisade: 1,
+} as const satisfies Record<Era, number>;
+
+export function isBuildingUnlocked(
+  kind: BuildingKind,
+  era: Era = "hamlet",
+): boolean {
+  return ERA_ORDER[era] >= ERA_ORDER[BUILDING_CONFIG_BY_KIND[kind].unlockEra];
+}
 
 function isBuildableTerrain(terrain: TerrainType): boolean {
   return terrain !== "water";
@@ -130,6 +145,10 @@ export function canPlaceBuilding(
   const definition = BUILDING_CONFIG_BY_KIND[kind];
   const origin = { tx, ty };
   const footprint = footprintTiles(origin, definition);
+
+  if (!isBuildingUnlocked(kind, world.era ?? "hamlet")) {
+    return { ok: false, reason: PlacementFailure.locked_era };
+  }
 
   if (footprint.some((coordinate) => !isInBounds(world, coordinate))) {
     return { ok: false, reason: PlacementFailure.out_of_bounds };

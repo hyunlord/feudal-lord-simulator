@@ -3,6 +3,7 @@ import type { Building } from "../content/buildingConfig";
 import {
   STORAGE_KIND_BY_RESOURCE,
   type ResourceType,
+  type StorableResourceType,
 } from "../content/resourceConfig";
 import { amountOf } from "./deliveryCommon";
 import type {
@@ -20,6 +21,20 @@ function bestCandidate(candidates: readonly RouteCandidate[]): RouteCandidate | 
   })[0] ?? null;
 }
 
+function isStorableResource(resource: ResourceType): resource is StorableResourceType {
+  switch (resource) {
+    case "wheat":
+    case "bread":
+    case "logs":
+    case "timber":
+    case "stone_raw":
+    case "stone":
+      return true;
+    case "coin":
+      return false;
+  }
+}
+
 export function deliverCandidate(
   producer: Building,
   resource: ResourceType,
@@ -27,6 +42,7 @@ export function deliverCandidate(
   inventory: DeliveryInventoryPort,
   routes: DeliveryRoutePort,
 ): RouteCandidate | null {
+  if (!isStorableResource(resource)) return null;
   const stock = amountOf(producer.inventory, resource);
   if (stock === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
@@ -51,6 +67,7 @@ export function fetchCandidate(
   inventory: DeliveryInventoryPort,
   routes: DeliveryRoutePort,
 ): RouteCandidate | null {
+  if (!isStorableResource(resource)) return null;
   const homeSpace = inventory.availableSpace(converter);
   if (homeSpace === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];

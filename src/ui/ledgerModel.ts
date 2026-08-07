@@ -11,6 +11,9 @@ const emptyTotals = (): EconomyStockTotals => ({
   bread: 0,
   logs: 0,
   timber: 0,
+  stone_raw: 0,
+  stone: 0,
+  coin: 0,
 });
 
 const stockAmount = (amount: number | undefined): number =>

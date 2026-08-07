@@ -71,6 +71,8 @@ export function formatPlacementFailure(
       const timberCost = BUILDING_CONFIG_BY_KIND[buildingKind].buildCost.timber ?? 0;
       return `목재가 부족합니다 (필요 ${timberCost})`;
     }
+    case PlacementFailure.locked_era:
+      return "목책마을 이후 건설할 수 있습니다";
     default:
       return assertNever(reason);
   }

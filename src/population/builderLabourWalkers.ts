@@ -34,6 +34,8 @@ function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordin
     case "mill":
     case "logging_camp":
     case "sawmill":
+    case "quarry":
+    case "masonry":
       return { tx: site.tx, ty: site.ty };
   }
 }

@@ -243,5 +243,9 @@ function nonHouseBodyProfile(kind: Exclude<BuildingKind, "house">): BodyProfile 
       return { width: 38, height: 20, roof: 12, fill: SEMANTIC_PALETTE.earth, roofColor: SEMANTIC_PALETTE.forest, roofShape: "shed" };
     case "sawmill":
       return { width: 66, height: 32, roof: 14, fill: SEMANTIC_PALETTE.parchmentDark, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
+    case "quarry":
+      return { width: 74, height: 18, roof: 0, fill: SEMANTIC_PALETTE.stoneDark, roofColor: SEMANTIC_PALETTE.stone, roofShape: "none" };
+    case "masonry":
+      return { width: 44, height: 28, roof: 10, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.earthDark, roofShape: "shed" };
   }
 }

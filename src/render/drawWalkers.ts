@@ -10,6 +10,9 @@ const CARGO_COLOR_BY_RESOURCE = {
   bread: SEMANTIC_PALETTE.earth,
   logs: SEMANTIC_PALETTE.forest,
   timber: SEMANTIC_PALETTE.earthDark,
+  stone_raw: SEMANTIC_PALETTE.stoneDark,
+  stone: SEMANTIC_PALETTE.stone,
+  coin: SEMANTIC_PALETTE.gold,
 } as const satisfies Record<ResourceType, PaletteColor>;
 
 export function drawWalkers(

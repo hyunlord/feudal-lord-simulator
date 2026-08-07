@@ -1,5 +1,6 @@
 import type { ResourceType } from "./resourceConfig";
 import type { TerrainType } from "./terrainConfig";
+import type { Era } from "./eraConfig";
 
 export type BuildingKind =
   | "house"
@@ -10,7 +11,9 @@ export type BuildingKind =
   | "wheat_farm"
   | "mill"
   | "logging_camp"
-  | "sawmill";
+  | "sawmill"
+  | "quarry"
+  | "masonry";
 
 export interface ProductionSpec {
   readonly output: ResourceType;
@@ -28,6 +31,7 @@ export interface BuildingDefinition {
   readonly buildCost: Partial<Record<ResourceType, number>>;
   readonly requiresAdjacentTerrain: TerrainType | null;
   readonly requiresRoad: boolean;
+  readonly unlockEra: Era;
   readonly production: ProductionSpec | null;
   readonly storageCapacity: number;
   readonly serviceRadius: number;
@@ -55,6 +59,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: {},
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: null,
     storageCapacity: 0,
     serviceRadius: 0,
@@ -68,6 +73,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 10 },
     requiresAdjacentTerrain: null,
     requiresRoad: false,
+    unlockEra: "hamlet",
     production: null,
     storageCapacity: 0,
     serviceRadius: 6,
@@ -81,6 +87,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: null,
     storageCapacity: 200,
     serviceRadius: 0,
@@ -94,6 +101,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: null,
     storageCapacity: 200,
     serviceRadius: 0,
@@ -107,6 +115,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: null,
     storageCapacity: 0,
     serviceRadius: 0,
@@ -120,6 +129,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 20 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: {
       output: "wheat",
       input: null,
@@ -138,6 +148,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 30 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: {
       output: "bread",
       input: "wheat",
@@ -156,6 +167,7 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 15 },
     requiresAdjacentTerrain: "forest",
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: {
       output: "logs",
       input: null,
@@ -174,11 +186,50 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 30 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
+    unlockEra: "hamlet",
     production: {
       output: "timber",
       input: "logs",
       inputPerOutput: 2,
       ticksPerOutput: 35,
+    },
+    storageCapacity: 20,
+    serviceRadius: 0,
+  },
+  quarry: {
+    kind: "quarry",
+    name: "채석장",
+    width: 2,
+    height: 2,
+    workersRequired: 4,
+    buildCost: { timber: 50 },
+    requiresAdjacentTerrain: "rock",
+    requiresRoad: true,
+    unlockEra: "palisade",
+    production: {
+      output: "stone_raw",
+      input: null,
+      inputPerOutput: 0,
+      ticksPerOutput: 60,
+    },
+    storageCapacity: 20,
+    serviceRadius: 0,
+  },
+  masonry: {
+    kind: "masonry",
+    name: "석공소",
+    width: 1,
+    height: 1,
+    workersRequired: 3,
+    buildCost: { timber: 45 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    unlockEra: "palisade",
+    production: {
+      output: "stone",
+      input: "stone_raw",
+      inputPerOutput: 2,
+      ticksPerOutput: 45,
     },
     storageCapacity: 20,
     serviceRadius: 0,

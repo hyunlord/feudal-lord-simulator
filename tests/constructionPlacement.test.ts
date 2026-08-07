@@ -22,6 +22,8 @@ const VALID_ORIGINS = {
   mill: { tx: 14, ty: 1 },
   logging_camp: { tx: 16, ty: 1 },
   sawmill: { tx: 18, ty: 1 },
+  quarry: { tx: 20, ty: 1 },
+  masonry: { tx: 23, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {
@@ -43,12 +45,17 @@ function nextConstructionOrdinal(state: GameState): number {
 }
 
 function buildableSettlement(treasuryTimber = 500): GameState {
-  const roadTxs = new Set(Array.from({ length: 22 }, (_unused, index) => index));
+  const roadTxs = new Set(Array.from({ length: 26 }, (_unused, index) => index));
   return {
     ...DEFAULT_GAME_STATE,
     tiles: DEFAULT_GAME_STATE.tiles.map((tile) => ({
       ...tile,
-      terrain: tile.tx === 17 && tile.ty === 2 ? "forest" : "grass",
+      terrain:
+        tile.tx === 17 && tile.ty === 2
+          ? "forest"
+          : tile.tx === 22 && tile.ty === 2
+            ? "rock"
+            : "grass",
       buildingId: null,
       hasRoad: tile.ty === 0 && roadTxs.has(tile.tx),
     })),
@@ -58,6 +65,7 @@ function buildableSettlement(treasuryTimber = 500): GameState {
     population: 0,
     idleWorkers: 0,
     treasuryTimber,
+    era: "palisade",
     roadRevision: 1,
     pathCache: {},
   };
@@ -67,7 +75,7 @@ function siteWorldWithCommitment(site: ConstructionSite, treasuryTimber: number)
   return Object.assign(buildableSettlement(treasuryTimber), {
     constructionSites: [site],
     wallTick: 0,
-    era: "hamlet",
+    era: "palisade",
     eraProclaimedTick: null,
     palisade: null,
     nextConstructionOrdinal: 2,

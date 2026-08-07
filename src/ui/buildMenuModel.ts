@@ -5,7 +5,7 @@ import {
 } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
-import { placementSpendableResource } from "../world/placement";
+import { isBuildingUnlocked, placementSpendableResource } from "../world/placement";
 
 export type BuildToolOption = {
   readonly tool: PlacementTool;
@@ -14,6 +14,10 @@ export type BuildToolOption = {
   readonly group: BuildToolGroupKey;
   readonly purpose: string;
   readonly requirements: readonly string[];
+};
+
+type BuildingToolOption = BuildToolOption & {
+  readonly tool: BuildingKind;
 };
 
 export type BuildToolGroupKey = "dwelling" | "production" | "storage" | "service";
@@ -39,6 +43,8 @@ const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
   mill: "production",
   logging_camp: "production",
   sawmill: "production",
+  quarry: "production",
+  masonry: "production",
   storehouse: "storage",
   granary: "storage",
   chapel: "service",
@@ -52,6 +58,8 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   mill: "밀을 빵으로 바꿔 배급을 돕습니다",
   logging_camp: "숲 가장자리에서 통나무를 냅니다",
   sawmill: "통나무를 목재로 켭니다",
+  quarry: "바위 가장자리에서 원석을 캐냅니다",
+  masonry: "원석을 석재로 다듬습니다",
   storehouse: "목재와 통나무를 보관합니다",
   granary: "밀과 빵을 보관합니다",
   chapel: "목책마을 선포 조건을 준비합니다",
@@ -64,6 +72,8 @@ function requirementsFor(kind: BuildingKind): readonly string[] {
   const requirements: string[] = [];
   if (definition.requiresRoad) requirements.push("길 인접 필요");
   if (definition.requiresAdjacentTerrain === "forest") requirements.push("숲 인접 필요");
+  if (definition.requiresAdjacentTerrain === "rock") requirements.push("바위 인접 필요");
+  if (definition.unlockEra === "palisade") requirements.push("목책마을 이후");
   return requirements.length === 0 ? ["요구 조건 없음"] : requirements;
 }
 
@@ -76,7 +86,7 @@ export const ROAD_TOOL_OPTION: BuildToolOption = {
   requirements: ["요구 조건 없음"],
 };
 
-const BUILDING_TOOL_OPTIONS: readonly BuildToolOption[] = BUILDING_CONFIG.map((definition) => ({
+const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.map((definition) => ({
   tool: definition.kind,
   label: definition.name,
   timberCost: definition.buildCost.timber ?? 0,
@@ -91,10 +101,12 @@ export const BUILD_TOOL_OPTIONS: readonly BuildToolOption[] = [
 ];
 
 export function buildMenuGroups(state: GameState): readonly BuildToolGroup[] {
-  const options = BUILDING_TOOL_OPTIONS.map((option) => ({
-    ...option,
-    affordable: buildToolAffordability(option.tool, state).affordable,
-  }));
+  const options = BUILDING_TOOL_OPTIONS
+    .filter((option) => isBuildingUnlocked(option.tool, state.era))
+    .map((option) => ({
+      ...option,
+      affordable: buildToolAffordability(option.tool, state).affordable,
+    }));
   return GROUP_ORDER.map((key) => ({
     key,
     label: GROUP_LABELS[key],

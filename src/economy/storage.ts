@@ -6,6 +6,7 @@ import {
 import {
   STORAGE_KIND_BY_RESOURCE,
   type ResourceType,
+  type StorableResourceType,
 } from "../content/resourceConfig";
 import type { Building } from "./economy.types";
 
@@ -42,7 +43,22 @@ export function acceptsResource(
   kind: BuildingKind,
   resource: ResourceType,
 ): boolean {
+  if (!isStorableResource(resource)) return false;
   return STORAGE_KIND_BY_RESOURCE[resource] === kind;
+}
+
+function isStorableResource(resource: ResourceType): resource is StorableResourceType {
+  switch (resource) {
+    case "wheat":
+    case "bread":
+    case "logs":
+    case "timber":
+    case "stone_raw":
+    case "stone":
+      return true;
+    case "coin":
+      return false;
+  }
 }
 
 export function availableSpace(

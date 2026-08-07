@@ -16,8 +16,9 @@ export type OverlayMode =
   | "road_component";
 export type GameSpeed = 0 | 1 | 3 | 5;
 export type RoadPathCache = Record<string, readonly TileCoordinate[]>;
-export type Era = "hamlet" | "palisade";
-export type EraRequirementKey = "population" | "granary" | "chapel" | "timber";
+export type { Era, EraRequirementKey } from "../content/eraConfig";
+
+import type { Era, EraRequirementKey } from "../content/eraConfig";
 
 export interface EraRequirement {
   readonly key: EraRequirementKey;

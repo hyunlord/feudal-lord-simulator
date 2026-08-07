@@ -29,6 +29,9 @@ const RESOURCE_LABELS = {
   bread: "빵",
   logs: "통나무",
   timber: "목재",
+  stone_raw: "원석",
+  stone: "석재",
+  coin: "금화",
 } as const satisfies Record<ResourceType, string>;
 
 function assertNever(value: never): never {

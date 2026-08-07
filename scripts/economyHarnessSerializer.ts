@@ -21,9 +21,10 @@ export function amount(
 export function sortedResources(
   record: Partial<Record<ResourceType, number>>,
 ): Record<ResourceType, number> {
+  const empty = { wheat: 0, bread: 0, logs: 0, timber: 0, stone_raw: 0, stone: 0, coin: 0 };
   return RESOURCE_TYPES.reduce<Record<ResourceType, number>>(
     (result, resource) => ({ ...result, [resource]: amount(record, resource) }),
-    { wheat: 0, bread: 0, logs: 0, timber: 0 },
+    empty,
   );
 }
 
@@ -74,6 +75,8 @@ function normalizeConstructionSite(site: ConstructionSite) {
     case "mill":
     case "logging_camp":
     case "sawmill":
+    case "quarry":
+    case "masonry":
       return {
         ...common,
         tx: site.tx,

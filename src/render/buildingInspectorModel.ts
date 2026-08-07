@@ -20,12 +20,17 @@ const PURPOSES = {
   mill: "밀을 빵으로 가공",
   logging_camp: "숲에서 통나무를 생산",
   sawmill: "통나무를 목재로 가공",
+  quarry: "바위에서 원석을 채굴",
+  masonry: "원석을 석재로 가공",
 } as const;
 const RESOURCE_NAMES = {
   wheat: "밀",
   bread: "빵",
   logs: "통나무",
   timber: "목재",
+  stone_raw: "원석",
+  stone: "석재",
+  coin: "금화",
 } as const satisfies Record<ResourceType, string>;
 
 export function buildingInspectorModel(

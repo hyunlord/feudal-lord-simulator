@@ -10,6 +10,9 @@ const RESOURCE_LABELS = {
   bread: "빵",
   logs: "통나무",
   timber: "목재",
+  stone_raw: "원석",
+  stone: "석재",
+  coin: "금화",
 } as const satisfies Record<ResourceType, string>;
 
 const STORAGE_LABELS = {
@@ -17,6 +20,9 @@ const STORAGE_LABELS = {
   bread: "곡창",
   logs: "창고",
   timber: "창고",
+  stone_raw: "창고",
+  stone: "창고",
+  coin: "창고",
 } as const satisfies Record<ResourceType, "곡창" | "창고">;
 
 function stockTotal(building: Building): number {

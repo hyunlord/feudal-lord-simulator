@@ -79,5 +79,8 @@ test("ledger totals treasury, building inventory, and walker cargo without count
     bread: 15,
     logs: 4,
     timber: 11,
+    stone_raw: 0,
+    stone: 0,
+    coin: 0,
   });
 });

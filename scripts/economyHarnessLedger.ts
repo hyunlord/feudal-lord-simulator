@@ -6,7 +6,7 @@ import { sortedResources } from "./economyHarnessSerializer";
 export type ResourceLedger = Record<ResourceType, number>;
 
 function emptyLedger(): ResourceLedger {
-  return { wheat: 0, bread: 0, logs: 0, timber: 0 };
+  return { wheat: 0, bread: 0, logs: 0, timber: 0, stone_raw: 0, stone: 0, coin: 0 };
 }
 
 function addRecord(
@@ -19,6 +19,9 @@ function addRecord(
     bread: ledger.bread + resources.bread,
     logs: ledger.logs + resources.logs,
     timber: ledger.timber + resources.timber,
+    stone_raw: ledger.stone_raw + resources.stone_raw,
+    stone: ledger.stone + resources.stone,
+    coin: ledger.coin + resources.coin,
   };
 }
 

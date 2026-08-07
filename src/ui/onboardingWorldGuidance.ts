@@ -39,11 +39,13 @@ const BUILDING_TARGET_LABELS = {
   mill: "여기에 방앗간을 지으세요",
   logging_camp: "여기에 벌목소를 지으세요",
   sawmill: "여기에 제재소를 지으세요",
+  quarry: "여기에 채석장을 지으세요",
+  masonry: "여기에 석공소를 지으세요",
 } as const satisfies Readonly<Record<BuildingKind, string>>;
 type GuidanceWorld = Pick<
   GameState,
   "buildings" | "height" | "houses" | "tiles" | "treasuryTimber" | "width"
->;
+> & Partial<Pick<GameState, "era">>;
 
 export type OnboardingGuidanceTarget = {
   readonly kind: BuildingKind | "road";

@@ -74,7 +74,7 @@ test("CourtLedger keeps old call sites and can display the Phase 3 economy total
       selectedTool: "mill",
       population: 6,
       idleWorkers: 2,
-      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12 },
+      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12, stone_raw: 0, stone: 0, coin: 0 },
     }),
   );
 
@@ -97,7 +97,7 @@ test("CourtLedger exposes compact primary labels and marks secondary rows for na
       selectedTool: "mill",
       population: 6,
       idleWorkers: 2,
-      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12 },
+      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12, stone_raw: 0, stone: 0, coin: 0 },
     }),
   );
 
@@ -119,7 +119,7 @@ test("CourtLedger keeps full semantic term names when compact labels are aria-hi
       selectedTool: "mill",
       population: 6,
       idleWorkers: 2,
-      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12 },
+      stockTotals: { wheat: 3, bread: 4, logs: 5, timber: 12, stone_raw: 0, stone: 0, coin: 0 },
     }),
   );
 

@@ -30,7 +30,7 @@ test("build menu options provide accessible labels for every selectable tool", (
   const labels = BUILD_TOOL_OPTIONS.map((option) => option.label.trim());
 
   // Then
-  assert.equal(labels.length, 10);
+  assert.equal(labels.length, BUILDING_CONFIG.length + 1);
   assert.equal(labels.every((label) => label.length > 0), true);
 });
 
@@ -41,9 +41,13 @@ test("the real app renders every placement tool as an accessible control", () =>
   );
 
   // Then
-  for (const option of BUILD_TOOL_OPTIONS) {
+  const defaultTools = buildMenuGroups(DEFAULT_GAME_STATE).flatMap((group) => group.options);
+  for (const option of [...defaultTools, BUILD_TOOL_OPTIONS.find((candidate) => candidate.tool === "road")]) {
+    assert.ok(option);
     assert.match(markup, new RegExp(`aria-label="${option.label}"`));
   }
+  assert.doesNotMatch(markup, /aria-label="채석장"/);
+  assert.doesNotMatch(markup, /aria-label="석공소"/);
   const placementMarkup = markup.slice(
     markup.indexOf('aria-label="Placement seals"'),
     markup.indexOf("ledger-recess"),

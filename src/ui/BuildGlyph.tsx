@@ -10,6 +10,8 @@ const GLYPH_PATHS: Record<PlacementTool, readonly string[]> = {
   mill: ["M4 20h11V9L9 5 4 9Z", "M16 13a4 4 0 1 0 0 8 4 4 0 0 0 0-8", "M16 13v8m-4-4h8"],
   logging_camp: ["M4 17 9 8l5 9Z", "M9 8l3-4 3 4", "M5 21l14-4m-12 4 14-4"],
   sawmill: ["M3 20V9l8-5 4 4 6-3v15Z", "M6 15h12", "M7 18l2-3 2 3 2-3 2 3 2-3"],
+  quarry: ["M4 18 9 7h11l-5 11Z", "M8 16l4-5 4 5", "M6 21h12"],
+  masonry: ["M4 19h16", "M6 15h12v4H6Z", "M8 11h8v4H8Z"],
   road: ["M7 22 10 2m7 20L14 2", "M8 17h8m-7-5h6m-5-5h4"],
 };
 

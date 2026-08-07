@@ -88,6 +88,8 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
     "mill",
     "logging_camp",
     "sawmill",
+    "quarry",
+    "masonry",
   ] as const satisfies readonly BuildingKind[];
   assert.deepEqual([...definitionsByKind.keys()].sort(), [...expectedKinds].sort());
   assert.ok(
