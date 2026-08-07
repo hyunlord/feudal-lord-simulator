@@ -9,6 +9,7 @@ import {
   spriteMeta,
   type LoadStatus,
 } from "../src/render/worldAssets";
+import { WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
 
 const runAssetScenario = (
   mode: "load" | "error" | "constructor_throw" | "src_throw",
@@ -118,7 +119,7 @@ describe("browser world asset registry", () => {
     const result = runAssetScenario("load");
 
     assert.equal(result["shared"], true);
-    assert.equal(result["created"], 24);
+    assert.equal(result["created"], WORLD_ASSET_KEYS.length);
     assert.equal(result["loadingStatus"], "loading");
     assert.equal(result["spriteReady"], true);
     assert.equal(result["unknownSprite"], true);
@@ -131,7 +132,7 @@ describe("browser world asset registry", () => {
     const result = runAssetScenario("error");
 
     assert.equal(result["shared"], true);
-    assert.equal(result["created"], 24);
+    assert.equal(result["created"], WORLD_ASSET_KEYS.length);
     assert.equal(result["spriteReady"], false);
     assert.equal(result["unknownSprite"], true);
     assert.equal(result["houseStatus"], "missing");
