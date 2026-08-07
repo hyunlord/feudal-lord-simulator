@@ -1,0 +1,21 @@
+✔ advanceTick allocates labour before production and runs one production step (7.677667ms)
+✔ advanceTick spawns a carter from producer stock using road-access routes (1.105666ms)
+✔ advanceTick steps distributors before housing so bread service is visible same tick (0.382375ms)
+✔ advanceTick assigns post-production builders and derives stable builder walkers (0.56825ms)
+✔ advanceTick never starves active production for construction builders (0.288958ms)
+✔ advanceTick reserves palisade-era wall labour before production during the first six hundred simulation ticks (0.418792ms)
+✔ advanceFrame applies the palisade labour boundary by simulation tick instead of wall tick or speed (0.585833ms)
+✔ scripted palisade labour trace shows a production dip without one hundred twenty stalled productive ticks (9.661667ms)
+✔ objectRenderItemsForFrame reuses the static object queue when only walkers move (1.575917ms)
+✔ objectRenderItemsForFrame invalidates static cache when culling changes visible tiles (0.545541ms)
+✔ objectRenderItemsForFrame excludes buildings outside depth and diagonal culling (0.127625ms)
+✔ objectRenderItemsForFrame excludes walkers outside depth and diagonal culling (0.094959ms)
+✔ objectRenderItemsForFrame includes a building when any footprint tile is visible (0.125584ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 138.263125
