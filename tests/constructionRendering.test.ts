@@ -6,6 +6,7 @@ import type {
   PalisadeConstructionSite,
 } from "../src/economy/construction";
 import { createPalisadeConstructionSite } from "../src/economy/construction";
+import { SEMANTIC_PALETTE } from "../src/content/palette";
 import {
   constructionCompletionEffects,
   constructionSiteRenderSignature,
@@ -95,6 +96,7 @@ test("proposal plot remains visibly distinct at minimum zoom", () => {
 
   // Then
   assert.ok(context.calls.includes("setLineDash:8,8"));
+  assert.ok(context.calls.includes(`strokeStyle:${SEMANTIC_PALETTE.gold}`));
   assert.equal(context.lineWidth, 4);
 });
 

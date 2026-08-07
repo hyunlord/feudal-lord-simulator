@@ -211,7 +211,7 @@ function strokeColor(style: Exclude<PalisadeRunStyle, "completed">): PaletteColo
     case "queued":
       return SEMANTIC_PALETTE.inkLight;
     case "plot":
-      return SEMANTIC_PALETTE.sage;
+      return SEMANTIC_PALETTE.gold;
     case "foundation":
       return SEMANTIC_PALETTE.stone;
     case "frame":
