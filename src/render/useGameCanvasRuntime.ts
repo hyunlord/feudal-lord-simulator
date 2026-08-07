@@ -1,48 +1,20 @@
-import { useEffect, useRef, type Dispatch, type RefObject, type SetStateAction } from "react";
+import { useEffect } from "react";
 
-import type { GameState, OverlayMode } from "../engine/engine.types";
-import type { GameAction } from "../state/gameStore.types";
 import { getTile } from "../world/grid";
-import type { HoveredBuilding } from "./BuildingInspector";
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
 import { hoveredBuildingPosition, initialCamera, resizeCanvas } from "./canvasRuntime";
 import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
-import {
-  pointerTile,
-  releaseTileFromMouseUp,
-  worldBounds,
-  zoomAtPoint,
-} from "./interactions";
-import type { PlacementTool } from "./renderer";
+import { pointerTile, releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
 import { preloadWorldAssets } from "./worldAssets";
-import type { AnchoredWorldSelection } from "./worldSelection";
 import { resolveCanvasClick } from "./canvasClickResolution";
 import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
+import { advancePalisadeDraftDrag, beginPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
-import {
-  dragDraftRunByTiles,
-  selectDraftRun,
-  type PalisadeDraftState,
-} from "./palisadeDraftInteraction";
-import { palisadeFootprintsForState } from "../ui/eraConsoleModel";
-
-type GameCanvasRuntimeInput = {
-  readonly canvasRef: RefObject<HTMLCanvasElement | null>;
-  readonly state: GameState;
-  readonly dispatch: Dispatch<GameAction>;
-  readonly selectedTool: PlacementTool | null;
-  readonly overlayMode: OverlayMode;
-  readonly setHoveredBuilding: Dispatch<SetStateAction<HoveredBuilding | null>>;
-  readonly selection: AnchoredWorldSelection | null;
-  readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;
-  readonly highlightedHouseIds: readonly string[];
-  readonly palisadeDraft?: PalisadeDraftState | null;
-  readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>> | undefined;
-  readonly onPalisadeDraftCancel?: (() => void) | undefined;
-};
+import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
+import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
@@ -59,21 +31,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     onPalisadeDraftChange,
     onPalisadeDraftCancel,
   } = input;
-  const stateRef = useRef(state);
-  const selectedToolRef = useRef(selectedTool);
-  const overlayModeRef = useRef(overlayMode);
-  const selectionRef = useRef(selection);
-  const highlightedHouseIdsRef = useRef(highlightedHouseIds);
-  const palisadeDraftRef = useRef(palisadeDraft);
-
-  useEffect(() => {
-    stateRef.current = state;
-    selectedToolRef.current = selectedTool;
-    overlayModeRef.current = overlayMode;
-    selectionRef.current = selection;
-    highlightedHouseIdsRef.current = highlightedHouseIds;
-    palisadeDraftRef.current = palisadeDraft;
-  }, [highlightedHouseIds, overlayMode, palisadeDraft, selectedTool, selection, state]);
+  const { highlightedHouseIdsRef, overlayModeRef, palisadeDraftRef, selectedToolRef, selectionRef, stateRef } =
+    useGameCanvasRuntimeRefs({ state, selectedTool, overlayMode, selection, highlightedHouseIds, palisadeDraft });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -140,14 +99,16 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const startDrag = (event: MouseEvent) => {
       updateHover(event);
-      if (event.button === 0 && palisadeDraftRef.current !== null && refs.hoverRef.current !== null) {
-        const selectedDraft = selectDraftRun({
-          draft: palisadeDraftRef.current,
-          point: { x: refs.hoverRef.current.tx, y: refs.hoverRef.current.ty },
-        });
-        palisadeDraftRef.current = selectedDraft;
-        onPalisadeDraftChange?.(selectedDraft);
-        refs.dragRef.current = { mode: "palisade", lastCanvasPoint: canvasPoint(event), roadStart: null, moved: false };
+      const palisadeDrag = beginPalisadeDraftDrag({
+        button: event.button,
+        hover: refs.hoverRef.current,
+        draft: palisadeDraftRef.current,
+        point: canvasPoint(event),
+      });
+      if (palisadeDrag !== null) {
+        palisadeDraftRef.current = palisadeDrag.draft;
+        onPalisadeDraftChange?.(palisadeDrag.draft);
+        refs.dragRef.current = palisadeDrag.drag;
         event.preventDefault();
         return;
       }
@@ -163,19 +124,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const movePointer = (event: MouseEvent) => {
       updateHover(event);
-      if (
-        refs.dragRef.current.mode === "palisade"
-        && palisadeDraftRef.current !== null
-        && palisadeDraftRef.current.dragStartTile !== null
-        && refs.hoverRef.current !== null
-      ) {
-        const nextDraft = dragDraftRunByTiles({
-          grid: stateRef.current,
-          draft: palisadeDraftRef.current,
-          startTile: palisadeDraftRef.current.dragStartTile,
-          currentTile: refs.hoverRef.current,
-          footprints: palisadeFootprintsForState(stateRef.current),
-        });
+      const nextDraft = advancePalisadeDraftDrag({
+        drag: refs.dragRef.current,
+        state: stateRef.current,
+        draft: palisadeDraftRef.current,
+        hover: refs.hoverRef.current,
+      });
+      if (nextDraft !== null) {
         palisadeDraftRef.current = nextDraft;
         onPalisadeDraftChange?.(nextDraft);
       }
