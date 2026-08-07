@@ -140,6 +140,40 @@ test("construction site selection wins over a stale finished building id match",
   });
 });
 
+test("palisade construction sites are selectable from their rendered path", () => {
+  // Given
+  const state = {
+    ...STATE,
+    tiles: STATE.tiles.map((tile) => ({ ...tile, buildingId: null })),
+    buildings: [],
+    constructionSites: [{
+      id: "wall-000001-segment-000",
+      kind: "palisade_segment",
+      wallId: "wall-000001",
+      segmentIndex: 0,
+      gateDistance: 0,
+      order: 0,
+      path: [{ x: 0, y: 0 }, { x: 1, y: 0 }],
+      anchor: { tx: 0, ty: 0 },
+      required: { timber: 15 },
+      delivered: {},
+      reserved: {},
+      builderTicks: 0,
+      requiredBuilderTicks: 120,
+      assignedBuilders: 0,
+      stall: "awaiting_materials",
+      startedTick: 4,
+    }],
+    walkers: [],
+  } satisfies Pick<GameState, "width" | "height" | "tiles" | "buildings" | "constructionSites" | "walkers">;
+
+  // When / Then
+  assert.deepEqual(selectWorldAtTile(state, { tx: 0, ty: 0 }), {
+    kind: "construction_site",
+    siteId: "wall-000001-segment-000",
+  });
+});
+
 test("clicking through a builder can still resolve an underlying finished building", () => {
   // Given
   const builder = {

@@ -26,6 +26,14 @@ export function selectWorldAtTile(
     });
   if (walker !== undefined) return { kind: "walker", walkerId: walker.id };
 
+  const palisadeSite = state.constructionSites.find((candidate) =>
+    candidate.kind === "palisade_segment" &&
+    candidate.path.some((point) => point.x === tile.tx && point.y === tile.ty)
+  );
+  if (palisadeSite !== undefined) {
+    return { kind: "construction_site", siteId: palisadeSite.id };
+  }
+
   const buildingId = getTile(state, tile)?.buildingId ?? null;
   if (buildingId === null) return null;
   const site = state.constructionSites.find((candidate) => candidate.id === buildingId);
