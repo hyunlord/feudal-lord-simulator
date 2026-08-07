@@ -1,0 +1,25 @@
+✔ cameraForStartingHouse centers the edge starting house in the desktop usable viewport (0.813417ms)
+✔ cameraForStartingHouse centers the opening focus in the responsive viewport above the court console (0.40675ms)
+✔ cameraForStartingHouse keeps the edge starting house visible on mobile (2.358083ms)
+✔ cameraAfterViewportResize reframes the untouched opening tableau for responsive safe maps (1.334791ms)
+✔ cameraAfterViewportResize preserves a user-controlled camera through clamping (0.182917ms)
+✔ cameraForStartingHouse prefers the authored Phase 8 starting house before another house (0.080417ms)
+✔ cameraForStartingHouse falls back to the first house when the canonical id is absent (0.069375ms)
+✔ cameraForStartingHouse returns a finite generic fallback when no house exists (0.085417ms)
+✔ cameraAfterViewportResize keeps compact opening 1x1 buildings above the pixel floor (1.141584ms)
+✔ DEFAULT_GAME_STATE opens with the authored four-cottage village around the centre (7.763916ms)
+✔ DEFAULT_GAME_STATE contains exactly the eight authored road tiles toward the ford (0.154708ms)
+✔ the decorative ford is renderer-only and absent from gameplay registries (1.379917ms)
+✔ opening ford clearance keeps tree descriptors off the readable landmark label and footprint (2.302583ms)
+✔ ford landmark label is painted on an opaque plate before text (0.287208ms)
+✔ initial camera centres the authored village with roughly twenty visible isometric tiles (0.155667ms)
+✔ authored roads satisfy only the first onboarding gate on first evaluation (0.1305ms)
+✔ opening hashes include the authored roads and differ from the prior edge-hut baseline (0.335875ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 280.987833

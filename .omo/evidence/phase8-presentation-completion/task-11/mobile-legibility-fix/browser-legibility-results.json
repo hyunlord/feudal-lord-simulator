@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "invocation": "QA_URL=http://127.0.0.1:4198 QA_CHROME_PORT=9518 node browser-legibility-qa.mjs",
+  "head": "319995022dc49edc6d0f5736d9c62339a10ed5aa",
+  "tree": "89457c78dc62925dd2996ef74c54c9e401d23563",
+  "startedAt": "2026-08-07T23:10:08.424Z",
+  "threshold": {
+    "minOneByOneBuildingPx": 18
+  },
+  "measurements": [
+    {
+      "label": "opening-375x640",
+      "expected": {
+        "label": "opening-375x640",
+        "width": 375,
+        "height": 640,
+        "consoleHeight": 224
+      },
+      "projectedOneByOneShortPx": 18,
+      "viewport": {
+        "width": 375,
+        "height": 640,
+        "dpr": 1
+      },
+      "canvas": {
+        "left": 0,
+        "top": 0,
+        "right": 375,
+        "bottom": 640,
+        "width": 375,
+        "height": 640
+      },
+      "console": {
+        "left": 0,
+        "top": 416,
+        "right": 375,
+        "bottom": 640,
+        "width": 375,
+        "height": 224
+      },
+      "bodyText": "Feudal Lord Simulator\n水\n우물이 필요합니다\n현재 시대\n촌락\n인구\n12/60\n곡창\n0/1\n예배당\n0/1\n목재\n205/250\n\n선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)\n\n목책 시대 선포 준비\n인구 12/60\n숲 옆에 벌목소를 지으세요\n벌목소 도장을 고르고 숲 가장자리를 클릭하세요.\n제재소를 지어 목재를 만드세요\n주거\n오두막\n생산\n밀밭\n방앗간\n벌목소\n제재소\n저장\n창고\n곡창\n서비스\n우물\n예배당\n길\nRoyal Ledger\nTim.\n205\nPop.\n12\nIdle\n0\nWater\nWork\nReach\nRoads"
+    },
+    {
+      "label": "opening-375x720",
+      "expected": {
+        "label": "opening-375x720",
+        "width": 375,
+        "height": 720,
+        "consoleHeight": 224
+      },
+      "projectedOneByOneShortPx": 18,
+      "viewport": {
+        "width": 375,
+        "height": 720,
+        "dpr": 1
+      },
+      "canvas": {
+        "left": 0,
+        "top": 0,
+        "right": 375,
+        "bottom": 720,
+        "width": 375,
+        "height": 720
+      },
+      "console": {
+        "left": 0,
+        "top": 496,
+        "right": 375,
+        "bottom": 720,
+        "width": 375,
+        "height": 224
+      },
+      "bodyText": "Feudal Lord Simulator\n水\n우물이 필요합니다\n현재 시대\n촌락\n인구\n12/60\n곡창\n0/1\n예배당\n0/1\n목재\n205/250\n\n선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)\n\n목책 시대 선포 준비\n인구 12/60\n길을 놓아 오두막을 이으세요\n오두막 바로 옆 칸에 길을 놓으세요.\n완료\n숲 옆에 벌목소를 지으세요\n주거\n오두막\n생산\n밀밭\n방앗간\n벌목소\n제재소\n저장\n창고\n곡창\n서비스\n우물\n예배당\n길\nRoyal Ledger\nTim.\n205\nPop.\n12\nIdle\n0\nWater\nWork\nReach\nRoads"
+    },
+    {
+      "label": "opening-768x720",
+      "expected": {
+        "label": "opening-768x720",
+        "width": 768,
+        "height": 720,
+        "consoleHeight": 276
+      },
+      "projectedOneByOneShortPx": 19.2,
+      "viewport": {
+        "width": 768,
+        "height": 720,
+        "dpr": 1
+      },
+      "canvas": {
+        "left": 0,
+        "top": 0,
+        "right": 768,
+        "bottom": 720,
+        "width": 768,
+        "height": 720
+      },
+      "console": {
+        "left": 0,
+        "top": 444,
+        "right": 768,
+        "bottom": 720,
+        "width": 768,
+        "height": 276
+      },
+      "bodyText": "Feudal Lord Simulator\n水\n우물이 필요합니다\n현재 시대\n촌락\n인구\n12/60\n곡창\n0/1\n예배당\n0/1\n목재\n205/250\n\n선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)\n\n목책 시대 선포 준비\n인구 12/60\n길을 놓아 오두막을 이으세요\n오두막 바로 옆 칸에 길을 놓으세요.\n완료\n숲 옆에 벌목소를 지으세요\n벌목소 도장을 고르고 숲 가장자리를 클릭하세요.\nRoyal Demesne\n오두막\n밀밭\n방앗간\n벌목소\n제재소\n창고\n곡창\n우물\n예배당\n길\nRoyal Ledger\n인구 기록\nTimber\n205\nPopulation\n12\nIdle\n0\nWheat\n0\nBread\n0\nLogs\n0\nTick\n0\nSeal\n없음\nOverlays\nWater\nWork\nReach\nRoads"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-11/mobile-legibility-fix/01-opening-375x640.png",
+      "sha256": "b6a8f8d10306dedad2f3263453d832e3076a02391f8513e941032cae94b8017e",
+      "byteLength": 209923,
+      "dimensions": {
+        "width": 375,
+        "height": 640
+      }
+    },
+    {
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-11/mobile-legibility-fix/02-opening-375x720.png",
+      "sha256": "4702a1839022071b0e9c51688ab389965da047660ab9b4243c7fad35b783340b",
+      "byteLength": 241486,
+      "dimensions": {
+        "width": 375,
+        "height": 720
+      }
+    },
+    {
+      "path": "/Users/rexxa/.config/superpowers/worktrees/feudal-lord-simulator/stage3-palisade-age/.omo/evidence/phase8-presentation-completion/task-11/mobile-legibility-fix/03-opening-768x720.png",
+      "sha256": "4be0818c1a0f399173f489589b7bba95e27ec118449acc438dc31334d64b47b8",
+      "byteLength": 479034,
+      "dimensions": {
+        "width": 768,
+        "height": 720
+      }
+    }
+  ],
+  "diagnostics": {
+    "console": [],
+    "exceptions": [],
+    "failedResources": []
+  },
+  "assertions": {
+    "noRuntimeErrors": true,
+    "noFailedResources": true,
+    "exactViewportSet": true,
+    "canvasSized": true,
+    "projectedFloor": true,
+    "consoleClearance": true,
+    "welcomeDismissed": true,
+    "screenshotsNonEmpty": true
+  },
+  "verdict": "PASS"
+}

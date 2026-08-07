@@ -17,10 +17,15 @@ const TABLET_MAX_WIDTH = 900;
 const MOBILE_TOP_RAIL_SAFE_INSET = 176;
 const LOW_HEIGHT_MAX = 400;
 const TARGET_ISO_TILE_SPAN = 20;
+const MIN_COMPACT_1X1_BUILDING_SCREEN_PX = 18;
+const COMPACT_OPENING_MIN_ZOOM = MIN_COMPACT_1X1_BUILDING_SCREEN_PX / TILE_H;
+const COTTAGE_SPRITE = { width: 96, height: 112, anchorX: 48, anchorY: 96 } as const;
+const WELL_SPRITE = { width: 72, height: 80, anchorX: 36, anchorY: 64 } as const;
 
 type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">;
 type InitialCameraState = Pick<GameState, "width" | "height" | "buildings">;
 type ScreenBounds = { readonly minX: number; readonly maxX: number; readonly minY: number; readonly maxY: number };
+type OpeningSpriteMeta = typeof COTTAGE_SPRITE | typeof WELL_SPRITE;
 
 export type DragState = {
   readonly mode: "none" | "pan" | "road" | "palisade";
@@ -59,8 +64,8 @@ export function cameraForStartingHouse(
   canvas: InitialCameraCanvas,
   state: InitialCameraState,
 ): CameraState {
-  const zoom = startingHouseZoom(canvas);
   const house = startingHouse(state.buildings);
+  const zoom = startingHouseZoom(canvas, house?.id === STARTING_HOUSE_ID);
   if (house === null) {
     return genericInitialCamera(canvas, state, zoom);
   }
@@ -90,13 +95,16 @@ export function cameraAfterViewportResize(input: ViewportResizeCameraInput): Cam
   );
 }
 
-function startingHouseZoom(canvas: InitialCameraCanvas): number {
+function startingHouseZoom(canvas: InitialCameraCanvas, useCompactOpeningFloor: boolean): number {
   const usableHeight = usableViewportHeight(canvas);
+  const fittedZoom = Math.min(
+    canvas.clientWidth / (TILE_W * TARGET_ISO_TILE_SPAN),
+    usableHeight / (TILE_H * TARGET_ISO_TILE_SPAN),
+  );
   return clampZoom(
-    Math.min(
-      canvas.clientWidth / (TILE_W * TARGET_ISO_TILE_SPAN),
-      usableHeight / (TILE_H * TARGET_ISO_TILE_SPAN),
-    ),
+    useCompactOpeningFloor && usesCompactOpeningTableauFit(canvas)
+      ? Math.max(fittedZoom, COMPACT_OPENING_MIN_ZOOM)
+      : fittedZoom,
   );
 }
 
@@ -109,7 +117,7 @@ function usableViewportCenter(canvas: InitialCameraCanvas): Point {
 
 function openingTableauViewportCenter(canvas: InitialCameraCanvas, zoom: number): Point {
   if (!usesCompactOpeningTableauFit(canvas)) return usableViewportCenter(canvas);
-  const bounds = openingTableauBounds();
+  const bounds = openingTableauBounds(canvas);
   const anchor = tileToScreen(OPENING_VILLAGE_CENTER.tx, OPENING_VILLAGE_CENTER.ty);
   const safeTop = openingTopInset(canvas);
   const safeBottom = usableViewportHeight(canvas);
@@ -129,11 +137,39 @@ function openingTopInset(canvas: InitialCameraCanvas): number {
     : 0;
 }
 
-function openingTableauBounds(): ScreenBounds {
-  const points = [
-    ...openingVillageBuildings().map(({ tx, ty }) => tileToScreen(tx, ty)),
-    ...STARTING_LANDMARKS.map(({ tx, ty }) => tileToScreen(tx, ty)),
-  ];
+function openingTableauBounds(canvas: InitialCameraCanvas): ScreenBounds {
+  const village = openingVillageSpriteBounds();
+  const landmarks = pointBounds(STARTING_LANDMARKS.map(({ tx, ty }) => tileToScreen(tx, ty)));
+  return {
+    minX: Math.min(village.minX, landmarks.minX),
+    maxX: Math.max(village.maxX, landmarks.maxX),
+    minY: canvas.clientHeight <= LOW_HEIGHT_MAX ? village.minY : Math.min(village.minY, landmarks.minY),
+    maxY: canvas.clientHeight <= LOW_HEIGHT_MAX ? village.maxY : Math.max(village.maxY, landmarks.maxY),
+  };
+}
+
+function openingVillageSpriteBounds(): ScreenBounds {
+  const rects = openingVillageBuildings().map((building) => {
+    const anchor = tileToScreen(building.tx, building.ty);
+    const meta = openingSpriteMeta(building.kind);
+    return {
+      minX: anchor.sx - meta.anchorX,
+      maxX: anchor.sx + meta.width - meta.anchorX,
+      minY: anchor.sy - meta.anchorY,
+      maxY: anchor.sy + meta.height - meta.anchorY,
+    };
+  });
+  return pointBounds(rects.flatMap((rect) => [
+    { sx: rect.minX, sy: rect.minY },
+    { sx: rect.maxX, sy: rect.maxY },
+  ]));
+}
+
+function openingSpriteMeta(kind: InitialCameraState["buildings"][number]["kind"]): OpeningSpriteMeta {
+  return kind === "well" ? WELL_SPRITE : COTTAGE_SPRITE;
+}
+
+function pointBounds(points: readonly { readonly sx: number; readonly sy: number }[]): ScreenBounds {
   return {
     minX: Math.min(...points.map((point) => point.sx)),
     maxX: Math.max(...points.map((point) => point.sx)),
