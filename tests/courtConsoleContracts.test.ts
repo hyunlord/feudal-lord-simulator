@@ -170,8 +170,14 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /--seal-size:\s*clamp\(24px, 5vw, 30px\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, calc\(var\(--seal-size\) \* 2 \+ 2px\)\);/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*2px;/);
-  assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*6px clamp\(4px, 1\.2vw, 7px\);/);
-  assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*clamp\(9px, 1\.7vw, 10px\);/);
+  assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?justify-content:\s*flex-start;/);
+  assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*4px;/);
+  assert.match(mobileRules, /\.era-console\s*\{[\s\S]*?max-height:\s*72px;/);
+  assert.match(mobileRules, /\.court-ledger\s*\{[\s\S]*?height:\s*48px;/);
+  assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
+  assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*9px;/);
+  assert.match(mobileRules, /\.ledger-stack \.overlay-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\);/);
+  assert.match(mobileRules, /\.ledger-stack \.overlay-key,[\s\S]*?\.ledger-stack \.overlay-legend\s*\{[\s\S]*?display:\s*none;/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4, clamp\(18px, 3\.5vw, 21px\)\);/);
   assert.match(mobileRules, /\.speed-seals\s*\{[\s\S]*?justify-content:\s*center;/);
   assert.match(mobileRules, /\.settlement-status\s*\{[\s\S]*?right:\s*calc\(33\.333% \+ 4px\);/);

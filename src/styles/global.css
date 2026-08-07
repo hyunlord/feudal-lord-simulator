@@ -1222,12 +1222,25 @@ button {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding: 6px clamp(4px, 1.2vw, 7px);
+    justify-content: flex-start;
+    padding: 4px;
+    overflow: hidden;
   }
 
   .ledger-stack {
     width: 100%;
     gap: 2px;
+    min-height: 0;
+  }
+
+  .era-console {
+    gap: 2px;
+    max-height: 72px;
+    padding: 4px 6px;
+  }
+
+  .onboarding-tasks[data-onboarding-state="open-goal"] {
+    padding: 3px 4px;
   }
 
   .economy-overlays {
@@ -1237,17 +1250,36 @@ button {
   }
 
   .ledger-stack .overlay-heading {
-    font-size: 8px;
+    display: none;
   }
 
   .overlay-seals {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .ledger-stack .overlay-seals {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+  }
+
+  .ledger-stack .overlay-seal {
+    display: block;
+    padding: 2px;
+  }
+
+  .ledger-stack .overlay-label {
+    font-size: 8px;
+  }
+
+  .ledger-stack .overlay-key,
+  .ledger-stack .overlay-legend {
+    display: none;
+  }
+
   .court-ledger {
     width: 100%;
-    height: 56px;
-    padding: 9px clamp(6px, 1.5vw, 9px) 6px;
+    height: 48px;
+    padding: 7px 5px 4px;
   }
 
   .ledger-heading {
@@ -1256,8 +1288,9 @@ button {
   }
 
   .court-ledger dl {
-    gap: 0 3px;
-    font-size: clamp(9px, 1.7vw, 10px);
+    grid-template-columns: repeat(2, auto minmax(0, 1fr));
+    gap: 0 2px;
+    font-size: 9px;
   }
 
   .ledger-tool {
