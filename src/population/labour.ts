@@ -1,12 +1,11 @@
 import {
   BUILDING_CONFIG_BY_KIND,
   type Building,
+  type BuildingKind,
 } from "../content/buildingConfig";
 import { BALANCE } from "../content/balanceConfig";
-import {
-  constructionSiteAnchor,
-  type ConstructionSite,
-} from "../economy/construction";
+import type { ResourceType } from "../content/resourceConfig";
+import type { TileCoordinate } from "../geometry/tileGeometry";
 
 export interface LabourRequest {
   readonly buildingId: string;
@@ -31,7 +30,30 @@ export type BuildingAndConstructionLabourResult = {
 
 export type ConstructionLabourStall = "awaiting_materials" | "no_builders" | "none";
 
-export type ConstructionLabourSite = ConstructionSite;
+type ConstructionLabourAmounts = Partial<Record<ResourceType, number>>;
+
+type ConstructionLabourSiteCommon = {
+  readonly id: string;
+  readonly required: ConstructionLabourAmounts;
+  readonly delivered: ConstructionLabourAmounts;
+  readonly assignedBuilders: number;
+  readonly stall: string;
+};
+
+type BuildingConstructionLabourSite = ConstructionLabourSiteCommon & {
+  readonly kind: BuildingKind;
+  readonly tx: number;
+  readonly ty: number;
+};
+
+type PalisadeConstructionLabourSite = ConstructionLabourSiteCommon & {
+  readonly kind: "palisade_segment";
+  readonly anchor: TileCoordinate;
+};
+
+export type ConstructionLabourSite =
+  | BuildingConstructionLabourSite
+  | PalisadeConstructionLabourSite;
 
 export type BuilderLabourWalker = {
   readonly id: string;
@@ -137,6 +159,29 @@ function siteStall(
   return assignedBuilders === 0 ? "no_builders" : "none";
 }
 
+function assertNever(value: never): never {
+  throw new Error(`Unhandled construction labour site variant: ${JSON.stringify(value)}`);
+}
+
+function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordinate {
+  switch (site.kind) {
+    case "palisade_segment":
+      return site.anchor;
+    case "house":
+    case "well":
+    case "storehouse":
+    case "granary":
+    case "chapel":
+    case "wheat_farm":
+    case "mill":
+    case "logging_camp":
+    case "sawmill":
+      return { tx: site.tx, ty: site.ty };
+    default:
+      return assertNever(site);
+  }
+}
+
 export function allocateBuildingAndConstructionLabour<TSite extends ConstructionLabourSite>(
   buildings: readonly Building[],
   constructionSites: readonly TSite[],
@@ -183,7 +228,7 @@ export function builderWalkersForSites(
   return [...constructionSites]
     .sort((left, right) => left.id.localeCompare(right.id))
     .flatMap((site) => {
-      const siteAnchor = constructionSiteAnchor(site);
+      const siteAnchor = constructionLabourSiteAnchor(site);
       return BUILDER_ANCHORS.slice(0, wholeNonnegative(site.assignedBuilders)).map(
         (anchor, slotIndex): BuilderLabourWalker => ({
           id: `builder:${site.id}:${slotIndex}`,

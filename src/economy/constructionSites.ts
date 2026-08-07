@@ -3,11 +3,11 @@ import {
   type BuildingKind,
 } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
-import type { TileCoordinate } from "../world/grid";
 import {
-  palisadePerimeterSteps,
-  type PalisadePath,
-} from "../world/palisadeGeometry";
+  tileEdgePathSteps,
+  type TileCoordinate,
+  type TileEdgePath,
+} from "../geometry/tileGeometry";
 
 export type ConstructionStall =
   | "none"
@@ -42,7 +42,7 @@ export type PalisadeConstructionSite = ConstructionSiteCommon & {
   readonly segmentIndex: number;
   readonly gateDistance: number;
   readonly order: number;
-  readonly path: PalisadePath;
+  readonly path: TileEdgePath;
   readonly anchor: TileCoordinate;
 };
 
@@ -69,7 +69,7 @@ export type CreatePalisadeConstructionSiteInput = {
   readonly segmentIndex: number;
   readonly gateDistance: number;
   readonly order: number;
-  readonly path: PalisadePath;
+  readonly path: TileEdgePath;
   readonly startedTick: number;
 };
 
@@ -152,7 +152,7 @@ export function createConstructionSite(
   };
 }
 
-function pathAnchor(path: PalisadePath): TileCoordinate {
+function pathAnchor(path: TileEdgePath): TileCoordinate {
   const xs = path.map((point) => point.x);
   const ys = path.map((point) => point.y);
   return { tx: Math.min(...xs), ty: Math.min(...ys) };
@@ -161,7 +161,7 @@ function pathAnchor(path: PalisadePath): TileCoordinate {
 export function createPalisadeConstructionSite(
   input: CreatePalisadeConstructionSiteInput,
 ): PalisadeConstructionSite {
-  const steps = palisadePerimeterSteps(input.path);
+  const steps = tileEdgePathSteps(input.path);
   if (input.path.length < 2 || steps <= 0) {
     throw new InvalidPalisadeConstructionSiteError("Palisade construction path must contain at least one step");
   }

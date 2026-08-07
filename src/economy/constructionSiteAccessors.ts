@@ -1,5 +1,5 @@
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import type { TileCoordinate } from "../world/grid";
+import type { TileCoordinate } from "../geometry/tileGeometry";
 import type {
   BuildingConstructionSite,
   ConstructionSite,
