@@ -13,9 +13,9 @@ These decisions are locked by the current code and tests.
    do not path toward hungry houses.
 4. Terrain, transitions, road geometry, and visible-tile culling are
    deterministic. This keeps headless tests and browser QA aligned.
-5. The scene renders as ground, objects, and an overhang seam. Walkers and cargo
-   occupy the seam; future walls should join it rather than being folded into
-   the lower passes.
+5. The scene renders as ground, objects, and an overhang seam. Buildings,
+   construction sites, and completed palisade segments share the object seam;
+   walkers and cargo stay in the overhang pass.
 6. Presentation motion is draw-time only. Trees and other accents sway via
    deterministic sine offsets derived from tick and identity, with no per-object
    animation state.
@@ -78,6 +78,45 @@ These are locked by the current code and tests.
   remains local and never seeks hungry houses.
 - The only economy overlays are water and labour, mapped to `Digit1` and
   `Digit2`.
+
+## Palisade Age decisions
+
+These are locked by the current code and tests.
+
+- Era eligibility is a pure contract with four independent gauges. Proclamation
+  is enabled only when all gauges pass, and the first click enters an adjustable
+  presentation draft rather than mutating simulation state.
+- A confirmed wall is one atomic gameplay event: validate the perimeter, spend
+  timber, record the era, choose one deterministic gate, and create ordered
+  palisade construction sites. Failed confirmation returns the original state
+  object.
+- Construction sites remain a discriminated union. Building sites complete into
+  buildings and houses; palisade sites complete into `PalisadeSegment` records.
+  A wall is not a `BuildingKind`, and completion never creates building or
+  housing records.
+- Palisade sites use the existing construction material and builder lifecycle,
+  but only the earliest incomplete segment receives active builder assignment.
+  Later segments may receive timber deliveries while queued, and queued is not
+  a stall state.
+- During the first 600 simulation ticks after proclamation, forty percent of
+  available workers, floored to one when any worker exists, are reserved for the
+  active wall site before production. At offset 600, Stage 2 production-first
+  allocation resumes.
+- Completed walls affect housing only through the explicit protection
+  calculation: inside and on-edge homes can reach level 3, outside homes below
+  level 3 cannot upgrade to level 3, and existing outside level-3 homes plus
+  normal downgrade rules are preserved.
+- Palisades are visual/protection boundaries, not route or placement blockers.
+  They do not change road legality, carter pathfinding, tile occupancy, or
+  building placement rules.
+- Wall editing, ceremony timing, and house material waves are presentation-only
+  state. They are not stored in `GameState`, do not enter deterministic harness
+  hashes, and replaying an already-palisade state shows final materials without
+  replaying the ceremony.
+- The Stage 3 harness extends the existing Stage 2 rows instead of replacing
+  them. It hashes every gameplay era/wall field, excludes presentation clocks,
+  proves deterministic fresh runs, and reports reachability, wall-completion,
+  and labour-continuity metrics.
 
 ## Future-phase constraints retained
 

@@ -2,7 +2,8 @@
 
 Feudal Lord Simulator uses a pure rules core, a render-owned interaction bridge,
 and a React shell. The live Phase 3 runtime now advances economy, population,
-labour, and walkers while keeping screen-space work in `render/`.
+labour, walkers, and the Palisade Age transition while keeping screen-space
+work in `render/`.
 
 ## Module boundaries
 
@@ -27,6 +28,28 @@ The four simulation axes may import `content/` and files within their own axis,
 but never one another. `engine/` is the only simulation layer that combines
 them. The axes and engine remain pure TypeScript with no React, DOM, or Canvas
 dependencies.
+
+## Palisade Age boundaries
+
+Stage 3 adds the first era transition without changing the Stage 2 construction
+contract into a finished-building shortcut. Construction sites are a
+discriminated union: ordinary building sites carry a `buildingKind`, while
+palisade sites carry ordered wall-segment metadata and complete into
+`PalisadeSegment` state. A wall segment is never represented as a
+`BuildingKind`, never produces a `Building`, and never creates a `House`.
+
+The proclamation action is the single gameplay boundary for the transition. It
+validates the selected perimeter, atomically spends timber, records the era,
+chooses one deterministic gate, and creates the ordered wall sites. Before that
+confirmation, wall editing is presentation state owned by React and `render/`:
+the draft polygon, drag handles, ceremony clock, and house material wave are not
+stored in `GameState` and are excluded from deterministic harness hashes.
+
+Palisades do not participate in placement or routing. They do not block roads,
+reroute carters, reserve terrain occupancy, or create new access rules.
+Delivery and construction use existing road-to-site access helpers; a completed
+wall affects only the explicitly modeled housing-protection calculation and the
+rendered enclosure.
 
 ## Live scope
 
@@ -100,9 +123,11 @@ intentionally silent.
 2. objects
 3. overhang (walkers and their visible cargo)
 
-Terrain draws first, then depth-sorted buildings and trees, then walkers in the
-overhang seam. Future walls can join that seam without folding simulation
-objects into the lower passes.
+Terrain draws first, then depth-sorted buildings, trees, construction sites,
+and completed palisade segments, then walkers in the overhang seam. Palisade
+proposal geometry remains an overlay, while proclaimed queued/active/completed
+wall segments join the object seam so terrain, buildings, walls, and walkers
+share one deterministic depth order.
 Placement overlays render after the passes. This order is asserted by tests and
 should not be collapsed into a single mixed pass.
 
