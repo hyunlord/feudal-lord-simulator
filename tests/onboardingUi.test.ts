@@ -15,6 +15,14 @@ const CANVAS_RUNTIME_SOURCE = new URL("../src/render/useGameCanvasRuntime.ts", i
 const CANVAS_RUNTIME_REFS_SOURCE = new URL("../src/render/useGameCanvasRuntimeRefs.ts", import.meta.url);
 const GLOBAL_CSS_SOURCE = new URL("../src/styles/global.css", import.meta.url);
 
+function requiredMatch(value: string, expression: RegExp, label: string): string {
+  const match = value.match(expression);
+  if (match === null || match[0] === undefined) {
+    assert.fail(`${label} must be present`);
+  }
+  return match[0];
+}
+
 function renderApp(): string {
   return renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 }
@@ -66,6 +74,30 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.doesNotMatch(runtimeSource, /selectedTool\s*\?\?/);
   assert.match(runtimeRefsSource, /useRef\(input\.selectedTool\)/);
   assert.match(runtimeRefsSource, /selectedToolRef\.current\s*=\s*input\.selectedTool/);
+});
+
+test("palisade draft cancel callback stays stable across presentation clock commits", async () => {
+  // Given / When
+  const source = await readFile(APP_SOURCE, "utf8");
+  const runtimeSource = await readFile(CANVAS_RUNTIME_SOURCE, "utf8");
+  const gameCanvasInvocation = requiredMatch(source, /<GameCanvas[\s\S]*?\/>/, "GameCanvas invocation");
+  const cancelHandlerDeclaration = requiredMatch(
+    source,
+    /const\s+cancelPalisadeDraft\s*=\s*useCallback\([\s\S]*?\[[^\]]*\]\s*\);/,
+    "stable palisade draft cancel handler",
+  );
+  const runtimeEffectTail = requiredMatch(
+    runtimeSource,
+    /\},\s*\[[^\]]*onPalisadeDraftCancel[^\]]*\]\);\s*\n\}/,
+    "canvas runtime effect dependency list",
+  );
+
+  // Then
+  assert.match(cancelHandlerDeclaration, /setPalisadeDraft\(null\)/);
+  assert.match(cancelHandlerDeclaration, /\[\s*\]/);
+  assert.match(gameCanvasInvocation, /onPalisadeDraftCancel=\{cancelPalisadeDraft\}/);
+  assert.doesNotMatch(gameCanvasInvocation, /onPalisadeDraftCancel=\{\s*\(\)\s*=>/);
+  assert.match(runtimeEffectTail, /onPalisadeDraftCancel/);
 });
 
 test("world canvas exposes crosshair styling only while a placement tool is armed", () => {

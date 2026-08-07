@@ -1,4 +1,13 @@
-import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent, type PointerEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent,
+  type PointerEvent,
+} from "react";
 
 import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
@@ -155,6 +164,7 @@ export function App() {
     dispatch({ type: "confirm_palisade_proclamation", candidatePath });
     setPalisadeDraft(null);
   };
+  const cancelPalisadeDraft = useCallback(() => setPalisadeDraft(null), []);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
@@ -180,7 +190,7 @@ export function App() {
           houseMaterialWave={houseMaterialWave}
           palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}
           onPalisadeDraftChange={setPalisadeDraft}
-          onPalisadeDraftCancel={() => setPalisadeDraft(null)}
+          onPalisadeDraftCancel={cancelPalisadeDraft}
         />
         <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
         <EraCeremonyBanner
