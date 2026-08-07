@@ -1,0 +1,13 @@
+npm_ci: exit 0
+npm_test: exit 0
+npm_harness: exit 0
+npm_typecheck: exit 0
+npm_build: exit 0
+# tests 634
+# pass 634
+# fail 0
+Determinism hash            87534771560041e7 == 87534771560041e7  PASS
+Legacy Stage 2 hash         5a393f13af3e61be                      PASS
+Stage 3 determinism hash    b8347aef1a6a5cd6 == b8347aef1a6a5cd6  PASS
+OVERALL_EXIT: 0
+ssh_exit=0
