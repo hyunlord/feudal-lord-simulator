@@ -19,6 +19,7 @@ import {
   createDeliveryInventoryPort,
   createSimulationRoutePorts,
 } from "./simulationPorts";
+import { forestHarvestsAfterProduction } from "./forestHarvests";
 import type { GameState } from "./engine.types";
 
 function toRoamingHouse(
@@ -54,13 +55,21 @@ function mergeRoamingHouses(
   });
 }
 
-function runProduction(state: GameState): GameState {
+export function runProduction(state: GameState): GameState {
+  let forestHarvests = state.forestHarvests ?? [];
+  const buildings = state.buildings.map((building) => {
+    const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
+    forestHarvests = forestHarvestsAfterProduction({
+      state: { ...state, forestHarvests },
+      building,
+      produced: step.produced,
+    });
+    return step.building;
+  });
   return {
     ...state,
-    buildings: state.buildings.map(
-      (building) =>
-        stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]).building,
-    ),
+    buildings,
+    forestHarvests,
   };
 }
 

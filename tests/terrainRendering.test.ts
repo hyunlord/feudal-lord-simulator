@@ -89,6 +89,7 @@ test("ground tiles use one coherent fill without per-tile ink outlines", () => {
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
   const calls: string[] = [];
 
@@ -141,6 +142,7 @@ test("object grounding is painted after all terrain tiles using the shared objec
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
   const renderItems = buildObjectRenderItems({
     tiles: [forestTile, grassTile],

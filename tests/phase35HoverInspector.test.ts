@@ -34,6 +34,7 @@ function state(building: Building): GameState {
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

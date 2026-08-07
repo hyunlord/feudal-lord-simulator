@@ -34,6 +34,7 @@ const state = (tiles: readonly Tile[]): GameState => ({
   nextConstructionOrdinal: 1,
   population: 0, idleWorkers: 0, treasuryTimber: 0, roadRevision: 0,
   pathCache: {},
+  forestHarvests: [],
 });
 
 const readyAssets = (keys: readonly TerrainTextureKey[]): TerrainPatternAssets => {

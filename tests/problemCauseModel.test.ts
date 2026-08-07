@@ -19,7 +19,7 @@ function state(target: Building, patch: Partial<GameState> = {}): GameState {
     buildings: [target], houses: [], walkers: [], population: 0, idleWorkers: 0,
     treasuryTimber: 0, constructionSites: [], wallTick: 0,
     era: "hamlet", eraProclaimedTick: null, palisade: null, nextConstructionOrdinal: 1,
-    roadRevision: 0, pathCache: {}, ...patch,
+    roadRevision: 0, pathCache: {}, forestHarvests: [], ...patch,
   };
 }
 

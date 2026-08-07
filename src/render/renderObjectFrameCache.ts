@@ -21,6 +21,7 @@ type StaticObjectRenderCacheEntry = {
   readonly buildings: GameState["buildings"];
   readonly constructionSites: GameState["constructionSites"];
   readonly palisade: GameState["palisade"];
+  readonly forestHarvests: GameState["forestHarvests"];
   readonly visibleTiles: readonly Tile[];
   readonly cacheKey: string;
   readonly items: readonly RenderQueueItem[];
@@ -45,6 +46,7 @@ const staticObjectRenderItemsForFrame = (
     cached?.buildings === input.state.buildings &&
     cached.constructionSites === input.state.constructionSites &&
     cached.palisade === input.state.palisade &&
+    cached.forestHarvests === input.state.forestHarvests &&
     cached.visibleTiles === input.visibleTiles &&
     cached.cacheKey === cacheKey
   ) {
@@ -65,6 +67,7 @@ const staticObjectRenderItemsForFrame = (
     buildings: input.state.buildings,
     constructionSites: input.state.constructionSites,
     palisade: input.state.palisade,
+    forestHarvests: input.state.forestHarvests,
     visibleTiles: input.visibleTiles,
     cacheKey,
     items,

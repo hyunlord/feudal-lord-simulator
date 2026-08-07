@@ -34,25 +34,49 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
   assert.equal(state.height, 64);
   assert.equal(state.tiles.length, 64 * 64);
   assert.deepEqual([...terrains].sort(), ["forest", "grass", "rock", "water"]);
-  assert.deepEqual(state.buildings, [
-    {
-      id: "house-0-0-0",
-      kind: "house",
-      tx: 0,
-      ty: 0,
-      workers: 0,
-      inventory: {},
-      reserved: {},
-      stockReserved: {},
-      productionProgress: 0,
-    },
-  ]);
+  assert.deepEqual(
+    state.buildings.map(({ id, kind, tx, ty }) => ({ id, kind, tx, ty })),
+    [
+      { id: "house-44-40-0", kind: "house", tx: 44, ty: 40 },
+      { id: "house-46-40-0", kind: "house", tx: 46, ty: 40 },
+      { id: "house-44-42-0", kind: "house", tx: 44, ty: 42 },
+      { id: "house-46-42-0", kind: "house", tx: 46, ty: 42 },
+      { id: "well-45-41-0", kind: "well", tx: 45, ty: 41 },
+    ],
+  );
   assert.deepEqual(state.constructionSites, []);
   assert.deepEqual(state.houses, [
     {
-      buildingId: "house-0-0-0",
-      level: 2,
-      residents: 10,
+      buildingId: "house-46-40-0",
+      level: 0,
+      residents: 3,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+    {
+      buildingId: "house-44-40-0",
+      level: 0,
+      residents: 3,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+    {
+      buildingId: "house-44-42-0",
+      level: 0,
+      residents: 3,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+    {
+      buildingId: "house-46-42-0",
+      level: 0,
+      residents: 3,
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
@@ -60,23 +84,46 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
     },
   ]);
   assert.deepEqual(state.walkers, []);
-  assert.equal(state.population, 10);
+  assert.equal(state.population, 12);
   assert.equal(state.treasuryTimber, BALANCE.STARTING_TIMBER);
   assert.equal(state.wallTick, 0);
   assert.equal(state.nextConstructionOrdinal, 1);
   assert.equal(state.roadRevision, 0);
   assert.deepEqual(state.pathCache, {});
+  assert.deepEqual(state.forestHarvests, []);
   assert.equal(state.era, "hamlet");
   assert.equal(state.eraProclaimedTick, null);
   assert.equal(state.palisade, null);
-  assert.equal(getTile(state, { tx: 0, ty: 0 })?.buildingId, "house-0-0-0");
-  assert.equal(
-    state.tiles.every((tile) =>
-      tile.tx === 0 && tile.ty === 0 ? tile.buildingId === "house-0-0-0" : tile.buildingId === null,
-    ),
-    true,
+  assert.equal(getTile(state, { tx: 46, ty: 40 })?.buildingId, "house-46-40-0");
+  assert.deepEqual(
+    state.tiles
+      .filter((tile) => tile.buildingId !== null)
+      .map(({ tx, ty, buildingId }) => ({ tx, ty, buildingId }))
+      .sort((left, right) => left.ty - right.ty || left.tx - right.tx),
+    [
+      { tx: 44, ty: 40, buildingId: "house-44-40-0" },
+      { tx: 46, ty: 40, buildingId: "house-46-40-0" },
+      { tx: 45, ty: 41, buildingId: "well-45-41-0" },
+      { tx: 44, ty: 42, buildingId: "house-44-42-0" },
+      { tx: 46, ty: 42, buildingId: "house-46-42-0" },
+    ],
   );
-  assert.equal(state.tiles.every((tile) => !tile.hasRoad), true);
+  assert.deepEqual(
+    state.tiles
+      .filter((tile) => tile.hasRoad)
+      .map(({ tx, ty }) => ({ tx, ty }))
+      .sort((left, right) => left.ty - right.ty || left.tx - right.tx),
+    [
+      { tx: 45, ty: 41 },
+      { tx: 46, ty: 41 },
+      { tx: 47, ty: 41 },
+      { tx: 48, ty: 41 },
+      { tx: 49, ty: 41 },
+      { tx: 50, ty: 41 },
+      { tx: 51, ty: 41 },
+      { tx: 52, ty: 41 },
+    ],
+  );
   for (const field of FORBIDDEN_STATE_FIELDS) {
     assert.equal(Object.hasOwn(state, field), false);
   }
@@ -91,7 +138,7 @@ test("placeBuilding immutably appends a deterministic construction site and pres
 
   // Then
   assert.notEqual(next, roaded);
-  assert.equal(roaded.buildings.length, 1);
+  assert.equal(roaded.buildings.length, 5);
   assert.equal(roaded.treasuryTimber, BALANCE.STARTING_TIMBER);
   assert.deepEqual(next.buildings, roaded.buildings);
   assert.deepEqual(next.houses, roaded.houses);
@@ -140,7 +187,7 @@ test("placeBuilding returns the original state when placement or timber validati
   const poorState = { ...DEFAULT_GAME_STATE, treasuryTimber: 0 };
 
   // When
-  const occupiedResult = placeBuilding(occupied, "house", { tx: 0, ty: 0 });
+  const occupiedResult = placeBuilding(occupied, "house", { tx: 46, ty: 40 });
   const timberResult = placeBuilding(poorState, "well", { tx: 2, ty: 0 });
 
   // Then
@@ -157,7 +204,7 @@ test("placeRoadLine immutably marks every normalized road tile without spending 
 
   // Then
   assert.notEqual(next, state);
-  assert.equal(state.tiles.some((tile) => tile.hasRoad), false);
+  assert.equal(state.tiles.filter((tile) => tile.hasRoad).length, 8);
   assert.equal(next.treasuryTimber, state.treasuryTimber);
   assert.equal(next.roadRevision, state.roadRevision + 1);
   assert.deepEqual(next.pathCache, {});
@@ -184,7 +231,7 @@ test("placeRoadLine is atomic and returns the original state when any normalized
   // Then
   assert.equal(blockedByWater, state);
   assert.equal(outOfBounds, state);
-  assert.equal(state.tiles.some((tile) => tile.hasRoad), false);
+  assert.equal(state.tiles.filter((tile) => tile.hasRoad).length, 8);
 });
 
 test("placeRoadLine endpoint validation rejects fractional and extreme out-of-bounds endpoints", () => {
@@ -217,10 +264,12 @@ test("gameReducer routes typed domain actions and invalid placements preserve ob
     tx: 1,
     ty: 0,
   });
+  const waterTile = built.tiles.find((tile) => tile.terrain === "water");
+  assert.ok(waterTile);
   const invalid = gameReducer(built, {
     type: "place_road_line",
-    start: { tx: 0, ty: 0 },
-    destination: { tx: 0, ty: 0 },
+    start: { tx: waterTile.tx, ty: waterTile.ty },
+    destination: { tx: waterTile.tx, ty: waterTile.ty },
   });
 
   // Then
@@ -230,7 +279,7 @@ test("gameReducer routes typed domain actions and invalid placements preserve ob
   assert.equal(invalid, built);
 });
 
-test("advance tick exposes five opening workers while preserving a production-free starting world", () => {
+test("advance tick exposes opening household workers while preserving a production-free starting world", () => {
   // Given
   const state = DEFAULT_GAME_STATE;
   const timber = state.treasuryTimber;
@@ -242,12 +291,18 @@ test("advance tick exposes five opening workers while preserving a production-fr
   assert.notEqual(next, state);
   assert.equal(next.tick, state.tick + 1);
   assert.equal(next.treasuryTimber, timber);
-  assert.equal(next.population, 10);
-  assert.equal(next.idleWorkers, 5);
+  assert.equal(next.population, 12);
+  assert.equal(next.idleWorkers, 6);
   assert.deepEqual(next.buildings, state.buildings);
-  assert.deepEqual(next.houses, [
-    { ...state.houses[0], unmetRequirementTicks: 1 },
-  ]);
+  assert.deepEqual(
+    next.houses,
+    state.houses.map((house) => ({
+      ...house,
+      level: 1,
+      hasWater: true,
+      unmetRequirementTicks: 0,
+    })),
+  );
   assert.deepEqual(next.walkers, []);
   assert.deepEqual(next.tiles, state.tiles);
   assert.deepEqual(next.pathCache, state.pathCache);

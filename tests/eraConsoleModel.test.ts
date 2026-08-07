@@ -54,6 +54,7 @@ function state(overrides: Partial<GameState> = {}): GameState {
     nextConstructionOrdinal: 1,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
     ...overrides,
   };
 }

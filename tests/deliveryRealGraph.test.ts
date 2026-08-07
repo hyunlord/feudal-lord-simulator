@@ -99,6 +99,7 @@ function buildState(input: StateInput): GameState {
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

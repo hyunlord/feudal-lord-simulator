@@ -52,6 +52,7 @@ function worldFromGrid(grid: Grid, timber = 100): GameState {
     treasuryTimber: timber,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

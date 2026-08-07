@@ -96,32 +96,57 @@ test("Phase 3 housing table matches the exact level requirements", () => {
 test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fields", () => {
   // Given / When
   const state = DEFAULT_GAME_STATE;
-  const startingHouse = state.buildings.find((building) => building.kind === "house");
+  const startingHouses = state.buildings.filter((building) => building.kind === "house");
 
   // Then
   assert.equal(state.treasuryTimber, BALANCE.STARTING_TIMBER);
   assert.equal(state.roadRevision, 0);
   assert.deepEqual(state.pathCache, {});
+  assert.deepEqual(state.forestHarvests, []);
   assert.equal(state.era, "hamlet");
   assert.equal(state.eraProclaimedTick, null);
   assert.equal(state.palisade, null);
-  assert.ok(startingHouse);
-  assert.deepEqual(startingHouse, {
-    id: "house-0-0-0",
-    kind: "house",
-    tx: 0,
-    ty: 0,
-    workers: 0,
-    inventory: {},
-    reserved: {},
-    stockReserved: {},
-    productionProgress: 0,
-  });
+  assert.deepEqual(
+    startingHouses.map(({ id, tx, ty }) => ({ id, tx, ty })),
+    [
+      { id: "house-44-40-0", tx: 44, ty: 40 },
+      { id: "house-46-40-0", tx: 46, ty: 40 },
+      { id: "house-44-42-0", tx: 44, ty: 42 },
+      { id: "house-46-42-0", tx: 46, ty: 42 },
+    ],
+  );
   assert.deepEqual(state.houses, [
     {
-      buildingId: "house-0-0-0",
-      level: 2,
-      residents: 10,
+      buildingId: "house-46-40-0",
+      level: 0,
+      residents: 3,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+    {
+      buildingId: "house-44-40-0",
+      level: 0,
+      residents: 3,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+    {
+      buildingId: "house-44-42-0",
+      level: 0,
+      residents: 3,
+      hasWater: false,
+      breadStock: 0,
+      lastServicedTick: 0,
+      unmetRequirementTicks: 0,
+    },
+    {
+      buildingId: "house-46-42-0",
+      level: 0,
+      residents: 3,
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,

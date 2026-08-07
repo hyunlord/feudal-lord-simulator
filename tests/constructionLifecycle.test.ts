@@ -132,6 +132,7 @@ function state(input: {
     treasuryTimber: 0,
     roadRevision: 1,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

@@ -61,6 +61,7 @@ function worldState(input: {
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

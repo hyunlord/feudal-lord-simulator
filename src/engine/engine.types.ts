@@ -43,6 +43,12 @@ export interface PalisadeState {
   readonly segments: readonly PalisadeSegment[];
 }
 
+export interface ForestHarvest {
+  readonly tx: number;
+  readonly ty: number;
+  readonly harvestedAtTick: number;
+}
+
 export interface GameState {
   tick: number;
   seed: number;
@@ -60,6 +66,7 @@ export interface GameState {
   era: Era;
   eraProclaimedTick: number | null;
   palisade: PalisadeState | null;
+  readonly forestHarvests: readonly ForestHarvest[];
   nextConstructionOrdinal: number;
   roadRevision: number;
   pathCache: RoadPathCache;

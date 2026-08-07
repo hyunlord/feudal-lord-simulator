@@ -66,6 +66,7 @@ const stateBase: Omit<GameState, "walkers"> = {
   idleWorkers: 0,
   roadRevision: 0,
   pathCache: {},
+  forestHarvests: [],
 };
 
 function carter(input: Partial<Walker> = {}): Walker {

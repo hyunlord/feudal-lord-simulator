@@ -147,5 +147,6 @@ export function createEconomyHarnessScenario(
     treasuryTimber: BALANCE.STARTING_TIMBER,
     roadRevision: 1,
     pathCache: {},
+    forestHarvests: [],
   };
 }

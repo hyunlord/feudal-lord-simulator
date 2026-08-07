@@ -77,6 +77,7 @@ function stateFromGrid(
     treasuryTimber: 0,
     roadRevision: 7,
     pathCache,
+    forestHarvests: [],
   };
 }
 

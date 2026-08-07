@@ -64,6 +64,7 @@ function worldState(input: {
   readonly height: number;
   readonly buildings?: Building[];
   readonly walkers?: Walker[];
+  readonly forestHarvests?: GameState["forestHarvests"];
 }): GameState {
   return {
     tick: 0,
@@ -85,6 +86,7 @@ function worldState(input: {
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: input.forestHarvests ?? [],
   };
 }
 

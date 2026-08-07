@@ -48,6 +48,7 @@ const state = {
   nextConstructionOrdinal: 2,
   roadRevision: 0,
   pathCache: {},
+  forestHarvests: [],
 } satisfies GameState;
 
 test("context menu resolves the pointed construction site while placement stays armed", () => {

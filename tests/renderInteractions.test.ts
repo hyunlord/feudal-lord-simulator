@@ -40,6 +40,7 @@ const state = {
   treasuryTimber: 20,
   roadRevision: 0,
   pathCache: {},
+  forestHarvests: [],
 } satisfies GameState;
 
 const roadState = {

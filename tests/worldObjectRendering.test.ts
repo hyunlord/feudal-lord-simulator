@@ -123,6 +123,7 @@ function state(): GameState {
     idleWorkers: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

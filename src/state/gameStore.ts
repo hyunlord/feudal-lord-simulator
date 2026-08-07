@@ -45,6 +45,7 @@ export const DEFAULT_GAME_STATE: GameState = {
   era: "hamlet",
   eraProclaimedTick: null,
   palisade: null,
+  forestHarvests: [],
   nextConstructionOrdinal: 1,
   roadRevision: 0,
   pathCache: {},

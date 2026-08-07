@@ -48,6 +48,7 @@ function state(tick: number, houses: readonly House[]): GameState {
     treasuryTimber: 0,
     roadRevision: 0,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

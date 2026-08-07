@@ -105,6 +105,7 @@ function worldFromGrid(
     treasuryTimber: 0,
     roadRevision: 7,
     pathCache,
+    forestHarvests: [],
   };
 }
 

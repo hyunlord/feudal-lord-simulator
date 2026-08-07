@@ -94,6 +94,7 @@ function makeState(input: {
     treasuryTimber: 0,
     roadRevision: 3,
     pathCache: {},
+    forestHarvests: [],
   };
 }
 

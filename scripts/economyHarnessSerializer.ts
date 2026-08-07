@@ -4,7 +4,7 @@ import type { Walker } from "../src/agents/walker.types";
 import type { Building } from "../src/content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../src/content/resourceConfig";
 import type { ConstructionSite } from "../src/economy/construction";
-import type { GameState, PalisadeSegment, PalisadeState } from "../src/engine/engine.types";
+import type { ForestHarvest, GameState, PalisadeSegment, PalisadeState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
 
 function assertNever(value: never): never {
@@ -161,6 +161,14 @@ function normalizeWalker(walker: Walker) {
   }
 }
 
+function normalizeForestHarvest(harvest: ForestHarvest) {
+  return {
+    tx: harvest.tx,
+    ty: harvest.ty,
+    harvestedAtTick: harvest.harvestedAtTick,
+  };
+}
+
 export function hashEconomyState(state: GameState): string {
   const normalized = {
     tick: state.tick,
@@ -178,6 +186,9 @@ export function hashEconomyState(state: GameState): string {
       .map(normalizeConstructionSite),
     houses: [...state.houses].sort((left, right) => left.buildingId.localeCompare(right.buildingId)).map(normalizeHouse),
     walkers: [...state.walkers].sort((left, right) => left.id.localeCompare(right.id)).map(normalizeWalker),
+    forestHarvests: [...(state.forestHarvests ?? [])]
+      .sort((left, right) => left.harvestedAtTick - right.harvestedAtTick || left.ty - right.ty || left.tx - right.tx)
+      .map(normalizeForestHarvest),
   };
   return createHash("sha256").update(JSON.stringify(normalized)).digest("hex").slice(0, 16);
 }
