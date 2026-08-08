@@ -68,10 +68,10 @@ function appendCoordinates(
   existing: readonly TileCoordinate[],
   next: readonly TileCoordinate[],
 ): readonly TileCoordinate[] {
-  const coordinates: TileCoordinate[] = [...existing];
+  let coordinates: readonly TileCoordinate[] = existing;
   for (const coordinate of next) {
     if (coordinates.some((candidate) => sameCoordinate(candidate, coordinate))) continue;
-    coordinates.push(coordinate);
+    coordinates = [...coordinates, coordinate];
   }
   return coordinates;
 }
@@ -148,6 +148,10 @@ function pruneHistory(
   for (const [walkerId, active] of Object.entries(history.activeByWalkerId)) {
     if (granaryIds.has(active.granaryId)) activeByWalkerId[walkerId] = active;
   }
+  if (
+    Object.keys(routesByGranaryId).length === Object.keys(history.routesByGranaryId).length
+    && Object.keys(activeByWalkerId).length === Object.keys(history.activeByWalkerId).length
+  ) return history;
   return { routesByGranaryId, activeByWalkerId };
 }
 
@@ -188,10 +192,8 @@ export function observeDistributorRouteHistory(input: {
       ? walkerRemainingRoute(previousWalker)
       : [];
     const nextRoute = nextWalker.phase === "roaming" ? walkerRemainingRoute(nextWalker) : [];
-    const active = {
-      ...existing,
-      coordinates: appendCoordinates(existing.coordinates, [...previousRoute, ...nextRoute]),
-    };
+    const coordinates = appendCoordinates(existing.coordinates, [...previousRoute, ...nextRoute]);
+    const active = coordinates === existing.coordinates ? existing : { ...existing, coordinates };
     if (previousWalker?.phase === "roaming" && nextWalker.phase === "returning") {
       const granary = granaries.find((candidate) => candidate.id === nextWalker.homeBuildingId);
       const summary = granary === undefined
@@ -212,5 +214,11 @@ export function observeDistributorRouteHistory(input: {
     }
   }
 
+  const activeEntries = Object.entries(activeByWalkerId);
+  if (
+    history === input.history
+    && activeEntries.length === Object.keys(history.activeByWalkerId).length
+    && activeEntries.every(([walkerId, active]) => history.activeByWalkerId[walkerId] === active)
+  ) return input.history;
   return { ...history, activeByWalkerId };
 }

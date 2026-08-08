@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { nextOnboardingPresentationCommit } from "../src/App";
+import { nextDistributorRouteHistoryCommit, nextOnboardingPresentationCommit } from "../src/App";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { createDistributorRouteHistory } from "../src/ui/distributorRouteHistory";
 import { createOnboardingPresentationState } from "../src/ui/onboardingTaskModel";
 
 test("paused presentation clock has no onboarding commit while the current task is unchanged", () => {
@@ -27,4 +28,17 @@ test("paused presentation clock has no onboarding commit while the current task 
   // Then
   assert.equal(firstTick, null);
   assert.equal(secondTick, null);
+});
+
+test("unchanged distributor routes do not schedule a React state commit", () => {
+  const history = createDistributorRouteHistory();
+  const nextState = { ...DEFAULT_GAME_STATE, tick: 1 };
+
+  const commit = nextDistributorRouteHistoryCommit({
+    previousState: DEFAULT_GAME_STATE,
+    nextState,
+    history,
+  });
+
+  assert.equal(commit, null);
 });

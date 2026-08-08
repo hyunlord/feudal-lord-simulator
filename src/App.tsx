@@ -47,6 +47,7 @@ import {
 import {
   createDistributorRouteHistory,
   observeDistributorRouteHistory,
+  type DistributorRouteHistory,
 } from "./ui/distributorRouteHistory";
 
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
@@ -58,6 +59,15 @@ export function nextOnboardingPresentationCommit(input: {
 }): OnboardingPresentationState | null {
   const nextPresentation = updateOnboardingPresentationState(input);
   return nextPresentation === input.presentation ? null : nextPresentation;
+}
+
+export function nextDistributorRouteHistoryCommit(input: {
+  readonly previousState: GameState;
+  readonly nextState: GameState;
+  readonly history: DistributorRouteHistory;
+}): DistributorRouteHistory | null {
+  const nextHistory = observeDistributorRouteHistory(input);
+  return nextHistory === input.history ? null : nextHistory;
 }
 
 export function App() {
@@ -72,6 +82,7 @@ export function App() {
   const [distributorRouteHistory, setDistributorRouteHistory] = useState(
     createDistributorRouteHistory,
   );
+  const distributorRouteHistoryRef = useRef(distributorRouteHistory);
   const [eraPresentation, setEraPresentation] = useState(() => createEraCeremonyPresentation(state.era));
   const previousPopulationStateRef = useRef(state);
   const previousDistributorRouteStateRef = useRef(state);
@@ -90,14 +101,15 @@ export function App() {
   }
 
   useEffect(() => {
-    setDistributorRouteHistory((history) =>
-      observeDistributorRouteHistory({
-        previousState: previousDistributorRouteStateRef.current,
-        nextState: state,
-        history,
-      }),
-    );
+    const nextHistory = nextDistributorRouteHistoryCommit({
+      previousState: previousDistributorRouteStateRef.current,
+      nextState: state,
+      history: distributorRouteHistoryRef.current,
+    });
     previousDistributorRouteStateRef.current = state;
+    if (nextHistory === null) return;
+    distributorRouteHistoryRef.current = nextHistory;
+    setDistributorRouteHistory(nextHistory);
   }, [state]);
 
   useEffect(() => {

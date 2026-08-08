@@ -16,6 +16,7 @@ import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { createConstructionCompletionTracker } from "./constructionCompletionEffects";
+import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
@@ -53,11 +54,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       pixelRatioRef: { current: 1 },
       completionTracker: createConstructionCompletionTracker(),
     };
-    let frameId = 0, suppressClickTimeout: number | null = null;
-    let userControlledCamera = false;
+    let frameId = 0, suppressClickTimeout: number | null = null, userControlledCamera = false;
     const viewport = () => {
-      const { width, height } = canvas.getBoundingClientRect();
-      return { width, height };
+      const rect = canvas.getBoundingClientRect(); return { width: rect.width, height: rect.height };
     };
     const clampCamera = (camera: CameraState): CameraState => clampPan(camera, viewport(), worldBounds(stateRef.current.width, stateRef.current.height));
     const resize = () => {
@@ -244,13 +243,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
 
     resize();
+    const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location });
     const disposeEvents = bindGameCanvasEvents({
       canvas,
       handlers: { resize, keyDown, keyUp, blurWindow, startDrag, movePointer, leaveCanvas, clickCanvas, contextMenuCanvas, wheel, finishDrag },
     });
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      cancelAnimationFrame(frameId); disposeEvents(); clearSuppressClickTimeout();
+      cancelAnimationFrame(frameId); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection]);
 }

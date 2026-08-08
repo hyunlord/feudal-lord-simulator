@@ -180,3 +180,13 @@ test("keeps distributor route history out of GameState and harness serialization
   assert.doesNotMatch(engineTypes, /DistributorRouteHistory|routeHistory|routesByGranaryId/);
   assert.doesNotMatch(serializer, /DistributorRouteHistory|routeHistory|routesByGranaryId/);
 });
+
+test("preserves history identity when a simulation tick has no distributor route change", () => {
+  const history = createDistributorRouteHistory();
+  const before = state({ tick: 20, buildings: [] });
+  const after = state({ tick: 21, buildings: [] });
+
+  const observed = observeDistributorRouteHistory({ previousState: before, nextState: after, history });
+
+  assert.equal(observed, history);
+});
