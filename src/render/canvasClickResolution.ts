@@ -3,11 +3,13 @@ import type { TileCoordinate } from "../world/grid";
 import { placeDiagnosticCard } from "./DiagnosticCard";
 import {
   resolveBuildingPlacementAttempt,
+  resolveRoadRemovalAttempt,
   type PlacementAttemptOutcome,
 } from "./interactions";
 import type { Point } from "./camera";
 import type { PlacementTool } from "./renderer";
 import { selectWorldAtTile, type AnchoredWorldSelection } from "./worldSelection";
+import { getTile } from "../world/grid";
 
 type ClickResolution =
   | { readonly kind: "ignored"; readonly clearSuppression: boolean }
@@ -42,7 +44,17 @@ export function resolveCanvasClick(input: ClickResolutionInput): ClickResolution
     return { kind: "selection", selection: { ...selected, position } };
   }
   if (input.selectedTool === "road") {
-    return { kind: "ignored", clearSuppression: false };
+    if (getTile(input.state, input.hover)?.hasRoad !== true) {
+      return { kind: "ignored", clearSuppression: false };
+    }
+    return {
+      kind: "placement",
+      attempt: resolveRoadRemovalAttempt({
+        state: input.state,
+        tile: input.hover,
+        nowMs: input.nowMs,
+      }),
+    };
   }
   return {
     kind: "placement",

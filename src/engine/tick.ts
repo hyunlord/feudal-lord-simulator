@@ -8,6 +8,7 @@ import {
   recomputeConstructionStalls,
 } from "./constructionLifecycle";
 import { stepProduction } from "../economy/production";
+import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
@@ -59,6 +60,7 @@ function mergeRoamingHouses(
 export function runProduction(state: GameState): GameState {
   let forestHarvests = state.forestHarvests ?? [];
   const buildings = state.buildings.map((building) => {
+    if (!buildingHasRequiredRoadAccess(state, building)) return building;
     const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
     forestHarvests = forestHarvestsAfterProduction({
       state: { ...state, forestHarvests },

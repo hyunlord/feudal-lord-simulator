@@ -174,13 +174,14 @@ test("advanceTick allocates labour before production and runs one production ste
 
   // When
   const next = advanceTick(
-    state({
-      width: 6,
-      height: 6,
-      buildings: [farm, home],
-      houses: [house(home.id, 8)],
-    }),
-  );
+	    state({
+	      width: 6,
+	      height: 6,
+	      buildings: [farm, home],
+	      houses: [house(home.id, 8)],
+	      roads: [[0, 2]],
+	    }),
+	  );
 
   // Then
   const updatedFarm = next.buildings.find(({ id }) => id === farm.id);
@@ -337,24 +338,26 @@ test("advanceTick reserves palisade-era wall labour before production during the
 
   // When
   const baseline = advanceTick(
-    state({
-      width: 8,
-      height: 8,
-      buildings: [farm, logging, home],
-      constructionSites: [wall],
-      houses: [house(home.id, 20)],
-    }),
-  );
-  const diverted = advanceTick(
-    state({
-      width: 8,
-      height: 8,
-      buildings: [farm, logging, home],
-      constructionSites: [wall],
-      houses: [house(home.id, 20)],
-      eraProclaimedTick: 0,
-      palisade: palisade(wall),
-    }),
+	    state({
+	      width: 8,
+	      height: 8,
+	      buildings: [farm, logging, home],
+	      constructionSites: [wall],
+	      houses: [house(home.id, 20)],
+	      roads: [[0, 2], [2, 1]],
+	    }),
+	  );
+	  const diverted = advanceTick(
+	    state({
+	      width: 8,
+	      height: 8,
+	      buildings: [farm, logging, home],
+	      constructionSites: [wall],
+	      houses: [house(home.id, 20)],
+	      roads: [[0, 2], [2, 1]],
+	      eraProclaimedTick: 0,
+	      palisade: palisade(wall),
+	    }),
   );
 
   // Then
@@ -389,11 +392,12 @@ test("advanceFrame applies the palisade labour boundary by simulation tick inste
   const initial = state({
     width: 8,
     height: 8,
-    buildings: [farm, logging, home],
-    constructionSites: [wall],
-    houses: [house(home.id, 20)],
-    tick: 595,
-    wallTick: 9,
+	  buildings: [farm, logging, home],
+	  constructionSites: [wall],
+	  houses: [house(home.id, 20)],
+	  roads: [[0, 2], [2, 1]],
+	  tick: 595,
+	  wallTick: 9,
     eraProclaimedTick: 0,
     palisade: palisade(wall),
   });
@@ -446,12 +450,13 @@ test("scripted palisade labour trace shows a production dip without one hundred 
   let current = state({
     width: 8,
     height: 8,
-    buildings: [farm, logging, home],
-    constructionSites: [wall],
-    houses: [house(home.id, 20)],
-    eraProclaimedTick: 0,
-    palisade: palisade(wall),
-  });
+	  buildings: [farm, logging, home],
+	  constructionSites: [wall],
+	  houses: [house(home.id, 20)],
+	  roads: [[0, 2], [2, 1]],
+	  eraProclaimedTick: 0,
+	  palisade: palisade(wall),
+	});
   let longestStall = 0;
   let currentStall = 0;
   let productionDipTicks = 0;

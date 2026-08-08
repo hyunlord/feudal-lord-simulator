@@ -124,11 +124,9 @@ test("onboardingWorldGuidanceTargets advances from the road marker to an actuall
 
   // Then
   assert.equal(targets.length, 1);
-  assert.deepEqual(targets[0], {
-    kind: "logging_camp",
-    label: "여기에 벌목소를 지으세요",
-    origin: targets[0]?.origin,
-  });
+  assert.equal(targets[0]?.kind, "logging_camp");
+  assert.equal(targets[0]?.label, "여기에 벌목소를 지으세요");
+  assert.ok((targets[0]?.region?.length ?? 0) > 1);
   assert.equal(canPlaceBuilding(state, "logging_camp", targets[0]?.origin.tx ?? -1, targets[0]?.origin.ty ?? -1).ok, true);
 });
 

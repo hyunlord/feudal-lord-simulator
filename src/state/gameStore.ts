@@ -12,7 +12,7 @@ import {
 import { BALANCE } from "../content/balanceConfig";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
-import { placeBuilding, placeRoadLine } from "../engine/gameActions";
+import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
 import type { GameState } from "../engine/engine.types";
 import type { GameSpeed } from "../engine/engine.types";
@@ -80,6 +80,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
     case "place_road_line":
       return placeRoadLine(state, action.start, action.destination);
+    case "remove_road":
+      return removeRoad(state, { tx: action.tx, ty: action.ty });
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       return cancelConstruction({

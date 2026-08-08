@@ -4,7 +4,7 @@ import {
   type BuildingKind,
 } from "../content/buildingConfig";
 import { createConstructionSite } from "../economy/construction";
-import { isInBounds, type TileCoordinate } from "../world/grid";
+import { getTile, isInBounds, type TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
 import type { Tile } from "../world/world.types";
@@ -68,6 +68,25 @@ export function placeRoadLine(
       line.some((coordinate) => coordinate.tx === tile.tx && coordinate.ty === tile.ty)
         ? { ...tile, hasRoad: true }
         : tile,
+    ),
+    roadRevision: state.roadRevision + 1,
+    pathCache: {},
+  };
+}
+
+export function removeRoad(
+  state: GameState,
+  coordinate: TileCoordinate,
+): GameState {
+  const tile = getTile(state, coordinate);
+  if (tile?.hasRoad !== true) return state;
+
+  return {
+    ...state,
+    tiles: state.tiles.map((candidate) =>
+      candidate.tx === coordinate.tx && candidate.ty === coordinate.ty
+        ? { ...candidate, hasRoad: false }
+        : candidate,
     ),
     roadRevision: state.roadRevision + 1,
     pathCache: {},

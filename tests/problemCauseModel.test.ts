@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { Building } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { buildingProblemCause } from "../src/ui/problemCauseModel";
@@ -13,20 +14,44 @@ function building(id: string, kind: Building["kind"], workers: number): Building
 }
 
 function state(target: Building, patch: Partial<GameState> = {}): GameState {
-  return {
-    tick: 0, seed: 1, width: 1, height: 1,
-    tiles: [{ tx: 0, ty: 0, terrain: "grass", buildingId: target.id, hasRoad: false }],
+  const definition = BUILDING_CONFIG_BY_KIND[target.kind];
+  const access = { tx: target.tx, ty: target.ty + definition.height };
+  const width = patch.width ?? Math.max(6, access.tx + 1);
+  const height = patch.height ?? Math.max(5, access.ty + 1);
+  const tiles = patch.tiles ?? Array.from({ length: width * height }, (_unused, index) => {
+    const tx = index % width;
+    const ty = Math.floor(index / width);
+    return {
+      tx,
+      ty,
+      terrain: "grass" as const,
+      buildingId: tx === target.tx && ty === target.ty ? target.id : null,
+      hasRoad: tx === access.tx && ty === access.ty,
+    };
+  });
+  const base: GameState = {
+    tick: 0, seed: 1, width, height,
+    tiles,
     buildings: [target], houses: [], walkers: [], population: 0, idleWorkers: 0,
     treasuryTimber: 0, constructionSites: [], wallTick: 0,
     era: "hamlet", eraProclaimedTick: null, palisade: null, nextConstructionOrdinal: 1,
-    roadRevision: 0, pathCache: {}, forestHarvests: [], ...patch, treasuryCoin: patch.treasuryCoin ?? 0,
+    roadRevision: 0, pathCache: {}, forestHarvests: [],
+    treasuryCoin: 0,
+  };
+  return {
+    ...base,
+    ...patch,
+    width,
+    height,
+    tiles,
+    treasuryCoin: patch.treasuryCoin ?? base.treasuryCoin,
   };
 }
 
 function connectedState(target: Building, storage: Building): GameState {
   const width = 8;
   const height = 4;
-  const roadKeys = new Set(["1,0", "2,0", "3,0"]);
+  const roadKeys = new Set(["0,1", "1,1", "2,1", "3,1", "0,2", "1,2", "2,2", "3,2", "4,2"]);
   return state(target, {
     width,
     height,

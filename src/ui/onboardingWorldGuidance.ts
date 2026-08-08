@@ -4,11 +4,15 @@ import { getTile, type TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
 import { canPlaceRoad } from "../world/roadGraph";
 import {
+  missingCurrentBuildingKinds,
+  wellCompletesTask,
+} from "./onboardingBuildingTaskProgress";
+import {
   foodChainTargetsWithHousePrep as buildFoodChainTargetsWithHousePrep,
   isFoodChainTask,
 } from "./onboardingFoodChainGuidance";
+import { buildableForestAdjacentOrigins } from "./onboardingForestGuidance";
 import {
-  manhattanDistance,
   reserveFootprint,
   reservedOverlaps,
   sortedCandidateOrigins as sortCandidateOrigins,
@@ -54,6 +58,7 @@ export type OnboardingGuidanceTarget = {
   readonly kind: BuildingKind | "road";
   readonly label: string;
   readonly origin: TileCoordinate;
+  readonly region?: readonly TileCoordinate[];
 };
 
 export function firstRoadTargetForOnboarding(state: GuidanceWorld): TileCoordinate | null {
@@ -87,6 +92,14 @@ function buildingTargetsForCurrentTask(state: GuidanceWorld): readonly Onboardin
   const candidateOrigins = sortedCandidateOrigins(state);
 
   for (const kind of kinds) {
+    if (kind === "logging_camp") {
+      const region = buildableForestAdjacentOrigins(state, kind, reserved, candidateOrigins);
+      const origin = region[0] ?? null;
+      if (origin === null) continue;
+      reserveFootprint(reserved, kind, origin);
+      targets.push({ kind, label: BUILDING_TARGET_LABELS[kind], origin, region });
+      continue;
+    }
     const origin = firstBuildableOriginForKind(state, kind, reserved, candidateOrigins);
     if (origin === null) continue;
     reserveFootprint(reserved, kind, origin);
@@ -127,19 +140,6 @@ function foodChainGuidanceTargetsForTask(
   return result.kind === "road"
     ? [{ kind: "road", label: onboardingRoadExtensionTargetLabel, origin: result.origin }]
     : result.targets;
-}
-
-function missingCurrentBuildingKinds(state: GuidanceWorld): readonly BuildingKind[] {
-  if (!hasBuildingKind(state, "logging_camp")) return ["logging_camp"];
-  if (!hasBuildingKind(state, "sawmill")) return ["sawmill"];
-  if (!hasBuildingKind(state, "storehouse")) return ["storehouse"];
-  if (!hasWellWithinHouseRange(state)) return ["well"];
-
-  const missingFoodChain = (["wheat_farm", "mill", "granary"] as const).filter(
-    (kind) => !hasBuildingKind(state, kind),
-  );
-  if (missingFoodChain.length > 0) return missingFoodChain;
-  return [];
 }
 
 function firstBuildableOriginForKind(
@@ -225,26 +225,4 @@ function startingHouse(state: GuidanceWorld): Building | null {
   }
 
   return state.buildings.find((building) => building.kind === "house") ?? null;
-}
-
-function hasBuildingKind(state: GuidanceWorld, kind: BuildingKind): boolean {
-  return state.buildings.some((building) => building.kind === kind);
-}
-
-function hasWellWithinHouseRange(state: GuidanceWorld): boolean {
-  return state.buildings.some(
-    (building) =>
-      building.kind === "well" &&
-      state.houses.some((house) => {
-        const houseBuilding = state.buildings.find((candidate) => candidate.id === house.buildingId);
-        return houseBuilding !== undefined && manhattanDistance(building, houseBuilding) <= 6;
-      }),
-  );
-}
-
-function wellCompletesTask(state: GuidanceWorld, origin: TileCoordinate): boolean {
-  return state.houses.some((house) => {
-    const building = state.buildings.find((candidate) => candidate.id === house.buildingId);
-    return building !== undefined && manhattanDistance(origin, building) <= 6;
-  });
 }

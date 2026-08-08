@@ -123,6 +123,32 @@ function continueRoaming(
   };
 }
 
+function distributorRouteIsIntact(
+  walker: DistributorWalker,
+  routes: RoamingRoutePort,
+): boolean {
+  const remainingPathIsRoad = walker.path
+    .slice(Math.max(0, walker.pathIndex))
+    .every((tile) => routes.isRoad(tile));
+  if (!remainingPathIsRoad || walker.phase === "returning") return remainingPathIsRoad;
+
+  const current = currentRoadTile(walker) ?? walker.position;
+  return routes.returnPath(current, walker.homeBuildingId) !== null;
+}
+
+function stopDistributor(
+  buildings: readonly Building[],
+  walker: DistributorWalker,
+): {
+  readonly buildings: readonly Building[];
+  readonly walker: null;
+} {
+  return {
+    buildings: restoreBread(buildings, walker).buildings,
+    walker: null,
+  };
+}
+
 function stepDistributor(
   tick: number,
   buildings: readonly Building[],
@@ -134,7 +160,11 @@ function stepDistributor(
   readonly buildings: readonly Building[];
   readonly houses: readonly RoamingHouse[];
   readonly walker: DistributorWalker | null;
-} {
+	} {
+  if (!distributorRouteIsIntact(walker, routes)) {
+    return { ...stopDistributor(buildings, walker), houses };
+  }
+
   const moved = stepWalkerAlongPath(walker, BALANCE.DISTRIBUTOR_SPEED);
   if (!hasArrivedAtPathEnd(moved)) return { buildings, houses, walker: moved };
   if (moved.phase === "returning") {

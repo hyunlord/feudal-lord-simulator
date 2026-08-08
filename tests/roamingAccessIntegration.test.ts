@@ -8,8 +8,10 @@ import {
   type Building,
 } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
+import { removeRoad } from "../src/engine/gameActions";
 import { createSimulationRoutePorts } from "../src/engine/simulationPorts";
 import { advanceTick } from "../src/engine/tick";
+import type { House } from "../src/population/population.types";
 import {
   createDistributorRouteHistory,
   observeDistributorRouteHistory,
@@ -21,6 +23,7 @@ import type { Tile } from "../src/world/world.types";
 interface StateInput {
   readonly buildings: readonly Building[];
   readonly roads: readonly TileCoordinate[];
+  readonly houses?: readonly House[];
   readonly tick?: number;
 }
 
@@ -37,6 +40,26 @@ function building(id: string, tx: number, ty: number): Building {
     reserved: {},
     stockReserved: {},
     productionProgress: 0,
+  };
+}
+
+function houseBuilding(id: string, tx: number, ty: number): Building {
+  return {
+    ...building(id, tx, ty),
+    kind: "house",
+    inventory: {},
+  };
+}
+
+function house(buildingId: string): House {
+  return {
+    buildingId,
+    level: 1,
+    residents: 2,
+    hasWater: true,
+    breadStock: 0,
+    lastServicedTick: 0,
+    unmetRequirementTicks: 0,
   };
 }
 
@@ -85,9 +108,9 @@ function buildState(input: StateInput): GameState {
     eraProclaimedTick: null,
     palisade: null,
     nextConstructionOrdinal: 1,
-    houses: [],
+    houses: [...(input.houses ?? [])],
     walkers: [],
-    population: 0,
+    population: input.houses?.reduce((total, current) => total + current.residents, 0) ?? 0,
     idleWorkers: 0,
     treasuryTimber: 0,
     treasuryCoin: 0,
@@ -95,6 +118,18 @@ function buildState(input: StateInput): GameState {
     pathCache: {},
     forestHarvests: [],
   };
+}
+
+function findBuilding(state: GameState, buildingId: string): Building {
+  const found = state.buildings.find((candidate) => candidate.id === buildingId);
+  assert.ok(found, `expected building ${buildingId}`);
+  return found;
+}
+
+function findHouse(state: GameState, buildingId: string): House {
+  const found = state.houses.find((candidate) => candidate.buildingId === buildingId);
+  assert.ok(found, `expected house ${buildingId}`);
+  return found;
 }
 
 function onlyDistributor(state: GameState): DistributorWalker {
@@ -189,4 +224,32 @@ test("presentation route history records a completed distributor branch from rea
   assert.equal(completed[0]?.granaryId, "granary-a");
   assert.equal(completed[0]?.branchLabel, "서쪽 가지");
   assert.ok((completed[0]?.coordinates.length ?? 0) > 0);
+});
+
+test("an active distributor stops without ghost service when its route access road is removed", () => {
+  // Given
+  const granary = building("granary-a", 4, 4);
+  const home = houseBuilding("home-a", 2, 4);
+  const initial = buildState({
+    tick: BALANCE.DISTRIBUTOR_INTERVAL - 1,
+    buildings: [granary, home],
+    houses: [house(home.id)],
+    roads: [
+      road(3, 4),
+      road(3, 5),
+      road(2, 5),
+    ],
+  });
+  const spawned = advanceTick(initial);
+
+  // When
+  const severed = removeRoad(spawned, road(3, 4));
+  const next = advanceTick(severed);
+
+  // Then
+  assert.deepEqual(next.walkers.filter((walker) => walker.kind === "distributor"), []);
+  assert.equal(findHouse(next, home.id).breadStock, 0);
+  assert.equal(findHouse(next, home.id).lastServicedTick, 0);
+  assert.equal(findBuilding(next, granary.id).inventory.bread, BALANCE.DISTRIBUTOR_CAPACITY);
+  assert.equal(findBuilding(next, granary.id).reserved.bread ?? 0, 0);
 });

@@ -91,29 +91,6 @@ function surroundingRing(
   return coordinates;
 }
 
-function hasOrthogonalRoadAdjacent(
-  world: WorldView,
-  origin: TileCoordinate,
-  definition: BuildingDefinition,
-): boolean {
-  for (const coordinate of surroundingRing(origin, definition)) {
-    const touchesFootprint =
-      (coordinate.tx >= origin.tx &&
-        coordinate.tx < origin.tx + definition.width &&
-        (coordinate.ty === origin.ty - 1 ||
-          coordinate.ty === origin.ty + definition.height)) ||
-      (coordinate.ty >= origin.ty &&
-        coordinate.ty < origin.ty + definition.height &&
-        (coordinate.tx === origin.tx - 1 ||
-          coordinate.tx === origin.tx + definition.width));
-    if (!touchesFootprint) continue;
-
-    const tile = getTile(world, coordinate);
-    if (tile?.hasRoad === true) return true;
-  }
-  return false;
-}
-
 function hasAdjacentTerrain(
   world: WorldView,
   origin: TileCoordinate,
@@ -186,10 +163,6 @@ export function canPlaceBuilding(
 
   if (footprintTileValues.some((tile) => !isBuildableTerrain(tile.terrain))) {
     return { ok: false, reason: PlacementFailure.wrong_terrain };
-  }
-
-  if (definition.requiresRoad && !hasOrthogonalRoadAdjacent(world, origin, definition)) {
-    return { ok: false, reason: PlacementFailure.needs_road };
   }
 
   if (

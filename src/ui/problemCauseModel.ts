@@ -2,6 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import type { ResourceType } from "../content/resourceConfig";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { GameState } from "../engine/engine.types";
+import { buildingHasRequiredRoadAccess, ROAD_ACCESS_MARKER } from "../engine/roadAccess";
 import { acceptsResource, availableSpace } from "../economy/storage";
 import { existingRoadComponent } from "../world/roadGraph";
 
@@ -85,6 +86,10 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
   const production = definition.production;
   if (production === null) return null;
+
+  if (!buildingHasRequiredRoadAccess(state, building)) {
+    return ROAD_ACCESS_MARKER;
+  }
 
   if (building.workers < definition.workersRequired) {
     return state.idleWorkers > 0

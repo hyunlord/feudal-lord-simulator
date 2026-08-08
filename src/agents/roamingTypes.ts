@@ -17,6 +17,7 @@ export interface RoamingRoutePort {
     buildingId: string,
   ) => readonly TilePos[] | null;
   readonly neighbors: (tile: TilePos) => readonly TilePos[];
+  readonly isRoad: (tile: TilePos) => boolean;
 }
 
 export interface RoamingSpawnInput {

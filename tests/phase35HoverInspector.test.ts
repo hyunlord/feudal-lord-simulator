@@ -1,17 +1,32 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { Building } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { buildingInspectorModel } from "../src/render/buildingInspectorModel";
 
 function state(building: Building): GameState {
+  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  const roadAccess = { tx: building.tx, ty: building.ty + definition.height };
+  const width = Math.max(2, roadAccess.tx + 1);
+  const height = Math.max(2, roadAccess.ty + 1);
   return {
     tick: 120,
     seed: 3,
-    width: 1,
-    height: 1,
-    tiles: [{ tx: 0, ty: 0, terrain: "grass", buildingId: building.id, hasRoad: false }],
+    width,
+    height,
+    tiles: Array.from({ length: width * height }, (_unused, index) => {
+      const tx = index % width;
+      const ty = Math.floor(index / width);
+      return {
+        tx,
+        ty,
+        terrain: "grass" as const,
+        buildingId: tx === building.tx && ty === building.ty ? building.id : null,
+        hasRoad: tx === roadAccess.tx && ty === roadAccess.ty,
+      };
+    }),
     buildings: [building],
     constructionSites: [],
     wallTick: 0,

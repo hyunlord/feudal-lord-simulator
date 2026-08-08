@@ -24,7 +24,9 @@ export function drawOnboardingGuidanceOverlay(
 
   context.save();
   for (const target of input.targets) {
-    drawTargetDiamond(context, target, input.zoom);
+    for (const origin of target.region ?? [target.origin]) {
+      drawTargetDiamond(context, origin, input.zoom);
+    }
     drawTargetPlaque(context, target, input);
   }
   context.restore();
@@ -32,10 +34,10 @@ export function drawOnboardingGuidanceOverlay(
 
 function drawTargetDiamond(
   context: CanvasRenderingContext2D,
-  target: OnboardingGuidanceTarget,
+  origin: OnboardingGuidanceTarget["origin"],
   zoom: number,
 ): void {
-  const center = tileToScreen(target.origin.tx, target.origin.ty);
+  const center = tileToScreen(origin.tx, origin.ty);
   context.fillStyle = withAlpha(SEMANTIC_PALETTE.parchment, 0.72);
   context.beginPath();
   context.moveTo(snapToPixel(center.sx), snapToPixel(center.sy - TILE_H / 2));

@@ -65,8 +65,9 @@ function routes(input: {
 }): RoamingRoutePort {
   return {
     homePath: () => input.homePath ?? null,
-    returnPath: () => input.returnPath ?? null,
+    returnPath: (tile) => input.returnPath ?? [tile],
     neighbors: (tile) => input.neighbors?.[key(tile)] ?? [],
+    isRoad: () => true,
   };
 }
 

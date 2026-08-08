@@ -27,6 +27,11 @@ export type GameAction =
       readonly destination: TileCoordinate;
     }
   | {
+      readonly type: "remove_road";
+      readonly tx: number;
+      readonly ty: number;
+    }
+  | {
       readonly type: "cancel_construction";
       readonly siteId: string;
     }

@@ -40,8 +40,9 @@ function routes(input: {
 }): RoamingRoutePort {
   return {
     homePath: () => null,
-    returnPath: () => input.returnPath ?? null,
+    returnPath: (tile) => input.returnPath ?? [tile],
     neighbors: () => [],
+    isRoad: () => true,
   };
 }
 

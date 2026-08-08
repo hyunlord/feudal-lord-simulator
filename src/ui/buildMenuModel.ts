@@ -72,7 +72,7 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   granary: "밀과 빵을 보관합니다",
   chapel: "목책마을 선포 조건을 준비합니다",
   well: "주변 집에 물을 공급합니다",
-  road: "일꾼과 짐꾼이 이동할 길을 잇습니다",
+  road: "드래그로 길을 잇고 기존 길 클릭으로 걷어냅니다",
 };
 
 function requirementsFor(kind: BuildingKind): readonly string[] {

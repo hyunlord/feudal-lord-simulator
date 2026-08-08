@@ -92,7 +92,7 @@ test("placement identity site creation and direct tick semantics are explicit", 
   const roaded = placeRoadLine(DEFAULT_GAME_STATE, { tx: 2, ty: 0 }, { tx: 4, ty: 0 });
 
   // When
-  const invalid = placeBuilding(roaded, "house", { tx: 0, ty: 0 });
+  const invalid = placeBuilding(roaded, "house", { tx: -1, ty: 0 });
   const placed = placeBuilding(roaded, "well", { tx: 2, ty: 1 });
   const advanced = advanceTick(roaded);
 

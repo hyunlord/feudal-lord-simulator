@@ -1,8 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
-import { getTile, isInBounds, type TileCoordinate } from "../world/grid";
+import type { TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
-import { PlacementFailure } from "../world/placement";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
 import type { CameraState, CanvasRect, Point, ViewportBounds, WorldBounds } from "./camera";
 import { canvasToWorld, clampPan, clientToCanvas, clampZoom } from "./camera";
@@ -16,6 +15,18 @@ import {
 import type { PlacementPreview } from "./overlays";
 import type { PlacementTool } from "./renderer";
 import type { GameAction } from "../state/gameStore.types";
+import {
+  MODELED_ROAD_TIMBER_COST,
+  roadFailure,
+  resolveRoadPlacementAttempt,
+  resolveRoadRemovalAttempt,
+} from "./roadInteractionAttempts";
+
+export {
+  MODELED_ROAD_TIMBER_COST,
+  resolveRoadPlacementAttempt,
+  resolveRoadRemovalAttempt,
+};
 
 export type PointerLike = {
   readonly clientX: number;
@@ -38,19 +49,11 @@ export type KeyboardPanInput = {
 };
 
 export const DEFAULT_PLACEMENT_TOOL: PlacementTool = "house";
-export const MODELED_ROAD_TIMBER_COST = 0;
 
 type BuildingPlacementAttemptInput = {
   readonly state: GameState;
   readonly tool: Exclude<PlacementTool, "road">;
   readonly tile: TileCoordinate;
-  readonly nowMs: number;
-};
-
-type RoadPlacementAttemptInput = {
-  readonly state: GameState;
-  readonly start: TileCoordinate;
-  readonly destination: TileCoordinate;
   readonly nowMs: number;
 };
 
@@ -192,36 +195,6 @@ export function resolveBuildingPlacementAttempt(
   };
 }
 
-export function resolveRoadPlacementAttempt(
-  input: RoadPlacementAttemptInput,
-): PlacementAttemptOutcome {
-  const path = roadLine(input.start, input.destination);
-  const failure = roadFailure(input.state, path);
-  if (failure !== null) {
-    return {
-      action: null,
-      feedback: createPlacementFeedback({
-        kind: "failure",
-        message: formatPlacementFailure({ reason: failure, buildingKind: "house" }),
-        anchor: { kind: "path", path },
-        nowMs: input.nowMs,
-      }),
-      keepToolArmed: true,
-    };
-  }
-
-  return {
-    action: { type: "place_road_line", start: input.start, destination: input.destination },
-    feedback: createPlacementFeedback({
-      kind: "success",
-      message: `길을 놓았습니다 · 목재 ${MODELED_ROAD_TIMBER_COST}`,
-      anchor: { kind: "path", path },
-      nowMs: input.nowMs,
-    }),
-    keepToolArmed: true,
-  };
-}
-
 function emptyPreview(tool: PlacementTool | null): PlacementPreview {
   return {
     tool,
@@ -244,23 +217,4 @@ function buildingFootprint(tool: Exclude<PlacementTool, "road">, origin: TileCoo
     }
   }
   return tiles;
-}
-
-function roadFailure(state: GameState, path: readonly TileCoordinate[]): PlacementFailure | null {
-  for (const coordinate of path) {
-    if (!isInBounds(state, coordinate)) {
-      return PlacementFailure.out_of_bounds;
-    }
-    const tile = getTile(state, coordinate);
-    if (tile === null) {
-      return PlacementFailure.out_of_bounds;
-    }
-    if (tile.buildingId !== null || tile.hasRoad) {
-      return PlacementFailure.occupied;
-    }
-    if (tile.terrain === "water") {
-      return PlacementFailure.wrong_terrain;
-    }
-  }
-  return null;
 }

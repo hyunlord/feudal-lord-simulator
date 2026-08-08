@@ -174,6 +174,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     },
     returnPath: routeToBuilding,
     neighbors: (tile) => getOrthogonalRoadNeighbors(state, tile),
+    isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
   };
 
   return {

@@ -14,12 +14,16 @@ import { objectRenderItemsForFrame } from "../src/render/renderObjectFrameCache"
 import { hashEconomyState } from "../scripts/economyHarnessSerializer";
 import type { Tile } from "../src/world/world.types";
 
-function tile(tx: number, ty: number, terrain: Tile["terrain"] = "grass"): Tile {
-  return { tx, ty, terrain, buildingId: null, hasRoad: false };
+function tile(tx: number, ty: number, terrain: Tile["terrain"] = "grass", hasRoad = false): Tile {
+  return { tx, ty, terrain, buildingId: null, hasRoad };
 }
 
 function forest(tx: number, ty: number): Tile {
   return tile(tx, ty, "forest");
+}
+
+function road(tx: number, ty: number): Tile {
+  return tile(tx, ty, "grass", true);
 }
 
 function building(id: string, patch: Partial<Building> = {}): Building {
@@ -43,14 +47,33 @@ function state(input: {
   readonly buildings?: readonly Building[];
   readonly forestHarvests?: GameState["forestHarvests"];
 } = {}): GameState {
-  const tiles = input.tiles ?? [forest(2, 1), forest(1, 2), forest(3, 2)];
+  const buildings = [...(input.buildings ?? [building("logger")])];
+  const tileMap = new Map<string, Tile>();
+  for (const current of input.tiles ?? [forest(2, 1), forest(1, 2), forest(3, 2)]) {
+    tileMap.set(`${current.tx},${current.ty}`, current);
+  }
+  for (const current of buildings) {
+    const definition = BUILDING_CONFIG_BY_KIND[current.kind];
+    if (!definition.requiresRoad) continue;
+    const access = { tx: current.tx, ty: current.ty + definition.height };
+    if (!tileMap.has(`${access.tx},${access.ty}`)) {
+      tileMap.set(`${access.tx},${access.ty}`, road(access.tx, access.ty));
+    }
+  }
+  const width = 6;
+  const height = 6;
+  const tiles = Array.from({ length: width * height }, (_unused, index) => {
+    const tx = index % width;
+    const ty = Math.floor(index / width);
+    return tileMap.get(`${tx},${ty}`) ?? tile(tx, ty);
+  });
   return {
     tick: input.tick ?? 10,
     seed: 7,
     tiles: [...tiles],
-    width: 6,
-    height: 6,
-    buildings: [...(input.buildings ?? [building("logger")])],
+    width,
+    height,
+    buildings,
     constructionSites: [],
     houses: [],
     walkers: [],
