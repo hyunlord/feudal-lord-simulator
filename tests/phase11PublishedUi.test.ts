@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+import { advanceTick } from "../src/engine/tick";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import * as worldAssets from "../src/render/worldAssets";
 import { drawOnboardingGuidanceOverlay } from "../src/render/onboardingGuidanceOverlay";
@@ -37,6 +38,20 @@ test("fresh game state contains the authored occupied village", () => {
   assert.equal(DEFAULT_GAME_STATE.houses.every((house) => house.residents === 3), true);
   assert.equal(DEFAULT_GAME_STATE.buildings.filter((building) => building.kind === "house").length, 4);
   assert.equal(DEFAULT_GAME_STATE.buildings.filter((building) => building.kind === "well").length, 1);
+});
+
+test("the authored opening village keeps all twelve residents through the first five minutes", () => {
+  let state = DEFAULT_GAME_STATE;
+  let minimumPopulation = state.population;
+  for (let tick = 0; tick < 6_000; tick += 1) {
+    state = advanceTick(state);
+    minimumPopulation = Math.min(minimumPopulation, state.population);
+  }
+
+  assert.equal(state.tick, 6_000);
+  assert.equal(minimumPopulation, 12);
+  assert.ok(state.population >= 12);
+  assert.equal(state.houses.every((house) => house.residents >= 3), true);
 });
 
 test("production UI contains no known English user-facing literals outside the Korean locale", async () => {

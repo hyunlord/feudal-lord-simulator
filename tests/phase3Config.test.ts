@@ -149,6 +149,7 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
     {
@@ -158,6 +159,7 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
     {
@@ -167,6 +169,7 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
     {
@@ -176,6 +179,7 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
   ]);

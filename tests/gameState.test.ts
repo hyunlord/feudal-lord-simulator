@@ -54,6 +54,7 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
     {
@@ -63,6 +64,7 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
     {
@@ -72,6 +74,7 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
     {
@@ -81,6 +84,7 @@ test("DEFAULT_GAME_STATE starts with a deterministic populated world and no pres
       hasWater: false,
       breadStock: 0,
       lastServicedTick: 0,
+      starvationGraceUntilTick: 6_000,
       unmetRequirementTicks: 0,
     },
   ]);

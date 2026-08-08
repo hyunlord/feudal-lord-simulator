@@ -4,6 +4,7 @@ import type { Tile } from "../world/world.types";
 
 export const OPENING_VILLAGE_CENTER = { tx: 45, ty: 41 } as const;
 export const STARTING_HOUSE_ID = "house-46-40-0";
+export const OPENING_VILLAGE_STARVATION_GRACE_TICKS = 6_000;
 
 const COTTAGE_ORIGINS = [
   { tx: 44, ty: 40 },
@@ -82,6 +83,7 @@ export function openingVillageHouses(): readonly House[] {
     hasWater: false,
     breadStock: 0,
     lastServicedTick: 0,
+    starvationGraceUntilTick: OPENING_VILLAGE_STARVATION_GRACE_TICKS,
     unmetRequirementTicks: 0,
   }));
 }

@@ -102,7 +102,8 @@ function servingWaterDiagnosis(
 
 function populationDiagnosis(state: GameState, house: House): PopulationDiagnosis {
   const elapsedTicks = Math.max(0, state.tick - house.lastServicedTick);
-  if (elapsedTicks > BALANCE.STARVATION_WINDOW) {
+  const graceExpired = state.tick > (house.starvationGraceUntilTick ?? 0);
+  if (graceExpired && elapsedTicks > BALANCE.STARVATION_WINDOW) {
     return {
       kind: "declining",
       label: `감소 중 — 식량 없음, ${elapsedTicks}틱 경과`,

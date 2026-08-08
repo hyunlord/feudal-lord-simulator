@@ -103,7 +103,9 @@ function definitionForLevel(level: number): HousingDefinition {
 
 function stepResidents(house: House, tick: number): House {
   if (tick <= 0 || tick % BALANCE.GROWTH_INTERVAL !== 0) return house;
-  const breadAbsent = tick - house.lastServicedTick > BALANCE.STARVATION_WINDOW;
+  const graceExpired = tick > (house.starvationGraceUntilTick ?? 0);
+  const breadAbsent = graceExpired
+    && tick - house.lastServicedTick > BALANCE.STARVATION_WINDOW;
 
   if (breadAbsent) {
     return {

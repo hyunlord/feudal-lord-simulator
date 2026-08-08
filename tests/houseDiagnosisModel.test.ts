@@ -288,6 +288,17 @@ test("house diagnosis names starvation as the active population decline", () => 
   assert.equal(model.population.label, "감소 중 — 식량 없음, 330틱 경과");
 });
 
+test("house diagnosis does not claim decline during an explicit founding grace", () => {
+  const input = state({
+    house: house({ hasWater: true, lastServicedTick: 0, starvationGraceUntilTick: 6_000 }),
+  });
+
+  const model = diagnose(input);
+
+  assert.equal(model.population.kind, "stable");
+  assert.equal(model.population.label, "유지 또는 성장 중");
+});
+
 test("house diagnosis distinguishes water-blocked growth from active decline", () => {
   // Given
   const input = state({ house: house({ hasWater: false, lastServicedTick: 300 }) });
