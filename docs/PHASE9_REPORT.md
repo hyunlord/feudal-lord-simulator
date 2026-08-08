@@ -36,7 +36,9 @@ The Todo 14 second review returned `REQUEST CHANGES` with this objection:
 
 > This violates Todo14’s “deliberate broken fixture” requirement and the “Do not mock production, road routing, market sales, or wall lifecycle” constraint. The green focused test is therefore proving the report-field override behavior, not metric sensitivity to real broken gameplay states.
 
-The two-round cap prevented another review round, but the objection was not ignored: all result-field overrides were removed, each mutant now changes actual scenario state, returned trace fields agree with final gameplay state, and the focused real-mutant test passes.
+The two-round cap prevented another Todo 14 review round, but the objection was not ignored: all result-field overrides were removed, each mutant now changes actual scenario state, returned trace fields agree with final gameplay state, and the focused real-mutant test passes.
+
+A final independent release review then found that two mutants still restored or fabricated state outside the normal tick observation window. The release was held and one final remediation pass removed the harness `failureMode` API entirely. The five negative cases now provide persistent broken `GameState` fixtures to the same `trackPhase9Run` loop used by the passing scenario: missing rock, disconnected market access, service-starved population, disconnected wall supply, and a segment with no material. The same gate also identified oversized newly added TypeScript modules. Era-specific harness metrics, route-miss diagnosis, and stone-wall tests were split by responsibility; every newly added Phase 9 TypeScript file is now at most 217 pure LOC, and the programming no-excuse scan reports zero violations across the eleven remediation files.
 
 ## 4. Constants tuned and measurements
 
@@ -74,6 +76,8 @@ DGX generated six candidates for each group (42 total), sequentially at batch si
 ## 9. Test output and 5x frame time
 
 - Final suite: 779 passed, 0 failed; typecheck PASS; production build PASS; `git diff --check` PASS.
+- Focused remediation suite: 33 passed, 0 failed. The five real broken-state traces each fail exactly their intended Phase 9 row while the passing trace fails none.
+- Programming/no-excuse scan: 0 violations across the eleven remediation files; runtime dependency audit: 0 vulnerabilities.
 - The 17-row acceptance ledger at `/tmp/feudal-phase9/task-16/acceptance-ledger.json` records 17 PASS and no hidden skip.
 - Five browser benchmark samples at 5x averaged 3.392–3.891ms per frame, with p95 3.7–4.5ms and 0 of 600 frames over 12ms.
 - Responsive browser QA passed 375x812, 640x375, 768x1024, and 1280x720; the 1280 population title had no clipping failure. The compact-camera regression test preserved the >=18px 1x1 building floor.
@@ -82,6 +86,8 @@ DGX generated six candidates for each group (42 total), sequentially at batch si
 ## 10. Pushed commits and published update
 
 Pushed Part commits before this release: `4bfb91f`, `86c72e2`, `dc7eee2`, `1847639`, `9b8c64d`, `e7373a1`, `b204221`, `f98aa40`, `eebefbd`, and `9ccc0f6`. GitHub Pages successfully deployed Part 6 (`9ccc0f6`) in run `31246220677`. The Part 7 commit is the Lore commit containing this report; its exact local/remote SHA and tree, deploy workflow run, MIME probes, missing-hash negative probe, and public browser proof are recorded in `/tmp/feudal-phase9/task-17/` after push because a commit cannot contain its own SHA.
+
+All test and harness processes owned by the Phase 9 worktree were allowed to exit and were absent at the final process inventory. A pre-existing Vite server under the separate `stage3-palisade-age` worktree on port 33717 was explicitly classified as foreign and left untouched.
 
 ## 11. Honest full-run read
 
