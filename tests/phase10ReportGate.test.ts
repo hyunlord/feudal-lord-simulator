@@ -176,9 +176,22 @@ test("Given the exact final-all plan CLI When parsed Then evidence defaults are 
 test("Given the public honest-read runner When inspected Then placement and watch changes are asserted", () => {
   const source = readFileSync(path.join(ROOT, "scripts/phase10BrowserProofRunner.mjs"), "utf8");
 
+  assert.match(source, /openProofPage\(client, config\.url\)/);
+  assert.match(source, /assertPlacedKinds\(firstState\.constructionSites, \["logging_camp"\]\)/);
+  assert.match(source, /assertPlacedKinds\(secondState\.constructionSites, \["logging_camp", "sawmill"\]\)/);
   assert.match(source, /assertCanvasChanged\(opening\.canvas, firstPlacement\.canvas/);
   assert.match(source, /assertCanvasChanged\(firstPlacement\.canvas, secondPlacement\.canvas/);
   assert.match(source, /assertCanvasChanged\(secondPlacement\.canvas, afterWatch\.canvas/);
+});
+
+test("Given final-all When inspected Then every local and public acceptance lane is actually rerun", () => {
+  const source = readFileSync(path.join(ROOT, "scripts/phase10BrowserProofRunner.mjs"), "utf8");
+  const finalAll = source.slice(source.indexOf("async function runFinalAll"));
+
+  assert.match(finalAll, /runPlaythrough/);
+  assert.match(finalAll, /runFrameBudget/);
+  assert.match(finalAll, /runViewportAssetQa/);
+  assert.match(finalAll, /runPublicHonestRead/);
 });
 
 test("Given final gate scripts When inspected Then they do not mutate protected orchestration state", () => {

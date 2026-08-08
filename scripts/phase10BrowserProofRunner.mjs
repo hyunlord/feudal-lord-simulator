@@ -12,12 +12,10 @@ import {
 import {
   canvasHash,
   clickByAria,
-  clickCanvasFraction,
   clickTile,
   dragTile,
   honestSnapshot,
   missingAssets,
-  openHonestPage,
   openProofPage,
   proofSnapshot,
   snapshot,
@@ -141,23 +139,30 @@ async function runFrameBudget(client, config) {
 }
 
 async function runPublicHonestRead(client, config) {
-  await openHonestPage(client, config.url);
+  await openProofPage(client, config.url);
   await mkdir(config.screenshotDir, { recursive: true });
   const screenshots = [];
   const startedAt = Date.now();
   const opening = await honestSnapshot(client, config.screenshotDir, screenshots, "public-opening");
-  await clickByAria(client, "집");
-  await clickCanvasFraction(client, 0.44, 0.56);
+  const openingState = await proofSnapshot(client);
+  await clickByAria(client, "벌목소");
+  await clickTile(client, { tx: 41, ty: 38 });
   const firstPlacement = await honestSnapshot(client, config.screenshotDir, screenshots, "public-first-building");
+  const firstState = await proofSnapshot(client);
+  assertPlacedKinds(firstState.constructionSites, ["logging_camp"]);
   assertCanvasChanged(opening.canvas, firstPlacement.canvas, "first public building placement");
-  await clickByAria(client, "집");
-  await clickCanvasFraction(client, 0.56, 0.62);
+  await clickByAria(client, "제재소");
+  await clickTile(client, { tx: 43, ty: 38 });
   const secondPlacement = await honestSnapshot(client, config.screenshotDir, screenshots, "public-two-buildings");
+  const secondState = await proofSnapshot(client);
+  assertPlacedKinds(secondState.constructionSites, ["logging_camp", "sawmill"]);
   assertCanvasChanged(firstPlacement.canvas, secondPlacement.canvas, "second public building placement");
   await clickByAria(client, "Normal speed");
   await delay(config.watchMs);
   await clickByAria(client, "Pause");
   const afterWatch = await honestSnapshot(client, config.screenshotDir, screenshots, "public-after-two-minutes");
+  const afterState = await proofSnapshot(client);
+  assertPlacedKinds(afterState.constructionSites, ["logging_camp", "sawmill"]);
   assertCanvasChanged(secondPlacement.canvas, afterWatch.canvas, "public two-minute watch");
   const evidence = {
     schemaVersion: 1,
@@ -170,6 +175,8 @@ async function runPublicHonestRead(client, config) {
     watchMs: Date.now() - startedAt,
     requestedWatchMs: config.watchMs,
     placeBuildings: config.placeBuildings,
+    observedTicks: afterState.tick - openingState.tick,
+    placedKinds: afterState.constructionSites.map((site) => site.kind),
     screenshots,
     opening,
     firstPlacement,
@@ -186,12 +193,31 @@ async function runPublicHonestRead(client, config) {
 }
 
 async function runFinalAll(client, config) {
+  const playthrough = await runPlaythrough(client, {
+    ...config,
+    scenario: "part6-playthrough",
+    url: config.localUrl,
+    speed: 1,
+    ticks: 3_000,
+    screenshotDir: path.join(config.evidenceRoot, "playthrough"),
+  });
+  const viewportAssetQa = await runViewportAssetQa(client, config);
+  const frameBudget = await runFrameBudget(client, {
+    ...config,
+    scenario: "frame-budget",
+    url: config.localUrl,
+    speed: 5,
+    durationMs: 30_000,
+    maxFrameMs: 12,
+  });
+  await client.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
   const publicResult = await runPublicHonestRead(client, {
     ...config,
     scenario: "public-honest-read",
     url: config.publicUrl,
     watchMs: config.watchMs ?? 120_000,
     placeBuildings: Math.max(2, config.placeBuildings),
+    screenshotDir: path.join(config.evidenceRoot, "public-screens"),
   });
   return {
     schemaVersion: 1,
@@ -199,8 +225,37 @@ async function runFinalAll(client, config) {
     localUrl: config.localUrl,
     publicUrl: config.publicUrl,
     evidenceRoot: config.evidenceRoot,
+    playthrough,
+    viewportAssetQa,
+    frameBudget,
     publicHonestRead: publicResult,
   };
+}
+
+async function runViewportAssetQa(client, config) {
+  const sizes = [[1280, 720], [768, 1024], [375, 667]];
+  const dir = path.join(config.evidenceRoot, "viewports");
+  const screenshots = [];
+  const results = [];
+  await mkdir(dir, { recursive: true });
+  for (const [width, height] of sizes) {
+    await client.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 600 });
+    await openProofPage(client, config.localUrl);
+    const checkpoint = await honestSnapshot(client, dir, screenshots, `viewport-${width}x${height}`);
+    if (checkpoint.canvas.visiblePixels === 0) throw new Error(`blank canvas at ${width}x${height}`);
+    results.push({ width, height, canvas: checkpoint.canvas });
+  }
+  const assets = await missingAssets(client);
+  if (assets.length > 0) throw new Error(`runtime asset failures: ${assets.join(",")}`);
+  return { viewports: results, missingAssets: assets, screenshots };
+}
+
+function assertPlacedKinds(constructionSites, expected) {
+  const actual = constructionSites.map((site) => site.kind).sort();
+  const wanted = [...expected].sort();
+  if (JSON.stringify(actual) !== JSON.stringify(wanted)) {
+    throw new Error(`public constructionSites ${actual.join(",")} did not equal ${wanted.join(",")}`);
+  }
 }
 
 function assertCanvasChanged(before, after, label) {

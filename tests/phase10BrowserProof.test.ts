@@ -51,6 +51,7 @@ test("Given localhost proof opt-in When checking the runtime hook gate Then only
   assert.equal(phase10ProofEnabled({ hostname: "127.0.0.1", search: "?phase10-proof=1" }), true);
   assert.equal(phase10ProofEnabled({ hostname: "localhost", search: "?phase10-proof=1" }), true);
   assert.equal(phase10ProofEnabled({ hostname: "127.0.0.1", search: "" }), false);
+  assert.equal(phase10ProofEnabled({ hostname: "hyunlord.github.io", search: "?phase10-proof=1" }), true);
   assert.equal(phase10ProofEnabled({ hostname: "example.com", search: "?phase10-proof=1" }), false);
 });
 

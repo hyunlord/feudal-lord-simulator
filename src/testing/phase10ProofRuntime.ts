@@ -76,7 +76,9 @@ declare global {
 
 export function phase10ProofEnabled(location: ProofLocation): boolean {
   const hostIsLocal = location.hostname === "127.0.0.1" || location.hostname === "localhost";
-  return hostIsLocal && new URLSearchParams(location.search).get("phase10-proof") === "1";
+  const hostIsPublishedBuild = location.hostname === "hyunlord.github.io";
+  return (hostIsLocal || hostIsPublishedBuild)
+    && new URLSearchParams(location.search).get("phase10-proof") === "1";
 }
 
 export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInput): () => void {
