@@ -3,6 +3,7 @@ import { worldToCanvas } from "./camera";
 import { tileToScreen } from "./iso";
 import { RAMPS, type PaletteColor } from "../content/palette";
 import { getSprite, spriteMeta } from "./worldAssets";
+import { recordWorldSpriteDraw } from "./worldSpriteDiagnostics";
 
 export type WorldSpriteOptions = {
   readonly camera?: CameraState;
@@ -77,12 +78,22 @@ function drawAtWorldAnchor(
   ty: number,
   options: WorldSpriteOptions,
 ): boolean {
-  const image = getSprite(key);
   const meta = spriteMeta(key);
-  if (image === null || meta === null) return false;
+  if (meta === null) {
+    recordWorldSpriteDraw({ key, drawn: false, reason: "meta_missing" });
+    return false;
+  }
+  const image = getSprite(key);
+  if (image === null) {
+    recordWorldSpriteDraw({ key, drawn: false, reason: "image_missing" });
+    return false;
+  }
 
   const rect = destinationRect(meta, tx, ty, options);
-  if (isCulled(rect, deviceViewport(context, options))) return false;
+  if (isCulled(rect, deviceViewport(context, options))) {
+    recordWorldSpriteDraw({ key, drawn: false, reason: "culled" });
+    return false;
+  }
   const source = options.tint === undefined ? image : tintedSprite(image, meta, options.tint);
 
   context.save();
@@ -94,6 +105,7 @@ function drawAtWorldAnchor(
   } finally {
     context.restore();
   }
+  recordWorldSpriteDraw({ key, drawn: true, reason: "drawn" });
   return true;
 }
 

@@ -15,6 +15,8 @@ export type AssetMeta = {
   readonly status: LoadStatus;
 };
 
+export type AssetStatus = Pick<AssetMeta, "key" | "category" | "url" | "status">;
+
 type AssetRecord = {
   readonly meta: Omit<AssetMeta, "status">;
   status: LoadStatus;
@@ -52,6 +54,15 @@ export function getSprite(key: string): HTMLImageElement | null {
 export function spriteMeta(key: string): AssetMeta | null {
   const record = records.get(key);
   return record === undefined ? null : { ...record.meta, status: record.status };
+}
+
+export function worldAssetStatuses(): readonly AssetStatus[] {
+  return [...records.values()].map(({ meta, status }) => ({
+    key: meta.key,
+    category: meta.category,
+    url: meta.url,
+    status,
+  }));
 }
 
 export function maxSpriteAnchorY(): number {

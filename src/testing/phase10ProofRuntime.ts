@@ -4,7 +4,13 @@ import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
 import { worldToCanvas, type CameraState } from "../render/camera";
+import { renderDetailLevel, type RenderDetailLevel } from "../render/buildingVisualState";
 import { tileCenter } from "../render/picking";
+import { worldAssetStatuses, type AssetStatus } from "../render/worldAssets";
+import {
+  installWorldSpriteDrawProbe,
+  type WorldSpriteDrawEvent,
+} from "../render/worldSpriteDiagnostics";
 import { buildingProblemCause } from "../ui/problemCauseModel";
 
 type ProofLocation = {
@@ -59,6 +65,11 @@ export type Phase10ProofSnapshot = {
 export type Phase10ProofRuntimePort = {
   readonly tileClientPoint: (tile: TileCoordinate) => { readonly clientX: number; readonly clientY: number };
   readonly snapshot: () => Phase10ProofSnapshot;
+  readonly diagnosis: () => {
+    readonly camera: { readonly zoom: number; readonly lod: RenderDetailLevel };
+    readonly assets: readonly AssetStatus[];
+    readonly spriteDraws: { readonly recent: readonly WorldSpriteDrawEvent[] };
+  };
 };
 
 type InstallPhase10ProofRuntimeInput = {
@@ -83,14 +94,24 @@ export function phase10ProofEnabled(location: ProofLocation): boolean {
 
 export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInput): () => void {
   if (!phase10ProofEnabled(input.location)) return () => {};
+  const spriteDrawProbe = installWorldSpriteDrawProbe();
 
   const port: Phase10ProofRuntimePort = {
     tileClientPoint: (tile) => tileClientPoint(input.canvas, input.cameraRef.current, tile),
     snapshot: () => snapshot(input.stateRef.current),
+    diagnosis: () => ({
+      camera: {
+        zoom: input.cameraRef.current.zoom,
+        lod: renderDetailLevel(input.cameraRef.current.zoom),
+      },
+      assets: worldAssetStatuses(),
+      spriteDraws: spriteDrawProbe.snapshot(),
+    }),
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;
 
   return () => {
+    spriteDrawProbe.dispose();
     if (window.__FEUDAL_PHASE10_PROOF__ === port) {
       delete window.__FEUDAL_PHASE10_PROOF__;
     }
