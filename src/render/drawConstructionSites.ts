@@ -7,6 +7,7 @@ import {
 } from "../economy/construction";
 import {
   isPalisadeConstructionSite,
+  isStoneWallConstructionSite,
   type PalisadeConstructionSchedule,
 } from "../economy/palisadeConstruction";
 import { drawPalisadeConstructionSite } from "./drawPalisadeConstructionSites";
@@ -56,7 +57,7 @@ export function drawConstructionSite(
   context: CanvasRenderingContext2D,
   input: DrawConstructionSiteInput,
 ): void {
-  if (isPalisadeConstructionSite(input.site)) {
+  if (isPalisadeConstructionSite(input.site) || isStoneWallConstructionSite(input.site)) {
     drawPalisadeConstructionSite(context, {
       site: input.site,
       schedule: input.schedule ?? { kind: "active" },

@@ -8,7 +8,7 @@ import {
   palisadeEraLabourReservation,
 } from "../src/population/eraLabour";
 import type { Building } from "../src/content/buildingConfig";
-import type { PalisadeConstructionSite } from "../src/economy/construction";
+import { createStoneWallConstructionSite, type PalisadeConstructionSite, type StoneWallConstructionSite } from "../src/economy/construction";
 
 function building(id: string, kind: Building["kind"], patch: Partial<Building> = {}): Building {
   return {
@@ -47,6 +47,28 @@ function wallSite(
     assignedBuilders: 99,
     stall: "no_builders",
     startedTick: 0,
+    ...patch,
+  };
+}
+
+function stoneWallSite(
+  id: string,
+  order: number,
+  patch: Partial<StoneWallConstructionSite> = {},
+): StoneWallConstructionSite {
+  return {
+    ...createStoneWallConstructionSite({
+      id,
+      wallId: "wall-a",
+      segmentIndex: order,
+      gateDistance: order * 4,
+      order,
+      path: [{ x: order, y: 0 }, { x: order + 1, y: 0 }],
+      startedTick: 0,
+    }),
+    delivered: { stone: 25 },
+    assignedBuilders: 99,
+    stall: "no_builders",
     ...patch,
   };
 }
@@ -156,7 +178,7 @@ test("Given proclamation tick boundaries When allocating labour Then offsets 0 a
 
 test("Given Stone Town ceremony offsets When active construction exists Then half the workers are reserved for nine hundred ticks", () => {
   // Given
-  const target = wallSite("stone-target", 0, { kind: "palisade_segment" });
+  const target = stoneWallSite("stone-target", 0);
 
   // When
   const quotas = [0, 1, 2, 5, 10].map((availableWorkers) =>

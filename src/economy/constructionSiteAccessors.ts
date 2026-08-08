@@ -4,6 +4,8 @@ import type {
   BuildingConstructionSite,
   ConstructionSite,
   ConstructionSiteFootprint,
+  StoneWallConstructionSite,
+  WallConstructionSite,
 } from "./constructionSites";
 
 function assertNever(value: never): never {
@@ -15,6 +17,7 @@ export function isBuildingConstructionSite(
 ): site is BuildingConstructionSite {
   switch (site.kind) {
     case "palisade_segment":
+    case "stone_wall_segment":
       return false;
     case "house":
     case "well":
@@ -34,9 +37,22 @@ export function isBuildingConstructionSite(
   }
 }
 
+export function isStoneWallConstructionSite(
+  site: ConstructionSite,
+): site is StoneWallConstructionSite {
+  return site.kind === "stone_wall_segment";
+}
+
+export function isWallConstructionSite(
+  site: ConstructionSite,
+): site is WallConstructionSite {
+  return site.kind === "palisade_segment" || site.kind === "stone_wall_segment";
+}
+
 export function constructionSiteAnchor(site: ConstructionSite): TileCoordinate {
   switch (site.kind) {
     case "palisade_segment":
+    case "stone_wall_segment":
       return site.anchor;
     case "house":
     case "well":
@@ -59,6 +75,18 @@ export function constructionSiteAnchor(site: ConstructionSite): TileCoordinate {
 export function constructionSiteFootprint(site: ConstructionSite): ConstructionSiteFootprint {
   switch (site.kind) {
     case "palisade_segment": {
+      const xs = site.path.map((point) => point.x);
+      const ys = site.path.map((point) => point.y);
+      const minX = Math.min(...xs);
+      const minY = Math.min(...ys);
+      return {
+        tx: minX,
+        ty: minY,
+        width: Math.max(1, Math.max(...xs) - minX),
+        height: Math.max(1, Math.max(...ys) - minY),
+      };
+    }
+    case "stone_wall_segment": {
       const xs = site.path.map((point) => point.x);
       const ys = site.path.map((point) => point.y);
       const minX = Math.min(...xs);
@@ -94,6 +122,8 @@ export function constructionSiteDisplayName(site: ConstructionSite): string {
   switch (site.kind) {
     case "palisade_segment":
       return "목책 구간";
+    case "stone_wall_segment":
+      return "석벽 구간";
     case "house":
     case "well":
     case "storehouse":
@@ -115,6 +145,7 @@ export function constructionSiteDisplayName(site: ConstructionSite): string {
 export function constructionSiteCacheKey(site: ConstructionSite): string {
   switch (site.kind) {
     case "palisade_segment":
+    case "stone_wall_segment":
       return [
         site.kind,
         site.id,

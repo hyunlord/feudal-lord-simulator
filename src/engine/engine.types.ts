@@ -31,10 +31,13 @@ export interface EraRequirement {
 export interface PalisadeSegment {
   readonly id: string;
   readonly order: number;
+  readonly gateDistance?: number;
   readonly edgePath: PalisadePath;
   readonly tileCount: number;
   readonly completed: boolean;
   readonly constructionSiteId: string | null;
+  readonly material?: "timber" | "stone";
+  readonly replacementConstructionSiteId?: string | null;
 }
 
 export interface PalisadeState {

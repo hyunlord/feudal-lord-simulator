@@ -2,7 +2,7 @@ import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import {
   constructionOnSiteLabel,
   constructionStage,
-  type PalisadeConstructionSite,
+  type WallConstructionSite,
 } from "../economy/construction";
 import type { PalisadeConstructionSchedule } from "../economy/palisadeConstruction";
 import {
@@ -18,7 +18,7 @@ type Point = {
 };
 
 type DrawPalisadeConstructionSiteInput = {
-  readonly site: PalisadeConstructionSite;
+  readonly site: WallConstructionSite;
   readonly schedule: PalisadeConstructionSchedule;
   readonly zoom: number;
 };
@@ -55,7 +55,7 @@ export function drawPalisadeConstructionSite(
   });
 }
 
-function palisadeRunStyle(site: PalisadeConstructionSite): PalisadeRunStyle {
+function palisadeRunStyle(site: WallConstructionSite): PalisadeRunStyle {
   const stage = constructionStage(site);
   switch (stage) {
     case "marked_plot":

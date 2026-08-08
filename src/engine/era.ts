@@ -1,5 +1,6 @@
 import type { EraRequirement, GameState } from "./engine.types";
 import type { BuildingKind } from "../content/buildingConfig";
+import { createStoneWallConstructionSite } from "../economy/construction";
 import { placementSpendableResource } from "../world/placement";
 
 const PALISADE_REQUIREMENT_TARGETS = {
@@ -125,11 +126,37 @@ export function canProclaimStoneTownEra(state: GameState): boolean {
   return state.era === "palisade" && evaluateStoneTownEraRequirements(state).every((requirement) => requirement.met);
 }
 
+function stoneReplacementSiteId(segmentId: string): string {
+  return `${segmentId}-stone`;
+}
+
 export function confirmStoneTownProclamation(state: GameState): GameState {
   if (!canProclaimStoneTownEra(state)) return state;
+  const replacementSites = state.palisade?.segments.map((segment) =>
+    createStoneWallConstructionSite({
+      id: stoneReplacementSiteId(segment.id),
+      wallId: state.palisade?.id ?? "",
+      segmentIndex: segment.order,
+      gateDistance: segment.gateDistance ?? segment.order,
+      order: segment.order,
+      path: segment.edgePath,
+      startedTick: state.tick,
+    }),
+  ) ?? [];
   return {
     ...state,
     era: "stone_town",
     eraProclaimedTick: state.tick,
+    palisade: state.palisade === null
+      ? null
+      : {
+          ...state.palisade,
+          segments: state.palisade.segments.map((segment) => ({
+            ...segment,
+            material: segment.material ?? "timber",
+            replacementConstructionSiteId: stoneReplacementSiteId(segment.id),
+          })),
+        },
+    constructionSites: [...state.constructionSites, ...replacementSites],
   };
 }

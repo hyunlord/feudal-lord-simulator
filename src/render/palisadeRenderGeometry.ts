@@ -1,4 +1,4 @@
-import type { PalisadeConstructionSite } from "../economy/construction";
+import type { WallConstructionSite } from "../economy/construction";
 import type { PalisadeSegment } from "../engine/engine.types";
 import type { TileEdgePoint } from "../world/palisadeGeometry";
 import { depthKey, tileToScreen } from "./iso";
@@ -18,7 +18,7 @@ export type PalisadeRenderAnchor = {
   readonly anchorTx: number;
 };
 
-export function palisadeSitePath(site: PalisadeConstructionSite): PalisadeRenderPath {
+export function palisadeSitePath(site: WallConstructionSite): PalisadeRenderPath {
   return site.path;
 }
 

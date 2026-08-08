@@ -6,6 +6,7 @@ import {
   type ConstructionSite,
 } from "../economy/construction";
 import {
+  isWallConstructionSite,
   palisadeConstructionSchedule,
   PALISADE_CANCELLATION_DISABLED_REASON,
 } from "../economy/palisadeConstruction";
@@ -108,5 +109,5 @@ export function constructionSiteCardModel(
 }
 
 export function constructionCancellationDisabledReason(site: ConstructionSite): string | null {
-  return site.kind === "palisade_segment" ? PALISADE_CANCELLATION_DISABLED_REASON : null;
+  return isWallConstructionSite(site) ? PALISADE_CANCELLATION_DISABLED_REASON : null;
 }

@@ -39,4 +39,19 @@ export type PalisadeConstructionSite = ConstructionSiteCommon & {
   readonly anchor: TileCoordinate;
 };
 
-export type ConstructionSite = BuildingConstructionSite | PalisadeConstructionSite;
+export type StoneWallConstructionSite = ConstructionSiteCommon & {
+  readonly kind: "stone_wall_segment";
+  readonly wallId: string;
+  readonly segmentIndex: number;
+  readonly gateDistance: number;
+  readonly order: number;
+  readonly path: TileEdgePath;
+  readonly anchor: TileCoordinate;
+};
+
+export type WallConstructionSite = PalisadeConstructionSite | StoneWallConstructionSite;
+
+export type ConstructionSite =
+  | BuildingConstructionSite
+  | PalisadeConstructionSite
+  | StoneWallConstructionSite;

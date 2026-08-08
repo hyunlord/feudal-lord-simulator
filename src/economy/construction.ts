@@ -11,6 +11,7 @@ export {
   constructionSiteId,
   createConstructionSite,
   createPalisadeConstructionSite,
+  createStoneWallConstructionSite,
   requiredConstructionMaterials,
   type BuildingConstructionSite,
   type ConstructionResourceAmounts,
@@ -19,7 +20,10 @@ export {
   type ConstructionStall,
   type CreateConstructionSiteInput,
   type CreatePalisadeConstructionSiteInput,
+  type CreateStoneWallConstructionSiteInput,
   type PalisadeConstructionSite,
+  type StoneWallConstructionSite,
+  type WallConstructionSite,
 } from "./constructionSites";
 export {
   constructionSiteAnchor,
@@ -27,6 +31,8 @@ export {
   constructionSiteDisplayName,
   constructionSiteFootprint,
   isBuildingConstructionSite,
+  isStoneWallConstructionSite,
+  isWallConstructionSite,
 } from "./constructionSiteAccessors";
 
 export type ConstructionStage =

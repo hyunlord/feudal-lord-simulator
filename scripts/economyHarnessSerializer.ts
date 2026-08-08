@@ -57,6 +57,7 @@ function normalizeConstructionSite(site: ConstructionSite) {
   };
   switch (site.kind) {
     case "palisade_segment":
+    case "stone_wall_segment":
       return {
         ...common,
         wallId: site.wallId,
@@ -108,6 +109,9 @@ function normalizePalisadeSegment(segment: PalisadeSegment) {
     tileCount: segment.tileCount,
     completed: segment.completed,
     constructionSiteId: segment.constructionSiteId,
+    gateDistance: segment.gateDistance ?? null,
+    material: segment.material ?? "timber",
+    replacementConstructionSiteId: segment.replacementConstructionSiteId ?? null,
   };
 }
 

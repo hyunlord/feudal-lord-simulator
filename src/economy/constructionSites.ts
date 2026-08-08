@@ -11,6 +11,7 @@ import {
 import type {
   BuildingConstructionSite,
   PalisadeConstructionSite,
+  StoneWallConstructionSite,
 } from "../domain/constructionSite";
 export type {
   BuildingConstructionSite,
@@ -18,6 +19,8 @@ export type {
   ConstructionSite,
   ConstructionStall,
   PalisadeConstructionSite,
+  StoneWallConstructionSite,
+  WallConstructionSite,
 } from "../domain/constructionSite";
 
 export type ConstructionSiteFootprint = {
@@ -45,6 +48,8 @@ export type CreatePalisadeConstructionSiteInput = {
   readonly startedTick: number;
 };
 
+export type CreateStoneWallConstructionSiteInput = CreatePalisadeConstructionSiteInput;
+
 export const CONSTRUCTION = {
   MAX_BUILDERS_PER_SITE: 3,
   MIN_VISIBLE_TICKS: 60,
@@ -71,6 +76,8 @@ export const CONSTRUCTION = {
 const PALISADE_SEGMENT_TIMBER_PER_STEP = 15;
 const PALISADE_SEGMENT_MAX_STEPS = 4;
 const PALISADE_SEGMENT_REQUIRED_BUILDER_TICKS = 120;
+const STONE_WALL_SEGMENT_STONE = 25;
+const STONE_WALL_SEGMENT_REQUIRED_BUILDER_TICKS = 200;
 
 function amount(record: Partial<Record<ResourceType, number>>, resource: ResourceType): number {
   return record[resource] ?? 0;
@@ -158,6 +165,37 @@ export function createPalisadeConstructionSite(
     reserved: {},
     builderTicks: 0,
     requiredBuilderTicks: PALISADE_SEGMENT_REQUIRED_BUILDER_TICKS,
+    assignedBuilders: 0,
+    stall: "awaiting_materials",
+    startedTick: input.startedTick,
+  };
+}
+
+export function createStoneWallConstructionSite(
+  input: CreateStoneWallConstructionSiteInput,
+): StoneWallConstructionSite {
+  const steps = tileEdgePathSteps(input.path);
+  if (input.path.length < 2 || steps <= 0) {
+    throw new InvalidPalisadeConstructionSiteError("Stone wall construction path must contain at least one step");
+  }
+  if (steps > PALISADE_SEGMENT_MAX_STEPS) {
+    throw new InvalidPalisadeConstructionSiteError("Stone wall construction path cannot exceed four steps");
+  }
+  const path = input.path.map((point) => ({ x: point.x, y: point.y }));
+  return {
+    id: input.id,
+    kind: "stone_wall_segment",
+    wallId: input.wallId,
+    segmentIndex: input.segmentIndex,
+    gateDistance: input.gateDistance,
+    order: input.order,
+    path,
+    anchor: pathAnchor(path),
+    required: { stone: STONE_WALL_SEGMENT_STONE },
+    delivered: {},
+    reserved: {},
+    builderTicks: 0,
+    requiredBuilderTicks: STONE_WALL_SEGMENT_REQUIRED_BUILDER_TICKS,
     assignedBuilders: 0,
     stall: "awaiting_materials",
     startedTick: input.startedTick,

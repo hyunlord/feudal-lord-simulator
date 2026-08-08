@@ -211,10 +211,13 @@ function palisadeSegments(sites: readonly PalisadeConstructionSite[]): readonly 
   return sites.map((site) => ({
     id: site.id,
     order: site.order,
+    gateDistance: site.gateDistance,
     edgePath: site.path,
     tileCount: palisadePerimeterSteps(site.path),
     completed: false,
     constructionSiteId: site.id,
+    material: "timber",
+    replacementConstructionSiteId: null,
   }));
 }
 

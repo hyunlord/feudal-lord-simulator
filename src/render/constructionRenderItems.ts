@@ -4,6 +4,7 @@ import {
 } from "../economy/construction";
 import {
   isPalisadeConstructionSite,
+  isStoneWallConstructionSite,
   palisadeConstructionSchedule,
   type PalisadeConstructionSchedule,
 } from "../economy/palisadeConstruction";
@@ -29,7 +30,7 @@ export function constructionSiteRenderItem(
   sites: readonly ConstructionSite[],
   range: TileRange,
 ): ConstructionSiteRenderItem | null {
-  if (isPalisadeConstructionSite(site)) {
+  if (isPalisadeConstructionSite(site) || isStoneWallConstructionSite(site)) {
     const path = palisadeSitePath(site);
     if (!palisadePathVisible(path, range)) return null;
     const anchor = palisadeRenderAnchor(path);

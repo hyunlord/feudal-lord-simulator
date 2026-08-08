@@ -348,6 +348,7 @@ test("advanceTick completes a ready palisade segment as wall state without creat
     tileCount: 2,
     completed: true,
     constructionSiteId: null,
+    material: "timber",
   }]);
   assert.deepEqual(next.walkers.filter(({ kind }) => kind === "builder"), []);
   assert.deepEqual(constructionCompletionEvents(proclaimed, next), []);

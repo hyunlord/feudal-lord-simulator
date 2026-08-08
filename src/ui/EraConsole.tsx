@@ -1,4 +1,4 @@
-import { palisadeConstructionSchedule } from "../economy/palisadeConstruction";
+import { isWallConstructionSite, palisadeConstructionSchedule } from "../economy/palisadeConstruction";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
 import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
@@ -222,14 +222,14 @@ function wallProgress(state: GameState): string | null {
 function wallDiagnostic(state: GameState): string | null {
   if (state.palisade === null) return null;
   const activeSite = state.constructionSites.find((site) =>
-    site.kind === "palisade_segment"
+    isWallConstructionSite(site)
       && palisadeConstructionSchedule(site, state.constructionSites).kind === "active",
   );
   const queuedCount = state.constructionSites.filter((site) =>
-    site.kind === "palisade_segment"
+    isWallConstructionSite(site)
       && palisadeConstructionSchedule(site, state.constructionSites).kind === "queued",
   ).length;
-  const activeLabel = activeSite === undefined || activeSite.kind !== "palisade_segment"
+  const activeLabel = activeSite === undefined || !isWallConstructionSite(activeSite)
     ? "활성 구간 없음"
     : constructionSiteCardModel(activeSite, { constructionSites: state.constructionSites }).name
       .replace("목책 구간", `활성 구간 ${activeSite.order + 1}/${state.palisade.segments.length}`);

@@ -3,6 +3,7 @@ import type { Era } from "../content/eraConfig";
 import {
   activePalisadeSiteId as activePalisadeSiteIdForWall,
   isPalisadeConstructionSite,
+  isStoneWallConstructionSite,
 } from "../domain/palisadeConstructionSchedule";
 
 export type PalisadeEraLabourOptions = {
@@ -52,13 +53,9 @@ function firstActivePalisadeSiteId(sites: readonly ConstructionLabourSite[]): st
 
 function firstActiveStoneTownSiteId(sites: readonly ConstructionLabourSite[]): string | null {
   const activeSites = sites
-    .filter((site) => {
-      if (isPalisadeConstructionSite(site)) {
-        return activePalisadeSiteIdForWall(sites, site.wallId) === site.id;
-      }
-      return true;
-    })
-    .sort((left, right) => left.id.localeCompare(right.id));
+    .filter(isStoneWallConstructionSite)
+    .filter((site) => activePalisadeSiteIdForWall(sites, site.wallId) === site.id)
+    .sort((left, right) => left.order - right.order || left.id.localeCompare(right.id));
   return activeSites[0]?.id ?? null;
 }
 

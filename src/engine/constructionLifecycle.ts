@@ -9,9 +9,12 @@ import {
   type BuildingConstructionSite,
   type ConstructionSite,
   type PalisadeConstructionSite,
+  type StoneWallConstructionSite,
+  type WallConstructionSite,
 } from "../economy/construction";
 import {
   isPalisadeConstructionSite,
+  isStoneWallConstructionSite,
   palisadeConstructionSchedule,
 } from "../economy/palisadeConstruction";
 import type { House } from "../population/population.types";
@@ -90,11 +93,21 @@ export function completeEligibleConstruction(state: GameState): GameState {
     : state.constructionSites
         .filter(isPalisadeConstructionSite)
         .filter((site) => canCompleteConstruction(site, state.wallTick));
-  if (completedBuildings.length === 0 && completedPalisadeSites.length === 0) return state;
+  const completedStoneWallSites = state.palisade === null
+    ? []
+    : state.constructionSites
+        .filter(isStoneWallConstructionSite)
+        .filter((site) => canCompleteConstruction(site, state.wallTick));
+  if (
+    completedBuildings.length === 0 &&
+    completedPalisadeSites.length === 0 &&
+    completedStoneWallSites.length === 0
+  ) return state;
 
   const completedIds = new Set([
     ...completedBuildings.map((site) => site.id),
     ...completedPalisadeSites.map((site) => site.id),
+    ...completedStoneWallSites.map((site) => site.id),
   ]);
   const completedHouses = completedBuildings.flatMap((site) => {
     const house = houseFromSite(site);
@@ -110,23 +123,44 @@ export function completeEligibleConstruction(state: GameState): GameState {
     constructionSites: state.constructionSites.filter((site) => !completedIds.has(site.id)),
     houses: [...state.houses, ...completedHouses],
     walkers: activeWalkers,
-    palisade: completePalisadeSegments(state.palisade, completedPalisadeSites),
+    palisade: completePalisadeSegments(
+      state.palisade,
+      completedPalisadeSites,
+      completedStoneWallSites,
+    ),
   };
 }
 
 function completePalisadeSegments(
   palisade: PalisadeState | null,
   completedSites: readonly PalisadeConstructionSite[],
+  completedStoneSites: readonly StoneWallConstructionSite[],
 ): PalisadeState | null {
-  if (palisade === null || completedSites.length === 0) return palisade;
-  const completedIds = new Set(completedSites.map((site) => site.id));
+  if (palisade === null || (completedSites.length === 0 && completedStoneSites.length === 0)) {
+    return palisade;
+  }
+  const completedIds = new Set<WallConstructionSite["id"]>(completedSites.map((site) => site.id));
+  const completedStoneIds = new Set<WallConstructionSite["id"]>(completedStoneSites.map((site) => site.id));
   return {
     ...palisade,
-    segments: palisade.segments.map((segment) =>
-      segment.constructionSiteId !== null && completedIds.has(segment.constructionSiteId)
-        ? { ...segment, completed: true, constructionSiteId: null }
-        : segment,
-    ),
+    segments: palisade.segments.map((segment) => {
+      if (
+        segment.replacementConstructionSiteId !== null &&
+        segment.replacementConstructionSiteId !== undefined &&
+        completedStoneIds.has(segment.replacementConstructionSiteId)
+      ) {
+        return {
+          ...segment,
+          completed: true,
+          constructionSiteId: null,
+          material: "stone",
+          replacementConstructionSiteId: null,
+        };
+      }
+      return segment.constructionSiteId !== null && completedIds.has(segment.constructionSiteId)
+        ? { ...segment, completed: true, constructionSiteId: null, material: "timber" }
+        : segment;
+    }),
   };
 }
 

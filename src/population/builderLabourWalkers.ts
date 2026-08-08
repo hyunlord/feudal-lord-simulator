@@ -24,6 +24,7 @@ const BUILDER_ANCHORS = [
 function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordinate {
   switch (site.kind) {
     case "palisade_segment":
+    case "stone_wall_segment":
       return site.anchor;
     case "house":
     case "well":
