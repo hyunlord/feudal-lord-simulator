@@ -41,7 +41,7 @@ export function GameCanvas({
   onPalisadeDraftChange,
   onPalisadeDraftCancel,
 }: GameCanvasProps) {
-  const { state, dispatch } = useGameStore();
+  const { state, previousRenderState, interpolationAlpha, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
   const [selection, setSelection] = useState<AnchoredWorldSelection | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -49,6 +49,8 @@ export function GameCanvas({
   useGameCanvasRuntime({
     canvasRef,
     state,
+    previousRenderState,
+    interpolationAlpha,
     dispatch,
     selectedTool,
     overlayMode,

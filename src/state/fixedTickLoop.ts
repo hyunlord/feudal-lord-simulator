@@ -33,6 +33,7 @@ export function createFixedTickLoop(input: FixedTickLoopInput): FixedTickLoop {
   let previousTimestampMs: number | null = null;
   let frameId: number | null = null;
   let running = false;
+  let paused = input.getSpeed() === 0;
 
   const requestNextFrame = () => {
     frameId = input.scheduler.request(runFrame);
@@ -53,10 +54,12 @@ export function createFixedTickLoop(input: FixedTickLoopInput): FixedTickLoop {
     const speed = input.getSpeed();
 
     if (speed === 0) {
+      paused = true;
       accumulatorMs = 0;
       requestNextFrame();
       return;
     }
+    paused = false;
 
     accumulatorMs = Math.min(
       accumulatorMs + elapsedMs * speed,
@@ -83,11 +86,12 @@ export function createFixedTickLoop(input: FixedTickLoopInput): FixedTickLoop {
     },
     stop: () => {
       running = false;
+      paused = true;
       previousTimestampMs = null;
       accumulatorMs = 0;
       if (frameId !== null) input.scheduler.cancel(frameId);
       frameId = null;
     },
-    interpolationAlpha: () => Math.min(1, accumulatorMs / TICK_DURATION_MS),
+    interpolationAlpha: () => paused ? 1 : Math.min(1, accumulatorMs / TICK_DURATION_MS),
   };
 }

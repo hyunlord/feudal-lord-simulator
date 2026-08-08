@@ -4,6 +4,7 @@ import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 
 export function useGameCanvasRuntimeRefs(input: {
   readonly state: GameCanvasRuntimeInput["state"];
+  readonly previousRenderState: GameCanvasRuntimeInput["previousRenderState"];
   readonly selectedTool: GameCanvasRuntimeInput["selectedTool"];
   readonly overlayMode: GameCanvasRuntimeInput["overlayMode"];
   readonly selection: GameCanvasRuntimeInput["selection"];
@@ -13,6 +14,7 @@ export function useGameCanvasRuntimeRefs(input: {
   readonly palisadeCeremonyStartedAtMs: NonNullable<GameCanvasRuntimeInput["palisadeCeremonyStartedAtMs"]> | null;
 }) {
   const stateRef = useRef(input.state);
+  const previousRenderStateRef = useRef(input.previousRenderState);
   const selectedToolRef = useRef(input.selectedTool);
   const overlayModeRef = useRef(input.overlayMode);
   const selectionRef = useRef(input.selection);
@@ -23,6 +25,7 @@ export function useGameCanvasRuntimeRefs(input: {
 
   useEffect(() => {
     stateRef.current = input.state;
+    previousRenderStateRef.current = input.previousRenderState;
     selectedToolRef.current = input.selectedTool;
     overlayModeRef.current = input.overlayMode;
     selectionRef.current = input.selection;
@@ -39,10 +42,12 @@ export function useGameCanvasRuntimeRefs(input: {
     input.selectedTool,
     input.selection,
     input.state,
+    input.previousRenderState,
   ]);
 
   return {
     stateRef,
+    previousRenderStateRef,
     selectedToolRef,
     overlayModeRef,
     selectionRef,

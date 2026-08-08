@@ -189,6 +189,6 @@ test("construction site card model adds material diagnostics when state facts ar
   // Then
   assert.deepEqual(model.rows.at(-1), {
     label: "자재 진단",
-    value: "목재 12/30 · 예약 8 · 창고 북서쪽 8칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 57틱",
+    value: "목재 12/30 · 예약 8 · 창고 북서쪽 8칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 33틱",
   });
 });

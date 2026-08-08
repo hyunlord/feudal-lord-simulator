@@ -1,3 +1,4 @@
+import type { Walker } from "../agents/walker.types";
 import type { BuildingKind } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { CameraState } from "./camera";
@@ -58,6 +59,7 @@ export type RenderFrameInput = {
   readonly nowMs?: number;
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
+  readonly renderWalkers?: readonly Walker[] | undefined;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
@@ -77,6 +79,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     visibleTiles,
     range,
     includeGroundCover: renderDetailLevel(input.camera.zoom) === "full",
+    renderWalkers: input.renderWalkers,
   });
   const constructionEffects = constructionCompletionEffectsForFrame(
     input.completionTracker ?? createConstructionCompletionTracker(),

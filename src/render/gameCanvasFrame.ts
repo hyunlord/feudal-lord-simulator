@@ -1,3 +1,4 @@
+import type { Walker } from "../agents/walker.types";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
@@ -23,6 +24,7 @@ type GameCanvasFrameInput = {
   readonly nowMs: number;
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
+  readonly renderWalkers?: readonly Walker[] | undefined;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
@@ -57,6 +59,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     nowMs: input.nowMs,
     selectedBuildingId: input.selectedBuildingId ?? null,
     selectedWalkerId: input.selectedWalkerId ?? null,
+    renderWalkers: input.renderWalkers,
     highlightedHouseIds: input.highlightedHouseIds ?? [],
     palisadeDraft: input.palisadeDraft ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,

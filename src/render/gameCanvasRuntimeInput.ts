@@ -11,6 +11,8 @@ import type { AnchoredWorldSelection } from "./worldSelection";
 export type GameCanvasRuntimeInput = {
   readonly canvasRef: RefObject<HTMLCanvasElement | null>;
   readonly state: GameState;
+  readonly previousRenderState: Pick<GameState, "walkers">;
+  readonly interpolationAlpha: () => number;
   readonly dispatch: Dispatch<GameAction>;
   readonly selectedTool: PlacementTool | null;
   readonly overlayMode: OverlayMode;

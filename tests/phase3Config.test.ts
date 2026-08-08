@@ -12,9 +12,9 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
   // Given / When / Then
   assert.deepEqual(BALANCE, {
     TICKS_PER_SECOND: 20,
-    CARTER_SPEED: 0.08,
+    CARTER_SPEED: 0.14,
     CARTER_CAPACITY: 8,
-    DISTRIBUTOR_SPEED: 0.06,
+    DISTRIBUTOR_SPEED: 0.11,
     DISTRIBUTOR_CAPACITY: 12,
     DISTRIBUTOR_INTERVAL: 120,
     DISTRIBUTOR_RANGE: 40,

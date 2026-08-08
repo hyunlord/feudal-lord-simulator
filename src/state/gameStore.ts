@@ -34,6 +34,7 @@ import type {
 import {
   browserAnimationFrameScheduler,
   createFixedTickLoop,
+  type FixedTickLoop,
 } from "./fixedTickLoop";
 
 const WORLD_SEED = 1;
@@ -100,14 +101,23 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 export function GameProvider({ children }: GameProviderProps) {
   const [state, setState] = useState(DEFAULT_GAME_STATE);
   const stateRef = useRef(state);
+  const previousRenderStateRef = useRef<Pick<GameState, "walkers">>(state);
+  const loopRef = useRef<FixedTickLoop | null>(null);
   const [speed, setSpeedState] = useState<GameSpeed>(0);
   const speedRef = useRef(speed);
 
   const dispatch = useCallback((action: GameAction) => {
-    const nextState = gameReducer(stateRef.current, action);
+    const currentState = stateRef.current;
+    const nextState = gameReducer(currentState, action);
+    previousRenderStateRef.current =
+      action.type === "commit_simulation_state" && currentState === action.previousState
+        ? action.previousState
+        : nextState;
     stateRef.current = nextState;
     setState(nextState);
   }, []);
+
+  const interpolationAlpha = useCallback(() => loopRef.current?.interpolationAlpha() ?? 1, []);
 
   const setSpeed = useCallback((nextSpeed: GameSpeed) => {
     speedRef.current = nextSpeed;
@@ -123,13 +133,17 @@ export function GameProvider({ children }: GameProviderProps) {
         dispatch({ type: "commit_simulation_state", previousState, nextState });
       },
     });
+    loopRef.current = loop;
     loop.start();
-    return loop.stop;
+    return () => {
+      loop.stop();
+      if (loopRef.current === loop) loopRef.current = null;
+    };
   }, [dispatch]);
 
   const value = useMemo(
-    () => ({ state, dispatch, speed, setSpeed }),
-    [dispatch, setSpeed, speed, state],
+    () => ({ state, previousRenderState: previousRenderStateRef.current, interpolationAlpha, dispatch, speed, setSpeed }),
+    [dispatch, interpolationAlpha, setSpeed, speed, state],
   );
   return createElement(GameStoreContext.Provider, { value }, children);
 }

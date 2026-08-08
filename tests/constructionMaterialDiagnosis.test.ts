@@ -105,7 +105,7 @@ test("Given an active material carter When diagnosing a construction site Then i
   assert.equal(diagnostics.length, 1);
   assert.deepEqual(diagnostics[0], {
     resource: "timber",
-    label: "목재 12/30 · 예약 8 · 창고 북서쪽 5칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 57틱",
+    label: "목재 12/30 · 예약 8 · 창고 북서쪽 5칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 33틱",
     delivered: 12,
     required: 30,
     reserved: 8,
@@ -114,7 +114,7 @@ test("Given an active material carter When diagnosing a construction site Then i
     sourceDistance: 5,
     carrierId: "carter-a",
     remainingPathDistance: 4.5,
-    etaTicks: 57,
+    etaTicks: 33,
   });
 });
 
@@ -126,7 +126,7 @@ test("Given a carter between road tiles When diagnosing ETA Then remaining dista
   });
 
   assert.equal(diagnostics[0]?.remainingPathDistance, 4.5);
-  assert.equal(diagnostics[0]?.etaTicks, 57);
+  assert.equal(diagnostics[0]?.etaTicks, 33);
 });
 
 test("Given a cancelled material carter When diagnosing a construction site Then stale carrier and ETA are not shown", () => {

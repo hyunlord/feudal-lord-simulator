@@ -38,6 +38,8 @@ export type GameAction =
 
 export interface GameStoreContextValue {
   state: GameState;
+  previousRenderState: Pick<GameState, "walkers">;
+  interpolationAlpha: () => number;
   dispatch: Dispatch<GameAction>;
   speed: GameSpeed;
   setSpeed: (speed: GameSpeed) => void;

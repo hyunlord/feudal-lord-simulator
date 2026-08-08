@@ -82,6 +82,26 @@ test("Given a paused fresh store When animation frames run Then no simulation st
   loop.stop();
 });
 
+test("Given a paused fixed loop When queried for interpolation Then alpha resolves to current", () => {
+  const scheduler = new ManualAnimationFrameScheduler();
+  const state = createEconomyHarnessScenario({ seed: 3 });
+  const loop = createFixedTickLoop({
+    scheduler,
+    getSpeed: () => 0,
+    getState: () => state,
+    commit: () => {
+      throw new Error("paused loop should not commit");
+    },
+  });
+
+  loop.start();
+  scheduler.runNext(0);
+  scheduler.runNext(1_000);
+
+  assert.equal(loop.interpolationAlpha(), 1);
+  loop.stop();
+});
+
 test("Given a fresh active store When the real frame loop runs 600 ticks Then time walkers and production advance", () => {
   const scheduler = new ManualAnimationFrameScheduler();
   let state = createEconomyHarnessScenario({ seed: 3 });

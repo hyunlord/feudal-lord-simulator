@@ -32,14 +32,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     houseMaterialWave = null,
     palisadeCeremonyStartedAtMs = null,
     onPalisadeDraftChange,
-    onPalisadeDraftCancel,
+    onPalisadeDraftCancel, previousRenderState, interpolationAlpha,
   } = input;
-  const { highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, selectedToolRef, selectionRef, stateRef } =
-    useGameCanvasRuntimeRefs({ state, selectedTool, overlayMode, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs });
+  const { highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef } =
+    useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs });
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d") ?? null;
+    const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
     if (canvas === null || context === null) return undefined;
 
     void preloadWorldAssets();
@@ -74,6 +73,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         selectedTool: selectedToolRef.current,
         overlayMode: overlayModeRef.current,
         selection: selectionRef.current,
+        previousRenderState: previousRenderStateRef.current, interpolationAlpha,
         highlightedHouseIds: highlightedHouseIdsRef.current,
         palisadeDraft: palisadeDraftRef.current,
         houseMaterialWave: houseMaterialWaveRef.current,

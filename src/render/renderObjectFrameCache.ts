@@ -1,3 +1,4 @@
+import type { Walker } from "../agents/walker.types";
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import { depthKey } from "./iso";
@@ -16,6 +17,7 @@ type ObjectRenderFrameInput = {
   readonly visibleTiles: readonly Tile[];
   readonly range: TileRange;
   readonly includeGroundCover: boolean;
+  readonly renderWalkers?: readonly Walker[] | undefined;
 };
 
 type StaticObjectRenderCacheEntry = {
@@ -34,7 +36,7 @@ export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
   const staticItems = staticObjectRenderItemsForFrame(input);
-  const walkerItems = walkerRenderItemsForFrame(input.state.walkers, input.range);
+  const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
 
@@ -79,7 +81,7 @@ const staticObjectRenderItemsForFrame = (
 };
 
 const walkerRenderItemsForFrame = (
-  walkers: GameState["walkers"],
+  walkers: readonly Walker[],
   range: TileRange,
 ): readonly ObjectRenderItem[] => {
   const items: ObjectRenderItem[] = [];
