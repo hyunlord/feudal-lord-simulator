@@ -28,21 +28,108 @@ def load_generator():
 
 
 class WorldAssetGeneratorContractTest(unittest.TestCase):
-    def test_catalog_has_exact_133_jobs_and_locked_geometry(self) -> None:
+    def test_stone_town_dry_run_enumerates_42_sequential_building_candidates(self) -> None:
+        module = load_generator()
+        calls: list[str] = []
+
+        def fail_api(path: str, body=None):
+            calls.append(path)
+            raise AssertionError("dry run must not contact ComfyUI")
+
+        module.api_json = fail_api
+        document = module.dry_run_manifest(frozenset({"building:stone_town"}))
+        jobs = document["jobs"]
+
+        self.assertEqual(document["summary"]["stoneTownSubjects"], 7)
+        self.assertEqual(document["summary"]["stoneTownCandidates"], 42)
+        self.assertEqual(document["summary"]["queuedJobs"], 42)
+        self.assertEqual(document["summary"]["comfyuiRequests"], 0)
+        self.assertEqual(calls, [])
+        self.assertEqual(
+            [(job["key"], job["candidate"]) for job in jobs],
+            [
+                (key, candidate)
+                for key in ("quarry", "masonry", "market", "church", "keep", "house_l4", "stone_wall_segment")
+                for candidate in range(1, 7)
+            ],
+        )
+        self.assertTrue(all(job["batchSize"] == 1 for job in jobs))
+        self.assertEqual(
+            {job["key"]: (job["width"], job["height"]) for job in jobs},
+            {
+                "quarry": (160, 120),
+                "masonry": (112, 120),
+                "market": (176, 136),
+                "church": (176, 208),
+                "keep": (176, 232),
+                "house_l4": (112, 160),
+                "stone_wall_segment": (96, 80),
+            },
+        )
+
+    def test_stone_town_generation_contracts_use_owner_forms_and_reference_family(self) -> None:
+        module = load_generator()
+        expected_clauses = {
+            "quarry": "an open cut into a rock face, cut blocks stacked on pallets, a timber crane frame, loose rubble",
+            "masonry": "a low workshop with an open working face, dressed blocks and a mason's banker outside, stone dust",
+            "market": "an open timber-framed hall, wide shingle roof on posts, trestle tables and cloth awnings beneath, no walls",
+            "church": "a small stone church, steep slate roof, square bell tower at one end, arched windows",
+            "keep": "a square stone tower house, crenellated parapet, slit windows, stone forebuilding at its base",
+            "house_l4": "a tall stone townhouse, three storeys, slate roof, shuttered windows, shop front at street level",
+            "stone_wall_segment": "dressed stone curtain wall with crenellated top, matching the palisade segment footprint",
+        }
+
+        for key, clause in expected_clauses.items():
+            with self.subTest(key=key):
+                jobs = [job for job in module.JOBS if job.key == key]
+                self.assertEqual([job.candidate for job in jobs], [1, 2, 3, 4, 5, 6])
+                self.assertEqual({job.geometry for job in jobs}, {clause})
+                self.assertNotRegex(clause.lower(), r"\b(function|implementation|sprite key)\b")
+                workflow = module.workflow_prompt(jobs[0], ("house.png", "mill.png", "granary.png"), "guide.png")
+                positive = str(next(node for node in workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+                negative = " ".join(str(node["inputs"]["text"]) for node in workflow.values() if node["class_type"] == "CLIPTextEncode")
+                self.assertIn("upper-left light", positive)
+                self.assertIn("exact 2:1 isometric camera from upper-left", positive)
+                self.assertIn("perfectly flat uniform #00FFFF chroma field", positive)
+                self.assertIn("no baked ground shadow", positive)
+                self.assertIn("transparent release background", positive)
+                self.assertIn("cast shadow", negative)
+                self.assertIn("gradient background", negative)
+                self.assertIn("house.png", str(workflow))
+                self.assertIn("mill.png", str(workflow))
+                self.assertIn("granary.png", str(workflow))
+
+    def test_catalog_has_exact_175_jobs_and_locked_geometry(self) -> None:
         module = load_generator()
 
         buildings = [job for job in module.JOBS if job.category.value == "building"]
         foliage = [job for job in module.JOBS if job.category.value == "foliage"]
         terrain = [job for job in module.JOBS if job.category.value == "terrain"]
         tree_stumps = [job for job in foliage if job.key in module.TREE_STUMP_GEOMETRY]
-        self.assertEqual(len(module.JOBS), 133)
-        self.assertEqual(len(buildings), 48)
+        self.assertEqual(len(module.JOBS), 175)
+        self.assertEqual(len(buildings), 90)
         self.assertEqual(len(foliage), 80)
         self.assertEqual(len(tree_stumps), 64)
         self.assertEqual(len(terrain), 5)
         self.assertEqual(
             sorted({job.key for job in buildings}),
-            ["house_l1", "house_l2", "house_l3", "logging_camp", "sawmill", "storehouse", "well", "wheat_farm"],
+            [
+                "church",
+                "house_l1",
+                "house_l2",
+                "house_l3",
+                "house_l4",
+                "keep",
+                "logging_camp",
+                "market",
+                "masonry",
+                "quarry",
+                "sawmill",
+                "stone_wall_segment",
+                "storehouse",
+                "well",
+                "wheat_farm",
+            ],
         )
         for key in {job.key for job in buildings}:
             seeds = [job.seed for job in buildings if job.key == key]

@@ -11,9 +11,7 @@ import {
   type RgbaImage,
 } from "./processBuildingSprite";
 
-export type BuildingSpriteKey = keyof typeof BUILDING_SPRITE_CONTRACTS;
 export type FoliageSpriteKey = keyof typeof FOLIAGE_SPRITE_CONTRACTS;
-export type WorldSpriteKey = BuildingSpriteKey | FoliageSpriteKey;
 
 export const BUILDING_SPRITE_CONTRACTS = {
   house_l1: { width: 96, height: 120, baselineY: 104, footprint: 1 },
@@ -25,6 +23,21 @@ export const BUILDING_SPRITE_CONTRACTS = {
   logging_camp: { width: 96, height: 104, baselineY: 88, footprint: 1 },
   sawmill: { width: 112, height: 112, baselineY: 96, footprint: 1 },
 } as const;
+
+export const STONE_TOWN_BUILDING_SPRITE_CONTRACTS = {
+  house_l4: { width: 112, height: 160, baselineY: 144, footprint: 1 },
+  quarry: { width: 160, height: 120, baselineY: 104, footprint: 2 },
+  masonry: { width: 112, height: 120, baselineY: 104, footprint: 1 },
+  market: { width: 176, height: 136, baselineY: 120, footprint: 2 },
+  church: { width: 176, height: 208, baselineY: 192, footprint: 2 },
+  keep: { width: 176, height: 232, baselineY: 216, footprint: 2 },
+  stone_wall_segment: { width: 96, height: 80, baselineY: 80, footprint: 1 },
+} as const;
+
+export type BuildingSpriteKey = keyof typeof BUILDING_SPRITE_CONTRACTS;
+export type StoneTownBuildingSpriteKey = keyof typeof STONE_TOWN_BUILDING_SPRITE_CONTRACTS;
+type AnyBuildingSpriteKey = BuildingSpriteKey | StoneTownBuildingSpriteKey;
+export type WorldSpriteKey = AnyBuildingSpriteKey | FoliageSpriteKey;
 
 export const FOLIAGE_SPRITE_CONTRACTS = {
   tree_oak_large: { width: 88, height: 112, baselineY: 112 },
@@ -43,22 +56,31 @@ export const FOLIAGE_SPRITE_CONTRACTS = {
 
 const WORLD_SPRITE_CONTRACTS = {
   ...BUILDING_SPRITE_CONTRACTS,
+  ...STONE_TOWN_BUILDING_SPRITE_CONTRACTS,
   ...FOLIAGE_SPRITE_CONTRACTS,
 } as const;
 
 const BUILDING_KEYS: ReadonlySet<WorldSpriteKey> = new Set([
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
+  "house_l4", "quarry", "masonry", "market", "church", "keep", "stone_wall_segment",
 ]);
 
 const ROOF_RAMPS = {
   house_l1: "thatch",
   house_l2: "slate",
   house_l3: "slate",
+  house_l4: "slate",
   well: "thatch",
   storehouse: "slate",
   logging_camp: "slate",
   sawmill: "slate",
-} as const satisfies Readonly<Record<Exclude<BuildingSpriteKey, "wheat_farm">, RampName>>;
+  quarry: "slate",
+  masonry: "slate",
+  market: "slate",
+  church: "slate",
+  keep: "slate",
+  stone_wall_segment: "slate",
+} as const satisfies Readonly<Record<Exclude<AnyBuildingSpriteKey, "wheat_farm">, RampName>>;
 
 const RAMP_NAMES = ["thatch", "timber", "plaster", "stone", "slate", "earth", "foliage", "water"] as const;
 const rampEntries = RAMP_NAMES.flatMap((name) =>
@@ -69,7 +91,7 @@ const INK_KEY = rgbKey(hexToRgb(PALETTE.ink));
 
 export const worldSpriteContract = (key: WorldSpriteKey) => WORLD_SPRITE_CONTRACTS[key];
 
-export const isBuildingSpriteKey = (key: WorldSpriteKey): key is BuildingSpriteKey => BUILDING_KEYS.has(key);
+export const isBuildingSpriteKey = (key: WorldSpriteKey): key is AnyBuildingSpriteKey => BUILDING_KEYS.has(key);
 
 const setRampColour = (rgba: Uint8Array, index: number, ramp: RampName): void => {
   const key = `${rgba[index]},${rgba[index + 1]},${rgba[index + 2]}`;
@@ -80,7 +102,7 @@ const setRampColour = (rgba: Uint8Array, index: number, ramp: RampName): void =>
   rgba[index + 2] = colour.b;
 };
 
-export const enforceBuildingMaterialPolicy = (image: RgbaImage, key: BuildingSpriteKey): RgbaImage => {
+export const enforceBuildingMaterialPolicy = (image: RgbaImage, key: AnyBuildingSpriteKey): RgbaImage => {
   const bounds = findOpaqueBounds(image);
   if (bounds === null) return image;
   const rgba = new Uint8Array(image.rgba);
@@ -140,7 +162,7 @@ export const processWorldSprite = (
   resize?: (image: RgbaImage, target: Dimensions) => RgbaImage,
 ): RgbaImage => {
   const contract = worldSpriteContract(key);
-  const buildingContract = isBuildingSpriteKey(key) ? BUILDING_SPRITE_CONTRACTS[key] : undefined;
+  const buildingContract = isBuildingSpriteKey(key) ? WORLD_SPRITE_CONTRACTS[key] : undefined;
   const contentWidth = buildingContract === undefined
     ? undefined
     : Math.min(buildingContract.width - 2, buildingContract.footprint === 1 ? 88 : 139);
@@ -225,16 +247,16 @@ const assertAlphaPolicy = (image: RgbaImage, key: WorldSpriteKey): void => {
   }
 };
 
-const assertVisibleWidth = (image: RgbaImage, key: BuildingSpriteKey): void => {
+const assertVisibleWidth = (image: RgbaImage, key: AnyBuildingSpriteKey): void => {
   const bounds = findOpaqueBounds(image);
   if (bounds === null) throw new Error(`${key} has no visible mass`);
-  const contract = BUILDING_SPRITE_CONTRACTS[key];
+  const contract = WORLD_SPRITE_CONTRACTS[key];
   const band = contract.footprint === 1 ? [64, 90] as const : [115, 141] as const;
   const width = bounds.right - bounds.left;
   if (width < band[0] || width > band[1]) throw new Error(`${key} visible width ${width}px is outside ${band[0]}..${band[1]}`);
 };
 
-export const assertBuildingRoofPolicy = (image: RgbaImage, key: Exclude<BuildingSpriteKey, "wheat_farm">): void => {
+export const assertBuildingRoofPolicy = (image: RgbaImage, key: Exclude<AnyBuildingSpriteKey, "wheat_farm">): void => {
   const bounds = findOpaqueBounds(image);
   if (bounds === null) throw new Error(`${key} has no visible mass`);
   const cutoff = bounds.top + Math.floor((bounds.bottom - bounds.top) * 0.5);

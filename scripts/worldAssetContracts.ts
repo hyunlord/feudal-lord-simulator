@@ -12,6 +12,16 @@ export const BUILDING_KEYS = [
   "sawmill",
 ] as const;
 
+export const STONE_TOWN_ASSET_KEYS = [
+  "quarry",
+  "masonry",
+  "market",
+  "church",
+  "keep",
+  "house_l4",
+  "stone_wall_segment",
+] as const;
+
 export const FOLIAGE_KEYS = [
   "tree_oak_large",
   "tree_oak_small",
@@ -53,6 +63,7 @@ export const WORLD_ASSET_KEYS = [
 ] as const;
 
 export type BuildingKey = (typeof BUILDING_KEYS)[number];
+export type StoneTownAssetKey = (typeof STONE_TOWN_ASSET_KEYS)[number];
 export type FoliageKey = (typeof FOLIAGE_KEYS)[number];
 export type TerrainKey = (typeof TERRAIN_KEYS)[number];
 export type TreeStumpKey = (typeof TREE_STUMP_KEYS)[number];
@@ -82,8 +93,12 @@ export type TerrainSpec = Dimensions & {
   readonly palettePolicy: TerrainPalettePolicy;
 };
 
+export const ACCEPTED_REFERENCE_KEYS = ["house_03", "mill_02", "granary_08"] as const;
+export type AcceptedReferenceKey = (typeof ACCEPTED_REFERENCE_KEYS)[number];
+
 const oneByOne = { width: 1, height: 1 } as const;
 const twoByTwo = { width: 2, height: 2 } as const;
+const wallFootprint = { width: 0, height: 0 } as const;
 
 export const BUILDING_SPECS = {
   house_l0: { width: 96, height: 112, baselineY: 96, footprint: oneByOne },
@@ -98,6 +113,101 @@ export const BUILDING_SPECS = {
   logging_camp: { width: 96, height: 104, baselineY: 88, footprint: oneByOne },
   sawmill: { width: 112, height: 112, baselineY: 96, footprint: oneByOne },
 } as const satisfies Readonly<Record<BuildingKey, SpriteSpec>>;
+
+export const STONE_TOWN_ASSET_CANDIDATE_COUNT = 6;
+
+export type StoneTownGenerationContract = SpriteSpec & {
+  readonly form: string;
+  readonly referenceKeys: readonly AcceptedReferenceKey[];
+  readonly lighting: "upper-left";
+  readonly background: "transparent";
+  readonly camera: "exact-2:1-isometric";
+  readonly palette: "canonical-muted";
+  readonly shadow: "no-baked-shadow";
+};
+
+export const STONE_TOWN_ASSET_SPECS = {
+  quarry: { width: 160, height: 120, baselineY: 104, footprint: twoByTwo },
+  masonry: { width: 112, height: 120, baselineY: 104, footprint: oneByOne },
+  market: { width: 176, height: 136, baselineY: 120, footprint: twoByTwo },
+  church: { width: 176, height: 208, baselineY: 192, footprint: twoByTwo },
+  keep: { width: 176, height: 232, baselineY: 216, footprint: twoByTwo },
+  house_l4: { width: 112, height: 160, baselineY: 144, footprint: oneByOne },
+  stone_wall_segment: { width: 96, height: 80, baselineY: 80, footprint: wallFootprint },
+} as const satisfies Readonly<Record<StoneTownAssetKey, SpriteSpec>>;
+
+export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
+  quarry: {
+    ...STONE_TOWN_ASSET_SPECS.quarry,
+    form: "an open cut into a rock face, cut blocks stacked on pallets, a timber crane frame, loose rubble",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+  masonry: {
+    ...STONE_TOWN_ASSET_SPECS.masonry,
+    form: "a low workshop with an open working face, dressed blocks and a mason's banker outside, stone dust",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+  market: {
+    ...STONE_TOWN_ASSET_SPECS.market,
+    form: "an open timber-framed hall, wide shingle roof on posts, trestle tables and cloth awnings beneath, no walls",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+  church: {
+    ...STONE_TOWN_ASSET_SPECS.church,
+    form: "a small stone church, steep slate roof, square bell tower at one end, arched windows",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+  keep: {
+    ...STONE_TOWN_ASSET_SPECS.keep,
+    form: "a square stone tower house, crenellated parapet, slit windows, stone forebuilding at its base",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+  house_l4: {
+    ...STONE_TOWN_ASSET_SPECS.house_l4,
+    form: "a tall stone townhouse, three storeys, slate roof, shuttered windows, shop front at street level",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+  stone_wall_segment: {
+    ...STONE_TOWN_ASSET_SPECS.stone_wall_segment,
+    form: "dressed stone curtain wall with crenellated top, matching the palisade segment footprint",
+    referenceKeys: ACCEPTED_REFERENCE_KEYS,
+    lighting: "upper-left",
+    background: "transparent",
+    camera: "exact-2:1-isometric",
+    palette: "canonical-muted",
+    shadow: "no-baked-shadow",
+  },
+} as const satisfies Readonly<Record<StoneTownAssetKey, StoneTownGenerationContract>>;
 
 export const FOLIAGE_SPECS = {
   tree_oak_large: { width: 88, height: 112, baselineY: 112, footprint: oneByOne },
@@ -143,9 +253,6 @@ export type AssetSource = {
 };
 
 export type Sha256 = string;
-
-export const ACCEPTED_REFERENCE_KEYS = ["house_03", "mill_02", "granary_08"] as const;
-export type AcceptedReferenceKey = (typeof ACCEPTED_REFERENCE_KEYS)[number];
 
 export type AcceptedReference = Dimensions & {
   readonly key: AcceptedReferenceKey;

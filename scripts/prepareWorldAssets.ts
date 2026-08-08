@@ -34,15 +34,6 @@ import {
   type FoliageSpriteKey,
 } from "./worldSpritePipeline";
 
-export type BuildingSelections = Readonly<Record<BuildingSpriteKey, number>>;
-
-export type PrepareWorldAssetOptions = {
-  readonly repoRoot: string;
-  readonly rawRoot: string;
-  readonly phase4bRoot: string;
-  readonly selections: BuildingSelections;
-};
-
 export class WorldAssetPreparationError extends Error {
   constructor(message: string) {
     super(message);
@@ -113,12 +104,22 @@ const newBuildingKeys = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly BuildingSpriteKey[];
 
+type ReleaseBuildingSelectionKey = (typeof newBuildingKeys)[number];
+export type BuildingSelections = Readonly<Record<ReleaseBuildingSelectionKey, number>>;
+
+export type PrepareWorldAssetOptions = {
+  readonly repoRoot: string;
+  readonly rawRoot: string;
+  readonly phase4bRoot: string;
+  readonly selections: BuildingSelections;
+};
+
 export const rawFoliageFileName = (key: FoliageSpriteKey, candidate = 1): string =>
   `${key}_${String(candidate).padStart(2, "0")}.png`;
 
 const sha256 = (filePath: string): string => createHash("sha256").update(readFileSync(filePath)).digest("hex");
 
-const sourceForBuilding = (key: BuildingSpriteKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
+const sourceForBuilding = (key: ReleaseBuildingSelectionKey, candidate: number): { readonly seed: number; readonly candidate: number } => {
   const subject = newBuildingKeys.indexOf(key);
   if (subject < 0) throw new WorldAssetPreparationError(`Unknown building selection ${key}`);
   return { seed: 64050100 + subject * 100 + candidate, candidate };

@@ -63,7 +63,7 @@ REFERENCE_PATHS: Final = (
 BASE_PROMPT: Final = (
     "exactly one subject only, one isolated medieval European object, painterly pixel-art game asset, exact 2:1 isometric camera from upper-left, "
     "upper-left light, coherent muted plaster timber stone thatch slate material vocabulary, crisp readable silhouette, "
-    "matching the supplied reference family, centered with generous padding"
+    "matching the supplied reference family, centered with generous padding, transparent release background, no baked ground shadow"
 )
 FOLIAGE_PROMPT: Final = (
     "exactly one subject only, one isolated painterly pixel-art woodland game asset, exact 2:1 isometric camera from upper-left, "
@@ -85,6 +85,24 @@ BUILDING_GEOMETRY: Final = {
     "wheat_farm": "a farmyard, not a building — a small timber hut at one corner of a ploughed field, furrows running across the plot",
     "logging_camp": "an open-sided timber shelter with a stack of cut logs beside it, sawhorse, wood chips on the ground",
     "sawmill": "an open-fronted timber sawmill with a tall vertical saw frame rising above the roofline, plank stacks outside, sawdust beneath the work face",
+}
+STONE_TOWN_BUILDING_GEOMETRY: Final = {
+    "quarry": "an open cut into a rock face, cut blocks stacked on pallets, a timber crane frame, loose rubble",
+    "masonry": "a low workshop with an open working face, dressed blocks and a mason's banker outside, stone dust",
+    "market": "an open timber-framed hall, wide shingle roof on posts, trestle tables and cloth awnings beneath, no walls",
+    "church": "a small stone church, steep slate roof, square bell tower at one end, arched windows",
+    "keep": "a square stone tower house, crenellated parapet, slit windows, stone forebuilding at its base",
+    "house_l4": "a tall stone townhouse, three storeys, slate roof, shuttered windows, shop front at street level",
+    "stone_wall_segment": "dressed stone curtain wall with crenellated top, matching the palisade segment footprint",
+}
+STONE_TOWN_BUILDING_SPECS: Final = {
+    "quarry": (160, 120),
+    "masonry": (112, 120),
+    "market": (176, 136),
+    "church": (176, 208),
+    "keep": (176, 232),
+    "house_l4": (112, 160),
+    "stone_wall_segment": (96, 80),
 }
 TREE_STUMP_GEOMETRY: Final = {
     "tree_oak_large": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
@@ -117,6 +135,9 @@ def _build_jobs() -> tuple[Job, ...]:
     for subject_index, (key, geometry) in enumerate(BUILDING_GEOMETRY.items(), start=1):
         for candidate in range(1, 7):
             jobs.append(Job(Category.BUILDING, key, geometry, Seed(64050000 + subject_index * 100 + candidate), candidate))
+    for subject_index, (key, geometry) in enumerate(STONE_TOWN_BUILDING_GEOMETRY.items(), start=1):
+        for candidate in range(1, 7):
+            jobs.append(Job(Category.BUILDING, key, geometry, Seed(64054000 + subject_index * 100 + candidate), candidate))
     for index, (key, geometry) in enumerate(FOLIAGE_GEOMETRY.items(), start=1):
         candidate_count = 8 if key in TREE_STUMP_GEOMETRY else 4
         for candidate in range(1, candidate_count + 1):
@@ -199,6 +220,12 @@ def _style_condition(category: Category) -> tuple[float, float]:
             return 0.01, 0.3
         case unreachable:
             assert_never(unreachable)
+
+
+def _job_dimensions(job: Job) -> tuple[int, int] | None:
+    if job.category is Category.BUILDING and job.key in STONE_TOWN_BUILDING_SPECS:
+        return STONE_TOWN_BUILDING_SPECS[job.key]
+    return None
 
 
 def workflow_prompt(job: Job, reference_names: tuple[str, str, str], guide_name: str | None) -> Workflow:
@@ -331,6 +358,44 @@ def build_subject_guide(job: Job) -> Image.Image:
                     draw.rectangle((335, 720, 455, 752), fill=wall)
                     draw.rectangle((350, 758, 470, 790), fill=wall)
                     draw.ellipse((535, 735, 760, 815), fill=earth)
+                case "quarry":
+                    draw.polygon(((145, 650), (455, 455), (890, 620), (580, 850)), fill=wall)
+                    draw.polygon(((210, 600), (475, 460), (810, 590), (555, 735)), fill=earth)
+                    draw.rectangle((600, 350, 635, 610), fill=dark)
+                    draw.line((520, 350, 715, 350), fill=dark, width=24)
+                    draw.rectangle((300, 705, 480, 770), fill=wall)
+                case "masonry":
+                    draw.polygon(((260, 610), (512, 455), (760, 610), (760, 780), (512, 890), (260, 780)), fill=wall)
+                    draw.polygon(((235, 590), (512, 390), (790, 590), (512, 700)), fill=roof)
+                    draw.rectangle((330, 670, 510, 800), fill=dark)
+                    draw.rectangle((555, 710, 725, 770), fill=wall)
+                case "market":
+                    draw.polygon(((170, 560), (512, 365), (860, 560), (512, 705)), fill=roof)
+                    for x in (245, 365, 650, 770):
+                        draw.rectangle((x, 555, x + 34, 825), fill=dark)
+                    draw.rectangle((310, 700, 715, 750), fill=earth)
+                    draw.rectangle((385, 625, 640, 675), fill=wall)
+                case "church":
+                    draw.polygon(((225, 565), (512, 370), (800, 565), (800, 810), (512, 915), (225, 810)), fill=wall)
+                    draw.polygon(((195, 540), (512, 250), (830, 540), (512, 690)), fill=roof)
+                    draw.rectangle((595, 175, 735, 575), fill=wall)
+                    draw.polygon(((570, 190), (665, 75), (760, 190), (665, 270)), fill=roof)
+                case "keep":
+                    draw.rectangle((335, 235, 690, 820), fill=wall)
+                    draw.rectangle((300, 195, 370, 260), fill=wall)
+                    draw.rectangle((470, 195, 555, 260), fill=wall)
+                    draw.rectangle((655, 195, 725, 260), fill=wall)
+                    draw.polygon(((260, 690), (440, 585), (635, 690), (450, 805)), fill=wall)
+                case "house_l4":
+                    draw.polygon(((320, 530), (512, 355), (705, 530), (705, 835), (512, 925), (320, 835)), fill=wall)
+                    draw.polygon(((285, 500), (512, 260), (740, 500), (512, 625)), fill=roof)
+                    draw.rectangle((390, 720, 630, 815), fill=dark)
+                    draw.rectangle((430, 580, 480, 650), fill=earth)
+                    draw.rectangle((545, 580, 595, 650), fill=earth)
+                case "stone_wall_segment":
+                    draw.rectangle((185, 600, 840, 760), fill=wall)
+                    for x in range(205, 805, 120):
+                        draw.rectangle((x, 515, x + 70, 610), fill=wall)
                 case "house_l1" | "house_l2" | "house_l3":
                     wide = job.key in {"house_l3", "storehouse"}
                     tall = job.key in {"house_l2", "house_l3"}
@@ -434,11 +499,17 @@ def wait_for_outputs(prompt_id: str) -> list[Path]:
 def selected_jobs(targets: frozenset[str] | None) -> tuple[Job, ...]:
     if targets is None:
         return JOBS
+    expanded_targets: set[str] = set()
+    for target in targets:
+        if target == "building:stone_town":
+            expanded_targets.update(f"building:{key}" for key in STONE_TOWN_BUILDING_GEOMETRY)
+        else:
+            expanded_targets.add(target)
     valid = {f"{job.category.value}:{job.key}" for job in JOBS}
-    unknown = sorted(targets - valid)
+    unknown = sorted(expanded_targets - valid)
     if unknown:
         raise GeneratorContractError(f"Unknown target(s): {', '.join(unknown)}")
-    return tuple(job for job in JOBS if f"{job.category.value}:{job.key}" in targets)
+    return tuple(job for job in JOBS if f"{job.category.value}:{job.key}" in expanded_targets)
 
 
 def _release_name(job: Job) -> str:
@@ -449,12 +520,15 @@ def _release_name(job: Job) -> str:
 def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonValue]:
     jobs = selected_jobs(targets)
     tree_stump_jobs = [job for job in JOBS if job.category is Category.FOLIAGE and job.key in TREE_STUMP_GEOMETRY]
+    stone_town_jobs = [job for job in jobs if job.category is Category.BUILDING and job.key in STONE_TOWN_BUILDING_GEOMETRY]
     return {
         "summary": {
             "catalogJobs": len(JOBS),
             "queuedJobs": len(jobs),
             "treeStumpSubjects": len(TREE_STUMP_GEOMETRY),
             "treeStumpCandidates": len(tree_stump_jobs),
+            "stoneTownSubjects": len(STONE_TOWN_BUILDING_GEOMETRY),
+            "stoneTownCandidates": len(stone_town_jobs),
             "comfyuiRequests": 0,
         },
         "jobs": [
@@ -464,6 +538,9 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
                 "candidate": job.candidate,
                 "seed": job.seed,
                 "geometry": job.geometry,
+                "batchSize": 1,
+                "referenceKeys": ["house_03", "mill_02", "granary_08"],
+                **({"width": _job_dimensions(job)[0], "height": _job_dimensions(job)[1]} if _job_dimensions(job) is not None else {}),
                 "sourcePath": (Path(job.category.value) / _release_name(job)).as_posix(),
             }
             for job in jobs

@@ -22,6 +22,8 @@ import {
   BUILDING_SPECS,
   FOLIAGE_KEYS,
   TERRAIN_SPECS,
+  STONE_TOWN_ASSET_KEYS,
+  STONE_TOWN_ASSET_SPECS,
   type WorldAssetManifest,
 } from "./worldAssetContracts";
 import { assertWorldAssetFiles, parseWorldAssetManifest } from "./worldAssetManifest";
@@ -63,6 +65,61 @@ const assertExactPngSet = (directory: string, expectedKeys: readonly string[]): 
   }
   const missing = expected.filter((name) => !actual.includes(name));
   if (missing.length > 0) throw new WorldAssetVerificationError(`missing PNG in ${directory}: ${missing.join(",")}`);
+};
+
+const assertStoneTownSelectedPngSet = (directory: string): void => {
+  assertExactPngSet(directory, STONE_TOWN_ASSET_KEYS);
+};
+
+const assertTransparentBoundary = (image: RgbaImage, key: string): void => {
+  const { width, height } = image.dimensions;
+  for (let x = 0; x < width; x += 1) {
+    if (image.rgba[(x * 4) + 3] !== 0) throw new WorldAssetVerificationError(`${key} has baked opaque background on top edge`);
+    if (image.rgba[((height - 1) * width + x) * 4 + 3] !== 0) {
+      throw new WorldAssetVerificationError(`${key} has baked opaque background on bottom edge`);
+    }
+  }
+  for (let y = 0; y < height; y += 1) {
+    if (image.rgba[(y * width) * 4 + 3] !== 0) throw new WorldAssetVerificationError(`${key} has baked opaque background on left edge`);
+    if (image.rgba[(y * width + width - 1) * 4 + 3] !== 0) {
+      throw new WorldAssetVerificationError(`${key} has baked opaque background on right edge`);
+    }
+  }
+};
+
+const assertCanonicalTransparentSprite = (
+  image: RgbaImage,
+  key: string,
+  spec: { readonly width: number; readonly height: number; readonly baselineY: number },
+): void => {
+  if (image.dimensions.width !== spec.width || image.dimensions.height !== spec.height) {
+    throw new WorldAssetVerificationError(
+      `${key} dimensions ${image.dimensions.width}x${image.dimensions.height} did not match ${spec.width}x${spec.height}`,
+    );
+  }
+  assertTransparentBoundary(image, key);
+  let visiblePixels = 0;
+  for (let index = 0; index < image.rgba.length; index += 4) {
+    const alpha = image.rgba[index + 3];
+    if (alpha !== 0 && alpha !== 179 && alpha !== 255) {
+      throw new WorldAssetVerificationError(`${key} has unsupported alpha ${String(alpha)}`);
+    }
+    if (alpha === 0) continue;
+    visiblePixels += 1;
+    const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
+    if (!canonicalColours.has(colour)) throw new WorldAssetVerificationError(`${key} has non-canonical colour ${colour}`);
+    const pixel = index / 4;
+    const y = Math.floor(pixel / image.dimensions.width);
+    if (y > spec.baselineY) throw new WorldAssetVerificationError(`${key} has baked shadow or opaque pixel below baseline ${spec.baselineY}`);
+  }
+  if (visiblePixels === 0) throw new WorldAssetVerificationError(`${key} has no visible selected pixels`);
+};
+
+export const assertStoneTownSelectedAssetSet = (directory: string): void => {
+  assertStoneTownSelectedPngSet(directory);
+  for (const key of STONE_TOWN_ASSET_KEYS) {
+    assertCanonicalTransparentSprite(readPng(path.join(directory, `${key}.png`)), key, STONE_TOWN_ASSET_SPECS[key]);
+  }
 };
 
 const assertPromotedContract = (image: RgbaImage, key: "house_l0" | "mill" | "barn"): void => {
