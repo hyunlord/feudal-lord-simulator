@@ -1,6 +1,14 @@
 import { hashEconomyState } from "./economyHarnessSerializer";
 import { trackRun } from "./economyHarnessTrace";
 import { createConstructionEconomyHarnessScenario } from "./economyHarnessConstructionScenario";
+import {
+  createPhase9EconomyHarnessScenario,
+  PHASE9_MAX_COIN_TICK,
+  PHASE9_MAX_ERA3_REQUIREMENT_TICK,
+  PHASE9_MAX_STONE_CHAIN_STALL_TICKS,
+  PHASE9_MAX_STONE_WALL_COMPLETION_TICKS,
+} from "./economyHarnessPhase9Scenario";
+import { trackPhase9Run, type Phase9RunTrace } from "./economyHarnessPhase9Trace";
 import { createStage3EconomyHarnessScenario, STAGE3_LEGACY_HASH, STAGE3_MAX_NON_WALL_STALL_TICKS, STAGE3_MAX_REQUIREMENT_TICK, STAGE3_MAX_WALL_COMPLETION_TICKS } from "./economyHarnessStage3Scenario";
 import { trackStage3Run, type Stage3RunTrace } from "./economyHarnessStage3Trace";
 
@@ -35,10 +43,34 @@ export interface Stage3EconomyHarnessReport extends EconomyHarnessReport {
   };
 }
 
+export interface Phase9EconomyHarnessReport extends Stage3EconomyHarnessReport {
+  readonly phase9: {
+    readonly hashA: string;
+    readonly hashB: string;
+    readonly workersRequested: number;
+    readonly workersUsed: number;
+    readonly initialTick: number;
+    readonly coinReachedTick: number | null;
+    readonly coin200ReachedTick: number | null;
+    readonly spendableStone400ReachedTick: number | null;
+    readonly era3ConditionsMetTick: number | null;
+    readonly proclamationTick: number | null;
+    readonly stoneWallCompleteTick: number | null;
+    readonly stoneWallCompletionElapsedTicks: number | null;
+    readonly maxStoneChainStallWithAccess: number;
+    readonly segmentMaterialGapTicks: number;
+  };
+  readonly phase9Metrics: readonly HarnessMetric[];
+}
+
 export interface RunEconomyHarnessInput {
   readonly scenario: Parameters<typeof hashEconomyState>[0];
   readonly ticks: number;
   readonly warmupTicks: number;
+}
+
+export interface RunPhase9EconomyHarnessInput {
+  readonly workers: number;
 }
 
 const assumptions = [
@@ -124,6 +156,48 @@ export function stage3Metrics(first: Stage3RunTrace, second: Stage3RunTrace): re
   ];
 }
 
+export function phase9Metrics(first: Phase9RunTrace, second: Phase9RunTrace): readonly HarnessMetric[] {
+  const coinElapsedTick = first.coinReachedTick === null ? null : first.coinReachedTick - first.initialTick;
+  const coinPassing = coinElapsedTick !== null && coinElapsedTick <= PHASE9_MAX_COIN_TICK;
+  const reachable = first.era3ConditionsMetTick !== null &&
+    first.era3ConditionsMetTick <= PHASE9_MAX_ERA3_REQUIREMENT_TICK;
+  const wallPassing = !reachable || (
+    first.stoneWallCompletionElapsedTicks !== null &&
+    first.stoneWallCompletionElapsedTicks <= PHASE9_MAX_STONE_WALL_COMPLETION_TICKS
+  );
+  return [
+    metric(
+      "Stone chain continuity",
+      `${first.maxStoneChainStallWithAccess} ticks with access`,
+      first.maxStoneChainStallWithAccess <= PHASE9_MAX_STONE_CHAIN_STALL_TICKS,
+    ),
+    metric(
+      "Market coin by 5000",
+      coinElapsedTick === null ? "no surplus sale" : `${coinElapsedTick} elapsed ticks`,
+      coinPassing,
+    ),
+    metric(
+      "Stone Town reachability",
+      first.era3ConditionsMetTick === null ? "not reachable" : `${first.era3ConditionsMetTick} ticks`,
+      reachable,
+    ),
+    metric(
+      "Stone wall completion",
+      !reachable
+        ? "not evaluated after late/unreachable proclamation"
+        : first.stoneWallCompletionElapsedTicks === null
+        ? "unfinished"
+        : `${first.stoneWallCompletionElapsedTicks} ticks after proclamation`,
+      wallPassing,
+    ),
+    metric(
+      "Segment material continuity",
+      `${first.segmentMaterialGapTicks} segment-gap ticks`,
+      first.segmentMaterialGapTicks === 0 && first.hash === second.hash,
+    ),
+  ];
+}
+
 export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarnessReport {
   const started = performance.now();
   const first = trackRun(input.scenario, input.ticks, input.warmupTicks);
@@ -184,6 +258,34 @@ export function runStage3EconomyHarness(): Stage3EconomyHarnessReport {
       wallCompleteTick: first.wallCompleteTick,
       wallCompletionElapsedTicks: first.wallCompletionElapsedTicks,
       maxNonWallProductionStall: first.maxNonWallProductionStall,
+    },
+  };
+}
+
+export function runPhase9EconomyHarness(input: RunPhase9EconomyHarnessInput): Phase9EconomyHarnessReport {
+  const stage3Report = runStage3EconomyHarness();
+  const first = trackPhase9Run(createPhase9EconomyHarnessScenario({ seed: 9 }));
+  const second = trackPhase9Run(createPhase9EconomyHarnessScenario({ seed: 9 }));
+  const phase9Rows = phase9Metrics(first, second);
+  return {
+    ...stage3Report,
+    metrics: [...stage3Report.metrics, ...phase9Rows],
+    phase9Metrics: phase9Rows,
+    phase9: {
+      hashA: first.hash,
+      hashB: second.hash,
+      workersRequested: input.workers,
+      workersUsed: Math.min(input.workers, 2),
+      initialTick: first.initialTick,
+      coinReachedTick: first.coinReachedTick,
+      coin200ReachedTick: first.coin200ReachedTick,
+      spendableStone400ReachedTick: first.spendableStone400ReachedTick,
+      era3ConditionsMetTick: first.era3ConditionsMetTick,
+      proclamationTick: first.proclamationTick,
+      stoneWallCompleteTick: first.stoneWallCompleteTick,
+      stoneWallCompletionElapsedTicks: first.stoneWallCompletionElapsedTicks,
+      maxStoneChainStallWithAccess: first.maxStoneChainStallWithAccess,
+      segmentMaterialGapTicks: first.segmentMaterialGapTicks,
     },
   };
 }
