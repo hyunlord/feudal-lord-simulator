@@ -18,6 +18,7 @@ import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { createConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
+import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
@@ -238,8 +239,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       clearSuppressClickTimeout();
       resetDrag();
     };
-
     resize();
+    const disposeAutoplayPulse = installAutoplayPulseRuntime(refs.feedbackRef);
     const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location });
     const disposeMinimapJump = installMinimapCameraJumpRuntime({ cameraRef: refs.cameraRef, markUserControlled: () => { userControlledCamera = true; }, target: window, viewport, world: () => worldBounds(stateRef.current.width, stateRef.current.height) });
     const disposeEvents = bindGameCanvasEvents({
@@ -248,7 +249,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     });
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      cancelAnimationFrame(frameId); disposeMinimapJump(); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
+      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeMinimapJump(); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection]);
 }

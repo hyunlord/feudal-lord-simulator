@@ -8,6 +8,7 @@ export { createConstructionEconomyHarnessScenario } from "./economyHarnessConstr
 export { createEconomyHarnessScenario } from "./economyHarnessScenario";
 export { createPhase9EconomyHarnessScenario } from "./economyHarnessPhase9Scenario";
 export { createStage3EconomyHarnessScenario } from "./economyHarnessStage3Scenario";
+export { trackAutoplayRun } from "./economyHarnessAutoplay";
 export {
   formatEconomyHarnessReport,
   hashEconomyState,
@@ -31,6 +32,12 @@ function isCliEntry(): boolean {
   return process.argv[1]?.endsWith("economyHarness.ts") === true;
 }
 
+export function runMainEconomyHarness(args: readonly string[]) {
+  return args.includes("--phase9")
+    ? runPhase9EconomyHarness(parsePhase9WorkerCount(args))
+    : runStage3EconomyHarness();
+}
+
 export function parsePhase9WorkerCount(args: readonly string[]): { readonly workers: number } {
   const workerArg = args.find((arg) => arg.startsWith("--workers="));
   if (workerArg === undefined) return { workers: 1 };
@@ -48,9 +55,7 @@ export function parsePhase9WorkerCount(args: readonly string[]): { readonly work
 if (isCliEntry()) {
   try {
     const args = process.argv.slice(2);
-    const report = args.includes("--phase9")
-      ? runPhase9EconomyHarness(parsePhase9WorkerCount(args))
-      : runStage3EconomyHarness();
+    const report = runMainEconomyHarness(args);
     console.log(formatEconomyHarnessReport(report));
   } catch (error) {
     if (error instanceof Error) {

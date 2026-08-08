@@ -7,6 +7,8 @@ import { createPhase9EconomyHarnessScenario } from "./economyHarnessPhase9Scenar
 import { trackPhase9Run } from "./economyHarnessPhase9Trace";
 import { createStage3EconomyHarnessScenario, STAGE3_LEGACY_HASH } from "./economyHarnessStage3Scenario";
 import { trackStage3Run } from "./economyHarnessStage3Trace";
+import { trackAutoplayRun } from "./economyHarnessAutoplay";
+import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 export { hashEconomyState } from "./economyHarnessSerializer";
 export { phase9Metrics, stage3Metrics } from "./economyHarnessEraMetrics";
@@ -20,9 +22,17 @@ export interface EconomyHarnessReport {
   readonly metrics: readonly HarnessMetric[];
   readonly assumptions: readonly string[];
   readonly runtimeMs: number;
+  readonly autoplay?: AutoplayHarnessBalanceResult;
+}
+
+export interface AutoplayHarnessBalanceResult {
+  readonly hashA: string;
+  readonly hashB: string;
+  readonly actionCount: number;
 }
 
 export interface Stage3EconomyHarnessReport extends EconomyHarnessReport {
+  readonly autoplay: AutoplayHarnessBalanceResult;
   readonly stage3: {
     readonly legacyHash: string;
     readonly hashA: string;
@@ -165,9 +175,16 @@ export function runStage3EconomyHarness(): Stage3EconomyHarnessReport {
   });
   const first = trackStage3Run(createStage3EconomyHarnessScenario({ seed: 3 }));
   const second = trackStage3Run(createStage3EconomyHarnessScenario({ seed: 3 }));
+  const autoplayFirst = trackAutoplayRun({ initialState: DEFAULT_GAME_STATE, ticks: 480 });
+  const autoplaySecond = trackAutoplayRun({ initialState: DEFAULT_GAME_STATE, ticks: 480 });
   return {
     ...baseReport,
     metrics: [...baseReport.metrics, ...stage3Metrics(first, second)],
+    autoplay: {
+      hashA: autoplayFirst.hash,
+      hashB: autoplaySecond.hash,
+      actionCount: autoplayFirst.appliedActions.length,
+    },
     stage3: {
       legacyHash: STAGE3_LEGACY_HASH,
       hashA: first.hash,
@@ -216,7 +233,11 @@ export function formatEconomyHarnessReport(report: EconomyHarnessReport): string
   ];
   const metricWidth = Math.max(...rows.map((row) => row[0]?.length ?? 0)) + 2;
   const valueWidth = Math.max(...rows.map((row) => row[1]?.length ?? 0)) + 2;
-  return rows
+  const metricTable = rows
     .map((row) => `${(row[0] ?? "").padEnd(metricWidth)}${(row[1] ?? "").padEnd(valueWidth)}${row[2] ?? ""}`)
     .join("\n");
+  if (report.autoplay === undefined) return metricTable;
+  const autoplay = report.autoplay;
+  const status = autoplay.hashA === autoplay.hashB && autoplay.actionCount > 0 ? "PASS" : "FAIL";
+  return `${metricTable}\nAutoplay advisor  ${autoplay.actionCount} actions, ${autoplay.hashA} == ${autoplay.hashB}  ${status}`;
 }

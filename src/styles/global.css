@@ -1200,6 +1200,12 @@ button {
   display: none;
 }
 
+.speed-control-stack {
+  display: grid;
+  align-self: start;
+  min-width: 0;
+}
+
 .speed-seals {
   display: grid;
   grid-template-columns: repeat(2, 30px);
@@ -1216,6 +1222,41 @@ button {
 .speed-seal svg {
   width: 100%;
   height: 100%;
+}
+
+.autoplay-control {
+  display: grid;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+/* contrast-audit selector=".autoplay-toggle" fg="--palette-ink" bg="--palette-parchment" size="12" role="body" */
+.autoplay-toggle {
+  min-height: 28px;
+  border: 1px solid var(--palette-ink);
+  background: var(--palette-parchment);
+  color: var(--palette-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.autoplay-toggle[aria-pressed="true"] {
+  background: var(--palette-gold);
+}
+
+.autoplay-toggle:focus-visible {
+  outline: 2px solid var(--palette-gold);
+  outline-offset: 2px;
+}
+
+/* contrast-audit selector=".autoplay-hint" fg="--palette-ink" bg="--palette-parchment" size="11" role="body" */
+.autoplay-hint {
+  color: var(--palette-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  line-height: 1.15;
+  word-break: keep-all;
 }
 
 @media (max-width: 900px) {
@@ -1563,6 +1604,11 @@ button {
     display: none;
   }
 
+  .speed-control-stack {
+    align-self: stretch;
+    width: 100%;
+  }
+
   .speed-seals {
     grid-template-columns: repeat(4, clamp(18px, 3.5vw, 21px));
     grid-auto-rows: clamp(18px, 3.5vw, 21px);
@@ -1575,6 +1621,23 @@ button {
     width: clamp(18px, 3.5vw, 21px);
     height: clamp(18px, 3.5vw, 21px);
     padding: 3px;
+  }
+
+  .autoplay-control {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+  }
+
+  .autoplay-toggle {
+    min-height: 20px;
+    padding: 1px 4px;
+    font-size: 10px;
+  }
+
+  .autoplay-hint {
+    font-size: 9px;
   }
 
   .seal-tooltip {
@@ -1729,6 +1792,15 @@ button {
     width: clamp(16px, 3vw, 18px);
     height: clamp(16px, 3vw, 18px);
     padding: 2px;
+  }
+
+  .autoplay-toggle {
+    min-height: 18px;
+    font-size: 9px;
+  }
+
+  .autoplay-hint {
+    font-size: 8px;
   }
 
   .seal-tooltip {
