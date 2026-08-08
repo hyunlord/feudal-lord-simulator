@@ -12,9 +12,12 @@ import {
 import {
   canvasHash,
   clickByAria,
+  clickCanvasFraction,
   clickTile,
   dragTile,
+  honestSnapshot,
   missingAssets,
+  openHonestPage,
   openProofPage,
   proofSnapshot,
   snapshot,
@@ -58,9 +61,7 @@ export async function runPhase10BrowserProof(config) {
       await client.send("Page.enable");
       await client.send("Runtime.enable");
       await client.send("Emulation.setDeviceMetricsOverride", { width: 1280, height: 720, deviceScaleFactor: 1, mobile: false });
-      const result = config.scenario === "part6-playthrough"
-        ? await runPlaythrough(client, config)
-        : await runFrameBudget(client, config);
+      const result = await runScenario(client, config);
       await mkdir(path.dirname(config.out), { recursive: true });
       await writeFile(config.out, `${JSON.stringify(result, null, 2)}\n`);
       return result;
@@ -70,6 +71,14 @@ export async function runPhase10BrowserProof(config) {
   } finally {
     await closeChrome(chromeSession);
   }
+}
+
+async function runScenario(client, config) {
+  if (config.scenario === "part6-playthrough") return runPlaythrough(client, config);
+  if (config.scenario === "frame-budget") return runFrameBudget(client, config);
+  if (config.scenario === "public-honest-read") return runPublicHonestRead(client, config);
+  if (config.scenario === "final-all") return runFinalAll(client, config);
+  throw new Error(`unsupported scenario ${config.scenario}`);
 }
 
 async function runPlaythrough(client, config) {
@@ -129,6 +138,74 @@ async function runFrameBudget(client, config) {
   if (!summary.ok) throw new Error(`frame p95 exceeded ${config.maxFrameMs}ms: ${JSON.stringify(summary)}`);
   if (canvas.visiblePixels === 0) throw new Error("frame-budget canvas was blank");
   return { schemaVersion: 1, scenario: config.scenario, revision: config.revision, revisionSource: config.revisionSource, revisionDirty: config.revisionDirty, speed: config.speed, durationMs: config.durationMs, maxFrameMs: config.maxFrameMs, ...summary, canvas };
+}
+
+async function runPublicHonestRead(client, config) {
+  await openHonestPage(client, config.url);
+  await mkdir(config.screenshotDir, { recursive: true });
+  const screenshots = [];
+  const startedAt = Date.now();
+  const opening = await honestSnapshot(client, config.screenshotDir, screenshots, "public-opening");
+  await clickByAria(client, "집");
+  await clickCanvasFraction(client, 0.44, 0.56);
+  const firstPlacement = await honestSnapshot(client, config.screenshotDir, screenshots, "public-first-building");
+  assertCanvasChanged(opening.canvas, firstPlacement.canvas, "first public building placement");
+  await clickByAria(client, "집");
+  await clickCanvasFraction(client, 0.56, 0.62);
+  const secondPlacement = await honestSnapshot(client, config.screenshotDir, screenshots, "public-two-buildings");
+  assertCanvasChanged(firstPlacement.canvas, secondPlacement.canvas, "second public building placement");
+  await clickByAria(client, "Normal speed");
+  await delay(config.watchMs);
+  await clickByAria(client, "Pause");
+  const afterWatch = await honestSnapshot(client, config.screenshotDir, screenshots, "public-after-two-minutes");
+  assertCanvasChanged(secondPlacement.canvas, afterWatch.canvas, "public two-minute watch");
+  const evidence = {
+    schemaVersion: 1,
+    scenario: config.scenario,
+    url: config.url,
+    revision: config.revision,
+    revisionSource: config.revisionSource,
+    revisionDirty: config.revisionDirty,
+    speed: config.speed,
+    watchMs: Date.now() - startedAt,
+    requestedWatchMs: config.watchMs,
+    placeBuildings: config.placeBuildings,
+    screenshots,
+    opening,
+    firstPlacement,
+    secondPlacement,
+    afterWatch,
+    blankCanvas: afterWatch.canvas.visiblePixels === 0,
+    missingAssets: afterWatch.documentSummary.resourceErrors,
+  };
+  if (evidence.watchMs < config.watchMs) throw new Error(`public honest-read watched ${evidence.watchMs}ms < ${config.watchMs}ms`);
+  if (evidence.blankCanvas) throw new Error("public honest-read canvas was blank");
+  if (evidence.missingAssets.length > 0) throw new Error(`public honest-read missing assets: ${evidence.missingAssets.join(",")}`);
+  if (!evidence.screenshots.includes("public-after-two-minutes")) throw new Error("missing public-after-two-minutes screenshot");
+  return evidence;
+}
+
+async function runFinalAll(client, config) {
+  const publicResult = await runPublicHonestRead(client, {
+    ...config,
+    scenario: "public-honest-read",
+    url: config.publicUrl,
+    watchMs: config.watchMs ?? 120_000,
+    placeBuildings: Math.max(2, config.placeBuildings),
+  });
+  return {
+    schemaVersion: 1,
+    scenario: "final-all",
+    localUrl: config.localUrl,
+    publicUrl: config.publicUrl,
+    evidenceRoot: config.evidenceRoot,
+    publicHonestRead: publicResult,
+  };
+}
+
+function assertCanvasChanged(before, after, label) {
+  if (before.hash === after.hash) throw new Error(`${label} did not change canvas hash ${after.hash}`);
+  if (after.visiblePixels === 0) throw new Error(`${label} produced blank canvas`);
 }
 
 async function placeTimberChain(client, dir, screenshots) {

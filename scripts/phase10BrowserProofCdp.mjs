@@ -11,6 +11,15 @@ export async function openProofPage(client, baseUrl) {
   await waitForProofPort(client);
 }
 
+export async function openHonestPage(client, baseUrl) {
+  await client.send("Page.addScriptToEvaluateOnNewDocument", { source: "localStorage.setItem('feudal-lord-simulator:welcome-dismissed:v1', '1');" });
+  const loaded = client.waitFor("Page.loadEventFired");
+  await client.send("Page.navigate", { url: baseUrl });
+  await loaded;
+  await waitForCanvas(client);
+  await frames(12);
+}
+
 export async function clickByAria(client, label) {
   const clicked = await client.evaluate(`(() => {
     const element = document.querySelector(${JSON.stringify(`[aria-label="${label}"]`)});
@@ -20,6 +29,18 @@ export async function clickByAria(client, label) {
   })()`, true);
   if (!clicked) throw new Error(`Missing aria-label ${label}`);
   await frames(2);
+}
+
+export async function clickCanvasFraction(client, xFraction, yFraction) {
+  const point = await client.evaluate(`(() => {
+    const canvas = document.querySelector("canvas.game-canvas");
+    if (canvas === null) throw new Error("game canvas missing");
+    const box = canvas.getBoundingClientRect();
+    return { clientX: box.left + box.width * ${xFraction}, clientY: box.top + box.height * ${yFraction} };
+  })()`, true);
+  await client.send("Input.dispatchMouseEvent", { type: "mousePressed", button: "left", buttons: 1, clickCount: 1, x: point.clientX, y: point.clientY });
+  await client.send("Input.dispatchMouseEvent", { type: "mouseReleased", button: "left", buttons: 0, clickCount: 1, x: point.clientX, y: point.clientY });
+  await frames(4);
 }
 
 export async function clickTile(client, tile) {
@@ -86,6 +107,23 @@ export async function snapshot(client, dir, screenshots, label) {
   return { snapshot: state, canvas };
 }
 
+export async function honestSnapshot(client, dir, screenshots, label) {
+  const canvas = await canvasHash(client);
+  const documentSummary = await client.evaluate(`(() => ({
+    title: document.title,
+    bodyText: document.body.innerText.slice(0, 2000),
+    buildButtons: [...document.querySelectorAll(".build-seal")].map((button) => button.getAttribute("aria-label") ?? button.textContent?.trim() ?? ""),
+    speedButtons: [...document.querySelectorAll(".speed-seal")].map((button) => button.getAttribute("aria-label") ?? button.textContent?.trim() ?? ""),
+    resourceErrors: performance.getEntriesByType("resource")
+      .filter((entry) => entry.name.includes("/assets/") && entry.transferSize === 0)
+      .map((entry) => entry.name),
+  }))()`, false);
+  const screenshot = await client.send("Page.captureScreenshot", { format: "png" });
+  await writeFile(path.join(dir, `${label}.png`), screenshot.data, "base64");
+  screenshots.push(label);
+  return { canvas, documentSummary };
+}
+
 export async function proofSnapshot(client) {
   return client.evaluate("window.__FEUDAL_PHASE10_PROOF__.snapshot()", true);
 }
@@ -124,6 +162,16 @@ async function waitForProofPort(client) {
     throw new Error("phase10 proof port did not become ready");
   })()`, true);
   await frames(12);
+}
+
+async function waitForCanvas(client) {
+  await client.evaluate(`(async () => {
+    for (let i = 0; i < 120; i += 1) {
+      if (document.querySelector("canvas.game-canvas") !== null) return true;
+      await new Promise((resolve) => setTimeout(resolve, 50));
+    }
+    throw new Error("game canvas did not become ready");
+  })()`, true);
 }
 
 function proofUrl(baseUrl) {

@@ -7,18 +7,24 @@ const REQUIRED_SHOTS = ["fresh", "placement", "road", "walker", "goods", "final"
 
 export function parsePhase10BrowserProofArgs(args) {
   const values = parsePairs(args);
-  const scenario = requiredChoice(values, "scenario", ["part6-playthrough", "frame-budget"]);
+  const scenario = requiredChoice(values, "scenario", ["part6-playthrough", "frame-budget", "public-honest-read", "final-all"]);
   const provenance = revisionProvenance(valueOrNull(values, "revision"));
-  const speed = readInteger(required(values, "speed"), "speed");
+  const evidenceRoot = valueOrNull(values, "evidence-root");
+  const speed = valueOrNull(values, "speed") === null && scenario === "final-all" ? 1 : readInteger(required(values, "speed"), "speed");
   const config = {
     scenario,
-    url: required(values, "url"),
+    url: valueOrNull(values, "url") ?? valueOrNull(values, "public-url") ?? valueOrNull(values, "local-url"),
     speed,
     ticks: valueOrNull(values, "ticks") === null ? null : readInteger(required(values, "ticks"), "ticks"),
     durationMs: valueOrNull(values, "duration-ms") === null ? null : readInteger(required(values, "duration-ms"), "duration-ms"),
+    watchMs: valueOrNull(values, "watch-ms") === null ? (scenario === "final-all" ? 120_000 : null) : readInteger(required(values, "watch-ms"), "watch-ms"),
+    placeBuildings: valueOrNull(values, "place-buildings") === null ? (scenario === "final-all" ? 2 : 0) : readInteger(required(values, "place-buildings"), "place-buildings"),
     maxFrameMs: valueOrNull(values, "max-frame-ms") === null ? 12 : Number.parseFloat(required(values, "max-frame-ms")),
-    out: required(values, "out"),
-    screenshotDir: required(values, "screenshot-dir"),
+    out: valueOrNull(values, "out") ?? (scenario === "final-all" && evidenceRoot !== null ? `${evidenceRoot}/final-all.json` : null),
+    screenshotDir: valueOrNull(values, "screenshot-dir") ?? (scenario === "final-all" && evidenceRoot !== null ? `${evidenceRoot}/screens` : null),
+    localUrl: valueOrNull(values, "local-url"),
+    publicUrl: valueOrNull(values, "public-url"),
+    evidenceRoot,
     ...provenance,
     chromePath: valueOrNull(values, "chrome-path") ?? process.env.CHROME_PATH ?? DEFAULT_CHROME,
     chromePort: valueOrNull(values, "chrome-port") === null ? 9236 : readInteger(required(values, "chrome-port"), "chrome-port"),
@@ -26,10 +32,26 @@ export function parsePhase10BrowserProofArgs(args) {
   if (scenario === "part6-playthrough" && (config.speed !== 1 || config.ticks !== 3000)) {
     throw new Error("part6-playthrough requires --speed 1 --ticks 3000");
   }
+  if (["part6-playthrough", "frame-budget", "public-honest-read"].includes(scenario) && config.url === null) throw new Error(`--url is required for ${scenario}`);
+  if (config.out === null) throw new Error("--out is required");
+  if (config.screenshotDir === null) throw new Error("--screenshot-dir is required");
   if (scenario === "frame-budget" && (config.speed !== 5 || config.durationMs !== 30_000)) {
     throw new Error("frame-budget requires --speed 5 --duration-ms 30000");
   }
+  if (scenario === "public-honest-read" && (config.speed !== 1 || config.watchMs === null || config.watchMs < 120_000 || config.placeBuildings < 2)) {
+    throw new Error("public-honest-read requires --speed 1 --watch-ms >= 120000 --place-buildings >= 2");
+  }
+  if (scenario === "final-all" && (config.localUrl === null || config.publicUrl === null || config.evidenceRoot === null)) {
+    throw new Error("final-all requires --local-url --public-url --evidence-root");
+  }
   if (!Number.isFinite(config.maxFrameMs) || config.maxFrameMs <= 0) throw new Error("max-frame-ms must be positive");
+  if (scenario === "part6-playthrough" || scenario === "frame-budget") {
+    delete config.watchMs;
+    delete config.placeBuildings;
+    delete config.localUrl;
+    delete config.publicUrl;
+    delete config.evidenceRoot;
+  }
   return config;
 }
 
