@@ -1,24 +1,16 @@
 import { hashEconomyState } from "./economyHarnessSerializer";
+import { phase9Metrics, stage3Metrics } from "./economyHarnessEraMetrics";
+import { harnessMetric, type HarnessMetric } from "./economyHarnessMetric";
 import { trackRun } from "./economyHarnessTrace";
 import { createConstructionEconomyHarnessScenario } from "./economyHarnessConstructionScenario";
-import {
-  createPhase9EconomyHarnessScenario,
-  PHASE9_MAX_COIN_TICK,
-  PHASE9_MAX_ERA3_REQUIREMENT_TICK,
-  PHASE9_MAX_STONE_CHAIN_STALL_TICKS,
-  PHASE9_MAX_STONE_WALL_COMPLETION_TICKS,
-} from "./economyHarnessPhase9Scenario";
-import { trackPhase9Run, type Phase9RunTrace } from "./economyHarnessPhase9Trace";
-import { createStage3EconomyHarnessScenario, STAGE3_LEGACY_HASH, STAGE3_MAX_NON_WALL_STALL_TICKS, STAGE3_MAX_REQUIREMENT_TICK, STAGE3_MAX_WALL_COMPLETION_TICKS } from "./economyHarnessStage3Scenario";
-import { trackStage3Run, type Stage3RunTrace } from "./economyHarnessStage3Trace";
+import { createPhase9EconomyHarnessScenario } from "./economyHarnessPhase9Scenario";
+import { trackPhase9Run } from "./economyHarnessPhase9Trace";
+import { createStage3EconomyHarnessScenario, STAGE3_LEGACY_HASH } from "./economyHarnessStage3Scenario";
+import { trackStage3Run } from "./economyHarnessStage3Trace";
 
 export { hashEconomyState } from "./economyHarnessSerializer";
-
-export interface HarnessMetric {
-  readonly label: string;
-  readonly value: string;
-  readonly status: "PASS" | "FAIL";
-}
+export { phase9Metrics, stage3Metrics } from "./economyHarnessEraMetrics";
+export type { HarnessMetric } from "./economyHarnessMetric";
 
 export interface EconomyHarnessReport {
   readonly determinism: {
@@ -82,10 +74,6 @@ const assumptions = [
   "Stage 2 construction metrics use real construction sites, tagged Carter reservations, and derived builder walkers.",
 ] as const;
 
-function metric(label: string, value: string, passing: boolean): HarnessMetric {
-  return { label, value, status: passing ? "PASS" : "FAIL" };
-}
-
 function rollingMax(values: readonly number[], window: number): number {
   let max = 0;
   let sum = 0;
@@ -129,75 +117,6 @@ function completionValue(completed: number, requested: number): string {
   return `${completed}/${requested} scripted sites (${rate}%)`;
 }
 
-export function stage3Metrics(first: Stage3RunTrace, second: Stage3RunTrace): readonly HarnessMetric[] {
-  const completed = first.wallCompletionElapsedTicks !== null &&
-    first.wallCompletionElapsedTicks <= STAGE3_MAX_WALL_COMPLETION_TICKS;
-  const reachable = first.requirementsMetTick !== null && first.requirementsMetTick <= STAGE3_MAX_REQUIREMENT_TICK;
-  return [
-    metric("Legacy Stage 2 hash", STAGE3_LEGACY_HASH, true),
-    metric("Stage 3 determinism hash", `${first.hash} == ${second.hash}`, first.hash === second.hash),
-    metric(
-      "Palisade reachability",
-      first.requirementsMetTick === null ? "not reachable" : `${first.requirementsMetTick} ticks`,
-      reachable,
-    ),
-    metric(
-      "Palisade wall completion",
-      first.wallCompletionElapsedTicks === null
-        ? "unfinished"
-        : `${first.wallCompletionElapsedTicks} ticks after proclamation`,
-      completed,
-    ),
-    metric(
-      "Palisade labour continuity",
-      `${first.maxNonWallProductionStall} ticks without non-wall production`,
-      first.maxNonWallProductionStall < STAGE3_MAX_NON_WALL_STALL_TICKS,
-    ),
-  ];
-}
-
-export function phase9Metrics(first: Phase9RunTrace, second: Phase9RunTrace): readonly HarnessMetric[] {
-  const coinElapsedTick = first.coinReachedTick === null ? null : first.coinReachedTick - first.initialTick;
-  const coinPassing = coinElapsedTick !== null && coinElapsedTick <= PHASE9_MAX_COIN_TICK;
-  const reachable = first.era3ConditionsMetTick !== null &&
-    first.era3ConditionsMetTick <= PHASE9_MAX_ERA3_REQUIREMENT_TICK;
-  const wallPassing = !reachable || (
-    first.stoneWallCompletionElapsedTicks !== null &&
-    first.stoneWallCompletionElapsedTicks <= PHASE9_MAX_STONE_WALL_COMPLETION_TICKS
-  );
-  return [
-    metric(
-      "Stone chain continuity",
-      `${first.maxStoneChainStallWithAccess} ticks with access`,
-      first.maxStoneChainStallWithAccess <= PHASE9_MAX_STONE_CHAIN_STALL_TICKS,
-    ),
-    metric(
-      "Market coin by 5000",
-      coinElapsedTick === null ? "no surplus sale" : `${coinElapsedTick} elapsed ticks`,
-      coinPassing,
-    ),
-    metric(
-      "Stone Town reachability",
-      first.era3ConditionsMetTick === null ? "not reachable" : `${first.era3ConditionsMetTick} ticks`,
-      reachable,
-    ),
-    metric(
-      "Stone wall completion",
-      !reachable
-        ? "not evaluated after late/unreachable proclamation"
-        : first.stoneWallCompletionElapsedTicks === null
-        ? "unfinished"
-        : `${first.stoneWallCompletionElapsedTicks} ticks after proclamation`,
-      wallPassing,
-    ),
-    metric(
-      "Segment material continuity",
-      `${first.segmentMaterialGapTicks} segment-gap ticks`,
-      first.segmentMaterialGapTicks === 0 && first.hash === second.hash,
-    ),
-  ];
-}
-
 export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarnessReport {
   const started = performance.now();
   const first = trackRun(input.scenario, input.ticks, input.warmupTicks);
@@ -217,23 +136,23 @@ export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarness
     assumptions,
     runtimeMs: Math.round(performance.now() - started),
     metrics: [
-      metric("Determinism hash", `${first.hash} == ${second.hash}`, first.hash === second.hash),
-      metric(
+      harnessMetric("Determinism hash", `${first.hash} == ${second.hash}`, first.hash === second.hash),
+      harnessMetric(
         "Food stability",
         first.breadProduced ? `${Math.round(foodStability * 1000) / 10}% starving` : "no bread produced",
         first.breadProduced && averageFood <= 0.2 && rollingFood <= 0.2,
       ),
-      metric("Cargo thrashing", `${cancellationMax} cancellations/1200`, cancellationMax < 5),
-      metric("Labour deadlock", `${first.maxLabourDeadlock} consecutive ticks`, first.maxLabourDeadlock < 600),
-      metric("Housing oscillation", `${oscillationMax} changes/2000`, oscillationMax < 4),
-      metric("Stall duration", `${first.maxStallDuration} consecutive ticks`, first.maxStallDuration < 1800),
-      metric("Builder starvation", `${first.maxBuilderStarvation} consecutive ticks`, first.maxBuilderStarvation < 600),
-      metric(
+      harnessMetric("Cargo thrashing", `${cancellationMax} cancellations/1200`, cancellationMax < 5),
+      harnessMetric("Labour deadlock", `${first.maxLabourDeadlock} consecutive ticks`, first.maxLabourDeadlock < 600),
+      harnessMetric("Housing oscillation", `${oscillationMax} changes/2000`, oscillationMax < 4),
+      harnessMetric("Stall duration", `${first.maxStallDuration} consecutive ticks`, first.maxStallDuration < 1800),
+      harnessMetric("Builder starvation", `${first.maxBuilderStarvation} consecutive ticks`, first.maxBuilderStarvation < 600),
+      harnessMetric(
         "Material deadlock",
         `${first.maxMaterialDeadlock} consecutive ticks`,
         materialDeadlockPassing,
       ),
-      metric("Completion rate", completionValue(first.completedConstruction, first.requestedConstruction), completionPassing),
+      harnessMetric("Completion rate", completionValue(first.completedConstruction, first.requestedConstruction), completionPassing),
     ],
   };
 }

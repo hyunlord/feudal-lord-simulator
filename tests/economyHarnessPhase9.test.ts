@@ -15,6 +15,7 @@ import type { Building } from "../src/content/buildingConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import type { GameState, PalisadeState } from "../src/engine/engine.types";
+import { buildingRoadAccessTiles } from "../src/engine/routing";
 
 function failedLabels(trace: Phase9RunTrace): readonly string[] {
   return phase9Metrics(trace, trace)
@@ -38,6 +39,73 @@ function mutateBuilding(
 function mutatePalisade(state: GameState, mutate: (palisade: PalisadeState) => PalisadeState): GameState {
   assert.ok(state.palisade !== null);
   return { ...state, palisade: mutate(state.palisade) };
+}
+
+function withoutRockAccess(state: GameState): GameState {
+  return {
+    ...state,
+    tiles: state.tiles.map((tile) => tile.terrain === "rock" ? { ...tile, terrain: "grass" } : tile),
+  };
+}
+
+function withoutMarketAccess(state: GameState): GameState {
+  const market = state.buildings.find((building) => building.id === "phase9-market-0");
+  assert.ok(market !== undefined);
+  const marketRoadKeys = new Set(buildingRoadAccessTiles(state, market).map((tile) => `${tile.tx},${tile.ty}`));
+  return {
+    ...state,
+    treasuryCoin: 200,
+    tiles: state.tiles.map((tile) =>
+      marketRoadKeys.has(`${tile.tx},${tile.ty}`) ? { ...tile, hasRoad: false } : tile,
+    ),
+    roadRevision: state.roadRevision + 1,
+    pathCache: {},
+  };
+}
+
+function withBlockedPopulation(state: GameState): GameState {
+  const houses = state.houses.map((house) => ({
+    ...house,
+    residents: Math.min(house.residents, 7),
+    hasWater: false,
+    breadStock: 0,
+    lastServicedTick: 0,
+  }));
+  const buildings = state.buildings.filter((building) => building.kind !== "well");
+  const wellIds = new Set(state.buildings.filter((building) => building.kind === "well").map((building) => building.id));
+  return {
+    ...state,
+    buildings,
+    houses,
+    tiles: state.tiles.map((tile) =>
+      tile.buildingId !== null && wellIds.has(tile.buildingId) ? { ...tile, buildingId: null } : tile,
+    ),
+    population: houses.reduce((total, house) => total + house.residents, 0),
+  };
+}
+
+function withWallAccessBlocked(state: GameState): GameState {
+  return {
+    ...state,
+    treasuryCoin: 200,
+    tiles: state.tiles.map((tile) =>
+      tile.tx <= 14 && tile.ty <= 6 ? { ...tile, hasRoad: false } : tile,
+    ),
+    roadRevision: state.roadRevision + 1,
+    pathCache: {},
+  };
+}
+
+function withSegmentMaterialGap(state: GameState): GameState {
+  return mutatePalisade(state, (palisade) => ({
+    ...palisade,
+    segments: palisade.segments.map((segment, index) => {
+      if (index !== 0) return segment;
+      const { material, ...withoutMaterial } = segment;
+      void material;
+      return withoutMaterial;
+    }),
+  }));
 }
 
 test("Phase 9 harness runs a rock-connected Stone Town scenario and exposes exactly five metrics", () => {
@@ -92,17 +160,17 @@ test("Phase 9 scenario fixture keeps housing and storage within gameplay caps", 
   assert.deepEqual(overCapacityStores, []);
 });
 
-test("Phase 9 metrics isolate five deliberate broken traces", () => {
+test("Phase 9 metrics isolate five deliberate broken fixtures through the real trace loop", () => {
   // Given: a successful real Phase 9 trace.
   const scenario = createPhase9EconomyHarnessScenario({ seed: 9 });
   const good = trackPhase9Run(scenario);
 
-  // When: each deliberate scenario mutation corrupts exactly one acceptance path through the real tick runner.
-  const noRockAccess = trackPhase9Run(scenario, { failureMode: "no_rock_access" });
-  const noSurplusSale = trackPhase9Run(scenario, { failureMode: "no_market_surplus" });
-  const blockedEraCondition = trackPhase9Run(scenario, { failureMode: "blocked_population" });
-  const starvedStoneWall = trackPhase9Run(scenario, { failureMode: "starved_stone_wall" });
-  const prematureTimberRemoval = trackPhase9Run(scenario, { failureMode: "segment_material_gap" });
+  // When: each persistent scenario mutation corrupts exactly one acceptance path through the real tick runner.
+  const noRockAccess = trackPhase9Run(withoutRockAccess(scenario));
+  const noSurplusSale = trackPhase9Run(withoutMarketAccess(scenario));
+  const blockedEraCondition = trackPhase9Run(withBlockedPopulation(scenario));
+  const starvedStoneWall = trackPhase9Run(withWallAccessBlocked(scenario));
+  const prematureTimberRemoval = trackPhase9Run(withSegmentMaterialGap(scenario));
 
   // Then: each mutant fails its intended row and no neighboring Phase 9 row.
   assert.deepEqual(failedLabels(good), []);
