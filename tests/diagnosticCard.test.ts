@@ -26,6 +26,7 @@ test("house card renders its complete water and bread cause chain result", () =>
     population: { kind: "declining", label: "감소 중 — 식량 없음, 340틱 경과", elapsedTicks: 340 },
     protection: { kind: "inactive", label: "성벽 미완성", amenityBonus: 0 },
     market: { kind: "no_market", label: "시장 없음", serviceRadius: 8 },
+    stoneHouse: { kind: "blocked", label: "석조 연립가옥 불가 — 물 공급 필요", blockers: ["물 공급 필요"] },
   } as const;
   const markup = renderToStaticMarkup(createElement(DiagnosticCard, {
     position: { x: 640, y: 8 },

@@ -10,7 +10,7 @@ import {
   type ConstructionSite,
 } from "../economy/construction";
 import type { TerrainType } from "../content/terrainConfig";
-import type { ResourceType } from "../content/resourceConfig";
+import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { Era } from "../content/eraConfig";
 import { getTile, isInBounds, type TileCoordinate } from "./grid";
 import type { Tile, WorldView } from "./world.types";
@@ -21,13 +21,21 @@ export enum PlacementFailure {
   out_of_bounds = "out_of_bounds",
   needs_road = "needs_road",
   needs_adjacent_terrain = "needs_adjacent_terrain",
-  insufficient_timber = "insufficient_timber",
+  insufficient_materials = "insufficient_materials",
   locked_era = "locked_era",
 }
 
 export type PlacementResult =
   | { readonly ok: true }
-  | { readonly ok: false; readonly reason: PlacementFailure };
+  | {
+      readonly ok: false;
+      readonly reason: Exclude<PlacementFailure, PlacementFailure.insufficient_materials>;
+    }
+  | {
+      readonly ok: false;
+      readonly reason: PlacementFailure.insufficient_materials;
+      readonly shortfalls: Partial<Record<ResourceType, number>>;
+    };
 
 type ResourceWorldView = WorldView & {
   readonly buildings?: readonly Building[];
@@ -191,12 +199,26 @@ export function canPlaceBuilding(
     return { ok: false, reason: PlacementFailure.needs_adjacent_terrain };
   }
 
-  const timberCost = definition.buildCost.timber ?? 0;
-  if (placementSpendableResource(world, "timber") < timberCost) {
-    return { ok: false, reason: PlacementFailure.insufficient_timber };
+  const shortfalls = constructionShortfalls(world, definition.buildCost);
+  if (RESOURCE_TYPES.some((resource) => (shortfalls[resource] ?? 0) > 0)) {
+    return { ok: false, reason: PlacementFailure.insufficient_materials, shortfalls };
   }
 
   return { ok: true };
+}
+
+export function constructionShortfalls(
+  world: ResourceWorldView,
+  buildCost: Partial<Record<ResourceType, number>>,
+): Partial<Record<ResourceType, number>> {
+  const shortfalls: Partial<Record<ResourceType, number>> = {};
+  for (const resource of RESOURCE_TYPES) {
+    const needed = buildCost[resource] ?? 0;
+    if (needed <= 0) continue;
+    const shortfall = Math.max(0, needed - placementSpendableResource(world, resource));
+    if (shortfall > 0) shortfalls[resource] = shortfall;
+  }
+  return shortfalls;
 }
 
 export function placementSpendableResource(world: ResourceWorldView, resource: ResourceType): number {

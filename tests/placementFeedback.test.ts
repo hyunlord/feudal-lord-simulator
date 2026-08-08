@@ -42,7 +42,7 @@ test("formatPlacementFailure returns the six Korean placement messages when fail
       expected: "숲 옆에 지어야 합니다",
     },
     {
-      reason: PlacementFailure.insufficient_timber,
+      reason: PlacementFailure.insufficient_materials,
       buildingKind: "sawmill",
       expected: "목재가 부족합니다 (필요 30)",
     },
@@ -54,8 +54,20 @@ test("formatPlacementFailure returns the six Korean placement messages when fail
 
   // When / Then
   for (const failure of failures) {
-    assert.equal(formatPlacementFailure(failure.reason, failure.buildingKind), failure.expected);
+    assert.equal(formatPlacementFailure({ reason: failure.reason, buildingKind: failure.buildingKind }), failure.expected);
   }
+});
+
+test("formatPlacementFailure reports independent timber and stone shortfalls for multi-resource construction", () => {
+  // Given / When
+  const message = formatPlacementFailure({
+    reason: PlacementFailure.insufficient_materials,
+    buildingKind: "church",
+    shortfalls: { timber: 20, stone: 60 },
+  });
+
+  // Then
+  assert.equal(message, "자원이 부족합니다 — 목재 20 · 석재 60");
 });
 
 test("getPlacementToolStatus returns exact building road and fallback statuses", () => {

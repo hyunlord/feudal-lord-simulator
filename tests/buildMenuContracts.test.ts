@@ -85,6 +85,41 @@ test("build menu groups buildings while road stays in a dedicated zero-cost cont
   assert.match(appMarkup, /class="build-group"/);
 });
 
+test("stone town build menu includes civic buildings and reports multi-resource costs", () => {
+  // Given
+  const state = {
+    ...DEFAULT_GAME_STATE,
+    era: "stone_town" as const,
+    treasuryTimber: 90,
+    buildings: [
+      {
+        id: "stone-store",
+        kind: "storehouse" as const,
+        tx: 0,
+        ty: 0,
+        workers: 0,
+        inventory: { stone: 40 },
+        reserved: {},
+        stockReserved: {},
+        productionProgress: 0,
+      },
+    ],
+  };
+
+  // When
+  const tools = buildMenuGroups(state).flatMap((group) => group.options.map((option) => option.tool));
+  const churchTooltip = buildToolTooltipLines("church", state);
+  const keepTooltip = buildToolTooltipLines("keep", state);
+
+  // Then
+  assert.ok(tools.includes("church"));
+  assert.ok(tools.includes("keep"));
+  assert.ok(churchTooltip.includes("비용 목재 100 · 석재 60"));
+  assert.ok(churchTooltip.includes("건설 불가 · 부족 목재 10 · 석재 20"));
+  assert.ok(keepTooltip.includes("비용 석재 150"));
+  assert.ok(keepTooltip.includes("건설 불가 · 부족 석재 110"));
+});
+
 test("task-driven highlights are semantic attributes and keep unaffordable seals focusable", () => {
   // Given
   const poorState = { ...DEFAULT_GAME_STATE, treasuryTimber: 0 };

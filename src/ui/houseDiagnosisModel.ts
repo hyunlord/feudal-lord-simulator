@@ -9,6 +9,7 @@ import {
   marketAccessDiagnosis,
   type MarketAccessDiagnosis,
 } from "../population/marketAccess";
+import { nearestMarketDistance } from "../population/marketAccess";
 import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 
@@ -48,6 +49,7 @@ export type HouseDiagnosisModel = {
   readonly population: PopulationDiagnosis;
   readonly protection: ProtectionDiagnosis;
   readonly market: MarketAccessDiagnosis;
+  readonly stoneHouse: StoneHouseDiagnosis;
 };
 
 export type PopulationDiagnosis =
@@ -60,7 +62,11 @@ export type ProtectionDiagnosis =
   | { readonly kind: "inside"; readonly label: "성벽 안 ✅ 편의 +2"; readonly amenityBonus: 2 }
   | { readonly kind: "outside"; readonly label: "성벽 밖 — 3등급 불가"; readonly amenityBonus: 0 };
 
-const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택"] as const;
+export type StoneHouseDiagnosis =
+  | { readonly kind: "ready"; readonly label: "석조 연립가옥 가능"; readonly blockers: readonly [] }
+  | { readonly kind: "blocked"; readonly label: string; readonly blockers: readonly string[] };
+
+const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택", "석조 연립가옥"] as const;
 
 function coordinateKey(coordinate: TileCoordinate): string {
   return `${coordinate.tx},${coordinate.ty}`;
@@ -110,6 +116,52 @@ function protectionDiagnosis(state: GameState, home: Building): ProtectionDiagno
     case "outside":
       return { kind: "outside", label: "성벽 밖 — 3등급 불가", amenityBonus: 0 };
   }
+}
+
+function hasFreshBread(state: GameState, house: House): boolean {
+  return (
+    house.breadStock > 0 &&
+    state.tick - house.lastServicedTick <= BALANCE.BREAD_HUNGER_WINDOW
+  );
+}
+
+function hasChurchAccess(home: Building, buildings: readonly Building[]): boolean {
+  return buildings.some(
+    (building) =>
+      building.kind === "church" &&
+      buildingFootprintDistance(home, building) <=
+        BUILDING_CONFIG_BY_KIND.church.serviceRadius,
+  );
+}
+
+function stoneHouseDiagnosis(
+  state: GameState,
+  house: House,
+  home: Building,
+): StoneHouseDiagnosis {
+  const blockers: string[] = [];
+  if (!house.hasWater) blockers.push("물 공급 필요");
+  if (!hasFreshBread(state, house)) blockers.push("신선한 빵 필요");
+  const marketDistance = nearestMarketDistance(home, state.buildings);
+  if (
+    marketDistance === null ||
+    marketDistance > BUILDING_CONFIG_BY_KIND.market.serviceRadius
+  ) {
+    blockers.push("시장 범위 8 안 필요");
+  }
+  if (!hasChurchAccess(home, state.buildings)) {
+    blockers.push("교회 범위 12 안 필요");
+  }
+  if (palisadeProtectionForBuilding(home, state.palisade) !== "inside") {
+    blockers.push("완성된 성벽 안 필요");
+  }
+  return blockers.length === 0
+    ? { kind: "ready", label: "석조 연립가옥 가능", blockers: [] }
+    : {
+        kind: "blocked",
+        label: `석조 연립가옥 불가 — ${blockers.join(" · ")}`,
+        blockers,
+      };
 }
 
 function connectedToBreadGranary(
@@ -168,5 +220,6 @@ export function houseDiagnosisModel(
     population: populationDiagnosis(state, house),
     protection: protectionDiagnosis(state, home),
     market: marketAccessDiagnosis(home, state.buildings),
+    stoneHouse: stoneHouseDiagnosis(state, house, home),
   };
 }

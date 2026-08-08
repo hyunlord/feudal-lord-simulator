@@ -29,7 +29,11 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
 
 test("Phase 3 building table includes chapel without changing ordinary building economics", () => {
   // Given / When / Then
-  assert.deepEqual(BUILDING_CONFIG_BY_KIND, {
+  const phase3BuildingConfig = Object.fromEntries(
+    Object.entries(BUILDING_CONFIG_BY_KIND).filter(([, config]) => config.unlockEra !== "stone_town"),
+  );
+
+  assert.deepEqual(phase3BuildingConfig, {
     house: {
       kind: "house", name: "오두막", width: 1, height: 1, workersRequired: 0, buildCost: {},
       requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
@@ -101,7 +105,7 @@ test("Phase 3 building table includes chapel without changing ordinary building 
 
 test("Phase 3 housing table matches the exact level requirements", () => {
   // Given / When / Then
-  assert.deepEqual(HOUSING_CONFIG, [
+  assert.deepEqual(HOUSING_CONFIG.slice(0, 4), [
     { level: 0, name: "오두막", requires: [], capacity: 4 },
     { level: 1, name: "농가", requires: ["water"], capacity: 8 },
     { level: 2, name: "시민가옥", requires: ["water", "bread"], capacity: 14 },

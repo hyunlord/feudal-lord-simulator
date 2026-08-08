@@ -1,6 +1,12 @@
-export const HOUSE_LEVELS = [0, 1, 2, 3] as const;
+export const HOUSE_LEVELS = [0, 1, 2, 3, 4] as const;
 
-export type HousingRequirement = "water" | "bread" | "granary";
+export type HousingRequirement =
+  | "water"
+  | "bread"
+  | "granary"
+  | "market"
+  | "church"
+  | "protected";
 
 export interface HousingDefinition {
   readonly level: (typeof HOUSE_LEVELS)[number];
@@ -20,5 +26,11 @@ export const HOUSING_CONFIG = [
     requires: ["water", "bread", "granary"],
     capacity: 22,
     granaryRadius: 12,
+  },
+  {
+    level: 4,
+    name: "석조 연립가옥",
+    requires: ["water", "bread", "market", "church", "protected"],
+    capacity: 32,
   },
 ] as const satisfies readonly HousingDefinition[];

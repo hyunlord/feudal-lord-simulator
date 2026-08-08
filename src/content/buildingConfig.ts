@@ -14,7 +14,9 @@ export type BuildingKind =
   | "sawmill"
   | "quarry"
   | "masonry"
-  | "market";
+  | "market"
+  | "church"
+  | "keep";
 
 export interface ProductionSpec {
   readonly output: ResourceType;
@@ -248,6 +250,34 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     production: null,
     storageCapacity: 0,
     serviceRadius: 8,
+  },
+  church: {
+    kind: "church",
+    name: "교회",
+    width: 2,
+    height: 2,
+    workersRequired: 0,
+    buildCost: { timber: 100, stone: 60 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    unlockEra: "stone_town",
+    production: null,
+    storageCapacity: 0,
+    serviceRadius: 12,
+  },
+  keep: {
+    kind: "keep",
+    name: "성채",
+    width: 2,
+    height: 2,
+    workersRequired: 0,
+    buildCost: { stone: 150 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    unlockEra: "stone_town",
+    production: null,
+    storageCapacity: 0,
+    serviceRadius: 0,
   },
 };
 

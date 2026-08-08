@@ -3,6 +3,7 @@ import {
   BUILDING_CONFIG_BY_KIND,
   type BuildingKind,
 } from "../content/buildingConfig";
+import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
 import { isBuildingUnlocked, placementSpendableResource } from "../world/placement";
@@ -11,6 +12,7 @@ export type BuildToolOption = {
   readonly tool: PlacementTool;
   readonly label: string;
   readonly timberCost: number;
+  readonly cost: Partial<Record<ResourceType, number>>;
   readonly group: BuildToolGroupKey;
   readonly purpose: string;
   readonly requirements: readonly string[];
@@ -46,6 +48,8 @@ const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
   quarry: "production",
   masonry: "production",
   market: "service",
+  church: "service",
+  keep: "service",
   storehouse: "storage",
   granary: "storage",
   chapel: "service",
@@ -62,6 +66,8 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   quarry: "바위 가장자리에서 원석을 캐냅니다",
   masonry: "원석을 석재로 다듬습니다",
   market: "잉여 물자를 팔아 금화를 모읍니다",
+  church: "주변 집에 신앙 서비스를 제공합니다",
+  keep: "석조 도시의 중심 성채를 세웁니다",
   storehouse: "목재와 통나무를 보관합니다",
   granary: "밀과 빵을 보관합니다",
   chapel: "목책마을 선포 조건을 준비합니다",
@@ -76,6 +82,7 @@ function requirementsFor(kind: BuildingKind): readonly string[] {
   if (definition.requiresAdjacentTerrain === "forest") requirements.push("숲 인접 필요");
   if (definition.requiresAdjacentTerrain === "rock") requirements.push("바위 인접 필요");
   if (definition.unlockEra === "palisade") requirements.push("목책마을 이후");
+  if (definition.unlockEra === "stone_town") requirements.push("석조 도시 이후");
   return requirements.length === 0 ? ["요구 조건 없음"] : requirements;
 }
 
@@ -83,6 +90,7 @@ export const ROAD_TOOL_OPTION: BuildToolOption = {
   tool: "road",
   label: "길",
   timberCost: 0,
+  cost: {},
   group: "service",
   purpose: TOOL_PURPOSES.road,
   requirements: ["요구 조건 없음"],
@@ -92,6 +100,7 @@ const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.map
   tool: definition.kind,
   label: definition.name,
   timberCost: definition.buildCost.timber ?? 0,
+  cost: definition.buildCost,
   group: TOOL_GROUPS[definition.kind],
   purpose: TOOL_PURPOSES[definition.kind],
   requirements: requirementsFor(definition.kind),
@@ -119,13 +128,27 @@ export function buildMenuGroups(state: GameState): readonly BuildToolGroup[] {
 export function buildToolAffordability(
   tool: PlacementTool,
   state: GameState,
-): { readonly affordable: boolean; readonly shortfall: number; readonly spendableTimber: number } {
+): {
+  readonly affordable: boolean;
+  readonly shortfalls: Partial<Record<ResourceType, number>>;
+  readonly spendable: Partial<Record<ResourceType, number>>;
+  readonly shortfall: number;
+  readonly spendableTimber: number;
+} {
   const option = BUILD_TOOL_OPTIONS.find((candidate) => candidate.tool === tool);
-  const timberCost = option?.timberCost ?? 0;
-  const spendableTimber = placementSpendableResource(state, "timber");
+  const cost = option?.cost ?? {};
+  const spendable = positiveResourceAmounts((resource) =>
+    cost[resource] === undefined ? 0 : placementSpendableResource(state, resource),
+  );
+  const shortfalls = positiveResourceAmounts((resource) =>
+    Math.max(0, (cost[resource] ?? 0) - (spendable[resource] ?? 0)),
+  );
+  const spendableTimber = spendable.timber ?? placementSpendableResource(state, "timber");
   return {
-    affordable: spendableTimber >= timberCost,
-    shortfall: Math.max(0, timberCost - spendableTimber),
+    affordable: RESOURCE_TYPES.every((resource) => (shortfalls[resource] ?? 0) === 0),
+    shortfalls,
+    spendable,
+    shortfall: shortfalls.timber ?? 0,
     spendableTimber,
   };
 }
@@ -135,13 +158,50 @@ export function buildToolTooltipLines(tool: PlacementTool, state: GameState): re
   if (option === undefined) return [];
   const affordability = buildToolAffordability(tool, state);
   const affordabilityLine = affordability.affordable
-    ? `건설 가능 · 보유 목재 ${affordability.spendableTimber}`
-    : `건설 불가 · 부족 ${affordability.shortfall}`;
+    ? `건설 가능 · 보유 ${resourceAmountsLabel(affordability.spendable)}`
+    : `건설 불가 · 부족 ${shortfallLabel(affordability.shortfalls)}`;
+  const costLine = tool === "road" ? "비용 목재 0" : `비용 ${resourceAmountsLabel(option.cost)}`;
   return [
     option.label,
-    `비용 목재 ${option.timberCost}`,
+    costLine,
     `목적 ${option.purpose}`,
     `조건 ${option.requirements.join(", ")}`,
     affordabilityLine,
   ];
+}
+
+const RESOURCE_LABELS = {
+  wheat: "밀",
+  bread: "빵",
+  logs: "통나무",
+  timber: "목재",
+  stone_raw: "원석",
+  stone: "석재",
+  coin: "금화",
+} as const satisfies Record<ResourceType, string>;
+
+function positiveResourceAmounts(
+  valueForResource: (resource: ResourceType) => number,
+): Partial<Record<ResourceType, number>> {
+  const result: Partial<Record<ResourceType, number>> = {};
+  for (const resource of RESOURCE_TYPES) {
+    const value = valueForResource(resource);
+    if (value > 0) result[resource] = value;
+  }
+  return result;
+}
+
+function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {
+  const parts = RESOURCE_TYPES
+    .filter((resource) => (amounts[resource] ?? 0) > 0)
+    .map((resource) => `${RESOURCE_LABELS[resource]} ${amounts[resource] ?? 0}`);
+  return parts.length === 0 ? "없음" : parts.join(" · ");
+}
+
+function shortfallLabel(amounts: Partial<Record<ResourceType, number>>): string {
+  const resources = RESOURCE_TYPES.filter((resource) => (amounts[resource] ?? 0) > 0);
+  if (resources.length === 1 && resources[0] === "timber") {
+    return String(amounts.timber ?? 0);
+  }
+  return resourceAmountsLabel(amounts);
 }

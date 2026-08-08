@@ -25,6 +25,8 @@ const VALID_ORIGINS = {
   quarry: { tx: 20, ty: 1 },
   masonry: { tx: 23, ty: 1 },
   market: { tx: 24, ty: 1 },
+  church: { tx: 27, ty: 1 },
+  keep: { tx: 30, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {
@@ -46,7 +48,7 @@ function nextConstructionOrdinal(state: GameState): number {
 }
 
 function buildableSettlement(treasuryTimber = 500): GameState {
-  const roadTxs = new Set(Array.from({ length: 26 }, (_unused, index) => index));
+  const roadTxs = new Set(Array.from({ length: 34 }, (_unused, index) => index));
   return {
     ...DEFAULT_GAME_STATE,
     tiles: DEFAULT_GAME_STATE.tiles.map((tile) => ({
@@ -69,6 +71,7 @@ function buildableSettlement(treasuryTimber = 500): GameState {
     era: "palisade",
     roadRevision: 1,
     pathCache: {},
+    treasuryCoin: 0,
   };
 }
 
@@ -125,7 +128,22 @@ test("placeBuilding creates one occupied construction site without finished cons
 
 test("placeBuilding routes every building kind through site placement including houses", () => {
   // Given
-  let state = buildableSettlement();
+  const resourceStore = {
+    id: "stone-stock",
+    kind: "storehouse" as const,
+    tx: 90,
+    ty: 90,
+    workers: 0,
+    inventory: { stone: 1000 },
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+  };
+  let state: GameState = {
+    ...buildableSettlement(2000),
+    era: "stone_town",
+    buildings: [resourceStore],
+  };
 
   // When
   for (const definition of BUILDING_CONFIG) {
@@ -137,7 +155,7 @@ test("placeBuilding routes every building kind through site placement including 
     constructionSites(state).map((site) => site.kind),
     BUILDING_CONFIG.map((definition) => definition.kind),
   );
-  assert.deepEqual(state.buildings, []);
+  assert.deepEqual(state.buildings, [resourceStore]);
   assert.deepEqual(state.houses, []);
 });
 

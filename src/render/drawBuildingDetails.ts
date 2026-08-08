@@ -83,6 +83,13 @@ function drawBaseKindDetail(
     case "market":
       drawCrates(context, input.center, input.zoom);
       return;
+    case "church":
+      drawFlag(context, input.tick, input.center, input.zoom);
+      drawDoor(context, input.center, input.zoom);
+      return;
+    case "keep":
+      drawDoor(context, input.center, input.zoom);
+      return;
   }
 }
 

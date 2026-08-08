@@ -168,7 +168,11 @@ export function resolveBuildingPlacementAttempt(
       action: null,
       feedback: createPlacementFeedback({
         kind: "failure",
-        message: formatPlacementFailure(placement.reason, input.tool),
+        message: formatPlacementFailure({
+          reason: placement.reason,
+          buildingKind: input.tool,
+          shortfalls: "shortfalls" in placement ? placement.shortfalls : {},
+        }),
         anchor: { kind: "tile", tile: input.tile },
         nowMs: input.nowMs,
       }),
@@ -198,7 +202,7 @@ export function resolveRoadPlacementAttempt(
       action: null,
       feedback: createPlacementFeedback({
         kind: "failure",
-        message: formatPlacementFailure(failure, "house"),
+        message: formatPlacementFailure({ reason: failure, buildingKind: "house" }),
         anchor: { kind: "path", path },
         nowMs: input.nowMs,
       }),

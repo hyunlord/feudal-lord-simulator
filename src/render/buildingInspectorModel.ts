@@ -9,7 +9,7 @@ export type BuildingInspectorModel = {
   readonly rows: readonly string[];
 };
 
-const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택"] as const;
+const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택", "석조 연립가옥"] as const;
 const PURPOSES = {
   house: "주민이 생활하고 성장하는 집",
   well: "주변 가구에 물을 공급",
@@ -23,6 +23,8 @@ const PURPOSES = {
   quarry: "바위에서 원석을 채굴",
   masonry: "원석을 석재로 가공",
   market: "잉여 물자를 팔아 금화를 확보",
+  church: "주변 가구에 교회 서비스를 제공",
+  keep: "석조 도시의 중심 성채",
 } as const;
 const RESOURCE_NAMES = {
   wheat: "밀",
@@ -43,7 +45,7 @@ export function buildingInspectorModel(
   const config = BUILDING_CONFIG_BY_KIND[building.kind];
   if (building.kind === "house") {
     const house = state.houses.find((candidate) => candidate.buildingId === building.id);
-    const level = Math.max(0, Math.min(3, house?.level ?? 0));
+    const level = Math.max(0, Math.min(4, house?.level ?? 0));
     const breadService = house?.lastServicedTick === undefined || house.lastServicedTick === 0
       ? "빵 배급 전"
       : `마지막 빵 ${Math.max(0, state.tick - house.lastServicedTick)}틱 전`;

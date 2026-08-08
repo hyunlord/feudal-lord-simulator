@@ -92,6 +92,8 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
     "quarry",
     "masonry",
     "market",
+    "church",
+    "keep",
   ] as const satisfies readonly BuildingKind[];
   assert.deepEqual([...definitionsByKind.keys()].sort(), [...expectedKinds].sort());
   assert.ok(
@@ -100,7 +102,10 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
   );
   for (const definition of BUILDING_CONFIG) {
     assert.ok(definition.name.length > 0);
-    assert.ok(definition.kind === "house" || (definition.buildCost.timber ?? 0) > 0);
+    assert.ok(
+      definition.kind === "house" ||
+        Object.values(definition.buildCost).some((amount) => (amount ?? 0) > 0),
+    );
     assert.ok(definition.width >= 1);
     assert.ok(definition.height >= 1);
   }
@@ -267,7 +272,8 @@ test("canPlaceBuilding rejects insufficient timber after spatial requirements pa
   // Then
   assert.deepEqual(result, {
     ok: false,
-    reason: PlacementFailure.insufficient_timber,
+    reason: PlacementFailure.insufficient_materials,
+    shortfalls: { timber: 15 },
   });
 });
 

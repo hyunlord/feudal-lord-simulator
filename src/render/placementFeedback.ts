@@ -2,6 +2,7 @@ import {
   BUILDING_CONFIG_BY_KIND,
   type BuildingKind,
 } from "../content/buildingConfig";
+import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { TileCoordinate } from "../world/grid";
 import { PlacementFailure } from "../world/placement";
 
@@ -48,14 +49,20 @@ export interface PlacementFeedback {
 
 export type PlacementFailureReason = PlacementFailure;
 
+export type FormatPlacementFailureRequest = {
+  readonly reason: PlacementFailureReason;
+  readonly buildingKind: BuildingKind;
+  readonly shortfalls?: Partial<Record<ResourceType, number>>;
+};
+
 function assertNever(value: never): string {
   return value;
 }
 
 export function formatPlacementFailure(
-  reason: PlacementFailureReason,
-  buildingKind: BuildingKind,
+  request: FormatPlacementFailureRequest,
 ): string {
+  const reason = request.reason;
   switch (reason) {
     case PlacementFailure.occupied:
       return "이미 건물이 있습니다";
@@ -67,8 +74,10 @@ export function formatPlacementFailure(
       return "길에 닿아야 합니다 — 먼저 길을 놓으세요";
     case PlacementFailure.needs_adjacent_terrain:
       return "숲 옆에 지어야 합니다";
-    case PlacementFailure.insufficient_timber: {
-      const timberCost = BUILDING_CONFIG_BY_KIND[buildingKind].buildCost.timber ?? 0;
+    case PlacementFailure.insufficient_materials: {
+      const shortfallLabel = resourceAmountsLabel(request.shortfalls ?? {});
+      if (shortfallLabel !== "없음") return `자원이 부족합니다 — ${shortfallLabel}`;
+      const timberCost = BUILDING_CONFIG_BY_KIND[request.buildingKind].buildCost.timber ?? 0;
       return `목재가 부족합니다 (필요 ${timberCost})`;
     }
     case PlacementFailure.locked_era:
@@ -76,6 +85,23 @@ export function formatPlacementFailure(
     default:
       return assertNever(reason);
   }
+}
+
+const RESOURCE_LABELS = {
+  wheat: "밀",
+  bread: "빵",
+  logs: "통나무",
+  timber: "목재",
+  stone_raw: "원석",
+  stone: "석재",
+  coin: "금화",
+} as const satisfies Record<ResourceType, string>;
+
+function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {
+  const parts = RESOURCE_TYPES
+    .filter((resource) => (amounts[resource] ?? 0) > 0)
+    .map((resource) => `${RESOURCE_LABELS[resource]} ${amounts[resource] ?? 0}`);
+  return parts.length === 0 ? "없음" : parts.join(" · ");
 }
 
 export function getPlacementToolStatus(tool: PlacementTool | null): string {

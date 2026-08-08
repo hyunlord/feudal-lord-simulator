@@ -66,6 +66,8 @@ export const CONSTRUCTION = {
     quarry: 700,
     masonry: 600,
     market: 700,
+    church: 900,
+    keep: 1200,
   },
 } as const satisfies {
   readonly MAX_BUILDERS_PER_SITE: number;

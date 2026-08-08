@@ -21,6 +21,7 @@ export type HouseUpdateContext = {
   readonly tick: number;
   readonly hasGranaryNearby: boolean;
   readonly hasMarketAccess?: boolean;
+  readonly hasChurchAccess?: boolean;
   readonly palisadeProtection?: PalisadeProtection;
 };
 
@@ -69,6 +70,12 @@ function requirementMet(
       );
     case "granary":
       return context.hasGranaryNearby;
+    case "market":
+      return context.hasMarketAccess === true;
+    case "church":
+      return context.hasChurchAccess === true;
+    case "protected":
+      return context.palisadeProtection === "inside";
   }
 }
 
@@ -164,6 +171,20 @@ function hasGranaryNearby(
   );
 }
 
+function hasChurchAccess(
+  house: House,
+  buildings: readonly Building[],
+): boolean {
+  const home = houseBuilding(house, buildings);
+  if (home === null) return false;
+  return buildings.some(
+    (building) =>
+      building.kind === "church" &&
+      buildingFootprintDistance(home, building) <=
+        BUILDING_CONFIG_BY_KIND.church.serviceRadius,
+  );
+}
+
 export function updateHousing(
   houses: readonly House[],
   buildings: readonly Building[],
@@ -177,6 +198,7 @@ export function updateHousing(
       tick,
       hasGranaryNearby: hasGranaryNearby(house, buildings),
       hasMarketAccess: home === null ? false : hasMarketAccess(home, buildings),
+      hasChurchAccess: hasChurchAccess(house, buildings),
       palisadeProtection:
         home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
     });

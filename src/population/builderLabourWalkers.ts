@@ -38,6 +38,8 @@ function constructionLabourSiteAnchor(site: ConstructionLabourSite): TileCoordin
     case "quarry":
     case "masonry":
     case "market":
+    case "church":
+    case "keep":
       return { tx: site.tx, ty: site.ty };
   }
 }

@@ -79,6 +79,8 @@ function normalizeConstructionSite(site: ConstructionSite) {
     case "quarry":
     case "masonry":
     case "market":
+    case "church":
+    case "keep":
       return {
         ...common,
         tx: site.tx,
