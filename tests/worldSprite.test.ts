@@ -176,6 +176,19 @@ describe("world sprite blitter", () => {
     assert.equal(recorder.drawCalls.length, 1);
   });
 
+  it("Given a flipped tree sprite When drawing Then the destination is mirrored around the same box", () => {
+    const recorder = recordingContext();
+
+    const drawn = drawWorldSpriteAtWorldAnchor(recorder.context, "tree_pine_tall", 3, 4, {
+      camera: { zoom: 1, panX: 100, panY: 50 },
+      flipX: true,
+    });
+
+    assert.equal(drawn, true);
+    assert.deepEqual(recorder.drawCalls[0], { dx: 0, dy: 42, width: 64, height: 120 });
+    assert.ok(recorder.calls.includes("setTransform:-1,0,0,1,100,0"));
+  });
+
   it("Given drawImage throws When drawing Then canvas state is still restored", () => {
     const failure = new Error("draw failed");
     const recorder = recordingContext(1024, 768, failure);

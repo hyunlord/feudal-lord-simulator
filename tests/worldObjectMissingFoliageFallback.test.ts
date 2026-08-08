@@ -115,6 +115,7 @@ drawTreeDescriptor(context, {
     anchorTx: 4,
     anchorTy: 2,
     spriteKey: "tree_oak_large",
+    flipX: false,
   },
   zoom: 1,
   spriteOptions,

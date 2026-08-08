@@ -11,6 +11,7 @@ export type WorldSpriteOptions = {
   readonly scale?: number;
   readonly alpha?: number;
   readonly tint?: PaletteColor;
+  readonly flipX?: boolean;
   readonly viewport?: { readonly width: number; readonly height: number };
 };
 
@@ -101,7 +102,12 @@ function drawAtWorldAnchor(
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.globalAlpha *= options.alpha ?? 1;
     context.imageSmoothingEnabled = false;
-    context.drawImage(source, rect.dx, rect.dy, rect.width, rect.height);
+    if (options.flipX === true) {
+      context.setTransform(-1, 0, 0, 1, rect.dx + rect.width, 0);
+      context.drawImage(source, 0, rect.dy, rect.width, rect.height);
+    } else {
+      context.drawImage(source, rect.dx, rect.dy, rect.width, rect.height);
+    }
   } finally {
     context.restore();
   }

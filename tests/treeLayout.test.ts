@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import test from "node:test";
 
 import { RAMPS } from "../src/content/palette";
@@ -73,8 +74,8 @@ test("tree descriptors vary safely inside the isometric tile footprint", () => {
     assert.ok(Math.abs(descriptor.offsetX) <= TILE_W * 0.35);
     assert.ok(Math.abs(descriptor.offsetY) <= TILE_H * 0.35);
     assert.ok(Math.abs(descriptor.offsetX) / (TILE_W / 2) + Math.abs(descriptor.offsetY) / (TILE_H / 2) <= 0.7);
-    assert.ok(descriptor.scale >= 0.7);
-    assert.ok(descriptor.scale <= 1.3);
+    assert.ok(descriptor.scale >= 0.55);
+    assert.ok(descriptor.scale <= 1.45);
     assert.ok(["narrow", "broad", "rounded"].includes(descriptor.silhouette));
     assert.ok(descriptor.phase >= 0);
     assert.ok(descriptor.phase <= Math.PI * 2);
@@ -107,7 +108,7 @@ test("multi-tree canopy tones walk the full foliage ramp deterministically", () 
   assert.deepEqual(sampledTones, new Set(RAMPS.foliage));
 });
 
-test("tree scale samples use the exact Phase 8 endpoint range", () => {
+test("tree scale samples use the exact Phase 12 endpoint range", () => {
   // Given / When
   const sampledScales = Array.from({ length: 16_384 }, (_, index) =>
     buildTreeCluster({
@@ -118,11 +119,46 @@ test("tree scale samples use the exact Phase 8 endpoint range", () => {
   ).flat().map((descriptor) => Number(descriptor.scale.toFixed(2)));
 
   // Then
-  assert.equal(Math.min(...sampledScales), 0.7);
-  assert.equal(Math.max(...sampledScales), 1.3);
-  assert.ok(sampledScales.includes(0.7));
-  assert.ok(sampledScales.includes(1.3));
-  assert.ok(sampledScales.every((scale) => scale >= 0.7 && scale <= 1.3));
+  assert.equal(Math.min(...sampledScales), 0.55);
+  assert.equal(Math.max(...sampledScales), 1.45);
+  assert.ok(sampledScales.includes(0.55));
+  assert.ok(sampledScales.includes(1.45));
+  assert.ok(sampledScales.every((scale) => scale >= 0.55 && scale <= 1.45));
+});
+
+test("tree sprite distribution favors conifers and flips half deterministically", () => {
+  // Given
+  const sample = Array.from({ length: 16_384 }, (_, index) =>
+    buildTreeCluster({
+      tile: tile(index % 128, Math.floor(index / 128)),
+      forestLookup: buildForestLookup(fullForest),
+      seed: 901,
+    }),
+  ).flat();
+
+  // When
+  const coniferCount = sample.filter((descriptor) =>
+    descriptor.spriteKey === "tree_pine_tall" || descriptor.spriteKey === "tree_pine_short",
+  ).length;
+  const flippedCount = sample.filter((descriptor) => descriptor.flipX).length;
+  const hash = createHash("sha256").update(JSON.stringify(sample)).digest("hex");
+  const repeatHash = createHash("sha256").update(JSON.stringify(
+    Array.from({ length: 16_384 }, (_, index) =>
+      buildTreeCluster({
+        tile: tile(index % 128, Math.floor(index / 128)),
+        forestLookup: buildForestLookup(fullForest),
+        seed: 901,
+      }),
+    ).flat(),
+  )).digest("hex");
+
+  // Then
+  assert.ok(sample.length > 10_000);
+  assert.ok(coniferCount / sample.length >= 0.57);
+  assert.ok(coniferCount / sample.length <= 0.63);
+  assert.ok(flippedCount / sample.length >= 0.48);
+  assert.ok(flippedCount / sample.length <= 0.52);
+  assert.equal(repeatHash, hash);
 });
 
 test("tree and shrub sprite variants are assigned from separate deterministic slots", () => {

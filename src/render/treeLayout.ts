@@ -31,6 +31,7 @@ export type TreeDescriptor = {
   readonly anchorTx: number;
   readonly anchorTy: number;
   readonly spriteKey: TreeSpriteKey;
+  readonly flipX: boolean;
 };
 
 export type StumpDescriptor = {
@@ -55,11 +56,15 @@ type TreeClusterInput = {
 const SILHOUETTES: readonly TreeSilhouette[] = ["narrow", "broad", "rounded"];
 const TREE_TONES: readonly TreeTone[] = RAMPS.foliage;
 const FIRST_TREE_TONE: TreeTone = RAMPS.foliage[0] ?? SEMANTIC_PALETTE.forest;
-const TREE_SPRITES: readonly TreeSpriteKey[] = [
-  "tree_oak_large",
-  "tree_oak_small",
+const TREE_SPRITE_DISTRIBUTION: readonly TreeSpriteKey[] = [
   "tree_pine_tall",
   "tree_pine_short",
+  "tree_pine_tall",
+  "tree_pine_short",
+  "tree_pine_tall",
+  "tree_pine_short",
+  "tree_oak_large",
+  "tree_oak_small",
   "tree_birch",
   "tree_dead",
 ];
@@ -117,6 +122,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       anchorTx: anchor.tx,
       anchorTy: anchor.ty,
       spriteKey: treeSpriteKey(input.tile.tx, input.tile.ty, input.seed, index, silhouette),
+      flipX: treeFlipX(input.tile.tx, input.tile.ty, input.seed, index),
     });
   }
 
@@ -220,13 +226,17 @@ function treeSpriteKey(
 ): TreeSpriteKey {
   const silhouetteOffset = TREE_SPRITE_FAMILY_OFFSETS[silhouette];
   const hashSlot = Math.floor(hashUnit(tx, ty, seed, index, 109) * 997);
-  const variant = positiveModulo(hashSlot + tx + ty + seed + index + silhouetteOffset, TREE_SPRITES.length);
-  return TREE_SPRITES[variant] ?? "tree_oak_large";
+  const variant = positiveModulo(hashSlot + tx + ty + seed + index + silhouetteOffset, TREE_SPRITE_DISTRIBUTION.length);
+  return TREE_SPRITE_DISTRIBUTION[variant] ?? "tree_pine_tall";
 }
 
 function treeScale(tx: number, ty: number, seed: number, index: number): number {
-  const bucket = Math.min(60, Math.floor(hashUnit(tx, ty, seed, index, 37) * 61));
-  return 0.7 + bucket / 100;
+  const bucket = Math.min(90, Math.floor(hashUnit(tx, ty, seed, index, 37) * 91));
+  return 0.55 + bucket / 100;
+}
+
+function treeFlipX(tx: number, ty: number, seed: number, index: number): boolean {
+  return hashUnit(tx, ty, seed, index, 131) >= 0.5;
 }
 
 function treeToneAt(index: number): TreeTone {

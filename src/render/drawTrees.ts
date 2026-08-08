@@ -48,6 +48,7 @@ export function drawTreeDescriptor(
         ...input.spriteOptions,
         scale: input.tree.scale,
         tint: input.tree.tone,
+        flipX: input.tree.flipX,
       })
     ) {
       return;
