@@ -3,6 +3,7 @@ import test from "node:test";
 
 import type { GameState } from "../src/engine/engine.types";
 import {
+  zoomAtPoint,
   placementPreview,
   releaseTileFromMouseUp,
   resolveBuildingPlacementAttempt,
@@ -133,6 +134,25 @@ test("road release endpoint is ignored when mouseup lands outside the canvas rec
 
   // Then
   assert.equal(tile, null);
+});
+
+test("manual wheel zoom-out can return from startup framing to the overview floor", () => {
+  // Given
+  let camera = { zoom: 2, panX: 180, panY: 120 };
+
+  // When
+  for (let step = 0; step < 24; step += 1) {
+    camera = zoomAtPoint({
+      camera,
+      canvasPoint: { x: 160, y: 120 },
+      deltaY: 100,
+      viewport: { width: 320, height: 240 },
+      world: { minX: -2_000, minY: -2_000, maxX: 2_000, maxY: 2_000 },
+    });
+  }
+
+  // Then
+  assert.equal(camera.zoom, 0.5);
 });
 
 test("building placement attempts preflight invalid outcomes without dispatching and keep the tool armed", () => {

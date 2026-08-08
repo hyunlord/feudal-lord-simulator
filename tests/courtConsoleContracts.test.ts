@@ -121,28 +121,28 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   // Given
   const css = await readFile(STYLESHEET, "utf8");
   const assets = [
-    "wood_console.png",
     "seal_slot.png",
-    "scroll_frame.png",
   ];
 
   // Then
   for (const asset of assets) assert.match(css, new RegExp(asset));
   assert.doesNotMatch(
     css,
-    /#[0-9a-f]{3,8}|\b(?:rgb|hsl)a?\(|(?:linear|radial|conic)-gradient|box-shadow|backdrop-filter|blur\(|system-ui|sans-serif|overflow\s*:\s*(?:auto|scroll)|ui-panel|title-panel/i,
+    /#[0-9a-f]{3,8}|\b(?:rgb|hsl)a?\(|(?:linear|radial|conic)-gradient|box-shadow|backdrop-filter|blur\(|system-ui|sans-serif|ui-panel|title-panel/i,
   );
 
   const consoleRule = css.match(/\.court-console\s*\{([^}]*)\}/)?.[1] ?? "";
   const buildSealsRule = css.match(/\.build-seals\s*\{([^}]*)\}/)?.[1] ?? "";
   const mobileRules = css.match(/@media \(max-width: 600px\) \{([\s\S]+)\}\s*$/)?.[1] ?? "";
-  assert.match(consoleRule, /background-size:\s*103% 100%;/);
-  assert.match(buildSealsRule, /--seal-size:\s*48px;/);
-  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(5, var\(--seal-size\)\);/);
-  assert.match(buildSealsRule, /gap:\s*4px;/);
-  assert.match(buildSealsRule, /width:\s*max-content;/);
-  assert.match(buildSealsRule, /padding:\s*4px 6px;/);
-  assert.match(buildSealsRule, /background-color:\s*var\(--palette-ink\);/);
+  assert.match(consoleRule, /background-color:\s*var\(--palette-parchment\);/);
+  assert.match(consoleRule, /background-image:\s*none;/);
+  assert.match(consoleRule, /border:\s*1px solid var\(--palette-ink\);/);
+  assert.match(buildSealsRule, /--seal-size:\s*56px;/);
+  assert.match(buildSealsRule, /display:\s*flex;/);
+  assert.match(buildSealsRule, /gap:\s*12px;/);
+  assert.match(buildSealsRule, /width:\s*100%;/);
+  assert.match(buildSealsRule, /padding:\s*6px;/);
+  assert.match(buildSealsRule, /background-color:\s*var\(--palette-parchment\);/);
   assert.match(css, /\.welcome-parchment\s*\{[\s\S]*?left:\s*50%;[\s\S]*?bottom:\s*clamp\(/);
   assert.match(css, /\.welcome-parchment h2\s*\{[\s\S]*?text-align:\s*center;/);
   assert.match(css, /\.welcome-parchment p\s*\{[\s\S]*?word-break:\s*keep-all;/);
@@ -151,8 +151,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.onboarding-task--next\s*\{[\s\S]*?background-color:\s*var\(--palette-vellum\);/);
   assert.match(css, /\.onboarding-task-flourish\s*\{[\s\S]*?color:\s*var\(--palette-ink\);/);
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="open-goal"\]\s*\{/);
-  assert.match(css, /\.road-tool\s*\{[\s\S]*?display:\s*contents;/);
-  assert.match(css, /\.build-seal--road\s*\{[\s\S]*?clip-path:/);
+  assert.match(css, /\.road-tool\s*\{[\s\S]*?border-left:\s*1px solid var\(--palette-ink\);/);
+  assert.doesNotMatch(css, /\.build-seal--road\s*\{[\s\S]*?clip-path:/);
   assert.match(css, /\.build-seal--selected::before\s*\{/);
   assert.match(css, /\.build-seal--selected::after\s*\{/);
   assert.match(css, /\.build-seal--highlighted\s*\{[\s\S]*?animation:/);
@@ -174,11 +174,11 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*224px;/);
   assert.match(mobileRules, /\.court-recess\s*\{[\s\S]*?height:\s*206px;/);
   assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
-  assert.match(mobileRules, /--seal-size:\s*48px;/);
+  assert.match(mobileRules, /--seal-size:\s*56px;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?display:\s*flex;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?flex-wrap:\s*nowrap;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-x:\s*auto;/);
-  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*4px;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*8px;/);
   assert.match(mobileRules, /\.build-group\s*\{[\s\S]*?display:\s*grid;[\s\S]*?flex:\s*0 0 auto;/);
   assert.match(mobileRules, /\.build-group-seals\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex:\s*0 0 auto;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?justify-content:\s*flex-start;/);
@@ -207,7 +207,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.doesNotMatch(css, /\.court-console::(?:before|after)/);
   assert.doesNotMatch(css, /\.court-recess::(?:before|after)/);
   assert.doesNotMatch(css, /illumination_corner\.png/);
-  assert.match(css, /\.court-ledger::after\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);[\s\S]*?opacity:\s*0\.86;/);
+  assert.doesNotMatch(css, /\.court-ledger::(?:before|after)\s*\{/);
+  assert.match(css, /\.court-ledger\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);[\s\S]*?border:\s*1px solid var\(--palette-ink\);/);
   assert.match(css, /\.court-ledger\s*>\s*\*\s*\{[\s\S]*?z-index:\s*1;/);
   assert.match(css, /\.shield-caption\s*\{[\s\S]*?bottom:\s*10px;/);
 });

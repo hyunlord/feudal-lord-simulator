@@ -213,7 +213,8 @@ test("tablet seal layout folds before it can widen the console recess", async ()
 
   // Then
   assert.match(tabletRules, /\.build-seals\s*\{/);
-  assert.match(tabletRules, /grid-template-columns:\s*repeat\(4,\s*var\(--seal-size\)\);/);
+  assert.match(tabletRules, /gap:\s*8px;/);
+  assert.doesNotMatch(tabletRules, /grid-template-columns:\s*repeat\(4,\s*var\(--seal-size\)\);/);
   assert.match(tabletRules, /\.build-seal--road\s*\{/);
   assert.match(tabletRules, /width:\s*var\(--seal-size\);/);
 });

@@ -17,10 +17,16 @@ const TABLET_MAX_WIDTH = 900;
 const MOBILE_TOP_RAIL_SAFE_INSET = 176;
 const LOW_HEIGHT_MAX = 400;
 const TARGET_ISO_TILE_SPAN = 20;
-const MIN_COMPACT_1X1_BUILDING_SCREEN_PX = 18;
-const COMPACT_OPENING_MIN_ZOOM = MIN_COMPACT_1X1_BUILDING_SCREEN_PX / TILE_H;
+export const MIN_OPENING_1X1_BUILDING_SCREEN_PX = 80;
 const COTTAGE_SPRITE = { width: 96, height: 112, anchorX: 48, anchorY: 96 } as const;
 const WELL_SPRITE = { width: 72, height: 80, anchorX: 36, anchorY: 64 } as const;
+const MIN_OPENING_1X1_SPRITE_PX = Math.min(
+  COTTAGE_SPRITE.width,
+  COTTAGE_SPRITE.height,
+  WELL_SPRITE.width,
+  WELL_SPRITE.height,
+);
+const COMPACT_OPENING_MIN_ZOOM = MIN_OPENING_1X1_BUILDING_SCREEN_PX / MIN_OPENING_1X1_SPRITE_PX;
 
 type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">;
 type InitialCameraState = Pick<GameState, "width" | "height" | "buildings">;
@@ -102,7 +108,7 @@ function startingHouseZoom(canvas: InitialCameraCanvas, useCompactOpeningFloor: 
     usableHeight / (TILE_H * TARGET_ISO_TILE_SPAN),
   );
   return clampZoom(
-    useCompactOpeningFloor && usesCompactOpeningTableauFit(canvas)
+    useCompactOpeningFloor
       ? Math.max(fittedZoom, COMPACT_OPENING_MIN_ZOOM)
       : fittedZoom,
   );

@@ -4,7 +4,7 @@ import test from "node:test";
 import type { Building } from "../src/content/buildingConfig";
 import { worldToCanvas, type CameraState } from "../src/render/camera";
 import { cameraAfterViewportResize, cameraForStartingHouse } from "../src/render/canvasRuntime";
-import { TILE_H, TILE_W, tileToScreen } from "../src/render/iso";
+import { tileToScreen } from "../src/render/iso";
 import { runtimeWorldAssetManifest } from "../src/render/worldAssetManifest.generated";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
@@ -22,7 +22,7 @@ type LegibilityScenario = {
   readonly topInset: number;
 };
 
-const MIN_ONE_BY_ONE_BUILDING_PX = 18;
+const MIN_ONE_BY_ONE_BUILDING_PX = 80;
 
 test("cameraAfterViewportResize keeps compact opening 1x1 buildings above the pixel floor", () => {
   // Given: browser QA starts from desktop, then resizes into the rejected compact openings.
@@ -42,12 +42,7 @@ test("cameraAfterViewportResize keeps compact opening 1x1 buildings above the pi
       userControlled: false,
     });
 
-    // Then: the camera uses enough pixels per 1x1 footprint that cottages do not collapse to marks.
-    assert.ok(
-      Math.min(TILE_W * camera.zoom, TILE_H * camera.zoom) >= MIN_ONE_BY_ONE_BUILDING_PX,
-      `${scenario.width}x${scenario.height} projected 1x1 footprint ${Math.min(TILE_W * camera.zoom, TILE_H * camera.zoom)}`,
-    );
-
+    // Then: actual 1x1 building sprites render large enough to read as buildings.
     const safeMap = {
       x: 0,
       y: scenario.topInset,
@@ -56,11 +51,29 @@ test("cameraAfterViewportResize keeps compact opening 1x1 buildings above the pi
     };
     for (const building of DEFAULT_GAME_STATE.buildings) {
       const spriteRect = projectedOpeningSpriteRect(building, camera);
+      const renderedMinPx = Math.min(spriteRect.width, spriteRect.height);
+      assert.ok(
+        renderedMinPx >= MIN_ONE_BY_ONE_BUILDING_PX,
+        `${scenario.width}x${scenario.height} ${building.id} rendered ${renderedMinPx}px`,
+      );
       const visibleRect = intersectRects(spriteRect, safeMap);
       assert.ok(visibleRect.width > 0, `${scenario.width}x${scenario.height} ${building.id} visible width ${visibleRect.width}`);
       assert.ok(visibleRect.height > 0, `${scenario.width}x${scenario.height} ${building.id} visible height ${visibleRect.height}`);
     }
   }
+});
+
+test("automatic opening fit uses the same 80px minimum as startup", () => {
+  // Given: a malformed narrow viewport should still be clamped to a deterministic readable opening.
+  const camera = cameraForStartingHouse({ clientWidth: 1, clientHeight: 640 }, DEFAULT_GAME_STATE);
+
+  // When
+  const renderedMins = DEFAULT_GAME_STATE.buildings.map((building) =>
+    Math.min(projectedOpeningSpriteRect(building, camera).width, projectedOpeningSpriteRect(building, camera).height),
+  );
+
+  // Then
+  assert.equal(Math.min(...renderedMins), MIN_ONE_BY_ONE_BUILDING_PX);
 });
 
 function projectedOpeningSpriteRect(building: Building, camera: CameraState): Rect {

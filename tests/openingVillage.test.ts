@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
-import { cameraForStartingHouse } from "../src/render/canvasRuntime";
+import { cameraForStartingHouse, MIN_OPENING_1X1_BUILDING_SCREEN_PX } from "../src/render/canvasRuntime";
 import { drawStartingLandmark } from "../src/render/drawStartingLandmarks";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import { TILE_H, TILE_W, tileToScreen } from "../src/render/iso";
@@ -242,7 +242,7 @@ test("ford landmark label is painted on an opaque plate before text", () => {
   assert.ok(labelIndex > plateIndex);
 });
 
-test("initial camera centres the authored village with roughly twenty visible isometric tiles", () => {
+test("initial camera centres the authored village with legible opening buildings", () => {
   // Given: a first-frame desktop canvas and the default village.
   const canvas = { clientWidth: 1280, clientHeight: 720 };
 
@@ -252,16 +252,22 @@ test("initial camera centres the authored village with roughly twenty visible is
   const screenX = anchor.sx * camera.zoom + camera.panX;
   const screenY = anchor.sy * camera.zoom + camera.panY;
   const usableHeight = canvas.clientHeight - 150;
-  const visibleTileSpan = Math.min(
-    canvas.clientWidth / (TILE_W * camera.zoom),
-    usableHeight / (TILE_H * camera.zoom),
-  );
 
-  // Then: the village centre is the visual anchor, not a map edge.
+  // Then: the village centre is the visual anchor, and the startup floor keeps buildings readable.
   assert.ok(Math.abs(screenX - canvas.clientWidth / 2) <= 2);
   assert.ok(Math.abs(screenY - usableHeight / 2) <= 2);
-  assert.ok(visibleTileSpan >= 18 && visibleTileSpan <= 22);
+  assert.ok(smallestRenderedOpeningBuildingPx(camera.zoom) >= MIN_OPENING_1X1_BUILDING_SCREEN_PX);
 });
+
+function smallestRenderedOpeningBuildingPx(zoom: number): number {
+  return Math.min(
+    ...DEFAULT_GAME_STATE.buildings.map((building) => {
+      const meta = spriteMeta(building.kind === "well" ? "well" : "house_l0");
+      if (meta === null) throw new Error(`missing sprite metadata for ${building.kind}`);
+      return Math.min(meta.width, meta.height) * zoom;
+    }),
+  );
+}
 
 test("authored roads satisfy only the first onboarding gate on first evaluation", () => {
   // Given: no presentation tasks have been acknowledged yet.

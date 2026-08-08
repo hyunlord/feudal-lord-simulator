@@ -60,7 +60,7 @@ function pxDeclaration(rule: string, property: string): number {
   return Number(match?.[1]);
 }
 
-test("Given 375px console CSS When compact overrides apply Then build seals remain 48px horizontal scroll controls", async () => {
+test("Given 375px console CSS When compact overrides apply Then build seals remain 56px horizontal scroll controls", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
   const compactRules = mediaBlocks(css, "max-width: 420px");
@@ -68,7 +68,7 @@ test("Given 375px console CSS When compact overrides apply Then build seals rema
   const buildSealRule = cssRule(compactRules, ".build-seal");
 
   // When / Then
-  assert.match(buildSealsRule, /--seal-size:\s*48px;/);
+  assert.match(buildSealsRule, /--seal-size:\s*56px;/);
   assert.match(buildSealsRule, /display:\s*flex;/);
   assert.match(buildSealsRule, /flex-wrap:\s*nowrap;/);
   assert.match(buildSealsRule, /overflow-x:\s*auto;/);
@@ -76,8 +76,8 @@ test("Given 375px console CSS When compact overrides apply Then build seals rema
   assert.match(buildSealsRule, /justify-content:\s*flex-start;/);
   assert.doesNotMatch(buildSealsRule, /grid-template-columns:/);
   assert.doesNotMatch(buildSealsRule, /overflow:\s*hidden;/);
-  assert.match(buildSealRule, /min-width:\s*48px;/);
-  assert.match(buildSealRule, /min-height:\s*48px;/);
+  assert.match(buildSealRule, /min-width:\s*56px;/);
+  assert.match(buildSealRule, /min-height:\s*56px;/);
 });
 
 test("Given 375px portrait CSS When compact overrides apply Then settlement status clears the court console by eight pixels", async () => {

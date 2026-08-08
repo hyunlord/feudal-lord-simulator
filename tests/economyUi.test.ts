@@ -211,10 +211,10 @@ test("build groups use explicit containers so neighboring buttons cannot interce
   const stylesheet = await readFile(STYLESHEET, "utf8");
 
   // Then
-  assert.match(stylesheet, /\.build-seals\s*\{[\s\S]*grid-template-columns:\s*repeat\(5, var\(--seal-size\)\)/);
-  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-seals\s*\{[\s\S]*display:\s*flex;[\s\S]*flex-wrap:\s*nowrap;[\s\S]*overflow-x:\s*auto;/);
-  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-group\s*\{[\s\S]*display:\s*grid;[\s\S]*flex:\s*0 0 auto;/);
-  assert.match(stylesheet, /@media \(max-width: 600px\)[\s\S]*\.build-group-seals\s*\{[\s\S]*display:\s*flex;[\s\S]*gap:\s*4px;/);
+  assert.match(stylesheet, /\.build-seals\s*\{[\s\S]*--seal-size:\s*56px;[\s\S]*display:\s*flex;[\s\S]*overflow-x:\s*auto;/);
+  assert.match(stylesheet, /\.build-group\s*\{[\s\S]*display:\s*grid;[\s\S]*flex:\s*0 0 auto;/);
+  assert.match(stylesheet, /\.build-group-seals\s*\{[\s\S]*display:\s*flex;[\s\S]*gap:\s*6px;/);
+  assert.match(stylesheet, /\.road-tool\s*\{[\s\S]*flex:\s*0 0 auto;[\s\S]*border-left:\s*1px solid var\(--palette-ink\);/);
 });
 
 test("settlement guidance advances population targets and samples priority on a sixty tick cadence", () => {

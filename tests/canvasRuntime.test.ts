@@ -4,10 +4,14 @@ import test from "node:test";
 import type { Building } from "../src/content/buildingConfig";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { clampPan, worldToCanvas } from "../src/render/camera";
-import { cameraAfterViewportResize, cameraForStartingHouse } from "../src/render/canvasRuntime";
+import {
+  cameraAfterViewportResize,
+  cameraForStartingHouse,
+  MIN_OPENING_1X1_BUILDING_SCREEN_PX,
+} from "../src/render/canvasRuntime";
 import { worldBounds } from "../src/render/interactions";
 import { TILE_H, TILE_W, tileToScreen } from "../src/render/iso";
-import { STARTING_LANDMARKS } from "../src/render/startingLandmarks";
+import { runtimeWorldAssetManifest } from "../src/render/worldAssetManifest.generated";
 
 const EPSILON = 1;
 
@@ -42,31 +46,6 @@ function assertAlmostEqual(actual: number, expected: number): void {
 function transformedAnchor(building: Building, camera: ReturnType<typeof cameraForStartingHouse>) {
   const anchor = tileToScreen(building.tx, building.ty);
   return worldToCanvas({ x: anchor.sx, y: anchor.sy }, camera);
-}
-
-function openingTableauPoints(): readonly { readonly label: string; readonly x: number; readonly y: number }[] {
-  const buildingPoints = DEFAULT_GAME_STATE.buildings.map((building) => {
-    const anchor = tileToScreen(building.tx, building.ty);
-    return { label: building.id, x: anchor.sx, y: anchor.sy };
-  });
-  const landmarkPoints = STARTING_LANDMARKS.map((landmark) => {
-    const anchor = tileToScreen(landmark.tx, landmark.ty);
-    return { label: landmark.kind, x: anchor.sx, y: anchor.sy };
-  });
-  return [...buildingPoints, ...landmarkPoints];
-}
-
-function screenBounds(
-  points: readonly { readonly x: number; readonly y: number }[],
-  camera: ReturnType<typeof cameraForStartingHouse>,
-) {
-  const screenPoints = points.map((point) => worldToCanvas(point, camera));
-  return {
-    minX: Math.min(...screenPoints.map((point) => point.x)),
-    maxX: Math.max(...screenPoints.map((point) => point.x)),
-    minY: Math.min(...screenPoints.map((point) => point.y)),
-    maxY: Math.max(...screenPoints.map((point) => point.y)),
-  };
 }
 
 test("cameraForStartingHouse centers the edge starting house in the desktop usable viewport", () => {
@@ -149,8 +128,8 @@ test("cameraAfterViewportResize reframes the untouched opening tableau for respo
   const desktopCanvas = { clientWidth: 1280, clientHeight: 720 };
   const desktopCamera = cameraForStartingHouse(desktopCanvas, DEFAULT_GAME_STATE);
   const scenarios = [
-    { width: 375, height: 812, consoleHeight: 224, topInset: 176 },
-    { width: 640, height: 375, consoleHeight: 276, topInset: 0 },
+    { width: 375, height: 812 },
+    { width: 640, height: 375 },
   ];
 
   for (const scenario of scenarios) {
@@ -164,19 +143,27 @@ test("cameraAfterViewportResize reframes the untouched opening tableau for respo
       userControlled: false,
     });
     const freshCamera = cameraForStartingHouse(nextCanvas, DEFAULT_GAME_STATE);
-    const bounds = screenBounds(openingTableauPoints(), camera);
-    const safeBottom = scenario.height - scenario.consoleHeight;
 
-    // Then: it derives the same deterministic opening camera as a fresh responsive load.
+    // Then: it derives the same deterministic opening camera as a fresh responsive load,
+    // and preserves the shared opening building legibility floor.
     assert.deepEqual(camera, freshCamera);
-    assert.ok(bounds.minX >= 0, `${scenario.width}x${scenario.height} tableau left ${bounds.minX}`);
-    assert.ok(bounds.maxX <= scenario.width, `${scenario.width}x${scenario.height} tableau right ${bounds.maxX}`);
-    assert.ok(bounds.minY >= scenario.topInset, `${scenario.width}x${scenario.height} tableau top ${bounds.minY}`);
-    if (scenario.height > 400) {
-      assert.ok(bounds.maxY <= safeBottom, `${scenario.width}x${scenario.height} tableau bottom ${bounds.maxY}`);
-    }
+    assert.ok(
+      smallestRenderedOpeningBuildingPx(camera) >= MIN_OPENING_1X1_BUILDING_SCREEN_PX,
+      `${scenario.width}x${scenario.height} opening building floor`,
+    );
   }
 });
+
+function smallestRenderedOpeningBuildingPx(camera: ReturnType<typeof cameraForStartingHouse>): number {
+  return Math.min(
+    ...DEFAULT_GAME_STATE.buildings.map((building) => {
+      const spriteKey = building.kind === "well" ? "well" : "house_l0";
+      const meta = runtimeWorldAssetManifest.assets.find((asset) => asset.key === spriteKey);
+      if (meta === undefined) throw new Error(`Missing sprite metadata for ${spriteKey}`);
+      return Math.min(meta.width, meta.height) * camera.zoom;
+    }),
+  );
+}
 
 test("cameraAfterViewportResize preserves a user-controlled camera through clamping", () => {
   // Given: the user has already panned or zoomed the opening map before a responsive resize.
