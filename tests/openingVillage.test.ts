@@ -18,7 +18,8 @@ import {
 import { ONBOARDING_TASKS } from "../src/ui/onboardingTaskModel";
 
 const OPENING_CENTER = { tx: 45, ty: 41 } as const;
-const EXPECTED_OPENING_HASH = "f0cd4b1b189c579b";
+const EXPECTED_ECONOMY_HASH = "839a86230db877de";
+const EXPECTED_OPENING_HASH = "2e036754c2d05951";
 type Rect = {
   readonly left: number;
   readonly right: number;
@@ -117,6 +118,9 @@ test("DEFAULT_GAME_STATE opens with the authored four-cottage village around the
     .filter((building) => building.kind === "house")
     .sort((left, right) => left.id.localeCompare(right.id));
   const well = state.buildings.find((building) => building.kind === "well");
+  const authoredEconomy = state.buildings
+    .filter((building) => building.kind === "granary" || building.kind === "logging_camp" || building.kind === "storehouse")
+    .sort((left, right) => left.id.localeCompare(right.id));
 
   // Then: the village is authored, deterministic, and populated without changing timber.
   assert.deepEqual(
@@ -137,20 +141,34 @@ test("DEFAULT_GAME_STATE opens with the authored four-cottage village around the
   );
   assert.equal(state.houses[0]?.buildingId, "house-46-40-0");
   assert.equal(state.population, 12);
-  assert.equal(state.treasuryTimber, 205);
+  assert.equal(state.treasuryTimber, 120);
+  assert.deepEqual(
+    authoredEconomy.map(({ id, kind, tx, ty, workers, inventory }) => ({ id, kind, tx, ty, workers, inventory })),
+    [
+      { id: "granary-42-37-0", kind: "granary", tx: 42, ty: 37, workers: 2, inventory: { bread: 30 } },
+      { id: "logging-camp-50-40-0", kind: "logging_camp", tx: 50, ty: 40, workers: 3, inventory: {} },
+      { id: "storehouse-41-40-0", kind: "storehouse", tx: 41, ty: 40, workers: 1, inventory: { logs: 20 } },
+    ],
+  );
 });
 
-test("DEFAULT_GAME_STATE contains exactly the eight authored road tiles toward the ford", () => {
+test("DEFAULT_GAME_STATE contains exactly the fourteen authored legal road tiles", () => {
   // Given / When / Then: the path is fixed so the first frame is identical every run.
   assert.deepEqual(roadKeys(), [
-    "45,41",
+    "43,39",
+    "43,40",
+    "43,41",
+    "44,39",
+    "44,41",
+    "45,39",
+    "46,39",
     "46,41",
+    "47,39",
+    "47,40",
     "47,41",
     "48,41",
     "49,41",
     "50,41",
-    "51,41",
-    "52,41",
   ]);
 });
 
@@ -269,14 +287,12 @@ function smallestRenderedOpeningBuildingPx(zoom: number): number {
   );
 }
 
-test("authored roads satisfy only the first onboarding gate on first evaluation", () => {
+test("authored default state satisfies only the prebuilt onboarding gates on first evaluation", () => {
   // Given: no presentation tasks have been acknowledged yet.
-  const [roadTask, loggingTask] = ONBOARDING_TASKS;
-  if (roadTask === undefined || loggingTask === undefined) throw new Error("onboarding tasks missing");
+  const completion = ONBOARDING_TASKS.map((task) => task.isComplete(DEFAULT_GAME_STATE));
 
-  // When / Then: the first task is already true, but the next building task remains active.
-  assert.equal(roadTask.isComplete(DEFAULT_GAME_STATE), true);
-  assert.equal(loggingTask.isComplete(DEFAULT_GAME_STATE), false);
+  // When / Then: only road, logging, storage, and water gates are already true.
+  assert.deepEqual(completion, [true, true, false, true, true, false, false, false]);
 });
 
 test("opening hashes include the authored roads and differ from the prior edge-hut baseline", () => {
@@ -285,6 +301,6 @@ test("opening hashes include the authored roads and differ from the prior edge-h
   const openingHash = hashOpeningState(DEFAULT_GAME_STATE);
 
   // Then: the opening hash is pinned separately because roads/tiles are part of the first frame.
-  assert.equal(economyHash.length, 16);
+  assert.equal(economyHash, EXPECTED_ECONOMY_HASH);
   assert.equal(openingHash, EXPECTED_OPENING_HASH);
 });

@@ -115,8 +115,8 @@ test("firstRoadTargetForOnboarding returns null as soon as any cardinal road tou
   assert.equal(target, null);
 });
 
-test("onboardingWorldGuidanceTargets advances from the road marker to an actually buildable logging camp marker", () => {
-  // Given: task one is complete and task two needs a forest-adjacent logging camp.
+test("onboardingWorldGuidanceTargets advances from the authored opening to an actually buildable sawmill marker", () => {
+  // Given: task one and two are complete in the authored default village.
   const state = placeRoadLine(DEFAULT_GAME_STATE, { tx: 1, ty: 0 }, { tx: 1, ty: 0 });
 
   // When
@@ -124,16 +124,15 @@ test("onboardingWorldGuidanceTargets advances from the road marker to an actuall
 
   // Then
   assert.equal(targets.length, 1);
-  assert.equal(targets[0]?.kind, "logging_camp");
-  assert.equal(targets[0]?.label, "여기에 벌목소를 지으세요");
-  assert.ok((targets[0]?.region?.length ?? 0) > 1);
-  assert.equal(canPlaceBuilding(state, "logging_camp", targets[0]?.origin.tx ?? -1, targets[0]?.origin.ty ?? -1).ok, true);
+  assert.equal(targets[0]?.kind, "sawmill");
+  assert.equal(targets[0]?.label, "여기에 제재소를 지으세요");
+  assert.equal(canPlaceBuilding(state, "sawmill", targets[0]?.origin.tx ?? -1, targets[0]?.origin.ty ?? -1).ok, true);
 });
 
 test("onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers", () => {
   // Given
   let state = DEFAULT_GAME_STATE;
-  const expectedKinds = ["logging_camp", "sawmill", "storehouse"] as const satisfies readonly BuildingKind[];
+  const expectedKinds = ["sawmill"] as const satisfies readonly BuildingKind[];
 
   for (const kind of expectedKinds) {
     // When
@@ -181,7 +180,7 @@ test("onboardingWorldGuidanceTargets keeps task six buildable when houses are pl
   assert.equal(hasOverlappingFootprints(targets), false);
 
   let settlement = placeGuidedTargets(state, targets.filter((target) => target.kind === "house"));
-  for (const kind of ["wheat_farm", "mill", "granary"] as const) {
+  for (const kind of ["wheat_farm", "mill"] as const) {
     settlement = placeGuidedTargets(settlement, [requiredGuidanceTarget(settlement, kind)]);
   }
   assert.equal(settlement.houses.length, state.houses.length + 1);
@@ -228,7 +227,7 @@ test("onboardingWorldGuidanceTargets guides four new houses together for the pop
 
 function stateAfterFoodChain(): GameState {
   let state = stateAtFoodChainTargets();
-  for (const kind of ["wheat_farm", "mill", "granary"] as const) {
+  for (const kind of ["wheat_farm", "mill"] as const) {
     state = placeGuidedMarkersUntilKind(state, kind).state;
   }
   return state;
@@ -255,7 +254,7 @@ function requiredGuidanceTarget(state: GameState, kind: BuildingKind): Onboardin
 
 function stateAtFoodChainTargets(): GameState {
   let state = DEFAULT_GAME_STATE;
-  for (const kind of ["logging_camp", "sawmill", "storehouse"] as const) {
+  for (const kind of ["sawmill"] as const) {
     state = placeGuidedMarkersUntilKind(state, kind).state;
   }
   while (onboardingWorldGuidanceTargets(state)[0]?.kind === "road") {

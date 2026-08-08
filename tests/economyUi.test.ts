@@ -291,6 +291,13 @@ test("settlement guidance priority follows the exact Phase 4F blocker order", ()
 
 test("settlement problem glyphs appear only for real water bread labour and storage conditions", () => {
   // Given
+  const houseBuildings = DEFAULT_GAME_STATE.buildings
+    .filter((building) => building.kind === "house")
+    .map((building) => ({ ...building, workers: 0 }));
+  const stableGranary = {
+    ...building({ id: "granary", kind: "granary", tx: 5, ty: 5, workers: 2 }),
+    inventory: {},
+  };
   const healthy = {
     ...DEFAULT_GAME_STATE,
     tick: 10,
@@ -300,7 +307,7 @@ test("settlement problem glyphs appear only for real water bread labour and stor
       breadStock: 1,
       lastServicedTick: 10,
     })),
-    buildings: DEFAULT_GAME_STATE.buildings.map((item) => ({ ...item, workers: 0 })),
+    buildings: [...houseBuildings, stableGranary],
   };
   const troubled = {
     ...healthy,
@@ -312,7 +319,7 @@ test("settlement problem glyphs appear only for real water bread labour and stor
       lastServicedTick: 0,
     })),
     buildings: [
-      ...healthy.buildings,
+      ...houseBuildings,
       building({ id: "farm", kind: "wheat_farm", tx: 3, ty: 3, workers: 1 }),
       {
         ...building({ id: "granary", kind: "granary", tx: 5, ty: 5, workers: 2 }),

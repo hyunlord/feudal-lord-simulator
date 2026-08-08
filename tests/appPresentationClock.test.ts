@@ -10,7 +10,7 @@ test("paused presentation clock has no onboarding commit while the current task 
   // Given
   const presentation = {
     ...createOnboardingPresentationState(),
-    completedTaskIds: ["task-1"] as const,
+    completedTaskIds: ["task-1", "task-2"] as const,
   };
 
   // When

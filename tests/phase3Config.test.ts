@@ -23,7 +23,7 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     GROWTH_INTERVAL: 50,
     STARVATION_WINDOW: 300,
     WORKERS_PER_RESIDENT: 0.5,
-    STARTING_TIMBER: 205,
+    STARTING_TIMBER: 120,
   });
 });
 
@@ -123,6 +123,9 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
   // Given / When
   const state = DEFAULT_GAME_STATE;
   const startingHouses = state.buildings.filter((building) => building.kind === "house");
+  const authoredEconomy = state.buildings
+    .filter((building) => building.kind === "granary" || building.kind === "logging_camp" || building.kind === "storehouse")
+    .sort((left, right) => left.id.localeCompare(right.id));
 
   // Then
   assert.equal(state.treasuryTimber, BALANCE.STARTING_TIMBER);
@@ -183,6 +186,14 @@ test("DEFAULT_GAME_STATE seeds the authored opening household and path cache fie
       unmetRequirementTicks: 0,
     },
   ]);
+  assert.deepEqual(
+    authoredEconomy.map(({ id, kind, tx, ty, workers, inventory }) => ({ id, kind, tx, ty, workers, inventory })),
+    [
+      { id: "granary-42-37-0", kind: "granary", tx: 42, ty: 37, workers: 2, inventory: { bread: 30 } },
+      { id: "logging-camp-50-40-0", kind: "logging_camp", tx: 50, ty: 40, workers: 3, inventory: {} },
+      { id: "storehouse-41-40-0", kind: "storehouse", tx: 41, ty: 40, workers: 1, inventory: { logs: 20 } },
+    ],
+  );
 });
 
 test("placeBuilding creates newly placed houses as pending construction sites", () => {

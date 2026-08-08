@@ -41,7 +41,6 @@ test("evaluateEraRequirements returns four independent gauges at exact threshold
     treasuryTimber: 249,
     treasuryCoin: 0,
     buildings: [
-      ...DEFAULT_GAME_STATE.buildings,
       building({ id: "granary", kind: "granary" }),
       building({ id: "chapel", kind: "chapel" }),
     ],
@@ -51,7 +50,6 @@ test("evaluateEraRequirements returns four independent gauges at exact threshold
     treasuryTimber: 250,
     treasuryCoin: 0,
     buildings: [
-      ...DEFAULT_GAME_STATE.buildings,
       building({ id: "granary", kind: "granary" }),
       building({ id: "chapel", kind: "chapel" }),
     ],
@@ -84,6 +82,7 @@ test("evaluateEraRequirements counts finished granaries and chapels but not cons
     population: 60,
     treasuryTimber: 250,
     treasuryCoin: 0,
+    buildings: [],
     constructionSites: [
       {
         id: "construction-site-000001",

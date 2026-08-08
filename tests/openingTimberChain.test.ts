@@ -34,6 +34,7 @@ function openingScenario(): GameState {
     walkers: [],
     roadRevision: 0,
     pathCache: {},
+    treasuryTimber: 205,
   };
 }
 
@@ -68,7 +69,7 @@ test("the authored opening can commit timber and food construction before worker
   assert.equal(placementSpendableResource(state, "timber"), 20);
 });
 
-test("the tuned default-map grant commits both economy chains before starvation", () => {
+test("the tuned default-map grant commits the first missing economy chain pieces before starvation", () => {
   let state = DEFAULT_GAME_STATE;
   state = placeRoadLine(state, { tx: 1, ty: 2 }, { tx: 13, ty: 2 });
   state = placeRoadLine(state, { tx: 0, ty: 1 }, { tx: 0, ty: 2 });
@@ -88,7 +89,7 @@ test("the tuned default-map grant commits both economy chains before starvation"
 
   assert.deepEqual(
     state.buildings.map(({ kind }) => kind),
-    ["house", "house", "house", "house", "well"],
+    ["house", "house", "house", "house", "well", "granary", "logging_camp", "storehouse"],
   );
   assert.deepEqual(
     state.constructionSites.map(({ kind }) => kind),
@@ -96,9 +97,6 @@ test("the tuned default-map grant commits both economy chains before starvation"
       "logging_camp",
       "sawmill",
       "storehouse",
-      "wheat_farm",
-      "mill",
-      "granary",
       "wheat_farm",
       "house",
       "house",
@@ -108,6 +106,6 @@ test("the tuned default-map grant commits both economy chains before starvation"
       "house",
     ],
   );
-  assert.equal(state.treasuryTimber, 205);
-  assert.equal(placementSpendableResource(state, "timber"), 10);
+  assert.equal(state.treasuryTimber, 120);
+  assert.equal(placementSpendableResource(state, "timber"), 15);
 });
