@@ -62,6 +62,9 @@ function WalkerCard({ model }: { readonly model: WalkerDiagnosisModel }): ReactE
       <dl>
         <div><dt>화물</dt><dd>{model.cargoLabel}</dd></div>
         <div><dt>출발</dt><dd>{model.sourceLabel}</dd></div>
+        {model.sourceDirectionLabel === null || model.sourceDistance === null ? null : (
+          <div><dt>출발 위치</dt><dd>{model.sourceDirectionLabel} {model.sourceDistance}칸</dd></div>
+        )}
         <div><dt>목적</dt><dd>{model.destinationLabel}</dd></div>
         <div><dt>상태</dt><dd>{model.statusLabel}</dd></div>
         <div><dt>남은 길</dt><dd>거리 {model.remainingDistance} · 예상 {model.etaTicks}틱</dd></div>

@@ -6,6 +6,11 @@ import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { palisadeProtectionForBuilding } from "../geometry/palisadeProtection";
 import {
+  missedHouseRouteReason,
+  type DistributorRouteHistory,
+  type DistributorRouteMissReason,
+} from "./distributorRouteHistory";
+import {
   marketAccessDiagnosis,
   type MarketAccessDiagnosis,
 } from "../population/marketAccess";
@@ -36,8 +41,11 @@ export type BreadDiagnosis =
     }
   | {
       readonly kind: "not_visited";
-      readonly label: "배급자가 이 집을 지나가지 않음 — 경로가 멀거나 순회 범위 밖";
+      readonly label: string;
+      readonly route: DistributorMissedRouteDiagnosis | null;
     };
+
+export type DistributorMissedRouteDiagnosis = DistributorRouteMissReason;
 
 export type HouseDiagnosisModel = {
   readonly buildingId: string;
@@ -181,6 +189,7 @@ function servingBreadDiagnosis(
   state: GameState,
   house: House,
   home: Building,
+  history: DistributorRouteHistory | null,
 ): BreadDiagnosis {
   if (house.breadStock > 0) return { kind: "supplied", label: "빵이 있습니다" };
   const granaries = state.buildings.filter((building) => building.kind === "granary");
@@ -192,15 +201,30 @@ function servingBreadDiagnosis(
   if (!connectedToBreadGranary(state, home, stockedGranaries)) {
     return { kind: "road_disconnected", label: "곡창에서 이 집까지 도로가 이어지지 않음" };
   }
+  const route = missedHouseRouteReason({
+    state,
+    home,
+    history,
+    granaryIds: new Set(stockedGranaries.map((granary) => granary.id)),
+  });
+  if (route !== null) {
+    return {
+      kind: "not_visited",
+      route,
+      label: route.label,
+    };
+  }
   return {
     kind: "not_visited",
-    label: "배급자가 이 집을 지나가지 않음 — 경로가 멀거나 순회 범위 밖",
+    label: "배급자 순회 기록 없음 — 다음 배급 후 다시 확인",
+    route: null,
   };
 }
 
 export function houseDiagnosisModel(
   state: GameState,
   houseId: string,
+  history: DistributorRouteHistory | null = null,
 ): HouseDiagnosisModel | null {
   const house = state.houses.find((candidate) => candidate.buildingId === houseId);
   const home = state.buildings.find((candidate) => candidate.id === houseId);
@@ -216,7 +240,7 @@ export function houseDiagnosisModel(
       home,
       state.buildings.filter((building) => building.kind === "well"),
     ),
-    bread: servingBreadDiagnosis(state, house, home),
+    bread: servingBreadDiagnosis(state, house, home, history),
     population: populationDiagnosis(state, house),
     protection: protectionDiagnosis(state, home),
     market: marketAccessDiagnosis(home, state.buildings),

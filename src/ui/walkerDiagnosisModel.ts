@@ -9,12 +9,15 @@ import { BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
+import { constructionSiteAnchor } from "../economy/construction";
 
 export type WalkerDiagnosisModel = {
   readonly walkerId: string;
   readonly roleLabel: "운반인" | "배급자";
   readonly cargoLabel: string;
   readonly sourceLabel: string;
+  readonly sourceDirectionLabel: string | null;
+  readonly sourceDistance: number | null;
   readonly destinationLabel: string;
   readonly statusLabel: string;
   readonly remainingDistance: number;
@@ -57,6 +60,15 @@ function distance(left: TilePos, right: TilePos): number {
   return Math.abs(left.tx - right.tx) + Math.abs(left.ty - right.ty);
 }
 
+function directionLabel(from: TilePos, to: TilePos): string {
+  const dx = to.tx - from.tx;
+  const dy = to.ty - from.ty;
+  const vertical = dy < 0 ? "북" : dy > 0 ? "남" : "";
+  const horizontal = dx < 0 ? "서" : dx > 0 ? "동" : "";
+  const label = `${vertical}${horizontal}`;
+  return label === "" ? "같은 위치" : `${label}쪽`;
+}
+
 function remainingPathDistance(walker: Walker): number {
   if (walker.kind === "builder") return 0;
   const next = walker.path[walker.pathIndex + 1];
@@ -75,12 +87,30 @@ function buildingLabel(state: GameState, buildingId: string): string {
   return building === undefined ? buildingId : BUILDING_CONFIG_BY_KIND[building.kind].name;
 }
 
+function buildingPosition(state: GameState, buildingId: string): TilePos | null {
+  const building = state.buildings.find((candidate) => candidate.id === buildingId);
+  return building === undefined ? null : { tx: building.tx, ty: building.ty };
+}
+
 function destinationLabel(state: GameState, destination: CarterDestination): string {
   switch (destination.kind) {
     case "building":
       return buildingLabel(state, destination.buildingId);
     case "construction_site":
       return destination.siteId;
+    default:
+      return assertNever(destination);
+  }
+}
+
+function destinationPosition(state: GameState, destination: CarterDestination): TilePos | null {
+  switch (destination.kind) {
+    case "building":
+      return buildingPosition(state, destination.buildingId);
+    case "construction_site": {
+      const site = state.constructionSites.find((candidate) => candidate.id === destination.siteId);
+      return site === undefined ? null : constructionSiteAnchor(site);
+    }
     default:
       return assertNever(destination);
   }
@@ -124,11 +154,25 @@ function carterDiagnosis(
   const destination = walker.mission === "deliver"
     ? destinationLabel(state, walker.destination)
     : buildingLabel(state, walker.homeBuildingId);
+  const sourcePosition = walker.mission === "deliver"
+    ? buildingPosition(state, walker.homeBuildingId)
+    : destinationPosition(state, walker.destination);
+  const targetPosition = walker.mission === "deliver"
+    ? destinationPosition(state, walker.destination)
+    : buildingPosition(state, walker.homeBuildingId);
+  const sourceDirectionLabel = sourcePosition === null || targetPosition === null
+    ? null
+    : directionLabel(targetPosition, sourcePosition);
+  const sourceDistance = sourcePosition === null || targetPosition === null
+    ? null
+    : distance(targetPosition, sourcePosition);
   return {
     walkerId: walker.id,
     roleLabel: "운반인",
     cargoLabel: cargoLabel(walker),
     sourceLabel,
+    sourceDirectionLabel,
+    sourceDistance,
     destinationLabel: destination,
     statusLabel: carterStatus(walker),
     remainingDistance,
@@ -159,6 +203,8 @@ export function walkerDiagnosisModel(
         roleLabel: "배급자",
         cargoLabel: cargoLabel(walker),
         sourceLabel: buildingLabel(state, walker.homeBuildingId),
+        sourceDirectionLabel: null,
+        sourceDistance: null,
         destinationLabel: walker.phase === "returning" ? "홈 곡창" : "도로 순회",
         statusLabel: walker.phase === "returning" ? "곡창으로 귀환 중" : "주택 배급 순회 중",
         remainingDistance,

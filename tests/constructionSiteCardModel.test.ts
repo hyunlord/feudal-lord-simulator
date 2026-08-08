@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import type { ConstructionSite } from "../src/economy/construction";
@@ -42,6 +43,11 @@ test("construction site card model exposes four separate progress rows and an ac
     ],
   );
   assert.doesNotMatch(JSON.stringify(model), /no_route/);
+});
+
+test("real canvas passes live building and walker facts into construction material diagnosis", () => {
+  const source = readFileSync("src/render/GameCanvas.tsx", "utf8");
+  assert.match(source, /materialDiagnosisState:\s*\{\s*buildings: state\.buildings,\s*walkers: state\.walkers,/s);
 });
 
 test("construction site card model keeps no-material sites split without inventing a combined bar", () => {
@@ -126,5 +132,63 @@ test("queued palisade segment model identifies gate-outward position without add
   assert.deepEqual(model.cancellation, {
     enabled: false,
     reason: "목책 시대 선포 후에는 성벽 구간 공사를 취소할 수 없습니다",
+  });
+});
+
+test("construction site card model adds material diagnostics when state facts are available", () => {
+  // Given
+  const source = {
+    id: "source-store",
+    kind: "storehouse",
+    tx: 2,
+    ty: 1,
+    workers: 0,
+    inventory: {},
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+  } as const;
+  const carrier = {
+    id: "carter-a",
+    kind: "carter",
+    homeBuildingId: "source-store",
+    destination: { kind: "construction_site", siteId: SITE.id },
+    mission: "deliver",
+    phase: "outbound",
+    position: { tx: 2.5, ty: 1 },
+    path: [
+      { tx: 2, ty: 1 },
+      { tx: 3, ty: 1 },
+      { tx: 4, ty: 2 },
+      { tx: 4, ty: 4 },
+    ],
+    pathIndex: 1,
+    previousTile: null,
+    cargo: { resource: "timber", amount: 8 },
+    spawnedTick: 120,
+    reservation: {
+      destination: { kind: "construction_site", siteId: SITE.id },
+      resource: "timber",
+      amount: 8,
+      sourceStockClaim: {
+        kind: "building",
+        buildingId: "source-store",
+        resource: "timber",
+        amount: 8,
+      },
+      homeCapacityClaim: null,
+    },
+    cancellation: null,
+  } as const;
+
+  // When
+  const model = constructionSiteCardModel(SITE, {
+    materialDiagnosisState: { buildings: [source], walkers: [carrier] },
+  });
+
+  // Then
+  assert.deepEqual(model.rows.at(-1), {
+    label: "자재 진단",
+    value: "목재 12/30 · 예약 8 · 창고 북서쪽 8칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 57틱",
   });
 });

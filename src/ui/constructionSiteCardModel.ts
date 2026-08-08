@@ -10,6 +10,10 @@ import {
   palisadeConstructionSchedule,
   PALISADE_CANCELLATION_DISABLED_REASON,
 } from "../economy/palisadeConstruction";
+import {
+  constructionMaterialDiagnosis,
+  type ConstructionMaterialDiagnosisState,
+} from "./constructionMaterialDiagnosis";
 
 const RESOURCE_LABELS = {
   wheat: "밀",
@@ -22,7 +26,7 @@ const RESOURCE_LABELS = {
 } as const satisfies Record<ResourceType, string>;
 
 export type ConstructionSiteCardRow = Readonly<{
-  label: "부지" | "자재 확보" | "자재 배달" | "건축 작업";
+  label: "부지" | "자재 확보" | "자재 배달" | "건축 작업" | "자재 진단";
   value: string;
 }>;
 
@@ -40,6 +44,7 @@ export type ConstructionSiteCardModel = Readonly<{
 export type ConstructionSiteCardModelOptions = Readonly<{
   constructionSites?: readonly ConstructionSite[];
   cancellationDisabledReason?: string | null;
+  materialDiagnosisState?: ConstructionMaterialDiagnosisState;
 }>;
 
 function amount(record: Partial<Record<ResourceType, number>>, resource: ResourceType): number {
@@ -85,6 +90,18 @@ function currentStallLabel(
     : constructionOnSiteLabel(site);
 }
 
+function materialDiagnosisRows(
+  site: ConstructionSite,
+  options: ConstructionSiteCardModelOptions,
+): readonly ConstructionSiteCardRow[] {
+  if (options.materialDiagnosisState === undefined) return [];
+  const diagnoses = constructionMaterialDiagnosis(site, options.materialDiagnosisState);
+  return diagnoses.length === 0 ? [] : [{
+    label: "자재 진단",
+    value: diagnoses.map((diagnosis) => diagnosis.label).join(" / "),
+  }];
+}
+
 export function constructionSiteCardModel(
   site: ConstructionSite,
   options: ConstructionSiteCardModelOptions = {},
@@ -104,6 +121,7 @@ export function constructionSiteCardModel(
       { label: "자재 확보", value: securedLabel(site) },
       { label: "자재 배달", value: deliveryLabel(site) },
       { label: "건축 작업", value: `${site.builderTicks}/${site.requiredBuilderTicks}틱 · 일꾼 ${site.assignedBuilders}명` },
+      ...materialDiagnosisRows(site, options),
     ],
   };
 }

@@ -4,6 +4,7 @@ import test from "node:test";
 import type { Building } from "../src/content/buildingConfig";
 import type { GameState, PalisadeState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
+import type { DistributorRouteHistory } from "../src/ui/distributorRouteHistory";
 import { houseDiagnosisModel } from "../src/ui/houseDiagnosisModel";
 import type { TileCoordinate } from "../src/world/grid";
 import type { PalisadePath } from "../src/world/palisadeGeometry";
@@ -187,7 +188,45 @@ test("house diagnosis reports an unserviced connected household", () => {
   assert.equal(model.bread.kind, "not_visited");
   assert.equal(
     model.bread.label,
-    "배급자가 이 집을 지나가지 않음 — 경로가 멀거나 순회 범위 밖",
+    "배급자 순회 기록 없음 — 다음 배급 후 다시 확인",
+  );
+});
+
+test("house diagnosis explains the recent distributor branch and road distance when a connected house is missed", () => {
+  // Given
+  const input = state({
+    extraBuildings: [building("granary", "granary", 5, 1, 8)],
+    roads: [{ tx: 2, ty: 2 }, { tx: 3, ty: 2 }, { tx: 4, ty: 2 }],
+  });
+  const history: DistributorRouteHistory = {
+    activeByWalkerId: {},
+    routesByGranaryId: {
+      granary: [{
+        granaryId: "granary",
+        startedTick: 120,
+        completedTick: 180,
+        branchLabel: "동쪽 가지",
+        coordinates: [{ tx: 4, ty: 2 }],
+        distance: 1,
+      }],
+    },
+  };
+
+  // When
+  const model = houseDiagnosisModel(input, "house", history);
+
+  // Then
+  assert.ok(model !== null);
+  assert.equal(model.bread.kind, "not_visited");
+  assert.ok(model.bread.route !== null);
+  const route = model.bread.route;
+  assert.equal(route.granaryId, "granary");
+  assert.equal(route.commonBranchLabel, "동쪽 가지");
+  assert.equal(route.houseRoadDistance, 2);
+  assert.equal(route.serviceRadius, 40);
+  assert.equal(
+    model.bread.label,
+    "최근 배급 1회 모두 동쪽 가지 선택 — 이 집 도로거리 2 / 순회범위 40",
   );
 });
 

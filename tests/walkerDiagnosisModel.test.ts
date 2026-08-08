@@ -166,6 +166,8 @@ test("Carter diagnosis reports its real mission route cargo and ETA", () => {
   assert.equal(model.cargoLabel, "통나무 4");
   assert.equal(model.sourceLabel, "벌목소");
   assert.equal(model.destinationLabel, "창고");
+  assert.equal(model.sourceDirectionLabel, "북서쪽");
+  assert.equal(model.sourceDistance, 3);
   assert.equal(model.statusLabel, "배송 중");
   assert.equal(model.remainingDistance, 2.5);
   assert.equal(model.etaTicks, 32);

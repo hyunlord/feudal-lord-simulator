@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import test from "node:test";
 
 import {
@@ -12,7 +14,24 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingC
 import type { ResourceType } from "../src/content/resourceConfig";
 import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
+import {
+  createDistributorRouteHistory,
+  observeDistributorRouteHistory,
+} from "../src/ui/distributorRouteHistory";
 import { canPlaceBuilding } from "../src/world/placement";
+
+function sourceFiles(directory: string): readonly string[] {
+  const files: string[] = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...sourceFiles(path));
+    } else if (entry.isFile() && /\.(ts|tsx)$/.test(entry.name)) {
+      files.push(path);
+    }
+  }
+  return files;
+}
 
 function footprint(building: Building): readonly string[] {
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
@@ -213,4 +232,30 @@ test("economy harness hash includes era proclamation state", () => {
 
   // Then: the gameplay-visible era transition changes the hash.
   assert.notEqual(proclaimedHash, hamletHash);
+});
+
+test("distributor route history remains outside gameplay state and serializers", () => {
+  // Given
+  const scenario = createEconomyHarnessScenario({ seed: 3 });
+  const snapshot = structuredClone(scenario);
+  const next = advanceTick(scenario);
+
+  // When
+  observeDistributorRouteHistory({
+    previousState: scenario,
+    nextState: next,
+    history: createDistributorRouteHistory(),
+  });
+
+  // Then
+  assert.deepEqual(scenario, snapshot);
+  assert.equal(hashEconomyState(scenario), hashEconomyState(snapshot));
+
+  for (const file of [
+    ...sourceFiles("src/engine"),
+    "scripts/economyHarnessSerializer.ts",
+  ]) {
+    const source = readFileSync(file, "utf8");
+    assert.doesNotMatch(source, /distributorRouteHistory|DistributorRouteHistory/);
+  }
 });

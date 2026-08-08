@@ -44,6 +44,10 @@ import {
   diffPopulationEvents,
   type PopulationEvent,
 } from "./ui/populationEventModel";
+import {
+  createDistributorRouteHistory,
+  observeDistributorRouteHistory,
+} from "./ui/distributorRouteHistory";
 
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
 
@@ -66,8 +70,12 @@ export function App() {
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [populationDrawerOpen, setPopulationDrawerOpen] = useState(false);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
+  const [distributorRouteHistory, setDistributorRouteHistory] = useState(
+    createDistributorRouteHistory,
+  );
   const [eraPresentation, setEraPresentation] = useState(() => createEraCeremonyPresentation(state.era));
   const previousPopulationStateRef = useRef(state);
+  const previousDistributorRouteStateRef = useRef(state);
   const [presentationNowMs, setPresentationNowMs] = useState(() => Date.now());
   const [onboardingPresentation, setOnboardingPresentation] = useState(
     createOnboardingPresentationState,
@@ -88,6 +96,17 @@ export function App() {
     const interval = window.setInterval(() => dispatch({ type: "advance_frame", speed }), intervalMs);
     return () => window.clearInterval(interval);
   }, [dispatch, speed]);
+
+  useEffect(() => {
+    setDistributorRouteHistory((history) =>
+      observeDistributorRouteHistory({
+        previousState: previousDistributorRouteStateRef.current,
+        nextState: state,
+        history,
+      }),
+    );
+    previousDistributorRouteStateRef.current = state;
+  }, [state]);
 
   useEffect(() => {
     const incoming = diffPopulationEvents(previousPopulationStateRef.current, state);
@@ -191,6 +210,7 @@ export function App() {
           selectedTool={selectedTool}
           overlayMode={overlayMode}
           highlightedHouseIds={highlightedHouseIds}
+          distributorRouteHistory={distributorRouteHistory}
           palisadeDraft={palisadeDraft}
           houseMaterialWave={houseMaterialWave}
           palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}

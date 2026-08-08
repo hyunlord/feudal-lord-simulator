@@ -54,7 +54,8 @@ test("walker card renders route, mission and cancellation facts", () => {
       kind: "walker",
       value: {
         walkerId: "carter", roleLabel: "운반인", cargoLabel: "통나무 4",
-        sourceLabel: "벌목소", destinationLabel: "제재소", statusLabel: "배송 취소",
+        sourceLabel: "벌목소", sourceDirectionLabel: null, sourceDistance: null,
+        destinationLabel: "제재소", statusLabel: "배송 취소",
         remainingDistance: 7, etaTicks: 88, housesPassed: 2, tilesTravelled: null,
         cancellationLabel: "도로가 끊김",
       },

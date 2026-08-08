@@ -100,6 +100,18 @@ test("palisade draft cancel callback stays stable across presentation clock comm
   assert.match(runtimeEffectTail, /onPalisadeDraftCancel/);
 });
 
+test("app observes distributor route history only at the React presentation boundary", async () => {
+  // Given / When
+  const source = await readFile(APP_SOURCE, "utf8");
+  const gameCanvasInvocation = requiredMatch(source, /<GameCanvas[\s\S]*?\/>/, "GameCanvas invocation");
+
+  // Then
+  assert.match(source, /createDistributorRouteHistory/);
+  assert.match(source, /observeDistributorRouteHistory/);
+  assert.match(source, /previousDistributorRouteStateRef/);
+  assert.match(gameCanvasInvocation, /distributorRouteHistory=\{distributorRouteHistory\}/);
+});
+
 test("world canvas exposes crosshair styling only while a placement tool is armed", () => {
   // Given / When
   const armedMarkup = renderToStaticMarkup(

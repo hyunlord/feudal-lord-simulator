@@ -16,11 +16,13 @@ import {
   constructionCancellationDisabledReason,
   constructionSiteCardModel,
 } from "../ui/constructionSiteCardModel";
+import type { DistributorRouteHistory } from "../ui/distributorRouteHistory";
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
   readonly overlayMode?: OverlayMode;
   readonly highlightedHouseIds?: readonly string[];
+  readonly distributorRouteHistory?: DistributorRouteHistory | null;
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
@@ -32,6 +34,7 @@ export function GameCanvas({
   selectedTool = DEFAULT_PLACEMENT_TOOL,
   overlayMode = "none",
   highlightedHouseIds = [],
+  distributorRouteHistory = null,
   palisadeDraft = null,
   houseMaterialWave = null,
   palisadeCeremonyStartedAtMs = null,
@@ -62,7 +65,7 @@ export function GameCanvas({
 
   let cardModel: DiagnosticCardModel | null = null;
   if (selection?.kind === "building") {
-    const value = houseDiagnosisModel(state, selection.buildingId);
+    const value = houseDiagnosisModel(state, selection.buildingId, distributorRouteHistory);
     if (value !== null) cardModel = { kind: "house", value };
   } else if (selection?.kind === "walker") {
     const value = walkerDiagnosisModel(state, selection.walkerId);
@@ -74,6 +77,10 @@ export function GameCanvas({
         kind: "construction_site",
         value: constructionSiteCardModel(site, {
           constructionSites: state.constructionSites,
+          materialDiagnosisState: {
+            buildings: state.buildings,
+            walkers: state.walkers,
+          },
           cancellationDisabledReason: state.palisade === null
             ? null
             : constructionCancellationDisabledReason(site),
