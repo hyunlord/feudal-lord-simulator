@@ -153,3 +153,57 @@ test("Given proclamation tick boundaries When allocating labour Then offsets 0 a
   );
 }
 );
+
+test("Given Stone Town ceremony offsets When active construction exists Then half the workers are reserved for nine hundred ticks", () => {
+  // Given
+  const target = wallSite("stone-target", 0, { kind: "palisade_segment" });
+
+  // When
+  const quotas = [0, 1, 2, 5, 10].map((availableWorkers) =>
+    palisadeEraLabourReservation({
+      era: "stone_town",
+      constructionSites: [target],
+      availableWorkers,
+      tick: 100,
+      eraProclaimedTick: 100,
+    }).reservedWorkers,
+  );
+  const offset899 = palisadeEraLabourReservation({
+    era: "stone_town",
+    constructionSites: [target],
+    availableWorkers: 10,
+    tick: 999,
+    eraProclaimedTick: 100,
+  });
+  const offset900 = palisadeEraLabourReservation({
+    era: "stone_town",
+    constructionSites: [target],
+    availableWorkers: 10,
+    tick: 1_000,
+    eraProclaimedTick: 100,
+  });
+
+  // Then
+  assert.deepEqual(quotas, [0, 1, 1, 2, 5]);
+  assert.equal(offset899.reservedWorkers, 5);
+  assert.equal(offset900.reservedWorkers, 0);
+}
+);
+
+test("Given Stone Town ceremony has no active target When allocating labour Then workers stay available", () => {
+  // Given
+  const farm = building("a-farm", "wheat_farm");
+
+  // When
+  const result = allocateBuildingAndConstructionLabour([farm], [], 10, {
+    era: "stone_town",
+    tick: 100,
+    eraProclaimedTick: 100,
+  });
+
+  // Then
+  assert.equal(result.buildings[0]?.workers, 4);
+  assert.equal(result.diagnostics.palisadeEraLabour.reservedWorkers, 0);
+  assert.equal(result.diagnostics.palisadeEraLabour.activeSiteId, null);
+}
+);

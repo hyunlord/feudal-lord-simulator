@@ -127,7 +127,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     marketSettled.buildings,
     movedCarters.constructionSites,
     housing.population,
-    { tick, eraProclaimedTick: state.eraProclaimedTick },
+    { era: state.era, tick, eraProclaimedTick: state.eraProclaimedTick },
   );
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];

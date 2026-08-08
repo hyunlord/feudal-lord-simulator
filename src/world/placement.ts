@@ -38,6 +38,7 @@ type ResourceWorldView = WorldView & {
 const ERA_ORDER = {
   hamlet: 0,
   palisade: 1,
+  stone_town: 2,
 } as const satisfies Record<Era, number>;
 
 export function isBuildingUnlocked(

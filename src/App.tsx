@@ -164,6 +164,10 @@ export function App() {
     dispatch({ type: "confirm_palisade_proclamation", candidatePath });
     setPalisadeDraft(null);
   };
+  const proclaimStoneTown = () => {
+    dispatch({ type: "confirm_stone_town_proclamation" });
+    setPalisadeDraft(null);
+  };
   const cancelPalisadeDraft = useCallback(() => setPalisadeDraft(null), []);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
@@ -204,6 +208,7 @@ export function App() {
             onBeginProposal={beginPalisadeProposal}
             onConfirmProposal={confirmPalisadeProposal}
             onCancelProposal={() => setPalisadeDraft(null)}
+            onProclaimStoneTown={proclaimStoneTown}
           />
           <OnboardingTasks view={onboardingView} />
         </aside>

@@ -30,7 +30,8 @@ export type GameAction =
   | {
       readonly type: "confirm_palisade_proclamation";
       readonly candidatePath: PalisadePath;
-    };
+    }
+  | { readonly type: "confirm_stone_town_proclamation" };
 
 export interface GameStoreContextValue {
   state: GameState;

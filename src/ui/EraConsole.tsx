@@ -1,5 +1,6 @@
 import { palisadeConstructionSchedule } from "../economy/palisadeConstruction";
-import { evaluateEraRequirements } from "../engine/era";
+import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
+import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
 import type { PalisadeDraftState } from "../render/palisadeDraftInteraction";
 import { constructionSiteCardModel } from "./constructionSiteCardModel";
@@ -9,6 +10,7 @@ export type EraConsoleAction = {
   readonly enabled: boolean;
   readonly label: string;
   readonly reason: string | null;
+  readonly targetEra: Extract<Era, "palisade" | "stone_town">;
 };
 
 export type EraConsoleModel = {
@@ -31,7 +33,17 @@ export type EraConsoleModel = {
   readonly irreversibleNotice: string | null;
 };
 
-const PROCLAMATION_TOOLTIP = "선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)";
+const PROCLAMATION_TOOLTIPS = {
+  hamlet: "선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)",
+  palisade: "선포하면 일꾼의 50%가 석조 전환 공사에 배정됩니다 (약 900틱)",
+  stone_town: "석조 도시가 선포되었습니다",
+} as const satisfies Record<Era, string>;
+
+const CURRENT_ERA_LABELS = {
+  hamlet: "촌락",
+  palisade: "목책마을",
+  stone_town: "석조 도시",
+} as const satisfies Record<Era, string>;
 
 export function buildEraConsoleModel(input: {
   readonly state: GameState;
@@ -40,16 +52,21 @@ export function buildEraConsoleModel(input: {
   const requirements = evaluateEraRequirements(input.state);
   const proposal = proposalSummaryForState(input.state, palisadeFootprintsForState(input.state));
   const firstUnmet = requirements.find((requirement) => !requirement.met) ?? null;
-  const proposalVisible = requirements.some((requirement) => requirement.met) || input.draft !== null;
-  const canBegin = input.state.era === "hamlet" && firstUnmet === null && proposal.ok;
+  const proposalVisible =
+    input.state.era === "hamlet" && (requirements.some((requirement) => requirement.met) || input.draft !== null);
+  const targetEra = input.state.era === "hamlet" ? "palisade" : "stone_town";
+  const canBegin = input.state.era === "hamlet"
+    ? firstUnmet === null && proposal.ok
+    : canProclaimStoneTownEra(input.state);
   return {
-    currentEraLabel: input.state.era === "palisade" ? "목책마을" : "촌락",
+    currentEraLabel: CURRENT_ERA_LABELS[input.state.era],
     requirements,
-    tooltip: PROCLAMATION_TOOLTIP,
+    tooltip: PROCLAMATION_TOOLTIPS[input.state.era],
     action: {
       enabled: canBegin,
-      label: input.draft === null ? "목책 시대 선포 준비" : "목책 시대 선포 확정",
+      label: actionLabel({ state: input.state, draft: input.draft }),
       reason: actionReason({ firstUnmet, proposalOk: proposal.ok, state: input.state }),
+      targetEra,
     },
     proposal: {
       visible: proposalVisible,
@@ -76,20 +93,24 @@ export function EraConsole({
   onBeginProposal,
   onConfirmProposal,
   onCancelProposal,
+  onProclaimStoneTown = () => undefined,
 }: {
   readonly model: EraConsoleModel;
   readonly onBeginProposal: () => void;
   readonly onConfirmProposal: () => void;
   readonly onCancelProposal: () => void;
+  readonly onProclaimStoneTown?: () => void;
 }) {
-  const actionHandler = model.draft.editing ? onConfirmProposal : onBeginProposal;
+  const actionHandler = model.action.targetEra === "stone_town"
+    ? onProclaimStoneTown
+    : model.draft.editing ? onConfirmProposal : onBeginProposal;
   return (
     <section className="era-console" aria-label="Era console">
       <header className="era-console__header">
         <span className="era-console__kicker">현재 시대</span>
         <strong>{model.currentEraLabel}</strong>
       </header>
-      <dl className="era-requirements" aria-label="목책 시대 요구 조건">
+      <dl className="era-requirements" aria-label="시대 요구 조건">
         {model.requirements.map((requirement) => (
           <div
             className={requirement.met ? "era-requirement era-requirement--met" : "era-requirement"}
@@ -146,11 +167,21 @@ function actionReason(input: {
   readonly proposalOk: boolean;
   readonly state: GameState;
 }): string | null {
-  if (input.state.era === "palisade") return "이미 목책 시대가 선포되었습니다";
+  if (input.state.era === "stone_town") return "이미 석조 도시가 선포되었습니다";
   if (input.firstUnmet !== null) {
     return `${input.firstUnmet.label} ${input.firstUnmet.current}/${input.firstUnmet.target}`;
   }
+  if (input.state.era === "palisade") return null;
   return input.proposalOk ? null : "유효한 목책 제안을 만들 수 없습니다";
+}
+
+function actionLabel(input: {
+  readonly state: GameState;
+  readonly draft: PalisadeDraftState | null;
+}): string {
+  if (input.state.era === "palisade") return "석조 도시 선포";
+  if (input.state.era === "stone_town") return "석조 도시 선포 완료";
+  return input.draft === null ? "목책 시대 선포 준비" : "목책 시대 선포 확정";
 }
 
 function proposalFailureLabel(reason: string): string {

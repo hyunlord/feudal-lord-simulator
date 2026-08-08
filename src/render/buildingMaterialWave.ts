@@ -43,6 +43,16 @@ export function houseMaterialEraForBuilding(input: {
   return index < completed ? "palisade" : "hamlet";
 }
 
+export function houseMaterialEraFromEra(era: Era): HouseMaterialEra {
+  switch (era) {
+    case "hamlet":
+      return "hamlet";
+    case "palisade":
+    case "stone_town":
+      return "palisade";
+  }
+}
+
 export function palisadeCenter(points: readonly Point[]): Point {
   if (points.length === 0) return { x: 0, y: 0 };
   const sum = points.reduce((total, point) => ({ x: total.x + point.x, y: total.y + point.y }), { x: 0, y: 0 });

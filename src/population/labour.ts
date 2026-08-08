@@ -141,12 +141,14 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
     ? palisadeEraLabourReservation({
         constructionSites,
         availableWorkers: available,
+        era: "hamlet",
         tick: 0,
         eraProclaimedTick: null,
       })
     : palisadeEraLabourReservation({
         constructionSites,
         availableWorkers: available,
+        era: options.era ?? "palisade",
         tick: options.tick,
         eraProclaimedTick: options.eraProclaimedTick,
       });

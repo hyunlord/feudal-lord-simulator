@@ -145,6 +145,60 @@ test("era console reports wall progress queued active diagnostic and irreversibl
   assert.match(model.irreversibleNotice ?? "", /선포 후 성벽 구간은 취소할 수 없습니다/);
 });
 
+test("era console exposes Stone Town label gauges and exact proclamation labour copy", () => {
+  // Given
+  const model = buildEraConsoleModel({
+    state: state({
+      era: "palisade",
+      population: 140,
+      treasuryCoin: 200,
+      buildings: [
+        building({ id: "market-a", kind: "market", tx: 10, ty: 10 }),
+        building({ id: "masonry-a", kind: "masonry", tx: 12, ty: 10 }),
+        {
+          ...building({ id: "store-a", kind: "storehouse", tx: 14, ty: 10 }),
+          inventory: { stone: 400 },
+        },
+      ],
+    }),
+    draft: null,
+  });
+  const markup = renderToStaticMarkup(createElement(EraConsole, {
+    model,
+    onBeginProposal: () => undefined,
+    onConfirmProposal: () => undefined,
+    onCancelProposal: () => undefined,
+  }));
+
+  // When / Then
+  assert.equal(model.currentEraLabel, "목책마을");
+  assert.deepEqual(model.requirements.map((row) => [row.key, row.label, row.current, row.target, row.met]), [
+    ["population", "인구", 140, 140, true],
+    ["market", "시장", 1, 1, true],
+    ["masonry", "석공소", 1, 1, true],
+    ["stone", "석재", 400, 400, true],
+    ["coin", "금화", 200, 200, true],
+  ]);
+  assert.equal(model.tooltip, "선포하면 일꾼의 50%가 석조 전환 공사에 배정됩니다 (약 900틱)");
+  assert.equal(model.action.enabled, true);
+  assert.equal(model.action.label, "석조 도시 선포");
+  assert.match(markup, /석조 도시 선포/);
+  assert.match(markup, /400\/400/);
+});
+
+test("era console labels the proclaimed Stone Town current era without enabling repeats", () => {
+  // Given
+  const model = buildEraConsoleModel({
+    state: state({ era: "stone_town" }),
+    draft: null,
+  });
+
+  // When / Then
+  assert.equal(model.currentEraLabel, "석조 도시");
+  assert.equal(model.action.enabled, false);
+  assert.equal(model.action.reason, "이미 석조 도시가 선포되었습니다");
+});
+
 test("era console source uses presentation-only draft state and canvas runtime handles Escape without simulation mutation", async () => {
   // Given / When
   const appSource = await readFile(APP_SOURCE, "utf8");

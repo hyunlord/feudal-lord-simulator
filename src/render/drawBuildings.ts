@@ -6,7 +6,7 @@ import type { CameraState } from "./camera";
 import { tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
 import { buildBuildingVisualState, renderDetailLevel } from "./buildingVisualState";
-import type { HouseMaterialWave } from "./buildingMaterialWave";
+import { houseMaterialEraFromEra, type HouseMaterialWave } from "./buildingMaterialWave";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
 import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } from "./drawTrees";
@@ -83,7 +83,7 @@ function drawBuilding(
 ): void {
   const center = buildingCenter(building);
   const visualState = buildBuildingVisualState(building, input.state.houses, {
-    era: input.state.era,
+    era: houseMaterialEraFromEra(input.state.era),
     wave: input.houseMaterialWave ?? null,
     nowMs: input.nowMs ?? 0,
   });

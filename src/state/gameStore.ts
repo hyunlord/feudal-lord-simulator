@@ -2,6 +2,7 @@ import { createContext, createElement, useContext, useMemo, useReducer } from "r
 
 import { BALANCE } from "../content/balanceConfig";
 import { cancelConstruction } from "../engine/constructionCancellation";
+import { confirmStoneTownProclamation } from "../engine/era";
 import { advanceFrame } from "../engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
@@ -79,6 +80,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
     }
     case "confirm_palisade_proclamation":
       return confirmPalisadeProclamation(state, action.candidatePath);
+    case "confirm_stone_town_proclamation":
+      return confirmStoneTownProclamation(state);
     default:
       return assertNever(action);
   }
