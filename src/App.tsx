@@ -144,7 +144,7 @@ export function App() {
       buildings: state.buildings,
       center: palisadeCenter(state.palisade.polygon),
       startedAtMs: eraPresentation.ceremony.startedAtMs,
-      targetMaterialEra: state.era === "stone_town" ? "stone" : "palisade",
+      targetMaterialEra: eraPresentation.ceremony.targetEra === "stone_town" ? "stone" : "palisade",
     });
   const onboardingView = getOnboardingTaskView(state, onboardingPresentation);
   const highlightedTools = onboardingView.current?.highlightTools ?? [];

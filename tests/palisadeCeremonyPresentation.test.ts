@@ -44,20 +44,28 @@ test("era ceremony starts on hamlet to palisade and palisade to Stone Town trans
   // Then
   assert.deepEqual(loaded, firstSeenPalisade);
   assert.equal(transitioned.observedEra, "palisade");
-  assert.deepEqual(transitioned.ceremony, { startedAtMs: 1_000, dismissed: false });
+  assert.deepEqual(transitioned.ceremony, {
+    startedAtMs: 1_000,
+    dismissed: false,
+    targetEra: "palisade",
+  });
   assert.equal(stoneTransitioned.observedEra, "stone_town");
-  assert.deepEqual(stoneTransitioned.ceremony, { startedAtMs: 2_000, dismissed: false });
+  assert.deepEqual(stoneTransitioned.ceremony, {
+    startedAtMs: 2_000,
+    dismissed: false,
+    targetEra: "stone_town",
+  });
 });
 
 test("era ceremony is dismissible and automatically ends after two seconds", () => {
   // Given
   const active = presentation({
     observedEra: "palisade",
-    ceremony: { startedAtMs: 1_000, dismissed: false },
+    ceremony: { startedAtMs: 1_000, dismissed: false, targetEra: "palisade" },
   });
   const dismissed = presentation({
     observedEra: "palisade",
-    ceremony: { startedAtMs: 1_000, dismissed: true },
+    ceremony: { startedAtMs: 1_000, dismissed: true, targetEra: "palisade" },
   });
 
   // When / Then
@@ -70,7 +78,7 @@ test("era ceremony banner uses canonical class hooks and Korean transition copy"
   // Given
   const markup = renderToStaticMarkup(
     createElement(EraCeremonyBanner, {
-      ceremony: { startedAtMs: 1_000, dismissed: false },
+      ceremony: { startedAtMs: 1_000, dismissed: false, targetEra: "palisade" },
       nowMs: 1_200,
       onDismiss: () => undefined,
     }),
@@ -81,6 +89,25 @@ test("era ceremony banner uses canonical class hooks and Korean transition copy"
   assert.match(markup, /목책마을 선포/);
   assert.match(markup, /성문이 열리고 집들이 새 목재를 두릅니다/);
   assert.match(markup, /aria-label="Dismiss palisade ceremony"/);
+});
+
+test("era ceremony banner uses distinct Stone Town copy without palisade aria text", () => {
+  // Given
+  const markup = renderToStaticMarkup(
+    createElement(EraCeremonyBanner, {
+      ceremony: { startedAtMs: 1_000, dismissed: false, targetEra: "stone_town" },
+      nowMs: 1_200,
+      onDismiss: () => undefined,
+    }),
+  );
+
+  // Then
+  assert.match(markup, /class="era-ceremony"/);
+  assert.match(markup, /aria-label="Stone Town ceremony"/);
+  assert.match(markup, /석조 도시 선포/);
+  assert.match(markup, /석재가 목책을 대신하고 집들이 돌빛으로 바뀝니다/);
+  assert.match(markup, /aria-label="Dismiss Stone Town ceremony"/);
+  assert.doesNotMatch(markup, /Palisade age ceremony|Dismiss palisade ceremony|목책마을 선포/);
 });
 
 test("era ceremony presentation never expands the gameplay era union", () => {

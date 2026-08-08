@@ -126,13 +126,14 @@ export function canProclaimStoneTownEra(state: GameState): boolean {
   return state.era === "palisade" && evaluateStoneTownEraRequirements(state).every((requirement) => requirement.met);
 }
 
-function stoneReplacementSiteId(segmentId: string): string {
+export function stoneReplacementSiteId(segmentId: string): string {
   return `${segmentId}-stone`;
 }
 
 export function confirmStoneTownProclamation(state: GameState): GameState {
   if (!canProclaimStoneTownEra(state)) return state;
-  const replacementSites = state.palisade?.segments.map((segment) =>
+  const replacementSegments = state.palisade?.segments.filter((segment) => segment.completed) ?? [];
+  const replacementSites = replacementSegments.map((segment) =>
     createStoneWallConstructionSite({
       id: stoneReplacementSiteId(segment.id),
       wallId: state.palisade?.id ?? "",
@@ -154,7 +155,7 @@ export function confirmStoneTownProclamation(state: GameState): GameState {
           segments: state.palisade.segments.map((segment) => ({
             ...segment,
             material: segment.material ?? "timber",
-            replacementConstructionSiteId: stoneReplacementSiteId(segment.id),
+            replacementConstructionSiteId: segment.completed ? stoneReplacementSiteId(segment.id) : null,
           })),
         },
     constructionSites: [...state.constructionSites, ...replacementSites],

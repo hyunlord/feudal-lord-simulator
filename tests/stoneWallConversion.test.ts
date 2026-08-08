@@ -191,7 +191,7 @@ test("Given an eligible malformed Stone Town state without a palisade When procl
   assert.equal(next.palisade, null);
 });
 
-test("Given an unfinished timber predecessor When proclaiming Stone Town Then the stone queue does not leapfrog behind it", () => {
+test("Given an unfinished timber predecessor When proclaiming Stone Town Then only standing timber receives stone replacement", () => {
   // Given
   const unfinished = timberSite(0, {
     delivered: { timber: 15 },
@@ -212,28 +212,60 @@ test("Given an unfinished timber predecessor When proclaiming Stone Town Then th
 
   // When
   const proclaimed = confirmStoneTownProclamation(eligible);
-  const afterOneTick = advanceTick({
-    ...proclaimed,
-    constructionSites: proclaimed.constructionSites.map((site) =>
-      isStoneWallConstructionSite(site) ? { ...site, delivered: { stone: 25 }, assignedBuilders: 3 } : site,
-    ),
-    wallTick: 160,
-  });
-
   // Then
   assert.deepEqual(proclaimed.constructionSites.map((site) => site.id), [
     "wall-a-segment-000",
-    "wall-a-segment-000-stone",
     "wall-a-segment-001-stone",
   ]);
-  assert.equal(proclaimed.palisade?.segments[0]?.replacementConstructionSiteId, "wall-a-segment-000-stone");
+  assert.equal(proclaimed.palisade?.segments[0]?.replacementConstructionSiteId, null);
   assert.equal(proclaimed.palisade?.segments[1]?.replacementConstructionSiteId, "wall-a-segment-001-stone");
-  assert.deepEqual(afterOneTick.constructionSites.map((site) => [site.id, site.builderTicks]), [
-    ["wall-a-segment-000-stone", 0],
-    ["wall-a-segment-001-stone", 0],
+  assert.equal(proclaimed.palisade?.segments[0]?.completed, false);
+  assert.equal(proclaimed.palisade?.segments[1]?.completed, true);
+});
+
+test("Given unfinished timber completes after Stone Town proclamation When ticking again Then its stone replacement is enqueued exactly once", () => {
+  // Given
+  const unfinished = timberSite(0, {
+    delivered: { timber: 15 },
+    builderTicks: 119,
+    assignedBuilders: 1,
+  });
+  let current = state({
+    constructionSites: [unfinished],
+    palisade: palisade([
+      palisadeSegment(0, {
+        completed: false,
+        constructionSiteId: unfinished.id,
+        material: "timber",
+      }),
+      palisadeSegment(1),
+    ]),
+  });
+
+  // When
+  current = confirmStoneTownProclamation(current);
+  current = advanceTick(current);
+  const afterCompletion = current;
+  current = advanceTick({
+    ...current,
+    constructionSites: current.constructionSites.map((site) =>
+      isStoneWallConstructionSite(site) ? { ...site, delivered: { stone: 25 }, assignedBuilders: 3 } : site,
+    ),
+  });
+
+  // Then
+  assert.deepEqual(afterCompletion.constructionSites.map((site) => site.id), [
+    "wall-a-segment-001-stone",
+    "wall-a-segment-000-stone",
   ]);
-  assert.equal(afterOneTick.palisade?.segments[0]?.completed, true);
-  assert.equal(afterOneTick.palisade?.segments[0]?.material, "timber");
+  assert.equal(afterCompletion.constructionSites.filter((site) => site.id === "wall-a-segment-000-stone").length, 1);
+  assert.deepEqual(afterCompletion.constructionSites.find((site) => site.id === "wall-a-segment-000-stone"), stoneSite(0, {
+    startedTick: afterCompletion.tick,
+  }));
+  assert.equal(afterCompletion.palisade?.segments[0]?.completed, true);
+  assert.equal(afterCompletion.palisade?.segments[0]?.material, "timber");
+  assert.equal(afterCompletion.palisade?.segments[0]?.replacementConstructionSiteId, "wall-a-segment-000-stone");
+  assert.equal(current.constructionSites.filter((site) => site.id === "wall-a-segment-000-stone").length, 1);
 });
 
 test("Given same-order timber and stone sites with reversed ids When scheduling Then timber explicitly blocks stone", () => {

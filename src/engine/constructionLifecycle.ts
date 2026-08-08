@@ -5,6 +5,7 @@ import {
   advanceConstructionWork,
   canCompleteConstruction,
   constructionStall,
+  createStoneWallConstructionSite,
   isBuildingConstructionSite,
   type BuildingConstructionSite,
   type ConstructionSite,
@@ -19,6 +20,7 @@ import {
 } from "../economy/palisadeConstruction";
 import type { House } from "../population/population.types";
 import type { GameState, PalisadeState } from "./engine.types";
+import { stoneReplacementSiteId } from "./era";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
 
 export type ConstructionCompletionEvent = {
@@ -116,25 +118,67 @@ export function completeEligibleConstruction(state: GameState): GameState {
   const activeWalkers = state.walkers.filter((walker): walker is Walker =>
     walker.kind !== "builder" || !completedIds.has(walker.siteId),
   );
+  const palisade = completePalisadeSegments(
+    state.palisade,
+    completedPalisadeSites,
+    completedStoneWallSites,
+    state.era === "stone_town",
+  );
+  const lateStoneReplacements = state.era === "stone_town"
+    ? stoneReplacementsForCompletedTimber({
+        palisade,
+        completedSites: completedPalisadeSites,
+        existingSites: state.constructionSites,
+        tick: state.tick,
+      })
+    : [];
 
   return {
     ...state,
     buildings: [...state.buildings, ...completedBuildings.map(buildingFromSite)],
-    constructionSites: state.constructionSites.filter((site) => !completedIds.has(site.id)),
+    constructionSites: [
+      ...state.constructionSites.filter((site) => !completedIds.has(site.id)),
+      ...lateStoneReplacements,
+    ],
     houses: [...state.houses, ...completedHouses],
     walkers: activeWalkers,
-    palisade: completePalisadeSegments(
-      state.palisade,
-      completedPalisadeSites,
-      completedStoneWallSites,
-    ),
+    palisade,
   };
+}
+
+function stoneReplacementsForCompletedTimber(input: {
+  readonly palisade: PalisadeState | null;
+  readonly completedSites: readonly PalisadeConstructionSite[];
+  readonly existingSites: readonly ConstructionSite[];
+  readonly tick: number;
+}): readonly StoneWallConstructionSite[] {
+  if (input.palisade === null || input.completedSites.length === 0) return [];
+  const palisade = input.palisade;
+  const existingIds = new Set(input.existingSites.map((site) => site.id));
+  const completedSiteIds = new Set(input.completedSites.map((site) => site.id));
+  return palisade.segments.flatMap((segment) => {
+    if (segment.constructionSiteId !== null || !completedSiteIds.has(segment.id)) return [];
+    const replacementId = segment.replacementConstructionSiteId;
+    if (replacementId === null || replacementId === undefined || existingIds.has(replacementId)) return [];
+    return [
+      createStoneWallConstructionSite({
+        id: replacementId,
+        wallId: palisade.id,
+        segmentIndex: segment.order,
+        gateDistance: segment.gateDistance ?? segment.order,
+        order: segment.order,
+        path: segment.edgePath,
+        startedTick: input.tick,
+      }),
+    ];
+  });
 }
 
 function completePalisadeSegments(
   palisade: PalisadeState | null,
   completedSites: readonly PalisadeConstructionSite[],
   completedStoneSites: readonly StoneWallConstructionSite[],
+  enqueueStoneReplacements: boolean,
 ): PalisadeState | null {
   if (palisade === null || (completedSites.length === 0 && completedStoneSites.length === 0)) {
     return palisade;
@@ -158,7 +202,15 @@ function completePalisadeSegments(
         };
       }
       return segment.constructionSiteId !== null && completedIds.has(segment.constructionSiteId)
-        ? { ...segment, completed: true, constructionSiteId: null, material: "timber" }
+        ? {
+            ...segment,
+            completed: true,
+            constructionSiteId: null,
+            material: "timber",
+            ...(enqueueStoneReplacements
+              ? { replacementConstructionSiteId: segment.replacementConstructionSiteId ?? stoneReplacementSiteId(segment.id) }
+              : {}),
+          }
         : segment;
     }),
   };
