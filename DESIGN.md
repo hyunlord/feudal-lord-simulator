@@ -141,10 +141,11 @@ edges. Scroll art frames content only; its interior remains visually empty.
   court console. It introduces the first interaction, uses the existing
   parchment and ink tokens only, and dismisses locally on click or pointer
   down without affecting the simulation.
-- **Onboarding tasks:** the right console shows the current task, the next
-  task, the completion flourish, or the open-goal state in that order. Current
-  tasks receive the strongest emphasis, next tasks remain legible but quieter,
-  and the open goal replaces the ordered list once all tasks are complete.
+- **Onboarding tasks:** the right console shows exactly one current imperative,
+  its completion flourish, or the open-goal state. Future tasks remain hidden
+  so the first thirty seconds contain one instruction, one world target, and
+  one settlement status line; the open goal replaces the task once all tasks
+  are complete.
 - **Road seal:** the road tool is visually distinct from building seals so the
   player can find it quickly. It keeps the same token family as the other seals
   but reads as a separate path/utility action instead of a structure.

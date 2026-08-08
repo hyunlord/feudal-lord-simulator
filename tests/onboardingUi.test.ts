@@ -155,7 +155,7 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
   assert.equal(getPlacementToolStatus({ kind: "road" }), "드래그하여 길을 놓으세요 · 취소하려면 Esc");
 });
 
-test("right rail renders era gauges plus current and next onboarding tasks", () => {
+test("right rail renders era gauges plus exactly one current imperative", () => {
   // Given / When
   const markup = renderApp();
   const railMarkup = markup.slice(
@@ -169,8 +169,9 @@ test("right rail renders era gauges plus current and next onboarding tasks", () 
   assert.match(railMarkup, /aria-label="현재 과업"/);
   assert.match(railMarkup, /data-task-state="current"/);
   assert.match(railMarkup, /길을 놓아 오두막을 이으세요/);
-  assert.match(railMarkup, /data-task-state="next"/);
-  assert.match(railMarkup, /숲 옆에 벌목소를 지으세요/);
+  assert.equal((railMarkup.match(/<li /g) ?? []).length, 1);
+  assert.doesNotMatch(railMarkup, /data-task-state="next"/);
+  assert.doesNotMatch(railMarkup, /숲 옆에 벌목소를 지으세요/);
   assert.doesNotMatch(railMarkup, /목표: 인구 50명 · 현재/);
 });
 
@@ -287,6 +288,7 @@ test("onboarding task panel renders completion flourish and the post-task open g
   // Then
   assert.match(flourishMarkup, /완료/);
   assert.match(flourishMarkup, /data-task-state="current"/);
+  assert.doesNotMatch(flourishMarkup, /data-task-state="next"/);
   assert.match(openGoalMarkup, /data-onboarding-state="open-goal"/);
   assert.match(openGoalMarkup, /목표: 인구 50 이후 번영을 이어가세요/);
 });

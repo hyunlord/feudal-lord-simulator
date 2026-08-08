@@ -556,11 +556,6 @@ button {
   background-color: var(--palette-parchment);
 }
 
-.onboarding-task--next {
-  color: var(--palette-ink-light);
-  background-color: var(--palette-vellum);
-}
-
 .onboarding-task-title,
 .onboarding-task-hint,
 .onboarding-task-flourish {
@@ -576,10 +571,6 @@ button {
 
 .onboarding-task--current .onboarding-task-title {
   color: var(--palette-vermilion);
-}
-
-.onboarding-task--next .onboarding-task-title {
-  color: var(--palette-ink);
 }
 
 /* contrast-audit selector=".onboarding-task-hint" fg="--palette-ink" bg="--palette-vellum" size="9" role="body" */
@@ -1628,10 +1619,6 @@ button {
   .onboarding-task-hint {
     font-size: 8px;
     line-height: 1.1;
-  }
-
-  .onboarding-task--next .onboarding-task-hint {
-    display: none;
   }
 
   .onboarding-task-flourish {

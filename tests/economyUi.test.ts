@@ -194,7 +194,7 @@ test("the onboarding task list replaces the distant population objective in the 
   assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
   assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
   assert.match(markup.slice(tasksIndex), /길을 놓아 오두막을 이으세요/);
-  assert.match(markup.slice(tasksIndex), /숲 옆에 벌목소를 지으세요/);
+  assert.doesNotMatch(markup.slice(tasksIndex), /숲 옆에 벌목소를 지으세요/);
 });
 
 test("sixty-tick guidance sampling does not schedule state from an effect on every simulation tick", async () => {

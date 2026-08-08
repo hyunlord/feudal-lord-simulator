@@ -148,7 +148,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.welcome-parchment p\s*\{[\s\S]*?word-break:\s*keep-all;/);
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="ordered"\]\s*\{/);
   assert.match(css, /\.onboarding-task--current\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);/);
-  assert.match(css, /\.onboarding-task--next\s*\{[\s\S]*?background-color:\s*var\(--palette-vellum\);/);
+  assert.doesNotMatch(css, /\.onboarding-task--next/);
   assert.match(css, /\.onboarding-task-flourish\s*\{[\s\S]*?color:\s*var\(--palette-ink\);/);
   assert.match(css, /\.onboarding-tasks\[data-onboarding-state="open-goal"\]\s*\{/);
   assert.match(css, /\.road-tool\s*\{[\s\S]*?border-left:\s*1px solid var\(--palette-ink\);/);

@@ -177,12 +177,6 @@ export function OnboardingTasks({ view }: { readonly view: OnboardingTaskView })
             )}
           </li>
         )}
-        {view.next === null ? null : (
-          <li className="onboarding-task onboarding-task--next" data-task-state="next">
-            <span className="onboarding-task-title">{view.next.title}</span>
-            <span className="onboarding-task-hint">{view.next.hint}</span>
-          </li>
-        )}
       </ol>
     </section>
   );
