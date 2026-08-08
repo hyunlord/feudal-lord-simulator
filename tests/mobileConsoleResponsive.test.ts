@@ -60,7 +60,7 @@ function pxDeclaration(rule: string, property: string): number {
   return Number(match?.[1]);
 }
 
-test("Given 375px console CSS When compact overrides apply Then build seals remain 56px horizontal scroll controls", async () => {
+test("Given 375px console CSS When compact overrides apply Then build seals wrap inside the viewport without shrinking targets", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
   const compactRules = mediaBlocks(css, "max-width: 420px");
@@ -70,14 +70,35 @@ test("Given 375px console CSS When compact overrides apply Then build seals rema
   // When / Then
   assert.match(buildSealsRule, /--seal-size:\s*56px;/);
   assert.match(buildSealsRule, /display:\s*flex;/);
-  assert.match(buildSealsRule, /flex-wrap:\s*nowrap;/);
-  assert.match(buildSealsRule, /overflow-x:\s*auto;/);
-  assert.match(buildSealsRule, /overflow-y:\s*hidden;/);
+  assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
+  assert.match(buildSealsRule, /align-content:\s*flex-start;/);
+  assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
+  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
   assert.match(buildSealsRule, /justify-content:\s*flex-start;/);
   assert.doesNotMatch(buildSealsRule, /grid-template-columns:/);
-  assert.doesNotMatch(buildSealsRule, /overflow:\s*hidden;/);
   assert.match(buildSealRule, /min-width:\s*56px;/);
   assert.match(buildSealRule, /min-height:\s*56px;/);
+});
+
+test("Given tablet console CSS When build controls wrap Then groups and road controls can shrink inside the recess", async () => {
+  // Given
+  const css = await readFile(STYLESHEET, "utf8");
+  const tabletRules = mediaBlocks(css, "max-width: 900px");
+  const buildSealsRule = cssRule(tabletRules, ".build-seals");
+  const buildGroupRule = cssRule(tabletRules, ".build-group,\n  .road-tool");
+  const groupSealsRule = cssRule(tabletRules, ".build-group-seals");
+  const sealRecessRule = cssRule(tabletRules, ".seal-recess");
+
+  // When / Then
+  assert.match(sealRecessRule, /align-items:\s*stretch;/);
+  assert.match(buildSealsRule, /height:\s*100%;/);
+  assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
+  assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
+  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
+  assert.match(buildGroupRule, /flex:\s*0 1 calc\(100% - 8px\);/);
+  assert.match(buildGroupRule, /max-width:\s*100%;/);
+  assert.match(groupSealsRule, /flex-wrap:\s*wrap;/);
+  assert.match(groupSealsRule, /max-width:\s*100%;/);
 });
 
 test("Given 375px portrait CSS When compact overrides apply Then settlement status clears the court console by eight pixels", async () => {

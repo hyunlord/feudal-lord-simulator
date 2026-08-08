@@ -142,6 +142,9 @@ test("Phase10 build menu exposes readable grouped controls with road separated",
   assert.match(groupRule, /gap:\s*(?:6|8|10|12)px;/);
   assert.doesNotMatch(groupLabelRule, /display:\s*none;/);
   assert.match(mobileRule, /--seal-size:\s*56px;/);
+  assert.match(mobileRule, /flex-wrap:\s*wrap;/);
+  assert.match(mobileRule, /overflow-x:\s*hidden;/);
+  assert.match(mobileRule, /overflow-y:\s*auto;/);
   assert.match(markup, /class="road-tool"/);
   for (const group of groups) {
     assert.match(markup, new RegExp(`<span class="build-group-label">${group.label}</span>`));

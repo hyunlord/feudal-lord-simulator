@@ -1737,7 +1737,7 @@
       "key": "tree_oak_large",
       "category": "foliage",
       "path": "public/assets/foliage/tree_oak_large.png",
-      "sha256": "401394953dc2dc646d21ad6cd7d7112fec883421addd85b74507a9bd5e81f36d",
+      "sha256": "7fd63812489ff09a5211c76a97eba9a28ded4ba68d184af2c37b5f41393e0f6d",
       "width": 88,
       "height": 112,
       "anchor": {
@@ -1749,7 +1749,7 @@
         "height": 1
       },
       "source": {
-        "seed": 64052101,
+        "seed": 71000101,
         "candidate": 1
       },
       "palettePolicy": "foliage-timber",
@@ -1768,7 +1768,7 @@
       "key": "tree_oak_small",
       "category": "foliage",
       "path": "public/assets/foliage/tree_oak_small.png",
-      "sha256": "9cf0eef36944be09c774c0e9b066a681bdb30ab5841afb121d0012b10e9caa0a",
+      "sha256": "f3f6d02742f18c432f3c9ff50b56dd5c9c8e34ab2ae2fdc8e44a1696f38057d8",
       "width": 64,
       "height": 80,
       "anchor": {
@@ -1780,7 +1780,7 @@
         "height": 1
       },
       "source": {
-        "seed": 64052201,
+        "seed": 71000201,
         "candidate": 1
       },
       "palettePolicy": "foliage-timber",
@@ -1799,7 +1799,7 @@
       "key": "tree_pine_tall",
       "category": "foliage",
       "path": "public/assets/foliage/tree_pine_tall.png",
-      "sha256": "e2752fa1b10fbe5d44871d3ad017b41c5a899bebb06879658f6dfbc1c281012e",
+      "sha256": "f57501df31c017b4f9d106cd14828fe9b2e5427c5f1edeecf9886aa5d4854f1a",
       "width": 64,
       "height": 120,
       "anchor": {
@@ -1811,8 +1811,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64052301,
-        "candidate": 1
+        "seed": 71000302,
+        "candidate": 2
       },
       "palettePolicy": "foliage-timber",
       "alphaPolicy": "transparent-outline-179",
@@ -1830,7 +1830,7 @@
       "key": "tree_pine_short",
       "category": "foliage",
       "path": "public/assets/foliage/tree_pine_short.png",
-      "sha256": "b0c1a05a07de12cc4396d0e533322b633d17e3c6c913224322250bb079df3d5a",
+      "sha256": "06ea335353ca4c479551920f968d7bd25f86bdfe6917a8fc96d2c72ad9cdc3a0",
       "width": 56,
       "height": 88,
       "anchor": {
@@ -1842,8 +1842,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64052401,
-        "candidate": 1
+        "seed": 71000406,
+        "candidate": 6
       },
       "palettePolicy": "foliage-timber",
       "alphaPolicy": "transparent-outline-179",
@@ -1861,7 +1861,7 @@
       "key": "tree_birch",
       "category": "foliage",
       "path": "public/assets/foliage/tree_birch.png",
-      "sha256": "ec67bdd276e624fd58854aec4c24555703c8a9249462a0eb612c180e86c517f0",
+      "sha256": "7e4ea3d7f00645688926bd2a55596a94c7ae7e110b58582c9a2a8f5034a010b2",
       "width": 60,
       "height": 96,
       "anchor": {
@@ -1873,8 +1873,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64052501,
-        "candidate": 1
+        "seed": 71000504,
+        "candidate": 4
       },
       "palettePolicy": "foliage-timber",
       "alphaPolicy": "transparent-outline-179",
@@ -1892,7 +1892,7 @@
       "key": "tree_dead",
       "category": "foliage",
       "path": "public/assets/foliage/tree_dead.png",
-      "sha256": "be93d7ada99e4d5a666c7a593e6093d7a9445bc0a031a16dfe2c5c7bae744763",
+      "sha256": "f6339e6c6f7ddd6ba92da1ab5421bd80e4d2d51c06dc12f0b9e7a0dd7cfbdadf",
       "width": 56,
       "height": 80,
       "anchor": {
@@ -1904,8 +1904,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64052601,
-        "candidate": 1
+        "seed": 71000605,
+        "candidate": 5
       },
       "palettePolicy": "foliage-timber",
       "alphaPolicy": "transparent-outline-179",
@@ -2109,7 +2109,7 @@
       "key": "grass",
       "category": "terrain",
       "path": "public/assets/terrain/grass.png",
-      "sha256": "e3d52cfe2daba029301ff5db2d9860a7bb1c660411c6b49e4711233a641a15ed",
+      "sha256": "0b1bd31a7bb647f9f73fb728f9619f86c05fd481ffc69710ebd70943714b8c14",
       "width": 256,
       "height": 256,
       "anchor": {
@@ -2121,16 +2121,16 @@
         "height": 1
       },
       "source": {
-        "seed": 64053001,
-        "candidate": 1
+        "seed": 71010106,
+        "candidate": 6
       },
       "palettePolicy": "terrain-foliage-earth",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 9.383951822916652,
-        "verticalJoinDelta": 2.864746093750004,
-        "horizontalInternalDelta": 10.370605468750027,
-        "verticalInternalDelta": 3.7255859375000124,
+        "horizontalJoinDelta": 9.626464843750018,
+        "verticalJoinDelta": 4.000976562500014,
+        "horizontalInternalDelta": 12.810058593750117,
+        "verticalInternalDelta": 4.553222656250006,
         "threshold": 24,
         "passed": true
       }
@@ -2139,7 +2139,7 @@
       "key": "forest_floor",
       "category": "terrain",
       "path": "public/assets/terrain/forest_floor.png",
-      "sha256": "7099875c981a43fd9ef193075ff1c1d5ef924f52afdec5ee29b3613f9cdcaac2",
+      "sha256": "abf4c364f334676abce73f78425f146d44f91992870a43aad1233b8cbb76984b",
       "width": 256,
       "height": 256,
       "anchor": {
@@ -2151,16 +2151,16 @@
         "height": 1
       },
       "source": {
-        "seed": 64053002,
-        "candidate": 1
+        "seed": 71010202,
+        "candidate": 2
       },
       "palettePolicy": "terrain-foliage-earth-timber",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 7.871256510416604,
-        "verticalJoinDelta": 7.754231770833263,
-        "horizontalInternalDelta": 11.493326822916726,
-        "verticalInternalDelta": 12.09114583333347,
+        "horizontalJoinDelta": 7.739257812499948,
+        "verticalJoinDelta": 7.797363281249935,
+        "horizontalInternalDelta": 13.182617187500124,
+        "verticalInternalDelta": 11.689941406250094,
         "threshold": 24,
         "passed": true
       }
@@ -2169,7 +2169,7 @@
       "key": "water",
       "category": "terrain",
       "path": "public/assets/terrain/water.png",
-      "sha256": "b06a26934f63038fef3705ba7099b6aeac937fda37556800e1a467d39560a39e",
+      "sha256": "ff47499c738d90db40052b61fbf75424c8370d9d4ae2d0aa5b8fcc42eaf8b2d7",
       "width": 256,
       "height": 256,
       "anchor": {
@@ -2181,16 +2181,16 @@
         "height": 1
       },
       "source": {
-        "seed": 64053003,
-        "candidate": 1
+        "seed": 71010302,
+        "candidate": 2
       },
       "palettePolicy": "terrain-water",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 4.448893229166667,
-        "verticalJoinDelta": 13.619303385416732,
-        "horizontalInternalDelta": 6.650878906250001,
-        "verticalInternalDelta": 23.97656249999999,
+        "horizontalJoinDelta": 3.059407552083336,
+        "verticalJoinDelta": 10.057291666666664,
+        "horizontalInternalDelta": 3.3706054687500036,
+        "verticalInternalDelta": 14.544596354166748,
         "threshold": 24,
         "passed": true
       }
@@ -2199,7 +2199,7 @@
       "key": "rock",
       "category": "terrain",
       "path": "public/assets/terrain/rock.png",
-      "sha256": "91f5373e9c8441dce674ad88f9b60fea2158787eaff44778a673e168ae3097d5",
+      "sha256": "922407c10477f606ee26f877dd13d0d272a8825f5967a48a86fe23407ec1ffe9",
       "width": 256,
       "height": 256,
       "anchor": {
@@ -2211,16 +2211,16 @@
         "height": 1
       },
       "source": {
-        "seed": 64053004,
-        "candidate": 1
+        "seed": 71010406,
+        "candidate": 6
       },
       "palettePolicy": "terrain-stone-slate",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 7.646809895833298,
-        "verticalJoinDelta": 9.29866536458333,
-        "horizontalInternalDelta": 8.922688802083316,
-        "verticalInternalDelta": 12.526041666666751,
+        "horizontalJoinDelta": 7.966634114583301,
+        "verticalJoinDelta": 9.260904947916668,
+        "horizontalInternalDelta": 7.96907552083329,
+        "verticalInternalDelta": 11.477050781250073,
         "threshold": 24,
         "passed": true
       }
@@ -2229,7 +2229,7 @@
       "key": "packed_earth_road",
       "category": "terrain",
       "path": "public/assets/terrain/packed_earth_road.png",
-      "sha256": "2fa00e2807c39968230576602d5d46547e819ae45692877619d04f5f0544ea1c",
+      "sha256": "ee5b6bb22523d7ae39e3b7988f59185b111c82f43b6d0292aa7fcbf42ab04bdb",
       "width": 256,
       "height": 256,
       "anchor": {
@@ -2241,16 +2241,16 @@
         "height": 1
       },
       "source": {
-        "seed": 64053005,
-        "candidate": 1
+        "seed": 71010505,
+        "candidate": 5
       },
       "palettePolicy": "terrain-earth-timber",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 8.204264322916602,
-        "verticalJoinDelta": 10.105468750000004,
-        "horizontalInternalDelta": 12.395182291666734,
-        "verticalInternalDelta": 11.829427083333426,
+        "horizontalJoinDelta": 10.721191406250027,
+        "verticalJoinDelta": 12.316243489583412,
+        "horizontalInternalDelta": 15.500813802083375,
+        "verticalInternalDelta": 20.406249999999954,
         "threshold": 24,
         "passed": true
       }

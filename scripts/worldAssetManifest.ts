@@ -7,7 +7,6 @@ import {
   ACCEPTED_REFERENCE_KEYS,
   BUILDING_KEYS,
   BUILDING_SPECS,
-  FOLIAGE_CANDIDATE_COUNT,
   FOLIAGE_KEYS,
   FOLIAGE_SPECS,
   TREE_STUMP_KEYS,
@@ -17,19 +16,19 @@ import {
   type AcceptedReference,
   type Anchor,
   type AssetSource,
-  type FoliageCandidate,
   type FoliageKey,
   type FoliageSelection,
   type FoliageVariation,
   type Footprint,
   type ParchmentCandidateMetrics,
   type ParchmentMetrics,
-  type SelectionRubric,
   type TerrainKey,
   type TerrainSeamMetrics,
   type WorldAsset,
   type WorldAssetManifest,
 } from "./worldAssetContracts";
+export { parseFoliageSelectionContract } from "./worldAssetFoliageSelection";
+import { parseFoliageSelectionContract } from "./worldAssetFoliageSelection";
 
 type JsonRecord = Readonly<Record<string, unknown>>;
 type CommonFields = {
@@ -75,13 +74,6 @@ const requireBoolean = (record: JsonRecord, key: string, label: string): boolean
   return value;
 };
 
-const requireTrue = (record: JsonRecord, key: string, label: string): true => {
-  if (record[key] !== true) {
-    throw new WorldAssetManifestError(`${label} ${key} must be true`);
-  }
-  return true;
-};
-
 const requirePositiveInteger = (record: JsonRecord, key: string, label: string): number => {
   const value = record[key];
   if (typeof value !== "number" || !Number.isInteger(value) || value <= 0) {
@@ -94,14 +86,6 @@ const requireNonnegativeNumber = (record: JsonRecord, key: string, label: string
   const value = record[key];
   if (typeof value !== "number" || !Number.isFinite(value) || value < 0) {
     throw new WorldAssetManifestError(`${label} ${key} must be a nonnegative number`);
-  }
-  return value;
-};
-
-const requireScore = (record: JsonRecord, key: string, label: string): 0 | 1 | 2 => {
-  const value = record[key];
-  if (value !== 0 && value !== 1 && value !== 2) {
-    throw new WorldAssetManifestError(`${label} ${key} must be 0, 1, or 2`);
   }
   return value;
 };
@@ -233,91 +217,11 @@ const parseAcceptedReferences = (value: unknown): readonly AcceptedReference[] =
   return references;
 };
 
-const parseRubric = (value: unknown, label: string): SelectionRubric => {
-  const record = requireRecord(value, label);
-  const scores = {
-    trunkGroundContact: requireScore(record, "trunkGroundContact", label),
-    silhouette: requireScore(record, "silhouette", label),
-    lightingVariation: requireScore(record, "lightingVariation", label),
-    referenceStyle: requireScore(record, "referenceStyle", label),
-  };
-  const expectedTotal = scores.trunkGroundContact + scores.silhouette + scores.lightingVariation + scores.referenceStyle;
-  const total = requireNonnegativeNumber(record, "total", label);
-  if (total !== expectedTotal) {
-    throw new WorldAssetManifestError(`${label} total must equal ${expectedTotal}`);
-  }
-  return { ...scores, total };
-};
-
-const parseFoliageCandidate = (value: unknown, key: string): FoliageCandidate => {
-  const record = requireRecord(value, `${key} candidate`);
-  const candidate = requirePositiveInteger(record, "candidate", key);
-  return {
-    candidate,
-    seed: requirePositiveInteger(record, "seed", `${key} candidate ${candidate}`),
-    path: requireString(record, "path", `${key} candidate ${candidate}`),
-    sha256: requireSha256(record, "sha256", `${key} candidate ${candidate}`),
-    width: requirePositiveInteger(record, "width", `${key} candidate ${candidate}`),
-    height: requirePositiveInteger(record, "height", `${key} candidate ${candidate}`),
-    palette: requireTrue(record, "palette", `${key} candidate ${candidate}`),
-    alpha: requireTrue(record, "alpha", `${key} candidate ${candidate}`),
-    transparentBackground: requireTrue(record, "transparentBackground", `${key} candidate ${candidate}`),
-    bakedGroundShadowAbsent: requireTrue(record, "bakedGroundShadowAbsent", `${key} candidate ${candidate}`),
-    selected: requireBoolean(record, "selected", `${key} candidate ${candidate}`),
-    hardRejected: requireBoolean(record, "hardRejected", `${key} candidate ${candidate}`),
-    rubric: parseRubric(record["rubric"], `${key} candidate ${candidate} rubric`),
-  };
-};
-
 const parseFoliageSelections = (value: unknown): readonly FoliageSelection[] => {
   if (!Array.isArray(value)) {
     throw new WorldAssetManifestError("foliageSelections must be an array");
   }
-  const selections = value.map((entry): FoliageSelection => {
-    const record = requireRecord(entry, "foliage selection");
-    const key = requireString(record, "key", "foliage selection");
-    if (!isMember(TREE_STUMP_KEYS, key)) {
-      throw new WorldAssetManifestError(`${key} is not a tree or stump selection key`);
-    }
-    if (record["tieBreak"] !== "lowest-seed") {
-      throw new WorldAssetManifestError(`${key} tieBreak must be lowest-seed`);
-    }
-    const rawCandidates = record["candidates"];
-    if (!Array.isArray(rawCandidates) || rawCandidates.length !== FOLIAGE_CANDIDATE_COUNT) {
-      throw new WorldAssetManifestError(`${key} candidates must contain exactly ${FOLIAGE_CANDIDATE_COUNT}`);
-    }
-    const candidates = rawCandidates.map((candidate) => parseFoliageCandidate(candidate, key));
-    candidates.forEach((candidate, index) => {
-      const expectedCandidate = index + 1;
-      if (candidate.candidate !== expectedCandidate) {
-        throw new WorldAssetManifestError(`${key} candidate sequence must be 1 through ${FOLIAGE_CANDIDATE_COUNT}`);
-      }
-      const spec = FOLIAGE_SPECS[key];
-      if (candidate.width !== spec.width || candidate.height !== spec.height) {
-        throw new WorldAssetManifestError(`${key} candidate ${candidate.candidate} dimensions must be ${spec.width}x${spec.height}`);
-      }
-      const expectedPath = `raw/foliage/${key}_${String(candidate.candidate).padStart(2, "0")}.png`;
-      if (candidate.path !== expectedPath) {
-        throw new WorldAssetManifestError(`${key} candidate ${candidate.candidate} path must be ${expectedPath}`);
-      }
-    });
-    const selected = candidates.filter((candidate) => candidate.selected);
-    if (selected.length !== 1) {
-      throw new WorldAssetManifestError(`${key} must select exactly one candidate`);
-    }
-    const selectedCandidate = requirePositiveInteger(record, "selectedCandidate", key);
-    if (selected[0]?.candidate !== selectedCandidate) {
-      throw new WorldAssetManifestError(`${key} selectedCandidate must match selected flag`);
-    }
-    const bestScore = Math.max(...candidates.map((candidate) => candidate.rubric.total));
-    const lowestSeedAmongBest = Math.min(
-      ...candidates.filter((candidate) => candidate.rubric.total === bestScore).map((candidate) => candidate.seed),
-    );
-    if (selected[0]?.rubric.total !== bestScore || selected[0].seed !== lowestSeedAmongBest) {
-      throw new WorldAssetManifestError(`${key} selected candidate must use lowest seed among top score`);
-    }
-    return { key, selectedCandidate, candidates, tieBreak: "lowest-seed" };
-  });
+  const selections = value.map(parseFoliageSelectionContract);
   const keys = selections.map((selection) => selection.key);
   if (keys.length !== TREE_STUMP_KEYS.length || keys.some((key, index) => key !== TREE_STUMP_KEYS[index])) {
     throw new WorldAssetManifestError("foliageSelections must match exact tree and stump keys in order");

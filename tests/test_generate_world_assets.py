@@ -28,6 +28,122 @@ def load_generator():
 
 
 class WorldAssetGeneratorContractTest(unittest.TestCase):
+    def test_phase10_surface_dry_run_enumerates_66_ordered_single_candidate_jobs(self) -> None:
+        module = load_generator()
+        calls: list[str] = []
+
+        def fail_api(path: str, body=None):
+            calls.append(path)
+            raise AssertionError("dry run must not contact ComfyUI")
+
+        module.api_json = fail_api
+        document = module.dry_run_manifest(frozenset({"phase10:surface_assets"}))
+        jobs = document["jobs"]
+        expected_groups = (
+            "tree_oak_large",
+            "tree_oak_small",
+            "tree_pine_tall",
+            "tree_pine_short",
+            "tree_birch",
+            "tree_dead",
+            "grass",
+            "forest_floor",
+            "water",
+            "rock",
+            "packed_earth_road",
+        )
+
+        self.assertEqual(document["summary"]["phase10SurfaceGroups"], 11)
+        self.assertEqual(document["summary"]["phase10SurfaceCandidates"], 66)
+        self.assertEqual(document["summary"]["queuedJobs"], 66)
+        self.assertEqual(document["summary"]["comfyuiRequests"], 0)
+        self.assertEqual(calls, [])
+        self.assertEqual([job["key"] for job in jobs[::6]], list(expected_groups))
+        self.assertEqual([job["candidate"] for job in jobs], [candidate for _ in expected_groups for candidate in range(1, 7)])
+        self.assertTrue(all(job["batchSize"] == 1 for job in jobs))
+        self.assertEqual(len({job["sourcePath"] for job in jobs}), 66)
+        self.assertEqual(len({job["seed"] for job in jobs}), 66)
+        self.assertEqual(
+            {job["key"]: (job["width"], job["height"]) for job in jobs},
+            {
+                "tree_oak_large": (88, 112),
+                "tree_oak_small": (64, 80),
+                "tree_pine_tall": (64, 120),
+                "tree_pine_short": (56, 88),
+                "tree_birch": (60, 96),
+                "tree_dead": (56, 80),
+                "grass": (256, 256),
+                "forest_floor": (256, 256),
+                "water": (256, 256),
+                "rock": (256, 256),
+                "packed_earth_road": (256, 256),
+            },
+        )
+
+    def test_phase10_surface_prompts_lock_tree_and_seam_contracts(self) -> None:
+        module = load_generator()
+        jobs = module.selected_jobs(frozenset({"phase10:surface_assets"}))
+        oak = next(job for job in jobs if job.key == "tree_oak_large" and job.candidate == 1)
+        terrain = next(job for job in jobs if job.key == "grass" and job.candidate == 1)
+
+        tree_workflow = module.workflow_prompt(oak, ("house.png", "mill.png", "granary.png"), "guide.png")
+        terrain_workflow = module.workflow_prompt(terrain, ("house.png", "mill.png", "granary.png"), None)
+        tree_positive = str(next(node for node in tree_workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+        tree_negative = " ".join(str(node["inputs"]["text"]) for node in tree_workflow.values() if node["class_type"] == "CLIPTextEncode")
+        terrain_positive = str(next(node for node in terrain_workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+
+        for clause in (
+            "visible trunk at ground",
+            "internal canopy light variation and gaps",
+            "upper-left light",
+            "foliage and timber colours only",
+            "no baked ground shadow",
+        ):
+            self.assertIn(clause, tree_positive)
+        self.assertIn("cast shadow", tree_negative)
+        self.assertIn("contact shadow", tree_negative)
+        self.assertIn("seamless 2x2 joins", terrain_positive)
+        self.assertIn("periodic edges", terrain_positive)
+
+    def test_phase10_surface_group_target_keeps_six_candidate_paths(self) -> None:
+        module = load_generator()
+        document = module.dry_run_manifest(frozenset({"phase10:surface_asset:grass"}))
+        jobs = document["jobs"]
+
+        self.assertEqual(document["summary"]["queuedJobs"], 6)
+        self.assertEqual([job["key"] for job in jobs], ["grass"] * 6)
+        self.assertEqual([job["candidate"] for job in jobs], [1, 2, 3, 4, 5, 6])
+        self.assertEqual(
+            [job["sourcePath"] for job in jobs],
+            [
+                "terrain/grass_01.png",
+                "terrain/grass_02.png",
+                "terrain/grass_03.png",
+                "terrain/grass_04.png",
+                "terrain/grass_05.png",
+                "terrain/grass_06.png",
+            ],
+        )
+
+    def test_phase10_surface_packed_earth_road_uses_release_key_and_paths(self) -> None:
+        module = load_generator()
+        document = module.dry_run_manifest(frozenset({"phase10:surface_asset:packed_earth_road"}))
+        jobs = document["jobs"]
+
+        self.assertEqual(document["summary"]["queuedJobs"], 6)
+        self.assertEqual([job["key"] for job in jobs], ["packed_earth_road"] * 6)
+        self.assertEqual(
+            [job["sourcePath"] for job in jobs],
+            [
+                "terrain/packed_earth_road_01.png",
+                "terrain/packed_earth_road_02.png",
+                "terrain/packed_earth_road_03.png",
+                "terrain/packed_earth_road_04.png",
+                "terrain/packed_earth_road_05.png",
+                "terrain/packed_earth_road_06.png",
+            ],
+        )
+
     def test_stone_town_dry_run_enumerates_42_sequential_building_candidates(self) -> None:
         module = load_generator()
         calls: list[str] = []
@@ -372,6 +488,29 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             self.assertIn("finishedAtUtc", manifest["timing"])
             self.assertGreaterEqual(manifest["timing"]["elapsedSeconds"], 0)
             self.assertEqual(manifest["jobs"][0]["sourcePath"], "terrain/grass.png")
+
+    def test_phase10_surface_generation_uses_candidate_release_names(self) -> None:
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            root = Path(raw_tmp)
+            source = root / "source.png"
+            Image.new("RGB", (1024, 1024), (0, 255, 255)).save(source)
+
+            module.queue_prompt = lambda _prompt: "private-prompt-id"
+            module.wait_for_outputs = lambda _prompt_id: [source]
+            module.upload_reference_images = lambda _repo_root: ("house.png", "mill.png", "granary.png")
+            module.upload_subject_guide = lambda _job: "guide.png"
+            module.generate(root / "raw", root, frozenset({"phase10:surface_assets"}))
+
+            manifest = json.loads((root / "raw" / "manifest.json").read_text(encoding="utf-8"))
+            source_paths = [job["sourcePath"] for job in manifest["jobs"]]
+            self.assertEqual(len(source_paths), 66)
+            self.assertEqual(len(set(source_paths)), 66)
+            self.assertIn("terrain/grass_01.png", source_paths)
+            self.assertIn("terrain/grass_06.png", source_paths)
+            self.assertTrue((root / "raw" / "terrain" / "grass_01.png").is_file())
+            self.assertTrue((root / "raw" / "terrain" / "packed_earth_road_06.png").is_file())
 
     def test_ground_cover_candidates_have_unique_portable_release_names(self) -> None:
         module = load_generator()

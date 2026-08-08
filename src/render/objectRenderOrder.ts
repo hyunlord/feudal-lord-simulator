@@ -1,7 +1,6 @@
 import type { Walker } from "../agents/walker.types";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import {
-  constructionSiteCacheKey,
   constructionSiteFootprint,
   type ConstructionSite,
 } from "../economy/construction";
@@ -11,7 +10,9 @@ import type { Tile } from "../world/world.types";
 import {
   constructionSiteRenderItem,
 } from "./constructionRenderItems";
+import { groundCoverProtectedTileKeys } from "./groundCoverProtection";
 import { depthKey } from "./iso";
+import { compareRenderItems } from "./objectRenderSort";
 import { palisadeSegmentRenderItems } from "./palisadeObjectRenderItems";
 import { STARTING_LANDMARKS } from "./startingLandmarks";
 import type {
@@ -32,6 +33,7 @@ import {
 import { forestHarvestLookup, stumpRenderItemForTile } from "./stumpRenderItems";
 import { walkerVisualAnchor } from "./walkerAnchor";
 export { forestHarvestAgeSignature } from "./stumpRenderItems";
+export { groundCoverProtectedTileKeys } from "./groundCoverProtection";
 export type { ObjectRenderItem, RenderQueueItem, WorldObjectRenderItem };
 
 type ObjectRenderInput = {
@@ -50,18 +52,6 @@ type ObjectRenderInput = {
 type ObjectRenderInputWithoutConstruction = Omit<ObjectRenderInput, "constructionSites"> & {
   readonly constructionSites?: undefined;
 };
-
-type TileArea = {
-  readonly tx: number;
-  readonly ty: number;
-  readonly width: number;
-  readonly height: number;
-};
-
-const groundCoverProtectionCache = new WeakMap<readonly Tile[], {
-  readonly buildingSignature: string;
-  readonly keys: ReadonlySet<string>;
-}>();
 
 export function buildObjectRenderItems(
   input: ObjectRenderInputWithoutConstruction,
@@ -195,71 +185,12 @@ export function clearedTreeTileKeys(
   return keys;
 }
 
-export function groundCoverProtectedTileKeys(
-  tiles: readonly Tile[],
-  buildings: readonly Building[],
-  constructionSites: readonly ConstructionSite[] = [],
-): ReadonlySet<string> {
-  const buildingSignature = [
-    ...buildings.map((building) => `${building.kind}:${building.tx}:${building.ty}`),
-    ...constructionSites.map(constructionSiteCacheKey),
-  ]
-    .join("|");
-  const cached = groundCoverProtectionCache.get(tiles);
-  if (cached?.buildingSignature === buildingSignature) {
-    return cached.keys;
-  }
-  const keys = new Set<string>();
-  for (const tile of tiles) {
-    if (tile.hasRoad) {
-      addGroundCoverApron(keys, { tx: tile.tx, ty: tile.ty, width: 1, height: 1 });
-    }
-  }
-  for (const building of buildings) {
-    const config = BUILDING_CONFIG_BY_KIND[building.kind];
-    addGroundCoverApron(keys, {
-      tx: building.tx,
-      ty: building.ty,
-      width: config.width,
-      height: config.height,
-    });
-  }
-  for (const site of constructionSites) {
-    const footprint = constructionSiteFootprint(site);
-    addGroundCoverApron(keys, {
-      tx: footprint.tx,
-      ty: footprint.ty,
-      width: footprint.width,
-      height: footprint.height,
-    });
-  }
-  groundCoverProtectionCache.set(tiles, { buildingSignature, keys });
-  return keys;
-}
-
-function compareRenderItems(left: RenderQueueItem, right: RenderQueueItem): number {
-  const depthDifference = left.depth - right.depth;
-  if (depthDifference !== 0) return depthDifference;
-
-  const anchorDifference = left.anchorTx - right.anchorTx;
-  return anchorDifference !== 0 ? anchorDifference : left.id.localeCompare(right.id);
-}
-
 function isTreeCandidate(tile: Tile, clearedTiles: ReadonlySet<string>): boolean {
   return (
     tile.buildingId === null &&
     !tile.hasRoad &&
     !clearedTiles.has(tileKey(tile.tx, tile.ty))
   );
-}
-
-function addGroundCoverApron(keys: Set<string>, area: TileArea): void {
-  const radius = 2;
-  for (let apronTy = area.ty - radius; apronTy < area.ty + area.height + radius; apronTy += 1) {
-    for (let apronTx = area.tx - radius; apronTx < area.tx + area.width + radius; apronTx += 1) {
-      keys.add(tileKey(apronTx, apronTy));
-    }
-  }
 }
 
 function tileKey(tx: number, ty: number): string {

@@ -176,11 +176,12 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
   assert.match(mobileRules, /--seal-size:\s*56px;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?display:\s*flex;/);
-  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?flex-wrap:\s*nowrap;/);
-  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-x:\s*auto;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?flex-wrap:\s*wrap;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-x:\s*hidden;/);
+  assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-y:\s*auto;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?gap:\s*8px;/);
-  assert.match(mobileRules, /\.build-group\s*\{[\s\S]*?display:\s*grid;[\s\S]*?flex:\s*0 0 auto;/);
-  assert.match(mobileRules, /\.build-group-seals\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex:\s*0 0 auto;/);
+  assert.match(mobileRules, /\.build-group\s*\{[\s\S]*?display:\s*grid;[\s\S]*?flex:\s*0 1 calc\(100% - 8px\);/);
+  assert.match(mobileRules, /\.build-group-seals\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex-wrap:\s*wrap;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?justify-content:\s*flex-start;/);
   assert.match(mobileRules, /\.ledger-recess\s*\{[\s\S]*?padding:\s*4px;/);
   assert.match(mobileRules, /\.ledger-stack\s*\{[\s\S]*?align-self:\s*stretch;/);

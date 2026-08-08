@@ -128,6 +128,34 @@ TERRAIN_GEOMETRY: Final = {
     "rock": "seamless tileable weathered rock texture, low contrast, no loose objects",
     "packed_earth_road": "seamless tileable packed earth road texture, low contrast, no road edges or markings",
 }
+PHASE10_TREE_GEOMETRY: Final = {
+    "tree_oak_large": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
+    "tree_oak_small": "younger oak, narrower crown, slender straight trunk",
+    "tree_pine_tall": "tall pine, layered horizontal branches narrowing to a point, bare lower trunk",
+    "tree_pine_short": "shorter dense conifer, branches near ground",
+    "tree_birch": "slender birch, pale banded trunk, light airy canopy",
+    "tree_dead": "bare dead tree, pale twisted limbs",
+}
+PHASE10_TERRAIN_GEOMETRY: Final = {
+    "grass": "seamless tileable muted meadow grass texture, low contrast, no objects",
+    "forest_floor": "seamless tileable forest floor texture with restrained leaf litter, low contrast, no objects",
+    "water": "seamless tileable calm shallow water texture with subtle ripples, low contrast, no shoreline",
+    "rock": "seamless tileable weathered rock texture, low contrast, no loose objects",
+    "packed_earth_road": "seamless tileable packed earth texture, low contrast, no road edges or markings",
+}
+PHASE10_SURFACE_DIMENSIONS: Final = {
+    "tree_oak_large": (88, 112),
+    "tree_oak_small": (64, 80),
+    "tree_pine_tall": (64, 120),
+    "tree_pine_short": (56, 88),
+    "tree_birch": (60, 96),
+    "tree_dead": (56, 80),
+    "grass": (256, 256),
+    "forest_floor": (256, 256),
+    "water": (256, 256),
+    "rock": (256, 256),
+    "packed_earth_road": (256, 256),
+}
 
 
 def _build_jobs() -> tuple[Job, ...]:
@@ -149,6 +177,22 @@ def _build_jobs() -> tuple[Job, ...]:
 
 
 JOBS: Final = _build_jobs()
+
+
+def _build_phase10_surface_jobs() -> tuple[Job, ...]:
+    jobs: list[Job] = []
+    for index, (key, geometry) in enumerate(PHASE10_TREE_GEOMETRY.items(), start=1):
+        for candidate in range(1, 7):
+            jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(71000000 + index * 100 + candidate), candidate))
+    for index, (key, geometry) in enumerate(PHASE10_TERRAIN_GEOMETRY.items(), start=1):
+        for candidate in range(1, 7):
+            jobs.append(Job(Category.TERRAIN, key, geometry, Seed(71010000 + index * 100 + candidate), candidate))
+    return tuple(jobs)
+
+
+PHASE10_SURFACE_JOBS: Final = _build_phase10_surface_jobs()
+PHASE10_SURFACE_TARGET: Final = "phase10:surface_assets"
+PHASE10_SURFACE_TARGET_PREFIX: Final = "phase10:surface_asset:"
 
 
 class GeneratorContractError(RuntimeError):
@@ -192,18 +236,22 @@ def _prompt_text(job: Job) -> tuple[str, str]:
                 material_constraint = "stone and earth colours only"
                 extra_negative = "tree trunk, leaves,"
             else:
-                subject_constraint = "one standalone tree with one trunk and one connected canopy, no ground beneath it"
+                subject_constraint = (
+                    "one standalone tree with one visible trunk at ground and one connected canopy, "
+                    "internal canopy light variation and gaps, no ground beneath it"
+                )
                 material_constraint = "foliage and timber colours only"
                 extra_negative = "stone,"
             return (
                 f"{FOLIAGE_PROMPT}, {job.geometry}, {subject_constraint}, {material_constraint}, "
-                "perfectly flat uniform #00FFFF chroma field",
+                "upper-left light, no baked ground shadow, perfectly flat uniform #00FFFF chroma field",
                 f"{NEGATIVE_PROMPT}, architecture, building, {extra_negative} plaster, slate, forest scene, landscape, diorama, "
                 "terrain island, cliff, ground, grass field, multiple trees",
             )
         case Category.TERRAIN:
             return (
-                f"{job.geometry}, top-down orthographic material sample, periodic edges, matching the supplied muted reference family",
+                f"{job.geometry}, top-down orthographic material sample, periodic edges, seamless 2x2 joins, "
+                "matching the supplied muted reference family",
                 "objects, buildings, trees, horizon, perspective, border, frame, text, high contrast, directional shadow",
             )
         case unreachable:
@@ -225,6 +273,9 @@ def _style_condition(category: Category) -> tuple[float, float]:
 def _job_dimensions(job: Job) -> tuple[int, int] | None:
     if job.category is Category.BUILDING and job.key in STONE_TOWN_BUILDING_SPECS:
         return STONE_TOWN_BUILDING_SPECS[job.key]
+    phase10_dimensions = PHASE10_SURFACE_DIMENSIONS.get(job.key)
+    if phase10_dimensions is not None:
+        return phase10_dimensions
     return None
 
 
@@ -499,6 +550,15 @@ def wait_for_outputs(prompt_id: str) -> list[Path]:
 def selected_jobs(targets: frozenset[str] | None) -> tuple[Job, ...]:
     if targets is None:
         return JOBS
+    if targets == frozenset({PHASE10_SURFACE_TARGET}):
+        return PHASE10_SURFACE_JOBS
+    if all(target.startswith(PHASE10_SURFACE_TARGET_PREFIX) for target in targets):
+        requested_keys = {target.removeprefix(PHASE10_SURFACE_TARGET_PREFIX) for target in targets}
+        valid_keys = {job.key for job in PHASE10_SURFACE_JOBS}
+        unknown = sorted(requested_keys - valid_keys)
+        if unknown:
+            raise GeneratorContractError(f"Unknown Phase10 surface target(s): {', '.join(unknown)}")
+        return tuple(job for job in PHASE10_SURFACE_JOBS if job.key in requested_keys)
     expanded_targets: set[str] = set()
     for target in targets:
         if target == "building:stone_town":
@@ -517,6 +577,14 @@ def _release_name(job: Job) -> str:
     return f"{job.key}_{job.candidate:02d}.png" if has_candidates else f"{job.key}.png"
 
 
+def _dry_run_release_name(job: Job, targets: frozenset[str] | None) -> str:
+    if targets == frozenset({PHASE10_SURFACE_TARGET}) or (
+        targets is not None and all(target.startswith(PHASE10_SURFACE_TARGET_PREFIX) for target in targets)
+    ):
+        return f"{job.key}_{job.candidate:02d}.png"
+    return _release_name(job)
+
+
 def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonValue]:
     jobs = selected_jobs(targets)
     tree_stump_jobs = [job for job in JOBS if job.category is Category.FOLIAGE and job.key in TREE_STUMP_GEOMETRY]
@@ -529,6 +597,8 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
             "treeStumpCandidates": len(tree_stump_jobs),
             "stoneTownSubjects": len(STONE_TOWN_BUILDING_GEOMETRY),
             "stoneTownCandidates": len(stone_town_jobs),
+            "phase10SurfaceGroups": 11 if targets == frozenset({"phase10:surface_assets"}) else 0,
+            "phase10SurfaceCandidates": len(jobs) if targets == frozenset({"phase10:surface_assets"}) else 0,
             "comfyuiRequests": 0,
         },
         "jobs": [
@@ -541,7 +611,7 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
                 "batchSize": 1,
                 "referenceKeys": ["house_03", "mill_02", "granary_08"],
                 **({"width": _job_dimensions(job)[0], "height": _job_dimensions(job)[1]} if _job_dimensions(job) is not None else {}),
-                "sourcePath": (Path(job.category.value) / _release_name(job)).as_posix(),
+                "sourcePath": (Path(job.category.value) / _dry_run_release_name(job, targets)).as_posix(),
             }
             for job in jobs
         ],
@@ -643,7 +713,7 @@ def generate(output_root: Path, repo_root: Path, targets: frozenset[str] | None 
         guide_name = upload_subject_guide(job)
         prompt_id = queue_prompt(workflow_prompt(job, reference_names, guide_name))
         outputs = wait_for_outputs(prompt_id)
-        relative = Path(job.category.value) / _release_name(job)
+        relative = Path(job.category.value) / _dry_run_release_name(job, targets)
         destination = output_root / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(outputs[0], destination)

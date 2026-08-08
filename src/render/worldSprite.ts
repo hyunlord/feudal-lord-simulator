@@ -1,7 +1,7 @@
 import type { CameraState } from "./camera";
 import { worldToCanvas } from "./camera";
 import { tileToScreen } from "./iso";
-import type { PaletteColor } from "../content/palette";
+import { RAMPS, type PaletteColor } from "../content/palette";
 import { getSprite, spriteMeta } from "./worldAssets";
 
 export type WorldSpriteOptions = {
@@ -29,9 +29,18 @@ type DeviceRect = {
   readonly width: number;
   readonly height: number;
 };
+export type RampTintPixel = {
+  readonly r: number;
+  readonly g: number;
+  readonly b: number;
+  readonly a: number;
+};
 
 const DEFAULT_CAMERA = { zoom: 1, panX: 0, panY: 0 } as const satisfies CameraState;
 const tintedSpriteCache = new WeakMap<CanvasImageSource, Map<PaletteColor, CanvasImageSource>>();
+const FOLIAGE_RGB_TO_SHADE = new Map(RAMPS.foliage.map((hex, shade) => [hexToRgbKey(hex), shade]));
+const TIMBER_RGB_KEYS = new Set(RAMPS.timber.map(hexToRgbKey));
+const NEUTRAL_FOLIAGE_TINT_SHADE = 4;
 
 export function drawWorldSprite(
   context: WorldSpriteContext,
@@ -101,14 +110,65 @@ function tintedSprite(
   if (tintContext === null) return image;
   tintContext.imageSmoothingEnabled = false;
   tintContext.drawImage(image, 0, 0, meta.width, meta.height);
-  tintContext.globalCompositeOperation = "source-atop";
-  tintContext.globalAlpha = 0.35;
-  tintContext.fillStyle = tint;
-  tintContext.fillRect(0, 0, meta.width, meta.height);
+  tintContext.putImageData(tintImageData(tintContext.getImageData(0, 0, meta.width, meta.height), tint), 0, 0);
   const imageCache = tintedSpriteCache.get(image) ?? new Map<PaletteColor, CanvasImageSource>();
   imageCache.set(tint, canvas);
   tintedSpriteCache.set(image, imageCache);
   return canvas;
+}
+
+export function foliageRampTintPixels(
+  pixels: readonly RampTintPixel[],
+  tint: PaletteColor,
+): readonly RampTintPixel[] {
+  const tintShade = FOLIAGE_RGB_TO_SHADE.get(hexToRgbKey(tint));
+  if (tintShade === undefined) return pixels;
+  return pixels.map((pixel) => {
+    const key = rgbKey(pixel.r, pixel.g, pixel.b);
+    const sourceShade = FOLIAGE_RGB_TO_SHADE.get(key);
+    if (sourceShade === undefined || TIMBER_RGB_KEYS.has(key)) return pixel;
+    const outputShade = Math.max(
+      0,
+      Math.min(RAMPS.foliage.length - 1, sourceShade + tintShade - NEUTRAL_FOLIAGE_TINT_SHADE),
+    );
+    const targetHex = RAMPS.foliage[outputShade] ?? tint;
+    const [r, g, b] = hexToRgb(targetHex);
+    return { r, g, b, a: pixel.a };
+  });
+}
+
+function tintImageData(imageData: ImageData, tint: PaletteColor): ImageData {
+  const pixels: RampTintPixel[] = [];
+  for (let index = 0; index < imageData.data.length; index += 4) {
+    pixels.push({
+      r: imageData.data[index] ?? 0,
+      g: imageData.data[index + 1] ?? 0,
+      b: imageData.data[index + 2] ?? 0,
+      a: imageData.data[index + 3] ?? 0,
+    });
+  }
+  foliageRampTintPixels(pixels, tint).forEach((pixel, pixelIndex) => {
+    const index = pixelIndex * 4;
+    imageData.data[index] = pixel.r;
+    imageData.data[index + 1] = pixel.g;
+    imageData.data[index + 2] = pixel.b;
+    imageData.data[index + 3] = pixel.a;
+  });
+  return imageData;
+}
+
+function hexToRgb(hex: string): readonly [number, number, number] {
+  const parsed = Number.parseInt(hex.slice(1), 16);
+  return [(parsed >> 16) & 255, (parsed >> 8) & 255, parsed & 255];
+}
+
+function hexToRgbKey(hex: string): string {
+  const [r, g, b] = hexToRgb(hex);
+  return rgbKey(r, g, b);
+}
+
+function rgbKey(r: number, g: number, b: number): string {
+  return `${r},${g},${b}`;
 }
 
 function createTintCanvas(
