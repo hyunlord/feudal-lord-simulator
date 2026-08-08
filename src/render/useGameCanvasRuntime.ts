@@ -5,6 +5,7 @@ import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera
 import { cameraAfterViewportResize, hoveredBuildingPosition, initialCamera, resizeCanvas } from "./canvasRuntime";
 import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
 import { pointerTile, releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions";
+import { installMinimapCameraJumpRuntime, publishMinimapViewport } from "./minimapCameraJump";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
 import { preloadWorldAssets } from "./worldAssets";
 import { resolveCanvasClick } from "./canvasClickResolution";
@@ -78,10 +79,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         houseMaterialWave: houseMaterialWaveRef.current,
         palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current,
       });
+      publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height), grid: stateRef.current });
       frameId = requestAnimationFrame(drawFrame);
     };
-    const canvasPoint = (event: MouseEvent | WheelEvent): Point =>
-      clientToCanvas(event, canvas.getBoundingClientRect());
+    const canvasPoint = (event: MouseEvent | WheelEvent): Point => clientToCanvas(event, canvas.getBoundingClientRect());
     const updateHover = (event: MouseEvent) => {
       refs.hoverRef.current = pointerTile(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
       const buildingId = refs.hoverRef.current === null
@@ -193,9 +194,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.feedbackRef.current = resolution.attempt.feedback;
       if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
     };
-    const contextMenuCanvas = createCanvasContextMenuHandler({
-      canvas, dispatch, refs, selectedToolRef, setSelection, stateRef,
-    });
+    const contextMenuCanvas = createCanvasContextMenuHandler({ canvas, dispatch, refs, selectedToolRef, setSelection, stateRef });
     const wheel = (event: WheelEvent) => {
       event.preventDefault();
       userControlledCamera = true;
@@ -230,9 +229,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (event.code !== "Space") return;
       refs.spacePressed.current = false; event.preventDefault();
     };
-    const leaveCanvas = () => {
-      refs.hoverRef.current = null; setHoveredBuilding(null);
-    };
+    const leaveCanvas = () => { refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {
       refs.spacePressed.current = false;
       refs.hoverRef.current = null;
@@ -244,13 +241,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
 
     resize();
     const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location });
+    const disposeMinimapJump = installMinimapCameraJumpRuntime({ cameraRef: refs.cameraRef, markUserControlled: () => { userControlledCamera = true; }, target: window, viewport, world: () => worldBounds(stateRef.current.width, stateRef.current.height) });
     const disposeEvents = bindGameCanvasEvents({
       canvas,
       handlers: { resize, keyDown, keyUp, blurWindow, startDrag, movePointer, leaveCanvas, clickCanvas, contextMenuCanvas, wheel, finishDrag },
     });
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      cancelAnimationFrame(frameId); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
+      cancelAnimationFrame(frameId); disposeMinimapJump(); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection]);
 }

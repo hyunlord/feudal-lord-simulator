@@ -3,6 +3,8 @@ import test from "node:test";
 
 import type { GameState } from "../src/engine/engine.types";
 import {
+  cameraForMinimapTileJump,
+  minimapViewportRectFromCamera,
   zoomAtPoint,
   placementPreview,
   releaseTileFromMouseUp,
@@ -153,6 +155,57 @@ test("manual wheel zoom-out can return from startup framing to the overview floo
 
   // Then
   assert.equal(camera.zoom, 0.5);
+});
+
+test("minimap jump keeps zoom and centers the selected world tile in the viewport", () => {
+  // Given
+  const camera = { zoom: 1.25, panX: 320, panY: -80 };
+  const viewport = { width: 640, height: 360 };
+  const world = { minX: -2_112, minY: -128, maxX: 2_112, maxY: 2_176 };
+
+  // When
+  const next = cameraForMinimapTileJump({
+    camera,
+    tile: { tx: 32, ty: 32 },
+    viewport,
+    world,
+  });
+
+  // Then
+  assert.equal(next.zoom, camera.zoom);
+  assert.deepEqual(next, { zoom: 1.25, panX: 320, panY: -1100 });
+});
+
+test("minimap viewport rectangle follows camera pan and zoom", () => {
+  // Given
+  const grid = { width: 64, height: 64 };
+  const viewport = { width: 640, height: 360 };
+  const world = { minX: -2_112, minY: -128, maxX: 2_112, maxY: 2_176 };
+
+  // When
+  const nearTop = minimapViewportRectFromCamera({
+    camera: { zoom: 1, panX: 320, panY: 20 },
+    viewport,
+    world,
+    grid,
+  });
+  const pannedDown = minimapViewportRectFromCamera({
+    camera: { zoom: 1, panX: 320, panY: -700 },
+    viewport,
+    world,
+    grid,
+  });
+  const zoomedIn = minimapViewportRectFromCamera({
+    camera: { zoom: 2, panX: 320, panY: -700 },
+    viewport,
+    world,
+    grid,
+  });
+
+  // Then
+  assert.deepEqual(nearTop, { x: 0, y: 0, width: 29.3, height: 29.3 });
+  assert.deepEqual(pannedDown, { x: 31.64, y: 31.64, width: 39.84, height: 39.84 });
+  assert.deepEqual(zoomedIn, { x: 15.82, y: 15.82, width: 19.92, height: 19.92 });
 });
 
 test("building placement attempts preflight invalid outcomes without dispatching and keep the tool armed", () => {

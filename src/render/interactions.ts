@@ -23,6 +23,12 @@ import {
 } from "./roadInteractionAttempts";
 
 export {
+  cameraForMinimapTileJump,
+  MINIMAP_CAMERA_JUMP_EVENT,
+  minimapViewportRectFromCamera,
+} from "./minimapCameraJump";
+
+export {
   MODELED_ROAD_TIMBER_COST,
   resolveRoadPlacementAttempt,
   resolveRoadRemovalAttempt,

@@ -21,7 +21,7 @@ const PANEL_SELECTORS = [
   ".settlement-objective",
   ".onboarding-tasks[data-onboarding-state=\"open-goal\"]",
   ".onboarding-task",
-  ".shield-caption",
+  ".map-overview",
   ".seal-tooltip",
   ".era-console",
   ".court-ledger",
@@ -110,7 +110,7 @@ test("Phase10 critical text wraps or scrolls instead of ellipsizing", async () =
     ".court-ledger dt",
     ".court-ledger dd",
     ".build-seal-label",
-    ".shield-caption",
+    ".map-overview",
   ] as const;
 
   // When / Then

@@ -1,11 +1,18 @@
-import { useId, useMemo } from "react";
+import { useEffect, useId, useMemo, useState, type PointerEvent } from "react";
 
 import { KO_UI } from "../content/locale.ko";
 import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { TerrainType } from "../content/terrainConfig";
-import type { Grid } from "../world/grid";
+import {
+  MINIMAP_CAMERA_JUMP_EVENT,
+  MINIMAP_VIEWPORT_EVENT,
+  type MinimapViewportRect,
+} from "../render/minimapCameraJump";
+import type { Grid, TileCoordinate } from "../world/grid";
 
 const SAMPLE_AXIS_LIMIT = 12;
+const MAP_VIEWBOX_SIZE = 120;
+const MAP_CELL_SIZE = MAP_VIEWBOX_SIZE / SAMPLE_AXIS_LIMIT;
 
 export type MinimapSample = {
   readonly x: number;
@@ -33,44 +40,121 @@ export function sampleMinimapTiles(
   return samples;
 }
 
-type MapShieldProps = { readonly grid: Grid };
+export type MinimapClientRect = {
+  readonly left: number;
+  readonly top: number;
+  readonly width: number;
+  readonly height: number;
+};
 
-export function MapShield({ grid }: MapShieldProps) {
+export type MinimapClientPoint = {
+  readonly clientX: number;
+  readonly clientY: number;
+};
+
+export function minimapTileFromClientPoint(
+  point: MinimapClientPoint,
+  rect: MinimapClientRect,
+  grid: Pick<Grid, "height" | "width">,
+): TileCoordinate {
+  const localX = Math.min(rect.width - 1, Math.max(0, point.clientX - rect.left));
+  const localY = Math.min(rect.height - 1, Math.max(0, point.clientY - rect.top));
+  return {
+    tx: Math.floor((localX / rect.width) * grid.width),
+    ty: Math.floor((localY / rect.height) * grid.height),
+  };
+}
+
+type MapOverviewProps = {
+  readonly grid: Grid;
+  readonly onJumpToTile?: (tile: TileCoordinate) => void;
+  readonly viewportRect?: MinimapViewportRect;
+};
+
+const INITIAL_VIEWPORT_RECT = {
+  x: 44,
+  y: 44,
+  width: 32,
+  height: 32,
+} as const satisfies MinimapViewportRect;
+
+export function MapOverview({ grid, onJumpToTile, viewportRect }: MapOverviewProps) {
   const { height, tiles, width } = grid;
   const idPrefix = useId().replaceAll(":", "");
-  const titleId = `${idPrefix}-map-shield-title`;
-  const clipId = `${idPrefix}-terrain-shield-clip`;
+  const titleId = `${idPrefix}-map-overview-title`;
+  const [runtimeViewportRect, setRuntimeViewportRect] = useState<MinimapViewportRect | null>(null);
+  const currentViewport = viewportRect ?? runtimeViewportRect ?? INITIAL_VIEWPORT_RECT;
   const samples = useMemo(
     () => sampleMinimapTiles({ height, tiles, width }),
     [height, tiles, width],
   );
+  useEffect(() => {
+    if (viewportRect !== undefined) return undefined;
+    const updateViewport = (event: Event) => {
+      const rect = minimapViewportRectFromEvent(event);
+      if (rect !== null) setRuntimeViewportRect((current) => sameViewportRect(current, rect) ? current : rect);
+    };
+    window.addEventListener(MINIMAP_VIEWPORT_EVENT, updateViewport);
+    return () => window.removeEventListener(MINIMAP_VIEWPORT_EVENT, updateViewport);
+  }, [viewportRect]);
+  const jumpToTile = (event: PointerEvent<HTMLButtonElement>) => {
+    const tile = minimapTileFromClientPoint(event, event.currentTarget.getBoundingClientRect(), grid);
+    if (onJumpToTile !== undefined) {
+      onJumpToTile(tile);
+      return;
+    }
+    window.dispatchEvent(new CustomEvent(MINIMAP_CAMERA_JUMP_EVENT, { detail: tile }));
+  };
 
   return (
-    <div className="map-shield-wrap">
-      <svg className="map-shield" viewBox="0 0 96 104" role="img" aria-labelledby={titleId}>
-        <title id={titleId}>{KO_UI.map.title}</title>
-        <defs>
-          <clipPath id={clipId}>
-            <path d="M48 3 90 17v36c0 24-17 40-42 48C23 93 6 77 6 53V17Z" />
-          </clipPath>
-        </defs>
-        <g clipPath={`url(#${clipId})`}>
-          {samples.map((sample) => (
-            <rect
-              key={`${sample.x}:${sample.y}`}
-              x={sample.x * 8}
-              y={sample.y * 8}
-              width="8"
-              height="8"
-              fill={terrainColour(sample.terrain)}
-            />
-          ))}
-        </g>
-        <path d="M48 3 90 17v36c0 24-17 40-42 48C23 93 6 77 6 53V17Z" fill="none" stroke="currentColor" strokeWidth="2" />
-      </svg>
-      <span className="shield-caption">{KO_UI.map.caption}</span>
+    <div className="map-overview-wrap">
+      <button
+        type="button"
+        className="map-overview"
+        aria-label={KO_UI.map.jumpLabel}
+        onPointerDown={jumpToTile}
+      >
+        <svg viewBox="0 0 120 120" role="img" aria-labelledby={titleId}>
+          <title id={titleId}>{KO_UI.map.title}</title>
+          <g>
+            {samples.map((sample) => (
+              <rect
+                key={`${sample.x}:${sample.y}`}
+                x={sample.x * MAP_CELL_SIZE}
+                y={sample.y * MAP_CELL_SIZE}
+                width={MAP_CELL_SIZE}
+                height={MAP_CELL_SIZE}
+                fill={terrainColour(sample.terrain)}
+              />
+            ))}
+          </g>
+          <rect
+            className="map-overview-viewport"
+            x={currentViewport.x}
+            y={currentViewport.y}
+            width={currentViewport.width}
+            height={currentViewport.height}
+          />
+        </svg>
+      </button>
     </div>
   );
+}
+
+export const MapShield = MapOverview;
+
+function minimapViewportRectFromEvent(event: Event): MinimapViewportRect | null {
+  if (!(event instanceof CustomEvent)) return null;
+  const detail: unknown = event.detail;
+  if (typeof detail !== "object" || detail === null) return null;
+  if (!("x" in detail) || !("y" in detail) || !("width" in detail) || !("height" in detail)) return null;
+  const { x, y, width, height } = detail;
+  if (typeof x !== "number" || typeof y !== "number" || typeof width !== "number" || typeof height !== "number") return null;
+  return { x, y, width, height };
+}
+
+function sameViewportRect(current: MinimapViewportRect | null, next: MinimapViewportRect): boolean {
+  return current !== null && current.x === next.x && current.y === next.y && current.width === next.width && current.height === next.height;
 }
 
 function terrainColour(terrain: TerrainType): PaletteColor {

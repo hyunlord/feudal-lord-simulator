@@ -653,7 +653,7 @@ button {
   overflow: visible;
 }
 
-.map-shield-wrap {
+.map-overview-wrap {
   position: relative;
   display: flex;
   align-items: center;
@@ -662,26 +662,40 @@ button {
   height: 100%;
 }
 
-.map-shield {
-  width: min(104px, 72%);
-  height: 112px;
+/* contrast-audit selector=".map-overview" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
+.map-overview {
+  display: block;
+  width: min(120px, calc(100% - 4px));
+  max-width: 160px;
+  aspect-ratio: 1;
+  padding: 0;
   color: var(--palette-ink);
-}
-
-.shield-caption {
-  position: absolute;
-  right: 8%;
-  bottom: 10px;
-  left: 8%;
-  min-width: 86px;
-  padding: 6px 12px;
-  color: var(--palette-ink);
-  font-size: 10px;
-  line-height: 1.1;
-  text-align: center;
-  overflow-wrap: anywhere;
+  cursor: pointer;
   background-color: var(--palette-vellum);
   border: 1px solid var(--palette-ink);
+}
+
+.map-overview svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-overview:hover {
+  color: var(--palette-vermilion);
+}
+
+.map-overview:focus-visible {
+  outline: 2px solid var(--palette-gold);
+  outline-offset: 1px;
+}
+
+.map-overview-viewport {
+  fill: none;
+  stroke: var(--palette-gold-dark);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
 }
 
 .build-seals {
@@ -1230,18 +1244,8 @@ button {
     align-items: stretch;
   }
 
-  .map-shield {
+  .map-overview {
     width: 78px;
-    height: 94px;
-  }
-
-  .shield-caption {
-    right: 3%;
-    left: 3%;
-    min-width: 74px;
-    padding-right: 7px;
-    padding-left: 7px;
-    font-size: 9px;
   }
 
   .ledger-recess {
@@ -1391,13 +1395,8 @@ button {
     height: 206px;
   }
 
-  .map-shield {
+  .map-overview {
     width: 28px;
-    height: 34px;
-  }
-
-  .shield-caption {
-    display: none;
   }
 
   .build-seals {
@@ -1638,9 +1637,8 @@ button {
     height: 206px;
   }
 
-  .map-shield {
+  .map-overview {
     width: 24px;
-    height: 30px;
   }
 
   .seal-recess {

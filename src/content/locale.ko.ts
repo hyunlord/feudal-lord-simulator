@@ -7,7 +7,7 @@ export const KO_UI = {
   placementSeals: "건설 도장",
   roadTool: "길 도구",
   eraConsole: "시대 선포",
-  map: { title: "영지 지형 방패", caption: "왕실 영지" },
+  map: { title: "영지 지형 지도", jumpLabel: "영지 지형 지도 이동" },
   ledger: {
     ariaLabel: "영지 장부", heading: "왕실 장부", timber: "목재", coin: "금화",
     population: "인구", idle: "대기", wheat: "밀", bread: "빵", logs: "통나무",

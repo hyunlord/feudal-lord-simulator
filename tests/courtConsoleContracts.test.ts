@@ -10,7 +10,11 @@ import { SEMANTIC_PALETTE } from "../src/content/palette";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { PALETTE_CSS_VARIABLES } from "../src/styles/paletteVariables";
 import { BuildSeals } from "../src/ui/BuildMenu";
-import { MapShield, sampleMinimapTiles } from "../src/ui/OverlayControls";
+import {
+  MapOverview,
+  minimapTileFromClientPoint,
+  sampleMinimapTiles,
+} from "../src/ui/OverlayControls";
 import { speedToIntervalMs } from "../src/ui/SpeedControls";
 import type { Tile } from "../src/world/world.types";
 
@@ -61,6 +65,46 @@ test("minimap sampling is bounded deterministic and terrain-derived", () => {
   assert.equal(sampleMinimapTiles(grid).length <= 12 * 12, true);
 });
 
+test("minimap renders a compact rectangular click target without shield ornament or caption", () => {
+  // Given / When
+  const markup = renderToStaticMarkup(
+    createElement(MapOverview, {
+      grid: DEFAULT_GAME_STATE,
+      onJumpToTile: () => undefined,
+      viewportRect: { x: 12, y: 18, width: 24, height: 30 },
+    }),
+  );
+
+  // Then
+  assert.match(markup, /class="map-overview"/);
+  assert.match(markup, /<button[^>]+type="button"[^>]+aria-label="영지 지형 지도 이동"/);
+  assert.match(markup, /<svg[^>]+viewBox="0 0 120 120"/);
+  assert.match(markup, /class="map-overview-viewport"/);
+  assert.match(markup, /x="12" y="18" width="24" height="30"/);
+  assert.doesNotMatch(markup, /shield-caption|map-shield|clipPath|왕실 영지/);
+  assert.doesNotMatch(markup, /M48 3 90 17v36/);
+});
+
+test("minimap pointer coordinates select the matching world tile", () => {
+  // Given
+  const grid = {
+    width: 64,
+    height: 64,
+    tiles: [tile(0, 0, "grass")],
+  };
+  const rect = { left: 10, top: 20, width: 120, height: 120 };
+
+  // When / Then
+  assert.deepEqual(
+    minimapTileFromClientPoint({ clientX: 70, clientY: 80 }, rect, grid),
+    { tx: 32, ty: 32 },
+  );
+  assert.deepEqual(
+    minimapTileFromClientPoint({ clientX: 129, clientY: 139 }, rect, grid),
+    { tx: 63, ty: 63 },
+  );
+});
+
 test("the actual app renders one continuous accessible court console", () => {
   // Given / When
   const markup = renderToStaticMarkup(
@@ -71,7 +115,7 @@ test("the actual app renders one continuous accessible court console", () => {
   assert.equal(markup.match(/class="court-console"/g)?.length, 1);
   assert.match(markup, /aria-label="영주 명령대"/);
   assert.equal(markup.match(/class="court-recess /g)?.length, 3);
-  assert.match(markup, /class="map-shield"/);
+  assert.match(markup, /class="map-overview"/);
   assert.match(markup, /class="build-seals"/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
@@ -84,14 +128,14 @@ test("reusable console controls create unique referenced DOM and SVG ids", () =>
   // Given / When
   const markup = renderToStaticMarkup(
     createElement("div", null,
-      createElement(MapShield, { grid: DEFAULT_GAME_STATE }),
-      createElement(MapShield, { grid: DEFAULT_GAME_STATE }),
+      createElement(MapOverview, { grid: DEFAULT_GAME_STATE }),
+      createElement(MapOverview, { grid: DEFAULT_GAME_STATE }),
       createElement(BuildSeals, { selectedTool: "house", onSelect: () => undefined }),
       createElement(BuildSeals, { selectedTool: "house", onSelect: () => undefined }),
     ),
   );
   const ids = [...markup.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
-  const references = [...markup.matchAll(/(?:aria-describedby|aria-labelledby)="([^"]+)"|clip-path="url\(#([^)]+)\)"/g)]
+  const references = [...markup.matchAll(/(?:aria-describedby|aria-labelledby)="([^"]+)"/g)]
     .map((match) => match[1] ?? match[2]);
 
   // Then
@@ -211,7 +255,9 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.doesNotMatch(css, /\.court-ledger::(?:before|after)\s*\{/);
   assert.match(css, /\.court-ledger\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);[\s\S]*?border:\s*1px solid var\(--palette-ink\);/);
   assert.match(css, /\.court-ledger\s*>\s*\*\s*\{[\s\S]*?z-index:\s*1;/);
-  assert.match(css, /\.shield-caption\s*\{[\s\S]*?bottom:\s*10px;/);
+  assert.match(css, /\.map-overview\s*\{[\s\S]*?max-width:\s*160px;/);
+  assert.match(css, /\.map-overview\s*\{[\s\S]*?border:\s*1px solid var\(--palette-ink\);/);
+  assert.doesNotMatch(css, /\.shield-caption|\.map-shield|clip-path/);
 });
 
 test("app shell cannot scroll focused console controls out of the viewport", async () => {
