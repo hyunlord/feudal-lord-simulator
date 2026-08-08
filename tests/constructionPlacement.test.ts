@@ -7,9 +7,10 @@ import {
   type ConstructionSite,
 } from "../src/economy/construction";
 import { advanceTick } from "../src/engine/tick";
+import { advanceFrame } from "../src/engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
-import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
+import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { getTile } from "../src/world/grid";
 
 const VALID_ORIGINS = {
@@ -228,7 +229,7 @@ test("advance frame applies speed as deterministic substeps while wall time adva
 
   // When
   const direct = advanceTick(state);
-  const framed = gameReducer(state, { type: "advance_frame", speed: 5 });
+  const framed = advanceFrame(state, 5);
 
   // Then
   assert.equal(direct.tick, state.tick + 1);

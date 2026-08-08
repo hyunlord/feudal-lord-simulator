@@ -10,8 +10,11 @@ export interface GameProviderProps {
 }
 
 export type GameAction =
-  | { readonly type: "advance_tick" }
-  | { readonly type: "advance_frame"; readonly speed: GameSpeed }
+  | {
+      readonly type: "commit_simulation_state";
+      readonly previousState: GameState;
+      readonly nextState: GameState;
+    }
   | {
       readonly type: "place_building";
       readonly kind: BuildingKind;
@@ -36,4 +39,6 @@ export type GameAction =
 export interface GameStoreContextValue {
   state: GameState;
   dispatch: Dispatch<GameAction>;
+  speed: GameSpeed;
+  setSpeed: (speed: GameSpeed) => void;
 }

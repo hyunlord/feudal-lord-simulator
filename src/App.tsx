@@ -9,7 +9,7 @@ import {
   type PointerEvent,
 } from "react";
 
-import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
+import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
@@ -29,7 +29,7 @@ import {
   updateOnboardingPresentationState,
 } from "./ui/onboardingTaskModel";
 import { MapShield } from "./ui/OverlayControls";
-import { SpeedSeals, speedToIntervalMs } from "./ui/SpeedControls";
+import { SpeedSeals } from "./ui/SpeedControls";
 import { EraConsole, buildEraConsoleModel } from "./ui/EraConsole";
 import {
   createEraCeremonyPresentation,
@@ -61,10 +61,9 @@ export function nextOnboardingPresentationCommit(input: {
 }
 
 export function App() {
-  const { state, dispatch } = useGameStore();
+  const { state, dispatch, speed, setSpeed } = useGameStore();
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
-  const [speed, setSpeed] = useState<GameSpeed>(0);
   const [welcomeVisible, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
@@ -89,13 +88,6 @@ export function App() {
   if (guidanceSnapshotRef.current.sample !== guidanceSample) {
     guidanceSnapshotRef.current = { sample: guidanceSample, state };
   }
-
-  useEffect(() => {
-    const intervalMs = speedToIntervalMs(speed);
-    if (intervalMs === null) return undefined;
-    const interval = window.setInterval(() => dispatch({ type: "advance_frame", speed }), intervalMs);
-    return () => window.clearInterval(interval);
-  }, [dispatch, speed]);
 
   useEffect(() => {
     setDistributorRouteHistory((history) =>

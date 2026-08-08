@@ -7,6 +7,7 @@ import {
   placeBuilding,
   placeRoadLine,
 } from "../src/engine/gameActions";
+import { advanceTick } from "../src/engine/tick";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { getTile } from "../src/world/grid";
 
@@ -285,7 +286,12 @@ test("advance tick exposes opening household workers while preserving a producti
   const timber = state.treasuryTimber;
 
   // When
-  const next = gameReducer(state, { type: "advance_tick" });
+  const advanced = advanceTick(state);
+  const next = gameReducer(state, {
+    type: "commit_simulation_state",
+    previousState: state,
+    nextState: advanced,
+  });
 
   // Then
   assert.notEqual(next, state);

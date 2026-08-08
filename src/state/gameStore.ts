@@ -1,13 +1,21 @@
-import { createContext, createElement, useContext, useMemo, useReducer } from "react";
+import {
+  createContext,
+  createElement,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { BALANCE } from "../content/balanceConfig";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
-import { advanceFrame } from "../engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
-import { advanceTick } from "../engine/tick";
 import type { GameState } from "../engine/engine.types";
+import type { GameSpeed } from "../engine/engine.types";
 import {
   createDeliveryInventoryPort,
   createSimulationRoutePorts,
@@ -23,6 +31,10 @@ import type {
   GameProviderProps,
   GameStoreContextValue,
 } from "./gameStore.types";
+import {
+  browserAnimationFrameScheduler,
+  createFixedTickLoop,
+} from "./fixedTickLoop";
 
 const WORLD_SEED = 1;
 const INITIAL_WORLD = buildWorldGrid({ width: 64, height: 64, seed: WORLD_SEED });
@@ -61,10 +73,8 @@ function assertNever(action: never): never {
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
-    case "advance_tick":
-      return advanceTick(state);
-    case "advance_frame":
-      return advanceFrame(state, action.speed);
+    case "commit_simulation_state":
+      return state === action.previousState ? action.nextState : state;
     case "place_building":
       return placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
     case "place_road_line":
@@ -88,8 +98,39 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 }
 
 export function GameProvider({ children }: GameProviderProps) {
-  const [state, dispatch] = useReducer(gameReducer, DEFAULT_GAME_STATE);
-  const value = useMemo(() => ({ state, dispatch }), [state]);
+  const [state, setState] = useState(DEFAULT_GAME_STATE);
+  const stateRef = useRef(state);
+  const [speed, setSpeedState] = useState<GameSpeed>(0);
+  const speedRef = useRef(speed);
+
+  const dispatch = useCallback((action: GameAction) => {
+    const nextState = gameReducer(stateRef.current, action);
+    stateRef.current = nextState;
+    setState(nextState);
+  }, []);
+
+  const setSpeed = useCallback((nextSpeed: GameSpeed) => {
+    speedRef.current = nextSpeed;
+    setSpeedState(nextSpeed);
+  }, []);
+
+  useEffect(() => {
+    const loop = createFixedTickLoop({
+      scheduler: browserAnimationFrameScheduler,
+      getSpeed: () => speedRef.current,
+      getState: () => stateRef.current,
+      commit: (previousState, nextState) => {
+        dispatch({ type: "commit_simulation_state", previousState, nextState });
+      },
+    });
+    loop.start();
+    return loop.stop;
+  }, [dispatch]);
+
+  const value = useMemo(
+    () => ({ state, dispatch, speed, setSpeed }),
+    [dispatch, setSpeed, speed, state],
+  );
   return createElement(GameStoreContext.Provider, { value }, children);
 }
 
