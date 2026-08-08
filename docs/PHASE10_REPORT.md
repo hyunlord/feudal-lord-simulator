@@ -106,10 +106,10 @@ The hash changed because live timing, service idling, readable movement, and ass
 
 ## 9. Test output and frame budget
 
-Part 6 seal:
+Final release seal:
 
-- focused browser proof/source tests: `24/24` pass after RED failures were fixed
-- full suite before report gates: `843/843` pass
+- focused browser/report proof tests: `37/37` pass after RED failures were fixed
+- clean GitHub Actions suite: `854/854` pass in workflow `31268711913`
 - typecheck: `tsc --noEmit` pass
 - build: `tsc --noEmit && vite build` pass
 - harness: `npm run harness -- --workers=8` pass
@@ -125,6 +125,8 @@ Frame budget from `/tmp/feudal-phase10/task-6-playthrough/frame-budget.json`:
 - over-budget frames: `2`
 - canvas: `1280x720`, visible pixels `921600`, hash `df1a210e`
 
+Final F3 rerun additionally recorded `/tmp/feudal-phase10/final/final-all.json`: all three viewports were nonblank with zero missing assets, and its fresh 30-second 5x sample measured p95 `4.3ms` across `2302` frames.
+
 ## 10. Commit hashes and publication proof
 
 Pushed product commits:
@@ -135,17 +137,20 @@ Pushed product commits:
 - `2e355e8d611b8f46ea1c95b39348d91b1c1109ff`
 - `4d6fe5a02507c183c1db087cdef7212b24835e29`
 - `504b0b16e90c94995fada38d2ae38cb0cb54b784`
+- `250de757a50c4bb34f8e1546989d900ab0d53984` — Part 7 report and release gates
+- `ca07fd535b2bea8495a761870ed9166dea7647f2` — exact public placement and complete `final-all` remediation
+- `830dd6200254eb678bb8f354f24a97cfbf35c7ce` — hermetic CI evidence-fixture remediation
 
 Publication target: `https://hyunlord.github.io/feudal-lord-simulator/`
 
-Part 6 publication was verified at `504b0b16e90c94995fada38d2ae38cb0cb54b784`. The final report/gate commit is published after this document is linted and verified, then remote SHA equality and Pages deployment are checked with `scripts/phase10DeployProof.mjs`.
+Release revision `830dd6200254eb678bb8f354f24a97cfbf35c7ce` was remote-equal and published by successful Pages workflow `31268711913` ([run](https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31268711913)). `/tmp/feudal-phase10/task-7-release/deploy-proof.json` records HTTP `200`, `text/html`, the root mount, production JS/CSS references, and exact local/remote SHA equality. Two preceding failed workflows exposed and then removed a non-hermetic test dependency on developer `/tmp` evidence; neither failed revision is used as publication proof.
 
 ## 11. Public URL honest-read proof
 
-Public URL honest-read is performed by:
+Public URL honest-read command:
 
 ```text
-node scripts/phase10BrowserProof.mjs --scenario public-honest-read --url https://hyunlord.github.io/feudal-lord-simulator/ --speed 1 --watch-ms 120000 --place-buildings 2 --out /tmp/feudal-phase10/final/public-honest-read.json --screenshot-dir /tmp/feudal-phase10/final/public-screens --revision <published-sha>
+node scripts/phase10BrowserProof.mjs --scenario public-honest-read --url https://hyunlord.github.io/feudal-lord-simulator/ --speed 1 --watch-ms 120000 --place-buildings 2 --out /tmp/feudal-phase10/task-7-release/public-honest-read.json --screenshot-dir /tmp/feudal-phase10/task-7-release/screens --revision 830dd6200254eb678bb8f354f24a97cfbf35c7ce
 ```
 
-Acceptance for this proof: public URL opens in real Chrome, canvas is nonblank, two build actions are attempted through the UI, Normal speed runs for at least two wall-clock minutes, public screenshots are saved, and the page reports no missing asset resources. This section is refreshed with the generated JSON path and SHA after the final report commit is published.
+Real Chrome completed this proof against the published revision. It created and state-verified exact `logging_camp` and `sawmill` construction sites, then observed `120967ms` at 1x and `2401` actual store ticks. Canvas hashes changed `a5c5976c → 207277f5 → cc95ce37 → 0af841e6`; the final `1280x720` canvas had `921600` visible pixels and no missing asset resources. Screenshots are `public-opening.png`, `public-first-building.png`, `public-two-buildings.png`, and `public-after-two-minutes.png` under `/tmp/feudal-phase10/task-7-release/screens/`. The final visible population was honestly `0/60`; the two roadless construction sites remained present rather than being reported as completed production.
