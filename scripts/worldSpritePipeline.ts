@@ -31,7 +31,7 @@ export const STONE_TOWN_BUILDING_SPRITE_CONTRACTS = {
   market: { width: 176, height: 136, baselineY: 120, footprint: 2 },
   church: { width: 176, height: 208, baselineY: 192, footprint: 2 },
   keep: { width: 176, height: 232, baselineY: 216, footprint: 2 },
-  stone_wall_segment: { width: 96, height: 80, baselineY: 80, footprint: 1 },
+  stone_wall_segment: { width: 96, height: 80, baselineY: 78, footprint: 1 },
 } as const;
 
 export type BuildingSpriteKey = keyof typeof BUILDING_SPRITE_CONTRACTS;
@@ -166,6 +166,7 @@ export const processWorldSprite = (
   const contentWidth = buildingContract === undefined
     ? undefined
     : Math.min(buildingContract.width - 2, buildingContract.footprint === 1 ? 88 : 139);
+  const contentHeight = key === "stone_wall_segment" ? contract.height - 6 : undefined;
   const options = {
     target: { width: contract.width, height: contract.height },
     baselineY: contract.baselineY,
@@ -174,6 +175,7 @@ export const processWorldSprite = (
     softEdge: 96,
     outline: true,
     ...(contentWidth === undefined ? {} : { contentWidth }),
+    ...(contentHeight === undefined ? {} : { contentHeight }),
   };
   const processed = resize === undefined
     ? processSpriteImage(source, options)

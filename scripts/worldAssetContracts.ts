@@ -1,3 +1,13 @@
+export const STONE_TOWN_ASSET_KEYS = [
+  "quarry",
+  "masonry",
+  "market",
+  "church",
+  "keep",
+  "house_l4",
+  "stone_wall_segment",
+] as const;
+
 export const BUILDING_KEYS = [
   "house_l0",
   "house_l1",
@@ -10,16 +20,7 @@ export const BUILDING_KEYS = [
   "wheat_farm",
   "logging_camp",
   "sawmill",
-] as const;
-
-export const STONE_TOWN_ASSET_KEYS = [
-  "quarry",
-  "masonry",
-  "market",
-  "church",
-  "keep",
-  "house_l4",
-  "stone_wall_segment",
+  ...STONE_TOWN_ASSET_KEYS,
 ] as const;
 
 export const FOLIAGE_KEYS = [
@@ -98,7 +99,7 @@ export type AcceptedReferenceKey = (typeof ACCEPTED_REFERENCE_KEYS)[number];
 
 const oneByOne = { width: 1, height: 1 } as const;
 const twoByTwo = { width: 2, height: 2 } as const;
-const wallFootprint = { width: 0, height: 0 } as const;
+const wallFootprint = { width: 1, height: 1 } as const;
 
 export const BUILDING_SPECS = {
   house_l0: { width: 96, height: 112, baselineY: 96, footprint: oneByOne },
@@ -112,6 +113,13 @@ export const BUILDING_SPECS = {
   wheat_farm: { width: 160, height: 96, baselineY: 80, footprint: twoByTwo },
   logging_camp: { width: 96, height: 104, baselineY: 88, footprint: oneByOne },
   sawmill: { width: 112, height: 112, baselineY: 96, footprint: oneByOne },
+  quarry: { width: 160, height: 120, baselineY: 104, footprint: twoByTwo },
+  masonry: { width: 112, height: 120, baselineY: 104, footprint: oneByOne },
+  market: { width: 176, height: 136, baselineY: 120, footprint: twoByTwo },
+  church: { width: 176, height: 208, baselineY: 192, footprint: twoByTwo },
+  keep: { width: 176, height: 232, baselineY: 216, footprint: twoByTwo },
+  house_l4: { width: 112, height: 160, baselineY: 144, footprint: oneByOne },
+  stone_wall_segment: { width: 96, height: 80, baselineY: 78, footprint: wallFootprint },
 } as const satisfies Readonly<Record<BuildingKey, SpriteSpec>>;
 
 export const STONE_TOWN_ASSET_CANDIDATE_COUNT = 6;
@@ -133,7 +141,7 @@ export const STONE_TOWN_ASSET_SPECS = {
   church: { width: 176, height: 208, baselineY: 192, footprint: twoByTwo },
   keep: { width: 176, height: 232, baselineY: 216, footprint: twoByTwo },
   house_l4: { width: 112, height: 160, baselineY: 144, footprint: oneByOne },
-  stone_wall_segment: { width: 96, height: 80, baselineY: 80, footprint: wallFootprint },
+  stone_wall_segment: { width: 96, height: 80, baselineY: 78, footprint: wallFootprint },
 } as const satisfies Readonly<Record<StoneTownAssetKey, SpriteSpec>>;
 
 export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {

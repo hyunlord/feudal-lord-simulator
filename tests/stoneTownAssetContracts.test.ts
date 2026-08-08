@@ -8,6 +8,7 @@ import { RAMPS } from "../src/content/palette";
 import { drawBuildings } from "../src/render/drawBuildings";
 import { drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
 import { writePng, type RgbaImage } from "../scripts/processBuildingSprite";
+import { processWorldSprite } from "../scripts/worldSpritePipeline";
 import {
   STONE_TOWN_ASSET_CANDIDATE_COUNT,
   STONE_TOWN_ASSET_GENERATION_CONTRACTS,
@@ -141,6 +142,19 @@ describe("Stone Town asset generation contracts", () => {
       } finally {
         rmSync(invalid, { recursive: true, force: true });
       }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it("keeps processed stone wall candidates inside the transparent release boundary", () => {
+    const root = selectedFixture();
+    try {
+      const source = blank(1024, 1024);
+      fill(source, 0, 0, 1024, 1024, rgba(RAMPS.stone[2]));
+      writePng(path.join(root, "stone_wall_segment.png"), processWorldSprite(source, "stone_wall_segment"));
+
+      assert.doesNotThrow(() => assertStoneTownSelectedAssetSet(root));
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

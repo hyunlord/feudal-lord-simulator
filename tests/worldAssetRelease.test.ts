@@ -10,10 +10,18 @@ import {
   prepareWorldAssets,
   rawFoliageFileName,
   type BuildingSelections,
+  type StoneTownSelections,
 } from "../scripts/prepareWorldAssets";
 import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
 import { verifyWorldAssets } from "../scripts/verifyWorldAssets";
-import { FOLIAGE_KEYS, FOLIAGE_SPECS, TREE_STUMP_KEYS, WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
+import {
+  FOLIAGE_KEYS,
+  FOLIAGE_SPECS,
+  STONE_TOWN_ASSET_KEYS,
+  STONE_TOWN_ASSET_SPECS,
+  TREE_STUMP_KEYS,
+  WORLD_ASSET_KEYS,
+} from "../scripts/worldAssetContracts";
 import { parseWorldAssetManifest } from "../scripts/worldAssetManifest";
 
 const selections = {
@@ -26,6 +34,15 @@ const selections = {
   logging_camp: 1,
   sawmill: 2,
 } as const satisfies BuildingSelections;
+const stoneTownSelections = {
+  quarry: 2,
+  masonry: 3,
+  market: 4,
+  church: 1,
+  keep: 3,
+  house_l4: 4,
+  stone_wall_segment: 3,
+} as const satisfies StoneTownSelections;
 
 const rgb = (hex: string): readonly [number, number, number] => {
   const value = Number.parseInt(hex.slice(1), 16);
@@ -94,6 +111,15 @@ const fixture = (): Fixture => {
       width,
       height,
       key === "wheat_farm" ? RAMPS.earth[2] : RAMPS.plaster[2],
+    );
+  }
+  for (const key of STONE_TOWN_ASSET_KEYS) {
+    const spec = STONE_TOWN_ASSET_SPECS[key];
+    writeRawSprite(
+      path.join(rawRoot, "building", `${key}_${String(stoneTownSelections[key]).padStart(2, "0")}.png`),
+      spec.footprint.width === 1 ? 72 : 128,
+      Math.max(32, spec.baselineY - 24),
+      RAMPS.stone[2],
     );
   }
   for (const [key, [width, height]] of Object.entries({
@@ -169,6 +195,7 @@ describe("Phase 4C world asset release", () => {
         rawRoot: test.rawRoot,
         phase4bRoot: test.phase4bRoot,
         selections,
+        stoneTownSelections,
       });
 
       // Then: tree/stump release sources and selection metadata use the ledger pick.
@@ -201,6 +228,7 @@ describe("Phase 4C world asset release", () => {
         rawRoot: test.rawRoot,
         phase4bRoot: test.phase4bRoot,
         selections,
+        stoneTownSelections,
       });
 
       // Then: all exact keys validate and promoted assets remain byte-identical.
@@ -220,6 +248,22 @@ describe("Phase 4C world asset release", () => {
           wheat_farm: { seed: 64050606, candidate: 6 },
           logging_camp: { seed: 64050701, candidate: 1 },
           sawmill: { seed: 64050802, candidate: 2 },
+        },
+      );
+      assert.deepEqual(
+        Object.fromEntries(
+          manifest.assets
+            .filter((asset) => asset.category === "building" && STONE_TOWN_ASSET_KEYS.some((key) => key === asset.key))
+            .map((asset) => [asset.key, asset.source]),
+        ),
+        {
+          quarry: { seed: 64054102, candidate: 2 },
+          masonry: { seed: 64054203, candidate: 3 },
+          market: { seed: 64054304, candidate: 4 },
+          church: { seed: 64054401, candidate: 1 },
+          keep: { seed: 64054503, candidate: 3 },
+          house_l4: { seed: 64054604, candidate: 4 },
+          stone_wall_segment: { seed: 64054703, candidate: 3 },
         },
       );
       assert.deepEqual(
@@ -257,7 +301,7 @@ describe("Phase 4C world asset release", () => {
     // Given: a complete prepared release plus a preserved nested Phase 4B candidate and one stray release PNG.
     const test = fixture();
     try {
-      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections });
+      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections, stoneTownSelections });
       const historical = path.join(test.root, "public", "assets", "buildings", "candidates_v2");
       mkdirSync(historical, { recursive: true });
       writePromoted(path.join(historical, "house_01.png"), 96, 112, 78, 20);
@@ -274,7 +318,7 @@ describe("Phase 4C world asset release", () => {
     // Given: a complete prepared release with one required stump PNG removed.
     const test = fixture();
     try {
-      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections });
+      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections, stoneTownSelections });
       unlinkSync(path.join(test.root, "public", "assets", "foliage", "stump_old.png"));
 
       // When / Then: the strict verifier still requires every manifest sprite file.
@@ -288,7 +332,7 @@ describe("Phase 4C world asset release", () => {
     // Given: a complete release whose terrain alpha contract has been corrupted.
     const test = fixture();
     try {
-      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections });
+      prepareWorldAssets({ repoRoot: test.root, rawRoot: test.rawRoot, phase4bRoot: test.phase4bRoot, selections, stoneTownSelections });
       const terrainPath = path.join(test.root, "public", "assets", "terrain", "water.png");
       const terrain = readPng(terrainPath);
       terrain.rgba[3] = 0;

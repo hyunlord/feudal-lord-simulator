@@ -163,7 +163,7 @@ const assertStablePromotions = (repoRoot: string, phase4bRoot: string): void => 
 
 const assertSpriteCategories = (repoRoot: string): void => {
   const buildings = path.join(repoRoot, "public", "assets", "buildings");
-  for (const key of NEW_BUILDING_KEYS) {
+  for (const key of [...NEW_BUILDING_KEYS, ...STONE_TOWN_ASSET_KEYS]) {
     assertSpriteContract(readPng(path.join(buildings, `${key}.png`)), key);
   }
   const foliage = path.join(repoRoot, "public", "assets", "foliage");

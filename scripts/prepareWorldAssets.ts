@@ -11,6 +11,7 @@ import {
   FOLIAGE_CANDIDATE_COUNT,
   FOLIAGE_KEYS,
   FOLIAGE_SPECS,
+  STONE_TOWN_ASSET_KEYS,
   TREE_STUMP_KEYS,
   TERRAIN_KEYS,
   TERRAIN_SPECS,
@@ -23,6 +24,7 @@ import {
   type ParchmentMetrics,
   type ParchmentCandidateMetrics,
   type SelectionRubric,
+  type StoneTownAssetKey,
   type TerrainAsset,
   type WorldAssetManifest,
 } from "./worldAssetContracts";
@@ -106,12 +108,14 @@ const newBuildingKeys = [
 
 type ReleaseBuildingSelectionKey = (typeof newBuildingKeys)[number];
 export type BuildingSelections = Readonly<Record<ReleaseBuildingSelectionKey, number>>;
+export type StoneTownSelections = Readonly<Record<StoneTownAssetKey, number>>;
 
 export type PrepareWorldAssetOptions = {
   readonly repoRoot: string;
   readonly rawRoot: string;
   readonly phase4bRoot: string;
   readonly selections: BuildingSelections;
+  readonly stoneTownSelections: StoneTownSelections;
 };
 
 export const rawFoliageFileName = (key: FoliageSpriteKey, candidate = 1): string =>
@@ -125,9 +129,20 @@ const sourceForBuilding = (key: ReleaseBuildingSelectionKey, candidate: number):
   return { seed: 64050100 + subject * 100 + candidate, candidate };
 };
 
+const sourceForStoneTownBuilding = (
+  key: StoneTownAssetKey,
+  selections: StoneTownSelections,
+): { readonly seed: number; readonly candidate: number } => {
+  const subject = STONE_TOWN_ASSET_KEYS.indexOf(key);
+  if (subject < 0) throw new WorldAssetPreparationError(`Unknown Stone Town selection ${key}`);
+  const candidate = selections[key];
+  return { seed: 64054100 + subject * 100 + candidate, candidate };
+};
+
 const sourceForReleaseBuilding = (
   key: (typeof BUILDING_KEYS)[number],
   selections: BuildingSelections,
+  stoneTownSelections: StoneTownSelections,
 ): { readonly seed: number; readonly candidate: number } => {
   switch (key) {
     case "house_l0": return PROMOTIONS.house_l0;
@@ -141,6 +156,14 @@ const sourceForReleaseBuilding = (
     case "wheat_farm": return sourceForBuilding(key, selections.wheat_farm);
     case "logging_camp": return sourceForBuilding(key, selections.logging_camp);
     case "sawmill": return sourceForBuilding(key, selections.sawmill);
+    case "quarry":
+    case "masonry":
+    case "market":
+    case "church":
+    case "keep":
+    case "house_l4":
+    case "stone_wall_segment":
+      return sourceForStoneTownBuilding(key, stoneTownSelections);
     default: {
       const unreachable: never = key;
       return unreachable;
@@ -154,6 +177,18 @@ const outputPath = (repoRoot: string, category: "buildings" | "foliage" | "terra
 const processSelectedBuildings = (options: PrepareWorldAssetOptions): void => {
   for (const key of newBuildingKeys) {
     const candidate = options.selections[key];
+    if (!Number.isInteger(candidate) || candidate < 1 || candidate > 6) {
+      throw new WorldAssetPreparationError(`${key} selection must be an integer from 1 through 6`);
+    }
+    const input = path.join(options.rawRoot, "building", `${key}_${String(candidate).padStart(2, "0")}.png`);
+    const processed = processWorldSprite(readPng(input), key);
+    writePng(outputPath(options.repoRoot, "buildings", key), processed);
+  }
+};
+
+export const processSelectedStoneTownBuildings = (options: PrepareWorldAssetOptions): void => {
+  for (const key of STONE_TOWN_ASSET_KEYS) {
+    const candidate = options.stoneTownSelections[key];
     if (!Number.isInteger(candidate) || candidate < 1 || candidate > 6) {
       throw new WorldAssetPreparationError(`${key} selection must be an integer from 1 through 6`);
     }
@@ -209,15 +244,15 @@ const processTerrain = (options: PrepareWorldAssetOptions): ReadonlyMap<(typeof 
   return metrics;
 };
 
-const buildingAssets = (repoRoot: string, selections: BuildingSelections): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
+const buildingAssets = (options: PrepareWorldAssetOptions): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
   const spec = BUILDING_SPECS[key];
-  const source = sourceForReleaseBuilding(key, selections);
+  const source = sourceForReleaseBuilding(key, options.selections, options.stoneTownSelections);
   const assetPath = `public/assets/buildings/${key}.png`;
   return {
     key,
     category: "building",
     path: assetPath,
-    sha256: sha256(path.join(repoRoot, assetPath)),
+    sha256: sha256(path.join(options.repoRoot, assetPath)),
     width: spec.width,
     height: spec.height,
     anchor: { x: spec.width / 2, y: spec.baselineY },
@@ -480,7 +515,7 @@ const writeManifestFromReleaseFiles = (
     foliageSelections: selections,
     parchmentMetrics: parchmentMetrics(options.rawRoot),
     assets: [
-      ...buildingAssets(options.repoRoot, options.selections),
+      ...buildingAssets(options),
       ...foliageAssets(options.repoRoot, selectionByKey),
       ...terrainAssets(options.repoRoot, terrainMetrics),
     ],
@@ -503,21 +538,44 @@ export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAsse
   const selectionByKey = new Map(selections.map((selection) => [selection.key, selection]));
   copyPromotions(options);
   processSelectedBuildings(options);
+  processSelectedStoneTownBuildings(options);
   processFoliage(options, selectionByKey);
   const metrics = processTerrain(options);
   return writeManifestFromReleaseFiles(options, selections, metrics);
 };
 
-const parseSelections = (filePath: string): BuildingSelections => {
+type ParsedSelections = {
+  readonly selections: BuildingSelections;
+  readonly stoneTownSelections: StoneTownSelections;
+};
+
+const selectionRecord = (
+  parsed: Readonly<Record<string, unknown>>,
+  key: "building" | "stoneTown",
+): Readonly<Record<string, unknown>> => {
+  const nested = parsed[key];
+  return isRecord(nested) ? nested : parsed;
+};
+
+const parseSelections = (filePath: string): ParsedSelections => {
   const parsed: unknown = JSON.parse(readFileSync(filePath, "utf8"));
   if (!isRecord(parsed)) {
     throw new WorldAssetPreparationError("Building selections must be a JSON object");
   }
-  const record = parsed;
+  const record = selectionRecord(parsed, "building");
+  const stoneTownRecord = selectionRecord(parsed, "stoneTown");
   const actual = Object.keys(record).sort();
   const expected = [...newBuildingKeys].sort();
   if (actual.length !== expected.length || actual.some((key, index) => key !== expected[index])) {
     throw new WorldAssetPreparationError(`Building selections must contain exactly ${expected.join(",")}`);
+  }
+  const actualStoneTown = Object.keys(stoneTownRecord).sort();
+  const expectedStoneTown = [...STONE_TOWN_ASSET_KEYS].sort();
+  if (
+    actualStoneTown.length !== expectedStoneTown.length
+    || actualStoneTown.some((key, index) => key !== expectedStoneTown[index])
+  ) {
+    throw new WorldAssetPreparationError(`Stone Town selections must contain exactly ${expectedStoneTown.join(",")}`);
   }
   const value = (key: BuildingSpriteKey): number => {
     const candidate = record[key];
@@ -526,15 +584,33 @@ const parseSelections = (filePath: string): BuildingSelections => {
     }
     return candidate;
   };
+  const stoneTownValue = (key: StoneTownAssetKey): number => {
+    const candidate = stoneTownRecord[key];
+    if (typeof candidate !== "number" || !Number.isInteger(candidate)) {
+      throw new WorldAssetPreparationError(`${key} selection must be an integer`);
+    }
+    return candidate;
+  };
   return {
-    house_l1: value("house_l1"),
-    house_l2: value("house_l2"),
-    house_l3: value("house_l3"),
-    well: value("well"),
-    storehouse: value("storehouse"),
-    wheat_farm: value("wheat_farm"),
-    logging_camp: value("logging_camp"),
-    sawmill: value("sawmill"),
+    selections: {
+      house_l1: value("house_l1"),
+      house_l2: value("house_l2"),
+      house_l3: value("house_l3"),
+      well: value("well"),
+      storehouse: value("storehouse"),
+      wheat_farm: value("wheat_farm"),
+      logging_camp: value("logging_camp"),
+      sawmill: value("sawmill"),
+    },
+    stoneTownSelections: {
+      quarry: stoneTownValue("quarry"),
+      masonry: stoneTownValue("masonry"),
+      market: stoneTownValue("market"),
+      church: stoneTownValue("church"),
+      keep: stoneTownValue("keep"),
+      house_l4: stoneTownValue("house_l4"),
+      stone_wall_segment: stoneTownValue("stone_wall_segment"),
+    },
   };
 };
 
@@ -546,7 +622,8 @@ const main = (): number => { // no-excuse-ok: catch
         "Usage: tsx scripts/prepareWorldAssets.ts <repo-root> <raw-root> <phase4b-root> <selections.json> [--refresh-manifest-only]",
       );
     }
-    const options = { repoRoot, rawRoot, phase4bRoot, selections: parseSelections(selectionsPath) };
+    const parsed = parseSelections(selectionsPath);
+    const options = { repoRoot, rawRoot, phase4bRoot, ...parsed };
     if (mode === "--refresh-manifest-only") refreshWorldAssetManifest(options);
     else prepareWorldAssets(options);
     writeFileSync(1, "World asset preparation passed\n");
