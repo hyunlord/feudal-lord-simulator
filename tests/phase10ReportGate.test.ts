@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -28,6 +28,22 @@ function runNode(script: string, args: readonly string[] = []) {
   return spawnSync(process.execPath, [script, ...args], { cwd: ROOT, encoding: "utf8" });
 }
 
+function createEvidenceFixture(): string {
+  const root = mkdtempSync(path.join(tmpdir(), "phase10-evidence-"));
+  const part6 = path.join(root, "task-6-playthrough");
+  mkdirSync(part6, { recursive: true });
+  writeFileSync(path.join(part6, "playthrough.json"), JSON.stringify({
+    ticks: 3001,
+    logsTransferred: 3,
+    timberAccumulated: 3,
+    walkerStartHash: "carter:1,1",
+    walkerFinalHash: "carter:2,1",
+    omittedRoad: { tick: 601, initialRoadRevision: 0, finalRoadRevision: 0 },
+  }));
+  writeFileSync(path.join(part6, "frame-budget.json"), JSON.stringify({ p95Ms: 6, ok: true }));
+  return root;
+}
+
 test("Given Phase10 release tooling Then all final gate entrypoints exist", () => {
   for (const file of [REPORT_LINT, PLAN_AUDIT, QUALITY_AUDIT, SCOPE_AUDIT, GLOBAL_GATE, DEPLOY_PROOF]) {
     assert.equal(existsSync(file), true, `${file} must exist`);
@@ -36,6 +52,7 @@ test("Given Phase10 release tooling Then all final gate entrypoints exist", () =
 
 test("Given exact plan CLI invocations When executed Then compatibility outputs are produced", () => {
   const dir = mkdtempSync(path.join(tmpdir(), "phase10-plan-cli-"));
+  const evidenceRoot = createEvidenceFixture();
   const reportOut = path.join(dir, "report-lint.json");
   const planOut = path.join(dir, "plan-audit.json");
   const qualityOut = path.join(dir, "quality.json");
@@ -45,7 +62,7 @@ test("Given exact plan CLI invocations When executed Then compatibility outputs 
   assert.equal(runNode(REPORT_LINT, [REPORT, "--exact-sections", "11", "--out", reportOut]).status, 0);
   assert.equal(JSON.parse(readFileSync(reportOut, "utf8")).sectionCount, 11);
 
-  assert.equal(runNode(PLAN_AUDIT, ["--plan", "docs/plans/2026-08-08-phase10-make-it-run-design.md", "--report", REPORT, "--evidence-root", "/tmp/feudal-phase10", "--out", planOut]).status, 0);
+  assert.equal(runNode(PLAN_AUDIT, ["--plan", "docs/plans/2026-08-08-phase10-make-it-run-design.md", "--report", REPORT, "--evidence-root", evidenceRoot, "--out", planOut]).status, 0);
   assert.equal(JSON.parse(readFileSync(planOut, "utf8")).ok, true);
 
   assert.equal(runNode(QUALITY_AUDIT, ["--out", qualityOut]).status, 0);
@@ -54,7 +71,7 @@ test("Given exact plan CLI invocations When executed Then compatibility outputs 
   assert.equal(runNode(SCOPE_AUDIT, ["--plan", "docs/plans/2026-08-08-phase10-make-it-run-design.md", "--report", REPORT, "--out", scopeOut]).status, 0);
   assert.equal(JSON.parse(readFileSync(scopeOut, "utf8")).ok, true);
 
-  assert.equal(runNode(GLOBAL_GATE, ["--report", REPORT, "--evidence-root", "/tmp/feudal-phase10", "--max-review-rounds", "2", "--skip-commands", "--out", globalOut]).status, 0);
+  assert.equal(runNode(GLOBAL_GATE, ["--report", REPORT, "--evidence-root", evidenceRoot, "--max-review-rounds", "2", "--skip-commands", "--out", globalOut]).status, 0);
   assert.equal(JSON.parse(readFileSync(globalOut, "utf8")).ok, true);
 });
 
@@ -123,7 +140,7 @@ test("Given a draft report When pending is allowed Then lint permits explicit pl
 });
 
 test("Given final Phase10 evidence When audited Then required commits and Part6 facts are enforced", () => {
-  const result = runNode(PLAN_AUDIT, ["--report", REPORT, "--evidence-root", "/tmp/feudal-phase10"]);
+  const result = runNode(PLAN_AUDIT, ["--report", REPORT, "--evidence-root", createEvidenceFixture()]);
 
   assert.equal(result.status, 0, result.stderr);
   const summary = JSON.parse(result.stdout);
