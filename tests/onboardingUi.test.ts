@@ -233,8 +233,8 @@ test("seal tray and tooltips stay inside their assigned geometry lanes", async (
   // Then
   assert.match(sealRecessRule, /overflow:\s*visible;/);
   assert.match(buildSealsRule, /max-height:\s*100%;/);
-  assert.match(buildSealsRule, /overflow-x:\s*auto;/);
-  assert.match(buildSealsRule, /overflow-y:\s*hidden;/);
+  assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
+  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
   assert.match(tooltipRule, /position:\s*fixed;/);
   assert.match(tooltipRule, /top:\s*var\(--seal-tooltip-top,\s*204px\);/);
   assert.match(tooltipRule, /left:\s*clamp\(12px,\s*28vw,\s*360px\);/);

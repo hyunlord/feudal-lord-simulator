@@ -699,18 +699,20 @@ button {
 }
 
 .build-seals {
-  --seal-size: 56px;
+  --seal-size: 64px;
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
   align-items: stretch;
+  align-content: flex-start;
   justify-content: flex-start;
   width: 100%;
   max-width: 100%;
   max-height: 100%;
   height: auto;
-  padding: 6px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  padding: 4px;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: var(--palette-parchment);
   border: 1px solid var(--palette-ink);
   scrollbar-width: thin;
@@ -767,9 +769,10 @@ button {
 .build-seal {
   width: var(--seal-size);
   height: var(--seal-size);
-  min-width: 56px;
-  min-height: 56px;
-  grid-template-rows: minmax(0, 1fr) auto;
+  min-width: 64px;
+  min-height: 64px;
+  gap: 4px;
+  grid-template-rows: minmax(0, 1fr) max-content;
 }
 
 .build-seal--road {
@@ -834,18 +837,19 @@ button {
 }
 
 .seal-glyph {
-  width: 72%;
-  height: 72%;
+  width: 58%;
+  height: 58%;
   pointer-events: none;
 }
 
-/* contrast-audit selector=".build-seal-label" fg="--palette-ink" bg="--palette-parchment" size="10" role="body" */
+/* contrast-audit selector=".build-seal-label" fg="--palette-ink" bg="--palette-parchment" size="12" role="body" */
 .build-seal-label {
-  max-width: 100%;
+  max-width: calc(100% - 8px);
   color: var(--palette-ink);
-  font-size: 11px;
-  line-height: 1.05;
-  overflow-wrap: anywhere;
+  font-size: 12px;
+  line-height: 1.08;
+  overflow-wrap: normal;
+  word-break: keep-all;
   text-align: center;
   pointer-events: none;
 }
@@ -1400,7 +1404,7 @@ button {
   }
 
   .build-seals {
-    --seal-size: 56px;
+    --seal-size: 64px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -1442,7 +1446,7 @@ button {
     display: block;
     width: 100%;
     height: auto;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1;
   }
 
@@ -1646,7 +1650,7 @@ button {
   }
 
   .build-seals {
-    --seal-size: 56px;
+    --seal-size: 64px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -1661,9 +1665,9 @@ button {
   }
 
   .build-seal {
-    min-width: 56px;
-    min-height: 56px;
-    padding: 3px;
+    min-width: 64px;
+    min-height: 64px;
+    padding: 4px;
   }
 
   .build-seal--road {
@@ -1672,7 +1676,7 @@ button {
   }
 
   .build-seal-label {
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .ledger-recess {

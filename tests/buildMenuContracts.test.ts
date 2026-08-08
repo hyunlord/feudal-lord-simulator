@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -13,6 +14,91 @@ import {
   buildToolTooltipLines,
   BUILD_TOOL_OPTIONS,
 } from "../src/ui/buildMenuModel";
+
+const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
+
+function cssRule(block: string, selector: string): string {
+  const start = block.indexOf(`${selector} {`);
+  assert.notEqual(start, -1, `${selector} rule exists`);
+
+  let depth = 0;
+  let opened = false;
+  for (let index = start; index < block.length; index += 1) {
+    const character = block[index];
+    if (character === "{") {
+      depth += 1;
+      opened = true;
+    }
+    if (character === "}") depth -= 1;
+    if (opened && depth === 0) return block.slice(start, index + 1);
+  }
+
+  assert.fail(`${selector} rule closes`);
+}
+
+function cssPx(rule: string, property: string): number {
+  const escapedProperty = property.replaceAll("-", "\\-");
+  const match = rule.match(new RegExp(`${escapedProperty}:\\s*(\\d+)px;`));
+  if (match === null) assert.fail(`${property} px declaration exists`);
+  const value = match[1];
+  assert.notEqual(value, undefined, `${property} value exists`);
+  return Number(value);
+}
+
+function cssVarPx(rule: string, name: string): number {
+  const escapedName = name.replaceAll("-", "\\-");
+  const match = rule.match(new RegExp(`${escapedName}:\\s*(\\d+)px;`));
+  if (match === null) assert.fail(`${name} px variable exists`);
+  const value = match[1];
+  assert.notEqual(value, undefined, `${name} value exists`);
+  return Number(value);
+}
+
+function cssNumber(rule: string, property: string): number {
+  const escapedProperty = property.replaceAll("-", "\\-");
+  const match = rule.match(new RegExp(`${escapedProperty}:\\s*([\\d.]+);`));
+  if (match === null) assert.fail(`${property} numeric declaration exists`);
+  const value = match[1];
+  assert.notEqual(value, undefined, `${property} value exists`);
+  return Number(value);
+}
+
+function labelsFromMarkup(markup: string): readonly string[] {
+  return [...markup.matchAll(/<span class="build-seal-label" aria-hidden="true">([^<]+)<\/span>/g)]
+    .map((match) => match[1])
+    .filter((label): label is string => label !== undefined);
+}
+
+function conservativeLabelWidthBudgetPx(label: string, fontSize: number): number {
+  return [...label].reduce((width, character) => {
+    if (/\p{Script=Hangul}/u.test(character)) return width + fontSize;
+    if (/[0-9]/.test(character)) return width + fontSize * 0.58;
+    if (/[A-Za-z]/.test(character)) return width + fontSize * 0.62;
+    return width + fontSize * 0.5;
+  }, 0);
+}
+
+function stoneTownState() {
+  return {
+    ...DEFAULT_GAME_STATE,
+    era: "stone_town" as const,
+    treasuryTimber: 500,
+    buildings: [
+      ...DEFAULT_GAME_STATE.buildings,
+      {
+        id: "stone-store",
+        kind: "storehouse" as const,
+        tx: 0,
+        ty: 0,
+        workers: 0,
+        inventory: { stone: 500, stone_raw: 500 },
+        reserved: {},
+        stockReserved: {},
+        productionProgress: 0,
+      },
+    ],
+  };
+}
 
 test("build menu exposes all building tools plus road in reachable order", () => {
   // Given
@@ -140,4 +226,50 @@ test("task-driven highlights are semantic attributes and keep unaffordable seals
   assert.match(markup, /data-highlighted="road"/);
   assert.match(markup, /aria-disabled="true"/);
   assert.doesNotMatch(markup, /disabled=""/);
+});
+
+test("Given every build label When preflighted against the seal geometry Then labels keep twelve-pixel text and four-pixel clearance", async () => {
+  // Given
+  const stylesheet = await readFile(STYLESHEET, "utf8");
+  const buildSealsRule = cssRule(stylesheet, ".build-seals");
+  const buildButtonRule = cssRule(stylesheet, ".build-seal,\n.speed-seal");
+  const buildLabelRule = cssRule(stylesheet, ".build-seal-label");
+  const defaultMarkup = renderToStaticMarkup(
+    createElement(BuildSeals, {
+      selectedTool: null,
+      state: DEFAULT_GAME_STATE,
+      onSelect: () => undefined,
+    }),
+  );
+  const stoneMarkup = renderToStaticMarkup(
+    createElement(BuildSeals, {
+      selectedTool: null,
+      state: stoneTownState(),
+      onSelect: () => undefined,
+    }),
+  );
+
+  // When
+  const sealSize = cssVarPx(buildSealsRule, "--seal-size");
+  const sealPadding = cssPx(buildButtonRule, "padding");
+  const labelFontSize = cssPx(buildLabelRule, "font-size");
+  const labelLineHeight = cssNumber(buildLabelRule, "line-height");
+  const labelHeight = labelFontSize * labelLineHeight;
+  const labelInlineBudget = sealSize - sealPadding * 2 - 8;
+  const labelBlockBudget = sealSize - sealPadding * 2 - 4;
+  const labels = [...new Set([...labelsFromMarkup(defaultMarkup), ...labelsFromMarkup(stoneMarkup)])];
+
+  // Then
+  assert.equal(labels.length, BUILD_TOOL_OPTIONS.length);
+  assert.ok(labelFontSize >= 12, "seal labels declare at least 12 CSS pixels");
+  assert.ok(labelHeight <= labelBlockBudget, "label line keeps four CSS pixels from seal block edges");
+  for (const label of labels) {
+    assert.ok(
+      conservativeLabelWidthBudgetPx(label, labelFontSize) <= labelInlineBudget,
+      `${label} fits within seal label width with four CSS pixels of inline clearance`,
+    );
+  }
+  assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
+  assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
+  assert.doesNotMatch(buildLabelRule, /overflow:\s*hidden|text-overflow|ellipsis|white-space:\s*nowrap/);
 });

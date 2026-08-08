@@ -211,7 +211,7 @@ test("build groups use explicit containers so neighboring buttons cannot interce
   const stylesheet = await readFile(STYLESHEET, "utf8");
 
   // Then
-  assert.match(stylesheet, /\.build-seals\s*\{[\s\S]*--seal-size:\s*56px;[\s\S]*display:\s*flex;[\s\S]*overflow-x:\s*auto;/);
+  assert.match(stylesheet, /\.build-seals\s*\{[\s\S]*--seal-size:\s*64px;[\s\S]*display:\s*flex;[\s\S]*flex-wrap:\s*wrap;[\s\S]*overflow-x:\s*hidden;/);
   assert.match(stylesheet, /@media \(max-width: 900px\) \{[\s\S]*?\.build-seals\s*\{[\s\S]*?flex-wrap:\s*wrap;[\s\S]*?overflow-x:\s*hidden;[\s\S]*?overflow-y:\s*auto;/);
   assert.match(stylesheet, /@media \(max-width: 900px\) \{[\s\S]*?\.build-group,[\s\S]*?\.road-tool\s*\{[\s\S]*?flex:\s*0 1 calc\(100% - 8px\);/);
   assert.match(stylesheet, /\.build-group-seals\s*\{[\s\S]*display:\s*flex;[\s\S]*gap:\s*6px;/);

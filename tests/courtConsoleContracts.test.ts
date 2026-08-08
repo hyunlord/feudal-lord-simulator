@@ -181,11 +181,11 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(consoleRule, /background-color:\s*var\(--palette-parchment\);/);
   assert.match(consoleRule, /background-image:\s*none;/);
   assert.match(consoleRule, /border:\s*1px solid var\(--palette-ink\);/);
-  assert.match(buildSealsRule, /--seal-size:\s*56px;/);
+  assert.match(buildSealsRule, /--seal-size:\s*64px;/);
   assert.match(buildSealsRule, /display:\s*flex;/);
-  assert.match(buildSealsRule, /gap:\s*12px;/);
+  assert.match(buildSealsRule, /gap:\s*8px;/);
   assert.match(buildSealsRule, /width:\s*100%;/);
-  assert.match(buildSealsRule, /padding:\s*6px;/);
+  assert.match(buildSealsRule, /padding:\s*4px;/);
   assert.match(buildSealsRule, /background-color:\s*var\(--palette-parchment\);/);
   assert.match(css, /\.welcome-parchment\s*\{[\s\S]*?left:\s*50%;[\s\S]*?bottom:\s*clamp\(/);
   assert.match(css, /\.welcome-parchment h2\s*\{[\s\S]*?text-align:\s*center;/);
@@ -218,7 +218,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-console\s*\{[\s\S]*?height:\s*224px;/);
   assert.match(mobileRules, /\.court-recess\s*\{[\s\S]*?height:\s*206px;/);
   assert.match(mobileRules, /\.diagnostic-card-position\s*\{[\s\S]*?bottom:\s*232px;/);
-  assert.match(mobileRules, /--seal-size:\s*56px;/);
+  assert.match(mobileRules, /--seal-size:\s*64px;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?display:\s*flex;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?flex-wrap:\s*wrap;/);
   assert.match(mobileRules, /\.build-seals\s*\{[\s\S]*?overflow-x:\s*hidden;/);

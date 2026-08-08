@@ -134,14 +134,15 @@ test("Phase10 build menu exposes readable grouped controls with road separated",
   const groups = buildMenuGroups(DEFAULT_GAME_STATE);
 
   // When / Then
-  assert.match(menuRule, /--seal-size:\s*56px;/);
-  assert.match(menuRule, /overflow-x:\s*auto;/);
-  assert.match(sealRule, /min-width:\s*56px;/);
-  assert.match(sealRule, /min-height:\s*56px;/);
-  assert.match(labelRule, /font-size:\s*11px;/);
+  assert.match(menuRule, /--seal-size:\s*64px;/);
+  assert.match(menuRule, /overflow-x:\s*hidden;/);
+  assert.match(menuRule, /overflow-y:\s*auto;/);
+  assert.match(sealRule, /min-width:\s*64px;/);
+  assert.match(sealRule, /min-height:\s*64px;/);
+  assert.match(labelRule, /font-size:\s*12px;/);
   assert.match(groupRule, /gap:\s*(?:6|8|10|12)px;/);
   assert.doesNotMatch(groupLabelRule, /display:\s*none;/);
-  assert.match(mobileRule, /--seal-size:\s*56px;/);
+  assert.match(mobileRule, /--seal-size:\s*64px;/);
   assert.match(mobileRule, /flex-wrap:\s*wrap;/);
   assert.match(mobileRule, /overflow-x:\s*hidden;/);
   assert.match(mobileRule, /overflow-y:\s*auto;/);

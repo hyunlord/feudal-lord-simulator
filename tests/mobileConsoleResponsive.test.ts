@@ -68,7 +68,7 @@ test("Given 375px console CSS When compact overrides apply Then build seals wrap
   const buildSealRule = cssRule(compactRules, ".build-seal");
 
   // When / Then
-  assert.match(buildSealsRule, /--seal-size:\s*56px;/);
+  assert.match(buildSealsRule, /--seal-size:\s*64px;/);
   assert.match(buildSealsRule, /display:\s*flex;/);
   assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
   assert.match(buildSealsRule, /align-content:\s*flex-start;/);
@@ -76,8 +76,8 @@ test("Given 375px console CSS When compact overrides apply Then build seals wrap
   assert.match(buildSealsRule, /overflow-y:\s*auto;/);
   assert.match(buildSealsRule, /justify-content:\s*flex-start;/);
   assert.doesNotMatch(buildSealsRule, /grid-template-columns:/);
-  assert.match(buildSealRule, /min-width:\s*56px;/);
-  assert.match(buildSealRule, /min-height:\s*56px;/);
+  assert.match(buildSealRule, /min-width:\s*64px;/);
+  assert.match(buildSealRule, /min-height:\s*64px;/);
 });
 
 test("Given tablet console CSS When build controls wrap Then groups and road controls can shrink inside the recess", async () => {
