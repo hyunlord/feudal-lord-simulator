@@ -26,6 +26,7 @@ export function installWorldSpriteDrawProbe(): WorldSpriteDrawProbe {
 }
 
 export function recordWorldSpriteDraw(event: WorldSpriteDrawEvent): void {
-  if (activeEvents === null || activeEvents.length >= MAX_RECENT_DRAWS) return;
+  if (activeEvents === null) return;
+  if (activeEvents.length >= MAX_RECENT_DRAWS) activeEvents.shift();
   activeEvents.push(event);
 }

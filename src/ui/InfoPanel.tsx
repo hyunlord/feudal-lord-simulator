@@ -1,5 +1,6 @@
 import type { EconomyStockTotals } from "./ledgerModel";
 import type { PlacementTool } from "../render/renderer";
+import { KO_UI } from "../content/locale.ko";
 import {
   getPlacementToolStatus,
   type PlacementTool as FeedbackPlacementTool,
@@ -56,8 +57,8 @@ export function CourtLedger({
 
   return (
     <>
-      <div className="court-ledger" aria-label="Court ledger">
-        <span className="ledger-heading">Royal Ledger</span>
+      <div className="court-ledger" aria-label={KO_UI.ledger.ariaLabel}>
+        <span className="ledger-heading">{KO_UI.ledger.heading}</span>
         {onPopulationDrawerToggle === undefined ? null : (
           <button
             className="ledger-population-toggle"
@@ -70,19 +71,19 @@ export function CourtLedger({
           </button>
         )}
         <dl>
-          <LedgerRow full="Timber" compact="Tim." value={timberTotal} />
-          <LedgerRow full="Coin" compact="Coin" value={stockTotals?.coin ?? coin} />
-          {population !== undefined ? <LedgerRow full="Population" compact="Pop." value={population} /> : null}
-          {idleWorkers !== undefined ? <LedgerRow full="Idle" compact="Idle" value={idleWorkers} /> : null}
+          <LedgerRow full={KO_UI.ledger.timber} compact={KO_UI.ledger.timber} value={timberTotal} />
+          <LedgerRow full={KO_UI.ledger.coin} compact={KO_UI.ledger.coin} value={stockTotals?.coin ?? coin} />
+          {population !== undefined ? <LedgerRow full={KO_UI.ledger.population} compact={KO_UI.ledger.population} value={population} /> : null}
+          {idleWorkers !== undefined ? <LedgerRow full={KO_UI.ledger.idle} compact={KO_UI.ledger.idle} value={idleWorkers} /> : null}
           {stockTotals !== undefined ? (
             <>
-              <LedgerRow full="Wheat" compact="Wh." value={stockTotals.wheat} secondary />
-              <LedgerRow full="Bread" compact="Br." value={stockTotals.bread} secondary />
-              <LedgerRow full="Logs" compact="Log" value={stockTotals.logs} secondary />
+              <LedgerRow full={KO_UI.ledger.wheat} compact={KO_UI.ledger.wheat} value={stockTotals.wheat} secondary />
+              <LedgerRow full={KO_UI.ledger.bread} compact={KO_UI.ledger.bread} value={stockTotals.bread} secondary />
+              <LedgerRow full={KO_UI.ledger.logs} compact={KO_UI.ledger.logs} value={stockTotals.logs} secondary />
             </>
           ) : null}
-          <LedgerRow full="Tick" compact="Tck" value={tick} secondary />
-          <dt className="ledger-tool">Seal</dt><dd className="ledger-tool">{selectedName}</dd>
+          <LedgerRow full={KO_UI.ledger.tick} compact={KO_UI.ledger.tick} value={tick} secondary />
+          <dt className="ledger-tool">{KO_UI.ledger.seal}</dt><dd className="ledger-tool">{selectedName}</dd>
         </dl>
       </div>
       {populationDrawerOpen ? (
@@ -139,7 +140,7 @@ export function SettlementStatusLine({
   const showProblemGlyph = activeToolStatus === null && placementFeedbackMessage === null;
 
   return (
-    <section className="settlement-status" aria-label="Settlement status">
+    <section className="settlement-status" aria-label={KO_UI.settlementStatus}>
       <span className="settlement-priority">
         {guidance.priority === null || !showProblemGlyph ? null : (
           <span
@@ -158,14 +159,14 @@ export function SettlementStatusLine({
 export function OnboardingTasks({ view }: { readonly view: OnboardingTaskView }) {
   if (view.openGoal !== null) {
     return (
-      <section className="onboarding-tasks" aria-label="Onboarding tasks" data-onboarding-state="open-goal">
+      <section className="onboarding-tasks" aria-label={KO_UI.onboardingTasks} data-onboarding-state="open-goal">
         <span className="settlement-target">{view.openGoal.title}</span>
       </section>
     );
   }
 
   return (
-    <section className="onboarding-tasks" aria-label="Onboarding tasks" data-onboarding-state="ordered">
+    <section className="onboarding-tasks" aria-label={KO_UI.onboardingTasks} data-onboarding-state="ordered">
       <ol>
         {view.current === null ? null : (
           <li className="onboarding-task onboarding-task--current" data-task-state="current">
@@ -190,7 +191,7 @@ export function OnboardingTasks({ view }: { readonly view: OnboardingTaskView })
 export function SettlementObjective({ state }: { readonly state: GameState }) {
   const guidance = settlementGuidance(state);
   return (
-    <section className="settlement-objective" aria-label="Population objective">
+    <section className="settlement-objective" aria-label={KO_UI.populationObjective}>
       <span className="settlement-target">
         목표: 인구 {guidance.populationGoal}명 · 현재 {state.population}명
       </span>

@@ -112,8 +112,8 @@ try {
 
   const evidence = await page.evaluate(() => ({
     objective: document.querySelector('[aria-label="Population objective"]')?.textContent,
-    status: document.querySelector('[aria-label="Settlement status"]')?.textContent,
-    consoleText: document.querySelector('[aria-label="Court console"]')?.textContent,
+    status: document.querySelector('[aria-label="정착지 상태"]')?.textContent,
+    consoleText: document.querySelector('[aria-label="영주 명령대"]')?.textContent,
     floatingElements: [...document.querySelectorAll("body *")]
       .filter((element) => {
         const style = getComputedStyle(element);

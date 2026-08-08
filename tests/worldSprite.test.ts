@@ -165,6 +165,17 @@ describe("world sprite blitter", () => {
     assert.deepEqual(recorder.calls.slice(-1), ["restore"]);
   });
 
+  it("Given a ready tree asset When drawing foliage Then the authored sprite path returns true", () => {
+    const recorder = recordingContext();
+
+    const drawn = drawWorldSpriteAtWorldAnchor(recorder.context, "tree_oak_large", 3, 4, {
+      camera: { zoom: 1, panX: 100, panY: 50 },
+    });
+
+    assert.equal(drawn, true);
+    assert.equal(recorder.drawCalls.length, 1);
+  });
+
   it("Given drawImage throws When drawing Then canvas state is still restored", () => {
     const failure = new Error("draw failed");
     const recorder = recordingContext(1024, 768, failure);

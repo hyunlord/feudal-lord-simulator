@@ -1,4 +1,5 @@
 import type { OverlayMode } from "../engine/engine.types";
+import { KO_UI } from "../content/locale.ko";
 
 export type EconomyOverlayControlsProps = {
   readonly overlayMode: OverlayMode;
@@ -11,36 +12,41 @@ type EconomyOverlayOption = {
   readonly label: string;
   readonly compactLabel: string;
   readonly legend: string;
+  readonly shortcut: "1" | "2" | "3" | "4";
 };
 
 const ECONOMY_OVERLAYS = [
   {
     mode: "water",
     keyCode: "Digit1",
-    label: "Water",
-    compactLabel: "Water",
-    legend: "well radius, dry houses",
+    label: KO_UI.overlays.water.label,
+    compactLabel: KO_UI.overlays.water.compact,
+    legend: KO_UI.overlays.water.legend,
+    shortcut: "1",
   },
   {
     mode: "labour",
     keyCode: "Digit2",
-    label: "Labour",
-    compactLabel: "Work",
-    legend: "understaffed worksites",
+    label: KO_UI.overlays.labour.label,
+    compactLabel: KO_UI.overlays.labour.compact,
+    legend: KO_UI.overlays.labour.legend,
+    shortcut: "2",
   },
   {
     mode: "distribution",
     keyCode: "Digit3",
-    label: "Distribution",
-    compactLabel: "Reach",
-    legend: "granary road reach",
+    label: KO_UI.overlays.distribution.label,
+    compactLabel: KO_UI.overlays.distribution.compact,
+    legend: KO_UI.overlays.distribution.legend,
+    shortcut: "3",
   },
   {
     mode: "road_component",
     keyCode: "Digit4",
-    label: "Road component",
-    compactLabel: "Roads",
-    legend: "selected building network",
+    label: KO_UI.overlays.roadComponent.label,
+    compactLabel: KO_UI.overlays.roadComponent.compact,
+    legend: KO_UI.overlays.roadComponent.legend,
+    shortcut: "4",
   },
 ] as const satisfies readonly EconomyOverlayOption[];
 
@@ -58,8 +64,8 @@ export function EconomyOverlayControls({
   onChange,
 }: EconomyOverlayControlsProps) {
   return (
-    <section className="economy-overlays" aria-label="Economy overlays">
-      <span className="overlay-heading">Overlays</span>
+    <section className="economy-overlays" aria-label={KO_UI.overlays.ariaLabel}>
+      <span className="overlay-heading">{KO_UI.overlays.heading}</span>
       <div className="overlay-seals">
         {ECONOMY_OVERLAYS.map((option) => (
           <button
@@ -67,12 +73,12 @@ export function EconomyOverlayControls({
             className="overlay-seal"
             type="button"
             aria-pressed={overlayMode === option.mode}
-            aria-label={`${option.label} overlay ${option.keyCode}`}
+            aria-label={`${option.label} 보기, ${KO_UI.overlays.shortcut} ${option.shortcut}`}
             onClick={() => onChange(overlayMode === option.mode ? "none" : option.mode)}
           >
             <span className="overlay-label overlay-label--full">{option.label}</span>
             <span className="overlay-label overlay-label--compact" aria-hidden="true">{option.compactLabel}</span>
-            <span className="overlay-key">{option.keyCode}</span>
+            <span className="overlay-key">{option.shortcut}</span>
             <span className="overlay-legend">{option.legend}</span>
           </button>
         ))}

@@ -32,7 +32,7 @@ test("welcome parchment renders exact opening copy and dismiss affordance", () =
   const markup = renderApp();
 
   // Then
-  assert.match(markup, /aria-label="Opening guidance"/);
+  assert.match(markup, /aria-label="시작 안내"/);
   assert.match(markup, /role="dialog"/);
   assert.match(markup, /aria-modal="true"/);
   assert.match(markup, /tabindex="-1"/);
@@ -50,7 +50,7 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   const runtimeSource = await readFile(CANVAS_RUNTIME_SOURCE, "utf8");
   const runtimeRefsSource = await readFile(CANVAS_RUNTIME_REFS_SOURCE, "utf8");
   const placementMarkup = markup.slice(
-    markup.indexOf('aria-label="Placement seals"'),
+    markup.indexOf('aria-label="건설 도장"'),
     markup.indexOf("ledger-recess"),
   );
 
@@ -159,14 +159,14 @@ test("right rail renders era gauges plus current and next onboarding tasks", () 
   // Given / When
   const markup = renderApp();
   const railMarkup = markup.slice(
-    markup.indexOf('aria-label="Information rail"'),
-    markup.indexOf('aria-label="Court console"'),
+    markup.indexOf('aria-label="영지 안내"'),
+    markup.indexOf('aria-label="영주 명령대"'),
   );
 
   // Then
-  assert.match(railMarkup, /aria-label="Era console"/);
+  assert.match(railMarkup, /aria-label="시대 선포"/);
   assert.equal((railMarkup.match(/class="era-requirement(?: era-requirement--met)?"/g) ?? []).length, 4);
-  assert.match(railMarkup, /aria-label="Onboarding tasks"/);
+  assert.match(railMarkup, /aria-label="현재 과업"/);
   assert.match(railMarkup, /data-task-state="current"/);
   assert.match(railMarkup, /길을 놓아 오두막을 이으세요/);
   assert.match(railMarkup, /data-task-state="next"/);
@@ -177,8 +177,8 @@ test("right rail renders era gauges plus current and next onboarding tasks", () 
 test("population history is opened only from the ledger drawer", () => {
   // Given / When
   const markup = renderApp();
-  const beforeConsole = markup.slice(0, markup.indexOf('aria-label="Court console"'));
-  const consoleMarkup = markup.slice(markup.indexOf('aria-label="Court console"'));
+  const beforeConsole = markup.slice(0, markup.indexOf('aria-label="영주 명령대"'));
+  const consoleMarkup = markup.slice(markup.indexOf('aria-label="영주 명령대"'));
 
   // Then
   assert.doesNotMatch(beforeConsole, /aria-label="인구 변화 기록"/);

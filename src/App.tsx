@@ -9,6 +9,7 @@ import {
   type PointerEvent,
 } from "react";
 
+import { KO_UI } from "./content/locale.ko";
 import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
@@ -201,7 +202,7 @@ export function App() {
   return (
     <main
       className="app-shell"
-      aria-label="Feudal Lord Simulator"
+      aria-label={KO_UI.appName}
       style={PALETTE_CSS_VARIABLES as CSSProperties}
     >
       <div
@@ -209,7 +210,7 @@ export function App() {
         inert={welcomeVisible ? true : undefined}
         aria-hidden={welcomeVisible ? true : undefined}
       >
-        <h1 className="visually-hidden">Feudal Lord Simulator</h1>
+        <h1 className="visually-hidden">{KO_UI.appName}</h1>
         <GameCanvas
           selectedTool={selectedTool}
           overlayMode={overlayMode}
@@ -227,7 +228,7 @@ export function App() {
           nowMs={presentationNowMs}
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
-        <aside className="right-info-rail" aria-label="Information rail">
+        <aside className="right-info-rail" aria-label={KO_UI.informationRail}>
           <EraConsole
             model={eraModel}
             onBeginProposal={beginPalisadeProposal}
@@ -237,7 +238,7 @@ export function App() {
           />
           <OnboardingTasks view={onboardingView} />
         </aside>
-        <aside className="court-console" aria-label="Court console">
+        <aside className="court-console" aria-label={KO_UI.courtConsole}>
           <div className="court-recess map-recess">
             <MapShield grid={state} />
           </div>
@@ -302,7 +303,7 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
         className="welcome-parchment"
         role="dialog"
         aria-modal="true"
-        aria-label="Opening guidance"
+        aria-label={KO_UI.openingGuidance}
         tabIndex={-1}
       >
         <h2>영지에 오신 것을 환영합니다</h2>

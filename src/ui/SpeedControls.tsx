@@ -1,4 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
+import { KO_UI } from "../content/locale.ko";
 import type { GameSpeed } from "../engine/engine.types";
 
 const SPEED_SEALS: readonly {
@@ -6,10 +7,10 @@ const SPEED_SEALS: readonly {
   readonly label: string;
   readonly paths: readonly string[];
 }[] = [
-  { speed: 0, label: "Pause", paths: ["M8 6v12", "M16 6v12"] },
-  { speed: 1, label: "Normal speed", paths: ["m9 6 8 6-8 6Z"] },
-  { speed: 3, label: "Threefold speed", paths: ["m5 6 7 6-7 6Z", "m12 6 7 6-7 6Z"] },
-  { speed: 5, label: "Fivefold speed", paths: ["m3 6 6 6-6 6Z", "m9 6 6 6-6 6Z", "m15 6 6 6-6 6Z"] },
+  { speed: 0, label: KO_UI.speeds.paused, paths: ["M8 6v12", "M16 6v12"] },
+  { speed: 1, label: KO_UI.speeds.normal, paths: ["m9 6 8 6-8 6Z"] },
+  { speed: 3, label: KO_UI.speeds.threefold, paths: ["m5 6 7 6-7 6Z", "m12 6 7 6-7 6Z"] },
+  { speed: 5, label: KO_UI.speeds.fivefold, paths: ["m3 6 6 6-6 6Z", "m9 6 6 6-6 6Z", "m15 6 6 6-6 6Z"] },
 ];
 
 export function speedToIntervalMs(speed: GameSpeed): number | null {
@@ -23,7 +24,7 @@ type SpeedSealsProps = {
 
 export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
   return (
-    <div className="speed-seals" role="group" aria-label="Time seals">
+    <div className="speed-seals" role="group" aria-label={KO_UI.speeds.ariaLabel}>
       {SPEED_SEALS.map((option) => (
         <button
           key={option.speed}

@@ -79,13 +79,13 @@ test("CourtLedger keeps old call sites and can display the Phase 3 economy total
   );
 
   // Then
-  assert.match(legacy, /Timber/);
-  assert.match(phase3, /Population/);
-  assert.match(phase3, /Idle/);
-  assert.match(phase3, /Wheat/);
-  assert.match(phase3, /Bread/);
-  assert.match(phase3, /Logs/);
-  assert.match(phase3, /Timber[\s\S]*<dd class="ledger-row ledger-value">12<\/dd>/);
+  assert.match(legacy, /목재/);
+  assert.match(phase3, /인구/);
+  assert.match(phase3, /대기/);
+  assert.match(phase3, /밀/);
+  assert.match(phase3, /빵/);
+  assert.match(phase3, /통나무/);
+  assert.match(phase3, /목재[\s\S]*<dd class="ledger-row ledger-value">12<\/dd>/);
 });
 
 test("CourtLedger exposes compact primary labels and marks secondary rows for narrow consoles", () => {
@@ -102,10 +102,10 @@ test("CourtLedger exposes compact primary labels and marks secondary rows for na
   );
 
   // Then
-  assert.match(markup, /class="ledger-label ledger-label--full">Timber/);
-  assert.match(markup, /class="ledger-label ledger-label--compact" aria-hidden="true">Tim\./);
-  assert.match(markup, /class="ledger-label ledger-label--full">Population/);
-  assert.match(markup, /class="ledger-label ledger-label--compact" aria-hidden="true">Pop\./);
+  assert.match(markup, /class="ledger-label ledger-label--full">목재/);
+  assert.match(markup, /class="ledger-label ledger-label--compact" aria-hidden="true">목재/);
+  assert.match(markup, /class="ledger-label ledger-label--full">인구/);
+  assert.match(markup, /class="ledger-label ledger-label--compact" aria-hidden="true">인구/);
   assert.match(markup, /class="ledger-row ledger-row--secondary"/);
   assert.match(markup, /class="[^"]*\bledger-value\b[^"]*"/);
 });
@@ -124,11 +124,11 @@ test("CourtLedger keeps full semantic term names when compact labels are aria-hi
   );
 
   // Then
-  assert.match(markup, /<dt class="ledger-row" aria-label="Timber">/);
-  assert.match(markup, /<dt class="ledger-row" aria-label="Population">/);
-  assert.match(markup, /<dt class="ledger-row" aria-label="Idle">/);
-  assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">Tim\.<\/span>/);
-  assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">Pop\.<\/span>/);
+  assert.match(markup, /<dt class="ledger-row" aria-label="목재">/);
+  assert.match(markup, /<dt class="ledger-row" aria-label="인구">/);
+  assert.match(markup, /<dt class="ledger-row" aria-label="대기">/);
+  assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">목재<\/span>/);
+  assert.match(markup, /<span class="ledger-label ledger-label--compact" aria-hidden="true">인구<\/span>/);
 });
 
 test("economy overlay controls expose visible water and labour toggles without camera-key collisions", () => {
@@ -136,15 +136,15 @@ test("economy overlay controls expose visible water and labour toggles without c
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  assert.match(markup, /aria-label="Economy overlays"/);
-  assert.match(markup, /Water/);
-  assert.match(markup, /Labour/);
-  assert.match(markup, /Digit1/);
-  assert.match(markup, /Digit2/);
-  assert.match(markup, /Distribution/);
-  assert.match(markup, /Road component/);
-  assert.match(markup, /Digit3/);
-  assert.match(markup, /Digit4/);
+  assert.match(markup, /aria-label="경제 보기"/);
+  assert.match(markup, /물/);
+  assert.match(markup, /일손/);
+  assert.match(markup, />1<\/span>/);
+  assert.match(markup, />2<\/span>/);
+  assert.match(markup, /배급/);
+  assert.match(markup, /연결된 길/);
+  assert.match(markup, />3<\/span>/);
+  assert.match(markup, />4<\/span>/);
   assert.match(markup, /class="ledger-population-toggle"/);
   assert.match(markup, /aria-expanded="false"/);
   assert.equal(toggleOverlayByKey("Digit1", "none"), "water");
@@ -161,12 +161,12 @@ test("economy overlay controls expose compact visible labels without changing ac
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  assert.match(markup, /aria-label="Distribution overlay Digit3"/);
-  assert.match(markup, /aria-label="Road component overlay Digit4"/);
-  assert.match(markup, /class="overlay-label overlay-label--full">Distribution/);
-  assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">Reach/);
-  assert.match(markup, /class="overlay-label overlay-label--full">Road component/);
-  assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">Roads/);
+  assert.match(markup, /aria-label="배급 보기, 단축키 3"/);
+  assert.match(markup, /aria-label="연결된 길 보기, 단축키 4"/);
+  assert.match(markup, /class="overlay-label overlay-label--full">배급/);
+  assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">범위/);
+  assert.match(markup, /class="overlay-label overlay-label--full">연결된 길/);
+  assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">길/);
 });
 
 test("economy overlay controls render inside the right console recess instead of as persistent floating UI", () => {
@@ -174,9 +174,9 @@ test("economy overlay controls render inside the right console recess instead of
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  assert.ok(markup.indexOf('class="ledger-recess"') < markup.indexOf('aria-label="Economy overlays"'));
-  assert.ok(markup.indexOf('class="court-ledger"') < markup.indexOf('aria-label="Economy overlays"'));
-  assert.ok(markup.indexOf('aria-label="Economy overlays"') < markup.indexOf('class="speed-seals"'));
+  assert.ok(markup.indexOf('class="ledger-recess"') < markup.indexOf('aria-label="경제 보기"'));
+  assert.ok(markup.indexOf('class="court-ledger"') < markup.indexOf('aria-label="경제 보기"'));
+  assert.ok(markup.indexOf('aria-label="경제 보기"') < markup.indexOf('class="speed-seals"'));
 });
 
 test("the onboarding task list replaces the distant population objective in the right console", () => {
@@ -184,10 +184,10 @@ test("the onboarding task list replaces the distant population objective in the 
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  const statusIndex = markup.indexOf('aria-label="Settlement status"');
-  const consoleIndex = markup.indexOf('aria-label="Court console"');
-  const railIndex = markup.indexOf('aria-label="Information rail"');
-  const tasksIndex = markup.indexOf('aria-label="Onboarding tasks"');
+  const statusIndex = markup.indexOf('aria-label="정착지 상태"');
+  const consoleIndex = markup.indexOf('aria-label="영주 명령대"');
+  const railIndex = markup.indexOf('aria-label="영지 안내"');
+  const tasksIndex = markup.indexOf('aria-label="현재 과업"');
   assert.ok(statusIndex >= 0 && statusIndex < consoleIndex);
   assert.ok(railIndex >= 0 && railIndex < consoleIndex);
   assert.ok(tasksIndex > railIndex && tasksIndex < consoleIndex);

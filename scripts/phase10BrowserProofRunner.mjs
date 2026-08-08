@@ -91,11 +91,11 @@ async function runPlaythrough(client, config) {
     roadRevision: placement.roadRevision,
     constructionSites: placement.constructionSites,
   });
-  await clickByAria(client, "Normal speed");
+  await clickByAria(client, "1배속");
   const movement = await waitForLogsCarterAndSnapshot(client, fresh.snapshot.tick, config.ticks, config.screenshotDir, screenshots, "walker");
   await waitAndSnapshot(client, fresh.snapshot.tick, 1_000, config.screenshotDir, screenshots, "goods");
   const final = await waitAndSnapshot(client, fresh.snapshot.tick, config.ticks, config.screenshotDir, screenshots, "final");
-  await clickByAria(client, "Pause");
+  await clickByAria(client, "일시 정지");
   const omitted = await runOmittedRoadFlow(client, config);
   const evidence = {
     schemaVersion: 1,
@@ -157,9 +157,9 @@ async function runPublicHonestRead(client, config) {
   const secondState = await proofSnapshot(client);
   assertPlacedKinds(secondState.constructionSites, ["logging_camp", "sawmill"]);
   assertCanvasChanged(firstPlacement.canvas, secondPlacement.canvas, "second public building placement");
-  await clickByAria(client, "Normal speed");
+  await clickByAria(client, "1배속");
   await delay(config.watchMs);
-  await clickByAria(client, "Pause");
+  await clickByAria(client, "일시 정지");
   const afterWatch = await honestSnapshot(client, config.screenshotDir, screenshots, "public-after-two-minutes");
   const afterState = await proofSnapshot(client);
   assertPlacedKinds(afterState.constructionSites, ["logging_camp", "sawmill"]);
@@ -283,9 +283,9 @@ async function runOmittedRoadFlow(client, config) {
   await placeBuildings(client, NO_ROAD_BUILDINGS);
   await snapshot(client, dir, screenshots, "omitted-road-placement");
   const before = await proofSnapshot(client);
-  await clickByAria(client, "Normal speed");
+  await clickByAria(client, "1배속");
   await waitForElapsedTicks(client, before.tick, 600);
-  await clickByAria(client, "Pause");
+  await clickByAria(client, "일시 정지");
   const idle = await snapshot(client, dir, screenshots, "omitted-road-idle");
   const after = idle.snapshot;
   const markerProof = await runDisconnectedMarkerProof(client, config, dir);
@@ -313,14 +313,14 @@ async function runDisconnectedMarkerProof(client, config, parentDir) {
   await mkdir(dir, { recursive: true });
   await placeTimberChain(client, dir, screenshots);
   const fresh = await proofSnapshot(client);
-  await clickByAria(client, "Normal speed");
+  await clickByAria(client, "1배속");
   await waitForElapsedTicks(client, fresh.tick, 1_000);
-  await clickByAria(client, "Pause");
+  await clickByAria(client, "일시 정지");
   await clickByAria(client, "길");
   await clickTile(client, { tx: 41, ty: 39 });
-  await clickByAria(client, "Normal speed");
+  await clickByAria(client, "1배속");
   await waitForElapsedTicks(client, fresh.tick, 1_100);
-  await clickByAria(client, "Pause");
+  await clickByAria(client, "일시 정지");
   const marker = await snapshot(client, dir, screenshots, "disconnected-road-marker");
   const after = marker.snapshot;
   const camp = after.buildings.find((building) => building.kind === "logging_camp");
@@ -357,8 +357,8 @@ function populationOutcome(initial, final) {
 }
 
 function speedLabel(speed) {
-  if (speed === 1) return "Normal speed";
-  if (speed === 5) return "Fivefold speed";
+  if (speed === 1) return "1배속";
+  if (speed === 5) return "5배속";
   throw new Error(`unsupported browser speed ${speed}`);
 }
 

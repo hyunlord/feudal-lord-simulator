@@ -1,4 +1,5 @@
 import { isWallConstructionSite, palisadeConstructionSchedule } from "../economy/palisadeConstruction";
+import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
 import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
@@ -105,7 +106,7 @@ export function EraConsole({
     ? onProclaimStoneTown
     : model.draft.editing ? onConfirmProposal : onBeginProposal;
   return (
-    <section className="era-console" aria-label="Era console">
+    <section className="era-console" aria-label={KO_UI.eraConsole}>
       <header className="era-console__header">
         <span className="era-console__kicker">현재 시대</span>
         <strong>{model.currentEraLabel}</strong>

@@ -139,7 +139,7 @@ function parseAsset(value: unknown, field: string): Omit<AssetMeta, "status"> {
   return {
     key,
     category: parseCategory(asset["category"], `${field}.category`),
-    url: servedUrl(requireAssetPath(asset["path"], `${field}.path`)),
+    url: assetUrlForBase(requireAssetPath(asset["path"], `${field}.path`), deploymentBaseUrl()),
     width: requirePositiveInteger(asset["width"], `${field}.width`),
     height: requirePositiveInteger(asset["height"], `${field}.height`),
     anchor: parseAnchor(asset["anchor"], `${field}.anchor`),
@@ -174,8 +174,15 @@ function parseCategory(value: unknown, field: string): AssetCategory {
   }
 }
 
-function servedUrl(path: string): string {
-  return path.startsWith("public/") ? `/${path.slice("public/".length)}` : `/${path}`;
+export function assetUrlForBase(path: string, baseUrl: string): string {
+  const relativePath = path.startsWith("public/") ? path.slice("public/".length) : path;
+  const leadingBase = baseUrl.startsWith("/") ? baseUrl : `/${baseUrl}`;
+  const normalizedBase = leadingBase.endsWith("/") ? leadingBase : `${leadingBase}/`;
+  return `${normalizedBase}${relativePath}`;
+}
+
+function deploymentBaseUrl(): string {
+  return import.meta.env?.BASE_URL ?? "/";
 }
 
 function requireRecord(value: unknown, field: string): JsonRecord {

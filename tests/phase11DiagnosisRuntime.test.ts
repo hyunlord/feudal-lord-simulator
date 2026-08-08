@@ -4,6 +4,7 @@ import test from "node:test";
 import { renderDetailLevel } from "../src/render/buildingVisualState";
 import {
   installWorldSpriteDrawProbe,
+  recordWorldSpriteDraw,
 } from "../src/render/worldSpriteDiagnostics";
 import { drawWorldSpriteAtWorldAnchor } from "../src/render/worldSprite";
 import { runtimeWorldAssetManifest } from "../src/render/worldAssetManifest.generated";
@@ -43,6 +44,21 @@ test("Given an unavailable runtime sprite When it is drawn under diagnosis Then 
   assert.deepEqual(probe.snapshot().recent, [
     { key: "missing_phase11_sprite", drawn: false, reason: "meta_missing" },
   ]);
+  probe.dispose();
+});
+
+test("Given an initial frame fills the diagnosis buffer When assets draw later Then the latest successful draw remains observable", () => {
+  const probe = installWorldSpriteDrawProbe();
+  for (let index = 0; index < 128; index += 1) {
+    recordWorldSpriteDraw({ key: `loading-${index}`, drawn: false, reason: "image_missing" });
+  }
+
+  recordWorldSpriteDraw({ key: "tree_oak_small", drawn: true, reason: "drawn" });
+
+  const recent = probe.snapshot().recent;
+  assert.equal(recent.length, 128);
+  assert.deepEqual(recent.at(-1), { key: "tree_oak_small", drawn: true, reason: "drawn" });
+  assert.equal(recent.some((event) => event.key === "loading-0"), false);
   probe.dispose();
 });
 

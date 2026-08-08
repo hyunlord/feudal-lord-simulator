@@ -50,7 +50,7 @@ test("Given timber-chain placement When entering the live loop Then the runner p
   const source = readFileSync(PROOF_RUNNER, "utf8");
   const placement = source.indexOf("await placeTimberChain");
   const preflight = source.indexOf("assertPlaythroughPreflight", placement);
-  const liveLoop = source.indexOf('clickByAria(client, "Normal speed")', placement);
+  const liveLoop = source.indexOf('clickByAria(client, "1배속")', placement);
   assert.ok(placement >= 0 && preflight > placement && liveLoop > preflight);
 });
 

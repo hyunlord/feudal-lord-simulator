@@ -1,5 +1,6 @@
 import { createElement, type MouseEvent } from "react";
 
+import { KO_UI } from "../content/locale.ko";
 import type { Era } from "../engine/engine.types";
 
 const CEREMONY_DURATION_MS = 2_000;
@@ -90,17 +91,17 @@ function eraCeremonyCopy(targetEra: EraCeremony["targetEra"]): {
   switch (targetEra) {
     case "palisade":
       return {
-        ariaLabel: "Palisade age ceremony",
+        ariaLabel: KO_UI.ceremony.palisade,
         title: "목책마을 선포",
         body: "성문이 열리고 집들이 새 목재를 두릅니다",
-        dismissLabel: "Dismiss palisade ceremony",
+        dismissLabel: KO_UI.ceremony.dismissPalisade,
       };
     case "stone_town":
       return {
-        ariaLabel: "Stone Town ceremony",
+        ariaLabel: KO_UI.ceremony.stoneTown,
         title: "석조 도시 선포",
         body: "석재가 목책을 대신하고 집들이 돌빛으로 바뀝니다",
-        dismissLabel: "Dismiss Stone Town ceremony",
+        dismissLabel: KO_UI.ceremony.dismissStoneTown,
       };
     default:
       return assertNever(targetEra);

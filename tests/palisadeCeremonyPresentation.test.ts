@@ -88,7 +88,7 @@ test("era ceremony banner uses canonical class hooks and Korean transition copy"
   assert.match(markup, /class="era-ceremony"/);
   assert.match(markup, /목책마을 선포/);
   assert.match(markup, /성문이 열리고 집들이 새 목재를 두릅니다/);
-  assert.match(markup, /aria-label="Dismiss palisade ceremony"/);
+  assert.match(markup, /aria-label="목책마을 선포식 닫기"/);
 });
 
 test("era ceremony banner uses distinct Stone Town copy without palisade aria text", () => {
@@ -103,10 +103,10 @@ test("era ceremony banner uses distinct Stone Town copy without palisade aria te
 
   // Then
   assert.match(markup, /class="era-ceremony"/);
-  assert.match(markup, /aria-label="Stone Town ceremony"/);
+  assert.match(markup, /aria-label="석조 도시 선포식"/);
   assert.match(markup, /석조 도시 선포/);
   assert.match(markup, /석재가 목책을 대신하고 집들이 돌빛으로 바뀝니다/);
-  assert.match(markup, /aria-label="Dismiss Stone Town ceremony"/);
+  assert.match(markup, /aria-label="석조 도시 선포식 닫기"/);
   assert.doesNotMatch(markup, /Palisade age ceremony|Dismiss palisade ceremony|목책마을 선포/);
 });
 

@@ -1,5 +1,6 @@
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 
+import { KO_UI } from "../content/locale.ko";
 import type { OverlayMode } from "../engine/engine.types";
 import { DEFAULT_PLACEMENT_TOOL } from "./interactions";
 import type { PlacementTool } from "./renderer";
@@ -101,7 +102,7 @@ export function GameCanvas({
       <canvas
         ref={canvasRef}
         className={selectedTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
-        aria-label="Simulation canvas"
+        aria-label={KO_UI.simulationCanvas}
       />
       <BuildingInspector state={state} hover={selection === null ? hoveredBuilding : null} />
       {selection !== null && cardModel !== null ? (

@@ -1,5 +1,6 @@
 import { useId, useMemo } from "react";
 
+import { KO_UI } from "../content/locale.ko";
 import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { TerrainType } from "../content/terrainConfig";
 import type { Grid } from "../world/grid";
@@ -47,7 +48,7 @@ export function MapShield({ grid }: MapShieldProps) {
   return (
     <div className="map-shield-wrap">
       <svg className="map-shield" viewBox="0 0 96 104" role="img" aria-labelledby={titleId}>
-        <title id={titleId}>Royal terrain shield</title>
+        <title id={titleId}>{KO_UI.map.title}</title>
         <defs>
           <clipPath id={clipId}>
             <path d="M48 3 90 17v36c0 24-17 40-42 48C23 93 6 77 6 53V17Z" />
@@ -67,7 +68,7 @@ export function MapShield({ grid }: MapShieldProps) {
         </g>
         <path d="M48 3 90 17v36c0 24-17 40-42 48C23 93 6 77 6 53V17Z" fill="none" stroke="currentColor" strokeWidth="2" />
       </svg>
-      <span className="shield-caption">Royal Demesne</span>
+      <span className="shield-caption">{KO_UI.map.caption}</span>
     </div>
   );
 }

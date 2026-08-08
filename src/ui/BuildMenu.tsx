@@ -1,5 +1,6 @@
 import { Fragment, useId } from "react";
 
+import { KO_UI } from "../content/locale.ko";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_GAME_STATE } from "../state/gameStore";
@@ -30,9 +31,9 @@ export function BuildSeals({
   const groups = buildMenuGroups(menuState);
 
   return (
-    <div className="build-seals" role="group" aria-label="Placement seals">
+    <div className="build-seals" role="group" aria-label={KO_UI.placementSeals}>
       {groups.map((group) => (
-        <section key={group.key} className="build-group" aria-label={`${group.label} tools`}>
+        <section key={group.key} className="build-group" aria-label={`${group.label} 도구`}>
           <span className="build-group-label">{group.label}</span>
           <div className="build-group-seals">
             {group.options.map((option) =>
@@ -41,7 +42,7 @@ export function BuildSeals({
           </div>
         </section>
       ))}
-      <div className="road-tool" role="group" aria-label="Road tool">
+      <div className="road-tool" role="group" aria-label={KO_UI.roadTool}>
         {renderSeal({
           option: ROAD_TOOL_OPTION,
           idPrefix,

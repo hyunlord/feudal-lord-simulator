@@ -49,7 +49,7 @@ test("the real app renders every placement tool as an accessible control", () =>
   assert.doesNotMatch(markup, /aria-label="채석장"/);
   assert.doesNotMatch(markup, /aria-label="석공소"/);
   const placementMarkup = markup.slice(
-    markup.indexOf('aria-label="Placement seals"'),
+    markup.indexOf('aria-label="건설 도장"'),
     markup.indexOf("ledger-recess"),
   );
   assert.doesNotMatch(placementMarkup, /aria-pressed="true"/);

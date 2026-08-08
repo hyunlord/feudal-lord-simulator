@@ -24,9 +24,8 @@ export function drawOnboardingGuidanceOverlay(
 
   context.save();
   for (const target of input.targets) {
-    for (const origin of target.region ?? [target.origin]) {
-      drawTargetDiamond(context, origin, input.zoom);
-    }
+    if (target.region === undefined) drawTargetDiamond(context, target.origin, input.zoom);
+    else drawTargetRegion(context, target.region);
     drawTargetPlaque(context, target, input);
   }
   context.restore();
@@ -40,16 +39,34 @@ function drawTargetDiamond(
   const center = tileToScreen(origin.tx, origin.ty);
   context.fillStyle = withAlpha(SEMANTIC_PALETTE.parchment, 0.72);
   context.beginPath();
-  context.moveTo(snapToPixel(center.sx), snapToPixel(center.sy - TILE_H / 2));
-  context.lineTo(snapToPixel(center.sx + TILE_W / 2), snapToPixel(center.sy));
-  context.lineTo(snapToPixel(center.sx), snapToPixel(center.sy + TILE_H / 2));
-  context.lineTo(snapToPixel(center.sx - TILE_W / 2), snapToPixel(center.sy));
-  context.closePath();
+  appendTargetDiamond(context, center);
   context.fill();
   applyPaletteStroke(context, PALETTE.gold, zoom);
   context.stroke();
   applyInkOutline(context, zoom);
   context.stroke();
+}
+
+function drawTargetRegion(
+  context: CanvasRenderingContext2D,
+  origins: readonly OnboardingGuidanceTarget["origin"][],
+): void {
+  if (origins.length === 0) return;
+  context.fillStyle = withAlpha(PALETTE.gold, 0.12);
+  context.beginPath();
+  for (const origin of origins) appendTargetDiamond(context, tileToScreen(origin.tx, origin.ty));
+  context.fill();
+}
+
+function appendTargetDiamond(
+  context: CanvasRenderingContext2D,
+  center: { readonly sx: number; readonly sy: number },
+): void {
+  context.moveTo(snapToPixel(center.sx), snapToPixel(center.sy - TILE_H / 2));
+  context.lineTo(snapToPixel(center.sx + TILE_W / 2), snapToPixel(center.sy));
+  context.lineTo(snapToPixel(center.sx), snapToPixel(center.sy + TILE_H / 2));
+  context.lineTo(snapToPixel(center.sx - TILE_W / 2), snapToPixel(center.sy));
+  context.closePath();
 }
 
 function drawTargetPlaque(

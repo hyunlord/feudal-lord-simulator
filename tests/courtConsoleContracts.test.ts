@@ -69,15 +69,15 @@ test("the actual app renders one continuous accessible court console", () => {
 
   // Then
   assert.equal(markup.match(/class="court-console"/g)?.length, 1);
-  assert.match(markup, /aria-label="Court console"/);
+  assert.match(markup, /aria-label="영주 명령대"/);
   assert.equal(markup.match(/class="court-recess /g)?.length, 3);
   assert.match(markup, /class="map-shield"/);
   assert.match(markup, /class="build-seals"/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
   assert.match(markup, /class="court-ledger"/);
-  assert.match(markup, /aria-label="Pause"/);
-  assert.match(markup, /aria-label="Fivefold speed"/);
+  assert.match(markup, /aria-label="일시 정지"/);
+  assert.match(markup, /aria-label="5배속"/);
 });
 
 test("reusable console controls create unique referenced DOM and SVG ids", () => {
