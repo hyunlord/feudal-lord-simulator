@@ -26,10 +26,17 @@ export function observeEraCeremonyTransition(input: {
   if (input.presentation.observedEra === input.era) return input.presentation;
   return {
     observedEra: input.era,
-    ceremony: input.presentation.observedEra === "hamlet" && input.era === "palisade"
+    ceremony: startsEraCeremony(input.presentation.observedEra, input.era)
       ? { startedAtMs: input.nowMs, dismissed: false }
       : null,
   };
+}
+
+function startsEraCeremony(previous: Era, next: Era): boolean {
+  return (
+    (previous === "hamlet" && next === "palisade") ||
+    (previous === "palisade" && next === "stone_town")
+  );
 }
 
 export function dismissEraCeremony(presentation: EraCeremonyPresentation): EraCeremonyPresentation {

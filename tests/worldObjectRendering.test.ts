@@ -241,3 +241,94 @@ test("renderer-only ford landmark draws visible water stones and label", () => {
   assert.ok(context.calls.includes(`fillStyle:${PALETTE.ink}`));
   assert.ok(context.calls.some((call) => call.startsWith("fillText:나루터,")));
 });
+
+test("Stone Town fallback sprite keys cover all new render kinds when manifest images are absent", () => {
+  // Given
+  const newKindState = state();
+  const buildings: GameState["buildings"] = [
+    {
+      id: "house-l4",
+      kind: "house",
+      tx: 0,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+    {
+      id: "quarry",
+      kind: "quarry",
+      tx: 1,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+    {
+      id: "masonry",
+      kind: "masonry",
+      tx: 2,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+    {
+      id: "market",
+      kind: "market",
+      tx: 3,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+    {
+      id: "church",
+      kind: "church",
+      tx: 4,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+    {
+      id: "keep",
+      kind: "keep",
+      tx: 5,
+      ty: 0,
+      workers: 0,
+      inventory: {},
+      reserved: {},
+      stockReserved: {},
+      productionProgress: 0,
+    },
+  ];
+  const context = loggedContext();
+
+  // When
+  drawBuildings(context, {
+    state: {
+      ...newKindState,
+      era: "stone_town",
+      buildings,
+      houses: [{ buildingId: "house-l4", level: 4, residents: 32, hasWater: true, breadStock: 1, lastServicedTick: 0, unmetRequirementTicks: 0 }],
+    },
+    tiles: [tile(0, 0, "grass", "house-l4")],
+    range: { minTx: 0, minTy: 0, maxTx: 6, maxTy: 1 },
+    zoom: 0.7,
+  });
+
+  // Then
+  assert.equal(context.calls.includes("drawImage"), false);
+  assert.equal(context.calls.filter((call) => call === "fill").length >= buildings.length, true);
+});

@@ -31,11 +31,7 @@ export function drawPalisadeSegment(
   context: CanvasRenderingContext2D,
   input: DrawPalisadeSegmentInput,
 ): void {
-  drawPalisadeRun(context, {
-    path: input.segment.edgePath,
-    style: "completed",
-    zoom: input.zoom,
-  });
+  drawCompletedPosts(context, input.segment.edgePath, input.zoom, input.segment.material ?? "timber");
   if (input.gate !== null) drawGateMarker(context, input.gate, input.zoom);
 }
 
@@ -63,7 +59,7 @@ export function drawPalisadeRun(
       drawBuilderMarker(context, input.path, input.zoom);
       return;
     case "completed":
-      drawCompletedPosts(context, input.path, input.zoom);
+      drawCompletedPosts(context, input.path, input.zoom, "timber");
       return;
     default:
       return assertNever(input.style);
@@ -151,9 +147,10 @@ function drawCompletedPosts(
   context: CanvasRenderingContext2D,
   path: PalisadeRenderPath,
   zoom: number,
+  material: "timber" | "stone",
 ): void {
   for (const ratio of [0.125, 0.375, 0.625, 0.875]) {
-    drawPost(context, pathPointAt(path, ratio), { width: 8, height: 30 }, zoom);
+    drawPost(context, pathPointAt(path, ratio), { width: 8, height: 30 }, zoom, material);
   }
 }
 
@@ -175,8 +172,9 @@ function drawPost(
   point: { readonly x: number; readonly y: number },
   size: { readonly width: number; readonly height: number },
   zoom: number,
+  material: "timber" | "stone" = "timber",
 ): void {
-  context.fillStyle = SEMANTIC_PALETTE.earth;
+  context.fillStyle = material === "stone" ? SEMANTIC_PALETTE.stone : SEMANTIC_PALETTE.earth;
   context.fillRect(
     snapToPixel(point.x - size.width / 2),
     snapToPixel(point.y - size.height + 2),

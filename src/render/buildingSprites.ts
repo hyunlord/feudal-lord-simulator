@@ -5,7 +5,7 @@ import type { WorldSpriteOptions } from "./worldSprite";
 
 export function buildingSpriteKey(building: Building, houseLevel: number): string {
   if (building.kind === "house") {
-    return `house_l${Math.max(0, Math.min(3, houseLevel))}`;
+    return `house_l${Math.max(0, Math.min(4, houseLevel))}`;
   }
   if (building.kind === "granary") {
     return "barn";

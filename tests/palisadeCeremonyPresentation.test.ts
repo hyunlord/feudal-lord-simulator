@@ -19,7 +19,7 @@ function presentation(patch: Partial<EraCeremonyPresentation> = {}): EraCeremony
   };
 }
 
-test("era ceremony starts only on an observed hamlet to palisade transition", () => {
+test("era ceremony starts on hamlet to palisade and palisade to Stone Town transitions", () => {
   // Given
   const firstSeenPalisade = presentation({ observedEra: "palisade" });
   const hamletSeen = presentation();
@@ -35,11 +35,18 @@ test("era ceremony starts only on an observed hamlet to palisade transition", ()
     era: "palisade",
     nowMs: 1_000,
   });
+  const stoneTransitioned = observeEraCeremonyTransition({
+    presentation: presentation({ observedEra: "palisade" }),
+    era: "stone_town",
+    nowMs: 2_000,
+  });
 
   // Then
   assert.deepEqual(loaded, firstSeenPalisade);
   assert.equal(transitioned.observedEra, "palisade");
   assert.deepEqual(transitioned.ceremony, { startedAtMs: 1_000, dismissed: false });
+  assert.equal(stoneTransitioned.observedEra, "stone_town");
+  assert.deepEqual(stoneTransitioned.ceremony, { startedAtMs: 2_000, dismissed: false });
 });
 
 test("era ceremony is dismissible and automatically ends after two seconds", () => {

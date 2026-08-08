@@ -74,6 +74,12 @@ export function isProductionProblem(state: BuildingVisualState): boolean {
 export function houseBodyProfile(input: number | { readonly era: HouseMaterialEra; readonly level: number }): BodyProfile {
   const profileInput = typeof input === "number" ? { era: "hamlet" as const, level: input } : input;
   const level = profileInput.level;
+  if (profileInput.era === "stone") {
+    if (level >= 4) return stoneTownHouseProfile;
+    if (level >= 3) return stoneTowerHouseProfile;
+    if (level === 2) return stoneCivicHouseProfile;
+    if (level === 1) return stoneFarmHouseProfile;
+  }
   if (profileInput.era === "palisade") {
     if (level >= 3) return palisadeTowerHouseProfile;
     if (level === 2) return palisadeCivicHouseProfile;
@@ -177,6 +183,11 @@ const palisadeTowerHouseProfile = {
   roofColor: SEMANTIC_PALETTE.stoneDark,
   roofShape: "tower",
 } as const satisfies BodyProfile;
+
+const stoneFarmHouseProfile = { width: 38, height: 36, roof: 16, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "gable" } as const satisfies BodyProfile;
+const stoneCivicHouseProfile = { width: 50, height: 48, roof: 18, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "gable" } as const satisfies BodyProfile;
+const stoneTowerHouseProfile = { width: 58, height: 58, roof: 22, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "tower" } as const satisfies BodyProfile;
+const stoneTownHouseProfile = { width: 64, height: 72, roof: 24, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "tower" } as const satisfies BodyProfile;
 
 function houseProblem(
   building: Building,
