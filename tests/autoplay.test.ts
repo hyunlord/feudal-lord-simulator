@@ -7,7 +7,8 @@ import type { ResourceType } from "../src/content/resourceConfig";
 import { createConstructionSite } from "../src/economy/construction";
 import { decideNextAction, type AutoplayAction } from "../src/engine/autoplay";
 import type { GameState } from "../src/engine/engine.types";
-import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
+import { resolveBuildingToConstructionSiteRoute } from "../src/engine/routing";
 import type { House } from "../src/population/population.types";
 import {
   autoplayActionLabel,
@@ -162,20 +163,20 @@ test("Given low bread and no food chain When autoplay decides repeatedly Then it
   assert.deepEqual(decideNextAction(state({ ...accessedBase, buildings: [home, well] })), {
     kind: "place_building",
     building: "wheat_farm",
-    tx: 1,
-    ty: 1,
+    tx: 6,
+    ty: 5,
   });
   assert.deepEqual(decideNextAction(state({ ...accessedBase, buildings: [home, well, wheat] })), {
     kind: "place_building",
     building: "mill",
-    tx: 1,
-    ty: 1,
+    tx: 4,
+    ty: 6,
   });
   assert.deepEqual(decideNextAction(state({ ...accessedBase, buildings: [home, well, wheat, mill] })), {
     kind: "place_building",
     building: "granary",
-    tx: 5,
-    ty: 1,
+    tx: 6,
+    ty: 5,
   });
 });
 
@@ -185,7 +186,7 @@ test("Given low timber When food is stable Then autoplay builds logging camp bef
   const logging = building({ id: "logging-a", kind: "logging_camp", tx: 1, ty: 1 });
   const hydratedFed = house(home.id, { hasWater: true, breadStock: 20, lastServicedTick: 0 });
 
-  const roads = ["1,2", "1,5", "2,5", "3,5", "5,6"];
+  const roads = ["1,2", "1,3", "1,4", "1,5", "2,5", "3,5", "4,5", "5,6"];
 
   assert.deepEqual(state({ buildings: [home, well], houses: [hydratedFed], timber: 35, roads }).tiles[0]?.terrain, "forest");
   assert.deepEqual(decideNextAction(state({ buildings: [home, well], houses: [hydratedFed], timber: 35, roads })), {
@@ -198,7 +199,7 @@ test("Given low timber When food is stable Then autoplay builds logging camp bef
     kind: "place_building",
     building: "sawmill",
     tx: 2,
-    ty: 1,
+    ty: 2,
   });
 });
 
@@ -216,15 +217,20 @@ test("Given spare labour and housing capacity When autoplay decides Then it adds
 });
 
 test("Given era requirements When one building is missing or all are met Then autoplay builds the missing building or proclaims", () => {
+  const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
   const granary = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1 });
   const chapel = building({ id: "chapel-a", kind: "chapel", tx: 3, ty: 1 });
   const ready = { population: 60, timber: 250 };
 
-  assert.deepEqual(decideNextAction(state({ ...ready, buildings: [granary], roads: ["1,3", "2,3", "3,3"] })), {
+  assert.deepEqual(decideNextAction(state({
+    ...ready,
+    buildings: [home, granary],
+    roads: ["1,3", "2,3", "3,3", "4,3", "5,3", "5,4"],
+  })), {
     kind: "place_building",
     building: "chapel",
     tx: 3,
-    ty: 1,
+    ty: 2,
   });
   assert.deepEqual(decideNextAction(state({ ...ready, buildings: [granary, chapel], roads: ["1,3", "2,3", "3,2", "3,3"] })), { kind: "proclaim_era" });
 });
@@ -378,4 +384,38 @@ test("Given the economy harness When autoplay runs Then it uses the same advisor
   assert.match(source, /decideNextAction/);
   assert.equal(report.appliedActions.length > 0, true);
   assert.deepEqual(report.appliedActions[0]?.advisorAction, decideNextAction(base));
+});
+
+test("Given the default opening When autoplay runs for ten minutes Then its food chain completes and the settlement survives", () => {
+  const report = trackAutoplayRun({ initialState: DEFAULT_GAME_STATE, ticks: 12_000 });
+  const foodKinds = new Set(report.finalState.buildings.map(({ kind }) => kind));
+  const pendingFood = report.finalState.constructionSites.filter((site) =>
+    "tx" in site && (site.kind === "wheat_farm" || site.kind === "mill"),
+  );
+
+  assert.equal(foodKinds.has("wheat_farm"), true);
+  assert.equal(foodKinds.has("mill"), true);
+  assert.deepEqual(pendingFood, []);
+  assert.equal(report.finalState.population > 0, true);
+});
+
+test("Given an earlier isolated road island When autoplay places a food site Then construction still has a real source route", () => {
+  const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const current = state({
+    buildings: [home, well],
+    houses: [house(home.id, { hasWater: true, breadStock: 0 })],
+    roads: ["1,3", "5,6", "6,6"],
+    timber: 500,
+  });
+  const advisorAction = decideNextAction(current);
+  const gameAction = autoplayActionToGameAction(advisorAction, current);
+
+  assert.notEqual(gameAction, null);
+  const next = gameReducer(current, gameAction!);
+  const site = next.constructionSites.find((candidate) =>
+    "tx" in candidate && candidate.kind === "wheat_farm",
+  );
+  assert.notEqual(site, undefined);
+  assert.notEqual(resolveBuildingToConstructionSiteRoute(next, home, site!).path, null);
 });

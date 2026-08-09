@@ -10,6 +10,7 @@ import type { TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
 import { canPlaceBuilding, placementSpendableResource } from "../world/placement";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
+import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
 
 import type { AutoplayAction } from "./autoplay.types";
 
@@ -17,9 +18,7 @@ export type { AutoplayAction } from "./autoplay.types";
 
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
 
-function coordinateKey(coordinate: TileCoordinate): string {
-  return `${coordinate.tx},${coordinate.ty}`;
-}
+const coordinateKey = (coordinate: TileCoordinate): string => `${coordinate.tx},${coordinate.ty}`;
 
 function compareCoordinates(left: TileCoordinate, right: TileCoordinate): number {
   return left.ty - right.ty || left.tx - right.tx;
@@ -204,7 +203,10 @@ function roadAccessAction(state: GameState): AutoplayAction {
 }
 
 function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
-  const site = findBuildSite(state, kind);
+  const site = findBuildSite(state, kind, (coordinate) =>
+    !BUILDING_CONFIG_BY_KIND[kind].requiresRoad ||
+    hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate)),
+  );
   return site === null ? NONE : { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
 }
 
