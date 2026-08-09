@@ -1,0 +1,558 @@
+{
+  "version": 1,
+  "phase": "phase13-part2-round1",
+  "judgmentBoundary": "No new browser or DGX visual judgments are asserted here; verdicts summarize already completed release gates and preservation decisions.",
+  "accepted": {
+    "world": [
+      "church",
+      "forest_floor",
+      "house_l1",
+      "logging_camp",
+      "mill",
+      "rock"
+    ],
+    "ui": [
+      "scroll_frame",
+      "wood_console"
+    ]
+  },
+  "rejectedPreserved": {
+    "world": [
+      "house_l0",
+      "house_l2",
+      "house_l3",
+      "barn",
+      "well",
+      "storehouse",
+      "wheat_farm",
+      "sawmill",
+      "quarry",
+      "masonry",
+      "market",
+      "keep",
+      "house_l4",
+      "stone_wall_segment",
+      "tree_oak_large",
+      "tree_oak_small",
+      "tree_pine_tall",
+      "tree_pine_short",
+      "tree_birch",
+      "tree_dead",
+      "stump_fresh",
+      "stump_old",
+      "shrub_a",
+      "shrub_b",
+      "grass_tuft",
+      "field_stone",
+      "grass",
+      "water",
+      "packed_earth_road"
+    ],
+    "ui": [
+      "seal_slot",
+      "parchment_texture",
+      "illumination_corner"
+    ]
+  },
+  "worldVerdicts": [
+    {
+      "key": "house_l0",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/house_l0.png",
+      "finalSha256": "417da9d910a6d87bedd99cff3838ec9505ad1e7c547c751d4e88d548b9f304ce",
+      "source": {
+        "seed": 64040103,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "house_l1",
+      "category": "building",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 round1 world gates; release verifier binds final public hash and source seed/candidate.",
+      "finalPath": "public/assets/buildings/house_l1.png",
+      "finalSha256": "274df62d6ce61a36fa9d8c637572ae1072190cb7de01c7c0cb74967755a0e580",
+      "source": {
+        "seed": 71300002,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "house_l2",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/house_l2.png",
+      "finalSha256": "6122dcfb3321a017012e60187643613a57b50acbd44f1d2dbdf96f934d414331",
+      "source": {
+        "seed": 64050203,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "house_l3",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/house_l3.png",
+      "finalSha256": "da775c3629b615d6c01bdc69580345d577562753d6e6b115891230ac94127af2",
+      "source": {
+        "seed": 64050304,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "mill",
+      "category": "building",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 round1 world gates; release verifier binds final public hash and source seed/candidate.",
+      "finalPath": "public/assets/buildings/mill.png",
+      "finalSha256": "ceef83b4a39974478c67442d8526225ef3f13897ba47da0dc24c94e2dcb84969",
+      "source": {
+        "seed": 71300005,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "barn",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/barn.png",
+      "finalSha256": "ac167ef0d025d649bcd3e815a20983046b50ec5a8ab8a63b69040a5490b5eac0",
+      "source": {
+        "seed": 64040308,
+        "candidate": 8
+      }
+    },
+    {
+      "key": "well",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/well.png",
+      "finalSha256": "f1e950e7e4f8ec79e10563833489ebc0dae2ea6401992e92d43e3aca6ee6d593",
+      "source": {
+        "seed": 64050401,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "storehouse",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/storehouse.png",
+      "finalSha256": "355a669cba6424ff939c02af40ead650d530b796c8541ba47dda9a94791d16be",
+      "source": {
+        "seed": 64050504,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "wheat_farm",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/wheat_farm.png",
+      "finalSha256": "bafb0ce1a93d9467f9f02b8efde14f9b9218ab3d806d2f4d1f2b311ebbb4c59e",
+      "source": {
+        "seed": 64050602,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "logging_camp",
+      "category": "building",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 round1 world gates; release verifier binds final public hash and source seed/candidate.",
+      "finalPath": "public/assets/buildings/logging_camp.png",
+      "finalSha256": "66609e30bacd852e3d8473862915dff11d51d46bd2086cfd9554e7fafad6c43e",
+      "source": {
+        "seed": 71300010,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "sawmill",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/sawmill.png",
+      "finalSha256": "c5796f4ec19f81e5984cf701f39e1c237fcad41a7ccf102b0e65f81c828e2aac",
+      "source": {
+        "seed": 64050801,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "quarry",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/quarry.png",
+      "finalSha256": "22c777573df6791fa76fe70e5eaf34e95ea65cad291e4cfb859f7e057a13279b",
+      "source": {
+        "seed": 64054102,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "masonry",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/masonry.png",
+      "finalSha256": "e3b76c2f8ee9232beaeb0f297dbb825423372daacd7b319245e9cc6ba082fe95",
+      "source": {
+        "seed": 64054203,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "market",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/market.png",
+      "finalSha256": "49f742f1c794bbc68aeb2bfb41126d5b944f5639ebe4c72b4a7df91262f25066",
+      "source": {
+        "seed": 64054304,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "church",
+      "category": "building",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 round1 world gates; release verifier binds final public hash and source seed/candidate.",
+      "finalPath": "public/assets/buildings/church.png",
+      "finalSha256": "d327800532a7ef826537530b89f4087d2a4d58b4015fbb9e44183f67facc1075",
+      "source": {
+        "seed": 71300015,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "keep",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/keep.png",
+      "finalSha256": "102774e2c7520bafc308c9cffc6a2cf0db1e20f1d03a04ab56fb4d9f3cd4358e",
+      "source": {
+        "seed": 64054503,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "house_l4",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/house_l4.png",
+      "finalSha256": "aaeed6a4418d0799bef7b01e1284d97f5dd24cf226f5c869e2778755cfa8f99e",
+      "source": {
+        "seed": 64054604,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "stone_wall_segment",
+      "category": "building",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/buildings/stone_wall_segment.png",
+      "finalSha256": "cb0b36132bb3182bebbee21d05029aa37c8e31756b7035f259ca79ef062cb920",
+      "source": {
+        "seed": 64054703,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "tree_oak_large",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/tree_oak_large.png",
+      "finalSha256": "7fd63812489ff09a5211c76a97eba9a28ded4ba68d184af2c37b5f41393e0f6d",
+      "source": {
+        "seed": 71000101,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "tree_oak_small",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/tree_oak_small.png",
+      "finalSha256": "f3f6d02742f18c432f3c9ff50b56dd5c9c8e34ab2ae2fdc8e44a1696f38057d8",
+      "source": {
+        "seed": 71000201,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "tree_pine_tall",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/tree_pine_tall.png",
+      "finalSha256": "f57501df31c017b4f9d106cd14828fe9b2e5427c5f1edeecf9886aa5d4854f1a",
+      "source": {
+        "seed": 71000302,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "tree_pine_short",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/tree_pine_short.png",
+      "finalSha256": "06ea335353ca4c479551920f968d7bd25f86bdfe6917a8fc96d2c72ad9cdc3a0",
+      "source": {
+        "seed": 71000406,
+        "candidate": 6
+      }
+    },
+    {
+      "key": "tree_birch",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/tree_birch.png",
+      "finalSha256": "7e4ea3d7f00645688926bd2a55596a94c7ae7e110b58582c9a2a8f5034a010b2",
+      "source": {
+        "seed": 71000504,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "tree_dead",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/tree_dead.png",
+      "finalSha256": "f6339e6c6f7ddd6ba92da1ab5421bd80e4d2d51c06dc12f0b9e7a0dd7cfbdadf",
+      "source": {
+        "seed": 71000605,
+        "candidate": 5
+      }
+    },
+    {
+      "key": "stump_fresh",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/stump_fresh.png",
+      "finalSha256": "54508979c2267fa8514c50f762a2aea121b5d15f98cd1ae571bc8df5da15feec",
+      "source": {
+        "seed": 64052704,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "stump_old",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/stump_old.png",
+      "finalSha256": "7a0e54f4ed35876540272459e4eca275545012efa15c4d7da0b9dc063d46daf0",
+      "source": {
+        "seed": 64052801,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "shrub_a",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/shrub_a.png",
+      "finalSha256": "4a3362ab051ea63689019f8ee1fb401ecf19e255fbdf9b8db6d6d1c62a25c5d0",
+      "source": {
+        "seed": 64052901,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "shrub_b",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/shrub_b.png",
+      "finalSha256": "f7e137156808cddf6a41b22aeca9a8b3ac582d950ebca7cbd4c88a4cc489b165",
+      "source": {
+        "seed": 64053001,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "grass_tuft",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/grass_tuft.png",
+      "finalSha256": "841b738eb64a3919c95c829d8d6c4da53c7b4c79a5094c33b49879242b28c035",
+      "source": {
+        "seed": 64053101,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "field_stone",
+      "category": "foliage",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/foliage/field_stone.png",
+      "finalSha256": "19f8bd1d14b3c83725d6269a5de3ccad7d6a73056987d5d6f007b15a5dfd28aa",
+      "source": {
+        "seed": 64053201,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "grass",
+      "category": "terrain",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/terrain/grass.png",
+      "finalSha256": "0b1bd31a7bb647f9f73fb728f9619f86c05fd481ffc69710ebd70943714b8c14",
+      "source": {
+        "seed": 71010106,
+        "candidate": 6
+      }
+    },
+    {
+      "key": "forest_floor",
+      "category": "terrain",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 round1 world gates; release verifier binds final public hash and source seed/candidate.",
+      "finalPath": "public/assets/terrain/forest_floor.png",
+      "finalSha256": "c8324a6098ea69e51bc933d32427f01657a3acea73a6e7c4623eb4ace711ce3f",
+      "source": {
+        "seed": 71300032,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "water",
+      "category": "terrain",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/terrain/water.png",
+      "finalSha256": "ff47499c738d90db40052b61fbf75424c8370d9d4ae2d0aa5b8fcc42eaf8b2d7",
+      "source": {
+        "seed": 71010302,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "rock",
+      "category": "terrain",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 round1 world gates; release verifier binds final public hash and source seed/candidate.",
+      "finalPath": "public/assets/terrain/rock.png",
+      "finalSha256": "7b7055de1f931e2a00b3cbbf0963268d44c8781c753fb9a530ed4ff991c68bd1",
+      "source": {
+        "seed": 71300034,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "packed_earth_road",
+      "category": "terrain",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved byte-for-byte.",
+      "finalPath": "public/assets/terrain/packed_earth_road.png",
+      "finalSha256": "ee5b6bb22523d7ae39e3b7988f59185b111c82f43b6d0292aa7fcbf42ab04bdb",
+      "source": {
+        "seed": 71010505,
+        "candidate": 5
+      }
+    }
+  ],
+  "uiVerdicts": [
+    {
+      "key": "scroll_frame",
+      "category": "ui",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 UI gates for layout, alpha, and final-art structure; final hash is bound to prepared staging.",
+      "beforePath": "docs/asset-evidence/before/scroll_frame.png",
+      "beforeSha256": "dd74f2509aeca154a044cc0138b5e89c6a12511c297ad38ff15860f9c6304f7d",
+      "preparedPath": "docs/asset-evidence/phase13/prepared-ui/scroll_frame.png",
+      "preparedSha256": "045fbcb52e66a16f7dc32d2db57f58e1888e472f9829466d36103488e0949ddf",
+      "finalPath": "public/assets/ui/scroll_frame.png",
+      "finalSha256": "045fbcb52e66a16f7dc32d2db57f58e1888e472f9829466d36103488e0949ddf",
+      "selectedIndex": 33,
+      "selectedCandidatePath": "/tmp/feudal-phase13/part2-ui-candidates-local/scroll_frame/candidate_33_seed_71310413.png",
+      "selectedCandidateSha256": "4843c81bb266d07c9e72a4b7ff8750f2a058f43b7157b5f7b7635d8460ee9dec",
+      "source": "phase13-candidate"
+    },
+    {
+      "key": "wood_console",
+      "category": "ui",
+      "verdict": "accepted",
+      "criteria": "Accepted by completed Phase13 UI gates for layout, alpha, and final-art structure; final hash is bound to prepared staging.",
+      "beforePath": "docs/asset-evidence/before/wood_console.png",
+      "beforeSha256": "31d46e32adc7b67ef9a42ec411ec6a7cc1bbecaa6dbdc86d413e701a52f0bb10",
+      "preparedPath": "docs/asset-evidence/phase13/prepared-ui/wood_console.png",
+      "preparedSha256": "32fa12ce359d1f20ed7cefa550fcc867de4f18c5f14e0d9df1b49b2a54e75423",
+      "finalPath": "public/assets/ui/wood_console.png",
+      "finalSha256": "32fa12ce359d1f20ed7cefa550fcc867de4f18c5f14e0d9df1b49b2a54e75423",
+      "selectedIndex": 31,
+      "selectedCandidatePath": "/tmp/feudal-phase13/part2-ui-candidates-local/wood_console/candidate_31_seed_71320421.png",
+      "selectedCandidateSha256": "ea9c37926b77a8a351403567edff9925a8d477f6fc145fba25cbb68851e5b693",
+      "source": "phase13-candidate"
+    },
+    {
+      "key": "seal_slot",
+      "category": "ui",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved and matched to before snapshot.",
+      "beforePath": "docs/asset-evidence/before/seal_slot.png",
+      "beforeSha256": "2ba82a986c35afe0c4e6d1aa5ffa7da24909a5f55e09f380679f6307f1688c91",
+      "finalPath": "public/assets/ui/seal_slot.png",
+      "finalSha256": "2ba82a986c35afe0c4e6d1aa5ffa7da24909a5f55e09f380679f6307f1688c91",
+      "selectedIndex": 31,
+      "selectedCandidatePath": "/tmp/feudal-phase13/part2-ui-candidates-local/seal_slot/candidate_31_seed_71331470.png",
+      "selectedCandidateSha256": "bb45299b51dcb8c37ae570823f73d0647cca63a10dab121a0a652d191ab7e0d7",
+      "source": "public/assets/ui"
+    },
+    {
+      "key": "parchment_texture",
+      "category": "ui",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved and matched to before snapshot.",
+      "beforePath": "docs/asset-evidence/before/parchment_texture.png",
+      "beforeSha256": "023446b9cf14507dba7b63aadc229dbdceeebce78feafe3737c30cee181b6adf",
+      "finalPath": "public/assets/ui/parchment_texture.png",
+      "finalSha256": "023446b9cf14507dba7b63aadc229dbdceeebce78feafe3737c30cee181b6adf",
+      "selectedIndex": 31,
+      "selectedCandidatePath": "/tmp/feudal-phase13/part2-ui-candidates-local/parchment_texture/candidate_31_seed_71340441.png",
+      "selectedCandidateSha256": "a67682218ab9aba603ecb4262735238f95a5bf0215edfa3540611e48da7042ce",
+      "source": "public/assets/ui"
+    },
+    {
+      "key": "illumination_corner",
+      "category": "ui",
+      "verdict": "rejected-preserved",
+      "criteria": "Rejected or not accepted in round1; existing public asset preserved and matched to before snapshot.",
+      "beforePath": "docs/asset-evidence/before/illumination_corner.png",
+      "beforeSha256": "a8f5370015b1785ecbc6893e3972c84e0fef4603ff6679c4d6ee9d9dddd04d22",
+      "finalPath": "public/assets/ui/illumination_corner.png",
+      "finalSha256": "a8f5370015b1785ecbc6893e3972c84e0fef4603ff6679c4d6ee9d9dddd04d22",
+      "selectedIndex": 31,
+      "selectedCandidatePath": "/tmp/feudal-phase13/part2-ui-candidates-local/illumination_corner/candidate_31_seed_71350451.png",
+      "selectedCandidateSha256": "8efe9b27e22faac274ca9b555a684f4db8dd36ff2654a0de11dc2b62b0d4e4fd",
+      "source": "public/assets/ui"
+    }
+  ],
+  "evidenceGaps": [
+    "Per-group DGX unload receipts are not present in the available Part2 evidence and are recorded as a gap, not relabeled or fabricated."
+  ]
+}

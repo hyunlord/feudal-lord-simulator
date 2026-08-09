@@ -1,0 +1,391 @@
+{
+  "version": 1,
+  "mode": "phase13-partial-accepted-release",
+  "statuses": [
+    {
+      "key": "house_l0",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/house_l0.png",
+      "sha256": "417da9d910a6d87bedd99cff3838ec9505ad1e7c547c751d4e88d548b9f304ce",
+      "source": {
+        "seed": 64040103,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "house_l1",
+      "category": "building",
+      "status": "accepted-generated",
+      "path": "public/assets/buildings/house_l1.png",
+      "sha256": "274df62d6ce61a36fa9d8c637572ae1072190cb7de01c7c0cb74967755a0e580",
+      "source": {
+        "seed": 71300002,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "house_l2",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/house_l2.png",
+      "sha256": "6122dcfb3321a017012e60187643613a57b50acbd44f1d2dbdf96f934d414331",
+      "source": {
+        "seed": 64050203,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "house_l3",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/house_l3.png",
+      "sha256": "da775c3629b615d6c01bdc69580345d577562753d6e6b115891230ac94127af2",
+      "source": {
+        "seed": 64050304,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "mill",
+      "category": "building",
+      "status": "accepted-generated",
+      "path": "public/assets/buildings/mill.png",
+      "sha256": "ceef83b4a39974478c67442d8526225ef3f13897ba47da0dc24c94e2dcb84969",
+      "source": {
+        "seed": 71300005,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "barn",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/barn.png",
+      "sha256": "ac167ef0d025d649bcd3e815a20983046b50ec5a8ab8a63b69040a5490b5eac0",
+      "source": {
+        "seed": 64040308,
+        "candidate": 8
+      }
+    },
+    {
+      "key": "well",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/well.png",
+      "sha256": "f1e950e7e4f8ec79e10563833489ebc0dae2ea6401992e92d43e3aca6ee6d593",
+      "source": {
+        "seed": 64050401,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "storehouse",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/storehouse.png",
+      "sha256": "355a669cba6424ff939c02af40ead650d530b796c8541ba47dda9a94791d16be",
+      "source": {
+        "seed": 64050504,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "wheat_farm",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/wheat_farm.png",
+      "sha256": "bafb0ce1a93d9467f9f02b8efde14f9b9218ab3d806d2f4d1f2b311ebbb4c59e",
+      "source": {
+        "seed": 64050602,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "logging_camp",
+      "category": "building",
+      "status": "accepted-generated",
+      "path": "public/assets/buildings/logging_camp.png",
+      "sha256": "66609e30bacd852e3d8473862915dff11d51d46bd2086cfd9554e7fafad6c43e",
+      "source": {
+        "seed": 71300010,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "sawmill",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/sawmill.png",
+      "sha256": "c5796f4ec19f81e5984cf701f39e1c237fcad41a7ccf102b0e65f81c828e2aac",
+      "source": {
+        "seed": 64050801,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "quarry",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/quarry.png",
+      "sha256": "22c777573df6791fa76fe70e5eaf34e95ea65cad291e4cfb859f7e057a13279b",
+      "source": {
+        "seed": 64054102,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "masonry",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/masonry.png",
+      "sha256": "e3b76c2f8ee9232beaeb0f297dbb825423372daacd7b319245e9cc6ba082fe95",
+      "source": {
+        "seed": 64054203,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "market",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/market.png",
+      "sha256": "49f742f1c794bbc68aeb2bfb41126d5b944f5639ebe4c72b4a7df91262f25066",
+      "source": {
+        "seed": 64054304,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "church",
+      "category": "building",
+      "status": "accepted-generated",
+      "path": "public/assets/buildings/church.png",
+      "sha256": "d327800532a7ef826537530b89f4087d2a4d58b4015fbb9e44183f67facc1075",
+      "source": {
+        "seed": 71300015,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "keep",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/keep.png",
+      "sha256": "102774e2c7520bafc308c9cffc6a2cf0db1e20f1d03a04ab56fb4d9f3cd4358e",
+      "source": {
+        "seed": 64054503,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "house_l4",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/house_l4.png",
+      "sha256": "aaeed6a4418d0799bef7b01e1284d97f5dd24cf226f5c869e2778755cfa8f99e",
+      "source": {
+        "seed": 64054604,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "stone_wall_segment",
+      "category": "building",
+      "status": "preserved-existing",
+      "path": "public/assets/buildings/stone_wall_segment.png",
+      "sha256": "cb0b36132bb3182bebbee21d05029aa37c8e31756b7035f259ca79ef062cb920",
+      "source": {
+        "seed": 64054703,
+        "candidate": 3
+      }
+    },
+    {
+      "key": "tree_oak_large",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/tree_oak_large.png",
+      "sha256": "7fd63812489ff09a5211c76a97eba9a28ded4ba68d184af2c37b5f41393e0f6d",
+      "source": {
+        "seed": 71000101,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "tree_oak_small",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/tree_oak_small.png",
+      "sha256": "f3f6d02742f18c432f3c9ff50b56dd5c9c8e34ab2ae2fdc8e44a1696f38057d8",
+      "source": {
+        "seed": 71000201,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "tree_pine_tall",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/tree_pine_tall.png",
+      "sha256": "f57501df31c017b4f9d106cd14828fe9b2e5427c5f1edeecf9886aa5d4854f1a",
+      "source": {
+        "seed": 71000302,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "tree_pine_short",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/tree_pine_short.png",
+      "sha256": "06ea335353ca4c479551920f968d7bd25f86bdfe6917a8fc96d2c72ad9cdc3a0",
+      "source": {
+        "seed": 71000406,
+        "candidate": 6
+      }
+    },
+    {
+      "key": "tree_birch",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/tree_birch.png",
+      "sha256": "7e4ea3d7f00645688926bd2a55596a94c7ae7e110b58582c9a2a8f5034a010b2",
+      "source": {
+        "seed": 71000504,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "tree_dead",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/tree_dead.png",
+      "sha256": "f6339e6c6f7ddd6ba92da1ab5421bd80e4d2d51c06dc12f0b9e7a0dd7cfbdadf",
+      "source": {
+        "seed": 71000605,
+        "candidate": 5
+      }
+    },
+    {
+      "key": "stump_fresh",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/stump_fresh.png",
+      "sha256": "54508979c2267fa8514c50f762a2aea121b5d15f98cd1ae571bc8df5da15feec",
+      "source": {
+        "seed": 64052704,
+        "candidate": 4
+      }
+    },
+    {
+      "key": "stump_old",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/stump_old.png",
+      "sha256": "7a0e54f4ed35876540272459e4eca275545012efa15c4d7da0b9dc063d46daf0",
+      "source": {
+        "seed": 64052801,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "shrub_a",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/shrub_a.png",
+      "sha256": "4a3362ab051ea63689019f8ee1fb401ecf19e255fbdf9b8db6d6d1c62a25c5d0",
+      "source": {
+        "seed": 64052901,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "shrub_b",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/shrub_b.png",
+      "sha256": "f7e137156808cddf6a41b22aeca9a8b3ac582d950ebca7cbd4c88a4cc489b165",
+      "source": {
+        "seed": 64053001,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "grass_tuft",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/grass_tuft.png",
+      "sha256": "841b738eb64a3919c95c829d8d6c4da53c7b4c79a5094c33b49879242b28c035",
+      "source": {
+        "seed": 64053101,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "field_stone",
+      "category": "foliage",
+      "status": "preserved-existing",
+      "path": "public/assets/foliage/field_stone.png",
+      "sha256": "19f8bd1d14b3c83725d6269a5de3ccad7d6a73056987d5d6f007b15a5dfd28aa",
+      "source": {
+        "seed": 64053201,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "grass",
+      "category": "terrain",
+      "status": "preserved-existing",
+      "path": "public/assets/terrain/grass.png",
+      "sha256": "0b1bd31a7bb647f9f73fb728f9619f86c05fd481ffc69710ebd70943714b8c14",
+      "source": {
+        "seed": 71010106,
+        "candidate": 6
+      }
+    },
+    {
+      "key": "forest_floor",
+      "category": "terrain",
+      "status": "accepted-generated",
+      "path": "public/assets/terrain/forest_floor.png",
+      "sha256": "c8324a6098ea69e51bc933d32427f01657a3acea73a6e7c4623eb4ace711ce3f",
+      "source": {
+        "seed": 71300032,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "water",
+      "category": "terrain",
+      "status": "preserved-existing",
+      "path": "public/assets/terrain/water.png",
+      "sha256": "ff47499c738d90db40052b61fbf75424c8370d9d4ae2d0aa5b8fcc42eaf8b2d7",
+      "source": {
+        "seed": 71010302,
+        "candidate": 2
+      }
+    },
+    {
+      "key": "rock",
+      "category": "terrain",
+      "status": "accepted-generated",
+      "path": "public/assets/terrain/rock.png",
+      "sha256": "7b7055de1f931e2a00b3cbbf0963268d44c8781c753fb9a530ed4ff991c68bd1",
+      "source": {
+        "seed": 71300034,
+        "candidate": 1
+      }
+    },
+    {
+      "key": "packed_earth_road",
+      "category": "terrain",
+      "status": "preserved-existing",
+      "path": "public/assets/terrain/packed_earth_road.png",
+      "sha256": "ee5b6bb22523d7ae39e3b7988f59185b111c82f43b6d0292aa7fcbf42ab04bdb",
+      "source": {
+        "seed": 71010505,
+        "candidate": 5
+      }
+    }
+  ]
+}

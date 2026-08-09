@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
@@ -191,6 +192,9 @@ const writeUiAsset = (root: string, key: string, rgba: RgbaImage, alpha: "transp
   return `| \`${key}\` | 1 seed \`713001\` | 1 | \`${beforePath}\` | \`${finalPath}\` | ${rgba.dimensions.width}x${rgba.dimensions.height} | ${alpha === "transparent" ? "present, preserved" : "all-opaque, preserved"} | generated fixture |`;
 };
 
+const fileSha256 = (filePath: string): string =>
+  createHash("sha256").update(readFileSync(filePath)).digest("hex");
+
 const makeScrollFrame = (): RgbaImage => {
   const target = image(100, 100);
   fillRect(target, 20, 8, 80, 20, [...hexToRgb(RAMPS.plaster[2]), 255]);
@@ -270,15 +274,20 @@ describe("Phase 13 full-colour generated assets", () => {
 
   it("keeps terrain source RGB instead of quantising pixels to terrain ramps", () => {
     // Given: a seamless full-colour source with a non-palette RGB away from join bands.
-    const sourceImage = image(256, 256);
-    fillRect(sourceImage, 0, 0, 256, 256, [40, 90, 70, 255]);
-    setPixel(sourceImage, 200, 200, [...customRgb, 255]);
+    const sourceImage = image(512, 512);
+    for (let y = 0; y < 512; y += 1) {
+      for (let x = 0; x < 512; x += 1) {
+        setPixel(sourceImage, x, y, [40 + (x % 73), 90 + (y % 59), 70 + ((x + y) % 67), 255]);
+      }
+    }
+    setPixel(sourceImage, 328, 328, [...customRgb, 255]);
 
     // When: terrain is periodicised for release.
     const result = processTerrainRgba(sourceImage, "grass");
 
     // Then: offset-preserved interior pixels keep their generated colour and remain opaque.
     assert.deepEqual(pixel(result.texture, 72, 72), [...customRgb, 255]);
+    assert.deepEqual(result.texture.dimensions, { width: 512, height: 512 });
     assert.equal(result.texture.rgba.every((channel, index) => index % 4 !== 3 || channel === 255), true);
   });
 
@@ -331,6 +340,89 @@ describe("Phase 13 full-colour generated assets", () => {
 
       // When / Then: analysis accepts generated RGB values and still exercises asset-specific final-art checks.
       assert.doesNotThrow(() => analyse(path.join(root, "candidates")));
+    } finally {
+      process.chdir(previousCwd);
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it("rejects Phase 13 UI evidence when before snapshots or prepared finals drift", () => {
+    // Given: a Phase 13 accepted UI manifest with hashes binding before, prepared, selected candidate, and final files.
+    const root = mkdtempSync(path.join(tmpdir(), "phase13-ui-drift-"));
+    const previousCwd = process.cwd();
+    try {
+      const scroll = makeScrollFrame();
+      const rows = uiAssets.map((asset) => {
+        const generated = asset.key === "scroll_frame"
+          ? scroll
+          : asset.key === "wood_console"
+            ? makeWoodConsole()
+            : image(asset.dimensions.width, asset.dimensions.height);
+        return writeUiAsset(root, asset.key, generated, asset.alpha);
+      });
+      writePng(path.join(root, "docs", "asset-evidence", "phase13", "prepared-ui", "scroll_frame.png"), scroll);
+      const assets = uiAssets.map((asset) => {
+        const beforePath = `docs/asset-evidence/before/${asset.key}.png`;
+        const finalPath = `public/assets/ui/${asset.key}.png`;
+        const candidatePath = `candidates/${asset.key}/candidate_1_seed_713001.png`;
+        const common = {
+          key: asset.key,
+          ...asset.dimensions,
+          alpha: asset.alpha,
+          beforePath,
+          finalPath,
+          selectedIndex: 1,
+          candidates: [{
+            index: 1,
+            seed: 713001,
+            path: `${asset.key}/candidate_1_seed_713001.png`,
+            ...asset.dimensions,
+            sha256: fileSha256(path.join(root, candidatePath)),
+          }],
+          beforeSha256: fileSha256(path.join(root, beforePath)),
+          finalSha256: fileSha256(path.join(root, finalPath)),
+        };
+        return asset.key === "scroll_frame"
+          ? {
+            ...common,
+            phase13Status: "accepted-generated",
+            phase13Source: "phase13-candidate",
+            selectedCandidateSha256: fileSha256(path.join(root, candidatePath)),
+            preparedPath: "docs/asset-evidence/phase13/prepared-ui/scroll_frame.png",
+            preparedSha256: fileSha256(path.join(root, "docs", "asset-evidence", "phase13", "prepared-ui", "scroll_frame.png")),
+          }
+          : { ...common, phase13Status: "preserved-existing", phase13Source: "public/assets/ui" };
+      });
+      writeFileSync(path.join(root, "docs", "asset-evidence", "uiAssetManifest.json"), `${JSON.stringify({ assets }, null, 2)}\n`);
+      writeFileSync(
+        path.join(root, "docs", "ASSET_REPORT.md"),
+        `${rows.join("\n")}\n${uiAssets.map((asset) => `- Candidate \`${asset.key}/candidate_1_seed_713001.png\``).join("\n")}\n`,
+      );
+      process.chdir(root);
+
+      // When / Then: accepted generated assets may have true pre-release alpha
+      // snapshots while preserved assets still require before/final identity.
+      assert.doesNotThrow(() => analyse(path.join(root, "candidates")));
+      const acceptedBefore = makeScrollFrame();
+      acceptedBefore.rgba[3] = acceptedBefore.rgba[3] === 0 ? 255 : 0;
+      writePng(path.join(root, "docs", "asset-evidence", "before", "scroll_frame.png"), acceptedBefore);
+      const scrollAsset = assets.find((asset) => asset.key === "scroll_frame");
+      if (scrollAsset === undefined) {
+        throw new Error("scroll_frame fixture asset was missing");
+      }
+      scrollAsset.beforeSha256 = fileSha256(path.join(root, "docs", "asset-evidence", "before", "scroll_frame.png"));
+      writeFileSync(path.join(root, "docs", "asset-evidence", "uiAssetManifest.json"), `${JSON.stringify({ assets }, null, 2)}\n`);
+      assert.doesNotThrow(() => analyse(path.join(root, "candidates")));
+
+      // Mutating before or final/prepared bytes without updating the manifest still fails the verifier.
+      const mutatedBefore = image(100, 100);
+      writePng(path.join(root, "docs", "asset-evidence", "before", "scroll_frame.png"), mutatedBefore);
+      assert.throws(() => analyse(path.join(root, "candidates")), /before sha256/i);
+      writePng(path.join(root, "docs", "asset-evidence", "before", "scroll_frame.png"), scroll);
+      scrollAsset.beforeSha256 = fileSha256(path.join(root, "docs", "asset-evidence", "before", "scroll_frame.png"));
+      writeFileSync(path.join(root, "docs", "asset-evidence", "uiAssetManifest.json"), `${JSON.stringify({ assets }, null, 2)}\n`);
+      writePng(path.join(root, "public", "assets", "ui", "scroll_frame.png"), mutatedBefore);
+      assert.throws(() => analyse(path.join(root, "candidates")), /prepared sha256|final sha256/i);
     } finally {
       process.chdir(previousCwd);
       rmSync(root, { recursive: true, force: true });

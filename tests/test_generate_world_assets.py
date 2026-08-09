@@ -80,6 +80,75 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
             },
         )
 
+    def test_phase13_full_colour_dry_run_enumerates_one_candidate_for_every_world_asset_key(self) -> None:
+        module = load_generator()
+        calls: list[str] = []
+
+        def fail_api(path: str, body=None):
+            calls.append(path)
+            raise AssertionError("dry run must not contact ComfyUI")
+
+        module.api_json = fail_api
+        document = module.dry_run_manifest(frozenset({"phase13:full_colour_world_assets"}))
+        jobs = document["jobs"]
+
+        self.assertEqual(document["summary"]["phase13FullColourAssets"], 35)
+        self.assertEqual(document["summary"]["queuedJobs"], 35)
+        self.assertEqual(document["summary"]["comfyuiRequests"], 0)
+        self.assertEqual(calls, [])
+        self.assertEqual(len({job["key"] for job in jobs}), 35)
+        self.assertTrue(all(job["candidate"] == 1 for job in jobs))
+        self.assertTrue(all(job["palettePolicy"] == "full-colour-generated" for job in jobs))
+        self.assertEqual(
+            [job["key"] for job in jobs if job["category"] == "building"],
+            [
+                "house_l0", "house_l1", "house_l2", "house_l3", "mill", "barn", "well", "storehouse",
+                "wheat_farm", "logging_camp", "sawmill", "quarry", "masonry", "market", "church",
+                "keep", "house_l4", "stone_wall_segment",
+            ],
+        )
+        self.assertIn("building/house_l0_01.png", [job["sourcePath"] for job in jobs])
+        self.assertIn("building/mill_01.png", [job["sourcePath"] for job in jobs])
+        self.assertIn("building/barn_01.png", [job["sourcePath"] for job in jobs])
+        self.assertIn("terrain/grass.png", [job["sourcePath"] for job in jobs])
+
+    def test_phase13_full_colour_prompts_forbid_palette_reduction_and_pixelization(self) -> None:
+        module = load_generator()
+        jobs = module.selected_jobs(frozenset({"phase13:full_colour_world_assets"}))
+        building = next(job for job in jobs if job.key == "house_l0")
+        terrain = next(job for job in jobs if job.key == "grass")
+
+        building_workflow = module.workflow_prompt(building, ("house.png", "mill.png", "granary.png"), "guide.png")
+        terrain_workflow = module.workflow_prompt(terrain, ("house.png", "mill.png", "granary.png"), None)
+        building_positive = str(next(node for node in building_workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+        building_negative = " ".join(str(node["inputs"]["text"]) for node in building_workflow.values() if node["class_type"] == "CLIPTextEncode")
+        terrain_positive = str(next(node for node in terrain_workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+
+        self.assertIn("full-colour hand-painted", building_positive)
+        self.assertIn("rich local material colour variation", building_positive)
+        self.assertIn("do not reduce to a limited palette", building_negative)
+        self.assertIn("pixelated", building_negative)
+        self.assertNotIn("pixel-art", building_positive)
+        self.assertIn("full-colour tileable", terrain_positive)
+
+    def test_phase13_terrain_prompts_include_attachment_specific_material_cues(self) -> None:
+        module = load_generator()
+        expected = {
+            "grass": "bare-earth patches",
+            "forest_floor": "moss, twigs, and dappled shade",
+            "water": "darker-centre depth",
+            "rock": "lichen flecks and small scree",
+            "packed_earth_road": "cart ruts, pebbles, and a worn centre",
+        }
+
+        for key, clause in expected.items():
+            with self.subTest(key=key):
+                job = next(candidate for candidate in module.selected_jobs(frozenset({"phase13:full_colour_world_assets"})) if candidate.key == key)
+                workflow = module.workflow_prompt(job, ("house.png", "mill.png", "granary.png"), None)
+                positive = str(next(node for node in workflow.values() if node["class_type"] == "CLIPTextEncode")["inputs"]["text"])
+                self.assertIn(clause, job.geometry)
+                self.assertIn(clause, positive)
+
     def test_phase10_surface_prompts_lock_tree_and_seam_contracts(self) -> None:
         module = load_generator()
         jobs = module.selected_jobs(frozenset({"phase10:surface_assets"}))

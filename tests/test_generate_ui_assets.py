@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 SCRIPT_PATH = Path(__file__).resolve().parents[1] / "scripts" / "generateUiAssets.py"
@@ -573,6 +575,354 @@ class TargetFilterContractTest(unittest.TestCase):
                 "candidate_2_seed_52010412.png",
                 "candidate_3_seed_52010413.png",
             ])
+
+    def test_phase13_full_colour_workflow_uses_guide_img2img_without_pixelization(self) -> None:
+        """Given Phase 13 generation, the workflow preserves canonical layout from a guide."""
+        module = load_generator()
+        scroll = next(spec for spec in module.ASSETS if spec.key == "scroll_frame")
+
+        workflow = module.phase13_full_colour_workflow_prompt(
+            scroll,
+            713001,
+            "phase13_ui/scroll_frame/probe",
+            "phase13_scroll_frame_guide.png",
+        )
+
+        class_types = [node["class_type"] for node in workflow.values()]
+        positive = str(workflow["3"]["inputs"]["text"]).lower()
+        negative = str(workflow["4"]["inputs"]["text"]).lower()
+        self.assertNotIn("Pixelization", class_types)
+        self.assertIn("LoadImage", class_types)
+        self.assertIn("VAEEncode", class_types)
+        self.assertNotIn("EmptyLatentImage", class_types)
+        self.assertEqual(workflow["5"]["inputs"]["image"], "phase13_scroll_frame_guide.png")
+        self.assertEqual(workflow["6"]["inputs"]["pixels"], ["5", 0])
+        self.assertEqual(workflow["7"]["inputs"]["denoise"], 0.18)
+        self.assertEqual(workflow["9"]["inputs"]["images"], ["8", 0])
+        self.assertIn("full-colour", positive)
+        self.assertIn("finer detail", positive)
+        self.assertIn("lighter palette", positive)
+        self.assertIn("preserve exact geometry", positive)
+        self.assertIn("same open center", positive)
+        self.assertIn("pixelated", negative)
+        self.assertIn("quantized", negative)
+        self.assertIn("pseudo-text", negative)
+        self.assertIn("two-page", negative)
+
+    def test_phase13_generation_uploads_canonical_guide_before_queueing(self) -> None:
+        """Given Phase 13 generation, the current canonical UI asset is copied as the guide."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            tmp = Path(raw_tmp)
+            module.BEFORE_DIR = tmp / "before"
+            module.UI_ASSET_DIR = tmp / "public" / "assets" / "ui"
+            module.COMFY_INPUT_DIR = tmp / "input"
+            module.BEFORE_DIR.mkdir(parents=True)
+            module.UI_ASSET_DIR.mkdir(parents=True)
+            before = Image.new("RGBA", (19, 11), (91, 146, 203, 255))
+            before.save(module.BEFORE_DIR / "scroll_frame.png")
+            Image.new("RGBA", (19, 11), (1, 2, 3, 255)).save(module.UI_ASSET_DIR / "scroll_frame.png")
+
+            guide_name = module.upload_phase13_guide_image(next(spec for spec in module.ASSETS if spec.key == "scroll_frame"))
+
+            self.assertEqual(guide_name, "phase13_scroll_frame_guide.png")
+            self.assertEqual(
+                Image.open(module.COMFY_INPUT_DIR / guide_name).convert("RGBA").getpixel((0, 0)),
+                (91, 146, 203, 255),
+            )
+
+    def test_phase13_full_colour_generation_writes_filtered_manifest_and_rgb_candidates(self) -> None:
+        """Given a Phase 13 target filter, generated RGB candidates and metadata stay portable."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            tmp = Path(raw_tmp)
+            source_image = tmp / "source.png"
+            source = Image.new("RGB", (11, 7), (123, 77, 68))
+            source.putpixel((3, 4), (91, 146, 203))
+            source.save(source_image)
+            queued_prefixes: list[str] = []
+
+            def fake_queue(prompt: dict[str, dict[str, object]]) -> str:
+                prefix = str(prompt["9"]["inputs"]["filename_prefix"])
+                queued_prefixes.append(prefix)
+                return f"phase13-secret-{len(queued_prefixes)}"
+
+            module.STAGE_DIR = tmp / "stage"
+            module.CONTACT_DIR = tmp / "contact"
+            module.BEFORE_DIR = tmp / "before"
+            module.UI_ASSET_DIR = tmp / "public" / "assets" / "ui"
+            module.COMFY_INPUT_DIR = tmp / "input"
+            module.BEFORE_DIR.mkdir(parents=True)
+            Image.new("RGBA", (11, 7), (80, 70, 60, 255)).save(module.BEFORE_DIR / "wood_console.png")
+            module.queue_prompt = fake_queue
+            module.wait_for_outputs = lambda _prompt_id: [source_image]
+            module.make_contact_sheet = lambda _spec, _paths, sheet_name="contact_sheet.png": None
+
+            module.generate_phase13_full_colour(frozenset({"wood_console"}))
+
+            self.assertEqual(
+                queued_prefixes,
+                [
+                    "phase13_ui/wood_console/wood_console_full_colour_seed_71320421",
+                    "phase13_ui/wood_console/wood_console_full_colour_seed_71320422",
+                    "phase13_ui/wood_console/wood_console_full_colour_seed_71320423",
+                ],
+            )
+            candidate = module.STAGE_DIR / "wood_console" / "candidate_31_seed_71320421.png"
+            self.assertEqual(Image.open(candidate).convert("RGB").getpixel((3, 4)), (91, 146, 203))
+            text = (module.STAGE_DIR / "phase13_full_colour_manifest.json").read_text(encoding="utf-8")
+            self.assertNotIn("phase13-secret", text)
+            self.assertNotIn(str(tmp), text)
+            manifest = __import__("json").loads(text)
+            self.assertEqual(manifest["phase"], "phase13-full-colour")
+            self.assertEqual(manifest["palettePolicy"], "full-rgb-no-quantization")
+            self.assertEqual(manifest["assets"][0]["key"], "wood_console")
+            self.assertEqual(manifest["assets"][0]["guide"], "phase13_wood_console_guide.png")
+            self.assertEqual(manifest["assets"][0]["denoise"], 0.18)
+            self.assertEqual(manifest["assets"][0]["releasePath"], "public/assets/ui/wood_console.png")
+            self.assertEqual(manifest["assets"][0]["candidates"][0]["path"], "wood_console/candidate_31_seed_71320421.png")
+
+    def test_phase13_full_colour_cli_flag_queues_generation(self) -> None:
+        """Given the DGX release command, the CLI dispatches the Phase 13 flow."""
+        module = load_generator()
+        observed_targets: list[object] = []
+        module.generate_phase13_full_colour = lambda targets=None: observed_targets.append(targets)
+
+        with patch.object(
+            sys,
+            "argv",
+            ["generateUiAssets.py", "--phase13-full-colour", "--target", "scroll_frame"],
+        ):
+            module.main()
+
+        self.assertEqual(observed_targets, [frozenset({"scroll_frame"})])
+
+    def test_phase13_release_prepared_assets_copies_full_rgb_and_writes_manifest(self) -> None:
+        """Given prepared Phase 13 assets, release copies RGB bytes without quantization."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            tmp = Path(raw_tmp)
+            module.STAGE_DIR = tmp / "stage"
+            module.BEFORE_DIR = tmp / "before"
+            module.PHASE13_PREPARED_DIR = tmp / "docs" / "asset-evidence" / "phase13" / "prepared-ui"
+            module.UI_ASSET_DIR = tmp / "public" / "assets" / "ui"
+            module.UI_ASSET_MANIFEST = tmp / "docs" / "asset-evidence" / "uiAssetManifest.json"
+            module.BEFORE_DIR.mkdir(parents=True)
+            module.PHASE13_PREPARED_DIR.mkdir(parents=True)
+            wood = next(spec for spec in module.ASSETS if spec.key == "wood_console")
+            candidate_dir = module.STAGE_DIR / "wood_console"
+            candidate_dir.mkdir(parents=True)
+            prepared = Image.new("RGBA", (wood.width, wood.height), (123, 77, 68, 255))
+            draw = ImageDraw.Draw(prepared)
+            perturbed_recess = (45, 34, 26, 255)
+            draw.rectangle((80, 32, 600, 128), fill=perturbed_recess)
+            draw.rectangle((700, 32, 1220, 128), fill=perturbed_recess)
+            draw.rectangle((1320, 32, 1840, 128), fill=perturbed_recess)
+            prepared.putpixel((4, 5), (91, 146, 203, 255))
+            prepared.save(module.BEFORE_DIR / "wood_console.png")
+            prepared.save(module.PHASE13_PREPARED_DIR / "wood_console.png")
+            prepared.save(candidate_dir / "candidate_31_seed_71320421.png")
+            Image.new("RGBA", (wood.width, wood.height), (124, 78, 69, 255)).save(candidate_dir / "candidate_32_seed_71320422.png")
+
+            module.release_prepared_phase13_assets(
+                {"wood_console": 31},
+                frozenset({"wood_console"}),
+            )
+
+            released = Image.open(module.UI_ASSET_DIR / "wood_console.png").convert("RGBA")
+            self.assertEqual(released.getpixel((4, 5)), (91, 146, 203, 255))
+            manifest = __import__("json").loads(module.UI_ASSET_MANIFEST.read_text(encoding="utf-8"))
+            self.assertEqual(manifest["assets"][0]["key"], "wood_console")
+            self.assertEqual(manifest["assets"][0]["selectedIndex"], 31)
+            self.assertEqual(manifest["assets"][0]["beforePath"], "docs/asset-evidence/before/wood_console.png")
+            self.assertEqual(manifest["assets"][0]["finalPath"], "public/assets/ui/wood_console.png")
+            self.assertEqual(
+                [candidate["path"] for candidate in manifest["assets"][0]["candidates"]],
+                [
+                    "wood_console/candidate_31_seed_71320421.png",
+                    "wood_console/candidate_32_seed_71320422.png",
+                ],
+            )
+            self.assertEqual(
+                [(candidate["width"], candidate["height"]) for candidate in manifest["assets"][0]["candidates"]],
+                [(wood.width, wood.height), (wood.width, wood.height)],
+            )
+
+    def test_phase13_release_rejects_scroll_without_open_center_layout(self) -> None:
+        """Given a double-page manuscript drift, release fails before publishing it."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            tmp = Path(raw_tmp)
+            module.STAGE_DIR = tmp / "stage"
+            module.BEFORE_DIR = tmp / "before"
+            module.PHASE13_PREPARED_DIR = tmp / "docs" / "asset-evidence" / "phase13" / "prepared-ui"
+            module.UI_ASSET_DIR = tmp / "public" / "assets" / "ui"
+            module.UI_ASSET_MANIFEST = tmp / "docs" / "asset-evidence" / "uiAssetManifest.json"
+            module.BEFORE_DIR.mkdir(parents=True)
+            module.PHASE13_PREPARED_DIR.mkdir(parents=True)
+            candidate_dir = module.STAGE_DIR / "scroll_frame"
+            candidate_dir.mkdir(parents=True)
+            drifted = Image.new("RGBA", (512, 512), (230, 218, 196, 255))
+            for x in (248, 264):
+                for y in range(30, 482):
+                    drifted.putpixel((x, y), (42, 33, 24, 255))
+            drifted.save(module.BEFORE_DIR / "scroll_frame.png")
+            drifted.save(module.PHASE13_PREPARED_DIR / "scroll_frame.png")
+            drifted.save(candidate_dir / "candidate_31_seed_71310411.png")
+
+            with self.assertRaisesRegex(RuntimeError, "layout drift"):
+                module.release_prepared_phase13_assets(
+                    {"scroll_frame": 31},
+                    frozenset({"scroll_frame"}),
+                )
+
+    def test_phase13_release_cli_prepares_and_releases_selected_assets(self) -> None:
+        """Given the DGX release command, preparation and full-colour release run together."""
+        module = load_generator()
+        observed: list[tuple[str, object, object]] = []
+        module.prepare_selected = lambda selection, targets=None: observed.append(("prepare", selection, targets))
+        module.release_prepared_phase13_assets = lambda selection, targets=None: observed.append(("release", selection, targets))
+
+        with patch.object(
+            sys,
+            "argv",
+            [
+                "generateUiAssets.py",
+                "--prepare-selected",
+                "--release-prepared-phase13",
+                "--target",
+                "wood_console",
+            ],
+        ):
+            module.main()
+
+        self.assertEqual(
+            observed,
+            [
+                ("prepare", module.phase13_default_selection(), frozenset({"wood_console"})),
+                ("release", module.phase13_default_selection(), frozenset({"wood_console"})),
+            ],
+        )
+
+    def test_phase13_release_accepted_subset_preserves_rejected_bytes_and_complete_manifest(self) -> None:
+        """Given explicit accepted keys, rejected UI assets remain byte-identical and documented."""
+        module = load_generator()
+
+        with TemporaryDirectory() as raw_tmp:
+            tmp = Path(raw_tmp)
+            module.STAGE_DIR = tmp / "stage"
+            module.BEFORE_DIR = tmp / "before"
+            module.PHASE13_PREPARED_DIR = tmp / "docs" / "asset-evidence" / "phase13" / "prepared-ui"
+            module.UI_ASSET_DIR = tmp / "public" / "assets" / "ui"
+            module.UI_ASSET_MANIFEST = tmp / "docs" / "asset-evidence" / "uiAssetManifest.json"
+            module.BEFORE_DIR.mkdir(parents=True)
+            module.UI_ASSET_DIR.mkdir(parents=True)
+            module.UI_ASSET_MANIFEST.parent.mkdir(parents=True)
+            existing_manifest_assets: list[dict[str, object]] = []
+            rejected_hashes: dict[str, bytes] = {}
+            before_hashes: dict[str, str] = {}
+
+            for spec in module.ASSETS:
+                existing = Image.new("RGBA", (spec.width, spec.height), (spec.width % 251, spec.height % 251, 77, 255))
+                if spec.alpha:
+                    existing.putpixel((0, 0), (0, 0, 0, 0))
+                existing.save(module.BEFORE_DIR / f"{spec.key}.png")
+                existing.save(module.UI_ASSET_DIR / f"{spec.key}.png")
+                before_hashes[spec.key] = module.sha256_file(module.BEFORE_DIR / f"{spec.key}.png")
+                existing_manifest_assets.append({
+                    "key": spec.key,
+                    "width": spec.width,
+                    "height": spec.height,
+                    "alpha": "transparent" if spec.alpha else "opaque",
+                    "beforePath": f"docs/asset-evidence/before/{spec.key}.png",
+                    "finalPath": f"public/assets/ui/{spec.key}.png",
+                    "selectedIndex": 1,
+                    "candidates": [{
+                        "index": 1,
+                        "seed": 1,
+                        "path": f"{spec.key}/candidate_1_seed_1.png",
+                        "width": spec.width,
+                        "height": spec.height,
+                    }],
+                })
+                if spec.key not in {"scroll_frame", "wood_console"}:
+                    rejected_hashes[spec.key] = (module.UI_ASSET_DIR / f"{spec.key}.png").read_bytes()
+
+            module.UI_ASSET_MANIFEST.write_text(json.dumps({"assets": existing_manifest_assets}, indent=2), encoding="utf-8")
+
+            scroll_dir = module.STAGE_DIR / "scroll_frame"
+            scroll_dir.mkdir(parents=True)
+            module.build_scroll_frame_guide().save(scroll_dir / "candidate_33_seed_71310413.png")
+            wood_dir = module.STAGE_DIR / "wood_console"
+            wood_dir.mkdir(parents=True)
+            wood = module.build_wood_console_guide().convert("RGBA")
+            wood.putpixel((4, 5), (91, 146, 203, 255))
+            wood.save(wood_dir / "candidate_31_seed_71320421.png")
+
+            module.release_accepted_phase13_assets(["scroll_frame=33", "wood_console=31"])
+
+            for key, before_hash in before_hashes.items():
+                self.assertEqual(module.sha256_file(module.BEFORE_DIR / f"{key}.png"), before_hash)
+            for key, before_bytes in rejected_hashes.items():
+                self.assertEqual((module.UI_ASSET_DIR / f"{key}.png").read_bytes(), before_bytes)
+
+            manifest = json.loads(module.UI_ASSET_MANIFEST.read_text(encoding="utf-8"))
+            by_key = {asset["key"]: asset for asset in manifest["assets"]}
+            self.assertEqual(sorted(by_key), sorted(spec.key for spec in module.ASSETS))
+            self.assertEqual(by_key["scroll_frame"]["phase13Status"], "accepted-generated")
+            self.assertEqual(by_key["scroll_frame"]["selectedIndex"], 33)
+            self.assertEqual(by_key["scroll_frame"]["phase13Source"], "phase13-candidate")
+            self.assertEqual(by_key["scroll_frame"]["beforeSha256"], before_hashes["scroll_frame"])
+            self.assertEqual(by_key["scroll_frame"]["preparedPath"], "docs/asset-evidence/phase13/prepared-ui/scroll_frame.png")
+            self.assertEqual(by_key["scroll_frame"]["preparedSha256"], by_key["scroll_frame"]["finalSha256"])
+            self.assertEqual(by_key["scroll_frame"]["selectedCandidateSha256"], module.sha256_file(scroll_dir / "candidate_33_seed_71310413.png"))
+            self.assertEqual(by_key["wood_console"]["phase13Status"], "accepted-generated")
+            self.assertEqual(by_key["wood_console"]["selectedIndex"], 31)
+            self.assertEqual(by_key["wood_console"]["preparedSha256"], by_key["wood_console"]["finalSha256"])
+            self.assertEqual(by_key["wood_console"]["selectedCandidateSha256"], module.sha256_file(wood_dir / "candidate_31_seed_71320421.png"))
+            for key in ("illumination_corner", "parchment_texture", "seal_slot"):
+                self.assertEqual(by_key[key]["phase13Status"], "preserved-existing")
+                self.assertEqual(by_key[key]["phase13Source"], "public/assets/ui")
+                self.assertEqual(by_key[key]["selectedIndex"], 1)
+                self.assertEqual(by_key[key]["beforeSha256"], before_hashes[key])
+                self.assertEqual(by_key[key]["finalSha256"], before_hashes[key])
+
+    def test_phase13_accepted_selection_rejects_empty_unknown_and_duplicate_keys(self) -> None:
+        """Given subset release, only explicit unique canonical selections are accepted."""
+        module = load_generator()
+
+        with self.assertRaisesRegex(ValueError, "at least one"):
+            module.parse_accepted_phase13_selection([])
+        with self.assertRaisesRegex(ValueError, "Unknown selection asset"):
+            module.parse_accepted_phase13_selection(["not_real=31"])
+        with self.assertRaisesRegex(ValueError, "Duplicate selection asset"):
+            module.parse_accepted_phase13_selection(["scroll_frame=33", "scroll_frame=34"])
+
+    def test_phase13_release_accepted_cli_uses_explicit_subset_without_defaults(self) -> None:
+        """Given the Round1 command, the CLI passes only explicit accepted selections."""
+        module = load_generator()
+        observed: list[list[str]] = []
+        module.release_accepted_phase13_assets = lambda values: observed.append(values)
+
+        with patch.object(
+            sys,
+            "argv",
+            [
+                "generateUiAssets.py",
+                "--release-accepted-phase13",
+                "--selection",
+                "scroll_frame=33",
+                "--selection",
+                "wood_console=31",
+            ],
+        ):
+            module.main()
+
+        self.assertEqual(observed, [["scroll_frame=33", "wood_console=31"]])
 
 
 if __name__ == "__main__":

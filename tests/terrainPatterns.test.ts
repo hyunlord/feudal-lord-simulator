@@ -228,16 +228,16 @@ describe("terrain patterns", () => {
 
     assert.ok(calls.includes("clip"));
     assert.ok(calls.includes("fillRect:0,0,64,32"));
-    assert.ok(calls.includes("globalAlpha:0.45"));
+    assert.ok(calls.includes("globalAlpha:0.6"));
     assert.ok(calls.indexOf(`fillStyle:${SEMANTIC_PALETTE.sage}`) < calls.indexOf("fillStyle:pattern:grass"));
     assert.ok(calls.indexOf("restore") < calls.indexOf(`fillStyle:${expectedOverlay}`));
   });
 
-  it("Given terrain materials When texture opacity is selected Then every texture composites at 45 percent", () => {
-    assert.equal(terrainTextureOpacity("grass"), 0.45);
-    assert.equal(terrainTextureOpacity("forest"), 0.45);
-    assert.equal(terrainTextureOpacity("rock"), 0.45);
-    assert.equal(terrainTextureOpacity("water"), 0.45);
+  it("Given terrain materials When texture opacity is selected Then every texture composites at 60 percent", () => {
+    assert.equal(terrainTextureOpacity("grass"), 0.6);
+    assert.equal(terrainTextureOpacity("forest"), 0.6);
+    assert.equal(terrainTextureOpacity("rock"), 0.6);
+    assert.equal(terrainTextureOpacity("water"), 0.6);
   });
 
   it("Given terrain tile coordinates When repeat orientation is selected Then every material gets deterministic quarter-turn variants", () => {
@@ -309,7 +309,7 @@ describe("terrain patterns", () => {
     assert.deepEqual(calls.filter((call) => call === "createPattern:packed_earth_road"), [
       "createPattern:packed_earth_road",
     ]);
-    assert.ok(calls.includes("globalAlpha:0.45"));
+    assert.ok(calls.includes("globalAlpha:0.6"));
     assert.ok(calls.includes("fillStyle:pattern:packed_earth_road"));
     assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`));
     assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.stoneDark}`));

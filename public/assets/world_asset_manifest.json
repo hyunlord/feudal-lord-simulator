@@ -1371,60 +1371,7 @@
       "blockLumaStandardDeviationMin": 1,
       "blockLumaStandardDeviationMax": 8
     },
-    "candidates": [
-      {
-        "candidate": 1,
-        "path": "raw/parchment/parchment_01.png",
-        "sha256": "df56925d53c579e6800bdfb62f06c6f3ac89209b5f77d285d4e3c29790a67b93",
-        "width": 256,
-        "height": 256,
-        "opposingEdgesByteCompatible": false,
-        "joinBandMaxDelta": 6,
-        "internalBandMaxDelta": 8,
-        "blockLumaRange": 0.013671875,
-        "blockLumaStandardDeviation": 0.004186139697139221,
-        "passed": false
-      },
-      {
-        "candidate": 2,
-        "path": "raw/parchment/parchment_02.png",
-        "sha256": "ced7e6748e8029c7ac2d57baf53e7fbbd3806dd23dc2fe80e55bcbde67f96a78",
-        "width": 256,
-        "height": 256,
-        "opposingEdgesByteCompatible": false,
-        "joinBandMaxDelta": 6,
-        "internalBandMaxDelta": 8,
-        "blockLumaRange": 0.013671875,
-        "blockLumaStandardDeviation": 0.00418789134225269,
-        "passed": false
-      },
-      {
-        "candidate": 3,
-        "path": "raw/parchment/parchment_03.png",
-        "sha256": "79974f11c2e3e782cbbb30df818eb2f49eb7a3abac2464e618f6638f41dda349",
-        "width": 256,
-        "height": 256,
-        "opposingEdgesByteCompatible": false,
-        "joinBandMaxDelta": 6,
-        "internalBandMaxDelta": 8,
-        "blockLumaRange": 0.013671875,
-        "blockLumaStandardDeviation": 0.004271125584775557,
-        "passed": false
-      },
-      {
-        "candidate": 4,
-        "path": "raw/parchment/parchment_04.png",
-        "sha256": "f58fe1e13b751b4e99f57504df736641b6d1f3d3992fd69d510edd3cbd755967",
-        "width": 256,
-        "height": 256,
-        "opposingEdgesByteCompatible": false,
-        "joinBandMaxDelta": 6,
-        "internalBandMaxDelta": 8,
-        "blockLumaRange": 0.013671875,
-        "blockLumaStandardDeviation": 0.004201878215621746,
-        "passed": false
-      }
-    ]
+    "candidates": []
   },
   "assets": [
     {
@@ -1453,7 +1400,7 @@
       "key": "house_l1",
       "category": "building",
       "path": "public/assets/buildings/house_l1.png",
-      "sha256": "84b892f8c816fca6c6399e052a6342dca5c697875552c8f150fc94d2738e1533",
+      "sha256": "274df62d6ce61a36fa9d8c637572ae1072190cb7de01c7c0cb74967755a0e580",
       "width": 96,
       "height": 120,
       "anchor": {
@@ -1465,7 +1412,7 @@
         "height": 1
       },
       "source": {
-        "seed": 64050101,
+        "seed": 71300002,
         "candidate": 1
       },
       "palettePolicy": "full-colour-generated",
@@ -1519,7 +1466,7 @@
       "key": "mill",
       "category": "building",
       "path": "public/assets/buildings/mill.png",
-      "sha256": "794be4b5670e5d8b305fddbd2812f964eb9cb49f463697c9d93337f5ccac6f5c",
+      "sha256": "ceef83b4a39974478c67442d8526225ef3f13897ba47da0dc24c94e2dcb84969",
       "width": 96,
       "height": 160,
       "anchor": {
@@ -1531,8 +1478,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64040202,
-        "candidate": 2
+        "seed": 71300005,
+        "candidate": 1
       },
       "palettePolicy": "full-colour-generated",
       "alphaPolicy": "transparent-outline-179"
@@ -1629,7 +1576,7 @@
       "key": "logging_camp",
       "category": "building",
       "path": "public/assets/buildings/logging_camp.png",
-      "sha256": "5565b301be4edb78f4718b744681f0005f74908ed009c108ca3e0a57be88e13c",
+      "sha256": "66609e30bacd852e3d8473862915dff11d51d46bd2086cfd9554e7fafad6c43e",
       "width": 96,
       "height": 104,
       "anchor": {
@@ -1641,8 +1588,8 @@
         "height": 1
       },
       "source": {
-        "seed": 64050705,
-        "candidate": 5
+        "seed": 71300010,
+        "candidate": 1
       },
       "palettePolicy": "full-colour-generated",
       "alphaPolicy": "transparent-outline-179"
@@ -1665,6 +1612,160 @@
       "source": {
         "seed": 64050801,
         "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "quarry",
+      "category": "building",
+      "path": "public/assets/buildings/quarry.png",
+      "sha256": "22c777573df6791fa76fe70e5eaf34e95ea65cad291e4cfb859f7e057a13279b",
+      "width": 160,
+      "height": 120,
+      "anchor": {
+        "x": 80,
+        "y": 104
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64054102,
+        "candidate": 2
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "masonry",
+      "category": "building",
+      "path": "public/assets/buildings/masonry.png",
+      "sha256": "e3b76c2f8ee9232beaeb0f297dbb825423372daacd7b319245e9cc6ba082fe95",
+      "width": 112,
+      "height": 120,
+      "anchor": {
+        "x": 56,
+        "y": 104
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64054203,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "market",
+      "category": "building",
+      "path": "public/assets/buildings/market.png",
+      "sha256": "49f742f1c794bbc68aeb2bfb41126d5b944f5639ebe4c72b4a7df91262f25066",
+      "width": 176,
+      "height": 136,
+      "anchor": {
+        "x": 88,
+        "y": 120
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64054304,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "church",
+      "category": "building",
+      "path": "public/assets/buildings/church.png",
+      "sha256": "d327800532a7ef826537530b89f4087d2a4d58b4015fbb9e44183f67facc1075",
+      "width": 176,
+      "height": 208,
+      "anchor": {
+        "x": 88,
+        "y": 192
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 71300015,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "keep",
+      "category": "building",
+      "path": "public/assets/buildings/keep.png",
+      "sha256": "102774e2c7520bafc308c9cffc6a2cf0db1e20f1d03a04ab56fb4d9f3cd4358e",
+      "width": 176,
+      "height": 232,
+      "anchor": {
+        "x": 88,
+        "y": 216
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64054503,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l4",
+      "category": "building",
+      "path": "public/assets/buildings/house_l4.png",
+      "sha256": "aaeed6a4418d0799bef7b01e1284d97f5dd24cf226f5c869e2778755cfa8f99e",
+      "width": 112,
+      "height": 160,
+      "anchor": {
+        "x": 56,
+        "y": 144
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64054604,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "stone_wall_segment",
+      "category": "building",
+      "path": "public/assets/buildings/stone_wall_segment.png",
+      "sha256": "cb0b36132bb3182bebbee21d05029aa37c8e31756b7035f259ca79ef062cb920",
+      "width": 96,
+      "height": 80,
+      "anchor": {
+        "x": 48,
+        "y": 78
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64054703,
+        "candidate": 3
       },
       "palettePolicy": "full-colour-generated",
       "alphaPolicy": "transparent-outline-179"
@@ -2075,9 +2176,9 @@
       "key": "forest_floor",
       "category": "terrain",
       "path": "public/assets/terrain/forest_floor.png",
-      "sha256": "abf4c364f334676abce73f78425f146d44f91992870a43aad1233b8cbb76984b",
-      "width": 256,
-      "height": 256,
+      "sha256": "c8324a6098ea69e51bc933d32427f01657a3acea73a6e7c4623eb4ace711ce3f",
+      "width": 512,
+      "height": 512,
       "anchor": {
         "x": 0,
         "y": 0
@@ -2087,16 +2188,16 @@
         "height": 1
       },
       "source": {
-        "seed": 71010202,
-        "candidate": 2
+        "seed": 71300032,
+        "candidate": 1
       },
       "palettePolicy": "full-colour-generated",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 7.739257812499948,
-        "verticalJoinDelta": 7.797363281249935,
-        "horizontalInternalDelta": 13.182617187500124,
-        "verticalInternalDelta": 11.689941406250094,
+        "horizontalJoinDelta": 4.355305989583333,
+        "verticalJoinDelta": 5.650390625000014,
+        "horizontalInternalDelta": 9.863850911458375,
+        "verticalInternalDelta": 9.857747395833318,
         "threshold": 24,
         "passed": true
       }
@@ -2135,9 +2236,9 @@
       "key": "rock",
       "category": "terrain",
       "path": "public/assets/terrain/rock.png",
-      "sha256": "922407c10477f606ee26f877dd13d0d272a8825f5967a48a86fe23407ec1ffe9",
-      "width": 256,
-      "height": 256,
+      "sha256": "7b7055de1f931e2a00b3cbbf0963268d44c8781c753fb9a530ed4ff991c68bd1",
+      "width": 512,
+      "height": 512,
       "anchor": {
         "x": 0,
         "y": 0
@@ -2147,16 +2248,16 @@
         "height": 1
       },
       "source": {
-        "seed": 71010406,
-        "candidate": 6
+        "seed": 71300034,
+        "candidate": 1
       },
       "palettePolicy": "full-colour-generated",
       "alphaPolicy": "opaque",
       "seamMetrics": {
-        "horizontalJoinDelta": 7.966634114583301,
-        "verticalJoinDelta": 9.260904947916668,
-        "horizontalInternalDelta": 7.96907552083329,
-        "verticalInternalDelta": 11.477050781250073,
+        "horizontalJoinDelta": 5.197916666666666,
+        "verticalJoinDelta": 5.580240885416677,
+        "horizontalInternalDelta": 12.195231119791664,
+        "verticalInternalDelta": 11.767252604166686,
         "threshold": 24,
         "passed": true
       }
@@ -2190,160 +2291,6 @@
         "threshold": 24,
         "passed": true
       }
-    },
-    {
-      "key": "quarry",
-      "category": "building",
-      "path": "public/assets/buildings/quarry.png",
-      "sha256": "22c777573df6791fa76fe70e5eaf34e95ea65cad291e4cfb859f7e057a13279b",
-      "width": 160,
-      "height": 120,
-      "anchor": {
-        "x": 80,
-        "y": 104
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054102,
-        "candidate": 2
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "masonry",
-      "category": "building",
-      "path": "public/assets/buildings/masonry.png",
-      "sha256": "e3b76c2f8ee9232beaeb0f297dbb825423372daacd7b319245e9cc6ba082fe95",
-      "width": 112,
-      "height": 120,
-      "anchor": {
-        "x": 56,
-        "y": 104
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 64054203,
-        "candidate": 3
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "market",
-      "category": "building",
-      "path": "public/assets/buildings/market.png",
-      "sha256": "49f742f1c794bbc68aeb2bfb41126d5b944f5639ebe4c72b4a7df91262f25066",
-      "width": 176,
-      "height": 136,
-      "anchor": {
-        "x": 88,
-        "y": 120
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054304,
-        "candidate": 4
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "church",
-      "category": "building",
-      "path": "public/assets/buildings/church.png",
-      "sha256": "f1fe93c3b28a0523020e901d2689ea425c14ecc2f1098b02232ad734bb14683a",
-      "width": 176,
-      "height": 208,
-      "anchor": {
-        "x": 88,
-        "y": 192
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054401,
-        "candidate": 1
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "keep",
-      "category": "building",
-      "path": "public/assets/buildings/keep.png",
-      "sha256": "102774e2c7520bafc308c9cffc6a2cf0db1e20f1d03a04ab56fb4d9f3cd4358e",
-      "width": 176,
-      "height": 232,
-      "anchor": {
-        "x": 88,
-        "y": 216
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054503,
-        "candidate": 3
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "house_l4",
-      "category": "building",
-      "path": "public/assets/buildings/house_l4.png",
-      "sha256": "aaeed6a4418d0799bef7b01e1284d97f5dd24cf226f5c869e2778755cfa8f99e",
-      "width": 112,
-      "height": 160,
-      "anchor": {
-        "x": 56,
-        "y": 144
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 64054604,
-        "candidate": 4
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "stone_wall_segment",
-      "category": "building",
-      "path": "public/assets/buildings/stone_wall_segment.png",
-      "sha256": "cb0b36132bb3182bebbee21d05029aa37c8e31756b7035f259ca79ef062cb920",
-      "width": 96,
-      "height": 80,
-      "anchor": {
-        "x": 48,
-        "y": 78
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 64054703,
-        "candidate": 3
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
     }
   ]
 }
