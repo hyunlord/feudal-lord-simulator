@@ -35,6 +35,8 @@ type OpeningSpriteMeta = typeof COTTAGE_SPRITE | typeof WELL_SPRITE;
 
 export type DragState = {
   readonly mode: "none" | "pan" | "road" | "palisade";
+  readonly startCanvasPoint: Point | null;
+  readonly startCamera: CameraState | null;
   readonly lastCanvasPoint: Point | null;
   readonly roadStart: { readonly tx: number; readonly ty: number } | null;
   readonly moved: boolean;

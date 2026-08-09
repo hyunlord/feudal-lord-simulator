@@ -17,8 +17,10 @@ import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { createConstructionCompletionTracker } from "./constructionCompletionEffects";
+import { toggleObjectRenderViewMode } from "./objectRenderViewMode";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
+import { advanceCameraMotion, cameraInputKeyDown, cameraInputKeyUp, createCameraInputState, resetCameraInputState, shouldAdvanceCameraMotion, updateCameraEdgePoint } from "./gameCanvasRuntimeInput";
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
@@ -50,13 +52,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       cameraRef: { current: initialCamera(canvas, stateRef.current) },
       hoverRef: { current: null },
       feedbackRef: { current: null },
-      dragRef: { current: { mode: "none", lastCanvasPoint: null, roadStart: null, moved: false } },
+      dragRef: { current: { mode: "none", startCanvasPoint: null, startCamera: null, lastCanvasPoint: null, roadStart: null, moved: false } },
       spacePressed: { current: false },
       suppressClick: { current: false },
       pixelRatioRef: { current: 1 },
       completionTracker: createConstructionCompletionTracker(),
     };
-    let frameId = 0, suppressClickTimeout: number | null = null, userControlledCamera = false;
+    const cameraInput = createCameraInputState();
+    let frameId = 0, lastFrameAtMs = performance.now(), suppressClickTimeout: number | null = null, userControlledCamera = false;
     const viewport = () => {
       const rect = canvas.getBoundingClientRect(); return { width: rect.width, height: rect.height };
     };
@@ -66,25 +69,22 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.cameraRef.current = cameraAfterViewportResize({ camera: refs.cameraRef.current, canvas, state: stateRef.current, userControlled: userControlledCamera });
     };
     const drawFrame = () => {
-      drawCurrentCanvasFrame({
-        canvas,
-        context,
-        refs,
-        state: stateRef.current,
-        selectedTool: selectedToolRef.current,
-        overlayMode: overlayModeRef.current,
-        selection: selectionRef.current,
-        previousRenderState: previousRenderStateRef.current, interpolationAlpha,
-        highlightedHouseIds: highlightedHouseIdsRef.current,
-        palisadeDraft: palisadeDraftRef.current,
-        houseMaterialWave: houseMaterialWaveRef.current,
-        palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current,
-      });
+      const nowMs = performance.now();
+      if (shouldAdvanceCameraMotion(refs.dragRef.current)) {
+        const nextCamera = advanceCameraMotion({ input: cameraInput, camera: refs.cameraRef.current, nowMs, previousMs: lastFrameAtMs, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height) });
+        if (nextCamera !== refs.cameraRef.current) {
+          refs.cameraRef.current = nextCamera;
+          userControlledCamera = true;
+        }
+      }
+      lastFrameAtMs = nowMs;
+      drawCurrentCanvasFrame({ canvas, context, refs, state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
       publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height), grid: stateRef.current });
       frameId = requestAnimationFrame(drawFrame);
     };
     const canvasPoint = (event: MouseEvent | WheelEvent): Point => clientToCanvas(event, canvas.getBoundingClientRect());
     const updateHover = (event: MouseEvent) => {
+      updateCameraEdgePoint(cameraInput, canvasPoint(event));
       refs.hoverRef.current = pointerTile(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
       const buildingId = refs.hoverRef.current === null
         ? null : getTile(stateRef.current, refs.hoverRef.current)?.buildingId ?? null;
@@ -100,15 +100,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         suppressClickTimeout = null;
       }
     };
-    const resetDrag = () => { refs.dragRef.current = { mode: "none", lastCanvasPoint: null, roadStart: null, moved: false }; };
+    const resetDrag = () => { refs.dragRef.current = { mode: "none", startCanvasPoint: null, startCamera: null, lastCanvasPoint: null, roadStart: null, moved: false }; };
     const startDrag = (event: MouseEvent) => {
       updateHover(event);
-      const palisadeDrag = beginPalisadeDraftDrag({
-        button: event.button,
-        hover: refs.hoverRef.current,
-        draft: palisadeDraftRef.current,
-        point: canvasPoint(event),
-      });
+      const palisadeDrag = beginPalisadeDraftDrag({ button: event.button, hover: refs.hoverRef.current, draft: palisadeDraftRef.current, point: canvasPoint(event) });
       if (palisadeDrag !== null) {
         palisadeDraftRef.current = palisadeDrag.draft;
         onPalisadeDraftChange?.(palisadeDrag.draft);
@@ -116,13 +111,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         event.preventDefault();
         return;
       }
-      const result = beginCanvasDrag({
-        button: event.button,
-        point: canvasPoint(event),
-        hover: refs.hoverRef.current,
-        spacePressed: refs.spacePressed.current,
-        selectedTool: selectedToolRef.current,
-      });
+      const result = beginCanvasDrag({ button: event.button, point: canvasPoint(event), hover: refs.hoverRef.current, spacePressed: refs.spacePressed.current, selectedTool: selectedToolRef.current });
       refs.dragRef.current = result.drag;
       if (result.preventDefault) event.preventDefault();
     };
@@ -208,6 +197,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       });
     };
     const keyDown = (event: KeyboardEvent) => {
+      const nowMs = performance.now();
+      const cameraKey = cameraInputKeyDown(cameraInput, event.key, nowMs);
       const result = resolveCanvasKeyDown({
         code: event.code,
         key: event.key,
@@ -219,19 +210,26 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (result.camera !== refs.cameraRef.current) userControlledCamera = true;
       refs.cameraRef.current = result.camera;
       refs.spacePressed.current = result.spacePressed;
+      toggleObjectRenderViewMode(result.toggleOutlinesView);
       if (result.dismissSelection) setSelection(null);
       if (event.code === "Escape" && palisadeDraftRef.current !== null) {
         palisadeDraftRef.current = null;
         onPalisadeDraftCancel?.();
       }
-      if (result.preventDefault) event.preventDefault();
+      if (result.preventDefault || cameraKey) event.preventDefault();
     };
     const keyUp = (event: KeyboardEvent) => {
-      if (event.code !== "Space") return;
-      refs.spacePressed.current = false; event.preventDefault();
+      const cameraKey = cameraInputKeyUp(cameraInput, event.key, performance.now());
+      if (event.code === "Space") {
+        refs.spacePressed.current = false;
+        event.preventDefault();
+        return;
+      }
+      if (cameraKey) event.preventDefault();
     };
-    const leaveCanvas = () => { refs.hoverRef.current = null; setHoveredBuilding(null); };
+    const leaveCanvas = () => { updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {
+      resetCameraInputState(cameraInput);
       refs.spacePressed.current = false;
       refs.hoverRef.current = null;
       setHoveredBuilding(null);

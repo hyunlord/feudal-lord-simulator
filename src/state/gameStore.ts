@@ -103,7 +103,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 export function GameProvider({ children }: GameProviderProps) {
   const [state, setState] = useState(DEFAULT_GAME_STATE);
   const stateRef = useRef(state);
-  const previousRenderStateRef = useRef<Pick<GameState, "walkers">>(state);
+  const previousRenderStateRef = useRef<Pick<GameState, "constructionSites" | "walkers">>(state);
   const loopRef = useRef<FixedTickLoop | null>(null);
   const [speed, setSpeedState] = useState<GameSpeed>(0);
   const speedRef = useRef(speed);

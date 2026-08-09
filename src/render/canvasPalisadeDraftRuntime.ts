@@ -26,7 +26,14 @@ export function beginPalisadeDraftDrag(input: {
       draft: input.draft,
       point: { x: input.hover.tx, y: input.hover.ty },
     }),
-    drag: { mode: "palisade", lastCanvasPoint: input.point, roadStart: null, moved: false },
+    drag: {
+      mode: "palisade",
+      startCanvasPoint: input.point,
+      startCamera: null,
+      lastCanvasPoint: input.point,
+      roadStart: null,
+      moved: false,
+    },
   };
 }
 

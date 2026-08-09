@@ -2,6 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
 import type { CameraState, Point } from "./camera";
 import type { DragState } from "./canvasRuntime";
+import { cameraDragThresholdExceeded } from "./gameCanvasRuntimeInput";
 import { resolveRoadPlacementAttempt, type PlacementAttemptOutcome } from "./interactions";
 import type { PlacementTool } from "./renderer";
 
@@ -12,21 +13,42 @@ export function beginCanvasDrag(input: Readonly<{
   spacePressed: boolean;
   selectedTool: PlacementTool | null;
 }>): { readonly drag: DragState; readonly preventDefault: boolean } {
-  const panning = input.button === 1 || (input.button === 0 && input.spacePressed);
+  const panning = input.button === 1 || (input.button === 0 && (input.spacePressed || input.selectedTool !== "road"));
   if (panning) {
     return {
-      drag: { mode: "pan", lastCanvasPoint: input.point, roadStart: null, moved: false },
+      drag: {
+        mode: "pan",
+        startCanvasPoint: input.point,
+        startCamera: null,
+        lastCanvasPoint: input.point,
+        roadStart: null,
+        moved: false,
+      },
       preventDefault: true,
     };
   }
   if (input.button === 0 && input.selectedTool === "road") {
     return {
-      drag: { mode: "road", lastCanvasPoint: input.point, roadStart: input.hover, moved: false },
+      drag: {
+        mode: "road",
+        startCanvasPoint: input.point,
+        startCamera: null,
+        lastCanvasPoint: input.point,
+        roadStart: input.hover,
+        moved: false,
+      },
       preventDefault: false,
     };
   }
   return {
-    drag: { mode: "none", lastCanvasPoint: null, roadStart: null, moved: false },
+    drag: {
+      mode: "none",
+      startCanvasPoint: null,
+      startCamera: null,
+      lastCanvasPoint: null,
+      roadStart: null,
+      moved: false,
+    },
     preventDefault: false,
   };
 }
@@ -40,19 +62,22 @@ export function advanceCanvasDrag(input: Readonly<{
   if (drag.mode === "none" || drag.lastCanvasPoint === null) {
     return { drag, camera: input.camera, suppressClick: false };
   }
-  const moved = drag.moved
-    || input.point.x !== drag.lastCanvasPoint.x
-    || input.point.y !== drag.lastCanvasPoint.y;
-  const nextDrag = { ...drag, lastCanvasPoint: input.point, moved };
+  const startCanvasPoint = drag.startCanvasPoint ?? drag.lastCanvasPoint;
+  const startCamera = drag.startCamera ?? input.camera;
+  const moved = drag.moved || cameraDragThresholdExceeded(startCanvasPoint, input.point);
+  const nextDrag = { ...drag, startCamera, lastCanvasPoint: input.point, moved };
   if (drag.mode === "road" || drag.mode === "palisade") {
     return { drag: nextDrag, camera: input.camera, suppressClick: moved };
+  }
+  if (!moved) {
+    return { drag: nextDrag, camera: input.camera, suppressClick: false };
   }
   return {
     drag: nextDrag,
     camera: {
-      ...input.camera,
-      panX: input.camera.panX + input.point.x - drag.lastCanvasPoint.x,
-      panY: input.camera.panY + input.point.y - drag.lastCanvasPoint.y,
+      ...startCamera,
+      panX: startCamera.panX + input.point.x - startCanvasPoint.x,
+      panY: startCamera.panY + input.point.y - startCanvasPoint.y,
     },
     suppressClick: moved,
   };
