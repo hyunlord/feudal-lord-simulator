@@ -1,6 +1,7 @@
 import type { Walker } from "../agents/walker.types";
 import type { BuildingKind } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
+import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
 import { drawObjectRenderItems } from "./drawObjectRenderItems";
 import { drawTerrain } from "./drawTerrain";
@@ -60,11 +61,13 @@ export type RenderFrameInput = {
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
   readonly renderWalkers?: readonly Walker[] | undefined;
+  readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly completionTracker?: ConstructionCompletionTracker;
+  readonly hoveredTile?: TileCoordinate | null;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -107,8 +110,10 @@ export const renderFrame = (input: RenderFrameInput): void => {
         dpr: devicePixelRatioFor(input.context, input.viewport),
         viewport: input.viewport,
         objectRenderItems,
+        constructionProgress: input.constructionProgress,
         houseMaterialWave: input.houseMaterialWave ?? null,
         nowMs: input.nowMs ?? 0,
+        hoveredTile: input.hoveredTile ?? null,
       }),
     overhang: () =>
       drawConstructionCompletionEffects(input.context, {

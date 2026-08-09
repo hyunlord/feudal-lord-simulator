@@ -25,6 +25,7 @@ type GameCanvasFrameInput = {
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
   readonly renderWalkers?: readonly Walker[] | undefined;
+  readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
@@ -60,11 +61,13 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     selectedBuildingId: input.selectedBuildingId ?? null,
     selectedWalkerId: input.selectedWalkerId ?? null,
     renderWalkers: input.renderWalkers,
+    constructionProgress: input.constructionProgress,
     highlightedHouseIds: input.highlightedHouseIds ?? [],
     palisadeDraft: input.palisadeDraft ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.completionTracker,
+    hoveredTile: input.hoveredTile,
   });
   input.context.restore();
 }

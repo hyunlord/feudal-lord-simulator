@@ -1,7 +1,9 @@
 import type { GameState } from "../engine/engine.types";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { Building } from "../economy/economy.types";
+import { PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
+import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
 import { tileToScreen } from "./iso";
 import { drawKindDetail } from "./drawBuildingDetails";
@@ -15,6 +17,8 @@ import { drawWalker } from "./drawWalkers";
 import type { TileRange, ViewportSize } from "./renderer";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
+import { applyInkOutline, snapToPixel } from "./style";
+import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -27,6 +31,8 @@ type ObjectRenderInput = {
   readonly objectRenderItems?: readonly WorldObjectRenderItem[];
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
+  readonly hoveredTile?: TileCoordinate | null;
+  readonly viewMode?: ObjectRenderViewMode;
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -81,6 +87,25 @@ function drawBuilding(
   building: Building,
   spriteOptions: WorldSpriteOptions,
 ): void {
+  if ((input.viewMode ?? "normal") === "outlines") {
+    drawBuildingSilhouette(context, building, input.zoom);
+    return;
+  }
+  if (input.hoveredTile !== undefined && input.hoveredTile !== null && buildingOverlapsTile(building, input.hoveredTile)) {
+    drawWithAlpha(context, 0.55, () => {
+      drawBuildingDetail(context, input, building, spriteOptions);
+    });
+    return;
+  }
+  drawBuildingDetail(context, input, building, spriteOptions);
+}
+
+function drawBuildingDetail(
+  context: CanvasRenderingContext2D,
+  input: ObjectRenderInput,
+  building: Building,
+  spriteOptions: WorldSpriteOptions,
+): void {
   const center = buildingCenter(building);
   const visualState = buildBuildingVisualState(building, input.state.houses, {
     era: houseMaterialEraFromEra(input.state.era),
@@ -123,6 +148,49 @@ function drawBuilding(
       visualState,
     });
   }
+}
+
+function drawBuildingSilhouette(
+  context: CanvasRenderingContext2D,
+  building: Building,
+  zoom: number,
+): void {
+  const config = BUILDING_CONFIG_BY_KIND[building.kind];
+  const rear = tileToScreen(building.tx, building.ty);
+  const front = tileToScreen(building.tx + config.width - 1, building.ty + config.height - 1);
+  context.fillStyle = PALETTE.ink;
+  context.beginPath();
+  context.moveTo(snapToPixel(rear.sx), snapToPixel(rear.sy - 22));
+  context.lineTo(snapToPixel(front.sx + 28), snapToPixel(front.sy - 8));
+  context.lineTo(snapToPixel(front.sx), snapToPixel(front.sy + 16));
+  context.lineTo(snapToPixel(rear.sx - 28), snapToPixel(rear.sy + 2));
+  context.closePath();
+  drawWithAlpha(context, 0.4, () => context.fill());
+  applyInkOutline(context, zoom);
+  context.stroke();
+}
+
+function drawWithAlpha(
+  context: CanvasRenderingContext2D,
+  alpha: number,
+  draw: () => void,
+): void {
+  const previousAlpha = context.globalAlpha;
+  context.save();
+  context.globalAlpha = previousAlpha * alpha;
+  draw();
+  context.globalAlpha = previousAlpha;
+  context.restore();
+}
+
+function buildingOverlapsTile(building: Building, tile: TileCoordinate): boolean {
+  const config = BUILDING_CONFIG_BY_KIND[building.kind];
+  return (
+    tile.tx >= building.tx &&
+    tile.ty >= building.ty &&
+    tile.tx < building.tx + config.width &&
+    tile.ty < building.ty + config.height
+  );
 }
 
 function buildingCenter(building: Building): Point {

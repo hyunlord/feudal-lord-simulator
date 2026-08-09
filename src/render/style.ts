@@ -25,6 +25,34 @@ export function snapToPixel(value: number): number {
   return Math.round(value);
 }
 
+export type CanvasTransform = Readonly<{
+  a: number;
+  b: number;
+  c: number;
+  d: number;
+  e: number;
+  f: number;
+}>;
+
+export function snapPointToDevicePixel(
+  point: Readonly<{ x: number; y: number }>,
+  transform: CanvasTransform,
+): { readonly x: number; readonly y: number } {
+  const determinant = transform.a * transform.d - transform.b * transform.c;
+  if (!Number.isFinite(determinant) || Math.abs(determinant) < Number.EPSILON) {
+    return { x: snapToPixel(point.x), y: snapToPixel(point.y) };
+  }
+
+  const deviceX = snapToPixel(transform.a * point.x + transform.c * point.y + transform.e);
+  const deviceY = snapToPixel(transform.b * point.x + transform.d * point.y + transform.f);
+  const translatedX = deviceX - transform.e;
+  const translatedY = deviceY - transform.f;
+  return {
+    x: (transform.d * translatedX - transform.c * translatedY) / determinant,
+    y: (-transform.b * translatedX + transform.a * translatedY) / determinant,
+  };
+}
+
 export function shade(color: PaletteColor, multiplier: number): string {
   const red = shadeChannel(color.slice(1, 3), multiplier);
   const green = shadeChannel(color.slice(3, 5), multiplier);

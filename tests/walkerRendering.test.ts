@@ -19,13 +19,16 @@ interface MockContext {
   fillRect(x: number, y: number, w: number, h: number): void;
   arc(x: number, y: number, radius: number): void;
   ellipse(x: number, y: number, rx: number, ry: number): void;
+  getTransform?(): Pick<DOMMatrix, "a" | "b" | "c" | "d" | "e" | "f">;
   lineTo(x: number, y: number): void;
   moveTo(x: number, y: number): void;
   stroke(): void;
   strokeRect(x: number, y: number, w: number, h: number): void;
 }
 
-function createMockContext(): MockContext {
+function createMockContext(
+  transform?: Pick<DOMMatrix, "a" | "b" | "c" | "d" | "e" | "f">,
+): MockContext {
   const calls: string[] = [];
   return {
     fillStyle: "",
@@ -40,6 +43,7 @@ function createMockContext(): MockContext {
     fillRect: (x, y, w, h) => calls.push(`fillRect:${x},${y},${w},${h}`),
     arc: (x, y, radius) => calls.push(`arc:${x},${y},${radius}`),
     ellipse: (x, y, rx, ry) => calls.push(`ellipse:${x},${y},${rx},${ry}`),
+    ...(transform === undefined ? {} : { getTransform: () => transform }),
     lineTo: (x, y) => calls.push(`lineTo:${x},${y}`),
     moveTo: (x, y) => calls.push(`moveTo:${x},${y}`),
     stroke: () => calls.push("stroke"),
@@ -147,4 +151,20 @@ test("walker outlines stay one screen pixel across camera zoom", () => {
   );
 
   assert.equal(context.lineWidth, 0.5);
+});
+
+test("walker drawing snaps the visual anchor in transformed device pixels", () => {
+  const context = createMockContext({ a: 2, b: 0, c: 0, d: 2, e: 0.3, f: 0.7 });
+
+  drawWalkers(
+    context as unknown as CanvasRenderingContext2D,
+    { ...stateBase, walkers: [carter()] },
+    2,
+  );
+
+  const shadow = context.calls.find((call) => call.startsWith("ellipse:") && call.endsWith(",5,2"));
+  if (shadow === undefined) throw new Error("Expected walker shadow ellipse");
+  const [x, y] = shadow.slice("ellipse:".length).split(",").map(Number);
+  assert.ok(Math.abs((x ?? 0) - 47.85) < 0.000_001);
+  assert.ok(Math.abs((y ?? 0) - 61.65) < 0.000_001, shadow);
 });

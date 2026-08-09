@@ -6,7 +6,9 @@ import { drawConstructionSite } from "./drawConstructionSites";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { RenderQueueItem } from "./objectRenderOrder";
+import { getObjectRenderViewMode } from "./objectRenderViewMode";
 import type { TileRange, ViewportSize } from "./renderer";
+import type { TileCoordinate } from "../world/grid";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -17,21 +19,34 @@ type DrawObjectRenderItemsInput = {
   readonly dpr: number;
   readonly viewport: ViewportSize;
   readonly objectRenderItems: readonly RenderQueueItem[];
+  readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
+  readonly hoveredTile?: TileCoordinate | null;
 };
 
 export function drawObjectRenderItems(
   context: CanvasRenderingContext2D,
   input: DrawObjectRenderItemsInput,
 ): void {
+  const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   for (const item of input.objectRenderItems) {
+    if (item.kind === "walker") {
+      walkerItems.push(item);
+      continue;
+    }
     if (item.kind === "construction_site") {
-      drawConstructionSite(context, {
-        site: item.site,
-        schedule: item.schedule,
-        zoom: input.zoom,
-      });
+      const presentationProgress = input.constructionProgress?.get(item.id)
+        ?? item.presentationProgress;
+      const drawInput = presentationProgress === undefined
+        ? { site: item.site, schedule: item.schedule, zoom: input.zoom }
+        : {
+            site: item.site,
+            schedule: item.schedule,
+            zoom: input.zoom,
+            presentationProgress,
+          };
+      drawConstructionSite(context, drawInput);
       continue;
     }
     if (item.kind === "palisade_segment") {
@@ -53,6 +68,24 @@ export function drawObjectRenderItems(
       objectRenderItems: [item],
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
+      hoveredTile: input.hoveredTile ?? null,
+      viewMode: getObjectRenderViewMode(),
+    });
+  }
+  for (const item of walkerItems) {
+    drawBuildings(context, {
+      state: input.state,
+      tiles: input.tiles,
+      range: input.range,
+      zoom: input.zoom,
+      camera: input.camera,
+      dpr: input.dpr,
+      viewport: input.viewport,
+      objectRenderItems: [item],
+      houseMaterialWave: input.houseMaterialWave ?? null,
+      nowMs: input.nowMs ?? 0,
+      hoveredTile: input.hoveredTile ?? null,
+      viewMode: getObjectRenderViewMode(),
     });
   }
 }

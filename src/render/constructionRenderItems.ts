@@ -23,6 +23,7 @@ export type ConstructionSiteRenderItem = {
   readonly schedule: PalisadeConstructionSchedule;
   readonly depth: number;
   readonly anchorTx: number;
+  readonly presentationProgress?: number;
 };
 
 export function constructionSiteRenderItem(
