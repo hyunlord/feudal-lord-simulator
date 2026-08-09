@@ -4,6 +4,8 @@ import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
 import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha } from "./style";
 import { walkerVisualAnchor } from "./walkerAnchor";
+import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
+import { walkerPresentationFor } from "./walkerPresentation";
 
 const CARGO_COLOR_BY_RESOURCE = {
   wheat: PALETTE.gold,
@@ -60,9 +62,13 @@ export function drawWalker(
 
   drawWalkerHalo(context, footX, footY, scale);
   drawWalkerShadow(context, footX, footY, scale);
-  drawBody(context, footX, footY, scale, zoom);
-  if (walker.kind === "builder") drawBuilderMark(context, footX, footY, scale, zoom);
-  if (walker.kind === "distributor") drawDistributorMark(context, footX, footY, scale, zoom);
+  drawProceduralWalkerSprite(context, {
+    footX,
+    footY,
+    scale,
+    zoom,
+    presentation: walkerPresentationFor(walker),
+  });
   if (walker.kind !== "builder" && walker.cargo !== null) {
     drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
   }
@@ -96,82 +102,6 @@ function drawWalkerShadow(
   context.fill();
 }
 
-function drawBody(
-  context: CanvasRenderingContext2D,
-  footX: number,
-  footY: number,
-  scale: number,
-  zoom: number,
-): void {
-  const head = snappedCanvasPoint(context, footX, footY - 8 * scale);
-  const body = snappedCanvasPoint(context, footX - 2 * scale, footY - 7 * scale);
-  context.fillStyle = PALETTE.ink;
-  context.beginPath();
-  context.arc(head.x, head.y, 2 * scale, 0, Math.PI * 2);
-  context.fill();
-  context.fillRect(
-    body.x,
-    body.y,
-    snapToPixel(4 * scale),
-    snapToPixel(7 * scale),
-  );
-  applyInkOutline(context, zoom);
-  context.strokeRect(
-    body.x,
-    body.y,
-    snapToPixel(4 * scale),
-    snapToPixel(7 * scale),
-  );
-}
-
-function drawDistributorMark(
-  context: CanvasRenderingContext2D,
-  footX: number,
-  footY: number,
-  scale: number,
-  zoom: number,
-): void {
-  const mark = snappedCanvasPoint(context, footX - 4 * scale, footY - 8 * scale);
-  context.fillStyle = PALETTE.vermilion;
-  context.fillRect(
-    mark.x,
-    mark.y,
-    snapToPixel(8 * scale),
-    snapToPixel(3 * scale),
-  );
-  applyInkOutline(context, zoom);
-  context.strokeRect(
-    mark.x,
-    mark.y,
-    snapToPixel(8 * scale),
-    snapToPixel(3 * scale),
-  );
-}
-
-function drawBuilderMark(
-  context: CanvasRenderingContext2D,
-  footX: number,
-  footY: number,
-  scale: number,
-  zoom: number,
-): void {
-  const mark = snappedCanvasPoint(context, footX - 4 * scale, footY - 9 * scale);
-  context.fillStyle = PALETTE.gold;
-  context.fillRect(
-    mark.x,
-    mark.y,
-    snapToPixel(8 * scale),
-    snapToPixel(2 * scale),
-  );
-  applyInkOutline(context, zoom);
-  context.strokeRect(
-    mark.x,
-    mark.y,
-    snapToPixel(8 * scale),
-    snapToPixel(2 * scale),
-  );
-}
-
 function drawCargo(
   context: CanvasRenderingContext2D,
   footX: number,
@@ -181,7 +111,7 @@ function drawCargo(
   zoom: number,
 ): void {
   const size = 5 * scale;
-  const position = snappedCanvasPoint(context, footX - size / 2, footY - 17 * scale);
+  const position = snappedCanvasPoint(context, footX - size / 2, footY - 38 * scale);
   const x = position.x;
   const y = position.y;
   context.fillStyle = color;

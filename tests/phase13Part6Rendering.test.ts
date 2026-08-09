@@ -274,9 +274,13 @@ test("drawObjectRenderItems defers walkers until after buildings so they are nev
 
   // Then
   const firstBuildingFill = context.calls.findIndex((call) => call === "fill");
-  const walkerBody = context.calls.findIndex((call) => call === "fillRect:-2,31,4,7");
+  const proceduralWalker = context.calls.findIndex((call, index, calls) =>
+    call === "fillStyle:#C9A227"
+    && calls[index + 1] === "fillRect:-4,17,8,14"
+    && calls[index + 2] === "strokeStyle:#2A2118",
+  );
   assert.ok(firstBuildingFill >= 0);
-  assert.ok(walkerBody > firstBuildingFill);
+  assert.ok(proceduralWalker > firstBuildingFill);
 });
 
 test("drawObjectRenderItems fades the building that overlaps the cursor tile to fifty five percent", () => {

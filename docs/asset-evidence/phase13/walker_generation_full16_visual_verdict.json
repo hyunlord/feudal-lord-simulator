@@ -1,0 +1,353 @@
+{
+  "schema": "phase13.walker_generation_full16_visual_verdict.v1",
+  "reviewer": "independent vision gate",
+  "generatedWalkerWired": false,
+  "assessment": {
+    "overallVerdict": "FAIL",
+    "integrationDecision": "none",
+    "fallbackDecision": "procedural fallback preserved"
+  },
+  "contactSheet": {
+    "jsonPath": "docs/asset-evidence/phase13/walker_generation_full16_contact_sheet.json",
+    "pngPath": "docs/asset-evidence/phase13/walker_generation_full16_contact_sheet.png",
+    "pngSha256": "9edf747101a21134d9f5167b89629ab18351f3afbe3889d2c7ab587ada4c32a4"
+  },
+  "roles": {
+    "builder": {
+      "verdict": "FAIL",
+      "summaryReasons": [
+        "The four directions mix a 3D portrait-style figure with a multi-pose sheet, so the identity is not stable."
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D portrait-style figure on a plain base, not a clean sprite frame"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/builder/NE/builder_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/builder/NE/builder_NE_01.png",
+              "sha256": "ed549ad2ac8300f13c050bcfdc2f06858baa5d8b2d9bc7b8b19cb465be9b1cfe"
+            },
+            "prepared": {
+              "relativePath": "prepared/builder/NE/builder_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/builder/NE/builder_NE_01.png",
+              "sha256": "569cd58080733e2c19439a3724b3d374c2c48c311ecaeee41e77c53cfe3eaca8"
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "verdict": "FAIL",
+          "reasons": [
+            "Multi-pose sheet with several builder figures in one candidate"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/builder/SE/builder_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/builder/SE/builder_SE_01.png",
+              "sha256": "6bd1f5a3e3aeccddf243120120b16fdda23407d2a3352fc641de4fcca64729bc"
+            },
+            "prepared": {
+              "relativePath": "prepared/builder/SE/builder_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/builder/SE/builder_SE_01.png",
+              "sha256": "7ac48fd2d43a4debe1b62b22b886f9648fa550f6ddc177aec8e90495645e42b3"
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D figure uses a different costume and prop set, so identity does not stay consistent"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/builder/SW/builder_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/builder/SW/builder_SW_01.png",
+              "sha256": "af49601172f8fb62cb9d9ed8ce4df269e4e44abc4821fde3051b81e98b50b1ef"
+            },
+            "prepared": {
+              "relativePath": "prepared/builder/SW/builder_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/builder/SW/builder_SW_01.png",
+              "sha256": "b0ed81b0e10c888cfbbe0ff6ee838f83021f1cc01a9ae45288970443bca6960b"
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Portrait-style figure with a different helmet and tool balance; direction and identity drift"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/builder/NW/builder_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/builder/NW/builder_NW_01.png",
+              "sha256": "7f31125b290e8bba98754d2485e758681f88e158501593f1d49d91e92e5d2ee6"
+            },
+            "prepared": {
+              "relativePath": "prepared/builder/NW/builder_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/builder/NW/builder_NW_01.png",
+              "sha256": "cb16b168223deaa1f311e9a618b5caa94bcad10465696db6497423ad0db96c17"
+            }
+          }
+        }
+      ]
+    },
+    "farmer": {
+      "verdict": "FAIL",
+      "summaryReasons": [
+        "The set mixes a multi-subject sheet, a scene-heavy crop, and a sketch-like sheet, so the walker identity does not converge."
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "verdict": "FAIL",
+          "reasons": [
+            "Multi-subject sheet with several farmer poses packed into one image"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/farmer/NE/farmer_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/farmer/NE/farmer_NE_01.png",
+              "sha256": "d334abe27703f8c44045ffca8aab1856ae49c9bbb2d60859f6fd085a3db1b3e8"
+            },
+            "prepared": {
+              "relativePath": "prepared/farmer/NE/farmer_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/farmer/NE/farmer_NE_01.png",
+              "sha256": "afa0068f42c9597ebbae2db6f7b3643cf338023596d9941c941288d9b1aa2cdc"
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D portrait-style render on a plain base, reading as a pose rather than a walker frame"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/farmer/SE/farmer_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/farmer/SE/farmer_SE_01.png",
+              "sha256": "40d4f0b1eda12566416c4082deef85ed3e8ac5ae4a1ff6729f35f04dfd8cfe47"
+            },
+            "prepared": {
+              "relativePath": "prepared/farmer/SE/farmer_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/farmer/SE/farmer_SE_01.png",
+              "sha256": "841dcde6d8e45b14b3ae48c2c6d199a914d3e2bfe7565b1e6356e7c5fb45bb4f"
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Scene/background-heavy candidate with field context, not an isolated sprite"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/farmer/SW/farmer_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/farmer/SW/farmer_SW_01.png",
+              "sha256": "45315ec893b08663b9f3541a7047cfb53eb1c95cb9e0d8e4479207d3b7a67681"
+            },
+            "prepared": {
+              "relativePath": "prepared/farmer/SW/farmer_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/farmer/SW/farmer_SW_01.png",
+              "sha256": "2bb11a6e2c3e90ed4392578f98bbcb12c1f9d51d48304ba4fa9a57c6baeb3551"
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Sketch-like multi-pose sheet with a different rendering style from the other directions"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/farmer/NW/farmer_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/farmer/NW/farmer_NW_01.png",
+              "sha256": "c757f4bea8e5fa3fb2f19ff496570781cd1ab089552e88cf71d45af384a62af6"
+            },
+            "prepared": {
+              "relativePath": "prepared/farmer/NW/farmer_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/farmer/NW/farmer_NW_01.png",
+              "sha256": "01d95a3895c5edb56c9541323e698f800393e27ac456f714571200c83d8dac56"
+            }
+          }
+        }
+      ]
+    },
+    "logger": {
+      "verdict": "FAIL",
+      "summaryReasons": [
+        "The logger set stays in portrait/model-sheet territory and breaks direction consistency with multi-subject and mismatched prop choices."
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D portrait-style figure with axe and pack on a neutral base"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/logger/NE/logger_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/logger/NE/logger_NE_01.png",
+              "sha256": "886207f43d98ef7aad6b328e66bde45d4f6f7808196ac7f6abaa29c99b8efab0"
+            },
+            "prepared": {
+              "relativePath": "prepared/logger/NE/logger_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/logger/NE/logger_NE_01.png",
+              "sha256": "3e008cfbbd605310dc21cc59eaf147252b75d899096aab570acae065de8623fd"
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D portrait-style figure with a different pose and gear; direction consistency is weak"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/logger/SE/logger_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/logger/SE/logger_SE_01.png",
+              "sha256": "27ae3ab10be603db9088b34205be2e21913c80ce6b78bc40aae25d2114be65cb"
+            },
+            "prepared": {
+              "relativePath": "prepared/logger/SE/logger_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/logger/SE/logger_SE_01.png",
+              "sha256": "c29cf40df278b81ce4392ed9329b08c1a18064acf6446ef75004cf52df8dcf84"
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Multi-subject model-sheet output with small surrounding figures"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/logger/SW/logger_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/logger/SW/logger_SW_01.png",
+              "sha256": "51e1f117e3b075445cea1e17013b2023b514bf6c306fa67b39eaddda92596b7d"
+            },
+            "prepared": {
+              "relativePath": "prepared/logger/SW/logger_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/logger/SW/logger_SW_01.png",
+              "sha256": "fc01b57b263a5fac67671c4ed8127d65a3c3eb237fe1ec0bb55f5e8ecb2c1664"
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Portrait-style figure with a different costume and prop balance; not a consistent four-direction set"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/logger/NW/logger_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/logger/NW/logger_NW_01.png",
+              "sha256": "0e713b41d3ac923018f17a9bbb64c6fc79ac80309a0e82af0b608b09b06eedc6"
+            },
+            "prepared": {
+              "relativePath": "prepared/logger/NW/logger_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/logger/NW/logger_NW_01.png",
+              "sha256": "147016318c0fdf97461889382991d2c0520b3402576a5336f395192f925f2e10"
+            }
+          }
+        }
+      ]
+    },
+    "carter": {
+      "verdict": "FAIL",
+      "summaryReasons": [
+        "The carter set contains scene-heavy and multi-subject outputs, and the identity shifts between directions."
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D figure on a grassy base, reading as a posed scene rather than a clean sprite"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/carter/NE/carter_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/carter/NE/carter_NE_01.png",
+              "sha256": "dac2101306b54bcbe3cb04e3a462d38bb44582aab2e6be02e1167ba83cf1b3a1"
+            },
+            "prepared": {
+              "relativePath": "prepared/carter/NE/carter_NE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/carter/NE/carter_NE_01.png",
+              "sha256": "b13945ed8d57b2472163a71dc5b7d08f035dcab7c12c9c1b169d1ac320bfbc4d"
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "verdict": "FAIL",
+          "reasons": [
+            "3D portrait-style figure with cart emphasis; no consistent walker framing"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/carter/SE/carter_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/carter/SE/carter_SE_01.png",
+              "sha256": "c69fbbc2cce3cadc760808ab763b22adb5dd85306d0b52030bc811797777de69"
+            },
+            "prepared": {
+              "relativePath": "prepared/carter/SE/carter_SE_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/carter/SE/carter_SE_01.png",
+              "sha256": "eccc0ad9fc3b9104f545f8e3ba3ede4880f404951df937718f654cd28e35bb7a"
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Scene/base-heavy render with cart and ground detail dominating"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/carter/SW/carter_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/carter/SW/carter_SW_01.png",
+              "sha256": "e4bea3fa6e25b2901ee6911520fd624261c49dc9890b1312114365f93574a837"
+            },
+            "prepared": {
+              "relativePath": "prepared/carter/SW/carter_SW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/carter/SW/carter_SW_01.png",
+              "sha256": "975386963d8b910ec0f606226f92d41f47f8de3969635389ef6f999042883e41"
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "verdict": "FAIL",
+          "reasons": [
+            "Multi-subject scene with two figures; inconsistent identity and direction"
+          ],
+          "evidence": {
+            "raw": {
+              "relativePath": "raw/carter/NW/carter_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/raw/carter/NW/carter_NW_01.png",
+              "sha256": "9d665df1f0bf3a350b7f9af3e85dc9a2979716b1120aedb705041481aa412b91"
+            },
+            "prepared": {
+              "relativePath": "prepared/carter/NW/carter_NW_01.png",
+              "absolutePath": "/tmp/feudal-phase13/part3-walker-attempt-full16/prepared/carter/NW/carter_NW_01.png",
+              "sha256": "20113ea2aef8cfb79fbad63e36e4e6af1eb3c9497949ba0fe3f496a08c9d3281"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

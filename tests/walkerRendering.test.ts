@@ -126,7 +126,7 @@ test("cargo colour mapping stays tied to canonical palette tokens", () => {
   assert.equal(cargoColor("timber"), SEMANTIC_PALETTE.earthDark);
 });
 
-test("drawWalkers renders cargo squares at fractional tile screen positions", () => {
+test("drawWalkers renders procedural figures with cargo above the head", () => {
   const context = createMockContext();
 
   drawWalkers(context as unknown as CanvasRenderingContext2D, {
@@ -135,10 +135,13 @@ test("drawWalkers renders cargo squares at fractional tile screen positions", ()
   });
 
   assert.ok(context.calls.includes("ellipse:48,62,5,2"));
-  assert.ok(context.calls.includes("fillRect:46,55,4,7"));
-  assert.ok(context.calls.includes("fillRect:46,45,5,5"));
-  assert.ok(context.calls.includes("fillRect:-2,21,5,5"));
-  assert.ok(context.calls.includes("fillRect:-4,30,8,3"));
+  assert.ok(context.calls.includes("fillRect:44,41,8,14"));
+  assert.ok(context.calls.includes("arc:50,35,4"));
+  assert.ok(context.calls.includes("fillRect:46,24,5,5"));
+  assert.ok(context.calls.includes("fillRect:-2,0,5,5"));
+  assert.ok(context.calls.includes("ellipse:0,24,5,3"));
+  assert.ok(context.calls.includes("fillRect:41,44,14,3"));
+  assert.ok(context.calls.includes("fillRect:43,49,10,2"));
 });
 
 test("walker outlines stay one screen pixel across camera zoom", () => {

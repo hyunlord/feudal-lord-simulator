@@ -1,0 +1,53 @@
+{
+  "artifact": "walker_generation_failed_contact_sheet.png",
+  "purpose": "Durable evidence contact sheet for rejected Part3 failed-DGX carter walker direction candidates.",
+  "render_method": "Temporary HTML rendered by owned headless Google Chrome; source PNG pixels were not edited with Python or ImageMagick.",
+  "viewport": {
+    "width": 1600,
+    "height": 1400
+  },
+  "sources": [
+    {
+      "direction": "NE",
+      "path": "/tmp/feudal-phase13/part3-walker-attempt/carter/NE/carter_NE_01.png",
+      "source_dimensions": "1024x1024",
+      "rejection_reasons": [
+        "Identity and prop set do not match other directions",
+        "Rendered as a large 3D figure with handcart and pack rather than a fixed directional sprite"
+      ]
+    },
+    {
+      "direction": "NW",
+      "path": "/tmp/feudal-phase13/part3-walker-attempt/carter/NW/carter_NW_01.png",
+      "source_dimensions": "1024x1024",
+      "rejection_reasons": [
+        "Different costume, hat, body shape, and carried crate from NE/SW candidates",
+        "Direction and silhouette are not compatible with a consistent four-direction walker"
+      ]
+    },
+    {
+      "direction": "SE",
+      "path": "/tmp/feudal-phase13/part3-walker-attempt/carter/SE/carter_SE_01.png",
+      "source_dimensions": "1024x1024",
+      "rejection_reasons": [
+        "Multi-subject/model-sheet output with several poses in one image",
+        "Unusable as a single fixed directional sprite frame"
+      ]
+    },
+    {
+      "direction": "SW",
+      "path": "/tmp/feudal-phase13/part3-walker-attempt/carter/SW/carter_SW_01.png",
+      "source_dimensions": "1024x1024",
+      "rejection_reasons": [
+        "Multiple subjects and standalone props appear in one candidate image",
+        "Identity and carried object differ from the other directions",
+        "Unusable for a fixed directional sprite"
+      ]
+    }
+  ],
+  "overall_rejection_reasons": [
+    "Inconsistent identity and direction across the four candidates",
+    "Multi-subject or 3D/model-sheet outputs instead of isolated sprite frames",
+    "Not suitable for a fixed directional carter walker sprite set"
+  ]
+}
