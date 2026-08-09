@@ -5,14 +5,9 @@ import { PALETTE, RAMPS } from "../src/content/palette";
 import {
   BUILDING_SPRITE_CONTRACTS,
   FOLIAGE_SPRITE_CONTRACTS,
-  assertBuildingRoofPolicy,
   assertGroundCoverSilhouette,
   assertHouseHeightProgression,
   assertSpriteContract,
-  assertWheatFieldDominance,
-  enforceBuildingMaterialPolicy,
-  enforceFoliageMaterialPolicy,
-  enforceWorldMaterialPolicy,
   processWorldSprite,
   worldSpriteContract,
   type WorldSpriteKey,
@@ -64,7 +59,7 @@ const contractImage = (key: WorldSpriteKey, visibleWidth: number): RgbaImage => 
     Math.min(contract.height, contract.baselineY + 1),
     [...rgb(RAMPS.earth[2]), 255],
   );
-  return enforceWorldMaterialPolicy(target, key);
+  return target;
 };
 
 describe("worldSpritePipeline", () => {
@@ -143,31 +138,14 @@ describe("worldSpritePipeline", () => {
     assert.throws(() => assertSpriteContract(valid, "house_l1"), /interior hole/);
   });
 
-  it("makes the worked field dominate wheat-farm visible mass", () => {
+  it("accepts full-colour generated interiors without weakening form contracts", () => {
     const farm = contractImage("wheat_farm", 115);
-    const remapped = enforceBuildingMaterialPolicy(farm, "wheat_farm");
-    assert.doesNotThrow(() => assertWheatFieldDominance(remapped));
-    fill(remapped, 23, 68, 138, 81, [...rgb(RAMPS.timber[2]), 255]);
-    assert.throws(() => assertWheatFieldDominance(remapped), /earth ramp must dominate/);
-  });
+    fill(farm, 23, 68, 138, 81, [17, 101, 203, 255]);
+    assert.doesNotThrow(() => assertSpriteContract(farm, "wheat_farm"));
 
-  it("enforces the declared roof ramp for each building kind", () => {
-    const dwelling = contractImage("house_l1", 64);
-    fill(dwelling, 16, 92, 80, 98, [...rgb(RAMPS.stone[2]), 255]);
-    const remapped = enforceBuildingMaterialPolicy(dwelling, "house_l1");
-    assert.doesNotThrow(() => assertBuildingRoofPolicy(remapped, "house_l1"));
-    fill(remapped, 16, 92, 80, 98, [...rgb(RAMPS.slate[2]), 255]);
-    assert.throws(() => assertBuildingRoofPolicy(remapped, "house_l1"), /thatch roof policy/);
-  });
-
-  it("restricts foliage interiors to foliage or timber and reserves ink for its outline", () => {
     const tree = contractImage("tree_oak_large", 40);
-    fill(tree, 12, 72, 52, 89, [...rgb(RAMPS.plaster[2]), 255]);
-    const remapped = enforceFoliageMaterialPolicy(tree);
-    setPixel(remapped, 11, 74, [...rgb(PALETTE.ink), OUTLINE_ALPHA]);
-    assert.doesNotThrow(() => assertSpriteContract(remapped, "tree_oak_large"));
-    setPixel(remapped, 20, 78, [...rgb(PALETTE.ink), 255]);
-    assert.throws(() => assertSpriteContract(remapped, "tree_oak_large"), /foliage or timber interior/);
+    fill(tree, 12, 72, 52, 89, [211, 73, 149, 255]);
+    assert.doesNotThrow(() => assertSpriteContract(tree, "tree_oak_large"));
   });
 
   it("requires both shrub alpha silhouettes to be wider than tall", () => {
@@ -176,21 +154,6 @@ describe("worldSpritePipeline", () => {
     const tall = image(40, 28);
     fill(tall, 17, 2, 23, 28, [...rgb(RAMPS.foliage[2]), 255]);
     assert.throws(() => assertGroundCoverSilhouette(tall, "shrub_a"), /wider than tall/);
-  });
-
-  it("removes timber-coloured trunks from shrubs and grass tufts", () => {
-    const shrub = contractImage("shrub_b", 24);
-    fill(shrub, 12, 15, 20, 22, [...rgb(RAMPS.timber[2]), 255]);
-    const processed = enforceWorldMaterialPolicy(shrub, "shrub_b");
-    assert.doesNotThrow(() => assertSpriteContract(processed, "shrub_b"));
-    setPixel(processed, 15, 18, [...rgb(RAMPS.timber[2]), 255]);
-    assert.throws(() => assertSpriteContract(processed, "shrub_b"), /foliage-only/);
-  });
-
-  it("keeps field stones in stone or earth ramps", () => {
-    const stone = contractImage("field_stone", 18);
-    const processed = enforceWorldMaterialPolicy(stone, "field_stone");
-    assert.doesNotThrow(() => assertSpriteContract(processed, "field_stone"));
   });
 
   it("reports the final opaque bounds used by the contract", () => {

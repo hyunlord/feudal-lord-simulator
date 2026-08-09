@@ -4,8 +4,13 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import * as paletteModule from "../src/content/palette";
-import { rgbToLab, type Lab, type Rgb } from "./quantisePalette";
+import { PALETTE } from "../src/content/palette";
+
+export type Rgb = {
+  readonly r: number;
+  readonly g: number;
+  readonly b: number;
+};
 
 export type Dimensions = {
   readonly width: number;
@@ -47,16 +52,6 @@ type Placement = Dimensions & {
   readonly top: number;
 };
 
-type PaletteSource = {
-  readonly PALETTE: Readonly<Record<string, string>>;
-  readonly RAMPS?: Readonly<Record<string, readonly string[]>>;
-};
-
-type CanonicalColor = Rgb & {
-  readonly lab: Lab;
-  readonly key: string;
-};
-
 // allow: SIZE_OK - offline sprite pipeline keeps PNG, RGBA, ffmpeg, and CLI contracts together.
 const FFMPEG_PATH = process.env.FFMPEG_PATH ?? "ffmpeg";
 const DEFAULT_DESPILL_STRENGTH = 0.75;
@@ -77,8 +72,6 @@ const VISIBLE_WIDTH_BANDS: Readonly<Record<BuildingSubject, readonly [number, nu
   granary: [115, 141],
 };
 export const OUTLINE_ALPHA = 179;
-
-const paletteSource: PaletteSource = paletteModule;
 
 const crcTable = (): readonly number[] => {
   const table: number[] = [];
@@ -122,17 +115,6 @@ export const hexToRgb = (hex: string): Rgb => {
 };
 
 export const rgbKey = (rgb: Rgb): string => `${rgb.r},${rgb.g},${rgb.b}`;
-
-export const canonicalColors = (): readonly CanonicalColor[] => {
-  const rampColours = Object.values(paletteSource.RAMPS ?? {}).flat();
-  const paletteColours = Object.values(paletteSource.PALETTE);
-  const unique = new Map<string, CanonicalColor>();
-  for (const hex of [...rampColours, ...paletteColours]) {
-    const rgb = hexToRgb(hex);
-    unique.set(rgbKey(rgb), { ...rgb, lab: rgbToLab(rgb), key: rgbKey(rgb) });
-  }
-  return [...unique.values()];
-};
 
 const assertWholeImage = (image: RgbaImage): void => {
   const expected = image.dimensions.width * image.dimensions.height * 4;
@@ -298,54 +280,19 @@ const paste = (source: RgbaImage, target: RgbaImage, placement: Placement): void
   }
 };
 
-const nearestCanonical = (rgb: Rgb, colours = canonicalColors()): Rgb => {
-  let best = colours[0];
-  if (best === undefined) {
-    throw new Error("canonical palette is empty");
-  }
-  const lab = rgbToLab(rgb);
-  for (const colour of colours.slice(1)) {
-    const bestDistance = Math.hypot(lab.l - best.lab.l, lab.a - best.lab.a, lab.b - best.lab.b);
-    const candidateDistance = Math.hypot(lab.l - colour.lab.l, lab.a - colour.lab.a, lab.b - colour.lab.b);
-    if (candidateDistance < bestDistance) {
-      best = colour;
-    }
-  }
-  return best;
-};
-
-export const quantiseVisiblePixels = (image: RgbaImage): RgbaImage => {
+export const normalizeVisibleAlpha = (image: RgbaImage): RgbaImage => {
   const output = new Uint8Array(image.rgba);
-  const colours = canonicalColors();
   for (let index = 0; index < output.length; index += 4) {
     const alpha = output[index + 3];
-    if (alpha !== undefined && alpha > 0) {
-      if (alpha < 128) {
-        output[index] = 0;
-        output[index + 1] = 0;
-        output[index + 2] = 0;
-        output[index + 3] = 0;
-        continue;
-      }
-      const r = output[index];
-      const g = output[index + 1];
-      const b = output[index + 2];
-      if (r === undefined || g === undefined || b === undefined) {
-        throw new Error(`Incomplete RGB pixel at byte ${index}`);
-      }
-      const nearest = nearestCanonical({ r, g, b }, colours);
-      output[index] = nearest.r;
-      output[index + 1] = nearest.g;
-      output[index + 2] = nearest.b;
-      output[index + 3] = 255;
-    }
+    if (alpha === undefined || alpha === 0) continue;
+    output[index + 3] = alpha < 128 ? 0 : 255;
   }
   return { dimensions: image.dimensions, rgba: output };
 };
 
 export const addSilhouetteOutline = (image: RgbaImage): RgbaImage => {
   const output = new Uint8Array(image.rgba);
-  const ink = hexToRgb(paletteSource.PALETTE.ink ?? "#3A2E1F");
+  const ink = hexToRgb(PALETTE.ink);
   const bounds = findOpaqueBounds(image);
   if (bounds === null) return { dimensions: image.dimensions, rgba: output };
   const lowerThird = bounds.top + Math.floor((bounds.bottom - bounds.top) * 2 / 3);
@@ -398,66 +345,6 @@ export const addSilhouetteOutline = (image: RgbaImage): RgbaImage => {
   return { dimensions: image.dimensions, rgba: output };
 };
 
-export type RampProfile = Readonly<Record<string, { readonly count: number; readonly proportion: number }>>;
-
-export const rampProfile = (image: RgbaImage): RampProfile => {
-  const rampByColour = new Map<string, string>();
-  for (const [ramp, colours] of Object.entries(paletteSource.RAMPS ?? {})) {
-    for (const hex of colours) rampByColour.set(rgbKey(hexToRgb(hex)), ramp);
-  }
-  const counts = new Map<string, number>();
-  let visible = 0;
-  for (let index = 0; index < image.rgba.length; index += 4) {
-    const alpha = image.rgba[index + 3];
-    if (alpha === undefined || alpha === 0) continue;
-    visible += 1;
-    const key = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-    const ramp = rampByColour.get(key);
-    if (ramp !== undefined) counts.set(ramp, (counts.get(ramp) ?? 0) + 1);
-  }
-  return Object.fromEntries([...counts.entries()].map(([ramp, count]) => [ramp, { count, proportion: count / visible }]));
-};
-
-export const enforceFamilyMaterials = (image: RgbaImage, _subject: BuildingSubject): RgbaImage => {
-  const bounds = findOpaqueBounds(image);
-  if (bounds === null || paletteSource.RAMPS === undefined) return image;
-  const output = new Uint8Array(image.rgba);
-  const sourceLookup = new Map<string, { ramp: string; index: number }>();
-  for (const [ramp, colours] of Object.entries(paletteSource.RAMPS)) {
-    colours.forEach((hex, index) => sourceLookup.set(rgbKey(hexToRgb(hex)), { ramp, index }));
-  }
-  const roofCutoff = bounds.top + Math.floor((bounds.bottom - bounds.top) * 0.55);
-  const footingStart = bounds.top + Math.floor((bounds.bottom - bounds.top) * 0.88);
-  const quietTimber = hexToRgb(paletteSource.RAMPS.timber?.[2] ?? "#765638");
-  const accentKeys = new Set([paletteSource.PALETTE.vermilion, paletteSource.PALETTE.ultramarine]
-    .filter((hex): hex is string => hex !== undefined)
-    .map((hex) => rgbKey(hexToRgb(hex))));
-  for (let y = bounds.top; y < bounds.bottom; y += 1) {
-    for (let x = bounds.left; x < bounds.right; x += 1) {
-      const index = byteIndex(image.dimensions, x, y);
-      if (output[index + 3] !== 255) continue;
-      const colourKey = `${output[index]},${output[index + 1]},${output[index + 2]}`;
-      if (accentKeys.has(colourKey)) {
-        output[index] = quietTimber.r;
-        output[index + 1] = quietTimber.g;
-        output[index + 2] = quietTimber.b;
-        continue;
-      }
-      const source = sourceLookup.get(colourKey);
-      if (source === undefined || (source.ramp !== "stone" && source.ramp !== "slate")) continue;
-      const targetName = y <= roofCutoff ? "thatch" : y < footingStart ? "plaster" : undefined;
-      if (targetName === undefined) continue;
-      const targetHex = paletteSource.RAMPS[targetName]?.[source.index];
-      if (targetHex === undefined) continue;
-      const target = hexToRgb(targetHex);
-      output[index] = target.r;
-      output[index + 1] = target.g;
-      output[index + 2] = target.b;
-    }
-  }
-  return { dimensions: image.dimensions, rgba: output };
-};
-
 export const assertVisibleWidthBand = (image: RgbaImage, subject: BuildingSubject): number => {
   const bounds = findOpaqueBounds(image);
   if (bounds === null) throw new Error(`${subject} has no visible mass`);
@@ -499,8 +386,8 @@ export const processSpriteRgba = (source: RgbaImage, options: ProcessOptions): R
     paste(resizeNearest(crop(cleaned, bounds), placement), canvas, placement);
   }
   clearRowsBelowBaseline(canvas, options.baselineY);
-  const quantised = quantiseVisiblePixels(canvas);
-  const outlined = options.outline ? addSilhouetteOutline(quantised) : quantised;
+  const normalized = normalizeVisibleAlpha(canvas);
+  const outlined = options.outline ? addSilhouetteOutline(normalized) : normalized;
   clearRowsBelowBaseline(outlined, options.baselineY);
   return outlined;
 };
@@ -523,8 +410,8 @@ export const processSpriteImage = (
     paste(resize(crop(cleaned, bounds), placement), canvas, placement);
   }
   clearRowsBelowBaseline(canvas, options.baselineY);
-  const quantised = quantiseVisiblePixels(canvas);
-  const outlined = options.outline ? addSilhouetteOutline(quantised) : quantised;
+  const normalized = normalizeVisibleAlpha(canvas);
+  const outlined = options.outline ? addSilhouetteOutline(normalized) : normalized;
   clearRowsBelowBaseline(outlined, options.baselineY);
   return outlined;
 };
@@ -717,7 +604,6 @@ export const assertBuildingSpriteSet = (root: string): void => {
   if (actual.length !== expected.length || actual.some((fileName, index) => fileName !== sortedExpected[index])) {
     throw new Error(`Building sprite set must contain exactly ${expected.length} expected PNG files`);
   }
-  const allowed = new Set(canonicalColors().map((colour) => colour.key));
   for (const fileName of expected) {
     const filePath = path.join(root, fileName);
     if (!existsSync(filePath)) {
@@ -750,13 +636,10 @@ export const assertBuildingSpriteSet = (root: string): void => {
             throw new Error(`${fileName} ended with incomplete RGB at byte ${index}`);
           }
           const key = `${r},${g},${b}`;
-          if (!allowed.has(key)) {
-            throw new Error(`${fileName} has non-canonical RGB ${key} at ${x},${y}`);
-          }
           if (alpha !== 255 && alpha !== OUTLINE_ALPHA) {
             throw new Error(`${fileName} has unsupported alpha ${alpha} at ${x},${y}`);
           }
-          if (alpha === OUTLINE_ALPHA && key !== rgbKey(hexToRgb(paletteSource.PALETTE.ink ?? "#3A2E1F"))) {
+          if (alpha === OUTLINE_ALPHA && key !== rgbKey(hexToRgb(PALETTE.ink))) {
             throw new Error(`${fileName} has non-ink outline RGB ${key} at ${x},${y}`);
           }
           visiblePixels += 1;

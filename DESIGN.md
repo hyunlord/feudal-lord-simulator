@@ -11,14 +11,18 @@ surround; the tile grid is construction geometry, never the dominant motif.
 
 Every visible element must appear to come from one workshop. Terrain,
 buildings, icon glyphs, hover marks, tooltips, and generated surface art share
-one ink outline, one upper-left light direction, one palette, and one family of
-slightly irregular medieval forms. Modern dashboard vocabulary is forbidden.
+one ink outline, one upper-left light direction, one fixed-reference generation
+language, and one family of slightly irregular medieval forms. Modern
+dashboard vocabulary is forbidden.
 
 ## 2. Palette and Token Rules
 
-`src/content/palette.ts` is the only source of colour literals. The brief calls
-the palette twenty colours, but its canonical object lists nineteen; this
-project implements those nineteen values exactly and invents no twentieth.
+`src/content/palette.ts` is the only source of colour literals in TypeScript,
+TSX, and CSS. The brief calls the palette twenty colours, but its canonical
+object lists nineteen; this project implements those nineteen values exactly
+and invents no twentieth. That code palette governs DOM surfaces and
+procedurally drawn Canvas fallbacks. It does not quantise or otherwise constrain
+the interior RGB values of generated PNG art.
 
 - Ink outlines use `ink`; secondary lettering may use `inkLight`.
 - World fills use the named terrain tokens: `sage`, `forest`, `water`, and
@@ -26,12 +30,22 @@ project implements those nineteen values exactly and invents no twentieth.
 - Parchment surfaces use `parchment`, `parchmentDark`, and `vellum`.
 - Valid and invalid placement use translucent `sage` and `vermilion`.
 - Gold is an accent, never a general background.
-- Generated images are quantised to the same token set with alpha preserved.
+- Generated images preserve their produced full colour depth. Sprite
+  post-processing may remove the keyed background, normalize transparency,
+  resize to the manifest contract, and add the exterior ink silhouette, but it
+  may not remap interior RGB values to code tokens.
+- Generated-set consistency comes from one model, one shared base prompt, the
+  upper-left lighting clause, and IPAdapter against the fixed accepted
+  references. Selection reviews form, silhouette, ground contact, lighting,
+  and reference style; material identity is a prompt-and-rubric requirement,
+  never an interior-RGB palette gate.
 - Hex literals outside `palette.ts`, gradients, blur, CSS box shadows, and
   Canvas `shadowBlur` are prohibited.
 
-All Canvas coordinates are integer-snapped. Outlines are one CSS pixel at 1x
-zoom and use `ink`. Lit faces point up-left; down-right faces are twenty percent
+All Canvas coordinates are integer-snapped. Procedural outlines are one CSS
+pixel at 1x zoom and use `ink`; generated sprites receive one final-scale
+exterior silhouette pixel using the same ink RGB, without changing their
+interior colour. Lit faces point up-left; down-right faces are twenty percent
 darker. Object shadows use two cheap earth-tinted isometric ellipses: a faint
 lower-left halo and a darker contact core. Their reach derives from manifest
 sprite height and display scale, not footprint alone. A narrow terrain contact
@@ -216,7 +230,8 @@ per-object animation state.
 Depth comes from geometry and value, not effects. Isometric tiles are sorted
 back-to-front. Buildings expose top, left, and twenty-percent-darker right
 faces. Terrain gains a dark lower-right edge. Generated parchment and wood
-textures stay low contrast so procedural ink remains dominant.
+textures retain full colour but stay fine-grained and low contrast so text and
+procedural ink remain dominant.
 
 All shadows are hard-edged, earth-tinted, stacked isometric ellipses with a
 narrow contact mark. No gradient, blur, glow, drop-shadow, rounded dashboard

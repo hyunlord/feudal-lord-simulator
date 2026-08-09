@@ -2,8 +2,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { CANONICAL_PALETTE } from "../src/content/palette";
-import { decodePngToRgba } from "./quantisePalette";
+import { readPng } from "./processBuildingSprite";
 import {
   alphaPresent,
   assertAlphaContract,
@@ -23,19 +22,11 @@ type AssetReport = {
   readonly width: number;
   readonly height: number;
   readonly alphaPresent: boolean;
-  readonly opaquePaletteRgbCount: number;
+  readonly opaqueVisiblePixelCount: number;
   readonly alphaUnchanged: boolean;
   readonly candidateCount: number;
   readonly selectedIndex: number;
 };
-
-const hexToRgbKey = (hex: string): string => {
-  const parsed = Number.parseInt(hex.slice(1), 16);
-  return `${(parsed >> 16) & 255},${(parsed >> 8) & 255},${parsed & 255}`;
-};
-
-const paletteRgb = new Set(CANONICAL_PALETTE.map(hexToRgbKey));
-const PHASE4F_REGENERATED_KEYS = new Set(["scroll_frame", "wood_console"]);
 
 const readManifest = (manifestPath: string): AssetManifest => {
   const parsed: unknown = JSON.parse(readFileSync(manifestPath, "utf8"));
@@ -55,12 +46,12 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
   assertReportAlignment(asset, reportText);
 
   for (const candidate of asset.candidates) {
-    const decoded = decodePngToRgba(path.join(candidateRoot, candidate.path));
+    const decoded = readPng(path.join(candidateRoot, candidate.path));
     assertDimensions(asset.key, `candidate ${candidate.index}`, decoded.dimensions.width, decoded.dimensions.height, candidate.width, candidate.height);
   }
 
-  const before = decodePngToRgba(asset.beforePath);
-  const after = decodePngToRgba(asset.finalPath);
+  const before = readPng(asset.beforePath);
+  const after = readPng(asset.finalPath);
   assertDimensions(asset.key, "before", before.dimensions.width, before.dimensions.height, asset.width, asset.height);
   assertDimensions(asset.key, "final", after.dimensions.width, after.dimensions.height, asset.width, asset.height);
   assertAlphaContract(asset.key, asset.alpha, before.rgba, after.rgba);
@@ -84,24 +75,14 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
     );
   }
 
-  let opaquePaletteRgbCount = 0;
+  let opaqueVisiblePixelCount = 0;
   for (let index = 0; index < after.rgba.length; index += 4) {
     const alpha = after.rgba[index + 3];
     if (alpha === undefined) {
       throw new Error(`${asset.finalPath} ended with an incomplete alpha byte`);
     }
     if (alpha > 0) {
-      const r = after.rgba[index];
-      const g = after.rgba[index + 1];
-      const b = after.rgba[index + 2];
-      if (r === undefined || g === undefined || b === undefined) {
-        throw new Error(`${asset.finalPath} ended with an incomplete RGB pixel`);
-      }
-      const rgbKey = `${r},${g},${b}`;
-      if (PHASE4F_REGENERATED_KEYS.has(asset.key) && !paletteRgb.has(rgbKey)) {
-        throw new Error(`${asset.finalPath} has non-palette RGB ${rgbKey} at byte ${index}`);
-      }
-      opaquePaletteRgbCount += 1;
+      opaqueVisiblePixelCount += 1;
     }
   }
 
@@ -110,7 +91,7 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
     width: asset.width,
     height: asset.height,
     alphaPresent: alphaPresent(after.rgba),
-    opaquePaletteRgbCount,
+    opaqueVisiblePixelCount,
     alphaUnchanged: true,
     candidateCount: asset.candidates.length,
     selectedIndex: asset.selectedIndex,

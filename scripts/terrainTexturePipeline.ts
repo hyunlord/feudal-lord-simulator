@@ -1,23 +1,14 @@
-import { RAMPS, type RampName } from "../src/content/palette";
 import {
   readPng,
   resizeRgbaLanczos,
   writePng,
   type Dimensions,
+  type Rgb,
   type RgbaImage,
 } from "./processBuildingSprite";
-import { rgbToLab, type Lab, type Rgb } from "./quantisePalette";
 
 export const TERRAIN_KEYS = ["grass", "forest_floor", "water", "rock", "packed_earth_road"] as const;
 export type TerrainKey = (typeof TERRAIN_KEYS)[number];
-
-export const TERRAIN_POLICIES = {
-  grass: { ramps: ["foliage"] },
-  forest_floor: { ramps: ["foliage", "earth"] },
-  water: { ramps: ["water"] },
-  rock: { ramps: ["stone", "slate"] },
-  packed_earth_road: { ramps: ["earth"] },
-} as const satisfies Readonly<Record<TerrainKey, { readonly ramps: readonly RampName[] }>>;
 
 export type TerrainSeamMetrics = {
   readonly horizontalOpposingEdgeMaxDelta: number;
@@ -34,7 +25,6 @@ export type TerrainProcessResult = {
   readonly seamMetrics: TerrainSeamMetrics;
 };
 
-type PaletteColour = Rgb & { readonly lab: Lab };
 type Point = { readonly x: number; readonly y: number };
 type Axis = "horizontal" | "vertical";
 
@@ -52,36 +42,6 @@ const METRIC_BAND_WIDTH = 4;
 const MAX_JOIN_BAND_DELTA = 24;
 const MAX_JOIN_TO_INTERNAL_RATIO = 2;
 const INTERNAL_TOLERANCE = 4;
-
-const hexToRgb = (hex: string): Rgb => {
-  const value = Number.parseInt(hex.slice(1), 16);
-  return { r: (value >> 16) & 255, g: (value >> 8) & 255, b: value & 255 };
-};
-
-const paletteFor = (key: TerrainKey): readonly PaletteColour[] =>
-  TERRAIN_POLICIES[key].ramps.flatMap((ramp) => RAMPS[ramp]).map((hex) => {
-    const rgb = hexToRgb(hex);
-    return { ...rgb, lab: rgbToLab(rgb) };
-  });
-
-const deltaE76 = (left: Lab, right: Lab): number =>
-  Math.hypot(left.l - right.l, left.a - right.a, left.b - right.b);
-
-const nearestColour = (rgb: Rgb, palette: readonly PaletteColour[]): PaletteColour => {
-  const lab = rgbToLab(rgb);
-  const first = palette[0];
-  if (first === undefined) throw new TerrainPipelineError("Terrain palette cannot be empty");
-  let nearest = first;
-  let nearestDelta = deltaE76(lab, nearest.lab);
-  for (const candidate of palette.slice(1)) {
-    const delta = deltaE76(lab, candidate.lab);
-    if (delta < nearestDelta) {
-      nearest = candidate;
-      nearestDelta = delta;
-    }
-  }
-  return nearest;
-};
 
 const indexAt = (dimensions: Dimensions, point: Point): number =>
   (point.y * dimensions.width + point.x) * 4;
@@ -112,12 +72,12 @@ const assertWholeImage = (image: RgbaImage): void => {
   }
 };
 
-const offsetAndQuantise = (source: RgbaImage, palette: readonly PaletteColour[]): RgbaImage => {
+const offsetPixels = (source: RgbaImage): RgbaImage => {
   const output: RgbaImage = { dimensions: TARGET, rgba: new Uint8Array(TARGET.width * TARGET.height * 4) };
   for (let y = 0; y < TARGET.height; y += 1) {
     for (let x = 0; x < TARGET.width; x += 1) {
       const sourcePoint = { x: (x + OFFSET) % TARGET.width, y: (y + OFFSET) % TARGET.height };
-      writeRgb(output, { x, y }, nearestColour(readRgb(source, sourcePoint), palette));
+      writeRgb(output, { x, y }, readRgb(source, sourcePoint));
     }
   }
   return output;
@@ -129,7 +89,7 @@ const mix = (left: Rgb, right: Rgb, factor: number): Rgb => ({
   b: Math.round(left.b + (right.b - left.b) * factor),
 });
 
-const blendAxis = (image: RgbaImage, axis: Axis, palette: readonly PaletteColour[]): void => {
+const blendAxis = (image: RgbaImage, axis: Axis): void => {
   for (let distance = 0; distance < BLEND_WIDTH; distance += 1) {
     const factor = 1 - distance / BLEND_WIDTH;
     for (let position = 0; position < TARGET.width; position += 1) {
@@ -139,8 +99,8 @@ const blendAxis = (image: RgbaImage, axis: Axis, palette: readonly PaletteColour
       const lowRgb = readRgb(image, low);
       const highRgb = readRgb(image, high);
       const average = mix(lowRgb, highRgb, 0.5);
-      writeRgb(image, low, nearestColour(mix(lowRgb, average, factor), palette));
-      writeRgb(image, high, nearestColour(mix(highRgb, average, factor), palette));
+      writeRgb(image, low, mix(lowRgb, average, factor));
+      writeRgb(image, high, mix(highRgb, average, factor));
     }
   }
 };
@@ -218,15 +178,14 @@ export const buildTerrainTile2x2 = (texture: RgbaImage): RgbaImage => {
 
 export const processTerrainRgba = (
   source: RgbaImage,
-  key: TerrainKey,
+  _key: TerrainKey,
   resize: (image: RgbaImage, target: Dimensions) => RgbaImage = resizeRgbaLanczos,
 ): TerrainProcessResult => {
   assertWholeImage(source);
   const resized = source.dimensions.width === 256 && source.dimensions.height === 256 ? source : resize(source, TARGET);
-  const palette = paletteFor(key);
-  const texture = offsetAndQuantise(resized, palette);
-  blendAxis(texture, "horizontal", palette);
-  blendAxis(texture, "vertical", palette);
+  const texture = offsetPixels(resized);
+  blendAxis(texture, "horizontal");
+  blendAxis(texture, "vertical");
   const seamMetrics = measureTerrainSeams(texture);
   assertTerrainSeams(seamMetrics);
   return { texture, tiledPreview: buildTerrainTile2x2(texture), seamMetrics };

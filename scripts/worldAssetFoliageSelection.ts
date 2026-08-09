@@ -103,7 +103,6 @@ const parseFoliageCandidate = (value: unknown, key: (typeof TREE_STUMP_KEYS)[num
     sha256: requireSha256(record, "sha256", `${key} candidate ${candidate}`),
     width: requirePositiveInteger(record, "width", `${key} candidate ${candidate}`),
     height: requirePositiveInteger(record, "height", `${key} candidate ${candidate}`),
-    palette: requireTrue(record, "palette", `${key} candidate ${candidate}`),
     alpha: requireTrue(record, "alpha", `${key} candidate ${candidate}`),
     transparentBackground: requireTrue(record, "transparentBackground", `${key} candidate ${candidate}`),
     bakedGroundShadowAbsent: requireTrue(record, "bakedGroundShadowAbsent", `${key} candidate ${candidate}`),

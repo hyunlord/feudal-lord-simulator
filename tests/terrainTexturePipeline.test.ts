@@ -4,7 +4,6 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, it } from "node:test";
 
-import { RAMPS } from "../src/content/palette";
 import {
   assertTerrainSeams,
   buildTerrainTile2x2,
@@ -12,15 +11,8 @@ import {
   processTerrainFile,
   processTerrainRgba,
   TERRAIN_KEYS,
-  TERRAIN_POLICIES,
-  type TerrainKey,
 } from "../scripts/terrainTexturePipeline";
 import { readPng, writePng, type RgbaImage } from "../scripts/processBuildingSprite";
-
-const rgbFromHex = (hex: string): readonly [number, number, number] => {
-  const value = Number.parseInt(hex.slice(1), 16);
-  return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
-};
 
 const image = (
   width: number,
@@ -48,13 +40,8 @@ const pixel = (source: RgbaImage, x: number, y: number): readonly [number, numbe
   return [r, g, b, a];
 };
 
-const allowedColours = (key: TerrainKey): ReadonlySet<string> => {
-  const colours = TERRAIN_POLICIES[key].ramps.flatMap((ramp) => RAMPS[ramp]);
-  return new Set(colours.map((hex) => rgbFromHex(hex).join(",")));
-};
-
 describe("terrainTexturePipeline", () => {
-  it("produces an opaque 256px texture restricted to the terrain policy ramps", () => {
+  it("produces an opaque 256px texture that preserves generated RGB away from blend bands", () => {
     // Given: an arbitrary translucent generated texture.
     const source = image(256, 256, (x, y) => [x, y, (x + y) % 256, (x * y) % 256]);
 
@@ -62,23 +49,17 @@ describe("terrainTexturePipeline", () => {
     for (const key of TERRAIN_KEYS) {
       const result = processTerrainRgba(source, key);
 
-      // Then: release dimensions, opacity, and category palette membership are exact.
+      // Then: release dimensions, opacity, and offset source colour are exact.
       assert.deepEqual(result.texture.dimensions, { width: 256, height: 256 });
-      const allowed = allowedColours(key);
-      for (let index = 0; index < result.texture.rgba.length; index += 4) {
-        assert.equal(result.texture.rgba[index + 3], 255);
-        assert.equal(
-          allowed.has(`${result.texture.rgba[index]},${result.texture.rgba[index + 1]},${result.texture.rgba[index + 2]}`),
-          true,
-        );
-      }
+      assert.deepEqual(pixel(result.texture, 64, 64).slice(0, 3), pixel(source, 192, 192).slice(0, 3));
+      assert.equal(result.texture.rgba.every((channel, index) => index % 4 !== 3 || channel === 255), true);
     }
   });
 
   it("moves generated borders inward before making opposing edges exactly compatible", () => {
     // Given: a generated texture with a dark left half and light right half.
-    const dark = rgbFromHex(RAMPS.water[0]);
-    const light = rgbFromHex(RAMPS.water[5]);
+    const dark = [28, 48, 64] as const;
+    const light = [124, 172, 194] as const;
     const source = image(256, 256, (x) => [...(x < 128 ? dark : light), 255]);
 
     // When: the tile is periodicised.

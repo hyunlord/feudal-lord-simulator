@@ -70,7 +70,6 @@ const manifestSelection = (partial: Partial<FoliageSelection> = {}): FoliageSele
     sha256,
     width: 88,
     height: 112,
-    palette: true,
     alpha: true,
     transparentBackground: true,
     bakedGroundShadowAbsent: true,
@@ -112,10 +111,10 @@ describe("Phase10 Part5 pre-generation contracts", () => {
       assert.doesNotThrow(() => assertSelectedFoliageCandidate(foliagePath, "tree_oak_large"));
 
       const shadowed = foliageCandidate();
-      setPixel(shadowed, 44, 111, [...rgb(RAMPS.earth[2]), 255]);
+      setPixel(shadowed, 44, 111, [...rgb(RAMPS.earth[2]), 127]);
       const shadowPath = path.join(root, "shadowed.png");
       writePng(shadowPath, shadowed);
-      assert.throws(() => assertSelectedFoliageCandidate(shadowPath, "tree_oak_large"), /foliage or timber/);
+      assert.throws(() => assertSelectedFoliageCandidate(shadowPath, "tree_oak_large"), /unsupported alpha/);
 
       const terrain = rgbaImage(256, 256, [...rgb(RAMPS.foliage[2]), 255]);
       const terrainPath = path.join(root, "grass.png");
@@ -130,7 +129,7 @@ describe("Phase10 Part5 pre-generation contracts", () => {
     }
   });
 
-  it("Given selected terrain fixtures When alpha or palette drifts Then the validator rejects them", () => {
+  it("Given selected terrain fixtures When alpha drifts Then the validator rejects opacity drift", () => {
     const root = mkdtempSync(path.join(tmpdir(), "phase10-part5-terrain-"));
     try {
       const validGrass = rgbaImage(256, 256, [...rgb(RAMPS.foliage[2]), 255]);
@@ -143,10 +142,10 @@ describe("Phase10 Part5 pre-generation contracts", () => {
       writePng(transparentPath, transparentGrass);
       assert.throws(() => assertSelectedTerrainCandidate(transparentPath, "grass"), /terrain must be opaque/);
 
-      const invalidGrass = rgbaImage(256, 256, [...rgb(RAMPS.water[2]), 255]);
-      const invalidPath = path.join(root, "grass-palette.png");
-      writePng(invalidPath, invalidGrass);
-      assert.throws(() => assertSelectedTerrainCandidate(invalidPath, "grass"), /terrain violates its palette policy/);
+      const fullColourGrass = rgbaImage(256, 256, [...rgb(RAMPS.water[2]), 255]);
+      const fullColourPath = path.join(root, "grass-full-colour.png");
+      writePng(fullColourPath, fullColourGrass);
+      assert.doesNotThrow(() => assertSelectedTerrainCandidate(fullColourPath, "grass"));
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

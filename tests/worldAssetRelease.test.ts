@@ -171,7 +171,6 @@ describe("Phase 4C world asset release", () => {
             sha256: `${(index + 1).toString(16).repeat(64).slice(0, 64)}`,
             width: FOLIAGE_SPECS[key].width,
             height: FOLIAGE_SPECS[key].height,
-            palette: true,
             alpha: true,
             transparentBackground: true,
             bakedGroundShadowAbsent: true,

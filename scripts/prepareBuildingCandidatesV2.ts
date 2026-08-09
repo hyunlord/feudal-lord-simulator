@@ -6,11 +6,9 @@ import {
   assertBuildingSpriteSet,
   assertMillHeight,
   assertVisibleWidthBand,
-  enforceFamilyMaterials,
   processSpriteFile,
-  rampProfile,
   readPng,
-  writePng,
+  type RgbaImage,
 } from "./processBuildingSprite";
 
 const CONTRACTS = {
@@ -19,6 +17,20 @@ const CONTRACTS = {
   granary: { width: 160, height: 144, baselineY: 128, contentWidth: 126 },
 } as const;
 
+type BuildingCandidateSubject = keyof typeof CONTRACTS;
+
+const SUBJECTS = ["house", "mill", "granary"] as const satisfies readonly BuildingCandidateSubject[];
+
+const visibleColourCount = (image: RgbaImage): number => {
+  const colours = new Set<string>();
+  for (let index = 0; index < image.rgba.length; index += 4) {
+    if (image.rgba[index + 3] === 255) {
+      colours.add(`${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`);
+    }
+  }
+  return colours.size;
+};
+
 const main = (): void => {
   const [, , rawRoot, outputRoot, reportPath] = process.argv;
   if (rawRoot === undefined || outputRoot === undefined || reportPath === undefined) {
@@ -26,7 +38,8 @@ const main = (): void => {
   }
   mkdirSync(outputRoot, { recursive: true });
   const candidates: Array<Record<string, unknown>> = [];
-  for (const [subject, contract] of Object.entries(CONTRACTS)) {
+  for (const subject of SUBJECTS) {
+    const contract = CONTRACTS[subject];
     for (let index = 1; index <= 8; index += 1) {
       const fileName = `${subject}_${String(index).padStart(2, "0")}.png`;
       const input = path.join(rawRoot, subject, fileName);
@@ -41,14 +54,13 @@ const main = (): void => {
         softEdge: 96,
         outline: true,
       });
-      const image = enforceFamilyMaterials(readPng(output), subject as keyof typeof CONTRACTS);
-      writePng(output, image);
+      const image = readPng(output);
       candidates.push({
         fileName,
         subject,
-        visibleWidthPx: assertVisibleWidthBand(image, subject as keyof typeof CONTRACTS),
+        visibleWidthPx: assertVisibleWidthBand(image, subject),
         ...(subject === "mill" ? { visibleHeightPx: assertMillHeight(image) } : {}),
-        ramps: rampProfile(image),
+        visibleColourCount: visibleColourCount(image),
       });
     }
   }

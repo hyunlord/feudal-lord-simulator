@@ -52,7 +52,6 @@ const foliageSelection = (key: (typeof TREE_STUMP_KEYS)[number]): FoliageSelecti
     sha256: `${(index + 1).toString(16).repeat(64).slice(0, 64)}`,
     width: FOLIAGE_SPECS[key].width,
     height: FOLIAGE_SPECS[key].height,
-    palette: true,
     alpha: true,
     transparentBackground: true,
     bakedGroundShadowAbsent: true,
@@ -113,7 +112,7 @@ const manifestFixture = (): WorldAssetManifest => ({
       footprint: spec.footprint,
       source,
       sha256,
-      palettePolicy: "canonical-building" as const,
+      palettePolicy: "full-colour-generated" as const,
       alphaPolicy: "transparent-outline-179" as const,
       };
     }),
@@ -129,7 +128,7 @@ const manifestFixture = (): WorldAssetManifest => ({
       footprint: spec.footprint,
       source,
       sha256,
-      palettePolicy: key === "field_stone" ? "stone-earth" as const : "foliage-timber" as const,
+      palettePolicy: "full-colour-generated" as const,
       alphaPolicy: "transparent-outline-179" as const,
       variation: {
         selection: "hash" as const,
@@ -213,7 +212,7 @@ describe("world asset manifest", () => {
       footprint: { width: 2, height: 2 },
       source,
       sha256,
-      palettePolicy: "canonical-building",
+      palettePolicy: "full-colour-generated",
       alphaPolicy: "transparent-outline-179",
     });
   });
@@ -354,7 +353,7 @@ describe("world asset manifest", () => {
     }
     const stone = parsed.assets.find((entry) => entry.key === "field_stone");
     assert.equal(stone?.category, "foliage");
-    if (stone?.category === "foliage") assert.equal(stone.palettePolicy, "stone-earth");
+    if (stone?.category === "foliage") assert.equal(stone.palettePolicy, "full-colour-generated");
     const grass = parsed.assets.find((entry) => entry.key === "grass");
     assert.equal(grass?.category, "terrain");
     if (grass?.category === "terrain") {
@@ -439,7 +438,7 @@ describe("world asset manifest", () => {
       /tree_oak_large palettePolicy/,
     );
     const wrongStonePolicy = valid.assets.map((entry) =>
-      entry.key === "field_stone" ? { ...entry, palettePolicy: "foliage-timber" } : entry
+      entry.key === "field_stone" ? { ...entry, palettePolicy: "stone-earth" } : entry
     );
     assert.throws(
       () => parseWorldAssetManifest({ ...valid, assets: wrongStonePolicy }),

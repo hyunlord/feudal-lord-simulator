@@ -247,7 +247,7 @@ const foliageAsset = (repoRoot: string, selection: Phase10SurfaceSelection): Wor
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: { seed: selection.seed, candidate: selection.candidate },
-    palettePolicy: "foliage-timber",
+    palettePolicy: "full-colour-generated",
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
   };

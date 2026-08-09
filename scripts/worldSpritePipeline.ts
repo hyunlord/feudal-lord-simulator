@@ -1,4 +1,4 @@
-import { PALETTE, RAMPS, type RampName } from "../src/content/palette";
+import { PALETTE } from "../src/content/palette";
 import {
   DEFAULT_CHROMA_KEY,
   OUTLINE_ALPHA,
@@ -65,96 +65,11 @@ const BUILDING_KEYS: ReadonlySet<WorldSpriteKey> = new Set([
   "house_l4", "quarry", "masonry", "market", "church", "keep", "stone_wall_segment",
 ]);
 
-const ROOF_RAMPS = {
-  house_l1: "thatch",
-  house_l2: "slate",
-  house_l3: "slate",
-  house_l4: "slate",
-  well: "thatch",
-  storehouse: "slate",
-  logging_camp: "slate",
-  sawmill: "slate",
-  quarry: "slate",
-  masonry: "slate",
-  market: "slate",
-  church: "slate",
-  keep: "slate",
-  stone_wall_segment: "slate",
-} as const satisfies Readonly<Record<Exclude<AnyBuildingSpriteKey, "wheat_farm">, RampName>>;
-
-const RAMP_NAMES = ["thatch", "timber", "plaster", "stone", "slate", "earth", "foliage", "water"] as const;
-const rampEntries = RAMP_NAMES.flatMap((name) =>
-  RAMPS[name].map((hex, shade) => [rgbKey(hexToRgb(hex)), { name, shade }] as const),
-);
-const RAMP_BY_RGB = new Map(rampEntries);
 const INK_KEY = rgbKey(hexToRgb(PALETTE.ink));
 
 export const worldSpriteContract = (key: WorldSpriteKey) => WORLD_SPRITE_CONTRACTS[key];
 
 export const isBuildingSpriteKey = (key: WorldSpriteKey): key is AnyBuildingSpriteKey => BUILDING_KEYS.has(key);
-
-const setRampColour = (rgba: Uint8Array, index: number, ramp: RampName): void => {
-  const key = `${rgba[index]},${rgba[index + 1]},${rgba[index + 2]}`;
-  const shade = RAMP_BY_RGB.get(key)?.shade ?? 2;
-  const colour = hexToRgb(RAMPS[ramp][shade] ?? RAMPS[ramp][2]);
-  rgba[index] = colour.r;
-  rgba[index + 1] = colour.g;
-  rgba[index + 2] = colour.b;
-};
-
-export const enforceBuildingMaterialPolicy = (image: RgbaImage, key: AnyBuildingSpriteKey): RgbaImage => {
-  const bounds = findOpaqueBounds(image);
-  if (bounds === null) return image;
-  const rgba = new Uint8Array(image.rgba);
-  const cutoff = bounds.top + Math.floor((bounds.bottom - bounds.top) * (key === "wheat_farm" ? 0.3 : 0.5));
-  for (let y = bounds.top; y < bounds.bottom; y += 1) {
-    for (let x = bounds.left; x < bounds.right; x += 1) {
-      const index = byteIndex(image.dimensions, x, y);
-      if (rgba[index + 3] !== 255) continue;
-      if (key === "wheat_farm" && y >= cutoff) setRampColour(rgba, index, "earth");
-      if (key !== "wheat_farm" && y < cutoff) setRampColour(rgba, index, ROOF_RAMPS[key]);
-    }
-  }
-  return { dimensions: image.dimensions, rgba };
-};
-
-export const enforceFoliageMaterialPolicy = (image: RgbaImage): RgbaImage => {
-  const rgba = new Uint8Array(image.rgba);
-  for (let index = 0; index < rgba.length; index += 4) {
-    if (rgba[index + 3] !== 255) continue;
-    const key = `${rgba[index]},${rgba[index + 1]},${rgba[index + 2]}`;
-    if (RAMP_BY_RGB.get(key)?.name !== "timber") setRampColour(rgba, index, "foliage");
-  }
-  return { dimensions: image.dimensions, rgba };
-};
-
-const enforceFieldStoneMaterialPolicy = (image: RgbaImage): RgbaImage => {
-  const rgba = new Uint8Array(image.rgba);
-  for (let index = 0; index < rgba.length; index += 4) {
-    if (rgba[index + 3] !== 255) continue;
-    const key = `${rgba[index]},${rgba[index + 1]},${rgba[index + 2]}`;
-    const ramp = RAMP_BY_RGB.get(key)?.name;
-    if (ramp !== "earth") setRampColour(rgba, index, "stone");
-  }
-  return { dimensions: image.dimensions, rgba };
-};
-
-const enforceLeafyGroundCoverMaterialPolicy = (image: RgbaImage): RgbaImage => {
-  const rgba = new Uint8Array(image.rgba);
-  for (let index = 0; index < rgba.length; index += 4) {
-    if (rgba[index + 3] === 255) setRampColour(rgba, index, "foliage");
-  }
-  return { dimensions: image.dimensions, rgba };
-};
-
-export const enforceWorldMaterialPolicy = (image: RgbaImage, key: WorldSpriteKey): RgbaImage =>
-  isBuildingSpriteKey(key)
-    ? enforceBuildingMaterialPolicy(image, key)
-    : key === "field_stone"
-      ? enforceFieldStoneMaterialPolicy(image)
-      : key === "shrub_a" || key === "shrub_b" || key === "grass_tuft"
-        ? enforceLeafyGroundCoverMaterialPolicy(image)
-      : enforceFoliageMaterialPolicy(image);
 
 export const processWorldSprite = (
   source: RgbaImage,
@@ -177,10 +92,9 @@ export const processWorldSprite = (
     ...(contentWidth === undefined ? {} : { contentWidth }),
     ...(contentHeight === undefined ? {} : { contentHeight }),
   };
-  const processed = resize === undefined
+  return resize === undefined
     ? processSpriteImage(source, options)
     : processSpriteImage(source, options, resize);
-  return enforceWorldMaterialPolicy(processed, key);
 };
 
 const assertDimensionsAndBaseline = (image: RgbaImage, key: WorldSpriteKey): void => {
@@ -258,52 +172,6 @@ const assertVisibleWidth = (image: RgbaImage, key: AnyBuildingSpriteKey): void =
   if (width < band[0] || width > band[1]) throw new Error(`${key} visible width ${width}px is outside ${band[0]}..${band[1]}`);
 };
 
-export const assertBuildingRoofPolicy = (image: RgbaImage, key: Exclude<AnyBuildingSpriteKey, "wheat_farm">): void => {
-  const bounds = findOpaqueBounds(image);
-  if (bounds === null) throw new Error(`${key} has no visible mass`);
-  const cutoff = bounds.top + Math.floor((bounds.bottom - bounds.top) * 0.5);
-  const expected = ROOF_RAMPS[key];
-  for (let y = bounds.top; y < cutoff; y += 1) {
-    for (let x = bounds.left; x < bounds.right; x += 1) {
-      const index = byteIndex(image.dimensions, x, y);
-      if (image.rgba[index + 3] !== 255) continue;
-      const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-      if (RAMP_BY_RGB.get(colour)?.name !== expected) throw new Error(`${key} violates ${expected} roof policy`);
-    }
-  }
-};
-
-export const assertWheatFieldDominance = (image: RgbaImage): number => {
-  let visible = 0;
-  let earth = 0;
-  for (let index = 0; index < image.rgba.length; index += 4) {
-    if (image.rgba[index + 3] !== 255) continue;
-    visible += 1;
-    const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-    if (RAMP_BY_RGB.get(colour)?.name === "earth") earth += 1;
-  }
-  const proportion = visible === 0 ? 0 : earth / visible;
-  if (proportion <= 0.55) throw new Error(`wheat_farm earth ramp must dominate, got ${proportion.toFixed(3)}`);
-  return proportion;
-};
-
-const assertFoliageMaterials = (image: RgbaImage, key: FoliageSpriteKey): void => {
-  for (let index = 0; index < image.rgba.length; index += 4) {
-    if (image.rgba[index + 3] !== 255) continue;
-    const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-    const ramp = RAMP_BY_RGB.get(colour)?.name;
-    const foliageOnly = key === "shrub_a" || key === "shrub_b" || key === "grass_tuft";
-    const allowed = key === "field_stone"
-      ? ramp === "stone" || ramp === "earth"
-      : foliageOnly ? ramp === "foliage" : ramp === "foliage" || ramp === "timber";
-    if (!allowed) {
-      const policy = key === "field_stone" ? "stone or earth" : foliageOnly ? "foliage-only" : "foliage or timber";
-      throw new Error(`${key} interior must use ${policy} interior colours`);
-    }
-    if (colour === INK_KEY) throw new Error(`${key} ink is allowed only at alpha ${OUTLINE_ALPHA}`);
-  }
-};
-
 export const assertGroundCoverSilhouette = (
   image: RgbaImage,
   key: "shrub_a" | "shrub_b",
@@ -320,11 +188,8 @@ export const assertSpriteContract = (image: RgbaImage, key: WorldSpriteKey): voi
   assertAlphaPolicy(image, key);
   if (isBuildingSpriteKey(key)) {
     assertVisibleWidth(image, key);
-    if (key === "wheat_farm") assertWheatFieldDominance(image);
-    else assertBuildingRoofPolicy(image, key);
     return;
   }
-  assertFoliageMaterials(image, key);
   if (key === "shrub_a" || key === "shrub_b") assertGroundCoverSilhouette(image, key);
 };
 

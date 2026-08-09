@@ -41,6 +41,8 @@ type CommonFields = {
   readonly source: AssetSource;
 };
 
+const GENERATED_PALETTE_POLICY = "full-colour-generated";
+
 export class WorldAssetManifestError extends Error {
   constructor(message: string) {
     super(message);
@@ -303,20 +305,19 @@ const parseAsset = (value: unknown): WorldAsset => {
     case "building": {
       if (!isMember(BUILDING_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a building key`);
       assertExactCommon(key, category, common, BUILDING_SPECS[key]);
-      if (record["palettePolicy"] !== "canonical-building") {
-        throw new WorldAssetManifestError(`${key} palettePolicy must be canonical-building`);
+      if (record["palettePolicy"] !== GENERATED_PALETTE_POLICY) {
+        throw new WorldAssetManifestError(`${key} palettePolicy must be ${GENERATED_PALETTE_POLICY}`);
       }
       if (record["alphaPolicy"] !== "transparent-outline-179") {
         throw new WorldAssetManifestError(`${key} alphaPolicy must be transparent-outline-179`);
       }
-      return { key, category, ...common, palettePolicy: "canonical-building", alphaPolicy: "transparent-outline-179" };
+      return { key, category, ...common, palettePolicy: GENERATED_PALETTE_POLICY, alphaPolicy: "transparent-outline-179" };
     }
     case "foliage": {
       if (!isMember(FOLIAGE_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a foliage key`);
       assertExactCommon(key, category, common, FOLIAGE_SPECS[key]);
-      const palettePolicy = key === "field_stone" ? "stone-earth" : "foliage-timber";
-      if (record["palettePolicy"] !== palettePolicy) {
-        throw new WorldAssetManifestError(`${key} palettePolicy must be ${palettePolicy}`);
+      if (record["palettePolicy"] !== GENERATED_PALETTE_POLICY) {
+        throw new WorldAssetManifestError(`${key} palettePolicy must be ${GENERATED_PALETTE_POLICY}`);
       }
       if (record["alphaPolicy"] !== "transparent-outline-179") {
         throw new WorldAssetManifestError(`${key} alphaPolicy must be transparent-outline-179`);
@@ -325,7 +326,7 @@ const parseAsset = (value: unknown): WorldAsset => {
         key,
         category,
         ...common,
-        palettePolicy,
+        palettePolicy: GENERATED_PALETTE_POLICY,
         alphaPolicy: "transparent-outline-179",
         variation: parseVariation(record["variation"], key),
       };
@@ -334,8 +335,8 @@ const parseAsset = (value: unknown): WorldAsset => {
       if (!isMember(TERRAIN_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a terrain key`);
       const spec = TERRAIN_SPECS[key];
       assertExactCommon(key, category, common, spec);
-      if (record["palettePolicy"] !== spec.palettePolicy) {
-        throw new WorldAssetManifestError(`${key} palettePolicy must be ${spec.palettePolicy}`);
+      if (record["palettePolicy"] !== GENERATED_PALETTE_POLICY) {
+        throw new WorldAssetManifestError(`${key} palettePolicy must be ${GENERATED_PALETTE_POLICY}`);
       }
       if (record["alphaPolicy"] !== "opaque") {
         throw new WorldAssetManifestError(`${key} alphaPolicy must be opaque`);
@@ -344,7 +345,7 @@ const parseAsset = (value: unknown): WorldAsset => {
         key,
         category,
         ...common,
-        palettePolicy: spec.palettePolicy,
+        palettePolicy: GENERATED_PALETTE_POLICY,
         alphaPolicy: "opaque",
         seamMetrics: parseSeamMetrics(record["seamMetrics"], key),
       };

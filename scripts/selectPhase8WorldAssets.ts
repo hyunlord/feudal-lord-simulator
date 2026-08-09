@@ -161,7 +161,6 @@ const processTreeCandidate = (options: CliOptions, key: TreeStumpKey, candidate:
     sha256: sha256(output),
     width: FOLIAGE_SPECS[key].width,
     height: FOLIAGE_SPECS[key].height,
-    palette: true,
     alpha: true,
     transparentBackground: true,
     bakedGroundShadowAbsent: true,

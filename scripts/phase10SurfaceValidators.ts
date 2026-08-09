@@ -1,11 +1,9 @@
 import {
   assertTerrainSeams,
   measureTerrainSeams,
-  TERRAIN_POLICIES,
   type TerrainKey,
 } from "./terrainTexturePipeline";
 import { readPng } from "./processBuildingSprite";
-import { RAMPS } from "../src/content/palette";
 import {
   FOLIAGE_SPECS,
   TERRAIN_SPECS,
@@ -40,7 +38,6 @@ export const assertSelectedTerrainCandidate = (filePath: string, key: TerrainKey
     );
   }
   assertOpaqueTerrain(image, key);
-  assertTerrainPalette(image, key);
   try {
     assertTerrainSeams(measureTerrainSeams(image));
   } catch (caught) {
@@ -51,24 +48,8 @@ export const assertSelectedTerrainCandidate = (filePath: string, key: TerrainKey
   }
 };
 
-const rgbKey = (hex: string): string => {
-  const value = Number.parseInt(hex.slice(1), 16);
-  return `${(value >> 16) & 255},${(value >> 8) & 255},${value & 255}`;
-};
-
-const allowedTerrainColours = (key: TerrainKey): ReadonlySet<string> =>
-  new Set(TERRAIN_POLICIES[key].ramps.flatMap((ramp) => RAMPS[ramp]).map(rgbKey));
-
 const assertOpaqueTerrain = (image: ReturnType<typeof readPng>, key: TerrainKey): void => {
   for (let index = 0; index < image.rgba.length; index += 4) {
     if (image.rgba[index + 3] !== 255) throw new Phase10SurfaceValidationError(`${key} terrain must be opaque`);
-  }
-};
-
-const assertTerrainPalette = (image: ReturnType<typeof readPng>, key: TerrainKey): void => {
-  const allowed = allowedTerrainColours(key);
-  for (let index = 0; index < image.rgba.length; index += 4) {
-    const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-    if (!allowed.has(colour)) throw new Phase10SurfaceValidationError(`${key} terrain violates its palette policy`);
   }
 };

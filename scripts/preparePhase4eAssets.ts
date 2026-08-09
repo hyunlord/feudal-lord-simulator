@@ -128,7 +128,7 @@ const groundCoverAsset = (key: Phase4eGroundCoverKey, candidate: number): Omit<F
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: sourceForPhase4eTarget(key, candidate),
-    palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
+    palettePolicy: "full-colour-generated",
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
   };
@@ -146,7 +146,7 @@ const targetAssets = (selections: Phase4eSelections): ReadonlyMap<Phase4eTargetK
       anchor: { x: sawmill.width / 2, y: sawmill.baselineY },
       footprint: sawmill.footprint,
       source: sourceForPhase4eTarget("sawmill", selections.sawmill),
-      palettePolicy: "canonical-building",
+      palettePolicy: "full-colour-generated",
       alphaPolicy: "transparent-outline-179",
     }],
     ...PHASE4E_GROUND_COVER_KEYS.map((key) => [key, groundCoverAsset(key, selections[key])] as const),

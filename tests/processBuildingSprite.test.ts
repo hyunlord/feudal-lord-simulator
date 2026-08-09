@@ -10,15 +10,12 @@ import {
   assertMillHeight,
   assertVisibleWidthBand,
   assertBuildingSpriteSet,
-  canonicalColors,
   expandRgbToRgba,
-  enforceFamilyMaterials,
   DEFAULT_CHROMA_KEY,
   fitOpaqueBounds,
   findOpaqueBounds,
   processSpriteImage,
   processSpriteRgba,
-  rampProfile,
   removeChromaKey,
   writePng,
   type Dimensions,
@@ -167,31 +164,7 @@ describe("processBuildingSprite", () => {
     assert.doesNotThrow(() => assertVisibleWidthBand(twoTile, "granary"));
   });
 
-  it("reports exact per-ramp pixel counts and proportions", () => {
-    const image = blank(4, 1, [0, 0, 0, 0]);
-    setPixel(image, 0, 0, [...rgbFromHex(RAMPS.plaster[0]), 255]);
-    setPixel(image, 1, 0, [...rgbFromHex(RAMPS.plaster[1]), 255]);
-    setPixel(image, 2, 0, [...rgbFromHex(RAMPS.timber[0]), 255]);
-    setPixel(image, 3, 0, [...rgbFromHex(RAMPS.stone[0]), 255]);
-    const profile = rampProfile(image);
-    assert.deepEqual(profile.plaster, { count: 2, proportion: 0.5 });
-    assert.deepEqual(profile.timber, { count: 1, proportion: 0.25 });
-    assert.deepEqual(profile.stone, { count: 1, proportion: 0.25 });
-  });
-
-  it("keeps stone at footings but remaps grey roof and wall pixels into family ramps", () => {
-    const image = blank(4, 10, [0, 0, 0, 0]);
-    const stone = rgbFromHex(RAMPS.stone[2]);
-    for (let y = 0; y < 10; y += 1) setPixel(image, 1, y, [...stone, 255]);
-    setPixel(image, 2, 7, [...rgbFromHex(PALETTE.vermilion), 255]);
-    const remapped = enforceFamilyMaterials(image, "granary");
-    assert.deepEqual(pixel(remapped, 1, 1).slice(0, 3), rgbFromHex(RAMPS.thatch[2]));
-    assert.deepEqual(pixel(remapped, 1, 7).slice(0, 3), rgbFromHex(RAMPS.plaster[2]));
-    assert.deepEqual(pixel(remapped, 1, 9).slice(0, 3), stone);
-    assert.deepEqual(pixel(remapped, 2, 7).slice(0, 3), rgbFromHex(RAMPS.timber[2]));
-  });
-
-  it("quantises visible pixels, preserves transparency, and clears rows below baseline", () => {
+  it("preserves generated RGB, normalizes visible alpha, and clears rows below baseline", () => {
     // Given: a small source whose bottom row would violate the declared baseline if copied.
     const image = blank(3, 3, [0, 255, 255, 255]);
     setPixel(image, 1, 0, [135, 112, 80, 255]);
@@ -208,17 +181,21 @@ describe("processBuildingSprite", () => {
       outline: true,
     });
 
-    // Then: below-baseline rows are transparent and visible RGB values are canonical.
+    // Then: below-baseline rows are transparent and at least one generated colour survives unchanged.
     for (let x = 0; x < 5; x += 1) {
       assert.equal(pixel(processed, x, 4)[3], 0);
     }
-    const allowed = new Set(canonicalColors().map((colour) => colour.key));
+    const generatedColours = new Set(["135,112,80", "140,115,82", "150,10,10"]);
+    let preservedGeneratedColour = false;
     for (let index = 0; index < processed.rgba.length; index += 4) {
-      if (processed.rgba[index + 3] !== 0) {
+      const alpha = processed.rgba[index + 3];
+      assert.equal(alpha === 0 || alpha === 179 || alpha === 255, true);
+      if (alpha === 255) {
         const key = `${processed.rgba[index]},${processed.rgba[index + 1]},${processed.rgba[index + 2]}`;
-        assert.equal(allowed.has(key), true);
+        preservedGeneratedColour ||= generatedColours.has(key);
       }
     }
+    assert.equal(preservedGeneratedColour, true);
   });
 
   it("delegates file-pipeline resizing to the Lanczos boundary target", () => {
@@ -276,8 +253,8 @@ describe("processBuildingSprite", () => {
     assert.throws(() => assertBuildingSpriteSet(root), /exactly 24 expected PNG files/);
   });
 
-  it("rejects non-canonical RGB and opaque pixels below a candidate baseline", () => {
-    // Given: one invalid sprite in an otherwise complete set.
+  it("accepts full-colour RGB while still rejecting pixels below a candidate baseline", () => {
+    // Given: a complete set whose first house contains an arbitrary generated colour.
     const root = mkdtempSync(path.join(tmpdir(), "building-sprites-invalid-"));
     const sizes = {
       house: { width: 96, height: 112, baselineY: 96 },
@@ -296,7 +273,16 @@ describe("processBuildingSprite", () => {
       }
     }
 
-    // When / Then: invalid colour/baseline evidence fails the verifier.
-    assert.throws(() => assertBuildingSpriteSet(root), /below baseline|non-canonical RGB/);
+    // Then: interior RGB is unconstrained by the code palette.
+    assert.doesNotThrow(() => assertBuildingSpriteSet(root));
+
+    // When: the same candidate violates its geometric baseline contract.
+    const invalid = blank(96, 112, [0, 0, 0, 0]);
+    for (let x = 16; x < 80; x += 1) setPixel(invalid, x, 96, [1, 2, 3, 255]);
+    setPixel(invalid, 48, 97, [1, 2, 3, 255]);
+    writePng(path.join(root, "house_01.png"), invalid);
+
+    // Then: geometry remains a release gate even though colour is not.
+    assert.throws(() => assertBuildingSpriteSet(root), /below baseline/);
   });
 });

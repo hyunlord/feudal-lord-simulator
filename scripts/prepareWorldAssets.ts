@@ -101,6 +101,7 @@ const PROMOTIONS = {
   readonly seed: number;
   readonly candidate: number;
 }>>;
+const GENERATED_PALETTE_POLICY = "full-colour-generated";
 
 const newBuildingKeys = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
@@ -258,7 +259,7 @@ const buildingAssets = (options: PrepareWorldAssetOptions): readonly BuildingAss
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: { seed: source.seed, candidate: source.candidate },
-    palettePolicy: "canonical-building",
+    palettePolicy: GENERATED_PALETTE_POLICY,
     alphaPolicy: "transparent-outline-179",
   };
 });
@@ -288,7 +289,7 @@ const foliageAssets = (
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: sourceForFoliage(key, selected),
-    palettePolicy: key === "field_stone" ? "stone-earth" : "foliage-timber",
+    palettePolicy: GENERATED_PALETTE_POLICY,
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
   };
@@ -389,7 +390,6 @@ const parseFoliageCandidate = (value: unknown, key: (typeof TREE_STUMP_KEYS)[num
     sha256: requireString(record, "sha256", `${key} candidate ${candidate}`),
     width: requirePositiveInteger(record, "width", `${key} candidate ${candidate}`),
     height: requirePositiveInteger(record, "height", `${key} candidate ${candidate}`),
-    palette: requireTrue(record, "palette", `${key} candidate ${candidate}`),
     alpha: requireTrue(record, "alpha", `${key} candidate ${candidate}`),
     transparentBackground: requireTrue(record, "transparentBackground", `${key} candidate ${candidate}`),
     bakedGroundShadowAbsent: requireTrue(record, "bakedGroundShadowAbsent", `${key} candidate ${candidate}`),
@@ -442,7 +442,6 @@ const fallbackFoliageSelections = (rawRoot: string): readonly FoliageSelection[]
         sha256: sha256(path.join(rawRoot, "foliage", `${key}_${String(candidate).padStart(2, "0")}.png`)),
         width: spec.width,
         height: spec.height,
-        palette: true,
         alpha: true,
         transparentBackground: true,
         bakedGroundShadowAbsent: true,

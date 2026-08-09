@@ -111,7 +111,7 @@ describe("Stone Town asset generation contracts", () => {
     assert.doesNotMatch(STONE_TOWN_ASSET_GENERATION_CONTRACTS.church.form, /function|implementation|sprite key/u);
   });
 
-  it("rejects missing, extra, wrong-size, non-palette, and baked-background selected PNGs", () => {
+  it("accepts full-colour RGB while rejecting missing, extra, wrong-size, and baked-background selected PNGs", () => {
     const root = selectedFixture();
     try {
       assert.doesNotThrow(() => assertStoneTownSelectedAssetSet(root));
@@ -134,7 +134,7 @@ describe("Stone Town asset generation contracts", () => {
         const offPalette = blank(176, 232);
         fill(offPalette, 12, 12, 40, 40, [1, 2, 3, 255]);
         writePng(path.join(invalid, "keep.png"), offPalette);
-        assert.throws(() => assertStoneTownSelectedAssetSet(invalid), /keep.*non-canonical colour/);
+        assert.doesNotThrow(() => assertStoneTownSelectedAssetSet(invalid));
         const opaqueBackground = blank(176, 232);
         fill(opaqueBackground, 0, 0, 176, 232, rgba(RAMPS.earth[2]));
         writePng(path.join(invalid, "keep.png"), opaqueBackground);

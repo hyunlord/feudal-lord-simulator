@@ -82,16 +82,11 @@ export type SpriteSpec = Dimensions & {
   readonly footprint: Footprint;
 };
 
-export type TerrainPalettePolicy =
-  | "terrain-foliage-earth"
-  | "terrain-foliage-earth-timber"
-  | "terrain-water"
-  | "terrain-stone-slate"
-  | "terrain-earth-timber";
+export type GeneratedAssetPalettePolicy = "full-colour-generated";
 
 export type TerrainSpec = Dimensions & {
   readonly footprint: Footprint;
-  readonly palettePolicy: TerrainPalettePolicy;
+  readonly palettePolicy: GeneratedAssetPalettePolicy;
 };
 
 export const ACCEPTED_REFERENCE_KEYS = ["house_03", "mill_02", "granary_08"] as const;
@@ -130,7 +125,7 @@ export type StoneTownGenerationContract = SpriteSpec & {
   readonly lighting: "upper-left";
   readonly background: "transparent";
   readonly camera: "exact-2:1-isometric";
-  readonly palette: "canonical-muted";
+  readonly colourPolicy: GeneratedAssetPalettePolicy;
   readonly shadow: "no-baked-shadow";
 };
 
@@ -152,7 +147,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
   masonry: {
@@ -162,7 +157,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
   market: {
@@ -172,7 +167,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
   church: {
@@ -182,7 +177,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
   keep: {
@@ -192,7 +187,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
   house_l4: {
@@ -202,7 +197,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
   stone_wall_segment: {
@@ -212,7 +207,7 @@ export const STONE_TOWN_ASSET_GENERATION_CONTRACTS = {
     lighting: "upper-left",
     background: "transparent",
     camera: "exact-2:1-isometric",
-    palette: "canonical-muted",
+    colourPolicy: "full-colour-generated",
     shadow: "no-baked-shadow",
   },
 } as const satisfies Readonly<Record<StoneTownAssetKey, StoneTownGenerationContract>>;
@@ -233,20 +228,20 @@ export const FOLIAGE_SPECS = {
 } as const satisfies Readonly<Record<FoliageKey, SpriteSpec>>;
 
 export const TERRAIN_SPECS = {
-  grass: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "terrain-foliage-earth" },
+  grass: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "full-colour-generated" },
   forest_floor: {
     width: 256,
     height: 256,
     footprint: oneByOne,
-    palettePolicy: "terrain-foliage-earth-timber",
+    palettePolicy: "full-colour-generated",
   },
-  water: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "terrain-water" },
-  rock: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "terrain-stone-slate" },
+  water: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "full-colour-generated" },
+  rock: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "full-colour-generated" },
   packed_earth_road: {
     width: 256,
     height: 256,
     footprint: oneByOne,
-    palettePolicy: "terrain-earth-timber",
+    palettePolicy: "full-colour-generated",
   },
 } as const satisfies Readonly<Record<TerrainKey, TerrainSpec>>;
 
@@ -272,7 +267,6 @@ export const FOLIAGE_CANDIDATE_COUNT = 8;
 
 export type CandidateChecks = Dimensions & {
   readonly sha256: Sha256;
-  readonly palette: true;
   readonly alpha: true;
   readonly transparentBackground: true;
   readonly bakedGroundShadowAbsent: true;
@@ -340,7 +334,7 @@ type BaseAsset<Key extends WorldAssetKey, Category extends string> = {
 };
 
 export type BuildingAsset = BaseAsset<BuildingKey, "building"> & {
-  readonly palettePolicy: "canonical-building";
+  readonly palettePolicy: GeneratedAssetPalettePolicy;
   readonly alphaPolicy: "transparent-outline-179";
 };
 
@@ -352,7 +346,7 @@ export type FoliageVariation = {
 };
 
 export type FoliageAsset = BaseAsset<FoliageKey, "foliage"> & {
-  readonly palettePolicy: "foliage-timber" | "stone-earth";
+  readonly palettePolicy: GeneratedAssetPalettePolicy;
   readonly alphaPolicy: "transparent-outline-179";
   readonly variation: FoliageVariation;
 };
@@ -367,7 +361,7 @@ export type TerrainSeamMetrics = {
 };
 
 export type TerrainAsset = BaseAsset<TerrainKey, "terrain"> & {
-  readonly palettePolicy: TerrainPalettePolicy;
+  readonly palettePolicy: GeneratedAssetPalettePolicy;
   readonly alphaPolicy: "opaque";
   readonly seamMetrics: TerrainSeamMetrics;
 };

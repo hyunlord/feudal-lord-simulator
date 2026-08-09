@@ -2,7 +2,6 @@ import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { CANONICAL_PALETTE, RAMPS } from "../src/content/palette";
 import {
   assertMillHeight,
   assertVisibleWidthBand,
@@ -12,10 +11,8 @@ import {
 } from "./processBuildingSprite";
 import {
   TERRAIN_KEYS,
-  TERRAIN_POLICIES,
   assertTerrainSeams,
   measureTerrainSeams,
-  type TerrainKey,
 } from "./terrainTexturePipeline";
 import {
   BUILDING_KEYS,
@@ -41,12 +38,6 @@ export class WorldAssetVerificationError extends Error {
   }
 }
 
-const rgbKey = (hex: string): string => {
-  const value = Number.parseInt(hex.slice(1), 16);
-  return `${(value >> 16) & 255},${(value >> 8) & 255},${value & 255}`;
-};
-
-const canonicalColours = new Set(CANONICAL_PALETTE.map(rgbKey));
 const NEW_BUILDING_KEYS = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
 ] as const satisfies readonly (keyof typeof BUILDING_SPRITE_CONTRACTS)[];
@@ -87,7 +78,7 @@ const assertTransparentBoundary = (image: RgbaImage, key: string): void => {
   }
 };
 
-const assertCanonicalTransparentSprite = (
+const assertTransparentSprite = (
   image: RgbaImage,
   key: string,
   spec: { readonly width: number; readonly height: number; readonly baselineY: number },
@@ -106,8 +97,6 @@ const assertCanonicalTransparentSprite = (
     }
     if (alpha === 0) continue;
     visiblePixels += 1;
-    const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-    if (!canonicalColours.has(colour)) throw new WorldAssetVerificationError(`${key} has non-canonical colour ${colour}`);
     const pixel = index / 4;
     const y = Math.floor(pixel / image.dimensions.width);
     if (y > spec.baselineY) throw new WorldAssetVerificationError(`${key} has baked shadow or opaque pixel below baseline ${spec.baselineY}`);
@@ -118,7 +107,7 @@ const assertCanonicalTransparentSprite = (
 export const assertStoneTownSelectedAssetSet = (directory: string): void => {
   assertStoneTownSelectedPngSet(directory);
   for (const key of STONE_TOWN_ASSET_KEYS) {
-    assertCanonicalTransparentSprite(readPng(path.join(directory, `${key}.png`)), key, STONE_TOWN_ASSET_SPECS[key]);
+    assertTransparentSprite(readPng(path.join(directory, `${key}.png`)), key, STONE_TOWN_ASSET_SPECS[key]);
   }
 };
 
@@ -131,10 +120,6 @@ const assertPromotedContract = (image: RgbaImage, key: "house_l0" | "mill" | "ba
     const alpha = image.rgba[index + 3];
     if (alpha !== 0 && alpha !== 179 && alpha !== 255) {
       throw new WorldAssetVerificationError(`${key} has unsupported alpha ${String(alpha)}`);
-    }
-    if (alpha !== 0) {
-      const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-      if (!canonicalColours.has(colour)) throw new WorldAssetVerificationError(`${key} has non-canonical colour ${colour}`);
     }
   }
   for (let y = spec.baselineY + 1; y < spec.height; y += 1) {
@@ -186,19 +171,11 @@ const assertSpriteCategories = (repoRoot: string): void => {
   });
 };
 
-const allowedTerrainColours = (key: TerrainKey): ReadonlySet<string> =>
-  new Set(TERRAIN_POLICIES[key].ramps.flatMap((ramp) => RAMPS[ramp]).map(rgbKey));
-
 const assertTerrainCategories = (repoRoot: string): void => {
   for (const key of TERRAIN_KEYS) {
     const image = readPng(path.join(repoRoot, "public", "assets", "terrain", `${key}.png`));
-    const allowed = allowedTerrainColours(key);
     for (let index = 0; index < image.rgba.length; index += 4) {
       if (image.rgba[index + 3] !== 255) throw new WorldAssetVerificationError(`${key} terrain must be opaque`);
-      const colour = `${image.rgba[index]},${image.rgba[index + 1]},${image.rgba[index + 2]}`;
-      if (!allowed.has(colour) && !canonicalColours.has(colour)) {
-        throw new WorldAssetVerificationError(`${key} terrain violates its palette policy`);
-      }
     }
     assertTerrainSeams(measureTerrainSeams(image));
   }

@@ -92,7 +92,7 @@ const stoneTownAsset = (
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: { seed: 64054100 + subject * 100 + candidate, candidate },
-    palettePolicy: "canonical-building",
+    palettePolicy: "full-colour-generated",
     alphaPolicy: "transparent-outline-179",
   } as const;
 };
