@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import type { AutoplayAction } from "../src/engine/autoplay";
@@ -17,6 +16,7 @@ import {
 } from "../src/ui/autoplayPresentation";
 import { formatEconomyHarnessReport, hashEconomyState, runMainEconomyHarness } from "../scripts/economyHarness";
 import { createStage3EconomyHarnessScenario } from "../scripts/economyHarnessStage3Scenario";
+import { trackStage3Run } from "../scripts/economyHarnessStage3Trace";
 
 type TraceAction = {
   readonly tick: number;
@@ -128,10 +128,10 @@ test("Given the current main harness When formatted Then it emits the fourteen c
 test("Given the main harness When report provenance is inspected Then the fourteen rows are advisor-driven without scripted-site wording", () => {
   const report = runMainEconomyHarness([]);
   const output = formatEconomyHarnessReport(report);
-  const metricsSource = readFileSync(new URL("../scripts/economyHarnessMetrics.ts", import.meta.url), "utf8");
-  const traceSource = readFileSync(new URL("../scripts/economyHarnessStage3Trace.ts", import.meta.url), "utf8");
   const provenance = "advisorProvenance" in report ? report.advisorProvenance : null;
   const sources = "metricTraceSources" in report ? report.metricTraceSources : [];
+  const stage3Scenario = createStage3EconomyHarnessScenario({ seed: 3 });
+  const stage3Trace = trackStage3Run(stage3Scenario);
 
   assert.equal(report.metrics.length, 14);
   assert.equal(provenance?.kind, "advisor-runs");
@@ -142,11 +142,20 @@ test("Given the main harness When report provenance is inspected Then the fourte
   assert.equal(sources?.length, 14);
   assert.equal(sources?.slice(0, 9).every((source) => source.traceId === "default"), true);
   assert.equal(sources?.slice(9).every((source) => source.traceId === "stage3-seeded"), true);
+  assert.deepEqual(sources?.map((source) => source.label), report.metrics.map((metric) => metric.label));
+  assert.deepEqual([...new Set(sources?.map((source) => source.source))], [
+    "createAdvisorMetricScenario",
+    "createStage3EconomyHarnessScenario",
+  ]);
   assert.equal(report.metrics.find((metric) => metric.label === "Palisade wall completion")?.status, "PASS");
+  assert.equal(stage3Scenario.constructionSites.length, 0);
+  assert.equal(stage3Trace.advisorProvenance.id, "stage3-seeded");
+  assert.equal(stage3Trace.advisorProvenance.actionCount > 0, true);
+  assert.equal(stage3Trace.proclamationTick, report.stage3.proclamationTick);
+  assert.equal(stage3Trace.wallCompletionElapsedTicks, report.stage3.wallCompletionElapsedTicks);
+  assert.equal(stage3Trace.finalState.palisade?.segments.every((segment) => segment.completed), true);
   assert.doesNotMatch(output, /scripted sites/);
   assert.doesNotMatch(output, /recovery sites/);
-  assert.doesNotMatch(metricsSource, /createConstructionEconomyHarnessScenario|INITIAL_RECOVERY_SITES/);
-  assert.doesNotMatch(traceSource, /confirmPalisadeProclamation\(state, STAGE3_PALISADE_PATH\)/);
 });
 
 test("Given a palisade proclamation action When adapters resolve it Then they share canonical validation", () => {
