@@ -9,6 +9,7 @@ import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PlacementTool } from "./renderer";
 import type { AnchoredWorldSelection } from "./worldSelection";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
+import { interpolatedConstructionProgress } from "./constructionInterpolation";
 import { interpolatedWalkerPositions } from "./walkerInterpolation";
 
 export type CanvasFrameRefs = Readonly<{
@@ -28,7 +29,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   selectedTool: PlacementTool | null;
   overlayMode: OverlayMode;
   selection: AnchoredWorldSelection | null;
-  previousRenderState: Pick<GameState, "walkers">;
+  previousRenderState: Pick<GameState, "constructionSites" | "walkers">;
   interpolationAlpha: () => number;
   highlightedHouseIds: readonly string[];
   palisadeDraft?: PalisadeDraftState | null;
@@ -39,6 +40,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {
     input.refs.feedbackRef.current = null;
   }
+  const interpolationAlpha = input.interpolationAlpha();
   drawGameCanvasFrame({
     context: input.context,
     state: input.state,
@@ -56,7 +58,12 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     renderWalkers: interpolatedWalkerPositions({
       previous: input.previousRenderState,
       current: input.state,
-      alpha: input.interpolationAlpha(),
+      alpha: interpolationAlpha,
+    }),
+    constructionProgress: interpolatedConstructionProgress({
+      previous: input.previousRenderState.constructionSites,
+      current: input.state.constructionSites,
+      alpha: interpolationAlpha,
     }),
     highlightedHouseIds: input.highlightedHouseIds,
     palisadeDraft: input.palisadeDraft ?? null,

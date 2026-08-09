@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import type { EconomyStockTotals } from "./ledgerModel";
 import type { PlacementTool } from "../render/renderer";
 import { KO_UI } from "../content/locale.ko";
@@ -11,6 +13,12 @@ import type { OnboardingTaskView } from "./onboardingTaskModel";
 import { PopulationEventPanel } from "./PopulationEventPanel";
 import type { PopulationEvent } from "./populationEventModel";
 import { settlementGuidance } from "./settlementGuidanceModel";
+import {
+  createResourceCounterTween,
+  resourceCounterValues,
+  retargetResourceCounterTween,
+  type ResourceCounterTween,
+} from "./resourceCounterTween";
 
 type CourtLedgerProps = {
   readonly tick: number;
@@ -24,7 +32,13 @@ type CourtLedgerProps = {
   readonly populationDrawerOpen?: boolean;
   readonly onPopulationDrawerToggle?: () => void;
   readonly onSelectPopulationHouseIds?: (houseIds: readonly string[]) => void;
+  readonly nowMs?: number;
 };
+
+type LedgerResourceValues = Pick<
+  EconomyStockTotals,
+  "timber" | "coin" | "wheat" | "bread" | "logs"
+>;
 
 type LedgerLabelProps = {
   readonly full: string;
@@ -48,12 +62,39 @@ export function CourtLedger({
   populationDrawerOpen = false,
   onPopulationDrawerToggle,
   onSelectPopulationHouseIds = () => undefined,
+  nowMs,
 }: CourtLedgerProps) {
   const selectedName =
     selectedTool === null
       ? "없음"
       : BUILD_TOOL_OPTIONS.find((option) => option.tool === selectedTool)?.label ?? selectedTool;
-  const timberTotal = stockTotals?.timber ?? timber;
+  const resourceTargets: LedgerResourceValues = {
+    timber: stockTotals?.timber ?? timber,
+    coin: stockTotals?.coin ?? coin,
+    wheat: stockTotals?.wheat ?? 0,
+    bread: stockTotals?.bread ?? 0,
+    logs: stockTotals?.logs ?? 0,
+  };
+  const resourceTweenRef = useRef<ResourceCounterTween | null>(null);
+  if (resourceTweenRef.current === null) {
+    resourceTweenRef.current = createResourceCounterTween(resourceTargets, nowMs ?? 0);
+  } else if (nowMs !== undefined) {
+    resourceTweenRef.current = retargetResourceCounterTween(
+      resourceTweenRef.current,
+      resourceTargets,
+      nowMs,
+    );
+  }
+  const tweenedResources = nowMs === undefined
+    ? resourceTargets
+    : resourceCounterValues(resourceTweenRef.current, nowMs);
+  const displayedResources: LedgerResourceValues = {
+    timber: tweenedResources.timber ?? 0,
+    coin: tweenedResources.coin ?? 0,
+    wheat: tweenedResources.wheat ?? 0,
+    bread: tweenedResources.bread ?? 0,
+    logs: tweenedResources.logs ?? 0,
+  };
 
   return (
     <>
@@ -71,15 +112,15 @@ export function CourtLedger({
           </button>
         )}
         <dl>
-          <LedgerRow full={KO_UI.ledger.timber} compact={KO_UI.ledger.timber} value={timberTotal} />
-          <LedgerRow full={KO_UI.ledger.coin} compact={KO_UI.ledger.coin} value={stockTotals?.coin ?? coin} />
+          <LedgerRow full={KO_UI.ledger.timber} compact={KO_UI.ledger.timber} value={displayedResources.timber} />
+          <LedgerRow full={KO_UI.ledger.coin} compact={KO_UI.ledger.coin} value={displayedResources.coin} />
           {population !== undefined ? <LedgerRow full={KO_UI.ledger.population} compact={KO_UI.ledger.population} value={population} /> : null}
           {idleWorkers !== undefined ? <LedgerRow full={KO_UI.ledger.idle} compact={KO_UI.ledger.idle} value={idleWorkers} /> : null}
           {stockTotals !== undefined ? (
             <>
-              <LedgerRow full={KO_UI.ledger.wheat} compact={KO_UI.ledger.wheat} value={stockTotals.wheat} secondary />
-              <LedgerRow full={KO_UI.ledger.bread} compact={KO_UI.ledger.bread} value={stockTotals.bread} secondary />
-              <LedgerRow full={KO_UI.ledger.logs} compact={KO_UI.ledger.logs} value={stockTotals.logs} secondary />
+              <LedgerRow full={KO_UI.ledger.wheat} compact={KO_UI.ledger.wheat} value={displayedResources.wheat} secondary />
+              <LedgerRow full={KO_UI.ledger.bread} compact={KO_UI.ledger.bread} value={displayedResources.bread} secondary />
+              <LedgerRow full={KO_UI.ledger.logs} compact={KO_UI.ledger.logs} value={displayedResources.logs} secondary />
             </>
           ) : null}
           <LedgerRow full={KO_UI.ledger.tick} compact={KO_UI.ledger.tick} value={tick} secondary />

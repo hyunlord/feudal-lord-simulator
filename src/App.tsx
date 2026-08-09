@@ -262,6 +262,7 @@ export function App() {
                 stockTotals={stockTotals}
                 populationEvents={populationEvents}
                 populationDrawerOpen={populationDrawerOpen}
+                nowMs={presentationNowMs}
                 onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
                 onSelectPopulationHouseIds={setHighlightedHouseIds}
               />
