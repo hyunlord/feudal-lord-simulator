@@ -227,22 +227,14 @@ export const FOLIAGE_SPECS = {
   field_stone: { width: 24, height: 16, baselineY: 16, footprint: oneByOne },
 } as const satisfies Readonly<Record<FoliageKey, SpriteSpec>>;
 
+const terrainTexture = { width: 512, height: 512, footprint: oneByOne, palettePolicy: "full-colour-generated" } as const;
+
 export const TERRAIN_SPECS = {
-  grass: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "full-colour-generated" },
-  forest_floor: {
-    width: 256,
-    height: 256,
-    footprint: oneByOne,
-    palettePolicy: "full-colour-generated",
-  },
-  water: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "full-colour-generated" },
-  rock: { width: 256, height: 256, footprint: oneByOne, palettePolicy: "full-colour-generated" },
-  packed_earth_road: {
-    width: 256,
-    height: 256,
-    footprint: oneByOne,
-    palettePolicy: "full-colour-generated",
-  },
+  grass: terrainTexture,
+  forest_floor: terrainTexture,
+  water: terrainTexture,
+  rock: terrainTexture,
+  packed_earth_road: terrainTexture,
 } as const satisfies Readonly<Record<TerrainKey, TerrainSpec>>;
 
 export type Anchor = {

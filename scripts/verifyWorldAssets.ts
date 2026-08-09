@@ -10,6 +10,15 @@ import {
   type RgbaImage,
 } from "./processBuildingSprite";
 import {
+  assertPhase13AcceptedVisualFloors,
+  assertPhase13FullColourVisualFloors,
+  assertPhase13ReleaseEvidence,
+  acceptedKeySet,
+  readPhase13AcceptedRelease,
+  type Phase13AcceptedRelease,
+  type Phase13ReleaseMode,
+} from "./phase13AcceptedRelease";
+import {
   TERRAIN_KEYS,
   assertTerrainSeams,
   measureTerrainSeams,
@@ -24,6 +33,7 @@ import {
   type WorldAssetManifest,
 } from "./worldAssetContracts";
 import { assertWorldAssetFiles, parseWorldAssetManifest } from "./worldAssetManifest";
+import { assertRuntimeWorldAssetManifest } from "./worldAssetRuntimeManifest";
 import {
   BUILDING_SPRITE_CONTRACTS,
   FOLIAGE_SPRITE_CONTRACTS,
@@ -37,6 +47,12 @@ export class WorldAssetVerificationError extends Error {
     this.name = "WorldAssetVerificationError";
   }
 }
+
+export type VerifyWorldAssetMode = Phase13ReleaseMode;
+export type VerifyWorldAssetOptions = {
+  readonly mode?: VerifyWorldAssetMode;
+  readonly acceptedRelease?: Phase13AcceptedRelease;
+};
 
 const NEW_BUILDING_KEYS = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
@@ -56,10 +72,6 @@ const assertExactPngSet = (directory: string, expectedKeys: readonly string[]): 
   }
   const missing = expected.filter((name) => !actual.includes(name));
   if (missing.length > 0) throw new WorldAssetVerificationError(`missing PNG in ${directory}: ${missing.join(",")}`);
-};
-
-const assertStoneTownSelectedPngSet = (directory: string): void => {
-  assertExactPngSet(directory, STONE_TOWN_ASSET_KEYS);
 };
 
 const assertTransparentBoundary = (image: RgbaImage, key: string): void => {
@@ -105,7 +117,7 @@ const assertTransparentSprite = (
 };
 
 export const assertStoneTownSelectedAssetSet = (directory: string): void => {
-  assertStoneTownSelectedPngSet(directory);
+  assertExactPngSet(directory, STONE_TOWN_ASSET_KEYS);
   for (const key of STONE_TOWN_ASSET_KEYS) {
     assertTransparentSprite(readPng(path.join(directory, `${key}.png`)), key, STONE_TOWN_ASSET_SPECS[key]);
   }
@@ -146,10 +158,18 @@ const assertStablePromotions = (repoRoot: string, phase4bRoot: string): void => 
   }
 };
 
-const assertSpriteCategories = (repoRoot: string): void => {
+const assertSpriteCategories = (
+  repoRoot: string,
+  mode: VerifyWorldAssetMode,
+  acceptedRelease?: Phase13AcceptedRelease,
+): void => {
+  const accepted = mode === "phase13-partial-accepted-release" && acceptedRelease !== undefined
+    ? acceptedKeySet(acceptedRelease)
+    : null;
   const buildings = path.join(repoRoot, "public", "assets", "buildings");
   for (const key of [...NEW_BUILDING_KEYS, ...STONE_TOWN_ASSET_KEYS]) {
-    assertSpriteContract(readPng(path.join(buildings, `${key}.png`)), key);
+    const image = readPng(path.join(buildings, `${key}.png`));
+    assertSpriteContract(image, key);
   }
   const foliage = path.join(repoRoot, "public", "assets", "foliage");
   for (const key of RELEASE_FOLIAGE_KEYS) {
@@ -160,19 +180,32 @@ const assertSpriteCategories = (repoRoot: string): void => {
     mill: readPng(path.join(buildings, "mill.png")),
     barn: readPng(path.join(buildings, "barn.png")),
   };
-  assertPromotedContract(promoted.house_l0, "house_l0");
-  assertPromotedContract(promoted.mill, "mill");
-  assertPromotedContract(promoted.barn, "barn");
-  assertHouseHeightProgression({
-    house_l0: promoted.house_l0,
-    house_l1: readPng(path.join(buildings, "house_l1.png")),
-    house_l2: readPng(path.join(buildings, "house_l2.png")),
-    house_l3: readPng(path.join(buildings, "house_l3.png")),
-  });
+  if (accepted?.has("house_l0")) assertTransparentSprite(promoted.house_l0, "house_l0", BUILDING_SPECS.house_l0);
+  else assertPromotedContract(promoted.house_l0, "house_l0");
+  if (accepted?.has("mill")) assertTransparentSprite(promoted.mill, "mill", BUILDING_SPECS.mill);
+  else assertPromotedContract(promoted.mill, "mill");
+  if (accepted?.has("barn")) assertTransparentSprite(promoted.barn, "barn", BUILDING_SPECS.barn);
+  else assertPromotedContract(promoted.barn, "barn");
+  if (mode !== "phase13-partial-accepted-release") {
+    assertHouseHeightProgression({
+      house_l0: promoted.house_l0,
+      house_l1: readPng(path.join(buildings, "house_l1.png")),
+      house_l2: readPng(path.join(buildings, "house_l2.png")),
+      house_l3: readPng(path.join(buildings, "house_l3.png")),
+    });
+  }
 };
 
-const assertTerrainCategories = (repoRoot: string): void => {
+const assertTerrainCategories = (
+  repoRoot: string,
+  mode: VerifyWorldAssetMode,
+  acceptedRelease?: Phase13AcceptedRelease,
+): void => {
+  const accepted = mode === "phase13-partial-accepted-release" && acceptedRelease !== undefined
+    ? acceptedKeySet(acceptedRelease)
+    : null;
   for (const key of TERRAIN_KEYS) {
+    if (accepted !== null && !accepted.has(key)) continue;
     const image = readPng(path.join(repoRoot, "public", "assets", "terrain", `${key}.png`));
     for (let index = 0; index < image.rgba.length; index += 4) {
       if (image.rgba[index + 3] !== 255) throw new WorldAssetVerificationError(`${key} terrain must be opaque`);
@@ -181,16 +214,26 @@ const assertTerrainCategories = (repoRoot: string): void => {
   }
 };
 
-export const verifyWorldAssets = (repoRoot: string, phase4bRoot: string): WorldAssetManifest => {
+export const verifyWorldAssets = (repoRoot: string, phase4bRoot: string, options: VerifyWorldAssetOptions = {}): WorldAssetManifest => {
+  const mode = options.mode ?? "legacy-promotions";
   const manifestPath = path.join(repoRoot, "public", "assets", "world_asset_manifest.json");
   const manifest = parseWorldAssetManifest(JSON.parse(readFileSync(manifestPath, "utf8")));
   assertWorldAssetFiles(manifest, repoRoot);
+  assertRuntimeWorldAssetManifest(repoRoot, manifest);
   assertExactPngSet(path.join(repoRoot, "public", "assets", "buildings"), BUILDING_KEYS);
   assertExactPngSet(path.join(repoRoot, "public", "assets", "foliage"), FOLIAGE_KEYS);
   assertExactPngSet(path.join(repoRoot, "public", "assets", "terrain"), Object.keys(TERRAIN_SPECS));
-  assertSpriteCategories(repoRoot);
-  assertTerrainCategories(repoRoot);
-  assertStablePromotions(repoRoot, phase4bRoot);
+  assertSpriteCategories(repoRoot, mode, options.acceptedRelease);
+  assertTerrainCategories(repoRoot, mode, options.acceptedRelease);
+  if (mode === "legacy-promotions") assertStablePromotions(repoRoot, phase4bRoot);
+  if (mode === "phase13-full-colour") assertPhase13FullColourVisualFloors(repoRoot);
+  if (mode === "phase13-partial-accepted-release") {
+    if (options.acceptedRelease === undefined) {
+      throw new WorldAssetVerificationError("phase13-partial-accepted-release verification requires acceptedRelease");
+    }
+    assertPhase13ReleaseEvidence(repoRoot, options.acceptedRelease);
+    assertPhase13AcceptedVisualFloors(repoRoot, options.acceptedRelease);
+  }
   return manifest;
 };
 
@@ -198,10 +241,26 @@ const main = (): number => { // no-excuse-ok: catch
   try {
     const repoRoot = process.argv[2];
     const phase4bRoot = process.argv[3];
+    const mode = process.argv[4];
+    const acceptedReleasePath = process.argv[5];
     if (repoRoot === undefined || phase4bRoot === undefined) {
-      throw new WorldAssetVerificationError("Usage: tsx scripts/verifyWorldAssets.ts <repo-root> <phase4b-root>");
+      throw new WorldAssetVerificationError(
+        "Usage: tsx scripts/verifyWorldAssets.ts <repo-root> <phase4b-root> [--phase13-full-colour|--phase13-accepted-release <accepted.json>]",
+      );
     }
-    verifyWorldAssets(repoRoot, phase4bRoot);
+    if (mode === "--phase13-accepted-release" && acceptedReleasePath === undefined) {
+      throw new WorldAssetVerificationError("--phase13-accepted-release requires an accepted release JSON path");
+    }
+    if (mode === "--phase13-accepted-release") {
+      verifyWorldAssets(repoRoot, phase4bRoot, {
+        mode: "phase13-partial-accepted-release",
+        acceptedRelease: readPhase13AcceptedRelease(acceptedReleasePath as string),
+      });
+    } else {
+      verifyWorldAssets(repoRoot, phase4bRoot, {
+        mode: mode === "--phase13-full-colour" ? "phase13-full-colour" : "legacy-promotions",
+      });
+    }
     writeFileSync(1, "World asset release verification passed\n");
     return 0;
   } catch (caught) {

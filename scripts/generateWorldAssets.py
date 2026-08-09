@@ -35,6 +35,12 @@ class Category(StrEnum):
     TERRAIN = "terrain"
 
 
+class GenerationProfile(StrEnum):
+    PHASE4C = "phase4c"
+    PHASE10 = "phase10"
+    PHASE13_FULL_COLOUR = "phase13-full-colour"
+
+
 @dataclass(frozen=True, slots=True)
 class Job:
     category: Category
@@ -42,6 +48,7 @@ class Job:
     geometry: str
     seed: Seed
     candidate: int
+    profile: GenerationProfile = GenerationProfile.PHASE4C
 
 
 COMFY_ROOT: Final = Path(os.environ.get("COMFYUI_ROOT", str(Path.home() / "ComfyUI")))
@@ -65,9 +72,19 @@ BASE_PROMPT: Final = (
     "upper-left light, coherent muted plaster timber stone thatch slate material vocabulary, crisp readable silhouette, "
     "matching the supplied reference family, centered with generous padding, transparent release background, no baked ground shadow"
 )
+PHASE13_BUILDING_PROMPT: Final = (
+    "exactly one subject only, one isolated medieval European object, full-colour hand-painted game asset, exact 2:1 isometric camera from upper-left, "
+    "upper-left light, rich local material colour variation across plaster timber stone thatch slate details, crisp readable silhouette, "
+    "matching the supplied reference family, centered with generous padding, transparent release background, no baked ground shadow"
+)
 FOLIAGE_PROMPT: Final = (
     "exactly one subject only, one isolated painterly pixel-art woodland game asset, exact 2:1 isometric camera from upper-left, "
     "upper-left light, organic foliage and timber material detail, crisp readable silhouette matching the supplied reference family's "
+    "muted colour temperature and edge treatment, centered with generous padding"
+)
+PHASE13_FOLIAGE_PROMPT: Final = (
+    "exactly one subject only, one isolated full-colour hand-painted woodland game asset, exact 2:1 isometric camera from upper-left, "
+    "upper-left light, organic foliage and timber material detail with rich local colour variation, crisp readable silhouette matching the supplied reference family's "
     "muted colour temperature and edge treatment, centered with generous padding"
 )
 NEGATIVE_PROMPT: Final = (
@@ -75,7 +92,13 @@ NEGATIVE_PROMPT: Final = (
     "settlement, second structure, multiple objects, variants, grid, contact sheet, sprite sheet, asset collection, "
     "perspective mismatch, cast shadow, contact shadow, floor plane, gradient background"
 )
+PHASE13_NEGATIVE_SUFFIX: Final = "pixelated, pixel-art, palette quantisation, indexed colour, posterized bands, do not reduce to a limited palette"
 
+BASE_BUILDING_GEOMETRY: Final = {
+    "house_l0": "a modest one-room timber-framed peasant cottage, simple thatch roof, one small window, plain wooden door",
+    "mill": "a compact timber water mill with a turning wheel, small stone base, steep thatch roof, flour sacks near the door",
+    "barn": "a broad timber granary barn with double doors, thatch roof, hay loft vent, plank wall rhythm",
+}
 BUILDING_GEOMETRY: Final = {
     "house_l1": "a slightly larger timber-framed cottage, two windows, taller thatch roof, small chimney",
     "house_l2": "a two-storey timber-framed townhouse, plaster infill, shingle roof, upper-floor windows",
@@ -127,6 +150,41 @@ TERRAIN_GEOMETRY: Final = {
     "water": "seamless tileable calm shallow water texture with subtle ripples, low contrast, no shoreline",
     "rock": "seamless tileable weathered rock texture, low contrast, no loose objects",
     "packed_earth_road": "seamless tileable packed earth road texture, low contrast, no road edges or markings",
+}
+PHASE13_TERRAIN_GEOMETRY: Final = {
+    "grass": "seamless tileable full-colour meadow grass texture with small irregular bare-earth patches, varied blade clusters, low contrast, no objects",
+    "forest_floor": "seamless tileable full-colour forest floor texture with restrained leaf litter, moss, twigs, and dappled shade, low contrast, no objects",
+    "water": "seamless tileable full-colour shallow water texture with subtle ripples, darker-centre depth, low contrast, no shoreline",
+    "rock": "seamless tileable full-colour weathered rock texture with lichen flecks and small scree, low contrast, no loose objects",
+    "packed_earth_road": "seamless tileable full-colour packed earth road texture with cart ruts, pebbles, and a worn centre, low contrast, no road edges or paving stones",
+}
+PHASE13_BUILDING_GEOMETRY: Final = {
+    "house_l0": BASE_BUILDING_GEOMETRY["house_l0"],
+    "house_l1": BUILDING_GEOMETRY["house_l1"],
+    "house_l2": BUILDING_GEOMETRY["house_l2"],
+    "house_l3": BUILDING_GEOMETRY["house_l3"],
+    "mill": BASE_BUILDING_GEOMETRY["mill"],
+    "barn": BASE_BUILDING_GEOMETRY["barn"],
+    "well": BUILDING_GEOMETRY["well"],
+    "storehouse": BUILDING_GEOMETRY["storehouse"],
+    "wheat_farm": BUILDING_GEOMETRY["wheat_farm"],
+    "logging_camp": BUILDING_GEOMETRY["logging_camp"],
+    "sawmill": BUILDING_GEOMETRY["sawmill"],
+    **STONE_TOWN_BUILDING_GEOMETRY,
+}
+PHASE13_BUILDING_SPECS: Final = {
+    "house_l0": (96, 112),
+    "house_l1": (96, 120),
+    "house_l2": (96, 144),
+    "house_l3": (160, 192),
+    "mill": (96, 160),
+    "barn": (160, 144),
+    "well": (72, 80),
+    "storehouse": (160, 136),
+    "wheat_farm": (160, 96),
+    "logging_camp": (96, 104),
+    "sawmill": (112, 112),
+    **STONE_TOWN_BUILDING_SPECS,
 }
 PHASE10_TREE_GEOMETRY: Final = {
     "tree_oak_large": "mature oak, broad irregular canopy with gaps of sky showing through, thick trunk splitting into limbs",
@@ -193,6 +251,26 @@ def _build_phase10_surface_jobs() -> tuple[Job, ...]:
 PHASE10_SURFACE_JOBS: Final = _build_phase10_surface_jobs()
 PHASE10_SURFACE_TARGET: Final = "phase10:surface_assets"
 PHASE10_SURFACE_TARGET_PREFIX: Final = "phase10:surface_asset:"
+PHASE13_FULL_COLOUR_TARGET: Final = "phase13:full_colour_world_assets"
+PHASE13_FULL_COLOUR_TARGET_PREFIX: Final = "phase13:world_asset:"
+
+
+def _build_phase13_full_colour_jobs() -> tuple[Job, ...]:
+    jobs: list[Job] = []
+    sequence = 1
+    for key, geometry in PHASE13_BUILDING_GEOMETRY.items():
+        jobs.append(Job(Category.BUILDING, key, geometry, Seed(71300000 + sequence), 1, GenerationProfile.PHASE13_FULL_COLOUR))
+        sequence += 1
+    for key, geometry in FOLIAGE_GEOMETRY.items():
+        jobs.append(Job(Category.FOLIAGE, key, geometry, Seed(71300000 + sequence), 1, GenerationProfile.PHASE13_FULL_COLOUR))
+        sequence += 1
+    for key, geometry in PHASE13_TERRAIN_GEOMETRY.items():
+        jobs.append(Job(Category.TERRAIN, key, geometry, Seed(71300000 + sequence), 1, GenerationProfile.PHASE13_FULL_COLOUR))
+        sequence += 1
+    return tuple(jobs)
+
+
+PHASE13_FULL_COLOUR_JOBS: Final = _build_phase13_full_colour_jobs()
 
 
 class GeneratorContractError(RuntimeError):
@@ -215,9 +293,11 @@ def api_json(path: str, body: dict[str, JsonValue] | None = None) -> dict[str, J
 
 
 def _prompt_text(job: Job) -> tuple[str, str]:
+    negative_prompt = NEGATIVE_PROMPT if job.profile is not GenerationProfile.PHASE13_FULL_COLOUR else f"{NEGATIVE_PROMPT}, {PHASE13_NEGATIVE_SUFFIX}"
     match job.category:
         case Category.BUILDING:
-            return f"{BASE_PROMPT}, {job.geometry}, perfectly flat uniform #00FFFF chroma field", NEGATIVE_PROMPT
+            prompt = BASE_PROMPT if job.profile is not GenerationProfile.PHASE13_FULL_COLOUR else PHASE13_BUILDING_PROMPT
+            return f"{prompt}, {job.geometry}, perfectly flat uniform #00FFFF chroma field", negative_prompt
         case Category.FOLIAGE:
             if job.key.startswith("shrub_"):
                 subject_constraint = "one ankle-high trunkless bush made only of connected leafy clumps, distinctly wider than tall, no ground beneath it"
@@ -243,16 +323,19 @@ def _prompt_text(job: Job) -> tuple[str, str]:
                 material_constraint = "foliage and timber colours only"
                 extra_negative = "stone,"
             return (
-                f"{FOLIAGE_PROMPT}, {job.geometry}, {subject_constraint}, {material_constraint}, "
+                f"{FOLIAGE_PROMPT if job.profile is not GenerationProfile.PHASE13_FULL_COLOUR else PHASE13_FOLIAGE_PROMPT}, {job.geometry}, {subject_constraint}, {material_constraint}, "
                 "upper-left light, no baked ground shadow, perfectly flat uniform #00FFFF chroma field",
-                f"{NEGATIVE_PROMPT}, architecture, building, {extra_negative} plaster, slate, forest scene, landscape, diorama, "
+                f"{negative_prompt}, architecture, building, {extra_negative} plaster, slate, forest scene, landscape, diorama, "
                 "terrain island, cliff, ground, grass field, multiple trees",
             )
         case Category.TERRAIN:
+            terrain_lead = "full-colour tileable material sample" if job.profile is GenerationProfile.PHASE13_FULL_COLOUR else "top-down orthographic material sample"
             return (
-                f"{job.geometry}, top-down orthographic material sample, periodic edges, seamless 2x2 joins, "
+                f"{job.geometry}, {terrain_lead}, periodic edges, seamless 2x2 joins, "
                 "matching the supplied muted reference family",
-                "objects, buildings, trees, horizon, perspective, border, frame, text, high contrast, directional shadow",
+                f"objects, buildings, trees, horizon, perspective, border, frame, text, high contrast, directional shadow, {PHASE13_NEGATIVE_SUFFIX}"
+                if job.profile is GenerationProfile.PHASE13_FULL_COLOUR
+                else "objects, buildings, trees, horizon, perspective, border, frame, text, high contrast, directional shadow",
             )
         case unreachable:
             assert_never(unreachable)
@@ -271,6 +354,8 @@ def _style_condition(category: Category) -> tuple[float, float]:
 
 
 def _job_dimensions(job: Job) -> tuple[int, int] | None:
+    if job.profile is GenerationProfile.PHASE13_FULL_COLOUR and job.category is Category.BUILDING:
+        return PHASE13_BUILDING_SPECS[job.key]
     if job.category is Category.BUILDING and job.key in STONE_TOWN_BUILDING_SPECS:
         return STONE_TOWN_BUILDING_SPECS[job.key]
     phase10_dimensions = PHASE10_SURFACE_DIMENSIONS.get(job.key)
@@ -282,7 +367,8 @@ def _job_dimensions(job: Job) -> tuple[int, int] | None:
 def workflow_prompt(job: Job, reference_names: tuple[str, str, str], guide_name: str | None) -> Workflow:
     positive, negative = _prompt_text(job)
     style_weight, style_end = _style_condition(job.category)
-    prefix = f"phase4c/{job.category.value}/{job.key}_{job.candidate:02d}"
+    prefix_root = "phase13" if job.profile is GenerationProfile.PHASE13_FULL_COLOUR else "phase4c"
+    prefix = f"{prefix_root}/{job.category.value}/{job.key}_{job.candidate:02d}"
     latent_node: JsonValue = ["8", 0]
     decoded_node: JsonValue = ["10", 0]
     workflow: Workflow = {
@@ -375,11 +461,29 @@ def build_subject_guide(job: Job) -> Image.Image:
                 draw.polygon(((355, 690), (470, 575), (650, 625), (690, 735), (560, 790), (380, 760)), fill=earth)
         case Category.BUILDING:
             match job.key:
+                case "house_l0":
+                    draw.polygon(((330, 555), (512, 420), (700, 555), (700, 800), (512, 895), (330, 800)), fill=wall)
+                    draw.polygon(((300, 540), (512, 330), (730, 540), (512, 650)), fill=roof)
+                    draw.rectangle((455, 690, 560, 810), fill=dark)
+                    draw.rectangle((585, 620, 640, 675), fill=earth)
                 case "well":
                     draw.ellipse((250, 600, 774, 800), fill=wall)
                     draw.rectangle((300, 420, 350, 660), fill=dark)
                     draw.rectangle((674, 420, 724, 660), fill=dark)
                     draw.polygon(((240, 430), (512, 330), (784, 430), (512, 540)), fill=roof)
+                case "mill":
+                    draw.polygon(((305, 535), (512, 385), (725, 535), (725, 790), (512, 900), (305, 790)), fill=wall)
+                    draw.polygon(((275, 520), (512, 315), (755, 520), (512, 650)), fill=roof)
+                    draw.ellipse((185, 555, 365, 735), outline=dark, width=34)
+                    draw.line((275, 565, 275, 725), fill=dark, width=18)
+                    draw.line((205, 645, 345, 645), fill=dark, width=18)
+                    draw.rectangle((455, 690, 560, 820), fill=dark)
+                case "barn":
+                    draw.polygon(((185, 570), (512, 385), (850, 570), (850, 795), (512, 910), (185, 795)), fill=wall)
+                    draw.polygon(((145, 545), (512, 280), (890, 545), (512, 690)), fill=roof)
+                    draw.rectangle((430, 650, 610, 845), fill=dark)
+                    draw.rectangle((240, 625, 345, 700), fill=earth)
+                    draw.rectangle((680, 625, 785, 700), fill=earth)
                 case "wheat_farm":
                     draw.polygon(((120, 600), (500, 410), (905, 610), (520, 820)), fill=earth)
                     draw.rectangle((155, 430, 330, 620), fill=wall)
@@ -552,6 +656,15 @@ def selected_jobs(targets: frozenset[str] | None) -> tuple[Job, ...]:
         return JOBS
     if targets == frozenset({PHASE10_SURFACE_TARGET}):
         return PHASE10_SURFACE_JOBS
+    if targets == frozenset({PHASE13_FULL_COLOUR_TARGET}):
+        return PHASE13_FULL_COLOUR_JOBS
+    if all(target.startswith(PHASE13_FULL_COLOUR_TARGET_PREFIX) for target in targets):
+        requested_keys = {target.removeprefix(PHASE13_FULL_COLOUR_TARGET_PREFIX) for target in targets}
+        valid_keys = {job.key for job in PHASE13_FULL_COLOUR_JOBS}
+        unknown = sorted(requested_keys - valid_keys)
+        if unknown:
+            raise GeneratorContractError(f"Unknown Phase13 world asset target(s): {', '.join(unknown)}")
+        return tuple(job for job in PHASE13_FULL_COLOUR_JOBS if job.key in requested_keys)
     if all(target.startswith(PHASE10_SURFACE_TARGET_PREFIX) for target in targets):
         requested_keys = {target.removeprefix(PHASE10_SURFACE_TARGET_PREFIX) for target in targets}
         valid_keys = {job.key for job in PHASE10_SURFACE_JOBS}
@@ -578,6 +691,8 @@ def _release_name(job: Job) -> str:
 
 
 def _dry_run_release_name(job: Job, targets: frozenset[str] | None) -> str:
+    if job.profile is GenerationProfile.PHASE13_FULL_COLOUR:
+        return _release_name(job)
     if targets == frozenset({PHASE10_SURFACE_TARGET}) or (
         targets is not None and all(target.startswith(PHASE10_SURFACE_TARGET_PREFIX) for target in targets)
     ):
@@ -589,6 +704,7 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
     jobs = selected_jobs(targets)
     tree_stump_jobs = [job for job in JOBS if job.category is Category.FOLIAGE and job.key in TREE_STUMP_GEOMETRY]
     stone_town_jobs = [job for job in jobs if job.category is Category.BUILDING and job.key in STONE_TOWN_BUILDING_GEOMETRY]
+    phase13_jobs = [job for job in jobs if job.profile is GenerationProfile.PHASE13_FULL_COLOUR]
     return {
         "summary": {
             "catalogJobs": len(JOBS),
@@ -599,6 +715,7 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
             "stoneTownCandidates": len(stone_town_jobs),
             "phase10SurfaceGroups": 11 if targets == frozenset({"phase10:surface_assets"}) else 0,
             "phase10SurfaceCandidates": len(jobs) if targets == frozenset({"phase10:surface_assets"}) else 0,
+            "phase13FullColourAssets": len(phase13_jobs),
             "comfyuiRequests": 0,
         },
         "jobs": [
@@ -610,6 +727,7 @@ def dry_run_manifest(targets: frozenset[str] | None = None) -> dict[str, JsonVal
                 "geometry": job.geometry,
                 "batchSize": 1,
                 "referenceKeys": ["house_03", "mill_02", "granary_08"],
+                "palettePolicy": "full-colour-generated" if job.profile is GenerationProfile.PHASE13_FULL_COLOUR else "phase4c-reference-family",
                 **({"width": _job_dimensions(job)[0], "height": _job_dimensions(job)[1]} if _job_dimensions(job) is not None else {}),
                 "sourcePath": (Path(job.category.value) / _dry_run_release_name(job, targets)).as_posix(),
             }

@@ -166,6 +166,111 @@ export const runtimeWorldAssetManifest = {
       }
     },
     {
+      "key": "quarry",
+      "category": "building",
+      "path": "public/assets/buildings/quarry.png",
+      "width": 160,
+      "height": 120,
+      "anchor": {
+        "x": 80,
+        "y": 104
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "key": "masonry",
+      "category": "building",
+      "path": "public/assets/buildings/masonry.png",
+      "width": 112,
+      "height": 120,
+      "anchor": {
+        "x": 56,
+        "y": 104
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "key": "market",
+      "category": "building",
+      "path": "public/assets/buildings/market.png",
+      "width": 176,
+      "height": 136,
+      "anchor": {
+        "x": 88,
+        "y": 120
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "key": "church",
+      "category": "building",
+      "path": "public/assets/buildings/church.png",
+      "width": 176,
+      "height": 208,
+      "anchor": {
+        "x": 88,
+        "y": 192
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "key": "keep",
+      "category": "building",
+      "path": "public/assets/buildings/keep.png",
+      "width": 176,
+      "height": 232,
+      "anchor": {
+        "x": 88,
+        "y": 216
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      }
+    },
+    {
+      "key": "house_l4",
+      "category": "building",
+      "path": "public/assets/buildings/house_l4.png",
+      "width": 112,
+      "height": 160,
+      "anchor": {
+        "x": 56,
+        "y": 144
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
+      "key": "stone_wall_segment",
+      "category": "building",
+      "path": "public/assets/buildings/stone_wall_segment.png",
+      "width": 96,
+      "height": 80,
+      "anchor": {
+        "x": 48,
+        "y": 78
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      }
+    },
+    {
       "key": "tree_oak_large",
       "category": "foliage",
       "path": "public/assets/foliage/tree_oak_large.png",
@@ -364,8 +469,8 @@ export const runtimeWorldAssetManifest = {
       "key": "forest_floor",
       "category": "terrain",
       "path": "public/assets/terrain/forest_floor.png",
-      "width": 256,
-      "height": 256,
+      "width": 512,
+      "height": 512,
       "anchor": {
         "x": 0,
         "y": 0
@@ -394,8 +499,8 @@ export const runtimeWorldAssetManifest = {
       "key": "rock",
       "category": "terrain",
       "path": "public/assets/terrain/rock.png",
-      "width": 256,
-      "height": 256,
+      "width": 512,
+      "height": 512,
       "anchor": {
         "x": 0,
         "y": 0
@@ -414,111 +519,6 @@ export const runtimeWorldAssetManifest = {
       "anchor": {
         "x": 0,
         "y": 0
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "key": "quarry",
-      "category": "building",
-      "path": "public/assets/buildings/quarry.png",
-      "width": 160,
-      "height": 120,
-      "anchor": {
-        "x": 80,
-        "y": 104
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "masonry",
-      "category": "building",
-      "path": "public/assets/buildings/masonry.png",
-      "width": 112,
-      "height": 120,
-      "anchor": {
-        "x": 56,
-        "y": 104
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "key": "market",
-      "category": "building",
-      "path": "public/assets/buildings/market.png",
-      "width": 176,
-      "height": 136,
-      "anchor": {
-        "x": 88,
-        "y": 120
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "church",
-      "category": "building",
-      "path": "public/assets/buildings/church.png",
-      "width": 176,
-      "height": 208,
-      "anchor": {
-        "x": 88,
-        "y": 192
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "keep",
-      "category": "building",
-      "path": "public/assets/buildings/keep.png",
-      "width": 176,
-      "height": 232,
-      "anchor": {
-        "x": 88,
-        "y": 216
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "house_l4",
-      "category": "building",
-      "path": "public/assets/buildings/house_l4.png",
-      "width": 112,
-      "height": 160,
-      "anchor": {
-        "x": 56,
-        "y": 144
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "key": "stone_wall_segment",
-      "category": "building",
-      "path": "public/assets/buildings/stone_wall_segment.png",
-      "width": 96,
-      "height": 80,
-      "anchor": {
-        "x": 48,
-        "y": 78
       },
       "footprint": {
         "width": 1,

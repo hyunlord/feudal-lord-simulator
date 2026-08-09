@@ -35,13 +35,14 @@ export class TerrainPipelineError extends Error {
   }
 }
 
-const TARGET = { width: 256, height: 256 } as const satisfies Dimensions;
-const OFFSET = 128;
+const TARGET = { width: 512, height: 512 } as const satisfies Dimensions;
+const OFFSET = TARGET.width / 2;
 const BLEND_WIDTH = 16;
 const METRIC_BAND_WIDTH = 4;
 const MAX_JOIN_BAND_DELTA = 24;
 const MAX_JOIN_TO_INTERNAL_RATIO = 2;
 const INTERNAL_TOLERANCE = 4;
+const MIN_VISIBLE_OPAQUE_RGB_COLOURS = 101;
 
 const indexAt = (dimensions: Dimensions, point: Point): number =>
   (point.y * dimensions.width + point.x) * 4;
@@ -72,6 +73,24 @@ const assertWholeImage = (image: RgbaImage): void => {
   }
 };
 
+const assertVisibleOpaqueColourCount = (image: RgbaImage): void => {
+  const colours = new Set<number>();
+  for (let index = 0; index < image.rgba.length; index += 4) {
+    if (image.rgba[index + 3] !== 255) continue;
+    const r = image.rgba[index];
+    const g = image.rgba[index + 1];
+    const b = image.rgba[index + 2];
+    if (r === undefined || g === undefined || b === undefined) {
+      throw new TerrainPipelineError(`Missing RGB channel at byte ${index}`);
+    }
+    colours.add((r << 16) | (g << 8) | b);
+    if (colours.size >= MIN_VISIBLE_OPAQUE_RGB_COLOURS) return;
+  }
+  throw new TerrainPipelineError(
+    `Terrain release must contain more than 100 opaque RGB colours, got ${colours.size}`,
+  );
+};
+
 const offsetPixels = (source: RgbaImage): RgbaImage => {
   const output: RgbaImage = { dimensions: TARGET, rgba: new Uint8Array(TARGET.width * TARGET.height * 4) };
   for (let y = 0; y < TARGET.height; y += 1) {
@@ -90,11 +109,13 @@ const mix = (left: Rgb, right: Rgb, factor: number): Rgb => ({
 });
 
 const blendAxis = (image: RgbaImage, axis: Axis): void => {
+  const crossLength = axis === "horizontal" ? TARGET.height : TARGET.width;
+  const axisLength = axis === "horizontal" ? TARGET.width : TARGET.height;
   for (let distance = 0; distance < BLEND_WIDTH; distance += 1) {
     const factor = 1 - distance / BLEND_WIDTH;
-    for (let position = 0; position < TARGET.width; position += 1) {
+    for (let position = 0; position < crossLength; position += 1) {
       const low = axis === "horizontal" ? { x: distance, y: position } : { x: position, y: distance };
-      const highCoordinate = TARGET.width - 1 - distance;
+      const highCoordinate = axisLength - 1 - distance;
       const high = axis === "horizontal" ? { x: highCoordinate, y: position } : { x: position, y: highCoordinate };
       const lowRgb = readRgb(image, low);
       const highRgb = readRgb(image, high);
@@ -109,12 +130,14 @@ const colourDelta = (left: Rgb, right: Rgb): number =>
   (Math.abs(left.r - right.r) + Math.abs(left.g - right.g) + Math.abs(left.b - right.b)) / 3;
 
 const bandDelta = (image: RgbaImage, axis: Axis, centre: number): number => {
+  const crossLength = axis === "horizontal" ? image.dimensions.height : image.dimensions.width;
+  const axisLength = axis === "horizontal" ? image.dimensions.width : image.dimensions.height;
   let total = 0;
   let samples = 0;
   for (let offset = -METRIC_BAND_WIDTH; offset < METRIC_BAND_WIDTH; offset += 1) {
-    const lowCoordinate = (centre + offset + TARGET.width) % TARGET.width;
-    const highCoordinate = (lowCoordinate + 1) % TARGET.width;
-    for (let position = 0; position < TARGET.width; position += 1) {
+    const lowCoordinate = (centre + offset + axisLength) % axisLength;
+    const highCoordinate = (lowCoordinate + 1) % axisLength;
+    for (let position = 0; position < crossLength; position += 1) {
       const low = axis === "horizontal" ? { x: lowCoordinate, y: position } : { x: position, y: lowCoordinate };
       const high = axis === "horizontal" ? { x: highCoordinate, y: position } : { x: position, y: highCoordinate };
       total += colourDelta(readRgb(image, low), readRgb(image, high));
@@ -125,10 +148,13 @@ const bandDelta = (image: RgbaImage, axis: Axis, centre: number): number => {
 };
 
 const opposingEdgeMax = (image: RgbaImage, axis: Axis): number => {
+  const crossLength = axis === "horizontal" ? image.dimensions.height : image.dimensions.width;
+  const axisLength = axis === "horizontal" ? image.dimensions.width : image.dimensions.height;
   let maximum = 0;
-  for (let position = 0; position < TARGET.width; position += 1) {
+  for (let position = 0; position < crossLength; position += 1) {
     const first = axis === "horizontal" ? { x: 0, y: position } : { x: position, y: 0 };
-    const last = axis === "horizontal" ? { x: 255, y: position } : { x: position, y: 255 };
+    const lastCoordinate = axisLength - 1;
+    const last = axis === "horizontal" ? { x: lastCoordinate, y: position } : { x: position, y: lastCoordinate };
     maximum = Math.max(maximum, colourDelta(readRgb(image, first), readRgb(image, last)));
   }
   return maximum;
@@ -136,8 +162,10 @@ const opposingEdgeMax = (image: RgbaImage, axis: Axis): number => {
 
 export const measureTerrainSeams = (image: RgbaImage): TerrainSeamMetrics => {
   assertWholeImage(image);
-  if (image.dimensions.width !== 256 || image.dimensions.height !== 256) {
-    throw new TerrainPipelineError(`Terrain metrics require 256x256 input, got ${image.dimensions.width}x${image.dimensions.height}`);
+  if (image.dimensions.width !== TARGET.width || image.dimensions.height !== TARGET.height) {
+    throw new TerrainPipelineError(
+      `Terrain metrics require ${TARGET.width}x${TARGET.height} input, got ${image.dimensions.width}x${image.dimensions.height}`,
+    );
   }
   return {
     horizontalOpposingEdgeMaxDelta: opposingEdgeMax(image, "horizontal"),
@@ -182,10 +210,11 @@ export const processTerrainRgba = (
   resize: (image: RgbaImage, target: Dimensions) => RgbaImage = resizeRgbaLanczos,
 ): TerrainProcessResult => {
   assertWholeImage(source);
-  const resized = source.dimensions.width === 256 && source.dimensions.height === 256 ? source : resize(source, TARGET);
+  const resized = source.dimensions.width === TARGET.width && source.dimensions.height === TARGET.height ? source : resize(source, TARGET);
   const texture = offsetPixels(resized);
   blendAxis(texture, "horizontal");
   blendAxis(texture, "vertical");
+  assertVisibleOpaqueColourCount(texture);
   const seamMetrics = measureTerrainSeams(texture);
   assertTerrainSeams(seamMetrics);
   return { texture, tiledPreview: buildTerrainTile2x2(texture), seamMetrics };

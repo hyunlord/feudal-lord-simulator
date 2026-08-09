@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -33,9 +34,49 @@ const readManifest = (manifestPath: string): AssetManifest => {
   return parseManifest(parsed);
 };
 
+const sha256File = (filePath: string): string =>
+  createHash("sha256").update(readFileSync(filePath)).digest("hex");
+
 const assertDimensions = (key: string, label: string, actualWidth: number, actualHeight: number, width: number, height: number): void => {
   if (actualWidth !== width || actualHeight !== height) {
     throw new Error(`${key} ${label} dimensions were ${actualWidth}x${actualHeight}, expected ${width}x${height}`);
+  }
+};
+
+const assertHash = (key: string, label: string, filePath: string, expected: string | undefined): void => {
+  if (expected === undefined) return;
+  const actual = sha256File(filePath);
+  if (actual !== expected) {
+    throw new Error(`${key} ${label} sha256 ${actual} did not match ${expected}`);
+  }
+};
+
+const assertPhase13Hashes = (asset: AssetContract, candidateRoot: string): void => {
+  assertHash(asset.key, "before", asset.beforePath, asset.beforeSha256);
+  assertHash(asset.key, "final", asset.finalPath, asset.finalSha256);
+  const selected = asset.candidates.find((candidate) => candidate.index === asset.selectedIndex);
+  if (selected !== undefined) {
+    assertHash(asset.key, `candidate ${selected.index}`, path.join(candidateRoot, selected.path), selected.sha256);
+    if (asset.selectedCandidateSha256 !== undefined && selected.sha256 !== asset.selectedCandidateSha256) {
+      throw new Error(`${asset.key} selected candidate sha256 did not match manifest candidate`);
+    }
+  }
+  if (asset.phase13Status === "accepted-generated") {
+    if (asset.preparedPath === undefined || asset.preparedSha256 === undefined || asset.finalSha256 === undefined) {
+      throw new Error(`${asset.key} accepted Phase 13 asset must include prepared and final sha256`);
+    }
+    assertHash(asset.key, "prepared", asset.preparedPath, asset.preparedSha256);
+    if (asset.preparedSha256 !== asset.finalSha256) {
+      throw new Error(`${asset.key} prepared sha256 must match final sha256`);
+    }
+  }
+  if (
+    asset.phase13Status === "preserved-existing"
+    && asset.beforeSha256 !== undefined
+    && asset.finalSha256 !== undefined
+    && asset.beforeSha256 !== asset.finalSha256
+  ) {
+    throw new Error(`${asset.key} preserved final sha256 must match before sha256`);
   }
 };
 
@@ -49,12 +90,18 @@ const analyseAsset = (asset: AssetContract, candidateRoot: string, reportText: s
     const decoded = readPng(path.join(candidateRoot, candidate.path));
     assertDimensions(asset.key, `candidate ${candidate.index}`, decoded.dimensions.width, decoded.dimensions.height, candidate.width, candidate.height);
   }
+  assertPhase13Hashes(asset, candidateRoot);
 
   const before = readPng(asset.beforePath);
   const after = readPng(asset.finalPath);
   assertDimensions(asset.key, "before", before.dimensions.width, before.dimensions.height, asset.width, asset.height);
   assertDimensions(asset.key, "final", after.dimensions.width, after.dimensions.height, asset.width, asset.height);
-  assertAlphaContract(asset.key, asset.alpha, before.rgba, after.rgba);
+  assertAlphaContract(
+    asset.key,
+    asset.alpha,
+    asset.phase13Status === "accepted-generated" ? after.rgba : before.rgba,
+    after.rgba,
+  );
   if (asset.key === "scroll_frame") {
     assertScrollFrameTransparency(
       after.rgba,

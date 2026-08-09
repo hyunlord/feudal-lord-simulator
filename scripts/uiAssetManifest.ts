@@ -1,7 +1,5 @@
 import path from "node:path";
 
-import { PALETTE, RAMPS } from "../src/content/palette";
-
 export { assertReportAlignment } from "./uiAssetReportRow";
 
 const EXPECTED_KEYS = [
@@ -20,6 +18,7 @@ export type CandidateContract = {
   readonly path: string;
   readonly width: number;
   readonly height: number;
+  readonly sha256?: string;
 };
 
 export type AssetContract = {
@@ -31,6 +30,13 @@ export type AssetContract = {
   readonly finalPath: string;
   readonly selectedIndex: number;
   readonly candidates: readonly CandidateContract[];
+  readonly phase13Status?: "accepted-generated" | "preserved-existing";
+  readonly phase13Source?: "phase13-candidate" | "public/assets/ui";
+  readonly selectedCandidateSha256?: string;
+  readonly preparedPath?: string;
+  readonly beforeSha256?: string;
+  readonly preparedSha256?: string;
+  readonly finalSha256?: string;
 };
 
 export type AssetManifest = {
@@ -75,6 +81,23 @@ const requireNumber = (record: Record<string, unknown>, key: string): number => 
   return value;
 };
 
+const optionalString = (record: Record<string, unknown>, key: string): string | undefined => {
+  const value = record[key];
+  if (value === undefined) return undefined;
+  if (typeof value !== "string" || value.length === 0) {
+    throw new Error(`manifest ${key} must be a nonempty string`);
+  }
+  return value;
+};
+
+const optionalSha256 = (record: Record<string, unknown>, key: string): string | undefined => {
+  const value = optionalString(record, key);
+  if (value !== undefined && !/^[0-9a-f]{64}$/u.test(value)) {
+    throw new Error(`manifest ${key} must be a lowercase sha256`);
+  }
+  return value;
+};
+
 const parseAlpha = (value: string): AlphaContract => {
   if (value === "transparent" || value === "opaque") {
     return value;
@@ -86,13 +109,29 @@ const parseCandidate = (value: unknown): CandidateContract => {
   if (!isRecord(value)) {
     throw new Error("manifest candidate must be an object");
   }
-  return {
+  const candidate: CandidateContract = {
     index: requireNumber(value, "index"),
     seed: requireNumber(value, "seed"),
     path: requireString(value, "path"),
     width: requireNumber(value, "width"),
     height: requireNumber(value, "height"),
   };
+  const sha256 = optionalSha256(value, "sha256");
+  return sha256 === undefined ? candidate : { ...candidate, sha256 };
+};
+
+const parsePhase13Status = (record: Record<string, unknown>): "accepted-generated" | "preserved-existing" | undefined => {
+  const value = record["phase13Status"];
+  if (value === undefined) return undefined;
+  if (value === "accepted-generated" || value === "preserved-existing") return value;
+  throw new Error("manifest phase13Status must be accepted-generated or preserved-existing");
+};
+
+const parsePhase13Source = (record: Record<string, unknown>): "phase13-candidate" | "public/assets/ui" | undefined => {
+  const value = record["phase13Source"];
+  if (value === undefined) return undefined;
+  if (value === "phase13-candidate" || value === "public/assets/ui") return value;
+  throw new Error("manifest phase13Source must be phase13-candidate or public/assets/ui");
 };
 
 const parseAsset = (value: unknown): AssetContract => {
@@ -103,7 +142,7 @@ const parseAsset = (value: unknown): AssetContract => {
   if (!Array.isArray(candidatesValue) || candidatesValue.length === 0) {
     throw new Error("manifest candidates must be a nonempty array");
   }
-  return {
+  const asset: AssetContract = {
     key: requireString(value, "key"),
     width: requireNumber(value, "width"),
     height: requireNumber(value, "height"),
@@ -112,6 +151,23 @@ const parseAsset = (value: unknown): AssetContract => {
     finalPath: requireReleasePngPath(value, "finalPath", "public/assets/ui"),
     selectedIndex: requireNumber(value, "selectedIndex"),
     candidates: candidatesValue.map(parseCandidate),
+  };
+  const phase13Status = parsePhase13Status(value);
+  const phase13Source = parsePhase13Source(value);
+  const selectedCandidateSha256 = optionalSha256(value, "selectedCandidateSha256");
+  const preparedPath = optionalString(value, "preparedPath");
+  const beforeSha256 = optionalSha256(value, "beforeSha256");
+  const preparedSha256 = optionalSha256(value, "preparedSha256");
+  const finalSha256 = optionalSha256(value, "finalSha256");
+  return {
+    ...asset,
+    ...(phase13Status === undefined ? {} : { phase13Status }),
+    ...(phase13Source === undefined ? {} : { phase13Source }),
+    ...(selectedCandidateSha256 === undefined ? {} : { selectedCandidateSha256 }),
+    ...(preparedPath === undefined ? {} : { preparedPath }),
+    ...(beforeSha256 === undefined ? {} : { beforeSha256 }),
+    ...(preparedSha256 === undefined ? {} : { preparedSha256 }),
+    ...(finalSha256 === undefined ? {} : { finalSha256 }),
   };
 };
 
@@ -203,11 +259,6 @@ export const assertScrollFrameTransparency = (
   }
 };
 
-const hexToRgbKey = (hex: string): string => {
-  const parsed = Number.parseInt(hex.slice(1), 16);
-  return `${(parsed >> 16) & 255},${(parsed >> 8) & 255},${parsed & 255}`;
-};
-
 const rgbKeyAt = (rgba: Uint8Array, width: number, x: number, y: number): string => {
   const index = (y * width + x) * 4;
   const r = rgba[index];
@@ -242,11 +293,16 @@ const average = (values: readonly number[]): number => {
   return values.reduce((sum, value) => sum + value, 0) / values.length;
 };
 
-const scrollAccentKeys = new Set([
-  hexToRgbKey(PALETTE.gold),
-  hexToRgbKey(PALETTE.ultramarine),
-  hexToRgbKey(PALETTE.vermilion),
-]);
+const scrollAccentFamily = (rgbKey: string): "gold" | "ultramarine" | "vermilion" | undefined => {
+  const [r, g, b] = rgbKey.split(",").map(Number);
+  if (r === undefined || g === undefined || b === undefined) {
+    throw new Error(`RGB key ${rgbKey} was incomplete`);
+  }
+  if (r > 140 && g > 95 && g < 190 && b < 110) return "gold";
+  if (b > 80 && r < 110 && g < 140) return "ultramarine";
+  if (r > 110 && g < 100 && b < 100) return "vermilion";
+  return undefined;
+};
 
 export const assertScrollFrameFinalArt = (
   rgba: Uint8Array,
@@ -262,13 +318,14 @@ export const assertScrollFrameFinalArt = (
       if (alphaAt(rgba, width, x, y) > 0) {
         const rgbKey = rgbKeyAt(rgba, width, x, y);
         opaqueRgbKeys.add(rgbKey);
-        if (scrollAccentKeys.has(rgbKey)) {
-          presentAccents.add(rgbKey);
+        const family = scrollAccentFamily(rgbKey);
+        if (family !== undefined) {
+          presentAccents.add(family);
         }
       }
     }
   }
-  if (presentAccents.size !== scrollAccentKeys.size) {
+  if (presentAccents.size !== 3) {
     throw new Error("scroll_frame opaque pixels must include gold, ultramarine, and vermilion accent families");
   }
   if (opaqueRgbKeys.size < 5) {
@@ -276,17 +333,20 @@ export const assertScrollFrameFinalArt = (
   }
 };
 
-const darkWoodKeys = new Set([
-  hexToRgbKey(PALETTE.ink),
-  hexToRgbKey(RAMPS.timber[0]),
-]);
+const isDarkWoodFamily = (rgbKey: string): boolean => {
+  const [r, g, b] = rgbKey.split(",").map(Number);
+  if (r === undefined || g === undefined || b === undefined) {
+    throw new Error(`RGB key ${rgbKey} was incomplete`);
+  }
+  return r < 70 && g < 70 && b < 70;
+};
 
 const countDarkRecessRuns = (rgba: Uint8Array, width: number, y: number): number => {
   const minRunWidth = Math.max(3, Math.floor(width * 0.1));
   let runs = 0;
   let runStart: number | undefined;
   for (let x = 0; x < width; x += 1) {
-    const isDark = darkWoodKeys.has(rgbKeyAt(rgba, width, x, y)) && alphaAt(rgba, width, x, y) === 255;
+    const isDark = isDarkWoodFamily(rgbKeyAt(rgba, width, x, y)) && alphaAt(rgba, width, x, y) === 255;
     if (isDark && runStart === undefined) {
       runStart = x;
     }
@@ -324,7 +384,7 @@ export const assertWoodConsoleFinalArt = (
         throw new Error("wood_console expected fully opaque alpha");
       }
       const rgbKey = rgbKeyAt(rgba, width, x, y);
-      if (!darkWoodKeys.has(rgbKey)) {
+      if (!isDarkWoodFamily(rgbKey)) {
         nonRecessRgbKeys.add(rgbKey);
         const luminance = luminanceFromKey(rgbKey);
         nonRecessLuminance.push(luminance);

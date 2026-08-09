@@ -4,7 +4,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { assertTerrainSeams, measureTerrainSeams, processTerrainFile } from "./terrainTexturePipeline";
-import { readPng, writePng } from "./processBuildingSprite";
+import { DEFAULT_CHROMA_KEY, readPng, writePng, processSpriteImage } from "./processBuildingSprite";
 import {
   BUILDING_KEYS,
   BUILDING_SPECS,
@@ -17,6 +17,7 @@ import {
   TERRAIN_SPECS,
   type AcceptedReference,
   type BuildingAsset,
+  type BuildingKey,
   type FoliageSelection,
   type FoliageAsset,
   type FoliageKey,
@@ -27,9 +28,21 @@ import {
   type StoneTownAssetKey,
   type TerrainAsset,
   type WorldAssetManifest,
+  type WorldAssetKey,
 } from "./worldAssetContracts";
 import { parseWorldAssetManifest } from "./worldAssetManifest";
+import { writeRuntimeWorldAssetManifest } from "./worldAssetRuntimeManifest";
 import { verifyWorldAssets } from "./verifyWorldAssets";
+import {
+  acceptedKeySet,
+  assertAcceptedRawAssetsExist,
+  phase13SourceForWorldAsset,
+  rawPathForAcceptedAsset,
+  readPhase13AcceptedRelease,
+  writePhase13ReleaseEvidence,
+  type Phase13AcceptedRelease,
+  type Phase13ReleaseMode,
+} from "./phase13AcceptedRelease";
 import {
   processWorldSprite,
   type BuildingSpriteKey,
@@ -102,6 +115,8 @@ const PROMOTIONS = {
   readonly candidate: number;
 }>>;
 const GENERATED_PALETTE_POLICY = "full-colour-generated";
+export type PrepareWorldAssetMode = Phase13ReleaseMode;
+const BASE_BUILDING_KEYS = ["house_l0", "mill", "barn"] as const satisfies readonly BuildingKey[];
 
 const newBuildingKeys = [
   "house_l1", "house_l2", "house_l3", "well", "storehouse", "wheat_farm", "logging_camp", "sawmill",
@@ -117,6 +132,8 @@ export type PrepareWorldAssetOptions = {
   readonly phase4bRoot: string;
   readonly selections: BuildingSelections;
   readonly stoneTownSelections: StoneTownSelections;
+  readonly mode?: PrepareWorldAssetMode;
+  readonly acceptedRelease?: Phase13AcceptedRelease;
 };
 
 export const rawFoliageFileName = (key: FoliageSpriteKey, candidate = 1): string =>
@@ -144,7 +161,9 @@ const sourceForReleaseBuilding = (
   key: (typeof BUILDING_KEYS)[number],
   selections: BuildingSelections,
   stoneTownSelections: StoneTownSelections,
+  mode: PrepareWorldAssetMode,
 ): { readonly seed: number; readonly candidate: number } => {
+  if (mode === "phase13-full-colour") return phase13SourceForWorldAsset(key);
   switch (key) {
     case "house_l0": return PROMOTIONS.house_l0;
     case "mill": return PROMOTIONS.mill;
@@ -187,6 +206,58 @@ const processSelectedBuildings = (options: PrepareWorldAssetOptions): void => {
   }
 };
 
+const isBaseBuildingKey = (key: BuildingKey): key is (typeof BASE_BUILDING_KEYS)[number] =>
+  BASE_BUILDING_KEYS.some((candidate) => candidate === key);
+
+const processBaseBuildingSprite = (input: string, output: string, key: (typeof BASE_BUILDING_KEYS)[number]): void => {
+  const spec = BUILDING_SPECS[key];
+  const contentWidth = Math.min(spec.width - 2, spec.footprint.width === 1 ? 88 : 139);
+  writePng(output, processSpriteImage(readPng(input), {
+    target: { width: spec.width, height: spec.height },
+    baselineY: spec.baselineY,
+    chromaKey: DEFAULT_CHROMA_KEY,
+    threshold: 24,
+    softEdge: 96,
+    outline: true,
+    contentWidth,
+  }));
+};
+
+const processPhase13Buildings = (options: PrepareWorldAssetOptions): void => {
+  for (const key of BUILDING_KEYS) {
+    const input = path.join(options.rawRoot, "building", `${key}_01.png`);
+    const output = outputPath(options.repoRoot, "buildings", key);
+    if (isBaseBuildingKey(key)) {
+      processBaseBuildingSprite(input, output, key);
+      continue;
+    }
+    writePng(output, processWorldSprite(readPng(input), key));
+  }
+};
+
+const processPhase13AcceptedAsset = (options: PrepareWorldAssetOptions, asset: Phase13AcceptedRelease["accepted"][number]): void => {
+  const input = rawPathForAcceptedAsset(options.rawRoot, asset);
+  if (asset.category === "building") {
+    const output = outputPath(options.repoRoot, "buildings", asset.key);
+    if (isBaseBuildingKey(asset.key as BuildingKey)) {
+      processBaseBuildingSprite(input, output, asset.key as (typeof BASE_BUILDING_KEYS)[number]);
+      return;
+    }
+    writePng(output, processWorldSprite(readPng(input), asset.key as BuildingSpriteKey));
+    return;
+  }
+  if (asset.category === "foliage") {
+    writePng(outputPath(options.repoRoot, "foliage", asset.key), processWorldSprite(readPng(input), asset.key as FoliageSpriteKey));
+    return;
+  }
+  processTerrainFile(input, outputPath(options.repoRoot, "terrain", asset.key), asset.key as (typeof TERRAIN_KEYS)[number]);
+};
+
+const processPhase13AcceptedAssets = (options: PrepareWorldAssetOptions, release: Phase13AcceptedRelease): void => {
+  assertAcceptedRawAssetsExist(options.rawRoot, release);
+  for (const asset of release.accepted) processPhase13AcceptedAsset(options, asset);
+};
+
 export const processSelectedStoneTownBuildings = (options: PrepareWorldAssetOptions): void => {
   for (const key of STONE_TOWN_ASSET_KEYS) {
     const candidate = options.stoneTownSelections[key];
@@ -209,11 +280,6 @@ const copyPromotions = (options: PrepareWorldAssetOptions): void => {
 
 const copyOrProcessWorldSprite = (input: string, output: string, key: FoliageSpriteKey): void => {
   const source = readPng(input);
-  const spec = FOLIAGE_SPECS[key];
-  if (source.dimensions.width === spec.width && source.dimensions.height === spec.height) {
-    writePng(output, source);
-    return;
-  }
   writePng(output, processWorldSprite(source, key));
 };
 
@@ -221,10 +287,13 @@ const processFoliage = (
   options: PrepareWorldAssetOptions,
   selections: ReadonlyMap<(typeof TREE_STUMP_KEYS)[number], FoliageSelection>,
 ): void => {
+  const mode = options.mode ?? "legacy-promotions";
   for (const key of FOLIAGE_KEYS) {
-    const selected = TREE_STUMP_KEYS.some((candidate) => candidate === key)
-      ? selections.get(key as (typeof TREE_STUMP_KEYS)[number])?.selectedCandidate ?? 1
-      : 1;
+    const selected = mode === "phase13-full-colour"
+      ? 1
+      : (TREE_STUMP_KEYS.some((candidate) => candidate === key)
+        ? selections.get(key as (typeof TREE_STUMP_KEYS)[number])?.selectedCandidate ?? 1
+        : 1);
     const input = path.join(options.rawRoot, "foliage", rawFoliageFileName(key, selected));
     copyOrProcessWorldSprite(input, outputPath(options.repoRoot, "foliage", key), key);
   }
@@ -245,9 +314,13 @@ const processTerrain = (options: PrepareWorldAssetOptions): ReadonlyMap<(typeof 
   return metrics;
 };
 
-const buildingAssets = (options: PrepareWorldAssetOptions): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
+const buildingAssets = (
+  options: PrepareWorldAssetOptions,
+  sourceByKey: ReadonlyMap<WorldAssetKey, { readonly seed: number; readonly candidate: number }> | null,
+): readonly BuildingAsset[] => BUILDING_KEYS.map((key) => {
   const spec = BUILDING_SPECS[key];
-  const source = sourceForReleaseBuilding(key, options.selections, options.stoneTownSelections);
+  const source = sourceByKey?.get(key)
+    ?? sourceForReleaseBuilding(key, options.selections, options.stoneTownSelections, options.mode ?? "legacy-promotions");
   const assetPath = `public/assets/buildings/${key}.png`;
   return {
     key,
@@ -273,12 +346,16 @@ const sourceForFoliage = (key: FoliageKey, candidate: number): { readonly seed: 
 const foliageAssets = (
   repoRoot: string,
   selections: ReadonlyMap<(typeof TREE_STUMP_KEYS)[number], FoliageSelection>,
+  mode: PrepareWorldAssetMode,
+  sourceByKey: ReadonlyMap<WorldAssetKey, { readonly seed: number; readonly candidate: number }> | null,
 ): readonly FoliageAsset[] => FOLIAGE_KEYS.map((key) => {
   const spec = FOLIAGE_SPECS[key];
   const assetPath = `public/assets/foliage/${key}.png`;
-  const selected = TREE_STUMP_KEYS.some((candidate) => candidate === key)
-    ? selections.get(key as (typeof TREE_STUMP_KEYS)[number])?.selectedCandidate ?? 1
-    : 1;
+  const selected = mode === "phase13-full-colour"
+    ? 1
+    : (TREE_STUMP_KEYS.some((candidate) => candidate === key)
+      ? selections.get(key as (typeof TREE_STUMP_KEYS)[number])?.selectedCandidate ?? 1
+      : 1);
   return {
     key,
     category: "foliage",
@@ -288,7 +365,8 @@ const foliageAssets = (
     height: spec.height,
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
-    source: sourceForFoliage(key, selected),
+    source: sourceByKey?.get(key)
+      ?? (mode === "phase13-full-colour" ? phase13SourceForWorldAsset(key) : sourceForFoliage(key, selected)),
     palettePolicy: GENERATED_PALETTE_POLICY,
     alphaPolicy: "transparent-outline-179",
     variation: { selection: "hash", scale: { min: 0.7, max: 1.3 }, offset: "in-tile", sway: "sine" },
@@ -305,21 +383,31 @@ type AssetTerrainMetrics = {
 const terrainAssets = (
   repoRoot: string,
   metrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics>,
+  mode: PrepareWorldAssetMode,
+  sourceByKey: ReadonlyMap<WorldAssetKey, { readonly seed: number; readonly candidate: number }> | null,
+  acceptedRelease?: Phase13AcceptedRelease,
 ): readonly TerrainAsset[] => TERRAIN_KEYS.map((key, index) => {
   const spec = TERRAIN_SPECS[key];
   const measured = metrics.get(key);
   if (measured === undefined) throw new WorldAssetPreparationError(`Missing seam metrics for ${key}`);
   const assetPath = `public/assets/terrain/${key}.png`;
+  const accepted = mode === "phase13-partial-accepted-release" && acceptedRelease !== undefined
+    ? acceptedKeySet(acceptedRelease)
+    : null;
+  const dimensions = accepted !== null && !accepted.has(key)
+    ? readPng(path.join(repoRoot, assetPath)).dimensions
+    : spec;
   return {
     key,
     category: "terrain",
     path: assetPath,
     sha256: sha256(path.join(repoRoot, assetPath)),
-    width: spec.width,
-    height: spec.height,
+    width: dimensions.width,
+    height: dimensions.height,
     anchor: { x: 0, y: 0 },
     footprint: spec.footprint,
-    source: { seed: 64053001 + index, candidate: 1 },
+    source: sourceByKey?.get(key)
+      ?? (mode === "phase13-full-colour" ? phase13SourceForWorldAsset(key) : { seed: 64053001 + index, candidate: 1 }),
     palettePolicy: spec.palettePolicy,
     alphaPolicy: "opaque",
     seamMetrics: {
@@ -333,9 +421,27 @@ const terrainAssets = (
   };
 });
 
-const measureExistingTerrain = (repoRoot: string): ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics> => {
+const measureExistingTerrain = (
+  repoRoot: string,
+  acceptedRelease?: Phase13AcceptedRelease,
+  existingManifest?: WorldAssetManifest | null,
+): ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics> => {
   const metrics = new Map<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics>();
+  const accepted = acceptedRelease === undefined ? null : acceptedKeySet(acceptedRelease);
   for (const key of TERRAIN_KEYS) {
+    if (accepted !== null && !accepted.has(key)) {
+      const preserved = existingManifest?.assets.find((asset) => asset.key === key && asset.category === "terrain");
+      if (preserved === undefined || preserved.category !== "terrain") {
+        throw new WorldAssetPreparationError(`Missing preserved terrain metrics for ${key}`);
+      }
+      metrics.set(key, {
+        horizontalJoinBandDelta: preserved.seamMetrics.horizontalJoinDelta,
+        verticalJoinBandDelta: preserved.seamMetrics.verticalJoinDelta,
+        horizontalInternalBandDelta: preserved.seamMetrics.horizontalInternalDelta,
+        verticalInternalBandDelta: preserved.seamMetrics.verticalInternalDelta,
+      });
+      continue;
+    }
     const measured = measureTerrainSeams(readPng(outputPath(repoRoot, "terrain", key)));
     assertTerrainSeams(measured);
     metrics.set(key, {
@@ -506,7 +612,9 @@ const writeManifestFromReleaseFiles = (
   options: PrepareWorldAssetOptions,
   selections: readonly FoliageSelection[],
   terrainMetrics: ReadonlyMap<(typeof TERRAIN_KEYS)[number], AssetTerrainMetrics>,
+  sourceByKey: ReadonlyMap<WorldAssetKey, { readonly seed: number; readonly candidate: number }> | null = null,
 ): WorldAssetManifest => {
+  const mode = options.mode ?? "legacy-promotions";
   const selectionByKey = new Map(selections.map((selection) => [selection.key, selection]));
   const document = {
     version: 1,
@@ -514,9 +622,9 @@ const writeManifestFromReleaseFiles = (
     foliageSelections: selections,
     parchmentMetrics: parchmentMetrics(options.rawRoot),
     assets: [
-      ...buildingAssets(options),
-      ...foliageAssets(options.repoRoot, selectionByKey),
-      ...terrainAssets(options.repoRoot, terrainMetrics),
+      ...buildingAssets(options, sourceByKey),
+      ...foliageAssets(options.repoRoot, selectionByKey, mode, sourceByKey),
+      ...terrainAssets(options.repoRoot, terrainMetrics, mode, sourceByKey, options.acceptedRelease),
     ],
   } as const;
   const manifest = parseWorldAssetManifest(document);
@@ -524,7 +632,33 @@ const writeManifestFromReleaseFiles = (
     path.join(options.repoRoot, "public", "assets", "world_asset_manifest.json"),
     `${JSON.stringify(manifest, null, 2)}\n`,
   );
-  return verifyWorldAssets(options.repoRoot, options.phase4bRoot);
+  writeRuntimeWorldAssetManifest(options.repoRoot, manifest);
+  if (mode === "phase13-partial-accepted-release") return manifest;
+  return verifyWorldAssets(options.repoRoot, options.phase4bRoot, { mode });
+};
+
+const readExistingManifest = (repoRoot: string): WorldAssetManifest | null => {
+  const manifestPath = path.join(repoRoot, "public", "assets", "world_asset_manifest.json");
+  if (!existsSync(manifestPath)) return null;
+  return parseWorldAssetManifest(JSON.parse(readFileSync(manifestPath, "utf8")));
+};
+
+const releaseSourcesFromExistingManifest = (manifest: WorldAssetManifest): Map<WorldAssetKey, { readonly seed: number; readonly candidate: number }> =>
+  new Map(manifest.assets.map((asset) => [asset.key, asset.source]));
+
+const fallbackReleaseSources = (options: PrepareWorldAssetOptions): Map<WorldAssetKey, { readonly seed: number; readonly candidate: number }> => {
+  const sources = new Map<WorldAssetKey, { readonly seed: number; readonly candidate: number }>();
+  for (const key of BUILDING_KEYS) sources.set(key, sourceForReleaseBuilding(key, options.selections, options.stoneTownSelections, "legacy-promotions"));
+  for (const key of FOLIAGE_KEYS) sources.set(key, sourceForFoliage(key, 1));
+  TERRAIN_KEYS.forEach((key, index) => sources.set(key, { seed: 64053001 + index, candidate: 1 }));
+  return sources;
+};
+
+const requirePhase13AcceptedRelease = (options: PrepareWorldAssetOptions): Phase13AcceptedRelease => {
+  if (options.acceptedRelease === undefined) {
+    throw new WorldAssetPreparationError("phase13-partial-accepted-release requires acceptedRelease");
+  }
+  return options.acceptedRelease;
 };
 
 export const refreshWorldAssetManifest = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
@@ -533,11 +667,33 @@ export const refreshWorldAssetManifest = (options: PrepareWorldAssetOptions): Wo
 };
 
 export const prepareWorldAssets = (options: PrepareWorldAssetOptions): WorldAssetManifest => {
+  const mode = options.mode ?? "legacy-promotions";
+  if (mode === "phase13-partial-accepted-release") {
+    const release = requirePhase13AcceptedRelease(options);
+    const existingManifest = readExistingManifest(options.repoRoot);
+    const selections = existingManifest?.foliageSelections ?? parseFoliageLedger(options.rawRoot) ?? fallbackFoliageSelections(options.rawRoot);
+    const sourceByKey = existingManifest === null ? fallbackReleaseSources(options) : releaseSourcesFromExistingManifest(existingManifest);
+    processPhase13AcceptedAssets(options, release);
+    for (const key of acceptedKeySet(release)) sourceByKey.set(key, phase13SourceForWorldAsset(key));
+    writeManifestFromReleaseFiles(
+      { ...options, acceptedRelease: release },
+      selections,
+      measureExistingTerrain(options.repoRoot, release, existingManifest),
+      sourceByKey,
+    );
+    writePhase13ReleaseEvidence(options.repoRoot, release, sourceByKey);
+    return verifyWorldAssets(options.repoRoot, options.phase4bRoot, { mode, acceptedRelease: release });
+  }
+
   const selections = parseFoliageLedger(options.rawRoot) ?? fallbackFoliageSelections(options.rawRoot);
   const selectionByKey = new Map(selections.map((selection) => [selection.key, selection]));
-  copyPromotions(options);
-  processSelectedBuildings(options);
-  processSelectedStoneTownBuildings(options);
+  if (mode === "phase13-full-colour") {
+    processPhase13Buildings(options);
+  } else {
+    copyPromotions(options);
+    processSelectedBuildings(options);
+    processSelectedStoneTownBuildings(options);
+  }
   processFoliage(options, selectionByKey);
   const metrics = processTerrain(options);
   return writeManifestFromReleaseFiles(options, selections, metrics);
@@ -615,14 +771,37 @@ const parseSelections = (filePath: string): ParsedSelections => {
 
 const main = (): number => { // no-excuse-ok: catch
   try {
-    const [, , repoRoot, rawRoot, phase4bRoot, selectionsPath, mode] = process.argv;
+    const [, , repoRoot, rawRoot, phase4bRoot, selectionsPath, mode, acceptedReleasePath] = process.argv;
     if (repoRoot === undefined || rawRoot === undefined || phase4bRoot === undefined || selectionsPath === undefined) {
       throw new WorldAssetPreparationError(
-        "Usage: tsx scripts/prepareWorldAssets.ts <repo-root> <raw-root> <phase4b-root> <selections.json> [--refresh-manifest-only]",
+        "Usage: tsx scripts/prepareWorldAssets.ts <repo-root> <raw-root> <phase4b-root> <selections.json> [--refresh-manifest-only|--phase13-full-colour|--phase13-accepted-release <accepted.json>]",
       );
     }
     const parsed = parseSelections(selectionsPath);
-    const options = { repoRoot, rawRoot, phase4bRoot, ...parsed };
+    if (mode === "--phase13-accepted-release" && acceptedReleasePath === undefined) {
+      throw new WorldAssetPreparationError("--phase13-accepted-release requires an accepted release JSON path");
+    }
+    const modeValue = mode === "--phase13-full-colour"
+      ? "phase13-full-colour" as const
+      : mode === "--phase13-accepted-release"
+        ? "phase13-partial-accepted-release" as const
+        : "legacy-promotions" as const;
+    const options: PrepareWorldAssetOptions = modeValue === "phase13-partial-accepted-release"
+      ? {
+        repoRoot,
+        rawRoot,
+        phase4bRoot,
+        ...parsed,
+        mode: modeValue,
+        acceptedRelease: readPhase13AcceptedRelease(acceptedReleasePath as string),
+      }
+      : {
+      repoRoot,
+      rawRoot,
+      phase4bRoot,
+      ...parsed,
+      mode: modeValue,
+    };
     if (mode === "--refresh-manifest-only") refreshWorldAssetManifest(options);
     else prepareWorldAssets(options);
     writeFileSync(1, "World asset preparation passed\n");

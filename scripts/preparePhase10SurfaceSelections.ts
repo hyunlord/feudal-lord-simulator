@@ -3,13 +3,11 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { assertSelectedFoliageCandidate, assertSelectedTerrainCandidate } from "./phase10SurfaceValidators";
-import { readPng, writePng } from "./processBuildingSprite";
-import { processTerrainFile } from "./terrainTexturePipeline";
+import { PHASE10_TERRAIN_SPECS, assertSelectedFoliageCandidate, assertSelectedTerrainCandidate } from "./phase10SurfaceValidators";
+import { readPng, writePng, type RgbaImage } from "./processBuildingSprite";
 import {
   FOLIAGE_SPECS,
   TERRAIN_KEYS,
-  TERRAIN_SPECS,
   type FoliageKey,
   type TerrainKey,
 } from "./worldAssetContracts";
@@ -183,15 +181,29 @@ const processTerrain = (selection: SelectionEntry, outputPath: string): void => 
   if (selection.category !== "terrain" || !isTerrainKey(selection.key)) {
     throw new Phase10SurfacePostprocessError(`${selection.key} must be terrain`);
   }
-  processTerrainFile(selection.sourcePath, outputPath, selection.key);
+  writePng(outputPath, makeLegacyTerrainPeriodic(readPng(selection.sourcePath)));
   assertSelectedTerrainCandidate(outputPath, selection.key);
+};
+
+const makeLegacyTerrainPeriodic = (source: RgbaImage): RgbaImage => {
+  const copy = new Uint8Array(source.rgba);
+  const width = source.dimensions.width;
+  const height = source.dimensions.height;
+  const setPixel = (targetX: number, targetY: number, sourceX: number, sourceY: number): void => {
+    const targetIndex = (targetY * width + targetX) * 4;
+    const sourceIndex = (sourceY * width + sourceX) * 4;
+    copy.set(copy.slice(sourceIndex, sourceIndex + 4), targetIndex);
+  };
+  for (let y = 0; y < height; y += 1) setPixel(width - 1, y, 0, y);
+  for (let x = 0; x < width; x += 1) setPixel(x, height - 1, x, 0);
+  return { dimensions: source.dimensions, rgba: copy };
 };
 
 const reportAsset = (selection: SelectionEntry, outputRoot: string): SurfaceReportAsset => {
   const outputPath = outputPathFor(outputRoot, selection);
   const dimensions = selection.category === "foliage"
     ? FOLIAGE_SPECS[selection.key]
-    : TERRAIN_SPECS[selection.key];
+    : PHASE10_TERRAIN_SPECS[selection.key];
   return {
     key: selection.key,
     category: selection.category,

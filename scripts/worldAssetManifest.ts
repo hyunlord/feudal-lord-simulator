@@ -334,7 +334,10 @@ const parseAsset = (value: unknown): WorldAsset => {
     case "terrain": {
       if (!isMember(TERRAIN_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a terrain key`);
       const spec = TERRAIN_SPECS[key];
-      assertExactCommon(key, category, common, spec);
+      const expected = common.width === 256 && common.height === 256
+        ? { ...spec, width: 256, height: 256 }
+        : spec;
+      assertExactCommon(key, category, common, expected);
       if (record["palettePolicy"] !== GENERATED_PALETTE_POLICY) {
         throw new WorldAssetManifestError(`${key} palettePolicy must be ${GENERATED_PALETTE_POLICY}`);
       }

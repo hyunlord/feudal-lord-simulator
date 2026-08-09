@@ -33,6 +33,10 @@ type PatternCacheEntry = {
 
 export type PatternQuarterTurn = 0 | 1 | 2 | 3;
 
+export const TERRAIN_TEXTURE_COMPOSITE_OPACITY = 0.6;
+
+const TERRAIN_PATTERN_SIZE = 512;
+
 const TERRAIN_TO_TEXTURE = {
   grass: "grass",
   forest: "forest_floor",
@@ -104,9 +108,9 @@ export function getTerrainPattern(
 function patternTransform(turn: PatternQuarterTurn): DOMMatrix2DInit {
   switch (turn) {
     case 0: return { a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 };
-    case 1: return { a: 0, b: 1, c: -1, d: 0, e: 256, f: 0 };
-    case 2: return { a: -1, b: 0, c: 0, d: -1, e: 256, f: 256 };
-    case 3: return { a: 0, b: -1, c: 1, d: 0, e: 0, f: 256 };
+    case 1: return { a: 0, b: 1, c: -1, d: 0, e: TERRAIN_PATTERN_SIZE, f: 0 };
+    case 2: return { a: -1, b: 0, c: 0, d: -1, e: TERRAIN_PATTERN_SIZE, f: TERRAIN_PATTERN_SIZE };
+    case 3: return { a: 0, b: -1, c: 1, d: 0, e: 0, f: TERRAIN_PATTERN_SIZE };
   }
 }
 

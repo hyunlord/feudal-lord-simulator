@@ -9,7 +9,7 @@ import {
   roadPebbleVariants,
   type CardinalDirection,
 } from "./terrainDetails";
-import { getTerrainPattern, terrainPatternQuarterTurn, type TerrainPatternAssets } from "./terrainPatterns";
+import { TERRAIN_TEXTURE_COMPOSITE_OPACITY, getTerrainPattern, terrainPatternQuarterTurn, type TerrainPatternAssets } from "./terrainPatterns";
 import { snapToPixel } from "./style";
 
 type Point = { readonly x: number; readonly y: number };
@@ -104,7 +104,7 @@ function fillRoadPattern(
   try {
     context.clip();
     context.fillStyle = pattern;
-    context.globalAlpha *= 0.45;
+    context.globalAlpha *= TERRAIN_TEXTURE_COMPOSITE_OPACITY;
     context.fillRect(
       snapToPixel(center.x - TILE_W / 2),
       snapToPixel(center.y - TILE_H / 2),

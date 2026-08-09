@@ -11,6 +11,7 @@ import type { TileRange } from "./renderer";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawGroundDecalDetail, drawRoadPath } from "./drawTerrainDetails";
 import {
+  TERRAIN_TEXTURE_COMPOSITE_OPACITY,
   getTerrainPattern,
   terrainPatternQuarterTurn,
   terrainTextureKeyFor,
@@ -24,7 +25,7 @@ export {
   terrainSeamMarkCount,
   type TerrainSeamKind,
 } from "./drawTerrainSeams";
-export { terrainPatternQuarterTurn } from "./terrainPatterns";
+export { TERRAIN_TEXTURE_COMPOSITE_OPACITY, terrainPatternQuarterTurn } from "./terrainPatterns";
 
 type TerrainRenderInput = {
   readonly state: GameState;
@@ -169,7 +170,7 @@ export function terrainTextureOpacity(terrain: Tile["terrain"]): number {
     case "forest":
     case "water":
     case "rock":
-      return 0.45;
+      return TERRAIN_TEXTURE_COMPOSITE_OPACITY;
   }
 }
 
