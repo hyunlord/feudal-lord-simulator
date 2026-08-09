@@ -214,10 +214,12 @@ test("tablet seal layout folds before it can widen the console recess", async ()
 
   // Then
   assert.match(tabletRules, /\.build-seals\s*\{/);
-  assert.match(tabletRules, /gap:\s*8px;/);
-  assert.doesNotMatch(tabletRules, /grid-template-columns:\s*repeat\(4,\s*var\(--seal-size\)\);/);
-  assert.match(tabletRules, /\.build-seal--road\s*\{/);
-  assert.match(tabletRules, /width:\s*var\(--seal-size\);/);
+  assert.match(tabletRules, /gap:\s*8px 6px;/);
+  assert.match(tabletRules, /--seal-size:\s*52px;/);
+  assert.match(tabletRules, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/);
+  assert.match(tabletRules, /justify-items:\s*center;/);
+  assert.match(tabletRules, /\.build-seal,\n  \.build-seal--road\s*\{/);
+  assert.match(tabletRules, /width:\s*min\(var\(--seal-size\),\s*100%\);/);
 });
 
 test("seal tray and tooltips stay inside their assigned geometry lanes", async () => {

@@ -95,9 +95,10 @@ three carved recesses:
    at the right.
 
 At 768 pixels the recesses compress without horizontal scrolling. At 375
-pixels the minimap and readouts become narrower and the seal grid remains
-usable in three rows. The document and every internal surface remain overflow
-free at all required widths.
+pixels the minimap and readouts become narrower and the opening Hamlet seal
+grid remains usable in three rows. Later eras may add a fourth row while
+keeping the same four-column matrix. The document and every internal surface
+remain overflow free at all required widths.
 
 The console art is quiet and architectural: flat horizontal planks, restrained
 grain, three unmistakable sunken rectangular recesses, and iron only at the

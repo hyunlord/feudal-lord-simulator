@@ -129,7 +129,7 @@ test("Phase10 build menu exposes readable grouped controls with road separated",
   const labelRule = selectorRuleBodies(css, ".build-seal-label");
   const groupRule = selectorRuleBodies(css, ".build-group");
   const groupLabelRule = selectorRuleBodies(css, ".build-group-label");
-  const mobileRule = selectorRuleBodies(mediaBlocks(css, "max-width: 420px"), ".build-seals");
+  const mobileRule = selectorRuleBodies(mediaBlocks(css, "max-width: 600px"), ".build-seals");
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
   const groups = buildMenuGroups(DEFAULT_GAME_STATE);
 
@@ -141,11 +141,13 @@ test("Phase10 build menu exposes readable grouped controls with road separated",
   assert.match(sealRule, /min-height:\s*64px;/);
   assert.match(labelRule, /font-size:\s*12px;/);
   assert.match(groupRule, /gap:\s*(?:6|8|10|12)px;/);
-  assert.doesNotMatch(groupLabelRule, /display:\s*none;/);
-  assert.match(mobileRule, /--seal-size:\s*64px;/);
-  assert.match(mobileRule, /flex-wrap:\s*wrap;/);
+  assert.match(groupLabelRule, /display:\s*block;/);
+  assert.match(selectorRuleBodies(mediaBlocks(css, "max-width: 600px"), ".build-group-label"), /display:\s*none;/);
+  assert.match(mobileRule, /--seal-size:\s*46px;/);
+  assert.match(mobileRule, /display:\s*grid;/);
+  assert.match(mobileRule, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/);
   assert.match(mobileRule, /overflow-x:\s*hidden;/);
-  assert.match(mobileRule, /overflow-y:\s*auto;/);
+  assert.match(mobileRule, /overflow-y:\s*hidden;/);
   assert.match(markup, /class="road-tool"/);
   for (const group of groups) {
     assert.match(markup, new RegExp(`<span class="build-group-label">${group.label}</span>`));

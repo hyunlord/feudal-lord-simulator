@@ -33,7 +33,7 @@ export function BuildSeals({
   return (
     <div className="build-seals" role="group" aria-label={KO_UI.placementSeals}>
       {groups.map((group) => (
-        <section key={group.key} className="build-group" aria-label={`${group.label} 도구`}>
+        <section key={group.key} className="build-group" role="group" aria-label={`${group.label} 도구`}>
           <span className="build-group-label">{group.label}</span>
           <div className="build-group-seals">
             {group.options.map((option) =>

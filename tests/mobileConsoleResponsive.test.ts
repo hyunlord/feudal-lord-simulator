@@ -60,24 +60,26 @@ function pxDeclaration(rule: string, property: string): number {
   return Number(match?.[1]);
 }
 
-test("Given 375px console CSS When compact overrides apply Then build seals wrap inside the viewport without shrinking targets", async () => {
+test("Given 375px console CSS When compact overrides apply Then build seals use the four-column design matrix", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
-  const compactRules = mediaBlocks(css, "max-width: 420px");
+  const compactRules = mediaBlocks(css, "max-width: 600px");
   const buildSealsRule = cssRule(compactRules, ".build-seals");
   const buildSealRule = cssRule(compactRules, ".build-seal");
 
   // When / Then
-  assert.match(buildSealsRule, /--seal-size:\s*64px;/);
-  assert.match(buildSealsRule, /display:\s*flex;/);
-  assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
+  assert.match(buildSealsRule, /--seal-size:\s*46px;/);
+  assert.match(buildSealsRule, /display:\s*grid;/);
+  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/);
+  assert.match(buildSealsRule, /grid-auto-rows:\s*46px;/);
   assert.match(buildSealsRule, /align-content:\s*flex-start;/);
   assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
-  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
+  assert.match(buildSealsRule, /overflow-y:\s*hidden;/);
   assert.match(buildSealsRule, /justify-content:\s*flex-start;/);
-  assert.doesNotMatch(buildSealsRule, /grid-template-columns:/);
-  assert.match(buildSealRule, /min-width:\s*64px;/);
-  assert.match(buildSealRule, /min-height:\s*64px;/);
+  assert.match(buildSealRule, /min-width:\s*0;/);
+  assert.match(buildSealRule, /min-height:\s*0;/);
+  assert.match(cssRule(compactRules, ".build-seal-label"), /max-width:\s*100%;/);
+  assert.match(cssRule(compactRules, ".build-group-label"), /display:\s*none;/);
 });
 
 test("Given tablet console CSS When build controls wrap Then groups and road controls can shrink inside the recess", async () => {
@@ -92,13 +94,26 @@ test("Given tablet console CSS When build controls wrap Then groups and road con
   // When / Then
   assert.match(sealRecessRule, /align-items:\s*stretch;/);
   assert.match(buildSealsRule, /height:\s*100%;/);
-  assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
+  assert.match(buildSealsRule, /display:\s*grid;/);
+  assert.match(buildSealsRule, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/);
+  assert.match(buildSealsRule, /justify-items:\s*center;/);
   assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
-  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
-  assert.match(buildGroupRule, /flex:\s*0 1 calc\(100% - 8px\);/);
-  assert.match(buildGroupRule, /max-width:\s*100%;/);
-  assert.match(groupSealsRule, /flex-wrap:\s*wrap;/);
-  assert.match(groupSealsRule, /max-width:\s*100%;/);
+  assert.match(buildSealsRule, /overflow-y:\s*hidden;/);
+  assert.match(buildGroupRule, /display:\s*contents;/);
+  assert.match(groupSealsRule, /display:\s*contents;/);
+  assert.match(cssRule(tabletRules, ".build-group-label"), /display:\s*none;/);
+  assert.match(cssRule(tabletRules, ".build-seal,\n  .build-seal--road"), /width:\s*min\(var\(--seal-size\),\s*100%\);/);
+});
+
+test("Given max420 CSS When compact overrides apply Then no duplicate build-menu matrix rules are reintroduced", async () => {
+  // Given
+  const css = await readFile(STYLESHEET, "utf8");
+  const narrowRules = mediaBlocks(css, "max-width: 420px");
+
+  // When / Then
+  assert.doesNotMatch(narrowRules, /\.build-seals\s*\{/);
+  assert.doesNotMatch(narrowRules, /\.build-seal(?:--road)?\s*\{/);
+  assert.doesNotMatch(narrowRules, /\.build-group-label\s*\{/);
 });
 
 test("Given 375px portrait CSS When compact overrides apply Then settlement status clears the court console by eight pixels", async () => {
