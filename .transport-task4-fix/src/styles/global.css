@@ -1,0 +1,166 @@
+:root {
+  color-scheme: dark;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #eef1e8;
+  background: #11150f;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --surface-canvas: #11150f;
+  --surface-panel: rgb(24 30 21 / 92%);
+  --surface-panel-strong: #1f281b;
+  --text-primary: #eef1e8;
+  --text-muted: #a8b19f;
+  --border: #43503b;
+  --accent: #c4a35a;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  min-width: 320px;
+  background: var(--surface-canvas);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.app-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--surface-canvas);
+}
+
+.game-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(rgb(196 163 90 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(196 163 90 / 5%) 1px, transparent 1px),
+    var(--surface-canvas);
+  background-size: 32px 32px;
+}
+
+.title-panel,
+.ui-panel,
+.viewport-label {
+  position: absolute;
+  z-index: 1;
+}
+
+.title-panel,
+.ui-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-panel);
+  backdrop-filter: blur(8px);
+}
+
+.title-panel {
+  top: var(--space-4);
+  left: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+}
+
+.title-panel h1 {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.title-panel p,
+.ui-panel p {
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.ui-panel {
+  padding: var(--space-3) var(--space-4);
+}
+
+.ui-panel h2 {
+  color: var(--accent);
+  font-size: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.overlay-controls {
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.speed-controls {
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+.info-panel {
+  top: 88px;
+  right: var(--space-4);
+  width: min(260px, calc(100% - 32px));
+}
+
+.build-menu {
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: var(--space-4);
+  min-height: 88px;
+}
+
+.viewport-label {
+  top: 50%;
+  left: 50%;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 720px) {
+  .overlay-controls {
+    top: 84px;
+    left: var(--space-4);
+    transform: none;
+  }
+
+  .speed-controls {
+    top: 84px;
+  }
+
+  .info-panel {
+    top: 160px;
+  }
+}
