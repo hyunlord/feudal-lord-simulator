@@ -41,6 +41,8 @@ jobs:
 
       - name: Test
         run: npm test
+        env:
+          NODE_OPTIONS: --experimental-websocket
 
       - name: Build for GitHub Pages
         run: npm run build

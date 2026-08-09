@@ -1,4 +1,5 @@
 import { spawn, type ChildProcess } from "node:child_process";
+import type { EventEmitter } from "node:events";
 import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -15,6 +16,22 @@ export type CdpClient = {
   readonly evaluate: (expression: string, awaitPromise: boolean) => Promise<unknown>;
   readonly close: () => void;
 };
+
+type ChromeStartupWatch = Pick<EventEmitter, "once" | "removeListener"> & {
+  readonly exitCode: number | null;
+  readonly signalCode: NodeJS.Signals | null;
+};
+
+type ChromeStartupEvent =
+  | {
+      readonly kind: "error";
+      readonly error: Error;
+    }
+  | {
+      readonly kind: "exit";
+      readonly code: number | null;
+      readonly signal: NodeJS.Signals | null;
+    };
 
 export function defaultChromePath(platform: NodeJS.Platform = process.platform): string {
   if (platform === "darwin") return "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -65,17 +82,104 @@ export async function closeChrome(session: ChromeSession): Promise<void> {
   await rm(session.userDataDir, { recursive: true, force: true });
 }
 
-export async function waitForChrome(port: number, stderr: () => string): Promise<void> {
-  for (let attempt = 0; attempt < 80; attempt += 1) {
-    try {
-      const response = await fetch(`http://127.0.0.1:${port}/json/version`);
-      if (response.ok) return;
-    } catch {
-      // Chrome is still starting.
+export async function waitForChrome(
+  port: number,
+  stderr: () => string,
+  options: {
+    readonly chrome?: ChromeStartupWatch;
+    readonly fetch?: typeof fetch;
+    readonly maxAttempts?: number;
+    readonly pollMs?: number;
+  } = {},
+): Promise<void> {
+  const maxAttempts = options.maxAttempts ?? 180;
+  const pollMs = options.pollMs ?? 100;
+  const fetchImpl = options.fetch ?? fetch;
+  const startupWatch = options.chrome === undefined ? null : createChromeStartupWatch(options.chrome);
+
+  try {
+    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+      if (options.chrome !== undefined && (options.chrome.exitCode !== null || options.chrome.signalCode !== null)) {
+        throw chromeStoppedError(port, options.chrome, stderr());
+      }
+
+      const responseOrEvent = startupWatch === null
+        ? await fetchImpl(`http://127.0.0.1:${port}/json/version`).catch(() => null)
+        : await Promise.race([
+            fetchImpl(`http://127.0.0.1:${port}/json/version`).catch(() => null),
+            startupWatch.promise,
+          ]);
+      if (responseOrEvent !== null && isChromeStartupEvent(responseOrEvent)) {
+        throw chromeStartupError(port, responseOrEvent, stderr());
+      }
+      if (responseOrEvent !== null && responseOrEvent.ok) return;
+
+      if (options.chrome !== undefined && (options.chrome.exitCode !== null || options.chrome.signalCode !== null)) {
+        throw chromeStoppedError(port, options.chrome, stderr());
+      }
+
+      const sleepOrEvent = startupWatch === null
+        ? await delay(pollMs).then(() => null)
+        : await Promise.race([
+            delay(pollMs).then(() => null),
+            startupWatch.promise,
+          ]);
+      if (isChromeStartupEvent(sleepOrEvent)) {
+        throw chromeStartupError(port, sleepOrEvent, stderr());
+      }
     }
-    await delay(100);
+  } finally {
+    startupWatch?.cleanup();
   }
+
   throw new Error(`Chrome did not expose CDP on ${port}: ${stderr()}`);
+}
+
+function createChromeStartupWatch(chrome: ChromeStartupWatch): {
+  readonly cleanup: () => void;
+  readonly promise: Promise<ChromeStartupEvent>;
+} {
+  let cleanup = () => {};
+  const promise = new Promise<ChromeStartupEvent>((resolve) => {
+    const onExit = (code: number | null, signal: NodeJS.Signals | null) => {
+      cleanup();
+      resolve({ kind: "exit", code, signal });
+    };
+    const onError = (error: Error) => {
+      cleanup();
+      resolve({ kind: "error", error });
+    };
+    cleanup = () => {
+      chrome.removeListener("exit", onExit);
+      chrome.removeListener("error", onError);
+    };
+    chrome.once("exit", onExit);
+    chrome.once("error", onError);
+  });
+  return { cleanup, promise };
+}
+
+function chromeStoppedError(port: number, chrome: ChromeStartupWatch, stderr: string): Error {
+  const event: ChromeStartupEvent = chrome.exitCode !== null
+    ? { kind: "exit", code: chrome.exitCode, signal: null }
+    : { kind: "exit", code: null, signal: chrome.signalCode };
+  return chromeStartupError(port, event, stderr);
+}
+
+function chromeStartupError(port: number, event: ChromeStartupEvent, stderr: string): Error {
+  if (event.kind === "error") {
+    return new Error(`Chrome failed before exposing CDP on ${port}: ${event.error.message}: ${stderr}`);
+  }
+  const exitState = event.code !== null
+    ? `exit code ${event.code}`
+    : event.signal !== null
+      ? `signal ${event.signal}`
+      : "unknown exit state";
+  return new Error(`Chrome exited before exposing CDP on ${port} (${exitState}): ${stderr}`);
+}
+
+function isChromeStartupEvent(value: unknown): value is ChromeStartupEvent {
+  return isRecord(value) && (value.kind === "error" || value.kind === "exit");
 }
 
 export async function createTarget(port: number, url: string): Promise<{ readonly webSocketDebuggerUrl: string }> {

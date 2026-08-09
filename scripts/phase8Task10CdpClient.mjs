@@ -83,6 +83,7 @@ export async function createCdpClient(webSocketUrl) {
   let nextId = 1;
   const pending = new Map();
   const waiters = new Map();
+  const listeners = new Map();
 
   socket.addEventListener("message", (event) => {
     const message = JSON.parse(event.data);
@@ -90,6 +91,7 @@ export async function createCdpClient(webSocketUrl) {
       settleRequest(pending, message);
       return;
     }
+    notifyListeners(listeners, message);
     resolveWaiters(waiters, message);
   });
 
@@ -120,6 +122,12 @@ export async function createCdpClient(webSocketUrl) {
       eventWaiters.push(resolve);
       waiters.set(method, eventWaiters);
     }),
+    on(method, handler) {
+      const handlers = listeners.get(method) ?? new Set();
+      handlers.add(handler);
+      listeners.set(method, handlers);
+      return () => handlers.delete(handler);
+    },
     close: () => socket.close(),
   };
 }
@@ -144,4 +152,10 @@ function resolveWaiters(waiters, message) {
   if (eventWaiters === undefined || eventWaiters.length === 0) return;
   waiters.set(message.method, []);
   for (const resolve of eventWaiters) resolve(message.params);
+}
+
+function notifyListeners(listeners, message) {
+  const handlers = listeners.get(message.method);
+  if (handlers === undefined) return;
+  for (const handler of handlers) handler(message.params);
 }

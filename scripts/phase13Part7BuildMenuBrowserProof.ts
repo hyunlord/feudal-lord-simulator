@@ -19,7 +19,11 @@ async function main(): Promise<void> {
   });
 
   try {
-    await waitForChrome(remoteDebuggingPort, chromeSession.stderr);
+    await waitForChrome(remoteDebuggingPort, chromeSession.stderr, {
+      chrome: chromeSession.chrome,
+      maxAttempts: 180,
+      pollMs: 100,
+    });
     const target = await createTarget(remoteDebuggingPort, "about:blank");
     const client = await createCdpClient(target.webSocketDebuggerUrl);
     try {
