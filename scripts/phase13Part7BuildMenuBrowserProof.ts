@@ -2,13 +2,14 @@ import {
   closeChrome,
   createCdpClient,
   createTarget,
+  defaultChromePath,
   launchChrome,
   waitForChrome,
 } from "./phase13Part7BuildMenuProofChrome.js";
 import { measureScenarios } from "./phase13Part7BuildMenuProofMeasurements.js";
 
 async function main(): Promise<void> {
-  const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+  const chromePath = process.env.CHROME_PATH ?? defaultChromePath();
   const remoteDebuggingPort = Number.parseInt(process.env.PART7_PROOF_CHROME_PORT ?? "9337", 10);
   const chromeSession = await launchChrome({
     chromePath,

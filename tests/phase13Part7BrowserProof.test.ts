@@ -2,13 +2,15 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
 
+import { defaultChromePath } from "../scripts/phase13Part7BuildMenuProofChrome.js";
+
 const PROOF_SCRIPT = new URL("../scripts/phase13Part7BuildMenuBrowserProof.ts", import.meta.url);
 
 const PROOF_ERAS = ["hamlet", "stone_town"] as const;
 
 test("Given desktop tablet and mobile Part7 browser proof When Chrome measures each era build menu Then labels semantics and rows fit without scroll", () => {
   // Given
-  const chromePath = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+  const chromePath = process.env.CHROME_PATH ?? defaultChromePath();
 
   for (const proofEra of PROOF_ERAS) {
     const chromePort = String(9_400 + (process.pid % 1_000) + PROOF_ERAS.indexOf(proofEra));
@@ -37,6 +39,11 @@ test("Given desktop tablet and mobile Part7 browser proof When Chrome measures e
     assert.equal(proof.verdict, "PASS", proofEra);
     assertCompactAccessibilityGroups(proof, proofEra);
   }
+});
+
+test("Given supported CI and desktop platforms When Chrome path is resolved Then each uses its installed location", () => {
+  assert.equal(defaultChromePath("darwin"), "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
+  assert.equal(defaultChromePath("linux"), "/usr/bin/google-chrome");
 });
 
 function isProofVerdict(value: unknown): value is { readonly verdict: unknown } {

@@ -16,6 +16,12 @@ export type CdpClient = {
   readonly close: () => void;
 };
 
+export function defaultChromePath(platform: NodeJS.Platform = process.platform): string {
+  if (platform === "darwin") return "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+  if (platform === "linux") return "/usr/bin/google-chrome";
+  throw new Error(`CHROME_PATH is required on ${platform}`);
+}
+
 type CdpPendingRequest = {
   readonly resolve: (value: Record<string, unknown>) => void;
   readonly reject: (reason: Error) => void;
