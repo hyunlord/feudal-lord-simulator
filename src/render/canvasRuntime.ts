@@ -8,6 +8,7 @@ import { clampPan, clampZoom, type CameraState, type Point } from "./camera";
 import { worldBounds } from "./interactions";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { STARTING_LANDMARKS } from "./startingLandmarks";
+import { runtimeWorldAssetManifest } from "./worldAssetManifest.generated";
 
 const DESKTOP_CONSOLE_HEIGHT = 150;
 const TABLET_CONSOLE_HEIGHT = 276;
@@ -16,22 +17,15 @@ const MOBILE_MAX_WIDTH = 600;
 const TABLET_MAX_WIDTH = 900;
 const MOBILE_TOP_RAIL_SAFE_INSET = 176;
 const LOW_HEIGHT_MAX = 400;
-const TARGET_ISO_TILE_SPAN = 20;
+const TARGET_ISO_TILE_SPAN = 14;
 export const MIN_OPENING_1X1_BUILDING_SCREEN_PX = 80;
-const COTTAGE_SPRITE = { width: 96, height: 112, anchorX: 48, anchorY: 96 } as const;
-const WELL_SPRITE = { width: 72, height: 80, anchorX: 36, anchorY: 64 } as const;
-const MIN_OPENING_1X1_SPRITE_PX = Math.min(
-  COTTAGE_SPRITE.width,
-  COTTAGE_SPRITE.height,
-  WELL_SPRITE.width,
-  WELL_SPRITE.height,
-);
+const MIN_OPENING_1X1_SPRITE_PX = Math.min(openingSpriteMinPx("house_l0"), openingSpriteMinPx("well"));
 const COMPACT_OPENING_MIN_ZOOM = MIN_OPENING_1X1_BUILDING_SCREEN_PX / MIN_OPENING_1X1_SPRITE_PX;
 
 type InitialCameraCanvas = Pick<HTMLCanvasElement, "clientWidth" | "clientHeight">;
 type InitialCameraState = Pick<GameState, "width" | "height" | "buildings">;
 type ScreenBounds = { readonly minX: number; readonly maxX: number; readonly minY: number; readonly maxY: number };
-type OpeningSpriteMeta = typeof COTTAGE_SPRITE | typeof WELL_SPRITE;
+type OpeningSpriteMeta = { readonly width: number; readonly height: number; readonly anchorX: number; readonly anchorY: number };
 
 export type DragState = {
   readonly mode: "none" | "pan" | "road" | "palisade";
@@ -159,7 +153,7 @@ function openingTableauBounds(canvas: InitialCameraCanvas): ScreenBounds {
 function openingVillageSpriteBounds(): ScreenBounds {
   const rects = openingVillageBuildings().map((building) => {
     const anchor = tileToScreen(building.tx, building.ty);
-    const meta = openingSpriteMeta(building.kind);
+    const meta = openingSpriteMeta(building);
     return {
       minX: anchor.sx - meta.anchorX,
       maxX: anchor.sx + meta.width - meta.anchorX,
@@ -173,8 +167,30 @@ function openingVillageSpriteBounds(): ScreenBounds {
   ]));
 }
 
-function openingSpriteMeta(kind: InitialCameraState["buildings"][number]["kind"]): OpeningSpriteMeta {
-  return kind === "well" ? WELL_SPRITE : COTTAGE_SPRITE;
+function openingSpriteMeta(building: InitialCameraState["buildings"][number]): OpeningSpriteMeta {
+  return openingRuntimeSpriteMeta(openingSpriteKey(building));
+}
+
+function openingSpriteMinPx(key: "house_l0" | "well"): number {
+  const meta = openingRuntimeSpriteMeta(key);
+  return Math.min(meta.width, meta.height);
+}
+
+function openingSpriteKey(building: InitialCameraState["buildings"][number]): string {
+  if (building.kind === "house") return "house_l0";
+  if (building.kind === "granary") return "barn";
+  return building.kind;
+}
+
+function openingRuntimeSpriteMeta(key: string): OpeningSpriteMeta {
+  const meta = runtimeWorldAssetManifest.assets.find((asset) => asset.key === key);
+  if (meta === undefined) throw new Error(`Missing opening sprite metadata for ${key}`);
+  return {
+    width: meta.width * meta.renderScale,
+    height: meta.height * meta.renderScale,
+    anchorX: meta.anchor.x * meta.renderScale,
+    anchorY: meta.anchor.y * meta.renderScale,
+  };
 }
 
 function pointBounds(points: readonly { readonly sx: number; readonly sy: number }[]): ScreenBounds {

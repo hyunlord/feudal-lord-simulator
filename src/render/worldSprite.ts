@@ -39,7 +39,7 @@ export type RampTintPixel = {
 };
 
 const DEFAULT_CAMERA = { zoom: 1, panX: 0, panY: 0 } as const satisfies CameraState;
-const tintedSpriteCache = new WeakMap<CanvasImageSource, Map<PaletteColor, CanvasImageSource>>();
+const tintedSpriteCache = new WeakMap<CanvasImageSource, Map<string, CanvasImageSource>>();
 const FOLIAGE_RGB_TO_SHADE = new Map(RAMPS.foliage.map((hex, shade) => [hexToRgbKey(hex), shade]));
 const TIMBER_RGB_KEYS = new Set(RAMPS.timber.map(hexToRgbKey));
 const NEUTRAL_FOLIAGE_TINT_SHADE = 4;
@@ -120,17 +120,19 @@ function tintedSprite(
   meta: NonNullable<ReturnType<typeof spriteMeta>>,
   tint: PaletteColor,
 ): CanvasImageSource {
-  const cached = tintedSpriteCache.get(image)?.get(tint);
+  const dimensions = sourceDimensions(meta);
+  const cacheKey = `${tint}:${dimensions.width}x${dimensions.height}`;
+  const cached = tintedSpriteCache.get(image)?.get(cacheKey);
   if (cached !== undefined) return cached;
-  const canvas = createTintCanvas(meta.width, meta.height);
+  const canvas = createTintCanvas(dimensions.width, dimensions.height);
   if (canvas === null) return image;
   const tintContext = canvas.getContext("2d");
   if (tintContext === null) return image;
   tintContext.imageSmoothingEnabled = false;
-  tintContext.drawImage(image, 0, 0, meta.width, meta.height);
-  tintContext.putImageData(tintImageData(tintContext.getImageData(0, 0, meta.width, meta.height), tint), 0, 0);
-  const imageCache = tintedSpriteCache.get(image) ?? new Map<PaletteColor, CanvasImageSource>();
-  imageCache.set(tint, canvas);
+  tintContext.drawImage(image, 0, 0, dimensions.width, dimensions.height);
+  tintContext.putImageData(tintImageData(tintContext.getImageData(0, 0, dimensions.width, dimensions.height), tint), 0, 0);
+  const imageCache = tintedSpriteCache.get(image) ?? new Map<string, CanvasImageSource>();
+  imageCache.set(cacheKey, canvas);
   tintedSpriteCache.set(image, imageCache);
   return canvas;
 }
@@ -215,12 +217,19 @@ function destinationRect(
   const scale = options.scale ?? 1;
   const anchor = tileToScreen(tx, ty);
   const canvasAnchor = worldToCanvas({ x: anchor.sx, y: anchor.sy }, camera);
-  const zoomScale = camera.zoom * scale;
+  const zoomScale = camera.zoom * scale * meta.renderScale;
   return {
     dx: Math.round((canvasAnchor.x - meta.anchor.x * zoomScale) * dpr),
     dy: Math.round((canvasAnchor.y - meta.anchor.y * zoomScale) * dpr),
     width: Math.round(meta.width * zoomScale * dpr),
     height: Math.round(meta.height * zoomScale * dpr),
+  };
+}
+
+function sourceDimensions(meta: NonNullable<ReturnType<typeof spriteMeta>>): { readonly width: number; readonly height: number } {
+  return {
+    width: Math.max(1, Math.round(meta.width * meta.renderScale)),
+    height: Math.max(1, Math.round(meta.height * meta.renderScale)),
   };
 }
 

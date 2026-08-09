@@ -17,6 +17,7 @@ export const runtimeManifestProjection = (manifest: WorldAssetManifest): {
     readonly path: string;
     readonly width: number;
     readonly height: number;
+    readonly renderScale: number;
     readonly anchor: { readonly x: number; readonly y: number };
     readonly footprint: { readonly width: number; readonly height: number };
   }[];
@@ -27,6 +28,7 @@ export const runtimeManifestProjection = (manifest: WorldAssetManifest): {
     path: asset.path,
     width: asset.width,
     height: asset.height,
+    renderScale: asset.renderScale,
     anchor: asset.anchor,
     footprint: asset.footprint,
   })),

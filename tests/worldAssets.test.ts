@@ -18,6 +18,30 @@ const runAssetScenario = (
 ): Readonly<Record<string, unknown>> => {
   const script = `
 const created = [];
+const canvasEvents = [];
+class FakeCanvas {
+  width = 0;
+  height = 0;
+  context = {
+    imageSmoothingEnabled: false,
+    imageSmoothingQuality: "low",
+    drawImage: (image, dx, dy, width, height) => {
+      canvasEvents.push({
+        imageKind: image.constructor.name,
+        smoothing: this.context.imageSmoothingEnabled,
+        quality: this.context.imageSmoothingQuality,
+        dx,
+        dy,
+        width,
+        height,
+      });
+    },
+  };
+  getContext(kind) {
+    if (kind !== "2d") return null;
+    return this.context;
+  }
+}
 class FakeImage {
   onload = null;
   onerror = null;
@@ -44,6 +68,10 @@ class FakeImage {
   }
 }
 Object.defineProperty(globalThis, "Image", { configurable: true, value: FakeImage });
+Object.defineProperty(globalThis, "document", {
+  configurable: true,
+  value: { createElement: () => new FakeCanvas() },
+});
 const assets = await import("./src/render/worldAssets.ts");
 const first = assets.preloadWorldAssets();
 const second = assets.preloadWorldAssets();
@@ -53,9 +81,12 @@ await assets.preloadWorldAssets();
 const houseMeta = assets.spriteMeta("house_l1");
 const grassMeta = assets.spriteMeta("grass");
 const missingMeta = assets.spriteMeta("missing_key");
+const houseSprite = assets.getSprite("house_l1");
 console.log(JSON.stringify({
   shared: first === second,
   created: created.length,
+  canvasEvents,
+  houseSpriteKind: houseSprite?.constructor.name,
   loadingStatus,
   spriteReady: assets.getSprite("house_l1") !== null,
   unknownSprite: assets.getSprite("missing_key") === null,
@@ -84,9 +115,48 @@ describe("browser world asset registry", () => {
       height: asset["height"],
       anchor: asset["anchor"],
       footprint: asset["footprint"],
+      renderScale: asset["renderScale"],
     }));
 
     assert.deepEqual(runtimeWorldAssetManifest.assets, runtimeProjection);
+  });
+
+  it("Given the release manifest When render scales are read Then every asset has a finite positive scale", () => {
+    const publicManifest = JSON.parse(readFileSync("public/assets/world_asset_manifest.json", "utf8")) as {
+      readonly assets: readonly Readonly<Record<string, unknown>>[];
+    };
+
+    const invalid = publicManifest.assets
+      .filter((asset) => typeof asset["renderScale"] !== "number" || !Number.isFinite(asset["renderScale"]) || asset["renderScale"] <= 0)
+      .map((asset) => asset["key"]);
+
+    assert.deepEqual(invalid, []);
+  });
+
+  it("Given target sprite categories When render scales are read Then effective heights match the target bands", () => {
+    const publicManifest = JSON.parse(readFileSync("public/assets/world_asset_manifest.json", "utf8")) as {
+      readonly assets: readonly Readonly<Record<string, unknown>>[];
+    };
+    const targetEntries = [
+      ...["house_l0", "house_l1", "well"].map((key) => ({ key, assetKey: key, targetRatio: 1.8 })),
+      ...["mill", "sawmill", "logging_camp", "masonry", "quarry", "wheat_farm"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
+      ...["house_l2", "house_l3", "house_l4"].map((key) => ({ key, assetKey: key, targetRatio: 2.6 })),
+      ...["barn", "storehouse", "market"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
+      { key: "granary", assetKey: "barn", targetRatio: 2.2 },
+      ...["church", "keep"].map((key) => ({ key, assetKey: key, targetRatio: 3.2 })),
+      ...["tree_oak_large", "tree_oak_small", "tree_pine_tall", "tree_pine_short", "tree_birch", "tree_dead"].map((key) => ({ key, assetKey: key, targetRatio: 2.0 })),
+    ];
+    const failures = targetEntries.flatMap(({ key, assetKey, targetRatio }) => {
+      const asset = publicManifest.assets.find((candidate) => candidate["key"] === assetKey);
+      if (asset === undefined) return [`${key}:missing`];
+      const height = asset["height"];
+      const renderScale = asset["renderScale"];
+      if (typeof height !== "number" || typeof renderScale !== "number") return [`${key}:missing`];
+      const effectiveHeight = height * renderScale;
+      return Math.abs(effectiveHeight - targetRatio * 32) <= 0.000001 ? [] : [`${key}:${effectiveHeight}`];
+    });
+
+    assert.deepEqual(failures, []);
   });
 
   it("Given an unsupported category When the manifest crosses the runtime boundary Then parsing rejects it", () => {
@@ -113,6 +183,11 @@ describe("browser world asset registry", () => {
     assert.throws(() => parseWorldAssetManifest(invalid), /width/);
   });
 
+  it("Given missing or invalid render scales When the manifest crosses the runtime boundary Then parsing rejects them", () => {
+    assert.throws(() => parseWorldAssetManifest({ assets: [assetFixture({ renderScale: undefined })] }), /renderScale/);
+    assert.throws(() => parseWorldAssetManifest({ assets: [assetFixture({ renderScale: 0 })] }), /renderScale/);
+  });
+
   it("Given the release manifest When metadata is queried before preload Then exact contracts are idle", () => {
     const status: LoadStatus = "idle";
 
@@ -125,6 +200,7 @@ describe("browser world asset registry", () => {
       url: "/assets/buildings/house_l3.png",
       width: 160,
       height: 192,
+      renderScale: 0.43333333333333335,
       anchor: { x: 80, y: 176 },
       footprint: { width: 2, height: 2 },
       status: "idle",
@@ -145,6 +221,31 @@ describe("browser world asset registry", () => {
     assert.equal(result["houseStatus"], "ready");
     assert.equal(result["houseUrl"], "/assets/buildings/house_l1.png");
     assert.equal(result["missingMeta"], null);
+    assert.equal(result["houseSpriteKind"], "FakeCanvas");
+    assert.equal(Array.isArray(result["canvasEvents"]), true);
+    const canvasEvents = result["canvasEvents"];
+    if (!Array.isArray(canvasEvents)) throw new Error("canvasEvents must be an array");
+    assert.equal(canvasEvents.length, 23);
+    assert.deepEqual(
+      canvasEvents.filter((event) =>
+        isRecord(event) && event["width"] === 46 && event["height"] === 58
+      ),
+      [{
+        imageKind: "FakeImage",
+        smoothing: true,
+        quality: "high",
+        dx: 0,
+        dy: 0,
+        width: 46,
+        height: 58,
+      }],
+    );
+    assert.equal(
+      canvasEvents.every((event) =>
+        isRecord(event) && event["imageKind"] === "FakeImage" && event["smoothing"] === true && event["quality"] === "high"
+      ),
+      true,
+    );
   });
 
   it("Given browser image errors When preload runs Then it resolves and marks assets missing", () => {
@@ -185,8 +286,13 @@ function assetFixture(overrides: Readonly<Record<string, unknown>> = {}): Readon
     path: "public/assets/buildings/house_l0.png",
     width: 96,
     height: 112,
+    renderScale: 1,
     anchor: { x: 48, y: 96 },
     footprint: { width: 1, height: 1 },
     ...overrides,
   };
+}
+
+function isRecord(value: unknown): value is Readonly<Record<string, unknown>> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }

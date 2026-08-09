@@ -15,6 +15,7 @@ import {
   TREE_STUMP_KEYS,
   TERRAIN_KEYS,
   TERRAIN_SPECS,
+  renderScaleForWorldAsset,
   type AcceptedReference,
   type BuildingAsset,
   type BuildingKey,
@@ -329,6 +330,7 @@ const buildingAssets = (
     sha256: sha256(path.join(options.repoRoot, assetPath)),
     width: spec.width,
     height: spec.height,
+    renderScale: renderScaleForWorldAsset(key, spec.height),
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: { seed: source.seed, candidate: source.candidate },
@@ -363,6 +365,7 @@ const foliageAssets = (
     sha256: sha256(path.join(repoRoot, assetPath)),
     width: spec.width,
     height: spec.height,
+    renderScale: renderScaleForWorldAsset(key, spec.height),
     anchor: { x: spec.width / 2, y: spec.baselineY },
     footprint: spec.footprint,
     source: sourceByKey?.get(key)
@@ -404,6 +407,7 @@ const terrainAssets = (
     sha256: sha256(path.join(repoRoot, assetPath)),
     width: dimensions.width,
     height: dimensions.height,
+    renderScale: renderScaleForWorldAsset(key, dimensions.height),
     anchor: { x: 0, y: 0 },
     footprint: spec.footprint,
     source: sourceByKey?.get(key)

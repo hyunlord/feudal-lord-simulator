@@ -237,6 +237,37 @@ export const TERRAIN_SPECS = {
   packed_earth_road: terrainTexture,
 } as const satisfies Readonly<Record<TerrainKey, TerrainSpec>>;
 
+export const WORLD_ASSET_RENDER_SCALE_TARGET_RATIOS: ReadonlyMap<WorldAssetKey, number> = new Map<WorldAssetKey, number>([
+  ["house_l0", 1.8],
+  ["house_l1", 1.8],
+  ["well", 1.8],
+  ["mill", 2.2],
+  ["sawmill", 2.2],
+  ["logging_camp", 2.2],
+  ["masonry", 2.2],
+  ["quarry", 2.2],
+  ["wheat_farm", 2.2],
+  ["house_l2", 2.6],
+  ["house_l3", 2.6],
+  ["house_l4", 2.6],
+  ["barn", 2.2],
+  ["storehouse", 2.2],
+  ["market", 2.2],
+  ["church", 3.2],
+  ["keep", 3.2],
+  ["tree_oak_large", 2.0],
+  ["tree_oak_small", 2.0],
+  ["tree_pine_tall", 2.0],
+  ["tree_pine_short", 2.0],
+  ["tree_birch", 2.0],
+  ["tree_dead", 2.0],
+]);
+
+export const renderScaleForWorldAsset = (key: WorldAssetKey, authoredHeight: number): number => {
+  const targetRatio = WORLD_ASSET_RENDER_SCALE_TARGET_RATIOS.get(key);
+  return targetRatio === undefined ? 1 : (targetRatio * 32) / authoredHeight;
+};
+
 export type Anchor = {
   readonly x: number;
   readonly y: number;
@@ -320,6 +351,7 @@ type BaseAsset<Key extends WorldAssetKey, Category extends string> = {
   readonly sha256: Sha256;
   readonly width: number;
   readonly height: number;
+  readonly renderScale: number;
   readonly anchor: Anchor;
   readonly footprint: Footprint;
   readonly source: AssetSource;

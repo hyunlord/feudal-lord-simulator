@@ -277,12 +277,24 @@ test("initial camera centres the authored village with legible opening buildings
   assert.ok(smallestRenderedOpeningBuildingPx(camera.zoom) >= MIN_OPENING_1X1_BUILDING_SCREEN_PX);
 });
 
+test("opening village pixel floor uses manifest render scale", () => {
+  const expectedFloor = Math.min(
+    ...DEFAULT_GAME_STATE.buildings.map((building) => {
+      const meta = spriteMeta(building.kind === "well" ? "well" : "house_l0");
+      if (meta === null) throw new Error(`missing sprite metadata for ${building.kind}`);
+      return Math.min(meta.width, meta.height) * meta.renderScale;
+    }),
+  );
+
+  assert.equal(smallestRenderedOpeningBuildingPx(1), expectedFloor);
+});
+
 function smallestRenderedOpeningBuildingPx(zoom: number): number {
   return Math.min(
     ...DEFAULT_GAME_STATE.buildings.map((building) => {
       const meta = spriteMeta(building.kind === "well" ? "well" : "house_l0");
       if (meta === null) throw new Error(`missing sprite metadata for ${building.kind}`);
-      return Math.min(meta.width, meta.height) * zoom;
+      return Math.min(meta.width, meta.height) * meta.renderScale * zoom;
     }),
   );
 }

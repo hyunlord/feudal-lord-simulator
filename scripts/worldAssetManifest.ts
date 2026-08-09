@@ -13,6 +13,7 @@ import {
   TERRAIN_KEYS,
   TERRAIN_SPECS,
   WORLD_ASSET_KEYS,
+  renderScaleForWorldAsset,
   type AcceptedReference,
   type Anchor,
   type AssetSource,
@@ -36,6 +37,7 @@ type CommonFields = {
   readonly sha256: string;
   readonly width: number;
   readonly height: number;
+  readonly renderScale: number;
   readonly anchor: Anchor;
   readonly footprint: Footprint;
   readonly source: AssetSource;
@@ -92,6 +94,14 @@ const requireNonnegativeNumber = (record: JsonRecord, key: string, label: string
   return value;
 };
 
+const requirePositiveNumber = (record: JsonRecord, key: string, label: string): number => {
+  const value = record[key];
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    throw new WorldAssetManifestError(`${label} ${key} must be a positive finite number`);
+  }
+  return value;
+};
+
 const requireSha256 = (record: JsonRecord, key: string, label: string): string => {
   const value = requireString(record, key, label);
   if (!/^[0-9a-f]{64}$/u.test(value)) {
@@ -132,6 +142,7 @@ const parseCommon = (record: JsonRecord, key: string): CommonFields => ({
   sha256: requireSha256(record, "sha256", key),
   width: requirePositiveInteger(record, "width", key),
   height: requirePositiveInteger(record, "height", key),
+  renderScale: requirePositiveNumber(record, "renderScale", key),
   anchor: parseAnchor(record["anchor"], `${key} anchor`),
   footprint: parsePair(record["footprint"], `${key} footprint`),
   source: parseSource(record["source"], `${key} source`),
@@ -171,6 +182,11 @@ const assertExactCommon = (
     || path.posix.normalize(common.path) !== common.path
   ) {
     throw new WorldAssetManifestError(`${key} path must be the portable repo-relative path ${expectedPath}`);
+  }
+  if (!isMember(WORLD_ASSET_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a world asset key`);
+  const expectedRenderScale = renderScaleForWorldAsset(key, common.height);
+  if (Math.abs(common.renderScale - expectedRenderScale) > 0.000001) {
+    throw new WorldAssetManifestError(`${key} renderScale must be ${expectedRenderScale}`);
   }
 };
 

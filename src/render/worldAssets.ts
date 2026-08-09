@@ -1,4 +1,5 @@
 import { runtimeWorldAssetManifest } from "./worldAssetManifest.generated";
+import { scaledWorldAssetSource } from "./worldAssetScaleCache";
 
 export type LoadStatus = "idle" | "loading" | "ready" | "missing";
 
@@ -10,6 +11,7 @@ export type AssetMeta = {
   readonly url: string;
   readonly width: number;
   readonly height: number;
+  readonly renderScale: number;
   readonly anchor: { readonly x: number; readonly y: number };
   readonly footprint: { readonly width: number; readonly height: number };
   readonly status: LoadStatus;
@@ -21,6 +23,7 @@ type AssetRecord = {
   readonly meta: Omit<AssetMeta, "status">;
   status: LoadStatus;
   image: HTMLImageElement | null;
+  scaledImage: CanvasImageSource | null;
 };
 
 type JsonRecord = Readonly<Record<string, unknown>>;
@@ -36,7 +39,10 @@ export class WorldAssetManifestError extends Error {
 }
 
 const records = new Map<string, AssetRecord>(
-  parseWorldAssetManifest(runtimeWorldAssetManifest).map((meta) => [meta.key, { meta, status: "idle", image: null }]),
+  parseWorldAssetManifest(runtimeWorldAssetManifest).map((meta) => [
+    meta.key,
+    { meta, status: "idle", image: null, scaledImage: null },
+  ]),
 );
 
 let preloadPromise: Promise<void> | null = null;
@@ -46,9 +52,9 @@ export function preloadWorldAssets(): Promise<void> {
   return preloadPromise;
 }
 
-export function getSprite(key: string): HTMLImageElement | null {
+export function getSprite(key: string): CanvasImageSource | null {
   const record = records.get(key);
-  return record?.status === "ready" ? record.image : null;
+  return record?.status === "ready" ? record.scaledImage : null;
 }
 
 export function spriteMeta(key: string): AssetMeta | null {
@@ -68,7 +74,7 @@ export function worldAssetStatuses(): readonly AssetStatus[] {
 export function maxSpriteAnchorY(): number {
   let maxAnchorY = 0;
   for (const record of records.values()) {
-    maxAnchorY = Math.max(maxAnchorY, record.meta.anchor.y);
+    maxAnchorY = Math.max(maxAnchorY, record.meta.anchor.y * record.meta.renderScale);
   }
   return maxAnchorY;
 }
@@ -88,6 +94,12 @@ function loadRecord(record: AssetRecord): Promise<void> {
   record.image = image;
   return new Promise((resolve) => {
     image.onload = () => {
+      record.scaledImage = scaledWorldAssetSource({
+        source: image,
+        width: record.meta.width,
+        height: record.meta.height,
+        renderScale: record.meta.renderScale,
+      });
       record.status = "ready";
       resolve();
     };
@@ -124,6 +136,7 @@ function setImageSource(image: HTMLImageElement, url: string): boolean {
 function markMissing(record: AssetRecord): void {
   record.status = "missing";
   record.image = null;
+  record.scaledImage = null;
 }
 
 export function parseWorldAssetManifest(value: unknown): readonly Omit<AssetMeta, "status">[] {
@@ -142,6 +155,7 @@ function parseAsset(value: unknown, field: string): Omit<AssetMeta, "status"> {
     url: assetUrlForBase(requireAssetPath(asset["path"], `${field}.path`), deploymentBaseUrl()),
     width: requirePositiveInteger(asset["width"], `${field}.width`),
     height: requirePositiveInteger(asset["height"], `${field}.height`),
+    renderScale: requirePositiveNumber(asset["renderScale"], `${field}.renderScale`),
     anchor: parseAnchor(asset["anchor"], `${field}.anchor`),
     footprint: parseFootprint(asset["footprint"], `${field}.footprint`),
   };
@@ -208,6 +222,13 @@ function requireAssetPath(value: unknown, field: string): string {
 function requirePositiveInteger(value: unknown, field: string): number {
   if (typeof value !== "number" || !Number.isSafeInteger(value) || value <= 0) {
     throw new WorldAssetManifestError(field, "expected a positive integer");
+  }
+  return value;
+}
+
+function requirePositiveNumber(value: unknown, field: string): number {
+  if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+    throw new WorldAssetManifestError(field, "expected a positive finite number");
   }
   return value;
 }

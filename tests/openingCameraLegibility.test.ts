@@ -49,7 +49,7 @@ test("cameraAfterViewportResize keeps compact opening 1x1 buildings above the pi
       width: scenario.width,
       height: scenario.height - scenario.consoleHeight - scenario.topInset,
     };
-    for (const building of DEFAULT_GAME_STATE.buildings) {
+    for (const building of DEFAULT_GAME_STATE.buildings.filter(isOpeningOneByOneBuilding)) {
       const spriteRect = projectedOpeningSpriteRect(building, camera);
       const renderedMinPx = Math.min(spriteRect.width, spriteRect.height);
       assert.ok(
@@ -68,7 +68,7 @@ test("automatic opening fit uses the same 80px minimum as startup", () => {
   const camera = cameraForStartingHouse({ clientWidth: 1, clientHeight: 640 }, DEFAULT_GAME_STATE);
 
   // When
-  const renderedMins = DEFAULT_GAME_STATE.buildings.map((building) =>
+  const renderedMins = DEFAULT_GAME_STATE.buildings.filter(isOpeningOneByOneBuilding).map((building) =>
     Math.min(projectedOpeningSpriteRect(building, camera).width, projectedOpeningSpriteRect(building, camera).height),
   );
 
@@ -77,18 +77,28 @@ test("automatic opening fit uses the same 80px minimum as startup", () => {
 });
 
 function projectedOpeningSpriteRect(building: Building, camera: CameraState): Rect {
-  const meta = spriteMeta(building.kind === "house" ? "house_l0" : "well");
+  const meta = spriteMeta(spriteKey(building));
   const anchor = tileToScreen(building.tx, building.ty);
   const canvasAnchor = worldToCanvas({ x: anchor.sx, y: anchor.sy }, camera);
   return {
-    x: canvasAnchor.x - meta.anchor.x * camera.zoom,
-    y: canvasAnchor.y - meta.anchor.y * camera.zoom,
-    width: meta.width * camera.zoom,
-    height: meta.height * camera.zoom,
+    x: canvasAnchor.x - meta.anchor.x * meta.renderScale * camera.zoom,
+    y: canvasAnchor.y - meta.anchor.y * meta.renderScale * camera.zoom,
+    width: meta.width * meta.renderScale * camera.zoom,
+    height: meta.height * meta.renderScale * camera.zoom,
   };
 }
 
-function spriteMeta(key: "house_l0" | "well") {
+function isOpeningOneByOneBuilding(building: Building): boolean {
+  return building.kind === "house" || building.kind === "well";
+}
+
+function spriteKey(building: Building): string {
+  if (building.kind === "house") return "house_l0";
+  if (building.kind === "granary") return "barn";
+  return building.kind;
+}
+
+function spriteMeta(key: string) {
   const meta = runtimeWorldAssetManifest.assets.find((asset) => asset.key === key);
   if (meta === undefined) throw new Error(`Missing sprite metadata for ${key}`);
   return meta;

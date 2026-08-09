@@ -98,7 +98,7 @@ test("source files keep palette literals and sprite blits behind the Phase 4D bo
     if (relative !== "content/palette.ts" && /#[0-9A-Fa-f]{3,8}\b/.test(source)) {
       violations.push(`${relative}:hex`);
     }
-    if (/\bdrawImage\s*\(/.test(source) && relative !== "render/worldSprite.ts") {
+    if (/\bdrawImage\s*\(/.test(source) && relative !== "render/worldSprite.ts" && relative !== "render/worldAssetScaleCache.ts") {
       violations.push(`${relative}:drawImage`);
     }
   }
@@ -129,6 +129,16 @@ test("runtime world asset registry uses bundled generated data instead of import
   // When / Then
   assert.doesNotMatch(source, /\.\.\/\.\.\/public\/assets\/world_asset_manifest\.json/);
   assert.match(source, /from "\.\/worldAssetManifest\.generated"/);
+});
+
+test("world asset registry keeps the source scale cache as a runtime dependency", async () => {
+  // Given
+  const registrySource = await readFile(new URL("../src/render/worldAssets.ts", import.meta.url), "utf8");
+  const cacheSource = await readFile(new URL("../src/render/worldAssetScaleCache.ts", import.meta.url), "utf8");
+
+  // When / Then
+  assert.match(registrySource, /from "\.\/worldAssetScaleCache"/);
+  assert.match(cacheSource, /\bscaledWorldAssetSource\b/);
 });
 
 test("renderFrame derives and draws onboarding world guidance without changing its public input", async () => {

@@ -66,10 +66,10 @@ test("cameraForStartingHouse centers the edge starting house in the desktop usab
     (canvas.clientHeight - 150) / (TILE_H * camera.zoom),
   );
 
-  // Then: the house anchor is centered and the limiting axis frames about 20 isometric tiles.
+  // Then: the house anchor is centered and the limiting axis frames about 14 isometric tiles.
   assertAlmostEqual(anchor.x, usableCenter.x);
   assertAlmostEqual(anchor.y, usableCenter.y);
-  assert.ok(visibleTileSpan >= 18 && visibleTileSpan <= 22);
+  assert.ok(visibleTileSpan >= 13.5 && visibleTileSpan <= 14.5);
   assert.ok(camera.zoom >= 0.5 && camera.zoom <= 2);
 });
 
@@ -154,13 +154,27 @@ test("cameraAfterViewportResize reframes the untouched opening tableau for respo
   }
 });
 
+test("opening responsive pixel floor uses manifest render scale", () => {
+  const camera = { zoom: 1, panX: 0, panY: 0 };
+  const expectedFloor = Math.min(
+    ...DEFAULT_GAME_STATE.buildings.map((building) => {
+      const spriteKey = building.kind === "well" ? "well" : "house_l0";
+      const meta = runtimeWorldAssetManifest.assets.find((asset) => asset.key === spriteKey);
+      if (meta === undefined) throw new Error(`Missing sprite metadata for ${spriteKey}`);
+      return Math.min(meta.width, meta.height) * meta.renderScale;
+    }),
+  );
+
+  assert.equal(smallestRenderedOpeningBuildingPx(camera), expectedFloor);
+});
+
 function smallestRenderedOpeningBuildingPx(camera: ReturnType<typeof cameraForStartingHouse>): number {
   return Math.min(
     ...DEFAULT_GAME_STATE.buildings.map((building) => {
       const spriteKey = building.kind === "well" ? "well" : "house_l0";
       const meta = runtimeWorldAssetManifest.assets.find((asset) => asset.key === spriteKey);
       if (meta === undefined) throw new Error(`Missing sprite metadata for ${spriteKey}`);
-      return Math.min(meta.width, meta.height) * camera.zoom;
+      return Math.min(meta.width, meta.height) * meta.renderScale * camera.zoom;
     }),
   );
 }

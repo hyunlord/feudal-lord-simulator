@@ -116,21 +116,21 @@ describe("world sprite blitter", () => {
     assert.equal(drawWorldSprite(one.context, "well", 2, 4, { camera }), true);
     assert.equal(drawWorldSprite(two.context, "house_l3", 2, 4, { camera }), true);
 
-    assert.deepEqual(one.drawCalls[0], { dx: 100, dy: 132, width: 72, height: 80 });
-    assert.deepEqual(two.drawCalls[0], { dx: 56, dy: 52, width: 160, height: 192 });
+    assert.deepEqual(one.drawCalls[0], { dx: 110, dy: 150, width: 52, height: 58 });
+    assert.deepEqual(two.drawCalls[0], { dx: 101, dy: 152, width: 69, height: 83 });
   });
 
   it("Given pan zoom and DPR When drawing Then destination rectangles snap in device space", () => {
     const recorder = recordingContext(1200, 900);
 
     const drawn = drawWorldSprite(recorder.context, "house_l1", 2, 3, {
-      camera: { zoom: 1.25, panX: 10.2, panY: 5.7 },
+      camera: { zoom: 1.25, panX: 20.2, panY: 5.7 },
       dpr: 2,
       scale: 1,
     });
 
     assert.equal(drawn, true);
-    assert.deepEqual(recorder.drawCalls[0], { dx: -180, dy: -49, width: 240, height: 300 });
+    assert.deepEqual(recorder.drawCalls[0], { dx: -97, dy: 87, width: 115, height: 144 });
     assert.ok(recorder.calls.includes("setTransform:1,0,0,1,0,0"));
   });
 
@@ -185,8 +185,8 @@ describe("world sprite blitter", () => {
     });
 
     assert.equal(drawn, true);
-    assert.deepEqual(recorder.drawCalls[0], { dx: 0, dy: 42, width: 64, height: 120 });
-    assert.ok(recorder.calls.includes("setTransform:-1,0,0,1,100,0"));
+    assert.deepEqual(recorder.drawCalls[0], { dx: 0, dy: 98, width: 34, height: 64 });
+    assert.ok(recorder.calls.includes("setTransform:-1,0,0,1,85,0"));
   });
 
   it("Given drawImage throws When drawing Then canvas state is still restored", () => {
