@@ -7,7 +7,6 @@ import {
   computePalisadeProposal,
   validatePalisadeCandidate,
   type PalisadeFootprint,
-  type PalisadePath,
 } from "../world/palisadeGeometry";
 
 function assertNever(value: never): never {
@@ -29,33 +28,6 @@ function palisadeFootprintsForState(state: GameState): readonly PalisadeFootprin
     });
 }
 
-function clampedPalisadePath(state: GameState, footprints: readonly PalisadeFootprint[]): PalisadePath | null {
-  const first = footprints[0];
-  if (first === undefined) return null;
-  let minX = first.tx;
-  let minY = first.ty;
-  let maxX = first.tx + first.width;
-  let maxY = first.ty + first.height;
-  for (const footprint of footprints) {
-    minX = Math.min(minX, footprint.tx);
-    minY = Math.min(minY, footprint.ty);
-    maxX = Math.max(maxX, footprint.tx + footprint.width);
-    maxY = Math.max(maxY, footprint.ty + footprint.height);
-  }
-  const left = Math.max(0, minX - 1);
-  const top = Math.max(0, minY - 1);
-  const right = Math.min(state.width, maxX + 1);
-  const bottom = Math.min(state.height, maxY + 1);
-  if (left >= right || top >= bottom) return null;
-  return [
-    { x: left, y: top },
-    { x: right, y: top },
-    { x: right, y: bottom },
-    { x: left, y: bottom },
-    { x: left, y: top },
-  ];
-}
-
 function eraGameAction(state: GameState): GameAction | null {
   if (state.era === "stone_town") return null;
   if (state.era === "palisade") {
@@ -63,10 +35,8 @@ function eraGameAction(state: GameState): GameAction | null {
   }
   const footprints = palisadeFootprintsForState(state);
   const proposal = computePalisadeProposal(state, footprints);
-  const fallback = proposal.ok || proposal.reason !== "out_of_bounds" ? null : clampedPalisadePath(state, footprints);
-  const path = proposal.ok ? proposal.path : fallback;
-  if (path === null) return null;
-  const validation = validatePalisadeCandidate(state, path, footprints);
+  if (!proposal.ok) return null;
+  const validation = validatePalisadeCandidate(state, proposal.path, footprints);
   return validation.ok
     ? { type: "confirm_palisade_proclamation", candidatePath: validation.candidate.path }
     : null;

@@ -9,11 +9,13 @@ import {
 } from "../scripts/economyHarness";
 import { stage3Metrics } from "../scripts/economyHarnessMetrics";
 import { trackStage3Run } from "../scripts/economyHarnessStage3Trace";
-import { STAGE3_MAX_NON_WALL_STALL_TICKS, STAGE3_MAX_WALL_COMPLETION_TICKS, STAGE3_PALISADE_PATH, STAGE3_PROCLAMATION_TICK } from "../scripts/economyHarnessStage3Scenario";
+import { STAGE3_MAX_NON_WALL_STALL_TICKS, STAGE3_MAX_WALL_COMPLETION_TICKS, STAGE3_PROCLAMATION_TICK } from "../scripts/economyHarnessStage3Scenario";
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { PalisadeConstructionSite } from "../src/economy/construction";
 import type { GameState, PalisadeState } from "../src/engine/engine.types";
 import { confirmPalisadeProclamation } from "../src/engine/palisade";
 import { advanceTick } from "../src/engine/tick";
+import { computePalisadeProposal, validatePalisadeCandidate, type PalisadeFootprint } from "../src/world/palisadeGeometry";
 
 const PALISADE: PalisadeState = {
   id: "palisade-stage3",
@@ -52,6 +54,19 @@ function withStage3Era(state: GameState, palisade: PalisadeState = PALISADE): Ga
     eraProclaimedTick: 321,
     palisade,
   };
+}
+
+function palisadeFootprints(state: GameState): readonly PalisadeFootprint[] {
+  return state.buildings.map((building) => {
+    const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+    return {
+      id: building.id,
+      tx: building.tx,
+      ty: building.ty,
+      width: definition.width,
+      height: definition.height,
+    };
+  });
 }
 
 test("economy harness hash changes for every Stage 3 era field", () => {
@@ -130,7 +145,9 @@ test("economy harness hash changes for wall construction metadata", () => {
   // Given: a real Stage 3 state immediately after proclamation.
   let proclaimed = createStage3EconomyHarnessScenario({ seed: 3 });
   while (proclaimed.tick < STAGE3_PROCLAMATION_TICK) proclaimed = advanceTick(proclaimed);
-  proclaimed = confirmPalisadeProclamation(proclaimed, STAGE3_PALISADE_PATH);
+  const proposal = computePalisadeProposal(proclaimed, palisadeFootprints(proclaimed));
+  assert.equal(proposal.ok, true, JSON.stringify(proposal));
+  proclaimed = proposal.ok ? confirmPalisadeProclamation(proclaimed, proposal.path) : proclaimed;
   const site = proclaimed.constructionSites.find((candidate): candidate is PalisadeConstructionSite =>
     candidate.kind === "palisade_segment",
   );
@@ -190,6 +207,26 @@ test("economy harness Stage 3 scenario produces two identical fresh runs", () =>
   assert.equal(first.proclamationTick, 600);
   assert.equal(first.wallCompleteTick, second.wallCompleteTick);
   assert.equal(first.wallCompletionElapsedTicks, second.wallCompletionElapsedTicks);
+});
+
+test("Given the Stage 3 seeded scenario When advisor proposes palisade Then canonical geometry validates and the trace completes", () => {
+  // Given: the Stage 3 fixture starts without manual construction sites.
+  const scenario = createStage3EconomyHarnessScenario({ seed: 3 });
+  const footprints = palisadeFootprints(scenario);
+
+  // When: the real palisade proposal and advisor trace run.
+  const proposal = computePalisadeProposal(scenario, footprints);
+  assert.equal(scenario.constructionSites.length, 0);
+  assert.equal(proposal.ok, true, JSON.stringify(proposal));
+  assert.equal(proposal.ok ? validatePalisadeCandidate(scenario, proposal.path, footprints).ok : false, true);
+  const trace = trackStage3Run(scenario);
+
+  // Then: the advisor-driven run proclaims and completes the palisade.
+  assert.equal(trace.proclamationTick, STAGE3_PROCLAMATION_TICK);
+  assert.equal(trace.wallCompleteTick !== null, true);
+  assert.equal(trace.finalState.palisade?.segments.every((segment) => segment.completed), true);
+  assert.equal(trace.advisorProvenance.id, "stage3-seeded");
+  assert.equal(trace.advisorProvenance.actionCount > 0, true);
 });
 
 test("economy harness Stage 3 adversarial variants isolate reachability, completion, and labour failures", () => {
