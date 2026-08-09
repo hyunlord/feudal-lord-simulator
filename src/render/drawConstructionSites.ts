@@ -18,6 +18,7 @@ import { drawPalisadeConstructionSite } from "./drawPalisadeConstructionSites";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel } from "./style";
 import { drawWorldSpriteAtWorldAnchor } from "./worldSprite";
+import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 export {
   createConstructionCompletionTracker,
   constructionCompletionEffects,
@@ -32,6 +33,7 @@ type DrawConstructionSiteInput = {
   readonly schedule?: PalisadeConstructionSchedule;
   readonly zoom: number;
   readonly presentationProgress?: number;
+  readonly viewMode?: ObjectRenderViewMode;
 };
 
 type Point = {
@@ -66,6 +68,10 @@ export function drawConstructionSite(
   context: CanvasRenderingContext2D,
   input: DrawConstructionSiteInput,
 ): void {
+  if ((input.viewMode ?? "normal") === "outlines") {
+    drawConstructionSiteSilhouette(context, input.site, input.zoom);
+    return;
+  }
   if (isPalisadeConstructionSite(input.site) || isStoneWallConstructionSite(input.site)) {
     drawPalisadeConstructionSite(context, {
       site: input.site,
@@ -95,6 +101,33 @@ export function drawConstructionSite(
     progress: presentationProgress,
   });
   drawBuilderMarker(context, input.site, anchor, input.zoom);
+}
+
+function drawConstructionSiteSilhouette(
+  context: CanvasRenderingContext2D,
+  site: ConstructionSite,
+  zoom: number,
+): void {
+  const anchor = siteAnchor(site);
+  const footprint = constructionSiteFootprint(site);
+  const previousAlpha = context.globalAlpha;
+  context.save();
+  try {
+    context.globalAlpha = previousAlpha * OBJECT_OUTLINE_ALPHA;
+    context.fillStyle = PALETTE.ink;
+    context.beginPath();
+    context.moveTo(snapToPixel(anchor.x + footprint.width * 16), snapToPixel(anchor.y - 10));
+    context.lineTo(snapToPixel(anchor.x + footprint.width * 34), snapToPixel(anchor.y + footprint.height * 9));
+    context.lineTo(snapToPixel(anchor.x + footprint.width * 15), snapToPixel(anchor.y + footprint.height * 20));
+    context.lineTo(snapToPixel(anchor.x - 4), snapToPixel(anchor.y + footprint.height * 4));
+    context.closePath();
+    context.fill();
+    applyInkOutline(context, zoom);
+    context.stroke();
+  } finally {
+    context.globalAlpha = previousAlpha;
+    context.restore();
+  }
 }
 
 function drawBuilderMarker(

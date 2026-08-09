@@ -1,5 +1,12 @@
+import { useEffect, useState } from "react";
+
 import type { OverlayMode } from "../engine/engine.types";
 import { KO_UI } from "../content/locale.ko";
+import {
+  getObjectRenderViewMode,
+  subscribeObjectRenderViewMode,
+  toggleObjectRenderViewMode,
+} from "../render/objectRenderViewMode";
 
 export type EconomyOverlayControlsProps = {
   readonly overlayMode: OverlayMode;
@@ -63,6 +70,16 @@ export function EconomyOverlayControls({
   overlayMode,
   onChange,
 }: EconomyOverlayControlsProps) {
+  const [objectRenderViewMode, setObjectRenderViewModeState] = useState(getObjectRenderViewMode);
+  useEffect(
+    () => subscribeObjectRenderViewMode(setObjectRenderViewModeState),
+    [],
+  );
+  const outlinesEnabled = objectRenderViewMode === "outlines";
+  const toggleOutlines = () => {
+    setObjectRenderViewModeState(toggleObjectRenderViewMode(true));
+  };
+
   return (
     <section className="economy-overlays" aria-label={KO_UI.overlays.ariaLabel}>
       <span className="overlay-heading">{KO_UI.overlays.heading}</span>
@@ -82,6 +99,18 @@ export function EconomyOverlayControls({
             <span className="overlay-legend">{option.legend}</span>
           </button>
         ))}
+        <button
+          className="overlay-seal"
+          type="button"
+          aria-pressed={outlinesEnabled}
+          aria-label={`${KO_UI.overlays.outlines.label} 보기, ${KO_UI.overlays.shortcut} O`}
+          onClick={toggleOutlines}
+        >
+          <span className="overlay-label overlay-label--full">{KO_UI.overlays.outlines.label}</span>
+          <span className="overlay-label overlay-label--compact" aria-hidden="true">{KO_UI.overlays.outlines.compact}</span>
+          <span className="overlay-key">O</span>
+          <span className="overlay-legend">{KO_UI.overlays.outlines.legend}</span>
+        </button>
       </div>
     </section>
   );

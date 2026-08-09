@@ -9,6 +9,8 @@ import type { RenderQueueItem } from "./objectRenderOrder";
 import { getObjectRenderViewMode } from "./objectRenderViewMode";
 import type { TileRange, ViewportSize } from "./renderer";
 import type { TileCoordinate } from "../world/grid";
+import { denseBuildingClusterIds } from "./occlusionModel";
+import { drawRoadReadabilityOverlay } from "./roadReadabilityOverlay";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -30,6 +32,8 @@ export function drawObjectRenderItems(
   input: DrawObjectRenderItemsInput,
 ): void {
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
+  const viewMode = getObjectRenderViewMode();
+  const denseBuildingIds = denseBuildingClusterIds(input.state.buildings);
   for (const item of input.objectRenderItems) {
     if (item.kind === "walker") {
       walkerItems.push(item);
@@ -39,12 +43,13 @@ export function drawObjectRenderItems(
       const presentationProgress = input.constructionProgress?.get(item.id)
         ?? item.presentationProgress;
       const drawInput = presentationProgress === undefined
-        ? { site: item.site, schedule: item.schedule, zoom: input.zoom }
+        ? { site: item.site, schedule: item.schedule, zoom: input.zoom, viewMode }
         : {
             site: item.site,
             schedule: item.schedule,
             zoom: input.zoom,
             presentationProgress,
+            viewMode,
           };
       drawConstructionSite(context, drawInput);
       continue;
@@ -69,9 +74,11 @@ export function drawObjectRenderItems(
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
-      viewMode: getObjectRenderViewMode(),
+      viewMode,
+      denseBuildingIds,
     });
   }
+  drawRoadReadabilityOverlay(context, input.state, input.tiles);
   for (const item of walkerItems) {
     drawBuildings(context, {
       state: input.state,
@@ -85,7 +92,8 @@ export function drawObjectRenderItems(
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
-      viewMode: getObjectRenderViewMode(),
+      viewMode,
+      denseBuildingIds,
     });
   }
 }

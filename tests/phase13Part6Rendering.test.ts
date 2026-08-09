@@ -283,7 +283,7 @@ test("drawObjectRenderItems defers walkers until after buildings so they are nev
   assert.ok(proceduralWalker > firstBuildingFill);
 });
 
-test("drawObjectRenderItems fades the building that overlaps the cursor tile to fifty five percent", () => {
+test("drawObjectRenderItems fades the building whose rendered sprite overlaps the cursor tile to fifty percent", () => {
   // Given
   const context = loggedContext();
   const house = building("house-a");
@@ -302,7 +302,8 @@ test("drawObjectRenderItems fades the building that overlaps the cursor tile to 
   });
 
   // Then
-  assert.ok(context.calls.includes("globalAlpha:0.55"));
+  assert.ok(context.calls.includes("globalAlpha:0.5"));
+  assert.equal(context.calls.includes("globalAlpha:0.55"), false);
   assert.ok(context.calls.includes("globalAlpha:1"));
 });
 
@@ -331,7 +332,7 @@ test("outlines view mode is off by default and toggled by one keyboard key", () 
   toggleObjectRenderViewMode(true);
 });
 
-test("outlines view mode restores solid alpha before stroking building silhouettes", () => {
+test("outlines view mode keeps fill and stroke silhouettes at thirty five percent alpha", () => {
   // Given
   if (getObjectRenderViewMode() === "normal") toggleObjectRenderViewMode(true);
   const context = loggedContext();
@@ -351,13 +352,13 @@ test("outlines view mode restores solid alpha before stroking building silhouett
     });
 
     // Then
-    const fillAlpha = context.calls.indexOf("globalAlpha:0.4");
+    const fillAlpha = context.calls.indexOf("globalAlpha:0.35");
     const fill = context.calls.indexOf("fill");
-    const solidAlpha = context.calls.indexOf("globalAlpha:1");
     const strokeStyle = context.calls.indexOf("strokeStyle:#2A2118");
     const stroke = context.calls.indexOf("stroke");
     assert.ok(fillAlpha >= 0 && fillAlpha < fill);
-    assert.ok(fill < solidAlpha && solidAlpha < strokeStyle && strokeStyle < stroke);
+    assert.ok(fill < strokeStyle && strokeStyle < stroke);
+    assert.ok(context.calls.indexOf("globalAlpha:1") > stroke);
   } finally {
     if (getObjectRenderViewMode() === "outlines") toggleObjectRenderViewMode(true);
   }

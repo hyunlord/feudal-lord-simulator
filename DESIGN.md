@@ -150,6 +150,10 @@ edges. Scroll art frames content only; its interior remains visually empty.
   the selected building's connected road component; the latter shows every
   road tile reachable within the canonical distributor range. Both remain
   optional presentation layers and do not alter pathfinding or balance.
+- **Occlusion reading control:** the console exposes a labelled Korean `윤곽`
+  control with shortcut `O`. It toggles presentation-only object silhouettes for
+  buildings, construction sites, and walkers without entering `GameState`; roads
+  and terrain remain normal readability anchors.
 - **Placement mark:** translucent footprint, ink boundary, and a small
   parchment failure plaque positioned near the pointer.
 - **Welcome parchment:** a centered parchment card above the world and the

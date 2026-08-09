@@ -22,6 +22,7 @@ export const KO_UI = {
     labour: { label: "일손", compact: "일손", legend: "일손이 부족한 작업장" },
     distribution: { label: "배급", compact: "범위", legend: "곡창의 길 배급 범위" },
     roadComponent: { label: "연결된 길", compact: "길", legend: "선택 건물의 길망" },
+    outlines: { label: "윤곽", compact: "윤곽", legend: "건물·공사·사람 윤곽" },
   },
   speeds: {
     ariaLabel: "시간 속도", paused: "일시 정지", normal: "1배속",

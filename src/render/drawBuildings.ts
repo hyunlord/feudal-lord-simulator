@@ -19,6 +19,12 @@ import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 import { applyInkOutline, snapToPixel } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
+import {
+  buildingSpriteOverlapsCursorTile,
+  denseBuildingClusterIds,
+  normalBuildingAlpha,
+  OBJECT_OUTLINE_ALPHA,
+} from "./occlusionModel";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -33,6 +39,7 @@ type ObjectRenderInput = {
   readonly nowMs?: number;
   readonly hoveredTile?: TileCoordinate | null;
   readonly viewMode?: ObjectRenderViewMode;
+  readonly denseBuildingIds?: ReadonlySet<string>;
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -51,6 +58,7 @@ export function drawBuildings(
     includeGroundCover: renderDetailLevel(input.zoom) === "full",
   });
   const spriteOptions = spriteOptionsFor(input);
+  const denseIds = input.denseBuildingIds ?? denseBuildingClusterIds(input.state.buildings);
   for (const item of items) {
     if (item.kind === "starting_landmark") {
       drawStartingLandmark(context, item.landmark, input.zoom);
@@ -74,9 +82,9 @@ export function drawBuildings(
         spriteOptions,
       });
     } else if (item.kind === "walker") {
-      drawWalker(context, item.walker, input.zoom);
+      drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal");
     } else if (item.kind === "building") {
-      drawBuilding(context, input, item.building, spriteOptions);
+      drawBuilding(context, input, item.building, spriteOptions, denseIds);
     }
   }
 }
@@ -86,13 +94,29 @@ function drawBuilding(
   input: ObjectRenderInput,
   building: Building,
   spriteOptions: WorldSpriteOptions,
+  denseBuildingIds: ReadonlySet<string>,
 ): void {
   if ((input.viewMode ?? "normal") === "outlines") {
     drawBuildingSilhouette(context, building, input.zoom);
     return;
   }
-  if (input.hoveredTile !== undefined && input.hoveredTile !== null && buildingOverlapsTile(building, input.hoveredTile)) {
-    drawWithAlpha(context, 0.55, () => {
+  const visualState = buildBuildingVisualState(building, input.state.houses, {
+    era: houseMaterialEraFromEra(input.state.era),
+    wave: input.houseMaterialWave ?? null,
+    nowMs: input.nowMs ?? 0,
+  });
+  const alpha = normalBuildingAlpha({
+    cursorOverlaps: input.hoveredTile !== undefined && input.hoveredTile !== null && buildingSpriteOverlapsCursorTile({
+      building,
+      houseLevel: visualState.houseLevel,
+      hoveredTile: input.hoveredTile,
+      camera: input.camera,
+      dpr: input.dpr,
+    }),
+    dense: denseBuildingIds.has(building.id),
+  });
+  if (alpha !== 1) {
+    drawWithAlpha(context, alpha, () => {
       drawBuildingDetail(context, input, building, spriteOptions);
     });
     return;
@@ -165,9 +189,11 @@ function drawBuildingSilhouette(
   context.lineTo(snapToPixel(front.sx), snapToPixel(front.sy + 16));
   context.lineTo(snapToPixel(rear.sx - 28), snapToPixel(rear.sy + 2));
   context.closePath();
-  drawWithAlpha(context, 0.4, () => context.fill());
-  applyInkOutline(context, zoom);
-  context.stroke();
+  drawWithAlpha(context, OBJECT_OUTLINE_ALPHA, () => {
+    context.fill();
+    applyInkOutline(context, zoom);
+    context.stroke();
+  });
 }
 
 function drawWithAlpha(
@@ -181,16 +207,6 @@ function drawWithAlpha(
   draw();
   context.globalAlpha = previousAlpha;
   context.restore();
-}
-
-function buildingOverlapsTile(building: Building, tile: TileCoordinate): boolean {
-  const config = BUILDING_CONFIG_BY_KIND[building.kind];
-  return (
-    tile.tx >= building.tx &&
-    tile.ty >= building.ty &&
-    tile.tx < building.tx + config.width &&
-    tile.ty < building.ty + config.height
-  );
 }
 
 function buildingCenter(building: Building): Point {

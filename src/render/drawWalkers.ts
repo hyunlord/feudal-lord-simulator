@@ -6,6 +6,7 @@ import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha } from 
 import { walkerVisualAnchor } from "./walkerAnchor";
 import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
 import { walkerPresentationFor } from "./walkerPresentation";
+import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 
 const CARGO_COLOR_BY_RESOURCE = {
   wheat: PALETTE.gold,
@@ -50,6 +51,7 @@ export function drawWalker(
   context: CanvasRenderingContext2D,
   walker: Walker,
   zoom: number,
+  viewMode: ObjectRenderViewMode = "normal",
 ): void {
   const anchor = walkerVisualAnchor(walker.position);
   const transform = context.getTransform?.();
@@ -59,6 +61,11 @@ export function drawWalker(
   const footX = foot.x;
   const footY = foot.y;
   const scale = walkerScaleForZoom(zoom);
+
+  if (viewMode === "outlines") {
+    drawWalkerSilhouette(context, footX, footY, scale, zoom);
+    return;
+  }
 
   drawWalkerHalo(context, footX, footY, scale);
   drawWalkerShadow(context, footX, footY, scale);
@@ -71,6 +78,37 @@ export function drawWalker(
   });
   if (walker.kind !== "builder" && walker.cargo !== null) {
     drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
+  }
+}
+
+function drawWalkerSilhouette(
+  context: CanvasRenderingContext2D,
+  footX: number,
+  footY: number,
+  scale: number,
+  zoom: number,
+): void {
+  const previousAlpha = context.globalAlpha;
+  context.save();
+  try {
+    context.globalAlpha = previousAlpha * OBJECT_OUTLINE_ALPHA;
+    context.fillStyle = PALETTE.ink;
+    context.fillRect(
+      snapToPixel(footX - 5 * scale),
+      snapToPixel(footY - 32 * scale),
+      snapToPixel(10 * scale),
+      snapToPixel(24 * scale),
+    );
+    applyInkOutline(context, zoom);
+    context.strokeRect(
+      snapToPixel(footX - 5 * scale),
+      snapToPixel(footY - 32 * scale),
+      snapToPixel(10 * scale),
+      snapToPixel(24 * scale),
+    );
+  } finally {
+    context.globalAlpha = previousAlpha;
+    context.restore();
   }
 }
 
