@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "publicUrl": "https://hyunlord.github.io/feudal-lord-simulator/",
+  "revision": "cdb831a4546658a439d1aed96733e4021b04c741",
+  "deploymentProof": {
+    "source": "/tmp/feudal-phase13/final-public/deployment-proof.json",
+    "workflowRun": {
+      "id": 31313422735,
+      "html_url": "https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31313422735"
+    },
+    "deployment": {
+      "id": 5818784532,
+      "url": "https://api.github.com/repos/hyunlord/feudal-lord-simulator/deployments/5818784532"
+    },
+    "deploymentStatus": {
+      "id": 16574872928,
+      "url": "https://api.github.com/repos/hyunlord/feudal-lord-simulator/deployments/5818784532/statuses/16574872928"
+    },
+    "pageUrl": "https://hyunlord.github.io/feudal-lord-simulator/",
+    "capturedAt": "2026-08-09T12:43:18Z",
+    "onlineVerification": {
+      "capturedAt": "2026-08-09T12:43:18Z",
+      "verifiedAt": "2026-08-09T12:49:47.180Z",
+      "authHeaderUsed": true,
+      "workflowRun": {
+        "id": 31313422735,
+        "htmlUrl": "https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31313422735",
+        "name": "Deploy to GitHub Pages",
+        "event": "workflow_dispatch",
+        "status": "completed",
+        "conclusion": "success",
+        "headSha": "cdb831a4546658a439d1aed96733e4021b04c741",
+        "repository": "hyunlord/feudal-lord-simulator"
+      },
+      "deployment": {
+        "id": 5818784532,
+        "url": "https://api.github.com/repos/hyunlord/feudal-lord-simulator/deployments/5818784532",
+        "sha": "cdb831a4546658a439d1aed96733e4021b04c741",
+        "environment": "github-pages",
+        "statusesUrl": "https://api.github.com/repos/hyunlord/feudal-lord-simulator/deployments/5818784532/statuses"
+      },
+      "deploymentStatus": {
+        "id": 16574872928,
+        "url": "https://api.github.com/repos/hyunlord/feudal-lord-simulator/deployments/5818784532/statuses/16574872928",
+        "state": "success",
+        "environment": "github-pages",
+        "environmentUrl": "https://hyunlord.github.io/feudal-lord-simulator/",
+        "logUrl": "https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31313422735/job/93246078375"
+      }
+    }
+  },
+  "loadedResources": [
+    {
+      "url": "https://hyunlord.github.io/feudal-lord-simulator/assets/index-DLgGTr4s.css",
+      "fetchedUrl": "https://hyunlord.github.io/feudal-lord-simulator/assets/index-DLgGTr4s.css",
+      "kind": "stylesheet",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8",
+      "byteLength": 25302,
+      "sha256": "487ca0c510df8ef21198b24fca09004c90c4702b53cdd73ec853ef5a0db794fb"
+    },
+    {
+      "url": "https://hyunlord.github.io/feudal-lord-simulator/assets/index-DatgZ4j-.js",
+      "fetchedUrl": "https://hyunlord.github.io/feudal-lord-simulator/assets/index-DatgZ4j-.js",
+      "kind": "script",
+      "status": 200,
+      "contentType": "application/javascript; charset=utf-8",
+      "byteLength": 446298,
+      "sha256": "ad3185f843abf2066a475b63e6ce74a1a9f9efe8c5af0e21d989af8ba62f1bb1"
+    }
+  ],
+  "screenshots": [
+    {
+      "id": "opening-1280x720",
+      "path": "docs/asset-evidence/phase13/final/opening-1280x720.png",
+      "byteLength": 605941,
+      "sha256": "a165312cf45de49e6dad3f002a67075997efcb039e7ad300720bc45d9037261e"
+    },
+    {
+      "id": "responsive-920x720",
+      "path": "docs/asset-evidence/phase13/final/responsive-920x720.png",
+      "byteLength": 375066,
+      "sha256": "20432c24fe1d469324f8f28cae8397d2f84d8575672f3ae0dfe03b4ff760389d"
+    },
+    {
+      "id": "responsive-768x1024",
+      "path": "docs/asset-evidence/phase13/final/responsive-768x1024.png",
+      "byteLength": 501363,
+      "sha256": "eb82102e7e641f080b87e366a7de18e15dceb15b0f275328711c17f184cf3db4"
+    },
+    {
+      "id": "responsive-375x812",
+      "path": "docs/asset-evidence/phase13/final/responsive-375x812.png",
+      "byteLength": 155355,
+      "sha256": "dbf906c6088ffa439efa390a9411550edc8e908374fe92c227b204b4326334f7"
+    },
+    {
+      "id": "terrain-close-up-high-zoom",
+      "path": "docs/asset-evidence/phase13/final/terrain-close-up-high-zoom.png",
+      "byteLength": 366830,
+      "sha256": "9c5507fa8aa9e587228c5fad7dc22b484ff824055eea7430cbe7f31ca8ae293e"
+    },
+    {
+      "id": "forest-scene",
+      "path": "docs/asset-evidence/phase13/final/forest-scene.png",
+      "byteLength": 300237,
+      "sha256": "1a340e947b4d65a82716801d51e087bbf8a33fdab0bcbf1a582616476e2b6bf0"
+    },
+    {
+      "id": "procedural-walker-close-up",
+      "path": "docs/asset-evidence/phase13/final/procedural-walker-close-up.png",
+      "byteLength": 317880,
+      "sha256": "7a3f798d1b31e6880dc6cf65dee0622c6fd8aadb48fbfd6583b8a66bcb8a0fbb"
+    },
+    {
+      "id": "construction-lte25",
+      "path": "docs/asset-evidence/phase13/final/construction-lte25.png",
+      "byteLength": 590202,
+      "sha256": "be7c8afd20516c3dfc954fb3932322638f5c66130363180c43aa1bd9c87d2604"
+    },
+    {
+      "id": "construction-around55",
+      "path": "docs/asset-evidence/phase13/final/construction-around55.png",
+      "byteLength": 596488,
+      "sha256": "6f999285ea3304d02309ae9a8f0886a354b4516b3340ba90571f5de33653a662"
+    },
+    {
+      "id": "construction-around85",
+      "path": "docs/asset-evidence/phase13/final/construction-around85.png",
+      "byteLength": 591358,
+      "sha256": "40a94896d75da55b7c5594f20c76a949b44f21df82c796b42b6ebae765a244f5"
+    },
+    {
+      "id": "construction-complete",
+      "path": "docs/asset-evidence/phase13/final/construction-complete.png",
+      "byteLength": 608837,
+      "sha256": "ac895d23a1808401bbba177da1f5e0ab5660f896242cfec87a020a1b76b24cbb"
+    },
+    {
+      "id": "frame-profile-1x-end",
+      "path": "docs/asset-evidence/phase13/final/frame-profile-1x-end.png",
+      "byteLength": 597071,
+      "sha256": "cb6e932f5cc48b88019d7eaffdcddbcca3ba1c1fb3e06e82c8fa662d77a5f140"
+    }
+  ],
+  "pageInteractions": [
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    }
+  ],
+  "opening": {
+    "id": "opening-1280x720",
+    "path": "docs/asset-evidence/phase13/final/opening-1280x720.png",
+    "byteLength": 605941,
+    "sha256": "a165312cf45de49e6dad3f002a67075997efcb039e7ad300720bc45d9037261e",
+    "canvas": {
+      "hash": "502c3961",
+      "width": 1280,
+      "height": 720,
+      "visiblePixels": 921600
+    },
+    "interaction": {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    "metrics": {
+      "clipped": [],
+      "document": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "body": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "buildSeals": {
+        "scrollWidth": 723,
+        "clientWidth": 723,
+        "scrollHeight": 90,
+        "clientHeight": 90
+      },
+      "console": {
+        "scrollWidth": 1278,
+        "clientWidth": 1278,
+        "scrollHeight": 204,
+        "clientHeight": 204
+      }
+    },
+    "responsive": {
+      "id": "opening-1280x720",
+      "width": 1280,
+      "height": 720,
+      "mobile": false,
+      "clipped": [],
+      "document": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "body": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "buildSeals": {
+        "scrollWidth": 723,
+        "clientWidth": 723,
+        "scrollHeight": 90,
+        "clientHeight": 90
+      },
+      "console": {
+        "scrollWidth": 1278,
+        "clientWidth": 1278,
+        "scrollHeight": 204,
+        "clientHeight": 204
+      }
+    }
+  },
+  "responsive": [
+    {
+      "id": "opening-1280x720",
+      "width": 1280,
+      "height": 720,
+      "mobile": false,
+      "clipped": [],
+      "document": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "body": {
+        "scrollWidth": 1280,
+        "clientWidth": 1280,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "buildSeals": {
+        "scrollWidth": 723,
+        "clientWidth": 723,
+        "scrollHeight": 90,
+        "clientHeight": 90
+      },
+      "console": {
+        "scrollWidth": 1278,
+        "clientWidth": 1278,
+        "scrollHeight": 204,
+        "clientHeight": 204
+      }
+    },
+    {
+      "id": "responsive-920x720",
+      "width": 920,
+      "height": 720,
+      "mobile": false,
+      "interaction": {
+        "atMs": 0,
+        "label": "dismiss visible welcome guidance",
+        "method": "Input.dispatchMouseEvent"
+      },
+      "clipped": [],
+      "document": {
+        "scrollWidth": 920,
+        "clientWidth": 920,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "body": {
+        "scrollWidth": 920,
+        "clientWidth": 920,
+        "scrollHeight": 720,
+        "clientHeight": 720
+      },
+      "buildSeals": {
+        "scrollWidth": 540,
+        "clientWidth": 540,
+        "scrollHeight": 180,
+        "clientHeight": 180
+      },
+      "console": {
+        "scrollWidth": 918,
+        "clientWidth": 918,
+        "scrollHeight": 276,
+        "clientHeight": 276
+      },
+      "canvas": {
+        "hash": "8e400aa5",
+        "width": 920,
+        "height": 720,
+        "visiblePixels": 662400
+      }
+    },
+    {
+      "id": "responsive-768x1024",
+      "width": 768,
+      "height": 1024,
+      "mobile": false,
+      "interaction": {
+        "atMs": 0,
+        "label": "dismiss visible welcome guidance",
+        "method": "Input.dispatchMouseEvent"
+      },
+      "clipped": [],
+      "document": {
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "scrollHeight": 1024,
+        "clientHeight": 1024
+      },
+      "body": {
+        "scrollWidth": 768,
+        "clientWidth": 768,
+        "scrollHeight": 1024,
+        "clientHeight": 1024
+      },
+      "buildSeals": {
+        "scrollWidth": 388,
+        "clientWidth": 388,
+        "scrollHeight": 250,
+        "clientHeight": 250
+      },
+      "console": {
+        "scrollWidth": 766,
+        "clientWidth": 766,
+        "scrollHeight": 274,
+        "clientHeight": 274
+      },
+      "canvas": {
+        "hash": "09981bf2",
+        "width": 768,
+        "height": 1024,
+        "visiblePixels": 786432
+      }
+    },
+    {
+      "id": "responsive-375x812",
+      "width": 375,
+      "height": 812,
+      "mobile": false,
+      "interaction": {
+        "atMs": 0,
+        "label": "dismiss visible welcome guidance",
+        "method": "Input.dispatchMouseEvent"
+      },
+      "clipped": [],
+      "document": {
+        "scrollWidth": 375,
+        "clientWidth": 375,
+        "scrollHeight": 812,
+        "clientHeight": 812
+      },
+      "body": {
+        "scrollWidth": 375,
+        "clientWidth": 375,
+        "scrollHeight": 812,
+        "clientHeight": 812
+      },
+      "buildSeals": {
+        "scrollWidth": 241,
+        "clientWidth": 241,
+        "scrollHeight": 204,
+        "clientHeight": 204
+      },
+      "console": {
+        "scrollWidth": 373,
+        "clientWidth": 373,
+        "scrollHeight": 222,
+        "clientHeight": 222
+      },
+      "canvas": {
+        "hash": "bfc07d0b",
+        "width": 375,
+        "height": 812,
+        "visiblePixels": 304500
+      }
+    }
+  ],
+  "representative": {
+    "interaction": {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    "terrain": {
+      "id": "terrain-close-up-high-zoom",
+      "path": "docs/asset-evidence/phase13/final/terrain-close-up-high-zoom.png",
+      "byteLength": 366830,
+      "sha256": "9c5507fa8aa9e587228c5fad7dc22b484ff824055eea7430cbe7f31ca8ae293e",
+      "canvas": {
+        "hash": "f2039ca7",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    },
+    "forest": {
+      "id": "forest-scene",
+      "path": "docs/asset-evidence/phase13/final/forest-scene.png",
+      "byteLength": 300237,
+      "sha256": "1a340e947b4d65a82716801d51e087bbf8a33fdab0bcbf1a582616476e2b6bf0",
+      "canvas": {
+        "hash": "89dd351c",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    }
+  },
+  "walker": {
+    "interaction": {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    },
+    "kind": "carter",
+    "start": {
+      "id": "carter:logging-camp-50-40-0:50",
+      "x": 48.879999999999995,
+      "y": 41
+    },
+    "end": {
+      "id": "carter:logging-camp-50-40-0:50",
+      "x": 47,
+      "y": 39.23999999999998
+    },
+    "moved": true,
+    "focus": {
+      "tile": {
+        "tx": 47,
+        "ty": 39
+      },
+      "before": {
+        "x": 782.2222222222222,
+        "y": 285
+      },
+      "after": {
+        "x": 640.2222222222223,
+        "y": 360
+      },
+      "canvasCenter": {
+        "x": 640,
+        "y": 360
+      },
+      "distanceFromCenterPx": 0.22222222222228538
+    },
+    "capture": {
+      "id": "procedural-walker-close-up",
+      "path": "docs/asset-evidence/phase13/final/procedural-walker-close-up.png",
+      "byteLength": 317880,
+      "sha256": "7a3f798d1b31e6880dc6cf65dee0622c6fd8aadb48fbfd6583b8a66bcb8a0fbb",
+      "canvas": {
+        "hash": "bdc5333a",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    }
+  },
+  "construction": [
+    {
+      "id": "construction-lte25",
+      "siteId": "construction-site-000001",
+      "siteKind": "house",
+      "building": "house",
+      "label": "오두막",
+      "name": "오두막 부지",
+      "progressText": "0/240틱 · 일꾼 0명",
+      "progress": 0,
+      "canvas": {
+        "hash": "57a2bf0a",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    },
+    {
+      "id": "construction-around55",
+      "siteId": "construction-site-000001",
+      "siteKind": "house",
+      "building": "house",
+      "label": "오두막",
+      "name": "오두막 부지",
+      "progressText": "125/240틱 · 일꾼 3명",
+      "progress": 0.5208333333333334,
+      "canvas": {
+        "hash": "6f8f7b67",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    },
+    {
+      "id": "construction-around85",
+      "siteId": "construction-site-000001",
+      "siteKind": "house",
+      "building": "house",
+      "label": "오두막",
+      "name": "오두막 부지",
+      "progressText": "188/240틱 · 일꾼 3명",
+      "progress": 0.7833333333333333,
+      "canvas": {
+        "hash": "271f985e",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    },
+    {
+      "id": "construction-complete",
+      "siteId": "construction-site-000001",
+      "siteKind": "house",
+      "building": "house",
+      "label": "오두막",
+      "progress": 1,
+      "progressText": "complete",
+      "completed": true,
+      "houseTile": {
+        "tx": 45,
+        "ty": 40
+      },
+      "completedBuildingId": "construction-site-000001",
+      "canvas": {
+        "hash": "f629c5ac",
+        "width": 1280,
+        "height": 720,
+        "visiblePixels": 921600
+      }
+    }
+  ],
+  "frameProfile": {
+    "durationMs": 30000,
+    "elapsedMs": 30023.400000095367,
+    "startedAt": 5577,
+    "endedAt": 35600.40000009537,
+    "measuredFrameCount": 1310,
+    "metrics": {
+      "minMs": 2.6999998092651367,
+      "p50Ms": 3.1000003814697266,
+      "p75Ms": 3.299999713897705,
+      "p90Ms": 3.5,
+      "p95Ms": 3.700000286102295,
+      "p99Ms": 5.299999713897705,
+      "maxMs": 6.199999809265137,
+      "avgMs": 3.1956488583834117,
+      "over16_67": 0,
+      "over20": 0
+    },
+    "failures": [],
+    "interaction": {
+      "atMs": 0,
+      "label": "dismiss visible welcome guidance",
+      "method": "Input.dispatchMouseEvent"
+    }
+  },
+  "errors": {
+    "console": [],
+    "page": [],
+    "resource": [],
+    "network": [],
+    "log": [],
+    "runtime": []
+  }
+}

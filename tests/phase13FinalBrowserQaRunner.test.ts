@@ -74,7 +74,7 @@ function evidenceExpression(): string {
         { id: "construction-lte25", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 0.2, progressText: "48/240틱" },
         { id: "construction-around55", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 0.55, progressText: "132/240틱" },
         { id: "construction-around85", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 0.85, progressText: "204/240틱" },
-        { id: "construction-complete", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 1, progressText: "complete", completed: true, houseTile: { tx: 45, ty: 40 } }
+        { id: "construction-complete", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 1, progressText: "complete", completed: true, houseTile: { tx: 45, ty: 40 }, completedBuildingId: "site-1" }
       ],
       frameProfile: { durationMs: 30000, elapsedMs: 30020, startedAt: 1000, endedAt: 31020, measuredFrameCount: 3, metrics: { minMs: 9, p50Ms: 11, p75Ms: 12, p90Ms: 12, p95Ms: 12, p99Ms: 12, maxMs: 12, avgMs: 11, over16_67: 0, over20: 0 }, failures: [] },
       errors: { console: [], page: [], resource: [], network: [], log: [], runtime: [] }
@@ -149,6 +149,17 @@ test("Given final QA evidence with duplicate shots or over20 frames When asserte
   `);
 
   assert.match(output, /missing screenshots|unique ids|over20|unique paths/);
+});
+
+test("Given a completed house with another identity When evidence is asserted Then same-site completion is rejected", () => {
+  const output = evalQa(`
+    const evidence = ${evidenceExpression()};
+    evidence.construction[3].completedBuildingId = "another-site";
+    try { qa.assertPhase13FinalBrowserQaEvidence(evidence); }
+    catch (error) { process.stdout.write(error instanceof Error ? error.message : String(error)); }
+  `);
+
+  assert.match(output, /completed building identity/);
 });
 
 test("Given final QA sources When inspected Then they use public gestures event collection and no simulation bypass", () => {

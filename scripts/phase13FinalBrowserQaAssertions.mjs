@@ -137,6 +137,7 @@ function requireConstruction(construction) {
     if (shot.target <= 0.25 && (entry.progress < 0 || entry.progress > 0.25)) throw new Phase13FinalBrowserQaError(`${shot.id} progress outside <=25 range`);
     if (shot.target > 0.25 && shot.target < 1 && Math.abs(entry.progress - shot.target) > 0.08) throw new Phase13FinalBrowserQaError(`${shot.id} progress outside tolerance`);
     if (shot.target >= 1 && (entry.completed !== true || entry.houseTile?.tx !== 45 || entry.houseTile?.ty !== 40)) throw new Phase13FinalBrowserQaError("construction completion must produce house at HOUSE_TILE");
+    if (shot.target >= 1 && entry.completedBuildingId !== entry.siteId) throw new Phase13FinalBrowserQaError("construction completed building identity must match site identity");
   }
 }
 

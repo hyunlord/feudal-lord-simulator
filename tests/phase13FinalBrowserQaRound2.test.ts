@@ -7,6 +7,7 @@ const QA_SCRIPT = new URL("../scripts/phase13FinalBrowserQa.mjs", import.meta.ur
 const QA_BROWSER = new URL("../scripts/phase13FinalBrowserQaBrowser.mjs", import.meta.url);
 const QA_ERRORS = new URL("../scripts/phase13FinalBrowserQaErrors.mjs", import.meta.url);
 const QA_RUNNER = new URL("../scripts/phase13FinalBrowserQaRunner.mjs", import.meta.url);
+const QA_SCENARIOS = new URL("../scripts/phase13FinalBrowserQaScenarios.mjs", import.meta.url);
 const CDP_CLIENT = new URL("../scripts/phase8Task10CdpClient.mjs", import.meta.url);
 const PUBLIC_URL = "https://hyunlord.github.io/feudal-lord-simulator/";
 const REVISION = "77e8202318cb657a7086b4044f493706c4866bfa";
@@ -57,6 +58,27 @@ function evalRunner(source: string): string {
     encoding: "utf8",
   });
 }
+
+function evalScenarios(source: string): string {
+  return execFileSync(process.execPath, ["--input-type=module", "--eval", `import * as scenarios from ${JSON.stringify(QA_SCENARIOS.href)}; ${source}`], {
+    encoding: "utf8",
+  });
+}
+
+test("Given the real construction-site diagnostic title When sampling progress Then the house stage is accepted", () => {
+  const output = evalScenarios(`
+    const site = { id: "site-1", kind: "house" };
+    const actualCard = { name: "오두막 부지", progress: 0, progressText: "0/240틱 · 일꾼 0명" };
+    const buildingTitle = { ...actualCard, name: "오두막" };
+    process.stdout.write(JSON.stringify({
+      actual: scenarios.isMatchingHouseConstructionProgress(site, actualCard, 0.25),
+      wrongTitle: scenarios.isMatchingHouseConstructionProgress(site, buildingTitle, 0.25),
+      prematureComplete: scenarios.isMatchingHouseConstructionProgress(site, { ...actualCard, progress: 224 / 240 }, 1),
+    }));
+  `);
+
+  assert.deepEqual(JSON.parse(output), { actual: true, wrongTitle: false, prematureComplete: false });
+});
 
 test("Given mocked GitHub REST responses When online proof is verified Then real run deployment and status facts are embedded", () => {
   const output = evalQa(`
@@ -119,7 +141,7 @@ test("Given strict Round2 evidence When asserted Then mobile false exact shots i
         { id: "construction-lte25", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 0.25, progressText: "60/240틱" },
         { id: "construction-around55", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 0.56, progressText: "134/240틱" },
         { id: "construction-around85", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 0.84, progressText: "202/240틱" },
-        { id: "construction-complete", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 1, progressText: "complete", completed: true, houseTile: { tx: 45, ty: 40 } }
+        { id: "construction-complete", siteId: "site-1", siteKind: "house", building: "house", label: "오두막", progress: 1, progressText: "complete", completed: true, houseTile: { tx: 45, ty: 40 }, completedBuildingId: "site-1" }
       ],
       frameProfile: { durationMs: 30000, elapsedMs: 30050, startedAt: 1, endedAt: 30051, measuredFrameCount: 4, metrics: { minMs: 8, p50Ms: 10, p75Ms: 12, p90Ms: 12, p95Ms: 12, p99Ms: 12, maxMs: 12, avgMs: 10.5, over16_67: 0, over20: 0 }, failures: [] },
       errors: { console: [], page: [], resource: [], log: [], runtime: [], network: [] }

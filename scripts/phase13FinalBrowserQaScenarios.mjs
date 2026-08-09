@@ -150,11 +150,20 @@ async function waitForConstructionProgress(client, target, siteId) {
     const snapshot = await proofSnapshot(client);
     const site = snapshot.constructionSites.find((entry) => entry.id === siteId) ?? null;
     const progress = await selectedConstructionProgress(client);
-    if (target >= 1 && site === null) return completedHouse(snapshot);
-    if (site?.kind === "house" && progress?.name === "오두막" && Number.isFinite(progress.progress) && progress.progress >= lowerBound(target) && progress.progress <= upperBound(target)) return progress;
+    if (target >= 1 && site === null) return completedHouse(snapshot, siteId);
+    if (isMatchingHouseConstructionProgress(site, progress, target)) return progress;
     await delay(250);
   }
   throw new Error(`house construction did not reach measured progress ${target}`);
+}
+
+export function isMatchingHouseConstructionProgress(site, progress, target) {
+  return target < 1
+    && site?.kind === "house"
+    && progress?.name === "오두막 부지"
+    && Number.isFinite(progress.progress)
+    && progress.progress >= lowerBound(target)
+    && progress.progress <= upperBound(target);
 }
 
 function newlyAddedHouseSite(before, placed) {
@@ -164,10 +173,10 @@ function newlyAddedHouseSite(before, placed) {
   return added[0];
 }
 
-function completedHouse(snapshot) {
-  const house = snapshot.buildings.find((building) => building.kind === "house" && building.tx === HOUSE_TILE.tx && building.ty === HOUSE_TILE.ty);
+function completedHouse(snapshot, siteId) {
+  const house = snapshot.buildings.find((building) => building.id === siteId && building.kind === "house");
   if (house === undefined) throw new Error("completed construction did not produce house at HOUSE_TILE");
-  return { progress: 1, progressText: "complete", completed: true, houseTile: HOUSE_TILE, completedBuildingId: house.id };
+  return { progress: 1, progressText: "complete", completed: true, houseTile: { tx: house.tx, ty: house.ty }, completedBuildingId: house.id };
 }
 
 function walkerPoint(walker) {
