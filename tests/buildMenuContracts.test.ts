@@ -6,6 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { BUILDING_CONFIG } from "../src/content/buildingConfig";
 import { App } from "../src/App";
+import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { GameProvider } from "../src/state/gameStore";
 import { BuildSeals } from "../src/ui/BuildMenu";
@@ -63,8 +64,66 @@ function cssNumber(rule: string, property: string): number {
   return Number(value);
 }
 
+function cssMaxWidthPx(rule: string): number {
+  const match = rule.match(/max-width:\s*(\d+)px;/);
+  if (match === null) assert.fail("max-width px declaration exists");
+  const value = match[1];
+  assert.notEqual(value, undefined, "max-width value exists");
+  return Number(value);
+}
+
+function cssGapAtViewportPx(rule: string, viewportWidth: number): number {
+  const match = rule.match(/gap:\s*clamp\((\d+)px,\s*([\d.]+)vw,\s*(\d+)px\);/);
+  if (match === null) return cssPx(rule, "gap");
+  const min = Number(match[1]);
+  const viewport = Number(match[2]) * viewportWidth / 100;
+  const max = Number(match[3]);
+  return Math.min(max, Math.max(min, viewport));
+}
+
+function cssInlinePaddingAtViewportPx(rule: string, viewportWidth: number): number {
+  const match = rule.match(/padding:\s*\d+px\s+clamp\((\d+)px,\s*([\d.]+)vw,\s*(\d+)px\);/);
+  if (match === null) return cssPx(rule, "padding") * 2;
+  const min = Number(match[1]);
+  const viewport = Number(match[2]) * viewportWidth / 100;
+  const max = Number(match[3]);
+  return Math.min(max, Math.max(min, viewport)) * 2;
+}
+
+function consoleBuildTrackWidthPx(rule: string, viewportWidth: number): number {
+  const template = rule.match(/grid-template-columns:\s*([^;]+);/)?.[1];
+  if (template === undefined) assert.fail("console grid template exists");
+  const gap = cssGapAtViewportPx(rule, viewportWidth);
+  const inlinePadding = cssInlinePaddingAtViewportPx(rule, viewportWidth);
+  const contentWidth = viewportWidth - inlinePadding - gap * 2;
+  if (template === "repeat(3, minmax(0, 1fr))") return contentWidth / 3;
+
+  const fixedTracks = [...template.matchAll(/(?:^|\s)(\d+)px(?:\s|$)/g)].map((match) => {
+    const value = match[1];
+    assert.notEqual(value, undefined, "fixed track value exists");
+    return Number(value);
+  });
+  const minmaxTracks = [...template.matchAll(/minmax\((\d+)px,\s*(\d+)px\)/g)].map((match) => {
+    const value = match[2];
+    assert.notEqual(value, undefined, "minmax track value exists");
+    return Number(value);
+  });
+  const sideTracks = fixedTracks.length > 0 ? fixedTracks : minmaxTracks;
+  assert.equal(sideTracks.length, 2, "console grid declares fixed minimap and ledger side tracks");
+  const minimapTrack = sideTracks[0];
+  const ledgerTrack = sideTracks[1];
+  if (minimapTrack === undefined || ledgerTrack === undefined) assert.fail("console side tracks exist");
+  return contentWidth - minimapTrack - ledgerTrack;
+}
+
 function labelsFromMarkup(markup: string): readonly string[] {
   return [...markup.matchAll(/<span class="build-seal-label" aria-hidden="true">([^<]+)<\/span>/g)]
+    .map((match) => match[1])
+    .filter((label): label is string => label !== undefined);
+}
+
+function groupLabelsFromMarkup(markup: string): readonly string[] {
+  return [...markup.matchAll(/<span class="build-group-label">([^<]+)<\/span>/g)]
     .map((match) => match[1])
     .filter((label): label is string => label !== undefined);
 }
@@ -98,6 +157,36 @@ function stoneTownState() {
       },
     ],
   };
+}
+
+function buildGroupCellWidthsPx(input: {
+  readonly state: GameState;
+  readonly sealSize: number;
+  readonly groupGap: number;
+  readonly groupLabelFontSize: number;
+  readonly markup: string;
+}): readonly number[] {
+  const widths = buildMenuGroups(input.state).map((group) => {
+    const labelWidth = conservativeLabelWidthBudgetPx(group.label, input.groupLabelFontSize);
+    const sealsWidth = group.options.length * input.sealSize + Math.max(0, group.options.length - 1) * input.groupGap;
+    return Math.max(labelWidth, sealsWidth);
+  });
+  assert.equal(widths.length, groupLabelsFromMarkup(input.markup).length);
+  return widths;
+}
+
+function rowWidthPx(widths: readonly number[], gap: number): number {
+  return widths.reduce((total, width, index) => total + width + (index === 0 ? 0 : gap), 0);
+}
+
+function stoneTownRowsHeightPx(input: {
+  readonly sealSize: number;
+  readonly buildMenuGap: number;
+  readonly groupGap: number;
+  readonly groupLabelFontSize: number;
+}): number {
+  const headerHeight = input.groupLabelFontSize;
+  return input.sealSize * 2 + headerHeight * 2 + input.groupGap * 2 + input.buildMenuGap;
 }
 
 test("build menu exposes all building tools plus road in reachable order", () => {
@@ -272,4 +361,111 @@ test("Given every build label When preflighted against the seal geometry Then la
   assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
   assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
   assert.doesNotMatch(buildLabelRule, /overflow:\s*hidden|text-overflow|ellipsis|white-space:\s*nowrap/);
+});
+
+test("Given a 1280px console When rendered build text is measured against Part7 cells Then the minimap is capped and full labels fit", async () => {
+  // Given
+  const viewportWidth = 1280;
+  const stylesheet = await readFile(STYLESHEET, "utf8");
+  const consoleRule = cssRule(stylesheet, ".court-console");
+  const mapRule = cssRule(stylesheet, ".map-overview");
+  const buildSealsRule = cssRule(stylesheet, ".build-seals");
+  const groupSealsRule = cssRule(stylesheet, ".build-group-seals");
+  const buildButtonRule = cssRule(stylesheet, ".build-seal,\n.speed-seal");
+  const buildLabelRule = cssRule(stylesheet, ".build-seal-label");
+  const groupLabelRule = cssRule(stylesheet, ".build-group-label");
+  const defaultMarkup = renderToStaticMarkup(
+    createElement(BuildSeals, {
+      selectedTool: null,
+      state: DEFAULT_GAME_STATE,
+      onSelect: () => undefined,
+    }),
+  );
+  const stoneState = stoneTownState();
+  const markup = renderToStaticMarkup(
+    createElement(BuildSeals, {
+      selectedTool: null,
+      state: stoneState,
+      onSelect: () => undefined,
+    }),
+  );
+
+  // When
+  const sealSize = cssVarPx(buildSealsRule, "--seal-size");
+  const buildMenuTrackWidth = consoleBuildTrackWidthPx(consoleRule, viewportWidth);
+  const buildMenuInnerWidth = buildMenuTrackWidth - cssPx(buildSealsRule, "padding") * 2 - 2;
+  const groupGap = cssPx(groupSealsRule, "gap");
+  const buildMenuGap = cssPx(buildSealsRule, "gap");
+  const groupLabelFontSize = cssPx(groupLabelRule, "font-size");
+  const sealPadding = cssPx(buildButtonRule, "padding");
+  const sealLabelFontSize = cssPx(buildLabelRule, "font-size");
+  const sealLabelInlineBudget = sealSize - sealPadding * 2 - 8;
+  const defaultGroupCellWidths = buildGroupCellWidthsPx({
+    state: DEFAULT_GAME_STATE,
+    sealSize,
+    groupGap,
+    groupLabelFontSize,
+    markup: defaultMarkup,
+  });
+  const groupCellWidths = buildGroupCellWidthsPx({
+    state: stoneState,
+    sealSize,
+    groupGap,
+    groupLabelFontSize,
+    markup,
+  });
+  const roadCellWidth = sealSize + 10 + 1;
+  const defaultOneRowWidth = rowWidthPx([...defaultGroupCellWidths, roadCellWidth], buildMenuGap);
+  const twoRowWidth = Math.max(
+    groupCellWidths[1] ?? 0,
+    (groupCellWidths[0] ?? 0) + buildMenuGap + (groupCellWidths[2] ?? 0) + buildMenuGap + (groupCellWidths[3] ?? 0) + buildMenuGap + roadCellWidth,
+  );
+  const renderedLabels = labelsFromMarkup(markup);
+  const renderedGroupLabels = groupLabelsFromMarkup(markup);
+
+  // Then
+  assert.ok(cssMaxWidthPx(mapRule) <= 140, "minimap CSS caps the overview at 140px");
+  assert.ok(buildMenuInnerWidth >= defaultOneRowWidth, "1280px console keeps the default build menu on one complete row");
+  assert.ok(buildMenuInnerWidth >= twoRowWidth, "1280px console permits at most two complete build-menu rows");
+  assert.equal(renderedLabels.length, BUILD_TOOL_OPTIONS.length);
+  assert.equal(renderedGroupLabels.length, buildMenuGroups(stoneState).length);
+  for (const label of renderedLabels) {
+    assert.ok(
+      conservativeLabelWidthBudgetPx(label, sealLabelFontSize) <= sealLabelInlineBudget,
+      `${label} rendered label width fits the seal cell`,
+    );
+  }
+  for (const group of buildMenuGroups(stoneState)) {
+    const width = conservativeLabelWidthBudgetPx(group.label, groupLabelFontSize);
+    const cellWidth = groupCellWidths.find((candidate) => candidate >= width) ?? 0;
+    assert.ok(width <= cellWidth, `${group.label} rendered header width fits its group cell`);
+  }
+});
+
+test("Given the 1280px stone-town menu When two rows render Then the rows fit inside the seal recess without vertical scroll", async () => {
+  // Given
+  const stylesheet = await readFile(STYLESHEET, "utf8");
+  const courtRecessRule = cssRule(stylesheet, ".court-recess");
+  const buildSealsRule = cssRule(stylesheet, ".build-seals");
+  const groupSealsRule = cssRule(stylesheet, ".build-group-seals");
+  const groupLabelRule = cssRule(stylesheet, ".build-group-label");
+
+  // When
+  const sealSize = cssVarPx(buildSealsRule, "--seal-size");
+  const buildMenuBlockPadding = cssPx(buildSealsRule, "padding") * 2;
+  const buildMenuBorder = 2;
+  const requiredHeight = stoneTownRowsHeightPx({
+    sealSize,
+    buildMenuGap: cssPx(buildSealsRule, "gap"),
+    groupGap: cssPx(groupSealsRule, "gap"),
+    groupLabelFontSize: cssPx(groupLabelRule, "font-size"),
+  }) + buildMenuBlockPadding + buildMenuBorder;
+  const availableHeight = cssPx(courtRecessRule, "height");
+
+  // Then
+  assert.ok(
+    availableHeight >= requiredHeight,
+    `stone-town two-row build menu needs ${requiredHeight}px but seal recess offers ${availableHeight}px`,
+  );
+  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
 });

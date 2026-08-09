@@ -201,7 +201,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(css, /\.build-seal--selected::after\s*\{/);
   assert.match(css, /\.build-seal--highlighted\s*\{[\s\S]*?animation:/);
   assert.equal(
-    css.match(/grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\);/g)?.length,
+    css.match(/grid-template-columns:\s*140px minmax\(0, 1fr\) 300px;/g)?.length,
     1,
   );
   assert.doesNotMatch(
@@ -255,7 +255,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.doesNotMatch(css, /\.court-ledger::(?:before|after)\s*\{/);
   assert.match(css, /\.court-ledger\s*\{[\s\S]*?background-color:\s*var\(--palette-parchment\);[\s\S]*?border:\s*1px solid var\(--palette-ink\);/);
   assert.match(css, /\.court-ledger\s*>\s*\*\s*\{[\s\S]*?z-index:\s*1;/);
-  assert.match(css, /\.map-overview\s*\{[\s\S]*?max-width:\s*160px;/);
+  assert.match(css, /\.map-overview\s*\{[\s\S]*?max-width:\s*140px;/);
   assert.match(css, /\.map-overview\s*\{[\s\S]*?border:\s*1px solid var\(--palette-ink\);/);
   assert.doesNotMatch(css, /\.shield-caption|\.map-shield|clip-path/);
 });
