@@ -14,7 +14,7 @@ export interface ConstructionEconomyHarnessScenarioOptions {
   readonly seed: number;
 }
 
-const SCRIPTED_SITES = [
+const INITIAL_RECOVERY_SITES = [
   { kind: "well", tx: 0, ty: 2 },
   { kind: "well", tx: 12, ty: 1 },
 ] as const satisfies readonly {
@@ -52,7 +52,7 @@ export function createConstructionEconomyHarnessScenario(
   options: ConstructionEconomyHarnessScenarioOptions,
 ): GameState {
   const base = createEconomyHarnessScenario(options);
-  const sites = SCRIPTED_SITES.map((input, index) =>
+  const sites = INITIAL_RECOVERY_SITES.map((input, index) =>
     createConstructionSite({
       ordinal: base.nextConstructionOrdinal + index,
       kind: input.kind,

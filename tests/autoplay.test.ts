@@ -180,6 +180,86 @@ test("Given low bread and no food chain When autoplay decides repeatedly Then it
   });
 });
 
+test("Given full housing and one food chain When autoplay decides Then it expands wheat before another cottage", () => {
+  const homes = [
+    building({ id: "house-a", kind: "house", tx: 5, ty: 5 }),
+    building({ id: "house-b", kind: "house", tx: 6, ty: 5 }),
+    building({ id: "house-c", kind: "house", tx: 5, ty: 6 }),
+    building({ id: "house-d", kind: "house", tx: 6, ty: 6 }),
+  ];
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const granary = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1, inventory: { bread: 40 }, workers: 2 });
+  const wheat = building({ id: "wheat-a", kind: "wheat_farm", tx: 3, ty: 1, workers: 4 });
+  const mill = building({ id: "mill-a", kind: "mill", tx: 6, ty: 1, workers: 2 });
+  const housed = homes.map((candidate) =>
+    house(candidate.id, { hasWater: true, breadStock: 40, residents: 22, lastServicedTick: 0, level: 3 })
+  );
+  const actual = decideNextAction(state({
+    buildings: [...homes, well, granary, wheat, mill],
+    houses: housed,
+    population: 88,
+    idleWorkers: 8,
+    roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3"],
+  }));
+
+  assert.equal(actual.kind, "place_building");
+  assert.equal(actual.kind === "place_building" ? actual.building : null, "wheat_farm");
+});
+
+test("Given supplemental wheat completed When a second mill is missing Then autoplay resumes the food chain instead of waiting forever", () => {
+  const homes = [
+    building({ id: "house-a", kind: "house", tx: 5, ty: 5 }),
+    building({ id: "house-b", kind: "house", tx: 6, ty: 5 }),
+    building({ id: "house-c", kind: "house", tx: 5, ty: 6 }),
+    building({ id: "house-d", kind: "house", tx: 6, ty: 6 }),
+  ];
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const granary = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1, inventory: { bread: 40 }, workers: 2 });
+  const firstWheat = building({ id: "wheat-a", kind: "wheat_farm", tx: 3, ty: 1, workers: 4 });
+  const secondWheat = building({ id: "wheat-b", kind: "wheat_farm", tx: 8, ty: 1, workers: 4 });
+  const mill = building({ id: "mill-a", kind: "mill", tx: 6, ty: 1, workers: 2 });
+  const housed = homes.map((candidate) =>
+    house(candidate.id, { hasWater: true, breadStock: 40, residents: 22, lastServicedTick: 0, level: 3 })
+  );
+  const actual = decideNextAction(state({
+    buildings: [...homes, well, granary, firstWheat, secondWheat, mill],
+    houses: housed,
+    population: 88,
+    idleWorkers: 8,
+    roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3", "8,3"],
+  }));
+
+  assert.equal(actual.kind, "place_building");
+  assert.equal(actual.kind === "place_building" ? actual.building : null, "mill");
+});
+
+test("Given food support is under construction When housing is full Then autoplay waits instead of adding a cottage early", () => {
+  const homes = [
+    building({ id: "house-a", kind: "house", tx: 5, ty: 5 }),
+    building({ id: "house-b", kind: "house", tx: 6, ty: 5 }),
+    building({ id: "house-c", kind: "house", tx: 5, ty: 6 }),
+    building({ id: "house-d", kind: "house", tx: 6, ty: 6 }),
+  ];
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const granary = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1, inventory: { bread: 40 }, workers: 2 });
+  const wheat = building({ id: "wheat-a", kind: "wheat_farm", tx: 3, ty: 1, workers: 4 });
+  const mill = building({ id: "mill-a", kind: "mill", tx: 6, ty: 1, workers: 2 });
+  const current = state({
+    buildings: [...homes, well, granary, wheat, mill],
+    houses: homes.map((candidate) =>
+      house(candidate.id, { hasWater: true, breadStock: 40, residents: 22, lastServicedTick: 0, level: 3 })
+    ),
+    population: 88,
+    idleWorkers: 8,
+    roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3"],
+  });
+  current.constructionSites = [
+    createConstructionSite({ ordinal: 1, kind: "wheat_farm", tx: 8, ty: 1, startedTick: 0 }),
+  ];
+
+  assert.deepEqual(decideNextAction(current), { kind: "none" });
+});
+
 test("Given low timber When food is stable Then autoplay builds logging camp before sawmill and skips invalid placements", () => {
   const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
   const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
@@ -214,6 +294,94 @@ test("Given spare labour and housing capacity When autoplay decides Then it adds
   }));
 
   assertAction(actual, { kind: "place_building", building: "house", tx: 1, ty: 4 });
+});
+
+test("Given one extra cottage already matches food support When autoplay decides Then it does not over-expand housing", () => {
+  const homes = [
+    building({ id: "house-a", kind: "house", tx: 4, ty: 5 }),
+    building({ id: "house-b", kind: "house", tx: 5, ty: 5 }),
+    building({ id: "house-c", kind: "house", tx: 6, ty: 5 }),
+    building({ id: "house-d", kind: "house", tx: 4, ty: 6 }),
+    building({ id: "house-e", kind: "house", tx: 6, ty: 6 }),
+  ];
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const granary = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1, inventory: { bread: 80 }, workers: 2 });
+  const granaryB = building({ id: "granary-b", kind: "granary", tx: 9, ty: 1, inventory: { bread: 80 }, workers: 2 });
+  const wheatA = building({ id: "wheat-a", kind: "wheat_farm", tx: 3, ty: 1, workers: 4 });
+  const wheatB = building({ id: "wheat-b", kind: "wheat_farm", tx: 8, ty: 1, workers: 4 });
+  const wheatC = building({ id: "wheat-c", kind: "wheat_farm", tx: 10, ty: 4, workers: 4 });
+  const millA = building({ id: "mill-a", kind: "mill", tx: 6, ty: 1, workers: 2 });
+  const millB = building({ id: "mill-b", kind: "mill", tx: 7, ty: 1, workers: 2 });
+  const housed = homes.map((candidate) =>
+    house(candidate.id, { hasWater: true, breadStock: 20, residents: 22, lastServicedTick: 0, level: 3 })
+  );
+
+  assert.deepEqual(decideNextAction(state({
+    buildings: [...homes, well, granary, granaryB, wheatA, wheatB, wheatC, millA, millB],
+    houses: housed,
+    population: 110,
+    idleWorkers: 20,
+    timber: 120,
+    roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3", "8,3"],
+  })), { kind: "none" });
+});
+
+test("Given two completed mills support one more cottage When housing is full Then autoplay adds exactly one house", () => {
+  const homes = [
+    building({ id: "house-a", kind: "house", tx: 4, ty: 5 }),
+    building({ id: "house-b", kind: "house", tx: 5, ty: 5 }),
+    building({ id: "house-c", kind: "house", tx: 6, ty: 5 }),
+    building({ id: "house-d", kind: "house", tx: 4, ty: 6 }),
+  ];
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const granaryA = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1, inventory: { bread: 80 }, workers: 2 });
+  const granaryB = building({ id: "granary-b", kind: "granary", tx: 9, ty: 1, inventory: { bread: 80 }, workers: 2 });
+  const wheatA = building({ id: "wheat-a", kind: "wheat_farm", tx: 3, ty: 1, workers: 4 });
+  const wheatB = building({ id: "wheat-b", kind: "wheat_farm", tx: 8, ty: 1, workers: 4 });
+  const millA = building({ id: "mill-a", kind: "mill", tx: 6, ty: 1, workers: 2 });
+  const millB = building({ id: "mill-b", kind: "mill", tx: 7, ty: 1, workers: 2 });
+  const housed = homes.map((candidate) =>
+    house(candidate.id, { hasWater: true, breadStock: 20, residents: 22, lastServicedTick: 0, level: 3 })
+  );
+
+  assert.deepEqual(decideNextAction(state({
+    buildings: [...homes, well, granaryA, granaryB, wheatA, wheatB, millA, millB],
+    houses: housed,
+    population: 88,
+    idleWorkers: 20,
+    timber: 120,
+    roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3", "8,3"],
+  })), { kind: "place_building", building: "house", tx: 6, ty: 2 });
+});
+
+test("Given the second mill is still under construction When housing is full Then autoplay does not count it as support", () => {
+  const homes = [
+    building({ id: "house-a", kind: "house", tx: 4, ty: 5 }),
+    building({ id: "house-b", kind: "house", tx: 5, ty: 5 }),
+    building({ id: "house-c", kind: "house", tx: 6, ty: 5 }),
+    building({ id: "house-d", kind: "house", tx: 4, ty: 6 }),
+  ];
+  const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
+  const granaryA = building({ id: "granary-a", kind: "granary", tx: 1, ty: 1, inventory: { bread: 80 }, workers: 2 });
+  const granaryB = building({ id: "granary-b", kind: "granary", tx: 9, ty: 1, inventory: { bread: 80 }, workers: 2 });
+  const wheatA = building({ id: "wheat-a", kind: "wheat_farm", tx: 3, ty: 1, workers: 4 });
+  const wheatB = building({ id: "wheat-b", kind: "wheat_farm", tx: 8, ty: 1, workers: 4 });
+  const millA = building({ id: "mill-a", kind: "mill", tx: 6, ty: 1, workers: 2 });
+  const current = state({
+    buildings: [...homes, well, granaryA, granaryB, wheatA, wheatB, millA],
+    houses: homes.map((candidate) =>
+      house(candidate.id, { hasWater: true, breadStock: 20, residents: 22, lastServicedTick: 0, level: 3 })
+    ),
+    population: 88,
+    idleWorkers: 20,
+    timber: 120,
+    roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3", "8,3"],
+  });
+  current.constructionSites = [
+    createConstructionSite({ ordinal: 1, kind: "mill", tx: 7, ty: 1, startedTick: 0 }),
+  ];
+
+  assert.deepEqual(decideNextAction(current), { kind: "none" });
 });
 
 test("Given era requirements When one building is missing or all are met Then autoplay builds the missing building or proclaims", () => {

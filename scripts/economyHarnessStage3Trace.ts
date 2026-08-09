@@ -1,15 +1,14 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import { evaluateEraRequirements } from "../src/engine/era";
 import type { GameState } from "../src/engine/engine.types";
-import { confirmPalisadeProclamation } from "../src/engine/palisade";
 import { advanceTick } from "../src/engine/tick";
 import { hashEconomyState, sortedResources } from "./economyHarnessSerializer";
 import {
   STAGE3_MAX_REQUIREMENT_TICK,
   STAGE3_MAX_WALL_COMPLETION_TICKS,
-  STAGE3_PALISADE_PATH,
   STAGE3_PROCLAMATION_TICK,
 } from "./economyHarnessStage3Scenario";
+import { createAutoplayTraceDriver, type AdvisorTraceProvenance } from "./economyHarnessAutoplay";
 
 export interface Stage3RunTrace {
   readonly hash: string;
@@ -19,6 +18,7 @@ export interface Stage3RunTrace {
   readonly wallCompletionElapsedTicks: number | null;
   readonly maxNonWallProductionStall: number;
   readonly finalState: GameState;
+  readonly advisorProvenance: AdvisorTraceProvenance;
 }
 
 function requirementsMet(state: GameState): boolean {
@@ -47,17 +47,22 @@ function completedWall(state: GameState): boolean {
 
 export function trackStage3Run(initial: GameState): Stage3RunTrace {
   let state = initial;
+  const driver = createAutoplayTraceDriver({
+    id: "stage3-seeded",
+    source: "createStage3EconomyHarnessScenario",
+    proclamationGateTick: STAGE3_PROCLAMATION_TICK,
+  });
+  driver.recordSnapshot(state);
   let requirementsMetTick: number | null = requirementsMet(state) ? state.tick : null;
-  while (state.tick < STAGE3_PROCLAMATION_TICK) {
+  let proclamationTick: number | null = null;
+  while (state.tick < STAGE3_MAX_REQUIREMENT_TICK && proclamationTick === null) {
+    state = driver.apply(state);
+    if (state.era === "palisade") proclamationTick = state.eraProclaimedTick;
+    if (requirementsMetTick === null && requirementsMet(state)) requirementsMetTick = state.tick;
     state = advanceTick(state);
+    if (state.tick % 1_200 === 0) driver.recordSnapshot(state);
     if (requirementsMetTick === null && requirementsMet(state)) requirementsMetTick = state.tick;
   }
-
-  const proclaimed = requirementsMetTick !== null && requirementsMetTick <= STAGE3_MAX_REQUIREMENT_TICK
-    ? confirmPalisadeProclamation(state, STAGE3_PALISADE_PATH)
-    : state;
-  const proclamationTick = proclaimed.era === "palisade" ? proclaimed.eraProclaimedTick : null;
-  state = proclaimed;
 
   let maxNonWallProductionStall = 0;
   let nonWallProductionStall = 0;
@@ -80,5 +85,6 @@ export function trackStage3Run(initial: GameState): Stage3RunTrace {
       proclamationTick === null || wallCompleteTick === null ? null : wallCompleteTick - proclamationTick,
     maxNonWallProductionStall,
     finalState: state,
+    advisorProvenance: driver.provenance(),
   };
 }

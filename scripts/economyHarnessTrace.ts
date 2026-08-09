@@ -5,6 +5,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
 import { hashEconomyState, amount } from "./economyHarnessSerializer";
 import { hasImpossibleConstructionCommitment } from "./economyHarnessLedger";
+import type { AdvisorTraceProvenance, AutoplayTraceDriver } from "./economyHarnessAutoplay";
 
 export interface RunTrace {
   readonly hash: string;
@@ -19,6 +20,7 @@ export interface RunTrace {
   readonly completedConstruction: number;
   readonly requestedConstruction: number;
   readonly impossibleConstructionCommitment: boolean;
+  readonly advisorProvenance?: AdvisorTraceProvenance;
 }
 
 export interface CancellationEvent {
@@ -33,7 +35,10 @@ function totalBread(state: GameState): number {
 }
 
 function starvingRatio(state: GameState): number {
-  const starving = state.houses.filter((house) => state.tick - house.lastServicedTick > BALANCE.BREAD_HUNGER_WINDOW).length;
+  const starving = state.houses.filter((house) =>
+    house.breadStock <= 0 &&
+    state.tick - house.lastServicedTick > BALANCE.BREAD_HUNGER_WINDOW
+  ).length;
   return state.houses.length === 0 ? 0 : starving / state.houses.length;
 }
 
@@ -79,7 +84,12 @@ function stalled(state: GameState): boolean {
   return state.constructionSites.some((site) => site.stall !== "none");
 }
 
-export function trackRun(initial: GameState, ticks: number, warmupTicks: number): RunTrace {
+export function trackRun(
+  initial: GameState,
+  ticks: number,
+  warmupTicks: number,
+  driver?: AutoplayTraceDriver,
+): RunTrace {
   let state = initial;
   let breadProduced = false;
   let deadlockStreak = 0;
@@ -98,10 +108,15 @@ export function trackRun(initial: GameState, ticks: number, warmupTicks: number)
   const lastLevels = new Map(initial.houses.map((house) => [house.buildingId, house.level]));
   const levelChanges: Record<string, number[]> = {};
   let impossibleConstructionCommitment = hasImpossibleConstructionCommitment(initial);
+  driver?.recordSnapshot(state);
 
   for (let step = 0; step < ticks; step += 1) {
+    state = driver?.apply(state) ?? state;
+    for (const site of state.constructionSites) requestedIds.add(site.id);
     const previous = state;
     state = advanceTick(state);
+    for (const site of state.constructionSites) requestedIds.add(site.id);
+    if (driver !== undefined && (state.tick % 1_200 === 0 || step === ticks - 1)) driver.recordSnapshot(state);
     breadProduced = breadProduced || breadProductionCompleted(previous, state) || totalBread(state) > initialBread;
     if (state.tick > warmupTicks && breadProduced) foodRatios.push(starvingRatio(state));
     deadlockStreak = state.idleWorkers > 0 && state.buildings.some(productionUnderstaffed) ? deadlockStreak + 1 : 0;
@@ -128,7 +143,7 @@ export function trackRun(initial: GameState, ticks: number, warmupTicks: number)
     }
   }
 
-  return {
+  const trace = {
     hash: hashEconomyState(state),
     breadProduced,
     foodRatios,
@@ -142,4 +157,6 @@ export function trackRun(initial: GameState, ticks: number, warmupTicks: number)
     requestedConstruction: requestedIds.size,
     impossibleConstructionCommitment,
   };
+  if (driver === undefined) return trace;
+  return { ...trace, advisorProvenance: driver.provenance() };
 }

@@ -2,12 +2,12 @@ import { hashEconomyState } from "./economyHarnessSerializer";
 import { phase9Metrics, stage3Metrics } from "./economyHarnessEraMetrics";
 import { harnessMetric, type HarnessMetric } from "./economyHarnessMetric";
 import { trackRun } from "./economyHarnessTrace";
-import { createConstructionEconomyHarnessScenario } from "./economyHarnessConstructionScenario";
 import { createPhase9EconomyHarnessScenario } from "./economyHarnessPhase9Scenario";
 import { trackPhase9Run } from "./economyHarnessPhase9Trace";
 import { createStage3EconomyHarnessScenario, STAGE3_LEGACY_HASH } from "./economyHarnessStage3Scenario";
 import { trackStage3Run } from "./economyHarnessStage3Trace";
-import { trackAutoplayRun } from "./economyHarnessAutoplay";
+import { createAutoplayTraceDriver, trackAutoplayRun, type AdvisorRunsProvenance } from "./economyHarnessAutoplay";
+import { createAdvisorMetricScenario } from "./economyHarnessAdvisorScenario";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 export { hashEconomyState } from "./economyHarnessSerializer";
@@ -23,12 +23,20 @@ export interface EconomyHarnessReport {
   readonly assumptions: readonly string[];
   readonly runtimeMs: number;
   readonly autoplay?: AutoplayHarnessBalanceResult;
+  readonly advisorProvenance?: AdvisorRunsProvenance;
+  readonly metricTraceSources?: readonly MetricTraceSource[];
 }
 
 export interface AutoplayHarnessBalanceResult {
   readonly hashA: string;
   readonly hashB: string;
   readonly actionCount: number;
+}
+
+export interface MetricTraceSource {
+  readonly label: string;
+  readonly traceId: string;
+  readonly source: string;
 }
 
 export interface Stage3EconomyHarnessReport extends EconomyHarnessReport {
@@ -69,6 +77,8 @@ export interface RunEconomyHarnessInput {
   readonly scenario: Parameters<typeof hashEconomyState>[0];
   readonly ticks: number;
   readonly warmupTicks: number;
+  readonly advisorDriven?: boolean;
+  readonly advisorTraceSource?: string;
 }
 
 export interface RunPhase9EconomyHarnessInput {
@@ -81,7 +91,7 @@ const assumptions = [
   "The 205-timber opening grant remains treasury and does not occupy building storage.",
   "No fake workers are injected after initialization; labour is recomputed from population each tick.",
   "Cargo thrashing counts non-manual cancellation states returned by advanceTick; no-road recovery remains observable for one tick before logical recovery.",
-  "Stage 2 construction metrics use real construction sites, tagged Carter reservations, and derived builder walkers.",
+  "Stage 2 construction metrics use advisor-requested construction sites, tagged Carter reservations, and derived builder walkers.",
 ] as const;
 
 function rollingMax(values: readonly number[], window: number): number {
@@ -122,15 +132,18 @@ function maxLevelChanges(changes: Readonly<Record<string, readonly number[]>>): 
 }
 
 function completionValue(completed: number, requested: number): string {
-  if (requested === 0) return "0/0 scripted sites";
+  if (requested === 0) return "0/0 advisor-requested sites";
   const rate = Math.round((completed / requested) * 1000) / 10;
-  return `${completed}/${requested} scripted sites (${rate}%)`;
+  return `${completed}/${requested} advisor-requested sites (${rate}%)`;
 }
 
 export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarnessReport {
   const started = performance.now();
-  const first = trackRun(input.scenario, input.ticks, input.warmupTicks);
-  const second = trackRun(input.scenario, input.ticks, input.warmupTicks);
+  const traceSource = input.advisorTraceSource ?? "input scenario";
+  const firstDriver = input.advisorDriven === true ? createAutoplayTraceDriver({ id: "default", source: traceSource }) : undefined;
+  const secondDriver = input.advisorDriven === true ? createAutoplayTraceDriver({ id: "default-check", source: traceSource }) : undefined;
+  const first = trackRun(input.scenario, input.ticks, input.warmupTicks, firstDriver);
+  const second = trackRun(input.scenario, input.ticks, input.warmupTicks, secondDriver);
   const averageFood = first.foodRatios.reduce((total, ratio) => total + ratio, 0) / Math.max(1, first.foodRatios.length);
   const rollingFood = rollingMax(first.foodRatios, 1200) / 1200;
   const foodStability = Math.max(averageFood, rollingFood);
@@ -140,8 +153,7 @@ export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarness
   const completionPassing = !materialDeadlockPassing ||
     first.requestedConstruction === 0 ||
     first.completedConstruction === first.requestedConstruction;
-
-  return {
+  const report = {
     determinism: { hashA: first.hash, hashB: second.hash },
     assumptions,
     runtimeMs: Math.round(performance.now() - started),
@@ -165,21 +177,47 @@ export function runEconomyHarness(input: RunEconomyHarnessInput): EconomyHarness
       harnessMetric("Completion rate", completionValue(first.completedConstruction, first.requestedConstruction), completionPassing),
     ],
   };
+  if (first.advisorProvenance === undefined) return report;
+
+  return {
+    ...report,
+    advisorProvenance: { kind: "advisor-runs", traces: [first.advisorProvenance] },
+    metricTraceSources: report.metrics.map((metric) => ({
+      label: metric.label,
+      traceId: "default",
+      source: traceSource,
+    })),
+  };
 }
 
 export function runStage3EconomyHarness(): Stage3EconomyHarnessReport {
   const baseReport = runEconomyHarness({
-    scenario: createConstructionEconomyHarnessScenario({ seed: 3 }),
+    scenario: createAdvisorMetricScenario(),
     ticks: 4_000,
     warmupTicks: 800,
+    advisorDriven: true,
+    advisorTraceSource: "createAdvisorMetricScenario",
   });
   const first = trackStage3Run(createStage3EconomyHarnessScenario({ seed: 3 }));
   const second = trackStage3Run(createStage3EconomyHarnessScenario({ seed: 3 }));
+  const stage3Rows = stage3Metrics(first, second);
   const autoplayFirst = trackAutoplayRun({ initialState: DEFAULT_GAME_STATE, ticks: 480 });
   const autoplaySecond = trackAutoplayRun({ initialState: DEFAULT_GAME_STATE, ticks: 480 });
   return {
     ...baseReport,
-    metrics: [...baseReport.metrics, ...stage3Metrics(first, second)],
+    metrics: [...baseReport.metrics, ...stage3Rows],
+    advisorProvenance: {
+      kind: "advisor-runs",
+      traces: [...(baseReport.advisorProvenance?.traces ?? []), first.advisorProvenance],
+    },
+    metricTraceSources: [
+      ...(baseReport.metricTraceSources ?? []),
+      ...stage3Rows.map((metric) => ({
+        label: metric.label,
+        traceId: "stage3-seeded",
+        source: "createStage3EconomyHarnessScenario",
+      })),
+    ],
     autoplay: {
       hashA: autoplayFirst.hash,
       hashB: autoplaySecond.hash,
@@ -239,5 +277,9 @@ export function formatEconomyHarnessReport(report: EconomyHarnessReport): string
   if (report.autoplay === undefined) return metricTable;
   const autoplay = report.autoplay;
   const status = autoplay.hashA === autoplay.hashB && autoplay.actionCount > 0 ? "PASS" : "FAIL";
-  return `${metricTable}\nAutoplay advisor  ${autoplay.actionCount} actions, ${autoplay.hashA} == ${autoplay.hashB}  ${status}`;
+  const provenance = report.advisorProvenance;
+  const provenanceLine = provenance === undefined
+    ? ""
+    : `\nAdvisor provenance  ${provenance.kind}: ${provenance.traces.map((trace) => `${trace.id}/${trace.source} cadence ${trace.cadenceTicks}, ${trace.actionCount} actions, ${trace.snapshotCount} snapshots`).join("; ")}  PASS`;
+  return `${metricTable}${provenanceLine}\nAutoplay advisor  ${autoplay.actionCount} actions, ${autoplay.hashA} == ${autoplay.hashB}  ${status}`;
 }

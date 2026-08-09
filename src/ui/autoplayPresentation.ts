@@ -1,13 +1,13 @@
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { AutoplayAction } from "../engine/autoplay";
-import { canProclaimStoneTownEra } from "../engine/era";
+import { autoplayActionToGameAction } from "../engine/autoplayActions";
 import type { GameState } from "../engine/engine.types";
 import type { GameAction } from "../state/gameStore.types";
 import type { TileCoordinate } from "../world/grid";
-import { validatePalisadeCandidate } from "../world/palisadeGeometry";
 import { roadLine } from "../world/roadGraph";
 import { createPlacementFeedback, type PlacementFeedback } from "../render/placementFeedback";
-import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsoleModel";
+
+export { autoplayActionToGameAction } from "../engine/autoplayActions";
 
 export const AUTOPLAY_PULSE_EVENT = "feudal-lord-simulator:autoplay-pulse";
 export const AUTOPLAY_TICK_CADENCE = 120;
@@ -59,21 +59,6 @@ export function autoplayActionLabel(action: AutoplayAction): string {
   }
 }
 
-export function autoplayActionToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
-  switch (action.kind) {
-    case "place_building":
-      return { type: "place_building", kind: action.building, tx: action.tx, ty: action.ty };
-    case "place_road":
-      return { type: "place_road_line", start: action.from, destination: action.to };
-    case "proclaim_era":
-      return state === undefined ? null : eraGameAction(state);
-    case "none":
-      return null;
-    default:
-      return assertNever(action);
-  }
-}
-
 export function presentThenScheduleAutoplayAction(input: {
   readonly action: AutoplayAction;
   readonly state: GameState;
@@ -89,20 +74,6 @@ export function presentThenScheduleAutoplayAction(input: {
     input.beforeDispatch?.();
     input.dispatch(gameAction);
   }, AUTOPLAY_COMMIT_DELAY_MS);
-}
-
-function eraGameAction(state: GameState): GameAction | null {
-  if (state.era === "stone_town") return null;
-  if (state.era === "palisade") {
-    return canProclaimStoneTownEra(state) ? { type: "confirm_stone_town_proclamation" } : null;
-  }
-  const footprints = palisadeFootprintsForState(state);
-  const proposal = proposalSummaryForState(state, footprints);
-  if (!proposal.ok) return null;
-  const validation = validatePalisadeCandidate(state, proposal.path, footprints);
-  return validation.ok
-    ? { type: "confirm_palisade_proclamation", candidatePath: validation.candidate.path }
-    : null;
 }
 
 export function autoplayActionFeedback(action: AutoplayAction, nowMs: number): PlacementFeedback | null {

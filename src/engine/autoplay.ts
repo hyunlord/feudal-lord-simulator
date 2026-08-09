@@ -1,5 +1,4 @@
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
-import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { HOUSING_CONFIG } from "../content/housingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
 import { evaluateEraRequirements } from "./era";
@@ -11,6 +10,8 @@ import { getTile } from "../world/grid";
 import { canPlaceBuilding, placementSpendableResource } from "../world/placement";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
 import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
+import { foodAction, hasPendingFoodChain } from "./autoplayFood";
+import { waterAction } from "./autoplayWater";
 
 import type { AutoplayAction } from "./autoplay.types";
 
@@ -24,15 +25,9 @@ function compareCoordinates(left: TileCoordinate, right: TileCoordinate): number
   return left.ty - right.ty || left.tx - right.tx;
 }
 
-function distance(left: TileCoordinate, right: TileCoordinate): number {
-  return Math.abs(left.tx - right.tx) + Math.abs(left.ty - right.ty);
-}
-
 function buildingOrigin(building: Building): TileCoordinate {
   return { tx: building.tx, ty: building.ty };
 }
-
-type WaterlessHome = Readonly<{ building: Building; residents: number; deprivation: number }>;
 
 function hasBuiltOrPlannedBuilding(state: GameState, kind: BuildingKind): boolean {
   return state.buildings.some((building) => building.kind === kind) ||
@@ -43,14 +38,14 @@ function hasPlannedBuilding(state: GameState, kind: BuildingKind): boolean {
   return state.constructionSites.some((site) => isBuildingConstructionSite(site) && site.kind === kind);
 }
 
-function buildingForHouse(state: GameState, buildingId: string): Building | null {
-  return state.buildings.find((building) => building.id === buildingId) ?? null;
-}
-
 function breadStock(state: GameState): number {
   const buildingBread = state.buildings.reduce((total, building) => total + (building.inventory.bread ?? 0), 0);
   const houseBread = state.houses.reduce((total, house) => total + house.breadStock, 0);
   return buildingBread + houseBread;
+}
+
+function isGrassOrigin(state: GameState, coordinate: TileCoordinate): boolean {
+  return getTile(state, coordinate)?.terrain === "grass";
 }
 
 function houseCapacity(state: GameState): number {
@@ -58,87 +53,6 @@ function houseCapacity(state: GameState): number {
     const capacity = HOUSING_CONFIG.find((definition) => definition.level === house.level)?.capacity ?? 0;
     return total + capacity;
   }, 0);
-}
-
-function wellCoversHouse(state: GameState, home: Building): boolean {
-  const finishedWellCovers = state.buildings.some((building) =>
-    building.kind === "well" &&
-    buildingFootprintDistance(home, building) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-  );
-  return finishedWellCovers || state.constructionSites.some((site) =>
-    isBuildingConstructionSite(site) &&
-    site.kind === "well" &&
-    buildingFootprintDistance(home, virtualBuilding("well", site)) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-  );
-}
-
-function waterlessHomes(state: GameState): readonly WaterlessHome[] {
-  return state.houses
-    .filter((house) => house.residents > 0)
-    .map((house) => {
-      const building = buildingForHouse(state, house.buildingId);
-      if (building === null || wellCoversHouse(state, building)) return null;
-      return {
-        building,
-        residents: house.residents,
-        deprivation: Math.max(0, house.unmetRequirementTicks) * house.residents + house.residents,
-      };
-    })
-    .filter((home): home is WaterlessHome => home !== null)
-    .sort((left, right) => compareCoordinates(buildingOrigin(left.building), buildingOrigin(right.building)));
-}
-
-function isGrassOrigin(state: GameState, coordinate: TileCoordinate): boolean {
-  return getTile(state, coordinate)?.terrain === "grass";
-}
-
-function findBuildSite(
-  state: GameState,
-  kind: BuildingKind,
-  accepts: (coordinate: TileCoordinate) => boolean = () => true,
-): TileCoordinate | null {
-  for (let ty = 1; ty < state.height - 1; ty += 1) {
-    for (let tx = 1; tx < state.width - 1; tx += 1) {
-      const coordinate = { tx, ty };
-      if (!isGrassOrigin(state, coordinate)) continue;
-      if (!accepts(coordinate)) continue;
-      if (canPlaceBuilding(state, kind, tx, ty).ok) return coordinate;
-    }
-  }
-  return null;
-}
-
-function waterAction(state: GameState): AutoplayAction {
-  const homes = waterlessHomes(state);
-  if (homes.length === 0) return NONE;
-  const candidates: readonly TileCoordinate[] = Array.from({ length: state.width * state.height }, (_unused, index) => ({
-    tx: index % state.width,
-    ty: Math.floor(index / state.width),
-  })).filter((coordinate) => isGrassOrigin(state, coordinate) && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok);
-  const ranked = candidates
-    .map((candidate) => {
-      const well = virtualBuilding("well", candidate);
-      const covered = homes.filter((home) =>
-        buildingFootprintDistance(home.building, well) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-      );
-      return {
-        candidate,
-        count: covered.length,
-        deprivation: covered.reduce((total, home) => total + home.deprivation, 0),
-        residents: covered.reduce((total, home) => total + home.residents, 0),
-        sum: covered.reduce((total, home) => total + distance(candidate, buildingOrigin(home.building)), 0),
-      };
-    })
-    .filter((entry) => entry.count > 0)
-    .sort((left, right) =>
-      right.deprivation - left.deprivation ||
-      right.count - left.count ||
-      right.residents - left.residents ||
-      left.sum - right.sum ||
-      compareCoordinates(left.candidate, right.candidate),
-    );
-  const best = ranked[0]?.candidate;
-  return best === undefined ? NONE : { kind: "place_building", building: "well", tx: best.tx, ty: best.ty };
 }
 
 function virtualBuilding(kind: BuildingKind, coordinate: TileCoordinate): Building {
@@ -153,6 +67,21 @@ function virtualBuilding(kind: BuildingKind, coordinate: TileCoordinate): Buildi
     stockReserved: {},
     productionProgress: 0,
   };
+}
+
+function findBuildSite(
+  state: GameState,
+  kind: BuildingKind,
+  accepts: (coordinate: TileCoordinate) => boolean = () => true,
+): TileCoordinate | null {
+  for (let ty = 1; ty < state.height - 1; ty += 1) {
+    for (let tx = 1; tx < state.width - 1; tx += 1) {
+      const coordinate = { tx, ty };
+      if (!accepts(coordinate)) continue;
+      if (canPlaceBuilding(state, kind, tx, ty).ok) return coordinate;
+    }
+  }
+  return null;
 }
 
 function roadTiles(state: GameState): readonly TileCoordinate[] {
@@ -210,14 +139,6 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
   return site === null ? NONE : { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
 }
 
-function foodAction(state: GameState): AutoplayAction {
-  if (state.houses.length === 0 || breadStock(state) >= 20) return NONE;
-  if (!hasBuiltOrPlannedBuilding(state, "wheat_farm")) return buildAction(state, "wheat_farm");
-  if (!hasBuiltOrPlannedBuilding(state, "mill")) return buildAction(state, "mill");
-  if (!hasBuiltOrPlannedBuilding(state, "granary")) return buildAction(state, "granary");
-  return NONE;
-}
-
 function timberAction(state: GameState): AutoplayAction {
   if (placementSpendableResource(state, "timber") >= 40) return NONE;
   if (!hasBuiltOrPlannedBuilding(state, "logging_camp")) return buildAction(state, "logging_camp");
@@ -225,17 +146,34 @@ function timberAction(state: GameState): AutoplayAction {
   return NONE;
 }
 
+function foodSupportedHouseCount(state: GameState): number {
+  const completedMills = state.buildings.filter((building) => building.kind === "mill").length;
+  return Math.max(4, 3 + completedMills);
+}
+
+function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): boolean {
+  const homes = state.buildings.filter((building) => building.kind === "house");
+  const horizontal = homes.some((home) => home.ty === coordinate.ty && home.tx === coordinate.tx - 1) &&
+    homes.some((home) => home.ty === coordinate.ty && home.tx === coordinate.tx + 1);
+  const vertical = homes.some((home) => home.tx === coordinate.tx && home.ty === coordinate.ty - 1) &&
+    homes.some((home) => home.tx === coordinate.tx && home.ty === coordinate.ty + 1);
+  return horizontal || vertical;
+}
+
 function housingAction(state: GameState): AutoplayAction {
-  if (state.idleWorkers <= 6 || state.population < houseCapacity(state) || hasPlannedBuilding(state, "house")) return NONE;
+  if (state.idleWorkers <= 6 || state.population < houseCapacity(state) || breadStock(state) < 20 || hasPendingFoodChain(state) || state.houses.length >= foodSupportedHouseCount(state) || hasPlannedBuilding(state, "house")) return NONE;
   const roads = new Set(roadTiles(state).map(coordinateKey));
-  const site = findBuildSite(state, "house", (coordinate) =>
+  const accepts = (coordinate: TileCoordinate): boolean =>
+    isGrassOrigin(state, coordinate) &&
     [
       { tx: coordinate.tx, ty: coordinate.ty - 1 },
       { tx: coordinate.tx + 1, ty: coordinate.ty },
       { tx: coordinate.tx, ty: coordinate.ty + 1 },
       { tx: coordinate.tx - 1, ty: coordinate.ty },
-    ].some((neighbor) => roads.has(coordinateKey(neighbor))),
-  );
+    ].some((neighbor) => roads.has(coordinateKey(neighbor)));
+  const site = findBuildSite(state, "house", (coordinate) =>
+    accepts(coordinate) && !splitsExistingHousePair(state, coordinate)
+  ) ?? findBuildSite(state, "house", accepts);
   return site === null ? NONE : { kind: "place_building", building: "house", tx: site.tx, ty: site.ty };
 }
 
@@ -267,7 +205,7 @@ export function decideNextAction(state: GameState): AutoplayAction {
   for (const action of [
     waterAction(state),
     roadAccessAction(state),
-    foodAction(state),
+    foodAction(state, buildAction),
     timberAction(state),
     housingAction(state),
     eraAction(state),
