@@ -1,11 +1,18 @@
 import assert from "node:assert/strict";
 import { EventEmitter } from "node:events";
+import type { RmOptions } from "node:fs";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import { waitForChrome } from "../scripts/phase13Part7BuildMenuProofChrome.js";
+import {
+  closeChrome,
+  removeChromeProfile,
+  waitForChrome,
+} from "../scripts/phase13Part7BuildMenuProofChrome.js";
+import type { ChromeSession } from "../scripts/phase13Part7BuildMenuProofChrome.js";
 
 type MockChrome = EventEmitter & {
+  kill: (signal: NodeJS.Signals) => boolean;
   exitCode: number | null;
   signalCode: NodeJS.Signals | null;
 };
@@ -32,6 +39,7 @@ function createMockChrome(): MockChrome {
   const chrome = new EventEmitter() as MockChrome;
   chrome.exitCode = null;
   chrome.signalCode = null;
+  chrome.kill = () => true;
   return chrome;
 }
 
@@ -108,4 +116,57 @@ test("Given Pages tests run on Node 20 When CDP uses the global WebSocket Then C
     workflow,
     /- name: Test\n\s+run: npm test\n\s+env:\n\s+NODE_OPTIONS: --experimental-websocket/,
   );
+});
+
+test("Given Chrome children still release profile files When cleanup runs Then transient non-empty directories are retried", async () => {
+  let observedOptions: RmOptions | undefined;
+
+  await removeChromeProfile("/tmp/owned-chrome-profile", async (_path, options) => {
+    observedOptions = options;
+  });
+
+  assert.deepEqual(observedOptions, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 100,
+  });
+});
+
+test("Given Chrome needs SIGKILL When closeChrome runs Then it waits for exit before removing the profile", async () => {
+  const killSignals: string[] = [];
+  let exited = false;
+  let removeCalled = false;
+  const chrome = new EventEmitter() as MockChrome;
+  chrome.exitCode = null;
+  chrome.signalCode = null;
+  chrome.kill = ((signal: string) => {
+    killSignals.push(signal);
+    if (signal === "SIGKILL") {
+      queueMicrotask(() => {
+        chrome.exitCode = 137;
+        exited = true;
+        chrome.emit("exit", 137, null);
+      });
+    }
+    return true;
+  }) as MockChrome["kill"];
+
+  await closeChrome(
+    {
+      chrome: chrome as unknown as ChromeSession["chrome"],
+      userDataDir: "/tmp/owned-chrome-profile",
+      stderr: () => "",
+    },
+    {
+      killAfterMs: 0,
+      remove: async () => {
+        removeCalled = true;
+        assert.ok(exited, "profile removal ran before Chrome exited");
+      },
+    },
+  );
+
+  assert.deepEqual(killSignals, ["SIGTERM", "SIGKILL"]);
+  assert.ok(removeCalled);
 });

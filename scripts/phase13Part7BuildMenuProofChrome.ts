@@ -69,17 +69,33 @@ export async function launchChrome(input: {
   return { chrome, userDataDir, stderr: () => stderr };
 }
 
-export async function closeChrome(session: ChromeSession): Promise<void> {
-  session.chrome.kill("SIGTERM");
+export async function closeChrome(
+  session: ChromeSession,
+  options: { readonly killAfterMs?: number; readonly remove?: typeof rm } = {},
+): Promise<void> {
   if (session.chrome.exitCode === null && session.chrome.signalCode === null) {
+    const exitPromise = new Promise<void>((resolve) => session.chrome.once("exit", resolve));
+    session.chrome.kill("SIGTERM");
     await Promise.race([
-      new Promise((resolve) => session.chrome.once("exit", resolve)),
-      delay(2_000).then(() => {
-        session.chrome.kill("SIGKILL");
+      exitPromise,
+      delay(options.killAfterMs ?? 2_000).then(async () => {
+        if (session.chrome.exitCode === null && session.chrome.signalCode === null) {
+          session.chrome.kill("SIGKILL");
+        }
+        await exitPromise;
       }),
     ]);
   }
-  await rm(session.userDataDir, { recursive: true, force: true });
+  await removeChromeProfile(session.userDataDir, options.remove ?? rm);
+}
+
+export async function removeChromeProfile(userDataDir: string, remove: typeof rm = rm): Promise<void> {
+  await remove(userDataDir, {
+    recursive: true,
+    force: true,
+    maxRetries: 10,
+    retryDelay: 100,
+  });
 }
 
 export async function waitForChrome(
