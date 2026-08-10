@@ -222,8 +222,11 @@ The earlier focused Phase 14 suite was `21/21` PASS. The full fresh run above in
 - Public URL: `https://hyunlord.github.io/feudal-lord-simulator/`
 - Product head before report: `40b97501dc592d0ba71499ac82606ac28194e812`
 - Report/evidence commit: `443ecaf905c13350910e970699cd2eba9d6e6433`
-- GitHub Pages workflow run: [31348519611](https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31348519611), exact head `443ecaf905c13350910e970699cd2eba9d6e6433`
-- Pages build job `93334879400`: PASS in 7m10s; checkout, dependency install, typecheck, all tests, Pages build, configuration, and artifact upload succeeded
-- Deployment `5825145001`: **FAIL**, status `16594518041`; the `github-pages` environment rejected the feature branch because its only allowed branch policy is `main`
-- Current public deployment: `cdb831a4546658a439d1aed96733e4021b04c741` from successful deployment `5818784532`; the public URL returns HTTP 200, but it remains the Phase 13 build
-- Final publication status: **PARTIAL / BLOCKED BY ENVIRONMENT POLICY**. Phase 14 is pushed and its Pages artifact is verified, but it is not publicly deployed. Closing this requires either merging the reviewed branch into `main` or an authorized change to the `github-pages` environment policy; neither external production change was performed implicitly.
+- Publication-boundary commit: `584a6a537177e37140d5e9b06616e4990be3c1e1`
+- Integration: `main` was advanced without force or history rewriting from `cdb831a4546658a439d1aed96733e4021b04c741` to `584a6a537177e37140d5e9b06616e4990be3c1e1`; `main` and `codex/phase14-scale-occlusion-performance` matched at publication time
+- GitHub Pages workflow run: [31349007027](https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31349007027), push event on exact head `584a6a537177e37140d5e9b06616e4990be3c1e1`, conclusion `success`
+- Pages build job `93336233765`: PASS in 7m19s; checkout, dependency install, typecheck, all tests, Pages build, configuration, and artifact upload succeeded
+- Pages deploy job `93337162938`: PASS in 9s
+- Deployment `5825223082`, status `16594732951`: `success`, environment URL `https://hyunlord.github.io/feudal-lord-simulator/`
+- Public semantic proof: HTTP 200 served `/feudal-lord-simulator/assets/index-B4aNpm8X.js` (`sha256 fc13b2d46289a65d21af33b062e3d56a6930674b33ae3f57bfabaafd0a42c1f3`), and that bundle contains the Phase 14 console label `건물·공사·사람 윤곽`
+- Final publication status: **PASS**. The initial feature-branch workflow `31348519611` built successfully but was rejected by the main-only environment policy; the non-force `main` fast-forward and run above closed that policy-bound publication gap.
