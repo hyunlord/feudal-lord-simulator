@@ -109,21 +109,10 @@ function buildingTargetsForCurrentTask(state: GuidanceWorld): readonly Onboardin
   if (targets.length > 0) return targets;
 
   if (kinds.length === 0 && needsPopulationHouseGuidance(state)) {
-    const houseTargets = populationHouseGuidanceTargets(state, candidateOrigins, reserved);
-    if (houseTargets.length > 0) return houseTargets;
-
-    const roadTarget = roadTargetUnlockingPopulationHouses(state, candidateOrigins);
-    return roadTarget === null
-      ? []
-      : [{ kind: "road", label: onboardingRoadExtensionTargetLabel, origin: roadTarget }];
+    return populationHouseGuidanceTargets(state, candidateOrigins, reserved);
   }
 
-  if (kinds.length === 0) return targets;
-
-  const roadTarget = roadTargetUnlockingKind(state, kinds[0], candidateOrigins);
-  return roadTarget === null
-    ? []
-    : [{ kind: "road", label: onboardingRoadExtensionTargetLabel, origin: roadTarget }];
+  return targets;
 }
 
 function foodChainGuidanceTargetsForTask(
@@ -154,50 +143,6 @@ function firstBuildableOriginForKind(
     if (canPlaceBuilding(state, kind, origin.tx, origin.ty).ok) return origin;
   }
   return null;
-}
-
-function roadTargetUnlockingKind(
-  state: GuidanceWorld,
-  kind: BuildingKind | undefined,
-  candidateOrigins: readonly TileCoordinate[],
-): TileCoordinate | null {
-  if (kind === undefined) return null;
-
-  for (const origin of candidateOrigins) {
-    if (!canPlaceRoad(state, origin)) continue;
-    const stateWithRoad = withRoad(state, origin);
-    if (firstBuildableOriginForKind(stateWithRoad, kind, new Set(), candidateOrigins) !== null) {
-      return origin;
-    }
-  }
-
-  return null;
-}
-
-function roadTargetUnlockingPopulationHouses(
-  state: GuidanceWorld,
-  candidateOrigins: readonly TileCoordinate[],
-): TileCoordinate | null {
-  let best: { readonly origin: TileCoordinate; readonly count: number } | null = null;
-
-  for (const origin of candidateOrigins) {
-    if (!canPlaceRoad(state, origin)) continue;
-    const stateWithRoad = withRoad(state, origin);
-    const count = populationHouseGuidanceTargets(stateWithRoad, candidateOrigins, new Set()).length;
-    if (count >= 4) return origin;
-    if (best === null || count > best.count) best = { origin, count };
-  }
-
-  return best?.count === 0 ? null : best?.origin ?? null;
-}
-
-function withRoad(state: GuidanceWorld, origin: TileCoordinate): GuidanceWorld {
-  return {
-    ...state,
-    tiles: state.tiles.map((tile) =>
-      tile.tx === origin.tx && tile.ty === origin.ty ? { ...tile, hasRoad: true } : tile,
-    ),
-  };
 }
 
 function sortedCandidateOrigins(state: GuidanceWorld): readonly TileCoordinate[] {
