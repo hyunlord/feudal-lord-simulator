@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Phase 14 shipped the three code priorities and evaluated the optional terrain refresh:
+The Phase 14 branch implements and pushes the three code priorities and evaluates the optional terrain refresh:
 
 - world sprites now use manifest-driven render scales and a pre-scaled bitmap cache;
 - crowded settlements keep roads and walkers readable, with cursor/density transparency and a presentation-only outline view;
@@ -17,7 +17,7 @@ Product commits already pushed to `origin/codex/phase14-scale-occlusion-performa
 | 2 | `f971e30de155e1b9aef72a19f31a35f5a0759a5c` | Keep village activity readable as settlements become crowded |
 | 3 | `40b97501dc592d0ba71499ac82606ac28194e812` | Prevent long-session guidance scans from stalling play |
 
-The report/evidence commit and its Pages deployment are recorded in the final publication section after the deployment completes.
+The report/evidence commit and the exact Pages build/deployment outcome are recorded in the final publication section.
 
 ## 1. Render scales and default camera
 
@@ -221,6 +221,9 @@ The earlier focused Phase 14 suite was `21/21` PASS. The full fresh run above in
 - Branch: `codex/phase14-scale-occlusion-performance`
 - Public URL: `https://hyunlord.github.io/feudal-lord-simulator/`
 - Product head before report: `40b97501dc592d0ba71499ac82606ac28194e812`
-- Report/evidence commit: pending final verification
-- GitHub Pages workflow run: pending report/evidence commit
-- Published head/deployment status: pending final workflow verification
+- Report/evidence commit: `443ecaf905c13350910e970699cd2eba9d6e6433`
+- GitHub Pages workflow run: [31348519611](https://github.com/hyunlord/feudal-lord-simulator/actions/runs/31348519611), exact head `443ecaf905c13350910e970699cd2eba9d6e6433`
+- Pages build job `93334879400`: PASS in 7m10s; checkout, dependency install, typecheck, all tests, Pages build, configuration, and artifact upload succeeded
+- Deployment `5825145001`: **FAIL**, status `16594518041`; the `github-pages` environment rejected the feature branch because its only allowed branch policy is `main`
+- Current public deployment: `cdb831a4546658a439d1aed96733e4021b04c741` from successful deployment `5818784532`; the public URL returns HTTP 200, but it remains the Phase 13 build
+- Final publication status: **PARTIAL / BLOCKED BY ENVIRONMENT POLICY**. Phase 14 is pushed and its Pages artifact is verified, but it is not publicly deployed. Closing this requires either merging the reviewed branch into `main` or an authorized change to the `github-pages` environment policy; neither external production change was performed implicitly.
