@@ -1,0 +1,971 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "url": "http://127.0.0.1:4173/",
+  "revision": "40b97501dc592d0ba71499ac82606ac28194e812",
+  "revisionSource": "git",
+  "revisionDirty": false,
+  "capturedAt": "2026-08-10T01:17:53.562Z",
+  "startedAt": 1060.7000002861023,
+  "initialSnapshot": {
+    "tick": 40,
+    "snapshotCounts": {
+      "buildings": 8,
+      "houses": 4,
+      "walkers": 0,
+      "constructionSites": 0
+    }
+  },
+  "controls": {
+    "welcomeDismissed": true,
+    "playPressed": true,
+    "fivefoldPressed": true,
+    "autoplayPressed": true,
+    "fivefoldAriaPressed": "true",
+    "autoplayAriaPressed": "true",
+    "visibility": "visible",
+    "activeElement": "autoplay",
+    "documentVisibilityState": "visible",
+    "documentHasFocus": true
+  },
+  "checkpoints": [
+    {
+      "minute": 1,
+      "targetElapsedMs": 60000,
+      "windowStartMs": 0,
+      "windowDurationMs": 60000,
+      "elapsedMs": 60125.59999990463,
+      "tick": 3467,
+      "snapshotCounts": {
+        "buildings": 14,
+        "houses": 5,
+        "walkers": 5,
+        "constructionSites": 0
+      },
+      "heapUsage": {
+        "usedSize": 28168912,
+        "totalSize": 79691776,
+        "embedderHeapUsedSize": 27876776,
+        "backingStorageSize": 480326
+      },
+      "performanceMetrics": [
+        {
+          "name": "Timestamp",
+          "value": 2228095.760378
+        },
+        {
+          "name": "AudioHandlers",
+          "value": 0
+        },
+        {
+          "name": "AudioWorkletProcessors",
+          "value": 0
+        },
+        {
+          "name": "Documents",
+          "value": 1
+        },
+        {
+          "name": "Frames",
+          "value": 1
+        },
+        {
+          "name": "JSEventListeners",
+          "value": 977
+        },
+        {
+          "name": "LayoutObjects",
+          "value": 421
+        },
+        {
+          "name": "MediaKeySessions",
+          "value": 0
+        },
+        {
+          "name": "MediaKeys",
+          "value": 0
+        },
+        {
+          "name": "Nodes",
+          "value": 618
+        },
+        {
+          "name": "Resources",
+          "value": 36
+        },
+        {
+          "name": "ContextLifecycleStateObservers",
+          "value": 4
+        },
+        {
+          "name": "V8PerContextDatas",
+          "value": 1
+        },
+        {
+          "name": "WorkerGlobalScopes",
+          "value": 0
+        },
+        {
+          "name": "UACSSResources",
+          "value": 0
+        },
+        {
+          "name": "RTCPeerConnections",
+          "value": 0
+        },
+        {
+          "name": "ResourceFetchers",
+          "value": 1
+        },
+        {
+          "name": "AdSubframes",
+          "value": 0
+        },
+        {
+          "name": "DetachedScriptStates",
+          "value": 0
+        },
+        {
+          "name": "ArrayBufferContents",
+          "value": 0
+        },
+        {
+          "name": "LayoutCount",
+          "value": 710
+        },
+        {
+          "name": "RecalcStyleCount",
+          "value": 742
+        },
+        {
+          "name": "LayoutDuration",
+          "value": 0.118959
+        },
+        {
+          "name": "RecalcStyleDuration",
+          "value": 0.025384
+        },
+        {
+          "name": "DevToolsCommandDuration",
+          "value": 0.004846
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 7.650845
+        },
+        {
+          "name": "V8CompileDuration",
+          "value": 0
+        },
+        {
+          "name": "TaskDuration",
+          "value": 61.291173
+        },
+        {
+          "name": "TaskOtherDuration",
+          "value": 53.491139
+        },
+        {
+          "name": "ThreadTime",
+          "value": 37.971124
+        },
+        {
+          "name": "ProcessTime",
+          "value": 41.913709
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 28332252
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 79691776
+        },
+        {
+          "name": "FirstMeaningfulPaint",
+          "value": 0
+        },
+        {
+          "name": "DomContentLoaded",
+          "value": 2228034.469587
+        },
+        {
+          "name": "NavigationStart",
+          "value": 2228034.401571
+        }
+      ],
+      "frame": {
+        "sampleCount": 691,
+        "avgMs": 8.466425472679083,
+        "p95Ms": 45.5,
+        "maxMs": 49.90000009536743,
+        "over20": 79
+      },
+      "screenshot": {
+        "path": "/tmp/feudal-phase14/part3/long-profile-release-40b97501/screens/minute-1.png",
+        "byteLength": 2239494,
+        "sha256": "7613eaaa4f6657116d1434c50c179580a879ce4ace8df6de9632da571461cf36"
+      },
+      "failures": {
+        "console": [],
+        "page": [],
+        "resource": [],
+        "network": [],
+        "log": [],
+        "runtime": []
+      }
+    },
+    {
+      "minute": 3,
+      "targetElapsedMs": 180000,
+      "windowStartMs": 120000,
+      "windowDurationMs": 60000,
+      "elapsedMs": 180111.59999990463,
+      "tick": 11924,
+      "snapshotCounts": {
+        "buildings": 14,
+        "houses": 5,
+        "walkers": 5,
+        "constructionSites": 0
+      },
+      "heapUsage": {
+        "usedSize": 12725596,
+        "totalSize": 81002496,
+        "embedderHeapUsedSize": 14589040,
+        "backingStorageSize": 480328
+      },
+      "performanceMetrics": [
+        {
+          "name": "Timestamp",
+          "value": 2228215.694765
+        },
+        {
+          "name": "AudioHandlers",
+          "value": 0
+        },
+        {
+          "name": "AudioWorkletProcessors",
+          "value": 0
+        },
+        {
+          "name": "Documents",
+          "value": 1
+        },
+        {
+          "name": "Frames",
+          "value": 1
+        },
+        {
+          "name": "JSEventListeners",
+          "value": 603
+        },
+        {
+          "name": "LayoutObjects",
+          "value": 421
+        },
+        {
+          "name": "MediaKeySessions",
+          "value": 0
+        },
+        {
+          "name": "MediaKeys",
+          "value": 0
+        },
+        {
+          "name": "Nodes",
+          "value": 618
+        },
+        {
+          "name": "Resources",
+          "value": 36
+        },
+        {
+          "name": "ContextLifecycleStateObservers",
+          "value": 4
+        },
+        {
+          "name": "V8PerContextDatas",
+          "value": 1
+        },
+        {
+          "name": "WorkerGlobalScopes",
+          "value": 0
+        },
+        {
+          "name": "UACSSResources",
+          "value": 0
+        },
+        {
+          "name": "RTCPeerConnections",
+          "value": 0
+        },
+        {
+          "name": "ResourceFetchers",
+          "value": 1
+        },
+        {
+          "name": "AdSubframes",
+          "value": 0
+        },
+        {
+          "name": "DetachedScriptStates",
+          "value": 0
+        },
+        {
+          "name": "ArrayBufferContents",
+          "value": 0
+        },
+        {
+          "name": "LayoutCount",
+          "value": 2402
+        },
+        {
+          "name": "RecalcStyleCount",
+          "value": 2434
+        },
+        {
+          "name": "LayoutDuration",
+          "value": 0.332074
+        },
+        {
+          "name": "RecalcStyleDuration",
+          "value": 0.073534
+        },
+        {
+          "name": "DevToolsCommandDuration",
+          "value": 0.011138
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 15.66818
+        },
+        {
+          "name": "V8CompileDuration",
+          "value": 0
+        },
+        {
+          "name": "TaskDuration",
+          "value": 181.187278
+        },
+        {
+          "name": "TaskOtherDuration",
+          "value": 165.102352
+        },
+        {
+          "name": "ThreadTime",
+          "value": 121.354161
+        },
+        {
+          "name": "ProcessTime",
+          "value": 131.209527
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 12890144
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 81002496
+        },
+        {
+          "name": "FirstMeaningfulPaint",
+          "value": 0
+        },
+        {
+          "name": "DomContentLoaded",
+          "value": 2228034.469587
+        },
+        {
+          "name": "NavigationStart",
+          "value": 2228034.401571
+        }
+      ],
+      "frame": {
+        "sampleCount": 940,
+        "avgMs": 3.7631914889558833,
+        "p95Ms": 4.199999809265137,
+        "maxMs": 6.400000095367432,
+        "over20": 0
+      },
+      "screenshot": {
+        "path": "/tmp/feudal-phase14/part3/long-profile-release-40b97501/screens/minute-3.png",
+        "byteLength": 2366841,
+        "sha256": "d579d75f3a02976595d8b87e3bb2a24afcf6de7a889bba9671a424fe1aece08a"
+      },
+      "failures": {
+        "console": [],
+        "page": [],
+        "resource": [],
+        "network": [],
+        "log": [],
+        "runtime": []
+      }
+    },
+    {
+      "minute": 5,
+      "targetElapsedMs": 300000,
+      "windowStartMs": 240000,
+      "windowDurationMs": 60000,
+      "elapsedMs": 300093.39999961853,
+      "tick": 21473,
+      "snapshotCounts": {
+        "buildings": 14,
+        "houses": 5,
+        "walkers": 4,
+        "constructionSites": 0
+      },
+      "heapUsage": {
+        "usedSize": 42412280,
+        "totalSize": 82051072,
+        "embedderHeapUsedSize": 36402568,
+        "backingStorageSize": 480043
+      },
+      "performanceMetrics": [
+        {
+          "name": "Timestamp",
+          "value": 2228335.677755
+        },
+        {
+          "name": "AudioHandlers",
+          "value": 0
+        },
+        {
+          "name": "AudioWorkletProcessors",
+          "value": 0
+        },
+        {
+          "name": "Documents",
+          "value": 1
+        },
+        {
+          "name": "Frames",
+          "value": 1
+        },
+        {
+          "name": "JSEventListeners",
+          "value": 1263
+        },
+        {
+          "name": "LayoutObjects",
+          "value": 421
+        },
+        {
+          "name": "MediaKeySessions",
+          "value": 0
+        },
+        {
+          "name": "MediaKeys",
+          "value": 0
+        },
+        {
+          "name": "Nodes",
+          "value": 618
+        },
+        {
+          "name": "Resources",
+          "value": 36
+        },
+        {
+          "name": "ContextLifecycleStateObservers",
+          "value": 4
+        },
+        {
+          "name": "V8PerContextDatas",
+          "value": 1
+        },
+        {
+          "name": "WorkerGlobalScopes",
+          "value": 0
+        },
+        {
+          "name": "UACSSResources",
+          "value": 0
+        },
+        {
+          "name": "RTCPeerConnections",
+          "value": 0
+        },
+        {
+          "name": "ResourceFetchers",
+          "value": 1
+        },
+        {
+          "name": "AdSubframes",
+          "value": 0
+        },
+        {
+          "name": "DetachedScriptStates",
+          "value": 0
+        },
+        {
+          "name": "ArrayBufferContents",
+          "value": 0
+        },
+        {
+          "name": "LayoutCount",
+          "value": 4311
+        },
+        {
+          "name": "RecalcStyleCount",
+          "value": 4345
+        },
+        {
+          "name": "LayoutDuration",
+          "value": 0.709096
+        },
+        {
+          "name": "RecalcStyleDuration",
+          "value": 0.182603
+        },
+        {
+          "name": "DevToolsCommandDuration",
+          "value": 0.070117
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 25.791372
+        },
+        {
+          "name": "V8CompileDuration",
+          "value": 0
+        },
+        {
+          "name": "TaskDuration",
+          "value": 301.11677
+        },
+        {
+          "name": "TaskOtherDuration",
+          "value": 274.363582
+        },
+        {
+          "name": "ThreadTime",
+          "value": 211.555634
+        },
+        {
+          "name": "ProcessTime",
+          "value": 226.939686
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 42609468
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 82051072
+        },
+        {
+          "name": "FirstMeaningfulPaint",
+          "value": 0
+        },
+        {
+          "name": "DomContentLoaded",
+          "value": 2228034.469587
+        },
+        {
+          "name": "NavigationStart",
+          "value": 2228034.401571
+        }
+      ],
+      "frame": {
+        "sampleCount": 923,
+        "avgMs": 5.302275182883117,
+        "p95Ms": 6.099999904632568,
+        "maxMs": 394,
+        "over20": 9
+      },
+      "screenshot": {
+        "path": "/tmp/feudal-phase14/part3/long-profile-release-40b97501/screens/minute-5.png",
+        "byteLength": 2360049,
+        "sha256": "fd32a5cda68a29a67b027f07591d6ad2e621b3ecdc45d3b2eaee958445d82f41"
+      },
+      "failures": {
+        "console": [],
+        "page": [],
+        "resource": [],
+        "network": [],
+        "log": [],
+        "runtime": []
+      }
+    },
+    {
+      "minute": 7,
+      "targetElapsedMs": 420000,
+      "windowStartMs": 360000,
+      "windowDurationMs": 60000,
+      "elapsedMs": 420063.39999961853,
+      "tick": 31375,
+      "snapshotCounts": {
+        "buildings": 14,
+        "houses": 5,
+        "walkers": 4,
+        "constructionSites": 0
+      },
+      "heapUsage": {
+        "usedSize": 30438720,
+        "totalSize": 81002496,
+        "embedderHeapUsedSize": 23743896,
+        "backingStorageSize": 480043
+      },
+      "performanceMetrics": [
+        {
+          "name": "Timestamp",
+          "value": 2228455.646917
+        },
+        {
+          "name": "AudioHandlers",
+          "value": 0
+        },
+        {
+          "name": "AudioWorkletProcessors",
+          "value": 0
+        },
+        {
+          "name": "Documents",
+          "value": 1
+        },
+        {
+          "name": "Frames",
+          "value": 1
+        },
+        {
+          "name": "JSEventListeners",
+          "value": 889
+        },
+        {
+          "name": "LayoutObjects",
+          "value": 421
+        },
+        {
+          "name": "MediaKeySessions",
+          "value": 0
+        },
+        {
+          "name": "MediaKeys",
+          "value": 0
+        },
+        {
+          "name": "Nodes",
+          "value": 618
+        },
+        {
+          "name": "Resources",
+          "value": 36
+        },
+        {
+          "name": "ContextLifecycleStateObservers",
+          "value": 4
+        },
+        {
+          "name": "V8PerContextDatas",
+          "value": 1
+        },
+        {
+          "name": "WorkerGlobalScopes",
+          "value": 0
+        },
+        {
+          "name": "UACSSResources",
+          "value": 0
+        },
+        {
+          "name": "RTCPeerConnections",
+          "value": 0
+        },
+        {
+          "name": "ResourceFetchers",
+          "value": 1
+        },
+        {
+          "name": "AdSubframes",
+          "value": 0
+        },
+        {
+          "name": "DetachedScriptStates",
+          "value": 0
+        },
+        {
+          "name": "ArrayBufferContents",
+          "value": 0
+        },
+        {
+          "name": "LayoutCount",
+          "value": 6292
+        },
+        {
+          "name": "RecalcStyleCount",
+          "value": 6326
+        },
+        {
+          "name": "LayoutDuration",
+          "value": 0.959691
+        },
+        {
+          "name": "RecalcStyleDuration",
+          "value": 0.240751
+        },
+        {
+          "name": "DevToolsCommandDuration",
+          "value": 0.077397
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 34.593457
+        },
+        {
+          "name": "V8CompileDuration",
+          "value": 0
+        },
+        {
+          "name": "TaskDuration",
+          "value": 421.041781
+        },
+        {
+          "name": "TaskOtherDuration",
+          "value": 385.170485
+        },
+        {
+          "name": "ThreadTime",
+          "value": 304.217886
+        },
+        {
+          "name": "ProcessTime",
+          "value": 324.869931
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 30593468
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 81002496
+        },
+        {
+          "name": "FirstMeaningfulPaint",
+          "value": 0
+        },
+        {
+          "name": "DomContentLoaded",
+          "value": 2228034.469587
+        },
+        {
+          "name": "NavigationStart",
+          "value": 2228034.401571
+        }
+      ],
+      "frame": {
+        "sampleCount": 996,
+        "avgMs": 3.6945783158382737,
+        "p95Ms": 4.099999904632568,
+        "maxMs": 6.099999904632568,
+        "over20": 0
+      },
+      "screenshot": {
+        "path": "/tmp/feudal-phase14/part3/long-profile-release-40b97501/screens/minute-7.png",
+        "byteLength": 2362416,
+        "sha256": "9bf287816f132d0e8a9d17e1a9ee7b169b29db543c4e8beafc90f34591bc4e3e"
+      },
+      "failures": {
+        "console": [],
+        "page": [],
+        "resource": [],
+        "network": [],
+        "log": [],
+        "runtime": []
+      }
+    },
+    {
+      "minute": 10,
+      "targetElapsedMs": 600000,
+      "windowStartMs": 540000,
+      "windowDurationMs": 60000,
+      "elapsedMs": 600075.7999997139,
+      "tick": 46005,
+      "snapshotCounts": {
+        "buildings": 14,
+        "houses": 5,
+        "walkers": 5,
+        "constructionSites": 0
+      },
+      "heapUsage": {
+        "usedSize": 17447616,
+        "totalSize": 81526784,
+        "embedderHeapUsedSize": 22340800,
+        "backingStorageSize": 480043
+      },
+      "performanceMetrics": [
+        {
+          "name": "Timestamp",
+          "value": 2228635.6566
+        },
+        {
+          "name": "AudioHandlers",
+          "value": 0
+        },
+        {
+          "name": "AudioWorkletProcessors",
+          "value": 0
+        },
+        {
+          "name": "Documents",
+          "value": 1
+        },
+        {
+          "name": "Frames",
+          "value": 1
+        },
+        {
+          "name": "JSEventListeners",
+          "value": 845
+        },
+        {
+          "name": "LayoutObjects",
+          "value": 421
+        },
+        {
+          "name": "MediaKeySessions",
+          "value": 0
+        },
+        {
+          "name": "MediaKeys",
+          "value": 0
+        },
+        {
+          "name": "Nodes",
+          "value": 618
+        },
+        {
+          "name": "Resources",
+          "value": 36
+        },
+        {
+          "name": "ContextLifecycleStateObservers",
+          "value": 4
+        },
+        {
+          "name": "V8PerContextDatas",
+          "value": 1
+        },
+        {
+          "name": "WorkerGlobalScopes",
+          "value": 0
+        },
+        {
+          "name": "UACSSResources",
+          "value": 0
+        },
+        {
+          "name": "RTCPeerConnections",
+          "value": 0
+        },
+        {
+          "name": "ResourceFetchers",
+          "value": 1
+        },
+        {
+          "name": "AdSubframes",
+          "value": 0
+        },
+        {
+          "name": "DetachedScriptStates",
+          "value": 0
+        },
+        {
+          "name": "ArrayBufferContents",
+          "value": 0
+        },
+        {
+          "name": "LayoutCount",
+          "value": 9220
+        },
+        {
+          "name": "RecalcStyleCount",
+          "value": 9254
+        },
+        {
+          "name": "LayoutDuration",
+          "value": 1.37602
+        },
+        {
+          "name": "RecalcStyleDuration",
+          "value": 0.330224
+        },
+        {
+          "name": "DevToolsCommandDuration",
+          "value": 0.098369
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 48.601998
+        },
+        {
+          "name": "V8CompileDuration",
+          "value": 0
+        },
+        {
+          "name": "TaskDuration",
+          "value": 600.879536
+        },
+        {
+          "name": "TaskOtherDuration",
+          "value": 550.472925
+        },
+        {
+          "name": "ThreadTime",
+          "value": 441.807426
+        },
+        {
+          "name": "ProcessTime",
+          "value": 470.578989
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 17611368
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 81526784
+        },
+        {
+          "name": "FirstMeaningfulPaint",
+          "value": 0
+        },
+        {
+          "name": "DomContentLoaded",
+          "value": 2228034.469587
+        },
+        {
+          "name": "NavigationStart",
+          "value": 2228034.401571
+        }
+      ],
+      "frame": {
+        "sampleCount": 945,
+        "avgMs": 4.551111111312947,
+        "p95Ms": 6,
+        "maxMs": 157.2000002861023,
+        "over20": 10
+      },
+      "screenshot": {
+        "path": "/tmp/feudal-phase14/part3/long-profile-release-40b97501/screens/minute-10.png",
+        "byteLength": 2365017,
+        "sha256": "fbb78fd00b0359e98f7a06a0e23cac825de07ae455c0879ce49adc29fde5e38c"
+      },
+      "failures": {
+        "console": [],
+        "page": [],
+        "resource": [],
+        "network": [],
+        "log": [],
+        "runtime": []
+      }
+    }
+  ],
+  "errors": {
+    "console": [],
+    "page": [],
+    "resource": [],
+    "network": [],
+    "log": [],
+    "runtime": []
+  }
+}
