@@ -13,10 +13,12 @@ import { canPlaceBuilding, placementSpendableResource } from "../world/placement
 import { canTraverseRoadBoundary } from "../world/bridges";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
 import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
+import { lateFoodBuildSites } from "./autoplayFoodPlacement";
 import { foodAction, hasPendingFoodChain } from "./autoplayFood";
 import { constructionRoadAction, roadActionToTargets, plannedBuildingRoadAction } from "./autoplayConstructionRoads";
 import { preserveRoadExpansion } from "./autoplayExpansion";
 import { networkRoadAction } from "./autoplayNetworkRoads";
+import { urbanServiceAction } from './autoplayServices';
 import { waterAction } from "./autoplayWater";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
@@ -68,12 +70,11 @@ function findBuildSite(
   kind: BuildingKind,
   accepts: (coordinate: TileCoordinate) => boolean = () => true,
 ): TileCoordinate | null {
-  for (let ty = 1; ty < state.height - 1; ty += 1) {
-    for (let tx = 1; tx < state.width - 1; tx += 1) {
-      const coordinate = { tx, ty };
-      if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
-      if (canPlaceBuilding(state, kind, tx, ty).ok) return coordinate;
-    }
+  const coordinates = lateFoodBuildSites(state, kind) ?? state.tiles.filter(tile =>
+    tile.tx > 0 && tile.ty > 0 && tile.tx < state.width - 1 && tile.ty < state.height - 1);
+  for (const coordinate of coordinates) {
+    if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
+    if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok) return coordinate;
   }
   return null;
 }
@@ -228,7 +229,11 @@ export function decideNextAction(state: GameState): AutoplayAction {
     const repair = networkRoadAction(state);
     if (repair.kind !== "none") return repair;
     const access = roadAccessAction(state);
-    return access.kind === "none" ? constructionRoadAction(state) : access;
+    if (access.kind !== "none") return access;
+    const construction = constructionRoadAction(state);
+    if (construction.kind !== "none") return construction;
+    const food = foodAction(state, buildAction);
+    return food.kind === "none" ? urbanServiceAction(state) : food;
   }
   for (const decide of [
     () => waterAction(state),

@@ -287,7 +287,7 @@ test("drawObjectRenderItems defers walkers until after buildings so they are nev
   assert.ok(proceduralWalker > firstBuildingFill);
 });
 
-test("drawObjectRenderItems fades the building whose rendered sprite overlaps the cursor tile to fifty percent", () => {
+test("drawObjectRenderItems keeps the building opaque when its sprite overlaps the cursor tile", () => {
   // Given
   const context = loggedContext();
   const house = building("house-a");
@@ -306,9 +306,9 @@ test("drawObjectRenderItems fades the building whose rendered sprite overlaps th
   });
 
   // Then
-  assert.ok(context.calls.includes("globalAlpha:0.5"));
+  assert.equal(context.calls.includes("globalAlpha:0.5"), false);
   assert.equal(context.calls.includes("globalAlpha:0.55"), false);
-  assert.ok(context.calls.includes("globalAlpha:1"));
+  assert.equal(context.globalAlpha, 1);
 });
 
 test("outlines view mode is off by default and toggled by one keyboard key", () => {

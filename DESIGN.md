@@ -532,3 +532,12 @@ lots, not radius-only success. A merged home consumes two lots and vacant homes
 retain capacity. Reuse existing inspector typography, disclosure and scroll bounds.
 Static wall raster reuse preserves existing depth queue positions and live actors;
 do not flatten the complete object scene or freeze tree sway for a cache hit.
+
+## Normal-view occlusion and construction clearance
+
+Road readability polygons belong to the ground pass, before every upright object.
+Normal-view buildings remain opaque during hover and in dense neighborhoods;
+only the explicit outline diagnostic mode is translucent. Preserve physical
+foreground-wall occlusion and full-footprint depth constraints. Wall preview,
+automatic proposal and confirmation share completed-building and unfinished
+building footprints, with the same one-tile clearance.

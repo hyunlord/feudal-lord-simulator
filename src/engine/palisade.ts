@@ -1,5 +1,5 @@
 import { additionalRoadGates } from "./palisadeGates";
-import { buildingFootprint } from "../geometry/buildingFootprint";
+import { palisadeFootprintsForState } from "./palisadeFootprints";
 import {
   createPalisadeConstructionSite,
   type PalisadeConstructionSite,
@@ -59,21 +59,6 @@ function edgeDistanceSquared(left: TileEdgePoint, right: TileCoordinate | Settle
   const rightX = "tx" in right ? right.tx : right.x;
   const rightY = "ty" in right ? right.ty : right.y;
   return (left.x - rightX) ** 2 + (left.y - rightY) ** 2;
-}
-
-function settlementFootprints(state: GameState): readonly PalisadeFootprint[] {
-  return [...state.buildings]
-    .sort((left, right) => left.id.localeCompare(right.id))
-    .map((building) => {
-      const definition = buildingFootprint(building);
-      return {
-        id: building.id,
-        tx: building.tx,
-        ty: building.ty,
-        width: definition.width,
-        height: definition.height,
-      };
-    });
 }
 
 function settlementCenter(footprints: readonly PalisadeFootprint[]): SettlementCenter {
@@ -227,7 +212,7 @@ export function confirmPalisadeProclamation(
   candidatePath: PalisadePath,
 ): GameState {
   if (!canProclaimPalisadeEra(state) || state.palisade !== null) return state;
-  const footprints = settlementFootprints(state);
+  const footprints = palisadeFootprintsForState(state);
   const validation = validatePalisadeCandidate(state, candidatePath, footprints);
   if (!validation.ok) return state;
   const ring = palisadeRingPoints(validation.candidate.path);

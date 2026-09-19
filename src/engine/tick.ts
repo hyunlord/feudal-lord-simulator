@@ -135,6 +135,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     tick,
     houses: [...servedHouses],
     buildings: [...labour.buildings],
+    constructionSites: [...labour.constructionSites],
     walkers: [...movedDistributors.walkers],
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: state.treasuryCoin,

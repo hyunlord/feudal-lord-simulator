@@ -1,4 +1,4 @@
-import { buildingFootprint } from "../geometry/buildingFootprint";
+export { palisadeFootprintsForState } from "../engine/palisadeFootprints";
 import type { GameState } from "../engine/engine.types";
 import {
   computePalisadeProposal,
@@ -21,21 +21,6 @@ export type PalisadeProposalSummary =
 
 const TIMBER_PER_WALL_STEP = 15;
 const MAX_SEGMENT_STEPS = 4;
-
-export function palisadeFootprintsForState(state: GameState): readonly PalisadeFootprint[] {
-  return [...state.buildings]
-    .sort((left, right) => left.id.localeCompare(right.id))
-    .map((building) => {
-      const definition = buildingFootprint(building);
-      return {
-        id: building.id,
-        tx: building.tx,
-        ty: building.ty,
-        width: definition.width,
-        height: definition.height,
-      };
-    });
-}
 
 export function proposalSummaryForState(
   state: GameState,

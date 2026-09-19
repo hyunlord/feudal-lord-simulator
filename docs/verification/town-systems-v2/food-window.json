@@ -1,0 +1,183 @@
+{
+  "source": "final-state.json",
+  "start": 415877,
+  "end": 427877,
+  "households": [
+    {
+      "id": "house-46-40-0",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 519,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "house-44-40-0",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 559,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "house-44-42-0",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 579,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "house-46-42-0",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 539,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "construction-site-000007",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 499,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "construction-site-000011",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 479,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "construction-site-000014",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 489,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    },
+    {
+      "id": "construction-site-000015",
+      "minLevel": 4,
+      "minResidents": 32,
+      "maxEmptyTicks": 0,
+      "emptyTicks": 0,
+      "maxServiceGap": 499,
+      "declineTransitions": 0,
+      "estimatedDelivered": 120
+    }
+  ],
+  "actions": [],
+  "population": 256,
+  "finalHouses": [
+    {
+      "buildingId": "house-46-40-0",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427601,
+      "starvationGraceUntilTick": 6000,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "house-44-40-0",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427611,
+      "starvationGraceUntilTick": 6000,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "house-44-42-0",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427631,
+      "starvationGraceUntilTick": 6000,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "house-46-42-0",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427731,
+      "starvationGraceUntilTick": 6000,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "construction-site-000007",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427631,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "construction-site-000011",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427621,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "construction-site-000014",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427701,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    },
+    {
+      "buildingId": "construction-site-000015",
+      "level": 4,
+      "residents": 32,
+      "hasWater": true,
+      "breadStock": 12,
+      "lastServicedTick": 427711,
+      "unmetRequirementTicks": 0,
+      "builtLevel": 4,
+      "emptyFoodTicks": 0
+    }
+  ]
+}

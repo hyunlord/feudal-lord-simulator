@@ -11,8 +11,6 @@ import type { GameState } from "../src/engine/engine.types";
 import { drawObjectRenderItems } from "../src/render/drawObjectRenderItems";
 import {
   buildingSpriteOverlapsCursorTile,
-  denseBuildingClusterIds,
-  normalBuildingAlpha,
   OBJECT_OUTLINE_ALPHA,
   setObjectRenderViewMode,
 } from "../src/render/occlusionModel";
@@ -236,7 +234,7 @@ test("Given an intentionally misordered render queue When drawing objects Then n
   assert.equal(context.lineWidth, 1, "walker outline remains one CSS pixel at 1x without relying on cargo");
 });
 
-test("Given a tall sprite overhangs beyond its footprint When hovering an actually overlapped cursor diamond Then only that sprite fades to fifty percent", () => {
+test("Given a tall sprite overhangs beyond its footprint When hovering an actually overlapped cursor diamond Then the normal view keeps its occlusion opaque", () => {
   // Given
   const overhanging = building("house-overhang", 1, 1);
   const far = building("house-far", 5, 5);
@@ -273,34 +271,27 @@ test("Given a tall sprite overhangs beyond its footprint When hovering an actual
     camera: { zoom: 1, panX: 0, panY: 0 },
     dpr: 1,
   }), false);
-  assert.equal(context.calls.filter((call) => call === "globalAlpha:0.5").length, 1);
+  assert.equal(context.calls.filter((call) => call === "globalAlpha:0.5").length, 0);
   assert.equal(context.calls.includes("globalAlpha:0.55"), false);
 });
 
-test("Given seven buildings fit inside any five by five tile window When computing density Then affected buildings use eighty percent alpha and six stay solid", () => {
-  // Given
-  const dense = Array.from({ length: 7 }, (_, index) => building(`dense-${index}`, index % 5, Math.floor(index / 5)));
-  const boundary = dense.slice(0, 6);
-  const sparseNeighbour = building("sparse-neighbour", 7, 7);
-
-  // When
-  const denseIds = denseBuildingClusterIds([...dense, sparseNeighbour]);
-  const boundaryIds = denseBuildingClusterIds(boundary);
-
-  // Then
-  assert.deepEqual(new Set(dense.map((item) => item.id)), denseIds);
-  assert.equal(denseIds.has(sparseNeighbour.id), false);
-  assert.equal(boundaryIds.size, 0);
-  assert.equal(normalBuildingAlpha({ cursorOverlaps: true, dense: true }), 0.4);
-  assert.equal(normalBuildingAlpha({ cursorOverlaps: false, dense: true }), 0.8);
-  assert.equal(normalBuildingAlpha({ cursorOverlaps: true, dense: false }), 0.5);
+test("Given a dense neighborhood When hovering a roof in normal view Then buildings do not become translucent", () => {
+  const buildings = Array.from({ length: 7 }, (_, index) => building(`dense-${index}`, index % 5, Math.floor(index / 5)));
+  const context = loggedContext();
+  drawObjectRenderItems(context, {
+    state: state({ buildings }), tiles: [], range, zoom: 1,
+    camera: { zoom: 1, panX: 0, panY: 0 }, dpr: 1,
+    viewport: { width: 600, height: 400 }, hoveredTile: { tx: 0, ty: 0 },
+    objectRenderItems: buildings.map(home => ({ kind: "building", id: home.id, building: home, depth: home.tx + home.ty, anchorTx: home.tx })),
+  });
+  for (const alpha of [0.4, 0.5, 0.8]) assert.equal(context.calls.includes(`globalAlpha:${alpha}`), false);
 });
 
-test("Given roads are under tall object overhang When drawing objects Then a narrow readability road pass runs after buildings and before walkers", () => {
+test("Given roads are under tall object overhang When drawing objects Then the road ground pass runs before upright buildings and walkers", () => {
   // Given
   const house = building("house-a", 1, 1);
   const walker = builderWalker("builder-a");
-  const roadTile = tile(1, 1, true);
+  const roadTile = tile(1, 0, true);
   const context = loggedContext();
 
   // When
@@ -319,12 +310,12 @@ test("Given roads are under tall object overhang When drawing objects Then a nar
   });
 
   // Then
-  const buildingFill = context.calls.indexOf("fill");
+  const buildingFill = context.calls.indexOf("stroke");
   const roadAlpha = context.calls.indexOf("globalAlpha:0.72");
   const roadCore = context.calls.findIndex((call, index) => index > roadAlpha && call === `fillStyle:${SEMANTIC_PALETTE.earth}`);
   const walkerBody = context.calls.findIndex((call) => call === `fillStyle:${PALETTE.gold}`);
   assert.ok(buildingFill >= 0);
-  assert.ok(roadAlpha > buildingFill);
+  assert.ok(roadAlpha < buildingFill);
   assert.ok(roadCore > roadAlpha);
   assert.ok(walkerBody > roadCore);
 });

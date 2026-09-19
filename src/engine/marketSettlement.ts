@@ -6,6 +6,7 @@ import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "./engine.types";
 import { buildingRoadAccessTiles } from "./routing";
 import type { TileCoordinate } from "../world/grid";
+import { civicConstructionReserve } from './autoplayCivicReserve';
 import { existingRoadComponent } from "../world/roadGraph";
 
 type MarketResource = Exclude<ResourceType, "coin">;
@@ -77,12 +78,17 @@ function connectedStorageSources(
     );
 }
 
-function saleCandidates(sources: readonly Building[], era: GameState["era"]): readonly SaleCandidate[] {
+function saleCandidates(sources: readonly Building[], state: GameState): readonly SaleCandidate[] {
+  const civicReserve = civicConstructionReserve(state);
+  const availableTimber = sources.reduce((total, building) => total +
+    Math.max(0, amount(building.inventory, "timber") - amount(building.stockReserved, "timber")), 0);
   const availableStone = sources.reduce((total, building) => total +
     Math.max(0, amount(building.inventory, "stone") - amount(building.stockReserved, "stone")), 0);
   return sources.flatMap((building) =>
     SALE_RULES.flatMap((rule) => {
-      if (era === "palisade" && rule.resource === "stone" && availableStone <= 400) return [];
+      if (state.era === "palisade" && rule.resource === "stone" && availableStone <= 400) return [];
+      if (rule.resource === "timber" && availableTimber <= civicReserve.timber) return [];
+      if (rule.resource === "stone" && availableStone <= civicReserve.stone) return [];
       const stock = amount(building.inventory, rule.resource);
       const reserved = amount(building.stockReserved, rule.resource);
       const unreserved = Math.max(0, stock - reserved);
@@ -104,7 +110,7 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
 export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
   return market.kind === "market"
     && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
-    && saleCandidates(connectedStorageSources(state, market, state.buildings), state.era).length > 0;
+    && saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
 }
 
 function settleMarket(
@@ -112,7 +118,7 @@ function settleMarket(
   buildings: readonly Building[],
   market: Building,
 ): { readonly buildings: readonly Building[]; readonly coin: number } {
-  const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings), state.era)]
+  const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings), state)]
     .sort(compareCandidates)[0];
   if (candidate === undefined) return { buildings, coin: 0 };
 

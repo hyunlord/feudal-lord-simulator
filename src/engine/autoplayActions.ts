@@ -1,4 +1,4 @@
-import { buildingFootprint } from "../geometry/buildingFootprint";
+import { palisadeFootprintsForState } from "./palisadeFootprints";
 import type { AutoplayAction } from "./autoplay";
 import { canProclaimStoneTownEra } from "./era";
 import type { GameState } from "./engine.types";
@@ -6,26 +6,10 @@ import type { GameAction } from "../state/gameStore.types";
 import {
   computePalisadeProposal,
   validatePalisadeCandidate,
-  type PalisadeFootprint,
 } from "../world/palisadeGeometry";
 
 function assertNever(value: never): never {
   throw new Error(`Unhandled autoplay action: ${JSON.stringify(value)}`);
-}
-
-function palisadeFootprintsForState(state: GameState): readonly PalisadeFootprint[] {
-  return [...state.buildings]
-    .sort((left, right) => left.id.localeCompare(right.id))
-    .map((building) => {
-      const definition = buildingFootprint(building);
-      return {
-        id: building.id,
-        tx: building.tx,
-        ty: building.ty,
-        width: definition.width,
-        height: definition.height,
-      };
-    });
 }
 
 function eraGameAction(state: GameState): GameAction | null {

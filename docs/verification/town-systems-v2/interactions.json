@@ -1,0 +1,204 @@
+{
+  "sourceState": "/Users/rexxa/github/feudal-lord-simulator/output/town-systems-v2/growth/final-state.json",
+  "source": "Natural engine-grown city; interventions use real gameReducer road actions and advanceTick with advisor disabled. No inserted buildings, food or resources.",
+  "homeId": "house-46-40-0",
+  "building": {
+    "id": "house-46-40-0",
+    "kind": "house",
+    "tx": 46,
+    "ty": 40,
+    "workers": 0,
+    "inventory": {},
+    "reserved": {},
+    "stockReserved": {},
+    "productionProgress": 0
+  },
+  "roads": [
+    {
+      "tx": 46,
+      "ty": 39
+    },
+    {
+      "tx": 47,
+      "ty": 40
+    },
+    {
+      "tx": 46,
+      "ty": 41
+    }
+  ],
+  "graceTicks": 400,
+  "recoveryTicks": 23,
+  "observations": [
+    {
+      "label": "connected",
+      "tick": 415877,
+      "population": 256,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "level": 4,
+        "residents": 32,
+        "hasWater": true,
+        "breadStock": 12,
+        "lastServicedTick": 415601,
+        "starvationGraceUntilTick": 6000,
+        "unmetRequirementTicks": 0,
+        "builtLevel": 4,
+        "emptyFoodTicks": 0
+      },
+      "services": {
+        "water": {
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        "market": {
+          "kind": "served",
+          "providerId": "construction-site-000025",
+          "demand": 1
+        },
+        "church": {
+          "kind": "served",
+          "providerId": "construction-site-000027",
+          "demand": 1
+        }
+      }
+    },
+    {
+      "label": "roads_removed",
+      "tick": 415877,
+      "population": 256,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "level": 4,
+        "residents": 32,
+        "hasWater": true,
+        "breadStock": 12,
+        "lastServicedTick": 415601,
+        "starvationGraceUntilTick": 6000,
+        "unmetRequirementTicks": 0,
+        "builtLevel": 4,
+        "emptyFoodTicks": 0
+      },
+      "services": {
+        "water": {
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        "market": {
+          "kind": "unreachable",
+          "providerId": null,
+          "demand": 1
+        },
+        "church": {
+          "kind": "unreachable",
+          "providerId": null,
+          "demand": 1
+        }
+      }
+    },
+    {
+      "label": "after_decline_grace",
+      "tick": 416278,
+      "population": 256,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "level": 3,
+        "residents": 32,
+        "hasWater": true,
+        "breadStock": 8,
+        "lastServicedTick": 415601,
+        "starvationGraceUntilTick": 6000,
+        "unmetRequirementTicks": 0,
+        "builtLevel": 4,
+        "emptyFoodTicks": 0
+      },
+      "services": {
+        "water": {
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        "market": {
+          "kind": "unreachable",
+          "providerId": null,
+          "demand": 1
+        },
+        "church": {
+          "kind": "unreachable",
+          "providerId": null,
+          "demand": 1
+        }
+      }
+    },
+    {
+      "label": "roads_rebuilt",
+      "tick": 416278,
+      "population": 256,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "level": 3,
+        "residents": 32,
+        "hasWater": true,
+        "breadStock": 8,
+        "lastServicedTick": 415601,
+        "starvationGraceUntilTick": 6000,
+        "unmetRequirementTicks": 0,
+        "builtLevel": 4,
+        "emptyFoodTicks": 0
+      },
+      "services": {
+        "water": {
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        "market": {
+          "kind": "served",
+          "providerId": "construction-site-000025",
+          "demand": 1
+        },
+        "church": {
+          "kind": "served",
+          "providerId": "construction-site-000027",
+          "demand": 1
+        }
+      }
+    },
+    {
+      "label": "resupplied",
+      "tick": 416301,
+      "population": 256,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "level": 4,
+        "residents": 32,
+        "hasWater": true,
+        "breadStock": 12,
+        "lastServicedTick": 416301,
+        "starvationGraceUntilTick": 6000,
+        "unmetRequirementTicks": 0,
+        "builtLevel": 4,
+        "emptyFoodTicks": 0
+      },
+      "services": {
+        "water": {
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        "market": {
+          "kind": "served",
+          "providerId": "construction-site-000025",
+          "demand": 1
+        },
+        "church": {
+          "kind": "served",
+          "providerId": "construction-site-000027",
+          "demand": 1
+        }
+      }
+    }
+  ]
+}

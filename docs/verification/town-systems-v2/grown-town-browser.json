@@ -1,0 +1,738 @@
+{
+  "sourceState": "/Users/rexxa/github/feudal-lord-simulator/output/town-systems-v2/growth/final-state.json",
+  "tick": 415877,
+  "population": 256,
+  "photos": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/town-systems-v2/grown-town-overview.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/town-systems-v2/grown-town-house.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/town-systems-v2/grown-town-market.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/town-systems-v2/grown-town-church.png"
+  ],
+  "errors": [],
+  "house": "주택 · 생활 등급 4\n\n도시 대가옥\n×\n\n생활 등급 4 · 주민 32명 / 정원 32명 · 1×1칸\n\n건축 단계\n4단계 · 관리 양호\n물\n우물에서 2칸\n빵\n빵이 있습니다\n인구\n유지 또는 성장 중\n주택 발전 조건\n성벽\n성벽 안 ✅ 편의 +2\n시장\n시장 이용 가능 — 거리 8 / 범위 8 · 담당 6/24필지\n교회\n교회 이용 가능 — 거리 6 / 범위 12 · 담당 8/32필지\n도시 대가옥\n도시 대가옥 가능\n인접 주택 합필\n\n같은 발전 단계의 인접 주택과 합쳐 주민과 식량을 보존합니다.\n\n철거하면 주민 32명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거",
+  "market": "도시 시설\n\n시장\n×\n\n잉여 물자를 팔아 금화를 확보\n\n운영과 재고\n서비스 담당 0/24 주거 필지\n단독 주택 1 · 합필 주택 2필지, 빈집도 자리 유지\n범위 안 주택까지 이어진 도로가 필요합니다\n일꾼 3/3\n재고 없음",
+  "church": "도시 시설\n\n교회\n×\n\n주변 가구에 교회 서비스를 제공\n\n운영과 재고\n서비스 담당 8/32 주거 필지\n단독 주택 1 · 합필 주택 2필지, 빈집도 자리 유지\n범위 안 주택까지 이어진 도로가 필요합니다\n재고 없음",
+  "snapshot": {
+    "tick": 415877,
+    "wallTick": 415877,
+    "population": 256,
+    "idleWorkers": 59,
+    "treasuryTimber": 0,
+    "roadRevision": 56,
+    "buildings": [
+      {
+        "id": "house-44-40-0",
+        "kind": "house",
+        "tx": 44,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "house-46-40-0",
+        "kind": "house",
+        "tx": 46,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "house-44-42-0",
+        "kind": "house",
+        "tx": 44,
+        "ty": 42,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "house-46-42-0",
+        "kind": "house",
+        "tx": 46,
+        "ty": 42,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "well-45-41-0",
+        "kind": "well",
+        "tx": 45,
+        "ty": 41,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "granary-42-37-0",
+        "kind": "granary",
+        "tx": 42,
+        "ty": 37,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "bread": 25,
+          "wheat": 8
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 46,
+        "problemCause": null
+      },
+      {
+        "id": "storehouse-41-40-0",
+        "kind": "storehouse",
+        "tx": 41,
+        "ty": 40,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "timber": 60,
+          "stone_raw": 40
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000001",
+        "kind": "sawmill",
+        "tx": 44,
+        "ty": 38,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "logs": 1,
+          "timber": 1
+        },
+        "productionProgress": 0,
+        "problemCause": "창고에서 통나무 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000002",
+        "kind": "wheat_farm",
+        "tx": 45,
+        "ty": 37,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 18,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000003",
+        "kind": "mill",
+        "tx": 47,
+        "ty": 38,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 0,
+          "bread": 1
+        },
+        "productionProgress": 0,
+        "problemCause": "곡창에서 밀 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000004",
+        "kind": "mill",
+        "tx": 42,
+        "ty": 39,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 3
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000005",
+        "kind": "wheat_farm",
+        "tx": 48,
+        "ty": 38,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 1
+        },
+        "productionProgress": 17,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000006",
+        "kind": "wheat_farm",
+        "tx": 42,
+        "ty": 42,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 26,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000007",
+        "kind": "house",
+        "tx": 47,
+        "ty": 42,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000008",
+        "kind": "chapel",
+        "tx": 45,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000009",
+        "kind": "granary",
+        "tx": 48,
+        "ty": 42,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "bread": 17,
+          "wheat": 33
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000010",
+        "kind": "wheat_farm",
+        "tx": 51,
+        "ty": 43,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 38,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000011",
+        "kind": "house",
+        "tx": 48,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000012",
+        "kind": "mill",
+        "tx": 49,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 2,
+          "bread": 3
+        },
+        "productionProgress": 22,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000013",
+        "kind": "wheat_farm",
+        "tx": 48,
+        "ty": 44,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 6,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000014",
+        "kind": "house",
+        "tx": 51,
+        "ty": 41,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000015",
+        "kind": "house",
+        "tx": 51,
+        "ty": 42,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000016",
+        "kind": "well",
+        "tx": 51,
+        "ty": 47,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000017",
+        "kind": "storehouse",
+        "tx": 51,
+        "ty": 45,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "logs": 4
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000018",
+        "kind": "wheat_farm",
+        "tx": 48,
+        "ty": 46,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 1
+        },
+        "productionProgress": 16,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000020",
+        "kind": "masonry",
+        "tx": 40,
+        "ty": 35,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "stone_raw": 0,
+          "stone": 1
+        },
+        "productionProgress": 0,
+        "problemCause": "창고에서 원석 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000021",
+        "kind": "quarry",
+        "tx": 29,
+        "ty": 34,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 48,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000022",
+        "kind": "market",
+        "tx": 31,
+        "ty": 33,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000023",
+        "kind": "storehouse",
+        "tx": 33,
+        "ty": 33,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "logs": 8,
+          "stone_raw": 2
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000024",
+        "kind": "storehouse",
+        "tx": 35,
+        "ty": 33,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "stone": 40
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000025",
+        "kind": "market",
+        "tx": 46,
+        "ty": 46,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000026",
+        "kind": "market",
+        "tx": 52,
+        "ty": 47,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000027",
+        "kind": "church",
+        "tx": 46,
+        "ty": 35,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000028",
+        "kind": "mill",
+        "tx": 49,
+        "ty": 48,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 1,
+          "bread": 4
+        },
+        "productionProgress": 0,
+        "problemCause": "곡창에서 밀 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000029",
+        "kind": "wheat_farm",
+        "tx": 47,
+        "ty": 48,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      }
+    ],
+    "constructionSites": [],
+    "houses": [
+      {
+        "buildingId": "house-46-40-0",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415601
+      },
+      {
+        "buildingId": "house-44-40-0",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415611
+      },
+      {
+        "buildingId": "house-44-42-0",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415631
+      },
+      {
+        "buildingId": "house-46-42-0",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415681
+      },
+      {
+        "buildingId": "construction-site-000007",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415671
+      },
+      {
+        "buildingId": "construction-site-000011",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415631
+      },
+      {
+        "buildingId": "construction-site-000014",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415611
+      },
+      {
+        "buildingId": "construction-site-000015",
+        "residents": 32,
+        "level": 4,
+        "breadStock": 12,
+        "lastServicedTick": 415601
+      }
+    ],
+    "walkers": [
+      {
+        "id": "carter:construction-site-000001:415725",
+        "kind": "carter",
+        "x": 46.75999999999996,
+        "y": 39,
+        "homeBuildingId": "construction-site-000001",
+        "phase": "returning",
+        "cargo": {
+          "resource": "logs",
+          "amount": 5
+        }
+      },
+      {
+        "id": "carter:construction-site-000002:415859",
+        "kind": "carter",
+        "x": 43.42,
+        "y": 39,
+        "homeBuildingId": "construction-site-000002",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "carter:construction-site-000003:415849",
+        "kind": "carter",
+        "x": 47.16,
+        "y": 41,
+        "homeBuildingId": "construction-site-000003",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "carter:construction-site-000004:415877",
+        "kind": "carter",
+        "x": 43,
+        "y": 39,
+        "homeBuildingId": "construction-site-000004",
+        "phase": "outbound",
+        "cargo": {
+          "resource": "bread",
+          "amount": 1
+        }
+      },
+      {
+        "id": "carter:construction-site-000005:415835",
+        "kind": "carter",
+        "x": 47,
+        "y": 39.19999999999999,
+        "homeBuildingId": "construction-site-000005",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "carter:construction-site-000006:415851",
+        "kind": "carter",
+        "x": 43,
+        "y": 40.540000000000006,
+        "homeBuildingId": "construction-site-000006",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "carter:construction-site-000012:415766",
+        "kind": "carter",
+        "x": 48.42000000000003,
+        "y": 41,
+        "homeBuildingId": "construction-site-000012",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "carter:construction-site-000013:415871",
+        "kind": "carter",
+        "x": 50,
+        "y": 43.16,
+        "homeBuildingId": "construction-site-000013",
+        "phase": "outbound",
+        "cargo": {
+          "resource": "wheat",
+          "amount": 1
+        }
+      },
+      {
+        "id": "carter:construction-site-000018:415853",
+        "kind": "carter",
+        "x": 50,
+        "y": 43.28,
+        "homeBuildingId": "construction-site-000018",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "carter:construction-site-000020:415778",
+        "kind": "carter",
+        "x": 39,
+        "y": 35.13999999999997,
+        "homeBuildingId": "construction-site-000020",
+        "phase": "returning",
+        "cargo": {
+          "resource": "stone_raw",
+          "amount": 4
+        }
+      },
+      {
+        "id": "carter:construction-site-000028:415826",
+        "kind": "carter",
+        "x": 50,
+        "y": 45.10000000000001,
+        "homeBuildingId": "construction-site-000028",
+        "phase": "returning",
+        "cargo": {
+          "resource": "wheat",
+          "amount": 8
+        }
+      },
+      {
+        "id": "carter:construction-site-000029:415877",
+        "kind": "carter",
+        "x": 48,
+        "y": 50,
+        "homeBuildingId": "construction-site-000029",
+        "phase": "outbound",
+        "cargo": {
+          "resource": "wheat",
+          "amount": 4
+        }
+      },
+      {
+        "id": "carter:logging-camp-50-40-0:415835",
+        "kind": "carter",
+        "x": 50,
+        "y": 43.17999999999999,
+        "homeBuildingId": "logging-camp-50-40-0",
+        "phase": "returning",
+        "cargo": null
+      },
+      {
+        "id": "distributor:construction-site-000009:415320",
+        "kind": "distributor",
+        "x": 50,
+        "y": 49.84000000000009,
+        "homeBuildingId": "construction-site-000009",
+        "phase": "returning",
+        "cargo": {
+          "resource": "bread",
+          "amount": 12
+        }
+      },
+      {
+        "id": "distributor:construction-site-000009:415800",
+        "kind": "distributor",
+        "x": 50,
+        "y": 44.66,
+        "homeBuildingId": "construction-site-000009",
+        "phase": "roaming",
+        "cargo": {
+          "resource": "bread",
+          "amount": 12
+        }
+      },
+      {
+        "id": "distributor:granary-42-37-0:415560",
+        "kind": "distributor",
+        "x": 46.34,
+        "y": 50,
+        "homeBuildingId": "granary-42-37-0",
+        "phase": "roaming",
+        "cargo": {
+          "resource": "bread",
+          "amount": 4
+        }
+      },
+      {
+        "id": "distributor:granary-42-37-0:415800",
+        "kind": "distributor",
+        "x": 44.66,
+        "y": 39,
+        "homeBuildingId": "granary-42-37-0",
+        "phase": "roaming",
+        "cargo": {
+          "resource": "bread",
+          "amount": 12
+        }
+      }
+    ]
+  }
+}

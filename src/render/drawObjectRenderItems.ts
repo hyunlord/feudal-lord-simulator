@@ -10,7 +10,6 @@ import type { RenderQueueItem } from "./objectRenderOrder";
 import { getObjectRenderViewMode } from "./objectRenderViewMode";
 import type { TileRange, ViewportSize } from "./renderer";
 import type { TileCoordinate } from "../world/grid";
-import { denseBuildingClusterIds } from "./occlusionModel";
 import { drawRoadReadabilityOverlay } from "./roadReadabilityOverlay";
 import { bridgeRailPieces, drawBridgeRail } from "./drawBridges";
 import { bridgeAt } from "../world/bridges";
@@ -38,7 +37,6 @@ export function drawObjectRenderItems(
   beginFarmCanopyFrame();
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
-  const denseBuildingIds = denseBuildingClusterIds(input.state.buildings);
   if (viewMode !== "outlines") {
     for (const item of input.objectRenderItems) {
       if (item.kind === "building") drawFarmSoil(context, item.building, input.state.buildings);
@@ -46,6 +44,8 @@ export function drawObjectRenderItems(
   }
   const stoneGates = input.objectRenderItems.flatMap(item => item.kind === "palisade_segment"
     ? (item.stoneNodes ?? []).filter(node => node.kind === "gate").map(node => node.point) : []);
+  // Roads are ground surfaces; repainting them after this queue cuts across roofs.
+  drawRoadReadabilityOverlay(context, input.state, input.tiles, stoneGates);
   const rails = bridgeRailPieces(input.state, input.tiles).map(piece => ({
     kind: "bridge_rail" as const, piece, depth: piece.depth, anchorTx: piece.tx,
     id: `bridge:${piece.tx}:${piece.ty}:${piece.side}`,
@@ -100,11 +100,9 @@ export function drawObjectRenderItems(
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
       viewMode,
-      denseBuildingIds,
       farmSoilDrawn: true,
     });
   }
-  drawRoadReadabilityOverlay(context, input.state, input.tiles, stoneGates);
   for (const item of walkerItems) {
     drawBuildings(context, {
       state: input.state,
@@ -119,7 +117,6 @@ export function drawObjectRenderItems(
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
       viewMode,
-      denseBuildingIds,
       farmSoilDrawn: true,
     });
   }

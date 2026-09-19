@@ -23,8 +23,6 @@ export {
   type ObjectRenderViewMode,
 };
 
-export const CURSOR_OVERLAP_ALPHA = 0.5;
-export const DENSE_BUILDING_ALPHA = 0.8;
 export const OBJECT_OUTLINE_ALPHA = 0.35;
 
 type Point = { readonly x: number; readonly y: number };
@@ -32,36 +30,6 @@ type Rect = Point & { readonly width: number; readonly height: number };
 type Axis = { readonly x: number; readonly y: number };
 
 const DEFAULT_CAMERA = { zoom: 1, panX: 0, panY: 0 } as const satisfies CameraState;
-const DENSE_WINDOW_SIZE = 5;
-const DENSE_BUILDING_THRESHOLD = 6;
-
-export function normalBuildingAlpha(input: {
-  readonly cursorOverlaps: boolean;
-  readonly dense: boolean;
-}): number {
-  return (
-    (input.cursorOverlaps ? CURSOR_OVERLAP_ALPHA : 1) *
-    (input.dense ? DENSE_BUILDING_ALPHA : 1)
-  );
-}
-
-export function denseBuildingClusterIds(buildings: readonly Building[]): ReadonlySet<string> {
-  const windowCounts = new Map<string, number>();
-  for (const building of buildings) {
-    forEachWindowContaining(building, (key) => {
-      windowCounts.set(key, (windowCounts.get(key) ?? 0) + 1);
-    });
-  }
-
-  const denseIds = new Set<string>();
-  for (const building of buildings) {
-    forEachWindowContaining(building, (key) => {
-      if ((windowCounts.get(key) ?? 0) > DENSE_BUILDING_THRESHOLD) denseIds.add(building.id);
-    });
-  }
-  return denseIds;
-}
-
 export function buildingSpriteOverlapsCursorTile(input: {
   readonly state?: GameState;
   readonly building: Building;
@@ -119,14 +87,6 @@ export function buildingSpriteOverlapsCursorTile(input: {
     dpr,
   });
   return rectIntersectsDiamond(spriteRect, cursorDiamond(input.hoveredTile, camera, dpr));
-}
-
-function forEachWindowContaining(building: Building, visit: (key: string) => void): void {
-  for (let wy = building.ty - DENSE_WINDOW_SIZE + 1; wy <= building.ty; wy += 1) {
-    for (let wx = building.tx - DENSE_WINDOW_SIZE + 1; wx <= building.tx; wx += 1) {
-      visit(`${wx}:${wy}`);
-    }
-  }
 }
 
 function spriteScreenRect(input: {

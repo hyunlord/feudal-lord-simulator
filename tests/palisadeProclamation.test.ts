@@ -10,6 +10,8 @@ import { gameReducer, DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import type { GameAction } from "../src/state/gameStore.types";
 import type { PalisadePath } from "../src/world/palisadeGeometry";
 import type { Tile } from "../src/world/world.types";
+import { palisadeFootprintsForState, proposalSummaryForState } from "../src/ui/eraConsoleModel";
+import { palisadePathHasBuildingClearance } from "../src/world/palisadeGeometry";
 
 const BASE_PATH: PalisadePath = [
   { x: 5, y: 5 },
@@ -82,6 +84,36 @@ function proclaim(state: GameState, candidatePath: PalisadePath = BASE_PATH): Ga
 function siteIds(palisade: PalisadeState): readonly string[] {
   return palisade.segments.map((segment) => segment.constructionSiteId ?? "");
 }
+
+for (const tx of [4, 5]) {
+  test(`Given a building under construction at x${tx} When confirming a wall through its edge Then the plan is rejected unchanged`, () => {
+    const site = createConstructionSite({ ordinal: 99, kind: "house", tx, ty: 9, startedTick: 0 });
+    const state = eligibleState({ treasuryTimber: 1000, constructionSites: [site] });
+    const before = structuredClone(state);
+    const next = proclaim(state);
+    assert.equal(next, state);
+    assert.deepEqual(state, before);
+  });
+}
+
+test("Given construction one full tile from the wall When confirming Then the building site is preserved", () => {
+  const site = createConstructionSite({ ordinal: 99, kind: "house", tx: 6, ty: 9, startedTick: 0 });
+  const state = eligibleState({ treasuryTimber: 1000, constructionSites: [site] });
+  const next = proclaim(state);
+  assert.notEqual(next, state);
+  assert.equal(next.constructionSites[0], site);
+});
+
+test("Given an unfinished multi-tile facility When proposing the wall Then preview protects its full footprint", () => {
+  const site = createConstructionSite({ ordinal: 99, kind: "granary", tx: 4, ty: 9, startedTick: 0 });
+  const state = eligibleState({ treasuryTimber: 1000, constructionSites: [site] });
+  const footprints = palisadeFootprintsForState(state);
+  const footprint = footprints.find(candidate => candidate.id === site.id);
+  assert.deepEqual(footprint, { id: site.id, tx: 4, ty: 9, width: 2, height: 2 });
+  const proposal = proposalSummaryForState(state, footprints);
+  assert.equal(proposal.ok, true);
+  if (proposal.ok) assert.equal(palisadePathHasBuildingClearance(proposal.path, footprints), true);
+});
 
 function walker(input: {
   readonly id: string;

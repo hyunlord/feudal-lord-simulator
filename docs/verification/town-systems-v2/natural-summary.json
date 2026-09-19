@@ -1,0 +1,130 @@
+{
+  "source": "Unmodified DEFAULT_GAME_STATE, real advisor every120 ticks, gameReducer, advanceTick; no injected roads, services, resources or population",
+  "coverageTick": 400128,
+  "victoryTick": 389726,
+  "settledSince": 403877,
+  "sustainedTicks": 12000,
+  "elapsedSeconds": 124.396,
+  "rejected": [],
+  "invalid": [],
+  "final": {
+    "tick": 415877,
+    "era": "stone_town",
+    "population": 256,
+    "idleWorkers": 59,
+    "coverage": {
+      "water": 8,
+      "market": 8,
+      "church": 8
+    },
+    "houses": [
+      {
+        "id": "house-46-40-0",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "house-44-40-0",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "house-44-42-0",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "house-46-42-0",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "construction-site-000007",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "construction-site-000011",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "construction-site-000014",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      },
+      {
+        "id": "construction-site-000015",
+        "level": 4,
+        "residents": 32,
+        "bread": 12,
+        "unmet": 0
+      }
+    ],
+    "sites": 0,
+    "providers": [
+      {
+        "id": "construction-site-000016",
+        "service": "water",
+        "capacity": 12,
+        "used": 2,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "well-45-41-0",
+        "service": "water",
+        "capacity": 12,
+        "used": 6,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000022",
+        "service": "market",
+        "capacity": 24,
+        "used": 0,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000025",
+        "service": "market",
+        "capacity": 24,
+        "used": 6,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000026",
+        "service": "market",
+        "capacity": 24,
+        "used": 2,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000027",
+        "service": "church",
+        "capacity": 32,
+        "used": 8,
+        "workers": 0,
+        "requiredWorkers": 0
+      }
+    ]
+  }
+}
