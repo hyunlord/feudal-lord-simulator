@@ -14,9 +14,12 @@ import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { Era } from "../content/eraConfig";
 import { getTile, isInBounds, type TileCoordinate } from "./grid";
 import type { Tile, WorldView } from "./world.types";
+import { palisadePathHasBuildingClearance, type PalisadeFootprint } from "./palisadeGeometry";
+import type { WallBoundary } from "./wallTraversal";
 
 export enum PlacementFailure {
   occupied = "occupied",
+  wall_clearance = "wall_clearance",
   wrong_terrain = "wrong_terrain",
   out_of_bounds = "out_of_bounds",
   needs_road = "needs_road",
@@ -41,6 +44,7 @@ type ResourceWorldView = WorldView & {
   readonly buildings?: readonly Building[];
   readonly constructionSites?: readonly ConstructionSite[];
   readonly era?: Era;
+  readonly palisade?: Pick<WallBoundary, "segments"> | null;
 };
 
 const ERA_ORDER = {
@@ -122,6 +126,13 @@ function footprintsIntersect(
   );
 }
 
+export function hasBuildingWallClearance(world: ResourceWorldView, footprint: PalisadeFootprint): boolean {
+  if (world.palisade?.segments.some(segment => !palisadePathHasBuildingClearance(segment.edgePath, [footprint]))) return false;
+  return !world.constructionSites?.some(site =>
+    (site.kind === "palisade_segment" || site.kind === "stone_wall_segment") && !palisadePathHasBuildingClearance(site.path, [footprint]),
+  );
+}
+
 export function canPlaceBuilding(
   world: ResourceWorldView,
   kind: BuildingKind,
@@ -159,6 +170,10 @@ export function canPlaceBuilding(
     ) === true
   ) {
     return { ok: false, reason: PlacementFailure.occupied };
+  }
+
+  if (!hasBuildingWallClearance(world, { id: "placement", tx, ty, width: definition.width, height: definition.height })) {
+    return { ok: false, reason: PlacementFailure.wall_clearance };
   }
 
   if (footprintTileValues.some((tile) => !isBuildableTerrain(tile.terrain))) {

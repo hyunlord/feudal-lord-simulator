@@ -116,6 +116,7 @@ describe("browser world asset registry", () => {
       anchor: asset["anchor"],
       footprint: asset["footprint"],
       renderScale: asset["renderScale"],
+      bakedArchitecture: asset["category"] === "building" && typeof asset["source"] === "object" && asset["source"] !== null && "kind" in asset["source"] && asset["source"].kind === "accepted-art",
     }));
 
     assert.deepEqual(runtimeWorldAssetManifest.assets, runtimeProjection);
@@ -201,8 +202,9 @@ describe("browser world asset registry", () => {
       width: 160,
       height: 192,
       renderScale: 0.43333333333333335,
+      bakedArchitecture: true,
       anchor: { x: 80, y: 176 },
-      footprint: { width: 2, height: 2 },
+      footprint: { width: 1, height: 1 },
       status: "idle",
     });
     assert.equal(spriteMeta("missing_key"), null);
@@ -296,3 +298,30 @@ function assetFixture(overrides: Readonly<Record<string, unknown>> = {}): Readon
 function isRecord(value: unknown): value is Readonly<Record<string, unknown>> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
+
+
+it("runtime metadata distinguishes accepted architecture from legacy and nonbuilding assets", () => {
+  assert.equal(spriteMeta("house_l0")?.bakedArchitecture, true);
+  assert.equal(spriteMeta("house_l3")?.bakedArchitecture, true);
+  assert.equal(spriteMeta("mill")?.bakedArchitecture, false);
+  assert.equal(spriteMeta("grass")?.bakedArchitecture, false);
+  assert.equal(spriteMeta("tree_oak_large")?.bakedArchitecture, false);
+});
+
+it("legacy runtime manifests without architecture metadata retain procedural details", () => {
+  const parsed = parseWorldAssetManifest({ assets: [assetFixture()] });
+  assert.equal(parsed[0]?.bakedArchitecture, false);
+});
+
+it("runtime architecture metadata accepts booleans and rejects malformed values", () => {
+  for (const bakedArchitecture of [true, false]) {
+    const parsed = parseWorldAssetManifest({ assets: [assetFixture({ bakedArchitecture })] });
+    assert.equal(parsed[0]?.bakedArchitecture, bakedArchitecture);
+  }
+  for (const bakedArchitecture of ["true", 1, null, {}]) {
+    assert.throws(
+      () => parseWorldAssetManifest({ assets: [assetFixture({ bakedArchitecture })] }),
+      /bakedArchitecture/,
+    );
+  }
+});

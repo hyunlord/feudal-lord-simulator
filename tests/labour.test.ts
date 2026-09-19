@@ -192,7 +192,7 @@ test("construction labour caps each site at three and leaves excess workers idle
   assert.equal(result.idleWorkers, 4);
 });
 
-test("production exhaustion leaves construction unassigned without changing production workers", () => {
+test("ready construction receives one worker before nonessential production exhausts labour", () => {
   // Given
   const farm = building("a-farm", "wheat_farm");
   const sawmill = building("b-sawmill", "sawmill");
@@ -206,11 +206,11 @@ test("production exhaustion leaves construction unassigned without changing prod
     result.buildings.map(({ id, workers }) => ({ id, workers })),
     [
       { id: "a-farm", workers: 4 },
-      { id: "b-sawmill", workers: 2 },
+      { id: "b-sawmill", workers: 1 },
     ],
   );
-  assert.equal(result.constructionSites[0]?.assignedBuilders, 0);
-  assert.equal(result.constructionSites[0]?.stall, "no_builders");
+  assert.equal(result.constructionSites[0]?.assignedBuilders, 1);
+  assert.equal(result.constructionSites[0]?.stall, "none");
   assert.equal(result.idleWorkers, 0);
 });
 

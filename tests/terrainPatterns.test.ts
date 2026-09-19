@@ -299,7 +299,7 @@ describe("terrain patterns", () => {
     assert.ok(calls.includes(`fillStyle:${shade(SEMANTIC_PALETTE.stone, 1 + terrainVariation(0, 0, 73))}`));
   });
 
-  it("Given connected roads When packed-earth texture is ready Then centre and arms are pattern-filled before ruts", () => {
+  it("Given connected roads When packed-earth texture is ready Then centre and arms are pattern-filled over an earth base without repeated dark ruts", () => {
     const calls: RecordedCall[] = [];
     const road = tile(1, 1, "grass", true);
     const east = tile(2, 1, "grass", true);
@@ -309,13 +309,13 @@ describe("terrain patterns", () => {
     assert.deepEqual(calls.filter((call) => call === "createPattern:packed_earth_road"), [
       "createPattern:packed_earth_road",
     ]);
-    assert.ok(calls.includes("globalAlpha:0.6"));
+    assert.ok(calls.includes("globalAlpha:0.18"));
     assert.ok(calls.includes("fillStyle:pattern:packed_earth_road"));
-    assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`));
-    assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.stoneDark}`));
+    assert.equal(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`), false);
+    assert.ok(calls.includes(`fillStyle:${withAlpha(SEMANTIC_PALETTE.stoneDark, 0.35)}`));
   });
 
-  it("Given the road texture is missing When roads draw Then earth fallback still renders arms and ruts", () => {
+  it("Given the road texture is missing When roads draw Then earth fallback still renders connected arms without repeated dark ruts", () => {
     const calls: RecordedCall[] = [];
     const road = tile(1, 1, "grass", true);
     const south = tile(1, 2, "grass", true);
@@ -324,7 +324,7 @@ describe("terrain patterns", () => {
 
     assert.equal(calls.some((call) => call.startsWith("createPattern:")), false);
     assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earth}`));
-    assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`));
+    assert.equal(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`), false);
   });
 
   it("Given zoom is at the boundary When terrain draws Then decals appear only above 0.7", () => {
@@ -350,4 +350,68 @@ describe("terrain patterns", () => {
     assert.equal(atBoundary.includes(`fillStyle:${SEMANTIC_PALETTE.stoneDark}`), false);
     assert.equal(aboveBoundary.includes(`fillStyle:${SEMANTIC_PALETTE.stoneDark}`), true);
   });
+});
+
+it("Given a road preceding land in painter order When terrain draws Then all land fills precede road paint", () => {
+  // Given
+  const tiles = [tile(0, 0, "grass", true), tile(1, 0, "grass")];
+  const calls: RecordedCall[] = [];
+  // When
+  drawTerrain(recordingContext(calls), {
+    state: state(tiles), tiles, range: { minTx: 0, maxTx: 1, minTy: 0, maxTy: 0 }, zoom: 0.5,
+  });
+  // Then
+  const landFill: RecordedCall = `fillStyle:${shade(SEMANTIC_PALETTE.sage, 1 + terrainVariation(1, 0, 73))}`;
+  assert.ok(calls.indexOf(`fillStyle:${SEMANTIC_PALETTE.earth}`) > calls.indexOf(landFill));
+});
+
+it("Given road or building next to forest When transitions draw Then woodland fringe does not obscure occupied ground", () => {
+  // Given
+  for (const occupied of [tile(0, 0, "grass", true), { ...tile(0, 0, "grass"), buildingId: "house" }]) {
+    const tiles = [occupied, tile(1, 0, "forest")];
+    const calls: RecordedCall[] = [];
+    // When
+    drawTerrain(recordingContext(calls), {
+      state: state(tiles), tiles, range: { minTx: 0, maxTx: 1, minTy: 0, maxTy: 0 }, zoom: 1,
+    });
+    // Then
+    assert.equal(calls.includes("globalAlpha:0.24"), false);
+  }
+});
+
+
+it("Given occupied forest next to grass When transitions draw Then the fringe protects forest roads and buildings", () => {
+  for (const occupied of [tile(1, 0, "forest", true), { ...tile(1, 0, "forest"), buildingId: "house" }]) {
+    const tiles = [tile(0, 0, "grass"), occupied];
+    const calls: RecordedCall[] = [];
+    drawTerrain(recordingContext(calls), {
+      state: state(tiles), tiles, range: { minTx: 0, maxTx: 1, minTy: 0, maxTy: 0 }, zoom: 1,
+    });
+    assert.equal(calls.includes("globalAlpha:0.24"), false);
+  }
+});
+
+it("Given an empty woodland boundary When terrain draws Then forest material conceals the straight join", () => {
+  const tiles = [tile(0, 0, "grass"), tile(1, 0, "forest")];
+  const calls: RecordedCall[] = [];
+  drawTerrain(recordingContext(calls), {
+    state: state(tiles), tiles, range: { minTx: 0, maxTx: 1, minTy: 0, maxTy: 0 }, zoom: 1,
+  });
+  assert.ok(calls.includes("globalAlpha:0.24"));
+  assert.ok(calls.includes("globalAlpha:1"));
+});
+
+it("Given loaded woodland textures When the forest edge draws Then the extension reuses forest material and restores alpha", () => {
+  const tiles = [tile(0, 0, "grass"), tile(1, 0, "forest")];
+  const calls: RecordedCall[] = [];
+  const context = recordingContext(calls);
+  drawTerrain(context, {
+    state: state(tiles), tiles, range: { minTx: 0, maxTx: 1, minTy: 0, maxTy: 0 }, zoom: 1,
+    terrainPatterns: readyAssets(["grass", "forest_floor"]),
+  });
+  assert.equal(calls.filter((call) => call === "fillStyle:pattern:grass").length, 1);
+  assert.ok(calls.filter((call) => call === "fillStyle:pattern:forest_floor").length > 1);
+  assert.ok(calls.includes("globalAlpha:0.144"));
+  assert.ok(calls.includes("globalAlpha:0.6"));
+  assert.equal(context.globalAlpha, 1);
 });

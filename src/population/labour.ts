@@ -5,7 +5,7 @@ import {
 import { BALANCE } from "../content/balanceConfig";
 import { RESOURCE_TYPES } from "../content/resourceConfig";
 import type { ConstructionSite } from "../domain/constructionSite";
-import { palisadeConstructionSchedule } from "../domain/palisadeConstructionSchedule";
+import { isWallConstructionSite, palisadeConstructionSchedule } from "../domain/palisadeConstructionSchedule";
 export {
   builderWalkersForSites,
   type BuilderLabourWalker,
@@ -76,37 +76,50 @@ export function allocateLabour(
     });
 }
 
+export type LabourEligibility = (building: Building) => boolean;
+
+const FOOD_KINDS = ["wheat_farm", "mill", "granary"] as const;
+
+function foodBuilding(building: Building): boolean {
+  return FOOD_KINDS.some((kind) => kind === building.kind);
+}
+
+function allocateBuildingWorkers(
+  buildings: readonly Building[],
+  available: number,
+  eligible: LabourEligibility,
+): BuildingLabourResult {
+  const ordered = [...buildings].sort((a, b) => a.id.localeCompare(b.id));
+  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => b.kind === kind && eligible(b))?.id);
+  const priority = (building: Building): number => {
+    const coreIndex = coreFoodIds.indexOf(building.id);
+    if (coreIndex >= 0) return coreIndex;
+    if (foodBuilding(building)) return 3;
+    if (["sawmill", "logging_camp", "storehouse"].includes(building.kind)) return 4;
+    return 5;
+  };
+  let remaining = available;
+  const assigned = new Map<string, number>();
+  ordered.sort((a, b) => priority(a) - priority(b) || a.id.localeCompare(b.id));
+  for (const building of ordered) {
+    const workers = eligible(building)
+      ? Math.min(remaining, BUILDING_CONFIG_BY_KIND[building.kind].workersRequired)
+      : 0;
+    assigned.set(building.id, workers);
+    remaining -= workers;
+  }
+  return {
+    buildings: buildings.map((building) => ({ ...building, workers: assigned.get(building.id) ?? 0 })),
+    idleWorkers: remaining,
+  };
+}
+
 export function allocateBuildingLabour(
   buildings: readonly Building[],
   population: number,
+  eligible: LabourEligibility = () => true,
 ): BuildingLabourResult {
-  const available = availableWorkers(population);
-  const allocations = allocateLabour(
-    buildings.map((building) => ({
-      buildingId: building.id,
-      workersRequired:
-        BUILDING_CONFIG_BY_KIND[building.kind].workersRequired,
-    })),
-    available,
-  );
-  const byId = new Map(
-    allocations.map((allocation) => [
-      allocation.buildingId,
-      allocation.workersAssigned,
-    ]),
-  );
-  const assigned = allocations.reduce(
-    (total, allocation) => total + allocation.workersAssigned,
-    0,
-  );
-
-  return {
-    buildings: buildings.map((building) => ({
-      ...building,
-      workers: byId.get(building.id) ?? 0,
-    })),
-    idleWorkers: available - assigned,
-  };
+  return allocateBuildingWorkers(buildings, availableWorkers(population), eligible);
 }
 
 const MAX_BUILDERS_PER_SITE = 3;
@@ -130,6 +143,7 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   constructionSites: readonly TSite[],
   population: number,
   options?: PalisadeEraLabourOptions,
+  eligible: LabourEligibility = () => true,
 ): BuildingAndConstructionLabourResult & {
   readonly constructionSites: readonly (TSite & {
     readonly assignedBuilders: number;
@@ -152,32 +166,34 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
         tick: options.tick,
         eraProclaimedTick: options.eraProclaimedTick,
       });
-  const buildingResult = allocateBuildingLabour(
-    buildings,
-    Math.max(0, available - reservation.reservedWorkers) / BALANCE.WORKERS_PER_RESIDENT,
+  const readySites = [...constructionSites]
+    .filter((site) => materialsComplete(site) && site.builderTicks < site.requiredBuilderTicks)
+    .filter((site) => palisadeConstructionSchedule(site, constructionSites).kind === "active")
+    .sort((a, b) => a.id.localeCompare(b.id));
+  const ordinaryTarget = readySites.find((site) => !isWallConstructionSite(site));
+  const buildingBudget = Math.max(0, available - reservation.reservedWorkers);
+  const foodResult = allocateBuildingWorkers(buildings.filter(foodBuilding), buildingBudget, eligible);
+  const ordinaryReserved = ordinaryTarget === undefined ? 0 : Math.min(1, foodResult.idleWorkers);
+  const otherResult = allocateBuildingWorkers(
+    buildings.filter((building) => !foodBuilding(building)),
+    foodResult.idleWorkers - ordinaryReserved,
+    eligible,
   );
-  let remaining = buildingResult.idleWorkers;
+  const staffed = new Map([...foodResult.buildings, ...otherResult.buildings].map((b) => [b.id, b]));
+  let remaining = otherResult.idleWorkers;
   const allocations = new Map<string, number>();
   let palisadeAssignedBuilders = 0;
 
-  for (const site of [...constructionSites].sort((left, right) => left.id.localeCompare(right.id))) {
-    if (palisadeConstructionSchedule(site, constructionSites).kind === "queued") {
-      allocations.set(site.id, 0);
+  for (const site of readySites) {
+    if (site.id === reservation.activeSiteId) {
+      palisadeAssignedBuilders = Math.min(reservation.reservedWorkers, MAX_BUILDERS_PER_SITE);
+      allocations.set(site.id, palisadeAssignedBuilders);
       continue;
     }
-    const assignedBuilders = site.id === reservation.activeSiteId
-      ? Math.min(
-          reservation.reservedWorkers,
-          MAX_BUILDERS_PER_SITE,
-          materialsComplete(site) ? Number.POSITIVE_INFINITY : 0,
-        )
-      : Math.min(remaining, MAX_BUILDERS_PER_SITE);
-    if (site.id === reservation.activeSiteId) {
-      palisadeAssignedBuilders = assignedBuilders;
-    } else {
-      remaining -= assignedBuilders;
-    }
-    allocations.set(site.id, assignedBuilders);
+    const guaranteed = site.id === ordinaryTarget?.id ? ordinaryReserved : 0;
+    const extra = Math.min(remaining, MAX_BUILDERS_PER_SITE - guaranteed);
+    allocations.set(site.id, guaranteed + extra);
+    remaining -= extra;
   }
   const palisadeEraLabour = palisadeEraLabourWithAssignment(
     reservation,
@@ -185,7 +201,7 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   );
 
   return {
-    buildings: buildingResult.buildings,
+    buildings: buildings.map((building) => staffed.get(building.id) ?? building),
     constructionSites: constructionSites.map((site) => {
       const assignedBuilders = allocations.get(site.id) ?? 0;
       return {

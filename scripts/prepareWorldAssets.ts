@@ -648,7 +648,12 @@ const readExistingManifest = (repoRoot: string): WorldAssetManifest | null => {
 };
 
 const releaseSourcesFromExistingManifest = (manifest: WorldAssetManifest): Map<WorldAssetKey, { readonly seed: number; readonly candidate: number }> =>
-  new Map(manifest.assets.map((asset) => [asset.key, asset.source]));
+  new Map(manifest.assets.map((asset) => {
+    if (asset.source.kind === "accepted-art") {
+      throw new WorldAssetPreparationError("Accepted art cannot be rewritten by the legacy phase13 preparation pipeline");
+    }
+    return [asset.key, asset.source];
+  }));
 
 const fallbackReleaseSources = (options: PrepareWorldAssetOptions): Map<WorldAssetKey, { readonly seed: number; readonly candidate: number }> => {
   const sources = new Map<WorldAssetKey, { readonly seed: number; readonly candidate: number }>();

@@ -3,6 +3,7 @@ import type { ResourceType } from "../content/resourceConfig";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { GameState } from "../engine/engine.types";
 import { buildingHasRequiredRoadAccess, ROAD_ACCESS_MARKER } from "../engine/roadAccess";
+import { productionOperation } from "../economy/production";
 import { acceptsResource, availableSpace } from "../economy/storage";
 import { existingRoadComponent } from "../world/roadGraph";
 
@@ -25,11 +26,6 @@ const STORAGE_LABELS = {
   stone: "창고",
   coin: "창고",
 } as const satisfies Record<ResourceType, "곡창" | "창고">;
-
-function stockTotal(building: Building): number {
-  return [...Object.values(building.inventory), ...Object.values(building.reserved)]
-    .reduce((total, amount) => total + Math.max(0, amount ?? 0), 0);
-}
 
 function roadComponentKeys(state: GameState, target: Building): ReadonlySet<string> {
   return new Set(
@@ -87,19 +83,19 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
   const production = definition.production;
   if (production === null) return null;
 
-  if (!buildingHasRequiredRoadAccess(state, building)) {
+  const operation = productionOperation(building, definition, buildingHasRequiredRoadAccess(state, building));
+  if (operation === "no_road") {
     return ROAD_ACCESS_MARKER;
   }
 
-  if (building.workers < definition.workersRequired) {
+  if (operation === "understaffed") {
     return state.idleWorkers > 0
       ? `유휴 일꾼 ${state.idleWorkers}명 — 도로 연결 확인`
       : "가용 일꾼이 없습니다";
   }
 
   if (
-    production.input !== null
-    && (building.inventory[production.input] ?? 0) < production.inputPerOutput
+    operation === "no_input" && production.input !== null
   ) {
     const inputResource = production.input;
     const label = RESOURCE_LABELS[inputResource];
@@ -113,8 +109,5 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
       : `${storageLabel}까지 경로가 없습니다 — ${label} 공급 불가`;
   }
 
-  const releasedInput = production.input === null ? 0 : production.inputPerOutput;
-  const outputBlocked = definition.storageCapacity - stockTotal(building) + releasedInput < 1
-    && building.productionProgress >= production.ticksPerOutput;
-  return outputBlocked ? outputDestinationCause(state, building, production.output) : null;
+  return operation === "output_full" ? outputDestinationCause(state, building, production.output) : null;
 }

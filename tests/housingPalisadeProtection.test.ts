@@ -177,7 +177,7 @@ test("Given an outside home below level three When the completed wall caps its u
   const result = updateHousing([outside], buildings, 101, palisade(true));
 
   // Then
-  assert.deepEqual(byId(result.houses, "outside"), outside);
+  assert.deepEqual(byId(result.houses, "outside"), { ...outside, builtLevel: 2 });
 });
 
 test("Given a completed wall in the simulation tick When an outside serviced home updates Then the level-three cap is applied", () => {

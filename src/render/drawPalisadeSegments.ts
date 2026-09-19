@@ -1,3 +1,11 @@
+import { drawCachedWorldRaster } from "./worldRasterCache";
+import { stoneWallAssetStatuses } from "./stoneWallAssets";
+import { gateAssetStatuses } from "./gateArtAssets";
+import { timberWallAssetStatus } from "./timberWallAssets";
+import { timberWallPostPoints } from "./timberGateGeometry";
+import { drawRegisteredGate } from "./gateArtRenderer";
+import { preloadTimberWallAssets } from "./timberWallAssets";
+import { drawGateMarker, drawPost } from "./timberGateRenderer";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { PalisadeSegment } from "../engine/engine.types";
 import type { TileEdgePoint } from "../world/palisadeGeometry";
@@ -5,11 +13,15 @@ import {
   palisadeScreenPath,
   type PalisadeRenderPath,
 } from "./palisadeRenderGeometry";
+import type { StoneWallNode } from "./stoneWallTopology";
+import { drawStoneWall } from "./stoneWallRenderer";
 import { applyInkOutline, applyPaletteStroke, snapToPixel } from "./style";
 
 type DrawPalisadeSegmentInput = {
   readonly segment: PalisadeSegment;
+  readonly stoneNodes?: readonly StoneWallNode[] | undefined;
   readonly gate: TileEdgePoint | null;
+  readonly gates?: readonly TileEdgePoint[] | undefined;
   readonly zoom: number;
 };
 
@@ -27,12 +39,35 @@ export type PalisadeRunStyle =
   | "roof"
   | "completed";
 
-export function drawPalisadeSegment(
+export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: DrawPalisadeSegmentInput): void {
+  const points = palisadeScreenPath([...input.segment.edgePath,
+    ...(input.stoneNodes ?? []).flatMap(node => [node.point, ...node.neighbors])]);
+  if (points.length === 0) return;
+  const key = JSON.stringify([input, stoneWallAssetStatuses(), gateAssetStatuses(), timberWallAssetStatus()]);
+  drawCachedWorldRaster(context, key, {
+    left: Math.min(...points.map(point => point.x)) - 96,
+    right: Math.max(...points.map(point => point.x)) + 96,
+    top: Math.min(...points.map(point => point.y)) - 128,
+    bottom: Math.max(...points.map(point => point.y)) + 48,
+  }, paint => drawPalisadeSegmentUncached(paint, input));
+}
+
+export function drawPalisadeSegmentUncached(
   context: CanvasRenderingContext2D,
   input: DrawPalisadeSegmentInput,
 ): void {
-  drawCompletedPosts(context, input.segment.edgePath, input.zoom, input.segment.material ?? "timber");
-  if (input.gate !== null) drawGateMarker(context, input.gate, input.zoom);
+  if (input.segment.material === "stone") {
+    drawStoneWall(context, { path: input.segment.edgePath, gate: input.gate, gates: input.gates, nodes: input.stoneNodes });
+    return;
+  }
+  drawCompletedPosts(context, input.segment.edgePath, input.zoom, "timber", input.gate, input.gates);
+  if (input.stoneNodes !== undefined) {
+    for (const node of input.stoneNodes) {
+      if (node.kind !== "gate" || drawRegisteredGate(context, node, "timber")) continue;
+      const path = node.neighbors.flatMap(point => [point, node.point]);
+      drawGateMarker(context, path, node.point, input.zoom, node);
+    }
+  } else if (input.gate !== null) drawGateMarker(context, input.segment.edgePath, input.gate, input.zoom);
 }
 
 export function drawPalisadeRun(
@@ -148,46 +183,13 @@ function drawCompletedPosts(
   path: PalisadeRenderPath,
   zoom: number,
   material: "timber" | "stone",
+  gate: TileEdgePoint | null = null,
+  gates?: readonly TileEdgePoint[],
 ): void {
-  for (const ratio of [0.125, 0.375, 0.625, 0.875]) {
-    drawPost(context, pathPointAt(path, ratio), { width: 8, height: 30 }, zoom, material);
+  void preloadTimberWallAssets();
+  for (const point of palisadeScreenPath(timberWallPostPoints(path, gate, gates))) {
+    drawPost(context, point, { width: 8, height: 30 }, zoom, material);
   }
-}
-
-function drawGateMarker(
-  context: CanvasRenderingContext2D,
-  gate: TileEdgePoint,
-  zoom: number,
-): void {
-  const screen = palisadeScreenPath([gate])[0];
-  if (screen === undefined) return;
-  context.fillStyle = SEMANTIC_PALETTE.gold;
-  context.fillRect(snapToPixel(screen.x - 3), snapToPixel(screen.y - 5), 12, 16);
-  applyInkOutline(context, zoom);
-  context.strokeRect(snapToPixel(screen.x - 3), snapToPixel(screen.y - 5), 12, 16);
-}
-
-function drawPost(
-  context: CanvasRenderingContext2D,
-  point: { readonly x: number; readonly y: number },
-  size: { readonly width: number; readonly height: number },
-  zoom: number,
-  material: "timber" | "stone" = "timber",
-): void {
-  context.fillStyle = material === "stone" ? SEMANTIC_PALETTE.stone : SEMANTIC_PALETTE.earth;
-  context.fillRect(
-    snapToPixel(point.x - size.width / 2),
-    snapToPixel(point.y - size.height + 2),
-    size.width,
-    size.height,
-  );
-  applyInkOutline(context, zoom);
-  context.strokeRect(
-    snapToPixel(point.x - size.width / 2),
-    snapToPixel(point.y - size.height + 2),
-    size.width,
-    size.height,
-  );
 }
 
 function pathPointAt(

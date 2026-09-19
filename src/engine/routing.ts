@@ -1,3 +1,5 @@
+import { roadTopologySignature } from "../world/roadTopologySignature";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { Building } from "../content/buildingConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import {
@@ -5,8 +7,10 @@ import {
   type PalisadeConstructionSite,
   type ConstructionSite,
 } from "../economy/construction";
-import type { Grid, TileCoordinate } from "../world/grid";
+import type { TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
+import type { WallGrid } from "../world/wallTraversal";
+import { canTraverseRoadBoundary } from "../world/bridges";
 import { findExistingRoadPath } from "../world/roadGraph";
 import type { GameState, RoadPathCache } from "./engine.types";
 
@@ -25,11 +29,11 @@ function sameCoordinate(left: TileCoordinate, right: TileCoordinate): boolean {
 }
 
 function cacheKey(
-  roadRevision: number,
+  state: GameState,
   sourceId: string,
   destinationId: string,
 ): string {
-  return `road:${roadRevision}:${sourceId}->${destinationId}`;
+  return `road:${state.roadRevision}${roadTopologySignature(state.palisade)}:${sourceId}->${destinationId}`;
 }
 
 function reversedPath(
@@ -39,7 +43,7 @@ function reversedPath(
 }
 
 function dedupeSortedRoads(
-  grid: Grid,
+  grid: WallGrid,
   candidates: readonly TileCoordinate[],
 ): readonly TileCoordinate[] {
   const roads: TileCoordinate[] = [];
@@ -54,7 +58,7 @@ function dedupeSortedRoads(
 }
 
 function dedupeSortedNonWaterRoads(
-  grid: Grid,
+  grid: WallGrid,
   candidates: readonly TileCoordinate[],
 ): readonly TileCoordinate[] {
   const roads: TileCoordinate[] = [];
@@ -70,10 +74,10 @@ function dedupeSortedNonWaterRoads(
 }
 
 export function buildingRoadAccessTiles(
-  grid: Grid,
+  grid: WallGrid,
   building: Building,
 ): readonly TileCoordinate[] {
-  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  const definition = buildingFootprint(building);
   const candidates: TileCoordinate[] = [];
 
   for (let dx = 0; dx < definition.width; dx += 1) {
@@ -86,11 +90,14 @@ export function buildingRoadAccessTiles(
     candidates.push({ tx: building.tx + definition.width, ty: building.ty + dy });
   }
 
-  return dedupeSortedRoads(grid, candidates);
+  return dedupeSortedRoads(grid, candidates).filter(road => canTraverseRoadBoundary(grid, {
+    tx: Math.max(building.tx, Math.min(road.tx, building.tx + definition.width - 1)),
+    ty: Math.max(building.ty, Math.min(road.ty, building.ty + definition.height - 1)),
+  }, road));
 }
 
 export function constructionSiteRoadAccessTiles(
-  grid: Grid,
+  grid: WallGrid,
   site: ConstructionSite,
 ): readonly TileCoordinate[] {
   if (!isBuildingConstructionSite(site)) {
@@ -109,11 +116,14 @@ export function constructionSiteRoadAccessTiles(
     candidates.push({ tx: site.tx + definition.width, ty: site.ty + dy });
   }
 
-  return dedupeSortedRoads(grid, candidates);
+  return dedupeSortedRoads(grid, candidates).filter(road => canTraverseRoadBoundary(grid, {
+    tx: Math.max(site.tx, Math.min(road.tx, site.tx + definition.width - 1)),
+    ty: Math.max(site.ty, Math.min(road.ty, site.ty + definition.height - 1)),
+  }, road));
 }
 
 function palisadeSegmentRoadAccessTiles(
-  grid: Grid,
+  grid: WallGrid,
   path: PalisadeConstructionSite["path"],
 ): readonly TileCoordinate[] {
   const candidates: TileCoordinate[] = [];
@@ -161,7 +171,7 @@ function palisadeStepAdjacentTiles(
 }
 
 function shortestRoadPathBetweenAccessTiles(
-  grid: Grid,
+  grid: WallGrid,
   starts: readonly TileCoordinate[],
   destinations: readonly TileCoordinate[],
 ): readonly TileCoordinate[] | null {
@@ -185,7 +195,7 @@ export function resolveBuildingRoute(
   source: Building,
   destination: Building,
 ): RouteResolution {
-  const forwardKey = cacheKey(state.roadRevision, source.id, destination.id);
+  const forwardKey = cacheKey(state, source.id, destination.id);
   const forwardPath = state.pathCache[forwardKey];
   if (forwardPath !== undefined) {
     return {
@@ -194,7 +204,7 @@ export function resolveBuildingRoute(
     };
   }
 
-  const reverseKey = cacheKey(state.roadRevision, destination.id, source.id);
+  const reverseKey = cacheKey(state, destination.id, source.id);
   const reversePath = state.pathCache[reverseKey];
   if (reversePath !== undefined) {
     const path = reversedPath(reversePath);
@@ -232,7 +242,7 @@ export function resolveBuildingToConstructionSiteRoute(
   destination: ConstructionSite,
 ): RouteResolution {
   const destinationId = `construction_site:${destination.id}`;
-  const forwardKey = cacheKey(state.roadRevision, source.id, destinationId);
+  const forwardKey = cacheKey(state, source.id, destinationId);
   const forwardPath = state.pathCache[forwardKey];
   if (forwardPath !== undefined) {
     return { path: forwardPath, pathCache: state.pathCache };

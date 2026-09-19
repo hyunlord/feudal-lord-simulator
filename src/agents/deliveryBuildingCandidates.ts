@@ -1,5 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
-import type { Building } from "../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import {
   STORAGE_KIND_BY_RESOURCE,
   type ResourceType,
@@ -12,8 +12,14 @@ import type {
   RouteCandidate,
 } from "./deliveryTypes";
 
-function bestCandidate(candidates: readonly RouteCandidate[]): RouteCandidate | null {
+function bestCandidate(candidates: readonly RouteCandidate[], replenishBread = false): RouteCandidate | null {
   return [...candidates].sort((left, right) => {
+    if (replenishBread) {
+      const committedBread = (candidate: RouteCandidate): number => amountOf(candidate.building.inventory, "bread")
+        + amountOf(candidate.building.reserved, "bread");
+      const difference = committedBread(left) - committedBread(right);
+      if (difference !== 0) return difference;
+    }
     if (left.path.length !== right.path.length) {
       return left.path.length - right.path.length;
     }
@@ -35,6 +41,23 @@ function isStorableResource(resource: ResourceType): resource is StorableResourc
   }
 }
 
+function deliveryIntakeSpace(
+  building: Building,
+  resource: ResourceType,
+  inventory: DeliveryInventoryPort,
+): number {
+  const free = inventory.availableSpace(building);
+  const limitedResources: readonly ResourceType[] = building.kind === "granary" && resource === "wheat"
+    ? ["wheat"]
+    : building.kind === "storehouse" && (resource === "logs" || resource === "stone_raw")
+      ? ["logs", "stone_raw"] : [];
+  if (limitedResources.length === 0) return free;
+  const rawLimit = Math.floor(BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity / 2);
+  const committed = limitedResources.reduce((total, input) => total
+    + amountOf(building.inventory, input) + amountOf(building.reserved, input), 0);
+  return Math.min(free, Math.max(0, rawLimit - committed));
+}
+
 export function deliverCandidate(
   producer: Building,
   resource: ResourceType,
@@ -53,11 +76,11 @@ export function deliverCandidate(
     const amount = Math.min(
       BALANCE.CARTER_CAPACITY,
       stock,
-      inventory.availableSpace(building),
+      deliveryIntakeSpace(building, resource, inventory),
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });
-  return bestCandidate(candidates);
+  return bestCandidate(candidates, resource === "bread");
 }
 
 export function fetchCandidate(

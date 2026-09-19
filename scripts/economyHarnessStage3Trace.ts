@@ -55,7 +55,7 @@ export function trackStage3Run(initial: GameState): Stage3RunTrace {
   driver.recordSnapshot(state);
   let requirementsMetTick: number | null = requirementsMet(state) ? state.tick : null;
   let proclamationTick: number | null = null;
-  while (state.tick < STAGE3_MAX_REQUIREMENT_TICK && proclamationTick === null) {
+  while (state.settlement?.outcome !== "abandoned" && state.tick < STAGE3_MAX_REQUIREMENT_TICK && proclamationTick === null) {
     state = driver.apply(state);
     if (state.era === "palisade") proclamationTick = state.eraProclaimedTick;
     if (requirementsMetTick === null && requirementsMet(state)) requirementsMetTick = state.tick;
@@ -68,7 +68,7 @@ export function trackStage3Run(initial: GameState): Stage3RunTrace {
   let nonWallProductionStall = 0;
   let wallCompleteTick: number | null = completedWall(state) ? state.tick : null;
 
-  for (let step = 0; step < STAGE3_MAX_WALL_COMPLETION_TICKS && wallCompleteTick === null; step += 1) {
+  for (let step = 0; step < STAGE3_MAX_WALL_COMPLETION_TICKS && wallCompleteTick === null && state.settlement?.outcome !== "abandoned"; step += 1) {
     const previous = state;
     state = advanceTick(state);
     nonWallProductionStall = nonWallProductionChanged(previous, state) ? 0 : nonWallProductionStall + 1;

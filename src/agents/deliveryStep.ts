@@ -2,6 +2,7 @@ import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import {
   hasArrivedAtPathEnd,
+  remainingPathCanBeTraversed,
   stepWalkerAlongPath,
 } from "./movement";
 import { returnPath } from "./deliveryCommon";
@@ -23,6 +24,11 @@ function routeIsIntact(
   carter: CarterWalker,
   routes: DeliveryRoutePort,
 ): boolean {
+  if (!remainingPathCanBeTraversed(carter, routes.canTraverse)) return false;
+  const endpoint = carter.path.at(-1);
+  const destination = carter.phase === "outbound" ? carter.destination
+    : { kind: "building" as const, buildingId: carter.homeBuildingId };
+  if (endpoint !== undefined && routes.canAccessDestination?.(endpoint, destination) === false) return false;
   const remainingPathIsRoad = carter.path
     .slice(Math.max(0, carter.pathIndex))
     .every((tile) => routes.isRoad(tile));

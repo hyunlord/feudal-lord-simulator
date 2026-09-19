@@ -4,9 +4,9 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
+import { GameProvider } from "../src/state/gameStore";
 import { App } from "../src/App";
-import { buildMenuGroups } from "../src/ui/buildMenuModel";
+import { BUILD_CATEGORIES } from "../src/ui/buildMenuPresentation";
 
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
 const PANEL_SELECTORS = [
@@ -121,35 +121,24 @@ test("Phase10 critical text wraps or scrolls instead of ellipsizing", async () =
   }
 });
 
-test("Phase10 build menu exposes readable grouped controls with road separated", async () => {
-  // Given
-  const css = await readFile(STYLESHEET, "utf8");
-  const menuRule = selectorRuleBodies(css, ".build-seals");
-  const sealRule = selectorRuleBodies(css, ".build-seal");
-  const labelRule = selectorRuleBodies(css, ".build-seal-label");
-  const groupRule = selectorRuleBodies(css, ".build-group");
-  const groupLabelRule = selectorRuleBodies(css, ".build-group-label");
-  const mobileRule = selectorRuleBodies(mediaBlocks(css, "max-width: 600px"), ".build-seals");
+test("build menu exposes readable categories with road separated and scoped scrolling", async () => {
+  const css = await readFile(new URL("../src/styles/buildMenu.css", import.meta.url), "utf8");
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
-  const groups = buildMenuGroups(DEFAULT_GAME_STATE);
-
-  // When / Then
-  assert.match(menuRule, /--seal-size:\s*64px;/);
-  assert.match(menuRule, /overflow-x:\s*hidden;/);
-  assert.match(menuRule, /overflow-y:\s*auto;/);
-  assert.match(sealRule, /min-width:\s*64px;/);
-  assert.match(sealRule, /min-height:\s*64px;/);
-  assert.match(labelRule, /font-size:\s*12px;/);
-  assert.match(groupRule, /gap:\s*(?:6|8|10|12)px;/);
-  assert.match(groupLabelRule, /display:\s*block;/);
-  assert.match(selectorRuleBodies(mediaBlocks(css, "max-width: 600px"), ".build-group-label"), /display:\s*none;/);
-  assert.match(mobileRule, /--seal-size:\s*46px;/);
-  assert.match(mobileRule, /display:\s*grid;/);
-  assert.match(mobileRule, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\);/);
-  assert.match(mobileRule, /overflow-x:\s*hidden;/);
-  assert.match(mobileRule, /overflow-y:\s*hidden;/);
-  assert.match(markup, /class="road-tool"/);
-  for (const group of groups) {
-    assert.match(markup, new RegExp(`<span class="build-group-label">${group.label}</span>`));
+  assert.match(selectorRuleBodies(css, ".build-menu"), /min-width:\s*0;/);
+  assert.match(selectorRuleBodies(css, ".build-menu-catalog"), /overflow-x:\s*auto;/);
+  assert.match(selectorRuleBodies(css, ".build-menu-tools[hidden]"), /display:\s*none;/);
+  assert.match(selectorRuleBodies(css, ".build-menu .build-tool"), /min-width:\s*104px;/);
+  const toolHeights = [...selectorRuleBodies(css, ".build-menu .build-tool").matchAll(/min-height:\s*(\d+)px;/g)];
+  assert.ok(toolHeights.length > 0);
+  for (const match of toolHeights) assert.ok(Number(match[1]) >= 124, "tool cards retain room for art, name and cost");
+  assert.match(selectorRuleBodies(css, ".build-menu .build-seal-label"), /font-size:\s*13px;/);
+  const categoryHeights = [...selectorRuleBodies(css, ".build-menu-category").matchAll(/min-height:\s*(\d+)px;/g)];
+  assert.ok(categoryHeights.length > 0);
+  for (const match of categoryHeights) assert.ok(Number(match[1]) >= 32, "category targets remain usable at every breakpoint");
+  assert.match(selectorRuleBodies(mediaBlocks(css, "max-width: 1100px"), ".build-menu-body"), /flex-wrap:\s*wrap;/);
+  assert.match(markup, /class="build-menu-quick-road"/);
+  for (const category of BUILD_CATEGORIES) {
+    assert.match(markup, new RegExp(`aria-label="${category.label} 도구"`));
+    assert.match(markup, new RegExp(`>${category.label}(?:<span[^>]*>[^<]*<\\/span>)?<\\/button>`));
   }
 });

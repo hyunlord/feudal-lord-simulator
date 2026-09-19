@@ -5,6 +5,7 @@ import type { OverlayMode } from "../engine/engine.types";
 import { DEFAULT_PLACEMENT_TOOL } from "./interactions";
 import type { PlacementTool } from "./renderer";
 import { useGameStore } from "../state/gameStore";
+import { buildingInspectorModel } from "./buildingInspectorModel";
 import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
@@ -70,6 +71,10 @@ export function GameCanvas({
   if (selection?.kind === "building") {
     const value = houseDiagnosisModel(state, selection.buildingId, distributorRouteHistory);
     if (value !== null) cardModel = { kind: "house", value };
+    else {
+      const facility = buildingInspectorModel(state, selection.buildingId);
+      if (facility !== null) cardModel = { kind: "building", value: facility };
+    }
   } else if (selection?.kind === "walker") {
     const value = walkerDiagnosisModel(state, selection.walkerId);
     if (value !== null) cardModel = { kind: "walker", value };
@@ -92,6 +97,12 @@ export function GameCanvas({
     }
   }
 
+  const demolishHouse = (buildingId: string) => {
+    dispatch({ type: "demolish_house", buildingId });
+    setSelection(null);
+    setHoveredBuilding(null);
+  };
+
   const cancelConstruction = (siteId: string) => {
     dispatch({ type: "cancel_construction", siteId });
     setSelection(null);
@@ -108,7 +119,13 @@ export function GameCanvas({
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard
           model={cardModel}
+          onClose={() => { setSelection(null); setHoveredBuilding(null); }}
           onCancelConstruction={cancelConstruction}
+          onDemolishHouse={demolishHouse}
+          onMergeHouses={(sourceBuildingId, targetBuildingId) => {
+            dispatch({ type: "merge_houses", sourceBuildingId, targetBuildingId });
+            setHoveredBuilding(null);
+          }}
           position={selection.position}
         />
       ) : null}

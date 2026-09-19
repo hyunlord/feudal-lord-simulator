@@ -9,8 +9,10 @@ These decisions are locked by the current code and tests.
    `engine/gameActions.ts` applies the mutation only after a successful check.
 3. Phase 3 keeps the economy split into two distinct walker lanes. Delivery
    carters own destinations, cargo, reservations, and cancellation recovery;
-   roaming distributors stay local, choose road junctions pseudo-randomly, and
-   do not path toward hungry houses.
+   distributors carry real bread along local roads. As of simulation-flow-v1,
+   they prefer reachable households with the fewest meals in reserve, then
+   distance and stable service history. They retain their travel range and
+   physical return trip; pseudo-random junction choice is the fallback.
 4. Terrain, transitions, road geometry, and visible-tile culling are
    deterministic. This keeps headless tests and browser QA aligned.
 5. The scene renders as ground, objects, and an overhang seam. Buildings,
@@ -28,7 +30,7 @@ These decisions are locked by the current code and tests.
 
 ## Phase 3 decisions
 
-These are locked by the current code and tests.
+Historical baseline; the simulation-flow-v1 overrides below supersede food, growth and distributor routing rules.
 
 - The economy has exactly two two-stage chains: wheat to bread and logs to
   timber. Granaries hold food and storehouses hold materials; there is no third
@@ -129,3 +131,28 @@ Phase 3 loop:
 - Headless simulation must remain deterministic even if later presentation
   effects are allowed to vary.
 - Housing has four levels, represented by values 0 through 3.
+
+
+## Simulation flow v1 (2026-09-20)
+
+- Household food is real inventory: one bread per eight residents every400ticks,
+  up to three meals in reserve. Empty-stock duration after grace drives hunger;
+  stable ID phases spread150-tick growth across houses.
+- Food jobs have priority under scarce labour. Material-ready ordinary work
+  retains one builder after vital food services; wall construction keeps its
+  sequential schedule.
+- Bread deliveries prefer the reachable granary with the least bread plus
+  reserved arrivals, retaining nearest-route ties. Raw-material intake leaves
+  storage room for processed output. Palisade-era markets retain400unreserved
+  stone across connected storage for the next proclamation.
+- Settlement objectives use actual food, water, population and completed walls.
+  Victory remains playable. Abandonment freezes all simulation entry points;
+  restarting explicitly resets game and presentation state.
+- Wall proposals must preserve building frontage and connected facilities,
+  avoid underwater construction, and retain legal land access to the exterior.
+  Auxiliary gates are shared by traversal and timber/stone rendering and remain
+  through stone replacement. Path caches include completed walls and all gates.
+- The optional advisor uses ordinary reducer actions and material routes.
+  Planned building approach roads connect to real supply sources and leave
+  the future footprint clear. Its automatic housing expansion is capped at
+  eight lots; manual building is unrestricted.

@@ -2,7 +2,7 @@ import type { BuildingKind } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { BuildingVisualState } from "./buildingVisualState";
 import { ambientOffset, objectPhase } from "./renderMotion";
-import { applyInkOutline, shade, snapToPixel } from "./style";
+import { applyInkOutline, applyPaletteStroke, shade, snapToPixel } from "./style";
 
 type Point = {
   readonly x: number;
@@ -24,19 +24,19 @@ export type BuildingDetailInput = {
   readonly kind: BuildingKind;
   readonly zoom: number;
   readonly visualState: BuildingVisualState;
+  readonly architecture?: "procedural" | "baked";
 };
 
 export function drawKindDetail(
   context: CanvasRenderingContext2D,
   input: BuildingDetailInput,
 ): void {
-  drawBaseKindDetail(context, input);
+  if (input.architecture !== "baked") drawBaseKindDetail(context, input);
   const marker = problemMarkerKind(input);
   if (marker !== null) {
     drawProblemMarker(context, {
       center: input.center,
       kind: marker,
-      pulse: markerPulse(input.tick),
       zoom: input.zoom,
     });
   }
@@ -99,7 +99,7 @@ function drawHouseDetails(
 ): void {
   drawDoor(context, input.center, input.zoom);
   if (input.visualState.houseLevel >= 2) {
-    context.fillStyle = SEMANTIC_PALETTE.water;
+    context.fillStyle = SEMANTIC_PALETTE.ink;
     for (const offset of [-15, 0, 15]) {
       fillOutlinedRect(context, {
         origin: { x: input.center.x + offset - 3, y: input.center.y - 28 },
@@ -108,15 +108,6 @@ function drawHouseDetails(
         zoom: input.zoom,
       });
     }
-  }
-  if (input.visualState.houseLevel >= 3) {
-    context.fillStyle = SEMANTIC_PALETTE.stone;
-    fillOutlinedRect(context, {
-      origin: { x: input.center.x + 12, y: input.center.y - 68 },
-      width: 14,
-      height: 30,
-      zoom: input.zoom,
-    });
   }
 }
 
@@ -135,56 +126,71 @@ function problemMarkerKind(input: BuildingDetailInput): ProblemMarkerKind | null
   }
 }
 
-function markerPulse(tick: number): number {
-  return 1 + Math.sin(tick * 0.18) * 0.18;
-}
-
 function drawProblemMarker(
   context: CanvasRenderingContext2D,
   input: {
     readonly center: Point;
     readonly kind: ProblemMarkerKind;
-    readonly pulse: number;
     readonly zoom: number;
   },
 ): void {
-  const markerCenter = {
-    x: input.center.x + 16,
-    y: input.center.y - 39,
-  };
-  context.fillStyle = PALETTE.vermilion;
-  if (input.kind === "water") {
-    traceWaterDrop(context, markerCenter, input.pulse);
-  } else if (input.kind === "bread") {
-    traceBreadLoaf(context, markerCenter, input.pulse);
-  } else if (input.kind === "labour") {
-    traceWorkerFigure(context, markerCenter, input.pulse);
-  } else {
-    traceFullCrate(context, markerCenter, input.pulse);
-  }
-  applyInkOutline(context, input.zoom);
+  const x = snapToPixel(input.center.x + 16);
+  const y = snapToPixel(input.center.y - 39);
+  // A steady 20-unit parchment badge with clipped corners and a 3-unit pointer.
+  context.beginPath();
+  context.moveTo(x - 7, y - 10);
+  context.lineTo(x + 7, y - 10);
+  context.lineTo(x + 10, y - 7);
+  context.lineTo(x + 10, y + 7);
+  context.lineTo(x + 7, y + 10);
+  context.lineTo(x + 1, y + 10);
+  context.lineTo(x - 2, y + 13);
+  context.lineTo(x - 4, y + 10);
+  context.lineTo(x - 7, y + 10);
+  context.lineTo(x - 10, y + 7);
+  context.lineTo(x - 10, y - 7);
+  context.closePath();
+  context.fillStyle = SEMANTIC_PALETTE.vellum;
+  context.fill();
+  applyPaletteStroke(context, SEMANTIC_PALETTE.inkLight, input.zoom);
   context.stroke();
+  context.fillStyle = PALETTE.vermilion;
+  const glyphCenter = { x, y: y - 1 };
+  switch (input.kind) {
+    case "water":
+      traceWaterDrop(context, { x, y: y + 1 }, 0.55);
+      return;
+    case "bread":
+      traceBreadLoaf(context, glyphCenter, 0.55);
+      return;
+    case "labour":
+      traceWorkerFigure(context, glyphCenter, 0.55);
+      return;
+    case "storage":
+      traceFullCrate(context, glyphCenter, 0.55);
+      return;
+  }
 }
 
-function traceWaterDrop(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
-  const width = 7 * pulse;
-  const height = 14 * pulse;
+function traceWaterDrop(context: CanvasRenderingContext2D, center: Point, scale: number): void {
+  const width = 7 * scale;
+  const height = 14 * scale;
   context.beginPath();
   context.moveTo(snapToPixel(center.x), snapToPixel(center.y - height));
-  context.lineTo(snapToPixel(center.x + width), snapToPixel(center.y - 2 * pulse));
+  context.lineTo(snapToPixel(center.x + width), snapToPixel(center.y - 2 * scale));
   context.arc(snapToPixel(center.x), snapToPixel(center.y), snapToPixel(width), 0, Math.PI);
-  context.lineTo(snapToPixel(center.x - width), snapToPixel(center.y - 2 * pulse));
+  context.lineTo(snapToPixel(center.x - width), snapToPixel(center.y - 2 * scale));
   context.closePath();
   context.fill();
 }
 
-function traceBreadLoaf(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
+function traceBreadLoaf(context: CanvasRenderingContext2D, center: Point, scale: number): void {
   context.beginPath();
   context.ellipse(
     snapToPixel(center.x),
     snapToPixel(center.y),
-    snapToPixel(10 * pulse),
-    snapToPixel(7 * pulse),
+    snapToPixel(10 * scale),
+    snapToPixel(7 * scale),
     0,
     0,
     Math.PI * 2,
@@ -195,35 +201,35 @@ function traceBreadLoaf(context: CanvasRenderingContext2D, center: Point, pulse:
   context.fillStyle = SEMANTIC_PALETTE.gold;
   for (const offset of [-4, 0, 4]) {
     fillOutlinedRect(context, {
-      origin: { x: center.x + offset * pulse - pulse, y: center.y - 3 * pulse },
-      width: 2 * pulse,
-      height: 6 * pulse,
+      origin: { x: center.x + offset * scale - scale, y: center.y - 3 * scale },
+      width: 2 * scale,
+      height: 6 * scale,
       zoom: 1,
     });
   }
   context.fillStyle = PALETTE.vermilion;
 }
 
-function traceWorkerFigure(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
+function traceWorkerFigure(context: CanvasRenderingContext2D, center: Point, scale: number): void {
   context.beginPath();
   context.arc(
     snapToPixel(center.x),
-    snapToPixel(center.y - 4 * pulse),
-    snapToPixel(5 * pulse),
+    snapToPixel(center.y - 4 * scale),
+    snapToPixel(5 * scale),
     0,
     Math.PI * 2,
   );
   context.fill();
   fillOutlinedRect(context, {
-    origin: { x: center.x - 4 * pulse, y: center.y + 1 * pulse },
-    width: 8 * pulse,
-    height: 10 * pulse,
+    origin: { x: center.x - 4 * scale, y: center.y + 1 * scale },
+    width: 8 * scale,
+    height: 10 * scale,
     zoom: 1,
   });
 }
 
-function traceFullCrate(context: CanvasRenderingContext2D, center: Point, pulse: number): void {
-  const half = 8 * pulse;
+function traceFullCrate(context: CanvasRenderingContext2D, center: Point, scale: number): void {
+  const half = 8 * scale;
   context.beginPath();
   context.moveTo(snapToPixel(center.x - half), snapToPixel(center.y - half));
   context.lineTo(snapToPixel(center.x + half), snapToPixel(center.y - half));

@@ -134,14 +134,14 @@ test("drawWalkers renders procedural figures with cargo above the head", () => {
     walkers: [carter(), distributor()],
   });
 
-  assert.ok(context.calls.includes("ellipse:48,62,5,2"));
-  assert.ok(context.calls.includes("fillRect:44,41,8,14"));
-  assert.ok(context.calls.includes("arc:50,35,4"));
-  assert.ok(context.calls.includes("fillRect:46,24,5,5"));
-  assert.ok(context.calls.includes("fillRect:-2,0,5,5"));
-  assert.ok(context.calls.includes("ellipse:0,24,5,3"));
-  assert.ok(context.calls.includes("fillRect:41,44,14,3"));
-  assert.ok(context.calls.includes("fillRect:43,49,10,2"));
+  assert.ok(context.calls.includes("ellipse:48,62,2.75,1.1"));
+  assert.ok(context.calls.includes("fillRect:46,50,4,8"));
+  assert.ok(context.calls.includes(`arc:${48 + 2 * 0.55},${62 - 28 * 0.55 + 0.55},${4 * 0.55}`));
+  assert.ok(context.calls.includes("fillRect:47,41,3,3"));
+  assert.ok(context.calls.includes("fillRect:-1,17,3,3"));
+  assert.ok(context.calls.includes(`ellipse:0,${38 - 14 * 0.55},${5 * 0.55},${3 * 0.55}`));
+  assert.ok(context.calls.includes("fillRect:44,52,8,2"));
+  assert.ok(context.calls.includes("fillRect:45,55,6,1"));
 });
 
 test("walker outlines stay one screen pixel across camera zoom", () => {
@@ -165,7 +165,7 @@ test("walker drawing snaps the visual anchor in transformed device pixels", () =
     2,
   );
 
-  const shadow = context.calls.find((call) => call.startsWith("ellipse:") && call.endsWith(",5,2"));
+  const shadow = context.calls.find((call) => call.startsWith("ellipse:") && call.endsWith(",2.75,1.1"));
   if (shadow === undefined) throw new Error("Expected walker shadow ellipse");
   const [x, y] = shadow.slice("ellipse:".length).split(",").map(Number);
   assert.ok(Math.abs((x ?? 0) - 47.85) < 0.000_001);

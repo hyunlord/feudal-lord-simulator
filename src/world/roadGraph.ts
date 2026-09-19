@@ -1,12 +1,14 @@
-import type { Grid, TileCoordinate } from "./grid";
+import type { TileCoordinate } from "./grid";
 import { getTile } from "./grid";
+import type { WallGrid } from "./wallTraversal";
+import { canTraverseRoadBoundary } from "./bridges";
 
 export interface RoadPathRequest {
   readonly start: TileCoordinate;
   readonly destination: TileCoordinate;
 }
 
-export function canPlaceRoad(grid: Grid, coordinate: TileCoordinate): boolean {
+export function canPlaceRoad(grid: WallGrid, coordinate: TileCoordinate): boolean {
   const tile = getTile(grid, coordinate);
   return (
     tile !== null &&
@@ -40,7 +42,7 @@ export function roadLine(
 }
 
 export function getOrthogonalRoadNeighbors(
-  grid: Grid,
+  grid: WallGrid,
   coordinate: TileCoordinate,
 ): readonly TileCoordinate[] {
   const candidates = [
@@ -50,19 +52,19 @@ export function getOrthogonalRoadNeighbors(
     { tx: coordinate.tx - 1, ty: coordinate.ty },
   ] as const;
 
-  return candidates.filter((candidate) => getTile(grid, candidate)?.hasRoad === true);
+  return candidates.filter((candidate) => getTile(grid, candidate)?.hasRoad === true && canTraverseRoadBoundary(grid, coordinate, candidate));
 }
 
 function roadCoordinateKey(coordinate: TileCoordinate): string {
   return `${coordinate.tx},${coordinate.ty}`;
 }
 
-function isRoadTile(grid: Grid, coordinate: TileCoordinate): boolean {
-  return getTile(grid, coordinate)?.hasRoad === true;
+function isRoadTile(grid: WallGrid, coordinate: TileCoordinate): boolean {
+  return getTile(grid, coordinate)?.hasRoad === true && canTraverseRoadBoundary(grid, coordinate, coordinate);
 }
 
 export function existingRoadComponent(
-  grid: Grid,
+  grid: WallGrid,
   starts: readonly TileCoordinate[],
 ): readonly TileCoordinate[] {
   const frontier = starts.filter((start) => isRoadTile(grid, start));
@@ -107,7 +109,7 @@ function reconstructRoadPath(
 }
 
 export function findExistingRoadPath(
-  grid: Grid,
+  grid: WallGrid,
   request: RoadPathRequest,
 ): readonly TileCoordinate[] | null {
   if (!isRoadTile(grid, request.start) || !isRoadTile(grid, request.destination)) {
@@ -141,7 +143,7 @@ export function findExistingRoadPath(
 }
 
 export function findRoadPath(
-  grid: Grid,
+  grid: WallGrid,
   request: RoadPathRequest,
 ): readonly TileCoordinate[] | null {
   const line = roadLine(request.start, request.destination);

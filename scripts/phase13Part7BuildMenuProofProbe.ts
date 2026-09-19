@@ -1,4 +1,4 @@
-import { buildMenuGroups } from "../src/ui/buildMenuModel";
+import { BUILD_CATEGORIES } from "../src/ui/buildMenuPresentation";
 
 import { browserMeasurementAssertionsExpression } from "./phase13Part7BuildMenuProofProbeAssertions.js";
 import { browserMeasurementMetricsExpression } from "./phase13Part7BuildMenuProofProbeMetrics.js";
@@ -9,6 +9,6 @@ export function browserMeasurementExpression(
   viewport: Viewport,
   scenario: ProofScenario,
 ): string {
-  const groupLabels = buildMenuGroups(scenario.state).map((group) => group.label);
+  const groupLabels = BUILD_CATEGORIES.map((group) => group.label);
   return `${browserMeasurementMetricsExpression(groupLabels)}${browserMeasurementAssertionsExpression(viewport, scenario)}`;
 }

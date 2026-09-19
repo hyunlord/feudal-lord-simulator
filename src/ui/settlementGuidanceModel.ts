@@ -1,6 +1,7 @@
-import { BALANCE } from "../content/balanceConfig";
+import { houseHasFood } from "../population/houseFood";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import { placementSpendableResource } from "../world/placement";
 
 export type SettlementProblemKind = "water" | "bread" | "labour" | "storage";
 
@@ -11,8 +12,8 @@ export type SettlementProblemGlyph = {
 };
 
 export type SettlementGuidance = {
-  readonly populationGoal: 50 | 120;
-  readonly completedGoal: 50 | null;
+  readonly populationGoal: 60 | 140;
+  readonly completedGoal: 60 | null;
   readonly sampledTick: number;
   readonly statusLine: string;
   readonly priority: SettlementProblemGlyph | null;
@@ -36,12 +37,12 @@ export function settlementProblemGlyphs(state: GameState): readonly SettlementPr
 }
 
 export function settlementGuidance(state: GameState): SettlementGuidance {
-  const populationGoal = state.population >= 50 ? 120 : 50;
+  const populationGoal = state.era === "hamlet" ? 60 : 140;
   const problems = settlementProblemGlyphs(state);
   const priority = guidancePriority(state);
   return {
     populationGoal,
-    completedGoal: state.population >= 50 ? 50 : null,
+    completedGoal: state.population >= 60 ? 60 : null,
     sampledTick: Math.floor(state.tick / 60) * 60,
     statusLine: priority?.label ?? "정착지는 안정적입니다",
     priority,
@@ -61,7 +62,7 @@ function guidancePriority(state: GameState): SettlementProblemGlyph | null {
   if (!state.buildings.some((building) => building.kind === "granary")) {
     return { kind: "storage", glyph: "箱", label: "곡창이 필요합니다" };
   }
-  if (state.treasuryTimber < 30) {
+  if (placementSpendableResource(state, "timber") < 30) {
     return { kind: "storage", glyph: "箱", label: "목재가 부족합니다" };
   }
   return null;
@@ -75,8 +76,8 @@ function hasBreadProblem(state: GameState): boolean {
   return state.houses.some(
     (house) =>
       house.residents > 0 &&
-      house.breadStock <= 0 &&
-      state.tick - house.lastServicedTick >= BALANCE.BREAD_HUNGER_WINDOW,
+      !houseHasFood(house) &&
+      state.tick > (house.starvationGraceUntilTick ?? 0),
   );
 }
 

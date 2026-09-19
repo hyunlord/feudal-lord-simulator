@@ -1,5 +1,5 @@
 import { BALANCE } from "../content/balanceConfig";
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
@@ -54,7 +54,7 @@ export function highlightedHouseTiles(
   return state.buildings
     .filter((building) => building.kind === "house" && selected.has(building.id))
     .flatMap((building) => {
-      const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+      const definition = buildingFootprint(building);
       return Array.from({ length: definition.width * definition.height }, (_unused, index) => ({
         tx: building.tx + index % definition.width,
         ty: building.ty + Math.floor(index / definition.width),

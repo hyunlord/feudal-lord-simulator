@@ -1,4 +1,4 @@
-import { BALANCE } from "../content/balanceConfig";
+import { houseIsStarving } from "../population/houseFood";
 import type { GameState } from "../engine/engine.types";
 import type { House } from "../population/population.types";
 
@@ -20,7 +20,7 @@ export type PopulationEventGroup = Readonly<{
 }>;
 
 function lossCause(state: GameState, house: House): PopulationCause {
-  if (state.tick - house.lastServicedTick > BALANCE.STARVATION_WINDOW) {
+  if (houseIsStarving(house, state.tick)) {
     return "starvation";
   }
   return house.hasWater ? "starvation" : "no_water";
@@ -57,7 +57,7 @@ export function diffPopulationEvents(
 
     const delta = house.residents - prior.residents;
     if (delta === 0) return [];
-    const cause = delta > 0 ? "growth" : lossCause(current, house);
+    const cause = delta > 0 ? "growth" : lossCause(current, { ...house, residents: prior.residents });
     return unitEvents(current.tick, house.buildingId, delta, cause);
   });
 }

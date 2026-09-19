@@ -1,3 +1,4 @@
+import { housingLotCount } from "../population/housing";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
@@ -24,7 +25,7 @@ export type HouseGuidanceTarget = {
 };
 
 export function needsPopulationHouseGuidance(state: HouseGuidanceWorld): boolean {
-  return currentPopulation(state) < 30 && state.houses.length < onboardingPopulationHouseTotal;
+  return currentPopulation(state) < 30 && housingLotCount(state) < onboardingPopulationHouseTotal;
 }
 
 export function populationHouseGuidanceTargets(
@@ -34,7 +35,7 @@ export function populationHouseGuidanceTargets(
 ): readonly HouseGuidanceTarget[] {
   const count = Math.min(
     onboardingPopulationHouseTargetCount,
-    onboardingPopulationHouseTotal - state.houses.length,
+    onboardingPopulationHouseTotal - housingLotCount(state),
   );
   if (count <= 0) return [];
 
@@ -64,7 +65,7 @@ function houseCandidateOrigins(
   candidateOrigins: readonly TileCoordinate[],
 ): readonly TileCoordinate[] {
   const withinWater = candidateOrigins.filter((origin) => withinWellRange(state, origin));
-  if (withinWater.length >= onboardingPopulationHouseTotal - state.houses.length) {
+  if (withinWater.length >= onboardingPopulationHouseTotal - housingLotCount(state)) {
     return withinWater;
   }
   const waterKeys = new Set(withinWater.map(tileKey));

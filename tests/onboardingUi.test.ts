@@ -38,7 +38,7 @@ test("welcome parchment renders exact opening copy and dismiss affordance", () =
   assert.match(markup, /tabindex="-1"/);
   assert.match(markup, /class="app-interaction-layer" inert="" aria-hidden="true"/);
   assert.match(markup, /영지에 오신 것을 환영합니다/);
-  assert.match(markup, /왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요\./);
+  assert.match(markup, /아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요\./);
   assert.match(markup, /마우스 휠로 확대, 드래그로 이동합니다\./);
   assert.match(markup, /아무 곳이나 클릭하여 시작/);
 });
@@ -55,7 +55,7 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   );
 
   // Then
-  assert.doesNotMatch(placementMarkup, /aria-pressed="true"/);
+  assert.doesNotMatch(placementMarkup, /class="build-seal[^"]*"[^>]*aria-pressed="true"/);
   assert.match(source, /useState<PlacementTool \| null>\(null\)/);
   assert.doesNotMatch(source, /useState<PlacementTool \| null>\(DEFAULT_PLACEMENT_TOOL\)/);
   assert.match(source, /presentationNowMs/);
@@ -175,7 +175,7 @@ test("right rail renders era gauges plus exactly one current imperative", () => 
   assert.doesNotMatch(railMarkup, /목표: 인구 50명 · 현재/);
 });
 
-test("population history is opened only from the ledger drawer", () => {
+test("population history opens from the top resource bar and starts closed", () => {
   // Given / When
   const markup = renderApp();
   const beforeConsole = markup.slice(0, markup.indexOf('aria-label="영주 명령대"'));
@@ -183,8 +183,8 @@ test("population history is opened only from the ledger drawer", () => {
 
   // Then
   assert.doesNotMatch(beforeConsole, /aria-label="인구 변화 기록"/);
-  assert.match(consoleMarkup, /class="ledger-population-toggle"/);
-  assert.match(consoleMarkup, /aria-expanded="false"/);
+  assert.match(beforeConsole, /class="resource-bar__cell resource-bar__population"/);
+  assert.match(beforeConsole, /aria-label="인구 기록" aria-expanded="false" aria-controls="population-ledger-drawer"/);
   assert.doesNotMatch(consoleMarkup, /id="population-ledger-drawer"/);
 });
 
@@ -282,7 +282,7 @@ test("onboarding task panel renders completion flourish and the post-task open g
       view: {
         current: null,
         next: null,
-        openGoal: { title: "목표: 인구 50 이후 번영을 이어가세요" },
+        openGoal: { title: "기초 운영 완료 · 도시 목표와 공급 상태를 확인하세요" },
       },
     }),
   );
@@ -292,5 +292,5 @@ test("onboarding task panel renders completion flourish and the post-task open g
   assert.match(flourishMarkup, /data-task-state="current"/);
   assert.doesNotMatch(flourishMarkup, /data-task-state="next"/);
   assert.match(openGoalMarkup, /data-onboarding-state="open-goal"/);
-  assert.match(openGoalMarkup, /목표: 인구 50 이후 번영을 이어가세요/);
+  assert.match(openGoalMarkup, /기초 운영 완료 · 도시 목표와 공급 상태를 확인하세요/);
 });

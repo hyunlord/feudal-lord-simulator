@@ -2,6 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import type { CameraState } from "./camera";
 import { drawBuildings } from "./drawBuildings";
+import { beginFarmCanopyFrame, drawFarmSoil } from "./farmAssets";
 import { drawConstructionSite } from "./drawConstructionSites";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
@@ -11,6 +12,9 @@ import type { TileRange, ViewportSize } from "./renderer";
 import type { TileCoordinate } from "../world/grid";
 import { denseBuildingClusterIds } from "./occlusionModel";
 import { drawRoadReadabilityOverlay } from "./roadReadabilityOverlay";
+import { bridgeRailPieces, drawBridgeRail } from "./drawBridges";
+import { bridgeAt } from "../world/bridges";
+import { sortRenderItems } from "./objectRenderSort";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -31,11 +35,30 @@ export function drawObjectRenderItems(
   context: CanvasRenderingContext2D,
   input: DrawObjectRenderItemsInput,
 ): void {
+  beginFarmCanopyFrame();
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
   const denseBuildingIds = denseBuildingClusterIds(input.state.buildings);
-  for (const item of input.objectRenderItems) {
-    if (item.kind === "walker") {
+  if (viewMode !== "outlines") {
+    for (const item of input.objectRenderItems) {
+      if (item.kind === "building") drawFarmSoil(context, item.building, input.state.buildings);
+    }
+  }
+  const stoneGates = input.objectRenderItems.flatMap(item => item.kind === "palisade_segment"
+    ? (item.stoneNodes ?? []).filter(node => node.kind === "gate").map(node => node.point) : []);
+  const rails = bridgeRailPieces(input.state, input.tiles).map(piece => ({
+    kind: "bridge_rail" as const, piece, depth: piece.depth, anchorTx: piece.tx,
+    id: `bridge:${piece.tx}:${piece.ty}:${piece.side}`,
+  }));
+  const queue = sortRenderItems([...input.objectRenderItems, ...rails]);
+  for (const item of queue) {
+    if (item.kind === "bridge_rail") {
+      drawBridgeRail(context, item.piece);
+      continue;
+    }
+    if (item.kind === "walker" && !stoneGates.some(gate =>
+      Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
+      && bridgeAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) === null) {
       walkerItems.push(item);
       continue;
     }
@@ -57,7 +80,9 @@ export function drawObjectRenderItems(
     if (item.kind === "palisade_segment") {
       drawPalisadeSegment(context, {
         segment: item.segment,
+        stoneNodes: item.stoneNodes,
         gate: item.gate,
+        gates: item.gates,
         zoom: input.zoom,
       });
       continue;
@@ -76,9 +101,10 @@ export function drawObjectRenderItems(
       hoveredTile: input.hoveredTile ?? null,
       viewMode,
       denseBuildingIds,
+      farmSoilDrawn: true,
     });
   }
-  drawRoadReadabilityOverlay(context, input.state, input.tiles);
+  drawRoadReadabilityOverlay(context, input.state, input.tiles, stoneGates);
   for (const item of walkerItems) {
     drawBuildings(context, {
       state: input.state,
@@ -94,6 +120,7 @@ export function drawObjectRenderItems(
       hoveredTile: input.hoveredTile ?? null,
       viewMode,
       denseBuildingIds,
+      farmSoilDrawn: true,
     });
   }
 }

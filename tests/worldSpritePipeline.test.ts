@@ -67,7 +67,7 @@ describe("worldSpritePipeline", () => {
     assert.deepEqual(BUILDING_SPRITE_CONTRACTS, {
       house_l1: { width: 96, height: 120, baselineY: 104, footprint: 1 },
       house_l2: { width: 96, height: 144, baselineY: 128, footprint: 1 },
-      house_l3: { width: 160, height: 192, baselineY: 176, footprint: 2 },
+      house_l3: { width: 160, height: 192, baselineY: 176, footprint: 1 },
       well: { width: 72, height: 80, baselineY: 64, footprint: 1 },
       storehouse: { width: 160, height: 136, baselineY: 120, footprint: 2 },
       wheat_farm: { width: 160, height: 96, baselineY: 80, footprint: 2 },
@@ -93,8 +93,10 @@ describe("worldSpritePipeline", () => {
   it("enforces one-tile and two-tile visible-width bands", () => {
     assert.doesNotThrow(() => assertSpriteContract(contractImage("house_l1", 64), "house_l1"));
     assert.throws(() => assertSpriteContract(contractImage("house_l1", 63), "house_l1"), /64\.\.90/);
-    assert.doesNotThrow(() => assertSpriteContract(contractImage("house_l3", 115), "house_l3"));
-    assert.throws(() => assertSpriteContract(contractImage("house_l3", 142), "house_l3"), /115\.\.141/);
+    assert.doesNotThrow(() => assertSpriteContract(contractImage("house_l3", 64), "house_l3"));
+    assert.throws(() => assertSpriteContract(contractImage("house_l3", 91), "house_l3"), /64\.\.90/);
+    assert.doesNotThrow(() => assertSpriteContract(contractImage("storehouse", 115), "storehouse"));
+    assert.throws(() => assertSpriteContract(contractImage("storehouse", 142), "storehouse"), /115\.\.141/);
   });
 
   it("requires house alpha-bbox heights to increase from L0 through L3", () => {
@@ -102,12 +104,12 @@ describe("worldSpritePipeline", () => {
       house_l0: contractImage("house_l1", 64),
       house_l1: contractImage("house_l1", 64),
       house_l2: contractImage("house_l2", 64),
-      house_l3: contractImage("house_l3", 115),
+      house_l3: contractImage("house_l3", 64),
     };
     fill(houses.house_l0, 16, 100, 80, 105, [...rgb(RAMPS.thatch[2]), 255]);
     fill(houses.house_l1, 16, 90, 80, 105, [...rgb(RAMPS.thatch[2]), 255]);
     fill(houses.house_l2, 16, 105, 80, 129, [...rgb(RAMPS.slate[2]), 255]);
-    fill(houses.house_l3, 22, 140, 137, 177, [...rgb(RAMPS.slate[2]), 255]);
+    fill(houses.house_l3, 48, 140, 112, 177, [...rgb(RAMPS.slate[2]), 255]);
     assert.doesNotThrow(() => assertHouseHeightProgression(houses));
     assert.throws(() => assertHouseHeightProgression({ ...houses, house_l2: houses.house_l1 }), /strictly increase/);
   });

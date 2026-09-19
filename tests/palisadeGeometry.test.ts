@@ -330,7 +330,7 @@ test("validation accepts clockwise and counterclockwise paths at exactly sixty p
 
 test("perimeter and run dragging use whole-step normals with last-valid rejection", () => {
   // Given
-  const world = grid(18, 18, ["8,1", "8,2", "8,3"]);
+  const world = grid(18, 18, ["8,1", "8,2"]);
   const buildings = [footprint("a", 5, 5), footprint("b", 10, 5)];
   const candidate = validatePalisadeCandidate(
     world,
@@ -343,8 +343,8 @@ test("perimeter and run dragging use whole-step normals with last-valid rejectio
   // When
   const outward = dragPalisadeRun(world, candidate.candidate, 0, 2, buildings);
   const inward = dragPalisadeRun(world, candidate.candidate, 0, -3, buildings);
-  const diagonal = validatePalisadeCandidate(world, clockwisePath([{ x: 4, y: 8 }, { x: 8, y: 4 }, { x: 12, y: 8 }, { x: 4, y: 8 }]), [
-    footprint("d", 7, 6),
+  const diagonal = validatePalisadeCandidate(world, clockwisePath([{ x: 2, y: 10 }, { x: 8, y: 4 }, { x: 14, y: 10 }, { x: 2, y: 10 }]), [
+    footprint("d", 7, 7),
   ]);
 
   // Then
@@ -361,8 +361,8 @@ test("perimeter and run dragging use whole-step normals with last-valid rejectio
   }
   assert.equal(diagonal.ok, true);
   if (diagonal.ok) {
-    const moved = dragPalisadeRun(world, diagonal.candidate, 0, 1, [footprint("d", 7, 6)]);
+    const moved = dragPalisadeRun(world, diagonal.candidate, 0, 1, [footprint("d", 7, 7)]);
     assert.equal(moved.ok, true, moved.ok ? undefined : moved.reason);
-    if (moved.ok) assert.ok(moved.candidate.path.some((point) => point.x === 3 && point.y === 7));
+    if (moved.ok) assert.ok(moved.candidate.path.some((point) => point.x === 1 && point.y === 9));
   }
 });

@@ -32,16 +32,16 @@ function existingBuilding(buildings: readonly Building[], index: number): Buildi
   return building;
 }
 
-test("house body profile is a pure era and level material function", () => {
+test("house body profile retains the historical timber language across eras", () => {
   // Given / When
   const hamletLevelTwo = houseBodyProfile({ era: "hamlet", level: 2 });
   const palisadeLevelTwo = houseBodyProfile({ era: "palisade", level: 2 });
   const palisadeLevelThree = houseBodyProfile({ era: "palisade", level: 3 });
 
   // Then
-  assert.notDeepEqual(palisadeLevelTwo, hamletLevelTwo);
+  assert.deepEqual(palisadeLevelTwo, hamletLevelTwo);
   assert.equal(palisadeLevelTwo.roofShape, "gable");
-  assert.equal(palisadeLevelThree.roofShape, "tower");
+  assert.equal(palisadeLevelThree.roofShape, "gable");
   assert.deepEqual(houseBodyProfile({ era: "palisade", level: 2 }), palisadeLevelTwo);
 });
 
@@ -103,7 +103,7 @@ test("loaded palisade states render final material without replaying a wave", ()
   assert.equal(houseMaterialEraForBuilding({ building, wave: loaded, nowMs: 0, era: "hamlet" }), "hamlet");
 });
 
-test("loaded stone town states render stone material without replaying a wave", () => {
+test("loaded stone town states preserve timber housing while retaining the era wave contract", () => {
   // Given
   const building = house("house-a", 1, 1);
   const loaded: HouseMaterialWave | null = null;
@@ -111,11 +111,11 @@ test("loaded stone town states render stone material without replaying a wave", 
   // When / Then
   assert.equal(houseMaterialEraForBuilding({ building, wave: loaded, nowMs: 0, era: "stone" }), "stone");
   assert.deepEqual(houseBodyProfile({ era: "stone", level: 4 }), {
-    width: 64,
-    height: 72,
-    roof: 24,
-    fill: SEMANTIC_PALETTE.stone,
-    roofColor: SEMANTIC_PALETTE.winterGrey,
-    roofShape: "tower",
+    width: 58,
+    height: 66,
+    roof: 20,
+    fill: SEMANTIC_PALETTE.parchment,
+    roofColor: SEMANTIC_PALETTE.earthDark,
+    roofShape: "gable",
   });
 });

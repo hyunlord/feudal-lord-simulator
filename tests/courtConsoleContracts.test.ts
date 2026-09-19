@@ -116,10 +116,10 @@ test("the actual app renders one continuous accessible court console", () => {
   assert.match(markup, /aria-label="영주 명령대"/);
   assert.equal(markup.match(/class="court-recess /g)?.length, 3);
   assert.match(markup, /class="map-overview"/);
-  assert.match(markup, /class="build-seals"/);
+  assert.match(markup, /class="build-menu"/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
-  assert.match(markup, /class="court-ledger"/);
+  assert.match(markup, /class="resource-bar"/);
   assert.match(markup, /aria-label="일시 정지"/);
   assert.match(markup, /aria-label="5배속"/);
 });
@@ -156,9 +156,9 @@ test("build seals surface the road and armed styling states for the console layo
   // Then
   assert.match(
     markup,
-    /class="build-seal build-seal--selected build-seal--highlighted build-seal--road"/,
+    /class="build-seal build-tool build-tool--selected"[^>]*aria-label="길"[^>]*aria-pressed="true"[^>]*data-highlighted="road"/,
   );
-  assert.match(markup, /class="road-tool"/);
+  assert.match(markup, /class="build-menu-quick-road"/);
 });
 
 test("console CSS uses every generated surface and rejects web-dashboard styling", async () => {

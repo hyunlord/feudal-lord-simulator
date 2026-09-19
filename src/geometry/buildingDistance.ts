@@ -1,4 +1,5 @@
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { buildingFootprint } from "./buildingFootprint";
+import type { Building } from "../content/buildingConfig";
 
 function axisGap(leftStart: number, leftSize: number, rightStart: number, rightSize: number): number {
   const leftEnd = leftStart + leftSize - 1;
@@ -9,8 +10,8 @@ function axisGap(leftStart: number, leftSize: number, rightStart: number, rightS
 }
 
 export function buildingFootprintDistance(left: Building, right: Building): number {
-  const leftConfig = BUILDING_CONFIG_BY_KIND[left.kind];
-  const rightConfig = BUILDING_CONFIG_BY_KIND[right.kind];
+  const leftConfig = buildingFootprint(left);
+  const rightConfig = buildingFootprint(right);
   return axisGap(left.tx, leftConfig.width, right.tx, rightConfig.width)
     + axisGap(left.ty, leftConfig.height, right.ty, rightConfig.height);
 }

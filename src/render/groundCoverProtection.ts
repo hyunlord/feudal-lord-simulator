@@ -1,4 +1,5 @@
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { buildingFootprint } from "../geometry/buildingFootprint";
+import { type Building } from "../content/buildingConfig";
 import {
   constructionSiteCacheKey,
   constructionSiteFootprint,
@@ -24,7 +25,7 @@ export function groundCoverProtectedTileKeys(
   constructionSites: readonly ConstructionSite[] = [],
 ): ReadonlySet<string> {
   const buildingSignature = [
-    ...buildings.map((building) => `${building.kind}:${building.tx}:${building.ty}`),
+    ...buildings.map((building) => `${building.kind}:${building.houseLot ?? "single"}:${building.tx}:${building.ty}`),
     ...constructionSites.map(constructionSiteCacheKey),
   ]
     .join("|");
@@ -36,7 +37,7 @@ export function groundCoverProtectedTileKeys(
     if (tile.hasRoad) addGroundCoverApron(keys, { tx: tile.tx, ty: tile.ty, width: 1, height: 1 });
   }
   for (const building of buildings) {
-    const config = BUILDING_CONFIG_BY_KIND[building.kind];
+    const config = buildingFootprint(building);
     addGroundCoverApron(keys, {
       tx: building.tx,
       ty: building.ty,

@@ -1,3 +1,5 @@
+import { houseGrowthPhase } from "../src/population/houseFood";
+import { marketRoadService } from "../src/engine/marketService";
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -29,7 +31,7 @@ function building(
     kind,
     tx,
     ty,
-    workers: 0,
+    workers: kind === "market" ? 3 : 0,
     inventory: {},
     reserved: {},
     stockReserved: {},
@@ -104,7 +106,7 @@ function state(input: {
       ty: Math.floor(index / width),
       terrain: "grass",
       buildingId: null,
-      hasRoad: false,
+      hasRoad: Math.floor(index / width) === 3 || (index % width === 1 && Math.floor(index / width) >= 3 && Math.floor(index / width) <= 14),
     })),
     buildings: [...buildings],
     constructionSites: [],
@@ -130,7 +132,7 @@ test("Given all Stone Town services and completed enclosure When housing updates
   const input = house({ residents: 31 });
 
   // When
-  const result = updateHousing([input], levelFourBuildings(), 50, palisade());
+  const result = updateHousing([input], levelFourBuildings(), 150 + houseGrowthPhase(input.buildingId), palisade(), marketRoadService(state()));
 
   // Then
   assert.equal(result.houses[0]?.level, 4);
@@ -150,7 +152,7 @@ test("Given each missing level-four gate When housing updates Then the home rema
 
   // When / Then
   for (const entry of cases) {
-    const result = updateHousing([entry.household], entry.buildings, 10, entry.palisade);
+    const result = updateHousing([entry.household], entry.buildings, 10, entry.palisade, marketRoadService(state({ buildings: entry.buildings, palisade: entry.palisade })));
     assert.equal(result.houses[0]?.level, 3, entry.name);
   }
 });
@@ -160,7 +162,7 @@ test("Given a home on the completed wall edge When all services are present Then
   const onEdge = building("home", "house", 0, 4);
 
   // When
-  const result = updateHousing([house()], levelFourBuildings({ home: onEdge }), 10, palisade());
+  const result = updateHousing([house()], levelFourBuildings({ home: onEdge }), 10, palisade(), marketRoadService(state()));
 
   // Then
   assert.equal(result.houses[0]?.level, 4);
@@ -171,7 +173,7 @@ test("Given a home outside the completed wall When all services are present Then
   const outside = building("home", "house", 18, 4);
 
   // When
-  const result = updateHousing([house()], levelFourBuildings({ home: outside }), 10, palisade());
+  const result = updateHousing([house()], levelFourBuildings({ home: outside }), 10, palisade(), marketRoadService(state()));
 
   // Then
   assert.equal(result.houses[0]?.level, 3);
@@ -193,14 +195,14 @@ test("Given Stone Town gates When diagnosing a house Then exact Korean level-fou
 
   // Then
   assert.deepEqual(blocked, before);
+  assert.equal(blockedModel?.water.kind, "supplied", "diagnosis uses available well allocation despite a stale stored water flag");
   assert.deepEqual(blockedModel?.stoneHouse.blockers, [
-    "물 공급 필요",
     "신선한 빵 필요",
-    "시장 범위 8 안 필요",
-    "교회 범위 12 안 필요",
+    "시장 없음",
+    "교회 없음",
     "완성된 성벽 안 필요",
   ]);
-  assert.equal(blockedModel?.stoneHouse.label, "석조 연립가옥 불가 — 물 공급 필요 · 신선한 빵 필요 · 시장 범위 8 안 필요 · 교회 범위 12 안 필요 · 완성된 성벽 안 필요");
+  assert.equal(blockedModel?.stoneHouse.label, "도시 대가옥 불가 — 신선한 빵 필요 · 시장 없음 · 교회 없음 · 완성된 성벽 안 필요");
   assert.equal(readyModel?.stoneHouse.kind, "ready");
-  assert.equal(readyModel?.name, "석조 연립가옥");
+  assert.equal(readyModel?.name, "도시 대가옥");
 });

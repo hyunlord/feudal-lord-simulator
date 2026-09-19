@@ -3,7 +3,10 @@ import type { GameState } from "../engine/engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
-import { applyInkOutline, snapToPixel } from "./style";
+import { getTerrainPattern, terrainPatternQuarterTurn, TERRAIN_TEXTURE_COMPOSITE_OPACITY, type TerrainPatternAssets } from "./terrainPatterns";
+import { forestEdgeContour } from "./forestFringeGeometry";
+import { terrainVariation } from "../world/terrain";
+import { applyInkOutline, shade, snapToPixel, withAlpha } from "./style";
 
 type Point = { readonly x: number; readonly y: number };
 type EdgeBasis = Point & {
@@ -43,6 +46,7 @@ export function drawTerrainTransitions(
   state: GameState,
   tile: Tile,
   zoom: number,
+  terrainPatterns?: TerrainPatternAssets,
 ): void {
   for (const neighbour of orthogonalNeighbors(tile)) {
     const neighbourTile = getTile(state, neighbour);
@@ -51,6 +55,12 @@ export function drawTerrainTransitions(
     if (seam === null) continue;
     const dx = neighbour.tx - tile.tx;
     const dy = neighbour.ty - tile.ty;
+    if (seam === "forestTufts") {
+      if (!tile.hasRoad && tile.buildingId === null && !neighbourTile.hasRoad && neighbourTile.buildingId === null) {
+        drawForestFringe(context, tile, dx, dy, state.seed, terrainPatterns);
+      }
+      continue;
+    }
     const count = terrainSeamMarkCount(seam, tile.tx, tile.ty, dx, dy, state.seed);
     context.fillStyle = seamColor(seam);
     traceSeam(context, seam, tileCenter(tile), dx, dy, count);
@@ -58,6 +68,41 @@ export function drawTerrainTransitions(
     applyInkOutline(context, zoom);
     context.stroke();
   }
+}
+
+function drawForestFringe(
+  context: CanvasRenderingContext2D,
+  tile: Tile,
+  dx: number,
+  dy: number,
+  seed: number,
+  terrainPatterns: TerrainPatternAssets | undefined,
+): void {
+  const previousAlpha = context.globalAlpha;
+  const sourceTx = tile.tx + dx;
+  const sourceTy = tile.ty + dy;
+  const variation = terrainVariation(sourceTx, sourceTy, seed);
+  const pattern = getTerrainPattern(context, "forest_floor", terrainPatterns, terrainPatternQuarterTurn("forest_floor", sourceTx, sourceTy, seed));
+  for (const [reach, alpha] of [[4.2, 0.24], [3.2, 1]] as const) {
+    context.beginPath();
+    for (const [index, point] of forestEdgeContour(tile.tx, tile.ty, dx, dy, seed, reach).entries()) {
+      if (index === 0) context.moveTo(snapToPixel(point.x), snapToPixel(point.y));
+      else context.lineTo(snapToPixel(point.x), snapToPixel(point.y));
+    }
+    context.closePath();
+    context.globalAlpha = previousAlpha * alpha;
+    context.fillStyle = pattern === null ? shade(SEMANTIC_PALETTE.forest, 1 + variation) : SEMANTIC_PALETTE.forest;
+    context.fill();
+    if (pattern !== null) {
+      context.globalAlpha = previousAlpha * alpha * TERRAIN_TEXTURE_COMPOSITE_OPACITY;
+      context.fillStyle = pattern;
+      context.fill();
+      context.globalAlpha = previousAlpha * alpha;
+      context.fillStyle = withAlpha(variation >= 0 ? SEMANTIC_PALETTE.vellum : SEMANTIC_PALETTE.ink, Math.abs(variation));
+      context.fill();
+    }
+  }
+  context.globalAlpha = previousAlpha;
 }
 
 function traceSeam(

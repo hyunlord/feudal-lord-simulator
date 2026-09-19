@@ -1,5 +1,6 @@
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { Walker } from "../agents/walker.types";
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { type Building } from "../content/buildingConfig";
 import {
   constructionSiteFootprint,
   type ConstructionSite,
@@ -12,7 +13,7 @@ import {
 } from "./constructionRenderItems";
 import { groundCoverProtectedTileKeys } from "./groundCoverProtection";
 import { depthKey } from "./iso";
-import { compareRenderItems } from "./objectRenderSort";
+import { sortRenderItems } from "./objectRenderSort";
 import { palisadeSegmentRenderItems } from "./palisadeObjectRenderItems";
 import { STARTING_LANDMARKS } from "./startingLandmarks";
 import type {
@@ -131,7 +132,7 @@ export function buildObjectRenderItems(
   }
 
   for (const building of input.buildings) {
-    const config = BUILDING_CONFIG_BY_KIND[building.kind];
+    const config = buildingFootprint(building);
     if (
       !footprintHasVisibleTile({
         tx: building.tx,
@@ -158,7 +159,7 @@ export function buildObjectRenderItems(
     if (item !== null) items.push(item);
   }
 
-  return items.sort(compareRenderItems);
+  return sortRenderItems(items);
 }
 
 export function clearedTreeTileKeys(
@@ -167,7 +168,7 @@ export function clearedTreeTileKeys(
 ): ReadonlySet<string> {
   const keys = new Set<string>();
   for (const building of buildings) {
-    const config = BUILDING_CONFIG_BY_KIND[building.kind];
+    const config = buildingFootprint(building);
     for (let ty = building.ty - 1; ty <= building.ty + config.height; ty += 1) {
       for (let tx = building.tx - 1; tx <= building.tx + config.width; tx += 1) {
         keys.add(tileKey(tx, ty));

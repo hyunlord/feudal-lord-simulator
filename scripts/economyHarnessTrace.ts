@@ -1,5 +1,5 @@
+import { houseIsStarving } from "../src/population/houseFood";
 import type { CarterCancellation, Walker } from "../src/agents/walker.types";
-import { BALANCE } from "../src/content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
@@ -36,8 +36,7 @@ function totalBread(state: GameState): number {
 
 function starvingRatio(state: GameState): number {
   const starving = state.houses.filter((house) =>
-    house.breadStock <= 0 &&
-    state.tick - house.lastServicedTick > BALANCE.BREAD_HUNGER_WINDOW
+    houseIsStarving(house, state.tick)
   ).length;
   return state.houses.length === 0 ? 0 : starving / state.houses.length;
 }

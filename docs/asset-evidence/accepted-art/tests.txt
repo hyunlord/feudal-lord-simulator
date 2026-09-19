@@ -1,0 +1,58 @@
+✔ parses native alpha only with traceable accepted source (1.6735ms)
+✔ rejects native alpha assigned to a legacy generation source (0.649666ms)
+✔ rejects accepted art that fabricates legacy generation metadata (0.499875ms)
+✔ rejects an accepted source whose SHA was tampered with (1.002916ms)
+✔ rejects washed-out native alpha while allowing opaque content with soft edges (1.901541ms)
+▶ world asset manifest
+  ✔ parses the exact release keys, dimensions, anchors, and footprints (2.668917ms)
+  ✔ preserves non-tree ground cover while replacing runtime tree and stump release keys (0.069959ms)
+  ✔ requires accepted references, eight candidates per tree or stump, hashes, and parchment metrics (0.78375ms)
+  ✔ rejects flat parchment fallback when a generated candidate passed (0.368959ms)
+  ✔ rejects missing reference hash, incomplete candidate sets, wrong rubric totals, and non-lowest-seed ties (0.233708ms)
+  ✔ preserves the exact foliage variation and terrain seam contracts (0.422959ms)
+  ✔ rejects duplicate and missing release keys (0.453458ms)
+  ✔ rejects wrong dimensions and non-bottom-centre anchors (0.342375ms)
+  ✔ rejects path traversal and machine-specific paths (0.787833ms)
+  ✔ rejects category-policy mismatches and incomplete category metadata (0.626166ms)
+  ✔ rejects nonexistent files and PNGs whose on-disk dimensions drift (24.8365ms)
+  ✔ rejects PNG files whose bytes do not match the manifest sha256 (20.461834ms)
+✔ world asset manifest (52.952166ms)
+▶ Phase 4C world asset release
+  ✔ maps every Phase 8 release foliage key to its selected raw candidate filename (0.512792ms)
+  ✔ uses the Phase 8 foliage selection ledger when preparing tree and stump releases (866.917667ms)
+  ✔ prepares the exact release, preserves Phase 4B bytes, and writes a complete manifest (867.826417ms)
+  ✔ prepares Phase 13 full-colour releases from raw candidate one for every building key (1273.084667ms)
+  ✔ rejects a Phase 13 building release with too few visible colours (994.83175ms)
+  ✔ normalizes exact-size foliage raw input instead of copying it directly (1095.245292ms)
+  ✔ publishes only accepted Phase 13 keys while preserving every other public asset byte-for-byte (1187.088917ms)
+  ✔ rejects Phase 13 release evidence with duplicate, missing, or contract-drifted status entries (1103.258708ms)
+  ✔ rejects invalid Phase 13 accepted-release records at the typed boundary (84.5595ms)
+  ✔ rejects attempts to accept a Phase 13 key whose raw candidate is missing (902.938709ms)
+  ✔ rejects an unexpected top-level PNG without treating historical candidate folders as release files (824.147666ms)
+  ✔ rejects an incomplete release even though runtime foliage fallbacks are visible (796.541125ms)
+  ✔ rejects a category-invalid asset even when its filename and dimensions are correct (860.912167ms)
+  ✔ rejects a release when the generated runtime manifest is stale (809.99825ms)
+✔ Phase 4C world asset release (11668.951792ms)
+▶ browser world asset registry
+  ✔ Given the generated runtime manifest When compared with the public release manifest Then runtime asset coverage is exact (1.433417ms)
+  ✔ Given the release manifest When render scales are read Then every asset has a finite positive scale (0.211792ms)
+  ✔ Given target sprite categories When render scales are read Then effective heights match the target bands (0.27625ms)
+  ✔ Given an unsupported category When the manifest crosses the runtime boundary Then parsing rejects it (0.197916ms)
+  ✔ Given an unsafe asset path When the manifest crosses the runtime boundary Then parsing rejects it (0.069542ms)
+  ✔ Given non-positive image dimensions When the manifest crosses the runtime boundary Then parsing rejects it (0.059334ms)
+  ✔ Given missing or invalid render scales When the manifest crosses the runtime boundary Then parsing rejects them (0.072541ms)
+  ✔ Given the release manifest When metadata is queried before preload Then exact contracts are idle (0.103208ms)
+  ✔ Given concurrent callers When images load Then every asset loads once and remains cached (89.549958ms)
+  ✔ Given browser image errors When preload runs Then it resolves and marks assets missing (87.408625ms)
+  ✔ Given Image construction throws When preload runs Then it resolves and marks assets missing (85.668292ms)
+  ✔ Given assigning Image src throws When preload runs Then it resolves and marks assets missing (84.346959ms)
+✔ browser world asset registry (350.602292ms)
+✔ runtime metadata distinguishes accepted architecture from legacy and nonbuilding assets (0.076291ms)
+ℹ tests 44
+ℹ suites 3
+ℹ pass 44
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11786.255417

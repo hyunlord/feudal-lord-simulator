@@ -59,7 +59,7 @@ export const categoryForWorldAssetKey = (key: WorldAssetKey): Phase13AssetCatego
   return "terrain";
 };
 
-export const phase13SourceForWorldAsset = (key: WorldAssetKey): AssetSource => {
+export const phase13SourceForWorldAsset = (key: WorldAssetKey): Extract<AssetSource, { readonly seed: number }> => {
   const index = WORLD_ASSET_KEYS.indexOf(key);
   if (index < 0) throw new Phase13AcceptedReleaseError(`unknown Phase13 source key ${key}`);
   return { seed: 71300001 + index, candidate: 1 };

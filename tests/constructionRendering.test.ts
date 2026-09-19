@@ -252,7 +252,7 @@ test("drawConstructionSite records four active palisade construction stages alon
   assert.ok(signatures[3]?.includes("fillRect:65,35,2,8"));
 });
 
-test("drawPalisadeSegment renders a completed timber run and exactly one gate marker", () => {
+test("drawPalisadeSegment opens a timber passage with flanking piers and a raised lintel", () => {
   // Given
   const plainContext = loggedContext();
   const gateContext = loggedContext();
@@ -266,21 +266,23 @@ test("drawPalisadeSegment renders a completed timber run and exactly one gate ma
   } as const;
 
   // When
-  drawPalisadeSegment(plainContext, {
-    segment,
-    gate: null,
-    zoom: 1,
-  });
-  drawPalisadeSegment(gateContext, {
-    segment,
-    gate: { x: 3, y: 1 },
-    zoom: 1,
-  });
+  drawPalisadeSegment(plainContext, { segment, gate: null, zoom: 1 });
+  drawPalisadeSegment(gateContext, { segment, gate: { x: 3, y: 1 }, zoom: 1 });
 
   // Then
-  assert.equal(plainContext.calls.filter((call) => call.startsWith("fillRect:")).length, 4);
-  assert.equal(gateContext.calls.filter((call) => call.startsWith("fillRect:")).length, 5);
-  assert.ok(gateContext.calls.includes("fillRect:61,43,12,16"));
+  const plainPosts = plainContext.calls.filter((call) => call.startsWith("fillRect:"));
+  const gatePosts = gateContext.calls.filter((call) => call.startsWith("fillRect:"));
+  assert.equal(plainPosts.length, 4, "preserve four cumulative-distance posts on the completed run");
+  assert.equal(gatePosts.length, 4, "two distant wall posts plus two gate piers");
+  assert.equal(gatePosts.filter(call => call.endsWith(",8,32")).length, 2);
+  for (const call of gatePosts) {
+    const [x, , width] = call.slice("fillRect:".length).split(",").map(Number);
+    assert.ok(x !== undefined && width !== undefined);
+    assert.ok(x + width <= 39 || x >= 89, "ground posts stay outside the road passage");
+  }
+  assert.equal(gateContext.calls.filter(call => call === "moveTo:64,21").length, 2,
+    "both lintel halves meet above the walker's head");
+  assert.ok(!gateContext.calls.includes("fillRect:61,43,12,16"), "no solid gate marker blocks the passage");
 });
 
 test("constructionCompletionEffects derives a short pop and dust from previous and current snapshots only", () => {

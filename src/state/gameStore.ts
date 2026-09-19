@@ -1,6 +1,7 @@
 import {
   createContext,
   createElement,
+  Fragment,
   useCallback,
   useContext,
   useEffect,
@@ -10,6 +11,8 @@ import {
 } from "react";
 
 import { BALANCE } from "../content/balanceConfig";
+import { mergeHouses } from "../engine/houseMerge";
+import { demolishHouse } from "../engine/houseDemolition";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
@@ -73,7 +76,12 @@ function assertNever(action: never): never {
 }
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
+  if (state.settlement?.outcome === "abandoned") {
+    return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
+  }
   switch (action.type) {
+    case "restart_settlement":
+      return state;
     case "commit_simulation_state":
       return state === action.previousState ? action.nextState : state;
     case "place_building":
@@ -82,6 +90,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return placeRoadLine(state, action.start, action.destination);
     case "remove_road":
       return removeRoad(state, { tx: action.tx, ty: action.ty });
+    case "merge_houses":
+      return mergeHouses(state, action.sourceBuildingId, action.targetBuildingId);
+    case "demolish_house":
+      return demolishHouse(state, action.buildingId);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       return cancelConstruction({
@@ -102,6 +114,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
 export function GameProvider({ children }: GameProviderProps) {
   const [state, setState] = useState(DEFAULT_GAME_STATE);
+  const [sessionKey, setSessionKey] = useState(0);
   const stateRef = useRef(state);
   const previousRenderStateRef = useRef<Pick<GameState, "constructionSites" | "walkers">>(state);
   const loopRef = useRef<FixedTickLoop | null>(null);
@@ -116,12 +129,20 @@ export function GameProvider({ children }: GameProviderProps) {
         ? action.previousState
         : nextState;
     stateRef.current = nextState;
+    if (nextState.settlement?.outcome === "abandoned" || action.type === "restart_settlement") {
+      speedRef.current = 0;
+      setSpeedState(0);
+    }
+    if (action.type === "restart_settlement" && nextState !== currentState) {
+      setSessionKey(key => key + 1);
+    }
     setState(nextState);
   }, []);
 
   const interpolationAlpha = useCallback(() => loopRef.current?.interpolationAlpha() ?? 1, []);
 
   const setSpeed = useCallback((nextSpeed: GameSpeed) => {
+    if (stateRef.current.settlement?.outcome === "abandoned") return;
     speedRef.current = nextSpeed;
     setSpeedState(nextSpeed);
   }, []);
@@ -147,7 +168,7 @@ export function GameProvider({ children }: GameProviderProps) {
     () => ({ state, previousRenderState: previousRenderStateRef.current, interpolationAlpha, dispatch, speed, setSpeed }),
     [dispatch, interpolationAlpha, setSpeed, speed, state],
   );
-  return createElement(GameStoreContext.Provider, { value }, children);
+  return createElement(GameStoreContext.Provider, { value }, createElement(Fragment, { key: sessionKey }, children));
 }
 
 export function useGameStore(): GameStoreContextValue {

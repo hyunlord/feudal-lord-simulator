@@ -1,3 +1,4 @@
+import { canTraverseRoadBoundary } from "../world/bridges";
 import { SEMANTIC_PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { getTile } from "../world/grid";
@@ -9,8 +10,9 @@ import {
   roadPebbleVariants,
   type CardinalDirection,
 } from "./terrainDetails";
-import { TERRAIN_TEXTURE_COMPOSITE_OPACITY, getTerrainPattern, terrainPatternQuarterTurn, type TerrainPatternAssets } from "./terrainPatterns";
-import { snapToPixel } from "./style";
+import { getTerrainPattern, terrainPatternQuarterTurn, type TerrainPatternAssets } from "./terrainPatterns";
+import { snapToPixel, withAlpha } from "./style";
+import { roadGroundPolygons, type RoadGroundPoint } from "./organicRoadGeometry";
 
 type Point = { readonly x: number; readonly y: number };
 
@@ -60,31 +62,21 @@ export function drawRoadPath(
   const center = tileCenter(tile);
   const neighbours = Object.values(DIRECTION_OFFSET)
     .map(({ dx, dy }) => getTile(state, { tx: tile.tx + dx, ty: tile.ty + dy }))
-    .filter((candidate): candidate is Tile => candidate !== null);
+    .filter((candidate): candidate is Tile => candidate !== null && canTraverseRoadBoundary(state, tile, candidate));
   const arms = roadConnectionArms(tile, neighbours);
+  const polygons = roadGroundPolygons({ tx: tile.tx, ty: tile.ty, seed: state.seed, arms });
   const pattern = getTerrainPattern(
     context,
     "packed_earth_road",
     terrainPatterns,
     terrainPatternQuarterTurn("packed_earth_road", tile.tx, tile.ty, state.seed),
   );
-  if (pattern === null) {
-    context.fillStyle = SEMANTIC_PALETTE.earth;
-    traceRoadBase(context, center, arms);
-    context.fill();
-  } else {
-    fillRoadPattern(context, center, arms, pattern);
-  }
-
-  context.fillStyle = SEMANTIC_PALETTE.earthDark;
-  traceSmallDiamond(context, center, 8, 3);
+  context.fillStyle = SEMANTIC_PALETTE.earth;
+  traceRoadBase(context, polygons);
   context.fill();
-  for (const direction of arms) {
-    traceRutArm(context, center, direction);
-    context.fill();
-  }
+  if (pattern !== null) fillRoadPattern(context, center, polygons, pattern);
 
-  context.fillStyle = SEMANTIC_PALETTE.stoneDark;
+  context.fillStyle = withAlpha(SEMANTIC_PALETTE.stoneDark, 0.35);
   for (const [index, variant] of roadPebbleVariants(tile.tx, tile.ty, state.seed).entries()) {
     const x = center.x + ((variant >>> 4) % 19) - 9;
     const y = center.y + ((variant >>> 10) % 9) - 4 + index;
@@ -96,15 +88,15 @@ export function drawRoadPath(
 function fillRoadPattern(
   context: CanvasRenderingContext2D,
   center: Point,
-  arms: readonly CardinalDirection[],
+  polygons: readonly (readonly RoadGroundPoint[])[],
   pattern: CanvasPattern,
 ): void {
-  traceRoadBase(context, center, arms);
+  traceRoadBase(context, polygons);
   context.save();
   try {
     context.clip();
     context.fillStyle = pattern;
-    context.globalAlpha *= TERRAIN_TEXTURE_COMPOSITE_OPACITY;
+    context.globalAlpha *= 0.18;
     context.fillRect(
       snapToPixel(center.x - TILE_W / 2),
       snapToPixel(center.y - TILE_H / 2),
@@ -118,49 +110,17 @@ function fillRoadPattern(
 
 function traceRoadBase(
   context: CanvasRenderingContext2D,
-  center: Point,
-  arms: readonly CardinalDirection[],
+  polygons: readonly (readonly RoadGroundPoint[])[],
 ): void {
   context.beginPath();
-  appendSmallDiamond(context, center, 13, 6);
-  for (const direction of arms) appendRoadArm(context, center, direction);
-}
-
-function appendRoadArm(
-  context: CanvasRenderingContext2D,
-  center: Point,
-  direction: CardinalDirection,
-): void {
-  const { dx, dy } = DIRECTION_OFFSET[direction];
-  const endX = center.x + ((dx - dy) * TILE_W) / 2;
-  const endY = center.y + ((dx + dy) * TILE_H) / 2;
-  const vectorX = endX - center.x;
-  const vectorY = endY - center.y;
-  const length = Math.hypot(vectorX, vectorY);
-  if (length === 0) return;
-  const normalX = (-vectorY / length) * 5;
-  const normalY = (vectorX / length) * 5;
-  context.moveTo(snapToPixel(center.x + normalX), snapToPixel(center.y + normalY));
-  context.lineTo(snapToPixel(endX + normalX), snapToPixel(endY + normalY));
-  context.lineTo(snapToPixel(endX - normalX), snapToPixel(endY - normalY));
-  context.lineTo(snapToPixel(center.x - normalX), snapToPixel(center.y - normalY));
-  context.closePath();
-}
-
-function traceRutArm(
-  context: CanvasRenderingContext2D,
-  center: Point,
-  direction: CardinalDirection,
-): void {
-  const { dx, dy } = DIRECTION_OFFSET[direction];
-  const endX = center.x + ((dx - dy) * TILE_W) / 2;
-  const endY = center.y + ((dx + dy) * TILE_H) / 2;
-  context.beginPath();
-  context.moveTo(snapToPixel(center.x - 2), snapToPixel(center.y));
-  context.lineTo(snapToPixel(endX - 2), snapToPixel(endY));
-  context.lineTo(snapToPixel(endX + 2), snapToPixel(endY));
-  context.lineTo(snapToPixel(center.x + 2), snapToPixel(center.y));
-  context.closePath();
+  for (const polygon of polygons) {
+    for (const [index, point] of polygon.entries()) {
+      const screen = tileToScreen(point.tx, point.ty);
+      if (index === 0) context.moveTo(snapToPixel(screen.sx), snapToPixel(screen.sy));
+      else context.lineTo(snapToPixel(screen.sx), snapToPixel(screen.sy));
+    }
+    context.closePath();
+  }
 }
 
 function tileCenter(tile: Tile): Point {

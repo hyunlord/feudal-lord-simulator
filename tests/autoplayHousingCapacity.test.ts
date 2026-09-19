@@ -116,7 +116,7 @@ function foodChain(includeSecondMill: boolean): Building[] {
   ];
 }
 
-test("Given one extra cottage already matches food support When autoplay decides Then it does not over-expand housing", () => {
+test("Given five full cottages need more rations When autoplay decides Then it expands wheat before housing", () => {
   const homes = settledHomes(5);
   const current = state({
     buildings: [
@@ -130,13 +130,14 @@ test("Given one extra cottage already matches food support When autoplay decides
     roads: ROADS,
   });
 
-  assert.deepEqual(decideNextAction(current), { kind: "none" });
+  const action = decideNextAction(current);
+  assert.equal(action.kind === "place_building" && action.building, "wheat_farm");
 });
 
-test("Given two completed mills support one more cottage When housing is full Then autoplay adds exactly one house", () => {
+test("Given two mills and enough wheat support one more cottage When housing is full Then autoplay adds exactly one house", () => {
   const homes = settledHomes(4);
   const current = state({
-    buildings: [...homes, ...foodChain(true)],
+    buildings: [...homes, ...foodChain(true), building({ id: "wheat-c", kind: "wheat_farm", tx: 10, ty: 4, workers: 4 })],
     houses: homes.map(({ id }) => house(id)),
     population: 88,
     idleWorkers: 20,

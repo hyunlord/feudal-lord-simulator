@@ -18,18 +18,18 @@ export interface HousingDefinition {
 
 export const HOUSING_CONFIG = [
   { level: 0, name: "오두막", requires: [], capacity: 4 },
-  { level: 1, name: "농가", requires: ["water"], capacity: 8 },
-  { level: 2, name: "시민가옥", requires: ["water", "bread"], capacity: 14 },
+  { level: 1, name: "소가옥", requires: ["water"], capacity: 8 },
+  { level: 2, name: "장인가옥", requires: ["water", "bread"], capacity: 14 },
   {
     level: 3,
-    name: "장원저택",
+    name: "상인가옥",
     requires: ["water", "bread", "granary"],
     capacity: 22,
     granaryRadius: 12,
   },
   {
     level: 4,
-    name: "석조 연립가옥",
+    name: "도시 대가옥",
     requires: ["water", "bread", "market", "church", "protected"],
     capacity: 32,
   },

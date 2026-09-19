@@ -1,3 +1,4 @@
+import { houseGrowthPhase } from "../src/population/houseFood";
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -109,7 +110,7 @@ test("devolution waits for 400 continuous unmet ticks", () => {
   let current = house("home", {
     level: 2,
     hasWater: true,
-    breadStock: 1,
+    breadStock: 0,
     lastServicedTick: 0,
   });
 
@@ -144,56 +145,21 @@ test("a recovered requirement resets the devolution streak", () => {
   assert.equal(recovered.unmetRequirementTicks, 0);
 });
 
-test("population grows every 50 ticks with water and leaves when bread is absent over 300 ticks", () => {
-  const grow = updateHouse(
-    house("home", { level: 1, residents: 4, hasWater: true }),
-    { tick: BALANCE.GROWTH_INTERVAL, hasGranaryNearby: false },
-  );
+test("population grows on its household phase with food and leaves after tracked hunger", () => {
+  const tick = 3 * BALANCE.GROWTH_INTERVAL + houseGrowthPhase("home");
+  const grow = updateHouse(house("home", { residents: 4, hasWater: true, breadStock: 2 }), { tick, hasGranaryNearby: false });
   assert.equal(grow.residents, 5);
-
-  const boundary = updateHouse(
-    house("home", {
-      level: 1,
-      residents: 5,
-      hasWater: true,
-      breadStock: 0,
-    }),
-    { tick: BALANCE.STARVATION_WINDOW, hasGranaryNearby: false },
-  );
-  assert.equal(boundary.residents, 6);
-
-  const starving = updateHouse(
-    house("home", {
-      level: 1,
-      residents: 5,
-      hasWater: true,
-      breadStock: 0,
-    }),
-    {
-      tick: BALANCE.STARVATION_WINDOW + BALANCE.GROWTH_INTERVAL,
-      hasGranaryNearby: false,
-    },
-  );
+  const boundary = updateHouse(house("home", { residents: 5, hasWater: true, emptyFoodTicks: 299 }), { tick, hasGranaryNearby: false });
+  assert.equal(boundary.residents, 5);
+  const starving = updateHouse(house("home", { residents: 5, hasWater: true, emptyFoodTicks: 300 }), { tick, hasGranaryNearby: false });
   assert.equal(starving.residents, 4);
 });
 
-test("stale household bread does not suppress recency-based starvation", () => {
-  const stale = updateHouse(
-    house("home", {
-      level: 1,
-      residents: 5,
-      hasWater: true,
-      breadStock: 2,
-      lastServicedTick: 0,
-    }),
-    {
-      tick: BALANCE.STARVATION_WINDOW + BALANCE.GROWTH_INTERVAL,
-      hasGranaryNearby: false,
-    },
-  );
-
-  assert.equal(stale.breadStock, 2);
-  assert.equal(stale.residents, 4);
+test("old delivery dates do not make held bread expire", () => {
+  const tick = 3 * BALANCE.GROWTH_INTERVAL + houseGrowthPhase("home");
+  const fed = updateHouse(house("home", { residents: 5, hasWater: true, breadStock: 2, lastServicedTick: 0 }), { tick, hasGranaryNearby: false });
+  assert.equal(fed.breadStock, 2);
+  assert.equal(fed.residents, 6);
 });
 
 test("level three granary proximity includes the full 2x2 footprint", () => {

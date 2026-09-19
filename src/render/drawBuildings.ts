@@ -1,11 +1,18 @@
+import { drawHouseCompoundSprite } from "./houseCompoundAssets";
+import { drawHistoricalHouse } from "./historicalHouseAssets";
+import { drawHistoricalFacility } from "./historicalFacilityAssets";
+import { drawHouseCondition } from "./houseConditionOverlay";
+import { drawFarmDetail, drawFarmSoil } from "./farmAssets";
+import { drawHouseCompound } from "./houseCompound";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { Building } from "../economy/economy.types";
 import { PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
 import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
 import { tileToScreen } from "./iso";
+import { spriteMeta } from "./worldAssets";
 import { drawKindDetail } from "./drawBuildingDetails";
 import { buildBuildingVisualState, renderDetailLevel } from "./buildingVisualState";
 import { houseMaterialEraFromEra, type HouseMaterialWave } from "./buildingMaterialWave";
@@ -40,6 +47,7 @@ type ObjectRenderInput = {
   readonly hoveredTile?: TileCoordinate | null;
   readonly viewMode?: ObjectRenderViewMode;
   readonly denseBuildingIds?: ReadonlySet<string>;
+  readonly farmSoilDrawn?: boolean;
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -59,6 +67,11 @@ export function drawBuildings(
   });
   const spriteOptions = spriteOptionsFor(input);
   const denseIds = input.denseBuildingIds ?? denseBuildingClusterIds(input.state.buildings);
+  if (!input.farmSoilDrawn && (input.viewMode ?? "normal") !== "outlines") {
+    for (const item of items) {
+      if (item.kind === "building") drawFarmSoil(context, item.building, input.state.buildings);
+    }
+  }
   for (const item of items) {
     if (item.kind === "starting_landmark") {
       drawStartingLandmark(context, item.landmark, input.zoom);
@@ -97,7 +110,10 @@ function drawBuilding(
   denseBuildingIds: ReadonlySet<string>,
 ): void {
   if ((input.viewMode ?? "normal") === "outlines") {
-    drawBuildingSilhouette(context, building, input.zoom);
+    if (building.kind === "house" && building.houseLot !== undefined) {
+      const level = buildBuildingVisualState(building, input.state.houses).houseLevel;
+      drawWithAlpha(context, OBJECT_OUTLINE_ALPHA, () => drawHouseCompound(context, building, level, "blocks", true));
+    } else drawBuildingSilhouette(context, building, input.zoom);
     return;
   }
   const visualState = buildBuildingVisualState(building, input.state.houses, {
@@ -107,6 +123,7 @@ function drawBuilding(
   });
   const alpha = normalBuildingAlpha({
     cursorOverlaps: input.hoveredTile !== undefined && input.hoveredTile !== null && buildingSpriteOverlapsCursorTile({
+      state: input.state,
       building,
       houseLevel: visualState.houseLevel,
       hoveredTile: input.hoveredTile,
@@ -137,10 +154,34 @@ function drawBuildingDetail(
     nowMs: input.nowMs ?? 0,
   });
   const detailLevel = renderDetailLevel(input.zoom);
+  if (building.kind === "wheat_farm" && drawFarmDetail(context, building, input.state.buildings)) {
+    if (detailLevel === "full") {
+      drawKindDetail(context, { architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
+    }
+    return;
+  }
+  if (building.kind === "house" && building.houseLot !== undefined) {
+    if (detailLevel !== "full" || !drawHouseCompoundSprite(context, building, visualState.houseLevel)) {
+      drawHouseCompound(context, building, visualState.houseLevel, detailLevel);
+    } else drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
+    drawKindDetail(context, { architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
+    return;
+  }
   if (detailLevel === "full") {
-    const spriteDrawn = drawWorldSprite(context, buildingSpriteKey(building, visualState.houseLevel), building.tx, building.ty, spriteOptions);
+    const historical = building.kind === "house"
+      ? drawHistoricalHouse(context, building, visualState.houseLevel)
+      : drawHistoricalFacility(context, building, input.state);
+    if (historical) {
+      if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
+      drawKindDetail(context, { architecture: "baked", tick: input.state.tick, center,
+        kind: building.kind, zoom: input.zoom, visualState });
+      return;
+    }
+    const spriteKey = buildingSpriteKey(building, visualState.houseLevel);
+    const spriteDrawn = drawWorldSprite(context, spriteKey, building.tx, building.ty, spriteOptions);
     if (spriteDrawn) {
       drawKindDetail(context, {
+        architecture: spriteMeta(spriteKey)?.bakedArchitecture === true ? "baked" : "procedural",
         tick: input.state.tick,
         center,
         kind: building.kind,
@@ -179,7 +220,7 @@ function drawBuildingSilhouette(
   building: Building,
   zoom: number,
 ): void {
-  const config = BUILDING_CONFIG_BY_KIND[building.kind];
+  const config = buildingFootprint(building);
   const rear = tileToScreen(building.tx, building.ty);
   const front = tileToScreen(building.tx + config.width - 1, building.ty + config.height - 1);
   context.fillStyle = PALETTE.ink;
@@ -210,7 +251,7 @@ function drawWithAlpha(
 }
 
 function buildingCenter(building: Building): Point {
-  const config = BUILDING_CONFIG_BY_KIND[building.kind];
+  const config = buildingFootprint(building);
   const center = tileToScreen(building.tx + (config.width - 1) / 2, building.ty + (config.height - 1) / 2);
   return { x: center.sx, y: center.sy };
 }

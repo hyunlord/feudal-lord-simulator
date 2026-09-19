@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building, BuildingKind } from "../src/content/buildingConfig";
-import { PALETTE } from "../src/content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { House } from "../src/population/population.types";
 import { drawKindDetail } from "../src/render/drawBuildingDetails";
 import {
@@ -93,7 +93,7 @@ test("house body profile visibly changes for each housing level", () => {
       { height: 20, roof: 16, roofShape: "triangle" },
       { height: 30, roof: 18, roofShape: "triangle" },
       { height: 42, roof: 16, roofShape: "gable" },
-      { height: 52, roof: 20, roofShape: "tower" },
+      { height: 52, roof: 20, roofShape: "gable" },
     ],
   );
 });
@@ -223,11 +223,11 @@ test("problem marker is vermilion and only appears for actual blocked production
 
   // Then
   assert.ok(blockedContext.calls.includes(`fillStyle:${PALETTE.vermilion}`));
-  assert.ok(blockedContext.calls.some((call) => call === "arc:96,47,5"));
+  assert.ok(blockedContext.calls.some((call) => call === "arc:96,48,3"));
   assert.ok(inactiveContext.calls.every((call) => call !== `fillStyle:${PALETTE.vermilion}`));
 });
 
-test("problem markers use enlarged true-condition glyphs with a gentle pulse", () => {
+test("problem markers retain four distinct true-condition glyphs in a compact parchment badge", () => {
   // Given
   const dryHouse = house("home", 1);
   const hungryHouse = { ...house("hungry", 2), breadStock: 0 };
@@ -273,18 +273,19 @@ test("problem markers use enlarged true-condition glyphs with a gentle pulse", (
   });
 
   // Then
-  assert.ok(dryContext.calls.some((call) => call === "moveTo:96,37"), "water drop has a pointed top");
-  assert.ok(breadContext.calls.some((call) => call.startsWith("ellipse:96,51,")), "bread loaf uses a rounded loaf silhouette");
-  assert.ok(labourContext.calls.some((call) => call.startsWith("arc:96,47,")), "worker figure has a head glyph");
-  assert.ok(storageContext.calls.some((call) => call === "lineTo:104,59"), "full crate has a boxed corner");
-  assert.ok(
-    [...dryContext.calls, ...breadContext.calls, ...labourContext.calls, ...storageContext.calls]
-      .some((call) => /(?:arc|ellipse):[^,]+,[^,]+,(?:8|9|10|11)/.test(call)),
-    "markers are larger than the old radius-three dot",
-  );
+  assert.ok(dryContext.calls.some((call) => call === "moveTo:96,44"), "water drop has a pointed top");
+  assert.ok(breadContext.calls.some((call) => call.startsWith("ellipse:96,50,")), "bread loaf uses a rounded loaf silhouette");
+  assert.ok(labourContext.calls.some((call) => call.startsWith("arc:96,48,")), "worker figure has a head glyph");
+  assert.ok(storageContext.calls.some((call) => call === "lineTo:100,54"), "full crate has a boxed corner");
+  for (const context of [dryContext, breadContext, labourContext, storageContext]) {
+    assert.ok(context.calls.includes(`fillStyle:${SEMANTIC_PALETTE.vellum}`));
+    assert.ok(context.calls.includes(`strokeStyle:${SEMANTIC_PALETTE.inkLight}`));
+    assert.ok(context.calls.includes("moveTo:89,41"), "badge starts within its 20-unit width");
+    assert.ok(context.calls.includes("lineTo:94,64"), "short pointer anchors the badge to its building");
+  }
 });
 
-test("problem marker pulse changes glyph size without changing the true condition", () => {
+test("problem marker geometry stays steady across ticks without changing the true condition", () => {
   // Given
   const noWorkers = building("camp", "logging_camp", { workers: 1 });
   const firstContext = loggedContext();
@@ -308,9 +309,32 @@ test("problem marker pulse changes glyph size without changing the true conditio
   });
 
   // Then
-  assert.notDeepEqual(
-    laterContext.calls.filter((call) => call.startsWith("arc:")),
-    firstContext.calls.filter((call) => call.startsWith("arc:")),
-  );
+  assert.deepEqual(laterContext.calls, firstContext.calls);
   assert.deepEqual(visualState, buildBuildingVisualState(noWorkers, []));
+});
+
+test("baked architecture suppresses duplicate doors and racks while retaining condition status markers", () => {
+  const context = loggedContext();
+  for (const kind of ["well", "storehouse", "granary", "logging_camp", "sawmill"] as const) {
+    drawKindDetail(context, {
+      tick: 9, center: { x: 100, y: 100 }, kind, zoom: 1,
+      architecture: "baked",
+      visualState: { houseLivingLevel: 0, houseCondition: "maintained", houseLevel: 0, houseMaterialEra: "hamlet", houseProblem: null, production: "idle" },
+    });
+  }
+  assert.equal(context.calls.length, 0);
+  drawKindDetail(context, {
+    tick: 9, center: { x: 100, y: 100 }, kind: "house", zoom: 1,
+    architecture: "baked",
+    visualState: { houseLivingLevel: 3, houseCondition: "maintained", houseLevel: 3, houseMaterialEra: "hamlet", houseProblem: null, production: "idle" },
+  });
+  assert.equal(context.calls.length, 0);
+  drawKindDetail(context, {
+    tick: 9, center: { x: 100, y: 100 }, kind: "house", zoom: 1,
+    architecture: "baked",
+    visualState: { houseLivingLevel: 3, houseCondition: "maintained", houseLevel: 3, houseMaterialEra: "hamlet", houseProblem: "water", production: "idle" },
+  });
+  assert.ok(context.calls.includes("fill"));
+  assert.ok(context.calls.some((call) => call.startsWith("arc:")));
+  assert.ok(!context.calls.includes("moveTo:95,85"));
 });

@@ -195,7 +195,7 @@ test("cancelled cargo reserves its home capacity until the returning carter rest
     BUILDING_CONFIG_BY_KIND.logging_camp,
   );
   assert.equal(blocked.produced, null);
-  assert.equal(blocked.building.productionProgress, 50);
+  assert.equal(blocked.building.productionProgress, reservedHome.productionProgress);
   assert.equal(blocked.building.inventory.logs, 12);
 
   const recovered = stepCarters({

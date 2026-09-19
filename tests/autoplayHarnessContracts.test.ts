@@ -8,7 +8,8 @@ import { decideNextAction } from "../src/engine/autoplay";
 import type { AutoplayAction } from "../src/engine/autoplay.types";
 import type { GameState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
-import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { autoplayActionToGameAction } from "../src/engine/autoplayActions";
+import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import type { Tile } from "../src/world/world.types";
 import { formatEconomyHarnessReport, runMainEconomyHarness } from "../scripts/economyHarness";
 import { trackAutoplayRun } from "../scripts/economyHarnessAutoplay";
@@ -121,11 +122,15 @@ test("autoplay road actions expose canonical tile endpoints", () => {
 });
 
 test("Given the economy harness When autoplay runs Then it uses the same advisor decisions without duplicate scripted logic", () => {
-  const base = state({ buildings: [building({ id: "house-a", kind: "house", tx: 5, ty: 5 })], houses: [house("house-a")] });
+  const base = state({ buildings: [building({ id: "house-a", kind: "house", tx: 5, ty: 5 })], houses: [house("house-a")], roads: ["1,5", "2,5", "3,5", "4,5"] });
   const report = trackAutoplayRun({ initialState: base, ticks: 240 });
 
   assert.equal(report.appliedActions.length > 0, true);
-  assert.deepEqual(report.appliedActions[0]?.advisorAction, decideNextAction(base));
+  const expectedAdvice = decideNextAction(base);
+  assert.deepEqual(report.appliedActions[0]?.advisorAction, expectedAdvice);
+  const gameAction = autoplayActionToGameAction(expectedAdvice, base);
+  assert.ok(gameAction);
+  assert.notEqual(gameReducer(base, gameAction), base, "the shared decision must perform a real legal action");
 });
 
 test("Given the default opening When autoplay runs for ten minutes Then its food chain completes and the settlement survives", () => {

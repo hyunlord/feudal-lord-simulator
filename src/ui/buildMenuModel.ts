@@ -72,7 +72,7 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   granary: "밀과 빵을 보관합니다",
   chapel: "목책마을 선포 조건을 준비합니다",
   well: "주변 집에 물을 공급합니다",
-  road: "드래그로 길을 잇고 기존 길 클릭으로 걷어냅니다",
+  road: "육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다",
 };
 
 function requirementsFor(kind: BuildingKind): readonly string[] {

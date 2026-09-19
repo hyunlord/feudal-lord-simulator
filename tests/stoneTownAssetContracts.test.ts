@@ -197,7 +197,8 @@ describe("Stone Town asset generation contracts", () => {
       range: { minTx: 0, minTy: 0, maxTx: 8, maxTy: 3 },
       zoom: 0.7,
     });
-    drawPalisadeSegment(context, {
+    const wallContext = loggedContext();
+    drawPalisadeSegment(wallContext, {
       segment: {
         id: "stone-wall",
         order: 0,
@@ -214,6 +215,10 @@ describe("Stone Town asset generation contracts", () => {
     });
 
     assert.equal(context.calls.filter((call) => call === "fill").length >= 6, true);
-    assert.ok(context.calls.includes("fillRect"));
+    assert.equal(wallContext.calls.includes("fillRect"), false);
+    assert.equal(wallContext.calls.filter(call => call === "fill").length, 20);
+    assert.equal(wallContext.calls.filter(call => call === "closePath").length, 20);
+    assert.equal(wallContext.strokeStyle, RAMPS.stone[1]);
+    assert.equal(wallContext.fillStyle, RAMPS.stone[3]);
   });
 });

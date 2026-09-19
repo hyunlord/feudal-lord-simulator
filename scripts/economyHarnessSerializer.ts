@@ -5,6 +5,8 @@ import type { Building } from "../src/content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../src/content/resourceConfig";
 import type { ConstructionSite } from "../src/economy/construction";
 import type { ForestHarvest, GameState, PalisadeSegment, PalisadeState } from "../src/engine/engine.types";
+import { wallGatePoints } from "../src/world/wallTraversal";
+import { houseBuiltLevel } from "../src/population/houseCondition";
 import type { House } from "../src/population/population.types";
 
 function assertNever(value: never): never {
@@ -30,6 +32,7 @@ export function sortedResources(
 
 function normalizeBuilding(building: Building) {
   return {
+    ...(building.houseLot === undefined ? {} : { houseLot: building.houseLot }),
     id: building.id,
     kind: building.kind,
     tx: building.tx,
@@ -91,13 +94,16 @@ function normalizeConstructionSite(site: ConstructionSite) {
   }
 }
 
-function normalizeHouse(house: House) {
+function normalizeHouse(house: House, mergedLot: boolean) {
   return {
+    ...(!mergedLot || house.starvationGraceUntilTick === undefined ? {} : { starvationGraceUntilTick: house.starvationGraceUntilTick }),
     buildingId: house.buildingId,
     level: house.level,
+    ...(houseBuiltLevel(house) === house.level ? {} : { builtLevel: houseBuiltLevel(house) }),
     residents: house.residents,
     hasWater: house.hasWater,
     breadStock: house.breadStock,
+    ...((house.emptyFoodTicks ?? 0) === 0 ? {} : { emptyFoodTicks: house.emptyFoodTicks }),
     lastServicedTick: house.lastServicedTick,
     unmetRequirementTicks: house.unmetRequirementTicks,
   };
@@ -124,6 +130,9 @@ function normalizePalisade(palisade: PalisadeState | null) {
         id: palisade.id,
         polygon: palisade.polygon,
         gate: palisade.gate,
+        ...(wallGatePoints(palisade).length <= 1 ? {} : {
+          additionalGates: wallGatePoints(palisade).slice(1).sort((left, right) => left.y - right.y || left.x - right.x),
+        }),
         segments: [...palisade.segments]
           .sort((left, right) => left.order - right.order || left.id.localeCompare(right.id))
           .map(normalizePalisadeSegment),
@@ -185,6 +194,7 @@ export function hashEconomyState(state: GameState): string {
     wallTick: state.wallTick,
     era: state.era,
     eraProclaimedTick: state.eraProclaimedTick,
+    ...(state.settlement === undefined ? {} : { settlement: state.settlement }),
     palisade: normalizePalisade(state.palisade),
     nextConstructionOrdinal: state.nextConstructionOrdinal,
     population: state.population,
@@ -195,7 +205,7 @@ export function hashEconomyState(state: GameState): string {
     constructionSites: [...state.constructionSites]
       .sort((left, right) => left.id.localeCompare(right.id))
       .map(normalizeConstructionSite),
-    houses: [...state.houses].sort((left, right) => left.buildingId.localeCompare(right.buildingId)).map(normalizeHouse),
+    houses: [...state.houses].sort((left, right) => left.buildingId.localeCompare(right.buildingId)).map((house) => normalizeHouse(house, state.buildings.some((building) => building.id === house.buildingId && building.houseLot !== undefined))),
     walkers: [...state.walkers].sort((left, right) => left.id.localeCompare(right.id)).map(normalizeWalker),
     forestHarvests: [...(state.forestHarvests ?? [])]
       .sort((left, right) => left.harvestedAtTick - right.harvestedAtTick || left.ty - right.ty || left.tx - right.tx)
@@ -214,14 +224,17 @@ export function hashOpeningState(state: GameState): string {
     treasuryCoin: state.treasuryCoin,
     buildings: [...state.buildings]
       .sort((left, right) => left.id.localeCompare(right.id))
-      .map(({ id, kind, tx, ty, workers }) => ({ id, kind, tx, ty, workers })),
+      .map(({ id, kind, tx, ty, workers, houseLot }) => ({ id, kind, tx, ty, workers,
+        ...(houseLot === undefined ? {} : { houseLot }),
+      })),
     houses: [...state.houses]
       .sort((left, right) => left.buildingId.localeCompare(right.buildingId))
-      .map(({ buildingId, level, residents, hasWater }) => ({
-        buildingId,
-        level,
-        residents,
-        hasWater,
+      .map((house) => ({
+        buildingId: house.buildingId,
+        level: house.level,
+        ...(houseBuiltLevel(house) === house.level ? {} : { builtLevel: houseBuiltLevel(house) }),
+        residents: house.residents,
+        hasWater: house.hasWater,
       })),
     roads: state.tiles
       .filter((tile) => tile.hasRoad)

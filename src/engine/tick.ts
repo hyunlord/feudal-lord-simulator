@@ -1,6 +1,9 @@
+import { householdServices } from "./householdServices";
+import { updateSettlementProgress } from "./settlementProgress";
 import { stepCarters, spawnCarters } from "../agents/delivery";
 import { spawnDistributors, stepDistributors } from "../agents/roaming";
 import type { RoamingHouse, RoamingJunctionInput } from "../agents/roaming";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import {
   advanceConstructionSites,
@@ -32,10 +35,12 @@ function toRoamingHouse(
   return building === undefined
     ? null
     : {
+        ...buildingFootprint(building),
         buildingId: house.buildingId,
         tx: building.tx,
         ty: building.ty,
         breadStock: house.breadStock,
+        residents: house.residents,
         lastServicedTick: house.lastServicedTick,
       };
 }
@@ -91,6 +96,7 @@ function rngForState(state: GameState) {
 }
 
 export function advanceSimulationSubstep(state: GameState): GameState {
+  if (state.settlement?.outcome === "abandoned") return state;
   const tick = state.tick + 1;
   const inventory = createDeliveryInventoryPort();
   const routePorts = createSimulationRoutePorts(state);
@@ -115,28 +121,32 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     routes: routePorts.roaming,
     rngForJunction: rngForState({ ...state, tick }),
   });
+  // The opening population staffs this whole substep; new arrivals enter work next tick.
+  const labour = allocateBuildingAndConstructionLabour(
+    movedDistributors.buildings,
+    movedCarters.constructionSites,
+    state.population,
+    { era: state.era, tick, eraProclaimedTick: state.eraProclaimedTick },
+    (building) => buildingHasRequiredRoadAccess(state, building),
+  );
+  const servedHouses = mergeRoamingHouses(state.houses, movedDistributors.houses);
   const marketSettled = settleMarkets({
     ...state,
     tick,
-    buildings: [...movedDistributors.buildings],
+    houses: [...servedHouses],
+    buildings: [...labour.buildings],
     walkers: [...movedDistributors.walkers],
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: state.treasuryCoin,
   });
-  const servedHouses = mergeRoamingHouses(state.houses, movedDistributors.houses);
-  const housing = updateHousing(servedHouses, marketSettled.buildings, tick, state.palisade);
-  const labour = allocateBuildingAndConstructionLabour(
-    marketSettled.buildings,
-    movedCarters.constructionSites,
-    housing.population,
-    { era: state.era, tick, eraProclaimedTick: state.eraProclaimedTick },
-  );
+  const housing = updateHousing(servedHouses, marketSettled.buildings, tick, state.palisade,
+    undefined, householdServices(marketSettled));
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
   const produced = runProduction({
     ...state,
     tick,
-    buildings: [...labour.buildings],
+    buildings: [...marketSettled.buildings],
     constructionSites: [...labour.constructionSites],
     houses: [...housing.houses],
     walkers,
@@ -180,7 +190,8 @@ export function advanceSimulationSubstep(state: GameState): GameState {
 }
 
 export function advanceTick(state: GameState): GameState {
-  return completeEligibleConstruction(
+  if (state.settlement?.outcome === "abandoned") return state;
+  return updateSettlementProgress(completeEligibleConstruction(
     advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }),
-  );
+  ));
 }

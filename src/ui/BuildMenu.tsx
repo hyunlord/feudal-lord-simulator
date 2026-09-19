@@ -1,17 +1,12 @@
-import { Fragment, useId } from "react";
+import { useEffect, useId, useState } from "react";
 
 import { KO_UI } from "../content/locale.ko";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_GAME_STATE } from "../state/gameStore";
 import { BuildGlyph } from "./BuildGlyph";
-import {
-  buildMenuGroups,
-  buildToolAffordability,
-  buildToolTooltipLines,
-  ROAD_TOOL_OPTION,
-  type BuildToolOption,
-} from "./buildMenuModel";
+import { buildMenuGroups, buildToolAffordability, buildToolTooltipLines, ROAD_TOOL_OPTION, type BuildToolOption } from "./buildMenuModel";
+import { BUILD_CATEGORIES, buildCategory, buildCostLabel, buildThumbnail, type BuildCategory } from "./buildMenuPresentation";
 
 type BuildSealsProps = {
   readonly selectedTool: PlacementTool | null;
@@ -20,86 +15,80 @@ type BuildSealsProps = {
   readonly onSelect: (tool: PlacementTool | null) => void;
 };
 
-export function BuildSeals({
-  selectedTool,
-  state,
-  highlightedTools = [],
-  onSelect,
-}: BuildSealsProps) {
-  const idPrefix = useId().replaceAll(":", "");
+export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect }: BuildSealsProps) {
+  const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
-  const groups = buildMenuGroups(menuState);
+  const options = buildMenuGroups(menuState).flatMap((group) => group.options);
+  const [category, setCategory] = useState<BuildCategory>(() => {
+    const initialTool = selectedTool ?? highlightedTools[0] ?? "house";
+    return buildCategory(initialTool);
+  });
+  const [preview, setPreview] = useState<PlacementTool | null>(null);
+  useEffect(() => {
+    if (selectedTool !== null) setCategory(buildCategory(selectedTool));
+  }, [selectedTool]);
+  const visibleOptions = options.filter((option) => buildCategory(option.tool) === category);
+  const detailTool = preview ?? selectedTool ?? visibleOptions[0]?.tool ?? "road";
+  const detailOption = detailTool === "road" ? ROAD_TOOL_OPTION : options.find((option) => option.tool === detailTool) ?? ROAD_TOOL_OPTION;
+  const detailLines = buildToolTooltipLines(detailOption.tool, menuState);
+  const affordable = buildToolAffordability(detailOption.tool, menuState).affordable;
+
+  const toolButton = (option: BuildToolOption) => {
+    const toolAffordable = buildToolAffordability(option.tool, menuState).affordable;
+    const selected = selectedTool === option.tool;
+    const thumbnail = buildThumbnail(option.tool);
+    return (
+      <button key={option.tool} type="button"
+        className={`build-seal build-tool${selected ? " build-tool--selected" : ""}`}
+        aria-label={option.label} aria-describedby={`${id}-tool-${option.tool}`} aria-pressed={selected}
+        aria-disabled={!toolAffordable} data-affordable={String(toolAffordable)}
+        data-highlighted={highlightedTools.includes(option.tool) ? option.tool : undefined}
+        title={buildToolTooltipLines(option.tool, menuState).join("\n")}
+        onMouseEnter={() => setPreview(option.tool)} onMouseLeave={() => setPreview(null)}
+        onFocus={() => setPreview(option.tool)} onBlur={() => setPreview(null)}
+        onClick={() => { if (toolAffordable) onSelect(option.tool); }}>
+        <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
+        <span className="build-tool-art" aria-hidden="true">
+          {thumbnail === null ? <BuildGlyph tool={option.tool} /> : <img src={thumbnail} width="80" height="64" alt="" draggable={false} />}
+        </span>
+        <span className="build-seal-label" aria-hidden="true">{option.label}</span>
+        <span className="build-tool-cost">{buildCostLabel(option)}</span>
+        {!toolAffordable && <span className="build-tool-shortfall">자원 부족</span>}
+      </button>
+    );
+  };
 
   return (
-    <div className="build-seals" role="group" aria-label={KO_UI.placementSeals}>
-      {groups.map((group) => (
-        <section key={group.key} className="build-group" role="group" aria-label={`${group.label} 도구`}>
-          <span className="build-group-label">{group.label}</span>
-          <div className="build-group-seals">
-            {group.options.map((option) =>
-              renderSeal({ option, idPrefix, menuState, selectedTool, highlightedTools, onSelect }),
-            )}
-          </div>
-        </section>
-      ))}
-      <div className="road-tool" role="group" aria-label={KO_UI.roadTool}>
-        {renderSeal({
-          option: ROAD_TOOL_OPTION,
-          idPrefix,
-          menuState,
-          selectedTool,
-          highlightedTools,
-          onSelect,
-        })}
+    <div className="build-menu" role="group" aria-label={KO_UI.placementSeals}>
+      <div className="build-menu-categories" role="group" aria-label="건설 분류">
+        {BUILD_CATEGORIES.map((item) => (
+          <button key={item.key} type="button" className="build-menu-category"
+            aria-pressed={category === item.key} aria-controls={`${id}-${item.key}`}
+            onClick={() => { setCategory(item.key); setPreview(null); }}>
+            {item.label}
+            {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
+          </button>
+        ))}
+      </div>
+      <div className="build-menu-body">
+        <div className="build-menu-quick-road" role="group" aria-label={KO_UI.roadTool}>{toolButton(ROAD_TOOL_OPTION)}</div>
+        <div className="build-menu-catalog">
+          {BUILD_CATEGORIES.map((item) => (
+            <section key={item.key} id={`${id}-${item.key}`} hidden={category !== item.key} aria-label={`${item.label} 도구`} className="build-menu-tools">
+              {options.filter((option) => buildCategory(option.tool) === item.key).map(toolButton)}
+              {item.key === "road" && <p className="build-menu-empty">드래그로 길을 연결하세요. 강 양쪽을 직선으로 이으면 목교를 놓습니다.<br />다리는 물 한 칸당 목재 4, 최대 8칸입니다. 다리나 접속 길을 누르면 다리 전체를 걷습니다.</p>}
+              {item.key === "defense" && !options.some((option) => buildCategory(option.tool) === "defense") && <p className="build-menu-empty">성채는 석조 도시에서 건설할 수 있습니다.</p>}
+            </section>
+          ))}
+        </div>
+        <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내">
+          <div className="build-menu-detail-heading"><strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span></div>
+          <p>{detailOption.purpose}</p>
+          <p>{detailOption.requirements.join(" · ")}</p>
+          <p className={affordable ? "build-menu-ready" : "build-menu-shortfall"}>{detailLines.at(-1)}</p>
+          <span className="build-menu-instruction">{selectedTool === null ? "건물 선택 후 지도에 배치" : "지도 클릭으로 설치 · Esc 취소"}</span>
+        </div>
       </div>
     </div>
-  );
-}
-
-type RenderSealInput = {
-  readonly option: BuildToolOption;
-  readonly idPrefix: string;
-  readonly menuState: GameState;
-  readonly selectedTool: PlacementTool | null;
-  readonly highlightedTools: readonly PlacementTool[];
-  readonly onSelect: (tool: PlacementTool | null) => void;
-};
-
-function renderSeal(input: RenderSealInput) {
-  const tooltipId = `${input.idPrefix}-seal-tip-${input.option.tool}`;
-  const affordability = buildToolAffordability(input.option.tool, input.menuState);
-  const isSelected = input.selectedTool === input.option.tool;
-  const isHighlighted = input.highlightedTools.includes(input.option.tool);
-  const className = [
-    "build-seal",
-    isSelected ? "build-seal--selected" : null,
-    isHighlighted ? "build-seal--highlighted" : null,
-    input.option.tool === "road" ? "build-seal--road" : null,
-  ].filter((item) => item !== null).join(" ");
-
-  return (
-    <Fragment key={input.option.tool}>
-      <button
-        className={className}
-        type="button"
-        aria-label={input.option.label}
-        aria-describedby={tooltipId}
-        aria-disabled={!affordability.affordable}
-        aria-pressed={isSelected}
-        data-affordable={affordability.affordable ? "true" : "false"}
-        data-highlighted={isHighlighted ? input.option.tool : undefined}
-        onClick={() => {
-          if (affordability.affordable) input.onSelect(input.option.tool);
-        }}
-      >
-        <BuildGlyph tool={input.option.tool} />
-        <span className="build-seal-label" aria-hidden="true">{input.option.label}</span>
-      </button>
-      <span id={tooltipId} className="seal-tooltip" role="tooltip">
-        {buildToolTooltipLines(input.option.tool, input.menuState).map((line) => (
-          <span key={line}>{line}</span>
-        ))}
-      </span>
-    </Fragment>
   );
 }

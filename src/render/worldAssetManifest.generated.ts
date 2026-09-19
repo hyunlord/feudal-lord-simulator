@@ -7,6 +7,7 @@ export const runtimeWorldAssetManifest = {
       "width": 96,
       "height": 112,
       "renderScale": 0.5142857142857143,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 48,
         "y": 96
@@ -23,6 +24,7 @@ export const runtimeWorldAssetManifest = {
       "width": 96,
       "height": 120,
       "renderScale": 0.48000000000000004,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 48,
         "y": 104
@@ -39,6 +41,7 @@ export const runtimeWorldAssetManifest = {
       "width": 96,
       "height": 144,
       "renderScale": 0.5777777777777778,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 48,
         "y": 128
@@ -55,13 +58,14 @@ export const runtimeWorldAssetManifest = {
       "width": 160,
       "height": 192,
       "renderScale": 0.43333333333333335,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 80,
         "y": 176
       },
       "footprint": {
-        "width": 2,
-        "height": 2
+        "width": 1,
+        "height": 1
       }
     },
     {
@@ -71,6 +75,7 @@ export const runtimeWorldAssetManifest = {
       "width": 96,
       "height": 160,
       "renderScale": 0.44000000000000006,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 48,
         "y": 144
@@ -87,6 +92,7 @@ export const runtimeWorldAssetManifest = {
       "width": 160,
       "height": 144,
       "renderScale": 0.48888888888888893,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 80,
         "y": 128
@@ -103,6 +109,7 @@ export const runtimeWorldAssetManifest = {
       "width": 72,
       "height": 80,
       "renderScale": 0.72,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 36,
         "y": 64
@@ -119,6 +126,7 @@ export const runtimeWorldAssetManifest = {
       "width": 160,
       "height": 136,
       "renderScale": 0.5176470588235295,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 80,
         "y": 120
@@ -135,6 +143,7 @@ export const runtimeWorldAssetManifest = {
       "width": 160,
       "height": 96,
       "renderScale": 0.7333333333333334,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 80,
         "y": 80
@@ -151,6 +160,7 @@ export const runtimeWorldAssetManifest = {
       "width": 96,
       "height": 104,
       "renderScale": 0.676923076923077,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 48,
         "y": 88
@@ -167,6 +177,7 @@ export const runtimeWorldAssetManifest = {
       "width": 112,
       "height": 112,
       "renderScale": 0.6285714285714287,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 56,
         "y": 96
@@ -183,6 +194,7 @@ export const runtimeWorldAssetManifest = {
       "width": 160,
       "height": 120,
       "renderScale": 0.5866666666666667,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 80,
         "y": 104
@@ -199,6 +211,7 @@ export const runtimeWorldAssetManifest = {
       "width": 112,
       "height": 120,
       "renderScale": 0.5866666666666667,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 56,
         "y": 104
@@ -215,6 +228,7 @@ export const runtimeWorldAssetManifest = {
       "width": 176,
       "height": 136,
       "renderScale": 0.5176470588235295,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 88,
         "y": 120
@@ -231,6 +245,7 @@ export const runtimeWorldAssetManifest = {
       "width": 176,
       "height": 208,
       "renderScale": 0.49230769230769234,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 88,
         "y": 192
@@ -247,6 +262,7 @@ export const runtimeWorldAssetManifest = {
       "width": 176,
       "height": 232,
       "renderScale": 0.44137931034482764,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 88,
         "y": 216
@@ -263,6 +279,7 @@ export const runtimeWorldAssetManifest = {
       "width": 112,
       "height": 160,
       "renderScale": 0.52,
+      "bakedArchitecture": true,
       "anchor": {
         "x": 56,
         "y": 144
@@ -279,6 +296,7 @@ export const runtimeWorldAssetManifest = {
       "width": 96,
       "height": 80,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 48,
         "y": 78
@@ -295,6 +313,7 @@ export const runtimeWorldAssetManifest = {
       "width": 88,
       "height": 112,
       "renderScale": 0.5714285714285714,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 44,
         "y": 112
@@ -311,6 +330,7 @@ export const runtimeWorldAssetManifest = {
       "width": 64,
       "height": 80,
       "renderScale": 0.8,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 32,
         "y": 80
@@ -327,6 +347,7 @@ export const runtimeWorldAssetManifest = {
       "width": 64,
       "height": 120,
       "renderScale": 0.5333333333333333,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 32,
         "y": 120
@@ -343,6 +364,7 @@ export const runtimeWorldAssetManifest = {
       "width": 56,
       "height": 88,
       "renderScale": 0.7272727272727273,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 28,
         "y": 88
@@ -359,6 +381,7 @@ export const runtimeWorldAssetManifest = {
       "width": 60,
       "height": 96,
       "renderScale": 0.6666666666666666,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 30,
         "y": 96
@@ -375,6 +398,7 @@ export const runtimeWorldAssetManifest = {
       "width": 56,
       "height": 80,
       "renderScale": 0.8,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 28,
         "y": 80
@@ -391,6 +415,7 @@ export const runtimeWorldAssetManifest = {
       "width": 40,
       "height": 24,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 20,
         "y": 24
@@ -407,6 +432,7 @@ export const runtimeWorldAssetManifest = {
       "width": 36,
       "height": 20,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 18,
         "y": 20
@@ -423,6 +449,7 @@ export const runtimeWorldAssetManifest = {
       "width": 40,
       "height": 28,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 20,
         "y": 28
@@ -439,6 +466,7 @@ export const runtimeWorldAssetManifest = {
       "width": 32,
       "height": 22,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 16,
         "y": 22
@@ -455,6 +483,7 @@ export const runtimeWorldAssetManifest = {
       "width": 28,
       "height": 18,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 14,
         "y": 18
@@ -471,6 +500,7 @@ export const runtimeWorldAssetManifest = {
       "width": 24,
       "height": 16,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 12,
         "y": 16
@@ -487,6 +517,7 @@ export const runtimeWorldAssetManifest = {
       "width": 256,
       "height": 256,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 0,
         "y": 0
@@ -503,6 +534,7 @@ export const runtimeWorldAssetManifest = {
       "width": 512,
       "height": 512,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 0,
         "y": 0
@@ -519,6 +551,7 @@ export const runtimeWorldAssetManifest = {
       "width": 256,
       "height": 256,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 0,
         "y": 0
@@ -535,6 +568,7 @@ export const runtimeWorldAssetManifest = {
       "width": 512,
       "height": 512,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 0,
         "y": 0
@@ -551,6 +585,7 @@ export const runtimeWorldAssetManifest = {
       "width": 256,
       "height": 256,
       "renderScale": 1,
+      "bakedArchitecture": false,
       "anchor": {
         "x": 0,
         "y": 0

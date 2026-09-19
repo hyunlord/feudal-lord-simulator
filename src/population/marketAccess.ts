@@ -3,6 +3,7 @@ import { buildingFootprintDistance } from "../geometry/buildingDistance";
 
 export type MarketAccessDiagnosis =
   | { readonly kind: "within"; readonly label: string; readonly distance: number; readonly serviceRadius: number }
+  | { readonly kind: "unreachable" | "understaffed"; readonly label: string; readonly distance: number; readonly serviceRadius: number }
   | { readonly kind: "outside"; readonly label: string; readonly distance: number; readonly serviceRadius: number }
   | { readonly kind: "no_market"; readonly label: "시장 없음"; readonly serviceRadius: number };
 
@@ -20,35 +21,22 @@ export function nearestMarketDistance(
   return distances.length === 0 ? null : Math.min(...distances);
 }
 
-export function hasMarketAccess(
-  home: Building,
-  buildings: readonly Building[],
-): boolean {
-  const distance = nearestMarketDistance(home, buildings);
-  return distance !== null && distance <= BUILDING_CONFIG_BY_KIND.market.serviceRadius;
+export type MarketRoadService = (home: Building, market: Building) => boolean;
+
+export function hasMarketAccess(home: Building, buildings: readonly Building[], service?: MarketRoadService): boolean {
+  return marketAccessDiagnosis(home, buildings, service).kind === "within";
 }
 
-export function marketAccessDiagnosis(
-  home: Building,
-  buildings: readonly Building[],
-): MarketAccessDiagnosis {
+export function marketAccessDiagnosis(home: Building, buildings: readonly Building[], service?: MarketRoadService): MarketAccessDiagnosis {
   const serviceRadius = BUILDING_CONFIG_BY_KIND.market.serviceRadius;
   const distance = nearestMarketDistance(home, buildings);
-  if (distance === null) {
-    return { kind: "no_market", label: "시장 없음", serviceRadius };
-  }
-  if (distance <= serviceRadius) {
-    return {
-      kind: "within",
-      label: `시장 이용 가능 — 거리 ${distance} / 범위 ${serviceRadius}`,
-      distance,
-      serviceRadius,
-    };
-  }
-  return {
-    kind: "outside",
-    label: `시장이 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`,
-    distance,
-    serviceRadius,
-  };
+  if (distance === null) return { kind: "no_market", label: "시장 없음", serviceRadius };
+  const nearby = completedMarkets(buildings).filter(market => buildingFootprintDistance(home, market) <= serviceRadius);
+  if (nearby.length === 0) return { kind: "outside", label: `시장이 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`, distance, serviceRadius };
+  const staffed = nearby.filter(market => market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired);
+  if (staffed.length === 0) return { kind: "understaffed", label: "가까운 시장의 일꾼이 부족합니다", distance, serviceRadius };
+  const reachable = staffed.find(market => service?.(home, market) === true);
+  if (reachable === undefined) return { kind: "unreachable", label: "시장까지 연결된 도로가 없습니다", distance, serviceRadius };
+  const servedDistance = buildingFootprintDistance(home, reachable);
+  return { kind: "within", label: `시장 이용 가능 — 거리 ${servedDistance} / 범위 ${serviceRadius}`, distance: servedDistance, serviceRadius };
 }

@@ -110,8 +110,13 @@ test("road arms distinguish a straight run from a junction and reject diagonals"
   assert.deepEqual(junction, ["north", "east", "south"]);
 });
 
-test("walker marks keep at least their 0.8x on-screen size", () => {
-  assert.equal(walkerScaleForZoom(1), 1);
-  assert.equal(walkerScaleForZoom(0.8), 1);
-  assert.equal(walkerScaleForZoom(0.5), 1.6);
+test("villagers use cottage proportions while retaining a readable zoomed-out height", () => {
+  assert.equal(walkerScaleForZoom(1), 0.55);
+  assert.equal(walkerScaleForZoom(0.8), 0.55);
+  assert.ok(Math.abs(walkerScaleForZoom(0.5) - 0.88) < 0.000_001);
+  assert.ok(32 * walkerScaleForZoom(1) < 18);
+  for (const zoom of [0.5, 0.6, 0.7, 0.8]) {
+    const screenHeight = 32 * walkerScaleForZoom(zoom) * zoom;
+    assert.ok(screenHeight >= 14 && screenHeight < 15);
+  }
 });

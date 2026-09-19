@@ -271,6 +271,7 @@ test("advanceTick assigns post-production builders and derives stable builder wa
       buildings: [farm, home],
       constructionSites: [laterSite, firstSite],
       houses: [house(home.id, 18)],
+      roads: [[0, 2]],
     }),
   );
 
@@ -298,7 +299,7 @@ test("advanceTick assigns post-production builders and derives stable builder wa
   );
 });
 
-test("advanceTick never starves active production for construction builders", () => {
+test("advanceTick protects food production while reserving a ready ordinary builder", () => {
   // Given
   const home = building("home", "house", 4, 4);
   const farm = building("a-farm", "wheat_farm", 0, 0);
@@ -312,6 +313,7 @@ test("advanceTick never starves active production for construction builders", ()
       buildings: [sawmill, home, farm],
       constructionSites: [site("construction-site-000001")],
       houses: [house(home.id, 12)],
+      roads: [[0, 2], [2, 1]],
     }),
   );
 
@@ -319,14 +321,17 @@ test("advanceTick never starves active production for construction builders", ()
   assert.deepEqual(
     next.buildings.map(({ id, workers }) => ({ id, workers })),
     [
-      { id: "b-sawmill", workers: 2 },
+      { id: "b-sawmill", workers: 1 },
       { id: "home", workers: 0 },
       { id: "a-farm", workers: 4 },
     ],
   );
-  assert.equal(next.constructionSites[0]?.assignedBuilders, 0);
-  assert.equal(next.constructionSites[0]?.stall, "no_builders");
-  assert.deepEqual(next.walkers.filter(({ kind }) => kind === "builder"), []);
+  assert.equal(next.constructionSites[0]?.assignedBuilders, 1);
+  assert.equal(next.constructionSites[0]?.stall, "none");
+  assert.deepEqual(next.walkers.filter(({ kind }) => kind === "builder").map(({ id }) => id), ["builder:construction-site-000001:0"]);
+  assert.equal(next.buildings.find(({ id }) => id === farm.id)?.productionProgress, 1);
+  assert.equal(next.buildings.find(({ id }) => id === sawmill.id)?.productionProgress, 0);
+  assert.equal(next.idleWorkers, 0);
 });
 
 test("advanceTick reserves palisade-era wall labour before production during the first six hundred simulation ticks", () => {
@@ -438,7 +443,11 @@ test("advanceFrame applies the palisade labour boundary by simulation tick inste
       { id: "home", workers: 0 },
     ],
   );
-  assert.equal(speedFive.constructionSites[0]?.assignedBuilders, 2);
+  assert.equal(speedFive.constructionSites[0]?.assignedBuilders, 3);
+  assert.equal(speedFive.idleWorkers, 0);
+  assert.equal(speedFive.buildings.reduce((total, building) => total + building.workers, 0) +
+    speedFive.constructionSites.reduce((total, site) => total + site.assignedBuilders, 0),
+  Math.floor(speedFive.population / 2));
 });
 
 test("scripted palisade labour trace shows a production dip without one hundred twenty stalled productive ticks", () => {

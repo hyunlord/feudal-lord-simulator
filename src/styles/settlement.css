@@ -1,0 +1,13 @@
+.settlement-progress { background: var(--palette-vellum); color: var(--palette-ink); border: 2px solid var(--palette-earth); font: 12px/1.5 var(--ui-body-font); word-break: keep-all; }
+.settlement-progress summary { cursor: pointer; padding: 8px 12px; font-size: 13px; font-weight: bold; }
+.settlement-progress summary span { display: block; font-size: 12px; font-weight: normal; }
+.settlement-progress-body, .settlement-restart { padding: 4px 12px 12px; }
+.settlement-progress p { margin: 4px 0 8px; }
+.settlement-progress ul { margin: 8px 0; padding: 0; list-style: none; }
+.settlement-progress li { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; }
+.settlement-progress li strong { flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.settlement-hold { display: grid; gap: 4px; }
+.settlement-hold progress { width: 100%; height: 8px; accent-color: var(--palette-earth); }
+.settlement-progress .settlement-crisis { border-top: 1px solid var(--palette-earth); padding: 8px 12px; color: var(--palette-vermilion); }
+.settlement-restart button { font: inherit; padding: 8px; margin-right: 4px; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-earth); cursor: pointer; }
+.settlement-progress :focus-visible { outline: 2px solid var(--palette-ink); outline-offset: 2px; }

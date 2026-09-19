@@ -1,9 +1,13 @@
+import { nextHouseDemandTile } from "./roamingDemand";
+import { houseBreadCapacity, houseFoodRation } from "../content/houseFoodConfig";
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import type { Rng } from "../content/random";
 import {
   currentRoadTile,
   hasArrivedAtPathEnd,
+  lastReachedRoadTile,
+  remainingPathCanBeTraversed,
   stepWalkerAlongPath,
 } from "./movement";
 import {
@@ -22,8 +26,10 @@ import type { DistributorWalker, TilePos, Walker } from "./walker.types";
 const sameTile = (left: TilePos, right: TilePos): boolean =>
   left.tx === right.tx && left.ty === right.ty;
 
-function manhattan(left: TilePos, right: TilePos): number {
-  return Math.abs(left.tx - right.tx) + Math.abs(left.ty - right.ty);
+function distanceToHouse(house: RoamingHouse, tile: TilePos): number {
+  const dx = Math.max(house.tx - tile.tx, 0, tile.tx - (house.tx + (house.width ?? 1) - 1));
+  const dy = Math.max(house.ty - tile.ty, 0, tile.ty - (house.ty + (house.height ?? 1) - 1));
+  return dx + dy;
 }
 
 function serviceHouses(params: {
@@ -31,14 +37,20 @@ function serviceHouses(params: {
   readonly houses: readonly RoamingHouse[];
   readonly walker: DistributorWalker;
   readonly tile: TilePos;
+  readonly routes: RoamingRoutePort;
 }): { readonly houses: readonly RoamingHouse[]; readonly walker: DistributorWalker } {
   let remaining = params.walker.cargo?.amount ?? 0;
   const houses = params.houses.map((house) => {
-    if (remaining === 0 || manhattan(house, params.tile) > 1) return house;
-    remaining -= 1;
+    if (remaining === 0 || distanceToHouse(house, params.tile) > 1) return house;
+    if (params.routes.canServiceHouse?.(params.tile, house) === false) return house;
+    const capacity = Math.max(0, houseBreadCapacity(house) - house.breadStock);
+    const ration = Math.max(houseFoodRation(house), (house.width ?? 1) * (house.height ?? 1));
+    const delivered = Math.min(remaining, capacity, ration);
+    if (delivered === 0) return house;
+    remaining -= delivered;
     return {
       ...house,
-      breadStock: house.breadStock + 1,
+      breadStock: house.breadStock + delivered,
       lastServicedTick: params.tick,
     };
   });
@@ -101,6 +113,7 @@ function chooseNextTile(
 }
 
 function continueRoaming(
+  houses: readonly RoamingHouse[],
   tick: number,
   walker: DistributorWalker,
   routes: RoamingRoutePort,
@@ -110,7 +123,10 @@ function continueRoaming(
     return routeHome(walker, routes);
   }
   const current = currentRoadTile(walker) ?? walker.position;
-  const next = chooseNextTile(tick, walker, routes, rngForJunction);
+  const demand = nextHouseDemandTile(current, houses, routes, BALANCE.DISTRIBUTOR_RANGE - walker.tilesTravelled);
+  const next = demand === null
+    ? chooseNextTile(tick, walker, routes, rngForJunction)
+    : { tile: demand, junction: routes.neighbors(current).length > 2 };
   if (next.tile === null) return routeHome(walker, routes);
   return {
     ...walker,
@@ -141,11 +157,17 @@ function stopDistributor(
   walker: DistributorWalker,
 ): {
   readonly buildings: readonly Building[];
-  readonly walker: null;
+  readonly walker: DistributorWalker | null;
 } {
+  const restored = restoreBread(buildings, walker);
+  const current = lastReachedRoadTile(walker) ?? walker.position;
   return {
-    buildings: restoreBread(buildings, walker).buildings,
-    walker: null,
+    buildings: restored.buildings,
+    walker: restored.remaining === 0 ? null : {
+      ...walker, phase: "returning", path: [current], pathIndex: 0,
+      position: current, previousTile: null,
+      cargo: { resource: "bread", amount: restored.remaining },
+    },
   };
 }
 
@@ -160,7 +182,16 @@ function stepDistributor(
   readonly buildings: readonly Building[];
   readonly houses: readonly RoamingHouse[];
   readonly walker: DistributorWalker | null;
-	} {
+} {
+  if (!remainingPathCanBeTraversed(walker, routes.canTraverse)) {
+    const current = lastReachedRoadTile(walker) ?? walker.position;
+    const path = routes.returnPath(current, walker.homeBuildingId);
+    if (path === null) return { ...stopDistributor(buildings, walker), houses };
+    return { buildings, houses, walker: {
+      ...walker, phase: "returning", path, pathIndex: 0,
+      position: path[0] ?? current, previousTile: null,
+    } };
+  }
   if (!distributorRouteIsIntact(walker, routes)) {
     return { ...stopDistributor(buildings, walker), houses };
   }
@@ -182,7 +213,7 @@ function stepDistributor(
   }
   const current = currentRoadTile(moved) ?? moved.position;
   const cargoBeforeService = moved.cargo?.amount ?? 0;
-  const serviced = serviceHouses({ tick, houses, walker: moved, tile: current });
+  const serviced = serviceHouses({ tick, houses, walker: moved, tile: current, routes });
   const cargoAfterService = serviced.walker.cargo?.amount ?? 0;
   const buildingsAfterService = releaseBreadCapacity(
     buildings,
@@ -192,7 +223,7 @@ function stepDistributor(
   return {
     buildings: buildingsAfterService,
     houses: serviced.houses,
-    walker: continueRoaming(tick, serviced.walker, routes, rngForJunction),
+    walker: continueRoaming(serviced.houses, tick, serviced.walker, routes, rngForJunction),
   };
 }
 

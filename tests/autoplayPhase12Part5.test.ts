@@ -30,7 +30,6 @@ type PopulationPoint = {
   readonly houses: number;
 };
 
-const PRE_FEATURE_NO_AUTOPLAY_12K_HASH = "19689206a4b614bd";
 
 function toGameAction(action: AutoplayAction, state: GameState): GameAction | null {
   return autoplayActionToGameAction(action, state);
@@ -75,14 +74,23 @@ function maxPopulation(points: readonly PopulationPoint[]): number {
   return points.reduce((max, point) => Math.max(max, point.population), 0);
 }
 
-test("Given autoplay is disabled When default state advances twelve thousand ticks Then the pre-feature hash is unchanged", () => {
+test("Given no new food production When the opening reserve is exhausted Then abandonment freezes a deterministic settlement and preserves built history", () => {
   let state = DEFAULT_GAME_STATE;
+  let replay = structuredClone(DEFAULT_GAME_STATE);
 
   for (let step = 0; step < 12_000; step += 1) {
     state = advanceTick(state);
+    replay = advanceTick(replay);
   }
 
-  assert.equal(hashEconomyState(state), PRE_FEATURE_NO_AUTOPLAY_12K_HASH);
+  assert.equal(hashEconomyState(state), hashEconomyState(replay));
+  assert.equal(state.population, 0);
+  assert.equal(state.settlement?.outcome, "abandoned");
+  assert.equal(state.settlement?.emptyTicks, 600);
+  assert.ok(state.tick > 6_000 && state.tick < 12_000);
+  assert.equal(totalBread(state), 0);
+  assert.equal(advanceTick(state), state);
+  assert.ok(state.houses.some(house => (house.builtLevel ?? house.level) > house.level));
 });
 
 test("Given the current main harness When formatted Then it emits the fourteen canonical metric rows", () => {

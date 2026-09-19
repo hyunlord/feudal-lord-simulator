@@ -66,6 +66,8 @@ export function formatPlacementFailure(
   switch (reason) {
     case PlacementFailure.occupied:
       return "이미 건물이 있습니다";
+    case PlacementFailure.wall_clearance:
+      return "성벽과 최소 1칸 간격을 두세요";
     case PlacementFailure.wrong_terrain:
       return "물 위에는 지을 수 없습니다";
     case PlacementFailure.out_of_bounds:

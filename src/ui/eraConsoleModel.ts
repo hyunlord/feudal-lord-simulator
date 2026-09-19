@@ -1,4 +1,4 @@
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
 import {
   computePalisadeProposal,
@@ -26,7 +26,7 @@ export function palisadeFootprintsForState(state: GameState): readonly PalisadeF
   return [...state.buildings]
     .sort((left, right) => left.id.localeCompare(right.id))
     .map((building) => {
-      const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+      const definition = buildingFootprint(building);
       return {
         id: building.id,
         tx: building.tx,

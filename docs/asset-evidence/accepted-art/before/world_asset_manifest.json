@@ -1,0 +1,2331 @@
+{
+  "version": 1,
+  "acceptedReferences": [
+    {
+      "key": "house_03",
+      "path": "public/assets/buildings/candidates_v2/house_03.png",
+      "sha256": "417da9d910a6d87bedd99cff3838ec9505ad1e7c547c751d4e88d548b9f304ce",
+      "width": 96,
+      "height": 112
+    },
+    {
+      "key": "mill_02",
+      "path": "public/assets/buildings/candidates_v2/mill_02.png",
+      "sha256": "794be4b5670e5d8b305fddbd2812f964eb9cb49f463697c9d93337f5ccac6f5c",
+      "width": 96,
+      "height": 160
+    },
+    {
+      "key": "granary_08",
+      "path": "public/assets/buildings/candidates_v2/granary_08.png",
+      "sha256": "ac167ef0d025d649bcd3e815a20983046b50ec5a8ab8a63b69040a5490b5eac0",
+      "width": 160,
+      "height": 144
+    }
+  ],
+  "foliageSelections": [
+    {
+      "key": "tree_oak_large",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052101,
+          "path": "raw/foliage/tree_oak_large_01.png",
+          "sha256": "401394953dc2dc646d21ad6cd7d7112fec883421addd85b74507a9bd5e81f36d",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052102,
+          "path": "raw/foliage/tree_oak_large_02.png",
+          "sha256": "8a098ef16c49efbafcdf979d89f7fd27543c485101177f6349cd033ed9c5c0a1",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052103,
+          "path": "raw/foliage/tree_oak_large_03.png",
+          "sha256": "c4a6fb0b5f65391bd4dbaeba1af5f4ee9254d14c0d5388b34949411810edac72",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052104,
+          "path": "raw/foliage/tree_oak_large_04.png",
+          "sha256": "398cdeb6a09eaca8351e45fae865620ccddb1e8df7541995c08e1fe69dc83cd2",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052105,
+          "path": "raw/foliage/tree_oak_large_05.png",
+          "sha256": "282fb89ce2c801425761aeb88105c898fd273ec206b3e5288be199b58be7a9b9",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 1,
+            "referenceStyle": 1,
+            "total": 6
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052106,
+          "path": "raw/foliage/tree_oak_large_06.png",
+          "sha256": "9a77d8f4de8a02826de7632e6e1dbe3a6cdbec7a81d76325500ae6643d43240a",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052107,
+          "path": "raw/foliage/tree_oak_large_07.png",
+          "sha256": "63d4805e0b19c055bf1ab139ac5ee8cb9a681f394a996b201dc2b3eff80b7ff7",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 1,
+            "referenceStyle": 1,
+            "total": 6
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052108,
+          "path": "raw/foliage/tree_oak_large_08.png",
+          "sha256": "a1ccf562680d6e7922eb721a018c536c3e4763cf85fe354f81086e3237cf0123",
+          "width": 88,
+          "height": 112,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "tree_oak_small",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052201,
+          "path": "raw/foliage/tree_oak_small_01.png",
+          "sha256": "9cf0eef36944be09c774c0e9b066a681bdb30ab5841afb121d0012b10e9caa0a",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052202,
+          "path": "raw/foliage/tree_oak_small_02.png",
+          "sha256": "7e90fa9d709748d6c3d43f356f556e959bb7ffb5228dd830cf08df51481c835d",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052203,
+          "path": "raw/foliage/tree_oak_small_03.png",
+          "sha256": "4fd5d91edd06517cbc01b9abc18bfd72dbc51be3ca6e306ae733602e23ac5909",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052204,
+          "path": "raw/foliage/tree_oak_small_04.png",
+          "sha256": "fb60f496ba244335e7cff02bcad8e6c7a808956510396f282e43727942425c1f",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052205,
+          "path": "raw/foliage/tree_oak_small_05.png",
+          "sha256": "7e8696c6185ef8184b695d23c598efd925fa3cb899c2fbce38d577d641870bdb",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052206,
+          "path": "raw/foliage/tree_oak_small_06.png",
+          "sha256": "07a9b58da447489d61512c9fbfd40b5e93a5cf0ea8d4bbad24c930eddb0b4492",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052207,
+          "path": "raw/foliage/tree_oak_small_07.png",
+          "sha256": "b18c0fdd4a4c0a40d460c3cec137bc6a0b3fc98d7a9adb93da26f5eda93d761c",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052208,
+          "path": "raw/foliage/tree_oak_small_08.png",
+          "sha256": "4318005e688a38bff466042443eee03bc8837f98456bbbf051805089a523c386",
+          "width": 64,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "tree_pine_tall",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052301,
+          "path": "raw/foliage/tree_pine_tall_01.png",
+          "sha256": "e2752fa1b10fbe5d44871d3ad017b41c5a899bebb06879658f6dfbc1c281012e",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052302,
+          "path": "raw/foliage/tree_pine_tall_02.png",
+          "sha256": "dead121f1248c2f8726aeb7247a28799018748e91e7308e5e326ea513f866641",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052303,
+          "path": "raw/foliage/tree_pine_tall_03.png",
+          "sha256": "80f466aa370e377ef9298cfd1108f9e81c1593d43fb212804097a44efbd74737",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052304,
+          "path": "raw/foliage/tree_pine_tall_04.png",
+          "sha256": "968444127fec208cfd081ef595094f65876b99db6026fff17c02bbec4971c6a2",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052305,
+          "path": "raw/foliage/tree_pine_tall_05.png",
+          "sha256": "ba0b014abbfa8f851afc98c8515aba95eaebf540f6005c81afac1fea15db114a",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052306,
+          "path": "raw/foliage/tree_pine_tall_06.png",
+          "sha256": "387fe3c52a53f05adbc2d692d04f2e9bcbac3a7e19f74e83e7a35071fd390fc0",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052307,
+          "path": "raw/foliage/tree_pine_tall_07.png",
+          "sha256": "2b0ed466f2219ee4a1932cc31871c485ca50ee3978853c6c154e6e763fc52585",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052308,
+          "path": "raw/foliage/tree_pine_tall_08.png",
+          "sha256": "06730af3a2e43a73a445b59cf5bd99c76834b9fb691d1169ca8d9b83ea2f2419",
+          "width": 64,
+          "height": 120,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "tree_pine_short",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052401,
+          "path": "raw/foliage/tree_pine_short_01.png",
+          "sha256": "b0c1a05a07de12cc4396d0e533322b633d17e3c6c913224322250bb079df3d5a",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052402,
+          "path": "raw/foliage/tree_pine_short_02.png",
+          "sha256": "82c03b0303218eb0f8761f078f563af70284b7a97b42d9ad674629df4a622ad0",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 1,
+            "referenceStyle": 1,
+            "total": 6
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052403,
+          "path": "raw/foliage/tree_pine_short_03.png",
+          "sha256": "f24443df905b5500911fa413971aee649607ffab43d5629d3ebee37653f2ac30",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052404,
+          "path": "raw/foliage/tree_pine_short_04.png",
+          "sha256": "782c2e524ae984475b630864d80599983f87ee8c90080a17c73128a1b77bb54a",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052405,
+          "path": "raw/foliage/tree_pine_short_05.png",
+          "sha256": "482b20a51bf1caa6f7912fbe8937f390e4d27c67c45a138329ad39a9ba72ff39",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052406,
+          "path": "raw/foliage/tree_pine_short_06.png",
+          "sha256": "0d3d8a810a630ddc8ce9fb752ea5df2976b6b97e9557f7f704362857b244db91",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052407,
+          "path": "raw/foliage/tree_pine_short_07.png",
+          "sha256": "3a360dcb8ca735b3882e9105240e991d419899c32c5438e98c212ffcfbca6a8b",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052408,
+          "path": "raw/foliage/tree_pine_short_08.png",
+          "sha256": "3d8f2051e10dea5a026e5d77473cdfda19df868829ee8918fdabddbcbeb6ce94",
+          "width": 56,
+          "height": 88,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "tree_birch",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052501,
+          "path": "raw/foliage/tree_birch_01.png",
+          "sha256": "ec67bdd276e624fd58854aec4c24555703c8a9249462a0eb612c180e86c517f0",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052502,
+          "path": "raw/foliage/tree_birch_02.png",
+          "sha256": "8aabadd6bb0a4e3666a38c556c7790ece51061d136d5b8a785e476472fb67120",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052503,
+          "path": "raw/foliage/tree_birch_03.png",
+          "sha256": "1cee8701c2064748226d29c964654e644f2417d7dc4c150cf858b443af410301",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052504,
+          "path": "raw/foliage/tree_birch_04.png",
+          "sha256": "af726afdb9f9b696aa4ad343a239bc84d48ca6cfce71d65194fab4857ac98d7e",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052505,
+          "path": "raw/foliage/tree_birch_05.png",
+          "sha256": "b489486cea8671b3f4dd2aea5b47a96fea4d0284dfc23c42d7f74769652c09ab",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052506,
+          "path": "raw/foliage/tree_birch_06.png",
+          "sha256": "8dfd180ea41d3fca9ec7784d43b12e3326c150d6a571dd0a3cbe353264ab3132",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052507,
+          "path": "raw/foliage/tree_birch_07.png",
+          "sha256": "5b5c465726d6e72671ab73c5e9f0346e5815eb78e6d1adb77c694ff1b35ebcc8",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052508,
+          "path": "raw/foliage/tree_birch_08.png",
+          "sha256": "e3447e6ac9dad49f8161dae2f49245461ec4376445eff61292f17ef877c915e2",
+          "width": 60,
+          "height": 96,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "tree_dead",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052601,
+          "path": "raw/foliage/tree_dead_01.png",
+          "sha256": "be93d7ada99e4d5a666c7a593e6093d7a9445bc0a031a16dfe2c5c7bae744763",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052602,
+          "path": "raw/foliage/tree_dead_02.png",
+          "sha256": "122af0b2b13e2e392533fd91af5c3673a7ff851b092e1f63adbbb5941ca6cedd",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052603,
+          "path": "raw/foliage/tree_dead_03.png",
+          "sha256": "78986408df494f8065b83b2b80cb3469470cb1b18254a8cd53da43035f2d1cd1",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052604,
+          "path": "raw/foliage/tree_dead_04.png",
+          "sha256": "0df623017b625fefd8605453675fb8b022456495149eec5286aeb18d5c6d11fa",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052605,
+          "path": "raw/foliage/tree_dead_05.png",
+          "sha256": "480eb1c78b851bea3e635177ef993a132339bf3d10e2e0c8de3b59c0f6106f49",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052606,
+          "path": "raw/foliage/tree_dead_06.png",
+          "sha256": "83489f070dccb65e88f55a4f130d9eeb4425dca54f06cfd5f40876f0400712da",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052607,
+          "path": "raw/foliage/tree_dead_07.png",
+          "sha256": "e098f2f5951af7454caef4a0c35f982b3b86a8fc59dbc5820a9fe5ccd1038423",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052608,
+          "path": "raw/foliage/tree_dead_08.png",
+          "sha256": "a259c59d3f9e4de34f510391f253a8211e8ae01f2f341cd212aee3539d3c0eac",
+          "width": 56,
+          "height": 80,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "stump_fresh",
+      "selectedCandidate": 4,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052701,
+          "path": "raw/foliage/stump_fresh_01.png",
+          "sha256": "ebb44ab9253aea9415bf25cdfc773567be1ff256e7c72f0b3c1f9589ca764816",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052702,
+          "path": "raw/foliage/stump_fresh_02.png",
+          "sha256": "0ea9bee5c9d1038ac42c5a74120a683fa92af6a8a9022b38c4b2c3fe367bba83",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052703,
+          "path": "raw/foliage/stump_fresh_03.png",
+          "sha256": "3f6cbb69f634d2bfed35f467ebbcae83b4023f9da3ddec837bcd9761ca6958ee",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052704,
+          "path": "raw/foliage/stump_fresh_04.png",
+          "sha256": "54508979c2267fa8514c50f762a2aea121b5d15f98cd1ae571bc8df5da15feec",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 2,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 8
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052705,
+          "path": "raw/foliage/stump_fresh_05.png",
+          "sha256": "b67eccf152ad7830108774d124c50da32efd3a7f2966f2e0b158a273c744be7b",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052706,
+          "path": "raw/foliage/stump_fresh_06.png",
+          "sha256": "53765e4e9ef4d66da3b5e2c3b3c81abd0bf27fea4670e50dbc947d9e37540929",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052707,
+          "path": "raw/foliage/stump_fresh_07.png",
+          "sha256": "03a7c5e829cb3940d02138acaecc039ac9320161390f121b207754bce14849e0",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052708,
+          "path": "raw/foliage/stump_fresh_08.png",
+          "sha256": "f7d9117b2943dc93414334a55a1b1a17a91d3deb6c79dcdaf3f4d83a085251d4",
+          "width": 40,
+          "height": 24,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    },
+    {
+      "key": "stump_old",
+      "selectedCandidate": 1,
+      "candidates": [
+        {
+          "candidate": 1,
+          "seed": 64052801,
+          "path": "raw/foliage/stump_old_01.png",
+          "sha256": "7a0e54f4ed35876540272459e4eca275545012efa15c4d7da0b9dc063d46daf0",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": true,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 2,
+          "seed": 64052802,
+          "path": "raw/foliage/stump_old_02.png",
+          "sha256": "8da60d6089102179bcc3cc23b65a22ca0722a11b47b159f6434b2d7ba4aa92da",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 3,
+          "seed": 64052803,
+          "path": "raw/foliage/stump_old_03.png",
+          "sha256": "1592da2aaf066a87bde28673adea14060a782b1dc42bd9c396592ead16bdf7c3",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 4,
+          "seed": 64052804,
+          "path": "raw/foliage/stump_old_04.png",
+          "sha256": "ae37869bd0a8c0f9b3a368a8629afed59ff8fcf2548809b2e59721f20cff5e06",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 5,
+          "seed": 64052805,
+          "path": "raw/foliage/stump_old_05.png",
+          "sha256": "64e69e652e68bf1648d315e62a1500ed12d1b6ea9dc2e8aff4794ce43fe32384",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 6,
+          "seed": 64052806,
+          "path": "raw/foliage/stump_old_06.png",
+          "sha256": "dcab290c5fedbf8b1dc75da4845cdaf27ead382755b81ee8eb6517bfdf40a4c1",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 7,
+          "seed": 64052807,
+          "path": "raw/foliage/stump_old_07.png",
+          "sha256": "9fec334070a61d601787755ad5081d55ef63b156f313e9305cfb8285e0ca565a",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        },
+        {
+          "candidate": 8,
+          "seed": 64052808,
+          "path": "raw/foliage/stump_old_08.png",
+          "sha256": "15fc8620c555efebef09529eea983e55b3622cf1ae70e1a6b2923351a0dfd342",
+          "width": 36,
+          "height": 20,
+          "alpha": true,
+          "transparentBackground": true,
+          "bakedGroundShadowAbsent": true,
+          "selected": false,
+          "hardRejected": false,
+          "rubric": {
+            "trunkGroundContact": 2,
+            "silhouette": 1,
+            "lightingVariation": 2,
+            "referenceStyle": 2,
+            "total": 7
+          }
+        }
+      ],
+      "tieBreak": "lowest-seed"
+    }
+  ],
+  "parchmentMetrics": {
+    "decision": "flat-token",
+    "thresholds": {
+      "joinBandMaxDelta": 24,
+      "joinToInternalRatio": 2,
+      "internalTolerance": 4,
+      "blockLumaRangeMax": 16,
+      "blockLumaStandardDeviationMin": 1,
+      "blockLumaStandardDeviationMax": 8
+    },
+    "candidates": []
+  },
+  "assets": [
+    {
+      "key": "house_l0",
+      "category": "building",
+      "path": "public/assets/buildings/house_l0.png",
+      "sha256": "417da9d910a6d87bedd99cff3838ec9505ad1e7c547c751d4e88d548b9f304ce",
+      "width": 96,
+      "height": 112,
+      "renderScale": 0.5142857142857143,
+      "anchor": {
+        "x": 48,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64040103,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l1",
+      "category": "building",
+      "path": "public/assets/buildings/house_l1.png",
+      "sha256": "274df62d6ce61a36fa9d8c637572ae1072190cb7de01c7c0cb74967755a0e580",
+      "width": 96,
+      "height": 120,
+      "renderScale": 0.48000000000000004,
+      "anchor": {
+        "x": 48,
+        "y": 104
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71300002,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l2",
+      "category": "building",
+      "path": "public/assets/buildings/house_l2.png",
+      "sha256": "6122dcfb3321a017012e60187643613a57b50acbd44f1d2dbdf96f934d414331",
+      "width": 96,
+      "height": 144,
+      "renderScale": 0.5777777777777778,
+      "anchor": {
+        "x": 48,
+        "y": 128
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050203,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l3",
+      "category": "building",
+      "path": "public/assets/buildings/house_l3.png",
+      "sha256": "da775c3629b615d6c01bdc69580345d577562753d6e6b115891230ac94127af2",
+      "width": 160,
+      "height": 192,
+      "renderScale": 0.43333333333333335,
+      "anchor": {
+        "x": 80,
+        "y": 176
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64050304,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "mill",
+      "category": "building",
+      "path": "public/assets/buildings/mill.png",
+      "sha256": "ceef83b4a39974478c67442d8526225ef3f13897ba47da0dc24c94e2dcb84969",
+      "width": 96,
+      "height": 160,
+      "renderScale": 0.44000000000000006,
+      "anchor": {
+        "x": 48,
+        "y": 144
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71300005,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "barn",
+      "category": "building",
+      "path": "public/assets/buildings/barn.png",
+      "sha256": "ac167ef0d025d649bcd3e815a20983046b50ec5a8ab8a63b69040a5490b5eac0",
+      "width": 160,
+      "height": 144,
+      "renderScale": 0.48888888888888893,
+      "anchor": {
+        "x": 80,
+        "y": 128
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64040308,
+        "candidate": 8
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "well",
+      "category": "building",
+      "path": "public/assets/buildings/well.png",
+      "sha256": "f1e950e7e4f8ec79e10563833489ebc0dae2ea6401992e92d43e3aca6ee6d593",
+      "width": 72,
+      "height": 80,
+      "renderScale": 0.72,
+      "anchor": {
+        "x": 36,
+        "y": 64
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050401,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "storehouse",
+      "category": "building",
+      "path": "public/assets/buildings/storehouse.png",
+      "sha256": "355a669cba6424ff939c02af40ead650d530b796c8541ba47dda9a94791d16be",
+      "width": 160,
+      "height": 136,
+      "renderScale": 0.5176470588235295,
+      "anchor": {
+        "x": 80,
+        "y": 120
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64050504,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "wheat_farm",
+      "category": "building",
+      "path": "public/assets/buildings/wheat_farm.png",
+      "sha256": "bafb0ce1a93d9467f9f02b8efde14f9b9218ab3d806d2f4d1f2b311ebbb4c59e",
+      "width": 160,
+      "height": 96,
+      "renderScale": 0.7333333333333334,
+      "anchor": {
+        "x": 80,
+        "y": 80
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64050602,
+        "candidate": 2
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "logging_camp",
+      "category": "building",
+      "path": "public/assets/buildings/logging_camp.png",
+      "sha256": "66609e30bacd852e3d8473862915dff11d51d46bd2086cfd9554e7fafad6c43e",
+      "width": 96,
+      "height": 104,
+      "renderScale": 0.676923076923077,
+      "anchor": {
+        "x": 48,
+        "y": 88
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71300010,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "sawmill",
+      "category": "building",
+      "path": "public/assets/buildings/sawmill.png",
+      "sha256": "c5796f4ec19f81e5984cf701f39e1c237fcad41a7ccf102b0e65f81c828e2aac",
+      "width": 112,
+      "height": 112,
+      "renderScale": 0.6285714285714287,
+      "anchor": {
+        "x": 56,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64050801,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "quarry",
+      "category": "building",
+      "path": "public/assets/buildings/quarry.png",
+      "sha256": "22c777573df6791fa76fe70e5eaf34e95ea65cad291e4cfb859f7e057a13279b",
+      "width": 160,
+      "height": 120,
+      "renderScale": 0.5866666666666667,
+      "anchor": {
+        "x": 80,
+        "y": 104
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64054102,
+        "candidate": 2
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "masonry",
+      "category": "building",
+      "path": "public/assets/buildings/masonry.png",
+      "sha256": "e3b76c2f8ee9232beaeb0f297dbb825423372daacd7b319245e9cc6ba082fe95",
+      "width": 112,
+      "height": 120,
+      "renderScale": 0.5866666666666667,
+      "anchor": {
+        "x": 56,
+        "y": 104
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64054203,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "market",
+      "category": "building",
+      "path": "public/assets/buildings/market.png",
+      "sha256": "49f742f1c794bbc68aeb2bfb41126d5b944f5639ebe4c72b4a7df91262f25066",
+      "width": 176,
+      "height": 136,
+      "renderScale": 0.5176470588235295,
+      "anchor": {
+        "x": 88,
+        "y": 120
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64054304,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "church",
+      "category": "building",
+      "path": "public/assets/buildings/church.png",
+      "sha256": "d327800532a7ef826537530b89f4087d2a4d58b4015fbb9e44183f67facc1075",
+      "width": 176,
+      "height": 208,
+      "renderScale": 0.49230769230769234,
+      "anchor": {
+        "x": 88,
+        "y": 192
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 71300015,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "keep",
+      "category": "building",
+      "path": "public/assets/buildings/keep.png",
+      "sha256": "102774e2c7520bafc308c9cffc6a2cf0db1e20f1d03a04ab56fb4d9f3cd4358e",
+      "width": 176,
+      "height": 232,
+      "renderScale": 0.44137931034482764,
+      "anchor": {
+        "x": 88,
+        "y": 216
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "source": {
+        "seed": 64054503,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "house_l4",
+      "category": "building",
+      "path": "public/assets/buildings/house_l4.png",
+      "sha256": "aaeed6a4418d0799bef7b01e1284d97f5dd24cf226f5c869e2778755cfa8f99e",
+      "width": 112,
+      "height": 160,
+      "renderScale": 0.52,
+      "anchor": {
+        "x": 56,
+        "y": 144
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64054604,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "stone_wall_segment",
+      "category": "building",
+      "path": "public/assets/buildings/stone_wall_segment.png",
+      "sha256": "cb0b36132bb3182bebbee21d05029aa37c8e31756b7035f259ca79ef062cb920",
+      "width": 96,
+      "height": 80,
+      "renderScale": 1,
+      "anchor": {
+        "x": 48,
+        "y": 78
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64054703,
+        "candidate": 3
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179"
+    },
+    {
+      "key": "tree_oak_large",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_oak_large.png",
+      "sha256": "7fd63812489ff09a5211c76a97eba9a28ded4ba68d184af2c37b5f41393e0f6d",
+      "width": 88,
+      "height": 112,
+      "renderScale": 0.5714285714285714,
+      "anchor": {
+        "x": 44,
+        "y": 112
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71000101,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_oak_small",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_oak_small.png",
+      "sha256": "f3f6d02742f18c432f3c9ff50b56dd5c9c8e34ab2ae2fdc8e44a1696f38057d8",
+      "width": 64,
+      "height": 80,
+      "renderScale": 0.8,
+      "anchor": {
+        "x": 32,
+        "y": 80
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71000201,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_pine_tall",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_pine_tall.png",
+      "sha256": "f57501df31c017b4f9d106cd14828fe9b2e5427c5f1edeecf9886aa5d4854f1a",
+      "width": 64,
+      "height": 120,
+      "renderScale": 0.5333333333333333,
+      "anchor": {
+        "x": 32,
+        "y": 120
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71000302,
+        "candidate": 2
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_pine_short",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_pine_short.png",
+      "sha256": "06ea335353ca4c479551920f968d7bd25f86bdfe6917a8fc96d2c72ad9cdc3a0",
+      "width": 56,
+      "height": 88,
+      "renderScale": 0.7272727272727273,
+      "anchor": {
+        "x": 28,
+        "y": 88
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71000406,
+        "candidate": 6
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_birch",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_birch.png",
+      "sha256": "7e4ea3d7f00645688926bd2a55596a94c7ae7e110b58582c9a2a8f5034a010b2",
+      "width": 60,
+      "height": 96,
+      "renderScale": 0.6666666666666666,
+      "anchor": {
+        "x": 30,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71000504,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "tree_dead",
+      "category": "foliage",
+      "path": "public/assets/foliage/tree_dead.png",
+      "sha256": "f6339e6c6f7ddd6ba92da1ab5421bd80e4d2d51c06dc12f0b9e7a0dd7cfbdadf",
+      "width": 56,
+      "height": 80,
+      "renderScale": 0.8,
+      "anchor": {
+        "x": 28,
+        "y": 80
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71000605,
+        "candidate": 5
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "stump_fresh",
+      "category": "foliage",
+      "path": "public/assets/foliage/stump_fresh.png",
+      "sha256": "54508979c2267fa8514c50f762a2aea121b5d15f98cd1ae571bc8df5da15feec",
+      "width": 40,
+      "height": 24,
+      "renderScale": 1,
+      "anchor": {
+        "x": 20,
+        "y": 24
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052704,
+        "candidate": 4
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "stump_old",
+      "category": "foliage",
+      "path": "public/assets/foliage/stump_old.png",
+      "sha256": "7a0e54f4ed35876540272459e4eca275545012efa15c4d7da0b9dc063d46daf0",
+      "width": 36,
+      "height": 20,
+      "renderScale": 1,
+      "anchor": {
+        "x": 18,
+        "y": 20
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052801,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "shrub_a",
+      "category": "foliage",
+      "path": "public/assets/foliage/shrub_a.png",
+      "sha256": "4a3362ab051ea63689019f8ee1fb401ecf19e255fbdf9b8db6d6d1c62a25c5d0",
+      "width": 40,
+      "height": 28,
+      "renderScale": 1,
+      "anchor": {
+        "x": 20,
+        "y": 28
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64052901,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "shrub_b",
+      "category": "foliage",
+      "path": "public/assets/foliage/shrub_b.png",
+      "sha256": "f7e137156808cddf6a41b22aeca9a8b3ac582d950ebca7cbd4c88a4cc489b165",
+      "width": 32,
+      "height": 22,
+      "renderScale": 1,
+      "anchor": {
+        "x": 16,
+        "y": 22
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053001,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "grass_tuft",
+      "category": "foliage",
+      "path": "public/assets/foliage/grass_tuft.png",
+      "sha256": "841b738eb64a3919c95c829d8d6c4da53c7b4c79a5094c33b49879242b28c035",
+      "width": 28,
+      "height": 18,
+      "renderScale": 1,
+      "anchor": {
+        "x": 14,
+        "y": 18
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053101,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "field_stone",
+      "category": "foliage",
+      "path": "public/assets/foliage/field_stone.png",
+      "sha256": "19f8bd1d14b3c83725d6269a5de3ccad7d6a73056987d5d6f007b15a5dfd28aa",
+      "width": 24,
+      "height": 16,
+      "renderScale": 1,
+      "anchor": {
+        "x": 12,
+        "y": 16
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 64053201,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "transparent-outline-179",
+      "variation": {
+        "selection": "hash",
+        "scale": {
+          "min": 0.7,
+          "max": 1.3
+        },
+        "offset": "in-tile",
+        "sway": "sine"
+      }
+    },
+    {
+      "key": "grass",
+      "category": "terrain",
+      "path": "public/assets/terrain/grass.png",
+      "sha256": "0b1bd31a7bb647f9f73fb728f9619f86c05fd481ffc69710ebd70943714b8c14",
+      "width": 256,
+      "height": 256,
+      "renderScale": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71010106,
+        "candidate": 6
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 9.626464843750018,
+        "verticalJoinDelta": 4.000976562500014,
+        "horizontalInternalDelta": 12.810058593750117,
+        "verticalInternalDelta": 4.553222656250006,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "forest_floor",
+      "category": "terrain",
+      "path": "public/assets/terrain/forest_floor.png",
+      "sha256": "c8324a6098ea69e51bc933d32427f01657a3acea73a6e7c4623eb4ace711ce3f",
+      "width": 512,
+      "height": 512,
+      "renderScale": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71300032,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 4.355305989583333,
+        "verticalJoinDelta": 5.650390625000014,
+        "horizontalInternalDelta": 9.863850911458375,
+        "verticalInternalDelta": 9.857747395833318,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "water",
+      "category": "terrain",
+      "path": "public/assets/terrain/water.png",
+      "sha256": "ff47499c738d90db40052b61fbf75424c8370d9d4ae2d0aa5b8fcc42eaf8b2d7",
+      "width": 256,
+      "height": 256,
+      "renderScale": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71010302,
+        "candidate": 2
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 3.059407552083336,
+        "verticalJoinDelta": 10.057291666666664,
+        "horizontalInternalDelta": 3.3706054687500036,
+        "verticalInternalDelta": 14.544596354166748,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "rock",
+      "category": "terrain",
+      "path": "public/assets/terrain/rock.png",
+      "sha256": "7b7055de1f931e2a00b3cbbf0963268d44c8781c753fb9a530ed4ff991c68bd1",
+      "width": 512,
+      "height": 512,
+      "renderScale": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71300034,
+        "candidate": 1
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 5.197916666666666,
+        "verticalJoinDelta": 5.580240885416677,
+        "horizontalInternalDelta": 12.195231119791664,
+        "verticalInternalDelta": 11.767252604166686,
+        "threshold": 24,
+        "passed": true
+      }
+    },
+    {
+      "key": "packed_earth_road",
+      "category": "terrain",
+      "path": "public/assets/terrain/packed_earth_road.png",
+      "sha256": "ee5b6bb22523d7ae39e3b7988f59185b111c82f43b6d0292aa7fcbf42ab04bdb",
+      "width": 256,
+      "height": 256,
+      "renderScale": 1,
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "source": {
+        "seed": 71010505,
+        "candidate": 5
+      },
+      "palettePolicy": "full-colour-generated",
+      "alphaPolicy": "opaque",
+      "seamMetrics": {
+        "horizontalJoinDelta": 10.721191406250027,
+        "verticalJoinDelta": 12.316243489583412,
+        "horizontalInternalDelta": 15.500813802083375,
+        "verticalInternalDelta": 20.406249999999954,
+        "threshold": 24,
+        "passed": true
+      }
+    }
+  ]
+}

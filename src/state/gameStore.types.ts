@@ -10,6 +10,8 @@ export interface GameProviderProps {
 }
 
 export type GameAction =
+  | { readonly type: "restart_settlement" }
+  | { readonly type: "merge_houses"; readonly sourceBuildingId: string; readonly targetBuildingId: string }
   | {
       readonly type: "commit_simulation_state";
       readonly previousState: GameState;
@@ -30,6 +32,10 @@ export type GameAction =
       readonly type: "remove_road";
       readonly tx: number;
       readonly ty: number;
+    }
+  | {
+      readonly type: "demolish_house";
+      readonly buildingId: string;
     }
   | {
       readonly type: "cancel_construction";

@@ -1,7 +1,9 @@
+import { marketRoadService } from "../src/engine/marketService";
 import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building } from "../src/content/buildingConfig";
+import { marketAccessDiagnosis } from "../src/population/marketAccess";
 import { updateHouse, updateHousing } from "../src/population/housing";
 import type { House } from "../src/population/population.types";
 import { houseDiagnosisModel } from "../src/ui/houseDiagnosisModel";
@@ -68,7 +70,7 @@ function state(buildings: readonly Building[], household: House = house()): Game
         ty,
         terrain: "grass",
         buildingId: ownerByTile.get(`${tx},${ty}`) ?? null,
-        hasRoad: false,
+        hasRoad: ty === 0,
       };
     }),
     buildings: [...buildings],
@@ -167,4 +169,32 @@ test("unfinished market does not count for housing diagnosis", () => {
 
   // Then
   assert.equal(model?.market.kind, "no_market");
+});
+
+test("market service stops on a cut road or insufficient staffing and recovers on restoration", () => {
+  const home = building("home", "house", 1, 1);
+  const market = building("market", "market", 9, 1, 3);
+  const connected = state([home, market]);
+  const cut = { ...connected, tiles: connected.tiles.map(tile => tile.tx === 5 && tile.ty === 0 ? { ...tile, hasRoad: false } : tile) };
+  assert.equal(marketAccessDiagnosis(home, connected.buildings, marketRoadService(connected)).kind, "within");
+  assert.equal(marketAccessDiagnosis(home, cut.buildings, marketRoadService(cut)).kind, "unreachable");
+  assert.equal(marketAccessDiagnosis(home, [home, { ...market, workers: 2 }], marketRoadService(connected)).kind, "understaffed");
+  assert.equal(marketAccessDiagnosis(home, connected.buildings, marketRoadService(connected)).kind, "within");
+});
+
+test("market roads respect completed walls and permit the gate", () => {
+  const home = building("home", "house", 1, 1);
+  const market = building("market", "market", 9, 1, 3);
+  const connected = state([home, market]);
+  const wall = { gate: { x: 5, y: 4 }, segments: [{ completed: true, edgePath: [{ x: 5, y: 0 }, { x: 5, y: 5 }] }] };
+  assert.equal(marketAccessDiagnosis(home, connected.buildings, marketRoadService({ ...connected, palisade: wall })).kind, "unreachable");
+  assert.equal(marketAccessDiagnosis(home, connected.buildings, marketRoadService({ ...connected, palisade: { ...wall, gate: { x: 5, y: 0.5 } } })).kind, "within");
+});
+
+test("compound home can receive market service from only its second tile frontage", () => {
+  const home: Building = { ...building("home", "house", 1, 1), houseLot: "horizontal" };
+  const market = building("market", "market", 9, 1, 3);
+  const input = state([home, market]);
+  const grid = { ...input, tiles: input.tiles.map(tile => ({ ...tile, hasRoad: tile.ty === 0 && tile.tx >= 2 })) };
+  assert.equal(marketAccessDiagnosis(home, grid.buildings, marketRoadService(grid)).kind, "within");
 });

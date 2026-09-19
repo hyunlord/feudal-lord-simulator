@@ -1,3 +1,6 @@
+import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
+import { houseCompoundGeometry } from "./houseCompound";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { Building } from "../content/buildingConfig";
 import { worldToCanvas, type CameraState } from "./camera";
 import { buildingSpriteKey } from "./buildingSprites";
@@ -9,6 +12,9 @@ import {
   type ObjectRenderViewMode,
 } from "./objectRenderViewMode";
 import { spriteMeta } from "./worldAssets";
+import { historicalFacilityReady, historicalFacilitySpriteRect } from "./historicalFacilityAssets";
+import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect } from "./historicalHouseAssets";
+import type { GameState } from "../engine/engine.types";
 
 export {
   setObjectRenderViewMode,
@@ -57,12 +63,50 @@ export function denseBuildingClusterIds(buildings: readonly Building[]): Readonl
 }
 
 export function buildingSpriteOverlapsCursorTile(input: {
+  readonly state?: GameState;
   readonly building: Building;
   readonly houseLevel: number;
   readonly hoveredTile: { readonly tx: number; readonly ty: number };
   readonly camera?: CameraState | undefined;
   readonly dpr?: number | undefined;
 }): boolean {
+  if (input.building.kind === "wheat_farm") {
+    const size = buildingFootprint(input.building);
+    return input.hoveredTile.tx >= input.building.tx && input.hoveredTile.tx < input.building.tx + size.width
+      && input.hoveredTile.ty >= input.building.ty && input.hoveredTile.ty < input.building.ty + size.height;
+  }
+  if (input.building.kind === "house" && input.building.houseLot !== undefined) {
+    const geometry = houseCompoundGeometry(input.building, input.houseLevel);
+    const camera = input.camera ?? DEFAULT_CAMERA;
+    const dpr = input.dpr ?? 1;
+    const asset = houseCompoundAssetMeta(input.building, input.houseLevel);
+    if (asset !== null) {
+      const rect = houseCompoundSpriteRect(input.building, asset);
+      const origin = worldToCanvas({ x: rect.x, y: rect.y }, camera);
+      return rectIntersectsDiamond({ x: origin.x * dpr, y: origin.y * dpr,
+        width: rect.width * camera.zoom * dpr, height: rect.height * camera.zoom * dpr }, cursorDiamond(input.hoveredTile, camera, dpr));
+    }
+    const points = [...geometry.corners, ...geometry.eaves, ...geometry.ridge].map(point => {
+      const screen = tileToScreen(point.tx, point.ty);
+      const canvas = worldToCanvas({ x: screen.sx, y: screen.sy - point.lift }, camera);
+      return { x: canvas.x * dpr, y: canvas.y * dpr };
+    });
+    const minX = Math.min(...points.map(point => point.x));
+    const minY = Math.min(...points.map(point => point.y));
+    return rectIntersectsDiamond({ x: minX, y: minY, width: Math.max(...points.map(point => point.x)) - minX,
+      height: Math.max(...points.map(point => point.y)) - minY }, cursorDiamond(input.hoveredTile, camera, dpr));
+  }
+  const fullDetail = (input.camera?.zoom ?? 1) > 0.7;
+  const houseMeta = fullDetail && input.building.kind === "house" && historicalHouseReady(input.houseLevel) ? historicalHouseAssetMeta(input.houseLevel) : null;
+  const historicalRect = houseMeta === null ? (fullDetail && historicalFacilityReady(input.building, input.state) ? historicalFacilitySpriteRect(input.building) : null)
+    : historicalHouseSpriteRect(input.building, houseMeta);
+  if (historicalRect !== null) {
+    const camera = input.camera ?? DEFAULT_CAMERA;
+    const dpr = input.dpr ?? 1;
+    const origin = worldToCanvas(historicalRect, camera);
+    return rectIntersectsDiamond({ x: origin.x * dpr, y: origin.y * dpr,
+      width: historicalRect.width * camera.zoom * dpr, height: historicalRect.height * camera.zoom * dpr }, cursorDiamond(input.hoveredTile, camera, dpr));
+  }
   const meta = spriteMeta(buildingSpriteKey(input.building, input.houseLevel));
   if (meta === null) return false;
   const camera = input.camera ?? DEFAULT_CAMERA;

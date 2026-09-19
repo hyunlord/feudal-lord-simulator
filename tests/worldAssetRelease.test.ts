@@ -141,7 +141,7 @@ const fixture = (): Fixture => {
 
   const buildingShapes = [
     ["house_l1", 64, 28, selections.house_l1], ["house_l2", 64, 46, selections.house_l2],
-    ["house_l3", 128, 92, selections.house_l3], ["well", 64, 40, selections.well],
+    ["house_l3", 64, 92, selections.house_l3], ["well", 64, 40, selections.well],
     ["storehouse", 128, 70, selections.storehouse], ["wheat_farm", 128, 48, selections.wheat_farm],
     ["logging_camp", 64, 45, selections.logging_camp], ["sawmill", 80, 55, selections.sawmill],
   ] as const;

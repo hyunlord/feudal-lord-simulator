@@ -60,25 +60,28 @@ const PHASE9_BUILDINGS = [
     ty: 10,
     inventory: { bread: 200 },
   },
+  // Stage the western wall's existing stone stock inside the completed timber wall.
+  // Exterior depots now require gate detours, changing this construction benchmark.
   {
     id: "phase9-left-storehouse-0",
     kind: "storehouse",
     tx: 1,
-    ty: 14,
+    ty: 2,
     inventory: { stone: 200 },
   },
   {
     id: "phase9-left-storehouse-1",
     kind: "storehouse",
-    tx: 5,
-    ty: 14,
+    tx: 1,
+    ty: 5,
     inventory: { stone: 200 },
   },
   { id: "phase9-well-0", kind: "well", tx: 7, ty: 11 },
   { id: "phase9-well-1", kind: "well", tx: 13, ty: 11 },
   { id: "phase9-quarry-0", kind: "quarry", tx: 16, ty: 7 },
   { id: "phase9-quarry-1", kind: "quarry", tx: 18, ty: 7 },
-  { id: "phase9-masonry-0", kind: "masonry", tx: 21, ty: 7 },
+  // Keep the monitored stone chain inside the inherited completed Stage3 wall.
+  { id: "phase9-masonry-0", kind: "masonry", tx: 17, ty: 5 },
   { id: "phase9-market-0", kind: "market", tx: 20, ty: 9 },
 ] as const satisfies readonly {
   readonly id: string;

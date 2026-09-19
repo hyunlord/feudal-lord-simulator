@@ -44,6 +44,7 @@ export interface PalisadeState {
   readonly id: string;
   readonly polygon: PalisadePath;
   readonly gate: TileEdgePoint;
+  readonly additionalGates?: readonly TileEdgePoint[];
   readonly segments: readonly PalisadeSegment[];
 }
 
@@ -54,6 +55,7 @@ export interface ForestHarvest {
 }
 
 export interface GameState {
+  settlement?: import("./settlement.types").SettlementProgress;
   tick: number;
   seed: number;
   tiles: Tile[];

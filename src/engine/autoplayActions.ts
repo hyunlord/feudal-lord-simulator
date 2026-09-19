@@ -1,4 +1,4 @@
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { AutoplayAction } from "./autoplay";
 import { canProclaimStoneTownEra } from "./era";
 import type { GameState } from "./engine.types";
@@ -17,7 +17,7 @@ function palisadeFootprintsForState(state: GameState): readonly PalisadeFootprin
   return [...state.buildings]
     .sort((left, right) => left.id.localeCompare(right.id))
     .map((building) => {
-      const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+      const definition = buildingFootprint(building);
       return {
         id: building.id,
         tx: building.tx,

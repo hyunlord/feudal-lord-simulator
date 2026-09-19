@@ -108,3 +108,16 @@ export function stepWalkerAlongPath(walker: Walker, distance: number): Walker {
 export function stepWalker(walker: Walker, distance: number): Walker {
   return stepWalkerAlongPath(walker, distance);
 }
+
+export function remainingPathCanBeTraversed(
+  walker: Walker,
+  canTraverse: ((from: TilePos, to: TilePos) => boolean) | undefined,
+): boolean {
+  if (canTraverse === undefined) return true;
+  for (let index = Math.max(0, walker.pathIndex); index < walker.path.length - 1; index += 1) {
+    const from = walker.path[index];
+    const to = walker.path[index + 1];
+    if (from !== undefined && to !== undefined && !canTraverse(from, to)) return false;
+  }
+  return true;
+}

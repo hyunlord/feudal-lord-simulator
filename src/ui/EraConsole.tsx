@@ -199,6 +199,8 @@ function proposalFailureLabel(reason: string): string {
       return "목책선이 지도 밖으로 나갑니다";
     case "water_crossing":
       return "목책선이 물을 가로지릅니다";
+    case "building_clearance":
+      return "건물과 성벽 사이에 최소 한 칸의 여유가 필요합니다";
     case "insufficient_enclosure":
       return "건물 60% 이상을 둘러야 합니다";
     case "empty_perimeter":

@@ -1,0 +1,43 @@
+{
+  "source": "Deterministic seeded engine scenarios, not natural play or browser input; actual householdServices/road graph/advanceTick",
+  "checks": [
+    {
+      "name": "13th lot exceeds one well capacity",
+      "passed": true
+    },
+    {
+      "name": "real tick updates shortage into household water state",
+      "passed": true
+    },
+    {
+      "name": "real tick restores 13th household after second well",
+      "passed": true
+    },
+    {
+      "name": "merged footprint consumes two service units",
+      "passed": true
+    },
+    {
+      "name": "merged demand exhausts capacity one house earlier",
+      "passed": true
+    },
+    {
+      "name": "actual road graph serves market and church",
+      "passed": true
+    },
+    {
+      "name": "removing bridge road removes both urban services",
+      "passed": true
+    },
+    {
+      "name": "restoring actual road restores both urban services",
+      "passed": true
+    },
+    {
+      "name": "market workforce shortage blocks household service",
+      "passed": true
+    }
+  ],
+  "oneWellServed": 12,
+  "twoWellServed": 13
+}

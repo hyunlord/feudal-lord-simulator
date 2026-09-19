@@ -74,8 +74,8 @@ test("tree descriptors vary safely inside the isometric tile footprint", () => {
     assert.ok(Math.abs(descriptor.offsetX) <= TILE_W * 0.35);
     assert.ok(Math.abs(descriptor.offsetY) <= TILE_H * 0.35);
     assert.ok(Math.abs(descriptor.offsetX) / (TILE_W / 2) + Math.abs(descriptor.offsetY) / (TILE_H / 2) <= 0.7);
-    assert.ok(descriptor.scale >= 0.55);
-    assert.ok(descriptor.scale <= 1.45);
+    assert.ok(descriptor.scale >= 0.37);
+    assert.ok(descriptor.scale <= 1.15);
     assert.ok(["narrow", "broad", "rounded"].includes(descriptor.silhouette));
     assert.ok(descriptor.phase >= 0);
     assert.ok(descriptor.phase <= Math.PI * 2);
@@ -108,22 +108,39 @@ test("multi-tree canopy tones walk the full foliage ramp deterministically", () 
   assert.deepEqual(sampledTones, new Set(RAMPS.foliage));
 });
 
-test("tree scale samples use the exact Phase 12 endpoint range", () => {
-  // Given / When
-  const sampledScales = Array.from({ length: 16_384 }, (_, index) =>
-    buildTreeCluster({
-      tile: tile(index % 128, Math.floor(index / 128)),
-      forestLookup: buildForestLookup(fullForest),
-      seed: 901,
-    }),
-  ).flat().map((descriptor) => Number(descriptor.scale.toFixed(2)));
+test("forest edges stay below cottage height while interior trees retain taller variation", () => {
+  const target = tile(1, 1);
+  const interiorLookup = buildForestLookup(fullForest);
+  const edgeLookup = buildForestLookup([target, tile(0, 1), tile(1, 0)]);
+  const interior = buildTreeCluster({ tile: target, forestLookup: interiorLookup, seed: 73 });
+  const edge = buildTreeCluster({ tile: target, forestLookup: edgeLookup, seed: 73 });
 
-  // Then
-  assert.equal(Math.min(...sampledScales), 0.55);
-  assert.equal(Math.max(...sampledScales), 1.45);
-  assert.ok(sampledScales.includes(0.55));
-  assert.ok(sampledScales.includes(1.45));
-  assert.ok(sampledScales.every((scale) => scale >= 0.55 && scale <= 1.45));
+  assert.equal(edge.length, interior.length);
+  for (const tree of edge) {
+    const original = interior.find((other) => other.id === tree.id);
+    assert.ok(original);
+    assert.equal(tree.x, original.x);
+    assert.equal(tree.y, original.y);
+    assert.equal(tree.spriteKey, original.spriteKey);
+    assert.ok(tree.scale < original.scale);
+    assert.ok(tree.scale * 64 <= 54);
+  }
+  assert.equal(buildTreeCluster({ tile: target, forestLookup: interiorLookup, seed: 73 }), interior);
+  assert.equal(buildTreeCluster({ tile: target, forestLookup: edgeLookup, seed: 73 }), edge);
+});
+
+test("tree stature distinguishes young and mature species within bounded deterministic variation", () => {
+  const lookup = buildForestLookup(fullForest);
+  const sample = Array.from({ length: 512 }, (_, seed) =>
+    buildTreeCluster({ tile: tile(1, 1), forestLookup: lookup, seed }),
+  ).flat();
+  const maximum = (key: string): number => Math.max(...sample.filter((tree) => tree.spriteKey === key).map((tree) => tree.scale));
+
+  assert.ok(sample.every((tree) => tree.scale >= 0.52 && tree.scale <= 1.15));
+  assert.ok(maximum("tree_pine_tall") > 1.1);
+  assert.ok(maximum("tree_pine_short") < 0.84);
+  assert.ok(maximum("tree_oak_small") < 0.8);
+  assert.ok(maximum("tree_oak_large") > 1);
 });
 
 test("tree sprite distribution favors conifers and flips half deterministically", () => {

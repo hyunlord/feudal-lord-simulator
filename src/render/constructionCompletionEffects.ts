@@ -1,3 +1,5 @@
+import { drawCroppedWorldSprite } from "./worldSprite";
+import { constructionArtImage } from "./constructionArtAssets";
 import {
   constructionSiteAnchor,
   type ConstructionSite,
@@ -11,6 +13,7 @@ export type ConstructionCompletionEffect = {
   readonly tx: number;
   readonly ty: number;
   readonly ageMs: number;
+  readonly confirmedCompletion?: boolean;
 };
 
 type ConstructionCompletionInput = {
@@ -52,13 +55,15 @@ export function constructionCompletionEffectsForFrame(
   tracker: ConstructionCompletionTracker,
   current: readonly ConstructionSite[],
   nowMs: number,
+  completedBuildingIds?: readonly string[],
 ): readonly ConstructionCompletionEffect[] {
   const currentIds = new Set(current.map((site) => site.id));
+  const completedIds = completedBuildingIds === undefined ? null : new Set(completedBuildingIds);
   const newEffects = tracker.previousSites
-    .filter((site) => !currentIds.has(site.id))
+    .filter((site) => !currentIds.has(site.id) && (completedIds === null || completedIds.has(site.id)))
     .map((site) => {
       const anchor = constructionSiteAnchor(site);
-      return { id: site.id, tx: anchor.tx, ty: anchor.ty, startedAtMs: nowMs };
+      return { id: site.id, tx: anchor.tx, ty: anchor.ty, startedAtMs: nowMs, ...(completedIds === null ? {} : { confirmedCompletion: true }) };
     });
   tracker.previousSites = current;
   tracker.activeCompletionEffects = [...tracker.activeCompletionEffects, ...newEffects].filter(
@@ -69,6 +74,7 @@ export function constructionCompletionEffectsForFrame(
     tx: effect.tx,
     ty: effect.ty,
     ageMs: nowMs - effect.startedAtMs,
+    ...(effect.confirmedCompletion === undefined ? {} : { confirmedCompletion: effect.confirmedCompletion }),
   }));
 }
 
@@ -84,6 +90,15 @@ export function drawConstructionCompletionEffects(
     const progress = effect.ageMs / COMPLETION_EFFECT_MS;
     context.save();
     context.globalAlpha = Math.max(0, 1 - progress);
+    const dust = effect.confirmedCompletion ? constructionArtImage('dust') : null;
+    if (dust !== null) {
+      const frame = Math.min(3, Math.floor(progress * 4));
+      context.imageSmoothingEnabled = true;
+      drawCroppedWorldSprite(context, dust, { x: frame * 443.5, y: 0, width: 443.5, height: 887 },
+        { x: screen.sx - 16, y: screen.sy - 47, width: 32, height: 64 }, false, true);
+      context.restore();
+      continue;
+    }
     context.fillStyle = withAlpha(SEMANTIC_PALETTE.earthDark, 0.32);
     context.beginPath();
     context.ellipse(

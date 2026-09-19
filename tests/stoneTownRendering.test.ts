@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building, BuildingKind } from "../src/content/buildingConfig";
-import { SEMANTIC_PALETTE } from "../src/content/palette";
+import { RAMPS, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { PalisadeSegment } from "../src/engine/engine.types";
 import { hashEconomyState } from "../scripts/economyHarness";
 import { drawBuildings } from "../src/render/drawBuildings";
@@ -182,11 +182,15 @@ test("Given timber and completed stone wall segments When drawing Then each posi
   assert.ok(timberContext.calls.includes(`fillStyle:${SEMANTIC_PALETTE.earth}`));
   assert.equal(timberContext.calls.includes(`fillStyle:${SEMANTIC_PALETTE.stone}`), false);
   assert.ok(stoneContext.calls.includes(`fillStyle:${SEMANTIC_PALETTE.stone}`));
+  assert.ok(stoneContext.calls.includes(`fillStyle:${RAMPS.stone[3]}`));
   assert.equal(stoneContext.calls.includes(`fillStyle:${SEMANTIC_PALETTE.earth}`), false);
-  assert.deepEqual(
-    timberContext.calls.filter((call) => call.startsWith("fillRect:")),
-    stoneContext.calls.filter((call) => call.startsWith("fillRect:")),
-  );
+  assert.equal(timberContext.calls.filter(call => call.startsWith("fillRect:")).length, 4);
+  assert.equal(stoneContext.calls.some(call => call.startsWith("fillRect:")), false);
+  // Both joined unit edges get a solid body, lighter wall walk and masonry courses.
+  assert.ok(stoneContext.calls.includes(`fillStyle:${SEMANTIC_PALETTE.stoneDark}`));
+  assert.ok(stoneContext.calls.includes(`strokeStyle:${RAMPS.stone[1]}`));
+  assert.equal(stoneContext.calls.filter(call => call === "fill").length, 40);
+  assert.equal(stoneContext.calls.filter(call => call === "closePath").length, 40);
 });
 
 test("Given a material wave clock outside GameState When hashing gameplay Then presentation timing has no effect", () => {

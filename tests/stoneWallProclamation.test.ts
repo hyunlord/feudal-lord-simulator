@@ -8,13 +8,17 @@ import { palisade, palisadeSegment, state, stoneSite, timberSite } from "./stone
 
 test("Given an eligible completed palisade When proclaiming Stone Town Then deterministic stone replacement sites are queued for every segment", () => {
   // Given
-  const eligible = state();
+  const original = state();
+  const additionalGates = [{ x: 4, y: 2 }];
+  assert.ok(original.palisade);
+  const eligible = { ...original, palisade: { ...original.palisade, additionalGates } };
 
   // When
   const next = confirmStoneTownProclamation(eligible);
 
   // Then
   assert.equal(next.era, "stone_town");
+  assert.deepEqual(next.palisade?.additionalGates, additionalGates);
   assert.equal(next.eraProclaimedTick, 100);
   assert.equal(next.constructionSites.length, 3);
   assert.equal(next.constructionSites.every(isStoneWallConstructionSite), true);

@@ -1,0 +1,1091 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "key": "tree_dead",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/tree_dead.png",
+      "sourceSha256": "2cf28a830e8eed1b63452b71c98f7dd9b354dbe886d3d700d616a3839d36745d",
+      "destination": "public/assets/foliage/tree_dead.png",
+      "beforeSha256": "f6339e6c6f7ddd6ba92da1ab5421bd80e4d2d51c06dc12f0b9e7a0dd7cfbdadf",
+      "outputSha256": "288aed1fe360bbdb39b2dd27935e7b4a7ae990f59b32908a76423dba1a008a35",
+      "dimensions": {
+        "width": 56,
+        "height": 80
+      },
+      "anchor": {
+        "x": 28,
+        "y": 80
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.8,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 59,
+          "top": 163,
+          "width": 931,
+          "height": 1254
+        },
+        "scale": 0.055853920515574654,
+        "resized": {
+          "width": 52,
+          "height": 70
+        },
+        "destination": {
+          "left": 2,
+          "top": 9
+        },
+        "baseline": 78,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/playable-edges-v1/assets/tree_dead_v1.png"
+    },
+    {
+      "key": "house_l4",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/house_l4.png",
+      "sourceSha256": "4a974a6c53b67132fa4068b476ecd81cfefd5ae1c5c7db46b6a7164c54447de3",
+      "destination": "public/assets/buildings/house_l4.png",
+      "beforeSha256": "aaeed6a4418d0799bef7b01e1284d97f5dd24cf226f5c869e2778755cfa8f99e",
+      "outputSha256": "f9b62b7a77ece19e6b9330d17d4df16b24b4a21054d139076c621b2018c50af1",
+      "dimensions": {
+        "width": 112,
+        "height": 160
+      },
+      "anchor": {
+        "x": 56,
+        "y": 144
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.52,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 241,
+          "top": 80,
+          "width": 822,
+          "height": 1160
+        },
+        "scale": 0.1070559610705596,
+        "resized": {
+          "width": 88,
+          "height": 124
+        },
+        "destination": {
+          "left": 12,
+          "top": 21
+        },
+        "baseline": 144,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/housing-p0-v1/house_l4_1x1_sw_a.png"
+    },
+    {
+      "key": "house_l3",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/house_l3.png",
+      "sourceSha256": "14a4c2aa996ee15f577720a2e2a0d45b83e49adcc5d20a7b0c37d904d131e596",
+      "destination": "public/assets/buildings/house_l3.png",
+      "beforeSha256": "da775c3629b615d6c01bdc69580345d577562753d6e6b115891230ac94127af2",
+      "outputSha256": "02afde7fe407d45c921653085af1fc0ab836c47576e0abb0aac36c86ae9b3112",
+      "dimensions": {
+        "width": 160,
+        "height": 192
+      },
+      "anchor": {
+        "x": 80,
+        "y": 176
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.43333333333333335,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 212,
+          "top": 113,
+          "width": 885,
+          "height": 1101
+        },
+        "scale": 0.13258003766478343,
+        "resized": {
+          "width": 117,
+          "height": 146
+        },
+        "destination": {
+          "left": 22,
+          "top": 31
+        },
+        "baseline": 176,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/housing-p0-v1/house_l3_1x1_sw_a.png"
+    },
+    {
+      "key": "house_l0",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/house_l0.png",
+      "sourceSha256": "d37eccb230ab7464cbced236cc05409bc8860cf27ad1b05b164c0ec9e14c1243",
+      "destination": "public/assets/buildings/house_l0.png",
+      "beforeSha256": "417da9d910a6d87bedd99cff3838ec9505ad1e7c547c751d4e88d548b9f304ce",
+      "outputSha256": "41f7e3998a42736acef3758d9deb6064bd255ff29b0e3f825635f47cc76166cd",
+      "dimensions": {
+        "width": 96,
+        "height": 112
+      },
+      "anchor": {
+        "x": 48,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.5142857142857143,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 228,
+          "top": 365,
+          "width": 849,
+          "height": 753
+        },
+        "scale": 0.10365135453474676,
+        "resized": {
+          "width": 88,
+          "height": 78
+        },
+        "destination": {
+          "left": 4,
+          "top": 19
+        },
+        "baseline": 96,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/housing-p0-v1/house_l0_1x1_sw_a.png"
+    },
+    {
+      "key": "house_l1",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/house_l1.png",
+      "sourceSha256": "06bb60c2361444d77c40804de31906888cf4c07b29b26b21394c78d93be276e0",
+      "destination": "public/assets/buildings/house_l1.png",
+      "beforeSha256": "274df62d6ce61a36fa9d8c637572ae1072190cb7de01c7c0cb74967755a0e580",
+      "outputSha256": "572eee6d139fc0f6e9c43b7555e8de77b4d7a28c5873ba3fd41a31b497e644df",
+      "dimensions": {
+        "width": 96,
+        "height": 120
+      },
+      "anchor": {
+        "x": 48,
+        "y": 104
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.48000000000000004,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 137,
+          "top": 188,
+          "width": 1016,
+          "height": 942
+        },
+        "scale": 0.08661417322834646,
+        "resized": {
+          "width": 88,
+          "height": 82
+        },
+        "destination": {
+          "left": 4,
+          "top": 23
+        },
+        "baseline": 104,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/housing-p0-v1/house_l1_1x1_sw_a.png"
+    },
+    {
+      "key": "house_l2",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/house_l2.png",
+      "sourceSha256": "12732b3097d438b7fc527bcbe481f9475b55e4d1419f500f23e5ac1c62501aa0",
+      "destination": "public/assets/buildings/house_l2.png",
+      "beforeSha256": "6122dcfb3321a017012e60187643613a57b50acbd44f1d2dbdf96f934d414331",
+      "outputSha256": "79a48060ca22047614768b71c132798401890ad008cb8dd672649a777997ccf6",
+      "dimensions": {
+        "width": 96,
+        "height": 144
+      },
+      "anchor": {
+        "x": 48,
+        "y": 128
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.5777777777777778,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 126,
+          "top": 55,
+          "width": 1043,
+          "height": 1167
+        },
+        "scale": 0.08437200383509108,
+        "resized": {
+          "width": 88,
+          "height": 98
+        },
+        "destination": {
+          "left": 4,
+          "top": 31
+        },
+        "baseline": 128,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/housing-p0-v1/house_l2_1x1_sw_a.png"
+    },
+    {
+      "key": "well",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/well.png",
+      "sourceSha256": "936816156f791c2d59f64d0fb4c26b62d6183609ebb4d5ef26658fd3733850f2",
+      "destination": "public/assets/buildings/well.png",
+      "beforeSha256": "f1e950e7e4f8ec79e10563833489ebc0dae2ea6401992e92d43e3aca6ee6d593",
+      "outputSha256": "8cfeda1db0dcbee81282db95013b411a1456c0eb572361ada361570470a0ad70",
+      "dimensions": {
+        "width": 72,
+        "height": 80
+      },
+      "anchor": {
+        "x": 36,
+        "y": 64
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.72,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 320,
+          "top": 218,
+          "width": 636,
+          "height": 840
+        },
+        "scale": 0.07380952380952381,
+        "resized": {
+          "width": 47,
+          "height": 62
+        },
+        "destination": {
+          "left": 13,
+          "top": 3
+        },
+        "baseline": 64,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/civic-p1-v1/well_1x1_sw_a.png"
+    },
+    {
+      "key": "barn",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/barn.png",
+      "sourceSha256": "10216797d2fd6ad38d876897636e0cab11dbd383c1257da581d83bd09b6dd7ef",
+      "destination": "public/assets/buildings/barn.png",
+      "beforeSha256": "ac167ef0d025d649bcd3e815a20983046b50ec5a8ab8a63b69040a5490b5eac0",
+      "outputSha256": "cf600bf15c6c1c722399acdd687dadb3300e4f52f5dc87b44d988b0ad6eb96b4",
+      "dimensions": {
+        "width": 160,
+        "height": 144
+      },
+      "anchor": {
+        "x": 80,
+        "y": 128
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "renderScale": 0.48888888888888893,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 244,
+          "top": 116,
+          "width": 790,
+          "height": 1005
+        },
+        "scale": 0.1253731343283582,
+        "resized": {
+          "width": 99,
+          "height": 126
+        },
+        "destination": {
+          "left": 31,
+          "top": 3
+        },
+        "baseline": 128,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/civic-p1-v1/granary_2x2_sw_a.png"
+    },
+    {
+      "key": "storehouse",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/storehouse.png",
+      "sourceSha256": "c0da705802350313d299d1280de6cb7a4fe5ef9df5467be976540f753f1d8811",
+      "destination": "public/assets/buildings/storehouse.png",
+      "beforeSha256": "355a669cba6424ff939c02af40ead650d530b796c8541ba47dda9a94791d16be",
+      "outputSha256": "34a128ea26c8efff6143d0b816777280757666364e3782bb35696c98db5de782",
+      "dimensions": {
+        "width": 160,
+        "height": 136
+      },
+      "anchor": {
+        "x": 80,
+        "y": 120
+      },
+      "footprint": {
+        "width": 2,
+        "height": 2
+      },
+      "renderScale": 0.5176470588235295,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 111,
+          "top": 188,
+          "width": 1061,
+          "height": 882
+        },
+        "scale": 0.13100848256361922,
+        "resized": {
+          "width": 139,
+          "height": 116
+        },
+        "destination": {
+          "left": 11,
+          "top": 5
+        },
+        "baseline": 120,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/civic-p1-v1/storehouse_2x2_sw_a.png"
+    },
+    {
+      "key": "logging_camp",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/logging_camp.png",
+      "sourceSha256": "0c6c8e3cb82643603d8590a9bed51f23b2ce9fb6ff8ea2e32b625c1f97a086c6",
+      "destination": "public/assets/buildings/logging_camp.png",
+      "beforeSha256": "66609e30bacd852e3d8473862915dff11d51d46bd2086cfd9554e7fafad6c43e",
+      "outputSha256": "25f04a0badda346f5931d3fd72a531e4a348cc949b6b953f0f02f5c949431516",
+      "dimensions": {
+        "width": 96,
+        "height": 104
+      },
+      "anchor": {
+        "x": 48,
+        "y": 88
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.676923076923077,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 166,
+          "top": 178,
+          "width": 981,
+          "height": 913
+        },
+        "scale": 0.08970438328236494,
+        "resized": {
+          "width": 88,
+          "height": 82
+        },
+        "destination": {
+          "left": 4,
+          "top": 7
+        },
+        "baseline": 88,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/industry-p1-v1/logging_camp_1x1_sw_a.png"
+    },
+    {
+      "key": "sawmill",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/sawmill.png",
+      "sourceSha256": "432a04abc7f197048cf01a00b5f2396cfe1c9b10be3c45fa515e882ca23c8f6d",
+      "destination": "public/assets/buildings/sawmill.png",
+      "beforeSha256": "c5796f4ec19f81e5984cf701f39e1c237fcad41a7ccf102b0e65f81c828e2aac",
+      "outputSha256": "89db75390e1abc85c5b0903bf7c4f51159fab62675a2a70dfda17ba4195def8a",
+      "dimensions": {
+        "width": 112,
+        "height": 112
+      },
+      "anchor": {
+        "x": 56,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.6285714285714287,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 120,
+          "top": 112,
+          "width": 1023,
+          "height": 1028
+        },
+        "scale": 0.08602150537634409,
+        "resized": {
+          "width": 88,
+          "height": 88
+        },
+        "destination": {
+          "left": 12,
+          "top": 9
+        },
+        "baseline": 96,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/industry-p1-v1/sawmill_1x1_sw_a.png"
+    },
+    {
+      "key": "tree_oak_large",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/tree_oak_large.png",
+      "sourceSha256": "9a3a4e2d96246bc95781310cd0257750638a371f30ad3becb0d74bf12f03a2d6",
+      "destination": "public/assets/foliage/tree_oak_large.png",
+      "beforeSha256": "7fd63812489ff09a5211c76a97eba9a28ded4ba68d184af2c37b5f41393e0f6d",
+      "outputSha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f",
+      "dimensions": {
+        "width": 88,
+        "height": 112
+      },
+      "anchor": {
+        "x": 44,
+        "y": 112
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.5714285714285714,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 60,
+          "top": 228,
+          "width": 1137,
+          "height": 801
+        },
+        "scale": 0.07387862796833773,
+        "resized": {
+          "width": 84,
+          "height": 59
+        },
+        "destination": {
+          "left": 2,
+          "top": 52
+        },
+        "baseline": 110,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-canopy-v1/assets/oak_large.png"
+    },
+    {
+      "key": "tree_oak_small",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/tree_oak_small.png",
+      "sourceSha256": "a116968ed407054c5d908ff7b2d0d143347c8687fd4c98f3b858efc798c51f8b",
+      "destination": "public/assets/foliage/tree_oak_small.png",
+      "beforeSha256": "f3f6d02742f18c432f3c9ff50b56dd5c9c8e34ab2ae2fdc8e44a1696f38057d8",
+      "outputSha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4",
+      "dimensions": {
+        "width": 64,
+        "height": 80
+      },
+      "anchor": {
+        "x": 32,
+        "y": 80
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.8,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 207,
+          "top": 265,
+          "width": 840,
+          "height": 733
+        },
+        "scale": 0.07142857142857142,
+        "resized": {
+          "width": 60,
+          "height": 52
+        },
+        "destination": {
+          "left": 2,
+          "top": 27
+        },
+        "baseline": 78,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/oak_small_b.png"
+    },
+    {
+      "key": "tree_pine_tall",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/tree_pine_tall.png",
+      "sourceSha256": "c06153a43a6767f99296d90538dac82bff1f0a3f262213fa4a6201cc9ecab2c1",
+      "destination": "public/assets/foliage/tree_pine_tall.png",
+      "beforeSha256": "f57501df31c017b4f9d106cd14828fe9b2e5427c5f1edeecf9886aa5d4854f1a",
+      "outputSha256": "d2855edd78af1fbdaad15f2dd3ed6a16515f8f799c2cc0e2a0fca06416f7a6a7",
+      "dimensions": {
+        "width": 64,
+        "height": 120
+      },
+      "anchor": {
+        "x": 32,
+        "y": 120
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.5333333333333333,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 271,
+          "top": 116,
+          "width": 739,
+          "height": 1019
+        },
+        "scale": 0.08119079837618404,
+        "resized": {
+          "width": 60,
+          "height": 83
+        },
+        "destination": {
+          "left": 2,
+          "top": 36
+        },
+        "baseline": 118,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-canopy-v1/assets/pine_large.png"
+    },
+    {
+      "key": "tree_pine_short",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/tree_pine_short.png",
+      "sourceSha256": "898d23c4fef439ca2884c5def9ca09a7fed1cce5f8782d5777ac30e4ba5f90dc",
+      "destination": "public/assets/foliage/tree_pine_short.png",
+      "beforeSha256": "06ea335353ca4c479551920f968d7bd25f86bdfe6917a8fc96d2c72ad9cdc3a0",
+      "outputSha256": "1d76034ea71d74970ffd9460f6387280710e12a83d00e2bb479a7549501ce917",
+      "dimensions": {
+        "width": 56,
+        "height": 88
+      },
+      "anchor": {
+        "x": 28,
+        "y": 88
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.7272727272727273,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 368,
+          "top": 169,
+          "width": 544,
+          "height": 915
+        },
+        "scale": 0.09180327868852459,
+        "resized": {
+          "width": 50,
+          "height": 84
+        },
+        "destination": {
+          "left": 3,
+          "top": 3
+        },
+        "baseline": 86,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/pine_small_b.png"
+    },
+    {
+      "key": "tree_birch",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/tree_birch.png",
+      "sourceSha256": "df2f41d56c081102ef86933276fae5c966fb897c0d4743bd1919bf8f8d1f4712",
+      "destination": "public/assets/foliage/tree_birch.png",
+      "beforeSha256": "7e4ea3d7f00645688926bd2a55596a94c7ae7e110b58582c9a2a8f5034a010b2",
+      "outputSha256": "d97dc399fbe522e4a3f499f7610f826cdea258dad9c7ee169dd2e0b6b14f6db8",
+      "dimensions": {
+        "width": 60,
+        "height": 96
+      },
+      "anchor": {
+        "x": 30,
+        "y": 96
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 0.6666666666666666,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 343,
+          "top": 132,
+          "width": 622,
+          "height": 950
+        },
+        "scale": 0.09003215434083602,
+        "resized": {
+          "width": 56,
+          "height": 86
+        },
+        "destination": {
+          "left": 2,
+          "top": 9
+        },
+        "baseline": 94,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/birch_small_b.png"
+    },
+    {
+      "key": "stump_fresh",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/stump_fresh.png",
+      "sourceSha256": "42b3ddfbdf1602a6d3e318104f84463430abae3ba80d35f0e3217680cc229240",
+      "destination": "public/assets/foliage/stump_fresh.png",
+      "beforeSha256": "54508979c2267fa8514c50f762a2aea121b5d15f98cd1ae571bc8df5da15feec",
+      "outputSha256": "9714ec4fc488575df27451216ceee8b33da8bb4704bf5d9ac0087887581356d4",
+      "dimensions": {
+        "width": 40,
+        "height": 24
+      },
+      "anchor": {
+        "x": 20,
+        "y": 24
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 457,
+          "top": 530,
+          "width": 361,
+          "height": 281
+        },
+        "scale": 0.0711743772241993,
+        "resized": {
+          "width": 26,
+          "height": 20
+        },
+        "destination": {
+          "left": 7,
+          "top": 3
+        },
+        "baseline": 22,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/stump_a.png"
+    },
+    {
+      "key": "stump_old",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/stump_old.png",
+      "sourceSha256": "0c045c4bded37e442aca7814de9d922308db452ed2fb3b31ddd4aa17559bbc7d",
+      "destination": "public/assets/foliage/stump_old.png",
+      "beforeSha256": "7a0e54f4ed35876540272459e4eca275545012efa15c4d7da0b9dc063d46daf0",
+      "outputSha256": "12439e70858a21e6a3095a964349b54f1e617df79cb7ffa3019a919ded1c9b2f",
+      "dimensions": {
+        "width": 36,
+        "height": 20
+      },
+      "anchor": {
+        "x": 18,
+        "y": 20
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 415,
+          "top": 465,
+          "width": 424,
+          "height": 355
+        },
+        "scale": 0.04507042253521127,
+        "resized": {
+          "width": 19,
+          "height": 16
+        },
+        "destination": {
+          "left": 9,
+          "top": 3
+        },
+        "baseline": 18,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/stump_b.png"
+    },
+    {
+      "key": "shrub_a",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/shrub_a.png",
+      "sourceSha256": "52f6a1277f14ec7732c593e32535fdfdb28a2bd477075a2646abf8f8bdae3ea4",
+      "destination": "public/assets/foliage/shrub_a.png",
+      "beforeSha256": "4a3362ab051ea63689019f8ee1fb401ecf19e255fbdf9b8db6d6d1c62a25c5d0",
+      "outputSha256": "e4b01ac4219400c1e9740f93c84e34eb40a430826a98f97068b67f731bd28963",
+      "dimensions": {
+        "width": 40,
+        "height": 28
+      },
+      "anchor": {
+        "x": 20,
+        "y": 28
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 213,
+          "top": 346,
+          "width": 851,
+          "height": 575
+        },
+        "scale": 0.04173913043478261,
+        "resized": {
+          "width": 36,
+          "height": 24
+        },
+        "destination": {
+          "left": 2,
+          "top": 3
+        },
+        "baseline": 26,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/bush_a.png"
+    },
+    {
+      "key": "shrub_b",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/shrub_b.png",
+      "sourceSha256": "67443b5e5b0e59ee5eca7c1c1ba7c23473991f1513d44a9d41f79ddc6efdba59",
+      "destination": "public/assets/foliage/shrub_b.png",
+      "beforeSha256": "f7e137156808cddf6a41b22aeca9a8b3ac582d950ebca7cbd4c88a4cc489b165",
+      "outputSha256": "f6b0b80859bc72df5b073f03d4a9105d3d82e078f81dd5571ac5f1347dd58926",
+      "dimensions": {
+        "width": 32,
+        "height": 22
+      },
+      "anchor": {
+        "x": 16,
+        "y": 22
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 174,
+          "top": 384,
+          "width": 907,
+          "height": 537
+        },
+        "scale": 0.030871003307607496,
+        "resized": {
+          "width": 28,
+          "height": 17
+        },
+        "destination": {
+          "left": 2,
+          "top": 4
+        },
+        "baseline": 20,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/bush_b.png"
+    },
+    {
+      "key": "grass_tuft",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/grass_tuft.png",
+      "sourceSha256": "e3c5fbbfc7a48d55c80102459d94d3e76d0765d478eb28195d7bf6908b497913",
+      "destination": "public/assets/foliage/grass_tuft.png",
+      "beforeSha256": "841b738eb64a3919c95c829d8d6c4da53c7b4c79a5094c33b49879242b28c035",
+      "outputSha256": "ac9e17381d01aa38bbb5136730acbccdfebe2a9637423fa80c13fb1e146fc4d6",
+      "dimensions": {
+        "width": 28,
+        "height": 18
+      },
+      "anchor": {
+        "x": 14,
+        "y": 18
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 540,
+          "top": 184,
+          "width": 1092,
+          "height": 381
+        },
+        "scale": 0.02197802197802198,
+        "resized": {
+          "width": 24,
+          "height": 8
+        },
+        "destination": {
+          "left": 2,
+          "top": 9
+        },
+        "baseline": 16,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-canopy-v1/assets/grass_tuft_a_v2.png"
+    },
+    {
+      "key": "field_stone",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/field_stone.png",
+      "sourceSha256": "253909dbb4b4e7d6e5f60501f2dc4082c97a9311f4f53e2edfc14694cdf11fba",
+      "destination": "public/assets/foliage/field_stone.png",
+      "beforeSha256": "19f8bd1d14b3c83725d6269a5de3ccad7d6a73056987d5d6f007b15a5dfd28aa",
+      "outputSha256": "6676cc085afbdf03b3d884da449878914361674283f398e277eb8eec8f887aaf",
+      "dimensions": {
+        "width": 24,
+        "height": 16
+      },
+      "anchor": {
+        "x": 12,
+        "y": 16
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "alpha-bounds-uniform-fit-lanczos3",
+        "boundsAlphaThreshold": 8,
+        "sourceBounds": {
+          "left": 240,
+          "top": 427,
+          "width": 799,
+          "height": 470
+        },
+        "scale": 0.025031289111389236,
+        "resized": {
+          "width": 20,
+          "height": 12
+        },
+        "destination": {
+          "left": 2,
+          "top": 3
+        },
+        "baseline": 14,
+        "quantization": false,
+        "addedOutline": false
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/nature-edge-v1/assets/rock_b.png"
+    },
+    {
+      "key": "grass",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/grass.png",
+      "sourceSha256": "f37f99a3a4f996c1cb3a41b38e0559c84ea4bc2acf45e4f75f017ffb21f6e86c",
+      "destination": "public/assets/terrain/grass.png",
+      "beforeSha256": "0b1bd31a7bb647f9f73fb728f9619f86c05fd481ffc69710ebd70943714b8c14",
+      "outputSha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+      "dimensions": {
+        "width": 256,
+        "height": 256
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "lanczos3-resize-periodic-edge-blend",
+        "edgeBand": 8,
+        "seamMetrics": {
+          "horizontalOpposingEdgeMaxDelta": 0,
+          "verticalOpposingEdgeMaxDelta": 0,
+          "horizontalJoinBandDelta": 4.356608072916669,
+          "verticalJoinBandDelta": 4.370605468750012,
+          "horizontalInternalBandDelta": 4.356608072916669,
+          "verticalInternalBandDelta": 4.370605468750012
+        }
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/terrain-ground-v1/assets/grass_a.png"
+    },
+    {
+      "key": "forest_floor",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/forest_floor.png",
+      "sourceSha256": "f3c2eb4f32b3e4f6d3915a047389905d405d33db29602a5efee9a42be51d12c0",
+      "destination": "public/assets/terrain/forest_floor.png",
+      "beforeSha256": "c8324a6098ea69e51bc933d32427f01657a3acea73a6e7c4623eb4ace711ce3f",
+      "outputSha256": "dee8eb3c4c016f92ee212df5f5517a8c16a03e493e57b22a130fb74d347b3799",
+      "dimensions": {
+        "width": 512,
+        "height": 512
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "lanczos3-resize-periodic-edge-blend",
+        "edgeBand": 8,
+        "seamMetrics": {
+          "horizontalOpposingEdgeMaxDelta": 0,
+          "verticalOpposingEdgeMaxDelta": 0,
+          "horizontalJoinBandDelta": 7.026936848958322,
+          "verticalJoinBandDelta": 7.238525390624988,
+          "horizontalInternalBandDelta": 11.276611328124964,
+          "verticalInternalBandDelta": 12.279785156249996
+        }
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/terrain-ground-v1/assets/forest_floor.png"
+    },
+    {
+      "key": "packed_earth_road",
+      "sourcePath": "docs/asset-evidence/accepted-art/sources/packed_earth_road.png",
+      "sourceSha256": "c4c3d7094d0261a00c911ab0f63a9e0b3aaa7bb4978c87e8d102f2846db0fe01",
+      "destination": "public/assets/terrain/packed_earth_road.png",
+      "beforeSha256": "ee5b6bb22523d7ae39e3b7988f59185b111c82f43b6d0292aa7fcbf42ab04bdb",
+      "outputSha256": "d9c7d7c69424615971e6343e945c5767b9ffca69dda51de8e500913596aca2a9",
+      "dimensions": {
+        "width": 256,
+        "height": 256
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "width": 1,
+        "height": 1
+      },
+      "renderScale": 1,
+      "transform": {
+        "method": "lanczos3-resize-periodic-edge-blend",
+        "edgeBand": 8,
+        "seamMetrics": {
+          "horizontalOpposingEdgeMaxDelta": 0,
+          "verticalOpposingEdgeMaxDelta": 0,
+          "horizontalJoinBandDelta": 4.13997395833334,
+          "verticalJoinBandDelta": 4.53938802083334,
+          "horizontalInternalBandDelta": 4.13997395833334,
+          "verticalInternalBandDelta": 4.53938802083334
+        }
+      },
+      "historicalSourcePath": "../feudal-lord-simulator/output/terrain-ground-v1/assets/dirt.png"
+    }
+  ],
+  "untouchedKeys": [
+    "mill",
+    "wheat_farm",
+    "quarry",
+    "masonry",
+    "market",
+    "church",
+    "keep",
+    "stone_wall_segment",
+    "water",
+    "rock"
+  ],
+  "limitations": [
+    "house_l3 sprite footprint aligned to existing 1x1 gameplay footprint; housing merging remains separate",
+    "No gameplay footprint, anchor, dimension, or renderScale changes"
+  ]
+}

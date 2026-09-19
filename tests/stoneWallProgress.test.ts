@@ -71,6 +71,9 @@ test("Given a completed timber segment under replacement When stone completes Th
       palisadeSegment(0, { replacementConstructionSiteId: "wall-a-segment-000-stone" }),
     ]),
   });
+  assert.ok(current.palisade);
+  const additionalGates = [{ x: 4, y: 2 }];
+  current = { ...current, palisade: { ...current.palisade, additionalGates } };
   const materials: Array<"none" | "timber" | "stone"> = [];
 
   // When
@@ -80,6 +83,7 @@ test("Given a completed timber segment under replacement When stone completes Th
 
   // Then
   assert.deepEqual(materials, ["timber", "stone"]);
+  assert.deepEqual(current.palisade?.additionalGates, additionalGates);
   assert.deepEqual(current.constructionSites, []);
   assert.deepEqual(current.palisade?.segments[0], {
     id: "wall-a-segment-000",

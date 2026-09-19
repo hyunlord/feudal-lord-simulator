@@ -10,21 +10,21 @@ export type ProductionStep = {
 const stock = (building: Building, resource: ResourceType): number =>
   Math.max(0, building.inventory[resource] ?? 0);
 
-function hasRequiredInput(
-  building: Building,
-  definition: BuildingDefinition,
-): boolean {
-  const production = definition.production;
-  if (production === null || production.input === null) return true;
-  return stock(building, production.input) >= production.inputPerOutput;
-}
+export type ProductionOperation = "not_producing" | "no_road" | "understaffed" | "no_input" | "output_full" | "working";
 
-function hasOutputCapacity(
+export function productionOperation(
   building: Building,
   definition: BuildingDefinition,
-): boolean {
-  const inputReleased = definition.production?.inputPerOutput ?? 0;
-  return availableSpace(building, definition) + inputReleased >= 1;
+  hasRoad = true,
+): ProductionOperation {
+  const production = definition.production;
+  if (production === null) return "not_producing";
+  if (!hasRoad) return "no_road";
+  if (building.workers < definition.workersRequired) return "understaffed";
+  if (production.input !== null && stock(building, production.input) < production.inputPerOutput) return "no_input";
+  const released = production.input === null ? 0 : production.inputPerOutput;
+  if (availableSpace(building, definition) + released < 1) return "output_full";
+  return "working";
 }
 
 export function stepProduction(
@@ -32,11 +32,7 @@ export function stepProduction(
   definition: BuildingDefinition,
 ): ProductionStep {
   const production = definition.production;
-  if (
-    production === null ||
-    building.workers < definition.workersRequired ||
-    !hasRequiredInput(building, definition)
-  ) {
+  if (production === null || productionOperation(building, definition) !== "working") {
     return { building, produced: null };
   }
 
@@ -47,16 +43,6 @@ export function stepProduction(
   if (progress < production.ticksPerOutput) {
     return {
       building: { ...building, productionProgress: progress },
-      produced: null,
-    };
-  }
-
-  if (!hasOutputCapacity(building, definition)) {
-    return {
-      building: {
-        ...building,
-        productionProgress: production.ticksPerOutput,
-      },
       produced: null,
     };
   }

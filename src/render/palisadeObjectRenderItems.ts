@@ -1,9 +1,11 @@
+import { timberGatePiers } from "./timberGateGeometry";
 import type { PalisadeSegment, PalisadeState } from "../engine/engine.types";
 import {
   palisadePathVisible,
   palisadeRenderAnchor,
   palisadeSegmentPath,
 } from "./palisadeRenderGeometry";
+import { stoneWallTopology, type StoneWallNode } from "./stoneWallTopology";
 import type { TileRange } from "./renderVisibility";
 
 export type PalisadeSegmentRenderItem = {
@@ -11,8 +13,10 @@ export type PalisadeSegmentRenderItem = {
   readonly id: string;
   readonly segment: PalisadeSegment;
   readonly gate: PalisadeState["gate"] | null;
+  readonly gates?: readonly PalisadeState["gate"][];
   readonly depth: number;
   readonly anchorTx: number;
+  readonly stoneNodes?: readonly StoneWallNode[];
 };
 
 export function palisadeSegmentRenderItems(
@@ -21,9 +25,18 @@ export function palisadeSegmentRenderItems(
 ): readonly PalisadeSegmentRenderItem[] {
   if (palisade === undefined || palisade === null) return [];
   const items: PalisadeSegmentRenderItem[] = [];
-  for (const segment of palisade.segments) {
+  const timberTopology = stoneWallTopology({ ...palisade, segments: palisade.segments
+    .filter(segment => segment.material !== "stone")
+    .map(segment => ({ ...segment, material: "stone" })) });
+  for (const edge of timberTopology) {
+    const segment = { ...edge.segment, material: "timber" as const };
     const item = palisadeSegmentRenderItem(segment, palisade, range);
-    if (item !== null) items.push(item);
+    if (item !== null) items.push({ ...item, id: `timber:${edge.key}`, gate: edge.gate, gates: edge.gates,
+      stoneNodes: edge.nodes.filter(node => node.kind === "gate") });
+  }
+  for (const edge of stoneWallTopology(palisade)) {
+    const item = palisadeSegmentRenderItem(edge.segment, palisade, range);
+    if (item !== null) items.push({ ...item, id: `stone:${edge.key}`, gate: edge.gate, gates: edge.gates, stoneNodes: edge.nodes });
   }
   return items;
 }
@@ -48,7 +61,5 @@ function palisadeSegmentRenderItem(
 }
 
 function segmentHasGate(segment: PalisadeSegment, palisade: PalisadeState): boolean {
-  return segment.edgePath.some((point) =>
-    point.x === palisade.gate.x && point.y === palisade.gate.y
-  );
+  return timberGatePiers(segment.edgePath, palisade.gate).length > 0;
 }

@@ -1,3 +1,4 @@
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
@@ -64,7 +65,7 @@ export function drawLabourOverlay(input: EconomyOverlayRenderInput): void {
 }
 
 function drawFootprint(input: FootprintOverlayInput): void {
-  const definition = BUILDING_CONFIG_BY_KIND[input.building.kind];
+  const definition = buildingFootprint(input.building);
   input.context.fillStyle = withAlpha(input.color, 0.42);
   for (let ty = input.building.ty; ty < input.building.ty + definition.height; ty += 1) {
     for (let tx = input.building.tx; tx < input.building.tx + definition.width; tx += 1) {

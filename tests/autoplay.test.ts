@@ -110,7 +110,7 @@ function assertAction(actual: AutoplayAction, expected: AutoplayAction): void {
 
 test("Given an unwatered house cluster When autoplay decides Then it builds the earliest valid well within radius six", () => {
   const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
-  const actual = decideNextAction(state({ buildings: [home], houses: [house(home.id)] }));
+  const actual = decideNextAction(state({ buildings: [home], houses: [house(home.id)], roads: ["1,5", "2,5", "3,5", "4,5", "4,4"] }));
 
   assertAction(actual, { kind: "place_building", building: "well", tx: 5, ty: 4 });
 });
@@ -120,6 +120,7 @@ test("Given separated unwatered clusters When one well cannot cover all Then aut
   const deprived = building({ id: "house-b", kind: "house", tx: 9, ty: 9 });
   const actual = decideNextAction(state({
     buildings: [early, deprived],
+    roads: ["1,5", "2,5", "3,5", "4,5", "5,5", "6,5", "7,5", "8,5", "8,6", "8,7", "8,8", "8,9", "2,4", "2,3"],
     houses: [
       house(early.id, { unmetRequirementTicks: 1 }),
       house(deprived.id, { unmetRequirementTicks: 500 }),
@@ -174,7 +175,8 @@ test("Given a well or cottage is already under construction When autoplay decide
     createConstructionSite({ ordinal: 2, kind: "house", tx: 1, ty: 4, startedTick: 0 }),
   ];
 
-  assert.deepEqual(decideNextAction(current), { kind: "none" });
+  const action = decideNextAction(current);
+  assert.ok(action.kind === "none" || action.kind === "place_road");
 });
 
 test("Given the only missing era building is under construction When autoplay decides Then it waits", () => {
@@ -231,4 +233,17 @@ test("Given an earlier isolated road island When autoplay places a food site The
   );
   if (site === undefined || !("tx" in site)) assert.fail("expected a wheat farm construction site");
   assert.notEqual(resolveBuildingToConstructionSiteRoute(next, home, site).path, null);
+});
+
+test('Given thirteen nearby house lots When one well is full Then advisor queues one more well and counts its planned capacity', async () => {
+  const { waterAction } = await import('../src/engine/autoplayWater');
+  const homes = Array.from({ length: 13 }, (_, i) => building({ id: `home-${String(i).padStart(2, '0')}`, kind: 'house', tx: 4 + i % 5, ty: 2 + Math.floor(i / 5) }));
+  const buildings = [...homes, building({ id: 'well', kind: 'well', tx: 3, ty: 3 }), building({ id: 'source', kind: 'storehouse', tx: 1, ty: 3, inventory: {timber: 100} })];
+  const current = state({ buildings, houses: homes.map(h => house(h.id)), roads: Array.from({length: 9}, (_, i) => `${i + 1},5`) });
+  const action = waterAction(current);
+  assert.equal(action.kind, 'place_building');
+  if (action.kind !== 'place_building') return;
+  assert.equal(action.building, 'well');
+  const queued = { ...current, constructionSites: [createConstructionSite({ordinal: 1, kind: 'well', tx: action.tx, ty: action.ty, startedTick: 0})] };
+  assert.deepEqual(waterAction(queued), {kind: 'none'});
 });

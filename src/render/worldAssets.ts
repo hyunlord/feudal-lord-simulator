@@ -12,6 +12,7 @@ export type AssetMeta = {
   readonly width: number;
   readonly height: number;
   readonly renderScale: number;
+  readonly bakedArchitecture?: boolean;
   readonly anchor: { readonly x: number; readonly y: number };
   readonly footprint: { readonly width: number; readonly height: number };
   readonly status: LoadStatus;
@@ -156,9 +157,16 @@ function parseAsset(value: unknown, field: string): Omit<AssetMeta, "status"> {
     width: requirePositiveInteger(asset["width"], `${field}.width`),
     height: requirePositiveInteger(asset["height"], `${field}.height`),
     renderScale: requirePositiveNumber(asset["renderScale"], `${field}.renderScale`),
+    bakedArchitecture: parseBakedArchitecture(asset["bakedArchitecture"], `${field}.bakedArchitecture`),
     anchor: parseAnchor(asset["anchor"], `${field}.anchor`),
     footprint: parseFootprint(asset["footprint"], `${field}.footprint`),
   };
+}
+
+function parseBakedArchitecture(value: unknown, field: string): boolean {
+  if (value === undefined) return false;
+  if (typeof value !== "boolean") throw new WorldAssetManifestError(field, "expected a boolean");
+  return value;
 }
 
 function parseAnchor(value: unknown, field: string): { readonly x: number; readonly y: number } {

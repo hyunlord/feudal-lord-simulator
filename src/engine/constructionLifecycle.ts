@@ -124,6 +124,9 @@ export function completeEligibleConstruction(state: GameState): GameState {
     completedStoneWallSites,
     state.era === "stone_town",
   );
+  const barrierCompleted = palisade?.segments.some((segment, index) =>
+    segment.completed && state.palisade?.segments[index]?.completed !== true,
+  ) ?? false;
   const lateStoneReplacements = state.era === "stone_town"
     ? stoneReplacementsForCompletedTimber({
         palisade,
@@ -143,6 +146,8 @@ export function completeEligibleConstruction(state: GameState): GameState {
     houses: [...state.houses, ...completedHouses],
     walkers: activeWalkers,
     palisade,
+    roadRevision: state.roadRevision + (barrierCompleted ? 1 : 0),
+    pathCache: barrierCompleted ? {} : state.pathCache,
   };
 }
 

@@ -1,11 +1,14 @@
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { drawBridgeDeck } from "./drawBridges";
+import { drawHistoricalWater } from "./drawWater";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { terrainVariation } from "../world/terrain";
 import type { Tile } from "../world/world.types";
+import { getTile } from "../world/grid";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { buildingSpriteKey } from "./buildingSprites";
-import { buildBuildingVisualState, buildingBodyProfile } from "./buildingVisualState";
+import { buildBuildingVisualState, buildingBodyProfile, renderDetailLevel } from "./buildingVisualState";
 import type { ObjectRenderItem, RenderQueueItem } from "./objectRenderOrder";
 import type { TileRange } from "./renderer";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
@@ -19,6 +22,10 @@ import {
 } from "./terrainPatterns";
 import { drawGroundingShadow, shade, snapToPixel, withAlpha } from "./style";
 import { spriteMeta } from "./worldAssets";
+import { historicalFacilityReady } from "./historicalFacilityAssets";
+import { historicalHouseReady } from "./historicalHouseAssets";
+import { drawHouseContactShadow, drawHouseFrontage, houseFrontage } from "./houseFrontage";
+import { buildingFrontage, drawBuildingContactShadow, drawBuildingFrontage, supportsBuildingFrontage } from "./buildingFrontage";
 
 export {
   terrainSeamFor,
@@ -49,11 +56,31 @@ export function drawTerrain(
   context: CanvasRenderingContext2D,
   input: TerrainRenderInput,
 ): void {
+  const waterReady = drawHistoricalWater(context, input.tiles.filter(tile => tile.terrain === "water"));
   for (const tile of input.tiles) {
+    if (waterReady && tile.terrain === "water") continue;
     drawGroundDiamond(context, tile, input.state.seed, input.terrainPatterns);
+  }
+  for (const tile of input.tiles) {
     if (input.zoom > 0.7) drawGroundDecalDetail(context, tile, input.state.seed);
-    drawTerrainTransitions(context, input.state, tile, input.zoom);
-    if (tile.hasRoad) drawRoadPath(context, input.state, tile, input.terrainPatterns);
+    drawTerrainTransitions(context, input.state, tile, input.zoom, input.terrainPatterns);
+  }
+  for (const item of input.objectRenderItems ?? []) {
+    if (item.kind !== "building") continue;
+    if (supportsBuildingFrontage(item.building.kind) || item.building.houseLot !== undefined) {
+      const frontage = buildingFrontage(input.state, item.building, input.state.seed);
+      if (frontage !== null) drawBuildingFrontage(context, frontage, input.terrainPatterns);
+      continue;
+    }
+    if (item.building.kind !== "house") continue;
+    const tile = getTile(input.state, item.building);
+    if (tile === null || tile.buildingId !== item.building.id) continue;
+    const frontage = houseFrontage(input.state, tile, input.state.seed);
+    if (frontage !== null) drawHouseFrontage(context, frontage);
+  }
+  for (const tile of input.tiles) {
+    if (tile.hasRoad && tile.terrain !== "water") drawRoadPath(context, input.state, tile, input.terrainPatterns);
+    if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   }
   drawObjectGrounding(context, input);
 }
@@ -83,15 +110,38 @@ function drawObjectGrounding(
         baseRadiusY: 3,
       });
     } else if (item.kind === "building") {
-      const config = BUILDING_CONFIG_BY_KIND[item.building.kind];
+      const config = buildingFootprint(item.building);
       const center = buildingCenter(item);
       const visualState = buildBuildingVisualState(item.building, input.state.houses);
       const meta = spriteMeta(buildingSpriteKey(item.building, visualState.houseLevel));
       const body = buildingBodyProfile(item.building.kind, visualState.houseLevel);
+      const historicalHouse = item.building.kind === "house" && historicalHouseReady(visualState.houseLevel);
+      if (renderDetailLevel(input.zoom) === "full" && (historicalHouse || historicalFacilityReady(item.building, input.state))) {
+        if (historicalHouse && item.building.houseLot === undefined) drawHouseContactShadow(context, tileToScreen(item.building.tx, item.building.ty));
+        else drawBuildingContactShadow(context, item.building);
+        continue;
+      }
+      const baked = meta?.bakedArchitecture === true && meta.status === "ready" && renderDetailLevel(input.zoom) === "full";
+      const base = baked ? tileToScreen(
+        item.building.tx + meta.footprint.width - 1,
+        item.building.ty + meta.footprint.height - 1,
+      ) : center;
+      if (item.building.houseLot !== undefined) {
+        drawBuildingContactShadow(context, item.building);
+        continue;
+      }
+      if (baked && item.building.kind === "house") {
+        drawHouseContactShadow(context, base);
+        continue;
+      }
+      if (baked && supportsBuildingFrontage(item.building.kind)) {
+        drawBuildingContactShadow(context, item.building);
+        continue;
+      }
       drawGroundingShadow(context, {
-        centerX: center.sx,
-        centerY: center.sy + 10,
-        height: meta?.height ?? body.height,
+        centerX: base.sx,
+        centerY: base.sy + (baked ? -3 : 10),
+        height: baked ? meta.height * meta.renderScale : meta?.height ?? body.height,
         baseRadiusX: config.width * TILE_W * 0.3,
         baseRadiusY: config.height * TILE_H * 0.26,
       });
@@ -103,7 +153,7 @@ function buildingCenter(item: Extract<ObjectRenderItem, { readonly kind: "buildi
   readonly sx: number;
   readonly sy: number;
 } {
-  const config = BUILDING_CONFIG_BY_KIND[item.building.kind];
+  const config = buildingFootprint(item.building);
   return tileToScreen(
     item.building.tx + (config.width - 1) / 2,
     item.building.ty + (config.height - 1) / 2,

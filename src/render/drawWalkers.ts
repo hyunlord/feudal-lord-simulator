@@ -6,7 +6,10 @@ import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha } from 
 import { walkerVisualAnchor } from "./walkerAnchor";
 import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
 import { walkerPresentationFor } from "./walkerPresentation";
+import { drawRuntimeActor } from "./runtimeActorAssets";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
+
+const VILLAGER_WORLD_SCALE = 0.55;
 
 const CARGO_COLOR_BY_RESOURCE = {
   wheat: PALETTE.gold,
@@ -33,7 +36,7 @@ export function cargoColor(resource: ResourceType): PaletteColor {
 }
 
 export function walkerScaleForZoom(zoom: number): number {
-  return zoom < 0.8 ? 0.8 / Math.max(zoom, 0.01) : 1;
+  return VILLAGER_WORLD_SCALE * (zoom < 0.8 ? 0.8 / Math.max(zoom, 0.01) : 1);
 }
 
 function compareWalkersForRender(left: Walker, right: Walker): number {
@@ -67,15 +70,18 @@ export function drawWalker(
     return;
   }
 
-  drawWalkerHalo(context, footX, footY, scale);
   drawWalkerShadow(context, footX, footY, scale);
-  drawProceduralWalkerSprite(context, {
-    footX,
-    footY,
-    scale,
-    zoom,
-    presentation: walkerPresentationFor(walker),
-  });
+  const presentation = walkerPresentationFor(walker);
+  if (!drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
+    drawWalkerHalo(context, footX, footY, scale);
+    drawProceduralWalkerSprite(context, {
+      footX,
+      footY,
+      scale,
+      zoom,
+      presentation,
+    });
+  }
   if (walker.kind !== "builder" && walker.cargo !== null) {
     drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
   }

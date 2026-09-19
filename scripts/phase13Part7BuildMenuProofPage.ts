@@ -8,7 +8,10 @@ import { PALETTE_CSS_VARIABLES } from "../src/styles/paletteVariables";
 import { BuildSeals } from "../src/ui/BuildMenu";
 
 export async function pageHtml(input: { readonly state: GameState; readonly scenarioName: string }): Promise<string> {
-  const css = await readFile(new URL("../src/styles/global.css", import.meta.url), "utf8");
+  const entrypoint = await readFile(new URL("../src/main.tsx", import.meta.url), "utf8");
+  const styles = [...entrypoint.matchAll(/import "\.\/styles\/([^"\n]+\.css)";/g)]
+    .flatMap((match) => match[1] === undefined ? [] : [match[1]]);
+  const css = (await Promise.all(styles.map((name) => readFile(new URL(`../src/styles/${name}`, import.meta.url), "utf8")))).join("\n");
   const buildMenuMarkup = renderToStaticMarkup(
     createElement(BuildSeals, {
       selectedTool: null,

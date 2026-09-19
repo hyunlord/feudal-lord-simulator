@@ -72,10 +72,12 @@ test("house inspector exposes Korean identity and service state", () => {
   const home = building("house");
   const model = buildingInspectorModel(state(home), home.id);
 
-  assert.equal(model?.name, "시민가옥");
+  assert.equal(model?.name, "장인가옥");
   assert.equal(model?.purpose, "주민이 생활하고 성장하는 집");
   assert.deepEqual(model?.rows, [
-    "등급 2 · 주민 7명",
+    "생활 등급 2 · 주민 7명",
+    "건축 단계 2 · 관리 양호",
+    "대지 1×1칸",
     "물 있음",
     "마지막 빵 29틱 전",
   ]);

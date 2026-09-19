@@ -4,8 +4,11 @@ import type { TilePos, Walker } from "./walker.types";
 
 export interface RoamingHouse {
   readonly buildingId: string;
+  readonly width?: number;
+  readonly height?: number;
   readonly tx: number;
   readonly ty: number;
+  readonly residents?: number;
   readonly breadStock: number;
   readonly lastServicedTick: number;
 }
@@ -18,6 +21,9 @@ export interface RoamingRoutePort {
   ) => readonly TilePos[] | null;
   readonly neighbors: (tile: TilePos) => readonly TilePos[];
   readonly isRoad: (tile: TilePos) => boolean;
+  readonly canTraverse?: (from: TilePos, to: TilePos) => boolean;
+  readonly servicePath?: (start: TilePos, house: RoamingHouse) => readonly TilePos[] | null;
+  readonly canServiceHouse?: (tile: TilePos, house: RoamingHouse) => boolean;
 }
 
 export interface RoamingSpawnInput {

@@ -1,5 +1,4 @@
 import { KO_UI } from "../src/content/locale.ko";
-import { buildMenuGroups } from "../src/ui/buildMenuModel";
 
 import type { CdpClient } from "./phase13Part7BuildMenuProofChrome.js";
 import type { ProofScenario } from "./phase13Part7BuildMenuProofScenarios.js";
@@ -22,10 +21,10 @@ export async function measureAccessibilityGroups(
   });
 }
 
-export function expectedAccessibilityGroupNames(scenario: ProofScenario): readonly string[] {
+export function expectedAccessibilityGroupNames(_scenario: ProofScenario): readonly string[] {
   return [
     KO_UI.placementSeals,
-    ...buildMenuGroups(scenario.state).map((group) => `${group.label} 도구`),
+    "건설 분류",
     KO_UI.roadTool,
   ];
 }

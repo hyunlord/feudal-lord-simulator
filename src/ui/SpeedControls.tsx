@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { BALANCE } from "../content/balanceConfig";
 import { KO_UI } from "../content/locale.ko";
 import { decideNextAction } from "../engine/autoplay";
-import type { GameSpeed } from "../engine/engine.types";
+import { sampleAutoplayDecision, type AutoplayDecisionCache, type AutoplayDecision } from "./autoplayDecisionCache";
+import type { GameState, GameSpeed } from "../engine/engine.types";
 import { useGameStore } from "../state/gameStore";
 import {
   autoplayActionLabel,
@@ -39,7 +40,13 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
   const latestTickRef = useRef(state.tick);
   const lastAutoplayCommitTickRef = useRef(-AUTOPLAY_TICK_CADENCE);
   const cancelPendingCommitRef = useRef<(() => void) | null>(null);
-  const nextAction = decideNextAction(state);
+  const decisionCacheRef = useRef<AutoplayDecisionCache<GameState> | null>(null);
+  const lastScheduledDecisionRef = useRef<AutoplayDecision | null>(null);
+  decisionCacheRef.current = sampleAutoplayDecision(decisionCacheRef.current, {
+    state, enabled: autoplayEnabled, pending: cancelPendingCommitRef.current !== null,
+  }, decideNextAction);
+  const decision = decisionCacheRef.current.decision;
+  const nextAction = decision?.action ?? { kind: "none" as const };
   latestTickRef.current = state.tick;
 
   useEffect(() => {
@@ -54,6 +61,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
   }, []);
 
   useEffect(() => {
+    if (decision === null || lastScheduledDecisionRef.current === decision) return;
     if (!canRunAutoplayAtTick({
       enabled: autoplayEnabled,
       currentTick: state.tick,
@@ -75,8 +83,9 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
       dispatch,
     });
     if (cancelPendingCommit === null) return;
+    lastScheduledDecisionRef.current = decision;
     cancelPendingCommitRef.current = cancelPendingCommit;
-  }, [autoplayEnabled, dispatch, nextAction, state]);
+  }, [autoplayEnabled, decision, dispatch, nextAction, state]);
 
   return (
     <div className="speed-control-stack">
@@ -105,7 +114,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
         >
           자동 발전
         </button>
-        <span className="autoplay-hint">{autoplayActionLabel(nextAction)}</span>
+        <span className="autoplay-hint">{autoplayEnabled ? autoplayActionLabel(nextAction) : "자동 발전 꺼짐"}</span>
       </div>
     </div>
   );

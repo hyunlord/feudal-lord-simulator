@@ -21,8 +21,10 @@ import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
 import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMaterialWave";
 import { BuildSeals } from "./ui/BuildMenu";
 import { EconomyOverlayControls, toggleOverlayByKey } from "./ui/EconomyOverlayControls";
-import { CourtLedger, OnboardingTasks, SettlementStatusLine } from "./ui/InfoPanel";
-import { economyStockTotals } from "./ui/ledgerModel";
+import { OnboardingTasks, SettlementStatusLine } from "./ui/InfoPanel";
+import { ResourceBar } from "./ui/ResourceBar";
+import { SettlementPanel } from "./ui/SettlementPanel";
+import { PopulationEventPanel } from "./ui/PopulationEventPanel";
 import {
   createOnboardingPresentationState,
   getOnboardingTaskView,
@@ -160,7 +162,6 @@ export function App() {
     return () => window.removeEventListener("keydown", keyDown);
   }, [overlayMode]);
 
-  const stockTotals = economyStockTotals(state);
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
   const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null
     ? null
@@ -211,6 +212,16 @@ export function App() {
         aria-hidden={welcomeVisible ? true : undefined}
       >
         <h1 className="visually-hidden">{KO_UI.appName}</h1>
+        <ResourceBar
+          state={state}
+          populationDrawerOpen={populationDrawerOpen}
+          onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
+        />
+        {populationDrawerOpen ? (
+          <div id="population-ledger-drawer" className="ledger-population-drawer top-population-drawer">
+            <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} />
+          </div>
+        ) : null}
         <GameCanvas
           selectedTool={selectedTool}
           overlayMode={overlayMode}
@@ -229,13 +240,17 @@ export function App() {
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
         <aside className="right-info-rail" aria-label={KO_UI.informationRail}>
-          <EraConsole
-            model={eraModel}
-            onBeginProposal={beginPalisadeProposal}
-            onConfirmProposal={confirmPalisadeProposal}
-            onCancelProposal={() => setPalisadeDraft(null)}
-            onProclaimStoneTown={proclaimStoneTown}
-          />
+          <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} />
+          <details className="development-panel">
+            <summary>도시 발전 조건</summary>
+            <EraConsole
+              model={eraModel}
+              onBeginProposal={beginPalisadeProposal}
+              onConfirmProposal={confirmPalisadeProposal}
+              onCancelProposal={() => setPalisadeDraft(null)}
+              onProclaimStoneTown={proclaimStoneTown}
+            />
+          </details>
           <OnboardingTasks view={onboardingView} />
         </aside>
         <aside className="court-console" aria-label={KO_UI.courtConsole}>
@@ -252,20 +267,6 @@ export function App() {
           </div>
           <div className="court-recess ledger-recess">
             <div className="ledger-stack">
-              <CourtLedger
-                tick={state.tick}
-                timber={state.treasuryTimber}
-                coin={state.treasuryCoin}
-                selectedTool={selectedTool}
-                population={state.population}
-                idleWorkers={state.idleWorkers}
-                stockTotals={stockTotals}
-                populationEvents={populationEvents}
-                populationDrawerOpen={populationDrawerOpen}
-                nowMs={presentationNowMs}
-                onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
-                onSelectPopulationHouseIds={setHighlightedHouseIds}
-              />
               <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} />
             </div>
             <SpeedSeals speed={speed} onChange={setSpeed} />
@@ -308,7 +309,7 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
         tabIndex={-1}
       >
         <h2>영지에 오신 것을 환영합니다</h2>
-        <p>왼쪽 아래 도장을 눌러 건물을 고르고, 지도를 클릭해 지으세요.</p>
+        <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
         <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
       </section>

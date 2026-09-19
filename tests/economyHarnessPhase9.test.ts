@@ -15,7 +15,7 @@ import type { Building } from "../src/content/buildingConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import type { GameState, PalisadeState } from "../src/engine/engine.types";
-import { buildingRoadAccessTiles } from "../src/engine/routing";
+import { buildingRoadAccessTiles, resolveBuildingRoute } from "../src/engine/routing";
 
 function failedLabels(trace: Phase9RunTrace): readonly string[] {
   return phase9Metrics(trace, trace)
@@ -158,6 +158,12 @@ test("Phase 9 scenario fixture keeps housing and storage within gameplay caps", 
   // Then: the fixture remains an honest gameplay state rather than a shortcut seed.
   assert.deepEqual(overCapacityHouses, []);
   assert.deepEqual(overCapacityStores, []);
+  const stoneStore = scenario.buildings.find(building => building.id === "phase9-storehouse-0");
+  const quarry = scenario.buildings.find(building => building.id === "phase9-quarry-0");
+  const masonry = scenario.buildings.find(building => building.id === "phase9-masonry-0");
+  assert.ok(stoneStore && quarry && masonry);
+  assert.ok(resolveBuildingRoute(scenario, quarry, stoneStore).path, "quarry must reach the monitored store across actual completed walls");
+  assert.ok(resolveBuildingRoute(scenario, masonry, stoneStore).path, "masonry must reach the monitored store across actual completed walls");
 });
 
 test("Phase 9 metrics isolate five deliberate broken fixtures through the real trace loop", () => {

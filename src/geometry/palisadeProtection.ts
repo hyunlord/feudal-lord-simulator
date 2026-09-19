@@ -1,5 +1,5 @@
+import { buildingFootprint } from "./buildingFootprint";
 import {
-  BUILDING_CONFIG_BY_KIND,
   type Building,
 } from "../content/buildingConfig";
 import type { PalisadePath, TileEdgePoint } from "../world/palisadeGeometry";
@@ -45,7 +45,7 @@ function isPointInsideClosedPolygon(point: TileEdgePoint, polygon: PalisadePath)
 }
 
 function buildingCorners(building: Building): readonly TileEdgePoint[] {
-  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  const definition = buildingFootprint(building);
   return [
     { x: building.tx, y: building.ty },
     { x: building.tx + definition.width, y: building.ty },

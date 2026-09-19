@@ -125,3 +125,14 @@ test("selected road component uses a presentation-strength ultramarine fill", ()
 
   assert.ok(fillStyles.includes(withAlpha(PALETTE.ultramarine, 0.55)));
 });
+
+test("house highlights include both occupied cells in either merged orientation", () => {
+  for (const houseLot of ["horizontal", "vertical"] as const) {
+    const state = roadWorld();
+    const merged = { ...building("merged", "house", 2, 1), houseLot };
+    const tiles = highlightedHouseTiles({ ...state, buildings: [merged] }, ["merged"]);
+    assert.deepEqual(tiles, houseLot === "horizontal"
+      ? [{ tx: 2, ty: 1 }, { tx: 3, ty: 1 }]
+      : [{ tx: 2, ty: 1 }, { tx: 2, ty: 2 }]);
+  }
+});

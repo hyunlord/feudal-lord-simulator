@@ -77,9 +77,12 @@ function connectedStorageSources(
     );
 }
 
-function saleCandidates(sources: readonly Building[]): readonly SaleCandidate[] {
+function saleCandidates(sources: readonly Building[], era: GameState["era"]): readonly SaleCandidate[] {
+  const availableStone = sources.reduce((total, building) => total +
+    Math.max(0, amount(building.inventory, "stone") - amount(building.stockReserved, "stone")), 0);
   return sources.flatMap((building) =>
     SALE_RULES.flatMap((rule) => {
+      if (era === "palisade" && rule.resource === "stone" && availableStone <= 400) return [];
       const stock = amount(building.inventory, rule.resource);
       const reserved = amount(building.stockReserved, rule.resource);
       const unreserved = Math.max(0, stock - reserved);
@@ -98,12 +101,18 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
   return left.building.id.localeCompare(right.building.id);
 }
 
+export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
+  return market.kind === "market"
+    && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
+    && saleCandidates(connectedStorageSources(state, market, state.buildings), state.era).length > 0;
+}
+
 function settleMarket(
   state: GameState,
   buildings: readonly Building[],
   market: Building,
 ): { readonly buildings: readonly Building[]; readonly coin: number } {
-  const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings))]
+  const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings), state.era)]
     .sort(compareCandidates)[0];
   if (candidate === undefined) return { buildings, coin: 0 };
 

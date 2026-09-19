@@ -249,3 +249,59 @@ test("an active carter prevents a second carter from spawning for the same home"
     8,
   );
 });
+
+test("grain intake leaves bread room and counts grain cargo already reserved", () => {
+  const farm = building("farm", "wheat_farm", { inventory: { wheat: 8 } });
+  const granary = building("granary", "granary", { inventory: { wheat: 95 }, reserved: { wheat: 3 } });
+  const result = spawnCarters({ tick: 10, buildings: [farm, granary], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "farm->granary": line([0, 0], [1, 0]) }) });
+  assert.equal(result.walkers[0]?.cargo?.amount, 2);
+  assert.equal(result.buildings.find(({ id }) => id === "granary")?.reserved.wheat, 5);
+  assert.equal(result.buildings.find(({ id }) => id === "farm")?.inventory.wheat, 6);
+});
+
+test("grain quota cannot steal real capacity and bread can use the remaining room", () => {
+  const farm = building("farm", "wheat_farm", { inventory: { wheat: 8 } });
+  const mill = building("mill", "mill", { inventory: { wheat: 2, bread: 8 } });
+  const granary = building("granary", "granary", { inventory: { wheat: 100, bread: 95 } });
+  const result = spawnCarters({ tick: 10, buildings: [farm, mill, granary], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "farm->granary": line([0, 0], [1, 0]), "mill->granary": line([0, 0], [1, 0]) }) });
+  assert.equal(result.walkers.length, 1);
+  assert.deepEqual(result.walkers[0]?.cargo, { resource: "bread", amount: 5 });
+  assert.equal(result.buildings.find(({ id }) => id === "farm")?.inventory.wheat, 8);
+});
+
+test("raw logs and stone share half the storehouse, leaving finished-goods capacity", () => {
+  const logging = building("logging", "logging_camp", { inventory: { logs: 8 } });
+  const quarry = building("quarry", "quarry", { inventory: { stone_raw: 8 } });
+  const store = building("store", "storehouse", { inventory: { logs: 80, stone_raw: 15 }, reserved: { stone_raw: 3 } });
+  const result = spawnCarters({ tick: 10, buildings: [logging, quarry, store], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "logging->store": line([0, 0], [1, 0]), "quarry->store": line([0, 0], [1, 0]) }) });
+  assert.equal(result.walkers.length, 1);
+  assert.deepEqual(result.walkers[0]?.cargo, { resource: "logs", amount: 2 });
+  assert.equal(result.buildings.find(({ id }) => id === "quarry")?.inventory.stone_raw, 8);
+});
+
+test("bread delivery replenishes the poorer reachable granary before the nearer stocked granary", () => {
+  const mill = building("mill", "mill", { inventory: { wheat: 2, bread: 8 } });
+  const near = building("near", "granary", { inventory: { bread: 32 } });
+  const far = building("far", "granary", { inventory: {} });
+  const result = spawnCarters({ tick: 10, buildings: [mill, near, far], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "mill->near": line([0, 0], [1, 0]), "mill->far": line([0, 0], [1, 0], [2, 0]) }) });
+  const carter = result.walkers[0];
+  assert.ok(carter?.kind === "carter");
+  assert.deepEqual(carter.destination, { kind: "building", buildingId: "far" });
+  assert.equal(result.buildings.find(b => b.id === "far")?.reserved.bread, 8);
+  assert.equal(result.buildings.find(b => b.id === "near")?.inventory.bread, 32);
+  assert.equal(result.buildings.reduce((sum, b) => sum + (b.inventory.bread ?? 0), 0) + (carter.cargo?.amount ?? 0), 40);
+});
+
+test("bread destination allocation includes earlier carters' inbound claims", () => {
+  const mills = [building("mill-a", "mill", { inventory: { wheat: 2, bread: 8 } }), building("mill-b", "mill", { inventory: { wheat: 2, bread: 8 } })];
+  const near = building("near", "granary", { inventory: { bread: 4 } });
+  const far = building("far", "granary", { inventory: {} });
+  const result = spawnCarters({ tick: 10, buildings: [...mills, near, far], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "mill-a->near": line([0, 0], [1, 0]), "mill-a->far": line([0, 0], [1, 0], [2, 0]), "mill-b->near": line([0, 0], [1, 0]), "mill-b->far": line([0, 0], [1, 0], [2, 0]) }) });
+  const claims = result.buildings.filter(b => b.kind === "granary").map(b => [b.id, b.reserved.bread]);
+  assert.deepEqual(claims, [["near", 8], ["far", 8]]);
+});

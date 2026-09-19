@@ -13,10 +13,12 @@ import {
   withdrawReservedStock,
 } from "../economy/storage";
 import { getTile } from "../world/grid";
+import { canTraverseRoadBoundary } from "../world/bridges";
 import { getOrthogonalRoadNeighbors } from "../world/roadGraph";
 import type { GameState, RoadPathCache } from "./engine.types";
 import {
   buildingRoadAccessTiles,
+  constructionSiteRoadAccessTiles,
   resolveBuildingToConstructionSiteRoute,
   resolveBuildingRoute,
   resolveRoadToConstructionSiteRoute,
@@ -160,9 +162,25 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
         }
       }
     },
+    canAccessDestination: (tile, destination) => {
+      const accesses = (() => {
+        switch (destination.kind) {
+          case "building": {
+            const target = findBuilding(state.buildings, destination.buildingId);
+            return target === null ? [] : buildingRoadAccessTiles(state, target);
+          }
+          case "construction_site": {
+            const target = findSite(state, destination.siteId);
+            return target === null ? [] : constructionSiteRoadAccessTiles(state, target);
+          }
+        }
+      })();
+      return accesses.some((access) => access.tx === tile.tx && access.ty === tile.ty);
+    },
     fromTileToBuilding: routeToBuilding,
     fromTileToDestination: routeToDestination,
     isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
+    canTraverse: (from, to) => canTraverseRoadBoundary(state, from, to),
   };
 
   const roaming: RoamingRoutePort = {
@@ -173,8 +191,14 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       return access === null ? null : [access];
     },
     returnPath: routeToBuilding,
+    servicePath: (start, house) => routeToBuilding(start, house.buildingId),
     neighbors: (tile) => getOrthogonalRoadNeighbors(state, tile),
+    canServiceHouse: (tile, house) => canTraverseRoadBoundary(state, tile, {
+      tx: Math.max(house.tx, Math.min(tile.tx, house.tx + (house.width ?? 1) - 1)),
+      ty: Math.max(house.ty, Math.min(tile.ty, house.ty + (house.height ?? 1) - 1)),
+    }),
     isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
+    canTraverse: (from, to) => canTraverseRoadBoundary(state, from, to),
   };
 
   return {

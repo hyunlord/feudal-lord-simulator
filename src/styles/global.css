@@ -230,6 +230,7 @@ button {
 
 /* contrast-audit selector=".diagnostic-card" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
 .diagnostic-card {
+  pointer-events: auto;
   display: grid;
   gap: 8px;
   width: 100%;

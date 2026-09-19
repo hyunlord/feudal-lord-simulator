@@ -1,24 +1,26 @@
+import { houseGrowthPhase, houseHasFood, houseIsStarving, stepHouseFood } from "./houseFood";
 import { BALANCE } from "../content/balanceConfig";
-import {
-  BUILDING_CONFIG_BY_KIND,
-  type Building,
-} from "../content/buildingConfig";
+import type { Building } from "../content/buildingConfig";
 import {
   HOUSING_CONFIG,
   type HousingDefinition,
   type HousingRequirement,
 } from "../content/housingConfig";
+import { houseLotArea } from "../geometry/buildingFootprint";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import {
   palisadeProtectionForBuilding,
   type PalisadeProtection,
   type PalisadeProtectionSource,
 } from "../geometry/palisadeProtection";
-import { hasMarketAccess } from "./marketAccess";
+import type { MarketRoadService } from "./marketAccess";
+import { allocateHouseServices, type ServiceAllocation } from "./serviceAllocation";
 import type { House } from "./population.types";
+import { houseBuiltLevel } from "./houseCondition";
 
 export type HouseUpdateContext = {
   readonly tick: number;
+  readonly lotArea?: number;
   readonly hasGranaryNearby: boolean;
   readonly hasMarketAccess?: boolean;
   readonly hasChurchAccess?: boolean;
@@ -41,16 +43,9 @@ export function applyWellService(
   houses: readonly House[],
   buildings: readonly Building[],
 ): readonly House[] {
-  const wells = buildings.filter((building) => building.kind === "well");
+  const services = allocateHouseServices({ houses, buildings });
   return houses.map((house) => {
-    const home = houseBuilding(house, buildings);
-    const hasWater =
-      home !== null &&
-      wells.some(
-        (well) =>
-          buildingFootprintDistance(home, well) <=
-          BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-      );
+    const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
     return hasWater === house.hasWater ? house : { ...house, hasWater };
   });
 }
@@ -64,10 +59,7 @@ function requirementMet(
     case "water":
       return house.hasWater;
     case "bread":
-      return (
-        house.breadStock > 0 &&
-        context.tick - house.lastServicedTick <= BALANCE.BREAD_HUNGER_WINDOW
-      );
+      return houseHasFood(house);
     case "granary":
       return context.hasGranaryNearby;
     case "market":
@@ -101,22 +93,20 @@ function definitionForLevel(level: number): HousingDefinition {
     HOUSING_CONFIG[0];
 }
 
-function stepResidents(house: House, tick: number): House {
-  if (tick <= 0 || tick % BALANCE.GROWTH_INTERVAL !== 0) return house;
-  const graceExpired = tick > (house.starvationGraceUntilTick ?? 0);
-  const breadAbsent = graceExpired
-    && tick - house.lastServicedTick > BALANCE.STARVATION_WINDOW;
+function stepResidents(house: House, tick: number, lotArea: number): House {
+  if (tick <= 0 || tick % BALANCE.GROWTH_INTERVAL !== houseGrowthPhase(house.buildingId)) return house;
+  const breadAbsent = houseIsStarving(house, tick);
 
   if (breadAbsent) {
     return {
       ...house,
-      residents: Math.max(0, house.residents - 1),
+      residents: Math.max(0, house.residents - lotArea),
     };
   }
 
-  const capacity = definitionForLevel(house.level).capacity;
-  if (house.hasWater && house.residents < capacity) {
-    return { ...house, residents: house.residents + 1 };
+  const capacity = definitionForLevel(house.level).capacity * lotArea;
+  if (house.hasWater && (houseHasFood(house) || tick <= (house.starvationGraceUntilTick ?? 0)) && house.residents < capacity) {
+    return { ...house, residents: Math.min(capacity, house.residents + lotArea) };
   }
   return house;
 }
@@ -125,6 +115,7 @@ export function updateHouse(
   house: House,
   context: HouseUpdateContext,
 ): House {
+  house = stepHouseFood(house, context.tick);
   const supported = supportedLevel(house, context);
   const targetLevel =
     context.palisadeProtection === "outside" && house.level < 3
@@ -154,7 +145,7 @@ export function updateHouse(
         : { ...house, unmetRequirementTicks };
   }
 
-  return stepResidents(updated, context.tick);
+  return stepResidents({ ...updated, builtLevel: Math.max(houseBuiltLevel(house), updated.level) }, context.tick, context.lotArea ?? 1);
 }
 
 function hasGranaryNearby(
@@ -173,34 +164,26 @@ function hasGranaryNearby(
   );
 }
 
-function hasChurchAccess(
-  house: House,
-  buildings: readonly Building[],
-): boolean {
-  const home = houseBuilding(house, buildings);
-  if (home === null) return false;
-  return buildings.some(
-    (building) =>
-      building.kind === "church" &&
-      buildingFootprintDistance(home, building) <=
-        BUILDING_CONFIG_BY_KIND.church.serviceRadius,
-  );
-}
-
 export function updateHousing(
   houses: readonly House[],
   buildings: readonly Building[],
   tick: number,
   palisade: PalisadeProtectionSource = null,
+  marketService?: MarketRoadService,
+  services: ServiceAllocation = allocateHouseServices({ houses, buildings, roadService: marketService }),
 ): HousingUpdate {
-  const watered = applyWellService(houses, buildings);
+  const watered = houses.map(house => {
+    const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
+    return hasWater === house.hasWater ? house : { ...house, hasWater };
+  });
   const updated = watered.map((house) => {
     const home = houseBuilding(house, buildings);
     return updateHouse(house, {
       tick,
+      lotArea: houseLotArea(home ?? undefined),
       hasGranaryNearby: hasGranaryNearby(house, buildings),
-      hasMarketAccess: home === null ? false : hasMarketAccess(home, buildings),
-      hasChurchAccess: hasChurchAccess(house, buildings),
+      hasMarketAccess: services.houses.get(house.buildingId)?.market.kind === "served",
+      hasChurchAccess: services.houses.get(house.buildingId)?.church.kind === "served",
       palisadeProtection:
         home === null ? "inactive" : palisadeProtectionForBuilding(home, palisade),
     });
@@ -219,4 +202,9 @@ export function evolveHouse(
   context: HouseUpdateContext,
 ): House {
   return updateHouse(house, context);
+}
+
+export function housingLotCount(state: { readonly houses: readonly House[]; readonly buildings: readonly Building[] }): number {
+  const buildings = new Map(state.buildings.map((building) => [building.id, building]));
+  return state.houses.reduce((total, house) => total + houseLotArea(buildings.get(house.buildingId)), 0);
 }

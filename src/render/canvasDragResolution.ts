@@ -89,7 +89,7 @@ export function finishedRoadAttempt(
   destination: TileCoordinate | null,
   nowMs: number,
 ): PlacementAttemptOutcome | null {
-  return drag.mode === "road" && drag.roadStart !== null && destination !== null
+  return drag.mode === "road" && drag.moved && drag.roadStart !== null && destination !== null
     ? resolveRoadPlacementAttempt({ state, start: drag.roadStart, destination, nowMs })
     : null;
 }

@@ -67,7 +67,7 @@ test("road preview reports out of bounds for invalid road drag endpoints", () =>
   assert.equal(preview.reason, PlacementFailure.out_of_bounds);
 });
 
-test("road preview covers every path tile and reports the modeled zero timber cost", () => {
+test("road preview covers every path tile and includes timber for a candidate water span", () => {
   // Given / When
   const preview = placementPreview(state, "road", { tx: 1, ty: 1 }, { tx: 1, ty: 0 });
 
@@ -76,7 +76,7 @@ test("road preview covers every path tile and reports the modeled zero timber co
     { tx: 1, ty: 0 },
     { tx: 1, ty: 1 },
   ]);
-  assert.equal(preview.timberCost, 0);
+  assert.equal(preview.timberCost, 4);
 });
 
 test("cancelled placement preview is inert even when hovering a buildable tile", () => {
@@ -269,7 +269,7 @@ test("road placement attempts evaluate the whole path before dispatching", () =>
   assert.equal(attempt.keepToolArmed, true);
   assert.deepEqual(attempt.feedback, {
     kind: "failure",
-    message: "물 위에는 지을 수 없습니다",
+    message: "다리는 풀밭 양안을 직선으로 연결하세요 (물 최대 8칸)",
     anchor: {
       kind: "path",
       path: [

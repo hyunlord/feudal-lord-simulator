@@ -157,6 +157,7 @@ test("advanceTick leaves an under-staffed producer stopped", () => {
     makeState({
       buildings: [farm, home],
       houses: [makeHouse({ buildingId: home.id, residents: 7 })],
+      roads: [[2, 0]],
     }),
   );
 

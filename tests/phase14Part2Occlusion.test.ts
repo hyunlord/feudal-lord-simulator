@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import type { Walker } from "../src/agents/walker.types";
 import type { Building } from "../src/content/buildingConfig";
-import { PALETTE } from "../src/content/palette";
+import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { BuildingConstructionSite } from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 import { drawObjectRenderItems } from "../src/render/drawObjectRenderItems";
@@ -228,7 +228,7 @@ test("Given an intentionally misordered render queue When drawing objects Then n
     index > lastSiteOrBuilding && call === `fillStyle:${PALETTE.gold}`
   );
   const cargoBox = context.calls.findIndex((call, index) =>
-    index > firstWalkerBody && call.startsWith("fillRect:") && call.endsWith(",5,5")
+    index > firstWalkerBody && call.startsWith("fillRect:") && call.endsWith(",3,3")
   );
   assert.ok(lastSiteOrBuilding >= 0);
   assert.ok(firstWalkerBody > lastSiteOrBuilding);
@@ -321,7 +321,7 @@ test("Given roads are under tall object overhang When drawing objects Then a nar
   // Then
   const buildingFill = context.calls.indexOf("fill");
   const roadAlpha = context.calls.indexOf("globalAlpha:0.72");
-  const roadCore = context.calls.indexOf("lineTo:8,32");
+  const roadCore = context.calls.findIndex((call, index) => index > roadAlpha && call === `fillStyle:${SEMANTIC_PALETTE.earth}`);
   const walkerBody = context.calls.findIndex((call) => call === `fillStyle:${PALETTE.gold}`);
   assert.ok(buildingFill >= 0);
   assert.ok(roadAlpha > buildingFill);

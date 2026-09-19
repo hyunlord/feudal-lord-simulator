@@ -1,3 +1,4 @@
+import { snapPointToDevicePixel, type CanvasTransform } from "./style";
 import type { CameraState } from "./camera";
 import { worldToCanvas } from "./camera";
 import { tileToScreen } from "./iso";
@@ -115,6 +116,33 @@ function drawAtWorldAnchor(
   return true;
 }
 
+type SpriteCropRect = Readonly<{ x: number; y: number; width: number; height: number }>;
+
+/** Blit an authored region in world coordinates, retaining the caller's camera transform. */
+export function drawCroppedWorldSprite(
+  context: Pick<CanvasRenderingContext2D, "drawImage" | "save" | "restore" | "imageSmoothingEnabled"> & { getTransform(): CanvasTransform },
+  image: CanvasImageSource,
+  source: SpriteCropRect,
+  destination: SpriteCropRect,
+  snap = true,
+  smoothing = false,
+): void {
+  const transform = context.getTransform();
+  const origin = snap ? snapPointToDevicePixel(destination, transform) : destination;
+  const scaleX = Math.hypot(transform.a, transform.b);
+  const scaleY = Math.hypot(transform.c, transform.d);
+  const width = snap && scaleX > 0 ? Math.round(destination.width * scaleX) / scaleX : destination.width;
+  const height = snap && scaleY > 0 ? Math.round(destination.height * scaleY) / scaleY : destination.height;
+  context.save();
+  try {
+    context.imageSmoothingEnabled = smoothing;
+    context.drawImage(image, source.x, source.y, source.width, source.height,
+      origin.x, origin.y, width, height);
+  } finally {
+    context.restore();
+  }
+}
+
 function tintedSprite(
   image: CanvasImageSource,
   meta: NonNullable<ReturnType<typeof spriteMeta>>,
@@ -191,7 +219,7 @@ function rgbKey(r: number, g: number, b: number): string {
   return `${r},${g},${b}`;
 }
 
-function createTintCanvas(
+export function createTintCanvas(
   width: number,
   height: number,
 ): OffscreenCanvas | HTMLCanvasElement | null {

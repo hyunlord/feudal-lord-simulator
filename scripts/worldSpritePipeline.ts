@@ -16,7 +16,7 @@ export type FoliageSpriteKey = keyof typeof FOLIAGE_SPRITE_CONTRACTS;
 export const BUILDING_SPRITE_CONTRACTS = {
   house_l1: { width: 96, height: 120, baselineY: 104, footprint: 1 },
   house_l2: { width: 96, height: 144, baselineY: 128, footprint: 1 },
-  house_l3: { width: 160, height: 192, baselineY: 176, footprint: 2 },
+  house_l3: { width: 160, height: 192, baselineY: 176, footprint: 1 },
   well: { width: 72, height: 80, baselineY: 64, footprint: 1 },
   storehouse: { width: 160, height: 136, baselineY: 120, footprint: 2 },
   wheat_farm: { width: 160, height: 96, baselineY: 80, footprint: 2 },

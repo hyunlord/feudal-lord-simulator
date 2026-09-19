@@ -100,7 +100,7 @@ export const BUILDING_SPECS = {
   house_l0: { width: 96, height: 112, baselineY: 96, footprint: oneByOne },
   house_l1: { width: 96, height: 120, baselineY: 104, footprint: oneByOne },
   house_l2: { width: 96, height: 144, baselineY: 128, footprint: oneByOne },
-  house_l3: { width: 160, height: 192, baselineY: 176, footprint: twoByTwo },
+  house_l3: { width: 160, height: 192, baselineY: 176, footprint: oneByOne },
   mill: { width: 96, height: 160, baselineY: 144, footprint: oneByOne },
   barn: { width: 160, height: 144, baselineY: 128, footprint: twoByTwo },
   well: { width: 72, height: 80, baselineY: 64, footprint: oneByOne },
@@ -274,8 +274,15 @@ export type Anchor = {
 };
 
 export type AssetSource = {
+  readonly kind?: never;
   readonly seed: number;
   readonly candidate: number;
+} | {
+  readonly kind: "accepted-art";
+  readonly path: string;
+  readonly sha256: string;
+  readonly seed?: never;
+  readonly candidate?: never;
 };
 
 export type Sha256 = string;
@@ -359,7 +366,7 @@ type BaseAsset<Key extends WorldAssetKey, Category extends string> = {
 
 export type BuildingAsset = BaseAsset<BuildingKey, "building"> & {
   readonly palettePolicy: GeneratedAssetPalettePolicy;
-  readonly alphaPolicy: "transparent-outline-179";
+  readonly alphaPolicy: "transparent-outline-179" | "transparent-native-alpha";
 };
 
 export type FoliageVariation = {
@@ -371,7 +378,7 @@ export type FoliageVariation = {
 
 export type FoliageAsset = BaseAsset<FoliageKey, "foliage"> & {
   readonly palettePolicy: GeneratedAssetPalettePolicy;
-  readonly alphaPolicy: "transparent-outline-179";
+  readonly alphaPolicy: "transparent-outline-179" | "transparent-native-alpha";
   readonly variation: FoliageVariation;
 };
 

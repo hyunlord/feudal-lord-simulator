@@ -98,7 +98,7 @@ test("source files keep palette literals and sprite blits behind the Phase 4D bo
     if (relative !== "content/palette.ts" && /#[0-9A-Fa-f]{3,8}\b/.test(source)) {
       violations.push(`${relative}:hex`);
     }
-    if (/\bdrawImage\s*\(/.test(source) && relative !== "render/worldSprite.ts" && relative !== "render/worldAssetScaleCache.ts") {
+    if (/\bdrawImage\s*\(/.test(source) && relative !== "render/worldSprite.ts" && relative !== "render/worldAssetScaleCache.ts" && relative !== "render/worldRasterCache.ts") {
       violations.push(`${relative}:drawImage`);
     }
   }
@@ -110,16 +110,21 @@ test("source files keep palette literals and sprite blits behind the Phase 4D bo
 test("GameCanvas starts world asset preload without blocking first paint", async () => {
   // Given
   const source = await readFile(new URL("../src/render/useGameCanvasRuntime.ts", import.meta.url), "utf8");
+  const preloader = await readFile(new URL("../src/render/preloadGameArt.ts", import.meta.url), "utf8");
 
   // When
-  const importsPreloader = /import\s+\{\s*preloadWorldAssets\s*\}\s+from\s+"\.\/worldAssets";/.test(source);
-  const startsPreloaderWithoutAwait = /\bvoid\s+preloadWorldAssets\s*\(\s*\)/.test(source);
-  const awaitsPreloader = /\bawait\s+preloadWorldAssets\s*\(\s*\)/.test(source);
+  const importsPreloader = /import\s+\{\s*preloadGameArt\s*\}\s+from\s+"\.\/preloadGameArt";/.test(source);
+  const startsPreloaderWithoutAwait = /\bvoid\s+preloadGameArt\s*\(\s*\)/.test(source);
+  const awaitsPreloader = /\bawait\s+preloadGameArt\s*\(\s*\)/.test(source);
 
   // Then
   assert.equal(importsPreloader, true);
   assert.equal(startsPreloaderWithoutAwait, true);
   assert.equal(awaitsPreloader, false);
+  assert.match(preloader, /Promise\.all\(/);
+  for (const loader of ["preloadWorldAssets", "preloadRuntimeActorAssets", "preloadGateAssets", "preloadBridgeWaterAssets", "preloadMillAssets", "preloadConstructionArtAssets"]) {
+    assert.ok(preloader.includes(`${loader}()`), `preload includes ${loader}`);
+  }
 });
 
 test("runtime world asset registry uses bundled generated data instead of importing from public", async () => {

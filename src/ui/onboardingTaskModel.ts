@@ -49,7 +49,7 @@ export type OnboardingTaskView = {
 };
 
 const FLOURISH_HOLD_MS = 600;
-const PHASE_4F_OPEN_GOAL_TITLE = "목표: 인구 50 이후 번영을 이어가세요";
+const PHASE_4F_OPEN_GOAL_TITLE = "기초 운영 완료 · 도시 목표와 공급 상태를 확인하세요";
 
 export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   {
@@ -90,21 +90,21 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   {
     id: "task-6",
     title: "밀밭과 방앗간, 곡창을 지으세요",
-    hint: "오두막 네 채와 식량 건물을 먼저 완성한 뒤 바로 5배속으로 돌리세요.",
+    hint: "밀밭의 밀을 방앗간에서 빵으로 만들고, 곡창과 집을 길로 이으세요.",
     highlightTools: ["wheat_farm", "mill", "granary"],
     isComplete: hasFoodChain,
   },
   {
     id: "task-7",
     title: "인구를 30명까지 늘리세요",
-    hint: "오두막 네 채를 먼저 찍고 바로 5배속으로 돌리세요.",
+    hint: "집에 물과 빵이 공급되면 주민이 입주합니다. 가구 비축과 일손을 확인하세요.",
     highlightTools: ["house"],
     isComplete: hasPopulationAtLeast(30),
   },
   {
     id: "task-8",
     title: "인구를 50명까지 늘리세요",
-    hint: "5배속으로 흐름을 보며 집과 식량을 보강하세요.",
+    hint: "주민이 늘면 식량 소비도 늘어납니다. 공급이 안정된 뒤 집을 더 지으세요.",
     highlightTools: ["house"],
     isComplete: hasPopulationAtLeast(50),
   },

@@ -88,6 +88,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     input.completionTracker ?? createConstructionCompletionTracker(),
     input.state.constructionSites,
     input.nowMs ?? performance.now(),
+    input.state.buildings.map(building => building.id),
   );
   runRenderPasses({
     ground: () => {

@@ -1,193 +1,14 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-
 import { BUILDING_CONFIG } from "../src/content/buildingConfig";
 import { App } from "../src/App";
-import type { GameState } from "../src/engine/engine.types";
-import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
-import { GameProvider } from "../src/state/gameStore";
+import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { BuildSeals } from "../src/ui/BuildMenu";
-import {
-  buildMenuGroups,
-  buildToolTooltipLines,
-  BUILD_TOOL_OPTIONS,
-} from "../src/ui/buildMenuModel";
-
-const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
-
-function cssRule(block: string, selector: string): string {
-  const start = block.indexOf(`${selector} {`);
-  assert.notEqual(start, -1, `${selector} rule exists`);
-
-  let depth = 0;
-  let opened = false;
-  for (let index = start; index < block.length; index += 1) {
-    const character = block[index];
-    if (character === "{") {
-      depth += 1;
-      opened = true;
-    }
-    if (character === "}") depth -= 1;
-    if (opened && depth === 0) return block.slice(start, index + 1);
-  }
-
-  assert.fail(`${selector} rule closes`);
-}
-
-function cssPx(rule: string, property: string): number {
-  const escapedProperty = property.replaceAll("-", "\\-");
-  const match = rule.match(new RegExp(`${escapedProperty}:\\s*(\\d+)px;`));
-  if (match === null) assert.fail(`${property} px declaration exists`);
-  const value = match[1];
-  assert.notEqual(value, undefined, `${property} value exists`);
-  return Number(value);
-}
-
-function cssVarPx(rule: string, name: string): number {
-  const escapedName = name.replaceAll("-", "\\-");
-  const match = rule.match(new RegExp(`${escapedName}:\\s*(\\d+)px;`));
-  if (match === null) assert.fail(`${name} px variable exists`);
-  const value = match[1];
-  assert.notEqual(value, undefined, `${name} value exists`);
-  return Number(value);
-}
-
-function cssNumber(rule: string, property: string): number {
-  const escapedProperty = property.replaceAll("-", "\\-");
-  const match = rule.match(new RegExp(`${escapedProperty}:\\s*([\\d.]+);`));
-  if (match === null) assert.fail(`${property} numeric declaration exists`);
-  const value = match[1];
-  assert.notEqual(value, undefined, `${property} value exists`);
-  return Number(value);
-}
-
-function cssMaxWidthPx(rule: string): number {
-  const match = rule.match(/max-width:\s*(\d+)px;/);
-  if (match === null) assert.fail("max-width px declaration exists");
-  const value = match[1];
-  assert.notEqual(value, undefined, "max-width value exists");
-  return Number(value);
-}
-
-function cssGapAtViewportPx(rule: string, viewportWidth: number): number {
-  const match = rule.match(/gap:\s*clamp\((\d+)px,\s*([\d.]+)vw,\s*(\d+)px\);/);
-  if (match === null) return cssPx(rule, "gap");
-  const min = Number(match[1]);
-  const viewport = Number(match[2]) * viewportWidth / 100;
-  const max = Number(match[3]);
-  return Math.min(max, Math.max(min, viewport));
-}
-
-function cssInlinePaddingAtViewportPx(rule: string, viewportWidth: number): number {
-  const match = rule.match(/padding:\s*\d+px\s+clamp\((\d+)px,\s*([\d.]+)vw,\s*(\d+)px\);/);
-  if (match === null) return cssPx(rule, "padding") * 2;
-  const min = Number(match[1]);
-  const viewport = Number(match[2]) * viewportWidth / 100;
-  const max = Number(match[3]);
-  return Math.min(max, Math.max(min, viewport)) * 2;
-}
-
-function consoleBuildTrackWidthPx(rule: string, viewportWidth: number): number {
-  const template = rule.match(/grid-template-columns:\s*([^;]+);/)?.[1];
-  if (template === undefined) assert.fail("console grid template exists");
-  const gap = cssGapAtViewportPx(rule, viewportWidth);
-  const inlinePadding = cssInlinePaddingAtViewportPx(rule, viewportWidth);
-  const contentWidth = viewportWidth - inlinePadding - gap * 2;
-  if (template === "repeat(3, minmax(0, 1fr))") return contentWidth / 3;
-
-  const fixedTracks = [...template.matchAll(/(?:^|\s)(\d+)px(?:\s|$)/g)].map((match) => {
-    const value = match[1];
-    assert.notEqual(value, undefined, "fixed track value exists");
-    return Number(value);
-  });
-  const minmaxTracks = [...template.matchAll(/minmax\((\d+)px,\s*(\d+)px\)/g)].map((match) => {
-    const value = match[2];
-    assert.notEqual(value, undefined, "minmax track value exists");
-    return Number(value);
-  });
-  const sideTracks = fixedTracks.length > 0 ? fixedTracks : minmaxTracks;
-  assert.equal(sideTracks.length, 2, "console grid declares fixed minimap and ledger side tracks");
-  const minimapTrack = sideTracks[0];
-  const ledgerTrack = sideTracks[1];
-  if (minimapTrack === undefined || ledgerTrack === undefined) assert.fail("console side tracks exist");
-  return contentWidth - minimapTrack - ledgerTrack;
-}
-
-function labelsFromMarkup(markup: string): readonly string[] {
-  return [...markup.matchAll(/<span class="build-seal-label" aria-hidden="true">([^<]+)<\/span>/g)]
-    .map((match) => match[1])
-    .filter((label): label is string => label !== undefined);
-}
-
-function groupLabelsFromMarkup(markup: string): readonly string[] {
-  return [...markup.matchAll(/<span class="build-group-label">([^<]+)<\/span>/g)]
-    .map((match) => match[1])
-    .filter((label): label is string => label !== undefined);
-}
-
-function conservativeLabelWidthBudgetPx(label: string, fontSize: number): number {
-  return [...label].reduce((width, character) => {
-    if (/\p{Script=Hangul}/u.test(character)) return width + fontSize;
-    if (/[0-9]/.test(character)) return width + fontSize * 0.58;
-    if (/[A-Za-z]/.test(character)) return width + fontSize * 0.62;
-    return width + fontSize * 0.5;
-  }, 0);
-}
-
-function stoneTownState() {
-  return {
-    ...DEFAULT_GAME_STATE,
-    era: "stone_town" as const,
-    treasuryTimber: 500,
-    buildings: [
-      ...DEFAULT_GAME_STATE.buildings,
-      {
-        id: "stone-store",
-        kind: "storehouse" as const,
-        tx: 0,
-        ty: 0,
-        workers: 0,
-        inventory: { stone: 500, stone_raw: 500 },
-        reserved: {},
-        stockReserved: {},
-        productionProgress: 0,
-      },
-    ],
-  };
-}
-
-function buildGroupCellWidthsPx(input: {
-  readonly state: GameState;
-  readonly sealSize: number;
-  readonly groupGap: number;
-  readonly groupLabelFontSize: number;
-  readonly markup: string;
-}): readonly number[] {
-  const widths = buildMenuGroups(input.state).map((group) => {
-    const labelWidth = conservativeLabelWidthBudgetPx(group.label, input.groupLabelFontSize);
-    const sealsWidth = group.options.length * input.sealSize + Math.max(0, group.options.length - 1) * input.groupGap;
-    return Math.max(labelWidth, sealsWidth);
-  });
-  assert.equal(widths.length, groupLabelsFromMarkup(input.markup).length);
-  return widths;
-}
-
-function rowWidthPx(widths: readonly number[], gap: number): number {
-  return widths.reduce((total, width, index) => total + width + (index === 0 ? 0 : gap), 0);
-}
-
-function stoneTownRowsHeightPx(input: {
-  readonly sealSize: number;
-  readonly buildMenuGap: number;
-  readonly groupGap: number;
-  readonly groupLabelFontSize: number;
-}): number {
-  const headerHeight = input.groupLabelFontSize;
-  return input.sealSize * 2 + headerHeight * 2 + input.groupGap * 2 + input.buildMenuGap;
-}
+import { buildMenuGroups, buildToolTooltipLines, BUILD_TOOL_OPTIONS } from "../src/ui/buildMenuModel";
+import { BUILD_CATEGORIES, buildCategory, buildCostLabel, buildThumbnail } from "../src/ui/buildMenuPresentation";
 
 test("build menu exposes all building tools plus road in reachable order", () => {
   // Given
@@ -223,11 +44,7 @@ test("the real app renders every placement tool as an accessible control", () =>
   }
   assert.doesNotMatch(markup, /aria-label="채석장"/);
   assert.doesNotMatch(markup, /aria-label="석공소"/);
-  const placementMarkup = markup.slice(
-    markup.indexOf('aria-label="건설 도장"'),
-    markup.indexOf("ledger-recess"),
-  );
-  assert.doesNotMatch(placementMarkup, /aria-pressed="true"/);
+  assert.doesNotMatch(markup, /build-tool--selected/);
 });
 
 test("build menu groups buildings while road stays in a dedicated zero-cost control", () => {
@@ -247,17 +64,17 @@ test("build menu groups buildings while road stays in a dedicated zero-cost cont
     groups.map((group) => group.options.map((option) => option.tool)),
     [["house"], ["wheat_farm", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well", "chapel"]],
   );
-  assert.match(appMarkup, /class="road-tool"/);
+  assert.match(appMarkup, /class="build-menu-quick-road"/);
   assert.match(appMarkup, /aria-label="길"/);
   assert.match(appMarkup, /aria-pressed="false"/);
-  assert.match(appMarkup, /비용 목재 0/);
+  assert.match(appMarkup, /무료/);
   assert.ok(loggingTooltip.some((line) => line.includes("벌목소")));
   assert.ok(loggingTooltip.some((line) => line.includes("목재 15")));
   assert.ok(loggingTooltip.some((line) => line.includes("목적")));
   assert.ok(loggingTooltip.some((line) => line.includes("길")));
   assert.ok(loggingTooltip.some((line) => line.includes("숲")));
   assert.ok(loggingTooltip.some((line) => line.includes("부족 10")));
-  assert.match(appMarkup, /class="build-group"/);
+  assert.match(appMarkup, /aria-label="건설 분류"/);
 });
 
 test("stone town build menu includes civic buildings and reports multi-resource costs", () => {
@@ -317,155 +134,102 @@ test("task-driven highlights are semantic attributes and keep unaffordable seals
   assert.doesNotMatch(markup, /disabled=""/);
 });
 
-test("Given every build label When preflighted against the seal geometry Then labels keep twelve-pixel text and four-pixel clearance", async () => {
-  // Given
-  const stylesheet = await readFile(STYLESHEET, "utf8");
-  const buildSealsRule = cssRule(stylesheet, ".build-seals");
-  const buildButtonRule = cssRule(stylesheet, ".build-seal,\n.speed-seal");
-  const buildLabelRule = cssRule(stylesheet, ".build-seal-label");
-  const defaultMarkup = renderToStaticMarkup(
-    createElement(BuildSeals, {
-      selectedTool: null,
-      state: DEFAULT_GAME_STATE,
-      onSelect: () => undefined,
-    }),
-  );
-  const stoneMarkup = renderToStaticMarkup(
-    createElement(BuildSeals, {
-      selectedTool: null,
-      state: stoneTownState(),
-      onSelect: () => undefined,
-    }),
-  );
-
-  // When
-  const sealSize = cssVarPx(buildSealsRule, "--seal-size");
-  const sealPadding = cssPx(buildButtonRule, "padding");
-  const labelFontSize = cssPx(buildLabelRule, "font-size");
-  const labelLineHeight = cssNumber(buildLabelRule, "line-height");
-  const labelHeight = labelFontSize * labelLineHeight;
-  const labelInlineBudget = sealSize - sealPadding * 2 - 8;
-  const labelBlockBudget = sealSize - sealPadding * 2 - 4;
-  const labels = [...new Set([...labelsFromMarkup(defaultMarkup), ...labelsFromMarkup(stoneMarkup)])];
-
-  // Then
-  assert.equal(labels.length, BUILD_TOOL_OPTIONS.length);
-  assert.ok(labelFontSize >= 12, "seal labels declare at least 12 CSS pixels");
-  assert.ok(labelHeight <= labelBlockBudget, "label line keeps four CSS pixels from seal block edges");
-  for (const label of labels) {
-    assert.ok(
-      conservativeLabelWidthBudgetPx(label, labelFontSize) <= labelInlineBudget,
-      `${label} fits within seal label width with four CSS pixels of inline clearance`,
-    );
-  }
-  assert.match(buildSealsRule, /flex-wrap:\s*wrap;/);
-  assert.match(buildSealsRule, /overflow-x:\s*hidden;/);
-  assert.doesNotMatch(buildLabelRule, /overflow:\s*hidden|text-overflow|ellipsis|white-space:\s*nowrap/);
-});
-
-test("Given a 1280px console When rendered build text is measured against Part7 cells Then the minimap is capped and full labels fit", async () => {
-  // Given
-  const viewportWidth = 1280;
-  const stylesheet = await readFile(STYLESHEET, "utf8");
-  const consoleRule = cssRule(stylesheet, ".court-console");
-  const mapRule = cssRule(stylesheet, ".map-overview");
-  const buildSealsRule = cssRule(stylesheet, ".build-seals");
-  const groupSealsRule = cssRule(stylesheet, ".build-group-seals");
-  const buildButtonRule = cssRule(stylesheet, ".build-seal,\n.speed-seal");
-  const buildLabelRule = cssRule(stylesheet, ".build-seal-label");
-  const groupLabelRule = cssRule(stylesheet, ".build-group-label");
-  const defaultMarkup = renderToStaticMarkup(
-    createElement(BuildSeals, {
-      selectedTool: null,
-      state: DEFAULT_GAME_STATE,
-      onSelect: () => undefined,
-    }),
-  );
-  const stoneState = stoneTownState();
-  const markup = renderToStaticMarkup(
-    createElement(BuildSeals, {
-      selectedTool: null,
-      state: stoneState,
-      onSelect: () => undefined,
-    }),
-  );
-
-  // When
-  const sealSize = cssVarPx(buildSealsRule, "--seal-size");
-  const buildMenuTrackWidth = consoleBuildTrackWidthPx(consoleRule, viewportWidth);
-  const buildMenuInnerWidth = buildMenuTrackWidth - cssPx(buildSealsRule, "padding") * 2 - 2;
-  const groupGap = cssPx(groupSealsRule, "gap");
-  const buildMenuGap = cssPx(buildSealsRule, "gap");
-  const groupLabelFontSize = cssPx(groupLabelRule, "font-size");
-  const sealPadding = cssPx(buildButtonRule, "padding");
-  const sealLabelFontSize = cssPx(buildLabelRule, "font-size");
-  const sealLabelInlineBudget = sealSize - sealPadding * 2 - 8;
-  const defaultGroupCellWidths = buildGroupCellWidthsPx({
-    state: DEFAULT_GAME_STATE,
-    sealSize,
-    groupGap,
-    groupLabelFontSize,
-    markup: defaultMarkup,
-  });
-  const groupCellWidths = buildGroupCellWidthsPx({
-    state: stoneState,
-    sealSize,
-    groupGap,
-    groupLabelFontSize,
-    markup,
-  });
-  const roadCellWidth = sealSize + 10 + 1;
-  const defaultOneRowWidth = rowWidthPx([...defaultGroupCellWidths, roadCellWidth], buildMenuGap);
-  const twoRowWidth = Math.max(
-    groupCellWidths[1] ?? 0,
-    (groupCellWidths[0] ?? 0) + buildMenuGap + (groupCellWidths[2] ?? 0) + buildMenuGap + (groupCellWidths[3] ?? 0) + buildMenuGap + roadCellWidth,
-  );
-  const renderedLabels = labelsFromMarkup(markup);
-  const renderedGroupLabels = groupLabelsFromMarkup(markup);
-
-  // Then
-  assert.ok(cssMaxWidthPx(mapRule) <= 140, "minimap CSS caps the overview at 140px");
-  assert.ok(buildMenuInnerWidth >= defaultOneRowWidth, "1280px console keeps the default build menu on one complete row");
-  assert.ok(buildMenuInnerWidth >= twoRowWidth, "1280px console permits at most two complete build-menu rows");
-  assert.equal(renderedLabels.length, BUILD_TOOL_OPTIONS.length);
-  assert.equal(renderedGroupLabels.length, buildMenuGroups(stoneState).length);
-  for (const label of renderedLabels) {
-    assert.ok(
-      conservativeLabelWidthBudgetPx(label, sealLabelFontSize) <= sealLabelInlineBudget,
-      `${label} rendered label width fits the seal cell`,
-    );
-  }
-  for (const group of buildMenuGroups(stoneState)) {
-    const width = conservativeLabelWidthBudgetPx(group.label, groupLabelFontSize);
-    const cellWidth = groupCellWidths.find((candidate) => candidate >= width) ?? 0;
-    assert.ok(width <= cellWidth, `${group.label} rendered header width fits its group cell`);
+test("category presentation covers every existing tool and preserves the canonical unlock filter", () => {
+  assert.deepEqual(BUILD_CATEGORIES.map((category) => category.label), ["주택", "도로", "생산", "저장", "공공", "방어"]);
+  assert.equal(buildCategory("keep"), "defense");
+  assert.equal(buildCategory("church"), "public");
+  const opening = buildMenuGroups(DEFAULT_GAME_STATE).flatMap((group) => group.options);
+  assert.equal(opening.some((option) => buildCategory(option.tool) === "defense"), false);
+  for (const option of BUILD_TOOL_OPTIONS) {
+    assert.ok(BUILD_CATEGORIES.some((category) => category.key === buildCategory(option.tool)));
   }
 });
 
-test("Given the 1280px stone-town menu When two rows render Then the rows fit inside the seal recess without vertical scroll", async () => {
-  // Given
-  const stylesheet = await readFile(STYLESHEET, "utf8");
-  const courtRecessRule = cssRule(stylesheet, ".court-recess");
-  const buildSealsRule = cssRule(stylesheet, ".build-seals");
-  const groupSealsRule = cssRule(stylesheet, ".build-group-seals");
-  const groupLabelRule = cssRule(stylesheet, ".build-group-label");
+test("each thumbnail resolves to its installed artwork including historical chapel", async () => {
+  for (const option of BUILD_TOOL_OPTIONS) {
+    const path = buildThumbnail(option.tool);
+    if (option.tool === "road") { assert.equal(path, null); continue; }
+    assert.ok(path);
+    await access(new URL(`../public${path}`, import.meta.url));
+  }
+});
 
-  // When
-  const sealSize = cssVarPx(buildSealsRule, "--seal-size");
-  const buildMenuBlockPadding = cssPx(buildSealsRule, "padding") * 2;
-  const buildMenuBorder = 2;
-  const requiredHeight = stoneTownRowsHeightPx({
-    sealSize,
-    buildMenuGap: cssPx(buildSealsRule, "gap"),
-    groupGap: cssPx(groupSealsRule, "gap"),
-    groupLabelFontSize: cssPx(groupLabelRule, "font-size"),
-  }) + buildMenuBlockPadding + buildMenuBorder;
-  const availableHeight = cssPx(courtRecessRule, "height");
+test("selected tool opens its own category and exposes full cost and requirements", () => {
+  const markup = renderToStaticMarkup(createElement(BuildSeals, {
+    selectedTool: "logging_camp", state: DEFAULT_GAME_STATE, onSelect: () => undefined,
+  }));
+  assert.match(markup, /<section[^>]*aria-label="생산 도구"/);
+  assert.doesNotMatch(markup, /<section[^>]*hidden=""[^>]*aria-label="생산 도구"/);
+  assert.match(markup, /<section[^>]*hidden=""[^>]*aria-label="주택 도구"/);
+  assert.match(markup, /build-tool--selected[^>]*aria-label="벌목소"/);
+  assert.match(markup, /숲 인접 필요/);
+  assert.match(markup, /목재 15/);
+});
 
-  // Then
-  assert.ok(
-    availableHeight >= requiredHeight,
-    `stone-town two-row build menu needs ${requiredHeight}px but seal recess offers ${availableHeight}px`,
-  );
-  assert.match(buildSealsRule, /overflow-y:\s*auto;/);
+test("resource costs retain all canonical amounts and show free roads plainly", () => {
+  const church = BUILD_TOOL_OPTIONS.find((option) => option.tool === "church");
+  const road = BUILD_TOOL_OPTIONS.find((option) => option.tool === "road");
+  assert.ok(church); assert.ok(road);
+  assert.equal(buildCostLabel(church), "목재 100 · 석재 60");
+  assert.equal(buildCostLabel(road), "육지 무료 · 다리 목재 4/칸");
+});
+
+test("browser build-menu proof includes every app stylesheet in production order", async () => {
+  const { pageHtml } = await import("../scripts/phase13Part7BuildMenuProofPage");
+  const main = await readFile(new URL("../src/main.tsx", import.meta.url), "utf8");
+  const imports = [...main.matchAll(/import "\.\/styles\/([^"\n]+\.css)";/g)];
+  assert.ok(imports.length > 0);
+  const html = await pageHtml({ state: DEFAULT_GAME_STATE, scenarioName: "style-contract" });
+  let previousEnd = 0;
+  for (const entry of imports) {
+    const name = entry[1];
+    assert.ok(name);
+    const css = await readFile(new URL(`../src/styles/${name}`, import.meta.url), "utf8");
+    const start = html.indexOf(css, previousEnd);
+    assert.ok(start >= previousEnd, `${name} must appear in production cascade order`);
+    previousEnd = start + css.length;
+  }
+});
+
+test("build controls retain readable names and bounded scrolling at narrow widths", async () => {
+  const css = await readFile(new URL("../src/styles/buildMenu.css", import.meta.url), "utf8");
+  assert.match(css, /\.build-menu \.build-seal-label[^}]*font-size: 13px/);
+  const categoryHeights = [...css.matchAll(/\.build-menu-category\s*\{[^}]*min-height:\s*(\d+)px/g)];
+  assert.ok(categoryHeights.length > 0);
+  for (const match of categoryHeights) assert.ok(Number(match[1]) >= 32, "category targets stay at least 32px tall");
+  assert.match(css, /\.build-menu-catalog[^}]*min-width: 0[^}]*overflow-x: auto/);
+  assert.match(css, /\.build-menu-tools\[hidden\][^}]*display: none/);
+  const markup = renderToStaticMarkup(createElement(BuildSeals, {
+    selectedTool: null, state: { ...DEFAULT_GAME_STATE, era: "stone_town" }, onSelect: () => undefined,
+  }));
+  for (const option of BUILD_TOOL_OPTIONS) {
+    assert.ok(markup.includes(`<span class="build-seal-label" aria-hidden="true">${option.label}</span>`));
+  }
+});
+
+test("opening category follows the current task, while an explicit selected tool takes priority", () => {
+  const opening = renderToStaticMarkup(createElement(BuildSeals, {
+    selectedTool: null, state: DEFAULT_GAME_STATE, highlightedTools: ["logging_camp"], onSelect: () => undefined,
+  }));
+  assert.doesNotMatch(opening, /<section[^>]*hidden=""[^>]*aria-label="생산 도구"/);
+  assert.match(opening, /<section[^>]*hidden=""[^>]*aria-label="주택 도구"/);
+  const selected = renderToStaticMarkup(createElement(BuildSeals, {
+    selectedTool: "house", state: DEFAULT_GAME_STATE, highlightedTools: ["logging_camp"], onSelect: () => undefined,
+  }));
+  assert.doesNotMatch(selected, /<section[^>]*hidden=""[^>]*aria-label="주택 도구"/);
+  assert.match(selected, /<section[^>]*hidden=""[^>]*aria-label="생산 도구"/);
+});
+
+
+test("each tool describes its own immutable guidance even when another tool is selected", () => {
+  const markup = renderToStaticMarkup(createElement(BuildSeals, {
+    selectedTool: "house", state: DEFAULT_GAME_STATE, onSelect: () => undefined,
+  }));
+  const buttons = [...markup.matchAll(/<button[^>]*class="build-seal[^>]*aria-label="([^"]+)"[^>]*aria-describedby="([^"]+)"[^>]*>([\s\S]*?)<\/button>/g)];
+  assert.equal(buttons.length, buildMenuGroups(DEFAULT_GAME_STATE).flatMap((group) => group.options).length + 1);
+  for (const button of buttons) {
+    const [, label, descriptionId, content] = button;
+    assert.ok(descriptionId); assert.ok(content); assert.ok(label);
+    assert.ok(content.includes(`id="${descriptionId}" class="visually-hidden">${label}. 비용`));
+  }
 });

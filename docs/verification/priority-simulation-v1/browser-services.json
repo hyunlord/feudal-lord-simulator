@@ -1,0 +1,12 @@
+{
+  "seeded": true,
+  "actualUIActions": true,
+  "checks": [
+    "connected household receives market and church",
+    "actual road deletion changes both household diagnostics",
+    "actual road rebuilding restores both services",
+    "well inspector displays real used capacity",
+    "mobile inspector has no page horizontal overflow"
+  ],
+  "errors": []
+}

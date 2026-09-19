@@ -78,10 +78,10 @@ test("population diff records one growth event for an existing house", () => {
   assert.deepEqual(events, [event(50, "growth", "a")]);
 });
 
-test("population diff records starvation when bread service is stale", () => {
+test("population diff records starvation when empty food duration exceeds tolerance", () => {
   // Given
-  const previous = state(349, [house("a", 3, { hasWater: false, lastServicedTick: 0 })]);
-  const current = state(350, [house("a", 2, { hasWater: false, lastServicedTick: 0 })]);
+  const previous = state(349, [house("a", 3, { hasWater: false, lastServicedTick: 0, emptyFoodTicks: 350 })]);
+  const current = state(350, [house("a", 2, { hasWater: false, lastServicedTick: 0, emptyFoodTicks: 350 })]);
 
   // When
   const events = diffPopulationEvents(previous, current);
@@ -177,4 +177,10 @@ test("population grouping merges only consecutive equal causes", () => {
     { cause: "starvation", count: 1, houseIds: ["a"] },
     { cause: "growth", count: 1, houseIds: ["a"] },
   ]);
+});
+
+test("the final starving resident leaves for starvation even when the home becomes vacant", () => {
+  const previous = state(500, [house("a", 1, { hasWater: false, emptyFoodTicks: 400 })]);
+  const current = state(501, [house("a", 0, { hasWater: false, emptyFoodTicks: 401 })]);
+  assert.deepEqual(diffPopulationEvents(previous, current), [event(501, "starvation", "a")]);
 });

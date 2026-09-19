@@ -131,6 +131,13 @@ const parseAnchor = (value: unknown, label: string): Anchor => {
 
 const parseSource = (value: unknown, label: string): AssetSource => {
   const record = requireRecord(value, label);
+  if (record["kind"] === "accepted-art") {
+    if (record["seed"] !== undefined || record["candidate"] !== undefined) {
+      throw new WorldAssetManifestError(`${label} accepted art must not invent legacy generation metadata`);
+    }
+    return { kind: "accepted-art", path: requireString(record, "path", label), sha256: requireSha256(record, "sha256", label) };
+  }
+  if (record["kind"] !== undefined) throw new WorldAssetManifestError(`${label} unsupported source kind`);
   return {
     seed: requirePositiveInteger(record, "seed", label),
     candidate: requirePositiveInteger(record, "candidate", label),
@@ -324,10 +331,11 @@ const parseAsset = (value: unknown): WorldAsset => {
       if (record["palettePolicy"] !== GENERATED_PALETTE_POLICY) {
         throw new WorldAssetManifestError(`${key} palettePolicy must be ${GENERATED_PALETTE_POLICY}`);
       }
-      if (record["alphaPolicy"] !== "transparent-outline-179") {
-        throw new WorldAssetManifestError(`${key} alphaPolicy must be transparent-outline-179`);
+      const alphaPolicy = common.source.kind === "accepted-art" ? "transparent-native-alpha" : "transparent-outline-179";
+      if (record["alphaPolicy"] !== alphaPolicy) {
+        throw new WorldAssetManifestError(`${key} alphaPolicy must be ${alphaPolicy}`);
       }
-      return { key, category, ...common, palettePolicy: GENERATED_PALETTE_POLICY, alphaPolicy: "transparent-outline-179" };
+      return { key, category, ...common, palettePolicy: GENERATED_PALETTE_POLICY, alphaPolicy };
     }
     case "foliage": {
       if (!isMember(FOLIAGE_KEYS, key)) throw new WorldAssetManifestError(`${key} is not a foliage key`);
@@ -335,15 +343,16 @@ const parseAsset = (value: unknown): WorldAsset => {
       if (record["palettePolicy"] !== GENERATED_PALETTE_POLICY) {
         throw new WorldAssetManifestError(`${key} palettePolicy must be ${GENERATED_PALETTE_POLICY}`);
       }
-      if (record["alphaPolicy"] !== "transparent-outline-179") {
-        throw new WorldAssetManifestError(`${key} alphaPolicy must be transparent-outline-179`);
+      const alphaPolicy = common.source.kind === "accepted-art" ? "transparent-native-alpha" : "transparent-outline-179";
+      if (record["alphaPolicy"] !== alphaPolicy) {
+        throw new WorldAssetManifestError(`${key} alphaPolicy must be ${alphaPolicy}`);
       }
       return {
         key,
         category,
         ...common,
         palettePolicy: GENERATED_PALETTE_POLICY,
-        alphaPolicy: "transparent-outline-179",
+        alphaPolicy,
         variation: parseVariation(record["variation"], key),
       };
     }
@@ -399,6 +408,12 @@ export const assertExactWorldAssetKeys = (assets: readonly WorldAsset[]): void =
 
 export const assertWorldAssetFiles = (manifest: WorldAssetManifest, repoRoot: string): void => {
   for (const asset of manifest.assets) {
+    if (asset.source.kind === "accepted-art") {
+      const sourcePath = path.resolve(repoRoot, asset.source.path);
+      if (!existsSync(sourcePath)) throw new WorldAssetManifestError(`${asset.key} accepted source missing`);
+      const sourceHash = createHash("sha256").update(readFileSync(sourcePath)).digest("hex");
+      if (sourceHash !== asset.source.sha256) throw new WorldAssetManifestError(`${asset.key} accepted source hash mismatch`);
+    }
     const filePath = path.resolve(repoRoot, asset.path);
     if (!existsSync(filePath)) throw new WorldAssetManifestError(`missing world asset file ${asset.path}`);
     const image = readPng(filePath);

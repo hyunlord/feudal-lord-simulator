@@ -8,12 +8,13 @@ const PROOF_SCRIPT = new URL("../scripts/phase13Part7BuildMenuBrowserProof.ts", 
 
 const PROOF_ERAS = ["hamlet", "stone_town"] as const;
 
-test("Given desktop tablet and mobile Part7 browser proof When Chrome measures each era build menu Then labels semantics and rows fit without scroll", () => {
+test("Given desktop tablet and mobile Part7 browser proof When Chrome measures each era build menu Then category labels remain reachable and only tool strips scroll", () => {
   // Given
   const chromePath = process.env.CHROME_PATH ?? defaultChromePath();
 
   for (const proofEra of PROOF_ERAS) {
-    const chromePort = String(9_400 + (process.pid % 1_000) + PROOF_ERAS.indexOf(proofEra));
+    // Keep every PID-derived port outside Fetch's blocked-port list (including10080).
+    const chromePort = String(14_000 + (process.pid % 1_000) + PROOF_ERAS.indexOf(proofEra));
 
     // When
     const result = spawnSync(
@@ -94,7 +95,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function expectedGroupNames(proofEra: string): readonly string[] {
   if (proofEra === "hamlet" || proofEra === "stone_town") {
-    return ["건설 도장", "주거 도구", "생산 도구", "저장 도구", "서비스 도구", "길 도구"];
+    return ["건설 도장", "건설 분류", "길 도구"];
   }
   throw new Error(`unexpected proof era: ${proofEra}`);
 }

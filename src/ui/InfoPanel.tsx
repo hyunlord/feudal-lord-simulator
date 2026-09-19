@@ -13,6 +13,7 @@ import type { OnboardingTaskView } from "./onboardingTaskModel";
 import { PopulationEventPanel } from "./PopulationEventPanel";
 import type { PopulationEvent } from "./populationEventModel";
 import { settlementGuidance } from "./settlementGuidanceModel";
+import { ProblemGlyph } from "./ProblemGlyph";
 import {
   createResourceCounterTween,
   resourceCounterValues,
@@ -188,7 +189,7 @@ export function SettlementStatusLine({
             className={`problem-glyph problem-glyph--${guidance.priority.kind}`}
             aria-label={guidance.priority.label}
           >
-            {guidance.priority.glyph}
+            <ProblemGlyph kind={guidance.priority.kind} />
           </span>
         )}
         <span>{statusLine}</span>

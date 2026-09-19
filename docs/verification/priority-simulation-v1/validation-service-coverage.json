@@ -1,0 +1,195 @@
+{
+  "source": "Final natural simulation state, derived using actual product householdServices",
+  "tick": 392808,
+  "population": 176,
+  "services": {
+    "water": {
+      "served": 8,
+      "total": 8,
+      "households": [
+        {
+          "id": "construction-site-000007",
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000011",
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000014",
+          "kind": "served",
+          "providerId": "construction-site-000016",
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000015",
+          "kind": "served",
+          "providerId": "construction-site-000016",
+          "demand": 1
+        },
+        {
+          "id": "house-44-40-0",
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "served",
+          "providerId": "well-45-41-0",
+          "demand": 1
+        }
+      ]
+    },
+    "market": {
+      "served": 0,
+      "total": 8,
+      "households": [
+        {
+          "id": "construction-site-000007",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000011",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000014",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000015",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-44-40-0",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "outside",
+          "providerId": null,
+          "demand": 1
+        }
+      ]
+    },
+    "church": {
+      "served": 0,
+      "total": 8,
+      "households": [
+        {
+          "id": "construction-site-000007",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000011",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000014",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "construction-site-000015",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-44-40-0",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "missing",
+          "providerId": null,
+          "demand": 1
+        }
+      ]
+    }
+  },
+  "providers": [
+    {
+      "id": "construction-site-000016",
+      "service": "water",
+      "capacity": 12,
+      "used": 2,
+      "workers": 0,
+      "requiredWorkers": 0
+    },
+    {
+      "id": "well-45-41-0",
+      "service": "water",
+      "capacity": 12,
+      "used": 6,
+      "workers": 0,
+      "requiredWorkers": 0
+    },
+    {
+      "id": "construction-site-000022",
+      "service": "market",
+      "capacity": 24,
+      "used": 0,
+      "workers": 3,
+      "requiredWorkers": 3
+    }
+  ]
+}

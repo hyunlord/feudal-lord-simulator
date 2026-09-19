@@ -179,6 +179,12 @@ test("objectRenderItemsForFrame invalidates static cache when completed palisade
 
   // Then
   assert.deepEqual(items.map((item) => `${item.kind}:${item.id}`), [
-    "palisade_segment:wall-a-segment-000",
+    "palisade_segment:timber:1,1:2,1",
+    "palisade_segment:timber:2,1:3,1",
+    "palisade_segment:timber:3,1:4,1",
+    "palisade_segment:timber:4,1:5,1",
   ]);
+  const walls = items.filter(item => item.kind === "palisade_segment");
+  assert.ok(walls.every(item => item.segment.id === "wall-a-segment-000"));
+  assert.equal(walls.flatMap(item => item.stoneNodes ?? []).filter(node => node.kind === "gate").length, 1);
 });

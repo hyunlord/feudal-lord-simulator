@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type { Building } from "../src/content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import type { ResourceType } from "../src/content/resourceConfig";
 import { advanceTick } from "../src/engine/tick";
+import { marketHasSaleCandidate } from "../src/engine/marketSettlement";
+import { historicalFacilityAssetId } from "../src/render/historicalFacilityAssets";
 import { hashEconomyState } from "../scripts/economyHarness";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import type { Tile } from "../src/world/world.types";
@@ -48,6 +50,8 @@ function market(id: string, tx: number, ty: number, workers = 3): Building {
 }
 
 function roadedState(buildings: readonly Building[], roads: readonly { readonly tx: number; readonly ty: number }[]) {
+  const population = 2 * buildings.reduce((total, b) => total + (b.kind === "market" ? b.workers : BUILDING_CONFIG_BY_KIND[b.kind].workersRequired), 0);
+  const homes = [{ buildingId: "residents", level: 0, residents: population, hasWater: false, breadStock: 0, lastServicedTick: 0, unmetRequirementTicks: 0 }];
   const width = 18;
   const height = 8;
   const roadKeys = new Set(roads.map((road) => `${road.tx},${road.ty}`));
@@ -75,10 +79,10 @@ function roadedState(buildings: readonly Building[], roads: readonly { readonly 
         buildingId: ownerByTile.get(key) ?? null,
       });
     }),
-    buildings: [...buildings],
-    houses: [],
+    buildings: [...buildings, building({ id: "residents", kind: "house", tx: 16, ty: 6 })],
+    houses: homes,
     walkers: [],
-    population: 0,
+    population,
     idleWorkers: 0,
     treasuryCoin: 0,
   };
@@ -93,6 +97,23 @@ const CONNECTED_ROAD = [
   { tx: 7, ty: 3 },
   { tx: 8, ty: 3 },
 ] as const;
+
+test("market artwork queries actual connected surplus without consuming goods or ignoring reservations", () => {
+  const placedMarket = market("market", 8, 1);
+  const stocked = building({ id: "store", kind: "storehouse", tx: 1, ty: 1, inventory: { bread: 41 } });
+  const state = roadedState([stocked, placedMarket], CONNECTED_ROAD);
+  const before = JSON.stringify(state);
+  assert.equal(marketHasSaleCandidate(state, placedMarket), true);
+  assert.equal(historicalFacilityAssetId(placedMarket, state), "market_active");
+  assert.equal(JSON.stringify(state), before);
+  assert.equal(marketHasSaleCandidate(state, { ...placedMarket, workers: 2 }), false);
+  const reserved = roadedState([{ ...stocked, stockReserved: { bread: 1 } }, placedMarket], CONNECTED_ROAD);
+  assert.equal(marketHasSaleCandidate(reserved, placedMarket), false);
+  assert.equal(historicalFacilityAssetId(placedMarket, reserved), "market_quiet");
+  const disconnected = roadedState([stocked, placedMarket], CONNECTED_ROAD.filter(road => road.tx !== 5));
+  assert.equal(marketHasSaleCandidate(disconnected, placedMarket), false);
+  assert.equal(historicalFacilityAssetId(placedMarket, disconnected), "market_quiet");
+});
 
 test("market sells exactly one surplus unit above reserve on the eighty-tick cadence", () => {
   // Given: a staffed completed market connected to one storehouse with timber at reserve + 1.
@@ -233,4 +254,28 @@ test("multiple markets settle deterministically by market id and change the econ
   assert.equal(next.buildings.find((candidate) => candidate.id === "source-a")?.inventory.stone, 40);
   assert.equal(next.buildings.find((candidate) => candidate.id === "source-b")?.inventory.stone, 42);
   assert.notEqual(hashEconomyState(state), hashEconomyState(next));
+});
+
+test("Given a palisade town saving stone When trading Then the next era reserve is preserved across connected stores", () => {
+  const placedMarket = market("market", 8, 1);
+  const stores = [
+    building({ id: "west", kind: "storehouse", tx: 1, ty: 1, inventory: { stone: 200 } }),
+    building({ id: "east", kind: "storehouse", tx: 4, ty: 1, inventory: { stone: 200 } }),
+  ];
+  const state = { ...roadedState([...stores, placedMarket], CONNECTED_ROAD), era: "palisade" as const };
+  assert.equal(marketHasSaleCandidate(state, placedMarket), false);
+  const surplus = { ...state, buildings: state.buildings.map(b => b.id === "east" ? { ...b, inventory: { stone: 201 } } : b) };
+  assert.equal(marketHasSaleCandidate(surplus, placedMarket), true);
+  const reserved = { ...surplus, buildings: surplus.buildings.map(b => b.id === "east" ? { ...b, stockReserved: { stone: 1 } } : b) };
+  assert.equal(marketHasSaleCandidate(reserved, placedMarket), false);
+  assert.equal(marketHasSaleCandidate({ ...state, era: "stone_town" }, placedMarket), true);
+});
+
+test('market cannot sell using stale assigned workers after the population disappears', () => {
+  const store = building({ id: 'store', kind: 'storehouse', tx: 1, ty: 1, inventory: { timber: 61 } });
+  const initial = roadedState([store, market('market', 8, 1)], CONNECTED_ROAD);
+  const next = advanceTick({ ...initial, population: 0, houses: initial.houses.map(h => ({...h, residents: 0})) });
+  assert.equal(next.treasuryCoin, 0);
+  assert.equal(next.buildings.find(b => b.id === 'market')?.workers, 0);
+  assert.equal(next.buildings.find(b => b.id === 'store')?.inventory.timber, 61);
 });

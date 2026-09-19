@@ -142,7 +142,7 @@ test("stable id breaks ties after depth and anchor tx", () => {
 
 test("completed palisade segments join the shared object queue at their forward edge seam", () => {
   // Given
-  const rear = building("rear-house", "house", 1, 1);
+  const rear = building("rear-house", "house", 1, 0);
   const front = building("front-house", "house", 5, 3);
 
   // When
@@ -158,8 +158,10 @@ test("completed palisade segments join the shared object queue at their forward 
   // Then
   assert.deepEqual(
     items.map((item) => `${item.kind}:${item.id}`),
-    ["building:rear-house", "palisade_segment:wall-a-segment-000", "building:front-house"],
+    ["building:rear-house", "palisade_segment:timber:1,1:2,1", "palisade_segment:timber:2,1:3,1",
+      "palisade_segment:timber:3,1:4,1", "palisade_segment:timber:4,1:5,1", "building:front-house"],
   );
+  assert.deepEqual(items.filter(item => item.kind === "palisade_segment").map(item => item.depth), [3,4,5,6]);
 });
 
 test("individual trees and ground cover enter the shared object queue", () => {

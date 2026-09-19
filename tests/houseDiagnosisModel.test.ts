@@ -278,7 +278,7 @@ test("house diagnosis reports the nearest out-of-range well distance", () => {
 
 test("house diagnosis names starvation as the active population decline", () => {
   // Given
-  const input = state({ house: house({ hasWater: true, lastServicedTick: 20 }) });
+  const input = state({ house: house({ hasWater: true, lastServicedTick: 20, emptyFoodTicks: 330 }) });
 
   // When
   const model = diagnose(input);
@@ -354,4 +354,54 @@ test("house diagnosis does not report protection before the wall is complete", (
   assert.equal(beforeModel.protection.label, "성벽 미완성");
   assert.equal(duringModel.protection.kind, "inactive");
   assert.equal(duringModel.protection.label, "성벽 미완성");
+});
+
+test("merged house diagnosis reports persistent lot size and doubled capacity", () => {
+  for (const houseLot of ["horizontal", "vertical"] as const) {
+    const model = houseDiagnosisModel(state({
+      house: house({ level: 2, residents: 20 }),
+      home: { ...building("house", "house", 1, 2), houseLot },
+    }), "house");
+    assert.ok(model);
+    assert.equal(model.name, "장인가옥 · 합필 주택");
+    assert.equal(model.capacity, 28);
+    assert.equal(model.footprintLabel, houseLot === "horizontal" ? "2×1" : "1×2");
+    assert.equal(model.mergeOptions.length, 0);
+    assert.equal(model.mergeStatus, "이미 두 필지를 합친 연립주택입니다.");
+  }
+});
+
+
+test("downgraded merged home still identifies its two-cell lot and current doubled capacity", () => {
+  const model = houseDiagnosisModel(state({
+    house: house({ level: 0, residents: 4 }),
+    home: { ...building("house", "house", 1, 2), houseLot: "horizontal" },
+  }), "house");
+  assert.ok(model);
+  assert.equal(model.name, "오두막 · 합필 주택");
+  assert.equal(model.thumbnailUrl, null);
+  assert.equal(model.capacity, 8);
+  assert.equal(model.footprintLabel, "2×1");
+  assert.equal(model.mergeOptions.length, 0);
+});
+
+test("merged house thumbnail matches its supplemental asset level and orientation", () => {
+  for (const houseLot of ["horizontal", "vertical"] as const) {
+    for (const level of [2, 3, 4]) {
+      const model = houseDiagnosisModel(state({
+        house: house({ level }),
+        home: { ...building("house", "house", 1, 2), houseLot },
+      }), "house");
+      assert.ok(model);
+      assert.equal(model.thumbnailUrl, `/assets/buildings/historical-houses/house_pair_l${level}_${houseLot}-v${level === 2 && houseLot === "horizontal" ? 4 : 2}.png`);
+    }
+  }
+});
+
+test("held bread and empty-food grace use the same diagnosis as housing", () => {
+  const supplied = diagnose(state({ house: house({ hasWater: true, breadStock: 2, lastServicedTick: 0, emptyFoodTicks: 999 }) }));
+  assert.equal(supplied.population.kind, "stable");
+  const waiting = diagnose(state({ house: house({ hasWater: true, breadStock: 0, emptyFoodTicks: 200 }) }));
+  assert.equal(waiting.population.kind, "growth_blocked");
+  assert.equal(waiting.population.label, "성장 정체 — 식량 부족");
 });

@@ -145,7 +145,7 @@ test("economy overlay controls expose visible water and labour toggles without c
   assert.match(markup, /연결된 길/);
   assert.match(markup, />3<\/span>/);
   assert.match(markup, />4<\/span>/);
-  assert.match(markup, /class="ledger-population-toggle"/);
+  assert.match(markup, /class="resource-bar__cell resource-bar__population"/);
   assert.match(markup, /aria-expanded="false"/);
   assert.equal(toggleOverlayByKey("Digit1", "none"), "water");
   assert.equal(toggleOverlayByKey("Digit1", "water"), "none");
@@ -228,6 +228,7 @@ test("settlement guidance advances population targets and samples priority on a 
       ...house,
       hasWater: true,
       breadStock: 0,
+      starvationGraceUntilTick: 0,
       lastServicedTick: 0,
     })),
   };
@@ -236,8 +237,8 @@ test("settlement guidance advances population targets and samples priority on a 
   const guidance = settlementGuidance(state);
 
   // Then
-  assert.equal(guidance.populationGoal, 120);
-  assert.equal(guidance.completedGoal, 50);
+  assert.equal(guidance.populationGoal, 60);
+  assert.equal(guidance.completedGoal, null);
   assert.equal(guidance.sampledTick, 240);
   assert.equal(guidance.statusLine, "식량이 부족합니다");
 });
@@ -276,7 +277,7 @@ test("settlement guidance priority follows the exact Phase 4F blocker order", ()
     settlementGuidance({
       ...stable,
       tick: 200,
-      houses: hydratedHouse.map((house) => ({ ...house, breadStock: 0, lastServicedTick: 0 })),
+      houses: hydratedHouse.map((house) => ({ ...house, breadStock: 0, lastServicedTick: 0, starvationGraceUntilTick: 0 })),
     }).statusLine,
     "식량이 부족합니다",
   );
@@ -316,6 +317,7 @@ test("settlement problem glyphs appear only for real water bread labour and stor
       ...house,
       hasWater: false,
       breadStock: 0,
+      starvationGraceUntilTick: 0,
       lastServicedTick: 0,
     })),
     buildings: [

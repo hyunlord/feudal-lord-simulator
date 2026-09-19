@@ -469,6 +469,7 @@ test("advance tick starts authored production while preserving opening structure
     state.houses.map((house) => ({
       ...house,
       level: 1,
+      builtLevel: 1,
       hasWater: true,
       unmetRequirementTicks: 0,
     })),

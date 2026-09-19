@@ -214,7 +214,7 @@ describe("world asset manifest", () => {
       height: 192,
       renderScale: renderScaleForWorldAsset("house_l3", 192),
       anchor: { x: 80, y: 176 },
-      footprint: { width: 2, height: 2 },
+      footprint: { width: 1, height: 1 },
       source,
       sha256,
       palettePolicy: "full-colour-generated",

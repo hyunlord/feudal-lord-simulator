@@ -1,3 +1,5 @@
+import { bridgeRemovalTiles } from "../world/bridges";
+import { roadPlacementFailure, roadTimberCost, chargeRoadTimber } from "./roadPlacement";
 import {
   BUILDING_CONFIG_BY_KIND,
   type BuildingDefinition,
@@ -6,7 +8,7 @@ import {
 import { createConstructionSite } from "../economy/construction";
 import { getTile, isInBounds, type TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
-import { canPlaceRoad, roadLine } from "../world/roadGraph";
+import { roadLine } from "../world/roadGraph";
 import type { Tile } from "../world/world.types";
 import type { GameState } from "./engine.types";
 
@@ -60,10 +62,11 @@ export function placeRoadLine(
   if (!canPlaceRoadLineEndpoints(state, start, destination)) return state;
 
   const line = roadLine(start, destination);
-  if (!line.every((coordinate) => canPlaceRoad(state, coordinate))) return state;
+  if (roadPlacementFailure(state, line) !== null) return state;
 
   return {
     ...state,
+    ...chargeRoadTimber(state, roadTimberCost(state, line)),
     tiles: state.tiles.map((tile) =>
       line.some((coordinate) => coordinate.tx === tile.tx && coordinate.ty === tile.ty)
         ? { ...tile, hasRoad: true }
@@ -80,11 +83,12 @@ export function removeRoad(
 ): GameState {
   const tile = getTile(state, coordinate);
   if (tile?.hasRoad !== true) return state;
+  const removed = bridgeRemovalTiles(state, coordinate);
 
   return {
     ...state,
     tiles: state.tiles.map((candidate) =>
-      candidate.tx === coordinate.tx && candidate.ty === coordinate.ty
+      removed.some(point => candidate.tx === point.tx && candidate.ty === point.ty)
         ? { ...candidate, hasRoad: false }
         : candidate,
     ),

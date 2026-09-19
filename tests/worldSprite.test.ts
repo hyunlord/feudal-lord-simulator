@@ -3,6 +3,7 @@ import { before, describe, it } from "node:test";
 
 import { preloadWorldAssets } from "../src/render/worldAssets";
 import {
+  drawCroppedWorldSprite,
   drawWorldSprite,
   drawWorldSpriteAtWorldAnchor,
   type WorldSpriteContext,
@@ -114,10 +115,10 @@ describe("world sprite blitter", () => {
     const camera = { zoom: 1, panX: 200, panY: 100 };
 
     assert.equal(drawWorldSprite(one.context, "well", 2, 4, { camera }), true);
-    assert.equal(drawWorldSprite(two.context, "house_l3", 2, 4, { camera }), true);
+    assert.equal(drawWorldSprite(two.context, "barn", 2, 4, { camera }), true);
 
     assert.deepEqual(one.drawCalls[0], { dx: 110, dy: 150, width: 52, height: 58 });
-    assert.deepEqual(two.drawCalls[0], { dx: 101, dy: 152, width: 69, height: 83 });
+    assert.deepEqual(two.drawCalls[0], { dx: 97, dy: 165, width: 78, height: 70 });
   });
 
   it("Given pan zoom and DPR When drawing Then destination rectangles snap in device space", () => {
@@ -132,6 +133,21 @@ describe("world sprite blitter", () => {
     assert.equal(drawn, true);
     assert.deepEqual(recorder.drawCalls[0], { dx: -97, dy: 87, width: 115, height: 144 });
     assert.ok(recorder.calls.includes("setTransform:1,0,0,1,0,0"));
+  });
+
+  it("Given L3 houses at varied coordinates When drawing Then sprites stay on their own tile at the established upper-level scale", () => {
+    const camera = { zoom: 1, panX: 500, panY: 200 };
+    for (const [tx, ty] of [[0, 0], [7, 2], [2, 8]] as const) {
+      const placed = recordingContext();
+      const anchored = recordingContext();
+
+      assert.equal(drawWorldSprite(placed.context, "house_l3", tx, ty, { camera }), true);
+      assert.equal(drawWorldSpriteAtWorldAnchor(anchored.context, "house_l3", tx, ty, { camera }), true);
+
+      assert.deepEqual(placed.drawCalls, anchored.drawCalls, `L3 shifted from tile ${tx},${ty}`);
+      assert.equal(placed.drawCalls[0]?.height, 83);
+      assert.equal(placed.drawCalls[0]?.width, 69);
+    }
   });
 
   it("Given a culled destination When drawing Then no image draw occurs and state is restored", () => {
@@ -204,4 +220,36 @@ describe("world sprite blitter", () => {
     assert.equal(recorder.context.imageSmoothingEnabled, true);
     assert.deepEqual(recorder.calls.slice(-1), ["restore"]);
   });
+});
+
+
+it("cropped world sprites default to sharp pixels, opt into filtering and restore state even on failure", () => {
+  for (const filtered of [undefined, true]) for (const fail of [false, true]) {
+    const originalSmoothing = filtered !== true;
+    let smoothing = originalSmoothing;
+    let saved = originalSmoothing;
+    let restored = false;
+    const calls: number[][] = [];
+    const context = {
+      get imageSmoothingEnabled() { return smoothing; },
+      set imageSmoothingEnabled(value: boolean) { smoothing = value; },
+      getTransform: () => ({ a: 1.7, b: 0, c: 0, d: 1.7, e: 0.3, f: -0.4 }),
+      save: () => { saved = smoothing; },
+      restore: () => { smoothing = saved; restored = true; },
+      drawImage: (_image: CanvasImageSource, ...values: number[]) => {
+        assert.equal(smoothing, filtered ?? false); calls.push(values);
+        if (fail) throw new Error("blit failed");
+      },
+    };
+    const image: CanvasImageSource = {} as HTMLImageElement;
+    const draw = () => drawCroppedWorldSprite(context, image, { x: 10, y: 20, width: 100, height: 110 }, { x: 12.3, y: 24.7, width: 84.48, height: 91.3 }, true, filtered);
+    if (fail) assert.throws(draw, /blit failed/); else draw();
+    assert.equal(restored, true); assert.equal(smoothing, originalSmoothing);
+    const values = calls[0]; assert.ok(values);
+    assert.deepEqual(values.slice(0, 4), [10, 20, 100, 110]);
+    assert.ok(Math.abs((values[4] ?? 0) * 1.7 + 0.3 - 21) < 1e-9);
+    assert.ok(Math.abs((values[5] ?? 0) * 1.7 - 0.4 - 42) < 1e-9);
+    assert.ok(Math.abs((values[6] ?? 0) * 1.7 - 144) < 1e-9);
+    assert.ok(Math.abs((values[7] ?? 0) * 1.7 - 155) < 1e-9);
+  }
 });

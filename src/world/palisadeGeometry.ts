@@ -1,4 +1,5 @@
 import { getTile, type Grid } from "./grid";
+import { palisadeLandEnvelopes } from "./palisadeLandEnvelope";
 
 export type TileEdgePoint = {
   readonly x: number;
@@ -23,6 +24,7 @@ export type PalisadeFailureReason =
   | "out_of_bounds"
   | "water_crossing"
   | "insufficient_enclosure"
+  | "building_clearance"
   | "empty_perimeter";
 
 export type PalisadeRun = {
@@ -214,6 +216,28 @@ function clearanceFromFootprint(point: TileEdgePoint, footprint: PalisadeFootpri
   return Math.max(dx, dy);
 }
 
+export function palisadePathHasBuildingClearance(
+  path: PalisadePath,
+  footprints: readonly PalisadeFootprint[],
+  margin = 1,
+): boolean {
+  for (let index = 1; index < path.length; index += 1) {
+    const from = path[index - 1]; const to = path[index];
+    if (from === undefined || to === undefined) continue;
+    const points = rasterSegment(from, to);
+    for (let step = 0; step < points.length; step += 1) {
+      const point = points[step]; const next = points[step + 1];
+      if (point === undefined) continue;
+      if (footprints.some(footprint => clearanceFromFootprint(point, footprint) < margin)) return false;
+      if (next !== undefined) {
+        const middle = { x: (point.x + next.x) / 2, y: (point.y + next.y) / 2 };
+        if (footprints.some(footprint => clearanceFromFootprint(middle, footprint) < margin)) return false;
+      }
+    }
+  }
+  return true;
+}
+
 function hasProposalClearance(point: TileEdgePoint, clearance: ProposalClearance | null): boolean {
   return clearance === null || clearance.footprints.every((footprint) => clearanceFromFootprint(point, footprint) >= clearance.margin);
 }
@@ -239,7 +263,16 @@ function diagonalInteriorCell(from: TileEdgePoint, to: TileEdgePoint): TileEdgeP
 
 function stepCrossesWater(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): boolean {
   const interior = diagonalInteriorCell(from, to);
-  return interior !== null && isWaterTile(grid, interior.x, interior.y);
+  if (interior !== null) return isWaterTile(grid, interior.x, interior.y);
+  const minX = Math.min(from.x, to.x);
+  const minY = Math.min(from.y, to.y);
+  const adjacent = from.y === to.y
+    ? [{ tx: minX, ty: from.y - 1 }, { tx: minX, ty: from.y }]
+    : [{ tx: from.x - 1, ty: minY }, { tx: from.x, ty: minY }];
+  return !adjacent.some(point => {
+    const tile = getTile(grid, point);
+    return tile !== null && tile.terrain !== "water";
+  });
 }
 
 function edgeCrossesWater(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): boolean {
@@ -400,6 +433,7 @@ export function validatePalisadeCandidate(
   const enclosedFootprints = enclosedCount(path, footprints);
   const enclosureRatio = footprints.length === 0 ? 0 : enclosedFootprints / footprints.length;
   if (enclosureRatio < 0.6) return { ok: false, reason: "insufficient_enclosure" };
+  if (!palisadePathHasBuildingClearance(path, footprints)) return { ok: false, reason: "building_clearance" };
   return { ok: true, candidate: { path: simplifyPath(path), runs: runsForPath(simplifyPath(path)), perimeterSteps, enclosedFootprints, enclosureRatio } };
 }
 
@@ -411,8 +445,17 @@ export function computePalisadeProposal(
   if (footprints.some((footprint) => hasWaterMoat(grid, footprint))) return { ok: false, reason: "water_crossing" };
   const hull = convexHull(footprints.flatMap((footprint) => expandedFootprintCorners(footprint, PROPOSAL_MARGIN_TILES)));
   if (hull.length < 2) return { ok: false, reason: "collinear_footprints" };
+  if (hull.some(point => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds" };
   const routed = routeClosedPath(grid, hull, { footprints, margin: PROPOSAL_MARGIN_TILES });
-  if (routed === null) return { ok: false, reason: "water_crossing" };
+  if (routed === null) {
+    let failure: PalisadeFailureReason = "water_crossing";
+    for (const envelope of palisadeLandEnvelopes(grid, footprints, PROPOSAL_MARGIN_TILES)) {
+      const candidate = validatePalisadeCandidate(grid, envelope, footprints);
+      if (candidate.ok) return { ok: true, path: candidate.candidate.path, runs: candidate.candidate.runs, perimeterSteps: candidate.candidate.perimeterSteps };
+      if (candidate.reason === "building_clearance") failure = candidate.reason;
+    }
+    return { ok: false, reason: failure };
+  }
   const validation = validatePalisadeCandidate(grid, routed, footprints);
   if (!validation.ok) return validation;
   return { ok: true, path: validation.candidate.path, runs: validation.candidate.runs, perimeterSteps: validation.candidate.perimeterSteps };
@@ -431,6 +474,7 @@ export function dragPalisadeRun(
     if (index !== run.startIndex && index !== run.endIndex) return point;
     return { x: point.x + run.normal.x * wholeSteps, y: point.y + run.normal.y * wholeSteps };
   });
+  if (moved.some(point => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds", lastValid: candidate };
   const routed = routeClosedPath(grid, moved.slice(0, -1));
   const validation: PalisadeValidationResult =
     routed === null ? { ok: false, reason: "water_crossing" } : validatePalisadeCandidate(grid, routed, footprints);

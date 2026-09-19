@@ -1,5 +1,5 @@
 import type { ForestHarvest } from "../engine/engine.types";
-import { stumpAgeAt } from "../engine/forestHarvests";
+import { forestVisualStage } from "./forestRecovery";
 import type { Tile } from "../world/world.types";
 import { depthKey } from "./iso";
 import type { ObjectRenderItem } from "./objectRenderTypes";
@@ -13,6 +13,7 @@ export function stumpRenderItemForTile(
 ): ObjectRenderItem | null {
   const harvest = harvestsByTile.get(tileKey(tile.tx, tile.ty));
   if (harvest === undefined || !isStumpCandidate(tile, clearedTiles)) return null;
+  if (forestVisualStage(harvest, tick) === "recovered") return null;
   const stump = buildStumpDescriptor({ harvest, tick });
   return {
     kind: "stump",
@@ -36,12 +37,13 @@ export function forestHarvestAgeSignature(
   tick: number,
 ): string {
   return harvests
-    .map((harvest) => `${harvest.tx},${harvest.ty},${stumpAgeAt(harvest, tick)}`)
+    .map((harvest) => `${harvest.tx},${harvest.ty},${forestVisualStage(harvest, tick)}`)
     .join("|");
 }
 
 function isStumpCandidate(tile: Tile, clearedTiles: ReadonlySet<string>): boolean {
   return (
+    tile.terrain === "forest" &&
     tile.buildingId === null &&
     !tile.hasRoad &&
     !clearedTiles.has(tileKey(tile.tx, tile.ty))

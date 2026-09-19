@@ -1,3 +1,5 @@
+export { preloadConstructionArtAssets, constructionArtAssetStatuses } from "./constructionArtAssets";
+import { constructionArtImage, constructionArtLayers, drawConstructionArt } from "./constructionArtAssets";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import {
   constructionOnSiteLabel,
@@ -83,7 +85,14 @@ export function drawConstructionSite(
   const anchor = siteAnchor(input.site);
   const footprint = constructionSiteFootprint(input.site);
   const presentationProgress = clampedPresentationProgress(input.presentationProgress);
-  drawGroundingShadow(context, {
+  const artLayers = constructionArtLayers(input.site, constructionSiteRenderSignature(input.site, presentationProgress ?? undefined));
+  const usesArt = artLayers.length > 0 && artLayers.every(layer => constructionArtImage(layer.key) !== null);
+  const center = tileToScreen(footprint.tx + (footprint.width - 1) / 2, footprint.ty + (footprint.height - 1) / 2);
+  drawGroundingShadow(context, usesArt ? {
+    centerX: center.sx, centerY: center.sy + 3, height: 8,
+    baseRadiusX: (footprint.width + footprint.height) * 12,
+    baseRadiusY: (footprint.width + footprint.height) * 4,
+  } : {
     centerX: anchor.x + footprint.width * 18,
     centerY: anchor.y + footprint.height * 6,
     height: 28,
@@ -91,7 +100,7 @@ export function drawConstructionSite(
     baseRadiusY: 5 + footprint.height * 3,
   });
   drawSiteLabel(context, input.site, anchor, input.zoom);
-  drawConstructionStageBand(context, {
+  if (!drawConstructionArt(context, input.site, constructionSiteRenderSignature(input.site, presentationProgress ?? undefined))) drawConstructionStageBand(context, {
     signature: constructionSiteRenderSignature(
       input.site,
       presentationProgress ?? undefined,

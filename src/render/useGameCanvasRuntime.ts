@@ -7,7 +7,7 @@ import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
 import { pointerTile, releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions";
 import { installMinimapCameraJumpRuntime, publishMinimapViewport } from "./minimapCameraJump";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
-import { preloadWorldAssets } from "./worldAssets";
+import { preloadGameArt } from "./preloadGameArt";
 import { resolveCanvasClick } from "./canvasClickResolution";
 import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
@@ -46,7 +46,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
     if (canvas === null || context === null) return undefined;
 
-    void preloadWorldAssets();
+    void preloadGameArt();
 
     const refs: CanvasMutableRefs = {
       cameraRef: { current: initialCamera(canvas, stateRef.current) },
@@ -220,12 +220,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const keyUp = (event: KeyboardEvent) => {
       const cameraKey = cameraInputKeyUp(cameraInput, event.key, performance.now());
-      if (event.code === "Space") {
-        refs.spacePressed.current = false;
-        event.preventDefault();
-        return;
-      }
-      if (cameraKey) event.preventDefault();
+      if (event.code === "Space") refs.spacePressed.current = false;
+      if (event.target instanceof Element && event.target.closest(".diagnostic-card") !== null) return;
+      if (event.code === "Space" || cameraKey) event.preventDefault();
     };
     const leaveCanvas = () => { updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {

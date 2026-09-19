@@ -18,6 +18,7 @@ export const runtimeManifestProjection = (manifest: WorldAssetManifest): {
     readonly width: number;
     readonly height: number;
     readonly renderScale: number;
+    readonly bakedArchitecture: boolean;
     readonly anchor: { readonly x: number; readonly y: number };
     readonly footprint: { readonly width: number; readonly height: number };
   }[];
@@ -29,6 +30,7 @@ export const runtimeManifestProjection = (manifest: WorldAssetManifest): {
     width: asset.width,
     height: asset.height,
     renderScale: asset.renderScale,
+    bakedArchitecture: asset.category === "building" && asset.source.kind === "accepted-art",
     anchor: asset.anchor,
     footprint: asset.footprint,
   })),

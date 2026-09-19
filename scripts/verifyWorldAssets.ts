@@ -1,3 +1,4 @@
+import { parseArchivedAssetHashes, verifyAcceptedArtCategories } from "./acceptedArtVerification";
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -48,7 +49,7 @@ export class WorldAssetVerificationError extends Error {
   }
 }
 
-export type VerifyWorldAssetMode = Phase13ReleaseMode;
+export type VerifyWorldAssetMode = Phase13ReleaseMode | "accepted-art";
 export type VerifyWorldAssetOptions = {
   readonly mode?: VerifyWorldAssetMode;
   readonly acceptedRelease?: Phase13AcceptedRelease;
@@ -223,6 +224,22 @@ export const verifyWorldAssets = (repoRoot: string, phase4bRoot: string, options
   assertExactPngSet(path.join(repoRoot, "public", "assets", "buildings"), BUILDING_KEYS);
   assertExactPngSet(path.join(repoRoot, "public", "assets", "foliage"), FOLIAGE_KEYS);
   assertExactPngSet(path.join(repoRoot, "public", "assets", "terrain"), Object.keys(TERRAIN_SPECS));
+  if (mode === "accepted-art") {
+    verifyAcceptedArtCategories(repoRoot, manifest);
+    const baselinePath = path.join(repoRoot, "docs/asset-evidence/accepted-art/before/world_asset_manifest.json");
+    const baseline = parseArchivedAssetHashes(JSON.parse(readFileSync(baselinePath, "utf8")));
+    for (const asset of manifest.assets) {
+      if (asset.source.kind !== "accepted-art") {
+        if (baseline.get(asset.key) !== asset.sha256) {
+          throw new WorldAssetVerificationError(`${asset.key} unchanged legacy asset differs from captured baseline`);
+        }
+        if (asset.key === "house_l0" || asset.key === "mill" || asset.key === "barn") {
+          assertTransparentSprite(readPng(path.join(repoRoot, asset.path)), asset.key, BUILDING_SPECS[asset.key]);
+        }
+      }
+    }
+    return manifest;
+  }
   assertSpriteCategories(repoRoot, mode, options.acceptedRelease);
   assertTerrainCategories(repoRoot, mode, options.acceptedRelease);
   if (mode === "legacy-promotions") assertStablePromotions(repoRoot, phase4bRoot);
@@ -245,7 +262,7 @@ const main = (): number => { // no-excuse-ok: catch
     const acceptedReleasePath = process.argv[5];
     if (repoRoot === undefined || phase4bRoot === undefined) {
       throw new WorldAssetVerificationError(
-        "Usage: tsx scripts/verifyWorldAssets.ts <repo-root> <phase4b-root> [--phase13-full-colour|--phase13-accepted-release <accepted.json>]",
+        "Usage: tsx scripts/verifyWorldAssets.ts <repo-root> <phase4b-root> [--accepted-art|--phase13-full-colour|--phase13-accepted-release <accepted.json>]",
       );
     }
     if (mode === "--phase13-accepted-release" && acceptedReleasePath === undefined) {
@@ -258,7 +275,7 @@ const main = (): number => { // no-excuse-ok: catch
       });
     } else {
       verifyWorldAssets(repoRoot, phase4bRoot, {
-        mode: mode === "--phase13-full-colour" ? "phase13-full-colour" : "legacy-promotions",
+        mode: mode === "--accepted-art" ? "accepted-art" : mode === "--phase13-full-colour" ? "phase13-full-colour" : "legacy-promotions",
       });
     }
     writeFileSync(1, "World asset release verification passed\n");

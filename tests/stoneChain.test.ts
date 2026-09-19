@@ -56,7 +56,7 @@ const workforceHome = building({ id: "home", kind: "house", tx: 0, ty: 6 });
 const workforceHouse: House = {
   buildingId: workforceHome.id,
   level: 0,
-  residents: 14,
+  residents: 18,
   hasWater: false,
   breadStock: 0,
   lastServicedTick: 0,

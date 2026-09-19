@@ -1,4 +1,5 @@
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { additionalRoadGates } from "./palisadeGates";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import {
   createPalisadeConstructionSite,
   type PalisadeConstructionSite,
@@ -64,7 +65,7 @@ function settlementFootprints(state: GameState): readonly PalisadeFootprint[] {
   return [...state.buildings]
     .sort((left, right) => left.id.localeCompare(right.id))
     .map((building) => {
-      const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+      const definition = buildingFootprint(building);
       return {
         id: building.id,
         tx: building.tx,
@@ -233,6 +234,7 @@ export function confirmPalisadeProclamation(
   const gate = chooseGate(state, ring, settlementCenter(footprints));
   if (gate === null) return state;
   const wallId = wallIdForOrdinal(state.nextConstructionOrdinal);
+  const additionalGates = additionalRoadGates(state, validation.candidate.path, gate.point);
   const wallSegments = orderedSegments(validation.candidate.path, gate);
   const sites = createWallSites(wallId, wallSegments, state.tick);
 
@@ -244,6 +246,7 @@ export function confirmPalisadeProclamation(
       id: wallId,
       polygon: validation.candidate.path,
       gate: gate.point,
+      ...(additionalGates.length > 0 ? { additionalGates } : {}),
       segments: palisadeSegments(sites),
     },
     constructionSites: [...state.constructionSites, ...sites],

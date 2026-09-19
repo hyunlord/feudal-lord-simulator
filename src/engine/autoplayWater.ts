@@ -5,6 +5,9 @@ import type { GameState } from "./engine.types";
 import type { TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
+import { hasAutoplayBuildingClearance } from "./autoplaySetback";
+import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
+import { allocateHouseServices } from "../population/serviceAllocation";
 import type { AutoplayAction } from "./autoplay.types";
 
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
@@ -25,28 +28,20 @@ function virtualBuilding(kind: "well", coordinate: TileCoordinate): Building {
   };
 }
 
-function wellCoversHouse(state: GameState, home: Building): boolean {
-  const finishedWellCovers = state.buildings.some((building) =>
-    building.kind === "well" &&
-    buildingFootprintDistance(home, building) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-  );
-  return finishedWellCovers || state.constructionSites.some((site) =>
-    isBuildingConstructionSite(site) &&
-    site.kind === "well" &&
-    buildingFootprintDistance(home, virtualBuilding("well", { tx: site.tx, ty: site.ty })) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-  );
-}
-
 function waterlessHomes(state: GameState): readonly WaterlessHome[] {
+  const plannedWells = state.constructionSites.flatMap(site =>
+    isBuildingConstructionSite(site) && site.kind === "well"
+      ? [{ ...virtualBuilding("well", site), id: site.id }]
+      : []);
+  const services = allocateHouseServices({ houses: state.houses, buildings: [...state.buildings, ...plannedWells] });
   return state.houses
-    .filter((house) => house.residents > 0)
     .map((house) => {
       const building = state.buildings.find((candidate) => candidate.id === house.buildingId);
-      if (building === undefined || wellCoversHouse(state, building)) return null;
+      if (building === undefined || services.houses.get(house.buildingId)?.water.kind === "served") return null;
       return {
         building,
         residents: house.residents,
-        deprivation: Math.max(0, house.unmetRequirementTicks) * house.residents + house.residents,
+        deprivation: Math.max(0, house.unmetRequirementTicks) * house.residents + Math.max(1, house.residents),
       };
     })
     .filter((home): home is WaterlessHome => home !== null)
@@ -59,7 +54,7 @@ export function waterAction(state: GameState): AutoplayAction {
   const candidates: readonly TileCoordinate[] = Array.from({ length: state.width * state.height }, (_unused, index) => ({
     tx: index % state.width,
     ty: Math.floor(index / state.width),
-  })).filter((coordinate) => getTile(state, coordinate)?.terrain === "grass" && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok);
+  })).filter((coordinate) => getTile(state, coordinate)?.terrain === "grass" && hasAutoplayBuildingClearance(state, "well", coordinate) && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok);
   const ranked = candidates
     .map((candidate) => {
       const well = virtualBuilding("well", candidate);
@@ -83,6 +78,6 @@ export function waterAction(state: GameState): AutoplayAction {
       left.candidate.ty - right.candidate.ty ||
       left.candidate.tx - right.candidate.tx,
     );
-  const best = ranked[0]?.candidate;
+  const best = ranked.find(({ candidate }) => hasConnectedConstructionRoute(state, virtualBuilding("well", candidate)))?.candidate;
   return best === undefined ? NONE : { kind: "place_building", building: "well", tx: best.tx, ty: best.ty };
 }

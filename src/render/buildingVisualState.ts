@@ -8,6 +8,7 @@ import type { HouseMaterialEra, HouseMaterialWave } from "./buildingMaterialWave
 import { houseMaterialEraForBuilding } from "./buildingMaterialWave";
 import type { ResourceType } from "../content/resourceConfig";
 import type { House } from "../population/population.types";
+import { houseBuiltLevel, houseCondition, type HouseCondition } from "../population/houseCondition";
 
 export type RoofShape =
   | "none"
@@ -39,6 +40,8 @@ export type ProductionVisualState =
 
 export type BuildingVisualState = {
   readonly houseLevel: number;
+  readonly houseLivingLevel: number;
+  readonly houseCondition: HouseCondition;
   readonly houseMaterialEra: HouseMaterialEra;
   readonly houseProblem: "water" | "bread" | null;
   readonly production: ProductionVisualState;
@@ -51,7 +54,9 @@ export function buildBuildingVisualState(
 ): BuildingVisualState {
   const house = houses.find((candidate) => candidate.buildingId === building.id);
   return {
-    houseLevel: house?.level ?? 0,
+    houseLevel: house === undefined ? 0 : houseBuiltLevel(house),
+    houseLivingLevel: house?.level ?? 0,
+    houseCondition: house === undefined ? "maintained" : houseCondition(house),
     houseMaterialEra: houseMaterialEraForBuilding({
       building,
       wave: input.wave ?? null,
@@ -72,28 +77,11 @@ export function isProductionProblem(state: BuildingVisualState): boolean {
 }
 
 export function houseBodyProfile(input: number | { readonly era: HouseMaterialEra; readonly level: number }): BodyProfile {
-  const profileInput = typeof input === "number" ? { era: "hamlet" as const, level: input } : input;
-  const level = profileInput.level;
-  if (profileInput.era === "stone") {
-    if (level >= 4) return stoneTownHouseProfile;
-    if (level >= 3) return stoneTowerHouseProfile;
-    if (level === 2) return stoneCivicHouseProfile;
-    if (level === 1) return stoneFarmHouseProfile;
-  }
-  if (profileInput.era === "palisade") {
-    if (level >= 3) return palisadeTowerHouseProfile;
-    if (level === 2) return palisadeCivicHouseProfile;
-    if (level === 1) return palisadeFarmHouseProfile;
-  }
-  if (level >= 3) {
-    return towerHouseProfile;
-  }
-  if (level === 2) {
-    return civicHouseProfile;
-  }
-  if (level === 1) {
-    return farmHouseProfile;
-  }
+  const level = typeof input === "number" ? input : input.level;
+  if (level >= 4) return townHouseProfile;
+  if (level >= 3) return towerHouseProfile;
+  if (level === 2) return civicHouseProfile;
+  if (level === 1) return farmHouseProfile;
   return hutProfile;
 }
 
@@ -144,7 +132,7 @@ const civicHouseProfile = {
   height: 42,
   roof: 16,
   fill: SEMANTIC_PALETTE.parchmentDark,
-  roofColor: SEMANTIC_PALETTE.stone,
+  roofColor: SEMANTIC_PALETTE.earthDark,
   roofShape: "gable",
 } as const satisfies BodyProfile;
 
@@ -153,41 +141,11 @@ const towerHouseProfile = {
   height: 52,
   roof: 20,
   fill: SEMANTIC_PALETTE.parchment,
-  roofColor: SEMANTIC_PALETTE.stoneDark,
-  roofShape: "tower",
-} as const satisfies BodyProfile;
-
-const palisadeFarmHouseProfile = {
-  width: 34,
-  height: 32,
-  roof: 16,
-  fill: SEMANTIC_PALETTE.parchmentDark,
   roofColor: SEMANTIC_PALETTE.earthDark,
   roofShape: "gable",
 } as const satisfies BodyProfile;
 
-const palisadeCivicHouseProfile = {
-  width: 46,
-  height: 44,
-  roof: 18,
-  fill: SEMANTIC_PALETTE.parchment,
-  roofColor: SEMANTIC_PALETTE.stoneDark,
-  roofShape: "gable",
-} as const satisfies BodyProfile;
-
-const palisadeTowerHouseProfile = {
-  width: 56,
-  height: 54,
-  roof: 20,
-  fill: SEMANTIC_PALETTE.vellum,
-  roofColor: SEMANTIC_PALETTE.stoneDark,
-  roofShape: "tower",
-} as const satisfies BodyProfile;
-
-const stoneFarmHouseProfile = { width: 38, height: 36, roof: 16, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "gable" } as const satisfies BodyProfile;
-const stoneCivicHouseProfile = { width: 50, height: 48, roof: 18, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "gable" } as const satisfies BodyProfile;
-const stoneTowerHouseProfile = { width: 58, height: 58, roof: 22, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "tower" } as const satisfies BodyProfile;
-const stoneTownHouseProfile = { width: 64, height: 72, roof: 24, fill: SEMANTIC_PALETTE.stone, roofColor: SEMANTIC_PALETTE.winterGrey, roofShape: "tower" } as const satisfies BodyProfile;
+const townHouseProfile = { ...towerHouseProfile, width: 58, height: 66, roof: 20 } as const satisfies BodyProfile;
 
 function houseProblem(
   building: Building,

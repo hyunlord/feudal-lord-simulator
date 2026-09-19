@@ -1,0 +1,34 @@
+{
+  "version": "historical-wall-runtime-v1",
+  "source_directory": "/Users/rexxa/github/feudal-lord-simulator/output/placement-art-v1/assets",
+  "historical_profile": "S_England_1300_1450_v1",
+  "art_bible_version": "AB_2026-09-19_v1",
+  "assets": [
+    {
+      "filename": "stone_wall_straight_ne_sw-v3.png",
+      "sha256": "245b0ad5c567c76acaa07ad50d4e8d5422eca1b87bdca020f660e82f8e1fac0d",
+      "source_unchanged": true,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "filename": "stone_wall_straight_nw_se-v3.png",
+      "sha256": "1d7856cd36a1bc5d8c16e9f1fd3a6d95f588bb25cc2f4eaac9b106c1bff71413",
+      "source_unchanged": true,
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "registration": "stoneWallGeometry.ts: positive-x affine endpoint registration; verticals stay vertical; identical orientation for reversed paths",
+  "not_installed": [
+    "stone_wall_corner-v3.png",
+    "stone_wall_t_junction-v4.png",
+    "stone_wall_terminal-v3.png"
+  ],
+  "limitations": [
+    "Only the two authored grid-axis views use PNGs. Other world path directions use a continuous procedural stone fallback.",
+    "Axis joins share clipped endpoints; no invented rotated or reflected corner/T artwork.",
+    "Source contact endpoints are estimated; rendering evidence must assess remaining seam quality."
+  ],
+  "gameplay_changes": false
+}

@@ -1,6 +1,7 @@
+import { roadPlacementFailure, roadTimberCost } from "../engine/roadPlacement";
 import type { GameState } from "../engine/engine.types";
 import type { GameAction } from "../state/gameStore.types";
-import { getTile, isInBounds, type TileCoordinate } from "../world/grid";
+import { getTile, type TileCoordinate } from "../world/grid";
 import { PlacementFailure } from "../world/placement";
 import { roadLine } from "../world/roadGraph";
 import {
@@ -30,7 +31,7 @@ export function resolveRoadPlacementAttempt(input: {
       action: null,
       feedback: createPlacementFeedback({
         kind: "failure",
-        message: formatPlacementFailure({ reason: failure, buildingKind: "house" }),
+        message: failure === PlacementFailure.wrong_terrain ? "다리는 풀밭 양안을 직선으로 연결하세요 (물 최대 8칸)" : failure === PlacementFailure.insufficient_materials ? `다리 목재가 부족합니다 (필요 ${roadTimberCost(input.state, path)})` : formatPlacementFailure({ reason: failure, buildingKind: "house" }),
         anchor: { kind: "path", path },
         nowMs: input.nowMs,
       }),
@@ -42,7 +43,7 @@ export function resolveRoadPlacementAttempt(input: {
     action: { type: "place_road_line", start: input.start, destination: input.destination },
     feedback: createPlacementFeedback({
       kind: "success",
-      message: `길을 놓았습니다 · 목재 ${MODELED_ROAD_TIMBER_COST}`,
+      message: `길을 놓았습니다 · 목재 ${roadTimberCost(input.state, path)}`,
       anchor: { kind: "path", path },
       nowMs: input.nowMs,
     }),
@@ -85,12 +86,5 @@ export function roadFailure(
   state: GameState,
   path: readonly TileCoordinate[],
 ): PlacementFailure | null {
-  for (const coordinate of path) {
-    if (!isInBounds(state, coordinate)) return PlacementFailure.out_of_bounds;
-    const tile = getTile(state, coordinate);
-    if (tile === null) return PlacementFailure.out_of_bounds;
-    if (tile.buildingId !== null || tile.hasRoad) return PlacementFailure.occupied;
-    if (tile.terrain === "water") return PlacementFailure.wrong_terrain;
-  }
-  return null;
+  return roadPlacementFailure(state, path);
 }

@@ -12,6 +12,8 @@ import {
   type WorldSpriteDrawEvent,
 } from "../render/worldSpriteDiagnostics";
 import { buildingProblemCause } from "../ui/problemCauseModel";
+import { buildingFootprint } from "../geometry/buildingFootprint";
+import { houseCompoundAssetStatuses } from "../render/houseCompoundAssets";
 
 type ProofLocation = {
   readonly hostname: string;
@@ -23,6 +25,9 @@ type BuildingProofSummary = {
   readonly kind: string;
   readonly tx: number;
   readonly ty: number;
+  readonly width: number;
+  readonly height: number;
+  readonly houseLot: "horizontal" | "vertical" | null;
   readonly inventory: Partial<Record<ResourceType, number>>;
   readonly productionProgress: number;
   readonly problemCause: string | null;
@@ -47,6 +52,9 @@ type ConstructionSiteProofSummary = {
 type HouseProofSummary = {
   readonly buildingId: string;
   readonly residents: number;
+  readonly level: number;
+  readonly breadStock: number;
+  readonly lastServicedTick: number;
 };
 
 export type Phase10ProofSnapshot = {
@@ -68,6 +76,7 @@ export type Phase10ProofRuntimePort = {
   readonly diagnosis: () => {
     readonly camera: { readonly zoom: number; readonly lod: RenderDetailLevel };
     readonly assets: readonly AssetStatus[];
+    readonly houseCompoundAssets: ReturnType<typeof houseCompoundAssetStatuses>;
     readonly spriteDraws: { readonly recent: readonly WorldSpriteDrawEvent[] };
   };
 };
@@ -105,6 +114,7 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
         lod: renderDetailLevel(input.cameraRef.current.zoom),
       },
       assets: worldAssetStatuses(),
+      houseCompoundAssets: houseCompoundAssetStatuses(),
       spriteDraws: spriteDrawProbe.snapshot(),
     }),
   };
@@ -144,12 +154,15 @@ function snapshot(state: GameState): Phase10ProofSnapshot {
       kind: building.kind,
       tx: building.tx,
       ty: building.ty,
+      ...buildingFootprint(building),
+      houseLot: building.houseLot ?? null,
       inventory: building.inventory,
       productionProgress: building.productionProgress,
       problemCause: buildingProblemCause(state, building.id),
     })),
     constructionSites: state.constructionSites.map((site) => ({ id: site.id, kind: site.kind, stall: site.stall })),
-    houses: state.houses.map((house) => ({ buildingId: house.buildingId, residents: house.residents })),
+    houses: state.houses.map((house) => ({ buildingId: house.buildingId, residents: house.residents,
+      level: house.level, breadStock: house.breadStock, lastServicedTick: house.lastServicedTick })),
     walkers: state.walkers.map((walker) => ({
       id: walker.id,
       kind: walker.kind,

@@ -126,7 +126,7 @@ export function trackPhase9Run(initial: GameState): Phase9RunTrace {
   let proclaimedState = state;
   let segmentMaterialGapTicks = segmentMaterialGapCount(state) > 0 ? 1 : 0;
 
-  while (state.tick < PHASE9_RUN_TICKS && proclamationTick === null) {
+  while (state.settlement?.outcome !== "abandoned" && state.tick < PHASE9_RUN_TICKS && proclamationTick === null) {
     const previous = state;
     state = advanceTick(state);
     if (stoneChainHasAccess(state)) {
@@ -155,7 +155,7 @@ export function trackPhase9Run(initial: GameState): Phase9RunTrace {
 
   let stoneWallCompleteTick: number | null = stoneSegmentsComplete(state) ? state.tick : null;
   segmentMaterialGapTicks += segmentMaterialGapCount(state);
-  for (let step = 0; step < PHASE9_MAX_STONE_WALL_COMPLETION_TICKS && stoneWallCompleteTick === null; step += 1) {
+  for (let step = 0; step < PHASE9_MAX_STONE_WALL_COMPLETION_TICKS && stoneWallCompleteTick === null && state.settlement?.outcome !== "abandoned"; step += 1) {
     state = advanceTick(state);
     if (segmentMaterialGapCount(state) > 0) segmentMaterialGapTicks += 1;
     if (coinReachedTick === null && state.treasuryCoin > initialTreasuryCoin) coinReachedTick = state.tick;

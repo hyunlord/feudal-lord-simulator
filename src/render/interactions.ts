@@ -1,8 +1,9 @@
+import { roadTimberCost } from "../engine/roadPlacement";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
-import { canPlaceRoad, roadLine } from "../world/roadGraph";
+import { roadLine } from "../world/roadGraph";
 import type { CameraState, CanvasRect, Point, ViewportBounds, WorldBounds } from "./camera";
 import { canvasToWorld, clampPan, clientToCanvas, clampZoom } from "./camera";
 import { TILE_H, TILE_W } from "./iso";
@@ -143,7 +144,7 @@ export function placementPreview(
   }
   if (tool === "road") {
     const path = roadStart === null ? [tile] : roadLine(roadStart, tile);
-    const ok = path.every((coordinate) => canPlaceRoad(state, coordinate));
+    const ok = roadFailure(state, path) === null;
     return {
       tool,
       tile,
@@ -152,7 +153,7 @@ export function placementPreview(
       ok,
       reason: ok ? null : roadFailure(state, path),
       cursor: tile,
-      timberCost: MODELED_ROAD_TIMBER_COST,
+      timberCost: roadTimberCost(state, path),
     };
   }
   const placement = canPlaceBuilding(state, tool, tile.tx, tile.ty);

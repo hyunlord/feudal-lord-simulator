@@ -20,7 +20,7 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     DISTRIBUTOR_RANGE: 40,
     BREAD_HUNGER_WINDOW: 200,
     DEVOLUTION_GRACE: 400,
-    GROWTH_INTERVAL: 50,
+    GROWTH_INTERVAL: 150,
     STARVATION_WINDOW: 300,
     WORKERS_PER_RESIDENT: 0.5,
     STARTING_TIMBER: 120,
@@ -107,11 +107,11 @@ test("Phase 3 housing table matches the exact level requirements", () => {
   // Given / When / Then
   assert.deepEqual(HOUSING_CONFIG.slice(0, 4), [
     { level: 0, name: "오두막", requires: [], capacity: 4 },
-    { level: 1, name: "농가", requires: ["water"], capacity: 8 },
-    { level: 2, name: "시민가옥", requires: ["water", "bread"], capacity: 14 },
+    { level: 1, name: "소가옥", requires: ["water"], capacity: 8 },
+    { level: 2, name: "장인가옥", requires: ["water", "bread"], capacity: 14 },
     {
       level: 3,
-      name: "장원저택",
+      name: "상인가옥",
       requires: ["water", "bread", "granary"],
       capacity: 22,
       granaryRadius: 12,

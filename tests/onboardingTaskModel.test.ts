@@ -88,8 +88,9 @@ test("onboarding tasks expose the exact ordered Phase 5 titles and highlights", 
     ["house"],
     ["house"],
   ]);
-  assert.equal(foodChainHint, "오두막 네 채와 식량 건물을 먼저 완성한 뒤 바로 5배속으로 돌리세요.");
-  assert.equal(populationThirtyHint, "오두막 네 채를 먼저 찍고 바로 5배속으로 돌리세요.");
+  assert.match(foodChainHint ?? "", /곡창과 집을 길로/);
+  assert.match(populationThirtyHint ?? "", /물과 빵/);
+  assert.doesNotMatch(`${foodChainHint} ${populationThirtyHint}`, /5배속|네 채/);
 });
 
 test("onboarding task predicates match the ordered first-five-minute settlement milestones", () => {
@@ -246,7 +247,7 @@ test("presentation state reaches the Phase 4F open goal only after task eight co
   const view = getOnboardingTaskView(completeState, presentation);
   assert.notEqual(view.openGoal, null);
   if (view.openGoal === null) return;
-  assert.equal(view.openGoal.title, "목표: 인구 50 이후 번영을 이어가세요");
+  assert.equal(view.openGoal.title, "기초 운영 완료 · 도시 목표와 공급 상태를 확인하세요");
   assert.equal(view.current, null);
   assert.equal(view.next, null);
   assert.deepEqual(presentation.completedTaskIds, [

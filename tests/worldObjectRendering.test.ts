@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { before, test } from "node:test";
 
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../src/content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { GameState } from "../src/engine/engine.types";
 import { drawBuildings } from "../src/render/drawBuildings";
@@ -200,15 +201,21 @@ test("sprite-success building rendering keeps ground-pass contact before the spr
 
   // Then
   const firstDrawImage = context.calls.indexOf("drawImage");
-  const priorEllipses = context.calls
-    .slice(0, firstDrawImage)
-    .filter((call) => call.startsWith("ellipse:"));
   assert.notEqual(firstDrawImage, -1);
-  assert.deepEqual(priorEllipses.slice(-3), [
-    "ellipse:-4,13,33,12",
-    "ellipse:0,10,23,10",
-    "ellipse:0,10,14,3",
+  const contactStart = context.calls.indexOf(`fillStyle:${withAlpha(SEMANTIC_PALETTE.earthDark, 0.26)}`);
+  assert.ok(contactStart >= 0 && contactStart < firstDrawImage);
+  assert.deepEqual(context.calls.slice(contactStart, contactStart + 9), [
+    `fillStyle:${withAlpha(SEMANTIC_PALETTE.earthDark, 0.26)}`,
+    "beginPath",
+    "moveTo:-12,-4",
+    "lineTo:-2,-8",
+    "lineTo:11,-3",
+    "lineTo:5,1",
+    "lineTo:-7,2",
+    "closePath",
+    "fill",
   ]);
+  assert.ok(!context.calls.slice(0, firstDrawImage).some((call) => call.startsWith("ellipse:")));
 });
 
 test("exact simplified LOD keeps ready building sprites on the procedural path", () => {
@@ -331,4 +338,62 @@ test("Stone Town fallback sprite keys cover all new render kinds when manifest i
   // Then
   assert.equal(context.calls.includes("drawImage"), false);
   assert.equal(context.calls.filter((call) => call === "fill").length >= buildings.length, true);
+});
+
+function drawCivicAtZoom(kind: BuildingKind, zoom: number, connected = false): LoggedContext {
+  const context = loggedContext();
+  const initial = state();
+  const original = initial.buildings[0];
+  assert.ok(original);
+  const building = { ...original, kind };
+  const size = BUILDING_CONFIG_BY_KIND[kind];
+  const tiles = Array.from({ length: 16 }, (_, index) => {
+    const tx = index % 4;
+    const ty = Math.floor(index / 4);
+    return { ...tile(tx, ty, "grass", tx < size.width && ty < size.height ? building.id : null),
+      hasRoad: connected && tx === size.width && ty === 0 };
+  });
+  const gameState: GameState = { ...initial, buildings: [building], tiles };
+  const range = { minTx: 0, minTy: 0, maxTx: 3, maxTy: 3 };
+  const objectRenderItems = buildObjectRenderItems({ tiles, worldTiles: tiles, buildings: gameState.buildings,
+    walkers: [], range, seed: gameState.seed });
+  drawTerrain(context, { state: gameState, tiles, range, zoom, objectRenderItems, terrainPatterns: noTerrainPatterns });
+  drawBuildings(context, { state: gameState, tiles, range, zoom,
+    camera: { zoom, panX: 200, panY: 120 }, viewport: { width: 512, height: 512 }, dpr: 1, objectRenderItems });
+  return context;
+}
+
+test("ready civic and production sprites use compact footprint contact before their art", () => {
+  for (const kind of ["well", "storehouse", "granary", "logging_camp", "sawmill"] as const) {
+    // Given ready accepted sprites, when rendering full detail.
+    const context = drawCivicAtZoom(kind, 1);
+    // Then footprint contact precedes the art without a broad ellipse underneath.
+    const sprite = context.calls.indexOf("drawImage");
+    const contact = context.calls.indexOf(`fillStyle:${withAlpha(SEMANTIC_PALETTE.earthDark, 0.24)}`);
+    assert.ok(sprite > 0 && contact >= 0 && contact < sprite, kind);
+    assert.ok(!context.calls.slice(0, sprite).some(call => call.startsWith("ellipse:")), kind);
+  }
+});
+
+test("simplified civic and production buildings preserve procedural grounding", () => {
+  for (const kind of ["well", "storehouse", "granary", "logging_camp", "sawmill"] as const) {
+    // Given simplified detail, when rendering the same buildings.
+    const context = drawCivicAtZoom(kind, 0.7);
+    // Then ordinary grounding remains and no full-detail sprite is drawn.
+    assert.ok(context.calls.some(call => call.startsWith("ellipse:")), kind);
+    assert.ok(!context.calls.includes("drawImage"), kind);
+  }
+});
+
+
+test("building access remains visibly earthen when terrain patterns are unavailable", () => {
+  // Given a well with a real adjacent road and no loaded terrain textures.
+  const earthPrefix = `fillStyle:${withAlpha(SEMANTIC_PALETTE.earth, 0).replace(/0\)$/, "")}`;
+  // When rendering its frontage through the real ground pass.
+  const context = drawCivicAtZoom("well", 1, true);
+  // Then the narrow access has a strong earth centre in addition to its faint edge.
+  const opacities = context.calls.filter(call => call.startsWith(earthPrefix))
+    .map(call => Number(call.slice(earthPrefix.length, -1)));
+  assert.ok(opacities.some(opacity => opacity >= 0.65 && opacity <= 0.8));
+  assert.ok(opacities.some(opacity => opacity >= 0.16 && opacity <= 0.28));
 });

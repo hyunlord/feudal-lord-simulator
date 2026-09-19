@@ -1,4 +1,7 @@
-import type { BuildingKind } from "../content/buildingConfig";
+import { housingLotCount } from "../population/housing";
+import { houseLotArea } from "../geometry/buildingFootprint";
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import { HOUSING_CONFIG } from "../content/housingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
 import type { AutoplayAction } from "./autoplay.types";
@@ -7,7 +10,7 @@ import type { GameState } from "./engine.types";
 type BuildAction = (state: GameState, kind: BuildingKind) => AutoplayAction;
 
 const PRESSURE_FOOD_CHAIN_TARGET = 2;
-const EXPANDED_HOUSING_WHEAT_TARGET = 3;
+
 
 function breadStock(state: GameState): number {
   const buildingBread = state.buildings.reduce((total, building) => total + (building.inventory.bread ?? 0), 0);
@@ -33,7 +36,7 @@ export function hasPendingFoodChain(state: GameState): boolean {
 function houseCapacity(state: GameState): number {
   return state.houses.reduce((total, house) => {
     const capacity = HOUSING_CONFIG.find((definition) => definition.level === house.level)?.capacity ?? 0;
-    return total + capacity;
+    return total + capacity * houseLotArea(state.buildings.find((building) => building.id === house.buildingId));
   }, 0);
 }
 
@@ -42,19 +45,32 @@ function hasHousingPressure(state: GameState): boolean {
 }
 
 function targetFoodChains(state: GameState): number {
-  const pressureTarget = hasHousingPressure(state) && state.houses.length >= 4 ? PRESSURE_FOOD_CHAIN_TARGET : 0;
+  const pressureTarget = hasHousingPressure(state) && housingLotCount(state) >= 4 ? PRESSURE_FOOD_CHAIN_TARGET : 0;
   if (breadStock(state) >= 20) return pressureTarget;
-  const expansionTarget = state.houses.length > 4 ? state.houses.length - 3 : 0;
+  const expansionTarget = housingLotCount(state) > 4 ? housingLotCount(state) - 3 : 0;
   return Math.max(1, expansionTarget, pressureTarget);
 }
 
+function rationDemand(state: GameState): number {
+  const projectedHomes = housingLotCount(state) + (hasHousingPressure(state) ? 1 : 0);
+  return Math.max(state.houses.reduce((sum, house) => sum + houseFoodRation(house), 0), projectedHomes * 3);
+}
+
 function targetWheatCount(state: GameState, millCount: number): number {
-  if (state.houses.length <= 4) return 0;
-  return Math.min(EXPANDED_HOUSING_WHEAT_TARGET, millCount + 1);
+  if (millCount === 0) return 0;
+  return Math.ceil(rationDemand(state) / 5);
+}
+
+function targetMillCount(state: GameState): number {
+  const production = BUILDING_CONFIG_BY_KIND.mill.production;
+  if (production === null) return 0;
+  // Fetching grain and delivering bread share one carter, so reserve 25% for hauling.
+  const breadPerMeal = HOUSE_FOOD_INTERVAL / production.ticksPerOutput * 0.75;
+  return Math.ceil(rationDemand(state) / breadPerMeal);
 }
 
 export function foodAction(state: GameState, buildAction: BuildAction): AutoplayAction {
-  if (state.houses.length === 0) return { kind: "none" };
+  if (housingLotCount(state) === 0) return { kind: "none" };
   const wheatCount = builtOrPlannedCount(state, "wheat_farm");
   const millCount = builtOrPlannedCount(state, "mill");
   const granaryCount = builtOrPlannedCount(state, "granary");
@@ -65,6 +81,7 @@ export function foodAction(state: GameState, buildAction: BuildAction): Autoplay
   if (wheatCount < target) return buildAction(state, "wheat_farm");
   if (granaryCount < target) return buildAction(state, "granary");
   if (millCount < target) return buildAction(state, "mill");
+  if (millCount > 0 && millCount < targetMillCount(state)) return buildAction(state, "mill");
   if (wheatCount < targetWheatCount(state, millCount)) return buildAction(state, "wheat_farm");
   return { kind: "none" };
 }

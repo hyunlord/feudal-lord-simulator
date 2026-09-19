@@ -1,6 +1,6 @@
 import { RAMPS, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ForestHarvest } from "../engine/engine.types";
-import { stumpAgeAt } from "../engine/forestHarvests";
+import { forestVisualStage } from "./forestRecovery";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
@@ -73,6 +73,14 @@ const TREE_SPRITE_FAMILY_OFFSETS: Readonly<Record<TreeSilhouette, number>> = {
   broad: 2,
   rounded: 4,
 };
+const TREE_STATURE: Readonly<Record<TreeSpriteKey, number>> = {
+  tree_oak_large: 0.9,
+  tree_oak_small: 0.68,
+  tree_pine_tall: 1,
+  tree_pine_short: 0.72,
+  tree_birch: 0.8,
+  tree_dead: 0.65,
+};
 const MAX_OFFSET_X = TILE_W * 0.35;
 const MAX_OFFSET_Y = TILE_H * 0.35;
 const SAFE_DIAMOND_RADIUS = 0.7;
@@ -84,7 +92,8 @@ export type { GroundCoverDescriptor, GroundCoverSpriteKey } from "./groundCoverL
 
 export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescriptor[] {
   const treeCount = forestTreeCount(input.tile, input.forestLookup, input.seed);
-  const cacheKey = `${input.seed}:${treeCount}`;
+  const neighborCount = orthogonalForestNeighborCount(input.tile, input.forestLookup);
+  const cacheKey = `${input.seed}:${treeCount}:${neighborCount}`;
   const cached = treeClusterCache.get(input.tile)?.get(cacheKey);
   if (cached !== undefined) return cached;
   const center = tileToScreen(input.tile.tx, input.tile.ty);
@@ -99,11 +108,13 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       y: clamp(localAnchor.y + jitter(input.tile.tx, input.tile.ty, input.seed, index, 23) * 5, -MAX_OFFSET_Y, MAX_OFFSET_Y),
     });
     const { x: offsetX, y: offsetY } = offset;
-    const scale = treeScale(input.tile.tx, input.tile.ty, input.seed, index);
     const silhouetteIndex = treeCount === SILHOUETTES.length
       ? (silhouetteOffset + index) % SILHOUETTES.length
       : Math.floor(hashUnit(input.tile.tx, input.tile.ty, input.seed, index, 41) * SILHOUETTES.length) % SILHOUETTES.length;
     const silhouette = SILHOUETTES[silhouetteIndex] ?? "narrow";
+    const spriteKey = treeSpriteKey(input.tile.tx, input.tile.ty, input.seed, index, silhouette);
+    const edgeScale = neighborCount === 4 ? 1 : neighborCount === 3 ? 0.8 : 0.72;
+    const scale = treeScale(input.tile.tx, input.tile.ty, input.seed, index) * TREE_STATURE[spriteKey] * edgeScale;
     const x = center.sx + offsetX;
     const y = center.sy + offsetY;
     const anchor = screenToTile(x, y);
@@ -121,7 +132,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       sortY: y + scale * 8,
       anchorTx: anchor.tx,
       anchorTy: anchor.ty,
-      spriteKey: treeSpriteKey(input.tile.tx, input.tile.ty, input.seed, index, silhouette),
+      spriteKey,
       flipX: treeFlipX(input.tile.tx, input.tile.ty, input.seed, index),
     });
   }
@@ -141,15 +152,26 @@ export function buildStumpDescriptor(input: {
   readonly tick: number;
 }): StumpDescriptor {
   const center = tileToScreen(input.harvest.tx, input.harvest.ty);
-  const spriteKey = stumpAgeAt(input.harvest, input.tick) === "old" ? "stump_old" : "stump_fresh";
+  const stage = forestVisualStage(input.harvest, input.tick);
+  const spriteKey = stage === "fresh" ? "stump_fresh" : "stump_old";
+  const { tx, ty } = input.harvest;
+  const offset = constrainToDiamond({
+    x: jitter(tx, ty, 0, 0, 149) * 10,
+    y: jitter(tx, ty, 0, 0, 163) * 5,
+  });
+  const x = center.sx + offset.x;
+  const y = center.sy + offset.y;
+  const anchor = screenToTile(x, y);
+  const ageScale = stage === "fresh" ? 1 : stage === "old" ? 0.82 : 0.65;
+  const scale = (0.62 + hashUnit(tx, ty, 0, 0, 179) * 0.26) * ageScale;
   return {
     id: `stump:${input.harvest.tx}:${input.harvest.ty}:${input.harvest.harvestedAtTick}`,
-    x: center.sx,
-    y: center.sy,
-    scale: 1,
-    sortY: center.sy + 3,
-    anchorTx: input.harvest.tx,
-    anchorTy: input.harvest.ty,
+    x,
+    y,
+    scale,
+    sortY: y + scale * 3,
+    anchorTx: anchor.tx,
+    anchorTy: anchor.ty,
     spriteKey,
   };
 }
@@ -231,8 +253,8 @@ function treeSpriteKey(
 }
 
 function treeScale(tx: number, ty: number, seed: number, index: number): number {
-  const bucket = Math.min(90, Math.floor(hashUnit(tx, ty, seed, index, 37) * 91));
-  return 0.55 + bucket / 100;
+  const bucket = Math.min(35, Math.floor(hashUnit(tx, ty, seed, index, 37) * 36));
+  return (80 + bucket) / 100;
 }
 
 function treeFlipX(tx: number, ty: number, seed: number, index: number): boolean {

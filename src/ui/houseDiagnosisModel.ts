@@ -1,24 +1,28 @@
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
-import { BALANCE } from "../content/balanceConfig";
+import { houseHasFood, houseIsStarving } from "../population/houseFood";
+import { serviceDiagnosis, type ServiceDiagnosis } from "./serviceDiagnosisModel";
+import type { Building } from "../content/buildingConfig";
+import { historicalHouseAssetMeta } from "../render/historicalHouseAssets";
+import { houseCompoundAssetManifest } from "../render/houseCompoundAssetManifest.generated";
+import { assetUrlForBase } from "../render/worldAssets";
+import { HOUSING_CONFIG } from "../content/housingConfig";
+import { buildingFootprint, houseLotArea } from "../geometry/buildingFootprint";
+import { houseMergeOptions, houseMergeStatus, type HouseMergeOption } from "../engine/houseMerge";
 import type { GameState } from "../engine/engine.types";
+import { houseBuiltLevel, houseCondition, houseConditionLabel, type HouseCondition } from "../population/houseCondition";
 import type { House } from "../population/population.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
-import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { palisadeProtectionForBuilding } from "../geometry/palisadeProtection";
 import {
   missedHouseRouteReason,
   type DistributorRouteHistory,
   type DistributorRouteMissReason,
 } from "./distributorRouteHistory";
-import {
-  marketAccessDiagnosis,
-  type MarketAccessDiagnosis,
-} from "../population/marketAccess";
-import { nearestMarketDistance } from "../population/marketAccess";
+import type { MarketAccessDiagnosis } from "../population/marketAccess";
 import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 
 export type WaterDiagnosis =
+  | { readonly kind: "capacity" | "understaffed" | "unreachable"; readonly label: string }
   | { readonly kind: "supplied"; readonly label: string; readonly distance: number }
   | { readonly kind: "no_well"; readonly label: "우물이 없습니다" }
   | {
@@ -50,19 +54,28 @@ export type DistributorMissedRouteDiagnosis = DistributorRouteMissReason;
 export type HouseDiagnosisModel = {
   readonly buildingId: string;
   readonly name: string;
+  readonly thumbnailUrl: string | null;
   readonly level: number;
+  readonly builtLevel: number;
+  readonly condition: HouseCondition;
+  readonly conditionLabel: string;
   readonly residents: number;
+  readonly capacity: number;
+  readonly footprintLabel: string;
+  readonly mergeOptions: readonly HouseMergeOption[];
+  readonly mergeStatus: string;
   readonly water: WaterDiagnosis;
   readonly bread: BreadDiagnosis;
   readonly population: PopulationDiagnosis;
   readonly protection: ProtectionDiagnosis;
-  readonly market: MarketAccessDiagnosis;
+  readonly market: MarketAccessDiagnosis | { readonly kind: "capacity"; readonly label: string };
+  readonly church: ServiceDiagnosis;
   readonly stoneHouse: StoneHouseDiagnosis;
 };
 
 export type PopulationDiagnosis =
   | { readonly kind: "declining"; readonly label: string; readonly elapsedTicks: number }
-  | { readonly kind: "growth_blocked"; readonly label: "성장 정체 — 물 부족" }
+  | { readonly kind: "growth_blocked"; readonly label: "성장 정체 — 물 부족" | "성장 정체 — 식량 부족" }
   | { readonly kind: "stable"; readonly label: "유지 또는 성장 중" };
 
 export type ProtectionDiagnosis =
@@ -71,44 +84,45 @@ export type ProtectionDiagnosis =
   | { readonly kind: "outside"; readonly label: "성벽 밖 — 3등급 불가"; readonly amenityBonus: 0 };
 
 export type StoneHouseDiagnosis =
-  | { readonly kind: "ready"; readonly label: "석조 연립가옥 가능"; readonly blockers: readonly [] }
+  | { readonly kind: "ready"; readonly label: "도시 대가옥 가능"; readonly blockers: readonly [] }
   | { readonly kind: "blocked"; readonly label: string; readonly blockers: readonly string[] };
 
-const HOUSE_NAMES = ["오두막", "농가", "시민가옥", "장원저택", "석조 연립가옥"] as const;
+const HOUSE_NAMES = ["오두막", "소가옥", "장인가옥", "상인가옥", "도시 대가옥"] as const;
 
 function coordinateKey(coordinate: TileCoordinate): string {
   return `${coordinate.tx},${coordinate.ty}`;
 }
 
-function servingWaterDiagnosis(
-  house: House,
-  home: Building,
-  wells: readonly Building[],
-): WaterDiagnosis {
-  if (wells.length === 0) return { kind: "no_well", label: "우물이 없습니다" };
-  const serviceRadius = BUILDING_CONFIG_BY_KIND.well.serviceRadius;
-  const distances = wells.map((well) => buildingFootprintDistance(home, well));
-  const distance = Math.min(...distances);
-  if (house.hasWater || distance <= serviceRadius) {
-    return { kind: "supplied", label: `우물에서 ${distance}칸`, distance };
+function servingWaterDiagnosis(state: GameState, home: Building): WaterDiagnosis {
+  const result = serviceDiagnosis(state, home, "water");
+  switch (result.kind) {
+    case "served": return { kind: "supplied", label: result.label, distance: result.distance };
+    case "missing": return { kind: "no_well", label: "우물이 없습니다" };
+    case "outside": return { kind: "well_too_far", label: result.label, distance: result.distance, serviceRadius: result.serviceRadius };
+    case "understaffed": case "unreachable": case "capacity": return { kind: result.kind, label: result.label };
   }
-  return {
-    kind: "well_too_far",
-    label: `우물이 너무 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`,
-    distance,
-    serviceRadius,
-  };
+}
+
+function servingMarketDiagnosis(state: GameState, home: Building): HouseDiagnosisModel["market"] {
+  const result = serviceDiagnosis(state, home, "market");
+  switch (result.kind) {
+    case "served": return { ...result, kind: "within" };
+    case "missing": return { kind: "no_market", label: "시장 없음", serviceRadius: result.serviceRadius };
+    case "outside": case "understaffed": case "unreachable": case "capacity": return { ...result, kind: result.kind };
+  }
 }
 
 function populationDiagnosis(state: GameState, house: House): PopulationDiagnosis {
-  const elapsedTicks = Math.max(0, state.tick - house.lastServicedTick);
-  const graceExpired = state.tick > (house.starvationGraceUntilTick ?? 0);
-  if (graceExpired && elapsedTicks > BALANCE.STARVATION_WINDOW) {
+  const elapsedTicks = house.emptyFoodTicks ?? 0;
+  if (houseIsStarving(house, state.tick)) {
     return {
       kind: "declining",
       label: `감소 중 — 식량 없음, ${elapsedTicks}틱 경과`,
       elapsedTicks,
     };
+  }
+  if (house.hasWater && !houseHasFood(house) && state.tick > (house.starvationGraceUntilTick ?? 0)) {
+    return { kind: "growth_blocked", label: "성장 정체 — 식량 부족" };
   }
   return house.hasWater
     ? { kind: "stable", label: "유지 또는 성장 중" }
@@ -127,20 +141,8 @@ function protectionDiagnosis(state: GameState, home: Building): ProtectionDiagno
   }
 }
 
-function hasFreshBread(state: GameState, house: House): boolean {
-  return (
-    house.breadStock > 0 &&
-    state.tick - house.lastServicedTick <= BALANCE.BREAD_HUNGER_WINDOW
-  );
-}
-
-function hasChurchAccess(home: Building, buildings: readonly Building[]): boolean {
-  return buildings.some(
-    (building) =>
-      building.kind === "church" &&
-      buildingFootprintDistance(home, building) <=
-        BUILDING_CONFIG_BY_KIND.church.serviceRadius,
-  );
+function hasFreshBread(_state: GameState, house: House): boolean {
+  return houseHasFood(house);
 }
 
 function stoneHouseDiagnosis(
@@ -149,26 +151,20 @@ function stoneHouseDiagnosis(
   home: Building,
 ): StoneHouseDiagnosis {
   const blockers: string[] = [];
-  if (!house.hasWater) blockers.push("물 공급 필요");
+  if (serviceDiagnosis(state, home, "water").kind !== "served") blockers.push(servingWaterDiagnosis(state, home).label);
   if (!hasFreshBread(state, house)) blockers.push("신선한 빵 필요");
-  const marketDistance = nearestMarketDistance(home, state.buildings);
-  if (
-    marketDistance === null ||
-    marketDistance > BUILDING_CONFIG_BY_KIND.market.serviceRadius
-  ) {
-    blockers.push("시장 범위 8 안 필요");
-  }
-  if (!hasChurchAccess(home, state.buildings)) {
-    blockers.push("교회 범위 12 안 필요");
-  }
+  const market = serviceDiagnosis(state, home, "market");
+  const church = serviceDiagnosis(state, home, "church");
+  if (market.kind !== "served") blockers.push(market.label);
+  if (church.kind !== "served") blockers.push(church.label);
   if (palisadeProtectionForBuilding(home, state.palisade) !== "inside") {
     blockers.push("완성된 성벽 안 필요");
   }
   return blockers.length === 0
-    ? { kind: "ready", label: "석조 연립가옥 가능", blockers: [] }
+    ? { kind: "ready", label: "도시 대가옥 가능", blockers: [] }
     : {
         kind: "blocked",
-        label: `석조 연립가옥 불가 — ${blockers.join(" · ")}`,
+        label: `도시 대가옥 불가 — ${blockers.join(" · ")}`,
         blockers,
       };
 }
@@ -231,20 +227,31 @@ export function houseDiagnosisModel(
   const home = state.buildings.find((candidate) => candidate.id === houseId);
   if (house === undefined || home === undefined || home.kind !== "house") return null;
   const level = Math.max(0, Math.min(HOUSE_NAMES.length - 1, house.level));
+  const builtLevel = houseBuiltLevel(house);
+  const condition = houseCondition(house);
+  const footprint = buildingFootprint(home);
+  const compoundAsset = houseCompoundAssetManifest.find((asset) => asset.level === builtLevel && asset.axis === home.houseLot);
+  const thumbnailUrl = home.houseLot === undefined ? historicalHouseAssetMeta(builtLevel)?.url ?? null
+    : compoundAsset === undefined ? null : assetUrlForBase(compoundAsset.url, import.meta.env?.BASE_URL ?? "/");
   return {
     buildingId: house.buildingId,
-    name: HOUSE_NAMES[level] ?? HOUSE_NAMES[0],
+    thumbnailUrl,
+    name: `${HOUSE_NAMES[builtLevel] ?? HOUSE_NAMES[0]}${home.houseLot === undefined ? "" : " · 합필 주택"}`,
+    capacity: (HOUSING_CONFIG.find((definition) => definition.level === level)?.capacity ?? HOUSING_CONFIG[0].capacity) * houseLotArea(home),
+    footprintLabel: `${footprint.width}×${footprint.height}`,
+    mergeOptions: houseMergeOptions(state, houseId),
+    mergeStatus: houseMergeStatus(state, houseId),
     level,
+    builtLevel,
+    condition,
+    conditionLabel: houseConditionLabel(condition),
     residents: house.residents,
-    water: servingWaterDiagnosis(
-      house,
-      home,
-      state.buildings.filter((building) => building.kind === "well"),
-    ),
+    water: servingWaterDiagnosis(state, home),
     bread: servingBreadDiagnosis(state, house, home, history),
     population: populationDiagnosis(state, house),
     protection: protectionDiagnosis(state, home),
-    market: marketAccessDiagnosis(home, state.buildings),
+    market: servingMarketDiagnosis(state, home),
+    church: serviceDiagnosis(state, home, "church"),
     stoneHouse: stoneHouseDiagnosis(state, house, home),
   };
 }

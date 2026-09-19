@@ -4,6 +4,7 @@ import { placeDiagnosticCard } from "./DiagnosticCard";
 import {
   resolveBuildingPlacementAttempt,
   resolveRoadRemovalAttempt,
+  resolveRoadPlacementAttempt,
   type PlacementAttemptOutcome,
 } from "./interactions";
 import type { Point } from "./camera";
@@ -45,7 +46,15 @@ export function resolveCanvasClick(input: ClickResolutionInput): ClickResolution
   }
   if (input.selectedTool === "road") {
     if (getTile(input.state, input.hover)?.hasRoad !== true) {
-      return { kind: "ignored", clearSuppression: false };
+      return {
+        kind: "placement",
+        attempt: resolveRoadPlacementAttempt({
+          state: input.state,
+          start: input.hover,
+          destination: input.hover,
+          nowMs: input.nowMs,
+        }),
+      };
     }
     return {
       kind: "placement",

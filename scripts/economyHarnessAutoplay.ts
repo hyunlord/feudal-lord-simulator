@@ -57,13 +57,15 @@ export function createAutoplayTraceDriver(input: {
   readonly proclamationGateTick?: number;
 } = { id: "autoplay", source: "direct" }): AutoplayTraceDriver {
   let lastActionTick = -AUTOPLAY_TICK_CADENCE;
+  let lastDecisionTick = -AUTOPLAY_TICK_CADENCE;
   const appliedActions: AutoplayHarnessAction[] = [];
   const snapshots: AutoplayHarnessSnapshot[] = [];
   return {
     appliedActions,
     snapshots,
     apply(state) {
-      if (!canRunAutoplayAtTick({ enabled: true, currentTick: state.tick, lastActionTick })) return state;
+      if (!canRunAutoplayAtTick({ enabled: true, currentTick: state.tick, lastActionTick: Math.max(lastActionTick, lastDecisionTick) })) return state;
+      lastDecisionTick = state.tick;
       const advisorAction = decideNextAction(state);
       if (
         input.proclamationGateTick !== undefined &&

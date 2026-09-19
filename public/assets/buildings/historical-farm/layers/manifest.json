@@ -1,0 +1,49 @@
+{
+  "historical_profile": "S_England_1300_1450_v1",
+  "art_bible_version": "AB_2026-09-19_v1",
+  "source_directory": "/Users/rexxa/github/feudal-lord-simulator/output/layered-farm-v1/assets",
+  "assets": [
+    {
+      "file": "crop_seedling-v1.png",
+      "sha256": "bd8531bf8860099a97a400a8db3fc69f7c3dbe4e07ebbe828901041190f3c00a",
+      "source_unchanged": true,
+      "source_resolution": [
+        1254,
+        1254
+      ],
+      "record": "/Users/rexxa/github/feudal-lord-simulator/output/layered-farm-v1/assets/crop_seedling-v1-record.json"
+    },
+    {
+      "file": "crop_growing-v1.png",
+      "sha256": "95b63bd4dcdf367ccb1b785a5627c95d807b60352b6d1fe0fa54c6ae8c066377",
+      "source_unchanged": true,
+      "source_resolution": [
+        1254,
+        1254
+      ],
+      "record": "/Users/rexxa/github/feudal-lord-simulator/output/layered-farm-v1/assets/crop_growing-v1-record.json"
+    },
+    {
+      "file": "crop_ripe-v1.png",
+      "sha256": "cd9d1e29526d7e4696f63447a9333b40659213509cf5f79f7e70781f99938dec",
+      "source_unchanged": true,
+      "source_resolution": [
+        1254,
+        1254
+      ],
+      "record": "/Users/rexxa/github/feudal-lord-simulator/output/layered-farm-v1/assets/crop_ripe-v1-record.json"
+    },
+    {
+      "file": "soil_loam-v1.png",
+      "sha256": "a800dd703cb04df210e44e02545eb2f549b62680390b2076ffc6c4f79a14c928",
+      "source_unchanged": true,
+      "source_resolution": [
+        1254,
+        1254
+      ],
+      "source_directory": "/Users/rexxa/github/feudal-lord-simulator/output/farm-polish-v3/assets",
+      "record": "/Users/rexxa/github/feudal-lord-simulator/output/farm-polish-v3/assets/soil_loam-v1-record.json"
+    }
+  ],
+  "runtime_cache": "Three64px-high cropped crop buffers and one128px soil material; at most64 crop canopies at3x resolution with current-frame pinning and direct overflow drawing. Original PNGs unchanged."
+}

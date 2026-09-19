@@ -20,7 +20,7 @@ export function BuildingInspector({
   return (
     <aside
       className="building-inspector"
-      style={{ left: hover.x, top: hover.y }}
+      style={{ left: `clamp(12px, ${hover.x}px, calc(100% - 274px))`, bottom: "calc(var(--command-height) + 16px)" }}
       aria-label={`${model.name} 정보`}
     >
       <strong>{model.name}</strong>
