@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { drawAnimatedMill } from "./animatedMill";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import { productionOperation } from "../economy/production";
@@ -40,7 +41,7 @@ export function preloadHistoricalFacilityAssets(): Promise<void> {
       const image = new Image();
       image.onload = () => {
         try {
-          if (image.naturalWidth === asset.meta.width && image.naturalHeight === asset.meta.height) {
+          if (registerRuntimeAsset(image, asset.url, asset.meta.width, asset.meta.height)) {
             asset.image = image;
             asset.status = "ready";
             asset.raster = rasterizeWorldSprite(image, asset.meta.source,

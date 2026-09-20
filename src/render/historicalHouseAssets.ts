@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import type { Building } from "../content/buildingConfig";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
@@ -33,7 +34,7 @@ export function preloadHistoricalHouseAssets(): Promise<void> {
       const image = new Image();
       image.onload = () => {
         try {
-          if (image.naturalWidth === record.meta.width && image.naturalHeight === record.meta.height) {
+          if (registerRuntimeAsset(image, record.meta.url, record.meta.width, record.meta.height)) {
             record.image = image;
             record.status = "ready";
             const height = TILE_W * 0.88 * record.meta.alphaBounds.height / record.meta.alphaBounds.width;

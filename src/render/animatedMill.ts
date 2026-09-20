@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
@@ -38,7 +39,7 @@ export function preloadMillAssets(): Promise<void> {
     try {
       const image = new Image();
       image.onload = () => {
-        part.status = image.naturalWidth === part.width && image.naturalHeight === part.height ? 'ready' : 'missing';
+        part.status = registerRuntimeAsset(image, part.url, part.width, part.height) ? 'ready' : 'missing';
         part.image = part.status === 'ready' ? image : null;
         try {
           if (part.image !== null) part.raster = rasterizeWorldSprite(image, { x: 0, y: 0, width: part.width, height: part.height }, part.id === 'body' ? 204 : 144);

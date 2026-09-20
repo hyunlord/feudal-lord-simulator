@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import type { Building } from "../content/buildingConfig";
 import { drawFarmSoilTexture, farmSoilTextureStatus, preloadFarmSoilTexture } from "./farmSoilTexture";
 import { assetUrlForBase } from "./worldAssets";
@@ -47,7 +48,7 @@ export function preloadFarmAssets(): Promise<void> {
     asset.status = "loading";
     const image = new Image();
     image.onload = () => {
-      if (image.naturalWidth === asset.width && image.naturalHeight === asset.height) {
+      if (registerRuntimeAsset(image, asset.url, asset.width, asset.height)) {
         asset.image = image;
         if (cropAssets.includes(asset) && asset.stage !== "worked") {
           asset.buffer = rasterizeWorldSprite(image, CROP_REGISTRATION[asset.stage].source, 64);

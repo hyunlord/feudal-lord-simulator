@@ -1,3 +1,4 @@
+import { runtimeAssetCrop } from "./runtimeAssetCoordinates";
 import { snapPointToDevicePixel, type CanvasTransform } from "./style";
 import type { CameraState } from "./camera";
 import { worldToCanvas } from "./camera";
@@ -136,7 +137,8 @@ export function drawCroppedWorldSprite(
   context.save();
   try {
     context.imageSmoothingEnabled = smoothing;
-    context.drawImage(image, source.x, source.y, source.width, source.height,
+    const crop = runtimeAssetCrop(image, source);
+    context.drawImage(image, crop.x, crop.y, crop.width, crop.height,
       origin.x, origin.y, width, height);
   } finally {
     context.restore();

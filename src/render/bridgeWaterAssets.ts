@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from "./worldAssets";
 
 export const bridgeWaterManifest = [
@@ -24,7 +25,7 @@ export function preloadBridgeWaterAssets():Promise<void>{
       const image=new Image();
       image.onload=()=>{
         const meta=bridgeWaterManifest.find(candidate=>candidate.id===asset.id);
-        if(meta!==undefined&&image.naturalWidth===meta.width&&image.naturalHeight===meta.height){asset.image=image;asset.status="ready";}
+        if(meta!==undefined&&registerRuntimeAsset(image, asset.url, meta.width, meta.height)){asset.image=image;asset.status="ready";}
         else asset.status="missing";
         resolve();
       };

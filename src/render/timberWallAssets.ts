@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from './worldAssets';
 let image: HTMLImageElement|null = null;
 let pending: Promise<void>|null = null;
@@ -10,7 +11,7 @@ export function preloadTimberWallAssets(): Promise<void> {
     try {
       const candidate = new Image();
       candidate.onload = () => {
-        status = candidate.naturalWidth === 1254 && candidate.naturalHeight === 1254 ? 'ready' : 'missing';
+        status = registerRuntimeAsset(candidate, 'assets/buildings/historical-gate/palisade_straight_nw_se.png', 1254, 1254) ? 'ready' : 'missing';
         image = status === 'ready' ? candidate : null;
         resolve();
       };

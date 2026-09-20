@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import type { ConstructionSite } from '../economy/construction';
 import { constructionSiteFootprint } from '../economy/construction';
@@ -23,7 +24,7 @@ export function preloadConstructionArtAssets(): Promise<void> {
     try {
       const image = new Image();
       image.onload = () => {
-        record.status = image.naturalWidth === 1774 && image.naturalHeight === 887 ? 'ready' : 'missing';
+        record.status = registerRuntimeAsset(image, record.url, 1774, 887) ? 'ready' : 'missing';
         if (record.status === 'ready') record.image = image;
         resolve();
       };

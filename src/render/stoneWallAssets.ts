@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { assetUrlForBase } from "./worldAssets";
 import { STONE_WALL_SOURCES, type StoneWallAxis } from "./stoneWallGeometry";
@@ -16,7 +17,7 @@ export function preloadStoneWallAssets(): Promise<void> {
       const image = new Image();
       image.onload = () => {
         try {
-          asset.status = image.naturalWidth === 1254 && image.naturalHeight === 1254 ? "ready" : "missing";
+          asset.status = registerRuntimeAsset(image, asset.url, 1254, 1254) ? "ready" : "missing";
           if (asset.status === "ready") {
             asset.image = image;
             if (asset.axis === "descending") material = rasterizeWorldSprite(image, { x: 360, y: 570, width: 60, height: 180 }, 180);

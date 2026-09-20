@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { runtimeActorManifest } from "./runtimeActorManifest.generated";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
 import { assetUrlForBase } from "./worldAssets";
@@ -44,7 +45,7 @@ export function createRuntimeActorLoader(createImage: () => HTMLImageElement | n
           if (image === null) { asset.status = "missing"; resolve(); return; }
           image.onerror = () => { asset.status = "missing"; resolve(); };
           image.onload = () => {
-            if (image.naturalWidth !== asset.meta.width || image.naturalHeight !== asset.meta.height) {
+            if (!registerRuntimeAsset(image, asset.url, asset.meta.width, asset.meta.height)) {
               asset.status = "missing";
               resolve();
               return;

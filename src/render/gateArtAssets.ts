@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from './worldAssets';
 import type { StoneWallAxis } from './stoneWallGeometry';
 export const GATE_PARTS = ['stone_arch', 'timber_frame', 'doors_open', 'doors_closed'] as const;
@@ -14,7 +15,7 @@ export function preloadGateAssets(): Promise<void> {
     try {
       const image = new Image();
       image.onload = () => {
-        asset.status = image.naturalWidth === 1254 && image.naturalHeight === 1254 ? 'ready' : 'missing';
+        asset.status = registerRuntimeAsset(image, asset.url, 1254, 1254) ? 'ready' : 'missing';
         asset.image = asset.status === 'ready' ? image : null;
         resolve();
       };

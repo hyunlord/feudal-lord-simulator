@@ -1,3 +1,4 @@
+import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { assetUrlForBase } from "./worldAssets";
@@ -28,7 +29,7 @@ export function preloadHouseCompoundAssets(): Promise<void> {
       const image = new Image();
       image.onload = () => {
         try {
-          if (image.naturalWidth === record.meta.width && image.naturalHeight === record.meta.height) {
+          if (registerRuntimeAsset(image, record.meta.url, record.meta.width, record.meta.height)) {
             record.image = image; record.status = "ready";
             const height = TILE_W * 1.5 * 0.88 * record.meta.alphaBounds.height / record.meta.alphaBounds.width;
             record.raster = rasterizeWorldSprite(image, record.meta.alphaBounds, Math.ceil(height * 2));
