@@ -1,3 +1,4 @@
+import { preloadTownLandscapeAssets } from "./townLandscapeAssets";
 import { preloadWorldAssets } from "./worldAssets";
 import { preloadHistoricalHouseAssets } from "./historicalHouseAssets";
 import { preloadHistoricalFacilityAssets } from "./historicalFacilityAssets";
@@ -16,6 +17,6 @@ export async function preloadGameArt(): Promise<void> {
     preloadWorldAssets(), preloadHistoricalHouseAssets(), preloadHistoricalFacilityAssets(),
     preloadHouseCompoundAssets(), preloadFarmAssets(), preloadStoneWallAssets(),
     preloadRuntimeActorAssets(), preloadMillAssets(), preloadConstructionArtAssets(),
-    preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(),
+    preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(), preloadTownLandscapeAssets(),
   ]);
 }

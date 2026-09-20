@@ -1,3 +1,4 @@
+import { drawTownLandscape } from "./townLandscapeAssets";
 import { drawBridgeDeck } from "./drawBridges";
 import { drawHistoricalWater } from "./drawWater";
 import { buildingFootprint } from "../geometry/buildingFootprint";
@@ -65,6 +66,7 @@ export function drawTerrain(
     if (input.zoom > 0.7) drawGroundDecalDetail(context, tile, input.state.seed);
     drawTerrainTransitions(context, input.state, tile, input.zoom, input.terrainPatterns);
   }
+  drawTownLandscape(context, input.state, input.tiles);
   for (const item of input.objectRenderItems ?? []) {
     if (item.kind !== "building") continue;
     if (supportsBuildingFrontage(item.building.kind) || item.building.houseLot !== undefined) {

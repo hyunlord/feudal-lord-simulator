@@ -1,3 +1,5 @@
+import { townLandscapeAssetReady } from "./townLandscapeAssets";
+import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
 import { useEffect } from "react";
 
 import { getTile } from "../world/grid";
@@ -86,6 +88,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     const updateHover = (event: MouseEvent) => {
       updateCameraEdgePoint(cameraInput, canvasPoint(event));
       refs.hoverRef.current = pointerTile(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
+      const hoveredGround = refs.hoverRef.current === null ? null : getTile(stateRef.current, refs.hoverRef.current);
+      const landscape = hoveredGround === null ? null : townLandscapeAt(stateRef.current, hoveredGround);
+      canvas.title = selectedToolRef.current === null && landscape !== null && townLandscapeAssetReady(landscape) ? TOWN_LANDSCAPE_TOOLTIP : "";
       const buildingId = refs.hoverRef.current === null
         ? null : getTile(stateRef.current, refs.hoverRef.current)?.buildingId ?? null;
       if (buildingId === null) {
@@ -224,7 +229,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (event.target instanceof Element && event.target.closest(".diagnostic-card") !== null) return;
       if (event.code === "Space" || cameraKey) event.preventDefault();
     };
-    const leaveCanvas = () => { updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
+    const leaveCanvas = () => { canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {
       resetCameraInputState(cameraInput);
       refs.spacePressed.current = false;
