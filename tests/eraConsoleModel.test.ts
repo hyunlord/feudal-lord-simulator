@@ -8,6 +8,9 @@ import type { Building } from "../src/content/buildingConfig";
 import { createPalisadeConstructionSite } from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 import { EraConsole, buildEraConsoleModel } from "../src/ui/EraConsole";
+import { palisadeFootprintsForState } from "../src/engine/palisadeFootprints";
+import { initialPalisadeDraft } from "../src/render/palisadeDraftInteraction";
+import { computePalisadeProposal, validatePalisadeCandidate } from "../src/world/palisadeGeometry";
 
 const APP_SOURCE = new URL("../src/App.tsx", import.meta.url);
 const CANVAS_RUNTIME_SOURCE = new URL("../src/render/useGameCanvasRuntime.ts", import.meta.url);
@@ -217,3 +220,102 @@ test("era console source uses presentation-only draft state and canvas runtime h
   assert.match(runtimeSource, /onPalisadeDraftCancel/);
   assert.match(runtimeSource, /event\.code === "Escape"/);
 });
+
+test("hamlet keeps proposal failure details even when all requirements hide the proposal", () => {
+  // Given
+  const current = state({ population: 0, treasuryTimber: 0, buildings: [] });
+
+  // When
+  const model = buildEraConsoleModel({ state: current, draft: null });
+
+  // Then
+  assert.deepEqual(model.proposal, {
+    visible: false,
+    label: "목책 제안 불가",
+    failure: "완성된 건물이 없어 둘레를 잡을 수 없습니다",
+  });
+  assert.equal(model.action.reason, "인구 0/60");
+});
+
+test("hamlet with met requirements still rejects invalid proposal geometry", () => {
+  // Given
+  const current = state({ tiles: state().tiles.map((entry) => ({ ...entry, terrain: "water" })) });
+
+  // When
+  const model = buildEraConsoleModel({ state: current, draft: null });
+
+  // Then
+  assert.equal(model.requirements.every((requirement) => requirement.met), true);
+  assert.equal(model.action.enabled, false);
+  assert.equal(model.action.reason, "유효한 목책 제안을 만들 수 없습니다");
+  assert.equal(model.proposal.visible, true);
+  assert.equal(model.proposal.failure, "목책선이 물을 가로지릅니다");
+});
+
+test("hamlet draft retains selected run, failure, confirmation and cancellation controls", () => {
+  // Given
+  const current = state();
+  const footprints = palisadeFootprintsForState(current);
+  const proposal = computePalisadeProposal(current, footprints);
+  assert.equal(proposal.ok, true);
+  if (!proposal.ok) return;
+  const validated = validatePalisadeCandidate(current, proposal.path, footprints);
+  assert.equal(validated.ok, true);
+  if (!validated.ok) return;
+  const draft = { ...initialPalisadeDraft(validated.candidate), selectedRunIndex: 0, failureReason: "water_crossing" as const };
+
+  // When
+  const model = buildEraConsoleModel({ state: current, draft });
+  const markup = renderToStaticMarkup(createElement(EraConsole, {
+    model,
+    onBeginProposal: () => undefined,
+    onConfirmProposal: () => undefined,
+    onCancelProposal: () => undefined,
+  }));
+
+  // Then
+  assert.equal(model.action.label, "목책 시대 선포 확정");
+  assert.equal(model.draft.editing, true);
+  assert.match(model.draft.selectedRunLabel ?? "", /^선택 구간 1 · \d+칸$/);
+  assert.equal(model.draft.failure, "목책선이 물을 가로지릅니다");
+  assert.match(markup, /제안 취소/);
+  assert.equal(model.proposal.visible, true);
+});
+
+for (const era of ["palisade", "stone_town"] as const) {
+  test(`${era} does not read terrain for an unused initial wall proposal`, () => {
+    // Given: era requirements and wall diagnostics do not need proposal terrain.
+    const current = state({ era });
+    Object.defineProperty(current, "tiles", {
+      get() { assert.fail("later-era console read proposal-only terrain"); },
+    });
+
+    // When
+    const model = buildEraConsoleModel({ state: current, draft: null });
+
+    // Then: an absent proposal has no hidden success or failure claim.
+    assert.deepEqual(model.proposal, { visible: false, label: "", failure: null });
+    assert.equal(model.action.targetEra, "stone_town");
+  });
+
+  test(`${era} keeps proposal text out of rendered controls`, () => {
+    // Given
+    const current = state({ era });
+
+    // When
+    const model = buildEraConsoleModel({ state: current, draft: null });
+    const markup = renderToStaticMarkup(createElement(EraConsole, {
+      model,
+      onBeginProposal: () => undefined,
+      onConfirmProposal: () => undefined,
+      onCancelProposal: () => undefined,
+    }));
+
+    // Then
+    assert.equal(model.proposal.visible, false);
+    assert.equal(model.action.enabled, false);
+    assert.equal(model.action.reason, era === "palisade" ? "인구 60/140" : "이미 석조 도시가 선포되었습니다");
+    assert.doesNotMatch(markup, /era-proposal|목책 제안 불가|둘레 \d+칸/);
+    assert.equal(model.action.targetEra, "stone_town");
+  });
+}

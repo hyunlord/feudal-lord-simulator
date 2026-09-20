@@ -51,13 +51,15 @@ export function buildEraConsoleModel(input: {
   readonly draft: PalisadeDraftState | null;
 }): EraConsoleModel {
   const requirements = evaluateEraRequirements(input.state);
-  const proposal = proposalSummaryForState(input.state, palisadeFootprintsForState(input.state));
+  const proposal = input.state.era === "hamlet"
+    ? proposalSummaryForState(input.state, palisadeFootprintsForState(input.state))
+    : null;
   const firstUnmet = requirements.find((requirement) => !requirement.met) ?? null;
   const proposalVisible =
     input.state.era === "hamlet" && (requirements.some((requirement) => requirement.met) || input.draft !== null);
   const targetEra = input.state.era === "hamlet" ? "palisade" : "stone_town";
   const canBegin = input.state.era === "hamlet"
-    ? firstUnmet === null && proposal.ok
+    ? firstUnmet === null && proposal?.ok === true
     : canProclaimStoneTownEra(input.state);
   return {
     currentEraLabel: CURRENT_ERA_LABELS[input.state.era],
@@ -66,13 +68,13 @@ export function buildEraConsoleModel(input: {
     action: {
       enabled: canBegin,
       label: actionLabel({ state: input.state, draft: input.draft }),
-      reason: actionReason({ firstUnmet, proposalOk: proposal.ok, state: input.state }),
+      reason: actionReason({ firstUnmet, proposalOk: proposal?.ok === true, state: input.state }),
       targetEra,
     },
     proposal: {
       visible: proposalVisible,
-      label: proposal.ok ? proposal.label : "목책 제안 불가",
-      failure: proposal.ok ? null : proposalFailureLabel(proposal.reason),
+      label: proposal === null ? "" : proposal.ok ? proposal.label : "목책 제안 불가",
+      failure: proposal === null || proposal.ok ? null : proposalFailureLabel(proposal.reason),
     },
     draft: {
       editing: input.draft !== null,
