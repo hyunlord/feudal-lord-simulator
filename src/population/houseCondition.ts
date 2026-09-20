@@ -8,8 +8,9 @@ export function houseBuiltLevel(house: House): number {
 
 export function houseCondition(house: House): HouseCondition {
   const lostLevels = houseBuiltLevel(house) - house.level;
-  if (lostLevels <= 0) return "maintained";
   if (house.residents <= 0) return "vacant";
+  if (lostLevels >= 2 || house.unmetRequirementTicks >= 1200) return "neglected";
+  if (lostLevels <= 0) return "maintained";
   return lostLevels === 1 ? "strained" : "neglected";
 }
 

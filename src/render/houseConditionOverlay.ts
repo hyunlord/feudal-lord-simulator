@@ -1,3 +1,4 @@
+import { houseConditionArt } from "./houseConditionArt";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import type { CanvasTransform } from "./style";
 export { preloadConstructionArtAssets } from "./constructionArtAssets";
@@ -40,6 +41,18 @@ export function drawHouseCondition(
 ): void {
   if (building.kind !== "house" || condition === "maintained") return;
   const frame = conditionFrame(building, builtLevel);
+  if (frame !== null) {
+    const artwork = houseConditionArt(builtLevel, building.houseLot ?? "single", condition);
+    if (artwork?.image !== null && artwork?.image !== undefined) {
+      const { meta, rect } = frame;
+      const sx = artwork.meta.width / meta.width;
+      const sy = artwork.meta.height / meta.height;
+      const bounds = meta.alphaBounds;
+      drawCroppedWorldSprite(context, artwork.image, { x: bounds.x * sx, y: bounds.y * sy,
+        width: bounds.width * sx, height: bounds.height * sy }, rect, false, true);
+      return;
+    }
+  }
   const marks = (building.houseLot === undefined ? SINGLE : building.houseLot === "horizontal" ? HORIZONTAL : VERTICAL)[builtLevel];
   if (frame === null || marks === undefined) return;
   const { meta, rect } = frame;

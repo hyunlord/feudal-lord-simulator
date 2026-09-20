@@ -35,10 +35,10 @@ test("lost services preserve the built form through grace, all declines and reco
   assert.equal(houseCondition(restored), "maintained");
 });
 
-test("vacancy requires a declined building with no residents, not a new empty cottage", () => {
-  assert.equal(houseCondition({ ...home, level: 0, residents: 0 }), "maintained");
+test("vacancy takes priority even before a building declines", () => {
+  assert.equal(houseCondition({ ...home, level: 0, residents: 0 }), "vacant");
   assert.equal(houseCondition({ ...home, level: 2, builtLevel: 4, residents: 0 }), "vacant");
-  assert.equal(houseCondition({ ...home, level: 4, builtLevel: 4, residents: 0 }), "maintained");
+  assert.equal(houseCondition({ ...home, level: 4, builtLevel: 4, residents: 0 }), "vacant");
 });
 
 test("legacy housing initializes built level before the first downgrade and visual state keeps needs separate", () => {
@@ -60,4 +60,11 @@ test("deterministic state hashes record divergent built history but normalize le
     assert.equal(hash(original), hash(maintained));
     assert.notEqual(hash(maintained), hash(declined));
   }
+});
+
+ test("long unmet requirements need repairs at the 1200 tick boundary", () => {
+  assert.equal(houseCondition({ ...home, unmetRequirementTicks: 1199 }), "maintained");
+  assert.equal(houseCondition({ ...home, unmetRequirementTicks: 1200 }), "neglected");
+  assert.equal(houseCondition({ ...home, level: 3, builtLevel: 4, unmetRequirementTicks: 1200 }), "neglected");
+  assert.equal(houseCondition({ ...home, residents: 0, unmetRequirementTicks: 1200 }), "vacant");
 });
