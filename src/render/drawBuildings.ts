@@ -1,3 +1,4 @@
+import { outlinesOccludingBuilding } from "./selectionOcclusion";
 import { drawHouseCompoundSprite } from "./houseCompoundAssets";
 import { drawHistoricalHouse } from "./historicalHouseAssets";
 import { drawHistoricalFacility } from "./historicalFacilityAssets";
@@ -42,6 +43,7 @@ type ObjectRenderInput = {
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
   readonly hoveredTile?: TileCoordinate | null;
+  readonly selectionMode?: boolean;
   readonly viewMode?: ObjectRenderViewMode;
   readonly farmSoilDrawn?: boolean;
 };
@@ -103,6 +105,13 @@ function drawBuilding(
   building: Building,
   spriteOptions: WorldSpriteOptions,
 ): void {
+  if (input.hoveredTile !== null && input.hoveredTile !== undefined && outlinesOccludingBuilding({
+    state: input.state, building, houseLevel: buildBuildingVisualState(building, input.state.houses).houseLevel,
+    hoveredTile: input.hoveredTile, selectionMode: input.selectionMode ?? false, camera: input.camera, dpr: input.dpr,
+  })) {
+    drawSelectionOutline(context, building, input.zoom);
+    return;
+  }
   if ((input.viewMode ?? "normal") === "outlines") {
     if (building.kind === "house" && building.houseLot !== undefined) {
       const level = buildBuildingVisualState(building, input.state.houses).houseLevel;
@@ -226,4 +235,21 @@ function buildingCenter(building: Building): Point {
   const config = buildingFootprint(building);
   const center = tileToScreen(building.tx + (config.width - 1) / 2, building.ty + (config.height - 1) / 2);
   return { x: center.sx, y: center.sy };
+}
+
+function drawSelectionOutline(context: CanvasRenderingContext2D, building: Building, zoom: number): void {
+  const size = buildingFootprint(building);
+  const points = [[building.tx - 0.5, building.ty - 0.5], [building.tx + size.width - 0.5, building.ty - 0.5],
+    [building.tx + size.width - 0.5, building.ty + size.height - 0.5], [building.tx - 0.5, building.ty + size.height - 0.5]];
+  context.save();
+  context.beginPath();
+  points.forEach(([tx, ty], index) => {
+    if (tx === undefined || ty === undefined) return;
+    const point = tileToScreen(tx, ty);
+    if (index === 0) context.moveTo(point.sx, point.sy); else context.lineTo(point.sx, point.sy);
+  });
+  context.closePath();
+  applyInkOutline(context, zoom);
+  context.stroke();
+  context.restore();
 }

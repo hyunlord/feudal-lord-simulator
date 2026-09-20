@@ -28,6 +28,7 @@ type DrawObjectRenderItemsInput = {
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly nowMs?: number;
   readonly hoveredTile?: TileCoordinate | null;
+  readonly selectionMode?: boolean;
 };
 
 export function drawObjectRenderItems(
@@ -99,6 +100,7 @@ export function drawObjectRenderItems(
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
+      selectionMode: input.selectionMode ?? false,
       viewMode,
       farmSoilDrawn: true,
     });
@@ -116,6 +118,7 @@ export function drawObjectRenderItems(
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
+      selectionMode: input.selectionMode ?? false,
       viewMode,
       farmSoilDrawn: true,
     });

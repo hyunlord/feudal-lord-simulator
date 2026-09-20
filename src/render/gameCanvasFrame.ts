@@ -68,6 +68,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.completionTracker,
     hoveredTile: input.hoveredTile,
+    selectionMode: input.selectedTool === null && input.palisadeDraft == null,
   });
   input.context.restore();
 }

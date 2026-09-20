@@ -68,6 +68,7 @@ export type RenderFrameInput = {
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly completionTracker?: ConstructionCompletionTracker;
   readonly hoveredTile?: TileCoordinate | null;
+  readonly selectionMode?: boolean;
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -115,6 +116,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         houseMaterialWave: input.houseMaterialWave ?? null,
         nowMs: input.nowMs ?? 0,
         hoveredTile: input.hoveredTile ?? null,
+      selectionMode: input.selectionMode ?? false,
       }),
     overhang: () =>
       drawConstructionCompletionEffects(input.context, {

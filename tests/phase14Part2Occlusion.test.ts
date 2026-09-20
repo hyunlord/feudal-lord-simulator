@@ -372,3 +372,18 @@ test("Given the console renders view controls When outlines are available Then a
   assert.match(markup, />O<\/span>/);
 }
 );
+
+test("selection mode draws only a footprint outline for an occluding foreground building", () => {
+  const home = building("front", 1, 1);
+  const context = loggedContext();
+  drawObjectRenderItems(context, {
+    state: state({ buildings: [home] }), tiles: [], range, zoom: 1,
+    camera: { zoom: 1, panX: 0, panY: 0 }, dpr: 1,
+    viewport: { width: 600, height: 400 }, hoveredTile: { tx: 0, ty: 1 }, selectionMode: true,
+    objectRenderItems: [{ kind: "building", id: home.id, building: home, depth: 2, anchorTx: 1 }],
+  });
+  assert.equal(context.calls.includes("drawImage"), false);
+  assert.equal(context.calls.includes("fill"), false);
+  assert.equal(context.calls.includes("stroke"), true);
+  assert.equal(context.calls.some(call => call.startsWith("globalAlpha:")), false);
+});
