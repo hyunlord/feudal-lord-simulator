@@ -13,6 +13,7 @@ export interface SettlementProgress {
 export interface SettlementMetrics {
   readonly population: number;
   readonly occupiedHouses: number;
+  readonly occupiedL4Lots: number;
   readonly suppliedHouses: number;
   readonly suppliedPercent: number;
   readonly fedHouses: number;

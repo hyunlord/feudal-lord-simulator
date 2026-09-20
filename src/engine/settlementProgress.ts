@@ -18,7 +18,7 @@ export function updateSettlementProgress(state: GameState): GameState {
   const selfSufficientTicks = supplied && metrics.population >= CONFIG.selfSufficientPopulation
     ? Math.min(CONFIG.selfSufficientHoldTicks, (consecutive ? previous.selfSufficientTicks : 0) + 1) : 0;
   const palisadeReady = metrics.population >= CONFIG.palisadePopulation && state.era !== "hamlet" && metrics.completedWall;
-  const prosperityReady = supplied && metrics.population >= CONFIG.prosperityPopulation && state.era === "stone_town" && metrics.completedStoneWall;
+  const prosperityReady = metrics.occupiedL4Lots >= CONFIG.prosperityOccupiedL4Lots && supplied && metrics.population >= CONFIG.prosperityPopulation && state.era === "stone_town" && metrics.completedStoneWall;
   const prosperityTicks = prosperityReady ? Math.min(CONFIG.prosperityHoldTicks, (consecutive ? previous.prosperityTicks : 0) + 1) : 0;
   const selfSufficient = previous.milestones.selfSufficient ?? (selfSufficientTicks >= CONFIG.selfSufficientHoldTicks ? state.tick : null);
   const palisade = previous.milestones.palisade ?? (selfSufficient !== null && palisadeReady ? state.tick : null);

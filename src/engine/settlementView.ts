@@ -25,8 +25,8 @@ export function getSettlementView(state: GameState): SettlementView {
     };
   } else if (progress.milestones.prosperity === null) {
     currentGoal = {
-      id: "prosperity", title: "번영하는 성곽 도시", description: "석벽 시대에 전체 석벽을 완공하고 인구 140명과 90% 물·빵 공급을 1,200틱 유지하세요.",
-      criteria: [criterion("population", "인구", [metrics.population, CONFIG.prosperityPopulation]), supplied, criterion("era", "석벽 시대", [Number(state.era === "stone_town"), 1]), criterion("stoneWall", "석벽 전체 완공", [Number(metrics.completedStoneWall), 1])],
+      id: "prosperity", title: "번영하는 성곽 도시", description: "석벽 시대에 전체 석벽을 완공하고 인구 140명, 입주한 L4 주거 4필지와 90% 물·빵 공급을 1,200틱 유지하세요.",
+      criteria: [criterion("population", "인구", [metrics.population, CONFIG.prosperityPopulation]), criterion("occupiedL4Lots", "입주한 L4 주거 (필지)", [metrics.occupiedL4Lots, CONFIG.prosperityOccupiedL4Lots]), supplied, criterion("era", "석벽 시대", [Number(state.era === "stone_town"), 1]), criterion("stoneWall", "석벽 전체 완공", [Number(metrics.completedStoneWall), 1])],
       holdTicks: progress.prosperityTicks, requiredHoldTicks: CONFIG.prosperityHoldTicks,
     };
   }

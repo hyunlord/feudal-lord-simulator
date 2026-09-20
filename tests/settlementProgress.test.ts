@@ -53,8 +53,17 @@ test("era proclamation does not count as completed wall; earned wall goal persis
   assert.equal(advance({ ...finished, palisade: null, population: 1 }, 1).settlement?.milestones.palisade, 602);
 });
 
+function withL4Homes(input: GameState): GameState {
+  const sample = input.houses[0];
+  assert.ok(sample);
+  return { ...input,
+    houses: Array.from({ length: 4 }, (_, index) => ({ ...sample, buildingId: `urban-${index}`, level: 4, residents: 32 })),
+    buildings: Array.from({ length: 4 }, (_, index) => ({ id: `urban-${index}`, kind: "house", tx: index, ty: 0, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 })),
+  };
+}
+
 test("prosperity waits for actual stone replacement and 1200 uninterrupted ticks", () => {
-  const base = withWall(advance(state(), 600));
+  const base = withL4Homes(withWall(advance(state(), 600)));
   assert.ok(base.palisade);
   const replacing = advance({ ...base, era: "stone_town", population: 140, palisade: { ...base.palisade, segments: base.palisade.segments.map(segment => ({ ...segment, replacementConstructionSiteId: "replacement" })) } }, 1200);
   assert.equal(replacing.settlement?.prosperityTicks, 0);
@@ -111,8 +120,9 @@ test("an observation gap restarts continuous hold instead of completing it", () 
 });
 
 test("prosperity hold resets when a single required service is lost", () => {
-  const ready = { ...withWall(advance(state(), 600), "stone"), era: "stone_town" as const, population: 140 };
+  const ready = { ...withL4Homes(withWall(advance(state(), 600), "stone")), era: "stone_town" as const, population: 140 };
   const almost = advance(ready, 1199);
+  assert.equal(almost.settlement?.prosperityTicks, 1199);
   const cut = advance({ ...almost, houses: almost.houses.map(house => ({ ...house, hasWater: false })) }, 1);
   assert.equal(cut.settlement?.prosperityTicks, 0);
   assert.equal(cut.settlement?.outcome, "ongoing");

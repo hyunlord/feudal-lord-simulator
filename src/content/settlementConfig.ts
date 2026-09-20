@@ -4,6 +4,7 @@ export const SETTLEMENT_CONFIG = {
   selfSufficientHoldTicks: 600,
   palisadePopulation: 60,
   prosperityPopulation: 140,
+  prosperityOccupiedL4Lots: 4,
   prosperityHoldTicks: 1200,
   foodCrisisTicks: 300,
   abandonmentTicks: 600,
