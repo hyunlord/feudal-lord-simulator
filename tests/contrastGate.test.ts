@@ -71,3 +71,11 @@ test("numeric ledger and era gauges use monospace right-aligned darker digits", 
     assert.match(numericRule, /text-align:\s*right;/);
   }
 });
+
+test("current onboarding instructions keep body contrast on their actual parchment background", async () => {
+  const css = await readFile(STYLESHEET, "utf8");
+  const currentSurface = selectorRuleBodies(css, ".onboarding-task--current");
+  const currentTitle = selectorRuleBodies(css, ".onboarding-task--current .onboarding-task-title");
+  assert.match(currentSurface, /background-color:\s*var\(--palette-parchment\)/);
+  assert.match(currentTitle, /color:\s*var\(--palette-ink\)/);
+});

@@ -573,8 +573,10 @@ button {
   line-height: 1.05;
 }
 
+/* contrast-audit selector=".onboarding-task--current .onboarding-task-title" fg="--palette-ink" bg="--palette-parchment" size="13" role="body" */
 .onboarding-task--current .onboarding-task-title {
-  color: var(--palette-vermilion);
+  color: var(--palette-ink);
+  font-weight: 600;
 }
 
 /* contrast-audit selector=".onboarding-task-hint" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
