@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-09-20T20:43:25.624Z",
+  "invocation": "npx tsx output/free-city-stage0/runtime-qa/reducer-placement-qa.ts",
+  "cwd": "/Users/rexxa/github/feudal-lord-simulator-playable",
+  "results": [
+    {
+      "id": "H1-forest-well-reducer",
+      "criterion": "forest well candidates use reducer legality and normal reducer creates a well construction site",
+      "verdict": "PASS",
+      "observations": {
+        "action": {
+          "kind": "place_building",
+          "building": "well",
+          "tx": 6,
+          "ty": 3
+        },
+        "placement": {
+          "ok": true
+        },
+        "terrainAtCandidate": "forest",
+        "beforeConstruction": [],
+        "afterConstruction": [
+          "well@6,3"
+        ]
+      }
+    },
+    {
+      "id": "H2-material-road-first-reducer",
+      "criterion": "water recovery plans a material access road before placing the well",
+      "verdict": "PASS",
+      "observations": {
+        "firstAction": {
+          "kind": "place_road",
+          "from": {
+            "tx": 4,
+            "ty": 1
+          },
+          "to": {
+            "tx": 12,
+            "ty": 1
+          }
+        },
+        "roadDelta": [
+          "10,1",
+          "11,1",
+          "12,1",
+          "4,1",
+          "5,1",
+          "6,1",
+          "7,1",
+          "8,1",
+          "9,1"
+        ],
+        "targetRouteBefore": false,
+        "targetRouteAfter": true,
+        "secondAction": {
+          "kind": "place_building",
+          "building": "well",
+          "tx": 12,
+          "ty": 2
+        }
+      }
+    },
+    {
+      "id": "H3-local-component-exit-reducer",
+      "criterion": "preserveRoadExpansion evaluates the road component being sealed, even when another component remains open",
+      "verdict": "PASS",
+      "observations": {
+        "action": {
+          "kind": "place_road",
+          "from": {
+            "tx": 5,
+            "ty": 1
+          },
+          "to": {
+            "tx": 5,
+            "ty": 0
+          }
+        },
+        "beforeRoads": [
+          "1,1",
+          "5,2"
+        ],
+        "afterRoads": [
+          "1,1",
+          "5,0",
+          "5,1",
+          "5,2"
+        ],
+        "independentOpenComponent": [
+          {
+            "tx": 1,
+            "ty": 1
+          }
+        ],
+        "preservedComponentAccessTiles": [
+          {
+            "tx": 5,
+            "ty": 0
+          },
+          {
+            "tx": 5,
+            "ty": 2
+          }
+        ]
+      }
+    }
+  ]
+}

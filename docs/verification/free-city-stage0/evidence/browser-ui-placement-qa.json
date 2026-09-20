@@ -1,0 +1,499 @@
+{
+  "generatedAt": "2026-09-20T20:47:59.739Z",
+  "surface": "browser UI via CDP mouse events",
+  "invocation": "npx tsx output/free-city-stage0/runtime-qa/browser-ui-placement-qa.ts against http://127.0.0.1:3228/?phase10-proof=1",
+  "appUrl": "http://127.0.0.1:3228/?phase10-proof=1",
+  "chromePort": 9348,
+  "verdict": "PASS",
+  "steps": [
+    {
+      "id": "B1-initial",
+      "action": "loaded controlled opening state with proof runtime enabled",
+      "snapshot": {
+        "tick": 0,
+        "wallTick": 0,
+        "population": 12,
+        "idleWorkers": 0,
+        "treasuryTimber": 120,
+        "roadRevision": 0,
+        "buildings": [
+          {
+            "id": "house-44-40-0",
+            "kind": "house",
+            "tx": 44,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-46-40-0",
+            "kind": "house",
+            "tx": 46,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-44-42-0",
+            "kind": "house",
+            "tx": 44,
+            "ty": 42,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-46-42-0",
+            "kind": "house",
+            "tx": 46,
+            "ty": 42,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "well-45-41-0",
+            "kind": "well",
+            "tx": 45,
+            "ty": 41,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "granary-42-37-0",
+            "kind": "granary",
+            "tx": 42,
+            "ty": 37,
+            "width": 2,
+            "height": 2,
+            "houseLot": null,
+            "inventory": {
+              "bread": 30
+            },
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "storehouse-41-40-0",
+            "kind": "storehouse",
+            "tx": 41,
+            "ty": 40,
+            "width": 2,
+            "height": 2,
+            "houseLot": null,
+            "inventory": {
+              "logs": 20
+            },
+            "productionProgress": 0,
+            "problemCause": null
+          }
+        ],
+        "constructionSites": [],
+        "houses": [
+          {
+            "buildingId": "house-46-40-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-44-40-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-44-42-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-46-42-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          }
+        ],
+        "walkers": []
+      },
+      "screenshot": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/runtime-qa/browser-01-initial.png"
+    },
+    {
+      "id": "B1-road",
+      "action": "selected road tool and dragged a visible legal road line",
+      "actionData": {
+        "from": {
+          "tx": 41,
+          "ty": 34
+        },
+        "to": {
+          "tx": 43,
+          "ty": 34
+        },
+        "fromPoint": {
+          "x": 795.5555555555554,
+          "y": 89.81481481481501
+        },
+        "toPoint": {
+          "x": 899.2592592592591,
+          "y": 141.66666666666674
+        },
+        "line": [
+          {
+            "tx": 41,
+            "ty": 34
+          },
+          {
+            "tx": 42,
+            "ty": 34
+          },
+          {
+            "tx": 43,
+            "ty": 34
+          }
+        ]
+      },
+      "snapshot": {
+        "tick": 0,
+        "wallTick": 0,
+        "population": 12,
+        "idleWorkers": 0,
+        "treasuryTimber": 120,
+        "roadRevision": 1,
+        "buildings": [
+          {
+            "id": "house-44-40-0",
+            "kind": "house",
+            "tx": 44,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-46-40-0",
+            "kind": "house",
+            "tx": 46,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-44-42-0",
+            "kind": "house",
+            "tx": 44,
+            "ty": 42,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-46-42-0",
+            "kind": "house",
+            "tx": 46,
+            "ty": 42,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "well-45-41-0",
+            "kind": "well",
+            "tx": 45,
+            "ty": 41,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "granary-42-37-0",
+            "kind": "granary",
+            "tx": 42,
+            "ty": 37,
+            "width": 2,
+            "height": 2,
+            "houseLot": null,
+            "inventory": {
+              "bread": 30
+            },
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "storehouse-41-40-0",
+            "kind": "storehouse",
+            "tx": 41,
+            "ty": 40,
+            "width": 2,
+            "height": 2,
+            "houseLot": null,
+            "inventory": {
+              "logs": 20
+            },
+            "productionProgress": 0,
+            "problemCause": null
+          }
+        ],
+        "constructionSites": [],
+        "houses": [
+          {
+            "buildingId": "house-46-40-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-44-40-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-44-42-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-46-42-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          }
+        ],
+        "walkers": []
+      },
+      "screenshot": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/runtime-qa/browser-02-road.png"
+    },
+    {
+      "id": "B1-well",
+      "action": "selected public category, selected well, and clicked a visible legal well tile",
+      "actionData": {
+        "tile": {
+          "tx": 40,
+          "ty": 35
+        },
+        "point": {
+          "x": 691.8518518518517,
+          "y": 89.81481481481501
+        }
+      },
+      "snapshot": {
+        "tick": 0,
+        "wallTick": 0,
+        "population": 12,
+        "idleWorkers": 0,
+        "treasuryTimber": 120,
+        "roadRevision": 1,
+        "buildings": [
+          {
+            "id": "house-44-40-0",
+            "kind": "house",
+            "tx": 44,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-46-40-0",
+            "kind": "house",
+            "tx": 46,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-44-42-0",
+            "kind": "house",
+            "tx": 44,
+            "ty": 42,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "house-46-42-0",
+            "kind": "house",
+            "tx": 46,
+            "ty": 42,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "well-45-41-0",
+            "kind": "well",
+            "tx": 45,
+            "ty": 41,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "granary-42-37-0",
+            "kind": "granary",
+            "tx": 42,
+            "ty": 37,
+            "width": 2,
+            "height": 2,
+            "houseLot": null,
+            "inventory": {
+              "bread": 30
+            },
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "logging-camp-50-40-0",
+            "kind": "logging_camp",
+            "tx": 50,
+            "ty": 40,
+            "width": 1,
+            "height": 1,
+            "houseLot": null,
+            "inventory": {},
+            "productionProgress": 0,
+            "problemCause": null
+          },
+          {
+            "id": "storehouse-41-40-0",
+            "kind": "storehouse",
+            "tx": 41,
+            "ty": 40,
+            "width": 2,
+            "height": 2,
+            "houseLot": null,
+            "inventory": {
+              "logs": 20
+            },
+            "productionProgress": 0,
+            "problemCause": null
+          }
+        ],
+        "constructionSites": [
+          {
+            "id": "construction-site-000001",
+            "kind": "well",
+            "stall": "awaiting_materials"
+          }
+        ],
+        "houses": [
+          {
+            "buildingId": "house-46-40-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-44-40-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-44-42-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          },
+          {
+            "buildingId": "house-46-42-0",
+            "residents": 3,
+            "level": 0,
+            "breadStock": 0,
+            "lastServicedTick": 0
+          }
+        ],
+        "walkers": []
+      },
+      "screenshot": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/runtime-qa/browser-03-well.png"
+    }
+  ]
+}

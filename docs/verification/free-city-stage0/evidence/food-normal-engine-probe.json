@@ -1,0 +1,56 @@
+COMMAND: npx tsx .omo/evidence/stage0-food-observation-fix-20260921/food-observation-probe.ts
+UTC 2026-09-20T21:14:20Z
+{
+  "scenario": "normal advanceTick updates autoplay food observation from actual mill production",
+  "invocation": "npx tsx .omo/evidence/stage0-food-observation-fix-20260921/food-observation-probe.ts",
+  "binaryObservable": "pass is true and outcome.outputDelta is 1",
+  "pass": true,
+  "before": {
+    "kind": "mill",
+    "siteId": "mill",
+    "placedTick": 10,
+    "completedTick": 117,
+    "observeUntilTick": 220,
+    "baseline": {
+      "outputTotal": 0,
+      "houseBread": 14,
+      "starvingHomes": 1
+    },
+    "latest": {
+      "outputTotal": 0,
+      "houseBread": 14,
+      "starvingHomes": 1
+    },
+    "outcome": {
+      "outputDelta": 0,
+      "deliveredBreadDelta": 0,
+      "starvingHomesDelta": 0,
+      "effective": false
+    }
+  },
+  "after": {
+    "kind": "mill",
+    "siteId": "mill",
+    "placedTick": 10,
+    "completedTick": 117,
+    "observeUntilTick": 220,
+    "baseline": {
+      "outputTotal": 0,
+      "houseBread": 14,
+      "starvingHomes": 1
+    },
+    "latest": {
+      "outputTotal": 1,
+      "houseBread": 14,
+      "starvingHomes": 1
+    },
+    "outcome": {
+      "outputDelta": 1,
+      "deliveredBreadDelta": 0,
+      "starvingHomesDelta": 0,
+      "effective": true
+    }
+  }
+}
+UTC 2026-09-20T21:14:21Z
+EXIT: 0

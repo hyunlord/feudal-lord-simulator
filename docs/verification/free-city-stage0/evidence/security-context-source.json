@@ -1,0 +1,24 @@
+{
+  "base": "ec80d31470c6357c0b051efd68194756b0b98eac",
+  "reviewedAt": "2026-09-20T21:01:27.019367+00:00",
+  "trackedDiffSHA256": "42fdd97dfc6cab6950989303d67c40280edc6f588495cceeeceec3503d2c4a15",
+  "files": {
+    "scripts/phase19NaturalGrowth.ts": "63e27d4e78c74291a92f9709c093fc1ba157e803d385040204e3da99c19d93b8",
+    "src/agents/roaming.ts": "4548a52870ed220ee1392608c029bc5be29be38aaaa7aaaff3a7c7cb3a623429",
+    "src/agents/roamingStep.ts": "c85fd539d40ed1cd2befc872ff8b47b9ea80d6b07180fe5bdac33db740a04e95",
+    "src/agents/roamingTypes.ts": "8525814f479e43a87f09efa6fbffd49f1beb1974dd68b6692f99a9ff7452e368",
+    "src/engine/autoplayActions.ts": "435d54f9afac70ad8e6ac2aaa973c87001c99a5ff00c05f8706a333d8b7bc388",
+    "src/engine/autoplayExpansion.ts": "ffc82d250c07623df9652c0cb439ed9480b7f9f022cf3cf6aa7a2a8f5bec46ba",
+    "src/engine/autoplayFood.ts": "2aea48bbaf682d956fb0e12dc7c20a9cbd0bc6e34b66bf89da4af2427045dd8a",
+    "src/engine/autoplayFoodThroughput.ts": "9ec3325e7dadf095202ced6cba5225f303a498975b8a48f5a2c83543c63444cb",
+    "src/engine/autoplayWater.ts": "7232f67aaa04ee72af4aea4acd28b992808055bf7202e57bc167e9e8980fdc0e",
+    "src/engine/constructionLifecycle.ts": "f5005e5d6b0bf43e884172e0a52e4ab851b29bd56ce163129daf995fd72dd430",
+    "src/engine/engine.types.ts": "abbc2b2c7b83eec293afdddaad35ac192c76feeb05637a463f7416ee4cea8f66",
+    "src/engine/tick.ts": "190617a994a97299596b408c18f9a08a7805b3492768d083a27ea015a6c4d66b",
+    "src/state/gameStore.ts": "a79593f3f0a55aea42a23babd9cc67c14b772e38c706b99938603b8c6003ad3e",
+    "src/state/gameStore.types.ts": "fe3dc7367469dbc4d3cce89359b8e5053de18e6437e72d8c633ac88e1eed99f7",
+    "tests/autoplayFoodThroughput.test.ts": "aedfb5b496bf2e93e410f45482b00b2b1cf7e95d0abacc0845b0f5a0d735eacf",
+    "tests/autoplaySustainability.test.ts": "b6e7614d7f667120a86a9e4516ff0a8c5266e082d3b14465fcc79062c2c1f214",
+    "tests/phase20GrowthHarness.test.ts": "e1c8d1d4a7008f89063689bc876aa46275cdebe259ae0c527d650fa536501993"
+  }
+}

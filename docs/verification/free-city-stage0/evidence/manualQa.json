@@ -1,0 +1,257 @@
+{
+  "surfaceEvidence": [
+    {
+      "scenarioId": "FV-S1",
+      "criterionRef": "full existing npm test including normal Phase9",
+      "surface": "CLI node test runner",
+      "exactInvocation": "npm test",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_npm_test",
+        "a_npm_test_exit",
+        "a_counts",
+        "a_proc1",
+        "a_proc2",
+        "a_proc3"
+      ]
+    },
+    {
+      "scenarioId": "FV-S2",
+      "criterionRef": "new split food/water tests included after broad initial glob",
+      "surface": "CLI node test runner",
+      "exactInvocation": "npx tsx --test tests/autoplayFoodGranaryAttribution.test.ts tests/autoplayFoodObservation.test.ts tests/autoplayWaterRecovery.test.ts tests/autoplayFoodThroughput.test.ts tests/autoplaySustainability.test.ts tests/phase20GrowthHarness.test.ts",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_targeted",
+        "a_status",
+        "a_counts"
+      ]
+    },
+    {
+      "scenarioId": "FV-S3",
+      "criterionRef": "current source TypeScript check",
+      "surface": "CLI TypeScript compiler",
+      "exactInvocation": "npm run typecheck",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_typecheck"
+      ]
+    },
+    {
+      "scenarioId": "FV-S4",
+      "criterionRef": "current source production build",
+      "surface": "CLI Vite/TypeScript build",
+      "exactInvocation": "npm run build",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_build"
+      ]
+    },
+    {
+      "scenarioId": "FV-S5",
+      "criterionRef": "diff whitespace check",
+      "surface": "CLI git",
+      "exactInvocation": "git diff --check",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_diffcheck"
+      ]
+    },
+    {
+      "scenarioId": "FV-S6",
+      "criterionRef": "actual food normal-engine probe separate from old stopverify",
+      "surface": "CLI normal engine probe JSON",
+      "exactInvocation": "npx tsx .omo/evidence/stage0-food-observation-fix-20260921/food-observation-probe.ts; python JSON assertion",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_food_probe",
+        "a_food_probe_assert",
+        "a_stopverify_compare"
+      ]
+    },
+    {
+      "scenarioId": "FV-S7",
+      "criterionRef": "cleanup and provenance",
+      "surface": "CLI process/status/hash inventory",
+      "exactInvocation": "ps filtered; lsof -nP -iTCP:3218 -sTCP:LISTEN; git ls-files -m -o --exclude-standard; SHA256",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_cleanup",
+        "a_hashes",
+        "a_validation"
+      ]
+    }
+  ],
+  "adversarialCases": [
+    {
+      "scenarioId": "FV-A1",
+      "criterionRef": "Phase9 must not be accidentally skipped by opt-in behavior",
+      "adversarialClass": "test discovery / opt-in omission",
+      "expectedBehavior": "normal npm test includes tests/economyHarnessPhase9.test.ts and completes with PASS rows",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_phase9_scan",
+        "a_npm_test",
+        "a_proc1",
+        "a_proc2",
+        "a_proc3"
+      ]
+    },
+    {
+      "scenarioId": "FV-A2",
+      "criterionRef": "old stopverify evidence must not be reused after source changes",
+      "adversarialClass": "stale evidence reuse",
+      "expectedBehavior": "hash mismatch is detected and current-source normal-engine probe is rerun",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_stopverify_compare",
+        "a_food_probe",
+        "a_food_probe_assert"
+      ]
+    },
+    {
+      "scenarioId": "FV-A3",
+      "criterionRef": "new test files created during broad glob must not be omitted",
+      "adversarialClass": "test glob race / new untracked tests",
+      "expectedBehavior": "new food/water split tests are run explicitly after broad npm test",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_status",
+        "a_targeted"
+      ]
+    },
+    {
+      "scenarioId": "FV-A4",
+      "criterionRef": "long Phase9 run must not be killed as a hang while CPU is advancing",
+      "adversarialClass": "slow healthy test mistaken for hang",
+      "expectedBehavior": "process health evidence shows elapsed and CPU time increasing; run is preserved to exit 0",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_proc1",
+        "a_proc2",
+        "a_proc3",
+        "a_npm_test"
+      ]
+    },
+    {
+      "scenarioId": "FV-A5",
+      "criterionRef": "no lingering QA-owned runtime processes",
+      "adversarialClass": "resource leak / accidental server kill",
+      "expectedBehavior": "owned npm/test/browser/server processes are not left running; existing 3218 is only observed, not terminated",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "a_cleanup"
+      ]
+    }
+  ],
+  "artifactRefs": [
+    {
+      "id": "a_phase9_scan",
+      "kind": "text",
+      "description": "Phase9 opt-in scan and direct economyHarnessPhase9 test inspection showing normal inclusion in tests glob",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/phase9-optin-scan.txt"
+    },
+    {
+      "id": "a_food_probe",
+      "kind": "json+log",
+      "description": "Current-source normal advanceTick food observation probe plus assertion",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/food-normal-engine-probe.json"
+    },
+    {
+      "id": "a_food_probe_assert",
+      "kind": "log",
+      "description": "Probe assertion: pass=true outputDelta=1 effective=true",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/food-normal-engine-probe-assert.log"
+    },
+    {
+      "id": "a_stopverify_compare",
+      "kind": "log",
+      "description": "Comparison showing older stopverify hashes were stale for three files",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/food-stopverify-hash-compare.txt"
+    },
+    {
+      "id": "a_npm_test",
+      "kind": "terminal-log",
+      "description": "Full npm test run using initial glob, 1610 pass, includes normal Phase9 and records long Phase9 CPU checks",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-test.log"
+    },
+    {
+      "id": "a_npm_test_exit",
+      "kind": "exit-code",
+      "description": "Recovered exact npm test exit from final log/tool-observed exit 0",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-test.exit"
+    },
+    {
+      "id": "a_targeted",
+      "kind": "terminal-log",
+      "description": "Expanded current-source targeted test run including newly split food/water test files",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/final-expanded-targeted.log"
+    },
+    {
+      "id": "a_typecheck",
+      "kind": "terminal-log",
+      "description": "npm run typecheck current-source log",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-run-typecheck.log"
+    },
+    {
+      "id": "a_build",
+      "kind": "terminal-log",
+      "description": "npm run build current-source log",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-run-build.log"
+    },
+    {
+      "id": "a_diffcheck",
+      "kind": "terminal-log",
+      "description": "git diff --check current tracked diff whitespace check",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/git-diff-check.log"
+    },
+    {
+      "id": "a_status",
+      "kind": "terminal-log",
+      "description": "Post-test status, diff stat, new test inventory, npm summary tail",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/post-npm-test-status.txt"
+    },
+    {
+      "id": "a_proc1",
+      "kind": "terminal-log",
+      "description": "Phase9 process check 1 showing active CPU",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-test-process-check-1.txt"
+    },
+    {
+      "id": "a_proc2",
+      "kind": "terminal-log",
+      "description": "Phase9 process check 2 showing elapsed and CPU growth",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-test-process-check-2.txt"
+    },
+    {
+      "id": "a_proc3",
+      "kind": "terminal-log",
+      "description": "Phase9 process check 3 plus worktree status during long run",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/npm-test-process-check-3.txt"
+    },
+    {
+      "id": "a_hashes",
+      "kind": "text",
+      "description": "Final modified/untracked source file SHA256 list and tracked git diff hash",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/final-source-hashes.txt"
+    },
+    {
+      "id": "a_cleanup",
+      "kind": "terminal-log",
+      "description": "Final process cleanup/status; no owned test process remains, 3218 listener preserved/observed if present",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/cleanup-process-status.txt"
+    },
+    {
+      "id": "a_validation",
+      "kind": "json",
+      "description": "Non-empty artifact validation",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/artifact-nonempty-validation.json"
+    },
+    {
+      "id": "a_counts",
+      "kind": "json",
+      "description": "Exact test count and exit summary for broad and targeted runs",
+      "path": "/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0/final-verification/verification-count-summary.json"
+    }
+  ]
+}
