@@ -208,14 +208,14 @@ test("proposal encloses one and concave settlements with exact three-tile margin
   }
 });
 
-test("proposal reports concrete failures for absent footprints and clipped margins", () => {
+test("proposal reports concrete failures for absent footprints and buildings without legal setback", () => {
   // Given
   const empty = computePalisadeProposal(grid(12, 12), []);
-  const clipped = computePalisadeProposal(grid(8, 8), [footprint("edge", 1, 1)]);
+  const clipped = computePalisadeProposal(grid(8, 8), [footprint("edge", 0, 0)]);
 
   // Then
   assert.deepEqual(empty, { ok: false, reason: "no_footprints" });
-  assert.deepEqual(clipped, { ok: false, reason: "out_of_bounds" });
+  assert.deepEqual(clipped, { ok: false, reason: "building_clearance" });
 });
 
 test("proposal preserves three-tile clearance for verifier regression with water detour", () => {
@@ -366,3 +366,19 @@ test("perimeter and run dragging use whole-step normals with last-valid rejectio
     if (moved.ok) assert.ok(moved.candidate.path.some((point) => point.x === 1 && point.y === 9));
   }
 });
+
+for (const [tx, ty] of [[1, 8], [21, 8], [8, 1], [8, 21]] as const) {
+  test(`proposal uses a legal land envelope when preferred margin crosses map edge at ${tx},${ty}`, () => {
+    // Given: a mixed-footprint settlement with one legal tile of edge clearance.
+    const world = grid(24, 24);
+    const settlement = [footprint("edge", tx, ty, 2, 2), footprint("house", 10, 10), footprint("site", 12, 12, 2, 2)];
+    // When
+    const path = proposalPath(world, settlement);
+    // Then: every full footprint is enclosed, independently valid and order independent.
+    assert.equal(failureReason(world, path, settlement), null);
+    assert.ok(minimumProposalClearance(path, settlement) >= 1);
+    for (const plot of settlement) for (const corner of footprintCorners(plot)) assert.ok(isPointInsidePalisade(corner, path));
+    assert.deepEqual(proposalPath(world, [...settlement].reverse()), path);
+    assertAxisOrDiagonal(path);
+  });
+}

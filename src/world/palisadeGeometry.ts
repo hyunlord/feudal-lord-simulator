@@ -445,10 +445,10 @@ export function computePalisadeProposal(
   if (footprints.some((footprint) => hasWaterMoat(grid, footprint))) return { ok: false, reason: "water_crossing" };
   const hull = convexHull(footprints.flatMap((footprint) => expandedFootprintCorners(footprint, PROPOSAL_MARGIN_TILES)));
   if (hull.length < 2) return { ok: false, reason: "collinear_footprints" };
-  if (hull.some(point => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds" };
-  const routed = routeClosedPath(grid, hull, { footprints, margin: PROPOSAL_MARGIN_TILES });
+  const hullInBounds = hull.every(point => edgeInBounds(grid, point));
+  const routed = hullInBounds ? routeClosedPath(grid, hull, { footprints, margin: PROPOSAL_MARGIN_TILES }) : null;
   if (routed === null) {
-    let failure: PalisadeFailureReason = "water_crossing";
+    let failure: PalisadeFailureReason = hullInBounds ? "water_crossing" : "out_of_bounds";
     for (const envelope of palisadeLandEnvelopes(grid, footprints, PROPOSAL_MARGIN_TILES)) {
       const candidate = validatePalisadeCandidate(grid, envelope, footprints);
       if (candidate.ok) return { ok: true, path: candidate.candidate.path, runs: candidate.candidate.runs, perimeterSteps: candidate.candidate.perimeterSteps };
