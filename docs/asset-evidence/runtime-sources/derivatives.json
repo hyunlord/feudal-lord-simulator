@@ -2,6 +2,259 @@
   "filter": "Pillow LANCZOS RGBA PNG compression=9",
   "assets": [
     {
+      "url": "assets/buildings/historical-facilities-v1/chapel-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/chapel-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 39,
+        "y": 52,
+        "width": 1209,
+        "height": 1148
+      },
+      "originalSha256": "f63aaf03643a8d49236efde29f62821ecbc6934b680d0f7e6387134952202ba6",
+      "width": 133,
+      "height": 133,
+      "alphaBounds": {
+        "x": 11,
+        "y": 3,
+        "width": 117,
+        "height": 126
+      },
+      "sha256": "0876420e8bdf69828b860d3ef808dc6fa22b5f3ac789afe087408391e8e60a87",
+      "targetCanvasWidth": 133
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/church-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/church-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 0,
+        "y": 4,
+        "width": 1213,
+        "height": 1226
+      },
+      "originalSha256": "67d46668f7cb601d2a3ac13ea4f291c9946e28cf25f8ec6c9d5a40f1a5eb47ae",
+      "width": 233,
+      "height": 233,
+      "alphaBounds": {
+        "x": 6,
+        "y": 13,
+        "width": 221,
+        "height": 205
+      },
+      "sha256": "29da562122604d0a324e9be5269558f91781828046bab8cbfe82b16e7e973880",
+      "targetCanvasWidth": 233
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/keep-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/keep-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 23,
+        "y": 21,
+        "width": 1144,
+        "height": 1182
+      },
+      "originalSha256": "f58a040bae034799e31f51150aa66ee268d8c48af72904da91c1073b0e1d13de",
+      "width": 266,
+      "height": 266,
+      "alphaBounds": {
+        "x": 9,
+        "y": 6,
+        "width": 217,
+        "height": 250
+      },
+      "sha256": "e66a5d007dc75492b25481057afb651c7df5e0545de32f16f5ccddc7523dc164",
+      "targetCanvasWidth": 266
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/market_active-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/market_active-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 31,
+        "y": 17,
+        "width": 1223,
+        "height": 1213
+      },
+      "originalSha256": "1cc7026d2316ee0819c05d39499f4bc14362259fb18be503a85abe26fc00b407",
+      "width": 224,
+      "height": 224,
+      "alphaBounds": {
+        "x": 4,
+        "y": 6,
+        "width": 220,
+        "height": 210
+      },
+      "sha256": "c1dda89871ac0270737e607a2bd487a6532088695259444ff32395141a6bc0ef",
+      "targetCanvasWidth": 224
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/market_quiet-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/market_quiet-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 41,
+        "y": 33,
+        "width": 1199,
+        "height": 1195
+      },
+      "originalSha256": "89acafa5626f7377529dbb79f688d11d126cd87f088ff6f522293d18a7ae0533",
+      "width": 224,
+      "height": 224,
+      "alphaBounds": {
+        "x": 8,
+        "y": 9,
+        "width": 215,
+        "height": 207
+      },
+      "sha256": "6db439b052b90d99e12e1de2418f94000942840d64e38e2dc51342154e76e47b",
+      "targetCanvasWidth": 224
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/masonry-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/masonry-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 0,
+        "y": 53,
+        "width": 1224,
+        "height": 1145
+      },
+      "originalSha256": "f11bdb7359c9e1e92058456e6238fa527c1a0ee133a94cc579e9684f6c6070d2",
+      "width": 138,
+      "height": 138,
+      "alphaBounds": {
+        "x": 11,
+        "y": 8,
+        "width": 118,
+        "height": 121
+      },
+      "sha256": "6549b1d610fd21a36bd55c85bf61589c4a1d42a34fb25dacae32bbbf09e4592f",
+      "targetCanvasWidth": 138
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/mill-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/mill-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 67,
+        "y": 21,
+        "width": 1153,
+        "height": 1207
+      },
+      "originalSha256": "ba012a11fd8810e160f9bab00c0dfa1f7e1ce5ce7ffe0a43778eb7d824e0dc33",
+      "width": 142,
+      "height": 142,
+      "alphaBounds": {
+        "x": 11,
+        "y": 5,
+        "width": 121,
+        "height": 129
+      },
+      "sha256": "e945f13541ebe7ee8ff03ed0a491828fd8a291a2d33833c763aab16ac2861a52",
+      "targetCanvasWidth": 142
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/quarry_active-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/quarry_active-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 0,
+        "y": 20,
+        "width": 1243,
+        "height": 1208
+      },
+      "originalSha256": "01e5a0058cf2ab50c2c2b4530ce950f23993b3a0dff15c7c02fe2e1c8f2b9268",
+      "width": 230,
+      "height": 230,
+      "alphaBounds": {
+        "x": 0,
+        "y": 28,
+        "width": 230,
+        "height": 192
+      },
+      "sha256": "fe32c04b8b27fec240b18c8c3d16e05c327a05f909815eb955cdcf01597dd3da",
+      "targetCanvasWidth": 230
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/quarry_depleted-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/quarry_depleted-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 14,
+        "y": 21,
+        "width": 1229,
+        "height": 1161
+      },
+      "originalSha256": "9b686edcfd10affb1d9185d7febf64a341e2463e42e706cee79a77843c6e8dc3",
+      "width": 230,
+      "height": 230,
+      "alphaBounds": {
+        "x": 0,
+        "y": 27,
+        "width": 230,
+        "height": 179
+      },
+      "sha256": "ac1b40d3650559889745e2c573cd85dec67ef348363e5dcd7cbb51b17961ca9e",
+      "targetCanvasWidth": 230
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/quarry_idle-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/quarry_idle-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 13,
+        "y": 21,
+        "width": 1228,
+        "height": 1207
+      },
+      "originalSha256": "0a5d0d68cda75e7c580d6f3c64befd46859bc2c1beb60a87cf5ab3a3581aab4e",
+      "width": 230,
+      "height": 230,
+      "alphaBounds": {
+        "x": 0,
+        "y": 28,
+        "width": 230,
+        "height": 178
+      },
+      "sha256": "340e88aa6365c10d676e5cbc7a7f42cf9086331914efbb70f96230cdf0896526",
+      "targetCanvasWidth": 230
+    },
+    {
+      "url": "assets/buildings/historical-facilities-v1/sawmill-v2.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/historical-facilities-v1/sawmill-v2.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 0,
+        "y": 47,
+        "width": 1238,
+        "height": 1159
+      },
+      "originalSha256": "137b192eb1c1e409f9e5d2e508f06ad5839755af3c6f5ec878abee4bfb2cfac6",
+      "width": 122,
+      "height": 122,
+      "alphaBounds": {
+        "x": 5,
+        "y": 3,
+        "width": 117,
+        "height": 109
+      },
+      "sha256": "0d62a94c60737434dc5e10318b54f2af14ae97c4c25e6f08f1683383747f2534",
+      "targetCanvasWidth": 122
+    },
+    {
       "url": "assets/buildings/historical-houses/house_l0-v3.png",
       "source": "docs/asset-evidence/runtime-sources/buildings/historical-houses/house_l0-v3.png",
       "originalWidth": 1254,
