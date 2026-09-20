@@ -1,3 +1,4 @@
+import { proofFrameWork } from "../testing/proofFrameWork";
 import { townLandscapeAssetReady } from "./townLandscapeAssets";
 import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
 import { useEffect } from "react";
@@ -80,7 +81,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         }
       }
       lastFrameAtMs = nowMs;
+      const work = proofFrameWork.current;
+      const startedAt = work === null ? 0 : performance.now();
       drawCurrentCanvasFrame({ canvas, context, refs, state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
+      if (work !== null) work.recordFrame(performance.now() - startedAt);
       publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height), grid: stateRef.current });
       frameId = requestAnimationFrame(drawFrame);
     };

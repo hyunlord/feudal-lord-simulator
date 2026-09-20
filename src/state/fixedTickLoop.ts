@@ -1,3 +1,4 @@
+import { proofFrameWork } from "../testing/proofFrameWork";
 import { BALANCE } from "../content/balanceConfig";
 import { advanceTick } from "../engine/tick";
 import type { GameSpeed, GameState } from "../engine/engine.types";
@@ -70,7 +71,10 @@ export function createFixedTickLoop(input: FixedTickLoopInput): FixedTickLoop {
     let nextState = previousState;
     let tickCount = 0;
     while (accumulatorMs >= TICK_DURATION_MS && tickCount < MAX_TICKS_PER_FRAME) {
+      const work = proofFrameWork.current;
+      const startedAt = work === null ? 0 : performance.now();
       nextState = advanceTick(nextState);
+      if (work !== null) work.recordTick(performance.now() - startedAt);
       accumulatorMs -= TICK_DURATION_MS;
       tickCount += 1;
     }

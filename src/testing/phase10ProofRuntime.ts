@@ -1,4 +1,5 @@
 import type { MutableRefObject } from "react";
+import { installProofFrameWork, type ProofFrameWorkSnapshot } from "./proofFrameWork";
 
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
@@ -78,6 +79,7 @@ export type Phase10ProofRuntimePort = {
     readonly assets: readonly AssetStatus[];
     readonly houseCompoundAssets: ReturnType<typeof houseCompoundAssetStatuses>;
     readonly spriteDraws: { readonly recent: readonly WorldSpriteDrawEvent[] };
+    readonly work: ProofFrameWorkSnapshot;
   };
 };
 
@@ -104,6 +106,7 @@ export function phase10ProofEnabled(location: ProofLocation): boolean {
 export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInput): () => void {
   if (!phase10ProofEnabled(input.location)) return () => {};
   const spriteDrawProbe = installWorldSpriteDrawProbe();
+  const workProbe = installProofFrameWork();
 
   const port: Phase10ProofRuntimePort = {
     tileClientPoint: (tile) => tileClientPoint(input.canvas, input.cameraRef.current, tile),
@@ -116,12 +119,14 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       assets: worldAssetStatuses(),
       houseCompoundAssets: houseCompoundAssetStatuses(),
       spriteDraws: spriteDrawProbe.snapshot(),
+      work: workProbe.snapshot(),
     }),
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;
 
   return () => {
     spriteDrawProbe.dispose();
+    workProbe.dispose();
     if (window.__FEUDAL_PHASE10_PROOF__ === port) {
       delete window.__FEUDAL_PHASE10_PROOF__;
     }
