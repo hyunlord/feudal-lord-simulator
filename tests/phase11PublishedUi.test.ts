@@ -94,7 +94,8 @@ test("desktop ledger lays primary and secondary facts across columns instead of 
   const populationToggle = css.match(/\.court-ledger > \.ledger-population-toggle\s*\{[\s\S]*?\}/)?.[0] ?? "";
 
   assert.match(rule, /grid-template-columns:\s*repeat\(4, auto minmax\(0, 1fr\)\);/);
-  assert.match(rule, /font-size:\s*11px;/);
+  assert.match(rule, /font-size:\s*var\(--font-body\);/);
+  assert.match(css, /--font-body:\s*13px;/);
   assert.match(ledger, /height:\s*68px;/);
   assert.doesNotMatch(ledger, /overflow:\s*hidden;/);
   assert.match(populationToggle, /position:\s*absolute;/);

@@ -131,7 +131,9 @@ test("build menu exposes readable categories with road separated and scoped scro
   const toolHeights = [...selectorRuleBodies(css, ".build-menu .build-tool").matchAll(/min-height:\s*(\d+)px;/g)];
   assert.ok(toolHeights.length > 0);
   for (const match of toolHeights) assert.ok(Number(match[1]) >= 124, "tool cards retain room for art, name and cost");
-  assert.match(selectorRuleBodies(css, ".build-menu .build-seal-label"), /font-size:\s*13px;/);
+  assert.match(selectorRuleBodies(css, ".build-menu .build-seal-label"), /font-size:\s*var\(--font-body\);/);
+  const globalCss = await readFile(new URL("../src/styles/global.css", import.meta.url), "utf8");
+  assert.match(globalCss, /--font-body:\s*13px;/);
   const categoryHeights = [...selectorRuleBodies(css, ".build-menu-category").matchAll(/min-height:\s*(\d+)px;/g)];
   assert.ok(categoryHeights.length > 0);
   for (const match of categoryHeights) assert.ok(Number(match[1]) >= 32, "category targets remain usable at every breakpoint");

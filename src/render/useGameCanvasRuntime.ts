@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { getTile } from "../world/grid";
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
 import { cameraAfterViewportResize, hoveredBuildingPosition, initialCamera, resizeCanvas } from "./canvasRuntime";
-import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
+import { createCanvasMutableRefs } from "./canvasRuntimeRefs";
 import { pointerTile, releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions";
 import { installMinimapCameraJumpRuntime, publishMinimapViewport } from "./minimapCameraJump";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
@@ -19,7 +19,6 @@ import { advancePalisadeDraftDrag, beginPalisadeDraftDrag } from "./canvasPalisa
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
-import { createConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { toggleObjectRenderViewMode } from "./objectRenderViewMode";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
@@ -51,16 +50,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
 
     void preloadGameArt();
 
-    const refs: CanvasMutableRefs = {
-      cameraRef: { current: initialCamera(canvas, stateRef.current) },
-      hoverRef: { current: null },
-      feedbackRef: { current: null },
-      dragRef: { current: { mode: "none", startCanvasPoint: null, startCamera: null, lastCanvasPoint: null, roadStart: null, moved: false } },
-      spacePressed: { current: false },
-      suppressClick: { current: false },
-      pixelRatioRef: { current: 1 },
-      completionTracker: createConstructionCompletionTracker(),
-    };
+    const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));
     const cameraInput = createCameraInputState();
     let frameId = 0, lastFrameAtMs = performance.now(), suppressClickTimeout: number | null = null, userControlledCamera = false;
     const viewport = () => {
