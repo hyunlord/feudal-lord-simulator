@@ -1,0 +1,85 @@
+{
+  "status": "PASS for three bounded scenarios",
+  "source": "304d575 @3243",
+  "road": {
+    "method": "ActualUI normalinitialstate: waitfoodservice, removealltargethouseroadcontacts, advancegrace, restore roads andwaitdelivery. No stateinjection.",
+    "before": {
+      "tick": 201,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "residents": 4,
+        "level": 3,
+        "breadStock": 3,
+        "lastServicedTick": 191
+      }
+    },
+    "degraded": {
+      "tick": 2051,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "residents": 14,
+        "level": 1,
+        "breadStock": 0,
+        "lastServicedTick": 191
+      }
+    },
+    "recovered": {
+      "tick": 2841,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "residents": 15,
+        "level": 3,
+        "breadStock": 0,
+        "lastServicedTick": 2791
+      }
+    },
+    "cut": {
+      "tick": 201
+    },
+    "overlayShown": true,
+    "overlayRemoved": true,
+    "errors": []
+  },
+  "gateAndMarket": {
+    "status": "PASS",
+    "source": "304d575 @3243",
+    "method": "Controlled initial states; actual UI inspector and gate-road remove/restore. Workers3 and2 are separate paused seeded states, not a UI staffing toggle or natural allocation episode.",
+    "rows": [
+      {
+        "workers": 3,
+        "before": {
+          "kind": "served",
+          "providerId": "qa-market",
+          "demand": 1
+        },
+        "errors": [],
+        "cut": {
+          "kind": "unreachable",
+          "providerId": null,
+          "demand": 1
+        },
+        "restored": {
+          "kind": "served",
+          "providerId": "qa-market",
+          "demand": 1
+        }
+      },
+      {
+        "workers": 2,
+        "before": {
+          "kind": "understaffed",
+          "providerId": null,
+          "demand": 1
+        },
+        "errors": []
+      }
+    ]
+  },
+  "visual": "Personally inspected degraded/recovered, gate-road cut and understaffed market screenshots; inspector messages agree with asserted service status.",
+  "limits": [
+    "Gate uses controlled wall/road fixture and actual road deletion/restoration, not natural gate construction",
+    "Market2/3 workers use separate controlled paused states; no claim of actual staffing UI or natural worker recovery",
+    "Five-seed and expanded natural scale validation remain pending E approval"
+  ],
+  "cleanup": "All owned Chrome closed; no server stopped/product edits. No CPU/FPS claim."
+}

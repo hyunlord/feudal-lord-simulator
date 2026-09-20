@@ -1,0 +1,53 @@
+{
+  "source": "398174c8cddeae010c63086f7cf643176dcef302",
+  "date": "2026-09-20",
+  "workingTree": "fls-phase19-integration",
+  "commands": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "log": "output/phase19/integration/final-typecheck.log"
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "log": "output/phase19/integration/final-tests.log",
+      "tests": 1544,
+      "pass": 1544,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "phase9Included": true,
+      "durationMs": 508952.780666
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "log": "output/phase19/integration/final-build.log",
+      "warning": "598.06 kB JS chunk exceeds500 kB recommendation"
+    },
+    {
+      "command": "./node_modules/.bin/tsx scripts/checkContrast.ts",
+      "exitCode": 0,
+      "log": "output/phase19/integration/final-contrast.log"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "rawLogRoot": "../feudal-lord-simulator",
+  "previousRun": {
+    "source": "304d575",
+    "tests": 1543,
+    "pass": 1539,
+    "fail": 4,
+    "log": "output/phase19/integration/tests.log",
+    "status": "FAIL superseded by corrected full final run"
+  },
+  "limits": [
+    "No dedicated lint/LSP command configured; TypeScript and source guards ran",
+    "Natural capacity episode and requested32/48 actual-city size acceptance remain unmet",
+    "Formal CPU measurement and approval-dependent decisions recorded separately"
+  ]
+}

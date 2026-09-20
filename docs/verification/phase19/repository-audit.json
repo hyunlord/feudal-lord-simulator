@@ -1,0 +1,518 @@
+{
+  "timestampUTC": "2026-09-20T10:22:29.391129+00:00",
+  "baseCommit": "2a919d76860547ef69a94a6b4a33a64cccc60e28",
+  "worktree": "/Users/rexxa/github/fls-phase19-policy",
+  "commonGitDirectory": "/Users/rexxa/github/feudal-lord-simulator/.git",
+  "gitCountObjects": "count: 3834\nsize: 251752\nin-pack: 3813\npacks: 2\nsize-pack: 86735\nprune-packable: 111\ngarbage: 0\nsize-garbage: 0",
+  "filesystem": {
+    "commonGitIncludingLfs": {
+      "files": 4211,
+      "logicalBytes": 454395928,
+      "allocatedBytes": 466911232
+    },
+    "commonGitExcludingLfsDirectory": {
+      "files": 4096,
+      "logicalBytes": 340309200,
+      "allocatedBytes": 352579584
+    },
+    "lfsObjectsSubsetOfCommonGit": {
+      "files": 114,
+      "logicalBytes": 114086704,
+      "allocatedBytes": 114327552
+    },
+    "workingDocs": {
+      "files": 501,
+      "logicalBytes": 208788078,
+      "allocatedBytes": 209870848
+    },
+    "workingPublic": {
+      "files": 170,
+      "logicalBytes": 18022421,
+      "allocatedBytes": 18362368
+    },
+    "workingDocsAndPublicLogicalBytes": 226810499
+  },
+  "headTrackedByExtension": {
+    "(none)": {
+      "paths": 3,
+      "gitBlobLogicalBytes": 320
+    },
+    ".cjs": {
+      "paths": 1,
+      "gitBlobLogicalBytes": 29084
+    },
+    ".css": {
+      "paths": 7,
+      "gitBlobLogicalBytes": 61701
+    },
+    ".diff": {
+      "paths": 1,
+      "gitBlobLogicalBytes": 5317
+    },
+    ".exit": {
+      "paths": 25,
+      "gitBlobLogicalBytes": 70
+    },
+    ".gz": {
+      "paths": 1,
+      "gitBlobLogicalBytes": 28178
+    },
+    ".html": {
+      "paths": 5,
+      "gitBlobLogicalBytes": 7281
+    },
+    ".jpg": {
+      "paths": 35,
+      "gitBlobLogicalBytes": 7551819
+    },
+    ".json": {
+      "paths": 258,
+      "gitBlobLogicalBytes": 2001329
+    },
+    ".jsonl": {
+      "paths": 1,
+      "gitBlobLogicalBytes": 2465
+    },
+    ".log": {
+      "paths": 110,
+      "gitBlobLogicalBytes": 824542
+    },
+    ".md": {
+      "paths": 103,
+      "gitBlobLogicalBytes": 586933
+    },
+    ".mjs": {
+      "paths": 52,
+      "gitBlobLogicalBytes": 294584
+    },
+    ".patch": {
+      "paths": 2,
+      "gitBlobLogicalBytes": 133956
+    },
+    ".png": {
+      "paths": 658,
+      "gitBlobLogicalBytes": 153152739
+    },
+    ".py": {
+      "paths": 17,
+      "gitBlobLogicalBytes": 279473
+    },
+    ".sha256": {
+      "paths": 6,
+      "gitBlobLogicalBytes": 18879
+    },
+    ".ts": {
+      "paths": 581,
+      "gitBlobLogicalBytes": 2942116
+    },
+    ".tsx": {
+      "paths": 18,
+      "gitBlobLogicalBytes": 83575
+    },
+    ".txt": {
+      "paths": 37,
+      "gitBlobLogicalBytes": 42551
+    },
+    ".yml": {
+      "paths": 1,
+      "gitBlobLogicalBytes": 1406
+    }
+  },
+  "headUniqueGitBlobLogicalBytes": 165771371,
+  "allRefsReachableByObjectType": {
+    "commit": {
+      "objects": 321,
+      "logicalBytes": 351131
+    },
+    "tree": {
+      "objects": 1893,
+      "logicalBytes": 3056367
+    },
+    "blob": {
+      "objects": 4150,
+      "logicalBytes": 350731682
+    }
+  },
+  "allRefsReachableUniqueBlobsByRepresentativeExtension": {
+    "(none)": {
+      "objects": 6,
+      "logicalBytes": 676,
+      "selectedStorageBytes": 605,
+      "packedObjects": 2,
+      "packedLogicalBytes": 115,
+      "packedSelectedStorageBytes": 133
+    },
+    ".cjs": {
+      "objects": 4,
+      "logicalBytes": 94987,
+      "selectedStorageBytes": 8936,
+      "packedObjects": 4,
+      "packedLogicalBytes": 94987,
+      "packedSelectedStorageBytes": 8936
+    },
+    ".css": {
+      "objects": 54,
+      "logicalBytes": 1279396,
+      "selectedStorageBytes": 107632,
+      "packedObjects": 38,
+      "packedLogicalBytes": 881941,
+      "packedSelectedStorageBytes": 24249
+    },
+    ".diff": {
+      "objects": 4,
+      "logicalBytes": 11913,
+      "selectedStorageBytes": 2631,
+      "packedObjects": 1,
+      "packedLogicalBytes": 5317,
+      "packedSelectedStorageBytes": 308
+    },
+    ".exit": {
+      "objects": 5,
+      "logicalBytes": 35,
+      "selectedStorageBytes": 94,
+      "packedObjects": 3,
+      "packedLogicalBytes": 11,
+      "packedSelectedStorageBytes": 38
+    },
+    ".gz": {
+      "objects": 1,
+      "logicalBytes": 28178,
+      "selectedStorageBytes": 21863,
+      "packedObjects": 0,
+      "packedLogicalBytes": 0,
+      "packedSelectedStorageBytes": 0
+    },
+    ".html": {
+      "objects": 6,
+      "logicalBytes": 5664,
+      "selectedStorageBytes": 1285,
+      "packedObjects": 4,
+      "packedLogicalBytes": 4371,
+      "packedSelectedStorageBytes": 514
+    },
+    ".jpg": {
+      "objects": 29,
+      "logicalBytes": 7286173,
+      "selectedStorageBytes": 6850772,
+      "packedObjects": 3,
+      "packedLogicalBytes": 140027,
+      "packedSelectedStorageBytes": 136280
+    },
+    ".json": {
+      "objects": 385,
+      "logicalBytes": 4316120,
+      "selectedStorageBytes": 538659,
+      "packedObjects": 214,
+      "packedLogicalBytes": 1691095,
+      "packedSelectedStorageBytes": 115493
+    },
+    ".jsonl": {
+      "objects": 41,
+      "logicalBytes": 1186116,
+      "selectedStorageBytes": 314807,
+      "packedObjects": 2,
+      "packedLogicalBytes": 4124,
+      "packedSelectedStorageBytes": 1129
+    },
+    ".log": {
+      "objects": 209,
+      "logicalBytes": 2089697,
+      "selectedStorageBytes": 517124,
+      "packedObjects": 105,
+      "packedLogicalBytes": 847118,
+      "packedSelectedStorageBytes": 174721
+    },
+    ".md": {
+      "objects": 214,
+      "logicalBytes": 1508808,
+      "selectedStorageBytes": 607604,
+      "packedObjects": 86,
+      "packedLogicalBytes": 508285,
+      "packedSelectedStorageBytes": 158382
+    },
+    ".mjs": {
+      "objects": 71,
+      "logicalBytes": 482407,
+      "selectedStorageBytes": 151021,
+      "packedObjects": 14,
+      "packedLogicalBytes": 93873,
+      "packedSelectedStorageBytes": 17958
+    },
+    ".patch": {
+      "objects": 7,
+      "logicalBytes": 253432,
+      "selectedStorageBytes": 49082,
+      "packedObjects": 2,
+      "packedLogicalBytes": 133956,
+      "packedSelectedStorageBytes": 16052
+    },
+    ".png": {
+      "objects": 910,
+      "logicalBytes": 318811478,
+      "selectedStorageBytes": 298139915,
+      "packedObjects": 361,
+      "packedLogicalBytes": 85183192,
+      "packedSelectedStorageBytes": 67225238
+    },
+    ".py": {
+      "objects": 52,
+      "logicalBytes": 1114632,
+      "selectedStorageBytes": 181668,
+      "packedObjects": 35,
+      "packedLogicalBytes": 665934,
+      "packedSelectedStorageBytes": 55041
+    },
+    ".sha256": {
+      "objects": 8,
+      "logicalBytes": 19148,
+      "selectedStorageBytes": 5065,
+      "packedObjects": 6,
+      "packedLogicalBytes": 18879,
+      "packedSelectedStorageBytes": 4824
+    },
+    ".svg": {
+      "objects": 1,
+      "logicalBytes": 318,
+      "selectedStorageBytes": 218,
+      "packedObjects": 0,
+      "packedLogicalBytes": 0,
+      "packedSelectedStorageBytes": 0
+    },
+    ".ts": {
+      "objects": 1902,
+      "logicalBytes": 11408358,
+      "selectedStorageBytes": 2277641,
+      "packedObjects": 1142,
+      "packedLogicalBytes": 6601434,
+      "packedSelectedStorageBytes": 748315
+    },
+    ".tsx": {
+      "objects": 118,
+      "logicalBytes": 614533,
+      "selectedStorageBytes": 106959,
+      "packedObjects": 85,
+      "packedLogicalBytes": 412798,
+      "packedSelectedStorageBytes": 39177
+    },
+    ".txt": {
+      "objects": 120,
+      "logicalBytes": 215525,
+      "selectedStorageBytes": 76215,
+      "packedObjects": 38,
+      "packedLogicalBytes": 40428,
+      "packedSelectedStorageBytes": 16663
+    },
+    ".yml": {
+      "objects": 3,
+      "logicalBytes": 4088,
+      "selectedStorageBytes": 1772,
+      "packedObjects": 1,
+      "packedLogicalBytes": 1310,
+      "packedSelectedStorageBytes": 536
+    }
+  },
+  "packEntryTotals": {
+    "pack-70470ff49f2a973375dabad993c9ba3fc5972aa8.idx": {
+      "commit": {
+        "entries": 149,
+        "logicalBytes": 166649,
+        "packedEntryBytes": 94325
+      },
+      "tree": {
+        "entries": 800,
+        "logicalBytes": 103556,
+        "packedEntryBytes": 94410
+      },
+      "blob": {
+        "entries": 1646,
+        "logicalBytes": 51197611,
+        "packedEntryBytes": 48457410
+      }
+    },
+    "pack-4343cbc2f78fd7bb61b0e9137753c1e45068bc9b.idx": {
+      "commit": {
+        "entries": 41,
+        "logicalBytes": 56415,
+        "packedEntryBytes": 30542
+      },
+      "tree": {
+        "entries": 293,
+        "logicalBytes": 81652,
+        "packedEntryBytes": 64423
+      },
+      "blob": {
+        "entries": 884,
+        "logicalBytes": 42084984,
+        "packedEntryBytes": 39966812
+      }
+    }
+  },
+  "largestReachableBlobs": [
+    {
+      "oid": "ec46f6e6528f2474441d71d4b1b24b9b12ef729b",
+      "representativePath": "docs/asset-evidence/accepted-art/sources/forest_floor.png",
+      "logicalBytes": 3304041
+    },
+    {
+      "oid": "0cf105984a04dd8a24bacf304c303ba7eb1a13ff",
+      "representativePath": "docs/asset-evidence/accepted-art/sources/packed_earth_road.png",
+      "logicalBytes": 3106902
+    },
+    {
+      "oid": "1807f2a5743a66059427a37be88e9915d538bf4c",
+      "representativePath": "docs/asset-evidence/accepted-art/sources/grass.png",
+      "logicalBytes": 3026158
+    },
+    {
+      "oid": "bc49d60d9d22ba237c005daa0710dad878cfd03f",
+      "representativePath": "public/assets/complete-art-v1/water-bridges/water_shallow-v1.png",
+      "logicalBytes": 2702742
+    },
+    {
+      "oid": "a6d696c036cb3f501a3c10432bd32a02faa2cc20",
+      "representativePath": "public/assets/buildings/historical-farm/layers/soil_loam-v1.png",
+      "logicalBytes": 2602834
+    },
+    {
+      "oid": "38dab60052bb06e41d7aeca8d15af4e5ade91d66",
+      "representativePath": "docs/asset-evidence/phase14/profile/minute-3.png",
+      "logicalBytes": 2366841
+    },
+    {
+      "oid": "268b916eb0f806b34a5950ee79bdb52fd00e221f",
+      "representativePath": "docs/asset-evidence/phase14/profile/minute-10.png",
+      "logicalBytes": 2365017
+    },
+    {
+      "oid": "fab228a92a821cab4ebc0b679d9840cd252c5157",
+      "representativePath": "docs/asset-evidence/phase14/profile/minute-7.png",
+      "logicalBytes": 2362416
+    },
+    {
+      "oid": "ec0e626301c9be24613cdd4ca456afd5ffc0498a",
+      "representativePath": "docs/asset-evidence/phase14/profile/minute-5.png",
+      "logicalBytes": 2360049
+    },
+    {
+      "oid": "2156257287709c954bac9c970fd1a909b60be46c",
+      "representativePath": "docs/verification/priority-simulation-v1/performance-cached.png",
+      "logicalBytes": 2243280
+    },
+    {
+      "oid": "8fc6c0556905ac4cbda4a21d2b0ea183a4080a99",
+      "representativePath": "docs/asset-evidence/phase14/profile/minute-1.png",
+      "logicalBytes": 2239494
+    },
+    {
+      "oid": "67e5e2c1409851c005c0359f01b857fe24dbb0c8",
+      "representativePath": "docs/verification/town-systems-v2/grown-town-church.png",
+      "logicalBytes": 2167591
+    }
+  ],
+  "methodNotes": [
+    "Filesystem sums regular directory entries via lstat without following directory symlinks; logical bytes differ from allocated bytes; APFS shared extents not resolved.",
+    "Shared common Git includes all branches/worktrees and LFS objects. Do not add LFS objects to commonGitIncludingLfs. Working docs/public are separate checkout copies, not additional Git object storage.",
+    "HEAD ls-tree sizes are committed Git blobs; LFS entries are pointer sizes, whereas working copies and LFS objects contain binary payloads.",
+    "rev-list --objects --all identifies unique reachable objects across all refs, not every historical pathname; extension uses one representative path per unique blob. Unreachable/loose extras remain in count-objects and filesystem totals.",
+    "cat-file objectsize:disk reports selected representation; if duplicate storage exists this is not total physical cost. verify-pack entry sizes include duplicate objects across packs, unlike reachable unique blob totals. Pack files also have headers/trailers/indexes.",
+    "No history rewrite, garbage collection, prune, repack, LFS migration, product change, or GPU investigation performed."
+  ],
+  "workingDirectoriesByExtension": {
+    "docs": {
+      ".md": {
+        "files": 86,
+        "logicalBytes": 513050
+      },
+      ".json": {
+        "files": 81,
+        "logicalBytes": 647789
+      },
+      ".log": {
+        "files": 3,
+        "logicalBytes": 130146
+      },
+      ".txt": {
+        "files": 8,
+        "logicalBytes": 14614
+      },
+      ".png": {
+        "files": 285,
+        "logicalBytes": 199910373
+      },
+      ".jpg": {
+        "files": 35,
+        "logicalBytes": 7551819
+      },
+      ".mjs": {
+        "files": 3,
+        "logicalBytes": 20287
+      }
+    },
+    "docsVerification": {
+      ".txt": {
+        "files": 2,
+        "logicalBytes": 2226
+      },
+      ".json": {
+        "files": 35,
+        "logicalBytes": 224828
+      },
+      ".jpg": {
+        "files": 26,
+        "logicalBytes": 7146146
+      },
+      ".md": {
+        "files": 33,
+        "logicalBytes": 78846
+      },
+      ".mjs": {
+        "files": 3,
+        "logicalBytes": 20287
+      },
+      ".png": {
+        "files": 2,
+        "logicalBytes": 816728
+      }
+    },
+    "public": {
+      "(none)": {
+        "files": 1,
+        "logicalBytes": 0
+      },
+      ".json": {
+        "files": 6,
+        "logicalBytes": 112906
+      },
+      ".png": {
+        "files": 163,
+        "logicalBytes": 17909515
+      }
+    }
+  },
+  "reachableBlobSummary": {
+    "PNG": {
+      "objects": 910,
+      "logicalBytes": 318811478,
+      "selectedStorageBytes": 298139915,
+      "packedObjects": 361,
+      "packedLogicalBytes": 85183192,
+      "packedSelectedStorageBytes": 67225238
+    },
+    "JSON": {
+      "objects": 385,
+      "logicalBytes": 4316120,
+      "selectedStorageBytes": 538659,
+      "packedObjects": 214,
+      "packedLogicalBytes": 1691095,
+      "packedSelectedStorageBytes": 115493
+    },
+    "other": {
+      "objects": 2855,
+      "logicalBytes": 27604084,
+      "selectedStorageBytes": 11282994,
+      "packedObjects": 1571,
+      "packedLogicalBytes": 10454908,
+      "packedSelectedStorageBytes": 1403256
+    }
+  }
+}

@@ -1,0 +1,628 @@
+{
+  "classification": "Three independent natural seed1 runs; identical final states; acceptance unmet. Tick0 excluded from completed-tick bread-zero counts. Concurrent timing omitted.",
+  "runs": [
+    {
+      "requestedLimit": 16,
+      "source": {
+        "commit": "935f473016e2e5802b5a3cf9b9f6018914461c76",
+        "sourceSha256": "94e5c8559220856642e0c4c43b1459bd9d72ffdd4fe583340cdbf6fa71a6fc18",
+        "sourceFiles": 413,
+        "dirty": false
+      },
+      "status": "acceptance-unmet",
+      "seed": 1,
+      "maxTicks": 600000,
+      "final": {
+        "tick": 600000,
+        "era": "palisade",
+        "houses": 16,
+        "lots": 16,
+        "occupiedHouses": 12,
+        "population": 264,
+        "capacity": 330,
+        "idleWorkers": 57,
+        "l4Houses": 0,
+        "constructionSites": 0,
+        "bread": 71,
+        "minimumHouseBread": 0,
+        "occupiedBreadZeroHouses": 2,
+        "services": {
+          "water": {
+            "served": 16,
+            "missing": 0,
+            "outside": 0,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          },
+          "market": {
+            "served": 0,
+            "missing": 0,
+            "outside": 16,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          },
+          "church": {
+            "served": 0,
+            "missing": 16,
+            "outside": 0,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          }
+        },
+        "providers": [
+          {
+            "id": "construction-site-000016",
+            "service": "water",
+            "capacity": 12,
+            "used": 7,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "construction-site-000030",
+            "service": "water",
+            "capacity": 12,
+            "used": 3,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "well-45-41-0",
+            "service": "water",
+            "capacity": 12,
+            "used": 6,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "construction-site-000037",
+            "service": "market",
+            "capacity": 24,
+            "used": 0,
+            "workers": 3,
+            "requiredWorkers": 3
+          }
+        ],
+        "buildingCounts": {
+          "house": 16,
+          "well": 3,
+          "granary": 2,
+          "logging_camp": 1,
+          "storehouse": 3,
+          "sawmill": 1,
+          "wheat_farm": 10,
+          "mill": 5,
+          "chapel": 1,
+          "masonry": 1,
+          "quarry": 1,
+          "market": 1
+        },
+        "outcome": "ongoing"
+      },
+      "targetReachedTick": 61400,
+      "maximumLots": 16,
+      "victoryTick": null,
+      "sustainedTicks": 0,
+      "stableBreadZeroTicks": null,
+      "completedTickFoodZero": {
+        "range": "1..600000",
+        "ticks": 433888,
+        "houseTicks": 1130250
+      },
+      "capacityEpisodes": [],
+      "providerResponses": [],
+      "providerEvents": [
+        {
+          "tick": 0,
+          "id": "well-45-41-0",
+          "tx": 45,
+          "ty": 41,
+          "service": "water",
+          "kind": "completed",
+          "used": 4,
+          "capacity": 12
+        },
+        {
+          "tick": 0,
+          "id": "well-45-41-0",
+          "tx": 45,
+          "ty": 41,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 4,
+          "capacity": 12
+        },
+        {
+          "tick": 29932,
+          "id": "construction-site-000016",
+          "tx": 51,
+          "ty": 47,
+          "service": "water",
+          "kind": "completed",
+          "used": 2,
+          "capacity": 12
+        },
+        {
+          "tick": 29932,
+          "id": "construction-site-000016",
+          "tx": 51,
+          "ty": 47,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 2,
+          "capacity": 12
+        },
+        {
+          "tick": 56383,
+          "id": "construction-site-000030",
+          "tx": 49,
+          "ty": 55,
+          "service": "water",
+          "kind": "completed",
+          "used": 1,
+          "capacity": 12
+        },
+        {
+          "tick": 56383,
+          "id": "construction-site-000030",
+          "tx": 49,
+          "ty": 55,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 1,
+          "capacity": 12
+        },
+        {
+          "tick": 520550,
+          "id": "construction-site-000037",
+          "tx": 31,
+          "ty": 33,
+          "service": "market",
+          "kind": "completed",
+          "used": 0,
+          "capacity": 24
+        }
+      ],
+      "denialTicks": {
+        "water": 0,
+        "market": 0,
+        "church": 0
+      },
+      "guardHistogram": {
+        "idle-workers-at-most-six": 14,
+        "housing-not-full": 4871,
+        "food-supported-lot-limit": 4868,
+        "bread-below-twenty": 16,
+        "pending-food-chain": 66,
+        "no-housing-guard": 14,
+        "lot-limit": 4488
+      },
+      "guardSamples": 5000,
+      "stopReason": "tick-budget",
+      "failures": []
+    },
+    {
+      "requestedLimit": 32,
+      "source": {
+        "commit": "935f473016e2e5802b5a3cf9b9f6018914461c76",
+        "sourceSha256": "94e5c8559220856642e0c4c43b1459bd9d72ffdd4fe583340cdbf6fa71a6fc18",
+        "sourceFiles": 413,
+        "dirty": false
+      },
+      "status": "acceptance-unmet",
+      "seed": 1,
+      "maxTicks": 600000,
+      "final": {
+        "tick": 600000,
+        "era": "palisade",
+        "houses": 16,
+        "lots": 16,
+        "occupiedHouses": 12,
+        "population": 264,
+        "capacity": 330,
+        "idleWorkers": 57,
+        "l4Houses": 0,
+        "constructionSites": 0,
+        "bread": 71,
+        "minimumHouseBread": 0,
+        "occupiedBreadZeroHouses": 2,
+        "services": {
+          "water": {
+            "served": 16,
+            "missing": 0,
+            "outside": 0,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          },
+          "market": {
+            "served": 0,
+            "missing": 0,
+            "outside": 16,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          },
+          "church": {
+            "served": 0,
+            "missing": 16,
+            "outside": 0,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          }
+        },
+        "providers": [
+          {
+            "id": "construction-site-000016",
+            "service": "water",
+            "capacity": 12,
+            "used": 7,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "construction-site-000030",
+            "service": "water",
+            "capacity": 12,
+            "used": 3,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "well-45-41-0",
+            "service": "water",
+            "capacity": 12,
+            "used": 6,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "construction-site-000037",
+            "service": "market",
+            "capacity": 24,
+            "used": 0,
+            "workers": 3,
+            "requiredWorkers": 3
+          }
+        ],
+        "buildingCounts": {
+          "house": 16,
+          "well": 3,
+          "granary": 2,
+          "logging_camp": 1,
+          "storehouse": 3,
+          "sawmill": 1,
+          "wheat_farm": 10,
+          "mill": 5,
+          "chapel": 1,
+          "masonry": 1,
+          "quarry": 1,
+          "market": 1
+        },
+        "outcome": "ongoing"
+      },
+      "targetReachedTick": null,
+      "maximumLots": 16,
+      "victoryTick": null,
+      "sustainedTicks": 0,
+      "stableBreadZeroTicks": null,
+      "completedTickFoodZero": {
+        "range": "1..600000",
+        "ticks": 433888,
+        "houseTicks": 1130250
+      },
+      "capacityEpisodes": [],
+      "providerResponses": [],
+      "providerEvents": [
+        {
+          "tick": 0,
+          "id": "well-45-41-0",
+          "tx": 45,
+          "ty": 41,
+          "service": "water",
+          "kind": "completed",
+          "used": 4,
+          "capacity": 12
+        },
+        {
+          "tick": 0,
+          "id": "well-45-41-0",
+          "tx": 45,
+          "ty": 41,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 4,
+          "capacity": 12
+        },
+        {
+          "tick": 29932,
+          "id": "construction-site-000016",
+          "tx": 51,
+          "ty": 47,
+          "service": "water",
+          "kind": "completed",
+          "used": 2,
+          "capacity": 12
+        },
+        {
+          "tick": 29932,
+          "id": "construction-site-000016",
+          "tx": 51,
+          "ty": 47,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 2,
+          "capacity": 12
+        },
+        {
+          "tick": 56383,
+          "id": "construction-site-000030",
+          "tx": 49,
+          "ty": 55,
+          "service": "water",
+          "kind": "completed",
+          "used": 1,
+          "capacity": 12
+        },
+        {
+          "tick": 56383,
+          "id": "construction-site-000030",
+          "tx": 49,
+          "ty": 55,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 1,
+          "capacity": 12
+        },
+        {
+          "tick": 520550,
+          "id": "construction-site-000037",
+          "tx": 31,
+          "ty": 33,
+          "service": "market",
+          "kind": "completed",
+          "used": 0,
+          "capacity": 24
+        }
+      ],
+      "denialTicks": {
+        "water": 0,
+        "market": 0,
+        "church": 0
+      },
+      "guardHistogram": {
+        "idle-workers-at-most-six": 14,
+        "housing-not-full": 4871,
+        "food-supported-lot-limit": 4868,
+        "bread-below-twenty": 16,
+        "pending-food-chain": 66,
+        "no-housing-guard": 14
+      },
+      "guardSamples": 5000,
+      "stopReason": "tick-budget",
+      "failures": []
+    },
+    {
+      "requestedLimit": 48,
+      "source": {
+        "commit": "935f473016e2e5802b5a3cf9b9f6018914461c76",
+        "sourceSha256": "94e5c8559220856642e0c4c43b1459bd9d72ffdd4fe583340cdbf6fa71a6fc18",
+        "sourceFiles": 413,
+        "dirty": false
+      },
+      "status": "acceptance-unmet",
+      "seed": 1,
+      "maxTicks": 600000,
+      "final": {
+        "tick": 600000,
+        "era": "palisade",
+        "houses": 16,
+        "lots": 16,
+        "occupiedHouses": 12,
+        "population": 264,
+        "capacity": 330,
+        "idleWorkers": 57,
+        "l4Houses": 0,
+        "constructionSites": 0,
+        "bread": 71,
+        "minimumHouseBread": 0,
+        "occupiedBreadZeroHouses": 2,
+        "services": {
+          "water": {
+            "served": 16,
+            "missing": 0,
+            "outside": 0,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          },
+          "market": {
+            "served": 0,
+            "missing": 0,
+            "outside": 16,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          },
+          "church": {
+            "served": 0,
+            "missing": 16,
+            "outside": 0,
+            "understaffed": 0,
+            "unreachable": 0,
+            "capacity": 0
+          }
+        },
+        "providers": [
+          {
+            "id": "construction-site-000016",
+            "service": "water",
+            "capacity": 12,
+            "used": 7,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "construction-site-000030",
+            "service": "water",
+            "capacity": 12,
+            "used": 3,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "well-45-41-0",
+            "service": "water",
+            "capacity": 12,
+            "used": 6,
+            "workers": 0,
+            "requiredWorkers": 0
+          },
+          {
+            "id": "construction-site-000037",
+            "service": "market",
+            "capacity": 24,
+            "used": 0,
+            "workers": 3,
+            "requiredWorkers": 3
+          }
+        ],
+        "buildingCounts": {
+          "house": 16,
+          "well": 3,
+          "granary": 2,
+          "logging_camp": 1,
+          "storehouse": 3,
+          "sawmill": 1,
+          "wheat_farm": 10,
+          "mill": 5,
+          "chapel": 1,
+          "masonry": 1,
+          "quarry": 1,
+          "market": 1
+        },
+        "outcome": "ongoing"
+      },
+      "targetReachedTick": null,
+      "maximumLots": 16,
+      "victoryTick": null,
+      "sustainedTicks": 0,
+      "stableBreadZeroTicks": null,
+      "completedTickFoodZero": {
+        "range": "1..600000",
+        "ticks": 433888,
+        "houseTicks": 1130250
+      },
+      "capacityEpisodes": [],
+      "providerResponses": [],
+      "providerEvents": [
+        {
+          "tick": 0,
+          "id": "well-45-41-0",
+          "tx": 45,
+          "ty": 41,
+          "service": "water",
+          "kind": "completed",
+          "used": 4,
+          "capacity": 12
+        },
+        {
+          "tick": 0,
+          "id": "well-45-41-0",
+          "tx": 45,
+          "ty": 41,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 4,
+          "capacity": 12
+        },
+        {
+          "tick": 29932,
+          "id": "construction-site-000016",
+          "tx": 51,
+          "ty": 47,
+          "service": "water",
+          "kind": "completed",
+          "used": 2,
+          "capacity": 12
+        },
+        {
+          "tick": 29932,
+          "id": "construction-site-000016",
+          "tx": 51,
+          "ty": 47,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 2,
+          "capacity": 12
+        },
+        {
+          "tick": 56383,
+          "id": "construction-site-000030",
+          "tx": 49,
+          "ty": 55,
+          "service": "water",
+          "kind": "completed",
+          "used": 1,
+          "capacity": 12
+        },
+        {
+          "tick": 56383,
+          "id": "construction-site-000030",
+          "tx": 49,
+          "ty": 55,
+          "service": "water",
+          "kind": "first-serving",
+          "used": 1,
+          "capacity": 12
+        },
+        {
+          "tick": 520550,
+          "id": "construction-site-000037",
+          "tx": 31,
+          "ty": 33,
+          "service": "market",
+          "kind": "completed",
+          "used": 0,
+          "capacity": 24
+        }
+      ],
+      "denialTicks": {
+        "water": 0,
+        "market": 0,
+        "church": 0
+      },
+      "guardHistogram": {
+        "idle-workers-at-most-six": 14,
+        "housing-not-full": 4871,
+        "food-supported-lot-limit": 4868,
+        "bread-below-twenty": 16,
+        "pending-food-chain": 66,
+        "no-housing-guard": 14
+      },
+      "guardSamples": 5000,
+      "stopReason": "tick-budget",
+      "failures": []
+    }
+  ],
+  "sharedFinalState": {
+    "sha256": "a23a6fd8e8555262d750c7c860927b0650d9bbc354a9c1b478ce556d61a8a1e1",
+    "housingLevels": [
+      0,
+      1,
+      1,
+      14,
+      0
+    ],
+    "mergedHouses": 0,
+    "unmetEraRequirement": {
+      "stone": 241,
+      "required": 400
+    },
+    "evidence": "Each final-state.json independently hashed; level distribution counted from final state; era diagnostic from identical target16 state"
+  }
+}

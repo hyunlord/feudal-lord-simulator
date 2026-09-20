@@ -1,0 +1,731 @@
+{
+  "source": "098ca27",
+  "url": "http://127.0.0.1:3242/",
+  "verdict": "PASS",
+  "fixture": "Normal opening game, paused, no injected state. Both goals and selected home detail expanded. True125 Chrome profile zoom, no CSSzoom or viewport emulation.",
+  "cases": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "dpr": 1,
+        "visualScale": 1,
+        "cssZoom": "1"
+      },
+      "minFont": 10,
+      "smallText": [
+        {
+          "text": "완료",
+          "classes": "onboarding-task-flourish",
+          "fontSize": 10
+        },
+        {
+          "text": "자동 발전 꺼짐",
+          "classes": "autoplay-hint",
+          "fontSize": 11
+        }
+      ],
+      "minimumContrast": 5.43,
+      "belowContrast": 0,
+      "hiddenClips": 0,
+      "categories": [
+        {
+          "name": "주택",
+          "tools": [
+            {
+              "name": "오두막",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "도로",
+          "tools": []
+        },
+        {
+          "name": "생산",
+          "tools": [
+            {
+              "name": "밀밭",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "방앗간",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "벌목소",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "제재소",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "저장",
+          "tools": [
+            {
+              "name": "창고",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "곡창",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "공공",
+          "tools": [
+            {
+              "name": "우물",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "예배당",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "방어",
+          "tools": []
+        }
+      ],
+      "scrolls": [
+        {
+          "selector": ".right-info-rail",
+          "max": 387,
+          "reached": 387,
+          "reachable": true
+        },
+        {
+          "selector": ".inspector-body",
+          "max": 144,
+          "reached": 144,
+          "reachable": true
+        },
+        {
+          "selector": ".build-menu-details",
+          "max": 17,
+          "reached": 17,
+          "reachable": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1,
+        "visualScale": 1,
+        "cssZoom": "1"
+      },
+      "minFont": 10,
+      "smallText": [
+        {
+          "text": "완료",
+          "classes": "onboarding-task-flourish",
+          "fontSize": 10
+        },
+        {
+          "text": "자동 발전 꺼짐",
+          "classes": "autoplay-hint",
+          "fontSize": 11
+        }
+      ],
+      "minimumContrast": 5.43,
+      "belowContrast": 0,
+      "hiddenClips": 0,
+      "categories": [
+        {
+          "name": "주택",
+          "tools": [
+            {
+              "name": "오두막",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "도로",
+          "tools": []
+        },
+        {
+          "name": "생산·",
+          "tools": [
+            {
+              "name": "밀밭",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "방앗간",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "벌목소",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "제재소",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "저장",
+          "tools": [
+            {
+              "name": "창고",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "곡창",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "공공",
+          "tools": [
+            {
+              "name": "우물",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "예배당",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "방어",
+          "tools": []
+        }
+      ],
+      "scrolls": [
+        {
+          "selector": ".right-info-rail",
+          "max": 339,
+          "reached": 339,
+          "reachable": true
+        },
+        {
+          "selector": ".inspector-body",
+          "max": 96,
+          "reached": 96,
+          "reachable": true
+        },
+        {
+          "selector": ".build-menu-details",
+          "max": 17,
+          "reached": 17,
+          "reachable": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "visualScale": 1,
+        "cssZoom": "1"
+      },
+      "minFont": 11,
+      "smallText": [
+        {
+          "text": "자동 발전 꺼짐",
+          "classes": "autoplay-hint",
+          "fontSize": 11
+        }
+      ],
+      "minimumContrast": 5.43,
+      "belowContrast": 0,
+      "hiddenClips": 0,
+      "categories": [
+        {
+          "name": "주택",
+          "tools": [
+            {
+              "name": "오두막",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "도로",
+          "tools": []
+        },
+        {
+          "name": "생산·",
+          "tools": [
+            {
+              "name": "밀밭",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "방앗간",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "벌목소",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "제재소",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "저장",
+          "tools": [
+            {
+              "name": "창고",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "곡창",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "공공",
+          "tools": [
+            {
+              "name": "우물",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "예배당",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "방어",
+          "tools": []
+        }
+      ],
+      "scrolls": [
+        {
+          "selector": ".right-info-rail",
+          "max": 183,
+          "reached": 183,
+          "reachable": true
+        },
+        {
+          "selector": ".inspector-body",
+          "max": 0,
+          "reached": 0,
+          "reachable": true
+        },
+        {
+          "selector": ".build-menu-details",
+          "max": 17,
+          "reached": 17,
+          "reachable": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "visualScale": 1,
+        "cssZoom": "1"
+      },
+      "minFont": 10,
+      "smallText": [
+        {
+          "text": "완료",
+          "classes": "onboarding-task-flourish",
+          "fontSize": 10
+        },
+        {
+          "text": "자동 발전 꺼짐",
+          "classes": "autoplay-hint",
+          "fontSize": 11
+        }
+      ],
+      "minimumContrast": 5.43,
+      "belowContrast": 0,
+      "hiddenClips": 0,
+      "categories": [
+        {
+          "name": "주택",
+          "tools": [
+            {
+              "name": "오두막",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "도로",
+          "tools": []
+        },
+        {
+          "name": "생산·",
+          "tools": [
+            {
+              "name": "밀밭",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "방앗간",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "벌목소",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "제재소",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "저장",
+          "tools": [
+            {
+              "name": "창고",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "곡창",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "공공",
+          "tools": [
+            {
+              "name": "우물",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "예배당",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "방어",
+          "tools": []
+        }
+      ],
+      "scrolls": [
+        {
+          "selector": ".right-info-rail",
+          "max": 0,
+          "reached": 0,
+          "reachable": true
+        },
+        {
+          "selector": ".inspector-body",
+          "max": 0,
+          "reached": 0,
+          "reachable": true
+        },
+        {
+          "selector": ".build-menu-details",
+          "max": 17,
+          "reached": 17,
+          "reachable": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1,
+        "visualScale": 1,
+        "cssZoom": "1"
+      },
+      "minFont": 11,
+      "smallText": [
+        {
+          "text": "자동 발전 꺼짐",
+          "classes": "autoplay-hint",
+          "fontSize": 11
+        }
+      ],
+      "minimumContrast": 5.43,
+      "belowContrast": 0,
+      "hiddenClips": 0,
+      "categories": [
+        {
+          "name": "주택",
+          "tools": [
+            {
+              "name": "오두막",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "도로",
+          "tools": []
+        },
+        {
+          "name": "생산·",
+          "tools": [
+            {
+              "name": "밀밭",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "방앗간",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "벌목소",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "제재소",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "저장",
+          "tools": [
+            {
+              "name": "창고",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "곡창",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "공공",
+          "tools": [
+            {
+              "name": "우물",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "예배당",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "방어",
+          "tools": []
+        }
+      ],
+      "scrolls": [
+        {
+          "selector": ".right-info-rail",
+          "max": 3,
+          "reached": 3,
+          "reachable": true
+        },
+        {
+          "selector": ".inspector-body",
+          "max": 0,
+          "reached": 0,
+          "reachable": true
+        },
+        {
+          "selector": ".build-menu-details",
+          "max": 17,
+          "reached": 17,
+          "reachable": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1536,
+        "height": 864,
+        "dpr": 1.25,
+        "visualScale": 1,
+        "cssZoom": "1"
+      },
+      "minFont": 10,
+      "smallText": [
+        {
+          "text": "완료",
+          "classes": "onboarding-task-flourish",
+          "fontSize": 10
+        },
+        {
+          "text": "자동 발전 꺼짐",
+          "classes": "autoplay-hint",
+          "fontSize": 11
+        }
+      ],
+      "minimumContrast": 5.43,
+      "belowContrast": 0,
+      "hiddenClips": 0,
+      "categories": [
+        {
+          "name": "주택",
+          "tools": [
+            {
+              "name": "오두막",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "도로",
+          "tools": []
+        },
+        {
+          "name": "생산·",
+          "tools": [
+            {
+              "name": "밀밭",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "방앗간",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "벌목소",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "제재소",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "저장",
+          "tools": [
+            {
+              "name": "창고",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "곡창",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "공공",
+          "tools": [
+            {
+              "name": "우물",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "name": "예배당",
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "name": "방어",
+          "tools": []
+        }
+      ],
+      "scrolls": [
+        {
+          "selector": ".right-info-rail",
+          "max": 217,
+          "reached": 216.8000030517578,
+          "reachable": true
+        },
+        {
+          "selector": ".inspector-body",
+          "max": 0,
+          "reached": 0,
+          "reachable": true
+        },
+        {
+          "selector": ".build-menu-details",
+          "max": 16,
+          "reached": 16,
+          "reachable": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "actions": "Keyboard Enter activates eachcategory, every tool center is hitable after allowed scrolling, Enter selects road aria-pressed true, Escape cancels then house selection restores inspector.",
+  "corrections": "Independent QA found onboardingtitle contrast4.46; owner fixed in098ca27 and six-case rerun shows none<4.5. Initial true125 canonical image was cropped; owner corrected capture independently of CSS.",
+  "cleanup": "Own Playwright browsers closed in finally and isolated profile deleted; no product/server changes.",
+  "limits": [
+    "No natural growth or CPU timing claim"
+  ],
+  "visualVerdict": "PASS: personally viewed all six canonical layouts, then corrected full true125 and final dark current-task title at1600x1100. Compact layouts intentionally scroll; costs, resource numbers, goals and action controls remain reachable."
+}
