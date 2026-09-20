@@ -166,7 +166,8 @@ export function labelRoadComponents(grid: WallGrid): ReadonlyMap<string, number>
   if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade) return cached.labels;
   const labels = new Map<string, number>();
   let component = 0;
-  for (const tile of grid.tiles) {
+  for (let index = 0; index < grid.width * grid.height; index += 1) {
+    const tile = { tx: index % grid.width, ty: Math.floor(index / grid.width) };
     if (labels.has(roadCoordinateKey(tile)) || !isRoadTile(grid, tile)) continue;
     for (const coordinate of existingRoadComponent(grid, [tile])) labels.set(roadCoordinateKey(coordinate), component);
     component += 1;

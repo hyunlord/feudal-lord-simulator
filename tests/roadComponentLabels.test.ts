@@ -76,3 +76,13 @@ test("building ports may touch several disconnected components without joining t
   assert.equal(service(home("north", 0, 0), home("south", 3, 3)), false);
   assert.equal(service({ ...home("merged", 2, 3), houseLot: "horizontal" }, home("multi", 1, 1)), true);
 });
+
+
+test("dimension changes use grid addresses rather than obsolete tile metadata", () => {
+  const tiles = Array.from({ length: 12 }, (_, index) => ({ tx: index % 4, ty: Math.floor(index / 4), terrain: "grass" as const, hasRoad: index === 11, buildingId: null }));
+  const original = { width: 4, height: 3, tiles };
+  assert.deepEqual([...labelRoadComponents(original).keys()], ["3,2"]);
+  const reshaped = { ...original, width: 3, height: 4 };
+  assert.deepEqual([...labelRoadComponents(reshaped).keys()], existingRoadComponent(reshaped, [{ tx: 2, ty: 3 }]).map(tile => `${tile.tx},${tile.ty}`));
+  assert.deepEqual([...labelRoadComponents(original).keys()], ["3,2"]);
+});
