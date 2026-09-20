@@ -1,4 +1,5 @@
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { assetUrlForBase } from "./worldAssets";
 import type { Building } from "../content/buildingConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
@@ -15,8 +16,8 @@ export type HouseCompoundAssetMeta = Readonly<{
   alphaBounds: Readonly<{ x: number; y: number; width: number; height: number }>;
 }>;
 type Status = "idle" | "loading" | "ready" | "missing";
-type Record = { meta: HouseCompoundAssetMeta; status: Status; image: HTMLImageElement | null };
-const records: Record[] = houseCompoundAssetManifest.map(meta => ({ meta: { ...meta, url: assetUrlForBase(meta.url, import.meta.env?.BASE_URL ?? "/") }, status: "idle", image: null }));
+type Record = { meta: HouseCompoundAssetMeta; status: Status; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null; rasterError: string | null };
+const records: Record[] = houseCompoundAssetManifest.map(meta => ({ meta: { ...meta, url: assetUrlForBase(meta.url, import.meta.env?.BASE_URL ?? "/") }, status: "idle", image: null, raster: null, rasterError: null }));
 let preloadPromise: Promise<void> | null = null;
 
 export function preloadHouseCompoundAssets(): Promise<void> {
@@ -26,10 +27,16 @@ export function preloadHouseCompoundAssets(): Promise<void> {
     try {
       const image = new Image();
       image.onload = () => {
-        if (image.naturalWidth === record.meta.width && image.naturalHeight === record.meta.height) {
-          record.image = image; record.status = "ready";
-        } else record.status = "missing";
-        resolve();
+        try {
+          if (image.naturalWidth === record.meta.width && image.naturalHeight === record.meta.height) {
+            record.image = image; record.status = "ready";
+            const height = TILE_W * 1.5 * 0.88 * record.meta.alphaBounds.height / record.meta.alphaBounds.width;
+            record.raster = rasterizeWorldSprite(image, record.meta.alphaBounds, Math.ceil(height * 2));
+          } else record.status = "missing";
+        } catch (error) {
+          record.raster = null;
+          record.rasterError = error instanceof Error ? error.message : String(error);
+        } finally { resolve(); }
       };
       image.onerror = () => { record.status = "missing"; resolve(); };
       image.src = record.meta.url;
@@ -39,7 +46,7 @@ export function preloadHouseCompoundAssets(): Promise<void> {
 }
 
 export function houseCompoundAssetStatuses() {
-  return records.map(({ meta, status }) => ({ level: meta.level, axis: meta.axis, url: meta.url, status }));
+  return records.map(({ meta, status, rasterError }) => ({ rasterError, level: meta.level, axis: meta.axis, url: meta.url, status }));
 }
 
 export function houseCompoundSpriteRect(building: Building, meta: HouseCompoundAssetMeta) {
@@ -60,6 +67,6 @@ export function drawHouseCompoundSprite(context: CanvasRenderingContext2D, build
   if (record?.status !== "ready" || record.image === null) return false;
   const rect = houseCompoundSpriteRect(building, record.meta);
   const bounds = record.meta.alphaBounds;
-  drawCroppedWorldSprite(context, record.image, bounds, rect);
+  drawCroppedWorldSprite(context, record.raster?.image ?? record.image, record.raster?.source ?? bounds, rect, false, true);
   return true;
 }

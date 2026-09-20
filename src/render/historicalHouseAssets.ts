@@ -1,6 +1,7 @@
 import type { Building } from "../content/buildingConfig";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { tileToScreen, TILE_W, TILE_H } from "./iso";
 import { historicalHouseAssetManifest } from "./historicalHouseAssetManifest.generated";
 
@@ -15,10 +16,12 @@ type AssetRecord = {
   readonly meta: HistoricalHouseAssetMeta;
   status: "idle" | "loading" | "ready" | "missing";
   image: HTMLImageElement | null;
+  raster: RasterizedWorldSprite | null;
+  rasterError: string | null;
 };
 const records: AssetRecord[] = historicalHouseAssetManifest.map(meta => ({
   meta: { ...meta, url: assetUrlForBase(meta.url, import.meta.env?.BASE_URL ?? "/") },
-  status: "idle", image: null,
+  status: "idle", image: null, raster: null, rasterError: null,
 }));
 let preloadPromise: Promise<void> | null = null;
 
@@ -29,11 +32,17 @@ export function preloadHistoricalHouseAssets(): Promise<void> {
     try {
       const image = new Image();
       image.onload = () => {
-        if (image.naturalWidth === record.meta.width && image.naturalHeight === record.meta.height) {
-          record.image = image;
-          record.status = "ready";
-        } else record.status = "missing";
-        resolve();
+        try {
+          if (image.naturalWidth === record.meta.width && image.naturalHeight === record.meta.height) {
+            record.image = image;
+            record.status = "ready";
+            const height = TILE_W * 0.88 * record.meta.alphaBounds.height / record.meta.alphaBounds.width;
+            record.raster = rasterizeWorldSprite(image, record.meta.alphaBounds, Math.ceil(height * 2));
+          } else record.status = "missing";
+        } catch (error) {
+          record.raster = null;
+          record.rasterError = error instanceof Error ? error.message : String(error);
+        } finally { resolve(); }
       };
       image.onerror = () => { record.status = "missing"; resolve(); };
       image.src = record.meta.url;
@@ -47,7 +56,7 @@ export function preloadHistoricalHouseAssets(): Promise<void> {
 }
 
 export function historicalHouseAssetStatuses() {
-  return records.map(({ meta, status }) => ({ level: meta.level, url: meta.url, status }));
+  return records.map(({ meta, status, rasterError }) => ({ rasterError, level: meta.level, url: meta.url, status }));
 }
 
 export function historicalHouseAssetMeta(level: number): HistoricalHouseAssetMeta | null {
@@ -70,6 +79,7 @@ export function drawHistoricalHouse(context: CanvasRenderingContext2D, building:
   void preloadHistoricalHouseAssets();
   const record = records.find(candidate => candidate.meta.level === builtLevel);
   if (record?.status !== "ready" || record.image === null) return false;
-  drawCroppedWorldSprite(context, record.image, record.meta.alphaBounds, historicalHouseSpriteRect(building, record.meta));
+  drawCroppedWorldSprite(context, record.raster?.image ?? record.image, record.raster?.source ?? record.meta.alphaBounds,
+    historicalHouseSpriteRect(building, record.meta), false, true);
   return true;
 }
