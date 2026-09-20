@@ -1,20 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
-import { buildWorldGrid } from "../src/world/terrain";
-import { applyOpeningVillageToTile } from "../src/state/openingVillage";
 import { parseGrowthOptions } from "../scripts/phase19GrowthMetrics";
-import { createGrowthInitialState, createGrowthStability } from "../scripts/phase19GrowthRunControl";
+import { createGrowthInitialState, createGrowthStability, InvalidGrowthOpeningError } from "../scripts/phase19GrowthRunControl";
 import { createGrowthObservations } from "../scripts/phase19GrowthObservations";
 
 test("seed selection regenerates terrain deterministically and seed one preserves the opening state", () => {
   const original = structuredClone(DEFAULT_GAME_STATE);
   assert.deepEqual(createGrowthInitialState(1), original);
-  const second = createGrowthInitialState(2);
-  assert.equal(second.seed, 2);
-  assert.deepEqual(second.tiles, buildWorldGrid({ width: 64, height: 64, seed: 2 }).tiles.map(applyOpeningVillageToTile));
-  assert.notDeepEqual(second.tiles, original.tiles);
-  assert.deepEqual(second, createGrowthInitialState(2));
+  assert.deepEqual(createGrowthInitialState(1), createGrowthInitialState(1));
   assert.deepEqual(DEFAULT_GAME_STATE, original);
 });
 
@@ -72,15 +66,24 @@ test("removing a denied house cannot be reported as service recovery", () => {
   assert.equal(observer.report().unresolvedCapacityEpisodes, 1);
 });
 
-test("natural seed two run reports actual initial terrain and separate acceptance failures", async () => {
+test("illegal seeded openings are rejected before the first natural-state callback", async () => {
   const { runPhase19NaturalGrowth } = await import("../scripts/phase19NaturalGrowth");
-  const states: ReturnType<typeof createGrowthInitialState>[] = [];
-  const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2,
-    onState: (label, state) => { if (label === "initial") states.push(state); } });
-  assert.equal(report.seed, 2);
-  assert.deepEqual(states[0], createGrowthInitialState(2));
-  assert.equal(report.acceptance.capacityObserved, false);
-  assert.equal(report.acceptance.capacityRecovered, false);
-  assert.equal(report.acceptance.targetReached, false);
-  assert.equal(report.stopReason, "tick-budget");
+  let callbacks = 0;
+  assert.throws(() => runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2,
+    onState: () => { callbacks += 1; } }), /Invalid opening fixture for seed 2/);
+  assert.equal(callbacks, 0);
+});
+
+test("seeded opening rejects water occupancy and missing required forest without modifying terrain", () => {
+  for (const seed of [2, 3, 4, 5]) {
+    assert.throws(() => createGrowthInitialState(seed), error => {
+      assert.ok(error instanceof InvalidGrowthOpeningError);
+      assert.equal(error.code, "invalid-opening-fixture");
+      assert.ok(error.issues.length > 0 && error.issues.length <= 32);
+      assert.match(error.message, new RegExp(`Invalid opening fixture for seed ${seed}`));
+      assert.match(error.message, seed === 2 ? /wrong_terrain/ : /needs_adjacent_terrain/);
+      return true;
+    });
+  }
+  assert.deepEqual(createGrowthInitialState(1), DEFAULT_GAME_STATE);
 });
