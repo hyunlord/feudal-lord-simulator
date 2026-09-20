@@ -26,7 +26,8 @@ export function drawMasonrySolid(context: CanvasRenderingContext2D, solid: Stone
       if (tileMaterial) {
         context.transform((b.x - a.x) / length, (b.y - a.y) / length, 0, 1, a.x, a.y - base - height);
         for (let x = 0; x < length; x += 3) {
-          for (let y = 0; y < height; y += 9) context.drawImage(material.image, 0, 0, 60, 180, x, y, 3, 9);
+          for (let y = 0; y < height; y += 9) drawCroppedWorldSprite(context, material.image,
+            { x: 0, y: 0, width: 60, height: 180 }, { x, y, width: 3, height: 9 }, false, true);
         }
         context.restore();
         continue;
