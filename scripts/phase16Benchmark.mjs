@@ -2,6 +2,7 @@ import { gunzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { cpus, platform, release, arch } from 'node:os';
 import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
@@ -25,6 +26,7 @@ const zoom = Number(flags.zoom ?? 1);
 const camera = { zoom, panX: 800, panY: 500 - 1440 * zoom };
 const rounds = [];
 const cameraChecks = [];
+const cacheRounds = [];
 const errors = [];
 try {
   for (let round = 0; round < (flags['capture-only'] === 'true' ? 1 : 4); round++) {
@@ -52,6 +54,7 @@ try {
     await page.waitForTimeout(1500);
     const actualCamera = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.diagnosis().camera);
     if (actualCamera.zoom !== camera.zoom) throw new Error('Camera zoom mismatch');
+    const cacheBefore = await page.evaluate(async () => { const cache = await import('/src/render/worldRasterCache.ts'); const context = document.querySelector('canvas').getContext('2d'); return cache.worldRasterCacheDiagnostics?.(context) ?? null; });
     const beforeTick = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.snapshot().tick);
     if (condition === 'paused' && beforeTick !== state.tick) throw new Error('Paused state advanced unexpectedly');
     const beforePoint = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint({tx:45,ty:45}));
@@ -92,6 +95,8 @@ try {
     const afterTick = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.snapshot().tick);
     if (condition === 'paused' && afterTick !== beforeTick) throw new Error('Paused state advanced while sampling');
     const afterPoint = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.tileClientPoint({tx:45,ty:45}));
+    const cacheAfter = await page.evaluate(async () => { const cache = await import('/src/render/worldRasterCache.ts'); const context = document.querySelector('canvas').getContext('2d'); return cache.worldRasterCacheDiagnostics?.(context) ?? null; });
+    cacheRounds.push({before:cacheBefore,after:cacheAfter});
     cameraChecks.push({before:beforePoint,after:afterPoint,beforeTick,afterTick});
     if (Math.abs(afterPoint.clientY - beforePoint.clientY) > .01) throw new Error('Camera clamped vertically during horizontal drag');
     if (condition === 'drag' && Math.abs(afterPoint.clientX - beforePoint.clientX) < 1) throw new Error('Drag did not move the real game camera');
@@ -101,7 +106,7 @@ try {
   }
   if (flags['capture-only'] === 'true') { await browser.close(); process.exit(0); }
   const samples = rounds.slice(1).flat().sort((a, b) => a - b);
-  const result = { task, variant, dpr, condition, browser: browser.version(), commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8', cwd: sourceRoot }).trim(), sourceDiffSha256: createHash('sha256').update(execFileSync('git', ['diff', 'HEAD'], {cwd:sourceRoot})).digest('hex'), stateSha256, population: state.houses.reduce((n, h) => n + h.residents, 0), camera, viewport: { width: 1600, height: 1100 }, dragPixelsPerSecond: condition === 'drag' ? 200 : 0, warmupRoundDiscarded: true, cameraChecks, median: samples[Math.floor(samples.length / 2)], p95: samples[Math.floor(samples.length * .95)], rounds, errors };
+  const result = { measuredAt: new Date().toISOString(), host: { platform: platform(), release: release(), arch: arch(), cpu: cpus()[0]?.model }, task, variant, dpr, condition, browser: browser.version(), commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8', cwd: sourceRoot }).trim(), sourceDiffSha256: createHash('sha256').update(execFileSync('git', ['diff', 'HEAD'], {cwd:sourceRoot})).digest('hex'), stateSha256, population: state.houses.reduce((n, h) => n + h.residents, 0), camera, viewport: { width: 1600, height: 1100 }, dragPixelsPerSecond: condition === 'drag' ? 200 : 0, warmupRoundDiscarded: true, cameraChecks, cacheRounds, median: samples[Math.floor(samples.length / 2)], p95: samples[Math.floor(samples.length * .95)], rounds, errors };
   await writeFile(`${output}/${task}-${variant}-dpr${dpr}-${condition}.json`, JSON.stringify(result, null, 2));
   console.log(JSON.stringify({ ...result, rounds: undefined }));
   if (errors.length) process.exitCode = 1;
