@@ -24,10 +24,18 @@ export function drawMasonrySolid(context: CanvasRenderingContext2D, solid: Stone
       context.clip();
       const length = Math.max(2, Math.hypot(b.x - a.x, b.y - a.y));
       if (tileMaterial) {
-        context.transform((b.x - a.x) / length, (b.y - a.y) / length, 0, 1, a.x, a.y - base - height);
-        for (let x = 0; x < length; x += 3) {
-          for (let y = 0; y < height; y += 9) drawCroppedWorldSprite(context, material.image,
-            { x: 0, y: 0, width: 60, height: 180 }, { x, y, width: 3, height: 9 }, false, true);
+        const direction = b.x < a.x || (b.x === a.x && b.y < a.y) ? -1 : 1;
+        const faceLength = Math.hypot(b.x - a.x, b.y - a.y);
+        const tx = (b.x - a.x) / faceLength * direction;
+        const ty = (b.y - a.y) / faceLength * direction;
+        const start = a.x * tx + a.y * ty;
+        const end = b.x * tx + b.y * ty;
+        context.transform(tx, ty, 0, 1, a.x - tx * start, a.y - ty * start);
+        for (let x = Math.floor(Math.min(start, end) / 3) * 3; x < Math.max(start, end); x += 3) {
+          for (let y = Math.floor(-(base + height) / 9) * 9; y < -base; y += 9) {
+            drawCroppedWorldSprite(context, material.image,
+              { x: 0, y: 0, width: 60, height: 180 }, { x, y, width: 3, height: 9 }, false, true);
+          }
         }
         context.restore();
         continue;
@@ -64,4 +72,23 @@ export function drawMasonrySolid(context: CanvasRenderingContext2D, solid: Stone
   }
   context.closePath();
   context.fill();
+  if (material !== null && tileMaterial) {
+    context.save();
+    context.clip();
+    const us = footprint.map(point => point.x / 2 + point.y);
+    const vs = footprint.map(point => point.y - point.x / 2);
+    context.transform(1, 0.5, -1, 0.5, 0, -base - height);
+    for (let u = Math.floor(Math.min(...us) / 3) * 3; u < Math.max(...us); u += 3) {
+      for (let v = Math.floor(Math.min(...vs) / 3) * 3; v < Math.max(...vs); v += 3) {
+        drawCroppedWorldSprite(context, material.image,
+          { x: 0, y: 0, width: 60, height: 60 }, { x: u, y: v, width: 3, height: 3 }, false, true);
+      }
+    }
+    context.restore();
+    context.save();
+    context.globalAlpha = opacity * 0.22;
+    context.fillStyle = RAMPS.stone[4];
+    context.fill();
+    context.restore();
+  }
 }

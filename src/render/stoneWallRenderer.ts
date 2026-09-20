@@ -32,7 +32,7 @@ export function drawStoneWall(context: CanvasRenderingContext2D, input: Readonly
   }
   for (const node of input.nodes ?? []) {
     if (node.kind === "gate" && drawRegisteredGate(context, node, "stone")) continue;
-    for (const solid of stoneWallNodeSolids(node)) drawMasonrySolid(context, solid, stoneWallMaterial());
+    for (const solid of stoneWallNodeSolids(node)) drawMasonrySolid(context, solid, stoneWallMaterial(), node.kind !== "gate");
   }
 }
 
