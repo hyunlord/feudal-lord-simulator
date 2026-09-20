@@ -1,3 +1,5 @@
+import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
 import { parseArchivedAssetHashes, verifyAcceptedArtCategories } from "./acceptedArtVerification";
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -277,6 +279,9 @@ const main = (): number => { // no-excuse-ok: catch
       verifyWorldAssets(repoRoot, phase4bRoot, {
         mode: mode === "--accepted-art" ? "accepted-art" : mode === "--phase13-full-colour" ? "phase13-full-colour" : "legacy-promotions",
       });
+    }
+    if (mode === "--accepted-art" && existsSync(path.join(repoRoot, "docs/asset-evidence/runtime-sources/derivatives.json"))) {
+      execFileSync("python3", [path.join(repoRoot, "scripts/downscaleRuntimeAssets.py"), "--verify"], { stdio: "inherit" });
     }
     writeFileSync(1, "World asset release verification passed\n");
     return 0;

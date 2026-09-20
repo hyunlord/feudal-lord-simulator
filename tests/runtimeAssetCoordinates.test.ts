@@ -20,9 +20,9 @@ test("derived crops preserve registration under base URLs and reject mismatched 
     const image = imageAt(meta.width, meta.height);
     assert.equal(registerRuntimeAsset(image, `/game/${meta.url}`, meta.originalWidth, meta.originalHeight), true);
     const actual = runtimeAssetCrop(image, crop);
-    assert.deepEqual(actual, { x: crop.x * meta.width / meta.originalWidth,
-      y: crop.y * meta.height / meta.originalHeight,
-      width: crop.width * meta.width / meta.originalWidth, height: crop.height * meta.height / meta.originalHeight });
+    assert.deepEqual(actual, { x: crop.x * (meta.width / meta.originalWidth),
+      y: crop.y * (meta.height / meta.originalHeight),
+      width: crop.width * (meta.width / meta.originalWidth), height: crop.height * (meta.height / meta.originalHeight) });
     assert.equal(registerRuntimeAsset(imageAt(meta.width, meta.height), meta.url, meta.originalWidth + 1, meta.originalHeight), false);
   }
 });

@@ -11,7 +11,7 @@ import json
 import math
 import sys
 from pathlib import Path
-from typing import Final, TypedDict, NotRequired
+from typing import Final, TypedDict
 
 from PIL import Image
 
@@ -75,7 +75,7 @@ def bounds(image: Image.Image) -> Bounds:
 def authored_array(filename: str) -> list[AuthoredAsset]:
     text = (ROOT / "src/render" / filename).read_text()
     start = text.index("= [") + 2
-    end = text.rindex("]") + 1
+    end = text.index("] as const", start) + 1
     return json.loads(text[start:end])
 
 
@@ -102,6 +102,8 @@ def fallback_width(relative: str) -> int:
         return 136
     if "runtime-mill-v1/mill_sails" in relative:
         return 104
+    if "soil_loam-v1.png" in relative:
+        return 1254  # Existing tiling material is excluded from runtime sprite downscaling.
     if "historical-farm/layers/" in relative:
         return 128  # Retain headroom for the existing 64px canopy source buffer.
     if "historical-farm" in relative:
@@ -130,7 +132,7 @@ def generate(runtime: Path, capture: bool, verify: bool, targets: dict[str, int]
     resized = image.resize(size, Image.Resampling.LANCZOS)
     buffer = io.BytesIO()
     resized.save(buffer, format="PNG", optimize=False, compress_level=9)
-    data = buffer.getvalue()
+    data = original if size == image.size else buffer.getvalue()
     if verify:
         if runtime.read_bytes() != data:
             raise RuntimeError(f"Non-reproducible derivative: {runtime}")
