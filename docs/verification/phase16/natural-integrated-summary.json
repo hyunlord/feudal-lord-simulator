@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "provenance": {
+    "commit": "5e4f6bb9e8938e4146c12c3419816a688ba1e1de",
+    "sourceSha256": "64be771397bc88d2d04ce09a4b96177d93c3b8520deed83c8c754e5cd474951a",
+    "sourceFiles": 409,
+    "dirty": false
+  },
+  "seed": 1,
+  "initialTick": 0,
+  "source": "Unmodified DEFAULT_GAME_STATE; real advisor cadence, gameReducer and advanceTick; no resource, building or population injection",
+  "maxTicks": 600000,
+  "firstFourL4Tick": 400129,
+  "victoryTick": 401328,
+  "victoryEligibleTicks": 1200,
+  "stableSince": 403877,
+  "sustainedTicks": 24000,
+  "stableMinimumBread": 8,
+  "stableEmptyFoodTicks": 0,
+  "stabilityInterruptions": 1,
+  "actions": 67,
+  "milestones": [
+    {
+      "kind": "first-four-l4",
+      "state": {
+        "tick": 400129,
+        "era": "stone_town",
+        "population": 176,
+        "houses": 8,
+        "l4Houses": 8,
+        "occupiedL4Lots": 8,
+        "constructionSites": 0,
+        "minimumHouseBread": 6,
+        "coverage": {
+          "water": 8,
+          "market": 8,
+          "church": 8
+        }
+      }
+    },
+    {
+      "kind": "victory",
+      "state": {
+        "tick": 401328,
+        "era": "stone_town",
+        "population": 240,
+        "houses": 8,
+        "l4Houses": 8,
+        "occupiedL4Lots": 8,
+        "constructionSites": 1,
+        "minimumHouseBread": 12,
+        "coverage": {
+          "water": 8,
+          "market": 8,
+          "church": 8
+        }
+      }
+    },
+    {
+      "kind": "stable-complete",
+      "state": {
+        "tick": 427877,
+        "era": "stone_town",
+        "population": 256,
+        "houses": 8,
+        "l4Houses": 8,
+        "occupiedL4Lots": 8,
+        "constructionSites": 0,
+        "minimumHouseBread": 12,
+        "coverage": {
+          "water": 8,
+          "market": 8,
+          "church": 8
+        }
+      }
+    }
+  ],
+  "final": {
+    "tick": 427877,
+    "era": "stone_town",
+    "population": 256,
+    "houses": 8,
+    "l4Houses": 8,
+    "occupiedL4Lots": 8,
+    "constructionSites": 0,
+    "minimumHouseBread": 12,
+    "coverage": {
+      "water": 8,
+      "market": 8,
+      "church": 8
+    }
+  },
+  "failures": [],
+  "elapsedSeconds": 102.434702875
+}

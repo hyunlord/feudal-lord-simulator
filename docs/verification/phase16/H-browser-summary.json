@@ -1,0 +1,57 @@
+{
+  "method": "ActualUI normalinitialstate: waitfoodservice, removealltargethouseroadcontacts, advancegrace, restore roads andwaitdelivery. No stateinjection.",
+  "errors": [],
+  "before": {
+    "tick": 202,
+    "house": {
+      "buildingId": "house-46-40-0",
+      "residents": 4,
+      "level": 3,
+      "breadStock": 3,
+      "lastServicedTick": 191
+    }
+  },
+  "cut": {
+    "tick": 202
+  },
+  "degraded": {
+    "tick": 2052,
+    "house": {
+      "buildingId": "house-46-40-0",
+      "residents": 14,
+      "level": 1,
+      "breadStock": 0,
+      "lastServicedTick": 191
+    }
+  },
+  "degradedInspector": "주택 · 생활 등급 1\n\n상인가옥\n×\n\n생활 등급 1 · 주민 14명 / 정원 8명 · 1×1칸\n\n건축 단계\n3단계 · 보수 필요\n물\n우물에서 2칸\n빵\n곡창에 빵이 없습니다 — 방앗간 확인\n인구\n유지 또는 성장 중\n주택 발전 조건\n인접 주택 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n철거하면 주민 14명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거",
+  "art": [
+    {
+      "condition": "strained",
+      "url": "http://127.0.0.1:3229/assets/phase16-house-condition/house_l3-strained-v1.png",
+      "loaded": true
+    },
+    {
+      "condition": "neglected",
+      "url": "http://127.0.0.1:3229/assets/phase16-house-condition/house_l3-neglected-v1.png",
+      "loaded": true
+    },
+    {
+      "condition": "vacant",
+      "url": "http://127.0.0.1:3229/assets/phase16-house-condition/house_l3-vacant-v1.png",
+      "loaded": true
+    }
+  ],
+  "recovered": {
+    "tick": 2842,
+    "house": {
+      "buildingId": "house-46-40-0",
+      "residents": 15,
+      "level": 3,
+      "breadStock": 0,
+      "lastServicedTick": 2791
+    }
+  },
+  "recoveredInspector": "주택 · 생활 등급 3\n\n상인가옥\n×\n\n생활 등급 3 · 주민 15명 / 정원 22명 · 1×1칸\n\n건축 단계\n3단계 · 관리 양호\n물\n우물에서 2칸\n빵\n곡창에 빵이 없습니다 — 방앗간 확인\n인구\n유지 또는 성장 중\n주택 발전 조건\n인접 주택 합필\n\n같은 발전 단계의 인접 주택과 합쳐 주민과 식량을 보존합니다.\n\n철거하면 주민 15명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거",
+  "status": "PASS"
+}

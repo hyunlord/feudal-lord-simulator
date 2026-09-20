@@ -34,4 +34,4 @@ Active interval is approximately 3× faster. This remains roughly15 FPS in this 
 - `src/render/drawPalisadeSegments.ts`: preserves original draw function and uses the cache only for completed wall units.
 - `tests/worldRasterCache.test.ts`: transform/viewport/content key boundary.
 
-Scripts/results: `performance-browser.mjs/.json`, `performance-parity.mjs/.json`, `performance-tests.log`. Individual screenshots: [baseline](performance-baseline.png), [cached](performance-cached.jpg).
+Scripts/results: `performance-browser.mjs/.json`, `performance-parity.mjs/.json`, `performance-tests.log`. Individual screenshot: [cached](performance-cached.jpg). The historical baseline capture was already absent from the Phase 16 base commit; no replacement baseline is claimed.

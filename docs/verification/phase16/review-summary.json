@@ -1,0 +1,88 @@
+{
+  "commit": "5e4f6bb9e8938e4146c12c3419816a688ba1e1de",
+  "url": "http://127.0.0.1:3229/",
+  "reviewer": "p16_final_qa",
+  "I": {
+    "status": "PASS",
+    "cases": 8,
+    "fixture": "seeded; actual UI click and keyboard O"
+  },
+  "F2": {
+    "status": "PASS",
+    "fixture": "controlled spacious enclosed-town state; actual renderer and road tool",
+    "placedRemovedTooltipRestored": true
+  },
+  "occlusion": {
+    "synthetic": true,
+    "count": 240,
+    "failures": [],
+    "maximumRoadOnOpaque": 0,
+    "maximumRearWallOnOpaque": 0
+  },
+  "visual": {
+    "status": "PASS with disclosed limitations",
+    "viewed": [
+      "I-horizontal-selected.jpg",
+      "I-vertical-selected.jpg",
+      "landscape.jpg",
+      "landscape-road.jpg",
+      "candidate-house-before-actual-ui.jpg",
+      "candidate-house-degraded-actual-ui.jpg",
+      "candidate-house-recovered-actual-ui.jpg",
+      "F1-after.jpg"
+    ],
+    "limitations": [
+      "Diagonal fallback crenellation tops remain flat grey, visibly less detailed than cardinal sprite tops.",
+      "H damage marks are subtle at normal game scale; inspector state is clearer.",
+      "F1 cardinal stair steps are intentionally unchanged."
+    ],
+    "CJK": "Viewed inspector and menu labels readable; no clipping seen at tested desktop sizes."
+  },
+  "notClaimed": [
+    "natural late-game growth",
+    "performance improvement",
+    "full regression suite",
+    "new aesthetic approval by user"
+  ],
+  "H": {
+    "status": "PASS",
+    "method": "ActualUI normalinitialstate: waitfoodservice, removealltargethouseroadcontacts, advancegrace, restore roads andwaitdelivery. No stateinjection.",
+    "before": {
+      "tick": 204,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "residents": 4,
+        "level": 3,
+        "breadStock": 3,
+        "lastServicedTick": 191
+      }
+    },
+    "degraded": {
+      "tick": 2049,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "residents": 14,
+        "level": 1,
+        "breadStock": 0,
+        "lastServicedTick": 191
+      }
+    },
+    "recovered": {
+      "tick": 2849,
+      "house": {
+        "buildingId": "house-46-40-0",
+        "residents": 15,
+        "level": 3,
+        "breadStock": 0,
+        "lastServicedTick": 2791
+      }
+    },
+    "targetOnlyDegradedDraws": {
+      "http://127.0.0.1:3229/assets/phase16-house-condition/house_l3-neglected-v1.png": 3
+    },
+    "targetOnlyRecoveredDraws": {},
+    "pageErrors": []
+  },
+  "status": "PASS",
+  "ownedBrowsers": "All launched browsers closed after scripts exited0"
+}

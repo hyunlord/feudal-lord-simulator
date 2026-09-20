@@ -1,0 +1,481 @@
+{
+  "rows": [
+    {
+      "task": "A",
+      "dpr": 1,
+      "condition": "paused",
+      "before": 49.899999999999636,
+      "after": 49.899999999999636,
+      "beforeP95": 66.60000000000036,
+      "afterP95": 66.59999999999991
+    },
+    {
+      "task": "A",
+      "dpr": 1,
+      "condition": "running",
+      "before": 50,
+      "after": 50,
+      "beforeP95": 66.69999999999982,
+      "afterP95": 66.69999999999982
+    },
+    {
+      "task": "A",
+      "dpr": 1,
+      "condition": "drag",
+      "before": 50.100000000000364,
+      "after": 66.59999999999945,
+      "beforeP95": 66.70000000000073,
+      "afterP95": 66.69999999999982
+    },
+    {
+      "task": "A",
+      "dpr": 2,
+      "condition": "paused",
+      "before": 83.30000000000018,
+      "after": 83.30000000000018,
+      "beforeP95": 100,
+      "afterP95": 100.09999999999945
+    },
+    {
+      "task": "A",
+      "dpr": 2,
+      "condition": "running",
+      "before": 100,
+      "after": 83.40000000000055,
+      "beforeP95": 150,
+      "afterP95": 100
+    },
+    {
+      "task": "A",
+      "dpr": 2,
+      "condition": "drag",
+      "before": 83.40000000000055,
+      "after": 83.40000000000055,
+      "beforeP95": 100,
+      "afterP95": 100.09999999999945
+    },
+    {
+      "task": "E",
+      "dpr": 1,
+      "condition": "paused",
+      "before": 49.90000000000009,
+      "after": 49.90000000000009,
+      "beforeP95": 66.69999999999982,
+      "afterP95": 66.59999999999991,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        }
+      ],
+      "maxPixels": 234425
+    },
+    {
+      "task": "E",
+      "dpr": 1,
+      "condition": "running",
+      "before": 50,
+      "after": 50,
+      "beforeP95": 66.69999999999982,
+      "afterP95": 66.69999999999982,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        }
+      ],
+      "maxPixels": 234425
+    },
+    {
+      "task": "E",
+      "dpr": 1,
+      "condition": "drag",
+      "before": 66.59999999999945,
+      "after": 50,
+      "beforeP95": 66.70000000000073,
+      "afterP95": 66.70000000000073,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3572,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        }
+      ],
+      "maxPixels": 234425
+    },
+    {
+      "task": "E",
+      "dpr": 2,
+      "condition": "paused",
+      "before": 83.39999999999964,
+      "after": 83.29999999999927,
+      "beforeP95": 116.69999999999982,
+      "afterP95": 83.40000000000055,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        }
+      ],
+      "maxPixels": 869680
+    },
+    {
+      "task": "E",
+      "dpr": 2,
+      "condition": "running",
+      "before": 83.40000000000055,
+      "after": 83.30000000000018,
+      "beforeP95": 100.10000000000036,
+      "afterP95": 100,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        }
+      ],
+      "maxPixels": 869680
+    },
+    {
+      "task": "E",
+      "dpr": 2,
+      "condition": "drag",
+      "before": 83.40000000000055,
+      "after": 83.30000000000018,
+      "beforeP95": 100.10000000000036,
+      "afterP95": 100,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0,
+          "rasterMs": 0.0
+        }
+      ],
+      "maxPixels": 869680
+    }
+  ],
+  "ratios": [
+    {
+      "dpr": 1,
+      "dragToPaused": 1.0020040080160302,
+      "dragToRunning": 1.0
+    },
+    {
+      "dpr": 2,
+      "dragToPaused": 1.0000000000000109,
+      "dragToRunning": 1.0
+    }
+  ],
+  "integrated": [
+    {
+      "dpr": 1,
+      "condition": "drag",
+      "median": 50,
+      "p95": 66.70000000000073,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3572,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        }
+      ],
+      "pixels": 234486
+    },
+    {
+      "dpr": 1,
+      "condition": "paused",
+      "median": 49.90000000000009,
+      "p95": 66.69999999999982,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3572,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        }
+      ],
+      "pixels": 234486
+    },
+    {
+      "dpr": 1,
+      "condition": "running",
+      "median": 50,
+      "p95": 66.70000000000073,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        }
+      ],
+      "pixels": 234486
+    },
+    {
+      "dpr": 2,
+      "condition": "drag",
+      "median": 83.30000000000018,
+      "p95": 100,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        }
+      ],
+      "pixels": 867870
+    },
+    {
+      "dpr": 2,
+      "condition": "paused",
+      "median": 83.19999999999982,
+      "p95": 83.40000000000055,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        }
+      ],
+      "pixels": 867870
+    },
+    {
+      "dpr": 2,
+      "condition": "running",
+      "median": 83.30000000000018,
+      "p95": 100,
+      "cacheDelta": [
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        },
+        {
+          "hits": 3648,
+          "misses": 0,
+          "evictions": 0
+        }
+      ],
+      "pixels": 867870
+    }
+  ],
+  "reverseConfirmation": [
+    {
+      "variant": "after",
+      "median": 50.100000000000364,
+      "p95": 66.70000000000073,
+      "mean": 58.330000000000005
+    },
+    {
+      "variant": "before",
+      "median": 66.59999999999945,
+      "p95": 66.79999999999927,
+      "mean": 58.47083333333334
+    }
+  ],
+  "acceptance": {
+    "A_static_median_improvement": false,
+    "E_drag_to_stationary_max_1_5": true,
+    "frame_cpu_cost_measured": false
+  }
+}
