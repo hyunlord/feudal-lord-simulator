@@ -75,8 +75,8 @@ flowchart LR
 ## 직접 보는 화면
 
 - 오류 재현용 실제 렌더러 배치: [수정 전](verification/town-systems-v2/occlusion-before.png), [수정 후](verification/town-systems-v2/occlusion-after.png).
-- 자연 엔진 성장 상태를 실제 개발 UI에서 확인: [도시·L4 주택과 공급 상태](verification/town-systems-v2/grown-town-house.png), [교회](verification/town-systems-v2/grown-town-church.png), [시장](verification/town-systems-v2/grown-town-market.png).
-- 같은 자연 도시의 길 단절 실험: [생활등급 하락·건축 외형 유지](verification/town-systems-v2/strained-house.png), [복구·새 배급 도착](verification/town-systems-v2/recovered-house.png).
+- 자연 엔진 성장 상태를 실제 개발 UI에서 확인: [도시·L4 주택과 공급 상태](verification/town-systems-v2/grown-town-house.jpg), [교회](verification/town-systems-v2/grown-town-church.jpg), [시장](verification/town-systems-v2/grown-town-market.jpg).
+- 같은 자연 도시의 길 단절 실험: [생활등급 하락·건축 외형 유지](verification/town-systems-v2/strained-house.jpg), [복구·새 배급 도착](verification/town-systems-v2/recovered-house.jpg).
 
 ## 변경 파일과 검증 범위
 

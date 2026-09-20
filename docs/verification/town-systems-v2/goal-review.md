@@ -23,7 +23,7 @@
 - 자연 실행이 매틱 안정 조건을 검사하는 스크립트를 읽었고, 기록된18소스 SHA를 독립 재검산해 모두 일치했다.
 - `growth/final-state-food-window.json`: 추가12000틱(415877→427877) 전가구최저L4/32명, 빵고갈틱0, 하락0. 가구별 재고변화로 산출한 공급량120씩, 합960. 이는 별도 운송 이벤트 계수보다 재고변화 기반 추정치다.
 - `evidence/interactions.json`:415877 도로단절→시장/교회불통→416278 생활L3·건축L4→복구→416301 빵재배급·생활L4. 건물/식량/자원 주입 없이 실제 reducer와 틱 실행.
-- `grown-town-browser.json`, `strained-browser.json`, `recovered-browser.json`의 tick이 최신 상태와 각각 일치하고 오류목록은 비어 있다. `grown-town-house.png`를 직접 열어256명·L4·시장/교회공급 진단과 불투명 주택/지상 도로를 확인했다.
+- `grown-town-browser.json`, `strained-browser.json`, `recovered-browser.json`의 tick이 최신 상태와 각각 일치하고 오류목록은 비어 있다. `grown-town-house.jpg`를 직접 열어256명·L4·시장/교회공급 진단과 불투명 주택/지상 도로를 확인했다.
 - 실제UI 도로철거·복구 최신 근거는 `independent-qa-browser.json`/`qa-review.md`다. 이전 `interaction-ui-browser.json`은520000틱 구실행이므로 최신 자연 결과의 증거로 혼용하지 않는다.
 - `evidence/full-tests.log`:1466/1466 통과 확인. 전체 테스트를 본 감사가 다시 실행한 것은 아니며 별도 독립 배치/서비스 및 수정 회귀 실행 범위는 위 기록과 같다.
 

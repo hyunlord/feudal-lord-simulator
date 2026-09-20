@@ -2,7 +2,7 @@
 
 Verdict: PASS for the service diagnostics and facility-capacity UI scope.
 
-Reviewed latest four screenshots (2026-09-20 06:44 local): `services-disconnected.png`, `services-restored.png`, `service-capacity.png`, `service-capacity-mobile.png`; also inspected `browser-services.mjs` and `evidence/browser-services.json`.
+Reviewed latest four screenshots (2026-09-20 06:44 local): `services-disconnected.jpg`, `services-restored.jpg`, `service-capacity.jpg`, `service-capacity-mobile.jpg`; also inspected `browser-services.mjs` and `evidence/browser-services.json`.
 
 - Disconnected scene visibly has a road gap and both market/church rows report no connected road. The combined L4 requirement row includes both causes and the missing completed wall requirement.
 - Restored scene visibly reconnects the road. Both service rows return to available, with market1/24 and church1/32 **lots**, not residents. Missing wall requirement remains, so restoring the road does not falsely claim L4 readiness.

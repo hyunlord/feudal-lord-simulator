@@ -130,7 +130,7 @@ Phase 3 loop:
   representative agents rather than one-to-one population records.
 - Headless simulation must remain deterministic even if later presentation
   effects are allowed to vary.
-- Housing has four levels, represented by values 0 through 3.
+- Housing has five levels, 0 through 4; level names are display-only and live in `content/housingConfig.ts`.
 
 
 ## Simulation flow v1 (2026-09-20)
@@ -156,3 +156,19 @@ Phase 3 loop:
   Planned building approach roads connect to real supply sources and leave
   the future footprint clear. Its automatic housing expansion is capped at
   eight lots; manual building is unrestricted.
+
+
+## Phase 16: building visibility and church staffing
+
+- Phase 14 density and cursor-overlap translucency was abandoned in
+  town-systems-v2 because roads and rear walls showed through otherwise solid
+  houses. Ordinary buildings remain opaque. Explicit outlines remain available;
+  Phase 16 selection hover outlines only the foreground building obscuring the
+  target tile, without making roads or walls translucent.
+- Church `workersRequired: 0` remains intentional for this phase. Clergy are
+  abstracted outside the workforce pool. Adding a staffing requirement is a
+  separate economy decision and requires another natural-growth verification.
+- Presentation screenshots are stored as JPEG, at most 1600 pixels on either
+  axis, quality 85. Pixel/alpha comparison baselines remain PNG. This reduces
+  current checkout size; no Git history is rewritten and historical clone size
+  is not claimed to shrink.

@@ -2,10 +2,10 @@
 
 Opened original PNG files directly with image viewer:
 
-- `performance-baseline.png` and `performance-cached.png` (1600×1100)
-- `services-connected.png`, `services-disconnected.png`, `services-restored.png` (1600×1100)
-- `service-capacity.png` (1600×1100)
-- `service-capacity-mobile.png` (390×844)
+- `performance-baseline.png` and `performance-cached.jpg` (1600×1100)
+- `services-connected.png`, `services-disconnected.jpg`, `services-restored.jpg` (1600×1100)
+- `service-capacity.jpg` (1600×1100)
+- `service-capacity-mobile.jpg` (390×844)
 
 ## Observed
 

@@ -33,7 +33,7 @@
 - 실제 UI로 도로 삭제→시장·교회 차단→도로 재설치→서비스 복구. 수용량 표기와 모바일 가로 넘침 검사, 브라우저 오류0건. 해당 화면은 의도적으로 구성한 검증 도시다.
 - 기본 시작 정상 엔진 실행은386808틱 승리,392808틱까지 유지. 인구176·석벽19/19·거부 행동0·비정상 재고0. 급수8/8이지만 시장은8집 모두 거리 초과, 교회는 미건설이다. 자동 개발은 아직 L4 서비스 전체 충족보다 기존 승리 조건을 우선한다.
 
-[렌더 화면](verification/priority-simulation-v1/performance-cached.png) · [길 단절](verification/priority-simulation-v1/services-disconnected.png) · [복구](verification/priority-simulation-v1/services-restored.png) · [수용량](verification/priority-simulation-v1/service-capacity.png)
+[렌더 화면](verification/priority-simulation-v1/performance-cached.jpg) · [길 단절](verification/priority-simulation-v1/services-disconnected.jpg) · [복구](verification/priority-simulation-v1/services-restored.jpg) · [수용량](verification/priority-simulation-v1/service-capacity.jpg)
 
 ## 재현과 이식성
 
