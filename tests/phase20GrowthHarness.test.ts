@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { parseGrowthOptions } from "../scripts/phase19GrowthMetrics";
-import { createGrowthInitialState, createGrowthStability, InvalidGrowthOpeningError } from "../scripts/phase19GrowthRunControl";
+import { createGrowthInitialState, createGrowthStability } from "../scripts/phase19GrowthRunControl";
 import { createGrowthObservations } from "../scripts/phase19GrowthObservations";
 
 test("seed selection regenerates terrain deterministically and seed one preserves the opening state", () => {
@@ -66,24 +66,13 @@ test("removing a denied house cannot be reported as service recovery", () => {
   assert.equal(observer.report().unresolvedCapacityEpisodes, 1);
 });
 
-test("illegal seeded openings are rejected before the first natural-state callback", async () => {
+test("approved translated seed two is explicitly labeled as a verification fixture", async () => {
   const { runPhase19NaturalGrowth } = await import("../scripts/phase19NaturalGrowth");
-  let callbacks = 0;
-  assert.throws(() => runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2,
-    onState: () => { callbacks += 1; } }), /Invalid opening fixture for seed 2/);
-  assert.equal(callbacks, 0);
-});
-
-test("seeded opening rejects water occupancy and missing required forest without modifying terrain", () => {
-  for (const seed of [2, 3, 4, 5]) {
-    assert.throws(() => createGrowthInitialState(seed), error => {
-      assert.ok(error instanceof InvalidGrowthOpeningError);
-      assert.equal(error.code, "invalid-opening-fixture");
-      assert.ok(error.issues.length > 0 && error.issues.length <= 32);
-      assert.match(error.message, new RegExp(`Invalid opening fixture for seed ${seed}`));
-      assert.match(error.message, seed === 2 ? /wrong_terrain/ : /needs_adjacent_terrain/);
-      return true;
-    });
-  }
-  assert.deepEqual(createGrowthInitialState(1), DEFAULT_GAME_STATE);
+  const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2 });
+  assert.equal(report.seed, 2);
+  assert.equal(report.opening.mode, "translated-verification-fixture");
+  assert.equal(report.opening.productSeedFeature, false);
+  assert.deepEqual(report.opening.offset, { tx: 0, ty: -3 });
+  assert.equal(report.final.tick, 1);
+  assert.equal(report.acceptance.targetReached, false);
 });

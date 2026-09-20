@@ -1,12 +1,13 @@
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SETTLEMENT_CONFIG } from "../src/content/settlementConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
-import { createGrowthInitialState, createGrowthStability } from "./phase19GrowthRunControl";
+import { createGrowthStability } from "./phase19GrowthRunControl";
+import { createGrowthOpening } from "./phase21OpeningTranslation";
 import { createAutoplayTraceDriver } from "./economyHarnessAutoplay";
 import { fullServicePopulation, growthGuards, growthSnapshot, invalidGrowthResources, parseGrowthOptions, prosperityEligible } from "./phase19GrowthMetrics";
 import { createGrowthObservations, timingSummary } from "./phase19GrowthObservations";
@@ -31,9 +32,10 @@ export function runPhase19NaturalGrowth(options: {
   const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
   const source = provenance();
   const started = performance.now();
-  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-game-terrain-opening-village`, policy: { maxHousingLots: targetLots } });
+  const opening = createGrowthOpening(seed);
+  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-translated-verification-fixture-offset-${opening.provenance.offset.tx},${opening.provenance.offset.ty}`, policy: { maxHousingLots: targetLots } });
   const observations = createGrowthObservations();
-  let state = createGrowthInitialState(seed);
+  let state = opening.state;
   const stability = createGrowthStability(targetLots);
   const initial = growthSnapshot(state);
   const progress: ReturnType<typeof growthSnapshot>[] = [initial];
@@ -125,11 +127,11 @@ export function runPhase19NaturalGrowth(options: {
     validRun: failures.length === 0 };
   const acceptanceMet = Object.values(acceptance).every(Boolean);
   return {
-    status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, acceptance,
+    status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, opening: opening.provenance, acceptance,
     policy: { maxHousingLots: targetLots }, maxTicks, targetReachedTick, maximumLots,
     stopReason: failures.length > 0 ? "invalid-run" : complete ? "target-scale-stable" : "tick-budget",
     growthBlocker: null,
-    sourceContract: "Game buildWorldGrid(seed) and applyOpeningVillageToTile on cloned DEFAULT_GAME_STATE; seed1 exactly preserves default state; actual reducer and advanceTick; economics and save schema unchanged",
+    sourceContract: "Verification-only rigid opening translation on unchanged buildWorldGrid(seed), nearest legal Manhattan/dy/dx offset; not a product seed feature. Seed1 preserves DEFAULT_GAME_STATE; actual reducer and advanceTick; economics and save schema unchanged",
     capacityEpisodeObserved, victoryTick, victoryEligibleTicks, stableSince, sustainedTicks,
     stableBreadZeroTicks, stableMinimumBread: Number.isFinite(stableMinimumBread) ? stableMinimumBread : null,
     stabilityInterruptions, initial, final, milestones, progress,
@@ -145,6 +147,9 @@ export function runPhase19NaturalGrowth(options: {
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const options = parseGrowthOptions(process.argv.slice(2));
   const out = process.argv[4];
+  if (out !== undefined && existsSync(out) && readdirSync(out).length > 0) {
+    throw new Error("Use an empty output directory; existing growth evidence must not be overwritten");
+  }
   if (out !== undefined) mkdirSync(out, { recursive: true });
   const report = runPhase19NaturalGrowth({ ...options,
     onState: (label, state) => { if (out !== undefined) writeFileSync(resolve(out, `${label}-state.json`), JSON.stringify(state)); },
