@@ -20,17 +20,17 @@ const NONE = { kind: 'none' } as const;
 function outsideHomes(state: GameState): readonly RoamingHouse[] {
   const routes = createSimulationRoutePorts(state).roaming;
   const starts = state.buildings.filter(b => b.kind === 'granary')
-    .flatMap(b => routes.homePath(b.id)?.slice(0, 1) ?? []);
+    .flatMap(b => (routes.homePath(b.id)?.slice(0, 1) ?? []).map(tile => ({ tile, stocked: availableStock(b, 'bread') > 0 })));
   return state.houses.flatMap(house => {
     const building = state.buildings.find(b => b.id === house.buildingId);
     if (building === undefined) return [];
     const home = { ...house, tx: building.tx, ty: building.ty, ...buildingFootprint(building) };
     const paths = starts.flatMap(start => {
-      const path = routes.servicePath?.(start, home);
-      return path == null ? [] : [path.length - 1];
+      const path = routes.servicePath?.(start.tile, home);
+      return path == null ? [] : [{ edges: path.length - 1, stocked: start.stocked }];
     });
     // Disconnection and empty stores require their own repairs, not new storage.
-    return paths.length > 0 && Math.min(...paths) > BALANCE.DISTRIBUTOR_RANGE ? [home] : [];
+    return paths.some(path => path.stocked) && Math.min(...paths.map(path => path.edges)) > BALANCE.DISTRIBUTOR_RANGE ? [home] : [];
   });
 }
 

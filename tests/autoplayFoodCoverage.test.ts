@@ -56,3 +56,12 @@ test('actual distributor origin, rather than nearest granary edge, determines ra
   assert.ok(optimistic.length - 1 <= 40);
   assert.notEqual(foodCoverageAction(state).kind, 'none');
 });
+
+test('stock on another road component cannot fund a food coverage claim', () => {
+  const state = town();
+  state.buildings = [...state.buildings.map(b => b.kind === 'house' ? { ...b, tx: 60 } : b),
+    { ...building('empty-granary', 'granary', 12, 1), inventory: {} }];
+  state.tiles = state.tiles.map(tile => tile.tx === 10 ? { ...tile, terrain: 'water', hasRoad: false }
+    : { ...tile, buildingId: state.buildings.find(b => tile.tx >= b.tx && tile.tx < b.tx + (b.kind === 'house' ? 1 : 2) && tile.ty >= b.ty && tile.ty < b.ty + (b.kind === 'house' ? 1 : 2))?.id ?? null });
+  assert.deepEqual(foodCoverageAction(state), { kind: 'none' });
+});
