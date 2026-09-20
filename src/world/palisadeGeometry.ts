@@ -452,7 +452,7 @@ export function computePalisadeProposal(
     for (const envelope of palisadeLandEnvelopes(grid, footprints, PROPOSAL_MARGIN_TILES)) {
       const candidate = validatePalisadeCandidate(grid, envelope, footprints);
       if (candidate.ok) return { ok: true, path: candidate.candidate.path, runs: candidate.candidate.runs, perimeterSteps: candidate.candidate.perimeterSteps };
-      if (candidate.reason === "building_clearance") failure = candidate.reason;
+      if (hullInBounds && candidate.reason === "building_clearance") failure = candidate.reason;
     }
     return { ok: false, reason: failure };
   }

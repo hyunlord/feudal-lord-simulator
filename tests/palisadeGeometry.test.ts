@@ -215,7 +215,7 @@ test("proposal reports concrete failures for absent footprints and buildings wit
 
   // Then
   assert.deepEqual(empty, { ok: false, reason: "no_footprints" });
-  assert.deepEqual(clipped, { ok: false, reason: "building_clearance" });
+  assert.deepEqual(clipped, { ok: false, reason: "out_of_bounds" });
 });
 
 test("proposal preserves three-tile clearance for verifier regression with water detour", () => {
