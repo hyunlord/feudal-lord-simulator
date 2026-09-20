@@ -1,3 +1,4 @@
+import { foodCoverageAction } from './autoplayFoodCoverage';
 import { foodRecoveryKind } from './autoplayFoodThroughput';
 import { housingLotCount } from "../population/housing";
 import { houseLotArea } from "../geometry/buildingFootprint";
@@ -77,6 +78,8 @@ export function foodAction(state: GameState, buildAction: BuildAction): Autoplay
   const granaryCount = builtOrPlannedCount(state, "granary");
   const target = targetFoodChains(state);
   if (hasPendingFoodChain(state)) return { kind: "none" };
+  const coverage = foodCoverageAction(state);
+  if (coverage.kind !== 'none') return coverage;
   const recovery = foodRecoveryKind(state, rationDemand(state));
   if (recovery !== null) return buildAction(state, recovery);
   if (wheatCount < target && wheatCount <= millCount) return buildAction(state, "wheat_farm");

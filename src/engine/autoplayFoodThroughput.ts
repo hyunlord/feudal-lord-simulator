@@ -10,7 +10,7 @@ function roundTripTicks(edges: number): number {
   return 2 * Math.max(1, Math.ceil(edges / BALANCE.CARTER_SPEED));
 }
 
-/** Conservative planning budget, not measured production: transport can overlap work. */
+/** Route-based planning estimate, not measured output: shared input shortages and overlapping work are not modeled. */
 export function foodRecoveryKind(state: GameState, mealDemand: number): 'wheat_farm' | 'mill' | null {
   if (!state.houses.some(house => houseIsStarving(house, state.tick))) return null;
   const granaries = state.buildings.filter(building => building.kind === 'granary');
