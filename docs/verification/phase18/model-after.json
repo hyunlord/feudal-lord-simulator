@@ -1,0 +1,101 @@
+{
+  "browser": "153.0.8010.48",
+  "commit": "401e9d410e4f246120f85925c0b84ddad041c4ec",
+  "stateSha256": "183c1fa74b4cac58d97e73eb431df1ed534ccad8fe490fbd554f86aa89e64732",
+  "instrumentation": "Entry counters only; model call duration includes counter increment, not a frame measurement",
+  "results": [
+    {
+      "era": "hamlet",
+      "callsPerRound": 100,
+      "warmupRoundDiscarded": true,
+      "elapsedMs": [
+        592,
+        582.8000000119209,
+        584.9000000059605,
+        587.1999999880791
+      ],
+      "counts": [
+        {
+          "proposal": 100,
+          "footprints": 100
+        },
+        {
+          "proposal": 100,
+          "footprints": 100
+        },
+        {
+          "proposal": 100,
+          "footprints": 100
+        },
+        {
+          "proposal": 100,
+          "footprints": 100
+        }
+      ],
+      "meanMsPerCall": 5.8496666666865345,
+      "proposalVisible": true
+    },
+    {
+      "era": "palisade",
+      "callsPerRound": 100,
+      "warmupRoundDiscarded": true,
+      "elapsedMs": [
+        0.4000000059604645,
+        0.29999998211860657,
+        0.30000001192092896,
+        0.19999998807907104
+      ],
+      "counts": [
+        {
+          "proposal": 0,
+          "footprints": 0
+        },
+        {
+          "proposal": 0,
+          "footprints": 0
+        },
+        {
+          "proposal": 0,
+          "footprints": 0
+        },
+        {
+          "proposal": 0,
+          "footprints": 0
+        }
+      ],
+      "meanMsPerCall": 0.002666666607062022,
+      "proposalVisible": false
+    },
+    {
+      "era": "stone_town",
+      "callsPerRound": 100,
+      "warmupRoundDiscarded": true,
+      "elapsedMs": [
+        0.09999999403953552,
+        0.19999998807907104,
+        0.09999999403953552,
+        0.20000001788139343
+      ],
+      "counts": [
+        {
+          "proposal": 0,
+          "footprints": 0
+        },
+        {
+          "proposal": 0,
+          "footprints": 0
+        },
+        {
+          "proposal": 0,
+          "footprints": 0
+        },
+        {
+          "proposal": 0,
+          "footprints": 0
+        }
+      ],
+      "meanMsPerCall": 0.0016666666666666668,
+      "proposalVisible": false
+    }
+  ]
+}

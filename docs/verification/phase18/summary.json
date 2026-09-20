@@ -1,0 +1,170 @@
+{
+  "beforeCommit": "e05b46cf297d90120d0e71c3061848465c1a0b0d",
+  "afterCommit": "401e9d410e4f246120f85925c0b84ddad041c4ec",
+  "browser": "153.0.8010.48",
+  "host": {
+    "platform": "darwin",
+    "release": "25.4.0",
+    "arch": "arm64",
+    "cpu": "Apple M4 Max"
+  },
+  "camera": {
+    "zoom": 1,
+    "panX": 800,
+    "panY": -940
+  },
+  "stateSha256": "183c1fa74b4cac58d97e73eb431df1ed534ccad8fe490fbd554f86aa89e64732",
+  "protocol": "40x4 first discarded; 120 retained frame samples; Chrome default; no CPU profiler/readback",
+  "rows": [
+    {
+      "dpr": 1,
+      "condition": "paused",
+      "before": {
+        "median": 33.20000000000027,
+        "p95": 50,
+        "mean": 26.805000000000003
+      },
+      "after": {
+        "median": 16.699999999999818,
+        "p95": 33.40000000000009,
+        "mean": 19.86
+      },
+      "beforeBatchMeans": [
+        26.25,
+        27.497500000000002,
+        26.667500000000008
+      ],
+      "afterBatchMeans": [
+        20.0,
+        19.99749999999999,
+        19.582500000000003
+      ],
+      "meanChangePercent": -25.909345271404604
+    },
+    {
+      "dpr": 1,
+      "condition": "running",
+      "before": {
+        "median": 33.30000000000018,
+        "p95": 50,
+        "mean": 33.3325
+      },
+      "after": {
+        "median": 16.700000000000273,
+        "p95": 33.40000000000009,
+        "mean": 21.805000000000003
+      },
+      "beforeBatchMeans": [
+        34.165000000000006,
+        35.415,
+        30.417500000000008
+      ],
+      "afterBatchMeans": [
+        21.667500000000008,
+        22.082500000000003,
+        21.665
+      ],
+      "meanChangePercent": -34.5833645841146
+    },
+    {
+      "dpr": 1,
+      "condition": "drag",
+      "before": {
+        "median": 33.30000000000018,
+        "p95": 50.09999999999991,
+        "mean": 36.248333333333356
+      },
+      "after": {
+        "median": 16.700000000000273,
+        "p95": 33.40000000000009,
+        "mean": 22.49833333333333
+      },
+      "beforeBatchMeans": [
+        34.9975,
+        35.8325,
+        37.915000000000006
+      ],
+      "afterBatchMeans": [
+        22.079999999999995,
+        22.915,
+        22.5
+      ],
+      "meanChangePercent": -37.932778518552624
+    },
+    {
+      "dpr": 2,
+      "condition": "paused",
+      "before": {
+        "median": 33.30000000000018,
+        "p95": 50.09999999999991,
+        "mean": 35.69333333333334
+      },
+      "after": {
+        "median": 33.30000000000018,
+        "p95": 33.40000000000009,
+        "mean": 28.748333333333335
+      },
+      "beforeBatchMeans": [
+        36.24749999999999,
+        35.415000000000006,
+        35.417500000000004
+      ],
+      "afterBatchMeans": [
+        27.915,
+        29.582500000000003,
+        28.747500000000002
+      ],
+      "meanChangePercent": -19.457415016809875
+    },
+    {
+      "dpr": 2,
+      "condition": "running",
+      "before": {
+        "median": 50,
+        "p95": 50.100000000000364,
+        "mean": 44.721666666666685
+      },
+      "after": {
+        "median": 33.30000000000018,
+        "p95": 33.40000000000009,
+        "mean": 30.6925
+      },
+      "beforeBatchMeans": [
+        44.582499999999996,
+        44.165000000000006,
+        45.4175
+      ],
+      "afterBatchMeans": [
+        30.4125,
+        31.24749999999999,
+        30.417500000000008
+      ],
+      "meanChangePercent": -31.369954906272156
+    },
+    {
+      "dpr": 2,
+      "condition": "drag",
+      "before": {
+        "median": 50,
+        "p95": 50.100000000000364,
+        "mean": 46.5275
+      },
+      "after": {
+        "median": 33.30000000000018,
+        "p95": 50,
+        "mean": 32.36
+      },
+      "beforeBatchMeans": [
+        46.25250000000001,
+        45.415,
+        47.915
+      ],
+      "afterBatchMeans": [
+        31.665,
+        32.915,
+        32.5
+      ],
+      "meanChangePercent": -30.449734028262863
+    }
+  ]
+}

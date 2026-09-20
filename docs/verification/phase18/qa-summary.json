@@ -1,0 +1,24 @@
+{
+  "verdict": "PASS for bounded Phase18 UI behavior and visual parity",
+  "baseline": "e05b46c @3218",
+  "candidate": "401e9d410e4f246120f85925c0b84ddad041c4ec @3240",
+  "fixture": "Synthetic controlled32x32 states; real App/UI events and renderer. Not natural growth.",
+  "scenarios": 5,
+  "exactUiAndActionRowsEqual": true,
+  "pageErrors": 0,
+  "checks": [
+    "hamlet begin, select and drag run, cancel without state mutation, Escape",
+    "real road placement changes state, model redraw, new proposal and confirm yields palisade and construction sites",
+    "hamlet insufficient population blocks action",
+    "palisade eligible real mouse click yields stone_town and18replacement sites",
+    "palisade199/200coin disabled reason",
+    "stone complete18/18progress disabled action"
+  ],
+  "visual": "Viewed actual baseline/candidate JPEGs; both1600x1100pairs decoded pixel identical. Existing very small EraConsole text/scroll-clipped bottom row remains unchanged; not an aesthetic approval.",
+  "limitations": [
+    "No natural growth or performance claim",
+    "Invalid draft geometry error path not separately exercised; insufficient requirement reason covered"
+  ],
+  "harnessCorrection": "Initial fixture used18-step wall segments, causing existing engine max4steps exception. Corrected bothversions to18segments each<=4steps; finalruns0errors. No assertion relaxed.",
+  "cleanup": "All owned Playwright browsers closed via finally; no server stopped; no product files edited."
+}
