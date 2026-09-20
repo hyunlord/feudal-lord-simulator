@@ -1,0 +1,179 @@
+{
+  "tool_versions": {
+    "python": "3.14.4",
+    "pillow": "12.2.0",
+    "numpy": "2.4.3"
+  },
+  "records": [
+    {
+      "asset_id": "garden-vegetables-v1",
+      "prompt_exact": "Use case: historical-scene. Create ONE transparent RGBA game sprite: a small vegetable garden surface patch for southern England circa AD1300–1450. Strict orthographic 2:1 isometric, ground axes ±26.565 degrees. Hand-painted prerender game art, muted earth brown and restrained cabbage green, upper-left soft daylight. Three short irregular hand-worked soil rows with small cabbages and leafy kitchen herbs, deliberately sparse. Flat irregular oval/diamond patch with feathered natural soil edges, no raised base, no rectangular border, no fence, no people, no labels, no tools, no containers, no surrounding terrain. It is a decorative surface for a medieval town, readable when reduced to 64x32 pixels. Output only garden soil and low plants on genuinely transparent alpha; no checkerboard, no white background, no cast shadow.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "accepted-after-alpha-cleanup-and-registration",
+      "source_sha256": "39353b2d585c0d9c91cb1952d591c24780442bf437dfe94b92e0e501b5cafd15"
+    },
+    {
+      "asset_id": "garden-orchard-v1",
+      "prompt_exact": "Use case: historical-scene. Create ONE isolated transparent RGBA game sprite of a modest small orchard apple tree, southern England AD1300–1450. Strict orthographic 2:1 isometric camera, vertical trunk, hand-painted prerender game art, soft upper-left daylight. Low broad irregular pruned crown, sparse dull-green foliage, weathered brown trunk with readable branching, just a few muted russet apples. Small garden tree, not forest giant. No people, no scenery, no container, no grass mound, no soil platform, no cast shadow, no text. Tree only on genuine alpha transparency, clean edges. Delicate restrained detail, designed to read at 30pixels height. Nothing modern.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "accepted-after-alpha-cleanup-and-registration",
+      "source_sha256": "419114ed00b7620898c7270338a9220ff70fbdefe6e7709ecfcd74526f45e9d2"
+    },
+    {
+      "asset_id": "garden-pasture-v1",
+      "prompt_exact": "Use case: historical-scene. ONE isolated transparent RGBA decorative pasture patch for southern England AD1300–1450, browser city-builder hand-painted prerender art. Strict orthographic 2:1 isometric ground axes ±26.565degrees. Low muted meadow grass with TWO short weathered split-oak rails on three modest upright posts along only the rear edge; small informal pasture remnant, no enclosure, no gate. Tiny delicate fence suitable at 40pixel game width. Irregular softly sparse grassy edge, no solid dirt slab, no raised platform, no square base, no animals, no people, no landscape, no labels. Soft upper-left daylight, restrained green and oakbrown; no metal, no machinery, no fantasy. Actual transparent alpha background and clean edges.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "accepted-after-alpha-cleanup-and-registration",
+      "source_sha256": "2fbea8a4e54412f09ea9a53c0c663f9a48eaa6e435849ce0b9bb7cd3d776d9a9"
+    },
+    {
+      "asset_id": "rejected-registration-l3-v1",
+      "prompt_exact": "Use case: precise-object-edit. The provided image is the exact registration target for a game house condition overlay, not a house to repaint. Produce ONLY ONE transparent RGBA overlay image of exactly the same 1254x1254 canvas. Keep all pixel locations and camera alignment of the reference. Remove ALL house body, roof, framing, walls, existing doors and shutters from the output, leaving them transparent. At the same coordinates as the reference facade add only two small soft irregular weather stains to cream plaster panels and a tiny dark missing-flat-tile patch on the main roof. State is STRAINED: very light wear, not neglect or ruin. 95 percent of the image must be fully transparent. No complete house, no outlines, no base, no shadow, no people, no text, no checkerboard. The retained small wear patches must align perfectly over the original house when composited without any translation, cropping, resizing or distortion. Hand-painted prerender style and southern England AD1300–1450 muted natural palette. Output ONLY the condition overlay with real alpha.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [
+        "public/assets/buildings/historical-houses/house_l3-v2.png"
+      ],
+      "qa_status": "rejected-registration"
+    },
+    {
+      "asset_id": "registration-l3-v2",
+      "prompt_exact": "Use case: precise-object-edit. Exact game decal registration task. Reference is a 1254x1254 merchant house. Output a 1254x1254 TRUE TRANSPARENT PNG containing only ONE small soft brown-grey plaster weather stain. Place stain centered at pixel (556,1035), width about64px height80px. This is the cream ground-floor facade directly left of the ground-floor entrance. ALL other pixels transparent. Do not copy any house, any roof tiles, any framing, any door, any white plaster backing. The stain is translucent pigment only, with organic streaky edges. State STRAINED, subtle mild weathering. Match hand-painted medieval southern English style. This image is an overlay drawn unchanged at the same pixel origin atop the provided house: do NOT center the stain in the image, do NOT move or enlarge it. No text, no diagram, no checkerboard.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [
+        "public/assets/buildings/historical-houses/house_l3-v2.png"
+      ],
+      "qa_status": "rejected-registration"
+    },
+    {
+      "asset_id": "garden-orchard-v2-rejected",
+      "prompt_exact": "Use case: background-extraction. Isolate exactly the tree in the provided image. Remove ALL blurred colored backdrop/halo behind its leaves, branches, trunk and between leaves. True transparent alpha everywhere except actual crisp tree tissue. Keep the tree itself and apples unchanged. No ground patch, no shadows, no black or white matte, no vignette. Deliver only clean transparent RGBA tree cutout for small game sprite.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "rejected-halo"
+    },
+    {
+      "asset_id": "condition-wear-v1",
+      "prompt_exact": "Use case: historical-scene. Produce ONE game decal sprite: a weathered irregular brown-gray stain with peeling warm ivory limewash fragments, for a medieval timber-and-plaster house condition overlay. Only the patch, centered with wide transparent margins, on genuine transparent alpha. Hand-painted prerender style for southern England AD1300–1450, soft upper-left light. The patch is mostly thin translucent gray-brown damp streaks, a little muted ochre bare daub visible through missing limewash, irregular feathered perimeter. NO complete wall, NO rectangular border, NO frame, NO building, NO cracks shaped like brick or stone, NO foliage, NO text, NO cast shadow. Vertical patch about twice as tall as wide; visible at tiny game scale, restrained deterioration, not ruined or dirty slum.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "accepted-after-alpha-cleanup-and-registration",
+      "source_sha256": "b370515b3e6fe4959b36bc7c24f2bd6279b931371607b2bfd82fb782f511bcc8"
+    },
+    {
+      "asset_id": "condition-roof-v1",
+      "prompt_exact": "Use case: historical-scene. ONE isolated transparent RGBA game decal: three rough weathered oak repair planks laid close alongside each other over a small roof leak. Rectangular plank GROUP viewed in strict orthographic 2:1 isometric; long edges descend diagonally right at26.565degrees, short edges descend left, top face visible. Simple hand-sawn grain, subtle old dark iron peg heads, muted brown oak, soft upper-left light, medieval southern England1300–1450 hand-painted prerender style. No tiles, no roof, no house, no backing plate, no hole, no wall, no debris, no text. Only the three planks with clean alpha background and subtle contact darkening within their overlaps, not a large cast shadow. Designed for a15pixel game repair patch.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "accepted-after-alpha-cleanup-and-registration",
+      "source_sha256": "f1e07473a0270acb86903182e72cb48578163632debb641613cfa34d146b5c51"
+    },
+    {
+      "asset_id": "condition-shutter-v1",
+      "prompt_exact": "Use case: historical-scene. ONE isolated transparent RGBA game decal of a closed solid oak plank shop shutter. Straight-on flat orthographic view of four vertical hand-sawn weathered oak boards with two thin horizontal battens. Southern England AD1300–1450, muted worn medium-dark brown, hand-painted prerender game art, restrained wood grain, soft upper-left daylight. No decorative hinges, no metal fittings except tiny dark peg marks, no wall, no stone border, no surrounding frame, no door handle, no scenery, no lettering. Rectangular wooden shutter itself only with genuine transparent surrounding alpha; no glow, no halo, no cast shadow. Later this will be projected onto a medieval shopfront as a vacant-house condition decal.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [],
+      "qa_status": "accepted-after-alpha-cleanup-and-registration",
+      "source_sha256": "1d66de76cb55cb803dde668fd74ec18d631ab42077ae99ccabdd3e3b51ab4902"
+    },
+    {
+      "asset_id": "house_l3-phase16-candidate-v1",
+      "prompt_exact": "Use case: precise-object-edit. Create a new candidate version of this approved game merchant house. Preserve its camera, timber/plaster material language, terracotta flat roof tiles, overall footprint and familiar form. Change ONLY the upper storey so it projects noticeably about40cm beyond the ground floor on both visible facades, with readable structural oak brackets beneath this practical jetty. Ground floor stays narrower; upper walls retain same positions so roof footprint does not grow. Keep the street-facing open wooden shop counter and narrow plank door. Southern England AD1375–1450, successful merchant not noble. Small dark unglazed shuttered openings, NO glass, chimney, slate, brick, turret, dormer, ornamental mansion details. Hand-painted prerender sprite with muted natural colors and upperleftlight. Same square canvas and ground placement as reference, genuinely transparent background; no base, terrain, shadow, text. This is an optional art candidate; do not redesign the entire house.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [
+        "public/assets/buildings/historical-houses/house_l3-v2.png"
+      ],
+      "qa_status": "candidate-not-applied",
+      "source_sha256": "e9d3f0c6be7247962e88f543058e2321b7297359385acbd6837e54c2c679b89c"
+    },
+    {
+      "asset_id": "house_l4-phase16-candidate-v1",
+      "prompt_exact": "Use case: precise-object-edit. New candidate version of provided approved prosperous late medieval town house; preserve camera, square canvas, ground contact, roof width and material palette. Southern England AD1400–1450. Enhance prosperity by clearly articulated upper-storey jetties on both visible faces with readable oak support brackets, heavier well-organized brown oak structural beams, clean warm ivory limewash and a significantly broader open wooden street-level shop counter. Keep about3occupiedlevels and compact urban frontage, small asymmetric solid shuttered UNGLAZED openings. Flat small muted terracotta peg tiles only. No chimney, no glass, no slate, no brick, no dormer, no spire, no ashlar palace. Retain hand-painted prerender game sprite style and upper-left light. Actual transparent RGBA with no terrainbase, no shadow, no text. This is a separate candidate, not automatic replacement.",
+      "tool": "image_gen.imagegen",
+      "model_name": null,
+      "model_version": null,
+      "seed": null,
+      "generation_date": "2026-09-20",
+      "historical_profile": "S_England_1300_1450_v1",
+      "art_bible_version": "AB_2026-09-19_v1",
+      "accepted": null,
+      "reference_images": [
+        "public/assets/buildings/historical-houses/house_l4-v2.png"
+      ],
+      "qa_status": "candidate-not-applied",
+      "source_sha256": "046164485952b17707d352646fc630638d4c3145442b2ffed901abda4a5ad0d0"
+    }
+  ]
+}
