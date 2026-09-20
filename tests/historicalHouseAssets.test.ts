@@ -1,3 +1,4 @@
+import { authoredAssetPath } from "../scripts/runtimeAssetProvenance";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -6,9 +7,9 @@ import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "../src/rend
 import { houseCompoundAssetManifest } from "../src/render/houseCompoundAssetManifest.generated";
 import { tileToScreen } from "../src/render/iso";
 
-test("historical house manifests point to original-size PNGs with bounded visible crops", () => {
+test("historical house authored registrations retain original-size provenance and bounded crops", () => {
   for (const meta of [...historicalHouseAssetManifest, ...houseCompoundAssetManifest]) {
-    const png = readFileSync(`public/${meta.url}`);
+    const png = readFileSync(authoredAssetPath(meta.url));
     assert.equal(png.readUInt32BE(16), meta.width);
     assert.equal(png.readUInt32BE(20), meta.height);
     assert.ok(meta.alphaBounds.x + meta.alphaBounds.width <= meta.width);

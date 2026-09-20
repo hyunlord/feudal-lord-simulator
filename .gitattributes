@@ -1,0 +1,2 @@
+# Newly archived immutable runtime originals only. Never renormalize past art.
+docs/asset-evidence/runtime-sources/**/*.png filter=lfs diff=lfs merge=lfs -text

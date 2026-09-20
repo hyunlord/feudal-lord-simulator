@@ -1,3 +1,4 @@
+import { authoredAssetPath } from "../scripts/runtimeAssetProvenance";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -13,7 +14,7 @@ const facility = (kind: Building["kind"], workers = 0): Building => ({
 
 test("facility source images stay identical to provenance and crop registrations remain in bounds", () => {
   for (const asset of historicalFacilityManifest) {
-    const image = readFileSync(`public/${asset.url}`);
+    const image = readFileSync(authoredAssetPath(asset.url));
     assert.equal(createHash("sha256").update(image).digest("hex"), asset.sha256);
     assert.equal(image.readUInt32BE(16), asset.width);
     assert.equal(image.readUInt32BE(20), asset.height);
