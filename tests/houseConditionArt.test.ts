@@ -25,3 +25,24 @@ test("registered fullcanvas image is usable only when dimensions match", async (
     else Object.defineProperty(globalThis, "Image", original);
   }
 });
+
+test("generated absolute asset paths remain on root and repository deployment origins", async () => {
+  const urls: string[] = [];
+  class ImageStub {
+    naturalWidth = 1254; naturalHeight = 1254;
+    onload: (() => void) | null = null;
+    set src(value: string) { urls.push(value); this.onload?.(); }
+  }
+  const original = Object.getOwnPropertyDescriptor(globalThis, "Image");
+  Object.defineProperty(globalThis, "Image", { configurable: true, value: ImageStub });
+  try {
+    await registerHouseConditionArt([{ ...meta, level: 0, url: "/assets/test.png" }], "/");
+    await registerHouseConditionArt([{ ...meta, level: 1, url: "/assets/test.png" }], "/repo/");
+    assert.deepEqual(urls, ["/assets/test.png", "/repo/assets/test.png"]);
+    assert.ok(houseConditionArt(0, "single", "strained")?.image);
+    assert.ok(houseConditionArt(1, "single", "strained")?.image);
+  } finally {
+    if (original === undefined) Reflect.deleteProperty(globalThis, "Image");
+    else Object.defineProperty(globalThis, "Image", original);
+  }
+});

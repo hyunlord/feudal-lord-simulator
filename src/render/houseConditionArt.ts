@@ -15,7 +15,7 @@ const entries = new Map<string, Entry>();
 const key = (level: number, lot: HouseConditionArtMeta["lot"], condition: HouseCondition) => `${level}:${lot}:${condition}`;
 
 /** Missing optional artwork retains the existing registered wear marks. */
-export async function registerHouseConditionArt(manifest: readonly HouseConditionArtMeta[]): Promise<void> {
+export async function registerHouseConditionArt(manifest: readonly HouseConditionArtMeta[], base = import.meta.env?.BASE_URL ?? "/"): Promise<void> {
   if (typeof Image !== "function") return;
   await Promise.all(manifest.map(meta => new Promise<void>(resolve => {
     const id = key(meta.level, meta.lot, meta.condition);
@@ -29,7 +29,7 @@ export async function registerHouseConditionArt(manifest: readonly HouseConditio
         resolve();
       };
       image.onerror = () => resolve();
-      image.src = assetUrlForBase(meta.url, import.meta.env?.BASE_URL ?? "/");
+      image.src = assetUrlForBase(meta.url.replace(/^\/+/, ""), base);
     } catch (error) {
       if (!(error instanceof Error)) console.warn("Condition artwork initialization failed", error);
       resolve();
