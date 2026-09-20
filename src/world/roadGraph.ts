@@ -151,3 +151,26 @@ export function findRoadPath(
 
   return line;
 }
+
+// Keep only the latest wall/dimension interpretation of an immutable tile array.
+const componentLabels = new WeakMap<WallGrid["tiles"], {
+  readonly width: number;
+  readonly height: number;
+  readonly wall: WallGrid["palisade"];
+  readonly labels: ReadonlyMap<string, number>;
+}>();
+
+/** Membership only: ordered BFS and transport route selection remain unchanged. */
+export function labelRoadComponents(grid: WallGrid): ReadonlyMap<string, number> {
+  const cached = componentLabels.get(grid.tiles);
+  if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade) return cached.labels;
+  const labels = new Map<string, number>();
+  let component = 0;
+  for (const tile of grid.tiles) {
+    if (labels.has(roadCoordinateKey(tile)) || !isRoadTile(grid, tile)) continue;
+    for (const coordinate of existingRoadComponent(grid, [tile])) labels.set(roadCoordinateKey(coordinate), component);
+    component += 1;
+  }
+  componentLabels.set(grid.tiles, { width: grid.width, height: grid.height, wall: grid.palisade, labels });
+  return labels;
+}
