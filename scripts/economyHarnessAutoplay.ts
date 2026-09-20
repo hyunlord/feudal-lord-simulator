@@ -1,4 +1,4 @@
-import { decideNextAction, type AutoplayAction } from "../src/engine/autoplay";
+import { decideNextAction, type AutoplayAction, type AutoplayPolicy } from "../src/engine/autoplay";
 import { autoplayActionToGameAction } from "../src/engine/autoplayActions";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
@@ -55,6 +55,7 @@ export function createAutoplayTraceDriver(input: {
   readonly id: string;
   readonly source: string;
   readonly proclamationGateTick?: number;
+  readonly policy?: AutoplayPolicy;
 } = { id: "autoplay", source: "direct" }): AutoplayTraceDriver {
   let lastActionTick = -AUTOPLAY_TICK_CADENCE;
   let lastDecisionTick = -AUTOPLAY_TICK_CADENCE;
@@ -66,7 +67,7 @@ export function createAutoplayTraceDriver(input: {
     apply(state) {
       if (!canRunAutoplayAtTick({ enabled: true, currentTick: state.tick, lastActionTick: Math.max(lastActionTick, lastDecisionTick) })) return state;
       lastDecisionTick = state.tick;
-      const advisorAction = decideNextAction(state);
+      const advisorAction = decideNextAction(state, input.policy);
       if (
         input.proclamationGateTick !== undefined &&
         advisorAction.kind === "proclaim_era" &&

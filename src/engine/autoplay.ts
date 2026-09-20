@@ -23,6 +23,9 @@ import { waterAction } from "./autoplayWater";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
 export type { AutoplayAction } from "./autoplay.types";
+export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
+export interface AutoplayPolicy { readonly maxHousingLots: number }
+const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
 const coordinateKey = (coordinate: TileCoordinate): string => `${coordinate.tx},${coordinate.ty}`;
 function compareCoordinates(left: TileCoordinate, right: TileCoordinate): number {
@@ -174,8 +177,8 @@ function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): 
   return horizontal || vertical;
 }
 
-function housingAction(state: GameState): AutoplayAction {
-  if (housingLotCount(state) >= 8 || state.idleWorkers <= 6 || state.population < houseCapacity(state) || breadStock(state) < 20 || hasPendingFoodChain(state) || housingLotCount(state) >= foodSupportedHouseCount(state) || hasPlannedBuilding(state, "house")) return NONE;
+function housingAction(state: GameState, policy: AutoplayPolicy): AutoplayAction {
+  if (housingLotCount(state) >= policy.maxHousingLots || state.idleWorkers <= 6 || state.population < houseCapacity(state) || breadStock(state) < 20 || hasPendingFoodChain(state) || housingLotCount(state) >= foodSupportedHouseCount(state) || hasPlannedBuilding(state, "house")) return NONE;
   const roads = new Set(roadTiles(state).map(coordinateKey));
   const accepts = (coordinate: TileCoordinate): boolean =>
     isGrassOrigin(state, coordinate) &&
@@ -224,7 +227,7 @@ function eraAction(state: GameState): AutoplayAction {
   return NONE;
 }
 
-export function decideNextAction(state: GameState): AutoplayAction {
+export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): AutoplayAction {
   if (state.era === "stone_town") {
     const repair = networkRoadAction(state);
     if (repair.kind !== "none") return repair;
@@ -242,7 +245,7 @@ export function decideNextAction(state: GameState): AutoplayAction {
     () => constructionRoadAction(state),
     () => timberAction(state),
     () => foodAction(state, buildAction),
-    () => housingAction(state),
+    () => housingAction(state, policy),
     () => storageAction(state),
     () => eraAction(state),
   ]) {
