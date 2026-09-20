@@ -4,7 +4,7 @@ import { RAMPS, SEMANTIC_PALETTE } from "../content/palette";
 import { applyPaletteStroke } from "./style";
 import type { StoneWallSolid } from "./stoneWallFallbackGeometry";
 
-export function drawMasonrySolid(context: CanvasRenderingContext2D, solid: StoneWallSolid, material: RasterizedWorldSprite | null = null): void {
+export function drawMasonrySolid(context: CanvasRenderingContext2D, solid: StoneWallSolid, material: RasterizedWorldSprite | null = null, tileMaterial = false): void {
   const { footprint, base, height } = solid;
   const opacity = context.globalAlpha;
   const faces = footprint.map((point, index) => ({ a: point, b: footprint[(index + 1) % 4] }))
@@ -22,7 +22,16 @@ export function drawMasonrySolid(context: CanvasRenderingContext2D, solid: Stone
     if (material !== null) {
       context.save();
       context.clip();
-      const sampleHeight = Math.min(180, height * 60 / Math.max(2, Math.hypot(b.x - a.x, b.y - a.y)));
+      const length = Math.max(2, Math.hypot(b.x - a.x, b.y - a.y));
+      if (tileMaterial) {
+        context.transform((b.x - a.x) / length, (b.y - a.y) / length, 0, 1, a.x, a.y - base - height);
+        for (let x = 0; x < length; x += 3) {
+          for (let y = 0; y < height; y += 9) context.drawImage(material.image, 0, 0, 60, 180, x, y, 3, 9);
+        }
+        context.restore();
+        continue;
+      }
+      const sampleHeight = Math.min(180, height * 60 / length);
       context.transform((b.x - a.x) / 60, (b.y - a.y) / 60, 0, height / sampleHeight, a.x, a.y - base - height);
       drawCroppedWorldSprite(context, material.image, { x: 0, y: 0, width: 60, height: sampleHeight },
         { x: 0, y: 0, width: 60, height: sampleHeight }, false);

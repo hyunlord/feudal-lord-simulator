@@ -38,6 +38,6 @@ export function drawStoneWall(context: CanvasRenderingContext2D, input: Readonly
 
 function drawFallback(context: CanvasRenderingContext2D, piece: StoneWallPiece): void {
   context.save();
-  for (const solid of stoneWallFallbackSolids(piece)) drawMasonrySolid(context, solid, stoneWallMaterial());
+  for (const solid of stoneWallFallbackSolids(piece)) drawMasonrySolid(context, solid, stoneWallMaterial(), true);
   context.restore();
 }
