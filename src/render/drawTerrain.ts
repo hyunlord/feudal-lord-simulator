@@ -196,20 +196,13 @@ function fillTerrainPattern(
   tile: Tile,
   pattern: CanvasPattern,
 ): void {
-  const center = tileToScreen(tile.tx, tile.ty);
   traceTerrainDiamond(context, tile);
   const previousAlpha = context.globalAlpha;
   context.save();
   try {
-    context.clip();
     context.globalAlpha = previousAlpha * terrainTextureOpacity(tile.terrain);
     context.fillStyle = pattern;
-    context.fillRect(
-      snapToPixel(center.sx - TILE_W / 2),
-      snapToPixel(center.sy - TILE_H / 2),
-      TILE_W,
-      TILE_H,
-    );
+    context.fill();
   } finally {
     context.globalAlpha = previousAlpha;
     context.restore();

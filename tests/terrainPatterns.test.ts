@@ -210,7 +210,7 @@ describe("terrain patterns", () => {
     }
   });
 
-  it("Given ready ground textures When terrain draws Then diamonds clip texture and overlay deterministic brightness", () => {
+  it("Given ready ground textures When terrain draws Then diamonds directly fill texture and overlay deterministic brightness", () => {
     const calls: RecordedCall[] = [];
     const ground = tile(1, 0, "grass");
     const variation = terrainVariation(1, 0, 73);
@@ -226,11 +226,36 @@ describe("terrain patterns", () => {
       terrainPatterns: readyAssets(["grass"]),
     });
 
-    assert.ok(calls.includes("clip"));
-    assert.ok(calls.includes("fillRect:0,0,64,32"));
+    assert.equal(calls.includes("clip"), false);
+    assert.equal(calls.some((call) => call.startsWith("fillRect:")), false);
+    const patternStart = calls.indexOf("fillStyle:pattern:grass");
+    assert.equal(calls[patternStart + 1], "fill");
     assert.ok(calls.includes("globalAlpha:0.6"));
     assert.ok(calls.indexOf(`fillStyle:${SEMANTIC_PALETTE.sage}`) < calls.indexOf("fillStyle:pattern:grass"));
     assert.ok(calls.indexOf("restore") < calls.indexOf(`fillStyle:${expectedOverlay}`));
+  });
+
+  it("Given a translucent caller When a texture fill throws Then alpha and saved state are restored", () => {
+    const calls: RecordedCall[] = [];
+    const context = recordingContext(calls);
+    context.globalAlpha = 0.5;
+    const expected = new Error("texture fill failed");
+    const recordFill = context.fill;
+    let fills = 0;
+    context.fill = () => {
+      fills += 1;
+      if (fills === 2) throw expected;
+      recordFill();
+    };
+    const ground = tile(1, 0, "grass");
+    assert.throws(() => drawTerrain(context, {
+      state: state([ground]), tiles: [ground],
+      range: { minTx: 1, maxTx: 1, minTy: 0, maxTy: 0 }, zoom: 1,
+      terrainPatterns: readyAssets(["grass"]),
+    }), (error: unknown) => error === expected);
+    assert.ok(calls.includes("globalAlpha:0.3"));
+    assert.equal(context.globalAlpha, 0.5);
+    assert.equal(calls.at(-1), "restore");
   });
 
   it("Given terrain materials When texture opacity is selected Then every texture composites at 60 percent", () => {
@@ -274,8 +299,8 @@ describe("terrain patterns", () => {
     drawTerrain(recordingContext(secondCalls), { ...input, zoom: 2 });
 
     assert.deepEqual(
-      firstCalls.filter((call) => call.startsWith("fillRect:")),
-      secondCalls.filter((call) => call.startsWith("fillRect:")),
+      firstCalls.filter((call) => call.startsWith("moveTo:") || call.startsWith("lineTo:")),
+      secondCalls.filter((call) => call.startsWith("moveTo:") || call.startsWith("lineTo:")),
     );
     assert.ok(firstCalls.some((call) => call.startsWith("patternTransform:")));
     assert.deepEqual(
