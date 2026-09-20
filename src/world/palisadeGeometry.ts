@@ -468,10 +468,24 @@ export function computePalisadeProposal(
   const proposal = primaryPalisadeProposal(grid, footprints);
   if (proposal.ok || footprints.length === 0 || footprints.some(footprint => hasWaterMoat(grid, footprint))) return proposal;
   const ordered = [...footprints].sort((a, b) => a.id.localeCompare(b.id));
-  // An outlying plot may stay outside the wall, but remains a clearance obstacle
-  // and remains in the enclosure denominator. Search at most n + 1 plot sets.
-  for (let omitted = -1; omitted < ordered.length; omitted += 1) {
-    const anchors = ordered.filter((_, index) => index !== omitted);
+  // Prioritize plots that actually obstruct the full-set envelopes. Every omitted
+  // plot still participates in clearance and the enclosure denominator below.
+  const offenders = new Set<string>();
+  for (const margin of [1, 2, PROPOSAL_MARGIN_TILES]) {
+    for (const path of palisadeLandEnvelopes(grid, ordered, margin)) {
+      const validation = validatePalisadeCandidate(grid, path, footprints);
+      if (validation.ok) {
+        const { candidate } = validation;
+        return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
+      }
+      for (const footprint of ordered) {
+        if (!palisadePathHasBuildingClearance(path, [footprint])) offenders.add(footprint.id);
+      }
+    }
+  }
+  const omissions = [...ordered].sort((a, b) => Number(offenders.has(b.id)) - Number(offenders.has(a.id)) || a.id.localeCompare(b.id));
+  for (const omitted of omissions) {
+    const anchors = ordered.filter(footprint => footprint !== omitted);
     for (const margin of [1, 2, PROPOSAL_MARGIN_TILES]) {
       for (const path of palisadeLandEnvelopes(grid, anchors, margin)) {
         const validation = validatePalisadeCandidate(grid, path, footprints);

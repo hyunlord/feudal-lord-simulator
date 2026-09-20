@@ -15,17 +15,30 @@ export function palisadeLandEnvelopes(grid: Grid, footprints: readonly PalisadeF
   }
   // Fill dry gaps between buffered plots; buildings never become holes in the enclosure.
   // Shore water remains outside, so the final candidate must independently pass setback checks.
+  const bounds = (rows: boolean): Map<number, { min: number; max: number }> => {
+    const result = new Map<number, { min: number; max: number }>();
+    for (const cell of cells) {
+      const [x = 0, y = 0] = cell.split(",").map(Number);
+      const coordinate = rows ? y : x; const value = rows ? x : y;
+      const range = result.get(coordinate);
+      if (range === undefined) result.set(coordinate, { min: value, max: value });
+      else { range.min = Math.min(range.min, value); range.max = Math.max(range.max, value); }
+    }
+    return result;
+  };
+  const rowBounds = bounds(true);
   for (let ty = 0; ty < grid.height; ty += 1) {
-    const row = [...cells].map(cell => cell.split(",").map(Number)).filter(([, y]) => y === ty).map(([x]) => x).filter((x): x is number => x !== undefined);
-    if (row.length === 0) continue;
-    const left = Math.min(...row); const right = Math.max(...row);
+    const row = rowBounds.get(ty);
+    if (row === undefined) continue;
+    const left = row.min; const right = row.max;
     const dry = Array.from({ length: right - left + 1 }, (_, offset) => getTile(grid, { tx: left + offset, ty })).every(tile => tile !== null && tile.terrain !== "water");
     if (dry) for (let tx = left; tx <= right; tx += 1) cells.add(key(tx, ty));
   }
+  const columnBounds = bounds(false);
   for (let tx = 0; tx < grid.width; tx += 1) {
-    const column = [...cells].map(cell => cell.split(",").map(Number)).filter(([x]) => x === tx).map(([, y]) => y).filter((y): y is number => y !== undefined);
-    if (column.length === 0) continue;
-    const top = Math.min(...column); const bottom = Math.max(...column);
+    const column = columnBounds.get(tx);
+    if (column === undefined) continue;
+    const top = column.min; const bottom = column.max;
     const dry = Array.from({ length: bottom - top + 1 }, (_, offset) => getTile(grid, { tx, ty: top + offset })).every(tile => tile !== null && tile.terrain !== "water");
     if (dry) for (let ty = top; ty <= bottom; ty += 1) cells.add(key(tx, ty));
   }
