@@ -943,6 +943,52 @@
       },
       "sha256": "2eb0dcf0c651e10894323e29b9efd984aec573646d6915518a8ea2eba3aae875",
       "targetCanvasWidth": 512
+    },
+    {
+      "url": "assets/buildings/runtime-mill-v1/mill_body-v1.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/runtime-mill-v1/mill_body-v1.png",
+      "originalWidth": 1254,
+      "originalHeight": 1254,
+      "originalAlphaBounds": {
+        "x": 0,
+        "y": 103,
+        "width": 1208,
+        "height": 1151
+      },
+      "originalSha256": "f2d06c4bc58f49cb22fc1e6b0c28f4991e9ba06f60882058089dc225277655e0",
+      "width": 136,
+      "height": 136,
+      "alphaBounds": {
+        "x": 30,
+        "y": 11,
+        "width": 103,
+        "height": 119
+      },
+      "sha256": "d4f2bdd0ee85a9ccbdac5322956efc78dd69d55aa26ae814f498088797e75f71",
+      "targetCanvasWidth": 136
+    },
+    {
+      "url": "assets/buildings/runtime-mill-v1/mill_sails-v3.png",
+      "source": "docs/asset-evidence/runtime-sources/buildings/runtime-mill-v1/mill_sails-v3.png",
+      "originalWidth": 1312,
+      "originalHeight": 1199,
+      "originalAlphaBounds": {
+        "x": 81,
+        "y": 21,
+        "width": 1201,
+        "height": 1144
+      },
+      "originalSha256": "c8cabbb902df49619608192bbb4e556d5c8351cf72bd63c3dcb2de24361a0340",
+      "width": 104,
+      "height": 95,
+      "alphaBounds": {
+        "x": 4,
+        "y": 0,
+        "width": 95,
+        "height": 94
+      },
+      "sha256": "ef4e013037847755cd8cc1dcd324f3b3b3772d8195c39386d598722a154b1dc9",
+      "targetCanvasWidth": 104
     }
   ]
 }
