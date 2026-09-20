@@ -13,11 +13,12 @@ export const SERVICES = ["water", "market", "church"] as const;
 export function parseGrowthOptions(args: readonly string[]) {
   const targetLots = Number(args[0] ?? 16);
   const maxTicks = Number(args[1] ?? 600_000);
+  const seed = Number(args[3] ?? 1);
   if (!Number.isInteger(targetLots) || targetLots < 1 || targetLots > 48 ||
-      !Number.isInteger(maxTicks) || maxTicks < 1 || maxTicks > 600_000) {
-    throw new RangeError("targetLots must be 1..48 and maxTicks must be 1..600000");
+      !Number.isInteger(maxTicks) || maxTicks < 1 || maxTicks > 1_200_000 || !Number.isInteger(seed) || seed < 1 || seed > 5) {
+    throw new RangeError("targetLots must be 1..48 and maxTicks must be 1..1200000; optional fourth argument seed must be 1..5");
   }
-  return { targetLots, maxTicks };
+  return { targetLots, maxTicks, seed };
 }
 function serviceCounts(): Record<ServiceAccessKind, number> {
   return { served: 0, missing: 0, outside: 0, understaffed: 0, unreachable: 0, capacity: 0 };
@@ -34,7 +35,6 @@ export function totalBread(state: GameState): number {
 export function growthGuards(state: GameState, targetLots: number): readonly string[] {
   const guards: string[] = [];
   const lots = housingLotCount(state);
-  if (state.era === "stone_town") guards.push("post-era-housing-disabled");
   if (lots >= targetLots) guards.push("lot-limit");
   if (state.idleWorkers <= 6) guards.push("idle-workers-at-most-six");
   if (state.population < houseCapacity(state)) guards.push("housing-not-full");

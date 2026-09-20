@@ -8,6 +8,9 @@ export interface CapacityEpisode {
   readonly service: HouseholdService;
   readonly startedTick: number;
   endedTick: number | null;
+  recoveredTick: number | null;
+  readonly affectedHouseIds: string[];
+  recoveredProviderIds: string[];
   readonly initial: GrowthSnapshot;
   maximumDeniedHouses: number;
   deniedHouseTicks: number;
@@ -38,25 +41,39 @@ export function createGrowthObservations() {
     observe(state: GameState) {
       const allocation = householdServices(state);
       const empty = state.houses.filter(house => house.residents > 0 && house.breadStock === 0).length;
-      if (empty > 0) occupiedBreadZeroTicks += 1;
-      occupiedBreadZeroHouseTicks += empty;
+      if (state.tick > 0) {
+        if (empty > 0) occupiedBreadZeroTicks += 1;
+        occupiedBreadZeroHouseTicks += empty;
+      }
       for (const service of SERVICES) {
-        const denied = [...allocation.houses.values()].filter(access => access[service].kind === "capacity").length;
+        const deniedIds = [...allocation.houses].filter(([, access]) => access[service].kind === "capacity").map(([id]) => id);
+        const denied = deniedIds.length;
         let episode = active.get(service);
         if (denied > 0) {
           denialTicks[service] += 1;
           denialHouseTicks[service] += denied;
           if (episode === undefined) {
-            episode = { service, startedTick: state.tick, endedTick: null, initial: growthSnapshot(state),
+            episode = { service, startedTick: state.tick, endedTick: null, recoveredTick: null, affectedHouseIds: [], recoveredProviderIds: [], initial: growthSnapshot(state),
               maximumDeniedHouses: denied, deniedHouseTicks: 0 };
             episodes.push(episode);
             active.set(service, episode);
           }
+          for (const id of deniedIds) if (!episode.affectedHouseIds.includes(id)) episode.affectedHouseIds.push(id);
           episode.maximumDeniedHouses = Math.max(episode.maximumDeniedHouses, denied);
           episode.deniedHouseTicks += denied;
         } else if (episode !== undefined) {
           episode.endedTick = state.tick;
           active.delete(service);
+        }
+      }
+      for (const episode of episodes) {
+        if (episode.recoveredTick === null && episode.endedTick !== null && episode.affectedHouseIds.every(id =>
+          allocation.houses.get(id)?.[episode.service].kind === "served")) {
+          episode.recoveredTick = state.tick;
+          episode.recoveredProviderIds = [...new Set(episode.affectedHouseIds.flatMap(id => {
+            const providerId = allocation.houses.get(id)?.[episode.service].providerId;
+            return providerId === undefined || providerId === null ? [] : [providerId];
+          }))];
         }
       }
       for (const [id, provider] of allocation.providers) {
@@ -72,7 +89,7 @@ export function createGrowthObservations() {
         }
       }
     },
-    report: () => ({ episodes, providerEvents, denialTicks, denialHouseTicks, occupiedBreadZeroTicks, occupiedBreadZeroHouseTicks }),
+    report: () => ({ episodes, unresolvedCapacityEpisodes: episodes.filter(episode => episode.recoveredTick === null).length, providerEvents, denialTicks, denialHouseTicks, occupiedBreadZeroTicks, occupiedBreadZeroHouseTicks }),
   };
 }
 

@@ -12,17 +12,17 @@ test("Given the opening village When growth metrics are observed Then actual lot
   assert.equal(current.providers.length, 1);
 });
 
-test("Given a larger target after stone-town proclamation When growth guards are inspected Then the structural routing ceiling is explicit", () => {
+test("Given a larger target after stone-town proclamation When growth guards are inspected Then guards do not invent an era-only blocker", () => {
   const current = { ...structuredClone(DEFAULT_GAME_STATE), era: "stone_town" as const };
-  assert.ok(growthGuards(current, 16).includes("post-era-housing-disabled"));
+  assert.ok(!growthGuards(current, 16).includes("post-era-housing-disabled"));
   assert.ok(!growthGuards(current, 16).includes("lot-limit"));
 });
 
 test("Given invalid or unbounded CLI inputs When options are parsed Then the diagnostic run is rejected", () => {
-  for (const args of [["0"], ["16", "0"], ["16", "600001"], ["NaN"], ["16.5"]]) {
+  for (const args of [["0"], ["16", "0"], ["16", "1200001"], ["NaN"], ["16.5"]]) {
     assert.throws(() => parseGrowthOptions(args), RangeError);
   }
-  assert.deepEqual(parseGrowthOptions(["16"]), { targetLots: 16, maxTicks: 600000 });
+  assert.deepEqual(parseGrowthOptions(["16"]), { targetLots: 16, maxTicks: 600000, seed: 1 });
 });
 
 test("Given a zero-capacity-denial opening village When observation repeats Then no capacity episode is invented", async () => {

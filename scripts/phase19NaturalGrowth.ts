@@ -4,10 +4,9 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SETTLEMENT_CONFIG } from "../src/content/settlementConfig";
-import { isBuildingConstructionSite } from "../src/economy/construction";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
-import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { createGrowthInitialState, createGrowthStability } from "./phase19GrowthRunControl";
 import { createAutoplayTraceDriver } from "./economyHarnessAutoplay";
 import { fullServicePopulation, growthGuards, growthSnapshot, invalidGrowthResources, parseGrowthOptions, prosperityEligible } from "./phase19GrowthMetrics";
 import { createGrowthObservations, timingSummary } from "./phase19GrowthObservations";
@@ -15,7 +14,7 @@ import { createGrowthObservations, timingSummary } from "./phase19GrowthObservat
 function provenance() {
   const root = fileURLToPath(new URL("../", import.meta.url));
   const git = (...args: string[]) => execFileSync("git", args, { cwd: root }).toString();
-  const files = git("ls-files", "-z", "src", "scripts").split("\0").filter(Boolean).sort();
+  const files = git("ls-files", "--cached", "--others", "--exclude-standard", "-z", "src", "scripts").split("\0").filter(Boolean).sort();
   const hash = createHash("sha256");
   for (const file of files) hash.update(file).update("\0").update(readFileSync(resolve(root, file)));
   return { commit: git("rev-parse", "HEAD").trim(), sourceSha256: hash.digest("hex"), sourceFiles: files.length,
@@ -25,15 +24,17 @@ function provenance() {
 export function runPhase19NaturalGrowth(options: {
   readonly targetLots: number;
   readonly maxTicks: number;
+  readonly seed?: number;
   readonly onState?: (label: string, state: GameState) => void;
   readonly onProgress?: (snapshot: ReturnType<typeof growthSnapshot>) => void;
 }) {
-  const { targetLots, maxTicks } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks)]);
+  const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
   const source = provenance();
   const started = performance.now();
-  const driver = createAutoplayTraceDriver({ id: `natural-growth-${targetLots}`, source: "seed1-default-state-cap-only", policy: { maxHousingLots: targetLots } });
+  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-game-terrain-opening-village`, policy: { maxHousingLots: targetLots } });
   const observations = createGrowthObservations();
-  let state = structuredClone(DEFAULT_GAME_STATE);
+  let state = createGrowthInitialState(seed);
+  const stability = createGrowthStability(targetLots);
   const initial = growthSnapshot(state);
   const progress: ReturnType<typeof growthSnapshot>[] = [initial];
   const milestones: { readonly label: string; readonly snapshot: ReturnType<typeof growthSnapshot>; readonly guards: readonly string[] }[] = [];
@@ -46,11 +47,8 @@ export function runPhase19NaturalGrowth(options: {
   let eligibleStreak = 0;
   let victoryEligibleTicks = 0;
   let targetReachedTick: number | null = null;
-  let structuralCeilingTick: number | null = null;
-  let stableSince: number | null = null;
   let stableBreadZeroTicks = 0;
   let stableMinimumBread = Infinity;
-  let stabilityInterruptions = 0;
   let maximumLots = initial.lots;
   const record = (label: string) => {
     milestones.push({ label, snapshot: growthSnapshot(state), guards: growthGuards(state, targetLots) });
@@ -79,23 +77,20 @@ export function runPhase19NaturalGrowth(options: {
     const current = growthSnapshot(state);
     maximumLots = Math.max(maximumLots, current.lots);
     if (targetReachedTick === null && current.lots >= targetLots) { targetReachedTick = state.tick; record("target-reached"); }
-    if (structuralCeilingTick === null && current.lots < targetLots && state.era === "stone_town" &&
-      !state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === "house")) {
-      structuralCeilingTick = state.tick; record("structural-growth-ceiling");
-    }
     eligibleStreak = prosperityEligible(state) ? eligibleStreak + 1 : 0;
     if (victoryTick === null && state.settlement?.outcome === "victory") {
       victoryTick = state.tick; victoryEligibleTicks = eligibleStreak; record("victory");
       if (eligibleStreak < SETTLEMENT_CONFIG.prosperityHoldTicks) failures.push("Premature victory");
     }
-    if (victoryTick !== null && fullServicePopulation(state)) {
-      stableSince ??= state.tick;
+    stability.observe({ tick: state.tick, lots: current.lots,
+      victory: state.settlement?.outcome === "victory", fullService: fullServicePopulation(state) });
+    const window = stability.report();
+    if (window.stableSince !== null) {
       stableMinimumBread = Math.min(stableMinimumBread, current.minimumHouseBread);
       if (current.occupiedBreadZeroHouses > 0) stableBreadZeroTicks += 1;
-      if (state.tick - stableSince >= 24_000) { record("actual-scale-stable"); break; }
+      if (window.complete) { record("target-scale-stable"); break; }
     } else {
-      if (stableSince !== null) stabilityInterruptions += 1;
-      stableSince = null; stableBreadZeroTicks = 0; stableMinimumBread = Infinity;
+      stableBreadZeroTicks = 0; stableMinimumBread = Infinity;
     }
     if (state.tick % 12_000 === 0) { progress.push(current); options.onProgress?.(current); }
     if (failures.length > 0) break;
@@ -113,20 +108,28 @@ export function runPhase19NaturalGrowth(options: {
     const serving = completion === undefined ? undefined : observation.providerEvents.find(event =>
       event.kind === "first-serving" && event.id === completion.id && event.tick >= completion.tick);
     return { service: episode.service, capacityEpisodeTick: episode.startedTick,
+      affectedHouseIds: episode.affectedHouseIds, recoveredTick: episode.recoveredTick,
+      recoveredProviderIds: episode.recoveredProviderIds,
+      responseServedAffectedHomes: serving !== undefined && episode.recoveredTick !== null &&
+        episode.recoveredProviderIds.includes(serving.id),
       constructionCommandTick: recommendation?.tick ?? null, completedTick: completion?.tick ?? null,
       firstServingTick: serving?.tick ?? null, providerId: completion?.id ?? null,
       interpretation: "temporal response candidate, not proof that this episode uniquely caused the recommendation" };
   });
   const final = growthSnapshot(state);
-  const sustainedTicks = stableSince === null ? 0 : state.tick - stableSince;
+  const { stableSince, sustainedTicks, interruptions: stabilityInterruptions, complete } = stability.report();
   const capacityEpisodeObserved = observation.episodes.length > 0;
-  const acceptanceMet = failures.length === 0 && targetReachedTick !== null && capacityEpisodeObserved && sustainedTicks >= 24_000;
+  const acceptance = { targetReached: targetReachedTick !== null, victory: victoryTick !== null,
+    fullServiceStable: complete, capacityObserved: capacityEpisodeObserved,
+    capacityRecovered: capacityEpisodeObserved && observation.unresolvedCapacityEpisodes === 0,
+    validRun: failures.length === 0 };
+  const acceptanceMet = Object.values(acceptance).every(Boolean);
   return {
-    status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed: DEFAULT_GAME_STATE.seed,
+    status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, acceptance,
     policy: { maxHousingLots: targetLots }, maxTicks, targetReachedTick, maximumLots,
-    structuralCeilingTick, stopReason: failures.length > 0 ? "invalid-run" : sustainedTicks >= 24_000 ? "actual-scale-stable" : "tick-budget",
-    growthBlocker: structuralCeilingTick === null ? null : "stone_town advisor has no housing or water expansion branch; cap-only configuration cannot resume housing",
-    sourceContract: "DEFAULT_GAME_STATE clone; unchanged economics, save schema and post-era advisor routing; real reducer and advanceTick",
+    stopReason: failures.length > 0 ? "invalid-run" : complete ? "target-scale-stable" : "tick-budget",
+    growthBlocker: null,
+    sourceContract: "Game buildWorldGrid(seed) and applyOpeningVillageToTile on cloned DEFAULT_GAME_STATE; seed1 exactly preserves default state; actual reducer and advanceTick; economics and save schema unchanged",
     capacityEpisodeObserved, victoryTick, victoryEligibleTicks, stableSince, sustainedTicks,
     stableBreadZeroTicks, stableMinimumBread: Number.isFinite(stableMinimumBread) ? stableMinimumBread : null,
     stabilityInterruptions, initial, final, milestones, progress,
@@ -138,6 +141,7 @@ export function runPhase19NaturalGrowth(options: {
   };
 }
 
+// CLI: phase19NaturalGrowth.ts [targetLots=16] [maxTicks=600000] [outputDirectory] [seed=1]
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const options = parseGrowthOptions(process.argv.slice(2));
   const out = process.argv[4];
