@@ -172,3 +172,19 @@ Phase 3 loop:
   axis, quality 85. Pixel/alpha comparison baselines remain PNG. This reduces
   current checkout size; no Git history is rewritten and historical clone size
   is not claimed to shrink.
+
+## Phase 19: rendering acceptance criterion (2026-09-20)
+
+- By explicit user decision, deterministic exact-pixel comparisons use a fixed
+  CPU/software rendering backend. Record the backend and comparison conditions
+  with the evidence; this criterion does not require changing the product's
+  default canvas backend.
+- Default-GPU rendering is judged by visual and gameplay checks with tolerance
+  for pixel differences. It is not an exact-pixel equivalence claim. The earlier
+  default-GPU readback differences remain recorded in
+  `verification/phase17/visual-validation.md`; investigating their cause is not
+  part of this decision.
+- No actual on-screen road disappearance was observed in those prior checks.
+  Readback differences alone are not evidence of that gameplay defect. Reopen
+  investigation if actual road disappearance is observed, preserving the
+  reproducing state and rendering conditions.
