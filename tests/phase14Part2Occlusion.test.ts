@@ -387,3 +387,19 @@ test("selection mode draws only a footprint outline for an occluding foreground 
   assert.equal(context.calls.includes("stroke"), true);
   assert.equal(context.calls.some(call => call.startsWith("globalAlpha:")), false);
 });
+
+test("global outlines retain their silhouette when selection hovers behind a foreground house", () => {
+  const home = building("front", 1, 1);
+  const context = loggedContext();
+  try {
+    setObjectRenderViewMode("outlines");
+    drawObjectRenderItems(context, {
+      state: state({ buildings: [home] }), tiles: [], range, zoom: 1,
+      camera: { zoom: 1, panX: 0, panY: 0 }, dpr: 1,
+      viewport: { width: 600, height: 400 }, hoveredTile: { tx: 0, ty: 1 }, selectionMode: true,
+      objectRenderItems: [{ kind: "building", id: home.id, building: home, depth: 2, anchorTx: 1 }],
+    });
+  } finally { setObjectRenderViewMode("normal"); }
+  assert.ok(context.calls.includes("globalAlpha:0.35"));
+  assert.ok(context.calls.includes("fill"));
+});

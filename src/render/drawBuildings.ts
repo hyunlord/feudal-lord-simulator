@@ -105,7 +105,7 @@ function drawBuilding(
   building: Building,
   spriteOptions: WorldSpriteOptions,
 ): void {
-  if (input.hoveredTile !== null && input.hoveredTile !== undefined && outlinesOccludingBuilding({
+  if ((input.viewMode ?? "normal") === "normal" && input.hoveredTile !== null && input.hoveredTile !== undefined && outlinesOccludingBuilding({
     state: input.state, building, houseLevel: buildBuildingVisualState(building, input.state.houses).houseLevel,
     hoveredTile: input.hoveredTile, selectionMode: input.selectionMode ?? false, camera: input.camera, dpr: input.dpr,
   })) {
