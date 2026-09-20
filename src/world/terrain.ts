@@ -1,5 +1,6 @@
 import type { TerrainType } from "../content/terrainConfig";
 import type { Grid } from "./grid";
+import { guaranteeEssentialResourceTerrain } from "./essentialResources";
 import { fbm } from "./noise";
 import type { Tile } from "./world.types";
 
@@ -203,8 +204,14 @@ export function buildWorldGrid(size: WorldGridSize): Grid {
     size.width,
     size.height,
   );
+  const resourceTerrains = guaranteeEssentialResourceTerrain(
+    cleanedTerrains,
+    size.width,
+    size.height,
+    size.seed,
+  ).terrains;
 
-  const tiles: Tile[] = cleanedTerrains.map((terrain, index) => ({
+  const tiles: Tile[] = resourceTerrains.map((terrain, index) => ({
     tx: index % size.width,
     ty: Math.floor(index / size.width),
     terrain,

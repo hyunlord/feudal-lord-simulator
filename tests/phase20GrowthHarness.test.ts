@@ -104,10 +104,19 @@ test("approved translated seed two is explicitly labeled as a verification fixtu
   assert.equal(report.acceptance.targetReached, false);
 });
 
-test("stage zero preflight blocks a seed with no legal quarryable rock source", async () => {
-  const { runPhase19NaturalGrowth } = await import("../scripts/phase19NaturalGrowth");
-  const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2 });
-  assert.deepEqual(report.resourcePreflight, {
+test("stage zero preflight blocks a state with no legal quarryable rock source", async () => {
+  const { terrainResourcePreflight } = await import("../scripts/phase19NaturalGrowth");
+  const noRockState: GameState = {
+    ...structuredClone(DEFAULT_GAME_STATE),
+    seed: 2,
+    tiles: DEFAULT_GAME_STATE.tiles.map((tile) => ({
+      ...tile,
+      terrain: tile.terrain === "water" ? "water" : "grass",
+    })),
+  };
+  const report = terrainResourcePreflight(noRockState);
+
+  assert.deepEqual(report, {
     rockTiles: 0,
     legalQuarryFootprints: 0,
     legalQuarryFootprintsInterpretation: "diagnostic-only current placement count; zero can be caused by occupied or blocked footprints and does not by itself prove stone is impossible",
@@ -115,9 +124,6 @@ test("stage zero preflight blocks a seed with no legal quarryable rock source", 
     stoneSource: "quarry requires adjacent rock; market does not import stone",
     failures: ["seed 2 has no rock terrain; stone-town victory cannot be claimed because quarry is the only raw stone source"],
   });
-  assert.equal(report.acceptance.validRun, false);
-  assert.deepEqual(report.failures, report.resourcePreflight.failures);
-  assert.equal(report.final.tick, 0);
 });
 
 test("stage zero preflight treats zero legal quarry footprints as diagnostic when rock exists", async () => {
