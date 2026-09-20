@@ -1,3 +1,4 @@
+import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { isBuildingConstructionSite } from "../economy/construction";
@@ -80,12 +81,13 @@ export function waterAction(state: GameState): AutoplayAction {
       left.candidate.ty - right.candidate.ty ||
       left.candidate.tx - right.candidate.tx,
     );
-  const best = ranked.find(({ candidate }) => hasConnectedConstructionRoute(state, virtualBuilding("well", candidate)))?.candidate;
+  const best = ranked.find(({ candidate }) => hasConnectedConstructionRoute(state, virtualBuilding("well", candidate)) && preservesAutoplayWallSpace(state, "well", candidate))?.candidate;
   if (best !== undefined) {
     return preserveRoadExpansion(state, { ...best, kind: "well" }) ??
       { kind: "place_building", building: "well", tx: best.tx, ty: best.ty };
   }
   for (const { candidate } of ranked.slice(0, 24)) {
+    if (!preservesAutoplayWallSpace(state, "well", candidate)) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding("well", candidate));
     if (road.kind !== "none") return road;
   }

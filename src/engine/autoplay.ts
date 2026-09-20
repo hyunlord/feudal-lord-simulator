@@ -1,3 +1,4 @@
+import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { housingLotCount } from "../population/housing";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
@@ -77,7 +78,7 @@ function findBuildSite(
     tile.tx > 0 && tile.ty > 0 && tile.tx < state.width - 1 && tile.ty < state.height - 1);
   for (const coordinate of coordinates) {
     if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
-    if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok) return coordinate;
+    if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok && preservesAutoplayWallSpace(state, kind, coordinate)) return coordinate;
   }
   return null;
 }
@@ -150,6 +151,7 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
+    if (!preservesAutoplayWallSpace(state, kind, candidate.tile)) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;
   }

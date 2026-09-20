@@ -1,3 +1,4 @@
+import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
@@ -77,6 +78,7 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
   let best: { action: AutoplayAction; covered: number; roads: number } | null = null;
   // Match the existing civic advisor's bounded search rather than scanning road plans for the whole map.
   for (const { tile } of candidates.slice(0, 24)) {
+    if (!preservesAutoplayWallSpace(state, "granary", tile)) continue;
     const candidate: Building = { id: 'autoplay-food-coverage', kind: 'granary', tx: tile.tx, ty: tile.ty,
       workers: BUILDING_CONFIG_BY_KIND.granary.workersRequired, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
     const access = projectAccess(state, candidate);
