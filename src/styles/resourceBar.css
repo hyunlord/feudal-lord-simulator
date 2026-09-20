@@ -38,10 +38,10 @@
 .resource-artwork { object-fit: contain; text-align: center; }
 .resource-artwork--small { width: 16px; height: 16px; flex: 0 0 16px; align-self: center; }
 .resource-bar__detail { flex: 1; min-width: 0; }
-.resource-bar__primary { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: 13px; line-height: 24px; }
+.resource-bar__primary { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-size: var(--font-body); line-height: 24px; }
 .resource-bar__primary > span { word-break: keep-all; line-height: 18px; color: var(--palette-parchment-dark); }
 .resource-bar__primary strong { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.resource-bar__secondary { display: flex; gap: 4px; font-size: 12px; line-height: 18px; color: var(--palette-parchment-dark); }
+.resource-bar__secondary { display: flex; gap: 4px; font-size: var(--font-body); line-height: 18px; color: var(--palette-parchment-dark); }
 .resource-bar__secondary b { font-weight: 400; font-variant-numeric: tabular-nums; }
 .resource-bar__disclosure { margin-left: auto; color: var(--palette-gold); }
 .app-shell .resource-bar__population { cursor: pointer; }
@@ -65,7 +65,7 @@
   .app-shell .resource-bar__cell:nth-child(-n+3) { border-bottom: 1px solid var(--palette-ink-light); }
   .app-shell .resource-bar__cell:nth-child(3) { border-right: 0; }
   .app-shell .resource-bar__cell:last-child { grid-column: span 2; }
-  .resource-bar__primary { font-size: 12px; gap: 4px; line-height: 22px; }
+  .resource-bar__primary { font-size: var(--font-body); gap: 4px; line-height: 22px; }
   .resource-bar__primary strong { font-size: 18px; }
   .resource-bar__icon { flex-basis: 16px; width: 16px; height: 16px; }
 }

@@ -1,6 +1,6 @@
-.settlement-progress { background: var(--palette-vellum); color: var(--palette-ink); border: 2px solid var(--palette-earth); font: 12px/1.5 var(--ui-body-font); word-break: keep-all; }
-.settlement-progress summary { cursor: pointer; padding: 8px 12px; font-size: 13px; font-weight: bold; }
-.settlement-progress summary span { display: block; font-size: 12px; font-weight: normal; }
+.settlement-progress { background: var(--palette-vellum); color: var(--palette-ink); border: 2px solid var(--palette-earth); font: var(--font-body)/1.5 var(--ui-body-font); word-break: keep-all; }
+.settlement-progress summary { cursor: pointer; padding: 8px 12px; font-size: var(--font-body); font-weight: bold; }
+.settlement-progress summary span { display: block; font-size: var(--font-body); font-weight: normal; }
 .settlement-progress-body, .settlement-restart { padding: 4px 12px 12px; }
 .settlement-progress p { margin: 4px 0 8px; }
 .settlement-progress ul { margin: 8px 0; padding: 0; list-style: none; }

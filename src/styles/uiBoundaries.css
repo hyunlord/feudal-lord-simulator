@@ -15,10 +15,11 @@
 .app-shell .onboarding-tasks { font-family: var(--ui-body-font); padding: 6px; background: var(--palette-ink-muted); }
 .app-shell .onboarding-tasks[data-onboarding-state="open-goal"] .settlement-target { color: var(--palette-vellum); }
 .app-shell .onboarding-task { border: 0; padding: 10px 12px; gap: 6px; }
-.app-shell .onboarding-task-title { word-break: keep-all; overflow-wrap: normal; font-size: 13px; line-height: 1.5; }
-.app-shell .onboarding-task-hint { word-break: keep-all; overflow-wrap: normal; font-size: 12px; line-height: 1.5; }
+.app-shell .onboarding-task-title { word-break: keep-all; overflow-wrap: normal; font-size: var(--font-body); line-height: 1.5; }
+.app-shell .onboarding-task-flourish { font-size: var(--font-badge); line-height: 1.4; }
+.app-shell .onboarding-task-hint { word-break: keep-all; overflow-wrap: normal; font-size: var(--font-body); line-height: 1.5; }
 .app-shell .settlement-status { border: 1px solid var(--ui-edge); border-left: 3px solid var(--palette-vermilion); border-radius: var(--ui-corner); padding: 8px 12px; }
-.app-shell .settlement-priority { gap: 8px; font: 13px/1.5 var(--ui-body-font); word-break: keep-all; }
+.app-shell .settlement-priority { gap: 8px; font: var(--font-body)/1.5 var(--ui-body-font); word-break: keep-all; }
 .app-shell .settlement-status .problem-glyph { display: flex; align-items: center; justify-content: center; }
 .problem-symbol { width: 20px; height: 20px; flex-shrink: 0; color: var(--palette-vermilion); }
 @media (min-width: 601px) and (max-width: 767px) { .app-shell { --resource-height: 104px; } }
@@ -26,5 +27,5 @@
   .app-shell .build-menu-detail-heading { margin-bottom: 0; padding-bottom: 0; }
   .app-shell .ledger-recess { border-top: 1px solid var(--palette-ink-light); padding-top: 4px; }
   .app-shell .settlement-status { padding: 4px 8px; }
-  .app-shell .settlement-priority { font-size: 12px; }
+  .app-shell .settlement-priority { font-size: var(--font-body); }
 }

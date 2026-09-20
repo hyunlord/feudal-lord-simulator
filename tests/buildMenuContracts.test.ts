@@ -193,7 +193,9 @@ test("browser build-menu proof includes every app stylesheet in production order
 
 test("build controls retain readable names and bounded scrolling at narrow widths", async () => {
   const css = await readFile(new URL("../src/styles/buildMenu.css", import.meta.url), "utf8");
-  assert.match(css, /\.build-menu \.build-seal-label[^}]*font-size: 13px/);
+  const tokens = await readFile(new URL("../src/styles/global.css", import.meta.url), "utf8");
+  assert.match(tokens, /--font-body:\s*13px/);
+  assert.match(css, /\.build-menu \.build-seal-label[^}]*font-size: var\(--font-body\)/);
   const categoryHeights = [...css.matchAll(/\.build-menu-category\s*\{[^}]*min-height:\s*(\d+)px/g)];
   assert.ok(categoryHeights.length > 0);
   for (const match of categoryHeights) assert.ok(Number(match[1]) >= 32, "category targets stay at least 32px tall");
