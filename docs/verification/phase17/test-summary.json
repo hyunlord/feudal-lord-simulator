@@ -1,0 +1,19 @@
+{
+  "source": "d08f5722df546be1ecd757ad2bd7e14fc57e832c",
+  "typecheck": "PASS",
+  "test": {
+    "tests": 1518,
+    "suites": 18,
+    "pass": 1518,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 512857.277917,
+    "phase9Included": true
+  },
+  "build": "PASS",
+  "distBytes": 18665950,
+  "jsMinifiedKB": 597.21,
+  "jsGzipKB": 184.18,
+  "warning": "Existing JS chunk exceeds500kB guidance"
+}

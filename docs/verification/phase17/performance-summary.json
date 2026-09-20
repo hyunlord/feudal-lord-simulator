@@ -1,0 +1,176 @@
+{
+  "beforeCommit": "bd0890a177ada06c6cf21c914265cab9f29bcda4",
+  "afterCommit": "d08f5722df546be1ecd757ad2bd7e14fc57e832c",
+  "host": {
+    "platform": "darwin",
+    "release": "25.4.0",
+    "arch": "arm64",
+    "cpu": "Apple M4 Max"
+  },
+  "browser": "153.0.8010.48",
+  "stateSha256": "183c1fa74b4cac58d97e73eb431df1ed534ccad8fe490fbd554f86aa89e64732",
+  "camera": {
+    "zoom": 1,
+    "panX": 800,
+    "panY": -940
+  },
+  "viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "protocol": "40 frames x4, first discarded; 120 samples; Chrome default; no profiler/readback",
+  "rows": [
+    {
+      "dpr": 1,
+      "condition": "paused",
+      "before": {
+        "median": 50,
+        "p95": 83.29999999999973,
+        "mean": 49.02666666666666
+      },
+      "after": {
+        "median": 33.29999999999973,
+        "p95": 50,
+        "mean": 28.610833333333336
+      },
+      "beforeBatchMeans": [
+        42.9175,
+        43.74749999999999,
+        60.414999999999985
+      ],
+      "afterBatchMeans": [
+        30.832499999999992,
+        27.082500000000003,
+        27.917500000000008
+      ],
+      "meanChangePercent": -41.64230350829479
+    },
+    {
+      "dpr": 1,
+      "condition": "running",
+      "before": {
+        "median": 50,
+        "p95": 66.69999999999982,
+        "mean": 49.02500000000003
+      },
+      "after": {
+        "median": 33.30000000000018,
+        "p95": 50.09999999999991,
+        "mean": 32.5
+      },
+      "beforeBatchMeans": [
+        48.74750000000002,
+        47.915,
+        50.41250000000001
+      ],
+      "afterBatchMeans": [
+        30.832499999999992,
+        33.3325,
+        33.335
+      ],
+      "meanChangePercent": -33.70729219785827
+    },
+    {
+      "dpr": 1,
+      "condition": "drag",
+      "before": {
+        "median": 50,
+        "p95": 66.69999999999982,
+        "mean": 50.55250000000002
+      },
+      "after": {
+        "median": 33.399999999999636,
+        "p95": 50.099999999999454,
+        "mean": 37.49916666666666
+      },
+      "beforeBatchMeans": [
+        49.58,
+        50.830000000000005,
+        51.24750000000002
+      ],
+      "afterBatchMeans": [
+        37.915,
+        37.499999999999986,
+        37.0825
+      ],
+      "meanChangePercent": -25.821340850271213
+    },
+    {
+      "dpr": 2,
+      "condition": "paused",
+      "before": {
+        "median": 83.30000000000018,
+        "p95": 150,
+        "mean": 82.635
+      },
+      "after": {
+        "median": 33.40000000000009,
+        "p95": 50.09999999999991,
+        "mean": 36.52666666666667
+      },
+      "beforeBatchMeans": [
+        70.4125,
+        71.2475,
+        106.24499999999998
+      ],
+      "afterBatchMeans": [
+        36.664999999999985,
+        36.24750000000002,
+        36.667500000000004
+      ],
+      "meanChangePercent": -55.79758375184042
+    },
+    {
+      "dpr": 2,
+      "condition": "running",
+      "before": {
+        "median": 83.30000000000018,
+        "p95": 83.40000000000055,
+        "mean": 80.13750000000009
+      },
+      "after": {
+        "median": 50,
+        "p95": 50.100000000000364,
+        "mean": 45.276666666666685
+      },
+      "beforeBatchMeans": [
+        80.0,
+        79.99749999999999,
+        80.415
+      ],
+      "afterBatchMeans": [
+        45.000000000000014,
+        44.99750000000002,
+        45.8325
+      ],
+      "meanChangePercent": -43.50127385223318
+    },
+    {
+      "dpr": 2,
+      "condition": "drag",
+      "before": {
+        "median": 83.30000000000018,
+        "p95": 83.40000000000055,
+        "mean": 80.9683333333334
+      },
+      "after": {
+        "median": 50,
+        "p95": 50.100000000000364,
+        "mean": 46.24916666666669
+      },
+      "beforeBatchMeans": [
+        82.08000000000001,
+        80.4125,
+        80.4125
+      ],
+      "afterBatchMeans": [
+        46.249999999999986,
+        45.8325,
+        46.665000000000006
+      ],
+      "meanChangePercent": -42.8799324838929
+    }
+  ],
+  "staticImprovementPass": true,
+  "noMeanRegressionAbove10Percent": true
+}

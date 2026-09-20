@@ -1,0 +1,28 @@
+{
+  "source": "d08f5722df546be1ecd757ad2bd7e14fc57e832c",
+  "cache": {
+    "cases": 36,
+    "hotChanged": 0,
+    "offscreenRestoredChanged": 0,
+    "silhouetteStructuralFailures": 0,
+    "diagnostics": {
+      "hits": 7740,
+      "misses": 468,
+      "evictions": 0,
+      "pixels": 1592689,
+      "rasterMs": 548.5000000298023
+    }
+  },
+  "terrain": {
+    "frameCases": 36,
+    "alphaCases": 36,
+    "maxChannel": 14,
+    "maxMeanChannel": 0.12092892156862745,
+    "hotChanged": 0,
+    "offscreenRestoredChanged": 0,
+    "maxAlphaEdgeDelta": 60,
+    "maxInteriorChannel": 1,
+    "opaqueInteriorHoles": 0,
+    "alphaBeyondTwoPixelEdge": 0
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "commit": "d08f5722df546be1ecd757ad2bd7e14fc57e832c",
+  "baseline": "bd0890a",
+  "actualUI": {
+    "method": "Authentic canonical176 save loaded into actual UI with controlled camera; no asset interception. Actual road build/remove, middle drag and mouse wheel zoom verified.",
+    "rows": [
+      {
+        "dpr": 1,
+        "zoom": 1,
+        "tick": 392808,
+        "population": 176,
+        "buildings": 31,
+        "roadTile": {
+          "tx": 45,
+          "ty": 45,
+          "terrain": "grass",
+          "buildingId": null,
+          "hasRoad": false
+        },
+        "roadRevisionDelta": 2,
+        "panDelta": 119.99999999999989,
+        "zoomAfterWheel": 1.1,
+        "errors": []
+      },
+      {
+        "dpr": 1,
+        "zoom": 1.35,
+        "tick": 392808,
+        "population": 176,
+        "buildings": 31,
+        "roadTile": {
+          "tx": 45,
+          "ty": 45,
+          "terrain": "grass",
+          "buildingId": null,
+          "hasRoad": false
+        },
+        "roadRevisionDelta": 2,
+        "panDelta": 119.99999999999989,
+        "zoomAfterWheel": 1.4850000000000003,
+        "errors": []
+      },
+      {
+        "dpr": 2,
+        "zoom": 1,
+        "tick": 392808,
+        "population": 176,
+        "buildings": 31,
+        "roadTile": {
+          "tx": 45,
+          "ty": 45,
+          "terrain": "grass",
+          "buildingId": null,
+          "hasRoad": false
+        },
+        "roadRevisionDelta": 2,
+        "panDelta": 119.99999999999989,
+        "zoomAfterWheel": 1.1,
+        "errors": []
+      },
+      {
+        "dpr": 2,
+        "zoom": 1.35,
+        "tick": 392808,
+        "population": 176,
+        "buildings": 31,
+        "roadTile": {
+          "tx": 45,
+          "ty": 45,
+          "terrain": "grass",
+          "buildingId": null,
+          "hasRoad": false
+        },
+        "roadRevisionDelta": 2,
+        "panDelta": 119.99999999999989,
+        "zoomAfterWheel": 1.4850000000000003,
+        "errors": []
+      }
+    ]
+  },
+  "visual": {
+    "verdict": "PASS for changed surfaces, actual captures viewed",
+    "viewed": [
+      "town-dpr1-zoom1.jpg",
+      "town-dpr1-zoom1.35.jpg",
+      "town-dpr2-zoom1.jpg",
+      "town-dpr2-zoom1.35.jpg",
+      "pan-zoom-dpr2-zoom1.35.jpg",
+      "road-dpr1-zoom1.jpg",
+      "baseline-town-dpr1-zoom1.35.jpg",
+      "baseline-town-dpr2-zoom1.35.jpg",
+      "../wall/before-wall-material.jpg",
+      "../wall/after-wall-material.jpg"
+    ],
+    "findings": [
+      "No visible new terrain seam, gap, missing road/home, or gate obstruction.",
+      "Node and diagonal tops now have masonry; gate top remains flat grey deliberately.",
+      "Cardinal wall stair geometry is unchanged."
+    ],
+    "viewedScope": "Names under viewed identify inspected raw artifacts in ignored output/phase17/final-qa and output/phase17/wall; they are not links to files in this compact evidence folder."
+  },
+  "defaultBackendPixelEquivalence": {
+    "status": "FAIL / unresolved preexisting readback instability",
+    "hypotheses": {
+      "contextLeak": "Not supported: depth0, clipcalls0, globalAlpha1, source-over, CTM unchanged at failed frame",
+      "missingRoadDraw": "Rejected: 13 fill calls in every compared frame",
+      "backendReadbackTransition": "Supported by identical baseline/candidate20frame road+house-only opacity sequence18299,18299,18601 repeated18; blank4readbacks and6scene warmups do not stabilize all240"
+    },
+    "originalFailure": "house stone south DPR2 zoom1 reversed/hover2129 pixels; roads disappear despite fillcalls",
+    "warmup": "Fixed6 scene frames plus3repeats: baseline1case, candidate1case still differs; retained raw evidence."
+  },
+  "terrain-parity-raw.json": {
+    "fullFrameCases": 36,
+    "alphaCases": 36,
+    "maxChannel": 14,
+    "maxMean": 0.12092892156862745,
+    "hotChanged": 0,
+    "restoredChanged": 0,
+    "maxInterior": 1,
+    "interiorHoles": 0,
+    "extraScope": "canonical city plus isolated tiles"
+  },
+  "terrain-extra-raw.json": {
+    "fullFrameCases": 36,
+    "alphaCases": 48,
+    "maxChannel": 14,
+    "maxMean": 0.12092892156862745,
+    "hotChanged": 0,
+    "restoredChanged": 0,
+    "maxInterior": 1,
+    "interiorHoles": 0,
+    "extraScope": "grass forest rock water; adjacent3x3 tiles center40,45 negative projectedX"
+  },
+  "fixedCPU": {
+    "method": "All HTMLCanvasElement 2D contexts, including offscreen asset/cache canvases, willReadFrequently=true before app imports; fixed6 scene warmup then original comparisons plus3 repeats",
+    "baseline": {
+      "synthetic": true,
+      "count": 240,
+      "failures": [],
+      "maximumRoadOnOpaque": 0,
+      "maximumRearWallOnOpaque": 0
+    },
+    "candidate": {
+      "synthetic": true,
+      "count": 240,
+      "failures": [],
+      "maximumRoadOnOpaque": 0,
+      "maximumRearWallOnOpaque": 0
+    },
+    "verdict": "PASS240+240; zero opaque road/rearwall intrusion, order, hover, warm cache and repeat differences",
+    "limitation": "CPU harness does not establish default-GPU pixel equivalence; original failures retained."
+  },
+  "ownedBrowsers": "All scripts exited and owned Chromium browsers closed; no source edits"
+}
