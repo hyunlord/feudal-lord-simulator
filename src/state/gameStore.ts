@@ -17,6 +17,7 @@ import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
+import { constructionSiteId } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import type { GameSpeed } from "../engine/engine.types";
 import {
@@ -84,8 +85,19 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return state;
     case "commit_simulation_state":
       return state === action.previousState ? action.nextState : state;
-    case "place_building":
-      return placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
+    case "place_building": {
+      const next = placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
+      if (!action.autoplayFoodObservation || next === state ||
+        (action.kind !== "granary" && action.kind !== "mill" && action.kind !== "wheat_farm")) return next;
+      return {
+        ...next,
+        autoplayFoodObservation: {
+          kind: action.kind,
+          siteId: constructionSiteId(state.nextConstructionOrdinal),
+          placedTick: state.tick,
+        },
+      };
+    }
     case "place_road_line":
       return placeRoadLine(state, action.start, action.destination);
     case "remove_road":
@@ -96,12 +108,18 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return demolishHouse(state, action.buildingId);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
-      return cancelConstruction({
+      const result = cancelConstruction({
         state,
         siteId: action.siteId,
         inventory: createDeliveryInventoryPort(),
         routes: routes.delivery,
       }).state;
+      if (
+        state.autoplayFoodObservation?.siteId !== action.siteId ||
+        state.autoplayFoodObservation.completedTick !== undefined
+      ) return result;
+      const { autoplayFoodObservation: _autoplayFoodObservation, ...withoutObservation } = result;
+      return withoutObservation;
     }
     case "confirm_palisade_proclamation":
       return confirmPalisadeProclamation(state, action.candidatePath);

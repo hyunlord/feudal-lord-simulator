@@ -2,6 +2,7 @@ import type { Rng } from "../content/random";
 import type { Walker } from "./walker.types";
 
 export type {
+  RoamingDeliveryEvent,
   RoamingHouse,
   RoamingJunctionInput,
   RoamingRoutePort,

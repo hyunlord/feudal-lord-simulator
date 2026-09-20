@@ -7,6 +7,8 @@ import { getTile } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
+import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
+import { preserveRoadExpansion } from "./autoplayExpansion";
 import { allocateHouseServices } from "../population/serviceAllocation";
 import type { AutoplayAction } from "./autoplay.types";
 
@@ -54,7 +56,7 @@ export function waterAction(state: GameState): AutoplayAction {
   const candidates: readonly TileCoordinate[] = Array.from({ length: state.width * state.height }, (_unused, index) => ({
     tx: index % state.width,
     ty: Math.floor(index / state.width),
-  })).filter((coordinate) => getTile(state, coordinate)?.terrain === "grass" && hasAutoplayBuildingClearance(state, "well", coordinate) && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok);
+  })).filter((coordinate) => getTile(state, coordinate) !== null && hasAutoplayBuildingClearance(state, "well", coordinate) && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok);
   const ranked = candidates
     .map((candidate) => {
       const well = virtualBuilding("well", candidate);
@@ -79,5 +81,13 @@ export function waterAction(state: GameState): AutoplayAction {
       left.candidate.tx - right.candidate.tx,
     );
   const best = ranked.find(({ candidate }) => hasConnectedConstructionRoute(state, virtualBuilding("well", candidate)))?.candidate;
-  return best === undefined ? NONE : { kind: "place_building", building: "well", tx: best.tx, ty: best.ty };
+  if (best !== undefined) {
+    return preserveRoadExpansion(state, { ...best, kind: "well" }) ??
+      { kind: "place_building", building: "well", tx: best.tx, ty: best.ty };
+  }
+  for (const { candidate } of ranked.slice(0, 24)) {
+    const road = plannedBuildingRoadAction(state, virtualBuilding("well", candidate));
+    if (road.kind !== "none") return road;
+  }
+  return NONE;
 }

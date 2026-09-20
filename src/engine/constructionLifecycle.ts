@@ -21,6 +21,7 @@ import {
 import type { House } from "../population/population.types";
 import type { GameState, PalisadeState } from "./engine.types";
 import { stoneReplacementSiteId } from "./era";
+import { startFoodObservation } from "./autoplayFoodThroughput";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
 
 export type ConstructionCompletionEvent = {
@@ -136,7 +137,7 @@ export function completeEligibleConstruction(state: GameState): GameState {
       })
     : [];
 
-  return {
+  const nextState = {
     ...state,
     buildings: [...state.buildings, ...completedBuildings.map(buildingFromSite)],
     constructionSites: [
@@ -148,6 +149,15 @@ export function completeEligibleConstruction(state: GameState): GameState {
     palisade,
     roadRevision: state.roadRevision + (barrierCompleted ? 1 : 0),
     pathCache: barrierCompleted ? {} : state.pathCache,
+  };
+  const observation = state.autoplayFoodObservation;
+  const completedObserved = observation === undefined || observation.completedTick !== undefined
+    ? undefined
+    : completedBuildings.map(buildingFromSite).find(building => building.id === observation.siteId);
+  if (observation === undefined || completedObserved === undefined) return nextState;
+  return {
+    ...nextState,
+    autoplayFoodObservation: startFoodObservation(nextState, observation, completedObserved),
   };
 }
 

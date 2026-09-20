@@ -11,6 +11,35 @@ import { createGrowthOpening } from "./phase21OpeningTranslation";
 import { createAutoplayTraceDriver } from "./economyHarnessAutoplay";
 import { fullServicePopulation, growthGuards, growthSnapshot, invalidGrowthResources, parseGrowthOptions, prosperityEligible } from "./phase19GrowthMetrics";
 import { createGrowthObservations, timingSummary } from "./phase19GrowthObservations";
+import { canPlaceBuilding } from "../src/world/placement";
+
+export function terrainResourcePreflight(state: GameState) {
+  const quarryWorld = { ...state, era: "palisade" as const, treasuryTimber: 999 };
+  const rockTiles = state.tiles.filter(tile => tile.terrain === "rock").length;
+  const legalQuarryFootprints = state.tiles.filter(tile => canPlaceBuilding(quarryWorld, "quarry", tile.tx, tile.ty).ok).length;
+  const failures = rockTiles === 0 ? [
+    `seed ${state.seed} has no rock terrain; stone-town victory cannot be claimed because quarry is the only raw stone source`,
+  ] : [];
+  return {
+    rockTiles,
+    legalQuarryFootprints,
+    legalQuarryFootprintsInterpretation: "diagnostic-only current placement count; zero can be caused by occupied or blocked footprints and does not by itself prove stone is impossible",
+    quarryEra: "palisade",
+    stoneSource: "quarry requires adjacent rock; market does not import stone",
+    failures,
+  };
+}
+
+export function summarizeCapacityRecovery(observation: {
+  readonly episodes: readonly unknown[];
+  readonly unresolvedCapacityEpisodes: number;
+}) {
+  const capacityEpisodeObserved = observation.episodes.length > 0;
+  return {
+    capacityEpisodeObserved,
+    capacityRecovered: capacityEpisodeObserved && observation.unresolvedCapacityEpisodes === 0,
+  };
+}
 
 function provenance() {
   const root = fileURLToPath(new URL("../", import.meta.url));
@@ -36,6 +65,7 @@ export function runPhase19NaturalGrowth(options: {
   const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-translated-verification-fixture-offset-${opening.provenance.offset.tx},${opening.provenance.offset.ty}`, policy: { maxHousingLots: targetLots } });
   const observations = createGrowthObservations();
   let state = opening.state;
+  const resourcePreflight = terrainResourcePreflight(state);
   const stability = createGrowthStability(targetLots);
   const initial = growthSnapshot(state);
   const progress: ReturnType<typeof growthSnapshot>[] = [initial];
@@ -43,7 +73,7 @@ export function runPhase19NaturalGrowth(options: {
   const guardHistogram: Record<string, number> = {};
   const tickRing: number[] = [];
   const advisorRing: number[] = [];
-  const failures: string[] = [];
+  const failures: string[] = [...resourcePreflight.failures];
   let guardSamples = 0;
   let victoryTick: number | null = null;
   let eligibleStreak = 0;
@@ -58,7 +88,7 @@ export function runPhase19NaturalGrowth(options: {
   };
   record("initial");
   observations.observe(state);
-  for (let step = 0; step < maxTicks; step += 1) {
+  for (let step = 0; step < maxTicks && failures.length === 0; step += 1) {
     if (state.tick % 120 === 0) {
       guardSamples += 1;
       const guards = growthGuards(state, targetLots);
@@ -120,11 +150,9 @@ export function runPhase19NaturalGrowth(options: {
   });
   const final = growthSnapshot(state);
   const { stableSince, sustainedTicks, interruptions: stabilityInterruptions, complete } = stability.report();
-  const capacityEpisodeObserved = observation.episodes.length > 0;
+  const capacitySummary = summarizeCapacityRecovery(observation);
   const acceptance = { targetReached: targetReachedTick !== null, victory: victoryTick !== null,
-    fullServiceStable: complete, capacityObserved: capacityEpisodeObserved,
-    capacityRecovered: capacityEpisodeObserved && observation.unresolvedCapacityEpisodes === 0,
-    validRun: failures.length === 0 };
+    fullServiceStable: complete, validRun: failures.length === 0 };
   const acceptanceMet = Object.values(acceptance).every(Boolean);
   return {
     status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, opening: opening.provenance, acceptance,
@@ -132,7 +160,8 @@ export function runPhase19NaturalGrowth(options: {
     stopReason: failures.length > 0 ? "invalid-run" : complete ? "target-scale-stable" : "tick-budget",
     growthBlocker: null,
     sourceContract: "Verification-only rigid opening translation on unchanged buildWorldGrid(seed), nearest legal Manhattan/dy/dx offset; not a product seed feature. Seed1 preserves DEFAULT_GAME_STATE; actual reducer and advanceTick; economics and save schema unchanged",
-    capacityEpisodeObserved, victoryTick, victoryEligibleTicks, stableSince, sustainedTicks,
+    resourcePreflight,
+    ...capacitySummary, victoryTick, victoryEligibleTicks, stableSince, sustainedTicks,
     stableBreadZeroTicks, stableMinimumBread: Number.isFinite(stableMinimumBread) ? stableMinimumBread : null,
     stabilityInterruptions, initial, final, milestones, progress,
     guardHistogram, guardSamples, guardSampling: "all simultaneously true housing guards sampled before advisor at 120-tick cadence; not a mutually exclusive attribution",
@@ -158,5 +187,5 @@ if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(
   const json = JSON.stringify(report, null, 2);
   if (out !== undefined) writeFileSync(resolve(out, "summary.json"), json);
   process.stdout.write(`${json}\n`);
-  if (report.failures.length > 0) process.exitCode = 1;
+  if (report.status !== "passed") process.exitCode = 1;
 }

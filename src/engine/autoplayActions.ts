@@ -29,7 +29,17 @@ function eraGameAction(state: GameState): GameAction | null {
 export function autoplayActionToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
   switch (action.kind) {
     case "place_building":
-      return { type: "place_building", kind: action.building, tx: action.tx, ty: action.ty };
+      return {
+        type: "place_building",
+        kind: action.building,
+        tx: action.tx,
+        ty: action.ty,
+        ...(
+          action.building === "granary" || action.building === "mill" || action.building === "wheat_farm"
+            ? { autoplayFoodObservation: true }
+            : {}
+        ),
+      };
     case "place_road":
       return { type: "place_road_line", start: action.from, destination: action.to };
     case "proclaim_era":

@@ -2,14 +2,16 @@ import { householdServices } from "./householdServices";
 import { updateSettlementProgress } from "./settlementProgress";
 import { stepCarters, spawnCarters } from "../agents/delivery";
 import { spawnDistributors, stepDistributors } from "../agents/roaming";
-import type { RoamingHouse, RoamingJunctionInput } from "../agents/roaming";
+import type { RoamingDeliveryEvent, RoamingHouse, RoamingJunctionInput } from "../agents/roaming";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { BALANCE } from "../content/balanceConfig";
 import {
   advanceConstructionSites,
   completeEligibleConstruction,
   recomputeConstructionStalls,
 } from "./constructionLifecycle";
+import { recordFoodObservationActivity, refreshFoodObservation } from "./autoplayFoodThroughput";
 import { stepProduction } from "../economy/production";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
@@ -62,11 +64,36 @@ function mergeRoamingHouses(
   });
 }
 
+function affectedHouseIds(houses: readonly House[], tick: number): ReadonlySet<string> {
+  return new Set(houses.flatMap((house) => {
+    const affected = house.residents > 0 && house.breadStock === 0 &&
+      tick > (house.starvationGraceUntilTick ?? 0) &&
+      (house.emptyFoodTicks ?? 0) > BALANCE.STARVATION_WINDOW;
+    return affected ? [house.buildingId] : [];
+  }));
+}
+
+function deliveredBreadFromObservedGranary(
+  before: readonly House[],
+  deliveryEvents: readonly RoamingDeliveryEvent[],
+  observedBuildingId: string | undefined,
+  tick: number,
+): number {
+  if (observedBuildingId === undefined) return 0;
+  const affected = affectedHouseIds(before, tick);
+  return deliveryEvents.reduce((total, event) =>
+    event.homeBuildingId === observedBuildingId && affected.has(event.houseBuildingId)
+      ? total + Math.max(0, event.amount)
+      : total, 0);
+}
+
 export function runProduction(state: GameState): GameState {
   let forestHarvests = state.forestHarvests ?? [];
+  let observedOutput = 0;
   const buildings = state.buildings.map((building) => {
     if (!buildingHasRequiredRoadAccess(state, building)) return building;
     const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
+    if (step.produced !== null && state.autoplayFoodObservation?.siteId === building.id) observedOutput += 1;
     forestHarvests = forestHarvestsAfterProduction({
       state: { ...state, forestHarvests },
       building,
@@ -74,11 +101,14 @@ export function runProduction(state: GameState): GameState {
     });
     return step.building;
   });
-  return {
+  const nextState = {
     ...state,
     buildings,
     forestHarvests,
   };
+  return observedOutput === 0
+    ? nextState
+    : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });
 }
 
 function rngForState(state: GameState) {
@@ -121,6 +151,15 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     routes: routePorts.roaming,
     rngForJunction: rngForState({ ...state, tick }),
   });
+  const deliveredBread = deliveredBreadFromObservedGranary(
+    state.houses,
+    movedDistributors.deliveryEvents,
+    state.autoplayFoodObservation?.siteId,
+    tick,
+  );
+  const observedDeliveryState = deliveredBread === 0
+    ? state
+    : recordFoodObservationActivity({ ...state, tick }, { deliveredBread });
   // The opening population staffs this whole substep; new arrivals enter work next tick.
   const labour = allocateBuildingAndConstructionLabour(
     movedDistributors.buildings,
@@ -145,7 +184,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
   const produced = runProduction({
-    ...state,
+    ...observedDeliveryState,
     tick,
     buildings: [...marketSettled.buildings],
     constructionSites: [...labour.constructionSites],
@@ -192,7 +231,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
 
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
-  return updateSettlementProgress(completeEligibleConstruction(
+  return updateSettlementProgress(refreshFoodObservation(completeEligibleConstruction(
     advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }),
-  ));
+  )));
 }

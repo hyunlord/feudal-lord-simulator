@@ -54,6 +54,30 @@ export interface ForestHarvest {
   readonly harvestedAtTick: number;
 }
 
+export interface AutoplayFoodObservationSnapshot {
+  readonly outputTotal: number;
+  readonly houseBread: number;
+  readonly starvingHomes: number;
+}
+
+export interface AutoplayFoodObservationOutcome {
+  readonly outputDelta: number;
+  readonly deliveredBreadDelta: number;
+  readonly starvingHomesDelta: number;
+  readonly effective: boolean;
+}
+
+export interface AutoplayFoodObservation {
+  readonly kind: "granary" | "mill" | "wheat_farm";
+  readonly siteId: string;
+  readonly placedTick: number;
+  readonly completedTick?: number;
+  readonly observeUntilTick?: number;
+  readonly baseline?: AutoplayFoodObservationSnapshot;
+  readonly latest?: AutoplayFoodObservationSnapshot;
+  readonly outcome?: AutoplayFoodObservationOutcome;
+}
+
 export interface GameState {
   settlement?: import("./settlement.types").SettlementProgress;
   tick: number;
@@ -74,6 +98,7 @@ export interface GameState {
   eraProclaimedTick: number | null;
   palisade: PalisadeState | null;
   readonly forestHarvests: readonly ForestHarvest[];
+  readonly autoplayFoodObservation?: AutoplayFoodObservation;
   nextConstructionOrdinal: number;
   roadRevision: number;
   pathCache: RoadPathCache;

@@ -22,6 +22,7 @@ export type GameAction =
       readonly kind: BuildingKind;
       readonly tx: number;
       readonly ty: number;
+      readonly autoplayFoodObservation?: boolean;
     }
   | {
       readonly type: "place_road_line";

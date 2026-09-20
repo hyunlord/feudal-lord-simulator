@@ -45,6 +45,12 @@ export interface RoamingJunctionInput {
   readonly visitCount: number;
 }
 
+export interface RoamingDeliveryEvent {
+  readonly homeBuildingId: string;
+  readonly houseBuildingId: string;
+  readonly amount: number;
+}
+
 export interface RoamingStepInput {
   readonly tick: number;
   readonly buildings: readonly Building[];
@@ -58,4 +64,5 @@ export interface RoamingStepResult {
   readonly buildings: readonly Building[];
   readonly walkers: readonly Walker[];
   readonly houses: readonly RoamingHouse[];
+  readonly deliveryEvents: readonly RoamingDeliveryEvent[];
 }

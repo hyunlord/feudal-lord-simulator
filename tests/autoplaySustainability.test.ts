@@ -13,6 +13,7 @@ import { createPalisadeConstructionSite } from '../src/economy/construction';
 import { gameReducer } from '../src/state/gameStore';
 import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import { buildingRoadAccessTiles, resolveBuildingRoute, resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
+
 test('Given starting timber and an existing logging camp When autoplay chooses development Then it secures renewable timber before expansion', () => {
   const state = structuredClone(DEFAULT_GAME_STATE);
   state.houses = state.houses.map(house => ({ ...house, hasWater: true }));

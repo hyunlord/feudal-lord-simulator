@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import type { GameState } from "../src/engine/engine.types";
 import { parseGrowthOptions } from "../scripts/phase19GrowthMetrics";
 import { createGrowthInitialState, createGrowthStability } from "../scripts/phase19GrowthRunControl";
 import { createGrowthObservations } from "../scripts/phase19GrowthObservations";
@@ -66,6 +67,33 @@ test("removing a denied house cannot be reported as service recovery", () => {
   assert.equal(observer.report().unresolvedCapacityEpisodes, 1);
 });
 
+test("capacity recovery summary reports unobserved, unrecovered, and recovered episodes outside acceptance", async () => {
+  const { summarizeCapacityRecovery } = await import("../scripts/phase19NaturalGrowth");
+  const unobserved = createGrowthObservations();
+  unobserved.observe(DEFAULT_GAME_STATE);
+  assert.deepEqual(summarizeCapacityRecovery(unobserved.report()), {
+    capacityEpisodeObserved: false,
+    capacityRecovered: false,
+  });
+
+  const { state, well } = overloadedWell();
+  const unrecovered = createGrowthObservations();
+  unrecovered.observe(state);
+  assert.deepEqual(summarizeCapacityRecovery(unrecovered.report()), {
+    capacityEpisodeObserved: true,
+    capacityRecovered: false,
+  });
+
+  const recovered = createGrowthObservations();
+  recovered.observe(state);
+  recovered.observe({ ...state, tick: 1, buildings: state.buildings.filter(building => building.id !== well.id) });
+  recovered.observe({ ...state, tick: 2, buildings: [...state.buildings, { ...well, id: "second-well" }] });
+  assert.deepEqual(summarizeCapacityRecovery(recovered.report()), {
+    capacityEpisodeObserved: true,
+    capacityRecovered: true,
+  });
+});
+
 test("approved translated seed two is explicitly labeled as a verification fixture", async () => {
   const { runPhase19NaturalGrowth } = await import("../scripts/phase19NaturalGrowth");
   const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2 });
@@ -73,6 +101,63 @@ test("approved translated seed two is explicitly labeled as a verification fixtu
   assert.equal(report.opening.mode, "translated-verification-fixture");
   assert.equal(report.opening.productSeedFeature, false);
   assert.deepEqual(report.opening.offset, { tx: 0, ty: -3 });
-  assert.equal(report.final.tick, 1);
   assert.equal(report.acceptance.targetReached, false);
+});
+
+test("stage zero preflight blocks a seed with no legal quarryable rock source", async () => {
+  const { runPhase19NaturalGrowth } = await import("../scripts/phase19NaturalGrowth");
+  const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 2 });
+  assert.deepEqual(report.resourcePreflight, {
+    rockTiles: 0,
+    legalQuarryFootprints: 0,
+    legalQuarryFootprintsInterpretation: "diagnostic-only current placement count; zero can be caused by occupied or blocked footprints and does not by itself prove stone is impossible",
+    quarryEra: "palisade",
+    stoneSource: "quarry requires adjacent rock; market does not import stone",
+    failures: ["seed 2 has no rock terrain; stone-town victory cannot be claimed because quarry is the only raw stone source"],
+  });
+  assert.equal(report.acceptance.validRun, false);
+  assert.deepEqual(report.failures, report.resourcePreflight.failures);
+  assert.equal(report.final.tick, 0);
+});
+
+test("stage zero preflight treats zero legal quarry footprints as diagnostic when rock exists", async () => {
+  const { terrainResourcePreflight } = await import("../scripts/phase19NaturalGrowth");
+  const occupiedRockState: GameState = {
+    ...structuredClone(DEFAULT_GAME_STATE),
+    seed: 99,
+    tiles: DEFAULT_GAME_STATE.tiles.map((tile, index) => ({
+      ...tile,
+      terrain: index === 0 ? "rock" : "grass",
+      hasRoad: true,
+    })),
+  };
+  const report = terrainResourcePreflight(occupiedRockState);
+  assert.equal(report.rockTiles, 1);
+  assert.equal(report.legalQuarryFootprints, 0);
+  assert.match(report.legalQuarryFootprintsInterpretation, /diagnostic-only/);
+  assert.deepEqual(report.failures, []);
+});
+
+test("stage zero acceptance excludes optional capacity episodes from required gates", async () => {
+  const { runPhase19NaturalGrowth } = await import("../scripts/phase19NaturalGrowth");
+  const report = runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 1, seed: 1 });
+  assert.equal(Object.hasOwn(report.acceptance, "capacityObserved"), false);
+  assert.equal(Object.hasOwn(report.acceptance, "capacityRecovered"), false);
+  assert.equal(report.capacityEpisodeObserved, false);
+  assert.equal(report.capacityRecovered, false);
+});
+
+test("CLI exits nonzero when the stage zero acceptance gates are unmet", async () => {
+  const { mkdtempSync, rmSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join, resolve } = await import("node:path");
+  const { spawnSync } = await import("node:child_process");
+  const out = mkdtempSync(join(tmpdir(), "growth-unmet-"));
+  try {
+    const run = spawnSync(process.execPath, ["--import", "tsx", resolve("scripts/phase19NaturalGrowth.ts"), "24", "1", out, "1"], { encoding: "utf8" });
+    assert.equal(run.status, 1);
+    assert.match(run.stdout, /"status": "acceptance-unmet"/);
+  } finally {
+    rmSync(out, { recursive: true });
+  }
 });

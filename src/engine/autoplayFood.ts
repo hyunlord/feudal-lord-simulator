@@ -1,5 +1,9 @@
 import { foodCoverageAction } from './autoplayFoodCoverage';
-import { foodRecoveryKind } from './autoplayFoodThroughput';
+import {
+  blocksRepeatedFoodExpansion,
+  foodRecoveryKind,
+  hasActiveFoodObservation,
+} from './autoplayFoodThroughput';
 import { housingLotCount } from "../population/housing";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
@@ -78,16 +82,19 @@ export function foodAction(state: GameState, buildAction: BuildAction): Autoplay
   const granaryCount = builtOrPlannedCount(state, "granary");
   const target = targetFoodChains(state);
   if (hasPendingFoodChain(state)) return { kind: "none" };
+  if (hasActiveFoodObservation(state)) return { kind: "none" };
   const coverage = foodCoverageAction(state);
   if (coverage.kind !== 'none') return coverage;
   const recovery = foodRecoveryKind(state, rationDemand(state));
-  if (recovery !== null) return buildAction(state, recovery);
-  if (wheatCount < target && wheatCount <= millCount) return buildAction(state, "wheat_farm");
-  if (millCount < target && millCount <= granaryCount) return buildAction(state, "mill");
-  if (wheatCount < target) return buildAction(state, "wheat_farm");
-  if (granaryCount < target) return buildAction(state, "granary");
-  if (millCount < target) return buildAction(state, "mill");
-  if (millCount > 0 && millCount < targetMillCount(state)) return buildAction(state, "mill");
-  if (wheatCount < targetWheatCount(state, millCount)) return buildAction(state, "wheat_farm");
+  const foodBuildAction = (kind: "wheat_farm" | "mill" | "granary") =>
+    blocksRepeatedFoodExpansion(state, kind) ? { kind: "none" } as const : buildAction(state, kind);
+  if (recovery !== null) return foodBuildAction(recovery);
+  if (wheatCount < target && wheatCount <= millCount) return foodBuildAction("wheat_farm");
+  if (millCount < target && millCount <= granaryCount) return foodBuildAction("mill");
+  if (wheatCount < target) return foodBuildAction("wheat_farm");
+  if (granaryCount < target) return foodBuildAction("granary");
+  if (millCount < target) return foodBuildAction("mill");
+  if (millCount > 0 && millCount < targetMillCount(state)) return foodBuildAction("mill");
+  if (wheatCount < targetWheatCount(state, millCount)) return foodBuildAction("wheat_farm");
   return { kind: "none" };
 }
