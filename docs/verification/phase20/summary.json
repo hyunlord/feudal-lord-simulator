@@ -1,0 +1,595 @@
+{
+  "status": "acceptance-unmet",
+  "source": {
+    "commit": "96c3bf13863e5902cea5d3685349c9e3bfb4d983",
+    "sourceSha256": "007c10b1c59c9d12e8430b6d5f8b550f1697aa52a5b5c6bcc2ac5b6abf34fbf7",
+    "sourceFiles": 417,
+    "dirty": false
+  },
+  "seed": 1,
+  "acceptance": {
+    "targetReached": true,
+    "victory": false,
+    "fullServiceStable": false,
+    "capacityObserved": false,
+    "capacityRecovered": false,
+    "validRun": true
+  },
+  "policy": {
+    "maxHousingLots": 24
+  },
+  "maxTicks": 1200000,
+  "targetReachedTick": 1118480,
+  "maximumLots": 24,
+  "stopReason": "tick-budget",
+  "victoryTick": null,
+  "sustainedTicks": 0,
+  "final": {
+    "tick": 1200000,
+    "era": "palisade",
+    "houses": 24,
+    "lots": 24,
+    "occupiedHouses": 24,
+    "population": 428,
+    "capacity": 436,
+    "idleWorkers": 0,
+    "l4Houses": 0,
+    "constructionSites": 0,
+    "bread": 704,
+    "minimumHouseBread": 0,
+    "occupiedBreadZeroHouses": 8,
+    "services": {
+      "water": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      },
+      "market": {
+        "served": 0,
+        "missing": 0,
+        "outside": 17,
+        "understaffed": 7,
+        "unreachable": 0,
+        "capacity": 0
+      },
+      "church": {
+        "served": 0,
+        "missing": 24,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      }
+    },
+    "providers": [
+      {
+        "id": "construction-site-000016",
+        "service": "water",
+        "capacity": 12,
+        "used": 7,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000030",
+        "service": "water",
+        "capacity": 12,
+        "used": 3,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000042",
+        "service": "water",
+        "capacity": 12,
+        "used": 2,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000049",
+        "service": "water",
+        "capacity": 12,
+        "used": 2,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000066",
+        "service": "water",
+        "capacity": 12,
+        "used": 4,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "well-45-41-0",
+        "service": "water",
+        "capacity": 12,
+        "used": 6,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000089",
+        "service": "market",
+        "capacity": 24,
+        "used": 0,
+        "workers": 0,
+        "requiredWorkers": 3
+      }
+    ],
+    "buildingCounts": {
+      "house": 24,
+      "well": 6,
+      "granary": 3,
+      "logging_camp": 1,
+      "storehouse": 5,
+      "sawmill": 1,
+      "wheat_farm": 16,
+      "mill": 62,
+      "chapel": 1,
+      "masonry": 1,
+      "quarry": 1,
+      "market": 1
+    },
+    "outcome": "ongoing"
+  },
+  "guardHistogram": {
+    "idle-workers-at-most-six": 509,
+    "housing-not-full": 9778,
+    "food-supported-lot-limit": 7686,
+    "bread-below-twenty": 16,
+    "pending-food-chain": 1491,
+    "no-housing-guard": 27,
+    "lot-limit": 679
+  },
+  "guardSamples": 10000,
+  "guardSampling": "all simultaneously true housing guards sampled before advisor at 120-tick cadence; not a mutually exclusive attribution",
+  "unresolvedCapacityEpisodes": 0,
+  "denialTicks": {
+    "water": 0,
+    "market": 0,
+    "church": 0
+  },
+  "denialHouseTicks": {
+    "water": 0,
+    "market": 0,
+    "church": 0
+  },
+  "occupiedBreadZeroTicks": 921046,
+  "occupiedBreadZeroHouseTicks": 2759083,
+  "failures": [],
+  "stateSha256": "27aa149bd88f5f8960fb5b48691734e8dcfca7c6ad5b1d42106450012df6d2ae",
+  "finalProductCommit": "2306ab68ba7d5f8274a1324286d1e046b0dfe580",
+  "runtimeSourceUnchanged": true,
+  "invalidSeeds": {
+    "2": "water under logging camp and opening roads",
+    "3": "logging camp lacks required adjacent forest",
+    "4": "logging camp lacks required adjacent forest",
+    "5": "logging camp lacks required adjacent forest"
+  },
+  "reproduce": {
+    "natural": "./node_modules/.bin/tsx scripts/phase19NaturalGrowth.ts 24 1200000 ./output/phase20/reproduce-seed1 1",
+    "benchmark": "node docs/verification/phase20/run-benchmark.mjs ./output/phase20/reproduce-seed1/final-state.json \"$PWD\" http://127.0.0.1:3246/ \"$FLS_PLAYWRIGHT_MODULE\" ./output/phase20/perf",
+    "notes": "Use installed Playwright Core module and Chrome; start npm run dev -- --host 127.0.0.1 --port 3246 --strictPort in a separate terminal. Finish natural simulation and all tests before timing. At 2306ab6 seed1 initialization/runtime match measured96; provenance hash differs only due validation guard."
+  },
+  "verification": {
+    "at": "2026-09-20T13:47:59.659653+00:00",
+    "status": "PASS",
+    "head": "2306ab68ba7d5f8274a1324286d1e046b0dfe580",
+    "command": "npm run typecheck && npm test && npm run build",
+    "exitCode": 0,
+    "tests": {
+      "total": 1584,
+      "passed": 1584,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "suites": 18,
+      "includesPhase9": true,
+      "durationMs": 506517.496042
+    },
+    "typecheck": "PASS",
+    "build": "PASS",
+    "diffCheck": "PASS",
+    "runtimeSourceIdenticalTo": "96c3bf13863e5902cea5d3685349c9e3bfb4d983",
+    "warning": "Minified JS601.25kB exceeds Vite500kB recommendation",
+    "limitations": [
+      "Natural acceptance and manual UI evidence separate",
+      "Elapsed test time is not performance evidence"
+    ],
+    "logs": {
+      "typecheck-guard-final.log": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff",
+      "test-guard-final.log": "0863ba3e4c20bfb7c673f3211f0082824deb8680709449c43f89e44a388f7fc8",
+      "build-guard-final.log": "c520c5cde00bd3324da412d365a80adcb3e3c12066cb5eb0fadfa64e8fbdcb22"
+    }
+  },
+  "performance": {
+    "source": "96c3bf13863e5902cea5d3685349c9e3bfb4d983",
+    "stateSha": "27aa149bd88f5f8960fb5b48691734e8dcfca7c6ad5b1d42106450012df6d2ae",
+    "population": 428,
+    "houses": 24,
+    "protocol": "N0 discarded; N1 N2 retained; 240 draws/window, 480 native frames; tick snapshots every 40 draws",
+    "browser": "153.0.8010.48",
+    "host": {
+      "platform": "darwin",
+      "release": "25.4.0",
+      "arch": "arm64",
+      "cpu": "Apple M4 Max"
+    },
+    "camera": {
+      "zoom": 1,
+      "panX": 800,
+      "panY": -940
+    },
+    "rows": [
+      {
+        "dpr": 1,
+        "condition": "drag",
+        "frame": {
+          "count": 480,
+          "median": 22.5,
+          "p95": 24.19999998807907,
+          "mean": 22.52166666748623
+        },
+        "tick": {
+          "count": 282,
+          "median": 1.699999988079071,
+          "p95": 2.400000035762787,
+          "mean": 1.7982269538209794
+        },
+        "raf": {
+          "count": 480,
+          "median": 33.30000000000018,
+          "p95": 33.400000000000546,
+          "mean": 29.512499999999985
+        },
+        "errors": [],
+        "tickRanges": [
+          {
+            "from": 1200031,
+            "to": 1200173,
+            "count": 141,
+            "snapshotCountDifference": 1
+          },
+          {
+            "from": 1200032,
+            "to": 1200173,
+            "count": 141,
+            "snapshotCountDifference": 0
+          }
+        ]
+      },
+      {
+        "dpr": 1,
+        "condition": "paused",
+        "frame": {
+          "count": 480,
+          "median": 21.100000023841858,
+          "p95": 22.80000001192093,
+          "mean": 21.261249999826152
+        },
+        "tick": {
+          "count": 0,
+          "median": null,
+          "p95": null,
+          "mean": null
+        },
+        "raf": {
+          "count": 480,
+          "median": 16.700000000000728,
+          "p95": 33.400000000000546,
+          "mean": 24.30458333333333
+        },
+        "errors": [],
+        "tickRanges": [
+          {
+            "from": 1200000,
+            "to": 1200000,
+            "count": 0,
+            "snapshotCountDifference": 0
+          },
+          {
+            "from": 1200000,
+            "to": 1200000,
+            "count": 0,
+            "snapshotCountDifference": 0
+          }
+        ]
+      },
+      {
+        "dpr": 1,
+        "condition": "running",
+        "frame": {
+          "count": 480,
+          "median": 22.099999964237213,
+          "p95": 23.600000023841858,
+          "mean": 22.049583334599934
+        },
+        "tick": {
+          "count": 274,
+          "median": 1.699999988079071,
+          "p95": 2.400000035762787,
+          "mean": 1.81715328588973
+        },
+        "raf": {
+          "count": 480,
+          "median": 33.30000000000018,
+          "p95": 33.400000000000546,
+          "mean": 28.57520833333332
+        },
+        "errors": [],
+        "tickRanges": [
+          {
+            "from": 1200032,
+            "to": 1200169,
+            "count": 137,
+            "snapshotCountDifference": 0
+          },
+          {
+            "from": 1200032,
+            "to": 1200168,
+            "count": 137,
+            "snapshotCountDifference": -1
+          }
+        ]
+      },
+      {
+        "dpr": 2,
+        "condition": "drag",
+        "frame": {
+          "count": 480,
+          "median": 31.19999998807907,
+          "p95": 33.10000002384186,
+          "mean": 31.247291668131947
+        },
+        "tick": {
+          "count": 385,
+          "median": 1.699999988079071,
+          "p95": 2.399999976158142,
+          "mean": 1.7727272721080036
+        },
+        "raf": {
+          "count": 480,
+          "median": 33.399999999999636,
+          "p95": 50.09999999999991,
+          "mean": 40.2066666666667
+        },
+        "errors": [],
+        "tickRanges": [
+          {
+            "from": 1200032,
+            "to": 1200225,
+            "count": 192,
+            "snapshotCountDifference": 1
+          },
+          {
+            "from": 1200032,
+            "to": 1200225,
+            "count": 193,
+            "snapshotCountDifference": 0
+          }
+        ]
+      },
+      {
+        "dpr": 2,
+        "condition": "paused",
+        "frame": {
+          "count": 480,
+          "median": 30.099999964237213,
+          "p95": 32.200000047683716,
+          "mean": 30.291666667039195
+        },
+        "tick": {
+          "count": 0,
+          "median": null,
+          "p95": null,
+          "mean": null
+        },
+        "raf": {
+          "count": 480,
+          "median": 33.30000000000018,
+          "p95": 50,
+          "mean": 34.09562499999998
+        },
+        "errors": [],
+        "tickRanges": [
+          {
+            "from": 1200000,
+            "to": 1200000,
+            "count": 0,
+            "snapshotCountDifference": 0
+          },
+          {
+            "from": 1200000,
+            "to": 1200000,
+            "count": 0,
+            "snapshotCountDifference": 0
+          }
+        ]
+      },
+      {
+        "dpr": 2,
+        "condition": "running",
+        "frame": {
+          "count": 480,
+          "median": 31,
+          "p95": 33.10000002384186,
+          "mean": 31.11354166616996
+        },
+        "tick": {
+          "count": 381,
+          "median": 1.699999988079071,
+          "p95": 2.300000011920929,
+          "mean": 1.7687664027289143
+        },
+        "raf": {
+          "count": 480,
+          "median": 33.399999999999636,
+          "p95": 50.099999999999454,
+          "mean": 39.58208333333334
+        },
+        "errors": [],
+        "tickRanges": [
+          {
+            "from": 1200032,
+            "to": 1200221,
+            "count": 190,
+            "snapshotCountDifference": -1
+          },
+          {
+            "from": 1200032,
+            "to": 1200222,
+            "count": 191,
+            "snapshotCountDifference": -1
+          }
+        ]
+      }
+    ],
+    "scope": "Synchronous drawCurrentCanvasFrame CPU work; excludes camera advance, minimap publication, React and GPU completion. Current scene only, not improvement comparison. Paused tick statistics null. React state tick snapshot may lag/lead measurement counter by1."
+  },
+  "qa": {
+    "source": "96c3bf13863e5902cea5d3685349c9e3bfb4d983",
+    "status": "PASS",
+    "road": {
+      "method": "ActualUI normalinitialstate: waitfoodservice, removealltargethouseroadcontacts, advancegrace, restore roads andwaitdelivery. No stateinjection.",
+      "before": {
+        "tick": 205,
+        "house": {
+          "buildingId": "house-46-40-0",
+          "residents": 4,
+          "level": 3,
+          "breadStock": 3,
+          "lastServicedTick": 191
+        }
+      },
+      "degraded": {
+        "tick": 2050,
+        "house": {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 191
+        }
+      },
+      "recovered": {
+        "tick": 2845,
+        "house": {
+          "buildingId": "house-46-40-0",
+          "residents": 15,
+          "level": 3,
+          "breadStock": 0,
+          "lastServicedTick": 2791
+        }
+      },
+      "buildingLevelMaintained": 3,
+      "degradedOverlay": "neglected",
+      "recoveredOverlay": "none",
+      "errors": []
+    },
+    "gateMarket": {
+      "method": "Controlled initial states; actual UI inspector and gate-road remove/restore. Workers3 and2 are separate paused seeded states, not a UI staffing toggle or natural allocation episode.",
+      "rows": [
+        {
+          "workers": 3,
+          "before": {
+            "kind": "served",
+            "providerId": "qa-market",
+            "demand": 1
+          },
+          "cut": {
+            "kind": "unreachable",
+            "providerId": null,
+            "demand": 1
+          },
+          "restored": {
+            "kind": "served",
+            "providerId": "qa-market",
+            "demand": 1
+          },
+          "errors": []
+        },
+        {
+          "workers": 2,
+          "before": {
+            "kind": "understaffed",
+            "providerId": null,
+            "demand": 1
+          },
+          "cut": null,
+          "restored": null,
+          "errors": []
+        }
+      ]
+    },
+    "representativeCapture": {
+      "source": "96c3bf1",
+      "provenance": "Final natural-v3 seed1 saved1200000 state shown paused by actual renderer, no state edits",
+      "errors": [],
+      "state": {
+        "tick": 1200000,
+        "population": 428,
+        "houseCount": 24,
+        "buildingCounts": {
+          "house": 24,
+          "well": 6,
+          "granary": 3,
+          "logging_camp": 1,
+          "storehouse": 5,
+          "sawmill": 1,
+          "wheat_farm": 16,
+          "mill": 62,
+          "chapel": 1,
+          "masonry": 1,
+          "quarry": 1,
+          "market": 1
+        },
+        "camera": {
+          "zoom": 0.7686914464285716,
+          "lod": "full"
+        }
+      },
+      "status": "PASS"
+    }
+  },
+  "images": [
+    {
+      "file": "final-natural24-city.jpg",
+      "sha256": "5632e085829486b09cd11e83804f10e43287c3b0a53fc01582aa1fba9905cfdd",
+      "bytes": 332124
+    },
+    {
+      "file": "saved21-granary-delivery.jpg",
+      "sha256": "bad3da5882eadd7891a74214bee6f2a635195994dcd1facbaf0308b7ea3d609c",
+      "bytes": 211045
+    }
+  ],
+  "intermediateRuns": [
+    {
+      "source": "8db5f70",
+      "seed": 1,
+      "ticks": 1200000,
+      "lots": 21,
+      "population": 363,
+      "era": "hamlet",
+      "status": "acceptance-unmet",
+      "tests": "1567/1567 PASS"
+    },
+    {
+      "source": "2ddc3f6",
+      "tests": "1570/1571 FAIL",
+      "failure": "autoplayPalisadeValidation: original out_of_bounds diagnosis replaced by building_clearance",
+      "build": "standalone PASS"
+    },
+    {
+      "source": "96c3bf1",
+      "tests": "1583/1583 PASS",
+      "correction": "failed wall fallback preserves original diagnostic"
+    }
+  ]
+}
