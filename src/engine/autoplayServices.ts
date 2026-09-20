@@ -2,7 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfi
 import { isBuildingConstructionSite } from '../economy/construction';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { allocateHouseServices } from '../population/serviceAllocation';
-import { canPlaceBuilding } from '../world/placement';
+import { canPlaceBuilding, isBuildingUnlocked } from '../world/placement';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { householdServices } from './householdServices';
@@ -21,12 +21,12 @@ function candidateBuilding(kind: UrbanService, tx: number, ty: number): Building
     inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
 }
 
-/** Post-era development repairs existing service access before funding new capacity. */
 export function urbanServiceAction(state: GameState): AutoplayAction {
-  if (state.era !== 'stone_town') return NONE;
+  if (!isBuildingUnlocked('market', state.era)) return NONE;
   const current = householdServices(state);
   const roadService = marketRoadService(state);
   for (const kind of ['market', 'church'] as const) {
+    if (!isBuildingUnlocked(kind, state.era)) continue;
     if (state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === kind)) continue;
     const underserved = state.buildings.filter(home => home.kind === 'house' && current.houses.has(home.id)
       && current.houses.get(home.id)?.[kind].kind !== 'served');

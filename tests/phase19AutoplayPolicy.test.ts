@@ -134,8 +134,8 @@ test("Given an eligible housing site When default and explicit eight are compare
   assert.deepEqual(decideNextAction(growthReadyState()), decideNextAction(growthReadyState(), { maxHousingLots: 8 }));
 });
 
-test("Given stone-town housing pressure When cap is raised Then existing post-era routing still does not expand houses", () => {
+test("Given eligible stone-town housing pressure When cap is raised Then post-era routing continues guarded housing expansion", () => {
   const current = { ...growthReadyState(), era: "stone_town" as const };
   const action = decideNextAction(current, { maxHousingLots: 48 });
-  assert.notEqual(action.kind === "place_building" && action.building, "house");
+  assert.equal(action.kind === "place_building" && action.building, "house");
 });

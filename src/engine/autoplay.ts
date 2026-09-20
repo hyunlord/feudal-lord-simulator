@@ -137,6 +137,7 @@ function roadAccessAction(state: GameState): AutoplayAction {
 }
 
 function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
+  if (kind === 'market') return urbanServiceAction(state);
   const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
   if ((["timber", "stone"] as const).some(resource => (cost[resource] ?? 0) > placementSpendableResource(state, resource))) return NONE;
   const site = findBuildSite(state, kind, (coordinate) =>
@@ -229,14 +230,13 @@ function eraAction(state: GameState): AutoplayAction {
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): AutoplayAction {
   if (state.era === "stone_town") {
-    const repair = networkRoadAction(state);
-    if (repair.kind !== "none") return repair;
-    const access = roadAccessAction(state);
-    if (access.kind !== "none") return access;
-    const construction = constructionRoadAction(state);
-    if (construction.kind !== "none") return construction;
-    const food = foodAction(state, buildAction);
-    return food.kind === "none" ? urbanServiceAction(state) : food;
+    for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
+      (current: GameState) => foodAction(current, buildAction), urbanServiceAction, waterAction,
+      (current: GameState) => housingAction(current, policy)]) {
+      const action = decide(state);
+      if (action.kind !== "none") return action;
+    }
+    return NONE;
   }
   for (const decide of [
     () => waterAction(state),
@@ -246,6 +246,7 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => timberAction(state),
     () => foodAction(state, buildAction),
     () => housingAction(state, policy),
+    () => urbanServiceAction(state),
     () => storageAction(state),
     () => eraAction(state),
   ]) {
