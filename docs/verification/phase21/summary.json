@@ -1,0 +1,411 @@
+{
+  "source": "30aa2f58bed464dc434eba824d986da912fd8f37",
+  "scope": "verification-only opening translation; runtime and economic rules unchanged",
+  "seed1Reuse": {
+    "originalSource": "96c3bf13863e5902cea5d3685349c9e3bfb4d983",
+    "matchingSrcTree": "c7aeca09fab7d19da14d44873420c271b80b1591",
+    "matchingInitialStateSha256": "00088342a7993680ecf1fd5fcd919f0452d9a86324f4e4c0ffc499bca1483e1d"
+  },
+  "runs": [
+    {
+      "seed": 1,
+      "source": "96c3bf13863e5902cea5d3685349c9e3bfb4d983",
+      "sourceSha256": "007c10b1c59c9d12e8430b6d5f8b550f1697aa52a5b5c6bcc2ac5b6abf34fbf7",
+      "reused": true,
+      "offset": {
+        "tx": 0,
+        "ty": 0
+      },
+      "status": "acceptance-unmet",
+      "stopReason": "tick-budget",
+      "tick": 1200000,
+      "lots": 24,
+      "occupied": 24,
+      "population": 428,
+      "era": "palisade",
+      "targetReachedTick": 1118480,
+      "acceptance": {
+        "targetReached": true,
+        "victory": false,
+        "fullServiceStable": false,
+        "capacityObserved": false,
+        "capacityRecovered": false,
+        "validRun": true
+      },
+      "services": {
+        "water": {
+          "served": 24,
+          "missing": 0,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "market": {
+          "served": 0,
+          "missing": 0,
+          "outside": 17,
+          "understaffed": 7,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "church": {
+          "served": 0,
+          "missing": 24,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        }
+      },
+      "buildingCounts": {
+        "house": 24,
+        "well": 6,
+        "granary": 3,
+        "logging_camp": 1,
+        "storehouse": 5,
+        "sawmill": 1,
+        "wheat_farm": 16,
+        "mill": 62,
+        "chapel": 1,
+        "masonry": 1,
+        "quarry": 1,
+        "market": 1
+      },
+      "bread": 704,
+      "emptyBreadHomes": 8,
+      "victoryTick": null,
+      "stableTicks": 0,
+      "failures": [],
+      "stateSha256": "27aa149bd88f5f8960fb5b48691734e8dcfca7c6ad5b1d42106450012df6d2ae",
+      "constructionSites": 0,
+      "idleWorkers": 0,
+      "l4Houses": 0
+    },
+    {
+      "seed": 2,
+      "source": "30aa2f58bed464dc434eba824d986da912fd8f37",
+      "sourceSha256": "4a78fca11382e9601380e0f5d7a9cd3dea8517ace05b83c394016313a1084441",
+      "reused": false,
+      "offset": {
+        "tx": 0,
+        "ty": -3
+      },
+      "status": "acceptance-unmet",
+      "stopReason": "tick-budget",
+      "tick": 1200000,
+      "lots": 10,
+      "occupied": 9,
+      "population": 198,
+      "era": "palisade",
+      "targetReachedTick": null,
+      "acceptance": {
+        "targetReached": false,
+        "victory": false,
+        "fullServiceStable": false,
+        "capacityObserved": false,
+        "capacityRecovered": false,
+        "validRun": true
+      },
+      "services": {
+        "water": {
+          "served": 9,
+          "missing": 0,
+          "outside": 1,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "market": {
+          "served": 10,
+          "missing": 0,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "church": {
+          "served": 0,
+          "missing": 10,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        }
+      },
+      "buildingCounts": {
+        "house": 10,
+        "well": 2,
+        "granary": 2,
+        "logging_camp": 1,
+        "storehouse": 2,
+        "sawmill": 1,
+        "wheat_farm": 6,
+        "mill": 5,
+        "chapel": 1,
+        "masonry": 1,
+        "market": 2
+      },
+      "bread": 88,
+      "emptyBreadHomes": 0,
+      "victoryTick": null,
+      "stableTicks": 0,
+      "failures": [],
+      "stateSha256": "4b9630084a75e22d541e7be6b5d1b6934a3e9066345abc32975fcc961b6d46b1",
+      "constructionSites": 0,
+      "idleWorkers": 43,
+      "l4Houses": 0
+    },
+    {
+      "seed": 3,
+      "source": "30aa2f58bed464dc434eba824d986da912fd8f37",
+      "sourceSha256": "4a78fca11382e9601380e0f5d7a9cd3dea8517ace05b83c394016313a1084441",
+      "reused": false,
+      "offset": {
+        "tx": -33,
+        "ty": -34
+      },
+      "status": "acceptance-unmet",
+      "stopReason": "tick-budget",
+      "tick": 1200000,
+      "lots": 16,
+      "occupied": 15,
+      "population": 298,
+      "era": "hamlet",
+      "targetReachedTick": null,
+      "acceptance": {
+        "targetReached": false,
+        "victory": false,
+        "fullServiceStable": false,
+        "capacityObserved": false,
+        "capacityRecovered": false,
+        "validRun": true
+      },
+      "services": {
+        "water": {
+          "served": 15,
+          "missing": 0,
+          "outside": 1,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "market": {
+          "served": 0,
+          "missing": 16,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "church": {
+          "served": 0,
+          "missing": 16,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        }
+      },
+      "buildingCounts": {
+        "house": 16,
+        "well": 5,
+        "granary": 3,
+        "logging_camp": 1,
+        "storehouse": 2,
+        "sawmill": 1,
+        "wheat_farm": 10,
+        "mill": 21,
+        "chapel": 1
+      },
+      "bread": 592,
+      "emptyBreadHomes": 0,
+      "victoryTick": null,
+      "stableTicks": 0,
+      "failures": [],
+      "stateSha256": "55c33d28938c877a4fddf73880998cd357af462b49270d2635d5177b7cbe2e29",
+      "constructionSites": 0,
+      "idleWorkers": 52,
+      "l4Houses": 0
+    },
+    {
+      "seed": 4,
+      "source": "30aa2f58bed464dc434eba824d986da912fd8f37",
+      "sourceSha256": "4a78fca11382e9601380e0f5d7a9cd3dea8517ace05b83c394016313a1084441",
+      "reused": false,
+      "offset": {
+        "tx": -25,
+        "ty": 0
+      },
+      "status": "acceptance-unmet",
+      "stopReason": "tick-budget",
+      "tick": 1200000,
+      "lots": 12,
+      "occupied": 12,
+      "population": 248,
+      "era": "palisade",
+      "targetReachedTick": null,
+      "acceptance": {
+        "targetReached": false,
+        "victory": false,
+        "fullServiceStable": false,
+        "capacityObserved": false,
+        "capacityRecovered": false,
+        "validRun": true
+      },
+      "services": {
+        "water": {
+          "served": 12,
+          "missing": 0,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "market": {
+          "served": 0,
+          "missing": 12,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "church": {
+          "served": 0,
+          "missing": 12,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        }
+      },
+      "buildingCounts": {
+        "house": 12,
+        "well": 3,
+        "granary": 2,
+        "logging_camp": 1,
+        "storehouse": 2,
+        "sawmill": 1,
+        "wheat_farm": 8,
+        "mill": 7,
+        "chapel": 1
+      },
+      "bread": 78,
+      "emptyBreadHomes": 4,
+      "victoryTick": null,
+      "stableTicks": 0,
+      "failures": [],
+      "stateSha256": "37cd05b9fd7cb55795d337f96787fe279f9b02ffb33050a1103641f38f334b84",
+      "constructionSites": 21,
+      "idleWorkers": 65,
+      "l4Houses": 0
+    },
+    {
+      "seed": 5,
+      "source": "30aa2f58bed464dc434eba824d986da912fd8f37",
+      "sourceSha256": "4a78fca11382e9601380e0f5d7a9cd3dea8517ace05b83c394016313a1084441",
+      "reused": false,
+      "offset": {
+        "tx": 0,
+        "ty": -31
+      },
+      "status": "acceptance-unmet",
+      "stopReason": "tick-budget",
+      "tick": 1200000,
+      "lots": 8,
+      "occupied": 8,
+      "population": 176,
+      "era": "hamlet",
+      "targetReachedTick": null,
+      "acceptance": {
+        "targetReached": false,
+        "victory": false,
+        "fullServiceStable": false,
+        "capacityObserved": false,
+        "capacityRecovered": false,
+        "validRun": true
+      },
+      "services": {
+        "water": {
+          "served": 8,
+          "missing": 0,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "market": {
+          "served": 0,
+          "missing": 8,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        },
+        "church": {
+          "served": 0,
+          "missing": 8,
+          "outside": 0,
+          "understaffed": 0,
+          "unreachable": 0,
+          "capacity": 0
+        }
+      },
+      "buildingCounts": {
+        "house": 8,
+        "well": 2,
+        "granary": 2,
+        "logging_camp": 1,
+        "storehouse": 1,
+        "sawmill": 1,
+        "wheat_farm": 5,
+        "mill": 3,
+        "chapel": 1
+      },
+      "bread": 325,
+      "emptyBreadHomes": 0,
+      "victoryTick": null,
+      "stableTicks": 0,
+      "failures": [],
+      "stateSha256": "fd7222a25cbd4e638788974a3752cfd2b920f7739e2e202c03294658e56c49c4",
+      "constructionSites": 0,
+      "idleWorkers": 51,
+      "l4Houses": 0
+    }
+  ],
+  "verification": {
+    "tests": {
+      "count": 1588,
+      "passed": 1588,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "suites": 18,
+      "phase9Included": true,
+      "durationMs": 566011.378916
+    },
+    "typecheck": "PASS",
+    "build": "PASS",
+    "diffCheck": "PASS"
+  },
+  "qa": {
+    "source": "30aa2f5",
+    "provenance": "Saved verification-only translated seed3 final city, QA camera fit to final building extent, differs from initial; not live browser natural play or growth acceptance",
+    "camera": {
+      "zoom": 0.8,
+      "lod": "full"
+    },
+    "all16HousePointsVisible": true,
+    "errors": []
+  },
+  "reproduce": "./node_modules/.bin/tsx scripts/phase19NaturalGrowth.ts 24 1200000 ./output/phase21/seedN N",
+  "performance": "No new benchmark: runtime unchanged; concurrent harness timings are diagnostic only.",
+  "diagnosis": {
+    "scope": "Read-only final seed2/3 probes; controlled recovery is not natural-growth success",
+    "seed2": "Advisor grass-only filter excludes legal forest well. Normal well(59,40) completed1200474; after2400ticks empty household0→12 residents, without stock/terrain injection.",
+    "seed3": "Covering grass well sites have no material route. Existing planner two-road extension makes advisor select well(27,19), completed1200390; after2400ticks household0→14. Era proposal still out_of_bounds; deeper geometry not established.",
+    "independentGrowthGuards": "Food-supported lot limits10/16 equal current lots; water repair alone does not prove24-lot growth. Seed2 stone0/400, quarry unavailability cause not examined.",
+    "seed4": "21 pending palisade sites since68640: all no_route,0 deliveries/buildTicks/builders,0 completed segments. Road/construction advisors none, spendable timber0/stone0,idle65. Deeper route cause not established.",
+    "seed5": "Only housing guard food-supported-lot-limit:5 farms support8lots. Food planner requests wheat_farm with recording stub but real advisor none; placement failure cause not established. Era timber200/250."
+  }
+}
