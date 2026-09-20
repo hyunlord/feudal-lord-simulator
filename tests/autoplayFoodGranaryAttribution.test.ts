@@ -74,3 +74,31 @@ test('Given observed granary feeds a starving home during observation Then deliv
   assert.equal(next.autoplayFoodObservation?.outcome?.deliveredBreadDelta, 2);
   assert.equal(next.autoplayFoodObservation?.outcome?.effective, true);
 });
+
+for (const scenario of ['vacant', 'occupied-empty', 'other-provider'] as const) {
+  test(`Given ${scenario} delivery When the actual tick services an empty home Then only the observed granary receives useful delivery credit`, () => {
+    const base = routedStockTown(true);
+    const observedGranary = { ...building('new-granary', 'granary', 4, 2, 2), reserved: { bread: 2 } };
+    const oldGranary = { ...building('old-granary', 'granary', 1, 2, 2), reserved: { bread: 2 } };
+    const state = {
+      ...base,
+      tick: BALANCE.DISTRIBUTOR_INTERVAL - 2,
+      houses: base.houses.map(house => house.buildingId === 'home7'
+        ? { ...house, residents: scenario === 'occupied-empty' ? 8 : 0, breadStock: 0, emptyFoodTicks: 0 }
+        : house),
+      buildings: [observedGranary, oldGranary, ...base.buildings.filter(candidate => candidate.kind !== 'granary')],
+      walkers: [distributor(scenario === 'other-provider' ? oldGranary.id : observedGranary.id)],
+      autoplayFoodObservation: {
+        kind: 'granary' as const, siteId: observedGranary.id, placedTick: 10,
+        completedTick: BALANCE.DISTRIBUTOR_INTERVAL - 3, observeUntilTick: BALANCE.DISTRIBUTOR_INTERVAL + 100,
+        baseline: { outputTotal: 0, houseBread: 14, starvingHomes: 0 },
+        latest: { outputTotal: 0, houseBread: 14, starvingHomes: 0 },
+        outcome: { outputDelta: 0, deliveredBreadDelta: 0, starvingHomesDelta: 0, effective: false },
+      },
+    };
+    const next = advanceTick(state);
+    assert.equal(next.houses.find(house => house.buildingId === 'home7')?.breadStock, 1);
+    assert.equal(next.autoplayFoodObservation?.outcome?.deliveredBreadDelta, scenario === 'other-provider' ? 0 : 1);
+    assert.equal(next.autoplayFoodObservation?.outcome?.effective, scenario !== 'other-provider');
+  });
+}

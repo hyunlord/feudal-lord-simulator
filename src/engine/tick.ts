@@ -5,7 +5,6 @@ import { spawnDistributors, stepDistributors } from "../agents/roaming";
 import type { RoamingDeliveryEvent, RoamingHouse, RoamingJunctionInput } from "../agents/roaming";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
-import { BALANCE } from "../content/balanceConfig";
 import {
   advanceConstructionSites,
   completeEligibleConstruction,
@@ -64,25 +63,15 @@ function mergeRoamingHouses(
   });
 }
 
-function affectedHouseIds(houses: readonly House[], tick: number): ReadonlySet<string> {
-  return new Set(houses.flatMap((house) => {
-    const affected = house.residents > 0 && house.breadStock === 0 &&
-      tick > (house.starvationGraceUntilTick ?? 0) &&
-      (house.emptyFoodTicks ?? 0) > BALANCE.STARVATION_WINDOW;
-    return affected ? [house.buildingId] : [];
-  }));
-}
-
 function deliveredBreadFromObservedGranary(
   before: readonly House[],
   deliveryEvents: readonly RoamingDeliveryEvent[],
   observedBuildingId: string | undefined,
-  tick: number,
 ): number {
   if (observedBuildingId === undefined) return 0;
-  const affected = affectedHouseIds(before, tick);
+  const emptyHomes = new Set(before.filter(house => house.breadStock === 0).map(house => house.buildingId));
   return deliveryEvents.reduce((total, event) =>
-    event.homeBuildingId === observedBuildingId && affected.has(event.houseBuildingId)
+    event.homeBuildingId === observedBuildingId && emptyHomes.has(event.houseBuildingId)
       ? total + Math.max(0, event.amount)
       : total, 0);
 }
@@ -155,7 +144,6 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     state.houses,
     movedDistributors.deliveryEvents,
     state.autoplayFoodObservation?.siteId,
-    tick,
   );
   const observedDeliveryState = deliveredBread === 0
     ? state

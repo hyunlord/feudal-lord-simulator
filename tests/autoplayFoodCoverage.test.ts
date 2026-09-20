@@ -65,3 +65,53 @@ test('stock on another road component cannot fund a food coverage claim', () => 
     : { ...tile, buildingId: state.buildings.find(b => tile.tx >= b.tx && tile.tx < b.tx + (b.kind === 'house' ? 1 : 2) && tile.ty >= b.ty && tile.ty < b.ty + (b.kind === 'house' ? 1 : 2))?.id ?? null });
   assert.deepEqual(foodCoverageAction(state), { kind: 'none' });
 });
+
+function overloadedTown(): GameState {
+  const state = town();
+  state.tick = 6000;
+  state.buildings = [building('granary', 'granary', 1, 1), ...Array.from({ length: 15 }, (_, index) =>
+    building(`home-${index}`, 'house', 5 + index * 2, 2))];
+  state.houses = state.buildings.filter(b => b.kind === 'house').map((b, index) => ({
+    buildingId: b.id, level: 3, residents: index === 14 ? 0 : 24, hasWater: true,
+    breadStock: index >= 13 ? 0 : 3, lastServicedTick: index >= 13 ? 0 : state.tick,
+    emptyFoodTicks: index === 13 ? 600 : 0, unmetRequirementTicks: 0,
+  }));
+  state.tiles = state.tiles.map(tile => ({ ...tile, buildingId: state.buildings.find(b =>
+    tile.tx >= b.tx && tile.tx < b.tx + (b.kind === 'house' ? 1 : 2)
+    && tile.ty >= b.ty && tile.ty < b.ty + (b.kind === 'house' ? 1 : 2))?.id ?? null }));
+  return state;
+}
+
+test('Given persistent in-range starvation and overloaded dispatch When coverage is assessed Then a delivery recovery is requested', () => {
+  const state = overloadedTown();
+  assert.notEqual(foodCoverageAction(state).kind, 'none');
+});
+
+for (const reason of ['temporary-empty', 'new-vacant', 'understaffed', 'no-stock', 'sufficient-overlapping-providers'] as const) {
+  test(`Given ${reason} When in-range delivery capacity is assessed Then no speculative storage is requested`, () => {
+    const state = overloadedTown();
+    if (reason === 'temporary-empty' || reason === 'new-vacant') state.houses = state.houses.map(h =>
+      ({ ...h, emptyFoodTicks: 0, ...(reason === 'new-vacant' && h.breadStock === 0 ? { residents: 0 } : {}) }));
+    if (reason === 'understaffed') state.buildings = state.buildings.map(b => ({ ...b, workers: 0 }));
+    if (reason === 'no-stock') state.buildings = state.buildings.map(b => ({ ...b, inventory: {} }));
+    if (reason === 'sufficient-overlapping-providers') {
+      state.buildings.push(building('second', 'granary', 12, 4));
+      state.tiles = state.tiles.map(t => t.tx >= 12 && t.tx < 14 && t.ty >= 4 && t.ty < 6 ? { ...t, buildingId: 'second' } : t);
+    }
+    assert.deepEqual(foodCoverageAction(state), { kind: 'none' });
+  });
+}
+
+for (const outcome of ['active', 'no-delivery', 'unknown', 'delivered'] as const) {
+  test(`Given ${outcome} granary observation When overload persists Then recovery waits for attributed delivery evidence`, () => {
+    const state: GameState = { ...overloadedTown(), autoplayFoodObservation: {
+      kind: 'granary', siteId: 'granary', placedTick: 4000, completedTick: 4500,
+      observeUntilTick: outcome === 'active' ? 7000 : 5000,
+      ...(outcome === 'unknown' ? {} : { outcome: {
+        outputDelta: 0, deliveredBreadDelta: outcome === 'delivered' ? 1 : 0,
+        starvingHomesDelta: 0, effective: outcome === 'delivered',
+      } }),
+    } };
+    assert.equal(foodCoverageAction(state).kind === 'none', outcome !== 'delivered');
+  });
+}
