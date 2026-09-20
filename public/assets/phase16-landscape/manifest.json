@@ -1,0 +1,95 @@
+[
+  {
+    "id": "vegetable",
+    "url": "/assets/phase16-landscape/vegetable.png",
+    "width": 144,
+    "height": 59,
+    "displayWidth": 48,
+    "groundAnchor": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "alphaBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 144,
+      "height": 59
+    },
+    "source": "garden-vegetables-v1.png",
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceSha256": "39353b2d585c0d9c91cb1952d591c24780442bf437dfe94b92e0e501b5cafd15",
+    "sourceCrop": [
+      162,
+      150,
+      1610,
+      744
+    ],
+    "processing": "alpha<=185 removed;185..250 linear feather; crop; Lanczos 3xdisplay",
+    "runtimeSha256": "16857f4527e42aaf01f788760f9af2874d9ae8e1864a57bf82948aca13cb845f"
+  },
+  {
+    "id": "orchard",
+    "url": "/assets/phase16-landscape/orchard.png",
+    "width": 113,
+    "height": 80,
+    "displayWidth": 40,
+    "groundAnchor": {
+      "x": 0.5,
+      "y": 0.93
+    },
+    "alphaBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 113,
+      "height": 80
+    },
+    "source": "garden-orchard-v1.png",
+    "sourceSize": [
+      1536,
+      1024
+    ],
+    "sourceSha256": "419114ed00b7620898c7270338a9220ff70fbdefe6e7709ecfcd74526f45e9d2",
+    "sourceCrop": [
+      189,
+      75,
+      1395,
+      927
+    ],
+    "processing": "alpha<=185 removed;185..250 linear feather; crop; Lanczos 3xdisplay",
+    "runtimeSha256": "d72e8ed839c4c4a481b4c29d3fde11965ecb9b80ad0b205336503dc23b562d7d"
+  },
+  {
+    "id": "pasture",
+    "url": "/assets/phase16-landscape/pasture.png",
+    "width": 106,
+    "height": 60,
+    "displayWidth": 40,
+    "groundAnchor": {
+      "x": 0.5,
+      "y": 0.65
+    },
+    "alphaBounds": {
+      "x": 0,
+      "y": 0,
+      "width": 106,
+      "height": 60
+    },
+    "source": "garden-pasture-v1.png",
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceSha256": "2fbea8a4e54412f09ea9a53c0c663f9a48eaa6e435849ce0b9bb7cd3d776d9a9",
+    "sourceCrop": [
+      230,
+      73,
+      1539,
+      817
+    ],
+    "processing": "alpha<=185 removed;185..250 linear feather; crop; Lanczos 3xdisplay",
+    "runtimeSha256": "78ecfa7f5ba6a41933ac17e31d34d4750522ef26fc2352a9ffdec29e82e01bd9"
+  }
+]
