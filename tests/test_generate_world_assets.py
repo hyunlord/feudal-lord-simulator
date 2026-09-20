@@ -382,9 +382,9 @@ class WorldAssetGeneratorContractTest(unittest.TestCase):
         self.assertEqual(
             module.REFERENCE_PATHS,
             (
-                Path("public/assets/buildings/candidates_v2/house_03.png"),
-                Path("public/assets/buildings/candidates_v2/mill_02.png"),
-                Path("public/assets/buildings/candidates_v2/granary_08.png"),
+                Path("docs/asset-evidence/legacy-candidates/candidates_v2/house_03.png"),
+                Path("docs/asset-evidence/legacy-candidates/candidates_v2/mill_02.png"),
+                Path("docs/asset-evidence/legacy-candidates/candidates_v2/granary_08.png"),
             ),
         )
 

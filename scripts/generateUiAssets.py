@@ -30,9 +30,9 @@ UI_ASSET_MANIFEST: Final = REPO_ROOT / "docs" / "asset-evidence" / "uiAssetManif
 CONTACT_DIR: Final = Path("/tmp/feudal-phase2-evidence/assets")
 UI_IPADAPTER_PRESET: Final = "PLUS (high strength)"
 BUILDING_REFERENCE_PATHS: Final = (
-    Path("public/assets/buildings/candidates_v2/house_03.png"),
-    Path("public/assets/buildings/candidates_v2/mill_02.png"),
-    Path("public/assets/buildings/candidates_v2/granary_08.png"),
+    Path("docs/asset-evidence/legacy-candidates/candidates_v2/house_03.png"),
+    Path("docs/asset-evidence/legacy-candidates/candidates_v2/mill_02.png"),
+    Path("docs/asset-evidence/legacy-candidates/candidates_v2/granary_08.png"),
 )
 BUILDING_REFERENCE_NAMES: Final = (
     "phase4c_ref_house.png",

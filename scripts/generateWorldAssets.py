@@ -63,9 +63,9 @@ CLIP_VISION_MODEL: Final = "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
 CANVAS_SIZE: Final = (1024, 1024)
 CYAN_RGB: Final = (0, 255, 255)
 REFERENCE_PATHS: Final = (
-    Path("public/assets/buildings/candidates_v2/house_03.png"),
-    Path("public/assets/buildings/candidates_v2/mill_02.png"),
-    Path("public/assets/buildings/candidates_v2/granary_08.png"),
+    Path("docs/asset-evidence/legacy-candidates/candidates_v2/house_03.png"),
+    Path("docs/asset-evidence/legacy-candidates/candidates_v2/mill_02.png"),
+    Path("docs/asset-evidence/legacy-candidates/candidates_v2/granary_08.png"),
 )
 BASE_PROMPT: Final = (
     "exactly one subject only, one isolated medieval European object, painterly pixel-art game asset, exact 2:1 isometric camera from upper-left, "

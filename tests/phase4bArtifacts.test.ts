@@ -7,7 +7,7 @@ const root = process.cwd();
 
 describe("Phase 4B release artifacts", () => {
   it("commits exactly eight processed candidates for each of three subjects", () => {
-    const candidateRoot = path.join(root, "public/assets/buildings/candidates_v2");
+    const candidateRoot = path.join(root, "docs/asset-evidence/legacy-candidates/candidates_v2");
     const files = readdirSync(candidateRoot).filter((name) => name.endsWith(".png")).sort();
     assert.equal(files.length, 24);
     for (const subject of ["house", "mill", "granary"]) {
