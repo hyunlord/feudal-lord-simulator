@@ -4,10 +4,10 @@ import { createConstructionSite } from '../src/economy/construction';
 import { foodAction } from '../src/engine/autoplayFood';
 import { foodRecoveryKind } from '../src/engine/autoplayFoodThroughput';
 import { lateFoodBuildSites } from '../src/engine/autoplayFoodPlacement';
-import { foodBuildRequest, routedStockTown, stressedTown } from './helpers/autoplayFoodFixtures';
+import { foodBuildRequest, routedStockTown, stressedTown, withMeasuredFood } from './helpers/autoplayFoodFixtures';
 
 test('Given hungry homes and long food routes When nominal mill count is sufficient Then advisor expands actual supply', () => {
-  const state = stressedTown();
+  const state = withMeasuredFood(stressedTown());
   const action = foodAction(state, foodBuildRequest);
   assert.equal(action.kind, 'place_building');
   assert.ok(action.kind === 'place_building' && ['wheat_farm', 'mill'].includes(action.building));
@@ -52,6 +52,6 @@ test(
     const state = routedStockTown(false);
     state.buildings = state.buildings.map(building =>
       building.kind === 'granary' ? { ...building, inventory: { bread: 96 } } : building);
-    assert.notEqual(foodRecoveryKind(state, 24), null);
+    assert.notEqual(foodRecoveryKind(withMeasuredFood(state), 24), null);
   },
 );

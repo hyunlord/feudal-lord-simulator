@@ -1,3 +1,4 @@
+import { foodFlowLayout, foodFlowRoutes } from '../../src/engine/autoplayFoodFlow';
 import { DEFAULT_GAME_STATE } from '../../src/state/gameStore';
 import type { Building, BuildingKind } from '../../src/content/buildingConfig';
 import type { GameState } from '../../src/engine/engine.types';
@@ -43,4 +44,10 @@ export function routedStockTown(stockIsReachable: boolean): GameState {
       return { tx, ty, terrain: 'grass', hasRoad, buildingId: null };
     }), pathCache: {},
   };
+}
+
+export function withMeasuredFood(state: GameState, wheat = 20, bread = 10): GameState {
+  const sample = { startedTick: state.tick - 400, untilTick: state.tick,
+    wheatProduced: wheat, breadProduced: bread, wheatExported: 0, breadExported: 0 };
+  return { ...state, autoplayFoodFlow: { layout: foodFlowLayout(state), routes: foodFlowRoutes(state), roadRevision: state.roadRevision, current: sample, completed: sample } };
 }

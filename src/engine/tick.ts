@@ -1,3 +1,4 @@
+import { advanceFoodFlow, recordFoodFlow } from './autoplayFoodFlow';
 import { householdServices } from "./householdServices";
 import { updateSettlementProgress } from "./settlementProgress";
 import { stepCarters, spawnCarters } from "../agents/delivery";
@@ -80,9 +81,13 @@ function deliveredBreadFromObservedGranary(
 export function runProduction(state: GameState): GameState {
   let forestHarvests = state.forestHarvests ?? [];
   let observedOutput = 0;
+  let wheatProduced = 0;
+  let breadProduced = 0;
   const buildings = state.buildings.map((building) => {
     if (!buildingHasRequiredRoadAccess(state, building)) return building;
     const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
+    if (step.produced === "wheat") wheatProduced += 1;
+    if (step.produced === "bread") breadProduced += 1;
     if (step.produced !== null && state.autoplayFoodObservation?.siteId === building.id) observedOutput += 1;
     forestHarvests = forestHarvestsAfterProduction({
       state: { ...state, forestHarvests },
@@ -91,11 +96,11 @@ export function runProduction(state: GameState): GameState {
     });
     return step.building;
   });
-  const nextState = {
+  const nextState = recordFoodFlow({
     ...state,
     buildings,
     forestHarvests,
-  };
+  }, { wheatProduced, breadProduced });
   return observedOutput === 0
     ? nextState
     : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });
@@ -115,8 +120,9 @@ function rngForState(state: GameState) {
     );
 }
 
-export function advanceSimulationSubstep(state: GameState): GameState {
-  if (state.settlement?.outcome === "abandoned") return state;
+export function advanceSimulationSubstep(input: GameState): GameState {
+  if (input.settlement?.outcome === "abandoned") return input;
+  const state = advanceFoodFlow(input);
   const tick = state.tick + 1;
   const inventory = createDeliveryInventoryPort();
   const routePorts = createSimulationRoutePorts(state);
@@ -174,6 +180,7 @@ export function advanceSimulationSubstep(state: GameState): GameState {
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
   const produced = runProduction({
     ...observedDeliveryState,
+    ...(marketSettled.autoplayFoodFlow === undefined ? {} : { autoplayFoodFlow: marketSettled.autoplayFoodFlow }),
     tick,
     buildings: [...marketSettled.buildings],
     constructionSites: [...labour.constructionSites],

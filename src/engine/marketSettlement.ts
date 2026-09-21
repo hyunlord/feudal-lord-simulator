@@ -1,3 +1,4 @@
+import { recordFoodFlow } from './autoplayFoodFlow';
 import {
   BUILDING_CONFIG_BY_KIND,
   type Building,
@@ -117,13 +118,14 @@ function settleMarket(
   state: GameState,
   buildings: readonly Building[],
   market: Building,
-): { readonly buildings: readonly Building[]; readonly coin: number } {
+): { readonly buildings: readonly Building[]; readonly coin: number; readonly sold?: MarketResource } {
   const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings), state)]
     .sort(compareCandidates)[0];
   if (candidate === undefined) return { buildings, coin: 0 };
 
   return {
     coin: candidate.coin,
+    sold: candidate.resource,
     buildings: buildings.map((building) =>
       building.id === candidate.building.id
         ? {
@@ -144,17 +146,21 @@ export function settleMarkets(state: GameState): GameState {
 
   let buildings: readonly Building[] = state.buildings;
   let earnedCoin = 0;
+  let wheatExported = 0;
+  let breadExported = 0;
   for (const market of completedMarkets(buildings)) {
     const result = settleMarket(state, buildings, market);
     buildings = result.buildings;
     earnedCoin += result.coin;
+    if (result.sold === "wheat") wheatExported += 1;
+    if (result.sold === "bread") breadExported += 1;
   }
 
   return earnedCoin === 0
     ? state
-    : {
+    : recordFoodFlow({
         ...state,
         buildings: [...buildings],
         treasuryCoin: state.treasuryCoin + earnedCoin,
-      };
+      }, { wheatExported, breadExported });
 }
