@@ -39,7 +39,7 @@ for (const reason of ['in-range', 'empty-stock-in-range', 'disconnected', 'pendi
   });
 }
 
-test('actual distributor origin, rather than nearest granary edge, determines range', async () => {
+test('eligible granary exit serves demand without a false transient coverage gap', async () => {
   const { createSimulationRoutePorts } = await import('../src/engine/simulationPorts');
   const { resolveBuildingRoute } = await import('../src/engine/routing');
   const state = town();
@@ -52,9 +52,9 @@ test('actual distributor origin, rather than nearest granary edge, determines ra
   const actual = routes.servicePath?.(start, { ...state.houses[0]!, tx: home.tx, ty: home.ty });
   const optimistic = resolveBuildingRoute(state, granary, home).path;
   assert.ok(actual && optimistic);
-  assert.ok(actual.length - 1 > 40);
+  assert.ok(actual.length - 1 <= 40);
   assert.ok(optimistic.length - 1 <= 40);
-  assert.notEqual(foodCoverageAction(state).kind, 'none');
+  assert.equal(foodCoverageAction(state).kind, 'none');
 });
 
 test('stock on another road component cannot fund a food coverage claim', () => {

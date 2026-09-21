@@ -5,22 +5,18 @@ import { buildingFootprint } from '../geometry/buildingFootprint';
 import { houseIsStarving } from '../population/houseFood';
 import type { RoamingHouse } from '../agents/roamingTypes';
 import type { GameState } from './engine.types';
-import { createSimulationRoutePorts } from './simulationPorts';
+import { feasibleDistributorDistance } from './distributorAccess';
 
 export function overloadedDeliveryHomes(state: GameState): readonly RoamingHouse[] {
   if (!state.houses.some(house => houseIsStarving(house, state.tick))) return [];
-  const routes = createSimulationRoutePorts(state).roaming;
-  const providers = state.buildings.filter(building => building.kind === 'granary').flatMap(building => {
-    const start = routes.homePath(building.id)?.[0];
-    return start === undefined ? [] : [{ id: building.id, start, stocked: availableStock(building, 'bread') > 0 }];
-  });
+  const providers = state.buildings.filter(building => building.kind === 'granary').map(building => ({ id: building.id, building, stocked: availableStock(building, 'bread') > 0 }));
   const homes = state.houses.flatMap(house => {
     const building = state.buildings.find(candidate => candidate.id === house.buildingId);
     if (building === undefined) return [];
     const home = { ...house, tx: building.tx, ty: building.ty, ...buildingFootprint(building) };
     const reachable = providers.filter(provider => {
-      const path = routes.servicePath?.(provider.start, home);
-      return path != null && path.length - 1 <= BALANCE.DISTRIBUTOR_RANGE;
+      const edges = feasibleDistributorDistance(state, provider.building, home.buildingId);
+      return edges !== null && edges <= BALANCE.DISTRIBUTOR_RANGE;
     });
     return [{ home, reachable }];
   });
@@ -69,9 +65,8 @@ export function observeEmptyDeliveryHomes(state: GameState): GameState {
 
 export function persistentEmptyDeliveryHomes(state: GameState): readonly RoamingHouse[] {
   if ((state.autoplayEmptyHomes?.length ?? 0) === 0) return [];
-  const routes = createSimulationRoutePorts(state).roaming;
   const starts = state.buildings.filter(building => building.kind === 'granary' && availableStock(building, 'bread') > 0)
-    .flatMap(building => routes.homePath(building.id)?.slice(0, 1) ?? []);
+;
   const edgeTicks = Math.ceil(1 / BALANCE.DISTRIBUTOR_SPEED);
   return state.houses.flatMap(house => {
     const observation = state.autoplayEmptyHomes?.find(entry => entry.buildingId === house.buildingId);
@@ -80,8 +75,8 @@ export function persistentEmptyDeliveryHomes(state: GameState): readonly Roaming
     if (building === undefined) return [];
     const home = { ...house, tx: building.tx, ty: building.ty, ...buildingFootprint(building) };
     const distances = starts.flatMap(start => {
-      const path = routes.servicePath?.(start, home);
-      return path != null && path.length - 1 <= BALANCE.DISTRIBUTOR_RANGE ? [path.length - 1] : [];
+      const edges = feasibleDistributorDistance(state, start, home.buildingId);
+      return edges !== null && edges <= BALANCE.DISTRIBUTOR_RANGE ? [edges] : [];
     });
     if (distances.length === 0) return [];
     // Allow busy distributors a full roaming/return cycle before the next dispatch and meal.

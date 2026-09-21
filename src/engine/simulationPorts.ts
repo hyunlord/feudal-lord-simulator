@@ -1,3 +1,7 @@
+import { eligibleRoamingExits } from './distributorAccess';
+import { bestHouseDemand, compareHouseDemand } from '../agents/roamingDemand';
+import { buildingFootprint } from '../geometry/buildingFootprint';
+import { BALANCE } from '../content/balanceConfig';
 import type { DeliveryInventoryPort, DeliveryRoutePort } from "../agents/delivery";
 import type { RoamingRoutePort } from "../agents/roaming";
 import type { TilePos } from "../agents/walker.types";
@@ -44,43 +48,6 @@ function findSite(
   siteId: string,
 ) {
   return state.constructionSites.find((site) => site.id === siteId) ?? null;
-}
-
-function firstTile(tiles: readonly TilePos[]): TilePos | null {
-  return tiles[0] ?? null;
-}
-
-function tileKey(tile: TilePos): string {
-  return `${tile.tx},${tile.ty}`;
-}
-
-function roadComponentSize(state: GameState, start: TilePos): number {
-  const queue: TilePos[] = [start];
-  const visited = new Set<string>();
-  for (let index = 0; index < queue.length; index += 1) {
-    const current = queue[index];
-    if (current === undefined) continue;
-    const key = tileKey(current);
-    if (visited.has(key)) continue;
-    visited.add(key);
-    for (const neighbor of getOrthogonalRoadNeighbors(state, current)) {
-      if (!visited.has(tileKey(neighbor))) queue.push(neighbor);
-    }
-  }
-  return visited.size;
-}
-
-function roamingHomeAccess(state: GameState, building: Building): TilePos | null {
-  const accesses = buildingRoadAccessTiles(state, building);
-  let best = firstTile(accesses);
-  let bestSize = best === null ? 0 : roadComponentSize(state, best);
-  for (const access of accesses.slice(1)) {
-    const size = roadComponentSize(state, access);
-    if (size <= bestSize) continue;
-    best = access;
-    bestSize = size;
-  }
-  return best;
 }
 
 function stateWithCache(
@@ -187,7 +154,21 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     homePath: (buildingId) => {
       const building = findBuilding(state.buildings, buildingId);
       if (building === null) return null;
-      const access = roamingHomeAccess(state, building);
+      const exits = eligibleRoamingExits(state, building);
+      let access = exits[0] ?? null;
+      if (building.kind === 'granary') {
+        const houses = state.houses.flatMap(house => {
+          const home = findBuilding(state.buildings, house.buildingId);
+          return home === null ? [] : [{ ...house, tx: home.tx, ty: home.ty, ...buildingFootprint(home) }];
+        });
+        let best = access === null ? null : bestHouseDemand(access, houses, roaming, BALANCE.DISTRIBUTOR_RANGE, 0);
+        for (const exit of exits.slice(1)) {
+          const demand = bestHouseDemand(exit, houses, roaming, BALANCE.DISTRIBUTOR_RANGE, 0);
+          if (demand !== null && (best === null || compareHouseDemand(demand, best) < 0)) {
+            access = exit; best = demand;
+          }
+        }
+      }
       return access === null ? null : [access];
     },
     returnPath: routeToBuilding,

@@ -19,7 +19,7 @@ import { placeRoadLine } from './gameActions';
 import { canPlaceRoad, getOrthogonalRoadNeighbors } from '../world/roadGraph';
 import { buildingRoadAccessTiles } from './routing';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
-import { createSimulationRoutePorts } from './simulationPorts';
+import { feasibleDistributorDistance } from './distributorAccess';
 import { overloadedDeliveryHomes, persistentEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
 import { hasActiveFoodObservation } from './autoplayFoodThroughput';
 import { preserveRoadExpansion } from './autoplayExpansion';
@@ -32,16 +32,14 @@ function coverageGranary(position: { readonly tx: number; readonly ty: number })
 }
 
 function outsideHomes(state: GameState): readonly RoamingHouse[] {
-  const routes = createSimulationRoutePorts(state).roaming;
-  const starts = state.buildings.filter(b => b.kind === 'granary')
-    .flatMap(b => (routes.homePath(b.id)?.slice(0, 1) ?? []).map(tile => ({ tile, stocked: availableStock(b, 'bread') > 0 })));
+  const starts = state.buildings.filter(b => b.kind === 'granary').map(building => ({ building, stocked: availableStock(building, 'bread') > 0 }));
   return state.houses.flatMap(house => {
     const building = state.buildings.find(b => b.id === house.buildingId);
     if (building === undefined) return [];
     const home = { ...house, tx: building.tx, ty: building.ty, ...buildingFootprint(building) };
     const paths = starts.flatMap(start => {
-      const path = routes.servicePath?.(start.tile, home);
-      return path == null ? [] : [{ edges: path.length - 1, stocked: start.stocked }];
+      const edges = feasibleDistributorDistance(state, start.building, home.buildingId);
+      return edges === null ? [] : [{ edges, stocked: start.stocked }];
     });
     // Disconnection and empty stores require their own repairs, not new storage.
     return paths.some(path => path.stocked) && Math.min(...paths.map(path => path.edges)) > BALANCE.DISTRIBUTOR_RANGE ? [home] : [];
@@ -112,13 +110,11 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
     const projected = { ...access.state, buildings: [...access.state.buildings, candidate], pathCache: {},
       tiles: access.state.tiles.map(tile => tile.tx >= candidate.tx && tile.tx < candidate.tx + BUILDING_CONFIG_BY_KIND.granary.width && tile.ty >= candidate.ty && tile.ty < candidate.ty + BUILDING_CONFIG_BY_KIND.granary.height
         ? { ...tile, buildingId: candidate.id } : tile) };
-    const routes = createSimulationRoutePorts(projected).roaming;
-    const start = routes.homePath(candidate.id)?.[0];
     const remainingGap = rangeRecovery ? new Set(outsideHomes(projected).map(home => home.buildingId)) : null;
     const covered = remainingGap !== null ? outside.filter(home => !remainingGap.has(home.buildingId)).length
-      : start === undefined ? 0 : outside.filter(home => {
-        const path = routes.servicePath?.(start, home);
-        return path != null && path.length - 1 <= BALANCE.DISTRIBUTOR_RANGE;
+      : outside.filter(home => {
+        const edges = feasibleDistributorDistance(projected, candidate, home.buildingId);
+        return edges !== null && edges <= BALANCE.DISTRIBUTOR_RANGE;
       }).length;
     if (covered <= 0 || (best !== null && (covered < best.covered || (covered === best.covered && access.added >= best.roads)))) continue;
     const action = access.first.kind === 'none'
@@ -141,12 +137,9 @@ export function granaryCoverageTargetIds(state: GameState, position: { readonly 
     tiles: state.tiles.map(tile => tile.tx >= candidate.tx && tile.tx < candidate.tx + BUILDING_CONFIG_BY_KIND.granary.width
       && tile.ty >= candidate.ty && tile.ty < candidate.ty + BUILDING_CONFIG_BY_KIND.granary.height
       ? { ...tile, buildingId: candidate.id } : tile) };
-  const routes = createSimulationRoutePorts(projected).roaming;
-  const start = routes.homePath(candidate.id)?.[0];
-  if (start === undefined) return [];
   return targets.filter(home => {
-    const path = routes.servicePath?.(start, home);
-    return path != null && path.length - 1 <= BALANCE.DISTRIBUTOR_RANGE;
+    const edges = feasibleDistributorDistance(projected, candidate, home.buildingId);
+    return edges !== null && edges <= BALANCE.DISTRIBUTOR_RANGE;
   }).map(home => home.buildingId);
 }
 

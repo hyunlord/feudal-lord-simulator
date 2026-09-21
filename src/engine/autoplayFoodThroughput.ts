@@ -1,12 +1,11 @@
+import { feasibleDistributorDistance } from './distributorAccess';
 import { backpressuredFoodRecovery, breadBufferCoversDeficit } from './autoplayFoodBottleneck';
 import { measuredFoodFlow } from './autoplayFoodFlow';
 import { observeEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSE_FOOD_INTERVAL } from '../content/houseFoodConfig';
-import { buildingFootprint } from '../geometry/buildingFootprint';
 import { availableStock } from '../economy/storage';
-import { createSimulationRoutePorts } from './simulationPorts';
 import { houseIsStarving } from '../population/houseFood';
 import type {
   AutoplayFoodObservation,
@@ -183,13 +182,11 @@ export function foodRecoveryKind(state: GameState, mealDemand: number): 'wheat_f
 }
 
 function targetedGranaryTicks(state: GameState, building: Building, targets: readonly string[]): number {
-  const routes = createSimulationRoutePorts(state).roaming;
-  const start = routes.homePath(building.id)?.[0];
-  const paths = start === undefined ? [] : state.houses.filter(house => targets.includes(house.buildingId)).flatMap(house => {
+  const paths = state.houses.filter(house => targets.includes(house.buildingId)).flatMap(house => {
     const home = state.buildings.find(candidate => candidate.id === house.buildingId);
     if (home === undefined) return [];
-    const path = routes.servicePath?.(start, { ...house, tx: home.tx, ty: home.ty, ...buildingFootprint(home) });
-    return path == null ? [] : [path.length - 1];
+    const edges = feasibleDistributorDistance(state, building, house.buildingId);
+    return edges === null ? [] : [edges];
   });
   const delivery = BALANCE.DISTRIBUTOR_INTERVAL
     + (2 * BALANCE.DISTRIBUTOR_RANGE + Math.max(0, ...paths)) * Math.ceil(1 / BALANCE.DISTRIBUTOR_SPEED);
