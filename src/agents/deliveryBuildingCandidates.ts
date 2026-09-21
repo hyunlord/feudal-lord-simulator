@@ -105,5 +105,17 @@ export function fetchCandidate(
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });
+  const production = BUILDING_CONFIG_BY_KIND[converter.kind].production;
+  const physical = amountOf(converter.inventory, resource);
+  const usable = inventory.availableStock(converter, resource);
+  if (production?.input === resource && Number.isFinite(production.inputPerOutput)
+    && production.inputPerOutput > 0 && Number.isFinite(physical) && physical >= 0
+    && Number.isFinite(usable) && usable === physical) {
+    const deficit = production.inputPerOutput - physical;
+    if (deficit > 0) {
+      const sufficient = candidates.filter(({ amount }) => amount >= deficit);
+      if (sufficient.length > 0) return bestCandidate(sufficient);
+    }
+  }
   return bestCandidate(candidates);
 }
