@@ -1,6 +1,6 @@
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from '../content/buildingConfig';
 import type { TileCoordinate } from '../world/grid';
-import { computePalisadeProposal, validatePalisadeCandidate, type PalisadeFootprint } from '../world/palisadeGeometry';
+import { computePalisadeProposal, footprintCorners, isPointInsidePalisade, validatePalisadeCandidate, type PalisadeFootprint } from '../world/palisadeGeometry';
 import type { GameState } from './engine.types';
 import { palisadeFootprintsForState } from './palisadeFootprints';
 
@@ -14,7 +14,13 @@ const wallSpaceByTiles = new WeakMap<GameState['tiles'], { readonly layout: stri
 
 /** Called only after ordinary legality and ranking; never restricts manual placement. */
 export function preservesAutoplayWallSpace(state: GameState, kind: BuildingKind, origin: TileCoordinate): boolean {
-  if (state.era !== 'hamlet') return true;
+  if (state.era !== 'hamlet') {
+    const boundary = state.palisade;
+    if (kind !== 'house' || boundary === null) return true;
+    const { width, height } = BUILDING_CONFIG_BY_KIND[kind];
+    return footprintCorners({ id: 'autoplay-wall-candidate', ...origin, width, height })
+      .every(corner => isPointInsidePalisade(corner, boundary.polygon));
+  }
   let space = wallSpaceByState.get(state);
   if (space === undefined) {
     const footprints = palisadeFootprintsForState(state);
