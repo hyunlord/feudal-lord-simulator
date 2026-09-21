@@ -7,6 +7,7 @@ import { resolveBuildingRoute } from './routing';
 import type { GameState } from './engine.types';
 
 export interface FoodFlowWindow {
+  readonly meals?: import("./autoplayFoodTransientMeals").FoodMealEvidence;
   readonly startedTick: number;
   readonly untilTick: number;
   readonly wheatProduced: number;

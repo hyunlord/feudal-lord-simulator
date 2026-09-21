@@ -1,3 +1,4 @@
+import { carryFoodTransient, transientFoodDecision } from './autoplayFoodTransient';
 import { canStaffFoodExpansion } from './autoplayFoodBottleneck';
 import { measuredFoodFlow } from './autoplayFoodFlow';
 import { houseIsStarving } from '../population/houseFood';
@@ -92,7 +93,10 @@ export function foodAction(state: GameState, buildAction: BuildAction): Autoplay
   const recovery = completeChain ? foodRecoveryKind(state, rationDemand(state)) : null;
   const foodBuildAction = (kind: "wheat_farm" | "mill" | "granary") =>
     blocksRepeatedFoodExpansion(state, kind) || completeChain && !canStaffFoodExpansion(state, kind) ? { kind: "none" } as const : buildAction(state, kind);
-  if (recovery !== null) return foodBuildAction(recovery);
+  const transition = transientFoodDecision(state, rationDemand(state), recovery === "mill"
+    && !blocksRepeatedFoodExpansion(state, "mill") && canStaffFoodExpansion(state, "mill"));
+  if (recovery !== null) return carryFoodTransient(transition.defer ? { kind: "none" } : foodBuildAction(recovery), transition);
+  if (transition.foodTransient !== undefined) return carryFoodTransient({ kind: "none" }, transition);
   if (completeChain && measuredFoodFlow(state) !== undefined) return { kind: "none" };
   if (state.autoplayFoodFlow !== undefined && state.houses.some(house => houseIsStarving(house, state.tick))
     && completeChain) return { kind: "none" };

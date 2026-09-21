@@ -10,7 +10,8 @@ import { createPlacementFeedback, type PlacementFeedback } from "../render/place
 export { autoplayActionToGameAction } from "../engine/autoplayActions";
 
 export const AUTOPLAY_PULSE_EVENT = "feudal-lord-simulator:autoplay-pulse";
-export const AUTOPLAY_TICK_CADENCE = 120;
+export { AUTOPLAY_TICK_CADENCE } from "../engine/autoplay.types";
+import { AUTOPLAY_TICK_CADENCE } from "../engine/autoplay.types";
 export const AUTOPLAY_COMMIT_DELAY_MS = 240;
 
 export type AutoplayPulseEvent = CustomEvent<PlacementFeedback>;

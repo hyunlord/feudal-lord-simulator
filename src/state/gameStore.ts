@@ -78,10 +78,18 @@ function assertNever(action: never): never {
 }
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
+  const next = reduceGameAction(state, action);
+  if (action.foodTransient === undefined || state.settlement?.outcome === "abandoned") return next;
+  const { autoplayFoodTransientConfirmation: _confirmation, ...rest } = next;
+  return action.foodTransient === null ? rest : { ...rest, autoplayFoodTransientConfirmation: action.foodTransient };
+}
+
+function reduceGameAction(state: GameState, action: GameAction): GameState {
   if (state.settlement?.outcome === "abandoned") {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }
   switch (action.type) {
+    case "record_autoplay_food_confirmation": return state;
     case "restart_settlement":
       return state;
     case "commit_simulation_state":

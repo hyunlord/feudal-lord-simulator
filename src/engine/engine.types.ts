@@ -101,6 +101,7 @@ export interface GameState {
   palisade: PalisadeState | null;
   readonly forestHarvests: readonly ForestHarvest[];
   readonly autoplayRecurringDelivery?: import("./autoplayRecurringDelivery").AutoplayRecurringDelivery;
+  readonly autoplayFoodTransientConfirmation?: import("./autoplayFoodTransient").AutoplayFoodTransientConfirmation;
   readonly autoplayFoodFlow?: import("./autoplayFoodFlow").AutoplayFoodFlow;
   readonly autoplayFoodObservation?: AutoplayFoodObservation;
   readonly autoplayEmptyHomes?: readonly {

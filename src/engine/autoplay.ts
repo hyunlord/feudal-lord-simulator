@@ -1,3 +1,4 @@
+import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
 import { autoplayEraAction } from './autoplayEra';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
@@ -213,14 +214,16 @@ function storageAction(state: GameState): AutoplayAction {
 
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): AutoplayAction {
+  let metadata: FoodTransientMetadata = {};
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
       (current: GameState) => foodAction(current, buildAction), urbanServiceAction, waterAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = decide(state);
-      if (action.kind !== "none") return action;
+      if (action.foodTransient !== undefined) metadata = action;
+      if (action.kind !== "none") return carryFoodTransient(action, metadata);
     }
-    return NONE;
+    return carryFoodTransient(NONE, metadata);
   }
   for (const decide of [
     () => waterAction(state),
@@ -235,7 +238,8 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => autoplayEraAction(state, buildAction),
   ]) {
     const action = decide();
-    if (action.kind !== "none") return action;
+    if (action.foodTransient !== undefined) metadata = action;
+    if (action.kind !== "none") return carryFoodTransient(action, metadata);
   }
-  return NONE;
+  return carryFoodTransient(NONE, metadata);
 }

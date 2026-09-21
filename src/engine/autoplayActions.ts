@@ -34,6 +34,11 @@ function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameActi
 }
 
 export function autoplayActionToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
+  const command = autoplayCommandToGameAction(action, state);
+  return action.foodTransient === undefined ? command : { ...(command ?? { type: "record_autoplay_food_confirmation" }), foodTransient: action.foodTransient };
+}
+
+function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState): GameAction | null {
   switch (action.kind) {
     case "place_building":
       return {
