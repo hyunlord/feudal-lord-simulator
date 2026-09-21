@@ -1,3 +1,4 @@
+import { diagnosticAction, initialFoodDiagnostic, transientSummary, type FoodDiagnosticCollector, type FoodDiagnosticReason, type FoodKind } from './autoplayFoodDiagnostic';
 import { carryFoodTransient, transientFoodDecision } from './autoplayFoodTransient';
 import { canStaffFoodExpansion } from './autoplayFoodBottleneck';
 import { measuredFoodFlow } from './autoplayFoodFlow';
@@ -79,33 +80,61 @@ function targetMillCount(state: GameState): number {
   return Math.ceil(rationDemand(state) / breadPerMeal);
 }
 
-export function foodAction(state: GameState, buildAction: BuildAction): AutoplayAction {
-  if (housingLotCount(state) === 0) return { kind: "none" };
+export function foodAction(state: GameState, buildAction: BuildAction, collector?: FoodDiagnosticCollector): AutoplayAction {
+  let diagnostic = collector === undefined ? undefined : initialFoodDiagnostic(state);
+  const finish = (action: AutoplayAction, reason: FoodDiagnosticReason): AutoplayAction => {
+    if (collector !== undefined && diagnostic !== undefined) collector.food = { ...diagnostic, reached: true, reason, action: diagnosticAction(action) };
+    return action;
+  };
+  const check = (phase: 'transition' | 'build', kind: FoodKind, name: 'repeat' | 'staff', result: boolean): boolean => {
+    if (diagnostic !== undefined) diagnostic = { ...diagnostic, checks: [...diagnostic.checks, { phase, kind, check: name, result }],
+      evaluation: { ...diagnostic.evaluation, [phase + (name === 'repeat' ? 'Repeat' : 'Staff')]: result } };
+    return result;
+  };
+  if (housingLotCount(state) === 0) return finish({ kind: "none" }, 'no_housing');
   const wheatCount = builtOrPlannedCount(state, "wheat_farm");
   const millCount = builtOrPlannedCount(state, "mill");
   const granaryCount = builtOrPlannedCount(state, "granary");
   const target = targetFoodChains(state);
-  if (hasPendingFoodChain(state)) return { kind: "none" };
-  if (hasActiveFoodObservation(state)) return { kind: "none" };
+  if (diagnostic !== undefined) diagnostic = { ...diagnostic, counts: { wheat: wheatCount, mill: millCount, granary: granaryCount, target } };
+  if (hasPendingFoodChain(state)) return finish({ kind: "none" }, 'pending_chain');
+  if (hasActiveFoodObservation(state)) return finish({ kind: "none" }, 'active_observation');
   const coverage = foodCoverageAction(state);
-  if (coverage.kind !== 'none') return coverage;
+  if (coverage.kind !== 'none') return finish(coverage, 'coverage_selected');
   const completeChain = wheatCount > 0 && millCount > 0 && granaryCount > 0;
   const recovery = completeChain ? foodRecoveryKind(state, rationDemand(state)) : null;
-  const foodBuildAction = (kind: "wheat_farm" | "mill" | "granary") =>
-    blocksRepeatedFoodExpansion(state, kind) || completeChain && !canStaffFoodExpansion(state, kind) ? { kind: "none" } as const : buildAction(state, kind);
+  if (diagnostic !== undefined) diagnostic = { ...diagnostic, completeChain, recovery };
+  let buildReason: FoodDiagnosticReason = 'bootstrap_selected';
+  const foodBuildAction = (kind: FoodKind): AutoplayAction => {
+    if (check('build', kind, 'repeat', blocksRepeatedFoodExpansion(state, kind))) {
+      buildReason = 'repeat_blocked'; return { kind: 'none' };
+    }
+    if (completeChain && !check('build', kind, 'staff', canStaffFoodExpansion(state, kind))) {
+      buildReason = 'staff_blocked'; return { kind: 'none' };
+    }
+    const action = buildAction(state, kind);
+    if (action.kind === 'none') buildReason = 'build_returned_none';
+    return action;
+  };
   const transition = transientFoodDecision(state, rationDemand(state), recovery === "mill"
-    && !blocksRepeatedFoodExpansion(state, "mill") && canStaffFoodExpansion(state, "mill"));
-  if (recovery !== null) return carryFoodTransient(transition.defer ? { kind: "none" } : foodBuildAction(recovery), transition);
-  if (transition.foodTransient !== undefined) return carryFoodTransient({ kind: "none" }, transition);
-  if (completeChain && measuredFoodFlow(state) !== undefined) return { kind: "none" };
+    && !check('transition', 'mill', 'repeat', blocksRepeatedFoodExpansion(state, "mill"))
+    && check('transition', 'mill', 'staff', canStaffFoodExpansion(state, "mill")));
+  if (diagnostic !== undefined) diagnostic = { ...diagnostic, transition: { defer: transition.defer, metadata: transientSummary(transition.foodTransient) } };
+  if (recovery !== null) {
+    buildReason = 'recovery_selected';
+    const action = carryFoodTransient(transition.defer ? { kind: "none" } : foodBuildAction(recovery), transition);
+    return finish(action, transition.defer ? 'recovery_deferred' : buildReason);
+  }
+  if (transition.foodTransient !== undefined) return finish(carryFoodTransient({ kind: 'none' }, transition), 'transient_metadata_only');
+  if (completeChain && measuredFoodFlow(state) !== undefined) return finish({ kind: 'none' }, 'measured_no_recovery');
   if (state.autoplayFoodFlow !== undefined && state.houses.some(house => houseIsStarving(house, state.tick))
-    && completeChain) return { kind: "none" };
-  if (wheatCount < target && wheatCount <= millCount) return foodBuildAction("wheat_farm");
-  if (millCount < target && millCount <= granaryCount) return foodBuildAction("mill");
-  if (wheatCount < target) return foodBuildAction("wheat_farm");
-  if (granaryCount < target) return foodBuildAction("granary");
-  if (millCount < target) return foodBuildAction("mill");
-  if (millCount > 0 && millCount < targetMillCount(state)) return foodBuildAction("mill");
-  if (wheatCount < targetWheatCount(state, millCount)) return foodBuildAction("wheat_farm");
-  return { kind: "none" };
+    && completeChain) return finish({ kind: 'none' }, 'unmeasured_starving_guard');
+  if (wheatCount < target && wheatCount <= millCount) return finish(foodBuildAction("wheat_farm"), buildReason);
+  if (millCount < target && millCount <= granaryCount) return finish(foodBuildAction("mill"), buildReason);
+  if (wheatCount < target) return finish(foodBuildAction("wheat_farm"), buildReason);
+  if (granaryCount < target) return finish(foodBuildAction("granary"), buildReason);
+  if (millCount < target) return finish(foodBuildAction("mill"), buildReason);
+  if (millCount > 0 && millCount < targetMillCount(state)) return finish(foodBuildAction("mill"), buildReason);
+  if (wheatCount < targetWheatCount(state, millCount)) return finish(foodBuildAction("wheat_farm"), buildReason);
+  return finish({ kind: 'none' }, 'bootstrap_exhausted');
 }

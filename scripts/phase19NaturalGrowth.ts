@@ -1,3 +1,4 @@
+import type { AdvisorDiagnosticReceipt } from './economyHarnessAutoplay';
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -55,6 +56,7 @@ export function runPhase19NaturalGrowth(options: {
   readonly targetLots: number;
   readonly maxTicks: number;
   readonly seed?: number;
+  readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
   readonly onProgress?: (snapshot: ReturnType<typeof growthSnapshot>) => void;
 }) {
@@ -62,7 +64,7 @@ export function runPhase19NaturalGrowth(options: {
   const source = provenance();
   const started = performance.now();
   const opening = createGrowthOpening(seed);
-  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-translated-verification-fixture-offset-${opening.provenance.offset.tx},${opening.provenance.offset.ty}`, policy: { maxHousingLots: targetLots } });
+  const driver = createAutoplayTraceDriver({ id: `natural-growth-seed${seed}-${targetLots}`, source: `seed${seed}-translated-verification-fixture-offset-${opening.provenance.offset.tx},${opening.provenance.offset.ty}`, policy: { maxHousingLots: targetLots }, ...(options.onDiagnostic === undefined ? {} : { onDiagnostic: options.onDiagnostic }) });
   const observations = createGrowthObservations();
   let state = opening.state;
   const resourcePreflight = terrainResourcePreflight(state);

@@ -1,3 +1,4 @@
+import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
@@ -215,11 +216,11 @@ function storageAction(state: GameState): AutoplayAction {
 }
 
 
-export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): AutoplayAction {
+export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
   let metadata: FoodTransientMetadata = {};
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
-      (current: GameState) => foodAction(current, buildAction), constructionLogisticsAction, urbanServiceAction, waterAction, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, urbanServiceAction, waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = decide(state);
       if (action.foodTransient !== undefined) metadata = action;
@@ -233,7 +234,7 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => networkRoadAction(state),
     () => constructionRoadAction(state),
     () => timberAction(state),
-    () => foodAction(state, buildAction),
+    () => foodAction(state, buildAction, diagnostic),
     () => housingAction(state, policy),
     () => urbanServiceAction(state),
     () => storageAction(state),

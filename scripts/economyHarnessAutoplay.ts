@@ -1,3 +1,4 @@
+import { diagnosticAction, initialFoodDiagnostic, type DiagnosticAction, type FoodDiagnostic, type FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
 import { decideNextAction, type AutoplayAction, type AutoplayPolicy } from "../src/engine/autoplay";
 import { autoplayActionToGameAction } from "../src/engine/autoplayActions";
 import type { GameState } from "../src/engine/engine.types";
@@ -5,6 +6,24 @@ import { advanceTick } from "../src/engine/tick";
 import { gameReducer } from "../src/state/gameStore";
 import { AUTOPLAY_TICK_CADENCE, canRunAutoplayAtTick } from "../src/ui/autoplayPresentation";
 import { hashEconomyState } from "./economyHarnessSerializer";
+
+export interface AdvisorDiagnosticReceipt {
+  readonly schemaVersion: 1;
+  readonly tick: number;
+  readonly food: FoodDiagnostic;
+  readonly advisorAction: DiagnosticAction;
+  readonly gameActionType: string | null;
+  readonly result: 'gated' | 'no_action' | 'applied' | 'rejected';
+  readonly newSiteIds: readonly string[];
+}
+export class AdvisorDiagnosticError extends Error {
+  readonly status = 'partial';
+  readonly evidence = 'FAIL';
+  constructor(readonly appliedState: GameState, readonly receipt: AdvisorDiagnosticReceipt, cause: unknown) {
+    super('Advisor diagnostic observer failed after decision/application bookkeeping', { cause });
+    this.name = 'AdvisorDiagnosticError';
+  }
+}
 
 export interface AutoplayHarnessAction {
   readonly tick: number;
@@ -56,6 +75,7 @@ export function createAutoplayTraceDriver(input: {
   readonly source: string;
   readonly proclamationGateTick?: number;
   readonly policy?: AutoplayPolicy;
+  readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
 } = { id: "autoplay", source: "direct" }): AutoplayTraceDriver {
   let lastActionTick = -AUTOPLAY_TICK_CADENCE;
   let lastDecisionTick = -AUTOPLAY_TICK_CADENCE;
@@ -67,20 +87,31 @@ export function createAutoplayTraceDriver(input: {
     apply(state) {
       if (!canRunAutoplayAtTick({ enabled: true, currentTick: state.tick, lastActionTick: Math.max(lastActionTick, lastDecisionTick) })) return state;
       lastDecisionTick = state.tick;
-      const advisorAction = decideNextAction(state, input.policy);
+      const diagnostic: FoodDiagnosticCollector | undefined = input.onDiagnostic === undefined ? undefined : {};
+      const advisorAction = decideNextAction(state, input.policy, diagnostic);
+      const report = (next: GameState, result: AdvisorDiagnosticReceipt['result'], gameActionType: string | null): GameState => {
+        if (input.onDiagnostic === undefined || diagnostic === undefined) return next;
+        const receipt: AdvisorDiagnosticReceipt = { schemaVersion: 1, tick: state.tick,
+          food: diagnostic.food ?? initialFoodDiagnostic(state), advisorAction: diagnosticAction(advisorAction),
+          gameActionType, result, newSiteIds: next.constructionSites.filter(site =>
+            !state.constructionSites.some(old => old.id === site.id)).map(site => site.id) };
+        try { input.onDiagnostic(structuredClone(receipt)); }
+        catch (cause) { throw new AdvisorDiagnosticError(next, receipt, cause); }
+        return next;
+      };
       if (
         input.proclamationGateTick !== undefined &&
         advisorAction.kind === "proclaim_era" &&
         state.tick < input.proclamationGateTick
       ) {
-        return state;
+        return report(state, 'gated', null);
       }
       const gameAction = autoplayActionToGameAction(advisorAction, state);
-      if (gameAction === null) return state;
+      if (gameAction === null) return report(state, 'no_action', null);
       appliedActions.push({ tick: state.tick, advisorAction });
       const next = gameReducer(state, gameAction);
       lastActionTick = next.tick;
-      return next;
+      return report(next, next === state ? 'rejected' : 'applied', gameAction.type);
     },
     recordSnapshot(state) {
       snapshots.push({
