@@ -1,3 +1,4 @@
+import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
@@ -63,11 +64,11 @@ export function urbanServiceAction(state: GameState): AutoplayAction {
       if (!hasConnectedConstructionRoute(state, candidate)) continue;
       const projected = allocateHouseServices({ houses: state.houses, buildings: [...state.buildings, candidate], roadService });
       if ([...projected.houses.values()].filter(services => services[kind].kind === 'served').length <= servedBefore) continue;
-      if (!preservesAutoplayWallSpace(state, kind, candidate)) continue;
+      if (!preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty })) continue;
       return { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty };
     }
     for (const { candidate } of candidates.slice(0, 24)) {
-      if (!preservesAutoplayWallSpace(state, kind, candidate)) continue;
+      if (!preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty })) continue;
       const road = plannedBuildingRoadAction(state, candidate);
       if (road.kind !== 'none') return road;
     }

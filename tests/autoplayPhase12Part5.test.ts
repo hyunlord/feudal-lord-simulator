@@ -1,3 +1,5 @@
+import { validatePalisadeCandidate } from '../src/world/palisadeGeometry';
+import { palisadeFootprintsForState } from '../src/engine/palisadeFootprints';
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -181,7 +183,10 @@ test("Given a palisade proclamation action When adapters resolve it Then they sh
     tiles: state.tiles.map((tile) => ({ ...tile, terrain: "water" as const })),
   };
 
-  assert.deepEqual(action, { kind: "proclaim_era" });
+  assert.ok(action.kind === 'proclaim_era' && action.candidatePath !== undefined);
+  assert.deepEqual(Object.keys(action).sort(), ['candidatePath', 'kind']);
+  assert.ok(validatePalisadeCandidate(state, action.candidatePath, palisadeFootprintsForState(state)).ok);
+  assert.deepEqual(engineResolved, { type: 'confirm_palisade_proclamation', candidatePath: action.candidatePath });
   assert.deepEqual(uiResolved, engineResolved);
   assert.equal(uiResolved?.type, "confirm_palisade_proclamation");
   assert.equal(uiResolved === null ? null : gameReducer(state, uiResolved).era, "palisade");

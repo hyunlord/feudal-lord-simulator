@@ -100,6 +100,7 @@ export interface GameState {
   eraProclaimedTick: number | null;
   palisade: PalisadeState | null;
   readonly forestHarvests: readonly ForestHarvest[];
+  readonly autoplayRecurringDelivery?: import("./autoplayRecurringDelivery").AutoplayRecurringDelivery;
   readonly autoplayFoodFlow?: import("./autoplayFoodFlow").AutoplayFoodFlow;
   readonly autoplayFoodObservation?: AutoplayFoodObservation;
   readonly autoplayEmptyHomes?: readonly {

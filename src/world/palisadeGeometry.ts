@@ -25,7 +25,8 @@ export type PalisadeFailureReason =
   | "water_crossing"
   | "insufficient_enclosure"
   | "building_clearance"
-  | "empty_perimeter";
+  | "empty_perimeter"
+  | "rejected_candidate";
 
 export type PalisadeRun = {
   readonly startIndex: number;
@@ -464,9 +465,14 @@ function primaryPalisadeProposal(
 export function computePalisadeProposal(
   grid: Grid,
   footprints: readonly PalisadeFootprint[],
+  acceptPath?: (path: PalisadePath) => boolean,
 ): PalisadeProposalResult {
   const proposal = primaryPalisadeProposal(grid, footprints);
-  if (proposal.ok || footprints.length === 0 || footprints.some(footprint => hasWaterMoat(grid, footprint))) return proposal;
+  if (proposal.ok && (acceptPath === undefined || acceptPath(proposal.path))) return proposal;
+  let rejected = proposal.ok;
+  if (footprints.length === 0 || footprints.some(footprint => hasWaterMoat(grid, footprint))) {
+    return rejected ? { ok: false, reason: "rejected_candidate" } : proposal;
+  }
   const ordered = [...footprints].sort((a, b) => a.id.localeCompare(b.id));
   // Prioritize plots that actually obstruct the full-set envelopes. Every omitted
   // plot still participates in clearance and the enclosure denominator below.
@@ -476,6 +482,7 @@ export function computePalisadeProposal(
       const validation = validatePalisadeCandidate(grid, path, footprints);
       if (validation.ok) {
         const { candidate } = validation;
+        if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; continue; }
         return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
       }
       for (const footprint of ordered) {
@@ -491,11 +498,12 @@ export function computePalisadeProposal(
         const validation = validatePalisadeCandidate(grid, path, footprints);
         if (!validation.ok) continue;
         const { candidate } = validation;
+        if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; continue; }
         return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
       }
     }
   }
-  return proposal;
+  return rejected ? { ok: false, reason: "rejected_candidate" } : proposal;
 }
 
 export function dragPalisadeRun(

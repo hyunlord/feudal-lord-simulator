@@ -1,3 +1,5 @@
+import { validatePalisadeCandidate } from '../src/world/palisadeGeometry';
+import { palisadeFootprintsForState } from '../src/engine/palisadeFootprints';
 import assert from "node:assert/strict";
 import test from "node:test";
 
@@ -211,7 +213,15 @@ test("Given era requirements When one building is missing or all are met Then au
     tx: 3,
     ty: 2,
   });
-  assert.deepEqual(decideNextAction(state({ ...ready, buildings: [granary, chapel], roads: ["1,3", "2,3", "3,2", "3,3"] })), { kind: "proclaim_era" });
+  const settlement = state({ ...ready, buildings: [granary, chapel], roads: ["1,3", "2,3", "3,2", "3,3"] });
+  const action = decideNextAction(settlement);
+  assert.ok(action.kind === 'proclaim_era' && action.candidatePath !== undefined);
+  assert.deepEqual(Object.keys(action).sort(), ['candidatePath', 'kind']);
+  assert.ok(validatePalisadeCandidate(settlement, action.candidatePath, palisadeFootprintsForState(settlement)).ok);
+  const command = autoplayActionToGameAction(action, settlement);
+  assert.deepEqual(command, { type: 'confirm_palisade_proclamation', candidatePath: action.candidatePath });
+  assert.ok(command);
+  assert.deepEqual(gameReducer(settlement, command).palisade?.polygon, action.candidatePath);
 });
 
 test("Given an earlier isolated road island When autoplay places a food site Then construction still has a real source route", () => {

@@ -1,3 +1,4 @@
+import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
@@ -81,13 +82,16 @@ export function waterAction(state: GameState): AutoplayAction {
       left.candidate.ty - right.candidate.ty ||
       left.candidate.tx - right.candidate.tx,
     );
-  const best = ranked.find(({ candidate }) => hasConnectedConstructionRoute(state, virtualBuilding("well", candidate)) && preservesAutoplayWallSpace(state, "well", candidate))?.candidate;
-  if (best !== undefined) {
-    return preserveRoadExpansion(state, { ...best, kind: "well" }) ??
-      { kind: "place_building", building: "well", tx: best.tx, ty: best.ty };
+  for (const { candidate } of ranked) {
+    if (!hasConnectedConstructionRoute(state, virtualBuilding('well', candidate))
+      || !preservesAutoplayWallSpace(state, 'well', candidate)
+      || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'well', tx: candidate.tx, ty: candidate.ty })) continue;
+    const expansion = preserveRoadExpansion(state, { ...candidate, kind: 'well' });
+    if (expansion?.kind === 'none') continue;
+    return expansion ?? { kind: 'place_building', building: 'well', tx: candidate.tx, ty: candidate.ty };
   }
   for (const { candidate } of ranked.slice(0, 24)) {
-    if (!preservesAutoplayWallSpace(state, "well", candidate)) continue;
+    if (!preservesAutoplayWallSpace(state, "well", candidate) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'well', tx: candidate.tx, ty: candidate.ty })) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding("well", candidate));
     if (road.kind !== "none") return road;
   }

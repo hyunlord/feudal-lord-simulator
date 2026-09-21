@@ -60,11 +60,34 @@ export function backpressuredFoodRecovery(
   const end = sample.poolEnd;
   const current = foodPoolSnapshot(state, state.autoplayFoodFlow?.poolIds ?? []);
   if (start === undefined || end === undefined || current === undefined || (sample.farmFullTicks ?? 0) === 0
-    || end.wheat < start.wheat || end.usableWheat <= 0 || current.usableWheat <= 0) return undefined;
+    || end.usableWheat <= 0 || current.usableWheat <= 0) return undefined;
   const potential = unblockedWheatUpperBound(sample);
   const inputPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 0;
   if (potential === undefined || potential - sample.wheatExported < breadDemand * inputPerBread) return undefined;
+  if (end.wheat < start.wheat) {
+    const lowerBound = unblockedWheatLowerBound(sample);
+    const requiredWheat = breadDemand * inputPerBread;
+    const rawDeficit = requiredWheat - (sample.wheatProduced - sample.wheatExported);
+    if (sample.farmCount !== state.buildings.filter(b => b.kind === 'wheat_farm').length
+      || lowerBound === undefined || lowerBound - sample.wheatExported < requiredWheat
+      || !(Math.min(end.usableWheat, current.usableWheat) >= rawDeficit)) return undefined;
+  }
   return breadBufferCoversDeficit(state, sample, breadDemand) ? 'wait' : 'mill';
+}
+
+// sum floor(work_i/T) >= floor(sum work_i/T) - (n-1). This is counterfactual
+// unblocked work, never realised production or inventory credited to the simulation.
+export function unblockedWheatLowerBound(sample: FoodFlowWindow): number | undefined {
+  const { farmCount: count, farmTicksPerOutput: period, farmOpeningProgress: opening,
+    farmReadyTicks: ready, farmFullTicks: full } = sample;
+  const duration = sample.untilTick - sample.startedTick;
+  if (sample.qualified !== true || count === undefined || period === undefined || opening === undefined
+    || ready === undefined || full === undefined || period !== BUILDING_CONFIG_BY_KIND.wheat_farm.production?.ticksPerOutput
+    || ![count, period, opening, ready, full, duration, sample.wheatProduced, sample.wheatExported].every(Number.isSafeInteger)
+    || count <= 0 || period <= 0 || duration <= 0 || opening < 0 || opening >= count * period
+    || ready < 0 || ready > count * duration || full <= 0 || full > ready
+    || sample.wheatProduced < 0 || sample.wheatExported < 0) return undefined;
+  return Math.max(0, Math.floor((opening + ready) / period) - (count - 1));
 }
 
 // Pooling opening partial batches only loosens this bound; it is never recorded as production.

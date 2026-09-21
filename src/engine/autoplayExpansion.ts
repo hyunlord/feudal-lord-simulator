@@ -1,3 +1,4 @@
+import { serviceSafeRoadAction } from './autoplayServiceSpace';
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { canPlaceRoad, existingRoadComponent } from '../world/roadGraph';
@@ -63,7 +64,7 @@ function preserveReachableSpace(
     if (!free(next) || next.tx - to.tx !== direction.tx || next.ty - to.ty !== direction.ty) break;
     to = next;
   }
-  return { kind: 'place_road', from, to };
+  return serviceSafeRoadAction(state, { kind: 'place_road', from, to });
 }
 
 export function preserveRoadExpansion(state: GameState, candidate: TileCoordinate & { readonly kind: BuildingKind }): AutoplayAction | null {
@@ -99,8 +100,12 @@ export function preserveRoadExpansion(state: GameState, candidate: TileCoordinat
         end = point;
         previous = point;
       }
-      if (end !== null) return { kind: 'place_road', from: next, to: end };
+      if (end !== null) {
+        const safe = serviceSafeRoadAction(state, { kind: 'place_road', from: next, to: end });
+        if (safe.kind !== 'none') return safe;
+      }
     }
+    return { kind: 'none' };
   }
   for (const component of components) {
     const connection = preserveReachableSpace(state, component, free, occupied);

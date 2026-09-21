@@ -1,10 +1,11 @@
+import { autoplayEraAction } from './autoplayEra';
+import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
 import { housingLotCount } from "../population/housing";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import { HOUSING_CONFIG } from "../content/housingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
-import { evaluateEraRequirements } from "./era";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { buildingRoadAccessTiles } from "./routing";
 import type { GameState } from "./engine.types";
@@ -78,7 +79,9 @@ function findBuildSite(
     tile.tx > 0 && tile.ty > 0 && tile.tx < state.width - 1 && tile.ty < state.height - 1);
   for (const coordinate of coordinates) {
     if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
-    if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok && preservesAutoplayWallSpace(state, kind, coordinate)) return coordinate;
+    if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok && preservesAutoplayWallSpace(state, kind, coordinate)
+      && preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })
+      && preserveRoadExpansion(state, { ...coordinate, kind })?.kind !== 'none') return coordinate;
   }
   return null;
 }
@@ -108,7 +111,9 @@ function roadActionForBuilding(state: GameState, building: Building): AutoplayAc
         destination.ty !== access.ty ||
         !path.every((coordinate, index) => canPlaceRoad(state, coordinate) && canTraverseRoadBoundary(state, line[index] ?? road, coordinate))
       ) continue;
-      const candidate = { from, to: access, length: path.length };
+      const safe = serviceSafeRoadAction(state, { kind: 'place_road', from, to: access });
+      if (safe.kind !== 'place_road') continue;
+      const candidate = { from: safe.from, to: safe.to, length: path.length };
       if (
         best === null ||
         candidate.length < best.length ||
@@ -151,7 +156,7 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
-    if (!preservesAutoplayWallSpace(state, kind, candidate.tile)) continue;
+    if (!preservesAutoplayWallSpace(state, kind, candidate.tile) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tile.tx, ty: candidate.tile.ty })) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;
   }
@@ -206,29 +211,6 @@ function storageAction(state: GameState): AutoplayAction {
   return capacity < target && occupied > capacity - 80 ? buildAction(state, "storehouse") : NONE;
 }
 
-function eraAction(state: GameState): AutoplayAction {
-  if (state.population < 60 || state.constructionSites.some(isBuildingConstructionSite)) return NONE;
-  const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met);
-  if (unmet.length === 0) return { kind: "proclaim_era" };
-  for (const requirement of unmet) {
-    let kind: BuildingKind | null = null;
-    switch (requirement.key) {
-      case "granary": case "chapel": case "market": case "masonry":
-        kind = requirement.key;
-        break;
-      case "stone":
-        kind = !hasBuiltOrPlannedBuilding(state, "quarry") ? "quarry" : "masonry";
-        break;
-      case "population": case "timber": case "coin":
-        break;
-    }
-    if (kind !== null && !hasBuiltOrPlannedBuilding(state, kind)) {
-      const action = buildAction(state, kind);
-      if (action.kind !== "none") return action;
-    }
-  }
-  return NONE;
-}
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): AutoplayAction {
   if (state.era === "stone_town") {
@@ -250,7 +232,7 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => housingAction(state, policy),
     () => urbanServiceAction(state),
     () => storageAction(state),
-    () => eraAction(state),
+    () => autoplayEraAction(state, buildAction),
   ]) {
     const action = decide();
     if (action.kind !== "none") return action;

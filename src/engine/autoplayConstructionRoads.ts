@@ -1,3 +1,5 @@
+import { autoplayConstructionSources } from './autoplayConstructionSources';
+import { serviceSafeRoadAction } from './autoplayServiceSpace';
 import { buildingFootprint } from '../geometry/buildingFootprint';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
@@ -18,13 +20,23 @@ export function constructionRoadAction(state: GameState): AutoplayAction {
 }
 
 export function roadActionToTargets(state: GameState, accessTiles: readonly TileCoordinate[], sourceTiles?: readonly TileCoordinate[]): AutoplayAction {
+  const excluded = new Set<string>();
+  for (let attempt = 0; attempt < state.tiles.length; attempt++) {
+    const result = searchRoad(state, accessTiles, sourceTiles, excluded);
+    if ('kind' in result) return result;
+    excluded.add(key(result));
+  }
+  return { kind: 'none' };
+}
+
+function searchRoad(state: GameState, accessTiles: readonly TileCoordinate[], sourceTiles: readonly TileCoordinate[] | undefined, excluded: ReadonlySet<string>): AutoplayAction | TileCoordinate {
   const targets = new Set(accessTiles.map(key));
   const plans = state.constructionSites.filter(isBuildingConstructionSite);
   const free = (tile: TileCoordinate): boolean => canPlaceRoad(state, tile) && !plans.some(site => {
     const size = BUILDING_CONFIG_BY_KIND[site.kind];
     return tile.tx >= site.tx && tile.tx < site.tx + size.width && tile.ty >= site.ty && tile.ty < site.ty + size.height;
   });
-  const sources = state.buildings.filter(building => building.kind === "storehouse" || (building.inventory.timber ?? 0) > 0 || (building.inventory.stone ?? 0) > 0 || (state.treasuryTimber > 0 && building.kind === "house"));
+  const sources = autoplayConstructionSources(state);
   const queue = [...existingRoadComponent(state, sourceTiles ?? sources.flatMap(building => buildingRoadAccessTiles(state, building)))];
   const parents = new Map<string, TileCoordinate | null>(queue.map(tile => [key(tile), null]));
   for (let index = 0; index < queue.length; index += 1) {
@@ -47,10 +59,12 @@ export function roadActionToTargets(state: GameState, accessTiles: readonly Tile
         if ((next.tx - to.tx) !== (from.tx - source.tx) || (next.ty - to.ty) !== (from.ty - source.ty)) break;
         to = next;
       }
-      return { kind: 'place_road', from, to };
+      const safe = serviceSafeRoadAction(state, { kind: 'place_road', from, to });
+      if (safe.kind !== 'none') return safe;
+      return from;
     }
     for (const next of [{ tx: current.tx, ty: current.ty - 1 }, { tx: current.tx - 1, ty: current.ty }, { tx: current.tx + 1, ty: current.ty }, { tx: current.tx, ty: current.ty + 1 }]) {
-      if (parents.has(key(next)) || (!getTile(state, next)?.hasRoad && !free(next)) || !canTraverseRoadBoundary(state, current, next)) continue;
+      if (excluded.has(key(next)) || parents.has(key(next)) || (!getTile(state, next)?.hasRoad && !free(next)) || !canTraverseRoadBoundary(state, current, next)) continue;
       parents.set(key(next), current);
       queue.push(next);
     }

@@ -1,3 +1,4 @@
+import { recordRecurringDelivery } from './autoplayRecurringDelivery';
 import { advanceFoodFlow, recordFoodFlow } from './autoplayFoodFlow';
 import { householdServices } from "./householdServices";
 import { updateSettlementProgress } from "./settlementProgress";
@@ -185,7 +186,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     undefined, householdServices(marketSettled));
   const activeWalkers = movedDistributors.walkers.filter((walker) => walker.kind !== "builder");
   const walkers = [...activeWalkers, ...builderWalkersForSites(labour.constructionSites)];
-  const produced = runProduction({
+  const produced = runProduction(recordRecurringDelivery({
     ...observedDeliveryState,
     ...(marketSettled.autoplayFoodFlow === undefined ? {} : { autoplayFoodFlow: marketSettled.autoplayFoodFlow }),
     tick,
@@ -197,7 +198,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     idleWorkers: labour.idleWorkers,
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: marketSettled.treasuryCoin,
-  });
+  }, { servedHouses, deliveryEvents: movedDistributors.deliveryEvents }));
   const progressed = {
     ...produced,
     constructionSites: recomputeConstructionStalls({

@@ -17,6 +17,8 @@ export interface FoodFlowWindow {
   readonly farmFullTicks?: number;
   readonly farmReadyTicks?: number;
   readonly farmOpeningProgress?: number;
+  readonly farmCount?: number;
+  readonly farmTicksPerOutput?: number;
   readonly poolStart?: FoodPoolSnapshot;
   readonly poolEnd?: FoodPoolSnapshot;
 }
@@ -66,9 +68,15 @@ function opportunityTicks(state: GameState): number {
 
 function emptyWindow(state: GameState, poolIds: readonly string[]): FoodFlowWindow {
   const poolStart = foodPoolSnapshot(state, poolIds);
+  const farms = state.buildings.filter(b => b.kind === 'wheat_farm');
+  const production = BUILDING_CONFIG_BY_KIND.wheat_farm.production;
+  const validPhases = production !== null && farms.length > 0 && farms.every(b =>
+    Number.isSafeInteger(b.productionProgress) && b.productionProgress >= 0
+    && b.productionProgress < production.ticksPerOutput);
   return { startedTick: state.tick, untilTick: state.tick + opportunityTicks(state),
     wheatProduced: 0, breadProduced: 0, wheatExported: 0, breadExported: 0, farmFullTicks: 0, farmReadyTicks: 0,
-    farmOpeningProgress: state.buildings.filter(b => b.kind === 'wheat_farm').reduce((sum, b) => sum + b.productionProgress, 0),
+    farmOpeningProgress: farms.reduce((sum, b) => sum + b.productionProgress, 0),
+    ...(validPhases ? { farmCount: farms.length, farmTicksPerOutput: production.ticksPerOutput } : {}),
     ...(poolStart === undefined ? {} : { poolStart }) };
 }
 
