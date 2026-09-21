@@ -112,10 +112,12 @@ test('Given an old failed range gap and a new opposite range gap When new target
     autoplayFoodObservation: { kind: 'granary', siteId: 'failed', targetHouseIds: ['old'], placedTick: 5000, completedTick: 5100, observeUntilTick: 5500,
       outcome: { outputDelta: 0, deliveredBreadDelta: 0, starvingHomesDelta: 0, effective: false } },
   };
-  const observed = refreshFoodObservation({ ...state, tick: 4900, autoplayFoodObservation: undefined });
-  const terminal = refreshFoodObservation({ ...observed, tick: 6000, autoplayFoodObservation: state.autoplayFoodObservation });
+  const { autoplayFoodObservation, ...unobserved } = state;
+  assert.ok(autoplayFoodObservation);
+  const observed = refreshFoodObservation({ ...unobserved, tick: 4900 });
+  const terminal = refreshFoodObservation({ ...observed, tick: 6000, autoplayFoodObservation });
   assert.equal(terminal.autoplayEmptyHomes?.find(entry => entry.buildingId === 'old')?.failedRecovery, true);
-  const replaced = { ...terminal, autoplayFoodObservation: undefined };
+  const { autoplayFoodObservation: _completedObservation, ...replaced } = terminal;
   assert.notEqual(foodCoverageAction(replaced).kind, 'none');
 });
 
