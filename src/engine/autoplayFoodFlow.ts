@@ -1,3 +1,4 @@
+import { foodSupplyPoolIds, foodPoolSnapshot, type FoodPoolSnapshot } from './autoplayFoodBottleneck';
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { HOUSE_FOOD_INTERVAL } from '../content/houseFoodConfig';
@@ -13,9 +14,15 @@ export interface FoodFlowWindow {
   readonly wheatExported: number;
   readonly breadExported: number;
   readonly qualified?: boolean;
+  readonly farmFullTicks?: number;
+  readonly farmReadyTicks?: number;
+  readonly farmOpeningProgress?: number;
+  readonly poolStart?: FoodPoolSnapshot;
+  readonly poolEnd?: FoodPoolSnapshot;
 }
 
 export interface AutoplayFoodFlow {
+  readonly poolIds?: readonly string[];
   readonly layout: string;
   readonly routes: string;
   readonly roadRevision: number;
@@ -24,17 +31,17 @@ export interface AutoplayFoodFlow {
 }
 
 type FoodFlowActivity = Partial<Pick<FoodFlowWindow,
-  'wheatProduced' | 'breadProduced' | 'wheatExported' | 'breadExported'>>;
+  'wheatProduced' | 'breadProduced' | 'wheatExported' | 'breadExported' | 'farmFullTicks' | 'farmReadyTicks'>>;
 
 export function foodFlowLayout(state: GameState): string {
-  return state.buildings.filter(b => ['wheat_farm', 'mill', 'granary', 'market'].includes(b.kind))
+  return state.buildings.filter(b => ['wheat_farm', 'mill', 'granary', 'market', 'house'].includes(b.kind))
     .map(b => `${b.id}:${b.kind}:${b.tx},${b.ty}:${b.workers >= BUILDING_CONFIG_BY_KIND[b.kind].workersRequired}:${buildingHasRequiredRoadAccess(state, b)}`).join('|');
 }
 
 export function foodFlowRoutes(state: GameState): string {
   const granaries = state.buildings.filter(b => b.kind === 'granary');
-  return state.buildings.filter(b => b.kind === 'wheat_farm' || b.kind === 'mill' || b.kind === 'market')
-    .map(b => `${b.id}:${granaries.some(g => resolveBuildingRoute(state, b, g).path !== null)}`).join('|');
+  return state.buildings.filter(b => b.kind === 'wheat_farm' || b.kind === 'mill' || b.kind === 'market' || b.kind === 'house')
+    .map(b => `${b.id}:${granaries.filter(g => resolveBuildingRoute(state, b, g).path !== null).map(g => g.id).join(',')}`).join('|');
 }
 
 function opportunityTicks(state: GameState): number {
@@ -57,9 +64,12 @@ function opportunityTicks(state: GameState): number {
   return Math.max(HOUSE_FOOD_INTERVAL, batchTicks + haulingTicks + deliveryTicks);
 }
 
-function emptyWindow(state: GameState): FoodFlowWindow {
+function emptyWindow(state: GameState, poolIds: readonly string[]): FoodFlowWindow {
+  const poolStart = foodPoolSnapshot(state, poolIds);
   return { startedTick: state.tick, untilTick: state.tick + opportunityTicks(state),
-    wheatProduced: 0, breadProduced: 0, wheatExported: 0, breadExported: 0 };
+    wheatProduced: 0, breadProduced: 0, wheatExported: 0, breadExported: 0, farmFullTicks: 0, farmReadyTicks: 0,
+    farmOpeningProgress: state.buildings.filter(b => b.kind === 'wheat_farm').reduce((sum, b) => sum + b.productionProgress, 0),
+    ...(poolStart === undefined ? {} : { poolStart }) };
 }
 
 // Called at the opening of a substep: a closed window contains (startedTick, untilTick].
@@ -68,15 +78,19 @@ export function advanceFoodFlow(state: GameState): GameState {
   const flow = state.autoplayFoodFlow;
   const routes = flow?.layout === layout && flow.roadRevision === state.roadRevision
     ? flow.routes : foodFlowRoutes(state);
-  const epoch = { layout, routes, roadRevision: state.roadRevision };
+  const poolIds = flow?.layout === layout && flow.routes === routes && flow.poolIds !== undefined
+    ? flow.poolIds : foodSupplyPoolIds(state);
+  const epoch = { layout, routes, roadRevision: state.roadRevision, poolIds };
   if (flow === undefined || flow.layout !== layout || flow.routes !== routes
     || flow.current.qualified === false || state.tick < flow.current.startedTick) {
-    return { ...state, autoplayFoodFlow: { ...epoch, current: emptyWindow(state) } };
+    return { ...state, autoplayFoodFlow: { ...epoch, current: emptyWindow(state, poolIds) } };
   }
   const untilTick = Math.max(flow.current.untilTick, flow.current.startedTick + opportunityTicks(state));
   if (state.tick >= untilTick) {
-    return { ...state, autoplayFoodFlow: { ...epoch, current: emptyWindow(state),
-      completed: { ...flow.current, untilTick: state.tick } } };
+    const poolEnd = foodPoolSnapshot(state, poolIds);
+    return { ...state, autoplayFoodFlow: { ...epoch, current: emptyWindow(state, poolIds),
+      completed: { ...flow.current, untilTick: state.tick,
+        ...(poolEnd === undefined ? {} : { poolEnd }) } } };
   }
   return untilTick === flow.current.untilTick && flow.roadRevision === state.roadRevision ? state : {
     ...state, autoplayFoodFlow: { ...flow, ...epoch, current: { ...flow.current, untilTick } },
@@ -89,6 +103,8 @@ export function recordFoodFlow(state: GameState, activity: FoodFlowActivity): Ga
   const current = flow.current;
   return { ...state, autoplayFoodFlow: { ...flow, current: { ...current,
     qualified: current.qualified !== false && flow.layout === foodFlowLayout(state),
+    farmReadyTicks: (current.farmReadyTicks ?? 0) + (activity.farmReadyTicks ?? 0),
+    farmFullTicks: (current.farmFullTicks ?? 0) + (activity.farmFullTicks ?? 0),
     wheatProduced: current.wheatProduced + (activity.wheatProduced ?? 0),
     breadProduced: current.breadProduced + (activity.breadProduced ?? 0),
     wheatExported: current.wheatExported + (activity.wheatExported ?? 0),

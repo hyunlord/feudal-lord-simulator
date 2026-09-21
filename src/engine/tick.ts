@@ -12,7 +12,7 @@ import {
   recomputeConstructionStalls,
 } from "./constructionLifecycle";
 import { recordFoodObservationActivity, refreshFoodObservation } from "./autoplayFoodThroughput";
-import { stepProduction } from "../economy/production";
+import { productionOperation, stepProduction } from "../economy/production";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
 import { updateHousing } from "../population/housing";
@@ -82,9 +82,16 @@ export function runProduction(state: GameState): GameState {
   let forestHarvests = state.forestHarvests ?? [];
   let observedOutput = 0;
   let wheatProduced = 0;
+  let farmFullTicks = 0;
+  let farmReadyTicks = 0;
   let breadProduced = 0;
   const buildings = state.buildings.map((building) => {
     if (!buildingHasRequiredRoadAccess(state, building)) return building;
+    if (building.kind === 'wheat_farm') {
+      const operation = productionOperation(building, BUILDING_CONFIG_BY_KIND.wheat_farm);
+      if (operation === 'output_full') farmFullTicks += 1;
+      if (operation === 'working' || operation === 'output_full') farmReadyTicks += 1;
+    }
     const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
     if (step.produced === "wheat") wheatProduced += 1;
     if (step.produced === "bread") breadProduced += 1;
@@ -100,7 +107,7 @@ export function runProduction(state: GameState): GameState {
     ...state,
     buildings,
     forestHarvests,
-  }, { wheatProduced, breadProduced });
+  }, { wheatProduced, breadProduced, farmFullTicks, farmReadyTicks });
   return observedOutput === 0
     ? nextState
     : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });

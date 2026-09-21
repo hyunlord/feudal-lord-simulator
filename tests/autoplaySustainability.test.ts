@@ -1,7 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND } from '../src/content/buildingConfig';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { allocateBuildingLabour } from '../src/population/labour';
+import { allocateBuildingLabour, availableWorkers } from '../src/population/labour';
 import { stepProduction } from '../src/economy/production';
 import { buildingHasRequiredRoadAccess } from '../src/engine/roadAccess';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
@@ -143,7 +143,6 @@ test('Given a new road joins an existing disconnected stretch When BFS returns i
 
 test('Given eight well stocked L3 homes When two mills have no hauling headroom Then the advisor adds one mill without multiplying farms and granaries', () => {
   const state = structuredClone(DEFAULT_GAME_STATE);
-  state.idleWorkers = 0;
   state.houses = Array.from({ length: 8 }, (_, index) => ({ ...state.houses[0]!, buildingId: `home-${index}`, level: 3, residents: 22, breadStock: 9 }));
   const template = state.buildings[0]!;
   state.buildings = [
@@ -152,6 +151,9 @@ test('Given eight well stocked L3 homes When two mills have no hauling headroom 
     ...Array.from({ length: 2 }, (_, index) => ({ ...template, id: `mill-${index}`, kind: 'mill' as const })),
     ...Array.from({ length: 2 }, (_, index) => ({ ...template, id: `granary-${index}`, kind: 'granary' as const })),
   ];
+  state.population = state.houses.reduce((sum, house) => sum + house.residents, 0);
+  state.idleWorkers = availableWorkers(state.population) - state.buildings.reduce((sum, building) =>
+    sum + BUILDING_CONFIG_BY_KIND[building.kind].workersRequired, 0);
   const build = (_state: typeof state, kind: typeof template.kind) => ({ kind: 'place_building' as const, building: kind, tx: 0, ty: 0 });
   const action = foodAction(state, build);
   assert.equal(action.kind === 'place_building' && action.building, 'mill');

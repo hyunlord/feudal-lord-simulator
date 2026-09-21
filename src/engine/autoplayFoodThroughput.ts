@@ -1,3 +1,4 @@
+import { backpressuredFoodRecovery, breadBufferCoversDeficit } from './autoplayFoodBottleneck';
 import { measuredFoodFlow } from './autoplayFoodFlow';
 import { observeEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
 import { BALANCE } from '../content/balanceConfig';
@@ -173,8 +174,12 @@ export function foodRecoveryKind(state: GameState, mealDemand: number): 'wheat_f
   if (sample === undefined) return null;
   const meals = (sample.untilTick - sample.startedTick) / HOUSE_FOOD_INTERVAL;
   const inputPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 0;
-  if (sample.wheatProduced - sample.wheatExported < mealDemand * meals * inputPerBread) return 'wheat_farm';
-  return sample.breadProduced - sample.breadExported < mealDemand * meals ? 'mill' : null;
+  if (sample.wheatProduced - sample.wheatExported < mealDemand * meals * inputPerBread) {
+    const bottleneck = backpressuredFoodRecovery(state, sample, mealDemand * meals);
+    return bottleneck === 'wait' ? null : bottleneck ?? 'wheat_farm';
+  }
+  return sample.breadProduced - sample.breadExported < mealDemand * meals
+    && !breadBufferCoversDeficit(state, sample, mealDemand * meals) ? 'mill' : null;
 }
 
 function targetedGranaryTicks(state: GameState, building: Building, targets: readonly string[]): number {
