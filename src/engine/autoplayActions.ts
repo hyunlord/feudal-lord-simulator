@@ -46,6 +46,7 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
         kind: action.building,
         tx: action.tx,
         ty: action.ty,
+        ...(action.materialRecovery === undefined ? {} : { materialRecovery: action.materialRecovery }),
         ...(
           action.building === "granary" || action.building === "mill" || action.building === "wheat_farm"
             ? { autoplayFoodObservation: true }

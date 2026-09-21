@@ -167,52 +167,55 @@ export function releaseClaims(
   inventory: DeliveryInventoryPort,
 ): DeliveryResourceState {
   let nextState = state;
-  switch (carter.reservation.destination.kind) {
-    case "building": {
-      const destination = findBuilding(
-        nextState.buildings,
-        carter.reservation.destination.buildingId,
-      );
-      if (destination !== null) {
-        nextState = {
-          ...nextState,
-          buildings: replaceBuilding(
-            nextState.buildings,
-            inventory.releaseSpace(
-              destination,
-              carter.reservation.resource,
-              carter.reservation.amount,
+  if (carter.mission === "fetch" || carter.phase === "outbound") {
+    switch (carter.reservation.destination.kind) {
+      case "building": {
+        const destination = findBuilding(
+          nextState.buildings,
+          carter.reservation.destination.buildingId,
+        );
+        if (destination !== null) {
+          nextState = {
+            ...nextState,
+            buildings: replaceBuilding(
+              nextState.buildings,
+              inventory.releaseSpace(
+                destination,
+                carter.reservation.resource,
+                carter.reservation.amount,
+              ),
             ),
-          ),
-        };
+          };
+        }
+        break;
       }
-      break;
-    }
-    case "construction_site": {
-      const destination = findSite(
-        nextState.constructionSites,
-        carter.reservation.destination.siteId,
-      );
-      if (destination !== null) {
-        nextState = {
-          ...nextState,
-          constructionSites: replaceSite(
-            nextState.constructionSites,
-            releaseSiteResource(
-              destination,
-              carter.reservation.resource,
-              carter.reservation.amount,
+      case "construction_site": {
+        const destination = findSite(
+          nextState.constructionSites,
+          carter.reservation.destination.siteId,
+        );
+        if (destination !== null) {
+          nextState = {
+            ...nextState,
+            constructionSites: replaceSite(
+              nextState.constructionSites,
+              releaseSiteResource(
+                destination,
+                carter.reservation.resource,
+                carter.reservation.amount,
+              ),
             ),
-          ),
-        };
+          };
+        }
+        break;
       }
-      break;
     }
   }
   const claim = carter.reservation.sourceStockClaim;
   if (claim === null) return nextState;
   switch (claim.kind) {
     case "building": {
+      if (carter.mission !== "fetch" || carter.phase !== "outbound") return nextState;
       const source = findBuilding(nextState.buildings, claim.buildingId);
       return source === null
         ? nextState

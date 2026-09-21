@@ -1,3 +1,4 @@
+import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
 import {
   createContext,
   createElement,
@@ -95,7 +96,7 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "commit_simulation_state":
       return state === action.previousState ? action.nextState : state;
     case "place_building": {
-      const next = placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
+      const next = recordMaterialPlacement(state, placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty }), action.materialRecovery);
       if (!action.autoplayFoodObservation || next === state ||
         (action.kind !== "granary" && action.kind !== "mill" && action.kind !== "wheat_farm")) return next;
       const targets = action.kind === "granary" ? granaryCoverageTargetIds(state, action) : [];
@@ -125,11 +126,12 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
         inventory: createDeliveryInventoryPort(),
         routes: routes.delivery,
       }).state;
+      const materialResult = refreshMaterialResult(result);
       if (
         state.autoplayFoodObservation?.siteId !== action.siteId ||
         state.autoplayFoodObservation.completedTick !== undefined
-      ) return result;
-      const { autoplayFoodObservation: _autoplayFoodObservation, ...withoutObservation } = result;
+      ) return materialResult;
+      const { autoplayFoodObservation: _autoplayFoodObservation, ...withoutObservation } = materialResult;
       return withoutObservation;
     }
     case "confirm_palisade_proclamation":

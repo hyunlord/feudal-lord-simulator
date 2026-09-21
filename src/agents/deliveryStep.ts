@@ -1,3 +1,4 @@
+import { observeMaterialReturn } from './materialActivity';
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import {
@@ -50,6 +51,7 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
       walkers.push(walker);
       continue;
     }
+    if (walker.cancellation !== null) input.materialActivity?.({ kind: 'cancelled', tick: input.tick, homeId: walker.homeBuildingId, walkerId: walker.id });
     if (
       walker.phase === "returning" &&
       walker.cancellation !== null &&
@@ -64,12 +66,14 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
         walker,
         input.inventory,
       );
+      observeMaterialReturn(input, walker);
       buildings = returned.buildings;
       constructionSites = returned.constructionSites;
       treasuryTimber = returned.treasuryTimber;
       continue;
     }
     if (!routeIsIntact(buildings, walker, input.routes)) {
+      input.materialActivity?.({ kind: "cancelled", tick: input.tick, homeId: walker.homeBuildingId, walkerId: walker.id });
       const cancelled = cancelCarter(
         input.tick,
         { buildings, constructionSites, treasuryTimber },
@@ -100,6 +104,7 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
         moved,
         input.inventory,
       );
+      observeMaterialReturn(input, moved);
       buildings = returned.buildings;
       constructionSites = returned.constructionSites;
       treasuryTimber = returned.treasuryTimber;

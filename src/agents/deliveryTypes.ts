@@ -56,6 +56,7 @@ export interface DeliveryRoutePort {
 }
 
 export interface DeliveryStepInput {
+  readonly materialActivity?: (activity: import("./materialActivity").MaterialActivity) => void;
   readonly tick: number;
   readonly buildings: readonly Building[];
   readonly constructionSites?: readonly ConstructionSite[];

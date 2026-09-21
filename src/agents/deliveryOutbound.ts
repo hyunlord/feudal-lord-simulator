@@ -26,6 +26,7 @@ function completeDelivery(
   inventory: DeliveryInventoryPort,
   routes: DeliveryRoutePort,
   tick: number,
+  materialActivity?: DeliveryStepInput["materialActivity"],
 ): CarterResult {
   if (carter.reservation.destination.kind === "construction_site") {
     const site = findSite(
@@ -42,6 +43,7 @@ function completeDelivery(
         "destination_unavailable",
       );
     }
+    if (site.kind === "stone_wall_segment" && carter.cargo.resource === "stone" && carter.cancellation === null) materialActivity?.({ kind: "wall_delivery", tick, homeId: carter.homeBuildingId, walkerId: carter.id, wallId: site.wallId, siteId: site.id, amount: carter.cargo.amount });
     const nextState = {
       ...state,
       constructionSites: replaceSite(
@@ -145,22 +147,22 @@ function completeFetch(
   }
 
   const withdrawn = inventory.withdrawStock(source, claim.resource, claim.amount);
-  const cleared = inventory.releaseStock(
-    withdrawn.building,
-    claim.resource,
-    claim.amount,
-  );
-  const nextState = { ...state, buildings: replaceBuilding(state.buildings, cleared) };
   if (withdrawn.withdrawn === 0) {
     return cancelCarter(
       tick,
-      nextState,
+      state,
       carter,
       inventory,
       routes,
       "source_unavailable",
     );
   }
+  const cleared = inventory.releaseStock(
+    withdrawn.building,
+    claim.resource,
+    claim.amount - withdrawn.withdrawn,
+  );
+  const nextState = { ...state, buildings: replaceBuilding(state.buildings, cleared) };
   return beginReturn(
     nextState,
     carter,
@@ -182,6 +184,7 @@ export function completeOutbound(
         input.inventory,
         input.routes,
         input.tick,
+        input.materialActivity,
       )
     : completeFetch(
         state,

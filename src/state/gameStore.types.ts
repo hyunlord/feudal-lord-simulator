@@ -9,7 +9,7 @@ export interface GameProviderProps {
   children: ReactNode;
 }
 
-export type GameAction = import("../engine/autoplayFoodTransient").FoodTransientMetadata & GameCommand;
+export type GameAction = import("../engine/autoplayFoodTransient").FoodTransientMetadata & import("../engine/autoplayMaterialTypes").MaterialPlacementMetadata & GameCommand;
 type GameCommand =
   | { readonly type: "record_autoplay_food_confirmation" }
   | { readonly type: "restart_settlement" }

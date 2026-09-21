@@ -201,6 +201,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
       if (fetched.walker === null) continue;
       buildings = fetched.buildings;
       walkers.push(fetched.walker);
+      input.materialActivity?.({ kind: "dispatch", tick: input.tick, walker: fetched.walker });
       busyHomes.add(building.id);
     }
   }
@@ -220,6 +221,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     constructionSites = siteDispatch.constructionSites;
     treasuryTimber = siteDispatch.treasuryTimber;
     walkers.push(siteWalker);
+    if (siteWalker.kind === "carter") input.materialActivity?.({ kind: "dispatch", tick: input.tick, walker: siteWalker });
     busyHomes.add(siteWalker.homeBuildingId);
   }
 
@@ -236,6 +238,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     buildings = result.buildings;
     if (result.walker !== null) {
       walkers.push(result.walker);
+      input.materialActivity?.({ kind: "dispatch", tick: input.tick, walker: result.walker });
       busyHomes.add(building.id);
     }
   }

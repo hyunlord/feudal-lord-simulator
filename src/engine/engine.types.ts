@@ -104,6 +104,7 @@ export interface GameState {
   readonly autoplayFoodTransientConfirmation?: import("./autoplayFoodTransient").AutoplayFoodTransientConfirmation;
   readonly autoplayFoodFlow?: import("./autoplayFoodFlow").AutoplayFoodFlow;
   readonly autoplayFoodObservation?: AutoplayFoodObservation;
+  readonly autoplayMaterialRecovery?: import("./autoplayMaterialTypes").AutoplayMaterialRecovery;
   readonly autoplayEmptyHomes?: readonly {
     readonly buildingId: string;
     readonly sinceTick: number;

@@ -1,3 +1,4 @@
+import { finishMaterialConstruction } from './autoplayMaterialLifecycle';
 import type { DeliveryRoutePort } from "../agents/delivery";
 import { constructionMaterialSources } from "../agents/deliveryConstruction";
 import type { Walker } from "../agents/walker.types";
@@ -140,7 +141,7 @@ export function completeEligibleConstruction(state: GameState): GameState {
       })
     : [];
 
-  const nextState = {
+  const nextState = finishMaterialConstruction({
     ...state,
     buildings: [...state.buildings, ...completedBuildings.map(buildingFromSite)],
     constructionSites: [
@@ -152,7 +153,7 @@ export function completeEligibleConstruction(state: GameState): GameState {
     palisade,
     roadRevision: state.roadRevision + (barrierCompleted ? 1 : 0),
     pathCache: barrierCompleted ? {} : state.pathCache,
-  };
+  }, completedIds);
   const observation = state.autoplayFoodObservation;
   const completedObserved = observation === undefined || observation.completedTick !== undefined
     ? undefined

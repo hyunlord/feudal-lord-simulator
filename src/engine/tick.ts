@@ -1,20 +1,24 @@
+import { runProduction } from './simulationProduction';
+export { runProduction } from './simulationProduction';
+import { refreshMaterialResult } from './autoplayMaterialLifecycle';
+import type { MaterialActivity } from '../agents/materialActivity';
+import { recordMaterialActivity } from './autoplayMaterialCycle';
+import { beginMaterialObservation } from './autoplayMaterialObservation';
 import { recordFoodMeals } from './autoplayFoodTransientMeals';
 import { recordRecurringDelivery } from './autoplayRecurringDelivery';
-import { advanceFoodFlow, recordFoodFlow } from './autoplayFoodFlow';
+import { advanceFoodFlow } from './autoplayFoodFlow';
 import { householdServices } from "./householdServices";
 import { updateSettlementProgress } from "./settlementProgress";
 import { stepCarters, spawnCarters } from "../agents/delivery";
 import { spawnDistributors, stepDistributors } from "../agents/roaming";
 import type { RoamingDeliveryEvent, RoamingHouse, RoamingJunctionInput } from "../agents/roaming";
 import { buildingFootprint } from "../geometry/buildingFootprint";
-import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import {
   advanceConstructionSites,
   completeEligibleConstruction,
   recomputeConstructionStalls,
 } from "./constructionLifecycle";
 import { recordFoodObservationActivity, refreshFoodObservation } from "./autoplayFoodThroughput";
-import { productionOperation, stepProduction } from "../economy/production";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
 import { updateHousing } from "../population/housing";
@@ -28,7 +32,6 @@ import {
   createDeliveryInventoryPort,
   createSimulationRoutePorts,
 } from "./simulationPorts";
-import { forestHarvestsAfterProduction } from "./forestHarvests";
 import type { GameState } from "./engine.types";
 
 function toRoamingHouse(
@@ -80,40 +83,6 @@ function deliveredBreadFromObservedGranary(
     deliveredHouseIds: credited.map(event => event.houseBuildingId) };
 }
 
-export function runProduction(state: GameState): GameState {
-  let forestHarvests = state.forestHarvests ?? [];
-  let observedOutput = 0;
-  let wheatProduced = 0;
-  let farmFullTicks = 0;
-  let farmReadyTicks = 0;
-  let breadProduced = 0;
-  const buildings = state.buildings.map((building) => {
-    if (!buildingHasRequiredRoadAccess(state, building)) return building;
-    if (building.kind === 'wheat_farm') {
-      const operation = productionOperation(building, BUILDING_CONFIG_BY_KIND.wheat_farm);
-      if (operation === 'output_full') farmFullTicks += 1;
-      if (operation === 'working' || operation === 'output_full') farmReadyTicks += 1;
-    }
-    const step = stepProduction(building, BUILDING_CONFIG_BY_KIND[building.kind]);
-    if (step.produced === "wheat") wheatProduced += 1;
-    if (step.produced === "bread") breadProduced += 1;
-    if (step.produced !== null && state.autoplayFoodObservation?.siteId === building.id) observedOutput += 1;
-    forestHarvests = forestHarvestsAfterProduction({
-      state: { ...state, forestHarvests },
-      building,
-      produced: step.produced,
-    });
-    return step.building;
-  });
-  const nextState = recordFoodFlow({
-    ...state,
-    buildings,
-    forestHarvests,
-  }, { wheatProduced, breadProduced, farmFullTicks, farmReadyTicks });
-  return observedOutput === 0
-    ? nextState
-    : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });
-}
 
 function rngForState(state: GameState) {
   return (input: RoamingJunctionInput) =>
@@ -131,10 +100,13 @@ function rngForState(state: GameState) {
 
 export function advanceSimulationSubstep(input: GameState): GameState {
   if (input.settlement?.outcome === "abandoned") return input;
-  const state = advanceFoodFlow(input);
+  const flowing = advanceFoodFlow(input);
+  const routePorts = createSimulationRoutePorts(flowing);
+  const state = beginMaterialObservation(flowing, routePorts.delivery);
   const tick = state.tick + 1;
   const inventory = createDeliveryInventoryPort();
-  const routePorts = createSimulationRoutePorts(state);
+  const materialEvents: MaterialActivity[] = [];
+  const materialActivity = (event: MaterialActivity) => materialEvents.push(event);
   const movedCarters = stepCarters({
     tick,
     buildings: state.buildings,
@@ -143,6 +115,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: state.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
+    ...(state.autoplayMaterialRecovery === undefined ? {} : { materialActivity }),
   });
   const roamingHouses = state.houses.flatMap((house) => {
     const converted = toRoamingHouse(house, state);
@@ -161,9 +134,11 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     movedDistributors.deliveryEvents,
     state.autoplayFoodObservation,
   );
+  const materialMoved = recordMaterialActivity(state, materialEvents);
+  materialEvents.length = 0;
   const observedDeliveryState = delivery.deliveredBread === 0
-    ? state
-    : recordFoodObservationActivity({ ...state, tick }, delivery);
+    ? materialMoved
+    : recordFoodObservationActivity({ ...materialMoved, tick }, delivery);
   // The opening population staffs this whole substep; new arrivals enter work next tick.
   const labour = allocateBuildingAndConstructionLabour(
     movedDistributors.buildings,
@@ -215,6 +190,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: progressed.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
+    ...(state.autoplayMaterialRecovery === undefined ? {} : { materialActivity }),
   });
   const spawnedDistributors = spawnDistributors({
     tick,
@@ -223,7 +199,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     routes: routePorts.roaming,
   });
 
-  return {
+  return recordMaterialActivity({
     ...progressed,
     buildings: [...spawnedDistributors.buildings],
     constructionSites: [...spawnedCarters.constructionSites],
@@ -231,12 +207,12 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: spawnedCarters.treasuryTimber,
     treasuryCoin: progressed.treasuryCoin,
     pathCache: routePorts.getPathCache(),
-  };
+  }, materialEvents);
 }
 
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
-  return updateSettlementProgress(refreshFoodObservation(completeEligibleConstruction(
+  return updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }),
-  )));
+  ))));
 }
