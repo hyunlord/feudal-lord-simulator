@@ -184,6 +184,27 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
   const walkers: Walker[] = [...input.walkers];
   const busyHomes = activeCarterHomes(walkers);
 
+  if (constructionSites.length > 0) {
+    for (const building of [...buildings].sort(byId)) {
+      if (busyHomes.has(building.id)) continue;
+      const production = BUILDING_CONFIG_BY_KIND[building.kind].production;
+      if (production === null || production.input === null ||
+          amountOf(building.inventory, production.input) >= production.inputPerOutput) continue;
+      const fetched = spawnFetch({
+        tick: input.tick,
+        building,
+        buildings,
+        inputResource: production.input,
+        inventory: input.inventory,
+        routes: input.routes,
+      });
+      if (fetched.walker === null) continue;
+      buildings = fetched.buildings;
+      walkers.push(fetched.walker);
+      busyHomes.add(building.id);
+    }
+  }
+
   const siteDispatch = spawnSiteDelivery({
     tick: input.tick,
     buildings,
