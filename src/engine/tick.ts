@@ -205,7 +205,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     constructionSites: recomputeConstructionStalls({
       ...produced,
       constructionSites: advanceConstructionSites(produced),
-    }),
+    }, routePorts.delivery),
   };
   const spawnedCarters = spawnCarters({
     tick,

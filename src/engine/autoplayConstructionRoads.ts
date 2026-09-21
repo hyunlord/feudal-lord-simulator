@@ -1,3 +1,4 @@
+import { roadPrefixAction } from './autoplayRoadPrefix';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { serviceSafeRoadAction } from './autoplayServiceSpace';
 import { buildingFootprint } from '../geometry/buildingFootprint';
@@ -49,19 +50,11 @@ function searchRoad(state: GameState, accessTiles: readonly TileCoordinate[], so
         path.unshift(point);
         point = parents.get(key(point)) ?? null;
       }
-      if (getTile(state, path.at(-1) ?? current)?.hasRoad) path.pop();
-      const from = path[1];
-      const source = path[0];
-      if (from === undefined || source === undefined) continue;
-      let to = from;
-      for (const next of path.slice(2)) {
-        if (getTile(state, next)?.hasRoad) break;
-        if ((next.tx - to.tx) !== (from.tx - source.tx) || (next.ty - to.ty) !== (from.ty - source.ty)) break;
-        to = next;
-      }
-      const safe = serviceSafeRoadAction(state, { kind: 'place_road', from, to });
+      const prefix = roadPrefixAction(state, path);
+      if (prefix.kind !== 'place_road') continue;
+      const safe = serviceSafeRoadAction(state, prefix);
       if (safe.kind !== 'none') return safe;
-      return from;
+      return prefix.from;
     }
     for (const next of [{ tx: current.tx, ty: current.ty - 1 }, { tx: current.tx - 1, ty: current.ty }, { tx: current.tx + 1, ty: current.ty }, { tx: current.tx, ty: current.ty + 1 }]) {
       if (excluded.has(key(next)) || parents.has(key(next)) || (!getTile(state, next)?.hasRoad && !free(next)) || !canTraverseRoadBoundary(state, current, next)) continue;

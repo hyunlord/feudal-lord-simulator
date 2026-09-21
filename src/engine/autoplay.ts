@@ -1,3 +1,4 @@
+import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
 import { autoplayEraAction } from './autoplayEra';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
@@ -217,7 +218,7 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
   let metadata: FoodTransientMetadata = {};
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
-      (current: GameState) => foodAction(current, buildAction), urbanServiceAction, waterAction,
+      (current: GameState) => foodAction(current, buildAction), constructionLogisticsAction, urbanServiceAction, waterAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = decide(state);
       if (action.foodTransient !== undefined) metadata = action;

@@ -1,3 +1,4 @@
+import type { DeliveryRoutePort } from "../agents/delivery";
 import { constructionMaterialSources } from "../agents/deliveryConstruction";
 import type { Walker } from "../agents/walker.types";
 import type { Building } from "../content/buildingConfig";
@@ -69,9 +70,11 @@ export function advanceConstructionSites(state: GameState): ConstructionSite[] {
   );
 }
 
-export function recomputeConstructionStalls(state: GameState): ConstructionSite[] {
+export function recomputeConstructionStalls(
+  state: GameState,
+  routes: DeliveryRoutePort = createSimulationRoutePorts(state).delivery,
+): ConstructionSite[] {
   const inventory = createDeliveryInventoryPort();
-  const routes = createSimulationRoutePorts(state).delivery;
   return state.constructionSites.map((site) => ({
     ...site,
     stall: constructionStall(
