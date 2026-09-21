@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 
+import { granaryCoverageTargetIds } from '../engine/autoplayFoodCoverage';
 import { BALANCE } from "../content/balanceConfig";
 import { mergeHouses } from "../engine/houseMerge";
 import { demolishHouse } from "../engine/houseDemolition";
@@ -89,12 +90,14 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       const next = placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty });
       if (!action.autoplayFoodObservation || next === state ||
         (action.kind !== "granary" && action.kind !== "mill" && action.kind !== "wheat_farm")) return next;
+      const targets = action.kind === "granary" ? granaryCoverageTargetIds(state, action) : [];
       return {
         ...next,
         autoplayFoodObservation: {
           kind: action.kind,
           siteId: constructionSiteId(state.nextConstructionOrdinal),
           placedTick: state.tick,
+          ...(targets.length > 0 ? { targetHouseIds: targets } : {}),
         },
       };
     }

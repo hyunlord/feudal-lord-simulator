@@ -1,6 +1,10 @@
+import { observeEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSE_FOOD_INTERVAL } from '../content/houseFoodConfig';
+import { buildingFootprint } from '../geometry/buildingFootprint';
+import { availableStock } from '../economy/storage';
+import { createSimulationRoutePorts } from './simulationPorts';
 import { houseIsStarving } from '../population/houseFood';
 import type {
   AutoplayFoodObservation,
@@ -24,12 +28,13 @@ function routeEdgesToGranary(state: GameState, building: Building): number {
   return distances.length === 0 ? BALANCE.DISTRIBUTOR_RANGE : Math.min(...distances);
 }
 
-export function foodObservationTicks(state: GameState, building: Building): number {
+export function foodObservationTicks(state: GameState, building: Building, targets?: readonly string[]): number {
   const production = BUILDING_CONFIG_BY_KIND[building.kind].production;
   const routeTicks = roundTripTicks(routeEdgesToGranary(state, building));
   const distributorTicks = BALANCE.DISTRIBUTOR_INTERVAL +
     Math.ceil(BALANCE.DISTRIBUTOR_RANGE / BALANCE.DISTRIBUTOR_SPEED);
-  if (production === null) return distributorTicks;
+  if (production === null) return building.kind === "granary" && targets !== undefined
+    ? targetedGranaryTicks(state, building, targets) : distributorTicks;
   const batch = building.kind === "mill"
     ? Math.ceil(BALANCE.CARTER_CAPACITY / Math.max(1, production.inputPerOutput))
     : BALANCE.CARTER_CAPACITY;
@@ -83,14 +88,15 @@ export function startFoodObservation(
   return {
     ...observation,
     completedTick: state.tick,
-    observeUntilTick: state.tick + foodObservationTicks(state, building),
+    observeUntilTick: state.tick + foodObservationTicks(state, building, observation.targetHouseIds),
     baseline,
     latest: baseline,
     outcome: foodObservationOutcome(baseline, baseline),
   };
 }
 
-export function refreshFoodObservation(state: GameState): GameState {
+export function refreshFoodObservation(input: GameState): GameState {
+  const state = observeEmptyDeliveryHomes(input);
   const observation = state.autoplayFoodObservation;
   if (
     observation === undefined ||
@@ -115,7 +121,7 @@ export function refreshFoodObservation(state: GameState): GameState {
 
 export function recordFoodObservationActivity(
   state: GameState,
-  activity: { readonly outputProduced?: number; readonly deliveredBread?: number },
+  activity: { readonly outputProduced?: number; readonly deliveredBread?: number; readonly deliveredHouseIds?: readonly string[] },
 ): GameState {
   const observation = state.autoplayFoodObservation;
   if (
@@ -135,6 +141,9 @@ export function recordFoodObservationActivity(
     ...state,
     autoplayFoodObservation: {
       ...observation,
+      ...(observation.targetHouseIds === undefined ? {} : {
+        deliveredTargetHouseIds: [...new Set([...(observation.deliveredTargetHouseIds ?? []), ...(activity.deliveredHouseIds ?? [])])],
+      }),
       latest,
       outcome: foodObservationOutcome(observation.baseline, latest),
     },
@@ -182,4 +191,26 @@ export function foodRecoveryKind(state: GameState, mealDemand: number): 'wheat_f
   const inputPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 0;
   if (wheatPerMeal < mealDemand * inputPerBread) return 'wheat_farm';
   return breadPerMeal < mealDemand ? 'mill' : null;
+}
+
+function targetedGranaryTicks(state: GameState, building: Building, targets: readonly string[]): number {
+  const routes = createSimulationRoutePorts(state).roaming;
+  const start = routes.homePath(building.id)?.[0];
+  const paths = start === undefined ? [] : state.houses.filter(house => targets.includes(house.buildingId)).flatMap(house => {
+    const home = state.buildings.find(candidate => candidate.id === house.buildingId);
+    if (home === undefined) return [];
+    const path = routes.servicePath?.(start, { ...house, tx: home.tx, ty: home.ty, ...buildingFootprint(home) });
+    return path == null ? [] : [path.length - 1];
+  });
+  const delivery = BALANCE.DISTRIBUTOR_INTERVAL
+    + (2 * BALANCE.DISTRIBUTOR_RANGE + Math.max(0, ...paths)) * Math.ceil(1 / BALANCE.DISTRIBUTOR_SPEED);
+  if (availableStock(building, 'bread') > 0) return delivery;
+  const supply = state.buildings.filter(candidate => candidate.kind === 'mill').flatMap(mill => {
+    const path = resolveBuildingRoute(state, mill, building).path;
+    const production = BUILDING_CONFIG_BY_KIND.mill.production;
+    if (path === null || production === null) return [];
+    const batchTicks = Math.ceil(BALANCE.CARTER_CAPACITY / production.inputPerOutput) * production.ticksPerOutput;
+    return [batchTicks + roundTripTicks(path.length - 1)];
+  });
+  return delivery + (supply.length > 0 ? Math.min(...supply) : 0);
 }

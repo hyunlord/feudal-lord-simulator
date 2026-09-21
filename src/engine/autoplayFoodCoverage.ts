@@ -13,13 +13,20 @@ import { hasConnectedConstructionRoute } from './autoplayConstructionRoute';
 import { plannedBuildingRoadAction } from './autoplayConstructionRoads';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
 import { placeRoadLine } from './gameActions';
+import { canPlaceRoad, getOrthogonalRoadNeighbors } from '../world/roadGraph';
+import { buildingRoadAccessTiles } from './routing';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { createSimulationRoutePorts } from './simulationPorts';
-import { overloadedDeliveryHomes } from './autoplayFoodDeliveryCapacity';
+import { overloadedDeliveryHomes, persistentEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
 import { hasActiveFoodObservation } from './autoplayFoodThroughput';
 import { preserveRoadExpansion } from './autoplayExpansion';
 
 const NONE = { kind: 'none' } as const;
+
+function coverageGranary(position: { readonly tx: number; readonly ty: number }): Building {
+  return { id: 'autoplay-food-coverage', kind: 'granary', tx: position.tx, ty: position.ty,
+    workers: BUILDING_CONFIG_BY_KIND.granary.workersRequired, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+}
 
 function outsideHomes(state: GameState): readonly RoamingHouse[] {
   const routes = createSimulationRoutePorts(state).roaming;
@@ -67,7 +74,8 @@ function projectAccess(state: GameState, candidate: Building): { state: GameStat
 export function foodCoverageAction(state: GameState): AutoplayAction {
   if (hasActiveFoodObservation(state)) return NONE;
   const observation = state.autoplayFoodObservation;
-  if (observation?.kind === 'granary' && (observation.outcome?.deliveredBreadDelta ?? 0) === 0) return NONE;
+  const failed = observation?.kind === 'granary' && (observation.outcome?.deliveredBreadDelta ?? 0) === 0 ? observation : undefined;
+  if (failed !== undefined && failed.targetHouseIds === undefined) return NONE;
   if (state.constructionSites.some(site => isBuildingConstructionSite(site)
     && ['granary', 'mill', 'wheat_farm'].includes(site.kind))) return NONE;
   if (state.idleWorkers < BUILDING_CONFIG_BY_KIND.granary.workersRequired || !affordable(state)) return NONE;
@@ -75,18 +83,21 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
   if (granaries.some(building => building.workers < BUILDING_CONFIG_BY_KIND.granary.workersRequired)
     || !granaries.some(building => availableStock(building, 'bread') > 0)) return NONE;
   const rangeGap = outsideHomes(state);
-  const outside = rangeGap.length > 0 ? rangeGap : overloadedDeliveryHomes(state);
+  const overloaded = rangeGap.length > 0 ? [] : overloadedDeliveryHomes(state);
+  const outside = retryableTargets(state, rangeGap.length > 0 ? rangeGap : overloaded.length > 0 ? overloaded : persistentEmptyDeliveryHomes(state));
   if (outside.length === 0) return NONE;
+  const distanceToTarget = rangeGap.length === 0 && overloaded.length === 0 ? potentialCoverageDistance(state, outside) : null;
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, 'granary', tile)
     && canPlaceBuilding(state, 'granary', tile.tx, tile.ty).ok)
-    .map(tile => ({ tile, distance: Math.min(...outside.map(home => Math.abs(home.tx - tile.tx) + Math.abs(home.ty - tile.ty))) }))
+    .map(tile => ({ tile, distance: distanceToTarget?.(coverageGranary(tile))
+      ?? Math.min(...outside.map(home => Math.abs(home.tx - tile.tx) + Math.abs(home.ty - tile.ty))) }))
+    .filter(candidate => Number.isFinite(candidate.distance))
     .sort((a, b) => a.distance - b.distance || a.tile.ty - b.tile.ty || a.tile.tx - b.tile.tx);
   let best: { action: AutoplayAction; covered: number; roads: number } | null = null;
   // Match the existing civic advisor's bounded search rather than scanning road plans for the whole map.
   for (const { tile } of candidates.slice(0, 24)) {
     if (!preservesAutoplayWallSpace(state, "granary", tile)) continue;
-    const candidate: Building = { id: 'autoplay-food-coverage', kind: 'granary', tx: tile.tx, ty: tile.ty,
-      workers: BUILDING_CONFIG_BY_KIND.granary.workersRequired, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+    const candidate = coverageGranary(tile);
     const access = projectAccess(state, candidate);
     if (access === null || !affordable(access.state) || !hasConnectedConstructionRoute(access.state, candidate)) continue;
     const projected = { ...access.state, buildings: [...access.state.buildings, candidate], pathCache: {},
@@ -94,7 +105,8 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
         ? { ...tile, buildingId: candidate.id } : tile) };
     const routes = createSimulationRoutePorts(projected).roaming;
     const start = routes.homePath(candidate.id)?.[0];
-    const covered = rangeGap.length > 0 ? outside.length - outsideHomes(projected).length
+    const remainingGap = rangeGap.length > 0 ? new Set(outsideHomes(projected).map(home => home.buildingId)) : null;
+    const covered = remainingGap !== null ? outside.filter(home => !remainingGap.has(home.buildingId)).length
       : start === undefined ? 0 : outside.filter(home => {
         const path = routes.servicePath?.(start, home);
         return path != null && path.length - 1 <= BALANCE.DISTRIBUTOR_RANGE;
@@ -104,4 +116,55 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
       ? preserveRoadExpansion(state, candidate) ?? { kind: 'place_building', building: 'granary', tx: candidate.tx, ty: candidate.ty } : access.first };
   }
   return best?.action ?? NONE;
+}
+
+export function granaryCoverageTargetIds(state: GameState, position: { readonly tx: number; readonly ty: number }): readonly string[] {
+  const gap = outsideHomes(state);
+  const overloaded = gap.length > 0 ? [] : overloadedDeliveryHomes(state);
+  const targets = retryableTargets(state, gap.length > 0 ? gap : overloaded.length > 0 ? overloaded : persistentEmptyDeliveryHomes(state));
+  const candidate = coverageGranary(position);
+  const projected = { ...state, buildings: [...state.buildings, candidate], pathCache: {},
+    tiles: state.tiles.map(tile => tile.tx >= candidate.tx && tile.tx < candidate.tx + BUILDING_CONFIG_BY_KIND.granary.width
+      && tile.ty >= candidate.ty && tile.ty < candidate.ty + BUILDING_CONFIG_BY_KIND.granary.height
+      ? { ...tile, buildingId: candidate.id } : tile) };
+  const routes = createSimulationRoutePorts(projected).roaming;
+  const start = routes.homePath(candidate.id)?.[0];
+  if (start === undefined) return [];
+  return targets.filter(home => {
+    const path = routes.servicePath?.(start, home);
+    return path != null && path.length - 1 <= BALANCE.DISTRIBUTOR_RANGE;
+  }).map(home => home.buildingId);
+}
+
+function potentialCoverageDistance(state: GameState, homes: readonly RoamingHouse[]): (building: Building) => number {
+  const potential = { ...state, tiles: state.tiles.map(tile => ({ ...tile, hasRoad: tile.hasRoad || canPlaceRoad(state, tile) })) };
+  const queue = homes.flatMap(home => {
+    const building = state.buildings.find(candidate => candidate.id === home.buildingId);
+    return building === undefined ? [] : buildingRoadAccessTiles(state, building);
+  });
+  const key = (tile: { readonly tx: number; readonly ty: number }) => `${tile.tx},${tile.ty}`;
+  const distances = new Map(queue.map(tile => [key(tile), 0]));
+  for (let index = 0; index < queue.length; index += 1) {
+    const current = queue[index];
+    if (current === undefined) break;
+    const distance = distances.get(key(current)) ?? 0;
+    if (distance >= BALANCE.DISTRIBUTOR_RANGE) continue;
+    for (const neighbor of getOrthogonalRoadNeighbors(potential, current)) {
+      if (distances.has(key(neighbor))) continue;
+      distances.set(key(neighbor), distance + 1);
+      queue.push(neighbor);
+    }
+  }
+  return building => Math.min(...buildingRoadAccessTiles(potential, building).map(tile => distances.get(key(tile)) ?? Infinity));
+}
+
+function retryableTargets(state: GameState, targets: readonly RoamingHouse[]): readonly RoamingHouse[] {
+  const previous = state.autoplayFoodObservation;
+  return targets.filter(home => {
+    const episode = state.autoplayEmptyHomes?.find(entry => entry.buildingId === home.buildingId);
+    if (episode?.failedRecovery && episode.lastServicedTick === home.lastServicedTick) return false;
+    return previous?.kind !== 'granary' || !previous.targetHouseIds?.includes(home.buildingId)
+      || previous.deliveredTargetHouseIds?.includes(home.buildingId)
+      || (episode?.sinceTick ?? 0) > previous.placedTick;
+  });
 }

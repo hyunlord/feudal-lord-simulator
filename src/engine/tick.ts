@@ -66,14 +66,15 @@ function mergeRoamingHouses(
 function deliveredBreadFromObservedGranary(
   before: readonly House[],
   deliveryEvents: readonly RoamingDeliveryEvent[],
-  observedBuildingId: string | undefined,
-): number {
-  if (observedBuildingId === undefined) return 0;
+  observation: GameState["autoplayFoodObservation"],
+): { readonly deliveredBread: number; readonly deliveredHouseIds: readonly string[] } {
+  if (observation === undefined) return { deliveredBread: 0, deliveredHouseIds: [] };
+  const targets = observation.targetHouseIds;
   const emptyHomes = new Set(before.filter(house => house.breadStock === 0).map(house => house.buildingId));
-  return deliveryEvents.reduce((total, event) =>
-    event.homeBuildingId === observedBuildingId && emptyHomes.has(event.houseBuildingId)
-      ? total + Math.max(0, event.amount)
-      : total, 0);
+  const credited = deliveryEvents.filter(event => event.homeBuildingId === observation.siteId && emptyHomes.has(event.houseBuildingId)
+    && (targets === undefined || targets.includes(event.houseBuildingId)));
+  return { deliveredBread: credited.reduce((total, event) => total + Math.max(0, event.amount), 0),
+    deliveredHouseIds: credited.map(event => event.houseBuildingId) };
 }
 
 export function runProduction(state: GameState): GameState {
@@ -140,14 +141,14 @@ export function advanceSimulationSubstep(state: GameState): GameState {
     routes: routePorts.roaming,
     rngForJunction: rngForState({ ...state, tick }),
   });
-  const deliveredBread = deliveredBreadFromObservedGranary(
+  const delivery = deliveredBreadFromObservedGranary(
     state.houses,
     movedDistributors.deliveryEvents,
-    state.autoplayFoodObservation?.siteId,
+    state.autoplayFoodObservation,
   );
-  const observedDeliveryState = deliveredBread === 0
+  const observedDeliveryState = delivery.deliveredBread === 0
     ? state
-    : recordFoodObservationActivity({ ...state, tick }, { deliveredBread });
+    : recordFoodObservationActivity({ ...state, tick }, delivery);
   // The opening population staffs this whole substep; new arrivals enter work next tick.
   const labour = allocateBuildingAndConstructionLabour(
     movedDistributors.buildings,

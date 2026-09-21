@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { DistributorWalker } from '../src/agents/walker.types';
+import type { GameState } from '../src/engine/engine.types';
 import { BALANCE } from '../src/content/balanceConfig';
 import { advanceTick } from '../src/engine/tick';
 import { building, routedStockTown } from './helpers/autoplayFoodFixtures';
@@ -100,5 +101,29 @@ for (const scenario of ['vacant', 'occupied-empty', 'other-provider'] as const) 
     assert.equal(next.houses.find(house => house.buildingId === 'home7')?.breadStock, 1);
     assert.equal(next.autoplayFoodObservation?.outcome?.deliveredBreadDelta, scenario === 'other-provider' ? 0 : 1);
     assert.equal(next.autoplayFoodObservation?.outcome?.effective, scenario !== 'other-provider');
+  });
+}
+
+for (const target of ['home7', 'home0']) {
+  test(`Given observed granary targets ${target} When it feeds empty home7 Then only targeted delivery validates recovery`, () => {
+    const base = routedStockTown(true);
+    const provider = { ...building('observed', 'granary', 4, 2, 2), reserved: { bread: 2 } };
+    const state = { ...base, tick: BALANCE.DISTRIBUTOR_INTERVAL - 2,
+      buildings: [provider, ...base.buildings.filter(candidate => candidate.kind !== 'granary')],
+      walkers: [distributor(provider.id)],
+      autoplayFoodObservation: { kind: 'granary' as const, siteId: provider.id, placedTick: 10,
+        targetHouseIds: [target], completedTick: 100, observeUntilTick: 500,
+        baseline: { outputTotal: 0, houseBread: 14, starvingHomes: 1 },
+        latest: { outputTotal: 0, houseBread: 14, starvingHomes: 1 } },
+    };
+    const next = advanceTick(state);
+    assert.equal(next.houses.find(house => house.buildingId === 'home7')?.breadStock, 2);
+    assert.equal(next.autoplayFoodObservation?.outcome?.deliveredBreadDelta, target === 'home7' ? 2 : 0);
+    assert.equal(next.autoplayFoodObservation?.outcome?.effective, target === 'home7');
+    assert.deepEqual(next.autoplayFoodObservation?.deliveredTargetHouseIds ?? [], target === 'home7' ? ['home7'] : []);
+    const bread = (input: GameState) => input.houses.reduce((sum, home) => sum + home.breadStock, 0)
+      + input.buildings.reduce((sum, candidate) => sum + (candidate.inventory.bread ?? 0), 0)
+      + input.walkers.reduce((sum, walker) => sum + (walker.cargo?.resource === 'bread' ? walker.cargo.amount : 0), 0);
+    assert.equal(bread(next), bread(state));
   });
 }

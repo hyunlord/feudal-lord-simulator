@@ -71,6 +71,8 @@ export interface AutoplayFoodObservation {
   readonly kind: "granary" | "mill" | "wheat_farm";
   readonly siteId: string;
   readonly placedTick: number;
+  readonly targetHouseIds?: readonly string[];
+  readonly deliveredTargetHouseIds?: readonly string[];
   readonly completedTick?: number;
   readonly observeUntilTick?: number;
   readonly baseline?: AutoplayFoodObservationSnapshot;
@@ -99,6 +101,12 @@ export interface GameState {
   palisade: PalisadeState | null;
   readonly forestHarvests: readonly ForestHarvest[];
   readonly autoplayFoodObservation?: AutoplayFoodObservation;
+  readonly autoplayEmptyHomes?: readonly {
+    readonly buildingId: string;
+    readonly sinceTick: number;
+    readonly failedRecovery?: boolean;
+    readonly lastServicedTick: number;
+  }[];
   nextConstructionOrdinal: number;
   roadRevision: number;
   pathCache: RoadPathCache;
