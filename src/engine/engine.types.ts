@@ -55,12 +55,16 @@ export interface ForestHarvest {
 }
 
 export interface AutoplayFoodObservationSnapshot {
+  readonly deliveredWheat?: number;
+  readonly breadProduced?: number;
+  readonly missedMeals?: number;
   readonly outputTotal: number;
   readonly houseBread: number;
   readonly starvingHomes: number;
 }
 
 export interface AutoplayFoodObservationOutcome {
+  readonly deliveredWheatDelta?: number;
   readonly outputDelta: number;
   readonly deliveredBreadDelta: number;
   readonly starvingHomesDelta: number;
@@ -68,6 +72,7 @@ export interface AutoplayFoodObservationOutcome {
 }
 
 export interface AutoplayFoodObservation {
+  readonly requiresDeliveredOutcome?: boolean;
   readonly kind: "granary" | "mill" | "wheat_farm";
   readonly siteId: string;
   readonly placedTick: number;

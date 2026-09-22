@@ -27,6 +27,7 @@ function completeDelivery(
   routes: DeliveryRoutePort,
   tick: number,
   materialActivity?: DeliveryStepInput["materialActivity"],
+  buildingDelivery?: DeliveryStepInput["buildingDelivery"],
 ): CarterResult {
   if (carter.reservation.destination.kind === "construction_site") {
     const site = findSite(
@@ -78,6 +79,8 @@ function completeDelivery(
     carter.cargo.resource,
     carter.cargo.amount,
   );
+  buildingDelivery?.({ homeBuildingId: carter.homeBuildingId, destinationBuildingId: destination.id,
+    resource: carter.cargo.resource, amount: carter.cargo.amount });
   const released = inventory.releaseSpace(
     deposited,
     carter.reservation.resource,
@@ -185,6 +188,7 @@ export function completeOutbound(
         input.routes,
         input.tick,
         input.materialActivity,
+        input.buildingDelivery,
       )
     : completeFetch(
         state,

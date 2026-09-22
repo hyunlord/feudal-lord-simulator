@@ -1,4 +1,4 @@
-import { FOOD_EFFICIENCY_WINDOW } from './autoplayFoodEfficiency';
+import { FOOD_EFFICIENCY_WINDOW, foodEfficiencyMetrics } from './autoplayFoodEfficiency';
 import { measuredFoodDecision } from './autoplayFoodMeasuredDecision';
 import { feasibleDistributorDistance } from './distributorAccess';
 import { observeEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
@@ -78,15 +78,32 @@ function foodObservationOutcome(
   };
 }
 
+function observedOutcome(state: GameState, observation: AutoplayFoodObservation, latest: AutoplayFoodObservationSnapshot): AutoplayFoodObservationOutcome {
+  const baseline = observation.baseline;
+  if (baseline === undefined) return { outputDelta: 0, deliveredBreadDelta: 0, starvingHomesDelta: 0, effective: false };
+  const outcome = foodObservationOutcome(baseline, latest);
+  if (observation.kind !== 'wheat_farm' || observation.requiresDeliveredOutcome === false) return outcome;
+  const sample = foodEfficiencyMetrics(state);
+  const deliveredWheatDelta = latest.deliveredWheat ?? 0;
+  return { ...outcome, deliveredWheatDelta, effective: observation.observeUntilTick !== undefined
+    && state.tick >= observation.observeUntilTick && sample.fullWindow && sample.known
+    && deliveredWheatDelta > 0 && baseline.breadProduced !== undefined && baseline.missedMeals !== undefined
+    && (sample.breadProduced > baseline.breadProduced || sample.requestedBread - sample.consumedBread < baseline.missedMeals) };
+}
+
 export function startFoodObservation(
   state: GameState,
   observation: AutoplayFoodObservation,
   building: Building,
 ): AutoplayFoodObservation {
-  const baseline = foodObservationSnapshot(state);
+  const sample = foodEfficiencyMetrics(state);
+  const baseline = { ...foodObservationSnapshot(state), deliveredWheat: 0,
+    ...(sample.fullWindow && sample.known ? { breadProduced: sample.breadProduced,
+      missedMeals: sample.requestedBread - sample.consumedBread } : {}) };
   const completeChain = ['wheat_farm', 'mill', 'granary'].every(kind => state.buildings.some(b => b.kind === kind));
   return {
     ...observation,
+    requiresDeliveredOutcome: completeChain,
     completedTick: state.tick,
     observeUntilTick: state.tick + Math.max(completeChain ? FOOD_EFFICIENCY_WINDOW : 0, foodObservationTicks(state, building, observation.targetHouseIds)),
     baseline,
@@ -114,14 +131,14 @@ export function refreshFoodObservation(input: GameState): GameState {
     autoplayFoodObservation: {
       ...observation,
       latest,
-      outcome: foodObservationOutcome(observation.baseline, latest),
+      outcome: observedOutcome(state, observation, latest),
     },
   };
 }
 
 export function recordFoodObservationActivity(
   state: GameState,
-  activity: { readonly outputProduced?: number; readonly deliveredBread?: number; readonly deliveredHouseIds?: readonly string[] },
+  activity: { readonly outputProduced?: number; readonly deliveredWheat?: number; readonly deliveredBread?: number; readonly deliveredHouseIds?: readonly string[] },
 ): GameState {
   const observation = state.autoplayFoodObservation;
   if (
@@ -133,6 +150,7 @@ export function recordFoodObservationActivity(
   ) return state;
   const current = observation.latest ?? observation.baseline;
   const latest = {
+    deliveredWheat: (current.deliveredWheat ?? 0) + Math.max(0, activity.deliveredWheat ?? 0),
     outputTotal: current.outputTotal + Math.max(0, activity.outputProduced ?? 0),
     houseBread: current.houseBread + Math.max(0, activity.deliveredBread ?? 0),
     starvingHomes: starvingHomeCount(state),
@@ -145,7 +163,7 @@ export function recordFoodObservationActivity(
         deliveredTargetHouseIds: [...new Set([...(observation.deliveredTargetHouseIds ?? []), ...(activity.deliveredHouseIds ?? [])])],
       }),
       latest,
-      outcome: foodObservationOutcome(observation.baseline, latest),
+      outcome: observedOutcome(state, observation, latest),
     },
   };
 }
@@ -156,7 +174,8 @@ export function blocksRepeatedFoodExpansion(state: GameState, kind: AutoplayFood
     observation.kind === kind &&
     observation.observeUntilTick !== undefined &&
     state.tick >= observation.observeUntilTick &&
-    observation.outcome?.effective === false;
+    (observation.outcome?.effective === false
+      || kind === 'wheat_farm' && observation.requiresDeliveredOutcome === undefined);
 }
 
 export function foodRecoveryKind(state: GameState, _mealDemand: number): 'wheat_farm' | 'mill' | null {

@@ -1,3 +1,5 @@
+import { BALANCE } from '../content/balanceConfig';
+import { feasibleDistributorDistance } from './distributorAccess';
 import { runProduction } from './simulationProduction';
 export { runProduction } from './simulationProduction';
 import { refreshMaterialResult } from './autoplayMaterialLifecycle';
@@ -107,11 +109,19 @@ export function advanceSimulationSubstep(input: GameState): GameState {
   const inventory = createDeliveryInventoryPort();
   const materialEvents: MaterialActivity[] = [];
   const materialActivity = (event: MaterialActivity) => materialEvents.push(event);
+  let deliveredWheat = 0;
   const movedCarters = stepCarters({
     tick,
     buildings: state.buildings,
     constructionSites: state.constructionSites,
     walkers: state.walkers,
+    buildingDelivery: event => {
+      if (state.autoplayFoodObservation?.kind !== 'wheat_farm'
+        || event.homeBuildingId !== state.autoplayFoodObservation.siteId || event.resource !== 'wheat') return;
+      const destination = state.buildings.find(b => b.id === event.destinationBuildingId);
+      if (destination?.kind === 'granary' && state.houses.some(h => h.residents > 0
+        && (feasibleDistributorDistance(state, destination, h.buildingId) ?? Infinity) <= BALANCE.DISTRIBUTOR_RANGE)) deliveredWheat += event.amount;
+    },
     treasuryTimber: state.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
@@ -136,9 +146,9 @@ export function advanceSimulationSubstep(input: GameState): GameState {
   );
   const materialMoved = recordMaterialActivity(state, materialEvents);
   materialEvents.length = 0;
-  const observedDeliveryState = delivery.deliveredBread === 0
+  const observedDeliveryState = delivery.deliveredBread === 0 && deliveredWheat === 0
     ? materialMoved
-    : recordFoodObservationActivity({ ...materialMoved, tick }, delivery);
+    : recordFoodObservationActivity({ ...materialMoved, tick }, { ...delivery, deliveredWheat });
   // The opening population staffs this whole substep; new arrivals enter work next tick.
   const labour = allocateBuildingAndConstructionLabour(
     movedDistributors.buildings,

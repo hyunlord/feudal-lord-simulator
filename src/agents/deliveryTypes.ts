@@ -56,6 +56,8 @@ export interface DeliveryRoutePort {
 }
 
 export interface DeliveryStepInput {
+  readonly buildingDelivery?: (event: { readonly homeBuildingId: string; readonly destinationBuildingId: string;
+    readonly resource: ResourceType; readonly amount: number }) => void;
   readonly materialActivity?: (activity: import("./materialActivity").MaterialActivity) => void;
   readonly tick: number;
   readonly buildings: readonly Building[];

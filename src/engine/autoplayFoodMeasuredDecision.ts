@@ -1,5 +1,7 @@
+import { BALANCE } from '../content/balanceConfig';
 import { strandedFoodSupply } from './autoplayFoodRoutes';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
+import { productionOperation } from '../economy/production';
 import { availableStock } from '../economy/storage';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
@@ -26,21 +28,25 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
     return { kind: null, reason: 'food_route_blocked' };
   }
   if (state.houses.some(h => h.residents > 0
-    && !granaries.some(g => feasibleDistributorDistance(state, g, h.buildingId) !== null))) {
+    && !granaries.some(g => (feasibleDistributorDistance(state, g, h.buildingId) ?? Infinity) <= BALANCE.DISTRIBUTOR_RANGE))) {
     return { kind: null, reason: 'food_route_blocked' };
   }
   if (strandedFoodSupply(state) !== null) return { kind: null, reason: 'food_route_blocked' };
+  const missedMeals = sample.consumedBread < sample.requestedBread;
   const breadDeficit = sample.requestedBread + sample.breadExported - sample.breadProduced;
   // Household bread cannot be redistributed to homes whose meals were missed.
   const stockedBread = facilities.reduce((sum, b) => sum + availableStock(b, 'bread'), 0)
     + (sample.requestedBread === sample.consumedBread
       ? state.houses.reduce((sum, h) => sum + h.breadStock, 0) : 0);
-  if (breadDeficit <= 0 || stockedBread >= breadDeficit) return { kind: null, reason: 'food_supply_sufficient' };
+  if (breadDeficit <= 0 || !missedMeals && stockedBread >= breadDeficit) return { kind: null, reason: 'food_supply_sufficient' };
   const conversion = sample.breadProduced > 0 ? sample.wheatConsumed / sample.breadProduced : 0;
   const wheatDemand = Math.max(sample.wheatConsumed, (sample.requestedBread + sample.breadExported) * conversion);
   const rawDeficit = wheatDemand + sample.wheatExported - sample.wheatProduced;
   const stockedWheat = facilities.reduce((sum, b) => sum + availableStock(b, 'wheat'), 0);
-  if (rawDeficit > stockedWheat || (sample.breadProduced === 0 && stockedWheat === 0)) {
+  if (facilities.some(b => b.kind === 'wheat_farm' && productionOperation(b, BUILDING_CONFIG_BY_KIND.wheat_farm) === 'output_full')) {
+    return { kind: null, reason: 'wheat_transport_blocked' };
+  }
+  if (rawDeficit > (missedMeals ? 0 : stockedWheat) || (sample.breadProduced === 0 && stockedWheat === 0)) {
     return { kind: 'wheat_farm', reason: 'actual_wheat_deficit' };
   }
   if (sample.eligibleMillTicks === 0 || sample.rawStarvedTicks / sample.eligibleMillTicks >= 0.2

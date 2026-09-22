@@ -154,6 +154,10 @@ function spawnForBuilding(
 ): { readonly buildings: readonly Building[]; readonly walker: CarterWalker | null } {
   const production = BUILDING_CONFIG_BY_KIND[building.kind].production;
   if (production === null) return { buildings, walker: null };
+  if (building.kind === "mill" && amountOf(building.inventory, production.output) >= BALANCE.CARTER_CAPACITY) {
+    const delivery = spawnDelivery({ tick, building, buildings, outputResource: production.output, inventory, routes });
+    if (delivery.walker !== null) return delivery;
+  }
   if (
     production.input !== null &&
     amountOf(building.inventory, production.input) < (building.kind === "mill" ? BALANCE.CARTER_CAPACITY : production.inputPerOutput)

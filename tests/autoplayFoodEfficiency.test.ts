@@ -141,5 +141,5 @@ test('private household reserves cannot offset measured missed meals in other ho
   assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
   const shared = { ...state, buildings: state.buildings.map(building => building.kind === 'granary'
     ? { ...building, inventory: { ...building.inventory, bread: 1000 } } : building) };
-  assert.deepEqual(measuredFoodDecision(shared), { kind: null, reason: 'food_supply_sufficient' });
+  assert.deepEqual(measuredFoodDecision(shared), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
 });

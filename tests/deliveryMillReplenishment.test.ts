@@ -86,3 +86,32 @@ test('competing mills cannot reserve the same early refill grain twice', () => {
   assert.equal(second.mission, 'deliver');
   assert.equal(result.walkers.length, 2);
 });
+
+test('a mill sends a full finished bread batch before fetching into its remaining two slots', async () => {
+  const { stepProduction } = await import('../src/economy/production');
+  const { BUILDING_CONFIG_BY_KIND } = await import('../src/content/buildingConfig');
+  let mill = { ...building('mill', 'mill', { inventory: { wheat: 4, bread: 16 } }), workers: 2 };
+  for (let tick = 0; tick < 60; tick += 1) {
+    mill = stepProduction(mill, BUILDING_CONFIG_BY_KIND.mill).building;
+  }
+  assert.deepEqual(mill.inventory, { wheat: 0, bread: 18 });
+  const store = building('store', 'granary', { inventory: { wheat: 40 } });
+  const result = spawnCarters({ tick: 241, buildings: [mill, store], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ 'mill->store': line([0, 0], [1, 0]) }) });
+  const carter = result.walkers[0];
+  assert.ok(carter?.kind === 'carter');
+  assert.equal(carter.mission, 'deliver');
+  assert.deepEqual(carter.cargo, { resource: 'bread', amount: 8 });
+  assert.equal(result.buildings.find(b => b.id === store.id)?.stockReserved.wheat ?? 0, 0);
+});
+
+test('a finished mill batch still refills when every bread destination is full', () => {
+  const mill = building('mill', 'mill', { inventory: { wheat: 0, bread: 8 } });
+  const store = building('store', 'granary', { inventory: { wheat: 100, bread: 100 } });
+  const result = spawnCarters({ tick: 1, buildings: [mill, store], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ 'mill->store': line([0, 0], [1, 0]) }) });
+  const carter = result.walkers[0];
+  assert.ok(carter?.kind === 'carter');
+  assert.equal(carter.mission, 'fetch');
+  assert.equal(result.buildings.find(b => b.id === store.id)?.stockReserved.wheat, 8);
+});

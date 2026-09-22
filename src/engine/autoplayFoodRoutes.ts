@@ -1,3 +1,4 @@
+import { BALANCE } from '../content/balanceConfig';
 import { houseFoodRation } from '../content/houseFoodConfig';
 import { availableStock } from '../economy/storage';
 import type { Building } from '../content/buildingConfig';
@@ -23,7 +24,7 @@ export function foodRouteRepairAction(state: GameState): AutoplayAction {
       return !granaries.some(granary => resolveBuildingRoute(state, building, granary).path !== null);
     }
     return occupied.has(building.id)
-      && !granaries.some(granary => feasibleDistributorDistance(state, granary, building.id) !== null);
+      && !granaries.some(granary => (feasibleDistributorDistance(state, granary, building.id) ?? Infinity) <= BALANCE.DISTRIBUTOR_RANGE);
   });
   if (disconnected.length === 0) return { kind: 'none' };
   const potential = { ...state, tiles: state.tiles.map(tile => ({ ...tile, hasRoad: true })) };
@@ -38,7 +39,7 @@ export function strandedFoodSupply(state: GameState): { readonly sources: readon
   const occupied = breadSources.length === 0 ? []
     : state.houses.filter(h => h.residents > 0 && h.breadStock < houseFoodRation(h));
   const access = new Map(occupied.map(h => [h.buildingId,
-    new Set(food.filter(b => feasibleDistributorDistance(state, b, h.buildingId) !== null).map(b => b.id))]));
+    new Set(food.filter(b => (feasibleDistributorDistance(state, b, h.buildingId) ?? Infinity) <= BALANCE.DISTRIBUTOR_RANGE).map(b => b.id))]));
   const pending = new Set(occupied.map(h => h.buildingId));
   for (const house of occupied) {
     if (!pending.has(house.buildingId) || breadSources.length === 0) continue;
