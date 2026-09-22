@@ -110,14 +110,14 @@ function assertAction(actual: AutoplayAction, expected: AutoplayAction): void {
   assert.deepEqual(actual, expected);
 }
 
-test("Given an unwatered house cluster When autoplay decides Then it builds the earliest valid well within radius six", () => {
+test("Given an unwatered house cluster When autoplay decides Then it builds the shortest-access well within radius six", () => {
   const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
   const actual = decideNextAction(state({ buildings: [home], houses: [house(home.id)], roads: ["1,5", "2,5", "3,5", "4,5", "4,4"] }));
 
-  assertAction(actual, { kind: "place_building", building: "well", tx: 5, ty: 4 });
+  assertAction(actual, { kind: "place_building", building: "well", tx: 4, ty: 6 });
 });
 
-test("Given separated unwatered clusters When one well cannot cover all Then autoplay serves the most deprived cluster", () => {
+test("Given separated unwatered clusters When one well cannot cover all Then equal coverage uses road access and coordinate order", () => {
   const early = building({ id: "house-a", kind: "house", tx: 2, ty: 2 });
   const deprived = building({ id: "house-b", kind: "house", tx: 9, ty: 9 });
   const actual = decideNextAction(state({
@@ -129,7 +129,7 @@ test("Given separated unwatered clusters When one well cannot cover all Then aut
     ],
   }));
 
-  assertAction(actual, { kind: "place_building", building: "well", tx: 9, ty: 8 });
+  assertAction(actual, { kind: "place_building", building: "well", tx: 1, ty: 3 });
 });
 
 test("Given a roadless idle building When autoplay decides Then it places the nearest legal road segment from the connected road edge", () => {

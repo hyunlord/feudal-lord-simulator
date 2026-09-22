@@ -1,3 +1,4 @@
+import type { ServicePlanningDiagnostic } from '../src/engine/autoplayServices';
 import { diagnosticAction, initialFoodDiagnostic, type DiagnosticAction, type FoodDiagnostic, type FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
 import { decideNextAction, type AutoplayAction, type AutoplayPolicy } from "../src/engine/autoplay";
 import { autoplayActionToGameAction } from "../src/engine/autoplayActions";
@@ -11,6 +12,7 @@ export interface AdvisorDiagnosticReceipt {
   readonly schemaVersion: 1;
   readonly tick: number;
   readonly food: FoodDiagnostic;
+  readonly services?: readonly ServicePlanningDiagnostic[];
   readonly advisorAction: DiagnosticAction;
   readonly gameActionType: string | null;
   readonly result: 'gated' | 'no_action' | 'applied' | 'rejected';
@@ -92,7 +94,7 @@ export function createAutoplayTraceDriver(input: {
       const report = (next: GameState, result: AdvisorDiagnosticReceipt['result'], gameActionType: string | null): GameState => {
         if (input.onDiagnostic === undefined || diagnostic === undefined) return next;
         const receipt: AdvisorDiagnosticReceipt = { schemaVersion: 1, tick: state.tick,
-          food: diagnostic.food ?? initialFoodDiagnostic(state), advisorAction: diagnosticAction(advisorAction),
+          food: diagnostic.food ?? initialFoodDiagnostic(state), services: diagnostic.services ?? [], advisorAction: diagnosticAction(advisorAction),
           gameActionType, result, newSiteIds: next.constructionSites.filter(site =>
             !state.constructionSites.some(old => old.id === site.id)).map(site => site.id) };
         try { input.onDiagnostic(structuredClone(receipt)); }

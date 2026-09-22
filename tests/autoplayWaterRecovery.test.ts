@@ -132,17 +132,17 @@ test('Given a covering well site needs one material road When water autoplay dec
     buildings: [store, house],
     houses: [{ ...openingHouseFixture(), buildingId: house.id, residents: 4, unmetRequirementTicks: 100 }],
   });
-  const targetWell = testBuilding('target-well', 'well', 12, 2);
+  const targetWell = testBuilding('target-well', 'well', 8, 2);
   assert.equal(hasConnectedConstructionRoute(state, targetWell), false);
   const repair = waterAction(state);
-  assert.deepEqual(repair, { kind: 'place_road', from: { tx: 4, ty: 1 }, to: { tx: 12, ty: 1 } });
+  assert.deepEqual(repair, { kind: 'place_road', from: { tx: 4, ty: 1 }, to: { tx: 8, ty: 1 } });
   const command = autoplayActionToGameAction(repair, state);
   assert.ok(command);
   const repaired = gameReducer(state, command);
   assert.notEqual(repaired, state);
   assert.equal(hasConnectedConstructionRoute(repaired, targetWell), true);
   const build = waterAction(repaired);
-  assert.deepEqual(build, { kind: 'place_building', building: 'well', tx: 12, ty: 2 });
+  assert.deepEqual(build, { kind: 'place_building', building: 'well', tx: 9, ty: 1 });
 });
 
 test('Given a well would seal the storage road component When water autoplay decides Then it preserves an expansion exit first', () => {

@@ -5,18 +5,21 @@ import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import { isBuildingConstructionSite } from "../economy/construction";
 import type { GameState } from "./engine.types";
 import type { TileCoordinate } from "../world/grid";
-import { getTile } from "../world/grid";
+
 import { canPlaceBuilding } from "../world/placement";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
 import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
 import { preserveRoadExpansion } from "./autoplayExpansion";
 import { allocateHouseServices } from "../population/serviceAllocation";
+import { rankServiceCandidates } from './autoplayServiceCandidates';
+import { rankServiceRoadPlans } from './autoplayServiceRoadPlans';
+import { serviceAccessDistances } from './autoplayServiceAccess';
 import type { AutoplayAction } from "./autoplay.types";
 
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
 
-type WaterlessHome = Readonly<{ building: Building; residents: number; deprivation: number }>;
+type WaterlessHome = Readonly<{ building: Building }>;
 
 function virtualBuilding(kind: "well", coordinate: TileCoordinate): Building {
   return {
@@ -44,8 +47,6 @@ function waterlessHomes(state: GameState): readonly WaterlessHome[] {
       if (building === undefined || services.houses.get(house.buildingId)?.water.kind === "served") return null;
       return {
         building,
-        residents: house.residents,
-        deprivation: Math.max(0, house.unmetRequirementTicks) * house.residents + Math.max(1, house.residents),
       };
     })
     .filter((home): home is WaterlessHome => home !== null)
@@ -55,34 +56,19 @@ function waterlessHomes(state: GameState): readonly WaterlessHome[] {
 export function waterAction(state: GameState): AutoplayAction {
   const homes = waterlessHomes(state);
   if (homes.length === 0) return NONE;
-  const candidates: readonly TileCoordinate[] = Array.from({ length: state.width * state.height }, (_unused, index) => ({
-    tx: index % state.width,
-    ty: Math.floor(index / state.width),
-  })).filter((coordinate) => getTile(state, coordinate) !== null && hasAutoplayBuildingClearance(state, "well", coordinate) && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok);
-  const ranked = candidates
-    .map((candidate) => {
-      const well = virtualBuilding("well", candidate);
-      const covered = homes.filter((home) =>
-        buildingFootprintDistance(home.building, well) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius,
-      );
-      return {
-        candidate,
-        count: covered.length,
-        deprivation: covered.reduce((total, home) => total + home.deprivation, 0),
-        residents: covered.reduce((total, home) => total + home.residents, 0),
-        sum: covered.reduce((total, home) => total + Math.abs(candidate.tx - home.building.tx) + Math.abs(candidate.ty - home.building.ty), 0),
-      };
-    })
-    .filter((entry) => entry.count > 0)
-    .sort((left, right) =>
-      right.deprivation - left.deprivation ||
-      right.count - left.count ||
-      right.residents - left.residents ||
-      left.sum - right.sum ||
-      left.candidate.ty - right.candidate.ty ||
-      left.candidate.tx - right.candidate.tx,
-    );
-  for (const { candidate } of ranked) {
+  const candidates = state.tiles.filter(coordinate => hasAutoplayBuildingClearance(state, "well", coordinate)
+    && canPlaceBuilding(state, "well", coordinate.tx, coordinate.ty).ok)
+    .map(coordinate => virtualBuilding('well', coordinate))
+    .filter(candidate => homes.some(home => buildingFootprintDistance(home.building, candidate) <= BUILDING_CONFIG_BY_KIND.well.serviceRadius));
+  const planned = state.constructionSites.flatMap(site => isBuildingConstructionSite(site) && site.kind === 'well'
+    ? [{ ...virtualBuilding('well', site), id: site.id }] : []);
+  const allocation = { houses: state.houses, buildings: [...state.buildings, ...planned] };
+  const current = allocateHouseServices(allocation);
+  const distance = serviceAccessDistances(state);
+  const ranked = rankServiceCandidates({ service: 'water', allocation, current,
+    candidates: candidates.filter(candidate => hasConnectedConstructionRoute(state, candidate))
+      .map(building => ({ building, roadDistance: distance(building) })) });
+  for (const { building: candidate } of ranked) {
     if (!hasConnectedConstructionRoute(state, virtualBuilding('well', candidate))
       || !preservesAutoplayWallSpace(state, 'well', candidate)
       || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'well', tx: candidate.tx, ty: candidate.ty })) continue;
@@ -90,7 +76,7 @@ export function waterAction(state: GameState): AutoplayAction {
     if (expansion?.kind === 'none') continue;
     return expansion ?? { kind: 'place_building', building: 'well', tx: candidate.tx, ty: candidate.ty };
   }
-  for (const { candidate } of ranked.slice(0, 24)) {
+  for (const { building: candidate } of rankServiceRoadPlans({ ...state, buildings: [...state.buildings, ...planned] }, 'water', candidates)) {
     if (!preservesAutoplayWallSpace(state, "well", candidate) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'well', tx: candidate.tx, ty: candidate.ty })) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding("well", candidate));
     if (road.kind !== "none") return road;

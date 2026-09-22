@@ -175,11 +175,6 @@ function timberAction(state: GameState): AutoplayAction {
   return NONE;
 }
 
-function foodSupportedHouseCount(state: GameState): number {
-  const farms = state.buildings.filter((building) => building.kind === "wheat_farm").length;
-  return Math.max(4, Math.floor(farms * 5 / 3));
-}
-
 function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): boolean {
   const homes = state.buildings.filter((building) => building.kind === "house");
   const horizontal = homes.some((home) => home.ty === coordinate.ty && home.tx === coordinate.tx - 1) &&
@@ -190,7 +185,7 @@ function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): 
 }
 
 function housingAction(state: GameState, policy: AutoplayPolicy): AutoplayAction {
-  if (housingLotCount(state) >= policy.maxHousingLots || state.idleWorkers <= 6 || state.population < houseCapacity(state) || breadStock(state) < 20 || hasPendingFoodChain(state) || housingLotCount(state) >= foodSupportedHouseCount(state) || hasPlannedBuilding(state, "house")) return NONE;
+  if (housingLotCount(state) >= policy.maxHousingLots || state.idleWorkers <= 6 || state.population < houseCapacity(state) || breadStock(state) < 20 || hasPendingFoodChain(state) || hasPlannedBuilding(state, "house")) return NONE;
   const roads = new Set(roadTiles(state).map(coordinateKey));
   const accepts = (coordinate: TileCoordinate): boolean =>
     isGrassOrigin(state, coordinate) &&
@@ -220,7 +215,7 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
   let metadata: FoodTransientMetadata = {};
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, urbanServiceAction, waterAction, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, (current: GameState) => urbanServiceAction(current, diagnostic), waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = decide(state);
       if (action.foodTransient !== undefined) metadata = action;
@@ -236,7 +231,7 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => timberAction(state),
     () => foodAction(state, buildAction, diagnostic),
     () => housingAction(state, policy),
-    () => urbanServiceAction(state),
+    () => urbanServiceAction(state, diagnostic),
     () => storageAction(state),
     () => autoplayEraAction(state, buildAction),
   ]) {
