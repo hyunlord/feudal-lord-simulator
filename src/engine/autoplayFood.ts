@@ -1,3 +1,4 @@
+import { foodEntranceBuildAction } from './autoplayFoodEntrance';
 import { foodTransportGranaryAction } from './autoplayFoodTransport';
 import { foodRouteRepairAction } from './autoplayFoodRoutes';
 import { diagnosticAction, initialFoodDiagnostic, type FoodDiagnosticCollector, type FoodDiagnosticReason, type FoodKind } from './autoplayFoodDiagnostic';
@@ -68,7 +69,7 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
     if (completeChain && !check('build', kind, 'staff', canStaffFoodExpansion(state, kind))) {
       buildReason = 'staff_blocked'; return { kind: 'none' };
     }
-    const action = buildAction(state, kind);
+    const action = foodEntranceBuildAction(state, kind) ?? buildAction(state, kind);
     if (action.kind === 'none') buildReason = 'build_returned_none';
     return action;
   };
