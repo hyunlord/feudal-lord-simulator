@@ -69,7 +69,8 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
     if (completeChain && !check('build', kind, 'staff', canStaffFoodExpansion(state, kind))) {
       buildReason = 'staff_blocked'; return { kind: 'none' };
     }
-    const action = foodEntranceBuildAction(state, kind) ?? buildAction(state, kind);
+    const entrance = completeChain && recovery === 'mill' && kind === 'mill' ? foodEntranceBuildAction(state, kind) : null;
+    const action = entrance ?? buildAction(state, kind);
     if (action.kind === 'none') buildReason = 'build_returned_none';
     return action;
   };

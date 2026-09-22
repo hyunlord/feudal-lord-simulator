@@ -74,3 +74,12 @@ test('Given the best adjacent pad closes a land passage When its preservation ne
   const action=foodEntranceBuildAction(state,'mill');
   assert.ok(action?.kind!=='place_building'||action.tx!==3||action.ty!==2);
 });
+
+import { foodAction } from '../src/engine/autoplayFood';
+test('Given an incomplete initial food chain When the advisor bootstraps Then it delegates the original farm build without speculative entrance roads',()=>{
+  const state=structuredClone(DEFAULT_GAME_STATE);
+  let requested: string | null=null;
+  const action=foodAction(state,(_state,kind)=>{requested=kind;return {kind:'place_building',building:kind,tx:45,ty:37};});
+  assert.equal(requested,'wheat_farm');
+  assert.deepEqual(action,{kind:'place_building',building:'wheat_farm',tx:45,ty:37});
+});
