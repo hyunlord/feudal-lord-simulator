@@ -81,3 +81,15 @@ test('Given two disjoint food districts with local suppliers When both have meas
   assert.deepEqual(measuredFoodDecision(observed), { kind: null, reason: 'food_supply_sufficient' });
   assert.deepEqual(foodAction(observed, foodBuildRequest), { kind: 'none' });
 });
+
+test('Given a hamlet food chain When choosing its first mill Then real granary routes rank placement from the start', () => {
+  const state = { ...stressedTown(), era: 'hamlet' as const };
+  const sites = lateFoodBuildSites(state, 'mill');
+  assert.ok(sites !== null && sites.length > 0);
+});
+
+test('Given grain currently in every mill When recent eligible time was raw-starved Then the advisor diagnoses transport before more milling', () => {
+  const state = replayFoodObservation(observedFoodTown(), { wheat: 1000, bread: 40, exports: 0 }, 2400);
+  assert.ok(state.buildings.filter(b => b.kind === 'mill').every(b => (b.inventory.wheat ?? 0) > 0));
+  assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'wheat_transport_blocked' });
+});

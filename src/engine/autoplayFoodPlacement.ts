@@ -7,7 +7,7 @@ import { hasAutoplayBuildingClearance } from './autoplaySetback';
 
 /** Hauling follows roads around buildings and walls, not geometric proximity. */
 export function lateFoodBuildSites(state: GameState, kind: BuildingKind): readonly TileCoordinate[] | null {
-  if (state.era === 'hamlet' || (kind !== 'mill' && kind !== 'wheat_farm')) return null;
+  if (kind !== 'mill' && kind !== 'wheat_farm') return null;
   const granaries = state.buildings.filter(building => building.kind === 'granary');
   if (granaries.length === 0) return null;
   return state.tiles.flatMap(tile => {
@@ -16,7 +16,7 @@ export function lateFoodBuildSites(state: GameState, kind: BuildingKind): readon
       workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
     const paths = granaries.map(granary => resolveBuildingRoute(state, candidate, granary).path).filter(path => path !== null);
     if (paths.length === 0) return [];
-    const distance = paths.reduce((sum, path) => sum + path.length, 0);
+    const distance = Math.min(...paths.map(path => path.length));
     return [{ tile, distance }];
   }).sort((a, b) => a.distance - b.distance || a.tile.ty - b.tile.ty || a.tile.tx - b.tile.tx).map(entry => entry.tile);
 }

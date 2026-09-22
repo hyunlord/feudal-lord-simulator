@@ -1,3 +1,4 @@
+import { foodTransportGranaryAction } from './autoplayFoodTransport';
 import { foodRouteRepairAction } from './autoplayFoodRoutes';
 import { diagnosticAction, initialFoodDiagnostic, type FoodDiagnosticCollector, type FoodDiagnosticReason, type FoodKind } from './autoplayFoodDiagnostic';
 import { canStaffFoodExpansion } from './autoplayFoodBottleneck';
@@ -49,6 +50,10 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   if (decision?.kind === null || decision === null) {
     const coverage = foodCoverageAction(state);
     if (coverage.kind !== 'none') return finish(coverage, 'coverage_selected');
+  }
+  if (decision?.reason === 'wheat_transport_blocked') {
+    const storage = foodTransportGranaryAction(state);
+    if (storage.kind !== 'none') return finish(storage, 'transport_storage_selected');
   }
   const recovery = decision?.kind ?? null;
   if (diagnostic !== undefined) diagnostic = { ...diagnostic, completeChain, recovery };

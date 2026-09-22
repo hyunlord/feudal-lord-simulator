@@ -130,3 +130,16 @@ for (const localBread of [0, 1]) test(`remote stocked bread cannot cover local b
   // Then a physical supply break is diagnosed before claiming sufficient food.
   assert.equal(decision.reason, 'food_route_blocked');
 });
+
+test('private household reserves cannot offset measured missed meals in other homes', async () => {
+  const { observedFoodTown } = await import('./foodEfficiencyObservationFixture');
+  const { measuredFoodDecision } = await import('../src/engine/autoplayFoodMeasuredDecision');
+  const observed = observedFoodTown(180, 89);
+  const state = { ...observed, houses: observed.houses.map((house, index) => ({ ...house,
+    breadStock: index === 0 ? 0 : 100 })) };
+  assert.ok(foodEfficiencyMetrics(state).requestedBread > foodEfficiencyMetrics(state).consumedBread);
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+  const shared = { ...state, buildings: state.buildings.map(building => building.kind === 'granary'
+    ? { ...building, inventory: { ...building.inventory, bread: 1000 } } : building) };
+  assert.deepEqual(measuredFoodDecision(shared), { kind: null, reason: 'food_supply_sufficient' });
+});

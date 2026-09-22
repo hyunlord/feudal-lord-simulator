@@ -14,14 +14,15 @@ import type {
 
 function bestCandidate(candidates: readonly RouteCandidate[], replenishBread = false): RouteCandidate | null {
   return [...candidates].sort((left, right) => {
+    if (left.path.length !== right.path.length) {
+      return left.path.length - right.path.length;
+    }
+
     if (replenishBread) {
       const committedBread = (candidate: RouteCandidate): number => amountOf(candidate.building.inventory, "bread")
         + amountOf(candidate.building.reserved, "bread");
       const difference = committedBread(left) - committedBread(right);
       if (difference !== 0) return difference;
-    }
-    if (left.path.length !== right.path.length) {
-      return left.path.length - right.path.length;
     }
     return left.building.id.localeCompare(right.building.id);
   })[0] ?? null;

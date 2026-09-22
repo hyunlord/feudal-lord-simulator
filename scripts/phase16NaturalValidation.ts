@@ -55,6 +55,7 @@ function sourceProvenance() {
 /** Normal reducer/advisor/engine execution only. Hooks may observe but must not mutate state. */
 export function runPhase16NaturalValidation(options: {
   readonly maxTicks?: number;
+  readonly onFinalState?: (state: GameState) => void;
   readonly onMilestone?: (kind: Milestone, state: GameState) => void;
   readonly onProgress?: (progress: ReturnType<typeof snapshot>) => void;
 } = {}) {
@@ -120,6 +121,7 @@ export function runPhase16NaturalValidation(options: {
     }
     if (state.tick % 12_000 === 0) options.onProgress?.(current);
   }
+  options.onFinalState?.(state);
   const sustainedTicks = stableSince === null ? 0 : state.tick - stableSince;
   if (victoryTick === null) failures.push("No victory within the tick budget");
   if (sustainedTicks < 24_000) failures.push("No uninterrupted 24000-tick full-population L4/service window after victory");

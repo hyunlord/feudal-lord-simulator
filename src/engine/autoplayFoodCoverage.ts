@@ -54,7 +54,7 @@ function affordable(state: GameState): boolean {
     placementSpendableResource(state, resource) >= (cost[resource] ?? 0) + reserve[resource]);
 }
 
-function projectAccess(state: GameState, candidate: Building): { state: GameState; first: AutoplayAction; added: number } | null {
+export function projectGranaryAccess(state: GameState, candidate: Building): { state: GameState; first: AutoplayAction; added: number } | null {
   let projected = state;
   let first: AutoplayAction = NONE;
   const before = state.tiles.filter(tile => tile.hasRoad).length;
@@ -105,7 +105,7 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
   for (const { tile } of candidates.slice(0, 24)) {
     if (!preservesAutoplayWallSpace(state, "granary", tile) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'granary', tx: tile.tx, ty: tile.ty })) continue;
     const candidate = coverageGranary(tile);
-    const access = projectAccess(state, candidate);
+    const access = projectGranaryAccess(state, candidate);
     if (access === null || !affordable(access.state) || !hasConnectedConstructionRoute(access.state, candidate)) continue;
     if (recurringRecovery && !canStaffRecurringGranary(access.state, candidate)) continue;
     const projected = { ...access.state, buildings: [...access.state.buildings, candidate], pathCache: {},

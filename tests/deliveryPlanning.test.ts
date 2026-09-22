@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { spawnCarters } from "../src/agents/delivery";
+import { spawnCarters, stepCarters } from "../src/agents/delivery";
 import type { CarterWalker } from "../src/agents/walker.types";
 import {
   DELIVERY_INVENTORY,
@@ -282,7 +282,7 @@ test("raw logs and stone share half the storehouse, leaving finished-goods capac
   assert.equal(result.buildings.find(({ id }) => id === "quarry")?.inventory.stone_raw, 8);
 });
 
-test("bread delivery replenishes the poorer reachable granary before the nearer stocked granary", () => {
+test("bread delivery uses the nearer usable granary before a farther empty granary", () => {
   const mill = building("mill", "mill", { inventory: { wheat: 2, bread: 8 } });
   const near = building("near", "granary", { inventory: { bread: 32 } });
   const far = building("far", "granary", { inventory: {} });
@@ -290,8 +290,8 @@ test("bread delivery replenishes the poorer reachable granary before the nearer 
     routes: routePort({ "mill->near": line([0, 0], [1, 0]), "mill->far": line([0, 0], [1, 0], [2, 0]) }) });
   const carter = result.walkers[0];
   assert.ok(carter?.kind === "carter");
-  assert.deepEqual(carter.destination, { kind: "building", buildingId: "far" });
-  assert.equal(result.buildings.find(b => b.id === "far")?.reserved.bread, 8);
+  assert.deepEqual(carter.destination, { kind: "building", buildingId: "near" });
+  assert.equal(result.buildings.find(b => b.id === "near")?.reserved.bread, 8);
   assert.equal(result.buildings.find(b => b.id === "near")?.inventory.bread, 32);
   assert.equal(result.buildings.reduce((sum, b) => sum + (b.inventory.bread ?? 0), 0) + (carter.cargo?.amount ?? 0), 40);
 });
@@ -301,7 +301,55 @@ test("bread destination allocation includes earlier carters' inbound claims", ()
   const near = building("near", "granary", { inventory: { bread: 4 } });
   const far = building("far", "granary", { inventory: {} });
   const result = spawnCarters({ tick: 10, buildings: [...mills, near, far], walkers: [], inventory: DELIVERY_INVENTORY,
-    routes: routePort({ "mill-a->near": line([0, 0], [1, 0]), "mill-a->far": line([0, 0], [1, 0], [2, 0]), "mill-b->near": line([0, 0], [1, 0]), "mill-b->far": line([0, 0], [1, 0], [2, 0]) }) });
+    routes: routePort({ "mill-a->near": line([0, 0], [1, 0]), "mill-a->far": line([0, 0], [0, 1]), "mill-b->near": line([0, 0], [1, 0]), "mill-b->far": line([0, 0], [0, 1]) }) });
   const claims = result.buildings.filter(b => b.kind === "granary").map(b => [b.id, b.reserved.bread]);
   assert.deepEqual(claims, [["near", 8], ["far", 8]]);
+});
+
+for (const reserved of [0, 8]) {
+  test(`bread uses the farther store when near capacity is occupied or reserved (${reserved})`, () => {
+    const mill = building("mill", "mill", { inventory: { wheat: 2, bread: 8 } });
+    const near = building("near", "granary", { inventory: { bread: 200 - reserved }, reserved: { bread: reserved } });
+    const far = building("far", "granary");
+    const result = spawnCarters({ tick: 10, buildings: [mill, near, far], walkers: [], inventory: DELIVERY_INVENTORY,
+      routes: routePort({ "mill->near": line([0, 0], [1, 0]), "mill->far": line([0, 0], [1, 0], [2, 0]) }) });
+    const carter = result.walkers[0];
+    assert.ok(carter?.kind === "carter");
+    assert.deepEqual(carter.destination, { kind: "building", buildingId: "far" });
+    assert.equal(result.buildings.find(b => b.id === "near")?.reserved.bread, reserved);
+    assert.equal(result.buildings.reduce((sum, b) => sum + (b.inventory.bread ?? 0), 0) + (carter.cargo?.amount ?? 0), 208 - reserved);
+  });
+}
+
+test("near-store last slot is shared safely by competing bread producers", () => {
+  const mills = ["a", "b"].map(id => building(id, "mill", { inventory: { wheat: 2, bread: 8 } }));
+  const near = building("near", "granary", { inventory: { bread: 199 } });
+  const far = building("far", "granary");
+  const result = spawnCarters({ tick: 10, buildings: [...mills, near, far], walkers: [], inventory: DELIVERY_INVENTORY,
+    routes: routePort({ "a->near": line([0, 0], [1, 0]), "a->far": line([0, 0], [1, 0], [2, 0]),
+      "b->near": line([0, 0], [1, 0]), "b->far": line([0, 0], [1, 0], [2, 0]) }) });
+  assert.equal(result.buildings.find(b => b.id === "near")?.reserved.bread, 1);
+  assert.equal(result.buildings.find(b => b.id === "far")?.reserved.bread, 8);
+  assert.equal(result.buildings.reduce((sum, b) => sum + (b.inventory.bread ?? 0), 0)
+    + result.walkers.reduce((sum, w) => sum + (w.cargo?.amount ?? 0), 0), 215);
+});
+
+test("a bread carter completes its local round trip before the distant empty-store detour", () => {
+  const mill = building("mill", "mill", { inventory: { wheat: 2, bread: 1 } });
+  const near = building("near", "granary", { inventory: { bread: 4 } });
+  const far = building("far", "granary");
+  const short = line([0, 0], [1, 0], [2, 0]);
+  const long = Array.from({ length: 18 }, (_, tx) => ({ tx, ty: 0 }));
+  const routes = routePort({ ...Object.fromEntries(long.map((tile, index) =>
+    [`${tile.tx},${tile.ty}->mill`, long.slice(0, index + 1).reverse()])), "mill->near": short, "mill->far": long,
+    "near->mill": [...short].reverse(), "far->mill": [...long].reverse(),
+    "2,0->mill": [...short].reverse(), "17,0->mill": [...long].reverse() });
+  let result = spawnCarters({ tick: 0, buildings: [mill, near, far], walkers: [], inventory: DELIVERY_INVENTORY, routes });
+  for (let tick = 1; tick <= 40; tick += 1) {
+    result = stepCarters({ tick, buildings: result.buildings, walkers: result.walkers, inventory: DELIVERY_INVENTORY, routes });
+  }
+  assert.equal(result.walkers.length, 0);
+  assert.equal(result.buildings.find(b => b.id === "near")?.inventory.bread, 5);
+  assert.equal(result.buildings.reduce((sum, b) => sum + (b.inventory.bread ?? 0), 0), 5);
+  assert.ok(result.buildings.every(b => (b.reserved.bread ?? 0) === 0));
 });

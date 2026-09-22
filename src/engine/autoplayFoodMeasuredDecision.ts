@@ -31,8 +31,10 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
   }
   if (strandedFoodSupply(state) !== null) return { kind: null, reason: 'food_route_blocked' };
   const breadDeficit = sample.requestedBread + sample.breadExported - sample.breadProduced;
+  // Household bread cannot be redistributed to homes whose meals were missed.
   const stockedBread = facilities.reduce((sum, b) => sum + availableStock(b, 'bread'), 0)
-    + state.houses.reduce((sum, h) => sum + h.breadStock, 0);
+    + (sample.requestedBread === sample.consumedBread
+      ? state.houses.reduce((sum, h) => sum + h.breadStock, 0) : 0);
   if (breadDeficit <= 0 || stockedBread >= breadDeficit) return { kind: null, reason: 'food_supply_sufficient' };
   const conversion = sample.breadProduced > 0 ? sample.wheatConsumed / sample.breadProduced : 0;
   const wheatDemand = Math.max(sample.wheatConsumed, (sample.requestedBread + sample.breadExported) * conversion);
@@ -41,7 +43,8 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
   if (rawDeficit > stockedWheat || (sample.breadProduced === 0 && stockedWheat === 0)) {
     return { kind: 'wheat_farm', reason: 'actual_wheat_deficit' };
   }
-  if (facilities.some(b => b.kind === 'mill' && (b.inventory.wheat ?? 0) === 0)) {
+  if (sample.eligibleMillTicks === 0 || sample.rawStarvedTicks / sample.eligibleMillTicks >= 0.2
+    || facilities.some(b => b.kind === 'mill' && (b.inventory.wheat ?? 0) === 0)) {
     return { kind: null, reason: 'wheat_transport_blocked' };
   }
   return { kind: 'mill', reason: 'actual_bread_deficit' };
