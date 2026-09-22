@@ -57,6 +57,7 @@ export function hasBudgetedServicePlan(state: GameState): boolean {
   const plan = (kind: Kind, additions: readonly Pad[], continuation: (additions: readonly Pad[]) => boolean): boolean => {
     const existing = buildings.filter(building => building.kind === kind);
     const slots = Math.ceil(lots / HOUSEHOLD_SERVICE_CONFIG[kind].capacity) + 1 - existing.length;
+    if (slots < 0) return false;
     const covered = allocatedMask([...buildings, ...additions.map(pad => pad.building)], kind);
     const search = (selected: readonly Pad[], mask: bigint, remaining: number): boolean => {
       if (mask === full) {

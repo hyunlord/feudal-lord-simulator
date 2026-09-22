@@ -150,3 +150,25 @@ test('Given three distant housing groups When each has a local service pad Then 
 import { serviceFootprint } from '../src/engine/autoplayServiceSpaceRoutes';
 
 import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
+
+import { serviceCandidate } from '../src/engine/autoplayServiceSpaceRoutes';
+
+test('Given fully served legacy housing above the facility cap When planning growth Then reject new housing but preserve unrelated repair', () => {
+  const base = fixture();
+  const buildings = [...base.buildings.map(building => building.kind === 'house' ? { ...building, tx: 8 } : building),
+    serviceCandidate('church', { tx: 10, ty: 16 }, 'church')];
+  const makeState = (all: typeof buildings) => ({ ...base, buildings: all,
+    tiles: base.tiles.map(tile => ({ ...tile, buildingId: all.find(building => serviceFootprint(building).some(point => point.tx === tile.tx && point.ty === tile.ty))?.id ?? null })) });
+  const legal = makeState(buildings);
+  assert.equal(hasBudgetedServicePlan(legal), true);
+  const grow = { kind: 'place_building', building: 'house', tx: 9, ty: 11 } as const;
+  assert.equal(preservesAutoplayServiceSpace(legal, grow), true);
+  for (const kind of ['market', 'church'] as const) {
+    const extras = Array.from({ length: kind === 'market' ? 1 : 2 }, (_, index) =>
+      serviceCandidate(kind, { tx: 20 + index * 4, ty: 20 }, `extra-${kind}-${index}`));
+    const over = makeState([...buildings, ...extras]);
+    assert.equal(hasBudgetedServicePlan(over), false, `${kind} over-cap counts cannot become a valid budget merely by serving every home`);
+    assert.equal(preservesAutoplayServiceSpace(over, grow), false);
+    assert.equal(preservesAutoplayServiceSpace(over, { kind: 'place_road', from: { tx: 1, ty: 12 }, to: { tx: 1, ty: 12 } }), true);
+  }
+});
