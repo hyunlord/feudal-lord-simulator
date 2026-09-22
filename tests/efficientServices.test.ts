@@ -172,3 +172,36 @@ test('Given fully served legacy housing above the facility cap When planning gro
     assert.equal(preservesAutoplayServiceSpace(over, { kind: 'place_road', from: { tx: 1, ty: 12 }, to: { tx: 1, ty: 12 } }), true);
   }
 });
+
+import { findBudgetedServicePlan } from '../src/engine/autoplayServiceBudget';
+
+test('Given a joint plan across one water bridge When cached geometry loses that bridge Then construction and service witnesses cannot be reused', () => {
+  const base = fixture();
+  const buildings = [serviceCandidate('house', { tx: 2, ty: 4 }, 'home'),
+    serviceCandidate('storehouse', { tx: 1, ty: 6 }, 'source'),
+    serviceCandidate('market', { tx: 10, ty: 3 }, 'market-a'),
+    serviceCandidate('market', { tx: 10, ty: 0 }, 'market-b'),
+    serviceCandidate('church', { tx: 10, ty: 6 }, 'church-a'),
+    serviceCandidate('church', { tx: 13, ty: 0 }, 'church-b')];
+  const state = { ...base, width: 16, height: 9, buildings,
+    tiles: Array.from({ length: 144 }, (_, index) => {
+      const tx = index % 16, ty = Math.floor(index / 16);
+      return { tx, ty, terrain: tx === 7 ? 'water' as const : 'grass' as const, hasRoad: ty === 5,
+        buildingId: buildings.find(building => serviceFootprint(building).some(point => point.tx === tx && point.ty === ty))?.id ?? null };
+    }) };
+  const witness = findBudgetedServicePlan(state);
+  assert.ok(witness);
+  assert.ok(witness.roads.has('7,5'), 'the witness retains the shared construction and household bridge');
+  assert.ok(witness.pads.has('10,3') && witness.pads.has('13,0'), 'existing provider footprints remain protected');
+  const grow = { kind: 'place_building', building: 'house', tx: 3, ty: 4 } as const;
+  assert.equal(preservesAutoplayServiceSpace(state, grow), true);
+  const road = { kind: 'place_road', from: { tx: 0, ty: 5 }, to: { tx: 0, ty: 5 } } as const;
+  assert.equal(preservesAutoplayServiceSpace(state, road), true);
+  const broken = { ...state, roadRevision: state.roadRevision + 1,
+    tiles: state.tiles.map(tile => tile.tx === 7 && tile.ty === 5 ? { ...tile, hasRoad: false } : tile) };
+  assert.equal(findBudgetedServicePlan(broken), null);
+  assert.equal(preservesAutoplayServiceSpace(broken, grow), false);
+  assert.equal(preservesAutoplayServiceSpace(broken, road), true, 'an already impossible layout still permits unrelated repair');
+  assert.equal(preservesAutoplayServiceSpace({ ...state, buildings: [...state.buildings].reverse(), tiles: state.tiles.map(tile => ({ ...tile })) }, grow), true);
+  assert.equal(preservesAutoplayServiceSpace(broken, grow), false);
+});

@@ -11,12 +11,21 @@ import { potentialServiceRoads, serviceCandidate, serviceFootprint, serviceSpace
 type Kind = 'market' | 'church';
 interface Pad { readonly building: Building; readonly mask: bigint; readonly occupied: ReadonlySet<string> }
 
-/** A structural joint plan, with staffing and materials deferred but actual walls and water retained. */
+export interface ServiceBudgetWitness {
+  readonly pads: ReadonlySet<string>;
+  readonly roads: ReadonlySet<string>;
+}
+
 export function hasBudgetedServicePlan(state: GameState): boolean {
+  return findBudgetedServicePlan(state) !== null;
+}
+
+/** A structural joint plan, with staffing and materials deferred but actual walls and water retained. */
+export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness | null {
   const buildings = serviceSpaceBuildings(state).map(building => building.kind === 'market' || building.kind === 'church'
     ? { ...building, workers: BUILDING_CONFIG_BY_KIND[building.kind].workersRequired } : building);
   const homes = buildings.filter(building => building.kind === 'house');
-  if (homes.length === 0) return true;
+  if (homes.length === 0) return { pads: new Set(), roads: new Set() };
   const lots = homes.reduce((sum, home) => sum + houseLotArea(home), 0);
   const houses = serviceSpaceHouses(state, buildings);
   const full = (1n << BigInt(homes.length)) - 1n;
@@ -38,15 +47,20 @@ export function hasBudgetedServicePlan(state: GameState): boolean {
     candidatePools.set(kind, result);
     return result;
   };
-  const feasible = (all: readonly Building[], kind: Kind): boolean => {
+  const routesFor = (all: readonly Building[], kind: Kind): ReadonlySet<string> | null => {
     const potential = potentialServiceRoads(staffedState, all);
     const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketRoadService(potential) });
-    return homes.every(home => allocation.houses.get(home.id)?.[kind].kind === 'served')
-      && homes.every(home => {
-        const id = allocation.houses.get(home.id)?.[kind].providerId;
-        const provider = all.find(building => building.id === id);
-        return provider !== undefined && serviceWitnessRoads(staffedState, potential, home, [provider]) !== null;
-      });
+    const roads = new Set<string>();
+    for (const home of homes) {
+      const access = allocation.houses.get(home.id)?.[kind];
+      if (access?.kind !== 'served') return null;
+      const provider = all.find(building => building.id === access.providerId);
+      if (provider === undefined) return null;
+      const route = serviceWitnessRoads(staffedState, potential, home, [provider]);
+      if (route === null) return null;
+      for (const tile of route) roads.add(tile);
+    }
+    return roads;
   };
   const allocatedMask = (all: readonly Building[], kind: Kind): bigint => {
     const potential = potentialServiceRoads(staffedState, all);
@@ -54,7 +68,7 @@ export function hasBudgetedServicePlan(state: GameState): boolean {
     return homes.reduce((mask, home, index) => allocation.houses.get(home.id)?.[kind].kind === 'served'
       ? mask | (1n << BigInt(index)) : mask, 0n);
   };
-  const plan = (kind: Kind, additions: readonly Pad[], continuation: (additions: readonly Pad[]) => boolean): boolean => {
+  const plan = (kind: Kind, additions: readonly Pad[], continuation: (additions: readonly Pad[], roads: ReadonlySet<string>) => boolean): boolean => {
     const existing = buildings.filter(building => building.kind === kind);
     const slots = Math.ceil(lots / HOUSEHOLD_SERVICE_CONFIG[kind].capacity) + 1 - existing.length;
     if (slots < 0) return false;
@@ -62,7 +76,8 @@ export function hasBudgetedServicePlan(state: GameState): boolean {
     const search = (selected: readonly Pad[], mask: bigint, remaining: number): boolean => {
       if (mask === full) {
         const all = [...buildings, ...selected.map(pad => pad.building)];
-        if (feasible(all, kind) && continuation(selected)) return true;
+        const roads = routesFor(all, kind);
+        if (roads !== null && continuation(selected, roads)) return true;
         mask = allocatedMask(all, kind);
         if (mask === full) return false;
       }
@@ -82,10 +97,16 @@ export function hasBudgetedServicePlan(state: GameState): boolean {
     };
     return search(additions, covered, slots);
   };
-  return plan('market', [], markets => plan('church', markets, all => {
+  let witness: ServiceBudgetWitness | null = null;
+  plan('market', [], markets => plan('church', markets, (all, churchRoads) => {
     const combined = [...buildings, ...all.map(pad => pad.building)];
-    return feasible(combined, 'market');
+    const marketRoads = routesFor(combined, 'market');
+    if (marketRoads === null) return false;
+    witness = { pads: new Set(combined.filter(building => building.kind === 'market' || building.kind === 'church')
+      .flatMap(building => serviceFootprint(building).map(serviceTileKey))), roads: new Set([...marketRoads, ...churchRoads]) };
+    return true;
   }));
+  return witness;
 }
 
 function bitCount(value: bigint): number {

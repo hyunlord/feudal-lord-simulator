@@ -1,4 +1,4 @@
-import { hasBudgetedServicePlan } from './autoplayServiceBudget';
+import { findBudgetedServicePlan, type ServiceBudgetWitness } from './autoplayServiceBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { HOUSEHOLD_SERVICE_CONFIG } from '../population/serviceAllocation';
 import { buildingFootprint } from '../geometry/buildingFootprint';
@@ -8,13 +8,21 @@ import type { AutoplayAction } from './autoplay.types';
 import { findAutoplayServiceWitness, type ServiceSpaceWitness } from './autoplayServiceSpaceWitness';
 import { projectServiceAction, serviceCandidate, serviceFootprint, serviceSpaceBuildings, serviceTileKey } from './autoplayServiceSpaceRoutes';
 
-type Layout = { budget?: boolean; readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
+type Layout = { readonly signature: string; budget?: ServiceBudgetWitness | null; readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
 const byState = new WeakMap<GameState, Layout>();
 const tileKeys = new WeakMap<GameState['tiles'], string>();
 const layouts = new Map<string, Layout>();
+function rememberLayout(layout: Layout): Layout {
+  layouts.delete(layout.signature); layouts.set(layout.signature, layout);
+  if (layouts.size > 128) {
+    const oldest = layouts.keys().next().value;
+    if (oldest !== undefined) layouts.delete(oldest);
+  }
+  return layout;
+}
 function layoutFor(state: GameState): Layout {
   const cached = byState.get(state);
-  if (cached !== undefined) return cached;
+  if (cached !== undefined) return rememberLayout(cached);
   const buildings = serviceSpaceBuildings(state);
   let tiles = tileKeys.get(state.tiles);
   if (tiles === undefined) {
@@ -27,7 +35,7 @@ function layoutFor(state: GameState): Layout {
   const signature = geometry + tiles;
   let layout = layouts.get(signature);
   if (layout === undefined) {
-    layout = { tiles: state.tiles, geometry, witnesses: new Map(), decisions: new Map() };
+    layout = { signature, tiles: state.tiles, geometry, witnesses: new Map(), decisions: new Map() };
     const previous = [...layouts.values()].reverse().find(entry => entry.geometry === geometry);
     const lots = buildings.filter(building => building.kind === 'house').reduce((sum, home) => {
       const size = buildingFootprint(home); return sum + size.width * size.height;
@@ -39,19 +47,27 @@ function layoutFor(state: GameState): Layout {
         const old = previous.tiles[index];
         return old === undefined || tile.buildingId !== old.buildingId || tile.hasRoad !== old.hasRoad || tile.tx !== old.tx || tile.ty !== old.ty;
       }).map(serviceTileKey));
+      const budget = previous.budget;
+      if (budget !== undefined && budget !== null && state.tiles.every((tile, index) => {
+        const old = previous.tiles[index];
+        if (old === undefined || old.tx !== tile.tx || old.ty !== tile.ty) return false;
+        const key = serviceTileKey(tile);
+        return !changed.has(key) || (!budget.pads.has(key) && (!budget.roads.has(key)
+          || (tile.buildingId === old.buildingId && (!old.hasRoad || tile.hasRoad))));
+      })) layout.budget = budget;
       for (const [id, witness] of previous.witnesses) {
         if (witness !== null && ![...changed].some(tile => witness.pads.has(tile) || witness.roads.has(tile))) layout.witnesses.set(id, witness);
       }
     }
   }
   byState.set(state, layout);
-  layouts.delete(signature); layouts.set(signature, layout);
-  if (layouts.size > 128) {
-    const oldest = layouts.keys().next().value;
-    if (oldest !== undefined) layouts.delete(oldest);
-  }
-  return layout;
+  return rememberLayout(layout);
 }
+function budgetFor(layout: Layout, state: GameState): ServiceBudgetWitness | null {
+  if (layout.budget === undefined) layout.budget = findBudgetedServicePlan(state);
+  return layout.budget;
+}
+
 function witnessFor(layout: Layout, state: GameState, home: ReturnType<typeof serviceSpaceBuildings>[number]): ServiceSpaceWitness | null {
   const cached = layout.witnesses.get(home.id);
   if (cached !== undefined) return cached;
@@ -91,8 +107,13 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
   if (allowed && (action.kind === 'place_building' || action.kind === 'place_road' || knownProjection !== undefined)) {
     projected ??= projectServiceAction(state, action);
     const nextLayout = layoutFor(projected);
-    if ((action.kind === 'place_building' && action.building === 'house') || (layout.budget ??= hasBudgetedServicePlan(state))) {
-      allowed = nextLayout.budget ??= hasBudgetedServicePlan(projected);
+    const witness = budgetFor(layout, state);
+    if ((action.kind === 'place_building' && action.building === 'house') || witness !== null) {
+      if (knownProjection === undefined && !changesAllocation && witness !== null
+        && ![...changed].some(tile => witness.pads.has(tile) || (action.kind === 'place_building' && witness.roads.has(tile)))) {
+        nextLayout.budget = witness;
+      }
+      allowed = budgetFor(nextLayout, projected) !== null;
     }
   }
   if (key !== null) layout.decisions.set(key, allowed);
