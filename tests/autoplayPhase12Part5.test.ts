@@ -203,6 +203,9 @@ test("Given default autoplay When run for twelve thousand ticks Then population 
   const finalBuildingKinds = new Set(trace.finalState.buildings.map(({ kind }) => kind));
   const gaps = trace.actions.slice(1).map(({ tick }, index) => tick - (trace.actions[index]?.tick ?? tick));
 
+  const foodBuilds = trace.actions.flatMap(({ action }) => action.kind === 'place_building'
+    && ['wheat_farm', 'mill', 'granary'].includes(action.building) ? [action.building] : []);
+  assert.deepEqual(foodBuilds.slice(0, 3), ['wheat_farm', 'mill', 'wheat_farm']);
   assert.equal(peak >= 100, true, `timeline=${JSON.stringify(trace.population)}`);
   assert.equal(finalPopulation >= 80, true, `timeline=${JSON.stringify(trace.population)}`);
   assert.equal(finalPopulation >= peak * 0.75, true, `timeline=${JSON.stringify(trace.population)}`);

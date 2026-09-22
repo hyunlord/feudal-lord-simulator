@@ -46,8 +46,10 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   const completeChain = wheatCount > 0 && millCount > 0 && granaryCount > 0;
   const decision = completeChain ? measuredFoodDecision(state) : null;
   if (decision?.reason === 'observation_warmup') return finish({ kind: 'none' }, decision.reason);
-  const coverage = foodCoverageAction(state);
-  if (coverage.kind !== 'none') return finish(coverage, 'coverage_selected');
+  if (decision?.kind === null || decision === null) {
+    const coverage = foodCoverageAction(state);
+    if (coverage.kind !== 'none') return finish(coverage, 'coverage_selected');
+  }
   const recovery = decision?.kind ?? null;
   if (diagnostic !== undefined) diagnostic = { ...diagnostic, completeChain, recovery };
   let buildReason: FoodDiagnosticReason = 'bootstrap_selected';

@@ -28,20 +28,23 @@ test('Given different best-total and best-active incumbents Then an improving ca
   assert.equal(materialBuildCandidate({ ...paired, buildings: [...paired.buildings].reverse(), pathCache: {} }, 'wall-a'), null);
 });
 
-test('Given food NONE confirmation metadata When material placement wins Then advisor adapter and reducer preserve both records', () => {
-  const state: GameState = { ...observedMaterialTown(), autoplayFoodTransientConfirmation: { status: 'pending', startedTick: 880,
+test('Given loaded food confirmation metadata When material placement wins Then the adapter and reducer preserve both records', () => {
+  const base = observedMaterialTown();
+  const state: GameState = { ...base, houses: base.houses.map(house => ({ ...house, breadStock: 24 })), autoplayFoodTransientConfirmation: { status: 'pending', startedTick: 880,
     deadlineTick: 1120, evaluationTick: 1120, epoch: 'obsolete-fixture-epoch', firstWindowUntilTick: 880 } };
   const food = foodAction(state, () => assert.fail('Unexpected food building'));
   assert.equal(food.kind, 'none');
-  assert.ok(food.foodTransient);
+  assert.equal(food.foodTransient, undefined);
   assert.equal(materialRecoveryAction(state).kind, 'place_building');
   const action = decideNextAction(state, { maxHousingLots: 1 });
   assert.ok(action.kind === 'place_building' && action.building === 'masonry', JSON.stringify(action));
-  assert.deepEqual(action.foodTransient, food.foodTransient);
-  const command = autoplayActionToGameAction(action, state); assert.ok(command);
+  assert.equal(action.foodTransient, undefined);
+  const confirmation = state.autoplayFoodTransientConfirmation;
+  assert.ok(confirmation);
+  const command = autoplayActionToGameAction({ ...action, foodTransient: confirmation }, state); assert.ok(command);
   const next = gameReducer(state, command);
   assert.equal(next.autoplayMaterialRecovery?.status, 'placed');
-  assert.deepEqual(next.autoplayFoodTransientConfirmation, food.foodTransient);
+  assert.deepEqual(next.autoplayFoodTransientConfirmation, confirmation);
 });
 
 test('Given a qualified cycle When ordinary placement succeeds or fails Then only successful construction spends the episode', () => {

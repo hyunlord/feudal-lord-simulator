@@ -141,7 +141,7 @@ test('Given a new road joins an existing disconnected stretch When BFS returns i
 });
 
 
-test('Given eight well stocked L3 homes When two mills have no hauling headroom Then the advisor adds one mill without multiplying farms and granaries', () => {
+test('Given eight well stocked L3 homes When mill counts have no actual observation Then the advisor does not speculate about hauling capacity', () => {
   const state = structuredClone(DEFAULT_GAME_STATE);
   state.houses = Array.from({ length: 8 }, (_, index) => ({ ...state.houses[0]!, buildingId: `home-${index}`, level: 3, residents: 22, breadStock: 9 }));
   const template = state.buildings[0]!;
@@ -156,7 +156,7 @@ test('Given eight well stocked L3 homes When two mills have no hauling headroom 
     sum + BUILDING_CONFIG_BY_KIND[building.kind].workersRequired, 0);
   const build = (_state: typeof state, kind: typeof template.kind) => ({ kind: 'place_building' as const, building: kind, tx: 0, ty: 0 });
   const action = foodAction(state, build);
-  assert.equal(action.kind === 'place_building' && action.building, 'mill');
+  assert.deepEqual(action, { kind: 'none' });
   state.buildings.push({ ...template, id: 'third-mill', kind: 'mill' });
   assert.deepEqual(foodAction(state, build), { kind: 'none' });
 });
