@@ -47,6 +47,7 @@ export function returnCapacityClaim(
   }
   if (
     carter.mission === "fetch" &&
+    carter.cancellation?.releasedReservation !== true &&
     carter.reservation.destination.kind === "building" &&
     carter.reservation.destination.buildingId === home.id &&
     (carter.cargo === null ||
