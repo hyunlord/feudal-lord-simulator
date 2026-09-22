@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createAutoplayTraceDriver } from '../scripts/economyHarnessAutoplay';
-import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
+import { DEFAULT_GAME_STATE, gameReducer } from '../src/state/gameStore';
 
 test('Given an idle advisor decision When resources change before120ticks Then the trace waits for the next decision pulse', () => {
   const driver = createAutoplayTraceDriver();
-  const start = { ...structuredClone(DEFAULT_GAME_STATE), treasuryTimber: 500 };
+  const start = gameReducer({ ...structuredClone(DEFAULT_GAME_STATE), treasuryTimber: 500 },
+    { type: 'place_building', kind: 'wheat_farm', tx: 44, ty: 37 });
+  assert.ok(start.constructionSites.some(site => site.kind === 'wheat_farm'));
   assert.equal(driver.apply(start), start);
   const beforePulse = { ...start, tick: 119, treasuryTimber: 120 };
   assert.equal(driver.apply(beforePulse), beforePulse);

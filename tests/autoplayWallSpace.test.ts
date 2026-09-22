@@ -12,7 +12,7 @@ import { computePalisadeProposal, validatePalisadeCandidate } from '../src/world
 test('Given a feasible hamlet When autoplay adds buildings Then completed and pending plots retain a validated wall proposal', () => {
   let state = createGrowthOpening(3).state;
   const driver = createAutoplayTraceDriver({ id: 'wall-space-regression', source: 'original seed 3', policy: { maxHousingLots: 24 } });
-  let checked = 0;
+  const checkedKinds = new Set<string>();
   while (state.tick <= 2400) {
     const next = driver.apply(state);
     if (next !== state && next.constructionSites !== state.constructionSites) {
@@ -20,13 +20,17 @@ test('Given a feasible hamlet When autoplay adds buildings Then completed and pe
       const proposal = computePalisadeProposal(next, footprints);
       assert.ok(proposal.ok, `tick ${state.tick}, ${JSON.stringify(driver.appliedActions.at(-1))}: ${proposal.ok ? '' : proposal.reason}`);
       assert.ok(validatePalisadeCandidate(next, proposal.path, footprints).ok);
-      checked += 1;
+      const action = driver.appliedActions.at(-1)?.advisorAction;
+      if (action?.kind === 'place_building') checkedKinds.add(action.building);
     }
     state = advanceTick(next);
   }
-  assert.ok(checked >= 5, 'the planner must keep searching alternative build sites');
-  const replacement = driver.appliedActions.find(action => action.tick === 2280)?.advisorAction;
-  assert.ok(replacement?.kind === 'place_building', 'the rejected mill candidate must be replaced by a buildable alternative');
+  for (const kind of ['sawmill', 'wheat_farm', 'mill', 'chapel']) {
+    assert.ok(checkedKinds.has(kind), `ordinary ${kind} construction must preserve a validated wall`);
+  }
+  const replacement = driver.appliedActions.find(action => action.advisorAction.kind === 'place_building' && action.advisorAction.building === 'mill')?.advisorAction;
+  assert.ok(replacement?.kind === 'place_building', 'the bootstrap mill must use a buildable alternative');
+  assert.notDeepEqual({ tx: replacement.tx, ty: replacement.ty }, { tx: 15, ty: 6 });
   assert.ok([...state.constructionSites, ...state.buildings].some(plot =>
     'tx' in plot && plot.tx === replacement.tx && plot.ty === replacement.ty));
 });

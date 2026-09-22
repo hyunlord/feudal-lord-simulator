@@ -1,3 +1,6 @@
+import type { FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
+import { plannedBuildingRoadAction } from '../src/engine/autoplayConstructionRoads';
+import { hasConnectedConstructionRoute } from '../src/engine/autoplayConstructionRoute';
 import { allocateHouseServices } from '../src/population/serviceAllocation';
 import { marketRoadService } from '../src/engine/marketService';
 import { serviceSpaceHouses } from '../src/engine/autoplayServiceSpaceRoutes';
@@ -32,19 +35,30 @@ function futureMarkets(state: GameState, home: Building): number {
   }).length;
 }
 
-test('Given the normal97560 hamlet When autoplay acts Then it preserves the last future market pad and continues with an alternative', () => {
+test('Given the normal97560 legacy hamlet without a measured window When autoplay decides Then it observes before another food expansion', () => {
+  const state = naturalBeforeLoss();
+  const diagnostic: FoodDiagnosticCollector = {};
+  assert.deepEqual(decideNextAction(state, { maxHousingLots: 24 }, diagnostic), { kind: 'none' });
+  assert.equal(diagnostic.food?.reason, 'observation_warmup');
+});
+
+test('Given the normal97560 hamlet When a safe alternative granary is connected Then its real road and construction preserve the last future market pad', () => {
   const state = naturalBeforeLoss();
   const home = state.buildings.find(building => building.id === 'construction-site-000042');
   assert.ok(home);
   assert.equal(futureMarkets(state, home), 1);
-  const action = decideNextAction(state, { maxHousingLots: 24 });
+  const alternative = { kind: 'place_building', building: 'granary', tx: 61, ty: 41 } as const;
+  const candidate = serviceCandidate('granary', alternative, 'safe-granary');
+  assert.equal(preservesAutoplayServiceSpace(state, { ...alternative, ty: 40 }), false);
+  assert.equal(preservesAutoplayServiceSpace(state, alternative), true);
+  const action = plannedBuildingRoadAction(state, candidate);
   const command = autoplayActionToGameAction(action, state);
   assert.ok(command, 'the candidate search must produce a safe alternative, not a permanent veto');
   const next = gameReducer(state, command);
   assert.notEqual(next, state);
   assert.ok(futureMarkets(next, home) > 0, `last future market pad lost to ${JSON.stringify(action)}`);
-  const alternative = decideNextAction(next, { maxHousingLots: 24 });
-  assert.equal(alternative.kind, 'place_building', 'the safe road must lead to an actual alternative building');
+  assert.equal(hasConnectedConstructionRoute(next, candidate), true, 'the safe road must lead to an actual alternative building');
+  assert.equal(canPlaceBuilding(next, alternative.building, alternative.tx, alternative.ty).ok, true);
   const build = autoplayActionToGameAction(alternative, next);
   assert.ok(build);
   const built = gameReducer(next, build);
