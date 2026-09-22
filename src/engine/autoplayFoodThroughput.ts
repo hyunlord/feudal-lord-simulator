@@ -1,10 +1,9 @@
+import { FOOD_EFFICIENCY_WINDOW } from './autoplayFoodEfficiency';
+import { measuredFoodDecision } from './autoplayFoodMeasuredDecision';
 import { feasibleDistributorDistance } from './distributorAccess';
-import { backpressuredFoodRecovery, breadBufferCoversDeficit } from './autoplayFoodBottleneck';
-import { measuredFoodFlow } from './autoplayFoodFlow';
 import { observeEmptyDeliveryHomes } from './autoplayFoodDeliveryCapacity';
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
-import { HOUSE_FOOD_INTERVAL } from '../content/houseFoodConfig';
 import { availableStock } from '../economy/storage';
 import { houseIsStarving } from '../population/houseFood';
 import type {
@@ -13,7 +12,6 @@ import type {
   AutoplayFoodObservationSnapshot,
   GameState,
 } from './engine.types';
-import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { resolveBuildingRoute } from './routing';
 
 function roundTripTicks(edges: number): number {
@@ -86,10 +84,11 @@ export function startFoodObservation(
   building: Building,
 ): AutoplayFoodObservation {
   const baseline = foodObservationSnapshot(state);
+  const completeChain = ['wheat_farm', 'mill', 'granary'].every(kind => state.buildings.some(b => b.kind === kind));
   return {
     ...observation,
     completedTick: state.tick,
-    observeUntilTick: state.tick + foodObservationTicks(state, building, observation.targetHouseIds),
+    observeUntilTick: state.tick + Math.max(completeChain ? FOOD_EFFICIENCY_WINDOW : 0, foodObservationTicks(state, building, observation.targetHouseIds)),
     baseline,
     latest: baseline,
     outcome: foodObservationOutcome(baseline, baseline),
@@ -160,25 +159,8 @@ export function blocksRepeatedFoodExpansion(state: GameState, kind: AutoplayFood
     observation.outcome?.effective === false;
 }
 
-export function foodRecoveryKind(state: GameState, mealDemand: number): 'wheat_farm' | 'mill' | null {
-  const granaries = state.buildings.filter(building => building.kind === 'granary');
-  const producers = state.buildings.filter(building => building.kind === 'mill' || building.kind === 'wheat_farm');
-  if (granaries.length === 0 || !producers.some(b => b.kind === 'wheat_farm')
-    || !producers.some(b => b.kind === 'mill')) return null;
-  if ([...granaries, ...producers].some(building =>
-    building.workers < BUILDING_CONFIG_BY_KIND[building.kind].workersRequired || !buildingHasRequiredRoadAccess(state, building))) return null;
-
-  if (producers.some(building => !granaries.some(granary => resolveBuildingRoute(state, building, granary).path !== null))) return null;
-  const sample = measuredFoodFlow(state);
-  if (sample === undefined) return null;
-  const meals = (sample.untilTick - sample.startedTick) / HOUSE_FOOD_INTERVAL;
-  const inputPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 0;
-  if (sample.wheatProduced - sample.wheatExported < mealDemand * meals * inputPerBread) {
-    const bottleneck = backpressuredFoodRecovery(state, sample, mealDemand * meals);
-    return bottleneck === 'wait' ? null : bottleneck ?? 'wheat_farm';
-  }
-  return sample.breadProduced - sample.breadExported < mealDemand * meals
-    && !breadBufferCoversDeficit(state, sample, mealDemand * meals) ? 'mill' : null;
+export function foodRecoveryKind(state: GameState, _mealDemand: number): 'wheat_farm' | 'mill' | null {
+  return measuredFoodDecision(state).kind;
 }
 
 function targetedGranaryTicks(state: GameState, building: Building, targets: readonly string[]): number {

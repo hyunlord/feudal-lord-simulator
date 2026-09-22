@@ -131,3 +131,17 @@ test('Post-era housing keeps labour, food and pending-construction guards', () =
     assert.notEqual(action.kind === 'place_building' && action.building, 'house');
   }
 });
+
+test('healthy four-home settlement can add a fifth home without a fixed farms-to-homes ratio', () => {
+  // Given four full households, stocked bread and one actual farm.
+  const base = fixture();
+  const houses = base.houses.slice(0, 4);
+  const homeIds = new Set(houses.map(h => h.buildingId));
+  const state = retile({ ...base, houses, population: 88,
+    buildings: base.buildings.filter(b => b.kind === 'house' ? homeIds.has(b.id)
+      : b.kind === 'wheat_farm' ? b.id === 'farm-0' : b.kind === 'mill' ? b.id === 'mill-0' : true) });
+  // When the normal advisor evaluates growth under the unchanged default cap.
+  const action = decideNextAction(state);
+  // Then actual bread and population eligibility allow a fifth house.
+  assert.equal(action.kind === 'place_building' && action.building, 'house');
+});

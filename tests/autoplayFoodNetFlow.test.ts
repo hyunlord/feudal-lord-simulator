@@ -1,3 +1,4 @@
+import { observedFoodTown, replayFoodObservation } from './foodEfficiencyObservationFixture';
 import { stepCarters } from '../src/agents/delivery';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../src/engine/simulationPorts';
 import assert from 'node:assert/strict';
@@ -7,23 +8,20 @@ import { settleMarkets } from '../src/engine/marketSettlement';
 import { advanceTick, runProduction } from '../src/engine/tick';
 import { BUILDING_CONFIG_BY_KIND } from '../src/content/buildingConfig';
 import { foodRecoveryKind } from '../src/engine/autoplayFoodThroughput';
-import { advanceFoodFlow, recordFoodFlow, measuredFoodFlow, foodFlowLayout, foodFlowRoutes } from '../src/engine/autoplayFoodFlow';
+import { advanceFoodFlow, recordFoodFlow, measuredFoodFlow } from '../src/engine/autoplayFoodFlow';
 import { building, foodBuildRequest, routedStockTown, stressedTown, withMeasuredFood } from './helpers/autoplayFoodFixtures';
 
 test('Given gross wheat surplus but actual market exports When recovering hunger Then choose a farm instead of another mill', () => {
-  // Given: the seed3 normal 12000-tick measured flow, projected onto a connected staffed town.
-  const base = stressedTown();
-  base.buildings.push(...base.buildings.filter(b => b.kind === 'wheat_farm').map(b => ({ ...b, id: `${b.id}-extra` })));
-  const sample = { startedTick: base.tick - 12000, untilTick: base.tick,
-    wheatProduced: 5131, breadProduced: 2076, wheatExported: 1011, breadExported: 0 };
-  const state = { ...base, autoplayFoodFlow: { layout: foodFlowLayout(base), routes: foodFlowRoutes(base), roadRevision: base.roadRevision, current: sample, completed: sample } };
-  // When / Then: 4120 usable wheat is below 2244 rations * 2, despite 5131 gross output.
+  // Given chronological production and export events over a fresh 2400-tick window.
+
+  const state = replayFoodObservation(observedFoodTown(1, 1), { wheat: 400, bread: 100, exports: 101 });
+  // When / Then exports consume the margin needed by actual household meals.
   assert.equal(foodRecoveryKind(state, 74.8), 'wheat_farm');
 });
 
-for (const [wheat, bread, expected] of [[200, 40, 'mill'], [200, 100, null]] as const) {
-  test(`Given measured wheat ${wheat} and bread ${bread} When meal demand is 48 Then recovery is ${expected}`, () => {
-    const state = withMeasuredFood(stressedTown(), wheat, bread);
+for (const [wheat, bread, expected] of [[1000, 40, 'mill'], [1000, 400, null]] as const) {
+  test(`Given measured wheat ${wheat} and bread ${bread} When actual household meal events are observed Then recovery is ${expected}`, () => {
+    const state = observedFoodTown(wheat, bread);
     assert.equal(foodRecoveryKind(state, 48), expected);
     if (expected === null) assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'none' });
   });
@@ -68,15 +66,15 @@ test('Given mature food flow When an unrelated road and civic building change Th
   assert.equal(next.autoplayFoodFlow?.completed?.wheatProduced, 20);
 });
 
-test('Given unchanged observed supply When current demand rises or falls Then decisions use current demand explicitly', () => {
-  const state = withMeasuredFood(stressedTown(), 100, 40);
-  assert.equal(foodRecoveryKind(state, 30), null);
+test('Given unchanged actual meal evidence When legacy projected demand changes Then it cannot invent production demand', () => {
+  const state = observedFoodTown();
+  assert.equal(foodRecoveryKind(state, 30), 'mill');
   assert.equal(foodRecoveryKind(state, 45), 'mill');
-  assert.equal(foodRecoveryKind(state, 60), 'wheat_farm');
+  assert.equal(foodRecoveryKind(state, 60), 'mill');
 });
 
 test('Given a partial mill output marked effective When net raw supply is insufficient Then it cannot authorize another mill', () => {
-  const base = withMeasuredFood(stressedTown(), 80, 40);
+  const base = observedFoodTown(80, 40);
   const state = { ...base, autoplayFoodObservation: { kind: 'mill' as const, siteId: 'mill0', placedTick: 0,
     completedTick: 100, observeUntilTick: 200, baseline: { outputTotal: 0, houseBread: 0, starvingHomes: 0 },
     latest: { outputTotal: 5, houseBread: 0, starvingHomes: 2 },
@@ -112,10 +110,10 @@ test('Given healthy homes and sufficient measured projected supply When nominal 
   assert.deepEqual(foodAction(measured, foodBuildRequest), { kind: 'none' });
 });
 
-test('Given healthy homes and measured supply below projected demand When capacity is assessed Then future growth gets actual supply', () => {
+test('Given healthy homes and only a short legacy window When growth demand is projected Then await actual rolling evidence', () => {
   const state = withMeasuredFood(stressedTown(), 80, 40);
   state.houses = state.houses.map(h => ({ ...h, breadStock: 6, emptyFoodTicks: 0 }));
-  assert.equal(foodRecoveryKind(state, 48), 'wheat_farm');
+  assert.equal(foodRecoveryKind(state, 48), null);
 });
 
 test('Given an actual food carter route When its travel exceeds the initial batch window Then opportunity extends without fabricating production', () => {
@@ -132,13 +130,13 @@ test('Given an actual food carter route When its travel exceeds the initial batc
   assert.deepEqual(advanceFoodFlow(next), next);
 });
 
-test('Given no production in a finite opportunity When it closes Then zero throughput remains usable evidence', () => {
+test('Given no production in a finite opportunity When it closes Then short zero throughput is recorded but cannot replace a full rolling observation', () => {
   const initial = advanceFoodFlow(stressedTown());
   const deadline = initial.autoplayFoodFlow?.current.untilTick;
   assert.ok(deadline);
   const next = advanceFoodFlow({ ...initial, tick: deadline });
   assert.equal(measuredFoodFlow(next)?.breadProduced, 0);
-  assert.equal(foodRecoveryKind(next, 48), 'wheat_farm');
+  assert.equal(foodRecoveryKind(next, 48), null);
 });
 
 for (const sale of [true, false]) test(`Given two connected markets and sale eligibility ${sale} When actual settlement runs Then only completed exports are counted`, () => {

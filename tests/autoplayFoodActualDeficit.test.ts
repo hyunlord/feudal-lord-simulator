@@ -69,7 +69,7 @@ test('Given targeted granary placement When construction completes Then benefici
   assert.ok(provider);
   assert.equal(foodObservationTicks(completed, provider), 484);
   assert.equal(foodObservationTicks(completed, { ...provider, inventory: { bread: 1 } }, ['home7']), 970);
-  assert.equal(completed.autoplayFoodObservation?.observeUntilTick, state.tick + 1190);
+  assert.equal(completed.autoplayFoodObservation?.observeUntilTick, state.tick + 2400);
 });
 
 for (const scenario of ['same-unresolved', 'credited-other-target', 'removed-target', 'recovered-new-episode']) {

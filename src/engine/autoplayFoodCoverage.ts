@@ -1,3 +1,4 @@
+import { foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { recurringDeliveryHomes } from './autoplayRecurringDelivery';
 import { canStaffRecurringGranary } from './autoplayRecurringDeliveryStaffing';
 import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
@@ -73,7 +74,7 @@ function projectAccess(state: GameState, candidate: Building): { state: GameStat
 }
 
 export function foodCoverageAction(state: GameState): AutoplayAction {
-  if (hasActiveFoodObservation(state)) return NONE;
+  if (!foodFacilityWithinLimit(state, 'granary') || hasActiveFoodObservation(state)) return NONE;
   const observation = state.autoplayFoodObservation;
   const failed = observation?.kind === 'granary' && (observation.outcome?.deliveredBreadDelta ?? 0) === 0 ? observation : undefined;
   if (failed !== undefined && failed.targetHouseIds === undefined) return NONE;

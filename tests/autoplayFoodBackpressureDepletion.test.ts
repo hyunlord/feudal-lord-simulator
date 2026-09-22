@@ -40,22 +40,22 @@ test('Given exact seed3 depleted raw window When blocked work and usable buffers
   assert.equal(foodRecoveryKind(state, 70), null);
 });
 
-test('Given the same depleted raw evidence without a bread buffer When selecting downstream recovery Then choose a mill', () => {
+test('Given the same depleted raw evidence without a bread buffer When selecting downstream recovery Then legacy aggregate evidence alone cannot authorize a mill', () => {
   const state = depleted({ poolEnd: { wheat: 1175, bread: 280, usableWheat: 1143, usableBread: 0 } });
-  assert.equal(foodRecoveryKind(state, 70), 'mill');
+  assert.equal(foodRecoveryKind(state, 70), null);
 });
 
-test('Given original insufficient seed3 work When even the upper bound nets1237 below1241.84 Then preserve farm recovery', () => {
+test('Given original insufficient seed3 work When even the upper bound nets1237 below1241.84 Then legacy upper bounds alone cannot authorize a farm', () => {
   const state = depleted({ startedTick: 6000 - 3268, wheatProduced: 1400, breadProduced: 574, wheatExported: 241,
     farmFullTicks: 2867, farmReadyTicks: 58824, farmOpeningProgress: 301 }, 18);
-  assert.equal(foodRecoveryKind(state, 76), 'wheat_farm');
+  assert.equal(foodRecoveryKind(state, 76), null);
 });
 
-test('Given two staggered fractional farm phases When pooled work falsely permits one output Then retain farm recovery', () => {
+test('Given two staggered fractional farm phases When pooled work falsely permits one output Then fractional legacy work cannot authorize a farm', () => {
   const state = depleted({ startedTick: 5999, wheatProduced: 0, wheatExported: 0, breadProduced: 0,
     farmOpeningProgress: 38, farmReadyTicks: 2, farmFullTicks: 1 }, 2);
   // floor((19+1)/40)+floor((19+1)/40)=0, while floor(40/40)=1.
-  assert.equal(foodRecoveryKind(state, 200), 'wheat_farm');
+  assert.equal(foodRecoveryKind(state, 200), null);
 });
 
 for (const [name, patch] of [
@@ -74,23 +74,23 @@ for (const [name, patch] of [
   ['full ticks exceed ready work', { farmFullTicks: 113401 }],
   ['negative exports', { wheatExported: -1 }],
 ] satisfies readonly (readonly [string, Partial<PhaseSample>])[]) {
-  test(`Given ${name} When a depleted pool requests an exception Then evidence cannot suppress farming`, () => {
+  test(`Given ${name} When a depleted pool requests an exception Then legacy evidence cannot authorize expansion`, () => {
     const state = depleted(patch);
     assert.notEqual(foodRecoveryKind(state, 70), 'mill');
-    assert.equal(foodRecoveryKind(state, 70), name === 'unqualified sample' ? null : 'wheat_farm');
+    assert.equal(foodRecoveryKind(state, 70), null);
   });
 }
 
 for (const key of ['farmCount', 'farmTicksPerOutput', 'farmOpeningProgress', 'farmReadyTicks', 'qualified'] as const) {
-  test(`Given legacy missing ${key} When raw stock falls Then retain the farm classification`, () => {
+  test(`Given legacy missing ${key} When raw stock falls Then legacy evidence cannot authorize expansion`, () => {
     const state = changeSample(depleted(), sample => { const next = { ...sample }; delete next[key]; return next; });
-    assert.equal(foodRecoveryKind(state, 70), 'wheat_farm');
+    assert.equal(foodRecoveryKind(state, 70), null);
   });
 }
 
-for (const [where, amount, expected] of [['end', 202, 'wheat_farm'], ['current', 202, 'wheat_farm'],
+for (const [where, amount, expected] of [['end', 202, null], ['current', 202, null],
   ['end', 203, null], ['current', 203, null]] as const) {
-  test(`Given ${where} usable raw ${amount} When the actual net raw gap is203 Then recovery is ${expected}`, () => {
+  test(`Given ${where} usable raw ${amount} When only legacy aggregate evidence exists Then recovery is ${expected}`, () => {
     let state = depleted();
     if (where === 'end') state = changeSample(state, s => ({ ...s,
       poolEnd: { wheat: 1175, bread: 300, usableWheat: amount, usableBread: 172 } }));
@@ -147,6 +147,9 @@ for (const cancelled of [false, true]) {
         pathIndex: 0, previousTile: null, cargo: { resource: 'wheat', amount: 1 }, spawnedTick: 5990,
         cancellation: cancelled ? { tick: 6000, reason: 'manual', releasedReservation: true } : null },
     ] };
-    assert.equal(foodRecoveryKind(state, 70), cancelled ? 'wheat_farm' : null);
+    const { autoplayFoodFlow: _oldFlow, ...unobserved } = state;
+    const opened = advanceFoodFlow(unobserved);
+    assert.equal(opened.autoplayFoodFlow?.current.poolStart?.usableWheat, cancelled ? 202 : 203);
+    assert.equal(foodRecoveryKind(state, 70), null);
   });
 }

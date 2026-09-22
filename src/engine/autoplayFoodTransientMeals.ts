@@ -1,3 +1,4 @@
+import { recordFoodEfficiency } from './autoplayFoodEfficiency';
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from '../content/houseFoodConfig';
 import { houseIsStarving } from '../population/houseFood';
 import type { House } from '../population/population.types';
@@ -34,7 +35,11 @@ export function recordFoodMeals(state: GameState, served: readonly House[]): Gam
   const valid = old === undefined ? state.tick - 1 === flow.current.startedTick
     : old.valid !== false && old.throughTick === state.tick - 1 && old.homes.length === homes.length
       && homes.every(h => old.homes.some(p => p.buildingId === h.buildingId && p.residents === h.residents));
-  return { ...state, autoplayFoodFlow: { ...flow, current: { ...flow.current,
+  const recorded = recordFoodEfficiency(state, {
+    requestedBread: homes.reduce((sum, h) => sum + h.requested - (old?.homes.find(p => p.buildingId === h.buildingId)?.requested ?? 0), 0),
+    consumedBread: homes.reduce((sum, h) => sum + h.consumed - (old?.homes.find(p => p.buildingId === h.buildingId)?.consumed ?? 0), 0),
+  });
+  return { ...recorded, autoplayFoodFlow: { ...(recorded.autoplayFoodFlow ?? flow), current: { ...flow.current,
     meals: { startedTick: old?.startedTick ?? state.tick - 1, throughTick: state.tick, valid, homes } } } };
 }
 

@@ -1,9 +1,10 @@
+import type { MeasuredFoodReason } from './autoplayFoodMeasuredDecision';
 import type { ServicePlanningCollector } from './autoplayServices';
 import type { AutoplayAction } from './autoplay.types';
 import type { AutoplayFoodTransientConfirmation } from './autoplayFoodTransient';
 import type { GameState } from './engine.types';
 
-export type FoodDiagnosticReason = 'not_reached' | 'no_housing' | 'pending_chain' | 'active_observation'
+export type FoodDiagnosticReason = MeasuredFoodReason | 'food_route_repair' | 'facility_limit' | 'not_reached' | 'no_housing' | 'pending_chain' | 'active_observation'
   | 'coverage_selected' | 'recovery_deferred' | 'recovery_selected' | 'repeat_blocked' | 'staff_blocked'
   | 'build_returned_none' | 'transient_metadata_only' | 'measured_no_recovery' | 'unmeasured_starving_guard'
   | 'bootstrap_selected' | 'bootstrap_exhausted';

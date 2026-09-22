@@ -21,7 +21,7 @@ export function stressedTown(): GameState {
       residents: 16, hasWater: true, breadStock: n === 15 ? 0 : 2, lastServicedTick: 0,
       emptyFoodTicks: n === 15 ? 401 : 0, unmetRequirementTicks: 0 })),
     tiles: Array.from({ length: 512 }, (_, n) => ({ tx: n % 64, ty: Math.floor(n / 64), terrain: 'grass',
-      hasRoad: Math.floor(n / 64) === 3, buildingId: null })), pathCache: {},
+      hasRoad: [1, 3].includes(Math.floor(n / 64)) || n % 64 === 0, buildingId: null })), pathCache: {},
   };
 }
 

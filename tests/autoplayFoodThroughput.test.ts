@@ -1,13 +1,15 @@
+import { observedFoodTown, replayFoodObservation } from './foodEfficiencyObservationFixture';
+import { measuredFoodDecision } from '../src/engine/autoplayFoodMeasuredDecision';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createConstructionSite } from '../src/economy/construction';
 import { foodAction } from '../src/engine/autoplayFood';
 import { foodRecoveryKind } from '../src/engine/autoplayFoodThroughput';
 import { lateFoodBuildSites } from '../src/engine/autoplayFoodPlacement';
-import { foodBuildRequest, routedStockTown, stressedTown, withMeasuredFood } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown, stressedTown } from './helpers/autoplayFoodFixtures';
 
 test('Given hungry homes and long food routes When nominal mill count is sufficient Then advisor expands actual supply', () => {
-  const state = withMeasuredFood(stressedTown());
+  const state = observedFoodTown(20, 10);
   const action = foodAction(state, foodBuildRequest);
   assert.equal(action.kind, 'place_building');
   assert.ok(action.kind === 'place_building' && ['wheat_farm', 'mill'].includes(action.building));
@@ -24,10 +26,11 @@ test('Given a palisade town When choosing food placement Then actual road haul l
 });
 
 for (const failure of ['unreachable', 'understaffed'] as const) test(`Given ${failure} food facilities When homes lack bread Then recovery does not duplicate broken capacity`, () => {
-  const state = stressedTown();
+  const state = observedFoodTown();
   if (failure === 'unreachable') state.tiles = state.tiles.map(tile => ({ ...tile, hasRoad: false }));
   else state.buildings = state.buildings.map(b => b.kind === 'mill' ? { ...b, workers: 0 } : b);
   assert.equal(foodRecoveryKind(state, 48), null);
+  assert.equal(measuredFoodDecision(state).reason, failure === 'unreachable' ? 'food_route_blocked' : 'food_staff_shortage');
 });
 
 test('Given a pending food project When homes lack bread Then advisor waits for committed capacity', () => {
@@ -47,11 +50,34 @@ test('Given enough road-adjusted supply When a home has a temporary deficit Then
 });
 
 test(
-  'Given only unreachable granary bread When a house is hungry Then recovery does not treat global stock as supply',
+  'Given only unreachable granary bread When a house is hungry Then incomplete route evidence cannot authorize another facility',
   () => {
     const state = routedStockTown(false);
     state.buildings = state.buildings.map(building =>
       building.kind === 'granary' ? { ...building, inventory: { bread: 96 } } : building);
-    assert.notEqual(foodRecoveryKind(withMeasuredFood(state), 24), null);
+    const observed = replayFoodObservation(state, { wheat: 20, bread: 10, exports: 0 });
+    assert.equal(foodRecoveryKind(observed, 24), null);
+    assert.equal(measuredFoodDecision(observed).reason, 'food_route_blocked');
   },
 );
+
+
+test('Given two disjoint food districts with local suppliers When both have measured adequate food Then no cross-district road is required', () => {
+  const base = stressedTown();
+  const buildings = [
+    ...[1, 35].flatMap((offset, index) => [
+      { ...building('granary-' + index, 'granary', offset, 2, 2), inventory: { bread: 40, wheat: 40 } },
+      { ...building('mill-' + index, 'mill', offset + 4, 2, 2), inventory: { wheat: 2 } },
+      building('farm-' + index, 'wheat_farm', offset + 7, 2, 4),
+      building('home-' + index, 'house', offset + 3, 0, 0),
+    ]),
+  ];
+  const state = { ...base, buildings,
+    houses: base.houses.slice(0, 2).map((house, index) => ({ ...house,
+      buildingId: 'home-' + index, breadStock: 8, emptyFoodTicks: 0 })),
+    tiles: base.tiles.map(tile => ({ ...tile, hasRoad: tile.ty === 1 && (tile.tx < 15 || tile.tx > 30) })),
+    roadRevision: base.roadRevision + 1, pathCache: {} };
+  const observed = replayFoodObservation(state, { wheat: 100, bread: 100, exports: 0 });
+  assert.deepEqual(measuredFoodDecision(observed), { kind: null, reason: 'food_supply_sufficient' });
+  assert.deepEqual(foodAction(observed, foodBuildRequest), { kind: 'none' });
+});

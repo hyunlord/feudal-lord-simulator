@@ -1,3 +1,4 @@
+import { observedFoodTown } from './foodEfficiencyObservationFixture';
 import { foodFlowLayout, foodFlowRoutes } from '../src/engine/autoplayFoodFlow';
 import type { GameState } from '../src/engine/engine.types';
 import { decideNextAction } from '../src/engine/autoplay';
@@ -33,22 +34,20 @@ test('Given pending and active observation When food runs Then earlier terminal 
   }
 });
 
-test('Given a measured recovery When instrumented Then duplicate existing checks retain their original order', async () => {
-  const { withMeasuredFood } = await import('./helpers/autoplayFoodFixtures');
-  const state = withMeasuredFood(stressedTown(), 1000, 0);
+test('Given a measured recovery When instrumented Then each applicable construction guard is evaluated once in order', async () => {
+  const state = observedFoodTown();
   const collector: FoodDiagnosticCollector = {};
   const result = foodAction(state, foodBuildRequest, collector);
   assert.equal(collector.food?.recovery, 'mill');
   assert.equal(collector.food?.reason, 'recovery_selected');
-  assert.deepEqual(collector.food?.checks.map(c => [c.phase, c.check]), [['transition','repeat'],['transition','staff'],['build','repeat'],['build','staff']]);
+  assert.deepEqual(collector.food?.checks.map(c => [c.phase, c.check]), [['build','repeat'],['build','staff']]);
   assert.deepEqual(result, foodAction(structuredClone(state), foodBuildRequest));
 });
 
 test('Given a rejected build When recovery runs Then diagnostics distinguish build none without a second attempt', async () => {
-  const { withMeasuredFood } = await import('./helpers/autoplayFoodFixtures');
   const collector: FoodDiagnosticCollector = {};
   let calls = 0;
-  foodAction(withMeasuredFood(stressedTown(), 1000, 0), () => { calls++; return { kind: 'none' }; }, collector);
+  foodAction(observedFoodTown(), () => { calls++; return { kind: 'none' }; }, collector);
   assert.equal(calls, 1);
   assert.equal(collector.food?.reason, 'build_returned_none');
 });
@@ -78,7 +77,7 @@ function fedTown(): GameState {
 
 
 for (const blocked of ['repeat', 'staff'] as const) test(`Given ${blocked} blocks recovery When recorded Then short-circuited calls remain unevaluated`, () => {
-  let state = withMeasuredFood(stressedTown(), 1000, 0);
+  let state = observedFoodTown();
   if (blocked === 'staff') state.idleWorkers = 0;
   else state = { ...state, autoplayFoodObservation: { kind: 'mill', siteId: 'mill0', placedTick: 1, completedTick: 2, observeUntilTick: 3,
     outcome: { outputDelta: 0, deliveredBreadDelta: 0, starvingHomesDelta: 0, effective: false } } };
@@ -89,8 +88,8 @@ for (const blocked of ['repeat', 'staff'] as const) test(`Given ${blocked} block
 });
 test('Given adequate measured food When recorded Then subordinate reasons stay not captured', () => {
   const collector: FoodDiagnosticCollector = {};
-  foodAction(withMeasuredFood(stressedTown(), 1000, 1000), foodBuildRequest, collector);
-  assert.equal(collector.food?.reason, 'measured_no_recovery');
+  foodAction(observedFoodTown(1000, 1000), foodBuildRequest, collector);
+  assert.equal(collector.food?.reason, 'food_supply_sufficient');
   assert.equal(collector.food?.details, 'not_captured');
 });
 test('Given stale measured flow and starving homes When recorded Then actual unmeasured guard remains unchanged', () => {
@@ -99,10 +98,10 @@ test('Given stale measured flow and starving homes When recorded Then actual unm
   state = { ...state, autoplayFoodFlow: { ...state.autoplayFoodFlow, layout: 'stale' } };
   const collector: FoodDiagnosticCollector = {};
   foodAction(state, foodBuildRequest, collector);
-  assert.equal(collector.food?.reason, 'unmeasured_starving_guard');
+  assert.equal(collector.food?.reason, 'observation_warmup');
   assert.equal(collector.food?.details, 'not_captured');
 });
-test('Given incomplete food chain When recorded Then bootstrap selection and exhausted state are distinct', () => {
+test('Given incomplete food chain When recorded Then bootstrap selection and sufficiently stocked bootstrap are distinct', () => {
   const state = stressedTown();state.buildings = state.buildings.filter(b => b.kind === 'house');
   state.houses = state.houses.map(h => ({ ...h, breadStock: 0 }));
   const collector: FoodDiagnosticCollector = {};
@@ -112,28 +111,27 @@ test('Given incomplete food chain When recorded Then bootstrap selection and exh
   foodAction(state, foodBuildRequest, collector);
   assert.equal(collector.food?.reason, 'bootstrap_exhausted');
 });
-test('Given transient deferral When recorded Then actual metadata is detached and compact', () => {
+test('Given only legacy transient evidence When recorded Then warmup is explicit and no new transient metadata is generated', () => {
   const state = fedTown();const collector: FoodDiagnosticCollector = {};
   const result = foodAction(state, foodBuildRequest, collector);
-  assert.equal(collector.food?.reason, 'recovery_deferred');
-  assert.equal(result.kind, 'none');assert.equal(collector.food?.transition?.defer, true);
-  assert.ok(result.foodTransient && 'epoch' in result.foodTransient);
-  assert.equal(JSON.stringify(collector.food).includes(result.foodTransient.epoch), false);
+  assert.equal(collector.food?.reason, 'observation_warmup');
+  assert.equal(result.kind, 'none');assert.equal(collector.food?.transition, undefined);
+  assert.equal(result.foodTransient, undefined);
 });
-test('Given failed transient metadata When recovery absent Then metadata-only reason is recorded', () => {
+test('Given legacy pending metadata When rolling evidence is absent Then it does not authorize or rewrite a recovery', () => {
   const state = { ...fedTown(), autoplayFoodTransientConfirmation: { status: 'pending', startedTick: 1, deadlineTick: 2, evaluationTick: 2, epoch: 'stale', firstWindowUntilTick: 0 } } satisfies GameState;
   state.buildings = state.buildings.map(b => b.kind === 'mill' ? { ...b, workers: 0 } : b);
   const collector: FoodDiagnosticCollector = {};
   const result = foodAction(state, foodBuildRequest, collector);
-  assert.equal(collector.food?.reason, 'transient_metadata_only');
-  assert.equal(result.foodTransient?.status, 'failed_until_positive_window');
+  assert.equal(collector.food?.reason, 'observation_warmup');
+  assert.equal(result.foodTransient, undefined);
 });
-test('Given food defer before later water choice When advisor runs Then food and final action remain distinct', () => {
+test('Given food warmup before later water choice When advisor runs Then food and final action remain distinct', () => {
   const state = { ...fedTown(), era: 'stone_town', houses: fedTown().houses.map(h => ({ ...h, hasWater: false })) } satisfies GameState;
   const collector: FoodDiagnosticCollector = {};
   const result = decideNextAction(state, undefined, collector);
   assert.equal(collector.food?.action?.kind, 'none');
-  assert.notEqual(result.kind, 'none');assert.equal(result.foodTransient?.status, 'pending');
+  assert.notEqual(result.kind, 'none');assert.equal(result.foodTransient, undefined);
 });
 
 test('Given distant vacant home and stocked granary When food runs Then coverage is the actual terminal branch', () => {
@@ -146,16 +144,16 @@ test('Given distant vacant home and stocked granary When food runs Then coverage
   assert.notEqual(action.kind, 'none');assert.equal(collector.food?.reason, 'coverage_selected');
   assert.equal(collector.food?.recovery, undefined);
 });
-test('Given NONE with transient metadata When driver records Then reducer applies metadata before observer', async () => {
+test('Given food warmup When the full driver records Then observation matches the uninstrumented action without invented metadata', async () => {
   const { createAutoplayTraceDriver } = await import('../scripts/economyHarnessAutoplay');
   const state = { ...fedTown(), era: 'stone_town' } satisfies GameState;
   const baseline = createAutoplayTraceDriver({ id: 'baseline', source: 'synthetic' }).apply(structuredClone(state));
   let seen = 0;
   const driver = createAutoplayTraceDriver({ id: 'metadata', source: 'synthetic', onDiagnostic: receipt => {
-    seen++;assert.equal(receipt.food.reason, 'recovery_deferred');
+    seen++;assert.equal(receipt.food.reason, 'observation_warmup');
     assert.equal(receipt.food.action?.kind, 'none');assert.equal(receipt.result, 'applied');
     assert.equal(driver.appliedActions.length, 1);
   } });
   const next = driver.apply(structuredClone(state));
-  assert.deepEqual(next, baseline);assert.equal(next.autoplayFoodTransientConfirmation?.status, 'pending');assert.equal(seen, 1);
+  assert.deepEqual(next, baseline);assert.equal(next.autoplayFoodTransientConfirmation, undefined);assert.equal(seen, 1);
 });

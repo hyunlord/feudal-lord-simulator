@@ -1,3 +1,4 @@
+import { openFoodEfficiency, recordFoodEfficiency, type FoodEfficiencyHistory } from './autoplayFoodEfficiency';
 import { foodSupplyPoolIds, foodPoolSnapshot, type FoodPoolSnapshot } from './autoplayFoodBottleneck';
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
@@ -25,6 +26,7 @@ export interface FoodFlowWindow {
 }
 
 export interface AutoplayFoodFlow {
+  readonly rolling?: FoodEfficiencyHistory;
   readonly poolIds?: readonly string[];
   readonly layout: string;
   readonly routes: string;
@@ -83,6 +85,13 @@ function emptyWindow(state: GameState, poolIds: readonly string[]): FoodFlowWind
 
 // Called at the opening of a substep: a closed window contains (startedTick, untilTick].
 export function advanceFoodFlow(state: GameState): GameState {
+  const rolling = openFoodEfficiency(state);
+  const advanced = advanceFlowWindow(state);
+  const flow = advanced.autoplayFoodFlow;
+  return flow === undefined ? advanced : { ...advanced, autoplayFoodFlow: { ...flow, rolling } };
+}
+
+function advanceFlowWindow(state: GameState): GameState {
   const layout = foodFlowLayout(state);
   const flow = state.autoplayFoodFlow;
   const routes = flow?.layout === layout && flow.roadRevision === state.roadRevision
@@ -106,7 +115,8 @@ export function advanceFoodFlow(state: GameState): GameState {
   };
 }
 
-export function recordFoodFlow(state: GameState, activity: FoodFlowActivity): GameState {
+export function recordFoodFlow(input: GameState, activity: FoodFlowActivity): GameState {
+  const state = recordFoodEfficiency(input, activity);
   const flow = state.autoplayFoodFlow;
   if (flow === undefined) return state;
   const current = flow.current;

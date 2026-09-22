@@ -157,12 +157,12 @@ test('Given an observed mill produces during the tick loop When observation upda
   assert.equal(next.autoplayFoodObservation?.outcome?.effective, true);
 });
 
-test('Given food observation has expired and starvation remains Then advisor reassesses capacity', () => {
+test('Given expired facility observation without a full actual flow window Then advisor waits for measured capacity', () => {
   const state = { ...routedStockTown(true), tick: 7200, autoplayFoodObservation: {
     kind: 'mill' as const, siteId: 'mill', placedTick: 5000, completedTick: 5600, observeUntilTick: 7000,
   } };
   const action = foodAction(state, foodBuildRequest);
-  assert.equal(action.kind, 'place_building');
+  assert.equal(action.kind, 'none');
 });
 
 test('Given an expired ineffective mill observation When starvation remains Then advisor does not repeat the same mill expansion', () => {

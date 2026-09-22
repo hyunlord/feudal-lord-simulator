@@ -1,3 +1,4 @@
+import { observedFoodTown } from './foodEfficiencyObservationFixture';
 import { unblockedWheatUpperBound } from '../src/engine/autoplayFoodBottleneck';
 import { createConstructionSite } from '../src/economy/construction';
 import assert from 'node:assert/strict';
@@ -27,25 +28,25 @@ test('Given natural seed1 20520 flow and stocked buffer When projected demand is
 });
 
 test('Given nondepleting grain and output-full farms When bread buffer cannot cover demand Then recover downstream with a mill', () => {
-  assert.equal(foodRecoveryKind(backlog(136, 136, 0), 24), 'mill');
+  assert.equal(foodRecoveryKind(observedFoodTown(), 24), 'mill');
 });
 
-test('Given genuine raw depletion despite output-full activity When net exports leave grain short Then preserve farm recovery', () => {
+test('Given genuine raw depletion despite output-full activity When net exports leave grain short Then historical aggregates await a fresh measured window', () => {
   const state = backlog(312, 280, 0, 5131, 2076);
   const flow = state.autoplayFoodFlow;
   const sample = { ...flow.completed, startedTick: state.tick - 12000, wheatExported: 1011 };
-  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 74.8), 'wheat_farm');
+  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 74.8), null);
 });
 
-test('Given full grain stores but no observed backpressure When raw flow is short Then stocks alone do not hide a sustained shortage', () => {
+test('Given full grain stores but no observed backpressure When raw flow is short Then legacy backpressure alone cannot authorize construction', () => {
   const state = backlog(136, 136, 75);
   const flow = state.autoplayFoodFlow;
-  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: { ...flow.completed, farmFullTicks: 0 } } }, 21), 'wheat_farm');
+  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: { ...flow.completed, farmFullTicks: 0 } } }, 21), null);
 });
 
 for (const [idle, wheat, bread, expected] of [[0, 20, 10, 'none'], [2, 20, 10, 'none'], [2, 200, 10, 'mill'], [4, 20, 10, 'wheat_farm']] as const) {
   test(`Given ${idle} spare workers When recovery needs additional staff Then action is ${expected}`, () => {
-    const state = { ...withMeasuredFood(stressedTown(), wheat, bread), idleWorkers: idle };
+    const state = { ...observedFoodTown(wheat * 6, bread * 6), idleWorkers: idle };
     const action = foodAction(state, foodBuildRequest);
     assert.equal(action.kind === 'place_building' ? action.building : action.kind, expected);
   });
@@ -78,7 +79,7 @@ test('Given two disconnected food pools When one contains surplus Then it cannot
   assert.ok(deadline);
   const next = advanceFoodFlow({ ...recordFoodFlow(state, { wheatProduced: 1 }), tick: deadline });
   assert.deepEqual(next.autoplayFoodFlow?.poolIds, []);
-  assert.equal(foodRecoveryKind(next, 48), 'wheat_farm');
+  assert.equal(foodRecoveryKind(next, 48), null); // A disconnected, incomplete observation cannot authorize expansion.
 });
 
 test('Given stock claims incoming capacity and real cargo When observing the pool Then physical units count once and unusable cargo is excluded from buffers', () => {
@@ -99,20 +100,20 @@ test('Given stock claims incoming capacity and real cargo When observing the poo
 });
 
 test('Given claimed bread covering the apparent deficit When choosing downstream expansion Then reserved stock is not a usable buffer', () => {
-  const state = backlog(136, 136, 75);
-  state.buildings = state.buildings.map(b => b.kind === 'granary' ? { ...b, stockReserved: { bread: 75 } } : b);
+  const state = observedFoodTown();
+  state.buildings = state.buildings.map(b => b.kind === 'granary' ? { ...b, inventory: { bread: 300 }, stockReserved: { bread: 300 } } : b);
   assert.equal(foodRecoveryKind(state, 21), 'mill');
 });
 
 test('Given stock was depleted after the completed opportunity When selecting recovery Then stale buffer does not suppress a mill', () => {
-  const state = backlog(136, 136, 75);
+  const state = observedFoodTown();
   state.buildings = state.buildings.map(b => b.kind === 'granary' ? { ...b, inventory: { wheat: 100 } } : b);
   assert.equal(foodRecoveryKind(state, 21), 'mill');
 });
 
 
 test('Given future civic staff already committed When current idle workers look sufficient Then do not spend the same workers twice', () => {
-  const base = withMeasuredFood(stressedTown(), 20, 10);
+  const base = observedFoodTown(20, 10);
   // Existing demand52, available56, and planned market3 leave only1 for a four-worker farm.
   const state = { ...base, population: 112, idleWorkers: 4, constructionSites: [
     createConstructionSite({ ordinal: 100, kind: 'market', tx: 50, ty: 6, startedTick: base.tick }),
@@ -163,11 +164,11 @@ test('Given a stocked pool and real produced events When the exact opportunity c
   assert.equal(closed.autoplayFoodFlow?.current.breadProduced, 0);
 });
 
-test('Given grain backpressure and positive bread reserve When physical bread is depleting Then recover downstream before the buffer empties', () => {
+test('Given grain backpressure and positive bread reserve When physical bread is depleting Then legacy depletion alone cannot authorize construction', () => {
   const state = backlog(136, 136, 75);
   const flow = state.autoplayFoodFlow;
   const sample = { ...flow.completed, poolStart: { ...flow.completed.poolStart, bread: 90 } };
-  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 21), 'mill');
+  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 21), null);
 });
 
 test('Given sufficient raw flow and a nondepleting bread buffer When observed output has a fractional shortfall Then avoid an unnecessary mill', () => {
@@ -189,14 +190,14 @@ test('Given bread moves from a granary into a connected home When a window close
   assert.equal(measuredFoodFlow(closed)?.poolEnd?.usableBread, 8);
 });
 
-test('Given seed3 brief raw rebound and five percent blocked farms When even removing storage blockage cannot supply demand Then choose a farm', () => {
+test('Given seed3 brief raw rebound and five percent blocked farms When even removing storage blockage cannot supply demand Then theoretical work cannot authorize a farm', () => {
   const state = backlog(283, 294, 236, 1400, 574);
   const flow = state.autoplayFoodFlow;
   const sample = { ...flow.completed, startedTick: state.tick - 3268, wheatExported: 241,
     farmFullTicks: 2867, farmReadyTicks: 58824, farmOpeningProgress: 301,
     poolStart: { ...flow.completed.poolStart, bread: 383 }, poolEnd: { ...flow.completed.poolEnd, bread: 322 } };
   // Even pooled partial progress yields at most1478 wheat, net1237 <1241.84 needed.
-  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 76), 'wheat_farm');
+  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 76), null);
 });
 
 
@@ -208,11 +209,11 @@ test('Given staggered partial batches When pooling ready-work upper bounds Then 
   assert.equal(sample.wheatProduced, 134);
 });
 
-test('Given legacy backpressure metadata without ready-work observation When raw output is deficient Then missing evidence cannot enable an override', () => {
+test('Given legacy backpressure metadata without ready-work observation When raw output is deficient Then missing rolling evidence cannot authorize expansion', () => {
   const state = backlog(136, 136, 75);
   const flow = state.autoplayFoodFlow;
   const { farmReadyTicks: _ready, farmOpeningProgress: _progress, ...sample } = flow.completed;
-  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 21), 'wheat_farm');
+  assert.equal(foodRecoveryKind({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, 21), null);
 });
 
 test('Given no workers after actual allocation When the normal substep runs Then no potential ready work is counted', () => {

@@ -118,7 +118,7 @@ test("Given low bread and no food chain When autoplay decides repeatedly Then it
   assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well, wheat, mill] })), { kind: "place_building", building: "granary", tx: 6, ty: 5 });
 });
 
-test("Given full housing and one food chain When autoplay decides Then it expands wheat before another cottage", () => {
+test("Given full housing and a disconnected food chain When autoplay decides Then it repairs roads before adding facilities", () => {
   const homes = ["a", "b", "c", "d"].map((suffix, index) =>
     building({ id: `house-${suffix}`, kind: "house", tx: 5 + (index % 2), ty: 5 + Math.floor(index / 2) })
   );
@@ -136,11 +136,10 @@ test("Given full housing and one food chain When autoplay decides Then it expand
     roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3"],
   }));
 
-  assert.equal(actual.kind, "place_building");
-  assert.equal(actual.kind === "place_building" ? actual.building : null, "wheat_farm");
+  assert.equal(actual.kind, "place_road");
 });
 
-test("Given supplemental wheat completed When a second mill is missing Then autoplay resumes the food chain instead of waiting forever", () => {
+test("Given supplemental wheat on a disconnected food road When autoplay decides Then it reconnects before considering another mill", () => {
   const homes = ["a", "b", "c", "d"].map((suffix, index) =>
     building({ id: `house-${suffix}`, kind: "house", tx: 5 + (index % 2), ty: 5 + Math.floor(index / 2) })
   );
@@ -159,8 +158,7 @@ test("Given supplemental wheat completed When a second mill is missing Then auto
     roads: ["1,3", "2,3", "3,3", "5,7", "6,7", "3,4", "6,3", "8,3"],
   }));
 
-  assert.equal(actual.kind, "place_building");
-  assert.equal(actual.kind === "place_building" ? actual.building : null, "mill");
+  assert.equal(actual.kind, "place_road");
 });
 
 test("Given food support is under construction When housing is full Then autoplay waits instead of adding a cottage early", () => {

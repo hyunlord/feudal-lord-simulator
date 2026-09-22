@@ -37,36 +37,46 @@ function fedTown(): GameState {
         requested: 0, consumed: 0, starving: false }] } } } };
 }
 
+// A loaded legacy confirmation, retained only to exercise existing compatibility helpers.
+function legacyPendingTown(): GameState {
+  const state = fedTown();
+  const flow = state.autoplayFoodFlow;
+  return { ...state, autoplayFoodTransientConfirmation: { status: 'pending', startedTick: 6120,
+    deadlineTick: 6801, evaluationTick: 6840, firstWindowUntilTick: 6000,
+    epoch: JSON.stringify([flow?.layout, flow?.routes, state.roadRevision, flow?.poolIds,
+      state.houses.map(h => [h.buildingId, h.residents])]) } };
+}
+
 function applyFood(state: GameState): GameState {
   const action = autoplayActionToGameAction(foodAction(state, foodBuildRequest), state);
   return action === null ? state : gameReducer(state, action);
 }
 
-test('Given one fully served negative window with sufficient reserves When deciding Then persist one fixed confirmation instead of building', () => {
+test('Given one fully served negative window with sufficient reserves When deciding Then await rolling evidence without creating a legacy confirmation', () => {
   const state = fedTown();
-  assert.equal(foodRecoveryKind(state, 4), 'mill');
+  assert.equal(foodRecoveryKind(state, 4), null);
   const action = foodAction(state, foodBuildRequest);
   assert.equal(action.kind, 'none');
-  assert.ok('foodTransient' in action);
+  assert.equal(action.foodTransient, undefined);
   const next = applyFood(state);
-  assert.ok('autoplayFoodTransientConfirmation' in next);
+  assert.equal(next.autoplayFoodTransientConfirmation, undefined);
 });
 
-test('Given legacy meal metadata is absent When a positive reserve is depleting Then retain immediate mill recovery', () => {
+test('Given legacy meal metadata is absent When a positive reserve is depleting Then missing rolling evidence prevents speculative mill recovery', () => {
   const state = fedTown();
   const flow = state.autoplayFoodFlow;
   assert.ok(flow?.completed?.poolStart && flow.completed.poolEnd);
   const sample = { startedTick: 5600, untilTick: 6000, wheatProduced: 10, wheatExported: 0,
     breadProduced: 3, breadExported: 0, qualified: true, poolStart: flow.completed.poolStart,
     poolEnd: flow.completed.poolEnd };
-  assert.equal(foodAction({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, foodBuildRequest).kind, 'place_building');
+  assert.equal(foodAction({ ...state, autoplayFoodFlow: { ...flow, completed: sample } }, foodBuildRequest).kind, 'none');
 });
 
-test('Given private food is insufficient through the next ordinary decision When shared stock is reserved Then do not defer', () => {
+test('Given private food is insufficient through the next ordinary decision When shared stock is reserved Then do not construct from a short legacy window', () => {
   const state = fedTown();
   const reserved = { ...state, houses: state.houses.map(h => ({ ...h, breadStock: 0 })),
     buildings: state.buildings.map(b => b.kind === 'granary' ? { ...b, stockReserved: { bread: 40 } } : b) };
-  assert.equal(foodAction(reserved, foodBuildRequest).kind, 'place_building');
+  assert.equal(foodAction(reserved, foodBuildRequest).kind, 'none');
 });
 
 function progressed(state: GameState, tick: number, bread: number): GameState {
@@ -80,25 +90,25 @@ function progressed(state: GameState, tick: number, bread: number): GameState {
       homes: [{ buildingId: 'home', residents: 32, requested: 0, consumed: 0, starving: false }] } } } };
 }
 
-test('Given a fixed pending deadline When a newer full window is positive at the ordinary decision Then clear without construction', () => {
-  const pending = applyFood(fedTown());
+test('Given a fixed pending deadline When a newer full window is positive at the ordinary decision Then do not rewrite legacy metadata or construct without rolling evidence', () => {
+  const pending = legacyPendingTown();
   assert.equal(pending.autoplayFoodTransientConfirmation?.status, 'pending');
   const positive = progressed(pending, 6840, 9);
   const action = foodAction(positive, foodBuildRequest);
   assert.equal(action.kind, 'none');
-  assert.equal(action.foodTransient, null);
-  assert.equal(applyFood(positive).autoplayFoodTransientConfirmation, undefined);
+  assert.equal(action.foodTransient, undefined);
+  assert.deepEqual(applyFood(positive).autoplayFoodTransientConfirmation, pending.autoplayFoodTransientConfirmation);
 });
 
-test('Given one confirmation When the second comparable window is negative Then recover in the same call and latch failure', () => {
-  const second = progressed(applyFood(fedTown()), 6840, 3);
+test('Given one confirmation When the second comparable window is negative Then a second short legacy sample still cannot authorize construction', () => {
+  const second = progressed(legacyPendingTown(), 6840, 3);
   const action = foodAction(second, foodBuildRequest);
-  assert.equal(action.kind, 'place_building');
-  assert.equal(action.foodTransient?.status, 'failed_until_positive_window');
+  assert.equal(action.kind, 'none');
+  assert.equal(action.foodTransient, undefined);
 });
 
 test('Given the opportunity dynamically extends When no new completed sample exists at the fixed deadline decision Then fail without extending', () => {
-  const pending = applyFood(fedTown());
+  const pending = legacyPendingTown();
   const flow = pending.autoplayFoodFlow;
   assert.ok(flow?.current.meals);
   const extended = { ...pending, tick: 6840, autoplayFoodFlow: { ...flow,
@@ -109,7 +119,7 @@ test('Given the opportunity dynamically extends When no new completed sample exi
 });
 
 test('Given a pending confirmation When roads change Then failed allowance survives missing and negative windows and token output', () => {
-  const pending = applyFood(fedTown());
+  const pending = legacyPendingTown();
   const changed = { ...pending, roadRevision: pending.roadRevision + 1 };
   const decision = transientFoodDecision(changed, 4, true);
   assert.equal(decision.foodTransient?.status, 'failed_until_positive_window');
@@ -147,8 +157,8 @@ test('Given food in another home When this home cannot meet its meal Then privat
 });
 
 test('Given confirmation metadata with a building command When reducing Then both state effects occur in one action', () => {
-  const state = fedTown();
-  const food = foodAction(state, foodBuildRequest);
+  const state = legacyPendingTown();
+  const food = { foodTransient: state.autoplayFoodTransientConfirmation };
   assert.ok(food.foodTransient);
   const action = autoplayActionToGameAction({ kind: 'place_building', building: 'well', tx: 12, ty: 3,
     foodTransient: food.foodTransient }, state);
@@ -199,7 +209,7 @@ test('Given stocked bread in an unreachable supplier component When the local gr
 });
 
 test('Given a pending confirmation When the current real meal is missed Then revoke before its fixed deadline', () => {
-  const pending = applyFood(fedTown());
+  const pending = legacyPendingTown();
   const flow = pending.autoplayFoodFlow;
   assert.ok(flow?.current.meals);
   const missed = { ...pending, autoplayFoodFlow: { ...flow, current: { ...flow.current,
@@ -210,7 +220,7 @@ test('Given a pending confirmation When the current real meal is missed Then rev
 });
 
 test('Given a pending confirmation When a new occupied home lacks evidence Then revoke without inventing historical meals', () => {
-  const pending = applyFood(fedTown());
+  const pending = legacyPendingTown();
   const newHome = { ...pending, houses: [...pending.houses,
     { buildingId: 'new', level: 0, residents: 1, hasWater: true, breadStock: 3,
       lastServicedTick: 6120, unmetRequirementTicks: 0 }] };
@@ -256,12 +266,12 @@ test('Given a cancelled or wrong destination bread carter When no shared stock r
     ? { ...w, cancellation: null, destination: { kind: 'building', buildingId: 'missing' } } : w) }, 6480), false);
 });
 
-test('Given a pending food deferral in stone town When lower priority water is required Then carry metadata with that same-call action', () => {
+test('Given legacy food samples in stone town When lower priority water is required Then water proceeds without invented confirmation', () => {
   const state = { ...fedTown(), era: 'stone_town' as const,
     houses: fedTown().houses.map(h => ({ ...h, hasWater: false })) };
   const action = decideNextAction(state);
   assert.notEqual(action.kind, 'none');
-  assert.equal(action.foodTransient?.status, 'pending');
+  assert.equal(action.foodTransient, undefined);
 });
 
 test('Given bread in a distant granary on the same road When only an empty local granary can reach the home Then no imaginary granary transfer funds waiting', () => {
