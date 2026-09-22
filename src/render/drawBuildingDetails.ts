@@ -111,7 +111,7 @@ function drawHouseDetails(
   }
 }
 
-function problemMarkerKind(input: BuildingDetailInput): ProblemMarkerKind | null {
+export function problemMarkerKind(input: Pick<BuildingDetailInput, "kind" | "visualState">): ProblemMarkerKind | null {
   if (input.visualState.houseProblem !== null) return input.visualState.houseProblem;
   switch (input.visualState.production) {
     case "no_workers":

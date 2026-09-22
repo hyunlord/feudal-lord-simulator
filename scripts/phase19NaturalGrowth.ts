@@ -56,6 +56,7 @@ export function runPhase19NaturalGrowth(options: {
   readonly targetLots: number;
   readonly maxTicks: number;
   readonly seed?: number;
+  readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
   readonly onProgress?: (snapshot: ReturnType<typeof growthSnapshot>) => void;
@@ -122,7 +123,7 @@ export function runPhase19NaturalGrowth(options: {
     if (window.stableSince !== null) {
       stableMinimumBread = Math.min(stableMinimumBread, current.minimumHouseBread);
       if (current.occupiedBreadZeroHouses > 0) stableBreadZeroTicks += 1;
-      if (window.complete) { record("target-scale-stable"); break; }
+      if (window.complete && (options.additionalAcceptance?.(state) ?? true)) { record("target-scale-stable"); break; }
     } else {
       stableBreadZeroTicks = 0; stableMinimumBread = Infinity;
     }
@@ -154,12 +155,13 @@ export function runPhase19NaturalGrowth(options: {
   const { stableSince, sustainedTicks, interruptions: stabilityInterruptions, complete } = stability.report();
   const capacitySummary = summarizeCapacityRecovery(observation);
   const acceptance = { targetReached: targetReachedTick !== null, victory: victoryTick !== null,
-    fullServiceStable: complete, validRun: failures.length === 0 };
+    fullServiceStable: complete, validRun: failures.length === 0,
+    ...(options.additionalAcceptance === undefined ? {} : { additionalAcceptance: options.additionalAcceptance(state) }) };
   const acceptanceMet = Object.values(acceptance).every(Boolean);
   return {
     status: acceptanceMet ? "passed" : "acceptance-unmet", source, seed, opening: opening.provenance, acceptance,
     policy: { maxHousingLots: targetLots }, maxTicks, targetReachedTick, maximumLots,
-    stopReason: failures.length > 0 ? "invalid-run" : complete ? "target-scale-stable" : "tick-budget",
+    stopReason: failures.length > 0 ? "invalid-run" : complete && (options.additionalAcceptance?.(state) ?? true) ? "target-scale-stable" : "tick-budget",
     growthBlocker: null,
     sourceContract: "Verification-only rigid opening translation on unchanged buildWorldGrid(seed), nearest legal Manhattan/dy/dx offset; not a product seed feature. Seed1 preserves DEFAULT_GAME_STATE; actual reducer and advanceTick; economics and save schema unchanged",
     resourcePreflight,
