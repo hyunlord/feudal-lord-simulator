@@ -1,3 +1,4 @@
+import { hasBudgetedServicePlan } from './autoplayServiceBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { HOUSEHOLD_SERVICE_CONFIG } from '../population/serviceAllocation';
 import { buildingFootprint } from '../geometry/buildingFootprint';
@@ -7,7 +8,7 @@ import type { AutoplayAction } from './autoplay.types';
 import { findAutoplayServiceWitness, type ServiceSpaceWitness } from './autoplayServiceSpaceWitness';
 import { projectServiceAction, serviceCandidate, serviceFootprint, serviceSpaceBuildings, serviceTileKey } from './autoplayServiceSpaceRoutes';
 
-type Layout = { readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
+type Layout = { budget?: boolean; readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
 const byState = new WeakMap<GameState, Layout>();
 const tileKeys = new WeakMap<GameState['tiles'], string>();
 const layouts = new Map<string, Layout>();
@@ -86,6 +87,13 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
     projected ??= projectServiceAction(state, action);
     const home = projected.buildings.find(building => building.id === 'autoplay-service-space-new');
     allowed = home !== undefined && witnessFor(layoutFor(projected), projected, home) !== null;
+  }
+  if (allowed && (action.kind === 'place_building' || action.kind === 'place_road' || knownProjection !== undefined)) {
+    projected ??= projectServiceAction(state, action);
+    const nextLayout = layoutFor(projected);
+    if ((action.kind === 'place_building' && action.building === 'house') || (layout.budget ??= hasBudgetedServicePlan(state))) {
+      allowed = nextLayout.budget ??= hasBudgetedServicePlan(projected);
+    }
   }
   if (key !== null) layout.decisions.set(key, allowed);
   return allowed;

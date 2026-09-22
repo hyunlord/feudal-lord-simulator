@@ -99,3 +99,54 @@ test('Given thirteen waterless lots When scoring a single well Then its gain res
   const ranked = rankServiceCandidates({ service: 'water', allocation: input, current: allocateHouseServices(input), candidates: [well(2, 1)] });
   assert.equal(ranked[0]?.gainedLots, 12);
 });
+
+import { findAutoplayServiceWitness } from '../src/engine/autoplayServiceSpaceWitness';
+
+test('Given exhausted market slots When a remote home has a hypothetical third pad Then no budget-valid service witness exists', () => {
+  const state = fixture();
+  const home = state.buildings.find(building => building.kind === 'house');
+  assert.ok(home);
+  assert.equal(findAutoplayServiceWitness(state, home), null);
+  const spare = { ...state, buildings: state.buildings.filter(building => building.id !== 'market2'),
+    tiles: state.tiles.map(tile => tile.buildingId === 'market2' ? { ...tile, buildingId: null } : tile) };
+  assert.ok(findAutoplayServiceWitness(spare, home), 'an unused slot must still permit reachable future service');
+});
+
+test('Given the second market is under construction When a remote home needs another provider Then the planned slot counts against its witness', () => {
+  const state = fixture();
+  const home = state.buildings.find(building => building.kind === 'house');
+  assert.ok(home);
+  const pending = { ...state, buildings: state.buildings.filter(building => building.id !== 'market2'),
+    constructionSites: [createConstructionSite({ ordinal: 998, kind: 'market', tx: 4, ty: 10, startedTick: state.tick })] };
+  assert.equal(findAutoplayServiceWitness(pending, home), null);
+});
+
+import { hasBudgetedServicePlan } from '../src/engine/autoplayServiceBudget';
+
+test('Given three distant housing groups When each has a local service pad Then a two-market joint budget still rejects the layout', () => {
+  const base = fixture();
+  const template = base.buildings.find(building => building.kind === 'house');
+  const household = base.houses[0];
+  assert.ok(template && household);
+  const homes = [{ ...template, id: 'a', tx: 1, ty: 1 }, { ...template, id: 'b', tx: 28, ty: 1 }, { ...template, id: 'c', tx: 14, ty: 24 }];
+  const buildings = [...base.buildings.filter(building => building.kind === 'storehouse'), ...homes];
+  const state = { ...base, buildings, houses: homes.map(home => ({ ...household, buildingId: home.id })),
+    tiles: base.tiles.map(tile => ({ ...tile, buildingId: buildings.find(building => serviceFootprint(building).some(point => point.tx === tile.tx && point.ty === tile.ty))?.id ?? null })) };
+  assert.ok(homes.every(home => findAutoplayServiceWitness(state, home) !== null));
+  assert.equal(hasBudgetedServicePlan(state), false);
+  const compact = { ...state, buildings: buildings.filter(building => building.id !== 'c'), houses: state.houses.filter(home => home.buildingId !== 'c'),
+    tiles: state.tiles.map(tile => tile.buildingId === 'c' ? { ...tile, buildingId: null } : tile) };
+  assert.equal(hasBudgetedServicePlan(compact), true);
+  const isolated = { kind: 'place_building', building: 'house', tx: 14, ty: 24 } as const;
+  assert.equal(preservesAutoplayServiceSpace(compact, isolated), false, 'new housing cannot rely on three different imaginary markets');
+  const wastedSlot = { kind: 'place_building', building: 'market', tx: 14, ty: 20 } as const;
+  assert.equal(preservesAutoplayServiceSpace(compact, wastedSlot), false, 'the first facility must leave a feasible shared remaining slot');
+  const servedSide = { kind: 'place_building', building: 'market', tx: 2, ty: 3 } as const;
+  assert.equal(preservesAutoplayServiceSpace(compact, servedSide), true);
+  assert.equal(preservesAutoplayServiceSpace({ ...compact, buildings: [...compact.buildings].reverse(), houses: [...compact.houses].reverse() }, isolated), false);
+  assert.equal(preservesAutoplayServiceSpace(compact, servedSide), true, 'a cached rejection must not poison another geometry');
+});
+
+import { serviceFootprint } from '../src/engine/autoplayServiceSpaceRoutes';
+
+import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';

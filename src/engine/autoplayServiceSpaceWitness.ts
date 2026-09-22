@@ -64,6 +64,11 @@ export function findAutoplayServiceWitness(state: GameState, home: Building): Se
   const potential = potentialServiceRoads(state, buildings);
   const allocation = allocationForHome(state, home, buildings, potential);
   const services = allocation.houses.get(home.id);
+  const lots = buildings.filter(building => building.kind === 'house').reduce((sum, building) => sum + houseLotArea(building), 0);
+  const spareSlot = (kind: UrbanService): boolean => buildings.filter(building => building.kind === kind).length
+    < Math.ceil(lots / HOUSEHOLD_SERVICE_CONFIG[kind].capacity) + 1;
+  if ((services?.market.kind !== 'served' && !spareSlot('market'))
+    || (services?.church.kind !== 'served' && !spareSlot('church'))) return null;
   const markets: readonly (Building | null)[] = services?.market.kind === 'served' ? [null] : candidatePads(state, home, 'market');
   const churches: readonly (Building | null)[] = services?.church.kind === 'served' ? [null] : candidatePads(state, home, 'church');
   for (const market of markets) for (const church of churches) {
