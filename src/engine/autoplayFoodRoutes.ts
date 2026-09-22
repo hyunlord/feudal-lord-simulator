@@ -2,7 +2,7 @@ import { houseFoodRation } from '../content/houseFoodConfig';
 import { availableStock } from '../economy/storage';
 import type { Building } from '../content/buildingConfig';
 import { roadActionToTargets } from './autoplayConstructionRoads';
-import { feasibleDistributorDistance } from './distributorAccess';
+import { eligibleRoamingExits, feasibleDistributorDistance } from './distributorAccess';
 import { buildingRoadAccessTiles, resolveBuildingRoute } from './routing';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
@@ -13,8 +13,10 @@ export function foodRouteRepairAction(state: GameState): AutoplayAction {
   const occupied = new Set(state.houses.filter(house => house.residents > 0).map(house => house.buildingId));
   const stranded = strandedFoodSupply(state);
   if (stranded !== null) {
+    const sourceAccess = stranded.targets.some(target => target.kind === 'house')
+      ? eligibleRoamingExits : buildingRoadAccessTiles;
     return roadActionToTargets(state, stranded.targets.flatMap(b => buildingRoadAccessTiles(state, b)),
-      stranded.sources.flatMap(b => buildingRoadAccessTiles(state, b)));
+      stranded.sources.flatMap(b => sourceAccess(state, b)));
   }
   const disconnected = state.buildings.filter(building => {
     if (building.kind === 'mill' || building.kind === 'wheat_farm') {
