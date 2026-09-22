@@ -1,3 +1,4 @@
+import { BALANCE } from "../content/balanceConfig";
 import {
   BUILDING_CONFIG_BY_KIND,
   type Building,
@@ -155,7 +156,7 @@ function spawnForBuilding(
   if (production === null) return { buildings, walker: null };
   if (
     production.input !== null &&
-    amountOf(building.inventory, production.input) < production.inputPerOutput
+    amountOf(building.inventory, production.input) < (building.kind === "mill" ? BALANCE.CARTER_CAPACITY : production.inputPerOutput)
   ) {
     const fetch = spawnFetch({
       tick,

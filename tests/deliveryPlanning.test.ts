@@ -262,7 +262,7 @@ test("grain intake leaves bread room and counts grain cargo already reserved", (
 
 test("grain quota cannot steal real capacity and bread can use the remaining room", () => {
   const farm = building("farm", "wheat_farm", { inventory: { wheat: 8 } });
-  const mill = building("mill", "mill", { inventory: { wheat: 2, bread: 8 } });
+  const mill = building("mill", "mill", { inventory: { wheat: 8, bread: 8 } });
   const granary = building("granary", "granary", { inventory: { wheat: 100, bread: 95 } });
   const result = spawnCarters({ tick: 10, buildings: [farm, mill, granary], walkers: [], inventory: DELIVERY_INVENTORY,
     routes: routePort({ "farm->granary": line([0, 0], [1, 0]), "mill->granary": line([0, 0], [1, 0]) }) });
