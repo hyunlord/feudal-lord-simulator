@@ -3,6 +3,7 @@ import { drawCauseMap } from "./causeMapOverlay";
 import type { Walker } from "../agents/walker.types";
 import type { BuildingKind } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
+import { availableStock } from '../economy/storage';
 import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
 import { drawObjectRenderItems } from "./drawObjectRenderItems";
@@ -30,9 +31,9 @@ import {
   type ConstructionCompletionTracker,
 } from "./constructionCompletionEffects";
 import { drawPalisadeGateFlourish, drawPalisadeRun } from "./drawPalisadeSegments";
-import { previewPalisadeRouteAccess } from "../engine/palisadeRouteAccess";
-import { isPalisadeConstructionSite } from "../domain/palisadeConstructionSchedule";
+import { previewPalisadeDraftRouteAccess, type PalisadeRouteAccess } from "../engine/palisadeRouteAccess";
 import { drawPalisadeRoutePreviewOverlay } from "./palisadeRoutePreviewOverlay";
+import { drawPalisadeDraftOverlay } from './palisadeDraftOverlay';
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 
@@ -152,18 +153,18 @@ export const renderFrame = (input: RenderFrameInput): void => {
     houseIds: input.highlightedHouseIds ?? [],
   });
   if (input.palisadeDraft !== undefined && input.palisadeDraft !== null) {
-    const routeAccess = previewPalisadeRouteAccess(input.state, input.palisadeDraft.candidate.path);
+    const path = input.palisadeDraft.path;
+    const routeAccess = path.length >= 2 ? cachedPalisadeRoutePreview(input.state, path) : null;
     drawPalisadeRun(input.context, {
-      path: input.palisadeDraft.candidate.path,
+      path,
       style: "plot",
       zoom: input.camera.zoom,
     });
-    const unreachableIds = new Set(routeAccess.unreachableSiteIds);
-    const unreachablePaths = routeAccess.projected.constructionSites
-      .filter(isPalisadeConstructionSite)
-      .filter(site => unreachableIds.has(site.id))
-      .map(site => site.path);
+    const unreachablePaths = routeAccess?.segments
+      .filter(segment => segment.status === 'unreachable').map(segment => segment.path) ?? [];
     drawPalisadeRoutePreviewOverlay(input.context, unreachablePaths, input.camera.zoom);
+    drawPalisadeDraftOverlay(input.context, input.state, input.palisadeDraft,
+      input.camera.zoom, routeAccess?.gates ?? [], routeAccess?.segments ?? []);
   }
   if (input.palisadeCeremonyStartedAtMs !== undefined && input.palisadeCeremonyStartedAtMs !== null && input.state.palisade !== null) {
     drawPalisadeGateFlourish(input.context, {
@@ -185,6 +186,24 @@ export const renderFrame = (input: RenderFrameInput): void => {
     zoom: input.camera.zoom,
   });
 };
+
+let lastPalisadeRoutePreview: {
+  readonly path: PalisadeDraftState['path'];
+  readonly tiles: GameState['tiles'];
+  readonly key: string;
+  readonly access: PalisadeRouteAccess;
+} | null = null;
+
+function cachedPalisadeRoutePreview(state: GameState, path: PalisadeDraftState['path']): PalisadeRouteAccess {
+  const key = [state.era, state.roadRevision, state.treasuryTimber > 0,
+    state.buildings.map(building => `${building.id}:${building.tx}:${building.ty}:${building.kind}:${availableStock(building, 'timber') > 0}`).join('|'),
+    state.constructionSites.map(site => site.id).join('|')].join('/');
+  if (lastPalisadeRoutePreview?.path === path && lastPalisadeRoutePreview.tiles === state.tiles
+    && lastPalisadeRoutePreview.key === key) return lastPalisadeRoutePreview.access;
+  const access = previewPalisadeDraftRouteAccess(state, path);
+  lastPalisadeRoutePreview = { path, tiles: state.tiles, key, access };
+  return access;
+}
 
 export const runRenderPasses = (passes: RenderPasses): void => {
   passes.ground();

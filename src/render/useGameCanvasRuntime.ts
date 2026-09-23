@@ -17,7 +17,8 @@ import { resolveCanvasClick } from "./canvasClickResolution";
 import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
-import { advancePalisadeDraftDrag, beginPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
+import { advancePalisadeDraftDrag, beginPalisadeDraftDrag, finishPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
+import { applyPalisadeIntent } from './palisadeDraftInteraction';
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
@@ -96,7 +97,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (event.button === 2 && refs.dragRef.current.mode === "road") return;
       if (event.button === 0) refs.roadCancelled.current = false;
       updateHover(event);
-      const palisadeDrag = beginPalisadeDraftDrag({ button: event.button, hover: refs.hoverRef.current, draft: palisadeDraftRef.current, point: canvasPoint(event) });
+      const palisadeDrag = beginPalisadeDraftDrag({ button: event.button, hover: refs.hoverRef.current,
+        draft: palisadeDraftRef.current, point: canvasPoint(event), camera: refs.cameraRef.current,
+        state: stateRef.current });
       if (palisadeDrag !== null) {
         palisadeDraftRef.current = palisadeDrag.draft;
         onPalisadeDraftChange?.(palisadeDrag.draft);
@@ -115,6 +118,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         state: stateRef.current,
         draft: palisadeDraftRef.current,
         hover: refs.hoverRef.current,
+        point: canvasPoint(event),
+        camera: refs.cameraRef.current,
       });
       if (nextDraft !== null) {
         palisadeDraftRef.current = nextDraft;
@@ -134,6 +139,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (refs.roadCancelled.current && event.button !== 0) return;
       const drag = refs.roadCancelled.current ? { ...refs.dragRef.current, moved: true } : refs.dragRef.current;
       refs.roadCancelled.current = false;
+      if (drag.mode === 'palisade') {
+        const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
+        if (nextDraft !== palisadeDraftRef.current) {
+          palisadeDraftRef.current = nextDraft;
+          onPalisadeDraftChange?.(nextDraft);
+        }
+      }
       const destination = releaseTileFromMouseUp(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
       const attempt = finishedRoadAttempt(stateRef.current, drag, destination, performance.now());
       if (attempt !== null) {
@@ -187,6 +199,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const defaultContextMenu = createCanvasContextMenuHandler({ canvas, dispatch, refs, selectedToolRef, setSelection, stateRef });
     const contextMenuCanvas = (event: MouseEvent) => {
+      if (palisadeDraftRef.current !== null) {
+        event.preventDefault();
+        const nextDraft = applyPalisadeIntent({ state: stateRef.current, draft: palisadeDraftRef.current,
+          intent: { type: 'cancel' } });
+        palisadeDraftRef.current = nextDraft;
+        onPalisadeDraftChange?.(nextDraft);
+        return;
+      }
       if (cancelRoadPreview(refs)) event.preventDefault(); else defaultContextMenu(event);
     };
     const wheel = (event: WheelEvent) => {
@@ -217,10 +237,6 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.spacePressed.current = result.spacePressed;
       toggleObjectRenderViewMode(result.toggleOutlinesView);
       if (result.dismissSelection) setSelection(null);
-      if (event.code === "Escape" && palisadeDraftRef.current !== null) {
-        palisadeDraftRef.current = null;
-        onPalisadeDraftCancel?.();
-      }
       if (result.preventDefault || cameraKey) event.preventDefault();
     };
     const keyUp = (event: KeyboardEvent) => {
@@ -231,6 +247,11 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const leaveCanvas = () => { canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {
+      if (palisadeDraftRef.current?.activeGesture !== null && palisadeDraftRef.current !== null) {
+        const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
+        palisadeDraftRef.current = nextDraft;
+        onPalisadeDraftChange?.(nextDraft);
+      }
       resetCameraInputState(cameraInput);
       refs.spacePressed.current = false;
       refs.hoverRef.current = null;
