@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "fixtures": [
+    {
+      "id": "new-game",
+      "description": "DEFAULT_GAME_STATE before the first tick",
+      "file": "new-game.save.json",
+      "bytes": 289625,
+      "tick": 0,
+      "population": 12,
+      "era": "hamlet",
+      "buildings": 8,
+      "houses": 4,
+      "palisadeSegments": 0,
+      "completedPalisadeSegments": 0,
+      "saveSerializeMs": 2.19
+    },
+    {
+      "id": "population-176",
+      "description": "autoplay growth from the default opening, first tick with population >= 176",
+      "file": "population-176.save.json",
+      "bytes": 848591,
+      "tick": 27471,
+      "population": 176,
+      "era": "hamlet",
+      "buildings": 30,
+      "houses": 15,
+      "palisadeSegments": 0,
+      "completedPalisadeSegments": 0,
+      "saveSerializeMs": 2.6
+    },
+    {
+      "id": "palisade-construction",
+      "description": "autoplay growth, palisade proclaimed and segments still under construction",
+      "file": "palisade-construction.save.json",
+      "bytes": 960440,
+      "tick": 90976,
+      "population": 462,
+      "era": "palisade",
+      "buildings": 57,
+      "houses": 24,
+      "palisadeSegments": 33,
+      "completedPalisadeSegments": 1,
+      "saveSerializeMs": 2.99
+    }
+  ],
+  "v0Fixtures": [
+    "output/playtest-a-double-prime/seeds/final-689bda7/seed1/final-state.json",
+    "output/playtest-a-double-prime/seeds/final-689bda7/seed2/final-state.json",
+    "output/playtest-a-double-prime/seeds/final-689bda7/seed3/final-state.json",
+    "output/playtest-a-double-prime/seeds/final-689bda7/seed4/final-state.json",
+    "output/playtest-a-double-prime/seeds/final-689bda7/seed5/final-state.json"
+  ]
+}
