@@ -41,33 +41,6 @@ function selectorRuleBodies(css: string, selector: string): string {
   return bodies.join("\n");
 }
 
-function mediaBlocks(css: string, query: string): string {
-  const marker = `@media (${query}) {`;
-  const blocks: string[] = [];
-  let searchStart = 0;
-  while (searchStart < css.length) {
-    const start = css.indexOf(marker, searchStart);
-    if (start === -1) break;
-    let depth = 0;
-    let opened = false;
-    for (let index = start; index < css.length; index += 1) {
-      const character = css[index];
-      if (character === "{") {
-        depth += 1;
-        opened = true;
-      }
-      if (character === "}") depth -= 1;
-      if (opened && depth === 0) {
-        blocks.push(css.slice(start, index + 1));
-        searchStart = index + 1;
-        break;
-      }
-    }
-  }
-  assert.ok(blocks.length > 0, `${query} media block exists`);
-  return blocks.join("\n");
-}
-
 test("Phase10 panel surfaces use flat parchment rectangles with ink borders", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
