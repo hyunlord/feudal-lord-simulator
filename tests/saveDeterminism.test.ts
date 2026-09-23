@@ -10,7 +10,7 @@ import { canonicalStateHash, verifySaveDeterminism } from "../scripts/verifySave
 // The full gate (seed 1..5 final states + new game at 10,000 ticks, N=24,000) runs with
 // `npm run verify:save-determinism`; this is the same pipeline at CI size.
 test("save → fresh-process load → N ticks equals N ticks without saving (CI size)", async () => {
-  const report = await verifySaveDeterminism(["--ticks", "1200", "--newgame-ticks", "600", "--cases", "seed1,newgame"]);
+  const report = await verifySaveDeterminism(["--ticks", "1200", "--newgame-ticks", "600", "--cases", "seed1,newgame", "--seed-dir", "fixtures/determinism"]);
   assert.equal(report.gateMatches, 2);
   assert.equal(report.passed, true);
   for (const row of report.rows) {

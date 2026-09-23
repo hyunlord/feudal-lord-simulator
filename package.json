@@ -13,7 +13,8 @@
     "harness": "tsx scripts/economyHarness.ts",
     "verify:provenance": "tsx scripts/verifyProvenance.ts",
     "verify:save-determinism": "tsx scripts/verifySaveDeterminism.ts --out docs/verification/b8-save/determinism.json",
-    "build:save-fixtures": "tsx scripts/buildSaveFixtures.ts"
+    "build:save-fixtures": "tsx scripts/buildSaveFixtures.ts",
+    "save:fingerprint": "tsx scripts/saveSchemaFingerprint.ts --write"
   },
   "dependencies": {
     "react": "19.2.8",

@@ -21,7 +21,8 @@ function fixtureFiles(): string[] {
 test("the fixture set covers every released schema and the big city", () => {
   const files = fixtureFiles();
   assert.ok(files.some(file => file.includes("/v1/")));
-  assert.equal(files.filter(file => file.endsWith("final-state.json")).length, 5);
+  assert.ok(files.some(file => file.endsWith("final-state.json")));
+  assert.ok(files.every(file => !file.startsWith("output/")), "save fixtures must not depend on the output/ evidence folder");
 });
 
 for (const file of fixtureFiles()) {

@@ -6,15 +6,17 @@ import { spawn } from "node:child_process";
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
-const CHROME = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const URL_UNDER_TEST = process.env.B8_URL ?? "http://127.0.0.1:4173/";
+export const CHROME = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+export const URL_UNDER_TEST = process.env.B8_URL ?? "http://127.0.0.1:4173/";
 const PORT = 9337;
-const OUT = resolve(process.argv[2] ?? "docs/verification/b8-save");
+let OUT = resolve(process.argv[2] ?? "docs/verification/b8-save");
+export function setOutputDirectory(directory) { OUT = resolve(directory); }
 const PLAY_SECONDS = Number(process.argv[3] ?? "120");
-const sleep = ms => new Promise(done => setTimeout(done, ms));
+export const sleep = ms => new Promise(done => setTimeout(done, ms));
 
-async function waitForJson(url, attempts = 100) {
+export async function waitForJson(url, attempts = 100) {
   for (let attempt = 0; attempt < attempts; attempt += 1) {
     try { const response = await fetch(url); if (response.ok) return response.json(); } catch { /* not up yet */ }
     await sleep(100);
@@ -22,7 +24,7 @@ async function waitForJson(url, attempts = 100) {
   throw new Error(`No response from ${url}`);
 }
 
-function connect(wsUrl) {
+export function connect(wsUrl) {
   const socket = new WebSocket(wsUrl);
   let nextId = 1;
   const pending = new Map();
@@ -46,7 +48,7 @@ function connect(wsUrl) {
   };
 }
 
-async function openTab(browser) {
+export async function openTab(browser) {
   const { targetId } = await browser.send("Target.createTarget", { url: "about:blank" });
   const { sessionId } = await browser.send("Target.attachToTarget", { targetId, flatten: true });
   const send = (method, params) => browser.send(method, params, sessionId);
@@ -96,11 +98,11 @@ async function openTab(browser) {
   return page;
 }
 
-const byText = (selector, text) => `[...document.querySelectorAll(${JSON.stringify(selector)})].find(el => el.textContent.includes(${JSON.stringify(text)}))`;
-const byLabel = label => `document.querySelector('[aria-label=${JSON.stringify(label)}]')`;
+export const byText = (selector, text) => `[...document.querySelectorAll(${JSON.stringify(selector)})].find(el => el.textContent.includes(${JSON.stringify(text)}))`;
+export const byLabel = label => `document.querySelector('[aria-label=${JSON.stringify(label)}]')`;
 
 /** Reads a slot straight from IndexedDB: header fields plus counts and a SHA-256 of the state JSON. */
-const readSlot = slotId => `(async () => {
+export const readSlot = slotId => `(async () => {
   const db = await new Promise((ok, fail) => { const r = indexedDB.open("feudal-lord-simulator-saves", 1); r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
   const get = (store, key) => new Promise((ok, fail) => { const r = db.transaction(store).objectStore(store).get(key); r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
   const all = store => new Promise((ok, fail) => { const r = db.transaction(store).objectStore(store).getAll(); r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
@@ -124,13 +126,13 @@ const readSlot = slotId => `(async () => {
 })()`;
 
 /** Frame-to-frame gaps over `ms` with no save in flight, as the baseline for the save metrics. */
-const frameGaps = ms => `new Promise(done => { const stamps = []; const started = performance.now();
+export const frameGaps = ms => `new Promise(done => { const stamps = []; const started = performance.now();
   const frame = t => { stamps.push(t); if (performance.now() - started < ${ms}) requestAnimationFrame(frame); else {
     const gaps = stamps.slice(1).map((t, i) => t - stamps[i]).sort((a, b) => a - b);
     done({ frames: gaps.length, medianMs: gaps[Math.floor(gaps.length / 2)] ?? null, p95Ms: gaps[Math.floor(gaps.length * 0.95)] ?? null, maxMs: gaps.at(-1) ?? null }); } };
   requestAnimationFrame(frame); })`;
 
-const resourceBarText = `document.querySelector(".resource-bar")?.innerText.replace(/\\s+/g, " ").trim()`;
+export const resourceBarText = `document.querySelector(".resource-bar")?.innerText.replace(/\\s+/g, " ").trim()`;
 
 async function continueAndCompare(page, label, reference) {
   await page.waitFor(`${byText("button", "이어하기")} !== undefined`);
@@ -154,7 +156,7 @@ async function continueAndCompare(page, label, reference) {
   return { label, welcomeLine, welcomeShot, afterShot, barAfter, restored, mismatches, matches: mismatches.length === 0 };
 }
 
-async function playAndPause(page, seconds, label) {
+export async function playAndPause(page, seconds, label) {
   const tickBefore = (await page.evaluate(readSlot(null)))?.tick ?? 0;
   await page.click(byLabel("1배속"));
   const started = Date.now();
@@ -223,4 +225,4 @@ async function main() {
   }
 }
 
-await main();
+if (process.argv[1] !== undefined && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await main();

@@ -4,7 +4,7 @@ import { SAVE_COPY } from "../content/saveCopy.ko";
 import type { GameState } from "../engine/engine.types";
 import { openPlatformSaveStorage } from "../platform/saveStoragePlatform";
 import { shouldAutosave, type SaveReason } from "../save/autosavePolicy";
-import { createSaveService, type SaveService } from "../save/saveService";
+import { createSaveService, PREVIOUS_SAVE_SLOT, type SaveService } from "../save/saveService";
 import type { SaveMeta } from "../save/saveTypes";
 
 const RECENT_SAVE_COUNT = 3;
@@ -36,7 +36,10 @@ export interface SaveSystemValue {
   readonly saveNow: () => void;
   readonly load: (slotId: string) => void;
   readonly continueLatest: () => void;
+  /** Ends the continue offer and starts a fresh session (settlement restart). */
   readonly declineContinue: () => void;
+  /** New game from the first screen: archives the newest autosave as the previous city first. */
+  readonly startNewGame: () => void;
 }
 
 export const SaveSystemContext = createContext<SaveSystemValue | null>(null);
@@ -182,25 +185,40 @@ export function useSaveSystem(input: {
     };
   }, [requestSave]);
 
+  const startNewGame = useCallback(() => {
+    setOfferContinue(false);
+    enqueue(async service => {
+      await service.archivePrevious().catch(() => null);
+      service.startNewSession();
+      await refreshSaves(service);
+    });
+  }, [enqueue, refreshSaves]);
+
+  const { current, previous } = useMemo(() => ({
+    current: saves.filter(meta => meta.slotId !== PREVIOUS_SAVE_SLOT),
+    previous: saves.find(meta => meta.slotId === PREVIOUS_SAVE_SLOT),
+  }), [saves]);
+  const latest = current[0] ?? null;
   const value = useMemo<SaveSystemValue>(() => ({
     ready,
     persistent,
-    latest: saves[0] ?? null,
-    recent: saves.slice(0, RECENT_SAVE_COUNT),
-    offerContinue: ready && offerContinue && saves.length > 0,
+    latest,
+    recent: [...current.slice(0, RECENT_SAVE_COUNT), ...(previous === undefined ? [] : [previous])],
+    offerContinue: ready && offerContinue && latest !== null,
     busy,
     notice,
     saveNow: () => requestSave("manual"),
     load: slotId => finishLoad(() => serviceRef.current!.load(slotId)),
     continueLatest: () => {
-      const slotId = saves[0]?.slotId;
+      const slotId = latest?.slotId;
       if (slotId !== undefined) finishLoad(() => serviceRef.current!.load(slotId));
     },
     declineContinue: () => {
       setOfferContinue(false);
       serviceRef.current?.startNewSession();
     },
-  }), [busy, finishLoad, notice, offerContinue, persistent, ready, requestSave, saves]);
+    startNewGame,
+  }), [busy, current, finishLoad, latest, notice, offerContinue, persistent, previous, ready, requestSave, startNewGame]);
 
   return { value, requestSave };
 }

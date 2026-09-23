@@ -21,8 +21,8 @@ export const SAVE_FIXTURES = [
   { id: "palisade-construction", description: "autoplay growth, palisade proclaimed and segments still under construction" },
 ] as const;
 
-/** The 24-lot L4 city is not duplicated as a v1 fixture: the five v0 seed final states already in the repo cover it. */
-export const V0_SAVE_FIXTURES = [1, 2, 3, 4, 5].map(seed => `output/playtest-a-double-prime/seeds/final-689bda7/seed${seed}/final-state.json`);
+/** The 24-lot L4 city is the v0 seed-1 A'' final state (bare GameState JSON), kept under fixtures/ so CI never reads output/. */
+export const V0_SAVE_FIXTURES = ["fixtures/determinism/seed1/final-state.json"];
 
 function palisadeUnderConstruction(state: GameState): boolean {
   return state.palisade !== null && state.palisade.segments.some(segment => !segment.completed)

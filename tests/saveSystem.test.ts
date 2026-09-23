@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { formatSaveSummaryLine } from "../src/content/saveCopy.ko";
+import { formatNewGameArchiveNotice, formatSaveSummaryLine } from "../src/content/saveCopy.ko";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
 import { openPlatformSaveStorage } from "../src/platform/saveStoragePlatform";
@@ -16,13 +16,13 @@ import {
   SaveChecksumError,
   SaveFormatError,
 } from "../src/save/saveCodec";
-import { AUTO_SAVE_SLOTS, backupSlotIdFor, createSaveService } from "../src/save/saveService";
+import { AUTO_SAVE_SLOTS, backupSlotIdFor, createSaveService, PREVIOUS_SAVE_SLOT } from "../src/save/saveService";
 import { MemorySaveStorage } from "../src/save/saveStorage";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 
 const TIME = "2026-09-24T00:00:00.000Z";
-const V0_SEED1 = "output/playtest-a-double-prime/seeds/final-689bda7/seed1/final-state.json";
+const V0_SEED1 = "fixtures/determinism/seed1/final-state.json";
 
 function playedState(ticks: number): GameState {
   let state: GameState = structuredClone(DEFAULT_GAME_STATE);
@@ -164,4 +164,22 @@ test("continue summary reads like the first-screen line", () => {
   assert.equal(formatSaveSummaryLine({ elapsedMinutes: 24, population: 86, era: "palisade", problem: "food_shortage" }),
     "24분째 · 인구 86 · 목책 시대 · 현재 문제: 빵 배급 부족");
   assert.equal(formatSaveSummaryLine({ elapsedMinutes: 0, population: 12, era: "hamlet", problem: null }), "0분째 · 인구 12 · 촌락 시대");
+});
+
+test("starting a new game keeps the previous city outside the autosave rotation", async () => {
+  const storage = new MemorySaveStorage();
+  const service = createSaveService({ storage, now: clock() });
+  for (const ticks of [10, 20, 30]) await service.autosave(playedState(ticks));
+  const archived = await service.archivePrevious();
+  assert.equal(archived?.slotId, PREVIOUS_SAVE_SLOT);
+  assert.equal(archived?.tick, 30);
+  service.startNewSession();
+  for (let index = 1; index <= 4; index += 1) await service.autosave(playedState(index));
+  const autos = (await service.playerSaves()).filter(meta => meta.slotId.startsWith("auto-"));
+  assert.ok(autos.every(meta => meta.tick <= 4), "all three autosave slots now hold the new game");
+  assert.equal((await service.load(PREVIOUS_SAVE_SLOT))?.state.tick, 30);
+  assert.equal((await service.latest())?.slotId.startsWith("auto-"), true);
+  assert.notEqual((await service.loadLatest())?.slotId, PREVIOUS_SAVE_SLOT);
+  assert.equal(formatNewGameArchiveNotice({ elapsedMinutes: 24, population: 86 }),
+    "새 게임을 시작하면 이어하던 도시(24분째 · 인구 86)는 '이전 도시' 칸에 보관됩니다.");
 });

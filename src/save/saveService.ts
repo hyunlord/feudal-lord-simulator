@@ -12,7 +12,9 @@ import { SAVE_SCHEMA_VERSION, type SaveEnvelope, type SaveMeta } from "./saveTyp
 
 export const AUTO_SAVE_SLOTS = ["auto-1", "auto-2", "auto-3"] as const;
 export const MANUAL_SAVE_SLOT = "manual";
-export const PLAYER_SAVE_SLOTS: readonly string[] = [...AUTO_SAVE_SLOTS, MANUAL_SAVE_SLOT];
+/** Holds the city the player left when starting a new game; outside the autosave rotation, replaced by the next new game. */
+export const PREVIOUS_SAVE_SLOT = "previous";
+export const PLAYER_SAVE_SLOTS: readonly string[] = [...AUTO_SAVE_SLOTS, MANUAL_SAVE_SLOT, PREVIOUS_SAVE_SLOT];
 
 export interface SaveWriteResult {
   readonly meta: SaveMeta;
@@ -138,8 +140,18 @@ export function createSaveService(options: SaveServiceOptions) {
       return save(MANUAL_SAVE_SLOT, state);
     },
     playerSaves,
+    /** Newest save to continue; the archived previous city is offered only from the load list. */
     async latest(): Promise<SaveMeta | null> {
-      return (await playerSaves())[0] ?? null;
+      return (await playerSaves()).find(meta => meta.slotId !== PREVIOUS_SAVE_SLOT) ?? null;
+    },
+    /** Copies the newest autosave into the previous-city slot so the autosave rotation cannot overwrite it. */
+    async archivePrevious(): Promise<SaveMeta | null> {
+      const newestAuto = (await playerSaves()).find(meta => (AUTO_SAVE_SLOTS as readonly string[]).includes(meta.slotId));
+      if (newestAuto === undefined) return null;
+      const bytes = await storage.read(newestAuto.slotId);
+      if (bytes === null) return null;
+      await storage.write(PREVIOUS_SAVE_SLOT, bytes);
+      return { ...newestAuto, slotId: PREVIOUS_SAVE_SLOT };
     },
     /** Loads `slotId`; when it is corrupt, falls back to the remaining saves newest first. */
     async load(slotId: string): Promise<SaveLoadResult | null> {
@@ -147,7 +159,7 @@ export function createSaveService(options: SaveServiceOptions) {
       return loadFirst([slotId, ...others]);
     },
     async loadLatest(): Promise<SaveLoadResult | null> {
-      return loadFirst((await playerSaves()).map(meta => meta.slotId));
+      return loadFirst((await playerSaves()).map(meta => meta.slotId).filter(id => id !== PREVIOUS_SAVE_SLOT));
     },
     startNewSession(): void {
       sessionCreatedAt = now().toISOString();

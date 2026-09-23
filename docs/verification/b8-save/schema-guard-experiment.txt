@@ -1,0 +1,22 @@
+### step 1: GameState + saveProbe field, SAVE_SCHEMA_VERSION=1
+ src/engine/engine.types.ts | 1 +
+ src/state/gameStore.ts     | 1 +
+ 2 files changed, 2 insertions(+)
+ℹ pass 1
+ℹ fail 1
+  AssertionError [ERR_ASSERTION]: 게임 상태 모양이 바뀌었습니다. SAVE_SCHEMA_VERSION을 올리고 migrations/에 vN→vN+1을 추가한 뒤 지문을 갱신하세요 (npm run save:fingerprint).
+  added: declared:saveProbe, $.saveProbe:number
+  removed: 
+### step 2: npm run save:fingerprint without a version bump
+Refusing to update: the state shape changed but SAVE_SCHEMA_VERSION is still 1.
+게임 상태 모양이 바뀌었습니다. SAVE_SCHEMA_VERSION을 올리고 migrations/에 vN→vN+1을 추가한 뒤 지문을 갱신하세요 (npm run save:fingerprint).
+added: declared:saveProbe, $.saveProbe:number
+exit=0
+step 2 real exit code: 1
+### step 3: SAVE_SCHEMA_VERSION=2 + migration v1→v2, then npm run save:fingerprint
+wrote ~/github/feudal-lord-b8/src/save/schemaFingerprint.v1.json (v2, 9c4bbaeda3b9, 396 paths)
+ℹ pass 2
+ℹ fail 0
+### step 4: experiment reverted (git checkout of the 5 files); test on the committed state
+ℹ pass 2
+ℹ fail 0

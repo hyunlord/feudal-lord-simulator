@@ -2,7 +2,8 @@
 // process, and advancing N ticks. Also proves autosave does not change the simulation.
 //
 // Usage: tsx scripts/verifySaveDeterminism.ts [--ticks 24000] [--newgame-ticks 10000]
-//        [--cases seed1,seed2,seed3,seed4,seed5,newgame] [--out docs/verification/b8-save/determinism.json]
+//        [--cases seed1,seed2,seed3,seed4,seed5,newgame] [--seed-dir <dir with seedN/final-state.json>]
+//        [--out docs/verification/b8-save/determinism.json]
 import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -21,7 +22,9 @@ import { createAutoplayTraceDriver } from "./economyHarnessAutoplay";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const SCRIPT = fileURLToPath(import.meta.url);
-const SEED_STATE = (seed: number) => resolve(ROOT, `output/playtest-a-double-prime/seeds/final-689bda7/seed${seed}/final-state.json`);
+/** Full gate reads the archived A'' finals; CI passes `--seed-dir fixtures/determinism` (seed 1 only). */
+const DEFAULT_SEED_DIR = "output/playtest-a-double-prime/seeds/final-689bda7";
+const seedStatePath = (seedDir: string, seed: number) => resolve(ROOT, seedDir, `seed${seed}`, "final-state.json");
 /** 60 s of game time at 1× speed: the browser autosave cadence. */
 const AUTOSAVE_EVERY_TICKS = 60 * BALANCE.TICKS_PER_SECOND;
 const CHECKPOINT_EVERY_TICKS = 2_000;
@@ -34,6 +37,7 @@ interface WorkerInput {
   readonly ticks: number;
   readonly newgameTicks: number;
   readonly savePath: string;
+  readonly seedDir: string;
 }
 interface WorkerResult {
   readonly caseId: string;
@@ -77,7 +81,7 @@ function newGameState(ticks: number): GameState {
 function startState(input: WorkerInput): GameState {
   if (input.caseId === "newgame") return newGameState(input.newgameTicks);
   const seed = Number(input.caseId.replace("seed", ""));
-  return JSON.parse(readFileSync(SEED_STATE(seed), "utf8")) as GameState;
+  return JSON.parse(readFileSync(seedStatePath(input.seedDir, seed), "utf8")) as GameState;
 }
 
 async function runWorker(input: WorkerInput): Promise<WorkerResult> {
@@ -155,11 +159,12 @@ export async function verifySaveDeterminism(args: readonly string[]) {
   const ticks = Number(option(args, "--ticks", "24000"));
   const newgameTicks = Number(option(args, "--newgame-ticks", "10000"));
   const cases = option(args, "--cases", "seed1,seed2,seed3,seed4,seed5,newgame").split(",");
+  const seedDir = option(args, "--seed-dir", DEFAULT_SEED_DIR);
   const scratch = mkdtempSync(join(tmpdir(), "b8-save-determinism-"));
   const started = performance.now();
   try {
     const job = (caseId: string, variant: Variant): WorkerInput =>
-      ({ caseId, variant, ticks, newgameTicks, savePath: join(scratch, `${caseId}.save.json`) });
+      ({ caseId, variant, ticks, newgameTicks, seedDir, savePath: join(scratch, `${caseId}.save.json`) });
     // Phase 1 writes each case's save at S and continues in the same process (a warm, uninterrupted game).
     const straight = await Promise.all(cases.map(caseId => spawnWorker(job(caseId, "straight"))));
     // Phase 2 opens those saves in fresh processes (cold module caches, like a page reload), plus autosave runs.

@@ -15,11 +15,14 @@ export const SAVE_COPY = {
   checksumFallback: "저장 파일이 손상되어 이전 백업을 불러왔습니다",
   saveControlsLabel: "저장과 불러오기",
   welcomeSaveLabel: "가장 최근 저장",
+  startNewGame: "시작",
+  cancel: "취소",
   slotLabels: {
     "auto-1": "자동 저장 1",
     "auto-2": "자동 저장 2",
     "auto-3": "자동 저장 3",
     manual: "수동 저장",
+    previous: "이전 도시",
   } as Readonly<Record<string, string>>,
   eraLabels: {
     hamlet: "촌락 시대",
@@ -47,6 +50,10 @@ export function formatSaveSummaryLine(input: {
     ...(input.problem === null ? [] : [`현재 문제: ${SAVE_COPY.problems[input.problem]}`]),
   ];
   return parts.join(" · ");
+}
+
+export function formatNewGameArchiveNotice(input: { readonly elapsedMinutes: number; readonly population: number }): string {
+  return `새 게임을 시작하면 이어하던 도시(${input.elapsedMinutes}분째 · 인구 ${input.population})는 '${SAVE_COPY.slotLabels.previous}' 칸에 보관됩니다.`;
 }
 
 export function formatSlotLabel(slotId: string): string {
