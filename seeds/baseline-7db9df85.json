@@ -1,11 +1,11 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "sourceCommit": "7db9df85ee0b87e1dd8d99930abb328bace3ee95",
   "sourceArchive": "../feudal-lord-simulator/output/efficient-autogrowth/qa-7db9df85",
   "sourceExecutionSummarySha256": "9964ec83009f1042efcb6639bf108e334b25d0d39e3a152d235daa023b7b6230",
   "targetLots": 24,
   "maxTicks": 1200000,
-  "guardrail": "No newly stalled growth, no overbuilding, no permanently worse service gap, preserve baseline L4 24/24, warning ratio <10%; record idle and zero-wheat ratios",
+  "guardrail": "Growth, facility, service and warning regressions; chronic mill wheat starvation compared only when matching baseline evidence exists",
   "seeds": {
     "1": {
       "summarySha256": "461ca4df578169ed7da0da1181d749a2f17a945acf275abbeb4474f587947542",
@@ -23,14 +23,15 @@
       },
       "farmCount": 21,
       "millCount": 9,
-      "zeroWheatMillRatio": 0,
       "granaryCount": 7,
       "marketCount": 2,
       "churchCount": 2,
       "warnings": 0,
       "buildings": 80,
       "warningRatio": 0,
-      "idleWorkerRatio": 0.3111979166666667
+      "idleWorkerRatio": 0.3111979166666667,
+      "legacyFinalInstantZeroWheatMillRatio": 0,
+      "chronicZeroWheatMillRatio": null
     },
     "2": {
       "summarySha256": "ccda91e5f3851a61cae1c042638b44c5a4319c7845408fa07c23f1b962e417ef",
@@ -48,14 +49,15 @@
       },
       "farmCount": 20,
       "millCount": 8,
-      "zeroWheatMillRatio": 0,
       "granaryCount": 7,
       "marketCount": 2,
       "churchCount": 2,
       "warnings": 0,
       "buildings": 76,
       "warningRatio": 0,
-      "idleWorkerRatio": 0.3216145833333333
+      "idleWorkerRatio": 0.3216145833333333,
+      "legacyFinalInstantZeroWheatMillRatio": 0,
+      "chronicZeroWheatMillRatio": null
     },
     "3": {
       "summarySha256": "5545f222c8c8e976e1c2fba065567452653902d153c57108c89e3d29900dfc47",
@@ -73,14 +75,15 @@
       },
       "farmCount": 24,
       "millCount": 8,
-      "zeroWheatMillRatio": 0,
       "granaryCount": 7,
       "marketCount": 2,
       "churchCount": 2,
       "warnings": 0,
       "buildings": 80,
       "warningRatio": 0,
-      "idleWorkerRatio": 0.3020833333333333
+      "idleWorkerRatio": 0.3020833333333333,
+      "legacyFinalInstantZeroWheatMillRatio": 0,
+      "chronicZeroWheatMillRatio": null
     },
     "4": {
       "summarySha256": "9319567f1d00b07786110d8d8afbf3cf9b6649442d2e675250976839ef81abd4",
@@ -98,14 +101,15 @@
       },
       "farmCount": 22,
       "millCount": 9,
-      "zeroWheatMillRatio": 0,
       "granaryCount": 7,
       "marketCount": 2,
       "churchCount": 1,
       "warnings": 1,
       "buildings": 80,
       "warningRatio": 0.0125,
-      "idleWorkerRatio": 0.3059895833333333
+      "idleWorkerRatio": 0.3059895833333333,
+      "legacyFinalInstantZeroWheatMillRatio": 0,
+      "chronicZeroWheatMillRatio": null
     },
     "5": {
       "summarySha256": "60a9257ef02195d10e2d2ecfeae4749f4290022ea15586eafa0840216f61048b",
@@ -123,14 +127,16 @@
       },
       "farmCount": 21,
       "millCount": 8,
-      "zeroWheatMillRatio": 0,
       "granaryCount": 7,
       "marketCount": 2,
       "churchCount": 2,
       "warnings": 0,
       "buildings": 79,
       "warningRatio": 0,
-      "idleWorkerRatio": 0.31640625
+      "idleWorkerRatio": 0.31640625,
+      "legacyFinalInstantZeroWheatMillRatio": 0,
+      "chronicZeroWheatMillRatio": null
     }
-  }
+  },
+  "millContinuityEvidence": "unavailable: archived final states contain no per-mill tick history over the stable interval"
 }

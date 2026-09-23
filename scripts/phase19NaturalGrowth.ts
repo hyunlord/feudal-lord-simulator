@@ -59,6 +59,7 @@ export function runPhase19NaturalGrowth(options: {
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;
   readonly onState?: (label: string, state: GameState) => void;
+  readonly onTick?: (state: GameState, stableSince: number | null) => void;
   readonly onProgress?: (snapshot: ReturnType<typeof growthSnapshot>) => void;
 }) {
   const { targetLots, maxTicks, seed } = parseGrowthOptions([String(options.targetLots), String(options.maxTicks), "", String(options.seed ?? 1)]);
@@ -120,6 +121,7 @@ export function runPhase19NaturalGrowth(options: {
     stability.observe({ tick: state.tick, lots: current.lots,
       victory: state.settlement?.outcome === "victory", fullService: fullServicePopulation(state) });
     const window = stability.report();
+    options.onTick?.(state, window.stableSince);
     if (window.stableSince !== null) {
       stableMinimumBread = Math.min(stableMinimumBread, current.minimumHouseBread);
       if (current.occupiedBreadZeroHouses > 0) stableBreadZeroTicks += 1;

@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { efficientAcceptance } from '../scripts/efficientGrowthAcceptance';
 
-const metrics = { lots: 24, farms: 10, mills: 10, zeroWheatMills: 1, granaries: 7, markets: 2, churches: 2,
+const metrics = { lots: 24, farms: 10, mills: 10, chronicZeroWheatMills: 1, chronicZeroWheatKnown: true,
+  chronicZeroWheatObservedTicks: 2400, granaries: 7, markets: 2, churches: 2,
   population: 100, idleWorkers: 5, buildings: 100, warnings: 9,
   coveredTicks: 2400, fullWindow: true, known: true, rawStarvedTicks: 199, eligibleMillTicks: 1000 };
 
@@ -20,11 +21,17 @@ for (const [name, changed] of [
   assert.equal(efficientAcceptance({ ...metrics, ...changed }).passed, false);
 });
 test('Given high idle, wheat starvation, and empty mills When evaluating efficiency Then they remain recorded diagnostics', () => {
-  const result = efficientAcceptance({ ...metrics, idleWorkers: 40, rawStarvedTicks: 300, zeroWheatMills: 3 });
+  const result = efficientAcceptance({ ...metrics, idleWorkers: 40, rawStarvedTicks: 300, chronicZeroWheatMills: 3 });
   assert.equal(result.passed, true);
   assert.equal(result.idleRatio, 0.4);
   assert.equal(result.rawStarvationRatio, 0.3);
   assert.equal(result.zeroWheatMillRatio, 0.3);
+});
+
+test('Given no per-mill continuity history When evaluated Then zero-wheat ratio is unknown instead of an instant snapshot', () => {
+  const result = efficientAcceptance({ ...metrics, chronicZeroWheatKnown: false, chronicZeroWheatMills: 0 });
+  assert.equal(result.zeroWheatMillRatio, null);
+  assert.equal(result.passed, true);
 });
 
 test('missing capture cannot pass', async () => {
@@ -41,7 +48,7 @@ test('capture fails exact ten percent visible warnings and asset failures', asyn
 });
 
 test('v14 seed3-sized excess facilities cannot qualify despite otherwise healthy metrics', () => {
-  const result = efficientAcceptance({ ...metrics, farms: 23, mills: 60, zeroWheatMills: 34, granaries: 11, markets: 8, churches: 6 });
+  const result = efficientAcceptance({ ...metrics, farms: 23, mills: 60, chronicZeroWheatMills: 34, granaries: 11, markets: 8, churches: 6 });
   assert.equal(result.passed, false);
   assert.deepEqual([result.checks.mills, result.checks.granaries, result.checks.markets, result.checks.churches], [false, false, false, false]);
 });
@@ -57,6 +64,14 @@ test('opt-in efficiency leaves a short legacy simulation state unchanged', async
   assert.equal(original, guarded);
   assert.equal('additionalAcceptance' in legacy.acceptance, false);
   assert.equal(efficient.acceptance.additionalAcceptance, false);
+});
+
+test('Given a two-tick natural run When observing completed ticks Then the hook receives consecutive states', async () => {
+  const { runPhase19NaturalGrowth } = await import('../scripts/phase19NaturalGrowth');
+  const observed: number[] = [];
+  runPhase19NaturalGrowth({ targetLots: 24, maxTicks: 2, seed: 1,
+    onTick: state => { observed.push(state.tick); } });
+  assert.deepEqual(observed, [1, 2]);
 });
 
 test('finalization rejects JPEG dimensions that disagree with capture metadata', async () => {
