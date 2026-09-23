@@ -1,6 +1,7 @@
-import type { BuildingKind } from "../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
+import { constructionShortfalls } from "../world/placement";
 import { canPlaceRoad } from "../world/roadGraph";
 import {
   onboardingPopulationHouseTargetCount,
@@ -51,7 +52,7 @@ export function foodChainTargetsWithHousePrep(
     return { kind: "targets", targets: currentTargets };
   }
 
-  const roadTarget = roadTargetUnlockingFoodChainHousePrep(state, kinds, candidateOrigins, buildFoodTarget);
+  const roadTarget = roadTargetUnlockingFoodChainHousePrep(state, kinds, candidateOrigins, buildFoodTarget, currentTargets);
   if (roadTarget !== null) return { kind: "road", origin: roadTarget };
   return { kind: "targets", targets: currentTargets };
 }
@@ -81,10 +82,14 @@ function roadTargetUnlockingFoodChainHousePrep(
   kinds: readonly BuildingKind[],
   candidateOrigins: readonly TileCoordinate[],
   buildFoodTarget: FoodChainTargetBuilder<FoodChainPrepTarget>,
+  currentTargets: readonly FoodChainPrepTarget[],
 ): TileCoordinate | null {
-  const currentTargets = foodAndHousePrepTargets(state, kinds, buildFoodTarget);
   const currentHouseCount = housePrepCount(currentTargets);
   const currentFoodCount = foodTargetKindCount(currentTargets, kinds);
+  if (currentHouseCount === onboardingPopulationHouseTargetCount && kinds.every((kind) =>
+    currentTargets.some((target) => target.kind === kind)
+    || Object.keys(constructionShortfalls(state, BUILDING_CONFIG_BY_KIND[kind].buildCost)).length > 0
+  )) return null;
   let best: { readonly origin: TileCoordinate; readonly foodCount: number; readonly houseCount: number } | null = null;
 
   for (const origin of localRoadPrepCandidates(state, candidateOrigins)) {
