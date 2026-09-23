@@ -5,6 +5,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../sr
 import type { ResourceType } from "../src/content/resourceConfig";
 import { createConstructionSite } from "../src/economy/construction";
 import { decideNextAction } from "../src/engine/autoplay";
+import { preservesAutoplayWallSpace } from "../src/engine/autoplayWallSpace";
 import type { GameState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
 import type { Tile } from "../src/world/world.types";
@@ -193,7 +194,10 @@ test("Given low timber When food is stable Then autoplay builds logging camp bef
 
   assert.deepEqual(state({ buildings: [home, well], houses: [hydratedFed], timber: 35, roads }).tiles[0]?.terrain, "forest");
   assert.deepEqual(decideNextAction(state({ buildings: [home, well], houses: [hydratedFed], timber: 35, roads })), { kind: "place_building", building: "logging_camp", tx: 1, ty: 1 });
-  assert.deepEqual(decideNextAction(state({ buildings: [home, well, logging], houses: [hydratedFed], timber: 35, roads })), { kind: "place_building", building: "sawmill", tx: 2, ty: 2 });
+  const withCamp = state({ buildings: [home, well, logging], houses: [hydratedFed], timber: 35, roads });
+  assert.equal(preservesAutoplayWallSpace(withCamp, "sawmill", { tx: 2, ty: 2 }), false);
+  assert.equal(preservesAutoplayWallSpace(withCamp, "sawmill", { tx: 4, ty: 4 }), true);
+  assert.deepEqual(decideNextAction(withCamp), { kind: "place_building", building: "sawmill", tx: 4, ty: 4 });
 });
 
 test("Given spare labour and housing capacity When autoplay decides Then it adds the deterministic road-adjacent house", () => {

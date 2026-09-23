@@ -7,6 +7,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../sr
 import type { ResourceType } from "../src/content/resourceConfig";
 import { createConstructionSite } from "../src/economy/construction";
 import { decideNextAction, type AutoplayAction } from "../src/engine/autoplay";
+import { preservesAutoplayWallSpace } from "../src/engine/autoplayWallSpace";
 import type { GameState } from "../src/engine/engine.types";
 import { resolveBuildingToConstructionSiteRoute } from "../src/engine/routing";
 import type { House } from "../src/population/population.types";
@@ -117,19 +118,22 @@ test("Given an unwatered house cluster When autoplay decides Then it builds the 
   assertAction(actual, { kind: "place_building", building: "well", tx: 4, ty: 6 });
 });
 
-test("Given separated unwatered clusters When one well cannot cover all Then equal coverage uses road access and coordinate order", () => {
+test("Given separated unwatered clusters When one well cannot cover all Then it preserves space for the first wall", () => {
   const early = building({ id: "house-a", kind: "house", tx: 2, ty: 2 });
   const deprived = building({ id: "house-b", kind: "house", tx: 9, ty: 9 });
-  const actual = decideNextAction(state({
+  const current = state({
     buildings: [early, deprived],
     roads: ["1,5", "2,5", "3,5", "4,5", "5,5", "6,5", "7,5", "8,5", "8,6", "8,7", "8,8", "8,9", "2,4", "2,3"],
     houses: [
       house(early.id, { unmetRequirementTicks: 1 }),
       house(deprived.id, { unmetRequirementTicks: 500 }),
     ],
-  }));
+  });
+  const actual = decideNextAction(current);
 
-  assertAction(actual, { kind: "place_building", building: "well", tx: 1, ty: 3 });
+  assert.equal(preservesAutoplayWallSpace(current, "well", { tx: 1, ty: 3 }), false);
+  assert.equal(preservesAutoplayWallSpace(current, "well", { tx: 3, ty: 3 }), true);
+  assertAction(actual, { kind: "place_building", building: "well", tx: 3, ty: 3 });
 });
 
 test("Given a roadless idle building When autoplay decides Then it places the nearest legal road segment from the connected road edge", () => {
