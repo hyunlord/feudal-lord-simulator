@@ -128,7 +128,6 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom,
       }),
   });
-  drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   drawOverlay({
     context: input.context,
     state: input.state,
@@ -165,6 +164,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
   }
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   if (input.preview.prediction !== undefined) drawPlacementPrediction(input.context, input.state, input.preview.prediction, input.camera.zoom);
+  drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   drawOnboardingGuidanceOverlay(input.context, {
     targets: onboardingWorldGuidanceTargets(input.state),
     zoom: input.camera.zoom,

@@ -2,10 +2,14 @@ import type { PlacementPrediction } from '../ui/predictionTypes';
 import type { GameState } from '../engine/engine.types';
 import { buildingFootprint } from '../geometry/buildingFootprint';
 import { PALETTE, SEMANTIC_PALETTE } from '../content/palette';
-import { applyPaletteStroke, withAlpha } from './style';
+import { applyPaletteStroke, withAlpha, type PaletteStrokeContext } from './style';
 import { TILE_H, TILE_W, tileToScreen } from './iso';
 
-export function drawPlacementPrediction(context: CanvasRenderingContext2D, state: GameState,
+type PredictionDrawingContext = PaletteStrokeContext & Pick<CanvasRenderingContext2D,
+  'save' | 'restore' | 'beginPath' | 'closePath' | 'ellipse' | 'moveTo' | 'lineTo' |
+  'fillStyle' | 'fill' | 'stroke' | 'setLineDash'>;
+
+export function drawPlacementPrediction(context: PredictionDrawingContext, state: GameState,
   prediction: PlacementPrediction, zoom: number): void {
   context.save();
   if (prediction.range !== null) {
@@ -13,10 +17,10 @@ export function drawPlacementPrediction(context: CanvasRenderingContext2D, state
     const radius = prediction.range.radius;
     context.beginPath();
     context.ellipse(center.sx, center.sy, radius * TILE_W / Math.SQRT2, radius * TILE_H / Math.SQRT2, 0, 0, Math.PI * 2);
-    context.fillStyle = withAlpha(SEMANTIC_PALETTE.sage, 0.08);
+    context.fillStyle = withAlpha(SEMANTIC_PALETTE.sage, 0.16);
     context.fill();
     applyPaletteStroke(context, PALETTE.gold, zoom);
-    context.setLineDash([6 / zoom, 4 / zoom]);
+    context.lineWidth = 3 / zoom;
     context.stroke();
     context.setLineDash([]);
   }
@@ -32,7 +36,10 @@ export function drawPlacementPrediction(context: CanvasRenderingContext2D, state
       if (index === 0) context.moveTo(point.sx, point.sy); else context.lineTo(point.sx, point.sy);
     });
     context.closePath();
+    context.fillStyle = withAlpha(SEMANTIC_PALETTE.sage, 0.28);
+    context.fill();
     applyPaletteStroke(context, PALETTE.gold, zoom);
+    context.lineWidth = 3 / zoom;
     context.stroke();
   }
   for (const segment of prediction.roadSegments) {

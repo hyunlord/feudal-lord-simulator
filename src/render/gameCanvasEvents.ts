@@ -13,7 +13,7 @@ type GameCanvasEventHandlers = {
 };
 
 type GameCanvasEventsInput = {
-  readonly canvas: HTMLCanvasElement;
+  readonly canvas: Pick<HTMLCanvasElement, "addEventListener" | "removeEventListener">;
   readonly handlers: GameCanvasEventHandlers;
 };
 
