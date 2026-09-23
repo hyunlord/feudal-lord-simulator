@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../src/content/buildingConfig";
+import { createConstructionSite } from "../src/economy/construction";
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
@@ -142,6 +143,16 @@ test("food guidance advances past a farm that is already under construction", ()
   assert.ok(targets.every(target => target.kind !== "wheat_farm"));
   assert.ok(targets.some(target => target.kind === "mill"));
   assert.equal(ONBOARDING_TASKS[2]?.isComplete(building), false);
+});
+
+test("pending food construction does not start population guidance before completion", () => {
+  const state = {
+    ...DEFAULT_GAME_STATE,
+    constructionSites: (["wheat_farm", "mill", "granary"] as const).map((kind, ordinal) =>
+      createConstructionSite({ ordinal, kind, tx: 30 + ordinal * 3, ty: 30, startedTick: 0 })),
+  };
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(state), false);
+  assert.deepEqual(onboardingWorldGuidanceTargets(state), []);
 });
 
 test("onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers", () => {

@@ -23,6 +23,14 @@ export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly Buil
   return [];
 }
 
+export function completedCoreOnboardingBuildings(state: GuidanceWorld): boolean {
+  return hasCompletedBuildingKind(state, "logging_camp")
+    && (["wheat_farm", "mill", "granary", "sawmill"] as const)
+      .every(kind => hasCompletedBuildingKind(state, kind))
+    && hasPalisadeTimberStorage(state)
+    && hasWellWithinHouseRange(state);
+}
+
 const roadKey = (road: TileCoordinate): string => `${road.tx},${road.ty}`;
 
 export function timberDeliveryRoads(state: GuidanceWorld): ReadonlySet<string> {

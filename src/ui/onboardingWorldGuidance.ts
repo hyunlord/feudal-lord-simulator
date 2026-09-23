@@ -4,6 +4,7 @@ import { getTile, type TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
 import { canPlaceRoad } from "../world/roadGraph";
 import {
+  completedCoreOnboardingBuildings,
   missingCurrentBuildingKinds,
   storehouseOnTimberDeliveryRoad,
   timberDeliveryRoads,
@@ -110,7 +111,7 @@ function buildingTargetsForCurrentTask(state: GuidanceWorld): readonly Onboardin
 
   if (targets.length > 0) return targets;
 
-  if (kinds.length === 0 && needsPopulationHouseGuidance(state)) {
+  if (kinds.length === 0 && completedCoreOnboardingBuildings(state) && needsPopulationHouseGuidance(state)) {
     return populationHouseGuidanceTargets(state, candidateOrigins, reserved);
   }
 
