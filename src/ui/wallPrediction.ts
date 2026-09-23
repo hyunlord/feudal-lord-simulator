@@ -2,16 +2,47 @@ import { BALANCE } from '../content/balanceConfig';
 import type { GameState } from '../engine/engine.types';
 import { palisadePerimeterSteps, type PalisadePath } from '../world/palisadeGeometry';
 import { placementSpendableResource } from '../world/placement';
-import { previewPalisadeRouteAccess } from '../engine/palisadeRouteAccess';
+import { previewPalisadeDraftRouteAccess, previewPalisadeRouteAccess, type PalisadeRouteAccess } from '../engine/palisadeRouteAccess';
 import { A_TRIPLE_PRIME_WALL_COPY } from './aTriplePrimeWallCopy';
+import { A_QUADRUPLE_PRIME_WALL_COPY } from './aQuadruplePrimeWallCopy';
+import { suggestedConstructionRoad } from './constructionAccessModel';
+import { getTile } from '../world/grid';
 import type { PredictionLine } from './predictionTypes';
 
 const TIMBER_PER_STEP = 15;
 const STEPS_PER_SEGMENT = 4;
 const BUILDER_TICKS_PER_SEGMENT = 120;
 const MAX_BUILDERS_PER_SEGMENT = 3;
+const predictedRoadCache = new WeakMap<PalisadeRouteAccess, number | null>();
 
 export function proposalPredictionLines(state: GameState, path: PalisadePath): readonly PredictionLine[] {
+  return predictionLines(state, path, previewPalisadeRouteAccess(state, path));
+}
+
+export function draftPalisadePredictionLines(state: GameState, path: PalisadePath): readonly PredictionLine[] {
+  return predictionLines(state, path, previewPalisadeDraftRouteAccess(state, path));
+}
+
+function predictedRoadTiles(access: PalisadeRouteAccess): number | null {
+  if (access.unreachableSiteIds.length === 0) return 0;
+  if (predictedRoadCache.has(access)) return predictedRoadCache.get(access) ?? null;
+  const missing = new Set<string>();
+  for (const siteId of access.unreachableSiteIds) {
+    const site = access.projected.constructionSites.find(candidate => candidate.id === siteId);
+    if (site === undefined) continue;
+    const suggestion = suggestedConstructionRoad(access.projected, site)
+      .filter(tile => getTile(access.projected, tile)?.hasRoad !== true);
+    if (suggestion.length === 0) {
+      predictedRoadCache.set(access, null);
+      return null;
+    }
+    for (const tile of suggestion) missing.add(`${tile.tx},${tile.ty}`);
+  }
+  predictedRoadCache.set(access, missing.size);
+  return missing.size;
+}
+
+function predictionLines(state: GameState, path: PalisadePath, access: PalisadeRouteAccess): readonly PredictionLine[] {
   const steps = palisadePerimeterSteps(path);
   const segments = Math.ceil(steps / STEPS_PER_SEGMENT);
   const cost = steps * TIMBER_PER_STEP;
@@ -22,10 +53,19 @@ export function proposalPredictionLines(state: GameState, path: PalisadePath): r
     { id: 'scope', tone: 'neutral', text: `길이 ${steps}칸 · 공사 ${segments}구간 · 목재 ${cost} · 인력 ${labourTicks}일꾼틱` },
     { id: 'materials', tone: deficit > 0 ? 'warning' : 'positive', text: `가용 목재 ${available} · 추가 필요 ${deficit}` },
   ];
-  const access = previewPalisadeRouteAccess(state, path);
   const unreachable = access.unreachableSiteIds.length;
-  if (unreachable > 0) {
+  if (access.provisional) {
+    lines.push({ id: 'route-provisional', tone: unreachable > 0 ? 'warning' : 'neutral',
+      text: A_QUADRUPLE_PRIME_WALL_COPY.provisionalRoute(unreachable) });
+  }
+  if (unreachable > 0 && !access.provisional) {
     lines.push({ id: 'no-route', tone: 'warning', text: A_TRIPLE_PRIME_WALL_COPY.unreachableSegments(unreachable) });
+  }
+  if (unreachable > 0) {
+    const roadTiles = predictedRoadTiles(access);
+    lines.push({ id: 'road-length', tone: 'warning', text: roadTiles === null
+      ? A_QUADRUPLE_PRIME_WALL_COPY.noConnectingRoad
+      : A_QUADRUPLE_PRIME_WALL_COPY.connectingRoads(roadTiles) });
   }
   if (access.unavailableSiteIds.length > 0) {
     lines.push({ id: 'no-source', tone: 'warning',

@@ -3,7 +3,7 @@ import test from 'node:test';
 import { createStage3EconomyHarnessScenario } from '../scripts/economyHarnessStage3Scenario';
 import { createGrowthOpening } from '../scripts/phase21OpeningTranslation';
 import { computePalisadeProposalForState } from '../src/engine/palisadeFootprints';
-import { computeReachablePalisadeProposalForState, previewPalisadeRouteAccess } from '../src/engine/palisadeRouteAccess';
+import { computeReachablePalisadeProposalForState, previewPalisadeDraftRouteAccess, previewPalisadeRouteAccess } from '../src/engine/palisadeRouteAccess';
 import { proposalPredictionLines } from '../src/ui/wallPrediction';
 
 test('draft route audit uses actual delivery paths before era requirements are met', () => {
@@ -15,6 +15,26 @@ test('draft route audit uses actual delivery paths before era requirements are m
   assert.equal(access.projected.era, 'palisade');
   assert.equal(access.reachableSiteIds.length + access.unreachableSiteIds.length,
     access.projected.palisade?.segments.length);
+  assert.equal(access.provisional, false);
+  assert.deepEqual(access.segments.map(segment => segment.siteId).sort(),
+    access.projected.palisade?.segments.map(segment => segment.id).sort());
+  assert.deepEqual(access.gates[0], access.projected.palisade?.gate);
+});
+
+test('given an open draft when previewed then its temporary segments use the actual delivery predicate', () => {
+  const prepared = createStage3EconomyHarnessScenario({ seed: 1 });
+  const draftPath = [{ x: 1, y: 1 }, { x: 5, y: 1 }];
+  const connected = previewPalisadeDraftRouteAccess(prepared, draftPath);
+  assert.equal(connected.provisional, true);
+  assert.equal(connected.segments.length, 1);
+  assert.equal(connected.segments[0]?.tileCount, 4);
+  assert.equal(connected.gates.length, 0);
+  assert.equal(previewPalisadeDraftRouteAccess({ ...prepared, tick: prepared.tick + 1 }, draftPath), connected);
+  const isolated = previewPalisadeDraftRouteAccess({
+    ...prepared, tiles: prepared.tiles.map(tile => ({ ...tile, hasRoad: false })),
+  }, draftPath);
+  assert.equal(isolated.provisional, true);
+  assert.equal(isolated.segments[0]?.status, 'unreachable');
 });
 
 test('isolated supply roads flag every unreachable segment before proclamation', () => {
@@ -45,6 +65,8 @@ test('proposal chooses a fully supplied perimeter over an unreachable geometric 
   assert.equal(geometric.ok, true);
   if (!geometric.ok) return;
   assert.equal(previewPalisadeRouteAccess(state, geometric.path).unreachableSiteIds.length, 1);
+  assert.ok(proposalPredictionLines(state, geometric.path).some(line =>
+    line.id === 'road-length' && line.text.includes('약 1칸')));
 
   const supplied = computeReachablePalisadeProposalForState(state);
   assert.equal(supplied.ok, true);

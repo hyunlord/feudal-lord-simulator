@@ -1,14 +1,26 @@
 import { constructionMaterialSources } from '../agents/deliveryConstruction';
 import { isPalisadeConstructionSite } from '../domain/palisadeConstructionSchedule';
+import { createPalisadeConstructionSite, type PalisadeConstructionSite } from '../economy/construction';
 import { availableStock } from '../economy/storage';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from './simulationPorts';
 import { projectPalisadeProclamation } from './palisade';
 import { computePalisadeProposalForState } from './palisadeFootprints';
+import { PALISADE_SEGMENT_SITE_STEPS, segmentPalisadePathForConstruction } from './palisadeSegments';
 import type { GameState } from './engine.types';
-import type { PalisadePath, PalisadeProposalResult } from '../world/palisadeGeometry';
+import { palisadePerimeterSteps, type PalisadePath, type PalisadeProposalResult, type TileEdgePoint } from '../world/palisadeGeometry';
+
+export type PalisadeRouteSegment = Readonly<{
+  siteId: string;
+  path: PalisadePath;
+  tileCount: number;
+  status: 'reachable' | 'unreachable' | 'unavailable';
+}>;
 
 export type PalisadeRouteAccess = Readonly<{
   projected: GameState;
+  provisional: boolean;
+  segments: readonly PalisadeRouteSegment[];
+  gates: readonly TileEdgePoint[];
   reachableSiteIds: readonly string[];
   unreachableSiteIds: readonly string[];
   unavailableSiteIds: readonly string[];
@@ -17,6 +29,8 @@ export type PalisadeRouteAccess = Readonly<{
 const tileLayoutKeys = new WeakMap<GameState['tiles'], string>();
 const routeAccessCache = new Map<string, PalisadeRouteAccess>();
 const statePreviewCache = new WeakMap<GameState, Map<string, PalisadeRouteAccess>>();
+const provisionalPreviewCache = new WeakMap<GameState, Map<string, PalisadeRouteAccess>>();
+const provisionalRouteCache = new Map<string, PalisadeRouteAccess>();
 const defaultProposalCache = new Map<string, PalisadeProposalResult>();
 
 function routeAccessKey(state: GameState, path: PalisadePath): string {
@@ -49,27 +63,73 @@ export function previewPalisadeRouteAccess(state: GameState, path: PalisadePath)
   }
   const projected = projectPalisadeProclamation(state, path);
   if (projected === state || projected.palisade === null) {
-    return { projected, reachableSiteIds: [], unreachableSiteIds: [], unavailableSiteIds: [] };
+    return { projected, provisional: false, segments: [], gates: [],
+      reachableSiteIds: [], unreachableSiteIds: [], unavailableSiteIds: [] };
   }
+  const sites = projected.constructionSites.filter(isPalisadeConstructionSite)
+    .filter(site => site.wallId === projected.palisade?.id);
+  const result = auditPalisadeSites(projected, sites, false,
+    [projected.palisade.gate, ...(projected.palisade.additionalGates ?? [])]);
+  if (routeAccessCache.size >= 128) routeAccessCache.delete(routeAccessCache.keys().next().value ?? '');
+  routeAccessCache.set(key, result);
+  statePreviewCache.set(state, new Map([...(statePreviewCache.get(state) ?? []), [pathKey, result]]));
+  return result;
+}
+
+function auditPalisadeSites(
+  projected: GameState,
+  sites: readonly PalisadeConstructionSite[],
+  provisional: boolean,
+  gates: readonly TileEdgePoint[],
+): PalisadeRouteAccess {
   const routes = createSimulationRoutePorts(projected).delivery;
   const inventory = createDeliveryInventoryPort();
+  const segments: PalisadeRouteSegment[] = [];
   const reachableSiteIds: string[] = [];
   const unreachableSiteIds: string[] = [];
   const unavailableSiteIds: string[] = [];
-  for (const site of projected.constructionSites.filter(isPalisadeConstructionSite)) {
-    if (site.wallId !== projected.palisade.id) continue;
+  for (const site of sites) {
     const sources = constructionMaterialSources({
       site, buildings: projected.buildings, routes, inventory,
       treasuryTimber: projected.treasuryTimber,
     });
-    if (sources.some(source => source.hasRoute)) reachableSiteIds.push(site.id);
-    else if (sources.length > 0) unreachableSiteIds.push(site.id);
-    else unavailableSiteIds.push(site.id);
+    const status = sources.some(source => source.hasRoute) ? 'reachable'
+      : sources.length > 0 ? 'unreachable' : 'unavailable';
+    segments.push({ siteId: site.id, path: site.path, tileCount: palisadePerimeterSteps(site.path), status });
+    switch (status) {
+      case 'reachable': reachableSiteIds.push(site.id); break;
+      case 'unreachable': unreachableSiteIds.push(site.id); break;
+      case 'unavailable': unavailableSiteIds.push(site.id); break;
+    }
   }
-  const result = { projected, reachableSiteIds, unreachableSiteIds, unavailableSiteIds };
-  if (routeAccessCache.size >= 128) routeAccessCache.delete(routeAccessCache.keys().next().value ?? '');
-  routeAccessCache.set(key, result);
-  statePreviewCache.set(state, new Map([...(statePreviewCache.get(state) ?? []), [pathKey, result]]));
+  return { projected, provisional, segments, gates,
+    reachableSiteIds, unreachableSiteIds, unavailableSiteIds };
+}
+
+export function previewPalisadeDraftRouteAccess(state: GameState, path: PalisadePath): PalisadeRouteAccess {
+  const pathKey = JSON.stringify(path);
+  const previous = provisionalPreviewCache.get(state)?.get(pathKey);
+  if (previous !== undefined) return previous;
+  const key = routeAccessKey(state, path);
+  const cached = provisionalRouteCache.get(key);
+  if (cached !== undefined) {
+    provisionalPreviewCache.set(state, new Map([...(provisionalPreviewCache.get(state) ?? []), [pathKey, cached]]));
+    return cached;
+  }
+  const exact = previewPalisadeRouteAccess(state, path);
+  if (exact.projected !== state) return exact;
+  const wallId = `draft-${state.nextConstructionOrdinal}`;
+  const sites = segmentPalisadePathForConstruction(path).map((segment, index) =>
+    createPalisadeConstructionSite({
+      id: `${wallId}-segment-${String(index).padStart(3, '0')}`,
+      wallId, segmentIndex: index, gateDistance: index * PALISADE_SEGMENT_SITE_STEPS, order: index,
+      path: segment.path, startedTick: state.tick,
+    }));
+  const projected = { ...state, constructionSites: [...state.constructionSites, ...sites] };
+  const result = auditPalisadeSites(projected, sites, true, []);
+  if (provisionalRouteCache.size >= 128) provisionalRouteCache.delete(provisionalRouteCache.keys().next().value ?? '');
+  provisionalRouteCache.set(key, result);
+  provisionalPreviewCache.set(state, new Map([...(provisionalPreviewCache.get(state) ?? []), [pathKey, result]]));
   return result;
 }
 
