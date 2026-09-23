@@ -77,6 +77,17 @@ export function drawPalisadeDraftOverlay(
   }
   for (const gate of gates) drawGatePreview(context, gate, zoom);
   for (const segment of routeSegments) drawRouteStatus(context, segment, zoom);
+  const selectedRun = draft.selectedRunIndex === null ? undefined : draft.candidate?.runs[draft.selectedRunIndex];
+  if (selectedRun !== undefined && draft.candidate !== null) {
+    const from = draft.candidate.path[selectedRun.startIndex];
+    const to = draft.candidate.path[selectedRun.endIndex];
+    if (from !== undefined && to !== undefined) {
+      tracePath(context, [from, to], true);
+      context.strokeStyle = PALETTE.ultramarine;
+      context.lineWidth = 5 / zoom;
+      context.stroke();
+    }
+  }
   for (const vertex of displayVertices(draft.path)) drawVertexHandle(context, vertex, zoom);
   context.restore();
 }
