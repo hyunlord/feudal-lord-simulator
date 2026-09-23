@@ -127,17 +127,18 @@ test("build menu exposes readable categories with road separated and scoped scro
   assert.match(selectorRuleBodies(css, ".build-menu"), /min-width:\s*0;/);
   assert.match(selectorRuleBodies(css, ".build-menu-catalog"), /overflow-x:\s*auto;/);
   assert.match(selectorRuleBodies(css, ".build-menu-tools[hidden]"), /display:\s*none;/);
-  assert.match(selectorRuleBodies(css, ".build-menu .build-tool"), /min-width:\s*104px;/);
+  assert.match(selectorRuleBodies(css, ".build-menu .build-tool"), /min-width:\s*112px;/);
   const toolHeights = [...selectorRuleBodies(css, ".build-menu .build-tool").matchAll(/min-height:\s*(\d+)px;/g)];
   assert.ok(toolHeights.length > 0);
   for (const match of toolHeights) assert.ok(Number(match[1]) >= 124, "tool cards retain room for art, name and cost");
   assert.match(selectorRuleBodies(css, ".build-menu .build-seal-label"), /font-size:\s*var\(--font-body\);/);
   const globalCss = await readFile(new URL("../src/styles/global.css", import.meta.url), "utf8");
-  assert.match(globalCss, /--font-body:\s*13px;/);
+  assert.match(globalCss, /--font-body:\s*16px;/);
   const categoryHeights = [...selectorRuleBodies(css, ".build-menu-category").matchAll(/min-height:\s*(\d+)px;/g)];
   assert.ok(categoryHeights.length > 0);
   for (const match of categoryHeights) assert.ok(Number(match[1]) >= 32, "category targets remain usable at every breakpoint");
-  assert.match(selectorRuleBodies(mediaBlocks(css, "max-width: 1100px"), ".build-menu-body"), /flex-wrap:\s*wrap;/);
+  assert.match(selectorRuleBodies(css, ".build-menu-body"), /max-height:\s*calc\(100vh/);
+  assert.match(markup, /class="build-menu-body" hidden=""/);
   assert.match(markup, /class="build-menu-quick-road"/);
   for (const category of BUILD_CATEGORIES) {
     assert.match(markup, new RegExp(`aria-label="${category.label} 도구"`));

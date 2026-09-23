@@ -235,7 +235,7 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   assert.match(mobileRules, /\.court-ledger\s*\{[\s\S]*?height:\s*48px;/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2, auto minmax\(0, 1fr\)\);/);
   assert.match(mobileRules, /\.court-ledger dl\s*\{[\s\S]*?font-size:\s*var\(--font-body\);/);
-  assert.match(css, /--font-body:\s*13px;/);
+  assert.match(css, /--font-body:\s*16px;/);
   assert.match(mobileRules, /\.ledger-label--full\s*\{[\s\S]*?display:\s*none;/);
   assert.match(mobileRules, /\.ledger-label--compact\s*\{[\s\S]*?display:\s*block;/);
   assert.match(mobileRules, /\.ledger-row--secondary\s*\{[\s\S]*?display:\s*none;/);

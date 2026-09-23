@@ -105,7 +105,8 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
           </button>
         ))}
       </div>
-      <div className="autoplay-control" aria-label="자동 발전 제어">
+      <details className="command-disclosure settings-disclosure"><summary>설정</summary>
+      <div className="command-popover autoplay-control" aria-label="자동 발전 제어">
         <button
           className="autoplay-toggle"
           type="button"
@@ -115,7 +116,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
           자동 발전
         </button>
         <span className="autoplay-hint">{autoplayEnabled ? autoplayActionLabel(nextAction) : "자동 발전 꺼짐"}</span>
-      </div>
+      </div></details>
     </div>
   );
 }

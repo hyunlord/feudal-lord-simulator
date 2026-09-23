@@ -22,10 +22,10 @@
 .app-shell .settlement-priority { gap: 8px; font: var(--font-body)/1.5 var(--ui-body-font); word-break: keep-all; }
 .app-shell .settlement-status .problem-glyph { display: flex; align-items: center; justify-content: center; }
 .problem-symbol { width: 20px; height: 20px; flex-shrink: 0; color: var(--palette-vermilion); }
-@media (min-width: 601px) and (max-width: 767px) { .app-shell { --resource-height: 104px; } }
+
 @media (max-width: 700px) {
   .app-shell .build-menu-detail-heading { margin-bottom: 0; padding-bottom: 0; }
-  .app-shell .ledger-recess { border-top: 1px solid var(--palette-ink-light); padding-top: 4px; }
+
   .app-shell .settlement-status { padding: 4px 8px; }
   .app-shell .settlement-priority { font-size: var(--font-body); }
 }

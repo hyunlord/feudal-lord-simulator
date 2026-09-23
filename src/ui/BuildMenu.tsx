@@ -1,5 +1,8 @@
 import { useEffect, useId, useState } from "react";
 
+import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { HOUSEHOLD_SERVICE_CONFIG } from "../population/serviceAllocation";
+
 import { KO_UI } from "../content/locale.ko";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
@@ -23,14 +26,27 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
     const initialTool = selectedTool ?? highlightedTools[0] ?? "house";
     return buildCategory(initialTool);
   });
+  const [catalogOpen, setCatalogOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const [preview, setPreview] = useState<PlacementTool | null>(null);
   useEffect(() => {
     if (selectedTool !== null) setCategory(buildCategory(selectedTool));
   }, [selectedTool]);
+  useEffect(() => {
+    const close = (event: KeyboardEvent) => {
+      if (event.code !== "Escape") return;
+      setCatalogOpen(false);
+      setDetailsOpen(false);
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
   const visibleOptions = options.filter((option) => buildCategory(option.tool) === category);
   const detailTool = preview ?? selectedTool ?? visibleOptions[0]?.tool ?? "road";
   const detailOption = detailTool === "road" ? ROAD_TOOL_OPTION : options.find((option) => option.tool === detailTool) ?? ROAD_TOOL_OPTION;
   const detailLines = buildToolTooltipLines(detailOption.tool, menuState);
+  const service = Object.values(HOUSEHOLD_SERVICE_CONFIG).find(item => item.kind === detailOption.tool);
+  const radius = detailOption.tool === "road" ? undefined : BUILDING_CONFIG_BY_KIND[detailOption.tool].serviceRadius;
   const affordable = buildToolAffordability(detailOption.tool, menuState).affordable;
 
   const toolButton = (option: BuildToolOption) => {
@@ -46,7 +62,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         title={buildToolTooltipLines(option.tool, menuState).join("\n")}
         onMouseEnter={() => setPreview(option.tool)} onMouseLeave={() => setPreview(null)}
         onFocus={() => setPreview(option.tool)} onBlur={() => setPreview(null)}
-        onClick={() => { if (toolAffordable) onSelect(option.tool); }}>
+        onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); } }}>
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
           {thumbnail === null ? <BuildGlyph tool={option.tool} /> : <img src={thumbnail} width="80" height="64" alt="" draggable={false} />}
@@ -63,14 +79,14 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
       <div className="build-menu-categories" role="group" aria-label="건설 분류">
         {BUILD_CATEGORIES.map((item) => (
           <button key={item.key} type="button" className="build-menu-category"
-            aria-pressed={category === item.key} aria-controls={`${id}-${item.key}`}
-            onClick={() => { setCategory(item.key); setPreview(null); }}>
+            aria-pressed={category === item.key} aria-expanded={catalogOpen && category === item.key} aria-controls={`${id}-${item.key}`}
+            onClick={() => { setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); }}>
             {item.label}
             {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
           </button>
         ))}
       </div>
-      <div className="build-menu-body">
+      <div className="build-menu-body" hidden={!catalogOpen}>
         <div className="build-menu-quick-road" role="group" aria-label={KO_UI.roadTool}>{toolButton(ROAD_TOOL_OPTION)}</div>
         <div className="build-menu-catalog">
           {BUILD_CATEGORIES.map((item) => (
@@ -81,14 +97,19 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
             </section>
           ))}
         </div>
-        <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내">
-          <div className="build-menu-detail-heading"><strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span></div>
-          <p>{detailOption.purpose}</p>
-          <p>{detailOption.requirements.join(" · ")}</p>
-          <p className={affordable ? "build-menu-ready" : "build-menu-shortfall"}>{detailLines.at(-1)}</p>
-          <span className="build-menu-instruction">{selectedTool === null ? "건물 선택 후 지도에 배치" : "지도 클릭으로 설치 · Esc 취소"}</span>
-        </div>
       </div>
+      <div className="build-menu-summary">
+        <strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span>
+        {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
+        {service && <span>수용 {service.capacity}필지</span>}
+        <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}>i</button>
+      </div>
+      <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내" hidden={!detailsOpen}>
+        <div className="build-menu-detail-heading"><strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span></div>
+        <p>{detailOption.purpose}</p><p>{detailOption.requirements.join(" · ")}</p>
+        <p className={affordable ? "build-menu-ready" : "build-menu-shortfall"}>{detailLines.at(-1)}</p>
+      </div>
+      <div className="build-menu-instruction">클릭 설치 · Esc/우클릭 취소 · 휠 확대 · O 문제 보기</div>
     </div>
   );
 }

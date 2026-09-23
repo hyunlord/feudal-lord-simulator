@@ -224,6 +224,7 @@ export function App() {
       >
         <h1 className="visually-hidden">{KO_UI.appName}</h1>
         <ResourceBar
+          paused={speed === 0}
           state={state}
           populationDrawerOpen={populationDrawerOpen}
           onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
@@ -268,7 +269,7 @@ export function App() {
         </aside>
         <aside className="court-console" aria-label={KO_UI.courtConsole}>
           <div className="court-recess map-recess">
-            <MapShield grid={state} />
+            <details className="command-disclosure"><summary>지도</summary><div className="command-popover"><MapShield grid={state} /></div></details>
           </div>
           <div className="court-recess seal-recess">
             <BuildSeals
@@ -279,9 +280,9 @@ export function App() {
             />
           </div>
           <div className="court-recess ledger-recess">
-            <div className="ledger-stack">
+            <details className="command-disclosure ledger-stack"><summary>보기</summary><div className="command-popover">
               <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />
-            </div>
+            </div></details>
             <SpeedSeals speed={speed} onChange={setSpeed} />
           </div>
         </aside>

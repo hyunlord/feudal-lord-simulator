@@ -194,7 +194,7 @@ test("browser build-menu proof includes every app stylesheet in production order
 test("build controls retain readable names and bounded scrolling at narrow widths", async () => {
   const css = await readFile(new URL("../src/styles/buildMenu.css", import.meta.url), "utf8");
   const tokens = await readFile(new URL("../src/styles/global.css", import.meta.url), "utf8");
-  assert.match(tokens, /--font-body:\s*13px/);
+  assert.match(tokens, /--font-body:\s*16px/);
   assert.match(css, /\.build-menu \.build-seal-label[^}]*font-size: var\(--font-body\)/);
   const categoryHeights = [...css.matchAll(/\.build-menu-category\s*\{[^}]*min-height:\s*(\d+)px/g)];
   assert.ok(categoryHeights.length > 0);
@@ -234,4 +234,15 @@ test("each tool describes its own immutable guidance even when another tool is s
     assert.ok(descriptionId); assert.ok(content); assert.ok(label);
     assert.ok(content.includes(`id="${descriptionId}" class="visually-hidden">${label}. 비용`));
   }
+});
+
+
+test("compact selection summary retains canonical service radius and capacity with a closed detail drawer", () => {
+  const markup = renderToStaticMarkup(createElement(BuildSeals, {
+    selectedTool: "church", state: { ...DEFAULT_GAME_STATE, era: "stone_town" }, onSelect: () => undefined,
+  }));
+  assert.match(markup, /build-menu-summary[\s\S]*반경 12칸[\s\S]*수용 32필지/);
+  assert.match(markup, /aria-label="선택 도구 상세 안내" aria-expanded="false"/);
+  assert.match(markup, /class="build-menu-details" aria-label="건설 안내" hidden=""/);
+  assert.match(markup, /class="build-menu-body" hidden=""/);
 });

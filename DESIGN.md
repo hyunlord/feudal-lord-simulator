@@ -565,3 +565,23 @@ stays between resource and command bars. Dashed gold isometric ellipses guide
 range; thin gold house footprints show the actual grid-rule result. Road land
 uses a short solid mark and bridge sections three crossbars, preserving colour
 and pattern distinction. Prediction does not change placement or service rules.
+
+## UI-3 compact command contract (2026-09-23)
+
+Body text is 16px, secondary metadata 13px and compact badges 11px. The
+11px exceptions are onboarding completion flourishes, build affordability tags,
+existing compact status badges and cause-legend secondary labels. No text uses
+10px or smaller. Text never shrinks at narrow widths.
+
+The bottom console is 100px: category row, selected-tool summary and one shortcut
+line. Categories open a bounded floating tool catalogue; [i] opens its detailed
+guidance. The summary retains name, actual cost, configured radius and household
+capacity. Map and view controls are disclosures; speed remains directly available.
+Automatic development is inside Settings, preserving its scheduler and state.
+At narrow widths controls wrap into a 140px console, rather than reducing type.
+All disclosures remain keyboard-accessible; drawers scroll within the available
+map height. Existing palette, focus rules and artwork remain authoritative.
+
+Placement previews share existing sage at 16% fill for the radius and 28%
+for actual target footprints, with solid gold 3 CSS pixel borders compensated
+for zoom. Geometry and radius are unchanged; cause glyphs paint afterward.

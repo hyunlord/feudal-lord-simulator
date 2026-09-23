@@ -9,7 +9,7 @@ import { SpeedSeals } from "../src/ui/SpeedControls";
 
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
 
-test("Given desktop speed controls When rendered in the ledger grid Then speed and autoplay share one grid item", () => {
+test("Given desktop speed controls When rendered in the ledger grid Then speed remains direct and autoplay is inside settings", () => {
   // Given / When
   const markup = renderToStaticMarkup(
     createElement(
@@ -23,7 +23,7 @@ test("Given desktop speed controls When rendered in the ledger grid Then speed a
   assert.match(markup, /^<div class="speed-control-stack">/);
   assert.match(
     markup,
-    /^<div class="speed-control-stack"><div class="speed-seals"[\s\S]*<div class="autoplay-control"/,
+    /^<div class="speed-control-stack"><div class="speed-seals"[\s\S]*<details class="command-disclosure settings-disclosure"><summary>설정<\/summary>[\s\S]*<div class="command-popover autoplay-control"/,
   );
 });
 
