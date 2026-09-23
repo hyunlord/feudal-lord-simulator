@@ -137,7 +137,7 @@ function drawBuildingDetail(
   const detailLevel = renderDetailLevel(input.zoom);
   if (building.kind === "wheat_farm" && drawFarmDetail(context, building, input.state.buildings)) {
     if (detailLevel === "full") {
-      drawKindDetail(context, { architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
+      drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
     }
     return;
   }
@@ -145,7 +145,7 @@ function drawBuildingDetail(
     if (detailLevel !== "full" || !drawHouseCompoundSprite(context, building, visualState.houseLevel)) {
       drawHouseCompound(context, building, visualState.houseLevel, detailLevel);
     } else drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
-    drawKindDetail(context, { architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
+    drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
     return;
   }
   if (detailLevel === "full") {
@@ -154,14 +154,14 @@ function drawBuildingDetail(
       : drawHistoricalFacility(context, building, input.state);
     if (historical) {
       if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
-      drawKindDetail(context, { architecture: "baked", tick: input.state.tick, center,
+      drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center,
         kind: building.kind, zoom: input.zoom, visualState });
       return;
     }
     const spriteKey = buildingSpriteKey(building, visualState.houseLevel);
     const spriteDrawn = drawWorldSprite(context, spriteKey, building.tx, building.ty, spriteOptions);
     if (spriteDrawn) {
-      drawKindDetail(context, {
+      drawKindDetail(context, { hideProblemMarker: true,
         architecture: spriteMeta(spriteKey)?.bakedArchitecture === true ? "baked" : "procedural",
         tick: input.state.tick,
         center,
@@ -186,7 +186,7 @@ function drawBuildingDetail(
   drawBody(context, shape);
   drawRoof(context, shape);
   if (detailLevel === "full") {
-    drawKindDetail(context, {
+    drawKindDetail(context, { hideProblemMarker: true,
       tick: input.state.tick,
       center,
       kind: building.kind,

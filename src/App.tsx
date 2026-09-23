@@ -9,6 +9,8 @@ import {
   type PointerEvent,
 } from "react";
 
+import { isProblemViewShortcut } from "./ui/problemViewShortcut";
+import { CauseLegend } from "./ui/CauseLegend";
 import { KO_UI } from "./content/locale.ko";
 import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
@@ -76,6 +78,7 @@ export function nextDistributorRouteHistoryCommit(input: {
 export function App() {
   const { state, dispatch, speed, setSpeed } = useGameStore();
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
+  const [problemOnly, setProblemOnly] = useState(false);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
   const [welcomeVisible, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
@@ -153,6 +156,14 @@ export function App() {
         setSelectedTool(null);
         return;
       }
+      if (event.code === "KeyO") {
+        const target = event.target;
+        const editable = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+        if (!isProblemViewShortcut(event.code, event.repeat, editable)) return;
+        event.preventDefault();
+        setProblemOnly(value => !value);
+        return;
+      }
       const nextMode = toggleOverlayByKey(event.code, overlayMode);
       if (nextMode === overlayMode) return;
       event.preventDefault();
@@ -225,6 +236,7 @@ export function App() {
         <GameCanvas
           selectedTool={selectedTool}
           overlayMode={overlayMode}
+          problemOnly={problemOnly}
           highlightedHouseIds={highlightedHouseIds}
           distributorRouteHistory={distributorRouteHistory}
           palisadeDraft={palisadeDraft}
@@ -252,6 +264,7 @@ export function App() {
             />
           </details>
           <OnboardingTasks view={onboardingView} />
+          {problemOnly ? <CauseLegend /> : null}
         </aside>
         <aside className="court-console" aria-label={KO_UI.courtConsole}>
           <div className="court-recess map-recess">
@@ -267,7 +280,7 @@ export function App() {
           </div>
           <div className="court-recess ledger-recess">
             <div className="ledger-stack">
-              <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} />
+              <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />
             </div>
             <SpeedSeals speed={speed} onChange={setSpeed} />
           </div>

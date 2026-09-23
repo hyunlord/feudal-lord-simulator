@@ -18,6 +18,7 @@ export type GameCanvasRuntimeInput = {
   readonly dispatch: Dispatch<GameAction>;
   readonly selectedTool: PlacementTool | null;
   readonly overlayMode: OverlayMode;
+  readonly problemOnly?: boolean;
   readonly setHoveredBuilding: Dispatch<SetStateAction<HoveredBuilding | null>>;
   readonly selection: AnchoredWorldSelection | null;
   readonly setSelection: Dispatch<SetStateAction<AnchoredWorldSelection | null>>;

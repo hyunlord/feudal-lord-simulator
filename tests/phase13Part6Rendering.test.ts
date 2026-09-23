@@ -311,7 +311,7 @@ test("drawObjectRenderItems keeps the building opaque when its sprite overlaps t
   assert.equal(context.globalAlpha, 1);
 });
 
-test("outlines view mode is off by default and toggled by one keyboard key", () => {
+test("outlines view remains off for O and can still be toggled by its button", () => {
   // Given
   const initial = getObjectRenderViewMode();
 
@@ -328,8 +328,10 @@ test("outlines view mode is off by default and toggled by one keyboard key", () 
 
   // Then
   assert.equal(initial, "normal");
-  assert.equal(result.toggleOutlinesView, true);
-  assert.equal(result.preventDefault, true);
+  assert.equal(result.toggleOutlinesView, false);
+  assert.equal(result.preventDefault, false);
+  assert.equal(getObjectRenderViewMode(), "normal");
+  toggleObjectRenderViewMode(true);
   assert.equal(getObjectRenderViewMode(), "outlines");
 
   // Cleanup

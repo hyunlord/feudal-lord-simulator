@@ -1,3 +1,4 @@
+import { drawCauseMap } from "./causeMapOverlay";
 import type { Walker } from "../agents/walker.types";
 import type { BuildingKind } from "../content/buildingConfig";
 import type { GameState, OverlayMode } from "../engine/engine.types";
@@ -56,6 +57,7 @@ export type RenderFrameInput = {
   readonly viewport: ViewportSize;
   readonly preview: PlacementPreview;
   readonly overlayMode?: OverlayMode;
+  readonly problemOnly?: boolean;
   readonly placementFeedback?: PlacementFeedback | null;
   readonly nowMs?: number;
   readonly selectedBuildingId?: string | null;
@@ -105,6 +107,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     objects: () =>
       drawObjectRenderItems(input.context, {
         state: input.state,
+        problemOnly: input.problemOnly ?? false,
         tiles: visibleTiles,
         range,
         zoom: input.camera.zoom,
@@ -124,6 +127,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom,
       }),
   });
+  drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   drawOverlay({
     context: input.context,
     state: input.state,

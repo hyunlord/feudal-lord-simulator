@@ -23,7 +23,7 @@ export function resolveCanvasKeyDown(input: Readonly<{
     camera: input.camera,
     spacePressed: input.code === "Space" || input.spacePressed,
     dismissSelection: input.code === "Escape",
-    preventDefault: input.code === "Space" || cameraKey || input.code === "KeyO",
-    toggleOutlinesView: input.code === "KeyO",
+    preventDefault: input.code === "Space" || cameraKey,
+    toggleOutlinesView: false,
   };
 }

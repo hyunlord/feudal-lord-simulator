@@ -23,6 +23,7 @@ export type BuildingDetailInput = {
   readonly center: Point;
   readonly kind: BuildingKind;
   readonly zoom: number;
+  readonly hideProblemMarker?: boolean;
   readonly visualState: BuildingVisualState;
   readonly architecture?: "procedural" | "baked";
 };
@@ -33,7 +34,7 @@ export function drawKindDetail(
 ): void {
   if (input.architecture !== "baked") drawBaseKindDetail(context, input);
   const marker = problemMarkerKind(input);
-  if (marker !== null) {
+  if (marker !== null && !input.hideProblemMarker) {
     drawProblemMarker(context, {
       center: input.center,
       kind: marker,

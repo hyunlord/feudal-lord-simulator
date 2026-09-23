@@ -135,3 +135,32 @@
 
 .inspector-merge { display: grid; gap: 8px; border-bottom: 1px solid var(--palette-parchment-dark); padding-bottom: 12px; }
 .inspector-merge button { width: 100%; text-align: left; white-space: normal; }
+
+.app-shell .cause-tooltip {
+  width: min(480px, calc(100% - 24px));
+  max-width: calc(100% - 24px);
+  bottom: auto;
+  padding: 8px 12px;
+  font: 400 13px/1.5 var(--ui-body-font);
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+.inspector-cause-summary {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--palette-earth);
+  color: var(--palette-ink);
+  background: var(--palette-parchment);
+  font: 600 13px/1.5 var(--ui-body-font);
+}
+.cause-legend {
+  padding: 8px 12px;
+  color: var(--palette-vellum);
+  background: var(--palette-ink-muted);
+  border: 1px solid var(--palette-earth);
+  font: 400 13px/1.4 var(--ui-body-font);
+}
+.cause-legend ul { list-style: none; padding: 0; margin: 8px 0; }
+.cause-legend li { display: flex; align-items: center; gap: 8px; }
+.cause-legend-symbol { min-width: 26px; padding: 0 4px; background: var(--palette-vellum); font-weight: 700; }
+.cause-legend small { font-size: 11px; }

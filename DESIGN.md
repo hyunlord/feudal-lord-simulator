@@ -541,3 +541,16 @@ only the explicit outline diagnostic mode is translucent. Preserve physical
 foreground-wall occlusion and full-footprint depth constraints. Wall preview,
 automatic proposal and confirmation share completed-building and unfinished
 building footprints, with the same one-tile clearance.
+
+## UI-1 cause map (2026-09-23)
+
+Cause markers reuse palette ink/vellum outlines and registered semantic colours.
+Their screen-space radius is 13px with 11px Korean badge lettering; a second
+2px boundary marks maintenance risk. Ready housing has a small 6px unfilled
+ring, without a percentage. At zoom0.6 and below, same-cause markers within
+36 screen pixels form a count badge. Problem view fades normal buildings to
+40 percent opacity; terrain and roads retain their normal rendering. The
+upper-right legend and one-line hover plaque use existing 13px Korean meta
+text, parchment surfaces and 8/12px spacing. Long hover text wraps only when
+required to stay inside the viewport. Inspector cause summary remains outside
+its scrolling details. These presentation tokens do not change simulation.

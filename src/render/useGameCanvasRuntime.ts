@@ -1,3 +1,6 @@
+import { causeMarkersForState } from "./causeMapOverlay";
+import { hitCauseMarker } from "./causeMarkerLayout";
+import { canvasToWorld } from "./camera";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { townLandscapeAssetReady } from "./townLandscapeAssets";
 import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
@@ -30,6 +33,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     dispatch,
     highlightedHouseIds,
     overlayMode,
+    problemOnly = false,
     selectedTool,
     selection,
     setHoveredBuilding,
@@ -41,8 +45,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     onPalisadeDraftChange,
     onPalisadeDraftCancel, previousRenderState, interpolationAlpha,
   } = input;
-  const { highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef } =
-    useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs });
+  const { problemOnlyRef, highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef } =
+    useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs });
 
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
@@ -73,7 +77,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       lastFrameAtMs = nowMs;
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
-      drawCurrentCanvasFrame({ canvas, context, refs, state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
+      drawCurrentCanvasFrame({ canvas, context, refs, state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
       if (work !== null) work.recordFrame(performance.now() - startedAt);
       publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height), grid: stateRef.current });
       frameId = requestAnimationFrame(drawFrame);
@@ -85,13 +89,17 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       const hoveredGround = refs.hoverRef.current === null ? null : getTile(stateRef.current, refs.hoverRef.current);
       const landscape = hoveredGround === null ? null : townLandscapeAt(stateRef.current, hoveredGround);
       canvas.title = selectedToolRef.current === null && landscape !== null && townLandscapeAssetReady(landscape) ? TOWN_LANDSCAPE_TOOLTIP : "";
-      const buildingId = refs.hoverRef.current === null
-        ? null : getTile(stateRef.current, refs.hoverRef.current)?.buildingId ?? null;
+      const marker = selectedToolRef.current === null ? hitCauseMarker(causeMarkersForState(stateRef.current, refs.cameraRef.current.zoom),
+        canvasToWorld(canvasPoint(event), refs.cameraRef.current), refs.cameraRef.current.zoom) : null;
+      const markerBuilding = stateRef.current.buildings.find(b => b.id === marker?.buildingIds[0]);
+      if (markerBuilding !== undefined) refs.hoverRef.current = { tx: markerBuilding.tx, ty: markerBuilding.ty };
+      const buildingId = markerBuilding?.id ?? (refs.hoverRef.current === null
+        ? null : getTile(stateRef.current, refs.hoverRef.current)?.buildingId ?? null);
       if (buildingId === null) {
         setHoveredBuilding(null);
         return;
       }
-      setHoveredBuilding({ buildingId, ...hoveredBuildingPosition(event, canvas.getBoundingClientRect()) });
+      setHoveredBuilding({ buildingId, clusterCount: marker?.buildingIds.length ?? 1, ...hoveredBuildingPosition(event, canvas.getBoundingClientRect()) });
     };
     const clearSuppressClickTimeout = () => {
       if (suppressClickTimeout !== null) {
@@ -177,6 +185,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         return;
       }
       if (resolution.kind === "selection") {
+        const marker = selectedToolRef.current === null ? hitCauseMarker(causeMarkersForState(stateRef.current, refs.cameraRef.current.zoom),
+          canvasToWorld(canvasPoint(event), refs.cameraRef.current), refs.cameraRef.current.zoom) : null;
+        const buildingId = marker?.buildingIds[0];
+        if (buildingId !== undefined) {
+          setSelection({ kind: 'building', buildingId, position: canvasPoint(event) });
+          return;
+        }
         setSelection(resolution.selection);
         return;
       }

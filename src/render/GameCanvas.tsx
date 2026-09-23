@@ -1,5 +1,6 @@
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 
+import { houseProgressModel } from "../ui/houseProgressModel";
 import { KO_UI } from "../content/locale.ko";
 import type { OverlayMode } from "../engine/engine.types";
 import { DEFAULT_PLACEMENT_TOOL } from "./interactions";
@@ -23,6 +24,7 @@ import type { DistributorRouteHistory } from "../ui/distributorRouteHistory";
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
   readonly overlayMode?: OverlayMode;
+  readonly problemOnly?: boolean;
   readonly highlightedHouseIds?: readonly string[];
   readonly distributorRouteHistory?: DistributorRouteHistory | null;
   readonly palisadeDraft?: PalisadeDraftState | null;
@@ -35,6 +37,7 @@ type GameCanvasProps = {
 export function GameCanvas({
   selectedTool = DEFAULT_PLACEMENT_TOOL,
   overlayMode = "none",
+  problemOnly = false,
   highlightedHouseIds = [],
   distributorRouteHistory = null,
   palisadeDraft = null,
@@ -56,6 +59,7 @@ export function GameCanvas({
     dispatch,
     selectedTool,
     overlayMode,
+    problemOnly,
     setHoveredBuilding,
     selection,
     setSelection,
@@ -119,6 +123,7 @@ export function GameCanvas({
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard
           model={cardModel}
+          causeSummary={selection.kind === 'building' ? houseProgressModel(state, selection.buildingId) : null}
           onClose={() => { setSelection(null); setHoveredBuilding(null); }}
           onCancelConstruction={cancelConstruction}
           onDemolishHouse={demolishHouse}

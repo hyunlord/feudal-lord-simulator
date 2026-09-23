@@ -28,6 +28,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   state: GameState;
   selectedTool: PlacementTool | null;
   overlayMode: OverlayMode;
+  problemOnly?: boolean;
   selection: AnchoredWorldSelection | null;
   previousRenderState: Pick<GameState, "constructionSites" | "walkers">;
   interpolationAlpha: () => number;
@@ -51,6 +52,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     roadStart: input.refs.dragRef.current.roadStart,
     selectedTool: input.selectedTool,
     overlayMode: input.overlayMode,
+    problemOnly: input.problemOnly ?? false,
     placementFeedback: input.refs.feedbackRef.current,
     nowMs,
     selectedBuildingId: input.selection?.kind === "building" ? input.selection.buildingId : null,

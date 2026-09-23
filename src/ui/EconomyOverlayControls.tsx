@@ -10,6 +10,8 @@ import {
 
 export type EconomyOverlayControlsProps = {
   readonly overlayMode: OverlayMode;
+  readonly problemOnly?: boolean;
+  readonly onProblemOnlyChange?: (enabled: boolean) => void;
   readonly onChange: (mode: OverlayMode) => void;
 };
 
@@ -69,6 +71,8 @@ export function toggleOverlayByKey(
 export function EconomyOverlayControls({
   overlayMode,
   onChange,
+  problemOnly = false,
+  onProblemOnlyChange,
 }: EconomyOverlayControlsProps) {
   const [objectRenderViewMode, setObjectRenderViewModeState] = useState(getObjectRenderViewMode);
   useEffect(
@@ -84,6 +88,10 @@ export function EconomyOverlayControls({
     <section className="economy-overlays" aria-label={KO_UI.overlays.ariaLabel}>
       <span className="overlay-heading">{KO_UI.overlays.heading}</span>
       <div className="overlay-seals">
+        <button className="overlay-seal" type="button" aria-pressed={problemOnly}
+          aria-label="문제만 보기, 단축키 O" onClick={() => onProblemOnlyChange?.(!problemOnly)}>
+          <span className="overlay-label">문제만 보기</span><span className="overlay-key">O</span>
+        </button>
         {ECONOMY_OVERLAYS.map((option) => (
           <button
             key={option.mode}
@@ -103,12 +111,12 @@ export function EconomyOverlayControls({
           className="overlay-seal"
           type="button"
           aria-pressed={outlinesEnabled}
-          aria-label={`${KO_UI.overlays.outlines.label} 보기, ${KO_UI.overlays.shortcut} O`}
+          aria-label={`${KO_UI.overlays.outlines.label} 보기`}
           onClick={toggleOutlines}
         >
           <span className="overlay-label overlay-label--full">{KO_UI.overlays.outlines.label}</span>
           <span className="overlay-label overlay-label--compact" aria-hidden="true">{KO_UI.overlays.outlines.compact}</span>
-          <span className="overlay-key">O</span>
+
           <span className="overlay-legend">{KO_UI.overlays.outlines.legend}</span>
         </button>
       </div>

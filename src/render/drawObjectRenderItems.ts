@@ -1,3 +1,4 @@
+import { causeBuildingAlpha } from "./causeMapOverlay";
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import type { CameraState } from "./camera";
@@ -17,6 +18,7 @@ import { sortRenderItems } from "./objectRenderSort";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
+  readonly problemOnly?: boolean;
   readonly tiles: readonly Tile[];
   readonly range: TileRange;
   readonly zoom: number;
@@ -40,7 +42,12 @@ export function drawObjectRenderItems(
   const viewMode = getObjectRenderViewMode();
   if (viewMode !== "outlines") {
     for (const item of input.objectRenderItems) {
-      if (item.kind === "building") drawFarmSoil(context, item.building, input.state.buildings);
+      if (item.kind === "building") {
+        context.save();
+        if (input.problemOnly && causeBuildingAlpha(input.state, item.building.id, true) < 1) context.globalAlpha *= 0.4;
+        drawFarmSoil(context, item.building, input.state.buildings);
+        context.restore();
+      }
     }
   }
   const stoneGates = input.objectRenderItems.flatMap(item => item.kind === "palisade_segment"
@@ -88,6 +95,8 @@ export function drawObjectRenderItems(
       });
       continue;
     }
+    context.save();
+    if (item.kind === "building" && input.problemOnly && causeBuildingAlpha(input.state, item.building.id, true) < 1) context.globalAlpha *= 0.4;
     drawBuildings(context, {
       state: input.state,
       tiles: input.tiles,
@@ -104,8 +113,10 @@ export function drawObjectRenderItems(
       viewMode,
       farmSoilDrawn: true,
     });
+    context.restore();
   }
   for (const item of walkerItems) {
+    context.save();
     drawBuildings(context, {
       state: input.state,
       tiles: input.tiles,
@@ -122,5 +133,6 @@ export function drawObjectRenderItems(
       viewMode,
       farmSoilDrawn: true,
     });
+    context.restore();
   }
 }

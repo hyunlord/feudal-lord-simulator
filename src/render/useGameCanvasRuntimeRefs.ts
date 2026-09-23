@@ -7,6 +7,7 @@ export function useGameCanvasRuntimeRefs(input: {
   readonly previousRenderState: GameCanvasRuntimeInput["previousRenderState"];
   readonly selectedTool: GameCanvasRuntimeInput["selectedTool"];
   readonly overlayMode: GameCanvasRuntimeInput["overlayMode"];
+  readonly problemOnly?: boolean;
   readonly selection: GameCanvasRuntimeInput["selection"];
   readonly highlightedHouseIds: GameCanvasRuntimeInput["highlightedHouseIds"];
   readonly palisadeDraft: NonNullable<GameCanvasRuntimeInput["palisadeDraft"]> | null;
@@ -17,6 +18,7 @@ export function useGameCanvasRuntimeRefs(input: {
   const previousRenderStateRef = useRef(input.previousRenderState);
   const selectedToolRef = useRef(input.selectedTool);
   const overlayModeRef = useRef(input.overlayMode);
+  const problemOnlyRef = useRef(input.problemOnly ?? false);
   const selectionRef = useRef(input.selection);
   const highlightedHouseIdsRef = useRef(input.highlightedHouseIds);
   const palisadeDraftRef = useRef(input.palisadeDraft);
@@ -28,6 +30,7 @@ export function useGameCanvasRuntimeRefs(input: {
     previousRenderStateRef.current = input.previousRenderState;
     selectedToolRef.current = input.selectedTool;
     overlayModeRef.current = input.overlayMode;
+    problemOnlyRef.current = input.problemOnly ?? false;
     selectionRef.current = input.selection;
     highlightedHouseIdsRef.current = input.highlightedHouseIds;
     palisadeDraftRef.current = input.palisadeDraft;
@@ -37,6 +40,7 @@ export function useGameCanvasRuntimeRefs(input: {
     input.highlightedHouseIds,
     input.houseMaterialWave,
     input.overlayMode,
+    input.problemOnly,
     input.palisadeCeremonyStartedAtMs,
     input.palisadeDraft,
     input.selectedTool,
@@ -50,6 +54,7 @@ export function useGameCanvasRuntimeRefs(input: {
     previousRenderStateRef,
     selectedToolRef,
     overlayModeRef,
+    problemOnlyRef,
     selectionRef,
     highlightedHouseIdsRef,
     palisadeDraftRef,

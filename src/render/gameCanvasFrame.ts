@@ -20,6 +20,7 @@ type GameCanvasFrameInput = {
   readonly roadStart: TileCoordinate | null;
   readonly selectedTool: PlacementTool | null;
   readonly overlayMode: OverlayMode;
+  readonly problemOnly?: boolean;
   readonly placementFeedback: PlacementFeedback | null;
   readonly nowMs: number;
   readonly selectedBuildingId?: string | null;
@@ -56,6 +57,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     viewport: input.viewport,
     preview,
     overlayMode: input.overlayMode,
+    problemOnly: input.problemOnly ?? false,
     placementFeedback: input.placementFeedback,
     nowMs: input.nowMs,
     selectedBuildingId: input.selectedBuildingId ?? null,
