@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type { Building } from "../src/content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
@@ -16,9 +16,9 @@ import {
 const REQUIRED_TITLES = [
   "길을 놓아 오두막을 이으세요",
   "숲 옆에 벌목소를 지으세요",
-  "인구 60명을 위해 밀밭 2곳과 방앗간, 곡창을 지으세요",
+  "밀밭과 방앗간을 먼저 지으세요",
   "제재소를 지어 목재를 만드세요",
-  "길에 연결된 창고를 한 채 더 지으세요",
+  "밀밭을 하나 더 짓고 곡창·창고를 갖추세요",
   "우물과 예배당을 갖추세요",
   "인구를 30명까지 늘리세요",
   "인구를 50명까지 늘리세요",
@@ -85,14 +85,14 @@ test("onboarding tasks expose the exact ordered Phase 5 titles and highlights", 
   assert.deepEqual(highlightedTools, [
     ["road"],
     ["logging_camp"],
-    ["wheat_farm", "mill", "granary"],
+    ["wheat_farm", "mill"],
     ["sawmill"],
-    ["storehouse"],
+    ["wheat_farm", "granary", "storehouse"],
     ["well", "chapel"],
     ["house"],
     ["house"],
   ]);
-  assert.match(foodChainHint ?? "", /밀밭 2곳|밀밭 두 곳/);
+  assert.match(foodChainHint ?? "", /첫 밀밭/);
   assert.match(populationThirtyHint ?? "", /물과 빵/);
   assert.doesNotMatch(`${foodChainHint} ${populationThirtyHint}`, /5배속|네 채/);
 });
@@ -127,15 +127,10 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
     ),
     true,
   );
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4)] })), false);
   assert.equal(
     ONBOARDING_TASKS[2]?.isComplete(
-      withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("mill", 7, 4), building("granary", 8, 4)] }),
-    ),
-    false,
-  );
-  assert.equal(
-    ONBOARDING_TASKS[2]?.isComplete(
-      withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("wheat_farm", 9, 4), building("mill", 7, 4), building("granary", 8, 4)] }),
+      withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("mill", 7, 4)] }),
     ),
     true,
   );
@@ -173,10 +168,18 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
   assert.equal(ONBOARDING_TASKS[7]?.isComplete(withSettlement({ population: 50 })), true);
 });
 
+test("opening construction fits initial timber before the sawmill, then defers expansion", () => {
+  const timber = (kind: Building["kind"]): number => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0;
+  const opening = timber("logging_camp") + timber("wheat_farm") + timber("mill") + timber("sawmill");
+  const prematureExpansion = opening + timber("wheat_farm") + timber("granary");
+  assert.ok(opening <= DEFAULT_GAME_STATE.treasuryTimber, `${opening} > ${DEFAULT_GAME_STATE.treasuryTimber}`);
+  assert.ok(prematureExpansion > DEFAULT_GAME_STATE.treasuryTimber);
+});
+
 test("storage guidance stays open until a second storehouse joins the timber road network", () => {
   const width = 12;
   const height = 4;
-  const buildings = [building("sawmill", 0, 1), building("storehouse", 3, 0)];
+  const buildings = [building("sawmill", 0, 1), building("storehouse", 3, 0), building("wheat_farm", 9, 0), building("wheat_farm", 9, 2), building("granary", 5, 0)];
   const tiles = Array.from({ length: width * height }, (_, index) => {
     const tx = index % width;
     const ty = Math.floor(index / width);
@@ -200,6 +203,18 @@ test("storage guidance stays open until a second storehouse joins the timber roa
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(firstStore), false);
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(islandStore), false);
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(connectedStore), true);
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(withSettlement({
+    buildings: connectedStore.buildings.filter(building => building.id !== "wheat_farm-9-2"),
+    tiles: connectedStore.tiles,
+    width,
+    height,
+  })), false);
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(withSettlement({
+    buildings: connectedStore.buildings.filter(building => building.kind !== "granary"),
+    tiles: connectedStore.tiles,
+    width,
+    height,
+  })), false);
 });
 
 test("presentation state holds completion flourish for 600ms and advances only one task at a time", () => {

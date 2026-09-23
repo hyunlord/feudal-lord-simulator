@@ -69,10 +69,10 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-3",
-    title: "인구 60명을 위해 밀밭 2곳과 방앗간, 곡창을 지으세요",
-    hint: "밀밭 2곳을 완공해야 늘어난 주민에게 빵을 공급할 수 있습니다. 방앗간·곡창·집도 길로 이으세요.",
-    highlightTools: ["wheat_farm", "mill", "granary"],
-    isComplete: hasFoodChain,
+    title: "밀밭과 방앗간을 먼저 지으세요",
+    hint: "첫 밀밭과 방앗간을 길로 이으세요. 목재가 떨어지기 전에 제재소를 지을 수 있도록 남겨둡니다.",
+    highlightTools: ["wheat_farm", "mill"],
+    isComplete: hasFirstFoodChain,
   },
   {
     id: "task-4",
@@ -83,10 +83,10 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-5",
-    title: "길에 연결된 창고를 한 채 더 지으세요",
-    hint: "목책 선포에 목재 250이 필요합니다. 지도 표시를 따라 제재소 길에 닿는 창고를 완공하세요.",
-    highlightTools: ["storehouse"],
-    isComplete: hasPalisadeTimberStorage,
+    title: "밀밭을 하나 더 짓고 곡창·창고를 갖추세요",
+    hint: "인구 60명을 먹이려면 밀밭 2곳과 곡창이 필요합니다. 목책 목재 250을 모을 창고도 제재소 길에 이으세요.",
+    highlightTools: ["wheat_farm", "granary", "storehouse"],
+    isComplete: hasExpandedFoodAndStorage,
   },
   {
     id: "task-6",
@@ -223,11 +223,16 @@ function hasPopulationAtLeast(population: number): (state: GameState) => boolean
   return (state) => state.population >= population;
 }
 
-function hasFoodChain(state: GameState): boolean {
+function hasFirstFoodChain(state: GameState): boolean {
+  return state.buildings.some((building) => building.kind === "wheat_farm")
+    && state.buildings.some((building) => building.kind === "mill");
+}
+
+function hasExpandedFoodAndStorage(state: GameState): boolean {
   return (
     state.buildings.filter((building) => building.kind === "wheat_farm").length >= 2 &&
-    state.buildings.some((building) => building.kind === "mill") &&
-    state.buildings.some((building) => building.kind === "granary")
+    state.buildings.some((building) => building.kind === "granary") &&
+    hasPalisadeTimberStorage(state)
   );
 }
 

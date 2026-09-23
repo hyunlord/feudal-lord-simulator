@@ -15,17 +15,19 @@ export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly Buil
   if (!hasCompletedBuildingKind(state, "logging_camp")) return hasPendingSiteKind(state, "logging_camp") ? [] : ["logging_camp"];
   const completedFarms = state.buildings.filter(building => building.kind === "wheat_farm").length;
   const pendingFarms = state.constructionSites?.filter(site => site.kind === "wheat_farm").length ?? 0;
-  const foodComplete = completedFarms >= 2
-    && hasCompletedBuildingKind(state, "mill")
-    && hasCompletedBuildingKind(state, "granary");
-  if (!foodComplete) {
-    const missingFarm = completedFarms + pendingFarms < 2 ? ["wheat_farm" as const] : [];
-    const missingFacilities = (["mill", "granary"] as const).filter(
-      kind => !hasCompletedBuildingKind(state, kind) && !hasPendingSiteKind(state, kind),
-    );
-    return [...missingFarm, ...missingFacilities];
+  if (completedFarms < 1 || !hasCompletedBuildingKind(state, "mill")) {
+    const missingFarm = completedFarms + pendingFarms < 1 ? ["wheat_farm" as const] : [];
+    const missingMill = !hasCompletedBuildingKind(state, "mill") && !hasPendingSiteKind(state, "mill")
+      ? ["mill" as const] : [];
+    return [...missingFarm, ...missingMill];
   }
   if (!hasCompletedBuildingKind(state, "sawmill")) return hasPendingSiteKind(state, "sawmill") ? [] : ["sawmill"];
+  if (completedFarms < 2 || !hasCompletedBuildingKind(state, "granary")) {
+    const missingFarm = completedFarms + pendingFarms < 2 ? ["wheat_farm" as const] : [];
+    const missingGranary = !hasCompletedBuildingKind(state, "granary") && !hasPendingSiteKind(state, "granary")
+      ? ["granary" as const] : [];
+    return [...missingFarm, ...missingGranary];
+  }
   if (!hasPalisadeTimberStorage(state)) return hasPendingSiteKind(state, "storehouse") ? [] : ["storehouse"];
   if (!hasWellWithinHouseRange(state)) return ["well"];
   if (!hasCompletedBuildingKind(state, "chapel")) return hasPendingSiteKind(state, "chapel") ? [] : ["chapel"];
