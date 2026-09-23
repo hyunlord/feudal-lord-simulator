@@ -8,7 +8,7 @@ import { completeEligibleConstruction } from '../src/engine/constructionLifecycl
 import { allocateBuildingAndConstructionLabour } from '../src/population/labour';
 import { buildingHasRequiredRoadAccess } from '../src/engine/roadAccess';
 import { householdServices } from '../src/engine/householdServices';
-import { constructionSiteId } from '../src/economy/construction';
+import { constructionSiteId, createPalisadeConstructionSite } from '../src/economy/construction';
 
 function fixture(): GameState {
   return { ...DEFAULT_GAME_STATE, width: 24, height: 24, era: 'stone_town', population: 100, idleWorkers: 40, treasuryTimber: 999,
@@ -108,4 +108,31 @@ test('market projection matches completion when another ready construction reser
   assert.equal(prediction.lines.find(line=>line.id==='supply')?.text,`완공 후 예상 공급 ${provider.used}/${provider.capacity}필지`);
   assert.equal(prediction.lines.find(line=>line.id==='workers')?.text,`일꾼 ${provider.workers}/${provider.requiredWorkers}명`);
   assert.equal(complete.constructionSites.length,1);
+});
+test('tick and production-only clones reuse predictions while semantic changes invalidate them',()=>{
+  const state=fixture();const tile={tx:6,ty:3};
+  const first=buildingPlacementPrediction(state,'market',tile);
+  const ticking={...state,tick:state.tick+1,wallTick:state.wallTick+1,
+    buildings:state.buildings.map(b=>({...b,productionProgress:b.productionProgress+1,inventory:{...b.inventory,bread:77}})),
+    houses:state.houses.map(h=>({...h,breadStock:99,residents:15}))};
+  assert.equal(buildingPlacementPrediction(ticking,'market',tile),first);
+  for(const changed of [
+    {...state,treasuryTimber:0},
+    {...state,population:0},
+    {...state,tiles:state.tiles.map(t=>({...t,hasRoad:false}))},
+    {...state,houses:state.houses.map(h=>({...h,level:4}))},
+    {...state,nextConstructionOrdinal:state.nextConstructionOrdinal+1},
+  ]) assert.notEqual(buildingPlacementPrediction(changed,'market',tile),first);
+});
+
+test('semantic cache follows wall labour reservation windows rather than each tick',()=>{
+  const site=createPalisadeConstructionSite({id:'wall-site',wallId:'wall',segmentIndex:0,gateDistance:0,order:0,path:[{x:18,y:18},{x:19,y:18}],startedTick:0});
+  const state={...fixture(),era:'palisade' as const,eraProclaimedTick:0,tick:100,population:6,
+    constructionSites:[{...site,delivered:{...site.required}}]};
+  const first=buildingPlacementPrediction(state,'market',{tx:6,ty:3});
+  assert.equal(buildingPlacementPrediction({...state,tick:101},'market',{tx:6,ty:3}),first);
+  const expired=buildingPlacementPrediction({...state,tick:600},'market',{tx:6,ty:3});
+  assert.notEqual(expired,first);
+  assert.equal(first.lines.find(line=>line.id==='workers')?.tone,'negative');
+  assert.equal(expired.lines.find(line=>line.id==='workers')?.tone,'positive');
 });

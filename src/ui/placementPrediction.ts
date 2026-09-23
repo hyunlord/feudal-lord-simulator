@@ -13,20 +13,21 @@ import { allocateHouseServices, type HouseholdService } from '../population/serv
 import { BRIDGE_TIMBER_PER_TILE } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
 import { canPlaceBuilding, constructionShortfalls, PlacementFailure, type PlacementResult } from '../world/placement';
+import { predictionStateKey } from './predictionCache';
 import { PLACEMENT_REASON_LABELS, predictionCheck } from './predictionRegistry';
 import type { PlacementPrediction, PredictionLine } from './predictionTypes';
 
 const SERVICES: Partial<Record<BuildingKind, HouseholdService>> = { well: 'water', market: 'market', church: 'church' };
-const cache = new WeakMap<GameState, Map<string, PlacementPrediction>>();
+const cache = new Map<string, { readonly stateKey: string; readonly value: PlacementPrediction }>();
 function cached(state: GameState, key: string, compute: () => PlacementPrediction): PlacementPrediction {
-  let entries = cache.get(state);
-  if (entries === undefined) { entries = new Map(); cache.set(state, entries); }
-  const previous = entries.get(key);
-  if (previous !== undefined) return previous;
+  const stateKey = predictionStateKey(state);
+  const previous = cache.get(key);
+  if (previous?.stateKey === stateKey) return previous.value;
   const value = compute();
-  // Bound a paused session's pointer history as well as releasing obsolete state identities.
-  if (entries.size >= 128) entries.clear();
-  entries.set(key, value); return value;
+  // Keep only the most recent semantic state per pointer target; bound pointer history.
+  if (!cache.has(key) && cache.size >= 128) cache.clear();
+  cache.set(key, { stateKey, value });
+  return value;
 }
 function failureLine(placement: PlacementResult): readonly PredictionLine[] {
   return placement.ok ? [] : [{ id: 'placement', tone: 'negative', text: PLACEMENT_REASON_LABELS[placement.reason] }];
