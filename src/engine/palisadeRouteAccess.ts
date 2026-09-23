@@ -11,10 +11,11 @@ export type PalisadeRouteAccess = Readonly<{
   projected: GameState;
   reachableSiteIds: readonly string[];
   unreachableSiteIds: readonly string[];
+  unavailableSiteIds: readonly string[];
 }>;
 
 const tileLayoutKeys = new WeakMap<GameState['tiles'], string>();
-const routeAccessCache = new Map<string, Readonly<{ reachableSiteIds: readonly string[]; unreachableSiteIds: readonly string[] }>>();
+const routeAccessCache = new Map<string, PalisadeRouteAccess>();
 const statePreviewCache = new WeakMap<GameState, Map<string, PalisadeRouteAccess>>();
 const defaultProposalCache = new Map<string, PalisadeProposalResult>();
 
@@ -25,7 +26,8 @@ function routeAccessKey(state: GameState, path: PalisadePath): string {
     tileLayoutKeys.set(state.tiles, tiles);
   }
   return JSON.stringify([
-    state.width, state.height, state.roadRevision, tiles, state.nextConstructionOrdinal,
+    state.width, state.height, state.era, state.palisade?.id, state.roadRevision, tiles,
+    state.nextConstructionOrdinal,
     state.treasuryTimber > 0,
     state.buildings.map(building => [building.id, building.kind, building.tx, building.ty, building.houseLot,
       availableStock(building, 'timber') > 0]),
@@ -39,21 +41,21 @@ export function previewPalisadeRouteAccess(state: GameState, path: PalisadePath)
   const pathKey = JSON.stringify(path);
   const previous = statePreviewCache.get(state)?.get(pathKey);
   if (previous !== undefined) return previous;
-  const projected = projectPalisadeProclamation(state, path);
-  if (projected === state || projected.palisade === null) {
-    return { projected, reachableSiteIds: [], unreachableSiteIds: [] };
-  }
   const key = routeAccessKey(state, path);
   const cached = routeAccessCache.get(key);
   if (cached !== undefined) {
-    const result = { projected, ...cached };
-    statePreviewCache.set(state, new Map([...(statePreviewCache.get(state) ?? []), [pathKey, result]]));
-    return result;
+    statePreviewCache.set(state, new Map([...(statePreviewCache.get(state) ?? []), [pathKey, cached]]));
+    return cached;
+  }
+  const projected = projectPalisadeProclamation(state, path);
+  if (projected === state || projected.palisade === null) {
+    return { projected, reachableSiteIds: [], unreachableSiteIds: [], unavailableSiteIds: [] };
   }
   const routes = createSimulationRoutePorts(projected).delivery;
   const inventory = createDeliveryInventoryPort();
   const reachableSiteIds: string[] = [];
   const unreachableSiteIds: string[] = [];
+  const unavailableSiteIds: string[] = [];
   for (const site of projected.constructionSites.filter(isPalisadeConstructionSite)) {
     if (site.wallId !== projected.palisade.id) continue;
     const sources = constructionMaterialSources({
@@ -62,10 +64,11 @@ export function previewPalisadeRouteAccess(state: GameState, path: PalisadePath)
     });
     if (sources.some(source => source.hasRoute)) reachableSiteIds.push(site.id);
     else if (sources.length > 0) unreachableSiteIds.push(site.id);
+    else unavailableSiteIds.push(site.id);
   }
+  const result = { projected, reachableSiteIds, unreachableSiteIds, unavailableSiteIds };
   if (routeAccessCache.size >= 128) routeAccessCache.delete(routeAccessCache.keys().next().value ?? '');
-  routeAccessCache.set(key, { reachableSiteIds, unreachableSiteIds });
-  const result = { projected, reachableSiteIds, unreachableSiteIds };
+  routeAccessCache.set(key, result);
   statePreviewCache.set(state, new Map([...(statePreviewCache.get(state) ?? []), [pathKey, result]]));
   return result;
 }
@@ -78,8 +81,11 @@ export function computeReachablePalisadeProposalForState(
   const cached = cacheKey === null ? undefined : defaultProposalCache.get(cacheKey);
   if (cached !== undefined) return cached;
   const predicate = acceptPath ?? (() => true);
-  const accepted = (path: PalisadePath) => predicate(path)
-    && previewPalisadeRouteAccess(state, path).unreachableSiteIds.length === 0;
+  const accepted = (path: PalisadePath) => {
+    if (!predicate(path)) return false;
+    const access = previewPalisadeRouteAccess(state, path);
+    return access.unreachableSiteIds.length === 0 && access.unavailableSiteIds.length === 0;
+  };
   const reachable = computePalisadeProposalForState(state, accepted);
   const result = reachable.ok ? reachable : computePalisadeProposalForState(state, predicate);
   if (cacheKey !== null) {

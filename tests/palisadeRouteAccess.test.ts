@@ -31,3 +31,21 @@ test('isolated supply roads flag every unreachable segment before proclamation',
   assert.equal(preferred.ok, true);
   if (preferred.ok) assert.equal(preferred.perimeterSteps, proposal.perimeterSteps);
 });
+
+test('an empty timber supply is reported separately from a missing route', () => {
+  const prepared = createStage3EconomyHarnessScenario({ seed: 1 });
+  const state = {
+    ...prepared,
+    treasuryTimber: 0,
+    buildings: prepared.buildings.map(building => ({ ...building, inventory: {}, reserved: {}, stockReserved: {} })),
+  };
+  const proposal = computePalisadeProposalForState(state);
+  assert.equal(proposal.ok, true);
+  if (!proposal.ok) return;
+  const access = previewPalisadeRouteAccess(state, proposal.path);
+  assert.equal(access.reachableSiteIds.length, 0);
+  assert.equal(access.unreachableSiteIds.length, 0);
+  assert.equal(access.unavailableSiteIds.length, access.projected.palisade?.segments.length);
+  assert.ok(proposalPredictionLines(state, proposal.path).some(line =>
+    line.id === 'no-source' && line.text.includes('자재 공급처 없음')));
+});
