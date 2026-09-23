@@ -7,7 +7,7 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { onboardingWorldGuidanceTargets } from "../src/ui/onboardingWorldGuidance";
 import type { Tile } from "../src/world/world.types";
 
-const SAWMILL_STAGE_KINDS = ["house", "logging_camp", "wheat_farm", "mill", "granary"] as const satisfies readonly BuildingKind[];
+const SAWMILL_STAGE_KINDS = ["house", "logging_camp", "wheat_farm", "wheat_farm", "mill", "granary"] as const satisfies readonly BuildingKind[];
 const FOOD_STAGE_KINDS = ["house", "logging_camp"] as const satisfies readonly BuildingKind[];
 
 test("sawmill guidance does not rescan the world for a road that cannot unlock placement", () => {

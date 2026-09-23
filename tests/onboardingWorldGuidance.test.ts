@@ -2,9 +2,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../src/content/buildingConfig";
+import { constructionMaterialSources } from "../src/agents/deliveryConstruction";
 import { createConstructionSite } from "../src/economy/construction";
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
+import { createDeliveryInventoryPort, createSimulationRoutePorts } from "../src/engine/simulationPorts";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import type { TileCoordinate } from "../src/world/grid";
 import { canPlaceBuilding } from "../src/world/placement";
@@ -132,7 +134,7 @@ test("onboardingWorldGuidanceTargets advances from the authored opening to food 
   }
 });
 
-test("food guidance advances past a farm that is already under construction", () => {
+test("food guidance requests one more farm while the first is under construction", () => {
   const state = placeRoadLine(DEFAULT_GAME_STATE, { tx: 1, ty: 0 }, { tx: 1, ty: 0 });
   const farm = onboardingWorldGuidanceTargets(state).find(target => target.kind === "wheat_farm");
   assert.ok(farm);
@@ -140,25 +142,142 @@ test("food guidance advances past a farm that is already under construction", ()
   assert.ok(building.constructionSites.some(site => site.kind === "wheat_farm"));
 
   const targets = onboardingWorldGuidanceTargets(building);
-  assert.ok(targets.every(target => target.kind !== "wheat_farm"));
+  assert.equal(targets.filter(target => target.kind === "wheat_farm").length, 1);
   assert.ok(targets.some(target => target.kind === "mill"));
   assert.equal(ONBOARDING_TASKS[2]?.isComplete(building), false);
 });
 
-test("pending food construction does not start population guidance before completion", () => {
+test("second farm guidance has a real construction material route", () => {
+  const state = placeGuidedMarkersUntilKind(DEFAULT_GAME_STATE, "wheat_farm").state;
+  const targets = onboardingWorldGuidanceTargets(state);
+  const marker = targets.find(target => target.kind === "wheat_farm");
+  assert.ok(marker, JSON.stringify(targets));
+  const site = createConstructionSite({
+    ordinal: state.nextConstructionOrdinal,
+    kind: "wheat_farm",
+    tx: marker.origin.tx,
+    ty: marker.origin.ty,
+    startedTick: state.tick,
+  });
+  const trial = { ...state, constructionSites: [...state.constructionSites, site] };
+  const sources = constructionMaterialSources({
+    site,
+    buildings: trial.buildings,
+    routes: createSimulationRoutePorts(trial).delivery,
+    inventory: createDeliveryInventoryPort(),
+    treasuryTimber: trial.treasuryTimber,
+  });
+  assert.ok(sources.some(source => source.hasRoute));
+});
+
+test("second farm marker skips a nearer disconnected road island", () => {
+  const buildings = [
+    guidanceBuilding("house", 0, 0),
+    guidanceBuilding("logging_camp", 8, 3),
+    guidanceBuilding("wheat_farm", 0, 5),
+    guidanceBuilding("mill", 5, 4),
+    guidanceBuilding("granary", 7, 0),
+    guidanceBuilding("storehouse", 7, 5, { timber: 60 }),
+  ];
+  const roads = new Set(["1,0", "2,0", "2,1", "2,2", "6,5", "6,4", "6,3", "6,2", "5,2", "4,2"]);
+  const tiles = Array.from({ length: 80 }, (_, index) => {
+    const tx = index % 10;
+    const ty = Math.floor(index / 10);
+    const occupant = buildings.find(building => {
+      const size = BUILDING_CONFIG_BY_KIND[building.kind];
+      return tx >= building.tx && tx < building.tx + size.width
+        && ty >= building.ty && ty < building.ty + size.height;
+    });
+    return tile({ tx, ty }, { buildingId: occupant?.id ?? null, hasRoad: roads.has(`${tx},${ty}`) });
+  });
+  const state = {
+    ...stateWith({ buildings, tiles, width: 10, height: 8 }),
+    treasuryTimber: 0,
+    constructionSites: [],
+    pathCache: {},
+  };
+  assert.equal(canPlaceBuilding(state, "wheat_farm", 0, 1).ok, true);
+  assert.deepEqual(canPlaceBuilding(state, "wheat_farm", 3, 3), { ok: true });
+  const isolatedSite = createConstructionSite({ ordinal: state.nextConstructionOrdinal, kind: "wheat_farm", tx: 0, ty: 1, startedTick: 0 });
+  const candidateSite = createConstructionSite({ ordinal: state.nextConstructionOrdinal, kind: "wheat_farm", tx: 3, ty: 3, startedTick: 0 });
+  const candidateSource = buildings.find(building => building.kind === "storehouse");
+  assert.ok(candidateSource);
+  assert.equal(
+    createSimulationRoutePorts({ ...state, constructionSites: [isolatedSite] }).delivery.fromBuildingToDestination(
+      candidateSource.id,
+      { kind: "construction_site", siteId: isolatedSite.id },
+    ),
+    null,
+  );
+  assert.notEqual(
+    createSimulationRoutePorts({ ...state, constructionSites: [candidateSite] }).delivery.fromBuildingToDestination(
+      candidateSource.id,
+      { kind: "construction_site", siteId: candidateSite.id },
+    ),
+    null,
+  );
+  const targets = onboardingWorldGuidanceTargets(state);
+  const marker = targets.find(target => target.kind === "wheat_farm");
+  assert.ok(marker, JSON.stringify(targets));
+  const site = createConstructionSite({
+    ordinal: state.nextConstructionOrdinal,
+    kind: "wheat_farm",
+    tx: marker.origin.tx,
+    ty: marker.origin.ty,
+    startedTick: state.tick,
+  });
+  const source = buildings.find(building => building.kind === "storehouse");
+  assert.ok(source);
+  const trial = { ...state, constructionSites: [site] };
+  const route = createSimulationRoutePorts(trial).delivery.fromBuildingToDestination(
+    source.id,
+    { kind: "construction_site", siteId: site.id },
+  );
+  assert.notEqual(route, null);
+});
+
+function guidanceBuilding(
+  kind: BuildingKind,
+  tx: number,
+  ty: number,
+  inventory: Building["inventory"] = {},
+): Building {
+  return {
+    id: `${kind}-${tx}-${ty}`,
+    kind,
+    tx,
+    ty,
+    workers: 0,
+    inventory,
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+  };
+}
+
+test("second pending farm suppresses an extra farm marker without advancing to sawmill", () => {
   const state = {
     ...DEFAULT_GAME_STATE,
-    constructionSites: (["wheat_farm", "mill", "granary"] as const).map((kind, ordinal) =>
+    constructionSites: (["wheat_farm", "wheat_farm", "mill", "granary"] as const).map((kind, ordinal) =>
       createConstructionSite({ ordinal, kind, tx: 30 + ordinal * 3, ty: 30, startedTick: 0 })),
   };
   assert.equal(ONBOARDING_TASKS[2]?.isComplete(state), false);
   assert.deepEqual(onboardingWorldGuidanceTargets(state), []);
 });
 
+test("one finished and one pending farm keep food guidance open without a third farm marker", () => {
+  const state = placeGuidedMarkersUntilKind(DEFAULT_GAME_STATE, "wheat_farm").state;
+  const site = createConstructionSite({ ordinal: state.nextConstructionOrdinal, kind: "wheat_farm", tx: 30, ty: 30, startedTick: 0 });
+  const pending = { ...state, constructionSites: [...state.constructionSites, site] };
+
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(pending), false);
+  assert.ok(onboardingWorldGuidanceTargets(pending).every(target => target.kind !== "wheat_farm"));
+});
+
 test("onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers", () => {
   // Given
   let state = DEFAULT_GAME_STATE;
-  const expectedKinds = ["wheat_farm", "mill", "sawmill"] as const satisfies readonly BuildingKind[];
+  const expectedKinds = ["wheat_farm", "wheat_farm", "mill", "sawmill"] as const satisfies readonly BuildingKind[];
 
   for (const kind of expectedKinds) {
     // When
@@ -176,6 +295,19 @@ test("onboarding marks a second storehouse that can join the timber delivery roa
 
   assert.equal(result.finalTarget.kind, "storehouse");
   assert.equal(ONBOARDING_TASKS[4]?.isComplete(result.state), true);
+});
+
+test("chapel guidance remains open while its construction site is unfinished", () => {
+  const afterStorage = placeGuidedMarkersUntilKind(
+    placeGuidedMarkersUntilKind(stateAfterFoodChain(), "sawmill").state,
+    "storehouse",
+  ).state;
+  const chapel = requiredGuidanceTarget(afterStorage, "chapel");
+  const pending = placeBuilding(afterStorage, "chapel", chapel.origin);
+
+  assert.ok(pending.constructionSites.some(site => site.kind === "chapel"));
+  assert.equal(ONBOARDING_TASKS[5]?.isComplete(pending), false);
+  assert.ok(onboardingWorldGuidanceTargets(pending).every(target => target.kind !== "chapel" && target.kind !== "house"));
 });
 
 test("onboardingWorldGuidanceTargets returns non-overlapping buildable markers for available missing food-chain buildings", () => {
@@ -217,28 +349,32 @@ test("onboardingWorldGuidanceTargets keeps the early food task buildable when ho
     settlement = placeGuidedTargets(settlement, [requiredGuidanceTarget(settlement, kind)]);
   }
   assert.equal(settlement.houses.length, state.houses.length + 1);
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(settlement), false);
+  settlement = placeGuidedTargets(settlement, [requiredGuidanceTarget(settlement, "wheat_farm")]);
   assert.equal(ONBOARDING_TASKS[2]?.isComplete(settlement), true);
 });
 
-test("onboardingWorldGuidanceTargets marks sawmill and connected storage before another house", () => {
+test("onboardingWorldGuidanceTargets marks sawmill, storage, and chapel before another house", () => {
   // Given
   const state = stateAfterFoodChain();
 
   // When
   const sawmill = placeGuidedMarkersUntilKind(state, "sawmill");
   const storehouse = placeGuidedMarkersUntilKind(sawmill.state, "storehouse");
-  const result = placeGuidedMarkersUntilKind(storehouse.state, "house");
+  const chapel = placeGuidedMarkersUntilKind(storehouse.state, "chapel");
+  const result = placeGuidedMarkersUntilKind(chapel.state, "house");
 
   // Then
   assert.equal(result.finalTarget.kind, "house");
   assert.equal(result.finalTarget.label, "오두막 1/1");
 });
 
-test("onboardingWorldGuidanceTargets guides another house after food, sawmill, and connected storage", () => {
-  const afterFoodChain = placeGuidedMarkersUntilKind(
+test("onboardingWorldGuidanceTargets guides another house after food, sawmill, storage, and chapel", () => {
+  const afterStorage = placeGuidedMarkersUntilKind(
     placeGuidedMarkersUntilKind(stateAfterFoodChain(), "sawmill").state,
     "storehouse",
   ).state;
+  const afterFoodChain = placeGuidedMarkersUntilKind(afterStorage, "chapel").state;
   const state =
     onboardingWorldGuidanceTargets(afterFoodChain)[0]?.kind === "road"
       ? placeGuidedRoad(afterFoodChain)
@@ -264,7 +400,7 @@ test("onboardingWorldGuidanceTargets guides another house after food, sawmill, a
 
 function stateAfterFoodChain(): GameState {
   let state = stateAtFoodChainTargets();
-  for (const kind of ["wheat_farm", "mill"] as const) {
+  for (const kind of ["wheat_farm", "wheat_farm", "mill"] as const) {
     state = placeGuidedMarkersUntilKind(state, kind).state;
   }
   return state;

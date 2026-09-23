@@ -1,5 +1,8 @@
 import { type Building, type BuildingKind } from "../content/buildingConfig";
+import { constructionMaterialSources } from "../agents/deliveryConstruction";
+import { createConstructionSite } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
+import { createDeliveryInventoryPort, createSimulationRoutePorts } from "../engine/simulationPorts";
 import { getTile, type TileCoordinate } from "../world/grid";
 import { canPlaceBuilding } from "../world/placement";
 import { canPlaceRoad } from "../world/roadGraph";
@@ -52,10 +55,7 @@ const BUILDING_TARGET_LABELS = {
   church: "여기에 교회를 지으세요",
   keep: "여기에 성채를 지으세요",
 } as const satisfies Readonly<Record<BuildingKind, string>>;
-type GuidanceWorld = Pick<
-  GameState,
-  "buildings" | "height" | "houses" | "tiles" | "treasuryTimber" | "width"
-> & Partial<Pick<GameState, "constructionSites" | "era">>;
+type GuidanceWorld = GameState;
 
 export type OnboardingGuidanceTarget = {
   readonly kind: BuildingKind | "road";
@@ -126,7 +126,10 @@ function foodChainGuidanceTargetsForTask(
 
   const candidateOrigins = sortedCandidateOrigins(state);
   const result = buildFoodChainTargetsWithHousePrep(state, kinds, candidateOrigins, (inputState, kind, reserved) => {
-    const origin = firstBuildableOriginForKind(inputState, kind, reserved, candidateOrigins);
+    const trialState = inputState.tiles === state.tiles
+      ? state
+      : { ...state, tiles: inputState.tiles, roadRevision: state.roadRevision + 1, pathCache: {} };
+    const origin = firstBuildableOriginForKind(trialState, kind, reserved, candidateOrigins);
     return origin === null ? null : { kind, label: BUILDING_TARGET_LABELS[kind], origin };
   });
   return result.kind === "road"
@@ -145,9 +148,29 @@ function firstBuildableOriginForKind(
     if (reservedOverlaps(kind, origin, reserved)) continue;
     if (kind === "well" && !wellCompletesTask(state, origin)) continue;
     if (timberRoads !== null && !storehouseOnTimberDeliveryRoad(state, origin, timberRoads)) continue;
-    if (canPlaceBuilding(state, kind, origin.tx, origin.ty).ok) return origin;
+    if (!canPlaceBuilding(state, kind, origin.tx, origin.ty).ok) continue;
+    if (kind === "wheat_farm" && !hasFarmConstructionMaterialRoute(state, origin)) continue;
+    return origin;
   }
   return null;
+}
+
+function hasFarmConstructionMaterialRoute(state: GameState, origin: TileCoordinate): boolean {
+  const site = createConstructionSite({
+    ordinal: state.nextConstructionOrdinal,
+    kind: "wheat_farm",
+    tx: origin.tx,
+    ty: origin.ty,
+    startedTick: state.tick,
+  });
+  const trialState = { ...state, constructionSites: [...state.constructionSites, site], pathCache: {} };
+  return constructionMaterialSources({
+    site,
+    buildings: trialState.buildings,
+    routes: createSimulationRoutePorts(trialState).delivery,
+    inventory: createDeliveryInventoryPort(),
+    treasuryTimber: trialState.treasuryTimber,
+  }).some(source => source.hasRoute);
 }
 
 function sortedCandidateOrigins(state: GuidanceWorld): readonly TileCoordinate[] {

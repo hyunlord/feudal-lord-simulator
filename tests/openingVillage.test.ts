@@ -303,7 +303,7 @@ test("authored default state still needs connected timber storage for the palisa
   // Given: no presentation tasks have been acknowledged yet.
   const completion = ONBOARDING_TASKS.map((task) => task.isComplete(DEFAULT_GAME_STATE));
 
-  assert.deepEqual(completion, [true, true, false, false, false, true, false, false]);
+  assert.deepEqual(completion, [true, true, false, false, false, false, false, false]);
 });
 
 test("opening hashes include the authored roads and differ from the prior edge-hut baseline", () => {

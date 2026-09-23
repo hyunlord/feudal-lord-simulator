@@ -69,8 +69,8 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-3",
-    title: "밀밭과 방앗간, 곡창을 지으세요",
-    hint: "밀밭의 밀을 방앗간에서 빵으로 만들고, 곡창과 집을 길로 이으세요.",
+    title: "인구 60명을 위해 밀밭 2곳과 방앗간, 곡창을 지으세요",
+    hint: "밀밭 2곳을 완공해야 늘어난 주민에게 빵을 공급할 수 있습니다. 방앗간·곡창·집도 길로 이으세요.",
     highlightTools: ["wheat_farm", "mill", "granary"],
     isComplete: hasFoodChain,
   },
@@ -90,10 +90,10 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-6",
-    title: "우물을 지어 물을 공급하세요",
-    hint: "우물은 집에서 6칸 안에 두세요.",
-    highlightTools: ["well"],
-    isComplete: hasWellWithinHouseRange,
+    title: "우물과 예배당을 갖추세요",
+    hint: "우물은 집에서 6칸 안에 두고, 인구를 늘리기 전에 목책 선포에 필요한 예배당을 완공하세요.",
+    highlightTools: ["well", "chapel"],
+    isComplete: hasWellAndChapel,
   },
   {
     id: "task-7",
@@ -225,10 +225,15 @@ function hasPopulationAtLeast(population: number): (state: GameState) => boolean
 
 function hasFoodChain(state: GameState): boolean {
   return (
-    state.buildings.some((building) => building.kind === "wheat_farm") &&
+    state.buildings.filter((building) => building.kind === "wheat_farm").length >= 2 &&
     state.buildings.some((building) => building.kind === "mill") &&
     state.buildings.some((building) => building.kind === "granary")
   );
+}
+
+function hasWellAndChapel(state: GameState): boolean {
+  return hasWellWithinHouseRange(state)
+    && state.buildings.some(building => building.kind === "chapel");
 }
 
 function hasWellWithinHouseRange(state: GameState): boolean {

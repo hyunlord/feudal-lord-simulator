@@ -13,19 +13,29 @@ type GuidanceWorld = Pick<
 
 export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly BuildingKind[] {
   if (!hasCompletedBuildingKind(state, "logging_camp")) return hasPendingSiteKind(state, "logging_camp") ? [] : ["logging_camp"];
-  const unfinishedFoodChain = (["wheat_farm", "mill", "granary"] as const).filter(
-    (kind) => !hasCompletedBuildingKind(state, kind),
-  );
-  if (unfinishedFoodChain.length > 0) return unfinishedFoodChain.filter(kind => !hasPendingSiteKind(state, kind));
+  const completedFarms = state.buildings.filter(building => building.kind === "wheat_farm").length;
+  const pendingFarms = state.constructionSites?.filter(site => site.kind === "wheat_farm").length ?? 0;
+  const foodComplete = completedFarms >= 2
+    && hasCompletedBuildingKind(state, "mill")
+    && hasCompletedBuildingKind(state, "granary");
+  if (!foodComplete) {
+    const missingFarm = completedFarms + pendingFarms < 2 ? ["wheat_farm" as const] : [];
+    const missingFacilities = (["mill", "granary"] as const).filter(
+      kind => !hasCompletedBuildingKind(state, kind) && !hasPendingSiteKind(state, kind),
+    );
+    return [...missingFarm, ...missingFacilities];
+  }
   if (!hasCompletedBuildingKind(state, "sawmill")) return hasPendingSiteKind(state, "sawmill") ? [] : ["sawmill"];
   if (!hasPalisadeTimberStorage(state)) return hasPendingSiteKind(state, "storehouse") ? [] : ["storehouse"];
   if (!hasWellWithinHouseRange(state)) return ["well"];
+  if (!hasCompletedBuildingKind(state, "chapel")) return hasPendingSiteKind(state, "chapel") ? [] : ["chapel"];
   return [];
 }
 
 export function completedCoreOnboardingBuildings(state: GuidanceWorld): boolean {
   return hasCompletedBuildingKind(state, "logging_camp")
-    && (["wheat_farm", "mill", "granary", "sawmill"] as const)
+    && state.buildings.filter(building => building.kind === "wheat_farm").length >= 2
+    && (["mill", "granary", "sawmill", "chapel"] as const)
       .every(kind => hasCompletedBuildingKind(state, kind))
     && hasPalisadeTimberStorage(state)
     && hasWellWithinHouseRange(state);

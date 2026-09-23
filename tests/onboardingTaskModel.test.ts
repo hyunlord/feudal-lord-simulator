@@ -16,10 +16,10 @@ import {
 const REQUIRED_TITLES = [
   "길을 놓아 오두막을 이으세요",
   "숲 옆에 벌목소를 지으세요",
-  "밀밭과 방앗간, 곡창을 지으세요",
+  "인구 60명을 위해 밀밭 2곳과 방앗간, 곡창을 지으세요",
   "제재소를 지어 목재를 만드세요",
   "길에 연결된 창고를 한 채 더 지으세요",
-  "우물을 지어 물을 공급하세요",
+  "우물과 예배당을 갖추세요",
   "인구를 30명까지 늘리세요",
   "인구를 50명까지 늘리세요",
 ];
@@ -88,11 +88,11 @@ test("onboarding tasks expose the exact ordered Phase 5 titles and highlights", 
     ["wheat_farm", "mill", "granary"],
     ["sawmill"],
     ["storehouse"],
-    ["well"],
+    ["well", "chapel"],
     ["house"],
     ["house"],
   ]);
-  assert.match(foodChainHint ?? "", /곡창과 집을 길로/);
+  assert.match(foodChainHint ?? "", /밀밭 2곳|밀밭 두 곳/);
   assert.match(populationThirtyHint ?? "", /물과 빵/);
   assert.doesNotMatch(`${foodChainHint} ${populationThirtyHint}`, /5배속|네 채/);
 });
@@ -131,6 +131,12 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
     ONBOARDING_TASKS[2]?.isComplete(
       withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("mill", 7, 4), building("granary", 8, 4)] }),
     ),
+    false,
+  );
+  assert.equal(
+    ONBOARDING_TASKS[2]?.isComplete(
+      withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("wheat_farm", 9, 4), building("mill", 7, 4), building("granary", 8, 4)] }),
+    ),
     true,
   );
   assert.equal(
@@ -147,9 +153,15 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
   );
   assert.equal(
     ONBOARDING_TASKS[5]?.isComplete(
-      withSettlement({ buildings: [startHouse, building("well", 10, 4)], houses: [baseHouse] }),
+      withSettlement({ buildings: [startHouse, building("well", 10, 4), building("chapel", 12, 4)], houses: [baseHouse] }),
     ),
     true,
+  );
+  assert.equal(
+    ONBOARDING_TASKS[5]?.isComplete(
+      withSettlement({ buildings: [startHouse, building("well", 10, 4)], houses: [baseHouse] }),
+    ),
+    false,
   );
   assert.equal(
     ONBOARDING_TASKS[5]?.isComplete(
@@ -253,8 +265,10 @@ test("presentation state reaches the Phase 4F open goal only after task eight co
       building("storehouse", 7, 0),
       building("well", 0, 6),
       building("wheat_farm", 4, 3),
+      building("wheat_farm", 4, 5),
       building("mill", 6, 3),
       building("granary", 8, 3),
+      building("chapel", 9, 5),
     ],
     houses: [house(startHouse.id, 50)],
     width: 12,
