@@ -1,6 +1,4 @@
-import { causeMarkersForState } from "./causeMapOverlay";
-import { hitCauseMarker } from "./causeMarkerLayout";
-import { canvasToWorld } from "./camera";
+import { causeMarkerAtCanvasPoint, causeHoverTarget } from "./causeMapInteraction";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { townLandscapeAssetReady } from "./townLandscapeAssets";
 import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
@@ -89,17 +87,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       const hoveredGround = refs.hoverRef.current === null ? null : getTile(stateRef.current, refs.hoverRef.current);
       const landscape = hoveredGround === null ? null : townLandscapeAt(stateRef.current, hoveredGround);
       canvas.title = selectedToolRef.current === null && landscape !== null && townLandscapeAssetReady(landscape) ? TOWN_LANDSCAPE_TOOLTIP : "";
-      const marker = selectedToolRef.current === null ? hitCauseMarker(causeMarkersForState(stateRef.current, refs.cameraRef.current.zoom),
-        canvasToWorld(canvasPoint(event), refs.cameraRef.current), refs.cameraRef.current.zoom) : null;
-      const markerBuilding = stateRef.current.buildings.find(b => b.id === marker?.buildingIds[0]);
-      if (markerBuilding !== undefined) refs.hoverRef.current = { tx: markerBuilding.tx, ty: markerBuilding.ty };
-      const buildingId = markerBuilding?.id ?? (refs.hoverRef.current === null
-        ? null : getTile(stateRef.current, refs.hoverRef.current)?.buildingId ?? null);
-      if (buildingId === null) {
-        setHoveredBuilding(null);
-        return;
-      }
-      setHoveredBuilding({ buildingId, clusterCount: marker?.buildingIds.length ?? 1, ...hoveredBuildingPosition(event, canvas.getBoundingClientRect()) });
+      const target = causeHoverTarget(stateRef.current, refs.cameraRef.current, canvasPoint(event), selectedToolRef.current, refs.hoverRef.current);
+      refs.hoverRef.current = target.tile;
+      setHoveredBuilding(target.buildingId === null ? null : { buildingId: target.buildingId,
+        clusterCount: target.clusterCount, ...hoveredBuildingPosition(event, canvas.getBoundingClientRect()) });
     };
     const clearSuppressClickTimeout = () => {
       if (suppressClickTimeout !== null) {
@@ -185,8 +176,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         return;
       }
       if (resolution.kind === "selection") {
-        const marker = selectedToolRef.current === null ? hitCauseMarker(causeMarkersForState(stateRef.current, refs.cameraRef.current.zoom),
-          canvasToWorld(canvasPoint(event), refs.cameraRef.current), refs.cameraRef.current.zoom) : null;
+        const marker = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, canvasPoint(event)) : null;
         const buildingId = marker?.buildingIds[0];
         if (buildingId !== undefined) {
           setSelection({ kind: 'building', buildingId, position: canvasPoint(event) });

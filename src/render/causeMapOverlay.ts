@@ -1,3 +1,4 @@
+import { applyPaletteStroke } from './style';
 import type { GameState } from '../engine/engine.types';
 import { buildingFootprint } from '../geometry/buildingFootprint';
 import { SEMANTIC_PALETTE } from '../content/palette';
@@ -45,8 +46,7 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
     context.beginPath();
     corners.forEach(([tx, ty], index) => { const p = tileToScreen(tx, ty); if (index === 0) context.moveTo(p.sx, p.sy); else context.lineTo(p.sx, p.sy); });
     context.closePath();
-    context.strokeStyle = CAUSE_REGISTRY[cause.blocker.causeId].color;
-    context.lineWidth = 2 / zoom;
+    applyPaletteStroke(context, CAUSE_REGISTRY[cause.blocker.causeId].color, zoom / 2);
     context.stroke();
   }
   for (const marker of causeMarkersForState(state, zoom)) {
@@ -55,16 +55,15 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
     context.scale(1 / zoom, 1 / zoom);
     const entry = Object.entries(CAUSE_REGISTRY).find(([id]) => id === marker.causeId)?.[1];
     if (entry === undefined) {
-      context.strokeStyle = SEMANTIC_PALETTE.sage;
-      context.lineWidth = 2;
+      applyPaletteStroke(context, SEMANTIC_PALETTE.sage, 0.5);
       context.beginPath(); context.arc(0, 0, 6, 0, Math.PI * 2); context.stroke();
     } else {
       const points = GLYPH_SHAPES[entry.glyphId];
       context.beginPath();
       points.forEach(([x,y], index) => { if (index === 0) context.moveTo(x,y); else context.lineTo(x,y); });
       context.closePath(); context.fillStyle = SEMANTIC_PALETTE.vellum; context.fill();
-      context.strokeStyle = entry.color; context.lineWidth = 2; context.stroke();
-      if (marker.risk) { context.strokeStyle = SEMANTIC_PALETTE.vermilion; context.lineWidth = 2; context.strokeRect(-15,-15,30,30); }
+      applyPaletteStroke(context, entry.color, 0.5); context.stroke();
+      if (marker.risk) { applyPaletteStroke(context, SEMANTIC_PALETTE.vermilion, 0.5); context.strokeRect(-15,-15,30,30); }
       context.fillStyle = SEMANTIC_PALETTE.ink;
       context.font = 'bold 11px "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
       context.textAlign = 'center'; context.textBaseline = 'middle';
