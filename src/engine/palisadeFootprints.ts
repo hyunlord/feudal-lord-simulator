@@ -30,6 +30,12 @@ type CoreProposal = {
   readonly proposal: PalisadeProposalResult;
 };
 const coreProposalByState = new WeakMap<GameState, CoreProposal>();
+type ProposalCandidates = {
+  readonly layout: string;
+  readonly candidates: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
+  readonly failure: PalisadeProposalResult;
+};
+const proposalCandidatesByTiles = new WeakMap<GameState['tiles'], ProposalCandidates>();
 
 function roadKey(tile: TileCoordinate): string {
   return `${tile.tx},${tile.ty}`;
@@ -153,8 +159,32 @@ export function computePalisadeProposalForState(
   acceptPath?: (path: PalisadePath) => boolean,
 ): PalisadeProposalResult {
   const { buildings, core, proposal } = coreProposalForState(state);
-  if (!proposal.ok || acceptPath === undefined || acceptPath(proposal.path)) return proposal;
   const all = palisadeFootprintsForState(state);
+  const layout = JSON.stringify([state.width, state.height, all,
+    state.buildings.map(building => [building.id, building.kind]),
+    state.constructionSites.filter(site => 'kind' in site).map(site => [site.id, site.kind])]);
+  let cached = proposalCandidatesByTiles.get(state.tiles);
+  if (cached?.layout !== layout) {
+    const candidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
+    const add = (candidate: PalisadeProposalResult): void => {
+      if (candidate.ok) candidates.set(JSON.stringify(candidate.path), candidate);
+    };
+    add(proposal);
+    const acceptsGeometry = (path: PalisadePath) =>
+      palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all);
+    for (const anchors of [buildings, all]) {
+      for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
+        for (const margin of [2, 3]) add(computePalisadeProposal(state, subset, acceptsGeometry, [margin]));
+      }
+    }
+    cached = { layout, candidates: [...candidates.values()].sort((left, right) =>
+      left.perimeterSteps - right.perimeterSteps || JSON.stringify(left.path).localeCompare(JSON.stringify(right.path))),
+      failure: proposal };
+    proposalCandidatesByTiles.set(state.tiles, cached);
+  }
+  const accepted = cached.candidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
+  if (accepted !== undefined) return accepted;
+  if (acceptPath === undefined || !proposal.ok) return cached.failure;
   const accepts = (path: PalisadePath) =>
     palisadePathEnclosesFootprints(path, core)
       && palisadePathHasBuildingClearance(path, all)

@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { createStage3EconomyHarnessScenario } from '../scripts/economyHarnessStage3Scenario';
 import { createGrowthOpening } from '../scripts/phase21OpeningTranslation';
 import { computePalisadeProposalForState, palisadeCoreFootprintsForState, palisadeFootprintsForState } from '../src/engine/palisadeFootprints';
+import { confirmPalisadeProclamation } from '../src/engine/palisade';
+import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
 import { computePalisadeProposal, palisadePathHasBuildingClearance, validatePalisadeCandidate } from '../src/world/palisadeGeometry';
 
 test('default wall encloses the living core while excluding the shoreline extraction branch', () => {
@@ -58,4 +61,21 @@ test('a manually widened wall cannot exclude a home merely because sixty percent
   assert.equal(validatePalisadeCandidate(grid, path, [nearHome, farHome, camp]).ok, true);
   const protectedCore = validatePalisadeCandidate(grid, path, [nearHome, farHome, camp], [nearHome, farHome], 1);
   assert.deepEqual(protectedCore, { ok: false, reason: 'insufficient_enclosure' });
+});
+
+test('the first wall chooses a shorter valid living perimeter in a prepared town', () => {
+  const state = createStage3EconomyHarnessScenario({ seed: 1 });
+  const all = palisadeFootprintsForState(state);
+  const former = computePalisadeProposal(state, all);
+  const current = computePalisadeProposalForState(state, path => {
+    const projected = confirmPalisadeProclamation(state, path);
+    return projected !== state && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
+  });
+  assert.equal(former.ok, true);
+  assert.equal(current.ok, true);
+  if (!former.ok || !current.ok) return;
+  assert.ok(current.perimeterSteps < former.perimeterSteps,
+    `living perimeter ${current.perimeterSteps} must improve on ${former.perimeterSteps}`);
+  assert.equal(current.perimeterSteps, 47);
+  assert.equal(validatePalisadeCandidate(state, current.path, all, palisadeCoreFootprintsForState(state), 1).ok, true);
 });
