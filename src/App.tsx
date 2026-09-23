@@ -84,9 +84,9 @@ export function App() {
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [problemOnly, setProblemOnly] = useState(false);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
-  const [welcomeDismissed, setWelcomeDismissed] = useState(readWelcomeDismissed);
+  const [welcomeOpen, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
   const saveSystem = useSaveSystemContext();
-  const welcomeVisible = !welcomeDismissed || saveSystem.offerContinue;
+  const welcomeVisible = welcomeOpen || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [populationDrawerOpen, setPopulationDrawerOpen] = useState(false);
@@ -214,12 +214,12 @@ export function App() {
   const cancelPalisadeDraft = useCallback(() => setPalisadeDraft(null), []);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
-    setWelcomeDismissed(true);
+    setWelcomeVisible(false);
     if (saveSystem.offerContinue) saveSystem.declineContinue();
   };
   const continueSavedGame = () => {
     writeWelcomeDismissed();
-    setWelcomeDismissed(true);
+    setWelcomeVisible(false);
     saveSystem.continueLatest();
   };
 
