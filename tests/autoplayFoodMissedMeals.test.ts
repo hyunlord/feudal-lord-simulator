@@ -26,9 +26,34 @@ test('missed meals with adequate actual raw output and starved mills diagnose tr
   assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'wheat_transport_blocked' });
 });
 
-test('output-blocked farms route a measured raw deficit to transport instead of another field', () => {
+test('output-blocked farms with recently starved mills route a measured raw deficit to transport instead of another field', () => {
   const base = stockedTown(false);
   const state = replayFoodObservation({ ...base, buildings: base.buildings.map(b => b.kind === 'wheat_farm'
-    ? { ...b, inventory: { wheat: 20 } } : b) }, { wheat: 120, bread: 70, exports: 0 });
+    ? { ...b, inventory: { wheat: 20 } } : b) }, { wheat: 120, bread: 70, exports: 0 }, 1);
   assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'wheat_transport_blocked' });
+});
+
+test('full farms with reachable raw reserves and continuously supplied working mills expose a measured downstream capacity deficit',()=>{
+  const base=stockedTown(false);
+  const state=replayFoodObservation({...base,buildings:base.buildings.map(b=>b.kind==='wheat_farm'?{...b,inventory:{wheat:20}}:b.kind==='mill'?{...b,inventory:{wheat:12}}:b)}, {wheat:120,bread:70,exports:0});
+  assert.deepEqual(measuredFoodDecision(state),{kind:'mill',reason:'actual_bread_deficit'});
+});
+
+test('full farms with even recent raw starvation retain transport diagnosis instead of downstream expansion',()=>{
+  const base=stockedTown(false);
+  const state=replayFoodObservation({...base,buildings:base.buildings.map(b=>b.kind==='wheat_farm'?{...b,inventory:{wheat:20}}:b.kind==='mill'?{...b,inventory:{wheat:12}}:b)}, {wheat:120,bread:70,exports:0},1);
+  assert.deepEqual(measuredFoodDecision(state),{kind:null,reason:'wheat_transport_blocked'});
+});
+
+test('a common reachable raw reserve too small for the measured shortfall cannot authorize a mill',()=>{
+  const base=stockedTown(false);
+  const state=replayFoodObservation({...base,buildings:base.buildings.map(b=>b.kind==='wheat_farm'?{...b,inventory:{wheat:20}}:b.kind==='mill'?{...b,inventory:{wheat:12}}:b.kind==='granary'?{...b,inventory:{wheat:1}}:b)}, {wheat:120,bread:70,exports:0});
+  assert.deepEqual(measuredFoodDecision(state),{kind:null,reason:'wheat_transport_blocked'});
+});
+
+test('current mill input exhaustion still blocks capacity expansion despite an earlier unstarved window',()=>{
+  const base=stockedTown(false);
+  const observed=replayFoodObservation({...base,buildings:base.buildings.map(b=>b.kind==='wheat_farm'?{...b,inventory:{wheat:20}}:b.kind==='mill'?{...b,inventory:{wheat:12}}:b)}, {wheat:120,bread:70,exports:0});
+  const state={...observed,buildings:observed.buildings.map(b=>b.kind==='mill'?{...b,inventory:{wheat:0}}:b)};
+  assert.deepEqual(measuredFoodDecision(state),{kind:null,reason:'wheat_transport_blocked'});
 });

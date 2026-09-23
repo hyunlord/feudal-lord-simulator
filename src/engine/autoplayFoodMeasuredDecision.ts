@@ -44,6 +44,14 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
   const rawDeficit = wheatDemand + sample.wheatExported - sample.wheatProduced;
   const stockedWheat = facilities.reduce((sum, b) => sum + availableStock(b, 'wheat'), 0);
   if (facilities.some(b => b.kind === 'wheat_farm' && productionOperation(b, BUILDING_CONFIG_BY_KIND.wheat_farm) === 'output_full')) {
+    const mills = facilities.filter(b => b.kind === 'mill');
+    const supplied = sample.eligibleMillTicks > 0 && sample.rawStarvedTicks === 0 && mills.length > 0
+      && mills.every(m => productionOperation(m, BUILDING_CONFIG_BY_KIND.mill) === 'working');
+    const reachableRaw = granaries.filter(g => mills.every(m => resolveBuildingRoute(state, m, g).path !== null))
+      .reduce((sum, g) => sum + availableStock(g, 'wheat'), 0);
+    if (supplied && sample.breadProduced > 0 && reachableRaw > 0 && reachableRaw >= Math.max(0, rawDeficit)) {
+      return { kind: 'mill', reason: 'actual_bread_deficit' };
+    }
     return { kind: null, reason: 'wheat_transport_blocked' };
   }
   if (rawDeficit > (missedMeals ? 0 : stockedWheat) || (sample.breadProduced === 0 && stockedWheat === 0)) {
