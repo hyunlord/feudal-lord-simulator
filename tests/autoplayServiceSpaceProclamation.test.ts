@@ -65,11 +65,16 @@ test('Given optional proposal acceptance When all candidates are rejected Then e
   const ordinary = computePalisadeProposal(state, footprints);
   assert.deepEqual(computePalisadeProposal(state, footprints, () => true), ordinary);
   let inspected = 0;
-  assert.deepEqual(computePalisadeProposal(state, footprints, path => {
+  const exhausted = computePalisadeProposal(state, footprints, path => {
     inspected++;
     assert.ok(validatePalisadeCandidate(state, path, footprints).ok);
     return false;
-  }), { ok: false, reason: 'rejected_candidate' });
+  });
+  assert.equal(exhausted.ok, false);
+  if (exhausted.ok) return;
+  assert.equal(exhausted.reason, 'rejected_candidate');
+  assert.ok(exhausted.attemptedPath && exhausted.attemptedPath.length > 2,
+    'the rejected proposal remains available for the editable failure preview');
   assert.ok(inspected > 1);
   assert.deepEqual(computePalisadeProposal(state, footprints), ordinary);
   assert.ok(ordinary.ok);
