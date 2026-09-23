@@ -4,6 +4,9 @@ import { RESOURCE_TYPES } from '../content/resourceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
 import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles } from '../engine/routing';
+import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../engine/simulationPorts';
+import { roadPlacementFailure } from '../engine/roadPlacement';
+import { constructionMaterialSources } from '../agents/deliveryConstruction';
 import type { GameState } from '../engine/engine.types';
 import { canTraverseRoadBoundary } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
@@ -18,6 +21,7 @@ export type ConstructionAccessModel = Readonly<{
   label: string;
   accessTiles: readonly TileCoordinate[];
   suggestedRoad: readonly TileCoordinate[];
+  missingRoadTiles: readonly TileCoordinate[];
 }>;
 
 const LABELS = {
@@ -63,6 +67,35 @@ function legalNewRoad(state: GameState, tile: TileCoordinate): boolean {
   });
 }
 
+function hasMaterialRoute(state: GameState, site: ConstructionSite): boolean {
+  return constructionMaterialSources({
+    site,
+    buildings: state.buildings,
+    routes: createSimulationRoutePorts(state).delivery,
+    inventory: createDeliveryInventoryPort(),
+    treasuryTimber: state.treasuryTimber,
+  }).some(source => source.hasRoute);
+}
+
+function withNewRoads(state: GameState, path: readonly TileCoordinate[]): GameState {
+  const added = new Set(path.map(key));
+  return {
+    ...state,
+    tiles: state.tiles.map(tile => added.has(key(tile)) ? { ...tile, hasRoad: true } : tile),
+    roadRevision: state.roadRevision + 1,
+    pathCache: {},
+  };
+}
+
+export function roadConnectsConstructionSite(
+  state: GameState,
+  site: ConstructionSite,
+  path: readonly TileCoordinate[],
+): boolean {
+  if (path.length === 0 || roadPlacementFailure(state, path) !== null || hasMaterialRoute(state, site)) return false;
+  return hasMaterialRoute(withNewRoads(state, path), site);
+}
+
 export function suggestedConstructionRoad(
   state: GameState,
   site: ConstructionSite,
@@ -83,7 +116,7 @@ export function suggestedConstructionRoad(
         path.unshift(step);
         step = parents.get(key(step)) ?? null;
       }
-      return path;
+      if (hasMaterialRoute(withNewRoads(state, path), site)) return path;
     }
     for (const next of nearby(current)) {
       if (parents.has(key(next))) continue;
@@ -118,11 +151,14 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
     const withoutWall = { ...state, palisade: null };
     if (suggestedConstructionRoad(withoutWall, site).length > 0) cause = 'wall_blocked';
   }
+  const suggestedRoad = cause === 'road_disconnected' || cause === 'no_route'
+    ? suggestedConstructionRoad(state, site, accessTiles) : [];
   return {
     cause,
     label: LABELS[cause],
     accessTiles: cause === 'road_disconnected' || cause === 'no_route' || cause === 'wall_blocked' ? accessTiles : [],
-    suggestedRoad: cause === 'road_disconnected' || cause === 'no_route' ? suggestedConstructionRoad(state, site, accessTiles) : [],
+    suggestedRoad,
+    missingRoadTiles: suggestedRoad.filter(tile => getTile(state, tile)?.hasRoad !== true),
   };
 }
 

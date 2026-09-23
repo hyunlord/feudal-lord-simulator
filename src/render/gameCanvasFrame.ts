@@ -43,6 +43,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     input.selectedTool,
     input.hoveredTile,
     input.roadStart,
+    input.selectedConstructionSiteId ?? null,
   );
 
   input.context.fillStyle = CANVAS_SURROUND_COLOR;
@@ -74,7 +75,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     selectionMode: input.selectedTool === null && input.palisadeDraft == null,
   });
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
-    drawConstructionAccessOverlay(input.context, input.state, input.selectedConstructionSiteId);
+    drawConstructionAccessOverlay(input.context, input.state, input.selectedConstructionSiteId, input.camera.zoom);
   }
   input.context.restore();
   return preview;

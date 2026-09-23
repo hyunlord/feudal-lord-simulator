@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ConstructionSite } from '../src/economy/construction';
-import { constructionAccessModel, groupedConstructionCause } from '../src/ui/constructionAccessModel';
+import { constructionAccessModel, groupedConstructionCause, roadConnectsConstructionSite } from '../src/ui/constructionAccessModel';
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
+import { placeRoadLine } from '../src/engine/gameActions';
+import { cachedPlacementPreview } from '../src/render/placementPredictionRuntime';
 import { resolveCanvasClick } from '../src/render/canvasClickResolution';
 import { tileToScreen } from '../src/render/iso';
-import { building, state as makeState, timberSite } from './stoneWallConversionFixtures';
+import { building, palisade, palisadeSegment, state as makeState, timberSite } from './stoneWallConversionFixtures';
 
 const site = {
   id: 'well-plan', kind: 'well', tx: 5, ty: 5,
@@ -36,6 +38,8 @@ test('road proposal connects a stalled site, then disappears after the road is b
   const before = constructionAccessModel(state, site);
   assert.equal(before.cause, 'road_disconnected');
   assert.ok(before.suggestedRoad.length > 1);
+  assert.ok(before.missingRoadTiles.length > 0);
+  assert.ok(before.missingRoadTiles.every(tile => !state.tiles.some(existing => existing.tx === tile.tx && existing.ty === tile.ty && existing.hasRoad)));
   assert.ok(before.accessTiles.length > 0);
   const roads = new Set(before.suggestedRoad.map(tile => `${tile.tx},${tile.ty}`));
   const connected = {
@@ -50,6 +54,35 @@ test('road proposal connects a stalled site, then disappears after the road is b
   assert.ok(resolveBuildingToConstructionSiteRoute(connected, source, completedSite).path);
   assert.equal(constructionAccessModel(connected, completedSite).cause, 'none');
   assert.equal(constructionAccessModel(connected, completedSite).suggestedRoad.length, 0);
+});
+
+test('one missing road tile predicts a real material route to the selected site', () => {
+  const base = disconnectedFixture();
+  const oneGapSite = { ...site, tx: 4, ty: 3 };
+  const state = {
+    ...base,
+    constructionSites: [oneGapSite],
+    tiles: base.tiles.map(tile => ({
+      ...tile,
+      buildingId: tile.tx === 4 && tile.ty === 3 ? oneGapSite.id
+        : tile.tx === site.tx && tile.ty === site.ty ? null : tile.buildingId,
+    })),
+  };
+  const proposed = constructionAccessModel(state, oneGapSite);
+  assert.deepEqual(proposed.missingRoadTiles, [{ tx: 3, ty: 3 }]);
+  assert.equal(roadConnectsConstructionSite(state, oneGapSite, [{ tx: 3, ty: 3 }]), true);
+  assert.equal(roadConnectsConstructionSite(state, oneGapSite, [{ tx: 3, ty: 4 }]), false);
+  assert.ok(cachedPlacementPreview(state, 'road', { tx: 3, ty: 3 }, null, oneGapSite.id)
+    .prediction?.lines.some(line => line.text === '이 길로 연결됩니다 ✓'));
+  assert.ok(!cachedPlacementPreview(state, 'road', { tx: 3, ty: 4 }, null, oneGapSite.id)
+    .prediction?.lines.some(line => line.text === '이 길로 연결됩니다 ✓'));
+  const built = placeRoadLine(state, { tx: 3, ty: 3 }, { tx: 3, ty: 3 });
+  assert.notEqual(built, state);
+  const source = built.buildings[0];
+  assert.ok(source);
+  assert.ok(resolveBuildingToConstructionSiteRoute(built, source, oneGapSite).path);
+  const completedSite = { ...oneGapSite, stall: 'none' as const };
+  assert.equal(constructionAccessModel({ ...built, constructionSites: [completedSite] }, completedSite).cause, 'none');
 });
 
 test('road proposal starts from a material source instead of a nearer empty storehouse', () => {
@@ -75,6 +108,20 @@ test('road proposal starts from a material source instead of a nearer empty stor
   const source = state.buildings[0];
   assert.ok(source);
   assert.ok(resolveBuildingToConstructionSiteRoute(connected, source, site).path);
+});
+
+test('selected palisade segment highlights only its missing access road and clears after placement', () => {
+  const wall = timberSite(0, { path: [{ x: 3, y: 3 }, { x: 4, y: 3 }], stall: 'no_route' });
+  const segment = palisadeSegment(0, { edgePath: wall.path, completed: false, constructionSiteId: wall.id });
+  const state = { ...disconnectedFixture(), constructionSites: [wall], palisade: palisade([segment]) };
+  const model = constructionAccessModel(state, wall);
+  assert.equal(model.cause, 'road_disconnected');
+  assert.deepEqual(model.missingRoadTiles, [{ tx: 3, ty: 3 }]);
+  assert.equal(roadConnectsConstructionSite(state, wall, model.missingRoadTiles), true);
+  const built = placeRoadLine(state, { tx: 3, ty: 3 }, { tx: 3, ty: 3 });
+  const source = built.buildings[0];
+  assert.ok(source);
+  assert.ok(resolveBuildingToConstructionSiteRoute(built, source, wall).path);
 });
 
 test('same cause is grouped across sites without hiding site diagnosis', () => {
