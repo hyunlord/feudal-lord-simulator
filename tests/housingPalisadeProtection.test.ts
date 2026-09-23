@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import type { Building } from "../src/content/buildingConfig";
+import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import { BALANCE } from "../src/content/balanceConfig";
 import type { GameState, PalisadeState } from "../src/engine/engine.types";
 import { advanceSimulationSubstep } from "../src/engine/tick";
@@ -41,6 +42,7 @@ function house(buildingId: string, input: Partial<House> = {}): House {
     breadStock: 3,
     lastServicedTick: 100,
     unmetRequirementTicks: 0,
+    promotionTicks: HOUSING_CONFIG[3].promotionHoldTicks - 1,
     ...input,
   };
 }
@@ -161,7 +163,7 @@ test("Given a completed wall When outside homes are already level three or servi
   assert.equal(byId(result.houses, "starving").level, 2);
 });
 
-test("Given an outside home below level three When the completed wall caps its upgrade Then only level-related fields change", () => {
+test("Given an outside home below level three When the completed wall caps its upgrade Then the hold resets without changing occupants", () => {
   // Given
   const outside = house("outside", {
     level: 2,
@@ -177,7 +179,7 @@ test("Given an outside home below level three When the completed wall caps its u
   const result = updateHousing([outside], buildings, 101, palisade(true));
 
   // Then
-  assert.deepEqual(byId(result.houses, "outside"), { ...outside, builtLevel: 2 });
+  assert.deepEqual(byId(result.houses, "outside"), { ...outside, builtLevel: 2, promotionTicks: 0 });
 });
 
 test("Given a completed wall in the simulation tick When an outside serviced home updates Then the level-three cap is applied", () => {

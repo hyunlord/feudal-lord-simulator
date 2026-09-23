@@ -22,6 +22,7 @@ export function runProduction(state: GameState): GameState {
   let farmFullTicks = 0;
   let farmReadyTicks = 0;
   let breadProduced = 0;
+  let timberProduced = 0;
   const buildings = state.buildings.map((building) => {
     if (!buildingHasRequiredRoadAccess(state, building)) return building;
     if (building.kind === 'wheat_farm') {
@@ -42,6 +43,7 @@ export function runProduction(state: GameState): GameState {
       materialRecord = recordMaterialProduction(materialRecord, building.id, step.produced === 'stone', operation === 'working', hauling);
     }
     if (step.produced === "wheat") wheatProduced += 1;
+    if (building.kind === 'sawmill' && step.produced === 'timber') timberProduced += 1;
     if (step.produced === "bread") {
       breadProduced += 1;
       wheatConsumed += (building.inventory.wheat ?? 0) - (step.building.inventory.wheat ?? 0);
@@ -58,10 +60,18 @@ export function runProduction(state: GameState): GameState {
     ...state,
     buildings,
     forestHarvests,
+    timberProductionWindow: timberProductionWindow(state, timberProduced),
     ...(materialRecord === undefined ? {} : { autoplayMaterialRecovery: materialRecord }),
   }, { wheatProduced, breadProduced, farmFullTicks, farmReadyTicks }),
   { eligibleMillTicks, rawStarvedTicks, wheatConsumed }, true);
   return observedOutput === 0
     ? nextState
     : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });
+}
+
+function timberProductionWindow(state: GameState, produced: number): NonNullable<GameState['timberProductionWindow']> {
+  const startTick = Math.max(0, state.tick - 2399);
+  const existing = state.timberProductionWindow?.productionTicks.filter(tick => tick >= startTick && tick <= state.tick) ?? [];
+  const productionTicks = produced === 0 ? existing : [...existing, ...Array.from({ length: produced }, () => state.tick)];
+  return { startTick, throughTick: state.tick, produced: productionTicks.length, productionTicks };
 }

@@ -1,5 +1,6 @@
 import type { GameState } from "../engine/engine.types";
 import { palisadeFootprintsForState } from "../ui/eraConsoleModel";
+import { palisadeCoreFootprintsForState } from '../engine/palisadeFootprints';
 import type { TileCoordinate } from "../world/grid";
 import type { Point } from "./camera";
 import type { DragState } from "./canvasRuntime";
@@ -57,5 +58,7 @@ export function advancePalisadeDraftDrag(input: {
     startTile: input.draft.dragStartTile,
     currentTile: input.hover,
     footprints: palisadeFootprintsForState(input.state),
+    enclosureFootprints: palisadeCoreFootprintsForState(input.state),
+    minimumEnclosureRatio: 1,
   });
 }

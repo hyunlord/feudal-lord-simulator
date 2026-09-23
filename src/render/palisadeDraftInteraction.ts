@@ -62,6 +62,8 @@ export function dragDraftRunByTiles(input: {
   readonly startTile: TileCoordinate;
   readonly currentTile: TileCoordinate;
   readonly footprints: readonly PalisadeFootprint[];
+  readonly enclosureFootprints?: readonly PalisadeFootprint[];
+  readonly minimumEnclosureRatio?: number;
 }): PalisadeDraftState {
   if (input.draft.selectedRunIndex === null) return input.draft;
   const run = input.draft.candidate.runs[input.draft.selectedRunIndex];
@@ -77,6 +79,8 @@ export function dragDraftRunByTiles(input: {
     input.draft.selectedRunIndex,
     wholeSteps,
     input.footprints,
+    input.enclosureFootprints,
+    input.minimumEnclosureRatio,
   );
   if (!result.ok) {
     return {

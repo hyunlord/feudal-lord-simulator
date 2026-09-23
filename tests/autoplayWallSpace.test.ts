@@ -13,7 +13,7 @@ test('Given a feasible hamlet When autoplay adds buildings Then completed and pe
   let state = createGrowthOpening(3).state;
   const driver = createAutoplayTraceDriver({ id: 'wall-space-regression', source: 'original seed 3', policy: { maxHousingLots: 24 } });
   const checkedKinds = new Set<string>();
-  while (state.tick <= 2400) {
+  while (state.tick <= 6600) {
     const next = driver.apply(state);
     if (next !== state && next.constructionSites !== state.constructionSites) {
       const footprints = palisadeFootprintsForState(next);
@@ -40,7 +40,7 @@ test('Given a pending footprint When it replaces the same completed plot Then wa
   // Given: replay to immediately before the original loss of wall feasibility.
   let state = createGrowthOpening(3).state;
   const driver = createAutoplayTraceDriver({ id: 'pending-wall-space', source: 'original seed 3', policy: { maxHousingLots: 24 } });
-  while (state.tick < 2280) state = advanceTick(driver.apply(state));
+  while (state.tick < 6600) state = advanceTick(driver.apply(state));
   const chapel = state.buildings.find(building => building.kind === 'chapel');
   assert.ok(chapel);
   const pending = { ...state, buildings: state.buildings.filter(building => building.id !== chapel.id),
@@ -57,4 +57,14 @@ test('Given a pending footprint When it replaces the same completed plot Then wa
 test('Given an already infeasible hamlet When the advisor considers growth Then this preservation rule does not freeze recovery', () => {
   const state = { ...createGrowthOpening(3).state, buildings: [], constructionSites: [] };
   assert.equal(preservesAutoplayWallSpace(state, 'house', { tx: 11, ty: 6 }), true);
+});
+
+test('Given a feasible living-core wall When an outlying sawmill clears it Then extraction stays buildable', () => {
+  const state = createGrowthOpening(3).state;
+  assert.equal(preservesAutoplayWallSpace(state, 'sawmill', { tx: 17, ty: 5 }), true);
+});
+
+test('Given connecting roads in the living core When a food plot fits Then road footprints do not obstruct the wall hull', () => {
+  const state = createGrowthOpening(3).state;
+  assert.equal(preservesAutoplayWallSpace(state, 'wheat_farm', { tx: 9, ty: 8 }), true);
 });

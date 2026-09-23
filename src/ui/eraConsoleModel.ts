@@ -1,7 +1,7 @@
 export { palisadeFootprintsForState } from "../engine/palisadeFootprints";
 import type { GameState } from "../engine/engine.types";
+import { computePalisadeProposalForState } from "../engine/palisadeFootprints";
 import {
-  computePalisadeProposal,
   palisadePerimeterSteps,
   type PalisadeFailureReason,
   type PalisadeFootprint,
@@ -24,9 +24,9 @@ const MAX_SEGMENT_STEPS = 4;
 
 export function proposalSummaryForState(
   state: GameState,
-  footprints: readonly PalisadeFootprint[],
+  _footprints: readonly PalisadeFootprint[],
 ): PalisadeProposalSummary {
-  const proposal = computePalisadeProposal(state, footprints);
+  const proposal = computePalisadeProposalForState(state);
   if (!proposal.ok) return proposal;
   return {
     ok: true,

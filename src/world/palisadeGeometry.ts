@@ -394,6 +394,10 @@ function enclosedCount(path: PalisadePath, footprints: readonly PalisadeFootprin
   return footprints.filter((footprint) => footprintCorners(footprint).every((corner) => isPointInsidePalisade(corner, path))).length;
 }
 
+export function palisadePathEnclosesFootprints(path: PalisadePath, footprints: readonly PalisadeFootprint[]): boolean {
+  return enclosedCount(path, footprints) === footprints.length;
+}
+
 function runNormal(path: PalisadePath, direction: TileEdgePoint): TileEdgePoint {
   const clockwise = pathArea(path) >= 0;
   return clockwise ? { x: direction.y, y: -direction.x } : { x: -direction.y, y: direction.x };
@@ -420,6 +424,8 @@ export function validatePalisadeCandidate(
   grid: Grid,
   path: PalisadePath,
   footprints: readonly PalisadeFootprint[],
+  enclosureFootprints = footprints,
+  minimumEnclosureRatio = 0.6,
 ): PalisadeValidationResult {
   if (!isClosed(path)) return { ok: false, reason: "open_polygon" };
   if (path.some((point) => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds" };
@@ -431,9 +437,9 @@ export function validatePalisadeCandidate(
   }
   const perimeterSteps = palisadePerimeterSteps(path);
   if (perimeterSteps <= 0) return { ok: false, reason: "empty_perimeter" };
-  const enclosedFootprints = enclosedCount(path, footprints);
-  const enclosureRatio = footprints.length === 0 ? 0 : enclosedFootprints / footprints.length;
-  if (enclosureRatio < 0.6) return { ok: false, reason: "insufficient_enclosure" };
+  const enclosedFootprints = enclosedCount(path, enclosureFootprints);
+  const enclosureRatio = enclosureFootprints.length === 0 ? 0 : enclosedFootprints / enclosureFootprints.length;
+  if (enclosureRatio < minimumEnclosureRatio) return { ok: false, reason: "insufficient_enclosure" };
   if (!palisadePathHasBuildingClearance(path, footprints)) return { ok: false, reason: "building_clearance" };
   return { ok: true, candidate: { path: simplifyPath(path), runs: runsForPath(simplifyPath(path)), perimeterSteps, enclosedFootprints, enclosureRatio } };
 }
@@ -441,16 +447,17 @@ export function validatePalisadeCandidate(
 function primaryPalisadeProposal(
   grid: Grid,
   footprints: readonly PalisadeFootprint[],
+  margin = PROPOSAL_MARGIN_TILES,
 ): PalisadeProposalResult {
   if (footprints.length === 0) return { ok: false, reason: "no_footprints" };
   if (footprints.some((footprint) => hasWaterMoat(grid, footprint))) return { ok: false, reason: "water_crossing" };
-  const hull = convexHull(footprints.flatMap((footprint) => expandedFootprintCorners(footprint, PROPOSAL_MARGIN_TILES)));
+  const hull = convexHull(footprints.flatMap((footprint) => expandedFootprintCorners(footprint, margin)));
   if (hull.length < 2) return { ok: false, reason: "collinear_footprints" };
   const hullInBounds = hull.every(point => edgeInBounds(grid, point));
-  const routed = hullInBounds ? routeClosedPath(grid, hull, { footprints, margin: PROPOSAL_MARGIN_TILES }) : null;
+  const routed = hullInBounds ? routeClosedPath(grid, hull, { footprints, margin }) : null;
   if (routed === null) {
     let failure: PalisadeFailureReason = hullInBounds ? "water_crossing" : "out_of_bounds";
-    for (const envelope of palisadeLandEnvelopes(grid, footprints, PROPOSAL_MARGIN_TILES)) {
+    for (const envelope of palisadeLandEnvelopes(grid, footprints, margin)) {
       const candidate = validatePalisadeCandidate(grid, envelope, footprints);
       if (candidate.ok) return { ok: true, path: candidate.candidate.path, runs: candidate.candidate.runs, perimeterSteps: candidate.candidate.perimeterSteps };
       if (hullInBounds && candidate.reason === "building_clearance") failure = candidate.reason;
@@ -466,8 +473,9 @@ export function computePalisadeProposal(
   grid: Grid,
   footprints: readonly PalisadeFootprint[],
   acceptPath?: (path: PalisadePath) => boolean,
+  margins?: readonly number[],
 ): PalisadeProposalResult {
-  const proposal = primaryPalisadeProposal(grid, footprints);
+  const proposal = primaryPalisadeProposal(grid, footprints, margins?.[0] ?? PROPOSAL_MARGIN_TILES);
   if (proposal.ok && (acceptPath === undefined || acceptPath(proposal.path))) return proposal;
   let rejected = proposal.ok;
   if (footprints.length === 0 || footprints.some(footprint => hasWaterMoat(grid, footprint))) {
@@ -477,7 +485,7 @@ export function computePalisadeProposal(
   // Prioritize plots that actually obstruct the full-set envelopes. Every omitted
   // plot still participates in clearance and the enclosure denominator below.
   const offenders = new Set<string>();
-  for (const margin of [1, 2, PROPOSAL_MARGIN_TILES]) {
+  for (const margin of margins ?? [1, 2, PROPOSAL_MARGIN_TILES]) {
     for (const path of palisadeLandEnvelopes(grid, ordered, margin)) {
       const validation = validatePalisadeCandidate(grid, path, footprints);
       if (validation.ok) {
@@ -493,7 +501,7 @@ export function computePalisadeProposal(
   const omissions = [...ordered].sort((a, b) => Number(offenders.has(b.id)) - Number(offenders.has(a.id)) || a.id.localeCompare(b.id));
   for (const omitted of omissions) {
     const anchors = ordered.filter(footprint => footprint !== omitted);
-    for (const margin of [1, 2, PROPOSAL_MARGIN_TILES]) {
+    for (const margin of margins ?? [1, 2, PROPOSAL_MARGIN_TILES]) {
       for (const path of palisadeLandEnvelopes(grid, anchors, margin)) {
         const validation = validatePalisadeCandidate(grid, path, footprints);
         if (!validation.ok) continue;
@@ -512,6 +520,8 @@ export function dragPalisadeRun(
   runIndex: number,
   wholeSteps: number,
   footprints: readonly PalisadeFootprint[],
+  enclosureFootprints = footprints,
+  minimumEnclosureRatio = 0.6,
 ): PalisadeDragResult {
   const run = candidate.runs[runIndex];
   if (run === undefined || wholeSteps === 0) return { ok: true, candidate };
@@ -522,7 +532,8 @@ export function dragPalisadeRun(
   if (moved.some(point => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds", lastValid: candidate };
   const routed = routeClosedPath(grid, moved.slice(0, -1));
   const validation: PalisadeValidationResult =
-    routed === null ? { ok: false, reason: "water_crossing" } : validatePalisadeCandidate(grid, routed, footprints);
+    routed === null ? { ok: false, reason: "water_crossing" }
+      : validatePalisadeCandidate(grid, routed, footprints, enclosureFootprints, minimumEnclosureRatio);
   if (!validation.ok) return { ok: false, reason: validation.reason, lastValid: candidate };
   return { ok: true, candidate: validation.candidate };
 }

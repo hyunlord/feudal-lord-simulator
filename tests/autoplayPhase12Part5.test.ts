@@ -194,8 +194,8 @@ test("Given a palisade proclamation action When adapters resolve it Then they sh
   assert.equal(engineAutoplayActionToGameAction(action, waterBlocked), null);
 });
 
-test("Given default autoplay When run for twelve thousand ticks Then population growth is sustained by viable advisor actions", () => {
-  const trace = traceDefaultAutoplay(12_000);
+test("Given default autoplay When run past the new promotion holds Then population growth is sustained by viable advisor actions", () => {
+  const trace = traceDefaultAutoplay(24_000);
   const peak = maxPopulation(trace.population);
   const finalPopulation = trace.finalState.population;
   const actionKinds = new Set(trace.actions.map(({ action }) => action.kind));

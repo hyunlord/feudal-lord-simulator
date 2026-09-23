@@ -1,13 +1,12 @@
 import { confirmPalisadeProclamation } from './palisade';
 import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import type { PalisadePath } from '../world/palisadeGeometry';
-import { palisadeFootprintsForState } from "./palisadeFootprints";
+import { computePalisadeProposalForState, palisadeCoreFootprintsForState, palisadeFootprintsForState } from "./palisadeFootprints";
 import type { AutoplayAction } from "./autoplay";
 import { canProclaimStoneTownEra } from "./era";
 import type { GameState } from "./engine.types";
 import type { GameAction } from "../state/gameStore.types";
 import {
-  computePalisadeProposal,
   validatePalisadeCandidate,
 } from "../world/palisadeGeometry";
 
@@ -21,9 +20,9 @@ function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameActi
     return canProclaimStoneTownEra(state) ? { type: "confirm_stone_town_proclamation" } : null;
   }
   const footprints = palisadeFootprintsForState(state);
-  const proposal = candidatePath === undefined ? computePalisadeProposal(state, footprints) : { ok: true, path: candidatePath };
+  const proposal = candidatePath === undefined ? computePalisadeProposalForState(state) : { ok: true, path: candidatePath };
   if (!proposal.ok) return null;
-  const validation = validatePalisadeCandidate(state, proposal.path, footprints);
+  const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1);
   if (candidatePath !== undefined && validation.ok) {
     const projected = confirmPalisadeProclamation(state, validation.candidate.path);
     if (projected === state || !preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected)) return null;
