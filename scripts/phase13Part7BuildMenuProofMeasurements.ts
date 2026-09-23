@@ -39,9 +39,11 @@ async function measureViewports(
       mobile: false,
     });
     await frames(10);
+    await client.evaluate("document.querySelector('.build-menu-body').hidden = true", false);
+    const collapsedAccessibilityGroups = await measureAccessibilityGroups(client, scenario, false);
     const evaluatedProof = await client.evaluate(browserMeasurementExpression(viewport, scenario), true);
     const accessibilityGroups = await measureAccessibilityGroups(client, scenario);
-    viewportProofs.push(withAccessibilityGroups(parseBrowserProof(evaluatedProof), accessibilityGroups));
+    viewportProofs.push(withAccessibilityGroups(parseBrowserProof(evaluatedProof), accessibilityGroups, collapsedAccessibilityGroups));
   }
 
   const failures = viewportProofs.flatMap((proof) => proof.failures);
@@ -83,6 +85,7 @@ function parseBrowserProof(value: unknown): BrowserProof {
 function withAccessibilityGroups(
   proof: BrowserProof,
   accessibilityGroups: BrowserViewportMeasurement["accessibilityGroups"],
+  collapsedAccessibilityGroups: BrowserViewportMeasurement["accessibilityGroups"],
 ): BrowserProof {
   if (!isRecord(proof.measurements)) {
     throw new Error("browser proof returned invalid measurements");
@@ -92,6 +95,7 @@ function withAccessibilityGroups(
     measurements: {
       ...proof.measurements,
       accessibilityGroups,
+      collapsedAccessibilityGroups,
     },
   };
 }

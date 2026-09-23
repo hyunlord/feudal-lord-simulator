@@ -11,10 +11,15 @@ export type AccessibilityGroup = {
 export async function measureAccessibilityGroups(
   client: CdpClient,
   scenario: ProofScenario,
+  expanded = true,
 ): Promise<readonly AccessibilityGroup[]> {
   const response = await client.send("Accessibility.getFullAXTree");
   const nodes = parseAxTreeResponse(response);
-  return expectedAccessibilityGroupNames(scenario).map((expectedName) => {
+  if (!expanded && nodes.some(node => node.name === KO_UI.roadTool)) {
+    throw new Error("Collapsed catalogue exposes its hidden road group");
+  }
+  const names = expectedAccessibilityGroupNames(scenario);
+  return (expanded ? names : names.filter(name => name !== KO_UI.roadTool)).map((expectedName) => {
     const group = nodes.find((node) => node.role === "group" && node.name === expectedName);
     if (group === undefined) throw new Error(`AX group missing accessible name: ${expectedName}`);
     return group;

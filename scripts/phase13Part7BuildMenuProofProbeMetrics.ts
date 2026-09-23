@@ -15,6 +15,10 @@ export function browserMeasurementMetricsExpression(groupLabels: readonly string
     const menu = required('.build-menu');
     const recess = required('.seal-recess');
     const catalog = required('.build-menu-catalog');
+    const drawer = required('.build-menu-body');
+    // This SSR geometry fixture opens the real drawer before revealing categories.
+    // React interaction is verified separately by the live game UI checks.
+    drawer.hidden = false;
     const categories = Array.from(document.querySelectorAll('.build-menu-category'));
     const panels = Array.from(document.querySelectorAll('.build-menu-tools'));
     const originalHidden = panels.map((panel) => panel.hidden);
@@ -51,6 +55,8 @@ export function browserMeasurementMetricsExpression(groupLabels: readonly string
       const rowTops = new Set(buttons.map((button) => Math.round(button.getBoundingClientRect().top)));
       if (rowTops.size > 1) failures.push('category tool strip unexpectedly wraps');
       if (!fits(rectOf(menu), rectOf(recess))) failures.push('menu outside assigned recess: ' + category.textContent);
+      const viewportRect = { left: 0, top: 0, right: innerWidth, bottom: innerHeight };
+      if (!fits(rectOf(drawer), viewportRect)) failures.push('open catalogue outside viewport: ' + category.textContent);
       for (const selector of ['html', 'body', '.app-shell', '.court-console', '.seal-recess', '.build-menu']) {
         const surface = required(selector);
         if (surface.scrollWidth > surface.clientWidth + tolerance) failures.push('horizontal overflow: ' + selector);
@@ -60,7 +66,7 @@ export function browserMeasurementMetricsExpression(groupLabels: readonly string
     panels.forEach((panel, index) => { panel.hidden = originalHidden[index]; });
     catalog.scrollLeft = 0;
     const road = required('.build-menu-quick-road .build-tool');
-    if (!fits(rectOf(road), rectOf(menu))) failures.push('quick road outside menu');
+    if (!fits(rectOf(road), rectOf(drawer))) failures.push('quick road outside open catalogue');
     seen.add(road.getAttribute('aria-label'));
 `;
 }

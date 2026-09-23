@@ -42,7 +42,7 @@ ${css}
 <body>
 <main class="app-shell" data-proof-scenario="${input.scenarioName}" style="${inlineStyle(PALETTE_CSS_VARIABLES)}">
   <section class="court-console" aria-label="영주 명령대">
-    <div class="court-recess map-recess"><button class="map-overview" type="button" aria-label="영지 지형 지도 이동"></button></div>
+    <div class="court-recess map-recess"><details class="command-disclosure"><summary>지도</summary><div class="command-popover"><button class="map-overview" type="button" aria-label="영지 지형 지도 이동"></button></div></details></div>
     <div class="court-recess seal-recess">${buildMenuMarkup}</div>
     <div class="court-recess ledger-recess"></div>
   </section>
