@@ -1,10 +1,10 @@
 import { PALETTE, SEMANTIC_PALETTE } from '../content/palette';
 import { palisadeScreenPath, type PalisadeRenderPath } from './palisadeRenderGeometry';
-import { snapToPixel } from './style';
+import { applyPaletteStroke, snapToPixel, type PaletteStrokeContext } from './style';
 
-export type PalisadeRoutePreviewContext = Pick<CanvasRenderingContext2D,
+export type PalisadeRoutePreviewContext = PaletteStrokeContext & Pick<CanvasRenderingContext2D,
   'save' | 'restore' | 'beginPath' | 'moveTo' | 'lineTo' | 'stroke' | 'setLineDash'
-  | 'lineCap' | 'lineJoin' | 'lineWidth' | 'strokeStyle'>;
+  >;
 
 export function drawPalisadeRoutePreviewOverlay(
   context: PalisadeRoutePreviewContext,
@@ -24,10 +24,10 @@ export function drawPalisadeRoutePreviewOverlay(
     for (const point of points.slice(1)) {
       context.lineTo(snapToPixel(point.x), snapToPixel(point.y));
     }
-    context.strokeStyle = PALETTE.ink;
+    applyPaletteStroke(context, PALETTE.ink, zoom);
     context.lineWidth = 8 / zoom;
     context.stroke();
-    context.strokeStyle = PALETTE.vermilion;
+    applyPaletteStroke(context, PALETTE.vermilion, zoom);
     context.lineWidth = 5 / zoom;
     context.setLineDash([8 / zoom, 6 / zoom]);
     context.stroke();
@@ -45,7 +45,7 @@ export function drawPalisadeRoutePreviewOverlay(
       context.lineTo(snapToPixel(centerX + half), snapToPixel(centerY + half));
       context.moveTo(snapToPixel(centerX - half), snapToPixel(centerY + half));
       context.lineTo(snapToPixel(centerX + half), snapToPixel(centerY - half));
-      context.strokeStyle = SEMANTIC_PALETTE.vellum;
+      applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
       context.lineWidth = 3 / zoom;
       context.stroke();
     }
