@@ -195,7 +195,7 @@ let lastPalisadeRoutePreview: {
 } | null = null;
 
 function cachedPalisadeRoutePreview(state: GameState, path: PalisadeDraftState['path']): PalisadeRouteAccess {
-  const key = [state.era, state.roadRevision, state.treasuryTimber > 0,
+  const key = [state.era, state.roadRevision, state.nextConstructionOrdinal, state.treasuryTimber > 0,
     state.buildings.map(building => `${building.id}:${building.tx}:${building.ty}:${building.kind}:${availableStock(building, 'timber') > 0}`).join('|'),
     state.constructionSites.map(site => site.id).join('|')].join('/');
   if (lastPalisadeRoutePreview?.path === path && lastPalisadeRoutePreview.tiles === state.tiles
