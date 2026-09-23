@@ -1,6 +1,6 @@
 import type { BuildingKind } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
-import { computePalisadeProposalForState } from './palisadeFootprints';
+import { computeReachablePalisadeProposalForState } from './palisadeRouteAccess';
 import { confirmPalisadeProclamation } from './palisade';
 import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { evaluateEraRequirements } from './era';
@@ -17,7 +17,7 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
   const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met);
   if (unmet.length === 0) {
     if (state.era === 'hamlet') {
-      const proposal = computePalisadeProposalForState(state, path => {
+      const proposal = computeReachablePalisadeProposalForState(state, path => {
         const projected = confirmPalisadeProclamation(state, path);
         return projected !== state && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
       });

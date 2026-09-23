@@ -213,6 +213,14 @@ export function confirmPalisadeProclamation(
   candidatePath: PalisadePath,
 ): GameState {
   if (!canProclaimPalisadeEra(state) || state.palisade !== null) return state;
+  return projectPalisadeProclamation(state, candidatePath);
+}
+
+export function projectPalisadeProclamation(
+  state: GameState,
+  candidatePath: PalisadePath,
+): GameState {
+  if (state.era !== 'hamlet' || state.palisade !== null) return state;
   const footprints = palisadeFootprintsForState(state);
   const validation = validatePalisadeCandidate(state, candidatePath, footprints, palisadeCoreFootprintsForState(state), 1);
   if (!validation.ok) return state;

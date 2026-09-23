@@ -2,6 +2,8 @@ import { BALANCE } from '../content/balanceConfig';
 import type { GameState } from '../engine/engine.types';
 import { palisadePerimeterSteps, type PalisadePath } from '../world/palisadeGeometry';
 import { placementSpendableResource } from '../world/placement';
+import { previewPalisadeRouteAccess } from '../engine/palisadeRouteAccess';
+import { A_TRIPLE_PRIME_WALL_COPY } from './aTriplePrimeWallCopy';
 import type { PredictionLine } from './predictionTypes';
 
 const TIMBER_PER_STEP = 15;
@@ -20,6 +22,10 @@ export function proposalPredictionLines(state: GameState, path: PalisadePath): r
     { id: 'scope', tone: 'neutral', text: `길이 ${steps}칸 · 공사 ${segments}구간 · 목재 ${cost} · 인력 ${labourTicks}일꾼틱` },
     { id: 'materials', tone: deficit > 0 ? 'warning' : 'positive', text: `가용 목재 ${available} · 추가 필요 ${deficit}` },
   ];
+  const unreachable = previewPalisadeRouteAccess(state, path).unreachableSiteIds.length;
+  if (unreachable > 0) {
+    lines.push({ id: 'no-route', tone: 'warning', text: A_TRIPLE_PRIME_WALL_COPY.unreachableSegments(unreachable) });
+  }
   const window = state.timberProductionWindow;
   if (deficit > 0 && (window === undefined || window.throughTick - window.startTick + 1 < 1200)) {
     lines.push({ id: 'eta', tone: 'neutral', text: '예상 완공: 최근 목재 생산 기록 부족' });

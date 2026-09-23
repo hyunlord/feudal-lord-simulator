@@ -1,4 +1,3 @@
-import { isWallConstructionSite, palisadeConstructionSchedule } from "../economy/palisadeConstruction";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
 import { recentCoinIncome } from "../engine/coinLedger";
@@ -6,7 +5,7 @@ import type { WallConstructionPriority } from "../engine/constructionReserve";
 import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
 import type { PalisadeDraftState } from "../render/palisadeDraftInteraction";
-import { constructionSiteCardModel } from "./constructionSiteCardModel";
+import { A_TRIPLE_PRIME_WALL_COPY } from './aTriplePrimeWallCopy';
 import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsoleModel";
 import { proposalPredictionLines } from "./wallPrediction";
 import type { PredictionLine } from "./predictionTypes";
@@ -102,10 +101,10 @@ export function buildEraConsoleModel(input: {
         : proposalFailureLabel(input.draft.failureReason),
     },
     wallProgress: wallProgress(input.state),
-    diagnostic: wallDiagnostic(input.state),
+    diagnostic: null,
     irreversibleNotice: input.state.palisade === null
       ? null
-      : "선포 후 성벽 구간은 취소할 수 없습니다. 자재와 일꾼은 성문 기준 순서대로만 이동합니다.",
+      : A_TRIPLE_PRIME_WALL_COPY.proclamationNotice,
   };
 }
 
@@ -259,22 +258,12 @@ function selectedRunLabel(draft: PalisadeDraftState | null): string | null {
 function wallProgress(state: GameState): string | null {
   if (state.palisade === null) return null;
   const completed = state.palisade.segments.filter((segment) => segment.completed).length;
-  return `성벽 ${completed} / ${state.palisade.segments.length} 구간`;
-}
-
-function wallDiagnostic(state: GameState): string | null {
-  if (state.palisade === null) return null;
-  const activeSite = state.constructionSites.find((site) =>
-    isWallConstructionSite(site)
-      && palisadeConstructionSchedule(site, state.constructionSites).kind === "active",
-  );
-  const queuedCount = state.constructionSites.filter((site) =>
-    isWallConstructionSite(site)
-      && palisadeConstructionSchedule(site, state.constructionSites).kind === "queued",
-  ).length;
-  const activeLabel = activeSite === undefined || !isWallConstructionSite(activeSite)
-    ? "활성 구간 없음"
-    : constructionSiteCardModel(activeSite, { constructionSites: state.constructionSites }).name
-      .replace("목책 구간", `활성 구간 ${activeSite.order + 1}/${state.palisade.segments.length}`);
-  return `${activeLabel} · 대기 ${queuedCount}구간`;
+  const remaining = state.constructionSites.filter(site =>
+    site.kind === 'palisade_segment' && site.wallId === state.palisade?.id);
+  const noRoute = remaining.filter(site => site.stall === 'no_route').length;
+  const active = remaining.filter(site => site.stall !== 'no_route'
+    && (site.assignedBuilders > 0 || site.builderTicks > 0
+      || (site.delivered.timber ?? 0) > 0 || (site.reserved.timber ?? 0) > 0)).length;
+  const waiting = Math.max(0, state.palisade.segments.length - completed - active - noRoute);
+  return A_TRIPLE_PRIME_WALL_COPY.wallProgress(completed, state.palisade.segments.length, active, noRoute, waiting);
 }

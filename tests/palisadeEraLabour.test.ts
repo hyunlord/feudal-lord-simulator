@@ -9,6 +9,8 @@ import {
 } from "../src/population/eraLabour";
 import type { Building } from "../src/content/buildingConfig";
 import { createStoneWallConstructionSite, type PalisadeConstructionSite, type StoneWallConstructionSite } from "../src/economy/construction";
+import { advanceConstructionSites } from "../src/engine/constructionLifecycle";
+import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 function building(id: string, kind: Building["kind"], patch: Partial<Building> = {}): Building {
   return {
@@ -92,7 +94,7 @@ test("Given available worker counts When palisade era is active Then the wall qu
 }
 );
 
-test("Given reordered wall sites When palisade quota is active Then only the earliest incomplete segment receives reserved builders", () => {
+test("Given reordered wall sites When palisade quota is active Then the first receives reserved builders and other supplied sites can work", () => {
   // Given
   const first = wallSite("wall-a-segment-000", 0);
   const second = wallSite("wall-a-segment-001", 1);
@@ -107,7 +109,7 @@ test("Given reordered wall sites When palisade quota is active Then only the ear
   assert.deepEqual(
     result.constructionSites.map(({ id, assignedBuilders }) => ({ id, assignedBuilders })),
     [
-      { id: "wall-a-segment-001", assignedBuilders: 0 },
+      { id: "wall-a-segment-001", assignedBuilders: 3 },
       { id: "wall-a-segment-000", assignedBuilders: 3 },
     ],
   );
@@ -116,6 +118,26 @@ test("Given reordered wall sites When palisade quota is active Then only the ear
   assert.equal(result.diagnostics.palisadeEraLabour.unavailableReservedWorkers, 1);
 }
 );
+
+test("one isolated first palisade segment cannot block eleven supplied later segments", () => {
+  const sites = Array.from({ length: 12 }, (_, order) => wallSite(
+    `wall-a-segment-${String(order).padStart(3, '0')}`,
+    order,
+    order === 0 ? { delivered: {}, stall: 'no_route' } : {},
+  ));
+  let current: PalisadeConstructionSite[] = sites;
+  for (let tick = 0; tick < 40; tick += 1) {
+    const assigned = allocateBuildingAndConstructionLabour([], current, 200, {
+      era: 'palisade', tick, eraProclaimedTick: 0,
+    });
+    current = advanceConstructionSites({
+      ...DEFAULT_GAME_STATE,
+      constructionSites: [...assigned.constructionSites],
+    }) as PalisadeConstructionSite[];
+  }
+  assert.equal(current[0]?.builderTicks, 0);
+  assert.deepEqual(current.slice(1).map(site => site.builderTicks), Array(11).fill(120));
+});
 
 test("Given an active wall site blocked on materials When quota is reserved Then production cannot use the idle reservation", () => {
   // Given

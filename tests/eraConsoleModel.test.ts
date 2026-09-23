@@ -101,7 +101,7 @@ test("era console explains disabled proposal and never leaks raw enums", () => {
   assert.doesNotMatch(markup, /insufficient_enclosure|water_crossing|open_polygon|queued/);
 });
 
-test("era console reports wall progress queued active diagnostic and irreversible cancellation copy", () => {
+test("era console reports completed, working, route-less, and waiting wall segments", () => {
   // Given: a proclaimed palisade with one completed, one active, and one queued segment.
   const active = createPalisadeConstructionSite({
     id: "wall-a-segment-001",
@@ -125,7 +125,7 @@ test("era console reports wall progress queued active diagnostic and irreversibl
     state: state({
       era: "palisade",
       eraProclaimedTick: 10,
-      constructionSites: [active, queued],
+      constructionSites: [{ ...active, delivered: { timber: 15 } }, { ...queued, stall: 'no_route' }],
       palisade: {
         id: "wall-a",
         gate: { x: 4, y: 4 },
@@ -142,9 +142,8 @@ test("era console reports wall progress queued active diagnostic and irreversibl
 
   // When / Then
   assert.equal(model.currentEraLabel, "목책마을");
-  assert.equal(model.wallProgress, "성벽 1 / 3 구간");
-  assert.match(model.diagnostic ?? "", /활성 구간 2\/3/);
-  assert.match(model.diagnostic ?? "", /대기 1구간/);
+  assert.equal(model.wallProgress, "성벽 1/3 · 진행 중 1 · 경로 없음 1 · 대기 0");
+  assert.equal(model.diagnostic, null);
   assert.match(model.irreversibleNotice ?? "", /선포 후 성벽 구간은 취소할 수 없습니다/);
 });
 

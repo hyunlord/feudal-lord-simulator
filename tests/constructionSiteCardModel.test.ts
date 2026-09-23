@@ -99,7 +99,7 @@ test("construction site card model reuses resource-aware material stall labels",
   );
 });
 
-test("queued palisade segment model identifies gate-outward position without adding a stall state", () => {
+test("supplied palisade segments show their own delivery status regardless of gate order", () => {
   // Given
   const active = createPalisadeConstructionSite({
     id: "wall-a-segment-000",
@@ -128,7 +128,7 @@ test("queued palisade segment model identifies gate-outward position without add
 
   // Then
   assert.equal(queued.stall, "awaiting_materials");
-  assert.equal(model.currentStallLabel, "대기 중 · 성문 기준 2번째 구간");
+  assert.equal(model.currentStallLabel, "🪵 목재 오는 중 (0/30)");
   assert.deepEqual(model.cancellation, {
     enabled: false,
     reason: "목책 시대 선포 후에는 성벽 구간 공사를 취소할 수 없습니다",

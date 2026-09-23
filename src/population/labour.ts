@@ -169,7 +169,9 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   const readySites = [...constructionSites]
     .filter((site) => materialsComplete(site) && site.builderTicks < site.requiredBuilderTicks)
     .filter((site) => palisadeConstructionSchedule(site, constructionSites).kind === "active")
-    .sort((a, b) => a.id.localeCompare(b.id));
+    .sort((a, b) => isWallConstructionSite(a) && isWallConstructionSite(b) && a.wallId === b.wallId
+      ? a.order - b.order || a.id.localeCompare(b.id)
+      : a.id.localeCompare(b.id));
   const ordinaryTarget = readySites.find((site) => !isWallConstructionSite(site));
   const buildingBudget = Math.max(0, available - reservation.reservedWorkers);
   const foodResult = allocateBuildingWorkers(buildings.filter(foodBuilding), buildingBudget, eligible);

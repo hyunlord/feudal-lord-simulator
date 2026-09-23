@@ -89,7 +89,7 @@ function currentStallLabel(
 ): string {
   const schedule = palisadeConstructionSchedule(site, options.constructionSites ?? [site]);
   return schedule.kind === "queued"
-    ? `대기 중 · 성문 기준 ${schedule.position}번째 구간`
+    ? site.kind === 'palisade_segment' ? '대기(경로 없음)' : `대기 중 · 성문 기준 ${schedule.position}번째 구간`
     : constructionOnSiteLabel(site);
 }
 

@@ -1,6 +1,6 @@
 export { palisadeFootprintsForState } from "../engine/palisadeFootprints";
 import type { GameState } from "../engine/engine.types";
-import { computePalisadeProposalForState } from "../engine/palisadeFootprints";
+import { computeReachablePalisadeProposalForState } from "../engine/palisadeRouteAccess";
 import {
   palisadePerimeterSteps,
   type PalisadeFailureReason,
@@ -26,7 +26,7 @@ export function proposalSummaryForState(
   state: GameState,
   _footprints: readonly PalisadeFootprint[],
 ): PalisadeProposalSummary {
-  const proposal = computePalisadeProposalForState(state);
+  const proposal = computeReachablePalisadeProposalForState(state);
   if (!proposal.ok) return proposal;
   return {
     ok: true,

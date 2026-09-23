@@ -57,6 +57,7 @@ export function activeWallConstructionSiteId(
     .filter(isWallConstructionSite)
     .filter((site) => site.wallId === wallId)
     .filter((site) => !isComplete(site))
+    .filter((site) => !isPalisadeConstructionSite(site) || site.stall !== "no_route")
     .sort(byOrder)[0]?.id ?? null;
 }
 
@@ -67,6 +68,11 @@ export function palisadeConstructionSchedule(
   sites: readonly ConstructionSite[],
 ): PalisadeConstructionSchedule {
   if (!isWallConstructionSite(site)) return { kind: "active" };
+  if (isPalisadeConstructionSite(site)) {
+    return site.stall === "no_route" && !isComplete(site)
+      ? { kind: "queued", position: site.order + 1 }
+      : { kind: "active" };
+  }
   const activeId = activeWallConstructionSiteId(sites, site.wallId);
   return activeId === null || activeId === site.id
     ? { kind: "active" }
