@@ -29,6 +29,24 @@ test("Given an unaffordable card When menu renders Then shortfall shows owned st
   assert.match(markup, /선택 도구 없음/);
 });
 
+test("defense offers manual palisade drawing with a visible prerequisite reason", () => {
+  const locked = renderToStaticMarkup(createElement(BuildSeals, {
+    state: DEFAULT_GAME_STATE, selectedTool: null, onSelect: () => undefined,
+    onStartPalisadeDrawing: () => undefined,
+  }));
+  assert.match(locked, /aria-label="목책 긋기"[^>]*aria-disabled="true"/);
+  assert.match(locked, /목책 긋기[\s\S]*인구 12\/60/);
+  const ready = renderToStaticMarkup(createElement(BuildSeals, {
+    state: { ...DEFAULT_GAME_STATE, era: 'hamlet', population: 60, treasuryTimber: 250,
+      buildings: [
+        { id: 'granary', kind: 'granary', tx: 1, ty: 1, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 },
+        { id: 'chapel', kind: 'chapel', tx: 4, ty: 4, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 },
+      ] },
+    selectedTool: null, onSelect: () => undefined, onStartPalisadeDrawing: () => undefined,
+  }));
+  assert.match(ready, /aria-label="목책 긋기"[^>]*aria-disabled="false"/);
+});
+
 test("build menu options provide accessible labels for every selectable tool", () => {
   // Given / When
   const labels = BUILD_TOOL_OPTIONS.map((option) => option.label.trim());

@@ -962,6 +962,7 @@ button {
 .era-requirements,
 .era-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 5px;
   align-items: center;
   min-width: 0;
@@ -1091,6 +1092,7 @@ button {
 /* contrast-audit selector=".era-action" fg="--palette-ink" bg="--palette-parchment-dark" size="13" role="body" */
 .era-action {
   min-width: 0;
+  min-height: 44px;
   padding: 2px 6px;
   color: var(--palette-ink);
   font-family: inherit;

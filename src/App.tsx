@@ -14,9 +14,10 @@ import { CauseLegend } from "./ui/CauseLegend";
 import { KO_UI } from "./content/locale.ko";
 import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
+import { canProclaimPalisadeEra } from "./engine/era";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
-import { initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
+import { applyPalisadeIntent, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
@@ -152,6 +153,13 @@ export function App() {
 
   useEffect(() => {
     const keyDown = (event: KeyboardEvent) => {
+      const target = event.target;
+      const editable = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+      if (!editable && palisadeDraft !== null && (event.code === "Escape" || event.code === "KeyZ")) {
+        event.preventDefault();
+        setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state, draft: current, intent: { type: event.code === "Escape" ? "cancel" : "undo" } }));
+        return;
+      }
       if (event.code === "Escape") {
         event.preventDefault();
         setPalisadeDraft(null);
@@ -159,8 +167,6 @@ export function App() {
         return;
       }
       if (event.code === "KeyO") {
-        const target = event.target;
-        const editable = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
         if (!isProblemViewShortcut(event.code, event.repeat, editable)) return;
         event.preventDefault();
         setProblemOnly(value => !value);
@@ -173,7 +179,7 @@ export function App() {
     };
     window.addEventListener("keydown", keyDown);
     return () => window.removeEventListener("keydown", keyDown);
-  }, [overlayMode]);
+  }, [overlayMode, palisadeDraft, state]);
 
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
   const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null
@@ -187,17 +193,29 @@ export function App() {
   const onboardingView = getOnboardingTaskView(state, onboardingPresentation);
   const highlightedTools = onboardingView.current?.highlightTools ?? [];
   const eraModel = buildEraConsoleModel({ state, draft: palisadeDraft });
+  const beginPalisadeDraw = () => {
+    if (!canProclaimPalisadeEra(state)) return;
+    setSelectedTool(null);
+    setPalisadeDraft(initialOpenPalisadeDraft());
+  };
   const beginPalisadeProposal = () => {
+    if (!canProclaimPalisadeEra(state)) return;
     const footprints = palisadeFootprintsForState(state);
     const proposal = proposalSummaryForState(state, footprints);
-    if (!proposal.ok) return;
+    if (!proposal.ok) {
+      setSelectedTool(null);
+      setPalisadeDraft({ ...initialOpenPalisadeDraft(), path: proposal.attemptedPath ?? [],
+        failureReason: proposal.reason, failurePoint: proposal.failurePoint ?? null,
+        affectedFootprintIds: proposal.affectedFootprintIds ?? [] });
+      return;
+    }
     const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1);
     if (!validation.ok) return;
     setSelectedTool(null);
     setPalisadeDraft(initialPalisadeDraft(validation.candidate));
   };
   const confirmPalisadeProposal = () => {
-    if (palisadeDraft === null) return;
+    if (palisadeDraft?.candidate === null || palisadeDraft === null) return;
     const candidatePath = palisadeDraft.candidate.path;
     if (confirmPalisadeProclamation(state, candidatePath) === state) return;
     dispatch({ type: "confirm_palisade_proclamation", candidatePath });
@@ -261,8 +279,11 @@ export function App() {
               priority={wallConstructionPriority(state)}
               onPriorityChange={priority => dispatch({ type: 'set_wall_construction_priority', priority })}
               onBeginProposal={beginPalisadeProposal}
+              onBeginDraw={beginPalisadeDraw}
               onConfirmProposal={confirmPalisadeProposal}
               onCancelProposal={() => setPalisadeDraft(null)}
+              onEraseDraftSegment={() => setPalisadeDraft(current => current === null || current.selectedRunIndex === null
+                ? current : applyPalisadeIntent({ state, draft: current, intent: { type: 'eraseSegment', index: current.selectedRunIndex } }))}
               onProclaimStoneTown={proclaimStoneTown}
             />
           } />
@@ -278,7 +299,9 @@ export function App() {
               selectedTool={selectedTool}
               state={state}
               highlightedTools={highlightedTools}
-              onSelect={setSelectedTool}
+              onSelect={tool => { setPalisadeDraft(null); setSelectedTool(tool); }}
+              palisadeDrawing={palisadeDraft?.mode === 'draw'}
+              onStartPalisadeDrawing={beginPalisadeDraw}
             />
           </div>
           <div className="court-recess ledger-recess">

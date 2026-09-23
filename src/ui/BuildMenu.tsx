@@ -6,6 +6,8 @@ import { HOUSEHOLD_SERVICE_CONFIG } from "../population/serviceAllocation";
 
 import { KO_UI } from "../content/locale.ko";
 import type { GameState } from "../engine/engine.types";
+import { canProclaimPalisadeEra, evaluateEraRequirements } from "../engine/era";
+import { A_QUADRUPLE_PRIME_WALL_COPY as WALL_COPY } from "./aQuadruplePrimeWallCopy";
 import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_GAME_STATE } from "../state/gameStore";
 import { BuildGlyph } from "./BuildGlyph";
@@ -17,9 +19,11 @@ type BuildSealsProps = {
   readonly state?: GameState;
   readonly highlightedTools?: readonly PlacementTool[];
   readonly onSelect: (tool: PlacementTool | null) => void;
+  readonly palisadeDrawing?: boolean;
+  readonly onStartPalisadeDrawing?: () => void;
 };
 
-export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect }: BuildSealsProps) {
+export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect, palisadeDrawing = false, onStartPalisadeDrawing }: BuildSealsProps) {
   const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
   const options = buildMenuGroups(menuState).flatMap((group) => group.options);
@@ -43,6 +47,13 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
     return () => window.removeEventListener("keydown", close);
   }, []);
   const visibleOptions = options.filter((option) => buildCategory(option.tool) === category);
+  const palisadeReady = canProclaimPalisadeEra(menuState);
+  const unmetPalisade = menuState.era === 'hamlet'
+    ? evaluateEraRequirements(menuState).find(requirement => !requirement.met)
+    : undefined;
+  const palisadeReason = menuState.era !== 'hamlet' ? WALL_COPY.alreadyProclaimed
+    : unmetPalisade === undefined ? WALL_COPY.requirementMissing
+      : WALL_COPY.requirementProgress(unmetPalisade.label, unmetPalisade.current, unmetPalisade.target);
   const detailTool = selectedTool ?? preview ?? visibleOptions[0]?.tool ?? "road";
   const detailOption = detailTool === "road" ? ROAD_TOOL_OPTION : options.find((option) => option.tool === detailTool) ?? ROAD_TOOL_OPTION;
   const selectedOption = selectedTool === null ? null : selectedTool === "road" ? ROAD_TOOL_OPTION : options.find((option) => option.tool === selectedTool) ?? null;
@@ -94,8 +105,19 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           {BUILD_CATEGORIES.map((item) => (
             <section key={item.key} id={`${id}-${item.key}`} hidden={category !== item.key} aria-label={`${item.label} 도구`} className="build-menu-tools">
               {options.filter((option) => buildCategory(option.tool) === item.key).map(toolButton)}
+              {item.key === 'defense' && onStartPalisadeDrawing !== undefined ? (
+                <button type="button" className={`build-seal build-tool${palisadeDrawing ? ' build-tool--selected' : ''}`}
+                  aria-label={WALL_COPY.drawTool} aria-pressed={palisadeDrawing} aria-disabled={!palisadeReady}
+                  title={palisadeReady ? WALL_COPY.drawHint : palisadeReason}
+                  onClick={() => { if (palisadeReady) { onStartPalisadeDrawing(); setCatalogOpen(false); } }}>
+                  <span className="build-tool-art" aria-hidden="true">⌁</span>
+                  <span className="build-seal-label" aria-hidden="true">{WALL_COPY.drawTool}</span>
+                  <span className="build-tool-cost">{WALL_COPY.drawCost}</span>
+                  {!palisadeReady ? <span className="build-tool-shortfall">{palisadeReason}</span> : null}
+                </button>
+              ) : null}
               {item.key === "road" && <p className="build-menu-empty">드래그로 길을 연결하세요. 강 양쪽을 직선으로 이으면 목교를 놓습니다.<br />다리는 물 한 칸당 목재 4, 최대 8칸입니다. 다리나 접속 길을 누르면 다리 전체를 걷습니다.</p>}
-              {item.key === "defense" && !options.some((option) => buildCategory(option.tool) === "defense") && <p className="build-menu-empty">성채는 석조 도시에서 건설할 수 있습니다.</p>}
+              {item.key === "defense" && !options.some((option) => buildCategory(option.tool) === "defense") && onStartPalisadeDrawing === undefined && <p className="build-menu-empty">성채는 석조 도시에서 건설할 수 있습니다.</p>}
             </section>
           ))}
         </div>
