@@ -1,0 +1,43 @@
+{
+  "fullStorageCause": "곡창 가득 참 (100/100)",
+  "constructionAccess": {
+    "cause": "road_disconnected",
+    "label": "도로 미연결",
+    "accessTiles": [
+      {
+        "tx": 50,
+        "ty": 44
+      },
+      {
+        "tx": 49,
+        "ty": 45
+      },
+      {
+        "tx": 51,
+        "ty": 45
+      },
+      {
+        "tx": 50,
+        "ty": 46
+      }
+    ],
+    "suggestedRoad": [
+      {
+        "tx": 50,
+        "ty": 41
+      },
+      {
+        "tx": 50,
+        "ty": 42
+      },
+      {
+        "tx": 50,
+        "ty": 43
+      },
+      {
+        "tx": 50,
+        "ty": 44
+      }
+    ]
+  }
+}

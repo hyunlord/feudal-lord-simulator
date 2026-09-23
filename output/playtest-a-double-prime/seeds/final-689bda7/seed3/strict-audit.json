@@ -1,0 +1,210 @@
+{
+  "seed": 3,
+  "status": "completed",
+  "strictUserPassed": false,
+  "source": {
+    "simulation": {
+      "commit": "689bda7facef3c8777c928fb2904bf1ff9a27826",
+      "sourceSha256": "768dfd802fb56c645d006fef87ccef000fad4cdf2a0e06d999f66b73d8119f96",
+      "sourceFiles": 493,
+      "dirty": false
+    },
+    "correction": {
+      "commit": "259cb78d6fc73590a7cadd076c242063a9c5bd5a",
+      "file": "scripts/efficientGrowthAcceptance.ts",
+      "sha256": "88efff660b02b6e9e21dca91b9b62068ac655be42feadac662c159b1a4af91e4"
+    },
+    "capture": {
+      "classification": "Product renderer replay of unmodified final state, not live UI play",
+      "filename": "final.jpg",
+      "jpegSha256": "58e3bf44eb6639b212d1c5067c9439c2ecef0de20f628d79cc6bdf7f90ad9cc4",
+      "stateSha256": "37cb17fd9072d30abbe951d6021ea5ad7535a24e17e9a97d09773f5a826094fe",
+      "captured": true,
+      "width": 1600,
+      "height": 1100,
+      "dpr": 1,
+      "zoom": 0.9,
+      "assetsLoaded": true,
+      "buildings": 76,
+      "warnings": 1
+    }
+  },
+  "runner": {
+    "simulationPassed": false,
+    "efficiencyPassed": true,
+    "acceptance": {
+      "targetReached": true,
+      "victory": true,
+      "fullServiceStable": false,
+      "validRun": true,
+      "additionalAcceptance": true,
+      "capture": false
+    },
+    "stopReason": "tick-budget",
+    "failures": [],
+    "exitCode": 1
+  },
+  "strict": {
+    "passed": false,
+    "checks": {
+      "targetReached": true,
+      "victory": true,
+      "fullServiceStable": false,
+      "validRun": true,
+      "targetScaleStop": false,
+      "noFailures": true
+    },
+    "stableSince": null,
+    "sustainedTicks": 0,
+    "interruptions": 0,
+    "victoryTick": 307332
+  },
+  "correctedEfficiency": {
+    "passed": false,
+    "checks": {
+      "validMetrics": true,
+      "mills": true,
+      "granaries": true,
+      "markets": true,
+      "churches": true,
+      "observedWindow": true,
+      "rawStarvation": true,
+      "zeroWheatMills": true,
+      "warnings": true,
+      "idleWorkers": false
+    },
+    "rawStarvationRatio": 0.19796875,
+    "zeroWheatMillRatio": 0,
+    "warningRatio": 0.013157894736842105,
+    "idleRatio": 0.30243161094224924,
+    "metrics": {
+      "coveredTicks": 2400,
+      "fullWindow": true,
+      "known": true,
+      "wheatProduced": 1048,
+      "wheatConsumed": 1028,
+      "breadProduced": 514,
+      "wheatExported": 0,
+      "breadExported": 20,
+      "requestedBread": 510,
+      "consumedBread": 510,
+      "rawStarvedTicks": 3801,
+      "eligibleMillTicks": 19200,
+      "lots": 24,
+      "farms": 19,
+      "mills": 8,
+      "zeroWheatMills": 0,
+      "granaries": 7,
+      "markets": 2,
+      "churches": 1,
+      "population": 658,
+      "idleWorkers": 199,
+      "buildings": 76,
+      "warnings": 1
+    }
+  },
+  "capture": {
+    "passed": true,
+    "finalizerStatus": "acceptance-unmet",
+    "acceptance": {
+      "passed": true,
+      "checks": {
+        "captured": true,
+        "stateLinked": true,
+        "dimensions": true,
+        "assetsLoaded": true,
+        "visibleWarnings": true
+      }
+    },
+    "jpeg": "final.jpg",
+    "jpegSha256": "58e3bf44eb6639b212d1c5067c9439c2ecef0de20f628d79cc6bdf7f90ad9cc4",
+    "stateSha256": "37cb17fd9072d30abbe951d6021ea5ad7535a24e17e9a97d09773f5a826094fe",
+    "width": 1600,
+    "height": 1100,
+    "rendererReplay": true,
+    "liveUiPlay": false
+  },
+  "final": {
+    "tick": 1200000,
+    "era": "stone_town",
+    "lots": 24,
+    "l4Houses": 13,
+    "occupiedHouses": 24,
+    "population": 658,
+    "outcome": "victory",
+    "farms": 19,
+    "mills": 8,
+    "zeroWheatMills": 0,
+    "granaries": 7,
+    "markets": 2,
+    "churches": 1
+  },
+  "timeSeconds": {
+    "simulation": {
+      "real": 6872.41,
+      "user": 5845.7,
+      "sys": 206.8
+    },
+    "reportedElapsed": 6871.935105625
+  },
+  "opening": {
+    "mode": "translated-verification-fixture",
+    "offset": {
+      "tx": -33,
+      "ty": -34
+    },
+    "selection": "minimum Manhattan offset, then dy, then dx; zero when legal",
+    "productSeedFeature": false
+  },
+  "lastDiagnostic": {
+    "schemaVersion": 1,
+    "tick": 1199880,
+    "food": {
+      "schemaVersion": 1,
+      "tick": 1199880,
+      "reached": true,
+      "reason": "food_supply_sufficient",
+      "action": {
+        "kind": "none",
+        "foodTransient": "not_evaluated"
+      },
+      "checks": [],
+      "details": "not_captured",
+      "evaluation": {
+        "transitionRepeat": "not_evaluated",
+        "transitionStaff": "not_evaluated",
+        "buildRepeat": "not_evaluated",
+        "buildStaff": "not_evaluated"
+      },
+      "observation": {
+        "kind": "mill",
+        "siteId": "construction-site-000069",
+        "placedTick": 334440,
+        "completedTick": 336687,
+        "observeUntilTick": 339087,
+        "outcome": {
+          "outputDelta": 75,
+          "deliveredBreadDelta": 0,
+          "starvingHomesDelta": 0,
+          "effective": true
+        }
+      },
+      "counts": {
+        "wheat": 19,
+        "mill": 8,
+        "granary": 7,
+        "target": 1
+      },
+      "completeChain": true,
+      "recovery": null
+    },
+    "services": [],
+    "advisorAction": {
+      "kind": "none",
+      "foodTransient": "not_evaluated"
+    },
+    "gameActionType": null,
+    "result": "no_action",
+    "newSiteIds": []
+  }
+}

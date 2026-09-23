@@ -1,0 +1,205 @@
+{
+  "sourceHead": "10813cb",
+  "url": "http://127.0.0.1:4175/?phase10-proof=1&manualQa=a2-stocked-source-route-fixture",
+  "surface": "Chrome actual UI, isolated production preview 4175, labeled prepared fixture harness importing real GameCanvas/constructionAccessModel",
+  "invocation": {
+    "build": "npm exec vite -- --config output/playtest-a-double-prime/ui-qa/construction-route-harness/vite.config.ts build",
+    "preview": "npm exec vite -- preview --host 127.0.0.1 --port 4175 --strictPort --outDir /tmp/a2-construction-route-dist",
+    "browser": "Google Chrome headless 1280x720 via Playwright persistent profile /tmp/a2-construction-route-profile",
+    "click": "phase10 proof tileClientPoint({tx:5,ty:5}) with fallback offsets until selected panel present"
+  },
+  "fixture": {
+    "fixture": "nearer-empty-store-farther-stocked-source",
+    "stockedStore": {
+      "id": "stocked-source-store",
+      "tx": 1,
+      "ty": 1,
+      "inventory": {
+        "timber": 20
+      }
+    },
+    "emptyStore": {
+      "id": "near-empty-store",
+      "tx": 4,
+      "ty": 1,
+      "inventory": {}
+    },
+    "constructionSite": {
+      "id": "well-plan",
+      "kind": "well",
+      "tx": 5,
+      "ty": 5,
+      "stall": "no_route",
+      "required": {
+        "timber": 10
+      }
+    },
+    "model": {
+      "cause": "road_disconnected",
+      "label": "도로 미연결",
+      "accessTiles": [
+        {
+          "tx": 5,
+          "ty": 4
+        },
+        {
+          "tx": 4,
+          "ty": 5
+        },
+        {
+          "tx": 6,
+          "ty": 5
+        },
+        {
+          "tx": 5,
+          "ty": 6
+        }
+      ],
+      "suggestedRoad": [
+        {
+          "tx": 2,
+          "ty": 3
+        },
+        {
+          "tx": 3,
+          "ty": 3
+        },
+        {
+          "tx": 4,
+          "ty": 3
+        },
+        {
+          "tx": 5,
+          "ty": 3
+        },
+        {
+          "tx": 5,
+          "ty": 4
+        }
+      ]
+    },
+    "routeStartsAtStockedSourceRoad": true,
+    "routeDoesNotStartAtEmptyStoreRoad": true,
+    "stockedRouteExistsAfterRoad": true,
+    "emptyRouteExistsAfterRoad": true
+  },
+  "initialFixture": {
+    "fixture": "nearer-empty-store-farther-stocked-source",
+    "stockedStore": {
+      "id": "stocked-source-store",
+      "tx": 1,
+      "ty": 1,
+      "inventory": {
+        "timber": 20
+      }
+    },
+    "emptyStore": {
+      "id": "near-empty-store",
+      "tx": 4,
+      "ty": 1,
+      "inventory": {}
+    },
+    "constructionSite": {
+      "id": "well-plan",
+      "kind": "well",
+      "tx": 5,
+      "ty": 5,
+      "stall": "no_route",
+      "required": {
+        "timber": 10
+      }
+    },
+    "model": {
+      "cause": "road_disconnected",
+      "label": "도로 미연결",
+      "accessTiles": [
+        {
+          "tx": 5,
+          "ty": 4
+        },
+        {
+          "tx": 4,
+          "ty": 5
+        },
+        {
+          "tx": 6,
+          "ty": 5
+        },
+        {
+          "tx": 5,
+          "ty": 6
+        }
+      ],
+      "suggestedRoad": [
+        {
+          "tx": 2,
+          "ty": 3
+        },
+        {
+          "tx": 3,
+          "ty": 3
+        },
+        {
+          "tx": 4,
+          "ty": 3
+        },
+        {
+          "tx": 5,
+          "ty": 3
+        },
+        {
+          "tx": 5,
+          "ty": 4
+        }
+      ]
+    },
+    "routeStartsAtStockedSourceRoad": true,
+    "routeDoesNotStartAtEmptyStoreRoad": true,
+    "stockedRouteExistsAfterRoad": true,
+    "emptyRouteExistsAfterRoad": true
+  },
+  "proofKeys": [
+    "tileClientPoint",
+    "snapshot",
+    "diagnosis"
+  ],
+  "clickAttempts": [
+    {
+      "offset": [
+        0,
+        0
+      ],
+      "point": {
+        "x": 828,
+        "y": 418.2857142857143,
+        "base": {
+          "clientX": 828,
+          "clientY": 418.2857142857143
+        }
+      },
+      "cardPresent": true,
+      "selectedText": {
+        "selector": ".diagnostic-card",
+        "text": "공사\n\n건설 현장\n\n우물 부지\n×\n\n🚧 창고에서 길이 이어지지 않음\n\n부지\n5, 5 · 우물\n자재 확보\n목재 0/10 확보\n자재 배달\n목재 10 남음\n건축 작업\n0/200틱 · 일꾼 1명\n자재 진단\n목재 0/10 · 공급처까지 도로 없음 · ETA 확인 불가\n원인\n도로 미연결\n공사 포기"
+      }
+    }
+  ],
+  "selectedText": {
+    "selector": ".diagnostic-card",
+    "text": "공사\n\n건설 현장\n\n우물 부지\n×\n\n🚧 창고에서 길이 이어지지 않음\n\n부지\n5, 5 · 우물\n자재 확보\n목재 0/10 확보\n자재 배달\n목재 10 남음\n건축 작업\n0/200틱 · 일꾼 1명\n자재 진단\n목재 0/10 · 공급처까지 도로 없음 · ETA 확인 불가\n원인\n도로 미연결\n공사 포기"
+  },
+  "bodyTextExcerpt": "LABELED FIXTURE: stocked-source construction route\n\nNearer storehouse is empty at (4,1); farther stocked storehouse has timber at (1,1).\n\nExpected suggested road starts at stocked road (2,3): [{\"tx\":2,\"ty\":3},{\"tx\":3,\"ty\":3},{\"tx\":4,\"ty\":3},{\"tx\":5,\"ty\":3},{\"tx\":5,\"ty\":4}]\n\nClick/tap the well construction at (5,5); selection card must stay open and dashed route must originate from stocked source road.\n\n공사\n\n건설 현장\n\n우물 부지\n×\n\n🚧 창고에서 길이 이어지지 않음\n\n부지\n5, 5 · 우물\n자재 확보\n목재 0/10 확보\n자재 배달\n목재 10 남음\n건축 작업\n0/200틱 · 일꾼 1명\n자재 진단\n목재 0/10 · 공급처까지 도로 없음 · ETA 확인 불가\n원인\n도로 미연결\n공사 포기",
+  "canvasRect": {
+    "x": 394,
+    "y": 18,
+    "width": 868,
+    "height": 684
+  },
+  "screenshot": "output/playtest-a-double-prime/ui-qa/screenshots/s25-fixture-stocked-source-route-selected.jpg",
+  "verdictChecks": {
+    "suggestedRoadStartsAtStockedSourceRoad_2_3": true,
+    "suggestedRoadDoesNotStartAtNearEmptyStoreRoad_4_3_or_5_3": true,
+    "suggestedRoadExists": true,
+    "selectionEvidencePresent": true
+  }
+}

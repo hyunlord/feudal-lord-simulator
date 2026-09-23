@@ -1,0 +1,64 @@
+{
+  "preExistingWitnesses": 24,
+  "reachableCandidates": [
+    {
+      "tx": 4,
+      "ty": 11,
+      "covers": 10,
+      "lostWitnessHomes": [
+        "house-46-40-0"
+      ],
+      "preservesServiceSpace": false
+    },
+    {
+      "tx": 3,
+      "ty": 14,
+      "covers": 3,
+      "lostWitnessHomes": [
+        "house-44-40-0",
+        "house-46-40-0",
+        "house-44-42-0",
+        "house-46-42-0",
+        "construction-site-000004",
+        "construction-site-000007",
+        "construction-site-000019",
+        "construction-site-000027"
+      ],
+      "preservesServiceSpace": false
+    },
+    {
+      "tx": 4,
+      "ty": 15,
+      "covers": 3,
+      "lostWitnessHomes": [
+        "house-44-40-0",
+        "house-46-40-0",
+        "house-44-42-0",
+        "house-46-42-0",
+        "construction-site-000004",
+        "construction-site-000007",
+        "construction-site-000019",
+        "construction-site-000027"
+      ],
+      "preservesServiceSpace": false
+    },
+    {
+      "tx": 12,
+      "ty": 23,
+      "covers": 1,
+      "lostWitnessHomes": [
+        "house-44-40-0",
+        "house-46-40-0",
+        "house-44-42-0",
+        "house-46-42-0",
+        "construction-site-000004",
+        "construction-site-000007",
+        "construction-site-000009",
+        "construction-site-000017",
+        "construction-site-000019",
+        "construction-site-000027"
+      ],
+      "preservesServiceSpace": false
+    }
+  ]
+}

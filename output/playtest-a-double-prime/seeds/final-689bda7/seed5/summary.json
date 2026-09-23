@@ -1,0 +1,274 @@
+{
+  "source": {
+    "commit": "689bda7facef3c8777c928fb2904bf1ff9a27826",
+    "sourceSha256": "768dfd802fb56c645d006fef87ccef000fad4cdf2a0e06d999f66b73d8119f96",
+    "sourceFiles": 493,
+    "dirty": false
+  },
+  "seed": 5,
+  "opening": {
+    "mode": "translated-verification-fixture",
+    "offset": {
+      "tx": 0,
+      "ty": -31
+    },
+    "selection": "minimum Manhattan offset, then dy, then dx; zero when legal",
+    "productSeedFeature": false
+  },
+  "status": "capture-pending",
+  "simulationPassed": true,
+  "acceptance": {
+    "targetReached": true,
+    "victory": true,
+    "fullServiceStable": true,
+    "validRun": true,
+    "additionalAcceptance": true,
+    "capture": false
+  },
+  "efficiency": {
+    "passed": true,
+    "checks": {
+      "validMetrics": true,
+      "mills": true,
+      "granaries": true,
+      "markets": true,
+      "churches": true,
+      "observedWindow": true,
+      "rawStarvation": true,
+      "warnings": true,
+      "idleWorkers": true
+    },
+    "metrics": {
+      "coveredTicks": 2400,
+      "fullWindow": true,
+      "known": true,
+      "wheatProduced": 1216,
+      "wheatConsumed": 1244,
+      "breadProduced": 622,
+      "wheatExported": 0,
+      "breadExported": 20,
+      "requestedBread": 576,
+      "consumedBread": 576,
+      "rawStarvedTicks": 2955,
+      "eligibleMillTicks": 21600,
+      "lots": 24,
+      "farms": 21,
+      "mills": 9,
+      "zeroWheatMills": 3,
+      "granaries": 7,
+      "markets": 2,
+      "churches": 2,
+      "population": 768,
+      "idleWorkers": 241,
+      "buildings": 80,
+      "warnings": 3
+    },
+    "rawStarvationRatio": 0.13680555555555557,
+    "warningRatio": 0.0375,
+    "idleRatio": 0.3138020833333333,
+    "zeroWheatMillRatio": 0.3333333333333333,
+    "highIdleDiagnostic": true
+  },
+  "lastDiagnostic": {
+    "schemaVersion": 1,
+    "tick": 603480,
+    "food": {
+      "schemaVersion": 1,
+      "tick": 603480,
+      "reached": true,
+      "reason": "food_supply_sufficient",
+      "action": {
+        "kind": "none",
+        "foodTransient": "not_evaluated"
+      },
+      "checks": [],
+      "details": "not_captured",
+      "evaluation": {
+        "transitionRepeat": "not_evaluated",
+        "transitionStaff": "not_evaluated",
+        "buildRepeat": "not_evaluated",
+        "buildStaff": "not_evaluated"
+      },
+      "observation": {
+        "kind": "mill",
+        "siteId": "construction-site-000073",
+        "placedTick": 563400,
+        "completedTick": 565203,
+        "observeUntilTick": 567603,
+        "outcome": {
+          "outputDelta": 79,
+          "deliveredBreadDelta": 0,
+          "starvingHomesDelta": 0,
+          "effective": true
+        }
+      },
+      "counts": {
+        "wheat": 21,
+        "mill": 9,
+        "granary": 7,
+        "target": 1
+      },
+      "completeChain": true,
+      "recovery": null
+    },
+    "services": [],
+    "advisorAction": {
+      "kind": "none",
+      "foodTransient": "not_evaluated"
+    },
+    "gameActionType": null,
+    "result": "no_action",
+    "newSiteIds": []
+  },
+  "finalStateSha256": "5cd07cccefd48b67da14bcf1609cf841a6155ec087dc23010a1494a455def201",
+  "targetLots": 24,
+  "maxTicks": 1200000,
+  "final": {
+    "tick": 603536,
+    "era": "stone_town",
+    "houses": 24,
+    "lots": 24,
+    "occupiedHouses": 24,
+    "population": 768,
+    "capacity": 768,
+    "idleWorkers": 241,
+    "l4Houses": 24,
+    "constructionSites": 0,
+    "bread": 858,
+    "minimumHouseBread": 12,
+    "occupiedBreadZeroHouses": 0,
+    "services": {
+      "water": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      },
+      "market": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      },
+      "church": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      }
+    },
+    "providers": [
+      {
+        "id": "construction-site-000016",
+        "service": "water",
+        "capacity": 12,
+        "used": 5,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000018",
+        "service": "water",
+        "capacity": 12,
+        "used": 5,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000022",
+        "service": "water",
+        "capacity": 12,
+        "used": 7,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000036",
+        "service": "water",
+        "capacity": 12,
+        "used": 1,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000038",
+        "service": "water",
+        "capacity": 12,
+        "used": 4,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "well-45-41-0",
+        "service": "water",
+        "capacity": 12,
+        "used": 2,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000051",
+        "service": "market",
+        "capacity": 24,
+        "used": 17,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000053",
+        "service": "market",
+        "capacity": 24,
+        "used": 7,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000065",
+        "service": "church",
+        "capacity": 32,
+        "used": 6,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000069",
+        "service": "church",
+        "capacity": 32,
+        "used": 18,
+        "workers": 0,
+        "requiredWorkers": 0
+      }
+    ],
+    "buildingCounts": {
+      "house": 24,
+      "well": 6,
+      "granary": 7,
+      "logging_camp": 1,
+      "storehouse": 3,
+      "sawmill": 1,
+      "wheat_farm": 21,
+      "mill": 9,
+      "chapel": 1,
+      "market": 2,
+      "masonry": 2,
+      "quarry": 1,
+      "church": 2
+    },
+    "outcome": "victory"
+  },
+  "strict": {
+    "stableSince": 579537,
+    "sustainedTicks": 24000,
+    "interruptions": 0
+  },
+  "victoryTick": 542560,
+  "stopReason": "target-scale-stable",
+  "failures": [],
+  "elapsedSeconds": 2393.064894833
+}

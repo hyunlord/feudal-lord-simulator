@@ -1,0 +1,5175 @@
+{
+  "kind": "ACTUAL_FRESH_UI_TUTORIAL_1X_NO_FIXTURE_NO_AUTOPLAY",
+  "sourceHead": "689bda7",
+  "actualHead": "689bda7",
+  "url": "http://127.0.0.1:4175/?phase10-proof=1&manualQa=a2-fresh-l2-l3-final",
+  "uiActions": [
+    {
+      "kind": "selectTool",
+      "label": "제재소",
+      "at": "2026-09-23T08:50:50.328Z"
+    },
+    {
+      "kind": "place",
+      "label": "제재소",
+      "tx": 45,
+      "ty": 40,
+      "client": {
+        "clientX": 691.8518518518517,
+        "clientY": 259.0740740740739
+      },
+      "beforeTick": 0,
+      "tick": 0,
+      "sites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "awaiting_materials"
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "timber": 120
+    },
+    {
+      "kind": "selectTool",
+      "label": "방앗간",
+      "at": "2026-09-23T08:50:52.027Z"
+    },
+    {
+      "kind": "candidatePlace",
+      "label": "방앗간",
+      "tx": 48,
+      "ty": 40,
+      "client": {
+        "clientX": 847.4074074074074,
+        "clientY": 336.85185185185173
+      },
+      "beforeTick": 0,
+      "tick": 0,
+      "sites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "awaiting_materials"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "awaiting_materials"
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "timber": 120
+    },
+    {
+      "kind": "selectTool",
+      "label": "길",
+      "at": "2026-09-23T08:50:53.755Z"
+    },
+    {
+      "kind": "place",
+      "label": "길",
+      "tx": 51,
+      "ty": 41,
+      "client": {
+        "clientX": 951.111111111111,
+        "clientY": 440.55555555555566
+      },
+      "beforeTick": 0,
+      "tick": 0,
+      "sites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "awaiting_materials"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "awaiting_materials"
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "timber": 120
+    },
+    {
+      "kind": "selectTool",
+      "label": "밀밭",
+      "at": "2026-09-23T08:50:55.429Z"
+    },
+    {
+      "kind": "candidatePlace",
+      "label": "밀밭",
+      "tx": 51,
+      "ty": 39,
+      "client": {
+        "clientX": 1054.8148148148148,
+        "clientY": 388.7037037037039
+      },
+      "beforeTick": 0,
+      "tick": 0,
+      "sites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "awaiting_materials"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "awaiting_materials"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "stall": "awaiting_materials"
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "timber": 120
+    }
+  ],
+  "samples": [
+    {
+      "label": "start",
+      "elapsedMs": 14,
+      "level": 0,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 4,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 90,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "awaiting_materials"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "awaiting_materials"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "stall": "awaiting_materials"
+        }
+      ],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+15s",
+      "elapsedMs": 15057,
+      "level": 0,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 304,
+      "population": 16,
+      "idleWorkers": 0,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 4,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 191
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 4,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 251
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 4,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 291
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 4,
+          "level": 0,
+          "breadStock": 1,
+          "lastServicedTick": 191
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 6
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "none"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "no_builders"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "stall": "no_builders"
+        }
+      ],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+30s",
+      "elapsedMs": 30076,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 605,
+      "population": 16,
+      "idleWorkers": 0,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 4,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 411
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 4,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 491
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 4,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 531
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 4,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 431
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "none"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "no_builders"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "stall": "no_builders"
+        }
+      ],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+45s",
+      "elapsedMs": 45112,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 904,
+      "population": 24,
+      "idleWorkers": 0,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 6,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 811
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 6,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 811
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 6,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 531
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 6,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 851
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 8
+          },
+          "productionProgress": 11,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "stall": "none"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "stall": "no_builders"
+        }
+      ],
+      "walkers": 7,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+60s",
+      "elapsedMs": 60136,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 1205,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 811
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 811
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 851
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 4
+          },
+          "productionProgress": 22,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": "곡창에 밀 재고가 없습니다"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 25,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+75s",
+      "elapsedMs": 75151,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 1506,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1231
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1211
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1331
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1251
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0,
+            "timber": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 9,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 6,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 6,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+90s",
+      "elapsedMs": 90159,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 1806,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1611
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1631
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1671
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 1751
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 8
+          },
+          "productionProgress": 33,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 22,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 26,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 6,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+105s",
+      "elapsedMs": 105178,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 2106,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2031
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2051
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2091
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2051
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1,
+            "timber": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3,
+            "bread": 1
+          },
+          "productionProgress": 4,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 6,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 6,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+120s",
+      "elapsedMs": 120204,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 2406,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 2031
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 2051
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 2091
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 2051
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 4,
+            "wheat": 3
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 4
+          },
+          "productionProgress": 17,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2,
+            "bread": 1
+          },
+          "productionProgress": 16,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 26,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 6,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+135s",
+      "elapsedMs": 135236,
+      "level": 1,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 2707,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2411
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2491
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2551
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 3,
+          "lastServicedTick": 2431
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 1,
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3,
+            "bread": 1
+          },
+          "productionProgress": 29,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 7,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 6,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+150s",
+      "elapsedMs": 150291,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 3006,
+      "population": 32,
+      "idleWorkers": 1,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 8,
+          "level": 2,
+          "breadStock": 3,
+          "lastServicedTick": 2811
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 8,
+          "level": 2,
+          "breadStock": 3,
+          "lastServicedTick": 2831
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 8,
+          "level": 2,
+          "breadStock": 3,
+          "lastServicedTick": 2871
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 2,
+          "breadStock": 3,
+          "lastServicedTick": 2831
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 26,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 6,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+165s",
+      "elapsedMs": 165436,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 3309,
+      "population": 40,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 10,
+          "level": 2,
+          "breadStock": 3,
+          "lastServicedTick": 3111
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 10,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 3131
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 10,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 3171
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 10,
+          "level": 2,
+          "breadStock": 3,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 2,
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 9,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+180s",
+      "elapsedMs": 180473,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 3609,
+      "population": 48,
+      "idleWorkers": 9,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 12,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 3511
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 12,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 3371
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 12,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 3171
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 12,
+          "level": 2,
+          "breadStock": 1,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 29,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+195s",
+      "elapsedMs": 195499,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 3911,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 3871
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 3611
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 3171
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 1,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 11,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+211s",
+      "elapsedMs": 210515,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 4211,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 3871
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 4091
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 3171
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창까지 경로가 없습니다 — 밀 공급 불가"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 31,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+226s",
+      "elapsedMs": 225546,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 4512,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 4351
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 4451
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 4231
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 5,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 12,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 3,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+241s",
+      "elapsedMs": 240554,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 4812,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 4351
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 4811
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 4591
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 17,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 5
+          },
+          "productionProgress": 4,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 32,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+256s",
+      "elapsedMs": 255579,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 5112,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 5071
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 4811
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 1,
+          "lastServicedTick": 4951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 2
+          },
+          "productionProgress": 29,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 16,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 12,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 3,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+271s",
+      "elapsedMs": 270593,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 5413,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 5191
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 5291
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 4951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 2
+          },
+          "productionProgress": 29,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 29,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 33,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+286s",
+      "elapsedMs": 285609,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 5713,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 5191
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 5,
+          "lastServicedTick": 5651
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 5551
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0,
+            "timber": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3,
+            "bread": 1
+          },
+          "productionProgress": 11,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 13,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+301s",
+      "elapsedMs": 300641,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 6013,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 5911
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 6011
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 5791
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2,
+            "bread": 1
+          },
+          "productionProgress": 23,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 33,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+316s",
+      "elapsedMs": 315664,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 6314,
+      "population": 56,
+      "idleWorkers": 13,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 5911
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 6011
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 6271
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 14,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 1,
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 14,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+331s",
+      "elapsedMs": 330684,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 6614,
+      "population": 54,
+      "idleWorkers": 12,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 1,
+          "lastServicedTick": 6391
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 6491
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 6271
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 12,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 34,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+346s",
+      "elapsedMs": 345703,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 6915,
+      "population": 52,
+      "idleWorkers": 11,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 1,
+          "lastServicedTick": 6751
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 6491
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 6631
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 10,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 2,
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 15,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+361s",
+      "elapsedMs": 360719,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 7215,
+      "population": 50,
+      "idleWorkers": 10,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 6751
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 7211
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 7111
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 8,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 35,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+376s",
+      "elapsedMs": 375746,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 7515,
+      "population": 48,
+      "idleWorkers": 9,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 7351
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 7211
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 7471
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 6,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 6,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 15,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 3,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+391s",
+      "elapsedMs": 390782,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 7816,
+      "population": 46,
+      "idleWorkers": 8,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 7351
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 7691
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 7471
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 4,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창까지 경로가 없습니다 — 밀 공급 불가"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 36,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+406s",
+      "elapsedMs": 405804,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 8117,
+      "population": 44,
+      "idleWorkers": 7,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 7831
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 8051
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 7951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 2,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 10,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 17,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 3,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+421s",
+      "elapsedMs": 420838,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 8417,
+      "population": 41,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 8191
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 8411
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 13,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 7951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 22,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 5
+          },
+          "productionProgress": 9,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 37,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+436s",
+      "elapsedMs": 435869,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 8718,
+      "population": 40,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 8671
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 8411
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 12,
+          "level": 1,
+          "breadStock": 1,
+          "lastServicedTick": 8551
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 22,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 18,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+451s",
+      "elapsedMs": 450904,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 9018,
+      "population": 40,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 8791
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 8891
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 12,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 8551
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 2
+          },
+          "productionProgress": 34,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 38,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+466s",
+      "elapsedMs": 465918,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 9319,
+      "population": 40,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 8791
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 5,
+          "lastServicedTick": 9251
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 12,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 9151
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 2,
+            "wheat": 3
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3,
+            "bread": 1
+          },
+          "productionProgress": 17,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 19,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+481s",
+      "elapsedMs": 480951,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 9619,
+      "population": 40,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 9391
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 9611
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 12,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 9511
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 0
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2,
+            "bread": 1
+          },
+          "productionProgress": 29,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 39,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+496s",
+      "elapsedMs": 495971,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 9920,
+      "population": 40,
+      "idleWorkers": 5,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 9871
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 9611
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 12,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 9511
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 1,
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 2
+          },
+          "productionProgress": 20,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+511s",
+      "elapsedMs": 510994,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 10221,
+      "population": 39,
+      "idleWorkers": 4,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 9871
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 10091
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 11,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 9991
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 1,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 5,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+526s",
+      "elapsedMs": 526014,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 10521,
+      "population": 39,
+      "idleWorkers": 4,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 10231
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 4,
+          "lastServicedTick": 10091
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 11,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 10351
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 2,
+            "wheat": 4
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "창고에서 통나무 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 1
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 3
+          },
+          "productionProgress": 21,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+541s",
+      "elapsedMs": 541036,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 10822,
+      "population": 38,
+      "idleWorkers": 4,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 10711
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 10811
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 10,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 10351
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 4
+          },
+          "productionProgress": 1,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 2,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 3,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+556s",
+      "elapsedMs": 556075,
+      "level": 2,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 11122,
+      "population": 37,
+      "idleWorkers": 3,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 2,
+          "lastServicedTick": 11071
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 6,
+          "lastServicedTick": 10811
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 9,
+          "level": 1,
+          "breadStock": 2,
+          "lastServicedTick": 10951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 13,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 0,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에 밀 재고가 없습니다"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 22,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 3,
+      "visibleWarning": []
+    },
+    {
+      "label": "t+571s",
+      "elapsedMs": 571101,
+      "level": 3,
+      "selectedHouseText": "",
+      "speed": [
+        {
+          "label": "일시 정지",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "1배속",
+          "pressed": "true",
+          "text": ""
+        },
+        {
+          "label": "3배속",
+          "pressed": "false",
+          "text": ""
+        },
+        {
+          "label": "5배속",
+          "pressed": "false",
+          "text": ""
+        }
+      ],
+      "tick": 11423,
+      "population": 37,
+      "idleWorkers": 3,
+      "treasuryTimber": 40,
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 14,
+          "level": 2,
+          "breadStock": 0,
+          "lastServicedTick": 11071
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 14,
+          "level": 3,
+          "breadStock": 6,
+          "lastServicedTick": 11291
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 9,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 10951
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 0,
+          "level": 1,
+          "breadStock": 0,
+          "lastServicedTick": 3071
+        }
+      ],
+      "foodBuildings": [
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "tx": 45,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "logs": 3
+          },
+          "productionProgress": 4,
+          "problemCause": null
+        },
+        {
+          "id": "construction-site-000002",
+          "kind": "mill",
+          "tx": 48,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1,
+            "bread": 2
+          },
+          "productionProgress": 0,
+          "problemCause": "곡창에서 밀 운반을 기다리는 중"
+        },
+        {
+          "id": "construction-site-000003",
+          "kind": "wheat_farm",
+          "tx": 51,
+          "ty": 39,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 1
+          },
+          "productionProgress": 3,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "walkers": 4,
+      "visibleWarning": []
+    }
+  ],
+  "firstL2": {
+    "label": "t+150s",
+    "elapsedMs": 150291,
+    "level": 2,
+    "selectedHouseText": "",
+    "speed": [
+      {
+        "label": "일시 정지",
+        "pressed": "false",
+        "text": ""
+      },
+      {
+        "label": "1배속",
+        "pressed": "true",
+        "text": ""
+      },
+      {
+        "label": "3배속",
+        "pressed": "false",
+        "text": ""
+      },
+      {
+        "label": "5배속",
+        "pressed": "false",
+        "text": ""
+      }
+    ],
+    "tick": 3006,
+    "population": 32,
+    "idleWorkers": 1,
+    "treasuryTimber": 40,
+    "houses": [
+      {
+        "buildingId": "house-46-40-0",
+        "residents": 8,
+        "level": 2,
+        "breadStock": 3,
+        "lastServicedTick": 2811
+      },
+      {
+        "buildingId": "house-44-40-0",
+        "residents": 8,
+        "level": 2,
+        "breadStock": 3,
+        "lastServicedTick": 2831
+      },
+      {
+        "buildingId": "house-44-42-0",
+        "residents": 8,
+        "level": 2,
+        "breadStock": 3,
+        "lastServicedTick": 2871
+      },
+      {
+        "buildingId": "house-46-42-0",
+        "residents": 8,
+        "level": 2,
+        "breadStock": 3,
+        "lastServicedTick": 2831
+      }
+    ],
+    "foodBuildings": [
+      {
+        "id": "granary-42-37-0",
+        "kind": "granary",
+        "tx": 42,
+        "ty": 37,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 4
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000001",
+        "kind": "sawmill",
+        "tx": 45,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "logs": 1
+        },
+        "productionProgress": 0,
+        "problemCause": "창고에서 통나무 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000002",
+        "kind": "mill",
+        "tx": 48,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 0,
+          "bread": 2
+        },
+        "productionProgress": 0,
+        "problemCause": "곡창에서 밀 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000003",
+        "kind": "wheat_farm",
+        "tx": 51,
+        "ty": 39,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 2
+        },
+        "productionProgress": 26,
+        "problemCause": null
+      }
+    ],
+    "constructionSites": [],
+    "walkers": 6,
+    "visibleWarning": []
+  },
+  "firstL3": {
+    "label": "t+571s",
+    "elapsedMs": 571101,
+    "level": 3,
+    "selectedHouseText": "",
+    "speed": [
+      {
+        "label": "일시 정지",
+        "pressed": "false",
+        "text": ""
+      },
+      {
+        "label": "1배속",
+        "pressed": "true",
+        "text": ""
+      },
+      {
+        "label": "3배속",
+        "pressed": "false",
+        "text": ""
+      },
+      {
+        "label": "5배속",
+        "pressed": "false",
+        "text": ""
+      }
+    ],
+    "tick": 11423,
+    "population": 37,
+    "idleWorkers": 3,
+    "treasuryTimber": 40,
+    "houses": [
+      {
+        "buildingId": "house-46-40-0",
+        "residents": 14,
+        "level": 2,
+        "breadStock": 0,
+        "lastServicedTick": 11071
+      },
+      {
+        "buildingId": "house-44-40-0",
+        "residents": 14,
+        "level": 3,
+        "breadStock": 6,
+        "lastServicedTick": 11291
+      },
+      {
+        "buildingId": "house-44-42-0",
+        "residents": 9,
+        "level": 1,
+        "breadStock": 0,
+        "lastServicedTick": 10951
+      },
+      {
+        "buildingId": "house-46-42-0",
+        "residents": 0,
+        "level": 1,
+        "breadStock": 0,
+        "lastServicedTick": 3071
+      }
+    ],
+    "foodBuildings": [
+      {
+        "id": "granary-42-37-0",
+        "kind": "granary",
+        "tx": 42,
+        "ty": 37,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000001",
+        "kind": "sawmill",
+        "tx": 45,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "logs": 3
+        },
+        "productionProgress": 4,
+        "problemCause": null
+      },
+      {
+        "id": "construction-site-000002",
+        "kind": "mill",
+        "tx": 48,
+        "ty": 40,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 1,
+          "bread": 2
+        },
+        "productionProgress": 0,
+        "problemCause": "곡창에서 밀 운반을 기다리는 중"
+      },
+      {
+        "id": "construction-site-000003",
+        "kind": "wheat_farm",
+        "tx": 51,
+        "ty": 39,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 1
+        },
+        "productionProgress": 3,
+        "problemCause": null
+      }
+    ],
+    "constructionSites": [],
+    "walkers": 4,
+    "visibleWarning": []
+  },
+  "capMs": 900000,
+  "limitation": null,
+  "notes": [
+    "All world mutations in this run are via Chrome mouse/keyboard UI events. phase10-proof is used only for tile coordinates, screenshots, and state observation."
+  ],
+  "millPlacedAt": {
+    "tx": 48,
+    "ty": 40
+  },
+  "farmPlacedAt": {
+    "tx": 51,
+    "ty": 39
+  },
+  "setupSnapshot": {
+    "tick": 0,
+    "constructionSites": [
+      {
+        "id": "construction-site-000001",
+        "kind": "sawmill",
+        "stall": "awaiting_materials"
+      },
+      {
+        "id": "construction-site-000002",
+        "kind": "mill",
+        "stall": "awaiting_materials"
+      },
+      {
+        "id": "construction-site-000003",
+        "kind": "wheat_farm",
+        "stall": "awaiting_materials"
+      }
+    ],
+    "foodBuildings": [
+      {
+        "id": "granary-42-37-0",
+        "kind": "granary",
+        "tx": 42,
+        "ty": 37,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "bread": 30
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      }
+    ],
+    "timber": 120
+  },
+  "startedAtIso": "2026-09-23T08:50:57.232Z"
+}

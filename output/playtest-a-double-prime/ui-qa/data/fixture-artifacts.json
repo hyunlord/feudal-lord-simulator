@@ -1,0 +1,38 @@
+[
+  {
+    "id": "s10-fixture-wall-priority-buttons",
+    "kind": "browser-screenshot",
+    "description": "LABELED fixture: palisade progress with balanced/priority buttons",
+    "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s10-fixture-wall-priority-buttons.jpg"
+  },
+  {
+    "id": "s11-fixture-wall-priority-after",
+    "kind": "browser-screenshot",
+    "description": "LABELED fixture: after clicking construction-priority wall button",
+    "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s11-fixture-wall-priority-after.jpg"
+  },
+  {
+    "id": "s12-fixture-unaffordable-shortfall",
+    "kind": "browser-screenshot",
+    "description": "LABELED fixture: build menu production category with unaffordable shortfall text",
+    "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s12-fixture-unaffordable-shortfall.jpg"
+  },
+  {
+    "id": "s14-fixture-construction-access-route",
+    "kind": "browser-screenshot",
+    "description": "LABELED fixture: selected no-route construction site with access overlay attempt",
+    "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s14-fixture-construction-access-route.jpg"
+  },
+  {
+    "id": "fixture-ui-surfaces",
+    "kind": "json",
+    "description": "LABELED fixture UI extracted text, button geometry, and proof snapshots for late-game/edge surfaces",
+    "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/fixture-ui-surfaces.json"
+  },
+  {
+    "id": "chrome-cdp-fixture-invocation",
+    "kind": "text",
+    "description": "Exact Chrome fixture CDP invocation on preview 4175",
+    "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/logs/chrome-cdp-fixture-invocation.txt"
+  }
+]

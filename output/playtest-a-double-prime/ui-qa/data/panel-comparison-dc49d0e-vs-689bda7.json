@@ -1,0 +1,70 @@
+{
+  "kind": "MATCHED_1280x720_RIGHT_TOP_PANEL_COMPARISON",
+  "baselineHead": "dc49d0e",
+  "currentHead": "689bda7",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "area": 921600
+  },
+  "metrics": {
+    "rightRailBox": {
+      "baseline": {
+        "x": 932,
+        "y": 106,
+        "width": 336,
+        "height": 230.890625,
+        "right": 1268,
+        "bottom": 336.890625,
+        "area": 77579.25
+      },
+      "current": {
+        "x": 932,
+        "y": 106,
+        "width": 336,
+        "height": 195.390625,
+        "right": 1268,
+        "bottom": 301.390625,
+        "area": 65651.25
+      }
+    },
+    "settlementBox": {
+      "baseline": {
+        "x": 932,
+        "y": 106,
+        "width": 336,
+        "height": 31.5,
+        "right": 1268,
+        "bottom": 137.5,
+        "area": 10584
+      },
+      "current": {
+        "x": 932,
+        "y": 106,
+        "width": 336,
+        "height": 48,
+        "right": 1268,
+        "bottom": 154,
+        "area": 16128
+      }
+    },
+    "coveredMapArea": {
+      "rightRail": {
+        "baseline": 77579.25,
+        "current": 65651.25,
+        "delta": -11928,
+        "deltaPct": -15.375245313663125
+      },
+      "settlement": {
+        "baseline": 10584,
+        "current": 16128,
+        "delta": 5544,
+        "deltaPct": 52.38095238095239
+      }
+    }
+  },
+  "screenshots": {
+    "baseline": "screenshots/s17-baseline-dc49d0e-right-top-1280x720.jpg",
+    "current": "screenshots/s18-current-689bda7-right-top-1280x720.jpg"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "read-only-final-state-service-blocker",
+  "source": {
+    "simulation": {
+      "commit": "689bda7facef3c8777c928fb2904bf1ff9a27826",
+      "sourceSha256": "768dfd802fb56c645d006fef87ccef000fad4cdf2a0e06d999f66b73d8119f96",
+      "sourceFiles": 493,
+      "dirty": false
+    },
+    "analysisCommit": "259cb78d6fc73590a7cadd076c242063a9c5bd5a",
+    "changedSinceSimulation": [
+      "scripts/efficientGrowthAcceptance.ts",
+      "src/App.tsx",
+      "src/ui/InfoPanel.tsx",
+      "tests/efficientGrowthAcceptance.test.ts",
+      "tests/onboardingUi.test.ts"
+    ],
+    "relevantSource": [
+      "src/engine/autoplayServices.ts",
+      "src/engine/autoplayServiceSpace.ts",
+      "src/engine/autoplayServiceSpaceWitness.ts",
+      "src/engine/autoplayConstructionRoads.ts"
+    ]
+  },
+  "observation": {
+    "tick": 1200000,
+    "l4Houses": 13,
+    "churchServed": 13,
+    "churchOutside": 11,
+    "churchCount": 1,
+    "availableFacilityCap": 2,
+    "first13AtTick": 312000,
+    "lastBelow13AtTick": 300000
+  },
+  "candidateStages": {
+    "totalTiles": 4096,
+    "covered": 517,
+    "clearance": 217,
+    "placeable": 14,
+    "roadFinite": 4,
+    "constructionRoute": 4,
+    "wallSpace": 4,
+    "serviceSpace": 0
+  },
+  "connectedCandidates": [
+    {
+      "tx": 4,
+      "ty": 11,
+      "covers": 10,
+      "wallSpace": true,
+      "serviceSpace": false
+    },
+    {
+      "tx": 3,
+      "ty": 14,
+      "covers": 3,
+      "wallSpace": true,
+      "serviceSpace": false
+    },
+    {
+      "tx": 4,
+      "ty": 15,
+      "covers": 3,
+      "wallSpace": true,
+      "serviceSpace": false
+    },
+    {
+      "tx": 12,
+      "ty": 23,
+      "covers": 1,
+      "wallSpace": true,
+      "serviceSpace": false
+    }
+  ],
+  "serviceSpaceSafeUnconnected": [
+    {
+      "tx": 6,
+      "ty": 9,
+      "covers": 11,
+      "roadAction": {
+        "kind": "none"
+      }
+    },
+    {
+      "tx": 6,
+      "ty": 10,
+      "covers": 11,
+      "roadAction": {
+        "kind": "none"
+      }
+    }
+  ],
+  "conclusion": "No existing-road church candidate preserves all future service witnesses; the only two service-space-safe candidates lack a connected road/construction route, and plannedBuildingRoadAction returns none. Autoplay has no church or road action at this final state."
+}

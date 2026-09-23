@@ -1,0 +1,478 @@
+{
+  "wallProposal": {
+    "meta": {
+      "provenance": "LABELED_PREPARED_UI_FIXTURE: DEFAULT_GAME_STATE plus population/timber/chapel to expose palisade proposal PredictionLine; not natural play."
+    },
+    "text": "현재 시대\n촌락\n인구\n60/60\n곡창\n1/1\n예배당\n1/1\n목재\n120/250\n\n선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)\n\n목책 제안 불가목책 제안을 확인할 수 없습니다\n\n목책 시대 선포 준비\n목재 120/250",
+    "lines": []
+  },
+  "wallPriority": {
+    "meta": {
+      "provenance": "LABELED_PREPARED_UI_FIXTURE: palisade construction site inserted to expose balanced/priority controls; not natural play."
+    },
+    "text": "현재 시대\n목책마을\n인구\n60/140\n시장\n0/1\n석공소\n0/1\n석재\n0/400\n금화\n0/200\n시장 0개 · 수입원 없음 · 시장이 창고의 남는 물자를 팔 때 들어옵니다\n\n선포하면 일꾼의 50%가 석조 전환 공사에 배정됩니다 (약 900틱)\n\n성벽 0 / 1 구간\n\n✓ 균형 · 25% 비축\n공사 우선\n\n활성 구간 1/1 부지 · 대기 0구간\n\n선포 후 성벽 구간은 취소할 수 없습니다. 자재와 일꾼은 성문 기준 순서대로만 이동합니다.\n\n석조 도시 선포\n인구 60/140",
+    "buttons": [
+      {
+        "text": "✓ 균형 · 25% 비축",
+        "pressed": "true",
+        "width": 118.5625,
+        "height": 44
+      },
+      {
+        "text": "공사 우선",
+        "pressed": "false",
+        "width": 70.40625,
+        "height": 44
+      }
+    ]
+  },
+  "wallPriorityAfter": {
+    "buttons": [
+      {
+        "text": "균형 · 25% 비축",
+        "pressed": "false"
+      },
+      {
+        "text": "✓ 공사 우선",
+        "pressed": "true"
+      }
+    ],
+    "state": {
+      "tick": 2400,
+      "wallTick": 2400,
+      "population": 60,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "chapel-fixture",
+          "kind": "chapel",
+          "tx": 48,
+          "ty": 43,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [
+        {
+          "id": "wall-fixture-segment-000",
+          "kind": "palisade_segment",
+          "stall": "awaiting_materials"
+        }
+      ],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 15,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 2400
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 15,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 2400
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 15,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 2400
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 15,
+          "level": 0,
+          "breadStock": 3,
+          "lastServicedTick": 2400
+        }
+      ],
+      "walkers": []
+    }
+  },
+  "shortfall": {
+    "meta": {
+      "provenance": "LABELED_PREPARED_UI_FIXTURE: opening state with treasury timber set to 0 for selected unaffordable tool shortfall; not natural play."
+    },
+    "disabled": [
+      {
+        "label": "밀밭",
+        "text": "밀밭. 비용 목재 20. 목적 밀을 길러 방앗간에 보냅니다. 조건 길 인접 필요. 건설 불가 · 부족 20\n밀밭\n목재 20\n목재 부족 0/20",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "방앗간",
+        "text": "방앗간. 비용 목재 30. 목적 밀을 빵으로 바꿔 배급을 돕습니다. 조건 길 인접 필요. 건설 불가 · 부족 30\n방앗간\n목재 30\n목재 부족 0/30",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "벌목소",
+        "text": "벌목소. 비용 목재 15. 목적 숲 가장자리에서 통나무를 냅니다. 조건 길 인접 필요, 숲 인접 필요. 건설 불가 · 부족 15\n벌목소\n목재 15\n목재 부족 0/15",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "제재소",
+        "text": "제재소. 비용 목재 30. 목적 통나무를 목재로 켭니다. 조건 길 인접 필요. 건설 불가 · 부족 30\n제재소\n목재 30\n목재 부족 0/30",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "창고",
+        "text": "창고. 비용 목재 40. 목적 목재와 통나무를 보관합니다. 조건 길 인접 필요. 건설 불가 · 부족 40창고목재 40목재 부족 0/40",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "곡창",
+        "text": "곡창. 비용 목재 40. 목적 밀과 빵을 보관합니다. 조건 길 인접 필요. 건설 불가 · 부족 40곡창목재 40목재 부족 0/40",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "우물",
+        "text": "우물. 비용 목재 10. 목적 주변 집에 물을 공급합니다. 조건 요구 조건 없음. 건설 불가 · 부족 10우물목재 10목재 부족 0/10",
+        "ariaDisabled": "true"
+      },
+      {
+        "label": "예배당",
+        "text": "예배당. 비용 목재 40. 목적 목책마을 선포 조건을 준비합니다. 조건 길 인접 필요. 건설 불가 · 부족 40예배당목재 40목재 부족 0/40",
+        "ariaDisabled": "true"
+      }
+    ],
+    "body": "주택\n도로\n생산·\n저장\n공공\n방어\n길. 비용 목재 0. 목적 육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다. 조건 요구 조건 없음. 건설 가능 · 보유 없음\n길\n육지 무료 · 다리 목재 4/칸\n밀밭. 비용 목재 20. 목적 밀을 길러 방앗간에 보냅니다. 조건 길 인접 필요. 건설 불가 · 부족 20\n밀밭\n목재 20\n목재 부족 0/20\n방앗간. 비용 목재 30. 목적 밀을 빵으로 바꿔 배급을 돕습니다. 조건 길 인접 필요. 건설 불가 · 부족 30\n방앗간\n목재 30\n목재 부족 0/30\n벌목소. 비용 목재 15. 목적 숲 가장자리에서 통나무를 냅니다. 조건 길 인접 필요, 숲 인접 필요. 건설 불가 · 부족 15\n벌목소\n목재 15\n목재 부족 0/15\n제재소. 비용 목재 30. 목적 통나무를 목재로 켭니다. 조건 길 인접 필요. 건설 불가 · 부족 30\n제재소\n목재 30\n목재 부족 0/30\n밀밭\n목재 20\ni\n클릭 설치 · Esc/우클릭 취소 · 휠 확대 · O 문제 보기"
+  },
+  "fullStorage": {
+    "meta": {
+      "provenance": "LABELED_PREPARED_UI_FIXTURE: full granary and ready wheat farm to expose source cause; not natural play."
+    },
+    "point": {
+      "clientX": 395.7142857142857,
+      "clientY": 162.85714285714283
+    },
+    "text": "",
+    "snapshot": {
+      "tick": 1200,
+      "wallTick": 1200,
+      "population": 20,
+      "idleWorkers": 5,
+      "treasuryTimber": 100,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "farm-full",
+          "kind": "wheat_farm",
+          "tx": 10,
+          "ty": 10,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 4
+          },
+          "productionProgress": 39,
+          "problemCause": "🚧 길이 필요합니다"
+        },
+        {
+          "id": "granary-full",
+          "kind": "granary",
+          "tx": 13,
+          "ty": 10,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "wheat": 100
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-a",
+          "kind": "house",
+          "tx": 16,
+          "ty": 10,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-a",
+          "residents": 4,
+          "level": 1,
+          "breadStock": 1,
+          "lastServicedTick": 1200
+        }
+      ],
+      "walkers": []
+    }
+  },
+  "constructionAccess": {
+    "meta": {
+      "provenance": "LABELED_PREPARED_UI_FIXTURE: actual placeBuilding for sawmill then stall forced to no_route to expose suggested construction access overlay; not natural play."
+    },
+    "point": {
+      "clientX": 691.8518518518517,
+      "clientY": 518.3333333333335
+    },
+    "text": "공사\n\n건설 현장\n\n제재소 부지\n×\n\n🚧 창고에서 길이 이어지지 않음\n\n부지\n50, 45 · 제재소\n자재 확보\n목재 0/30 확보\n자재 배달\n목재 30 남음\n건축 작업\n0/600틱 · 일꾼 0명\n자재 진단\n목재 0/30 · 공급처까지 도로 없음 · ETA 확인 불가\n원인\n도로 미연결\n공사 포기",
+    "snapshot": {
+      "tick": 1000,
+      "wallTick": 1000,
+      "population": 30,
+      "idleWorkers": 10,
+      "treasuryTimber": 500,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "width": 1,
+          "height": 1,
+          "houseLot": null,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "width": 2,
+          "height": 2,
+          "houseLot": null,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [
+        {
+          "id": "construction-site-000001",
+          "kind": "sawmill",
+          "stall": "no_route"
+        }
+      ],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3,
+          "level": 0,
+          "breadStock": 0,
+          "lastServicedTick": 0
+        }
+      ],
+      "walkers": []
+    }
+  }
+}

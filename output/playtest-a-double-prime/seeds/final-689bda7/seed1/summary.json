@@ -1,0 +1,251 @@
+{
+  "source": {
+    "commit": "689bda7facef3c8777c928fb2904bf1ff9a27826",
+    "sourceSha256": "768dfd802fb56c645d006fef87ccef000fad4cdf2a0e06d999f66b73d8119f96",
+    "sourceFiles": 493,
+    "dirty": false
+  },
+  "seed": 1,
+  "opening": {
+    "mode": "translated-verification-fixture",
+    "offset": {
+      "tx": 0,
+      "ty": 0
+    },
+    "selection": "minimum Manhattan offset, then dy, then dx; zero when legal",
+    "productSeedFeature": false
+  },
+  "status": "capture-pending",
+  "simulationPassed": true,
+  "acceptance": {
+    "targetReached": true,
+    "victory": true,
+    "fullServiceStable": true,
+    "validRun": true,
+    "additionalAcceptance": true,
+    "capture": false
+  },
+  "efficiency": {
+    "passed": true,
+    "checks": {
+      "validMetrics": true,
+      "mills": true,
+      "granaries": true,
+      "markets": true,
+      "churches": true,
+      "observedWindow": true,
+      "rawStarvation": true,
+      "warnings": true,
+      "idleWorkers": true
+    },
+    "metrics": {
+      "coveredTicks": 2400,
+      "fullWindow": true,
+      "known": true,
+      "wheatProduced": 1200,
+      "wheatConsumed": 1176,
+      "breadProduced": 588,
+      "wheatExported": 0,
+      "breadExported": 16,
+      "requestedBread": 576,
+      "consumedBread": 576,
+      "rawStarvedTicks": 3936,
+      "eligibleMillTicks": 21600,
+      "lots": 24,
+      "farms": 20,
+      "mills": 9,
+      "zeroWheatMills": 2,
+      "granaries": 7,
+      "markets": 2,
+      "churches": 2,
+      "population": 768,
+      "idleWorkers": 246,
+      "buildings": 76,
+      "warnings": 2
+    },
+    "rawStarvationRatio": 0.18222222222222223,
+    "warningRatio": 0.02631578947368421,
+    "idleRatio": 0.3203125,
+    "zeroWheatMillRatio": 0.2222222222222222,
+    "highIdleDiagnostic": true
+  },
+  "lastDiagnostic": {
+    "schemaVersion": 1,
+    "tick": 679200,
+    "food": {
+      "schemaVersion": 1,
+      "tick": 679200,
+      "reached": true,
+      "reason": "food_supply_sufficient",
+      "action": {
+        "kind": "none",
+        "foodTransient": "not_evaluated"
+      },
+      "checks": [],
+      "details": "not_captured",
+      "evaluation": {
+        "transitionRepeat": "not_evaluated",
+        "transitionStaff": "not_evaluated",
+        "buildRepeat": "not_evaluated",
+        "buildStaff": "not_evaluated"
+      },
+      "observation": {
+        "kind": "wheat_farm",
+        "siteId": "construction-site-000069",
+        "placedTick": 652800,
+        "completedTick": 654577,
+        "observeUntilTick": 656977,
+        "outcome": {
+          "outputDelta": 60,
+          "deliveredBreadDelta": 0,
+          "starvingHomesDelta": 0,
+          "effective": true,
+          "deliveredWheatDelta": 57
+        }
+      },
+      "counts": {
+        "wheat": 20,
+        "mill": 9,
+        "granary": 7,
+        "target": 1
+      },
+      "completeChain": true,
+      "recovery": null
+    },
+    "services": [],
+    "advisorAction": {
+      "kind": "none",
+      "foodTransient": "not_evaluated"
+    },
+    "gameActionType": null,
+    "result": "no_action",
+    "newSiteIds": []
+  },
+  "finalStateSha256": "46e9f6af71d380b741be05ef8f44f00ab6079281dc8a2cd721f7d5dedcfcd71c",
+  "targetLots": 24,
+  "maxTicks": 1200000,
+  "final": {
+    "tick": 679251,
+    "era": "stone_town",
+    "houses": 24,
+    "lots": 24,
+    "occupiedHouses": 24,
+    "population": 768,
+    "capacity": 768,
+    "idleWorkers": 246,
+    "l4Houses": 24,
+    "constructionSites": 0,
+    "bread": 331,
+    "minimumHouseBread": 5,
+    "occupiedBreadZeroHouses": 0,
+    "services": {
+      "water": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      },
+      "market": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      },
+      "church": {
+        "served": 24,
+        "missing": 0,
+        "outside": 0,
+        "understaffed": 0,
+        "unreachable": 0,
+        "capacity": 0
+      }
+    },
+    "providers": [
+      {
+        "id": "construction-site-000013",
+        "service": "water",
+        "capacity": 12,
+        "used": 5,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000026",
+        "service": "water",
+        "capacity": 12,
+        "used": 12,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "well-45-41-0",
+        "service": "water",
+        "capacity": 12,
+        "used": 7,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000051",
+        "service": "market",
+        "capacity": 24,
+        "used": 14,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000058",
+        "service": "market",
+        "capacity": 24,
+        "used": 10,
+        "workers": 3,
+        "requiredWorkers": 3
+      },
+      {
+        "id": "construction-site-000062",
+        "service": "church",
+        "capacity": 32,
+        "used": 10,
+        "workers": 0,
+        "requiredWorkers": 0
+      },
+      {
+        "id": "construction-site-000068",
+        "service": "church",
+        "capacity": 32,
+        "used": 14,
+        "workers": 0,
+        "requiredWorkers": 0
+      }
+    ],
+    "buildingCounts": {
+      "house": 24,
+      "well": 3,
+      "granary": 7,
+      "logging_camp": 1,
+      "storehouse": 4,
+      "sawmill": 1,
+      "wheat_farm": 20,
+      "mill": 9,
+      "chapel": 1,
+      "market": 2,
+      "masonry": 1,
+      "quarry": 1,
+      "church": 2
+    },
+    "outcome": "victory"
+  },
+  "strict": {
+    "stableSince": 655252,
+    "sustainedTicks": 24000,
+    "interruptions": 2
+  },
+  "victoryTick": 630336,
+  "stopReason": "target-scale-stable",
+  "failures": [],
+  "elapsedSeconds": 3264.210644417
+}

@@ -1,0 +1,37 @@
+{
+  "productCommit": "10813cb",
+  "commands": {
+    "full-test": "npm test",
+    "typecheck": "npm run typecheck",
+    "build": "npm run build",
+    "contrast": "./node_modules/.bin/tsx scripts/checkContrast.ts"
+  },
+  "outcome": {
+    "fullTest": {
+      "passed": 2218,
+      "failed": 0,
+      "phase9Included": true
+    },
+    "typecheck": "pass",
+    "build": "pass with existing >500kB advisory",
+    "contrast": "pass"
+  },
+  "logs": {
+    "full-test": {
+      "path": "product-10813cb-full-test.log",
+      "sha256": "b331b5944d8dd6ae3902091468e6357ee724dcb4d14c1f19e02136c36e6077d3"
+    },
+    "typecheck": {
+      "path": "product-10813cb-typecheck.log",
+      "sha256": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff"
+    },
+    "build": {
+      "path": "product-10813cb-build.log",
+      "sha256": "f85f644d05b96e1ddd4762cdb705652da0e8a5f87682b7d862d2f973439fb52a"
+    },
+    "contrast": {
+      "path": "product-10813cb-contrast.log",
+      "sha256": "8aa375360a4de4fcc744b27bf01cc78388bc4e2c2972ff791c172802f232bb30"
+    }
+  }
+}

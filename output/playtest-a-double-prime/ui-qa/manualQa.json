@@ -1,0 +1,581 @@
+{
+  "surfaceEvidence": [
+    {
+      "scenarioId": "A2-1",
+      "criterionRef": "A″-1 first screen",
+      "surface": "Chrome browser UI, production preview, 1280x720 before welcome dismissal",
+      "exactInvocation": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --remote-debugging-port=9333 --user-data-dir=/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/chrome-profile --window-size=1280,720 --force-device-scale-factor=1 --no-first-run --disable-background-timer-throttling http://127.0.0.1:4173/?phase10-proof=1&manualQa=a-double-prime",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s01-welcome-1280x720"
+      ],
+      "notes": ""
+    },
+    {
+      "scenarioId": "A2-1b",
+      "criterionRef": "A″-1 viewport coverage/area",
+      "surface": "Chrome browser UI, DOM geometry read from actual rendered page",
+      "exactInvocation": "Runtime.evaluate getBoundingClientRect for resource/canvas/rail/console/menu",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s02-first-screen-dismissed-1280x720",
+        "layout-1280x720"
+      ],
+      "notes": ""
+    },
+    {
+      "scenarioId": "A2-2",
+      "criterionRef": "A″-2 merged goal + fixed warning",
+      "surface": "Chrome browser UI, right rail settlement panel",
+      "exactInvocation": "Click .settlement-progress summary, screenshot, read .settlement-crisis-slot text",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s03-goal-panel-expanded",
+        "goal-panel"
+      ],
+      "notes": "Fixed warning slot present; no crisis text in opening state."
+    },
+    {
+      "scenarioId": "A2-3",
+      "criterionRef": "A″-3 market/coin detail",
+      "surface": "Chrome browser UI, resource bar coin button",
+      "exactInvocation": "Click .resource-bar__coin",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s04-coin-detail-open",
+        "coin-detail"
+      ],
+      "notes": ""
+    },
+    {
+      "scenarioId": "A2-5",
+      "criterionRef": "A″-5 selected tool shortfall",
+      "surface": "Chrome browser UI, LABELED prepared UI fixture on production preview 4175",
+      "exactInvocation": "Intercept production HTML/JS with window.__QA_INITIAL_STATE__=unaffordable-tools, click 생산 category, inspect .build-tool[data-affordable=false]",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s12-fixture-unaffordable-shortfall",
+        "fixture-ui-surfaces"
+      ],
+      "notes": "Corrects earlier natural-pass FAIL: opening category did not expose disabled tools, but unaffordable fixture shows explicit shortfalls such as 목재 부족 0/20."
+    },
+    {
+      "scenarioId": "A2-8",
+      "criterionRef": "actual 1x ticks/sec and frameWorkMs measurement",
+      "surface": "Chrome browser UI speed control plus read-only proof runtime",
+      "exactInvocation": "Click button[aria-label=\"5배속\"], wait 5s, Runtime.evaluate snapshot/diagnosis",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "tick-and-framework"
+      ],
+      "notes": "Measured at 5x visible UI: 89.6 ticks/sec; divide by 5 only as a rough 1x estimate if fixed-speed mapping is intended."
+    },
+    {
+      "scenarioId": "A2-7",
+      "criterionRef": "A″-7 house promotion ring/remaining",
+      "surface": "Chrome browser UI, unchanged bounded opening run on production preview 4173",
+      "exactInvocation": "Runtime tileClientPoint for actual house, CDP mouse click on canvas point",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s06-house-diagnosis",
+        "house-diagnosis"
+      ],
+      "notes": "Corrects QA_FINDINGS contradiction: artifact text includes 다음: L1, 승급 대기, and L1까지 조건 유지 0:03 남음."
+    },
+    {
+      "scenarioId": "A2-9",
+      "criterionRef": "A″-7 access dotted connection overlay/click",
+      "surface": "Chrome browser UI plus LABELED prepared UI fixture model on production preview 4175",
+      "exactInvocation": "Fixture construction-access-route: click construction-site-000001 via proof tileClientPoint; model check records suggestedRoad; screenshot records actual selected no-route construction card.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s14-fixture-construction-access-route",
+        "fixture-ui-surfaces",
+        "fixture-model-checks"
+      ],
+      "notes": "Fixture model reports road_disconnected and suggestedRoad 50,41 -> 50,44; screenshot shows selected construction card 원인 도로 미연결. Dotted route is visual canvas evidence and model-backed, not natural play."
+    },
+    {
+      "scenarioId": "A2-4",
+      "criterionRef": "A″-4 wall proposal PredictionLine and balanced/priority 44px buttons",
+      "surface": "Chrome browser UI. PredictionLine from unchanged opening artifact; balanced/priority controls from LABELED prepared UI fixture on production preview 4175.",
+      "exactInvocation": "Unchanged: expand .settlement-progress on 4173 artifact s08. Fixture: intercept production HTML/JS on 4175 with window.__QA_INITIAL_STATE__=wall-priority-controls, expand panel, click 공사 우선.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s08-era-console-opening-blocked",
+        "era-console-opening",
+        "s10-fixture-wall-priority-buttons",
+        "s11-fixture-wall-priority-after",
+        "fixture-ui-surfaces"
+      ],
+      "notes": "Opening artifact contains wall proposal prediction text. Fixture buttons measured 44px high and aria-pressed toggled balanced -> priority. Wall proposal fixture s09 was invalid and is not used as pass evidence."
+    },
+    {
+      "scenarioId": "A2-6",
+      "criterionRef": "A″-6 stock-full diagnosis",
+      "surface": "Chrome browser UI, LABELED prepared UI fixture on production preview 4175",
+      "exactInvocation": "Intercept production HTML/JS with window.__QA_INITIAL_STATE__=full-storage-cause, click farm-full via proof tileClientPoint, read actual facility inspector",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s15-fixture-full-storage-cause-fixed",
+        "full-storage-fixed",
+        "fixture-model-checks"
+      ],
+      "notes": "Corrected fixture shows actual inspector row 원인: 곡창 가득 참 (100/100)."
+    },
+    {
+      "scenarioId": "A2-10",
+      "criterionReference": "Follow-up final HEAD: prepared Stage3 seed1 wall proposal 47-step",
+      "surface": "Chrome browser UI, current 689bda7 production preview on 4175 with LABELED prepared fixture via response interception",
+      "exactInvocation": "Build current 689bda7 to QA outDir; serve with vite preview on 4175; inject window.__QA_INITIAL_STATE__ from createStage3EconomyHarnessScenario({seed:1}); dismiss welcome; open development panel; click 목책 시대 선포 준비; scroll settlement body to era console; capture 1280x960 JPEG and DOM.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s16-current-stage3-seed1-wall47-fixture",
+        "stage3-seed1-wall47-fixture",
+        "current-stage3-seed1-wall47-fixture-ui"
+      ]
+    },
+    {
+      "scenarioId": "A2-11",
+      "criterionReference": "Follow-up final HEAD: baseline dc49d0e vs current 689bda7 right-top panel bounding box / covered map area",
+      "surface": "Chrome browser UI, production preview baseline 4176 and current 4175, matched 1280x720 viewport, welcome dismissed",
+      "exactInvocation": "Create isolated /tmp baseline worktree at dc49d0e; build baseline/current to QA outDirs; serve baseline 4176 and current 4175; capture full viewport JPEGs and DOM geometry for .right-info-rail, .settlement-progress, and canvas overlap.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s17-baseline-dc49d0e-right-top-1280x720",
+        "s18-current-689bda7-right-top-1280x720",
+        "baseline-dc49d0e-panel-1280x720",
+        "current-689bda7-panel-1280x720",
+        "panel-comparison-dc49d0e-vs-689bda7"
+      ]
+    },
+    {
+      "scenarioId": "A2-3b",
+      "criterionReference": "Follow-up optional: finance detail market present/absent contrast",
+      "surface": "Chrome browser UI. Existing s04 is actual market-absent opening; s19 is LABELED prepared market-present fixture on current 689bda7.",
+      "exactInvocation": "Use existing actual s04 market-absent coin detail. For market-present contrast, inject Stage3 seed1 plus completed qa-market-present fixture, click 재정 수입과 지출 상세, capture JPEG and DOM.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s04-coin-detail-open",
+        "coin-detail",
+        "s19-current-market-present-coin-detail-fixture",
+        "current-market-present-coin-detail-fixture",
+        "market-present-coin-fixture-state"
+      ]
+    },
+    {
+      "scenarioId": "A2-7b",
+      "criterionReference": "Follow-up A″-7: actual fresh tutorial first L2/L3 at 1x",
+      "surface": "Chrome browser UI, current 689bda7 production preview on 4175, fresh actual opening state, mouse/keyboard build sequence, 1배속 selected",
+      "exactInvocation": "Fresh Chrome profile. Dismiss welcome. Through visible UI only: select 제재소 at 45,40; select 방앗간 at 48,40; select 길 at 51,41; select 밀밭 at 51,39; select opening house; click button.speed-seal[aria-label=\"1배속\"]. Poll proof snapshot/visible UI every 15s; phase10-proof used only for tile coordinates/observation/screenshots, no state injection/autoplay.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s22-current-fresh-1x-first-l2",
+        "s23-current-fresh-1x-first-l3",
+        "current-fresh-1x-tutorial-l2-l3"
+      ],
+      "notes": "First directly observed L2 at 150.291s / tick 3006. First directly observed L3 at 571.101s / tick 11423. Food chain setup was actual UI, fresh 1x, no prepared state."
+    },
+    {
+      "scenarioId": "A2-6b",
+      "criterionReference": "A″-6 hotfix: sampled food/water warning suppresses current recovered open-goal copy",
+      "surface": "Chrome browser UI, independent Vite production-preview harness on 4176 importing real InfoPanel components from current uncommitted hotfix",
+      "exactInvocation": "Build harness with npm exec vite -- --config output/playtest-a-double-prime/ui-qa/hotfix-harness/vite.config.ts build to /tmp/a2-hotfix-dist; preview on 4176; Chrome capture prepared state where SettlementStatusLine receives sampled warningState breadStock 0 and OnboardingTasks receives current recovered state breadStock 1. Before panel emulates old wiring without warningState; after panel passes warningState; victory panel verifies outcome victory hides onboarding.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s24-hotfix-sampled-warning-before-after-harness",
+        "hotfix-sampled-warning-browser-qa"
+      ],
+      "notes": "Before panel text contains 식량이 부족합니다 and 기초 운영 완료 simultaneously. After panel status remains 식량이 부족합니다 and hasOpenGoal=false/onboardingText=null. Victory panel hasOpenGoal=false/onboardingText=null."
+    },
+    {
+      "scenarioId": "A2-13",
+      "criterionReference": "HEAD 10813cb construction access: nearer empty storehouse must not seed dashed construction road when farther stocked source exists",
+      "surface": "Chrome browser UI, isolated production preview on 4175, LABELED prepared fixture harness importing real GameCanvas/constructionAccessModel",
+      "exactInvocation": "Build fixture with npm exec vite -- --config output/playtest-a-double-prime/ui-qa/construction-route-harness/vite.config.ts build to /tmp/a2-construction-route-dist; preview on 127.0.0.1:4175; open Chrome 1280x720 at /?phase10-proof=1&manualQa=a2-stocked-source-route-fixture; click well construction at tile (5,5) via phase10 proof tileClientPoint only for UI targeting; capture selected diagnostic card and real canvas overlay.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s25-fixture-stocked-source-route-selected",
+        "stocked-source-construction-route-fixture"
+      ],
+      "notes": "Fixture has empty nearer storehouse at (4,1) with roads (4,3),(5,3), stocked farther storehouse at (1,1) with road (2,3), and well construction at (5,5). Real UI selection persisted after tap; diagnostic card stayed open and screenshot shows dashed suggested road. JSON records suggestedRoad[0] = {tx:2,ty:3}."
+    }
+  ],
+  "adversarialCases": [
+    {
+      "scenarioId": "A2-2A",
+      "criterionRef": "A″-2 warning stability",
+      "adversarialClass": "No active opening crisis",
+      "expectedBehavior": "Warning area should reserve a stable slot without covering goal text",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s03-goal-panel-expanded",
+        "goal-panel"
+      ],
+      "notes": ""
+    },
+    {
+      "scenarioId": "A2-5A",
+      "criterionRef": "A″-5 unavailable tool click",
+      "adversarialClass": "Unaffordable selected tool",
+      "expectedBehavior": "Unavailable cards should remain disabled and show exact shortfall instead of arming silently.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s12-fixture-unaffordable-shortfall",
+        "fixture-ui-surfaces"
+      ],
+      "notes": "Fixture shows aria-disabled=true and 목재 부족 counts."
+    },
+    {
+      "scenarioId": "A2-4A",
+      "criterionRef": "A″-4 late wall controls",
+      "adversarialClass": "Late-game wall controls fixture",
+      "expectedBehavior": "Balanced and priority buttons should both be reachable, at least 44px high, and pressed state should toggle.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s10-fixture-wall-priority-buttons",
+        "s11-fixture-wall-priority-after",
+        "fixture-ui-surfaces"
+      ],
+      "notes": "Prepared fixture only; not natural play."
+    },
+    {
+      "scenarioId": "A2-6A",
+      "criterionRef": "A″-6 stock-full edge",
+      "adversarialClass": "Full-storage producer",
+      "expectedBehavior": "Facility inspector should identify full destination storage as the source cause.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s15-fixture-full-storage-cause-fixed",
+        "full-storage-fixed"
+      ],
+      "notes": "Prepared fixture only; not natural play."
+    },
+    {
+      "scenarioId": "A2-9A",
+      "criterionRef": "A″-7 construction access route",
+      "adversarialClass": "No-route construction site",
+      "expectedBehavior": "Selected construction site should explain missing road and provide a suggested access path when feasible.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s14-fixture-construction-access-route",
+        "fixture-model-checks"
+      ],
+      "notes": "Prepared fixture only; not natural play."
+    },
+    {
+      "scenarioId": "A2-10A",
+      "criterionReference": "Follow-up Stage3 wall proposal fixture",
+      "adversarialClass": "Prepared fixture must be labeled and must not be claimed as natural play",
+      "expectedBehavior": "Report fixture provenance and show 47-step proposal/PredictionLine only as prepared UI QA evidence.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s16-current-stage3-seed1-wall47-fixture",
+        "stage3-seed1-wall47-fixture",
+        "current-stage3-seed1-wall47-fixture-ui"
+      ]
+    },
+    {
+      "scenarioId": "A2-11A",
+      "criterionReference": "Follow-up matched baseline/current panel comparison",
+      "adversarialClass": "Viewport mismatch or hidden welcome overlay would invalidate area comparison",
+      "expectedBehavior": "Both screenshots use 1280x720, welcome dismissed, DOM geometry records same viewport and canvas dimensions.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s17-baseline-dc49d0e-right-top-1280x720",
+        "s18-current-689bda7-right-top-1280x720",
+        "panel-comparison-dc49d0e-vs-689bda7"
+      ]
+    },
+    {
+      "scenarioId": "A2-6b-adv",
+      "criterionReference": "A″-6 sampled/current mismatch adversarial prepared state",
+      "adversarialClass": "Sampled warning state conflicts with current recovered state after tutorial completion",
+      "expectedBehavior": "Visible sampled food/water warning must suppress open-goal completion copy; victory outcome must still hide onboarding.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s24-hotfix-sampled-warning-before-after-harness",
+        "hotfix-sampled-warning-browser-qa"
+      ],
+      "notes": "Prepared harness includes before old-wiring emulation and current hotfix after panel in the same screenshot."
+    },
+    {
+      "scenarioId": "A2-13-adv",
+      "criterionReference": "HEAD 10813cb construction access source selection adversarial fixture",
+      "adversarialClass": "A nearer storehouse is empty while a farther storehouse has the needed timber",
+      "expectedBehavior": "Suggested dashed construction road must originate from the stocked source road, not the nearer empty storehouse roads; selecting/tapping the construction site must keep the inspector/selection active.",
+      "verdict": "PASS",
+      "artifactRefs": [
+        "s25-fixture-stocked-source-route-selected",
+        "stocked-source-construction-route-fixture"
+      ],
+      "notes": "Route starts at stocked source road (2,3); checks routeDoesNotStartAtEmptyStoreRoad=true and selectionEvidencePresent=true."
+    }
+  ],
+  "artifactRefs": [
+    {
+      "id": "s01-welcome-1280x720",
+      "kind": "browser-screenshot",
+      "description": "Actual first load at 1280x720 before dismissing welcome overlay",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s01-welcome-1280x720.jpg"
+    },
+    {
+      "id": "s02-first-screen-dismissed-1280x720",
+      "kind": "browser-screenshot",
+      "description": "Actual first screen at 1280x720 after dismissing welcome overlay",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s02-first-screen-dismissed-1280x720.jpg"
+    },
+    {
+      "id": "layout-1280x720",
+      "kind": "json",
+      "description": "Viewport coverage and key UI region rectangles after welcome dismissal",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/layout-1280x720.json"
+    },
+    {
+      "id": "s03-goal-panel-expanded",
+      "kind": "browser-screenshot",
+      "description": "Actual merged settlement goal/supply panel expanded on first screen",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s03-goal-panel-expanded.jpg"
+    },
+    {
+      "id": "goal-panel",
+      "kind": "json",
+      "description": "Rendered text for goal panel and fixed crisis slot",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/goal-panel.json"
+    },
+    {
+      "id": "s04-coin-detail-open",
+      "kind": "browser-screenshot",
+      "description": "Actual coin resource detail opened from top resource bar",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s04-coin-detail-open.jpg"
+    },
+    {
+      "id": "coin-detail",
+      "kind": "json",
+      "description": "Rendered text for market/coin detail popover",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/coin-detail.json"
+    },
+    {
+      "id": "s05-build-shortfall",
+      "kind": "browser-screenshot",
+      "description": "Actual build menu with unavailable/shortfall tool state",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s05-build-shortfall.jpg"
+    },
+    {
+      "id": "build-shortfall",
+      "kind": "json",
+      "description": "Disabled build tool labels and shortfall text from actual build menu",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/build-shortfall.json"
+    },
+    {
+      "id": "tick-and-framework",
+      "kind": "json",
+      "description": "Read-only proof runtime tick/sec and frameWorkMs before/after 5 seconds at 5x",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/tick-and-framework.json"
+    },
+    {
+      "id": "s06-house-diagnosis",
+      "kind": "browser-screenshot",
+      "description": "Actual opening house clicked, diagnostic card and any promotion/remaining copy",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s06-house-diagnosis.jpg"
+    },
+    {
+      "id": "house-diagnosis",
+      "kind": "json",
+      "description": "Diagnostic card text after clicking actual opening house",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/house-diagnosis.json"
+    },
+    {
+      "id": "s07-problem-access-overlay",
+      "kind": "browser-screenshot",
+      "description": "Actual problem/access overlay controls after toggling problem-only view",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s07-problem-access-overlay.jpg"
+    },
+    {
+      "id": "access-overlay",
+      "kind": "json",
+      "description": "Problem/access overlay control text after actual click",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/access-overlay.json"
+    },
+    {
+      "id": "s08-era-console-opening-blocked",
+      "kind": "browser-screenshot",
+      "description": "Actual era console opening state showing wall proposal unavailable before population/era requirements",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s08-era-console-opening-blocked.jpg"
+    },
+    {
+      "id": "era-console-opening",
+      "kind": "json",
+      "description": "Opening era console text and button sizes; wall proposal not yet available",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/era-console-opening.json"
+    },
+    {
+      "id": "s10-fixture-wall-priority-buttons",
+      "kind": "browser-screenshot",
+      "description": "LABELED fixture: palisade progress with balanced/priority buttons",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s10-fixture-wall-priority-buttons.jpg"
+    },
+    {
+      "id": "s11-fixture-wall-priority-after",
+      "kind": "browser-screenshot",
+      "description": "LABELED fixture: after clicking construction-priority wall button",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s11-fixture-wall-priority-after.jpg"
+    },
+    {
+      "id": "s12-fixture-unaffordable-shortfall",
+      "kind": "browser-screenshot",
+      "description": "LABELED fixture: build menu production category with unaffordable shortfall text",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s12-fixture-unaffordable-shortfall.jpg"
+    },
+    {
+      "id": "s14-fixture-construction-access-route",
+      "kind": "browser-screenshot",
+      "description": "LABELED fixture: selected no-route construction site with access overlay attempt",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s14-fixture-construction-access-route.jpg"
+    },
+    {
+      "id": "fixture-ui-surfaces",
+      "kind": "json",
+      "description": "LABELED fixture UI extracted text, button geometry, and proof snapshots for late-game/edge surfaces",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/fixture-ui-surfaces.json"
+    },
+    {
+      "id": "chrome-cdp-fixture-invocation",
+      "kind": "text",
+      "description": "Exact Chrome fixture CDP invocation on preview 4175",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/logs/chrome-cdp-fixture-invocation.txt"
+    },
+    {
+      "id": "s15-fixture-full-storage-cause-fixed",
+      "kind": "browser-screenshot",
+      "description": "LABELED fixture: corrected roaded full-storage source cause in actual facility inspector",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s15-fixture-full-storage-cause-fixed.jpg"
+    },
+    {
+      "id": "full-storage-fixed",
+      "kind": "json",
+      "description": "LABELED fixture extracted text and proof snapshot for corrected full-storage source cause",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/full-storage-fixed.json"
+    },
+    {
+      "id": "fixture-model-checks",
+      "kind": "json",
+      "description": "Module-derived model checks for construction access suggestedRoad and full-storage cause; fixture provenance only",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/fixture-model-checks.json"
+    },
+    {
+      "id": "s16-current-stage3-seed1-wall47-fixture",
+      "kind": "browser-screenshot",
+      "description": "LABELED fixture: current 689bda7 Stage3 seed1 wall proposal open at 1280x960 with dashed wall outline, 47-step PredictionLine, and draft active",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s16-current-stage3-seed1-wall47-fixture.jpg"
+    },
+    {
+      "id": "stage3-seed1-wall47-fixture",
+      "kind": "json",
+      "description": "Fixture source/proof: createStage3EconomyHarnessScenario seed1, proposalPerimeterSteps 47, validation ok",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/stage3-seed1-wall47-fixture.json"
+    },
+    {
+      "id": "current-stage3-seed1-wall47-fixture-ui",
+      "kind": "json",
+      "description": "Browser DOM extraction for s16: proposal text, PredictionLine text, welcome dismissed, draft active",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/current-stage3-seed1-wall47-fixture-ui.json"
+    },
+    {
+      "id": "s17-baseline-dc49d0e-right-top-1280x720",
+      "kind": "browser-screenshot",
+      "description": "Baseline dc49d0e production preview 1280x720, right-top panel comparison screenshot",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s17-baseline-dc49d0e-right-top-1280x720.jpg"
+    },
+    {
+      "id": "s18-current-689bda7-right-top-1280x720",
+      "kind": "browser-screenshot",
+      "description": "Current 689bda7 production preview 1280x720, matched right-top panel comparison screenshot",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s18-current-689bda7-right-top-1280x720.jpg"
+    },
+    {
+      "id": "baseline-dc49d0e-panel-1280x720",
+      "kind": "json",
+      "description": "DOM geometry for baseline dc49d0e right-info rail, settlement panel, canvas overlap",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/baseline-dc49d0e-panel-1280x720.json"
+    },
+    {
+      "id": "current-689bda7-panel-1280x720",
+      "kind": "json",
+      "description": "DOM geometry for current 689bda7 right-info rail, settlement panel, canvas overlap",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/current-689bda7-panel-1280x720.json"
+    },
+    {
+      "id": "panel-comparison-dc49d0e-vs-689bda7",
+      "kind": "json",
+      "description": "Computed before/after covered map area delta for matched 1280x720 panel comparison",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/panel-comparison-dc49d0e-vs-689bda7.json"
+    },
+    {
+      "id": "s19-current-market-present-coin-detail-fixture",
+      "kind": "browser-screenshot",
+      "description": "Optional LABELED fixture: market-present coin detail on current 689bda7",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s19-current-market-present-coin-detail-fixture.jpg"
+    },
+    {
+      "id": "current-market-present-coin-detail-fixture",
+      "kind": "json",
+      "description": "DOM extraction for market-present coin fixture showing marketCount 1 and market-present message",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/current-market-present-coin-detail-fixture.json"
+    },
+    {
+      "id": "market-present-coin-fixture-state",
+      "kind": "json",
+      "description": "Fixture source for optional market-present coin detail state",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/market-present-coin-fixture-state.json"
+    },
+    {
+      "id": "current-actual-1x-house-timing-fixed",
+      "kind": "json",
+      "description": "Actual unpatched current 689bda7 1x UI timing probe: L1 reached, L2/L3 not reached due bread blocker",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/current-actual-1x-house-timing-fixed.json"
+    },
+    {
+      "id": "s22-current-fresh-1x-first-l2",
+      "kind": "screenshot",
+      "description": "Actual fresh 1x UI run: first directly observed L2 at 150.291s / tick 3006",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s22-current-fresh-1x-first-l2.jpg"
+    },
+    {
+      "id": "s23-current-fresh-1x-first-l3",
+      "kind": "screenshot",
+      "description": "Actual fresh 1x UI run: first directly observed L3 at 571.101s / tick 11423",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s23-current-fresh-1x-first-l3.jpg"
+    },
+    {
+      "id": "current-fresh-1x-tutorial-l2-l3",
+      "kind": "json",
+      "description": "Actual fresh 1x UI timing samples and placement provenance; no prepared state/autoplay",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/current-fresh-1x-tutorial-l2-l3.json"
+    },
+    {
+      "id": "s24-hotfix-sampled-warning-before-after-harness",
+      "kind": "screenshot",
+      "description": "Prepared browser harness: before old wiring shows sampled food warning plus completion copy; after hotfix suppresses completion; victory hides onboarding",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s24-hotfix-sampled-warning-before-after-harness.jpg"
+    },
+    {
+      "id": "hotfix-sampled-warning-browser-qa",
+      "kind": "json",
+      "description": "DOM text extraction for A2-6 hotfix browser harness before/after/victory panels",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/hotfix-sampled-warning-browser-qa.json"
+    },
+    {
+      "id": "s25-fixture-stocked-source-route-selected",
+      "kind": "screenshot",
+      "description": "HEAD 10813cb labeled fixture: selected well construction card visible and dashed construction route originates from stocked source road despite nearer empty storehouse",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s25-fixture-stocked-source-route-selected.jpg"
+    },
+    {
+      "id": "stocked-source-construction-route-fixture",
+      "kind": "json",
+      "description": "Browser-extracted fixture/model checks for construction route source selection and tap/selection preservation",
+      "path": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/data/stocked-source-construction-route-fixture.json"
+    }
+  ]
+}

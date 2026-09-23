@@ -1,0 +1,30 @@
+{
+  "url": "http://127.0.0.1:4176/",
+  "title": "A2 warning hotfix QA harness",
+  "bodyText": "A″-6 sampled warning/current recovered prepared UI state\n\nPrepared state: displayed sampled warning has breadStock 0; current recovered state has breadStock 1 and open goal.\n\nBefore wiring emulation: sampled warning + current-state open goal\n식량이 부족합니다\n기초 운영 완료\nAfter hotfix wiring: sampled warning suppresses open goal\n식량이 부족합니다\nVictory guard: onboarding remains hidden\n정착지는 안정적입니다",
+  "before": {
+    "id": "before-old-wiring",
+    "text": "Before wiring emulation: sampled warning + current-state open goal\n식량이 부족합니다\n기초 운영 완료",
+    "onboardingText": "기초 운영 완료",
+    "statusText": "식량이 부족합니다",
+    "hasOpenGoal": true
+  },
+  "after": {
+    "id": "after-hotfix-wiring",
+    "text": "After hotfix wiring: sampled warning suppresses open goal\n식량이 부족합니다",
+    "onboardingText": null,
+    "statusText": "식량이 부족합니다",
+    "hasOpenGoal": false
+  },
+  "victory": {
+    "id": "victory-guard",
+    "text": "Victory guard: onboarding remains hidden\n정착지는 안정적입니다",
+    "onboardingText": null,
+    "statusText": "정착지는 안정적입니다",
+    "hasOpenGoal": false
+  },
+  "capturedAt": "2026-09-23T09:04:53.544Z",
+  "artifact": {
+    "screenshot": "/Users/rexxa/github/feudal-lord-simulator-playable/output/playtest-a-double-prime/ui-qa/screenshots/s24-hotfix-sampled-warning-before-after-harness.jpg"
+  }
+}

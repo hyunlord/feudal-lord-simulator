@@ -1,0 +1,2584 @@
+{
+  "meta": {
+    "kind": "LABELED_PREPARED_UI_FIXTURE",
+    "source": "Stage3 seed1 plus qa-market-present completed market",
+    "head": "689bda7",
+    "market": {
+      "id": "qa-market-present",
+      "tx": 1,
+      "ty": 1
+    }
+  },
+  "state": {
+    "tick": 0,
+    "seed": 1,
+    "tiles": [
+      {
+        "tx": 0,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 0,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": "qa-market-present",
+        "hasRoad": false
+      },
+      {
+        "tx": 2,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": "qa-market-present",
+        "hasRoad": false
+      },
+      {
+        "tx": 3,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 1,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": "qa-market-present",
+        "hasRoad": false
+      },
+      {
+        "tx": 2,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": "qa-market-present",
+        "hasRoad": false
+      },
+      {
+        "tx": 3,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 2,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": "storehouse-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 9,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": "storehouse-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 10,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": "well-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 15,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 3,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 4,
+        "terrain": "forest",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "logging_camp-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 5,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "sawmill-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 7,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "storehouse-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 9,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "storehouse-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 10,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "house-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 12,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "house-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 13,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": "chapel-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 16,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 4,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 5,
+        "terrain": "forest",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 5,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 6,
+        "terrain": "forest",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 7,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 8,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 9,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 10,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "mill-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 11,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "house-2",
+        "hasRoad": false
+      },
+      {
+        "tx": 12,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "granary-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 13,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "granary-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 14,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "granary-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 15,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": "granary-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 16,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 6,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "house-3",
+        "hasRoad": false
+      },
+      {
+        "tx": 6,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 7,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 8,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 9,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "wheat_farm-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 10,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "granary-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 13,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "granary-0",
+        "hasRoad": false
+      },
+      {
+        "tx": 14,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "granary-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 15,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": "granary-1",
+        "hasRoad": false
+      },
+      {
+        "tx": 16,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 7,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": "house-5",
+        "hasRoad": false
+      },
+      {
+        "tx": 10,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": "house-6",
+        "hasRoad": false
+      },
+      {
+        "tx": 12,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": "house-7",
+        "hasRoad": false
+      },
+      {
+        "tx": 14,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": "house-8",
+        "hasRoad": false
+      },
+      {
+        "tx": 16,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 8,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 9,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 10,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 11,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 12,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 13,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 14,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 0,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 1,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 2,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 3,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 4,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 5,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 6,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 7,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 8,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 9,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 10,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 11,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 12,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 13,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 14,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 15,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 16,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 17,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 18,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      },
+      {
+        "tx": 19,
+        "ty": 15,
+        "terrain": "grass",
+        "buildingId": null,
+        "hasRoad": true
+      }
+    ],
+    "width": 20,
+    "height": 16,
+    "buildings": [
+      {
+        "id": "house-0",
+        "kind": "house",
+        "tx": 11,
+        "ty": 4,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-1",
+        "kind": "house",
+        "tx": 12,
+        "ty": 4,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-2",
+        "kind": "house",
+        "tx": 11,
+        "ty": 6,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "well-0",
+        "kind": "well",
+        "tx": 14,
+        "ty": 3,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "logging_camp-0",
+        "kind": "logging_camp",
+        "tx": 4,
+        "ty": 4,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "sawmill-0",
+        "kind": "sawmill",
+        "tx": 6,
+        "ty": 4,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "storehouse-0",
+        "kind": "storehouse",
+        "tx": 8,
+        "ty": 3,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "wheat_farm-0",
+        "kind": "wheat_farm",
+        "tx": 6,
+        "ty": 6,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "wheat_farm-1",
+        "kind": "wheat_farm",
+        "tx": 8,
+        "ty": 6,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "mill-0",
+        "kind": "mill",
+        "tx": 10,
+        "ty": 6,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "granary-0",
+        "kind": "granary",
+        "tx": 12,
+        "ty": 6,
+        "workers": 0,
+        "inventory": {
+          "bread": 36
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "granary-1",
+        "kind": "granary",
+        "tx": 14,
+        "ty": 6,
+        "workers": 0,
+        "inventory": {
+          "bread": 36
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "chapel-0",
+        "kind": "chapel",
+        "tx": 15,
+        "ty": 4,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-3",
+        "kind": "house",
+        "tx": 5,
+        "ty": 7,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-4",
+        "kind": "house",
+        "tx": 7,
+        "ty": 7,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-5",
+        "kind": "house",
+        "tx": 9,
+        "ty": 8,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-6",
+        "kind": "house",
+        "tx": 11,
+        "ty": 8,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-7",
+        "kind": "house",
+        "tx": 13,
+        "ty": 8,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "house-8",
+        "kind": "house",
+        "tx": 15,
+        "ty": 8,
+        "workers": 0,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      },
+      {
+        "id": "qa-market-present",
+        "kind": "market",
+        "tx": 1,
+        "ty": 1,
+        "workers": 3,
+        "inventory": {},
+        "reserved": {},
+        "stockReserved": {},
+        "productionProgress": 0
+      }
+    ],
+    "constructionSites": [],
+    "wallTick": 0,
+    "era": "hamlet",
+    "eraProclaimedTick": null,
+    "palisade": null,
+    "nextConstructionOrdinal": 1,
+    "houses": [
+      {
+        "buildingId": "house-0",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-1",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-2",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-3",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-4",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-5",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-6",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-7",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      },
+      {
+        "buildingId": "house-8",
+        "level": 2,
+        "residents": 8,
+        "hasWater": true,
+        "breadStock": 2,
+        "lastServicedTick": 0,
+        "unmetRequirementTicks": 0
+      }
+    ],
+    "walkers": [],
+    "population": 72,
+    "idleWorkers": 0,
+    "treasuryTimber": 1200,
+    "treasuryCoin": 0,
+    "roadRevision": 1,
+    "pathCache": {},
+    "forestHarvests": [],
+    "coinLedger": []
+  }
+}

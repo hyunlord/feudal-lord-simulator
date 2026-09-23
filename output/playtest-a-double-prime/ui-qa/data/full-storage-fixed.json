@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "provenance": "LABELED_PREPARED_UI_FIXTURE: full granary and roaded ready wheat farm to expose source cause; not natural play."
+  },
+  "point": {
+    "clientX": 395.7142857142857,
+    "clientY": 162.85714285714283
+  },
+  "text": "도시 시설\n\n밀밭\n×\n\n일꾼이 밀을 재배\n\n운영과 재고\n일꾼 4/4\n재고 밀 4\n생산 39/40\n원인: 곡창 가득 참 (100/100)",
+  "snapshot": {
+    "tick": 1200,
+    "wallTick": 1200,
+    "population": 20,
+    "idleWorkers": 5,
+    "treasuryTimber": 100,
+    "roadRevision": 0,
+    "buildings": [
+      {
+        "id": "farm-full",
+        "kind": "wheat_farm",
+        "tx": 10,
+        "ty": 10,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 4
+        },
+        "productionProgress": 39,
+        "problemCause": "곡창 가득 참 (100/100)"
+      },
+      {
+        "id": "granary-full",
+        "kind": "granary",
+        "tx": 13,
+        "ty": 10,
+        "width": 2,
+        "height": 2,
+        "houseLot": null,
+        "inventory": {
+          "wheat": 100
+        },
+        "productionProgress": 0,
+        "problemCause": null
+      },
+      {
+        "id": "house-a",
+        "kind": "house",
+        "tx": 16,
+        "ty": 10,
+        "width": 1,
+        "height": 1,
+        "houseLot": null,
+        "inventory": {},
+        "productionProgress": 0,
+        "problemCause": null
+      }
+    ],
+    "constructionSites": [],
+    "houses": [
+      {
+        "buildingId": "house-a",
+        "residents": 4,
+        "level": 1,
+        "breadStock": 1,
+        "lastServicedTick": 1200
+      }
+    ],
+    "walkers": []
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "tick": 1200000,
+  "churchRadius": 12,
+  "churchCap": 2,
+  "providers": [
+    {
+      "id": "construction-site-000065",
+      "tx": 4,
+      "ty": 17
+    }
+  ],
+  "underserved": [
+    {
+      "id": "house-44-40-0",
+      "tx": 11,
+      "ty": 6,
+      "reason": "outside"
+    },
+    {
+      "id": "house-46-40-0",
+      "tx": 13,
+      "ty": 6,
+      "reason": "outside"
+    },
+    {
+      "id": "house-44-42-0",
+      "tx": 11,
+      "ty": 8,
+      "reason": "outside"
+    },
+    {
+      "id": "house-46-42-0",
+      "tx": 13,
+      "ty": 8,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000004",
+      "tx": 14,
+      "ty": 8,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000007",
+      "tx": 8,
+      "ty": 3,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000009",
+      "tx": 6,
+      "ty": 4,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000017",
+      "tx": 12,
+      "ty": 10,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000019",
+      "tx": 12,
+      "ty": 8,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000027",
+      "tx": 16,
+      "ty": 10,
+      "reason": "outside"
+    },
+    {
+      "id": "construction-site-000037",
+      "tx": 15,
+      "ty": 13,
+      "reason": "outside"
+    }
+  ],
+  "needsBuilding": 11,
+  "stages": {
+    "totalTiles": 4096,
+    "covered": 517,
+    "clearance": 217,
+    "placeable": 14,
+    "roadFinite": 4,
+    "constructionRoute": 4,
+    "wallSpace": 4,
+    "serviceSpace": 0
+  },
+  "examples": {
+    "placement": {
+      "tile": {
+        "tx": 8,
+        "ty": 3
+      },
+      "reason": "occupied"
+    }
+  }
+}
