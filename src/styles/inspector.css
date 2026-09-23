@@ -137,12 +137,13 @@
 .inspector-merge button { width: 100%; text-align: left; white-space: normal; }
 
 .app-shell .cause-tooltip {
-  width: min(480px, calc(100% - 24px));
-  max-width: calc(100% - 24px);
+  width: max-content;
+  max-width: min(720px, calc(100% - 24px));
   bottom: auto;
   padding: 8px 12px;
   font: 400 13px/1.5 var(--ui-body-font);
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  overflow-x: auto;
   pointer-events: none;
 }
 .inspector-cause-summary {
