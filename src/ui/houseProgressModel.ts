@@ -1,6 +1,8 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSING_CONFIG, type HousingRequirement } from '../content/housingConfig';
 import type { GameState } from '../engine/engine.types';
+import { BALANCE } from '../content/balanceConfig';
+import { feasibleDistributorDistance } from '../engine/distributorAccess';
 import { householdServices } from '../engine/householdServices';
 import { marketRoadService } from '../engine/marketService';
 import { buildingHasRequiredRoadAccess } from '../engine/roadAccess';
@@ -59,10 +61,16 @@ function requirementBlockers(state: GameState, house: House, home: Building, roa
   const granaries = state.buildings.filter(b => b.kind === 'granary');
   const stocked = granaries.filter(b => (b.inventory.bread ?? 0) > 0);
   const nearest = Math.min(...granaries.map(b => buildingFootprintDistance(home, b)));
+  const deliveryDistances = houseHasFood(house) ? [] : stocked.flatMap(granary => {
+    const distance = feasibleDistributorDistance(state, granary, home.id);
+    return distance === null ? [] : [distance];
+  });
+  const deliveryDistance = Math.min(...deliveryDistances);
   const breadReason = granaries.length === 0 ? 'no_granary' : stocked.length === 0 ? 'granary_empty'
-    : stocked.some(b => road(home, b)) ? 'awaiting_delivery' : 'road_disconnected';
+    : deliveryDistances.length === 0 ? 'road_disconnected' : deliveryDistance > BALANCE.DISTRIBUTOR_RANGE ? 'delivery_range' : 'awaiting_delivery';
   const breadLabels = { no_granary: '빵이 없고 배급할 곡창이 없습니다', granary_empty: '빵이 없고 곡창의 빵 재고가 없습니다',
-    awaiting_delivery: '집에 빵이 없습니다 — 배급을 기다립니다', road_disconnected: '집에 빵이 없습니다 — 빵이 있는 곡창까지 도로가 끊겼습니다' } as const;
+    awaiting_delivery: '집에 빵이 없습니다 — 배급을 기다립니다', road_disconnected: '집에 빵이 없습니다 — 곡창의 배급 출구에서 도달할 수 없습니다',
+    delivery_range: `빵 배급 범위 밖입니다 — 도로거리 ${deliveryDistance} / 범위 ${BALANCE.DISTRIBUTOR_RANGE}` } as const;
   const protection = palisadeProtectionForBuilding(home, state.palisade);
   return {
     water: serviceBlocker(state, home, 'water', road),

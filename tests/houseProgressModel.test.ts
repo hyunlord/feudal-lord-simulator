@@ -156,3 +156,27 @@ test('full production storage before existing visual cycle threshold is not a ne
   state.buildings = [...state.buildings, { ...building('farm', 'wheat_farm', 12, 3), inventory: { wheat: 1000 }, productionProgress: 0 }];
   assert.equal(buildingCauseSnapshot(state).get('farm')?.blocker, null);
 });
+test('bread diagnosis identifies a connected stocked granary beyond actual distributor range', () => {
+  const state = fixture(); state.width = 70; state.palisade = null;
+  state.tiles = Array.from({ length: 1540 }, (_, i) => ({ tx: i % 70, ty: Math.floor(i / 70), terrain: 'grass', buildingId: null, hasRoad: Math.floor(i / 70) === 5 }));
+  state.houses = state.houses.map(h => ({ ...h, breadStock: 0 }));
+  state.buildings = [...state.buildings, { ...building('granary', 'granary', 60, 4), inventory: { bread: 20 } }];
+  const before = JSON.stringify(state);
+  assert.equal(model(state)?.blocker?.reason, 'delivery_range');
+  assert.equal(JSON.stringify(state), before);
+  assert.match(model(state)?.blocker?.label ?? '', /40/);
+});
+test('bread diagnosis rejects a house connected only to an ineligible smaller granary exit', () => {
+  const state = fixture();
+  state.houses = state.houses.map(h => ({ ...h, breadStock: 0 }));
+  state.buildings = [building('home', 'house', 14, 12), building('well', 'well', 13, 14),
+    { ...building('granary', 'granary', 10, 10), inventory: { bread: 20 } }];
+  state.tiles = state.tiles.map(t => ({ ...t, hasRoad: t.ty === 9 || t.ty === 12 && t.tx >= 10 && t.tx <= 13 }));
+  assert.equal(model(state)?.blocker?.reason, 'road_disconnected');
+});
+test('one stored bread remains sufficient for current upgrade predicate even with a larger meal ration', () => {
+  const state = fixture(4);
+  state.houses = state.houses.map(h => ({ ...h, breadStock: 1, residents: 16 }));
+  state.buildings = state.buildings.map(b => b.kind === 'house' ? { ...b, houseLot: 'horizontal' as const } : b);
+  assert.equal(model(state)?.status, 'normal');
+});
