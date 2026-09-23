@@ -1,0 +1,20 @@
+commit 2e2d2cf2307922f8f47e330fc603dd590d808377
+Author:     kwanhyeonpark-ctrl <kwanhyeon.park@genon.ai>
+AuthorDate: Wed Sep 23 14:41:47 2026 +0900
+Commit:     kwanhyeonpark-ctrl <kwanhyeon.park@genon.ai>
+CommitDate: Wed Sep 23 14:41:47 2026 +0900
+
+    Make the production game reproducible from a fresh checkout
+    
+    Provide one local build-and-play command and a brief Korean control guide so a fresh player can start without development setup knowledge.
+    
+    Constraint: Preserve all game logic, UI, rules, assets and dependencies.
+    Confidence: high
+    Scope-risk: narrow
+    Tested: Existing checkout TypeScript and Vite production build; staged diff check.
+    Not-tested: Fresh clone startup follows this commit.
+    Directive: Keep the play server loopback-only and fail if its fixed port is occupied.
+
+ PLAY.md      | 26 ++++++++++++++++++++++++++
+ package.json |  1 +
+ 2 files changed, 27 insertions(+)

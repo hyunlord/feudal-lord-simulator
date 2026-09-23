@@ -1,0 +1,76 @@
+<!doctype html><meta charset="utf-8"><title>A′ 첫 플레이 보고</title><style>@font-face{font-family:Noto;src:url(file:///Library/Fonts/Noto_Sans_KR/static/NotoSansKR-Regular.ttf)}@font-face{font-family:Noto;src:url(file:///Library/Fonts/Noto_Sans_KR/static/NotoSansKR-Bold.ttf);font-weight:700}@page{size:A4;margin:13mm 14mm}*{box-sizing:border-box}body{font-family:Noto,sans-serif;color:#202833;font-size:11px;line-height:1.43;margin:0}section{break-after:page}section:last-child{break-after:auto}h1{font-size:19px;margin:7px 0 10px;color:#172f40}h2{font-size:12px;margin:13px 0 5px;color:#23536a}p{margin:4px 0}table{border-collapse:collapse;width:100%;font-size:10px;margin:7px 0}td{border:1px solid #cbd3d8;padding:4px;vertical-align:top}tr:first-child{background:#e9eef1;font-weight:bold}a{color:#24576e}code{font-size:8px;overflow-wrap:anywhere}.questions{font-size:11px;line-height:1.55}.questions p{margin:5px 0}.proof{font-size:11px;line-height:1.65;overflow-wrap:anywhere}.proof p{margin:10px 0}</style><section><p>한계: 에이전트 플레이는 사람과 조작 속도·인내·재미 판단이 다르므로 사람의 첫인상 전체를 대표하지 않는다.</p>
+<h1>첫 플레이 A′ — 화면만 보고 60분</h1>
+<p><strong>목책16/16을 완공했지만 L4·석조 시대·석벽·승리에는 도달하지 못했다.</strong> 종료 화면은 인구86, 빵4, 가용 목재68, 석재0, 재정0이었다. 시장을 다음 목표로 삼았으나 시간이 끝났다. 도시를 키우기보다 성벽 구간마다 길을 붙이고 자재를 기다리는 경험이 후반을 지배했다.</p>
+<p>도시 건설 게임 경험은 있으나 이 게임의 규칙을 모르는 역할로 플레이했다. <code>PLAY.md</code>의 기본 조작만 읽고 실제 Chrome 창(1600×1100, 배율1)에서 마우스·키보드와 스크린샷만 사용했다. 코드·DOM·콘솔·자동 발전·상태 주입은 사용하지 않았다. 플레이 중 게임·UI 코드는 수정하지 않았다.</p>
+<p>UTC05:45:20.394 첫 화면 →06:45:34.242 종료, 약60분14초. 입력 전 제어기의 표준입력이 닫혀 기술 재시작1회가 있었다. 전략상 재시작은0회다. <strong>아래 시간은 모두 최초 화면 기준</strong>이며 원본 <code>thinkaloud.md</code>의 재시작 기준 시간에28.886초를 더한 근사값이다. 전체 게임 시각은 미표시였고 상단2400틱은 최근 추세 관측창이었다.</p>
+<table>
+<tr><td>사건</td><td>실제 경과</td><td>직접 관측한 내용</td></tr>
+<tr><td>첫 입주</td><td>시작부터</td><td>이미 집4채·주민12명. 새 입주 장면 자체는 미관측; 약00:58에18명 확인</td></tr>
+<tr><td>L2</td><td>미관측</td><td>초반 변화가 빨라 숫자2를 직접 확인하지 못함</td></tr>
+<tr><td>L3</td><td>약01:18–01:29</td><td>집 상세의 생활등급3 상인가옥. <a href="shots/02-first-l3.jpg">02</a>는14:22 재캡처</td></tr>
+<tr><td>L4</td><td>미도달</td><td>시장·신선한 빵·교회·완성 성벽 조건을 읽음</td></tr>
+<tr><td>목책 시작</td><td>약21:43</td><td>기본 둘레 확정, 곧0/16 공사 표시. <a href="shots/05-palisade-start.jpg">05</a></td></tr>
+<tr><td>목책 완료</td><td>약57:40–57:51</td><td>모든 틈이 메워짐;58:22–58:37에16/16·활성구간없음 확인. <a href="shots/07-palisade-complete.jpg">07</a>, <a href="shots/08-palisade-confirmed.jpg">08</a></td></tr>
+<tr><td>석조 시대·석벽</td><td>미도달</td><td>현재 시대 목책 마을, 인구·시장·석공소·석재·금화 조건 미달</td></tr>
+<tr><td>승리/종료</td><td>60:14</td><td>승리 아님. 실제60분 한도로 정지·자체 브라우저 종료. <a href="shots/09-sixty-minute-stop.jpg">09</a></td></tr>
+</table>
+<h2>진행을 방해한 순간</h2>
+<table>
+<tr><td>구분</td><td>실제 경과</td><td>사건 / 기대</td><td>해결·미해결</td><td>증거</td></tr>
+<tr><td>막힘</td><td>03:03~10:49</td><td>기초 운영 완료 뒤 배급 부족. 안내를 끝내면 공급도 안정될 줄 앎</td><td>밭 추가 후4/4 회복, 이후에도 흔들림</td><td><a href="shots/03-first-blockage.jpg">03</a></td></tr>
+<tr><td>조작</td><td>04:30~09:50</td><td>예배당 근처에 길을 그렸는데 화면 이동·단절이 반복됨</td><td>길 카드 선택과 한 칸 클릭을 익힘. 옛 공사는 끝내 남고 남쪽에 새 예배당 완공</td><td>원본 로그</td></tr>
+<tr><td>오해</td><td>14:05~14:22</td><td>L4의 ‘시장 없음’을 유일한 부족 조건처럼 읽음</td><td>펼친 상세에서 다른 조건도 발견</td><td><a href="shots/02-first-l3.jpg">02</a></td></tr>
+<tr><td>막힘</td><td>15:37~17:45</td><td>가용 목재161 정체, 창고에는200. 제재소는 원목 운반 대기</td><td>저장 한도인가 추측해 창고 추가, 축적 재개. 원인은 확정하지 못함</td><td><a href="shots/04-stalled-wood.jpg">04</a>, 로그</td></tr>
+<tr><td>지루함</td><td>21:43~57:51</td><td>목책 선언 뒤 완공까지 약36분. 마을 확장도 병행하고 싶었음</td><td>길 수정·준비와5배속 자재 대기를 반복. 가용 목재0으로 시설 추가 제약</td><td><a href="shots/05-palisade-start.jpg">05</a>, <a href="shots/06-wall-road-blockage.jpg">06</a></td></tr>
+<tr><td>못 찾음</td><td>43:56~44:58</td><td>시장을 눌러 돈과의 관계를 알아보려 함</td><td>반경·수용 필지는 읽었지만 돈을 얻는 방법은 이해 못함</td><td>원본 로그</td></tr>
+<tr><td>오해</td><td>44:31~44:58</td><td>시장 카드가 강조되고 하단에 시장이 보여 i도 시장 설명일 것으로 기대</td><td>i에서 우물 설명. 자원 부족으로 실제 선택이 안 된 듯하나 확정 불가</td><td>원본 로그, 종료 화면도 우물 선택 표시</td></tr>
+<tr><td>조작</td><td>57:38~58:22</td><td>조건창을 열려는 순간 배급 경고가 나타나거나 사라져 버튼 위치가 바뀜</td><td>두 번 놓친 뒤 일시정지해 열음</td><td><a href="shots/07-palisade-complete.jpg">07</a>, <a href="shots/08-palisade-confirmed.jpg">08</a></td></tr>
+</table>
+<p>확정한 버그는 없다. 도로 드래그 무반응과 선택 설명의 불일치는 <strong>관측 현상/선택 상태 오해 가능성</strong>이며 코드 원인이나 재현 규칙을 판정하지 않았다. 사진06은 길 수정 직후 ‘목재 오는 중’으로 바뀐 해결 화면이다. 사진04는 저장 메뉴 화면이며 창고200 상세 자체의 증거는 아니다.</p></section><section class="questions"><h1>여덟 가지 질문</h1>
+<p><strong>1. 첫5분에 목표를 이해했나?</strong>  </p>
+<p>길→제재소→식량 시설이라는 당장 할 일은 안내로 이해했다.  </p>
+<p>도시 발전 조건을 펼친 뒤 인구60·예배당·목재250이라는 중간 목표를 알았다.  </p>
+<p>다만 ‘기초 운영 완료’와 실제 배급 부족이 함께 떠서 준비가 된 것인지 헷갈렸다.</p>
+<p><strong>2. 승급 이유, 가장 유용하고 혼란스러운 UI는?</strong>  </p>
+<p>초반 집이 너무 빨리 커져 승급의 원인을 따라가기 어려웠다.  </p>
+<p>집 상세의 현재 등급과 펼친 조건 목록이 가장 유용했다.  </p>
+<p>대표 부족 조건만 보고 다른 요건을 놓쳤고, 건설 카드 강조와 실제 선택 상태도 혼동했다.</p>
+<p><strong>3. 가장 긴 기다림과 그동안 한 일은?</strong>  </p>
+<p>목책 시작부터 완공까지 약36분이 가장 길었다. 전부 순수 대기는 아니며 길 연결이 큰 몫이었다.  </p>
+<p>5배속으로 자재 수치를 보면서 다음 구간 도로를 준비하고 시설 설명을 읽었다.  </p>
+<p>공사 중 가용 목재가0이라 새로운 시설로 기분을 바꾸기 어려웠다.</p>
+<p><strong>4. 돈은 어디에 쓰며 부족하거나 남았나?</strong>  </p>
+<p>재정은 관측 내내0이었다. 부족과 잉여를 운용하는 단계까지 못 갔다.  </p>
+<p>석조 도시 조건의 금화200은 읽었지만 벌거나 쓰는 흐름은 이해하지 못했다.  </p>
+<p>시장이 도움이 될까 싶어 설명을 찾았으나 확인하지 못했다.</p>
+<p><strong>5. 내 선택인가, 지시 수행인가?</strong>  </p>
+<p>초반은 강조된 위치와 튜토리얼을 따르는 느낌이 강했다.  </p>
+<p>남쪽 밭·예배당·창고를 추가한 순간에는 스스로 문제를 풀었다는 느낌이 있었다.  </p>
+<p>목책 뒤에는 다음 경고가 뜬 구간에 길을 붙이는 지시 수행이 대부분이었다.</p>
+<p><strong>6. 성벽은 확장인가, 별도 숙제인가?</strong>  </p>
+<p>완공된 둘레는 작은 마을을 도시처럼 보여 줘 만족스러웠다.  </p>
+<p>과정은 마을의 필요에 맞춘 확장보다 별도 물류 숙제에 가까웠다.  </p>
+<p>기본 제안 둘레를 선택한 내 결정도 긴 공사에 영향을 줬을 수 있지만 비교 플레이는 하지 않았다.</p>
+<p><strong>7. 끝난 뒤 더 하고 싶은가?</strong>  </p>
+<p>시장과 석조 도시가 어떻게 바뀌는지는 궁금하다.  </p>
+<p>하지만 같은 길 연결·자재 대기가 다시 길게 반복된다면 바로 계속하고 싶지는 않다.  </p>
+<p>마지막에 목재68이 생겨 시장을 지을 수 있게 된 점은 다음 행동의 동기가 됐다.</p>
+<p><strong>8. 한 가지만 고친다면?</strong>  </p>
+<p>‘창고에서 길이 이어지지 않음’에 필요한 연결 위치를 지도 위에 직접 보여 주면 좋겠다.  </p>
+<p>공사선 안쪽에 길이 있어도 한 줄 멀거나 한 칸 끊긴 것을 여러 번 못 찾았다.  </p>
+<p>어느 접점을 이어야 하는지 알면 내 시간을 도시 배치에 더 쓸 수 있을 것 같다.</p>
+<p>기록 한계: 초반 속도 대기는 자연어 시작/종료가 섞이고 일부 시작 메모가 없어 정확한 총 대기시간은 산출하지 않았다. 첫 화면 사진01은 사전 보존본이고 사진02는 재캡처본이다. 보존 JPEG는 총9장(모두1600×1100), 종료 촬영·닫기 지연은60분 경계 이후 약14초다. 자동 성장 비교는 이 플레이어가 읽거나 수행하지 않았다.</p></section><section class="proof"><h1>비교와 실행 증빙</h1>
+<h2>자동 검증과의 비교</h2>
+<p>A′는 사람이 아닌 AI 에이전트의 수동 UI 관찰(자동 발전 미사용, 첫 화면 기준 실제 60분 14초)이며, 시작 주택 4채에서 L3 약 1분·목책 착공 약 22분/완공 약 58분을 관찰했다(L2 직접 관찰 없음).</p>
+<p>종료 인구 86·가용 목재 68·시장 0개였고 L4·석재 시대·승리에 도달하지 못했다. 공사장 도로 접근 해결과 목재 대기가 진행을 지배했다.</p>
+<p>이전 7db9df85 알고리즘 검증 seed 1–5는 모두 24채 L4·인구 768·승리였으며, 최종 tick 333,658–531,689였다. 시작 배치를 이동한 검증 fixture이므로 같은 조건의 첫 플레이나 인간 성능 자료가 아니다.</p>
+<p>따라서 실시간·시뮬레이션 tick·seed/시작 배치·버전이 다른 두 결과의 속도 배율은 계산하지 않는다. 확인 가능한 차이는 수동 UI의 접근성/자원 병목과 자동 검증의 최종 목표 달성이다.</p>
+<p>근거: play-session.json SHA256 4949c149841177bb990f208bcc062aa84e4c6f8c877b5fe37f8a4cae5813071e; ../efficient-autogrowth/qa-7db9df85/execution-summary.json SHA256 9964ec83009f1042efcb6639bf108e334b25d0d39e3a152d235daa023b7b6230; 같은 폴더 seed1/final-state.json SHA256 bc8cfd48e566f1722155ba0a3f100bc9c99a6ff794c22dead59cf430873db2d2.</p>
+<h2>준비·프로토콜 차이</h2>
+<p>요청한 준비 커밋 1개와 달리 2개가 만들어졌다: 2e2d2cf(실행 준비) + fca1fee(누락된 4줄 메모 보완, 문서만). 실제 플레이는 2e2d2cf의 깨끗한 복제본에서 수행했고 fca1fee는 게임 동작에 영향을 주지 않는다.</p>
+<p>실행 복제본: /tmp/feudal-aprime-clean-20260923-1442. 소스 typecheck/build, 복제본 npm ci와 npm run play가 통과했다. npm의 기존 high 취약점 1개 및 약 695KB 번들 경고는 기록만 하고 수정하지 않았다.</p>
+<p>플레이 입력 전 기술 재시작 1회(28.886초), 전략상 재시작 0회. 원본 로그 시각은 재시작 기준이고 REPORT 시각은 최초 화면 기준이다. 초기 대기 START 누락을 보충하거나 대기 총합을 추정하지 않았다.</p>
+<p>사진02는 최초 L3 관찰 때가 아닌 14:22 재촬영이다. JPEG 9장은 모두 1600×1100이고 원본을 보존했다. 종료 후 자체 브라우저와 이 시험 전용 4173 서버만 종료했다. 제품 서버 3218은 건드리지 않았다.</p>
+<h2>기록 안내</h2>
+<p>REPORT.md는 플레이어의 독립 보고, thinkaloud.md는 동시 기록, play-session.json은 시간·종료 상태 기록이다. setup/에는 준비 명령 로그가 있다. comparison.md는 플레이 종료 후 별도 담당자가 이전 자동 검증을 읽어 작성했다.</p>
+<p>검증: 이 PDF의 A4 페이지 수·렌더링·텍스트 보존, JPEG 형식·크기·개수, ZIP 크기 및 파일별 SHA256을 별도로 확인한다. 사람 플레이 검증이나 신규 제품 버그 수정·배포를 수행한 결과가 아니다.</p></section>

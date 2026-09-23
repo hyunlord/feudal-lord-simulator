@@ -1,0 +1,75 @@
+{
+  "pdf": {
+    "pages": 3,
+    "size": "A4",
+    "bytes": 99663,
+    "sha256": "e6677a3783dc971f1f52c0fcf62d0555cfdc95177ba156d3c0f77d0d6c74131a",
+    "visualQA": "All 3 rendered pages reviewed: no clipping, overlap or missing Korean glyphs",
+    "textQA": "All REPORT.md content segments found in extracted PDF text after markdown and whitespace normalization",
+    "qaRenderDirectory": "/tmp/aprime-pdf-qa"
+  },
+  "screenshots": [
+    {
+      "path": "shots/01-first-screen.jpg",
+      "bytes": 408668,
+      "sha256": "24fc4b47ec522302d8112d4eef900eb4be083e13b23ac1bf7ce7d830fcad160d"
+    },
+    {
+      "path": "shots/02-first-l3.jpg",
+      "bytes": 391258,
+      "sha256": "75fe19b9b1e6a833cbf5bbe96edcd40750afeae9320f1e008a118f0c131404df"
+    },
+    {
+      "path": "shots/03-first-blockage.jpg",
+      "bytes": 351704,
+      "sha256": "957331e5611d7c3b68dc2f0a95e1251cb9d2ce497d5cefe38ebaf32dfbb95a58"
+    },
+    {
+      "path": "shots/04-stalled-wood.jpg",
+      "bytes": 361760,
+      "sha256": "1cd41a6834ed3ea12b2c8341f48633cce8f6114894467627600164290dd5467f"
+    },
+    {
+      "path": "shots/05-palisade-start.jpg",
+      "bytes": 259149,
+      "sha256": "f68f7b18b580ba0521cf74899af6036a1fea8c705360402253f00317e5ea9bcf"
+    },
+    {
+      "path": "shots/06-wall-road-blockage.jpg",
+      "bytes": 392695,
+      "sha256": "d27f973a49b93e0c13773107b991beb331882dd4866ddc8808ab5fc67156959f"
+    },
+    {
+      "path": "shots/07-palisade-complete.jpg",
+      "bytes": 402279,
+      "sha256": "d018092fc472e84200f584191aa184872ab1561bc7bda90915e8f1640c194dc4"
+    },
+    {
+      "path": "shots/08-palisade-confirmed.jpg",
+      "bytes": 394304,
+      "sha256": "8cc0e676df59c060daeb431fd7fa21e0877e6b46bb324305e4bf164e968ef74e"
+    },
+    {
+      "path": "shots/09-sixty-minute-stop.jpg",
+      "bytes": 374695,
+      "sha256": "1fc51f5da0b04d8b17ba72668d054f4e27c68e330465048e66a031fc777c3e14"
+    }
+  ],
+  "jpegCount": 9,
+  "jpegTotalBytes": 3336512,
+  "comparisonLines": 5,
+  "setupCommits": [
+    "2e2d2cf",
+    "fca1fee"
+  ],
+  "playedCommit": "2e2d2cf",
+  "setupDeviation": "Two setup commits instead of requested one; second is docs-only omitted four-line memo correction",
+  "cleanup": "Leader confirmed owned preview PID72235 terminated;4173 closed;3218 untouched",
+  "limitations": [
+    "Agent manual UI session, not a human participant",
+    "No exact total wait duration due to missing early START entries",
+    "L3 shot02 recaptured at14:22; first observation about01:18–01:29",
+    "Technical restart before gameplay; times corrected by28.886 seconds",
+    "Existing npm one high vulnerability and roughly695KB bundle warning recorded, not fixed"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "verifiedAt": "2026-09-23T05:43:41.821Z",
+  "source": "/Users/rexxa/github/feudal-lord-simulator-playable",
+  "sourceHead": "2e2d2cf2307922f8f47e330fc603dd590d808377",
+  "sourceTrackedClean": true,
+  "sourceUntrackedPreserved": true,
+  "clone": "/private/tmp/feudal-aprime-clean-20260923-1442",
+  "cloneMethod": "git clone --no-local --branch codex/phase15-organic-ground",
+  "cloneHead": "2e2d2cf2307922f8f47e330fc603dd590d808377",
+  "cloneStatus": "",
+  "node": "v25.8.2",
+  "npm": "11.11.1",
+  "vite": "8.2.0",
+  "nodeRequirement": "^20.19.0 || >=22.12.0",
+  "install": "npm ci",
+  "installExit": 0,
+  "typecheck": "npm run typecheck",
+  "typecheckExit": 0,
+  "start": "npm run play",
+  "url": "http://127.0.0.1:4173/",
+  "serverPid": 72235,
+  "ownerExecSession": 71178,
+  "playwright": "/opt/homebrew/lib/node_modules/openclaw/node_modules/playwright-core/index.mjs",
+  "chrome": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "screenshots": 1,
+  "visualVerdict": "PASS: production game initial welcome, map and controls visible; initially paused; no visible test controls. No gameplay inputs or hidden-state inspection.",
+  "limitations": [
+    "npm ci reported 1 high severity vulnerability; dependencies unchanged.",
+    "Existing production chunk warning: 695.32 kB JavaScript.",
+    "Screenshot cannot prove absence of unexposed hooks."
+  ],
+  "cleanupOwner": "root after player finishes"
+}

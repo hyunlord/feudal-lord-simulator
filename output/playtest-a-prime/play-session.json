@@ -1,0 +1,54 @@
+{
+  "startUTC": "2026-09-23T05:45:20.394Z",
+  "endUTC": "2026-09-23T06:45:34.242Z",
+  "elapsedseconds": 3613.83520875,
+  "endcondition": "actual60minutes",
+  "browserdetails": {
+    "browser": "Google Chrome headed",
+    "viewport": {
+      "width": 1600,
+      "height": 1100
+    },
+    "deviceScaleFactor": 1,
+    "url": "http://127.0.0.1:4173/"
+  },
+  "restarts": 1,
+  "evidence": [
+    "01-first-screen.jpg",
+    "02-first-l3.jpg",
+    "03-first-blockage.jpg",
+    "04-stalled-wood.jpg",
+    "05-palisade-start.jpg",
+    "06-wall-road-blockage.jpg",
+    "07-palisade-complete.jpg",
+    "08-palisade-confirmed.jpg",
+    "09-sixty-minute-stop.jpg"
+  ],
+  "restartedBrowserStartUTC": "2026-09-23T05:45:49.280Z",
+  "restartedBrowserElapsedSeconds": 3584.9492087500003,
+  "restartDetails": "Before gameplay input, the first controller stdin closed and its browser exited. A fresh headed context was launched 28.886 seconds after the first screen. No gameplay-driven restart.",
+  "clockBasis": "First player screen UTC; monotonic duration of restarted browser plus measured UTC startup gap 28.886 seconds. Raw thinkaloud real labels use restarted browser clock.",
+  "observedResult": {
+    "palisade": "16/16 complete",
+    "era": "목책 마을",
+    "population": 86,
+    "bread": 4,
+    "spendableWood": 68,
+    "stone": 0,
+    "gold": 0,
+    "market": "0/1",
+    "victory": false,
+    "L2": "not directly observed",
+    "L3": "directly observed",
+    "L4": "not reached",
+    "stoneEra": "not reached",
+    "stoneWall": "not reached"
+  },
+  "protocolNotes": [
+    "First startup evidence 01 was retained by parent; player retained 02–09.",
+    "02 was recaptured later with L3 inspector visible; filename is not its first-observation timestamp.",
+    "Early speed-wait entries use natural language and some have only END; no exact complete wait-duration total is inferred.",
+    "No code, DOM, console, accessibility tree, autoplay, or state inspection was used for gameplay.",
+    "End capture and browser close occurred about 14 seconds after the 60-minute boundary."
+  ]
+}
