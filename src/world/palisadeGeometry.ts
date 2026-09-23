@@ -46,7 +46,8 @@ export type ValidPalisadeCandidate = {
 
 export type PalisadeProposalResult =
   | { readonly ok: true; readonly path: PalisadePath; readonly runs: readonly PalisadeRun[]; readonly perimeterSteps: number }
-  | { readonly ok: false; readonly reason: PalisadeFailureReason };
+  | { readonly ok: false; readonly reason: PalisadeFailureReason; readonly attemptedPath?: PalisadePath;
+      readonly failurePoint?: TileEdgePoint; readonly affectedFootprintIds?: readonly string[] };
 
 export type PalisadeValidationResult =
   | { readonly ok: true; readonly candidate: ValidPalisadeCandidate }
@@ -55,6 +56,21 @@ export type PalisadeValidationResult =
 export type PalisadeDragResult =
   | { readonly ok: true; readonly candidate: ValidPalisadeCandidate }
   | { readonly ok: false; readonly reason: PalisadeFailureReason; readonly lastValid: ValidPalisadeCandidate };
+
+export type PalisadeDraftSegment = {
+  readonly index: number;
+  readonly from: TileEdgePoint;
+  readonly to: TileEdgePoint;
+  readonly reason: PalisadeFailureReason | null;
+  readonly point: TileEdgePoint | null;
+  readonly footprintIds: readonly string[];
+};
+
+export type PalisadeDraftDiagnosis = {
+  readonly validation: PalisadeValidationResult;
+  readonly segments: readonly PalisadeDraftSegment[];
+  readonly outsideFootprintIds: readonly string[];
+};
 
 const CARDINAL_AND_DIAGONAL_STEPS = [
   { x: -1, y: -1 },
@@ -178,6 +194,13 @@ function rasterSegment(from: TileEdgePoint, to: TileEdgePoint): readonly TileEdg
     current = next;
   }
   return points;
+}
+
+export function snapPalisadeStroke(from: TileEdgePoint, to: TileEdgePoint): PalisadePath {
+  return rasterSegment(
+    { x: Math.round(from.x), y: Math.round(from.y) },
+    { x: Math.round(to.x), y: Math.round(to.y) },
+  );
 }
 
 function simplifyPath(path: PalisadePath): PalisadePath {
@@ -444,29 +467,104 @@ export function validatePalisadeCandidate(
   return { ok: true, candidate: { path: simplifyPath(path), runs: runsForPath(simplifyPath(path)), perimeterSteps, enclosedFootprints, enclosureRatio } };
 }
 
+export function diagnosePalisadeDraft(
+  grid: Grid,
+  path: PalisadePath,
+  footprints: readonly PalisadeFootprint[],
+  enclosureFootprints = footprints,
+  minimumEnclosureRatio = 0.6,
+): PalisadeDraftDiagnosis {
+  const validation = validatePalisadeCandidate(grid, path, footprints, enclosureFootprints, minimumEnclosureRatio);
+  const segments: PalisadeDraftSegment[] = [];
+  for (let index = 1; index < path.length; index += 1) {
+    const from = path[index - 1];
+    const to = path[index];
+    if (from === undefined || to === undefined) continue;
+    let reason: PalisadeFailureReason | null = null;
+    let point: TileEdgePoint | null = null;
+    let footprintIds: readonly string[] = [];
+    const raster = rasterSegment(from, to);
+    const invalidPoint = raster.find(candidate => !edgeInBounds(grid, candidate));
+    if (invalidPoint !== undefined) {
+      reason = "out_of_bounds";
+      point = invalidPoint;
+    } else {
+      for (let earlier = 0; earlier < index - 2; earlier += 1) {
+        if (isClosed(path) && earlier === 0 && index === path.length - 1) continue;
+        const a = path[earlier];
+        const b = path[earlier + 1];
+        if (a !== undefined && b !== undefined && segmentIntersects(a, b, from, to)) {
+          reason = "self_intersection";
+          point = to;
+          break;
+        }
+      }
+      for (let step = 1; reason === null && step < raster.length; step += 1) {
+        const previous = raster[step - 1];
+        const current = raster[step];
+        if (previous === undefined || current === undefined) continue;
+        if (stepCrossesWater(grid, previous, current)) {
+          reason = "water_crossing";
+          point = diagonalInteriorCell(previous, current) ?? current;
+        }
+      }
+      for (let step = 0; reason === null && step < raster.length; step += 1) {
+        const current = raster[step];
+        const next = raster[step + 1];
+        if (current === undefined) continue;
+        const samples = next === undefined ? [current] : [current, { x: (current.x + next.x) / 2, y: (current.y + next.y) / 2 }];
+        for (const sample of samples) {
+          const touching = footprints.filter(footprint => clearanceFromFootprint(sample, footprint) < 1);
+          if (touching.length === 0) continue;
+          reason = "building_clearance";
+          point = current;
+          footprintIds = touching.map(footprint => footprint.id);
+          break;
+        }
+      }
+    }
+    segments.push({ index: index - 1, from, to, reason, point, footprintIds });
+  }
+  const outsideFootprintIds = isClosed(path)
+    ? footprints.filter(footprint => !footprintCorners(footprint).every(corner => isPointInsidePalisade(corner, path))).map(footprint => footprint.id)
+    : [];
+  return { validation, segments, outsideFootprintIds };
+}
+
 function primaryPalisadeProposal(
   grid: Grid,
   footprints: readonly PalisadeFootprint[],
   margin = PROPOSAL_MARGIN_TILES,
 ): PalisadeProposalResult {
   if (footprints.length === 0) return { ok: false, reason: "no_footprints" };
-  if (footprints.some((footprint) => hasWaterMoat(grid, footprint))) return { ok: false, reason: "water_crossing" };
+  const moated = footprints.find(footprint => hasWaterMoat(grid, footprint));
+  if (moated !== undefined) return { ok: false, reason: "water_crossing", failurePoint: { x: moated.tx, y: moated.ty }, affectedFootprintIds: [moated.id] };
   const hull = convexHull(footprints.flatMap((footprint) => expandedFootprintCorners(footprint, margin)));
   if (hull.length < 2) return { ok: false, reason: "collinear_footprints" };
   const hullInBounds = hull.every(point => edgeInBounds(grid, point));
   const routed = hullInBounds ? routeClosedPath(grid, hull, { footprints, margin }) : null;
   if (routed === null) {
     let failure: PalisadeFailureReason = hullInBounds ? "water_crossing" : "out_of_bounds";
+    let attemptedPath: PalisadePath = clockwisePath(hull);
     for (const envelope of palisadeLandEnvelopes(grid, footprints, margin)) {
       const candidate = validatePalisadeCandidate(grid, envelope, footprints);
       if (candidate.ok) return { ok: true, path: candidate.candidate.path, runs: candidate.candidate.runs, perimeterSteps: candidate.candidate.perimeterSteps };
-      if (hullInBounds && candidate.reason === "building_clearance") failure = candidate.reason;
+      if (hullInBounds && candidate.reason === "building_clearance") {
+        failure = candidate.reason;
+        attemptedPath = envelope;
+      }
     }
-    return { ok: false, reason: failure };
+    return { ok: false, reason: failure, attemptedPath };
   }
   const validation = validatePalisadeCandidate(grid, routed, footprints);
-  if (!validation.ok) return validation;
+  if (!validation.ok) return { ...validation, attemptedPath: routed };
   return { ok: true, path: validation.candidate.path, runs: validation.candidate.runs, perimeterSteps: validation.candidate.perimeterSteps };
+}
+
+function rejectedPalisadeProposal(proposal: PalisadeProposalResult, rejectedPath: PalisadePath | undefined): PalisadeProposalResult {
+  if (rejectedPath !== undefined) return { ok: false, reason: "rejected_candidate", attemptedPath: rejectedPath };
+  if (!proposal.ok && proposal.attemptedPath !== undefined) return { ok: false, reason: "rejected_candidate", attemptedPath: proposal.attemptedPath };
+  return { ok: false, reason: "rejected_candidate" };
 }
 
 export function computePalisadeProposal(
@@ -478,8 +576,9 @@ export function computePalisadeProposal(
   const proposal = primaryPalisadeProposal(grid, footprints, margins?.[0] ?? PROPOSAL_MARGIN_TILES);
   if (proposal.ok && (acceptPath === undefined || acceptPath(proposal.path))) return proposal;
   let rejected = proposal.ok;
+  let rejectedPath = proposal.ok ? proposal.path : undefined;
   if (footprints.length === 0 || footprints.some(footprint => hasWaterMoat(grid, footprint))) {
-    return rejected ? { ok: false, reason: "rejected_candidate" } : proposal;
+    return rejected ? rejectedPalisadeProposal(proposal, rejectedPath) : proposal;
   }
   const ordered = [...footprints].sort((a, b) => a.id.localeCompare(b.id));
   // Prioritize plots that actually obstruct the full-set envelopes. Every omitted
@@ -490,7 +589,7 @@ export function computePalisadeProposal(
       const validation = validatePalisadeCandidate(grid, path, footprints);
       if (validation.ok) {
         const { candidate } = validation;
-        if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; continue; }
+        if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; rejectedPath ??= candidate.path; continue; }
         return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
       }
       for (const footprint of ordered) {
@@ -506,12 +605,12 @@ export function computePalisadeProposal(
         const validation = validatePalisadeCandidate(grid, path, footprints);
         if (!validation.ok) continue;
         const { candidate } = validation;
-        if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; continue; }
+        if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; rejectedPath ??= candidate.path; continue; }
         return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
       }
     }
   }
-  return rejected ? { ok: false, reason: "rejected_candidate" } : proposal;
+  return rejected ? rejectedPalisadeProposal(proposal, rejectedPath) : proposal;
 }
 
 export function dragPalisadeRun(

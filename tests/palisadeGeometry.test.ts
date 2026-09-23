@@ -7,10 +7,12 @@ import {
   clockwisePath,
   computePalisadeProposal,
   convexHull,
+  diagnosePalisadeDraft,
   dragPalisadeRun,
   footprintCorners,
   isPointInsidePalisade,
   palisadePerimeterSteps,
+  snapPalisadeStroke,
   validatePalisadeCandidate,
   type PalisadeFailureReason,
   type PalisadeFootprint,
@@ -26,6 +28,67 @@ function tile(
 ): Tile {
   return { tx, ty, terrain, buildingId: null, hasRoad: false };
 }
+
+test("drawn strokes snap to the same cardinal and diagonal steps used by the wall", () => {
+  // Given
+  const from = { x: 2.2, y: 3.4 };
+  const to = { x: 6.7, y: 5.6 };
+  // When
+  const stroke = snapPalisadeStroke(from, to);
+  // Then
+  assert.deepEqual(stroke[0], { x: 2, y: 3 });
+  assert.deepEqual(stroke.at(-1), { x: 7, y: 6 });
+  assertAxisOrDiagonal(stroke);
+});
+
+test("an open wall draft identifies the offending construction footprint before proclamation", () => {
+  // Given
+  const world = grid(16, 16);
+  const path = [{ x: 2, y: 3 }, { x: 7, y: 3 }, { x: 7, y: 8 }];
+  const buildings = [footprint("site-17", 4, 3), footprint("home", 5, 5)];
+  // When
+  const draft = diagnosePalisadeDraft(world, path, buildings);
+  // Then
+  assert.deepEqual(draft.validation, validatePalisadeCandidate(world, path, buildings));
+  assert.equal(draft.segments[0]?.reason, "building_clearance");
+  assert.deepEqual(draft.segments[0]?.footprintIds, ["site-17"]);
+  assert.deepEqual(draft.segments[0]?.point, { x: 3, y: 3 });
+});
+
+test("draft diagnostics locate water and map-edge failures on their exact segments", () => {
+  // Given
+  const world = grid(12, 12, ["4,3", "4,4"]);
+  const path = [{ x: 3, y: 3 }, { x: 5, y: 5 }, { x: 13, y: 5 }];
+  // When
+  const draft = diagnosePalisadeDraft(world, path, []);
+  // Then
+  assert.equal(draft.segments[0]?.reason, "water_crossing");
+  assert.deepEqual(draft.segments[0]?.point, { x: 4, y: 4 });
+  assert.equal(draft.segments[1]?.reason, "out_of_bounds");
+  assert.deepEqual(draft.segments[1]?.point, { x: 13, y: 5 });
+});
+
+test("draft diagnostics mark the later edge when a player-drawn line crosses itself", () => {
+  // Given
+  const world = grid(12, 12);
+  const path = [{ x: 2, y: 2 }, { x: 8, y: 8 }, { x: 2, y: 8 }, { x: 8, y: 2 }];
+  // When
+  const draft = diagnosePalisadeDraft(world, path, []);
+  // Then
+  assert.equal(draft.segments[2]?.reason, "self_intersection");
+});
+
+test("draft diagnostics preserve final validator verdict and list facilities left outside", () => {
+  // Given
+  const world = grid(16, 16);
+  const path = clockwisePath([{ x: 2, y: 2 }, { x: 10, y: 2 }, { x: 10, y: 10 }, { x: 2, y: 10 }]);
+  const footprints = [footprint("inside", 5, 5), footprint("outside", 12, 5)];
+  // When
+  const draft = diagnosePalisadeDraft(world, path, footprints, footprints, 1);
+  // Then
+  assert.deepEqual(draft.validation, validatePalisadeCandidate(world, path, footprints, footprints, 1));
+  assert.deepEqual(draft.outsideFootprintIds, ["outside"]);
+});
 
 function grid(width: number, height: number, water: readonly string[] = []): Grid {
   const waterKeys = new Set(water);
@@ -215,7 +278,15 @@ test("proposal reports concrete failures for absent footprints and buildings wit
 
   // Then
   assert.deepEqual(empty, { ok: false, reason: "no_footprints" });
-  assert.deepEqual(clipped, { ok: false, reason: "out_of_bounds" });
+  assert.equal(clipped.ok, false);
+  if (!clipped.ok) {
+    assert.equal(clipped.reason, "out_of_bounds");
+    assert.equal(clipped.attemptedPath === undefined, false);
+    if (clipped.attemptedPath !== undefined) {
+      const issue = diagnosePalisadeDraft(grid(8, 8), clipped.attemptedPath, [footprint("edge", 0, 0)]);
+      assert.ok(issue.segments.some(segment => segment.reason === "out_of_bounds"));
+    }
+  }
 });
 
 test("proposal preserves three-tile clearance for verifier regression with water detour", () => {
@@ -263,7 +334,12 @@ test("proposal detours deterministically around water and reports impossible enc
   }
   assert.equal(dryProposal.ok, true);
   if (first.ok && dryProposal.ok) assert.notDeepEqual(first.path, dryProposal.path);
-  assert.deepEqual(impossible, { ok: false, reason: "water_crossing" });
+  assert.equal(impossible.ok, false);
+  if (!impossible.ok) {
+    assert.equal(impossible.reason, "water_crossing");
+    assert.deepEqual(impossible.failurePoint, { x: 4, y: 4 });
+    assert.deepEqual(impossible.affectedFootprintIds, ["trapped"]);
+  }
 });
 
 test("candidate validation rejects open, self-crossing, water, bounds, and enclosure below sixty percent", () => {

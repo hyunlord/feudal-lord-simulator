@@ -109,6 +109,10 @@ test("Given a ready edge-map settlement When palisade proposal is out of bounds 
   const proposal = computePalisadeProposal(state, palisadeFootprints(state));
 
   assert.deepEqual(action, { kind: "proclaim_era" });
-  assert.deepEqual(proposal, { ok: false, reason: "out_of_bounds" });
+  assert.equal(proposal.ok, false);
+  if (!proposal.ok) {
+    assert.equal(proposal.reason, "out_of_bounds");
+    assert.ok(proposal.attemptedPath?.length);
+  }
   assert.equal(autoplayActionToGameAction(action, state), null);
 });
