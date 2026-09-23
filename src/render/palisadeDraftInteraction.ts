@@ -18,6 +18,7 @@ export type PalisadeDraftState = {
   readonly path: PalisadePath;
   readonly candidate: ValidPalisadeCandidate | null;
   readonly strokes: readonly PalisadePath[];
+  readonly cancelArmed: boolean;
   readonly selectedRunIndex: number | null;
   readonly selectedVertexIndex: number | null;
   readonly dragStartTile: TileCoordinate | null;
@@ -32,7 +33,7 @@ export type PalisadeDraftState = {
 
 export function initialOpenPalisadeDraft(): PalisadeDraftState {
   return {
-    status: 'editing', mode: 'draw', path: [], candidate: null, strokes: [],
+    status: 'editing', mode: 'draw', path: [], candidate: null, strokes: [], cancelArmed: false,
     selectedRunIndex: null, selectedVertexIndex: null, dragStartTile: null,
     failureReason: 'open_polygon', activeGesture: null, gestureBasePath: null, gestureEnd: null,
     failurePoint: null, affectedFootprintIds: [],
@@ -69,7 +70,7 @@ export function applyPalisadeIntent(input: {
       if (end === null) return draft;
       return { ...draft, path: first === undefined ? [point] : draft.path,
         activeGesture: 'stroke', gestureBasePath: draft.path, gestureEnd: end, gesturePoint: point,
-        selectedRunIndex: null, selectedVertexIndex: null };
+        selectedRunIndex: null, selectedVertexIndex: null, cancelArmed: false };
     }
     case 'strokeMove': {
       if (draft.activeGesture !== 'stroke' || draft.gestureBasePath === null || draft.gestureEnd === null) return draft;
@@ -95,7 +96,8 @@ export function applyPalisadeIntent(input: {
     case 'vertexBegin':
       if (draft.activeGesture !== null || intent.index < 0 || intent.index >= draft.path.length) return draft;
       return { ...draft, selectedVertexIndex: intent.index, activeGesture: 'vertex',
-        gestureBasePath: draft.path, gestureEnd: null, gesturePoint: draft.path[intent.index] ?? null };
+        gestureBasePath: draft.path, gestureEnd: null, gesturePoint: draft.path[intent.index] ?? null,
+        cancelArmed: false };
     case 'vertexMove': {
       if (draft.activeGesture !== 'vertex' || draft.gestureBasePath === null || draft.selectedVertexIndex === null) return draft;
       const source = draft.gestureBasePath, index = draft.selectedVertexIndex, point = integerPoint(intent.point);
@@ -120,17 +122,20 @@ export function applyPalisadeIntent(input: {
       const path = [...draft.candidate.path.slice(run.endIndex, -1),
         ...draft.candidate.path.slice(0, run.startIndex + 1)];
       return validatePath(state, { ...draft, path, mode: 'draw', strokes: [...draft.strokes, draft.path],
-        selectedRunIndex: null, selectedVertexIndex: null });
+        selectedRunIndex: null, selectedVertexIndex: null, cancelArmed: false });
     }
     case 'undo':
     case 'cancel': {
+      if (intent.type === 'cancel' && draft.cancelArmed) return null;
       if (draft.gestureBasePath !== null) return validatePath(state, { ...draft, path: draft.gestureBasePath,
-        activeGesture: null, gestureBasePath: null, gestureEnd: null, gesturePoint: null, selectedVertexIndex: null });
+        activeGesture: null, gestureBasePath: null, gestureEnd: null, gesturePoint: null,
+        selectedVertexIndex: null, cancelArmed: intent.type === 'cancel' });
       const previous = draft.strokes[draft.strokes.length - 1];
       if (previous !== undefined) return validatePath(state, { ...draft, path: previous,
-        mode: 'draw', strokes: draft.strokes.slice(0, -1), selectedRunIndex: null, selectedVertexIndex: null });
+        mode: 'draw', strokes: draft.strokes.slice(0, -1), selectedRunIndex: null,
+        selectedVertexIndex: null, cancelArmed: intent.type === 'cancel' });
       if (intent.type === 'undo') return draft;
-      return draft.path.length > 0 ? initialOpenPalisadeDraft() : null;
+      return draft.path.length > 0 ? { ...initialOpenPalisadeDraft(), cancelArmed: true } : null;
     }
   }
 }
@@ -199,6 +204,7 @@ export function selectDraftRun(input: {
     selectedRunIndex: input.draft.candidate === null ? null : selectPalisadeRunAtPoint(input.draft.candidate, input.point),
     dragStartTile: { tx: input.point.x, ty: input.point.y },
     failureReason: null,
+    cancelArmed: false,
   };
 }
 
@@ -242,6 +248,7 @@ export function dragDraftRunByTiles(input: {
     strokes: [...input.draft.strokes, input.draft.path],
     dragStartTile: input.currentTile,
     failureReason: null,
+    cancelArmed: false,
   };
 }
 

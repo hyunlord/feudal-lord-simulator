@@ -64,6 +64,19 @@ test('undo and cancel remove a complete stroke, with the second cancel discardin
   assert.equal(applyPalisadeIntent({ state, draft: cleared, intent: { type: 'cancel' } }), null);
 });
 
+test('two cancels discard a multi-stroke draft while undo still removes only one stroke', () => {
+  let draft = initialOpenPalisadeDraft();
+  for (const [from, to] of [
+    [{ x: 4, y: 4 }, { x: 16, y: 4 }],
+    [{ x: 16, y: 4 }, { x: 16, y: 16 }],
+    [{ x: 16, y: 16 }, { x: 4, y: 16 }],
+  ] as const) draft = drawStroke(draft, from, to);
+  const once = applyPalisadeIntent({ state, draft, intent: { type: 'cancel' } });
+  assert.ok(once);
+  assert.deepEqual(once.path.at(-1), { x: 16, y: 16 });
+  assert.equal(applyPalisadeIntent({ state, draft: once, intent: { type: 'cancel' } }), null);
+});
+
 test('a closed draft can erase one run and reconnect its two open endpoints', () => {
   let draft = initialOpenPalisadeDraft();
   for (const [from, to] of [
