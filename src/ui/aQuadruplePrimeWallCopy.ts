@@ -19,6 +19,17 @@ export const A_QUADRUPLE_PRIME_WALL_COPY = {
   provisionalRoute: (count: number) => `임시 자재 경로 검사 · 경로 없는 구간 ${count} (둘레를 닫으면 다시 검사)`,
   connectingRoads: (count: number) => `연결에 필요한 길 약 ${count}칸`,
   noConnectingRoad: '연결 가능한 길 후보를 찾지 못함',
+  shortFailure: {
+    building_clearance: '건물과 한 칸 여유 부족',
+    water_crossing: '물·지형 불가',
+    out_of_bounds: '지도 경계',
+    self_intersection: '목책선 교차',
+  },
+  recommendationUnavailable: '추천 불가',
+  gateGlyph: '문',
+  routeReachableGlyph: '✓',
+  routeUnreachableGlyph: '×',
+  routeUnavailableGlyph: '?',
 } as const;
 
 const PALISADE_FAILURE_LABELS = {

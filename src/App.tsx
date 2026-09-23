@@ -85,6 +85,10 @@ export function App() {
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
   const [welcomeVisible, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
+  const palisadeDraftRef = useRef(palisadeDraft);
+  const gameStateRef = useRef(state);
+  palisadeDraftRef.current = palisadeDraft;
+  gameStateRef.current = state;
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [populationDrawerOpen, setPopulationDrawerOpen] = useState(false);
   const [highlightedHouseIds, setHighlightedHouseIds] = useState<readonly string[]>([]);
@@ -155,9 +159,9 @@ export function App() {
     const keyDown = (event: KeyboardEvent) => {
       const target = event.target;
       const editable = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
-      if (!editable && palisadeDraft !== null && (event.code === "Escape" || event.code === "KeyZ")) {
+      if (!editable && palisadeDraftRef.current !== null && (event.code === "Escape" || event.code === "KeyZ")) {
         event.preventDefault();
-        setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state, draft: current, intent: { type: event.code === "Escape" ? "cancel" : "undo" } }));
+        setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: event.code === "Escape" ? "cancel" : "undo" } }));
         return;
       }
       if (event.code === "Escape") {
@@ -179,7 +183,7 @@ export function App() {
     };
     window.addEventListener("keydown", keyDown);
     return () => window.removeEventListener("keydown", keyDown);
-  }, [overlayMode, palisadeDraft, state]);
+  }, [overlayMode]);
 
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
   const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null

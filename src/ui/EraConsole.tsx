@@ -92,7 +92,7 @@ export function buildEraConsoleModel(input: {
     action: {
       enabled: canBegin,
       label: actionLabel({ state: input.state, draft: input.draft }),
-      reason: actionReason({ firstUnmet, state: input.state }),
+      reason: actionReason({ firstUnmet, state: input.state, draft: input.draft }),
       targetEra,
     },
     proposal: {
@@ -226,10 +226,14 @@ export function EraConsole({
 function actionReason(input: {
   readonly firstUnmet: EraRequirement | null;
   readonly state: GameState;
+  readonly draft: PalisadeDraftState | null;
 }): string | null {
   if (input.state.era === "stone_town") return "이미 석조 도시가 선포되었습니다";
   if (input.firstUnmet !== null) {
     return WALL_COPY.requirementProgress(input.firstUnmet.label, input.firstUnmet.current, input.firstUnmet.target);
+  }
+  if (input.state.era === 'hamlet' && input.draft !== null && input.draft.candidate === null) {
+    return palisadeFailureLabel(input.draft.failureReason ?? 'open_polygon');
   }
   return null;
 }
