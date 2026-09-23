@@ -86,3 +86,7 @@
   .resource-bar__primary { gap: 4px; }
 }
 .resource-bar__more[open] { z-index: 30; }
+.app-shell .resource-bar__coin { cursor: pointer; }
+.app-shell .resource-bar__coin:hover, .app-shell .resource-bar__coin[aria-expanded="true"] { background: var(--palette-ink-muted); }
+.resource-bar__coin-detail { position: absolute; top: calc(100% + 4px); right: 0; z-index: 30; width: min(360px, calc(100vw - 24px)); padding: 10px 12px; background: var(--palette-ink); border: 2px solid var(--palette-earth); color: var(--palette-vellum); font: var(--font-meta)/1.5 var(--ui-body-font); }
+.resource-bar__coin-detail p { margin: 4px 0 0; }

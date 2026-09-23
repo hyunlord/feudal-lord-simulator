@@ -6,6 +6,7 @@ import {
   type StorableResourceType,
 } from "../content/resourceConfig";
 import { amountOf } from "./deliveryCommon";
+import { storageIntakeSpace } from "../economy/storage";
 import type {
   DeliveryInventoryPort,
   DeliveryRoutePort,
@@ -42,23 +43,6 @@ function isStorableResource(resource: ResourceType): resource is StorableResourc
   }
 }
 
-function deliveryIntakeSpace(
-  building: Building,
-  resource: ResourceType,
-  inventory: DeliveryInventoryPort,
-): number {
-  const free = inventory.availableSpace(building);
-  const limitedResources: readonly ResourceType[] = building.kind === "granary" && resource === "wheat"
-    ? ["wheat"]
-    : building.kind === "storehouse" && (resource === "logs" || resource === "stone_raw")
-      ? ["logs", "stone_raw"] : [];
-  if (limitedResources.length === 0) return free;
-  const rawLimit = Math.floor(BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity / 2);
-  const committed = limitedResources.reduce((total, input) => total
-    + amountOf(building.inventory, input) + amountOf(building.reserved, input), 0);
-  return Math.min(free, Math.max(0, rawLimit - committed));
-}
-
 export function deliverCandidate(
   producer: Building,
   resource: ResourceType,
@@ -77,7 +61,7 @@ export function deliverCandidate(
     const amount = Math.min(
       BALANCE.CARTER_CAPACITY,
       stock,
-      deliveryIntakeSpace(building, resource, inventory),
+      storageIntakeSpace(building, resource, inventory.availableSpace(building)),
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });

@@ -5,6 +5,7 @@ import type { GameState } from "../engine/engine.types";
 import { houseBuiltLevel, houseCondition, houseConditionLabel } from "../population/houseCondition";
 import { providerServiceRows } from "../ui/serviceDiagnosisModel";
 import { buildingProblemCause } from "../ui/problemCauseModel";
+import { storageUsage } from '../economy/storage';
 
 export type BuildingInspectorModel = {
   readonly kind: Building["kind"];
@@ -26,7 +27,7 @@ const PURPOSES = {
   sawmill: "통나무를 목재로 가공",
   quarry: "바위에서 원석을 채굴",
   masonry: "원석을 석재로 가공",
-  market: "잉여 물자를 팔아 금화를 확보",
+  market: "남는 물자를 팔아 재정 수입",
   church: "주변 가구에 교회 서비스를 제공",
   keep: "석조 도시의 중심 성채",
 } as const;
@@ -73,7 +74,12 @@ export function buildingInspectorModel(
     .map((resource) => `${RESOURCE_NAMES[resource]} ${building.inventory[resource] ?? 0}`)
     .join(" · ") || "없음";
   const problemCause = buildingProblemCause(state, building.id);
+  const usage = building.kind === 'storehouse' || building.kind === 'granary' ? storageUsage(building) : null;
   const rows = [
+    ...(usage === null ? [] : [
+      `보관 ${usage.used} + 입고 예약 ${usage.incoming} / 한도 ${usage.capacity}`,
+      ...usage.byResource.map(item => `${RESOURCE_NAMES[item.resource]} ${item.stored} + 입고 예약 ${item.incoming} / 공동 한도 ${usage.capacity}`),
+    ]),
     ...providerServiceRows(state, building),
     ...(config.workersRequired > 0 ? [`일꾼 ${building.workers}/${config.workersRequired}`] : []),
     `재고 ${stock}`,

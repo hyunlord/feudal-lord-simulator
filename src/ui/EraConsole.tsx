@@ -1,11 +1,15 @@
 import { isWallConstructionSite, palisadeConstructionSchedule } from "../economy/palisadeConstruction";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
+import { recentCoinIncome } from "../engine/coinLedger";
+import type { WallConstructionPriority } from "../engine/constructionReserve";
 import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
 import type { PalisadeDraftState } from "../render/palisadeDraftInteraction";
 import { constructionSiteCardModel } from "./constructionSiteCardModel";
 import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsoleModel";
+import { proposalPredictionLines } from "./wallPrediction";
+import type { PredictionLine } from "./predictionTypes";
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -24,6 +28,8 @@ export type EraConsoleModel = {
     readonly label: string;
     readonly failure: string | null;
   };
+  readonly predictionLines: readonly PredictionLine[];
+  readonly coinHint: string | null;
   readonly draft: {
     readonly editing: boolean;
     readonly selectedRunLabel: string | null;
@@ -61,6 +67,16 @@ export function buildEraConsoleModel(input: {
   const canBegin = input.state.era === "hamlet"
     ? firstUnmet === null && proposal?.ok === true
     : canProclaimStoneTownEra(input.state);
+  const predictionPath = input.draft?.candidate.path ?? (proposal?.ok ? proposal.path : null);
+  const marketCount = input.state.buildings.filter(building => building.kind === 'market').length;
+  const recentIncome = recentCoinIncome(input.state);
+  const coinHint = input.state.era === 'palisade'
+    ? marketCount === 0
+      ? '시장 0개 · 수입원 없음 · 시장이 창고의 남는 물자를 팔 때 들어옵니다'
+      : recentIncome.total > 0
+        ? `시장 ${marketCount}개 · 최근 2,400틱 시장 판매 +${recentIncome.total}`
+        : `시장 ${marketCount}개 · 최근 수입 0 · 남는 물자 판매 대기`
+    : null;
   return {
     currentEraLabel: CURRENT_ERA_LABELS[input.state.era],
     requirements,
@@ -76,6 +92,8 @@ export function buildEraConsoleModel(input: {
       label: proposal === null ? "" : proposal.ok ? proposal.label : "목책 제안 불가",
       failure: proposal === null || proposal.ok ? null : proposalFailureLabel(proposal.reason),
     },
+    predictionLines: predictionPath === null ? [] : proposalPredictionLines(input.state, predictionPath),
+    coinHint,
     draft: {
       editing: input.draft !== null,
       selectedRunLabel: selectedRunLabel(input.draft),
@@ -97,12 +115,16 @@ export function EraConsole({
   onConfirmProposal,
   onCancelProposal,
   onProclaimStoneTown = () => undefined,
+  priority = 'balanced',
+  onPriorityChange,
 }: {
   readonly model: EraConsoleModel;
   readonly onBeginProposal: () => void;
   readonly onConfirmProposal: () => void;
   readonly onCancelProposal: () => void;
   readonly onProclaimStoneTown?: () => void;
+  readonly priority?: WallConstructionPriority;
+  readonly onPriorityChange?: (priority: WallConstructionPriority) => void;
 }) {
   const actionHandler = model.action.targetEra === "stone_town"
     ? onProclaimStoneTown
@@ -120,7 +142,10 @@ export function EraConsole({
             key={requirement.key}
           >
             <dt>{requirement.label}</dt>
-            <dd>{requirement.current}/{requirement.target}</dd>
+            <dd>{requirement.current}/{requirement.target}
+              {requirement.key === 'coin' && model.coinHint !== null
+                ? <small className="era-requirement-hint">{model.coinHint}</small> : null}
+            </dd>
           </div>
         ))}
       </dl>
@@ -131,6 +156,11 @@ export function EraConsole({
           {model.proposal.failure === null ? null : <span>{model.proposal.failure}</span>}
         </p>
       ) : null}
+      {model.proposal.visible && model.predictionLines.length > 0 ? (
+        <ul className="era-proposal-lines" aria-label="목책 공사 예측">
+          {model.predictionLines.map(line => <li className={`prediction-line prediction-line--${line.tone}`} key={line.id}>{line.text}</li>)}
+        </ul>
+      ) : null}
       {model.draft.editing ? (
         <p className="era-draft-status">
           {model.draft.selectedRunLabel ?? "목책선을 클릭해 조정할 구간을 고르세요."}
@@ -138,6 +168,14 @@ export function EraConsole({
         </p>
       ) : null}
       {model.wallProgress === null ? null : <p className="era-wall-progress">{model.wallProgress}</p>}
+      {model.wallProgress !== null && onPriorityChange !== undefined ? (
+        <div className="era-wall-priority" role="group" aria-label="성벽 공사 자재 우선순위">
+          <button type="button" aria-pressed={priority === 'balanced'}
+            onClick={() => onPriorityChange('balanced')}>{priority === 'balanced' ? '✓ ' : ''}균형 · 25% 비축</button>
+          <button type="button" aria-pressed={priority === 'priority'}
+            onClick={() => onPriorityChange('priority')}>{priority === 'priority' ? '✓ ' : ''}공사 우선</button>
+        </div>
+      ) : null}
       {model.diagnostic === null ? null : <p className="era-diagnostic">{model.diagnostic}</p>}
       {model.irreversibleNotice === null ? null : (
         <p className="era-irrevocable">{model.irreversibleNotice}</p>
@@ -204,7 +242,7 @@ function proposalFailureLabel(reason: string): string {
     case "building_clearance":
       return "건물과 성벽 사이에 최소 한 칸의 여유가 필요합니다";
     case "insufficient_enclosure":
-      return "건물 60% 이상을 둘러야 합니다";
+      return "생활권을 모두 둘러야 합니다";
     case "empty_perimeter":
       return "둘레가 비어 있습니다";
     default:

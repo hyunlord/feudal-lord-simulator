@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
 
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import { HOUSEHOLD_SERVICE_CONFIG } from "../population/serviceAllocation";
 
 import { KO_UI } from "../content/locale.ko";
@@ -42,15 +43,15 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
     return () => window.removeEventListener("keydown", close);
   }, []);
   const visibleOptions = options.filter((option) => buildCategory(option.tool) === category);
-  const detailTool = preview ?? selectedTool ?? visibleOptions[0]?.tool ?? "road";
+  const detailTool = selectedTool ?? preview ?? visibleOptions[0]?.tool ?? "road";
   const detailOption = detailTool === "road" ? ROAD_TOOL_OPTION : options.find((option) => option.tool === detailTool) ?? ROAD_TOOL_OPTION;
-  const detailLines = buildToolTooltipLines(detailOption.tool, menuState);
+  const selectedOption = selectedTool === null ? null : selectedTool === "road" ? ROAD_TOOL_OPTION : options.find((option) => option.tool === selectedTool) ?? null;
   const service = Object.values(HOUSEHOLD_SERVICE_CONFIG).find(item => item.kind === detailOption.tool);
   const radius = detailOption.tool === "road" ? undefined : BUILDING_CONFIG_BY_KIND[detailOption.tool].serviceRadius;
-  const affordable = buildToolAffordability(detailOption.tool, menuState).affordable;
 
   const toolButton = (option: BuildToolOption) => {
-    const toolAffordable = buildToolAffordability(option.tool, menuState).affordable;
+    const affordability = buildToolAffordability(option.tool, menuState);
+    const toolAffordable = affordability.affordable;
     const selected = selectedTool === option.tool;
     const thumbnail = buildThumbnail(option.tool);
     return (
@@ -68,8 +69,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           {thumbnail === null ? <BuildGlyph tool={option.tool} /> : <img src={thumbnail} width="80" height="64" alt="" draggable={false} />}
         </span>
         <span className="build-seal-label" aria-hidden="true">{option.label}</span>
+        {option.tool === "market" ? <span className="build-tool-purpose">남는 물자를 팔아 재정 수입</span> : null}
         <span className="build-tool-cost">{buildCostLabel(option)}</span>
-        {!toolAffordable && <span className="build-tool-shortfall">자원 부족</span>}
+        {!toolAffordable && <span className="build-tool-shortfall">{shortfallText(option, affordability.spendable)}</span>}
       </button>
     );
   };
@@ -105,11 +107,21 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}>i</button>
       </div>
       <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내" hidden={!detailsOpen}>
-        <div className="build-menu-detail-heading"><strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span></div>
-        <p>{detailOption.purpose}</p><p>{detailOption.requirements.join(" · ")}</p>
-        <p className={affordable ? "build-menu-ready" : "build-menu-shortfall"}>{detailLines.at(-1)}</p>
+        {selectedOption === null ? <p>선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.</p> : <>
+          <div className="build-menu-detail-heading"><strong>{selectedOption.label}</strong><span>{buildCostLabel(selectedOption)}</span></div>
+          <p>{selectedOption.purpose}</p><p>{selectedOption.requirements.join(" · ")}</p>
+          <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
+        </>}
       </div>
       <div className="build-menu-instruction">클릭 설치 · Esc/우클릭 취소 · 휠 확대 · O 문제 보기</div>
     </div>
   );
+}
+
+const RESOURCE_LABELS = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: "금화" } as const satisfies Record<ResourceType, string>;
+
+function shortfallText(option: BuildToolOption, spendable: Partial<Record<ResourceType, number>>): string {
+  return RESOURCE_TYPES.filter(resource => (option.cost[resource] ?? 0) > (spendable[resource] ?? 0))
+    .map(resource => `${RESOURCE_LABELS[resource]} 부족 ${spendable[resource] ?? 0}/${option.cost[resource] ?? 0}`)
+    .join(" · ");
 }

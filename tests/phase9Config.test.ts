@@ -154,7 +154,7 @@ test("Phase 9 market has exact palisade-era config and visible menu copy", () =>
   });
   assert.equal(buildMenuGroups(state({ era: "hamlet" })).some((group) => group.options.some((option) => option.tool === "market")), false);
   assert.equal(buildMenuGroups(palisade).some((group) => group.options.some((option) => option.tool === "market" && option.label === "시장")), true);
-  assert.ok(buildToolTooltipLines("market", palisade).some((line) => line.includes("금화")));
+  assert.ok(buildToolTooltipLines("market", palisade).some((line) => line.includes("남는 물자를 팔아 재정 수입")));
   assert.deepEqual(buildingBodyProfile("market", 0).roofColor, SEMANTIC_PALETTE.goldDark);
 });
 

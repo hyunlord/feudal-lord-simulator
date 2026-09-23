@@ -12,7 +12,8 @@ test('L4 inspector names maintenance risk rather than an impossible upgrade bloc
   const value = houseDiagnosisModel(state, STARTING_HOUSE_ID);
   assert.ok(value);
   const html = renderToStaticMarkup(createElement(DiagnosticCard, { model: { kind: 'house', value }, position: { x: 0, y: 0 },
-    causeSummary: { buildingId: STARTING_HOUSE_ID, name: '상인가옥', currentLevel: 4, nextLevel: null, status: 'normal', blocker: null, summary: '유지 중' } }));
+    causeSummary: { buildingId: STARTING_HOUSE_ID, name: '상인가옥', currentLevel: 4, nextLevel: null, status: 'normal', blocker: null,
+      summary: '유지 중', progressTicks: 0, requiredTicks: null, remainingTicks: null } }));
   assert.match(html, /유지 위험: 없음/);
   assert.doesNotMatch(html, /첫 방해/);
 });

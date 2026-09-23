@@ -21,6 +21,14 @@ test("build menu exposes all building tools plus road in reachable order", () =>
   assert.deepEqual(tools, [...buildingKinds, "road"]);
 });
 
+test("Given an unaffordable card When menu renders Then shortfall shows owned stock and cost", () => {
+  const markup = renderToStaticMarkup(createElement(BuildSeals, {
+    state: { ...DEFAULT_GAME_STATE, treasuryTimber: 0 }, selectedTool: null, onSelect: () => undefined,
+  }));
+  assert.match(markup, /목재 부족 0\/15/);
+  assert.match(markup, /선택 도구 없음/);
+});
+
 test("build menu options provide accessible labels for every selectable tool", () => {
   // Given / When
   const labels = BUILD_TOOL_OPTIONS.map((option) => option.label.trim());

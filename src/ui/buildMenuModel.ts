@@ -65,7 +65,7 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   sawmill: "통나무를 목재로 켭니다",
   quarry: "바위 가장자리에서 원석을 캐냅니다",
   masonry: "원석을 석재로 다듬습니다",
-  market: "잉여 물자를 팔아 금화를 모읍니다",
+  market: "남는 물자를 팔아 재정 수입을 얻습니다",
   church: "주변 집에 신앙 서비스를 제공합니다",
   keep: "석조 도시의 중심 성채를 세웁니다",
   storehouse: "목재와 통나무를 보관합니다",
