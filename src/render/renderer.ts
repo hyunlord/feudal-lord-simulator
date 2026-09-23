@@ -30,6 +30,9 @@ import {
   type ConstructionCompletionTracker,
 } from "./constructionCompletionEffects";
 import { drawPalisadeGateFlourish, drawPalisadeRun } from "./drawPalisadeSegments";
+import { previewPalisadeRouteAccess } from "../engine/palisadeRouteAccess";
+import { isPalisadeConstructionSite } from "../domain/palisadeConstructionSchedule";
+import { drawPalisadeRoutePreviewOverlay } from "./palisadeRoutePreviewOverlay";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 
@@ -149,11 +152,18 @@ export const renderFrame = (input: RenderFrameInput): void => {
     houseIds: input.highlightedHouseIds ?? [],
   });
   if (input.palisadeDraft !== undefined && input.palisadeDraft !== null) {
+    const routeAccess = previewPalisadeRouteAccess(input.state, input.palisadeDraft.candidate.path);
     drawPalisadeRun(input.context, {
       path: input.palisadeDraft.candidate.path,
       style: "plot",
       zoom: input.camera.zoom,
     });
+    const unreachableIds = new Set(routeAccess.unreachableSiteIds);
+    const unreachablePaths = routeAccess.projected.constructionSites
+      .filter(isPalisadeConstructionSite)
+      .filter(site => unreachableIds.has(site.id))
+      .map(site => site.path);
+    drawPalisadeRoutePreviewOverlay(input.context, unreachablePaths, input.camera.zoom);
   }
   if (input.palisadeCeremonyStartedAtMs !== undefined && input.palisadeCeremonyStartedAtMs !== null && input.state.palisade !== null) {
     drawPalisadeGateFlourish(input.context, {
