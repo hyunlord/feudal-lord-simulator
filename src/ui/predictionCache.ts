@@ -26,7 +26,8 @@ export function predictionStateKey(state: GameState): string {
     width: state.width, height: state.height, terrain,
     wall: state.palisade === null ? null : [state.palisade.gate, state.palisade.additionalGates,
       state.palisade.segments.map(segment => [segment.edgePath, segment.completed])],
-    buildings: state.buildings.map(building => [building.id, building.kind, building.tx, building.ty, building.houseLot, building.workers]),
+    buildings: state.buildings.map(building => [building.id, building.kind, building.tx, building.ty, building.houseLot, building.workers,
+      buildResources.map(resource => [building.inventory[resource], building.reserved[resource], building.stockReserved[resource]])]),
     houses: state.houses.map(house => [house.buildingId, house.level]),
     population: state.population, ordinal: state.nextConstructionOrdinal, era: state.era,
     reservation: [reservation.reservedWorkers, reservation.activeSiteId],
@@ -35,6 +36,7 @@ export function predictionStateKey(state: GameState): string {
       RESOURCE_TYPES.every(resource => (site.delivered[resource] ?? 0) >= (site.required[resource] ?? 0)),
       site.builderTicks >= site.requiredBuilderTicks]),
     materials: buildResources.map(resource => placementSpendableResource(state, resource)),
+    treasuryTimber: state.treasuryTimber,
   });
   stateKeys.set(state, key);
   return key;

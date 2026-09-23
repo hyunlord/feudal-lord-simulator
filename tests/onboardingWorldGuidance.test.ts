@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../src/content/buildingConfig";
-import { placeRoadLine } from "../src/engine/gameActions";
+import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import type { TileCoordinate } from "../src/world/grid";
@@ -129,6 +129,19 @@ test("onboardingWorldGuidanceTargets advances from the authored opening to food 
   for (const target of targets) {
     if (target.kind !== "road") assert.equal(canPlaceBuilding(state, target.kind, target.origin.tx, target.origin.ty).ok, true);
   }
+});
+
+test("food guidance advances past a farm that is already under construction", () => {
+  const state = placeRoadLine(DEFAULT_GAME_STATE, { tx: 1, ty: 0 }, { tx: 1, ty: 0 });
+  const farm = onboardingWorldGuidanceTargets(state).find(target => target.kind === "wheat_farm");
+  assert.ok(farm);
+  const building = placeBuilding(state, "wheat_farm", farm.origin);
+  assert.ok(building.constructionSites.some(site => site.kind === "wheat_farm"));
+
+  const targets = onboardingWorldGuidanceTargets(building);
+  assert.ok(targets.every(target => target.kind !== "wheat_farm"));
+  assert.ok(targets.some(target => target.kind === "mill"));
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(building), false);
 });
 
 test("onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers", () => {

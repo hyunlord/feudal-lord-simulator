@@ -54,7 +54,7 @@ const BUILDING_TARGET_LABELS = {
 type GuidanceWorld = Pick<
   GameState,
   "buildings" | "height" | "houses" | "tiles" | "treasuryTimber" | "width"
-> & Partial<Pick<GameState, "era">>;
+> & Partial<Pick<GameState, "constructionSites" | "era">>;
 
 export type OnboardingGuidanceTarget = {
   readonly kind: BuildingKind | "road";

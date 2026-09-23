@@ -9,16 +9,16 @@ import { manhattanDistance } from "./onboardingGuidanceGeometry";
 type GuidanceWorld = Pick<
   GameState,
   "buildings" | "height" | "houses" | "tiles" | "treasuryTimber" | "width"
-> & Partial<Pick<GameState, "era">>;
+> & Partial<Pick<GameState, "constructionSites" | "era">>;
 
 export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly BuildingKind[] {
-  if (!hasBuildingKind(state, "logging_camp")) return ["logging_camp"];
-  const missingFoodChain = (["wheat_farm", "mill", "granary"] as const).filter(
-    (kind) => !hasBuildingKind(state, kind),
+  if (!hasCompletedBuildingKind(state, "logging_camp")) return hasPendingSiteKind(state, "logging_camp") ? [] : ["logging_camp"];
+  const unfinishedFoodChain = (["wheat_farm", "mill", "granary"] as const).filter(
+    (kind) => !hasCompletedBuildingKind(state, kind),
   );
-  if (missingFoodChain.length > 0) return missingFoodChain;
-  if (!hasBuildingKind(state, "sawmill")) return ["sawmill"];
-  if (!hasPalisadeTimberStorage(state)) return ["storehouse"];
+  if (unfinishedFoodChain.length > 0) return unfinishedFoodChain.filter(kind => !hasPendingSiteKind(state, kind));
+  if (!hasCompletedBuildingKind(state, "sawmill")) return hasPendingSiteKind(state, "sawmill") ? [] : ["sawmill"];
+  if (!hasPalisadeTimberStorage(state)) return hasPendingSiteKind(state, "storehouse") ? [] : ["storehouse"];
   if (!hasWellWithinHouseRange(state)) return ["well"];
   return [];
 }
@@ -70,8 +70,12 @@ export function wellCompletesTask(
   });
 }
 
-function hasBuildingKind(state: GuidanceWorld, kind: BuildingKind): boolean {
+function hasCompletedBuildingKind(state: GuidanceWorld, kind: BuildingKind): boolean {
   return state.buildings.some((building) => building.kind === kind);
+}
+
+function hasPendingSiteKind(state: GuidanceWorld, kind: BuildingKind): boolean {
+  return state.constructionSites?.some((site) => site.kind === kind) === true;
 }
 
 function hasWellWithinHouseRange(state: GuidanceWorld): boolean {

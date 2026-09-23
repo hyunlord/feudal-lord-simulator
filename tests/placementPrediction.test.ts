@@ -92,6 +92,31 @@ test('disconnected well reports no road while remaining legal and supplying wate
   assert.match(prediction.lines.find(line=>line.id==='road')?.text??'',/운영에 불필요/);
   assert.match(prediction.lines.find(line=>line.id==='supply')?.text??'',/1\/12필지/);
 });
+test('food placement distinguishes a local road from a material delivery route',()=>{
+  const connected = fixture();
+  connected.treasuryTimber = 0;
+  connected.buildings = [
+    {...connected.buildings[0]!, inventory: {timber: 100}},
+    {...connected.buildings[0]!, id: 'far-store', kind: 'storehouse', tx: 15, ty: 15, inventory: {}},
+  ];
+  const nearby = buildingPlacementPrediction(connected,'mill',{tx:6,ty:4});
+  assert.equal(nearby.placement.ok,true);
+  assert.equal(nearby.lines.find(line => line.id === 'delivery-route')?.tone,'positive');
+
+  const island = {...connected,tiles:connected.tiles.map(tile => tile.tx === 6 && tile.ty === 9
+    ? {...tile,hasRoad:true} : tile)};
+  const disconnected = buildingPlacementPrediction(island,'mill',{tx:6,ty:10});
+  assert.equal(disconnected.placement.ok,true);
+  assert.equal(disconnected.lines.find(line => line.id === 'road')?.tone,'positive');
+  assert.equal(disconnected.lines.find(line => line.id === 'delivery-route')?.tone,'negative');
+
+  const shifted = {...connected, buildings: connected.buildings.map(building => ({
+    ...building, inventory: {timber: building.id === 'far-store' ? 100 : 0},
+  }))};
+  const nowUnreachable = buildingPlacementPrediction(shifted,'mill',{tx:6,ty:4});
+  assert.notEqual(nowUnreachable, nearby);
+  assert.equal(nowUnreachable.lines.find(line => line.id === 'delivery-route')?.tone,'negative');
+});
 test('market projection matches completion when another ready construction reserves a worker',()=>{
   const opening={...fixture(),population:8,idleWorkers:4};
   const withSite=placeBuilding(opening,'house',{tx:10,ty:4});

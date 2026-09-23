@@ -1,6 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from '../content/buildingConfig';
 import { HOUSING_CONFIG } from '../content/housingConfig';
 import { constructionSiteId } from '../economy/construction';
+import { hasConnectedConstructionRoute } from '../engine/autoplayConstructionRoute';
 import type { GameState } from '../engine/engine.types';
 import { householdServices } from '../engine/householdServices';
 import { marketRoadService } from '../engine/marketService';
@@ -14,6 +15,7 @@ import { BRIDGE_TIMBER_PER_TILE } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
 import { canPlaceBuilding, constructionShortfalls, PlacementFailure, type PlacementResult } from '../world/placement';
 import { predictionStateKey } from './predictionCache';
+import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
 import { PLACEMENT_REASON_LABELS, predictionCheck } from './predictionRegistry';
 import type { PlacementPrediction, PredictionLine } from './predictionTypes';
 
@@ -77,6 +79,11 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
     const road = buildingRoadAccessTiles(virtual, candidate).length > 0;
     lines.push(predictionCheck('road', '도로 연결', road, !definition.requiresRoad ? '(운영에 불필요)' : ''));
     lines.push(predictionCheck('materials', '자재', Object.keys(constructionShortfalls(state, definition.buildCost)).length === 0));
+    if (kind === 'wheat_farm' || kind === 'mill' || kind === 'granary') {
+      const delivery = hasConnectedConstructionRoute(state, candidate);
+      lines.push(predictionCheck('delivery-route', A_TRIPLE_PRIME_ROAD_COPY.foodDeliveryRoute,
+        delivery, delivery ? '' : A_TRIPLE_PRIME_ROAD_COPY.foodDeliveryRouteMissing));
+    }
     if (kind === 'market') lines.push(predictionCheck('workers', '일꾼', facility.workers >= definition.workersRequired, `${facility.workers}/${definition.workersRequired}명`));
     return { lines, houseIds, range: radius === null ? null : { center: { tx: tile.tx + (definition.width - 1) / 2, ty: tile.ty + (definition.height - 1) / 2 }, radius }, roadSegments: [], placement };
   });
