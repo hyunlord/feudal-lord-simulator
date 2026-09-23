@@ -18,3 +18,11 @@ test("Given abandonment When showing outcome Then restart is available and cause
   assert.match(markup, /정착지가 비었습니다/);
   assert.match(markup, /새 영지 시작/);
 });
+test("Given development content and food shortage When showing goal Then controls stay in one goal disclosure and warning uses fixed slot", () => {
+  const state = { ...DEFAULT_GAME_STATE, settlement: { ...settlementProgress(DEFAULT_GAME_STATE), foodShortageTicks: 1000 } };
+  const markup = renderToStaticMarkup(createElement(SettlementPanel, { state,
+    onRestart: () => {}, developmentContent: createElement("div", { "data-testid": "era-slot" }, "발전 조건") }));
+  assert.match(markup, /data-testid="era-slot"/);
+  assert.match(markup, /settlement-crisis-slot/);
+  assert.match(markup, /배급 부족/);
+});

@@ -169,7 +169,7 @@ test("right rail renders era gauges plus exactly one current imperative", () => 
   assert.match(railMarkup, /aria-label="현재 과업"/);
   assert.match(railMarkup, /data-task-state="current"/);
   assert.match(railMarkup, /길을 놓아 오두막을 이으세요/);
-  assert.equal((railMarkup.match(/<li /g) ?? []).length, 1);
+  assert.equal((railMarkup.match(/data-task-state="current"/g) ?? []).length, 1);
   assert.doesNotMatch(railMarkup, /data-task-state="next"/);
   assert.doesNotMatch(railMarkup, /숲 옆에 벌목소를 지으세요/);
   assert.doesNotMatch(railMarkup, /목표: 인구 50명 · 현재/);
@@ -293,4 +293,12 @@ test("onboarding task panel renders completion flourish and the post-task open g
   assert.doesNotMatch(flourishMarkup, /data-task-state="next"/);
   assert.match(openGoalMarkup, /data-onboarding-state="open-goal"/);
   assert.match(openGoalMarkup, /기초 운영 완료 · 도시 목표와 공급 상태를 확인하세요/);
+});
+
+test("Given active supply warnings When all tutorial tasks finish Then completion copy is withheld", () => {
+  const html = renderToStaticMarkup(createElement(OnboardingTasks, {
+    view: { current: null, next: null, openGoal: { title: "기초 운영 완료" } },
+    state: { ...DEFAULT_GAME_STATE, houses: DEFAULT_GAME_STATE.houses.map(house => ({ ...house, residents: 2, hasWater: false })) },
+  }));
+  assert.doesNotMatch(html, /기초 운영 완료/);
 });

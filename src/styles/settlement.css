@@ -12,13 +12,16 @@
 .settlement-restart button { font: inherit; padding: 8px; margin-right: 4px; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-earth); cursor: pointer; }
 .settlement-progress :focus-visible { outline: 2px solid var(--palette-ink); outline-offset: 2px; }
 
-.settlement-progress summary { display: flex; align-items: center; gap: 8px; padding: 4px 8px; list-style: none; }
+.settlement-progress summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px 8px; list-style: none; }
 .settlement-progress summary::-webkit-details-marker { display: none; }
 .settlement-progress summary strong { flex: 1; min-width: 0; font-size: var(--font-meta); }
 .settlement-progress summary span { display: inline; font-size: var(--font-meta); }
 .settlement-disclosure { flex-shrink: 0; text-decoration: underline; }
 .settlement-progress--changed { outline: 2px solid var(--palette-gold); outline-offset: 1px; }
 .settlement-progress-body { max-height: min(40vh, 320px); overflow-y: auto; }
+.settlement-crisis-slot { position: fixed; right: 12px; bottom: calc(var(--command-height) + 66px); z-index: 4; width: min(336px, calc(100vw - 24px)); pointer-events: none; }
+.settlement-crisis-slot:empty { display: none; }
+.settlement-crisis-slot .settlement-crisis { margin: 0; padding: 8px 12px; color: var(--palette-ink); background: var(--palette-vellum); border: 2px solid var(--palette-vermilion); }
 @media (max-width: 850px) {
   .settlement-progress summary { flex-wrap: wrap; }
   .settlement-progress summary strong { flex-basis: 60%; }

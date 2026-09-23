@@ -9,6 +9,7 @@ import {
 } from "../render/placementFeedback";
 import { BUILD_TOOL_OPTIONS } from "./buildMenuModel";
 import type { GameState } from "../engine/engine.types";
+import { getSettlementView } from "../engine/settlementView";
 import type { OnboardingTaskView } from "./onboardingTaskModel";
 import { PopulationEventPanel } from "./PopulationEventPanel";
 import type { PopulationEvent } from "./populationEventModel";
@@ -198,7 +199,9 @@ export function SettlementStatusLine({
   );
 }
 
-export function OnboardingTasks({ view }: { readonly view: OnboardingTaskView }) {
+export function OnboardingTasks({ view, state }: { readonly view: OnboardingTaskView; readonly state?: GameState }) {
+  if (state !== undefined && (getSettlementView(state).outcome === "victory" ||
+    (view.openGoal !== null && settlementGuidance(state).problems.some(problem => problem.kind === "water" || problem.kind === "bread")))) return null;
   if (view.openGoal !== null) {
     return (
       <section className="onboarding-tasks" aria-label={KO_UI.onboardingTasks} data-onboarding-state="open-goal">

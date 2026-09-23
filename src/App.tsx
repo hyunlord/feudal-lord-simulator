@@ -44,6 +44,8 @@ import {
   visibleEraCeremony,
 } from "./ui/eraCeremonyModel";
 import { palisadeFootprintsForState, proposalSummaryForState } from "./ui/eraConsoleModel";
+import { palisadeCoreFootprintsForState } from './engine/palisadeFootprints';
+import { wallConstructionPriority } from './engine/constructionReserve';
 import {
   appendPopulationEvents,
   diffPopulationEvents,
@@ -189,7 +191,7 @@ export function App() {
     const footprints = palisadeFootprintsForState(state);
     const proposal = proposalSummaryForState(state, footprints);
     if (!proposal.ok) return;
-    const validation = validatePalisadeCandidate(state, proposal.path, footprints);
+    const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1);
     if (!validation.ok) return;
     setSelectedTool(null);
     setPalisadeDraft(initialPalisadeDraft(validation.candidate));
@@ -253,18 +255,18 @@ export function App() {
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
         <aside className="right-info-rail" aria-label={KO_UI.informationRail}>
-          <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} />
-          <details className="development-panel">
-            <summary>도시 발전 조건</summary>
+          <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
             <EraConsole
               model={eraModel}
+              priority={wallConstructionPriority(state)}
+              onPriorityChange={priority => dispatch({ type: 'set_wall_construction_priority', priority })}
               onBeginProposal={beginPalisadeProposal}
               onConfirmProposal={confirmPalisadeProposal}
               onCancelProposal={() => setPalisadeDraft(null)}
               onProclaimStoneTown={proclaimStoneTown}
             />
-          </details>
-          <OnboardingTasks view={onboardingView} />
+          } />
+          <OnboardingTasks view={onboardingView} state={state} />
           {problemOnly ? <CauseLegend /> : null}
         </aside>
         <aside className="court-console" aria-label={KO_UI.courtConsole}>
