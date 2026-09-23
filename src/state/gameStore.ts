@@ -38,6 +38,8 @@ import type {
   GameProviderProps,
   GameStoreContextValue,
 } from "./gameStore.types";
+import { decisionSaveReason } from "../save/autosavePolicy";
+import { SaveSystemContext, useSaveSystem } from "./saveSystem";
 import {
   browserAnimationFrameScheduler,
   createFixedTickLoop,
@@ -87,6 +89,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 }
 
 function reduceGameAction(state: GameState, action: GameAction): GameState {
+  if (action.type === "load_saved_state") return action.state;
   if (state.settlement?.outcome === "abandoned") {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }
@@ -154,6 +157,8 @@ export function GameProvider({ children }: GameProviderProps) {
   const loopRef = useRef<FixedTickLoop | null>(null);
   const [speed, setSpeedState] = useState<GameSpeed>(0);
   const speedRef = useRef(speed);
+  const requestSaveRef = useRef<((reason: import("../save/autosavePolicy").SaveReason) => void) | null>(null);
+  const newSessionRef = useRef<(() => void) | null>(null);
 
   const dispatch = useCallback((action: GameAction) => {
     const currentState = stateRef.current;
@@ -167,17 +172,32 @@ export function GameProvider({ children }: GameProviderProps) {
       speedRef.current = 0;
       setSpeedState(0);
     }
-    if (action.type === "restart_settlement" && nextState !== currentState) {
+    if (action.type === "load_saved_state") {
+      previousRenderStateRef.current = nextState;
+      speedRef.current = 0;
+      setSpeedState(0);
+    }
+    if ((action.type === "restart_settlement" || action.type === "load_saved_state") && nextState !== currentState) {
       setSessionKey(key => key + 1);
     }
     setState(nextState);
+    const decision = action.type === "load_saved_state" || action.type === "restart_settlement"
+      ? null : decisionSaveReason(currentState, nextState);
+    if (action.type === "restart_settlement" && nextState !== currentState) newSessionRef.current?.();
+    if (decision !== null) requestSaveRef.current?.(decision);
   }, []);
+  const onLoaded = useCallback((loaded: GameState) => dispatch({ type: "load_saved_state", state: loaded }), [dispatch]);
+  const saveSystem = useSaveSystem({ stateRef, onLoaded });
+  requestSaveRef.current = saveSystem.requestSave;
+  newSessionRef.current = saveSystem.value.declineContinue;
 
   const interpolationAlpha = useCallback(() => loopRef.current?.interpolationAlpha() ?? 1, []);
 
   const setSpeed = useCallback((nextSpeed: GameSpeed) => {
     if (stateRef.current.settlement?.outcome === "abandoned") return;
+    const pausing = nextSpeed === 0 && speedRef.current !== 0;
     speedRef.current = nextSpeed;
+    if (pausing) requestSaveRef.current?.("pause");
     setSpeedState(nextSpeed);
   }, []);
 
@@ -202,7 +222,8 @@ export function GameProvider({ children }: GameProviderProps) {
     () => ({ state, previousRenderState: previousRenderStateRef.current, interpolationAlpha, dispatch, speed, setSpeed }),
     [dispatch, interpolationAlpha, setSpeed, speed, state],
   );
-  return createElement(GameStoreContext.Provider, { value }, createElement(Fragment, { key: sessionKey }, children));
+  return createElement(GameStoreContext.Provider, { value },
+    createElement(SaveSystemContext.Provider, { value: saveSystem.value }, createElement(Fragment, { key: sessionKey }, children)));
 }
 
 export function useGameStore(): GameStoreContextValue {

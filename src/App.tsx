@@ -19,6 +19,8 @@ import { GameCanvas } from "./render/GameCanvas";
 import { initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
+import { useSaveSystemContext } from "./state/saveSystem";
+import { SAVE_COPY } from "./content/saveCopy.ko";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
 import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMaterialWave";
 import { BuildSeals } from "./ui/BuildMenu";
@@ -82,7 +84,9 @@ export function App() {
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [problemOnly, setProblemOnly] = useState(false);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
-  const [welcomeVisible, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
+  const [welcomeDismissed, setWelcomeDismissed] = useState(readWelcomeDismissed);
+  const saveSystem = useSaveSystemContext();
+  const welcomeVisible = !welcomeDismissed || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [populationEvents, setPopulationEvents] = useState<readonly PopulationEvent[]>([]);
   const [populationDrawerOpen, setPopulationDrawerOpen] = useState(false);
@@ -210,7 +214,13 @@ export function App() {
   const cancelPalisadeDraft = useCallback(() => setPalisadeDraft(null), []);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
-    setWelcomeVisible(false);
+    setWelcomeDismissed(true);
+    if (saveSystem.offerContinue) saveSystem.declineContinue();
+  };
+  const continueSavedGame = () => {
+    writeWelcomeDismissed();
+    setWelcomeDismissed(true);
+    saveSystem.continueLatest();
   };
 
   return (
@@ -289,12 +299,20 @@ export function App() {
           </div>
         </aside>
       </div>
-      {welcomeVisible ? <WelcomeParchment onDismiss={dismissWelcome} /> : null}
+      {welcomeVisible ? <WelcomeParchment
+        onDismiss={dismissWelcome}
+        continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
+        onContinue={continueSavedGame}
+      /> : null}
     </main>
   );
 }
 
-function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
+function WelcomeParchment({ onDismiss, continueLine, onContinue }: {
+  readonly onDismiss: () => void;
+  readonly continueLine: string | null;
+  readonly onContinue: () => void;
+}) {
   const dialogRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     dialogRef.current?.focus();
@@ -306,6 +324,9 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
     onDismiss();
   };
   const containKeyboard = (event: ReactKeyboardEvent) => {
+    event.stopPropagation();
+  };
+  const keepChoice = (event: MouseEvent | PointerEvent) => {
     event.stopPropagation();
   };
 
@@ -327,7 +348,19 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
-        <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
+        {continueLine === null ? <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p> : (
+          <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
+            <p>{continueLine}</p>
+            <button className="autoplay-toggle save-control-button" type="button"
+              onPointerDown={keepChoice} onClick={event => { keepChoice(event); onContinue(); }}>
+              {SAVE_COPY.continueGame}
+            </button>
+            <button className="autoplay-toggle save-control-button" type="button"
+              onPointerDown={keepChoice} onClick={event => { keepChoice(event); onDismiss(); }}>
+              {SAVE_COPY.newGame}
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

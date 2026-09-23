@@ -10,7 +10,10 @@
     "play": "vite build && vite preview --host 127.0.0.1 --port 4173 --strictPort --open",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
-    "harness": "tsx scripts/economyHarness.ts"
+    "harness": "tsx scripts/economyHarness.ts",
+    "verify:provenance": "tsx scripts/verifyProvenance.ts",
+    "verify:save-determinism": "tsx scripts/verifySaveDeterminism.ts --out docs/verification/b8-save/determinism.json",
+    "build:save-fixtures": "tsx scripts/buildSaveFixtures.ts"
   },
   "dependencies": {
     "react": "19.2.8",
