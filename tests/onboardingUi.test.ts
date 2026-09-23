@@ -302,3 +302,31 @@ test("Given active supply warnings When all tutorial tasks finish Then completio
   }));
   assert.doesNotMatch(html, /기초 운영 완료/);
 });
+
+test("sampled food warning keeps completed tutorial copy hidden until the displayed warning clears", () => {
+  const currentState = {
+    ...DEFAULT_GAME_STATE,
+    tick: 1_200,
+    houses: DEFAULT_GAME_STATE.houses.map(house => ({ ...house, residents: 2, hasWater: true, breadStock: 1 })),
+  };
+  const warningState = {
+    ...currentState,
+    houses: currentState.houses.map(house => ({ ...house, breadStock: 0, starvationGraceUntilTick: 0 })),
+  };
+  const props = {
+    view: { current: null, next: null, openGoal: { title: "기초 운영 완료" } },
+    state: currentState,
+    warningState,
+  };
+  const visibleWarning = renderToStaticMarkup(createElement(SettlementStatusLine, { state: warningState }));
+  const html = renderToStaticMarkup(createElement(OnboardingTasks, props));
+  const newWarning = renderToStaticMarkup(createElement(OnboardingTasks, {
+    ...props,
+    state: warningState,
+    warningState: currentState,
+  }));
+
+  assert.match(visibleWarning, /식량이 부족합니다/);
+  assert.doesNotMatch(html, /기초 운영 완료/);
+  assert.doesNotMatch(newWarning, /기초 운영 완료/);
+});

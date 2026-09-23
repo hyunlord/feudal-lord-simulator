@@ -266,7 +266,7 @@ export function App() {
               onProclaimStoneTown={proclaimStoneTown}
             />
           } />
-          <OnboardingTasks view={onboardingView} state={state} />
+          <OnboardingTasks view={onboardingView} state={state} warningState={guidanceSnapshotRef.current.state} />
           {problemOnly ? <CauseLegend /> : null}
         </aside>
         <aside className="court-console" aria-label={KO_UI.courtConsole}>

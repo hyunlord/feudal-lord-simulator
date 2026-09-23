@@ -199,9 +199,14 @@ export function SettlementStatusLine({
   );
 }
 
-export function OnboardingTasks({ view, state }: { readonly view: OnboardingTaskView; readonly state?: GameState }) {
-  if (state !== undefined && (getSettlementView(state).outcome === "victory" ||
-    (view.openGoal !== null && settlementGuidance(state).problems.some(problem => problem.kind === "water" || problem.kind === "bread")))) return null;
+export function OnboardingTasks({ view, state, warningState = state }: {
+  readonly view: OnboardingTaskView;
+  readonly state?: GameState;
+  readonly warningState?: GameState;
+}) {
+  if (state !== undefined && getSettlementView(state).outcome === "victory") return null;
+  if (view.openGoal !== null && [state, warningState].some(candidate =>
+    candidate !== undefined && settlementGuidance(candidate).problems.some(problem => problem.kind === "water" || problem.kind === "bread"))) return null;
   if (view.openGoal !== null) {
     return (
       <section className="onboarding-tasks" aria-label={KO_UI.onboardingTasks} data-onboarding-state="open-goal">
