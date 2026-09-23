@@ -7,7 +7,7 @@ import { confirmPalisadeProclamation } from '../src/engine/palisade';
 import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from '../src/engine/autoplayWallSpace';
 import { canPlaceBuilding } from '../src/world/placement';
-import { computePalisadeProposal, palisadePathHasBuildingClearance, validatePalisadeCandidate } from '../src/world/palisadeGeometry';
+import { computePalisadeProposal, palisadePathEnclosesFootprints, palisadePathHasBuildingClearance, validatePalisadeCandidate } from '../src/world/palisadeGeometry';
 
 test('default wall encloses the living core while excluding the shoreline extraction branch', () => {
   // Given: seed 3 opens with a logging camp beyond the homes, storage and food network.
@@ -89,4 +89,27 @@ test('a shorter proposal does not turn a blocked opening into an autoplay food e
   assert.equal(palisadeCoreProposalForState(state).ok, false);
   assert.equal(computePalisadeProposalForState(state).ok, true);
   assert.equal(preservesAutoplayWallSpace(state, 'wheat_farm', candidate), true);
+});
+
+test('a compact legal wall remains selectable when the preliminary two-tile proposal fails clearance', () => {
+  // Given: seed 2 has a failed preliminary proposal and a valid one-tile envelope.
+  const state = createGrowthOpening(2).state;
+  const all = palisadeFootprintsForState(state);
+  const core = palisadeCoreFootprintsForState(state);
+  const compact = computePalisadeProposal(state, all, path =>
+    palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all), [1]);
+  assert.equal(palisadeCoreProposalForState(state).ok, false);
+  assert.equal(compact.ok, true);
+  if (!compact.ok) return;
+
+  // When: route preferences accept only that compact geometry.
+  const selected = computePalisadeProposalForState(state, path =>
+    JSON.stringify(path) === JSON.stringify(compact.path));
+
+  // Then: the selected wall still obeys the original clearance and enclosure checks.
+  assert.equal(selected.ok, true, selected.ok ? undefined : selected.reason);
+  if (!selected.ok) return;
+  assert.equal(validatePalisadeCandidate(state, selected.path, all, core, 1).ok, true);
+  assert.strictEqual(computePalisadeProposalForState(state, path =>
+    JSON.stringify(path) === JSON.stringify(compact.path)), selected);
 });

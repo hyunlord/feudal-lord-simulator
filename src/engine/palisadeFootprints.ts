@@ -34,6 +34,7 @@ type ProposalCandidates = {
   readonly layout: string;
   readonly candidates: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
   readonly failure: PalisadeProposalResult;
+  compactCandidates?: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
 };
 const proposalCandidatesByTiles = new WeakMap<GameState['tiles'], ProposalCandidates>();
 
@@ -167,6 +168,8 @@ export function computePalisadeProposalForState(
   const layout = JSON.stringify([state.width, state.height, all,
     state.buildings.map(building => [building.id, building.kind]),
     state.constructionSites.filter(site => 'kind' in site).map(site => [site.id, site.kind])]);
+  const acceptsGeometry = (path: PalisadePath) =>
+    palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all);
   let cached = proposalCandidatesByTiles.get(state.tiles);
   if (cached?.layout !== layout) {
     const candidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
@@ -174,8 +177,6 @@ export function computePalisadeProposalForState(
       if (candidate.ok) candidates.set(JSON.stringify(candidate.path), candidate);
     };
     add(proposal);
-    const acceptsGeometry = (path: PalisadePath) =>
-      palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all);
     for (const anchors of [buildings, all]) {
       for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
         for (const margin of [2, 3]) add(computePalisadeProposal(state, subset, acceptsGeometry, [margin]));
@@ -188,11 +189,20 @@ export function computePalisadeProposalForState(
   }
   const accepted = cached.candidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
   if (accepted !== undefined) return accepted;
-  if (acceptPath === undefined || !proposal.ok) return cached.failure;
-  const accepts = (path: PalisadePath) =>
-    palisadePathEnclosesFootprints(path, core)
-      && palisadePathHasBuildingClearance(path, all)
-      && acceptPath(path);
-  const preferred = computePalisadeProposal(state, buildings, accepts, [2, 3]);
-  return preferred.ok ? preferred : computePalisadeProposal(state, buildings, accepts, [1]);
+  if (cached.compactCandidates === undefined) {
+    const compactCandidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
+    for (const anchors of [buildings, all]) {
+      for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
+        const candidate = computePalisadeProposal(state, subset, acceptsGeometry, [1]);
+        if (candidate.ok) compactCandidates.set(JSON.stringify(candidate.path), candidate);
+      }
+    }
+    cached.compactCandidates = [...compactCandidates.values()].sort((left, right) =>
+      left.perimeterSteps - right.perimeterSteps || JSON.stringify(left.path).localeCompare(JSON.stringify(right.path)));
+  }
+  const compact = cached.compactCandidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
+  if (compact !== undefined) return compact;
+  return proposal.ok && acceptPath !== undefined
+    ? { ok: false, reason: 'rejected_candidate' }
+    : cached.failure;
 }
