@@ -85,3 +85,4 @@
   .resource-bar__icon { display: none; }
   .resource-bar__primary { gap: 4px; }
 }
+.resource-bar__more[open] { z-index: 30; }

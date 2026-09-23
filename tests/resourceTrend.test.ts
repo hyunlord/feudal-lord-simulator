@@ -29,3 +29,11 @@ test("Given occupied merged housing When estimating bread portions Then ration a
   assert.equal(breadHouseholdPortions(state, 12), 6);
   assert.equal(breadHouseholdPortions({ ...state, houses: [] }, 12), null);
 });
+
+test("Given a single tick When stocks change without simulation time Then no rate is invented", () => {
+  const first = resourceSample(DEFAULT_GAME_STATE);
+  const second = resourceSample({ ...DEFAULT_GAME_STATE, treasuryTimber: 999 });
+  const history = advanceResourceHistory([first], second);
+  assert.equal(history.length, 1);
+  assert.equal(resourceTrend(history, "timber", false), null);
+});
