@@ -13,6 +13,8 @@ for (const [name, changed] of [
   ['twenty percent starvation', { rawStarvedTicks: 200 }],
   ['ten percent warnings', { warnings: 10 }],
   ['below five percent idle', { idleWorkers: 4 }],
+  ['above twenty five percent idle', { idleWorkers: 26 }],
+  ['exactly twenty percent empty mills', { zeroWheatMills: 2 }],
   ['incomplete observation', { coveredTicks: 2399, fullWindow: false }],
   ['unknown observation', { known: false }],
   ['empty eligibility denominator', { eligibleMillTicks: 0 }],
@@ -21,8 +23,8 @@ for (const [name, changed] of [
 ] as const) test(`efficiency fails ${name}`, () => {
   assert.equal(efficientAcceptance({ ...metrics, ...changed }).passed, false);
 });
-test('more than twenty five percent idle and instantaneous empty grain are diagnostics only', () => {
-  assert.equal(efficientAcceptance({ ...metrics, idleWorkers: 90, zeroWheatMills: 10 }).passed, true);
+test('twenty five percent idle and one of ten empty mills remain within the efficiency limits', () => {
+  assert.equal(efficientAcceptance({ ...metrics, idleWorkers: 25, zeroWheatMills: 1 }).passed, true);
 });
 
 test('missing capture cannot pass', async () => {

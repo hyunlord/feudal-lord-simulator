@@ -11,6 +11,7 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
   const rawStarvationRatio = metrics.eligibleMillTicks > 0 ? metrics.rawStarvedTicks / metrics.eligibleMillTicks : null;
   const warningRatio = metrics.buildings > 0 ? metrics.warnings / metrics.buildings : null;
   const idleRatio = metrics.population > 0 ? metrics.idleWorkers / metrics.population : null;
+  const zeroWheatMillRatio = metrics.mills > 0 ? metrics.zeroWheatMills / metrics.mills : null;
   const checks = {
     validMetrics: finite,
     mills: metrics.mills <= metrics.farms,
@@ -19,11 +20,12 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
     churches: metrics.churches <= Math.ceil(metrics.lots / 32) + 1,
     observedWindow: metrics.known && metrics.fullWindow && metrics.coveredTicks >= 2400,
     rawStarvation: rawStarvationRatio !== null && rawStarvationRatio < 0.2,
+    zeroWheatMills: zeroWheatMillRatio !== null && zeroWheatMillRatio < 0.2,
     warnings: warningRatio !== null && warningRatio < 0.1,
-    idleWorkers: idleRatio !== null && idleRatio >= 0.05,
+    idleWorkers: idleRatio !== null && idleRatio >= 0.05 && idleRatio <= 0.25,
   };
   return { passed: Object.values(checks).every(Boolean), checks, metrics, rawStarvationRatio, warningRatio, idleRatio,
-    zeroWheatMillRatio: metrics.mills > 0 ? metrics.zeroWheatMills / metrics.mills : null,
+    zeroWheatMillRatio,
     highIdleDiagnostic: idleRatio !== null && idleRatio > 0.25 };
 }
 
