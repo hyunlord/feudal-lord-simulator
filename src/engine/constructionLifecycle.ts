@@ -1,6 +1,7 @@
 import { finishMaterialConstruction } from './autoplayMaterialLifecycle';
 import type { DeliveryRoutePort } from "../agents/delivery";
 import { constructionMaterialSources } from "../agents/deliveryConstruction";
+import { wallReserveHeld } from "./constructionReserve";
 import type { Walker } from "../agents/walker.types";
 import type { Building } from "../content/buildingConfig";
 import {
@@ -87,6 +88,7 @@ export function recomputeConstructionStalls(
         inventory,
         treasuryTimber: state.treasuryTimber,
       }),
+      wallReserveHeld(state, site, routes),
     ),
   }));
 }

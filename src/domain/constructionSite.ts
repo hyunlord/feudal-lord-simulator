@@ -7,6 +7,7 @@ export type ConstructionStall =
   | "awaiting_materials"
   | "no_material_source"
   | "no_route"
+  | "reserve_held"
   | "no_builders";
 
 export type ConstructionResourceAmounts = Partial<Record<ResourceType, number>>;

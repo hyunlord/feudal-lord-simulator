@@ -9,6 +9,7 @@ import { buildingRoadAccessTiles } from "./routing";
 import type { TileCoordinate } from "../world/grid";
 import { civicConstructionReserve } from './autoplayCivicReserve';
 import { existingRoadComponent } from "../world/roadGraph";
+import { appendMarketSales } from "./coinLedger";
 
 type MarketResource = Exclude<ResourceType, "coin">;
 
@@ -146,12 +147,14 @@ export function settleMarkets(state: GameState): GameState {
 
   let buildings: readonly Building[] = state.buildings;
   let earnedCoin = 0;
+  const sales: { readonly marketId: string; readonly coin: number }[] = [];
   let wheatExported = 0;
   let breadExported = 0;
   for (const market of completedMarkets(buildings)) {
     const result = settleMarket(state, buildings, market);
     buildings = result.buildings;
     earnedCoin += result.coin;
+    if (result.coin > 0) sales.push({ marketId: market.id, coin: result.coin });
     if (result.sold === "wheat") wheatExported += 1;
     if (result.sold === "bread") breadExported += 1;
   }
@@ -162,5 +165,6 @@ export function settleMarkets(state: GameState): GameState {
         ...state,
         buildings: [...buildings],
         treasuryCoin: state.treasuryCoin + earnedCoin,
+        coinLedger: appendMarketSales(state.coinLedger, state.tick, sales),
       }, { wheatExported, breadExported });
 }

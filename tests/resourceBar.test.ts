@@ -38,8 +38,27 @@ test("resource bar keeps zero resources visible and population drawer state acce
   assert.ok(render(state).includes('aria-expanded="false"'));
 });
 
+test("Given a paused city When resource bar renders Then trend rows stay blank", () => {
+  const html = renderToStaticMarkup(createElement(ResourceBar, {
+    state: DEFAULT_GAME_STATE, paused: true, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined,
+  }));
+  assert.doesNotMatch(html, /일시정지/);
+  assert.doesNotMatch(html, /관측 중/);
+});
 
-test("construction resource headlines show spendable stock after commitments and reservations", () => {
+test("Given stocked bread When resource bar renders Then food duration has explicit game-time units", () => {
+  const house = DEFAULT_GAME_STATE.houses[0];
+  assert.ok(house);
+  const html = render({ ...DEFAULT_GAME_STATE, houses: [{ ...house, residents: 8 }],
+    buildings: [{ id: house.buildingId, kind: "house", tx: 0, ty: 0, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 },
+      { id: "granary", kind: "granary", tx: 1, ty: 0, workers: 0, inventory: { bread: 4 }, reserved: {}, stockReserved: {}, productionProgress: 0 }],
+  });
+  assert.match(html, /1가구 기준 약 80게임초/);
+  assert.doesNotMatch(html, /가구분 · 1끼/);
+});
+
+
+test("construction resource headlines show buildable stock after actual reservations", () => {
   const state: GameState = {
     ...DEFAULT_GAME_STATE,
     treasuryTimber: 10,
@@ -54,5 +73,5 @@ test("construction resource headlines show spendable stock after commitments and
   assert.ok(html.includes("<span>가용 석재</span><strong>0</strong>"));
   assert.ok(html.includes("목재 전체 보유량 10 · 건설 가능 0"));
   assert.ok(html.includes("석재 전체 보유량 41 · 건설 가능 0"));
-  assert.ok(html.includes("공사 약정·예약 물량과 운송 중인 물량 제외"));
+  assert.ok(html.includes("실제 예약·운송 중 물량 제외"));
 });

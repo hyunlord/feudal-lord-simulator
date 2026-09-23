@@ -2,6 +2,7 @@ import type { EraRequirement, GameState } from "./engine.types";
 import type { BuildingKind } from "../content/buildingConfig";
 import { createStoneWallConstructionSite } from "../economy/construction";
 import { placementSpendableResource } from "../world/placement";
+import { snapshotWallConstructionReserve } from "./constructionReserve";
 
 const PALISADE_REQUIREMENT_TARGETS = {
   population: 60,
@@ -159,5 +160,6 @@ export function confirmStoneTownProclamation(state: GameState): GameState {
           })),
         },
     constructionSites: [...state.constructionSites, ...replacementSites],
+    wallConstructionReserve: snapshotWallConstructionReserve(state, replacementSites, "stone"),
   };
 }

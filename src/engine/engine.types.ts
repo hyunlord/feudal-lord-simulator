@@ -100,6 +100,15 @@ export interface GameState {
   idleWorkers: number;
   treasuryTimber: number;
   treasuryCoin: number;
+  readonly coinLedger?: readonly import("./coinLedger").CoinLedgerEntry[];
+  readonly timberProductionWindow?: {
+    readonly startTick: number;
+    readonly throughTick: number;
+    readonly produced: number;
+    readonly productionTicks: readonly number[];
+  };
+  readonly wallConstructionPriority?: import("./constructionReserve").WallConstructionPriority;
+  readonly wallConstructionReserve?: import("./constructionReserve").WallConstructionReserve;
   wallTick: number;
   era: Era;
   eraProclaimedTick: number | null;

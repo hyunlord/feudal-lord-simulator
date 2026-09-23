@@ -2,6 +2,11 @@ import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
+  wallDeliveryAvailable,
+  type WallConstructionPriority,
+  type WallConstructionReserve,
+} from "../domain/wallReserve";
+import {
   constructionDeliveryNeed,
   type ConstructionSite,
   type MaterialSource,
@@ -91,6 +96,8 @@ function siteCandidates(params: {
   readonly routes: DeliveryRoutePort;
   readonly inventory: DeliveryInventoryPort;
   readonly busyHomeIds: ReadonlySet<string>;
+  readonly wallConstructionReserve?: WallConstructionReserve;
+  readonly wallConstructionPriority?: WallConstructionPriority;
 }): readonly SiteCandidate[] {
   return [...params.sites].sort(byId).flatMap((site) => {
     const need = constructionDeliveryNeed(site);
@@ -100,7 +107,10 @@ function siteCandidates(params: {
       const destination = siteDestination(site);
       return [...params.buildings].sort(byId).flatMap((source) => {
         if (params.busyHomeIds.has(source.id)) return [];
-        const available = params.inventory.availableStock(source, resource);
+        const sourceAvailable = params.inventory.availableStock(source, resource);
+        const available = site.kind === "palisade_segment" || site.kind === "stone_wall_segment"
+          ? wallDeliveryAvailable(params.wallConstructionReserve, params.wallConstructionPriority ?? "balanced", source.id, resource, sourceAvailable)
+          : sourceAvailable;
         if (available === 0) return [];
         const path = params.routes.fromBuildingToDestination(source.id, destination);
         if (path === null || path.length === 0) return [];
@@ -119,6 +129,8 @@ function treasuryCandidate(params: {
   readonly routes: DeliveryRoutePort;
   readonly treasuryTimber: number;
   readonly busyHomeIds: ReadonlySet<string>;
+  readonly wallConstructionReserve?: WallConstructionReserve;
+  readonly wallConstructionPriority?: WallConstructionPriority;
 }): TreasurySiteCandidate | null {
   if (params.treasuryTimber <= 0) return null;
   const homes = [...params.buildings]
@@ -130,6 +142,10 @@ function treasuryCandidate(params: {
   for (const site of [...params.sites].sort(byId)) {
     const missing = amountOf(constructionDeliveryNeed(site), "timber");
     if (missing === 0) continue;
+    const available = site.kind === "palisade_segment" || site.kind === "stone_wall_segment"
+      ? wallDeliveryAvailable(params.wallConstructionReserve, params.wallConstructionPriority ?? "balanced", "treasury", "timber", params.treasuryTimber)
+      : params.treasuryTimber;
+    if (available <= 0) continue;
     const destination = siteDestination(site);
     for (const home of homes) {
       const path = params.routes.fromBuildingToDestination(home.id, destination);
@@ -139,7 +155,7 @@ function treasuryCandidate(params: {
         destination,
         home,
         path,
-        amount: Math.min(BALANCE.CARTER_CAPACITY, missing, params.treasuryTimber),
+        amount: Math.min(BALANCE.CARTER_CAPACITY, missing, available),
       };
     }
   }
@@ -154,6 +170,8 @@ export function spawnSiteDelivery(params: {
   readonly inventory: DeliveryInventoryPort;
   readonly routes: DeliveryRoutePort;
   readonly busyHomeIds: ReadonlySet<string>;
+  readonly wallConstructionReserve?: WallConstructionReserve;
+  readonly wallConstructionPriority?: WallConstructionPriority;
 }): DeliveryStepResult | null {
   const candidate = siteCandidates({
     sites: params.constructionSites,
@@ -161,6 +179,8 @@ export function spawnSiteDelivery(params: {
     routes: params.routes,
     inventory: params.inventory,
     busyHomeIds: params.busyHomeIds,
+    ...(params.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: params.wallConstructionReserve }),
+    ...(params.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: params.wallConstructionPriority }),
   })[0] ?? null;
   if (candidate !== null) {
     const claimedSource = params.inventory.reserveStock(
@@ -220,6 +240,8 @@ export function spawnSiteDelivery(params: {
     routes: params.routes,
     treasuryTimber: params.treasuryTimber,
     busyHomeIds: params.busyHomeIds,
+    ...(params.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: params.wallConstructionReserve }),
+    ...(params.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: params.wallConstructionPriority }),
   });
   if (treasury === null) return null;
   const site = findSite(params.constructionSites, treasury.siteId);

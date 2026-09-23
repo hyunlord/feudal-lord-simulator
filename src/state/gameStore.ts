@@ -19,6 +19,7 @@ import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
+import { setWallConstructionPriority } from "../engine/constructionReserve";
 import { constructionSiteId } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import type { GameSpeed } from "../engine/engine.types";
@@ -138,6 +139,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return confirmPalisadeProclamation(state, action.candidatePath);
     case "confirm_stone_town_proclamation":
       return confirmStoneTownProclamation(state);
+    case "set_wall_construction_priority":
+      return setWallConstructionPriority(state, action.priority);
     default:
       return assertNever(action);
   }

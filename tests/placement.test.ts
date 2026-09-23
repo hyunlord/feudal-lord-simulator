@@ -8,6 +8,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { getTile, type Grid } from "../src/world/grid";
 import {
   canPlaceBuilding,
+  constructionShortfalls,
   placementSpendableResource,
   PlacementFailure,
 } from "../src/world/placement";
@@ -327,7 +328,7 @@ test("placement spendable timber matches building placement and excludes walker 
   assert.deepEqual(result, { ok: true });
 });
 
-test("placement spendable timber treats wall construction commitment like building sites", () => {
+test("Given a pending wall When placing a building Then future wall costs do not consume buildable timber", () => {
   // Given
   const gridWithForest = setTile(grassGrid(8, 5), 4, 3, { terrain: "forest" });
   const grid = setTile(gridWithForest, 3, 1, { hasRoad: true });
@@ -347,9 +348,11 @@ test("placement spendable timber treats wall construction commitment like buildi
 
   // When
   const spendable = placementSpendableResource(world, "timber");
+  const shortfalls = constructionShortfalls(world, { timber: 60 });
   const result = canPlaceBuilding(world, "logging_camp", 3, 2);
 
   // Then
-  assert.equal(spendable, 40);
+  assert.equal(spendable, 100);
+  assert.deepEqual(shortfalls, {});
   assert.deepEqual(result, { ok: true });
 });

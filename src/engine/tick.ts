@@ -184,6 +184,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     idleWorkers: labour.idleWorkers,
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: marketSettled.treasuryCoin,
+    ...(marketSettled.coinLedger === undefined ? {} : { coinLedger: marketSettled.coinLedger }),
   }, { servedHouses, deliveryEvents: movedDistributors.deliveryEvents }), servedHouses));
   const progressed = {
     ...produced,
@@ -200,6 +201,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: progressed.treasuryTimber,
     inventory,
     routes: routePorts.delivery,
+    ...(progressed.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: progressed.wallConstructionReserve }),
+    ...(progressed.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: progressed.wallConstructionPriority }),
     ...(state.autoplayMaterialRecovery === undefined ? {} : { materialActivity }),
   });
   const spawnedDistributors = spawnDistributors({

@@ -220,7 +220,7 @@ export function placementSpendableResource(world: ResourceWorldView, resource: R
     0,
   ) ?? 0;
   const committed = world.constructionSites?.reduce(
-    (total, site) => total + (constructionDeliveryNeed(site)[resource] ?? 0),
+    (total, site) => total + (isBuildingConstructionSite(site) ? (constructionDeliveryNeed(site)[resource] ?? 0) : 0),
     0,
   ) ?? 0;
   const available = resource === "timber" ? world.treasuryTimber + stored : stored;

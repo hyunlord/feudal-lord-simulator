@@ -64,6 +64,8 @@ export interface DeliveryStepInput {
   readonly constructionSites?: readonly ConstructionSite[];
   readonly walkers: readonly Walker[];
   readonly treasuryTimber?: number;
+  readonly wallConstructionReserve?: import("../domain/wallReserve").WallConstructionReserve;
+  readonly wallConstructionPriority?: import("../domain/wallReserve").WallConstructionPriority;
   readonly inventory: DeliveryInventoryPort;
   readonly routes: DeliveryRoutePort;
 }

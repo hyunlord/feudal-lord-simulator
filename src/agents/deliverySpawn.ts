@@ -219,6 +219,8 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     inventory: input.inventory,
     routes: input.routes,
     busyHomeIds: busyHomes,
+    ...(input.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: input.wallConstructionReserve }),
+    ...(input.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: input.wallConstructionPriority }),
   });
   const siteWalker = siteDispatch?.walkers[0] ?? null;
   if (siteDispatch !== null && siteWalker !== null && !busyHomes.has(siteWalker.homeBuildingId)) {

@@ -117,6 +117,7 @@ export function constructionDeliveryNeed(
 export function constructionStall(
   site: ConstructionSite,
   sources: readonly MaterialSource[],
+  reserveHeld = false,
 ): ConstructionStall {
   if (constructionMaterialStatus(site).complete) {
     return site.assignedBuilders > 0 ? "none" : "no_builders";
@@ -134,7 +135,7 @@ export function constructionStall(
   const everyNeedHasRoute = neededResources.every((resource) =>
     sources.some((source) => amount(source.stock, resource) > 0 && source.hasRoute),
   );
-  return everyNeedHasRoute ? "awaiting_materials" : "no_route";
+  return !everyNeedHasRoute ? "no_route" : reserveHeld ? "reserve_held" : "awaiting_materials";
 }
 
 function firstOutstandingResource(site: ConstructionSite): ResourceType {
@@ -155,6 +156,8 @@ export function constructionOnSiteLabel(site: ConstructionSite): string {
       return `🪵 창고에 ${RESOURCE_LABELS[resource]} 없음`;
     case "no_route":
       return "🚧 창고에서 길이 이어지지 않음";
+    case "reserve_held":
+      return "🪵 비축분 유지 중";
     case "no_builders":
       return "👷 일꾼 없음";
     default:

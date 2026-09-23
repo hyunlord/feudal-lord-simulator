@@ -1,5 +1,6 @@
 import { additionalRoadGates } from "./palisadeGates";
-import { palisadeFootprintsForState } from "./palisadeFootprints";
+import { snapshotWallConstructionReserve } from "./constructionReserve";
+import { palisadeCoreFootprintsForState, palisadeFootprintsForState } from "./palisadeFootprints";
 import {
   createPalisadeConstructionSite,
   type PalisadeConstructionSite,
@@ -213,7 +214,7 @@ export function confirmPalisadeProclamation(
 ): GameState {
   if (!canProclaimPalisadeEra(state) || state.palisade !== null) return state;
   const footprints = palisadeFootprintsForState(state);
-  const validation = validatePalisadeCandidate(state, candidatePath, footprints);
+  const validation = validatePalisadeCandidate(state, candidatePath, footprints, palisadeCoreFootprintsForState(state), 1);
   if (!validation.ok) return state;
   const ring = palisadeRingPoints(validation.candidate.path);
   const gate = chooseGate(state, ring, settlementCenter(footprints));
@@ -235,6 +236,7 @@ export function confirmPalisadeProclamation(
       segments: palisadeSegments(sites),
     },
     constructionSites: [...state.constructionSites, ...sites],
+    wallConstructionReserve: snapshotWallConstructionReserve(state, sites, "timber"),
     nextConstructionOrdinal: state.nextConstructionOrdinal + 1,
   };
 }

@@ -5,6 +5,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingC
 import type { ResourceType } from "../src/content/resourceConfig";
 import { advanceTick } from "../src/engine/tick";
 import { marketHasSaleCandidate } from "../src/engine/marketSettlement";
+import { recentCoinIncome } from "../src/engine/coinLedger";
 import { historicalFacilityAssetId } from "../src/render/historicalFacilityAssets";
 import { hashEconomyState } from "../scripts/economyHarness";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
@@ -135,6 +136,38 @@ test("market sells exactly one surplus unit above reserve on the eighty-tick cad
   assert.equal(next.buildings.find((candidate) => candidate.id === "store")?.inventory.timber, 60);
   assert.equal(next.walkers.some((walker) => walker.cargo?.resource === "coin"), false);
   assert.equal(next.buildings.some((candidate) => (candidate.inventory.coin ?? 0) > 0), false);
+  assert.deepEqual(next.coinLedger, [{
+    tick: 80,
+    amount: 6,
+    kind: "income",
+    source: "market_sale",
+    sourceRefs: [{ type: "building", id: "market" }],
+  }]);
+  assert.deepEqual(recentCoinIncome(next), {
+    total: 6,
+    bySource: [{ source: "market_sale", label: "시장 판매", amount: 6 }],
+  });
+});
+
+test("recent coin income excludes events outside the last 2400 ticks", () => {
+  // Given: an old market sale alongside one in the current observation window.
+  const state = {
+    ...roadedState([], []),
+    tick: 2500,
+    coinLedger: [
+      { tick: 100, amount: 2, kind: "income" as const, source: "market_sale" as const, sourceRefs: [{ type: "building" as const, id: "old" }] },
+      { tick: 101, amount: 5, kind: "income" as const, source: "market_sale" as const, sourceRefs: [{ type: "building" as const, id: "current" }] },
+    ],
+  };
+
+  // When: the UI reads a 2400-tick source breakdown.
+  const result = recentCoinIncome(state);
+
+  // Then: only ticks 101 through 2500 contribute.
+  assert.deepEqual(result, {
+    total: 5,
+    bySource: [{ source: "market_sale", label: "시장 판매", amount: 5 }],
+  });
 });
 
 test("market does not sell at or below reserves and respects cadence and staffing", () => {

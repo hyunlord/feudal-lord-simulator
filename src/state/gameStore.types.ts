@@ -48,7 +48,8 @@ type GameCommand =
       readonly type: "confirm_palisade_proclamation";
       readonly candidatePath: PalisadePath;
     }
-  | { readonly type: "confirm_stone_town_proclamation" };
+  | { readonly type: "confirm_stone_town_proclamation" }
+  | { readonly type: "set_wall_construction_priority"; readonly priority: import("../engine/constructionReserve").WallConstructionPriority };
 
 export interface GameStoreContextValue {
   state: GameState;
