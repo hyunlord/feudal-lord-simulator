@@ -226,6 +226,7 @@ export function createPhase9EconomyHarnessScenario(
     population: houses.reduce((total, candidate) => total + candidate.residents, 0),
     treasuryTimber: 1_200,
     treasuryCoin: 0,
+    wallConstructionPriority: "priority",
     roadRevision: stage3.roadRevision + 1,
     pathCache: {},
   };
