@@ -174,8 +174,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         return;
       }
       if (resolution.kind === "selection") {
-        const marker = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, canvasPoint(event)) : null;
-        const buildingId = marker?.buildingIds[0];
+        const buildingId = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, canvasPoint(event))?.buildingIds[0] : undefined;
         if (buildingId !== undefined) {
           setSelection({ kind: 'building', buildingId, position: canvasPoint(event) });
           return;

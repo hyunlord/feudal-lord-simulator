@@ -2,6 +2,7 @@ import { CAUSE_REGISTRY } from '../ui/causeRegistry';
 import { constructionAccessModel } from '../ui/constructionAccessModel';
 import type { GameState } from '../engine/engine.types';
 import { tileToScreen } from './iso';
+import { applyPaletteStroke } from './style';
 
 export function drawConstructionAccessOverlay(
   context: CanvasRenderingContext2D,
@@ -14,9 +15,8 @@ export function drawConstructionAccessOverlay(
   if (model.accessTiles.length === 0) return;
   const color = CAUSE_REGISTRY.construction_access.color;
   context.save();
-  context.strokeStyle = color;
+  applyPaletteStroke(context, color, 1 / 3);
   context.fillStyle = color;
-  context.lineWidth = 3;
   context.setLineDash([5, 5]);
   const path = model.suggestedRoad;
   if (path.length > 1) {
