@@ -10,10 +10,10 @@ const metrics = { lots: 24, farms: 20, mills: 8, chronicZeroWheatMills: 0, chron
 const result = { seed: 3, stopReason: 'target-scale-stable', lots: 24, l4Houses: 24,
   serviceGaps: { water: 0, market: 0, church: 0 }, diagnosticResult: 'no_action' };
 
-test('Given baseline-complete seed and high idle When evaluated Then idle is recorded while missing historical continuity is indeterminate', () => {
+test('Given baseline-complete seed and high idle When evaluated Then idle is recorded without failing the known continuity baseline', () => {
   const verdict = growthGuardrail(result, efficientAcceptance(metrics));
-  assert.equal(verdict.status, 'indeterminate');
-  assert.equal(verdict.passed, false);
+  assert.equal(verdict.status, 'passed');
+  assert.equal(verdict.passed, true);
   assert.equal(verdict.recorded.idleWorkerRatio, 250 / 768);
 });
 
@@ -25,11 +25,11 @@ test('Given seed 3 with permanent church gap and no action When evaluated Then g
   assert.equal(verdict.checks.baselineL4, false);
 });
 
-test('Given a chronic mill ratio but unmeasured historical baseline When evaluated Then no fake comparison is made', () => {
+test('Given a chronic mill ratio over measured historical baseline When evaluated Then a material regression fails', () => {
   const verdict = growthGuardrail(result, efficientAcceptance({ ...metrics, mills: 10, chronicZeroWheatMills: 3 }));
-  assert.equal(verdict.checks.zeroWheatRegression, null);
-  assert.equal(verdict.status, 'indeterminate');
-  assert.equal(verdict.baseline.chronicZeroWheatMillRatio, null);
+  assert.equal(verdict.checks.zeroWheatRegression, false);
+  assert.equal(verdict.status, 'regression');
+  assert.equal(verdict.baseline.chronicZeroWheatMillRatio, 0);
   assert.equal(verdict.recorded.zeroWheatMillRatio, 0.3);
 });
 
@@ -37,6 +37,7 @@ test('Given unmeasured continuity When evaluated Then the ratio remains unknown'
   const verdict = growthGuardrail(result, efficientAcceptance({ ...metrics, chronicZeroWheatKnown: false }));
   assert.equal(verdict.checks.zeroWheatRegression, null);
   assert.equal(verdict.recorded.zeroWheatMillRatio, null);
+  assert.equal(verdict.status, 'indeterminate');
 });
 
 test('Given comparable chronic mill ratios When compared Then only material worsening fails', () => {

@@ -31,7 +31,9 @@
       "warningRatio": 0,
       "idleWorkerRatio": 0.3111979166666667,
       "legacyFinalInstantZeroWheatMillRatio": 0,
-      "chronicZeroWheatMillRatio": null
+      "chronicZeroWheatMillRatio": 0,
+      "chronicZeroWheatObservedStableTicks": 24345,
+      "chronicZeroWheatMillIds": []
     },
     "2": {
       "summarySha256": "ccda91e5f3851a61cae1c042638b44c5a4319c7845408fa07c23f1b962e417ef",
@@ -57,7 +59,9 @@
       "warningRatio": 0,
       "idleWorkerRatio": 0.3216145833333333,
       "legacyFinalInstantZeroWheatMillRatio": 0,
-      "chronicZeroWheatMillRatio": null
+      "chronicZeroWheatMillRatio": 0,
+      "chronicZeroWheatObservedStableTicks": 24000,
+      "chronicZeroWheatMillIds": []
     },
     "3": {
       "summarySha256": "5545f222c8c8e976e1c2fba065567452653902d153c57108c89e3d29900dfc47",
@@ -83,7 +87,9 @@
       "warningRatio": 0,
       "idleWorkerRatio": 0.3020833333333333,
       "legacyFinalInstantZeroWheatMillRatio": 0,
-      "chronicZeroWheatMillRatio": null
+      "chronicZeroWheatMillRatio": 0,
+      "chronicZeroWheatObservedStableTicks": 24000,
+      "chronicZeroWheatMillIds": []
     },
     "4": {
       "summarySha256": "9319567f1d00b07786110d8d8afbf3cf9b6649442d2e675250976839ef81abd4",
@@ -109,7 +115,9 @@
       "warningRatio": 0.0125,
       "idleWorkerRatio": 0.3059895833333333,
       "legacyFinalInstantZeroWheatMillRatio": 0,
-      "chronicZeroWheatMillRatio": null
+      "chronicZeroWheatMillRatio": 0,
+      "chronicZeroWheatObservedStableTicks": 24000,
+      "chronicZeroWheatMillIds": []
     },
     "5": {
       "summarySha256": "60a9257ef02195d10e2d2ecfeae4749f4290022ea15586eafa0840216f61048b",
@@ -135,8 +143,17 @@
       "warningRatio": 0,
       "idleWorkerRatio": 0.31640625,
       "legacyFinalInstantZeroWheatMillRatio": 0,
-      "chronicZeroWheatMillRatio": null
+      "chronicZeroWheatMillRatio": 0,
+      "chronicZeroWheatObservedStableTicks": 24000,
+      "chronicZeroWheatMillIds": []
     }
   },
-  "millContinuityEvidence": "unavailable: archived final states contain no per-mill tick history over the stable interval"
+  "millContinuityEvidence": {
+    "definition": "Final mills with zero wheat for at least 2400 consecutive completed ticks during the uninterrupted final stability interval",
+    "sourceCommit": "7db9df85ee0b87e1dd8d99930abb328bace3ee95",
+    "isolatedWorktree": "detached exact source with observer-only script instrumentation",
+    "instrumentationDiffSha256": "efafa1f4183d8b4bb90d9fc2d2861b9928c3446f5d9c4bf2d54f83ce6a694640",
+    "observerModuleSha256": "9b5f13be4cf3c3ffb8bf07b7607c2a4e76fb59c235c2ff4517d0a3069bf4c7ec",
+    "integrity": "all five replayed final-state SHA-256 values, stop ticks, and stability durations match archived results exactly"
+  }
 }
