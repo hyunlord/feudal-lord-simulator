@@ -7,9 +7,35 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { onboardingWorldGuidanceTargets } from "../src/ui/onboardingWorldGuidance";
 import type { Tile } from "../src/world/world.types";
 
-const EXISTING_KINDS = ["house", "logging_camp"] as const satisfies readonly BuildingKind[];
+const SAWMILL_STAGE_KINDS = ["house", "logging_camp", "wheat_farm", "mill", "granary"] as const satisfies readonly BuildingKind[];
+const FOOD_STAGE_KINDS = ["house", "logging_camp"] as const satisfies readonly BuildingKind[];
 
-test("building guidance does not rescan the world for a road that cannot unlock placement", () => {
+test("sawmill guidance does not rescan the world for a road that cannot unlock placement", () => {
+  const { state, tileCount, readTileEntries } = guidanceFixture(SAWMILL_STAGE_KINDS);
+
+  assert.deepEqual(onboardingWorldGuidanceTargets(state), []);
+  assert.ok(
+    readTileEntries() <= tileCount * 8,
+    `guidance read ${readTileEntries()} tile entries for ${tileCount} tiles`,
+  );
+});
+
+test("food guidance does not repeatedly rescan an unbuildable world", () => {
+  const { state, tileCount, readTileEntries } = guidanceFixture(FOOD_STAGE_KINDS);
+
+  const targets = onboardingWorldGuidanceTargets(state);
+  assert.ok(targets.every((target) => target.kind !== "road"));
+  assert.ok(
+    readTileEntries() <= tileCount * 8,
+    `guidance read ${readTileEntries()} tile entries for ${tileCount} tiles`,
+  );
+});
+
+function guidanceFixture(existingKinds: readonly BuildingKind[]): {
+  readonly state: GameState;
+  readonly tileCount: number;
+  readonly readTileEntries: () => number;
+} {
   const width = 8;
   const height = 8;
   const tiles = grassGrid(width, height);
@@ -26,7 +52,7 @@ test("building guidance does not rescan the world for a road that cannot unlock 
     width,
     height,
     tiles: observedTiles,
-    buildings: EXISTING_KINDS.map(building),
+    buildings: existingKinds.map(building),
     constructionSites: [],
     houses: [{
       buildingId: "house-0-0-0",
@@ -44,12 +70,8 @@ test("building guidance does not rescan the world for a road that cannot unlock 
     pathCache: {},
   };
 
-  assert.deepEqual(onboardingWorldGuidanceTargets(state), []);
-  assert.ok(
-    tileReads <= tiles.length * 8,
-    `guidance read ${tileReads} tile entries for ${tiles.length} tiles`,
-  );
-});
+  return { state, tileCount: tiles.length, readTileEntries: () => tileReads };
+}
 
 function grassGrid(width: number, height: number): Tile[] {
   return Array.from({ length: width * height }, (_, index) => ({
