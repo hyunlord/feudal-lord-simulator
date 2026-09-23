@@ -170,6 +170,15 @@ export function recordFoodObservationActivity(
 
 export function blocksRepeatedFoodExpansion(state: GameState, kind: AutoplayFoodObservation["kind"]): boolean {
   const observation = state.autoplayFoodObservation;
+  if (kind === 'wheat_farm' && observation?.kind === kind
+    && observation.requiresDeliveredOutcome === true && observation.completedTick !== undefined
+    && observation.observeUntilTick !== undefined && state.tick >= observation.observeUntilTick
+    && observation.outcome?.effective === false && (observation.outcome.deliveredWheatDelta ?? 0) > 0
+    && observation.baseline?.breadProduced !== undefined) {
+    const sample = foodEfficiencyMetrics(state);
+    if (sample.fullWindow && sample.known && sample.breadProduced > observation.baseline.breadProduced
+      && measuredFoodDecision(state).reason === 'actual_wheat_deficit') return false;
+  }
   return observation !== undefined &&
     observation.kind === kind &&
     observation.observeUntilTick !== undefined &&
