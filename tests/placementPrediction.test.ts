@@ -84,3 +84,28 @@ test('material shortage and wall clearance preserve authoritative placement reas
   const wall={...state,palisade:{id:'wall',polygon:[],gate:{x:0,y:0},segments:[{id:'w',order:0,edgePath:[{x:6,y:3},{x:6,y:4}],tileCount:1,completed:true,constructionSiteId:null}]}};
   assert.match(buildingPlacementPrediction(wall,'well',{tx:6,ty:3}).lines[0]?.text??'',/성벽과 너무 가까움/);
 });
+test('disconnected well reports no road while remaining legal and supplying water',()=>{
+  const state=fixture();
+  const prediction=buildingPlacementPrediction(state,'well',{tx:6,ty:3});
+  assert.equal(prediction.placement.ok,true);
+  assert.equal(prediction.lines.find(line=>line.id==='road')?.tone,'negative');
+  assert.match(prediction.lines.find(line=>line.id==='road')?.text??'',/운영에 불필요/);
+  assert.match(prediction.lines.find(line=>line.id==='supply')?.text??'',/1\/12필지/);
+});
+test('market projection matches completion when another ready construction reserves a worker',()=>{
+  const opening={...fixture(),population:8,idleWorkers:4};
+  const withSite=placeBuilding(opening,'house',{tx:10,ty:4});
+  const state={...withSite,constructionSites:withSite.constructionSites.map(site=>({...site,delivered:{...site.required}}))};
+  const prediction=buildingPlacementPrediction(state,'market',{tx:6,ty:3});
+  const marketId=constructionSiteId(state.nextConstructionOrdinal);
+  const placed=placeBuilding(state,'market',{tx:6,ty:3});
+  const complete=completeEligibleConstruction({...placed,wallTick:placed.wallTick+10000,
+    constructionSites:placed.constructionSites.map(site=>site.id===marketId?{...site,delivered:{...site.required},builderTicks:site.requiredBuilderTicks}:site)});
+  const labour=allocateBuildingAndConstructionLabour(complete.buildings,complete.constructionSites,complete.population,
+    {era:complete.era,tick:complete.tick,eraProclaimedTick:complete.eraProclaimedTick},building=>buildingHasRequiredRoadAccess(complete,building));
+  const actual=householdServices({...complete,buildings:[...labour.buildings]});
+  const provider=actual.providers.get(marketId);assert.ok(provider);
+  assert.equal(prediction.lines.find(line=>line.id==='supply')?.text,`완공 후 예상 공급 ${provider.used}/${provider.capacity}필지`);
+  assert.equal(prediction.lines.find(line=>line.id==='workers')?.text,`일꾼 ${provider.workers}/${provider.requiredWorkers}명`);
+  assert.equal(complete.constructionSites.length,1);
+});

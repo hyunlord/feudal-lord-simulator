@@ -74,7 +74,7 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
     if (kind === 'granary') lines.push({ id: 'granary', tone: 'neutral', text: `L3 곡창 거리 조건 ${houseIds.length}가구 · 빵 배송은 별도` });
     if (radius !== null) lines.push({ id: 'range', tone: 'neutral', text: `범위 ${radius}칸 · 실제 대상은 주택 윤곽으로 표시` });
     const road = buildingRoadAccessTiles(virtual, candidate).length > 0;
-    lines.push(predictionCheck('road', '도로 연결', road || !definition.requiresRoad, !definition.requiresRoad ? '(운영에 불필요)' : ''));
+    lines.push(predictionCheck('road', '도로 연결', road, !definition.requiresRoad ? '(운영에 불필요)' : ''));
     lines.push(predictionCheck('materials', '자재', Object.keys(constructionShortfalls(state, definition.buildCost)).length === 0));
     if (kind === 'market') lines.push(predictionCheck('workers', '일꾼', facility.workers >= definition.workersRequired, `${facility.workers}/${definition.workersRequired}명`));
     return { lines, houseIds, range: radius === null ? null : { center: { tx: tile.tx + (definition.width - 1) / 2, ty: tile.ty + (definition.height - 1) / 2 }, radius }, roadSegments: [], placement };
