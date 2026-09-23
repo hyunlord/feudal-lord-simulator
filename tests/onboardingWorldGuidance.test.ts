@@ -115,7 +115,7 @@ test("firstRoadTargetForOnboarding returns null as soon as any cardinal road tou
   assert.equal(target, null);
 });
 
-test("onboardingWorldGuidanceTargets advances from the authored opening to an actually buildable sawmill marker", () => {
+test("onboardingWorldGuidanceTargets advances from the authored opening to food before sawmill", () => {
   // Given: task one and two are complete in the authored default village.
   const state = placeRoadLine(DEFAULT_GAME_STATE, { tx: 1, ty: 0 }, { tx: 1, ty: 0 });
 
@@ -123,16 +123,18 @@ test("onboardingWorldGuidanceTargets advances from the authored opening to an ac
   const targets = onboardingWorldGuidanceTargets(state);
 
   // Then
-  assert.equal(targets.length, 1);
-  assert.equal(targets[0]?.kind, "sawmill");
-  assert.equal(targets[0]?.label, "여기에 제재소를 지으세요");
-  assert.equal(canPlaceBuilding(state, "sawmill", targets[0]?.origin.tx ?? -1, targets[0]?.origin.ty ?? -1).ok, true);
+  assert.ok(targets.some((target) => target.kind === "wheat_farm"));
+  assert.ok(targets.some((target) => target.kind === "mill"));
+  assert.ok(targets.every((target) => target.kind !== "sawmill"));
+  for (const target of targets) {
+    if (target.kind !== "road") assert.equal(canPlaceBuilding(state, target.kind, target.origin.tx, target.origin.ty).ok, true);
+  }
 });
 
 test("onboardingWorldGuidanceTargets follows task order with buildable production service and storage markers", () => {
   // Given
   let state = DEFAULT_GAME_STATE;
-  const expectedKinds = ["sawmill"] as const satisfies readonly BuildingKind[];
+  const expectedKinds = ["wheat_farm", "mill", "sawmill"] as const satisfies readonly BuildingKind[];
 
   for (const kind of expectedKinds) {
     // When
@@ -164,8 +166,7 @@ test("onboardingWorldGuidanceTargets returns non-overlapping buildable markers f
   assert.equal(hasOverlappingFootprints(targets), false);
 });
 
-test("onboardingWorldGuidanceTargets keeps task six buildable when houses are placed before food targets", () => {
-  // Given: task six follows the default progression and road prep opens the full food-chain area.
+test("onboardingWorldGuidanceTargets keeps the early food task buildable when houses are placed first", () => {
   const state = stateAtFoodChainTargets();
 
   // When
@@ -184,24 +185,24 @@ test("onboardingWorldGuidanceTargets keeps task six buildable when houses are pl
     settlement = placeGuidedTargets(settlement, [requiredGuidanceTarget(settlement, kind)]);
   }
   assert.equal(settlement.houses.length, state.houses.length + 1);
-  assert.equal(ONBOARDING_TASKS[5]?.isComplete(settlement), true);
+  assert.equal(ONBOARDING_TASKS[2]?.isComplete(settlement), true);
 });
 
-test("onboardingWorldGuidanceTargets marks another buildable house after the food chain exists", () => {
+test("onboardingWorldGuidanceTargets marks sawmill before another house after the food chain exists", () => {
   // Given
   const state = stateAfterFoodChain();
 
   // When
-  const result = placeGuidedMarkersUntilKind(state, "house");
+  const sawmill = placeGuidedMarkersUntilKind(state, "sawmill");
+  const result = placeGuidedMarkersUntilKind(sawmill.state, "house");
 
   // Then
   assert.equal(result.finalTarget.kind, "house");
   assert.equal(result.finalTarget.label, "오두막 1/1");
 });
 
-test("onboardingWorldGuidanceTargets guides four new houses together for the population thirty task", () => {
-  // Given: production, storage, water, and food are established, then one road extension opens a house cluster.
-  const afterFoodChain = stateAfterFoodChain();
+test("onboardingWorldGuidanceTargets guides another house after food and sawmill", () => {
+  const afterFoodChain = placeGuidedMarkersUntilKind(stateAfterFoodChain(), "sawmill").state;
   const state =
     onboardingWorldGuidanceTargets(afterFoodChain)[0]?.kind === "road"
       ? placeGuidedRoad(afterFoodChain)
@@ -254,9 +255,6 @@ function requiredGuidanceTarget(state: GameState, kind: BuildingKind): Onboardin
 
 function stateAtFoodChainTargets(): GameState {
   let state = DEFAULT_GAME_STATE;
-  for (const kind of ["sawmill"] as const) {
-    state = placeGuidedMarkersUntilKind(state, kind).state;
-  }
   while (onboardingWorldGuidanceTargets(state)[0]?.kind === "road") {
     state = placeGuidedRoad(state);
   }

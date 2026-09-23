@@ -10,14 +10,14 @@ type GuidanceWorld = Pick<
 
 export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly BuildingKind[] {
   if (!hasBuildingKind(state, "logging_camp")) return ["logging_camp"];
-  if (!hasBuildingKind(state, "sawmill")) return ["sawmill"];
-  if (!hasBuildingKind(state, "storehouse")) return ["storehouse"];
-  if (!hasWellWithinHouseRange(state)) return ["well"];
-
   const missingFoodChain = (["wheat_farm", "mill", "granary"] as const).filter(
     (kind) => !hasBuildingKind(state, kind),
   );
-  return missingFoodChain.length > 0 ? missingFoodChain : [];
+  if (missingFoodChain.length > 0) return missingFoodChain;
+  if (!hasBuildingKind(state, "sawmill")) return ["sawmill"];
+  if (!hasBuildingKind(state, "storehouse")) return ["storehouse"];
+  if (!hasWellWithinHouseRange(state)) return ["well"];
+  return [];
 }
 
 export function wellCompletesTask(

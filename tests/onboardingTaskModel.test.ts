@@ -16,10 +16,10 @@ import {
 const REQUIRED_TITLES = [
   "길을 놓아 오두막을 이으세요",
   "숲 옆에 벌목소를 지으세요",
+  "밀밭과 방앗간, 곡창을 지으세요",
   "제재소를 지어 목재를 만드세요",
   "창고를 지어 목재를 모으세요",
   "우물을 지어 물을 공급하세요",
-  "밀밭과 방앗간, 곡창을 지으세요",
   "인구를 30명까지 늘리세요",
   "인구를 50명까지 늘리세요",
 ];
@@ -73,7 +73,7 @@ test("onboarding tasks expose the exact ordered Phase 5 titles and highlights", 
   // Given / When
   const titles = ONBOARDING_TASKS.map((task) => task.title);
   const highlightedTools = ONBOARDING_TASKS.map((task) => task.highlightTools);
-  const foodChainHint = ONBOARDING_TASKS[5]?.hint;
+  const foodChainHint = ONBOARDING_TASKS[2]?.hint;
   const populationThirtyHint = ONBOARDING_TASKS[6]?.hint;
 
   // Then
@@ -81,10 +81,10 @@ test("onboarding tasks expose the exact ordered Phase 5 titles and highlights", 
   assert.deepEqual(highlightedTools, [
     ["road"],
     ["logging_camp"],
+    ["wheat_farm", "mill", "granary"],
     ["sawmill"],
     ["storehouse"],
     ["well"],
-    ["wheat_farm", "mill", "granary"],
     ["house"],
     ["house"],
   ]);
@@ -125,40 +125,33 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
   );
   assert.equal(
     ONBOARDING_TASKS[2]?.isComplete(
-      withSettlement({ buildings: [startHouse, building("sawmill", 5, 4)] }),
+      withSettlement({ buildings: [startHouse, building("wheat_farm", 6, 4), building("mill", 7, 4), building("granary", 8, 4)] }),
     ),
     true,
   );
   assert.equal(
     ONBOARDING_TASKS[3]?.isComplete(
+      withSettlement({ buildings: [startHouse, building("sawmill", 5, 4)] }),
+    ),
+    true,
+  );
+  assert.equal(
+    ONBOARDING_TASKS[4]?.isComplete(
       withSettlement({ buildings: [startHouse, building("storehouse", 5, 4)] }),
     ),
     true,
   );
   assert.equal(
-    ONBOARDING_TASKS[4]?.isComplete(
+    ONBOARDING_TASKS[5]?.isComplete(
       withSettlement({ buildings: [startHouse, building("well", 10, 4)], houses: [baseHouse] }),
     ),
     true,
   );
   assert.equal(
-    ONBOARDING_TASKS[4]?.isComplete(
+    ONBOARDING_TASKS[5]?.isComplete(
       withSettlement({ buildings: [startHouse, building("well", 11, 4)], houses: [baseHouse] }),
     ),
     false,
-  );
-  assert.equal(
-    ONBOARDING_TASKS[5]?.isComplete(
-      withSettlement({
-        buildings: [
-          startHouse,
-          building("wheat_farm", 6, 4),
-          building("mill", 7, 4),
-          building("granary", 8, 4),
-        ],
-      }),
-    ),
-    true,
   );
   assert.equal(ONBOARDING_TASKS[6]?.isComplete(withSettlement({ population: 30 })), true);
   assert.equal(ONBOARDING_TASKS[7]?.isComplete(withSettlement({ population: 50 })), true);
