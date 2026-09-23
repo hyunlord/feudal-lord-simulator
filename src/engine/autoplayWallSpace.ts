@@ -2,7 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from '../content/buildingC
 import type { TileCoordinate } from '../world/grid';
 import { computePalisadeProposal, footprintCorners, isPointInsidePalisade, palisadePathEnclosesFootprints, palisadePathHasBuildingClearance, type PalisadeFootprint } from '../world/palisadeGeometry';
 import type { GameState } from './engine.types';
-import { computePalisadeProposalForState, isPalisadeCoreBuildingKind, palisadeCoreBuildingFootprintsForState, palisadeCoreFootprintsForState, palisadeFootprintsForState } from './palisadeFootprints';
+import { isPalisadeCoreBuildingKind, palisadeCoreBuildingFootprintsForState, palisadeCoreFootprintsForState, palisadeCoreProposalForState, palisadeFootprintsForState } from './palisadeFootprints';
 
 type WallSpace = {
   readonly footprints: readonly PalisadeFootprint[];
@@ -34,7 +34,7 @@ export function preservesAutoplayWallSpace(state: GameState, kind: BuildingKind,
     else {
       const core = palisadeCoreFootprintsForState(state);
       const coreBuildings = palisadeCoreBuildingFootprintsForState(state);
-      const proposal = computePalisadeProposalForState(state);
+      const proposal = palisadeCoreProposalForState(state);
       space = { footprints, core, coreBuildings, feasible: proposal.ok, candidates: new Map() };
       wallSpaceByTiles.set(state.tiles, { layout, space });
     }

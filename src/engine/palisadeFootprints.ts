@@ -154,6 +154,10 @@ export function palisadeCoreBuildingFootprintsForState(state: GameState): readon
   return coreProposalForState(state).buildings;
 }
 
+export function palisadeCoreProposalForState(state: GameState): PalisadeProposalResult {
+  return coreProposalForState(state).proposal;
+}
+
 export function computePalisadeProposalForState(
   state: GameState,
   acceptPath?: (path: PalisadePath) => boolean,

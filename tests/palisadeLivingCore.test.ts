@@ -2,9 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createStage3EconomyHarnessScenario } from '../scripts/economyHarnessStage3Scenario';
 import { createGrowthOpening } from '../scripts/phase21OpeningTranslation';
-import { computePalisadeProposalForState, palisadeCoreFootprintsForState, palisadeFootprintsForState } from '../src/engine/palisadeFootprints';
+import { computePalisadeProposalForState, palisadeCoreFootprintsForState, palisadeCoreProposalForState, palisadeFootprintsForState } from '../src/engine/palisadeFootprints';
 import { confirmPalisadeProclamation } from '../src/engine/palisade';
 import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
+import { preservesAutoplayWallSpace } from '../src/engine/autoplayWallSpace';
+import { canPlaceBuilding } from '../src/world/placement';
 import { computePalisadeProposal, palisadePathHasBuildingClearance, validatePalisadeCandidate } from '../src/world/palisadeGeometry';
 
 test('default wall encloses the living core while excluding the shoreline extraction branch', () => {
@@ -78,4 +80,13 @@ test('the first wall chooses a shorter valid living perimeter in a prepared town
     `living perimeter ${current.perimeterSteps} must improve on ${former.perimeterSteps}`);
   assert.equal(current.perimeterSteps, 47);
   assert.equal(validatePalisadeCandidate(state, current.path, all, palisadeCoreFootprintsForState(state), 1).ok, true);
+});
+
+test('a shorter proposal does not turn a blocked opening into an autoplay food exclusion', () => {
+  const state = createGrowthOpening(2).state;
+  const candidate = { tx: 35, ty: 35 };
+  assert.equal(canPlaceBuilding(state, 'wheat_farm', candidate.tx, candidate.ty).ok, true);
+  assert.equal(palisadeCoreProposalForState(state).ok, false);
+  assert.equal(computePalisadeProposalForState(state).ok, true);
+  assert.equal(preservesAutoplayWallSpace(state, 'wheat_farm', candidate), true);
 });
