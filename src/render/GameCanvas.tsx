@@ -96,6 +96,7 @@ export function GameCanvas({
             buildings: state.buildings,
             walkers: state.walkers,
           },
+          accessState: state,
           cancellationDisabledReason: state.palisade === null
             ? null
             : constructionCancellationDisabledReason(site),

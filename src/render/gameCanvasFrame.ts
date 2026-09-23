@@ -10,6 +10,7 @@ import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderFrame, type PlacementTool } from "./renderer";
 import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
+import { drawConstructionAccessOverlay } from './constructionAccessOverlay';
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -26,6 +27,7 @@ type GameCanvasFrameInput = {
   readonly nowMs: number;
   readonly selectedBuildingId?: string | null;
   readonly selectedWalkerId?: string | null;
+  readonly selectedConstructionSiteId?: string | null;
   readonly renderWalkers?: readonly Walker[] | undefined;
   readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly highlightedHouseIds?: readonly string[];
@@ -71,6 +73,9 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     hoveredTile: input.hoveredTile,
     selectionMode: input.selectedTool === null && input.palisadeDraft == null,
   });
+  if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
+    drawConstructionAccessOverlay(input.context, input.state, input.selectedConstructionSiteId);
+  }
   input.context.restore();
   return preview;
 }

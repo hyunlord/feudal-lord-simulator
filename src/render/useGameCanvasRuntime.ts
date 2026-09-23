@@ -163,6 +163,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         selectedTool: selectedToolRef.current,
         state: stateRef.current,
         point: canvasPoint(event),
+        camera: refs.cameraRef.current,
         viewport: bounds,
         nowMs: performance.now(),
       });

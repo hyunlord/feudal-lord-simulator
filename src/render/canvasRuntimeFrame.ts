@@ -58,6 +58,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     nowMs,
     selectedBuildingId: input.selection?.kind === "building" ? input.selection.buildingId : null,
     selectedWalkerId: input.selection?.kind === "walker" ? input.selection.walkerId : null,
+    selectedConstructionSiteId: input.selection?.kind === 'construction_site' ? input.selection.siteId : null,
     renderWalkers: interpolatedWalkerPositions({
       previous: input.previousRenderState,
       current: input.state,

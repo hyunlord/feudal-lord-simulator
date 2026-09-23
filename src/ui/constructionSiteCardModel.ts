@@ -14,6 +14,8 @@ import {
   constructionMaterialDiagnosis,
   type ConstructionMaterialDiagnosisState,
 } from "./constructionMaterialDiagnosis";
+import { constructionAccessModel, groupedConstructionCause } from './constructionAccessModel';
+import type { GameState } from '../engine/engine.types';
 
 const RESOURCE_LABELS = {
   wheat: "밀",
@@ -26,7 +28,7 @@ const RESOURCE_LABELS = {
 } as const satisfies Record<ResourceType, string>;
 
 export type ConstructionSiteCardRow = Readonly<{
-  label: "부지" | "자재 확보" | "자재 배달" | "건축 작업" | "자재 진단";
+  label: "부지" | "자재 확보" | "자재 배달" | "건축 작업" | "자재 진단" | "원인";
   value: string;
 }>;
 
@@ -45,6 +47,7 @@ export type ConstructionSiteCardModelOptions = Readonly<{
   constructionSites?: readonly ConstructionSite[];
   cancellationDisabledReason?: string | null;
   materialDiagnosisState?: ConstructionMaterialDiagnosisState;
+  accessState?: GameState;
 }>;
 
 function amount(record: Partial<Record<ResourceType, number>>, resource: ResourceType): number {
@@ -122,6 +125,11 @@ export function constructionSiteCardModel(
       { label: "자재 배달", value: deliveryLabel(site) },
       { label: "건축 작업", value: `${site.builderTicks}/${site.requiredBuilderTicks}틱 · 일꾼 ${site.assignedBuilders}명` },
       ...materialDiagnosisRows(site, options),
+      ...(options.accessState === undefined ? [] : (() => {
+        const access = constructionAccessModel(options.accessState, site);
+        const grouped = groupedConstructionCause(options.accessState, access.cause);
+        return grouped === null ? [] : [{ label: '원인' as const, value: grouped }];
+      })()),
     ],
   };
 }

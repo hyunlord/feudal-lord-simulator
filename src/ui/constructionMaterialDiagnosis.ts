@@ -152,6 +152,8 @@ function fallbackLabel(site: ConstructionSite, progress: MaterialProgress): stri
       return `${prefix} · 공급처 없음 · ETA 확인 불가`;
     case "no_route":
       return `${prefix} · 공급처까지 도로 없음 · ETA 확인 불가`;
+    case 'reserve_held':
+      return `${prefix} · 비축분 유지 중 · ETA 확인 불가`;
     case "awaiting_materials":
     case "none":
     case "no_builders":

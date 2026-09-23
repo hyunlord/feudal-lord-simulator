@@ -7,10 +7,13 @@ import {
   resolveRoadPlacementAttempt,
   type PlacementAttemptOutcome,
 } from "./interactions";
-import type { Point } from "./camera";
+import { canvasToWorld, type CameraState, type Point } from "./camera";
 import type { PlacementTool } from "./renderer";
 import { selectWorldAtTile, type AnchoredWorldSelection } from "./worldSelection";
 import { getTile } from "../world/grid";
+import { tileToScreen } from './iso';
+import { constructionOnSiteLabel } from '../economy/construction';
+import { isWallConstructionSite, palisadeConstructionSchedule } from '../economy/palisadeConstruction';
 
 type ClickResolution =
   | { readonly kind: "ignored"; readonly clearSuppression: boolean }
@@ -25,17 +28,19 @@ type ClickResolutionInput = Readonly<{
   selectedTool: PlacementTool | null;
   state: GameState;
   point: Point;
+  camera?: CameraState;
   viewport: { readonly width: number; readonly height: number };
   nowMs: number;
 }>;
 
 export function resolveCanvasClick(input: ClickResolutionInput): ClickResolution {
   if (input.suppressClick) return { kind: "ignored", clearSuppression: true };
-  if (input.spacePressed || input.dragMode !== "none" || input.hover === null) {
+  if (input.spacePressed || input.dragMode !== "none") {
     return { kind: "ignored", clearSuppression: false };
   }
   if (input.selectedTool === null) {
-    const selected = selectWorldAtTile(input.state, input.hover);
+    const selected = selectedWallLabel(input.state, input.point, input.camera)
+      ?? (input.hover === null ? null : selectWorldAtTile(input.state, input.hover));
     if (selected === null) return { kind: "selection", selection: null };
     const position = placeDiagnosticCard(
       input.viewport,
@@ -44,6 +49,7 @@ export function resolveCanvasClick(input: ClickResolutionInput): ClickResolution
     );
     return { kind: "selection", selection: { ...selected, position } };
   }
+  if (input.hover === null) return { kind: 'ignored', clearSuppression: false };
   if (input.selectedTool === "road") {
     if (getTile(input.state, input.hover)?.hasRoad !== true) {
       return {
@@ -74,4 +80,23 @@ export function resolveCanvasClick(input: ClickResolutionInput): ClickResolution
       nowMs: input.nowMs,
     }),
   };
+}
+
+function selectedWallLabel(state: GameState, point: Point, camera: CameraState | undefined) {
+  if (camera === undefined) return null;
+  const world = canvasToWorld(point, camera);
+  for (const site of state.constructionSites) {
+    if (!isWallConstructionSite(site)) continue;
+    const schedule = palisadeConstructionSchedule(site, state.constructionSites);
+    if (schedule.kind !== 'queued' && constructionOnSiteLabel(site) === '') continue;
+    const first = site.path[0];
+    const last = site.path[site.path.length - 1];
+    if (first === undefined || last === undefined) continue;
+    const anchor = tileToScreen((first.x + last.x) / 2, (first.y + last.y) / 2);
+    if (world.x >= anchor.sx - 26 && world.x <= anchor.sx + 170 / camera.zoom
+      && world.y >= anchor.sy - 80 && world.y <= anchor.sy - 42) {
+      return { kind: 'construction_site' as const, siteId: site.id };
+    }
+  }
+  return null;
 }
