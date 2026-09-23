@@ -157,6 +157,17 @@ test("house demolition control explains resident departure and no refund", () =>
   assert.match(markup, /자재와 보관 식량은 반환되지 않습니다/);
 });
 
+test("Given a ready house When inspector renders Then remaining promotion hold is shown in game time", () => {
+  const value = houseDiagnosisModel(DEFAULT_GAME_STATE, STARTING_HOUSE_ID);
+  assert.ok(value);
+  const markup = renderToStaticMarkup(createElement(DiagnosticCard, {
+    position: { x: 8, y: 8 }, model: { kind: "house", value },
+    causeSummary: { buildingId: STARTING_HOUSE_ID, name: value.name, currentLevel: 2, nextLevel: 3,
+      status: "ready", blocker: null, summary: "승급 대기", progressTicks: 5800, requiredTicks: 8400, remainingTicks: 2600 },
+  }));
+  assert.match(markup, /L3까지 조건 유지 2:10 남음/);
+});
+
 
 test("selected facility card retains authoritative operation facts and its actual art", () => {
   const building = DEFAULT_GAME_STATE.buildings.find((candidate) => candidate.kind === "granary");

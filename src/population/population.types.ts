@@ -9,4 +9,5 @@ export interface House {
   emptyFoodTicks?: number;
   starvationGraceUntilTick?: number;
   unmetRequirementTicks: number;
+  promotionTicks?: number;
 }

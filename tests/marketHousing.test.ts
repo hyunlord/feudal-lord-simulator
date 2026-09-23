@@ -35,12 +35,13 @@ function building(
 function house(input: Partial<House> = {}): House {
   return {
     buildingId: "home",
-    level: 0,
+    level: 2,
     residents: 4,
     hasWater: true,
     breadStock: 1,
     lastServicedTick: 10,
     unmetRequirementTicks: 0,
+    promotionTicks: 8399,
     ...input,
   };
 }

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { BALANCE } from "../src/content/balanceConfig";
+import { HOUSING_CONFIG } from "../src/content/housingConfig";
 import { updateHouse } from "../src/population/housing";
 import type { House } from "../src/population/population.types";
 import { houseBuiltLevel, houseCondition } from "../src/population/houseCondition";
@@ -28,8 +29,14 @@ test("lost services preserve the built form through grace, all declines and reco
     assert.equal(current.breadStock, 0);
     assert.equal(houseCondition(current), level === 3 ? "strained" : "neglected");
   }
-  const restored = updateHouse({ ...current, hasWater: true, breadStock: 2, lastServicedTick: 1 },
-    { tick: 1, hasGranaryNearby: true, hasMarketAccess: true, hasChurchAccess: true, palisadeProtection: "inside" });
+  const recoveryContext = { tick: 1, hasGranaryNearby: true, hasMarketAccess: true,
+    hasChurchAccess: true, palisadeProtection: "inside" as const };
+  let restored = updateHouse({ ...current, hasWater: true, breadStock: 2, lastServicedTick: 1 }, recoveryContext);
+  assert.equal(restored.level, 0);
+  for (const definition of HOUSING_CONFIG.slice(1)) {
+    restored = updateHouse({ ...restored, promotionTicks: definition.promotionHoldTicks - 1, breadStock: 2 }, recoveryContext);
+    assert.equal(restored.level, definition.level);
+  }
   assert.equal(restored.level, 4);
   assert.equal(houseBuiltLevel(restored), 4);
   assert.equal(houseCondition(restored), "maintained");
@@ -56,9 +63,11 @@ test("deterministic state hashes record divergent built history but normalize le
   const original = { ...DEFAULT_GAME_STATE, houses: [{ ...home, level: 2 }] };
   const maintained = { ...original, houses: [{ ...home, level: 2, builtLevel: 2 }] };
   const declined = { ...original, houses: [{ ...home, level: 2, builtLevel: 4 }] };
+  const waiting = { ...maintained, houses: maintained.houses.map(house => ({ ...house, promotionTicks: 400 })) };
   for (const hash of [hashEconomyState, hashOpeningState]) {
     assert.equal(hash(original), hash(maintained));
     assert.notEqual(hash(maintained), hash(declined));
+    assert.notEqual(hash(maintained), hash(waiting));
   }
 });
 

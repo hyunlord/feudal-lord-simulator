@@ -122,16 +122,19 @@ export function updateHouse(
       ? Math.min(supported, 2)
       : supported;
   let updated = house;
+  const next = HOUSING_CONFIG.find((definition) => definition.level === house.level + 1);
+  const nextEligible = next !== undefined
+    && !(context.palisadeProtection === "outside" && house.level < 3 && next.level >= 3)
+    && next.requires.every((requirement) => requirementMet(requirement, house, context));
 
-  if (targetLevel > house.level) {
-    updated = {
-      ...house,
-      level: targetLevel,
-      unmetRequirementTicks: 0,
-    };
-  } else if (targetLevel === house.level) {
-    if (house.unmetRequirementTicks !== 0) {
-      updated = { ...house, unmetRequirementTicks: 0 };
+  if (nextEligible && next !== undefined) {
+    const promotionTicks = (house.promotionTicks ?? 0) + 1;
+    updated = promotionTicks >= next.promotionHoldTicks
+      ? { ...house, level: next.level, promotionTicks: 0, unmetRequirementTicks: 0 }
+      : { ...house, promotionTicks, unmetRequirementTicks: 0 };
+  } else if (targetLevel >= house.level) {
+    if (house.unmetRequirementTicks !== 0 || (house.promotionTicks ?? 0) !== 0) {
+      updated = { ...house, unmetRequirementTicks: 0, promotionTicks: 0 };
     }
   } else {
     const unmetRequirementTicks = house.unmetRequirementTicks + 1;
@@ -141,8 +144,9 @@ export function updateHouse(
             ...house,
             level: Math.max(0, house.level - 1),
             unmetRequirementTicks: 0,
+            promotionTicks: 0,
           }
-        : { ...house, unmetRequirementTicks };
+        : { ...house, unmetRequirementTicks, promotionTicks: 0 };
   }
 
   return stepResidents({ ...updated, builtLevel: Math.max(houseBuiltLevel(house), updated.level) }, context.tick, context.lotArea ?? 1);

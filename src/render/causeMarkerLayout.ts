@@ -4,6 +4,7 @@ export interface CauseMarker extends Point {
   readonly buildingIds: readonly string[];
   readonly causeId: string | null;
   readonly risk: boolean;
+  readonly progressFraction?: number;
 }
 
 export function groupCauseMarkers(markers: readonly CauseMarker[], zoom: number): readonly CauseMarker[] {

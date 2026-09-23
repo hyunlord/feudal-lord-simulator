@@ -96,7 +96,8 @@ export function mergeHouses(state: GameState, sourceId: string, targetId: string
     emptyFoodTicks: first.breadStock + second.breadStock > 0 ? 0 : Math.max(first.emptyFoodTicks ?? 0, second.emptyFoodTicks ?? 0),
     hasWater: first.hasWater && second.hasWater, lastServicedTick: Math.min(first.lastServicedTick, second.lastServicedTick),
     starvationGraceUntilTick: Math.min(first.starvationGraceUntilTick ?? 0, second.starvationGraceUntilTick ?? 0),
-    unmetRequirementTicks: Math.max(first.unmetRequirementTicks, second.unmetRequirementTicks) };
+    unmetRequirementTicks: Math.max(first.unmetRequirementTicks, second.unmetRequirementTicks),
+    promotionTicks: Math.min(first.promotionTicks ?? 0, second.promotionTicks ?? 0) };
   return { ...state,
     buildings: state.buildings.filter((building) => building.id !== targetId).map((building) => building.id === sourceId ? combinedBuilding(source, target) : building),
     houses: state.houses.filter((house) => house.buildingId !== targetId).map((house) => house.buildingId === sourceId ? merged : house),

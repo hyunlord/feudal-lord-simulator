@@ -48,6 +48,7 @@ function house(input: Partial<House> = {}): House {
     breadStock: 1,
     lastServicedTick: 10,
     unmetRequirementTicks: 0,
+    promotionTicks: 2399,
     ...input,
   };
 }

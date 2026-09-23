@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import { BALANCE } from "../content/balanceConfig";
 
 import type { HouseProgressModel } from "../ui/houseProgressModel";
 import type { HouseDiagnosisModel } from "../ui/houseDiagnosisModel";
@@ -212,6 +213,8 @@ export function DiagnosticCard({
         </header>
         {causeSummary == null ? null : <div className="inspector-cause-summary">
           다음: {causeSummary.nextLevel === null ? '최고 단계' : `L${causeSummary.nextLevel}`} / {causeSummary.currentLevel === 4 ? '유지 위험' : '첫 방해'}: {causeSummary.blocker?.label ?? (causeSummary.status === 'ready' ? '없음 · 승급 대기' : '없음')}
+          {causeSummary.status === 'ready' && causeSummary.remainingTicks !== null && causeSummary.nextLevel !== null ?
+            <p>L{causeSummary.nextLevel}까지 조건 유지 {Math.floor(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) / 60)}:{String(Math.ceil(causeSummary.remainingTicks / BALANCE.TICKS_PER_SECOND) % 60).padStart(2, '0')} 남음</p> : null}
         </div>}
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} /> : null}

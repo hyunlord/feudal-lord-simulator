@@ -106,6 +106,7 @@ function normalizeHouse(house: House, mergedLot: boolean) {
     ...((house.emptyFoodTicks ?? 0) === 0 ? {} : { emptyFoodTicks: house.emptyFoodTicks }),
     lastServicedTick: house.lastServicedTick,
     unmetRequirementTicks: house.unmetRequirementTicks,
+    ...((house.promotionTicks ?? 0) === 0 ? {} : { promotionTicks: house.promotionTicks }),
   };
 }
 
@@ -235,6 +236,7 @@ export function hashOpeningState(state: GameState): string {
         ...(houseBuiltLevel(house) === house.level ? {} : { builtLevel: houseBuiltLevel(house) }),
         residents: house.residents,
         hasWater: house.hasWater,
+        ...((house.promotionTicks ?? 0) === 0 ? {} : { promotionTicks: house.promotionTicks }),
       })),
     roads: state.tiles
       .filter((tile) => tile.hasRoad)

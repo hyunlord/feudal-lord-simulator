@@ -30,6 +30,9 @@ export type BuildingCausePresentation = Readonly<{
 export type HouseProgressModel = BuildingCausePresentation & Readonly<{
   currentLevel: number;
   nextLevel: number | null;
+  progressTicks: number;
+  requiredTicks: number | null;
+  remainingTicks: number | null;
 }>;
 type RoadService = ReturnType<typeof marketRoadService>;
 const cache = new WeakMap<GameState, ReadonlyMap<string, BuildingCausePresentation | HouseProgressModel>>();
@@ -96,19 +99,27 @@ function deriveHouse(state: GameState, house: House, home: Building, road: RoadS
   const supported = HOUSING_CONFIG.filter(def => def.requires.every(req => blockers[req] === null)).at(-1)?.level ?? 0;
   const outsideCap = house.level < 3 && palisadeProtectionForBuilding(home, state.palisade) === 'outside';
   const target = outsideCap ? Math.min(supported, 2) : supported;
-  const nextLevel = house.level >= 4 ? null : target > house.level ? target : house.level + 1;
+  const next = HOUSING_CONFIG.find(def => def.level === house.level + 1);
+  const nextLevel = next?.level ?? null;
   const risk = target < house.level;
-  const ready = target > house.level;
+  const nextBlocker = next === undefined ? null : firstRequirement(next.requires, blockers)
+    ?? (outsideCap && next.level >= 3 ? blockers.protected : null);
+  const ready = next !== undefined && nextBlocker === null;
   const requirementLevel = risk ? house.level : nextLevel;
   const requirements = HOUSING_CONFIG.find(def => def.level === requirementLevel)?.requires ?? [];
-  const blocker = ready || requirementLevel === null ? null : firstRequirement(requirements, blockers)
-    ?? (outsideCap && requirementLevel >= 3 ? blockers.protected : null);
+  const blocker = risk ? firstRequirement(requirements, blockers) : ready ? null : nextBlocker;
   const status = risk ? 'risk' : ready ? 'ready' : blocker === null ? 'normal' : 'blocked';
   const name = HOUSING_CONFIG.find(def => def.level === houseBuiltLevel(house))?.name ?? HOUSING_CONFIG[0].name;
   const nextName = HOUSING_CONFIG.find(def => def.level === nextLevel)?.name;
-  const summary = risk ? `생활 L${house.level} 유지 위험 · ${blocker?.label ?? ''}` : ready ? `L${nextLevel} ${nextName ?? ''} 승급 가능`
+  const requiredTicks = next?.promotionHoldTicks ?? null;
+  const progressTicks = ready && requiredTicks !== null ? Math.min(requiredTicks, house.promotionTicks ?? 0) : 0;
+  const remainingTicks = ready && requiredTicks !== null ? requiredTicks - progressTicks : null;
+  const remainingSeconds = remainingTicks === null ? 0 : Math.ceil(remainingTicks / BALANCE.TICKS_PER_SECOND);
+  const remainingLabel = `${Math.floor(remainingSeconds / 60)}:${String(remainingSeconds % 60).padStart(2, '0')}`;
+  const summary = risk ? `생활 L${house.level} 유지 위험 · ${blocker?.label ?? ''}` : ready ? `L${nextLevel} ${nextName ?? ''} 승급 대기 · ${remainingLabel} 남음`
     : blocker === null ? `생활 L${house.level} 유지 중` : `L${nextLevel} ${nextName ?? ''} 필요 · ${blocker.label}`;
-  return { buildingId: home.id, name, currentLevel: house.level, nextLevel, status, blocker, summary };
+  return { buildingId: home.id, name, currentLevel: house.level, nextLevel, status, blocker, summary,
+    progressTicks, requiredTicks, remainingTicks };
 }
 function deriveFacility(state: GameState, building: Building): BuildingCausePresentation {
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];

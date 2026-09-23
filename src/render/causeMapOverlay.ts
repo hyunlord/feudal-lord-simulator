@@ -15,6 +15,7 @@ const GLYPH_SHAPES: Readonly<Record<keyof typeof CAUSE_REGISTRY, readonly (reado
   church: [[0,-13],[11,-3],[11,11],[-11,11],[-11,-3]],
   wall: [[-11,11],[-11,-11],[-5,-11],[-5,-5],[0,-5],[0,-11],[6,-11],[6,-5],[11,-5],[11,11]],
   workers: [[0,-12],[10,-5],[8,10],[-8,10],[-10,-5]],
+  construction_access: [[-12,-9],[12,-9],[12,9],[-12,9]],
 };
 
 export function causeMarkersForState(state: GameState, zoom: number): readonly CauseMarker[] {
@@ -25,7 +26,9 @@ export function causeMarkersForState(state: GameState, zoom: number): readonly C
     const size = buildingFootprint(building);
     const anchor = tileToScreen(building.tx + (size.width - 1) / 2, building.ty + (size.height - 1) / 2);
     return [{ x: anchor.sx + 16, y: anchor.sy - 42, buildingIds: [building.id],
-      causeId: cause.blocker?.causeId ?? null, risk: cause.status === 'risk' }];
+      causeId: cause.blocker?.causeId ?? null, risk: cause.status === 'risk',
+      ...(cause.status === 'ready' && 'requiredTicks' in cause && cause.requiredTicks !== null
+        ? { progressFraction: cause.progressTicks / cause.requiredTicks } : {}) }];
   }), zoom);
 }
 
@@ -56,7 +59,12 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
     const entry = Object.entries(CAUSE_REGISTRY).find(([id]) => id === marker.causeId)?.[1];
     if (entry === undefined) {
       applyPaletteStroke(context, SEMANTIC_PALETTE.sage, 0.5);
-      context.beginPath(); context.arc(0, 0, 6, 0, Math.PI * 2); context.stroke();
+      context.beginPath(); context.arc(0, 0, 8, 0, Math.PI * 2); context.stroke();
+      if (marker.progressFraction !== undefined) {
+        applyPaletteStroke(context, SEMANTIC_PALETTE.gold, 0.33);
+        context.beginPath(); context.arc(0, 0, 8, -Math.PI / 2,
+          -Math.PI / 2 + Math.max(0, Math.min(1, marker.progressFraction)) * Math.PI * 2); context.stroke();
+      }
     } else {
       const points = GLYPH_SHAPES[entry.glyphId];
       context.beginPath();

@@ -468,10 +468,11 @@ test("advance tick starts authored production while preserving opening structure
     next.houses,
     state.houses.map((house) => ({
       ...house,
-      level: 1,
-      builtLevel: 1,
+      level: 0,
+      builtLevel: 0,
       hasWater: true,
       unmetRequirementTicks: 0,
+      promotionTicks: 1,
     })),
   );
   assert.deepEqual(next.walkers, []);

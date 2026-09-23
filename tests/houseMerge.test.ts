@@ -49,6 +49,15 @@ for (const vertical of [false, true]) for (const reversed of [false, true]) {
   });
 }
 
+test("merged lots keep only the shorter verified promotion hold", () => {
+  const base = pair();
+  const houses = base.houses.map((home, index) => ({ ...home, promotionTicks: index === 0 ? 2399 : 1200 }));
+  for (const [sourceId, targetId] of [["a", "b"], ["b", "a"]] as const) {
+    const merged = mergeHouses({ ...base, houses }, sourceId, targetId);
+    assert.equal(merged.houses[0]?.promotionTicks, 1200);
+  }
+});
+
 test("rejects mismatched levels, chains, invalid ownership, roads, terrain and stock", () => {
   const original = pair();
   const cases: GameState[] = [

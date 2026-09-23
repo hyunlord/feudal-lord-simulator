@@ -4,6 +4,7 @@ import type { Building } from '../src/content/buildingConfig';
 import type { GameState } from '../src/engine/engine.types';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 import { firstBlocker, houseProgressModel, buildingCauseSnapshot } from '../src/ui/houseProgressModel';
+import { causeMarkersForState } from '../src/render/causeMapOverlay';
 
 function building(id: string, kind: Building['kind'], tx: number, ty: number): Building {
   return { id, kind, tx, ty, workers: 5, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
@@ -19,12 +20,24 @@ function fixture(level = 3): GameState {
 }
 function model(state: GameState) { return houseProgressModel(state, 'home'); }
 
-test('ready reflects highest eligible noncumulative level without a granary', () => {
+test('the next immediate level blocks on its own unmet requirement', () => {
   const state = fixture(2);
-  assert.equal(model(state)?.status, 'ready');
-  assert.equal(model(state)?.nextLevel, 4);
+  assert.equal(model(state)?.status, 'blocked');
+  assert.equal(model(state)?.nextLevel, 3);
+  assert.equal(model(state)?.blocker?.requirement, 'granary');
   const home = state.houses[0]; assert.ok(home);
-  assert.equal(firstBlocker(home, state), null);
+  assert.equal(firstBlocker(home, state)?.requirement, 'granary');
+});
+test('ready exposes the actual hold fraction and remaining ticks', () => {
+  const state = fixture(1);
+  state.houses = state.houses.map(home => ({ ...home, promotionTicks: 1800 }));
+  assert.equal(model(state)?.status, 'ready');
+  assert.equal(model(state)?.nextLevel, 2);
+  assert.equal(model(state)?.progressTicks, 1800);
+  assert.equal(model(state)?.requiredTicks, 2400);
+  assert.equal(model(state)?.remainingTicks, 600);
+  assert.match(model(state)?.summary ?? '', /0:30 남음/);
+  assert.equal(causeMarkersForState(state, 0.9).find(marker => marker.buildingIds.includes('home'))?.progressFraction, 0.75);
 });
 test('maintained L4 has no upgrade blocker or icon', () => {
   const state = fixture(4);

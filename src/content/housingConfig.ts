@@ -13,24 +13,27 @@ export interface HousingDefinition {
   readonly name: string;
   readonly requires: readonly HousingRequirement[];
   readonly capacity: number;
+  readonly promotionHoldTicks: number;
   readonly granaryRadius?: number;
 }
 
 export const HOUSING_CONFIG = [
-  { level: 0, name: "오두막", requires: [], capacity: 4 },
-  { level: 1, name: "소가옥", requires: ["water"], capacity: 8 },
-  { level: 2, name: "장인가옥", requires: ["water", "bread"], capacity: 14 },
+  { level: 0, name: "오두막", requires: [], capacity: 4, promotionHoldTicks: 0 },
+  { level: 1, name: "소가옥", requires: ["water"], capacity: 8, promotionHoldTicks: 600 },
+  { level: 2, name: "장인가옥", requires: ["water", "bread"], capacity: 14, promotionHoldTicks: 2400 },
   {
     level: 3,
     name: "상인가옥",
     requires: ["water", "bread", "granary"],
     capacity: 22,
     granaryRadius: 12,
+    promotionHoldTicks: 8400,
   },
   {
     level: 4,
     name: "도시 대가옥",
     requires: ["water", "bread", "market", "church", "protected"],
     capacity: 32,
+    promotionHoldTicks: 2400,
   },
 ] as const satisfies readonly HousingDefinition[];

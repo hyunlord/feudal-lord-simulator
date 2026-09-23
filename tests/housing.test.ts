@@ -70,15 +70,18 @@ test("well service uses a direct Manhattan radius of exactly six tiles", () => {
   );
 });
 
-test("a house immediately evolves to the highest currently satisfied level", () => {
+test("a house promotes one eligible stage after that stage's hold", () => {
   const waterOnly = updateHouse(
     house("home", { hasWater: true }),
     { tick: 10, hasGranaryNearby: false },
   );
-  assert.equal(waterOnly.level, 1);
+  assert.equal(waterOnly.level, 0);
+  assert.equal(waterOnly.promotionTicks, 1);
 
   const freshBread = updateHouse(
     house("home", {
+      level: 1,
+      promotionTicks: 2399,
       hasWater: true,
       breadStock: 1,
       lastServicedTick: 10,
@@ -89,6 +92,8 @@ test("a house immediately evolves to the highest currently satisfied level", () 
 
   const nearGranary = updateHouse(
     house("home", {
+      level: 2,
+      promotionTicks: 8399,
       hasWater: true,
       breadStock: 1,
       lastServicedTick: 10,
@@ -100,10 +105,11 @@ test("a house immediately evolves to the highest currently satisfied level", () 
 
 test("bread recency does not treat a never-served tick-zero house as fed", () => {
   const neverServed = updateHouse(
-    house("home", { hasWater: true, breadStock: 0, lastServicedTick: 0 }),
+    house("home", { level: 1, promotionTicks: 2399, hasWater: true, breadStock: 0, lastServicedTick: 0 }),
     { tick: 1, hasGranaryNearby: true },
   );
   assert.equal(neverServed.level, 1);
+  assert.equal(neverServed.promotionTicks, 0);
 });
 
 test("devolution waits for 400 continuous unmet ticks", () => {
@@ -147,7 +153,7 @@ test("a recovered requirement resets the devolution streak", () => {
 
 test("population grows on its household phase with food and leaves after tracked hunger", () => {
   const tick = 3 * BALANCE.GROWTH_INTERVAL + houseGrowthPhase("home");
-  const grow = updateHouse(house("home", { residents: 4, hasWater: true, breadStock: 2 }), { tick, hasGranaryNearby: false });
+  const grow = updateHouse(house("home", { level: 1, residents: 4, hasWater: true, breadStock: 2 }), { tick, hasGranaryNearby: false });
   assert.equal(grow.residents, 5);
   const boundary = updateHouse(house("home", { residents: 5, hasWater: true, emptyFoodTicks: 299 }), { tick, hasGranaryNearby: false });
   assert.equal(boundary.residents, 5);
@@ -157,7 +163,7 @@ test("population grows on its household phase with food and leaves after tracked
 
 test("old delivery dates do not make held bread expire", () => {
   const tick = 3 * BALANCE.GROWTH_INTERVAL + houseGrowthPhase("home");
-  const fed = updateHouse(house("home", { residents: 5, hasWater: true, breadStock: 2, lastServicedTick: 0 }), { tick, hasGranaryNearby: false });
+  const fed = updateHouse(house("home", { level: 1, residents: 5, hasWater: true, breadStock: 2, lastServicedTick: 0 }), { tick, hasGranaryNearby: false });
   assert.equal(fed.breadStock, 2);
   assert.equal(fed.residents, 6);
 });
@@ -171,6 +177,8 @@ test("level three granary proximity includes the full 2x2 footprint", () => {
   const result = updateHousing(
     [
       house("home", {
+        level: 2,
+        promotionTicks: 8399,
         hasWater: true,
         breadStock: 1,
         lastServicedTick: 10,
