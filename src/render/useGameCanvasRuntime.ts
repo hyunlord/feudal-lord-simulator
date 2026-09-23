@@ -1,3 +1,4 @@
+import { isCanvasKeyboardControl } from "./canvasKeyboardTarget";
 import { updateCanvasHover } from "./canvasHoverRuntime";
 import { cancelRoadPreview } from "./cancelRoadPreview";
 import { createPredictionPublisher } from "./placementPredictionRuntime";
@@ -200,9 +201,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       });
     };
     const keyDown = (event: KeyboardEvent) => {
+      if (isCanvasKeyboardControl(event.target)) return;
       if (event.code === "Escape") cancelRoadPreview(refs);
-      const nowMs = performance.now();
-      const cameraKey = cameraInputKeyDown(cameraInput, event.key, nowMs);
+      const cameraKey = cameraInputKeyDown(cameraInput, event.key, performance.now());
       const result = resolveCanvasKeyDown({
         code: event.code,
         key: event.key,
@@ -225,7 +226,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     const keyUp = (event: KeyboardEvent) => {
       const cameraKey = cameraInputKeyUp(cameraInput, event.key, performance.now());
       if (event.code === "Space") refs.spacePressed.current = false;
-      if (event.target instanceof Element && event.target.closest(".diagnostic-card") !== null) return;
+      if (isCanvasKeyboardControl(event.target)) return;
       if (event.code === "Space" || cameraKey) event.preventDefault();
     };
     const leaveCanvas = () => { canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
