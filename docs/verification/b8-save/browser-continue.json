@@ -1,0 +1,202 @@
+{
+  "url": "http://127.0.0.1:4183/",
+  "autoplayDuringRun1": true,
+  "chrome": "Chrome/153.0.8010.53",
+  "playSeconds": 120,
+  "startedAt": "2026-09-23T20:56:13.011Z",
+  "runs": [
+    {
+      "kind": "page-reload",
+      "noContinueOnFirstVisit": true,
+      "before": {
+        "playedSeconds": 120.51,
+        "saved": {
+          "slot": "auto-2",
+          "slots": [
+            "auto-2@2323",
+            "auto-1@1090"
+          ],
+          "summary": "1분째 · 인구 32 · 촌락 시대",
+          "tick": 2323,
+          "population": 32,
+          "treasuryTimber": 48,
+          "treasuryCoin": 0,
+          "buildings": 11,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 3,
+          "stock": {
+            "wheat": 16,
+            "bread": 2,
+            "logs": 6,
+            "timber": 22
+          },
+          "stateSha256": "431d5dcf8a75d619254c34151f4d0a9be7313ad411d5d7a7a0d126ce2817621d",
+          "bytes": 727040
+        },
+        "bar": "인구 32 유휴 일꾼 1 ⌄ 빵 7 4가구 기준 약 35게임초 가용 목재 70 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "shot": "reload-0-before.jpg",
+        "metrics": [
+          {
+            "reason": "interval",
+            "slotId": "auto-1",
+            "tick": 1090,
+            "byteLength": 496908,
+            "saveSerializeMs": 2.8000000715255737,
+            "writeMs": 498,
+            "frameWorkMs": 3,
+            "frameIntervalMs": 100.09999999999854
+          },
+          {
+            "reason": "pause",
+            "slotId": "auto-2",
+            "tick": 2323,
+            "byteLength": 727040,
+            "saveSerializeMs": 3.8000000715255737,
+            "writeMs": 480.60000002384186,
+            "frameWorkMs": 3.899999976158142,
+            "frameIntervalMs": 100.10000000000582
+          }
+        ],
+        "baselineFrameGaps": {
+          "frames": 35,
+          "medianMs": 83.39999999999418,
+          "p95Ms": 100,
+          "maxMs": 100
+        }
+      },
+      "after": {
+        "label": "reload",
+        "welcomeLine": "1분째 · 인구 32 · 촌락 시대",
+        "welcomeShot": "reload-1-welcome-continue.jpg",
+        "afterShot": "reload-2-after-continue.jpg",
+        "barAfter": "인구 32 유휴 일꾼 1 ⌄ 빵 7 4가구 기준 약 35게임초 가용 목재 70 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "restored": {
+          "slot": "manual",
+          "slots": [
+            "manual@2323",
+            "auto-2@2323",
+            "auto-1@1090"
+          ],
+          "summary": "1분째 · 인구 32 · 촌락 시대",
+          "tick": 2323,
+          "population": 32,
+          "treasuryTimber": 48,
+          "treasuryCoin": 0,
+          "buildings": 11,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 3,
+          "stock": {
+            "wheat": 16,
+            "bread": 2,
+            "logs": 6,
+            "timber": 22
+          },
+          "stateSha256": "431d5dcf8a75d619254c34151f4d0a9be7313ad411d5d7a7a0d126ce2817621d",
+          "bytes": 727040
+        },
+        "mismatches": [],
+        "matches": true
+      }
+    },
+    {
+      "kind": "tab-close-reopen",
+      "before": {
+        "playedSeconds": 30.499,
+        "saved": {
+          "slot": "auto-3",
+          "slots": [
+            "auto-3@2932",
+            "manual@2323",
+            "auto-2@2323",
+            "auto-1@1090"
+          ],
+          "summary": "2분째 · 인구 32 · 촌락 시대",
+          "tick": 2932,
+          "population": 32,
+          "treasuryTimber": 48,
+          "treasuryCoin": 0,
+          "buildings": 11,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 5,
+          "stock": {
+            "bread": 2,
+            "timber": 28,
+            "logs": 1,
+            "wheat": 1
+          },
+          "stateSha256": "b656ba6caf31558d7a549cead3848b3b8f632828d14168a8d3c96c917bb6a5e3",
+          "bytes": 757929
+        },
+        "bar": "인구 32 유휴 일꾼 1 ⌄ 빵 14 4가구 기준 약 70게임초 가용 목재 76 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "shot": "tab-0-before.jpg",
+        "metrics": [
+          {
+            "reason": "manual",
+            "slotId": "manual",
+            "tick": 2323,
+            "byteLength": 727040,
+            "saveSerializeMs": 3.100000023841858,
+            "writeMs": 393.10000002384186,
+            "frameWorkMs": 3.100000023841858,
+            "frameIntervalMs": 100.09999999999991
+          },
+          {
+            "reason": "pause",
+            "slotId": "auto-3",
+            "tick": 2932,
+            "byteLength": 757929,
+            "saveSerializeMs": 5.200000047683716,
+            "writeMs": 467.5,
+            "frameWorkMs": 5.200000047683716,
+            "frameIntervalMs": 100.10000000000582
+          }
+        ],
+        "baselineFrameGaps": {
+          "frames": 31,
+          "medianMs": 100,
+          "p95Ms": 100.10000000000036,
+          "maxMs": 100.10000000000036
+        }
+      },
+      "after": {
+        "label": "tab",
+        "welcomeLine": "2분째 · 인구 32 · 촌락 시대",
+        "welcomeShot": "tab-1-welcome-continue.jpg",
+        "afterShot": "tab-2-after-continue.jpg",
+        "barAfter": "인구 32 유휴 일꾼 1 ⌄ 빵 14 4가구 기준 약 70게임초 가용 목재 76 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "restored": {
+          "slot": "manual",
+          "slots": [
+            "manual@2932",
+            "auto-3@2932",
+            "auto-2@2323",
+            "auto-1@1090"
+          ],
+          "summary": "2분째 · 인구 32 · 촌락 시대",
+          "tick": 2932,
+          "population": 32,
+          "treasuryTimber": 48,
+          "treasuryCoin": 0,
+          "buildings": 11,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 5,
+          "stock": {
+            "bread": 2,
+            "timber": 28,
+            "logs": 1,
+            "wheat": 1
+          },
+          "stateSha256": "b656ba6caf31558d7a549cead3848b3b8f632828d14168a8d3c96c917bb6a5e3",
+          "bytes": 757929
+        },
+        "mismatches": [],
+        "matches": true
+      }
+    }
+  ],
+  "passed": true
+}

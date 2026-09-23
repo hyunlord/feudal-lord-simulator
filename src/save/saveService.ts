@@ -1,5 +1,12 @@
 import type { GameState } from "../engine/engine.types";
-import { decodeSave, encodeSave, readStoredSchemaVersion, SaveChecksumError, type DecodedSave } from "./saveCodec";
+import {
+  decodeSave,
+  encodeSave,
+  readStoredSchemaVersion,
+  SaveChecksumError,
+  type DecodedSave,
+  type EncodedSave,
+} from "./saveCodec";
 import type { SaveStorage } from "./saveStorage";
 import { SAVE_SCHEMA_VERSION, type SaveEnvelope, type SaveMeta } from "./saveTypes";
 
@@ -57,9 +64,13 @@ export function createSaveService(options: SaveServiceOptions) {
     return backupSlotId;
   }
 
-  async function save(slotId: string, state: GameState): Promise<SaveWriteResult> {
-    const encoded = encodeSave({ state, createdAt: sessionCreatedAt, savedAt: now().toISOString(),
+  /** Synchronous so a caller can bound the main-thread cost of a save to one task. */
+  function encode(state: GameState): EncodedSave {
+    return encodeSave({ state, createdAt: sessionCreatedAt, savedAt: now().toISOString(),
       ...(options.gameVersion === undefined ? {} : { gameVersion: options.gameVersion }) });
+  }
+
+  async function writeEncoded(slotId: string, encoded: EncodedSave): Promise<SaveWriteResult> {
     const writeStartedAt = performance.now();
     const backupSlotId = await backupOlderSchema(slotId);
     await storage.write(slotId, encoded.bytes);
@@ -74,6 +85,10 @@ export function createSaveService(options: SaveServiceOptions) {
       byteLength: encoded.bytes.byteLength,
     };
     return { meta, saveSerializeMs: encoded.saveSerializeMs, writeMs, byteLength: encoded.bytes.byteLength, backupSlotId };
+  }
+
+  function save(slotId: string, state: GameState): Promise<SaveWriteResult> {
+    return writeEncoded(slotId, encode(state));
   }
 
   async function playerSaves(): Promise<SaveMeta[]> {
@@ -114,8 +129,10 @@ export function createSaveService(options: SaveServiceOptions) {
 
   return {
     save,
-    async autosave(state: GameState): Promise<SaveWriteResult> {
-      return save(await nextAutoSlot(), state);
+    /** Encodes before choosing the slot, so serialisation happens in the caller's task. */
+    autosave(state: GameState): Promise<SaveWriteResult> {
+      const encoded = encode(state);
+      return nextAutoSlot().then(slotId => writeEncoded(slotId, encoded));
     },
     saveManual(state: GameState): Promise<SaveWriteResult> {
       return save(MANUAL_SAVE_SLOT, state);

@@ -20,7 +20,7 @@ export interface SaveMetricSample {
   readonly writeMs: number;
   /** Synchronous main-thread work of the save task, i.e. what the save adds to its frame. */
   readonly frameWorkMs: number;
-  /** requestAnimationFrame gap spanning the save, to see whether a frame was dropped. */
+  /** Longest gap between animation frames from the request until two frames after the save; ~16.7 ms means no drop. */
   readonly frameIntervalMs: number | null;
 }
 
@@ -56,6 +56,23 @@ declare global {
 function afterIdle(callback: () => void): void {
   if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(callback, { timeout: 1_000 });
   else window.setTimeout(callback, 0);
+}
+
+/** Samples requestAnimationFrame timestamps until stopped and reports the longest frame-to-frame gap. */
+function sampleFrameGaps(): { readonly stop: () => Promise<number | null> } {
+  if (typeof window.requestAnimationFrame !== "function") return { stop: async () => null };
+  let previous: number | null = null;
+  let longest: number | null = null;
+  let framesAfterStop = -1;
+  let finish: ((value: number | null) => void) | null = null;
+  const frame = (timestamp: number) => {
+    if (previous !== null) longest = Math.max(longest ?? 0, timestamp - previous);
+    previous = timestamp;
+    if (framesAfterStop >= 0 && (framesAfterStop += 1) > 2) { finish?.(longest); return; }
+    window.requestAnimationFrame(frame);
+  };
+  window.requestAnimationFrame(frame);
+  return { stop: () => new Promise(resolve => { finish = resolve; framesAfterStop = 0; }) };
 }
 
 function recordMetric(sample: SaveMetricSample): void {
@@ -117,21 +134,18 @@ export function useSaveSystem(input: {
     lastSavedAtMsRef.current = Date.now();
     if (reason === "manual") setBusy(true);
     enqueue(service => new Promise<void>(resolve => {
+      const frames = sampleFrameGaps();
       const run = () => {
-        const frameBefore = performance.now();
         const taskStartedAt = performance.now();
         const pending = reason === "manual" ? service.saveManual(state) : service.autosave(state);
         const frameWorkMs = performance.now() - taskStartedAt;
-        const frameAfter = new Promise<number | null>(done => {
-          if (typeof window.requestAnimationFrame !== "function") done(null);
-          else window.requestAnimationFrame(timestamp => done(Math.max(0, timestamp - frameBefore)));
-        });
         void pending.then(async result => {
           recordMetric({ reason, slotId: result.meta.slotId, tick: result.meta.tick, byteLength: result.byteLength,
-            saveSerializeMs: result.saveSerializeMs, writeMs: result.writeMs, frameWorkMs, frameIntervalMs: await frameAfter });
+            saveSerializeMs: result.saveSerializeMs, writeMs: result.writeMs, frameWorkMs, frameIntervalMs: await frames.stop() });
           if (reason === "manual") setNotice(SAVE_COPY.saved);
           await refreshSaves(service);
         }, () => {
+          void frames.stop();
           setNotice(SAVE_COPY.saveFailed);
         }).finally(() => {
           if (reason === "manual") setBusy(false);
