@@ -130,7 +130,7 @@ test("completed production distinguishes full disconnected and waiting destinati
   // When / Then
   assert.equal(
     buildingProblemCause(state(farm, { buildings: [farm, fullGranary] }), farm.id),
-    "모든 곡창이 가득 찼습니다",
+    "곡창 가득 참 (200/200)",
   );
   assert.equal(
     buildingProblemCause(state(farm, { buildings: [farm, openGranary] }), farm.id),
@@ -140,4 +140,19 @@ test("completed production distinguishes full disconnected and waiting destinati
     buildingProblemCause(connectedState(farm, openGranary), farm.id),
     "운반인이 곡창으로 옮기기를 기다리는 중",
   );
+});
+
+test("a new warehouse clears the actual full-storage cause", () => {
+  // Given: a staffed logging camp has output waiting, while its only storehouse is full.
+  const camp = { ...building("camp", "logging_camp", 3), inventory: { logs: 2 } };
+  const full = { ...building("store", "storehouse", 2), tx: 4, inventory: { timber: 200 } };
+  const blocked = connectedState(camp, full);
+
+  // When: a second storehouse with room is connected.
+  const open = { ...full, id: "open", tx: 2, inventory: {} };
+  const released = { ...blocked, buildings: [...blocked.buildings, open] };
+
+  // Then: storage capacity is no longer reported as the transport blocker.
+  assert.equal(buildingProblemCause(blocked, camp.id), "창고 가득 참 (200/200)");
+  assert.notEqual(buildingProblemCause(released, camp.id), "창고 가득 참 (200/200)");
 });

@@ -1,10 +1,10 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
-import type { ResourceType } from "../content/resourceConfig";
+import { STORABLE_RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { GameState } from "../engine/engine.types";
 import { buildingHasRequiredRoadAccess, ROAD_ACCESS_MARKER } from "../engine/roadAccess";
 import { productionOperation } from "../economy/production";
-import { acceptsResource, availableSpace } from "../economy/storage";
+import { acceptsResource, availableSpace, storageCapacityBlock, storageIntakeSpace } from "../economy/storage";
 import { existingRoadComponent } from "../world/roadGraph";
 
 const RESOURCE_LABELS = {
@@ -66,10 +66,13 @@ function outputDestinationCause(
     candidate.id !== target.id && acceptsResource(candidate.kind, resource),
   );
   if (destinations.length === 0) return `운반인이 가져갈 ${storageLabel}이 없습니다`;
+  const storable = STORABLE_RESOURCE_TYPES.find((candidate) => candidate === resource);
+  const blocked = storable === undefined ? null : storageCapacityBlock(destinations, storable);
+  if (blocked !== null) return `${storageLabel} 가득 참 (${blocked.used}/${blocked.capacity})`;
   const available = destinations.filter((candidate) =>
-    availableSpace(candidate, BUILDING_CONFIG_BY_KIND[candidate.kind]) > 0,
+    storable !== undefined && storageIntakeSpace(candidate, storable,
+      availableSpace(candidate, BUILDING_CONFIG_BY_KIND[candidate.kind])) > 0,
   );
-  if (available.length === 0) return `모든 ${storageLabel}이 가득 찼습니다`;
   if (!available.some((candidate) => isRoadConnected(state, target, candidate))) {
     return `${storageLabel}까지 경로가 없습니다 — ${RESOURCE_LABELS[resource]} 운반 불가`;
   }
@@ -109,5 +112,11 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
       : `${storageLabel}까지 경로가 없습니다 — ${label} 공급 불가`;
   }
 
-  return operation === "output_full" ? outputDestinationCause(state, building, production.output) : null;
+  if (operation === "output_full") return outputDestinationCause(state, building, production.output);
+  const outputResource = STORABLE_RESOURCE_TYPES.find((candidate) => candidate === production.output);
+  if (outputResource !== undefined && (building.inventory[outputResource] ?? 0) > 0) {
+    const blocked = storageCapacityBlock(state.buildings.filter((candidate) => candidate.id !== building.id), outputResource);
+    if (blocked !== null) return `${STORAGE_LABELS[outputResource]} 가득 참 (${blocked.used}/${blocked.capacity})`;
+  }
+  return null;
 }
