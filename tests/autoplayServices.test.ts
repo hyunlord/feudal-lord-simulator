@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import { DEFAULT_GAME_STATE, gameReducer } from '../src/state/gameStore';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../src/content/buildingConfig';
 import { buildingFootprintDistance } from '../src/geometry/buildingDistance';
@@ -10,6 +11,10 @@ import { lateFoodBuildSites } from '../src/engine/autoplayFoodPlacement';
 import { civicConstructionReserve } from '../src/engine/autoplayCivicReserve';
 import { marketHasSaleCandidate, settleMarkets } from '../src/engine/marketSettlement';
 import { decideNextAction } from '../src/engine/autoplay';
+import { plannedBuildingRoadAction } from '../src/engine/autoplayConstructionRoads';
+import { serviceCandidate } from '../src/engine/autoplayServiceSpaceRoutes';
+import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
+import type { GameState } from '../src/engine/engine.types';
 
 function fixture() {
   const building = (id: string, kind: Building['kind'], tx: number, ty: number): Building => ({ id, kind, tx, ty, workers: kind === 'market' ? 3 : 0, inventory: kind === 'storehouse' ? { timber: 500, stone: 200 } : {}, reserved: {}, stockReserved: {}, productionProgress: 0 });
@@ -69,6 +74,24 @@ test('Given all homes served by a staffed market When urban planning runs Then t
   state.tiles = state.tiles.map(tile => ({ ...tile, buildingId: state.buildings.find(b => tile.tx >= b.tx && tile.tx < b.tx + BUILDING_CONFIG_BY_KIND[b.kind].width && tile.ty >= b.ty && tile.ty < b.ty + BUILDING_CONFIG_BY_KIND[b.kind].height)?.id ?? null }));
   const action = urbanServiceAction(state);
   assert.equal(action.kind === 'place_building' && action.building, 'church');
+});
+
+test('Given the seed 3 church gap When planning a safe church road Then a real road action is available without sacrificing another home', () => {
+  const state: GameState = JSON.parse(readFileSync(new URL('../output/playtest-a-double-prime/seeds/final-689bda7/seed3/final-state.json', import.meta.url), 'utf8'));
+  const candidate = serviceCandidate('church', { tx: 6, ty: 9 }, 'candidate');
+
+  assert.equal(preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'church', tx: 4, ty: 11 }), false);
+  assert.equal(preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'church', tx: 6, ty: 9 }), true);
+  assert.deepEqual(plannedBuildingRoadAction(state, candidate), {
+    kind: 'place_road', from: { tx: 5, ty: 12 }, to: { tx: 5, ty: 11 },
+  });
+  const action = urbanServiceAction(state);
+  assert.equal(action.kind, 'place_road');
+  const command = autoplayActionToGameAction(action, state);
+  assert.ok(command);
+  const connected = gameReducer(state, command);
+  assert.notEqual(connected, state);
+  assert.deepEqual(urbanServiceAction(connected), { kind: 'place_building', building: 'church', tx: 6, ty: 10 });
 });
 
 test('Given insufficient real building materials When civic planning runs Then it waits instead of issuing an unaffordable construction', () => {

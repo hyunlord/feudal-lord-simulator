@@ -1,7 +1,7 @@
 import { roadPrefixAction } from './autoplayRoadPrefix';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { serviceSafeRoadAction } from './autoplayServiceSpace';
-import { buildingFootprint } from '../geometry/buildingFootprint';
+import { projectServiceAction } from './autoplayServiceSpaceRoutes';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { canTraverseRoadBoundary } from '../world/bridges';
@@ -66,10 +66,7 @@ function searchRoad(state: GameState, accessTiles: readonly TileCoordinate[], so
 }
 
 export function plannedBuildingRoadAction(state: GameState, candidate: Building): AutoplayAction {
-  const footprint = buildingFootprint(candidate);
-  const planned = { ...state, tiles: state.tiles.map(tile =>
-    tile.tx >= candidate.tx && tile.tx < candidate.tx + footprint.width && tile.ty >= candidate.ty && tile.ty < candidate.ty + footprint.height
-      ? { ...tile, buildingId: candidate.id } : tile) };
+  const planned = projectServiceAction(state, { kind: 'place_building', building: candidate.kind, tx: candidate.tx, ty: candidate.ty });
   const allRoads = { ...planned, tiles: planned.tiles.map(tile => ({ ...tile, hasRoad: true })) };
   return roadActionToTargets(planned, buildingRoadAccessTiles(allRoads, candidate));
 }
