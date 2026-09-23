@@ -11,6 +11,7 @@ import { clampPan, type CameraState, type Point, type ViewportBounds, type World
 import type { DragState } from "./canvasRuntime";
 
 export type GameCanvasRuntimeInput = {
+  readonly setPrediction?: ((value: import("../ui/PredictionPanel").PredictionPresentation | null) => void) | undefined;
   readonly canvasRef: RefObject<HTMLCanvasElement | null>;
   readonly state: GameState;
   readonly previousRenderState: Pick<GameState, "constructionSites" | "walkers">;

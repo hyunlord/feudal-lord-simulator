@@ -23,6 +23,7 @@ export type CanvasFrameRefs = Readonly<{
 
 export function drawCurrentCanvasFrame(input: Readonly<{
   canvas: HTMLCanvasElement;
+  publishPrediction?: (preview: import("./overlays").PlacementPreview, camera: CameraState) => void;
   context: CanvasRenderingContext2D;
   refs: CanvasFrameRefs;
   state: GameState;
@@ -42,7 +43,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     input.refs.feedbackRef.current = null;
   }
   const interpolationAlpha = input.interpolationAlpha();
-  drawGameCanvasFrame({
+  const preview = drawGameCanvasFrame({
     context: input.context,
     state: input.state,
     camera: input.refs.cameraRef.current,
@@ -73,4 +74,5 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.refs.completionTracker,
   });
+  input.publishPrediction?.(preview, input.refs.cameraRef.current);
 }

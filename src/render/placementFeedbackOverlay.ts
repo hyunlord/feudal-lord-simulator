@@ -1,3 +1,4 @@
+import { PLACEMENT_REASON_LABELS } from "../ui/predictionRegistry";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./style";
@@ -13,6 +14,7 @@ export type PlacementPreviewOverlayInput = {
   readonly ok: boolean;
   readonly reason: PlacementFailure | null;
   readonly cursor: TileCoordinate | null;
+  readonly prediction?: import("../ui/predictionTypes").PlacementPrediction;
 };
 
 function traceDiamond(context: CanvasRenderingContext2D, coordinate: TileCoordinate): void {
@@ -70,8 +72,8 @@ export function drawPlacementPreviewOverlay(
     applyInkOutline(context, zoom);
     context.stroke();
   }
-  if (!preview.ok && preview.reason !== null && preview.cursor !== null) {
-    drawFailureText(context, preview.cursor, preview.reason, zoom);
+  if (preview.prediction === undefined && !preview.ok && preview.reason !== null && preview.cursor !== null) {
+    drawFailureText(context, preview.cursor, PLACEMENT_REASON_LABELS[preview.reason], zoom);
   }
 }
 

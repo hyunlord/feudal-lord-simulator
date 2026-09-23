@@ -41,6 +41,7 @@ export function drawOverlay(input: EconomyOverlayRenderInput): void {
 }
 
 export type PlacementPreview = {
+  readonly prediction?: import("../ui/predictionTypes").PlacementPrediction;
   readonly tool: PlacementTool | null;
   readonly tile: { readonly tx: number; readonly ty: number } | null;
   readonly footprint: readonly { readonly tx: number; readonly ty: number }[];

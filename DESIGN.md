@@ -554,3 +554,14 @@ upper-right legend and one-line hover plaque use existing 13px Korean meta
 text, parchment surfaces and 8/12px spacing. Long hover text wraps only when
 required to stay inside the viewport. Inspector cause summary remains outside
 its scrolling details. These presentation tokens do not change simulation.
+
+## UI-2 placement prediction (2026-09-23)
+
+PredictionLine data is rendered by the reusable PredictionPanel, independent of
+facilities. Reuse vellum/ink and 13px Korean meta typography, 8/12px padding,
+360px maximum width with 12px viewport clearance. Status symbols accompany text;
+negative uses vermilion, positive forest, warning earth-dark. The cursor plaque
+stays between resource and command bars. Dashed gold isometric ellipses guide
+range; thin gold house footprints show the actual grid-rule result. Road land
+uses a short solid mark and bridge sections three crossbars, preserving colour
+and pattern distinction. Prediction does not change placement or service rules.

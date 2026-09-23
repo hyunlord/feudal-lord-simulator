@@ -1,3 +1,4 @@
+import { drawPlacementPrediction } from "./placementPredictionOverlay";
 import { drawCauseMap } from "./causeMapOverlay";
 import type { Walker } from "../agents/walker.types";
 import type { BuildingKind } from "../content/buildingConfig";
@@ -163,6 +164,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     });
   }
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
+  if (input.preview.prediction !== undefined) drawPlacementPrediction(input.context, input.state, input.preview.prediction, input.camera.zoom);
   drawOnboardingGuidanceOverlay(input.context, {
     targets: onboardingWorldGuidanceTargets(input.state),
     zoom: input.camera.zoom,

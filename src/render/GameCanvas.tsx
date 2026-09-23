@@ -1,3 +1,4 @@
+import { PredictionPanel, type PredictionPresentation } from "../ui/PredictionPanel";
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 
 import { houseProgressModel } from "../ui/houseProgressModel";
@@ -49,10 +50,12 @@ export function GameCanvas({
   const { state, previousRenderState, interpolationAlpha, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
   const [selection, setSelection] = useState<AnchoredWorldSelection | null>(null);
+  const [prediction, setPrediction] = useState<PredictionPresentation | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useGameCanvasRuntime({
     canvasRef,
+    setPrediction,
     state,
     previousRenderState,
     interpolationAlpha,
@@ -119,7 +122,8 @@ export function GameCanvas({
         className={selectedTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
         aria-label={KO_UI.simulationCanvas}
       />
-      <BuildingInspector state={state} hover={selection === null ? hoveredBuilding : null} />
+      {prediction === null ? null : <PredictionPanel {...prediction} />}
+      <BuildingInspector state={state} hover={selectedTool === null && selection === null ? hoveredBuilding : null} />
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard
           model={cardModel}

@@ -9,6 +9,7 @@ export type CanvasMutableRefs = {
   readonly hoverRef: { current: TileCoordinate | null };
   readonly feedbackRef: { current: PlacementFeedback | null };
   readonly dragRef: { current: DragState };
+  readonly roadCancelled: { current: boolean };
   readonly spacePressed: { current: boolean };
   readonly suppressClick: { current: boolean };
   readonly pixelRatioRef: { current: number };
@@ -21,6 +22,7 @@ export function createCanvasMutableRefs(camera: CameraState): CanvasMutableRefs 
     hoverRef: { current: null },
     feedbackRef: { current: null },
     dragRef: { current: { mode: "none", startCanvasPoint: null, startCamera: null, lastCanvasPoint: null, roadStart: null, moved: false } },
+    roadCancelled: { current: false },
     spacePressed: { current: false },
     suppressClick: { current: false },
     pixelRatioRef: { current: 1 },

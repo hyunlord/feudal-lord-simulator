@@ -1,8 +1,9 @@
 import type { Walker } from "../agents/walker.types";
 import type { GameState, OverlayMode } from "../engine/engine.types";
-import { getTile, type TileCoordinate } from "../world/grid";
+import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
-import { placementPreview } from "./interactions";
+import { cachedPlacementPreview } from "./placementPredictionRuntime";
+import type { PlacementPreview } from "./overlays";
 import type { PlacementFeedback } from "./placementFeedback";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
@@ -34,13 +35,11 @@ type GameCanvasFrameInput = {
   readonly completionTracker: ConstructionCompletionTracker;
 };
 
-export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
-  const inspectingBuilding =
-    input.hoveredTile !== null && getTile(input.state, input.hoveredTile)?.buildingId !== null;
-  const preview = placementPreview(
+export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPreview {
+  const preview = cachedPlacementPreview(
     input.state,
     input.selectedTool,
-    inspectingBuilding ? null : input.hoveredTile,
+    input.hoveredTile,
     input.roadStart,
   );
 
@@ -73,4 +72,5 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): void {
     selectionMode: input.selectedTool === null && input.palisadeDraft == null,
   });
   input.context.restore();
+  return preview;
 }

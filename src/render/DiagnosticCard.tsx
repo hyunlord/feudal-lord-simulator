@@ -211,7 +211,7 @@ export function DiagnosticCard({
           {onClose === undefined ? null : <button className="inspector-close" type="button" aria-label="상세 정보 닫기" onClick={onClose}>×</button>}
         </header>
         {causeSummary == null ? null : <div className="inspector-cause-summary">
-          다음: {causeSummary.nextLevel === null ? '최고 단계' : `L${causeSummary.nextLevel}`} / 첫 방해: {causeSummary.blocker?.label ?? (causeSummary.status === 'ready' ? '없음 · 승급 대기' : '없음')}
+          다음: {causeSummary.nextLevel === null ? '최고 단계' : `L${causeSummary.nextLevel}`} / {causeSummary.currentLevel === 4 ? '유지 위험' : '첫 방해'}: {causeSummary.blocker?.label ?? (causeSummary.status === 'ready' ? '없음 · 승급 대기' : '없음')}
         </div>}
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} /> : null}

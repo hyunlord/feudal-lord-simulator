@@ -165,3 +165,22 @@
 .cause-legend li { display: flex; align-items: center; gap: 8px; }
 .cause-legend-symbol { min-width: 26px; padding: 0 4px; background: var(--palette-vellum); font-weight: 700; }
 .cause-legend small { font-size: 11px; }
+
+.prediction-panel {
+  position: absolute;
+  z-index: 22;
+  width: min(360px, calc(100% - 24px));
+  pointer-events: none;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid var(--palette-ink);
+  color: var(--palette-ink);
+  background: var(--palette-vellum);
+  font: 400 13px/1.5 var(--ui-body-font);
+}
+.prediction-panel ul { list-style: none; margin: 0; padding: 0; }
+.prediction-line { display: flex; align-items: baseline; gap: 8px; }
+.prediction-line-symbol { flex: 0 0 13px; font-weight: 700; }
+.prediction-line--negative { color: var(--palette-vermilion); font-weight: 600; }
+.prediction-line--warning .prediction-line-symbol { color: var(--palette-earth-dark); }
+.prediction-line--positive .prediction-line-symbol { color: var(--palette-forest); }
