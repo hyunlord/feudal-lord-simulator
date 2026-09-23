@@ -125,7 +125,7 @@ test("era console reports completed, working, route-less, and waiting wall segme
     state: state({
       era: "palisade",
       eraProclaimedTick: 10,
-      constructionSites: [{ ...active, delivered: { timber: 15 } }, { ...queued, stall: 'no_route' }],
+      constructionSites: [{ ...active, delivered: active.required, assignedBuilders: 2, stall: "none" }, { ...queued, stall: 'no_route' }],
       palisade: {
         id: "wall-a",
         gate: { x: 4, y: 4 },
@@ -145,6 +145,49 @@ test("era console reports completed, working, route-less, and waiting wall segme
   assert.equal(model.wallProgress, "성벽 1/3 · 진행 중 1 · 경로 없음 1 · 대기 0");
   assert.equal(model.diagnostic, null);
   assert.match(model.irreversibleNotice ?? "", /선포 후 성벽 구간은 취소할 수 없습니다/);
+});
+
+test("era console does not call historical deliveries or builder ticks current progress", () => {
+  const stalled = createPalisadeConstructionSite({
+    id: "wall-b-segment-000",
+    wallId: "wall-b",
+    segmentIndex: 0,
+    gateDistance: 0,
+    order: 0,
+    path: [{ x: 4, y: 4 }, { x: 8, y: 4 }],
+    startedTick: 0,
+  });
+  const isolated = createPalisadeConstructionSite({
+    id: "wall-b-segment-001",
+    wallId: "wall-b",
+    segmentIndex: 1,
+    gateDistance: 1,
+    order: 1,
+    path: [{ x: 8, y: 4 }, { x: 8, y: 8 }],
+    startedTick: 0,
+  });
+  const model = buildEraConsoleModel({
+    state: state({
+      era: "palisade",
+      eraProclaimedTick: 10,
+      constructionSites: [
+        { ...stalled, builderTicks: 20, delivered: { timber: 10 }, reserved: { timber: 5 }, stall: "no_material_source" },
+        { ...isolated, delivered: { timber: 10 }, stall: "no_route" },
+      ],
+      palisade: {
+        id: "wall-b",
+        gate: { x: 4, y: 4 },
+        polygon: [{ x: 4, y: 4 }, { x: 8, y: 4 }, { x: 8, y: 8 }, { x: 4, y: 4 }],
+        segments: [
+          { id: stalled.id, order: 0, edgePath: stalled.path, tileCount: 4, completed: false, constructionSiteId: stalled.id },
+          { id: isolated.id, order: 1, edgePath: isolated.path, tileCount: 4, completed: false, constructionSiteId: isolated.id },
+        ],
+      },
+    }),
+    draft: null,
+  });
+
+  assert.equal(model.wallProgress, "성벽 0/2 · 진행 중 0 · 경로 없음 1 · 대기 1");
 });
 
 test("era console exposes Stone Town label gauges and exact proclamation labour copy", () => {

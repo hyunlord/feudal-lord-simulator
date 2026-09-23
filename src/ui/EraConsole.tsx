@@ -1,6 +1,7 @@
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
 import { recentCoinIncome } from "../engine/coinLedger";
+import { canAdvanceConstructionWork } from "../economy/construction";
 import type { WallConstructionPriority } from "../engine/constructionReserve";
 import type { Era } from "../content/eraConfig";
 import type { EraRequirement, GameState } from "../engine/engine.types";
@@ -261,9 +262,7 @@ function wallProgress(state: GameState): string | null {
   const remaining = state.constructionSites.filter(site =>
     site.kind === 'palisade_segment' && site.wallId === state.palisade?.id);
   const noRoute = remaining.filter(site => site.stall === 'no_route').length;
-  const active = remaining.filter(site => site.stall !== 'no_route'
-    && (site.assignedBuilders > 0 || site.builderTicks > 0
-      || (site.delivered.timber ?? 0) > 0 || (site.reserved.timber ?? 0) > 0)).length;
+  const active = remaining.filter(site => site.stall === "none" && canAdvanceConstructionWork(site)).length;
   const waiting = Math.max(0, state.palisade.segments.length - completed - active - noRoute);
   return A_TRIPLE_PRIME_WALL_COPY.wallProgress(completed, state.palisade.segments.length, active, noRoute, waiting);
 }
