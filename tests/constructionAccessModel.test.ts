@@ -5,6 +5,7 @@ import { constructionAccessModel, groupedConstructionCause, roadConnectsConstruc
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 import { placeRoadLine } from '../src/engine/gameActions';
 import { cachedPlacementPreview } from '../src/render/placementPredictionRuntime';
+import { constructionSiteCardModel } from '../src/ui/constructionSiteCardModel';
 import { resolveCanvasClick } from '../src/render/canvasClickResolution';
 import { tileToScreen } from '../src/render/iso';
 import { building, palisade, palisadeSegment, state as makeState, timberSite } from './stoneWallConversionFixtures';
@@ -119,6 +120,9 @@ test('selected palisade segment highlights only its missing access road and clea
   const model = constructionAccessModel(state, wall);
   assert.equal(model.cause, 'road_disconnected');
   assert.deepEqual(model.missingRoadTiles, [{ tx: 3, ty: 3 }]);
+  assert.deepEqual(constructionSiteCardModel(wall, { accessState: state }).rows.find(row => row.label === '연결 길'), {
+    label: '연결 길', value: '강조된 한 칸에 길을 놓으면 공사장에 연결됩니다',
+  });
   assert.equal(roadConnectsConstructionSite(state, wall, model.missingRoadTiles), true);
   const built = placeRoadLine(state, { tx: 3, ty: 3 }, { tx: 3, ty: 3 });
   const source = built.buildings[0];
