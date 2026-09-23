@@ -52,6 +52,31 @@ test('road proposal connects a stalled site, then disappears after the road is b
   assert.equal(constructionAccessModel(connected, completedSite).suggestedRoad.length, 0);
 });
 
+test('road proposal starts from a material source instead of a nearer empty storehouse', () => {
+  const base = disconnectedFixture();
+  const empty = building('empty-store', 'storehouse', 4, 1, { inventory: {} });
+  const state = {
+    ...base,
+    buildings: [...base.buildings, empty],
+    tiles: base.tiles.map(tile => ({
+      ...tile,
+      hasRoad: tile.hasRoad || (tile.ty === 3 && (tile.tx === 4 || tile.tx === 5)),
+      buildingId: tile.tx >= 4 && tile.tx <= 5 && tile.ty >= 1 && tile.ty <= 2
+        ? empty.id : tile.buildingId,
+    })),
+  };
+  const proposed = constructionAccessModel(state, site).suggestedRoad;
+  assert.deepEqual(proposed[0], { tx: 2, ty: 3 });
+  const roads = new Set(proposed.map(tile => `${tile.tx},${tile.ty}`));
+  const connected = {
+    ...state,
+    tiles: state.tiles.map(tile => roads.has(`${tile.tx},${tile.ty}`) ? { ...tile, hasRoad: true } : tile),
+  };
+  const source = state.buildings[0];
+  assert.ok(source);
+  assert.ok(resolveBuildingToConstructionSiteRoute(connected, source, site).path);
+});
+
 test('same cause is grouped across sites without hiding site diagnosis', () => {
   const state = disconnectedFixture();
   const second = { ...site, id: 'second-well', tx: 6, ty: 5 };

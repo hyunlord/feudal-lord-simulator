@@ -1,7 +1,8 @@
 import type { ConstructionSite } from '../economy/construction';
-import { isBuildingConstructionSite } from '../economy/construction';
+import { constructionDeliveryNeed, isBuildingConstructionSite } from '../economy/construction';
+import { RESOURCE_TYPES } from '../content/resourceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
-import { autoplayConstructionSources } from '../engine/autoplayConstructionSources';
+import { availableStock } from '../economy/storage';
 import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles } from '../engine/routing';
 import type { GameState } from '../engine/engine.types';
 import { canTraverseRoadBoundary } from '../world/bridges';
@@ -43,8 +44,11 @@ function candidateAccessTiles(state: GameState, site: ConstructionSite): readonl
     .filter(tile => getTile(state, tile)?.terrain !== 'water');
 }
 
-function sourceRoads(state: GameState): readonly TileCoordinate[] {
-  const sourceAccess = autoplayConstructionSources(state)
+function sourceRoads(state: GameState, site: ConstructionSite): readonly TileCoordinate[] {
+  const need = constructionDeliveryNeed(site);
+  const sourceAccess = state.buildings.filter(building => RESOURCE_TYPES.some(resource =>
+    (need[resource] ?? 0) > 0 && availableStock(building, resource) > 0)
+    || ((need.timber ?? 0) > 0 && state.treasuryTimber > 0 && building.kind === 'house'))
     .flatMap(building => buildingRoadAccessTiles(state, building));
   return existingRoadComponent(state, sourceAccess);
 }
@@ -65,7 +69,7 @@ export function suggestedConstructionRoad(
   accessTiles = candidateAccessTiles(state, site),
 ): readonly TileCoordinate[] {
   const targets = new Set(accessTiles.map(key));
-  const sources = sourceRoads(state);
+  const sources = sourceRoads(state, site);
   if (sources.length === 0 || targets.size === 0) return [];
   const queue = [...sources];
   const parents = new Map<string, TileCoordinate | null>(queue.map(tile => [key(tile), null]));
@@ -105,7 +109,7 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
       const withoutWall = { ...state, palisade: null };
       const wallFreeAccess = constructionSiteRoadAccessTiles(withoutWall, site);
       cause = wallFreeAccess.length > existingAccess.length
-        || (sourceRoads(withoutWall).length > sourceRoads(state).length)
+        || (sourceRoads(withoutWall, site).length > sourceRoads(state, site).length)
         ? 'wall_blocked' : 'no_route';
     }
   }
