@@ -69,3 +69,19 @@
   .resource-bar__primary strong { font-size: 18px; }
   .resource-bar__icon { flex-basis: 16px; width: 16px; height: 16px; }
 }
+
+/* Observed deltas share the stock units; supporting inventory stays discoverable. */
+.app-shell .resource-bar { max-width: 1120px; }
+.app-shell .resource-bar__cell { gap: 8px; padding: 4px 12px; }
+.resource-bar__primary { line-height: 22px; }
+.resource-bar__secondary, .resource-bar__trend { font-size: var(--font-meta); line-height: 17px; }
+.resource-bar__trend { display: block; color: var(--palette-vellum); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.resource-bar__more { position: absolute; right: 0; top: calc(100% + 4px); max-width: min(420px, calc(100vw - 24px)); font-size: var(--font-meta); background: var(--palette-ink); border: 1px solid var(--palette-earth); }
+.resource-bar__more summary { padding: 2px 8px; cursor: pointer; }
+.resource-bar__more p { padding: 0 12px; }
+.resource-bar__more:focus-within { outline: 2px solid var(--palette-gold); }
+@media (max-width: 850px) {
+  .app-shell .resource-bar__cell { padding-inline: 6px; gap: 4px; }
+  .resource-bar__icon { display: none; }
+  .resource-bar__primary { gap: 4px; }
+}

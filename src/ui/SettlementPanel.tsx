@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BALANCE } from "../content/balanceConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import { SETTLEMENT_CONFIG } from "../content/settlementConfig";
@@ -12,14 +12,27 @@ export function SettlementPanel({ state, onRestart }: {
   const [confirmRestart, setConfirmRestart] = useState(false);
   const view = getSettlementView(state);
   const goal = view.currentGoal;
+  const changeKey = JSON.stringify([view.outcome, view.crisis, goal?.id, view.metrics.suppliedHouses, view.metrics.occupiedHouses,
+    goal?.criteria.map(item => [item.id, Math.floor(item.current), item.met]),
+    goal ? Math.floor(goal.holdTicks / Math.max(1, goal.requiredHoldTicks) * 4) : 0]);
+  const previousKey = useRef(changeKey);
+  const [highlight, setHighlight] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  useEffect(() => {
+    if (changeKey === previousKey.current) return;
+    previousKey.current = changeKey;
+    setHighlight(true);
+    const timeout = window.setTimeout(() => setHighlight(false), 1800);
+    return () => window.clearTimeout(timeout);
+  }, [changeKey]);
   const bread = state.houses.reduce((total, house) => total + house.breadStock, 0);
   const ration = state.houses.reduce((total, house) => total + (house.residents > 0 ? houseFoodRation(house) : 0), 0);
   const seconds = (ticks: number) => Math.floor(ticks / BALANCE.TICKS_PER_SECOND);
   const title = view.outcome === "abandoned" ? "정착지가 비었습니다"
     : view.outcome === "victory" ? "번영하는 성곽 도시 달성" : goal?.title ?? "영지의 기록";
-  return <section className="settlement-progress" aria-label="영지 목표와 수급">
-    <details>
-      <summary>{title}<span>물·빵 {view.metrics.suppliedHouses}/{view.metrics.occupiedHouses}가구</span></summary>
+  return <section className={`settlement-progress${highlight ? " settlement-progress--changed" : ""}`} aria-label="영지 목표와 수급">
+    <details onToggle={event => setExpanded(event.currentTarget.open)}>
+      <summary><strong>{title}</strong><span>물·빵 {view.metrics.suppliedHouses}/{view.metrics.occupiedHouses}가구</span><span className="settlement-disclosure">{expanded ? "접기" : "펼치기"}</span></summary>
       <div className="settlement-progress-body">
         <p>가구 비축 빵 {bread} · {seconds(HOUSE_FOOD_INTERVAL)}초마다 소비 {ration}</p>
         <p>가구별 세 끼를 비축합니다. 가구가 늘면 밀밭·방앗간·배급 길도 함께 늘리세요.</p>
