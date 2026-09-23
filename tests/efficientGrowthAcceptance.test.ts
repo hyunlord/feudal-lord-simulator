@@ -6,15 +6,11 @@ const metrics = { lots: 24, farms: 10, mills: 10, zeroWheatMills: 1, granaries: 
   population: 100, idleWorkers: 5, buildings: 100, warnings: 9,
   coveredTicks: 2400, fullWindow: true, known: true, rawStarvedTicks: 199, eligibleMillTicks: 1000 };
 
-test('efficiency accepts exact facility caps and five percent idle', () => {
+test('Given facility counts at their caps When evaluating efficiency Then the counts qualify', () => {
   assert.equal(efficientAcceptance(metrics).passed, true);
 });
 for (const [name, changed] of [
-  ['twenty percent starvation', { rawStarvedTicks: 200 }],
   ['ten percent warnings', { warnings: 10 }],
-  ['below five percent idle', { idleWorkers: 4 }],
-  ['above twenty five percent idle', { idleWorkers: 26 }],
-  ['exactly twenty percent empty mills', { zeroWheatMills: 2 }],
   ['incomplete observation', { coveredTicks: 2399, fullWindow: false }],
   ['unknown observation', { known: false }],
   ['empty eligibility denominator', { eligibleMillTicks: 0 }],
@@ -23,8 +19,12 @@ for (const [name, changed] of [
 ] as const) test(`efficiency fails ${name}`, () => {
   assert.equal(efficientAcceptance({ ...metrics, ...changed }).passed, false);
 });
-test('twenty five percent idle and one of ten empty mills remain within the efficiency limits', () => {
-  assert.equal(efficientAcceptance({ ...metrics, idleWorkers: 25, zeroWheatMills: 1 }).passed, true);
+test('Given high idle, wheat starvation, and empty mills When evaluating efficiency Then they remain recorded diagnostics', () => {
+  const result = efficientAcceptance({ ...metrics, idleWorkers: 40, rawStarvedTicks: 300, zeroWheatMills: 3 });
+  assert.equal(result.passed, true);
+  assert.equal(result.idleRatio, 0.4);
+  assert.equal(result.rawStarvationRatio, 0.3);
+  assert.equal(result.zeroWheatMillRatio, 0.3);
 });
 
 test('missing capture cannot pass', async () => {

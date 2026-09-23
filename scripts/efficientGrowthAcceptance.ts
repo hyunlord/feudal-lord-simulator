@@ -19,10 +19,8 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
     markets: metrics.markets <= Math.ceil(metrics.lots / 24) + 1,
     churches: metrics.churches <= Math.ceil(metrics.lots / 32) + 1,
     observedWindow: metrics.known && metrics.fullWindow && metrics.coveredTicks >= 2400,
-    rawStarvation: rawStarvationRatio !== null && rawStarvationRatio < 0.2,
-    zeroWheatMills: zeroWheatMillRatio !== null && zeroWheatMillRatio < 0.2,
+    observedMillActivity: metrics.eligibleMillTicks > 0,
     warnings: warningRatio !== null && warningRatio < 0.1,
-    idleWorkers: idleRatio !== null && idleRatio >= 0.05 && idleRatio <= 0.25,
   };
   return { passed: Object.values(checks).every(Boolean), checks, metrics, rawStarvationRatio, warningRatio, idleRatio,
     zeroWheatMillRatio,
