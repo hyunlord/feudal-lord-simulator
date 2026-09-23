@@ -1,6 +1,9 @@
-import type { BuildingKind } from "../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import { PALISADE_REQUIREMENT_TARGETS } from "../engine/era";
+import { buildingRoadAccessTiles } from "../engine/routing";
 import type { TileCoordinate } from "../world/grid";
+import { existingRoadComponent } from "../world/roadGraph";
 import { manhattanDistance } from "./onboardingGuidanceGeometry";
 
 type GuidanceWorld = Pick<
@@ -15,9 +18,46 @@ export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly Buil
   );
   if (missingFoodChain.length > 0) return missingFoodChain;
   if (!hasBuildingKind(state, "sawmill")) return ["sawmill"];
-  if (!hasBuildingKind(state, "storehouse")) return ["storehouse"];
+  if (!hasPalisadeTimberStorage(state)) return ["storehouse"];
   if (!hasWellWithinHouseRange(state)) return ["well"];
   return [];
+}
+
+const roadKey = (road: TileCoordinate): string => `${road.tx},${road.ty}`;
+
+export function timberDeliveryRoads(state: GuidanceWorld): ReadonlySet<string> {
+  const sawmillAccess = state.buildings
+    .filter((building) => building.kind === "sawmill")
+    .flatMap((building) => buildingRoadAccessTiles(state, building));
+  return new Set(existingRoadComponent(state, sawmillAccess).map(roadKey));
+}
+
+export function storehouseOnTimberDeliveryRoad(
+  state: GuidanceWorld,
+  origin: TileCoordinate,
+  roads: ReadonlySet<string> = timberDeliveryRoads(state),
+): boolean {
+  const candidate: Building = {
+    id: "onboarding-storehouse-candidate",
+    kind: "storehouse",
+    tx: origin.tx,
+    ty: origin.ty,
+    workers: 0,
+    inventory: {},
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+  };
+  return buildingRoadAccessTiles(state, candidate).some((road) => roads.has(roadKey(road)));
+}
+
+export function hasPalisadeTimberStorage(state: GuidanceWorld): boolean {
+  const roads = timberDeliveryRoads(state);
+  const reachableCapacity = state.buildings
+    .filter((building) => building.kind === "storehouse" &&
+      storehouseOnTimberDeliveryRoad(state, building, roads))
+    .reduce((capacity) => capacity + BUILDING_CONFIG_BY_KIND.storehouse.storageCapacity, 0);
+  return reachableCapacity >= PALISADE_REQUIREMENT_TARGETS.timber;
 }
 
 export function wellCompletesTask(

@@ -299,12 +299,11 @@ function smallestRenderedOpeningBuildingPx(zoom: number): number {
   );
 }
 
-test("authored default state satisfies only the prebuilt onboarding gates on first evaluation", () => {
+test("authored default state still needs connected timber storage for the palisade", () => {
   // Given: no presentation tasks have been acknowledged yet.
   const completion = ONBOARDING_TASKS.map((task) => task.isComplete(DEFAULT_GAME_STATE));
 
-  // When / Then: only road, logging, storage, and water gates are already true.
-  assert.deepEqual(completion, [true, true, false, false, true, true, false, false]);
+  assert.deepEqual(completion, [true, true, false, false, false, true, false, false]);
 });
 
 test("opening hashes include the authored roads and differ from the prior edge-hut baseline", () => {

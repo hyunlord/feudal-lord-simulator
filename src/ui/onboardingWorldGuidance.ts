@@ -5,6 +5,8 @@ import { canPlaceBuilding } from "../world/placement";
 import { canPlaceRoad } from "../world/roadGraph";
 import {
   missingCurrentBuildingKinds,
+  storehouseOnTimberDeliveryRoad,
+  timberDeliveryRoads,
   wellCompletesTask,
 } from "./onboardingBuildingTaskProgress";
 import {
@@ -137,9 +139,11 @@ function firstBuildableOriginForKind(
   reserved: ReadonlySet<string>,
   candidateOrigins: readonly TileCoordinate[],
 ): TileCoordinate | null {
+  const timberRoads = kind === "storehouse" ? timberDeliveryRoads(state) : null;
   for (const origin of candidateOrigins) {
     if (reservedOverlaps(kind, origin, reserved)) continue;
     if (kind === "well" && !wellCompletesTask(state, origin)) continue;
+    if (timberRoads !== null && !storehouseOnTimberDeliveryRoad(state, origin, timberRoads)) continue;
     if (canPlaceBuilding(state, kind, origin.tx, origin.ty).ok) return origin;
   }
   return null;

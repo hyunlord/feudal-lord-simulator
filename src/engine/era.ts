@@ -4,7 +4,7 @@ import { createStoneWallConstructionSite } from "../economy/construction";
 import { placementSpendableResource } from "../world/placement";
 import { snapshotWallConstructionReserve } from "./constructionReserve";
 
-const PALISADE_REQUIREMENT_TARGETS = {
+export const PALISADE_REQUIREMENT_TARGETS = {
   population: 60,
   granary: 1,
   chapel: 1,

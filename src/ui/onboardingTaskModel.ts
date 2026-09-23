@@ -1,5 +1,6 @@
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import { hasPalisadeTimberStorage } from "./onboardingBuildingTaskProgress";
 
 export type OnboardingTaskId =
   | "task-1"
@@ -82,10 +83,10 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-5",
-    title: "창고를 지어 목재를 모으세요",
-    hint: "창고를 더 지으면 목재가 넘치지 않습니다.",
+    title: "길에 연결된 창고를 한 채 더 지으세요",
+    hint: "목책 선포에 목재 250이 필요합니다. 지도 표시를 따라 제재소 길에 닿는 창고를 완공하세요.",
     highlightTools: ["storehouse"],
-    isComplete: hasBuildingKind("storehouse"),
+    isComplete: hasPalisadeTimberStorage,
   },
   {
     id: "task-6",

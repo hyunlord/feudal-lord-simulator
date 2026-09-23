@@ -146,6 +146,14 @@ test("onboardingWorldGuidanceTargets follows task order with buildable productio
   }
 });
 
+test("onboarding marks a second storehouse that can join the timber delivery road", () => {
+  const afterSawmill = placeGuidedMarkersUntilKind(stateAfterFoodChain(), "sawmill").state;
+  const result = placeGuidedMarkersUntilKind(afterSawmill, "storehouse");
+
+  assert.equal(result.finalTarget.kind, "storehouse");
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(result.state), true);
+});
+
 test("onboardingWorldGuidanceTargets returns non-overlapping buildable markers for available missing food-chain buildings", () => {
   // Given
   const state = stateAtFoodChainTargets();
@@ -188,21 +196,25 @@ test("onboardingWorldGuidanceTargets keeps the early food task buildable when ho
   assert.equal(ONBOARDING_TASKS[2]?.isComplete(settlement), true);
 });
 
-test("onboardingWorldGuidanceTargets marks sawmill before another house after the food chain exists", () => {
+test("onboardingWorldGuidanceTargets marks sawmill and connected storage before another house", () => {
   // Given
   const state = stateAfterFoodChain();
 
   // When
   const sawmill = placeGuidedMarkersUntilKind(state, "sawmill");
-  const result = placeGuidedMarkersUntilKind(sawmill.state, "house");
+  const storehouse = placeGuidedMarkersUntilKind(sawmill.state, "storehouse");
+  const result = placeGuidedMarkersUntilKind(storehouse.state, "house");
 
   // Then
   assert.equal(result.finalTarget.kind, "house");
   assert.equal(result.finalTarget.label, "오두막 1/1");
 });
 
-test("onboardingWorldGuidanceTargets guides another house after food and sawmill", () => {
-  const afterFoodChain = placeGuidedMarkersUntilKind(stateAfterFoodChain(), "sawmill").state;
+test("onboardingWorldGuidanceTargets guides another house after food, sawmill, and connected storage", () => {
+  const afterFoodChain = placeGuidedMarkersUntilKind(
+    placeGuidedMarkersUntilKind(stateAfterFoodChain(), "sawmill").state,
+    "storehouse",
+  ).state;
   const state =
     onboardingWorldGuidanceTargets(afterFoodChain)[0]?.kind === "road"
       ? placeGuidedRoad(afterFoodChain)

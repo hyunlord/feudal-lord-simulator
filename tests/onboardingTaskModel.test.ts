@@ -18,7 +18,7 @@ const REQUIRED_TITLES = [
   "숲 옆에 벌목소를 지으세요",
   "밀밭과 방앗간, 곡창을 지으세요",
   "제재소를 지어 목재를 만드세요",
-  "창고를 지어 목재를 모으세요",
+  "길에 연결된 창고를 한 채 더 지으세요",
   "우물을 지어 물을 공급하세요",
   "인구를 30명까지 늘리세요",
   "인구를 50명까지 늘리세요",
@@ -59,9 +59,13 @@ function withSettlement(input: {
   readonly houses?: readonly House[];
   readonly tiles?: readonly Tile[];
   readonly population?: number;
+  readonly width?: number;
+  readonly height?: number;
 }): GameState {
   return {
     ...DEFAULT_GAME_STATE,
+    width: input.width ?? DEFAULT_GAME_STATE.width,
+    height: input.height ?? DEFAULT_GAME_STATE.height,
     buildings: [...(input.buildings ?? DEFAULT_GAME_STATE.buildings)],
     houses: [...(input.houses ?? DEFAULT_GAME_STATE.houses)],
     tiles: [...(input.tiles ?? DEFAULT_GAME_STATE.tiles)],
@@ -139,7 +143,7 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
     ONBOARDING_TASKS[4]?.isComplete(
       withSettlement({ buildings: [startHouse, building("storehouse", 5, 4)] }),
     ),
-    true,
+    false,
   );
   assert.equal(
     ONBOARDING_TASKS[5]?.isComplete(
@@ -155,6 +159,35 @@ test("onboarding task predicates match the ordered first-five-minute settlement 
   );
   assert.equal(ONBOARDING_TASKS[6]?.isComplete(withSettlement({ population: 30 })), true);
   assert.equal(ONBOARDING_TASKS[7]?.isComplete(withSettlement({ population: 50 })), true);
+});
+
+test("storage guidance stays open until a second storehouse joins the timber road network", () => {
+  const width = 12;
+  const height = 4;
+  const buildings = [building("sawmill", 0, 1), building("storehouse", 3, 0)];
+  const tiles = Array.from({ length: width * height }, (_, index) => {
+    const tx = index % width;
+    const ty = Math.floor(index / width);
+    return tile(tx, ty, ty === 2 && tx <= 4);
+  });
+  const firstStore = withSettlement({ buildings, tiles, width, height });
+  const islandStore = withSettlement({
+    buildings: [...buildings, building("storehouse", 7, 0)],
+    tiles: tiles.map((current) => current.tx === 7 && current.ty === 2 ? { ...current, hasRoad: true } : current),
+    width,
+    height,
+  });
+  const connectedStore = withSettlement({
+    buildings: [...buildings, building("storehouse", 7, 0)],
+    tiles: tiles.map((current) => current.ty === 2 && current.tx <= 8 ? { ...current, hasRoad: true } : current),
+    width,
+    height,
+  });
+
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(DEFAULT_GAME_STATE), false);
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(firstStore), false);
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(islandStore), false);
+  assert.equal(ONBOARDING_TASKS[4]?.isComplete(connectedStore), true);
 });
 
 test("presentation state holds completion flourish for 600ms and advances only one task at a time", () => {
@@ -217,13 +250,20 @@ test("presentation state reaches the Phase 4F open goal only after task eight co
       building("logging_camp", 1, 0),
       building("sawmill", 2, 0),
       building("storehouse", 3, 0),
+      building("storehouse", 7, 0),
       building("well", 0, 6),
-      building("wheat_farm", 4, 0),
-      building("mill", 5, 0),
-      building("granary", 6, 0),
+      building("wheat_farm", 4, 3),
+      building("mill", 6, 3),
+      building("granary", 8, 3),
     ],
     houses: [house(startHouse.id, 50)],
-    tiles: [tile(1, 0, true)],
+    width: 12,
+    height: 8,
+    tiles: Array.from({ length: 12 * 8 }, (_, index) => {
+      const tx = index % 12;
+      const ty = Math.floor(index / 12);
+      return tile(tx, ty, (ty === 1 && tx <= 2) || (ty === 2 && tx >= 2 && tx <= 8));
+    }),
     population: 50,
   });
   let presentation = createOnboardingPresentationState();
