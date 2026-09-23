@@ -83,8 +83,11 @@ export function drawPalisadeDraftOverlay(
     const to = draft.candidate.path[selectedRun.endIndex];
     if (from !== undefined && to !== undefined) {
       tracePath(context, [from, to], true);
+      applyPaletteStroke(context, SEMANTIC_PALETTE.vellum, zoom);
+      context.lineWidth = 12 / zoom;
+      context.stroke();
       applyPaletteStroke(context, PALETTE.ultramarine, zoom);
-      context.lineWidth = 5 / zoom;
+      context.lineWidth = 6 / zoom;
       context.stroke();
     }
   }

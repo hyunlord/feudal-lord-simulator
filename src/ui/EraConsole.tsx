@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from "react";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
 import { recentCoinIncome } from "../engine/coinLedger";
@@ -140,6 +141,10 @@ export function EraConsole({
   readonly priority?: WallConstructionPriority;
   readonly onPriorityChange?: (priority: WallConstructionPriority) => void;
 }) {
+  const actionReasonRef = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    if (model.draft.editing) actionReasonRef.current?.scrollIntoView({ block: 'nearest' });
+  }, [model.draft.editing, model.draft.selectedRunLabel, model.draft.failure]);
   const actionHandler = model.action.targetEra === "stone_town"
     ? onProclaimStoneTown
     : model.draft.editing ? onConfirmProposal : onBeginDraw;
@@ -216,7 +221,7 @@ export function EraConsole({
           </button>
         ) : null}
       </div>
-      <small id="era-action-reason" className="era-action-reason">
+      <small ref={actionReasonRef} id="era-action-reason" className="era-action-reason">
         {model.action.reason ?? (model.draft.editing ? WALL_COPY.proclamationNotice : WALL_COPY.startHint)}
       </small>
     </section>
