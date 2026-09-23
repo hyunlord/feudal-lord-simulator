@@ -1,8 +1,7 @@
 import { CAUSE_REGISTRY } from '../ui/causeRegistry';
 import { constructionAccessModel } from '../ui/constructionAccessModel';
 import type { GameState } from '../engine/engine.types';
-import { tileToScreen } from './iso';
-import { TILE_H, TILE_W } from './iso';
+import { TILE_H, TILE_W, tileToScreen } from './iso';
 import { PALETTE, SEMANTIC_PALETTE } from '../content/palette';
 import { applyPaletteStroke, withAlpha } from './style';
 

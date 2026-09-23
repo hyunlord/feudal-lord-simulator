@@ -72,6 +72,8 @@ test('one missing road tile predicts a real material route to the selected site'
   assert.deepEqual(proposed.missingRoadTiles, [{ tx: 3, ty: 3 }]);
   assert.equal(roadConnectsConstructionSite(state, oneGapSite, [{ tx: 3, ty: 3 }]), true);
   assert.equal(roadConnectsConstructionSite(state, oneGapSite, [{ tx: 3, ty: 4 }]), false);
+  assert.equal(roadConnectsConstructionSite({ ...state, buildings: state.buildings.map(source => ({ ...source, inventory: {} })) },
+    oneGapSite, [{ tx: 3, ty: 3 }]), false);
   assert.ok(cachedPlacementPreview(state, 'road', { tx: 3, ty: 3 }, null, oneGapSite.id)
     .prediction?.lines.some(line => line.text === '이 길로 연결됩니다 ✓'));
   assert.ok(!cachedPlacementPreview(state, 'road', { tx: 3, ty: 4 }, null, oneGapSite.id)
