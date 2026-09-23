@@ -8,7 +8,7 @@ import { diagnosePalisadeDraft, type PalisadeDraftDiagnosis, type PalisadeFailur
 import type { PalisadeDraftState } from './palisadeDraftInteraction';
 import { palisadeScreenPath } from './palisadeRenderGeometry';
 import { tileToScreen } from './iso';
-import { withAlpha } from './style';
+import { applyPaletteStroke, withAlpha } from './style';
 
 const SHORT_FAILURE_LABELS: Partial<Record<PalisadeFailureReason, string>> = A_QUADRUPLE_PRIME_WALL_COPY.shortFailure;
 
@@ -51,7 +51,7 @@ export function drawPalisadeDraftOverlay(
     ], false);
     context.fillStyle = withAlpha(blocked ? PALETTE.vermilion : PALETTE.gold, 0.25);
     context.fill();
-    context.strokeStyle = blocked ? PALETTE.vermilion : PALETTE.gold;
+    applyPaletteStroke(context, blocked ? PALETTE.vermilion : PALETTE.gold, zoom);
     context.lineWidth = 4 / zoom;
     context.stroke();
   }
@@ -59,7 +59,7 @@ export function drawPalisadeDraftOverlay(
   for (const segment of diagnosis.segments) {
     if (segment.reason === null) continue;
     tracePath(context, [segment.from, segment.to], true);
-    context.strokeStyle = PALETTE.vermilion;
+    applyPaletteStroke(context, PALETTE.vermilion, zoom);
     context.lineWidth = 7 / zoom;
     context.stroke();
     if (segment.reason !== previousFailure) {
@@ -83,7 +83,7 @@ export function drawPalisadeDraftOverlay(
     const to = draft.candidate.path[selectedRun.endIndex];
     if (from !== undefined && to !== undefined) {
       tracePath(context, [from, to], true);
-      context.strokeStyle = PALETTE.ultramarine;
+      applyPaletteStroke(context, PALETTE.ultramarine, zoom);
       context.lineWidth = 5 / zoom;
       context.stroke();
     }
@@ -97,7 +97,7 @@ function drawFailureTarget(context: CanvasRenderingContext2D, point: TileEdgePoi
     { x: point.x + 1, y: point.y + 1 }, { x: point.x, y: point.y + 1 }], false);
   context.fillStyle = withAlpha(PALETTE.vermilion, 0.25);
   context.fill();
-  context.strokeStyle = PALETTE.vermilion;
+  applyPaletteStroke(context, PALETTE.vermilion, zoom);
   context.lineWidth = 3 / zoom;
   context.stroke();
 }
@@ -141,7 +141,7 @@ function drawFailureLabel(context: CanvasRenderingContext2D, point: TileEdgePoin
   const top = anchor.y - 35 / zoom;
   context.fillStyle = SEMANTIC_PALETTE.vellum;
   context.fillRect(left, top, width, height);
-  context.strokeStyle = PALETTE.vermilion;
+  applyPaletteStroke(context, PALETTE.vermilion, zoom);
   context.lineWidth = 2 / zoom;
   context.strokeRect(left, top, width, height);
   context.fillStyle = PALETTE.ink;
@@ -152,7 +152,7 @@ function drawGatePreview(context: CanvasRenderingContext2D, point: TileEdgePoint
   const anchor = palisadeScreenPath([point])[0];
   if (anchor === undefined) return;
   context.fillStyle = SEMANTIC_PALETTE.vellum;
-  context.strokeStyle = PALETTE.gold;
+  applyPaletteStroke(context, PALETTE.gold, zoom);
   context.lineWidth = 3 / zoom;
   context.fillRect(anchor.x - 8 / zoom, anchor.y - 8 / zoom, 16 / zoom, 16 / zoom);
   context.strokeRect(anchor.x - 8 / zoom, anchor.y - 8 / zoom, 16 / zoom, 16 / zoom);
@@ -175,7 +175,7 @@ function drawRouteStatus(context: CanvasRenderingContext2D, segment: PalisadeRou
   context.arc(anchor.x, anchor.y - 13 / zoom, 9 / zoom, 0, Math.PI * 2);
   context.fillStyle = SEMANTIC_PALETTE.vellum;
   context.fill();
-  context.strokeStyle = color;
+  applyPaletteStroke(context, color, zoom);
   context.lineWidth = 2 / zoom;
   context.stroke();
   context.fillStyle = color;
@@ -190,7 +190,7 @@ function drawVertexHandle(context: CanvasRenderingContext2D, point: TileEdgePoin
   context.arc(anchor.x, anchor.y, 6 / zoom, 0, Math.PI * 2);
   context.fillStyle = SEMANTIC_PALETTE.vellum;
   context.fill();
-  context.strokeStyle = PALETTE.gold;
+  applyPaletteStroke(context, PALETTE.gold, zoom);
   context.lineWidth = 2 / zoom;
   context.stroke();
 }

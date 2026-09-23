@@ -2,7 +2,6 @@ import { isCanvasKeyboardControl } from "./canvasKeyboardTarget";
 import { updateCanvasHover } from "./canvasHoverRuntime";
 import { cancelRoadPreview } from "./cancelRoadPreview";
 import { createPredictionPublisher } from "./placementPredictionRuntime";
-import { causeMarkerAtCanvasPoint } from "./causeMapInteraction";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { useEffect } from "react";
 
@@ -13,7 +12,7 @@ import { releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions
 import { installMinimapCameraJumpRuntime, publishMinimapViewport } from "./minimapCameraJump";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
 import { preloadGameArt } from "./preloadGameArt";
-import { resolveCanvasClick } from "./canvasClickResolution";
+import { handleCanvasClick } from "./canvasClickRuntime";
 import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
@@ -164,39 +163,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         suppressClickTimeout = null;
       }, 0);
     };
-    const clickCanvas = (event: MouseEvent) => {
-      if (palisadeDraftRef.current !== null) return;
-      const bounds = canvas.getBoundingClientRect();
-      const resolution = resolveCanvasClick({
-        suppressClick: refs.suppressClick.current,
-        spacePressed: refs.spacePressed.current,
-        dragMode: refs.dragRef.current.mode === "palisade" ? "none" : refs.dragRef.current.mode,
-        hover: refs.hoverRef.current,
-        selectedTool: selectedToolRef.current,
-        state: stateRef.current,
-        point: canvasPoint(event),
-        camera: refs.cameraRef.current,
-        viewport: bounds,
-        nowMs: performance.now(),
-      });
-      if (resolution.kind === "ignored") {
-        if (!resolution.clearSuppression) return;
-        refs.suppressClick.current = false;
-        clearSuppressClickTimeout();
-        return;
-      }
-      if (resolution.kind === "selection") {
-        const buildingId = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, canvasPoint(event))?.buildingIds[0] : undefined;
-        if (buildingId !== undefined) {
-          setSelection({ kind: 'building', buildingId, position: canvasPoint(event) });
-          return;
-        }
-        setSelection(resolution.selection);
-        return;
-      }
-      refs.feedbackRef.current = resolution.attempt.feedback;
-      if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
-    };
+    const clickCanvas = (event: MouseEvent) => handleCanvasClick({ event, canvas, refs, stateRef,
+      selectedToolRef, palisadeDraftRef, setSelection, dispatch, canvasPoint, clearSuppressClickTimeout });
     const defaultContextMenu = createCanvasContextMenuHandler({ canvas, dispatch, refs, selectedToolRef, setSelection, stateRef });
     const contextMenuCanvas = (event: MouseEvent) => {
       if (palisadeDraftRef.current !== null) {
