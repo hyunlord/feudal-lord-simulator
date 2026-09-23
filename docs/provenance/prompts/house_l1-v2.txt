@@ -1,0 +1,15 @@
+Create ONE corrected house_l1 — Small House sprite for a historical city building game.
+Image 1 is the existing L1 edit target. Image 2 is the user-approved L2 v2 STYLE reference only. Preserve L1's single storey plus implied loft, compact thatched silhouette, orientation and plain household identity. Do NOT copy L2's second storey, tile roof, jetty or shop.
+
+SETTING: southern/southeastern England AD 1300–1450, stable labouring or smallholding household. Neat warm weathered oak frame with warm off-white limewashed wattle and daub, no black-and-white decorative Tudor revival contrast. Better maintained than a poor cottage, not wealthier through later technology.
+
+REQUIRED CHANGES:
+Remove the entire external chimney and restore continuous thatch beneath it. Internal open hearth means NO external chimney of any material, no chimney pot, no smoke, no roof vent.
+Replace every glazed window with small dark UNGLAZED openings and plain solid wooden shutters. Exactly TWO visible small window openings in total: one on the broad front left of the door and one on the side. Remove the extra front window and restore limewashed wall there. No glass behind shutters, no blue, cyan, grey-green or reflective panes, no glass grid, no stone window surrounds. One shutter can be open to reveal a matte black-brown interior, the other closed.
+Reduce stone footing to LESS THAN HALF its former height: only one low irregular grey-brown rubble sill at ground contact. Remove high stone corners and stone door surrounds. Structural oak posts extend almost to ground. Plain wooden plank door with modest dark hinges, same human scale as L2.
+Maintain a thick cared-for straw thatch roof, muted straw ochre rather than vivid golden orange; hand-laid texture, gently irregular clean eaves and plain ridge. No dormers. No roof tiles or slate.
+
+CAMERA AND OUTPUT:
+Orthographic 2:1 isometric ground axes +/-26.565 degrees; all verticals vertical. Same view of front and right side as references, no perspective convergence. One 6x6m logical tile, walls within footprint, small eaves only. Soft upper-left light, subtle contact AO, no broad baked shadow. Consistent hand-painted prerendered sprite matching the two references.
+Square true transparent RGBA canvas, entire building visible and centered with clear margins. No grass, terrain plate, drawn footprint, base platform, white fringe, fake checkerboard, labels, frames, props, people, stockpiles or text.
+The requested 1024-normalized invisible ground footprint is top (512,640), right (812,790), front (512,940), left (212,790). It is a guide for ground contact not an object to draw; preserve human-sized doorway. Render just this ONE L1 house.
