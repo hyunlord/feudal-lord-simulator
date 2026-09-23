@@ -277,7 +277,7 @@ test("unassigned construction slots disappear from derived builder walkers", () 
   ]);
 });
 
-test("palisade construction labour assigns only the earliest incomplete wall segment", () => {
+test("palisade construction labour works on every supplied segment", () => {
   // Given
   const first = wallSite("wall-a-segment-000", 0, {
     builderTicks: 119,
@@ -300,7 +300,7 @@ test("palisade construction labour assigns only the earliest incomplete wall seg
       stall,
     })),
     [
-      { id: "wall-a-segment-001", assignedBuilders: 0, stall: "no_builders" },
+      { id: "wall-a-segment-001", assignedBuilders: 3, stall: "none" },
       { id: "wall-a-segment-000", assignedBuilders: 3, stall: "none" },
     ],
   );
