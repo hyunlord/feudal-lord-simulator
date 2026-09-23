@@ -16,6 +16,7 @@ export type PalisadeRouteAccess = Readonly<{
 const tileLayoutKeys = new WeakMap<GameState['tiles'], string>();
 const routeAccessCache = new Map<string, Readonly<{ reachableSiteIds: readonly string[]; unreachableSiteIds: readonly string[] }>>();
 const statePreviewCache = new WeakMap<GameState, Map<string, PalisadeRouteAccess>>();
+const defaultProposalCache = new Map<string, PalisadeProposalResult>();
 
 function routeAccessKey(state: GameState, path: PalisadePath): string {
   let tiles = tileLayoutKeys.get(state.tiles);
@@ -26,9 +27,11 @@ function routeAccessKey(state: GameState, path: PalisadePath): string {
   return JSON.stringify([
     state.width, state.height, state.roadRevision, tiles, state.nextConstructionOrdinal,
     state.treasuryTimber > 0,
-    state.buildings.map(building => [building.id, building.kind, building.tx, building.ty,
+    state.buildings.map(building => [building.id, building.kind, building.tx, building.ty, building.houseLot,
       availableStock(building, 'timber') > 0]),
-    state.constructionSites.map(site => site.id), path,
+    state.constructionSites.map(site => 'tx' in site
+      ? [site.id, site.kind, site.tx, site.ty]
+      : [site.id, site.kind, site.path]), path,
   ]);
 }
 
@@ -69,10 +72,19 @@ export function previewPalisadeRouteAccess(state: GameState, path: PalisadePath)
 
 export function computeReachablePalisadeProposalForState(
   state: GameState,
-  acceptPath: (path: PalisadePath) => boolean = () => true,
+  acceptPath?: (path: PalisadePath) => boolean,
 ): PalisadeProposalResult {
-  const accepted = (path: PalisadePath) => acceptPath(path)
+  const cacheKey = acceptPath === undefined ? routeAccessKey(state, []) : null;
+  const cached = cacheKey === null ? undefined : defaultProposalCache.get(cacheKey);
+  if (cached !== undefined) return cached;
+  const predicate = acceptPath ?? (() => true);
+  const accepted = (path: PalisadePath) => predicate(path)
     && previewPalisadeRouteAccess(state, path).unreachableSiteIds.length === 0;
   const reachable = computePalisadeProposalForState(state, accepted);
-  return reachable.ok ? reachable : computePalisadeProposalForState(state, acceptPath);
+  const result = reachable.ok ? reachable : computePalisadeProposalForState(state, predicate);
+  if (cacheKey !== null) {
+    if (defaultProposalCache.size >= 32) defaultProposalCache.delete(defaultProposalCache.keys().next().value ?? '');
+    defaultProposalCache.set(cacheKey, result);
+  }
+  return result;
 }
