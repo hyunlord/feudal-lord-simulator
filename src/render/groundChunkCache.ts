@@ -113,8 +113,12 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   const store = (id: string, entry: Entry): void => {
     entries.delete(id);
     entries.set(id, entry);
-    // Entries iterate oldest first; chunks drawn this frame are never evicted.
-    for (const oldest of entries.keys()) {
+    stats.entries = entries.size;
+    stats.pixels = [...entries.values()].reduce((sum, value) => sum + value.raster.canvas.width * value.raster.canvas.height, 0);
+  };
+  // Runs between frames: keep every chunk the last frame drew plus the OFFSCREEN_ENTRIES most recently used others.
+  const evict = (): void => {
+    for (const oldest of [...entries.keys()]) {
       if (entries.size <= drawnThisFrame.size + OFFSCREEN_ENTRIES) break;
       if (drawnThisFrame.has(oldest)) continue;
       entries.delete(oldest); stats.evictions += 1;
@@ -124,7 +128,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   };
 
   return {
-    beginFrame() { zoomBudget = ZOOM_RERASTER_BUDGET; stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; drawnThisFrame.clear(); },
+    beginFrame() { evict(); zoomBudget = ZOOM_RERASTER_BUDGET; stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; drawnThisFrame.clear(); },
     needs(request) {
       const entry = entries.get(request.id);
       return entry === undefined || entry.contentKey !== request.contentKey || entry.scale !== request.scale;

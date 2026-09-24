@@ -214,6 +214,24 @@ test("Given a cached frame When a road is built, a road is removed and a farm co
   setBoundaryV2Enabled(false);
 });
 
+test("Given a zoomed-out view of the whole seed 2 map When it is drawn again Then no chunk re-rasters (no eviction churn)", () => {
+  // Given
+  setBoundaryV2Enabled(true);
+  const live = recordingCanvas(1280, 800).context;
+  const state = seedGroundState(2);
+  drawFrame(live, state, [32, 32], 0.3);
+
+  // When
+  drawFrame(live, state, [32, 32], 0.3);
+  drawFrame(live, state, [32, 32], 0.3);
+
+  // Then
+  const stats = groundChunkCacheFor(live).stats();
+  assert.equal(stats.lastFrameRasters, 0);
+  assert.ok(stats.entries > 64, `whole map resident: ${stats.entries} entries`);
+  setBoundaryV2Enabled(false);
+});
+
 test("Given query, stored choice and default When the flag is resolved Then the URL wins, then the stored choice, and the default is off", () => {
   const storage = (value: string | null) => ({ getItem: () => value });
   assert.equal(resolveBoundaryV2Flag({}), false);
