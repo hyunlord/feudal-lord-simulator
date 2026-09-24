@@ -62,7 +62,7 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
     return { kind: null, reason: 'wheat_transport_blocked' };
   }
   const mills = facilities.filter(b => b.kind === 'mill');
-  const bufferedMillDeficit = wheatMarginDeficit && breadDeficit > 0
+  const bufferedMillDeficit = wheatMarginDeficit && sample.wheatProduced >= sample.wheatConsumed && breadDeficit > 0
     && sample.eligibleMillTicks > 0 && sample.rawStarvedTicks / sample.eligibleMillTicks < 0.2
     && mills.length > 0 && mills.every(b => (b.inventory.wheat ?? 0) > 0)
     && stockedWheat >= Math.max(0, sample.wheatConsumed * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR - sample.wheatProduced, rawDeficit);
