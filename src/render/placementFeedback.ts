@@ -1,3 +1,6 @@
+import { ZonePlacementFailure } from "../zones/zonePlacement";
+import type { ZoneKind } from "../zones/zone.types";
+import { ZONE_BRUSH_COPY } from "./zoneBrushCopy.ko";
 import {
   BUILDING_CONFIG_BY_KIND,
   type BuildingKind,
@@ -47,12 +50,14 @@ export interface PlacementFeedback {
   readonly expiresAtMs: number;
 }
 
-export type PlacementFailureReason = PlacementFailure;
+export type PlacementFailureReason = PlacementFailure | ZonePlacementFailure;
 
 export type FormatPlacementFailureRequest = {
   readonly reason: PlacementFailureReason;
   readonly buildingKind: BuildingKind;
   readonly shortfalls?: Partial<Record<ResourceType, number>>;
+  /** The zone kind the zone rule asked for (zone failures only). */
+  readonly zoneRule?: ZoneKind;
 };
 
 function assertNever(value: never): string {
@@ -84,6 +89,11 @@ export function formatPlacementFailure(
     }
     case PlacementFailure.locked_era:
       return "목책마을 이후 건설할 수 있습니다";
+    case ZonePlacementFailure.outside_zone:
+      return request.zoneRule === "burgage" ? ZONE_BRUSH_COPY.outsideBurgage
+        : request.zoneRule === "arable" ? ZONE_BRUSH_COPY.outsideArable : ZONE_BRUSH_COPY.outsideZone;
+    case ZonePlacementFailure.arable_inside_wall:
+      return ZONE_BRUSH_COPY.arableInsideWall;
     default:
       return assertNever(reason);
   }

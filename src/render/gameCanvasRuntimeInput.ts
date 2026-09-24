@@ -29,6 +29,9 @@ export type GameCanvasRuntimeInput = {
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>> | undefined;
   readonly onPalisadeDraftCancel?: (() => void) | undefined;
+  /** Armed zone brush (C1b), or null. */
+  readonly zoneTool?: import("./zoneBrushInteraction").ZoneBrushTool | null;
+  readonly onZoneRadiusChange?: ((radius: number) => void) | undefined;
 };
 
 const CAMERA_DRAG_THRESHOLD_PX = 4;

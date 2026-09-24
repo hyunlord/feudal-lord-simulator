@@ -47,7 +47,10 @@ export type PlacementPreview = {
   readonly footprint: readonly { readonly tx: number; readonly ty: number }[];
   readonly roadPath: readonly { readonly tx: number; readonly ty: number }[];
   readonly ok: boolean;
-  readonly reason: import("../world/placement").PlacementFailure | null;
+  /** Base placement failure, or a zone rule failure (C1b: `canPlaceBuildingWithZones`). */
+  readonly reason: import("../world/placement").PlacementFailure | import("../zones/zonePlacement").ZonePlacementFailure | null;
+  /** Which zone kind the zone rule asked for, when `reason` is a zone failure. */
+  readonly zoneRule?: import("../zones/zone.types").ZoneKind;
   readonly cursor: { readonly tx: number; readonly ty: number } | null;
   readonly timberCost?: number | null;
 };

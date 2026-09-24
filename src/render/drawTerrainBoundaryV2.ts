@@ -4,6 +4,8 @@ import { boundaryAssetReadiness, boundaryAssetStatuses, preloadBoundaryAssets } 
 import { drawBridgeDeck } from "./drawBridges";
 import { drawFieldClusters, drawForestFill, drawForestFringeDecals } from "./drawGroundBoundaries";
 import { drawRoadRibbons } from "./drawRoadRibbons";
+import { drawZoneFills, drawZoneLines } from "./drawZones";
+import { preloadZoneAssets, zoneAssetReadiness } from "./zoneAssets";
 import { drawGroundDecalDetail } from "./drawTerrainDetails";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawHistoricalWater } from "./drawWater";
@@ -77,6 +79,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   void preloadBoundaryAssets();
   void preloadFarmAssets();
   const scene = groundBoundaryScene(input.state);
+  if (scene.zones.zones.length > 0) void preloadZoneAssets();
   const cache = groundChunkCacheFor(context);
   cache.beginFrame();
   const transform = typeof context.getTransform === "function" ? context.getTransform() : null;
@@ -84,7 +87,9 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const zoom = groundChunkZoomBucket(input.zoom);
   const scale = zoom * dpr;
   const readiness = `${boundaryAssetReadiness()}:${TERRAIN_TEXTURE_KEYS.map(key => getSprite(key) === null ? 0 : 1).join("")}`
-    + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`;
+    + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`
+    // Zone art readiness only where zones are drawn (a zone-free chunk keeps its D1a key).
+    + (scene.zones.zones.length > 0 ? `:z${zoneAssetReadiness()}` : "");
   const visible = visibleChunks(scene, input.range);
   const groundRequest = (plan: GroundChunkPlan) => ({
     id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${readiness}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
@@ -137,7 +142,9 @@ function drawGroundChunk(
     left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
   }, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops);
+  if (plan.zoneIndexes.length > 0) drawZoneFills(context, scene.zones, plan.zoneIndexes);
   drawFieldClusters(context, scene.fields, plan.fieldClusters);
+  if (plan.zoneIndexes.length + plan.zoneChains.length > 0) drawZoneLines(context, scene.zones, plan.zoneChains, bounds, zoom);
 }
 
 function chunkTiles(state: GameState, plan: GroundChunkPlan, ring: number): Tile[] {

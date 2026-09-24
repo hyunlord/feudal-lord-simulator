@@ -15,6 +15,10 @@ import { setGroundChunkCacheFactoryForTest } from "../src/render/drawTerrainBoun
 import { createGroundChunkCache } from "../src/render/groundChunkCache";
 import { setBoundaryV2Enabled } from "../src/render/renderBoundaryFlag";
 import { seedGroundState } from "./boundaryFixtureStates";
+import { gameReducer } from "../src/state/gameStore";
+import type { ZoneKind } from "../src/zones/zone.types";
+import { setZoneAssetsForTest } from "../src/render/zoneAssets";
+import { ZONE_ASSETS } from "../src/render/zoneAssetManifest";
 import { recordingCanvas, type Recording } from "./recordingCanvas";
 
 export const C25_BOARD = { fixture: "seed 2 final", centre: [44, 38] as const, zooms: [0.6, 1, 1.35] as const, dprs: [1, 2] as const,
@@ -23,6 +27,22 @@ export const C25_BOARD_FILE = new URL("../tests/fixtures/boundary/c25-board.json
 
 export function c25BoardState(): GameState {
   return seedGroundState(2);
+}
+
+/**
+ * The same board with painted zones (C1b): plots along the curved road outside the wall, arable, pasture and orchard
+ * to its west. Applied through the game reducer exactly as the brush sends them.
+ */
+export const C25_ZONE_STROKES: readonly { readonly kind: ZoneKind; readonly points: readonly (readonly [number, number])[] }[] = [
+  { kind: "burgage", points: ([[36, 39], [37, 40], [38, 41], [39, 42], [39, 43], [40, 44], [41, 45], [42, 46]] as const).map(([x, y]) => [x - 1.3, y + 1.3] as const) },
+  { kind: "arable", points: [[32, 37], [33, 38]] },
+  { kind: "pasture", points: [[30, 44], [31, 46]] },
+  { kind: "orchard", points: [[31, 40], [32, 41]] },
+];
+
+export function c25ZonedState(): GameState {
+  return C25_ZONE_STROKES.reduce((state, stroke) => gameReducer(state, { type: "zone_paint", kind: stroke.kind,
+    stroke: { tool: "brush", radius: 2, points: stroke.points.map(([x, y]) => ({ x: x + 0.5, y: y + 0.5 })) } }), c25BoardState());
 }
 
 function drawBoard(state: GameState, zoom: number, dpr: number): string {
@@ -54,10 +74,13 @@ function drawBoard(state: GameState, zoom: number, dpr: number): string {
 export function c25BoardHashes(): Record<string, string> {
   setBoundaryAssetsForTest(Object.fromEntries(BOUNDARY_ASSETS.map(asset => [asset.key,
     { label: asset.key, width: asset.width, height: asset.height, naturalWidth: asset.width, naturalHeight: asset.height } as unknown as HTMLImageElement])));
+  setZoneAssetsForTest(Object.fromEntries(ZONE_ASSETS.map(asset => [asset.key,
+    { label: asset.key, width: asset.width, height: asset.height, naturalWidth: asset.width, naturalHeight: asset.height } as unknown as HTMLImageElement])));
   setBoundaryV2Enabled(true);
-  const state = c25BoardState();
   const hashes: Record<string, string> = {};
-  for (const zoom of C25_BOARD.zooms) for (const dpr of C25_BOARD.dprs) hashes[`z${zoom.toFixed(2)}-dpr${dpr}`] = drawBoard(state, zoom, dpr);
+  for (const [prefix, state] of [["", c25BoardState()], ["zoned-", c25ZonedState()]] as const) {
+    for (const zoom of C25_BOARD.zooms) for (const dpr of C25_BOARD.dprs) hashes[`${prefix}z${zoom.toFixed(2)}-dpr${dpr}`] = drawBoard(state, zoom, dpr);
+  }
   return hashes;
 }
 

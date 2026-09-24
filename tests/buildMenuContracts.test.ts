@@ -161,7 +161,7 @@ test("task-driven highlights are semantic attributes and keep unaffordable seals
 });
 
 test("category presentation covers every existing tool and preserves the canonical unlock filter", () => {
-  assert.deepEqual(BUILD_CATEGORIES.map((category) => category.label), ["주택", "도로", "생산", "저장", "공공", "방어"]);
+  assert.deepEqual(BUILD_CATEGORIES.map((category) => category.label), ["주택", "도로", "생산", "저장", "공공", "방어", "구역"]);
   assert.equal(buildCategory("keep"), "defense");
   assert.equal(buildCategory("church"), "public");
   const opening = buildMenuGroups(DEFAULT_GAME_STATE).flatMap((group) => group.options);

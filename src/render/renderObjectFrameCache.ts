@@ -11,6 +11,8 @@ import {
 import type { TileRange } from "./renderVisibility";
 import { tileIsVisibleInRange } from "./renderVisibility";
 import { walkerVisualAnchor } from "./walkerAnchor";
+import { groundBoundaryScene } from "./groundBoundaryScene";
+import { boundaryV2Enabled } from "./renderBoundaryFlag";
 
 type ObjectRenderFrameInput = {
   readonly state: GameState;
@@ -35,7 +37,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = staticObjectRenderItemsForFrame(input);
+  const staticItems = withZoneProps(staticObjectRenderItemsForFrame(input), input);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
@@ -78,6 +80,25 @@ const staticObjectRenderItemsForFrame = (
     items,
   });
   return items;
+};
+
+/**
+ * Zone props (C1b) join the queue only while curved ground is on and a zone exists; their positions come from the
+ * ground scene, which is cached on the same inputs as the zone outlines, so they never go stale against them.
+ */
+const zonePropItems = new WeakMap<object, readonly ObjectRenderItem[]>();
+const withZoneProps = (items: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
+  if ((input.state.zones ?? []).length === 0 || !boundaryV2Enabled()) return items;
+  const layer = groundBoundaryScene(input.state).zones;
+  if (layer.props.length === 0) return items;
+  let all = zonePropItems.get(layer);
+  if (all === undefined) {
+    all = layer.props.map(prop => ({ kind: "zone_prop" as const, id: prop.id, prop, depth: depthKey(Math.round(prop.x), Math.round(prop.y)), anchorTx: Math.round(prop.x) }))
+      .sort(compareObjectRenderItems);
+    zonePropItems.set(layer, all);
+  }
+  const visible = all.filter(item => item.kind === "zone_prop" && tileIsVisibleInRange(Math.round(item.prop.x), Math.round(item.prop.y), input.range));
+  return visible.length === 0 ? items : mergeObjectRenderItems(items, visible);
 };
 
 const walkerRenderItemsForFrame = (

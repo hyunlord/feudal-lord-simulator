@@ -2,7 +2,8 @@ import { roadTimberCost } from "../engine/roadPlacement";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
-import { canPlaceBuilding } from "../world/placement";
+
+import { canPlaceBuildingWithZones } from "../zones/zonePlacement";
 import { roadLine } from "../world/roadGraph";
 import type { CameraState, CanvasRect, Point, ViewportBounds, WorldBounds } from "./camera";
 import { canvasToWorld, clampPan, clientToCanvas, clampZoom } from "./camera";
@@ -156,7 +157,8 @@ export function placementPreview(
       timberCost: roadTimberCost(state, path),
     };
   }
-  const placement = canPlaceBuilding(state, tool, tile.tx, tile.ty);
+  // Zone rules (C1b): while any zone exists, houses need a plot zone and wheat farms an arable zone.
+  const placement = canPlaceBuildingWithZones(state, tool, tile.tx, tile.ty);
   return {
     tool,
     tile,
@@ -164,6 +166,7 @@ export function placementPreview(
     roadPath: [],
     ok: placement.ok,
     reason: placement.ok ? null : placement.reason,
+    ...(!placement.ok && "rule" in placement ? { zoneRule: placement.rule } : {}),
     cursor: tile,
     timberCost: null,
   };
@@ -172,7 +175,7 @@ export function placementPreview(
 export function resolveBuildingPlacementAttempt(
   input: BuildingPlacementAttemptInput,
 ): PlacementAttemptOutcome {
-  const placement = canPlaceBuilding(input.state, input.tool, input.tile.tx, input.tile.ty);
+  const placement = canPlaceBuildingWithZones(input.state, input.tool, input.tile.tx, input.tile.ty);
   if (!placement.ok) {
     return {
       action: null,
@@ -182,6 +185,7 @@ export function resolveBuildingPlacementAttempt(
           reason: placement.reason,
           buildingKind: input.tool,
           shortfalls: "shortfalls" in placement ? placement.shortfalls : {},
+          ...("rule" in placement ? { zoneRule: placement.rule } : {}),
         }),
         anchor: { kind: "tile", tile: input.tile },
         nowMs: input.nowMs,

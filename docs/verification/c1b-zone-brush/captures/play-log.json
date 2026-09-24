@@ -1,0 +1,200 @@
+{
+  "url": "http://127.0.0.1:4200/",
+  "snapshot": "/tmp/c1b-snapshot.json",
+  "tick": 276000,
+  "wall": {
+    "completed": 21,
+    "segments": 21
+  },
+  "totalSeconds": 9,
+  "log": [
+    {
+      "step": "1 plots: brush along the curved road (captured mid-stroke)",
+      "ms": 1341,
+      "atS": 1,
+      "capture": "01-plot-brush-preview.jpg",
+      "bytes": 162576,
+      "prediction": "✓필지 구역 12칸 | ✓필지 구역 12칸 | ✓"
+    },
+    {
+      "step": "2 plots appear",
+      "ms": 591,
+      "atS": 2,
+      "capture": "02-plots-painted.jpg",
+      "bytes": 166211,
+      "zones": {
+        "list": [
+          {
+            "id": "zone-000001",
+            "kind": "burgage",
+            "cells": 56
+          }
+        ],
+        "parcels": 2,
+        "assets": [
+          {
+            "key": "pasture_fill",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_floor_fill",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_a",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_b",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_apple_c",
+            "status": "ready"
+          }
+        ]
+      }
+    },
+    {
+      "step": "3 house inside a plot: preview",
+      "ms": 1099,
+      "atS": 3,
+      "capture": "03-house-inside-plot.jpg",
+      "bytes": 154610,
+      "prediction": "✓필지 구역 안 · 배치 가능✓도로 연결✓자재 | ✓필지 구역 안 · 배치 가능 | ✓ | ✓도로 연결 | ✓ | ✓자재 | ✓"
+    },
+    {
+      "step": "3b house inside a plot: place",
+      "ms": 331,
+      "atS": 3,
+      "placed": 1
+    },
+    {
+      "step": "4 house outside the plots: preview is refused",
+      "ms": 1017,
+      "atS": 4,
+      "capture": "04-house-outside-refused.jpg",
+      "bytes": 160892,
+      "prediction": "×필지 구역 밖✓도로 연결✓자재 | ×필지 구역 밖 | × | ✓도로 연결 | ✓ | ✓자재 | ✓",
+      "placed": 0
+    },
+    {
+      "step": "5 arable outside the wall",
+      "ms": 1056,
+      "atS": 5,
+      "capture": "05-arable-outside-wall.jpg",
+      "bytes": 148902,
+      "zones": {
+        "list": [
+          {
+            "id": "zone-000001",
+            "kind": "burgage",
+            "cells": 56
+          },
+          {
+            "id": "zone-000002",
+            "kind": "arable",
+            "cells": 15
+          }
+        ],
+        "parcels": 2,
+        "assets": [
+          {
+            "key": "pasture_fill",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_floor_fill",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_a",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_b",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_apple_c",
+            "status": "ready"
+          }
+        ]
+      }
+    },
+    {
+      "step": "6 wheat farm inside the arable zone",
+      "ms": 1120,
+      "atS": 7,
+      "capture": "06-wheat-farm-in-arable.jpg",
+      "bytes": 147567,
+      "prediction": "×점유 충돌×도로 연결✓자재×공사 자재 배송 경로 (창고와 길을 이으세요) | ×점유 충돌 | × | ×도로 연결 | × | ✓자재 | ✓ | ×공사 자재 배송 경로 (창고와 길을 이으세요) | ×",
+      "placed": 1
+    },
+    {
+      "step": "7 arable inside the wall is refused (captured mid-stroke)",
+      "ms": 1146,
+      "atS": 8,
+      "capture": "07-arable-inside-wall-refused.jpg",
+      "bytes": 169419,
+      "prediction": "×성내 경작지 금지 | ×성내 경작지 금지 | ×",
+      "zonesBefore": 2,
+      "zonesAfter": 2
+    },
+    {
+      "step": "8 pasture and orchard fills",
+      "ms": 1511,
+      "atS": 9,
+      "capture": "08-pasture-orchard.jpg",
+      "bytes": 139301,
+      "zones": {
+        "list": [
+          {
+            "id": "zone-000001",
+            "kind": "burgage",
+            "cells": 55
+          },
+          {
+            "id": "zone-000002",
+            "kind": "arable",
+            "cells": 15
+          },
+          {
+            "id": "zone-000003",
+            "kind": "pasture",
+            "cells": 20
+          },
+          {
+            "id": "zone-000004",
+            "kind": "orchard",
+            "cells": 20
+          }
+        ],
+        "parcels": 2,
+        "assets": [
+          {
+            "key": "pasture_fill",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_floor_fill",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_a",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_b",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_apple_c",
+            "status": "ready"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

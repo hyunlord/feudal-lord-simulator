@@ -66,7 +66,7 @@ export function advanceCanvasDrag(input: Readonly<{
   const startCamera = drag.startCamera ?? input.camera;
   const moved = drag.moved || cameraDragThresholdExceeded(startCanvasPoint, input.point);
   const nextDrag = { ...drag, startCamera, lastCanvasPoint: input.point, moved };
-  if (drag.mode === "road" || drag.mode === "palisade") {
+  if (drag.mode === "road" || drag.mode === "palisade" || drag.mode === "zone") {
     return { drag: nextDrag, camera: input.camera, suppressClick: moved };
   }
   if (!moved) {

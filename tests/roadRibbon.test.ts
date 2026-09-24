@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { ROAD_STRIP_CHOICE, ROAD_STRIP_SETS } from "../src/render/boundaryAssetManifest";
 import { buildGroundBoundaryScene } from "../src/render/groundBoundaryScene";
-import { resolveRoadRibbonWidth, roadStripSet, setRoadRibbonWidth, setRoadStripOverride } from "../src/render/roadRibbonStyle";
+import { ROAD_RIBBON_WIDTH, resolveRoadRibbonWidth, roadStripSet, setRoadRibbonWidth, setRoadStripOverride } from "../src/render/roadRibbonStyle";
 import { alignedRoadPosition, alignmentIndex } from "../src/render/walkerRoadAlignment";
 import { roadCentrelineTolerance } from "../src/world/boundary/boundaryTolerance";
 import { SHOULDER_SPACING_MAX, SHOULDER_SPACING_MIN } from "../src/world/boundary/roadRibbonLayout";
@@ -86,7 +86,7 @@ test("Given ribbon widths 0.55, 0.65 and 0.75 When the scene is rebuilt Then the
   // Given
   const state = fixedSceneState();
   const scenes = [0.55, 0.65, 0.75].map(width => { setRoadRibbonWidth(width); return buildGroundBoundaryScene(state); });
-  setRoadRibbonWidth(0.55);
+  setRoadRibbonWidth(ROAD_RIBBON_WIDTH);
 
   // Then
   const [narrow, middle, wide] = scenes as [ReturnType<typeof buildGroundBoundaryScene>, ReturnType<typeof buildGroundBoundaryScene>, ReturnType<typeof buildGroundBoundaryScene>];
@@ -96,7 +96,7 @@ test("Given ribbon widths 0.55, 0.65 and 0.75 When the scene is rebuilt Then the
   assert.notDeepEqual(wide.chunks.map(chunk => chunk.roadKey), narrow.chunks.map(chunk => chunk.roadKey));
   assert.equal(resolveRoadRibbonWidth("?road-ribbon-width=0.65"), 0.65);
   assert.equal(resolveRoadRibbonWidth("?road-ribbon-width=3"), 0.85);
-  assert.equal(resolveRoadRibbonWidth(""), 0.55);
+  assert.equal(resolveRoadRibbonWidth(""), 0.65, "default width is 0.65 (owner decision, C1b)");
 });
 
 test("Given the earth strip sets When the choice changes Then one manifest line decides v1 or the alternating v2 pair and the road chunks re-key", () => {

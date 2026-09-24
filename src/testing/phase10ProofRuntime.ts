@@ -1,3 +1,5 @@
+import { zoneAssetStatuses } from "../render/zoneAssets";
+import { burgageParcels } from "../zones/zoneFillAgent";
 import type { MutableRefObject } from "react";
 import { installProofFrameWork, type ProofFrameWorkSnapshot } from "./proofFrameWork";
 
@@ -94,6 +96,9 @@ export type Phase10ProofRuntimePort = {
     readonly onboardingMemo: ReturnType<typeof onboardingWorldGuidanceMemoStats>;
     /** Wave 2 visual variant images (V1). */
     readonly variants: ReturnType<typeof buildingVariantAssetStatuses>;
+    /** Zones (C1b evidence): kind and owned cells per zone, derived plots, zone art status. */
+    readonly zones: { readonly list: readonly { readonly id: string; readonly kind: string; readonly cells: number }[]; readonly parcels: number;
+      readonly assets: ReturnType<typeof zoneAssetStatuses> };
   };
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
   readonly resetBoundary: (reverseInput: boolean) => void;
@@ -146,6 +151,8 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       boundary: context === null ? null : groundBoundaryDiagnostics(context),
       onboardingMemo: onboardingWorldGuidanceMemoStats(),
       variants: buildingVariantAssetStatuses(),
+      zones: { list: (input.stateRef.current.zones ?? []).map(zone => ({ id: zone.id, kind: zone.kind, cells: zone.membership.length })),
+        parcels: burgageParcels(input.stateRef.current).length, assets: zoneAssetStatuses() },
     }),
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
   };

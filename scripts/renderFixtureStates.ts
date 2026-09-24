@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import type { GameState } from "../src/engine/engine.types";
 import { decodeSave } from "../src/save/saveCodec";
 import { fixedSceneState, seedGroundState } from "./boundaryFixtureStates";
+import { c25ZonedState } from "./c25Board";
 import { variantGallery } from "./variantGalleryState";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
@@ -23,7 +24,7 @@ function newestSaveFixture(name: string): string {
 }
 
 export function benchmarkCities(): { readonly newgame: null; readonly pop176: GameState; readonly lots24: GameState;
-  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly seed4: GameState; readonly gallery: GameState } {
+  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly seed4: GameState; readonly c25zoned: GameState; readonly gallery: GameState } {
   return {
     newgame: null,
     // Curved-ground evidence (D1a): the 12x12 fixed scene on the new-game map, and the seed 2 final city.
@@ -33,6 +34,8 @@ export function benchmarkCities(): { readonly newgame: null; readonly pop176: Ga
     seed3: seedGroundState(3),
     // Road portals (D1a-2): a straight gate crossing with the earth-to-stone change.
     seed4: seedGroundState(4),
+    // Zone brush (C1b): the C25 board with painted zones.
+    c25zoned: c25ZonedState(),
     gallery: variantGallery().state,
     pop176: decode(newestSaveFixture("population-176.save.json")),
     // A bare GameState (schema v0); decodeSave migrates it step by step to the current version.

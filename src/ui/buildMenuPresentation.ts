@@ -12,6 +12,7 @@ export const BUILD_CATEGORIES = [
   { key: "storage", label: "저장" },
   { key: "public", label: "공공" },
   { key: "defense", label: "방어" },
+  { key: "zone", label: "구역" },
 ] as const;
 export type BuildCategory = typeof BUILD_CATEGORIES[number]["key"];
 
