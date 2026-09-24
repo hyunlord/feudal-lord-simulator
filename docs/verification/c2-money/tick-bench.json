@@ -1,0 +1,9 @@
+{
+  "description": "scripts/ledgerTickBench.ts <root> /tmp/fls-b2-guardrails-21caf65/seed-1/final-state.json 4800 4800, alternating old (4950b10) and new (C2 start values; the toll-crossing scan and period close are the same code at 2ba96a7). advanceTick mean/p95/p99 ms.",
+  "runs": [
+    {"root": "4950b10", "meanMs": 0.5611, "p95Ms": 1.0024, "p99Ms": 2.506},
+    {"root": "c2", "meanMs": 0.5594, "p95Ms": 1.0105, "p99Ms": 2.3349},
+    {"root": "c2", "meanMs": 0.5685, "p95Ms": 1.0011, "p99Ms": 2.2622},
+    {"root": "4950b10", "meanMs": 0.5627, "p95Ms": 1.0075, "p99Ms": 2.2671}
+  ]
+}

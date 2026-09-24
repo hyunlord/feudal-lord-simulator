@@ -1,0 +1,126 @@
+{
+ "description": "Gate 2 guardrail at 2ba96a7: scripts/efficientGrowthRun.ts 24 1200000 <out> <seed>, baseline seeds/baseline-7db9df85.json conditions, five seeds in parallel from a pinned worktree. B2 = 21caf65 summaries (previous guardrail pass). money200 before C2 = first tick treasuryCoin >= 200 of 4950b10 in the same growth run.",
+ "commit": "2ba96a7",
+ "seeds": {
+  "1": {
+   "simulationPassed": true,
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "failures": [],
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "sustainedTicks": 24000,
+   "warningRatio": 0.0967741935483871,
+   "victoryTick": 628273,
+   "victoryTickB2": 628273,
+   "money200Tick": 19200,
+   "money200TickBefore": 123520,
+   "stoneProclaimedTick": 656757,
+   "finalStateSha256": "044766bf9e80dccb2f3938ab768d165ba4b8e3d9d46d3ff7ad74663d0b136021",
+   "elapsedSeconds": 1205
+  },
+  "2": {
+   "simulationPassed": true,
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "failures": [],
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "sustainedTicks": 24000,
+   "warningRatio": 0.09183673469387756,
+   "victoryTick": 294126,
+   "victoryTickB2": 294126,
+   "money200Tick": 19200,
+   "money200TickBefore": 97120,
+   "stoneProclaimedTick": null,
+   "finalStateSha256": "7eac1806c2b83ad98e9433e863e2df2f55a60c67b400e042e247fc8e3212a37a",
+   "elapsedSeconds": 758
+  },
+  "3": {
+   "simulationPassed": true,
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "failures": [],
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "sustainedTicks": 24074,
+   "warningRatio": 0.09183673469387756,
+   "victoryTick": 277437,
+   "victoryTickB2": 277437,
+   "money200Tick": 16800,
+   "money200TickBefore": 65840,
+   "stoneProclaimedTick": 165827,
+   "finalStateSha256": "ffb24abcc41fe2db447168212a306c23b6938a442f45b372ccf8af6389e93d8e",
+   "elapsedSeconds": 970
+  },
+  "4": {
+   "simulationPassed": true,
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "failures": [],
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "sustainedTicks": 24186,
+   "warningRatio": 0.0967741935483871,
+   "victoryTick": 342833,
+   "victoryTickB2": 342833,
+   "money200Tick": 19200,
+   "money200TickBefore": 102160,
+   "stoneProclaimedTick": 412895,
+   "finalStateSha256": "48692c95d9133915c14c2c98c5378bccc812dd4b3e9537c7fdd4d884e1537043",
+   "elapsedSeconds": 859
+  },
+  "5": {
+   "simulationPassed": true,
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "failures": [],
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "sustainedTicks": 24000,
+   "warningRatio": 0.07291666666666667,
+   "victoryTick": 465791,
+   "victoryTickB2": 465791,
+   "money200Tick": 19200,
+   "money200TickBefore": 119120,
+   "stoneProclaimedTick": null,
+   "finalStateSha256": "c5d9846157bcb1a57e38399de65b345ed43fb2f5259e6027ba80f0532c0b1380",
+   "elapsedSeconds": 819
+  }
+ }
+}

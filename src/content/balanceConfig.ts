@@ -41,7 +41,7 @@ export const MONEY_BALANCE = {
   /**
    * `upkeep` per facility, per period. Gates are counted per gate of a completed wall stretch. The work
    * order's start values (well 1 · market 4 · church 6 · mill 3 · storehouse 2 · gate 2) left a 24-lot town
-   * earning 5.4–6.7× its upkeep; these bring it to 1.2–1.5× while rent alone still just covers the opening
+   * earning 5.4–7.5× its upkeep; these bring it to 1.2–1.5× while rent alone still just covers the opening
    * well and storehouse and a small walled town can pay its gate (docs/verification/c2-money/REPORT.md, M5).
    */
   upkeep: { well: 1, market: 50, church: 80, mill: 8, storehouse: 2, gate: 10 },

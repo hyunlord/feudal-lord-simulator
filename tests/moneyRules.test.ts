@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { gunzipSync } from "node:zlib";
 import test from "node:test";
 
 import type { Walker } from "../src/agents/walker.types";
@@ -237,8 +238,13 @@ test("M-7 proclaiming the stone-wall project spends 200; short of it the proclam
   assert.deepEqual(line?.sources, [{ type: "policy", id: "stone_wall_project" }]);
 });
 
+/** Seed 5's final guardrail state at 2ba96a7: a 24-lot L4 town in its stable interval under the C2 rules. */
+function stableC2City(): GameState {
+  return JSON.parse(gunzipSync(readFileSync("tests/fixtures/money/seed5-stable-2ba96a7.json.gz")).toString()) as GameState;
+}
+
 test("M-8 a 24-lot stable city over ten periods: every entry sourced, no arrears, each close within ±10% of its balance", () => {
-  let state = cityFixture();
+  let state = stableC2City();
   const firstClose = Math.ceil(state.tick / PERIOD) * PERIOD;
   while (state.tick < firstClose) state = advanceTick(state);
   const periods: { income: number; spending: number; start: number }[] = [];
@@ -254,7 +260,8 @@ test("M-8 a 24-lot stable city over ten periods: every entry sourced, no arrears
     const net = period.income - period.spending;
     assert.ok(net >= 0, `net ${net} is not negative`);
     assert.ok(Math.abs(net) <= period.start * 0.1, `net ${net} is within 10% of ${period.start}`);
-    assert.ok(period.income >= period.spending * 1.2, `income ${period.income} is at least 1.2 × upkeep ${period.spending}`);
+    assert.ok(period.income >= period.spending * 1.2 && period.income <= period.spending * 1.5,
+      `income ${period.income} is 1.2–1.5 × upkeep ${period.spending}`);
   }
 });
 
