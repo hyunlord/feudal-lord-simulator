@@ -34,11 +34,19 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
   if (strandedFoodSupply(state) !== null) return { kind: null, reason: 'food_route_blocked' };
   const missedMeals = sample.consumedBread < sample.requestedBread;
   const breadDeficit = sample.requestedBread + sample.breadExported - sample.breadProduced;
+  const constrainedMargin = missedMeals || sample.rawStarvedTicks > 0;
+  const wheatMarginDeficit = constrainedMargin && sample.wheatConsumed > 0
+    && sample.wheatProduced < sample.wheatConsumed * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR;
+  const breadMarginDeficit = constrainedMargin && sample.requestedBread > 0
+    && sample.breadProduced < sample.requestedBread * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR;
   // Household bread cannot be redistributed to homes whose meals were missed.
   const stockedBread = facilities.reduce((sum, b) => sum + availableStock(b, 'bread'), 0)
     + (sample.requestedBread === sample.consumedBread
       ? state.houses.reduce((sum, h) => sum + h.breadStock, 0) : 0);
-  if (breadDeficit <= 0 || !missedMeals && stockedBread >= breadDeficit) return { kind: null, reason: 'food_supply_sufficient' };
+  if (!wheatMarginDeficit && !breadMarginDeficit
+    && (breadDeficit <= 0 || !missedMeals && stockedBread >= breadDeficit)) {
+    return { kind: null, reason: 'food_supply_sufficient' };
+  }
   const conversion = sample.breadProduced > 0 ? sample.wheatConsumed / sample.breadProduced : 0;
   const wheatDemand = Math.max(sample.wheatConsumed, (sample.requestedBread + sample.breadExported) * conversion);
   const rawDeficit = wheatDemand + sample.wheatExported - sample.wheatProduced;
@@ -54,6 +62,7 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
     }
     return { kind: null, reason: 'wheat_transport_blocked' };
   }
+  if (wheatMarginDeficit) return { kind: 'wheat_farm', reason: 'actual_wheat_deficit' };
   if (rawDeficit > (missedMeals ? 0 : stockedWheat) || (sample.breadProduced === 0 && stockedWheat === 0)) {
     return { kind: 'wheat_farm', reason: 'actual_wheat_deficit' };
   }
