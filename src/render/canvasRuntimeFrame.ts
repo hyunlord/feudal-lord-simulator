@@ -11,6 +11,7 @@ import type { AnchoredWorldSelection } from "./worldSelection";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { interpolatedConstructionProgress } from "./constructionInterpolation";
 import { interpolatedWalkerPositions } from "./walkerInterpolation";
+import { renderStageProbe } from "./renderStageProbe";
 
 export type CanvasFrameRefs = Readonly<{
   cameraRef: { current: CameraState };
@@ -38,6 +39,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   houseMaterialWave?: HouseMaterialWave | null;
   palisadeCeremonyStartedAtMs?: number | null;
 }>): void {
+  const probe = renderStageProbe.current;
+  probe?.frameStart();
   const nowMs = performance.now();
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {
     input.refs.feedbackRef.current = null;
@@ -75,5 +78,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.refs.completionTracker,
   });
+  probe?.enter("frame.publish");
   input.publishPrediction?.(preview, input.refs.cameraRef.current);
+  probe?.frameEnd();
 }

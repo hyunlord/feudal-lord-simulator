@@ -1,0 +1,71 @@
+{
+  "name": "lots24-1280x800-dpr1-cpu1-still",
+  "commit": "215882e2d9447581b672681e4689818a85b2c60d",
+  "dirtySource": false,
+  "url": "http://127.0.0.1:4194/",
+  "stageProbe": false,
+  "browser": "153.0.8010.53",
+  "host": {
+    "platform": "darwin",
+    "release": "25.4.0",
+    "arch": "arm64",
+    "cpu": "Apple M4 Max"
+  },
+  "harnessSha256": "874457d0fa17bbce2d75fb1fdce5bd08fb29fb422721dd0303fd46ef86b1a565",
+  "protocol": "3 rounds × 240 draws, round 0 discarded, 1× game speed",
+  "city": "lots24",
+  "dpr": 1,
+  "camera": "still",
+  "cpu": 1,
+  "width": 1280,
+  "height": 800,
+  "frameWork": {
+    "count": 480,
+    "median": 23.299999952316284,
+    "p95": 25.90000009536743,
+    "mean": 23.342083332439262
+  },
+  "tickWork": {
+    "count": 298,
+    "median": 1.7000000476837158,
+    "p95": 7,
+    "mean": 2.388926172016451
+  },
+  "raf": {
+    "count": 480,
+    "median": 33.30000000000018,
+    "p95": 50,
+    "mean": 31.109999999999996
+  },
+  "effectiveSpeed": 0.9978034929818924,
+  "stageCoverage": null,
+  "stages": {},
+  "calls": {},
+  "callsByStage": {},
+  "visibleTiles": null,
+  "objects": null,
+  "rasterCachePerWindow": [
+    {
+      "hits": 31680,
+      "misses": 0,
+      "rasterMs": 0
+    },
+    {
+      "hits": 31680,
+      "misses": 0,
+      "rasterMs": 0
+    }
+  ],
+  "heapUsedMB": {
+    "before": [
+      20.451065063476562,
+      20.467296600341797
+    ],
+    "after": [
+      54.375240325927734,
+      48.51316452026367
+    ]
+  },
+  "trace": null,
+  "errors": []
+}

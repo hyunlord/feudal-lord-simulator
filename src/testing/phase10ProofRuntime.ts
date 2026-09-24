@@ -15,6 +15,8 @@ import {
 import { buildingProblemCause } from "../ui/problemCauseModel";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { houseCompoundAssetStatuses } from "../render/houseCompoundAssets";
+import { installRenderStageProbe, type RenderStageSnapshot } from "../render/renderStageProbe";
+import { worldRasterCacheDiagnostics } from "../render/worldRasterCache";
 
 type ProofLocation = {
   readonly hostname: string;
@@ -80,6 +82,10 @@ export type Phase10ProofRuntimePort = {
     readonly houseCompoundAssets: ReturnType<typeof houseCompoundAssetStatuses>;
     readonly spriteDraws: { readonly recent: readonly WorldSpriteDrawEvent[] };
     readonly work: ProofFrameWorkSnapshot;
+    /** Per-frame render stage times and canvas call counts (last 240 frames). */
+    readonly renderStages: RenderStageSnapshot | null;
+    /** Cumulative world raster cache counters of the proof canvas. */
+    readonly rasterCache: ReturnType<typeof worldRasterCacheDiagnostics> | null;
   };
 };
 
@@ -107,6 +113,11 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
   if (!phase10ProofEnabled(input.location)) return () => {};
   const spriteDrawProbe = installWorldSpriteDrawProbe();
   const workProbe = installProofFrameWork();
+  // Test doubles of the canvas may not implement getContext; the port then works without stage timing.
+  const context = typeof input.canvas.getContext === "function" ? input.canvas.getContext("2d") : null;
+  // `&render-stages=0` keeps the proof port but skips stage timing, to measure the probe's own cost.
+  const stagesEnabled = new URLSearchParams(input.location.search).get("render-stages") !== "0";
+  const stageProbe = context === null || !stagesEnabled ? null : installRenderStageProbe(context);
 
   const port: Phase10ProofRuntimePort = {
     tileClientPoint: (tile) => tileClientPoint(input.canvas, input.cameraRef.current, tile),
@@ -120,6 +131,8 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       houseCompoundAssets: houseCompoundAssetStatuses(),
       spriteDraws: spriteDrawProbe.snapshot(),
       work: workProbe.snapshot(),
+      renderStages: stageProbe?.snapshot() ?? null,
+      rasterCache: context === null ? null : worldRasterCacheDiagnostics(context),
     }),
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;
@@ -127,6 +140,7 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
   return () => {
     spriteDrawProbe.dispose();
     workProbe.dispose();
+    stageProbe?.dispose();
     if (window.__FEUDAL_PHASE10_PROOF__ === port) {
       delete window.__FEUDAL_PHASE10_PROOF__;
     }

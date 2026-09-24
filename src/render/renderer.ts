@@ -37,6 +37,7 @@ import { drawPalisadeRoutePreviewOverlay } from "./palisadeRoutePreviewOverlay";
 import { drawPalisadeDraftOverlay } from './palisadeDraftOverlay';
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
+import { renderStageProbe } from "./renderStageProbe";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -80,6 +81,8 @@ export type RenderFrameInput = {
 };
 
 export const renderFrame = (input: RenderFrameInput): void => {
+  const probe = renderStageProbe.current;
+  probe?.enter("objects.sort");
   const range = computeVisibleTileRange({
     camera: input.camera,
     viewport: input.viewport,
@@ -99,8 +102,10 @@ export const renderFrame = (input: RenderFrameInput): void => {
     input.nowMs ?? performance.now(),
     input.state.buildings.map(building => building.id),
   );
+  probe?.noteScene(visibleTiles.length, objectRenderItems);
   runRenderPasses({
     ground: () => {
+      probe?.enter("terrain.water");
       drawWorldVignette(input.context, input.state);
       drawTerrain(input.context, {
         state: input.state,
@@ -127,12 +132,15 @@ export const renderFrame = (input: RenderFrameInput): void => {
         hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
       }),
-    overhang: () =>
+    overhang: () => {
+      probe?.enter("effects");
       drawConstructionCompletionEffects(input.context, {
         effects: constructionEffects,
         zoom: input.camera.zoom,
-      }),
+      });
+    },
   });
+  probe?.enter("overlay.mode");
   drawOverlay({
     context: input.context,
     state: input.state,
@@ -153,6 +161,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     selectedBuildingId: input.selectedBuildingId ?? null,
     houseIds: input.highlightedHouseIds ?? [],
   });
+  probe?.enter("overlay.wallDraft");
   if (input.palisadeDraft !== undefined && input.palisadeDraft !== null) {
     const path = input.palisadeDraft.path;
     const routeAccess = path.length >= 2 ? cachedPalisadeRoutePreview(input.state, path) : null;
@@ -175,13 +184,17 @@ export const renderFrame = (input: RenderFrameInput): void => {
       progress: Math.max(0, Math.min(1, ((input.nowMs ?? 0) - input.palisadeCeremonyStartedAtMs) / 2_000)),
     });
   }
+  probe?.enter("overlay.placement");
   drawPlacementOverlay(input.context, { preview: input.preview, zoom: input.camera.zoom });
   if (input.preview.prediction !== undefined) drawPlacementPrediction(input.context, input.state, input.preview.prediction, input.camera.zoom);
+  probe?.enter("overlay.cause");
   drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
+  probe?.enter("overlay.onboarding");
   drawOnboardingGuidanceOverlay(input.context, {
     targets: onboardingWorldGuidanceTargets(input.state),
     zoom: input.camera.zoom,
   });
+  probe?.enter("overlay.feedback");
   drawPlacementFeedbackOverlay(input.context, {
     feedback: input.placementFeedback ?? null,
     nowMs: input.nowMs ?? 0,

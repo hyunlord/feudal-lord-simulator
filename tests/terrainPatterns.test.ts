@@ -336,6 +336,11 @@ describe("terrain patterns", () => {
     ]);
     assert.ok(calls.includes("globalAlpha:0.18"));
     assert.ok(calls.includes("fillStyle:pattern:packed_earth_road"));
+    // The texture fills the traced road polygon; no clip + pattern fillRect (GPU compositor stall, B11 P-F1).
+    assert.equal(calls.includes("clip"), false);
+    assert.equal(calls.some((call) => call.startsWith("fillRect:")), false);
+    const patternFill = calls.indexOf("fillStyle:pattern:packed_earth_road");
+    assert.equal(calls.slice(patternFill + 1).find((call) => call === "fill" || call.startsWith("fillStyle:")), "fill");
     assert.equal(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`), false);
     assert.ok(calls.includes(`fillStyle:${withAlpha(SEMANTIC_PALETTE.stoneDark, 0.35)}`));
   });

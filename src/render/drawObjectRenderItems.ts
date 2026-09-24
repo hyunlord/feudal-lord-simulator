@@ -15,6 +15,7 @@ import { drawRoadReadabilityOverlay } from "./roadReadabilityOverlay";
 import { bridgeRailPieces, drawBridgeRail } from "./drawBridges";
 import { bridgeAt } from "../world/bridges";
 import { sortRenderItems } from "./objectRenderSort";
+import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -37,6 +38,8 @@ export function drawObjectRenderItems(
   context: CanvasRenderingContext2D,
   input: DrawObjectRenderItemsInput,
 ): void {
+  const probe = renderStageProbe.current;
+  probe?.enter("farmland");
   beginFarmCanopyFrame();
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
@@ -53,13 +56,16 @@ export function drawObjectRenderItems(
   const stoneGates = input.objectRenderItems.flatMap(item => item.kind === "palisade_segment"
     ? (item.stoneNodes ?? []).filter(node => node.kind === "gate").map(node => node.point) : []);
   // Roads are ground surfaces; repainting them after this queue cuts across roofs.
+  probe?.enter("roads.overlay");
   drawRoadReadabilityOverlay(context, input.state, input.tiles, stoneGates);
   const rails = bridgeRailPieces(input.state, input.tiles).map(piece => ({
     kind: "bridge_rail" as const, piece, depth: piece.depth, anchorTx: piece.tx,
     id: `bridge:${piece.tx}:${piece.ty}:${piece.side}`,
   }));
+  probe?.enter("objects.sort");
   const queue = sortRenderItems([...input.objectRenderItems, ...rails]);
   for (const item of queue) {
+    probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
       drawBridgeRail(context, item.piece);
       continue;
@@ -116,6 +122,7 @@ export function drawObjectRenderItems(
     });
     context.restore();
   }
+  probe?.enter("walkers");
   for (const item of walkerItems) {
     context.save();
     drawBuildings(context, {
