@@ -27,6 +27,7 @@ import { historicalFacilityReady } from "./historicalFacilityAssets";
 import { historicalHouseReady } from "./historicalHouseAssets";
 import { drawHouseContactShadow, drawHouseFrontage, houseFrontage } from "./houseFrontage";
 import { buildingFrontage, drawBuildingContactShadow, drawBuildingFrontage, supportsBuildingFrontage } from "./buildingFrontage";
+import { renderStageProbe } from "./renderStageProbe";
 
 export {
   terrainSeamFor,
@@ -57,16 +58,22 @@ export function drawTerrain(
   context: CanvasRenderingContext2D,
   input: TerrainRenderInput,
 ): void {
+  const probe = renderStageProbe.current;
+  probe?.enter("terrain.water");
   const waterReady = drawHistoricalWater(context, input.tiles.filter(tile => tile.terrain === "water"));
+  probe?.enter("terrain.fill");
   for (const tile of input.tiles) {
     if (waterReady && tile.terrain === "water") continue;
     drawGroundDiamond(context, tile, input.state.seed, input.terrainPatterns);
   }
+  probe?.enter("terrain.seams");
   for (const tile of input.tiles) {
     if (input.zoom > 0.7) drawGroundDecalDetail(context, tile, input.state.seed);
     drawTerrainTransitions(context, input.state, tile, input.zoom, input.terrainPatterns);
   }
+  probe?.enter("terrain.landscape");
   drawTownLandscape(context, input.state, input.tiles);
+  probe?.enter("terrain.frontage");
   for (const item of input.objectRenderItems ?? []) {
     if (item.kind !== "building") continue;
     if (supportsBuildingFrontage(item.building.kind) || item.building.houseLot !== undefined) {
@@ -80,10 +87,12 @@ export function drawTerrain(
     const frontage = houseFrontage(input.state, tile, input.state.seed);
     if (frontage !== null) drawHouseFrontage(context, frontage);
   }
+  probe?.enter("roads.ground");
   for (const tile of input.tiles) {
     if (tile.hasRoad && tile.terrain !== "water") drawRoadPath(context, input.state, tile, input.terrainPatterns);
     if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   }
+  probe?.enter("terrain.grounding");
   drawObjectGrounding(context, input);
 }
 

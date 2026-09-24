@@ -11,6 +11,7 @@ import { renderFrame, type PlacementTool } from "./renderer";
 import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { drawConstructionAccessOverlay } from './constructionAccessOverlay';
+import { renderStageProbe } from "./renderStageProbe";
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -38,6 +39,8 @@ type GameCanvasFrameInput = {
 };
 
 export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPreview {
+  const probe = renderStageProbe.current;
+  probe?.enter("frame.placementPreview");
   const preview = cachedPlacementPreview(
     input.state,
     input.selectedTool,
@@ -46,6 +49,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     input.selectedConstructionSiteId ?? null,
   );
 
+  probe?.enter("frame.clear");
   input.context.fillStyle = CANVAS_SURROUND_COLOR;
   input.context.fillRect(0, 0, input.viewport.width, input.viewport.height);
   input.context.save();
@@ -75,6 +79,7 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     selectionMode: input.selectedTool === null && input.palisadeDraft == null,
   });
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
+    probe?.enter("overlay.constructionAccess");
     drawConstructionAccessOverlay(input.context, input.state, input.selectedConstructionSiteId, input.camera.zoom);
   }
   input.context.restore();
