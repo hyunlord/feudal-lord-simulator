@@ -74,7 +74,7 @@ test("era console exposes four independent gauges exact tooltip and enabled prop
     ["chapel", "예배당", 1, 1, true],
     ["timber", "목재", 800, 250, true],
   ]);
-  assert.equal(model.tooltip, "선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)");
+  assert.equal(model.tooltip, "선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 600틱)");
   assert.equal(model.action.enabled, true);
   assert.equal(model.action.label, "목책 긋기");
   assert.match(model.proposal.label, /둘레 \d+칸/);
@@ -143,6 +143,7 @@ test("era console reports completed, working, route-less, and waiting wall segme
   // When / Then
   assert.equal(model.currentEraLabel, "목책마을");
   assert.equal(model.wallProgress, "성벽 1/3 · 진행 중 1 · 경로 없음 1 · 대기 0");
+  assert.equal(model.tooltip, "성벽 공사 인력 2명");
   assert.equal(model.diagnostic, null);
   assert.match(model.irreversibleNotice ?? "", /선포 후 성벽 구간은 취소할 수 없습니다/);
 });
@@ -190,7 +191,7 @@ test("era console does not call historical deliveries or builder ticks current p
   assert.equal(model.wallProgress, "성벽 0/2 · 진행 중 0 · 경로 없음 1 · 대기 1");
 });
 
-test("era console exposes Stone Town label gauges and exact proclamation labour copy", () => {
+test("era console exposes Stone Town gauges and actual assigned wall labour", () => {
   // Given
   const model = buildEraConsoleModel({
     state: state({
@@ -224,11 +225,12 @@ test("era console exposes Stone Town label gauges and exact proclamation labour 
     ["stone", "석재", 400, 400, true],
     ["coin", "금화", 200, 200, true],
   ]);
-  assert.equal(model.tooltip, "선포하면 일꾼의 50%가 석조 전환 공사에 배정됩니다 (약 900틱)");
+  assert.equal(model.tooltip, "성벽 공사 인력 0명");
   assert.equal(model.action.enabled, true);
   assert.equal(model.action.label, "석조 도시 선포");
   assert.match(markup, /석조 도시 선포/);
   assert.match(markup, /400\/400/);
+  assert.match(markup, /성벽 공사 인력 0명/);
 });
 
 test("era console labels the proclaimed Stone Town current era without enabling repeats", () => {

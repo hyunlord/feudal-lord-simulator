@@ -16,7 +16,7 @@ import { resolveBuildingRoute } from './routing';
 import type { AutoplayAction } from './autoplay.types';
 import type { GameState } from './engine.types';
 
-/** S8-R8: process stranded stocked grain near demand after one measured window.
+/** S8-R8: process stranded stocked grain near demand after one observation interval.
  * Existing empty mills still prohibit expansion; this repairs a backed-up pool,
  * rather than hiding missing input with additional idle conversion buildings. */
 export function wheatTransportCapacityAction(state: GameState): AutoplayAction {
