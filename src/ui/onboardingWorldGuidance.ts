@@ -74,7 +74,39 @@ export function firstRoadTargetForOnboarding(state: GuidanceWorld): TileCoordina
   return candidates.find((candidate) => canPlaceRoad(state, candidate)) ?? null;
 }
 
+// Memo for the per-frame guidance overlay (B11: ~14 ms per frame on a new game).
+// Cache (AGENTS rule 10):
+// (a) Key: the identity of every top-level GameState field except `tick`, `walkers` and `pathCache`. State updates
+//     are immutable, so an unchanged field keeps its identity.
+// (b) Left out: `tick` is only copied into a trial construction site's startedTick, which no route or placement check
+//     reads; `walkers` is not read by any guidance rule; `pathCache` is a route cache whose contents never change a
+//     route result. So a key match means the same targets.
+// (c) Measured before/after `frameWorkMs` on the new-game benchmark: docs/verification/d1a/REPORT.md.
+const GUIDANCE_KEY_IGNORED: ReadonlySet<string> = new Set(["tick", "walkers", "pathCache"]);
+let guidanceMemo: { readonly fields: readonly string[]; readonly values: readonly unknown[]; readonly targets: readonly OnboardingGuidanceTarget[] } | null = null;
+let guidanceMemoStats = { hits: 0, misses: 0 };
+
+export function onboardingWorldGuidanceMemoStats(): Readonly<{ hits: number; misses: number }> {
+  return { ...guidanceMemoStats };
+}
+
 export function onboardingWorldGuidanceTargets(
+  state: GuidanceWorld,
+): readonly OnboardingGuidanceTarget[] {
+  const fields = Object.keys(state).filter(field => !GUIDANCE_KEY_IGNORED.has(field)).sort();
+  const values = fields.map(field => (state as unknown as Record<string, unknown>)[field]);
+  if (guidanceMemo !== null && guidanceMemo.fields.length === fields.length
+    && guidanceMemo.fields.every((field, index) => field === fields[index] && guidanceMemo?.values[index] === values[index])) {
+    guidanceMemoStats = { ...guidanceMemoStats, hits: guidanceMemoStats.hits + 1 };
+    return guidanceMemo.targets;
+  }
+  guidanceMemoStats = { ...guidanceMemoStats, misses: guidanceMemoStats.misses + 1 };
+  const targets = computeOnboardingWorldGuidanceTargets(state);
+  guidanceMemo = { fields, values, targets };
+  return targets;
+}
+
+function computeOnboardingWorldGuidanceTargets(
   state: GuidanceWorld,
 ): readonly OnboardingGuidanceTarget[] {
   const roadTarget = firstRoadTargetForOnboarding(state);

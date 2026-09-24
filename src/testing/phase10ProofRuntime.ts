@@ -17,6 +17,8 @@ import { buildingFootprint } from "../geometry/buildingFootprint";
 import { houseCompoundAssetStatuses } from "../render/houseCompoundAssets";
 import { installRenderStageProbe, type RenderStageSnapshot } from "../render/renderStageProbe";
 import { worldRasterCacheDiagnostics } from "../render/worldRasterCache";
+import { groundBoundaryDiagnostics, resetGroundBoundaryForProof } from "../render/drawTerrainBoundaryV2";
+import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
 
 type ProofLocation = {
   readonly hostname: string;
@@ -86,7 +88,12 @@ export type Phase10ProofRuntimePort = {
     readonly renderStages: RenderStageSnapshot | null;
     /** Cumulative world raster cache counters of the proof canvas. */
     readonly rasterCache: ReturnType<typeof worldRasterCacheDiagnostics> | null;
+    /** RENDER_BOUNDARY_V2 ground chunks and the onboarding guidance memo. */
+    readonly boundary: ReturnType<typeof groundBoundaryDiagnostics> | null;
+    readonly onboardingMemo: ReturnType<typeof onboardingWorldGuidanceMemoStats>;
   };
+  /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
+  readonly resetBoundary: (reverseInput: boolean) => void;
 };
 
 type InstallPhase10ProofRuntimeInput = {
@@ -133,7 +140,10 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       work: workProbe.snapshot(),
       renderStages: stageProbe?.snapshot() ?? null,
       rasterCache: context === null ? null : worldRasterCacheDiagnostics(context),
+      boundary: context === null ? null : groundBoundaryDiagnostics(context),
+      onboardingMemo: onboardingWorldGuidanceMemoStats(),
     }),
+    resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;
 

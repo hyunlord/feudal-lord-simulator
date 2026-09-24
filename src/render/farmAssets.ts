@@ -137,13 +137,31 @@ export function drawFarmSoil(context: CanvasRenderingContext2D, building: Buildi
   });
   context.closePath();
   context.clip();
-  if (!drawFarmSoilTexture(context, building)) {
-    for (const tile of farmSoilTiles(building)) {
-      drawCroppedWorldSprite(context, soil.image, FARM_SOIL_SAMPLE, tile, false);
-    }
-  }
+  drawFarmSoilMaterial(context, building, soil.image);
   context.restore();
   return true;
+}
+
+function drawFarmSoilMaterial(context: CanvasRenderingContext2D, building: Pick<Building, "tx" | "ty">, sample: HTMLImageElement): void {
+  if (!drawFarmSoilTexture(context, building)) {
+    for (const tile of farmSoilTiles(building)) {
+      drawCroppedWorldSprite(context, sample, FARM_SOIL_SAMPLE, tile, false);
+    }
+  }
+}
+
+/** Field soil for a caller that has already clipped to its own outline (RENDER_BOUNDARY_V2 field clusters). */
+export function drawFarmSoilInClip(context: CanvasRenderingContext2D, building: Pick<Building, "tx" | "ty">): boolean {
+  void preloadFarmAssets();
+  const soil = assets[0];
+  if (!farmLayersReady() || soil?.image === null || soil?.image === undefined) return false;
+  drawFarmSoilMaterial(context, building, soil.image);
+  return true;
+}
+
+/** Bits that change what field soil looks like while art loads; part of the V2 ground chunk key. */
+export function farmSoilReadiness(): number {
+  return (farmLayersReady() ? 1 : 0) | (farmSoilTextureStatus().status === "ready" ? 2 : 0);
 }
 
 

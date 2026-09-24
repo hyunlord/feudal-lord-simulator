@@ -8,6 +8,7 @@ import { sampleAutoplayDecision, type AutoplayDecisionCache, type AutoplayDecisi
 import type { GameState, GameSpeed } from "../engine/engine.types";
 import { useGameStore } from "../state/gameStore";
 import { SaveControls } from "./SaveControls";
+import { BoundaryRenderToggle } from "../render/BoundaryRenderToggle";
 import {
   autoplayActionLabel,
   AUTOPLAY_TICK_CADENCE,
@@ -118,6 +119,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
           자동 발전
         </button>
         <span className="autoplay-hint">{autoplayEnabled ? autoplayActionLabel(nextAction) : "자동 발전 꺼짐"}</span>
+        <BoundaryRenderToggle />
         <SaveControls />
       </div></details>
     </div>

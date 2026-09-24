@@ -47,6 +47,7 @@ export function drawTerrainTransitions(
   tile: Tile,
   zoom: number,
   terrainPatterns?: TerrainPatternAssets,
+  forestFringe = true,
 ): void {
   for (const neighbour of orthogonalNeighbors(tile)) {
     const neighbourTile = getTile(state, neighbour);
@@ -56,7 +57,7 @@ export function drawTerrainTransitions(
     const dx = neighbour.tx - tile.tx;
     const dy = neighbour.ty - tile.ty;
     if (seam === "forestTufts") {
-      if (!tile.hasRoad && tile.buildingId === null && !neighbourTile.hasRoad && neighbourTile.buildingId === null) {
+      if (forestFringe && !tile.hasRoad && tile.buildingId === null && !neighbourTile.hasRoad && neighbourTile.buildingId === null) {
         drawForestFringe(context, tile, dx, dy, state.seed, terrainPatterns);
       }
       continue;

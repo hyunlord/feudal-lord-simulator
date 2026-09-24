@@ -96,6 +96,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/houseConditionArt.generated.ts",
     "src/render/townLandscapeManifest.generated.ts",
     "src/render/runtimeActorManifest.generated.ts",
+    "src/render/boundaryAssetManifest.ts",
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) add(url, file);

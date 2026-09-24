@@ -45,7 +45,7 @@ const MODES = {
 const WIDTH = 1280, HEIGHT = 800;
 
 /** Opens the game with an injected state (null = DEFAULT_GAME_STATE) centred on a tile, 1× speed running. */
-export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true }) {
+export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true, zoom = 1 }) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr });
   const page = await context.newPage();
   await page.routeWebSocket('**', socket => socket.close());
@@ -57,7 +57,7 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
       await route.fulfill({ response, body: text.replace(anchor, `useState(${source})`) });
     });
   }
-  const camera = { zoom: 1, panX: width / 2 - (tile[0] - tile[1]) * 32, panY: height / 2 - (tile[0] + tile[1]) * 16 };
+  const camera = { zoom, panX: width / 2 - (tile[0] - tile[1]) * 32 * zoom, panY: height / 2 - (tile[0] + tile[1]) * 16 * zoom };
   await page.route('**/src/render/canvasRuntime.ts*', async route => {
     const response = await route.fetch(); const text = await response.text(); const anchor = 'const house = startingHouse(state.buildings);';
     if (!text.includes(anchor)) throw new Error('Camera injection anchor changed');

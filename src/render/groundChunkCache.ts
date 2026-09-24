@@ -1,0 +1,160 @@
+import { drawCroppedWorldSprite } from "./worldSprite";
+
+// Offscreen rasters of 8x8-tile ground chunks (RENDER_BOUNDARY_V2 only).
+//
+// Cache (AGENTS rule 10):
+// (a) Key per (layer, chunk): the chunk's content key (a hash of exactly the primitives it draws, see
+//     groundBoundaryScene.ts) + asset readiness bits + zoom bucket (0.05) + device pixel ratio.
+// (b) Camera pan is not in the key: a raster is in world units and only its device-pixel destination moves.
+//     Zoom inside one 0.05 bucket reuses the raster with a slight resample; crossing a bucket re-rasters (at most
+//     ZOOM_RERASTER_BUDGET chunks per frame; the rest are drawn from their previous zoom until their turn). A
+//     content change is never deferred: that chunk re-rasters in the same frame.
+// (c) Memory bound: MAX_ENTRIES rasters (least recently drawn evicted first). Measured fill cost, hit rates and
+//     pixel totals are in docs/verification/d1a/REPORT.md.
+
+export const GROUND_CHUNK_ZOOM_STEP = 0.05;
+const MAX_ENTRIES = 64;
+const ZOOM_RERASTER_BUDGET = 6;
+const EDGE_OVERLAP_PX = 1.5;
+
+export type ChunkCanvas = {
+  readonly canvas: CanvasImageSource & { width: number; height: number };
+  readonly context: CanvasRenderingContext2D;
+};
+export type ChunkCanvasFactory = (width: number, height: number) => ChunkCanvas | null;
+
+export type ChunkRasterRequest = {
+  readonly id: string;
+  readonly contentKey: string;
+  /** Device pixels per world unit for this frame's zoom bucket. */
+  readonly scale: number;
+  /** World-space diamond of the chunk (top, right, bottom, left). */
+  readonly diamond: readonly [Point, Point, Point, Point];
+};
+type Point = { readonly x: number; readonly y: number };
+type Entry = {
+  readonly contentKey: string;
+  readonly scale: number;
+  readonly raster: ChunkCanvas;
+  readonly left: number;
+  readonly top: number;
+};
+
+export type GroundChunkCacheStats = {
+  hits: number;
+  contentRasters: number;
+  zoomRasters: number;
+  deferredZoom: number;
+  evictions: number;
+  rasterMs: number;
+  entries: number;
+  pixels: number;
+  lastFrameRasters: number;
+  lastFrameRasterMs: number;
+};
+
+export type GroundChunkCache = {
+  beginFrame(): void;
+  draw(target: CanvasRenderingContext2D, request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): void;
+  stats(): Readonly<GroundChunkCacheStats>;
+  clear(): void;
+  /** Tests: the raster currently held for a chunk id. */
+  entry(id: string): { readonly contentKey: string; readonly scale: number; readonly raster: ChunkCanvas } | null;
+};
+
+export function createGroundChunkCache(factory: ChunkCanvasFactory | null = browserChunkCanvas): GroundChunkCache {
+  const entries = new Map<string, Entry>();
+  const stats: GroundChunkCacheStats = { hits: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, evictions: 0,
+    rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0 };
+  let zoomBudget = ZOOM_RERASTER_BUDGET;
+  const now = (): number => typeof performance === "undefined" ? 0 : performance.now();
+
+  const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): Entry | null => {
+    if (factory === null) return null;
+    const started = now();
+    const xs = request.diamond.map(point => point.x); const ys = request.diamond.map(point => point.y);
+    const pad = 2 / request.scale;
+    const left = Math.min(...xs) - pad; const top = Math.min(...ys) - pad;
+    const width = Math.ceil((Math.max(...xs) + pad - left) * request.scale);
+    const height = Math.ceil((Math.max(...ys) + pad - top) * request.scale);
+    const reused = entries.get(request.id);
+    const target = reused !== undefined && reused.raster.canvas.width === width && reused.raster.canvas.height === height
+      ? reused.raster : factory(width, height);
+    if (target === null) return null;
+    const context = target.context;
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, width, height);
+    context.setTransform(request.scale, 0, 0, request.scale, -left * request.scale, -top * request.scale);
+    context.save();
+    // Clip to the chunk's own tiles, grown by ~1.5 device px so neighbouring rasters overlap instead of leaving an
+    // antialiased hairline. Both sides of the overlap paint identical ground, so the overlap is invisible.
+    const grow = EDGE_OVERLAP_PX / request.scale;
+    const [topPoint, right, bottom, leftPoint] = request.diamond;
+    context.beginPath();
+    context.moveTo(topPoint.x, topPoint.y - grow * 1.12); context.lineTo(right.x + grow * 2.24, right.y);
+    context.lineTo(bottom.x, bottom.y + grow * 1.12); context.lineTo(leftPoint.x - grow * 2.24, leftPoint.y);
+    context.closePath();
+    context.clip();
+    paint(context);
+    context.restore();
+    const entry = { contentKey: request.contentKey, scale: request.scale, raster: target, left, top };
+    const elapsed = now() - started;
+    stats.rasterMs += elapsed; stats.lastFrameRasterMs += elapsed; stats.lastFrameRasters += 1;
+    return entry;
+  };
+
+  const store = (id: string, entry: Entry): void => {
+    entries.delete(id);
+    entries.set(id, entry);
+    while (entries.size > MAX_ENTRIES) {
+      const oldest = entries.keys().next().value;
+      if (oldest === undefined) break;
+      entries.delete(oldest); stats.evictions += 1;
+    }
+    stats.entries = entries.size;
+    stats.pixels = [...entries.values()].reduce((sum, value) => sum + value.raster.canvas.width * value.raster.canvas.height, 0);
+  };
+
+  return {
+    beginFrame() { zoomBudget = ZOOM_RERASTER_BUDGET; stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; },
+    draw(target, request, paint) {
+      let entry = entries.get(request.id);
+      if (entry !== undefined && entry.contentKey === request.contentKey && entry.scale === request.scale) {
+        stats.hits += 1;
+        store(request.id, entry);
+      } else if (entry !== undefined && entry.contentKey === request.contentKey && zoomBudget <= 0) {
+        stats.deferredZoom += 1;
+      } else {
+        const zoomOnly = entry !== undefined && entry.contentKey === request.contentKey;
+        const next = raster(request, paint);
+        if (next === null) { paint(target); return; }
+        if (zoomOnly) { stats.zoomRasters += 1; zoomBudget -= 1; } else stats.contentRasters += 1;
+        entry = next;
+        store(request.id, entry);
+      }
+      const canvas = entry.raster.canvas;
+      drawCroppedWorldSprite(target, canvas, { x: 0, y: 0, width: canvas.width, height: canvas.height },
+        { x: entry.left, y: entry.top, width: canvas.width / entry.scale, height: canvas.height / entry.scale }, true, true);
+    },
+    stats: () => ({ ...stats }),
+    clear() { entries.clear(); stats.entries = 0; stats.pixels = 0; },
+    entry(id) { const value = entries.get(id); return value === undefined ? null : { contentKey: value.contentKey, scale: value.scale, raster: value.raster }; },
+  };
+}
+
+export function groundChunkZoomBucket(zoom: number): number {
+  return Math.max(GROUND_CHUNK_ZOOM_STEP, Math.round(zoom / GROUND_CHUNK_ZOOM_STEP) * GROUND_CHUNK_ZOOM_STEP);
+}
+
+function browserChunkCanvas(width: number, height: number): ChunkCanvas | null {
+  if (typeof document === "undefined") return null;
+  try {
+    const canvas = document.createElement("canvas");
+    canvas.width = width; canvas.height = height;
+    const context = canvas.getContext("2d");
+    return context === null ? null : { canvas, context };
+  } catch (error) {
+    if (!(error instanceof Error)) throw error;
+    return null;
+  }
+}
