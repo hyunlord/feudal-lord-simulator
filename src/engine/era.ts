@@ -6,7 +6,7 @@ import { snapshotWallConstructionReserve } from "./constructionReserve";
 import type { Condition, ConditionSet } from "../content/scenario/types";
 import type { EraRequirementKey } from "../content/eraConfig";
 import { scenarioOf } from "./scenarioState";
-import { stageDef } from "../content/scenario/registry";
+import { scenarioById, stageDef } from "../content/scenario/registry";
 
 const ERA_REQUIREMENT_LABELS = {
   population: "인구",
@@ -19,13 +19,22 @@ const ERA_REQUIREMENT_LABELS = {
   coin: "금화",
 } as const;
 
-/** Market-town (palisade proclamation) targets of the default scenario, for onboarding copy. */
-export const PALISADE_REQUIREMENT_TARGETS = {
-  population: 60,
-  granary: 1,
-  chapel: 1,
-  timber: 250,
-} as const;
+/** Market-town (palisade proclamation) targets of the default scenario, derived from its stage data. */
+export const PALISADE_REQUIREMENT_TARGETS = (() => {
+  const target = (match: (condition: Condition) => number | null): number => {
+    for (const condition of stageDef(scenarioById(undefined), "market_town").enterWhen.all) {
+      const value = match(condition);
+      if (value !== null) return value;
+    }
+    throw new Error("default market-town stage lacks a proclamation target");
+  };
+  return {
+    population: target(c => c.kind === "population_at_least" ? c.value : null),
+    granary: target(c => c.kind === "building_count_at_least" && c.building === "granary" ? c.value : null),
+    chapel: target(c => c.kind === "building_count_at_least" && c.building === "chapel" ? c.value : null),
+    timber: target(c => c.kind === "spendable_resource_at_least" && c.resource === "timber" ? c.value : null),
+  } as const;
+})();
 
 export function spendableTimberForEraRequirement(state: GameState): number {
   return placementSpendableResource(state, "timber");
