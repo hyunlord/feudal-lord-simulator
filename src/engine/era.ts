@@ -1,3 +1,4 @@
+import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { EraRequirement, GameState } from "./engine.types";
 import { createStoneWallConstructionSite } from "../economy/construction";
 import { placementSpendableResource } from "../world/placement";
@@ -16,7 +17,7 @@ const ERA_REQUIREMENT_LABELS = {
   market: "시장",
   masonry: "석공소",
   stone: "석재",
-  coin: "금화",
+  coin: MONEY_LABEL,
 } as const;
 
 /** Market-town (palisade proclamation) targets of the default scenario, derived from its stage data. */

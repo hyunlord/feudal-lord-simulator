@@ -1,3 +1,4 @@
+import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { useEffect, useId, useState } from "react";
 
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
@@ -182,7 +183,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   );
 }
 
-const RESOURCE_LABELS = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: "금화" } as const satisfies Record<ResourceType, string>;
+const RESOURCE_LABELS = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: MONEY_LABEL } as const satisfies Record<ResourceType, string>;
 
 function shortfallText(option: BuildToolOption, spendable: Partial<Record<ResourceType, number>>): string {
   return RESOURCE_TYPES.filter(resource => (option.cost[resource] ?? 0) > (spendable[resource] ?? 0))

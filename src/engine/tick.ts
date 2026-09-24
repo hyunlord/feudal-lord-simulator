@@ -184,7 +184,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     idleWorkers: labour.idleWorkers,
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: marketSettled.treasuryCoin,
-    ...(marketSettled.coinLedger === undefined ? {} : { coinLedger: marketSettled.coinLedger }),
+    ...(marketSettled.ledger === undefined ? {} : { ledger: marketSettled.ledger }),
   }, { servedHouses, deliveryEvents: movedDistributors.deliveryEvents }), servedHouses));
   const progressed = {
     ...produced,

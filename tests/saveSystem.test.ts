@@ -83,8 +83,12 @@ test("v0 bare states migrate to the latest envelope", () => {
   assert.equal(decoded.envelope.tick, raw.tick);
   assert.equal(decoded.envelope.gameVersion, "unknown (v0 bare state)");
   assert.equal(decoded.envelope.summary.era, "stone_town");
-  // v4 -> v5 adds only the default scenario (spec SC-14); v5 -> v6 adds only empty zones (spec Z-1).
-  assert.deepEqual(decoded.envelope.state, { ...raw, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1 });
+  // v4 -> v5 adds only the default scenario (spec SC-14); v5 -> v6 adds only empty zones (spec Z-1);
+  // v6 -> v7 swaps the income window for a ledger holding the opening balance (spec L-9).
+  const { coinLedger: _coinLedger, ...rawRest } = raw as GameState & { coinLedger?: unknown };
+  assert.deepEqual(decoded.envelope.state, { ...rawRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
+    ledger: { entries: [{ id: "ledger-000001", tick: raw.tick, account: "cash", category: "opening_balance", amount: raw.treasuryCoin,
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } });
 });
 
 test("migration refuses newer or unknown files", () => {

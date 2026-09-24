@@ -11,7 +11,7 @@ import {
   type AppliedEffect,
   type EffectSpec,
 } from "../src/contracts";
-import { appendMarketSales } from "../src/engine/coinLedger";
+import { postLedgerEntries } from "../src/ledger/ledger";
 import type { GameState } from "../src/engine/engine.types";
 import { decodeSave, jsonSafetyIssues } from "../src/save/saveCodec";
 import { firstBlocker, buildingCauseSnapshot } from "../src/ui/houseProgressModel";
@@ -114,10 +114,12 @@ test("cause entries carry the diagnosed building as their SourceRef, including f
   }
 });
 
-test("market sale income records its selling market as a SourceRef with the unchanged saved shape", () => {
-  const entries = appendMarketSales(undefined, 100, [{ marketId: "market-1", coin: 3 }, { marketId: "market-2", coin: 0 }]);
-  assert.deepEqual(entries, [{ tick: 100, amount: 3, kind: "income", source: "market_sale", sourceRefs: [{ type: "building", id: "market-1" }] }]);
-  assert.equal(entries[0]?.sourceRefs.every(isSourceRef), true);
+test("market sale income records its selling market as a SourceRef (B3 ledger entry)", () => {
+  const { ledger } = postLedgerEntries({ tick: 100, treasuryCoin: 0 },
+    [{ account: "cash", category: "market_sale", amount: 3, sourceRefs: [{ type: "building", id: "market-1", detail: "sold:bread" }] }]);
+  assert.deepEqual(ledger.entries.at(-1), { id: "ledger-000002", tick: 100, account: "cash", category: "market_sale", amount: 3,
+    sourceRefs: [{ type: "building", id: "market-1", detail: "sold:bread" }] });
+  assert.equal(ledger.entries.every(entry => entry.sourceRefs.every(isSourceRef)), true);
 });
 
 test("prediction lines use the contract severity and map back to the original presentation keys", () => {

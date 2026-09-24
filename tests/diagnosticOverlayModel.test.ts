@@ -88,10 +88,15 @@ test("distribution reach is an exact bounded multi-source road BFS", () => {
   assert.equal(reached.has("43,4"), false); // disconnected
 });
 
-test("population event highlight includes only the involved house footprints", () => {
+test("map highlight includes exactly the named buildings' footprints", () => {
+  // B3 (spec L-8): ledger sources highlight markets through the same channel, so any building id counts;
+  // population events still pass house ids only.
   const state = roadWorld();
   assert.deepEqual(keys(highlightedHouseTiles(state, ["connected"])), ["45,1"]);
-  assert.deepEqual(highlightedHouseTiles(state, ["granary", "missing"]), []);
+  assert.deepEqual(highlightedHouseTiles(state, ["missing"]), []);
+  const granary = state.buildings.find(building => building.id === "granary");
+  assert.ok(granary !== undefined);
+  assert.equal(highlightedHouseTiles(state, ["granary"]).length, 4);
 });
 
 test("selected building overlay returns only its adjacent road component", () => {

@@ -1,3 +1,4 @@
+import { MONEY_LABEL } from "./moneyCopy.ko";
 export const KO_UI = {
   appName: "봉건 영주 시뮬레이터",
   informationRail: "영지 안내",
@@ -9,7 +10,7 @@ export const KO_UI = {
   eraConsole: "시대 선포",
   map: { title: "영지 지형 지도", jumpLabel: "영지 지형 지도 이동" },
   ledger: {
-    ariaLabel: "영지 장부", heading: "왕실 장부", timber: "목재", coin: "금화",
+    ariaLabel: "영지 장부", heading: "왕실 장부", timber: "목재", coin: MONEY_LABEL,
     population: "인구", idle: "대기", wheat: "밀", bread: "빵", logs: "통나무",
     tick: "시간", seal: "도장",
   },

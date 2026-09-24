@@ -1,3 +1,4 @@
+import { ledgerStateProblem } from "../ledger/ledgerValidation";
 import { zoneStateProblem } from "../zones/zoneValidation";
 import { DEFAULT_SCENARIO_ID as CAMPAIGN_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { SCENARIOS } from "../content/scenario/registry";
@@ -208,6 +209,8 @@ export function assertGameStateSnapshot(value: unknown): asserts value is GameSt
   if (typeof state.pathCache !== "object" || state.pathCache === null) throw new SaveFormatError("Save state pathCache must be an object");
   const zoneProblem = zoneStateProblem(state);
   if (zoneProblem !== null) throw new SaveFormatError(`Save state ${zoneProblem}`);
+  const ledgerProblem = ledgerStateProblem(state);
+  if (ledgerProblem !== null) throw new SaveFormatError(`Save state ${ledgerProblem}`);
   if ((state.tiles as unknown[]).length !== (state.width as number) * (state.height as number)) {
     throw new SaveFormatError("Save state tiles do not cover the map");
   }

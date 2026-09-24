@@ -1,3 +1,4 @@
+import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { STORABLE_RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
@@ -15,7 +16,7 @@ const RESOURCE_LABELS = {
   timber: "목재",
   stone_raw: "원석",
   stone: "석재",
-  coin: "금화",
+  coin: MONEY_LABEL,
 } as const satisfies Record<ResourceType, string>;
 
 const STORAGE_LABELS = {

@@ -279,6 +279,7 @@ export function App() {
           state={state}
           populationDrawerOpen={populationDrawerOpen}
           onPopulationDrawerToggle={() => setPopulationDrawerOpen((open) => !open)}
+          onHighlightBuildings={setHighlightedHouseIds}
         />
         {populationDrawerOpen ? (
           <div id="population-ledger-drawer" className="ledger-population-drawer top-population-drawer">

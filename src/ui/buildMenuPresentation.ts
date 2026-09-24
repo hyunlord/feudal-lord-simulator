@@ -1,3 +1,4 @@
+import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { PlacementTool } from "../render/renderer";
 import type { BuildToolOption } from "./buildMenuModel";
 import { getHistoricalFacilityPresentation } from "../render/historicalFacilityAssets";
@@ -40,7 +41,7 @@ export function buildThumbnail(tool: PlacementTool): string | null {
 
 export function buildCostLabel(option: BuildToolOption): string {
   if (option.tool === "road") return `육지 무료 · 다리 목재 ${BRIDGE_TIMBER_PER_TILE}/칸`;
-  const labels = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: "금화" } as const;
+  const labels = { wheat: "밀", bread: "빵", logs: "통나무", timber: "목재", stone_raw: "원석", stone: "석재", coin: MONEY_LABEL } as const;
   const parts = Object.entries(labels).flatMap(([resource, label]) => {
     const amount = option.cost[resource as keyof typeof labels] ?? 0;
     return amount > 0 ? [`${label} ${amount}`] : [];

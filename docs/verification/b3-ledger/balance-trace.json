@@ -1,0 +1,291 @@
+{
+  "description": "Gate 1 and gate 5 (save size): the same case run by the pre-ledger code (bc94b31) and the ledger code with scripts/ledgerBalanceTrace.ts (autoplay driver + advanceTick). Seeds 1-5 start from the B2 guardrail final states (21caf65, /tmp, not committed; sha256 in docs/verification/b2-scenario-era/guardrails-21caf65.json).",
+  "oldCommit": "bc94b31",
+  "cases": [
+    {
+      "case": "new-game",
+      "source": "DEFAULT_GAME_STATE",
+      "ticks": 10000,
+      "startTick": 0,
+      "endTick": 10000,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "new-game",
+        "stateFile": null,
+        "startTick": 0,
+        "endTick": 10000,
+        "ticks": 10000,
+        "treasurySequenceSha256": "b2d6e1cbb100c8b5d534e20dbb185551d5706d6d57dd8b87513cb92aef8bcae4",
+        "finalTreasury": 0,
+        "treasuryChanges": 0,
+        "finalStateHashWithoutLedger": "77af701b141093a330dd4e06048cdcd911f2d3776d09bd27531fafdeec365a10",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 802097
+      },
+      "new": {
+        "kind": "new-game",
+        "stateFile": null,
+        "startTick": 0,
+        "endTick": 10000,
+        "ticks": 10000,
+        "treasurySequenceSha256": "b2d6e1cbb100c8b5d534e20dbb185551d5706d6d57dd8b87513cb92aef8bcae4",
+        "finalTreasury": 0,
+        "treasuryChanges": 0,
+        "finalStateHashWithoutLedger": "77af701b141093a330dd4e06048cdcd911f2d3776d09bd27531fafdeec365a10",
+        "ledger": null,
+        "cacheMismatches": 0,
+        "saveBytes": 802097
+      },
+      "saveBytesGrowthPercent": 0.0
+    },
+    {
+      "case": "seed1-city",
+      "source": "fixtures/determinism/seed1/final-state.json",
+      "ticks": 10000,
+      "startTick": 679251,
+      "endTick": 689251,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "state",
+        "stateFile": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/fixtures/determinism/seed1/final-state.json",
+        "startTick": 679251,
+        "endTick": 689251,
+        "ticks": 10000,
+        "treasurySequenceSha256": "b1d7eeebed8a0082a68406fc20c4d1d6de055d9e27add391fa0f80798001298a",
+        "finalTreasury": 39831,
+        "treasuryChanges": 125,
+        "finalStateHashWithoutLedger": "2dd5d3ee9354ae75ae94b6f5db1f8640a7f305eb14bfe51002150d1208dfdf10",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 2215242
+      },
+      "new": {
+        "kind": "state",
+        "stateFile": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/fixtures/determinism/seed1/final-state.json",
+        "startTick": 679251,
+        "endTick": 689251,
+        "ticks": 10000,
+        "treasurySequenceSha256": "b1d7eeebed8a0082a68406fc20c4d1d6de055d9e27add391fa0f80798001298a",
+        "finalTreasury": 39831,
+        "treasuryChanges": 125,
+        "finalStateHashWithoutLedger": "2dd5d3ee9354ae75ae94b6f5db1f8640a7f305eb14bfe51002150d1208dfdf10",
+        "ledger": {
+          "entries": 251,
+          "rollups": 0
+        },
+        "cacheMismatches": 0,
+        "saveBytes": 2252302
+      },
+      "saveBytesGrowthPercent": 1.67
+    },
+    {
+      "case": "seed-1",
+      "source": "/tmp/fls-b2-guardrails-21caf65/seed-1/final-state.json",
+      "ticks": 36000,
+      "startTick": 786108,
+      "endTick": 822108,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-1/final-state.json",
+        "startTick": 786108,
+        "endTick": 822108,
+        "ticks": 36000,
+        "treasurySequenceSha256": "4e9374913cdb8bbe9ebf64a2aa3c11c1d5fd3758d16c9a3fea01c555a630f56a",
+        "finalTreasury": 91405,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "341dec54b729871bca5244db32cb40c5459a5c1ac070f597b5645411f0375b2a",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 5409953
+      },
+      "new": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-1/final-state.json",
+        "startTick": 786108,
+        "endTick": 822108,
+        "ticks": 36000,
+        "treasurySequenceSha256": "4e9374913cdb8bbe9ebf64a2aa3c11c1d5fd3758d16c9a3fea01c555a630f56a",
+        "finalTreasury": 91405,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "341dec54b729871bca5244db32cb40c5459a5c1ac070f597b5645411f0375b2a",
+        "ledger": {
+          "entries": 334,
+          "rollups": 10
+        },
+        "cacheMismatches": 0,
+        "saveBytes": 5462880
+      },
+      "saveBytesGrowthPercent": 0.98
+    },
+    {
+      "case": "seed-2",
+      "source": "/tmp/fls-b2-guardrails-21caf65/seed-2/final-state.json",
+      "ticks": 36000,
+      "startTick": 419117,
+      "endTick": 455117,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-2/final-state.json",
+        "startTick": 419117,
+        "endTick": 455117,
+        "ticks": 36000,
+        "treasurySequenceSha256": "4953b077c7bc081449ab751fd25fda5d82b904633304d4bf36efe69f6776d4cf",
+        "finalTreasury": 44972,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "eaa2ab56f331efa0818ac7fd712ffbfe34738ef948a80e00c80fe2a6c3d2eb96",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 2941562
+      },
+      "new": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-2/final-state.json",
+        "startTick": 419117,
+        "endTick": 455117,
+        "ticks": 36000,
+        "treasurySequenceSha256": "4953b077c7bc081449ab751fd25fda5d82b904633304d4bf36efe69f6776d4cf",
+        "finalTreasury": 44972,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "eaa2ab56f331efa0818ac7fd712ffbfe34738ef948a80e00c80fe2a6c3d2eb96",
+        "ledger": {
+          "entries": 338,
+          "rollups": 10
+        },
+        "cacheMismatches": 0,
+        "saveBytes": 2995200
+      },
+      "saveBytesGrowthPercent": 1.82
+    },
+    {
+      "case": "seed-3",
+      "source": "/tmp/fls-b2-guardrails-21caf65/seed-3/final-state.json",
+      "ticks": 36000,
+      "startTick": 487446,
+      "endTick": 523446,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-3/final-state.json",
+        "startTick": 487446,
+        "endTick": 523446,
+        "ticks": 36000,
+        "treasurySequenceSha256": "5c0eb03952931c811a68a447326605ebbf040043d701dd042a964bda8303fb56",
+        "finalTreasury": 49773,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "1527d7144bf855d749ac69b33d6ff4d927c9cf5bac00899ac406bd2151ef2b9b",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 1709608
+      },
+      "new": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-3/final-state.json",
+        "startTick": 487446,
+        "endTick": 523446,
+        "ticks": 36000,
+        "treasurySequenceSha256": "5c0eb03952931c811a68a447326605ebbf040043d701dd042a964bda8303fb56",
+        "finalTreasury": 49773,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "1527d7144bf855d749ac69b33d6ff4d927c9cf5bac00899ac406bd2151ef2b9b",
+        "ledger": {
+          "entries": 308,
+          "rollups": 10
+        },
+        "cacheMismatches": 0,
+        "saveBytes": 1757871
+      },
+      "saveBytesGrowthPercent": 2.82
+    },
+    {
+      "case": "seed-4",
+      "source": "/tmp/fls-b2-guardrails-21caf65/seed-4/final-state.json",
+      "ticks": 36000,
+      "startTick": 482314,
+      "endTick": 518314,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-4/final-state.json",
+        "startTick": 482314,
+        "endTick": 518314,
+        "ticks": 36000,
+        "treasurySequenceSha256": "741e2a8d7bf19d0d8bbaf3a5cade9a181a202f1dfc22cacb05667da9c3612b81",
+        "finalTreasury": 55735,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "a66b4eebd3a19ea8bf74839bc4a6bd214807294beaa3ba35e47586af8b3cc920",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 1572180
+      },
+      "new": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-4/final-state.json",
+        "startTick": 482314,
+        "endTick": 518314,
+        "ticks": 36000,
+        "treasurySequenceSha256": "741e2a8d7bf19d0d8bbaf3a5cade9a181a202f1dfc22cacb05667da9c3612b81",
+        "finalTreasury": 55735,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "a66b4eebd3a19ea8bf74839bc4a6bd214807294beaa3ba35e47586af8b3cc920",
+        "ledger": {
+          "entries": 358,
+          "rollups": 10
+        },
+        "cacheMismatches": 0,
+        "saveBytes": 1629415
+      },
+      "saveBytesGrowthPercent": 3.64
+    },
+    {
+      "case": "seed-5",
+      "source": "/tmp/fls-b2-guardrails-21caf65/seed-5/final-state.json",
+      "ticks": 36000,
+      "startTick": 527422,
+      "endTick": 563422,
+      "treasurySequenceIdentical": true,
+      "finalStateIdentical": true,
+      "old": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-5/final-state.json",
+        "startTick": 527422,
+        "endTick": 563422,
+        "ticks": 36000,
+        "treasurySequenceSha256": "3512ee2e839ebf066e0adeb59ea5aeca4f8ee0edef8c64d642d415313e04f460",
+        "finalTreasury": 58665,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "ec71b4a3e7e4fb4a2051b64e9fcd75146f841620042a333758bafde065cb9b0e",
+        "ledger": null,
+        "cacheMismatches": null,
+        "saveBytes": 4493532
+      },
+      "new": {
+        "kind": "state",
+        "stateFile": "/tmp/fls-b2-guardrails-21caf65/seed-5/final-state.json",
+        "startTick": 527422,
+        "endTick": 563422,
+        "ticks": 36000,
+        "treasurySequenceSha256": "3512ee2e839ebf066e0adeb59ea5aeca4f8ee0edef8c64d642d415313e04f460",
+        "finalTreasury": 58665,
+        "treasuryChanges": 450,
+        "finalStateHashWithoutLedger": "ec71b4a3e7e4fb4a2051b64e9fcd75146f841620042a333758bafde065cb9b0e",
+        "ledger": {
+          "entries": 346,
+          "rollups": 10
+        },
+        "cacheMismatches": 0,
+        "saveBytes": 4548740
+      },
+      "saveBytesGrowthPercent": 1.23
+    }
+  ],
+  "passed": true
+}

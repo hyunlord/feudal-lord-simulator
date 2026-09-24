@@ -1,9 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-25(C1b). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
+- **B3 경제 장부 관문 통과**(Claude Code, 엔진 세션): [명세](design/ledger.md), [보고서](verification/b3-ledger/REPORT.md).
+  - 돈의 움직임은 `LedgerEntry`(계정 4개·분류·페니·출처 필수)로 남고, 금고는 현금 계정의 파생값이다.
+  - 시장 판매가 장부를 거친다. 건설·유지 지출은 돈 규칙이 없어 분류만 등록했다.
+  - 저장 v7(`ledger`, `coinLedger` 제거)이며, 옛 저장은 이월 잔액 1항목으로 시작한다.
+  - 재정 칸 → 장부 패널(계정·기간·출처, 누르면 지도 강조). 화폐 명칭은 `돈`이다.
+  - seed 1~5와 새 게임의 금고가 이전 커밋과 매 틱 같다.
 - **B5+C1a 구역 데이터·규칙·frontage 필지 관문 통과**(Claude Code, 엔진 세션): 그리기 UI는 렌더 세션 C1b 몫이다. [명세](design/zones.md), [보고서](verification/zones/REPORT.md).
   - `GameState.zones`·`nextZoneOrdinal`을 추가했다(저장 v6). 액션은 `zone_paint`·`zone_erase`·`zone_remove`다.
   - 셀 중심 기준 1/8칸 정수로 래스터화하고, 나중에 칠한 쪽이 칸을 가진다(결정 Z1). `interiorPlacementTiles`를 두었다.
@@ -40,7 +46,7 @@
 
 ## 다음 작업
 
-**B3 장부**가 다음 엔진 작업이다(로드맵 v3). 구역 쪽 다음은 렌더 세션 C1b(브러시·윤곽, [보고서 넘김 API](verification/zones/REPORT.md))와 C1c(경작지 띠·목초지 규칙)다. 시장 판매 수입(`coinLedger`, `SourceRef` 출처)이 장부의 전 단계다. 석벽 프로젝트의 재원·유지비, 시나리오 `economyRules`의 실제 내용도 B3에서 정한다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
+로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. 장부를 쓰는 **C2 장부 규칙**(통행세·좌판세·지대·제분료, 시장 판매대금 → 통행세 전환)에 넘길 분류·출처 규약은 [B3 보고서](verification/b3-ledger/REPORT.md)에 적었다. 구역 쪽 다음은 렌더 세션 C1b(브러시·윤곽, [보고서 넘김 API](verification/zones/REPORT.md))와 C1c(경작지 띠·목초지 규칙)다. 시장 판매 수입(`coinLedger`, `SourceRef` 출처)이 장부의 전 단계다. 석벽 프로젝트의 재원·유지비, 시나리오 `economyRules`의 실제 내용도 B3에서 정한다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
 
 ## 알려진 문제
 

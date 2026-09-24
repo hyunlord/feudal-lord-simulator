@@ -223,7 +223,7 @@ test("era console exposes Stone Town gauges and actual assigned wall labour", ()
     ["market", "시장", 1, 1, true],
     ["masonry", "석공소", 1, 1, true],
     ["stone", "석재", 400, 400, true],
-    ["coin", "금화", 200, 200, true],
+    ["coin", "돈", 200, 200, true],
   ]);
   assert.equal(model.tooltip, "성벽 공사 인력 0명");
   assert.equal(model.action.enabled, true);

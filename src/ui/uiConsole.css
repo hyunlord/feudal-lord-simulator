@@ -1,0 +1,11 @@
+
+/* Ledger panel (B3, spec L-8) inside the resource-bar money popover. */
+.ledger-panel__tabs { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0; }
+.ledger-panel__tab { min-height: 32px; padding: 2px 8px; font-size: 12px; }
+.ledger-panel__tab[aria-selected="true"], .ledger-panel__tab[aria-pressed="true"] { font-weight: 700; text-decoration: underline; }
+.ledger-panel h3 { margin: 6px 0 2px; font-size: 12px; }
+.ledger-panel ul { margin: 0; padding: 0; list-style: none; }
+.ledger-panel__source, .ledger-panel__entry { min-height: 28px; width: 100%; text-align: left; font-size: 12px; background: none; border: 0; padding: 2px 0; cursor: pointer; }
+.ledger-panel__source:disabled, .ledger-panel__entry:disabled { cursor: default; }
+.ledger-panel__glyph { display: inline-block; width: 1.4em; font-weight: 700; }
+.ledger-panel__total { margin: 4px 0; }

@@ -52,7 +52,8 @@ export function highlightedHouseTiles(
 ): readonly TileCoordinate[] {
   const selected = new Set(houseIds);
   return state.buildings
-    .filter((building) => building.kind === "house" && selected.has(building.id))
+    // Any building id: population events pass houses, ledger sources pass markets (spec L-8).
+    .filter((building) => selected.has(building.id))
     .flatMap((building) => {
       const definition = buildingFootprint(building);
       return Array.from({ length: definition.width * definition.height }, (_unused, index) => ({
