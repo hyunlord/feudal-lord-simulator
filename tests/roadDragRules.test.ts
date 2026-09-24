@@ -107,6 +107,15 @@ test('a new grass bank can complete a pre-existing water road during the same dr
   assert.equal(placed.treasuryTimber, state.treasuryTimber);
 });
 
+test('two separate new water spans remain invalid in one road drag', () => {
+  const base = grid();
+  const state = { ...base, tiles: base.tiles.map(tile => tile.ty === 2 && [2, 5].includes(tile.tx)
+    ? { ...tile, terrain: 'water' as const } : tile) };
+  const path = line(1, 6);
+  assert.equal(roadPlacementAssessment(state, path).failure, PlacementFailure.wrong_terrain);
+  assert.equal(placeRoadLine(state, path[0]!, path.at(-1)!), state);
+});
+
 test('a road drag across a completed palisade keeps pre-F2 placement behavior without opening a new gate', () => {
   const base = grid();
   const state = { ...base, palisade: {
