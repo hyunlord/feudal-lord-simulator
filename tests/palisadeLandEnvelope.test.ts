@@ -42,7 +42,12 @@ test("setback river settlement proposal keeps a legal workfront on every wall st
   const shiftedRoads = new Set([...roads].map(key => { const [x = 0, y = 0] = key.split(",").map(Number); return `${x - 5},${y}`; }));
   const terrain = buildWorldGrid({ width: 64, height: 64, seed: 1 });
   const world = { ...terrain, tiles: terrain.tiles.map(tile => ({ ...tile, hasRoad: shiftedRoads.has(`${tile.tx},${tile.ty}`), buildingId: footprints.find(f => tile.tx >= f.tx && tile.tx < f.tx + f.width && tile.ty >= f.ty && tile.ty < f.ty + f.height)?.id ?? null })) };
-  assert.deepEqual(computePalisadeProposal(terrain, unsafeFootprints), { ok: false, reason: "building_clearance" });
+  const unsafe = computePalisadeProposal(terrain, unsafeFootprints);
+  assert.equal(unsafe.ok, false);
+  if (!unsafe.ok) {
+    assert.equal(unsafe.reason, "building_clearance");
+    assert.ok(unsafe.attemptedPath?.length);
+  }
   const result = computePalisadeProposal(world, footprints);
   assert.ok(result.ok, result.ok ? undefined : result.reason);
   assert.ok(palisadePathHasBuildingClearance(result.path, footprints));

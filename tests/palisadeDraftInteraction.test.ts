@@ -64,6 +64,8 @@ test("palisade draft drag moves by whole normal steps and keeps the last valid p
   assert.equal(moved.failureReason, null);
   assert.equal(failed.status, "editing");
   assert.equal(failed.failureReason, "out_of_bounds");
+  assert.ok(moved.candidate);
+  assert.ok(failed.candidate);
   assert.deepEqual(failed.candidate.path, moved.candidate.path);
   assert.equal(direct.ok, true);
   if (direct.ok) assert.deepEqual(moved.candidate.path, direct.candidate.path);

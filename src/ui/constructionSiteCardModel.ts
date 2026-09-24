@@ -14,7 +14,7 @@ import {
   constructionMaterialDiagnosis,
   type ConstructionMaterialDiagnosisState,
 } from "./constructionMaterialDiagnosis";
-import { constructionAccessModel, groupedConstructionCause } from './constructionAccessModel';
+import { constructionAccessModel, currentConstructionSiteLabel, groupedConstructionCause } from './constructionAccessModel';
 import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
 import type { GameState } from '../engine/engine.types';
 
@@ -91,7 +91,9 @@ function currentStallLabel(
   const schedule = palisadeConstructionSchedule(site, options.constructionSites ?? [site]);
   return schedule.kind === "queued"
     ? site.kind === 'palisade_segment' ? '대기(경로 없음)' : `대기 중 · 성문 기준 ${schedule.position}번째 구간`
-    : constructionOnSiteLabel(site);
+    : options.accessState === undefined
+      ? constructionOnSiteLabel(site)
+      : currentConstructionSiteLabel(options.accessState, site);
 }
 
 function materialDiagnosisRows(

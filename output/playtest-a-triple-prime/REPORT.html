@@ -1,0 +1,70 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>A‴ 목책 공사 흐름 검증 보고</title><style>
+@page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+* { box-sizing: border-box; }
+html { font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; color: #17202b; }
+body { margin: 0; font-size: 9.5pt; line-height: 1.48; word-break: keep-all; }
+h1 { margin: 0 0 9px; font-size: 17pt; line-height: 1.22; color: #18344e; letter-spacing: -.35px; }
+h2 { margin: 15px 0 6px; padding-bottom: 3px; border-bottom: 1px solid #a7b4bf; font-size: 10.2pt; line-height: 1.3; color: #18344e; break-after: avoid; }
+p { margin: 0 0 7px; orphans: 2; widows: 2; }
+table { border-collapse: collapse; width: 100%; margin: 5px 0 9px; font-size: 8.5pt; table-layout: fixed; break-inside: avoid; }
+th { text-align: left; background: #e9eef2; color: #18344e; }
+th, td { border-bottom: 1px solid #ced7df; padding: 4px 5px; vertical-align: top; }
+th:nth-child(1), td:nth-child(1) { width: 18%; }
+th:nth-child(2), td:nth-child(2) { width: 15%; }
+th:nth-child(3), td:nth-child(3) { width: 13%; }
+strong { color: #172f44; }
+code { font-family: ui-monospace, "SFMono-Regular", monospace; font-size: .94em; overflow-wrap: anywhere; }
+
+</style></head><body><h1>A‴ 목책 공사 흐름 검증 보고</h1>
+<p><strong>관문: 실패 — 목책 0/12구간 완공 (실제 60분).</strong> AI의 화면 플레이는 사람의 재미·인내·숙련도를 대표하지 않는다. 최종 제품 <code>89ce592</code>의 새 게임 화면을 실제 시계로 판정했다. 선포 <strong>없음</strong>, 첫 목책 자재 도착 <strong>없음</strong>, 전체 완공 <strong>없음(완공 시각 없음)</strong>이다. 자동 성장 필수 가드레일은 <strong>3/5 통과(필수조건 미달)</strong>로 화면 관문과 별도 판정한다. 배포와 <code>main</code> 병합은 하지 않았다.</p>
+<h2>제품 변경과 플레이 결과</h2>
+<p>도달 가능한 목책 구간은 성문 순서 안에서 병렬로 배송·시공하도록 바꿨다. 막힌 첫 구간 때문에 나머지 11구간이 대기하던 상태를 없애고, 목표판에서 완공·진행·경로 없음·대기를 구분했다. 고립된 첫 구간 fixture에서는 나머지 11구간이 각각 요구 작업 120틱에 도달했다. 선포 전에는 실제 자재 배송 경로로 고립 구간을 예고하고, 선포 후 선택한 현장에는 연결할 빈 도로 칸을 표시한다. 준비 상태 제품 UI 검사에서 한 칸 길 설치 후 경고가 해제됐다.</p>
+<p>초반 안내는 첫 밀밭·방앗간→제재소→둘째 밀밭·곡창·연결 창고 순서로 정리했다. 착공 중 시설의 중복 안내를 없앴고, 건물 미리보기에서 인접 도로와 <strong>창고에서 공사 자재를 운반할 경로</strong>를 구별했다. 교회 자동 도로 계획은 가상 배치에 교회 객체 자체를 포함하도록 고쳐, seed 3의 L4 정체(13/24)를 24/24로 회복했다. A″의 도시 배치 변화가 기존 도로 계획 결함을 드러낸 것으로 확인했으며, 단일 커밋만의 원인으로 단정하지 않는다. 마지막 제품 보정: 초기 목재 120으로 제재소를 세우기 전 필수 시설 비용 125를 요구하던 안내 교착을 해소했다(<code>89ce592</code>).</p>
+<table>
+<thead>
+<tr>
+<th>새 게임 화면 재플레이</th>
+<th>제품 HEAD</th>
+<th style="text-align: right;">60분 목책</th>
+<th>선포 전 주된 관찰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>첫 번째</td>
+<td><code>518c64a</code></td>
+<td style="text-align: right;">0</td>
+<td>예배당 완공, 추가 창고 길 경고; 종료 19초 뒤 목재 176/250. <a href="replay/12-final.jpg">화면</a></td>
+</tr>
+<tr>
+<td>두 번째</td>
+<td><code>5b50093</code></td>
+<td style="text-align: right;">0</td>
+<td>빵·인구 정체, 방앗간 배송 경고; 종료 7초 뒤 인구 44/60·목재 355. <a href="replay-second/10-sixty-minute-gate.jpg">화면</a></td>
+</tr>
+<tr>
+<td>세 번째</td>
+<td><code>f1ac26a</code></td>
+<td style="text-align: right;">0/12</td>
+<td>종료 뒤 동결 화면에서 인구 66/60·빵 89·예배당 0/1·목재 200/250. <a href="replay-third/05-final-paused-after-cutoff.jpg">화면</a></td>
+</tr>
+<tr>
+<td>네 번째</td>
+<td><code>9b5b51c</code></td>
+<td style="text-align: right;">7분 48초에 중단</td>
+<td>초기 목재 120보다 필수 건설비 125가 커 안내 교착을 확인; 60분 판정 제외. <a href="replay-fourth/02-aborted-resource-deadlock.jpg">중단 화면</a></td>
+</tr>
+<tr>
+<td><strong>최종 유효 재플레이</strong></td>
+<td><code>89ce592</code></td>
+<td style="text-align: right;"><strong>0/12구간</strong></td>
+<td>첫 배치는 1칸 여유 부족으로 목책 제안 불가. 재시작 배치는 유효 제안 46칸·12구간(경로 없음 12)이나 종료선 전 목재 126/250.</td>
+</tr>
+</tbody>
+</table>
+<p>최종 화면 관문의 10분 간격 완공 구간은 <strong>10·20·30·40·50·60분 모두 0/12구간</strong>이다. 시작 <code>2026-09-23 15:12:57 UTC</code>, 엄격한 종료선 <code>2026-09-23 16:12:57 UTC</code>; 판정 근거인 <a href="replay-fifth/06-valid-proposal-underfunded.jpg">종료선 전 캡처</a>는 약 16:11 UTC의 목재 126/250·선포 전·0/12이고, 16:12:03 UTC 사전 관찰도 같은 미달 상태였다. <a href="replay-fifth/07-cutoff-late.jpg">16:13:51 UTC에 저장된 늦은 화면</a>은 목재 215/250·선포 전·0/12다. 늦은 화면을 종료선 정시 증거로 보지 않는다. 세 번째까지는 모두 선포 전에 끝났으므로, 목책 건설의 실제 화면 경험을 검증한 결과로 확대하지 않는다. 준비 상태 UI fixture와 자동 성장 상태의 제품 렌더러 JPEG는 새 게임 화면 플레이가 아니다.</p>
+<h2>자동 성장 가드레일과 제품 검증</h2>
+<p>이전 시뮬레이션 커밋 <code>c093d2f</code>의 seed 1~5는 24필지·최대 1,200,000틱에서 모두 L4 24/24, 승리, 24,000틱 안정 및 전체 서비스를 달성했다. 그러나 지정된 <code>7db9df85</code> 기준선의 밀 0 방앗간 비율 한계를 seed 1(2/9)과 5(3/9)가 넘어 <strong>기존 가드레일은 3/5 통과</strong>였다. 두 최종 상태의 SHA는 앞선 A″와 같아 당시 엔진 변경이 새로 만든 현상은 아니지만, 기준선을 바꾸거나 실패를 통과로 처리하지 않았다. 시뮬레이션 재실행 원본 <code>9b5b51c</code>의 결과는 <strong>3/5 통과(필수조건 미달)</strong>이다. seed 1은 2/9(22.2%), seed 5는 3/9(33.3%) 방앗간의 밀 재고가 0으로, 기준선 0%에서 허용 악화 +20%p를 넘었다. 두 실패 상태의 SHA는 A″ <code>689bda7</code>과 동일하다. <code>89ce592</code>는 <code>9b5b51c</code> 뒤 온보딩 UI·테스트 네 파일만 바꾸어 엔진 결과에는 영향을 주지 않았지만, seed JPEG를 <code>89ce592</code>의 정확한 화면이라고 부르지 않는다. 유휴 노동 5~25% 목표는 C3 후보로 남긴다.</p>
+<p>최종 제품 <code>89ce592</code>에서 전체 테스트 2,241/2,241, Phase 9(목책 선포 후 1,238틱 완공), typecheck, build, diff check를 통과했다. 코드 리뷰 CLEAR/APPROVE, 차단 지적 0건. 실제 제품 UI 준비 상태에서 연결 방앗간의 배송 경로 ✓, 고립 방앗간의 ×, 브라우저 예외 0건을 확인했다. 성벽 선택→길 설치 시험은 합성 시작 상태이며 자연 플레이 증거와 구별한다.</p>
+<h2>후속 후보와 증거</h2>
+<p>목책 제안 불가의 실제 상태 원인과 수리 위치를 조사한다. 격리 후보 <code>ccda4c6</code>는 물가 굴곡의 합법적 둘레 fallback으로 focused 33개·build만 통과했으며 이번 플레이 배치에서 미검증이고 제품에는 미통합이다. 경제 구조·석벽·3D·저장 형식은 이번 범위에서 변경하지 않았다. 기록된 작업 시간은 <strong>약 5시간 43분(첫 제품 커밋 10:35 UTC~보고서 검증 16:18 UTC)</strong>이다. 화면 플레이, 중단 시도, 자동 성장, UI 검사의 원자료는 각 <code>replay*/</code>, <code>seeds/</code>, <code>ui-qa/</code>와 <code>food-preview-qa/</code>에 보존했다. 증거 ZIP은 상대 경로와 SHA-256 목록을 포함한다.</p></body></html>

@@ -8,7 +8,7 @@ import { runProduction } from '../src/engine/simulationProduction';
 import { initialPalisadeDraft } from '../src/render/palisadeDraftInteraction';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 import { EraConsole, buildEraConsoleModel } from '../src/ui/EraConsole';
-import { proposalPredictionLines } from '../src/ui/wallPrediction';
+import { draftPalisadePredictionLines, proposalPredictionLines } from '../src/ui/wallPrediction';
 
 const sawmill: Building = {
   id: 'sawmill-a', kind: 'sawmill', tx: 2, ty: 2, workers: 2,
@@ -26,6 +26,14 @@ test('prediction has no invented completion time before measured timber output',
   const lines = proposalPredictionLines(state, path);
   assert.ok(lines.some(line => line.id === 'scope' && line.text.includes('목재 240')));
   assert.ok(lines.some(line => line.id === 'eta' && line.text.includes('생산 기록 부족')));
+});
+
+test('given an open draft when predicted then it identifies provisional route coverage', () => {
+  const state = { ...DEFAULT_GAME_STATE, width: 8, height: 8, tiles: grassGrid,
+    era: 'hamlet' as const, treasuryTimber: 1000 };
+  const lines = draftPalisadePredictionLines(state, path.slice(0, 2));
+  assert.ok(lines.some(line => line.id === 'route-provisional'));
+  assert.ok(lines.some(line => line.id === 'scope' && line.text.includes('길이 4칸')));
 });
 
 test('real sawmill output populates a bounded 2400-tick gross-production window', () => {

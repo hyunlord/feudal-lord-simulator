@@ -2,7 +2,6 @@ import { isCanvasKeyboardControl } from "./canvasKeyboardTarget";
 import { updateCanvasHover } from "./canvasHoverRuntime";
 import { cancelRoadPreview } from "./cancelRoadPreview";
 import { createPredictionPublisher } from "./placementPredictionRuntime";
-import { causeMarkerAtCanvasPoint } from "./causeMapInteraction";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { useEffect } from "react";
 
@@ -13,11 +12,12 @@ import { releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions
 import { installMinimapCameraJumpRuntime, publishMinimapViewport } from "./minimapCameraJump";
 import { bindGameCanvasEvents } from "./gameCanvasEvents";
 import { preloadGameArt } from "./preloadGameArt";
-import { resolveCanvasClick } from "./canvasClickResolution";
+import { handleCanvasClick } from "./canvasClickRuntime";
 import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
-import { advancePalisadeDraftDrag, beginPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
+import { advancePalisadeDraftDrag, beginPalisadeDraftDrag, finishPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
+import { applyPalisadeIntent } from './palisadeDraftInteraction';
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
@@ -96,7 +96,9 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (event.button === 2 && refs.dragRef.current.mode === "road") return;
       if (event.button === 0) refs.roadCancelled.current = false;
       updateHover(event);
-      const palisadeDrag = beginPalisadeDraftDrag({ button: event.button, hover: refs.hoverRef.current, draft: palisadeDraftRef.current, point: canvasPoint(event) });
+      const palisadeDrag = beginPalisadeDraftDrag({ button: event.button, hover: refs.hoverRef.current,
+        draft: palisadeDraftRef.current, point: canvasPoint(event), camera: refs.cameraRef.current,
+        state: stateRef.current });
       if (palisadeDrag !== null) {
         palisadeDraftRef.current = palisadeDrag.draft;
         onPalisadeDraftChange?.(palisadeDrag.draft);
@@ -115,6 +117,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         state: stateRef.current,
         draft: palisadeDraftRef.current,
         hover: refs.hoverRef.current,
+        point: canvasPoint(event),
+        camera: refs.cameraRef.current,
       });
       if (nextDraft !== null) {
         palisadeDraftRef.current = nextDraft;
@@ -134,6 +138,13 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (refs.roadCancelled.current && event.button !== 0) return;
       const drag = refs.roadCancelled.current ? { ...refs.dragRef.current, moved: true } : refs.dragRef.current;
       refs.roadCancelled.current = false;
+      if (drag.mode === 'palisade') {
+        const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
+        if (nextDraft !== palisadeDraftRef.current) {
+          palisadeDraftRef.current = nextDraft;
+          onPalisadeDraftChange?.(nextDraft);
+        }
+      }
       const destination = releaseTileFromMouseUp(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
       const attempt = finishedRoadAttempt(stateRef.current, drag, destination, performance.now());
       if (attempt !== null) {
@@ -152,41 +163,18 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
         suppressClickTimeout = null;
       }, 0);
     };
-    const clickCanvas = (event: MouseEvent) => {
-      if (palisadeDraftRef.current !== null) return;
-      const bounds = canvas.getBoundingClientRect();
-      const resolution = resolveCanvasClick({
-        suppressClick: refs.suppressClick.current,
-        spacePressed: refs.spacePressed.current,
-        dragMode: refs.dragRef.current.mode === "palisade" ? "none" : refs.dragRef.current.mode,
-        hover: refs.hoverRef.current,
-        selectedTool: selectedToolRef.current,
-        state: stateRef.current,
-        point: canvasPoint(event),
-        camera: refs.cameraRef.current,
-        viewport: bounds,
-        nowMs: performance.now(),
-      });
-      if (resolution.kind === "ignored") {
-        if (!resolution.clearSuppression) return;
-        refs.suppressClick.current = false;
-        clearSuppressClickTimeout();
-        return;
-      }
-      if (resolution.kind === "selection") {
-        const buildingId = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, canvasPoint(event))?.buildingIds[0] : undefined;
-        if (buildingId !== undefined) {
-          setSelection({ kind: 'building', buildingId, position: canvasPoint(event) });
-          return;
-        }
-        setSelection(resolution.selection);
-        return;
-      }
-      refs.feedbackRef.current = resolution.attempt.feedback;
-      if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
-    };
+    const clickCanvas = (event: MouseEvent) => handleCanvasClick({ event, canvas, refs, stateRef,
+      selectedToolRef, palisadeDraftRef, setSelection, dispatch, canvasPoint, clearSuppressClickTimeout });
     const defaultContextMenu = createCanvasContextMenuHandler({ canvas, dispatch, refs, selectedToolRef, setSelection, stateRef });
     const contextMenuCanvas = (event: MouseEvent) => {
+      if (palisadeDraftRef.current !== null) {
+        event.preventDefault();
+        const nextDraft = applyPalisadeIntent({ state: stateRef.current, draft: palisadeDraftRef.current,
+          intent: { type: 'cancel' } });
+        palisadeDraftRef.current = nextDraft;
+        onPalisadeDraftChange?.(nextDraft);
+        return;
+      }
       if (cancelRoadPreview(refs)) event.preventDefault(); else defaultContextMenu(event);
     };
     const wheel = (event: WheelEvent) => {
@@ -217,10 +205,6 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       refs.spacePressed.current = result.spacePressed;
       toggleObjectRenderViewMode(result.toggleOutlinesView);
       if (result.dismissSelection) setSelection(null);
-      if (event.code === "Escape" && palisadeDraftRef.current !== null) {
-        palisadeDraftRef.current = null;
-        onPalisadeDraftCancel?.();
-      }
       if (result.preventDefault || cameraKey) event.preventDefault();
     };
     const keyUp = (event: KeyboardEvent) => {
@@ -231,6 +215,11 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     };
     const leaveCanvas = () => { canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {
+      if (palisadeDraftRef.current?.activeGesture !== null && palisadeDraftRef.current !== null) {
+        const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
+        palisadeDraftRef.current = nextDraft;
+        onPalisadeDraftChange?.(nextDraft);
+      }
       resetCameraInputState(cameraInput);
       refs.spacePressed.current = false;
       refs.hoverRef.current = null;

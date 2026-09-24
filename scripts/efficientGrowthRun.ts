@@ -7,6 +7,7 @@ import { parseGrowthOptions } from './phase19GrowthMetrics';
 import { runPhase19NaturalGrowth } from './phase19NaturalGrowth';
 import { efficientGrowthMetrics } from './efficientGrowthMetrics';
 import { growthGuardrail } from './growthGuardrail';
+import { createMillZeroWheatObservation, millWheatSamples } from './efficientGrowthMillContinuity';
 
 export function runEfficientGrowth(args: readonly string[]) {
   const options = parseGrowthOptions(args);
@@ -16,13 +17,15 @@ export function runEfficientGrowth(args: readonly string[]) {
   mkdirSync(output, { recursive: true });
   let finalStateSha256 = '';
   const diagnostics: { last: AdvisorDiagnosticReceipt | null } = { last: null };
+  const millObservation = createMillZeroWheatObservation();
   let efficiency: ReturnType<typeof efficientGrowthMetrics> | null = null;
   const report = runPhase19NaturalGrowth({ ...options,
     onDiagnostic: receipt => { diagnostics.last = receipt; },
-    additionalAcceptance: state => efficientGrowthMetrics(state).passed,
+    onTick: (state, stableSince) => millObservation.observe(state.tick, stableSince, millWheatSamples(state)),
+    additionalAcceptance: state => efficientGrowthMetrics(state, millObservation.report()).passed,
     onState: (label, state) => {
       if (label !== 'final') return;
-      efficiency = efficientGrowthMetrics(state);
+      efficiency = efficientGrowthMetrics(state, millObservation.report());
       const raw = JSON.stringify(state);
       finalStateSha256 = createHash('sha256').update(raw).digest('hex');
       writeFileSync(resolve(output, 'final-state.json'), raw);

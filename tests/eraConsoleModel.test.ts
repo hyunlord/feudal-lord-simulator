@@ -76,7 +76,7 @@ test("era console exposes four independent gauges exact tooltip and enabled prop
   ]);
   assert.equal(model.tooltip, "선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)");
   assert.equal(model.action.enabled, true);
-  assert.equal(model.action.label, "목책 시대 선포 준비");
+  assert.equal(model.action.label, "목책 긋기");
   assert.match(model.proposal.label, /둘레 \d+칸/);
   assert.match(model.proposal.label, /목재 \d+/);
   assert.match(model.proposal.label, /공사 \d+구간/);
@@ -97,7 +97,7 @@ test("era console explains disabled proposal and never leaks raw enums", () => {
   assert.match(model.action.reason ?? "", /인구 59\/60/);
   assert.match(markup, /인구/);
   assert.match(markup, /59\/60/);
-  assert.match(markup, /목책 시대/);
+  assert.match(markup, /목책 긋기/);
   assert.doesNotMatch(markup, /insufficient_enclosure|water_crossing|open_polygon|queued/);
 });
 
@@ -244,7 +244,7 @@ test("era console labels the proclaimed Stone Town current era without enabling 
   assert.equal(model.action.reason, "이미 석조 도시가 선포되었습니다");
 });
 
-test("era console source uses presentation-only draft state and canvas runtime handles Escape without simulation mutation", async () => {
+test("era console source uses presentation-only draft state and Escape without simulation mutation", async () => {
   // Given / When
   const appSource = await readFile(APP_SOURCE, "utf8");
   const runtimeSource = await readFile(CANVAS_RUNTIME_SOURCE, "utf8");
@@ -259,8 +259,8 @@ test("era console source uses presentation-only draft state and canvas runtime h
   );
   assert.doesNotMatch(appSource, /palisadeDraft:\s*state/);
   assert.match(runtimeSource, /palisadeDraftRef/);
-  assert.match(runtimeSource, /onPalisadeDraftCancel/);
-  assert.match(runtimeSource, /event\.code === "Escape"/);
+  assert.match(appSource, /applyPalisadeIntent/);
+  assert.match(appSource, /event\.code === "Escape"/);
 });
 
 test("hamlet keeps proposal failure details even when all requirements hide the proposal", () => {
@@ -273,13 +273,14 @@ test("hamlet keeps proposal failure details even when all requirements hide the 
   // Then
   assert.deepEqual(model.proposal, {
     visible: false,
-    label: "목책 제안 불가",
+    label: "추천 경로를 만들지 못했습니다 · 직접 그어 주세요",
     failure: "완성된 건물이 없어 둘레를 잡을 수 없습니다",
+    recommendEnabled: false,
   });
   assert.equal(model.action.reason, "인구 0/60");
 });
 
-test("hamlet with met requirements still rejects invalid proposal geometry", () => {
+test("hamlet with met requirements still permits manual drawing when recommendation fails", () => {
   // Given
   const current = state({ tiles: state().tiles.map((entry) => ({ ...entry, terrain: "water" })) });
 
@@ -288,8 +289,9 @@ test("hamlet with met requirements still rejects invalid proposal geometry", () 
 
   // Then
   assert.equal(model.requirements.every((requirement) => requirement.met), true);
-  assert.equal(model.action.enabled, false);
-  assert.equal(model.action.reason, "유효한 목책 제안을 만들 수 없습니다");
+  assert.equal(model.action.enabled, true);
+  assert.equal(model.action.label, "목책 긋기");
+  assert.equal(model.proposal.recommendEnabled, true);
   assert.equal(model.proposal.visible, true);
   assert.equal(model.proposal.failure, "목책선이 물을 가로지릅니다");
 });
@@ -320,7 +322,7 @@ test("hamlet draft retains selected run, failure, confirmation and cancellation 
   assert.equal(model.draft.editing, true);
   assert.match(model.draft.selectedRunLabel ?? "", /^선택 구간 1 · \d+칸$/);
   assert.equal(model.draft.failure, "목책선이 물을 가로지릅니다");
-  assert.match(markup, /제안 취소/);
+  assert.match(markup, /초안 취소/);
   assert.equal(model.proposal.visible, true);
 });
 
@@ -336,7 +338,7 @@ for (const era of ["palisade", "stone_town"] as const) {
     const model = buildEraConsoleModel({ state: current, draft: null });
 
     // Then: an absent proposal has no hidden success or failure claim.
-    assert.deepEqual(model.proposal, { visible: false, label: "", failure: null });
+    assert.deepEqual(model.proposal, { visible: false, label: "", failure: null, recommendEnabled: false });
     assert.equal(model.action.targetEra, "stone_town");
   });
 

@@ -13,75 +13,8 @@ import {
   drawConstructionSite,
 } from "../src/render/drawConstructionSites";
 import { drawPalisadeRun, drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
-
-type LoggedContext = CanvasRenderingContext2D & {
-  readonly calls: readonly string[];
-};
-
-function loggedContext(): LoggedContext {
-  const calls: string[] = [];
-  let fillStyle = "";
-  let font = "";
-  let globalAlpha = 1;
-  let strokeStyle = "";
-  const context = {
-    calls,
-    get fillStyle() {
-      return fillStyle;
-    },
-    set fillStyle(value: string) {
-      fillStyle = value;
-      calls.push(`fillStyle:${value}`);
-    },
-    get font() {
-      return font;
-    },
-    set font(value: string) {
-      font = value;
-      calls.push(`font:${value}`);
-    },
-    get globalAlpha() {
-      return globalAlpha;
-    },
-    set globalAlpha(value: number) {
-      globalAlpha = value;
-      calls.push(`globalAlpha:${value}`);
-    },
-    get strokeStyle() {
-      return strokeStyle;
-    },
-    set strokeStyle(value: string) {
-      strokeStyle = value;
-      calls.push(`strokeStyle:${value}`);
-    },
-    lineCap: "butt",
-    lineJoin: "miter",
-    lineWidth: 0,
-    beginPath: () => calls.push("beginPath"),
-    closePath: () => calls.push("closePath"),
-    ellipse: (x: number, y: number, rx: number, ry: number) =>
-      calls.push(`ellipse:${x},${y},${rx},${ry}`),
-    fill: () => calls.push("fill"),
-    fillRect: (x: number, y: number, width: number, height: number) =>
-      calls.push(`fillRect:${x},${y},${width},${height}`),
-    fillText: (text: string, x: number, y: number) => calls.push(`fillText:${text},${x},${y}`),
-    lineTo: (x: number, y: number) => calls.push(`lineTo:${x},${y}`),
-    measureText: (text: string) => {
-      calls.push(`measureText:${text}`);
-      return { width: text.length * 8 };
-    },
-    moveTo: (x: number, y: number) => calls.push(`moveTo:${x},${y}`),
-    rect: (x: number, y: number, width: number, height: number) =>
-      calls.push(`rect:${x},${y},${width},${height}`),
-    restore: () => calls.push("restore"),
-    save: () => calls.push("save"),
-    setLineDash: (segments: number[]) => calls.push(`setLineDash:${segments.join(",")}`),
-    stroke: () => calls.push("stroke"),
-    strokeRect: (x: number, y: number, width: number, height: number) =>
-      calls.push(`strokeRect:${x},${y},${width},${height}`),
-  };
-  return context as unknown as LoggedContext;
-}
+import { building, state as makeState } from "./stoneWallConversionFixtures";
+import { loggedContext } from "./constructionRenderingFixtures";
 
 test("proposal plot remains visibly distinct at minimum zoom", () => {
   // Given
@@ -191,6 +124,31 @@ test("drawConstructionSite writes the exact current stall label with delivered a
   // Then
   assert.ok(context.calls.includes("measureText:🪵 목재 오는 중 (12/40)"));
   assert.ok(context.calls.includes("fillText:🪵 목재 오는 중 (12/40),10,-16"));
+});
+
+test("drawConstructionSite shows the live road break before the stored delivery stall catches up", () => {
+  // Given
+  const stalledSite = site({ kind: "well", tx: 5, ty: 5 });
+  const state = makeState({
+    width: 8, height: 8, palisade: null, houses: [], walkers: [],
+    buildings: [building("source", "storehouse", 1, 1, { inventory: { timber: 20 } })],
+    constructionSites: [stalledSite],
+    tiles: Array.from({ length: 64 }, (_, index) => {
+      const tx = index % 8, ty = Math.floor(index / 8);
+      return {
+        tx, ty, terrain: "grass" as const, hasRoad: tx === 2 && ty === 3,
+        buildingId: tx === 5 && ty === 5 ? stalledSite.id : null,
+      };
+    }),
+  });
+  const context = loggedContext();
+
+  // When
+  drawConstructionSite(context, { site: stalledSite, state, zoom: 1 });
+
+  // Then
+  assert.ok(context.calls.includes("measureText:🚧 도로 미연결"));
+  assert.equal(context.calls.some(call => call.includes("목재 오는 중")), false);
 });
 
 test("drawConstructionSite gives queued palisade segments a dashed gate-order label without a stall label", () => {

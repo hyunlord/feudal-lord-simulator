@@ -12,7 +12,7 @@ import type { PlacementTool } from "./renderer";
 import { selectWorldAtTile, type AnchoredWorldSelection } from "./worldSelection";
 import { getTile } from "../world/grid";
 import { tileToScreen } from './iso';
-import { constructionOnSiteLabel } from '../economy/construction';
+import { currentConstructionSiteLabel } from '../ui/constructionAccessModel';
 import { isWallConstructionSite, palisadeConstructionSchedule } from '../economy/palisadeConstruction';
 
 type ClickResolution =
@@ -88,7 +88,7 @@ function selectedWallLabel(state: GameState, point: Point, camera: CameraState |
   for (const site of state.constructionSites) {
     if (!isWallConstructionSite(site)) continue;
     const schedule = palisadeConstructionSchedule(site, state.constructionSites);
-    if (schedule.kind !== 'queued' && constructionOnSiteLabel(site) === '') continue;
+    if (schedule.kind !== 'queued' && currentConstructionSiteLabel(state, site) === '') continue;
     const first = site.path[0];
     const last = site.path[site.path.length - 1];
     if (first === undefined || last === undefined) continue;

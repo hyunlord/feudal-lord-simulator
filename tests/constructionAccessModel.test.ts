@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ConstructionSite } from '../src/economy/construction';
-import { constructionAccessModel, groupedConstructionCause, roadConnectsConstructionSite } from '../src/ui/constructionAccessModel';
+import { constructionAccessModel, currentConstructionSiteLabel, groupedConstructionCause, roadConnectsConstructionSite } from '../src/ui/constructionAccessModel';
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 import { placeRoadLine } from '../src/engine/gameActions';
 import { cachedPlacementPreview } from '../src/render/placementPredictionRuntime';
@@ -33,6 +33,44 @@ function disconnectedFixture() {
     }),
   });
 }
+
+test('stale delivery status yields to the current disconnected-road diagnosis on the map and card', () => {
+  // Given: road access changed before the next construction tick updated the stored stall.
+  const staleSite = { ...site, stall: 'awaiting_materials' as const };
+  const state = { ...disconnectedFixture(), constructionSites: [staleSite] };
+
+  // When / Then: the visible summaries agree with the selected site's live cause.
+  assert.equal(constructionAccessModel(state, staleSite).cause, 'road_disconnected');
+  assert.equal(currentConstructionSiteLabel(state, staleSite), '🚧 도로 미연결');
+  assert.equal(constructionSiteCardModel(staleSite, { accessState: state }).currentStallLabel, '🚧 도로 미연결');
+});
+
+test('current route labels keep material, reserve, and worker stalls intact', () => {
+  // Given
+  const state = disconnectedFixture();
+
+  // When / Then
+  assert.equal(currentConstructionSiteLabel(state, { ...site, stall: 'no_material_source' }), '🪵 창고에 목재 없음');
+  assert.equal(currentConstructionSiteLabel(state, { ...site, stall: 'reserve_held' }), '🪵 비축분 유지 중');
+  assert.equal(currentConstructionSiteLabel(state, { ...site, stall: 'no_builders' }), '👷 일꾼 없음');
+});
+
+test('current route labels clear a stale no-route stall after a real material road connects', () => {
+  // Given
+  const disconnected = disconnectedFixture();
+  const plannedRoad = constructionAccessModel(disconnected, site).missingRoadTiles;
+  const roads = new Set(plannedRoad.map(tile => `${tile.tx},${tile.ty}`));
+  const connected = {
+    ...disconnected,
+    tiles: disconnected.tiles.map(tile => roads.has(`${tile.tx},${tile.ty}`) ? { ...tile, hasRoad: true } : tile),
+  };
+
+  // When / Then
+  const source = connected.buildings[0];
+  assert.ok(source);
+  assert.equal(resolveBuildingToConstructionSiteRoute(connected, source, site).path !== null, true);
+  assert.equal(currentConstructionSiteLabel(connected, site), '🪵 목재 오는 중 (0/10)');
+});
 
 test('road proposal connects a stalled site, then disappears after the road is built', () => {
   const state = disconnectedFixture();

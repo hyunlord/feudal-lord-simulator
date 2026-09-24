@@ -1,5 +1,5 @@
 import type { ConstructionSite } from '../economy/construction';
-import { constructionDeliveryNeed, isBuildingConstructionSite } from '../economy/construction';
+import { constructionDeliveryNeed, constructionOnSiteLabel, constructionStall, isBuildingConstructionSite } from '../economy/construction';
 import { RESOURCE_TYPES } from '../content/resourceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
@@ -160,6 +160,45 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
     suggestedRoad,
     missingRoadTiles: suggestedRoad.filter(tile => getTile(state, tile)?.hasRoad !== true),
   };
+}
+
+const currentLabelCache = new WeakMap<GameState, WeakMap<ConstructionSite, string>>();
+
+export function currentConstructionSiteLabel(state: GameState, site: ConstructionSite): string {
+  if (site.stall !== 'awaiting_materials' && site.stall !== 'no_route') {
+    return constructionOnSiteLabel(site);
+  }
+  const cached = currentLabelCache.get(state)?.get(site);
+  if (cached !== undefined) return cached;
+  const sourceInput = {
+    site,
+    buildings: state.buildings,
+    routes: createSimulationRoutePorts(state).delivery,
+    inventory: createDeliveryInventoryPort(),
+    treasuryTimber: state.treasuryTimber,
+  };
+  const liveStall = constructionStall(site, constructionMaterialSources(sourceInput));
+  let label: string;
+  if (liveStall === 'no_route') {
+    const access = constructionSiteRoadAccessTiles(state, site);
+    const wallFreeState = state.palisade === null ? null : { ...state, palisade: null, pathCache: {} };
+    const wallFreeStall = wallFreeState === null ? null : constructionStall(site, constructionMaterialSources({
+      ...sourceInput,
+      routes: createSimulationRoutePorts(wallFreeState).delivery,
+    }));
+    label = wallFreeStall !== null && wallFreeStall !== 'no_route'
+      ? '🚧 성벽이 경로 차단'
+      : access.length === 0 ? '🚧 도로 미연결' : '🚧 창고에서 경로 없음';
+  } else {
+    label = constructionOnSiteLabel({ ...site, stall: liveStall });
+  }
+  let stateCache = currentLabelCache.get(state);
+  if (stateCache === undefined) {
+    stateCache = new WeakMap<ConstructionSite, string>();
+    currentLabelCache.set(state, stateCache);
+  }
+  stateCache.set(site, label);
+  return label;
 }
 
 export function groupedConstructionCause(state: GameState, cause: ConstructionAccessCause): string | null {

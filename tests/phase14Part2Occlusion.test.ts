@@ -219,7 +219,7 @@ test("Given an intentionally misordered render queue When drawing objects Then n
 
   // Then
   const lastSiteOrBuilding = Math.max(
-    lastIndexWhere(context.calls, (call) => call.startsWith("measureText:🪵 목재 오는 중")),
+    lastIndexWhere(context.calls, (call) => call.startsWith("measureText:🪵")),
     lastIndexWhere(context.calls, (call) => call === "lineTo:60,48"),
   );
   const firstWalkerBody = context.calls.findIndex((call, index) =>

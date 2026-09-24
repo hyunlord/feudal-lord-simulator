@@ -17,6 +17,9 @@ export type PalisadeProposalSummary =
   | {
       readonly ok: false;
       readonly reason: PalisadeFailureReason;
+      readonly attemptedPath?: PalisadePath;
+      readonly failurePoint?: { readonly x: number; readonly y: number };
+      readonly affectedFootprintIds?: readonly string[];
     };
 
 const TIMBER_PER_WALL_STEP = 15;

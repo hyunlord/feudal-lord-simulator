@@ -1,5 +1,6 @@
 export type EfficiencyMetrics = Readonly<{
-  lots: number; farms: number; mills: number; zeroWheatMills: number;
+  lots: number; farms: number; mills: number; chronicZeroWheatMills: number;
+  chronicZeroWheatKnown: boolean; chronicZeroWheatObservedTicks: number;
   granaries: number; markets: number; churches: number; population: number;
   idleWorkers: number; buildings: number; warnings: number;
   coveredTicks: number; fullWindow: boolean; known: boolean;
@@ -11,7 +12,8 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
   const rawStarvationRatio = metrics.eligibleMillTicks > 0 ? metrics.rawStarvedTicks / metrics.eligibleMillTicks : null;
   const warningRatio = metrics.buildings > 0 ? metrics.warnings / metrics.buildings : null;
   const idleRatio = metrics.population > 0 ? metrics.idleWorkers / metrics.population : null;
-  const zeroWheatMillRatio = metrics.mills > 0 ? metrics.zeroWheatMills / metrics.mills : null;
+  const zeroWheatMillRatio = metrics.chronicZeroWheatKnown && metrics.mills > 0
+    ? metrics.chronicZeroWheatMills / metrics.mills : null;
   const checks = {
     validMetrics: finite,
     mills: metrics.mills <= metrics.farms,
