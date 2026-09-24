@@ -1,0 +1,183 @@
+{
+  "description": "advanceTick ms per tick after 14,400 warm-up ticks, 4,800 measured, runs interleaved old/new/new/old, one at a time (scripts/ledgerTickBench.ts). 'beforeCacheFix' is the first ledger version (full cash sum and rollup scan per posting); 'final' is the committed code with the memoised balance.",
+  "beforeCacheFix": [
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.4798,
+      "p50Ms": 0.4337,
+      "p95Ms": 0.7865,
+      "p99Ms": 1.1955,
+      "ledgerEntries": null
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.4807,
+      "p50Ms": 0.436,
+      "p95Ms": 0.7864,
+      "p99Ms": 1.202,
+      "ledgerEntries": 358
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.4735,
+      "p50Ms": 0.4247,
+      "p95Ms": 0.7942,
+      "p99Ms": 1.222,
+      "ledgerEntries": 358
+    },
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.4781,
+      "p50Ms": 0.42,
+      "p95Ms": 0.8257,
+      "p99Ms": 1.3795,
+      "ledgerEntries": null
+    },
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.5439,
+      "p50Ms": 0.452,
+      "p95Ms": 1.0062,
+      "p99Ms": 2.364,
+      "ledgerEntries": null
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.5541,
+      "p50Ms": 0.4623,
+      "p95Ms": 1.0451,
+      "p99Ms": 2.4509,
+      "ledgerEntries": 334
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.5521,
+      "p50Ms": 0.4561,
+      "p95Ms": 1.0277,
+      "p99Ms": 2.4062,
+      "ledgerEntries": 334
+    },
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.5361,
+      "p50Ms": 0.4401,
+      "p95Ms": 1.025,
+      "p99Ms": 2.4286,
+      "ledgerEntries": null
+    }
+  ],
+  "final": [
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.5534,
+      "p50Ms": 0.4557,
+      "p95Ms": 1.044,
+      "p99Ms": 2.4612,
+      "ledgerEntries": null
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.552,
+      "p50Ms": 0.4583,
+      "p95Ms": 1.0247,
+      "p99Ms": 2.3606,
+      "ledgerEntries": 334
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.5513,
+      "p50Ms": 0.4581,
+      "p95Ms": 1.0395,
+      "p99Ms": 2.4155,
+      "ledgerEntries": 334
+    },
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-1",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.557,
+      "p50Ms": 0.4593,
+      "p95Ms": 1.0651,
+      "p99Ms": 2.4935,
+      "ledgerEntries": null
+    },
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.485,
+      "p50Ms": 0.4372,
+      "p95Ms": 0.7929,
+      "p99Ms": 1.2574,
+      "ledgerEntries": null
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.4735,
+      "p50Ms": 0.4308,
+      "p95Ms": 0.7649,
+      "p99Ms": 1.197,
+      "ledgerEntries": 358
+    },
+    {
+      "root": "new",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.477,
+      "p50Ms": 0.4353,
+      "p95Ms": 0.765,
+      "p99Ms": 1.1768,
+      "ledgerEntries": 358
+    },
+    {
+      "root": "old (bc94b31)",
+      "stateFile": "seed-4",
+      "warm": 14400,
+      "measure": 4800,
+      "meanMs": 0.4695,
+      "p50Ms": 0.4246,
+      "p95Ms": 0.762,
+      "p99Ms": 1.2222,
+      "ledgerEntries": null
+    }
+  ]
+}
