@@ -1,0 +1,341 @@
+[
+  {
+    "tick": 84000,
+    "decisions": [
+      {
+        "mode": "cold",
+        "ms": 543.6677910000001,
+        "action": {
+          "kind": "none"
+        },
+        "diagnostic": {
+          "food": {
+            "schemaVersion": 1,
+            "tick": 84000,
+            "reached": true,
+            "reason": "active_observation",
+            "action": {
+              "kind": "none",
+              "foodTransient": "not_evaluated"
+            },
+            "checks": [],
+            "details": "not_captured",
+            "evaluation": {
+              "transitionRepeat": "not_evaluated",
+              "transitionStaff": "not_evaluated",
+              "buildRepeat": "not_evaluated",
+              "buildStaff": "not_evaluated"
+            },
+            "observation": {
+              "kind": "wheat_farm",
+              "siteId": "construction-site-000038",
+              "placedTick": 82560,
+              "completedTick": 83050,
+              "observeUntilTick": 85450,
+              "outcome": {
+                "outputDelta": 22,
+                "deliveredBreadDelta": 0,
+                "starvingHomesDelta": 0,
+                "effective": false,
+                "deliveredWheatDelta": 2
+              }
+            },
+            "counts": {
+              "wheat": 12,
+              "mill": 6,
+              "granary": 3,
+              "target": 1
+            }
+          },
+          "search": {
+            "reason": "search_budget_hit",
+            "used": 192,
+            "limit": 1920
+          }
+        }
+      },
+      {
+        "mode": "warm",
+        "ms": 182.21304199999997,
+        "action": {
+          "kind": "none"
+        },
+        "diagnostic": {
+          "food": {
+            "schemaVersion": 1,
+            "tick": 84000,
+            "reached": true,
+            "reason": "active_observation",
+            "action": {
+              "kind": "none",
+              "foodTransient": "not_evaluated"
+            },
+            "checks": [],
+            "details": "not_captured",
+            "evaluation": {
+              "transitionRepeat": "not_evaluated",
+              "transitionStaff": "not_evaluated",
+              "buildRepeat": "not_evaluated",
+              "buildStaff": "not_evaluated"
+            },
+            "observation": {
+              "kind": "wheat_farm",
+              "siteId": "construction-site-000038",
+              "placedTick": 82560,
+              "completedTick": 83050,
+              "observeUntilTick": 85450,
+              "outcome": {
+                "outputDelta": 22,
+                "deliveredBreadDelta": 0,
+                "starvingHomesDelta": 0,
+                "effective": false,
+                "deliveredWheatDelta": 2
+              }
+            },
+            "counts": {
+              "wheat": 12,
+              "mill": 6,
+              "granary": 3,
+              "target": 1
+            }
+          },
+          "search": {
+            "reason": "search_budget_hit",
+            "used": 192,
+            "limit": 1920
+          }
+        }
+      }
+    ],
+    "elapsedMs": 540.627792,
+    "receipts": [
+      {
+        "schemaVersion": 1,
+        "tick": 84000,
+        "search": {
+          "reason": "search_budget_hit",
+          "used": 192,
+          "limit": 1920
+        },
+        "food": {
+          "schemaVersion": 1,
+          "tick": 84000,
+          "reached": true,
+          "reason": "active_observation",
+          "action": {
+            "kind": "none",
+            "foodTransient": "not_evaluated"
+          },
+          "checks": [],
+          "details": "not_captured",
+          "evaluation": {
+            "transitionRepeat": "not_evaluated",
+            "transitionStaff": "not_evaluated",
+            "buildRepeat": "not_evaluated",
+            "buildStaff": "not_evaluated"
+          },
+          "observation": {
+            "kind": "wheat_farm",
+            "siteId": "construction-site-000038",
+            "placedTick": 82560,
+            "completedTick": 83050,
+            "observeUntilTick": 85450,
+            "outcome": {
+              "outputDelta": 22,
+              "deliveredBreadDelta": 0,
+              "starvingHomesDelta": 0,
+              "effective": false,
+              "deliveredWheatDelta": 2
+            }
+          },
+          "counts": {
+            "wheat": 12,
+            "mill": 6,
+            "granary": 3,
+            "target": 1
+          }
+        },
+        "services": [],
+        "advisorAction": {
+          "kind": "none",
+          "foodTransient": "not_evaluated"
+        },
+        "gameActionType": null,
+        "result": "no_action",
+        "newSiteIds": []
+      }
+    ],
+    "actions": []
+  },
+  {
+    "tick": 96000,
+    "decisions": [
+      {
+        "mode": "cold",
+        "ms": 666.27125,
+        "action": {
+          "kind": "none"
+        },
+        "diagnostic": {
+          "food": {
+            "schemaVersion": 1,
+            "tick": 96000,
+            "reached": true,
+            "reason": "wheat_transport_blocked",
+            "action": {
+              "kind": "none",
+              "foodTransient": "not_evaluated"
+            },
+            "checks": [],
+            "details": "not_captured",
+            "evaluation": {
+              "transitionRepeat": "not_evaluated",
+              "transitionStaff": "not_evaluated",
+              "buildRepeat": "not_evaluated",
+              "buildStaff": "not_evaluated"
+            },
+            "observation": {
+              "kind": "mill",
+              "siteId": "construction-site-000041",
+              "placedTick": 90960,
+              "completedTick": 92385,
+              "observeUntilTick": 94785,
+              "outcome": {
+                "outputDelta": 28,
+                "deliveredBreadDelta": 0,
+                "starvingHomesDelta": 0,
+                "effective": true
+              }
+            },
+            "counts": {
+              "wheat": 13,
+              "mill": 7,
+              "granary": 3,
+              "target": 1
+            },
+            "completeChain": true,
+            "recovery": null
+          },
+          "search": {
+            "reason": "search_budget_hit",
+            "used": 192,
+            "limit": 1920
+          }
+        }
+      },
+      {
+        "mode": "warm",
+        "ms": 600.877958,
+        "action": {
+          "kind": "none"
+        },
+        "diagnostic": {
+          "food": {
+            "schemaVersion": 1,
+            "tick": 96000,
+            "reached": true,
+            "reason": "wheat_transport_blocked",
+            "action": {
+              "kind": "none",
+              "foodTransient": "not_evaluated"
+            },
+            "checks": [],
+            "details": "not_captured",
+            "evaluation": {
+              "transitionRepeat": "not_evaluated",
+              "transitionStaff": "not_evaluated",
+              "buildRepeat": "not_evaluated",
+              "buildStaff": "not_evaluated"
+            },
+            "observation": {
+              "kind": "mill",
+              "siteId": "construction-site-000041",
+              "placedTick": 90960,
+              "completedTick": 92385,
+              "observeUntilTick": 94785,
+              "outcome": {
+                "outputDelta": 28,
+                "deliveredBreadDelta": 0,
+                "starvingHomesDelta": 0,
+                "effective": true
+              }
+            },
+            "counts": {
+              "wheat": 13,
+              "mill": 7,
+              "granary": 3,
+              "target": 1
+            },
+            "completeChain": true,
+            "recovery": null
+          },
+          "search": {
+            "reason": "search_budget_hit",
+            "used": 192,
+            "limit": 1920
+          }
+        }
+      }
+    ],
+    "elapsedMs": 913.3198750000001,
+    "receipts": [
+      {
+        "schemaVersion": 1,
+        "tick": 96000,
+        "search": {
+          "reason": "search_budget_hit",
+          "used": 192,
+          "limit": 1920
+        },
+        "food": {
+          "schemaVersion": 1,
+          "tick": 96000,
+          "reached": true,
+          "reason": "wheat_transport_blocked",
+          "action": {
+            "kind": "none",
+            "foodTransient": "not_evaluated"
+          },
+          "checks": [],
+          "details": "not_captured",
+          "evaluation": {
+            "transitionRepeat": "not_evaluated",
+            "transitionStaff": "not_evaluated",
+            "buildRepeat": "not_evaluated",
+            "buildStaff": "not_evaluated"
+          },
+          "observation": {
+            "kind": "mill",
+            "siteId": "construction-site-000041",
+            "placedTick": 90960,
+            "completedTick": 92385,
+            "observeUntilTick": 94785,
+            "outcome": {
+              "outputDelta": 28,
+              "deliveredBreadDelta": 0,
+              "starvingHomesDelta": 0,
+              "effective": true
+            }
+          },
+          "counts": {
+            "wheat": 13,
+            "mill": 7,
+            "granary": 3,
+            "target": 1
+          },
+          "completeChain": true,
+          "recovery": null
+        },
+        "services": [],
+        "advisorAction": {
+          "kind": "none",
+          "foodTransient": "not_evaluated"
+        },
+        "gameActionType": null,
+        "result": "no_action",
+        "newSiteIds": []
+      }
+    ],
+    "actions": []
+  }
+]

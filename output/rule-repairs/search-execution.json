@@ -1,0 +1,14 @@
+{
+  "kind": "post-run-root-execution-receipt",
+  "command": "git fetch origin codex/phase15-organic-ground && git checkout --detach 07257643958ffac19af2881d6a8d7163e5b086e3 && node --import tsx scripts/autoplaySearchReplay.ts /tmp/fls-r1fix-20260924/search-replay-0725764.json",
+  "cwd": "/tmp/fls-r1fix-clean",
+  "toolSession": 23493,
+  "observedExitCode": 0,
+  "headAfterRun": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "headReflog": "07257643958ffac19af2881d6a8d7163e5b086e3 HEAD@{2026-09-24T21:53:18+09:00} checkout: moving from 403cfa9c43937cc273b8aa622537d8643021e2b7 to 07257643958ffac19af2881d6a8d7163e5b086e3",
+  "resultModifiedAt": "2026-09-24T12:54:47.520135+00:00",
+  "resultSha256": "3487a265ba49aa492cb828b6249af89b87435bad55b8f928077e31b5aba286a8",
+  "trackedStatus": "",
+  "recordedAt": "2026-09-24T13:01:39.794250+00:00",
+  "note": "Original runner sourceCommit is input provenance. This receipt records root command observation after the run; it is not a pre-run runner-generated receipt."
+}

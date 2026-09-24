@@ -1,0 +1,84 @@
+{
+  "classification": "Prepared injected states in the actual product UI; not natural screen play",
+  "head": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "dirty": [
+    ""
+  ],
+  "distBundles": [
+    {
+      "file": "index-C4CxWT4l.js",
+      "sha256": "92529c0422940a07df22d644d4f33b3de33c60edacd83b4060879182163dfdc5"
+    }
+  ],
+  "viewport": [
+    1600,
+    1100
+  ],
+  "screenshots": [
+    "prepared-capacity-priority.jpg",
+    "prepared-farm-paused.jpg",
+    "prepared-farm-resumed.jpg",
+    "prepared-well-paused-house.jpg",
+    "prepared-returned-cargo-overflow.jpg",
+    "prepared-wall-workers-actual.jpg"
+  ],
+  "capacity": "주택 · 생활 등급 1\n\n소가옥\n×\n다음: L2 / 첫 방해: 우물 수용량 부족 · 먼저 지어진 집 12채가 사용 중 · 담당 12/12필지 · 거리 1 / 범위 6\n\n생활 등급 1 · 주민 8명 / 정원 8명 · 1×1칸\n\n건축 단계\n1단계 · 관리 양호\n물\n우물 수용량 부족 · 먼저 지어진 집 12채가 사용 중\n빵\n빵이 있습니다\n인구\n유지 또는 성장 중\n주택 발전 조건\n인접 주택 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n철거하면 주민 8명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거",
+  "pause": {
+    "target": {
+      "x": 68.7890625,
+      "y": 231,
+      "width": 75.578125,
+      "height": 44
+    },
+    "state": {
+      "id": "farm-proof",
+      "kind": "wheat_farm",
+      "tx": 46,
+      "ty": 43,
+      "workers": 0,
+      "inventory": {},
+      "reserved": {},
+      "stockReserved": {},
+      "productionProgress": 0,
+      "operationPaused": true
+    }
+  },
+  "resume": {
+    "id": "farm-proof",
+    "kind": "wheat_farm",
+    "tx": 46,
+    "ty": 43,
+    "workers": 4,
+    "inventory": {},
+    "reserved": {},
+    "stockReserved": {},
+    "productionProgress": 3,
+    "operationPaused": false
+  },
+  "save": [
+    {
+      "reason": "pause",
+      "slotId": "auto-1",
+      "tick": 103,
+      "byteLength": 296093,
+      "saveSerializeMs": 1.7999999523162842,
+      "writeMs": 134.89999997615814,
+      "frameWorkMs": 1.899999976158142,
+      "frameIntervalMs": 33.40000000000009
+    },
+    {
+      "reason": "manual",
+      "slotId": "manual",
+      "tick": 103,
+      "byteLength": 296116,
+      "saveSerializeMs": 1.5999999046325684,
+      "writeMs": 105.30000007152557,
+      "frameWorkMs": 1.6999999284744263,
+      "frameIntervalMs": 33.40000000000009
+    }
+  ],
+  "errorsBeforeReload": [],
+  "reloadPaused": true,
+  "wallWorkers": "성벽 공사 인력 6명",
+  "errors": []
+}

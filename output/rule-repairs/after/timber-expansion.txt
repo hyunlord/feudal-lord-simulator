@@ -1,0 +1,18 @@
+tick 48960: era hamlet -> palisade via confirm_palisade_proclamation
+tick 120000 era palisade eraProclaimedTick 48960 pop 176 idle 16
+req [["population",176,140],["market",2,1],["masonry",1,1],["stone",0,400],["coin",8540,200]]
+goal [{"id":"population","label":"인구","current":176,"target":60,"met":true},{"id":"era","label":"목책 시대 이상","current":1,"target":1,"met":true},{"id":"wall","label":"성벽 전체 완공","current":0,"target":1,"met":false}]
+segments [["000",true,"timber",false],["001",true,"timber",false],["002",true,"timber",false],["003",true,"timber",false],["004",true,"timber",false],["005",true,"timber",false],["006",true,"timber",false],["007",true,"timber",false],["008",true,"timber",false],["009",true,"timber",false],["010",true,"timber",false],["011",true,"timber",false],["012",true,"timber",false],["013",true,"timber",false],["014",true,"timber",false],["015",true,"timber",false],["016",true,"timber",false],["017",false,"timber",true],["018",true,"timber",false],["019",false,"timber",true]]
+sites [["palisade-000019-segment-017","palisade_segment","awaiting_materials",{"timber":60},{"timber":28},0,0],["palisade-000019-segment-019","palisade_segment","awaiting_materials",{"timber":60},{"timber":47},0,0]]
+logging-camp-50-40-0 logging_camp (50,40) workers 3 / 3 road true inv {"logs":20}
+storehouse-41-40-0 storehouse (41,40) workers 2 / 2 road true inv {"timber":6,"logs":92}
+construction-site-000001 sawmill (44,38) workers 2 / 2 road true inv {"logs":7,"timber":1}
+construction-site-000015 storehouse (50,42) workers 2 / 2 road true inv {"logs":100}
+construction-site-000020 market (39,38) workers 3 / 3 road true inv {}
+construction-site-000022 market (50,44) workers 3 / 3 road true inv {}
+construction-site-000023 masonry (44,30) workers 3 / 3 road true inv {}
+construction-site-000024 logging_camp (45,30) workers 3 / 3 road true inv {"logs":12}
+construction-site-000026 sawmill (46,30) workers 2 / 2 road true inv {"logs":0,"timber":4}
+construction-site-000027 logging_camp (47,30) workers 3 / 3 road true inv {"logs":20}
+buildings {"house":8,"well":1,"granary":1,"logging_camp":3,"storehouse":2,"sawmill":2,"wheat_farm":9,"mill":4,"chapel":1,"market":2,"masonry":1}
+next decision {"kind":"none"}

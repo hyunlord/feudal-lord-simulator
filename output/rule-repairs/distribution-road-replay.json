@@ -1,0 +1,1060 @@
+{
+  "source": "403cfa9 natural checkpoint engine-derived fixture; 0725764 candidate advisor replay",
+  "classification": "natural-checkpoint-derived-engine-replay-not-natural-screen-play",
+  "chunks": [
+    {
+      "chunk": 0,
+      "tick": 611246,
+      "elapsedMs": 12858.721291,
+      "zeroTicks": 217,
+      "actions": [
+        {
+          "tick": 605246,
+          "action": {
+            "kind": "place_road",
+            "from": {
+              "tx": 38,
+              "ty": 9
+            },
+            "to": {
+              "tx": 37,
+              "ty": 9
+            }
+          },
+          "applied": true
+        },
+        {
+          "tick": 605366,
+          "action": {
+            "kind": "place_road",
+            "from": {
+              "tx": 37,
+              "ty": 8
+            },
+            "to": {
+              "tx": 37,
+              "ty": 3
+            }
+          },
+          "applied": true
+        },
+        {
+          "tick": 605486,
+          "action": {
+            "kind": "place_road",
+            "from": {
+              "tx": 36,
+              "ty": 3
+            },
+            "to": {
+              "tx": 28,
+              "ty": 3
+            }
+          },
+          "applied": true
+        },
+        {
+          "tick": 607646,
+          "action": {
+            "kind": "place_building",
+            "building": "masonry",
+            "tx": 17,
+            "ty": 4,
+            "materialRecovery": {
+              "episode": {
+                "wallId": "palisade-000051",
+                "epoch": 561497
+              },
+              "baseline": {
+                "startedTick": 606198,
+                "sourceId": "construction-site-000072",
+                "fetchWalkerId": "carter:construction-site-000066:606198",
+                "rawPath": "56,10;56,11;56,12;56,13;57,13;58,13;59,13;60,13;61,13;62,13;63,13;63,12;63,11;63,10;63,9;63,8;62,8;62,7;62,6;61,6;60,6;59,6;58,6;57,6;56,6;55,6;54,6;53,6;52,6;51,6;50,6;49,6;48,6;47,6;46,6;45,6;45,5;44,5;43,5;43,4;42,4;42,3;42,2;42,1;42,0;41,0;40,0;39,0;38,0;37,0;36,0;35,0;34,0;33,0;32,0;31,0;30,0;29,0;28,0;27,0;26,0;25,0;24,0;23,0;22,0;21,0;20,0;19,0;18,0;17,0;16,0;15,0;14,0;13,0;12,0;12,1;12,2;12,3;13,3;14,3;15,3;16,3;17,3;18,3",
+                "rawEdges": 83,
+                "roadRevision": 105,
+                "rawArrived": 8,
+                "produced": 2,
+                "wallDelivered": 2,
+                "workingTicks": 116,
+                "haulNoInputTicks": 1185,
+                "outputWalkerId": "carter:construction-site-000066:607384",
+                "deliveredSiteId": "palisade-000051-segment-019-stone",
+                "outputEdges": 8,
+                "returnedTick": 607500
+              },
+              "score": {
+                "score": 3074,
+                "activeEdges": 37,
+                "sourceId": "construction-site-000072",
+                "rawEdges": 0,
+                "admittedRaw": 8,
+                "incumbentScore": 14285,
+                "incumbentActiveEdges": 43
+              }
+            }
+          },
+          "applied": true
+        }
+      ],
+      "events": [
+        {
+          "tick": 605600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 605511,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 230,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 606000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 605511,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 630,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 606400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 0,
+            "lastServicedTick": 605511,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 1
+          }
+        },
+        {
+          "tick": 606800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 606671,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 607200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 606671,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 607600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 0,
+            "lastServicedTick": 606671,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 1
+          }
+        },
+        {
+          "tick": 608000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 607891,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 608400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 607891,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 608800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 0,
+            "lastServicedTick": 607891,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 1
+          }
+        },
+        {
+          "tick": 609200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 609091,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 609600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 609091,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 610000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 609861,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1170,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 610400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 610031,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1570,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 610800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 610031,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1970,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 611200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 1,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 611011,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 2370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 611230,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 611011,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        }
+      ]
+    },
+    {
+      "chunk": 1,
+      "tick": 617246,
+      "elapsedMs": 10526.947333,
+      "zeroTicks": 0,
+      "actions": [],
+      "events": [
+        {
+          "tick": 611600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 611271,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 612000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 611831,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 612400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 612031,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1170,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 612800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 612671,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1570,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 613200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 612671,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1970,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 613600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 613391,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 2370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 614000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 613391,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 2770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 614400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 614251,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 3170,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 614800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 614251,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 3570,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 615200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 615191,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 3970,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 615600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 615211,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 4370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 616000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 615211,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 4770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 616400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 616271,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 5170,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 616800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 616271,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 5570,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 617200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 617031,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 5970,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        }
+      ]
+    },
+    {
+      "chunk": 2,
+      "tick": 623246,
+      "elapsedMs": 9843.510499999999,
+      "zeroTicks": 71,
+      "actions": [],
+      "events": [
+        {
+          "tick": 617600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 617031,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 6370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 618000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 0,
+            "lastServicedTick": 617031,
+            "unmetRequirementTicks": 1,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 1
+          }
+        },
+        {
+          "tick": 618400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 618111,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 330,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 618800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 618111,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 730,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 619200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 619151,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1130,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 619600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 3,
+            "lastServicedTick": 619531,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1530,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 620000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 3,
+            "lastServicedTick": 619771,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1930,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 620400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 1,
+            "lastServicedTick": 619771,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 2330,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 620800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 1,
+            "lastServicedTick": 620591,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 2730,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 621200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 621021,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 3130,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 621600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 621211,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 3530,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 622000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 621211,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 3930,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 622400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 622391,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 4330,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 622800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 622511,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 4730,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 623200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 622511,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 5130,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        }
+      ]
+    },
+    {
+      "chunk": 3,
+      "tick": 629246,
+      "elapsedMs": 9240.768166,
+      "zeroTicks": 62,
+      "actions": [],
+      "events": [
+        {
+          "tick": 623600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 623371,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 5530,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 624000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 623371,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 5930,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 624400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 624211,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 6330,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 624800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 624431,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 6730,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 625200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 625151,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 7130,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 625600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 625151,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 7530,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 626000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 4,
+            "lastServicedTick": 625771,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 7930,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 626400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 2,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 625771,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 8330,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 626470,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 16,
+            "hasWater": true,
+            "breadStock": 2,
+            "lastServicedTick": 625771,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 626800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 18,
+            "hasWater": true,
+            "breadStock": 0,
+            "lastServicedTick": 625771,
+            "unmetRequirementTicks": 1,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 1
+          }
+        },
+        {
+          "tick": 627200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 21,
+            "hasWater": true,
+            "breadStock": 6,
+            "lastServicedTick": 626971,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 627600,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 22,
+            "hasWater": true,
+            "breadStock": 3,
+            "lastServicedTick": 626971,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 628000,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 22,
+            "hasWater": true,
+            "breadStock": 0,
+            "lastServicedTick": 626971,
+            "unmetRequirementTicks": 1,
+            "promotionTicks": 0,
+            "builtLevel": 3,
+            "emptyFoodTicks": 1
+          }
+        },
+        {
+          "tick": 628400,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 22,
+            "hasWater": true,
+            "breadStock": 6,
+            "lastServicedTick": 628151,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 370,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 628800,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 22,
+            "hasWater": true,
+            "breadStock": 3,
+            "lastServicedTick": 628151,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 770,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        },
+        {
+          "tick": 629200,
+          "house": {
+            "buildingId": "construction-site-000062",
+            "level": 3,
+            "residents": 22,
+            "hasWater": true,
+            "breadStock": 6,
+            "lastServicedTick": 629131,
+            "unmetRequirementTicks": 0,
+            "promotionTicks": 1170,
+            "builtLevel": 3,
+            "emptyFoodTicks": 0
+          }
+        }
+      ]
+    }
+  ]
+}

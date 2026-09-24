@@ -2,6 +2,7 @@ import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } fr
 import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { timberExpansionKind } from './autoplayTimberRecovery';
+import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
@@ -223,7 +224,8 @@ function storageAction(state: GameState): AutoplayAction {
   const capacity = stores.reduce((sum, building) => sum + BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity, 0);
   const occupied = stores.reduce((sum, building) => sum + Object.values(building.inventory).reduce((total, amount) => total + (amount ?? 0), 0), 0);
   const target = state.era === "hamlet" ? 400 : 1000;
-  return capacity < target && occupied > capacity - 80 ? buildAction(state, "storehouse") : NONE;
+  return capacity < target && occupied > capacity - 80 || needsStoneStorageRecovery(state)
+    ? buildAction(state, "storehouse") : NONE;
 }
 
 

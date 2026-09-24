@@ -1,0 +1,1098 @@
+{
+  "sourceCommit": "e97d6a8",
+  "count": 69,
+  "passed": 69,
+  "results": [
+    {
+      "id": "48-seed1-113880",
+      "passed": true,
+      "tick": 113880,
+      "elapsedMs": 871.202584,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-114000",
+      "passed": true,
+      "tick": 114000,
+      "elapsedMs": 867.9935830000001,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-125040",
+      "passed": true,
+      "tick": 125040,
+      "elapsedMs": 527.5549579999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 204,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-127440",
+      "passed": true,
+      "tick": 127440,
+      "elapsedMs": 543.82575,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 195,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-128280",
+      "passed": true,
+      "tick": 128280,
+      "elapsedMs": 2738.8415419999997,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 576,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-128400",
+      "passed": true,
+      "tick": 128400,
+      "elapsedMs": 3621.7565409999997,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 576,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-129720",
+      "passed": true,
+      "tick": 129720,
+      "elapsedMs": 563.722125,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 213,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-129840",
+      "passed": true,
+      "tick": 129840,
+      "elapsedMs": 549.9215829999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 213,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-133920",
+      "passed": true,
+      "tick": 133920,
+      "elapsedMs": 521.5219579999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 207,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-134520",
+      "passed": true,
+      "tick": 134520,
+      "elapsedMs": 1714.58725,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 206,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-135120",
+      "passed": true,
+      "tick": 135120,
+      "elapsedMs": 1661.812709,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-141720",
+      "passed": true,
+      "tick": 141720,
+      "elapsedMs": 994.670584,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 204,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-76920",
+      "passed": true,
+      "tick": 76920,
+      "elapsedMs": 1033.019375,
+      "action": {
+        "kind": "place_building",
+        "building": "house",
+        "tx": 56,
+        "ty": 44
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 309,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-91200",
+      "passed": true,
+      "tick": 91200,
+      "elapsedMs": 2360.895291,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-91440",
+      "passed": true,
+      "tick": 91440,
+      "elapsedMs": 764.646875,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-91560",
+      "passed": true,
+      "tick": 91560,
+      "elapsedMs": 804.272541,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-96000",
+      "passed": true,
+      "tick": 96000,
+      "elapsedMs": 720.8092079999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "48-seed1-99960",
+      "passed": true,
+      "tick": 99960,
+      "elapsedMs": 559.661458,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-90240",
+      "passed": true,
+      "tick": 90240,
+      "elapsedMs": 463.043,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-90360",
+      "passed": true,
+      "tick": 90360,
+      "elapsedMs": 445.975458,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-90600",
+      "passed": true,
+      "tick": 90600,
+      "elapsedMs": 441.36079200000006,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-90720",
+      "passed": true,
+      "tick": 90720,
+      "elapsedMs": 449.489291,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-90840",
+      "passed": true,
+      "tick": 90840,
+      "elapsedMs": 450.055834,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-90960",
+      "passed": true,
+      "tick": 90960,
+      "elapsedMs": 452.03891699999997,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-93120",
+      "passed": true,
+      "tick": 93120,
+      "elapsedMs": 454.66695799999997,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-93840",
+      "passed": true,
+      "tick": 93840,
+      "elapsedMs": 315.40054100000003,
+      "action": {
+        "kind": "place_building",
+        "building": "mill",
+        "tx": 42,
+        "ty": 27
+      },
+      "search": {
+        "reason": "search_complete",
+        "used": 153,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-93960",
+      "passed": true,
+      "tick": 93960,
+      "elapsedMs": 865.798583,
+      "action": {
+        "kind": "place_building",
+        "building": "market",
+        "tx": 41,
+        "ty": 28
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 202,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-94080",
+      "passed": true,
+      "tick": 94080,
+      "elapsedMs": 1350.454709,
+      "action": {
+        "kind": "place_road",
+        "from": {
+          "tx": 58,
+          "ty": 43
+        },
+        "to": {
+          "tx": 58,
+          "ty": 45
+        }
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 274,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-94200",
+      "passed": true,
+      "tick": 94200,
+      "elapsedMs": 1012.593291,
+      "action": {
+        "kind": "place_building",
+        "building": "storehouse",
+        "tx": 57,
+        "ty": 46
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 211,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-94320",
+      "passed": true,
+      "tick": 94320,
+      "elapsedMs": 726.443208,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-94560",
+      "passed": true,
+      "tick": 94560,
+      "elapsedMs": 724.6288749999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-94680",
+      "passed": true,
+      "tick": 94680,
+      "elapsedMs": 739.264958,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-95760",
+      "passed": true,
+      "tick": 95760,
+      "elapsedMs": 1291.861083,
+      "action": {
+        "kind": "place_road",
+        "from": {
+          "tx": 58,
+          "ty": 48
+        },
+        "to": {
+          "tx": 50,
+          "ty": 48
+        }
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 273,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-95880",
+      "passed": true,
+      "tick": 95880,
+      "elapsedMs": 1243.8929580000001,
+      "action": {
+        "kind": "place_road",
+        "from": {
+          "tx": 50,
+          "ty": 47
+        },
+        "to": {
+          "tx": 50,
+          "ty": 46
+        }
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 274,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-96000",
+      "passed": true,
+      "tick": 96000,
+      "elapsedMs": 1261.290084,
+      "action": {
+        "kind": "place_road",
+        "from": {
+          "tx": 49,
+          "ty": 46
+        },
+        "to": {
+          "tx": 49,
+          "ty": 46
+        }
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 275,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-96120",
+      "passed": true,
+      "tick": 96120,
+      "elapsedMs": 1194.505625,
+      "action": {
+        "kind": "place_road",
+        "from": {
+          "tx": 49,
+          "ty": 45
+        },
+        "to": {
+          "tx": 49,
+          "ty": 44
+        }
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 274,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-96600",
+      "passed": true,
+      "tick": 96600,
+      "elapsedMs": 691.2155,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-96840",
+      "passed": true,
+      "tick": 96840,
+      "elapsedMs": 677.759458,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-96960",
+      "passed": true,
+      "tick": 96960,
+      "elapsedMs": 730.9394580000001,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-97200",
+      "passed": true,
+      "tick": 97200,
+      "elapsedMs": 674.523417,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-97440",
+      "passed": true,
+      "tick": 97440,
+      "elapsedMs": 671.285542,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-97560",
+      "passed": true,
+      "tick": 97560,
+      "elapsedMs": 682.06825,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-98280",
+      "passed": true,
+      "tick": 98280,
+      "elapsedMs": 664.038458,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-98400",
+      "passed": true,
+      "tick": 98400,
+      "elapsedMs": 677.402125,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-99240",
+      "passed": true,
+      "tick": 99240,
+      "elapsedMs": 694.1125,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed1-99480",
+      "passed": true,
+      "tick": 99480,
+      "elapsedMs": 673.37775,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-363240",
+      "passed": true,
+      "tick": 363240,
+      "elapsedMs": 621.931542,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-363720",
+      "passed": true,
+      "tick": 363720,
+      "elapsedMs": 572.505625,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-365880",
+      "passed": true,
+      "tick": 365880,
+      "elapsedMs": 578.008083,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-366000",
+      "passed": true,
+      "tick": 366000,
+      "elapsedMs": 556.52225,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-366960",
+      "passed": true,
+      "tick": 366960,
+      "elapsedMs": 570.1385829999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-86160",
+      "passed": true,
+      "tick": 86160,
+      "elapsedMs": 476.256291,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-86880",
+      "passed": true,
+      "tick": 86880,
+      "elapsedMs": 800.392083,
+      "action": {
+        "kind": "proclaim_era"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 200,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-88320",
+      "passed": true,
+      "tick": 88320,
+      "elapsedMs": 843.0139999999999,
+      "action": {
+        "kind": "place_building",
+        "building": "market",
+        "tx": 49,
+        "ty": 28
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 202,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed2-88440",
+      "passed": true,
+      "tick": 88440,
+      "elapsedMs": 713.312291,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed3-20280",
+      "passed": true,
+      "tick": 20280,
+      "elapsedMs": 154.584333,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed3-21480",
+      "passed": true,
+      "tick": 21480,
+      "elapsedMs": 168.674042,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 193,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed3-24120",
+      "passed": true,
+      "tick": 24120,
+      "elapsedMs": 181.99241699999996,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed3-28080",
+      "passed": true,
+      "tick": 28080,
+      "elapsedMs": 198.4555,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 193,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-417840",
+      "passed": true,
+      "tick": 417840,
+      "elapsedMs": 646.7227919999999,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-418920",
+      "passed": true,
+      "tick": 418920,
+      "elapsedMs": 643.630291,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-419280",
+      "passed": true,
+      "tick": 419280,
+      "elapsedMs": 622.977917,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-421440",
+      "passed": true,
+      "tick": 421440,
+      "elapsedMs": 611.6482080000001,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-427080",
+      "passed": true,
+      "tick": 427080,
+      "elapsedMs": 658.694125,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-427320",
+      "passed": true,
+      "tick": 427320,
+      "elapsedMs": 608.229291,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-429240",
+      "passed": true,
+      "tick": 429240,
+      "elapsedMs": 620.614584,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-429360",
+      "passed": true,
+      "tick": 429360,
+      "elapsedMs": 620.068417,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-430080",
+      "passed": true,
+      "tick": 430080,
+      "elapsedMs": 628.578208,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    },
+    {
+      "id": "seed4-431040",
+      "passed": true,
+      "tick": 431040,
+      "elapsedMs": 624.0957920000001,
+      "action": {
+        "kind": "none"
+      },
+      "search": {
+        "reason": "search_budget_hit",
+        "used": 192,
+        "limit": 1920
+      },
+      "deterministic": true
+    }
+  ],
+  "evaluatedCommit": "07257643958ffac19af2881d6a8d7163e5b086e3"
+}

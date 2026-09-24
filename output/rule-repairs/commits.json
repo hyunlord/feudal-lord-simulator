@@ -1,0 +1,171 @@
+{
+  "base": "1c09e997d276f0fbac861990ed7928c41458a2e5",
+  "sourceHead": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "includesConcurrentB11Integration": true,
+  "commits": [
+    {
+      "commit": "87497c3374a7c3325ac5072b926cfe3cf63f3b83",
+      "intent": "Keep established households served when new homes compete for capacity"
+    },
+    {
+      "commit": "526100a565b5ad4b5c71f09d62bdab9b2b6fd9e1",
+      "intent": "Let reachable stone replacements progress despite an isolated earlier segment"
+    },
+    {
+      "commit": "66d2a2f9b22ef424fff163d79d578c6979ba1eb5",
+      "intent": "Keep waiting wall sites from consuming the general workforce"
+    },
+    {
+      "commit": "d8aa8780ca338036192857f62b02623ab5faa8db",
+      "intent": "Preserve materials promised to every construction project before market sales"
+    },
+    {
+      "commit": "d03b48bf8796ff514f0c674d8ea5a4461ca5f65e",
+      "intent": "Give players a reversible way to release workers and keep ready construction moving"
+    },
+    {
+      "commit": "b064330f75ae5e6181f598abae2942d98da46510",
+      "intent": "Release cancelled construction carriers even when return storage is full"
+    },
+    {
+      "commit": "3b07a90743983756359d5accd92e44381e568152",
+      "intent": "Give stranded wheat an actionable local processing route to hungry homes"
+    },
+    {
+      "commit": "15f807c4b40159f66be87ae726e2abc59a0930c1",
+      "intent": "Keep paused granaries and imported pause flags consistent with the operation rule"
+    },
+    {
+      "commit": "d3d391c9f467ad2242f1f22ffcea2262021d9bef",
+      "intent": "Keep wall construction supplied after sustained timber shortage"
+    },
+    {
+      "commit": "d0db74b2cc8d82f6a90e2239c4e3c76f04e6ca03",
+      "intent": "Preserve original issue probes for repeatable rule verification"
+    },
+    {
+      "commit": "d9af1f61d4f83ae489989e6a204e8066110cc607",
+      "intent": "Reject fabricated timber shortage clocks when loading saves"
+    },
+    {
+      "commit": "666374ab7f1ecbd52497f5ef73e060edf29019c9",
+      "intent": "Verify stranded grain recovery through the full automatic advisor"
+    },
+    {
+      "commit": "a9baed67f8030db2660ab32adf97a1afcfb4a266",
+      "intent": "Bound automatic planning without treating incomplete searches as impossible"
+    },
+    {
+      "commit": "90938cc1cfcdcd1ae5587a0103eb79383c224128",
+      "intent": "Make rule verification status and reproduced evidence explicit"
+    },
+    {
+      "commit": "4299bab7b9ac639343ef4a25223ccef2b4088584",
+      "intent": "Preserve the last completed state when a guardrail run times out"
+    },
+    {
+      "commit": "215882e2d9447581b672681e4689818a85b2c60d",
+      "intent": "Time each render stage and count canvas calls in proof mode only"
+    },
+    {
+      "commit": "562a55dbb79eb64a0650910a8baa979d2bafdc2e",
+      "intent": "Keep regression contracts aligned with approved construction labour rules"
+    },
+    {
+      "commit": "fd6d190afb3c24dbc0ab8ce0ad9b39f91957c8f7",
+      "intent": "Keep bounded service searches from starving reachable food recovery"
+    },
+    {
+      "commit": "5f05e7c652139435c30944cee55a1e0a667a1042",
+      "intent": "Feed existing sawmills before treating logs as expansion surplus"
+    },
+    {
+      "commit": "8fc019fd7c4b339662b24df98d4c772b00953483",
+      "intent": "Reassess proven wheat shortages beyond an obsolete bread peak"
+    },
+    {
+      "commit": "92f0760ae338e7d09d7bcbcbd185dcd89b315f54",
+      "intent": "Fill the road texture along the road polygon instead of a clipped tile box"
+    },
+    {
+      "commit": "00357a788a5e6fbfec2a72670fef48e11c07327e",
+      "intent": "Keep reserve checks proportional to sources that can hold material"
+    },
+    {
+      "commit": "008a24f5ad267ee2e039b3f0a4ae45bdd43f6213",
+      "intent": "Stop candidate work once the required service proof budget is exhausted"
+    },
+    {
+      "commit": "a8c333d9ce2395ffde4c6a701fd75451c499daba",
+      "intent": "Keep render benchmarks on current-schema fixtures and record pre-merge measurements"
+    },
+    {
+      "commit": "cbd221a34dab6efedba31571dc8bb2438a722c4b",
+      "intent": "Merge remote-tracking branch 'origin/codex/phase15-organic-ground' into claude/b11-render-metrics"
+    },
+    {
+      "commit": "a215dab53d9e2978c74faf10082d62cfc9f92c11",
+      "intent": "Let bounded service proofs reach viable growth alternatives"
+    },
+    {
+      "commit": "95f4a1d6a2b84472b7051dd0d08b54899d5028a1",
+      "intent": "Let the proof port run without stage timing when a canvas double has no getContext"
+    },
+    {
+      "commit": "505a86655a21e35bf76e1b52c804dfb9db089f4e",
+      "intent": "Report B11 render stage baseline, the P-F1 cause and the road fill fix"
+    },
+    {
+      "commit": "5e08cdd62fbec98bbce479fc3a25a22323676eb4",
+      "intent": "Merge remote-tracking branch 'origin/codex/phase15-organic-ground' into claude/b11-render-metrics"
+    },
+    {
+      "commit": "96b463a02d289cda2ed70505256ae317d5d5e434",
+      "intent": "Avoid repeating the unchanged road graph for every gate candidate"
+    },
+    {
+      "commit": "0456a181a44b655a027ae6e3d56500420e2973d9",
+      "intent": "Observe mill replenishment before the next idle advisor pulse"
+    },
+    {
+      "commit": "8ae0736235e6055cb3fefbdd88abda52cc67cc51",
+      "intent": "Merge remote-tracking branch 'origin/codex/phase15-organic-ground' into claude/b11-render-metrics"
+    },
+    {
+      "commit": "102397f8d70cf770f8d622481223f50553c39ad2",
+      "intent": "Merge remote-tracking branch 'origin/codex/phase15-organic-ground' into claude/b11-render-metrics"
+    },
+    {
+      "commit": "d41737018f042a2d15f3e26e9e1946d10fc11403",
+      "intent": "Reuse completed service proofs without changing deterministic search budgets"
+    },
+    {
+      "commit": "71e3d0d0f215a07a4848d4b797cc5c8b98804de4",
+      "intent": "Merge remote-tracking branch 'origin/codex/phase15-organic-ground' into claude/b11-render-metrics"
+    },
+    {
+      "commit": "fddee9c716633c8d60325fcdf7f386cf5b8e210c",
+      "intent": "Let service recovery reject impossible slots before exhausting its search"
+    },
+    {
+      "commit": "5fa1c80c59e08ca6f681a35dc99d8cd13126ac44",
+      "intent": "Preserve concurrent render work while integrating rule recovery"
+    },
+    {
+      "commit": "403cfa9c43937cc273b8aa622537d8643021e2b7",
+      "intent": "Wait for active food observations before retrying an idle decision"
+    },
+    {
+      "commit": "35c677470abeb49d2d3c3a7e250e3b02c4eada8b",
+      "intent": "Let the advisor free storage when the stone goal cannot receive output"
+    },
+    {
+      "commit": "b7764e9b8e0ad69242fccdc15908e91fc0c77394",
+      "intent": "Avoid repeating unchanged cart return-route searches on every tick"
+    },
+    {
+      "commit": "07257643958ffac19af2881d6a8d7163e5b086e3",
+      "intent": "Open legal granary exits when measured meal delivery remains too distant"
+    }
+  ]
+}
