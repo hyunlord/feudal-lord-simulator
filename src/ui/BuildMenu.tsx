@@ -123,13 +123,15 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         </div>
       </div>
       <div className="build-menu-summary">
-        <strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span>
-        {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
-        {service && <span>수용 {service.capacity}필지</span>}
+        {palisadeDrawing ? <><strong>{WALL_COPY.drawTool}</strong><span>{WALL_COPY.drawHint}</span></> : <>
+          <strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span>
+          {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
+          {service && <span>수용 {service.capacity}필지</span>}
+        </>}
         <button type="button" className="build-info-toggle" aria-label="선택 도구 상세 안내" aria-expanded={detailsOpen} aria-controls={`${id}-details`} onClick={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }}>i</button>
       </div>
       <div id={`${id}-details`} className="build-menu-details" aria-label="건설 안내" hidden={!detailsOpen}>
-        {selectedOption === null ? <p>선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.</p> : <>
+        {palisadeDrawing ? <p>{WALL_COPY.drawHint}</p> : selectedOption === null ? <p>선택 도구 없음 · 건설 카드를 눌러 도구를 선택하세요.</p> : <>
           <div className="build-menu-detail-heading"><strong>{selectedOption.label}</strong><span>{buildCostLabel(selectedOption)}</span></div>
           <p>{selectedOption.purpose}</p><p>{selectedOption.requirements.join(" · ")}</p>
           <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
