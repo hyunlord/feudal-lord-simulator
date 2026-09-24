@@ -63,3 +63,34 @@ test('UI replenishment does not replace a pending or previously selected action'
   assert.equal(pending.decision, none.decision);
   assert.equal(calls, 1);
 });
+
+test('actual mill replenishment does not retry while the current food observation is active', () => {
+  const start = naturalTown();
+  const delivered = advanceTick(start);
+  assert.ok(delivered.autoplayFoodObservation);
+  const observing = { ...delivered, autoplayFoodObservation: {
+    ...delivered.autoplayFoodObservation, observeUntilTick: delivered.tick + 120,
+  } };
+  assert.equal(shouldRetryAutoplayAfterMillReplenishment(start, observing), false);
+});
+
+for (const kind of ['wheat_farm', 'mill', 'granary'] as const) {
+  test(`actual mill replenishment does not retry while a ${kind} is under construction`, () => {
+    const start = naturalTown();
+    const delivered = advanceTick(start);
+    const pending: GameState = { ...delivered, constructionSites: [...delivered.constructionSites, {
+      id: 'pending-food', kind, tx: 57, ty: 47, required: { timber: 30 }, delivered: {}, reserved: {},
+      builderTicks: 0, requiredBuilderTicks: 600, assignedBuilders: 0, stall: 'awaiting_materials', startedTick: start.tick,
+    }] };
+    assert.equal(shouldRetryAutoplayAfterMillReplenishment(start, pending), false);
+  });
+}
+
+test('a food observation ending on the actual replenishment tick permits retry', () => {
+  const start = naturalTown();
+  assert.ok(start.autoplayFoodObservation);
+  const observing = { ...start, autoplayFoodObservation: {
+    ...start.autoplayFoodObservation, observeUntilTick: start.tick + 1,
+  } };
+  assert.equal(shouldRetryAutoplayAfterMillReplenishment(observing, advanceTick(observing)), true);
+});
