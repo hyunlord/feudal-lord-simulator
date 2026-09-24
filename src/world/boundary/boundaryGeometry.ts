@@ -130,6 +130,20 @@ export function nearestPointOnPolyline(point: BoundaryPoint, line: readonly Boun
   return best;
 }
 
+/**
+ * Nearest point on the part of a closed Chaikin-smoothed loop that came from vertex `index` of the unsmoothed loop.
+ * After `rounds` closed Chaikin rounds, vertex i's corner is cut by the points around index i * 2^rounds, so the
+ * search only visits that window (the whole-loop search was quadratic on long forest edges).
+ */
+export function nearestPointNearVertex(point: BoundaryPoint, smoothed: readonly BoundaryPoint[], index: number, rounds: number): BoundaryPoint {
+  const count = smoothed.length;
+  if (count < 2) return smoothed[0] ?? point;
+  const scale = 2 ** rounds;
+  const window: BoundaryPoint[] = [];
+  for (let offset = -scale; offset <= scale; offset += 1) window.push(smoothed[(((index * scale + offset) % count) + count) % count] as BoundaryPoint);
+  return nearestPointOnPolyline(point, window, false);
+}
+
 /** Distance from a point to the square of tile (tx,ty); 0 inside. */
 export function distanceToCell(point: BoundaryPoint, tx: number, ty: number): number {
   return Math.hypot(Math.max(0, Math.abs(point.x - tx) - 0.5), Math.max(0, Math.abs(point.y - ty) - 0.5));

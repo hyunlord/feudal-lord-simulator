@@ -3,6 +3,7 @@ import {
   boundaryHash,
   chaikinClosed,
   hashNumbers,
+  nearestPointNearVertex,
   nearestPointOnPolyline,
   type BoundaryPoint,
 } from "./boundaryGeometry";
@@ -77,7 +78,7 @@ export function forestBoundary(grid: Grid, seed: number): ForestBoundary {
     }
     return [{
       edgeKey: key,
-      anchor: nearestPointOnPolyline(point, loop.smoothed, true),
+      anchor: nearestPointNearVertex(point, loop.smoothed, index, BOUNDARY_CHAIKIN_ROUNDS),
       variant,
       flipX: ((hash >>> 4) & 1) === 1,
       scale: 0.9 + ((hash >>> 12) & 0xff) / 255 * 0.2,

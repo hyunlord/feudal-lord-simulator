@@ -1,0 +1,126 @@
+{
+  "url": "http://127.0.0.1:4195/",
+  "note": "fixture states, simulation not started (준비 상태)",
+  "rows": [
+    {
+      "file": "fixed12-z1.0-off.jpg",
+      "bytes": 154388,
+      "chunks": null,
+      "scene": {
+        "builds": 0,
+        "lastBuildMs": null
+      }
+    },
+    {
+      "file": "fixed12-z1.0-on.jpg",
+      "bytes": 166151,
+      "chunks": {
+        "hits": 7172,
+        "prefetched": 13,
+        "contentRasters": 88,
+        "zoomRasters": 0,
+        "deferredZoom": 0,
+        "evictions": 0,
+        "rasterMs": 64.99999988079071,
+        "entries": 57,
+        "pixels": 7647120,
+        "lastFrameRasters": 0,
+        "lastFrameRasterMs": 0
+      },
+      "scene": {
+        "builds": 1,
+        "lastBuildMs": 19
+      }
+    },
+    {
+      "file": "fixed12-z0.6-off.jpg",
+      "bytes": 151239,
+      "chunks": null,
+      "scene": {
+        "builds": 0,
+        "lastBuildMs": null
+      }
+    },
+    {
+      "file": "fixed12-z0.6-on.jpg",
+      "bytes": 159582,
+      "chunks": {
+        "hits": 10595,
+        "prefetched": 8,
+        "contentRasters": 130,
+        "zoomRasters": 0,
+        "deferredZoom": 0,
+        "evictions": 0,
+        "rasterMs": 74.40000009536743,
+        "entries": 73,
+        "pixels": 3598608,
+        "lastFrameRasters": 0,
+        "lastFrameRasterMs": 0
+      },
+      "scene": {
+        "builds": 1,
+        "lastBuildMs": 19.200000047683716
+      }
+    },
+    {
+      "file": "seed2-town-z1.0-off.jpg",
+      "bytes": 298558,
+      "chunks": null,
+      "scene": {
+        "builds": 0,
+        "lastBuildMs": null
+      }
+    },
+    {
+      "file": "seed2-town-z1.0-on.jpg",
+      "bytes": 314705,
+      "chunks": {
+        "hits": 11480,
+        "prefetched": 8,
+        "contentRasters": 140,
+        "zoomRasters": 0,
+        "deferredZoom": 0,
+        "evictions": 0,
+        "rasterMs": 74.59999978542328,
+        "entries": 78,
+        "pixels": 10464480,
+        "lastFrameRasters": 0,
+        "lastFrameRasterMs": 0
+      },
+      "scene": {
+        "builds": 1,
+        "lastBuildMs": 23
+      }
+    },
+    {
+      "file": "seed2-town-z0.6-off.jpg",
+      "bytes": 196668,
+      "chunks": null,
+      "scene": {
+        "builds": 0,
+        "lastBuildMs": null
+      }
+    },
+    {
+      "file": "seed2-town-z0.6-on.jpg",
+      "bytes": 205653,
+      "chunks": {
+        "hits": 14276,
+        "prefetched": 0,
+        "contentRasters": 172,
+        "zoomRasters": 0,
+        "deferredZoom": 0,
+        "evictions": 0,
+        "rasterMs": 85.80000042915344,
+        "entries": 86,
+        "pixels": 4239456,
+        "lastFrameRasters": 0,
+        "lastFrameRasterMs": 0
+      },
+      "scene": {
+        "builds": 1,
+        "lastBuildMs": 22.799999952316284
+      }
+    }
+  ]
+}

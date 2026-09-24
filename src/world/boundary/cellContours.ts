@@ -65,8 +65,10 @@ export function cellContourLoops(mask: CellMask): CellContourLoop[] {
     return key;
   };
   const link = (from: number, to: number): void => {
-    links.set(from, [...(links.get(from) ?? []), to]);
-    links.set(to, [...(links.get(to) ?? []), from]);
+    for (const [a, b] of [[from, to], [to, from]] as const) {
+      const list = links.get(a);
+      if (list === undefined) links.set(a, [b]); else list.push(b);
+    }
   };
   for (let y = -1; y < mask.height; y += 1) {
     for (let x = -1; x < mask.width; x += 1) {
@@ -135,7 +137,10 @@ export function cellOutlineLoops(mask: CellMask): CellContourLoop[] {
   const stride = mask.width * 2 + 6;
   const cornerKey = (point: BoundaryPoint): number => (Math.round(point.y * 2) + 3) * stride + (Math.round(point.x * 2) + 3);
   const outgoing = new Map<number, Directed[]>();
-  const add = (edge: Directed): void => { const key = cornerKey(edge.from); outgoing.set(key, [...(outgoing.get(key) ?? []), edge]); };
+  const add = (edge: Directed): void => {
+    const key = cornerKey(edge.from); const list = outgoing.get(key);
+    if (list === undefined) outgoing.set(key, [edge]); else list.push(edge);
+  };
   for (let ty = -1; ty <= mask.height; ty += 1) for (let tx = -1; tx <= mask.width; tx += 1) {
     if (!value(tx, ty)) continue;
     // Inside on the left of travel (y down): walk each exposed side of the inside cell counter-clockwise on screen.
