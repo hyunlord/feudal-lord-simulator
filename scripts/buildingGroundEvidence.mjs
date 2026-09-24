@@ -78,11 +78,12 @@ async function wedgeView(browser, state, tile, zoom, dpr, base) {
 async function wedge(out) {
   const chromium = await loadChromium(); const states = await sceneStates();
   const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--disable-gpu'] });
-  const scenes = [['c25', states.seed2, [44, 38]], ['c25-zoned', states.c25zoned, [44, 38]]];
+  const scenes = flags.snapshot !== undefined ? [] : [['c25', states.seed2, [44, 38]], ['c25-zoned', states.c25zoned, [44, 38]]];
   if (flags.snapshot !== undefined) {
+    // e.g. the state the real-input zone scene ended in (scene mode writes it), reopened in both builds.
     const raw = await readFile(flags.snapshot);
     const snapshot = JSON.parse((flags.snapshot.endsWith('.gz') ? gunzipSync(raw) : raw).toString('utf8'));
-    scenes.push(['seed2-natural-zoned', snapshot, (flags.tile ?? '47,41').split(',').map(Number)]);
+    scenes.push([flags.name ?? 'snapshot', snapshot, (flags.tile ?? '41,45').split(',').map(Number)]);
   }
   const rows = [];
   for (const [name, state, tile] of scenes) for (const zoom of [0.6, 1, 1.35]) for (const dpr of [1, 2]) {

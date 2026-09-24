@@ -70,6 +70,9 @@ export function drawAprons(context: CanvasRenderingContext2D, grounds: BuildingG
 }
 
 type Blotch = { readonly x: number; readonly y: number; readonly radius: number; readonly kind: number };
+// Cache (AGENTS rule 10): (a) key = the yard object (immutable, one per ground scene); (b) the seed is left out because
+// a scene is built for one seed (it is in the scene key), so a yard object never meets another; (c) placing a yard's
+// blotches walks its ~200-600 subcells (~0.05 ms); cached so re-rastering a chunk (zoom, zones) does not repeat it.
 const blotchCache = new WeakMap<BuildingYard, Blotch[]>();
 
 /**

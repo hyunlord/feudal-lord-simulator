@@ -83,7 +83,7 @@ export type RenderFrameInput = {
 };
 
 let objectPassForProof = true;
-/** Proof hook (C1d gate 1): skip the object pass so a wedge check can read the ground layer alone. */
+/** Proof hook (C1d gate 1): skip the object pass and every overlay so a wedge check can read the ground layer alone. */
 export function setObjectPassForProof(enabled: boolean): void { objectPassForProof = enabled; }
 
 export const renderFrame = (input: RenderFrameInput): void => {
@@ -146,6 +146,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
       });
     },
   });
+  if (!objectPassForProof) return;
   probe?.enter("overlay.mode");
   drawOverlay({
     context: input.context,

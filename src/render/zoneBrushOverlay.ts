@@ -20,8 +20,9 @@ import { ZONE_STYLES } from "./drawZones";
 // prediction text until the drag starts. An arable stroke also hatches the cells a wheat farm there could not reach a
 // road from, and says how many ("도로 접근 없는 칸 N"), judged by the rules' own road access (buildingRoadAccessTiles).
 //
-// Cache (AGENTS rule 10): the last assessment, keyed by the state's zones and palisade objects, the tool, the
-// gesture object (replaced on every accepted point) and the hover point rounded to 1/8 tile. Rasterising a long
+// Cache (AGENTS rule 10): the last assessment, keyed by the state's zones, palisade and tiles objects (tiles since C1d:
+// the road-access count reads roads), the tool, the gesture object (replaced on every accepted point) and the hover
+// point rounded to 1/8 tile. Rasterising a long
 // stroke costs ~0.1-0.5 ms, so it runs once per change, not once per frame.
 
 export type ZoneBrushView = {
@@ -38,7 +39,7 @@ let last: { readonly key: readonly unknown[]; readonly preview: Preview } | null
 
 export function zoneBrushPreview(state: GameState, view: ZoneBrushView): Preview {
   const hoverKey = view.hover === null ? null : `${Math.round(view.hover.x * 8)},${Math.round(view.hover.y * 8)}`;
-  const key = [state.zones, state.palisade, state.width, view.tool.target, view.tool.radius, view.tool.polygon, view.gesture, hoverKey];
+  const key = [state.zones, state.palisade, state.tiles, state.width, view.tool.target, view.tool.radius, view.tool.polygon, view.gesture, hoverKey];
   if (last !== null && last.key.length === key.length && last.key.every((value, index) => value === key[index])) return last.preview;
   const stroke = view.gesture === null ? null : gestureStroke(view.tool, view.gesture, view.hover);
   let preview: Preview = EMPTY;
