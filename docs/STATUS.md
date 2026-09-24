@@ -4,7 +4,7 @@
 
 ## 현재 단계
 
-- **B1 공통 데이터 계약**(Claude Code, 이 작업): `src/contracts/`에 설계서 11절의 `SourceRef`(10종)·`EffectSpec`(5종)·`AppliedEffect`·`PredictionLine` 타입과 파생·비저장 효과 파이프(`EffectRegistry`, 아직 읽는 규칙 없음)를 두고, 원인 등록표·예측 줄·시장 판매 수입·`firstBlocker`를 어댑터로 연결했다. 게임 규칙·저장 형식·표시 변화 없음. 콘텐츠 설계 v1.1·로드맵 v3·에셋 계획 v1·조사 원문을 이관했다. [B1 보고서](verification/b1-contracts/REPORT.md).
+- **B1 공통 데이터 계약 관문 통과**(Claude Code): 단위7/7 · 표시 SHA 전후 일치5/5 상태 · 깨끗한 클론2,577/2,577(Phase 9 포함)·typecheck·build · 문서 링크121/121. `src/contracts/`에 설계서 11절의 `SourceRef`(10종)·`EffectSpec`(5종)·`AppliedEffect`·`PredictionLine` 타입과 파생·비저장 효과 파이프(`EffectRegistry`, 아직 읽는 규칙 없음)를 두고, 원인 등록표·예측 줄·시장 판매 수입·`firstBlocker`를 어댑터로 연결했다. 게임 규칙·저장 형식·표시 변화 없음. 콘텐츠 설계 v1.1·로드맵 v3·에셋 계획 v1·조사 원문을 이관했다. [B1 보고서](verification/b1-contracts/REPORT.md).
 - **D1a 곡선 렌더**(Claude Code 렌더 세션, `claude/d1a-curved-render`): 진행 중. `src/render/**`·`src/world/boundary/**`·`public/assets/**`는 그 세션이 소유한다.
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
