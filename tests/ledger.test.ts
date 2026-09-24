@@ -169,7 +169,7 @@ test("L-8 pressing a ledger source row outlines the selling market through the m
 });
 
 test("L-9 the current save round-trips the ledger; a v6 save starts it with one opening balance entry", () => {
-  assert.equal(SAVE_SCHEMA_VERSION, 8);
+  assert.equal(SAVE_SCHEMA_VERSION, 9);
   const v6 = readFileSync("fixtures/saves/v6/timber-shortage.save.json", "utf8");
   const original = JSON.parse(v6).state as GameState & { coinLedger?: unknown };
   const { envelope, migratedFrom } = decodeSave(new TextEncoder().encode(v6));

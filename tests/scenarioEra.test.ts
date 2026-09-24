@@ -114,21 +114,21 @@ test("T2 SC-10 a victory-ready city in the sandbox runs 24,000 ticks without vic
   assert.equal(getSettlementView(state).mode, "sandbox");
 });
 
-test("T4 SC-11 calendar boundaries: seasons every 300 ticks, years every 1,200", () => {
+test("T4 SC-11 calendar boundaries: seasons every 1,000 ticks, years every 4,000 (C1c, provisional)", () => {
   assert.deepEqual(calendar(0, 1300), { year: 1300, season: 0, dayOfYear: 1 });
-  assert.deepEqual(calendar(299, 1300), { year: 1300, season: 0, dayOfYear: 90 });
-  assert.deepEqual(calendar(300, 1300), { year: 1300, season: 1, dayOfYear: 91 });
-  assert.deepEqual(calendar(1199, 1300), { year: 1300, season: 3, dayOfYear: 360 });
-  assert.deepEqual(calendar(1200, 1300), { year: 1301, season: 0, dayOfYear: 1 });
-  assert.deepEqual(stateCalendar({ tick: 2 * 1200 + 300, scenarioId: DEFAULT_SCENARIO_ID }), { year: 1302, season: 1, dayOfYear: 91 });
+  assert.deepEqual(calendar(999, 1300), { year: 1300, season: 0, dayOfYear: 90 });
+  assert.deepEqual(calendar(1000, 1300), { year: 1300, season: 1, dayOfYear: 91 });
+  assert.deepEqual(calendar(3999, 1300), { year: 1300, season: 3, dayOfYear: 360 });
+  assert.deepEqual(calendar(4000, 1300), { year: 1301, season: 0, dayOfYear: 1 });
+  assert.deepEqual(stateCalendar({ tick: 2 * 4000 + 1000, scenarioId: DEFAULT_SCENARIO_ID }), { year: 1302, season: 1, dayOfYear: 91 });
 });
 
 test("T4 SC-12 historical eras change on their years and publish zero effects", () => {
-  const eraAt = (year: number) => historicalEra({ tick: (year - 1300) * 1200, scenarioId: DEFAULT_SCENARIO_ID }).id;
+  const eraAt = (year: number) => historicalEra({ tick: (year - 1300) * 4000, scenarioId: DEFAULT_SCENARIO_ID }).id;
   assert.deepEqual([1300, 1314, 1315, 1336, 1337, 1347, 1348, 1379, 1380, 1450].map(eraAt),
     ["saturation", "saturation", "famine", "famine", "war", "war", "collapse", "collapse", "specialisation", "specialisation"]);
-  assert.equal(historicalEra({ tick: 15 * 1200 - 1, scenarioId: DEFAULT_SCENARIO_ID }).id, "saturation");
-  assert.equal(historicalEraEffectRegistry({ tick: 50 * 1200, scenarioId: DEFAULT_SCENARIO_ID }).size, 0);
+  assert.equal(historicalEra({ tick: 15 * 4000 - 1, scenarioId: DEFAULT_SCENARIO_ID }).id, "saturation");
+  assert.equal(historicalEraEffectRegistry({ tick: 50 * 4000, scenarioId: DEFAULT_SCENARIO_ID }).size, 0);
 });
 
 test("T4 SC-13 calendar and era are identical after save and load", () => {

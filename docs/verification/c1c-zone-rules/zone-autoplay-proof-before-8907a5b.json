@@ -1,0 +1,33 @@
+{
+  "description": "The same scenario (scripts/zoneAutoplayProof.ts 24000 32) run on the pre-C1c trunk 8907a5b (script copy without the new autoplayZones counter). Every refused placement was sent to the reducer.",
+  "snapshot": "docs/verification/c1b-zone-brush/seed2-natural-snapshot.json.gz",
+  "ticks": 24000,
+  "maxHousingLots": 32,
+  "start": {
+    "tick": 276000,
+    "lots": 24,
+    "houses": 24
+  },
+  "end": {
+    "tick": 300000,
+    "lots": 26,
+    "houses": 26
+  },
+  "plotsBefore": {
+    "plots": 2,
+    "empty": 2,
+    "occupied": 0
+  },
+  "plotsAfter": {
+    "plots": 2,
+    "empty": 0,
+    "occupied": 2
+  },
+  "appliedActions": 7,
+  "housesPlaced": 2,
+  "refusedPlacements": 105,
+  "repeatedRefusals": 102,
+  "zoneRefusalsCaughtBeforeSending": null,
+  "newHousesOutsidePlots": 0,
+  "passed": false
+}

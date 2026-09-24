@@ -22,7 +22,7 @@ test("goal board reads the calendar, historical era and milestone count from the
   const markup = panel(DEFAULT_GAME_STATE);
   assert.match(markup, /1300년 봄 · 시대: 포화/);
   assert.match(markup, /달성 0\/3/);
-  assert.match(panel({ ...DEFAULT_GAME_STATE, tick: 15 * 1200 + 600 }), /1315년 가을 · 시대: 기근과 취약/);
+  assert.match(panel({ ...DEFAULT_GAME_STATE, tick: 15 * 4000 + 2000 }), /1315년 가을 · 시대: 기근과 취약/);
 });
 
 test("sandbox goal board shows the sandbox note and no milestone count", () => {
@@ -41,7 +41,7 @@ test("a completed stone wall is a victory-screen bonus, not a victory condition"
 });
 
 test("the resource bar shows the calendar beside the five resource cells", () => {
-  const markup = renderToStaticMarkup(createElement(ResourceBar, { state: { ...DEFAULT_GAME_STATE, tick: 2 * 1200 + 300 }, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined }));
+  const markup = renderToStaticMarkup(createElement(ResourceBar, { state: { ...DEFAULT_GAME_STATE, tick: 2 * 4000 + 1000 }, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined }));
   assert.match(markup, /data-testid="resource-calendar"><strong>1302년 여름<\/strong>/);
 });
 

@@ -81,11 +81,14 @@ test("Z-11 with zones, a wheat farm needs arable land outside the wall and a hou
   assert.equal(placeBuilding(zoned, "wheat_farm", farmInWall), zoned);
   // The same outside spot is legal again once the zones are gone.
   assert.notEqual(placeBuilding(plain, "wheat_farm", farmOutside), plain);
-  // Houses: no burgage zone yet, so every legal house spot is outside a zone; a burgage brush opens its cells.
+  // Houses (C1c, Z-11a): an arable zone alone leaves houses free; once a burgage zone exists they need it.
   const house = firstSpot(zoned, "house", () => true)!;
-  assert.equal(canPlaceBuildingWithZones(zoned, "house", house.tx, house.ty).ok, false);
+  assert.deepEqual(canPlaceBuildingWithZones(zoned, "house", house.tx, house.ty), { ok: true });
   const withBurgage = gameReducer(zoned, { type: "zone_paint", kind: "burgage", stroke: TOWN.strokes.outsideBurgage });
   const burgage = new Set(zonesOf(withBurgage).find(zone => zone.kind === "burgage")!.membership);
+  const houseOutside = firstSpot(withBurgage, "house", (tx, ty) => !burgage.has(ty * withBurgage.width + tx))!;
+  assert.deepEqual(canPlaceBuildingWithZones(withBurgage, "house", houseOutside.tx, houseOutside.ty),
+    { ok: false, reason: ZonePlacementFailure.outside_zone, rule: "burgage" });
   const houseInside = firstSpot(withBurgage, "house", (tx, ty) => burgage.has(ty * withBurgage.width + tx))!;
   assert.deepEqual(canPlaceBuildingWithZones(withBurgage, "house", houseInside.tx, houseInside.ty), { ok: true });
   // Workshops, wells and markets ignore zones.

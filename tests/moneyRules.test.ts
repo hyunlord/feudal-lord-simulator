@@ -265,8 +265,8 @@ test("M-8 a 24-lot stable city over ten periods: every entry sourced, no arrears
   }
 });
 
-test("M-9 save v8 round-trips the money state; a v7 save loads with none; a broken arrears queue is refused", () => {
-  assert.equal(SAVE_SCHEMA_VERSION, 8);
+test("M-9 the current save (money state since v8) round-trips; a v7 save loads with none; a broken arrears queue is refused", () => {
+  assert.equal(SAVE_SCHEMA_VERSION, 9);
   const bytes = readFileSync("fixtures/saves/v8/money-arrears.save.json");
   const { envelope } = decodeSave(new Uint8Array(bytes));
   assert.deepEqual(moneyOf(envelope.state).arrears.map(arrear => arrear.facility.id), ["storehouse-41-40-0", "well-45-41-0"]);

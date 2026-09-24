@@ -1,0 +1,32 @@
+{
+  "snapshot": "docs/verification/c1b-zone-brush/seed2-natural-snapshot.json.gz",
+  "ticks": 24000,
+  "maxHousingLots": 32,
+  "start": {
+    "tick": 276000,
+    "lots": 24,
+    "houses": 24
+  },
+  "end": {
+    "tick": 300000,
+    "lots": 26,
+    "houses": 26
+  },
+  "plotsBefore": {
+    "plots": 2,
+    "empty": 2,
+    "occupied": 0
+  },
+  "plotsAfter": {
+    "plots": 2,
+    "empty": 0,
+    "occupied": 2
+  },
+  "appliedActions": 10,
+  "housesPlaced": 2,
+  "refusedPlacements": 0,
+  "repeatedRefusals": 0,
+  "zoneRefusalsCaughtBeforeSending": 0,
+  "newHousesOutsidePlots": 0,
+  "passed": true
+}

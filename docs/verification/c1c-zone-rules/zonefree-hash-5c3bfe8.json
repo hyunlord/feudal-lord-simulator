@@ -1,0 +1,74 @@
+{
+  "description": "Gate 4: zone-free growth runs at 5c3bfe8 (scripts/efficientGrowthRun.ts 24 1200000, five seeds) compared byte for byte with the C2 guardrail final states (docs/verification/c2-money/guardrails-2ba96a7.json) by scripts/finalStateHashCompare.ts. With the 4,000-tick year the historical eras change at ticks 60,000 (1315), 148,000 (1337), 192,000 (1348) and 320,000 (1380), inside every run; eras are derived and carry no effect, so the states stay identical.",
+  "commit": "5c3bfe8",
+  "eraTransitionTicks": {
+    "1315": 60000,
+    "1337": 148000,
+    "1348": 192000,
+    "1380": 320000
+  },
+  "recordCommit": "2ba96a7",
+  "seeds": [
+    {
+      "seed": 1,
+      "finalTick": 786108,
+      "sha256": "044766bf9e80dccb2f3938ab768d165ba4b8e3d9d46d3ff7ad74663d0b136021",
+      "expected": "044766bf9e80dccb2f3938ab768d165ba4b8e3d9d46d3ff7ad74663d0b136021",
+      "identical": true,
+      "victoryTick": 628273,
+      "expectedVictoryTick": 628273,
+      "guardrail": "passed",
+      "zones": 0,
+      "zoneUndo": false
+    },
+    {
+      "seed": 2,
+      "finalTick": 419117,
+      "sha256": "7eac1806c2b83ad98e9433e863e2df2f55a60c67b400e042e247fc8e3212a37a",
+      "expected": "7eac1806c2b83ad98e9433e863e2df2f55a60c67b400e042e247fc8e3212a37a",
+      "identical": true,
+      "victoryTick": 294126,
+      "expectedVictoryTick": 294126,
+      "guardrail": "passed",
+      "zones": 0,
+      "zoneUndo": false
+    },
+    {
+      "seed": 3,
+      "finalTick": 487446,
+      "sha256": "ffb24abcc41fe2db447168212a306c23b6938a442f45b372ccf8af6389e93d8e",
+      "expected": "ffb24abcc41fe2db447168212a306c23b6938a442f45b372ccf8af6389e93d8e",
+      "identical": true,
+      "victoryTick": 277437,
+      "expectedVictoryTick": 277437,
+      "guardrail": "passed",
+      "zones": 0,
+      "zoneUndo": false
+    },
+    {
+      "seed": 4,
+      "finalTick": 482314,
+      "sha256": "48692c95d9133915c14c2c98c5378bccc812dd4b3e9537c7fdd4d884e1537043",
+      "expected": "48692c95d9133915c14c2c98c5378bccc812dd4b3e9537c7fdd4d884e1537043",
+      "identical": true,
+      "victoryTick": 342833,
+      "expectedVictoryTick": 342833,
+      "guardrail": "passed",
+      "zones": 0,
+      "zoneUndo": false
+    },
+    {
+      "seed": 5,
+      "finalTick": 527422,
+      "sha256": "c5d9846157bcb1a57e38399de65b345ed43fb2f5259e6027ba80f0532c0b1380",
+      "expected": "c5d9846157bcb1a57e38399de65b345ed43fb2f5259e6027ba80f0532c0b1380",
+      "identical": true,
+      "victoryTick": 465791,
+      "expectedVictoryTick": 465791,
+      "guardrail": "passed",
+      "zones": 0,
+      "zoneUndo": false
+    }
+  ],
+  "passed": true
+}
