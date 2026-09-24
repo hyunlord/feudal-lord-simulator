@@ -1,3 +1,5 @@
+import { autoplayConstructionSources } from './autoplayConstructionSources';
+import { autoplaySearchActive, markAutoplaySearchLimit, spendAutoplaySearch } from './autoplaySearchBudget';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { houseLotArea } from '../geometry/buildingFootprint';
@@ -16,20 +18,33 @@ export interface ServiceBudgetWitness {
   readonly roads: ReadonlySet<string>;
 }
 
+export interface ServiceBudgetSearch {
+  readonly witness: ServiceBudgetWitness | null;
+  readonly complete: boolean;
+}
+
 export function hasBudgetedServicePlan(state: GameState): boolean {
   return findBudgetedServicePlan(state) !== null;
 }
 
-/** A structural joint plan, with staffing and materials deferred but actual walls and water retained. */
 export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness | null {
+  return searchBudgetedServicePlan(state).witness;
+}
+
+/** A structural joint plan; incomplete search is not proof that no plan exists. */
+export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch {
   const buildings = serviceSpaceBuildings(state).map(building => building.kind === 'market' || building.kind === 'church'
     ? { ...building, workers: BUILDING_CONFIG_BY_KIND[building.kind].workersRequired } : building);
   const homes = buildings.filter(building => building.kind === 'house');
-  if (homes.length === 0) return { pads: new Set(), roads: new Set() };
+  if (homes.length === 0) return { witness: { pads: new Set(), roads: new Set() }, complete: true };
   const lots = homes.reduce((sum, home) => sum + houseLotArea(home), 0);
   const houses = serviceSpaceHouses(state, buildings);
   const full = (1n << BigInt(homes.length)) - 1n;
   const staffedState = { ...state, buildings, constructionSites: state.constructionSites.filter(site => site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment') };
+  const potentialConnectivity = marketRoadService(potentialServiceRoads(staffedState, buildings));
+  const sources = autoplayConstructionSources(staffedState);
+  let branches = 0;
+  let truncated = false;
   const candidatePools = new Map<Kind, readonly Pad[]>();
   const candidates = (kind: Kind): readonly Pad[] => {
     const cached = candidatePools.get(kind);
@@ -38,8 +53,8 @@ export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness 
     for (const tile of state.tiles) {
       const building = serviceCandidate(kind, tile, `budget-${kind}-${tile.tx}-${tile.ty}`);
       let mask = 0n;
-      homes.forEach((home, index) => { if (buildingFootprintDistance(home, building) <= BUILDING_CONFIG_BY_KIND[kind].serviceRadius) mask |= 1n << BigInt(index); });
-      if (mask === 0n || !hasAutoplayBuildingClearance(staffedState, kind, tile)) continue;
+      homes.forEach((home, index) => { if (buildingFootprintDistance(home, building) <= BUILDING_CONFIG_BY_KIND[kind].serviceRadius && potentialConnectivity(home, building)) mask |= 1n << BigInt(index); });
+      if (mask === 0n || !sources.some(source => potentialConnectivity(source, building)) || !hasAutoplayBuildingClearance(staffedState, kind, tile)) continue;
       const placement = canPlaceBuilding({ ...staffedState, era: 'stone_town' }, kind, tile.tx, tile.ty);
       if (!placement.ok && placement.reason !== 'insufficient_materials') continue;
       result.push({ building, mask, occupied: new Set(serviceFootprint(building).map(serviceTileKey)) });
@@ -48,6 +63,7 @@ export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness 
     return result;
   };
   const routesFor = (all: readonly Building[], kind: Kind): ReadonlySet<string> | null => {
+    if (!spendAutoplaySearch()) { truncated = true; return null; }
     const potential = potentialServiceRoads(staffedState, all);
     const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketRoadService(potential) });
     const roads = new Set<string>();
@@ -63,6 +79,7 @@ export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness 
     return roads;
   };
   const allocatedMask = (all: readonly Building[], kind: Kind): bigint => {
+    if (!spendAutoplaySearch()) { truncated = true; return 0n; }
     const potential = potentialServiceRoads(staffedState, all);
     const allocation = allocateHouseServices({ houses, buildings: all, roadService: marketRoadService(potential) });
     return homes.reduce((mask, home, index) => allocation.houses.get(home.id)?.[kind].kind === 'served'
@@ -74,6 +91,8 @@ export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness 
     if (slots < 0) return false;
     const covered = allocatedMask([...buildings, ...additions.map(pad => pad.building)], kind);
     const search = (selected: readonly Pad[], mask: bigint, remaining: number): boolean => {
+      if (autoplaySearchActive() && branches++ >= 12) { truncated = true; markAutoplaySearchLimit(); return false; }
+      if (!spendAutoplaySearch()) { truncated = true; return false; }
       if (mask === full) {
         const all = [...buildings, ...selected.map(pad => pad.building)];
         const roads = routesFor(all, kind);
@@ -106,7 +125,7 @@ export function findBudgetedServicePlan(state: GameState): ServiceBudgetWitness 
       .flatMap(building => serviceFootprint(building).map(serviceTileKey))), roads: new Set([...marketRoads, ...churchRoads]) };
     return true;
   }));
-  return witness;
+  return { witness, complete: witness !== null || !truncated };
 }
 
 function bitCount(value: bigint): number {

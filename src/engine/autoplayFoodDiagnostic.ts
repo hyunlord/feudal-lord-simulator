@@ -1,3 +1,4 @@
+import type { SearchDiagnosticCollector } from './autoplaySearchBudget';
 import type { MeasuredFoodReason } from './autoplayFoodMeasuredDecision';
 import type { ServicePlanningCollector } from './autoplayServices';
 import type { AutoplayAction } from './autoplay.types';
@@ -38,7 +39,7 @@ export interface FoodDiagnostic {
   readonly details: 'not_captured';
 }
 // One-call accumulator, owned by the driver; never supplied to its external observer.
-export interface FoodDiagnosticCollector extends ServicePlanningCollector { food?: FoodDiagnostic }
+export interface FoodDiagnosticCollector extends ServicePlanningCollector, SearchDiagnosticCollector { food?: FoodDiagnostic }
 export function transientSummary(value: AutoplayFoodTransientConfirmation | null | undefined): FoodTransientSummary {
   if (value === undefined) return 'not_evaluated';
   if (value === null) return null;

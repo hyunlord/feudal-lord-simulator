@@ -1,3 +1,4 @@
+import { markAutoplaySearchLimit, spendAutoplaySearch } from './autoplaySearchBudget';
 import type { BuildingKind } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { computeReachablePalisadeProposalForState } from './palisadeRouteAccess';
@@ -17,10 +18,18 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
   const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met);
   if (unmet.length === 0) {
     if (state.era === 'hamlet') {
+      const inspected = new Map<string, boolean>();
       const proposal = computeReachablePalisadeProposalForState(state, path => {
+        const key = JSON.stringify(path);
+        const cached = inspected.get(key);
+        if (cached !== undefined) return cached;
+        if (inspected.size >= 8) { markAutoplaySearchLimit(); return false; }
+        if (!spendAutoplaySearch(4)) return false;
         const projected = confirmPalisadeProclamation(state, path);
-        return projected !== state && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
-      });
+        const allowed = projected !== state && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
+        inspected.set(key, allowed);
+        return allowed;
+      }, 8, markAutoplaySearchLimit);
       if (proposal.ok) return { kind: 'proclaim_era', candidatePath: proposal.path };
       if (proposal.reason === 'rejected_candidate') return NONE;
     }

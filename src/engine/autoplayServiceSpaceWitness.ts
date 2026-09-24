@@ -1,3 +1,4 @@
+import { spendAutoplaySearch } from './autoplaySearchBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { buildingFootprint, houseLotArea } from '../geometry/buildingFootprint';
@@ -45,6 +46,7 @@ function allocationForHome(state: GameState, home: Building, buildings: readonly
   return allocateHouseServices({ houses: serviceSpaceHouses(state, buildings), buildings: staffed(buildings), roadService });
 }
 function jointlyServed(state: GameState, home: Building, buildings: readonly Building[], additions: readonly Building[]): ServiceSpaceWitness | null {
+  if (!spendAutoplaySearch()) return null;
   const all = staffed([...buildings, ...additions]);
   const potential = potentialServiceRoads(state, all);
   const allocation = allocationForHome(state, home, all, potential);
@@ -72,6 +74,7 @@ export function findAutoplayServiceWitness(state: GameState, home: Building): Se
   const markets: readonly (Building | null)[] = services?.market.kind === 'served' ? [null] : candidatePads(state, home, 'market');
   const churches: readonly (Building | null)[] = services?.church.kind === 'served' ? [null] : candidatePads(state, home, 'church');
   for (const market of markets) for (const church of churches) {
+    if (!spendAutoplaySearch()) return null;
     const additions = [market, church].filter((provider): provider is Building => provider !== null);
     if (market !== null && church !== null) {
       const marketTiles = new Set(serviceFootprint(market).map(serviceTileKey));

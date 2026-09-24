@@ -151,8 +151,10 @@ export function previewPalisadeDraftRouteAccess(state: GameState, path: Palisade
 export function computeReachablePalisadeProposalForState(
   state: GameState,
   acceptPath?: (path: PalisadePath) => boolean,
+  candidateLimit = Infinity,
+  onBudgetHit?: () => void,
 ): PalisadeProposalResult {
-  const cacheKey = acceptPath === undefined ? routeAccessKey(state, []) : null;
+  const cacheKey = acceptPath === undefined ? `${routeAccessKey(state, [])}:${candidateLimit}` : null;
   const cached = cacheKey === null ? undefined : defaultProposalCache.get(cacheKey);
   if (cached !== undefined) return cached;
   const predicate = acceptPath ?? (() => true);
@@ -161,8 +163,8 @@ export function computeReachablePalisadeProposalForState(
     const access = previewPalisadeRouteAccess(state, path);
     return access.unreachableSiteIds.length === 0 && access.unavailableSiteIds.length === 0;
   };
-  const reachable = computePalisadeProposalForState(state, accepted);
-  const result = reachable.ok ? reachable : computePalisadeProposalForState(state, predicate);
+  const reachable = computePalisadeProposalForState(state, accepted, candidateLimit, onBudgetHit);
+  const result = reachable.ok ? reachable : computePalisadeProposalForState(state, predicate, candidateLimit, onBudgetHit);
   if (cacheKey !== null) {
     if (defaultProposalCache.size >= 32) defaultProposalCache.delete(defaultProposalCache.keys().next().value ?? '');
     defaultProposalCache.set(cacheKey, result);

@@ -1,4 +1,5 @@
-import { findBudgetedServicePlan, type ServiceBudgetWitness } from './autoplayServiceBudget';
+import { autoplaySearchExhausted } from './autoplaySearchBudget';
+import { searchBudgetedServicePlan, type ServiceBudgetSearch } from './autoplayServiceBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { HOUSEHOLD_SERVICE_CONFIG } from '../population/serviceAllocation';
 import { buildingFootprint } from '../geometry/buildingFootprint';
@@ -8,10 +9,19 @@ import type { AutoplayAction } from './autoplay.types';
 import { findAutoplayServiceWitness, type ServiceSpaceWitness } from './autoplayServiceSpaceWitness';
 import { projectServiceAction, serviceCandidate, serviceFootprint, serviceSpaceBuildings, serviceTileKey } from './autoplayServiceSpaceRoutes';
 
-type Layout = { readonly signature: string; budget?: ServiceBudgetWitness | null; readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
-const byState = new WeakMap<GameState, Layout>();
+type Layout = { readonly signature: string; budget?: ServiceBudgetSearch; readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
+let byState = new WeakMap<GameState, Layout>();
 const tileKeys = new WeakMap<GameState['tiles'], string>();
 const layouts = new Map<string, Layout>();
+/** Per-decision ownership prevents bounded-search answers depending on prior cache warmth.
+ * The key retains terrain, occupancy, walls and eligible supply-source identities.
+ * Current workers, stocks and house levels cannot change this future-layout proof:
+ * staffing/materials are deferred and demand is lot area. Candidate-limit measurements
+ * (seed 3: >12s to 0.23s) are recorded in S8-search-budget.md. */
+export function resetAutoplayServiceSearch(): void {
+  byState = new WeakMap();
+  layouts.clear();
+}
 function rememberLayout(layout: Layout): Layout {
   layouts.delete(layout.signature); layouts.set(layout.signature, layout);
   if (layouts.size > 128) {
@@ -30,7 +40,7 @@ function layoutFor(state: GameState): Layout {
     tileKeys.set(state.tiles, tiles);
   }
   const geometry = JSON.stringify([state.width, state.height, autoplayConstructionSources(state).map(source => source.id).sort(),
-    buildings.map(building => [building.id, building.kind, building.tx, building.ty, buildingFootprint(building)]).sort(),
+    buildings.map(building => [building.id, building.kind, building.tx, building.ty, buildingFootprint(building), building.operationPaused === true]).sort(),
     state.palisade, state.constructionSites.filter(site => site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment').map(site => [site.id, site.path])]);
   const signature = geometry + tiles;
   let layout = layouts.get(signature);
@@ -47,14 +57,14 @@ function layoutFor(state: GameState): Layout {
         const old = previous.tiles[index];
         return old === undefined || tile.buildingId !== old.buildingId || tile.hasRoad !== old.hasRoad || tile.tx !== old.tx || tile.ty !== old.ty;
       }).map(serviceTileKey));
-      const budget = previous.budget;
+      const budget = previous.budget?.witness;
       if (budget !== undefined && budget !== null && state.tiles.every((tile, index) => {
         const old = previous.tiles[index];
         if (old === undefined || old.tx !== tile.tx || old.ty !== tile.ty) return false;
         const key = serviceTileKey(tile);
         return !changed.has(key) || (!budget.pads.has(key) && (!budget.roads.has(key)
           || (tile.buildingId === old.buildingId && (!old.hasRoad || tile.hasRoad))));
-      })) layout.budget = budget;
+      }) && previous.budget !== undefined) layout.budget = previous.budget;
       for (const [id, witness] of previous.witnesses) {
         if (witness !== null && ![...changed].some(tile => witness.pads.has(tile) || witness.roads.has(tile))) layout.witnesses.set(id, witness);
       }
@@ -63,21 +73,24 @@ function layoutFor(state: GameState): Layout {
   byState.set(state, layout);
   return rememberLayout(layout);
 }
-function budgetFor(layout: Layout, state: GameState): ServiceBudgetWitness | null {
-  if (layout.budget === undefined) layout.budget = findBudgetedServicePlan(state);
-  return layout.budget;
+function budgetFor(layout: Layout, state: GameState): ServiceBudgetSearch {
+  if (layout.budget !== undefined) return layout.budget;
+  const result = searchBudgetedServicePlan(state);
+  if (result.complete) layout.budget = result;
+  return result;
 }
 
 function witnessFor(layout: Layout, state: GameState, home: ReturnType<typeof serviceSpaceBuildings>[number]): ServiceSpaceWitness | null {
   const cached = layout.witnesses.get(home.id);
   if (cached !== undefined) return cached;
   const witness = findAutoplayServiceWitness(state, home);
-  layout.witnesses.set(home.id, witness);
+  if (!autoplaySearchExhausted()) layout.witnesses.set(home.id, witness);
   return witness;
 }
 
 /** Existing impossible homes do not freeze recovery; new losses and unsupported new homes are rejected. */
 export function preservesAutoplayServiceSpace(state: GameState, action: AutoplayAction, knownProjection?: GameState): boolean {
+  if (autoplaySearchExhausted()) return false;
   if (action.kind === 'none' || (action.kind === 'proclaim_era' && knownProjection === undefined)) return true;
   const layout = layoutFor(state);
   const key = knownProjection === undefined ? JSON.stringify(action) : null;
@@ -91,13 +104,15 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
   const changesAllocation = serviceSpaceBuildings(state).filter(building => building.kind === 'house').reduce((sum, home) => { const size = buildingFootprint(home); return sum + size.width * size.height; }, 0) > HOUSEHOLD_SERVICE_CONFIG.market.capacity
     || (action.kind === 'place_building' && ['house', 'market', 'church'].includes(action.building));
   let allowed = true;
+  let complete = true;
   for (const home of serviceSpaceBuildings(state).filter(building => building.kind === 'house')) {
     const witness = witnessFor(layout, state, home);
+    if (autoplaySearchExhausted()) return false;
     if (witness === null) continue;
     if (knownProjection === undefined && !changesAllocation && ![...changed].some(tile =>
       witness.pads.has(tile) || (action.kind === 'place_building' && witness.roads.has(tile)))) continue;
     projected ??= projectServiceAction(state, action);
-    if (witnessFor(layoutFor(projected), projected, home) === null) { allowed = false; break; }
+    if (witnessFor(layoutFor(projected), projected, home) === null || autoplaySearchExhausted()) { allowed = false; break; }
   }
   if (allowed && action.kind === 'place_building' && action.building === 'house') {
     projected ??= projectServiceAction(state, action);
@@ -107,16 +122,20 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
   if (allowed && (action.kind === 'place_building' || action.kind === 'place_road' || knownProjection !== undefined)) {
     projected ??= projectServiceAction(state, action);
     const nextLayout = layoutFor(projected);
-    const witness = budgetFor(layout, state);
-    if ((action.kind === 'place_building' && action.building === 'house') || witness !== null) {
+    const search = budgetFor(layout, state);
+    const witness = search.witness;
+    if ((action.kind === 'place_building' && action.building === 'house') || witness !== null || !search.complete) {
       if (knownProjection === undefined && !changesAllocation && witness !== null
         && ![...changed].some(tile => witness.pads.has(tile) || (action.kind === 'place_building' && witness.roads.has(tile)))) {
-        nextLayout.budget = witness;
+        nextLayout.budget = search;
       }
-      allowed = budgetFor(nextLayout, projected) !== null;
+      const nextSearch = budgetFor(nextLayout, projected);
+      complete = search.complete && nextSearch.complete;
+      allowed = nextSearch.witness !== null;
     }
   }
-  if (key !== null) layout.decisions.set(key, allowed);
+  if (autoplaySearchExhausted()) return false;
+  if (key !== null && complete) layout.decisions.set(key, allowed);
   return allowed;
 }
 

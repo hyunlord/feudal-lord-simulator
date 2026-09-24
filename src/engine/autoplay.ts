@@ -1,5 +1,7 @@
-import { timberExpansionKind } from './autoplayTimberRecovery';
+import { runAutoplaySearch, runAutoplaySearchPhase } from './autoplaySearchBudget';
+import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
+import { timberExpansionKind } from './autoplayTimberRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
@@ -220,14 +222,14 @@ function storageAction(state: GameState): AutoplayAction {
 }
 
 
-export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
   let metadata: FoodTransientMetadata = {};
   if (reserveDeadlock(state) !== null) return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
       (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, (current: GameState) => urbanServiceAction(current, diagnostic), waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
-      const action = decide(state);
+      const action = runAutoplaySearchPhase(() => decide(state));
       if (action.foodTransient !== undefined) metadata = action;
       if (action.kind !== "none") return carryFoodTransient(action, metadata);
     }
@@ -245,9 +247,14 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => storageAction(state),
     () => autoplayEraAction(state, buildAction),
   ]) {
-    const action = decide();
+    const action = runAutoplaySearchPhase(decide);
     if (action.foodTransient !== undefined) metadata = action;
     if (action.kind !== "none") return carryFoodTransient(action, metadata);
   }
   return carryFoodTransient(NONE, metadata);
+}
+
+export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+  resetAutoplayServiceSearch();
+  return runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
 }
