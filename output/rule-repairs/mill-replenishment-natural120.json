@@ -1,0 +1,159 @@
+{
+  "start": 324000,
+  "end": 324120,
+  "actions": [
+    {
+      "tick": 324001,
+      "advisorAction": {
+        "kind": "place_building",
+        "building": "mill",
+        "tx": 57,
+        "ty": 47
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "schemaVersion": 1,
+      "tick": 324000,
+      "search": {
+        "reason": "search_complete",
+        "used": 0,
+        "limit": 1920
+      },
+      "food": {
+        "schemaVersion": 1,
+        "tick": 324000,
+        "reached": true,
+        "reason": "wheat_transport_blocked",
+        "action": {
+          "kind": "none",
+          "foodTransient": "not_evaluated"
+        },
+        "checks": [],
+        "details": "not_captured",
+        "evaluation": {
+          "transitionRepeat": "not_evaluated",
+          "transitionStaff": "not_evaluated",
+          "buildRepeat": "not_evaluated",
+          "buildStaff": "not_evaluated"
+        },
+        "observation": {
+          "kind": "wheat_farm",
+          "siteId": "construction-site-000065",
+          "placedTick": 272520,
+          "completedTick": 273374,
+          "observeUntilTick": 275774,
+          "outcome": {
+            "outputDelta": 32,
+            "deliveredBreadDelta": 0,
+            "starvingHomesDelta": 0,
+            "effective": true,
+            "deliveredWheatDelta": 12
+          }
+        },
+        "counts": {
+          "wheat": 19,
+          "mill": 7,
+          "granary": 7,
+          "target": 1
+        },
+        "completeChain": true,
+        "recovery": null
+      },
+      "services": [],
+      "advisorAction": {
+        "kind": "none",
+        "foodTransient": "not_evaluated"
+      },
+      "gameActionType": null,
+      "result": "no_action",
+      "newSiteIds": []
+    },
+    {
+      "schemaVersion": 1,
+      "tick": 324001,
+      "search": {
+        "reason": "search_complete",
+        "used": 87,
+        "limit": 1920
+      },
+      "food": {
+        "schemaVersion": 1,
+        "tick": 324001,
+        "reached": true,
+        "reason": "transport_capacity_selected",
+        "action": {
+          "kind": "place_building",
+          "building": "mill",
+          "tx": 57,
+          "ty": 47,
+          "foodTransient": "not_evaluated"
+        },
+        "checks": [],
+        "details": "not_captured",
+        "evaluation": {
+          "transitionRepeat": "not_evaluated",
+          "transitionStaff": "not_evaluated",
+          "buildRepeat": "not_evaluated",
+          "buildStaff": "not_evaluated"
+        },
+        "observation": {
+          "kind": "wheat_farm",
+          "siteId": "construction-site-000065",
+          "placedTick": 272520,
+          "completedTick": 273374,
+          "observeUntilTick": 275774,
+          "outcome": {
+            "outputDelta": 32,
+            "deliveredBreadDelta": 0,
+            "starvingHomesDelta": 0,
+            "effective": true,
+            "deliveredWheatDelta": 12
+          }
+        },
+        "counts": {
+          "wheat": 19,
+          "mill": 7,
+          "granary": 7,
+          "target": 1
+        }
+      },
+      "services": [],
+      "advisorAction": {
+        "kind": "place_building",
+        "building": "mill",
+        "tx": 57,
+        "ty": 47,
+        "foodTransient": "not_evaluated"
+      },
+      "gameActionType": "place_building",
+      "result": "applied",
+      "newSiteIds": [
+        "construction-site-000067"
+      ]
+    }
+  ],
+  "newSites": [
+    {
+      "id": "construction-site-000067",
+      "kind": "mill",
+      "tx": 57,
+      "ty": 47,
+      "required": {
+        "timber": 30
+      },
+      "delivered": {},
+      "reserved": {
+        "timber": 16
+      },
+      "builderTicks": 0,
+      "requiredBuilderTicks": 600,
+      "assignedBuilders": 0,
+      "stall": "awaiting_materials",
+      "startedTick": 324001
+    }
+  ],
+  "predicateFalse10000Ms": 8.300458000000162,
+  "measurementNote": "False mill-input event fast path; state wrapper allocation included, concurrent host load, not full-advisor benchmark."
+}

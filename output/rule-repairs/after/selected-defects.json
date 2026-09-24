@@ -1,0 +1,57 @@
+{
+  "evaluatedCommit": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "selected": {
+    "service-priority": {
+      "selectedCase": "P1",
+      "evidence": "12 incumbent homes served; newcomer capacity; incumbent decline tick -1",
+      "status": "selected-defect-not-reproduced",
+      "output": "service-priority.txt",
+      "exitCode": 0
+    },
+    "wall-labour": {
+      "selectedCase": "B/C/D",
+      "evidence": "waiting reserve 0; one ready site reserve3/assigned3/unavailable0; low-pop food priority remains",
+      "status": "selected-defect-not-reproduced",
+      "output": "wall-labour.txt",
+      "exitCode": 0
+    },
+    "food-first-labour": {
+      "selectedCase": "duplicate farms",
+      "evidence": "construction3, logger3,sawmill2 remain after extra farms",
+      "status": "selected-defect-not-reproduced",
+      "output": "food-first-labour.txt",
+      "exitCode": 0
+    },
+    "stone-dispatch": {
+      "selectedCase": "P2",
+      "evidence": "order0 no_route; later3 sites active,3 builders each",
+      "status": "selected-defect-not-reproduced",
+      "output": "stone-dispatch.txt",
+      "exitCode": 0
+    },
+    "cancelled-cargo": {
+      "selectedCase": "return after cancellation",
+      "evidence": "original cargo unloaded; new site completed by3021; source reused",
+      "status": "selected-defect-not-reproduced",
+      "output": "cancelled-cargo.txt",
+      "exitCode": 0
+    },
+    "committed-material-sales": {
+      "selectedCase": "stone keep-site",
+      "evidence": "stone100 remains after30cycles,coin0,need150",
+      "status": "selected-defect-not-reproduced",
+      "output": "committed-material-sales.txt",
+      "exitCode": 0
+    },
+    "timber-expansion": {
+      "selectedCase": "default headless120000",
+      "evidence": "logger3/sawmill2; palisade18/20 at120000; expansions occurred",
+      "status": "selected-defect-not-reproduced",
+      "output": "timber-expansion.txt",
+      "exitCode": 0
+    }
+  },
+  "reproduced": 0,
+  "total": 7,
+  "verification": "All seven textual probe outputs byte-identical to the previously audited outputs; each new execution exited0."
+}

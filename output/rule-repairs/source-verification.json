@@ -1,0 +1,30 @@
+{
+  "sourceHead": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "clone": "/tmp/fls-r1fix-clean",
+  "note": "Fresh remote clone created previously at403 then fast-forward checkout072, dependencies unchanged. Last report commit gets separate new clone verification.",
+  "checks": [
+    {
+      "name": "test",
+      "log": "/tmp/fls-r1fix-20260924/source-test-0725764.log",
+      "sha256": "7bee045db9b112183edc42029e30d39df25a4440e47953dd723c489cd5519e2f",
+      "exitCode": 0,
+      "tests": 2570,
+      "pass": 2570,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "name": "typecheck",
+      "log": "/tmp/fls-r1fix-20260924/source-typecheck-0725764.log",
+      "sha256": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff",
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "log": "/tmp/fls-r1fix-20260924/source-build-0725764.log",
+      "sha256": "b0ba8d01d3be6b88fdd80cb1bd7b00806fa1f0264b9b31bef814dc70728838d5",
+      "exitCode": 0
+    }
+  ],
+  "trackedStatus": ""
+}

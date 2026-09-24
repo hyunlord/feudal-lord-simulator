@@ -1,0 +1,83 @@
+{
+  "head": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "results": [
+    {
+      "name": "cancelled-cargo",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/cancelled-cargo.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.403
+    },
+    {
+      "name": "committed-material-sales",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/committed-material-sales.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.218
+    },
+    {
+      "name": "food-first-labour",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/food-first-labour.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.152
+    },
+    {
+      "name": "service-priority",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/service-priority.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.197
+    },
+    {
+      "name": "stone-dispatch",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/stone-dispatch.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.16
+    },
+    {
+      "name": "timber-expansion",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/timber-expansion.ts",
+        "120000"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 46.948
+    },
+    {
+      "name": "wall-labour",
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "/private/tmp/fls-r1fix-clean/fixtures/rule-repair-probes/wall-labour.ts"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.155
+    }
+  ]
+}

@@ -1,0 +1,680 @@
+{
+  "schemaVersion": 2,
+  "productHead": "07257643958ffac19af2881d6a8d7163e5b086e3",
+  "sourceRoot": "/tmp/fls-r1fix-clean",
+  "overallGate": "PASS",
+  "auditMethod": "Read-only source/log/artifact audit; no tests or simulations run; only the two assigned audit files written.",
+  "sourceTrackedDirty": false,
+  "gate1": {
+    "status": "PASS",
+    "scenarioCount": 17,
+    "primaryNamedTestCount": 22,
+    "additionalTaggedR14Tests": 5
+  },
+  "scenarios": [
+    {
+      "id": "R-T1",
+      "assertion": "기존 집 서비스 유지·새 집 capacity. water/market/church 3종.",
+      "evidenceClass": "prepared-unit",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/servicePriority.test.ts",
+          "line": 17,
+          "name": "R-T1: opening homes retain water when a construction home completes",
+          "logLine": 2192,
+          "durationMs": 57.634125,
+          "exactPassLog": "✔ R-T1: opening homes retain water when a construction home completes (57.634125ms)"
+        },
+        {
+          "file": "tests/servicePriority.test.ts",
+          "line": 17,
+          "name": "R-T1: opening homes retain market when a construction home completes",
+          "logLine": 2193,
+          "durationMs": 0.234875,
+          "exactPassLog": "✔ R-T1: opening homes retain market when a construction home completes (0.234875ms)"
+        },
+        {
+          "file": "tests/servicePriority.test.ts",
+          "line": 17,
+          "name": "R-T1: opening homes retain church when a construction home completes",
+          "logLine": 2194,
+          "durationMs": 0.191959,
+          "exactPassLog": "✔ R-T1: opening homes retain church when a construction home completes (0.191959ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T2",
+      "assertion": "건설 서수 우선, 반경 진입 및 배열 순서 반전 결정론.",
+      "evidenceClass": "prepared-unit",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/servicePriority.test.ts",
+          "line": 26,
+          "name": "R-T2: construction ordinal wins regardless of entry into radius or input order",
+          "logLine": 2195,
+          "durationMs": 1.22175,
+          "exactPassLog": "✔ R-T2: construction ordinal wins regardless of entry into radius or input order (1.22175ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T3",
+      "assertion": "자재 대기 예약0 및 농장4/방앗간2/제재2 유지.",
+      "evidenceClass": "prepared-unit",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/palisadeEraLabour.test.ts",
+          "line": 256,
+          "name": "R-T3 material-waiting walls reserve no workers from the ordinary pool",
+          "logLine": 1429,
+          "durationMs": 0.314792,
+          "exactPassLog": "✔ R-T3 material-waiting walls reserve no workers from the ordinary pool (0.314792ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T4",
+      "assertion": "준비2부지 예약6=배정6, 유실0, 일반풀 잔여 유지.",
+      "evidenceClass": "prepared-unit",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/palisadeEraLabour.test.ts",
+          "line": 263,
+          "name": "R-T4 two ready wall sites reserve six workers and leave the rest in the ordinary pool",
+          "logLine": 1430,
+          "durationMs": 0.21025,
+          "exactPassLog": "✔ R-T4 two ready wall sites reserve six workers and leave the rest in the ordinary pool (0.21025ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T5",
+      "assertion": "준비공사3·핵심식량8·벌목/제재5, 추가농장2개가 핵심을 빼앗지 않음.",
+      "evidenceClass": "prepared-unit",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/buildingOperation.test.ts",
+          "line": 12,
+          "name": "R-T5 duplicate farms cannot starve ready construction or the core timber chain",
+          "logLine": 595,
+          "durationMs": 8.686875,
+          "exactPassLog": "✔ R-T5 duplicate farms cannot starve ready construction or the core timber chain (8.686875ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T6",
+      "assertion": "농장 중지 workers0/생산정지/재배정, encode/decode 후 상태 보존, 재개.",
+      "evidenceClass": "prepared-engine-and-save",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/buildingOperation.test.ts",
+          "line": 20,
+          "name": "R-T6 pause releases workers and freezes production, persists through save, and resume restores work",
+          "logLine": 596,
+          "durationMs": 6.062125,
+          "exactPassLog": "✔ R-T6 pause releases workers and freezes production, persists through save, and resume restores work (6.062125ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T7",
+      "assertion": "중지 well/market/church의 paused 원인, 활성 대체시설은 정상 공급.",
+      "evidenceClass": "prepared-unit",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/servicePause.test.ts",
+          "line": 13,
+          "name": "R-T7: paused well stops water with a visible pause cause",
+          "logLine": 2185,
+          "durationMs": 5.452042,
+          "exactPassLog": "✔ R-T7: paused well stops water with a visible pause cause (5.452042ms)"
+        },
+        {
+          "file": "tests/servicePause.test.ts",
+          "line": 13,
+          "name": "R-T7: paused market stops market with a visible pause cause",
+          "logLine": 2187,
+          "durationMs": 0.192291,
+          "exactPassLog": "✔ R-T7: paused market stops market with a visible pause cause (0.192291ms)"
+        },
+        {
+          "file": "tests/servicePause.test.ts",
+          "line": 13,
+          "name": "R-T7: paused church stops church with a visible pause cause",
+          "logLine": 2189,
+          "durationMs": 0.110625,
+          "exactPassLog": "✔ R-T7: paused church stops church with a visible pause cause (0.110625ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T8",
+      "assertion": "no_route 첫 구간 대기, 뒤3구간 병렬시공, 복구 후 모두 작업완료.",
+      "evidenceClass": "prepared-construction-lifecycle",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/stoneConstructionFlow.test.ts",
+          "line": 19,
+          "name": "R-T8: stone order zero without a route does not block supplied later sites",
+          "logLine": 2243,
+          "durationMs": 61.655458,
+          "exactPassLog": "✔ R-T8: stone order zero without a route does not block supplied later sites (61.655458ms)"
+        }
+      ],
+      "limitation": "준비된 공사 lifecycle 검사. 막힌 구간 복구는 실제 도로 명령이 아니라 delivered/stall/assignedBuilders 상태를 직접 수정한다. 뒤 구간 작업 완료 및 복구 뒤 전체 작업량 완료를 검증한다."
+    },
+    {
+      "id": "R-T9",
+      "assertion": "자연 목책 snapshot에서 구성한 석벽12구간에 단일 실제 도로 연결 후 모두 실경로 존재.",
+      "evidenceClass": "natural-snapshot-derived-prepared-routing",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/stoneConstructionFlow.test.ts",
+          "line": 39,
+          "name": "R-T9: the existing stone replacement sites share one anchored wall carry ring",
+          "logLine": 2244,
+          "durationMs": 67.287584,
+          "exactPassLog": "✔ R-T9: the existing stone replacement sites share one anchored wall carry ring (67.287584ms)"
+        }
+      ],
+      "limitation": "자연 목책 snapshot을 석벽12부지와 stone200으로 변형한 준비 상태. 정상 도로 배치 뒤 모든 구간 실제 경로 존재를 검증하며 전체 자연 석벽 운송/완공 재생은 아니다."
+    },
+    {
+      "id": "R-T10",
+      "assertion": "실제 배송 취소 후 화물8 하역,208재고·넘침8 표시, 공급원 재사용.",
+      "evidenceClass": "prepared-engine-replay",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/constructionCargoRecovery.test.ts",
+          "line": 22,
+          "name": "R-T10: cancelled construction cargo unloads above the full store limit and frees its source",
+          "logLine": 646,
+          "durationMs": 529.452084,
+          "exactPassLog": "✔ R-T10: cancelled construction cargo unloads above the full store limit and frees its source (529.452084ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T11",
+      "assertion": "한도 이하 소비 상태에서 파생 넘침 표시 제거.",
+      "evidenceClass": "prepared-derived-ui-model",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/constructionCargoRecovery.test.ts",
+          "line": 41,
+          "name": "R-T11: storage overflow cause disappears after inventory is consumed below capacity",
+          "logLine": 647,
+          "durationMs": 5.110334,
+          "exactPassLog": "✔ R-T11: storage overflow cause disappears after inventory is consumed below capacity (5.110334ms)"
+        }
+      ],
+      "limitation": "실제 소비 루프가 아니라 inventory208→192를 설정해 UI model의 넘침 제거를 검증한다."
+    },
+    {
+      "id": "R-T12",
+      "assertion": "석재100/성채수요150,30시장주기 판매0·재정증가0.",
+      "evidenceClass": "prepared-market-replay",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/constructionMarketReserve.test.ts",
+          "line": 27,
+          "name": "R-T12: thirty market cycles cannot sell stone committed to a keep",
+          "logLine": 668,
+          "durationMs": 63.486959,
+          "exactPassLog": "✔ R-T12: thirty market cycles cannot sell stone committed to a keep (63.486959ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T13",
+      "assertion": "석재155/수요150에서5만 판매; 배송완료·운송중 수요 중복차감 방지 보조시험.",
+      "evidenceClass": "prepared-market-replay",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/constructionMarketReserve.test.ts",
+          "line": 33,
+          "name": "R-T13: only the stone exceeding all construction demand may be sold",
+          "logLine": 669,
+          "durationMs": 6.647833,
+          "exactPassLog": "✔ R-T13: only the stone exceeding all construction demand may be sold (6.647833ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T14",
+      "assertion": "기본 새 게임, 전체 조언+정상엔진120000틱, 목재시설증설 및 증설 이후 목책진척.",
+      "evidenceClass": "default-game-full-advisor-natural-engine",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/autoplayTimberScenario.test.ts",
+          "line": 8,
+          "name": "R-T14 the default headless town expands timber production and advances palisade construction by tick 120000",
+          "logLine": 536,
+          "durationMs": 88800.941875,
+          "exactPassLog": "✔ R-T14 the default headless town expands timber production and advances palisade construction by tick 120000 (88800.941875ms)"
+        }
+      ],
+      "supportingTests": [
+        {
+          "file": "tests/autoplayTimberRecovery.test.ts",
+          "line": 22,
+          "name": "R-T14 scattered sawmill inputs and reserved store logs do not justify another sawmill",
+          "logLine": 527,
+          "durationMs": 6.957625,
+          "exactPassLog": "✔ R-T14 scattered sawmill inputs and reserved store logs do not justify another sawmill (6.957625ms)"
+        },
+        {
+          "file": "tests/autoplayTimberRecovery.test.ts",
+          "line": 31,
+          "name": "R-T14 existing sawmill input is covered before a spare cart licenses conversion expansion",
+          "logLine": 528,
+          "durationMs": 8.907084,
+          "exactPassLog": "✔ R-T14 existing sawmill input is covered before a spare cart licenses conversion expansion (8.907084ms)"
+        },
+        {
+          "file": "tests/autoplayTimberRecovery.test.ts",
+          "line": 40,
+          "name": "R-T14 one free cart after the existing production batch still permits a sawmill",
+          "logLine": 529,
+          "durationMs": 5.755875,
+          "exactPassLog": "✔ R-T14 one free cart after the existing production batch still permits a sawmill (5.755875ms)"
+        },
+        {
+          "file": "tests/autoplayTimberRecovery.test.ts",
+          "line": 49,
+          "name": "R-T14 incoming logs already cover the existing sawmill input deficit",
+          "logLine": 530,
+          "durationMs": 2.231709,
+          "exactPassLog": "✔ R-T14 incoming logs already cover the existing sawmill input deficit (2.231709ms)"
+        },
+        {
+          "file": "tests/autoplayTimberRecovery.test.ts",
+          "line": 59,
+          "name": "R-T14 sustained wall demand expands milling when existing stores hold unused logs",
+          "logLine": 531,
+          "durationMs": 2.077583,
+          "exactPassLog": "✔ R-T14 sustained wall demand expands milling when existing stores hold unused logs (2.077583ms)"
+        }
+      ]
+    },
+    {
+      "id": "R-T15",
+      "assertion": "편집 없는 자연 seed1 fixture, 전체 decideNextAction(policy24),24k틱 내 모든집 빵양수 및 최종 빈집0·시설상한.",
+      "evidenceClass": "unedited-natural-fixture-full-advisor-replay",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/autoplayWheatTransportRecovery.test.ts",
+          "line": 10,
+          "name": "R-T15 an observed transport bottleneck yields a bounded recovery action in the natural seed 1 town",
+          "logLine": 546,
+          "durationMs": 799.408875,
+          "exactPassLog": "✔ R-T15 an observed transport bottleneck yields a bounded recovery action in the natural seed 1 town (799.408875ms)"
+        },
+        {
+          "file": "tests/autoplayWheatTransportRecovery.test.ts",
+          "line": 22,
+          "name": "R-T15 normal construction and deliveries clear every empty home within 24000 ticks",
+          "logLine": 547,
+          "durationMs": 47472.852416,
+          "exactPassLog": "✔ R-T15 normal construction and deliveries clear every empty home within 24000 ticks (47472.852416ms)"
+        }
+      ],
+      "limitation": "편집 없는 자연 fixture의 full advisor+normal engine 24000틱 재생. default new-game 5seed 관문과 별개이며, 이 테스트 advisor cadence는120틱이다."
+    },
+    {
+      "id": "R-T16",
+      "assertion": "seed3-28080 원본, 예산·복제/재호출 결정론; 별도 직렬 단일결정<1000ms.",
+      "evidenceClass": "unedited-natural-fixture-decision-replay",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/autoplaySearchBudget.test.ts",
+          "line": 18,
+          "name": "R-T16: seed 3 tick 28080 bounds search work and ignores previous cache history",
+          "logLine": 448,
+          "durationMs": 1311.805667,
+          "exactPassLog": "✔ R-T16: seed 3 tick 28080 bounds search work and ignores previous cache history (1311.805667ms)"
+        }
+      ],
+      "limitation": "단위시험 총1311.805667ms는 여러 결정/이력 검사를 포함한다. 단일 결정 시간 관문은 별도 replay의198.4555ms로 판정한다."
+    },
+    {
+      "id": "R-T17",
+      "assertion": "준비된16구간 중 첫 no_route 유지·나머지15작업완료. 자연seed2원본 아님.",
+      "evidenceClass": "prepared-construction-lifecycle",
+      "status": "PASS",
+      "tests": [
+        {
+          "file": "tests/stoneConstructionFlow.test.ts",
+          "line": 57,
+          "name": "R-T17: prepared sixteen-segment stone replacement progresses around one blocked segment",
+          "logLine": 2245,
+          "durationMs": 47.9065,
+          "exactPassLog": "✔ R-T17: prepared sixteen-segment stone replacement progresses around one blocked segment (47.9065ms)"
+        }
+      ],
+      "limitation": "원본 A5-1 seed2 정체 fixture 대신 합성16구간(15구간 delivered/assigned 사전설정)을 사용한다. lifecycle3000회 뒤15구간 요구작업량완료/첫no_route 유지 증거이며 자연 seed2 전체 석벽 완공이나 새로운 실제 경로 복구를 증명하지 않는다. 지시서의 fixture 가능하면 조건을 명시적으로 대체한 제한이다."
+    }
+  ],
+  "fullRegression": {
+    "status": "PASS",
+    "file": "/tmp/fls-r1fix-20260924/source-test-0725764.log",
+    "tests": 2570,
+    "pass": 2570,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 153508.777583,
+    "summaryLines": [
+      2619,
+      2621,
+      2622,
+      2623,
+      2624,
+      2625
+    ],
+    "provenance": "Parent execution in frozen clone; current HEAD and clean tracked tree independently checked. Test log does not embed its own HEAD."
+  },
+  "performance": {
+    "status": "PASS",
+    "file": "/tmp/fls-r1fix-20260924/search-replay-0725764.json",
+    "evaluatedHead": "07257643958ffac19af2881d6a8d7163e5b086e3",
+    "inputFixtureSourceCommit": "e97d6a8",
+    "count": 69,
+    "passed": 69,
+    "maxElapsedMs": 3621.7565409999997,
+    "r16SingleDecisionMs": 198.4555,
+    "allDeterministic": true,
+    "thresholdsMs": {
+      "allOtherCases": 10000,
+      "seed3-28080": 1000
+    },
+    "provenance": "scripts/autoplaySearchReplay.ts:50 copies manifest.sourceCommit (input provenance), not execution HEAD. Parent reports checkout072+runner exit0 in session23493; independently observed frozen clone HEAD072 and reflog checkout at2026-09-24T12:53:18Z, no later HEAD move. Raw runner receipt not self-contained for evaluated HEAD."
+  },
+  "gate3": {
+    "status": "PASS",
+    "selectedDefectsReproduced": 0,
+    "total": 7,
+    "executionFile": "/tmp/fls-r1fix-20260924/probes-0725764/execution.json",
+    "evaluationFile": "/tmp/fls-r1fix-20260924/probes-0725764/selected-defects.json",
+    "probes": [
+      {
+        "name": "service-priority",
+        "selectedCase": "P1",
+        "evidence": "12 incumbent homes served; newcomer capacity; incumbent decline tick -1",
+        "status": "selected-defect-not-reproduced",
+        "output": "service-priority.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 0.197,
+        "sha256": "fa5d9e24aecce28eef7e1cbd5360da92fa20b679de6007b17b86bbc44d33b582",
+        "byteIdenticalTo403cfa9": true
+      },
+      {
+        "name": "wall-labour",
+        "selectedCase": "B/C/D",
+        "evidence": "waiting reserve 0; one ready site reserve3/assigned3/unavailable0; low-pop food priority remains",
+        "status": "selected-defect-not-reproduced",
+        "output": "wall-labour.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 0.155,
+        "sha256": "df10bfd828e6edc4fe5486911a8647e15b8b37cd76c291e6c6e17962e5d4415b",
+        "byteIdenticalTo403cfa9": true
+      },
+      {
+        "name": "food-first-labour",
+        "selectedCase": "duplicate farms",
+        "evidence": "construction3, logger3,sawmill2 remain after extra farms",
+        "status": "selected-defect-not-reproduced",
+        "output": "food-first-labour.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 0.152,
+        "sha256": "468fa3921392d391c763c58d98a9579ce4077bbff7f54ec33026a3c15d7c58d9",
+        "byteIdenticalTo403cfa9": true
+      },
+      {
+        "name": "stone-dispatch",
+        "selectedCase": "P2",
+        "evidence": "order0 no_route; later3 sites active,3 builders each",
+        "status": "selected-defect-not-reproduced",
+        "output": "stone-dispatch.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 0.16,
+        "sha256": "1a3e6d73a1e13a87f4d8ddadb606d2cb3086b5266b804cb1e7fdcdb02caf6a8f",
+        "byteIdenticalTo403cfa9": true
+      },
+      {
+        "name": "cancelled-cargo",
+        "selectedCase": "return after cancellation",
+        "evidence": "original cargo unloaded; new site completed by3021; source reused",
+        "status": "selected-defect-not-reproduced",
+        "output": "cancelled-cargo.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 0.403,
+        "sha256": "4ecd13a895d65dda6c0a4613c16bdc744912cf66638935d5decbc26e517fee30",
+        "byteIdenticalTo403cfa9": true
+      },
+      {
+        "name": "committed-material-sales",
+        "selectedCase": "stone keep-site",
+        "evidence": "stone100 remains after30cycles,coin0,need150",
+        "status": "selected-defect-not-reproduced",
+        "output": "committed-material-sales.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 0.218,
+        "sha256": "af6da91d26fea549121708789b813099301c70db02617863cd83c5d5fbdfa301",
+        "byteIdenticalTo403cfa9": true
+      },
+      {
+        "name": "timber-expansion",
+        "selectedCase": "default headless120000",
+        "evidence": "logger3/sawmill2; palisade18/20 at120000; expansions occurred",
+        "status": "selected-defect-not-reproduced",
+        "output": "timber-expansion.txt",
+        "exitCode": 0,
+        "elapsedSeconds": 46.948,
+        "sha256": "fcfb9b07dfa381ad66641d2d8ca6e0a170de96a56541c5d88acfee4be4b3004d",
+        "byteIdenticalTo403cfa9": true
+      }
+    ],
+    "scope": "Seven selected original defects only; does not claim all other original probe cases repaired."
+  },
+  "gate2": {
+    "status": "PENDING",
+    "head": "07257643958ffac19af2881d6a8d7163e5b086e3",
+    "directory": "/tmp/fls-r1fix-20260924/guardrails-0725764",
+    "finalPassCount": null,
+    "required": "5/5 at baseline7db9df85:24/24L4,24000 uninterrupted stable ticks,facility caps,warnings<10%,actual elapsed<=1500sec per seed. Timeout=indeterminate. No previous-head seed passes inherited."
+  },
+  "alreadyResolvedR4Subclause": {
+    "clause": "석벽도A5벽운반동일적용",
+    "evidence": "tests/stoneConstructionFlow.test.ts:39 R-T9 단일도로/12석벽실경로존재. 공통운반기반은1c09e99에이미있으며경로변경불필요.",
+    "priorHistory": [
+      "709c25d Let one connected road supply the whole wall construction ring",
+      "10b8363 Keep wall-carry routes valid as construction occupancy changes",
+      "d3f9626 Keep wall carriers out of blocked diagonal corners"
+    ],
+    "supportingTests": [
+      {
+        "file": "tests/stoneWallProgress.test.ts",
+        "lines": [
+          9,
+          21,
+          49,
+          91
+        ],
+        "coverage": "동일구간목책선행·후속석벽실제tick독립완공·보호끊김없는교체·사이트제거",
+        "currentPassTests": [
+          {
+            "line": 9,
+            "name": "Given same-order timber and stone sites with reversed ids When scheduling Then timber explicitly blocks stone",
+            "logLine": 2302,
+            "durationMs": 1.746625,
+            "exactPassLog": "✔ Given same-order timber and stone sites with reversed ids When scheduling Then timber explicitly blocks stone (1.746625ms)"
+          },
+          {
+            "line": 21,
+            "name": "Given an earlier stone site without material When ticking Then a supplied later replacement completes independently",
+            "logLine": 2303,
+            "durationMs": 133.158458,
+            "exactPassLog": "✔ Given an earlier stone site without material When ticking Then a supplied later replacement completes independently (133.158458ms)"
+          },
+          {
+            "line": 49,
+            "name": "Given a completed timber segment under replacement When stone completes Then coverage never drops and the same segment atomically becomes stone",
+            "logLine": 2304,
+            "durationMs": 1.87175,
+            "exactPassLog": "✔ Given a completed timber segment under replacement When stone completes Then coverage never drops and the same segment atomically becomes stone (1.87175ms)"
+          },
+          {
+            "line": 91,
+            "name": "Given every stone replacement completes When hashing final state Then all segments are stone and no replacement sites remain",
+            "logLine": 2305,
+            "durationMs": 1.298875,
+            "exactPassLog": "✔ Given every stone replacement completes When hashing final state Then all segments are stone and no replacement sites remain (1.298875ms)"
+          }
+        ]
+      },
+      {
+        "file": "tests/wallCarryScenario.test.ts",
+        "lines": [
+          66,
+          102,
+          176,
+          222
+        ],
+        "coverage": "기존공통벽운반단일앵커·가중경로·전체완공·귀환",
+        "currentPassTests": [
+          {
+            "line": 33,
+            "name": "T1: natural 25-minute proposal with no anchored segment warns that one road link is required",
+            "logLine": 2475,
+            "durationMs": 1749.703417,
+            "exactPassLog": "✔ T1: natural 25-minute proposal with no anchored segment warns that one road link is required (1749.703417ms)"
+          },
+          {
+            "line": 66,
+            "name": "T2: one road line from a reachable source to one ring segment supplies all 12 sites",
+            "logLine": 2476,
+            "durationMs": 42.194459,
+            "exactPassLog": "✔ T2: one road line from a reachable source to one ring segment supplies all 12 sites (42.194459ms)"
+          },
+          {
+            "line": 75,
+            "name": "autoplay does not pave every wall segment after one anchor supplies the ring",
+            "logLine": 2477,
+            "durationMs": 23.940333,
+            "exactPassLog": "✔ autoplay does not pave every wall segment after one anchor supplies the ring (23.940333ms)"
+          },
+          {
+            "line": 86,
+            "name": "a newly occupied wall-side tile invalidates a cached construction route",
+            "logLine": 2478,
+            "durationMs": 32.113083,
+            "exactPassLog": "✔ a newly occupied wall-side tile invalidates a cached construction route (32.113083ms)"
+          },
+          {
+            "line": 102,
+            "name": "weighted route, off-road diagonal and completed-site return stay wall-only",
+            "logLine": 2479,
+            "durationMs": 21.81675,
+            "exactPassLog": "✔ weighted route, off-road diagonal and completed-site return stay wall-only (21.81675ms)"
+          },
+          {
+            "line": 176,
+            "name": "T3: one anchored natural perimeter completes all segments without another road",
+            "logLine": 2480,
+            "durationMs": 12783.273541,
+            "exactPassLog": "✔ T3: one anchored natural perimeter completes all segments without another road (12783.273541ms)"
+          },
+          {
+            "line": 198,
+            "name": "T4: first post-proclamation natural snapshot has no anchor and cannot progress without a road",
+            "logLine": 2482,
+            "durationMs": 33818.284833,
+            "exactPassLog": "✔ T4: first post-proclamation natural snapshot has no anchor and cannot progress without a road (33818.284833ms)"
+          },
+          {
+            "line": 212,
+            "name": "wall carry cannot squeeze diagonally between two occupied corner cells",
+            "logLine": 2484,
+            "durationMs": 8.397791,
+            "exactPassLog": "✔ wall carry cannot squeeze diagonally between two occupied corner cells (8.397791ms)"
+          },
+          {
+            "line": 222,
+            "name": "wall delivery can return past isolated road tiles reached through wall carry",
+            "logLine": 2485,
+            "durationMs": 276.441209,
+            "exactPassLog": "✔ wall delivery can return past isolated road tiles reached through wall carry (276.441209ms)"
+          }
+        ]
+      }
+    ],
+    "limitations": "R-T9자체는경로조회증거이며12석벽전체자연운송완공재생이아님. R-T17도준비상태.범위와분류를정확히명시하면이미해소하위조항의확인누락은없음."
+  },
+  "preparedUiEvidence": {
+    "head": "07257643958ffac19af2881d6a8d7163e5b086e3",
+    "qa": "/tmp/fls-r1fix-20260924/ui-0725764/QA.md",
+    "frames": 6,
+    "status": "PASS_REPORTED_PREPARED_UI",
+    "classification": "Prepared injected states in actual production preview; not natural gameplay. This reviewer read QA, did not open screenshots. Target pause75.58x44px; viewport1600x1100."
+  },
+  "mandatoryConditions": {
+    "typecheck": {
+      "file": "/tmp/fls-r1fix-20260924/source-typecheck-0725764.log",
+      "observation": "tsc --noEmit, no error diagnostics; no explicit exit code in text log"
+    },
+    "build": {
+      "file": "/tmp/fls-r1fix-20260924/source-build-0725764.log",
+      "observation": "tsc --noEmit && vite build completed, built448ms; JS789.52kB chunk warning remains"
+    },
+    "save": {
+      "schemaVersion": 4,
+      "fixturePassLogLines": [
+        2133,
+        2146
+      ],
+      "fingerprintPassLogLine": 2148,
+      "migrationPassLogLine": 2150,
+      "status": "PASS_IN_CURRENT_FULL_SUITE"
+    },
+    "workOrder": "/tmp/fls-r1fix-clean/docs/design/rule-repairs/WORK_ORDER.md",
+    "overallTimeLimitHours": 6,
+    "remainingReporting": "Report actual start/end elapsed and6h compliance/overrun, per-item commit/push, previously fixed clause attribution. This audit did not independently establish full-task start or remote push state."
+  },
+  "interpretations": {
+    "R3": "Explicit R-T5 requires ready construction and core timber to survive duplicate farms; preserves first core food chain and defers duplicates in that case, per documented reconciliation.",
+    "R5": "Cancelled return alone may overflow; existing shared physical store capacity still prevents ordinary intake while no room remains. No new resource capacity economy."
+  },
+  "remainingObligations": [
+    "Final-head5/5 guardrail summaries and per-seed<=25min execution receipts; timeout must remain indeterminate.",
+    "Final report must retain natural/prepared distinctions,R-T17 fixture limitation,total6h reporting and item commit/push evidence."
+  ],
+  "newScenarioAdequacyBlockers": [],
+  "originalAuditGate": "PENDING_FIVE_SEED_GUARDRAILS",
+  "finalGuardrailAddendum": {
+    "verifiedAt": "2026-09-24T13:19:00Z",
+    "reviewer": "r1_goal_review",
+    "method": "Read-only comparison of all five raw summaries and execution receipts",
+    "result": "PASS_5_OF_5",
+    "evidence": "guardrails-final.json"
+  }
+}

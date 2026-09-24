@@ -1,0 +1,100 @@
+{
+  "rows": [
+    {
+      "run": 0,
+      "label": "before",
+      "ms": 483.7409170000001,
+      "meanMs": 4.031174308333334,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 0,
+      "label": "after",
+      "ms": 288.500167,
+      "meanMs": 2.404168058333333,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 1,
+      "label": "before",
+      "ms": 475.936917,
+      "meanMs": 3.966140975,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 1,
+      "label": "after",
+      "ms": 290.064667,
+      "meanMs": 2.4172055583333334,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 2,
+      "label": "before",
+      "ms": 508.013875,
+      "meanMs": 4.233448958333333,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 2,
+      "label": "after",
+      "ms": 291.991167,
+      "meanMs": 2.433259725,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 3,
+      "label": "before",
+      "ms": 491.78925000000004,
+      "meanMs": 4.09824375,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 3,
+      "label": "after",
+      "ms": 431.081125,
+      "meanMs": 3.5923427083333332,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 4,
+      "label": "before",
+      "ms": 492.88308299999994,
+      "meanMs": 4.107359024999999,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    },
+    {
+      "run": 4,
+      "label": "after",
+      "ms": 292.819125,
+      "meanMs": 2.440159375,
+      "sha256": "877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3",
+      "pathCacheKeys": 1214,
+      "tick": 324120
+    }
+  ],
+  "allFullStateShaEqual": true,
+  "medianMs": {
+    "before": 491.78925000000004,
+    "after": 291.991167
+  },
+  "note": "Profiler disabled; each sample fresh subprocess/import/state,120 normalticks; frozen403 before vs frozen403 src with only routing.ts replaced after. Concurrent host load."
+}
