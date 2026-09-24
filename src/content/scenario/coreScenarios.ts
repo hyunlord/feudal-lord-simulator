@@ -1,3 +1,4 @@
+import { MONEY_BALANCE } from "../balanceConfig";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
 
@@ -55,9 +56,13 @@ const WALLS = {
     { kind: "building_count_at_least", building: "market", value: 1 },
     { kind: "building_count_at_least", building: "masonry", value: 1 },
     { kind: "spendable_resource_at_least", resource: "stone", value: 400 },
-    { kind: "treasury_coin_at_least", value: 200 },
+    // M-7: the same sum is spent when the project is proclaimed.
+    { kind: "treasury_coin_at_least", value: MONEY_BALANCE.stoneWallProjectCost },
   ] },
 } as const satisfies ScenarioDef["walls"];
+
+/** C2 money rules: the lord's mill monopoly is on, demesne sales are off (goods belong to residents). */
+const ECONOMY_RULES = { millMonopoly: true, demesneSale: false } as const satisfies ScenarioDef["economyRules"];
 
 export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field", resourcePackage: {} }];
 
@@ -80,7 +85,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     failure: { all: [{ kind: "settlement_empty_for", ticks: 600 }] },
     walls: WALLS,
     activeEvents: [],
-    economyRules: "current",
+    economyRules: ECONOMY_RULES,
   },
   {
     id: "core:sandbox",
@@ -95,7 +100,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     failure: null,
     walls: WALLS,
     activeEvents: [],
-    economyRules: "current",
+    economyRules: ECONOMY_RULES,
   },
 ];
 

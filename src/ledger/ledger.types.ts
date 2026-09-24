@@ -4,15 +4,18 @@
  */
 import type { SourceRef } from "../contracts";
 
-/** Cash, restricted funds (murage…), arrears owed, obligations in kind. Only `cash` has entries yet. */
+/** Cash, restricted funds (murage…), arrears owed (unpaid upkeep since C2), obligations in kind. */
 export const LEDGER_ACCOUNTS = ["cash", "restricted", "arrears", "in_kind"] as const;
 export type LedgerAccount = (typeof LEDGER_ACCOUNTS)[number];
 
 /**
- * Registered categories. `construction` and `upkeep` are reserved: no rule spends money yet (B3 found
- * none), so they carry no entry until a rule does. C2 adds `toll`, `stall_fee`, `rent`, `mill_toll`.
+ * Registered categories (spec M-1…M-7). `market_sale` stays registered for saved history only: since C2 the
+ * market no longer pays the treasury (goods belong to residents and traders). `construction` is reserved.
  */
-export const LEDGER_CATEGORIES = ["opening_balance", "market_sale", "construction", "upkeep"] as const;
+export const LEDGER_CATEGORIES = [
+  "opening_balance", "market_sale", "construction", "upkeep",
+  "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project",
+] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 
 /** At least one source: the type makes an empty list a compile error, `postLedgerEntries` a runtime one. */

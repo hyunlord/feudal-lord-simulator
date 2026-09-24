@@ -97,7 +97,8 @@ test('Given same-tick sale production delivery and consumption When the normal e
   assert.equal(next.autoplayFoodFlow?.current.wheatExported, 1);
   assert.equal(next.autoplayFoodFlow?.current.wheatProduced, 1);
   assert.equal(next.autoplayFoodFlow?.current.breadProduced, 1);
-  assert.equal(next.treasuryCoin - state.treasuryCoin, 2);
+  // C2 (spec M-1): the export still happens; its proceeds belong to the goods' owners, not the treasury.
+  assert.equal(next.treasuryCoin - state.treasuryCoin, 0);
   assert.equal(next.houses.find(h => h.buildingId === 'home7')?.lastServicedTick, 800);
   assert.equal(next.houses.find(h => h.buildingId === 'home7')?.breadStock, 0);
 });
@@ -148,7 +149,7 @@ for (const sale of [true, false]) test(`Given two connected markets and sale eli
   const next = settleMarkets(state);
   assert.equal(next.autoplayFoodFlow?.current.breadExported, sale ? 2 : 0);
   assert.equal(next.autoplayFoodFlow?.current.wheatExported, 0);
-  assert.equal(next.treasuryCoin - state.treasuryCoin, sale ? 10 : 0);
+  assert.equal(next.treasuryCoin - state.treasuryCoin, 0, 'C2 (M-1): market exports pay the treasury nothing');
   assert.equal(next.buildings.find(b => b.kind === 'granary')?.inventory.bread, sale ? 42 : 40);
 });
 

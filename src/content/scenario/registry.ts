@@ -76,6 +76,9 @@ function validateScenario(scenario: ScenarioDef, archetypes: ReadonlyMap<string,
   if (typeof scenario.name !== "string" || scenario.name.length === 0) fail(id, "name is required");
   if (!Number.isInteger(scenario.startYear)) fail(id, "startYear must be an integer");
   if (!archetypes.has(scenario.archetype)) fail(id, `unknown archetype ${scenario.archetype}`);
+  if (typeof scenario.economyRules?.millMonopoly !== "boolean" || typeof scenario.economyRules.demesneSale !== "boolean") {
+    fail(id, "economyRules needs millMonopoly and demesneSale flags");
+  }
   const stageIds = scenario.stages.map(stage => stage.id);
   if (stageIds.join() !== STAGE_ORDER.join()) fail(id, `stages must be ${STAGE_ORDER.join(", ")} in order`);
   const unlocked = new Set<string>();

@@ -111,9 +111,13 @@ function segmentMaterialGapCount(state: GameState): number {
   return state.palisade?.segments.filter((segment) => !segmentHasMaterial(segment)).length ?? 0;
 }
 
+/** C2 (spec M-5): the market's money is its stall fee, posted at a period close; sales pay the goods' owners. */
+function postedStallFee(state: GameState): boolean {
+  return (state.ledger?.entries ?? []).some(entry => entry.tick === state.tick && entry.category === "stall_fee" && entry.amount > 0);
+}
+
 export function trackPhase9Run(initial: GameState): Phase9RunTrace {
   let state = initial;
-  const initialTreasuryCoin = initial.treasuryCoin;
   const initialTick = state.tick;
   let maxStoneChainStallWithAccess = 0;
   let stoneChainAccessMissingTicks = stoneChainHasAccess(state) ? 0 : 1;
@@ -136,7 +140,7 @@ export function trackPhase9Run(initial: GameState): Phase9RunTrace {
       stoneChainAccessMissingTicks += 1;
     }
     if (segmentMaterialGapCount(state) > 0) segmentMaterialGapTicks += 1;
-    if (coinReachedTick === null && state.treasuryCoin > initialTreasuryCoin) coinReachedTick = state.tick;
+    if (coinReachedTick === null && postedStallFee(state)) coinReachedTick = state.tick;
     if (coin200ReachedTick === null && state.treasuryCoin >= 200) coin200ReachedTick = state.tick;
     if (spendableStone400ReachedTick === null && placementSpendableResource(state, "stone") >= 400) {
       spendableStone400ReachedTick = state.tick;
@@ -158,7 +162,7 @@ export function trackPhase9Run(initial: GameState): Phase9RunTrace {
   for (let step = 0; step < PHASE9_MAX_STONE_WALL_COMPLETION_TICKS && stoneWallCompleteTick === null && state.settlement?.outcome !== "abandoned"; step += 1) {
     state = advanceTick(state);
     if (segmentMaterialGapCount(state) > 0) segmentMaterialGapTicks += 1;
-    if (coinReachedTick === null && state.treasuryCoin > initialTreasuryCoin) coinReachedTick = state.tick;
+    if (coinReachedTick === null && postedStallFee(state)) coinReachedTick = state.tick;
     if (coin200ReachedTick === null && state.treasuryCoin >= 200) coin200ReachedTick = state.tick;
     if (spendableStone400ReachedTick === null && placementSpendableResource(state, "stone") >= 400) {
       spendableStone400ReachedTick = state.tick;

@@ -225,7 +225,9 @@ export function createPhase9EconomyHarnessScenario(
     tiles: [...phase9Tiles(stage3, fedBuildings)],
     population: houses.reduce((total, candidate) => total + candidate.residents, 0),
     treasuryTimber: 1_200,
-    treasuryCoin: 0,
+    // C2 (spec M-6/M-7): this synthetic Stone Town has no growth and shrinks during the run, so its rent cannot
+    // carry a market and a gate. A starting fund pays upkeep and the 200 stone-wall project, as market sales did.
+    treasuryCoin: 2_000,
     wallConstructionPriority: "priority",
     roadRevision: stage3.roadRevision + 1,
     pathCache: {},

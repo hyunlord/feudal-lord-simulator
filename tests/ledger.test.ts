@@ -26,9 +26,9 @@ import { LedgerPanelView } from "../src/ui/LedgerPanel";
 import { ledgerPanelModel } from "../src/ui/ledgerPanelModel";
 import { ledgerBalanceTrace } from "../scripts/ledgerBalanceTrace";
 
-const BASELINE = JSON.parse(readFileSync("fixtures/ledger/treasury-baseline-bc94b31.json", "utf8")) as {
+const BASELINE = JSON.parse(readFileSync("fixtures/ledger/world-baseline-4950b10.json", "utf8")) as {
   readonly cases: Record<string, { readonly kind: string; readonly ticks: number; readonly stateFile: string | null;
-    readonly treasurySequenceSha256: string; readonly finalTreasury: number; readonly finalStateHashWithoutLedger: string }>;
+    readonly finalWorldHashWithoutMoney: string }>;
 };
 
 const sale = (amount: number, market = "market-1"): LedgerPosting =>
@@ -57,12 +57,13 @@ test("L-1 money is shown as 돈 and no player-facing 금화 remains outside the 
 });
 
 for (const [name, expected] of Object.entries(BASELINE.cases)) {
-  test(`L-10 gate 1: ${name} keeps the pre-ledger treasury on every tick and the same final state`, async () => {
+  // B3 gate 1 compared the treasury with the pre-ledger code. C2 changes the money rules on purpose (spec M-*),
+  // so the trace now checks that the cached treasury equals the ledger's cash balance on every tick and that the
+  // world without money fields is still the pre-C2 world (no upkeep went unpaid in these cases).
+  test(`L-10 ${name}: the cache matches the ledger on every tick and the money-free world is the pre-C2 world`, async () => {
     const result = await ledgerBalanceTrace(".", expected.kind, expected.ticks, expected.stateFile ?? undefined);
-    assert.equal(result.treasurySequenceSha256, expected.treasurySequenceSha256);
-    assert.equal(result.finalTreasury, expected.finalTreasury);
-    assert.equal(result.finalStateHashWithoutLedger, expected.finalStateHashWithoutLedger);
     assert.equal(result.cacheMismatches, 0);
+    assert.equal(result.finalWorldHashWithoutMoney, expected.finalWorldHashWithoutMoney);
   });
 }
 
@@ -75,7 +76,8 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
   assert.deepEqual(next.ledger!.entries.map(entry => [entry.id, entry.category, entry.amount, entry.sourceRefs[0].type]),
     [["ledger-000001", "opening_balance", 120, "scenario"], ["ledger-000002", "market_sale", 5, "building"]]);
   assert.equal(DEFAULT_GAME_STATE.ledger, undefined);
-  assert.deepEqual(LEDGER_CATEGORIES, ["opening_balance", "market_sale", "construction", "upkeep"]);
+  assert.deepEqual(LEDGER_CATEGORIES, ["opening_balance", "market_sale", "construction", "upkeep",
+    "toll", "stall_fee", "rent", "mill_toll", "demesne_sale", "project"]);
 });
 
 test("L-4 roll-ups keep every account total while only the last 6 periods stay as entries", () => {
@@ -115,7 +117,7 @@ test("L-5 an entry without a source is refused by the type and at run time", () 
   assert.throws(() => postLedgerEntries({ tick: 1, treasuryCoin: 0 }, [sale(1.5)]), /whole pennies/);
 });
 
-test("L-6 four accounts exist; restricted, arrears and in-kind are empty", () => {
+test("L-6 four accounts exist; a sale posts to cash only (arrears is written by unpaid upkeep, C2 M-6)", () => {
   assert.deepEqual(LEDGER_ACCOUNTS, ["cash", "restricted", "arrears", "in_kind"]);
   const state = post({ tick: 0, treasuryCoin: 0 }, 80, [sale(6)]);
   for (const account of ["restricted", "arrears", "in_kind"] as const) {
@@ -166,8 +168,8 @@ test("L-8 pressing a ledger source row outlines the selling market through the m
   assert.deepEqual(highlighted.at(-1), [market.id]);
 });
 
-test("L-9 save v7 round-trips the ledger; a v6 save starts it with one opening balance entry", () => {
-  assert.equal(SAVE_SCHEMA_VERSION, 7);
+test("L-9 the current save round-trips the ledger; a v6 save starts it with one opening balance entry", () => {
+  assert.equal(SAVE_SCHEMA_VERSION, 8);
   const v6 = readFileSync("fixtures/saves/v6/timber-shortage.save.json", "utf8");
   const original = JSON.parse(v6).state as GameState & { coinLedger?: unknown };
   const { envelope, migratedFrom } = decodeSave(new TextEncoder().encode(v6));
@@ -189,5 +191,5 @@ test("L-9 save v7 round-trips the ledger; a v6 save starts it with one opening b
   assert.throws(() => decodeSave(corrupt(state.ledger, state.treasuryCoin + 1)), /cash balance does not match/);
   assert.throws(() => decodeSave(corrupt({ ...state.ledger, entries: state.ledger!.entries.map(entry => ({ ...entry, sourceRefs: [] })) })), /no source/);
   assert.throws(() => decodeSave(corrupt({ ...state.ledger, entries: [...state.ledger!.entries].reverse() })), /out of order/);
-  assert.throws(() => decodeSave(corrupt({ ...state.ledger, entries: state.ledger!.entries.map(entry => ({ ...entry, category: "toll" })) })), /category is unknown/);
+  assert.throws(() => decodeSave(corrupt({ ...state.ledger, entries: state.ledger!.entries.map(entry => ({ ...entry, category: "tithe" })) })), /category is unknown/);
 });

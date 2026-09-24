@@ -1043,7 +1043,9 @@ button {
 }
 
 /* contrast-audit selector=".era-proposal-lines" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.era-proposal-lines {
+/* contrast-audit selector=".era-project-lines" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.era-proposal-lines,
+.era-project-lines {
   display: grid;
   gap: 4px;
   min-width: 0;
@@ -1054,7 +1056,8 @@ button {
   line-height: 1.4;
 }
 
-.era-proposal-lines .prediction-line {
+.era-proposal-lines .prediction-line,
+.era-project-lines .prediction-line {
   overflow-wrap: anywhere;
 }
 

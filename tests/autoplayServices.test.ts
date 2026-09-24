@@ -143,7 +143,7 @@ test('Given two exporting markets and one unit above the church budget When both
     { ...template, id: 'second-market', tx: 16, ty: 13 }];
   const next = settleMarkets(state);
   assert.equal(next.buildings.find(b => b.kind === 'storehouse')?.inventory.timber, 100);
-  assert.equal(next.treasuryCoin, state.treasuryCoin + 6);
+  assert.equal(next.treasuryCoin, state.treasuryCoin, 'C2 (M-1): the one surplus unit is traded without treasury income');
 });
 
 

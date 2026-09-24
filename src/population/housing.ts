@@ -1,3 +1,4 @@
+import { operationSuspended } from "../content/buildingConfig";
 import { houseGrowthPhase, houseHasFood, houseIsStarving, stepHouseFood } from "./houseFood";
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
@@ -163,7 +164,7 @@ function hasGranaryNearby(
       ?.granaryRadius ?? 12;
   return buildings.some(
     (building) =>
-      building.kind === "granary" && building.operationPaused !== true &&
+      building.kind === "granary" && !operationSuspended(building) &&
       buildingFootprintDistance(home, building) <= granaryRadius,
   );
 }

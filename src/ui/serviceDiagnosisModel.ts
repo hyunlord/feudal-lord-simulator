@@ -1,3 +1,4 @@
+import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
 import { SERVICE_DIAGNOSIS_COPY } from './serviceDiagnosisCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import type { GameState } from '../engine/engine.types';
@@ -48,7 +49,7 @@ export function providerServiceRows(state: GameState, building: Building): reado
     `서비스 담당 ${provider.used}/${provider.capacity} 주거 필지`,
     '단독 주택 1 · 합필 주택 2필지, 빈집도 자리 유지',
     provider.service === 'water' ? '주민이 가까운 우물을 직접 이용합니다' : '범위 안 주택까지 이어진 도로가 필요합니다',
-    ...(building.operationPaused === true ? [SERVICE_DIAGNOSIS_COPY.paused]
+    ...(building.upkeepUnpaid === true ? [MONEY_RULE_COPY.serviceUnpaid] : building.operationPaused === true ? [SERVICE_DIAGNOSIS_COPY.paused]
       : provider.workers < provider.requiredWorkers ? ['서비스 중단: 일꾼 부족'] : []),
   ];
 }

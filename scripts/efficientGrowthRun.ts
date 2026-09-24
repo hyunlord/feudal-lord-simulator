@@ -8,6 +8,8 @@ import { runPhase19NaturalGrowth } from './phase19NaturalGrowth';
 import { efficientGrowthMetrics } from './efficientGrowthMetrics';
 import { growthGuardrail } from './growthGuardrail';
 import { createMillZeroWheatObservation, millWheatSamples } from './efficientGrowthMillContinuity';
+import { moneyPeriodSample, type MoneyPeriodSample } from './moneyPeriodRecord';
+import { treasuryBalance } from '../src/ledger/ledger';
 
 export function runEfficientGrowth(args: readonly string[]) {
   const options = parseGrowthOptions(args);
@@ -20,10 +22,17 @@ export function runEfficientGrowth(args: readonly string[]) {
   const checkpoint = args.includes('--checkpoint');
   const millObservation = createMillZeroWheatObservation();
   let efficiency: ReturnType<typeof efficientGrowthMetrics> | null = null;
+  const moneyPeriods: (MoneyPeriodSample & { readonly stableSince: number | null })[] = [];
+  let money200Tick: number | null = null;
+  let stoneProclaimedTick: number | null = null;
   const report = runPhase19NaturalGrowth({ ...options,
     onDiagnostic: receipt => { diagnostics.last = receipt; },
     onTick: (state, stableSince) => {
       millObservation.observe(state.tick, stableSince, millWheatSamples(state));
+      if (money200Tick === null && treasuryBalance(state) >= 200) money200Tick = state.tick;
+      if (stoneProclaimedTick === null && state.era === 'stone_town') stoneProclaimedTick = state.eraProclaimedTick;
+      const period = moneyPeriodSample(state);
+      if (period !== null) moneyPeriods.push({ ...period, stableSince });
       if (checkpoint && state.tick % 12_000 === 0) {
         writeFileSync(resolve(output, 'last-observed-state.json'), JSON.stringify(state));
         writeFileSync(resolve(output, 'last-diagnostic.json'), JSON.stringify(diagnostics.last, null, 2));
@@ -52,9 +61,10 @@ export function runEfficientGrowth(args: readonly string[]) {
     efficiency, guardrail, lastDiagnostic: diagnostics.last, finalStateSha256,
     targetLots: options.targetLots, maxTicks: report.maxTicks, final: report.final,
     strict: { stableSince: report.stableSince, sustainedTicks: report.sustainedTicks, interruptions: report.stabilityInterruptions },
-    victoryTick: report.victoryTick, stopReason: report.stopReason, failures: report.failures,
+    victoryTick: report.victoryTick, money200Tick, stoneProclaimedTick, stopReason: report.stopReason, failures: report.failures,
     elapsedSeconds: report.elapsedSeconds };
   writeFileSync(resolve(output, 'summary.json'), JSON.stringify(summary, null, 2));
+  writeFileSync(resolve(output, 'money-periods.jsonl'), moneyPeriods.map(period => JSON.stringify(period)).join('\n') + '\n');
   return summary;
 }
 

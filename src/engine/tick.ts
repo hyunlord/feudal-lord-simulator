@@ -23,6 +23,8 @@ import {
 import { recordFoodObservationActivity, refreshFoodObservation } from "./autoplayFoodThroughput";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { settleMarkets } from "./marketSettlement";
+import { accrueTollCrossings, settleMoneyPeriod } from "./moneyRules";
+import { carterCrossings } from "./tollCrossings";
 import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
 import {
@@ -127,6 +129,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     routes: routePorts.delivery,
     ...(state.autoplayMaterialRecovery === undefined ? {} : { materialActivity }),
   });
+  // M-4: carters that stepped through a gate or onto a bridge during this movement step.
+  const tollCrossings = carterCrossings(state, state.walkers, movedCarters.walkers);
   const roamingHouses = state.houses.flatMap((house) => {
     const converted = toRoamingHouse(house, state);
     return converted === null ? [] : [converted];
@@ -212,7 +216,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     routes: routePorts.roaming,
   });
 
-  return recordMaterialActivity(recordTimberAvailability({
+  return accrueTollCrossings(recordMaterialActivity(recordTimberAvailability({
     ...progressed,
     buildings: [...spawnedDistributors.buildings],
     constructionSites: [...spawnedCarters.constructionSites],
@@ -220,12 +224,12 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: spawnedCarters.treasuryTimber,
     treasuryCoin: progressed.treasuryCoin,
     pathCache: routePorts.getPathCache(),
-  }), materialEvents);
+  }), materialEvents), tollCrossings);
 }
 
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   return updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }),
+    settleMoneyPeriod(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })),
   ))));
 }

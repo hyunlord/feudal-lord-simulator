@@ -35,7 +35,8 @@ test('R-T13: only the stone exceeding all construction demand may be sold', () =
   state.houses = [];
   const result = settleThirty(state);
   assert.equal(stoneStock(result), 150);
-  assert.equal(result.treasuryCoin - state.treasuryCoin, 5 * 8);
+  // C2 (spec M-1): five surplus stones are traded out; the proceeds are the owners', not the treasury's.
+  assert.equal(result.treasuryCoin - state.treasuryCoin, 0);
 });
 test('delivered and in-transit construction materials reduce the export reserve once', () => {
   const state = fixture(65);

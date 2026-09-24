@@ -6,7 +6,9 @@ import { useLayoutEffect, useRef } from "react";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements, stoneWallProjectAvailable } from "../engine/era";
 import { LEDGER_COPY } from "../ledger/ledgerCopy.ko";
-import { recentMarketIncome } from "../ledger/ledgerView";
+import { recentIncome } from "../ledger/ledgerView";
+import { LEDGER_CATEGORY_LABELS } from "../ledger/ledgerCopy.ko";
+import { stoneProjectPredictionLines } from "./moneyPrediction";
 import { reserveDeadlock } from "../engine/reserveDeadlock";
 import { canAdvanceConstructionWork } from "../economy/construction";
 import type { WallConstructionPriority } from "../engine/constructionReserve";
@@ -40,6 +42,8 @@ export type EraConsoleModel = {
   };
   readonly predictionLines: readonly PredictionLine[];
   readonly coinHint: string | null;
+  /** M-7: the stone-wall project's cost, or why the treasury blocks it. */
+  readonly projectLines: readonly PredictionLine[];
   readonly draft: {
     readonly editing: boolean;
     readonly selectedRunLabel: string | null;
@@ -82,16 +86,13 @@ export function buildEraConsoleModel(input: {
   const draftLines: readonly PredictionLine[] = input.draft !== null && input.draft.candidate === null
     ? draftPalisadePredictionLines(input.state, input.draft.path)
     : predictionLines;
-  const marketCount = input.state.buildings.filter(building => building.kind === 'market').length;
-  // Spec L-8: the income-source line is the ledger's recent market-sale total.
-  const recentIncome = recentMarketIncome(input.state);
+  // Spec L-8 / M-8: the income-source line is the ledger's recent income by category.
+  const income = recentIncome(input.state);
   const deadlock = reserveDeadlock(input.state);
   const coinHint = input.state.era === 'palisade'
-    ? marketCount === 0
-      ? LEDGER_COPY.eraNoMarket
-      : recentIncome.total > 0
-        ? LEDGER_COPY.eraIncome(marketCount, recentIncome.total)
-        : LEDGER_COPY.eraNoIncome(marketCount)
+    ? income.total > 0
+      ? LEDGER_COPY.eraIncome(income.byCategory.map(row => LEDGER_COPY.eraIncomeLine(LEDGER_CATEGORY_LABELS[row.category], row.amount)).join(LEDGER_COPY.eraIncomeSeparator))
+      : LEDGER_COPY.eraNoIncome
     : null;
   return {
     currentEraLabel: currentStageLabel(input.state.era),
@@ -112,6 +113,7 @@ export function buildEraConsoleModel(input: {
     },
     predictionLines: draftLines,
     coinHint,
+    projectLines: stoneProjectPredictionLines(input.state),
     draft: {
       editing: input.draft !== null,
       selectedRunLabel: selectedRunLabel(input.draft),
@@ -188,6 +190,11 @@ export function EraConsole({
       {model.proposal.visible && model.predictionLines.length > 0 ? (
         <ul className="era-proposal-lines" aria-label="목책 공사 예측">
           {model.predictionLines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}>{line.text}</li>)}
+        </ul>
+      ) : null}
+      {model.projectLines.length > 0 ? (
+        <ul className="era-project-lines" aria-label="석벽 사업 재원 예측">
+          {model.projectLines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}>{line.text}</li>)}
         </ul>
       ) : null}
       {model.draft.editing ? (

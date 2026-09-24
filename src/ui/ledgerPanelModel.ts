@@ -4,11 +4,15 @@ import { LEDGER_ACCOUNTS, type LedgerAccount } from '../ledger/ledger.types';
 import { LEDGER_ACCOUNT_LABELS, LEDGER_CATEGORY_LABELS, LEDGER_COPY, LEDGER_WINDOW_LABELS } from '../ledger/ledgerCopy.ko';
 import { ledgerView, sourceBuildingIds, type LedgerWindow } from '../ledger/ledgerView';
 import { CAUSE_REGISTRY } from './causeRegistry';
+import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
+import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
+import { tollPointTile } from '../engine/tollCrossings';
 
 export const LEDGER_WINDOWS: readonly LedgerWindow[] = ['recent', 'previous', 'all'];
 
 /** Which cause-registry row presents a source (spec L-8: the ledger reuses the registry, no new glyphs). */
-const BUILDING_CAUSE = { market: 'market', church: 'church', well: 'water', granary: 'bread' } as const;
+const BUILDING_CAUSE = { market: 'market', church: 'church', well: 'water', granary: 'bread', mill: 'bread' } as const;
+const NEUTRAL = { glyph: '·', color: CAUSE_REGISTRY.operation_paused.color } as const;
 
 export interface LedgerSourcePresentation {
   readonly label: string;
@@ -22,12 +26,24 @@ export function ledgerSourcePresentation(state: Pick<GameState, 'buildings'>, so
   if (source.type === 'building') {
     const building = state.buildings.find(candidate => candidate.id === source.id);
     const cause = building === undefined ? undefined : BUILDING_CAUSE[building.kind as keyof typeof BUILDING_CAUSE];
-    const entry = cause === undefined ? CAUSE_REGISTRY.delivery : CAUSE_REGISTRY[cause];
-    // Building ids keep their construction-site ordinal; players read the map position instead.
-    const label = building === undefined ? LEDGER_COPY.goneSource(entry.shortLabel) : LEDGER_COPY.sourceAt(entry.shortLabel, building.tx, building.ty);
-    return { label, glyph: entry.glyphText, color: entry.color, buildingIds: building === undefined ? [] : sourceBuildingIds([source]) };
+    const entry = cause === undefined ? undefined : CAUSE_REGISTRY[cause];
+    // Building ids keep their construction-site ordinal; players read the kind and map position instead.
+    const name = building === undefined ? LEDGER_COPY.goneBuilding : BUILDING_CONFIG_BY_KIND[building.kind].name;
+    const label = building === undefined ? LEDGER_COPY.goneSource(name) : LEDGER_COPY.sourceAt(name, building.tx, building.ty);
+    return { label, glyph: entry?.glyphText ?? NEUTRAL.glyph, color: entry?.color ?? NEUTRAL.color,
+      buildingIds: building === undefined ? [] : sourceBuildingIds([source]) };
   }
-  return { label: LEDGER_CATEGORY_LABELS.opening_balance, glyph: '·', color: CAUSE_REGISTRY.operation_paused.color, buildingIds: [] };
+  if (source.type === 'right') {
+    // M-4: gates and bridges are toll points, not buildings; the row names the place, nothing to outline.
+    const tile = tollPointTile(source.id);
+    const name = source.detail === 'bridge' ? MONEY_RULE_COPY.bridge : MONEY_RULE_COPY.gate;
+    const entry = source.detail === 'bridge' ? CAUSE_REGISTRY.delivery : CAUSE_REGISTRY.wall;
+    return { label: tile === null ? name : LEDGER_COPY.sourceAt(name, tile.tx, tile.ty), glyph: entry.glyphText, color: entry.color, buildingIds: [] };
+  }
+  if (source.type === 'policy' && source.id === 'stone_wall_project') {
+    return { label: MONEY_RULE_COPY.stoneProject, glyph: CAUSE_REGISTRY.wall.glyphText, color: CAUSE_REGISTRY.wall.color, buildingIds: [] };
+  }
+  return { label: LEDGER_CATEGORY_LABELS.opening_balance, glyph: NEUTRAL.glyph, color: NEUTRAL.color, buildingIds: [] };
 }
 
 export interface LedgerPanelModel {
@@ -44,13 +60,11 @@ const ENTRY_LIMIT = 12;
 
 export function ledgerPanelModel(state: GameState, account: LedgerAccount, window: LedgerWindow): LedgerPanelModel {
   const view = ledgerView(state, account, window);
-  const marketCount = state.buildings.filter(building => building.kind === 'market').length;
   const notes: string[] = [];
-  if (account !== 'cash') notes.push(LEDGER_COPY.emptyAccount);
-  else if (view.entries.length === 0 && !view.includesRollups) {
-    notes.push(window === 'recent' ? (marketCount === 0 ? LEDGER_COPY.noIncomeNoMarket : LEDGER_COPY.noIncomeWithMarket) : LEDGER_COPY.noEntries);
-  }
-  if (account === 'cash') notes.push(LEDGER_COPY.noSpending);
+  if (account === 'arrears') {
+    if (view.entries.length === 0 && !view.includesRollups) notes.push(LEDGER_COPY.noArrears);
+  } else if (account !== 'cash') notes.push(LEDGER_COPY.emptyAccount);
+  else if (view.entries.length === 0 && !view.includesRollups) notes.push(window === 'recent' ? LEDGER_COPY.noIncome : LEDGER_COPY.noEntries);
   if (view.includesRollups) notes.push(LEDGER_COPY.rolledUp);
   return {
     accounts: LEDGER_ACCOUNTS.map(candidate => ({ account: candidate, label: LEDGER_ACCOUNT_LABELS[candidate], selected: candidate === account })),

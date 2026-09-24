@@ -78,10 +78,11 @@ test('edited wall prediction follows the current draft rather than the untouched
   assert.ok(model.predictionLines.some(line => line.id === 'scope' && line.text.includes('길이 16칸')));
 });
 
-test('stone requirement tells a marketless player where coin comes from', () => {
+test('stone requirement tells a player without income where money comes from (C2: rent, stalls, mill and tolls)', () => {
   const state = { ...DEFAULT_GAME_STATE, era: 'palisade' as const, treasuryCoin: 0 };
   const model = buildEraConsoleModel({ state, draft: null });
-  assert.match(model.coinHint ?? '', /시장 0개.*남는 물자를 팔 때/);
+  assert.match(model.coinHint ?? '', /없음.*지대·좌판세·제분료·통행세/);
+  assert.equal(model.projectLines[0]?.severity, 'block');
 });
 
 test('wall construction exposes explicit balanced and priority controls', () => {

@@ -88,5 +88,13 @@ export interface ScenarioDef {
   readonly failure: ConditionSet | null;
   readonly walls: WallPolicy;
   readonly activeEvents: readonly string[];
-  readonly economyRules: string;
+  readonly economyRules: EconomyRules;
+}
+
+/** Money rules a scenario switches (spec docs/design/money-rules.md). */
+export interface EconomyRules {
+  /** M-3: the lord's mill monopoly; mills charge `mill_toll` on the wheat they grind. */
+  readonly millMonopoly: boolean;
+  /** M-1b: market sales of granary grain are the lord's demesne surplus and post `demesne_sale`. */
+  readonly demesneSale: boolean;
 }

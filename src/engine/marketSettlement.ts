@@ -1,5 +1,6 @@
 import { recordFoodFlow } from './autoplayFoodFlow';
 import {
+  operationSuspended,
   BUILDING_CONFIG_BY_KIND,
   type Building,
 } from "../content/buildingConfig";
@@ -10,6 +11,7 @@ import type { TileCoordinate } from "../world/grid";
 import { constructionExportReserve } from './constructionExportReserve';
 import { existingRoadComponent } from "../world/roadGraph";
 import { postLedgerEntries } from "../ledger/ledger";
+import { scenarioOf } from "./scenarioState";
 import type { LedgerPosting } from "../ledger/ledger.types";
 
 type MarketResource = Exclude<ResourceType, "coin">;
@@ -17,6 +19,7 @@ type MarketResource = Exclude<ResourceType, "coin">;
 type SaleRule = {
   readonly resource: MarketResource;
   readonly reserve: number;
+  /** Trade priority (dearest goods first); since C2 a price only for the owner, or for demesne sales. */
   readonly coin: number;
 };
 
@@ -61,7 +64,7 @@ function withAmount(
 function completedMarkets(buildings: readonly Building[]): readonly Building[] {
   return buildings
     .filter((building) => building.kind === "market")
-    .filter((building) => building.operationPaused !== true && building.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired)
+    .filter((building) => !operationSuspended(building) && building.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired)
     .sort((left, right) => left.id.localeCompare(right.id));
 }
 
@@ -112,7 +115,7 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
 
 export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
   return market.kind === "market"
-    && market.operationPaused !== true && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
+    && !operationSuspended(market) && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
     && saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
 }
 
@@ -120,7 +123,7 @@ function settleMarket(
   state: GameState,
   buildings: readonly Building[],
   market: Building,
-): { readonly buildings: readonly Building[]; readonly coin: number; readonly sold?: MarketResource } {
+): { readonly buildings: readonly Building[]; readonly coin: number; readonly sold?: MarketResource; readonly from?: Building } {
   const candidate = [...saleCandidates(connectedStorageSources(state, market, buildings), state)]
     .sort(compareCandidates)[0];
   if (candidate === undefined) return { buildings, coin: 0 };
@@ -128,6 +131,7 @@ function settleMarket(
   return {
     coin: candidate.coin,
     sold: candidate.resource,
+    from: candidate.building,
     buildings: buildings.map((building) =>
       building.id === candidate.building.id
         ? {
@@ -143,35 +147,38 @@ function settleMarket(
   };
 }
 
+/**
+ * M-1: the market still trades goods out of connected storage (residents' and traders' goods), but the
+ * proceeds belong to their owners, so nothing reaches the treasury. Only with the scenario's demesne rule
+ * does a sale of the lord's own granary grain post `demesne_sale` (M-1b, off by default).
+ */
 export function settleMarkets(state: GameState): GameState {
   if (state.tick <= 0 || state.tick % MARKET_CADENCE_TICKS !== 0) return state;
 
   let buildings: readonly Building[] = state.buildings;
-  let earnedCoin = 0;
-  const sales: { readonly marketId: string; readonly coin: number; readonly sold: MarketResource }[] = [];
+  const demesne: LedgerPosting[] = [];
+  const demesneSale = scenarioOf(state).economyRules.demesneSale;
+  let traded = false;
   let wheatExported = 0;
   let breadExported = 0;
   for (const market of completedMarkets(buildings)) {
     const result = settleMarket(state, buildings, market);
     buildings = result.buildings;
-    earnedCoin += result.coin;
-    if (result.coin > 0 && result.sold !== undefined) sales.push({ marketId: market.id, coin: result.coin, sold: result.sold });
+    if (result.sold === undefined) continue;
+    traded = true;
     if (result.sold === "wheat") wheatExported += 1;
     if (result.sold === "bread") breadExported += 1;
+    if (demesneSale && result.from?.kind === "granary" && (result.sold === "wheat" || result.sold === "bread")) {
+      demesne.push({ account: "cash", category: "demesne_sale", amount: result.coin,
+        sourceRefs: [{ type: "building", id: result.from.id, detail: `sold:${result.sold}` }, { type: "building", id: market.id }] });
+    }
   }
 
-  if (earnedCoin === 0) return state;
-  // Spec L-2: each sale is a cash entry; the treasury is the derived cash balance (equal to adding
-  // `earnedCoin`, which gate ① checks tick by tick against the pre-ledger code).
-  const postings = sales.map((sale): LedgerPosting => ({
-    account: "cash", category: "market_sale", amount: sale.coin,
-    sourceRefs: [{ type: "building", id: sale.marketId, detail: `sold:${sale.sold}` }],
-  }));
-  const posted = postLedgerEntries(state, postings);
+  if (!traded) return state;
+  const posted = demesne.length === 0 ? null : postLedgerEntries(state, demesne);
   return recordFoodFlow({
     ...state,
     buildings: [...buildings],
-    treasuryCoin: posted.treasuryCoin,
-    ledger: posted.ledger,
+    ...(posted === null ? {} : { treasuryCoin: posted.treasuryCoin, ledger: posted.ledger }),
   }, { wheatExported, breadExported });
 }

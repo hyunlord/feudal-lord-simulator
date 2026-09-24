@@ -3,7 +3,9 @@ import { calendarLabel } from "../engine/scenarioState";
 import { useEffect, useRef, useState } from "react";
 import { BALANCE } from "../content/balanceConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
-import { LEDGER_COPY } from "../ledger/ledgerCopy.ko";
+import { MONEY_RULE_COPY } from "../content/moneyCopy.ko";
+import { outstandingArrears } from "../engine/moneyRules";
+import { recentNetChange } from "../ledger/ledgerView";
 import { LedgerPanel } from "./LedgerPanel";
 import { constructionReservedMaterial } from "../engine/constructionReserve";
 import { storageCapacityBlock } from "../economy/storage";
@@ -33,6 +35,11 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
     return value ? `${value.delta > 0 ? "+" : ""}${value.delta} / ${value.ticks}틱` : paused ? "" : "— 관측 중";
   };
   const stock = economyStockTotals(state);
+  // M-8: the finance cell shows the recent period's net change and any unpaid upkeep.
+  const owed = outstandingArrears(state).total;
+  const coinSecondary = owed > 0
+    ? `${MONEY_RULE_COPY.cellNet(recentNetChange(state))} · ${MONEY_RULE_COPY.cellArrears(owed)}`
+    : MONEY_RULE_COPY.cellNet(recentNetChange(state));
   const timber = placementSpendableResource(state, "timber");
   const stone = placementSpendableResource(state, "stone");
   const timberReserved = constructionReservedMaterial(state, "timber");
@@ -65,7 +72,7 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
       <button type="button" className="resource-bar__cell resource-bar__coin" aria-label="재정 수입과 지출 상세" aria-expanded={coinOpen} aria-controls="resource-coin-detail" onClick={() => setCoinOpen(!coinOpen)}>
         <ResourceArtwork kind="coin" />
         <span className="resource-bar__detail"><span className="resource-bar__primary"><span>재정</span><strong>{stock.coin}</strong></span>
-          <span className="resource-bar__trend">{trend("coin")}</span><span className="resource-bar__secondary">{LEDGER_COPY.cellSecondary}<span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span></span>
+          <span className="resource-bar__trend">{trend("coin")}</span><span className="resource-bar__secondary">{coinSecondary}<span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span></span>
       </button>
       <span className="resource-bar__cell resource-bar__calendar" aria-label={SCENARIO_COPY.calendarAria} data-testid="resource-calendar"><strong>{calendarLabel(state)}</strong></span>
       {coinOpen ? <LedgerPanel id="resource-coin-detail" state={state} onHighlightBuildings={onHighlightBuildings} /> : null}

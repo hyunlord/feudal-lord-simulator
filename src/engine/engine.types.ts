@@ -107,6 +107,8 @@ export interface GameState {
    * `treasuryCoin` is only the cached cash balance and changes only through `postLedgerEntries`.
    */
   readonly ledger?: import("../ledger/ledger.types").Ledger;
+  /** Money-rule counts and the upkeep arrears queue (save v8, spec docs/design/money-rules.md). */
+  readonly money?: import("./money.types").MoneyState;
   readonly timberProductionWindow?: {
     readonly startTick: number;
     readonly throughTick: number;

@@ -1,4 +1,5 @@
 import {
+  operationSuspended,
   BUILDING_CONFIG_BY_KIND,
   type Building,
 } from "../content/buildingConfig";
@@ -91,8 +92,8 @@ function allocateBuildingWorkers(
   protectTimberChain = false,
 ): BuildingLabourResult {
   const ordered = [...buildings].sort((a, b) => a.id.localeCompare(b.id));
-  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => b.kind === kind && b.operationPaused !== true && eligible(b))?.id);
-  const coreTimberIds = ['logging_camp', 'sawmill'].map(kind => ordered.find(b => b.kind === kind && b.operationPaused !== true && eligible(b))?.id);
+  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => b.kind === kind && !operationSuspended(b) && eligible(b))?.id);
+  const coreTimberIds = ['logging_camp', 'sawmill'].map(kind => ordered.find(b => b.kind === kind && !operationSuspended(b) && eligible(b))?.id);
   const priority = (building: Building): number => {
     const coreIndex = coreFoodIds.indexOf(building.id);
     if (coreIndex >= 0) return coreIndex;
@@ -105,7 +106,7 @@ function allocateBuildingWorkers(
   const assigned = new Map<string, number>();
   ordered.sort((a, b) => priority(a) - priority(b) || a.id.localeCompare(b.id));
   for (const building of ordered) {
-    const workers = building.operationPaused !== true && eligible(building)
+    const workers = !operationSuspended(building) && eligible(building)
       ? Math.min(remaining, BUILDING_CONFIG_BY_KIND[building.kind].workersRequired)
       : 0;
     assigned.set(building.id, workers);

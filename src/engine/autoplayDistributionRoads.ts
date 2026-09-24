@@ -1,5 +1,5 @@
 import { BALANCE } from '../content/balanceConfig';
-import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
+import { operationSuspended, BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
 import { getOrthogonalRoadNeighbors } from '../world/roadGraph';
 import type { TileCoordinate } from '../world/grid';
@@ -81,7 +81,7 @@ function proveCorridor(state: GameState, path: readonly TileCoordinate[], granar
 export function distributionRoadRecoveryAction(state: GameState): AutoplayAction {
   const homes = shortageHomes(state);
   if (homes.length === 0) return NONE;
-  const granaries = state.buildings.filter(building => building.kind === 'granary' && building.operationPaused !== true
+  const granaries = state.buildings.filter(building => building.kind === 'granary' && !operationSuspended(building)
     && building.workers >= BUILDING_CONFIG_BY_KIND.granary.workersRequired).sort((a, b) => a.id.localeCompare(b.id));
   const stocked = granaries.filter(granary => availableStock(granary, 'bread') > 0);
   if (stocked.length === 0) return NONE;

@@ -1,3 +1,4 @@
+import { treasuryBalance } from "../ledger/ledger";
 import { EffectRegistry, SETTLEMENT_REGION_ID } from "../contracts";
 import { BALANCE } from "../content/balanceConfig";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
@@ -41,7 +42,7 @@ export function conditionMet(state: GameState, condition: Condition, context: Co
     case "stone_wall_completed": return metrics().completedStoneWall;
     case "building_count_at_least": return state.buildings.filter(building => building.kind === condition.building).length >= condition.value;
     case "spendable_resource_at_least": return placementSpendableResource(state, condition.resource) >= condition.value;
-    case "treasury_coin_at_least": return state.treasuryCoin >= condition.value;
+    case "treasury_coin_at_least": return treasuryBalance(state) >= condition.value;
     case "settlement_empty_for": return (context.emptyTicks ?? 0) >= condition.ticks;
   }
 }
