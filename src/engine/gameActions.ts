@@ -1,5 +1,5 @@
 import { bridgeRemovalTiles } from "../world/bridges";
-import { roadPlacementFailure, roadTimberCost, chargeRoadTimber } from "./roadPlacement";
+import { roadPlacementAssessment, roadTimberCost, chargeRoadTimber } from "./roadPlacement";
 import {
   BUILDING_CONFIG_BY_KIND,
   type BuildingDefinition,
@@ -62,13 +62,15 @@ export function placeRoadLine(
   if (!canPlaceRoadLineEndpoints(state, start, destination)) return state;
 
   const line = roadLine(start, destination);
-  if (roadPlacementFailure(state, line) !== null) return state;
+  const assessment = roadPlacementAssessment(state, line);
+  if (assessment.failure !== null || assessment.newTiles.length === 0) return state;
+  const additions = new Set(assessment.newTiles.map(tile => `${tile.tx},${tile.ty}`));
 
   return {
     ...state,
     ...chargeRoadTimber(state, roadTimberCost(state, line)),
     tiles: state.tiles.map((tile) =>
-      line.some((coordinate) => coordinate.tx === tile.tx && coordinate.ty === tile.ty)
+      additions.has(`${tile.tx},${tile.ty}`)
         ? { ...tile, hasRoad: true }
         : tile,
     ),

@@ -1,9 +1,10 @@
-import { roadPlacementFailure, roadTimberCost } from "../engine/roadPlacement";
+import { roadPlacementAssessment, roadPlacementFailure, roadTimberCost } from "../engine/roadPlacement";
 import type { GameState } from "../engine/engine.types";
 import type { GameAction } from "../state/gameStore.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import { PlacementFailure } from "../world/placement";
 import { roadLine } from "../world/roadGraph";
+import { ROAD_PLACEMENT_COPY } from '../ui/roadPlacementCopy.ko';
 import {
   createPlacementFeedback,
   formatPlacementFailure,
@@ -25,7 +26,8 @@ export function resolveRoadPlacementAttempt(input: {
   readonly nowMs: number;
 }): RoadAttemptOutcome {
   const path = roadLine(input.start, input.destination);
-  const failure = roadFailure(input.state, path);
+  const assessment = roadPlacementAssessment(input.state, path);
+  const failure = assessment.failure;
   if (failure !== null) {
     return {
       action: null,
@@ -35,6 +37,15 @@ export function resolveRoadPlacementAttempt(input: {
         anchor: { kind: "path", path },
         nowMs: input.nowMs,
       }),
+      keepToolArmed: true,
+    };
+  }
+
+  if (assessment.newTiles.length === 0) {
+    return {
+      action: null,
+      feedback: createPlacementFeedback({ kind: 'failure', message: ROAD_PLACEMENT_COPY.alreadyExists,
+        anchor: { kind: 'path', path }, nowMs: input.nowMs }),
       keepToolArmed: true,
     };
   }

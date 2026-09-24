@@ -6,7 +6,7 @@ import type { GameState } from '../engine/engine.types';
 import { householdServices } from '../engine/householdServices';
 import { marketRoadService } from '../engine/marketService';
 import { buildingHasRequiredRoadAccess } from '../engine/roadAccess';
-import { roadPlacementFailure, roadTimberCost } from '../engine/roadPlacement';
+import { roadPlacementAssessment, roadTimberCost } from '../engine/roadPlacement';
 import { buildingRoadAccessTiles } from '../engine/routing';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { allocateBuildingAndConstructionLabour } from '../population/labour';
@@ -18,6 +18,7 @@ import { predictionStateKey } from './predictionCache';
 import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
 import { PLACEMENT_REASON_LABELS, predictionCheck } from './predictionRegistry';
 import type { PlacementPrediction, PredictionLine } from './predictionTypes';
+import { ROAD_PLACEMENT_COPY } from './roadPlacementCopy.ko';
 
 const SERVICES: Partial<Record<BuildingKind, HouseholdService>> = { well: 'water', market: 'market', church: 'church' };
 const cache = new Map<string, { readonly stateKey: string; readonly value: PlacementPrediction }>();
@@ -91,13 +92,18 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
 
 export function roadPlacementPrediction(state: GameState, path: readonly TileCoordinate[]): PlacementPrediction {
   return cached(state, `road:${path.map(p => `${p.tx},${p.ty}`).join(';')}`, () => {
-    const reason = roadPlacementFailure(state, path);
+    const assessment = roadPlacementAssessment(state, path);
+    const reason = assessment.failure;
     const placement: PlacementResult = reason === null ? { ok: true }
       : reason === PlacementFailure.insufficient_materials ? { ok: false, reason, shortfalls: constructionShortfalls(state, { timber: roadTimberCost(state, path) }) }
       : { ok: false, reason };
-    const roadSegments = path.map(tile => ({ tile, kind: getTile(state, tile)?.terrain === 'water' ? 'bridge' as const : 'land' as const }));
+    const roadSegments = assessment.newTiles.map(tile => ({ tile, kind: getTile(state, tile)?.terrain === 'water' ? 'bridge' as const : 'land' as const }));
     const bridges = roadSegments.filter(s => s.kind === 'bridge').length;
-    return { placement, range: null, houseIds: [], roadSegments, lines: [...failureLine(placement),
-      { id: 'road-cost', tone: 'neutral', text: `육지 ${path.length - bridges}칸 무료 · 다리 ${bridges}칸 × 목재 ${BRIDGE_TIMBER_PER_TILE} = ${roadTimberCost(state, path)} (Esc/우클릭 취소)` }] };
+    const lines = assessment.newTiles.length === 0 && reason === null
+      ? [{ id: 'placement', tone: 'neutral' as const, text: ROAD_PLACEMENT_COPY.alreadyExists }]
+      : failureLine(placement);
+    return { placement, range: null, houseIds: [], roadSegments, lines: [...lines,
+      { id: 'road-cost', tone: 'neutral', text: ROAD_PLACEMENT_COPY.previewCost(roadSegments.length - bridges,
+        bridges, assessment.existingTiles.length, BRIDGE_TIMBER_PER_TILE, roadTimberCost(state, path)) }] };
   });
 }
