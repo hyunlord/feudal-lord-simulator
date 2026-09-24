@@ -7,22 +7,27 @@ import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import type { GameState } from '../src/engine/engine.types';
 import { gameReducer } from '../src/state/gameStore';
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
+import { carterPathTravelCost } from '../src/agents/carterTravelCost';
+import { getTile } from '../src/world/grid';
 const root = '/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0-v2';
 function endpoint(): GameState { return JSON.parse(readFileSync(`${root}/natural-v7/d11-final-20260921T054214Z/runs/seed3/final-state.json`, 'utf8')); }
-function routeEdges(state: GameState): number {
+function routeCost(state: GameState): number {
   const source = state.buildings.find(b => b.id === 'construction-site-000072');
   const target = state.constructionSites.find(s => s.id === 'palisade-000070-segment-027-stone');
-  assert.ok(source && target); return (resolveBuildingToConstructionSiteRoute(state, source, target).path?.length ?? 0) - 1;
+  assert.ok(source && target);
+  const path = resolveBuildingToConstructionSiteRoute(state, source, target).path;
+  assert.ok(path);
+  return carterPathTravelCost(path, tile => getTile(state, tile)?.hasRoad === true);
 }
 test('actual endpoint advisor builds accepted shorter construction corridor without material or queue changes', () => {
   let state = endpoint(); const original = state;
-  assert.equal(routeEdges(state), 169);
+  assert.equal(routeCost(state), 28);
   for (const expected of [ { kind: 'place_road', from: { tx: 3, ty: 21 }, to: { tx: 3, ty: 21 } }, { kind: 'place_road', from: { tx: 3, ty: 22 }, to: { tx: 3, ty: 36 } } ]) {
     const action = decideNextAction(state, { maxHousingLots: 24 });
     assert.deepEqual(action, expected); const command = autoplayActionToGameAction(action, state); assert.ok(command);
     const next = gameReducer(state, command); assert.notEqual(next, state); state = next;
   }
-  assert.equal(routeEdges(state), 14);
+  assert.equal(routeCost(state), 14);
   assert.equal(constructionLogisticsAction(state).kind, 'none');
   assert.deepEqual(state.buildings, original.buildings); assert.deepEqual(state.constructionSites, original.constructionSites);
   assert.equal(state.treasuryTimber, original.treasuryTimber);
