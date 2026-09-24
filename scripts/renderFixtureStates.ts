@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import type { GameState } from "../src/engine/engine.types";
 import { decodeSave } from "../src/save/saveCodec";
 import { fixedSceneState, seedGroundState } from "./boundaryFixtureStates";
+import { variantGallery } from "./variantGalleryState";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const decode = (file: string) => decodeSave(new Uint8Array(readFileSync(resolve(ROOT, file)))).envelope.state;
@@ -22,12 +23,15 @@ function newestSaveFixture(name: string): string {
 }
 
 export function benchmarkCities(): { readonly newgame: null; readonly pop176: GameState; readonly lots24: GameState;
-  readonly fixed12: GameState; readonly seed2: GameState } {
+  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly gallery: GameState } {
   return {
     newgame: null,
     // Curved-ground evidence (D1a): the 12x12 fixed scene on the new-game map, and the seed 2 final city.
     fixed12: fixedSceneState(),
     seed2: seedGroundState(2),
+    // Visual variants (V1): the seed 3 final town, and the injected all-variants x all-conditions gallery.
+    seed3: seedGroundState(3),
+    gallery: variantGallery().state,
     pop176: decode(newestSaveFixture("population-176.save.json")),
     // A bare GameState (schema v0); decodeSave migrates it step by step to the current version.
     lots24: decode("fixtures/determinism/seed1/final-state.json"),
@@ -35,5 +39,5 @@ export function benchmarkCities(): { readonly newgame: null; readonly pop176: Ga
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(JSON.stringify(benchmarkCities()));
+  process.stdout.write(JSON.stringify({ ...benchmarkCities(), galleryEntries: variantGallery().entries }));
 }
