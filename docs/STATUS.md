@@ -10,6 +10,8 @@
 
 ## 마지막 종료 작업
 
+**B11 렌더 계측**(Claude Code, 렌더·스크립트·테스트만): 증빙 모드 전용 단계별 시간·canvas 호출 수(`src/render/renderStageProbe.ts`, 단계 합 = frameWork 99.9~100%, 증빙 모드 밖 미실행 테스트), 벤치 `scripts/renderStageBenchmark.mjs`. P-F1(초반 도시 프레임 150~200ms)은 headed·headless 모두 GPU에서 재현됐고, 원인은 도로 칸 패턴 `fillRect`였다. 다각형 `fill`로 바꿔 수정했다(그림 동일, 인구 176 rAF 150→16.7ms). 기준선 14칸과 D1a 제안은 [B11 보고서](verification/b11-render-metrics/REPORT.md). 다음 후보: 새 게임 온보딩 오버레이 14ms/프레임.
+
 **S0**: B8 merge `7968bcf`, 이식성 `dba23cb`, 공통 좌표 타입 `afb3321`, 검증 도구 `e97d6a8`·`3c52fa4`, 상태 기록 `b8e9fb4`·48필지 `ca70fbc`. 새 임시 클론 전체 2442/2442(Phase 9 포함), typecheck·build, 저장 결정론2/2·실제 이어하기, 문서 지도22/22를 확인했다. 종료 증빙 커밋에서도 새 클론 전체 검증을 실행하며 최종 receipt는 `/tmp/fls-s0-final-verification.json`. [S0 보고서](../output/trunk-baseline/REPORT.md).
 
 24필지 seed1/2/4/5는24필지·seed3은13필지, 모두 관측 종료 시 L4=0. 별도48상한은48필지 도달·목책2/44,42구간 reserve_held. 각각25분 한 번의 **상태 기록이며 가드레일 판정이 아니다**. 기존 기준선 보존.

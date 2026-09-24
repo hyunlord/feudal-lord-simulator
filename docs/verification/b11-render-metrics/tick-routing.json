@@ -1,0 +1,138 @@
+{
+  "method": "V8 sampling profile (100 µs) of advanceTick in Node; a sample is route search when a ROUTING_MODULES function is on its stack",
+  "routingModules": [
+    "src/engine/routing.ts",
+    "src/world/roadGraph.ts",
+    "src/engine/wallCarryRoute.ts",
+    "src/engine/distributorAccess.ts"
+  ],
+  "node": "v25.8.2",
+  "results": [
+    {
+      "city": "pop176",
+      "ticks": 3000,
+      "startTick": 27471,
+      "wallMsPerTick": 0.21029787499999997,
+      "sampledTickMs": 596.42,
+      "routingShare": 0.2615740585493444,
+      "routingByOuterModule": {
+        "src/engine/routing.ts": 0.25835317393782903,
+        "src/engine/distributorAccess.ts": 0.002961000637134905,
+        "src/world/roadGraph.ts": 0.0002598839743804701
+      },
+      "topSelfFunctions": [
+        {
+          "fn": "allocateHouseServices src/population/serviceAllocation.ts:1",
+          "share": 0.0795932396633245
+        },
+        {
+          "fn": "findExistingRoadPath src/world/roadGraph.ts:1",
+          "share": 0.05482881191106938
+        },
+        {
+          "fn": "canTraverseRoadBoundary src/world/bridges.ts:1",
+          "share": 0.04089735421347373
+        },
+        {
+          "fn": "(anonymous) src/engine/autoplayRecurringDelivery.ts:1",
+          "share": 0.037892760135475004
+        },
+        {
+          "fn": "(anonymous) src/engine/forestHarvests.ts:1",
+          "share": 0.03493511283994501
+        },
+        {
+          "fn": "dedupeSortedRoads src/engine/routing.ts:1",
+          "share": 0.03231615304651085
+        },
+        {
+          "fn": "(anonymous) src/population/labour.ts:1",
+          "share": 0.03139398410516079
+        },
+        {
+          "fn": "shortestRoadPathBetweenAccessTiles src/engine/routing.ts:1",
+          "share": 0.03028905804634318
+        },
+        {
+          "fn": "foodFlowLayout src/engine/autoplayFoodFlow.ts:1",
+          "share": 0.029888333724556522
+        },
+        {
+          "fn": "allocateBuildingWorkers src/population/labour.ts:1",
+          "share": 0.02665738908822642
+        },
+        {
+          "fn": "(anonymous) src/population/serviceAllocation.ts:1",
+          "share": 0.024405620200529828
+        },
+        {
+          "fn": "advanceSimulationSubstep src/engine/tick.ts:1",
+          "share": 0.023347640924180946
+        }
+      ]
+    },
+    {
+      "city": "lots24",
+      "ticks": 3000,
+      "startTick": 679251,
+      "wallMsPerTick": 2.1254096666666666,
+      "sampledTickMs": 6156.767,
+      "routingShare": 0.7606753674452842,
+      "routingByOuterModule": {
+        "src/engine/routing.ts": 0.7521091832775221,
+        "src/engine/distributorAccess.ts": 0.006594370064678426,
+        "src/world/roadGraph.ts": 0.0019718141030836476
+      },
+      "topSelfFunctions": [
+        {
+          "fn": "findExistingRoadPath src/world/roadGraph.ts:1",
+          "share": 0.19784182185228058
+        },
+        {
+          "fn": "(anonymous) src/world/roadGraph.ts:1",
+          "share": 0.13273200041515296
+        },
+        {
+          "fn": "shortestRoadPathBetweenAccessTiles src/engine/routing.ts:1",
+          "share": 0.07682765971166361
+        },
+        {
+          "fn": "canTraverseRoadBoundary src/world/bridges.ts:1",
+          "share": 0.06427480526711503
+        },
+        {
+          "fn": "getOrthogonalRoadNeighbors src/world/roadGraph.ts:1",
+          "share": 0.054142864266261824
+        },
+        {
+          "fn": "canTraverseWallBoundary src/world/wallTraversal.ts:1",
+          "share": 0.052635904525865605
+        },
+        {
+          "fn": "isInBounds src/world/grid.ts:1",
+          "share": 0.03626123905614749
+        },
+        {
+          "fn": "adjacentEdgeKey src/world/wallTraversal.ts:1",
+          "share": 0.03328613865036634
+        },
+        {
+          "fn": "getTile src/world/grid.ts:1",
+          "share": 0.024738308271207925
+        },
+        {
+          "fn": "dedupeSortedRoads src/engine/routing.ts:1",
+          "share": 0.022217667162002394
+        },
+        {
+          "fn": "reconstructRoadPath src/world/roadGraph.ts:1",
+          "share": 0.021101821784062967
+        },
+        {
+          "fn": "allocateHouseServices src/population/serviceAllocation.ts:1",
+          "share": 0.02011217900563721
+        }
+      ]
+    }
+  ]
+}
