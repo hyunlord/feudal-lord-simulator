@@ -13,6 +13,26 @@ import { potentialServiceRoads, serviceCandidate, serviceFootprint, serviceSpace
 type Kind = 'market' | 'church';
 interface Pad { readonly building: Building; readonly mask: bigint; readonly occupied: ReadonlySet<string> }
 
+export function canCoverRemainingServiceLots(
+  candidates: readonly Pick<Pad, 'mask' | 'occupied'>[], missing: bigint, remaining: number,
+): boolean {
+  if (missing === 0n) return true;
+  if (remaining <= 0) return false;
+  if (remaining > 2) return true;
+  const first = missing & -missing;
+  for (const left of candidates) {
+    if ((left.mask & first) === 0n) continue;
+    const rest = missing & ~left.mask;
+    if (rest === 0n) return true;
+    if (remaining === 1) continue;
+    for (const right of candidates) {
+      if ((right.mask & rest) !== rest) continue;
+      if (![...left.occupied].some(tile => right.occupied.has(tile))) return true;
+    }
+  }
+  return false;
+}
+
 export interface ServiceBudgetWitness {
   readonly pads: ReadonlySet<string>;
   readonly roads: ReadonlySet<string>;
@@ -91,6 +111,14 @@ export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch
     if (slots < 0) return false;
     const covered = allocatedMask([...buildings, ...additions.map(pad => pad.building)], kind);
     const search = (selected: readonly Pad[], mask: bigint, remaining: number): boolean => {
+      if (truncated) return false;
+      const occupied = new Set(selected.flatMap(pad => [...pad.occupied]));
+      let available: readonly Pad[] | undefined;
+      if (mask !== full) {
+        if (remaining <= 0) return false;
+        available = candidates(kind).filter(pad => ![...pad.occupied].some(tile => occupied.has(tile)));
+        if (!canCoverRemainingServiceLots(available, full & ~mask, remaining)) return false;
+      }
       if (autoplaySearchActive() && branches++ >= 12) { truncated = true; markAutoplaySearchLimit(); return false; }
       if (!spendAutoplaySearch()) { truncated = true; return false; }
       if (mask === full) {
@@ -103,8 +131,7 @@ export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch
       if (remaining <= 0) return false;
       const missing = full & ~mask;
       const first = missing & -missing;
-      const occupied = new Set(selected.flatMap(pad => [...pad.occupied]));
-      const available = candidates(kind).filter(pad => ![...pad.occupied].some(tile => occupied.has(tile)));
+      available ??= candidates(kind).filter(pad => ![...pad.occupied].some(tile => occupied.has(tile)));
       if ((available.reduce((union, pad) => union | pad.mask, mask) & full) !== full) return false;
       const options = available.filter(pad => (pad.mask & first) !== 0n)
         .map(pad => ({ pad, gain: bitCount(pad.mask & missing) }))
