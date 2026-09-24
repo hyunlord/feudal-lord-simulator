@@ -1,0 +1,49 @@
+{
+  "url": "http://127.0.0.1:4196/",
+  "board": {
+    "city": "seed2",
+    "tile": [
+      44,
+      38
+    ]
+  },
+  "raster": "software (--disable-gpu)",
+  "rows": [
+    {
+      "view": "z0.60-dpr1",
+      "sha256": "f34ef31819ab7579fa77c6a503e5f46966cdfc01baf2621cfcc71f57324c97bc",
+      "secondPage": "f34ef31819ab7579fa77c6a503e5f46966cdfc01baf2621cfcc71f57324c97bc",
+      "identical": true
+    },
+    {
+      "view": "z0.60-dpr2",
+      "sha256": "4a53936262e97d337afd46f3429271ab679e1e77b380ccb6bbb09617516e26d1",
+      "secondPage": "4a53936262e97d337afd46f3429271ab679e1e77b380ccb6bbb09617516e26d1",
+      "identical": true
+    },
+    {
+      "view": "z1.00-dpr1",
+      "sha256": "f83fc8cdec2ca44a5d8a6ad1fceb4dccbf9588045f51a57f0bbbd90f4dbba26a",
+      "secondPage": "f83fc8cdec2ca44a5d8a6ad1fceb4dccbf9588045f51a57f0bbbd90f4dbba26a",
+      "identical": true
+    },
+    {
+      "view": "z1.00-dpr2",
+      "sha256": "1dbf3292958bfdc99f34476db745bdb71c6d5ce2c92a787ee97c264f27da0129",
+      "secondPage": "1dbf3292958bfdc99f34476db745bdb71c6d5ce2c92a787ee97c264f27da0129",
+      "identical": true
+    },
+    {
+      "view": "z1.35-dpr1",
+      "sha256": "a7839948833aed2e9e59a2ea85ab2bf642ece493c7ea98d76d15db1ad6cdc795",
+      "secondPage": "a7839948833aed2e9e59a2ea85ab2bf642ece493c7ea98d76d15db1ad6cdc795",
+      "identical": true
+    },
+    {
+      "view": "z1.35-dpr2",
+      "sha256": "c520cc85cfed2521415f612241fc1fefb92d37a2ff734a2b4740f42d22e6ba7b",
+      "secondPage": "c520cc85cfed2521415f612241fc1fefb92d37a2ff734a2b4740f42d22e6ba7b",
+      "identical": true
+    }
+  ]
+}
