@@ -52,7 +52,7 @@ test('malformed cached public route fails closed without an unbounded synchronou
     import {createSimulationRoutePorts} from ${JSON.stringify(portUrl)};
     const state=materialPolicyTown(),home=state.buildings.find(b=>b.id==='incumbent');assert.ok(home);
     const routes=createSimulationRoutePorts(state),normal=routes.delivery.betweenBuildings(home.id,'raw');assert.ok(normal);
-    const cache=routes.getPathCache(),key=Object.keys(cache).find(k=>k.endsWith(':incumbent->raw'));assert.ok(key);
+    const cache=routes.getPathCache(),key=Object.keys(cache).find(k=>k.endsWith(':pair:incumbent|raw'));assert.ok(key);
     const invalid=[{tx:1e300,ty:0},{tx:Infinity,ty:3},{tx:NaN,ty:3},{tx:3.5,ty:3},{tx:-1,ty:3}];
     for(const point of invalid){assert.equal(materialOpportunity({...state,pathCache:{...cache,[key]:[normal[0],point,normal.at(-1)]}},home,'wall-a'),null);}
     for(const path of [[{tx:0,ty:0},{tx:2,ty:0}],[{tx:0,ty:0},{tx:1,ty:1}],[{tx:0,ty:0},{tx:0,ty:0}],[{tx:1e300,ty:0}],
