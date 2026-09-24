@@ -7,6 +7,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { BUILDING_VARIANT_POOLS } from "../src/render/buildingVariantManifest";
 import { BUILDING_VARIANT_OVERLAY_REGISTRATION } from "../src/render/buildingVariantOverlay.generated";
 import { buildingVariantAssignments, rawVariant, variantPool } from "../src/render/buildingVariants";
+import type { PalisadeProtectionSource } from "../src/geometry/palisadeProtection";
 import { HOUSE_CONDITION_ART } from "../src/render/houseConditionArt.generated";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { seedGroundState } from "../scripts/boundaryFixtureStates";
@@ -22,10 +23,10 @@ function variantImages(): { readonly pool: string; readonly url: string }[] {
   }));
 }
 
-test("Given the Wave 2 manifest When its images are listed Then all 31 installed files are used and the pastoral hold set is not", () => {
+test("Given the Wave 2 manifest When its images are listed Then all 32 installed files are used and the pastoral hold set is not", () => {
   const images = variantImages();
-  assert.equal(images.length, 31);
-  assert.equal(new Set(images.map(image => image.url)).size, 31);
+  assert.equal(images.length, 32);
+  assert.equal(new Set(images.map(image => image.url)).size, 32);
   for (const image of images) assert.ok(existsSync(new URL(`../public/${image.url}`, import.meta.url)), image.url);
   assert.ok(images.every(image => !image.url.includes("pastoral") && !image.url.includes("thatch")));
   for (const pool of BUILDING_VARIANT_POOLS) {
@@ -36,7 +37,7 @@ test("Given the Wave 2 manifest When its images are listed Then all 31 installed
 
 test("Given every house variant When overlay registration is looked up Then each has one and its body has all three condition layers", () => {
   const houseImages = variantImages().filter(image => BUILDING_VARIANT_POOLS.find(pool => pool.pool === image.pool)?.kind === "house");
-  assert.equal(houseImages.length, 17);
+  assert.equal(houseImages.length, 18);
   for (const image of houseImages) {
     const registration = BUILDING_VARIANT_OVERLAY_REGISTRATION.find(entry => entry.url === image.url);
     assert.ok(registration !== undefined, image.url);
@@ -115,4 +116,25 @@ test("Given a house that declines and recovers or a lot that is merged and split
   assert.equal(merged?.pool, "building:house_pair_l3_horizontal", "a merged lot picks from the pair pool");
   assert.equal(beforeMerge?.pool, "building:house_l3");
   assert.equal(split?.variant.id, beforeMerge?.variant.id, "splitting returns to the single seed");
+});
+
+test("Given L1 houses When the wall is missing, unfinished, or around them Then the tile-roof variant appears only inside a finished wall", () => {
+  // Given: a square wall from (0,0) to (40,40); houses at (10..29, 10..29) are inside, (50..69, 10..29) outside.
+  const polygon = [{ x: 0, y: 0 }, { x: 40, y: 0 }, { x: 40, y: 40 }, { x: 0, y: 40 }, { x: 0, y: 0 }];
+  const wall = (completed: boolean): PalisadeProtectionSource => ({ polygon, segments: [{ completed }, { completed: true }] });
+  const count = (xs: readonly number[], palisade: PalisadeProtectionSource) => {
+    let tile = 0; let total = 0;
+    for (const tx of xs) for (let ty = 10; ty < 30; ty += 1) { total += 1; if (rawVariant(3, house(tx, ty), 1, palisade)?.id === "tile") tile += 1; }
+    return { tile, total };
+  };
+  const inside = Array.from({ length: 20 }, (_, index) => 10 + index);
+  const outside = Array.from({ length: 20 }, (_, index) => 50 + index);
+
+  // When / Then
+  assert.equal(count(inside, null).tile, 0, "no wall: never");
+  assert.equal(count(inside, wall(false)).tile, 0, "unfinished wall: never");
+  assert.equal(count(outside, wall(true)).tile, 0, "outside a finished wall: never");
+  const walled = count(inside, wall(true));
+  assert.ok(walled.tile / walled.total > 0.12 && walled.tile / walled.total < 0.4, `inside: ${walled.tile}/${walled.total}`);
+  assert.equal(count(inside, wall(true)).tile, walled.tile, "deterministic");
 });

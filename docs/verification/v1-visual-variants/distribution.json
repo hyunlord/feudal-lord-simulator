@@ -16,9 +16,9 @@
         "count": 24,
         "byVariant": {
           "base": 6,
-          "inn": 6,
-          "courtyard": 8,
-          "wing": 4
+          "inn": 5,
+          "wing": 5,
+          "courtyard": 8
         },
         "topShare": 0.3333333333333333,
         "adjacentPairs": 16,
@@ -187,11 +187,11 @@
         "pool": "building:house_l3",
         "count": 11,
         "byVariant": {
-          "clothier": 5,
+          "clothier": 6,
           "shop": 2,
-          "storage": 4
+          "storage": 3
         },
-        "topShare": 0.45454545454545453,
+        "topShare": 0.5454545454545454,
         "adjacentPairs": 3,
         "adjacentSame": 0
       },
@@ -369,9 +369,9 @@
         "count": 24,
         "byVariant": {
           "courtyard": 6,
-          "inn": 8,
+          "wing": 8,
           "base": 4,
-          "wing": 6
+          "inn": 6
         },
         "topShare": 0.3333333333333333,
         "adjacentPairs": 9,

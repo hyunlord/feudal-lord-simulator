@@ -116,7 +116,11 @@ def main() -> None:
         # Pairs: both houses' roofs together and a narrower scale range, since a pair keeps two bodies side by side.
         pair = meta.get("axis") is not None
         scales = np.arange(0.85, 1.051, 0.01) if pair else np.arange(0.70, 1.101, 0.01)
-        iou, scale, dx, dy = fit(roof_mask(base, thatch, pair), roof_mask(variant, thatch, pair), scales)
+        # A variant may change the roof material (L1 tile on a thatch base): use the variant's dominant roof colour.
+        variant_thatch = thatch
+        if not pair and roof_mask(variant, not thatch).sum() > roof_mask(variant, thatch).sum():
+            variant_thatch = not thatch
+        iou, scale, dx, dy = fit(roof_mask(base, thatch, pair), roof_mask(variant, variant_thatch, pair), scales)
         # Offsets were found in variant pixels; the overlay code works in authored (base source) pixels.
         k = variant.size[0] / meta["width"]
         rows.append({"url": f"assets/buildings/variants-wave2/{path.name}", "baseUrl": meta["url"],

@@ -1,6 +1,9 @@
 // Wave 2 visual variants (V1): same grade, different look. Each pool lists its variants; `base` is the art that was
 // already installed. Every variant image is painted in its base's frame (same canvas proportions and ground pivot),
 // so it reuses the base's authored registration; the image is only sampled at its own resolution.
+// `requires: "inside_wall"`: only for a building inside a completed wall (palisadeProtectionForBuilding, the same test as
+// the L4 "protected" requirement). Art bible: thatch outside the walls, flat clay tile inside; so the L1 tile variant
+// is never picked in a town without a finished wall.
 // Not in this manifest on purpose: the pastoral farm set (held until sheep, C5) and the rejected L1 thatch variant.
 // Variant ids are internal only; the building panel keeps the grade names.
 export const BUILDING_VARIANT_POOLS = [
@@ -63,6 +66,15 @@ export const BUILDING_VARIANT_POOLS = [
         "url": "assets/buildings/variants-wave2/house_l1_garden-v1.png",
         "width": 139,
         "height": 139
+      },
+      {
+        "id": "tile",
+        "weight": 1,
+        "family": "tile",
+        "url": "assets/buildings/variants-wave2/house_l1_tile-v1.png",
+        "width": 139,
+        "height": 139,
+        "requires": "inside_wall"
       }
     ]
   },

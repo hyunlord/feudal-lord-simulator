@@ -12,10 +12,10 @@ const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, ind
 const TOWNS = [{ name: 'seed2-town', city: 'seed2', tile: [47, 32] }, { name: 'seed3-town', city: 'seed3', tile: [12, 15] }];
 // Injected gallery (scripts/variantGalleryState.ts): rows maintained / strained / neglected / vacant.
 const CLOSE_UPS = [
-  ['building:house_l0', 'pen', 'vacant'], ['building:house_l1', 'garden', 'neglected'], ['building:house_l2', 'weaver', 'strained'],
+  ['building:house_l0', 'pen', 'vacant'], ['building:house_l1', 'garden', 'neglected'], ['building:house_l1', 'tile', 'strained'], ['building:house_l2', 'weaver', 'strained'],
   ['building:house_l3', 'shop', 'neglected'], ['building:house_l4', 'courtyard', 'vacant'], ['building:house_pair_l4_horizontal', 'hall', 'neglected'],
 ];
-const GALLERY = [[28, 48], [22, 60]].map(([tx, ty], index) => ({ name: `gallery-${index + 1}`, city: 'gallery', tile: [tx, ty] }));
+const GALLERY = [[28, 48], [58, 48], [22, 60]].map(([tx, ty], index) => ({ name: `gallery-${index + 1}`, city: 'gallery', tile: [tx, ty] }));
 
 async function open(browser, states, scene, { url, zoom = 1, dpr = 1, query = '' }) {
   const opened = await openScene(browser, { state: states[scene.city], tile: scene.tile, baseUrl: url, dpr, zoom, run: false, query });

@@ -34,6 +34,14 @@ export const BUILDING_VARIANT_OVERLAY_REGISTRATION = [
     "roofIou": 0.789
   },
   {
+    "url": "assets/buildings/variants-wave2/house_l1_tile-v1.png",
+    "baseUrl": "assets/buildings/historical-houses/house_l1-v2.png",
+    "scale": 1.0,
+    "dx": 9.0,
+    "dy": 9.0,
+    "roofIou": 0.833
+  },
+  {
     "url": "assets/buildings/variants-wave2/house_l2_brewer-v1.png",
     "baseUrl": "assets/buildings/historical-houses/house_l2-v2.png",
     "scale": 0.84,

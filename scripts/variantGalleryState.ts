@@ -2,6 +2,7 @@
 // vacant) on open grass of the new-game map. Anchors are chosen by searching positions whose variant seed yields the
 // wanted variant, so the capture shows exactly the art the game would pick there. This is an injected state (상태 주입),
 // not a played town. Rows: maintained / strained / neglected / vacant; L0 has no strained row (it cannot lose a grade).
+// A finished wall surrounds the gallery so the inside-wall-only L1 tile variant can be shown too.
 import type { Building } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import type { House } from "../src/population/population.types";
@@ -23,6 +24,9 @@ function houseRecord(buildingId: string, level: number, condition: Condition): H
 
 export function variantGallery(base: GameState = DEFAULT_GAME_STATE): { readonly state: GameState; readonly entries: readonly GalleryEntry[] } {
   const buildings: Building[] = []; const houses: House[] = []; const entries: GalleryEntry[] = [];
+  const corners = [{ x: 8, y: 42 }, { x: 64, y: 42 }, { x: 64, y: 64 }, { x: 8, y: 64 }, { x: 8, y: 42 }];
+  const palisade: GameState["palisade"] = { id: "gallery-wall", polygon: corners, gate: { x: 20, y: 42 },
+    segments: [{ id: "gallery-wall-0", order: 0, edgePath: corners, tileCount: 156, completed: true, constructionSiteId: null, material: "stone" }] };
   const houseImages = BUILDING_VARIANT_POOLS.filter(pool => pool.kind === "house")
     .flatMap(pool => pool.variants.filter(variant => variant.id !== "base").map(variant => ({ pool, variant })));
   const singles = houseImages.filter(image => "lot" in image.pool && image.pool.lot === "single");
@@ -46,7 +50,7 @@ export function variantGallery(base: GameState = DEFAULT_GAME_STATE): { readonly
         const candidate: Building = { id: `gallery-${tx}-${ty}`, kind: "house", tx, ty,
           workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0, ...(lot === undefined ? {} : { houseLot: lot }) };
         if (buildings.some(other => touching(other, candidate))) continue;
-        if (rawVariant(base.seed, candidate, level)?.id === cell.image.variant.id) placed = candidate;
+        if (rawVariant(base.seed, candidate, level, palisade)?.id === cell.image.variant.id) placed = candidate;
       }
     }
     if (placed === null) throw new Error(`No anchor near ${cell.tx},${cell.ty} yields ${cell.image.pool.pool}#${cell.image.variant.id}`);
@@ -60,5 +64,5 @@ export function variantGallery(base: GameState = DEFAULT_GAME_STATE): { readonly
   }
   const tiles = base.tiles.map(tile => tile.ty >= 42 && tile.tx >= 8
     ? { ...tile, terrain: "grass" as const, hasRoad: false, buildingId: occupied.get(`${tile.tx},${tile.ty}`) ?? null } : tile);
-  return { state: { ...base, tiles, buildings: [...base.buildings, ...buildings], houses: [...base.houses, ...houses], roadRevision: base.roadRevision + 1, pathCache: {} }, entries };
+  return { state: { ...base, palisade, tiles, buildings: [...base.buildings, ...buildings], houses: [...base.houses, ...houses], roadRevision: base.roadRevision + 1, pathCache: {} }, entries };
 }

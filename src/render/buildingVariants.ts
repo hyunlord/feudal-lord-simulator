@@ -1,6 +1,7 @@
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { buildingFootprint } from "../geometry/buildingFootprint";
+import { palisadeProtectionForBuilding, type PalisadeProtectionSource } from "../geometry/palisadeProtection";
 import { houseBuiltLevel } from "../population/houseCondition";
 import { BUILDING_VARIANT_POOLS } from "./buildingVariantManifest";
 
@@ -11,9 +12,11 @@ import { BUILDING_VARIANT_POOLS } from "./buildingVariantManifest";
 //   probability FAMILY_KEEP (also from the seed) a house keeps its family ("garden" at L1 prefers "garden" at L2).
 //   Decline and recovery do not touch the grade used here (built level), so the variant stays.
 // - A merged lot has its own seed (lot width 2); when the merge is undone the single house gets its old seed back.
+// - A variant with `requires: "inside_wall"` (L1 tile roof) is in the pool only for a building inside a completed wall,
+//   decided by palisadeProtectionForBuilding, the test the L4 "protected" requirement uses. No finished wall: never.
 // - Neighbour push: if a touching building of the same pool that comes earlier in (ty, tx) order made the same raw
 //   pick, take the next variant once. Raw picks only, so one change never cascades across a street.
-// Cache: assignments are rebuilt when the (id, kind, tx, ty, lot, built level) list or the world seed changes;
+// Cache: assignments are rebuilt when the (id, kind, tx, ty, lot, built level) list, the wall or the world seed changes;
 // nothing else is read. Measured in docs/verification/v1-visual-variants/REPORT.md.
 
 type Pool = (typeof BUILDING_VARIANT_POOLS)[number];
@@ -59,33 +62,46 @@ function weightedPick(variants: readonly BuildingVariant[], random: number): Bui
   return variants[variants.length - 1] as BuildingVariant;
 }
 
+type VariantBuilding = Pick<Building, "kind" | "tx" | "ty" | "houseLot">;
+
+/** Variants of a pool this building may show (drops inside-wall variants outside a completed wall). */
+export function eligibleVariants(pool: Pool, building: VariantBuilding, palisade: PalisadeProtectionSource): readonly BuildingVariant[] {
+  const variants: readonly BuildingVariant[] = pool.variants;
+  if (!variants.some(variant => "requires" in variant)) return variants;
+  const inside = palisadeProtectionForBuilding(building as Building, palisade) === "inside";
+  return variants.filter(variant => !("requires" in variant) || (variant.requires === "inside_wall" && inside));
+}
+
 /** The pick before the neighbour push, following the family chain from the lowest grade that has a pool. */
-export function rawVariant(worldSeed: number, building: Pick<Building, "kind" | "tx" | "ty" | "houseLot">, level: number): BuildingVariant | null {
+export function rawVariant(worldSeed: number, building: VariantBuilding, level: number, palisade: PalisadeProtectionSource = null): BuildingVariant | null {
   const pool = variantPool(building, level);
   if (pool === null) return null;
   const pick = variantRandom(worldSeed, building, 1);
-  if (building.kind !== "house") return weightedPick(pool.variants, pick);
+  if (building.kind !== "house") return weightedPick(eligibleVariants(pool, building, palisade), pick);
   let previous: BuildingVariant | null = null;
   for (let grade = 0; grade <= level; grade += 1) {
     const gradePool = variantPool(building, grade);
     if (gradePool === null) continue;
     const family = previous?.family;
     const keep = family !== undefined && family !== "base" && variantRandom(worldSeed, building, 10 + grade) < FAMILY_KEEP;
-    const sameFamily = keep ? gradePool.variants.filter(variant => variant.family === family) : [];
-    previous = weightedPick(sameFamily.length > 0 ? sameFamily : gradePool.variants, pick);
+    const candidates = eligibleVariants(gradePool, building, palisade);
+    const sameFamily = keep ? candidates.filter(variant => variant.family === family) : [];
+    previous = weightedPick(sameFamily.length > 0 ? sameFamily : candidates, pick);
   }
   return previous;
 }
 
 type Entry = { readonly building: Building; readonly level: number; readonly pool: Pool; readonly raw: BuildingVariant };
+type VariantState = Pick<GameState, "seed" | "buildings" | "houses"> & { readonly palisade?: GameState["palisade"] };
 
-export function buildingVariantAssignments(state: Pick<GameState, "seed" | "buildings" | "houses">): ReadonlyMap<string, BuildingVariantAssignment> {
+export function buildingVariantAssignments(state: VariantState): ReadonlyMap<string, BuildingVariantAssignment> {
+  const palisade = state.palisade ?? null;
   const levels = new Map(state.houses.map(house => [house.buildingId, houseBuiltLevel(house)]));
   const entries: Entry[] = [];
   for (const building of state.buildings) {
     const level = building.kind === "house" ? levels.get(building.id) ?? 0 : 0;
     const pool = variantPool(building, level);
-    const raw = rawVariant(state.seed, building, level);
+    const raw = rawVariant(state.seed, building, level, palisade);
     if (pool !== null && raw !== null) entries.push({ building, level, pool, raw });
   }
   const byPool = new Map<string, Entry[]>();
@@ -95,7 +111,7 @@ export function buildingVariantAssignments(state: Pick<GameState, "seed" | "buil
     const earlierSame = (byPool.get(entry.pool.pool) ?? []).some(other => other !== entry && touching(other.building, entry.building)
       && (other.building.ty < entry.building.ty || (other.building.ty === entry.building.ty && other.building.tx < entry.building.tx))
       && other.raw.id === entry.raw.id);
-    const variants = entry.pool.variants;
+    const variants = eligibleVariants(entry.pool, entry.building, palisade);
     const index = variants.findIndex(variant => variant.id === entry.raw.id);
     const variant = earlierSame && variants.length > 1 ? variants[(index + 1) % variants.length] as BuildingVariant : entry.raw;
     result.set(entry.building.id, { pool: entry.pool.pool, variant, pushed: earlierSame && variants.length > 1 });
@@ -112,14 +128,18 @@ export function touching(a: Pick<Building, "kind" | "tx" | "ty" | "houseLot">, b
 }
 
 let frame: { readonly signature: string; readonly seed: number; readonly assignments: ReadonlyMap<string, BuildingVariantAssignment> } | null = null;
-let frameInputs: { readonly buildings: GameState["buildings"]; readonly houses: GameState["houses"]; readonly seed: number } | null = null;
+let frameInputs: { readonly buildings: GameState["buildings"]; readonly houses: GameState["houses"]; readonly seed: number;
+  readonly palisade: GameState["palisade"] | undefined } | null = null;
 
 /** Called once per frame by the object pass; draw functions then look variants up by building id. */
-export function beginBuildingVariantFrame(state: Pick<GameState, "seed" | "buildings" | "houses">): void {
-  if (frameInputs !== null && frameInputs.buildings === state.buildings && frameInputs.houses === state.houses && frameInputs.seed === state.seed) return;
-  frameInputs = { buildings: state.buildings, houses: state.houses, seed: state.seed };
+export function beginBuildingVariantFrame(state: VariantState): void {
+  if (frameInputs !== null && frameInputs.buildings === state.buildings && frameInputs.houses === state.houses && frameInputs.seed === state.seed
+    && frameInputs.palisade === state.palisade) return;
+  frameInputs = { buildings: state.buildings, houses: state.houses, seed: state.seed, palisade: state.palisade };
   const levels = new Map(state.houses.map(house => [house.buildingId, houseBuiltLevel(house)]));
-  const signature = `${state.seed}|${state.buildings.map(building =>
+  const wall = state.palisade ?? null;
+  const wallKey = wall === null ? "" : `${wall.segments.map(segment => (segment.completed ? 1 : 0)).join("")}:${wall.polygon.map(point => `${point.x},${point.y}`).join(";")}`;
+  const signature = `${state.seed}|${wallKey}|${state.buildings.map(building =>
     `${building.id}:${building.kind}:${building.tx}:${building.ty}:${building.houseLot ?? ""}:${levels.get(building.id) ?? ""}`).join(";")}`;
   if (frame?.signature === signature) return;
   frame = { signature, seed: state.seed, assignments: buildingVariantAssignments(state) };
