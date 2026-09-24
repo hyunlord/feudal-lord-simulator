@@ -40,6 +40,18 @@ function adjacentTiles(from: TileEdgePoint, to: TileEdgePoint): readonly TileCoo
   ];
 }
 
+function openDiagonalCorner(state: GameState, from: TileCoordinate, to: TileCoordinate): boolean {
+  const polygon = state.palisade?.polygon;
+  if (polygon === undefined) return false;
+  return [{ tx: from.tx, ty: to.ty }, { tx: to.tx, ty: from.ty }].some(side => {
+    const ground = getTile(state, side);
+    return ground !== null && ground.terrain !== 'water' && ground.buildingId === null
+      && isPointInsidePalisade({ x: side.tx + 0.5, y: side.ty + 0.5 }, polygon)
+      && canTraverseRoadBoundary(state, from, side)
+      && canTraverseRoadBoundary(state, side, to);
+  });
+}
+
 function wallNetwork(state: GameState): WallNetwork | null {
   const wall = state.palisade;
   if (wall === null) return null;
@@ -78,6 +90,8 @@ function wallNetwork(state: GameState): WallNetwork | null {
           Math.abs(from.tile.ty - to.tile.ty)) > 1) continue;
         if (distance(from.tile, to.tile) <= 1
           && !canTraverseRoadBoundary(state, from.tile, to.tile)) continue;
+        if (distance(from.tile, to.tile) === 2
+          && !openDiagonalCorner(state, from.tile, to.tile)) continue;
         if (!isPointInsidePalisade({ x: (from.tile.tx + to.tile.tx) / 2 + 0.5,
           y: (from.tile.ty + to.tile.ty) / 2 + 0.5 }, wall.polygon)) continue;
         transitions.add(transitionKey(from.tile, to.tile));

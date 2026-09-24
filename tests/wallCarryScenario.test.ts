@@ -10,7 +10,7 @@ import { advanceTick } from '../src/engine/tick';
 import { placeRoadLine } from '../src/engine/gameActions';
 import { constructionRoadAction } from '../src/engine/autoplayConstructionRoads';
 import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles, resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
-import { wallCarryRoute } from '../src/engine/wallCarryRoute';
+import { canTraverseWallCarryEdge, wallCarryRoute } from '../src/engine/wallCarryRoute';
 import { WALL_CARRY_COST_FACTOR } from '../src/content/wallConstructionConfig';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../src/engine/simulationPorts';
 import type { ConstructionSite } from '../src/economy/construction';
@@ -204,9 +204,23 @@ test('T4: first post-proclamation natural snapshot has no anchor and cannot prog
   t.diagnostic(`Natural minute-035 tick 46908 + 12000 unchanged roads: ${state.tick}, 0/12 complete; original minute-060 was tick 194386, 10/12 after player roads`);
 });
 
-test('wall delivery can return past isolated road tiles reached through wall carry', () => {
+function stalledSeed4State(): GameState {
   const bytes = readFileSync(new URL('./fixtures/wall/a5-seed4-undelivered-timber.json.gz', import.meta.url));
-  const state: GameState = JSON.parse(gunzipSync(bytes).toString('utf8'));
+  return JSON.parse(gunzipSync(bytes).toString('utf8'));
+}
+
+test('wall carry cannot squeeze diagonally between two occupied corner cells', () => {
+  const state = stalledSeed4State();
+  const from = { tx: 26, ty: 47 }, to = { tx: 27, ty: 46 };
+  assert.equal(canTraverseWallCarryEdge(state, from, to), true);
+  const blocked = { ...state, tiles: state.tiles.map(tile =>
+    (tile.tx === 27 && tile.ty === 47) || (tile.tx === 26 && tile.ty === 46)
+      ? { ...tile, buildingId: 'blocking-building' } : tile) };
+  assert.equal(canTraverseWallCarryEdge(blocked, from, to), false);
+});
+
+test('wall delivery can return past isolated road tiles reached through wall carry', () => {
+  const state = stalledSeed4State();
   const cart = state.walkers.find(walker => walker.id === 'carter:construction-site-000001:1199720');
   assert.ok(cart?.kind === 'carter');
   assert.equal(cart.destination.kind, 'construction_site');
