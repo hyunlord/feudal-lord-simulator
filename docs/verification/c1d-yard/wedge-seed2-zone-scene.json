@@ -1,0 +1,684 @@
+{
+  "url": "http://127.0.0.1:4210/",
+  "base": "http://127.0.0.1:4211/",
+  "raster": "software (--disable-gpu)",
+  "grassMargin": 3,
+  "grassBlueMargin": 10,
+  "walkers": "hidden",
+  "totalGrassPixels": {
+    "ground": 0,
+    "frame": 46,
+    "baselineFrame": 1853
+  },
+  "rows": [
+    {
+      "scene": "seed2-zone-scene",
+      "view": "z0.60-dpr1",
+      "aprons": 52,
+      "rays": 724,
+      "raysWithoutRibbon": 161,
+      "raysBeyondTarget": 118,
+      "pixels": 5904,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 363
+    },
+    {
+      "scene": "seed2-zone-scene",
+      "view": "z0.60-dpr2",
+      "aprons": 52,
+      "rays": 724,
+      "raysWithoutRibbon": 161,
+      "raysBeyondTarget": 118,
+      "pixels": 5904,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 1,
+      "grassByBuilding": {
+        "construction-site-000073": 1
+      },
+      "firstHits": [
+        {
+          "x": 1231,
+          "y": 692,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.698,
+          "rgb": [
+            122,
+            127,
+            113
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 1,
+      "baselineGrassPixels": 355
+    },
+    {
+      "scene": "seed2-zone-scene",
+      "view": "z1.00-dpr1",
+      "aprons": 31,
+      "rays": 439,
+      "raysWithoutRibbon": 110,
+      "raysBeyondTarget": 84,
+      "pixels": 3738,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 12,
+      "grassByBuilding": {
+        "construction-site-000073": 12
+      },
+      "firstHits": [
+        {
+          "x": 600,
+          "y": 308,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.661,
+          "rgb": [
+            66,
+            82,
+            30
+          ]
+        },
+        {
+          "x": 597,
+          "y": 309,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.698,
+          "rgb": [
+            93,
+            118,
+            38
+          ]
+        },
+        {
+          "x": 598,
+          "y": 310,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.698,
+          "rgb": [
+            111,
+            132,
+            43
+          ]
+        },
+        {
+          "x": 599,
+          "y": 310,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.698,
+          "rgb": [
+            76,
+            93,
+            30
+          ]
+        },
+        {
+          "x": 600,
+          "y": 311,
+          "building": "construction-site-000073",
+          "t": 0.094,
+          "gap": 0.698,
+          "rgb": [
+            75,
+            91,
+            28
+          ]
+        },
+        {
+          "x": 592,
+          "y": 312,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.786,
+          "rgb": [
+            74,
+            88,
+            34
+          ]
+        },
+        {
+          "x": 593,
+          "y": 313,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.786,
+          "rgb": [
+            65,
+            89,
+            25
+          ]
+        },
+        {
+          "x": 594,
+          "y": 313,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.786,
+          "rgb": [
+            51,
+            64,
+            21
+          ]
+        },
+        {
+          "x": 589,
+          "y": 313,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.837,
+          "rgb": [
+            57,
+            77,
+            33
+          ]
+        },
+        {
+          "x": 590,
+          "y": 314,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.837,
+          "rgb": [
+            84,
+            103,
+            34
+          ]
+        },
+        {
+          "x": 591,
+          "y": 314,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.837,
+          "rgb": [
+            76,
+            92,
+            28
+          ]
+        },
+        {
+          "x": 588,
+          "y": 315,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.89,
+          "rgb": [
+            112,
+            118,
+            44
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 12,
+      "baselineGrassPixels": 393
+    },
+    {
+      "scene": "seed2-zone-scene",
+      "view": "z1.00-dpr2",
+      "aprons": 31,
+      "rays": 439,
+      "raysWithoutRibbon": 110,
+      "raysBeyondTarget": 84,
+      "pixels": 3738,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 11,
+      "grassByBuilding": {
+        "construction-site-000073": 11
+      },
+      "firstHits": [
+        {
+          "x": 1200,
+          "y": 616,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.661,
+          "rgb": [
+            67,
+            92,
+            30
+          ]
+        },
+        {
+          "x": 1195,
+          "y": 619,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.698,
+          "rgb": [
+            88,
+            112,
+            36
+          ]
+        },
+        {
+          "x": 1197,
+          "y": 620,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.698,
+          "rgb": [
+            95,
+            119,
+            38
+          ]
+        },
+        {
+          "x": 1199,
+          "y": 621,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.698,
+          "rgb": [
+            90,
+            107,
+            35
+          ]
+        },
+        {
+          "x": 1201,
+          "y": 622,
+          "building": "construction-site-000073",
+          "t": 0.094,
+          "gap": 0.698,
+          "rgb": [
+            70,
+            79,
+            27
+          ]
+        },
+        {
+          "x": 1184,
+          "y": 624,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.786,
+          "rgb": [
+            54,
+            68,
+            27
+          ]
+        },
+        {
+          "x": 1186,
+          "y": 625,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.786,
+          "rgb": [
+            90,
+            115,
+            38
+          ]
+        },
+        {
+          "x": 1188,
+          "y": 626,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.786,
+          "rgb": [
+            56,
+            79,
+            23
+          ]
+        },
+        {
+          "x": 1179,
+          "y": 627,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.837,
+          "rgb": [
+            71,
+            84,
+            36
+          ]
+        },
+        {
+          "x": 1181,
+          "y": 628,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.837,
+          "rgb": [
+            91,
+            100,
+            37
+          ]
+        },
+        {
+          "x": 1183,
+          "y": 629,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.837,
+          "rgb": [
+            64,
+            79,
+            23
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 11,
+      "baselineGrassPixels": 378
+    },
+    {
+      "scene": "seed2-zone-scene",
+      "view": "z1.35-dpr1",
+      "aprons": 22,
+      "rays": 298,
+      "raysWithoutRibbon": 84,
+      "raysBeyondTarget": 59,
+      "pixels": 2282,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 12,
+      "grassByBuilding": {
+        "construction-site-000073": 12
+      },
+      "firstHits": [
+        {
+          "x": 586,
+          "y": 276,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.661,
+          "rgb": [
+            63,
+            82,
+            28
+          ]
+        },
+        {
+          "x": 582,
+          "y": 278,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.698,
+          "rgb": [
+            92,
+            114,
+            36
+          ]
+        },
+        {
+          "x": 584,
+          "y": 278,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.698,
+          "rgb": [
+            90,
+            115,
+            37
+          ]
+        },
+        {
+          "x": 585,
+          "y": 279,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.698,
+          "rgb": [
+            88,
+            104,
+            34
+          ]
+        },
+        {
+          "x": 586,
+          "y": 280,
+          "building": "construction-site-000073",
+          "t": 0.094,
+          "gap": 0.698,
+          "rgb": [
+            80,
+            97,
+            30
+          ]
+        },
+        {
+          "x": 575,
+          "y": 281,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.786,
+          "rgb": [
+            52,
+            67,
+            27
+          ]
+        },
+        {
+          "x": 577,
+          "y": 282,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.786,
+          "rgb": [
+            73,
+            102,
+            30
+          ]
+        },
+        {
+          "x": 578,
+          "y": 283,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.786,
+          "rgb": [
+            51,
+            58,
+            21
+          ]
+        },
+        {
+          "x": 572,
+          "y": 283,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.837,
+          "rgb": [
+            74,
+            85,
+            37
+          ]
+        },
+        {
+          "x": 573,
+          "y": 284,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.837,
+          "rgb": [
+            82,
+            97,
+            32
+          ]
+        },
+        {
+          "x": 574,
+          "y": 284,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.837,
+          "rgb": [
+            77,
+            93,
+            28
+          ]
+        },
+        {
+          "x": 571,
+          "y": 286,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.89,
+          "rgb": [
+            82,
+            94,
+            29
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 12,
+      "baselineGrassPixels": 181
+    },
+    {
+      "scene": "seed2-zone-scene",
+      "view": "z1.35-dpr2",
+      "aprons": 22,
+      "rays": 298,
+      "raysWithoutRibbon": 84,
+      "raysBeyondTarget": 59,
+      "pixels": 2282,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 10,
+      "grassByBuilding": {
+        "construction-site-000073": 10
+      },
+      "firstHits": [
+        {
+          "x": 1172,
+          "y": 552,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.661,
+          "rgb": [
+            67,
+            92,
+            30
+          ]
+        },
+        {
+          "x": 1165,
+          "y": 555,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.698,
+          "rgb": [
+            90,
+            116,
+            37
+          ]
+        },
+        {
+          "x": 1167,
+          "y": 557,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.698,
+          "rgb": [
+            111,
+            133,
+            45
+          ]
+        },
+        {
+          "x": 1170,
+          "y": 558,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.698,
+          "rgb": [
+            78,
+            95,
+            30
+          ]
+        },
+        {
+          "x": 1173,
+          "y": 559,
+          "building": "construction-site-000073",
+          "t": 0.094,
+          "gap": 0.698,
+          "rgb": [
+            71,
+            82,
+            29
+          ]
+        },
+        {
+          "x": 1150,
+          "y": 562,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.786,
+          "rgb": [
+            48,
+            66,
+            25
+          ]
+        },
+        {
+          "x": 1153,
+          "y": 564,
+          "building": "construction-site-000073",
+          "t": 0.031,
+          "gap": 0.786,
+          "rgb": [
+            93,
+            118,
+            39
+          ]
+        },
+        {
+          "x": 1156,
+          "y": 565,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.786,
+          "rgb": [
+            59,
+            83,
+            24
+          ]
+        },
+        {
+          "x": 1143,
+          "y": 566,
+          "building": "construction-site-000073",
+          "t": 0,
+          "gap": 0.837,
+          "rgb": [
+            58,
+            77,
+            33
+          ]
+        },
+        {
+          "x": 1149,
+          "y": 569,
+          "building": "construction-site-000073",
+          "t": 0.063,
+          "gap": 0.837,
+          "rgb": [
+            69,
+            84,
+            24
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 10,
+      "baselineGrassPixels": 183
+    }
+  ]
+}

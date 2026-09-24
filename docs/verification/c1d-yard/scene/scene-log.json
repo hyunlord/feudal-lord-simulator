@@ -1,0 +1,263 @@
+{
+  "url": "http://127.0.0.1:4210/",
+  "snapshot": "docs/verification/c1b-zone-brush/seed2-natural-snapshot.json.gz",
+  "input": "real mouse and keyboard only",
+  "cottages": [
+    [
+      46,
+      49
+    ],
+    [
+      38,
+      44
+    ],
+    [
+      37,
+      43
+    ],
+    [
+      37,
+      41
+    ]
+  ],
+  "cottageIds": [
+    "construction-site-000071",
+    "construction-site-000072",
+    "construction-site-000073"
+  ],
+  "wedge": {
+    "aprons": 22,
+    "rays": 298,
+    "raysWithoutRibbon": 84,
+    "raysBeyondTarget": 59,
+    "pixels": 2216,
+    "cottagePixels": 496,
+    "groundGrassPixels": 0,
+    "frameGrassPixels": 11,
+    "groundHits": [],
+    "frameHits": [
+      {
+        "x": 668,
+        "y": 346,
+        "building": "construction-site-000073",
+        "t": 0,
+        "gap": 0.661,
+        "rgb": [
+          67,
+          88,
+          30
+        ]
+      },
+      {
+        "x": 665,
+        "y": 348,
+        "building": "construction-site-000073",
+        "t": 0,
+        "gap": 0.698,
+        "rgb": [
+          94,
+          116,
+          38
+        ]
+      },
+      {
+        "x": 666,
+        "y": 348,
+        "building": "construction-site-000073",
+        "t": 0.031,
+        "gap": 0.698,
+        "rgb": [
+          97,
+          121,
+          40
+        ]
+      },
+      {
+        "x": 667,
+        "y": 349,
+        "building": "construction-site-000073",
+        "t": 0.063,
+        "gap": 0.698,
+        "rgb": [
+          91,
+          107,
+          36
+        ]
+      },
+      {
+        "x": 668,
+        "y": 350,
+        "building": "construction-site-000073",
+        "t": 0.094,
+        "gap": 0.698,
+        "rgb": [
+          75,
+          91,
+          28
+        ]
+      },
+      {
+        "x": 658,
+        "y": 351,
+        "building": "construction-site-000073",
+        "t": 0,
+        "gap": 0.786,
+        "rgb": [
+          56,
+          65,
+          28
+        ]
+      },
+      {
+        "x": 660,
+        "y": 352,
+        "building": "construction-site-000073",
+        "t": 0.031,
+        "gap": 0.786,
+        "rgb": [
+          64,
+          90,
+          26
+        ]
+      },
+      {
+        "x": 661,
+        "y": 352,
+        "building": "construction-site-000073",
+        "t": 0.063,
+        "gap": 0.786,
+        "rgb": [
+          51,
+          68,
+          22
+        ]
+      },
+      {
+        "x": 655,
+        "y": 353,
+        "building": "construction-site-000073",
+        "t": 0,
+        "gap": 0.837,
+        "rgb": [
+          86,
+          101,
+          41
+        ]
+      },
+      {
+        "x": 656,
+        "y": 353,
+        "building": "construction-site-000073",
+        "t": 0.031,
+        "gap": 0.837,
+        "rgb": [
+          96,
+          105,
+          41
+        ]
+      },
+      {
+        "x": 658,
+        "y": 354,
+        "building": "construction-site-000073",
+        "t": 0.063,
+        "gap": 0.837,
+        "rgb": [
+          62,
+          67,
+          25
+        ]
+      }
+    ]
+  },
+  "log": [
+    {
+      "atS": 1,
+      "step": "plots painted",
+      "zones": {
+        "list": [
+          {
+            "id": "zone-000001",
+            "kind": "burgage",
+            "cells": 56
+          }
+        ],
+        "parcels": 2,
+        "assets": [
+          {
+            "key": "pasture_fill",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_floor_fill",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_a",
+            "status": "ready"
+          },
+          {
+            "key": "haycock_b",
+            "status": "ready"
+          },
+          {
+            "key": "orchard_apple_c",
+            "status": "ready"
+          }
+        ]
+      }
+    },
+    {
+      "atS": 2,
+      "step": "cottage at 46,49",
+      "sitesAdded": 1
+    },
+    {
+      "atS": 3,
+      "step": "cottage at 38,44",
+      "sitesAdded": 1
+    },
+    {
+      "atS": 3,
+      "step": "cottage at 37,43",
+      "sitesAdded": 1
+    },
+    {
+      "atS": 4,
+      "step": "cottage at 37,41",
+      "sitesAdded": 0
+    },
+    {
+      "atS": 304,
+      "step": "ran at 5x until the cottages stood",
+      "standing": [
+        [
+          46,
+          49
+        ],
+        [
+          38,
+          44
+        ],
+        [
+          37,
+          43
+        ]
+      ],
+      "tick": 305973
+    },
+    {
+      "atS": 306,
+      "step": "wedge check on this page",
+      "aprons": 22,
+      "rays": 298,
+      "raysWithoutRibbon": 84,
+      "raysBeyondTarget": 59,
+      "pixels": 2216,
+      "cottagePixels": 496,
+      "groundGrassPixels": 0,
+      "frameGrassPixels": 11
+    }
+  ],
+  "errors": []
+}

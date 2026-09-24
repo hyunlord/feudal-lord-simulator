@@ -1,0 +1,82 @@
+{
+  "url": "http://127.0.0.1:4210/",
+  "city": "lots24",
+  "dpr": 1,
+  "speed": "1x",
+  "painting": true,
+  "strokes": 10,
+  "frames": 2653,
+  "frameWork": {
+    "median": 3.1999999284744263,
+    "p95": 6,
+    "max": 32.200000047683716
+  },
+  "longTasks": {
+    "count": 1,
+    "max": 50
+  },
+  "zones": 1,
+  "parcels": 31,
+  "perStroke": [
+    {
+      "stroke": 0,
+      "maxFrameAfterRelease": 16,
+      "sceneBuildMs": 9.899999976158142,
+      "sceneBuilds": 2
+    },
+    {
+      "stroke": 1,
+      "maxFrameAfterRelease": 10.700000047683716,
+      "sceneBuildMs": 4.699999928474426,
+      "sceneBuilds": 3
+    },
+    {
+      "stroke": 2,
+      "maxFrameAfterRelease": 10.800000071525574,
+      "sceneBuildMs": 5.5,
+      "sceneBuilds": 4
+    },
+    {
+      "stroke": 3,
+      "maxFrameAfterRelease": 11.5,
+      "sceneBuildMs": 4.700000047683716,
+      "sceneBuilds": 5
+    },
+    {
+      "stroke": 4,
+      "maxFrameAfterRelease": 10.700000047683716,
+      "sceneBuildMs": 5.5,
+      "sceneBuilds": 6
+    },
+    {
+      "stroke": 5,
+      "maxFrameAfterRelease": 11.200000047683716,
+      "sceneBuildMs": 4.200000047683716,
+      "sceneBuilds": 7
+    },
+    {
+      "stroke": 6,
+      "maxFrameAfterRelease": 12.699999928474426,
+      "sceneBuildMs": 6.100000023841858,
+      "sceneBuilds": 8
+    },
+    {
+      "stroke": 7,
+      "maxFrameAfterRelease": 10.799999952316284,
+      "sceneBuildMs": 4.100000023841858,
+      "sceneBuilds": 9
+    },
+    {
+      "stroke": 8,
+      "maxFrameAfterRelease": 12.300000071525574,
+      "sceneBuildMs": 5.200000047683716,
+      "sceneBuilds": 10
+    },
+    {
+      "stroke": 9,
+      "maxFrameAfterRelease": 12.100000023841858,
+      "sceneBuildMs": 4.400000095367432,
+      "sceneBuilds": 11
+    }
+  ]
+}

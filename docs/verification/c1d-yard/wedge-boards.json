@@ -1,0 +1,305 @@
+{
+  "url": "http://127.0.0.1:4210/",
+  "base": "http://127.0.0.1:4211/",
+  "raster": "software (--disable-gpu)",
+  "grassMargin": 3,
+  "grassBlueMargin": 10,
+  "walkers": "hidden",
+  "totalGrassPixels": {
+    "ground": 0,
+    "frame": 6,
+    "baselineFrame": 430
+  },
+  "rows": [
+    {
+      "scene": "c25",
+      "view": "z0.60-dpr1",
+      "aprons": 53,
+      "rays": 857,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6573,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 29
+    },
+    {
+      "scene": "c25",
+      "view": "z0.60-dpr2",
+      "aprons": 53,
+      "rays": 857,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6573,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 25
+    },
+    {
+      "scene": "c25",
+      "view": "z1.00-dpr1",
+      "aprons": 52,
+      "rays": 832,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6397,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 1,
+      "grassByBuilding": {
+        "construction-site-000059": 1
+      },
+      "firstHits": [
+        {
+          "x": 733,
+          "y": 44,
+          "building": "construction-site-000059",
+          "t": 0.938,
+          "gap": 0.961,
+          "rgb": [
+            119,
+            126,
+            55
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 1,
+      "baselineGrassPixels": 63
+    },
+    {
+      "scene": "c25",
+      "view": "z1.00-dpr2",
+      "aprons": 52,
+      "rays": 832,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6397,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 2,
+      "grassByBuilding": {
+        "construction-site-000059": 1,
+        "construction-site-000060": 1
+      },
+      "firstHits": [
+        {
+          "x": 1465,
+          "y": 89,
+          "building": "construction-site-000059",
+          "t": 0.938,
+          "gap": 0.961,
+          "rgb": [
+            112,
+            119,
+            53
+          ]
+        },
+        {
+          "x": 1557,
+          "y": 96,
+          "building": "construction-site-000060",
+          "t": 0.344,
+          "gap": 0.41,
+          "rgb": [
+            90,
+            100,
+            56
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 2,
+      "baselineGrassPixels": 39
+    },
+    {
+      "scene": "c25",
+      "view": "z1.35-dpr1",
+      "aprons": 39,
+      "rays": 603,
+      "raysWithoutRibbon": 80,
+      "raysBeyondTarget": 86,
+      "pixels": 4715,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 27
+    },
+    {
+      "scene": "c25",
+      "view": "z1.35-dpr2",
+      "aprons": 39,
+      "rays": 603,
+      "raysWithoutRibbon": 80,
+      "raysBeyondTarget": 86,
+      "pixels": 4715,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 32
+    },
+    {
+      "scene": "c25-zoned",
+      "view": "z0.60-dpr1",
+      "aprons": 53,
+      "rays": 857,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6573,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 29
+    },
+    {
+      "scene": "c25-zoned",
+      "view": "z0.60-dpr2",
+      "aprons": 53,
+      "rays": 857,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6573,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 25
+    },
+    {
+      "scene": "c25-zoned",
+      "view": "z1.00-dpr1",
+      "aprons": 52,
+      "rays": 832,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6397,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 1,
+      "grassByBuilding": {
+        "construction-site-000059": 1
+      },
+      "firstHits": [
+        {
+          "x": 733,
+          "y": 44,
+          "building": "construction-site-000059",
+          "t": 0.938,
+          "gap": 0.961,
+          "rgb": [
+            119,
+            126,
+            55
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 1,
+      "baselineGrassPixels": 63
+    },
+    {
+      "scene": "c25-zoned",
+      "view": "z1.00-dpr2",
+      "aprons": 52,
+      "rays": 832,
+      "raysWithoutRibbon": 107,
+      "raysBeyondTarget": 104,
+      "pixels": 6397,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 2,
+      "grassByBuilding": {
+        "construction-site-000059": 1,
+        "construction-site-000060": 1
+      },
+      "firstHits": [
+        {
+          "x": 1465,
+          "y": 89,
+          "building": "construction-site-000059",
+          "t": 0.938,
+          "gap": 0.961,
+          "rgb": [
+            112,
+            119,
+            53
+          ]
+        },
+        {
+          "x": 1557,
+          "y": 96,
+          "building": "construction-site-000060",
+          "t": 0.344,
+          "gap": 0.41,
+          "rgb": [
+            90,
+            100,
+            56
+          ]
+        }
+      ],
+      "frameHitsOverNonGrassGround": 2,
+      "baselineGrassPixels": 39
+    },
+    {
+      "scene": "c25-zoned",
+      "view": "z1.35-dpr1",
+      "aprons": 39,
+      "rays": 603,
+      "raysWithoutRibbon": 80,
+      "raysBeyondTarget": 86,
+      "pixels": 4715,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 27
+    },
+    {
+      "scene": "c25-zoned",
+      "view": "z1.35-dpr2",
+      "aprons": 39,
+      "rays": 603,
+      "raysWithoutRibbon": 80,
+      "raysBeyondTarget": 86,
+      "pixels": 4715,
+      "groundGrassPixels": 0,
+      "groundGrassByBuilding": {},
+      "groundHits": [],
+      "grassPixels": 0,
+      "grassByBuilding": {},
+      "firstHits": [],
+      "frameHitsOverNonGrassGround": 0,
+      "baselineGrassPixels": 32
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "url": "http://127.0.0.1:4210/",
+  "raster": "software (--disable-gpu)",
+  "rows": [
+    {
+      "dpr": 1,
+      "live": "ffd1d172723eb90b32baa1f37fc3466e54360e898c604d060c0abce31b33315e",
+      "afterDroppingEveryRaster": "ffd1d172723eb90b32baa1f37fc3466e54360e898c604d060c0abce31b33315e",
+      "identical": true,
+      "zones": [
+        {
+          "id": "zone-000001",
+          "kind": "burgage",
+          "cells": 70
+        }
+      ],
+      "chunkStatsBeforeReset": {
+        "hits": 13880,
+        "prefetched": 14,
+        "contentRasters": 152,
+        "zoomRasters": 0,
+        "deferredZoom": 0,
+        "deferredContent": 48,
+        "evictions": 0,
+        "rasterMs": 93.700000166893,
+        "entries": 78,
+        "pixels": 10464480,
+        "lastFrameRasters": 0,
+        "lastFrameRasterMs": 0
+      }
+    },
+    {
+      "dpr": 2,
+      "live": "b78d1970382c0c3065d0fead5648fbc753baaf0ac787e0b4961f8d749e1edf3a",
+      "afterDroppingEveryRaster": "b78d1970382c0c3065d0fead5648fbc753baaf0ac787e0b4961f8d749e1edf3a",
+      "identical": true,
+      "zones": [
+        {
+          "id": "zone-000001",
+          "kind": "burgage",
+          "cells": 70
+        }
+      ],
+      "chunkStatsBeforeReset": {
+        "hits": 16067,
+        "prefetched": 0,
+        "contentRasters": 151,
+        "zoomRasters": 0,
+        "deferredZoom": 0,
+        "deferredContent": 102,
+        "evictions": 0,
+        "rasterMs": 100.59999918937683,
+        "entries": 64,
+        "pixels": 33948672,
+        "lastFrameRasters": 0,
+        "lastFrameRasterMs": 0
+      }
+    }
+  ]
+}
