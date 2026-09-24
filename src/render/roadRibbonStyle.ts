@@ -1,11 +1,11 @@
 import type { RoadMaterial } from "../world/boundary/roadCenterline";
 import { ROAD_STRIP_CHOICE, ROAD_STRIP_SETS, type RoadStripSet } from "./boundaryAssetManifest";
 
-// Road ribbon width (D1a-2 C07): the visible earth width in tiles. 0.55 is the working value; the evidence captures
-// compare 0.55 / 0.65 / 0.75 through the URL query `road-ribbon-width` (clamped to 0.45..0.85). Part of the ground
+// Road ribbon width (D1a-2 C07): the visible earth width in tiles. 0.65 since C1b (owner decision after the D1a-2
+// 0.55 / 0.65 / 0.75 captures); the URL query `road-ribbon-width` (clamped to 0.45..0.85) still overrides it. Part of the ground
 // scene key, so changing it re-derives the ribbon layout and re-rasters road chunks.
 
-export const ROAD_RIBBON_WIDTH = 0.55;
+export const ROAD_RIBBON_WIDTH = 0.65;
 export const ROAD_RIBBON_WIDTH_QUERY = "road-ribbon-width";
 const MIN_WIDTH = 0.45;
 const MAX_WIDTH = 0.85;
