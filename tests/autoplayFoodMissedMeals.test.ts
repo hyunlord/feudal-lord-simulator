@@ -16,9 +16,9 @@ test('missed actual meals and negative raw flow cannot be offset by unused globa
   assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
 });
 
-test('reserves retain their credit when they actually sustained every observed meal', () => {
-  const state = replayFoodObservation(stockedTown(true), { wheat: 120, bread: 70, exports: 0 });
-  assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'food_supply_sufficient' });
+test('fed reserves do not conceal a measured bread production deficit', () => {
+  const state = replayFoodObservation(stockedTown(true), { wheat: 170, bread: 70, exports: 0 });
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'mill', reason: 'actual_bread_deficit' });
 });
 
 test('missed meals with adequate actual raw output and starved mills diagnose transport rather than more fields', () => {

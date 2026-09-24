@@ -77,7 +77,7 @@ test('Given two disjoint food districts with local suppliers When both have meas
       buildingId: 'home-' + index, breadStock: 8, emptyFoodTicks: 0 })),
     tiles: base.tiles.map(tile => ({ ...tile, hasRoad: tile.ty === 1 && (tile.tx < 15 || tile.tx > 30) })),
     roadRevision: base.roadRevision + 1, pathCache: {} };
-  const observed = replayFoodObservation(state, { wheat: 100, bread: 100, exports: 0 });
+  const observed = replayFoodObservation(state, { wheat: 240, bread: 100, exports: 0 });
   assert.deepEqual(measuredFoodDecision(observed), { kind: null, reason: 'food_supply_sufficient' });
   assert.deepEqual(foodAction(observed, foodBuildRequest), { kind: 'none' });
 });
