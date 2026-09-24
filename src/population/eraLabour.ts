@@ -1,7 +1,8 @@
 import type { ConstructionLabourSite } from "./labour";
+import { RESOURCE_TYPES } from "../content/resourceConfig";
 import type { Era } from "../content/eraConfig";
 import {
-  activePalisadeSiteId as activePalisadeSiteIdForWall,
+  palisadeConstructionSchedule,
   isPalisadeConstructionSite,
   isStoneWallConstructionSite,
 } from "../domain/palisadeConstructionSchedule";
@@ -32,33 +33,6 @@ const PALISADE_LABOUR_QUOTA = 0.4;
 const STONE_TOWN_LABOUR_WINDOW_TICKS = 900;
 const STONE_TOWN_LABOUR_QUOTA = 0.5;
 
-function wallIds(sites: readonly ConstructionLabourSite[]): readonly string[] {
-  return [
-    ...new Set(
-      sites.flatMap((site) => {
-        if (!isPalisadeConstructionSite(site)) return [];
-        return [site.wallId];
-      }),
-    ),
-  ].sort((left, right) => left.localeCompare(right));
-}
-
-function firstActivePalisadeSiteId(sites: readonly ConstructionLabourSite[]): string | null {
-  for (const wallId of wallIds(sites)) {
-    const activeId = activePalisadeSiteIdForWall(sites, wallId);
-    if (activeId !== null) return activeId;
-  }
-  return null;
-}
-
-function firstActiveStoneTownSiteId(sites: readonly ConstructionLabourSite[]): string | null {
-  const activeSites = sites
-    .filter(isStoneWallConstructionSite)
-    .filter((site) => activePalisadeSiteIdForWall(sites, site.wallId) === site.id)
-    .sort((left, right) => left.order - right.order || left.id.localeCompare(right.id));
-  return activeSites[0]?.id ?? null;
-}
-
 function tickOffset(options: PalisadeEraLabourOptions): number | null {
   return options.eraProclaimedTick === null ? null : options.tick - options.eraProclaimedTick;
 }
@@ -83,20 +57,6 @@ function labourPolicy(era: Era): {
   }
 }
 
-function activeConstructionTargetId(
-  era: Era,
-  sites: readonly ConstructionLabourSite[],
-): string | null {
-  switch (era) {
-    case "palisade":
-      return firstActivePalisadeSiteId(sites);
-    case "stone_town":
-      return firstActiveStoneTownSiteId(sites);
-    case "hamlet":
-      return null;
-  }
-}
-
 export function palisadeEraLabourReservation(
   input: PalisadeEraLabourReservationInput,
 ): PalisadeEraLabourDiagnostics {
@@ -105,10 +65,17 @@ export function palisadeEraLabourReservation(
   const offset = tickOffset(input);
   const active =
     policy !== null && offset !== null && offset >= 0 && offset < policy.windowTicks;
-  const activeSiteId = active ? activeConstructionTargetId(era, input.constructionSites) : null;
+  // R1 S5-F1: reserve only ready, schedulable site demand; waiting sites cost no labour.
+  const readySites = active ? input.constructionSites.filter(site =>
+    (era === 'palisade' ? isPalisadeConstructionSite(site) : isStoneWallConstructionSite(site)) &&
+    site.builderTicks < site.requiredBuilderTicks &&
+    RESOURCE_TYPES.every(resource => (site.delivered[resource] ?? 0) >= (site.required[resource] ?? 0)) &&
+    palisadeConstructionSchedule(site, input.constructionSites).kind === 'active'
+  ).sort((a, b) => a.id.localeCompare(b.id)) : [];
+  const activeSiteId = readySites[0]?.id ?? null;
   const reservedWorkers =
     active && activeSiteId !== null && input.availableWorkers > 0
-      ? Math.max(1, Math.floor(input.availableWorkers * policy.quota))
+      ? Math.min(readySites.length * 3, Math.max(1, Math.floor(input.availableWorkers * policy.quota)))
       : 0;
 
   return {

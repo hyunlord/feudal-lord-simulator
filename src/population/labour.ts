@@ -185,16 +185,15 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   let remaining = otherResult.idleWorkers;
   const allocations = new Map<string, number>();
   let palisadeAssignedBuilders = 0;
+  let reservedRemaining = reservation.reservedWorkers;
 
   for (const site of readySites) {
-    if (site.id === reservation.activeSiteId) {
-      palisadeAssignedBuilders = Math.min(reservation.reservedWorkers, MAX_BUILDERS_PER_SITE);
-      allocations.set(site.id, palisadeAssignedBuilders);
-      continue;
-    }
-    const guaranteed = site.id === ordinaryTarget?.id ? ordinaryReserved : 0;
+    const wallReserved = isWallConstructionSite(site) ? Math.min(reservedRemaining, MAX_BUILDERS_PER_SITE) : 0;
+    reservedRemaining -= wallReserved;
+    const guaranteed = wallReserved + (site.id === ordinaryTarget?.id ? ordinaryReserved : 0);
     const extra = Math.min(remaining, MAX_BUILDERS_PER_SITE - guaranteed);
     allocations.set(site.id, guaranteed + extra);
+    if (isWallConstructionSite(site)) palisadeAssignedBuilders += guaranteed + extra;
     remaining -= extra;
   }
   const palisadeEraLabour = palisadeEraLabourWithAssignment(
