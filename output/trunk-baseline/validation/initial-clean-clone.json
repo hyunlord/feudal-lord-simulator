@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "e97d6a81c68255c5727d2ef03d13aad386be7f5d",
+  "clone": "/tmp/fls-s0-clean-e97d6a8",
+  "cloneOrigin": "https://github.com/hyunlord/feudal-lord-simulator.git",
+  "command": "npm ci && npm test",
+  "testCount": 2442,
+  "pass": 2442,
+  "fail": 0,
+  "skipped": 0,
+  "phase9": true,
+  "node": "25.8.2",
+  "npm": "11.11.1",
+  "macOS": "26.4.1",
+  "cpu": "Apple M4 Max",
+  "logicalCpuCount": 14,
+  "memoryBytes": 38654705664,
+  "sharedNodeModules": false,
+  "typecheck": 0,
+  "build": 0,
+  "note": "Initial gate on measurement commit e97d6a8. Later changes are the browser QA synchronization fix and documentation/evidence; final commit is independently recloned and fully tested."
+}

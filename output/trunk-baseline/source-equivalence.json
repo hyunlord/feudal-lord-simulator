@@ -1,0 +1,31 @@
+{
+  "measurementCommit": "e97d6a81c68255c5727d2ef03d13aad386be7f5d",
+  "verificationToolCommit": "3c52fa4ea7efeaf4c4998a41196c34714b68e99b",
+  "objects": [
+    {
+      "path": "src",
+      "measurementObject": "47cff6ee8a3a92fdcac88c1b2664fa4aa0ba189c",
+      "currentObject": "47cff6ee8a3a92fdcac88c1b2664fa4aa0ba189c",
+      "equal": true
+    },
+    {
+      "path": "tests",
+      "measurementObject": "1fa85643e996cafd5a0281e342de23ce3cf1f4fe",
+      "currentObject": "1fa85643e996cafd5a0281e342de23ce3cf1f4fe",
+      "equal": true
+    },
+    {
+      "path": "package.json",
+      "measurementObject": "626c162b70641bcdf31bbbc6bbbaab51fc83bff1",
+      "currentObject": "626c162b70641bcdf31bbbc6bbbaab51fc83bff1",
+      "equal": true
+    },
+    {
+      "path": "package-lock.json",
+      "measurementObject": "0404dcc4d9f13a0759564b467836f5d3b846fd81",
+      "currentObject": "0404dcc4d9f13a0759564b467836f5d3b846fd81",
+      "equal": true
+    }
+  ],
+  "note": "Subsequent pending commits contain measurements and documentation only."
+}

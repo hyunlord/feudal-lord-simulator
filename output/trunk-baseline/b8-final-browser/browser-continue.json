@@ -1,0 +1,217 @@
+{
+  "url": "http://127.0.0.1:4176/",
+  "autoplayDuringRun1": true,
+  "chrome": "Chrome/153.0.8010.53",
+  "playSeconds": 60,
+  "startedAt": "2026-09-24T09:13:14.672Z",
+  "runs": [
+    {
+      "kind": "page-reload",
+      "noContinueOnFirstVisit": true,
+      "before": {
+        "playedSeconds": 60.639,
+        "saved": {
+          "slot": "auto-2",
+          "slots": [
+            "auto-2@1210",
+            "auto-1@1169"
+          ],
+          "summary": "1분째 · 인구 32 · 촌락 시대",
+          "tick": 1210,
+          "population": 32,
+          "treasuryTimber": 70,
+          "treasuryCoin": 0,
+          "buildings": 10,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 5,
+          "stock": {
+            "wheat": 6,
+            "logs": 15,
+            "timber": 12
+          },
+          "stateSha256": "14367fb39c2c88f235a21eba3fdb2eee244fc86913eb39346589d8b9957ea617",
+          "bytes": 519526
+        },
+        "bar": "인구 32 유휴 일꾼 3 ⌄ 빵 10 4가구 기준 약 50게임초 가용 목재 82 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "shot": "reload-0-before.jpg",
+        "metrics": [
+          {
+            "reason": "interval",
+            "slotId": "auto-1",
+            "tick": 1169,
+            "byteLength": 511471,
+            "saveSerializeMs": 3.600000023841858,
+            "writeMs": 850,
+            "frameWorkMs": 3.8000000715255737,
+            "frameIntervalMs": 133.40000000000146
+          },
+          {
+            "reason": "pause",
+            "slotId": "auto-2",
+            "tick": 1210,
+            "byteLength": 519526,
+            "saveSerializeMs": 3.5,
+            "writeMs": 593.9000000953674,
+            "frameWorkMs": 3.8000000715255737,
+            "frameIntervalMs": 133.40000000000146
+          },
+          {
+            "reason": "manual",
+            "slotId": "manual",
+            "tick": 1210,
+            "byteLength": 519526,
+            "saveSerializeMs": 2.600000023841858,
+            "writeMs": 476.39999997615814,
+            "frameWorkMs": 2.8000000715255737,
+            "frameIntervalMs": 133.40000000000873
+          }
+        ],
+        "baselineFrameGaps": {
+          "frames": 26,
+          "medianMs": 116.69999999999709,
+          "p95Ms": 133.40000000000146,
+          "maxMs": 133.40000000000146
+        }
+      },
+      "after": {
+        "label": "reload",
+        "welcomeLine": "1분째 · 인구 32 · 촌락 시대",
+        "welcomeShot": "reload-1-welcome-continue.jpg",
+        "afterShot": "reload-2-after-continue.jpg",
+        "barAfter": "인구 32 유휴 일꾼 3 ⌄ 빵 10 4가구 기준 약 50게임초 가용 목재 82 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "restored": {
+          "slot": "manual",
+          "slots": [
+            "manual@1210",
+            "auto-2@1210",
+            "auto-1@1169"
+          ],
+          "summary": "1분째 · 인구 32 · 촌락 시대",
+          "tick": 1210,
+          "population": 32,
+          "treasuryTimber": 70,
+          "treasuryCoin": 0,
+          "buildings": 10,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 5,
+          "stock": {
+            "wheat": 6,
+            "logs": 15,
+            "timber": 12
+          },
+          "stateSha256": "14367fb39c2c88f235a21eba3fdb2eee244fc86913eb39346589d8b9957ea617",
+          "bytes": 519526
+        },
+        "mismatches": [],
+        "matches": true
+      }
+    },
+    {
+      "kind": "tab-close-reopen",
+      "before": {
+        "playedSeconds": 30.521,
+        "saved": {
+          "slot": "auto-3",
+          "slots": [
+            "auto-3@1820",
+            "auto-2@1210",
+            "auto-1@1169"
+          ],
+          "summary": "1분째 · 인구 32 · 촌락 시대",
+          "tick": 1820,
+          "population": 32,
+          "treasuryTimber": 70,
+          "treasuryCoin": 0,
+          "buildings": 10,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 4,
+          "stock": {
+            "wheat": 21,
+            "logs": 1,
+            "timber": 26
+          },
+          "stateSha256": "cf78c472a4fbb2cedbcf83c1313a73cb614ede9f1f88417cab18249cc4aea800",
+          "bytes": 632961
+        },
+        "bar": "인구 32 유휴 일꾼 3 ⌄ 빵 2 4가구 기준 약 10게임초 가용 목재 96 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "shot": "tab-0-before.jpg",
+        "metrics": [
+          {
+            "reason": "manual",
+            "slotId": "manual",
+            "tick": 1210,
+            "byteLength": 519526,
+            "saveSerializeMs": 2.799999952316284,
+            "writeMs": 493.10000002384186,
+            "frameWorkMs": 2.899999976158142,
+            "frameIntervalMs": 133.4000000000001
+          },
+          {
+            "reason": "pause",
+            "slotId": "auto-3",
+            "tick": 1820,
+            "byteLength": 632961,
+            "saveSerializeMs": 5.799999952316284,
+            "writeMs": 456.60000002384186,
+            "frameWorkMs": 5.799999952316284,
+            "frameIntervalMs": 133.29999999999563
+          },
+          {
+            "reason": "manual",
+            "slotId": "manual",
+            "tick": 1820,
+            "byteLength": 632961,
+            "saveSerializeMs": 2.600000023841858,
+            "writeMs": 341.7000000476837,
+            "frameWorkMs": 2.700000047683716,
+            "frameIntervalMs": 116.80000000000291
+          }
+        ],
+        "baselineFrameGaps": {
+          "frames": 25,
+          "medianMs": 116.70000000000073,
+          "p95Ms": 133.39999999999964,
+          "maxMs": 133.40000000000146
+        }
+      },
+      "after": {
+        "label": "tab",
+        "welcomeLine": "1분째 · 인구 32 · 촌락 시대",
+        "welcomeShot": "tab-1-welcome-continue.jpg",
+        "afterShot": "tab-2-after-continue.jpg",
+        "barAfter": "인구 32 유휴 일꾼 3 ⌄ 빵 2 4가구 기준 약 10게임초 가용 목재 96 공사 예약 0 가용 석재 0 원석 0 재정 0 금화 · 보유량 ⌄ 자원 상세",
+        "restored": {
+          "slot": "manual",
+          "slots": [
+            "manual@1820",
+            "auto-3@1820",
+            "auto-2@1210",
+            "auto-1@1169"
+          ],
+          "summary": "1분째 · 인구 32 · 촌락 시대",
+          "tick": 1820,
+          "population": 32,
+          "treasuryTimber": 70,
+          "treasuryCoin": 0,
+          "buildings": 10,
+          "houses": 4,
+          "constructionSites": 0,
+          "walkers": 4,
+          "stock": {
+            "wheat": 21,
+            "logs": 1,
+            "timber": 26
+          },
+          "stateSha256": "cf78c472a4fbb2cedbcf83c1313a73cb614ede9f1f88417cab18249cc4aea800",
+          "bytes": 632961
+        },
+        "mismatches": [],
+        "matches": true
+      }
+    }
+  ],
+  "passed": true
+}

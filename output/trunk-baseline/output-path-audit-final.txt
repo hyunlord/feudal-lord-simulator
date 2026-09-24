@@ -1,0 +1,17 @@
+scripts/a4SnapshotCapture.mjs:14:  process.stdout.write('Usage: node scripts/a4SnapshotCapture.mjs capture --first-screen-utc 2026-09-23T20:00:00.000Z --cdp-port 9223 --out output/playtest-a-quadruple-prime/replay-prep/raw [--minutes 60]\n       node scripts/a4SnapshotCapture.mjs restore --cdp-port 9223 --snapshot FILE --manifest FILE --out DIR\n       node scripts/a4SnapshotCapture.mjs verify --snapshot FILE --manifest FILE\n');
+scripts/a4SnapshotCapture.mjs:162:  const out = resolve(args.out ?? join(repo, 'output/playtest-a-quadruple-prime/replay-prep/raw'));
+scripts/a4SnapshotCapture.mjs:228:    const out = resolve(args.out ?? join(repo, 'output/playtest-a-quadruple-prime/replay-prep/restoration'));
+scripts/buildSaveFixtures.ts:26:/** The 24-lot L4 city is the v0 seed-1 A'' final state (bare GameState JSON), kept under fixtures/ so CI never reads output/. */
+scripts/growthStateRecord.ts:8:// CLI: npx tsx scripts/growthStateRecord.ts 24 1200000 output/record/seed1 1 1500
+scripts/phase16Benchmark.mjs:20:const output = resolve(flags.output ?? 'output/phase16');
+scripts/phase16CacheParity.mjs:7:const output = process.argv[2] ?? 'output/phase16/E-parity.json';
+scripts/phase16SpriteStudy.mjs:5:const output = process.argv[3] ?? 'output/phase16/A-house-study';
+scripts/phase17TerrainParity.mjs:7:const output = process.argv[2] ?? 'output/phase17/terrain-parity.json';
+src/render/runtimeActorManifest.generated.ts:1:// Original sheets preserved. Registration: output/runtime-art-simulation-v1/actors/register.mjs
+tests/fixtures/autoplay/manifest.json:5:      "source": "feudal-lord-simulator/output/free-city-stage0-v2/natural-v7/d11-final-20260921T054214Z/runs/seed3/final-state.json",
+tests/fixtures/autoplay/manifest.json:20:      "source": "feudal-lord-simulator/output/free-city-stage0-v2/v7-material-dispatch/history/pre-proclaim-state.json",
+tests/fixtures/autoplay/manifest.json:35:      "source": "output/playtest-a-double-prime/seeds/final-689bda7/seed3/final-state.json",
+tests/fixtures/phase16-city.provenance.json:3:  "source": "feudal-lord-simulator/output/priority-simulation-v1/evidence/validation-natural-state.json",
+tests/fixtures/wall/README.md:3:- `a4-pre-proclaim-minute-025.json.gz`: exact gzip of `output/playtest-a-quadruple-prime/replay-prep/run4/snapshots/minute-025.json`. SHA-256 of decompressed bytes: `803f8773d9ee4e4741f189fd2261dbe7012d00884e59f371afee2d5839bcc860`. Screen play run 4, 25:00 elapsed, tick 34590, before proclamation. The player did not inspect this observer file.
+tests/fixtures/wall/README.md:4:- `a4-full2-minute-035.json.gz`: exact gzip of `output/playtest-a-quadruple-prime/replay-full-gate-2/snapshots/minute-035.json`. SHA-256 of decompressed bytes: `44b63fac3431a932e053b678e062f3234b1e61b612c33c82b55caf474c7bfaef`. Screen play full attempt 2, 35:00 elapsed, tick 46908, after proclamation with 12 sites stalled for route. The precise 34:03 proclamation state was not captured by the five-minute observer; this is the first subsequent natural snapshot.
+tests/saveFixtures.test.ts:26:  assert.ok(files.every(file => !file.startsWith("output/")), "save fixtures must not depend on the output/ evidence folder");
