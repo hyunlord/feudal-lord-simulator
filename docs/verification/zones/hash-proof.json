@@ -1,0 +1,77 @@
+{
+  "b2SourceCommit": "21caf65",
+  "removedKeys": [
+    "zones",
+    "nextZoneOrdinal"
+  ],
+  "seeds": [
+    {
+      "seed": 1,
+      "finalTick": 786108,
+      "b2FinalTick": 786108,
+      "rawSha256": "d98533aa391877d1a5b87050505fd2db7d99996ac550859064c6b9caceeb5178",
+      "strippedSha256": "dca8773b6c75586eca32ecd4bc4c432142e466791988d08b234193275c6626f0",
+      "b2FinalStateSha256": "dca8773b6c75586eca32ecd4bc4c432142e466791988d08b234193275c6626f0",
+      "zonesEmpty": true,
+      "roundTrip": true,
+      "identical": true
+    },
+    {
+      "seed": 2,
+      "finalTick": 419117,
+      "b2FinalTick": 419117,
+      "rawSha256": "8a2906c5ac87f1697371fcb502277c6f104bcd5e483484ba857b6c78ebfd12f8",
+      "strippedSha256": "b9f4cf2e452dd4a6bb3407f99dada89c5a3044c7b1ce9bc6c989a744b040f612",
+      "b2FinalStateSha256": "b9f4cf2e452dd4a6bb3407f99dada89c5a3044c7b1ce9bc6c989a744b040f612",
+      "zonesEmpty": true,
+      "roundTrip": true,
+      "identical": true
+    },
+    {
+      "seed": 3,
+      "finalTick": 487446,
+      "b2FinalTick": 487446,
+      "rawSha256": "b8930178c785cdff75a7a631a02bb8d5f9e93f1364d08a7355476268ea5cb09d",
+      "strippedSha256": "426d2a887a3c92d2941c5a06fd8ae5c80b257fd8b221ca2e5d21d798170e5b09",
+      "b2FinalStateSha256": "426d2a887a3c92d2941c5a06fd8ae5c80b257fd8b221ca2e5d21d798170e5b09",
+      "zonesEmpty": true,
+      "roundTrip": true,
+      "identical": true
+    },
+    {
+      "seed": 4,
+      "finalTick": 482314,
+      "b2FinalTick": 482314,
+      "rawSha256": "5a315d26f8e914605e898d3e6eb6032f6ae440b62dfdc6a7c61afe7cc02d1eba",
+      "strippedSha256": "d73db5b6bf447c9a80dfaa1c5e27cbf5af93c266a2536f901b51c763ed5d64a0",
+      "b2FinalStateSha256": "d73db5b6bf447c9a80dfaa1c5e27cbf5af93c266a2536f901b51c763ed5d64a0",
+      "zonesEmpty": true,
+      "roundTrip": true,
+      "identical": true
+    },
+    {
+      "seed": 5,
+      "finalTick": 527422,
+      "b2FinalTick": 527422,
+      "rawSha256": "170434f54a208e9faca5e3f158aa06e3a09fe30782a95d93ef2e5d3000948588",
+      "strippedSha256": "6362b4288c0f105ab1844fd31cbfd55bc298eecabadd4453fa3010af6bc81be6",
+      "b2FinalStateSha256": "6362b4288c0f105ab1844fd31cbfd55bc298eecabadd4453fa3010af6bc81be6",
+      "zonesEmpty": true,
+      "roundTrip": true,
+      "identical": true
+    }
+  ],
+  "passed": true,
+  "run": {
+    "command": "scripts/efficientGrowthRun.ts 24 1200000 <out>/seed-N N (N=1..5, parallel)",
+    "codeCommit": "693708ca73bd4cd97e02dad8a7e01ece155ad3a1 (snapshot; src differs from 80144a9 only in src/zones/parcels.ts junction weight and a comment)",
+    "elapsedSeconds": {
+      "1": 1286,
+      "2": 871,
+      "3": 1102,
+      "4": 973,
+      "5": 923
+    },
+    "rawStatesKept": "/tmp/fls-b5-hash-out (local, not committed)"
+  }
+}
