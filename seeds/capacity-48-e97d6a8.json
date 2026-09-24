@@ -1,0 +1,764 @@
+{
+  "sourceCommit": "e97d6a81c68255c5727d2ef03d13aad386be7f5d",
+  "classification": "48-lot-cap-measurement-not-default-policy",
+  "records": [
+    {
+      "source": {
+        "commit": "e97d6a81c68255c5727d2ef03d13aad386be7f5d",
+        "dirty": false
+      },
+      "classification": "state-record-only-no-acceptance-judgment",
+      "seed": 1,
+      "targetLots": 48,
+      "maxTicks": 1200000,
+      "wallTimeLimitMs": 1500000,
+      "elapsedMs": 1500078.3705830001,
+      "stopReason": "wall-time-budget",
+      "exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      },
+      "finalTick": 152160,
+      "stateSemantics": "last-decision-input",
+      "metrics": {
+        "opening": {
+          "mode": "translated-verification-fixture",
+          "offset": {
+            "tx": 0,
+            "ty": 0
+          },
+          "selection": "minimum Manhattan offset, then dy, then dx; zero when legal",
+          "productSeedFeature": false
+        },
+        "snapshot": {
+          "tick": 152160,
+          "era": "palisade",
+          "houses": 48,
+          "lots": 48,
+          "occupiedHouses": 48,
+          "population": 848,
+          "capacity": 858,
+          "idleWorkers": 273,
+          "l4Houses": 0,
+          "constructionSites": 42,
+          "bread": 252,
+          "minimumHouseBread": 0,
+          "occupiedBreadZeroHouses": 8,
+          "services": {
+            "water": {
+              "served": 48,
+              "missing": 0,
+              "outside": 0,
+              "understaffed": 0,
+              "unreachable": 0,
+              "capacity": 0
+            },
+            "market": {
+              "served": 33,
+              "missing": 0,
+              "outside": 15,
+              "understaffed": 0,
+              "unreachable": 0,
+              "capacity": 0
+            },
+            "church": {
+              "served": 0,
+              "missing": 48,
+              "outside": 0,
+              "understaffed": 0,
+              "unreachable": 0,
+              "capacity": 0
+            }
+          },
+          "providers": [
+            {
+              "id": "construction-site-000013",
+              "service": "water",
+              "capacity": 12,
+              "used": 5,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000023",
+              "service": "water",
+              "capacity": 12,
+              "used": 5,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000035",
+              "service": "water",
+              "capacity": 12,
+              "used": 10,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000044",
+              "service": "water",
+              "capacity": 12,
+              "used": 1,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000049",
+              "service": "water",
+              "capacity": 12,
+              "used": 3,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000060",
+              "service": "water",
+              "capacity": 12,
+              "used": 6,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000068",
+              "service": "water",
+              "capacity": 12,
+              "used": 1,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000079",
+              "service": "water",
+              "capacity": 12,
+              "used": 6,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000097",
+              "service": "water",
+              "capacity": 12,
+              "used": 3,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "well-45-41-0",
+              "service": "water",
+              "capacity": 12,
+              "used": 8,
+              "workers": 0,
+              "requiredWorkers": 0
+            },
+            {
+              "id": "construction-site-000091",
+              "service": "market",
+              "capacity": 24,
+              "used": 13,
+              "workers": 3,
+              "requiredWorkers": 3
+            },
+            {
+              "id": "construction-site-000094",
+              "service": "market",
+              "capacity": 24,
+              "used": 20,
+              "workers": 3,
+              "requiredWorkers": 3
+            }
+          ],
+          "buildingCounts": {
+            "house": 48,
+            "well": 10,
+            "granary": 7,
+            "logging_camp": 1,
+            "storehouse": 3,
+            "sawmill": 1,
+            "wheat_farm": 25,
+            "mill": 10,
+            "chapel": 1,
+            "market": 2
+          },
+          "outcome": "ongoing"
+        },
+        "density": {
+          "buildings": 108,
+          "lots": 48,
+          "buildingsPerLot": 2.25,
+          "wallInterior": {
+            "tileCount": 630,
+            "farmTiles": 100,
+            "emptyLandTiles": 149,
+            "farmAreaRatio": 0.15873015873015872,
+            "emptyLandRatio": 0.2365079365079365,
+            "shareOfFarmAreaInside": 1,
+            "completedSegments": 2,
+            "totalSegments": 44,
+            "definition": "Tile centers inside proclaimed polygon, including unfinished walls; empty means grass without road, building or building construction footprint. Geometric area only, not proof that a footprint is legally buildable."
+          }
+        },
+        "stability": {
+          "stableSince": null,
+          "sustainedTicks": 0,
+          "interruptions": 0,
+          "complete": false
+        },
+        "timing": {
+          "tickCount": 152160,
+          "meanTickMs": 4.959770519137645,
+          "recentTicks": {
+            "count": 240,
+            "p50Ms": 10.000207999954,
+            "p95Ms": 18.536667000036687,
+            "maxMs": 58.77191699994728
+          },
+          "recentDecisions": {
+            "count": 240,
+            "p50Ms": 60.99520900007337,
+            "p95Ms": 10182.596000000136,
+            "maxMs": 50993.955541
+          },
+          "note": "Instrumentation and concurrent host load included; not a performance gate."
+        }
+      },
+      "lastDiagnostic": {
+        "schemaVersion": 1,
+        "tick": 152160,
+        "food": {
+          "schemaVersion": 1,
+          "tick": 152160,
+          "reached": true,
+          "reason": "active_observation",
+          "action": {
+            "kind": "none",
+            "foodTransient": "not_evaluated"
+          },
+          "checks": [],
+          "details": "not_captured",
+          "evaluation": {
+            "transitionRepeat": "not_evaluated",
+            "transitionStaff": "not_evaluated",
+            "buildRepeat": "not_evaluated",
+            "buildStaff": "not_evaluated"
+          },
+          "observation": {
+            "kind": "wheat_farm",
+            "siteId": "construction-site-000101",
+            "placedTick": 148560,
+            "completedTick": 150153,
+            "observeUntilTick": 152553,
+            "outcome": {
+              "outputDelta": 50,
+              "deliveredBreadDelta": 0,
+              "starvingHomesDelta": 0,
+              "effective": false,
+              "deliveredWheatDelta": 44
+            }
+          },
+          "counts": {
+            "wheat": 25,
+            "mill": 10,
+            "granary": 7,
+            "target": 1
+          }
+        },
+        "services": [],
+        "advisorAction": {
+          "kind": "none",
+          "foodTransient": "not_evaluated"
+        },
+        "gameActionType": null,
+        "result": "no_action",
+        "newSiteIds": []
+      },
+      "slowDecisions": [
+        {
+          "tick": 76920,
+          "inputFile": "slow-decision-76920-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 37213.63229200001,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceRoutes.ts\",\"line\":1,\"column\":2915}",
+            "{\"function\":\"potentialServiceRoads\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceRoutes.ts\",\"line\":1,\"column\":2885}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3519}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5610}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 91200,
+          "inputFile": "slow-decision-91200-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 43546.35399999999,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"buildingFootprint\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/geometry/buildingFootprint.ts\",\"line\":1,\"column\":227}",
+            "{\"function\":\"buildingFootprintDistance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/geometry/buildingDistance.ts\",\"line\":1,\"column\":492}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":1837}",
+            "{\"function\":\"candidates\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":1811}",
+            "{\"function\":\"search\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4029}",
+            "{\"function\":\"plan\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4524}",
+            "{\"function\":\"findBudgetedServicePlan\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4582}",
+            "{\"function\":\"budgetFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3295}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":5830}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5610}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 91440,
+          "inputFile": "slow-decision-91440-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 17133.05604200001,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4065}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":4578}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"serviceSafeRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":6263}",
+            "{\"function\":\"searchRoad\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":2804}",
+            "{\"function\":\"roadActionToTargets\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":1631}",
+            "{\"function\":\"foodEntranceBuildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodEntrance.ts\",\"line\":1,\"column\":2790}",
+            "{\"function\":\"foodBuildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":3594}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":3840}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 91560,
+          "inputFile": "slow-decision-91560-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 34149.36025,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":2050}",
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4089}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3575}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"serviceSafeRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":6263}",
+            "{\"function\":\"searchRoad\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":2804}",
+            "{\"function\":\"roadActionToTargets\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":1631}",
+            "{\"function\":\"plannedBuildingRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":3557}",
+            "{\"function\":\"projectGranaryAccess\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":3175}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5772}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 96000,
+          "inputFile": "slow-decision-96000-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 25353.687959000003,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceRoutes.ts\",\"line\":1,\"column\":2943}",
+            "{\"function\":\"potentialServiceRoads\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceRoutes.ts\",\"line\":1,\"column\":2885}",
+            "{\"function\":\"allocatedMask\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":2997}",
+            "{\"function\":\"plan\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":3523}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4608}",
+            "{\"function\":\"search\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":3767}",
+            "{\"function\":\"search\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4429}",
+            "{\"function\":\"search\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4429}",
+            "{\"function\":\"search\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4429}",
+            "{\"function\":\"plan\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4524}",
+            "{\"function\":\"findBudgetedServicePlan\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceBudget.ts\",\"line\":1,\"column\":4582}",
+            "{\"function\":\"budgetFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3295}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":5830}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5610}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 99960,
+          "inputFile": "slow-decision-99960-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 19784.551582999993,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"canTraverseRoadBoundary\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/bridges.ts\",\"line\":1,\"column\":1297}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1161}",
+            "{\"function\":\"getOrthogonalRoadNeighbors\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1102}",
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1996}",
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4089}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3429}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"serviceSafeRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":6263}",
+            "{\"function\":\"searchRoad\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":2804}",
+            "{\"function\":\"roadActionToTargets\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":1631}",
+            "{\"function\":\"foodEntranceBuildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodEntrance.ts\",\"line\":1,\"column\":2790}",
+            "{\"function\":\"foodBuildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":3594}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":3840}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 113880,
+          "inputFile": "slow-decision-113880-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 33363.006082999986,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceRoutes.ts\",\"line\":1,\"column\":2943}",
+            "{\"function\":\"potentialServiceRoads\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceRoutes.ts\",\"line\":1,\"column\":2885}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2693}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":4578}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5610}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 114000,
+          "inputFile": "slow-decision-114000-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 13464.132209000003,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4065}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3429}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5610}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 125040,
+          "inputFile": "slow-decision-125040-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 13712.395625000005,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"canTraverseRoadBoundary\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/bridges.ts\",\"line\":1,\"column\":1297}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1161}",
+            "{\"function\":\"getOrthogonalRoadNeighbors\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1102}",
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1996}",
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4089}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3429}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"buildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":7469}",
+            "{\"function\":\"housingAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":9417}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11068}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 127440,
+          "inputFile": "slow-decision-127440-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 14253.637624999974,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1934}",
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4089}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3429}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"buildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":7469}",
+            "{\"function\":\"housingAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":9417}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11068}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 128280,
+          "inputFile": "slow-decision-128280-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 50898.18754199997,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":3873}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3575}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"serviceSafeRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":6263}",
+            "{\"function\":\"searchRoad\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":2804}",
+            "{\"function\":\"roadActionToTargets\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":1631}",
+            "{\"function\":\"plannedBuildingRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":3557}",
+            "{\"function\":\"projectGranaryAccess\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":3175}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5772}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 128400,
+          "inputFile": "slow-decision-128400-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 19983.391249999986,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4131}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":4578}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"foodCoverageAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodCoverage.ts\",\"line\":1,\"column\":5610}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":2737}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 129720,
+          "inputFile": "slow-decision-129720-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 17181.876541999984,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4065}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3429}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"buildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":7469}",
+            "{\"function\":\"housingAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":9417}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11068}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 129840,
+          "inputFile": "slow-decision-129840-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 16037.568666999927,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"canTraverseRoadBoundary\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/bridges.ts\",\"line\":1,\"column\":1297}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1161}",
+            "{\"function\":\"getOrthogonalRoadNeighbors\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1102}",
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1996}",
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4089}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":4578}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"buildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":7469}",
+            "{\"function\":\"housingAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":9417}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11068}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 133920,
+          "inputFile": "slow-decision-133920-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 14628.254791999934,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1974}",
+            "{\"function\":\"labelRoadComponents\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":4089}",
+            "{\"function\":\"marketRoadService\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/marketService.ts\",\"line\":1,\"column\":260}",
+            "{\"function\":\"allocationForHome\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2384}",
+            "{\"function\":\"jointlyServed\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":2743}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":3429}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"buildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":7469}",
+            "{\"function\":\"housingAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":9417}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11068}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 134520,
+          "inputFile": "slow-decision-134520-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 20427.392541000037,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"intersects\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/wallTraversal.ts\",\"line\":1,\"column\":590}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/wallTraversal.ts\",\"line\":1,\"column\":3227}",
+            "{\"function\":\"canTraverseWallBoundary\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/wallTraversal.ts\",\"line\":1,\"column\":3207}",
+            "{\"function\":\"canTraverseRoadBoundary\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/bridges.ts\",\"line\":1,\"column\":1301}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1161}",
+            "{\"function\":\"getOrthogonalRoadNeighbors\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1102}",
+            "{\"function\":\"existingRoadComponent\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/roadGraph.ts\",\"line\":1,\"column\":1996}",
+            "{\"function\":\"reached\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeExteriorGate.ts\",\"line\":1,\"column\":1695}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeExteriorGate.ts\",\"line\":1,\"column\":1994}",
+            "{\"function\":\"gatesForExteriorAccess\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeExteriorGate.ts\",\"line\":1,\"column\":1966}",
+            "{\"function\":\"additionalRoadGates\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeGates.ts\",\"line\":1,\"column\":3225}",
+            "{\"function\":\"projectPalisadeProclamation\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisade.ts\",\"line\":1,\"column\":6348}",
+            "{\"function\":\"confirmPalisadeProclamation\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisade.ts\",\"line\":1,\"column\":5687}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayEra.ts\",\"line\":1,\"column\":1049}",
+            "{\"function\":\"accepted\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeRouteAccess.ts\",\"line\":1,\"column\":6200}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeFootprints.ts\",\"line\":1,\"column\":6383}",
+            "{\"function\":\"computePalisadeProposalForState\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeFootprints.ts\",\"line\":1,\"column\":6346}",
+            "{\"function\":\"computeReachablePalisadeProposalForState\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/palisadeRouteAccess.ts\",\"line\":1,\"column\":6392}",
+            "{\"function\":\"autoplayEraAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayEra.ts\",\"line\":1,\"column\":979}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11166}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 135120,
+          "inputFile": "slow-decision-135120-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 35257.577708999976,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"palisadePathHasBuildingClearance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/palisadeGeometry.ts\",\"line\":1,\"column\":5197}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/placement.ts\",\"line\":1,\"column\":2790}",
+            "{\"function\":\"hasBuildingWallClearance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/placement.ts\",\"line\":1,\"column\":2775}",
+            "{\"function\":\"hasAutoplayBuildingClearance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplaySetback.ts\",\"line\":1,\"column\":637}",
+            "{\"function\":\"candidatePads\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":1739}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":4213}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":4960}",
+            "{\"function\":\"serviceSafeRoadAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":6263}",
+            "{\"function\":\"searchRoad\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":2804}",
+            "{\"function\":\"roadActionToTargets\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayConstructionRoads.ts\",\"line\":1,\"column\":1631}",
+            "{\"function\":\"foodEntranceBuildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFoodEntrance.ts\",\"line\":1,\"column\":2790}",
+            "{\"function\":\"foodBuildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":3594}",
+            "{\"function\":\"foodAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayFood.ts\",\"line\":1,\"column\":3840}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11023}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 141720,
+          "inputFile": "slow-decision-141720-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 11842.985250000027,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"palisadePathHasBuildingClearance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/palisadeGeometry.ts\",\"line\":1,\"column\":5197}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/placement.ts\",\"line\":1,\"column\":2979}",
+            "{\"function\":\"hasBuildingWallClearance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/world/placement.ts\",\"line\":1,\"column\":2899}",
+            "{\"function\":\"hasAutoplayBuildingClearance\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplaySetback.ts\",\"line\":1,\"column\":637}",
+            "{\"function\":\"candidatePads\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":1739}",
+            "{\"function\":\"findAutoplayServiceWitness\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpaceWitness.ts\",\"line\":1,\"column\":4123}",
+            "{\"function\":\"witnessFor\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":3506}",
+            "{\"function\":\"preservesAutoplayServiceSpace\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplayServiceSpace.ts\",\"line\":1,\"column\":5268}",
+            "{\"function\":\"findBuildSite\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":3984}",
+            "{\"function\":\"buildAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":6734}",
+            "{\"function\":\"housingAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":9417}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11068}",
+            "{\"function\":\"decideNextAction\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/autoplay.ts\",\"line\":1,\"column\":11218}",
+            "{\"function\":\"apply\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/economyHarnessAutoplay.ts\",\"line\":1,\"column\":1647}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2426}"
+          ]
+        },
+        {
+          "tick": 142200,
+          "inputFile": "slow-decision-142200-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 10381.987916999962,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionReserve.ts\",\"line\":1,\"column\":2940}",
+            "{\"function\":\"wallReserveHeld\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionReserve.ts\",\"line\":1,\"column\":2921}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionLifecycle.ts\",\"line\":1,\"column\":1788}",
+            "{\"function\":\"recomputeConstructionStalls\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionLifecycle.ts\",\"line\":1,\"column\":1624}",
+            "{\"function\":\"advanceSimulationSubstep\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/tick.ts\",\"line\":1,\"column\":6748}",
+            "{\"function\":\"advanceTick\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/tick.ts\",\"line\":1,\"column\":8122}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2705}",
+            "{\"function\":\"processTicksAndRejections\",\"url\":\"node:internal/process/task_queues\",\"line\":104,\"column\":5}"
+          ]
+        },
+        {
+          "tick": 143280,
+          "inputFile": "slow-decision-143280-input.json.gz",
+          "thresholdMs": 10000,
+          "elapsedMs": 10409.937209000112,
+          "finished": true,
+          "stack": [
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionReserve.ts\",\"line\":1,\"column\":2940}",
+            "{\"function\":\"wallReserveHeld\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionReserve.ts\",\"line\":1,\"column\":2921}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionLifecycle.ts\",\"line\":1,\"column\":1788}",
+            "{\"function\":\"recomputeConstructionStalls\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/constructionLifecycle.ts\",\"line\":1,\"column\":1624}",
+            "{\"function\":\"advanceSimulationSubstep\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/tick.ts\",\"line\":1,\"column\":6748}",
+            "{\"function\":\"advanceTick\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/src/engine/tick.ts\",\"line\":1,\"column\":8122}",
+            "{\"function\":\"\",\"url\":\"file:///Users/rexxa/github/feudal-lord-simulator-playable/scripts/growthStateRecordWorker.ts\",\"line\":1,\"column\":2705}",
+            "{\"function\":\"processTicksAndRejections\",\"url\":\"node:internal/process/task_queues\",\"line\":104,\"column\":5}"
+          ]
+        }
+      ],
+      "inputContract": "Unmodified createGrowthOpening(seed), original createAutoplayTraceDriver and advanceTick. Parent watchdog preserves last received pre-decision input if interrupted; in-progress changes are not presented as completed ticks.",
+      "recordDirectory": "output/trunk-baseline/records/48-seed1"
+    }
+  ]
+}
