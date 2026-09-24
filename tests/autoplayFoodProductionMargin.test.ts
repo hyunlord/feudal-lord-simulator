@@ -4,17 +4,19 @@ import { BALANCE } from '../src/content/balanceConfig';
 import { foodEfficiencyMetrics, FOOD_EFFICIENCY_WINDOW, recordFoodEfficiency, type FoodEfficiencyTotals } from '../src/engine/autoplayFoodEfficiency';
 import { advanceFoodFlow } from '../src/engine/autoplayFoodFlow';
 import { measuredFoodDecision } from '../src/engine/autoplayFoodMeasuredDecision';
+import { foodAction } from '../src/engine/autoplayFood';
+import { foodFacilityWithinLimit } from '../src/engine/autoplayFoodLimits';
 import type { GameState } from '../src/engine/engine.types';
-import { routedStockTown } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown } from './helpers/autoplayFoodFixtures';
 
 const REQUIRED_MARGIN_FACTOR = BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR;
 
-function observeFoodMargin(totals: FoodEfficiencyTotals): GameState {
+function observeFoodMargin(totals: FoodEfficiencyTotals, extraFarm = false): GameState {
   const base = routedStockTown(true);
   let state: GameState = {
     ...base,
     houses: base.houses.map(house => ({ ...house, breadStock: 8, emptyFoodTicks: 0 })),
-    buildings: base.buildings.map(building => building.kind === 'granary'
+    buildings: [...base.buildings, ...(extraFarm ? [building('farm-2', 'wheat_farm', 9, 2, 4)] : [])].map(building => building.kind === 'granary'
       ? { ...building, inventory: { bread: 80, wheat: 80 } }
       : building.kind === 'mill'
         ? { ...building, inventory: { wheat: 8 } }
@@ -106,6 +108,23 @@ test('a wheat margin warning chooses mill capacity when stocked mills are the im
     breadExported: 0,
     rawStarvedTicks: 1300,
     eligibleMillTicks: 12000,
-  });
+  }, true);
   assert.deepEqual(measuredFoodDecision(state), { kind: 'mill', reason: 'actual_bread_deficit' });
+});
+
+test('the food advisor falls through to a farm when the measured mill bottleneck meets the mill limit', () => {
+  const state = observeFoodMargin({
+    wheatProduced: 726,
+    wheatConsumed: 722,
+    breadProduced: 361,
+    requestedBread: 375,
+    consumedBread: 362,
+    wheatExported: 5,
+    breadExported: 0,
+    rawStarvedTicks: 1300,
+    eligibleMillTicks: 12000,
+  });
+  assert.equal(foodFacilityWithinLimit(state, 'mill'), false);
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+  assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'place_building', building: 'wheat_farm', tx: 0, ty: 0 });
 });

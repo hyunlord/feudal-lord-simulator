@@ -5,6 +5,7 @@ import { productionOperation } from '../economy/production';
 import { availableStock } from '../economy/storage';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
+import { foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { feasibleDistributorDistance } from './distributorAccess';
 import { resolveBuildingRoute } from './routing';
 import type { GameState } from './engine.types';
@@ -63,6 +64,7 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
   }
   const mills = facilities.filter(b => b.kind === 'mill');
   const bufferedMillDeficit = wheatMarginDeficit && sample.wheatProduced >= sample.wheatConsumed && breadDeficit > 0
+    && foodFacilityWithinLimit(state, 'mill')
     && sample.eligibleMillTicks > 0 && sample.rawStarvedTicks / sample.eligibleMillTicks < 0.2
     && mills.length > 0 && mills.every(b => (b.inventory.wheat ?? 0) > 0)
     && stockedWheat >= Math.max(0, sample.wheatConsumed * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR - sample.wheatProduced, rawDeficit);
