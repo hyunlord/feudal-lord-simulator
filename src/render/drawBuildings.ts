@@ -1,4 +1,6 @@
 import { outlinesOccludingBuilding } from "./selectionOcclusion";
+import { drawBuildingContactShadowV2 } from "./buildingContactShadow";
+import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { drawHouseCompoundSprite } from "./houseCompoundAssets";
 import { drawHistoricalHouse } from "./historicalHouseAssets";
 import { drawHistoricalFacility } from "./historicalFacilityAssets";
@@ -120,6 +122,8 @@ function drawBuilding(
     } else drawBuildingSilhouette(context, building, input.zoom);
     return;
   }
+  // Curved ground (C1d): the contact shadow sits directly under the body, drawn here rather than baked into the ground.
+  if (boundaryV2Enabled()) drawBuildingContactShadowV2(context, building);
   drawBuildingDetail(context, input, building, spriteOptions);
 }
 

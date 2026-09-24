@@ -15,7 +15,7 @@ export const ZONE_BRUSH_COPY = {
   polygonToggle: "다각형",
   polygonToggleHint: "클릭으로 꼭짓점, 더블클릭으로 닫기 (Shift)",
   radius: (tiles: number) => `붓 ${tiles}칸`,
-  radiusHint: "휠 또는 [ ] 키로 붓 크기 1~3칸",
+  radiusHint: "[ ] 키 또는 버튼으로 붓 크기 1~3칸 · 휠은 확대",
   status: (label: string) => `드래그하여 ${label} 구역을 칠하세요 · Shift 다각형 · Esc 취소`,
   eraserStatus: "드래그하여 구역을 지우세요 · Esc 취소",
   polygonStatus: (label: string, points: number) => `${label} 다각형 꼭짓점 ${points}개 · 더블클릭으로 닫기 · Esc 취소`,
@@ -28,4 +28,5 @@ export const ZONE_BRUSH_COPY = {
   outsideArable: "경작지 구역 밖입니다 — 경작지 구역 안에 지으세요",
   outsideZone: "구역 밖입니다",
   arableInsideWall: "성내 경작지 금지 — 밀밭은 성벽 밖 경작지에 지으세요",
+  noRoadAccessCells: (cells: number) => `도로 접근 없는 칸 ${cells} — 밀밭을 지으려면 도로가 닿아야 합니다`,
 } as const;

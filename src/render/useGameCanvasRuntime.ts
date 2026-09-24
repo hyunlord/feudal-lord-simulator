@@ -4,7 +4,7 @@ import { cancelRoadPreview } from "./cancelRoadPreview";
 import { createPredictionPublisher } from "./placementPredictionRuntime";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { useEffect, useRef } from "react";
-import { bindZoneTouch, createZoneBrushContext, zoneBrushView, zoneCancel, zoneKeyDown, zoneMouseDown, zoneMouseMove, zoneMouseUp, zoneWheel } from "./canvasZoneBrushRuntime";
+import { bindZoneTouch, createZoneBrushContext, zoneBrushView, zoneCancel, zoneKeyDown, zoneMouseDown, zoneMouseMove, zoneMouseUp } from "./canvasZoneBrushRuntime";
 
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
 import { cameraAfterViewportResize, initialCamera, resizeCanvas } from "./canvasRuntime";
@@ -24,6 +24,7 @@ import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { toggleObjectRenderViewMode } from "./objectRenderViewMode";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
+import { setGroundSceneZoneDeferral } from "./groundBoundaryScene";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
 import { advanceCameraMotion, cameraInputKeyDown, cameraInputKeyUp, createCameraInputState, resetCameraInputState, shouldAdvanceCameraMotion, updateCameraEdgePoint } from "./gameCanvasRuntimeInput";
 
@@ -185,7 +186,6 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (cancelRoadPreview(refs)) event.preventDefault(); else defaultContextMenu(event);
     };
     const wheel = (event: WheelEvent) => {
-      if (zoneWheel(zoneContext, event)) return;
       event.preventDefault();
       userControlledCamera = true;
       refs.cameraRef.current = zoomAtPoint({
@@ -245,10 +245,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       canvas,
       handlers: { resize, keyDown, keyUp, blurWindow, startDrag, movePointer, leaveCanvas, clickCanvas, contextMenuCanvas, wheel, finishDrag },
     });
-    const disposeZoneTouch = bindZoneTouch(canvas, zoneContext);
+    const disposeZoneTouch = bindZoneTouch(canvas, zoneContext); setGroundSceneZoneDeferral(true);
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      disposeZoneTouch();
+      disposeZoneTouch(); setGroundSceneZoneDeferral(false);
       cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeMinimapJump(); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction]);

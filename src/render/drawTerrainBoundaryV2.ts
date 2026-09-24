@@ -5,13 +5,14 @@ import { drawBridgeDeck } from "./drawBridges";
 import { drawFieldClusters, drawForestFill, drawForestFringeDecals } from "./drawGroundBoundaries";
 import { drawRoadRibbons } from "./drawRoadRibbons";
 import { drawZoneFills, drawZoneLines } from "./drawZones";
+import { clipOutYards, drawAprons, drawYards } from "./drawBuildingGrounds";
 import { preloadZoneAssets, zoneAssetReadiness } from "./zoneAssets";
 import { drawGroundDecalDetail } from "./drawTerrainDetails";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawHistoricalWater } from "./drawWater";
 import { farmSoilReadiness, preloadFarmAssets } from "./farmAssets";
 import { createGroundChunkCache, groundChunkZoomBucket, type ChunkRasterRequest, type GroundChunkCache } from "./groundChunkCache";
-import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
+import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundSceneFrameStart, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { tileToScreen } from "./iso";
 import { renderStageProbe } from "./renderStageProbe";
@@ -21,9 +22,11 @@ import { drawTownLandscape } from "./townLandscapeAssets";
 import { getSprite } from "./worldAssets";
 
 // RENDER_BOUNDARY_V2 ground pass. Order: water (live) -> ground chunks (diamonds, seams, forest outline + fringe,
-// field clusters) -> town landscape + frontage (live) -> road-ribbon chunks -> bridge decks (live) -> grounding
-// shadows (live). Shadows stay live: they follow tree harvests, house levels and art loading, which the chunk key
-// deliberately leaves out (they cost ~1 ms on the B11 baseline).
+// zone fills, building yards, field clusters, zone lines, building aprons) -> town landscape (live) -> road-ribbon
+// chunks -> bridge decks (live) -> tree and stump grounding shadows (live). Shadows stay live: they follow tree
+// harvests and art loading, which the chunk key deliberately leaves out (they cost ~1 ms on the B11 baseline).
+// C1d: yards and aprons replace the live building frontage pads and paths, and a building's contact shadow moved to
+// the object pass (drawn just before the building, directly under its body), so demolishing it removes it at once.
 
 export type TerrainV2Input = {
   readonly state: GameState;
@@ -35,7 +38,6 @@ export type TerrainV2Input = {
 
 export type TerrainV2Parts = {
   readonly drawGroundDiamond: (context: CanvasRenderingContext2D, tile: Tile, seed: number, patterns: TerrainPatternAssets | undefined) => void;
-  readonly drawFrontage: (context: CanvasRenderingContext2D) => void;
   readonly drawGrounding: (context: CanvasRenderingContext2D) => void;
 };
 
@@ -81,20 +83,24 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const scene = groundBoundaryScene(input.state);
   if (scene.zones.zones.length > 0) void preloadZoneAssets();
   const cache = groundChunkCacheFor(context);
-  cache.beginFrame();
+  cache.beginFrame(groundSceneFrameStart());
   const transform = typeof context.getTransform === "function" ? context.getTransform() : null;
   const dpr = transform === null || input.zoom <= 0 ? 1 : Math.hypot(transform.a, transform.b) / input.zoom;
   const zoom = groundChunkZoomBucket(input.zoom);
   const scale = zoom * dpr;
   const readiness = `${boundaryAssetReadiness()}:${TERRAIN_TEXTURE_KEYS.map(key => getSprite(key) === null ? 0 : 1).join("")}`
-    + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`
-    // Zone art readiness only where zones are drawn (a zone-free chunk keeps its D1a key).
-    + (scene.zones.zones.length > 0 ? `:z${zoneAssetReadiness()}` : "");
+    + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`;
+  // Zone art readiness only in chunks that draw zones (a zone-free chunk keeps its D1a key), and never in the road
+  // chunks, which draw no zone art (C1d: the first painted zone no longer re-rasters every other chunk).
+  const zoneReadiness = scene.zones.zones.length > 0 ? `:z${zoneAssetReadiness()}` : "";
+  const groundReadiness = (plan: GroundChunkPlan): string => plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness;
   const visible = visibleChunks(scene, input.range);
-  const groundRequest = (plan: GroundChunkPlan) => ({
-    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${readiness}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
+  const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
+    // Same ground base = the chunk only changed its zones: its old raster may stand in until the frame budget allows.
+    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}`,
   });
-  const roadRequest = (plan: GroundChunkPlan) => ({
+  const roadRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
     id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
   });
   for (const plan of visible) {
@@ -106,8 +112,6 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   ]));
   probe?.enter("terrain.landscape");
   drawTownLandscape(context, input.state, input.tiles);
-  probe?.enter("terrain.frontage");
-  parts.drawFrontage(context);
   probe?.enter("roads.ground");
   for (const plan of visible) {
     if (plan.hasRoads) cache.draw(context, roadRequest(plan), paint => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan));
@@ -142,9 +146,19 @@ function drawGroundChunk(
     left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4,
   }, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops);
-  if (plan.zoneIndexes.length > 0) drawZoneFills(context, scene.zones, plan.zoneIndexes);
+  if (plan.zoneIndexes.length > 0) {
+    // A plot's tone stops at a yard: the yard is its own trodden ground.
+    context.save();
+    if (plan.yards.length > 0) clipOutYards(context, scene.grounds, plan.yards, [
+      { x: bounds.left - 4, y: bounds.top - 4 }, { x: bounds.right + 4, y: bounds.top - 4 },
+      { x: bounds.right + 4, y: bounds.bottom + 4 }, { x: bounds.left - 4, y: bounds.bottom + 4 }]);
+    drawZoneFills(context, scene.zones, plan.zoneIndexes);
+    context.restore();
+  }
+  drawYards(context, scene.grounds, plan.yards, input.state.seed);
   drawFieldClusters(context, scene.fields, plan.fieldClusters);
   if (plan.zoneIndexes.length + plan.zoneChains.length > 0) drawZoneLines(context, scene.zones, plan.zoneChains, bounds, zoom);
+  drawAprons(context, scene.grounds, plan.aprons, scene.ribbons.width);
 }
 
 function chunkTiles(state: GameState, plan: GroundChunkPlan, ring: number): Tile[] {

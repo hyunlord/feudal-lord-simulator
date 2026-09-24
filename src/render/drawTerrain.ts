@@ -61,8 +61,7 @@ export function drawTerrain(
   input: TerrainRenderInput,
 ): void {
   if (boundaryV2Enabled()) {
-    drawTerrainBoundaryV2(context, input, { drawGroundDiamond, drawFrontage: paint => drawTerrainFrontage(paint, input),
-      drawGrounding: paint => drawObjectGrounding(paint, input) });
+    drawTerrainBoundaryV2(context, input, { drawGroundDiamond, drawGrounding: paint => drawObjectGrounding(paint, input, false) });
     return;
   }
   const probe = renderStageProbe.current;
@@ -110,6 +109,7 @@ function drawTerrainFrontage(context: CanvasRenderingContext2D, input: TerrainRe
 function drawObjectGrounding(
   context: CanvasRenderingContext2D,
   input: TerrainRenderInput,
+  includeBuildings = true,
 ): void {
   for (const item of input.objectRenderItems ?? []) {
     if (item.kind === "tree") {
@@ -131,7 +131,7 @@ function drawObjectGrounding(
         baseRadiusX: 8,
         baseRadiusY: 3,
       });
-    } else if (item.kind === "building") {
+    } else if (item.kind === "building" && includeBuildings) {
       const config = buildingFootprint(item.building);
       const center = buildingCenter(item);
       const visualState = buildBuildingVisualState(item.building, input.state.houses);

@@ -11,7 +11,8 @@ import { polylineLength, type RoadCenterlineGraph, type RoadChain, type RoadFixe
 //  - Portal caps: a one-tile rut-free threshold at each bridge deck start and gate crossing.
 //  - Shoulder breakup (C07): grass tufts scattered along both ribbon edges, 1..1.5 tiles apart with separate seeds
 //    per side (so the two edges never repeat in phase), size +-10%, and no two tufts of the same variant within
-//    SHOULDER_REPEAT_RADIUS tiles (deterministic near rejection, research 6).
+//    SHOULDER_REPEAT_RADIUS tiles (deterministic near rejection, research 6). Tufts skip `keepOut` ground (C1d:
+//    building aprons), which is decided before the variant pass, so the rest keep their near-rejection order.
 
 export const JUNCTION_REACH = 0.5;
 export const SHOULDER_SPACING_MIN = 1;
@@ -69,6 +70,8 @@ export type RibbonLayoutInput = {
   /** Indexed by ty * mapWidth + tx. */
   readonly cells: readonly (Tile | undefined)[];
   readonly seed: number;
+  /** Ground a shoulder tuft must not stand on (C1d: building aprons, so the apron meets the ribbon cleanly). */
+  readonly keepOut?: (point: BoundaryPoint) => boolean;
 };
 
 export function roadRibbonLayout(input: RibbonLayoutInput): RoadRibbonLayout {
@@ -166,7 +169,7 @@ export function roadRibbonLayout(input: RibbonLayoutInput): RoadRibbonLayout {
         const normal = { x: -at.tangent.y * side, y: at.tangent.x * side };
         const anchor = { x: at.point.x + normal.x * width / 2 * EDGE_INSET, y: at.point.y + normal.y * width / 2 * EDGE_INSET };
         const probe = { x: at.point.x + normal.x * (width / 2 + OUTWARD_PROBE), y: at.point.y + normal.y * (width / 2 + OUTWARD_PROBE) };
-        if (free(probe)) found.push({ owner: { chain: chainIndex }, anchor, side, arc, hash: boundaryHash(stream, step, 5) });
+        if (free(probe) && input.keepOut?.(anchor) !== true) found.push({ owner: { chain: chainIndex }, anchor, side, arc, hash: boundaryHash(stream, step, 5) });
         step += 1;
         arc += SHOULDER_SPACING_MIN + (SHOULDER_SPACING_MAX - SHOULDER_SPACING_MIN) * unitHash(stream, step);
       }
@@ -178,7 +181,7 @@ export function roadRibbonLayout(input: RibbonLayoutInput): RoadRibbonLayout {
     if (cap === null || cap === undefined || cap.direction === null) return;
     const tip = { x: cap.centre.x + cap.direction.x * width / 2, y: cap.centre.y + cap.direction.y * width / 2 };
     const probe = { x: cap.centre.x + cap.direction.x * (width / 2 + OUTWARD_PROBE), y: cap.centre.y + cap.direction.y * (width / 2 + OUTWARD_PROBE) };
-    if (free(probe)) candidates.push({ owner: { fixed: fixedIndex }, anchor: tip, side: 1, arc: 0, hash: boundaryHash(point.ty * input.mapWidth + point.tx, input.seed, 31) });
+    if (free(probe) && input.keepOut?.(tip) !== true) candidates.push({ owner: { fixed: fixedIndex }, anchor: tip, side: 1, arc: 0, hash: boundaryHash(point.ty * input.mapWidth + point.tx, input.seed, 31) });
   });
 
   const placed = new Map<string, ShoulderDecal[]>();

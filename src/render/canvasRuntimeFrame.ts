@@ -16,6 +16,7 @@ import { zoneBrushPreview } from "./zoneBrushOverlay";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { roadAlignedWalkers } from "./walkerRoadAlignment";
 import { renderStageProbe } from "./renderStageProbe";
+import { beginGroundSceneFrame } from "./groundBoundaryScene";
 
 export type CanvasFrameRefs = Readonly<{
   cameraRef: { current: CameraState };
@@ -47,6 +48,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
 }>): void {
   const probe = renderStageProbe.current;
   probe?.frameStart();
+  if (boundaryV2Enabled()) beginGroundSceneFrame();
   const nowMs = performance.now();
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {
     input.refs.feedbackRef.current = null;

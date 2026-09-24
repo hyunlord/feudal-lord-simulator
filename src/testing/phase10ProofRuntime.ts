@@ -20,6 +20,10 @@ import { houseCompoundAssetStatuses } from "../render/houseCompoundAssets";
 import { installRenderStageProbe, type RenderStageSnapshot } from "../render/renderStageProbe";
 import { worldRasterCacheDiagnostics } from "../render/worldRasterCache";
 import { groundBoundaryDiagnostics, resetGroundBoundaryForProof } from "../render/drawTerrainBoundaryV2";
+import { groundBoundaryScene } from "../render/groundBoundaryScene";
+import { setObjectPassForProof } from "../render/renderer";
+import { tileToScreen } from "../render/iso";
+import { APRON_TARGET_DEPTH } from "../world/boundary/buildingGrounds";
 import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
 import { buildingVariantAssetStatuses } from "../render/buildingVariantAssets";
 
@@ -102,6 +106,15 @@ export type Phase10ProofRuntimePort = {
   };
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
   readonly resetBoundary: (reverseInput: boolean) => void;
+  /**
+   * C1d gate 1: the ground between each building's frontage and the road ribbon, as canvas pixel positions (device
+   * pixels) of points every 1/32 tile from the footprint edge to the ribbon's visible edge, for aprons whose building
+   * is on screen. The evidence script reads those pixels and counts grass-coloured ones.
+   */
+  readonly wedgeProbe: () => { readonly aprons: number; readonly samples: readonly { readonly x: number; readonly y: number; readonly building: string; readonly t: number; readonly gap: number }[];
+    readonly rays: number; readonly raysWithoutRibbon: number; readonly raysBeyondTarget: number };
+  /** C1d gate 1: draw frames without the object pass (true) to read the ground layer alone. */
+  readonly groundOnly: (enabled: boolean) => void;
 };
 
 type InstallPhase10ProofRuntimeInput = {
@@ -155,6 +168,8 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
         parcels: burgageParcels(input.stateRef.current).length, assets: zoneAssetStatuses() },
     }),
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
+    wedgeProbe: () => wedgeProbe(input.canvas, input.cameraRef.current, input.stateRef.current),
+    groundOnly: (enabled) => setObjectPassForProof(!enabled),
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;
 
@@ -179,6 +194,35 @@ function tileClientPoint(
     clientX: rect.left + canvasPoint.x,
     clientY: rect.top + canvasPoint.y,
   };
+}
+
+function wedgeProbe(canvas: HTMLCanvasElement, camera: CameraState, state: GameState): ReturnType<Phase10ProofRuntimePort["wedgeProbe"]> {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = rect.width > 0 ? canvas.width / rect.width : 1;
+  const samples: { x: number; y: number; building: string; t: number; gap: number }[] = [];
+  let aprons = 0; let rays = 0; let raysWithoutRibbon = 0; let raysBeyondTarget = 0;
+  const toCanvas = (x: number, y: number): { x: number; y: number } => {
+    const screen = tileToScreen(x, y);
+    const point = worldToCanvas({ x: screen.sx, y: screen.sy }, camera);
+    return { x: Math.round(point.x * dpr), y: Math.round(point.y * dpr) };
+  };
+  const inside = (point: { x: number; y: number }): boolean => point.x >= 0 && point.y >= 0 && point.x < canvas.width && point.y < canvas.height;
+  for (const apron of groundBoundaryScene(state).grounds.aprons) {
+    const centre = apron.edge[Math.floor(apron.edge.length / 2)];
+    if (centre === undefined || !inside(toCanvas(centre.x, centre.y))) continue;
+    aprons += 1;
+    apron.edge.forEach((point, index) => {
+      const gap = apron.ribbonGaps[index] ?? null;
+      rays += 1;
+      if (gap === null) { raysWithoutRibbon += 1; return; }
+      if (gap > APRON_TARGET_DEPTH) raysBeyondTarget += 1;
+      for (let t = 0; t <= gap + 1e-9; t += 1 / 32) {
+        const at = toCanvas(point.x + apron.normal.x * t, point.y + apron.normal.y * t);
+        if (inside(at)) samples.push({ ...at, building: apron.buildingId, t: Math.round(t * 1000) / 1000, gap: Math.round(gap * 1000) / 1000 });
+      }
+    });
+  }
+  return { aprons, samples, rays, raysWithoutRibbon, raysBeyondTarget };
 }
 
 function snapshot(state: GameState): Phase10ProofSnapshot {

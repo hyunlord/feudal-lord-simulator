@@ -9,6 +9,9 @@ import type { Tile } from "../world/world.types";
 import { roadRibbonWidth, roadStripSignature } from "./roadRibbonStyle";
 import { buildZoneLayer, zoneSignature, type ZoneLayer } from "./zoneLayer";
 import { zonesOf } from "../zones/zoneEdits";
+import { buildingRoadAccessTiles } from "../engine/routing";
+import { buildingGrounds, type BuildingApron, type BuildingGrounds } from "../world/boundary/buildingGrounds";
+import { distanceToSegment } from "../world/boundary/boundaryGeometry";
 
 // Everything the V2 ground pass draws, derived once per ground change and split into 8x8-tile chunks.
 //
@@ -18,7 +21,9 @@ import { zonesOf } from "../zones/zoneEdits";
 //     the seed, the wheat-farm footprint list (farm clusters), and the road ribbon width + strip set (D1a-2: the
 //     ribbon layout's shoulder tufts and caps are placed from the width; the strip set is only in the road chunk key),
 //     and the zone signature (C1b: id, kind and membership of every zone; plots follow roads and buildings, which
-//     replace the tiles array).
+//     replace the tiles array). Building yards and aprons (C1d) follow footprints (tiles), roads (tiles), the wall
+//     (palisade signature) and the ribbon width, all in the key; the yard claim order is the buildings' array order,
+//     which only changes when a building is added or removed (tiles again).
 // (b) Left out on purpose: walkers, stocks, ticks, crop growth, house levels, construction progress. None of them is
 //     read by road chains, forest or field outlines (crop state only changes what is drawn inside a field, which
 //     stays in the live object pass), so they cannot change a scene.
@@ -40,6 +45,8 @@ export type GroundBoundaryScene = {
   readonly roads: RoadCenterlineGraph;
   readonly ribbons: RoadRibbonLayout;
   readonly zones: ZoneLayer;
+  /** Building yards and aprons (C1d). */
+  readonly grounds: BuildingGrounds;
   readonly forest: ForestBoundary;
   readonly fields: readonly FieldCluster[];
   readonly chunks: readonly GroundChunkPlan[];
@@ -56,10 +63,15 @@ export type GroundChunkPlan = {
   /** Zones whose rings reach the chunk, and zone outline chains that do. */
   readonly zoneIndexes: readonly number[];
   readonly zoneChains: readonly number[];
+  /** Yards and aprons whose bounds reach the chunk. */
+  readonly yards: readonly number[];
+  readonly aprons: readonly number[];
   readonly chains: readonly number[];
   readonly fixedPoints: readonly number[];
   readonly plazas: readonly number[];
   readonly groundKey: number;
+  /** groundKey without the zone part: equal before and after a zone-only edit (lets that re-raster wait a frame). */
+  readonly groundBaseKey: number;
   readonly roadKey: number;
   readonly hasRoads: boolean;
 };
@@ -68,6 +80,20 @@ type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; re
   readonly reversed: boolean; readonly width: number; readonly strips: string; readonly zones: string };
 let last: { readonly key: SceneKey; readonly scene: GroundBoundaryScene } | null = null;
 let reverseInputForProof = false;
+
+// Zone-only rebuild deferral (C1d, live canvas only): the frame that first sees a zone edit keeps the previous scene
+// (its chunks and props are all still valid pictures of the ground, just without the new zones) and the next frame
+// rebuilds, so the stroke-end frame does not pay the zone layer (4-8 ms on the 24-lot town) on top of its rasters.
+// Off by default: tests, the Node C25 board and proof resets always see the scene of the state they pass.
+let deferZoneRebuilds = false;
+let sceneFrame = 0;
+let deferredAtFrame: number | null = null;
+let frameStartedAt: number | undefined;
+export function setGroundSceneZoneDeferral(enabled: boolean): void { deferZoneRebuilds = enabled; deferredAtFrame = null; frameStartedAt = undefined; }
+/** Called once at the start of every live frame. */
+export function beginGroundSceneFrame(): void { sceneFrame += 1; frameStartedAt = deferZoneRebuilds ? performance.now() : undefined; }
+/** When the current live frame started (undefined unless deferral is on): the chunk cache's defer budget. */
+export function groundSceneFrameStart(): number | undefined { return frameStartedAt; }
 
 /** Proof hook (gate 2): build from the tiles in reverse order; the scene must not change. */
 export function setGroundSceneReverseInput(value: boolean): void { reverseInputForProof = value; last = null; }
@@ -87,9 +113,15 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
   const sameGround = last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
     && last.key.farms === key.farms && last.key.reversed === key.reversed && last.key.width === key.width && last.key.strips === key.strips;
   if (sameGround && last?.key.zones === key.zones) return (last as NonNullable<typeof last>).scene;
+  if (sameGround && deferZoneRebuilds && last !== null && (deferredAtFrame === null || deferredAtFrame === sceneFrame)) {
+    deferredAtFrame = sceneFrame;
+    return last.scene;
+  }
+  deferredAtFrame = null;
   // A zone edit keeps the ground: reuse roads, forest, fields and ribbons (the costly part, 10-40 ms on the 24-lot town)
   // and derive only the zone layer and the chunk plans again.
   const scene = buildGroundBoundaryScene(state, reverseInputForProof, sameGround ? last?.scene : undefined);
+  // A zone-only rebuild keeps every chunk's ground base key (drawTerrainBoundaryV2 may then spread the re-rasters).
   last = { key, scene };
   sceneBuilds += 1;
   return scene;
@@ -102,7 +134,7 @@ export function groundBoundarySceneStats(): { readonly builds: number; readonly 
 }
 
 export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
-  ground?: Pick<GroundBoundaryScene, "roads" | "forest" | "fields" | "ribbons">): GroundBoundaryScene {
+  ground?: Pick<GroundBoundaryScene, "roads" | "forest" | "fields" | "ribbons" | "grounds" | "chunks">): GroundBoundaryScene {
   const started = typeof performance === "undefined" ? 0 : performance.now();
   const tiles = reverseInput ? [...state.tiles].reverse() : state.tiles;
   const grid = { width: state.width, height: state.height, tiles };
@@ -115,12 +147,23 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
   const rows = Math.ceil(state.height / GROUND_CHUNK_TILES);
   const cells: Tile[] = new Array(state.width * state.height);
   for (const tile of tiles) cells[tile.ty * state.width + tile.tx] = tile;
-  const ribbons = ground?.ribbons ?? roadRibbonLayout({ graph: roads, width: roadRibbonWidth(), mapWidth: state.width, mapHeight: state.height, cells, seed: state.seed });
+  const grounds = ground?.grounds ?? buildingGrounds({
+    mapWidth: state.width, mapHeight: state.height, cells, graph: roads, ribbonWidth: roadRibbonWidth(),
+    wall: state.palisade === null ? null : state.palisade.polygon.map(point => ({ x: point.x - 0.5, y: point.y - 0.5 })),
+    buildings: state.buildings.filter(building => building.kind !== "wheat_farm").map(building => ({
+      id: building.id, tx: building.tx, ty: building.ty, ...buildingFootprint(building),
+      roadAccess: buildingRoadAccessTiles(state, building).map(tile => tile.ty * state.width + tile.tx),
+    })),
+  });
+  const ribbons = ground?.ribbons ?? roadRibbonLayout({ graph: roads, width: roadRibbonWidth(), mapWidth: state.width, mapHeight: state.height, cells, seed: state.seed,
+    keepOut: apronKeepOut(grounds.aprons, state.width) });
   const strips = hashNumbers([...roadStripSignature()].map(character => character.charCodeAt(0)));
   const zones = buildZoneLayer(state, cells);
-  const zoneBounds = zones.zones.map(zone => ({ left: zone.bounds.left - PRIMITIVE_MARGIN, top: zone.bounds.top - PRIMITIVE_MARGIN,
+  const zoneBounds: BoundaryBounds[] = zones.zones.map(zone => ({ left: zone.bounds.left - PRIMITIVE_MARGIN, top: zone.bounds.top - PRIMITIVE_MARGIN,
     right: zone.bounds.right + PRIMITIVE_MARGIN, bottom: zone.bounds.bottom + PRIMITIVE_MARGIN }));
-  const zoneChainBounds = zones.outlines.chains.map(chain => chain.bounds);
+  const zoneChainBounds: readonly BoundaryBounds[] = zones.outlines.chains.map(chain => chain.bounds);
+  const yardBounds = grounds.yards.map(yard => yard.bounds);
+  const apronBounds = grounds.aprons.map(apron => apron.bounds);
 
   const forestBounds = forest.loops.map((loop, index) => boundsOf([...loop.smoothed, ...(forest.decals[index] ?? []).map(decal => decal.anchor)], PRIMITIVE_MARGIN));
   const fieldBounds = fields.map(field => boundsOf([...field.loops.flatMap(loop => loop.smoothed), ...field.decals.map(decal => decal.anchor)], PRIMITIVE_MARGIN));
@@ -133,6 +176,20 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
     [decal.kind === "furrow" ? 1 : 2, decal.axis === "x" ? 1 : 2, decal.length, decal.anchor.x, decal.anchor.y])));
 
   const chunks: GroundChunkPlan[] = [];
+  const zonePart = (box: BoundaryBounds, zoneIndexes: readonly number[], zoneChains: readonly number[]): number[] =>
+    // Zones only enter the key where they are drawn, so a zone-free chunk keeps its key and picture.
+    zoneIndexes.length + zoneChains.length === 0 ? [] : zoneChunkKey(zones, box, zoneIndexes, zoneChains);
+  if (ground?.chunks !== undefined && ground.chunks.length === columns * rows) {
+    // Zone-only edit: everything but the zone part of each chunk is the previous scene's.
+    for (const previous of ground.chunks) {
+      const box = chunkTileBounds(previous.cx, previous.cy);
+      const zoneIndexes = zoneBounds.flatMap((bound, index) => overlaps(bound, box) ? [index] : []);
+      const zoneChains = zoneChainBounds.flatMap((bound, index) => overlaps(bound, box) ? [index] : []);
+      chunks.push({ ...previous, zoneIndexes, zoneChains, groundKey: hashNumbers([previous.groundBaseKey, ...zonePart(box, zoneIndexes, zoneChains)]) });
+    }
+    const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
+    return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, forest, fields, chunks, buildMs };
+  }
   for (let cy = 0; cy < rows; cy += 1) for (let cx = 0; cx < columns; cx += 1) {
     const box = chunkTileBounds(cx, cy);
     const hits = (bounds: readonly BoundaryBounds[]): number[] =>
@@ -147,6 +204,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
     const plazas = hits(plazaBounds);
     const zoneIndexes = hits(zoneBounds);
     const zoneChains = hits(zoneChainBounds);
+    const yards = hits(yardBounds);
+    const aprons = hits(apronBounds);
     const tileValues: number[] = [];
     for (let ty = cy * GROUND_CHUNK_TILES - TILE_RING; ty < (cy + 1) * GROUND_CHUNK_TILES + TILE_RING; ty += 1) {
       for (let tx = cx * GROUND_CHUNK_TILES - TILE_RING; tx < (cx + 1) * GROUND_CHUNK_TILES + TILE_RING; tx += 1) {
@@ -154,13 +213,14 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
         tileValues.push(tile === undefined ? -1 : terrainCode(tile.terrain) + (tile.hasRoad ? 8 : 0) + (tile.buildingId === null ? 0 : 16));
       }
     }
-    const groundKey = hashNumbers([
+    const groundBaseKey = hashNumbers([
       state.seed, enclosing % 2, ...tileValues,
       ...forestLoops.flatMap(index => [forest.loops[index]?.hash ?? 0, forestDecalHashes[index] ?? 0]),
       ...fieldIndexes.flatMap(index => [fields[index]?.hash ?? 0, fieldDecalHashes[index] ?? 0]),
-      // Zones only enter the key where they are drawn, so a zone-free chunk keeps its D1a key and picture.
-      ...(zoneIndexes.length + zoneChains.length === 0 ? [] : zoneChunkKey(zones, box, zoneIndexes, zoneChains)),
+      // Yards and aprons (C1d) enter with their full hashes, like zones; a chunk without any keeps its key.
+      ...(yards.length + aprons.length === 0 ? [] : [-7, ...yards.map(index => grounds.yards[index]?.hash ?? 0), -8, ...aprons.map(index => grounds.aprons[index]?.hash ?? 0)]),
     ]);
+    const groundKey = hashNumbers([groundBaseKey, ...zonePart(box, zoneIndexes, zoneChains)]);
     const roadKey = hashNumbers([
       strips, ribbons.width,
       ...chains.flatMap(index => [roads.chains[index]?.hash ?? 0, ribbons.chainHashes[index] ?? 0]),
@@ -173,12 +233,33 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
       ...plazas.flatMap(index => [roads.plazaLoops[index]?.hash ?? 0, roads.plazaLoops[index]?.material === "stone" ? 1 : 0]),
     ]);
     chunks.push({
-      cx, cy, forestLoops, forestParity: enclosing % 2 === 1, fieldClusters: fieldIndexes, zoneIndexes, zoneChains, chains, fixedPoints, plazas,
-      groundKey, roadKey, hasRoads: chains.length + fixedPoints.length + plazas.length > 0,
+      cx, cy, forestLoops, forestParity: enclosing % 2 === 1, fieldClusters: fieldIndexes, zoneIndexes, zoneChains, yards, aprons, chains, fixedPoints, plazas,
+      groundKey, groundBaseKey, roadKey, hasRoads: chains.length + fixedPoints.length + plazas.length > 0,
     });
   }
   const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
-  return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, forest, fields, chunks, buildMs };
+  return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, forest, fields, chunks, buildMs };
+}
+
+/** Shoulder tufts stay this far off an apron: a tuft crop (40 source px at 0.8) reaches ~0.2 tile from its anchor. */
+const TUFT_APRON_CLEARANCE = 0.3;
+function apronKeepOut(aprons: readonly BuildingApron[], mapWidth: number): (point: BoundaryPoint) => boolean {
+  const buckets = new Map<number, BuildingApron[]>();
+  for (const apron of aprons) {
+    for (let y = Math.floor(apron.bounds.top - 1); y <= Math.ceil(apron.bounds.bottom + 1); y += 1) {
+      for (let x = Math.floor(apron.bounds.left - 1); x <= Math.ceil(apron.bounds.right + 1); x += 1) {
+        const key = (y + 2) * (mapWidth + 4) + x + 2; const list = buckets.get(key);
+        if (list === undefined) buckets.set(key, [apron]); else list.push(apron);
+      }
+    }
+  }
+  return point => (buckets.get((Math.floor(point.y) + 2) * (mapWidth + 4) + Math.floor(point.x) + 2) ?? []).some(apron => {
+    if (pointInPolygon(point, apron.polygon)) return true;
+    for (let index = 0; index < apron.polygon.length; index += 1) {
+      if (distanceToSegment(point, apron.polygon[index] as BoundaryPoint, apron.polygon[(index + 1) % apron.polygon.length] as BoundaryPoint) < TUFT_APRON_CLEARANCE) return true;
+    }
+    return false;
+  });
 }
 
 /**

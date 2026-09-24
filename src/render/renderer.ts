@@ -82,6 +82,10 @@ export type RenderFrameInput = {
   readonly selectionMode?: boolean;
 };
 
+let objectPassForProof = true;
+/** Proof hook (C1d gate 1): skip the object pass so a wedge check can read the ground layer alone. */
+export function setObjectPassForProof(enabled: boolean): void { objectPassForProof = enabled; }
+
 export const renderFrame = (input: RenderFrameInput): void => {
   const probe = renderStageProbe.current;
   probe?.enter("objects.sort");
@@ -117,7 +121,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         objectRenderItems,
       });
     },
-    objects: () =>
+    objects: () => objectPassForProof &&
       drawObjectRenderItems(input.context, {
         state: input.state,
         problemOnly: input.problemOnly ?? false,

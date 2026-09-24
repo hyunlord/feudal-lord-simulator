@@ -13,8 +13,8 @@ import type { ZoneBrushView } from "./zoneBrushOverlay";
 // Canvas adapter for the zone brush (C1b): mouse, wheel, keys and touch -> ZoneBrushIntent. Only active while a zone
 // tool is armed; otherwise every handler returns false and the canvas keeps its usual behaviour.
 //  - Mouse: left drag paints (Space + drag still pans, middle drag pans); Shift+click or the polygon toggle places
-//    polygon vertices, double-click closes; right click / Esc cancels the gesture; wheel or [ ] sets the radius 1..3
-//    (Ctrl + wheel, which is also the trackpad pinch, still zooms); Z reports that stroke undo is not available yet.
+//    polygon vertices, double-click closes; right click / Esc cancels the gesture; [ ] (or the card buttons) set the
+//    radius 1..3; the wheel always zooms (C1d); Z reports that stroke undo is not available yet.
 //  - Touch: one finger paints, two fingers pan the camera (and drop a stroke in progress). No hover is needed:
 //    the preview follows the finger.
 
@@ -113,14 +113,6 @@ export function zoneCancel(context: Context): boolean {
   apply(context, { type: "cancel" });
   if (context.refs.dragRef.current.mode === "zone") context.refs.dragRef.current = { ...context.refs.dragRef.current, mode: "none" };
   return had;
-}
-
-export function zoneWheel(context: Context, event: WheelEvent): boolean {
-  const tool = context.zone.toolRef.current;
-  if (tool === null || event.ctrlKey || event.metaKey) return false;
-  event.preventDefault();
-  context.zone.onRadiusChange?.(nextBrushRadius(tool.radius, event.deltaY < 0 ? 1 : -1));
-  return true;
 }
 
 export function zoneKeyDown(context: Context, event: KeyboardEvent): boolean {

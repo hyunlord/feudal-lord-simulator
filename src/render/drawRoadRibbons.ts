@@ -92,6 +92,16 @@ export function drawRoadRibbons(context: CanvasRenderingContext2D, graph: RoadCe
   drawShoulderDecals(context, decals);
 }
 
+/**
+ * Fills a path traced by `trace` with the ribbon's crown surface of `material` (C1d building aprons): the same band,
+ * texel size and world anchor as junction patches and plazas, so an apron reads as the road's own ground.
+ */
+export function fillRoadSurface(context: CanvasRenderingContext2D, material: RoadMaterial, width: number, trace: () => void): void {
+  const earth = stripSource("earth", width);
+  const source = material === "stone" ? stripSource("stone", width) ?? earth : earth;
+  fillWith(context, surfacePattern(context, source, "crown"), surfaceTransform(source), trace);
+}
+
 // ---- chains -------------------------------------------------------------------------------------------------------
 
 function drawChain(context: CanvasRenderingContext2D, chain: RoadChain, trim: { readonly start: number; readonly end: number },

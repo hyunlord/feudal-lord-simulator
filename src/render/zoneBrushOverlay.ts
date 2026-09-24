@@ -5,7 +5,10 @@ import { zonePaintLines } from "../ui/zonePrediction";
 import { cellInsideWall, zonePaintAssessment } from "../zones/zoneEdits";
 import { normalizeZoneStroke, rasterizeZoneStroke } from "../zones/zoneRaster";
 import type { ZoneStrokePoint } from "../zones/zone.types";
+import { buildingRoadAccessTiles } from "../engine/routing";
+import type { Building } from "../content/buildingConfig";
 import { tileToScreen } from "./iso";
+import { ZONE_BRUSH_COPY } from "./zoneBrushCopy.ko";
 import { applyPaletteStroke, withAlpha } from "./style";
 import { gestureStroke, type ZoneBrushGesture, type ZoneBrushTool } from "./zoneBrushInteraction";
 import { ZONE_STYLES } from "./drawZones";
@@ -13,6 +16,9 @@ import { ZONE_STYLES } from "./drawZones";
 // Live preview while a zone tool is armed (C1b): the cells the gesture would take, tinted by kind; for a refused
 // arable stroke the cells inside the wall in red and the rest pale; for the eraser the owned cells it would clear.
 // Plus the brush ring under the cursor and the open polygon. Drawn every frame outside the chunk cache.
+// C1d: with the tool only armed (no stroke or polygon under way) just the cursor ring shows: no cell tint and no
+// prediction text until the drag starts. An arable stroke also hatches the cells a wheat farm there could not reach a
+// road from, and says how many ("도로 접근 없는 칸 N"), judged by the rules' own road access (buildingRoadAccessTiles).
 //
 // Cache (AGENTS rule 10): the last assessment, keyed by the state's zones and palisade objects, the tool, the
 // gesture object (replaced on every accepted point) and the hover point rounded to 1/8 tile. Rasterising a long
@@ -25,29 +31,58 @@ export type ZoneBrushView = {
   readonly hover: ZoneStrokePoint | null;
 };
 
-type Preview = { readonly cells: readonly number[]; readonly refused: ReadonlySet<number>; readonly lines: readonly PredictionLine[] };
+type Preview = { readonly cells: readonly number[]; readonly refused: ReadonlySet<number>; readonly noRoad: ReadonlySet<number>;
+  readonly lines: readonly PredictionLine[] };
+const EMPTY: Preview = { cells: [], refused: new Set(), noRoad: new Set(), lines: [] };
 let last: { readonly key: readonly unknown[]; readonly preview: Preview } | null = null;
 
 export function zoneBrushPreview(state: GameState, view: ZoneBrushView): Preview {
   const hoverKey = view.hover === null ? null : `${Math.round(view.hover.x * 8)},${Math.round(view.hover.y * 8)}`;
   const key = [state.zones, state.palisade, state.width, view.tool.target, view.tool.radius, view.tool.polygon, view.gesture, hoverKey];
   if (last !== null && last.key.length === key.length && last.key.every((value, index) => value === key[index])) return last.preview;
-  const stroke = gestureStroke(view.tool, view.gesture, view.hover);
-  let preview: Preview = { cells: [], refused: new Set(), lines: [] };
+  const stroke = view.gesture === null ? null : gestureStroke(view.tool, view.gesture, view.hover);
+  let preview: Preview = EMPTY;
   if (stroke !== null) {
     if (view.tool.target === "erase") {
       const normalized = normalizeZoneStroke(stroke);
       const owned = new Set((state.zones ?? []).flatMap(zone => zone.membership));
-      preview = { cells: normalized === null ? [] : rasterizeZoneStroke(normalized, state).filter(cell => owned.has(cell)), refused: new Set(), lines: [] };
+      preview = { ...EMPTY, cells: normalized === null ? [] : rasterizeZoneStroke(normalized, state).filter(cell => owned.has(cell)) };
     } else {
       const assessment = zonePaintAssessment(state, view.tool.target, stroke);
       const refused = !assessment.ok && assessment.reason === "arable_inside_wall"
         ? new Set(assessment.cells.filter(cell => cellInsideWall(state, cell))) : new Set<number>();
-      preview = { cells: assessment.cells, refused, lines: zonePaintLines(state, view.tool.target, stroke) };
+      const noRoad = view.tool.target === "arable" ? cellsWithoutRoadAccess(state, assessment.cells.filter(cell => !refused.has(cell))) : new Set<number>();
+      const lines = zonePaintLines(state, view.tool.target, stroke);
+      preview = { cells: assessment.cells, refused, noRoad,
+        lines: noRoad.size === 0 ? lines : [...lines, { id: "zone-road-access", severity: "warn", text: ZONE_BRUSH_COPY.noRoadAccessCells(noRoad.size), sources: [] }] };
     }
   }
   last = { key, preview };
   return preview;
+}
+
+/**
+ * Cells where no wheat farm covering them would have road access: all four 2x2 footprints that contain the cell have
+ * no road access tile by the rules' own test (read only; the rules decide nothing here).
+ */
+function cellsWithoutRoadAccess(state: GameState, cells: readonly number[]): Set<number> {
+  const reach = new Map<number, boolean>();
+  const farmReaches = (tx: number, ty: number): boolean => {
+    const key = ty * state.width + tx;
+    let value = reach.get(key);
+    if (value === undefined) {
+      const farm = { id: "zone-preview-farm", kind: "wheat_farm", tx, ty } as Building;
+      value = tx >= 0 && ty >= 0 && tx + 1 < state.width && ty + 1 < state.height && buildingRoadAccessTiles(state, farm).length > 0;
+      reach.set(key, value);
+    }
+    return value;
+  };
+  const missing = new Set<number>();
+  for (const cell of cells) {
+    const tx = cell % state.width; const ty = Math.floor(cell / state.width);
+    if (!farmReaches(tx, ty) && !farmReaches(tx - 1, ty) && !farmReaches(tx, ty - 1) && !farmReaches(tx - 1, ty - 1)) missing.add(cell);
+  }
+  return missing;
 }
 
 export function drawZoneBrushOverlay(context: CanvasRenderingContext2D, state: GameState, view: ZoneBrushView, zoom: number): void {
@@ -59,6 +94,23 @@ export function drawZoneBrushOverlay(context: CanvasRenderingContext2D, state: G
     context.fillStyle = refused ? withAlpha(PALETTE.vermilion, 0.5) : withAlpha(tint, anyRefused ? 0.12 : view.gesture === null ? 0.16 : 0.3);
     traceDiamond(context, cell % state.width, Math.floor(cell / state.width));
     context.fill();
+  }
+  if (preview.noRoad.size > 0) {
+    // Pale hatch: two short strokes along the tile y axis in each cell no farm there could reach a road from.
+    applyPaletteStroke(context, PALETTE.ink, zoom);
+    context.lineWidth = 1 / zoom;
+    const previousAlpha = context.globalAlpha;
+    context.globalAlpha = previousAlpha * 0.45;
+    context.beginPath();
+    for (const cell of preview.noRoad) {
+      const tx = cell % state.width; const ty = Math.floor(cell / state.width);
+      for (const offset of [-0.2, 0.2]) {
+        const a = tileToScreen(tx + offset, ty - 0.35); const b = tileToScreen(tx + offset, ty + 0.35);
+        context.moveTo(a.sx, a.sy); context.lineTo(b.sx, b.sy);
+      }
+    }
+    context.stroke();
+    context.globalAlpha = previousAlpha;
   }
   if (view.hover !== null && !view.tool.polygon && view.gesture?.mode !== "polygon") {
     // Brush ring: a tile-space circle of the brush radius around the pointer.

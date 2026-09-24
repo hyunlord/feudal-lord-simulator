@@ -11,6 +11,15 @@ import { withAlpha } from "../src/render/style";
 import type { TerrainPatternAssets } from "../src/render/terrainPatterns";
 import { preloadWorldAssets } from "../src/render/worldAssets";
 import type { Tile } from "../src/world/world.types";
+import { boundaryV2Enabled, setBoundaryV2Enabled } from "../src/render/renderBoundaryFlag";
+import { buildingContactEllipse } from "../src/render/buildingContactShadow";
+
+/** The ground-pass contact and frontage below are the flag-off (V1) path; curved ground moved them (C1d). */
+function withBoundaryV2<T>(enabled: boolean, run: () => T): T {
+  const previous = boundaryV2Enabled();
+  setBoundaryV2Enabled(enabled);
+  try { return run(); } finally { setBoundaryV2Enabled(previous); }
+}
 
 class ReadyImage {
   onload: ((event: Event) => unknown) | null = null;
@@ -195,7 +204,7 @@ before(async () => {
 
 test("sprite-success building rendering keeps ground-pass contact before the sprite", () => {
   // Given
-  const context = drawHouseAtZoom(0.7001);
+  const context = withBoundaryV2(false, () => drawHouseAtZoom(0.7001));
 
   // Then
   const firstDrawImage = context.calls.indexOf("drawImage");
@@ -349,12 +358,31 @@ function drawCivicAtZoom(kind: BuildingKind, zoom: number, connected = false): L
 test("ready civic and production sprites use compact footprint contact before their art", () => {
   for (const kind of ["well", "storehouse", "granary", "logging_camp", "sawmill"] as const) {
     // Given ready accepted sprites, when rendering full detail.
-    const context = drawCivicAtZoom(kind, 1);
+    const context = withBoundaryV2(false, () => drawCivicAtZoom(kind, 1));
     // Then footprint contact precedes the art without a broad ellipse underneath.
     const sprite = context.calls.indexOf("drawImage");
     const contact = context.calls.indexOf(`fillStyle:${withAlpha(SEMANTIC_PALETTE.earthDark, 0.24)}`);
     assert.ok(sprite > 0 && contact >= 0 && contact < sprite, kind);
     assert.ok(!context.calls.slice(0, sprite).some(call => call.startsWith("ellipse:")), kind);
+  }
+});
+
+test("with curved ground a ready sprite's contact shadow is one small ellipse under its body, drawn in the object pass right before the art", () => {
+  for (const kind of ["well", "storehouse", "granary", "logging_camp", "sawmill"] as const) {
+    const context = withBoundaryV2(true, () => drawCivicAtZoom(kind, 1));
+    const sprite = context.calls.indexOf("drawImage");
+    const size = BUILDING_CONFIG_BY_KIND[kind];
+    const shape = buildingContactEllipse({ ...state().buildings[0]!, kind })!;
+    const call = `ellipse:${shape.x},${shape.y},${shape.radiusX},${shape.radiusY}`;
+    const shadows = context.calls.filter(entry => entry.startsWith(call));
+    assert.equal(shadows.length, 1, `${kind}: one contact ellipse`);
+    const shadow = context.calls.indexOf(shadows[0]!);
+    assert.ok(sprite > 0 && shadow < sprite, `${kind}: before the art`);
+    // Directly under the body: within the footprint diamond's inscribed ellipse.
+    assert.ok(shape.radiusX <= (size.width + size.height) * 16 / Math.SQRT2 && shape.radiusY <= (size.width + size.height) * 8 / Math.SQRT2, kind);
+    // No building contact polygon in the ground pass: the ellipse's own fill style is the only contact fill.
+    const contactFill = `fillStyle:${withAlpha(SEMANTIC_PALETTE.earthDark, 0.24)}`;
+    assert.equal(context.calls.slice(0, sprite).filter(entry => entry === contactFill).length, 1, kind);
   }
 });
 
@@ -373,7 +401,7 @@ test("building access remains visibly earthen when terrain patterns are unavaila
   // Given a well with a real adjacent road and no loaded terrain textures.
   const earthPrefix = `fillStyle:${withAlpha(SEMANTIC_PALETTE.earth, 0).replace(/0\)$/, "")}`;
   // When rendering its frontage through the real ground pass.
-  const context = drawCivicAtZoom("well", 1, true);
+  const context = withBoundaryV2(false, () => drawCivicAtZoom("well", 1, true));
   // Then the narrow access has a strong earth centre in addition to its faint edge.
   const opacities = context.calls.filter(call => call.startsWith(earthPrefix))
     .map(call => Number(call.slice(earthPrefix.length, -1)));
