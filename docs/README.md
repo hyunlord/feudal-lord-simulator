@@ -8,13 +8,18 @@
 | 문서 | 용도 |
 |---|---|
 | [DESIGN_MASTER](design/DESIGN_MASTER.md) | v2.3 전체 설계, 확정·권고·보류 구분 |
-| [ROADMAP](design/ROADMAP.md) | v2.3 단계와 선행 조건 |
-| [결정 목록](decisions/README.md) | 설계서 12·13.0·14절 및 로드맵 결정 기록 색인 |
+| [ROADMAP](design/ROADMAP.md) | v3 단계와 선행 조건(콘텐츠 트랙 통합) |
+| [ROADMAP v2.3](design/ROADMAP_v2.3.md) | 이전 로드맵 원문 보존, 곡선 결정 D1~D7의 출처 |
+| [콘텐츠 설계서](design/CONTENT_DESIGN.md) | v1.1 사슬·땅의 어휘·시대 아크·지도 archetype, 결정 K1~K12 |
+| [에셋 계획](design/ASSET_PLAN.md) | v1 Wave 순서와 규격 |
+| [콘텐츠 조사 원문](research/2026-09-24-content-catalog.md) | 잉글랜드 시장도시 1300–1450 카탈로그(콘텐츠 설계 근거) |
+| [공통 데이터 계약](../src/contracts/types.ts) | 설계서 11절의 `SourceRef`·`EffectSpec`·`AppliedEffect`·`PredictionLine` 코드 계약(B1), [효과 파이프](../src/contracts/effects.ts) |
+| [결정 목록](decisions/README.md) | 설계서 12·13.0·14절, 로드맵 v2.3 결정 기록(D1~D7), 콘텐츠 결정(K1~K12) 색인 |
 | [유기적인 땅 통합안](design/organic-world/SYNTHESIS.md) | 곡선 설계의 채택 기준, 세 원문 간 차이 해소 |
 | [Fable v1](design/organic-world/fable-v1.md) | 설계 원문, 통합안이 채택한 부분만 적용 |
 | [설계 v3-A](design/organic-world/v3-a/DESIGN_organic-world_v3_response.md) | 도판·탐침을 포함한 원문 |
 | [설계 v3-B](design/organic-world/v3-b.md) | 저장·편집 계약 설계 원문 |
-| [이관 파일·해시 목록](design/IMPORT_MANIFEST.md) | 첨부 본문 6개와 figures/probes 전체 30파일 링크·원본 SHA-256 |
+| [이관 파일·해시 목록](design/IMPORT_MANIFEST.md) | S0 첨부 본문 6개·figures/probes 30파일, B1 첨부 4개의 링크·원본 SHA-256 |
 
 ## 보존된 이력과 구현 문서
 
