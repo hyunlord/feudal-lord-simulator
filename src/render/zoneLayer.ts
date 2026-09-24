@@ -16,7 +16,8 @@ import type { Zone, ZoneKind } from "../zones/zone.types";
 //  - Props: orchard trees on a quincunx planting grid with limited jitter, thinned on the zone edge; 1-3 haycocks per
 //    pasture zone on interior cells. Only on grass cells with no road or building.
 
-export type ZoneLayerZone = { readonly id: string; readonly kind: ZoneKind; readonly bounds: BoundaryBounds };
+/** `hash` covers the kind and every ring point: a zone's fill is one path, so any change to it re-rasters its chunks. */
+export type ZoneLayerZone = { readonly id: string; readonly kind: ZoneKind; readonly bounds: BoundaryBounds; readonly hash: number };
 export type ParcelEdge = { readonly a: BoundaryPoint; readonly b: BoundaryPoint; readonly built: boolean };
 export type FrontageMark = { readonly cell: TileCoordinate; readonly toward: BoundaryPoint; readonly built: boolean };
 export type ZoneProp = {
@@ -51,7 +52,8 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
   zones.forEach((zone, index) => { for (const cell of zone.membership) if (cell >= 0 && cell < labels.length) labels[cell] = index; });
   const outlines = zoneBoundaryLayout({ width, height, labels, zoneCount: zones.length });
   const layerZones = zones.map((zone, index) => ({ id: zone.id, kind: zone.kind,
-    bounds: boundsOf((outlines.rings[index] ?? []).flat(), 0) }));
+    bounds: boundsOf((outlines.rings[index] ?? []).flat(), 0),
+    hash: hashNumbers([zone.kind.length * 31 + zone.kind.charCodeAt(0), ...(outlines.rings[index] ?? []).flatMap(ring => [ring.length, ...ring.flatMap(point => [point.x, point.y])])]) }));
 
   const parcels = burgageParcels(state);
   const plotOf = new Int32Array(width * height).fill(-1);

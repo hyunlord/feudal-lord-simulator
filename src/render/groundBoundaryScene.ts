@@ -84,10 +84,12 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
     strips: roadStripSignature(),
     zones: zoneSignature(zonesOf(state)),
   };
-  if (last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
-    && last.key.farms === key.farms && last.key.reversed === key.reversed && last.key.width === key.width
-    && last.key.strips === key.strips && last.key.zones === key.zones) return last.scene;
-  const scene = buildGroundBoundaryScene(state, reverseInputForProof);
+  const sameGround = last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
+    && last.key.farms === key.farms && last.key.reversed === key.reversed && last.key.width === key.width && last.key.strips === key.strips;
+  if (sameGround && last?.key.zones === key.zones) return (last as NonNullable<typeof last>).scene;
+  // A zone edit keeps the ground: reuse roads, forest, fields and ribbons (the costly part, 10-40 ms on the 24-lot town)
+  // and derive only the zone layer and the chunk plans again.
+  const scene = buildGroundBoundaryScene(state, reverseInputForProof, sameGround ? last?.scene : undefined);
   last = { key, scene };
   sceneBuilds += 1;
   return scene;
@@ -99,20 +101,21 @@ export function groundBoundarySceneStats(): { readonly builds: number; readonly 
   return { builds: sceneBuilds, lastBuildMs: last?.scene.buildMs ?? null };
 }
 
-export function buildGroundBoundaryScene(state: GameState, reverseInput = false): GroundBoundaryScene {
+export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
+  ground?: Pick<GroundBoundaryScene, "roads" | "forest" | "fields" | "ribbons">): GroundBoundaryScene {
   const started = typeof performance === "undefined" ? 0 : performance.now();
   const tiles = reverseInput ? [...state.tiles].reverse() : state.tiles;
   const grid = { width: state.width, height: state.height, tiles };
-  const roads = roadCenterlineGraph({ ...grid, palisade: state.palisade });
-  const forest = forestBoundary(grid, state.seed);
+  const roads = ground?.roads ?? roadCenterlineGraph({ ...grid, palisade: state.palisade });
+  const forest = ground?.forest ?? forestBoundary(grid, state.seed);
   const farms = state.buildings.filter(building => building.kind === "wheat_farm")
     .map(farm => ({ id: farm.id, tx: farm.tx, ty: farm.ty, ...buildingFootprint(farm) }));
-  const fields = fieldClusters(grid, reverseInput ? [...farms].reverse() : farms);
+  const fields = ground?.fields ?? fieldClusters(grid, reverseInput ? [...farms].reverse() : farms);
   const columns = Math.ceil(state.width / GROUND_CHUNK_TILES);
   const rows = Math.ceil(state.height / GROUND_CHUNK_TILES);
   const cells: Tile[] = new Array(state.width * state.height);
   for (const tile of tiles) cells[tile.ty * state.width + tile.tx] = tile;
-  const ribbons = roadRibbonLayout({ graph: roads, width: roadRibbonWidth(), mapWidth: state.width, mapHeight: state.height, cells, seed: state.seed });
+  const ribbons = ground?.ribbons ?? roadRibbonLayout({ graph: roads, width: roadRibbonWidth(), mapWidth: state.width, mapHeight: state.height, cells, seed: state.seed });
   const strips = hashNumbers([...roadStripSignature()].map(character => character.charCodeAt(0)));
   const zones = buildZoneLayer(state, cells);
   const zoneBounds = zones.zones.map(zone => ({ left: zone.bounds.left - PRIMITIVE_MARGIN, top: zone.bounds.top - PRIMITIVE_MARGIN,
@@ -156,7 +159,7 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
       ...forestLoops.flatMap(index => [forest.loops[index]?.hash ?? 0, forestDecalHashes[index] ?? 0]),
       ...fieldIndexes.flatMap(index => [fields[index]?.hash ?? 0, fieldDecalHashes[index] ?? 0]),
       // Zones only enter the key where they are drawn, so a zone-free chunk keeps its D1a key and picture.
-      ...(zoneIndexes.length + zoneChains.length === 0 ? [] : [zones.signature, ...zoneIndexes, ...zoneChains.map(index => -1 - index)]),
+      ...(zoneIndexes.length + zoneChains.length === 0 ? [] : zoneChunkKey(zones, box, zoneIndexes, zoneChains)),
     ]);
     const roadKey = hashNumbers([
       strips, ribbons.width,
@@ -176,6 +179,26 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
   }
   const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
   return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, forest, fields, chunks, buildMs };
+}
+
+/**
+ * The zone part of a chunk's content key. Fills and outlines are whole paths, and the rasteriser's sub-pixel result
+ * inside a chunk can depend on the entire path (a localised key left 8-level differences at DPR 2 in the browser
+ * freshness check), so each zone and chain the chunk draws enters with its full hash: editing one zone re-rasters
+ * that zone's chunks only. Plot lines and frontage marks are short segments, so only those near the chunk count.
+ */
+function zoneChunkKey(zones: ZoneLayer, box: BoundaryBounds, zoneIndexes: readonly number[], zoneChains: readonly number[]): number[] {
+  const margin = 1.5;
+  const near = (point: BoundaryPoint): boolean => point.x >= box.left - margin && point.x <= box.right + margin && point.y >= box.top - margin && point.y <= box.bottom + margin;
+  const values: number[] = [zoneIndexes.length, zoneChains.length];
+  for (const index of zoneIndexes) values.push(index, zones.zones[index]?.hash ?? 0);
+  for (const index of zoneChains) {
+    const chain = zones.outlines.chains[index];
+    values.push(-1 - index, chain?.hash ?? 0, chain?.labels[0] ?? 0, chain?.labels[1] ?? 0);
+  }
+  for (const edge of zones.parcelEdges) if (near(edge.a)) values.push(edge.a.x, edge.a.y, edge.b.x, edge.b.y, edge.built ? 1 : 0);
+  for (const mark of zones.frontage) if (near({ x: mark.cell.tx, y: mark.cell.ty })) values.push(mark.cell.tx, mark.cell.ty, mark.toward.x, mark.toward.y, mark.built ? 1 : 0);
+  return [hashNumbers(values)];
 }
 
 /** Tile-centre bounds of a chunk's own tiles (their squares). */

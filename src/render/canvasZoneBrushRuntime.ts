@@ -8,6 +8,7 @@ import { screenToTile, TILE_H } from "./iso";
 import { createPlacementFeedback } from "./placementFeedback";
 import { ZONE_BRUSH_COPY } from "./zoneBrushCopy.ko";
 import { applyZoneBrushIntent, nextBrushRadius, type ZoneBrushGesture, type ZoneBrushIntent, type ZoneBrushTool } from "./zoneBrushInteraction";
+import type { ZoneBrushView } from "./zoneBrushOverlay";
 
 // Canvas adapter for the zone brush (C1b): mouse, wheel, keys and touch -> ZoneBrushIntent. Only active while a zone
 // tool is armed; otherwise every handler returns false and the canvas keeps its usual behaviour.
@@ -33,8 +34,25 @@ type Context = {
   readonly clampCamera: (camera: CameraState) => CameraState;
 };
 
-export function createZoneBrushRuntime(): Pick<ZoneBrushRuntime, "gestureRef" | "pointRef"> {
-  return { gestureRef: { current: null }, pointRef: { current: null } };
+export function createZoneBrushContext(input: {
+  readonly toolRef: { current: ZoneBrushTool | null };
+  readonly radiusRef: { current: ((radius: number) => void) | undefined };
+  readonly refs: CanvasMutableRefs;
+  readonly stateRef: { current: GameState };
+  readonly dispatch: Dispatch<GameAction>;
+  readonly clampCamera: (camera: CameraState) => CameraState;
+}): Context {
+  return {
+    zone: { toolRef: input.toolRef, gestureRef: { current: null }, pointRef: { current: null }, onRadiusChange: radius => input.radiusRef.current?.(radius) },
+    refs: input.refs, state: () => input.stateRef.current, dispatch: input.dispatch, clampCamera: input.clampCamera,
+  };
+}
+
+/** What the frame draws for the brush; drops a gesture left over when the tool was disarmed mid-stroke. */
+export function zoneBrushView(context: Context): ZoneBrushView | null {
+  const tool = context.zone.toolRef.current;
+  if (tool === null) { context.zone.gestureRef.current = null; return null; }
+  return { tool, gesture: context.zone.gestureRef.current, hover: context.zone.pointRef.current };
 }
 
 /** Canvas point -> tile-edge space (cell (tx,ty) spans [tx,tx+1)). */

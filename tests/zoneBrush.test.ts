@@ -137,3 +137,59 @@ test("Given a plot zone When a house is previewed inside and outside it Then ins
   assert.equal(attempt.action, null);
   assert.match(attempt.feedback.message, /필지 구역 밖/);
 });
+
+// A zone enters the chunk key with its full hash (fills and outlines are whole paths). "Stale" = a held raster whose
+// content key differs from a fresh draw's; the browser proves the pixels (scripts/zoneBrushEvidence.mjs freshness).
+test("Given two zones and a cached frame When a stroke grows one of them Then its chunks re-raster, the other zone's do not, and no chunk is stale", async () => {
+  // Given
+  const { recordingCanvas } = await import("../scripts/recordingCanvas");
+  const { createGroundChunkCache } = await import("../src/render/groundChunkCache");
+  const { groundChunkCacheFor, setGroundChunkCacheFactoryForTest } = await import("../src/render/drawTerrainBoundaryV2");
+  const { setBoundaryAssetsForTest } = await import("../src/render/boundaryAssets");
+  const { BOUNDARY_ASSETS } = await import("../src/render/boundaryAssetManifest");
+  const { setBoundaryV2Enabled } = await import("../src/render/renderBoundaryFlag");
+  const { drawCurrentCanvasFrame } = await import("../src/render/canvasRuntimeFrame");
+  const { createConstructionCompletionTracker } = await import("../src/render/constructionCompletionEffects");
+  setBoundaryAssetsForTest(Object.fromEntries(BOUNDARY_ASSETS.map(asset => [asset.key,
+    { label: asset.key, width: asset.width, height: asset.height, naturalWidth: asset.width, naturalHeight: asset.height } as unknown as HTMLImageElement])));
+  setGroundChunkCacheFactoryForTest(() => createGroundChunkCache(((w: number, h: number) => recordingCanvas(w, h)) as unknown as Parameters<typeof createGroundChunkCache>[0]));
+  setBoundaryV2Enabled(true);
+  const draw = (context: CanvasRenderingContext2D, state: GameState): void => drawCurrentCanvasFrame({
+    canvas: { getBoundingClientRect: () => ({ width: 1280, height: 800 }) } as unknown as HTMLCanvasElement, context,
+    refs: { cameraRef: { current: { zoom: 0.6, panX: 640 - (40 - 44) * 32 * 0.6, panY: 400 - (40 + 44) * 16 * 0.6 } }, hoverRef: { current: null }, feedbackRef: { current: null },
+      dragRef: { current: { mode: "none", startCanvasPoint: null, startCamera: null, lastCanvasPoint: null, roadStart: null, moved: false } },
+      pixelRatioRef: { current: 1 }, completionTracker: createConstructionCompletionTracker() },
+    state, selectedTool: null, overlayMode: "none", selection: null, previousRenderState: state, interpolationAlpha: () => 1, highlightedHouseIds: [],
+  });
+  const held = (context: CanvasRenderingContext2D, state: GameState): Map<string, string> => {
+    const cache = groundChunkCacheFor(context); const out = new Map<string, string>();
+    for (let cy = 0; cy < state.height / 8; cy += 1) for (let cx = 0; cx < state.width / 8; cx += 1) {
+      const entry = cache.entry(`ground:${cx},${cy}`);
+      if (entry !== null) out.set(`ground:${cx},${cy}`, entry.contentKey);
+    }
+    return out;
+  };
+  const live = recordingCanvas(1280, 800).context;
+  const before = paint(paint(seedGroundState(2), BURGAGE, ROAD_SIDE), { target: "pasture", radius: 2, polygon: false }, [{ x: 28, y: 36 }, { x: 29, y: 37 }]);
+  draw(live, before);
+  const heldBefore = held(live, before);
+
+  // When: extend the zone at its south end (merges into the same zone).
+  const after = paint(before, BURGAGE, [{ x: 43, y: 49.5 }, { x: 44.5, y: 49.5 }]);
+  draw(live, after);
+
+  // Then
+  assert.equal((after.zones ?? []).length, 2, "the stroke merged into the plot zone");
+  const fresh = recordingCanvas(1280, 800).context;
+  draw(fresh, after);
+  const expected = held(fresh, after); const current = held(live, after);
+  const stale = [...expected].filter(([id, value]) => current.get(id) !== value).map(([id]) => id);
+  assert.deepEqual(stale, []);
+  const rerastered = new Set([...current].filter(([id, value]) => heldBefore.get(id) !== value).map(([id]) => id));
+  const scene = buildGroundBoundaryScene(after);
+  const chunksOf = (kind: string) => scene.chunks.filter(chunk => chunk.zoneIndexes.some(index => scene.zones.zones[index]?.kind === kind)).map(chunk => `ground:${chunk.cx},${chunk.cy}`);
+  const pastureOnly = chunksOf("pasture").filter(id => !chunksOf("burgage").includes(id) && current.has(id));
+  assert.ok(chunksOf("burgage").some(id => rerastered.has(id)), "the grown zone re-rasters");
+  assert.ok(pastureOnly.length > 0 && pastureOnly.every(id => !rerastered.has(id)), `pasture-only chunks kept: ${pastureOnly.join(",")}`);
+  setGroundChunkCacheFactoryForTest(null);
+});

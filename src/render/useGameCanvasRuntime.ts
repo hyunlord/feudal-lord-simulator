@@ -4,7 +4,7 @@ import { cancelRoadPreview } from "./cancelRoadPreview";
 import { createPredictionPublisher } from "./placementPredictionRuntime";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { useEffect, useRef } from "react";
-import { bindZoneTouch, createZoneBrushRuntime, zoneCancel, zoneKeyDown, zoneMouseDown, zoneMouseMove, zoneMouseUp, zoneWheel } from "./canvasZoneBrushRuntime";
+import { bindZoneTouch, createZoneBrushContext, zoneBrushView, zoneCancel, zoneKeyDown, zoneMouseDown, zoneMouseMove, zoneMouseUp, zoneWheel } from "./canvasZoneBrushRuntime";
 
 import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
 import { cameraAfterViewportResize, initialCamera, resizeCanvas } from "./canvasRuntime";
@@ -45,12 +45,10 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     palisadeCeremonyStartedAtMs = null,
     onPalisadeDraftChange,
     onPalisadeDraftCancel, previousRenderState, interpolationAlpha,
-    zoneTool = null, onZoneRadiusChange,
   } = input;
   const { problemOnlyRef, highlightedHouseIdsRef, houseMaterialWaveRef, overlayModeRef, palisadeCeremonyStartedAtMsRef, palisadeDraftRef, previousRenderStateRef, selectedToolRef, selectionRef, stateRef, zoneToolRef } =
-    useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs, zoneTool });
-  const zoneRadiusRef = useRef(onZoneRadiusChange);
-  zoneRadiusRef.current = onZoneRadiusChange;
+    useGameCanvasRuntimeRefs({ state, previousRenderState, selectedTool, overlayMode, problemOnly, selection, highlightedHouseIds, palisadeDraft, houseMaterialWave, palisadeCeremonyStartedAtMs, zoneTool: input.zoneTool ?? null });
+  const zoneRadiusRef = useRef(input.onZoneRadiusChange); zoneRadiusRef.current = input.onZoneRadiusChange;
 
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
@@ -66,8 +64,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       const rect = canvas.getBoundingClientRect(); return { width: rect.width, height: rect.height };
     };
     const clampCamera = (camera: CameraState): CameraState => clampPan(camera, viewport(), worldBounds(stateRef.current.width, stateRef.current.height));
-    const zoneRuntime = { toolRef: zoneToolRef, ...createZoneBrushRuntime(), onRadiusChange: (radius: number) => zoneRadiusRef.current?.(radius) };
-    const zoneContext = { zone: zoneRuntime, refs, state: () => stateRef.current, dispatch, clampCamera };
+    const zoneContext = createZoneBrushContext({ toolRef: zoneToolRef, radiusRef: zoneRadiusRef, refs, stateRef, dispatch, clampCamera });
     const resize = () => {
       refs.pixelRatioRef.current = resizeCanvas(canvas, context);
       refs.cameraRef.current = cameraAfterViewportResize({ camera: refs.cameraRef.current, canvas, state: stateRef.current, userControlled: userControlledCamera });
@@ -84,9 +81,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       lastFrameAtMs = nowMs;
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
-      if (zoneToolRef.current === null && zoneRuntime.gestureRef.current !== null) zoneRuntime.gestureRef.current = null;
-      drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneToolRef.current === null ? null
-        : { tool: zoneToolRef.current, gesture: zoneRuntime.gestureRef.current, hover: zoneRuntime.pointRef.current }, state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
+      drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
       if (work !== null) work.recordFrame(performance.now() - startedAt);
       publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height), grid: stateRef.current });
       frameId = requestAnimationFrame(drawFrame);
@@ -227,7 +222,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       if (isCanvasKeyboardControl(event.target)) return;
       if (event.code === "Space" || cameraKey) event.preventDefault();
     };
-    const leaveCanvas = () => { zoneRuntime.pointRef.current = null; canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
+    const leaveCanvas = () => { zoneContext.zone.pointRef.current = null; canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
     const blurWindow = () => {
       if (palisadeDraftRef.current?.activeGesture !== null && palisadeDraftRef.current !== null) {
         const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
