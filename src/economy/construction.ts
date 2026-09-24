@@ -1,3 +1,4 @@
+import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
   CONSTRUCTION,
@@ -66,7 +67,7 @@ const RESOURCE_LABELS = {
   timber: "목재",
   stone_raw: "원석",
   stone: "석재",
-  coin: "금화",
+  coin: MONEY_LABEL,
 } as const satisfies Record<ResourceType, string>;
 
 function assertNever(value: never): never {

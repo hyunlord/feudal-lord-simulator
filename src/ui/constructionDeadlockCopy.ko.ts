@@ -1,8 +1,9 @@
+import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { ResourceType } from '../content/resourceConfig';
 
 const RESOURCE_NAMES = {
   wheat: '밀', bread: '빵', logs: '통나무', timber: '목재',
-  stone_raw: '원석', stone: '석재', coin: '금화',
+  stone_raw: '원석', stone: '석재', coin: MONEY_LABEL,
 } as const satisfies Record<ResourceType, string>;
 
 export const CONSTRUCTION_DEADLOCK_COPY = {

@@ -54,7 +54,7 @@ test("SC-1 scenarios register as namespace:id in declaration order and reject in
 test("SC-4 SC-6 proclamation requirement rows keep the pre-B2 labels and targets", () => {
   const rows = (state: GameState) => evaluateEraRequirements(state).map(row => [row.key, row.label, row.target]);
   assert.deepEqual(rows(DEFAULT_GAME_STATE), [["population", "인구", 60], ["granary", "곡창", 1], ["chapel", "예배당", 1], ["timber", "목재", 250]]);
-  assert.deepEqual(rows({ ...DEFAULT_GAME_STATE, era: "palisade" }), [["population", "인구", 140], ["market", "시장", 1], ["masonry", "석공소", 1], ["stone", "석재", 400], ["coin", "금화", 200]]);
+  assert.deepEqual(rows({ ...DEFAULT_GAME_STATE, era: "palisade" }), [["population", "인구", 140], ["market", "시장", 1], ["masonry", "석공소", 1], ["stone", "석재", 400], ["coin", "돈", 200]]);
   assert.equal(canProclaimPalisadeEra(DEFAULT_GAME_STATE), false);
 });
 

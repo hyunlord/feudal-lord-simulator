@@ -5,7 +5,8 @@ import { isWallConstructionSite } from "../domain/palisadeConstructionSchedule";
 import { useLayoutEffect, useRef } from "react";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements, stoneWallProjectAvailable } from "../engine/era";
-import { recentCoinIncome } from "../engine/coinLedger";
+import { LEDGER_COPY } from "../ledger/ledgerCopy.ko";
+import { recentMarketIncome } from "../ledger/ledgerView";
 import { reserveDeadlock } from "../engine/reserveDeadlock";
 import { canAdvanceConstructionWork } from "../economy/construction";
 import type { WallConstructionPriority } from "../engine/constructionReserve";
@@ -82,14 +83,15 @@ export function buildEraConsoleModel(input: {
     ? draftPalisadePredictionLines(input.state, input.draft.path)
     : predictionLines;
   const marketCount = input.state.buildings.filter(building => building.kind === 'market').length;
-  const recentIncome = recentCoinIncome(input.state);
+  // Spec L-8: the income-source line is the ledger's recent market-sale total.
+  const recentIncome = recentMarketIncome(input.state);
   const deadlock = reserveDeadlock(input.state);
   const coinHint = input.state.era === 'palisade'
     ? marketCount === 0
-      ? '시장 0개 · 수입원 없음 · 시장이 창고의 남는 물자를 팔 때 들어옵니다'
+      ? LEDGER_COPY.eraNoMarket
       : recentIncome.total > 0
-        ? `시장 ${marketCount}개 · 최근 2,400틱 시장 판매 +${recentIncome.total}`
-        : `시장 ${marketCount}개 · 최근 수입 0 · 남는 물자 판매 대기`
+        ? LEDGER_COPY.eraIncome(marketCount, recentIncome.total)
+        : LEDGER_COPY.eraNoIncome(marketCount)
     : null;
   return {
     currentEraLabel: currentStageLabel(input.state.era),

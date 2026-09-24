@@ -45,13 +45,16 @@ const paint = (state: GameState, kind: ZoneKind, stroke: ZoneStroke) => gameRedu
 test("Z-1 a new game and every migrated save start with no zone and ordinal 1", () => {
   assert.deepEqual(DEFAULT_GAME_STATE.zones, []);
   assert.equal(DEFAULT_GAME_STATE.nextZoneOrdinal, 1);
-  assert.equal(SAVE_SCHEMA_VERSION, 6);
+  assert.ok(SAVE_SCHEMA_VERSION >= 6);
   const v5 = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v5/population-176.save.json")));
   assert.equal(v5.migratedFrom, 5);
   assert.deepEqual(v5.envelope.state.zones, []);
   assert.equal(v5.envelope.state.nextZoneOrdinal, 1);
   const original = JSON.parse(readFileSync("fixtures/saves/v5/population-176.save.json", "utf8")).state;
-  assert.deepEqual(v5.envelope.state, { ...original, zones: [], nextZoneOrdinal: 1 });
+  const { coinLedger: _coinLedger, ...originalRest } = original;
+  // v6 -> v7 (B3) then swaps the income window for a ledger holding the opening balance.
+  assert.deepEqual(v5.envelope.state, { ...originalRest, zones: [], nextZoneOrdinal: 1, ledger: { entries: [{ id: "ledger-000001", tick: original.tick, account: "cash", category: "opening_balance", amount: original.treasuryCoin,
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } });
 });
 
 test("Z-1 empty zones do not change the simulation: a migrated save runs 1,200 ticks to the same state", () => {
@@ -72,7 +75,7 @@ test("Z-1 empty zones do not change the simulation: a migrated save runs 1,200 t
 test("Z-1 a zoned v6 save round-trips and the codec rejects impossible zones", () => {
   const bytes = new Uint8Array(readFileSync("fixtures/saves/v6/zoned-opening.save.json"));
   const { envelope } = decodeSave(bytes);
-  assert.equal(envelope.schemaVersion, 6);
+  assert.equal(envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.equal(zonesOf(envelope.state).length, 2);
   const again = decodeSave(encodeSave({ state: envelope.state, createdAt: envelope.createdAt, savedAt: envelope.savedAt, gameVersion: envelope.gameVersion }).bytes);
   assert.deepEqual(again.envelope.state, envelope.state);

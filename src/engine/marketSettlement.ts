@@ -9,7 +9,8 @@ import { buildingRoadAccessTiles } from "./routing";
 import type { TileCoordinate } from "../world/grid";
 import { constructionExportReserve } from './constructionExportReserve';
 import { existingRoadComponent } from "../world/roadGraph";
-import { appendMarketSales } from "./coinLedger";
+import { postLedgerEntries } from "../ledger/ledger";
+import type { LedgerPosting } from "../ledger/ledger.types";
 
 type MarketResource = Exclude<ResourceType, "coin">;
 
@@ -147,24 +148,30 @@ export function settleMarkets(state: GameState): GameState {
 
   let buildings: readonly Building[] = state.buildings;
   let earnedCoin = 0;
-  const sales: { readonly marketId: string; readonly coin: number }[] = [];
+  const sales: { readonly marketId: string; readonly coin: number; readonly sold: MarketResource }[] = [];
   let wheatExported = 0;
   let breadExported = 0;
   for (const market of completedMarkets(buildings)) {
     const result = settleMarket(state, buildings, market);
     buildings = result.buildings;
     earnedCoin += result.coin;
-    if (result.coin > 0) sales.push({ marketId: market.id, coin: result.coin });
+    if (result.coin > 0 && result.sold !== undefined) sales.push({ marketId: market.id, coin: result.coin, sold: result.sold });
     if (result.sold === "wheat") wheatExported += 1;
     if (result.sold === "bread") breadExported += 1;
   }
 
-  return earnedCoin === 0
-    ? state
-    : recordFoodFlow({
-        ...state,
-        buildings: [...buildings],
-        treasuryCoin: state.treasuryCoin + earnedCoin,
-        coinLedger: appendMarketSales(state.coinLedger, state.tick, sales),
-      }, { wheatExported, breadExported });
+  if (earnedCoin === 0) return state;
+  // Spec L-2: each sale is a cash entry; the treasury is the derived cash balance (equal to adding
+  // `earnedCoin`, which gate ① checks tick by tick against the pre-ledger code).
+  const postings = sales.map((sale): LedgerPosting => ({
+    account: "cash", category: "market_sale", amount: sale.coin,
+    sourceRefs: [{ type: "building", id: sale.marketId, detail: `sold:${sale.sold}` }],
+  }));
+  const posted = postLedgerEntries(state, postings);
+  return recordFoodFlow({
+    ...state,
+    buildings: [...buildings],
+    treasuryCoin: posted.treasuryCoin,
+    ledger: posted.ledger,
+  }, { wheatExported, breadExported });
 }

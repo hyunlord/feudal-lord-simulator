@@ -5,7 +5,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingC
 import type { ResourceType } from "../src/content/resourceConfig";
 import { advanceTick } from "../src/engine/tick";
 import { marketHasSaleCandidate } from "../src/engine/marketSettlement";
-import { recentCoinIncome } from "../src/engine/coinLedger";
+import { ledgerView, recentMarketIncome } from "../src/ledger/ledgerView";
 import { historicalFacilityAssetId } from "../src/render/historicalFacilityAssets";
 import { hashEconomyState } from "../scripts/economyHarness";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
@@ -136,38 +136,34 @@ test("market sells exactly one surplus unit above reserve on the eighty-tick cad
   assert.equal(next.buildings.find((candidate) => candidate.id === "store")?.inventory.timber, 60);
   assert.equal(next.walkers.some((walker) => walker.cargo?.resource === "coin"), false);
   assert.equal(next.buildings.some((candidate) => (candidate.inventory.coin ?? 0) > 0), false);
-  assert.deepEqual(next.coinLedger, [{
-    tick: 80,
-    amount: 6,
-    kind: "income",
-    source: "market_sale",
-    sourceRefs: [{ type: "building", id: "market" }],
-  }]);
-  assert.deepEqual(recentCoinIncome(next), {
-    total: 6,
-    bySource: [{ source: "market_sale", label: "시장 판매", amount: 6 }],
-  });
+  // B3 (spec L-2): the sale is a ledger entry after the opening balance; the treasury is its cash sum.
+  assert.deepEqual(next.ledger?.entries, [
+    { id: "ledger-000001", tick: 80, account: "cash", category: "opening_balance", amount: 0,
+      sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "ledger_start" }] },
+    { id: "ledger-000002", tick: 80, account: "cash", category: "market_sale", amount: 6,
+      sourceRefs: [{ type: "building", id: "market", detail: "sold:timber" }] },
+  ]);
+  assert.deepEqual(recentMarketIncome(next), { total: 6, markets: 1 });
 });
 
 test("recent coin income excludes events outside the last 2400 ticks", () => {
   // Given: an old market sale alongside one in the current observation window.
+  const sale = (id: string, tick: number, amount: number, market: string) => ({ id, tick, account: "cash" as const, category: "market_sale" as const, amount,
+    sourceRefs: [{ type: "building" as const, id: market }] as const });
   const state = {
     ...roadedState([], []),
     tick: 2500,
-    coinLedger: [
-      { tick: 100, amount: 2, kind: "income" as const, source: "market_sale" as const, sourceRefs: [{ type: "building" as const, id: "old" }] },
-      { tick: 101, amount: 5, kind: "income" as const, source: "market_sale" as const, sourceRefs: [{ type: "building" as const, id: "current" }] },
-    ],
+    treasuryCoin: 7,
+    ledger: { entries: [sale("ledger-000001", 100, 2, "old"), sale("ledger-000002", 101, 5, "current")], rollups: [], nextEntryOrdinal: 3 },
   };
 
   // When: the UI reads a 2400-tick source breakdown.
-  const result = recentCoinIncome(state);
+  const result = ledgerView(state, "cash", "recent");
 
   // Then: only ticks 101 through 2500 contribute.
-  assert.deepEqual(result, {
-    total: 5,
-    bySource: [{ source: "market_sale", label: "시장 판매", amount: 5 }],
-  });
+  assert.equal(result.total, 5);
+  assert.deepEqual(result.bySource.map(row => [row.key, row.amount]), [["building:current", 5]]);
+  assert.deepEqual(recentMarketIncome(state), { total: 5, markets: 1 });
 });
 
 test("market does not sell at or below reserves and respects cadence and staffing", () => {

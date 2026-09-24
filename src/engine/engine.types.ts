@@ -102,7 +102,11 @@ export interface GameState {
   idleWorkers: number;
   treasuryTimber: number;
   treasuryCoin: number;
-  readonly coinLedger?: readonly import("./coinLedger").CoinLedgerEntry[];
+  /**
+   * Economy ledger (save v7, spec docs/design/ledger.md). Absent until the first posting; then
+   * `treasuryCoin` is only the cached cash balance and changes only through `postLedgerEntries`.
+   */
+  readonly ledger?: import("../ledger/ledger.types").Ledger;
   readonly timberProductionWindow?: {
     readonly startTick: number;
     readonly throughTick: number;

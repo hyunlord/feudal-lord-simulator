@@ -123,6 +123,10 @@ test('natural seed3 full state including serialized pathCache stays identical af
   }
   const hash = (state: GameState) => createHash('sha256').update(JSON.stringify(state)).digest('hex');
   // B2/K4-1: this stone-town city has no completed stone wall, so its prosperity hold now counts (0 -> 120).
-  assert.equal(hash(warm), '4a3a0d92bc550073752f615dba52fcf6171cdba3d79f02986de208751943242f');
+  // B3: sales now also write the ledger. Without the two ledger fields the state is the pre-ledger one
+  // (bc94b31 gives de40e5f2… for the same stripped state; full hash there was 4a3a0d92…).
+  assert.equal(hash(warm), '13740b9c6e6aca5186ea10e69eb981c14959ff8148e2d6d220d583ee024b902c');
+  const { coinLedger: _coinLedger, ledger: _ledger, ...withoutLedger } = warm as GameState & { coinLedger?: unknown };
+  assert.equal(createHash('sha256').update(JSON.stringify(withoutLedger)).digest('hex'), 'de40e5f28fd528691e9b00e1079d46215f4b4e3ae59b221dbdd7b67234a76524');
   assert.equal(hash(coldState), hash(warm));
 });

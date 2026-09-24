@@ -3,7 +3,8 @@ import { calendarLabel } from "../engine/scenarioState";
 import { useEffect, useRef, useState } from "react";
 import { BALANCE } from "../content/balanceConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
-import { recentCoinIncome } from "../engine/coinLedger";
+import { LEDGER_COPY } from "../ledger/ledgerCopy.ko";
+import { LedgerPanel } from "./LedgerPanel";
 import { constructionReservedMaterial } from "../engine/constructionReserve";
 import { storageCapacityBlock } from "../economy/storage";
 import { houseLotArea } from "../geometry/buildingFootprint";
@@ -18,9 +19,11 @@ type ResourceBarProps = {
   readonly paused?: boolean;
   readonly populationDrawerOpen: boolean;
   readonly onPopulationDrawerToggle: () => void;
+  /** Ledger source rows outline their buildings through the map highlight (spec L-8). */
+  readonly onHighlightBuildings?: (buildingIds: readonly string[]) => void;
 };
 
-export function ResourceBar({ state, paused = false, populationDrawerOpen, onPopulationDrawerToggle }: ResourceBarProps) {
+export function ResourceBar({ state, paused = false, populationDrawerOpen, onPopulationDrawerToggle, onHighlightBuildings = () => undefined }: ResourceBarProps) {
   const [coinOpen, setCoinOpen] = useState(false);
   const historyRef = useRef<readonly ResourceSample[]>([]);
   const history = advanceResourceHistory(historyRef.current, resourceSample(state));
@@ -33,8 +36,6 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
   const timber = placementSpendableResource(state, "timber");
   const stone = placementSpendableResource(state, "stone");
   const timberReserved = constructionReservedMaterial(state, "timber");
-  const coinIncome = recentCoinIncome(state);
-  const marketCount = state.buildings.filter(building => building.kind === "market").length;
   const breadFull = storageCapacityBlock(state.buildings, "wheat") !== null || storageCapacityBlock(state.buildings, "bread") !== null;
   const woodFull = storageCapacityBlock(state.buildings, "logs") !== null || storageCapacityBlock(state.buildings, "timber") !== null;
   const stoneFull = storageCapacityBlock(state.buildings, "stone_raw") !== null || storageCapacityBlock(state.buildings, "stone") !== null;
@@ -64,15 +65,10 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
       <button type="button" className="resource-bar__cell resource-bar__coin" aria-label="재정 수입과 지출 상세" aria-expanded={coinOpen} aria-controls="resource-coin-detail" onClick={() => setCoinOpen(!coinOpen)}>
         <ResourceArtwork kind="coin" />
         <span className="resource-bar__detail"><span className="resource-bar__primary"><span>재정</span><strong>{stock.coin}</strong></span>
-          <span className="resource-bar__trend">{trend("coin")}</span><span className="resource-bar__secondary">금화 · 보유량<span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span></span>
+          <span className="resource-bar__trend">{trend("coin")}</span><span className="resource-bar__secondary">{LEDGER_COPY.cellSecondary}<span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span></span>
       </button>
       <span className="resource-bar__cell resource-bar__calendar" aria-label={SCENARIO_COPY.calendarAria} data-testid="resource-calendar"><strong>{calendarLabel(state)}</strong></span>
-      {coinOpen ? <aside id="resource-coin-detail" className="resource-bar__coin-detail" aria-label="재정 출처">
-        <strong>최근 2,400틱 재정</strong>
-        {coinIncome.bySource.map(source => <p key={source.source}>수입 · {source.label} +{source.amount}</p>)}
-        {coinIncome.bySource.length === 0 ? <p>{marketCount === 0 ? "수입원 없음 · 시장이 창고의 남는 물자를 팔 때 들어옵니다" : "시장 판매 0 · 남는 물자와 시장 일손을 확인하세요"}</p> : null}
-        <p>지출 · 없음</p>
-      </aside> : null}
+      {coinOpen ? <LedgerPanel id="resource-coin-detail" state={state} onHighlightBuildings={onHighlightBuildings} /> : null}
       <details className="resource-bar__more"><summary>자원 상세</summary><p>밀 {stock.wheat} · 원목 {stock.logs} · 원석 {stock.stone_raw}</p><p>{breadTitle}</p><p>추세: 최근 최대 2,400틱 관측 순증감. 목재·석재는 건설 가용량 기준입니다.</p></details>
     </section>
   );

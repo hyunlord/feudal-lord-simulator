@@ -83,7 +83,7 @@ test("Given a palisade settlement When evaluating Stone Town requirements Then f
     { key: "market", label: "시장", current: 1, target: 1, met: true },
     { key: "masonry", label: "석공소", current: 1, target: 1, met: true },
     { key: "stone", label: "석재", current: 400, target: 400, met: true },
-    { key: "coin", label: "금화", current: 200, target: 200, met: true },
+    { key: "coin", label: "돈", current: 200, target: 200, met: true },
   ]);
   assert.equal(canProclaimStoneTownEra(exact), true);
 }

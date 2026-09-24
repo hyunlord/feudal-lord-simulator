@@ -1,3 +1,4 @@
+import { treasuryBalance } from "../ledger/ledger";
 import {
   RESOURCE_TYPES,
   type ResourceType,
@@ -22,7 +23,8 @@ const stockAmount = (amount: number | undefined): number =>
 export function economyStockTotals(state: GameState): EconomyStockTotals {
   const totals = emptyTotals();
   totals.timber += stockAmount(state.treasuryTimber);
-  totals.coin += stockAmount(state.treasuryCoin);
+  // Spec L-3: the treasury is the ledger's cash balance.
+  totals.coin += stockAmount(treasuryBalance(state));
 
   for (const building of state.buildings) {
     for (const resource of RESOURCE_TYPES) {
