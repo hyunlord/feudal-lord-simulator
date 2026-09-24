@@ -86,6 +86,8 @@ export interface AutoplayFoodObservation {
 }
 
 export interface GameState {
+  /** Scenario (`namespace:id`, save v5). Absent in pre-v5 states, which read as the default campaign. */
+  readonly scenarioId?: string;
   settlement?: import("./settlement.types").SettlementProgress;
   tick: number;
   seed: number;

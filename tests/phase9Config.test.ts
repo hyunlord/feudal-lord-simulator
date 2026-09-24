@@ -102,8 +102,7 @@ test("Phase 9 stone buildings have exact palisade-era config", () => {
     buildCost: { timber: 50 },
     requiresAdjacentTerrain: "rock",
     requiresRoad: true,
-    unlockEra: "palisade",
-    production: {
+        production: {
       output: "stone_raw",
       input: null,
       inputPerOutput: 0,
@@ -121,8 +120,7 @@ test("Phase 9 stone buildings have exact palisade-era config", () => {
     buildCost: { timber: 45 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "palisade",
-    production: {
+        production: {
       output: "stone",
       input: "stone_raw",
       inputPerOutput: 2,
@@ -147,8 +145,7 @@ test("Phase 9 market has exact palisade-era config and visible menu copy", () =>
     buildCost: { timber: 60 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "palisade",
-    production: null,
+        production: null,
     storageCapacity: 0,
     serviceRadius: 8,
   });

@@ -1,13 +1,12 @@
 import { HOUSING_CONFIG } from "../src/content/housingConfig";
-import { SETTLEMENT_CONFIG } from "../src/content/settlementConfig";
 import { isBuildingConstructionSite } from "../src/economy/construction";
 import { hasPendingFoodChain } from "../src/engine/autoplayFood";
 import type { GameState } from "../src/engine/engine.types";
 import { householdServices } from "../src/engine/householdServices";
-import { settlementMetrics } from "../src/engine/settlementMetrics";
 import { houseLotArea } from "../src/geometry/buildingFootprint";
 import { housingLotCount } from "../src/population/housing";
 import type { HouseholdService, ServiceAccessKind } from "../src/population/serviceAllocation";
+import { victoryConditionsMet } from "../src/engine/scenarioState";
 
 export const SERVICES = ["water", "market", "church"] as const;
 export function parseGrowthOptions(args: readonly string[]) {
@@ -65,11 +64,9 @@ export function growthSnapshot(state: GameState) {
     outcome: state.settlement?.outcome ?? "ongoing",
   };
 }
+/** Same predicate the engine uses for the scenario's victory (B2: no stone-town era or stone wall). */
 export function prosperityEligible(state: GameState): boolean {
-  const metrics = settlementMetrics(state);
-  return metrics.occupiedHouses > 0 && metrics.suppliedPercent >= SETTLEMENT_CONFIG.servicePercent &&
-    metrics.population >= SETTLEMENT_CONFIG.prosperityPopulation && state.era === "stone_town" &&
-    metrics.completedStoneWall && metrics.occupiedL4Lots >= SETTLEMENT_CONFIG.prosperityOccupiedL4Lots;
+  return victoryConditionsMet(state);
 }
 export function fullServicePopulation(state: GameState): boolean {
   const allocation = householdServices(state);

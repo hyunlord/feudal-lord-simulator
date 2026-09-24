@@ -42,8 +42,10 @@ export function formatSaveSummaryLine(input: {
   readonly population: number;
   readonly era: Era;
   readonly problem: SaveProblemKey | null;
+  readonly scenarioName?: string;
 }): string {
   const parts = [
+    ...(input.scenarioName === undefined ? [] : [input.scenarioName]),
     `${input.elapsedMinutes}분째`,
     `인구 ${input.population}`,
     SAVE_COPY.eraLabels[input.era],

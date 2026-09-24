@@ -122,6 +122,7 @@ test('natural seed3 full state including serialized pathCache stays identical af
     coldState = advanceTick({ ...coldState, tiles: [...coldState.tiles] });
   }
   const hash = (state: GameState) => createHash('sha256').update(JSON.stringify(state)).digest('hex');
-  assert.equal(hash(warm), '877a1953f818adbb9e52df842901b8eac8aa363189a608b4d44cace54ede95d3');
+  // B2/K4-1: this stone-town city has no completed stone wall, so its prosperity hold now counts (0 -> 120).
+  assert.equal(hash(warm), '4a3a0d92bc550073752f615dba52fcf6171cdba3d79f02986de208751943242f');
   assert.equal(hash(coldState), hash(warm));
 });

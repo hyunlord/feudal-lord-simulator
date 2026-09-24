@@ -26,81 +26,70 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     WORKERS_PER_RESIDENT: 0.5,
     CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
     STARTING_TIMBER: 120,
+    TICKS_PER_YEAR: 1200,
   });
 });
 
 test("Phase 3 building table includes chapel without changing ordinary building economics", () => {
   // Given / When / Then
   const phase3BuildingConfig = Object.fromEntries(
-    Object.entries(BUILDING_CONFIG_BY_KIND).filter(([, config]) => config.unlockEra !== "stone_town"),
+    Object.entries(BUILDING_CONFIG_BY_KIND).filter(([kind]) => kind !== "church" && kind !== "keep"),
   );
 
   assert.deepEqual(phase3BuildingConfig, {
     house: {
       kind: "house", name: "오두막", width: 1, height: 1, workersRequired: 0, buildCost: {},
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: null, storageCapacity: 0, serviceRadius: 0,
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 0, serviceRadius: 0,
     },
     well: {
       kind: "well", name: "우물", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 10 },
-      requiresAdjacentTerrain: null, requiresRoad: false, unlockEra: "hamlet",
-      production: null, storageCapacity: 0, serviceRadius: 6,
+      requiresAdjacentTerrain: null, requiresRoad: false,       production: null, storageCapacity: 0, serviceRadius: 6,
     },
     storehouse: {
       kind: "storehouse", name: "창고", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: null, storageCapacity: 200, serviceRadius: 0,
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 200, serviceRadius: 0,
     },
     granary: {
       kind: "granary", name: "곡창", width: 2, height: 2, workersRequired: 2, buildCost: { timber: 40 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: null, storageCapacity: 200, serviceRadius: 0,
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 200, serviceRadius: 0,
     },
     chapel: {
       kind: "chapel", name: "예배당", width: 1, height: 1, workersRequired: 0, buildCost: { timber: 40 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: null, storageCapacity: 0, serviceRadius: 0,
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 0, serviceRadius: 0,
     },
     wheat_farm: {
       kind: "wheat_farm", name: "밀밭", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 20 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: { output: "wheat", input: null, inputPerOutput: 0, ticksPerOutput: 40 },
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "wheat", input: null, inputPerOutput: 0, ticksPerOutput: 40 },
       storageCapacity: 20, serviceRadius: 0,
     },
     mill: {
       kind: "mill", name: "방앗간", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: { output: "bread", input: "wheat", inputPerOutput: 2, ticksPerOutput: 30 },
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "bread", input: "wheat", inputPerOutput: 2, ticksPerOutput: 30 },
       storageCapacity: 20, serviceRadius: 0,
     },
     logging_camp: {
       kind: "logging_camp", name: "벌목소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 15 },
-      requiresAdjacentTerrain: "forest", requiresRoad: true, unlockEra: "hamlet",
-      production: { output: "logs", input: null, inputPerOutput: 0, ticksPerOutput: 50 },
+      requiresAdjacentTerrain: "forest", requiresRoad: true,       production: { output: "logs", input: null, inputPerOutput: 0, ticksPerOutput: 50 },
       storageCapacity: 20, serviceRadius: 0,
     },
     sawmill: {
       kind: "sawmill", name: "제재소", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "hamlet",
-      production: { output: "timber", input: "logs", inputPerOutput: 2, ticksPerOutput: 35 },
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "timber", input: "logs", inputPerOutput: 2, ticksPerOutput: 35 },
       storageCapacity: 20, serviceRadius: 0,
     },
     quarry: {
       kind: "quarry", name: "채석장", width: 2, height: 2, workersRequired: 4, buildCost: { timber: 50 },
-      requiresAdjacentTerrain: "rock", requiresRoad: true, unlockEra: "palisade",
-      production: { output: "stone_raw", input: null, inputPerOutput: 0, ticksPerOutput: 60 },
+      requiresAdjacentTerrain: "rock", requiresRoad: true,       production: { output: "stone_raw", input: null, inputPerOutput: 0, ticksPerOutput: 60 },
       storageCapacity: 20, serviceRadius: 0,
     },
     masonry: {
       kind: "masonry", name: "석공소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 45 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "palisade",
-      production: { output: "stone", input: "stone_raw", inputPerOutput: 2, ticksPerOutput: 45 },
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "stone", input: "stone_raw", inputPerOutput: 2, ticksPerOutput: 45 },
       storageCapacity: 20, serviceRadius: 0,
     },
     market: {
       kind: "market", name: "시장", width: 2, height: 2, workersRequired: 3, buildCost: { timber: 60 },
-      requiresAdjacentTerrain: null, requiresRoad: true, unlockEra: "palisade",
-      production: null, storageCapacity: 0, serviceRadius: 8,
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 0, serviceRadius: 8,
     },
   });
 });

@@ -1,23 +1,12 @@
 import type { EraRequirement, GameState } from "./engine.types";
-import type { BuildingKind } from "../content/buildingConfig";
 import { createStoneWallConstructionSite } from "../economy/construction";
 import { placementSpendableResource } from "../world/placement";
 import { snapshotWallConstructionReserve } from "./constructionReserve";
 
-export const PALISADE_REQUIREMENT_TARGETS = {
-  population: 60,
-  granary: 1,
-  chapel: 1,
-  timber: 250,
-} as const;
-
-const STONE_TOWN_REQUIREMENT_TARGETS = {
-  population: 140,
-  market: 1,
-  masonry: 1,
-  stone: 400,
-  coin: 200,
-} as const;
+import type { Condition, ConditionSet } from "../content/scenario/types";
+import type { EraRequirementKey } from "../content/eraConfig";
+import { scenarioOf } from "./scenarioState";
+import { stageDef } from "../content/scenario/registry";
 
 const ERA_REQUIREMENT_LABELS = {
   population: "인구",
@@ -30,9 +19,13 @@ const ERA_REQUIREMENT_LABELS = {
   coin: "금화",
 } as const;
 
-function finishedBuildingCount(state: GameState, kind: BuildingKind): number {
-  return state.buildings.filter((building) => building.kind === kind).length;
-}
+/** Market-town (palisade proclamation) targets of the default scenario, for onboarding copy. */
+export const PALISADE_REQUIREMENT_TARGETS = {
+  population: 60,
+  granary: 1,
+  chapel: 1,
+  timber: 250,
+} as const;
 
 export function spendableTimberForEraRequirement(state: GameState): number {
   return placementSpendableResource(state, "timber");
@@ -42,89 +35,57 @@ export function spendableStoneForEraRequirement(state: GameState): number {
   return placementSpendableResource(state, "stone");
 }
 
-function evaluatePalisadeEraRequirements(state: GameState): readonly EraRequirement[] {
-  const requirements = [
-    {
-      key: "population",
-      current: state.population,
-      target: PALISADE_REQUIREMENT_TARGETS.population,
-    },
-    {
-      key: "granary",
-      current: finishedBuildingCount(state, "granary"),
-      target: PALISADE_REQUIREMENT_TARGETS.granary,
-    },
-    {
-      key: "chapel",
-      current: finishedBuildingCount(state, "chapel"),
-      target: PALISADE_REQUIREMENT_TARGETS.chapel,
-    },
-    {
-      key: "timber",
-      current: spendableTimberForEraRequirement(state),
-      target: PALISADE_REQUIREMENT_TARGETS.timber,
-    },
-  ] as const;
-
-  return requirements.map((requirement) => ({
-    key: requirement.key,
-    label: ERA_REQUIREMENT_LABELS[requirement.key],
-    current: requirement.current,
-    target: requirement.target,
-    met: requirement.current >= requirement.target,
-  }));
+/** One displayed requirement row per proclamation condition; unrepresentable conditions are structural. */
+function requirementRow(state: GameState, condition: Condition): EraRequirement | null {
+  const row = (key: EraRequirementKey, current: number, target: number): EraRequirement =>
+    ({ key, label: ERA_REQUIREMENT_LABELS[key], current, target, met: current >= target });
+  switch (condition.kind) {
+    case "population_at_least": return row("population", state.population, condition.value);
+    case "building_count_at_least": {
+      const key = condition.building;
+      if (key !== "granary" && key !== "chapel" && key !== "market" && key !== "masonry") return null;
+      return row(key, state.buildings.filter((building) => building.kind === key).length, condition.value);
+    }
+    case "spendable_resource_at_least": return condition.resource === "timber"
+      ? row("timber", spendableTimberForEraRequirement(state), condition.value)
+      : row("stone", spendableStoneForEraRequirement(state), condition.value);
+    case "treasury_coin_at_least": return row("coin", state.treasuryCoin, condition.value);
+    default: return null;
+  }
 }
 
-function evaluateStoneTownEraRequirements(state: GameState): readonly EraRequirement[] {
-  const requirements = [
-    {
-      key: "population",
-      current: state.population,
-      target: STONE_TOWN_REQUIREMENT_TARGETS.population,
-    },
-    {
-      key: "market",
-      current: finishedBuildingCount(state, "market"),
-      target: STONE_TOWN_REQUIREMENT_TARGETS.market,
-    },
-    {
-      key: "masonry",
-      current: finishedBuildingCount(state, "masonry"),
-      target: STONE_TOWN_REQUIREMENT_TARGETS.masonry,
-    },
-    {
-      key: "stone",
-      current: spendableStoneForEraRequirement(state),
-      target: STONE_TOWN_REQUIREMENT_TARGETS.stone,
-    },
-    {
-      key: "coin",
-      current: state.treasuryCoin,
-      target: STONE_TOWN_REQUIREMENT_TARGETS.coin,
-    },
-  ] as const;
+function requirementRows(state: GameState, sets: readonly (ConditionSet | undefined)[]): readonly EraRequirement[] {
+  return sets.flatMap(set => set?.all ?? []).flatMap(condition => requirementRow(state, condition) ?? []);
+}
 
-  return requirements.map((requirement) => ({
-    key: requirement.key,
-    label: ERA_REQUIREMENT_LABELS[requirement.key],
-    current: requirement.current,
-    target: requirement.target,
-    met: requirement.current >= requirement.target,
-  }));
+function marketTownRequirements(state: GameState): readonly EraRequirement[] {
+  return requirementRows(state, [stageDef(scenarioOf(state), "market_town").enterWhen]);
+}
+
+/** Stone-wall project (fortified-town) prerequisites; empty rows when the scenario has no stone wall. */
+function stoneWallRequirements(state: GameState): readonly EraRequirement[] {
+  const scenario = scenarioOf(state);
+  return requirementRows(state, [stageDef(scenario, "fortified_town").enterWhen, scenario.walls.stoneWallPrereq]);
+}
+
+export function stoneWallProjectAvailable(state: Pick<GameState, "scenarioId">): boolean {
+  return scenarioOf(state).walls.stoneWall !== "off";
 }
 
 export function evaluateEraRequirements(state: GameState): readonly EraRequirement[] {
   return state.era === "hamlet"
-    ? evaluatePalisadeEraRequirements(state)
-    : evaluateStoneTownEraRequirements(state);
+    ? marketTownRequirements(state)
+    : stoneWallRequirements(state);
 }
 
 export function canProclaimPalisadeEra(state: GameState): boolean {
-  return state.era === "hamlet" && evaluatePalisadeEraRequirements(state).every((requirement) => requirement.met);
+  return state.era === "hamlet" && marketTownRequirements(state).every((requirement) => requirement.met);
 }
 
+/** Opens the optional stone-wall project (K4-1); never available when the scenario turns it off. */
 export function canProclaimStoneTownEra(state: GameState): boolean {
-  return state.era === "palisade" && evaluateStoneTownEraRequirements(state).every((requirement) => requirement.met);
+  return state.era === "palisade" && stoneWallProjectAvailable(state)
+    && stoneWallRequirements(state).every((requirement) => requirement.met);
 }
 
 export function stoneReplacementSiteId(segmentId: string): string {

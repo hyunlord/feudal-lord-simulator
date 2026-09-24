@@ -83,7 +83,8 @@ test("v0 bare states migrate to the latest envelope", () => {
   assert.equal(decoded.envelope.tick, raw.tick);
   assert.equal(decoded.envelope.gameVersion, "unknown (v0 bare state)");
   assert.equal(decoded.envelope.summary.era, "stone_town");
-  assert.deepEqual(decoded.envelope.state, raw);
+  // v4 -> v5 adds only the default scenario (spec SC-14).
+  assert.deepEqual(decoded.envelope.state, { ...raw, scenarioId: "core:campaign_market_town" });
 });
 
 test("migration refuses newer or unknown files", () => {

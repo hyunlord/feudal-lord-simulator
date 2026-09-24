@@ -62,15 +62,17 @@ function withL4Homes(input: GameState): GameState {
   };
 }
 
-test("prosperity waits for actual stone replacement and 1200 uninterrupted ticks", () => {
+test("prosperity needs 1200 uninterrupted ticks but no stone-town era or stone wall (K4-1)", () => {
   const base = withL4Homes(withWall(advance(state(), 600)));
   assert.ok(base.palisade);
-  const replacing = advance({ ...base, era: "stone_town", population: 140, palisade: { ...base.palisade, segments: base.palisade.segments.map(segment => ({ ...segment, replacementConstructionSiteId: "replacement" })) } }, 1200);
-  assert.equal(replacing.settlement?.prosperityTicks, 0);
-  const stone = { ...replacing, palisade: { ...base.palisade, segments: base.palisade.segments.map(segment => ({ ...segment, material: "stone" as const })) } };
-  const almost = advance(stone, 1199);
+  // A market town with a completed timber palisade and no stone wall reaches prosperity.
+  const marketTown = { ...base, era: "palisade" as const, population: 140 };
+  const almost = advance(marketTown, 1199);
   assert.equal(almost.settlement?.outcome, "ongoing");
-  const victory = advance(almost, 1);
+  assert.equal(advance(almost, 1).settlement?.outcome, "victory");
+  // An unfinished stone replacement no longer holds victory back.
+  const replacing = { ...marketTown, era: "stone_town" as const, palisade: { ...base.palisade, segments: base.palisade.segments.map(segment => ({ ...segment, replacementConstructionSiteId: "replacement" })) } };
+  const victory = advance(replacing, 1200);
   assert.equal(victory.settlement?.outcome, "victory");
   assert.equal(advance({ ...victory, population: 0, houses: [] }, 7000).settlement?.outcome, "victory");
 });

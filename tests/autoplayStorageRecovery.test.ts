@@ -9,9 +9,11 @@ import { needsStoneStorageRecovery } from '../src/engine/autoplayStorageRecovery
 import { createConstructionSite } from '../src/economy/construction';
 import { evaluateEraRequirements } from '../src/engine/era';
 import type { GameState } from '../src/engine/engine.types';
+import { underPreK4Unlocks } from './preK4UnlockScenario';
 
 function natural(tick = 504000): GameState {
-  return JSON.parse(gunzipSync(readFileSync(new URL(`./fixtures/storage-recovery/seed5-${tick}.json.gz`, import.meta.url))).toString());
+  // Captured under the pre-K4-1 unlock table (church locked until stone town); see preK4UnlockScenario.ts.
+  return underPreK4Unlocks(JSON.parse(gunzipSync(readFileSync(new URL(`./fixtures/storage-recovery/seed5-${tick}.json.gz`, import.meta.url))).toString()));
 }
 
 test('Given unchanged natural full storage over 24000 ticks When the complete advisor evaluates the stone shortage Then a legal storage recovery action progresses', () => {

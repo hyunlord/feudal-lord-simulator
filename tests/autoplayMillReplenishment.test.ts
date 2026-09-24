@@ -8,9 +8,11 @@ import type { GameState } from '../src/engine/engine.types';
 import { advanceTick } from '../src/engine/tick';
 import { sampleAutoplayDecision } from '../src/ui/autoplayDecisionCache';
 import { shouldRetryAutoplayAfterMillReplenishment } from '../src/engine/autoplayMillReplenishment';
+import { underPreK4Unlocks } from './preK4UnlockScenario';
 
 function naturalTown(): GameState {
-  return JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/mill-replenishment-seed2-324000.json.gz', import.meta.url))).toString());
+  // Captured under the pre-K4-1 unlock table (church locked until stone town); see preK4UnlockScenario.ts.
+  return underPreK4Unlocks(JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/mill-replenishment-seed2-324000.json.gz', import.meta.url))).toString()));
 }
 
 test('natural seed 2 retries a none decision after actual mill replenishment before the next120tick pulse', () => {

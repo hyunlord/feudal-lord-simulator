@@ -1,3 +1,4 @@
+import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
 import {
   createContext,
@@ -73,6 +74,7 @@ export const DEFAULT_GAME_STATE: GameState = {
   nextConstructionOrdinal: 1,
   roadRevision: 0,
   pathCache: {},
+  scenarioId: DEFAULT_SCENARIO_ID,
 };
 
 export const GameStoreContext = createContext<GameStoreContextValue | null>(null);

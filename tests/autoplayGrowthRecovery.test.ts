@@ -78,11 +78,15 @@ test('Stone-town homes lacking water still receive a legal well before more hous
   assert.equal(action.kind === 'place_building' && action.building, 'well');
 });
 
-test('Palisade services never request locked churches, duplicate understaffed markets or pending markets', () => {
+test('Palisade services request the market-town church (K4-1) but never locked churches, duplicate understaffed markets or pending markets', () => {
   const base = fixture();
-  const state = retile({ ...base, era: 'palisade', buildings: base.buildings.filter(b => b.kind !== 'church') });
+  const noChurch = retile({ ...base, era: 'palisade', buildings: base.buildings.filter(b => b.kind !== 'church') });
+  // K4-1 moved the church unlock from the stone-town proclamation to the market-town stage.
+  const church = urbanServiceAction(noChurch);
+  assert.equal(church.kind === 'place_building' ? church.building : church.kind, 'church');
+  assert.deepEqual(urbanServiceAction({ ...noChurch, era: 'hamlet' }), { kind: 'none' });
+  const state = retile({ ...base, era: 'palisade' });
   assert.deepEqual(urbanServiceAction(state), { kind: 'none' });
-  assert.deepEqual(urbanServiceAction({ ...state, era: 'hamlet' }), { kind: 'none' });
   assert.deepEqual(urbanServiceAction({ ...state, buildings: state.buildings.map(b => b.kind === 'market' ? { ...b, workers: 0 } : b) }), { kind: 'none' });
   const missing = retile({ ...state, buildings: state.buildings.filter(b => b.kind !== 'market'),
     constructionSites: [createConstructionSite({ ordinal: 99, kind: 'market', tx: 10, ty: 12, startedTick: 0 })] });
