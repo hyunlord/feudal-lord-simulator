@@ -5,6 +5,7 @@ import { roadPlacementAssessment, roadTimberCost } from '../src/engine/roadPlace
 import { resolveRoadPlacementAttempt } from '../src/render/roadInteractionAttempts';
 import { roadPlacementPrediction } from '../src/ui/placementPrediction';
 import { PlacementFailure } from '../src/world/placement';
+import { canTraverseWallBoundary } from '../src/world/wallTraversal';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 
 const line = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, offset) => ({ tx: from + offset, ty: 2 }));
@@ -72,4 +73,22 @@ test('crossing an existing bridge charges only newly placed water tiles', () => 
   assert.equal(extended.treasuryTimber, 28);
   assert.deepEqual(roadPlacementAssessment(initial, line(0, 6)).newTiles,
     [{ tx: 0, ty: 2 }, { tx: 6, ty: 2 }]);
+});
+
+test('a road drag across a completed palisade keeps pre-F2 placement behavior without opening a new gate', () => {
+  const base = grid();
+  const state = { ...base, palisade: {
+    id: 'completed-wall', polygon: [], gate: { x: 3, y: 5 },
+    segments: [{ id: 'wall-segment', order: 0, gateDistance: 0,
+      edgePath: [{ x: 3, y: 0 }, { x: 3, y: 5 }], tileCount: 5,
+      completed: true, constructionSiteId: null, material: 'timber' as const }],
+  } };
+  const path = line(1, 5);
+  assert.equal(canTraverseWallBoundary(state, path[1]!, path[2]!), false);
+  assert.equal(roadPlacementAssessment(state, path).failure, null);
+  const placed = placeRoadLine(state, path[0]!, path.at(-1)!);
+  assert.notEqual(placed, state);
+  assert.ok(path.every(point => placed.tiles.some(tile => tile.tx === point.tx && tile.ty === point.ty && tile.hasRoad)));
+  assert.deepEqual(placed.palisade?.additionalGates ?? [], []);
+  assert.equal(canTraverseWallBoundary(placed, path[1]!, path[2]!), false);
 });
