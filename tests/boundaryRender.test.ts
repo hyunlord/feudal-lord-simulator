@@ -21,7 +21,7 @@ const { setBoundaryAssetsForTest } = await import("../src/render/boundaryAssets"
 const { BOUNDARY_ASSETS } = await import("../src/render/boundaryAssetManifest");
 const { placeBuilding, placeRoadLine, removeRoad } = await import("../src/engine/gameActions");
 const { completeEligibleConstruction } = await import("../src/engine/constructionLifecycle");
-const { fixedSceneState, seedGroundState } = await import("./boundaryFixtureStates");
+const { fixedSceneState, seedGroundState } = await import("../scripts/boundaryFixtureStates");
 
 const V2_MODULES = [
   "/src/render/drawTerrainBoundaryV2.ts", "/src/render/groundBoundaryScene.ts", "/src/render/groundChunkCache.ts",

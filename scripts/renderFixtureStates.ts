@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 import type { GameState } from "../src/engine/engine.types";
 import { decodeSave } from "../src/save/saveCodec";
+import { fixedSceneState, seedGroundState } from "./boundaryFixtureStates";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const decode = (file: string) => decodeSave(new Uint8Array(readFileSync(resolve(ROOT, file)))).envelope.state;
@@ -20,9 +21,13 @@ function newestSaveFixture(name: string): string {
   return `fixtures/saves/${version}/${name}`;
 }
 
-export function benchmarkCities(): { readonly newgame: null; readonly pop176: GameState; readonly lots24: GameState } {
+export function benchmarkCities(): { readonly newgame: null; readonly pop176: GameState; readonly lots24: GameState;
+  readonly fixed12: GameState; readonly seed2: GameState } {
   return {
     newgame: null,
+    // Curved-ground evidence (D1a): the 12x12 fixed scene on the new-game map, and the seed 2 final city.
+    fixed12: fixedSceneState(),
+    seed2: seedGroundState(2),
     pop176: decode(newestSaveFixture("population-176.save.json")),
     // A bare GameState (schema v0); decodeSave migrates it step by step to the current version.
     lots24: decode("fixtures/determinism/seed1/final-state.json"),

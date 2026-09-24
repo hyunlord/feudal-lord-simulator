@@ -38,7 +38,7 @@ async function measureCell(chromium, states, cell, options) {
   try {
     for (let round = 0; round < options.rounds; round++) {
       const { context, page } = await openScene(browser, { state: states[city], tile: TILES[city], baseUrl: options.url, width, height, dpr,
-        query: options.stages ? '' : '&render-stages=0' });
+        query: (options.stages ? '' : '&render-stages=0') + options.query });
       const errors = []; page.on('pageerror', error => errors.push(error.message));
       const cdp = await context.newCDPSession(page);
       await cdp.send('Performance.enable');
@@ -135,7 +135,9 @@ async function main() {
   if (dirty !== '' && flags['allow-dirty'] !== 'true') throw new Error(`Dirty src/ in measured checkout:\n${dirty}`);
   const chromium = await loadChromium();
   const states = await sceneStates();
-  const options = { url: flags.url ?? 'http://127.0.0.1:4194/', rounds: Number(flags.rounds ?? 3), stages: flags.stages !== '0', trace: flags.trace !== 'false' };
+  // --query appends to the page URL (e.g. `&render-boundary-v2=1`); --label suffixes the output file names.
+  const options = { url: flags.url ?? 'http://127.0.0.1:4194/', rounds: Number(flags.rounds ?? 3), stages: flags.stages !== '0', trace: flags.trace !== 'false',
+    query: flags.query ?? '', label: flags.label === undefined ? '' : `-${flags.label}` };
   const cells = flags.matrix === 'b11' ? B11_MATRIX
     : [{ city: flags.city ?? 'lots24', dpr: Number(flags.dpr ?? 1), camera: flags.camera ?? 'still', cpu: Number(flags.cpu ?? 1), width: Number(flags.width ?? 1280), height: Number(flags.height ?? 800) }];
   const browserVersion = await (async () => { const browser = await chromium.launch({ channel: 'chrome', headless: true }); const version = browser.version(); await browser.close(); return version; })();
@@ -145,10 +147,10 @@ async function main() {
     const record = { name: cellName(cell), commit, dirtySource: dirty !== '', url: options.url, stageProbe: options.stages, browser: browserVersion,
       host: { platform: platform(), release: release(), arch: arch(), cpu: cpus()[0]?.model }, harnessSha256: createHash('sha256').update(await readFile(fileURLToPath(import.meta.url))).digest('hex'),
       protocol: `${options.rounds} rounds × ${WINDOW} draws, round 0 discarded, 1× game speed`, ...result };
-    await writeFile(`${output}/${record.name}${options.stages ? '' : '-nostages'}.json`, `${JSON.stringify(record, null, 2)}\n`);
+    await writeFile(`${output}/${record.name}${options.stages ? '' : '-nostages'}${options.label}.json`, `${JSON.stringify({ ...record, query: options.query }, null, 2)}\n`);
     results.push(record);
   }
-  await writeFile(`${output}/summary.md`, renderSummary(results));
+  await writeFile(`${output}/summary${options.label}.md`, renderSummary(results));
 }
 
 const f1 = value => value === null || value === undefined ? '—' : value.toFixed(1);

@@ -1,4 +1,4 @@
-// Copies the ground-relevant part (tiles, palisade, wheat farms) of the automatic-growth seed 1-5 final states into
+// Copies the ground-relevant part (tiles, palisade, buildings, houses) of the automatic-growth seed 1-5 final states into
 // tests/fixtures/boundary/, so the boundary tolerance tests do not read output/ (AGENTS rule 13).
 // Usage: npx tsx scripts/extractBoundaryFixtures.ts <dir containing seed1..seed5/final-state.json>
 import { createHash } from "node:crypto";
@@ -22,6 +22,8 @@ for (const seed of [1, 2, 3, 4, 5]) {
     buildingIds: state.tiles.flatMap((tile, index) => (tile.buildingId === null ? [] : [[index, tile.buildingId]])),
     palisade: state.palisade,
     farms: state.buildings.filter(building => building.kind === "wheat_farm").map(({ id, kind, tx, ty }) => ({ id, kind, tx, ty })),
+    // Enough of the city to draw it (evidence captures); simulation-only fields are left out.
+    buildings: state.buildings, houses: state.houses, era: state.era,
   };
   writeFileSync(resolve("tests/fixtures/boundary", `seed${seed}-ground.json.gz`), gzipSync(JSON.stringify(fixture)));
   console.log(seed, fixture.farms.length, "farms", fixture.roads.split("1").length - 1, "road tiles");

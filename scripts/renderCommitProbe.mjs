@@ -7,6 +7,7 @@
 //   PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs node scripts/renderCommitProbe.mjs \
 //     [--url http://127.0.0.1:4194/] [--modes headless-gpu,headless-software,headed-gpu,headed-software] \
 //     [--scenes pop176-village,pop176-empty,newgame-village,lots24-town] [--out docs/verification/b11-render-metrics/p-f1.json]
+//     [--query '&render-boundary-v2=1']
 // Headed modes open a visible Chrome window; keep it on screen (occluded windows stop producing frames).
 import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
@@ -154,11 +155,11 @@ async function main() {
     const gpu = await gpuStatus(browser);
     for (const scene of scenes) {
       const { city, tile } = SCENES[scene];
-      const { context, page } = await openScene(browser, { state: states[city], tile, baseUrl: url });
+      const { context, page } = await openScene(browser, { state: states[city], tile, baseUrl: url, query: flags.query ?? '' });
       const raf = await rafMedian(page);
       const trace = await traceMainThread(page);
       const work = await page.evaluate(() => { const w = window.__FEUDAL_PHASE10_PROOF__.diagnosis().work; const s = [...w.frameWorkMs].sort((a, b) => a - b); return { frameWorkMedian: s[Math.floor(s.length / 2)] ?? null }; });
-      rows.push({ mode, scene, gpu, rafMedianMs: raf.median, rafP95Ms: raf.p95, ...work, ...trace });
+      rows.push({ mode, scene, query: flags.query ?? '', gpu, rafMedianMs: raf.median, rafP95Ms: raf.p95, ...work, ...trace });
       console.log(JSON.stringify(rows.at(-1)));
       await context.close();
     }

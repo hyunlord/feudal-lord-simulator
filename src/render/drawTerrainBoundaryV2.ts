@@ -8,7 +8,7 @@ import { drawGroundDecalDetail } from "./drawTerrainDetails";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawHistoricalWater } from "./drawWater";
 import { farmSoilReadiness, preloadFarmAssets } from "./farmAssets";
-import { createGroundChunkCache, groundChunkZoomBucket, type GroundChunkCache } from "./groundChunkCache";
+import { createGroundChunkCache, groundChunkZoomBucket, type ChunkRasterRequest, type GroundChunkCache } from "./groundChunkCache";
 import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { tileToScreen } from "./iso";
@@ -86,25 +86,26 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const readiness = `${boundaryAssetReadiness()}:${TERRAIN_TEXTURE_KEYS.map(key => getSprite(key) === null ? 0 : 1).join("")}`
     + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`;
   const visible = visibleChunks(scene, input.range);
+  const groundRequest = (plan: GroundChunkPlan) => ({
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${readiness}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
+  });
+  const roadRequest = (plan: GroundChunkPlan) => ({
+    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
+  });
   for (const plan of visible) {
-    cache.draw(context, {
-      id: `ground:${plan.cx},${plan.cy}`,
-      contentKey: `${plan.groundKey}|${readiness}|${zoom.toFixed(2)}`,
-      scale, diamond: chunkDiamond(plan),
-    }, paint => drawGroundChunk(paint, input, scene, plan, zoom, waterReady, parts));
+    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, waterReady, parts));
   }
+  schedulePrefetch(context, cache, ringChunks(scene, input.range, visible).flatMap(plan => [
+    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, waterReady, parts) },
+    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, plan) }] : []),
+  ]));
   probe?.enter("terrain.landscape");
   drawTownLandscape(context, input.state, input.tiles);
   probe?.enter("terrain.frontage");
   parts.drawFrontage(context);
   probe?.enter("roads.ground");
   for (const plan of visible) {
-    if (!plan.hasRoads) continue;
-    cache.draw(context, {
-      id: `roads:${plan.cx},${plan.cy}`,
-      contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}`,
-      scale, diamond: chunkDiamond(plan),
-    }, paint => drawRoadRibbons(paint, scene.roads, plan));
+    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paint => drawRoadRibbons(paint, scene.roads, plan));
   }
   for (const tile of input.tiles) if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   probe?.enter("terrain.grounding");
@@ -162,7 +163,45 @@ function chunkDiamond(plan: GroundChunkPlan): readonly [Point, Point, Point, Poi
 }
 type Point = { readonly x: number; readonly y: number };
 
-function visibleChunks(scene: GroundBoundaryScene, range: TileRange): GroundChunkPlan[] {
+type PrefetchJob = { readonly request: ChunkRasterRequest; readonly paint: (context: CanvasRenderingContext2D) => void };
+const prefetchQueues = new WeakMap<CanvasRenderingContext2D, { jobs: PrefetchJob[]; scheduled: boolean }>();
+/** Idle slices shorter than this are left alone (one chunk raster takes a few ms). */
+const PREFETCH_MIN_IDLE_MS = 6;
+
+/**
+ * Rasters the ring of chunks around the view in idle time, nearest first. Each job carries the content key of the
+ * frame that queued it, so a raster made from an older state is simply re-rastered when the key moves on.
+ */
+function schedulePrefetch(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {
+  if (typeof requestIdleCallback !== "function") return;
+  let queue = prefetchQueues.get(context);
+  if (queue === undefined) { queue = { jobs: [], scheduled: false }; prefetchQueues.set(context, queue); }
+  queue.jobs = jobs.filter(job => cache.needs(job.request));
+  if (queue.scheduled || queue.jobs.length === 0) return;
+  queue.scheduled = true;
+  const run = (deadline: IdleDeadline): void => {
+    const current = prefetchQueues.get(context);
+    if (current === undefined) return;
+    while (current.jobs.length > 0 && deadline.timeRemaining() > PREFETCH_MIN_IDLE_MS) {
+      const job = current.jobs.shift() as PrefetchJob;
+      cache.prefetch(job.request, job.paint);
+    }
+    current.scheduled = current.jobs.length > 0;
+    if (current.scheduled) requestIdleCallback(run);
+  };
+  requestIdleCallback(run);
+}
+
+function ringChunks(scene: GroundBoundaryScene, range: TileRange, visible: readonly GroundChunkPlan[]): GroundChunkPlan[] {
+  const grown = { minTx: range.minTx - GROUND_CHUNK_TILES, maxTx: range.maxTx + GROUND_CHUNK_TILES,
+    minTy: range.minTy - GROUND_CHUNK_TILES, maxTy: range.maxTy + GROUND_CHUNK_TILES };
+  const seen = new Set(visible);
+  const centre = { cx: (range.minTx + range.maxTx) / 2 / GROUND_CHUNK_TILES, cy: (range.minTy + range.maxTy) / 2 / GROUND_CHUNK_TILES };
+  return visibleChunks(scene, grown).filter(plan => !seen.has(plan))
+    .sort((a, b) => Math.hypot(a.cx - centre.cx, a.cy - centre.cy) - Math.hypot(b.cx - centre.cx, b.cy - centre.cy) || a.cy - b.cy || a.cx - b.cx);
+}
+
+function visibleChunks(scene: GroundBoundaryScene, range: Pick<TileRange, "minTx" | "maxTx" | "minTy" | "maxTy">): GroundChunkPlan[] {
   const minCx = Math.max(0, Math.floor(range.minTx / GROUND_CHUNK_TILES));
   const maxCx = Math.min(scene.columns - 1, Math.floor(range.maxTx / GROUND_CHUNK_TILES));
   const minCy = Math.max(0, Math.floor(range.minTy / GROUND_CHUNK_TILES));

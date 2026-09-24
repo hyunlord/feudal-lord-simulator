@@ -9,11 +9,12 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //     Zoom inside one 0.05 bucket reuses the raster with a slight resample; crossing a bucket re-rasters (at most
 //     ZOOM_RERASTER_BUDGET chunks per frame; the rest are drawn from their previous zoom until their turn). A
 //     content change is never deferred: that chunk re-rasters in the same frame.
-// (c) Memory bound: MAX_ENTRIES rasters (least recently drawn evicted first). Measured fill cost, hit rates and
-//     pixel totals are in docs/verification/d1a/REPORT.md.
+// (c) Memory bound: the chunks drawn this frame plus OFFSCREEN_ENTRIES more (least recently drawn evicted first).
+//     Chunks in a one-chunk ring around the view are rastered ahead in idle time (prefetch), so a camera drag
+//     reveals rasters that already exist. Measured fill cost, hit rates and pixel totals: docs/verification/d1a.
 
 export const GROUND_CHUNK_ZOOM_STEP = 0.05;
-const MAX_ENTRIES = 64;
+const OFFSCREEN_ENTRIES = 64;
 const ZOOM_RERASTER_BUDGET = 6;
 const EDGE_OVERLAP_PX = 1.5;
 
@@ -42,6 +43,7 @@ type Entry = {
 
 export type GroundChunkCacheStats = {
   hits: number;
+  prefetched: number;
   contentRasters: number;
   zoomRasters: number;
   deferredZoom: number;
@@ -56,6 +58,10 @@ export type GroundChunkCacheStats = {
 export type GroundChunkCache = {
   beginFrame(): void;
   draw(target: CanvasRenderingContext2D, request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): void;
+  /** Rasters a chunk that is not on screen yet (idle time); no-op if an up-to-date raster exists. */
+  prefetch(request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): boolean;
+  /** Whether `prefetch` would raster anything for this request. */
+  needs(request: ChunkRasterRequest): boolean;
   stats(): Readonly<GroundChunkCacheStats>;
   clear(): void;
   /** Tests: the raster currently held for a chunk id. */
@@ -64,9 +70,10 @@ export type GroundChunkCache = {
 
 export function createGroundChunkCache(factory: ChunkCanvasFactory | null = browserChunkCanvas): GroundChunkCache {
   const entries = new Map<string, Entry>();
-  const stats: GroundChunkCacheStats = { hits: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, evictions: 0,
+  const stats: GroundChunkCacheStats = { hits: 0, prefetched: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, evictions: 0,
     rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0 };
   let zoomBudget = ZOOM_RERASTER_BUDGET;
+  const drawnThisFrame = new Set<string>();
   const now = (): number => typeof performance === "undefined" ? 0 : performance.now();
 
   const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): Entry | null => {
@@ -106,9 +113,10 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   const store = (id: string, entry: Entry): void => {
     entries.delete(id);
     entries.set(id, entry);
-    while (entries.size > MAX_ENTRIES) {
-      const oldest = entries.keys().next().value;
-      if (oldest === undefined) break;
+    // Entries iterate oldest first; chunks drawn this frame are never evicted.
+    for (const oldest of entries.keys()) {
+      if (entries.size <= drawnThisFrame.size + OFFSCREEN_ENTRIES) break;
+      if (drawnThisFrame.has(oldest)) continue;
       entries.delete(oldest); stats.evictions += 1;
     }
     stats.entries = entries.size;
@@ -116,8 +124,24 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   };
 
   return {
-    beginFrame() { zoomBudget = ZOOM_RERASTER_BUDGET; stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; },
+    beginFrame() { zoomBudget = ZOOM_RERASTER_BUDGET; stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; drawnThisFrame.clear(); },
+    needs(request) {
+      const entry = entries.get(request.id);
+      return entry === undefined || entry.contentKey !== request.contentKey || entry.scale !== request.scale;
+    },
+    prefetch(request, paint) {
+      if (!this.needs(request)) return false;
+      const started = stats.lastFrameRasterMs; const count = stats.lastFrameRasters;
+      const next = raster(request, paint);
+      // Idle work is not frame work: keep the per-frame counters about frames.
+      stats.lastFrameRasterMs = started; stats.lastFrameRasters = count;
+      if (next === null) return false;
+      stats.prefetched += 1;
+      store(request.id, next);
+      return true;
+    },
     draw(target, request, paint) {
+      drawnThisFrame.add(request.id);
       let entry = entries.get(request.id);
       if (entry !== undefined && entry.contentKey === request.contentKey && entry.scale === request.scale) {
         stats.hits += 1;

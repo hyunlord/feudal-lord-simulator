@@ -7,7 +7,7 @@ import { cellContourLoops, cellOutlineLoops } from "../src/world/boundary/cellCo
 import { outlineTolerance, roadCentrelineTolerance } from "../src/world/boundary/boundaryTolerance";
 import { roadCenterlineGraph } from "../src/world/boundary/roadCenterline";
 import { fieldClusters } from "../src/world/boundary/terrainBoundaries";
-import { BOUNDARY_FIXTURES, fixedSceneState } from "./boundaryFixtureStates";
+import { BOUNDARY_FIXTURES, fixedSceneState } from "../scripts/boundaryFixtureStates";
 
 // D1a gate 1 (tolerance): road ribbon centreline within 0.25 tile of the road cells it runs through; forest and
 // field outlines within 0.35 tile of the tile edges that separate inside from outside. Every fixture.
