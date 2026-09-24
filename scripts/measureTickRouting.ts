@@ -2,12 +2,12 @@
 // of N advanceTick calls on repository fixtures, with each sample attributed to "route search" when its call
 // chain passes through a routing module. Measurement only.
 // Usage: npx tsx scripts/measureTickRouting.ts [--ticks 3000] [--out docs/verification/b11-render-metrics/tick-routing.json]
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { Session } from "node:inspector/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type { GameState } from "../src/engine/engine.types";
+import { benchmarkCities } from "./renderFixtureStates";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const args = process.argv.slice(2);
@@ -23,8 +23,8 @@ export const ROUTING_MODULES = [
 ] as const;
 
 const CITIES = {
-  pop176: () => (JSON.parse(readFileSync(resolve(ROOT, "fixtures/saves/v1/population-176.save.json"), "utf8")) as { state: GameState }).state,
-  lots24: () => JSON.parse(readFileSync(resolve(ROOT, "fixtures/determinism/seed1/final-state.json"), "utf8")) as GameState,
+  pop176: () => benchmarkCities().pop176,
+  lots24: () => benchmarkCities().lots24,
 } as const;
 
 type ProfileNode = { id: number; callFrame: { functionName: string; url: string; lineNumber: number }; children?: number[] };

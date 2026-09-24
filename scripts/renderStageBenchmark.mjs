@@ -9,8 +9,9 @@
 //     --output docs/verification/b11-render-metrics/baseline [--url http://127.0.0.1:4194/] [--matrix b11]
 //   Single cell: --city lots24|pop176|newgame --dpr 1|2 --camera still|drag [--cpu 4] [--width 1280 --height 800]
 //   --stages 0 measures the same loop with the stage probe off (probe overhead).
-// Cities come from repository fixtures only (clean-clone rule): new game = DEFAULT_GAME_STATE,
-// pop176 = fixtures/saves/v1/population-176.save.json, lots24 = fixtures/determinism/seed1/final-state.json.
+// Cities come from repository fixtures only (clean-clone rule), migrated to the current save schema by
+// scripts/renderFixtureStates.ts: new game = DEFAULT_GAME_STATE, pop176 = newest fixtures/saves/vN/population-176,
+// lots24 = fixtures/determinism/seed1/final-state.json (24 lots, all L4).
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';

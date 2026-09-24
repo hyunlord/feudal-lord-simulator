@@ -1,0 +1,516 @@
+{
+  "name": "newgame-1280x800-dpr2-cpu1-still",
+  "commit": "92f0760ae338e7d09d7bcbcbd185dcd89b315f54",
+  "dirtySource": false,
+  "url": "http://127.0.0.1:4194/",
+  "stageProbe": true,
+  "browser": "153.0.8010.53",
+  "host": {
+    "platform": "darwin",
+    "release": "25.4.0",
+    "arch": "arm64",
+    "cpu": "Apple M4 Max"
+  },
+  "harnessSha256": "774e341f5174ba4ae9085d813244223515d04b6f213747bdc490781b0648cc14",
+  "protocol": "3 rounds × 240 draws, round 0 discarded, 1× game speed",
+  "city": "newgame",
+  "dpr": 2,
+  "camera": "still",
+  "cpu": 1,
+  "frameWork": {
+    "count": 480,
+    "median": 20.200000047683716,
+    "p95": 22.399999976158142,
+    "mean": 20.07520833313465
+  },
+  "tickWork": {
+    "count": 266,
+    "median": 0.20000004768371582,
+    "p95": 0.40000009536743164,
+    "mean": 0.21616541443014503
+  },
+  "raf": {
+    "count": 480,
+    "median": 33.30000000000018,
+    "p95": 33.400000000000546,
+    "mean": 27.776458333333338
+  },
+  "effectiveSpeed": 0.9975473835007163,
+  "stageCoverage": 0.9997094260299152,
+  "stages": {
+    "frame.setup": {
+      "count": 480,
+      "median": 0,
+      "p95": 0.10000002384185791,
+      "mean": 0.015833333879709244
+    },
+    "frame.placementPreview": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0.002708333730697632
+    },
+    "frame.clear": {
+      "count": 480,
+      "median": 0,
+      "p95": 0.10000002384185791,
+      "mean": 0.01437499796350797
+    },
+    "objects.sort": {
+      "count": 480,
+      "median": 0.7999999523162842,
+      "p95": 1.100000023841858,
+      "mean": 0.5356249985595544
+    },
+    "terrain.water": {
+      "count": 480,
+      "median": 0.10000002384185791,
+      "p95": 0.10000002384185791,
+      "mean": 0.06812500233451525
+    },
+    "terrain.fill": {
+      "count": 480,
+      "median": 1.8000000715255737,
+      "p95": 2.200000047683716,
+      "mean": 1.871875
+    },
+    "terrain.seams": {
+      "count": 480,
+      "median": 0.3999999761581421,
+      "p95": 0.5,
+      "mean": 0.3885416646798452
+    },
+    "terrain.landscape": {
+      "count": 480,
+      "median": 0,
+      "p95": 0.10000002384185791,
+      "mean": 0.015416667113701503
+    },
+    "terrain.frontage": {
+      "count": 480,
+      "median": 0.10000002384185791,
+      "p95": 0.20000004768371582,
+      "mean": 0.11458333532015483
+    },
+    "roads.ground": {
+      "count": 480,
+      "median": 0.19999992847442627,
+      "p95": 0.2999999523162842,
+      "mean": 0.17291666666666666
+    },
+    "terrain.grounding": {
+      "count": 480,
+      "median": 1.100000023841858,
+      "p95": 1.2999999523162842,
+      "mean": 1.1199999985595543
+    },
+    "farmland": {
+      "count": 480,
+      "median": 0,
+      "p95": 0.10000002384185791,
+      "mean": 0.017083332935969035
+    },
+    "roads.overlay": {
+      "count": 480,
+      "median": 0.10000002384185791,
+      "p95": 0.20000004768371582,
+      "mean": 0.14354166587193806
+    },
+    "buildings": {
+      "count": 480,
+      "median": 0.09999990463256836,
+      "p95": 0.20000004768371582,
+      "mean": 0.074166668454806
+    },
+    "nature": {
+      "count": 480,
+      "median": 1.2999999523162842,
+      "p95": 1.600000023841858,
+      "mean": 1.2999999980131784
+    },
+    "construction": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0
+    },
+    "walls": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0
+    },
+    "bridges": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0
+    },
+    "walkers": {
+      "count": 480,
+      "median": 0,
+      "p95": 0.10000002384185791,
+      "mean": 0.040416668107112246
+    },
+    "effects": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0.002083332588275274
+    },
+    "overlay.mode": {
+      "count": 480,
+      "median": 0,
+      "p95": 0.10000002384185791,
+      "mean": 0.009166666368643443
+    },
+    "overlay.wallDraft": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0.0004166667660077413
+    },
+    "overlay.placement": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0.001874999205271403
+    },
+    "overlay.cause": {
+      "count": 480,
+      "median": 0.10000002384185791,
+      "p95": 0.20000004768371582,
+      "mean": 0.08895833765467008
+    },
+    "overlay.onboarding": {
+      "count": 480,
+      "median": 14.300000071525574,
+      "p95": 15.599999904632568,
+      "mean": 14.067083331694205
+    },
+    "overlay.feedback": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0.0039583335320154825
+    },
+    "overlay.constructionAccess": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0
+    },
+    "frame.publish": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0.000625000149011612
+    }
+  },
+  "calls": {
+    "drawImage": {
+      "count": 480,
+      "median": 778,
+      "p95": 779,
+      "mean": 778.3
+    },
+    "fill": {
+      "count": 480,
+      "median": 6206,
+      "p95": 6207,
+      "mean": 6205.979166666667
+    },
+    "stroke": {
+      "count": 480,
+      "median": 160,
+      "p95": 160,
+      "mean": 159.7125
+    },
+    "fillRect": {
+      "count": 480,
+      "median": 6,
+      "p95": 6,
+      "mean": 5.9
+    },
+    "clip": {
+      "count": 480,
+      "median": 0,
+      "p95": 0,
+      "mean": 0
+    },
+    "beginPath": {
+      "count": 480,
+      "median": 6018,
+      "p95": 6019,
+      "mean": 6017.979166666667
+    }
+  },
+  "callsByStage": {
+    "frame.setup": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "frame.placementPreview": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "frame.clear": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 1,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "objects.sort": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "terrain.water": {
+      "drawImage": 0,
+      "fill": 4,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 4
+    },
+    "terrain.fill": {
+      "drawImage": 0,
+      "fill": 3147,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 3147
+    },
+    "terrain.seams": {
+      "drawImage": 0,
+      "fill": 402,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 206
+    },
+    "terrain.landscape": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "terrain.frontage": {
+      "drawImage": 0,
+      "fill": 24,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 24
+    },
+    "roads.ground": {
+      "drawImage": 0,
+      "fill": 63,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 63
+    },
+    "terrain.grounding": {
+      "drawImage": 0,
+      "fill": 2402,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 2402
+    },
+    "farmland": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "roads.overlay": {
+      "drawImage": 0,
+      "fill": 14,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 14
+    },
+    "buildings": {
+      "drawImage": 8,
+      "fill": 4,
+      "stroke": 4,
+      "fillRect": 1,
+      "clip": 0,
+      "beginPath": 4
+    },
+    "nature": {
+      "drawImage": 768.14375,
+      "fill": 141.7125,
+      "stroke": 141.7125,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 141.7125
+    },
+    "construction": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "walls": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "bridges": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "walkers": {
+      "drawImage": 2.15625,
+      "fill": 1.2666666666666666,
+      "stroke": 0,
+      "fillRect": 0.9,
+      "clip": 0,
+      "beginPath": 1.2666666666666666
+    },
+    "effects": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "overlay.mode": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "overlay.wallDraft": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "overlay.placement": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "overlay.cause": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 8,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 8
+    },
+    "overlay.onboarding": {
+      "drawImage": 0,
+      "fill": 3,
+      "stroke": 6,
+      "fillRect": 3,
+      "clip": 0,
+      "beginPath": 3
+    },
+    "overlay.feedback": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "overlay.constructionAccess": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    },
+    "frame.publish": {
+      "drawImage": 0,
+      "fill": 0,
+      "stroke": 0,
+      "fillRect": 0,
+      "clip": 0,
+      "beginPath": 0
+    }
+  },
+  "visibleTiles": 1167,
+  "objects": {
+    "tree": 798,
+    "groundCover": 44,
+    "building": 8,
+    "walker": 2,
+    "starting_landmark": 1
+  },
+  "rasterCachePerWindow": [
+    {
+      "hits": 0,
+      "misses": 0,
+      "rasterMs": 0
+    },
+    {
+      "hits": 0,
+      "misses": 0,
+      "rasterMs": 0
+    }
+  ],
+  "heapUsedMB": {
+    "before": [
+      16.619647979736328,
+      16.787967681884766
+    ],
+    "after": [
+      36.583927154541016,
+      24.172283172607422
+    ]
+  },
+  "trace": {
+    "windowMs": 3000,
+    "busyMs": 2975,
+    "idleMs": 25,
+    "canvasRafMs": 2199,
+    "scriptOutsideRafMs": 463,
+    "commitMs": 260,
+    "styleLayoutPaintMs": 23,
+    "gcMs": 38,
+    "rafCount": 215
+  },
+  "errors": []
+}

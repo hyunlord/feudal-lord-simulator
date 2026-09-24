@@ -1,0 +1,331 @@
+{
+  "url": "http://127.0.0.1:4194/",
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "dpr": 1
+  },
+  "measuredAt": "2026-09-24T11:02:29.060Z",
+  "rows": [
+    {
+      "mode": "headless-gpu",
+      "scene": "pop176-village",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 16.700000000000273,
+      "frameWorkMedian": 5.100000023841858,
+      "windowMs": 3000,
+      "commitMs": 327,
+      "functionCallMs": 1590,
+      "animationFrameMs": 942,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 2018
+    },
+    {
+      "mode": "headless-gpu",
+      "scene": "pop176-empty",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 16.799999999999727,
+      "frameWorkMedian": 4.399999976158142,
+      "windowMs": 3000,
+      "commitMs": 284,
+      "functionCallMs": 1471,
+      "animationFrameMs": 821,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 1849
+    },
+    {
+      "mode": "headless-gpu",
+      "scene": "newgame-village",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 33.40000000000009,
+      "frameWorkMedian": 16.09999990463257,
+      "windowMs": 3000,
+      "commitMs": 285,
+      "functionCallMs": 2660,
+      "animationFrameMs": 2260,
+      "paintMs": 6,
+      "layoutMs": 8,
+      "runTaskMs": 2991
+    },
+    {
+      "mode": "headless-gpu",
+      "scene": "lots24-town",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 33.30000000000018,
+      "frameWorkMedian": 10.100000023841858,
+      "windowMs": 3000,
+      "commitMs": 409,
+      "functionCallMs": 2445,
+      "animationFrameMs": 1944,
+      "paintMs": 7,
+      "layoutMs": 8,
+      "runTaskMs": 2925
+    },
+    {
+      "mode": "headless-software",
+      "scene": "pop176-village",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 33.20000000000027,
+      "rafP95Ms": 33.40000000000009,
+      "frameWorkMedian": 5.200000047683716,
+      "windowMs": 3000,
+      "commitMs": 1862,
+      "functionCallMs": 1085,
+      "animationFrameMs": 710,
+      "paintMs": 6,
+      "layoutMs": 8,
+      "runTaskMs": 2970
+    },
+    {
+      "mode": "headless-software",
+      "scene": "pop176-empty",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 33.40000000000009,
+      "frameWorkMedian": 4.599999904632568,
+      "windowMs": 3000,
+      "commitMs": 1649,
+      "functionCallMs": 1297,
+      "animationFrameMs": 661,
+      "paintMs": 6,
+      "layoutMs": 8,
+      "runTaskMs": 2988
+    },
+    {
+      "mode": "headless-software",
+      "scene": "newgame-village",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 33.399999999999636,
+      "rafP95Ms": 50,
+      "frameWorkMedian": 17.199999928474426,
+      "windowMs": 3000,
+      "commitMs": 1214,
+      "functionCallMs": 1728,
+      "animationFrameMs": 1365,
+      "paintMs": 7,
+      "layoutMs": 8,
+      "runTaskMs": 2982
+    },
+    {
+      "mode": "headless-software",
+      "scene": "lots24-town",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 33.400000000000546,
+      "rafP95Ms": 50.09999999999991,
+      "frameWorkMedian": 11.400000095367432,
+      "windowMs": 3000,
+      "commitMs": 1542,
+      "functionCallMs": 1401,
+      "animationFrameMs": 964,
+      "paintMs": 7,
+      "layoutMs": 8,
+      "runTaskMs": 2981
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "pop176-village",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 8.400000000000091,
+      "rafP95Ms": 16.700000000000273,
+      "frameWorkMedian": 4.899999976158142,
+      "windowMs": 3000,
+      "commitMs": 578,
+      "functionCallMs": 2279,
+      "animationFrameMs": 1609,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 2954
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "pop176-empty",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 8.300000000000182,
+      "rafP95Ms": 10.300000000000182,
+      "frameWorkMedian": 4.100000023841858,
+      "windowMs": 3000,
+      "commitMs": 547,
+      "functionCallMs": 2127,
+      "animationFrameMs": 1468,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 2786
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "newgame-village",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 23.800000000000182,
+      "rafP95Ms": 33.099999999999454,
+      "frameWorkMedian": 15.899999976158142,
+      "windowMs": 3000,
+      "commitMs": 287,
+      "functionCallMs": 2658,
+      "animationFrameMs": 2269,
+      "paintMs": 6,
+      "layoutMs": 8,
+      "runTaskMs": 2993
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "lots24-town",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.700000000000273,
+      "rafP95Ms": 26.300000000000182,
+      "frameWorkMedian": 9.899999976158142,
+      "windowMs": 3000,
+      "commitMs": 430,
+      "functionCallMs": 2504,
+      "animationFrameMs": 2015,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 2996
+    },
+    {
+      "mode": "headed-software",
+      "scene": "pop176-village",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 24.600000000000364,
+      "rafP95Ms": 33.59999999999991,
+      "frameWorkMedian": 5.299999952316284,
+      "windowMs": 3000,
+      "commitMs": 1827,
+      "functionCallMs": 1111,
+      "animationFrameMs": 700,
+      "paintMs": 7,
+      "layoutMs": 9,
+      "runTaskMs": 2961
+    },
+    {
+      "mode": "headed-software",
+      "scene": "pop176-empty",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 17.800000000000182,
+      "rafP95Ms": 27,
+      "frameWorkMedian": 4.400000095367432,
+      "windowMs": 3000,
+      "commitMs": 1653,
+      "functionCallMs": 1292,
+      "animationFrameMs": 664,
+      "paintMs": 6,
+      "layoutMs": 8,
+      "runTaskMs": 2989
+    },
+    {
+      "mode": "headed-software",
+      "scene": "newgame-village",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 35.19999999999982,
+      "rafP95Ms": 48.69999999999982,
+      "frameWorkMedian": 17.09999990463257,
+      "windowMs": 3000,
+      "commitMs": 1216,
+      "functionCallMs": 1715,
+      "animationFrameMs": 1366,
+      "paintMs": 7,
+      "layoutMs": 8,
+      "runTaskMs": 2958
+    },
+    {
+      "mode": "headed-software",
+      "scene": "lots24-town",
+      "gpu": {
+        "canvas": "Software only, hardware acceleration un",
+        "rasterization": "Software only. Hardware acceleration di",
+        "compositing": "Software only. Hardware acceleration di",
+        "glRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), Swi"
+      },
+      "rafMedianMs": 41.19999999999982,
+      "rafP95Ms": 50.30000000000018,
+      "frameWorkMedian": 11.5,
+      "windowMs": 3000,
+      "commitMs": 1520,
+      "functionCallMs": 1408,
+      "animationFrameMs": 965,
+      "paintMs": 7,
+      "layoutMs": 9,
+      "runTaskMs": 2958
+    }
+  ]
+}

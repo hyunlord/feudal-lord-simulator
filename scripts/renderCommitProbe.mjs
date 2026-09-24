@@ -8,7 +8,7 @@
 //     [--url http://127.0.0.1:4194/] [--modes headless-gpu,headless-software,headed-gpu,headed-software] \
 //     [--scenes pop176-village,pop176-empty,newgame-village,lots24-town] [--out docs/verification/b11-render-metrics/p-f1.json]
 // Headed modes open a visible Chrome window; keep it on screen (occluded windows stop producing frames).
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -23,13 +23,11 @@ export async function loadChromium(path = flags.playwright ?? process.env.PLAYWR
   return (await import(path.startsWith('/') ? pathToFileURL(path).href : path)).chromium;
 }
 
+/** Benchmark cities migrated to the current save schema (scripts/renderFixtureStates.ts via tsx). */
 export async function sceneStates() {
-  const envelope = async file => JSON.parse(await readFile(resolve(ROOT, file), 'utf8')).state;
-  return {
-    newgame: null,
-    pop176: await envelope('fixtures/saves/v1/population-176.save.json'),
-    lots24: JSON.parse(await readFile(resolve(ROOT, 'fixtures/determinism/seed1/final-state.json'), 'utf8')),
-  };
+  const { execFileSync } = await import('node:child_process');
+  const tsx = resolve(ROOT, 'node_modules/.bin/tsx');
+  return JSON.parse(execFileSync(tsx, [resolve(ROOT, 'scripts/renderFixtureStates.ts')], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 2 ** 20 }));
 }
 const SCENES = {
   'pop176-village': { city: 'pop176', tile: [46, 39] },
