@@ -3,7 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import type { GameState } from '../src/engine/engine.types';
-import { foodAction } from '../src/engine/autoplayFood';
+import { decideNextAction } from '../src/engine/autoplay';
 import { measuredFoodDecision } from '../src/engine/autoplayFoodMeasuredDecision';
 import type { FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
 
@@ -12,8 +12,8 @@ test('R-T15 an observed transport bottleneck yields a bounded recovery action in
   const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/wheat-transport-seed1.json.gz', import.meta.url))).toString());
   assert.equal(measuredFoodDecision(state).reason, 'wheat_transport_blocked');
   const diagnostic: FoodDiagnosticCollector = {};
-  // When the actual food planner evaluates it.
-  const action = foodAction(state, () => ({ kind: 'none' }), diagnostic);
+  // When the full advisor evaluates it through its actual priority and search budget.
+  const action = decideNextAction(state, { maxHousingLots: 24 }, diagnostic);
   // Then the cause has an actionable response rather than an eternal none.
   assert.notEqual(action.kind, 'none');
   assert.equal(diagnostic.food?.reason, 'transport_capacity_selected');
@@ -28,10 +28,10 @@ test('R-T15 normal construction and deliveries clear every empty home within 240
   const startedTick = state.tick;
   let firstSuppliedTick: number | null = null;
   const placements: string[] = [];
-  // When normal ticks execute the food advisor's real actions every 120 ticks.
+  // When normal ticks execute the complete advisor's real actions every 120 ticks.
   for (let tick = 0; tick < 24000; tick += 1) {
     if (state.tick % 120 === 0) {
-      const action = foodAction(state, () => ({ kind: 'none' }));
+      const action = decideNextAction(state, { maxHousingLots: 24 });
       const command = autoplayActionToGameAction(action, state);
       if (command !== null) {
         if (action.kind === 'place_building') placements.push(action.building);
