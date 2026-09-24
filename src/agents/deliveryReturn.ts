@@ -1,3 +1,5 @@
+import { constructionReturnDestination } from './constructionReturnDestination';
+import { acceptsResource } from '../economy/storage';
 import type { Building } from "../content/buildingConfig";
 import {
   amountOf,
@@ -153,6 +155,10 @@ export function canCompleteReturn(
   if (carter.reservation.sourceStockClaim?.kind === "treasury") return true;
   const home = findBuilding(buildings, carter.homeBuildingId);
   if (home === null) return false;
+  // S6-F5: cancelled construction cargo must release its carrier even when
+  // warehouse capacity was consumed while the shipment was travelling.
+  if (carter.cancellation !== null && carter.destination.kind === "construction_site"
+    && acceptsResource(home.kind, carter.cargo.resource)) return true;
   const claimedSpace = heldReturnCapacity(home, carter);
   return inventory.availableSpace(home) + claimedSpace >= carter.cargo.amount;
 }
@@ -190,9 +196,10 @@ export function cancelCarter(
     ...carter,
     cancellation: { tick, reason, releasedReservation: true },
   };
+  const destination = constructionReturnDestination(released.buildings, cancelled, { inventory, routes });
   const recovery = carter.cancellation === null
-    ? reserveReturnCapacity(released.buildings, cancelled, inventory)
-    : { buildings: released.buildings, carter: cancelled };
+    ? reserveReturnCapacity(destination.buildings, destination.carter, inventory)
+    : destination;
   const recoveryState = { ...released, buildings: recovery.buildings };
   const recoveryCarter = recovery.carter;
   const path = returnPath(recoveryState.buildings, recoveryCarter, routes);

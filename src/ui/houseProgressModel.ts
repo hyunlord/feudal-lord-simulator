@@ -1,3 +1,4 @@
+import { storageOverflowCause } from './storageOverflowModel';
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSING_CONFIG, type HousingRequirement } from '../content/housingConfig';
@@ -126,6 +127,8 @@ function deriveFacility(state: GameState, building: Building): BuildingCausePres
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
   if (building.operationPaused === true) return { buildingId: building.id, name: definition.name, status: 'blocked',
     blocker: { causeId: 'operation_paused', requirement: 'production', reason: 'paused', label: BUILDING_OPERATION_COPY.paused }, summary: BUILDING_OPERATION_COPY.paused };
+  const overflow = storageOverflowCause(building);
+  if (overflow !== null) return { buildingId: building.id, name: definition.name, status: 'blocked', blocker: overflow, summary: overflow.label };
   const marker = problemMarkerKind({ kind: building.kind, visualState: buildBuildingVisualState(building, []) });
   if (marker === null) return { buildingId: building.id, name: definition.name, status: 'normal', blocker: null, summary: `${definition.name} 운영 정보` };
   const road = buildingHasRequiredRoadAccess(state, building);

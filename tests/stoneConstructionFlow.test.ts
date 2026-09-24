@@ -26,7 +26,7 @@ test('R-T8: stone order zero without a route does not block supplied later sites
     { era: 'stone_town', tick: 5000, eraProclaimedTick: 0 });
   assert.equal(allocation.constructionSites[0]?.stall, 'no_route');
   assert.ok(allocation.constructionSites.slice(1).every(site => site.assignedBuilders === 3));
-  let state: GameState = { ...DEFAULT_GAME_STATE, constructionSites: allocation.constructionSites };
+  let state: GameState = { ...DEFAULT_GAME_STATE, constructionSites: [...allocation.constructionSites] };
   for (let tick = 0; tick < 3000; tick += 1) state = { ...state, constructionSites: advanceConstructionSites(state) };
   assert.equal(state.constructionSites[0]?.builderTicks, 0);
   assert.ok(state.constructionSites.slice(1).every(site => site.builderTicks === site.requiredBuilderTicks));
@@ -52,4 +52,14 @@ test('R-T9: the existing stone replacement sites share one anchored wall carry r
   const source = state.buildings.find(building => building.kind === 'storehouse');
   assert.ok(source);
   assert.ok(sites.every(site => resolveBuildingToConstructionSiteRoute(state, source, site).path !== null));
+});
+
+test('R-T17: prepared sixteen-segment stone replacement progresses around one blocked segment', () => {
+  const sites = Array.from({ length: 16 }, (_, order) => ({ ...stone(order),
+    delivered: order === 0 ? {} : stone(order).required,
+    assignedBuilders: order === 0 ? 0 : 3, stall: order === 0 ? 'no_route' as const : 'none' as const }));
+  let state: GameState = { ...DEFAULT_GAME_STATE, constructionSites: sites };
+  for (let tick = 0; tick < 3000; tick += 1) state = { ...state, constructionSites: advanceConstructionSites(state) };
+  assert.equal(state.constructionSites.filter(site => site.builderTicks === site.requiredBuilderTicks).length, 15);
+  assert.equal(state.constructionSites[0]?.stall, 'no_route');
 });

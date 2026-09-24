@@ -1,3 +1,4 @@
+import { storageOverflowCause } from '../ui/storageOverflowModel';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { ResourceType } from "../content/resourceConfig";
@@ -75,7 +76,9 @@ export function buildingInspectorModel(
     .join(" · ") || "없음";
   const problemCause = buildingProblemCause(state, building.id);
   const usage = building.kind === 'storehouse' || building.kind === 'granary' ? storageUsage(building) : null;
+  const overflow = storageOverflowCause(building);
   const rows = [
+    ...(overflow === null ? [] : [overflow.label]),
     ...(usage === null ? [] : [
       `보관 ${usage.used} + 입고 예약 ${usage.incoming} / 한도 ${usage.capacity}`,
       ...usage.byResource.map(item => `${RESOURCE_NAMES[item.resource]} ${item.stored} + 입고 예약 ${item.incoming} / 공동 한도 ${usage.capacity}`),
