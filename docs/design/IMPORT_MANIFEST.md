@@ -62,3 +62,7 @@ v3-B 본문은 아래 보조 메모·도판을 참조하지만 ZIP에 없고 현
 | `claude_B1/ASSET_PLAN_v1.md` | [ASSET_PLAN.md](ASSET_PLAN.md) | 8221 | `e39fd8a0fb58fdc46635ea00c7644a5dd5f53f554b70361b8f92b3269c357e08` |
 | `claude_B1/research_content_catalog_2026-09-24.md` | [../research/2026-09-24-content-catalog.md](../research/2026-09-24-content-catalog.md) | 77873 | `537726b262d0d1306d4e9ad69388e5ffe248864dd8bf361da4296b0787631029` |
 | (S0 `ROADMAP_v2.3.md`, 보존) | [ROADMAP_v2.3.md](ROADMAP_v2.3.md) | 12169 | `002096be6851b74babd97311c691f4820ce0d2327062ac47ae27e85a670c2c80` |
+
+## B2 로드맵 정정 (2026-09-24)
+
+B2 첨부 `ROADMAP_v3.md`는 B1에서 설치한 `ROADMAP.md`와 바이트가 같다(`9cf46da3…`). v2.3의 `## 결정 기록 (2026-09-24)` 절(D1~D7, 2줄)을 v3 끝에 그대로 옮겨 붙였다. 결과 [ROADMAP.md](ROADMAP.md)는 9,999바이트, SHA-256 `c7c7d3ebb04f77f549db23608a0a964345f7df122cae7033d88bd2060607f0ae`. v2.3 원문은 [ROADMAP_v2.3.md](ROADMAP_v2.3.md)에 그대로 있다.
