@@ -6,7 +6,8 @@ import { constructionAccessModel, currentConstructionSiteLabel, suggestedConstru
 import type { GameState } from '../src/engine/engine.types';
 import { advanceTick } from '../src/engine/tick';
 import { placeRoadLine } from '../src/engine/gameActions';
-import { buildingRoadAccessTiles, resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
+import { constructionRoadAction } from '../src/engine/autoplayConstructionRoads';
+import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles, resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 import { wallCarryRoute } from '../src/engine/wallCarryRoute';
 import { WALL_CARRY_COST_FACTOR } from '../src/content/wallConstructionConfig';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../src/engine/simulationPorts';
@@ -67,6 +68,17 @@ test('T2: one road line from a reachable source to one ring segment supplies all
     && constructionAccessModel(state, site).cause === 'none'
     && currentConstructionSiteLabel(state, site).includes('벽을 따라 운반'));
   assert.ok(carried !== undefined);
+});
+
+test('autoplay does not pave every wall segment after one anchor supplies the ring', () => {
+  const state = connectedNaturalState();
+  const source = state.buildings.find(building => building.kind === 'storehouse');
+  assert.ok(source);
+  const sites = state.constructionSites.filter(site => site.kind === 'palisade_segment');
+  assert.equal(sites.length, 12);
+  assert.ok(sites.every(site => resolveBuildingToConstructionSiteRoute(state, source, site).path !== null));
+  assert.ok(sites.some(site => constructionSiteRoadAccessTiles(state, site).length === 0));
+  assert.deepEqual(constructionRoadAction(state), { kind: 'none' });
 });
 
 test('a newly occupied wall-side tile invalidates a cached construction route', () => {

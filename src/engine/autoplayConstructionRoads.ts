@@ -7,14 +7,20 @@ import { isBuildingConstructionSite } from '../economy/construction';
 import { canTraverseRoadBoundary } from '../world/bridges';
 import { canPlaceRoad, existingRoadComponent } from '../world/roadGraph';
 import { getTile, type TileCoordinate } from '../world/grid';
-import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles } from './routing';
+import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles, resolveBuildingToConstructionSiteRoute } from './routing';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 
 const key = (tile: TileCoordinate): string => `${tile.tx},${tile.ty}`;
 
 export function constructionRoadAction(state: GameState): AutoplayAction {
-  const stalled = state.constructionSites.filter(site => site.stall === 'no_route' || constructionSiteRoadAccessTiles(state, site).length === 0);
+  const sources = autoplayConstructionSources(state);
+  const stalled = state.constructionSites.filter(site => {
+    if (site.stall === 'no_route') return true;
+    if (constructionSiteRoadAccessTiles(state, site).length > 0) return false;
+    return isBuildingConstructionSite(site) || !sources.some(source =>
+      resolveBuildingToConstructionSiteRoute(state, source, site).path !== null);
+  });
   if (stalled.length === 0) return { kind: 'none' };
   const allRoads = { ...state, tiles: state.tiles.map(tile => ({ ...tile, hasRoad: true })) };
   return roadActionToTargets(state, stalled.flatMap(site => constructionSiteRoadAccessTiles(allRoads, site)));
