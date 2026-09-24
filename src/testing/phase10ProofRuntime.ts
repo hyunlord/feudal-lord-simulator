@@ -113,7 +113,8 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
   if (!phase10ProofEnabled(input.location)) return () => {};
   const spriteDrawProbe = installWorldSpriteDrawProbe();
   const workProbe = installProofFrameWork();
-  const context = input.canvas.getContext("2d");
+  // Test doubles of the canvas may not implement getContext; the port then works without stage timing.
+  const context = typeof input.canvas.getContext === "function" ? input.canvas.getContext("2d") : null;
   // `&render-stages=0` keeps the proof port but skips stage timing, to measure the probe's own cost.
   const stagesEnabled = new URLSearchParams(input.location.search).get("render-stages") !== "0";
   const stageProbe = context === null || !stagesEnabled ? null : installRenderStageProbe(context);
