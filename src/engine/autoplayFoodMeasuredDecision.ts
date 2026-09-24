@@ -61,6 +61,12 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
     }
     return { kind: null, reason: 'wheat_transport_blocked' };
   }
+  const mills = facilities.filter(b => b.kind === 'mill');
+  const bufferedMillDeficit = wheatMarginDeficit && breadDeficit > 0
+    && sample.eligibleMillTicks > 0 && sample.rawStarvedTicks / sample.eligibleMillTicks < 0.2
+    && mills.length > 0 && mills.every(b => (b.inventory.wheat ?? 0) > 0)
+    && stockedWheat >= Math.max(0, sample.wheatConsumed * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR - sample.wheatProduced, rawDeficit);
+  if (bufferedMillDeficit) return { kind: 'mill', reason: 'actual_bread_deficit' };
   if (wheatMarginDeficit) return { kind: 'wheat_farm', reason: 'actual_wheat_deficit' };
   if (rawDeficit > (missedMeals ? 0 : stockedWheat) || (sample.breadProduced === 0 && stockedWheat === 0)) {
     return { kind: 'wheat_farm', reason: 'actual_wheat_deficit' };

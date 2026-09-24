@@ -94,3 +94,18 @@ test('E2 Given twenty percent production margin When measured Then the food advi
   assert.equal(metrics.breadProduced >= metrics.requestedBread * REQUIRED_MARGIN_FACTOR, true);
   assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'food_supply_sufficient' });
 });
+
+test('a wheat margin warning chooses mill capacity when stocked mills are the immediate bread bottleneck', () => {
+  const state = observeFoodMargin({
+    wheatProduced: 726,
+    wheatConsumed: 722,
+    breadProduced: 361,
+    requestedBread: 375,
+    consumedBread: 362,
+    wheatExported: 5,
+    breadExported: 0,
+    rawStarvedTicks: 1300,
+    eligibleMillTicks: 12000,
+  });
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'mill', reason: 'actual_bread_deficit' });
+});
