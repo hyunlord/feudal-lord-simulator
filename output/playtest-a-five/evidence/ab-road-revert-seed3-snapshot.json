@@ -1,0 +1,51 @@
+{
+  "isolation": "same comparator; read-only debugger snapshot, not final outcome",
+  "tick": 703610,
+  "era": "palisade",
+  "l4": 0,
+  "wallSites": 10,
+  "stalls": {
+    "reserve_held": 10
+  },
+  "treasuryTimber": 0,
+  "loggingCamp": {
+    "logs": 20
+  },
+  "sawmill": {
+    "logs": 1
+  },
+  "stores": [
+    {
+      "id": "storehouse-41-40-0",
+      "inventory": {
+        "timber": 36,
+        "stone_raw": 13,
+        "stone": 151
+      }
+    },
+    {
+      "id": "construction-site-000016",
+      "inventory": {
+        "stone": 200
+      }
+    }
+  ],
+  "reserve": {
+    "resource": "timber",
+    "sources": [
+      {
+        "id": "construction-site-000001",
+        "floor": 1
+      },
+      {
+        "id": "construction-site-000016",
+        "floor": 11
+      },
+      {
+        "id": "storehouse-41-40-0",
+        "floor": 50
+      }
+    ],
+    "proclaimedTick": 84600
+  }
+}

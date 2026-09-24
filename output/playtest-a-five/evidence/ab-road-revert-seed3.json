@@ -1,0 +1,42 @@
+{
+  "isolation": "Road-autogrowth behavior before 47c9aeb in a detached comparison worktree; not product",
+  "seed": 3,
+  "simulationPassed": false,
+  "stopReason": "tick-budget",
+  "victoryTick": null,
+  "strict": {
+    "stableSince": null,
+    "sustainedTicks": 0,
+    "interruptions": 0
+  },
+  "final": {
+    "tick": 1200000,
+    "era": "palisade",
+    "l4Houses": 0,
+    "constructionSites": 10,
+    "buildingCounts": {
+      "house": 24,
+      "well": 7,
+      "granary": 7,
+      "logging_camp": 1,
+      "storehouse": 2,
+      "sawmill": 1,
+      "wheat_farm": 15,
+      "mill": 7,
+      "chapel": 1,
+      "market": 1,
+      "masonry": 1,
+      "quarry": 1
+    }
+  },
+  "guardrail": {
+    "status": "regression",
+    "checks": {
+      "efficiency": true,
+      "baselineL4": false,
+      "serviceGap": false,
+      "newDeadlock": false,
+      "zeroWheatRegression": null
+    }
+  }
+}

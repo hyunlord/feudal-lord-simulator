@@ -1,0 +1,42 @@
+{
+  "isolation": "detached cc20def worktree with only autoplayConstructionRoads.ts reset to 47c9aeb parent",
+  "moduleSha256": "360fa096bd49ee5eaae0625430191c213acb528c362c6e4eda35ac5cefcdcb8a",
+  "source": {
+    "commit": "cc20defbec1f05f548d43e3698963939ccc1cfe5",
+    "sourceSha256": "71fdf6665ae717ed556c59a6eddbbad45fe8d89cbe423122b285a67869015ed6",
+    "sourceFiles": 509,
+    "dirty": true
+  },
+  "passed": true,
+  "tick": 419277,
+  "l4": 24,
+  "stable": 24000,
+  "guardrail": "passed",
+  "metrics": {
+    "coveredTicks": 2400,
+    "fullWindow": true,
+    "known": true,
+    "wheatProduced": 1228,
+    "wheatConsumed": 1126,
+    "breadProduced": 563,
+    "wheatExported": 0,
+    "breadExported": 15,
+    "requestedBread": 576,
+    "consumedBread": 576,
+    "rawStarvedTicks": 4751,
+    "eligibleMillTicks": 21600,
+    "lots": 24,
+    "farms": 21,
+    "mills": 9,
+    "chronicZeroWheatMills": 0,
+    "chronicZeroWheatKnown": true,
+    "chronicZeroWheatObservedTicks": 24000,
+    "granaries": 7,
+    "markets": 2,
+    "churches": 2,
+    "population": 768,
+    "idleWorkers": 241,
+    "buildings": 77,
+    "warnings": 0
+  }
+}
