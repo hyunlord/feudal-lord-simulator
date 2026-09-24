@@ -10,6 +10,8 @@ import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import { constructionSiteAnchor } from "../economy/construction";
+import { remainingCarterTravelCost } from '../agents/carterTravelCost';
+import { getTile } from '../world/grid';
 
 export type WalkerDiagnosisModel = {
   readonly walkerId: string;
@@ -148,6 +150,16 @@ function carterDiagnosis(
   walker: CarterWalker,
   remainingDistance: number,
 ): WalkerDiagnosisModel {
+  const wallSiteId = walker.destination.kind === 'construction_site' ? walker.destination.siteId : null;
+  const constructionSite = wallSiteId === null
+    ? undefined : state.constructionSites.find(site => site.id === wallSiteId);
+  const wallDelivery = constructionSite?.kind === 'palisade_segment' || constructionSite?.kind === 'stone_wall_segment'
+    || (wallSiteId !== null && state.palisade?.segments.some(segment =>
+      segment.constructionSiteId === wallSiteId
+      || segment.replacementConstructionSiteId === wallSiteId) === true);
+  const travelCost = wallDelivery
+    ? remainingCarterTravelCost(walker, tile => getTile(state, tile)?.hasRoad === true)
+    : remainingDistance;
   const sourceLabel = walker.mission === "deliver"
     ? buildingLabel(state, walker.homeBuildingId)
     : destinationLabel(state, walker.destination);
@@ -176,7 +188,7 @@ function carterDiagnosis(
     destinationLabel: destination,
     statusLabel: carterStatus(walker),
     remainingDistance,
-    etaTicks: Math.ceil(remainingDistance / BALANCE.CARTER_SPEED),
+    etaTicks: Math.ceil(travelCost / BALANCE.CARTER_SPEED),
     housesPassed: adjacentHouseCount(state, walker),
     tilesTravelled: null,
     cancellationLabel: walker.cancellation === null

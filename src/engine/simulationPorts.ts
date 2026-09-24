@@ -29,6 +29,7 @@ import {
   resolveRoadToBuildingRoute,
 } from "./routing";
 import type { CarterDestination } from "../agents/walker.types";
+import { canTraverseWallCarryEdge, isWallCarryTile, wallCarrySiteAccessTile } from './wallCarryRoute';
 
 export interface SimulationRoutePorts {
   readonly delivery: DeliveryRoutePort;
@@ -138,16 +139,28 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
           }
           case "construction_site": {
             const target = findSite(state, destination.siteId);
+            if (target !== null && (target.kind === 'palisade_segment' || target.kind === 'stone_wall_segment')
+              && wallCarrySiteAccessTile(state, target, tile)) return [tile];
             return target === null ? [] : constructionSiteRoadAccessTiles(state, target);
           }
         }
       })();
       return accesses.some((access) => access.tx === tile.tx && access.ty === tile.ty);
     },
+    canCarryForDestination: (tile, destination) => {
+      if (destination.kind !== 'construction_site') return false;
+      const site = findSite(state, destination.siteId);
+      const stillOnWall = state.palisade?.segments.some(segment =>
+        segment.constructionSiteId === destination.siteId
+        || segment.replacementConstructionSiteId === destination.siteId) === true;
+      return (site?.kind === 'palisade_segment' || site?.kind === 'stone_wall_segment' || stillOnWall)
+        && isWallCarryTile(state, tile);
+    },
     fromTileToBuilding: routeToBuilding,
     fromTileToDestination: routeToDestination,
     isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
-    canTraverse: (from, to) => canTraverseRoadBoundary(state, from, to),
+    canTraverse: (from, to) => canTraverseRoadBoundary(state, from, to)
+      || canTraverseWallCarryEdge(state, from, to),
   };
 
   const roaming: RoamingRoutePort = {

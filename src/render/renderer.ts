@@ -32,6 +32,7 @@ import {
 } from "./constructionCompletionEffects";
 import { drawPalisadeGateFlourish, drawPalisadeRun } from "./drawPalisadeSegments";
 import { previewPalisadeDraftRouteAccess, type PalisadeRouteAccess } from "../engine/palisadeRouteAccess";
+import { nearestWallAnchorCandidate } from '../ui/wallPrediction';
 import { drawPalisadeRoutePreviewOverlay } from "./palisadeRoutePreviewOverlay";
 import { drawPalisadeDraftOverlay } from './palisadeDraftOverlay';
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
@@ -164,7 +165,8 @@ export const renderFrame = (input: RenderFrameInput): void => {
       .filter(segment => segment.status === 'unreachable').map(segment => segment.path) ?? [];
     drawPalisadeRoutePreviewOverlay(input.context, unreachablePaths, input.camera.zoom);
     drawPalisadeDraftOverlay(input.context, input.state, input.palisadeDraft,
-      input.camera.zoom, routeAccess?.gates ?? [], routeAccess?.segments ?? []);
+      input.camera.zoom, routeAccess?.gates ?? [], routeAccess?.segments ?? [],
+      routeAccess === null ? null : nearestWallAnchorCandidate(routeAccess)?.siteId ?? null);
   }
   if (input.palisadeCeremonyStartedAtMs !== undefined && input.palisadeCeremonyStartedAtMs !== null && input.state.palisade !== null) {
     drawPalisadeGateFlourish(input.context, {

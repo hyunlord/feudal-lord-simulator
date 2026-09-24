@@ -1,5 +1,6 @@
 import { observeMaterialReturn } from './materialActivity';
 import { BALANCE } from "../content/balanceConfig";
+import { WALL_CARRY_COST_FACTOR } from '../engine/wallCarryRoute';
 import type { Building } from "../content/buildingConfig";
 import {
   hasArrivedAtPathEnd,
@@ -32,7 +33,8 @@ function routeIsIntact(
   if (endpoint !== undefined && routes.canAccessDestination?.(endpoint, destination) === false) return false;
   const remainingPathIsRoad = carter.path
     .slice(Math.max(0, carter.pathIndex))
-    .every((tile) => routes.isRoad(tile));
+    .every((tile) => routes.isRoad(tile)
+      || routes.canCarryForDestination?.(tile, carter.destination) === true);
   if (!remainingPathIsRoad || carter.phase !== "outbound") {
     return remainingPathIsRoad;
   }
@@ -89,7 +91,15 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
       continue;
     }
 
-    const moved = stepWalkerAlongPath(walker, BALANCE.CARTER_SPEED);
+    const from = walker.path[walker.pathIndex];
+    const to = walker.path[walker.pathIndex + 1];
+    const carry = walker.destination.kind === 'construction_site' && from !== undefined && to !== undefined
+      && (!input.routes.isRoad(from) || !input.routes.isRoad(to))
+      && input.routes.canCarryForDestination?.(to, walker.destination) === true;
+    const length = from === undefined || to === undefined ? 1
+      : Math.abs(from.tx - to.tx) + Math.abs(from.ty - to.ty);
+    const speed = carry && length > 0 ? BALANCE.CARTER_SPEED / WALL_CARRY_COST_FACTOR : BALANCE.CARTER_SPEED;
+    const moved = stepWalkerAlongPath(walker, speed);
     if (!hasArrivedAtPathEnd(moved)) {
       walkers.push(moved);
       continue;

@@ -52,7 +52,7 @@ test('isolated supply roads flag every unreachable segment before proclamation',
   if (preferred.ok) assert.equal(preferred.perimeterSteps, proposal.perimeterSteps);
 });
 
-test('proposal chooses a fully supplied perimeter over an unreachable geometric default', () => {
+test('wall carrying supplies a segment disconnected from its own adjacent road', () => {
   const prepared = createStage3EconomyHarnessScenario({ seed: 1 });
   const state = {
     ...prepared,
@@ -64,14 +64,16 @@ test('proposal chooses a fully supplied perimeter over an unreachable geometric 
   const geometric = computePalisadeProposalForState(state);
   assert.equal(geometric.ok, true);
   if (!geometric.ok) return;
-  assert.equal(previewPalisadeRouteAccess(state, geometric.path).unreachableSiteIds.length, 1);
+  const geometricAccess = previewPalisadeRouteAccess(state, geometric.path);
+  assert.equal(geometricAccess.unreachableSiteIds.length, 0);
+  assert.equal(geometricAccess.segments.filter(segment => segment.access === 'wall').length, 1);
   assert.ok(proposalPredictionLines(state, geometric.path).some(line =>
-    line.id === 'road-length' && line.text.includes('약 1칸')));
+    line.id === 'wall-carry-access' && line.text.includes('벽을 따라 운반 1')));
 
   const supplied = computeReachablePalisadeProposalForState(state);
   assert.equal(supplied.ok, true);
   if (!supplied.ok) return;
-  assert.notDeepEqual(supplied.path, geometric.path);
+  assert.deepEqual(supplied.path, geometric.path);
   const access = previewPalisadeRouteAccess(state, supplied.path);
   assert.equal(access.unreachableSiteIds.length, 0);
   assert.equal(access.unavailableSiteIds.length, 0);

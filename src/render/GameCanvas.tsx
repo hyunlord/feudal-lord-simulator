@@ -21,6 +21,7 @@ import {
   constructionSiteCardModel,
 } from "../ui/constructionSiteCardModel";
 import type { DistributorRouteHistory } from "../ui/distributorRouteHistory";
+import { getTile } from '../world/grid';
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
@@ -95,6 +96,7 @@ export function GameCanvas({
           materialDiagnosisState: {
             buildings: state.buildings,
             walkers: state.walkers,
+            isRoad: tile => getTile(state, tile)?.hasRoad === true,
           },
           accessState: state,
           cancellationDisabledReason: state.palisade === null

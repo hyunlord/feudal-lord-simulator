@@ -28,6 +28,7 @@ import type {
   DeliveryStepResult,
 } from "./deliveryTypes";
 import type { CarterDestination, TilePos } from "./walker.types";
+import { carterPathTravelCost } from './carterTravelCost';
 
 interface SiteCandidate {
   readonly siteId: string;
@@ -36,6 +37,7 @@ interface SiteCandidate {
   readonly resource: ResourceType;
   readonly path: readonly TilePos[];
   readonly amount: number;
+  readonly wall: boolean;
 }
 
 interface TreasurySiteCandidate {
@@ -44,6 +46,16 @@ interface TreasurySiteCandidate {
   readonly home: Building;
   readonly path: readonly TilePos[];
   readonly amount: number;
+  readonly wall: boolean;
+}
+
+function nearestWallCandidate<T extends { readonly wall: boolean; readonly path: readonly TilePos[] }>(
+  candidates: readonly T[], routes: DeliveryRoutePort,
+): T | null {
+  const ordinary = candidates.find(candidate => !candidate.wall);
+  if (ordinary !== undefined) return ordinary;
+  return [...candidates].sort((left, right) =>
+    carterPathTravelCost(left.path, routes.isRoad) - carterPathTravelCost(right.path, routes.isRoad))[0] ?? null;
 }
 
 function siteDestination(site: { readonly id: string }): CarterDestination {
@@ -116,7 +128,8 @@ function siteCandidates(params: {
         if (path === null || path.length === 0) return [];
         const amount = Math.min(BALANCE.CARTER_CAPACITY, missing, available);
         return amount > 0
-          ? [{ siteId: site.id, destination, source, resource, path, amount }]
+          ? [{ siteId: site.id, destination, source, resource, path, amount,
+            wall: site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment' }]
           : [];
       });
     });
@@ -139,6 +152,7 @@ function treasuryCandidate(params: {
       (building) => building.kind === "house" && !params.busyHomeIds.has(building.id),
     );
   if (homes.length === 0) return null;
+  const candidates: TreasurySiteCandidate[] = [];
   for (const site of [...params.sites].sort(byId)) {
     const missing = amountOf(constructionDeliveryNeed(site), "timber");
     if (missing === 0) continue;
@@ -150,16 +164,17 @@ function treasuryCandidate(params: {
     for (const home of homes) {
       const path = params.routes.fromBuildingToDestination(home.id, destination);
       if (path === null || path.length === 0) continue;
-      return {
+      candidates.push({
         siteId: site.id,
         destination,
         home,
         path,
         amount: Math.min(BALANCE.CARTER_CAPACITY, missing, available),
-      };
+        wall: site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment',
+      });
     }
   }
-  return null;
+  return nearestWallCandidate(candidates, params.routes);
 }
 
 export function spawnSiteDelivery(params: {
@@ -173,7 +188,7 @@ export function spawnSiteDelivery(params: {
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
 }): DeliveryStepResult | null {
-  const candidate = siteCandidates({
+  const candidates = siteCandidates({
     sites: params.constructionSites,
     buildings: params.buildings,
     routes: params.routes,
@@ -181,7 +196,8 @@ export function spawnSiteDelivery(params: {
     busyHomeIds: params.busyHomeIds,
     ...(params.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: params.wallConstructionReserve }),
     ...(params.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: params.wallConstructionPriority }),
-  })[0] ?? null;
+  });
+  const candidate = nearestWallCandidate(candidates, params.routes);
   if (candidate !== null) {
     const claimedSource = params.inventory.reserveStock(
       candidate.source,

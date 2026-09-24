@@ -13,6 +13,7 @@ import type { WallGrid } from "../world/wallTraversal";
 import { canTraverseRoadBoundary } from "../world/bridges";
 import { findExistingRoadPath } from "../world/roadGraph";
 import type { GameState, RoadPathCache } from "./engine.types";
+import { wallCarryRoute } from './wallCarryRoute';
 
 export interface RouteResolution {
   readonly path: readonly TileCoordinate[] | null;
@@ -250,9 +251,22 @@ export function resolveBuildingToConstructionSiteRoute(
 
   const starts = buildingRoadAccessTiles(state, source);
   const destinations = constructionSiteRoadAccessTiles(state, destination);
-  const path = shortestRoadPathBetweenAccessTiles(state, starts, destinations);
+  const direct = shortestRoadPathBetweenAccessTiles(state, starts, destinations);
+  const carried = destination.kind === 'palisade_segment' || destination.kind === 'stone_wall_segment'
+    ? wallCarryRoute(state, starts, destination) : null;
+  const path = carried !== null && (direct === null || carried.cost < direct.length - 1)
+    ? carried.path : direct;
   if (path === null) return { path: null, pathCache: state.pathCache };
   return { path, pathCache: { ...state.pathCache, [forwardKey]: path } };
+}
+
+export function resolveDirectBuildingToConstructionSiteRoute(
+  state: GameState,
+  source: Building,
+  destination: ConstructionSite,
+): readonly TileCoordinate[] | null {
+  return shortestRoadPathBetweenAccessTiles(state,
+    buildingRoadAccessTiles(state, source), constructionSiteRoadAccessTiles(state, destination));
 }
 
 export function resolveRoadToConstructionSiteRoute(

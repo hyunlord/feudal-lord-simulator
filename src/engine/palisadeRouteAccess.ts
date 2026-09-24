@@ -2,6 +2,8 @@ import { constructionMaterialSources } from '../agents/deliveryConstruction';
 import { isPalisadeConstructionSite } from '../domain/palisadeConstructionSchedule';
 import { createPalisadeConstructionSite, type PalisadeConstructionSite } from '../economy/construction';
 import { availableStock } from '../economy/storage';
+import { buildingRoadAccessTiles, resolveDirectBuildingToConstructionSiteRoute } from './routing';
+import { wallCarryRoute } from './wallCarryRoute';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from './simulationPorts';
 import { projectPalisadeProclamation } from './palisade';
 import { computePalisadeProposalForState } from './palisadeFootprints';
@@ -14,6 +16,8 @@ export type PalisadeRouteSegment = Readonly<{
   path: PalisadePath;
   tileCount: number;
   status: 'reachable' | 'unreachable' | 'unavailable';
+  access: 'direct' | 'wall' | 'none';
+  wallDistance: number | null;
 }>;
 
 export type PalisadeRouteAccess = Readonly<{
@@ -95,7 +99,18 @@ function auditPalisadeSites(
     });
     const status = sources.some(source => source.hasRoute) ? 'reachable'
       : sources.length > 0 ? 'unreachable' : 'unavailable';
-    segments.push({ siteId: site.id, path: site.path, tileCount: palisadePerimeterSteps(site.path), status });
+    const stocked = sources.filter(source => source.hasRoute).flatMap(source => source.id === 'treasury'
+      ? projected.buildings.filter(building => building.kind === 'house')
+      : projected.buildings.filter(building => building.id === source.id));
+    const direct = stocked.some(building => resolveDirectBuildingToConstructionSiteRoute(projected, building, site) !== null);
+    const distances = stocked.flatMap(building => {
+      const route = wallCarryRoute(projected, buildingRoadAccessTiles(projected, building), site);
+      return route === null ? [] : [route.wallSteps];
+    });
+    const access = status !== 'reachable' ? 'none' : direct ? 'direct' : 'wall';
+    const wallDistance = access === 'wall' && distances.length > 0 ? Math.min(...distances) : null;
+    segments.push({ siteId: site.id, path: site.path, tileCount: palisadePerimeterSteps(site.path),
+      status, access, wallDistance });
     switch (status) {
       case 'reachable': reachableSiteIds.push(site.id); break;
       case 'unreachable': unreachableSiteIds.push(site.id); break;

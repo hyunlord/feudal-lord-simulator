@@ -248,6 +248,15 @@ export function returnPath(
   const home = findBuilding(buildings, carter.homeBuildingId);
   const current = lastReachedRoadTile(carter) ?? currentRoadTile(carter);
   if (home === null || current === null) return null;
+  if (carter.destination.kind === 'construction_site'
+    && carter.path.slice(0, carter.pathIndex + 1).some(tile => !routes.isRoad(tile))) {
+    const traversed = carter.path.slice(0, carter.pathIndex + 1).reverse();
+    const roadIndex = traversed.findIndex(tile => routes.isRoad(tile));
+    const road = traversed[roadIndex];
+    if (road === undefined) return null;
+    const tail = routes.fromTileToBuilding(road, home.id);
+    return tail === null ? null : [...traversed.slice(0, roadIndex), ...tail];
+  }
   return routes.fromTileToDestination(current, {
     kind: "building",
     buildingId: home.id,

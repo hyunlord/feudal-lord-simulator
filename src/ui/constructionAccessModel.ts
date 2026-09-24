@@ -4,6 +4,7 @@ import { RESOURCE_TYPES } from '../content/resourceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
 import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles } from '../engine/routing';
+import { wallCarryRoute } from '../engine/wallCarryRoute';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../engine/simulationPorts';
 import { roadPlacementFailure } from '../engine/roadPlacement';
 import { constructionMaterialSources } from '../agents/deliveryConstruction';
@@ -11,6 +12,7 @@ import type { GameState } from '../engine/engine.types';
 import { canTraverseRoadBoundary } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
 import { canPlaceRoad, existingRoadComponent } from '../world/roadGraph';
+import { WALL_CARRY_COPY } from './wallCarryCopy.ko';
 
 export type ConstructionAccessCause =
   | 'road_disconnected' | 'no_route' | 'wall_blocked'
@@ -132,11 +134,13 @@ export function suggestedConstructionRoad(
 export function constructionAccessModel(state: GameState, site: ConstructionSite): ConstructionAccessModel {
   const accessTiles = candidateAccessTiles(state, site);
   const existingAccess = constructionSiteRoadAccessTiles(state, site);
+  const wallSite = site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment';
+  const liveWallRoute = wallSite && hasMaterialRoute(state, site);
   let cause: ConstructionAccessCause = 'none';
   if (site.stall === 'no_builders') cause = 'no_workers';
   else if (site.stall === 'no_material_source') cause = 'no_material';
   else if (site.stall === 'reserve_held') cause = 'reserve_held';
-  else if (site.stall === 'no_route' || (existingAccess.length === 0 && site.stall !== 'none')) {
+  else if (!liveWallRoute && (site.stall === 'no_route' || (existingAccess.length === 0 && site.stall !== 'none'))) {
     if (existingAccess.length === 0) cause = 'road_disconnected';
     else {
       const withoutWall = { ...state, palisade: null };
@@ -191,6 +195,20 @@ export function currentConstructionSiteLabel(state: GameState, site: Constructio
       : access.length === 0 ? '🚧 도로 미연결' : '🚧 창고에서 경로 없음';
   } else {
     label = constructionOnSiteLabel({ ...site, stall: liveStall });
+    if ((site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment')
+      && (liveStall === 'awaiting_materials' || liveStall === 'none')) {
+      const stocked = constructionMaterialSources(sourceInput).filter(source => source.hasRoute)
+        .flatMap(source => source.id === 'treasury'
+          ? state.buildings.filter(building => building.kind === 'house')
+          : state.buildings.filter(building => building.id === source.id));
+      const distances = stocked.flatMap(building => {
+        const route = wallCarryRoute(state, buildingRoadAccessTiles(state, building), site);
+        return route === null || route.wallSteps === 0 ? [] : [route.wallSteps];
+      });
+      if (distances.length > 0 && constructionSiteRoadAccessTiles(state, site).length === 0) {
+        label = WALL_CARRY_COPY.carried(Math.min(...distances));
+      }
+    }
   }
   let stateCache = currentLabelCache.get(state);
   if (stateCache === undefined) {

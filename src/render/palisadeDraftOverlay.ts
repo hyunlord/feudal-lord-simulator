@@ -8,6 +8,7 @@ import { diagnosePalisadeDraft, type PalisadeDraftDiagnosis, type PalisadeFailur
 import type { PalisadeDraftState } from './palisadeDraftInteraction';
 import { palisadeScreenPath } from './palisadeRenderGeometry';
 import { tileToScreen } from './iso';
+import { WALL_CARRY_COPY } from '../ui/wallCarryCopy.ko';
 import { applyPaletteStroke, withAlpha } from './style';
 
 const SHORT_FAILURE_LABELS: Partial<Record<PalisadeFailureReason, string>> = A_QUADRUPLE_PRIME_WALL_COPY.shortFailure;
@@ -34,6 +35,7 @@ export function drawPalisadeDraftOverlay(
   zoom: number,
   gates: readonly TileEdgePoint[] = [],
   routeSegments: readonly PalisadeRouteSegment[] = [],
+  anchorCandidateSiteId: string | null = null,
 ): void {
   const diagnosis = palisadeDraftDiagnosis(state, draft.path);
   context.save();
@@ -76,7 +78,15 @@ export function drawPalisadeDraftOverlay(
       : SHORT_FAILURE_LABELS[reason] ?? palisadeFailureLabel(reason), zoom);
   }
   for (const gate of gates) drawGatePreview(context, gate, zoom);
-  for (const segment of routeSegments) drawRouteStatus(context, segment, zoom);
+  for (const segment of routeSegments) {
+    drawRouteStatus(context, segment, zoom);
+    if (segment.siteId === anchorCandidateSiteId) {
+      const first = segment.path[0], last = segment.path.at(-1);
+      if (first !== undefined && last !== undefined) {
+        drawFailureLabel(context, midpoint(first, last), WALL_CARRY_COPY.anchorTarget, zoom);
+      }
+    }
+  }
   const selectedRun = draft.selectedRunIndex === null ? undefined : draft.candidate?.runs[draft.selectedRunIndex];
   if (selectedRun !== undefined && draft.candidate !== null) {
     const from = draft.candidate.path[selectedRun.startIndex];

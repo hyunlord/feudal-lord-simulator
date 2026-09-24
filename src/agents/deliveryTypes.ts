@@ -52,6 +52,7 @@ export interface DeliveryRoutePort {
   ) => readonly TilePos[] | null;
   readonly isRoad: (tile: TilePos) => boolean;
   readonly canAccessDestination?: (tile: TilePos, destination: CarterDestination) => boolean;
+  readonly canCarryForDestination?: (tile: TilePos, destination: CarterDestination) => boolean;
   readonly canTraverse?: (from: TilePos, to: TilePos) => boolean;
 }
 

@@ -1,5 +1,6 @@
 import type { CarterWalker, TilePos, Walker } from "../agents/walker.types";
 import { BALANCE } from "../content/balanceConfig";
+import { remainingCarterTravelCost } from '../agents/carterTravelCost';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
@@ -20,6 +21,7 @@ const RESOURCE_LABELS = {
 export type ConstructionMaterialDiagnosisState = Readonly<{
   buildings: readonly Building[];
   walkers: readonly Walker[];
+  isRoad?: (tile: TilePos) => boolean;
 }>;
 
 export type ConstructionMaterialDiagnosis = Readonly<{
@@ -166,9 +168,9 @@ function carrierLabel(
   carrier: CarterWalker,
   facts: SourceFacts | null,
   remainingPathDistance: number,
+  etaTicks: number,
 ): string {
   const prefix = `${RESOURCE_LABELS[progress.resource]} ${progress.delivered}/${progress.required} · 예약 ${progress.reserved}`;
-  const etaTicks = Math.ceil(remainingPathDistance / BALANCE.CARTER_SPEED);
   const source = facts === null
     ? "공급처 확인 불가"
     : `${facts.label} ${facts.directionLabel} ${facts.distance}칸`;
@@ -207,15 +209,19 @@ export function constructionMaterialDiagnosis(
       };
     }
     const facts = sourceFacts(state, site, carrier);
+    const weighted = (site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment')
+      && state.isRoad !== undefined
+      ? remainingCarterTravelCost(carrier, state.isRoad) : remaining;
+    const etaTicks = Math.ceil(weighted / BALANCE.CARTER_SPEED);
     return {
       ...progress,
-      label: carrierLabel(progress, carrier, facts, remaining),
+      label: carrierLabel(progress, carrier, facts, remaining, etaTicks),
       sourceLabel: facts?.label ?? null,
       sourceDirectionLabel: facts?.directionLabel ?? null,
       sourceDistance: facts?.distance ?? null,
       carrierId: carrier.id,
       remainingPathDistance: remaining,
-      etaTicks: Math.ceil(remaining / BALANCE.CARTER_SPEED),
+      etaTicks,
     };
   });
 }
