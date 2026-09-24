@@ -6,6 +6,7 @@ import { palisadeEraLabourReservation } from '../population/eraLabour';
 import { availableWorkers } from '../population/labour';
 import { placementSpendableResource } from '../world/placement';
 import type { Tile } from '../world/world.types';
+import { zoneMembershipHash } from '../zones/zoneRaster';
 
 const stateKeys = new WeakMap<GameState, string>();
 const tileKeys = new WeakMap<readonly Tile[], string>();
@@ -37,6 +38,8 @@ export function predictionStateKey(state: GameState): string {
       site.builderTicks >= site.requiredBuilderTicks]),
     materials: buildResources.map(resource => placementSpendableResource(state, resource)),
     treasuryTimber: state.treasuryTimber,
+    // Zone rules (spec Z-11) read kind and membership; strokes and labels do not change a prediction.
+    zones: (state.zones ?? []).map(zone => [zone.id, zone.kind, zoneMembershipHash(zone.membership, state.width)]),
   });
   stateKeys.set(state, key);
   return key;

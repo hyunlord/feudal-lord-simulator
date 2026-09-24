@@ -1,9 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-25(D1a-2). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(D1a-2, B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
+- **B5+C1a 구역 데이터·규칙·frontage 필지 관문 통과**(Claude Code, 엔진 세션): 그리기 UI는 렌더 세션 C1b 몫이다. [명세](design/zones.md), [보고서](verification/zones/REPORT.md).
+  - `GameState.zones`·`nextZoneOrdinal`을 추가했다(저장 v6). 액션은 `zone_paint`·`zone_erase`·`zone_remove`다.
+  - 셀 중심 기준 1/8칸 정수로 래스터화하고, 나중에 칠한 쪽이 칸을 가진다(결정 Z1). `interiorPlacementTiles`를 두었다.
+  - 구역이 있을 때만 집은 필지 구역, 밀밭은 경작지 구역에 지을 수 있다. 성내 경작지는 그리기부터 거부한다.
+  - v3-A F1 frontage 필지를 파생한다(탐침 P5의 25띠 재현). ZoneFillAgent v0는 공사 중 10필지를 넘지 않는다.
+  - 구역 없는 seed 1~5의 최종 상태는 B2와 바이트 단위로 같다(구역 필드 두 개 제외).
 - **B2 시나리오·단계·시대·달력 관문 통과**(Claude Code): 승리·실패·목표·정착 단계·해금·성벽 정책·역사 시대 5기를 시나리오 데이터(`src/content/scenario/`, [명세](design/scenario-era.md))로 옮겼다. 두 시나리오 `campaign_market_town`·`sandbox`, 새 게임 모드 선택, 달력(1년=1,200틱, 잠정)을 추가했다. K4-1에 따라 교회를 시장도시 단계로 옮기고, 석조 선포는 전제조건이 있는 선택 석벽 프로젝트로 바꾸며, 번영 승리에서 석벽을 뺐다. 목책 선포는 그대로다. 저장 v5(`scenarioId`). 가드레일 5/5, 5개 seed 중 4개가 석벽 없이 승리했다(seed 3은 승리 때 석벽 완공). [B2 보고서](verification/b2-scenario-era/REPORT.md).
 - **D1a 곡선 렌더 1단계 관문 통과·본선 병합**(Claude Code): 플래그 `RENDER_BOUNDARY_V2`는 V1에서 사용자 결정으로 **기본 켬**(설정 토글로 끔). [D1a 보고서](verification/d1a/REPORT.md).
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
@@ -32,7 +38,7 @@
 
 ## 다음 작업
 
-**B3 장부**가 다음 엔진 작업이다(로드맵 v3). 시장 판매 수입(`coinLedger`, `SourceRef` 출처)이 장부의 전 단계다. 석벽 프로젝트의 재원·유지비, 시나리오 `economyRules`의 실제 내용도 B3에서 정한다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
+**B3 장부**가 다음 엔진 작업이다(로드맵 v3). 구역 쪽 다음은 렌더 세션 C1b(브러시·윤곽, [보고서 넘김 API](verification/zones/REPORT.md))와 C1c(경작지 띠·목초지 규칙)다. 시장 판매 수입(`coinLedger`, `SourceRef` 출처)이 장부의 전 단계다. 석벽 프로젝트의 재원·유지비, 시나리오 `economyRules`의 실제 내용도 B3에서 정한다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
 
 ## 알려진 문제
 

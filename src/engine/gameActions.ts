@@ -7,7 +7,7 @@ import {
 } from "../content/buildingConfig";
 import { createConstructionSite } from "../economy/construction";
 import { getTile, isInBounds, type TileCoordinate } from "../world/grid";
-import { canPlaceBuilding } from "../world/placement";
+import { canPlaceBuildingWithZones } from "../zones/zonePlacement";
 import { roadLine } from "../world/roadGraph";
 import type { Tile } from "../world/world.types";
 import type { GameState } from "./engine.types";
@@ -30,7 +30,8 @@ export function placeBuilding(
   kind: BuildingKind,
   origin: TileCoordinate,
 ): GameState {
-  const placement = canPlaceBuilding(state, kind, origin.tx, origin.ty);
+  // Spec Z-11: with no zone this is exactly `canPlaceBuilding`.
+  const placement = canPlaceBuildingWithZones(state, kind, origin.tx, origin.ty);
   if (!placement.ok) return state;
 
   const definition = BUILDING_CONFIG_BY_KIND[kind];

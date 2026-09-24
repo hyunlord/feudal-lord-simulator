@@ -34,7 +34,7 @@ export type EntityRef =
 
 /**
  * An area an effect can apply to. `settlement` is the whole town (id `SETTLEMENT_REGION_ID`).
- * `zone` ids are reserved for the zone system (C1); no zone exists yet.
+ * `zone` ids are `Zone.id` (`zone-000001`, src/zones, save v6).
  */
 export type RegionRef =
   | { readonly kind: "settlement"; readonly id: string }

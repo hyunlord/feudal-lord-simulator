@@ -133,4 +133,8 @@ export interface GameState {
   nextConstructionOrdinal: number;
   roadRevision: number;
   pathCache: RoadPathCache;
+  /** Painted land zones (save v6). Absent or empty = no zone rules apply (spec Z-11). */
+  readonly zones?: readonly import("../zones/zone.types").Zone[];
+  /** Ordinal of the next painted zone (save v6); starts at 1. */
+  readonly nextZoneOrdinal?: number;
 }

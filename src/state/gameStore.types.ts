@@ -52,6 +52,12 @@ type GameCommand =
       readonly candidatePath: PalisadePath;
     }
   | { readonly type: "confirm_stone_town_proclamation" }
+  /** Spec Z-5: paint a zone stroke (new zone, or merged into touching zones of the same kind). */
+  | { readonly type: "zone_paint"; readonly kind: import("../zones/zone.types").ZoneKind; readonly stroke: import("../zones/zone.types").ZoneStroke }
+  /** Spec Z-6: remove the stroke's cells from every zone. */
+  | { readonly type: "zone_erase"; readonly stroke: import("../zones/zone.types").ZoneStroke }
+  /** Spec Z-7. */
+  | { readonly type: "zone_remove"; readonly id: string }
   | { readonly type: "set_wall_construction_priority"; readonly priority: import("../engine/constructionReserve").WallConstructionPriority };
 
 export interface GameStoreContextValue {
