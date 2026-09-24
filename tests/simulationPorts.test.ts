@@ -147,7 +147,7 @@ test("delivery route port resolves building routes and exposes updated cache", (
     { tx: 5, ty: 1 },
   ]);
   assert.deepEqual(ports.getPathCache(), {
-    "road:7:farm-a->granary-a": path,
+    "road:7:pair:farm-a|granary-a": path,
   });
 });
 

@@ -217,7 +217,7 @@ test("advanceTick caches delivery road paths by road revision and building pair"
     }),
   );
 
-  assert.deepEqual(next.pathCache["road:3:producer->store"], [
+  assert.deepEqual(next.pathCache["road:3:pair:producer|store"], [
     { tx: 1, ty: 1 },
     { tx: 2, ty: 1 },
   ]);
