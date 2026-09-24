@@ -4,7 +4,6 @@ import { forestVisualStage } from "./forestRecovery";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
-import { treeClearsStartingLandmarks } from "./treeLandmarkClearance";
 
 export type TreeSilhouette = "narrow" | "broad" | "rounded";
 export type TreeTone = PaletteColor;
@@ -138,7 +137,6 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
   }
 
   const result = descriptors
-    .filter((tree) => treeClearsStartingLandmarks(tree))
     .sort((left, right) => left.sortY - right.sortY || left.id.localeCompare(right.id))
     .map((tree, index) => ({ ...tree, tone: treeToneAt(toneOffset + index) }));
   const tileCache = treeClusterCache.get(input.tile) ?? new Map();

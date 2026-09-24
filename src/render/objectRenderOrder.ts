@@ -15,7 +15,6 @@ import { groundCoverProtectedTileKeys } from "./groundCoverProtection";
 import { depthKey } from "./iso";
 import { sortRenderItems } from "./objectRenderSort";
 import { palisadeSegmentRenderItems } from "./palisadeObjectRenderItems";
-import { STARTING_LANDMARKS } from "./startingLandmarks";
 import type {
   ObjectRenderItem,
   RenderQueueItem,
@@ -76,17 +75,6 @@ export function buildObjectRenderItems(
   );
   const forestLookup = buildForestLookup(worldTiles);
   const protectedGroundCoverTiles = groundCoverProtectedTileKeys(worldTiles, input.buildings, constructionSites);
-
-  for (const landmark of STARTING_LANDMARKS) {
-    if (!tileIsVisibleInRange(landmark.tx, landmark.ty, input.range)) continue;
-    items.push({
-      kind: "starting_landmark",
-      id: `starting-landmark:${landmark.kind}:${landmark.tx}:${landmark.ty}`,
-      landmark,
-      depth: depthKey(landmark.tx, landmark.ty),
-      anchorTx: landmark.tx,
-    });
-  }
 
   for (const tile of foliageTiles) {
     const stumpItem = stumpRenderItemForTile(tile, harvestLookup, clearedTiles, tick);

@@ -2,16 +2,19 @@ import type { GameState } from "../engine/engine.types";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { boundsOf, hashNumbers, type BoundaryBounds, type BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import { roadCenterlineGraph, type RoadCenterlineGraph } from "../world/boundary/roadCenterline";
+import { roadRibbonLayout, type RoadRibbonLayout } from "../world/boundary/roadRibbonLayout";
 import { fieldClusters, forestBoundary, type FieldCluster, type ForestBoundary } from "../world/boundary/terrainBoundaries";
 import { roadTopologySignature } from "../world/roadTopologySignature";
 import type { Tile } from "../world/world.types";
+import { roadRibbonWidth, roadStripSignature } from "./roadRibbonStyle";
 
 // Everything the V2 ground pass draws, derived once per ground change and split into 8x8-tile chunks.
 //
 // Cache (AGENTS rule 10):
 // (a) Scene key: `tiles` identity (every road, terrain or building-footprint change replaces the tiles array),
 //     the palisade signature (completed wall edges + gates + polygon, which decide road links and stone paving),
-//     the seed, and the wheat-farm footprint list (farm clusters).
+//     the seed, the wheat-farm footprint list (farm clusters), and the road ribbon width + strip set (D1a-2: the
+//     ribbon layout's shoulder tufts and caps are placed from the width; the strip set is only in the road chunk key).
 // (b) Left out on purpose: walkers, stocks, ticks, crop growth, house levels, construction progress. None of them is
 //     read by road chains, forest or field outlines (crop state only changes what is drawn inside a field, which
 //     stays in the live object pass), so they cannot change a scene.
@@ -31,6 +34,7 @@ export type GroundBoundaryScene = {
   readonly columns: number;
   readonly rows: number;
   readonly roads: RoadCenterlineGraph;
+  readonly ribbons: RoadRibbonLayout;
   readonly forest: ForestBoundary;
   readonly fields: readonly FieldCluster[];
   readonly chunks: readonly GroundChunkPlan[];
@@ -53,7 +57,7 @@ export type GroundChunkPlan = {
 };
 
 type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; readonly seed: number; readonly farms: string;
-  readonly reversed: boolean };
+  readonly reversed: boolean; readonly width: number; readonly strips: string };
 let last: { readonly key: SceneKey; readonly scene: GroundBoundaryScene } | null = null;
 let reverseInputForProof = false;
 
@@ -68,9 +72,12 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
     seed: state.seed,
     farms: farmList.map(farm => `${farm.id}@${farm.tx},${farm.ty}`).join("|"),
     reversed: reverseInputForProof,
+    width: roadRibbonWidth(),
+    strips: roadStripSignature(),
   };
   if (last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
-    && last.key.farms === key.farms && last.key.reversed === key.reversed) return last.scene;
+    && last.key.farms === key.farms && last.key.reversed === key.reversed && last.key.width === key.width
+    && last.key.strips === key.strips) return last.scene;
   const scene = buildGroundBoundaryScene(state, reverseInputForProof);
   last = { key, scene };
   sceneBuilds += 1;
@@ -96,6 +103,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
   const rows = Math.ceil(state.height / GROUND_CHUNK_TILES);
   const cells: Tile[] = new Array(state.width * state.height);
   for (const tile of tiles) cells[tile.ty * state.width + tile.tx] = tile;
+  const ribbons = roadRibbonLayout({ graph: roads, width: roadRibbonWidth(), mapWidth: state.width, mapHeight: state.height, cells, seed: state.seed });
+  const strips = hashNumbers([...roadStripSignature()].map(character => character.charCodeAt(0)));
 
   const forestBounds = forest.loops.map((loop, index) => boundsOf([...loop.smoothed, ...(forest.decals[index] ?? []).map(decal => decal.anchor)], PRIMITIVE_MARGIN));
   const fieldBounds = fields.map(field => boundsOf([...field.loops.flatMap(loop => loop.smoothed), ...field.decals.map(decal => decal.anchor)], PRIMITIVE_MARGIN));
@@ -133,11 +142,13 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
       ...fieldIndexes.flatMap(index => [fields[index]?.hash ?? 0, fieldDecalHashes[index] ?? 0]),
     ]);
     const roadKey = hashNumbers([
-      ...chains.map(index => roads.chains[index]?.hash ?? 0),
+      strips, ribbons.width,
+      ...chains.flatMap(index => [roads.chains[index]?.hash ?? 0, ribbons.chainHashes[index] ?? 0]),
       ...fixedPoints.flatMap(index => {
         const point = roads.fixedPoints[index];
         return point === undefined ? [] : [point.tx, point.ty, point.degree, point.material === "stone" ? 1 : 0,
-          point.kinds.length, ...point.kinds.map(kind => kind.length), ...point.bridgeDirections.flatMap(direction => [direction.x, direction.y])];
+          point.kinds.length, ...point.kinds.map(kind => kind.length), ...point.bridgeDirections.flatMap(direction => [direction.x, direction.y]),
+          ribbons.fixedHashes[index] ?? 0];
       }),
       ...plazas.flatMap(index => [roads.plazaLoops[index]?.hash ?? 0, roads.plazaLoops[index]?.material === "stone" ? 1 : 0]),
     ]);
@@ -147,7 +158,7 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
     });
   }
   const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
-  return { width: state.width, height: state.height, columns, rows, roads, forest, fields, chunks, buildMs };
+  return { width: state.width, height: state.height, columns, rows, roads, ribbons, forest, fields, chunks, buildMs };
 }
 
 /** Tile-centre bounds of a chunk's own tiles (their squares). */

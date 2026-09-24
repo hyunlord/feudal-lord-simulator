@@ -1,0 +1,431 @@
+[
+  {
+    "fixture": "fixed 12x12",
+    "junctions": {
+      "junctions": 2,
+      "degree3": 2,
+      "degree4": 0,
+      "overlapPx": 0,
+      "beforeOverlapPx": 324,
+      "armsReachCentre": true
+    },
+    "portals": {
+      "count": 2,
+      "measured": 2,
+      "maxLateral": 0,
+      "maxAngleDeg": 0,
+      "plazaPortalsCovered": true,
+      "rows": [
+        {
+          "kind": "bridge",
+          "cell": [
+            44,
+            53
+          ],
+          "drawn": "chain",
+          "span": 0.7,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 39
+        },
+        {
+          "kind": "bridge",
+          "cell": [
+            47,
+            53
+          ],
+          "drawn": "stub",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 26
+        }
+      ]
+    },
+    "walkers": {
+      "samples": 609,
+      "before": 0.884,
+      "after": 0,
+      "afterFullPull": 0
+    },
+    "shoulders": {
+      "tufts": 18,
+      "sameVariantWithin4": 0,
+      "minSpacing": 1.033,
+      "maxSpacing": 1.456,
+      "sidesInPhase": 0.25,
+      "chainsWithTufts": 5
+    }
+  },
+  {
+    "fixture": "seed 1 final",
+    "junctions": {
+      "junctions": 20,
+      "degree3": 20,
+      "degree4": 0,
+      "overlapPx": 0,
+      "beforeOverlapPx": 3178,
+      "armsReachCentre": true
+    },
+    "portals": {
+      "count": 2,
+      "measured": 2,
+      "maxLateral": 0,
+      "maxAngleDeg": 0,
+      "plazaPortalsCovered": true,
+      "rows": [
+        {
+          "kind": "gate",
+          "cell": [
+            38,
+            21
+          ],
+          "drawn": "junction",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 27
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            39,
+            21
+          ],
+          "drawn": "junction",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 27
+        }
+      ]
+    },
+    "walkers": {
+      "samples": 4904,
+      "before": 0.884,
+      "after": 0.224,
+      "afterFullPull": 0
+    },
+    "shoulders": {
+      "tufts": 98,
+      "sameVariantWithin4": 0,
+      "minSpacing": 1.003,
+      "maxSpacing": 1.499,
+      "sidesInPhase": 0.037,
+      "chainsWithTufts": 30
+    }
+  },
+  {
+    "fixture": "seed 2 final",
+    "junctions": {
+      "junctions": 11,
+      "degree3": 11,
+      "degree4": 0,
+      "overlapPx": 0,
+      "beforeOverlapPx": 1779,
+      "armsReachCentre": true
+    },
+    "portals": {
+      "count": 4,
+      "measured": 0,
+      "maxLateral": 0,
+      "maxAngleDeg": 0,
+      "plazaPortalsCovered": true,
+      "rows": [
+        {
+          "kind": "gate",
+          "cell": [
+            52,
+            25
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            53,
+            25
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            52,
+            26
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            53,
+            26
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        }
+      ]
+    },
+    "walkers": {
+      "samples": 4757,
+      "before": 0.884,
+      "after": 0.224,
+      "afterFullPull": 0
+    },
+    "shoulders": {
+      "tufts": 103,
+      "sameVariantWithin4": 0,
+      "minSpacing": 1.009,
+      "maxSpacing": 1.499,
+      "sidesInPhase": 0.065,
+      "chainsWithTufts": 18
+    }
+  },
+  {
+    "fixture": "seed 3 final",
+    "junctions": {
+      "junctions": 13,
+      "degree3": 13,
+      "degree4": 0,
+      "overlapPx": 0,
+      "beforeOverlapPx": 2045,
+      "armsReachCentre": true
+    },
+    "portals": {
+      "count": 6,
+      "measured": 1,
+      "maxLateral": 0,
+      "maxAngleDeg": 0,
+      "plazaPortalsCovered": true,
+      "rows": [
+        {
+          "kind": "gate",
+          "cell": [
+            15,
+            7
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            16,
+            7
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            16,
+            7
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            16,
+            8
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            23,
+            18
+          ],
+          "drawn": "plaza",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 0,
+          "plazaCovered": true
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            24,
+            18
+          ],
+          "drawn": "chain",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 26
+        }
+      ]
+    },
+    "walkers": {
+      "samples": 3137,
+      "before": 0.884,
+      "after": 0.224,
+      "afterFullPull": 0
+    },
+    "shoulders": {
+      "tufts": 22,
+      "sameVariantWithin4": 0,
+      "minSpacing": 1.029,
+      "maxSpacing": 1.319,
+      "sidesInPhase": 0,
+      "chainsWithTufts": 10
+    }
+  },
+  {
+    "fixture": "seed 4 final",
+    "junctions": {
+      "junctions": 17,
+      "degree3": 16,
+      "degree4": 1,
+      "overlapPx": 0,
+      "beforeOverlapPx": 2846,
+      "armsReachCentre": true
+    },
+    "portals": {
+      "count": 2,
+      "measured": 2,
+      "maxLateral": 0,
+      "maxAngleDeg": 0,
+      "plazaPortalsCovered": true,
+      "rows": [
+        {
+          "kind": "gate",
+          "cell": [
+            7,
+            33
+          ],
+          "drawn": "chain",
+          "span": 0.7,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 39
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            7,
+            34
+          ],
+          "drawn": "junction",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 27
+        }
+      ]
+    },
+    "walkers": {
+      "samples": 3590,
+      "before": 0.884,
+      "after": 0.223,
+      "afterFullPull": 0
+    },
+    "shoulders": {
+      "tufts": 80,
+      "sameVariantWithin4": 0,
+      "minSpacing": 1.007,
+      "maxSpacing": 1.488,
+      "sidesInPhase": 0.054,
+      "chainsWithTufts": 22
+    }
+  },
+  {
+    "fixture": "seed 5 final",
+    "junctions": {
+      "junctions": 15,
+      "degree3": 15,
+      "degree4": 0,
+      "overlapPx": 0,
+      "beforeOverlapPx": 2380,
+      "armsReachCentre": true
+    },
+    "portals": {
+      "count": 2,
+      "measured": 2,
+      "maxLateral": 0,
+      "maxAngleDeg": 0,
+      "plazaPortalsCovered": true,
+      "rows": [
+        {
+          "kind": "gate",
+          "cell": [
+            23,
+            0
+          ],
+          "drawn": "junction",
+          "span": 0.5,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 27
+        },
+        {
+          "kind": "gate",
+          "cell": [
+            24,
+            0
+          ],
+          "drawn": "chain",
+          "span": 0.7,
+          "maxLateral": 0,
+          "maxAngleDeg": 0,
+          "samples": 38
+        }
+      ]
+    },
+    "walkers": {
+      "samples": 4042,
+      "before": 0.884,
+      "after": 0.224,
+      "afterFullPull": 0
+    },
+    "shoulders": {
+      "tufts": 51,
+      "sameVariantWithin4": 0,
+      "minSpacing": 1.027,
+      "maxSpacing": 1.491,
+      "sidesInPhase": 0,
+      "chainsWithTufts": 13
+    }
+  }
+]

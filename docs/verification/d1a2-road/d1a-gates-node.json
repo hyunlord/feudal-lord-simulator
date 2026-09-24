@@ -1,0 +1,236 @@
+{
+  "tolerance": [
+    {
+      "fixture": "fixed 12x12",
+      "road": {
+        "samples": 558,
+        "maxOutsideRoadCells": 0.117,
+        "over025": 0,
+        "maxToCellCentreChain": 0.617,
+        "chains": 6,
+        "fixedPoints": 9,
+        "plazas": 0
+      },
+      "forest": {
+        "samples": 12030,
+        "maxToCellEdge": 0.25,
+        "over035": 0,
+        "loops": 10,
+        "decals": 449
+      },
+      "fields": {
+        "samples": 458,
+        "maxToCellEdge": 0.125,
+        "over035": 0,
+        "clusters": 2
+      },
+      "reversedInputIdentical": true,
+      "sceneBuildMs": 11.703
+    },
+    {
+      "fixture": "seed 1 final",
+      "road": {
+        "samples": 4801,
+        "maxOutsideRoadCells": 0.125,
+        "over025": 0,
+        "maxToCellCentreChain": 0.625,
+        "chains": 54,
+        "fixedPoints": 107,
+        "plazas": 7
+      },
+      "forest": {
+        "samples": 11676,
+        "maxToCellEdge": 0.25,
+        "over035": 0,
+        "loops": 9,
+        "decals": 362
+      },
+      "fields": {
+        "samples": 2588,
+        "maxToCellEdge": 0.125,
+        "over035": 0,
+        "clusters": 14
+      },
+      "reversedInputIdentical": true,
+      "sceneBuildMs": 10.986
+    },
+    {
+      "fixture": "seed 2 final",
+      "road": {
+        "samples": 4527,
+        "maxOutsideRoadCells": 0.125,
+        "over025": 0,
+        "maxToCellCentreChain": 0.625,
+        "chains": 32,
+        "fixedPoints": 79,
+        "plazas": 6
+      },
+      "forest": {
+        "samples": 7993,
+        "maxToCellEdge": 0.25,
+        "over035": 0,
+        "loops": 3,
+        "decals": 149
+      },
+      "fields": {
+        "samples": 2318,
+        "maxToCellEdge": 0.125,
+        "over035": 0,
+        "clusters": 10
+      },
+      "reversedInputIdentical": true,
+      "sceneBuildMs": 6.463
+    },
+    {
+      "fixture": "seed 3 final",
+      "road": {
+        "samples": 3017,
+        "maxOutsideRoadCells": 0.125,
+        "over025": 0,
+        "maxToCellCentreChain": 0.625,
+        "chains": 40,
+        "fixedPoints": 78,
+        "plazas": 4
+      },
+      "forest": {
+        "samples": 5913,
+        "maxToCellEdge": 0.25,
+        "over035": 0,
+        "loops": 3,
+        "decals": 47
+      },
+      "fields": {
+        "samples": 2501,
+        "maxToCellEdge": 0.125,
+        "over035": 0,
+        "clusters": 13
+      },
+      "reversedInputIdentical": true,
+      "sceneBuildMs": 5.213
+    },
+    {
+      "fixture": "seed 4 final",
+      "road": {
+        "samples": 3452,
+        "maxOutsideRoadCells": 0.125,
+        "over025": 0,
+        "maxToCellCentreChain": 0.625,
+        "chains": 43,
+        "fixedPoints": 74,
+        "plazas": 3
+      },
+      "forest": {
+        "samples": 8048,
+        "maxToCellEdge": 0.25,
+        "over035": 0,
+        "loops": 3,
+        "decals": 205
+      },
+      "fields": {
+        "samples": 2528,
+        "maxToCellEdge": 0.125,
+        "over035": 0,
+        "clusters": 12
+      },
+      "reversedInputIdentical": true,
+      "sceneBuildMs": 4.969
+    },
+    {
+      "fixture": "seed 5 final",
+      "road": {
+        "samples": 3766,
+        "maxOutsideRoadCells": 0.125,
+        "over025": 0,
+        "maxToCellCentreChain": 0.625,
+        "chains": 34,
+        "fixedPoints": 85,
+        "plazas": 2
+      },
+      "forest": {
+        "samples": 6402,
+        "maxToCellEdge": 0.25,
+        "over035": 0,
+        "loops": 1,
+        "decals": 76
+      },
+      "fields": {
+        "samples": 2689,
+        "maxToCellEdge": 0.125,
+        "over035": 0,
+        "clusters": 13
+      },
+      "reversedInputIdentical": true,
+      "sceneBuildMs": 4.448
+    }
+  ],
+  "freshness": [
+    {
+      "step": "redraw, nothing changed",
+      "chunksChangedByTheStep": 0,
+      "reRasteredInSameFrame": [],
+      "rastersThisFrame": 0,
+      "staleAfterRedraw": 0
+    },
+    {
+      "step": "build road (43,57)-(44,57)",
+      "chunksChangedByTheStep": 6,
+      "reRasteredInSameFrame": [
+        "roads:4,6",
+        "ground:5,6",
+        "roads:5,6",
+        "roads:4,7",
+        "ground:5,7",
+        "roads:5,7"
+      ],
+      "rastersThisFrame": 6,
+      "staleAfterRedraw": 0
+    },
+    {
+      "step": "remove road (39,61)",
+      "chunksChangedByTheStep": 6,
+      "reRasteredInSameFrame": [
+        "roads:4,6",
+        "roads:5,6",
+        "ground:4,7",
+        "roads:4,7",
+        "ground:5,7",
+        "roads:5,7"
+      ],
+      "rastersThisFrame": 6,
+      "staleAfterRedraw": 0
+    },
+    {
+      "step": "place wheat farm at (42,51)",
+      "chunksChangedByTheStep": 2,
+      "reRasteredInSameFrame": [
+        "ground:4,6",
+        "ground:5,6"
+      ],
+      "rastersThisFrame": 2,
+      "staleAfterRedraw": 0
+    },
+    {
+      "step": "complete that farm",
+      "chunksChangedByTheStep": 2,
+      "reRasteredInSameFrame": [
+        "ground:4,6",
+        "ground:5,6"
+      ],
+      "rastersThisFrame": 2,
+      "staleAfterRedraw": 0
+    }
+  ],
+  "cache": {
+    "hits": 204,
+    "prefetched": 0,
+    "contentRasters": 60,
+    "zoomRasters": 0,
+    "deferredZoom": 0,
+    "evictions": 0,
+    "rasterMs": 41.588706999999204,
+    "entries": 44,
+    "pixels": 5903040,
+    "lastFrameRasters": 2,
+    "lastFrameRasterMs": 1.5163330000000315
+  }
+}

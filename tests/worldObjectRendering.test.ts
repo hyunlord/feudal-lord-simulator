@@ -2,13 +2,11 @@ import assert from "node:assert/strict";
 import { before, test } from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../src/content/buildingConfig";
-import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
+import { SEMANTIC_PALETTE } from "../src/content/palette";
 import type { GameState } from "../src/engine/engine.types";
 import { drawBuildings } from "../src/render/drawBuildings";
-import { drawStartingLandmark } from "../src/render/drawStartingLandmarks";
 import { drawTerrain } from "../src/render/drawTerrain";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
-import type { StartingLandmark } from "../src/render/startingLandmarks";
 import { withAlpha } from "../src/render/style";
 import type { TerrainPatternAssets } from "../src/render/terrainPatterns";
 import { preloadWorldAssets } from "../src/render/worldAssets";
@@ -232,21 +230,6 @@ test("full LOD just above the simplified boundary may use ready building sprites
 
   // Then
   assert.ok(context.calls.includes("drawImage"));
-});
-
-test("renderer-only ford landmark draws visible water stones and label", () => {
-  // Given
-  const context = loggedContext();
-  const landmark = { kind: "ford", tx: 53, ty: 41, label: "나루터" } as const satisfies StartingLandmark;
-
-  // When
-  drawStartingLandmark(context, landmark, 1);
-
-  // Then
-  assert.ok(context.calls.includes(`fillStyle:${withAlpha(SEMANTIC_PALETTE.water, 0.72)}`));
-  assert.ok(context.calls.includes(`fillStyle:${SEMANTIC_PALETTE.stone}`));
-  assert.ok(context.calls.includes(`fillStyle:${PALETTE.ink}`));
-  assert.ok(context.calls.some((call) => call.startsWith("fillText:나루터,")));
 });
 
 test("Stone Town fallback sprite keys cover all new render kinds when manifest images are absent", () => {

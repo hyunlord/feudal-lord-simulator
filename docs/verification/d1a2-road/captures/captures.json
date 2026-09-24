@@ -1,0 +1,347 @@
+{
+  "url": "http://127.0.0.1:4196/",
+  "beforeUrl": "http://127.0.0.1:4197/",
+  "note": "fixture states, simulation not started (준비 상태)",
+  "rows": [
+    {
+      "file": "width-0.55-lots24-z1.0.jpg",
+      "bytes": 289019,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-ribbon-width=0.55",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "width-0.65-lots24-z1.0.jpg",
+      "bytes": 288575,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-ribbon-width=0.65",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "width-0.75-lots24-z1.0.jpg",
+      "bytes": 290869,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-ribbon-width=0.75",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v1-lots24-z1.0.jpg",
+      "bytes": 289019,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-strip=v1",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v2-lots24-z1.0.jpg",
+      "bytes": 288023,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-strip=v2",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v1-lots24-z0.6.jpg",
+      "bytes": 200319,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 0.6,
+      "dpr": 1,
+      "query": "&road-strip=v1",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v2-lots24-z0.6.jpg",
+      "bytes": 199763,
+      "scene": {
+        "city": "lots24",
+        "tile": [
+          45,
+          37
+        ]
+      },
+      "zoom": 0.6,
+      "dpr": 1,
+      "query": "&road-strip=v2",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v1-fixed12-z1.0.jpg",
+      "bytes": 150394,
+      "scene": {
+        "city": "fixed12",
+        "tile": [
+          42,
+          56
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-strip=v1",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v2-fixed12-z1.0.jpg",
+      "bytes": 149719,
+      "scene": {
+        "city": "fixed12",
+        "tile": [
+          42,
+          56
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "&road-strip=v2",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v1-fixed12-z0.6.jpg",
+      "bytes": 146518,
+      "scene": {
+        "city": "fixed12",
+        "tile": [
+          42,
+          56
+        ]
+      },
+      "zoom": 0.6,
+      "dpr": 1,
+      "query": "&road-strip=v1",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "strip-v2-fixed12-z0.6.jpg",
+      "bytes": 146205,
+      "scene": {
+        "city": "fixed12",
+        "tile": [
+          42,
+          56
+        ]
+      },
+      "zoom": 0.6,
+      "dpr": 1,
+      "query": "&road-strip=v2",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "closeup-junction-t-before.jpg",
+      "bytes": 92530,
+      "scene": {
+        "name": "junction-t",
+        "city": "fixed12",
+        "tile": [
+          39,
+          57
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4197/"
+    },
+    {
+      "file": "closeup-junction-t-after.jpg",
+      "bytes": 93777,
+      "scene": {
+        "name": "junction-t",
+        "city": "fixed12",
+        "tile": [
+          39,
+          57
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "closeup-bridge-before.jpg",
+      "bytes": 67917,
+      "scene": {
+        "name": "bridge",
+        "city": "fixed12",
+        "tile": [
+          45,
+          53
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4197/"
+    },
+    {
+      "file": "closeup-bridge-after.jpg",
+      "bytes": 68371,
+      "scene": {
+        "name": "bridge",
+        "city": "fixed12",
+        "tile": [
+          45,
+          53
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "closeup-junction-town-before.jpg",
+      "bytes": 130235,
+      "scene": {
+        "name": "junction-town",
+        "city": "lots24",
+        "tile": [
+          46,
+          34
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4197/"
+    },
+    {
+      "file": "closeup-junction-town-after.jpg",
+      "bytes": 130192,
+      "scene": {
+        "name": "junction-town",
+        "city": "lots24",
+        "tile": [
+          46,
+          34
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "closeup-gate-seed3-before.jpg",
+      "bytes": 88036,
+      "scene": {
+        "name": "gate-seed3",
+        "city": "seed3",
+        "tile": [
+          24,
+          18
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4197/"
+    },
+    {
+      "file": "closeup-gate-seed3-after.jpg",
+      "bytes": 88409,
+      "scene": {
+        "name": "gate-seed3",
+        "city": "seed3",
+        "tile": [
+          24,
+          18
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "closeup-gate-seed4-before.jpg",
+      "bytes": 137307,
+      "scene": {
+        "name": "gate-seed4",
+        "city": "seed4",
+        "tile": [
+          7,
+          34
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4197/"
+    },
+    {
+      "file": "closeup-gate-seed4-after.jpg",
+      "bytes": 137748,
+      "scene": {
+        "name": "gate-seed4",
+        "city": "seed4",
+        "tile": [
+          7,
+          34
+        ]
+      },
+      "zoom": 1.35,
+      "dpr": 2,
+      "query": "",
+      "server": "http://127.0.0.1:4196/"
+    },
+    {
+      "file": "c25-board-z1.0.jpg",
+      "bytes": 254419,
+      "scene": {
+        "city": "seed2",
+        "tile": [
+          44,
+          38
+        ]
+      },
+      "zoom": 1,
+      "dpr": 1,
+      "query": "",
+      "server": "http://127.0.0.1:4196/"
+    }
+  ]
+}

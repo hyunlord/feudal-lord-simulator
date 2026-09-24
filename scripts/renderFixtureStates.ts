@@ -23,7 +23,7 @@ function newestSaveFixture(name: string): string {
 }
 
 export function benchmarkCities(): { readonly newgame: null; readonly pop176: GameState; readonly lots24: GameState;
-  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly gallery: GameState } {
+  readonly fixed12: GameState; readonly seed2: GameState; readonly seed3: GameState; readonly seed4: GameState; readonly gallery: GameState } {
   return {
     newgame: null,
     // Curved-ground evidence (D1a): the 12x12 fixed scene on the new-game map, and the seed 2 final city.
@@ -31,6 +31,8 @@ export function benchmarkCities(): { readonly newgame: null; readonly pop176: Ga
     seed2: seedGroundState(2),
     // Visual variants (V1): the seed 3 final town, and the injected all-variants x all-conditions gallery.
     seed3: seedGroundState(3),
+    // Road portals (D1a-2): a straight gate crossing with the earth-to-stone change.
+    seed4: seedGroundState(4),
     gallery: variantGallery().state,
     pop176: decode(newestSaveFixture("population-176.save.json")),
     // A bare GameState (schema v0); decodeSave migrates it step by step to the current version.

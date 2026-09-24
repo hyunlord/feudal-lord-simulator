@@ -7,16 +7,8 @@ import type {
   StumpDescriptor,
   TreeDescriptor,
 } from "./treeLayout";
-import type { StartingLandmark } from "./startingLandmarks";
 
 export type ObjectRenderItem =
-  | {
-      readonly kind: "starting_landmark";
-      readonly id: string;
-      readonly landmark: StartingLandmark;
-      readonly depth: number;
-      readonly anchorTx: number;
-    }
   | {
       readonly kind: "tree";
       readonly id: string;

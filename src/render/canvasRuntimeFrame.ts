@@ -1,3 +1,4 @@
+import type { Walker } from "../agents/walker.types";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
 import type { CameraState } from "./camera";
@@ -11,6 +12,8 @@ import type { AnchoredWorldSelection } from "./worldSelection";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { interpolatedConstructionProgress } from "./constructionInterpolation";
 import { interpolatedWalkerPositions } from "./walkerInterpolation";
+import { boundaryV2Enabled } from "./renderBoundaryFlag";
+import { roadAlignedWalkers } from "./walkerRoadAlignment";
 import { renderStageProbe } from "./renderStageProbe";
 
 export type CanvasFrameRefs = Readonly<{
@@ -62,11 +65,11 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     selectedBuildingId: input.selection?.kind === "building" ? input.selection.buildingId : null,
     selectedWalkerId: input.selection?.kind === "walker" ? input.selection.walkerId : null,
     selectedConstructionSiteId: input.selection?.kind === 'construction_site' ? input.selection.siteId : null,
-    renderWalkers: interpolatedWalkerPositions({
+    renderWalkers: displayWalkers(input.state, interpolatedWalkerPositions({
       previous: input.previousRenderState,
       current: input.state,
       alpha: interpolationAlpha,
-    }),
+    })),
     constructionProgress: interpolatedConstructionProgress({
       previous: input.previousRenderState.constructionSites,
       current: input.state.constructionSites,
@@ -81,4 +84,9 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   probe?.enter("frame.publish");
   input.publishPrediction?.(preview, input.refs.cameraRef.current);
   probe?.frameEnd();
+}
+
+/** With curved ground on, walkers on roads are drawn on the ribbon centreline (display only). */
+function displayWalkers(state: GameState, walkers: readonly Walker[]): readonly Walker[] {
+  return boundaryV2Enabled() ? roadAlignedWalkers(state, walkers) : walkers;
 }

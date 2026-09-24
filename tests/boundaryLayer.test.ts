@@ -90,7 +90,7 @@ test("Given crops at every growth stage When field clusters are derived Then the
   assert.equal(fieldClusters(state, farms.map(farm => ({ ...farm, width: 2, height: 2 }))).length, 2, "two separate field clusters");
 });
 
-test("Given the fixed scene When the road graph is derived Then junction, dead ends and bridge banks are fixed points and chains end on them", () => {
+test("Given the fixed scene When the road graph is derived Then junction, dead ends and bridge banks are fixed points and chains end on them (or on the deck start past a single-road bank)", () => {
   // Given
   const state = fixedSceneState();
 
@@ -100,9 +100,21 @@ test("Given the fixed scene When the road graph is derived Then junction, dead e
   // Then
   const kinds = graph.fixedPoints.flatMap(point => point.kinds);
   for (const kind of ["junction", "dead_end", "bridge_bank"] as const) assert.ok(kinds.includes(kind), kind);
+  const deckStart = (cell: { tx: number; ty: number } | undefined) => {
+    const bank = graph.fixedPoints.find(point => point.tx === cell?.tx && point.ty === cell?.ty && point.degree === 1);
+    const direction = bank?.bridgeDirections[0];
+    return direction === undefined ? null : { x: (cell?.tx ?? 0) + direction.x / 2, y: (cell?.ty ?? 0) + direction.y / 2 };
+  };
+  let extended = 0;
   for (const chain of graph.chains.filter(candidate => !candidate.closed)) {
     const first = chain.cells[0]; const last = chain.cells[chain.cells.length - 1];
-    assert.deepEqual(chain.centreline[0], { x: first?.tx, y: first?.ty });
-    assert.deepEqual(chain.centreline[chain.centreline.length - 1], { x: last?.tx, y: last?.ty });
+    for (const [cell, point, next] of [[first, chain.centreline[0], chain.centreline[1]], [last, chain.centreline[chain.centreline.length - 1], chain.centreline[chain.centreline.length - 2]]] as const) {
+      const deck = deckStart(cell);
+      if (deck === null) { assert.deepEqual(point, { x: cell?.tx, y: cell?.ty }); continue; }
+      extended += 1;
+      assert.deepEqual(point, deck);
+      assert.deepEqual(next, { x: cell?.tx, y: cell?.ty });
+    }
   }
+  assert.equal(extended, 1, "the west bank's road runs on to the deck");
 });

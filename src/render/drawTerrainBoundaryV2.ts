@@ -97,7 +97,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   }
   schedulePrefetch(context, cache, ringChunks(scene, input.range, visible).flatMap(plan => [
     { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, waterReady, parts) },
-    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, plan) }] : []),
+    ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan) }] : []),
   ]));
   probe?.enter("terrain.landscape");
   drawTownLandscape(context, input.state, input.tiles);
@@ -105,7 +105,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   parts.drawFrontage(context);
   probe?.enter("roads.ground");
   for (const plan of visible) {
-    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paint => drawRoadRibbons(paint, scene.roads, plan));
+    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paint => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan));
   }
   for (const tile of input.tiles) if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   probe?.enter("terrain.grounding");
