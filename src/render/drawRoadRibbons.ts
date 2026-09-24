@@ -179,7 +179,8 @@ function drawJunction(context: CanvasRenderingContext2D, graph: RoadCenterlineGr
   const ruts = source?.ruts ?? null;
   if (ruts !== null && source !== null) {
     const pattern = cachedPattern(context, ruts, "repeat");
-    context.globalAlpha = previousAlpha * source.set.rutContrast;
+    // Ruts from several arms cross in the patch; a little lighter than on the ribbons so the node does not read as a grid.
+    context.globalAlpha = previousAlpha * source.set.rutContrast * 0.75;
     for (const arm of patch.arms) {
       if (arm.chain === null) continue;
       const chain = graph.chains[arm.chain];
@@ -320,16 +321,21 @@ function drawPortalCap(context: CanvasRenderingContext2D, portal: PortalCap, sou
 const TUFT_CROP_WIDTH = 40;
 const TUFT_CROPS = [16, 28, 40, 52, 64, 76] as const;
 const bandYAt = (x: number): number => 47 - 0.23 * (x - 16);
+/** Tufts at 80% of the decal's authored size and 85% opacity: breakup at the edge, not a row of bushes. */
+const TUFT_SCALE = 0.8;
+const TUFT_ALPHA = 0.85;
 
 function drawShoulderDecals(context: CanvasRenderingContext2D, decals: readonly ShoulderDecal[]): void {
   const image = boundaryAsset("grass_edge");
   if (image === null || decals.length === 0) return;
+  const previousAlpha = context.globalAlpha;
+  context.globalAlpha = previousAlpha * TUFT_ALPHA;
   const placed = decals.map(decal => ({ decal, screen: tileToScreen(decal.anchor.x, decal.anchor.y) }))
     .sort((a, b) => a.screen.sy - b.screen.sy || a.screen.sx - b.screen.sx);
   for (const { decal, screen } of placed) {
     const crop = TUFT_CROPS[decal.variant % TUFT_CROPS.length] as number;
     const flip = decal.variant >= TUFT_CROPS.length;
-    const scale = 0.5 * decal.scale;
+    const scale = 0.5 * TUFT_SCALE * decal.scale;
     const bandY = bandYAt(crop + TUFT_CROP_WIDTH / 2);
     const destination = { x: screen.sx - TUFT_CROP_WIDTH / 2 * scale, y: screen.sy - bandY * scale, width: TUFT_CROP_WIDTH * scale, height: STRIP_HEIGHT * scale };
     const source = { x: crop, y: 0, width: TUFT_CROP_WIDTH, height: STRIP_HEIGHT };
@@ -340,6 +346,7 @@ function drawShoulderDecals(context: CanvasRenderingContext2D, decals: readonly 
     drawCroppedWorldSprite(context, image, source, destination, false, true);
     context.restore();
   }
+  context.globalAlpha = previousAlpha;
 }
 
 // ---- strip sources ------------------------------------------------------------------------------------------------
@@ -501,7 +508,8 @@ function surfacePattern(context: CanvasRenderingContext2D, source: StripSource |
   let canvas = map.get(band);
   if (canvas === undefined) {
     const [top, bottom] = source.set.artRows;
-    const [from, to] = band === "crown" ? [0.42, 0.58] : [0.1, 0.27];
+    // "crown" spans the road interior (ruts blurred out), so a patch or plaza matches the ribbon's average tone.
+    const [from, to] = band === "crown" ? [0.3, 0.7] : [0.1, 0.27];
     const y0 = Math.round(top + (bottom - top) * from); const rows = Math.max(2, Math.round((bottom - top) * (to - from)));
     const made = canvas2d(source.period, rows * 2);
     if (made !== null) {
