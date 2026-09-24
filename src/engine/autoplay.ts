@@ -1,4 +1,4 @@
-import { runAutoplaySearch, runAutoplaySearchPhase } from './autoplaySearchBudget';
+import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } from './autoplaySearchBudget';
 import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { timberExpansionKind } from './autoplayTimberRecovery';
@@ -84,9 +84,12 @@ function findBuildSite(
   kind: BuildingKind,
   accepts: (coordinate: TileCoordinate) => boolean = () => true,
 ): TileCoordinate | null {
+  if (autoplaySearchExhausted()) return null;
   const coordinates = lateFoodBuildSites(state, kind) ?? state.tiles.filter(tile =>
     tile.tx > 0 && tile.ty > 0 && tile.tx < state.width - 1 && tile.ty < state.height - 1);
   for (const coordinate of coordinates) {
+    // Every candidate still needs a service proof; an exhausted phase cannot supply one.
+    if (autoplaySearchExhausted()) return null;
     if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
     if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok && preservesAutoplayWallSpace(state, kind, coordinate)
       && preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })
@@ -165,11 +168,13 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
     hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate)),
   );
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
+  if (autoplaySearchExhausted()) return NONE;
   const roads = roadTiles(state);
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && canPlaceBuilding(state, kind, tile.tx, tile.ty).ok)
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
+    if (autoplaySearchExhausted()) return NONE;
     if (!preservesAutoplayWallSpace(state, kind, candidate.tile) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tile.tx, ty: candidate.tile.ty })) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;

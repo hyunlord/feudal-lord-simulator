@@ -11,7 +11,7 @@ import { computePalisadeProposalForState } from '../src/engine/palisadeFootprint
 import { decideNextAction } from '../src/engine/autoplay';
 import type { GameState } from '../src/engine/engine.types';
 import type { FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
-import { runAutoplaySearch, runAutoplaySearchPhase, spendAutoplaySearch } from '../src/engine/autoplaySearchBudget';
+import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase, spendAutoplaySearch } from '../src/engine/autoplaySearchBudget';
 
 const fixture = (): GameState => JSON.parse(gunzipSync(readFileSync(new URL('../fixtures/autoplay-search-budget/seed3-28080.json.gz', import.meta.url))).toString());
 
@@ -102,4 +102,16 @@ test('a natural seed 4 food/storage shortage retains a legal recovery within the
   assert.notEqual(gameReducer(state, command), state, 'the actual game reducer must accept the recovery');
   assert.ok(diagnostic.search !== undefined && diagnostic.search.used <= diagnostic.search.limit);
   assert.deepEqual(decideNextAction(structuredClone(state), { maxHousingLots: 24 }), action);
+});
+
+test('an exhausted housing search stops reading further candidate tiles instead of scanning wall proposals', () => {
+  const input = fixture();
+  let readsAfterExhaustion = 0;
+  const tiles = new Proxy(input.tiles, { get(target, property, receiver) {
+    if (typeof property === 'string' && /^\d+$/.test(property) && autoplaySearchExhausted()) readsAfterExhaustion++;
+    return Reflect.get(target, property, receiver);
+  } });
+  const action = decideNextAction({ ...input, tiles }, { maxHousingLots: 24 });
+  assert.deepEqual(action, decideNextAction(input, { maxHousingLots: 24 }));
+  assert.ok(readsAfterExhaustion <= 1, `only the next loop item may be read after exhaustion, saw ${readsAfterExhaustion}`);
 });
