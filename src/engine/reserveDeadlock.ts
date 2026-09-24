@@ -35,19 +35,19 @@ function timberReserveHeldWallSites(state: GameState): readonly ConstructionSite
 }
 
 function timberAvailabilityStall(state: GameState): ReserveDeadlock["window"] | null {
-  const window = state.timberProductionWindow;
+  const observation = state.timberProductionWindow;
   if (
-    window === undefined ||
-    window.availableTimber === undefined ||
-    window.lastAvailableIncreaseTick === undefined
+    observation === undefined ||
+    observation.availableTimber === undefined ||
+    observation.lastAvailableIncreaseTick === undefined
   ) return null;
-  const observedTicks = window.throughTick - window.startTick + 1;
-  const stalledTicks = window.throughTick - window.lastAvailableIncreaseTick;
+  const observedTicks = observation.throughTick - observation.startTick + 1;
+  const stalledTicks = observation.throughTick - observation.lastAvailableIncreaseTick;
   if (observedTicks < RESERVE_DEADLOCK_TICKS || stalledTicks < RESERVE_DEADLOCK_TICKS) return null;
   return {
-    startTick: window.startTick,
-    throughTick: window.throughTick,
-    lastAvailableIncreaseTick: window.lastAvailableIncreaseTick,
+    startTick: observation.startTick,
+    throughTick: observation.throughTick,
+    lastAvailableIncreaseTick: observation.lastAvailableIncreaseTick,
     stalledTicks,
   };
 }
@@ -112,8 +112,8 @@ export function reserveDeadlock(state: GameState): ReserveDeadlock | null {
   if (state.wallConstructionPriority === "priority") return null;
   const siteIds = timberReserveHeldWallSites(state).map((site) => site.id);
   if (siteIds.length === 0) return null;
-  const window = timberAvailabilityStall(state);
-  if (window === null) return null;
+  const observation = timberAvailabilityStall(state);
+  if (observation === null) return null;
   const storage = fullWoodStorage(state);
   if (storage === null || !woodProductionBlocked(state)) return null;
   return {
@@ -122,6 +122,6 @@ export function reserveDeadlock(state: GameState): ReserveDeadlock | null {
     blockedResource: dominantStoredResource(storage.buildings),
     used: storage.used,
     capacity: storage.capacity,
-    window,
+    window: observation,
   };
 }

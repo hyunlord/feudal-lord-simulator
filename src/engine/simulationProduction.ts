@@ -89,17 +89,17 @@ function timberProductionWindow(state: GameState, produced: number): NonNullable
 }
 
 export function recordTimberAvailability(state: GameState): GameState {
-  const window = state.timberProductionWindow;
-  if (window === undefined) return state;
+  const observation = state.timberProductionWindow;
+  if (observation === undefined) return state;
   if (state.wallConstructionReserve?.resource !== 'timber' || state.wallConstructionPriority === 'priority') return state;
   const availableTimber = placementSpendableResource(state, 'timber');
-  const lastAvailableIncreaseTick = window.availableTimber === undefined || availableTimber > window.availableTimber
+  const lastAvailableIncreaseTick = observation.availableTimber === undefined || availableTimber > observation.availableTimber
     ? state.tick
-    : window.lastAvailableIncreaseTick ?? state.tick;
+    : observation.lastAvailableIncreaseTick ?? state.tick;
   return {
     ...state,
     timberProductionWindow: {
-      ...window,
+      ...observation,
       availableTimber,
       lastAvailableIncreaseTick,
     },

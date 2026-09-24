@@ -21,6 +21,7 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     BREAD_HUNGER_WINDOW: 200,
     DEVOLUTION_GRACE: 400,
     GROWTH_INTERVAL: 150,
+    FOOD_PRODUCTION_MARGIN_FACTOR: 1.05,
     STARVATION_WINDOW: 300,
     WORKERS_PER_RESIDENT: 0.5,
     STARTING_TIMBER: 120,
