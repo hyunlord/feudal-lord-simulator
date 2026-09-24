@@ -176,7 +176,9 @@ export function blocksRepeatedFoodExpansion(state: GameState, kind: AutoplayFood
     && observation.outcome?.effective === false && (observation.outcome.deliveredWheatDelta ?? 0) > 0
     && observation.baseline?.breadProduced !== undefined) {
     const sample = foodEfficiencyMetrics(state);
-    if (sample.fullWindow && sample.known && sample.breadProduced > observation.baseline.breadProduced
+    const laterEvidence = sample.breadProduced > observation.baseline.breadProduced
+      || observation.outcome.outputDelta > 0 && sample.wheatProduced < sample.wheatConsumed;
+    if (sample.fullWindow && sample.known && laterEvidence
       && measuredFoodDecision(state).reason === 'actual_wheat_deficit') return false;
   }
   return observation !== undefined &&

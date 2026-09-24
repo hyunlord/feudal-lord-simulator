@@ -1,3 +1,5 @@
+import { LABOUR_COPY } from "./labourCopy.ko";
+import { isWallConstructionSite } from "../domain/palisadeConstructionSchedule";
 import { useLayoutEffect, useRef } from "react";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
@@ -48,8 +50,8 @@ export type EraConsoleModel = {
 };
 
 const PROCLAMATION_TOOLTIPS = {
-  hamlet: "선포하면 일꾼의 40%가 성벽 공사에 배정됩니다 (약 600틱)",
-  palisade: "선포하면 일꾼의 50%가 석조 전환 공사에 배정됩니다 (약 900틱)",
+  hamlet: LABOUR_COPY.palisadeProclamation,
+  palisade: LABOUR_COPY.stoneProclamation,
   stone_town: "석조 도시가 선포되었습니다",
 } as const satisfies Record<Era, string>;
 
@@ -93,7 +95,8 @@ export function buildEraConsoleModel(input: {
   return {
     currentEraLabel: CURRENT_ERA_LABELS[input.state.era],
     requirements,
-    tooltip: PROCLAMATION_TOOLTIPS[input.state.era],
+    tooltip: input.state.era === "hamlet" ? PROCLAMATION_TOOLTIPS.hamlet
+      : LABOUR_COPY.assigned(input.state.constructionSites.filter(isWallConstructionSite).reduce((sum, site) => sum + site.assignedBuilders, 0)),
     action: {
       enabled: canBegin,
       label: actionLabel({ state: input.state, draft: input.draft }),

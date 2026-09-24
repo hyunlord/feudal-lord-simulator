@@ -1,3 +1,4 @@
+import { BUILDING_OPERATION_COPY } from '../ui/buildingOperationCopy.ko';
 import type { ReactElement } from "react";
 import { BALANCE } from "../content/balanceConfig";
 
@@ -186,6 +187,7 @@ function cardIdentity(model: DiagnosticCardModel): Readonly<{ name: string; type
 export function DiagnosticCard({
   model,
   causeSummary,
+  buildingOperation,
   onDemolishHouse,
   onMergeHouses,
   onCancelConstruction,
@@ -193,6 +195,7 @@ export function DiagnosticCard({
 }: Readonly<{
   model: DiagnosticCardModel;
   causeSummary?: HouseProgressModel | null;
+  buildingOperation?: { readonly paused: boolean; readonly onToggle: () => void };
   onDemolishHouse?: (buildingId: string) => void;
   onMergeHouses?: (sourceBuildingId: string, targetBuildingId: string) => void;
   onCancelConstruction?: (siteId: string) => void;
@@ -219,7 +222,7 @@ export function DiagnosticCard({
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} /> : null}
-          {model.kind === "building" ? <><p>{model.value.purpose}</p><h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "building" ? <><p>{model.value.purpose}</p>{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={buildingOperation.onToggle}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined
               ? <ConstructionSiteCard model={model.value} />

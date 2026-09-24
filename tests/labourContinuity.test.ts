@@ -19,14 +19,14 @@ test("food chain wins scarce labour regardless of lexical industry ids and input
   assert.deepEqual([...reversed.buildings].reverse(), forward.buildings);
 });
 
-test("ready ordinary construction reserves one worker after food jobs before other industry", () => {
+test("ready ordinary construction reserves three workers before production", () => {
   // Given
   const buildings = [...food, building("a-quarry", "quarry")];
   // When
   const result = allocateBuildingAndConstructionLabour(buildings, [site("ready")], 20);
   // Then
-  assert.deepEqual(result.buildings.map(({ workers }) => workers), [4, 2, 2, 1]);
-  assert.equal(result.constructionSites[0]?.assignedBuilders, 1);
+  assert.deepEqual(result.buildings.map(({ workers }) => workers), [4, 2, 1, 0]);
+  assert.equal(result.constructionSites[0]?.assignedBuilders, 3);
   assert.equal(result.idleWorkers, 0);
 });
 
@@ -40,14 +40,14 @@ test("unready sites never consume workers or starve a later ready site", () => {
   assert.equal(result.idleWorkers, 0);
 });
 
-test("ordinary construction does not take the last vital food worker", () => {
+test("construction floor remains available even with a scarce food workforce", () => {
   // Given
   const buildings = [...food, building("a-quarry", "quarry")];
   // When
   const result = allocateBuildingAndConstructionLabour(buildings, [site("ready")], 16);
   // Then
-  assert.deepEqual(result.buildings.map(({ workers }) => workers), [4, 2, 2, 0]);
-  assert.equal(result.constructionSites[0]?.assignedBuilders, 0);
+  assert.deepEqual(result.buildings.map(({ workers }) => workers), [4, 1, 0, 0]);
+  assert.equal(result.constructionSites[0]?.assignedBuilders, 3);
 });
 
 test("completed ordinary sites do not hold a reservation", () => {
@@ -86,8 +86,8 @@ test("ineligible disconnected facilities release labour to connected food and co
   // When
   const result = allocateBuildingAndConstructionLabour(buildings, [site("ready")], 6, undefined, (building) => building.id !== "a-farm");
   // Then
-  assert.deepEqual(result.buildings.map(({ workers }) => workers), [0, 2]);
-  assert.equal(result.constructionSites[0]?.assignedBuilders, 1);
+  assert.deepEqual(result.buildings.map(({ workers }) => workers), [0, 0]);
+  assert.equal(result.constructionSites[0]?.assignedBuilders, 3);
 });
 
 test("era reservation and ordinary builders cannot double assign any worker", () => {

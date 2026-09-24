@@ -90,7 +90,7 @@ test("Given available worker counts When palisade era is active Then the wall qu
   );
 
   // Then
-  assert.deepEqual(quotas, [0, 1, 1, 1, 2, 4]);
+  assert.deepEqual(quotas, [0, 1, 1, 1, 2, 3]);
 }
 );
 
@@ -115,7 +115,7 @@ test("Given reordered wall sites When palisade quota is active Then the first re
   );
   assert.equal(result.diagnostics.palisadeEraLabour.activeSiteId, first.id);
   assert.equal(result.diagnostics.palisadeEraLabour.reservedWorkers, 4);
-  assert.equal(result.diagnostics.palisadeEraLabour.unavailableReservedWorkers, 1);
+  assert.equal(result.diagnostics.palisadeEraLabour.unavailableReservedWorkers, 0);
 }
 );
 
@@ -139,7 +139,7 @@ test("one isolated first palisade segment cannot block eleven supplied later seg
   assert.deepEqual(current.slice(1).map(site => site.builderTicks), Array(11).fill(120));
 });
 
-test("Given an active wall site blocked on materials When quota is reserved Then production cannot use the idle reservation", () => {
+test("Given an active wall site blocked on materials When quota is reserved Then production keeps all available workers", () => {
   // Given
   const farm = building("a-farm", "wheat_farm");
   const blockedWall = wallSite("wall-a-segment-000", 0, {
@@ -154,16 +154,16 @@ test("Given an active wall site blocked on materials When quota is reserved Then
   });
 
   // Then
-  assert.equal(result.buildings[0]?.workers, 3);
+  assert.equal(result.buildings[0]?.workers, 4);
   assert.equal(result.constructionSites[0]?.assignedBuilders, 0);
   assert.equal(result.constructionSites[0]?.stall, "awaiting_materials");
   assert.equal(result.idleWorkers, 0);
-  assert.equal(result.diagnostics.palisadeEraLabour.reservedWorkers, 1);
-  assert.equal(result.diagnostics.palisadeEraLabour.unavailableReservedWorkers, 1);
+  assert.equal(result.diagnostics.palisadeEraLabour.reservedWorkers, 0);
+  assert.equal(result.diagnostics.palisadeEraLabour.unavailableReservedWorkers, 0);
 }
 );
 
-test("Given proclamation tick boundaries When allocating labour Then offsets 0 and 599 reserve wall labour but 600 restores production priority", () => {
+test("Given proclamation tick boundaries When allocating labour Then offsets 0 and 599 reserve wall labour but 600 releases the ceremony quota while retaining the construction floor", () => {
   // Given
   const farm = building("a-farm", "wheat_farm");
   const wall = wallSite("wall-a-segment-000", 0);
@@ -190,9 +190,9 @@ test("Given proclamation tick boundaries When allocating labour Then offsets 0 a
       reserved: result.diagnostics.palisadeEraLabour.reservedWorkers,
     })),
     [
-      { farmWorkers: 3, wallBuilders: 2, reserved: 2 },
-      { farmWorkers: 3, wallBuilders: 2, reserved: 2 },
-      { farmWorkers: 4, wallBuilders: 1, reserved: 0 },
+      { farmWorkers: 2, wallBuilders: 3, reserved: 2 },
+      { farmWorkers: 2, wallBuilders: 3, reserved: 2 },
+      { farmWorkers: 2, wallBuilders: 3, reserved: 0 },
     ],
   );
 }
@@ -228,8 +228,8 @@ test("Given Stone Town ceremony offsets When active construction exists Then hal
   });
 
   // Then
-  assert.deepEqual(quotas, [0, 1, 1, 2, 5]);
-  assert.equal(offset899.reservedWorkers, 5);
+  assert.deepEqual(quotas, [0, 1, 1, 2, 3]);
+  assert.equal(offset899.reservedWorkers, 3);
   assert.equal(offset900.reservedWorkers, 0);
 }
 );
@@ -251,3 +251,21 @@ test("Given Stone Town ceremony has no active target When allocating labour Then
   assert.equal(result.diagnostics.palisadeEraLabour.activeSiteId, null);
 }
 );
+
+
+test("R-T3 material-waiting walls reserve no workers from the ordinary pool", () => {
+  const buildings = [building('farm', 'wheat_farm'), building('mill', 'mill'), building('saw', 'sawmill')];
+  const result = allocateBuildingAndConstructionLabour(buildings, [wallSite('blocked', 0, { delivered: {}, stall: 'awaiting_materials' })], 16, { era: 'palisade', tick: 0, eraProclaimedTick: 0 });
+  assert.equal(result.diagnostics.palisadeEraLabour.reservedWorkers, 0);
+  assert.deepEqual(result.buildings.map(b => b.workers), [4, 2, 2]);
+});
+
+test("R-T4 two ready wall sites reserve six workers and leave the rest in the ordinary pool", () => {
+  const result = allocateBuildingAndConstructionLabour([building('farm', 'wheat_farm')], [wallSite('first', 0), wallSite('second', 1)], 40, { era: 'palisade', tick: 0, eraProclaimedTick: 0 });
+  assert.equal(result.diagnostics.palisadeEraLabour.reservedWorkers, 6);
+  assert.equal(result.diagnostics.palisadeEraLabour.assignedBuilders, 6);
+  assert.equal(result.diagnostics.palisadeEraLabour.unavailableReservedWorkers, 0);
+  assert.deepEqual(result.constructionSites.map(s => s.assignedBuilders), [3, 3]);
+  assert.equal(result.buildings[0]?.workers, 4);
+  assert.equal(result.idleWorkers, 10);
+});

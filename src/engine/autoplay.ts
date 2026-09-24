@@ -1,4 +1,7 @@
+import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } from './autoplaySearchBudget';
+import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
+import { timberExpansionKind } from './autoplayTimberRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
 import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTransient';
@@ -81,9 +84,12 @@ function findBuildSite(
   kind: BuildingKind,
   accepts: (coordinate: TileCoordinate) => boolean = () => true,
 ): TileCoordinate | null {
+  if (autoplaySearchExhausted()) return null;
   const coordinates = lateFoodBuildSites(state, kind) ?? state.tiles.filter(tile =>
     tile.tx > 0 && tile.ty > 0 && tile.tx < state.width - 1 && tile.ty < state.height - 1);
   for (const coordinate of coordinates) {
+    // Every candidate still needs a service proof; an exhausted phase cannot supply one.
+    if (autoplaySearchExhausted()) return null;
     if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
     if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok && preservesAutoplayWallSpace(state, kind, coordinate)
       && preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })
@@ -162,11 +168,13 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
     hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate)),
   );
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
+  if (autoplaySearchExhausted()) return NONE;
   const roads = roadTiles(state);
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && canPlaceBuilding(state, kind, tile.tx, tile.ty).ok)
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
+    if (autoplaySearchExhausted()) return NONE;
     if (!preservesAutoplayWallSpace(state, kind, candidate.tile) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tile.tx, ty: candidate.tile.ty })) continue;
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;
@@ -179,7 +187,8 @@ function timberAction(state: GameState): AutoplayAction {
   if (placementSpendableResource(state, "timber") > reserve) return NONE;
   if (!hasBuiltOrPlannedBuilding(state, "logging_camp")) return buildAction(state, "logging_camp");
   if (!hasBuiltOrPlannedBuilding(state, "sawmill")) return buildAction(state, "sawmill");
-  return NONE;
+  const expansion = timberExpansionKind(state);
+  return expansion === null ? NONE : buildAction(state, expansion);
 }
 
 function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): boolean {
@@ -218,14 +227,14 @@ function storageAction(state: GameState): AutoplayAction {
 }
 
 
-export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
   let metadata: FoodTransientMetadata = {};
   if (reserveDeadlock(state) !== null) return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
       (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, (current: GameState) => urbanServiceAction(current, diagnostic), waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
-      const action = decide(state);
+      const action = runAutoplaySearchPhase(() => decide(state));
       if (action.foodTransient !== undefined) metadata = action;
       if (action.kind !== "none") return carryFoodTransient(action, metadata);
     }
@@ -243,9 +252,14 @@ export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFA
     () => storageAction(state),
     () => autoplayEraAction(state, buildAction),
   ]) {
-    const action = decide();
+    const action = runAutoplaySearchPhase(decide);
     if (action.foodTransient !== undefined) metadata = action;
     if (action.kind !== "none") return carryFoodTransient(action, metadata);
   }
   return carryFoodTransient(NONE, metadata);
+}
+
+export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+  resetAutoplayServiceSearch();
+  return runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
 }

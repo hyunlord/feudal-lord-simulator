@@ -181,9 +181,22 @@ export function assertGameStateSnapshot(value: unknown): asserts value is GameSt
   for (const key of REQUIRED_ARRAYS) {
     if (!Array.isArray(state[key])) throw new SaveFormatError(`Save state ${key} must be an array`);
   }
+  if (Array.isArray(state.buildings)) for (const building of state.buildings) {
+    if (typeof building === 'object' && building !== null && 'operationPaused' in building
+      && typeof building.operationPaused !== 'boolean') {
+      throw new SaveFormatError('Save building operationPaused must be a boolean');
+    }
+  }
   for (const key of REQUIRED_NUMBERS) {
     if (typeof state[key] !== "number" || !Number.isFinite(state[key])) {
       throw new SaveFormatError(`Save state ${key} must be a finite number`);
+    }
+  }
+  const timberWindow = state.timberProductionWindow;
+  if (typeof timberWindow === 'object' && timberWindow !== null && 'expansionShortageSinceTick' in timberWindow) {
+    const tick = timberWindow.expansionShortageSinceTick;
+    if (typeof tick !== 'number' || !Number.isSafeInteger(tick) || tick < 0 || tick > Number(state.tick)) {
+      throw new SaveFormatError('Save expansionShortageSinceTick must be a nonnegative integer no later than the state tick');
     }
   }
   if (!["hamlet", "palisade", "stone_town"].includes(state.era as string)) throw new SaveFormatError("Save state era is unknown");

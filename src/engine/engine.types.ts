@@ -108,6 +108,7 @@ export interface GameState {
     readonly productionTicks: readonly number[];
     readonly availableTimber?: number;
     readonly lastAvailableIncreaseTick?: number;
+    readonly expansionShortageSinceTick?: number;
   };
   readonly wallConstructionPriority?: import("./constructionReserve").WallConstructionPriority;
   readonly wallConstructionReserve?: import("./constructionReserve").WallConstructionReserve;

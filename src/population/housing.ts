@@ -163,7 +163,7 @@ function hasGranaryNearby(
       ?.granaryRadius ?? 12;
   return buildings.some(
     (building) =>
-      building.kind === "granary" &&
+      building.kind === "granary" && building.operationPaused !== true &&
       buildingFootprintDistance(home, building) <= granaryRadius,
   );
 }

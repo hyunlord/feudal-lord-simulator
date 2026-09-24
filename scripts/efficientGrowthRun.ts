@@ -17,11 +17,18 @@ export function runEfficientGrowth(args: readonly string[]) {
   mkdirSync(output, { recursive: true });
   let finalStateSha256 = '';
   const diagnostics: { last: AdvisorDiagnosticReceipt | null } = { last: null };
+  const checkpoint = args.includes('--checkpoint');
   const millObservation = createMillZeroWheatObservation();
   let efficiency: ReturnType<typeof efficientGrowthMetrics> | null = null;
   const report = runPhase19NaturalGrowth({ ...options,
     onDiagnostic: receipt => { diagnostics.last = receipt; },
-    onTick: (state, stableSince) => millObservation.observe(state.tick, stableSince, millWheatSamples(state)),
+    onTick: (state, stableSince) => {
+      millObservation.observe(state.tick, stableSince, millWheatSamples(state));
+      if (checkpoint && state.tick % 12_000 === 0) {
+        writeFileSync(resolve(output, 'last-observed-state.json'), JSON.stringify(state));
+        writeFileSync(resolve(output, 'last-diagnostic.json'), JSON.stringify(diagnostics.last, null, 2));
+      }
+    },
     additionalAcceptance: state => efficientGrowthMetrics(state, millObservation.report()).passed,
     onState: (label, state) => {
       if (label !== 'final') return;

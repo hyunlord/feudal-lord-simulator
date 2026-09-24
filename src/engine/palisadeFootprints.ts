@@ -32,10 +32,15 @@ type CoreProposal = {
 const coreProposalByState = new WeakMap<GameState, CoreProposal>();
 type ProposalCandidates = {
   readonly layout: string;
+  readonly candidateLimit: number;
+  limited: boolean;
   readonly candidates: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
   readonly failure: PalisadeProposalResult;
   compactCandidates?: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
 };
+/** Immutable tiles plus layout and candidate limit fully determine geometric candidates.
+ * Stocks/workers are omitted because supply validation runs after this geometry cache.
+ * UI's unlimited query must never reuse a truncated autoplay result. See S8-search-budget.md. */
 const proposalCandidatesByTiles = new WeakMap<GameState['tiles'], ProposalCandidates>();
 
 function roadKey(tile: TileCoordinate): string {
@@ -162,6 +167,8 @@ export function palisadeCoreProposalForState(state: GameState): PalisadeProposal
 export function computePalisadeProposalForState(
   state: GameState,
   acceptPath?: (path: PalisadePath) => boolean,
+  candidateLimit = Infinity,
+  onBudgetHit?: () => void,
 ): PalisadeProposalResult {
   const { buildings, core, proposal } = coreProposalForState(state);
   const all = palisadeFootprintsForState(state);
@@ -171,28 +178,36 @@ export function computePalisadeProposalForState(
   const acceptsGeometry = (path: PalisadePath) =>
     palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all);
   let cached = proposalCandidatesByTiles.get(state.tiles);
-  if (cached?.layout !== layout) {
+  if (cached?.layout !== layout || cached.candidateLimit !== candidateLimit) {
     const candidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
     const add = (candidate: PalisadeProposalResult): void => {
       if (candidate.ok) candidates.set(JSON.stringify(candidate.path), candidate);
     };
     add(proposal);
-    for (const anchors of [buildings, all]) {
+    let attempts = 0;
+    let limited = false;
+    candidateSearch: for (const anchors of [buildings, all]) {
       for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
-        for (const margin of [2, 3]) add(computePalisadeProposal(state, subset, acceptsGeometry, [margin]));
+        for (const margin of [2, 3]) {
+          if (attempts++ >= candidateLimit) { limited = true; break candidateSearch; }
+          add(computePalisadeProposal(state, subset, acceptsGeometry, [margin]));
+        }
       }
     }
-    cached = { layout, candidates: [...candidates.values()].sort((left, right) =>
+    cached = { layout, candidateLimit, limited, candidates: [...candidates.values()].sort((left, right) =>
       left.perimeterSteps - right.perimeterSteps || JSON.stringify(left.path).localeCompare(JSON.stringify(right.path))),
       failure: proposal };
     proposalCandidatesByTiles.set(state.tiles, cached);
   }
+  if (cached.limited) onBudgetHit?.();
   const accepted = cached.candidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
   if (accepted !== undefined) return accepted;
   if (cached.compactCandidates === undefined) {
     const compactCandidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
-    for (const anchors of [buildings, all]) {
+    let attempts = 0;
+    compactSearch: for (const anchors of [buildings, all]) {
       for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
+        if (attempts++ >= candidateLimit) { cached.limited = true; break compactSearch; }
         const candidate = computePalisadeProposal(state, subset, acceptsGeometry, [1]);
         if (candidate.ok) compactCandidates.set(JSON.stringify(candidate.path), candidate);
       }
@@ -200,6 +215,7 @@ export function computePalisadeProposalForState(
     cached.compactCandidates = [...compactCandidates.values()].sort((left, right) =>
       left.perimeterSteps - right.perimeterSteps || JSON.stringify(left.path).localeCompare(JSON.stringify(right.path)));
   }
+  if (cached.limited) onBudgetHit?.();
   const compact = cached.compactCandidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
   if (compact !== undefined) return compact;
   return proposal.ok && acceptPath !== undefined

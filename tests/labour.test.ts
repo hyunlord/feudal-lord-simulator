@@ -192,7 +192,7 @@ test("construction labour caps each site at three and leaves excess workers idle
   assert.equal(result.idleWorkers, 4);
 });
 
-test("ready construction receives one worker before nonessential production exhausts labour", () => {
+test("ready construction reserves three workers before production consumes labour", () => {
   // Given
   const farm = building("a-farm", "wheat_farm");
   const sawmill = building("b-sawmill", "sawmill");
@@ -205,11 +205,11 @@ test("ready construction receives one worker before nonessential production exha
   assert.deepEqual(
     result.buildings.map(({ id, workers }) => ({ id, workers })),
     [
-      { id: "a-farm", workers: 4 },
-      { id: "b-sawmill", workers: 1 },
+      { id: "a-farm", workers: 3 },
+      { id: "b-sawmill", workers: 0 },
     ],
   );
-  assert.equal(result.constructionSites[0]?.assignedBuilders, 1);
+  assert.equal(result.constructionSites[0]?.assignedBuilders, 3);
   assert.equal(result.constructionSites[0]?.stall, "none");
   assert.equal(result.idleWorkers, 0);
 });

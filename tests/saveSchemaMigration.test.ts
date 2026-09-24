@@ -7,13 +7,13 @@ import { decodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { canonicalStateHash } from "../scripts/verifySaveDeterminism";
 
-test("schema v1 reaches v2 without inventing timber observation history", () => {
+test("schema v1 reaches the latest schema without inventing timber observation history", () => {
   const bytes = new Uint8Array(readFileSync("fixtures/saves/v1/population-176.save.json"));
   const original = JSON.parse(new TextDecoder().decode(bytes));
   const { envelope, migratedFrom } = decodeSave(bytes);
-  assert.equal(SAVE_SCHEMA_VERSION, 2);
+  assert.ok(SAVE_SCHEMA_VERSION >= 3);
   assert.equal(migratedFrom, 1);
-  assert.equal(envelope.schemaVersion, 2);
+  assert.equal(envelope.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.deepEqual(envelope.state, original.state);
   const next = advanceTick({ ...envelope.state, wallConstructionPriority: "balanced",
     wallConstructionReserve: { resource: "timber", sources: [], proclaimedTick: envelope.state.tick } });

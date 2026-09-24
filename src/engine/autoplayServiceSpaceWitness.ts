@@ -1,3 +1,4 @@
+import { spendAutoplaySearch } from './autoplaySearchBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { buildingFootprint, houseLotArea } from '../geometry/buildingFootprint';
@@ -19,7 +20,7 @@ function staffed(buildings: readonly Building[]): readonly Building[] {
   return buildings.map(building => building.kind === 'market' || building.kind === 'church'
     ? { ...building, workers: BUILDING_CONFIG_BY_KIND[building.kind].workersRequired } : building);
 }
-function candidatePads(state: GameState, home: Building, kind: UrbanService): readonly Building[] {
+function candidatePads(state: GameState, home: Building, kind: UrbanService, reachable: (candidate: Building) => boolean): readonly Building[] {
   const definition = BUILDING_CONFIG_BY_KIND[kind];
   const homeSize = buildingFootprint(home);
   const candidates: Building[] = [];
@@ -29,7 +30,7 @@ function candidatePads(state: GameState, home: Building, kind: UrbanService): re
     for (let tx = Math.max(0, home.tx - definition.serviceRadius - definition.width + 1);
       tx <= Math.min(state.width - definition.width, home.tx + homeSize.width - 1 + definition.serviceRadius); tx++) {
       const candidate = serviceCandidate(kind, { tx, ty }, `service-space-${kind}`);
-      if (buildingFootprintDistance(home, candidate) > definition.serviceRadius || !hasAutoplayBuildingClearance(state, kind, candidate)) continue;
+      if (buildingFootprintDistance(home, candidate) > definition.serviceRadius || !hasAutoplayBuildingClearance(state, kind, candidate) || !reachable(candidate)) continue;
       const placement = canPlaceBuilding(future, kind, tx, ty);
       if (placement.ok || placement.reason === 'insufficient_materials') candidates.push(candidate);
     }
@@ -45,6 +46,7 @@ function allocationForHome(state: GameState, home: Building, buildings: readonly
   return allocateHouseServices({ houses: serviceSpaceHouses(state, buildings), buildings: staffed(buildings), roadService });
 }
 function jointlyServed(state: GameState, home: Building, buildings: readonly Building[], additions: readonly Building[]): ServiceSpaceWitness | null {
+  if (!spendAutoplaySearch()) return null;
   const all = staffed([...buildings, ...additions]);
   const potential = potentialServiceRoads(state, all);
   const allocation = allocationForHome(state, home, all, potential);
@@ -57,7 +59,8 @@ function jointlyServed(state: GameState, home: Building, buildings: readonly Bui
 
 /** One local coexistent witness, never a permanent reservation or a citywide optimal layout claim. */
 export function findAutoplayServiceWitness(state: GameState, home: Building): ServiceSpaceWitness | null {
-  if (autoplayConstructionSources(state).length === 0) return null;
+  const sources = autoplayConstructionSources(state);
+  if (sources.length === 0) return null;
   const buildings = serviceSpaceBuildings(state);
   const existing = jointlyServed(state, home, buildings, []);
   if (existing !== null) return existing;
@@ -69,9 +72,14 @@ export function findAutoplayServiceWitness(state: GameState, home: Building): Se
     < Math.ceil(lots / HOUSEHOLD_SERVICE_CONFIG[kind].capacity) + 1;
   if ((services?.market.kind !== 'served' && !spareSlot('market'))
     || (services?.church.kind !== 'served' && !spareSlot('church'))) return null;
-  const markets: readonly (Building | null)[] = services?.market.kind === 'served' ? [null] : candidatePads(state, home, 'market');
-  const churches: readonly (Building | null)[] = services?.church.kind === 'served' ? [null] : candidatePads(state, home, 'church');
+  // A disconnected pad cannot become reachable by removing land for another provider.
+  // Reject it before the Cartesian search; final joint allocation and routes still prove safety.
+  const connected = marketRoadService(potential);
+  const reachable = (candidate: Building): boolean => connected(home, candidate) && sources.some(source => connected(source, candidate));
+  const markets: readonly (Building | null)[] = services?.market.kind === 'served' ? [null] : candidatePads(state, home, 'market', reachable);
+  const churches: readonly (Building | null)[] = services?.church.kind === 'served' ? [null] : candidatePads(state, home, 'church', reachable);
   for (const market of markets) for (const church of churches) {
+    if (!spendAutoplaySearch()) return null;
     const additions = [market, church].filter((provider): provider is Building => provider !== null);
     if (market !== null && church !== null) {
       const marketTiles = new Set(serviceFootprint(market).map(serviceTileKey));

@@ -1,0 +1,48 @@
+{
+  "source": "User-supplied R1-spec-and-perf-20260924.zip, audit commit47c9aeb",
+  "adaptation": "Only absolute import prefix replaced with repository-relative ../../src/; original probe assertions/values unchanged",
+  "probes": [
+    {
+      "original": "R1/raw/probes/s1s2_probe.ts",
+      "sha256": "886b82e5b87d0a060e4f7faa994a5af82273d13a55f69589025f0a6d5a9130ff",
+      "portable": "fixtures/rule-repair-probes/service-priority.ts",
+      "portableSha256": "04996307b9e22ca916691d033aa59a5fd91bd4793ae6296e77c81805c5ac8380"
+    },
+    {
+      "original": "R1/raw/probes/s5-labour.ts",
+      "sha256": "188d93494d8163cf7adcb68bb3d77443d090d68891ab2d0bdd6e436a62121e2a",
+      "portable": "fixtures/rule-repair-probes/wall-labour.ts",
+      "portableSha256": "ff4f799fff65e876aed428a4fe3ae040499fd4c0ce313fe183d2f87efaf1ba36"
+    },
+    {
+      "original": "R1/raw/probes/s5-foodfirst.ts",
+      "sha256": "3434bbbf6faec40b2ff8c817d64d3c6e0e9f62bc78fb0dd928e520a3445e57d7",
+      "portable": "fixtures/rule-repair-probes/food-first-labour.ts",
+      "portableSha256": "10f844acf4f9ed52b28b1d425b943083681e388c1f9f78b65de36d30cdc3f87c"
+    },
+    {
+      "original": "R1/raw/probes/s4-dispatch.ts",
+      "sha256": "b56347f0d48badec9eedd59dec34bf6f6f0ba166bf4e1f430d61ae4a21ceebbd",
+      "portable": "fixtures/rule-repair-probes/stone-dispatch.ts",
+      "portableSha256": "bd2c40e8a08b7eedbf637e78b004f92a15b818d4c1b10fc0c75955485e96cc5b"
+    },
+    {
+      "original": "R1/raw/probes/s6-cancel-full-store.ts",
+      "sha256": "68364d3909b888781dad6ff86c84d6ca9e1a5b20edc7f3c35be5173f75005a45",
+      "portable": "fixtures/rule-repair-probes/cancelled-cargo.ts",
+      "portableSha256": "3b54ed1b6330c281c86e8367dd0b01279b33b136eb4730275ee0abb05eda2f5c"
+    },
+    {
+      "original": "R1/raw/probes/s6-market-sells-committed.ts",
+      "sha256": "65272265946d5e3fe7c5ae43363f83a933f28237b042437622e63f7149ab6f49",
+      "portable": "fixtures/rule-repair-probes/committed-material-sales.ts",
+      "portableSha256": "37af937c4ff2d5ccc07eb99b5ad04716a9555ee5110a910b4b90c95aeb4ba645"
+    },
+    {
+      "original": "R1/raw/probes/s8-palisade-stall.ts",
+      "sha256": "02a7c5fc6c33e22d10de608eb306a1b4f98129eceef7457864947810de820a37",
+      "portable": "fixtures/rule-repair-probes/timber-expansion.ts",
+      "portableSha256": "c5b7ddea5a683ec6a496ce38ebc131bdb6ec7c6584e2b964d5200aa36a60a991"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
+import { gunzipSync } from "node:zlib";
+import type { GameState } from "../src/engine/engine.types";
 
 import { spawnCarters } from "../src/agents/delivery";
 import type { CarterWalker } from "../src/agents/walker.types";
@@ -141,4 +144,49 @@ test("Given separate timber and stone wall sites When counting material in trans
   // Then
   assert.equal(timberReserved, 5);
   assert.equal(stoneReserved, 7);
+});
+
+test('reserve diagnosis skips routes when no positive floor applies to the wall material', () => {
+  const source = building('store', 'storehouse', { inventory: { timber: 25 } });
+  let calls = 0;
+  const routes = { ...routePort({}), fromBuildingToDestination: () => { calls++; return line([0, 0], [1, 0]); } };
+  for (const snapshot of [undefined, { ...reserve, sources: [] }, { ...reserve, sources: [{ id: 'store', floor: 0 }] }, { ...reserve, resource: 'stone' as const }]) {
+    assert.equal(wallReserveHeld({ buildings: [source], treasuryTimber: 0, ...(snapshot === undefined ? {} : { wallConstructionReserve: snapshot }) }, wall, routes), false);
+  }
+  assert.equal(calls, 0, 'no material can be held without a matching positive floor');
+});
+
+test('reserve diagnosis checks routes only for positive stock and preserves unreachable-source handling', () => {
+  const empty = building('empty', 'storehouse', { inventory: {} });
+  const source = building('store', 'storehouse', { inventory: { timber: 25 } });
+  for (const reachable of [false, true]) {
+    const checked: string[] = [];
+    const routes = { ...routePort({}), fromBuildingToDestination: (id: string) => {
+      checked.push(id); return reachable ? line([0, 0], [1, 0]) : null;
+    } };
+    assert.equal(wallReserveHeld({ buildings: [empty, source], treasuryTimber: 0, wallConstructionReserve: reserve }, wall, routes), reachable);
+    assert.deepEqual(checked, ['store']);
+  }
+});
+
+test('reserve diagnosis still checks house access for positive protected treasury stock', () => {
+  const home = building('home', 'house');
+  for (const reachable of [false, true]) {
+    const checked: string[] = [];
+    const routes = { ...routePort({}), fromBuildingToDestination: (id: string) => {
+      checked.push(id); return reachable ? line([0, 0], [1, 0]) : null;
+    } };
+    assert.equal(wallReserveHeld({ buildings: [home], treasuryTimber: 20,
+      wallConstructionReserve: { ...reserve, sources: [{ id: 'treasury', floor: 25 }] } }, wall, routes), reachable);
+    assert.deepEqual(checked, ['home']);
+  }
+});
+
+
+test('natural seed 2 with an empty reserve does not search 56 building routes for each wall segment', () => {
+  const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('../fixtures/construction-reserve/seed2-113040.json.gz', import.meta.url))).toString());
+  assert.equal(state.buildings.length, 56);
+  assert.deepEqual(state.wallConstructionReserve?.sources, []);
+  const routes = { ...routePort({}), fromBuildingToDestination: () => assert.fail('no reserve floor can hold positive material') };
+  for (const site of state.constructionSites) assert.equal(wallReserveHeld(state, site, routes), false);
 });

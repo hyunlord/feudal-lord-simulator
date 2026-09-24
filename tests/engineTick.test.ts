@@ -299,7 +299,7 @@ test("advanceTick assigns post-production builders and derives stable builder wa
   );
 });
 
-test("advanceTick protects food production while reserving a ready ordinary builder", () => {
+test("advanceTick reserves three ready construction workers before assigning scarce remaining labour to food", () => {
   // Given
   const home = building("home", "house", 4, 4);
   const farm = building("a-farm", "wheat_farm", 0, 0);
@@ -321,20 +321,27 @@ test("advanceTick protects food production while reserving a ready ordinary buil
   assert.deepEqual(
     next.buildings.map(({ id, workers }) => ({ id, workers })),
     [
-      { id: "b-sawmill", workers: 1 },
+      { id: "b-sawmill", workers: 0 },
       { id: "home", workers: 0 },
-      { id: "a-farm", workers: 4 },
+      { id: "a-farm", workers: 3 },
     ],
   );
-  assert.equal(next.constructionSites[0]?.assignedBuilders, 1);
+  assert.equal(next.constructionSites[0]?.assignedBuilders, 3);
+  assert.equal(next.constructionSites[0]?.builderTicks, 3);
   assert.equal(next.constructionSites[0]?.stall, "none");
-  assert.deepEqual(next.walkers.filter(({ kind }) => kind === "builder").map(({ id }) => id), ["builder:construction-site-000001:0"]);
-  assert.equal(next.buildings.find(({ id }) => id === farm.id)?.productionProgress, 1);
+  assert.deepEqual(next.walkers.filter(({ kind }) => kind === "builder").map(({ id }) => id), [
+    "builder:construction-site-000001:0",
+    "builder:construction-site-000001:1",
+    "builder:construction-site-000001:2",
+  ]);
+  assert.equal(next.buildings.find(({ id }) => id === farm.id)?.productionProgress, 0);
   assert.equal(next.buildings.find(({ id }) => id === sawmill.id)?.productionProgress, 0);
   assert.equal(next.idleWorkers, 0);
+  assert.equal(next.buildings.reduce((sum, item) => sum + item.workers, 0)
+    + next.constructionSites.reduce((sum, item) => sum + item.assignedBuilders, 0) + next.idleWorkers, 6);
 });
 
-test("advanceTick reserves palisade-era wall labour before production during the first six hundred simulation ticks", () => {
+test("advanceTick caps first-six-hundred-tick wall labour at ready site demand and preserves production", () => {
   // Given
   const home = building("home", "house", 4, 4);
   const farm = building("a-farm", "wheat_farm", 0, 0);
@@ -378,13 +385,17 @@ test("advanceTick reserves palisade-era wall labour before production during the
     diverted.buildings.map(({ id, workers }) => ({ id, workers })),
     [
       { id: "a-farm", workers: 4 },
-      { id: "b-logging", workers: 2 },
+      { id: "b-logging", workers: 3 },
       { id: "home", workers: 0 },
     ],
   );
   assert.equal(diverted.constructionSites[0]?.assignedBuilders, 3);
+  assert.equal(diverted.constructionSites[0]?.builderTicks, 3);
   assert.equal(diverted.buildings.find(({ id }) => id === farm.id)?.productionProgress, 1);
-  assert.equal(diverted.buildings.find(({ id }) => id === logging.id)?.productionProgress, 0);
+  assert.equal(diverted.buildings.find(({ id }) => id === logging.id)?.productionProgress, 1);
+  assert.equal(diverted.idleWorkers, 0);
+  assert.equal(diverted.buildings.reduce((sum, item) => sum + item.workers, 0)
+    + diverted.constructionSites.reduce((sum, item) => sum + item.assignedBuilders, 0) + diverted.idleWorkers, 10);
 }
 );
 

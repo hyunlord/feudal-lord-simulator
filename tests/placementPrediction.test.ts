@@ -150,7 +150,7 @@ test('tick and production-only clones reuse predictions while semantic changes i
   ]) assert.notEqual(buildingPlacementPrediction(changed,'market',tile),first);
 });
 
-test('semantic cache follows wall labour reservation windows rather than each tick',()=>{
+test('semantic cache follows reservation expiry and completion while retaining ready-site labour demand',()=>{
   const site=createPalisadeConstructionSite({id:'wall-site',wallId:'wall',segmentIndex:0,gateDistance:0,order:0,path:[{x:18,y:18},{x:19,y:18}],startedTick:0});
   const state={...fixture(),era:'palisade' as const,eraProclaimedTick:0,tick:100,population:6,
     constructionSites:[{...site,delivered:{...site.required}}]};
@@ -159,5 +159,10 @@ test('semantic cache follows wall labour reservation windows rather than each ti
   const expired=buildingPlacementPrediction({...state,tick:600},'market',{tx:6,ty:3});
   assert.notEqual(expired,first);
   assert.equal(first.lines.find(line=>line.id==='workers')?.tone,'negative');
-  assert.equal(expired.lines.find(line=>line.id==='workers')?.tone,'positive');
+  assert.equal(expired.lines.find(line=>line.id==='workers')?.tone,'negative');
+  assert.equal(buildingPlacementPrediction({...state,tick:601},'market',{tx:6,ty:3}),expired);
+  const completed=buildingPlacementPrediction({...state,tick:601,
+    constructionSites:state.constructionSites.map(ready=>({...ready,builderTicks:ready.requiredBuilderTicks}))},'market',{tx:6,ty:3});
+  assert.notEqual(completed,expired);
+  assert.equal(completed.lines.find(line=>line.id==='workers')?.tone,'positive');
 });

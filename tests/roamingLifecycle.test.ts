@@ -202,3 +202,20 @@ test("an unreserved distributor waits rather than overfilling a full granary", (
   assert.deepEqual(result.walkers[0]?.cargo, { resource: "bread", amount: 12 });
   assert.equal(result.buildings[0]?.inventory.bread, 200);
 });
+
+test('pausing a granary recalls its distributor without serving or losing carried bread', () => {
+  const walker: DistributorWalker = {
+    id: 'distributor:paused:120', kind: 'distributor', homeBuildingId: 'paused',
+    position: { tx: 1, ty: 0 }, path: [{ tx: 1, ty: 0 }], pathIndex: 0, previousTile: null,
+    cargo: { resource: 'bread', amount: 4 }, spawnedTick: 120, phase: 'roaming',
+    junctionVisits: 0, tilesTravelled: 0, priorTile: null,
+  };
+  const result = stepDistributors({ tick: 121, buildings: [{ ...building('paused'), operationPaused: true }],
+    walkers: [walker], houses: [house('hungry', 1, 1)], routes: routes({ returnPath: [{ tx: 1, ty: 0 }, { tx: 0, ty: 0 }] }), rngForJunction: fixedRngForJunction });
+  assert.equal(result.houses[0]?.breadStock, 0);
+  const returning = result.walkers[0];
+  assert.equal(returning?.kind, 'distributor');
+  assert.ok(returning?.kind === 'distributor');
+  assert.equal(returning.phase, 'returning');
+  assert.equal(returning.cargo?.amount, 4);
+});

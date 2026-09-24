@@ -1,0 +1,3 @@
+t 1 store {"timber":192} carters [ 'carter:storehouse-41-40-0:1 outbound cargo=8 cancel=-' ]
+after cancel t 21 store {"timber":200} reserved {} treasury 1 carters [ 'carter:storehouse-41-40-0:1 returning cargo=8 cancel=manual' ]
+t 3021 store {"timber":200} treasury 0 carters [ 'carter:storehouse-41-40-0:1 returning cargo=8 cancel=manual' ] site2 delivered={"timber":1} reserved={} stall=awaiting_materials

@@ -50,7 +50,7 @@ export function spawnDistributors(input: RoamingSpawnInput): RoamingSpawnResult 
   let buildings = input.buildings;
   const walkers: Walker[] = [...input.walkers];
   for (const granary of [...buildings].sort((left, right) => left.id.localeCompare(right.id))) {
-    if (granary.kind !== "granary") continue;
+    if (granary.kind !== "granary" || granary.operationPaused === true) continue;
     if (activeDistributors(walkers, granary.id) >= 2) continue;
     const path = input.routes.homePath(granary.id);
     if (path === null) continue;

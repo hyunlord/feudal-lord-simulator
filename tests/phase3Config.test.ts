@@ -24,6 +24,7 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     FOOD_PRODUCTION_MARGIN_FACTOR: 1.05,
     STARVATION_WINDOW: 300,
     WORKERS_PER_RESIDENT: 0.5,
+    CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
     STARTING_TIMBER: 120,
   });
 });

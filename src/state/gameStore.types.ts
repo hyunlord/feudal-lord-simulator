@@ -11,6 +11,7 @@ export interface GameProviderProps {
 
 export type GameAction = import("../engine/autoplayFoodTransient").FoodTransientMetadata & import("../engine/autoplayMaterialTypes").MaterialPlacementMetadata & GameCommand;
 type GameCommand =
+  | { readonly type: "set_building_operation"; readonly buildingId: string; readonly paused: boolean }
   | { readonly type: "record_autoplay_food_confirmation" }
   | { readonly type: "restart_settlement" }
   | { readonly type: "load_saved_state"; readonly state: GameState }

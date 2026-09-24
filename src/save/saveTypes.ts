@@ -2,7 +2,7 @@ import type { Era } from "../content/eraConfig";
 import type { SaveProblemKey } from "../content/saveCopy.ko";
 import type { GameState } from "../engine/engine.types";
 
-export const SAVE_SCHEMA_VERSION = 2;
+export const SAVE_SCHEMA_VERSION = 4;
 export const DEFAULT_SCENARIO_ID = "default";
 
 /**

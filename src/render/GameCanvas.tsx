@@ -130,6 +130,11 @@ export function GameCanvas({
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard
           model={cardModel}
+          {...(selection.kind !== 'building' || cardModel.kind !== 'building' ? {} : {
+            buildingOperation: { paused: state.buildings.find(building => building.id === selection.buildingId)?.operationPaused === true,
+              onToggle: () => dispatch({ type: 'set_building_operation', buildingId: selection.buildingId,
+                paused: state.buildings.find(building => building.id === selection.buildingId)?.operationPaused !== true }) },
+          })}
           causeSummary={selection.kind === 'building' ? houseProgressModel(state, selection.buildingId) : null}
           onClose={() => { setSelection(null); setHoveredBuilding(null); }}
           onCancelConstruction={cancelConstruction}

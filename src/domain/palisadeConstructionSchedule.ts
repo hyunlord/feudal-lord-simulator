@@ -57,7 +57,7 @@ export function activeWallConstructionSiteId(
     .filter(isWallConstructionSite)
     .filter((site) => site.wallId === wallId)
     .filter((site) => !isComplete(site))
-    .filter((site) => !isPalisadeConstructionSite(site) || site.stall !== "no_route")
+    .filter((site) => site.stall !== "no_route")
     .sort(byOrder)[0]?.id ?? null;
 }
 
@@ -68,13 +68,14 @@ export function palisadeConstructionSchedule(
   sites: readonly ConstructionSite[],
 ): PalisadeConstructionSchedule {
   if (!isWallConstructionSite(site)) return { kind: "active" };
-  if (isPalisadeConstructionSite(site)) {
-    return site.stall === "no_route" && !isComplete(site)
-      ? { kind: "queued", position: site.order + 1 }
-      : { kind: "active" };
+  if (isStoneWallConstructionSite(site) && sites.some(candidate =>
+    isPalisadeConstructionSite(candidate) && candidate.wallId === site.wallId
+      && candidate.order === site.order && !isComplete(candidate))) {
+    return { kind: "queued", position: site.order + 1 };
   }
-  const activeId = activeWallConstructionSiteId(sites, site.wallId);
-  return activeId === null || activeId === site.id
-    ? { kind: "active" }
-    : { kind: "queued", position: site.order + 1 };
+  // S4-F1: wall material never serializes construction; route availability is
+  // local to each segment. Gate order only prioritizes otherwise eligible work.
+  return site.stall === "no_route" && !isComplete(site)
+    ? { kind: "queued", position: site.order + 1 }
+    : { kind: "active" };
 }

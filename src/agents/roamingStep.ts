@@ -148,6 +148,9 @@ function stepDistributor(
   readonly walker: DistributorWalker | null;
   readonly deliveryEvents: readonly RoamingDeliveryEvent[];
 } {
+  if (walker.phase !== 'returning' && buildings.some(building => building.id === walker.homeBuildingId && building.operationPaused === true)) {
+    return { buildings, houses, walker: routeHome(walker, routes), deliveryEvents: [] };
+  }
   if (!remainingPathCanBeTraversed(walker, routes.canTraverse)) {
     const current = lastReachedRoadTile(walker) ?? walker.position;
     const path = routes.returnPath(current, walker.homeBuildingId);

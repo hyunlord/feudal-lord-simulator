@@ -1,0 +1,562 @@
+{
+  "sourceCommit": "e97d6a8",
+  "provenance": "S0 automatic-growth decision-start snapshots; unmodified raw GameState, not player replay",
+  "excludedLateSamples": [
+    "48-seed1-142200",
+    "48-seed1-143280"
+  ],
+  "cases": [
+    {
+      "id": "48-seed1-113880",
+      "file": "48-seed1-113880.json",
+      "tick": 113880,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-113880-input.json.gz",
+      "sha256": "4a8d1a90b50d28c374c3101ca96194aa0bb0ea27591fc66002dd98c21b002858"
+    },
+    {
+      "id": "48-seed1-114000",
+      "file": "48-seed1-114000.json",
+      "tick": 114000,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-114000-input.json.gz",
+      "sha256": "aea35889b2f6774d9202b11182530ca21ac6c332dc0907c37c0596c0179bf925"
+    },
+    {
+      "id": "48-seed1-125040",
+      "file": "48-seed1-125040.json",
+      "tick": 125040,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-125040-input.json.gz",
+      "sha256": "3901dbff6237c68c2a492b886d99ec5279e4da0713da0f9dd8152f0490ad1c19"
+    },
+    {
+      "id": "48-seed1-127440",
+      "file": "48-seed1-127440.json",
+      "tick": 127440,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-127440-input.json.gz",
+      "sha256": "1b2b9ac1506c505ee1b40a2fb3bb5cdd0d5ee11c35534020931eacb1d675cd76"
+    },
+    {
+      "id": "48-seed1-128280",
+      "file": "48-seed1-128280.json",
+      "tick": 128280,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-128280-input.json.gz",
+      "sha256": "39150129a512024219ee2d562c3acb0be5c45783b357c7788db84fe789ef4db9"
+    },
+    {
+      "id": "48-seed1-128400",
+      "file": "48-seed1-128400.json",
+      "tick": 128400,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-128400-input.json.gz",
+      "sha256": "0446ace8098f15dd07a14cf879a44f1acebd8d3a735dba3625610eb64ad4f0b6"
+    },
+    {
+      "id": "48-seed1-129720",
+      "file": "48-seed1-129720.json",
+      "tick": 129720,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-129720-input.json.gz",
+      "sha256": "2c9b0594519e31ca297296c42afecd431ce845e604ba524c513c9af763b7706a"
+    },
+    {
+      "id": "48-seed1-129840",
+      "file": "48-seed1-129840.json",
+      "tick": 129840,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-129840-input.json.gz",
+      "sha256": "6d78939b9538cdc24f40c4bec759e990ce8a52ee20e09a89ec8ed68a0743ae96"
+    },
+    {
+      "id": "48-seed1-133920",
+      "file": "48-seed1-133920.json",
+      "tick": 133920,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-133920-input.json.gz",
+      "sha256": "e47c5c3e2ebabfda43ccca7e91820d41e2c9749410ea8a9025774c60f7034bfa"
+    },
+    {
+      "id": "48-seed1-134520",
+      "file": "48-seed1-134520.json",
+      "tick": 134520,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-134520-input.json.gz",
+      "sha256": "d2c05b30130cfc68b9201c7cb6e1bc461a8681dd76820d704821fa3e552afacc"
+    },
+    {
+      "id": "48-seed1-135120",
+      "file": "48-seed1-135120.json",
+      "tick": 135120,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-135120-input.json.gz",
+      "sha256": "42252bef8935520532dbe220168944ef9b71a8146ec68c5e04e44bc0bffd9916"
+    },
+    {
+      "id": "48-seed1-141720",
+      "file": "48-seed1-141720.json",
+      "tick": 141720,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-141720-input.json.gz",
+      "sha256": "1a25ee23809c53064fc1b1438fe4ec4c5ba7606ca89accdd65ea458854e60b6d"
+    },
+    {
+      "id": "48-seed1-76920",
+      "file": "48-seed1-76920.json",
+      "tick": 76920,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-76920-input.json.gz",
+      "sha256": "2afb81f049763ca7246af334c2f8b541f77ce225883bd6e8eb546911813f6324"
+    },
+    {
+      "id": "48-seed1-91200",
+      "file": "48-seed1-91200.json",
+      "tick": 91200,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-91200-input.json.gz",
+      "sha256": "f9467230519c913f2f2d72f5f0afae5c1b0a1a35740fe0e1155b52adebdda20e"
+    },
+    {
+      "id": "48-seed1-91440",
+      "file": "48-seed1-91440.json",
+      "tick": 91440,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-91440-input.json.gz",
+      "sha256": "e4a98eea05bd845957838b6ad86263ce8f53f83dc3787db834f92d1a446f2941"
+    },
+    {
+      "id": "48-seed1-91560",
+      "file": "48-seed1-91560.json",
+      "tick": 91560,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-91560-input.json.gz",
+      "sha256": "c8d67886f1b39d1b1793cbb97f399e39304b28be49281e9c4f748d2851d2709c"
+    },
+    {
+      "id": "48-seed1-96000",
+      "file": "48-seed1-96000.json",
+      "tick": 96000,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-96000-input.json.gz",
+      "sha256": "a48057109798cc90906c801b4cb43715df1c304bdd07bb6eeae3d7104f9662d1"
+    },
+    {
+      "id": "48-seed1-99960",
+      "file": "48-seed1-99960.json",
+      "tick": 99960,
+      "maxHousingLots": 48,
+      "source": "output/trunk-baseline/records/48-seed1/slow-decision-99960-input.json.gz",
+      "sha256": "955c8fbbde53ff553752ecb67a765f5b4e6352da80149c8bdff48b5655135426"
+    },
+    {
+      "id": "seed1-90240",
+      "file": "seed1-90240.json",
+      "tick": 90240,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-90240-input.json.gz",
+      "sha256": "6a082e383306c245682b49de18853d92a3010344b85bf9fbff2fff5557933def"
+    },
+    {
+      "id": "seed1-90360",
+      "file": "seed1-90360.json",
+      "tick": 90360,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-90360-input.json.gz",
+      "sha256": "213e67f0e09052130b506d4bbe1763036b26e59a0d558b089a7d185d8f327295"
+    },
+    {
+      "id": "seed1-90600",
+      "file": "seed1-90600.json",
+      "tick": 90600,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-90600-input.json.gz",
+      "sha256": "d582a222592d0d4ab3d6627991071d551d7143ef5fe786387b1b9c7f63cc94f3"
+    },
+    {
+      "id": "seed1-90720",
+      "file": "seed1-90720.json",
+      "tick": 90720,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-90720-input.json.gz",
+      "sha256": "11e6ba835de883f8947f3181c076365c57aafa37860f170e2a51662f2effbbee"
+    },
+    {
+      "id": "seed1-90840",
+      "file": "seed1-90840.json",
+      "tick": 90840,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-90840-input.json.gz",
+      "sha256": "a4ff3060fbceec4b2017fecb14aa6120c8afa30a152323d66469b23fc0b7ba35"
+    },
+    {
+      "id": "seed1-90960",
+      "file": "seed1-90960.json",
+      "tick": 90960,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-90960-input.json.gz",
+      "sha256": "880e1a46672b9c9abce29e9a61d697c44de334b6c141329812b8221d2caa9c32"
+    },
+    {
+      "id": "seed1-93120",
+      "file": "seed1-93120.json",
+      "tick": 93120,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-93120-input.json.gz",
+      "sha256": "5081654b8666e56210998e1a124b6dcdb6f89fa92206cf2f35367a23b60c6ce7"
+    },
+    {
+      "id": "seed1-93840",
+      "file": "seed1-93840.json",
+      "tick": 93840,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-93840-input.json.gz",
+      "sha256": "5b17efe8a65450bcec533be0451de5e884955fe106e445bf2f125259d42e150b"
+    },
+    {
+      "id": "seed1-93960",
+      "file": "seed1-93960.json",
+      "tick": 93960,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-93960-input.json.gz",
+      "sha256": "b78550e64819bdff0c34c0aa9eb2b09d5ebdaed32d8f0e01274f15df1b14adf9"
+    },
+    {
+      "id": "seed1-94080",
+      "file": "seed1-94080.json",
+      "tick": 94080,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-94080-input.json.gz",
+      "sha256": "d24c864c67e7db136b40a6c262aa04c1334016577f2ba591f0c9800a3ac479c8"
+    },
+    {
+      "id": "seed1-94200",
+      "file": "seed1-94200.json",
+      "tick": 94200,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-94200-input.json.gz",
+      "sha256": "9616f5d84c4b58334c865167c6e9bb49e0fa994cf89aa3979a9b002ea40def76"
+    },
+    {
+      "id": "seed1-94320",
+      "file": "seed1-94320.json",
+      "tick": 94320,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-94320-input.json.gz",
+      "sha256": "6e944fa5bf8c4d9f1c7d79c882e2df57f138b6fdd932263362c75f2143105c5b"
+    },
+    {
+      "id": "seed1-94560",
+      "file": "seed1-94560.json",
+      "tick": 94560,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-94560-input.json.gz",
+      "sha256": "e7433e557737abf7a9e7ff5b820be4d651a18d05fa177c8bd4c27ac75e78ad2b"
+    },
+    {
+      "id": "seed1-94680",
+      "file": "seed1-94680.json",
+      "tick": 94680,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-94680-input.json.gz",
+      "sha256": "b37258c6275a28b317dfe2fb349944eba0725be0ff031f09f8b0ede0b0ee1d59"
+    },
+    {
+      "id": "seed1-95760",
+      "file": "seed1-95760.json",
+      "tick": 95760,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-95760-input.json.gz",
+      "sha256": "d36aebbb74aa50448f97b6c1c6d1ae931d6ced0e71efa521fa7554561aa695a9"
+    },
+    {
+      "id": "seed1-95880",
+      "file": "seed1-95880.json",
+      "tick": 95880,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-95880-input.json.gz",
+      "sha256": "a337ae5b8afbb5bfbf0be145fcdb7b5c7a91fa8436343f1d0e0670ab85262c4b"
+    },
+    {
+      "id": "seed1-96000",
+      "file": "seed1-96000.json",
+      "tick": 96000,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-96000-input.json.gz",
+      "sha256": "55ef217a272ad3ae288bcf4d2ab17d5accb7b21b42498e5595851edb6a51ed31"
+    },
+    {
+      "id": "seed1-96120",
+      "file": "seed1-96120.json",
+      "tick": 96120,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-96120-input.json.gz",
+      "sha256": "b1db97db01665b43f8728e0da896e037e0f27f78f4062c7531880fc06f031dac"
+    },
+    {
+      "id": "seed1-96600",
+      "file": "seed1-96600.json",
+      "tick": 96600,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-96600-input.json.gz",
+      "sha256": "89393642134553fac44186ab74b756fbd3a35d7b2471b9d36444a435b6266175"
+    },
+    {
+      "id": "seed1-96840",
+      "file": "seed1-96840.json",
+      "tick": 96840,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-96840-input.json.gz",
+      "sha256": "ff60bb370ef74b3fcea4a9abb64524de0b9498887991d34fb7c4bd622c4a602c"
+    },
+    {
+      "id": "seed1-96960",
+      "file": "seed1-96960.json",
+      "tick": 96960,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-96960-input.json.gz",
+      "sha256": "2c061e61bdab12b2638c78415594a7197158272e364ed4767346652ab030bb2f"
+    },
+    {
+      "id": "seed1-97200",
+      "file": "seed1-97200.json",
+      "tick": 97200,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-97200-input.json.gz",
+      "sha256": "88018d388cea456d9ab080ced48876a5974255133b1edd82e486aa13e0005a1e"
+    },
+    {
+      "id": "seed1-97440",
+      "file": "seed1-97440.json",
+      "tick": 97440,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-97440-input.json.gz",
+      "sha256": "46dffa215ead5722c0a277ce215411e3a980c758ed4934275ad3f6d6fb356bd4"
+    },
+    {
+      "id": "seed1-97560",
+      "file": "seed1-97560.json",
+      "tick": 97560,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-97560-input.json.gz",
+      "sha256": "75897674d338429d428ed4bd1747770c8aa3b0cb8392de80a0542ea8ec5dc07f"
+    },
+    {
+      "id": "seed1-98280",
+      "file": "seed1-98280.json",
+      "tick": 98280,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-98280-input.json.gz",
+      "sha256": "447541424ccea7ce9cd313fb53a6ea2430e0294cb0d837045a60b3738ed79147"
+    },
+    {
+      "id": "seed1-98400",
+      "file": "seed1-98400.json",
+      "tick": 98400,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-98400-input.json.gz",
+      "sha256": "df09386ad885455b5feb270651c2ee555ab0bafdc3790b69d91a72b9a3dee9a5"
+    },
+    {
+      "id": "seed1-99240",
+      "file": "seed1-99240.json",
+      "tick": 99240,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-99240-input.json.gz",
+      "sha256": "997b0f11ff01d216445bab2df9acad1ffa264d1c456fdd5e9ee2e76cf9c49551"
+    },
+    {
+      "id": "seed1-99480",
+      "file": "seed1-99480.json",
+      "tick": 99480,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed1/slow-decision-99480-input.json.gz",
+      "sha256": "b13372a5e91d51679294956f1cc5d93d112ef0758cb74e0c475274a20816d220"
+    },
+    {
+      "id": "seed2-363240",
+      "file": "seed2-363240.json",
+      "tick": 363240,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-363240-input.json.gz",
+      "sha256": "fe5d5018545452240919deb4324323c3e199b777908e7da6b0e2c56c2bfdc697"
+    },
+    {
+      "id": "seed2-363720",
+      "file": "seed2-363720.json",
+      "tick": 363720,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-363720-input.json.gz",
+      "sha256": "54bcf9b619e07736590eb7530051d11f2d5cf8065973b89ad7418b7aacad794e"
+    },
+    {
+      "id": "seed2-365880",
+      "file": "seed2-365880.json",
+      "tick": 365880,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-365880-input.json.gz",
+      "sha256": "a1abacfa71076c96b30a98b93d0696963db2ce5e21ae64a4717919da91d75c16"
+    },
+    {
+      "id": "seed2-366000",
+      "file": "seed2-366000.json",
+      "tick": 366000,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-366000-input.json.gz",
+      "sha256": "ffa0be9d0aa8994528c77afad7f603321aacadcc069682f1b5fef7bc39f07f9e"
+    },
+    {
+      "id": "seed2-366960",
+      "file": "seed2-366960.json",
+      "tick": 366960,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-366960-input.json.gz",
+      "sha256": "4b95467eb6f124ebe5d5e6935d2ea55332e770385f718016bd6849ebcd62de0e"
+    },
+    {
+      "id": "seed2-86160",
+      "file": "seed2-86160.json",
+      "tick": 86160,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-86160-input.json.gz",
+      "sha256": "9988aa2691a093c2ab94c3ba3515f842368e0258e85dc58aa7a3143e0d49d9a2"
+    },
+    {
+      "id": "seed2-86880",
+      "file": "seed2-86880.json",
+      "tick": 86880,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-86880-input.json.gz",
+      "sha256": "2eff2d48eed441b1e501957376fcf5a8dbfe4116344382493c572316d20dd5eb"
+    },
+    {
+      "id": "seed2-88320",
+      "file": "seed2-88320.json",
+      "tick": 88320,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-88320-input.json.gz",
+      "sha256": "4f370a3011af51746349393ac21e66ff7a9da3954208b0109269fcfc7d8359a8"
+    },
+    {
+      "id": "seed2-88440",
+      "file": "seed2-88440.json",
+      "tick": 88440,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed2/slow-decision-88440-input.json.gz",
+      "sha256": "0b843733798e83513cc0524addd8d566d29196f58271a14c7a7c2949f93c1c92"
+    },
+    {
+      "id": "seed3-20280",
+      "file": "seed3-20280.json",
+      "tick": 20280,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed3/slow-decision-20280-input.json.gz",
+      "sha256": "648947ce5b6d3c5314bb52d36d01b30cccdb65e8afa07b8b967df48f03f41eb8"
+    },
+    {
+      "id": "seed3-21480",
+      "file": "seed3-21480.json",
+      "tick": 21480,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed3/slow-decision-21480-input.json.gz",
+      "sha256": "44408212fff231c63468b6d68bfba34a9a18432f6297280fbd785f9de756613e"
+    },
+    {
+      "id": "seed3-24120",
+      "file": "seed3-24120.json",
+      "tick": 24120,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed3/slow-decision-24120-input.json.gz",
+      "sha256": "328a255a62a1a6a6bcf36cbd8372ce68b28c83210cd1f36426001fe20af30761"
+    },
+    {
+      "id": "seed3-28080",
+      "file": "seed3-28080.json",
+      "tick": 28080,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed3/slow-decision-28080-input.json.gz",
+      "sha256": "fedfb0f74041db25dd4232280c33a89dedef3f0a2fa5ef5f45b3f0e8f05b228e"
+    },
+    {
+      "id": "seed4-417840",
+      "file": "seed4-417840.json",
+      "tick": 417840,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-417840-input.json.gz",
+      "sha256": "57c9e5a0c3d9ea3dc75bace182ce8f927bcddca5b127b57702f7044b716d41c4"
+    },
+    {
+      "id": "seed4-418920",
+      "file": "seed4-418920.json",
+      "tick": 418920,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-418920-input.json.gz",
+      "sha256": "b637e0caeac93a5cff6fcd0af7442521116a874fe8c48445ae39a6f30fe8afc8"
+    },
+    {
+      "id": "seed4-419280",
+      "file": "seed4-419280.json",
+      "tick": 419280,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-419280-input.json.gz",
+      "sha256": "393cb7eb9bd25d4e9c4f9b0915403c8a2f995c6d0bb12eb8899eb53f2d672685"
+    },
+    {
+      "id": "seed4-421440",
+      "file": "seed4-421440.json",
+      "tick": 421440,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-421440-input.json.gz",
+      "sha256": "5794ad80082174e1af936e3dc361739140706379b343e2dc6bf0c4cb8e65fbc2"
+    },
+    {
+      "id": "seed4-427080",
+      "file": "seed4-427080.json",
+      "tick": 427080,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-427080-input.json.gz",
+      "sha256": "1d81e95e2a7a6bd8a6242405995ea36a77b5646ef5226a877f738408c7aa44b8"
+    },
+    {
+      "id": "seed4-427320",
+      "file": "seed4-427320.json",
+      "tick": 427320,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-427320-input.json.gz",
+      "sha256": "baab947bdef6221038b99194b82c7e6dd6a59e44f0584cb3f3e5266bcd19a2b8"
+    },
+    {
+      "id": "seed4-429240",
+      "file": "seed4-429240.json",
+      "tick": 429240,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-429240-input.json.gz",
+      "sha256": "f6c220aa180e27402f364d561aa336f4da6bf15cc670f08ee06c28a5ada3d987"
+    },
+    {
+      "id": "seed4-429360",
+      "file": "seed4-429360.json",
+      "tick": 429360,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-429360-input.json.gz",
+      "sha256": "72fcadf6a4135dbb204f9f311ac6b3c7292ccb2145e0060accd2339a7b6c841e"
+    },
+    {
+      "id": "seed4-430080",
+      "file": "seed4-430080.json",
+      "tick": 430080,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-430080-input.json.gz",
+      "sha256": "6e38a366c5cda8a0472eec594e1a145718056080577819a75f7a26fac9ce7b99"
+    },
+    {
+      "id": "seed4-431040",
+      "file": "seed4-431040.json",
+      "tick": 431040,
+      "maxHousingLots": 24,
+      "source": "output/trunk-baseline/records/seed4/slow-decision-431040-input.json.gz",
+      "sha256": "40a50afe60cf8ab0f42bd2417ffd322a2c4b52d9f58c5dbb8521e50e1f469dab"
+    }
+  ]
+}
