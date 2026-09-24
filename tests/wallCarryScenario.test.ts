@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import { computeReachablePalisadeProposalForState, previewPalisadeRouteAccess } from '../src/engine/palisadeRouteAccess';
 import { nearestWallAnchorCandidate, proposalPredictionLines } from '../src/ui/wallPrediction';
 import { constructionAccessModel, currentConstructionSiteLabel, suggestedConstructionRoad } from '../src/ui/constructionAccessModel';
@@ -12,7 +14,7 @@ import { wallCarryRoute } from '../src/engine/wallCarryRoute';
 import { WALL_CARRY_COST_FACTOR } from '../src/content/wallConstructionConfig';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../src/engine/simulationPorts';
 import type { ConstructionSite } from '../src/economy/construction';
-import { spawnCarter } from '../src/agents/deliveryCommon';
+import { returnPath, spawnCarter } from '../src/agents/deliveryCommon';
 import { constructionMaterialDiagnosis } from '../src/ui/constructionMaterialDiagnosis';
 import { walkerDiagnosisModel } from '../src/ui/walkerDiagnosisModel';
 import { BALANCE } from '../src/content/balanceConfig';
@@ -200,4 +202,29 @@ test('T4: first post-proclamation natural snapshot has no anchor and cannot prog
   for (let count = 0; count < 12_000; count += 1) state = advanceTick(state);
   assert.equal(state.palisade?.segments.filter(segment => segment.completed).length, 0);
   t.diagnostic(`Natural minute-035 tick 46908 + 12000 unchanged roads: ${state.tick}, 0/12 complete; original minute-060 was tick 194386, 10/12 after player roads`);
+});
+
+test('wall delivery can return past isolated road tiles reached through wall carry', () => {
+  const bytes = readFileSync(new URL('./fixtures/wall/a5-seed4-undelivered-timber.json.gz', import.meta.url));
+  const state: GameState = JSON.parse(gunzipSync(bytes).toString('utf8'));
+  const cart = state.walkers.find(walker => walker.id === 'carter:construction-site-000001:1199720');
+  assert.ok(cart?.kind === 'carter');
+  assert.equal(cart.destination.kind, 'construction_site');
+  if (cart.destination.kind !== 'construction_site') throw new Error('Expected construction delivery');
+  const siteId = cart.destination.siteId;
+  const routes = createSimulationRoutePorts(state).delivery;
+  for (const index of [40, 41, 42]) {
+    const position = cart.path[index];
+    assert.ok(position !== undefined);
+    const path = returnPath(state.buildings, { ...cart, pathIndex: index, position }, routes);
+    assert.ok(path !== null, `no return path at outbound index ${index}`);
+    assert.ok(path.every((tile, pathIndex) => {
+      const previous = path[pathIndex - 1];
+      return previous === undefined || routes.canTraverse?.(previous, tile) !== false;
+    }));
+  }
+  let progressed = state;
+  for (let count = 0; count < 300; count += 1) progressed = advanceTick(progressed);
+  const site = progressed.constructionSites.find(candidate => candidate.id === siteId);
+  assert.ok(site !== undefined && (site.delivered.timber ?? 0) > 0);
 });

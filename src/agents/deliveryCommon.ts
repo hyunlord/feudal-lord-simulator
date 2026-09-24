@@ -248,14 +248,21 @@ export function returnPath(
   const home = findBuilding(buildings, carter.homeBuildingId);
   const current = lastReachedRoadTile(carter) ?? currentRoadTile(carter);
   if (home === null || current === null) return null;
-  if (carter.destination.kind === 'construction_site'
-    && carter.path.slice(0, carter.pathIndex + 1).some(tile => !routes.isRoad(tile))) {
+  if (carter.destination.kind === 'construction_site') {
     const traversed = carter.path.slice(0, carter.pathIndex + 1).reverse();
-    const roadIndex = traversed.findIndex(tile => routes.isRoad(tile));
-    const road = traversed[roadIndex];
-    if (road === undefined) return null;
-    const tail = routes.fromTileToBuilding(road, home.id);
-    return tail === null ? null : [...traversed.slice(0, roadIndex), ...tail];
+    if (traversed.every(tile => routes.isRoad(tile))) {
+      const direct = routes.fromTileToBuilding(current, home.id);
+      if (direct !== null) return direct;
+    }
+    for (let index = 0; index < traversed.length; index += 1) {
+      const tile = traversed[index];
+      const previous = traversed[index - 1];
+      if (tile === undefined || (previous !== undefined && routes.canTraverse?.(previous, tile) === false)) return null;
+      if (!routes.isRoad(tile)) continue;
+      const tail = routes.fromTileToBuilding(tile, home.id);
+      if (tail !== null) return [...traversed.slice(0, index), ...tail];
+    }
+    return null;
   }
   return routes.fromTileToDestination(current, {
     kind: "building",
