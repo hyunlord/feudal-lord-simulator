@@ -5,6 +5,7 @@ import { setWallConstructionPriority } from "../src/engine/constructionReserve";
 import { reserveDeadlock } from "../src/engine/reserveDeadlock";
 import { recordTimberAvailability, runProduction } from "../src/engine/simulationProduction";
 import { advanceTick } from "../src/engine/tick";
+import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { building, reserveDeadlockFixture } from "./reserveDeadlockFixture";
 
 test("E3 Given the seed 3 diagnostic deadlock shape When inspected Then reserve deadlock names blocked storage", () => {
@@ -64,12 +65,23 @@ test("Given a stone-only wall reserve hold When timber is stagnant Then the timb
 });
 
 test("Given a reserve deadlock When construction priority is selected Then diagnosis clears and wall material moves", () => {
-  let state = setWallConstructionPriority(reserveDeadlockFixture(), "priority");
+  const houseBuildings = DEFAULT_GAME_STATE.buildings.filter((candidate) => candidate.kind === "house")
+    .map((candidate, index) => ({ ...candidate, tx: index * 2, ty: 4 }));
+  const ready = reserveDeadlockFixture();
+  let state = setWallConstructionPriority({
+    ...ready,
+    buildings: [...ready.buildings, ...houseBuildings],
+    houses: DEFAULT_GAME_STATE.houses.map((house) => ({
+      ...house, level: 4, builtLevel: 4, residents: 32, breadStock: 100, hasWater: true,
+    })),
+    population: 128,
+  }, "priority");
   assert.equal(reserveDeadlock(state), null);
-  for (let tick = 0; tick < 300; tick += 1) state = advanceTick(state);
+  for (let tick = 0; tick < 1200; tick += 1) state = advanceTick(state);
   const site = state.constructionSites.find((candidate) => candidate.id === "wall-a-segment-000");
   assert.ok(site);
   assert.equal(site.delivered.timber, 15);
+  assert.ok(site.builderTicks > 0);
 });
 
 test("Given production runs When available timber rises Then the timber window records the increase tick", () => {
