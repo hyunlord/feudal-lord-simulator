@@ -1,0 +1,990 @@
+{
+ "description": "Gate 3: scripts/moneyConvergence.ts over each seed's money-periods.jsonl (2ba96a7)",
+ "results": [
+  {
+   "directory": "seed-1",
+   "passed": true,
+   "checks": {
+    "tenPeriods": true,
+    "withinTenPercentOfBalance": true,
+    "notRunningOut": true,
+    "noArrears": true
+   },
+   "rows": [
+    {
+     "tick": 763200,
+     "startBalance": 44723,
+     "income": 652,
+     "spending": 429,
+     "net": 223,
+     "netOfBalance": 0.005,
+     "netOfIncome": 0.342,
+     "incomeToUpkeep": 1.52,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 117,
+      "toll": 123,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 765600,
+     "startBalance": 44946,
+     "income": 653,
+     "spending": 429,
+     "net": 224,
+     "netOfBalance": 0.005,
+     "netOfIncome": 0.343,
+     "incomeToUpkeep": 1.522,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 117,
+      "toll": 124,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 768000,
+     "startBalance": 45170,
+     "income": 631,
+     "spending": 429,
+     "net": 202,
+     "netOfBalance": 0.0045,
+     "netOfIncome": 0.3201,
+     "incomeToUpkeep": 1.471,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 113,
+      "toll": 106,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 770400,
+     "startBalance": 45372,
+     "income": 637,
+     "spending": 429,
+     "net": 208,
+     "netOfBalance": 0.0046,
+     "netOfIncome": 0.3265,
+     "incomeToUpkeep": 1.485,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 109,
+      "toll": 116,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 772800,
+     "startBalance": 45580,
+     "income": 607,
+     "spending": 429,
+     "net": 178,
+     "netOfBalance": 0.0039,
+     "netOfIncome": 0.2932,
+     "incomeToUpkeep": 1.415,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 98,
+      "toll": 97,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 775200,
+     "startBalance": 45758,
+     "income": 648,
+     "spending": 429,
+     "net": 219,
+     "netOfBalance": 0.0048,
+     "netOfIncome": 0.338,
+     "incomeToUpkeep": 1.51,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 121,
+      "toll": 115,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 777600,
+     "startBalance": 45977,
+     "income": 627,
+     "spending": 429,
+     "net": 198,
+     "netOfBalance": 0.0043,
+     "netOfIncome": 0.3158,
+     "incomeToUpkeep": 1.462,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 109,
+      "toll": 106,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 780000,
+     "startBalance": 46175,
+     "income": 658,
+     "spending": 429,
+     "net": 229,
+     "netOfBalance": 0.005,
+     "netOfIncome": 0.348,
+     "incomeToUpkeep": 1.534,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 131,
+      "toll": 115,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 782400,
+     "startBalance": 46404,
+     "income": 609,
+     "spending": 429,
+     "net": 180,
+     "netOfBalance": 0.0039,
+     "netOfIncome": 0.2956,
+     "incomeToUpkeep": 1.42,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 100,
+      "toll": 97,
+      "upkeep": -429
+     }
+    },
+    {
+     "tick": 784800,
+     "startBalance": 46584,
+     "income": 651,
+     "spending": 429,
+     "net": 222,
+     "netOfBalance": 0.0048,
+     "netOfIncome": 0.341,
+     "incomeToUpkeep": 1.517,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 133,
+      "toll": 106,
+      "upkeep": -429
+     }
+    }
+   ],
+   "recorded": {
+    "incomeToUpkeep": [
+     1.415,
+     1.534
+    ],
+    "netSpreadOfMean": 0.1455,
+    "meanNet": 208.3
+   },
+   "definition": "Last 10 period closes of the uninterrupted stability interval; |net| <= 10% of the balance at the period start, net >= 0, no arrears"
+  },
+  {
+   "directory": "seed-2",
+   "passed": true,
+   "checks": {
+    "tenPeriods": true,
+    "withinTenPercentOfBalance": true,
+    "notRunningOut": true,
+    "noArrears": true
+   },
+   "rows": [
+    {
+     "tick": 396000,
+     "startBalance": 19036,
+     "income": 569,
+     "spending": 444,
+     "net": 125,
+     "netOfBalance": 0.0066,
+     "netOfIncome": 0.2197,
+     "incomeToUpkeep": 1.282,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 157,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 398400,
+     "startBalance": 19161,
+     "income": 525,
+     "spending": 444,
+     "net": 81,
+     "netOfBalance": 0.0042,
+     "netOfIncome": 0.1543,
+     "incomeToUpkeep": 1.182,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 113,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 400800,
+     "startBalance": 19242,
+     "income": 519,
+     "spending": 444,
+     "net": 75,
+     "netOfBalance": 0.0039,
+     "netOfIncome": 0.1445,
+     "incomeToUpkeep": 1.169,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 107,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 403200,
+     "startBalance": 19317,
+     "income": 516,
+     "spending": 444,
+     "net": 72,
+     "netOfBalance": 0.0037,
+     "netOfIncome": 0.1395,
+     "incomeToUpkeep": 1.162,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 104,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 405600,
+     "startBalance": 19389,
+     "income": 543,
+     "spending": 444,
+     "net": 99,
+     "netOfBalance": 0.0051,
+     "netOfIncome": 0.1823,
+     "incomeToUpkeep": 1.223,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 131,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 408000,
+     "startBalance": 19488,
+     "income": 536,
+     "spending": 444,
+     "net": 92,
+     "netOfBalance": 0.0047,
+     "netOfIncome": 0.1716,
+     "incomeToUpkeep": 1.207,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 124,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 410400,
+     "startBalance": 19580,
+     "income": 540,
+     "spending": 444,
+     "net": 96,
+     "netOfBalance": 0.0049,
+     "netOfIncome": 0.1778,
+     "incomeToUpkeep": 1.216,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 128,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 412800,
+     "startBalance": 19676,
+     "income": 548,
+     "spending": 444,
+     "net": 104,
+     "netOfBalance": 0.0053,
+     "netOfIncome": 0.1898,
+     "incomeToUpkeep": 1.234,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 136,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 415200,
+     "startBalance": 19780,
+     "income": 544,
+     "spending": 444,
+     "net": 100,
+     "netOfBalance": 0.0051,
+     "netOfIncome": 0.1838,
+     "incomeToUpkeep": 1.225,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 132,
+      "upkeep": -444
+     }
+    },
+    {
+     "tick": 417600,
+     "startBalance": 19880,
+     "income": 536,
+     "spending": 444,
+     "net": 92,
+     "netOfBalance": 0.0046,
+     "netOfIncome": 0.1716,
+     "incomeToUpkeep": 1.207,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 124,
+      "upkeep": -444
+     }
+    }
+   ],
+   "recorded": {
+    "incomeToUpkeep": [
+     1.162,
+     1.282
+    ],
+    "netSpreadOfMean": 0.3355,
+    "meanNet": 93.6
+   },
+   "definition": "Last 10 period closes of the uninterrupted stability interval; |net| <= 10% of the balance at the period start, net >= 0, no arrears"
+  },
+  {
+   "directory": "seed-3",
+   "passed": true,
+   "checks": {
+    "tenPeriods": true,
+    "withinTenPercentOfBalance": true,
+    "notRunningOut": true,
+    "noArrears": true
+   },
+   "rows": [
+    {
+     "tick": 465600,
+     "startBalance": 30243,
+     "income": 615,
+     "spending": 456,
+     "net": 159,
+     "netOfBalance": 0.0053,
+     "netOfIncome": 0.2585,
+     "incomeToUpkeep": 1.349,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 116,
+      "toll": 87,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 468000,
+     "startBalance": 30402,
+     "income": 629,
+     "spending": 456,
+     "net": 173,
+     "netOfBalance": 0.0057,
+     "netOfIncome": 0.275,
+     "incomeToUpkeep": 1.379,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 118,
+      "toll": 99,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 470400,
+     "startBalance": 30575,
+     "income": 624,
+     "spending": 456,
+     "net": 168,
+     "netOfBalance": 0.0055,
+     "netOfIncome": 0.2692,
+     "incomeToUpkeep": 1.368,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 121,
+      "toll": 91,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 472800,
+     "startBalance": 30743,
+     "income": 625,
+     "spending": 456,
+     "net": 169,
+     "netOfBalance": 0.0055,
+     "netOfIncome": 0.2704,
+     "incomeToUpkeep": 1.371,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 116,
+      "toll": 97,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 475200,
+     "startBalance": 30912,
+     "income": 645,
+     "spending": 456,
+     "net": 189,
+     "netOfBalance": 0.0061,
+     "netOfIncome": 0.293,
+     "incomeToUpkeep": 1.414,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 122,
+      "toll": 111,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 477600,
+     "startBalance": 31101,
+     "income": 630,
+     "spending": 456,
+     "net": 174,
+     "netOfBalance": 0.0056,
+     "netOfIncome": 0.2762,
+     "incomeToUpkeep": 1.382,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 128,
+      "toll": 90,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 480000,
+     "startBalance": 31275,
+     "income": 615,
+     "spending": 456,
+     "net": 159,
+     "netOfBalance": 0.0051,
+     "netOfIncome": 0.2585,
+     "incomeToUpkeep": 1.349,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 119,
+      "toll": 84,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 482400,
+     "startBalance": 31434,
+     "income": 631,
+     "spending": 456,
+     "net": 175,
+     "netOfBalance": 0.0056,
+     "netOfIncome": 0.2773,
+     "incomeToUpkeep": 1.384,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 117,
+      "toll": 102,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 484800,
+     "startBalance": 31609,
+     "income": 633,
+     "spending": 456,
+     "net": 177,
+     "netOfBalance": 0.0056,
+     "netOfIncome": 0.2796,
+     "incomeToUpkeep": 1.388,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 118,
+      "toll": 103,
+      "upkeep": -456
+     }
+    },
+    {
+     "tick": 487200,
+     "startBalance": 31786,
+     "income": 622,
+     "spending": 456,
+     "net": 166,
+     "netOfBalance": 0.0052,
+     "netOfIncome": 0.2669,
+     "incomeToUpkeep": 1.364,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 118,
+      "toll": 92,
+      "upkeep": -456
+     }
+    }
+   ],
+   "recorded": {
+    "incomeToUpkeep": [
+     1.349,
+     1.414
+    ],
+    "netSpreadOfMean": 0.1059,
+    "meanNet": 170.9
+   },
+   "definition": "Last 10 period closes of the uninterrupted stability interval; |net| <= 10% of the balance at the period start, net >= 0, no arrears"
+  },
+  {
+   "directory": "seed-4",
+   "passed": true,
+   "checks": {
+    "tenPeriods": true,
+    "withinTenPercentOfBalance": true,
+    "notRunningOut": true,
+    "noArrears": true
+   },
+   "rows": [
+    {
+     "tick": 458400,
+     "startBalance": 28770,
+     "income": 527,
+     "spending": 355,
+     "net": 172,
+     "netOfBalance": 0.006,
+     "netOfIncome": 0.3264,
+     "incomeToUpkeep": 1.485,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 115,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 460800,
+     "startBalance": 28942,
+     "income": 537,
+     "spending": 355,
+     "net": 182,
+     "netOfBalance": 0.0063,
+     "netOfIncome": 0.3389,
+     "incomeToUpkeep": 1.513,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 125,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 463200,
+     "startBalance": 29124,
+     "income": 531,
+     "spending": 355,
+     "net": 176,
+     "netOfBalance": 0.006,
+     "netOfIncome": 0.3315,
+     "incomeToUpkeep": 1.496,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 119,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 465600,
+     "startBalance": 29300,
+     "income": 524,
+     "spending": 355,
+     "net": 169,
+     "netOfBalance": 0.0058,
+     "netOfIncome": 0.3225,
+     "incomeToUpkeep": 1.476,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 112,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 468000,
+     "startBalance": 29469,
+     "income": 527,
+     "spending": 355,
+     "net": 172,
+     "netOfBalance": 0.0058,
+     "netOfIncome": 0.3264,
+     "incomeToUpkeep": 1.485,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 115,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 470400,
+     "startBalance": 29641,
+     "income": 537,
+     "spending": 355,
+     "net": 182,
+     "netOfBalance": 0.0061,
+     "netOfIncome": 0.3389,
+     "incomeToUpkeep": 1.513,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 125,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 472800,
+     "startBalance": 29823,
+     "income": 522,
+     "spending": 355,
+     "net": 167,
+     "netOfBalance": 0.0056,
+     "netOfIncome": 0.3199,
+     "incomeToUpkeep": 1.47,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 110,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 475200,
+     "startBalance": 29990,
+     "income": 526,
+     "spending": 355,
+     "net": 171,
+     "netOfBalance": 0.0057,
+     "netOfIncome": 0.3251,
+     "incomeToUpkeep": 1.482,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 114,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 477600,
+     "startBalance": 30161,
+     "income": 533,
+     "spending": 355,
+     "net": 178,
+     "netOfBalance": 0.0059,
+     "netOfIncome": 0.334,
+     "incomeToUpkeep": 1.501,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 121,
+      "upkeep": -355
+     }
+    },
+    {
+     "tick": 480000,
+     "startBalance": 30339,
+     "income": 540,
+     "spending": 355,
+     "net": 185,
+     "netOfBalance": 0.0061,
+     "netOfIncome": 0.3426,
+     "incomeToUpkeep": 1.521,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 128,
+      "upkeep": -355
+     }
+    }
+   ],
+   "recorded": {
+    "incomeToUpkeep": [
+     1.47,
+     1.521
+    ],
+    "netSpreadOfMean": 0.0547,
+    "meanNet": 175.4
+   },
+   "definition": "Last 10 period closes of the uninterrupted stability interval; |net| <= 10% of the balance at the period start, net >= 0, no arrears"
+  },
+  {
+   "directory": "seed-5",
+   "passed": true,
+   "checks": {
+    "tenPeriods": true,
+    "withinTenPercentOfBalance": true,
+    "notRunningOut": true,
+    "noArrears": true
+   },
+   "rows": [
+    {
+     "tick": 504000,
+     "startBalance": 21917,
+     "income": 605,
+     "spending": 440,
+     "net": 165,
+     "netOfBalance": 0.0075,
+     "netOfIncome": 0.2727,
+     "incomeToUpkeep": 1.375,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 121,
+      "toll": 72,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 506400,
+     "startBalance": 22082,
+     "income": 630,
+     "spending": 440,
+     "net": 190,
+     "netOfBalance": 0.0086,
+     "netOfIncome": 0.3016,
+     "incomeToUpkeep": 1.432,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 131,
+      "toll": 87,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 508800,
+     "startBalance": 22272,
+     "income": 610,
+     "spending": 440,
+     "net": 170,
+     "netOfBalance": 0.0076,
+     "netOfIncome": 0.2787,
+     "incomeToUpkeep": 1.386,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 122,
+      "toll": 76,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 511200,
+     "startBalance": 22442,
+     "income": 617,
+     "spending": 440,
+     "net": 177,
+     "netOfBalance": 0.0079,
+     "netOfIncome": 0.2869,
+     "incomeToUpkeep": 1.402,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 126,
+      "toll": 79,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 513600,
+     "startBalance": 22619,
+     "income": 607,
+     "spending": 440,
+     "net": 167,
+     "netOfBalance": 0.0074,
+     "netOfIncome": 0.2751,
+     "incomeToUpkeep": 1.38,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 123,
+      "toll": 72,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 516000,
+     "startBalance": 22786,
+     "income": 615,
+     "spending": 440,
+     "net": 175,
+     "netOfBalance": 0.0077,
+     "netOfIncome": 0.2846,
+     "incomeToUpkeep": 1.398,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 128,
+      "toll": 75,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 518400,
+     "startBalance": 22961,
+     "income": 606,
+     "spending": 440,
+     "net": 166,
+     "netOfBalance": 0.0072,
+     "netOfIncome": 0.2739,
+     "incomeToUpkeep": 1.377,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 123,
+      "toll": 71,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 520800,
+     "startBalance": 23127,
+     "income": 612,
+     "spending": 440,
+     "net": 172,
+     "netOfBalance": 0.0074,
+     "netOfIncome": 0.281,
+     "incomeToUpkeep": 1.391,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 126,
+      "toll": 74,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 523200,
+     "startBalance": 23299,
+     "income": 618,
+     "spending": 440,
+     "net": 178,
+     "netOfBalance": 0.0076,
+     "netOfIncome": 0.288,
+     "incomeToUpkeep": 1.405,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 130,
+      "toll": 76,
+      "upkeep": -440
+     }
+    },
+    {
+     "tick": 525600,
+     "startBalance": 23477,
+     "income": 611,
+     "spending": 440,
+     "net": 171,
+     "netOfBalance": 0.0073,
+     "netOfIncome": 0.2799,
+     "incomeToUpkeep": 1.389,
+     "arrearsOwed": 0,
+     "byCategory": {
+      "rent": 384,
+      "stall_fee": 28,
+      "mill_toll": 129,
+      "toll": 70,
+      "upkeep": -440
+     }
+    }
+   ],
+   "recorded": {
+    "incomeToUpkeep": [
+     1.375,
+     1.432
+    ],
+    "netSpreadOfMean": 0.0976,
+    "meanNet": 173.1
+   },
+   "definition": "Last 10 period closes of the uninterrupted stability interval; |net| <= 10% of the balance at the period start, net >= 0, no arrears"
+  }
+ ]
+}

@@ -1,3 +1,5 @@
+import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
+import { outstandingArrears } from '../engine/moneyRules';
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
@@ -84,6 +86,7 @@ function outputDestinationCause(
 export function buildingProblemCause(state: GameState, buildingId: string): string | null {
   const building = state.buildings.find((candidate) => candidate.id === buildingId);
   if (building === undefined) return null;
+  if (building.upkeepUnpaid === true) return MONEY_RULE_COPY.upkeepUnpaidDetail(outstandingArrears(state).byFacility.get(building.id) ?? 0);
   if (building.operationPaused === true) return BUILDING_OPERATION_COPY.paused;
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
   const production = definition.production;

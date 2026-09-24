@@ -1,4 +1,5 @@
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
+import { treasuryBalance } from "../ledger/ledger";
 import type { EraRequirement, GameState } from "./engine.types";
 import { createStoneWallConstructionSite } from "../economy/construction";
 import { placementSpendableResource } from "../world/placement";
@@ -7,6 +8,7 @@ import { snapshotWallConstructionReserve } from "./constructionReserve";
 import type { Condition, ConditionSet } from "../content/scenario/types";
 import type { EraRequirementKey } from "../content/eraConfig";
 import { scenarioOf } from "./scenarioState";
+import { canAffordStoneWallProject, spendStoneWallProject } from "./moneyRules";
 import { scenarioById, stageDef } from "../content/scenario/registry";
 
 const ERA_REQUIREMENT_LABELS = {
@@ -59,7 +61,7 @@ function requirementRow(state: GameState, condition: Condition): EraRequirement 
     case "spendable_resource_at_least": return condition.resource === "timber"
       ? row("timber", spendableTimberForEraRequirement(state), condition.value)
       : row("stone", spendableStoneForEraRequirement(state), condition.value);
-    case "treasury_coin_at_least": return row("coin", state.treasuryCoin, condition.value);
+    case "treasury_coin_at_least": return row("coin", treasuryBalance(state), condition.value);
     default: return null;
   }
 }
@@ -95,7 +97,8 @@ export function canProclaimPalisadeEra(state: GameState): boolean {
 /** Opens the optional stone-wall project (K4-1); never available when the scenario turns it off. */
 export function canProclaimStoneTownEra(state: GameState): boolean {
   return state.era === "palisade" && stoneWallProjectAvailable(state)
-    && stoneWallRequirements(state).every((requirement) => requirement.met);
+    && stoneWallRequirements(state).every((requirement) => requirement.met)
+    && canAffordStoneWallProject(state);
 }
 
 export function stoneReplacementSiteId(segmentId: string): string {
@@ -116,8 +119,9 @@ export function confirmStoneTownProclamation(state: GameState): GameState {
       startedTick: state.tick,
     }),
   ) ?? [];
+  // M-7: the project's cost is spent when it is proclaimed (the B2 prerequisite, now a real payment).
   return {
-    ...state,
+    ...spendStoneWallProject(state),
     era: "stone_town",
     eraProclaimedTick: state.tick,
     palisade: state.palisade === null

@@ -11,6 +11,7 @@ import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { productionOperation, stepProduction } from '../economy/production';
 import { placementSpendableResource } from '../world/placement';
 import type { GameState } from './engine.types';
+import { accrueMilledWheat } from './moneyRules';
 
 export function runProduction(state: GameState): GameState {
   let forestHarvests = state.forestHarvests ?? [];
@@ -25,6 +26,7 @@ export function runProduction(state: GameState): GameState {
   let farmReadyTicks = 0;
   let breadProduced = 0;
   let timberProduced = 0;
+  const milledWheat = new Map<string, number>();
   const buildings = state.buildings.map((building) => {
     if (!buildingHasRequiredRoadAccess(state, building)) return building;
     if (building.kind === 'wheat_farm') {
@@ -48,7 +50,9 @@ export function runProduction(state: GameState): GameState {
     if (building.kind === 'sawmill' && step.produced === 'timber') timberProduced += 1;
     if (step.produced === "bread") {
       breadProduced += 1;
-      wheatConsumed += (building.inventory.wheat ?? 0) - (step.building.inventory.wheat ?? 0);
+      const ground = (building.inventory.wheat ?? 0) - (step.building.inventory.wheat ?? 0);
+      wheatConsumed += ground;
+      if (building.kind === 'mill' && ground > 0) milledWheat.set(building.id, (milledWheat.get(building.id) ?? 0) + ground);
     }
     if (step.produced !== null && state.autoplayFoodObservation?.siteId === building.id) observedOutput += 1;
     forestHarvests = forestHarvestsAfterProduction({
@@ -58,14 +62,14 @@ export function runProduction(state: GameState): GameState {
     });
     return step.building;
   });
-  const nextState = recordFoodEfficiency(recordFoodFlow({
+  const nextState = accrueMilledWheat(recordFoodEfficiency(recordFoodFlow({
     ...state,
     buildings,
     forestHarvests,
     timberProductionWindow: timberProductionWindow(state, timberProduced),
     ...(materialRecord === undefined ? {} : { autoplayMaterialRecovery: materialRecord }),
   }, { wheatProduced, breadProduced, farmFullTicks, farmReadyTicks }),
-  { eligibleMillTicks, rawStarvedTicks, wheatConsumed }, true);
+  { eligibleMillTicks, rawStarvedTicks, wheatConsumed }, true), milledWheat);
   return observedOutput === 0
     ? nextState
     : recordFoodObservationActivity(nextState, { outputProduced: observedOutput });

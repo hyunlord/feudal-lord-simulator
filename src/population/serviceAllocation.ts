@@ -1,4 +1,4 @@
-import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
+import { operationSuspended, BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { houseLotArea } from '../geometry/buildingFootprint';
 import type { MarketRoadService } from './marketAccess';
@@ -72,7 +72,7 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
       if (home === undefined) return [];
       const demand = houseLotArea(home);
       const nearby = facilities.filter(p => buildingFootprintDistance(home, p) <= definition.serviceRadius);
-      const operating = nearby.filter(p => p.operationPaused !== true);
+      const operating = nearby.filter(p => !operationSuspended(p));
       const staffed = operating.filter(p => p.workers >= definition.workersRequired);
       const reachable = staffed.filter(p => !config.roadRequired || input.roadService?.(home, p) === true)
         .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));

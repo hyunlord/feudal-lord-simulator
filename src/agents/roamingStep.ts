@@ -1,3 +1,4 @@
+import { operationSuspended } from "../content/buildingConfig";
 import { nextHouseDemandTile } from "./roamingDemand";
 import { BALANCE } from "../content/balanceConfig";
 import { serviceHouses } from "./roamingService";
@@ -148,7 +149,7 @@ function stepDistributor(
   readonly walker: DistributorWalker | null;
   readonly deliveryEvents: readonly RoamingDeliveryEvent[];
 } {
-  if (walker.phase !== 'returning' && buildings.some(building => building.id === walker.homeBuildingId && building.operationPaused === true)) {
+  if (walker.phase !== 'returning' && buildings.some(building => building.id === walker.homeBuildingId && operationSuspended(building))) {
     return { buildings, houses, walker: routeHome(walker, routes), deliveryEvents: [] };
   }
   if (!remainingPathCanBeTraversed(walker, routes.canTraverse)) {

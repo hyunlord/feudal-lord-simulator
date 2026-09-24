@@ -1,0 +1,161 @@
+{
+ "description": "Start-value logging run (work-order start values, code identical to 2ba96a7 except the upkeep table): per seed, victory tick vs B2 21caf65, money-200 tick, stone proclamation tick, and the last-10-period income/upkeep under start values and under the final values (replayed on the same logged counts; the world was tick-identical to B2 because no upkeep went unpaid).",
+ "runRoot": "/tmp/fls-c2-g1",
+ "seeds": {
+  "1": {
+   "guardrail": "passed",
+   "victoryTick": 628273,
+   "b2VictoryTick": 628273,
+   "money200Tick": 16800,
+   "stoneProclaimedTick": 656757,
+   "startValues": {
+    "minCash": 6,
+    "firstDeficitTick": null,
+    "money200": 16800,
+    "ratio": [
+     6.9,
+     7.48
+    ],
+    "inc": 651,
+    "upk": 88,
+    "final": 100674
+   },
+   "finalValuesReplay": {
+    "minCash": 1,
+    "firstDeficitTick": null,
+    "money200": 19200,
+    "ratio": [
+     1.41,
+     1.53
+    ],
+    "inc": 651,
+    "upk": 429,
+    "final": 46806
+   }
+  },
+  "2": {
+   "guardrail": "passed",
+   "victoryTick": 294126,
+   "b2VictoryTick": 294126,
+   "money200Tick": 16800,
+   "stoneProclaimedTick": null,
+   "startValues": {
+    "minCash": 6,
+    "firstDeficitTick": null,
+    "money200": 16800,
+    "ratio": [
+     5.38,
+     5.93
+    ],
+    "inc": 536,
+    "upk": 96,
+    "final": 49703
+   },
+   "finalValuesReplay": {
+    "minCash": 1,
+    "firstDeficitTick": null,
+    "money200": 19200,
+    "ratio": [
+     1.16,
+     1.28
+    ],
+    "inc": 536,
+    "upk": 444,
+    "final": 19972
+   }
+  },
+  "3": {
+   "guardrail": "passed",
+   "victoryTick": 277437,
+   "b2VictoryTick": 277437,
+   "money200Tick": 16800,
+   "stoneProclaimedTick": 165827,
+   "startValues": {
+    "minCash": 6,
+    "firstDeficitTick": null,
+    "money200": 16800,
+    "ratio": [
+     6.34,
+     6.65
+    ],
+    "inc": 622,
+    "upk": 97,
+    "final": 71796
+   },
+   "finalValuesReplay": {
+    "minCash": 1,
+    "firstDeficitTick": null,
+    "money200": 16800,
+    "ratio": [
+     1.35,
+     1.41
+    ],
+    "inc": 622,
+    "upk": 456,
+    "final": 31952
+   }
+  },
+  "4": {
+   "guardrail": "passed",
+   "victoryTick": 342833,
+   "b2VictoryTick": 342833,
+   "money200Tick": 16800,
+   "stoneProclaimedTick": 412895,
+   "startValues": {
+    "minCash": 6,
+    "firstDeficitTick": null,
+    "money200": 16800,
+    "ratio": [
+     6.07,
+     6.28
+    ],
+    "inc": 540,
+    "upk": 86,
+    "final": 60481
+   },
+   "finalValuesReplay": {
+    "minCash": 1,
+    "firstDeficitTick": null,
+    "money200": 19200,
+    "ratio": [
+     1.47,
+     1.52
+    ],
+    "inc": 540,
+    "upk": 355,
+    "final": 30524
+   }
+  },
+  "5": {
+   "guardrail": "passed",
+   "victoryTick": 465791,
+   "b2VictoryTick": 465791,
+   "money200Tick": 16800,
+   "stoneProclaimedTick": null,
+   "startValues": {
+    "minCash": 6,
+    "firstDeficitTick": null,
+    "money200": 16800,
+    "ratio": [
+     6.44,
+     6.7
+    ],
+    "inc": 611,
+    "upk": 94,
+    "final": 56243
+   },
+   "finalValuesReplay": {
+    "minCash": 1,
+    "firstDeficitTick": null,
+    "money200": 19200,
+    "ratio": [
+     1.38,
+     1.43
+    ],
+    "inc": 611,
+    "upk": 440,
+    "final": 23648
+   }
+  }
+ }
+}

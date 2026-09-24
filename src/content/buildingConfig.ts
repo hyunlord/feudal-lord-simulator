@@ -46,10 +46,20 @@ export interface Building {
   readonly houseLot?: "horizontal" | "vertical";
   readonly workers: number;
   readonly operationPaused?: boolean;
+  /** Save v8: its upkeep is in arrears (money rule M-6); it stands idle exactly like a paused building. */
+  readonly upkeepUnpaid?: true;
   readonly inventory: Partial<Record<ResourceType, number>>;
   readonly reserved: Partial<Record<ResourceType, number>>;
   readonly stockReserved: Partial<Record<ResourceType, number>>;
   readonly productionProgress: number;
+}
+
+/**
+ * Paused by the player or idle for unpaid upkeep (M-6). Both reuse the one pause rule: no workers, no
+ * service, no production, so homes lose the service through the existing decline rules.
+ */
+export function operationSuspended(building: Pick<Building, "operationPaused" | "upkeepUnpaid">): boolean {
+  return building.operationPaused === true || building.upkeepUnpaid === true;
 }
 
 export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> = {

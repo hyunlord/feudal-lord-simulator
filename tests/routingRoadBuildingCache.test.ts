@@ -123,10 +123,11 @@ test('natural seed3 full state including serialized pathCache stays identical af
   }
   const hash = (state: GameState) => createHash('sha256').update(JSON.stringify(state)).digest('hex');
   // B2/K4-1: this stone-town city has no completed stone wall, so its prosperity hold now counts (0 -> 120).
-  // B3: sales now also write the ledger. Without the two ledger fields the state is the pre-ledger one
-  // (bc94b31 gives de40e5f2… for the same stripped state; full hash there was 4a3a0d92…).
-  assert.equal(hash(warm), '13740b9c6e6aca5186ea10e69eb981c14959ff8148e2d6d220d583ee024b902c');
-  const { coinLedger: _coinLedger, ledger: _ledger, ...withoutLedger } = warm as GameState & { coinLedger?: unknown };
-  assert.equal(createHash('sha256').update(JSON.stringify(withoutLedger)).digest('hex'), 'de40e5f28fd528691e9b00e1079d46215f4b4e3ae59b221dbdd7b67234a76524');
+  // C2 (spec M-1): the market no longer pays the treasury, so the ledger and treasury differ from B3 (13740b9c…).
+  // Without any money field the state is the pre-C2 one (4950b10 gives 6a7136ec… for the same stripped state).
+  assert.equal(hash(warm), 'cb416e1635e20a48189521ce9ba23739b68a385dc97c42fea51ad473e0b9c304');
+  const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
+  const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '6a7136eca6616b7d1cfcb477d5e809815bfad16327e8ca18ca61b8ad44e2cd0f');
   assert.equal(hash(coldState), hash(warm));
 });

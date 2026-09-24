@@ -1,6 +1,7 @@
+import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
 import { storageOverflowCause } from './storageOverflowModel';
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
-import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
+import { operationSuspended, BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSING_CONFIG, type HousingRequirement } from '../content/housingConfig';
 import type { GameState } from '../engine/engine.types';
 import { BALANCE } from '../content/balanceConfig';
@@ -48,7 +49,7 @@ function serviceBlocker(state: GameState, home: Building, service: HouseholdServ
   const definition = BUILDING_CONFIG_BY_KIND[config.kind];
   const providers = state.buildings.filter(b => b.kind === config.kind)
     .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
-  const eligible = providers.find(b => b.operationPaused !== true && buildingFootprintDistance(home, b) <= definition.serviceRadius
+  const eligible = providers.find(b => !operationSuspended(b) && buildingFootprintDistance(home, b) <= definition.serviceRadius
     && b.workers >= definition.workersRequired && (!config.roadRequired || road(home, b)));
   const allocation = eligible === undefined ? undefined : householdServices(state).providers.get(eligible.id);
   const usage = allocation === undefined ? '' : ` · 담당 ${allocation.used}/${allocation.capacity}필지`;
@@ -66,8 +67,8 @@ function serviceBlocker(state: GameState, home: Building, service: HouseholdServ
 
 function requirementBlockers(state: GameState, house: House, home: Building, road: RoadService): Readonly<Record<HousingRequirement, CauseDetail | null>> {
   const allGranaries = state.buildings.filter(b => b.kind === 'granary');
-  const granaries = allGranaries.filter(b => b.operationPaused !== true);
-  const pausedNearby = allGranaries.some(b => b.operationPaused === true && buildingFootprintDistance(home, b) <= HOUSING_CONFIG[3].granaryRadius);
+  const granaries = allGranaries.filter(b => !operationSuspended(b));
+  const pausedNearby = allGranaries.some(b => operationSuspended(b) && buildingFootprintDistance(home, b) <= HOUSING_CONFIG[3].granaryRadius);
   const stocked = granaries.filter(b => (b.inventory.bread ?? 0) > 0);
   const nearest = Math.min(...granaries.map(b => buildingFootprintDistance(home, b)));
   const deliveryDistances = houseHasFood(house) ? [] : stocked.flatMap(granary => {
@@ -132,6 +133,9 @@ function deriveHouse(state: GameState, house: House, home: Building, road: RoadS
 }
 function deriveFacility(state: GameState, building: Building): BuildingCausePresentation {
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  // M-6: unpaid upkeep idles a facility through the pause rule; the registry's pause row shows it.
+  if (building.upkeepUnpaid === true) return { buildingId: building.id, name: definition.name, status: 'blocked',
+    blocker: { causeId: 'operation_paused', requirement: 'production', reason: 'upkeep_unpaid', label: MONEY_RULE_COPY.upkeepUnpaid, sources: [buildingSource(building.id)] }, summary: MONEY_RULE_COPY.upkeepUnpaid };
   if (building.operationPaused === true) return { buildingId: building.id, name: definition.name, status: 'blocked',
     blocker: { causeId: 'operation_paused', requirement: 'production', reason: 'paused', label: BUILDING_OPERATION_COPY.paused, sources: [buildingSource(building.id)] }, summary: BUILDING_OPERATION_COPY.paused };
   const overflow = storageOverflowCause(building);

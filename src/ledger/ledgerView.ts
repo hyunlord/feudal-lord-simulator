@@ -69,10 +69,22 @@ export function ledgerView(state: Pick<GameState, "ledger" | "tick">, account: L
   };
 }
 
-/** Market-sale income of the recent window by market: the "수입원" line of the stone-wall conditions. */
-export function recentMarketIncome(state: Pick<GameState, "ledger" | "tick">): { readonly total: number; readonly markets: number } {
-  const sales = ledgerView(state, "cash", "recent").entries.filter(entry => entry.category === "market_sale");
-  return { total: sales.reduce((sum, entry) => sum + entry.amount, 0), markets: new Set(sales.map(entry => entry.sourceRefs[0].id)).size };
+/** Income of the recent window by category (positive cash entries): the "수입원" line (L-8, M-8). */
+export function recentIncome(state: Pick<GameState, "ledger" | "tick">): { readonly total: number; readonly byCategory: readonly { readonly category: LedgerCategory; readonly amount: number }[] } {
+  const byCategory = new Map<LedgerCategory, number>();
+  for (const entry of ledgerView(state, "cash", "recent").entries) {
+    if (entry.amount <= 0 || entry.category === "opening_balance") continue;
+    byCategory.set(entry.category, (byCategory.get(entry.category) ?? 0) + entry.amount);
+  }
+  const rows = [...byCategory].map(([category, amount]) => ({ category, amount })).sort((left, right) => right.amount - left.amount);
+  return { total: rows.reduce((sum, row) => sum + row.amount, 0), byCategory: rows };
+}
+
+/** Net cash change of the recent window, without the opening balance: the finance cell's trend (M-8). */
+export function recentNetChange(state: Pick<GameState, "ledger" | "tick">): number {
+  return ledgerView(state, "cash", "recent").entries
+    .filter(entry => entry.category !== "opening_balance")
+    .reduce((sum, entry) => sum + entry.amount, 0);
 }
 
 /** Building ids a source total points at, for the map highlight. */

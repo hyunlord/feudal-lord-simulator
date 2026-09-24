@@ -1,3 +1,4 @@
+import { operationSuspended } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import type { Building, BuildingDefinition } from "./economy.types";
 import { availableSpace } from "./storage";
@@ -17,7 +18,7 @@ export function productionOperation(
   definition: BuildingDefinition,
   hasRoad = true,
 ): ProductionOperation {
-  if (building.operationPaused === true) return "paused";
+  if (operationSuspended(building)) return "paused";
   const production = definition.production;
   if (production === null) return "not_producing";
   if (!hasRoad) return "no_road";

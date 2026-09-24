@@ -1,4 +1,4 @@
-import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
+import { operationSuspended, BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { availableSpace, storageCapacityBlock } from '../economy/storage';
 import { evaluateEraRequirements } from './era';
@@ -14,7 +14,7 @@ export function needsStoneStorageRecovery(state: GameState): boolean {
     || storageCapacityBlock(state.buildings, 'stone') === null) return false;
   const config = BUILDING_CONFIG_BY_KIND.masonry;
   return state.buildings.some(building => building.kind === 'masonry'
-    && building.operationPaused !== true && building.workers >= config.workersRequired
+    && !operationSuspended(building) && building.workers >= config.workersRequired
     && buildingHasRequiredRoadAccess(state, building)
     && (building.inventory.stone ?? 0) > 0 && availableSpace(building, config) === 0);
 }

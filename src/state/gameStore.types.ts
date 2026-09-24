@@ -58,6 +58,8 @@ type GameCommand =
   | { readonly type: "zone_erase"; readonly stroke: import("../zones/zone.types").ZoneStroke }
   /** Spec Z-7. */
   | { readonly type: "zone_remove"; readonly id: string }
+  /** Spec Z-17: undo the last zone_paint / zone_erase. */
+  | { readonly type: "zone_undo_stroke" }
   | { readonly type: "set_wall_construction_priority"; readonly priority: import("../engine/constructionReserve").WallConstructionPriority };
 
 export interface GameStoreContextValue {

@@ -63,8 +63,8 @@ export function phase9Metrics(first: Phase9RunTrace, second: Phase9RunTrace): re
       chainPassing,
     ),
     harnessMetric(
-      "Market coin by 5000",
-      coinElapsedTick === null ? "no surplus sale" : `${coinElapsedTick} elapsed ticks`,
+      "Market stall fee by 5000",
+      coinElapsedTick === null ? "no stall fee" : `${coinElapsedTick} elapsed ticks`,
       coinPassing,
     ),
     harnessMetric(

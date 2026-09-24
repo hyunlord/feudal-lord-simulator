@@ -1,4 +1,4 @@
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { operationSuspended, BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { SERVICE_DIAGNOSIS_COPY } from "../ui/serviceDiagnosisCopy.ko";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 
@@ -34,7 +34,7 @@ export function marketAccessDiagnosis(home: Building, buildings: readonly Buildi
   if (distance === null) return { kind: "no_market", label: "시장 없음", serviceRadius };
   const nearby = completedMarkets(buildings).filter(market => buildingFootprintDistance(home, market) <= serviceRadius);
   if (nearby.length === 0) return { kind: "outside", label: `시장이 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`, distance, serviceRadius };
-  const operating = nearby.filter(market => market.operationPaused !== true);
+  const operating = nearby.filter(market => !operationSuspended(market));
   if (operating.length === 0) return { kind: "paused", label: SERVICE_DIAGNOSIS_COPY.paused, distance, serviceRadius };
   const staffed = operating.filter(market => market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired);
   if (staffed.length === 0) return { kind: "understaffed", label: "가까운 시장의 일꾼이 부족합니다", distance, serviceRadius };

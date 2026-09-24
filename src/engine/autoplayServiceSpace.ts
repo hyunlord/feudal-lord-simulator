@@ -1,3 +1,4 @@
+import { operationSuspended } from '../content/buildingConfig';
 import { autoplaySearchExhausted, autoplaySearchWorkUsed, spendAutoplaySearch } from './autoplaySearchBudget';
 import { searchBudgetedServicePlan, type ServiceBudgetSearch } from './autoplayServiceBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
@@ -64,7 +65,7 @@ function layoutFor(state: GameState): Layout {
     tileKeys.set(state.tiles, tiles);
   }
   const geometry = JSON.stringify([state.width, state.height, autoplayConstructionSources(state).map(source => source.id).sort(),
-    buildings.map(building => [building.id, building.kind, building.tx, building.ty, buildingFootprint(building), building.operationPaused === true]).sort(),
+    buildings.map(building => [building.id, building.kind, building.tx, building.ty, buildingFootprint(building), operationSuspended(building)]).sort(),
     state.palisade, state.constructionSites.filter(site => site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment').map(site => [site.id, site.path])]);
   const signature = geometry + tiles;
   let layout = layouts.get(signature);

@@ -24,6 +24,7 @@ export const ZONE_PREDICTION_COPY = {
   outsideArable: "경작지 구역 밖",
   arableInsideWall: "성내 경작지 금지",
   paintCells: (kindLabel: string, cells: number) => `${kindLabel} 구역 ${cells}칸`,
+  excludedInsideWall: (cells: number) => `성 안 ${cells}칸 제외`,
 } as const;
 
 /** Why ZoneFillAgent left a plot empty (spec Z-14). */

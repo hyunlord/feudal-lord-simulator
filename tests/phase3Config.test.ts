@@ -26,7 +26,7 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
     WORKERS_PER_RESIDENT: 0.5,
     CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
     STARTING_TIMBER: 120,
-    TICKS_PER_YEAR: 1200,
+    TICKS_PER_YEAR: 4000,
   });
 });
 

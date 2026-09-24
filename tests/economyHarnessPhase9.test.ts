@@ -131,7 +131,7 @@ test("Phase 9 harness runs a rock-connected Stone Town scenario and exposes exac
     report.phase9Metrics.map((metric) => metric.label),
     [
       "Stone chain continuity",
-      "Market coin by 5000",
+      "Market stall fee by 5000",
       "Stone Town reachability",
       "Stone wall completion",
       "Segment material continuity",
@@ -181,7 +181,7 @@ test("Phase 9 metrics isolate five deliberate broken fixtures through the real t
   // Then: each mutant fails its intended row and no neighboring Phase 9 row.
   assert.deepEqual(failedLabels(good), []);
   assert.deepEqual(failedLabels(noRockAccess), ["Stone chain continuity"]);
-  assert.deepEqual(failedLabels(noSurplusSale), ["Market coin by 5000"]);
+  assert.deepEqual(failedLabels(noSurplusSale), ["Market stall fee by 5000"]);
   assert.deepEqual(failedLabels(blockedEraCondition), ["Stone Town reachability"]);
   assert.deepEqual(failedLabels(starvedStoneWall), ["Stone wall completion"]);
   assert.deepEqual(failedLabels(prematureTimberRemoval), ["Segment material continuity"]);

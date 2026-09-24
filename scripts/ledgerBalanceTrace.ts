@@ -52,10 +52,15 @@ export async function ledgerBalanceTrace(root: string, kind: string, ticks: numb
   const fixed = "2026-09-25T00:00:00.000Z";
   const saveBytes = encodeSave({ state, createdAt: fixed, savedAt: fixed, gameVersion: "trace" }).bytes.byteLength;
   const { coinLedger: _coinLedger, ledger, ...rest } = state as AnyState & { coinLedger?: unknown; ledger?: { entries: unknown[]; rollups: unknown[] } };
+  // C2: the world without any money field (treasury, ledger, money-rule counts, unpaid flags). Equal before and
+  // after C2 while no upkeep goes unpaid and no stone-wall project is proclaimed.
+  const { treasuryCoin: _treasury, money: _money, buildings, ...world } = rest as AnyState & { money?: unknown; buildings: Record<string, unknown>[] };
+  const worldBuildings = buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building);
   return {
     kind, stateFile: stateFile ?? null, startTick, endTick: state.tick, ticks,
     treasurySequenceSha256: sequence.digest("hex"), finalTreasury: previous, treasuryChanges: changes,
     finalStateHashWithoutLedger: canonicalStateHash(rest),
+    finalWorldHashWithoutMoney: canonicalStateHash({ ...world, buildings: worldBuildings }),
     ledger: ledger === undefined ? null : { entries: ledger.entries.length, rollups: ledger.rollups.length },
     cacheMismatches: ledgerApi === null ? null : cacheMismatches,
     msPerTick: Number((elapsedMs / ticks).toFixed(3)),

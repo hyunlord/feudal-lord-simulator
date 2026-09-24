@@ -2,7 +2,7 @@ import type { Era } from "../content/eraConfig";
 import type { SaveProblemKey } from "../content/saveCopy.ko";
 import type { GameState } from "../engine/engine.types";
 
-export const SAVE_SCHEMA_VERSION = 7;
+export const SAVE_SCHEMA_VERSION = 9;
 /** Envelope scenario id written by v0→v1 before scenarios existed; v4→v5 replaces it with the state scenario. */
 export const DEFAULT_SCENARIO_ID = "default";
 

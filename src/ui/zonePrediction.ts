@@ -36,7 +36,9 @@ export function zonePaintLines(state: GameState, kind: ZoneKind, stroke: ZoneStr
   const assessment = zonePaintAssessment(state, kind, stroke);
   if (assessment.ok) {
     const sources = assessment.mergeZoneIds.map(id => ({ type: 'zone' as const, id }));
-    return [{ id: 'zone-paint', severity: 'ok', text: ZONE_PREDICTION_COPY.paintCells(ZONE_KIND_LABELS[kind], assessment.cells.length), sources }];
+    const lines: PredictionLine[] = [{ id: 'zone-paint', severity: 'ok', text: ZONE_PREDICTION_COPY.paintCells(ZONE_KIND_LABELS[kind], assessment.cells.length), sources }];
+    if (assessment.excludedInsideWall > 0) lines.push({ id: 'zone-paint-wall', severity: 'warn', text: ZONE_PREDICTION_COPY.excludedInsideWall(assessment.excludedInsideWall), sources: [] });
+    return lines;
   }
   if (assessment.reason === 'arable_inside_wall') {
     return [{ id: 'zone-paint', severity: 'block', text: ZONE_PREDICTION_COPY.arableInsideWall, sources: [] }];

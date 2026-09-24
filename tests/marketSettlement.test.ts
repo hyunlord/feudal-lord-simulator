@@ -4,11 +4,13 @@ import test from "node:test";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import type { ResourceType } from "../src/content/resourceConfig";
 import { advanceTick } from "../src/engine/tick";
-import { marketHasSaleCandidate } from "../src/engine/marketSettlement";
-import { ledgerView, recentMarketIncome } from "../src/ledger/ledgerView";
+import { marketHasSaleCandidate, settleMarkets } from "../src/engine/marketSettlement";
+import { ledgerView, recentIncome } from "../src/ledger/ledgerView";
 import { historicalFacilityAssetId } from "../src/render/historicalFacilityAssets";
 import { hashEconomyState } from "../scripts/economyHarness";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { CORE_SCENARIOS } from "../src/content/scenario/coreScenarios";
+import { SCENARIOS } from "../src/content/scenario/registry";
 import type { Tile } from "../src/world/world.types";
 
 type Stock = Partial<Record<ResourceType, number>>;
@@ -131,19 +133,14 @@ test("market sells exactly one surplus unit above reserve on the eighty-tick cad
   // When: the next real tick reaches tick 80.
   const next = advanceTick(state);
 
-  // Then: one total unit is sold, reserve remains intact, and coin is treasury-only.
-  assert.equal(next.treasuryCoin, 6);
+  // Then: one total unit is traded, reserve remains intact, and (C2, spec M-1) the proceeds belong to
+  // the goods' owners: the treasury is unchanged and no ledger entry is written.
+  assert.equal(next.treasuryCoin, 0);
   assert.equal(next.buildings.find((candidate) => candidate.id === "store")?.inventory.timber, 60);
   assert.equal(next.walkers.some((walker) => walker.cargo?.resource === "coin"), false);
   assert.equal(next.buildings.some((candidate) => (candidate.inventory.coin ?? 0) > 0), false);
-  // B3 (spec L-2): the sale is a ledger entry after the opening balance; the treasury is its cash sum.
-  assert.deepEqual(next.ledger?.entries, [
-    { id: "ledger-000001", tick: 80, account: "cash", category: "opening_balance", amount: 0,
-      sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "ledger_start" }] },
-    { id: "ledger-000002", tick: 80, account: "cash", category: "market_sale", amount: 6,
-      sourceRefs: [{ type: "building", id: "market", detail: "sold:timber" }] },
-  ]);
-  assert.deepEqual(recentMarketIncome(next), { total: 6, markets: 1 });
+  assert.equal(next.ledger, undefined);
+  assert.deepEqual(recentIncome(next), { total: 0, byCategory: [] });
 });
 
 test("recent coin income excludes events outside the last 2400 ticks", () => {
@@ -163,7 +160,7 @@ test("recent coin income excludes events outside the last 2400 ticks", () => {
   // Then: only ticks 101 through 2500 contribute.
   assert.equal(result.total, 5);
   assert.deepEqual(result.bySource.map(row => [row.key, row.amount]), [["building:current", 5]]);
-  assert.deepEqual(recentMarketIncome(state), { total: 5, markets: 1 });
+  assert.deepEqual(recentIncome(state), { total: 5, byCategory: [{ category: "market_sale", amount: 5 }] });
 });
 
 test("market does not sell at or below reserves and respects cadence and staffing", () => {
@@ -216,8 +213,8 @@ test("market chooses highest value then resource order then source id while igno
   // When
   const next = advanceTick(state);
 
-  // Then: reserved stone is not sold, so timber wins over bread/logs/wheat.
-  assert.equal(next.treasuryCoin, 6);
+  // Then: reserved stone is not traded, so timber wins over bread/logs/wheat; no proceeds reach the treasury (M-1).
+  assert.equal(next.treasuryCoin, 0);
   assert.equal(next.buildings.find((candidate) => candidate.id === "a-source")?.inventory.timber, 60);
   assert.equal(next.buildings.find((candidate) => candidate.id === "a-source")?.stockReserved.stone, 1);
 });
@@ -278,8 +275,8 @@ test("multiple markets settle deterministically by market id and change the econ
   // When
   const next = advanceTick(state);
 
-  // Then: both markets sell one unit in stable order, and treasury coin affects hashing.
-  assert.equal(next.treasuryCoin, 16);
+  // Then: both markets trade one unit in stable order (no treasury income, M-1), and the stock change hashes.
+  assert.equal(next.treasuryCoin, 0);
   assert.equal(next.buildings.find((candidate) => candidate.id === "source-a")?.inventory.stone, 40);
   assert.equal(next.buildings.find((candidate) => candidate.id === "source-b")?.inventory.stone, 42);
   assert.notEqual(hashEconomyState(state), hashEconomyState(next));
@@ -307,4 +304,16 @@ test('market cannot sell using stale assigned workers after the population disap
   assert.equal(next.treasuryCoin, 0);
   assert.equal(next.buildings.find(b => b.id === 'market')?.workers, 0);
   assert.equal(next.buildings.find(b => b.id === 'store')?.inventory.timber, 61);
+});
+
+test("M-1b with the scenario's demesne rule, granary grain sold at market is the lord's and posts demesne_sale", () => {
+  SCENARIOS.register({ ...CORE_SCENARIOS[0]!, id: "test:demesne", economyRules: { millMonopoly: true, demesneSale: true } });
+  const granary = building({ id: "granary", kind: "granary", tx: 1, ty: 1, workers: 2, inventory: { wheat: 31 } });
+  const input = { ...roadedState([granary, market("market", 8, 1)], CONNECTED_ROAD), tick: 80 };
+  const core = settleMarkets(input);
+  assert.equal(core.ledger, undefined, "the core scenario keeps the proceeds with the owners");
+  const demesne = settleMarkets({ ...input, scenarioId: "test:demesne" });
+  assert.deepEqual(demesne.ledger?.entries.filter(entry => entry.category === "demesne_sale").map(entry => [entry.amount, entry.sourceRefs]),
+    [[2, [{ type: "building", id: "granary", detail: "sold:wheat" }, { type: "building", id: "market" }]]]);
+  assert.equal(demesne.treasuryCoin, 2);
 });

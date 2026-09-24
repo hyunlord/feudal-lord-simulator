@@ -1,3 +1,4 @@
+import { operationSuspended } from "../content/buildingConfig";
 import { BALANCE } from "../content/balanceConfig";
 import type { Building } from "../content/buildingConfig";
 import type { DistributorWalker, TilePos, Walker } from "./walker.types";
@@ -50,7 +51,7 @@ export function spawnDistributors(input: RoamingSpawnInput): RoamingSpawnResult 
   let buildings = input.buildings;
   const walkers: Walker[] = [...input.walkers];
   for (const granary of [...buildings].sort((left, right) => left.id.localeCompare(right.id))) {
-    if (granary.kind !== "granary" || granary.operationPaused === true) continue;
+    if (granary.kind !== "granary" || operationSuspended(granary)) continue;
     if (activeDistributors(walkers, granary.id) >= 2) continue;
     const path = input.routes.homePath(granary.id);
     if (path === null) continue;

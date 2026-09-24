@@ -29,6 +29,9 @@ export const ZONE_PLACEMENT_RULES = {
   wheat_farm: "arable",
 } as const satisfies Partial<Record<BuildingKind, ZoneKind>>;
 
+/** Z-17: how many paint/erase edits `zone_undo_stroke` can step back through. */
+export const ZONE_UNDO_LIMIT = 20;
+
 /** Stroke limits (Z-2). Brush radius and points are in tiles. */
 export const ZONE_STROKE_LIMITS = {
   maxPoints: 256,
