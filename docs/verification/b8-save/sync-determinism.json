@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "gate": "B8 gate 1: save/load determinism",
+  "ticks": 24000,
+  "newgameTicks": 10000,
+  "autosaveEveryTicks": 1200,
+  "hash": "sha256 of canonical (sorted-key) JSON of GameState",
+  "gateMatches": 2,
+  "gateCases": 2,
+  "passed": true,
+  "rows": [
+    {
+      "caseId": "seed1",
+      "startTick": 679251,
+      "finalTick": 703251,
+      "ticks": 24000,
+      "saveBytes": 1587411,
+      "saveSerializeMs": 15.492333999999971,
+      "startHashMatches": true,
+      "reloadMatches": true,
+      "firstDivergence": null,
+      "autosaveMatches": true,
+      "reloadChainMatches": true,
+      "autosaves": 20,
+      "autosaveRoundTripMismatches": 0,
+      "deferredSerializationStable": true,
+      "jsonSafetyIssues": [],
+      "finalHash": "d75d1dc908d384b191453bb07a50bccffec57fcadfcad522c2ba4a8346b9d6c5",
+      "elapsedSeconds": 45.14396041599999
+    },
+    {
+      "caseId": "newgame",
+      "startTick": 10000,
+      "finalTick": 34000,
+      "ticks": 24000,
+      "saveBytes": 801460,
+      "saveSerializeMs": 21.56775000000016,
+      "startHashMatches": true,
+      "reloadMatches": true,
+      "firstDivergence": null,
+      "autosaveMatches": true,
+      "reloadChainMatches": true,
+      "autosaves": 20,
+      "autosaveRoundTripMismatches": 0,
+      "deferredSerializationStable": true,
+      "jsonSafetyIssues": [],
+      "finalHash": "0dbcea896f44058a54322a8f7ce88aab37034d716ffeb5c67f003635765c8228",
+      "elapsedSeconds": 9.685984417
+    }
+  ],
+  "elapsedSeconds": 90.44369954100002
+}
