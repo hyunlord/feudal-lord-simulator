@@ -1,5 +1,5 @@
 import type { Grid, TileCoordinate } from "./grid";
-import type { TileEdgePoint } from "./palisadeGeometry";
+import type { TileEdgePoint } from "../geometry/tileGeometry";
 
 export const GATE_HALF_CLEARANCE = 0.8;
 

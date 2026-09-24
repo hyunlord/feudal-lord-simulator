@@ -1,10 +1,8 @@
 import { getTile, type Grid } from "./grid";
 import { palisadeLandEnvelopes } from "./palisadeLandEnvelope";
+import type { TileEdgePoint } from "../geometry/tileGeometry";
 
-export type TileEdgePoint = {
-  readonly x: number;
-  readonly y: number;
-};
+export type { TileEdgePoint } from "../geometry/tileGeometry";
 
 export type PalisadeFootprint = {
   readonly id: string;
