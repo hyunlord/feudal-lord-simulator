@@ -67,7 +67,9 @@ export function forestBoundary(grid: Grid, seed: number): ForestBoundary {
   const decals = loops.map(loop => loop.edgeMidpoints.flatMap((point, index): BoundaryDecal[] => {
     const inside = loop.insideCells[index] as { readonly tx: number; readonly ty: number };
     const outsideCell = { tx: 2 * point.x - inside.tx, ty: 2 * point.y - inside.ty };
-    if (occupied(inside.tx, inside.ty) || occupied(outsideCell.tx, outsideCell.ty)) return [];
+    // Beyond the map counts as forest only to keep outlines off the border; no fringe grows there.
+    const offMap = inside.tx < 0 || inside.ty < 0 || inside.tx >= grid.width || inside.ty >= grid.height;
+    if (offMap || occupied(inside.tx, inside.ty) || occupied(outsideCell.tx, outsideCell.ty)) return [];
     const key = loop.edgeKeys[index] as number;
     const hash = boundaryHash(key, seed, 31);
     const previousKey = loop.edgeKeys[(index + loop.edgeKeys.length - 1) % loop.edgeKeys.length] as number;
