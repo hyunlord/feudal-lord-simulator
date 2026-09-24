@@ -57,7 +57,7 @@ function sourceRoads(state: GameState, site: ConstructionSite): readonly TileCoo
   return existingRoadComponent(state, sourceAccess);
 }
 
-function legalNewRoad(state: GameState, tile: TileCoordinate): boolean {
+export function legalNewRoad(state: GameState, tile: TileCoordinate): boolean {
   if (!canPlaceRoad(state, tile)) return false;
   return !state.constructionSites.some(other => {
     if (!isBuildingConstructionSite(other)) return false;

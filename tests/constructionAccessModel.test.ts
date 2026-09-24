@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ConstructionSite } from '../src/economy/construction';
-import { constructionAccessModel, currentConstructionSiteLabel, groupedConstructionCause, roadConnectsConstructionSite } from '../src/ui/constructionAccessModel';
+import { constructionAccessModel, currentConstructionSiteLabel, groupedConstructionCause, legalNewRoad, roadConnectsConstructionSite } from '../src/ui/constructionAccessModel';
+import { suggestedNewRoadRuns } from '../src/render/constructionAccessOverlay';
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 import { placeRoadLine } from '../src/engine/gameActions';
 import { cachedPlacementPreview } from '../src/render/placementPredictionRuntime';
@@ -93,6 +94,26 @@ test('road proposal connects a stalled site, then disappears after the road is b
   assert.ok(resolveBuildingToConstructionSiteRoute(connected, source, completedSite).path);
   assert.equal(constructionAccessModel(connected, completedSite).cause, 'none');
   assert.equal(constructionAccessModel(connected, completedSite).suggestedRoad.length, 0);
+});
+
+test('T8: dotted construction suggestion begins on buildable ground and never crosses an existing road', () => {
+  const state = disconnectedFixture();
+  const model = constructionAccessModel(state, site);
+  const runs = suggestedNewRoadRuns(state, model.suggestedRoad);
+  assert.ok(runs.length > 0);
+  assert.deepEqual(runs.flat(), model.missingRoadTiles);
+  assert.equal(state.tiles.find(tile => tile.tx === model.suggestedRoad[0]?.tx && tile.ty === model.suggestedRoad[0]?.ty)?.hasRoad, true);
+  assert.ok(runs.every(run => run.every(tile => legalNewRoad(state, tile))));
+  assert.ok(runs.every(run => run.every(tile => state.tiles.find(existing => existing.tx === tile.tx && existing.ty === tile.ty)?.hasRoad === false)));
+});
+
+test('a road already inside a suggestion splits the dotted segments', () => {
+  const state = disconnectedFixture();
+  const path = [{ tx: 2, ty: 3 }, { tx: 3, ty: 3 }, { tx: 4, ty: 3 }, { tx: 5, ty: 3 }];
+  const withMiddleRoad = { ...state, tiles: state.tiles.map(tile => tile.tx === 4 && tile.ty === 3 ? { ...tile, hasRoad: true } : tile) };
+  assert.deepEqual(suggestedNewRoadRuns(withMiddleRoad, path), [
+    [{ tx: 3, ty: 3 }], [{ tx: 5, ty: 3 }],
+  ]);
 });
 
 test('one missing road tile predicts a real material route to the selected site', () => {
