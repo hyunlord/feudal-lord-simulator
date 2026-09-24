@@ -2,7 +2,7 @@ import { autoplaySearchExhausted } from './autoplaySearchBudget';
 import { searchBudgetedServicePlan, type ServiceBudgetSearch } from './autoplayServiceBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { HOUSEHOLD_SERVICE_CONFIG } from '../population/serviceAllocation';
-import { buildingFootprint } from '../geometry/buildingFootprint';
+import { buildingFootprint, houseLotArea } from '../geometry/buildingFootprint';
 import { roadLine } from '../world/roadGraph';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
@@ -101,8 +101,13 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
     ? serviceFootprint(serviceCandidate(action.building, action, 'autoplay-service-space-new'))
     : action.kind === 'place_road' ? roadLine(action.from, action.to) : [];
   const changed = new Set(occupied.map(serviceTileKey));
-  const changesAllocation = serviceSpaceBuildings(state).filter(building => building.kind === 'house').reduce((sum, home) => { const size = buildingFootprint(home); return sum + size.width * size.height; }, 0) > HOUSEHOLD_SERVICE_CONFIG.market.capacity
-    || (action.kind === 'place_building' && ['house', 'market', 'church'].includes(action.building));
+  const addsHouse = action.kind === 'place_building' && action.building === 'house';
+  const lots = serviceSpaceBuildings(state).filter(building => building.kind === 'house')
+    .reduce((sum, home) => sum + houseLotArea(home), 0);
+  // Below both capacities, one extra lot cannot displace an existing allocation.
+  // Its occupied pads/routes still trigger reproof, and its own joint plan is new.
+  const changesAllocation = lots + Number(addsHouse) > Math.min(HOUSEHOLD_SERVICE_CONFIG.market.capacity, HOUSEHOLD_SERVICE_CONFIG.church.capacity)
+    || (action.kind === 'place_building' && ['market', 'church'].includes(action.building));
   let allowed = true;
   let complete = true;
   for (const home of serviceSpaceBuildings(state).filter(building => building.kind === 'house')) {
@@ -125,7 +130,7 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
     const search = budgetFor(layout, state);
     const witness = search.witness;
     if ((action.kind === 'place_building' && action.building === 'house') || witness !== null || !search.complete) {
-      if (knownProjection === undefined && !changesAllocation && witness !== null
+      if (knownProjection === undefined && !addsHouse && !changesAllocation && witness !== null
         && ![...changed].some(tile => witness.pads.has(tile) || (action.kind === 'place_building' && witness.roads.has(tile)))) {
         nextLayout.budget = search;
       }

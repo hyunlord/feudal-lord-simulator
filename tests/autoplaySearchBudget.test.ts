@@ -53,14 +53,14 @@ test('a truncated automatic wall query cannot truncate the later manual recommen
   assert.deepEqual(computePalisadeProposalForState(state), expected);
 });
 
-test('a local branch cutoff is unknown, never a cached proof that existing homes were impossible', () => {
+test('a work cutoff is unknown, never a cached proof that existing homes were impossible', () => {
   const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/service-space-normal-97560.json.gz', import.meta.url))).toString());
-  const truncated = runAutoplaySearch(() => searchBudgetedServicePlan(state));
+  const truncated = runAutoplaySearch(() => searchBudgetedServicePlan(state), undefined, 0);
   assert.equal(truncated.witness, null);
   assert.equal(truncated.complete, false);
   resetAutoplayServiceSearch();
   const alternative = { kind: 'place_building', building: 'granary', tx: 61, ty: 41 } as const;
-  assert.equal(runAutoplaySearch(() => preservesAutoplayServiceSpace(state, alternative)), false,
+  assert.equal(runAutoplaySearch(() => preservesAutoplayServiceSpace(state, alternative), undefined, 0), false,
     'an unproven baseline does not permit an unproven projection');
   const proven = searchBudgetedServicePlan(state);
   assert.equal(proven.witness, null);
