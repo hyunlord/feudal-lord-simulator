@@ -1,4 +1,6 @@
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
+import { BALANCE } from '../content/balanceConfig';
+import { STORAGE_KIND_BY_RESOURCE } from '../content/resourceConfig';
 import { constructionDeliveryNeed, isBuildingConstructionSite, isWallConstructionSite } from '../economy/construction';
 import { availableStock, storageCapacityBlock } from '../economy/storage';
 import { placementSpendableResource } from '../world/placement';
@@ -38,8 +40,12 @@ export function timberExpansionKind(state: GameState): TimberKind | null {
   const wallNeed = state.constructionSites.filter(isWallConstructionSite)
     .reduce((sum, site) => sum + (constructionDeliveryNeed(site).timber ?? 0), 0);
   if (wallNeed === 0 || wallNeed <= (observation?.produced ?? 0)) return null;
-  const stockedLogs = state.buildings.reduce((sum, building) => sum + availableStock(building, 'logs'), 0);
-  const kind: TimberKind = stockedLogs >= 8 ? 'sawmill' : 'logging_camp';
+  const sourceLogs = state.buildings.filter(building => building.kind === STORAGE_KIND_BY_RESOURCE.logs)
+    .reduce((sum, building) => sum + availableStock(building, 'logs'), 0);
+  const inputPerOutput = BUILDING_CONFIG_BY_KIND.sawmill.production?.inputPerOutput ?? 0;
+  const existingInputNeed = state.buildings.filter(building => building.kind === 'sawmill')
+    .reduce((sum, building) => sum + Math.max(0, inputPerOutput - availableStock(building, 'logs') - (building.reserved.logs ?? 0)), 0);
+  const kind: TimberKind = sourceLogs - existingInputNeed >= BALANCE.CARTER_CAPACITY ? 'sawmill' : 'logging_camp';
   const config = BUILDING_CONFIG_BY_KIND[kind];
   const existing = state.buildings.filter(building => building.kind === kind);
   if (existing.some(building => building.workers < config.workersRequired)
