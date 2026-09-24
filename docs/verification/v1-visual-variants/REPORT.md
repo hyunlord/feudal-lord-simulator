@@ -1,14 +1,22 @@
-관문: ①결정론 · ②분포 · ③오버레이 · ④성능 · ⑤클론 CLONE_COUNT — 통과
+관문: ①결정론 · ②분포 · ③오버레이 · ④성능 · ⑤클론 — 통과
 
 # V1 시각 변형 설치 보고 (Claude Code, 2026-09-24)
 
-같은 등급의 집·창고·우물·시장·예배당·방앗간·밀밭이 위치에 따라 결정론적으로 다른 그림으로 그려진다. 게임 규칙·저장 형식은 그대로다(`src/engine`·`src/content/scenario`·`src/save` 변경 0줄, 저장 코덱은 테스트에서 읽기만). 같은 작업에서 사용자 지시로 **`RENDER_BOUNDARY_V2` 기본값을 켬**으로 바꿨다(토글·`render-boundary-v2=0` 유지). 캡처는 모두 시뮬레이션을 시작하지 않은 **준비 상태**이며, 오버레이 갤러리는 **상태 주입**(증빙용 합성 상태)이다.
+같은 등급의 집·창고·우물·시장·예배당·방앗간·밀밭이 위치에 따라 결정론적으로 다른 그림으로 그려진다. 추가 지시로 L1 **기와** 변형(`house_l1_tile-v1`)을 넣어 32장이 됐고, 이 변형은 **완공된 성벽 안의 L1 집에서만** 고른다. 게임 규칙·저장 형식은 그대로다(`src/engine`·`src/content/scenario`·`src/save` 변경 0줄, 저장 코덱은 테스트에서 읽기만). 같은 작업에서 사용자 지시로 **`RENDER_BOUNDARY_V2` 기본값을 켬**으로 바꿨다(토글·`render-boundary-v2=0` 유지). 캡처는 모두 시뮬레이션을 시작하지 않은 **준비 상태**이며, 오버레이 갤러리는 **상태 주입**(증빙용 합성 상태)이다.
 
 ## 커밋·합치기·대장
 
-COMMITS_BLOCK
+작업 브랜치 `claude/v1-visual-variants`(본선 `d7ad548`에서 분기, 원격에 올리지 않음):
 
-에셋 대장 `docs/provenance/assets.csv` **31행 추가**(첨부 CSV에서, 상태 `runtime`, 원본 경로 `docs/asset-evidence/runtime-sources/variants-wave2/` SHA 일치, 프롬프트 `docs/provenance/prompts/`). 목축형 3장(`assets_hold/`)·반려된 L1 초가·확인 그림 4장은 설치·대장·매니페스트에 넣지 않았다.
+| 커밋 | 내용 |
+|---|---|
+| `8a45df1` | 변형 규칙·매니페스트·31장 설치·오버레이 등록·곡선 지면 기본 켬·테스트 |
+| `425eba8` | 증빙 도구(갤러리·캡처·등록 확인 그림·분포) |
+| `af34cda`·`622e588`·`b76786f`·이후 | 변형 래스터를 크롭 기록·높이로 캐시(문자열 키 제거), L1 기와 변형(`inside_wall`), 증빙 갱신, 보고서 |
+
+본선 합치기는 B11·D1a와 같은 절차(본선 merge → 깨끗한 클론 `npm ci`·typecheck·전체 회귀(Phase 9 포함)·build → 본선이 그대로면 fast-forward 푸시). 최종 해시·회귀 N/N은 이 파일을 포함한 커밋에서 측정하므로 최종 보고 메시지에 적는다.
+
+에셋 대장 `docs/provenance/assets.csv` **32행 추가**(첨부 CSV 31행 + `v1add_L1tile.zip` 1행, 상태 `runtime`, 원본 경로 `docs/asset-evidence/runtime-sources/variants-wave2/` SHA 일치, 프롬프트 `docs/provenance/prompts/`). 목축형 3장(`assets_hold/`)·반려된 L1 초가(`house_l1_thatch-v1`, 기와로 대체)·확인 그림 4장은 설치·대장·매니페스트에 넣지 않았다.
 
 ## 관문 결과
 
@@ -33,7 +41,7 @@ COMMITS_BLOCK
 | seed2 | wheat_farm (20) | base 13 · mixed 7 — 최대 65% | 3/11 |
 | seed3 | 전체 인접 쌍 | — | 0/16 (0%) |
 | seed3 | chapel (1) | b 1 — 최대 100% | 0/0 |
-| seed3 | house_l3 (11) | clothier 5 · shop 2 · storage 4 — 최대 45% | 0/3 |
+| seed3 | house_l3 (11) | clothier 6 · shop 2 · storage 3 — 최대 55% | 0/3 |
 | seed3 | house_l4 (13) | inn 4 · base 3 · wing 4 · courtyard 2 — 최대 31% | 0/7 |
 | seed3 | market (2) | b 1 · c 1 — 최대 50% | 0/0 |
 | seed3 | mill (8) | base 5 · windmill 3 — 최대 63% | 0/0 |
@@ -55,9 +63,11 @@ COMMITS_BLOCK
 | horizontal L4 | base 50% · hall 50% |
 | vertical L3 | base 50% · workshop 50% |
 | vertical L4 | base 50% · court 50% |
+| single L1 (성벽 안) | base 27% · garden 34% · artisan 15% · tile 24% |
+| single L2 (성벽 안) | base 27% · garden 31% · brewer 19% · weaver 24% |
 
 ### ③ 상태 오버레이 — 통과 (`captures/closeup-*.jpg`, `overlay-registration-sheet.jpg`)
-하락 33종 오버레이는 기본 본체에 그려진 그림이라 변형 본체(작아지거나 옆으로 비킨 집)에 그대로 얹으면 마당·소품 위로 떨어진다. `scripts/registerVariantOverlays.py`가 변형마다 주 지붕(단독) 또는 두 채 지붕 전체(합필)의 색 마스크를 기본과 맞추는 배율·이동을 찾아 `buildingVariantOverlay.generated.ts`에 17행을 만든다. 오버레이 그림과 대체 표식(벽·지붕·창 좌표) 모두 이 변환을 따른다. 테스트: 17개 모든 변형에 등록이 있고 해당 등급·필지의 3상태 그림이 모두 있다.
+하락 33종 오버레이는 기본 본체에 그려진 그림이라 변형 본체(작아지거나 옆으로 비킨 집)에 그대로 얹으면 마당·소품 위로 떨어진다. `scripts/registerVariantOverlays.py`가 변형마다 주 지붕(단독) 또는 두 채 지붕 전체(합필)의 색 마스크를 기본과 맞추는 배율·이동을 찾아 `buildingVariantOverlay.generated.ts`에 18행을 만든다(기와 L1처럼 지붕 재료가 바뀐 변형은 변형 쪽 지붕 색을 따로 판별). 오버레이 그림과 대체 표식(벽·지붕·창 좌표) 모두 이 변환을 따른다. 테스트: 18개 모든 주택 변형에 등록이 있고 해당 등급·필지의 3상태 그림이 모두 있다.
 
 | 변형 | 배율 | dx | dy | 지붕 IoU |
 |---|---|---|---|---|
@@ -65,6 +75,7 @@ COMMITS_BLOCK
 | `house_l0_pen-v1` | 0.75 | 57.4 | 204.9 | 0.789 |
 | `house_l1_artisan-v1` | 0.95 | 45.1 | 54.1 | 0.91 |
 | `house_l1_garden-v1` | 0.77 | 45.1 | 198.5 | 0.789 |
+| `house_l1_tile-v1` | 1.0 | 9.0 | 9.0 | 0.833 |
 | `house_l2_brewer-v1` | 0.84 | 27.5 | 173.9 | 0.821 |
 | `house_l2_garden-v1` | 0.86 | -9.2 | 137.3 | 0.772 |
 | `house_l2_weaver-v1` | 0.85 | 18.3 | 73.2 | 0.79 |
@@ -79,25 +90,35 @@ COMMITS_BLOCK
 | `house_pair_l4_horizontal_hall-v1` | 0.9 | 30.7 | 178.3 | 0.439 |
 | `house_pair_l4_vertical_court-v1` | 0.92 | 20.4 | 75.0 | 0.581 |
 
-- 확인 그림: `overlay-registration-sheet.jpg`(열: 기본+오버레이 / 변형+미등록 오버레이 / 변형+등록 오버레이, 17행). 화면 캡처: 갤러리(`gallery-*`, 17변형 × 관리·부족·방치·빈집 66채)와 하락 집 6채 확대(`closeup-*`: L0 pen 빈집, L1 garden 방치, L2 weaver 부족, L3 shop 방치, L4 courtyard 빈집, 합필 L4 hall 방치).
+- 기와 L1: 배율 1.00, 이동 (9, 9)(기본 그림을 고친 그림이라 몸체 위치가 같다).
+- 확인 그림: `overlay-registration-sheet.jpg`(열: 기본+오버레이 / 변형+미등록 오버레이 / 변형+등록 오버레이, 18행). 화면 캡처: 갤러리(`gallery-*`, 18변형 × 관리·부족·방치·빈집 70채, 기와 L1이 나오도록 완공 성벽으로 둘러쌈)와 하락 집 7채 확대(`closeup-*`: L0 pen 빈집, L1 garden 방치, L1 tile 부족, L2 weaver 부족, L3 shop 방치, L4 courtyard 빈집, 합필 L4 hall 방치).
 - 한계: 합필 L3 courtyard는 두 채 사이가 넓어 벽 얼룩이 틈 가장자리에 걸친다(IoU 0.39). 카메라 최대 확대가 약 1.5배라 표식이 작게 보인다.
 
 ### ④ 성능 — 통과 (`perf/`)
 B11 방식(3회 × 240프레임, 첫 회 버림, 1배속, 1280×800, headless GPU). 전 = V1 이전 본선 `d7ad548`에 곡선 지면 켬, 후 = V1(기본 = 곡선 지면 켬). 번갈아 측정.
 
-PERF_TABLE
+| 도시 | DPR | 카메라 | 전 frameWork 중앙/p95 | 후 중앙/p95 | 후 p95 ÷ 전 p95 | 전 rAF 중앙/p95 | 후 rAF 중앙/p95 | buildings 단계 중앙 전→후 |
+|---|---|---|---|---|---|---|---|---|
+| lots24 | 1 | 정지 | 3.6 / 6.8 | 3.6 / 6.7 | 99% | 16.7 / 16.8 | 16.7 / 16.7 | 0.2 → 0.3 |
+| lots24 | 1 | 드래그 | 3.8 / 6.3 | 4.0 / 6.5 | 103% | 16.7 / 16.7 | 16.7 / 16.7 | 0.2 → 0.3 |
+| lots24 | 2 | 정지 | 4.4 / 7.5 | 4.6 / 7.8 | 104% | 16.7 / 16.8 | 16.7 / 16.7 | 0.5 → 0.6 |
+| pop176 | 1 | 정지 | 2.7 / 4.2 | 2.8 / 4.3 | 102% | 16.7 / 16.8 | 16.7 / 16.8 | 0.1 → 0.1 |
+| pop176 | 1 | 드래그 | 2.9 / 4.5 | 3.0 / 4.7 | 104% | 16.7 / 16.8 | 16.7 / 16.8 | 0.2 → 0.2 |
+| newgame | 1 | 정지 | 2.8 / 16.6 | 2.8 / 16.6 | 100% | 16.7 / 16.8 | 16.7 / 16.7 | 0.0 → 0.1 |
+
+- 판정: 중앙값 차 +0.0~0.2 ms(최대 4.5%, lots24 DPR 2), p95 99~104%, rAF 간격 동일. 같은 세션 반복 측정의 흔들림(D1a에서 ±0.2 ms) 안이다. 다만 lots24의 `buildings` 단계가 0.2→0.3 ms로 일관되게 늘었다: 변형 그림이 기본보다 서로 다른 래스터를 더 많이 쓰고 변형 조회가 매 건물 한 번 더 있기 때문이다(작은 실제 비용).
 
 변형은 기본과 같은 방식으로 한 번 래스터해 재사용한다(URL·크롭·높이별 캐시). 변형 배정은 건물 목록이 바뀔 때만 다시 계산한다.
 
 ### ⑤ 깨끗한 클론 회귀 — 통과
-CLONE_LINE
+최종 커밋 기준 깨끗한 클론에서 `npm ci`·typecheck·전체 회귀·build. 결과 N/N은 최종 보고 메시지(이 파일을 포함한 커밋이 대상이라).
 
 ## 만든 것
 | 항목 | 파일 |
 |---|---|
-| 변형 선택 규칙 | `src/render/buildingVariants.ts` — seed = hash(세계 seed, 종류, anchor, 필지 폭). 등급 풀 안에서만 고름. 등급이 오르면 같은 seed로 다시 고르되 50%(seed로 결정) 확률로 같은 계열 유지(garden→garden). 하락·복구는 건축 등급이 그대로라 변형 유지. 합필은 폭 2 seed, 해제하면 원래 seed. 인접(모서리 포함 맞닿음) 같은 풀의 앞선 건물이 같은 원선택이면 한 번 다음 후보로(연쇄 없음) |
+| 변형 선택 규칙 | `src/render/buildingVariants.ts` — seed = hash(세계 seed, 종류, anchor, 필지 폭). 등급 풀 안에서만 고름. 등급이 오르면 같은 seed로 다시 고르되 50%(seed로 결정) 확률로 같은 계열 유지(garden→garden). 하락·복구는 건축 등급이 그대로라 변형 유지. `requires: "inside_wall"` 변형(L1 기와)은 `palisadeProtectionForBuilding(집, state.palisade) === "inside"`일 때만 후보에 들어간다(L4 "보호" 요구가 쓰는 판정과 같은 함수: 모든 구간 완공 + 집 네 모서리가 성곽 다각형 안). 목책이 없거나 미완공이면 절대 고르지 않는다. 합필은 폭 2 seed, 해제하면 원래 seed. 인접(모서리 포함 맞닿음) 같은 풀의 앞선 건물이 같은 원선택이면 한 번 다음 후보로(연쇄 없음) |
 | 매니페스트 | `src/render/buildingVariantManifest.ts` — `building:house_l2` 등 `namespace:id` 풀, `variants: [{id, weight, family}]`(기본 그림도 변형 `base`). 가중치 동일 |
-| 설치 | `public/assets/buildings/variants-wave2/` 31장. 모든 변형이 기본 그림과 같은 틀(같은 캔버스 비율·접지점)이라 기본의 좌표 등록을 그대로 쓰고 샘플링 배율만 등록(`registerRuntimeAssetVariant`) |
+| 설치 | `public/assets/buildings/variants-wave2/` 32장. 모든 변형이 기본 그림과 같은 틀(같은 캔버스 비율·접지점)이라 기본의 좌표 등록을 그대로 쓰고 샘플링 배율만 등록(`registerRuntimeAssetVariant`) |
 | 그리기 | 단독·합필 주택, 오버레이, 시장(활성 B·C / 조용 B, 조용 C는 없어 기본 조용), 예배당, 풍차(정지 그림이라 회전 날개 대신 그림), 혼합형 밀밭(생장 4단계), 우물·창고(월드 스프라이트 교체) |
 | 곡선 지면 기본 켬 | `src/render/renderBoundaryFlag.ts`. 이전 지면 렌더러를 검증하던 테스트 4개 파일은 끔으로 고정(토글로 여전히 제공되므로 유지) |
 | 증빙 도구 | `scripts/registerVariantOverlays.py`, `variantOverlaySheet.py`, `variantDistribution.ts`, `variantGalleryState.ts`, `variantEvidence.mjs` |
@@ -111,9 +132,9 @@ CLONE_LINE
 
 ## 다음 후보
 - **변형과 규칙 연결**(C3·C4): brewer·inn·weaver·clothier·shop·storage 계열은 가내 공예·저장 슬롯이 생길 때 그 계열을 요구하는 조건으로. 지금은 순전히 그림이다.
-- **성벽 안팎 지붕**(C6): 아트 바이블(성밖 초가·성내 평기와)대로면 L0·L1 성내 집은 기와여야 한다. L1 기와 변형(Astra 재의뢰 중)이 오면 성내 L1 풀에 넣으면 된다.
+- **성벽 안팎 지붕**(C6): 지금은 성내 L1이 기와 변형을 **고를 수 있을 뿐**(약 1/4)이고 초가도 남는다. 아트 바이블을 강제하려면 성내 L0·L1 풀에서 초가를 빼고, L0 기와 그림을 새로 받아야 한다. 성벽 완공 순간 성내 L1 일부가 기와로 바뀌는 것도 이 결정과 함께 볼 것.
 - 목축형 농장은 C5(양)에서 `building:wheat_farm` 풀에 한 줄 추가.
 - 합필 L3 courtyard 오버레이 등록을 수작업 보정할지.
 
 ## 소요 시간
-TIME_LINE
+2026-09-24 23:21 시작, L1 기와 추가 지시(09-25 00:00경) 반영 포함 약 1시간 10분에 보고서 작성. 최종 시각은 보고 메시지.
