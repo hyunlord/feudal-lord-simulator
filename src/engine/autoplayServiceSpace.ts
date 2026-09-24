@@ -157,6 +157,23 @@ export function preservesAutoplayServiceSpace(state: GameState, action: Autoplay
   // Its occupied pads/routes still trigger reproof, and its own joint plan is new.
   const changesAllocation = lots + Number(addsHouse) > Math.min(HOUSEHOLD_SERVICE_CONFIG.market.capacity, HOUSEHOLD_SERVICE_CONFIG.church.capacity)
     || (action.kind === 'place_building' && ['market', 'church'].includes(action.building));
+  if (action.kind === 'place_building' && (action.building === 'market' || action.building === 'church')) {
+    projected ??= projectServiceAction(state, action);
+    const next = budgetFor(layoutFor(projected), projected);
+    // A complete citywide witness already proves every local service obligation.
+    // Legacy impossible layouts still fall through to the existing local-loss guard.
+    if (next.complete && next.witness !== null && !autoplaySearchExhausted()) {
+      if (key !== null) layout.decisions.set(key, true);
+      return true;
+    }
+    if (next.complete && next.witness === null) {
+      const previous = budgetFor(layout, state);
+      if (previous.complete && previous.witness !== null && !autoplaySearchExhausted()) {
+        if (key !== null) layout.decisions.set(key, false);
+        return false;
+      }
+    }
+  }
   let allowed = true;
   let complete = true;
   for (const home of serviceSpaceBuildings(state).filter(building => building.kind === 'house')) {

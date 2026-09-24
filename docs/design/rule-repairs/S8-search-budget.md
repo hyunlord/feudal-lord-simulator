@@ -104,3 +104,15 @@
 추가 자연 seed4 264000 상태에서 벌목장 원목만 증가시켜 공급원 membership을 유지한4개 입력을 cold-clear와 warm순차 방식으로 비교했다. 각 입력의 action·diagnostic 전체 동일, 모두 search_budget_hit192 유지, 메모 hit180. cold 2235·2186·1548·1800ms / warm1466·171·168·157ms. 이 측정은 테스트 병행 중 참고값이다. `/tmp/fls-r1fix-20260924/service-memo-seed4.jsonl`. 초안 실험에서 틱만 앞당기면 생산 관측창이 오래되어 다른 조기 종료 분기를 타는 것을 발견해 그 자료는 `service-memo-seed4-invalid-temporal.jsonl`로 분리하고 성능 근거에서 제외했다. 틱·인력·등급·재고 크기 변화에 대한 구조 증명 동등성은 별도 단위시험으로 확인한다.
 
 회귀는 fulladvisor cold/warm/clear, 정확한 비용의 직전·동일·직후와0·1·6·7 예산, incomplete→full, inactive→bounded, building/source 순서(같은 decision 안 교차 포함), 재고로 공급원이 변함, 일시정지, 도로 변경, 32 layout 상한을 포함한다. 기존 서비스 수용량·합필·공동시설 상한 검사도 유지했다. 최종 관련 테스트와 typecheck는 `service-memo-final-tests.log` 및 통합 담당 로그를 따른다.
+
+### 자연 seed 1 시장0 교착 — 공동 증명 우선
+
+`a215dab` seed1 564000틱 자연 상태: 목책36/36, 주택24 L3, 인구528, idle158, 가용목재96, 건물공사0인데 시장0·금화0·석재0이었다. 시장비용은60이므로 자재·인력·대기 공사가 원인이 아니다. 실제 advisor는 none/search_budget_hit576, 시장 단독 단계도 none/192였다. 이 상태는 캐시가 CPU 시간을 줄여도 같은 행동 none을 유지하므로 별도의 탐색 순서 교착이다. 읽기 전용 원본을 `tests/fixtures/service-space-market/seed1-564000.json.gz`에 압축했고 원본 SHA를 README에 기록했다.
+
+합법 시장 부지2511 중 현재 자재 도로에 연결된12개, 실제 공급 증가가 있는 직접 후보는3개뿐이었다. 북쪽 후보(41,18)·(40,18)는 각각2필지, (39,17)은1필지를 새로 공급하지만 그 위치에 제한된 시장 슬롯을 쓰면 나머지 도시 공동공급을 완성할 수 없다. 기존 코드는 첫 후보에 지역 증명156작업을 쓴 뒤 거부하고 두 번째에서192 예산을 소진하여 도로 연결 후보까지 못 갔다. 반면 세 후보의 공동계획 불가능 증명은 각각1작업이다. 원래 도시는 시장(47,44),(43,29)와 교회2개를 배치하는 공동계획이11작업으로 증명되고, 해당 시장을 가상 설치한 후에도10작업으로 완전 공급 계획이 남는다.
+
+수정은 `preservesAutoplayServiceSpace`의 시장·교회 추가에 한정했다. projected 공동계획이 완료되고 witness가 있으면 그 증명이 모든 기존 주택의 거리·경로·수용량을 충족하므로 지역별 재증명을 생략한다. projected 계획이 완전 불가능이고 기존 공동계획이 가능하면 바로 거부한다. 기존부터 공동계획이 불가능한 도시와 불완전 탐색은 기존 local-loss 보호 경로를 유지한다. 예산192·시설상한·실제 운송·배치 규칙을 바꾸지 않는다.
+
+검증은 자연 fulladvisor none부터 red로 고정한 후, 실제 advisor→reducer에서 합법 도로 또는 시장 행동으로 바뀜을 확인했다. 직접3후보를 차례로 거부한 뒤 공동계획의 시장 후보를 같은192 작업 예산에서 승인한다. cold/warm 전체 action·diagnostic 일치, 예산1에서 미완료 증명을 승인하지 않는 테스트를 포함한다. 신규3/3 PASS. 관련44개 및 typecheck 최종 로그: `/tmp/fls-r1fix-20260924/recovery-guard-seed1-a215-final/related-tests.log`. 전체69·17·최종회귀·가드레일은 통합 담당의 새 커밋 실행을 따른다.
+
+최종 결과: 관련44/44 PASS, typecheck PASS. 실제 advisor와 urban 단독 모두 `(60,41)→(61,41)` 도로 행동을 반환하고 reducer에 반영됐다. 시장 단계는 search_complete/99작업으로 종료했다. 전체 advisor의 search_budget_hit280은 앞선 식량 단계 소진 기록까지 포함하므로 모든 단계가 완전 탐색됐다는 뜻은 아니다. 도로 행동 발생은 교착 해소의 첫 조치이며 시장 완공·최종 L4 관문 통과와 구분한다.
