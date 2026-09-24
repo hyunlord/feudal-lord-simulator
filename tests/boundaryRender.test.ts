@@ -29,7 +29,7 @@ type Recording = import("../scripts/recordingCanvas").Recording;
 const V2_MODULES = [
   "/src/render/drawTerrainBoundaryV2.ts", "/src/render/groundBoundaryScene.ts", "/src/render/groundChunkCache.ts",
   "/src/render/drawRoadRibbons.ts", "/src/render/drawGroundBoundaries.ts", "/src/render/boundaryAssets.ts",
-  "/src/world/boundary/",
+  "/src/world/boundary/", "/src/render/walkerRoadAlignment.ts", "/src/render/roadRibbonStyle.ts",
 ] as const;
 
 const opsHash = (ops: readonly string[]): string => createHash("sha256").update(ops.join("\n")).digest("hex");

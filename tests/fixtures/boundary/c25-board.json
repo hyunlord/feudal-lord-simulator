@@ -1,0 +1,31 @@
+{
+  "board": {
+    "fixture": "seed 2 final",
+    "centre": [
+      44,
+      38
+    ],
+    "zooms": [
+      0.6,
+      1,
+      1.35
+    ],
+    "dprs": [
+      1,
+      2
+    ],
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    }
+  },
+  "note": "Node call-stream hashes; regenerate with npx tsx scripts/c25Board.ts --write",
+  "hashes": {
+    "z0.60-dpr1": "3323a55dfd0df68630350b21fde34d0806f10114cda1804d0d5db44f4a3a93f7",
+    "z0.60-dpr2": "8ed6da5bb30499e1e03bcb1cb03e620f31215fa5d3498a5cedb577c3e00262ed",
+    "z1.00-dpr1": "8df648a8afb80a545e5282c58e2e54919475363d4f1f2223bf178ca2cb130321",
+    "z1.00-dpr2": "20d4473aa9469b7fc26ffb56a3cf096ce22debf14413574f54b0fac0765c2bf6",
+    "z1.35-dpr1": "4aa8eff943a43ece22c3789c9d198ef2db4915f7bb633f5cbf6b1ff91307b37d",
+    "z1.35-dpr2": "a647710c0331620b19569a3692e2bc24f160191ca61978ba185f05cf2f26b925"
+  }
+}
