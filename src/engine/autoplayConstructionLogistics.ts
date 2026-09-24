@@ -7,6 +7,8 @@ import { canPlaceRoad, findExistingRoadPath } from '../world/roadGraph';
 import type { WallGrid } from '../world/wallTraversal';
 import type { TileCoordinate } from '../world/grid';
 import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles, resolveBuildingToConstructionSiteRoute } from './routing';
+import { carterPathTravelCost } from '../agents/carterTravelCost';
+import { getTile } from '../world/grid';
 import { roadPrefixAction } from './autoplayRoadPrefix';
 import { serviceSafeRoadAction } from './autoplayServiceSpace';
 import type { GameState } from './engine.types';
@@ -62,7 +64,8 @@ export function constructionLogisticsAction(state: GameState): AutoplayAction {
         const current = resolveBuildingToConstructionSiteRoute(state, source, site).path;
         if (current === null || current.length === 0) continue;
         const candidate = shortestCorridor(layoutFor(state), buildingRoadAccessTiles(state, source), constructionSiteRoadAccessTiles(state, site));
-        if (candidate === null || candidate.length >= current.length) continue;
+        const currentCost = carterPathTravelCost(current, tile => getTile(state, tile)?.hasRoad === true);
+        if (candidate === null || candidate.length - 1 >= currentCost) continue;
         const action = serviceSafeRoadAction(state, roadPrefixAction(state, candidate));
         if (action.kind === 'place_road') return action;
       }
