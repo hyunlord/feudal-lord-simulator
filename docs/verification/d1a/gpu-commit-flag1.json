@@ -1,0 +1,137 @@
+{
+  "url": "http://127.0.0.1:4195/",
+  "viewport": {
+    "width": 1280,
+    "height": 800,
+    "dpr": 1
+  },
+  "measuredAt": "2026-09-24T13:29:30.582Z",
+  "rows": [
+    {
+      "mode": "headless-gpu",
+      "scene": "lots24-town",
+      "query": "&render-boundary-v2=1",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 16.700000000000273,
+      "frameWorkMedian": 3.399999976158142,
+      "windowMs": 3000,
+      "commitMs": 138,
+      "functionCallMs": 1406,
+      "animationFrameMs": 890,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 1617
+    },
+    {
+      "mode": "headless-gpu",
+      "scene": "pop176-village",
+      "query": "&render-boundary-v2=1",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 33.400000000000546,
+      "frameWorkMedian": 2.700000047683716,
+      "windowMs": 3000,
+      "commitMs": 137,
+      "functionCallMs": 1110,
+      "animationFrameMs": 636,
+      "paintMs": 7,
+      "layoutMs": 12,
+      "runTaskMs": 1358
+    },
+    {
+      "mode": "headless-gpu",
+      "scene": "newgame-village",
+      "query": "&render-boundary-v2=1",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 16.699999999999818,
+      "rafP95Ms": 16.800000000000182,
+      "frameWorkMedian": 2.600000023841858,
+      "windowMs": 3000,
+      "commitMs": 131,
+      "functionCallMs": 1656,
+      "animationFrameMs": 1254,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 1882
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "lots24-town",
+      "query": "&render-boundary-v2=1",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 8.300000000000182,
+      "rafP95Ms": 16,
+      "frameWorkMedian": 3.100000023841858,
+      "windowMs": 3000,
+      "commitMs": 267,
+      "functionCallMs": 1985,
+      "animationFrameMs": 1461,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 2378
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "pop176-village",
+      "query": "&render-boundary-v2=1",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 8.300000000000182,
+      "rafP95Ms": 9.300000000000182,
+      "frameWorkMedian": 2.4000000953674316,
+      "windowMs": 3000,
+      "commitMs": 242,
+      "functionCallMs": 1553,
+      "animationFrameMs": 991,
+      "paintMs": 7,
+      "layoutMs": 10,
+      "runTaskMs": 1914
+    },
+    {
+      "mode": "headed-gpu",
+      "scene": "newgame-village",
+      "query": "&render-boundary-v2=1",
+      "gpu": {
+        "canvas": "Hardware accelerated",
+        "rasterization": "Hardware accelerated",
+        "compositing": "Hardware accelerated",
+        "glRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Version 26.4.1 (Build 25E253))"
+      },
+      "rafMedianMs": 8.300000000000182,
+      "rafP95Ms": 16.09999999999991,
+      "frameWorkMedian": 2.5,
+      "windowMs": 3000,
+      "commitMs": 243,
+      "functionCallMs": 2037,
+      "animationFrameMs": 1640,
+      "paintMs": 6,
+      "layoutMs": 9,
+      "runTaskMs": 2402
+    }
+  ]
+}

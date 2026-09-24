@@ -13,15 +13,15 @@
     },
     {
       "file": "fixed12-z1.0-on.jpg",
-      "bytes": 166151,
+      "bytes": 161325,
       "chunks": {
-        "hits": 7128,
+        "hits": 7084,
         "prefetched": 13,
         "contentRasters": 88,
         "zoomRasters": 0,
         "deferredZoom": 0,
         "evictions": 0,
-        "rasterMs": 65.49999952316284,
+        "rasterMs": 53.49999916553497,
         "entries": 57,
         "pixels": 7647120,
         "lastFrameRasters": 0,
@@ -29,7 +29,7 @@
       },
       "scene": {
         "builds": 1,
-        "lastBuildMs": 9.699999928474426
+        "lastBuildMs": 9.100000023841858
       }
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "file": "fixed12-z0.6-on.jpg",
-      "bytes": 159582,
+      "bytes": 156654,
       "chunks": {
         "hits": 10660,
         "prefetched": 8,
@@ -51,7 +51,7 @@
         "zoomRasters": 0,
         "deferredZoom": 0,
         "evictions": 0,
-        "rasterMs": 79.30000007152557,
+        "rasterMs": 62.799999475479126,
         "entries": 73,
         "pixels": 3598608,
         "lastFrameRasters": 0,
@@ -59,7 +59,7 @@
       },
       "scene": {
         "builds": 1,
-        "lastBuildMs": 8.399999976158142
+        "lastBuildMs": 9
       }
     },
     {
@@ -73,15 +73,15 @@
     },
     {
       "file": "seed2-town-z1.0-on.jpg",
-      "bytes": 314705,
+      "bytes": 313815,
       "chunks": {
-        "hits": 11480,
+        "hits": 11410,
         "prefetched": 8,
         "contentRasters": 140,
         "zoomRasters": 0,
         "deferredZoom": 0,
         "evictions": 0,
-        "rasterMs": 77.90000033378601,
+        "rasterMs": 59.19999945163727,
         "entries": 78,
         "pixels": 10464480,
         "lastFrameRasters": 0,
@@ -89,7 +89,7 @@
       },
       "scene": {
         "builds": 1,
-        "lastBuildMs": 13.600000023841858
+        "lastBuildMs": 13.699999928474426
       }
     },
     {
@@ -103,7 +103,7 @@
     },
     {
       "file": "seed2-town-z0.6-on.jpg",
-      "bytes": 205653,
+      "bytes": 203901,
       "chunks": {
         "hits": 14276,
         "prefetched": 0,
@@ -111,7 +111,7 @@
         "zoomRasters": 0,
         "deferredZoom": 0,
         "evictions": 0,
-        "rasterMs": 86.10000014305115,
+        "rasterMs": 65.40000009536743,
         "entries": 86,
         "pixels": 4239456,
         "lastFrameRasters": 0,
@@ -119,7 +119,7 @@
       },
       "scene": {
         "builds": 1,
-        "lastBuildMs": 14.700000047683716
+        "lastBuildMs": 13.899999976158142
       }
     }
   ]

@@ -1,6 +1,6 @@
 // Captures paused, fixed-camera canvas frames of repository fixtures, or compares two capture folders pixel by pixel.
 // Used to show that a render-only change leaves the picture as it was.
-//   capture: PLAYWRIGHT_MODULE=... node scripts/renderPixelCompare.mjs capture <outDir> [--url http://127.0.0.1:4194/]
+//   capture: PLAYWRIGHT_MODULE=... node scripts/renderPixelCompare.mjs capture <outDir> [--url http://127.0.0.1:4194/] [--gpu off] [--query '&x=1']
 //   compare: PLAYWRIGHT_MODULE=... node scripts/renderPixelCompare.mjs compare <beforeDir> <afterDir> [--out result.json]
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -12,6 +12,9 @@ const SHOTS = [
   { name: 'pop176-village', city: 'pop176', tile: [46, 39] },
   { name: 'newgame-village', city: 'newgame', tile: [45, 41] },
   { name: 'lots24-town', city: 'lots24', tile: [45, 37] },
+  // Curved-ground scenes (D1a gate 5: with the flag off the picture is unchanged).
+  { name: 'fixed12', city: 'fixed12', tile: [42, 56] },
+  { name: 'seed2-town', city: 'seed2', tile: [47, 32] },
 ];
 
 async function capture(outDir) {
@@ -21,7 +24,7 @@ async function capture(outDir) {
   const browser = await chromium.launch({ channel: 'chrome', headless: true, args: flags.gpu === 'off' ? ['--disable-gpu'] : [] });
   for (const dpr of [1, 2]) for (const shot of SHOTS) {
     // The simulation never starts, so every capture draws the fixture's own tick.
-    const { context, page } = await openScene(browser, { state: states[shot.city], tile: shot.tile, baseUrl: flags.url ?? 'http://127.0.0.1:4194/', dpr, run: false });
+    const { context, page } = await openScene(browser, { state: states[shot.city], tile: shot.tile, baseUrl: flags.url ?? 'http://127.0.0.1:4194/', dpr, run: false, query: flags.query ?? '' });
     await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__.diagnosis().assets.every(asset => asset.status !== 'loading' && asset.status !== 'idle'), null, { timeout: 60_000 });
     await page.waitForTimeout(1_000);
     // The canvas bitmap itself (no DOM chrome), after two more frames of the paused state.
