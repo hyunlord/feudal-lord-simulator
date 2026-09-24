@@ -34,10 +34,9 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
   if (strandedFoodSupply(state) !== null) return { kind: null, reason: 'food_route_blocked' };
   const missedMeals = sample.consumedBread < sample.requestedBread;
   const breadDeficit = sample.requestedBread + sample.breadExported - sample.breadProduced;
-  const constrainedMargin = missedMeals || sample.rawStarvedTicks > 0;
-  const wheatMarginDeficit = constrainedMargin && sample.wheatConsumed > 0
+  const wheatMarginDeficit = sample.wheatConsumed > 0
     && sample.wheatProduced < sample.wheatConsumed * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR;
-  const breadMarginDeficit = constrainedMargin && sample.requestedBread > 0
+  const breadMarginDeficit = sample.requestedBread > 0
     && sample.breadProduced < sample.requestedBread * BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR;
   // Household bread cannot be redistributed to homes whose meals were missed.
   const stockedBread = facilities.reduce((sum, b) => sum + availableStock(b, 'bread'), 0)

@@ -88,7 +88,7 @@ for (const blocked of ['repeat', 'staff'] as const) test(`Given ${blocked} block
 });
 test('Given adequate measured food When recorded Then subordinate reasons stay not captured', () => {
   const collector: FoodDiagnosticCollector = {};
-  foodAction(observedFoodTown(1000, 1000), foodBuildRequest, collector);
+  foodAction(observedFoodTown(2400, 1000), foodBuildRequest, collector);
   assert.equal(collector.food?.reason, 'food_supply_sufficient');
   assert.equal(collector.food?.details, 'not_captured');
 });

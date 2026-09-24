@@ -62,6 +62,21 @@ test('E1 Given seed2-like blade-edge wheat output When measured Then the food ad
   assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
 });
 
+test('E1 margin acts before a missed meal or an observed raw-starved tick', () => {
+  const state = observeFoodMargin({
+    wheatProduced: 1200,
+    wheatConsumed: 1200,
+    breadProduced: 630,
+    requestedBread: 600,
+    consumedBread: 600,
+    wheatExported: 0,
+    breadExported: 0,
+    rawStarvedTicks: 0,
+    eligibleMillTicks: FOOD_EFFICIENCY_WINDOW,
+  });
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+});
+
 test('E2 Given twenty percent production margin When measured Then the food advisor does not expand', () => {
   const state = observeFoodMargin({
     wheatProduced: 1440,
