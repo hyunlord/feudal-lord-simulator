@@ -1,0 +1,11 @@
+import { allocateBuildingAndConstructionLabour } from "../../src/population/labour";
+import type { Building } from "../../src/content/buildingConfig";
+import { createConstructionSite } from "../../src/economy/construction";
+const b = (id: string, kind: Building["kind"]): Building => ({ id, kind, tx: 0, ty: 0, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 });
+const houseSite = createConstructionSite({ ordinal: 9, kind: "house", tx: 0, ty: 0, startedTick: 0 });
+const base = [b("f1", "wheat_farm"), b("m1", "mill"), b("g1", "granary"), b("log", "logging_camp"), b("saw", "sawmill")];
+const r1 = allocateBuildingAndConstructionLabour(base, [houseSite], 32, { era: "hamlet", tick: 1, eraProclaimedTick: null });
+console.log("before extra farms pop32:", JSON.stringify({ w: Object.fromEntries(r1.buildings.map(x => [x.id, x.workers])), house: [r1.constructionSites[0]!.assignedBuilders, r1.constructionSites[0]!.stall], idle: r1.idleWorkers }));
+const more = [...base, b("f2", "wheat_farm"), b("f3", "wheat_farm")];
+const r2 = allocateBuildingAndConstructionLabour(more, [houseSite], 32, { era: "hamlet", tick: 1, eraProclaimedTick: null });
+console.log("after 2 extra farms pop32:", JSON.stringify({ w: Object.fromEntries(r2.buildings.map(x => [x.id, x.workers])), house: [r2.constructionSites[0]!.assignedBuilders, r2.constructionSites[0]!.stall], idle: r2.idleWorkers }));
