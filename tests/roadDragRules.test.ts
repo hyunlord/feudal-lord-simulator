@@ -6,6 +6,7 @@ import { resolveRoadPlacementAttempt } from '../src/render/roadInteractionAttemp
 import { roadPlacementPrediction } from '../src/ui/placementPrediction';
 import { PlacementFailure } from '../src/world/placement';
 import { canTraverseWallBoundary } from '../src/world/wallTraversal';
+import { bridgeAt } from '../src/world/bridges';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 
 const line = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, offset) => ({ tx: from + offset, ty: 2 }));
@@ -73,6 +74,37 @@ test('crossing an existing bridge charges only newly placed water tiles', () => 
   assert.equal(extended.treasuryTimber, 28);
   assert.deepEqual(roadPlacementAssessment(initial, line(0, 6)).newTiles,
     [{ tx: 0, ty: 2 }, { tx: 6, ty: 2 }]);
+});
+
+test('a drag crosses two finished bridges while adding only the intervening grass roads', () => {
+  const state = { ...DEFAULT_GAME_STATE, width: 12, height: 5, treasuryTimber: 40,
+    buildings: [], constructionSites: [], palisade: null,
+    tiles: Array.from({ length: 60 }, (_, index) => {
+      const tx = index % 12, ty = Math.floor(index / 12);
+      return { tx, ty, terrain: ty === 2 && [2, 3, 7, 8].includes(tx) ? 'water' as const : 'grass' as const,
+        hasRoad: ty === 2 && [1, 2, 3, 4, 6, 7, 8, 9].includes(tx), buildingId: null };
+    }),
+  };
+  assert.ok(bridgeAt(state, { tx: 2, ty: 2 }) !== null);
+  assert.ok(bridgeAt(state, { tx: 7, ty: 2 }) !== null);
+  const path = Array.from({ length: 11 }, (_, tx) => ({ tx, ty: 2 }));
+  assert.equal(roadPlacementAssessment(state, path).failure, null);
+  const placed = placeRoadLine(state, path[0]!, path.at(-1)!);
+  assert.notEqual(placed, state);
+  assert.equal(placed.treasuryTimber, state.treasuryTimber);
+  assert.deepEqual(roadPlacementAssessment(state, path).newTiles, [0, 5, 10].map(tx => ({ tx, ty: 2 })));
+});
+
+test('a new grass bank can complete a pre-existing water road during the same drag', () => {
+  const base = grid([2, 3, 4]);
+  const state = { ...base, tiles: base.tiles.map(tile => tile.ty === 2 && [2, 3].includes(tile.tx)
+    ? { ...tile, terrain: 'water' as const } : tile) };
+  assert.equal(bridgeAt(state, { tx: 2, ty: 2 }), null);
+  const path = line(0, 5);
+  assert.equal(roadPlacementAssessment(state, path).failure, null);
+  const placed = placeRoadLine(state, path[0]!, path.at(-1)!);
+  assert.ok(bridgeAt(placed, { tx: 2, ty: 2 }) !== null);
+  assert.equal(placed.treasuryTimber, state.treasuryTimber);
 });
 
 test('a road drag across a completed palisade keeps pre-F2 placement behavior without opening a new gate', () => {
