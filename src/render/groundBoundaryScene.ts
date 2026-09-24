@@ -7,6 +7,8 @@ import { fieldClusters, forestBoundary, type FieldCluster, type ForestBoundary }
 import { roadTopologySignature } from "../world/roadTopologySignature";
 import type { Tile } from "../world/world.types";
 import { roadRibbonWidth, roadStripSignature } from "./roadRibbonStyle";
+import { buildZoneLayer, zoneSignature, type ZoneLayer } from "./zoneLayer";
+import { zonesOf } from "../zones/zoneEdits";
 
 // Everything the V2 ground pass draws, derived once per ground change and split into 8x8-tile chunks.
 //
@@ -14,7 +16,9 @@ import { roadRibbonWidth, roadStripSignature } from "./roadRibbonStyle";
 // (a) Scene key: `tiles` identity (every road, terrain or building-footprint change replaces the tiles array),
 //     the palisade signature (completed wall edges + gates + polygon, which decide road links and stone paving),
 //     the seed, the wheat-farm footprint list (farm clusters), and the road ribbon width + strip set (D1a-2: the
-//     ribbon layout's shoulder tufts and caps are placed from the width; the strip set is only in the road chunk key).
+//     ribbon layout's shoulder tufts and caps are placed from the width; the strip set is only in the road chunk key),
+//     and the zone signature (C1b: id, kind and membership of every zone; plots follow roads and buildings, which
+//     replace the tiles array).
 // (b) Left out on purpose: walkers, stocks, ticks, crop growth, house levels, construction progress. None of them is
 //     read by road chains, forest or field outlines (crop state only changes what is drawn inside a field, which
 //     stays in the live object pass), so they cannot change a scene.
@@ -35,6 +39,7 @@ export type GroundBoundaryScene = {
   readonly rows: number;
   readonly roads: RoadCenterlineGraph;
   readonly ribbons: RoadRibbonLayout;
+  readonly zones: ZoneLayer;
   readonly forest: ForestBoundary;
   readonly fields: readonly FieldCluster[];
   readonly chunks: readonly GroundChunkPlan[];
@@ -48,6 +53,9 @@ export type GroundChunkPlan = {
   /** Odd number of forest loops that enclose the chunk without touching it: its background is forest. */
   readonly forestParity: boolean;
   readonly fieldClusters: readonly number[];
+  /** Zones whose rings reach the chunk, and zone outline chains that do. */
+  readonly zoneIndexes: readonly number[];
+  readonly zoneChains: readonly number[];
   readonly chains: readonly number[];
   readonly fixedPoints: readonly number[];
   readonly plazas: readonly number[];
@@ -57,7 +65,7 @@ export type GroundChunkPlan = {
 };
 
 type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; readonly seed: number; readonly farms: string;
-  readonly reversed: boolean; readonly width: number; readonly strips: string };
+  readonly reversed: boolean; readonly width: number; readonly strips: string; readonly zones: string };
 let last: { readonly key: SceneKey; readonly scene: GroundBoundaryScene } | null = null;
 let reverseInputForProof = false;
 
@@ -74,10 +82,11 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
     reversed: reverseInputForProof,
     width: roadRibbonWidth(),
     strips: roadStripSignature(),
+    zones: zoneSignature(zonesOf(state)),
   };
   if (last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
     && last.key.farms === key.farms && last.key.reversed === key.reversed && last.key.width === key.width
-    && last.key.strips === key.strips) return last.scene;
+    && last.key.strips === key.strips && last.key.zones === key.zones) return last.scene;
   const scene = buildGroundBoundaryScene(state, reverseInputForProof);
   last = { key, scene };
   sceneBuilds += 1;
@@ -105,6 +114,10 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
   for (const tile of tiles) cells[tile.ty * state.width + tile.tx] = tile;
   const ribbons = roadRibbonLayout({ graph: roads, width: roadRibbonWidth(), mapWidth: state.width, mapHeight: state.height, cells, seed: state.seed });
   const strips = hashNumbers([...roadStripSignature()].map(character => character.charCodeAt(0)));
+  const zones = buildZoneLayer(state, cells);
+  const zoneBounds = zones.zones.map(zone => ({ left: zone.bounds.left - PRIMITIVE_MARGIN, top: zone.bounds.top - PRIMITIVE_MARGIN,
+    right: zone.bounds.right + PRIMITIVE_MARGIN, bottom: zone.bounds.bottom + PRIMITIVE_MARGIN }));
+  const zoneChainBounds = zones.outlines.chains.map(chain => chain.bounds);
 
   const forestBounds = forest.loops.map((loop, index) => boundsOf([...loop.smoothed, ...(forest.decals[index] ?? []).map(decal => decal.anchor)], PRIMITIVE_MARGIN));
   const fieldBounds = fields.map(field => boundsOf([...field.loops.flatMap(loop => loop.smoothed), ...field.decals.map(decal => decal.anchor)], PRIMITIVE_MARGIN));
@@ -129,6 +142,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
     const chains = hits(chainBounds);
     const fixedPoints = hits(fixedBounds);
     const plazas = hits(plazaBounds);
+    const zoneIndexes = hits(zoneBounds);
+    const zoneChains = hits(zoneChainBounds);
     const tileValues: number[] = [];
     for (let ty = cy * GROUND_CHUNK_TILES - TILE_RING; ty < (cy + 1) * GROUND_CHUNK_TILES + TILE_RING; ty += 1) {
       for (let tx = cx * GROUND_CHUNK_TILES - TILE_RING; tx < (cx + 1) * GROUND_CHUNK_TILES + TILE_RING; tx += 1) {
@@ -140,6 +155,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
       state.seed, enclosing % 2, ...tileValues,
       ...forestLoops.flatMap(index => [forest.loops[index]?.hash ?? 0, forestDecalHashes[index] ?? 0]),
       ...fieldIndexes.flatMap(index => [fields[index]?.hash ?? 0, fieldDecalHashes[index] ?? 0]),
+      // Zones only enter the key where they are drawn, so a zone-free chunk keeps its D1a key and picture.
+      ...(zoneIndexes.length + zoneChains.length === 0 ? [] : [zones.signature, ...zoneIndexes, ...zoneChains.map(index => -1 - index)]),
     ]);
     const roadKey = hashNumbers([
       strips, ribbons.width,
@@ -153,12 +170,12 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false)
       ...plazas.flatMap(index => [roads.plazaLoops[index]?.hash ?? 0, roads.plazaLoops[index]?.material === "stone" ? 1 : 0]),
     ]);
     chunks.push({
-      cx, cy, forestLoops, forestParity: enclosing % 2 === 1, fieldClusters: fieldIndexes, chains, fixedPoints, plazas,
+      cx, cy, forestLoops, forestParity: enclosing % 2 === 1, fieldClusters: fieldIndexes, zoneIndexes, zoneChains, chains, fixedPoints, plazas,
       groundKey, roadKey, hasRoads: chains.length + fixedPoints.length + plazas.length > 0,
     });
   }
   const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
-  return { width: state.width, height: state.height, columns, rows, roads, ribbons, forest, fields, chunks, buildMs };
+  return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, forest, fields, chunks, buildMs };
 }
 
 /** Tile-centre bounds of a chunk's own tiles (their squares). */

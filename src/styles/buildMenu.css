@@ -32,3 +32,9 @@
 .build-menu-instruction { font-size: var(--font-meta); line-height: 18px; white-space: nowrap; overflow-x: auto; }
 .build-menu-empty { margin: 8px; min-width: 200px; font-size: var(--font-meta); line-height: 1.5; }
 @media (max-width: 700px) { .build-menu-category { flex: 1; min-width: 44px; padding: 4px 8px; } .build-menu-summary { gap: 8px; } }
+/* Zone brush (C1b): cards reuse .build-tool; radius and polygon controls are 44px touch targets. */
+.zone-tool .build-tool-art img { object-fit: cover; border-radius: 4px; }
+.zone-tool-glyph { display: inline-block; font-size: 30px; line-height: 64px; color: var(--palette-parchment); }
+.zone-radius { display: inline-flex; gap: 4px; }
+.zone-radius-button, .zone-polygon-toggle { min-width: 44px; min-height: 44px; padding: 0 8px; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-earth); cursor: pointer; font: var(--font-body)/20px var(--ui-body-font); }
+.zone-radius-button[aria-pressed="true"], .zone-polygon-toggle[aria-pressed="true"] { outline: 2px solid var(--palette-gold, currentColor); outline-offset: -2px; font-weight: 700; }

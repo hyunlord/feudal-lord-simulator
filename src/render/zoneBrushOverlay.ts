@@ -1,0 +1,101 @@
+import { PALETTE, RAMPS } from "../content/palette";
+import type { GameState } from "../engine/engine.types";
+import type { PredictionLine } from "../ui/predictionTypes";
+import { zonePaintLines } from "../ui/zonePrediction";
+import { cellInsideWall, zonePaintAssessment } from "../zones/zoneEdits";
+import { normalizeZoneStroke, rasterizeZoneStroke } from "../zones/zoneRaster";
+import type { ZoneStrokePoint } from "../zones/zone.types";
+import { tileToScreen } from "./iso";
+import { applyPaletteStroke, withAlpha } from "./style";
+import { gestureStroke, type ZoneBrushGesture, type ZoneBrushTool } from "./zoneBrushInteraction";
+import { ZONE_STYLES } from "./drawZones";
+
+// Live preview while a zone tool is armed (C1b): the cells the gesture would take, tinted by kind; for a refused
+// arable stroke the cells inside the wall in red and the rest pale; for the eraser the owned cells it would clear.
+// Plus the brush ring under the cursor and the open polygon. Drawn every frame outside the chunk cache.
+//
+// Cache (AGENTS rule 10): the last assessment, keyed by the state's zones and palisade objects, the tool, the
+// gesture object (replaced on every accepted point) and the hover point rounded to 1/8 tile. Rasterising a long
+// stroke costs ~0.1-0.5 ms, so it runs once per change, not once per frame.
+
+export type ZoneBrushView = {
+  readonly tool: ZoneBrushTool;
+  readonly gesture: ZoneBrushGesture | null;
+  /** Pointer position in tile-edge space. */
+  readonly hover: ZoneStrokePoint | null;
+};
+
+type Preview = { readonly cells: readonly number[]; readonly refused: ReadonlySet<number>; readonly lines: readonly PredictionLine[] };
+let last: { readonly key: readonly unknown[]; readonly preview: Preview } | null = null;
+
+export function zoneBrushPreview(state: GameState, view: ZoneBrushView): Preview {
+  const hoverKey = view.hover === null ? null : `${Math.round(view.hover.x * 8)},${Math.round(view.hover.y * 8)}`;
+  const key = [state.zones, state.palisade, state.width, view.tool.target, view.tool.radius, view.tool.polygon, view.gesture, hoverKey];
+  if (last !== null && last.key.length === key.length && last.key.every((value, index) => value === key[index])) return last.preview;
+  const stroke = gestureStroke(view.tool, view.gesture, view.hover);
+  let preview: Preview = { cells: [], refused: new Set(), lines: [] };
+  if (stroke !== null) {
+    if (view.tool.target === "erase") {
+      const normalized = normalizeZoneStroke(stroke);
+      const owned = new Set((state.zones ?? []).flatMap(zone => zone.membership));
+      preview = { cells: normalized === null ? [] : rasterizeZoneStroke(normalized, state).filter(cell => owned.has(cell)), refused: new Set(), lines: [] };
+    } else {
+      const assessment = zonePaintAssessment(state, view.tool.target, stroke);
+      const refused = !assessment.ok && assessment.reason === "arable_inside_wall"
+        ? new Set(assessment.cells.filter(cell => cellInsideWall(state, cell))) : new Set<number>();
+      preview = { cells: assessment.cells, refused, lines: zonePaintLines(state, view.tool.target, stroke) };
+    }
+  }
+  last = { key, preview };
+  return preview;
+}
+
+export function drawZoneBrushOverlay(context: CanvasRenderingContext2D, state: GameState, view: ZoneBrushView, zoom: number): void {
+  const preview = zoneBrushPreview(state, view);
+  const tint = view.tool.target === "erase" ? PALETTE.ink : ZONE_STYLES[view.tool.target].line;
+  const anyRefused = preview.refused.size > 0;
+  for (const cell of preview.cells) {
+    const refused = preview.refused.has(cell);
+    context.fillStyle = refused ? withAlpha(PALETTE.vermilion, 0.5) : withAlpha(tint, anyRefused ? 0.12 : view.gesture === null ? 0.16 : 0.3);
+    traceDiamond(context, cell % state.width, Math.floor(cell / state.width));
+    context.fill();
+  }
+  if (view.hover !== null && !view.tool.polygon && view.gesture?.mode !== "polygon") {
+    // Brush ring: a tile-space circle of the brush radius around the pointer.
+    applyPaletteStroke(context, anyRefused ? PALETTE.vermilion : RAMPS.plaster[5], zoom);
+    context.lineWidth = 1.5 / zoom;
+    context.beginPath();
+    for (let step = 0; step <= 32; step += 1) {
+      const angle = step * Math.PI / 16;
+      const screen = tileToScreen(view.hover.x - 0.5 + Math.cos(angle) * view.tool.radius, view.hover.y - 0.5 + Math.sin(angle) * view.tool.radius);
+      if (step === 0) context.moveTo(screen.sx, screen.sy); else context.lineTo(screen.sx, screen.sy);
+    }
+    context.stroke();
+  }
+  if (view.gesture?.mode === "polygon") {
+    const points = view.hover === null ? view.gesture.points : [...view.gesture.points, view.hover];
+    applyPaletteStroke(context, anyRefused ? PALETTE.vermilion : RAMPS.plaster[5], zoom);
+    context.lineWidth = 1.5 / zoom;
+    context.beginPath();
+    points.forEach((point, index) => {
+      const screen = tileToScreen(point.x - 0.5, point.y - 0.5);
+      if (index === 0) context.moveTo(screen.sx, screen.sy); else context.lineTo(screen.sx, screen.sy);
+    });
+    context.stroke();
+    context.fillStyle = withAlpha(RAMPS.plaster[5], 0.9);
+    for (const point of view.gesture.points) {
+      const screen = tileToScreen(point.x - 0.5, point.y - 0.5);
+      context.beginPath();
+      context.arc(screen.sx, screen.sy, 3 / zoom, 0, Math.PI * 2);
+      context.fill();
+    }
+  }
+}
+
+function traceDiamond(context: CanvasRenderingContext2D, tx: number, ty: number): void {
+  const top = tileToScreen(tx - 0.5, ty - 0.5); const right = tileToScreen(tx + 0.5, ty - 0.5);
+  const bottom = tileToScreen(tx + 0.5, ty + 0.5); const left = tileToScreen(tx - 0.5, ty + 0.5);
+  context.beginPath();
+  context.moveTo(top.sx, top.sy); context.lineTo(right.sx, right.sy); context.lineTo(bottom.sx, bottom.sy); context.lineTo(left.sx, left.sy);
+  context.closePath();
+}

@@ -20,6 +20,7 @@ import { canProclaimPalisadeEra } from "./engine/era";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
 import { applyPalisadeIntent, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
+import type { ZoneBrushTool } from "./render/zoneBrushInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
 import { useSaveSystemContext } from "./state/saveSystem";
@@ -91,6 +92,7 @@ export function App() {
   const saveSystem = useSaveSystemContext();
   const welcomeVisible = welcomeOpen || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
+  const [zoneTool, setZoneTool] = useState<ZoneBrushTool | null>(null);
   const palisadeDraftRef = useRef(palisadeDraft);
   const gameStateRef = useRef(state);
   palisadeDraftRef.current = palisadeDraft;
@@ -174,6 +176,7 @@ export function App() {
         event.preventDefault();
         setPalisadeDraft(null);
         setSelectedTool(null);
+        setZoneTool(null);
         return;
       }
       if (event.code === "KeyO") {
@@ -206,6 +209,7 @@ export function App() {
   const beginPalisadeDraw = () => {
     if (!canProclaimPalisadeEra(state)) return;
     setSelectedTool(null);
+    setZoneTool(null);
     setPalisadeDraft(initialOpenPalisadeDraft());
   };
   const beginPalisadeProposal = () => {
@@ -292,6 +296,8 @@ export function App() {
           palisadeCeremonyStartedAtMs={visibleCeremony?.startedAtMs ?? null}
           onPalisadeDraftChange={setPalisadeDraft}
           onPalisadeDraftCancel={cancelPalisadeDraft}
+          zoneTool={zoneTool}
+          onZoneRadiusChange={radius => setZoneTool(current => current === null ? current : { ...current, radius })}
         />
         <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
         <EraCeremonyBanner
@@ -326,7 +332,9 @@ export function App() {
               selectedTool={selectedTool}
               state={state}
               highlightedTools={highlightedTools}
-              onSelect={tool => { setPalisadeDraft(null); setSelectedTool(tool); }}
+              onSelect={tool => { setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) setZoneTool(null); }}
+              zoneTool={zoneTool}
+              onZoneToolChange={tool => { setPalisadeDraft(null); setSelectedTool(null); setZoneTool(tool); }}
               palisadeDrawing={palisadeDraft?.mode === 'draw'}
               onStartPalisadeDrawing={beginPalisadeDraw}
             />

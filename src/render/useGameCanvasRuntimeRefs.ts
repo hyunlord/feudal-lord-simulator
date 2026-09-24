@@ -13,6 +13,7 @@ export function useGameCanvasRuntimeRefs(input: {
   readonly palisadeDraft: NonNullable<GameCanvasRuntimeInput["palisadeDraft"]> | null;
   readonly houseMaterialWave: NonNullable<GameCanvasRuntimeInput["houseMaterialWave"]> | null;
   readonly palisadeCeremonyStartedAtMs: NonNullable<GameCanvasRuntimeInput["palisadeCeremonyStartedAtMs"]> | null;
+  readonly zoneTool?: GameCanvasRuntimeInput["zoneTool"];
 }) {
   const stateRef = useRef(input.state);
   const previousRenderStateRef = useRef(input.previousRenderState);
@@ -24,6 +25,7 @@ export function useGameCanvasRuntimeRefs(input: {
   const palisadeDraftRef = useRef(input.palisadeDraft);
   const houseMaterialWaveRef = useRef(input.houseMaterialWave);
   const palisadeCeremonyStartedAtMsRef = useRef(input.palisadeCeremonyStartedAtMs);
+  const zoneToolRef = useRef(input.zoneTool ?? null);
 
   useEffect(() => {
     stateRef.current = input.state;
@@ -36,7 +38,9 @@ export function useGameCanvasRuntimeRefs(input: {
     palisadeDraftRef.current = input.palisadeDraft;
     houseMaterialWaveRef.current = input.houseMaterialWave;
     palisadeCeremonyStartedAtMsRef.current = input.palisadeCeremonyStartedAtMs;
+    zoneToolRef.current = input.zoneTool ?? null;
   }, [
+    input.zoneTool,
     input.highlightedHouseIds,
     input.houseMaterialWave,
     input.overlayMode,
@@ -60,5 +64,6 @@ export function useGameCanvasRuntimeRefs(input: {
     palisadeDraftRef,
     houseMaterialWaveRef,
     palisadeCeremonyStartedAtMsRef,
+    zoneToolRef,
   };
 }

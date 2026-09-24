@@ -1,3 +1,4 @@
+import { drawZoneBrushOverlay, type ZoneBrushView } from "./zoneBrushOverlay";
 import { drawPlacementPrediction } from "./placementPredictionOverlay";
 import { drawCauseMap } from "./causeMapOverlay";
 import type { Walker } from "../agents/walker.types";
@@ -73,6 +74,7 @@ export type RenderFrameInput = {
   readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly zoneBrush?: ZoneBrushView | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly completionTracker?: ConstructionCompletionTracker;
@@ -176,6 +178,9 @@ export const renderFrame = (input: RenderFrameInput): void => {
     drawPalisadeDraftOverlay(input.context, input.state, input.palisadeDraft,
       input.camera.zoom, routeAccess?.gates ?? [], routeAccess?.segments ?? [],
       routeAccess === null ? null : nearestWallAnchorCandidate(routeAccess)?.siteId ?? null);
+  }
+  if (input.zoneBrush !== undefined && input.zoneBrush !== null) {
+    drawZoneBrushOverlay(input.context, input.state, input.zoneBrush, input.camera.zoom);
   }
   if (input.palisadeCeremonyStartedAtMs !== undefined && input.palisadeCeremonyStartedAtMs !== null && input.state.palisade !== null) {
     drawPalisadeGateFlourish(input.context, {

@@ -30,6 +30,15 @@ export function preloadTownLandscapeAssets(): Promise<void> {
   return loading;
 }
 
+/** The landscape sprite with its display size and ground anchor (zone orchards reuse the orchard tree, C1b). */
+export function townLandscapeSprite(kind: TownLandscapeKind): { image: CanvasImageSource; source: { x: number; y: number; width: number; height: number };
+  width: number; height: number; displayWidth: number; anchorY: number } | null {
+  const asset = assets.find(candidate => candidate.meta.id === kind);
+  if (asset === undefined || asset.image === null) return null;
+  return { image: asset.raster?.image ?? asset.image, source: asset.raster?.source ?? { x: 0, y: 0, width: asset.image.naturalWidth, height: asset.image.naturalHeight },
+    width: asset.meta.width, height: asset.meta.height, displayWidth: asset.meta.displayWidth, anchorY: asset.meta.groundAnchor.y };
+}
+
 export function townLandscapeAssetReady(kind: TownLandscapeKind): boolean {
   return assets.some(asset => asset.meta.id === kind && asset.image !== null);
 }

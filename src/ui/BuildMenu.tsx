@@ -13,6 +13,18 @@ import { DEFAULT_GAME_STATE } from "../state/gameStore";
 import { BuildGlyph } from "./BuildGlyph";
 import { buildMenuGroups, buildToolAffordability, buildToolTooltipLines, ROAD_TOOL_OPTION, type BuildToolOption } from "./buildMenuModel";
 import { BUILD_CATEGORIES, buildCategory, buildCategorySelection, buildCostLabel, buildThumbnail, type BuildCategory } from "./buildMenuPresentation";
+import { DEFAULT_ZONE_BRUSH_RADIUS, ZONE_BRUSH_RADII, type ZoneBrushTarget, type ZoneBrushTool } from "../render/zoneBrushInteraction";
+import { ZONE_BRUSH_COPY } from "../render/zoneBrushCopy.ko";
+import { ZONE_KIND_LABELS } from "../zones/zoneCopy.ko";
+
+/** Zone cards (C1b): plots, arable, pasture, orchard and the eraser. Hay meadow and woodland come with C1c. */
+const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: string; readonly hint: string; readonly glyph: string; readonly thumbnail: string | null }[] = [
+  { target: "burgage", label: ZONE_KIND_LABELS.burgage, hint: ZONE_BRUSH_COPY.cardHint.burgage, glyph: "⌂", thumbnail: null },
+  { target: "arable", label: ZONE_KIND_LABELS.arable, hint: ZONE_BRUSH_COPY.cardHint.arable, glyph: "≡", thumbnail: null },
+  { target: "pasture", label: ZONE_KIND_LABELS.pasture, hint: ZONE_BRUSH_COPY.cardHint.pasture, glyph: "", thumbnail: "/assets/zones/pasture_a-v1.png" },
+  { target: "orchard", label: ZONE_KIND_LABELS.orchard, hint: ZONE_BRUSH_COPY.cardHint.orchard, glyph: "", thumbnail: "/assets/zones/orchard_floor_a-v1.png" },
+  { target: "erase", label: ZONE_BRUSH_COPY.eraser, hint: ZONE_BRUSH_COPY.eraserHint, glyph: "⌫", thumbnail: null },
+];
 
 type BuildSealsProps = {
   readonly selectedTool: PlacementTool | null;
@@ -21,9 +33,12 @@ type BuildSealsProps = {
   readonly onSelect: (tool: PlacementTool | null) => void;
   readonly palisadeDrawing?: boolean;
   readonly onStartPalisadeDrawing?: () => void;
+  /** Zone brush (C1b): the armed tool, and the setter (null disarms). */
+  readonly zoneTool?: ZoneBrushTool | null;
+  readonly onZoneToolChange?: (tool: ZoneBrushTool | null) => void;
 };
 
-export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect, palisadeDrawing = false, onStartPalisadeDrawing }: BuildSealsProps) {
+export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect, palisadeDrawing = false, onStartPalisadeDrawing, zoneTool = null, onZoneToolChange }: BuildSealsProps) {
   const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
   const options = buildMenuGroups(menuState).flatMap((group) => group.options);
@@ -116,6 +131,20 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
                   {!palisadeReady ? <span className="build-tool-shortfall">{palisadeReason}</span> : null}
                 </button>
               ) : null}
+              {item.key === "zone" && onZoneToolChange !== undefined ? ZONE_CARDS.map(card => {
+                const selected = zoneTool?.target === card.target;
+                return (
+                  <button key={card.target} type="button" className={`build-seal build-tool zone-tool${selected ? " build-tool--selected" : ""}`}
+                    aria-label={card.label} aria-pressed={selected} title={card.hint} data-zone-tool={card.target}
+                    onClick={() => { onZoneToolChange({ target: card.target, radius: zoneTool?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: zoneTool?.polygon ?? false }); setCatalogOpen(false); }}>
+                    <span className="build-tool-art" aria-hidden="true">
+                      {card.thumbnail === null ? <span className="zone-tool-glyph">{card.glyph}</span> : <img src={card.thumbnail} width="80" height="40" alt="" draggable={false} />}
+                    </span>
+                    <span className="build-seal-label" aria-hidden="true">{card.label}</span>
+                    <span className="build-tool-cost">{card.hint}</span>
+                  </button>
+                );
+              }) : null}
               {item.key === "road" && <p className="build-menu-empty">드래그로 길을 연결하세요. 강 양쪽을 직선으로 이으면 목교를 놓습니다.<br />다리는 물 한 칸당 목재 4, 최대 8칸입니다. 다리나 접속 길을 누르면 다리 전체를 걷습니다.</p>}
               {item.key === "defense" && !options.some((option) => buildCategory(option.tool) === "defense") && onStartPalisadeDrawing === undefined && <p className="build-menu-empty">성채는 석조 도시에서 건설할 수 있습니다.</p>}
             </section>
@@ -123,7 +152,17 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         </div>
       </div>
       <div className="build-menu-summary">
-        {palisadeDrawing ? <><strong>{WALL_COPY.drawTool}</strong><span>{WALL_COPY.drawHint}</span></> : <>
+        {zoneTool !== null && onZoneToolChange !== undefined ? <>
+          <strong>{zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraser : ZONE_KIND_LABELS[zoneTool.target]}</strong>
+          <span className="zone-radius" role="group" aria-label={ZONE_BRUSH_COPY.radiusHint}>
+            {ZONE_BRUSH_RADII.map(radius => (
+              <button key={radius} type="button" className="zone-radius-button" aria-pressed={zoneTool.radius === radius}
+                onClick={() => onZoneToolChange({ ...zoneTool, radius })}>{ZONE_BRUSH_COPY.radius(radius)}</button>
+            ))}
+          </span>
+          <button type="button" className="zone-polygon-toggle" aria-pressed={zoneTool.polygon} title={ZONE_BRUSH_COPY.polygonToggleHint}
+            onClick={() => onZoneToolChange({ ...zoneTool, polygon: !zoneTool.polygon })}>{ZONE_BRUSH_COPY.polygonToggle}</button>
+        </> : palisadeDrawing ? <><strong>{WALL_COPY.drawTool}</strong><span>{WALL_COPY.drawHint}</span></> : <>
           <strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span>
           {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}
           {service && <span>수용 {service.capacity}필지</span>}
@@ -137,7 +176,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
         </>}
       </div>
-      <div className="build-menu-instruction">클릭 설치 · Esc/우클릭 취소 · 휠 확대 · O 문제 보기</div>
+      <div className="build-menu-instruction">{zoneTool !== null ? zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraserStatus
+        : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target]) : "클릭 설치 · Esc/우클릭 취소 · 휠 확대 · O 문제 보기"}</div>
     </div>
   );
 }

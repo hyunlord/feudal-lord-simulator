@@ -12,6 +12,7 @@ import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
+import type { ZoneBrushTool } from "./zoneBrushInteraction";
 import { DiagnosticCard, type DiagnosticCardModel } from "./DiagnosticCard";
 import type { AnchoredWorldSelection } from "./worldSelection";
 import { houseDiagnosisModel } from "../ui/houseDiagnosisModel";
@@ -34,6 +35,8 @@ type GameCanvasProps = {
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly onPalisadeDraftChange?: Dispatch<SetStateAction<PalisadeDraftState | null>>;
   readonly onPalisadeDraftCancel?: () => void;
+  readonly zoneTool?: ZoneBrushTool | null;
+  readonly onZoneRadiusChange?: (radius: number) => void;
 };
 
 export function GameCanvas({
@@ -47,6 +50,8 @@ export function GameCanvas({
   palisadeCeremonyStartedAtMs = null,
   onPalisadeDraftChange,
   onPalisadeDraftCancel,
+  zoneTool = null,
+  onZoneRadiusChange,
 }: GameCanvasProps) {
   const { state, previousRenderState, interpolationAlpha, dispatch } = useGameStore();
   const [hoveredBuilding, setHoveredBuilding] = useState<HoveredBuilding | null>(null);
@@ -73,6 +78,8 @@ export function GameCanvas({
     palisadeCeremonyStartedAtMs,
     onPalisadeDraftChange,
     onPalisadeDraftCancel,
+    zoneTool,
+    onZoneRadiusChange,
   });
 
   let cardModel: DiagnosticCardModel | null = null;
@@ -122,11 +129,11 @@ export function GameCanvas({
     <>
       <canvas
         ref={canvasRef}
-        className={selectedTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
+        className={selectedTool === null && zoneTool === null ? "game-canvas" : "game-canvas game-canvas--placement-armed"}
         aria-label={KO_UI.simulationCanvas}
       />
       {prediction === null ? null : <PredictionPanel {...prediction} />}
-      <BuildingInspector state={state} hover={selectedTool === null && selection === null ? hoveredBuilding : null} />
+      <BuildingInspector state={state} hover={selectedTool === null && zoneTool === null && selection === null ? hoveredBuilding : null} />
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard
           model={cardModel}

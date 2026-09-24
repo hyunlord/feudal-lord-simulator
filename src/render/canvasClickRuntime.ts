@@ -25,7 +25,7 @@ export function handleCanvasClick(input: ClickRuntimeInput): void {
   const resolution = resolveCanvasClick({
     suppressClick: refs.suppressClick.current,
     spacePressed: refs.spacePressed.current,
-    dragMode: refs.dragRef.current.mode === "palisade" ? "none" : refs.dragRef.current.mode,
+    dragMode: refs.dragRef.current.mode === "palisade" || refs.dragRef.current.mode === "zone" ? "none" : refs.dragRef.current.mode,
     hover: refs.hoverRef.current,
     selectedTool: selectedToolRef.current,
     state: stateRef.current,

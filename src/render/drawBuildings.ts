@@ -21,6 +21,7 @@ import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
 import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } from "./drawTrees";
 import { drawWalker } from "./drawWalkers";
+import { drawZoneProp } from "./zonePropSprites";
 import type { TileRange, ViewportSize } from "./renderer";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 import { worldSpriteVariantImage } from "./buildingVariantAssets";
@@ -91,6 +92,8 @@ export function drawBuildings(
       });
     } else if (item.kind === "walker") {
       drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal");
+    } else if (item.kind === "zone_prop") {
+      if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop);
     } else if (item.kind === "building") {
       drawBuilding(context, input, item.building, spriteOptions);
     }

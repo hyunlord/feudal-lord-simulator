@@ -12,6 +12,7 @@ import type { AnchoredWorldSelection } from "./worldSelection";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { interpolatedConstructionProgress } from "./constructionInterpolation";
 import { interpolatedWalkerPositions } from "./walkerInterpolation";
+import { zoneBrushPreview } from "./zoneBrushOverlay";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { roadAlignedWalkers } from "./walkerRoadAlignment";
 import { renderStageProbe } from "./renderStageProbe";
@@ -39,6 +40,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   interpolationAlpha: () => number;
   highlightedHouseIds: readonly string[];
   palisadeDraft?: PalisadeDraftState | null;
+  /** Armed zone brush with its gesture and pointer (C1b), or null. */
+  zoneBrush?: import("./zoneBrushOverlay").ZoneBrushView | null;
   houseMaterialWave?: HouseMaterialWave | null;
   palisadeCeremonyStartedAtMs?: number | null;
 }>): void {
@@ -77,12 +80,23 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     }),
     highlightedHouseIds: input.highlightedHouseIds,
     palisadeDraft: input.palisadeDraft ?? null,
+    zoneBrush: input.zoneBrush ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.refs.completionTracker,
   });
   probe?.enter("frame.publish");
-  input.publishPrediction?.(preview, input.refs.cameraRef.current);
+  const zoneBrush = input.zoneBrush ?? null;
+  if (zoneBrush === null) input.publishPrediction?.(preview, input.refs.cameraRef.current);
+  else {
+    // While a zone tool is armed the prediction panel shows the paint lines at the pointer.
+    const lines = zoneBrushPreview(input.state, zoneBrush).lines;
+    const cursor = zoneBrush.hover === null ? null : { tx: Math.floor(zoneBrush.hover.x), ty: Math.floor(zoneBrush.hover.y) };
+    const { prediction: _placementPrediction, ...base } = preview;
+    // The publisher only reads `lines` from the prediction (PredictionPanel shows lines at a position).
+    input.publishPrediction?.(lines.length === 0 ? { ...base, cursor }
+      : { ...base, cursor, prediction: { lines } as unknown as NonNullable<typeof preview.prediction> }, input.refs.cameraRef.current);
+  }
   probe?.frameEnd();
 }
 

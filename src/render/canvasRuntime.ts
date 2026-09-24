@@ -29,7 +29,7 @@ type ScreenBounds = { readonly minX: number; readonly maxX: number; readonly min
 type OpeningSpriteMeta = { readonly width: number; readonly height: number; readonly anchorX: number; readonly anchorY: number };
 
 export type DragState = {
-  readonly mode: "none" | "pan" | "road" | "palisade";
+  readonly mode: "none" | "pan" | "road" | "palisade" | "zone";
   readonly startCanvasPoint: Point | null;
   readonly startCamera: CameraState | null;
   readonly lastCanvasPoint: Point | null;

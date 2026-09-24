@@ -33,6 +33,7 @@ type GameCanvasFrameInput = {
   readonly constructionProgress?: ReadonlyMap<string, number> | undefined;
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
+  readonly zoneBrush?: import("./zoneBrushOverlay").ZoneBrushView | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly completionTracker: ConstructionCompletionTracker;
@@ -72,11 +73,12 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     constructionProgress: input.constructionProgress,
     highlightedHouseIds: input.highlightedHouseIds ?? [],
     palisadeDraft: input.palisadeDraft ?? null,
+    zoneBrush: input.zoneBrush ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.completionTracker,
     hoveredTile: input.hoveredTile,
-    selectionMode: input.selectedTool === null && input.palisadeDraft == null,
+    selectionMode: input.selectedTool === null && input.palisadeDraft == null && input.zoneBrush == null,
   });
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
     probe?.enter("overlay.constructionAccess");

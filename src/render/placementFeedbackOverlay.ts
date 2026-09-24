@@ -1,3 +1,4 @@
+import { ZONE_PLACEMENT_REASON_LABELS } from "../ui/zonePrediction";
 import { PLACEMENT_REASON_LABELS } from "../ui/predictionRegistry";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
@@ -12,7 +13,7 @@ export type PlacementPreviewOverlayInput = {
   readonly footprint: readonly TileCoordinate[];
   readonly roadPath: readonly TileCoordinate[];
   readonly ok: boolean;
-  readonly reason: PlacementFailure | null;
+  readonly reason: PlacementFailure | import("../zones/zonePlacement").ZonePlacementFailure | null;
   readonly cursor: TileCoordinate | null;
   readonly prediction?: import("../ui/predictionTypes").PlacementPrediction;
 };
@@ -73,7 +74,7 @@ export function drawPlacementPreviewOverlay(
     context.stroke();
   }
   if (preview.prediction === undefined && !preview.ok && preview.reason !== null && preview.cursor !== null) {
-    drawFailureText(context, preview.cursor, PLACEMENT_REASON_LABELS[preview.reason], zoom);
+    drawFailureText(context, preview.cursor, placementReasonLabel(preview.reason), zoom);
   }
 }
 
@@ -136,4 +137,11 @@ function drawFailureText(
   context.strokeRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
   context.fillStyle = PALETTE.vermilion;
   context.fillText(label, labelX, labelY);
+}
+
+/** Base failure labels plus the zone rule labels (C1b). */
+function placementReasonLabel(reason: NonNullable<import("./overlays").PlacementPreview["reason"]>): string {
+  return reason in ZONE_PLACEMENT_REASON_LABELS
+    ? ZONE_PLACEMENT_REASON_LABELS[reason as keyof typeof ZONE_PLACEMENT_REASON_LABELS]
+    : PLACEMENT_REASON_LABELS[reason as keyof typeof PLACEMENT_REASON_LABELS];
 }
