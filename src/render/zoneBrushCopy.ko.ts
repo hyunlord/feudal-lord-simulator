@@ -16,7 +16,7 @@ export const ZONE_BRUSH_COPY = {
   polygonToggleHint: "클릭으로 꼭짓점, 더블클릭으로 닫기 (Shift)",
   radius: (tiles: number) => `붓 ${tiles}칸`,
   radiusHint: "[ ] 키 또는 버튼으로 붓 크기 1~3칸 · 휠은 확대",
-  status: (label: string) => `드래그하여 ${label} 구역을 칠하세요 · Shift 다각형 · Esc 취소`,
+  status: (label: string) => `드래그하여 ${label} 구역을 칠하세요 · [ ] 붓 크기 · 휠 확대 · Shift 다각형 · Esc 취소`,
   eraserStatus: "드래그하여 구역을 지우세요 · Esc 취소",
   polygonStatus: (label: string, points: number) => `${label} 다각형 꼭짓점 ${points}개 · 더블클릭으로 닫기 · Esc 취소`,
   undoUnavailable: "획 되돌리기는 아직 없습니다 — 지우개로 지우세요",

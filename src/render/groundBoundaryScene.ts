@@ -21,9 +21,10 @@ import { distanceToSegment } from "../world/boundary/boundaryGeometry";
 //     the seed, the wheat-farm footprint list (farm clusters), and the road ribbon width + strip set (D1a-2: the
 //     ribbon layout's shoulder tufts and caps are placed from the width; the strip set is only in the road chunk key),
 //     and the zone signature (C1b: id, kind and membership of every zone; plots follow roads and buildings, which
-//     replace the tiles array). Building yards and aprons (C1d) follow footprints (tiles), roads (tiles), the wall
-//     (palisade signature) and the ribbon width, all in the key; the yard claim order is the buildings' array order,
-//     which only changes when a building is added or removed (tiles again).
+//     replace the tiles array). Building yards and aprons (C1d) follow the buildings themselves (the building
+//     signature: id, kind, position and lot of every building in claim order; a construction site claims its tiles
+//     when placed, so completing it leaves the tiles array alone and only this signature moves), roads (tiles), the
+//     wall (palisade signature) and the ribbon width.
 // (b) Left out on purpose: walkers, stocks, ticks, crop growth, house levels, construction progress. None of them is
 //     read by road chains, forest or field outlines (crop state only changes what is drawn inside a field, which
 //     stays in the live object pass), so they cannot change a scene.
@@ -76,7 +77,7 @@ export type GroundChunkPlan = {
   readonly hasRoads: boolean;
 };
 
-type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; readonly seed: number; readonly farms: string;
+type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; readonly seed: number; readonly farms: string; readonly buildings: string;
   readonly reversed: boolean; readonly width: number; readonly strips: string; readonly zones: string };
 let last: { readonly key: SceneKey; readonly scene: GroundBoundaryScene } | null = null;
 let reverseInputForProof = false;
@@ -105,13 +106,14 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
     palisade: palisadeSignature(state.palisade),
     seed: state.seed,
     farms: farmList.map(farm => `${farm.id}@${farm.tx},${farm.ty}`).join("|"),
+    buildings: buildingSignature(state.buildings),
     reversed: reverseInputForProof,
     width: roadRibbonWidth(),
     strips: roadStripSignature(),
     zones: zoneSignature(zonesOf(state)),
   };
   const sameGround = last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
-    && last.key.farms === key.farms && last.key.reversed === key.reversed && last.key.width === key.width && last.key.strips === key.strips;
+    && last.key.farms === key.farms && last.key.buildings === key.buildings && last.key.reversed === key.reversed && last.key.width === key.width && last.key.strips === key.strips;
   if (sameGround && last?.key.zones === key.zones) return (last as NonNullable<typeof last>).scene;
   if (sameGround && deferZoneRebuilds && last !== null && (deferredAtFrame === null || deferredAtFrame === sceneFrame)) {
     deferredAtFrame = sceneFrame;
@@ -288,6 +290,15 @@ export function chunkTileBounds(cx: number, cy: number): BoundaryBounds {
     left: cx * GROUND_CHUNK_TILES - 0.5, top: cy * GROUND_CHUNK_TILES - 0.5,
     right: (cx + 1) * GROUND_CHUNK_TILES - 0.5, bottom: (cy + 1) * GROUND_CHUNK_TILES - 0.5,
   };
+}
+
+const buildingSignatures = new WeakMap<object, string>();
+function buildingSignature(buildings: GameState["buildings"]): string {
+  const cached = buildingSignatures.get(buildings);
+  if (cached !== undefined) return cached;
+  const signature = buildings.map(building => `${building.id}:${building.kind}@${building.tx},${building.ty}${building.houseLot ?? ""}`).join("|");
+  buildingSignatures.set(buildings, signature);
+  return signature;
 }
 
 const palisadeSignatures = new WeakMap<object, string>();

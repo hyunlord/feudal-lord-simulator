@@ -115,6 +115,8 @@ export type Phase10ProofRuntimePort = {
     readonly rays: number; readonly raysWithoutRibbon: number; readonly raysBeyondTarget: number };
   /** C1d gate 1: draw frames without the object pass (true) to read the ground layer alone. */
   readonly groundOnly: (enabled: boolean) => void;
+  /** C1d evidence: the current game state (read only), so a naturally played scene can be reopened in another build. */
+  readonly state: () => GameState;
 };
 
 type InstallPhase10ProofRuntimeInput = {
@@ -170,6 +172,7 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
     wedgeProbe: () => wedgeProbe(input.canvas, input.cameraRef.current, input.stateRef.current),
     groundOnly: (enabled) => setObjectPassForProof(!enabled),
+    state: () => input.stateRef.current,
   };
   window.__FEUDAL_PHASE10_PROOF__ = port;
 

@@ -205,3 +205,15 @@ test("Given a held chunk raster When only its zones changed in a live frame past
   }
   assert.equal(painted, 5, "re-rastered once within the frames it waited");
 });
+
+test("Given a construction site that completes without touching the tiles When the next frame asks for the scene Then the new building has its yard and apron", async () => {
+  const { groundBoundaryScene } = await import("../src/render/groundBoundaryScene");
+  const complete = seedGroundState(2);
+  const house = complete.buildings.find(building => building.kind === "house" && building.tx === 44 && building.ty === 37)!;
+  // While building, the site already owns its tiles (tile.buildingId) but is not in state.buildings yet.
+  const underConstruction: GameState = { ...complete, buildings: complete.buildings.filter(building => building.id !== house.id) };
+  assert.ok(!groundBoundaryScene(underConstruction).grounds.yards.some(yard => yard.buildingId === house.id));
+  const after = groundBoundaryScene(complete);
+  assert.ok(after.grounds.yards.some(yard => yard.buildingId === house.id), "yard appears on completion");
+  assert.ok(after.grounds.aprons.some(apron => apron.buildingId === house.id), "apron appears on completion");
+});
