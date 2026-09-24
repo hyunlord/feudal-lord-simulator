@@ -5,7 +5,7 @@ import { createConstructionSite } from '../src/economy/construction';
 import { allocateBuildingAndConstructionLabour, allocateBuildingLabour } from '../src/population/labour';
 import { stepProduction } from '../src/economy/production';
 import { DEFAULT_GAME_STATE, gameReducer } from '../src/state/gameStore';
-import { decodeSave, encodeSave } from '../src/save/saveCodec';
+import { assertGameStateSnapshot, decodeSave, encodeSave } from '../src/save/saveCodec';
 
 const building = (id: string, kind: Building['kind']): Building => ({ id, kind, tx: 0, ty: 0, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 });
 
@@ -33,4 +33,11 @@ test('R-T6 pause releases workers and freezes production, persists through save,
   assert.equal(loaded.buildings[0]?.operationPaused, true);
   const resumed = gameReducer(loaded, { type: 'set_building_operation', buildingId: first.id, paused: false });
   assert.deepEqual(allocateBuildingLabour(resumed.buildings, resumed.population).buildings.map(b => b.workers), [4, 0]);
+});
+
+
+test('save boundary rejects a nonboolean building pause value', () => {
+  for (const operationPaused of ['true', 1, null, {}]) {
+    assert.throws(() => assertGameStateSnapshot({ ...DEFAULT_GAME_STATE, buildings: [{ ...building('farm', 'wheat_farm'), operationPaused }] }), /operationPaused must be a boolean/);
+  }
 });

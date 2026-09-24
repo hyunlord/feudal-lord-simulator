@@ -191,3 +191,12 @@ test("level three granary proximity includes the full 2x2 footprint", () => {
   assert.equal(result.houses[0]?.level, 3);
   assert.equal(result.population, 4);
 });
+
+test('paused granary no longer satisfies the nearby service needed to retain L3', () => {
+  const home = building('home', 'house', 0, 0);
+  const well = building('well', 'well', 1, 0);
+  const granary = { ...building('granary', 'granary', 2, 0), operationPaused: true };
+  const resident = house('home', { level: 3, breadStock: 12, lastServicedTick: 100, unmetRequirementTicks: BALANCE.DEVOLUTION_GRACE - 1 });
+  const result = updateHousing([resident], [home, well, granary], 100);
+  assert.equal(result.houses[0]?.level, 2);
+});

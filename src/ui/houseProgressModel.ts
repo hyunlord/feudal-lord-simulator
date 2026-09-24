@@ -63,7 +63,9 @@ function serviceBlocker(state: GameState, home: Building, service: HouseholdServ
 }
 
 function requirementBlockers(state: GameState, house: House, home: Building, road: RoadService): Readonly<Record<HousingRequirement, CauseDetail | null>> {
-  const granaries = state.buildings.filter(b => b.kind === 'granary');
+  const allGranaries = state.buildings.filter(b => b.kind === 'granary');
+  const granaries = allGranaries.filter(b => b.operationPaused !== true);
+  const pausedNearby = allGranaries.some(b => b.operationPaused === true && buildingFootprintDistance(home, b) <= HOUSING_CONFIG[3].granaryRadius);
   const stocked = granaries.filter(b => (b.inventory.bread ?? 0) > 0);
   const nearest = Math.min(...granaries.map(b => buildingFootprintDistance(home, b)));
   const deliveryDistances = houseHasFood(house) ? [] : stocked.flatMap(granary => {
@@ -80,7 +82,9 @@ function requirementBlockers(state: GameState, house: House, home: Building, roa
   return {
     water: serviceBlocker(state, home, 'water', road),
     bread: houseHasFood(house) ? null : { causeId: 'bread', requirement: 'bread', reason: breadReason, label: breadLabels[breadReason] },
-    granary: nearest <= HOUSING_CONFIG[3].granaryRadius ? null : {
+    granary: nearest <= HOUSING_CONFIG[3].granaryRadius ? null : pausedNearby ? {
+      causeId: 'operation_paused', requirement: 'granary', reason: 'paused', label: BUILDING_OPERATION_COPY.paused,
+    } : {
       causeId: 'delivery', requirement: 'granary', reason: 'granary_proximity',
       label: Number.isFinite(nearest) ? `가까운 곡창이 필요합니다 — 거리 ${nearest} / 범위 ${HOUSING_CONFIG[3].granaryRadius}` : '가까운 곡창이 필요합니다',
       ...(Number.isFinite(nearest) ? { distance: nearest } : {}),

@@ -181,6 +181,12 @@ export function assertGameStateSnapshot(value: unknown): asserts value is GameSt
   for (const key of REQUIRED_ARRAYS) {
     if (!Array.isArray(state[key])) throw new SaveFormatError(`Save state ${key} must be an array`);
   }
+  if (Array.isArray(state.buildings)) for (const building of state.buildings) {
+    if (typeof building === 'object' && building !== null && 'operationPaused' in building
+      && typeof building.operationPaused !== 'boolean') {
+      throw new SaveFormatError('Save building operationPaused must be a boolean');
+    }
+  }
   for (const key of REQUIRED_NUMBERS) {
     if (typeof state[key] !== "number" || !Number.isFinite(state[key])) {
       throw new SaveFormatError(`Save state ${key} must be a finite number`);
