@@ -18,7 +18,7 @@ test("Given same-order timber and stone sites with reversed ids When scheduling 
   assert.deepEqual(schedule, { kind: "queued", position: 1 });
 });
 
-test("Given queued stone sites with delivered material When ticking past five hundred frames Then only the active replacement makes builder progress", () => {
+test("Given an earlier stone site without material When ticking Then a supplied later replacement completes independently", () => {
   // Given
   let current = state({
     era: "stone_town",
@@ -41,19 +41,9 @@ test("Given queued stone sites with delivered material When ticking past five hu
   // Then
   assert.deepEqual(current.constructionSites.map((site) => [site.id, site.builderTicks]), [
     ["wall-a-segment-000-stone", 0],
-    ["wall-a-segment-001-stone", 0],
   ]);
-  current = {
-    ...current,
-    constructionSites: current.constructionSites.map((site) =>
-      site.id === "wall-a-segment-000-stone" ? { ...site, delivered: { stone: 25 } } : site,
-    ),
-  };
-  const delivered = advanceTick(current);
-  assert.deepEqual(delivered.constructionSites.map((site) => [site.id, site.builderTicks]), [
-    ["wall-a-segment-000-stone", 3],
-    ["wall-a-segment-001-stone", 0],
-  ]);
+  assert.equal(current.palisade?.segments[1]?.material, "stone");
+
 });
 
 test("Given a completed timber segment under replacement When stone completes Then coverage never drops and the same segment atomically becomes stone", () => {
