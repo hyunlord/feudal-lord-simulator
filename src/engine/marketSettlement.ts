@@ -7,7 +7,7 @@ import type { ResourceType } from "../content/resourceConfig";
 import type { GameState } from "./engine.types";
 import { buildingRoadAccessTiles } from "./routing";
 import type { TileCoordinate } from "../world/grid";
-import { civicConstructionReserve } from './autoplayCivicReserve';
+import { constructionExportReserve } from './constructionExportReserve';
 import { existingRoadComponent } from "../world/roadGraph";
 import { appendMarketSales } from "./coinLedger";
 
@@ -60,7 +60,7 @@ function withAmount(
 function completedMarkets(buildings: readonly Building[]): readonly Building[] {
   return buildings
     .filter((building) => building.kind === "market")
-    .filter((building) => building.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired)
+    .filter((building) => building.operationPaused !== true && building.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired)
     .sort((left, right) => left.id.localeCompare(right.id));
 }
 
@@ -81,7 +81,7 @@ function connectedStorageSources(
 }
 
 function saleCandidates(sources: readonly Building[], state: GameState): readonly SaleCandidate[] {
-  const civicReserve = civicConstructionReserve(state);
+  const civicReserve = constructionExportReserve(state);
   const availableTimber = sources.reduce((total, building) => total +
     Math.max(0, amount(building.inventory, "timber") - amount(building.stockReserved, "timber")), 0);
   const availableStone = sources.reduce((total, building) => total +
@@ -111,7 +111,7 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
 
 export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
   return market.kind === "market"
-    && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
+    && market.operationPaused !== true && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
     && saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
 }
 
