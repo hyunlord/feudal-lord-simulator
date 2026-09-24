@@ -12,7 +12,7 @@ import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_GAME_STATE } from "../state/gameStore";
 import { BuildGlyph } from "./BuildGlyph";
 import { buildMenuGroups, buildToolAffordability, buildToolTooltipLines, ROAD_TOOL_OPTION, type BuildToolOption } from "./buildMenuModel";
-import { BUILD_CATEGORIES, buildCategory, buildCostLabel, buildThumbnail, type BuildCategory } from "./buildMenuPresentation";
+import { BUILD_CATEGORIES, buildCategory, buildCategorySelection, buildCostLabel, buildThumbnail, type BuildCategory } from "./buildMenuPresentation";
 
 type BuildSealsProps = {
   readonly selectedTool: PlacementTool | null;
@@ -93,7 +93,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         {BUILD_CATEGORIES.map((item) => (
           <button key={item.key} type="button" className="build-menu-category"
             aria-pressed={category === item.key} aria-expanded={catalogOpen && category === item.key} aria-controls={`${id}-${item.key}`}
-            onClick={() => { setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); }}>
+            onClick={() => { onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); }}>
             {item.label}
             {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
           </button>

@@ -14,6 +14,10 @@ export const BUILD_CATEGORIES = [
 ] as const;
 export type BuildCategory = typeof BUILD_CATEGORIES[number]["key"];
 
+export function buildCategorySelection(category: BuildCategory): PlacementTool | null {
+  return category === "road" ? "road" : null;
+}
+
 export function buildCategory(tool: PlacementTool): BuildCategory {
   const categories = {
     house: "dwelling", road: "road", wheat_farm: "production", mill: "production",
