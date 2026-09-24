@@ -13,5 +13,5 @@ export const PLACEMENT_REASON_LABELS = {
 } as const satisfies Record<PlacementFailure, string>;
 
 export function predictionCheck(id: string, label: string, ok: boolean, detail = ''): PredictionLine {
-  return { id, tone: ok ? 'positive' : 'negative', text: `${label}${detail === '' ? '' : ` ${detail}`}` };
+  return { id, severity: ok ? 'ok' : 'block', text: `${label}${detail === '' ? '' : ` ${detail}`}`, sources: [] };
 }

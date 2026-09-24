@@ -14,7 +14,7 @@ import { A_TRIPLE_PRIME_WALL_COPY } from './aTriplePrimeWallCopy';
 import { A_QUADRUPLE_PRIME_WALL_COPY as WALL_COPY, palisadeFailureLabel } from './aQuadruplePrimeWallCopy';
 import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsoleModel";
 import { draftPalisadePredictionLines, proposalPredictionLines } from "./wallPrediction";
-import type { PredictionLine } from "./predictionTypes";
+import { PREDICTION_SEVERITY_TONE, type PredictionLine } from "./predictionTypes";
 import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 
 export type EraConsoleAction = {
@@ -186,7 +186,7 @@ export function EraConsole({
       ) : null}
       {model.proposal.visible && model.predictionLines.length > 0 ? (
         <ul className="era-proposal-lines" aria-label="목책 공사 예측">
-          {model.predictionLines.map(line => <li className={`prediction-line prediction-line--${line.tone}`} key={line.id}>{line.text}</li>)}
+          {model.predictionLines.map(line => <li className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`} key={line.id}>{line.text}</li>)}
         </ul>
       ) : null}
       {model.draft.editing ? (

@@ -33,7 +33,7 @@ function cached(state: GameState, key: string, compute: () => PlacementPredictio
   return value;
 }
 function failureLine(placement: PlacementResult): readonly PredictionLine[] {
-  return placement.ok ? [] : [{ id: 'placement', tone: 'negative', text: PLACEMENT_REASON_LABELS[placement.reason] }];
+  return placement.ok ? [] : [{ id: 'placement', severity: 'block', sources: [], text: PLACEMENT_REASON_LABELS[placement.reason] }];
 }
 function virtualFacility(state: GameState, kind: BuildingKind, tile: TileCoordinate): Building {
   return { id: constructionSiteId(state.nextConstructionOrdinal), kind, ...tile, workers: 0,
@@ -72,11 +72,11 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
       const before = householdServices(state);
       const newLots = [...allocation.houses].reduce((sum, [id, access]) => sum +
         (access[service].kind === 'served' && before.houses.get(id)?.[service].kind !== 'served' ? access[service].demand : 0), 0);
-      lines.push({ id: 'supply', tone: 'neutral', text: `완공 후 예상 공급 ${provider?.used ?? 0}/${provider?.capacity ?? 0}필지` });
-      lines.push({ id: 'new-service', tone: 'neutral', text: `새로 공급 ${newLots}필지 · 현재 인구·도로 기준` });
+      lines.push({ id: 'supply', severity: 'info', sources: [], text: `완공 후 예상 공급 ${provider?.used ?? 0}/${provider?.capacity ?? 0}필지` });
+      lines.push({ id: 'new-service', severity: 'info', sources: [], text: `새로 공급 ${newLots}필지 · 현재 인구·도로 기준` });
     }
-    if (kind === 'granary') lines.push({ id: 'granary', tone: 'neutral', text: `L3 곡창 거리 조건 ${houseIds.length}가구 · 빵 배송은 별도` });
-    if (radius !== null) lines.push({ id: 'range', tone: 'neutral', text: `범위 ${radius}칸 · 실제 대상은 주택 윤곽으로 표시` });
+    if (kind === 'granary') lines.push({ id: 'granary', severity: 'info', sources: [], text: `L3 곡창 거리 조건 ${houseIds.length}가구 · 빵 배송은 별도` });
+    if (radius !== null) lines.push({ id: 'range', severity: 'info', sources: [], text: `범위 ${radius}칸 · 실제 대상은 주택 윤곽으로 표시` });
     const road = buildingRoadAccessTiles(virtual, candidate).length > 0;
     lines.push(predictionCheck('road', '도로 연결', road, !definition.requiresRoad ? '(운영에 불필요)' : ''));
     lines.push(predictionCheck('materials', '자재', Object.keys(constructionShortfalls(state, definition.buildCost)).length === 0));
@@ -100,10 +100,10 @@ export function roadPlacementPrediction(state: GameState, path: readonly TileCoo
     const roadSegments = assessment.newTiles.map(tile => ({ tile, kind: getTile(state, tile)?.terrain === 'water' ? 'bridge' as const : 'land' as const }));
     const bridges = roadSegments.filter(s => s.kind === 'bridge').length;
     const lines = assessment.newTiles.length === 0 && reason === null
-      ? [{ id: 'placement', tone: 'neutral' as const, text: ROAD_PLACEMENT_COPY.alreadyExists }]
+      ? [{ id: 'placement', severity: 'info' as const, sources: [], text: ROAD_PLACEMENT_COPY.alreadyExists }]
       : failureLine(placement);
     return { placement, range: null, houseIds: [], roadSegments, lines: [...lines,
-      { id: 'road-cost', tone: 'neutral', text: ROAD_PLACEMENT_COPY.previewCost(roadSegments.length - bridges,
+      { id: 'road-cost', severity: 'info', sources: [], text: ROAD_PLACEMENT_COPY.previewCost(roadSegments.length - bridges,
         bridges, assessment.existingTiles.length, BRIDGE_TIMBER_PER_TILE, roadTimberCost(state, path)) }] };
   });
 }
