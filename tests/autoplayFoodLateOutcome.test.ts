@@ -1,21 +1,25 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
+import { createAutoplayTraceDriver } from '../scripts/economyHarnessAutoplay';
+import type { GameState } from '../src/engine/engine.types';
 import { blocksRepeatedFoodExpansion } from '../src/engine/autoplayFoodThroughput';
 import { measuredFoodDecision } from '../src/engine/autoplayFoodMeasuredDecision';
 import { replayFoodObservation } from './foodEfficiencyObservationFixture';
 import { routedStockTown } from './helpers/autoplayFoodFixtures';
 
-function lateFarmOutcome() {
+function lateFarmOutcome(wheat = 120, bread = 70, baselineBread = 60) {
   const base = routedStockTown(true);
   const state = replayFoodObservation({ ...base,
     houses: base.houses.map(h => ({ ...h, breadStock: 0 })),
     buildings: base.buildings.map(b => b.kind === 'wheat_farm' ? { ...b, inventory: {} }
       : b.kind === 'mill' ? { ...b, inventory: { wheat: 8 } } : b),
-  }, { wheat: 120, bread: 70, exports: 0 });
+  }, { wheat, bread, exports: 0 });
   return { ...state, autoplayFoodObservation: {
     kind: 'wheat_farm' as const, siteId: 'farm', placedTick: 0, completedTick: 1, observeUntilTick: 2401,
     requiresDeliveredOutcome: true,
-    baseline: { outputTotal: 0, houseBread: 0, starvingHomes: 0, breadProduced: 60, missedMeals: 0 },
+    baseline: { outputTotal: 0, houseBread: 0, starvingHomes: 0, breadProduced: baselineBread, missedMeals: 0 },
     latest: { outputTotal: 60, houseBread: 0, starvingHomes: 0, deliveredWheat: 59 },
     outcome: { outputDelta: 60, deliveredBreadDelta: 0, starvingHomesDelta: 0, deliveredWheatDelta: 59, effective: false },
   } };
@@ -29,9 +33,58 @@ test('late measured bread improvement releases a delivered farm failure without 
   assert.deepEqual(state.autoplayFoodObservation, before);
 });
 
-for (const condition of ['no-improvement', 'zero-deposit', 'legacy', 'unknown-window', 'stale-window', 'no-current-deficit'] as const) {
+test('a delivered farm can recover a later strict raw deficit below its historical bread peak', () => {
+  const state = lateFarmOutcome(600, 305, 314);
+  const before = structuredClone(state);
+  assert.equal(measuredFoodDecision(state).reason, 'actual_wheat_deficit');
+  assert.equal(blocksRepeatedFoodExpansion(state, 'wheat_farm'), false);
+  assert.deepEqual(state, before);
+});
+
+test('the natural seed 1 strict deficit creates a legal farm through the full advisor and reducer', () => {
+  const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/late-farm-seed1-204000.json.gz', import.meta.url))).toString());
+  const history = structuredClone(state.autoplayFoodObservation);
+  const driver = createAutoplayTraceDriver({ id: 'late-farm-natural', source: '5f05e7c seed 1 tick 204000', policy: { maxHousingLots: 24 } });
+  const next = driver.apply(state);
+  const sites = next.constructionSites.filter(site => !state.constructionSites.some(old => old.id === site.id));
+  assert.equal(sites.length, 1);
+  assert.equal(sites[0]?.kind, 'wheat_farm');
+  assert.equal(sites[0]?.startedTick, state.tick);
+  assert.deepEqual(state.autoplayFoodObservation, history);
+});
+
+for (const wheat of [610, 615]) {
+  test(`late farm release stays closed for margin-only production ${wheat}`, () => {
+    const state = lateFarmOutcome(wheat, 305, 314);
+    assert.equal(measuredFoodDecision(state).reason, 'actual_wheat_deficit');
+    assert.equal(blocksRepeatedFoodExpansion(state, 'wheat_farm'), true);
+  });
+}
+
+for (const condition of ['zero-output', 'zero-deposit', 'understaffed', 'blocked-transport', 'unknown-window', 'stale-window'] as const) {
+  test(`strict-deficit farm release stays closed for ${condition}`, () => {
+    const base = lateFarmOutcome(600, 305, 314);
+    const { autoplayFoodFlow: omittedFlow, ...withoutFlow } = base;
+    const state = {
+      ...(condition === 'unknown-window' ? withoutFlow : base),
+      tick: condition === 'stale-window' ? base.tick + 1 : base.tick,
+      buildings: base.buildings.map(b => b.kind !== 'wheat_farm' ? b : {
+        ...b, workers: condition === 'understaffed' ? 0 : b.workers,
+        inventory: condition === 'blocked-transport' ? { wheat: 20 } : b.inventory,
+      }),
+      autoplayFoodObservation: { ...base.autoplayFoodObservation,
+        outcome: { ...base.autoplayFoodObservation.outcome,
+          outputDelta: condition === 'zero-output' ? 0 : 60,
+          deliveredWheatDelta: condition === 'zero-deposit' ? 0 : 59 },
+      },
+    };
+    assert.equal(blocksRepeatedFoodExpansion(state, 'wheat_farm'), true);
+  });
+}
+
+for (const condition of ['margin-only-no-improvement', 'zero-deposit', 'legacy', 'unknown-window', 'stale-window', 'no-current-deficit'] as const) {
   test(`late farm release stays closed for ${condition}`, () => {
-    const base = lateFarmOutcome();
+    const base = lateFarmOutcome(condition === 'margin-only-no-improvement' ? 140 : 120);
     const observation = base.autoplayFoodObservation;
     const { autoplayFoodFlow: omittedFlow, ...withoutFlow } = base;
     const { requiresDeliveredOutcome: omittedProof, ...withoutProof } = observation;
@@ -40,7 +93,7 @@ for (const condition of ['no-improvement', 'zero-deposit', 'legacy', 'unknown-wi
       tick: condition === 'stale-window' ? base.tick + 1 : base.tick,
       ...(condition === 'no-current-deficit' ? { buildings: base.buildings.map(b => b.kind === 'wheat_farm' ? { ...b, inventory: { wheat: 20 } } : b) } : {}),
       autoplayFoodObservation: { ...(condition === 'legacy' ? withoutProof : observation),
-        baseline: { ...observation.baseline, breadProduced: condition === 'no-improvement' ? 70 : 60 },
+        baseline: { ...observation.baseline, breadProduced: condition === 'margin-only-no-improvement' ? 70 : 60 },
         outcome: { ...observation.outcome, deliveredWheatDelta: condition === 'zero-deposit' ? 0 : 59 },
       },
     };
