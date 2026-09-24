@@ -8,6 +8,7 @@ import { advanceTick } from "../src/engine/tick";
 import { gameReducer } from "../src/state/gameStore";
 import { AUTOPLAY_TICK_CADENCE, canRunAutoplayAtTick } from "../src/ui/autoplayPresentation";
 import { hashEconomyState } from "./economyHarnessSerializer";
+import { shouldRetryAutoplayAfterMillReplenishment } from '../src/engine/autoplayMillReplenishment';
 
 export interface AdvisorDiagnosticReceipt {
   readonly schemaVersion: 1;
@@ -83,16 +84,24 @@ export function createAutoplayTraceDriver(input: {
 } = { id: "autoplay", source: "direct" }): AutoplayTraceDriver {
   let lastActionTick = -AUTOPLAY_TICK_CADENCE;
   let lastDecisionTick = -AUTOPLAY_TICK_CADENCE;
+  let observedState: GameState | null = null;
+  let previousAction: AutoplayAction | null = null;
   const appliedActions: AutoplayHarnessAction[] = [];
   const snapshots: AutoplayHarnessSnapshot[] = [];
   return {
     appliedActions,
     snapshots,
     apply(state) {
-      if (!canRunAutoplayAtTick({ enabled: true, currentTick: state.tick, lastActionTick: Math.max(lastActionTick, lastDecisionTick) })) return state;
+      const previous = observedState;
+      observedState = state;
+      if (!canRunAutoplayAtTick({ enabled: true, currentTick: state.tick, lastActionTick })) return state;
+      if (state.tick - lastDecisionTick < AUTOPLAY_TICK_CADENCE
+        && !(previousAction?.kind === 'none' && previous !== null
+          && shouldRetryAutoplayAfterMillReplenishment(previous, state))) return state;
       lastDecisionTick = state.tick;
       const diagnostic: FoodDiagnosticCollector | undefined = input.onDiagnostic === undefined ? undefined : {};
       const advisorAction = decideNextAction(state, input.policy, diagnostic);
+      previousAction = advisorAction;
       const report = (next: GameState, result: AdvisorDiagnosticReceipt['result'], gameActionType: string | null): GameState => {
         if (input.onDiagnostic === undefined || diagnostic === undefined) return next;
         const receipt: AdvisorDiagnosticReceipt = { schemaVersion: 1, tick: state.tick,

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { BALANCE } from "../content/balanceConfig";
 import { KO_UI } from "../content/locale.ko";
 import { decideNextAction } from "../engine/autoplay";
+import { shouldRetryAutoplayAfterMillReplenishment } from "../engine/autoplayMillReplenishment";
 import { sampleAutoplayDecision, type AutoplayDecisionCache, type AutoplayDecision } from "./autoplayDecisionCache";
 import type { GameState, GameSpeed } from "../engine/engine.types";
 import { useGameStore } from "../state/gameStore";
@@ -45,7 +46,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
   const lastScheduledDecisionRef = useRef<AutoplayDecision | null>(null);
   decisionCacheRef.current = sampleAutoplayDecision(decisionCacheRef.current, {
     state, enabled: autoplayEnabled, pending: cancelPendingCommitRef.current !== null,
-  }, decideNextAction);
+  }, decideNextAction, shouldRetryAutoplayAfterMillReplenishment);
   const decision = decisionCacheRef.current.decision;
   const nextAction = decision?.action ?? { kind: "none" as const };
   latestTickRef.current = state.tick;
