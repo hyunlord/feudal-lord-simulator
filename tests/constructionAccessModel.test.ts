@@ -55,6 +55,23 @@ test('current route labels keep material, reserve, and worker stalls intact', ()
   assert.equal(currentConstructionSiteLabel(state, { ...site, stall: 'no_builders' }), '👷 일꾼 없음');
 });
 
+test('current route labels clear a stale no-route stall after a real material road connects', () => {
+  // Given
+  const disconnected = disconnectedFixture();
+  const plannedRoad = constructionAccessModel(disconnected, site).missingRoadTiles;
+  const roads = new Set(plannedRoad.map(tile => `${tile.tx},${tile.ty}`));
+  const connected = {
+    ...disconnected,
+    tiles: disconnected.tiles.map(tile => roads.has(`${tile.tx},${tile.ty}`) ? { ...tile, hasRoad: true } : tile),
+  };
+
+  // When / Then
+  const source = connected.buildings[0];
+  assert.ok(source);
+  assert.equal(resolveBuildingToConstructionSiteRoute(connected, source, site).path !== null, true);
+  assert.equal(currentConstructionSiteLabel(connected, site), '🪵 목재 오는 중 (0/10)');
+});
+
 test('road proposal connects a stalled site, then disappears after the road is built', () => {
   const state = disconnectedFixture();
   const before = constructionAccessModel(state, site);
