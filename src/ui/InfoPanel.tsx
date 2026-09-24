@@ -10,7 +10,7 @@ import {
 import { BUILD_TOOL_OPTIONS } from "./buildMenuModel";
 import type { GameState } from "../engine/engine.types";
 import { getSettlementView } from "../engine/settlementView";
-import type { OnboardingTaskView } from "./onboardingTaskModel";
+import { openGoalFitsScenario, type OnboardingTaskView } from "./onboardingTaskModel";
 import { PopulationEventPanel } from "./PopulationEventPanel";
 import type { PopulationEvent } from "./populationEventModel";
 import { settlementGuidance } from "./settlementGuidanceModel";
@@ -205,6 +205,7 @@ export function OnboardingTasks({ view, state, warningState = state }: {
   readonly warningState?: GameState;
 }) {
   if (state !== undefined && getSettlementView(state).outcome === "victory") return null;
+  if (view.openGoal !== null && state !== undefined && !openGoalFitsScenario(state)) return null;
   if (view.openGoal !== null && [state, warningState].some(candidate =>
     candidate !== undefined && settlementGuidance(candidate).problems.some(problem => problem.kind === "water" || problem.kind === "bread"))) return null;
   if (view.openGoal !== null) {

@@ -1,3 +1,5 @@
+import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+import { calendarLabel } from "../engine/scenarioState";
 import { useEffect, useRef, useState } from "react";
 import { BALANCE } from "../content/balanceConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
@@ -64,6 +66,7 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
         <span className="resource-bar__detail"><span className="resource-bar__primary"><span>재정</span><strong>{stock.coin}</strong></span>
           <span className="resource-bar__trend">{trend("coin")}</span><span className="resource-bar__secondary">금화 · 보유량<span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span></span>
       </button>
+      <span className="resource-bar__cell resource-bar__calendar" aria-label={SCENARIO_COPY.calendarAria} data-testid="resource-calendar"><strong>{calendarLabel(state)}</strong></span>
       {coinOpen ? <aside id="resource-coin-detail" className="resource-bar__coin-detail" aria-label="재정 출처">
         <strong>최근 2,400틱 재정</strong>
         {coinIncome.bySource.map(source => <p key={source.source}>수입 · {source.label} +{source.amount}</p>)}

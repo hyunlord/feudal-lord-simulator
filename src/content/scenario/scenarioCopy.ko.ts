@@ -26,6 +26,7 @@ export const SCENARIO_COPY = {
   },
   seasons: ["봄", "여름", "가을", "겨울"] as const,
   calendarLabel: (year: number, season: string) => `${year}년 ${season}`,
+  calendarAria: "달력 · 연도와 계절",
   eraLabel: (name: string) => `시대: ${name}`,
   objectives: {
     selfSufficient: { title: "자립 마을", description: "인구 20명과 입주 가구 90%의 물·빵 공급을 600틱 연속 유지하세요." },
@@ -33,6 +34,11 @@ export const SCENARIO_COPY = {
     prosperity: { title: "번영하는 시장도시", description: "인구 140명, 입주한 L4 주거 4필지와 90% 물·빵 공급을 1,200틱 유지하세요. 석벽은 선택입니다." },
   },
   sandboxGoal: "샌드박스 · 승리와 실패 없이 자유롭게 건설합니다",
+  victoryTitle: (title: string) => `${title} 달성`,
+  allGoalsDone: "모든 목표를 달성했습니다. 계속 도시를 확장할 수 있습니다.",
+  milestonesDone: (done: number, total: number) => `달성 ${done}/${total}`,
+  proclaimAndBuildWall: "도시 발전 조건에서 시대를 선포하고 성벽 공사를 마치세요.",
+  stoneReserve: (stone: number) => `석벽 프로젝트에 필요한 석재 ${stone}개는 시장에서 팔지 않고 비축합니다.`,
   stoneWallBonus: "보너스: 석벽 완공",
   stoneWallClosed: "이 시나리오에서는 석벽 프로젝트가 없습니다",
 } as const;

@@ -1,3 +1,6 @@
+import { stageDef } from "../content/scenario/registry";
+import type { ConditionSet } from "../content/scenario/types";
+import { scenarioOf } from "../engine/scenarioState";
 import { houseHasFood } from "../population/houseFood";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
@@ -12,8 +15,8 @@ export type SettlementProblemGlyph = {
 };
 
 export type SettlementGuidance = {
-  readonly populationGoal: 60 | 140;
-  readonly completedGoal: 60 | null;
+  readonly populationGoal: number;
+  readonly completedGoal: number | null;
   readonly sampledTick: number;
   readonly statusLine: string;
   readonly priority: SettlementProblemGlyph | null;
@@ -36,13 +39,20 @@ export function settlementProblemGlyphs(state: GameState): readonly SettlementPr
   return problems;
 }
 
+function scenarioPopulationTarget(set: ConditionSet | null | undefined): number | null {
+  const condition = set?.all.find(candidate => candidate.kind === "population_at_least");
+  return condition?.kind === "population_at_least" ? condition.value : null;
+}
+
 export function settlementGuidance(state: GameState): SettlementGuidance {
-  const populationGoal = state.era === "hamlet" ? 60 : 140;
+  const marketTownPopulation = scenarioPopulationTarget(stageDef(scenarioOf(state), "market_town").enterWhen) ?? 60;
+  const populationGoal = state.era === "hamlet" ? marketTownPopulation
+    : scenarioPopulationTarget(scenarioOf(state).victory) ?? scenarioPopulationTarget(scenarioOf(state).walls.stoneWallPrereq) ?? marketTownPopulation;
   const problems = settlementProblemGlyphs(state);
   const priority = guidancePriority(state);
   return {
     populationGoal,
-    completedGoal: state.population >= 60 ? 60 : null,
+    completedGoal: state.population >= marketTownPopulation ? marketTownPopulation : null,
     sampledTick: Math.floor(state.tick / 60) * 60,
     statusLine: priority?.label ?? "정착지는 안정적입니다",
     priority,

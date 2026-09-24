@@ -1,3 +1,4 @@
+import { SCENARIOS } from "../content/scenario/registry";
 import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
 import {
@@ -92,6 +93,9 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
 function reduceGameAction(state: GameState, action: GameAction): GameState {
   if (action.type === "load_saved_state") return action.state;
+  // A new game is the default opening under the chosen scenario (B2 mode choice); unknown ids are ignored.
+  if (action.type === "start_new_game") return SCENARIOS.get(action.scenarioId) === undefined
+    ? state : { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: action.scenarioId };
   if (state.settlement?.outcome === "abandoned") {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }
@@ -177,16 +181,16 @@ export function GameProvider({ children }: GameProviderProps) {
       speedRef.current = 0;
       setSpeedState(0);
     }
-    if (action.type === "load_saved_state") {
+    if (action.type === "load_saved_state" || action.type === "start_new_game") {
       previousRenderStateRef.current = nextState;
       speedRef.current = 0;
       setSpeedState(0);
     }
-    if ((action.type === "restart_settlement" || action.type === "load_saved_state") && nextState !== currentState) {
+    if ((action.type === "restart_settlement" || action.type === "load_saved_state" || action.type === "start_new_game") && nextState !== currentState) {
       setSessionKey(key => key + 1);
     }
     setState(nextState);
-    const decision = action.type === "load_saved_state" || action.type === "restart_settlement"
+    const decision = action.type === "load_saved_state" || action.type === "restart_settlement" || action.type === "start_new_game"
       ? null : decisionSaveReason(currentState, nextState);
     if (action.type === "restart_settlement" && nextState !== currentState) newSessionRef.current?.();
     if (decision !== null) requestSaveRef.current?.(decision);

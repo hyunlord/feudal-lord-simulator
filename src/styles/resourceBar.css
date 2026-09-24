@@ -90,3 +90,18 @@
 .app-shell .resource-bar__coin:hover, .app-shell .resource-bar__coin[aria-expanded="true"] { background: var(--palette-ink-muted); }
 .resource-bar__coin-detail { position: absolute; top: calc(100% + 4px); right: 0; z-index: 30; width: min(360px, calc(100vw - 24px)); padding: 10px 12px; background: var(--palette-ink); border: 2px solid var(--palette-earth); color: var(--palette-vellum); font: var(--font-meta)/1.5 var(--ui-body-font); }
 .resource-bar__coin-detail p { margin: 4px 0 0; }
+
+/* Calendar badge beside the bar (B2): absolutely positioned so it never takes one of the five grid cells. */
+.app-shell .resource-bar__calendar {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -2px; /* the right edge below the bar holds the 자원 상세 disclosure */
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 2px solid var(--palette-earth-dark);
+  border-radius: 2px;
+  background: var(--palette-ink);
+  font-size: var(--font-body);
+  line-height: 18px;
+}
+.app-shell .resource-bar__calendar strong { font-weight: 600; font-variant-numeric: tabular-nums; }

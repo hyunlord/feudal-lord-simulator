@@ -1,8 +1,10 @@
+import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+import { stageForEra } from "../engine/scenarioState";
 import { LABOUR_COPY } from "./labourCopy.ko";
 import { isWallConstructionSite } from "../domain/palisadeConstructionSchedule";
 import { useLayoutEffect, useRef } from "react";
 import { KO_UI } from "../content/locale.ko";
-import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
+import { canProclaimStoneTownEra, evaluateEraRequirements, stoneWallProjectAvailable } from "../engine/era";
 import { recentCoinIncome } from "../engine/coinLedger";
 import { reserveDeadlock } from "../engine/reserveDeadlock";
 import { canAdvanceConstructionWork } from "../economy/construction";
@@ -55,11 +57,8 @@ const PROCLAMATION_TOOLTIPS = {
   stone_town: "석조 도시가 선포되었습니다",
 } as const satisfies Record<Era, string>;
 
-const CURRENT_ERA_LABELS = {
-  hamlet: "촌락",
-  palisade: "목책마을",
-  stone_town: "석조 도시",
-} as const satisfies Record<Era, string>;
+/** Current settlement stage label, from the scenario's stage names (B2). */
+const currentStageLabel = (era: Era): string => SCENARIO_COPY.stages[stageForEra(era)];
 
 export function buildEraConsoleModel(input: {
   readonly state: GameState;
@@ -93,7 +92,7 @@ export function buildEraConsoleModel(input: {
         : `시장 ${marketCount}개 · 최근 수입 0 · 남는 물자 판매 대기`
     : null;
   return {
-    currentEraLabel: CURRENT_ERA_LABELS[input.state.era],
+    currentEraLabel: currentStageLabel(input.state.era),
     requirements,
     tooltip: input.state.era === "hamlet" ? PROCLAMATION_TOOLTIPS.hamlet
       : LABOUR_COPY.assigned(input.state.constructionSites.filter(isWallConstructionSite).reduce((sum, site) => sum + site.assignedBuilders, 0)),
@@ -246,6 +245,7 @@ function actionReason(input: {
   readonly draft: PalisadeDraftState | null;
 }): string | null {
   if (input.state.era === "stone_town") return "이미 석조 도시가 선포되었습니다";
+  if (input.state.era === "palisade" && !stoneWallProjectAvailable(input.state)) return SCENARIO_COPY.stoneWallClosed;
   if (input.firstUnmet !== null) {
     return WALL_COPY.requirementProgress(input.firstUnmet.label, input.firstUnmet.current, input.firstUnmet.target);
   }

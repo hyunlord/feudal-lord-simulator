@@ -14,6 +14,7 @@ type GameCommand =
   | { readonly type: "set_building_operation"; readonly buildingId: string; readonly paused: boolean }
   | { readonly type: "record_autoplay_food_confirmation" }
   | { readonly type: "restart_settlement" }
+  | { readonly type: "start_new_game"; readonly scenarioId: string }
   | { readonly type: "load_saved_state"; readonly state: GameState }
   | { readonly type: "merge_houses"; readonly sourceBuildingId: string; readonly targetBuildingId: string }
   | {

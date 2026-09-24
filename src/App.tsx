@@ -1,3 +1,5 @@
+import { CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "./content/scenario/coreScenarios";
+import { SCENARIO_COPY } from "./content/scenario/scenarioCopy.ko";
 import {
   useCallback,
   useEffect,
@@ -239,10 +241,16 @@ export function App() {
     setWelcomeVisible(false);
     if (saveSystem.offerContinue) saveSystem.declineContinue();
   };
-  const startNewGameOverSave = () => {
+  const startNewGameOverSave = (scenarioId: string) => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
+    dispatch({ type: "start_new_game", scenarioId });
     saveSystem.startNewGame();
+  };
+  const startScenarioWithoutSave = (scenarioId: string) => {
+    writeWelcomeDismissed();
+    setWelcomeVisible(false);
+    if (scenarioId !== DEFAULT_SCENARIO_ID) dispatch({ type: "start_new_game", scenarioId });
   };
   const continueSavedGame = () => {
     writeWelcomeDismissed();
@@ -337,17 +345,19 @@ export function App() {
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
         onNewGame={startNewGameOverSave}
+        onChooseMode={startScenarioWithoutSave}
       /> : null}
     </main>
   );
 }
 
-function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame }: {
+function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode }: {
   readonly onDismiss: () => void;
   readonly continueLine: string | null;
   readonly archiveNotice: string | null;
   readonly onContinue: () => void;
-  readonly onNewGame: () => void;
+  readonly onNewGame: (scenarioId: string) => void;
+  readonly onChooseMode: (scenarioId: string) => void;
 }) {
   const [confirmingNewGame, setConfirmingNewGame] = useState(false);
   const dialogRef = useRef<HTMLElement | null>(null);
@@ -386,7 +396,10 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
-        {continueLine === null ? <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p> : (
+        {continueLine === null ? <>
+          <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} keepChoice={keepChoice} />
+          <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
+        </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
             <p>{continueLine}</p>
             <button className="autoplay-toggle save-control-button" type="button"
@@ -395,10 +408,7 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
             </button>
             {confirmingNewGame ? <>
               <p role="status">{archiveNotice}</p>
-              <button className="autoplay-toggle save-control-button" type="button"
-                onPointerDown={keepChoice} onClick={event => { keepChoice(event); onNewGame(); }}>
-                {SAVE_COPY.startNewGame}
-              </button>
+              <ScenarioModeButtons onChoose={onNewGame} keepChoice={keepChoice} />
               <button className="autoplay-toggle save-control-button" type="button"
                 onPointerDown={keepChoice} onClick={event => { keepChoice(event); setConfirmingNewGame(false); }}>
                 {SAVE_COPY.cancel}
@@ -414,6 +424,19 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
       </section>
     </div>
   );
+}
+
+/** New-game mode choice (B2): one button per registered scenario, in registration order. */
+function ScenarioModeButtons({ onChoose, keepChoice }: {
+  readonly onChoose: (scenarioId: string) => void;
+  readonly keepChoice: (event: MouseEvent | PointerEvent) => void;
+}) {
+  return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
+    {CORE_SCENARIOS.map(scenario => <button key={scenario.id} className="autoplay-toggle save-control-button" type="button"
+      data-scenario={scenario.id} onPointerDown={keepChoice} onClick={event => { keepChoice(event); onChoose(scenario.id); }}>
+      {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
+    </button>)}
+  </div>;
 }
 
 function readWelcomeDismissed(): boolean {
