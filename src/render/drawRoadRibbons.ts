@@ -9,7 +9,7 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // Road ribbons along the smoothed centreline. The top-down strip (512x64, art in rows 8..56) repeats along the path:
 // every centreline segment is one quad filled with the strip pattern under that segment's own affine transform
 // (tile space -> iso screen is affine, so one matrix per segment is exact). Patterns are only ever used with path
-// fill(); never clip()+fillRect (B11 P-F1).
+// fill(); never a clipped pattern rectangle fill (B11 P-F1).
 
 export const ROAD_RIBBON_VISIBLE_WIDTH = 0.55;
 const STRIP_WIDTH = 512;

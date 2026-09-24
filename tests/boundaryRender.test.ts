@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { Session } from "node:inspector/promises";
 import test from "node:test";
 
@@ -191,4 +192,11 @@ test("Given query, stored choice and default When the flag is resolved Then the 
   assert.equal(resolveBoundaryV2Flag({ search: "?render-boundary-v2=0", storage: storage("1") }), false);
   assert.equal(resolveBoundaryV2Flag({ search: "?phase10-proof=1&render-boundary-v2=1", storage: storage("0") }), true);
   assert.equal(resolveBoundaryV2Flag({ storage: { getItem: () => { throw new Error("blocked"); } } }), false);
+});
+
+test("Given the curved-ground render modules When their source is read Then patterns are only used with path fill (no fillRect, B11 P-F1)", () => {
+  for (const file of ["drawRoadRibbons.ts", "drawGroundBoundaries.ts", "drawTerrainBoundaryV2.ts", "groundChunkCache.ts"]) {
+    const source = readFileSync(new URL(`../src/render/${file}`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /\bfillRect\s*\(/, file);
+  }
 });
