@@ -1,3 +1,4 @@
+import { distributionRoadRecoveryAction } from './autoplayDistributionRoads';
 import { wheatTransportCapacityAction } from './autoplayWheatTransportRecovery';
 import { foodEntranceBuildAction } from './autoplayFoodEntrance';
 import { foodTransportGranaryAction } from './autoplayFoodTransport';
@@ -44,6 +45,8 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   if (diagnostic !== undefined) diagnostic = { ...diagnostic, counts: { wheat: wheatCount, mill: millCount, granary: granaryCount, target } };
   const repair = foodRouteRepairAction(state);
   if (repair.kind !== 'none') return finish(repair, 'food_route_repair');
+  const distribution = distributionRoadRecoveryAction(state);
+  if (distribution.kind !== 'none') return finish(distribution, 'food_route_repair');
   if (hasPendingFoodChain(state)) return finish({ kind: "none" }, 'pending_chain');
   if (hasActiveFoodObservation(state)) return finish({ kind: "none" }, 'active_observation');
   const completeChain = wheatCount > 0 && millCount > 0 && granaryCount > 0;
