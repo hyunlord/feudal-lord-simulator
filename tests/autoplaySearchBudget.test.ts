@@ -5,7 +5,8 @@ import test from 'node:test';
 import { serviceCandidate, serviceFootprint, serviceTileKey } from '../src/engine/autoplayServiceSpaceRoutes';
 import { searchBudgetedServicePlan } from '../src/engine/autoplayServiceBudget';
 import { preservesAutoplayServiceSpace, resetAutoplayServiceSearch } from '../src/engine/autoplayServiceSpace';
-import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
+import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
+import { DEFAULT_GAME_STATE, gameReducer } from '../src/state/gameStore';
 import { computePalisadeProposalForState } from '../src/engine/palisadeFootprints';
 import { decideNextAction } from '../src/engine/autoplay';
 import type { GameState } from '../src/engine/engine.types';
@@ -88,4 +89,17 @@ test('service layout cache invalidates when an existing provider pauses or resum
   const paused = { ...state, buildings: state.buildings.map(building => building.id === 'market' ? { ...building, operationPaused: true } : building) };
   assert.equal(preservesAutoplayServiceSpace(paused, action), false);
   assert.equal(preservesAutoplayServiceSpace(state, action), true);
+});
+
+
+test('a natural seed 4 food/storage shortage retains a legal recovery within the deterministic budget', () => {
+  const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('../fixtures/autoplay-search-budget/seed4-120000.json.gz', import.meta.url))).toString());
+  const diagnostic: FoodDiagnosticCollector = {};
+  const action = decideNextAction(state, { maxHousingLots: 24 }, diagnostic);
+  assert.notEqual(action.kind, 'none', 'proved reachable service pads must not be hidden by disconnected candidate pairs');
+  const command = autoplayActionToGameAction(action, state);
+  assert.ok(command !== null);
+  assert.notEqual(gameReducer(state, command), state, 'the actual game reducer must accept the recovery');
+  assert.ok(diagnostic.search !== undefined && diagnostic.search.used <= diagnostic.search.limit);
+  assert.deepEqual(decideNextAction(structuredClone(state), { maxHousingLots: 24 }), action);
 });
