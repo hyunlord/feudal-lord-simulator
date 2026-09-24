@@ -4,6 +4,7 @@ import type { PredictionLine } from "../ui/predictionTypes";
 import { zonePaintLines } from "../ui/zonePrediction";
 import { cellInsideWall, zonePaintAssessment } from "../zones/zoneEdits";
 import { normalizeZoneStroke, rasterizeZoneStroke } from "../zones/zoneRaster";
+import { ZONE_KIND_CONFIG } from "../content/zoneConfig";
 import type { ZoneStrokePoint } from "../zones/zone.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { Building } from "../content/buildingConfig";
@@ -33,8 +34,9 @@ export type ZoneBrushView = {
 };
 
 type Preview = { readonly cells: readonly number[]; readonly refused: ReadonlySet<number>; readonly noRoad: ReadonlySet<number>;
-  readonly lines: readonly PredictionLine[] };
-const EMPTY: Preview = { cells: [], refused: new Set(), noRoad: new Set(), lines: [] };
+  /** The stroke would paint nothing (wholly inside the wall): its cells show pale and the ring red. */
+  readonly blocked: boolean; readonly lines: readonly PredictionLine[] };
+const EMPTY: Preview = { cells: [], refused: new Set(), noRoad: new Set(), blocked: false, lines: [] };
 let last: { readonly key: readonly unknown[]; readonly preview: Preview } | null = null;
 
 export function zoneBrushPreview(state: GameState, view: ZoneBrushView): Preview {
@@ -50,11 +52,16 @@ export function zoneBrushPreview(state: GameState, view: ZoneBrushView): Preview
       preview = { ...EMPTY, cells: normalized === null ? [] : rasterizeZoneStroke(normalized, state).filter(cell => owned.has(cell)) };
     } else {
       const assessment = zonePaintAssessment(state, view.tool.target, stroke);
-      const refused = !assessment.ok && assessment.reason === "arable_inside_wall"
-        ? new Set(assessment.cells.filter(cell => cellInsideWall(state, cell))) : new Set<number>();
-      const noRoad = view.tool.target === "arable" ? cellsWithoutRoadAccess(state, assessment.cells.filter(cell => !refused.has(cell))) : new Set<number>();
+      // A kind barred inside the wall (arable): the stroke's cells inside it show red, the rest as they will be
+      // painted (C1c rule Z-9a keeps the outside cells of a stroke that crosses the wall; a stroke wholly inside is
+      // refused, and then every cell is red).
+      const normalized = ZONE_KIND_CONFIG[view.tool.target].forbiddenInsideWall ? normalizeZoneStroke(stroke) : null;
+      const raster = normalized === null ? assessment.cells : rasterizeZoneStroke(normalized, state);
+      const refused = new Set(normalized === null ? [] : raster.filter(cell => cellInsideWall(state, cell)));
+      const painted = assessment.ok ? assessment.cells : [];
+      const noRoad = view.tool.target === "arable" ? cellsWithoutRoadAccess(state, painted) : new Set<number>();
       const lines = zonePaintLines(state, view.tool.target, stroke);
-      preview = { cells: assessment.cells, refused, noRoad,
+      preview = { cells: raster, refused, noRoad, blocked: !assessment.ok,
         lines: noRoad.size === 0 ? lines : [...lines, { id: "zone-road-access", severity: "warn", text: ZONE_BRUSH_COPY.noRoadAccessCells(noRoad.size), sources: [] }] };
     }
   }
@@ -89,7 +96,7 @@ function cellsWithoutRoadAccess(state: GameState, cells: readonly number[]): Set
 export function drawZoneBrushOverlay(context: CanvasRenderingContext2D, state: GameState, view: ZoneBrushView, zoom: number): void {
   const preview = zoneBrushPreview(state, view);
   const tint = view.tool.target === "erase" ? PALETTE.ink : ZONE_STYLES[view.tool.target].line;
-  const anyRefused = preview.refused.size > 0;
+  const anyRefused = preview.blocked;
   for (const cell of preview.cells) {
     const refused = preview.refused.has(cell);
     context.fillStyle = refused ? withAlpha(PALETTE.vermilion, 0.5) : withAlpha(tint, anyRefused ? 0.12 : view.gesture === null ? 0.16 : 0.3);

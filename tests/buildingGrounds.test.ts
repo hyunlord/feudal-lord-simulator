@@ -217,3 +217,17 @@ test("Given a construction site that completes without touching the tiles When t
   assert.ok(after.grounds.yards.some(yard => yard.buildingId === house.id), "yard appears on completion");
   assert.ok(after.grounds.aprons.some(apron => apron.buildingId === house.id), "apron appears on completion");
 });
+
+test("Given an arable stroke that crosses the wall When it is previewed Then only its cells inside the wall are red and the outside cells show as painted", async () => {
+  const { cellInsideWall } = await import("../src/zones/zoneEdits");
+  const state = seedGroundState(2);
+  const tool = { target: "arable" as const, radius: 1, polygon: false };
+  // Row ty = 40 is outside the wall up to tx = 37 and inside from tx = 38.
+  const preview = zoneBrushPreview(state, { tool, gesture: { mode: "brush", points: [{ x: 35, y: 40.5 }, { x: 39.5, y: 40.5 }] }, hover: null });
+  const inside = preview.cells.filter(cell => cellInsideWall(state, cell));
+  assert.ok(inside.length > 0 && inside.length < preview.cells.length, "the stroke crosses the wall");
+  assert.deepEqual([...preview.refused].sort(), [...inside].sort(), "exactly the inside cells are red");
+  assert.equal(preview.blocked, false, "the outside cells will be painted (rule Z-9a)");
+  const whollyInside = zoneBrushPreview(state, { tool, gesture: { mode: "brush", points: [{ x: 41.5, y: 39.5 }, { x: 42.5, y: 40.5 }] }, hover: null });
+  assert.ok(whollyInside.blocked && whollyInside.refused.size === whollyInside.cells.length, "a stroke wholly inside is refused, all red");
+});
