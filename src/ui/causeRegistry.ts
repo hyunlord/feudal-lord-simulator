@@ -5,7 +5,7 @@ import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 
 export const CAUSE_REGISTRY = {
   operation_paused: { color: SEMANTIC_PALETTE.inkMuted, glyphId: 'operation_paused', glyphText: BUILDING_OPERATION_COPY.glyph, shortLabel: BUILDING_OPERATION_COPY.shortLabel },
-  storage_overflow: { color: SEMANTIC_PALETTE.earthDark, glyphId: 'storage_overflow', glyphText: '넘', shortLabel: STORAGE_OVERFLOW_COPY.shortLabel },
+  storage_overflow: { color: SEMANTIC_PALETTE.earthDark, glyphId: 'storage_overflow', glyphText: STORAGE_OVERFLOW_COPY.glyph, shortLabel: STORAGE_OVERFLOW_COPY.shortLabel },
   water: { color: SEMANTIC_PALETTE.water, glyphId: 'water', glyphText: '물', shortLabel: '물' },
   bread: { color: SEMANTIC_PALETTE.earthDark, glyphId: 'bread', glyphText: '빵', shortLabel: '빵' },
   delivery: { color: SEMANTIC_PALETTE.inkMuted, glyphId: 'delivery', glyphText: '길', shortLabel: '도로·운송' },

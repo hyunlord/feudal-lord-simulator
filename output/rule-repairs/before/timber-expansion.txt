@@ -1,0 +1,14 @@
+tick 48360: era hamlet -> palisade via confirm_palisade_proclamation
+tick 120000 era palisade eraProclaimedTick 48360 pop 176 idle 33
+req [["population",176,140],["market",1,1],["masonry",1,1],["stone",0,400],["coin",4390,200]]
+goal [{"id":"population","label":"인구","current":176,"target":60,"met":true},{"id":"era","label":"목책 시대 이상","current":1,"target":1,"met":true},{"id":"wall","label":"성벽 전체 완공","current":0,"target":1,"met":false}]
+segments [["000",true,"timber",false],["001",true,"timber",false],["002",true,"timber",false],["003",true,"timber",false],["004",true,"timber",false],["005",true,"timber",false],["006",true,"timber",false],["007",true,"timber",false],["008",true,"timber",false],["009",true,"timber",false],["010",true,"timber",false],["011",true,"timber",false],["012",false,"timber",true],["013",false,"timber",true],["014",false,"timber",true],["015",false,"timber",true],["016",false,"timber",true],["017",false,"timber",true]]
+sites [["palisade-000019-segment-012","palisade_segment","awaiting_materials",{"timber":60},{"timber":52},0,0],["palisade-000019-segment-013","palisade_segment","awaiting_materials",{"timber":60},{"timber":7},0,0],["palisade-000019-segment-014","palisade_segment","awaiting_materials",{"timber":60},{},0,0],["palisade-000019-segment-015","palisade_segment","awaiting_materials",{"timber":60},{},0,0],["palisade-000019-segment-016","palisade_segment","awaiting_materials",{"timber":60},{},0,0],["palisade-000019-segment-017","palisade_segment","awaiting_materials",{"timber":60},{},0,0]]
+logging-camp-50-40-0 logging_camp (50,40) workers 3 / 3 road true inv {"logs":1}
+storehouse-41-40-0 storehouse (41,40) workers 2 / 2 road true inv {"timber":12,"logs":96}
+construction-site-000001 sawmill (44,38) workers 2 / 2 road true inv {"logs":0,"timber":4}
+construction-site-000015 storehouse (50,42) workers 2 / 2 road true inv {"logs":100}
+construction-site-000020 market (43,46) workers 3 / 3 road true inv {}
+construction-site-000021 masonry (40,30) workers 3 / 3 road true inv {}
+buildings {"house":8,"well":1,"granary":1,"logging_camp":1,"storehouse":2,"sawmill":1,"wheat_farm":8,"mill":3,"chapel":1,"market":1,"masonry":1}
+next decision {"kind":"none"}

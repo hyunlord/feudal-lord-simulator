@@ -1,0 +1,5 @@
+P1 ordinary-site source choice + dispatch count: [{"home":"store-a","dest":{"kind":"construction_site","siteId":"construction-site-000001"},"pathLen":40,"cargo":{"resource":"timber","amount":8}}]
+P1 reserved: [["construction-site-000001",{"timber":8}],["construction-site-000002",{}]] treasury 100
+P2 schedules: [["seg-000-stone",{"kind":"queued","position":1}],["seg-001-stone",{"kind":"active"}],["seg-002-stone",{"kind":"active"}],["seg-003-stone",{"kind":"active"}]]
+P2 builders after window: [["seg-000-stone",0,"no_route"],["seg-001-stone",3,"none"],["seg-002-stone",3,"none"],["seg-003-stone",3,"none"]] idle 41
+P3 stall with stock+route (source busy irrelevant): awaiting_materials
