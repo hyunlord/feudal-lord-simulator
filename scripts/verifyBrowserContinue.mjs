@@ -102,11 +102,12 @@ export const byText = (selector, text) => `[...document.querySelectorAll(${JSON.
 export const byLabel = label => `document.querySelector('[aria-label=${JSON.stringify(label)}]')`;
 
 /** Reads a slot straight from IndexedDB: header fields plus counts and a SHA-256 of the state JSON. */
-export const readSlot = slotId => `(async () => {
+export const readSlot = (slotId, autoOnly = false) => `(async () => {
   const db = await new Promise((ok, fail) => { const r = indexedDB.open("feudal-lord-simulator-saves", 1); r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
   const get = (store, key) => new Promise((ok, fail) => { const r = db.transaction(store).objectStore(store).get(key); r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
   const all = store => new Promise((ok, fail) => { const r = db.transaction(store).objectStore(store).getAll(); r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
-  const metas = (await all("meta")).filter(m => /^(auto-\\d|manual)$/.test(m.slotId)).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
+  const metas = (await all("meta")).filter(m => /^(auto-\\d|manual)$/.test(m.slotId))
+    .filter(m => !${autoOnly} || m.slotId.startsWith("auto-")).sort((a, b) => b.savedAt.localeCompare(a.savedAt));
   const slot = ${JSON.stringify(slotId)} ?? metas[0]?.slotId;
   if (slot === undefined) { db.close(); return null; }
   const buffer = await get("slots", slot);
@@ -134,6 +135,16 @@ export const frameGaps = ms => `new Promise(done => { const stamps = []; const s
 
 export const resourceBarText = `document.querySelector(".resource-bar")?.innerText.replace(/\\s+/g, " ").trim()`;
 
+async function savePausedState(page) {
+  const count = await page.evaluate(`(window.__FLS_SAVE_METRICS__ ?? []).filter(m => m.reason === "manual").length`);
+  await page.click(byText("summary", "설정"));
+  await page.click(byText("button", "지금 저장"));
+  await page.waitFor(`(window.__FLS_SAVE_METRICS__ ?? []).filter(m => m.reason === "manual").length > ${count}`);
+  const saved = await page.evaluate(readSlot("manual"));
+  await page.click(byText("summary", "설정"));
+  return saved;
+}
+
 async function continueAndCompare(page, label, reference) {
   await page.waitFor(`${byText("button", "이어하기")} !== undefined`);
   const welcomeShot = await page.screenshot(`${label}-1-welcome-continue.jpg`);
@@ -143,12 +154,7 @@ async function continueAndCompare(page, label, reference) {
   await sleep(1_000);
   const barAfter = await page.evaluate(resourceBarText);
   const afterShot = await page.screenshot(`${label}-2-after-continue.jpg`);
-  // Persist the in-memory state through the product's own manual save, then read it back.
-  await page.click(byText("summary", "설정"));
-  await page.click(byText("button", "지금 저장"));
-  await page.waitFor(`${byText(".save-controls span", "저장했습니다")} !== undefined`);
-  const restored = await page.evaluate(readSlot("manual"));
-  await page.click(byText("summary", "설정")); // close the popover so it does not cover the speed seals
+  const restored = await savePausedState(page);
   const keys = ["tick", "population", "treasuryTimber", "treasuryCoin", "buildings", "houses", "constructionSites", "walkers", "stateSha256"];
   const mismatches = keys.filter(key => restored[key] !== reference.saved[key]);
   if (JSON.stringify(restored.stock) !== JSON.stringify(reference.saved.stock)) mismatches.push("stock");
@@ -166,8 +172,9 @@ export async function playAndPause(page, seconds, label) {
   await sleep(Math.max(0, started + seconds * 1_000 - Date.now()));
   await page.click(byLabel("일시 정지"));
   const playedSeconds = (Date.now() - started) / 1000;
-  await sleep(1_500); // pause-entry autosave is serialised when idle
-  const saved = await page.evaluate(readSlot(null));
+  const paused = await savePausedState(page);
+  const saved = await page.evaluate(readSlot(null, true));
+  if (saved?.stateSha256 !== paused?.stateSha256) throw new Error(`${label}: pause autosave differs from the paused city`);
   if (saved === null || saved.tick <= tickBefore) throw new Error(`${label}: the game did not advance past tick ${tickBefore}`);
   const bar = await page.evaluate(resourceBarText);
   const shot = await page.screenshot(`${label}-0-before.jpg`);
