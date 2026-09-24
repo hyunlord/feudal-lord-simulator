@@ -3,7 +3,7 @@ import { SEMANTIC_PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { getTile } from "../world/grid";
 import type { Tile } from "../world/world.types";
-import { TILE_H, TILE_W, tileToScreen } from "./iso";
+import { tileToScreen } from "./iso";
 import {
   groundDecalFor,
   roadConnectionArms,
@@ -74,7 +74,7 @@ export function drawRoadPath(
   context.fillStyle = SEMANTIC_PALETTE.earth;
   traceRoadBase(context, polygons);
   context.fill();
-  if (pattern !== null) fillRoadPattern(context, center, polygons, pattern);
+  if (pattern !== null) fillRoadPattern(context, polygons, pattern);
 
   context.fillStyle = withAlpha(SEMANTIC_PALETTE.stoneDark, 0.35);
   for (const [index, variant] of roadPebbleVariants(tile.tx, tile.ty, state.seed).entries()) {
@@ -85,24 +85,20 @@ export function drawRoadPath(
   }
 }
 
+// The texture fills the road polygon itself. It used to clip to the polygon and fillRect the tile box: the same
+// pixels (every road polygon lies inside that box), but on GPU canvases a pattern fillRect per road tile stalled
+// the compositor (~150 ms frames on hamlet views, B11 P-F1; docs/verification/b11-render-metrics/REPORT.md).
 function fillRoadPattern(
   context: CanvasRenderingContext2D,
-  center: Point,
   polygons: readonly (readonly RoadGroundPoint[])[],
   pattern: CanvasPattern,
 ): void {
   traceRoadBase(context, polygons);
   context.save();
   try {
-    context.clip();
     context.fillStyle = pattern;
     context.globalAlpha *= 0.18;
-    context.fillRect(
-      snapToPixel(center.x - TILE_W / 2),
-      snapToPixel(center.y - TILE_H / 2),
-      TILE_W,
-      TILE_H,
-    );
+    context.fill();
   } finally {
     context.restore();
   }

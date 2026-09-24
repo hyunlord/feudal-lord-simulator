@@ -47,7 +47,7 @@ const MODES = {
 const WIDTH = 1280, HEIGHT = 800;
 
 /** Opens the game with an injected state (null = DEFAULT_GAME_STATE) centred on a tile, 1× speed running. */
-export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '' }) {
+export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true }) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr });
   const page = await context.newPage();
   await page.routeWebSocket('**', socket => socket.close());
@@ -76,7 +76,7 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
   if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
   await page.keyboard.press('Escape');
-  await page.getByRole('button', { name: '1배속', exact: true }).click();
+  if (run) await page.getByRole('button', { name: '1배속', exact: true }).click();
   await page.waitForTimeout(1_500);
   return { context, page };
 }
