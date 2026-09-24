@@ -1,6 +1,5 @@
 import type { ResourceType } from "./resourceConfig";
 import type { TerrainType } from "./terrainConfig";
-import type { Era } from "./eraConfig";
 
 export type BuildingKind =
   | "house"
@@ -34,7 +33,6 @@ export interface BuildingDefinition {
   readonly buildCost: Partial<Record<ResourceType, number>>;
   readonly requiresAdjacentTerrain: TerrainType | null;
   readonly requiresRoad: boolean;
-  readonly unlockEra: Era;
   readonly production: ProductionSpec | null;
   readonly storageCapacity: number;
   readonly serviceRadius: number;
@@ -64,7 +62,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: {},
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: null,
     storageCapacity: 0,
     serviceRadius: 0,
@@ -78,7 +75,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 10 },
     requiresAdjacentTerrain: null,
     requiresRoad: false,
-    unlockEra: "hamlet",
     production: null,
     storageCapacity: 0,
     serviceRadius: 6,
@@ -92,7 +88,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: null,
     storageCapacity: 200,
     serviceRadius: 0,
@@ -106,7 +101,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: null,
     storageCapacity: 200,
     serviceRadius: 0,
@@ -120,7 +114,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 40 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: null,
     storageCapacity: 0,
     serviceRadius: 0,
@@ -134,7 +127,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 20 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: {
       output: "wheat",
       input: null,
@@ -153,7 +145,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 30 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: {
       output: "bread",
       input: "wheat",
@@ -172,7 +163,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 15 },
     requiresAdjacentTerrain: "forest",
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: {
       output: "logs",
       input: null,
@@ -191,7 +181,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 30 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "hamlet",
     production: {
       output: "timber",
       input: "logs",
@@ -210,7 +199,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 50 },
     requiresAdjacentTerrain: "rock",
     requiresRoad: true,
-    unlockEra: "palisade",
     production: {
       output: "stone_raw",
       input: null,
@@ -229,7 +217,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 45 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "palisade",
     production: {
       output: "stone",
       input: "stone_raw",
@@ -248,7 +235,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 60 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "palisade",
     production: null,
     storageCapacity: 0,
     serviceRadius: 8,
@@ -262,7 +248,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { timber: 100, stone: 60 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "stone_town",
     production: null,
     storageCapacity: 0,
     serviceRadius: 12,
@@ -276,7 +261,6 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     buildCost: { stone: 150 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "stone_town",
     production: null,
     storageCapacity: 0,
     serviceRadius: 0,

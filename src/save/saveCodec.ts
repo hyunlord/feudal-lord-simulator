@@ -1,9 +1,10 @@
+import { DEFAULT_SCENARIO_ID as CAMPAIGN_SCENARIO_ID } from "../content/scenario/coreScenarios";
+import { SCENARIOS } from "../content/scenario/registry";
 import type { GameState } from "../engine/engine.types";
 import { GAME_VERSION } from "./gameVersion";
 import { migrateSaveToLatest, saveSchemaVersionOf } from "./migrations";
 import { createSaveSummary } from "./saveSummary";
 import {
-  DEFAULT_SCENARIO_ID,
   SAVE_SCHEMA_VERSION,
   type GameStateSnapshot,
   type SaveEnvelope,
@@ -46,7 +47,7 @@ export function encodeSave(input: EncodeSaveInput): EncodedSave {
     gameVersion: input.gameVersion ?? GAME_VERSION,
     createdAt: input.createdAt,
     savedAt: input.savedAt,
-    scenarioId: input.scenarioId ?? DEFAULT_SCENARIO_ID,
+    scenarioId: input.scenarioId ?? input.state.scenarioId ?? CAMPAIGN_SCENARIO_ID,
     seed: String(input.state.seed),
     tick: input.state.tick,
     rngState: { kind: "derived", algorithm: "mulberry32/fnv1a-roaming-junction-v1", seed: input.state.seed },
@@ -200,6 +201,9 @@ export function assertGameStateSnapshot(value: unknown): asserts value is GameSt
     }
   }
   if (!["hamlet", "palisade", "stone_town"].includes(state.era as string)) throw new SaveFormatError("Save state era is unknown");
+  if (state.scenarioId !== undefined && (typeof state.scenarioId !== "string" || SCENARIOS.get(state.scenarioId) === undefined)) {
+    throw new SaveFormatError("Save state scenario is unknown");
+  }
   if (typeof state.pathCache !== "object" || state.pathCache === null) throw new SaveFormatError("Save state pathCache must be an object");
   if ((state.tiles as unknown[]).length !== (state.width as number) * (state.height as number)) {
     throw new SaveFormatError("Save state tiles do not cover the map");

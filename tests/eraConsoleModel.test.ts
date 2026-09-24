@@ -141,7 +141,7 @@ test("era console reports completed, working, route-less, and waiting wall segme
   });
 
   // When / Then
-  assert.equal(model.currentEraLabel, "목책마을");
+  assert.equal(model.currentEraLabel, "시장도시"); // B2: stage names come from scenario data
   assert.equal(model.wallProgress, "성벽 1/3 · 진행 중 1 · 경로 없음 1 · 대기 0");
   assert.equal(model.tooltip, "성벽 공사 인력 2명");
   assert.equal(model.diagnostic, null);
@@ -217,7 +217,7 @@ test("era console exposes Stone Town gauges and actual assigned wall labour", ()
   }));
 
   // When / Then
-  assert.equal(model.currentEraLabel, "목책마을");
+  assert.equal(model.currentEraLabel, "시장도시"); // B2: stage names come from scenario data
   assert.deepEqual(model.requirements.map((row) => [row.key, row.label, row.current, row.target, row.met]), [
     ["population", "인구", 140, 140, true],
     ["market", "시장", 1, 1, true],
@@ -241,7 +241,7 @@ test("era console labels the proclaimed Stone Town current era without enabling 
   });
 
   // When / Then
-  assert.equal(model.currentEraLabel, "석조 도시");
+  assert.equal(model.currentEraLabel, "요새 도시"); // B2: stage names come from scenario data
   assert.equal(model.action.enabled, false);
   assert.equal(model.action.reason, "이미 석조 도시가 선포되었습니다");
 });

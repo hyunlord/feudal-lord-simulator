@@ -2,7 +2,8 @@ import type { Era } from "../content/eraConfig";
 import type { SaveProblemKey } from "../content/saveCopy.ko";
 import type { GameState } from "../engine/engine.types";
 
-export const SAVE_SCHEMA_VERSION = 4;
+export const SAVE_SCHEMA_VERSION = 5;
+/** Envelope scenario id written by v0→v1 before scenarios existed; v4→v5 replaces it with the state scenario. */
 export const DEFAULT_SCENARIO_ID = "default";
 
 /**
@@ -29,6 +30,8 @@ export interface SaveSummary {
   readonly population: number;
   readonly era: Era;
   readonly problem: SaveProblemKey | null;
+  /** Player-facing scenario name (v5). Absent in summaries written before scenarios existed. */
+  readonly scenarioName?: string;
   readonly line: string;
 }
 

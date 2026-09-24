@@ -32,11 +32,11 @@ export interface ServicePlanningDiagnostic { readonly service: UrbanService; rea
 export interface ServicePlanningCollector { services?: readonly ServicePlanningDiagnostic[] }
 
 export function urbanServiceAction(state: GameState, diagnostic?: ServicePlanningCollector): AutoplayAction {
-  if (!isBuildingUnlocked('market', state.era)) return NONE;
+  if (!isBuildingUnlocked('market', state.era, state.scenarioId)) return NONE;
   const current = householdServices(state);
   const roadService = marketRoadService(state);
   for (const kind of ['market', 'church'] as const) {
-    if (!isBuildingUnlocked(kind, state.era)) continue;
+    if (!isBuildingUnlocked(kind, state.era, state.scenarioId)) continue;
     if (state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === kind)) continue;
     const underserved = state.buildings.filter(home => home.kind === 'house' && current.houses.has(home.id)
       && current.houses.get(home.id)?.[kind].kind !== 'served');

@@ -14,7 +14,8 @@ test("schema v1 reaches the latest schema without inventing timber observation h
   assert.ok(SAVE_SCHEMA_VERSION >= 3);
   assert.equal(migratedFrom, 1);
   assert.equal(envelope.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.deepEqual(envelope.state, original.state);
+  // v4 -> v5 adds only the default scenario (spec SC-14).
+  assert.deepEqual(envelope.state, { ...original.state, scenarioId: "core:campaign_market_town" });
   const next = advanceTick({ ...envelope.state, wallConstructionPriority: "balanced",
     wallConstructionReserve: { resource: "timber", sources: [], proclaimedTick: envelope.state.tick } });
   assert.equal(next.timberProductionWindow?.availableTimber, placementSpendableResource(next, "timber"));

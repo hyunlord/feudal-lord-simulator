@@ -6,7 +6,8 @@ import {
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { GameState } from "../engine/engine.types";
 import type { PlacementTool } from "../render/renderer";
-import { isBuildingUnlocked, placementSpendableResource } from "../world/placement";
+import { buildingUnlockStage, isBuildingUnlocked, placementSpendableResource } from "../world/placement";
+import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 
 export type BuildToolOption = {
   readonly tool: PlacementTool;
@@ -75,14 +76,14 @@ const TOOL_PURPOSES: Record<PlacementTool, string> = {
   road: "육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다",
 };
 
-function requirementsFor(kind: BuildingKind): readonly string[] {
+function requirementsFor(kind: BuildingKind, scenarioId?: string): readonly string[] {
   const definition = BUILDING_CONFIG_BY_KIND[kind];
   const requirements: string[] = [];
   if (definition.requiresRoad) requirements.push("길 인접 필요");
   if (definition.requiresAdjacentTerrain === "forest") requirements.push("숲 인접 필요");
   if (definition.requiresAdjacentTerrain === "rock") requirements.push("바위 인접 필요");
-  if (definition.unlockEra === "palisade") requirements.push("목책마을 이후");
-  if (definition.unlockEra === "stone_town") requirements.push("석조 도시 이후");
+  const stage = buildingUnlockStage(kind, scenarioId);
+  if (stage !== "village") requirements.push(SCENARIO_COPY.unlockedAfter(SCENARIO_COPY.stages[stage]));
   return requirements.length === 0 ? ["요구 조건 없음"] : requirements;
 }
 
@@ -113,7 +114,7 @@ export const BUILD_TOOL_OPTIONS: readonly BuildToolOption[] = [
 
 export function buildMenuGroups(state: GameState): readonly BuildToolGroup[] {
   const options = BUILDING_TOOL_OPTIONS
-    .filter((option) => isBuildingUnlocked(option.tool, state.era))
+    .filter((option) => isBuildingUnlocked(option.tool, state.era, state.scenarioId))
     .map((option) => ({
       ...option,
       affordable: buildToolAffordability(option.tool, state).affordable,

@@ -1,3 +1,5 @@
+import { scenarioOf, stageOf } from "../engine/scenarioState";
+import { getSettlementView } from "../engine/settlementView";
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { hasPalisadeTimberStorage } from "./onboardingBuildingTaskProgress";
@@ -282,4 +284,12 @@ function findBuilding(buildings: readonly Building[], buildingId: string): Build
 
 function manhattanDistance(left: Building, right: Building): number {
   return Math.abs(left.tx - right.tx) + Math.abs(left.ty - right.ty);
+}
+
+/**
+ * The standing "basic operations done" notice only fits a campaign town that is still a village with a goal
+ * ahead (B2 §6). It hides in the sandbox and once the settlement has moved on to a later stage.
+ */
+export function openGoalFitsScenario(state: GameState): boolean {
+  return scenarioOf(state).mode === "campaign" && stageOf(state) === "village" && getSettlementView(state).currentGoal !== null;
 }

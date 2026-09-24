@@ -87,7 +87,6 @@ test("Given Stone Town When reading civic building config Then church and keep h
     buildCost: { timber: 100, stone: 60 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "stone_town",
     production: null,
     storageCapacity: 0,
     serviceRadius: 12,
@@ -101,7 +100,6 @@ test("Given Stone Town When reading civic building config Then church and keep h
     buildCost: { stone: 150 },
     requiresAdjacentTerrain: null,
     requiresRoad: true,
-    unlockEra: "stone_town",
     production: null,
     storageCapacity: 0,
     serviceRadius: 0,
@@ -111,25 +109,22 @@ test("Given Stone Town When reading civic building config Then church and keep h
   assert.equal(CONSTRUCTION.REQUIRED_BUILDER_TICKS.keep, 1200);
 });
 
-test("Given earlier eras When placing church or keep Then they stay locked until Stone Town", () => {
+test("Given earlier stages When placing church or keep Then the church opens at market town (K4-1) and the keep at the fortified town", () => {
   // Given
   const hamlet = world({ era: "hamlet", timber: 300, stone: 300 });
   const palisade = world({ era: "palisade", timber: 300, stone: 300 });
   const stoneTown = world({ era: "stone_town", timber: 300, stone: 300 });
+  const locked = { ok: false, reason: PlacementFailure.locked_era };
 
   // When / Then
-  for (const kind of ["church", "keep"] as const satisfies readonly BuildingKind[]) {
-    const origin = VALID_ORIGINS[kind];
-    assert.deepEqual(canPlaceBuilding(hamlet, kind, origin.tx, origin.ty), {
-      ok: false,
-      reason: PlacementFailure.locked_era,
-    });
-    assert.deepEqual(canPlaceBuilding(palisade, kind, origin.tx, origin.ty), {
-      ok: false,
-      reason: PlacementFailure.locked_era,
-    });
-    assert.deepEqual(canPlaceBuilding(stoneTown, kind, origin.tx, origin.ty), { ok: true });
-  }
+  const church = VALID_ORIGINS.church;
+  assert.deepEqual(canPlaceBuilding(hamlet, "church", church.tx, church.ty), locked);
+  assert.deepEqual(canPlaceBuilding(palisade, "church", church.tx, church.ty), { ok: true });
+  assert.deepEqual(canPlaceBuilding(stoneTown, "church", church.tx, church.ty), { ok: true });
+  const keep = VALID_ORIGINS.keep;
+  assert.deepEqual(canPlaceBuilding(hamlet, "keep", keep.tx, keep.ty), locked);
+  assert.deepEqual(canPlaceBuilding(palisade, "keep", keep.tx, keep.ty), locked);
+  assert.deepEqual(canPlaceBuilding(stoneTown, "keep", keep.tx, keep.ty), { ok: true });
 });
 
 test("Given multi-resource costs When spending is committed Then placement and menu report exact shortages", () => {

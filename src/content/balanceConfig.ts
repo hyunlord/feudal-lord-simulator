@@ -14,6 +14,8 @@ export const BALANCE = {
   WORKERS_PER_RESIDENT: 0.5,
   CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
   STARTING_TIMBER: 120,
+  /** Provisional (B2): one calendar year per minute at 1x; four 300-tick seasons. Tune after player timing. */
+  TICKS_PER_YEAR: 1200,
 } as const;
 
 export const BALANCE_CONFIG = BALANCE;

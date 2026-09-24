@@ -42,4 +42,5 @@ export interface SettlementView {
   readonly progress: SettlementProgress;
   readonly crisis: "none" | "food_shortage" | "abandonment_risk";
   readonly outcome: SettlementOutcome;
+  readonly mode: "campaign" | "sandbox";
 }

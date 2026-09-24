@@ -53,12 +53,16 @@ if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(
   const out = resolve((sourceVersion === null ? process.argv[2] : process.argv[4]) ?? resolve(ROOT, `fixtures/saves/v${SAVE_SCHEMA_VERSION}`));
   mkdirSync(out, { recursive: true });
   const states = sourceVersion === null ? buildSaveFixtureStates() : null;
-  const manifest = SAVE_FIXTURES.map(fixture => {
+  // Re-encoding carries every fixture of the source version forward (e.g. v4's hand-added timber-shortage).
+  const fixtures: readonly { readonly id: string; readonly description: string }[] = sourceVersion === null ? SAVE_FIXTURES
+    : (JSON.parse(readFileSync(resolve(ROOT, `fixtures/saves/v${sourceVersion}/manifest.json`), "utf8")) as { fixtures: { id: string; description: string }[] })
+      .fixtures.map(({ id, description }) => ({ id, description }));
+  const manifest = fixtures.map(fixture => {
     const sourceFile = sourceVersion === null ? null : `fixtures/saves/v${sourceVersion}/${fixture.id}.save.json`;
     const sourceBytes = sourceFile === null ? null : readFileSync(resolve(ROOT, sourceFile));
     const state = states === null
       ? decodeSave(new Uint8Array(sourceBytes ?? [])).envelope.state
-      : states[fixture.id];
+      : states[fixture.id as (typeof SAVE_FIXTURES)[number]["id"]];
     const encoded = encodeSave({ state, createdAt: FIXED_TIME, savedAt: FIXED_TIME, gameVersion: GAME_VERSION });
     writeFileSync(resolve(out, `${fixture.id}.save.json`), encoded.bytes);
     return { ...fixture, ...(sourceBytes === null ? {} : { migratedFrom: sourceVersion, sourceFile,

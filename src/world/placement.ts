@@ -1,3 +1,5 @@
+import { scenarioById } from "../content/scenario/registry";
+import { STAGE_ORDER, type StageId } from "../content/scenario/types";
 import {
   BUILDING_CONFIG_BY_KIND,
   type Building,
@@ -44,20 +46,29 @@ type ResourceWorldView = WorldView & {
   readonly buildings?: readonly Building[];
   readonly constructionSites?: readonly ConstructionSite[];
   readonly era?: Era;
+  readonly scenarioId?: string;
   readonly palisade?: Pick<WallBoundary, "segments"> | null;
 };
 
-const ERA_ORDER = {
+const ERA_STAGE_INDEX = {
   hamlet: 0,
   palisade: 1,
   stone_town: 2,
 } as const satisfies Record<Era, number>;
 
+/** The settlement stage whose `unlocks` list contains `kind` (spec SC-5: the only unlock source). */
+export function buildingUnlockStage(kind: BuildingKind, scenarioId?: string): StageId {
+  const stage = scenarioById(scenarioId).stages.find(candidate => candidate.unlocks.includes(kind));
+  if (stage === undefined) throw new RangeError(`${kind} is never unlocked`);
+  return stage.id;
+}
+
 export function isBuildingUnlocked(
   kind: BuildingKind,
   era: Era = "hamlet",
+  scenarioId?: string,
 ): boolean {
-  return ERA_ORDER[era] >= ERA_ORDER[BUILDING_CONFIG_BY_KIND[kind].unlockEra];
+  return ERA_STAGE_INDEX[era] >= STAGE_ORDER.indexOf(buildingUnlockStage(kind, scenarioId));
 }
 
 function isBuildableTerrain(terrain: TerrainType): boolean {
@@ -143,7 +154,7 @@ export function canPlaceBuilding(
   const origin = { tx, ty };
   const footprint = footprintTiles(origin, definition);
 
-  if (!isBuildingUnlocked(kind, world.era ?? "hamlet")) {
+  if (!isBuildingUnlocked(kind, world.era ?? "hamlet", world.scenarioId)) {
     return { ok: false, reason: PlacementFailure.locked_era };
   }
 
