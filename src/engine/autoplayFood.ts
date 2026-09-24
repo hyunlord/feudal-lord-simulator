@@ -1,3 +1,4 @@
+import { wheatTransportCapacityAction } from './autoplayWheatTransportRecovery';
 import { foodEntranceBuildAction } from './autoplayFoodEntrance';
 import { foodTransportGranaryAction } from './autoplayFoodTransport';
 import { foodRouteRepairAction } from './autoplayFoodRoutes';
@@ -55,6 +56,8 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   if (decision?.reason === 'wheat_transport_blocked') {
     const storage = foodTransportGranaryAction(state);
     if (storage.kind !== 'none') return finish(storage, 'transport_storage_selected');
+    const capacity = wheatTransportCapacityAction(state);
+    if (capacity.kind !== 'none') return finish(capacity, 'transport_capacity_selected');
   }
   const recovery = decision?.kind ?? null;
   if (diagnostic !== undefined) diagnostic = { ...diagnostic, completeChain, recovery };

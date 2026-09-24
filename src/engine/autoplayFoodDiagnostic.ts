@@ -4,7 +4,7 @@ import type { AutoplayAction } from './autoplay.types';
 import type { AutoplayFoodTransientConfirmation } from './autoplayFoodTransient';
 import type { GameState } from './engine.types';
 
-export type FoodDiagnosticReason = MeasuredFoodReason | 'food_route_repair' | 'transport_storage_selected' | 'facility_limit' | 'not_reached' | 'no_housing' | 'pending_chain' | 'active_observation'
+export type FoodDiagnosticReason = MeasuredFoodReason | 'food_route_repair' | 'transport_storage_selected' | 'transport_capacity_selected' | 'facility_limit' | 'not_reached' | 'no_housing' | 'pending_chain' | 'active_observation'
   | 'coverage_selected' | 'recovery_deferred' | 'recovery_selected' | 'repeat_blocked' | 'staff_blocked'
   | 'build_returned_none' | 'transient_metadata_only' | 'measured_no_recovery' | 'unmeasured_starving_guard'
   | 'bootstrap_selected' | 'bootstrap_exhausted';
