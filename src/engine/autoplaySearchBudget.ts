@@ -16,6 +16,7 @@ export function spendAutoplaySearch(work = 1): boolean {
   return true;
 }
 export function autoplaySearchActive(): boolean { return active !== undefined; }
+export function autoplaySearchWorkUsed(): number | undefined { return active?.used; }
 export function autoplaySearchExhausted(): boolean { return active?.exhausted ?? false; }
 export function markAutoplaySearchLimit(): void { if (active !== undefined) active.hit = true; }
 export function runAutoplaySearch<T>(run: () => T, diagnostic?: SearchDiagnosticCollector, limit = DEFAULT_SEARCH_WORK * 10): T {

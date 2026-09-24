@@ -90,3 +90,17 @@
 회귀를 먼저 작성해12×12 입력에서 이웃 목록 계산4,002회로 실패했고, 수정 후 지도크기의4배 이하로 통과했다. 기존 BFS에서 미리 생성한 네 방향/경로 역순·대각·다리·자연도시11개 성문 목록 및 이미 선택된 성문22비교가 동일하다. 입력과 출처는 `tests/fixtures/exterior-gate-plans.*`다. 관련23/23, typecheck, diff 검사 통과.
 
 원본 `a215dab` 모듈 전체를 동결한 번들에서 이 성문 모듈만 바꿔 비교했다. 자연99,840틱 선포 projection은1,040.688→315.193ms, 전체 결정은3,361.462→2,072.739ms였다. 제안·행동·원인 기록과 전체 projected GameState가 모두 같았고 상태 SHA-256은 `c0a3e4917e088dc6a76a30dd1e0318db0f6b47cd74136a4bbb625862dcf45219`다. 다른 가드레일 실행 중 측정이라 절대시간은 참고값이다. 증빙: `r1-gate-before/after-result.json`, `r1-gate-before/after-state.json`, `r1-gate-neighbors-red/green.log`, `r1-gate-focused.log`.
+
+### 완료한 서비스 증명의 결정 간 재사용 — 예산 비용 재청구
+
+가설은 (1) 같은 지형/점유의 지역·공동 서비스 증명 반복이 비용을 지배한다, (2) 완료 증명에 cold 작업량을 기록해 재청구하면 캐시 온도와 결정론을 분리할 수 있다, (3) 정렬한 ID 집합만으로는 검색 순서별 비용을 보존하지 못하므로 실제 입력 순서도 키에 필요하다는 세 가지였다.
+
+`autoplayServiceSpace.ts`에 최대32 layout의 완료 증명 메모를 두었다. 기존 decision 내부 캐시는 계속 결정 시작 때 초기화하고 기존대로0 추가 작업량으로 재사용한다. 결정 간 메모는 활성 예산 안에서 **완료한** local witness 및 joint result만 저장한다. inactive/unbounded 호출과 불완전 탐색은 저장하지 않는다. 메모 hit는 `spendAutoplaySearch(coldWork)`를 먼저 호출하여 실제 재탐색과 같은 budget used/hit/exhausted를 만들고, 부족하면 증명을 노출하지 않는다. 검색 예산과 합법성 규칙을 바꾸지 않았다.
+
+키는 기존 정확한 layout signature(지도크기, 지형, 도로/점유, 건물 ID·위치·점유·일시정지, 성벽·문·공사 경로, 공급원 membership)에 실제 조회 상태의 건물·공급원 ID 순서를 추가한다. 공급원 목록은 현재 목재/석재 재고와 국고 양수 여부를 반영하므로 재고 변화가 공급원 membership을 바꾸면 키가 달라진다. 양수 membership을 유지한 재고 크기, 인력, 틱, 주택 등급·입주·빵은 미래 구조 증명의 결과를 바꾸지 않는다: 시설은 가상으로 충원하고 배치의 자재 부족은 허용하며 서비스 수요는 필지 면적이고 주민 수가 아니다. Set은 읽기 전용으로 내부 공유하며 호출자가 수정할 참조를 외부 반환하지 않는다. 캐시 초기화/계수는 검증용 export이며 GameState/저장 형식에 추가하지 않았다.
+
+실측(동일 자연 seed3 108000 fixture, full advisor, 상태 복사 포함): 변경 전 cold/반복902·807·797·817ms, 변경 후971·297·276·273ms. 첫 호출은 여전히 cold이며 반복3회 중앙값807→276ms. 네 번의 action·diagnostic 전체가 동일했다. 결과는 전체 FPS나 가드레일 통과 증거가 아니다. 원시 JSONL은 `/tmp/fls-r1fix-20260924/service-memo-{before,after}.jsonl`.
+
+추가 자연 seed4 264000 상태에서 벌목장 원목만 증가시켜 공급원 membership을 유지한4개 입력을 cold-clear와 warm순차 방식으로 비교했다. 각 입력의 action·diagnostic 전체 동일, 모두 search_budget_hit192 유지, 메모 hit180. cold 2235·2186·1548·1800ms / warm1466·171·168·157ms. 이 측정은 테스트 병행 중 참고값이다. `/tmp/fls-r1fix-20260924/service-memo-seed4.jsonl`. 초안 실험에서 틱만 앞당기면 생산 관측창이 오래되어 다른 조기 종료 분기를 타는 것을 발견해 그 자료는 `service-memo-seed4-invalid-temporal.jsonl`로 분리하고 성능 근거에서 제외했다. 틱·인력·등급·재고 크기 변화에 대한 구조 증명 동등성은 별도 단위시험으로 확인한다.
+
+회귀는 fulladvisor cold/warm/clear, 정확한 비용의 직전·동일·직후와0·1·6·7 예산, incomplete→full, inactive→bounded, building/source 순서(같은 decision 안 교차 포함), 재고로 공급원이 변함, 일시정지, 도로 변경, 32 layout 상한을 포함한다. 기존 서비스 수용량·합필·공동시설 상한 검사도 유지했다. 최종 관련 테스트와 typecheck는 `service-memo-final-tests.log` 및 통합 담당 로그를 따른다.
