@@ -9,7 +9,7 @@
 |---|---|---:|---|
 | `DESIGN_MASTER_v2.3.md` | [DESIGN_MASTER.md](DESIGN_MASTER.md) | 28278 | `749bb0e903ced7713b4d860e7b3a123282f059d372c317c0a4d2990dc8dd813f` |
 | `ORGANIC_WORLD_SYNTHESIS.md` | [organic-world/SYNTHESIS.md](organic-world/SYNTHESIS.md) | 6167 | `9d94604921ab01dc066536fa81eb88c48039e0c4975f8d40d05090bd1e4ba84f` |
-| `ROADMAP_v2.3.md` | [ROADMAP.md](ROADMAP.md) | 12169 | `002096be6851b74babd97311c691f4820ce0d2327062ac47ae27e85a670c2c80` |
+| `ROADMAP_v2.3.md` | [ROADMAP_v2.3.md](ROADMAP_v2.3.md) (B1에서 이름 변경, 이전 `ROADMAP.md`) | 12169 | `002096be6851b74babd97311c691f4820ce0d2327062ac47ae27e85a670c2c80` |
 | `fable_organic_walled_town_design_v1.md` | [organic-world/fable-v1.md](organic-world/fable-v1.md) | 41370 | `838529987fee0ae7a9cd2e99e205d5da1572ba40d5964ce624e8488fcc36489d` |
 | `v3-a/DESIGN_organic-world_v3_response.md` | [organic-world/v3-a/DESIGN_organic-world_v3_response.md](organic-world/v3-a/DESIGN_organic-world_v3_response.md) | 58944 | `0999f61e649571cf7f7de9f5c448d8529b0012bf41258a690a7f349c7deb752d` |
 | `v3-a/figures/F1-layer-architecture.svg` | [organic-world/v3-a/figures/F1-layer-architecture.svg](organic-world/v3-a/figures/F1-layer-architecture.svg) | 14040 | `17c7f1436389ccadc00fa11a3aa916b28ac86b2af0437ac7741c19edcde531cd` |
@@ -50,3 +50,15 @@ v3-B 본문은 아래 보조 메모·도판을 참조하지만 ZIP에 없고 현
 - `diagrams/01-architecture.svg`
 - `diagrams/03-stage1-fixture.svg`
 - `evidence/contract-challenge.md`
+
+## B1 이관 (2026-09-24)
+
+입력: `to_ClaudeCode_B1.zip`. 본문을 바이트 그대로 복사했다. 이전 로드맵 v2.3은 [ROADMAP_v2.3.md](ROADMAP_v2.3.md)로 이름만 옮겼으며 바이트는 위 S0 행의 SHA와 같다. 조사 원문의 `cite…turn…` 표기는 조사 도구가 남긴 원문 인용 표지이며 해석하거나 링크로 바꾸지 않았다.
+
+| ZIP 안 원본 | 저장소 파일 | 바이트 | SHA-256 |
+|---|---|---:|---|
+| `claude_B1/CONTENT_DESIGN_v1.md` (v1.1) | [CONTENT_DESIGN.md](CONTENT_DESIGN.md) | 20122 | `d2f3793f0c386a7093ee5d474760806e7e6c0421423de7a3bd92e22406f995eb` |
+| `claude_B1/ROADMAP_v3.md` | [ROADMAP.md](ROADMAP.md) | 9692 | `9cf46da362e1e7163d283ed091dc2fad61b1b82f60a7121540197b128c85d7b7` |
+| `claude_B1/ASSET_PLAN_v1.md` | [ASSET_PLAN.md](ASSET_PLAN.md) | 8221 | `e39fd8a0fb58fdc46635ea00c7644a5dd5f53f554b70361b8f92b3269c357e08` |
+| `claude_B1/research_content_catalog_2026-09-24.md` | [../research/2026-09-24-content-catalog.md](../research/2026-09-24-content-catalog.md) | 77873 | `537726b262d0d1306d4e9ad69388e5ffe248864dd8bf361da4296b0787631029` |
+| (S0 `ROADMAP_v2.3.md`, 보존) | [ROADMAP_v2.3.md](ROADMAP_v2.3.md) | 12169 | `002096be6851b74babd97311c691f4820ce0d2327062ac47ae27e85a670c2c80` |

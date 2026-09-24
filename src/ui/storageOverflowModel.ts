@@ -2,6 +2,7 @@ import type { Building } from '../content/buildingConfig';
 import { storageUsage } from '../economy/storage';
 import type { CauseDetail } from './causeRegistry';
 import { STORAGE_OVERFLOW_COPY } from './storageOverflowCopy.ko';
+import { buildingSource } from '../contracts';
 
 /** Overflow is derived from physical stock only, not incoming reservations. */
 export function storageOverflowCause(building: Building): CauseDetail | null {
@@ -10,5 +11,5 @@ export function storageOverflowCause(building: Building): CauseDetail | null {
   const overflow = Math.max(0, usage.used - usage.capacity);
   return overflow === 0 ? null : { causeId: 'storage_overflow', requirement: 'production',
     reason: 'storage_overflow', label: STORAGE_OVERFLOW_COPY.label(overflow),
-    used: usage.used, capacity: usage.capacity };
+    used: usage.used, capacity: usage.capacity, sources: [buildingSource(building.id)] };
 }

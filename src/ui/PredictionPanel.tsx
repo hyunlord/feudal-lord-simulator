@@ -1,12 +1,12 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import type { PredictionLine } from './predictionTypes';
+import { PREDICTION_SEVERITY_TONE, toPredictionLine, type PresentablePredictionLine } from './predictionTypes';
 import type { Point } from '../render/camera';
 
-const LINE_SYMBOLS = { neutral: { glyph: '·', label: '안내' }, positive: { glyph: '✓', label: '충족' },
-  warning: { glyph: '△', label: '주의' }, negative: { glyph: '×', label: '미충족' } } as const;
+const LINE_SYMBOLS = { info: { glyph: '·', label: '안내' }, ok: { glyph: '✓', label: '충족' },
+  warn: { glyph: '△', label: '주의' }, block: { glyph: '×', label: '미충족' } } as const;
 
 export type PredictionPresentation = {
-  readonly lines: readonly PredictionLine[];
+  readonly lines: readonly PresentablePredictionLine[];
   readonly position: Point;
 };
 
@@ -26,8 +26,8 @@ export function PredictionPanel({ lines, position }: PredictionPresentation) {
   if (lines.length === 0) return null;
   return <aside ref={panelRef} className="prediction-panel" data-testid="placement-prediction-panel" aria-label="행동 결과 예측"
     style={{ left: `clamp(12px, ${position.x}px, calc(100% - 372px))`, top: `clamp(var(--resource-height), ${position.y}px, calc(100% - var(--command-height) - ${height + 12}px))` }}>
-    <ul>{lines.map(line => <li key={line.id} className={`prediction-line prediction-line--${line.tone}`}>
-      <span className="prediction-line-symbol" role="img" aria-label={LINE_SYMBOLS[line.tone].label}>{LINE_SYMBOLS[line.tone].glyph}</span><span>{line.text}</span>
+    <ul>{lines.map(toPredictionLine).map(line => <li key={line.id} className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`}>
+      <span className="prediction-line-symbol" role="img" aria-label={LINE_SYMBOLS[line.severity].label}>{LINE_SYMBOLS[line.severity].glyph}</span><span>{line.text}</span>
     </li>)}</ul>
   </aside>;
 }

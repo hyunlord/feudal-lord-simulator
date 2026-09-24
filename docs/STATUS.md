@@ -1,16 +1,20 @@
 # 현재 상태
 
-갱신: 2026-09-24. 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-24(B1). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
-**R1-fix 관문 통과**: 코드 고정 `0725764`에서 R-T17/17, 기준선 `7db9df85` 조건 가드레일5/5, 원본 선택 탐침 재현0/7, 느린 결정69/69를 확인했다. 서비스 우선권·실제 공사 인력·가동 중지·석벽 병렬·취소 화물 귀환·판매 비축·목재/식량 회복·검색 예산을 구현했고 저장v3/v4로 이행했다.
-
-모든 seed가 L4 24/24·서비스 공백0·미완료 공사0·연속 안정24,000틱·시설 상한·경고10% 미만, 실제25분 이내다. 소스 고정본 전체2,570/2,570(Phase9 포함)·typecheck·build 통과. 마지막 보고 커밋의 새 클론 검증은 이 커밋 작성 시점에 대기 중이다. 검증 영수증은 `/tmp/fls-r1fix-20260924/final-verification/receipt.json`과 최종 증빙 ZIP에 남긴다. [최종 보고서](../output/rule-repairs/REPORT.md). 관문 밖 추가 구현은 하지 않는다.
+- **B1 공통 데이터 계약 관문 통과**(Claude Code): 단위7/7 · 표시 SHA 전후 일치5/5 상태 · 깨끗한 클론2,577/2,577(Phase 9 포함)·typecheck·build · 문서 링크121/121. `src/contracts/`에 설계서 11절의 `SourceRef`(10종)·`EffectSpec`(5종)·`AppliedEffect`·`PredictionLine` 타입과 파생·비저장 효과 파이프(`EffectRegistry`, 아직 읽는 규칙 없음)를 두고, 원인 등록표·예측 줄·시장 판매 수입·`firstBlocker`를 어댑터로 연결했다. 게임 규칙·저장 형식·표시 변화 없음. 콘텐츠 설계 v1.1·로드맵 v3·에셋 계획 v1·조사 원문을 이관했다. [B1 보고서](verification/b1-contracts/REPORT.md).
+- **D1a 곡선 렌더 1단계 관문 통과·본선 병합**(Claude Code): 플래그 `RENDER_BOUNDARY_V2` 기본 끔. 관문 5/5, 아래 "마지막 종료 작업"과 [D1a 보고서](verification/d1a/REPORT.md). 기본 켬 여부는 사용자 결정.
+- 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
 
 **D1a 곡선 렌더 1단계**(Claude Code, 렌더·경계층·온보딩 캐시·에셋·테스트만): 플래그 `RENDER_BOUNDARY_V2`(기본 **끔**, 설정 메뉴 토글·URL `render-boundary-v2=1`)를 켜면 도로가 셀 사슬에서 파생한 굽은 리본(흙길/석재길 스트립, 전환 섞기)으로, 숲 가장자리와 밭 무리가 공유 윤곽선 + 데칼로 그려진다. 경계층 `src/world/boundary`(변 소유·파생·비저장), 8×8 지면 청크 캐시. 관문 5개 통과: ①도로 중심선 도로 칸 밖 최대 0.125칸·숲 0.25·밭 0.125(seed1~5·12×12), ②역순 입력·재로드 화면 SHA 동일, ③24필지 켬 frameWork 3.8/8.8 ms(B11 11.6/14.3), GPU Commit 55~70% 감소, ④도로 설치·철거·밭 완공 직후 같은 프레임 갱신·오래된 그림 0, ⑤끔이면 픽셀 동일 10/10. 온보딩 안내 메모로 새 게임 중앙값 16.1→4.7 ms. Astra 에셋 7장 설치·대장 7행(지시서의 8장 중 1장은 ZIP에 런타임 파일이 없음). 기본 켬 여부는 사용자 결정. [D1a 보고서](verification/d1a/REPORT.md).
+
+**R1-fix 관문 통과·종료**: 코드 고정 `0725764`에서 R-T17/17, 기준선 `7db9df85` 조건 가드레일5/5, 원본 선택 탐침 재현0/7, 느린 결정69/69를 확인했다. 서비스 우선권·실제 공사 인력·가동 중지·석벽 병렬·취소 화물 귀환·판매 비축·목재/식량 회복·검색 예산을 구현했고 저장v3/v4로 이행했다.
+
+모든 seed가 L4 24/24·서비스 공백0·미완료 공사0·연속 안정24,000틱·시설 상한·경고10% 미만, 실제25분 이내다. 소스 고정본 전체2,570/2,570(Phase9 포함)·typecheck·build 통과. 마지막 보고 커밋의 새 클론 검증은 이 커밋 작성 시점에 대기 중이다. 검증 영수증은 `/tmp/fls-r1fix-20260924/final-verification/receipt.json`과 최종 증빙 ZIP에 남긴다. [최종 보고서](../output/rule-repairs/REPORT.md). 관문 밖 추가 구현은 하지 않는다.
 
 **B11 렌더 계측**(Claude Code, 렌더·스크립트·테스트만): 증빙 모드 전용 단계별 시간·canvas 호출 수(`src/render/renderStageProbe.ts`, 단계 합 = frameWork 99.9~100%, 증빙 모드 밖 미실행 테스트), 벤치 `scripts/renderStageBenchmark.mjs`. P-F1(초반 도시 프레임 150~200ms)은 headed·headless 모두 GPU에서 재현됐고, 원인은 도로 칸 패턴 `fillRect`였다. 다각형 `fill`로 바꿔 수정했다(그림 동일, 인구 176 rAF 150→16.7ms). 기준선 14칸과 D1a 제안은 [B11 보고서](verification/b11-render-metrics/REPORT.md). 다음 후보: 새 게임 온보딩 오버레이 14ms/프레임.
 
@@ -22,7 +26,11 @@
 
 ## 다음 작업
 
-**R1-fix는 관문 통과 후 종료한다.** 다음 작업은 사용자 지시를 기다린다. B11·B1 및 D1a 이후 기능은 [로드맵](design/ROADMAP.md)의 선행 조건을 따르며 이 문서의 이관만으로 착수하지 않는다.
+**B2 시나리오·시대**가 다음 엔진 작업이다(로드맵 v3). K4(석벽 선택 프로젝트)와 시대 5기가 B2 범위이며, 현재 번영 승리의 석벽 완공 조건은 B2 지시서가 바꾸기 전까지 유지한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따르며 문서 이관만으로 착수하지 않는다.
+
+## 알려진 문제
+
+- **시설 밀도(관찰, 미수정)**: R1-fix 가드레일(`0725764`)의 24필지 도시는 seed 1~5에서 건물/필지 3.79~4.12, 방앗간/밀밭 16/25~20/25(0.64~0.80)이다. 기준선 `7db9df85`는 3.17~3.33, 8/24~9/21(0.33~0.43)이었다. 밀밭≤·밀 0 방앗간 0%로 가드레일 안이지만 도시가 다시 시설 밀도로 기울 수 있다. 원인 후보는 R-8 밀 처리 복구와 식량 여유 `BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR = 1.05`(`src/content/balanceConfig.ts:12`)이며, B2/C1에서 판단한다. [seed별 표](verification/b1-contracts/mill-density.md).
 
 ## 결정 대기
 

@@ -2,6 +2,7 @@ import { STORAGE_OVERFLOW_COPY } from './storageOverflowCopy.ko';
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { SEMANTIC_PALETTE } from '../content/palette';
 import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
+import type { SourceRef } from '../contracts';
 
 export const CAUSE_REGISTRY = {
   operation_paused: { color: SEMANTIC_PALETTE.inkMuted, glyphId: 'operation_paused', glyphText: BUILDING_OPERATION_COPY.glyph, shortLabel: BUILDING_OPERATION_COPY.shortLabel },
@@ -26,4 +27,6 @@ export type CauseDetail = Readonly<{
   used?: number;
   capacity?: number;
   distance?: number;
+  /** Where the cause comes from (shared `SourceRef` contract). Today: the diagnosed building only. */
+  sources: readonly SourceRef[];
 }>;

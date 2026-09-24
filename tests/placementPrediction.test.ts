@@ -9,6 +9,9 @@ import { allocateBuildingAndConstructionLabour } from '../src/population/labour'
 import { buildingHasRequiredRoadAccess } from '../src/engine/roadAccess';
 import { householdServices } from '../src/engine/householdServices';
 import { constructionSiteId, createPalisadeConstructionSite } from '../src/economy/construction';
+import { toPredictionLine, type PresentablePredictionLine } from '../src/ui/predictionTypes';
+
+const severityOf = (line: PresentablePredictionLine | undefined) => line === undefined ? undefined : toPredictionLine(line).severity;
 
 function fixture(): GameState {
   return { ...DEFAULT_GAME_STATE, width: 24, height: 24, era: 'stone_town', population: 100, idleWorkers: 40, treasuryTimber: 999,
@@ -37,7 +40,7 @@ for (const [kind, service] of [['well','water'],['market','market'],['church','c
 test('understaffed market forecasts no service and failed worker line',()=>{
   const state={...fixture(),population:0,idleWorkers:0};
   const prediction=buildingPlacementPrediction(state,'market',{tx:6,ty:3});
-  assert.equal(prediction.lines.find(l=>l.id==='workers')?.tone,'negative');
+  assert.equal(severityOf(prediction.lines.find(l=>l.id==='workers')),'block');
   assert.match(prediction.lines.find(l=>l.id==='supply')?.text??'',/0\/24/);
 });
 test('invalid reason is Korean and road access does not invent a placement rejection',()=>{
@@ -45,7 +48,7 @@ test('invalid reason is Korean and road access does not invent a placement rejec
   assert.match(buildingPlacementPrediction(state,'well',{tx:3,ty:5}).lines[0]?.text??'',/점유 충돌/);
   const disconnected=buildingPlacementPrediction(state,'market',{tx:6,ty:10});
   assert.equal(disconnected.placement.ok,true);
-  assert.equal(disconnected.lines.find(l=>l.id==='road')?.tone,'negative');
+  assert.equal(severityOf(disconnected.lines.find(l=>l.id==='road')),'block');
 });
 test('bridge counts and costs use current road rules and distinguish patterns',()=>{
   const state=fixture(); state.tiles=state.tiles.map(t=>t.ty===10 && t.tx>=5 && t.tx<=7?{...t,terrain:'water'}:t);
@@ -74,8 +77,8 @@ test('new state invalidates cached worker forecast even on the same tile',()=>{
   const state=fixture(); const first=buildingPlacementPrediction(state,'market',{tx:6,ty:3});
   const second=buildingPlacementPrediction({...state,population:0},'market',{tx:6,ty:3});
   assert.notEqual(first,second);
-  assert.equal(first.lines.find(l=>l.id==='workers')?.tone,'positive');
-  assert.equal(second.lines.find(l=>l.id==='workers')?.tone,'negative');
+  assert.equal(severityOf(first.lines.find(l=>l.id==='workers')),'ok');
+  assert.equal(severityOf(second.lines.find(l=>l.id==='workers')),'block');
 });
 test('material shortage and wall clearance preserve authoritative placement reasons',()=>{
   const state=fixture();
@@ -88,7 +91,7 @@ test('disconnected well reports no road while remaining legal and supplying wate
   const state=fixture();
   const prediction=buildingPlacementPrediction(state,'well',{tx:6,ty:3});
   assert.equal(prediction.placement.ok,true);
-  assert.equal(prediction.lines.find(line=>line.id==='road')?.tone,'negative');
+  assert.equal(severityOf(prediction.lines.find(line=>line.id==='road')),'block');
   assert.match(prediction.lines.find(line=>line.id==='road')?.text??'',/운영에 불필요/);
   assert.match(prediction.lines.find(line=>line.id==='supply')?.text??'',/1\/12필지/);
 });
@@ -101,21 +104,21 @@ test('food placement distinguishes a local road from a material delivery route',
   ];
   const nearby = buildingPlacementPrediction(connected,'mill',{tx:6,ty:4});
   assert.equal(nearby.placement.ok,true);
-  assert.equal(nearby.lines.find(line => line.id === 'delivery-route')?.tone,'positive');
+  assert.equal(severityOf(nearby.lines.find(line => line.id === 'delivery-route')),'ok');
 
   const island = {...connected,tiles:connected.tiles.map(tile => tile.tx === 6 && tile.ty === 9
     ? {...tile,hasRoad:true} : tile)};
   const disconnected = buildingPlacementPrediction(island,'mill',{tx:6,ty:10});
   assert.equal(disconnected.placement.ok,true);
-  assert.equal(disconnected.lines.find(line => line.id === 'road')?.tone,'positive');
-  assert.equal(disconnected.lines.find(line => line.id === 'delivery-route')?.tone,'negative');
+  assert.equal(severityOf(disconnected.lines.find(line => line.id === 'road')),'ok');
+  assert.equal(severityOf(disconnected.lines.find(line => line.id === 'delivery-route')),'block');
 
   const shifted = {...connected, buildings: connected.buildings.map(building => ({
     ...building, inventory: {timber: building.id === 'far-store' ? 100 : 0},
   }))};
   const nowUnreachable = buildingPlacementPrediction(shifted,'mill',{tx:6,ty:4});
   assert.notEqual(nowUnreachable, nearby);
-  assert.equal(nowUnreachable.lines.find(line => line.id === 'delivery-route')?.tone,'negative');
+  assert.equal(severityOf(nowUnreachable.lines.find(line => line.id === 'delivery-route')),'block');
 });
 test('market projection matches completion when another ready construction reserves a worker',()=>{
   const opening={...fixture(),population:8,idleWorkers:4};
@@ -158,11 +161,11 @@ test('semantic cache follows reservation expiry and completion while retaining r
   assert.equal(buildingPlacementPrediction({...state,tick:101},'market',{tx:6,ty:3}),first);
   const expired=buildingPlacementPrediction({...state,tick:600},'market',{tx:6,ty:3});
   assert.notEqual(expired,first);
-  assert.equal(first.lines.find(line=>line.id==='workers')?.tone,'negative');
-  assert.equal(expired.lines.find(line=>line.id==='workers')?.tone,'negative');
+  assert.equal(severityOf(first.lines.find(line=>line.id==='workers')),'block');
+  assert.equal(severityOf(expired.lines.find(line=>line.id==='workers')),'block');
   assert.equal(buildingPlacementPrediction({...state,tick:601},'market',{tx:6,ty:3}),expired);
   const completed=buildingPlacementPrediction({...state,tick:601,
     constructionSites:state.constructionSites.map(ready=>({...ready,builderTicks:ready.requiredBuilderTicks}))},'market',{tx:6,ty:3});
   assert.notEqual(completed,expired);
-  assert.equal(completed.lines.find(line=>line.id==='workers')?.tone,'positive');
+  assert.equal(severityOf(completed.lines.find(line=>line.id==='workers')),'ok');
 });

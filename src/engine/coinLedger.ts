@@ -1,3 +1,4 @@
+import { buildingSource, type SourceRef } from "../contracts";
 import type { GameState } from "./engine.types";
 
 export interface CoinLedgerEntry {
@@ -5,7 +6,8 @@ export interface CoinLedgerEntry {
   readonly amount: number;
   readonly kind: "income";
   readonly source: "market_sale";
-  readonly sourceRefs: readonly { readonly type: "building"; readonly id: string }[];
+  /** Shared `SourceRef` contract (ledger B3 precursor). Market sales: the selling market building. */
+  readonly sourceRefs: readonly SourceRef[];
 }
 
 export interface CoinIncomeSummary {
@@ -47,7 +49,7 @@ export function appendMarketSales(
       amount: sale.coin,
       kind: "income",
       source: "market_sale",
-      sourceRefs: [{ type: "building", id: sale.marketId }],
+      sourceRefs: [buildingSource(sale.marketId)],
     })),
   ];
 }
