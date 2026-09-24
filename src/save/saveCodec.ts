@@ -192,6 +192,13 @@ export function assertGameStateSnapshot(value: unknown): asserts value is GameSt
       throw new SaveFormatError(`Save state ${key} must be a finite number`);
     }
   }
+  const timberWindow = state.timberProductionWindow;
+  if (typeof timberWindow === 'object' && timberWindow !== null && 'expansionShortageSinceTick' in timberWindow) {
+    const tick = timberWindow.expansionShortageSinceTick;
+    if (typeof tick !== 'number' || !Number.isSafeInteger(tick) || tick < 0 || tick > Number(state.tick)) {
+      throw new SaveFormatError('Save expansionShortageSinceTick must be a nonnegative integer no later than the state tick');
+    }
+  }
   if (!["hamlet", "palisade", "stone_town"].includes(state.era as string)) throw new SaveFormatError("Save state era is unknown");
   if (typeof state.pathCache !== "object" || state.pathCache === null) throw new SaveFormatError("Save state pathCache must be an object");
   if ((state.tiles as unknown[]).length !== (state.width as number) * (state.height as number)) {

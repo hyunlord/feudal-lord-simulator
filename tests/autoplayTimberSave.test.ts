@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { encodeSave, decodeSave } from '../src/save/saveCodec';
+import { encodeSave, decodeSave, assertGameStateSnapshot } from '../src/save/saveCodec';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 import { SAVE_SCHEMA_VERSION } from '../src/save/saveTypes';
 
@@ -25,4 +25,14 @@ test('a measured timber shortage clock survives save and restore exactly', () =>
   const loaded = decodeSave(saved.bytes);
   // Then no shortage time is lost or fabricated.
   assert.deepEqual(loaded.envelope.state.timberProductionWindow, state.timberProductionWindow);
+});
+
+test('save input rejects an invalid or future timber shortage clock', () => {
+  const base = { ...structuredClone(DEFAULT_GAME_STATE), tick: 3000 };
+  for (const clock of ['2500', null, -1, 1.5, 3001]) {
+    const snapshot = { ...base, timberProductionWindow: {
+      startTick: 601, throughTick: 3000, produced: 0, productionTicks: [], expansionShortageSinceTick: clock,
+    } };
+    assert.throws(() => assertGameStateSnapshot(snapshot), /expansionShortageSinceTick/);
+  }
 });
