@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "8fc019f",
+  "source": "Unmodified natural seed2 guardrail checkpoint108000, normal advisor/tick continuation to113040; not screen play or a synthetic state",
+  "inputSha256": "1f4503e56725e493cf9c1f644bed0a92db111a6749d4a1ab4ff8eca90dad3619",
+  "comparisonTicks": 120,
+  "comparisonFinalTick": 113160,
+  "beforeMeanTickMs": 65.18010490833338,
+  "afterMeanTickMs": 1.7933926833333313,
+  "fullGameStateIncludingPathCacheEqual": true,
+  "beforeFinalJsonSha256": "4108424af85be8c2d965207a5d2a5963cd83670e912a945283a5ea9e49634031",
+  "afterFinalJsonSha256": "4108424af85be8c2d965207a5d2a5963cd83670e912a945283a5ea9e49634031",
+  "note": "Timing is a bounded CPU-contended diagnostic, not game FPS; empty wall reserve source list cannot hold material."
+}

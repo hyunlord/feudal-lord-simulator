@@ -80,13 +80,15 @@ export function wallReserveHeld(
   if (site.kind !== "palisade_segment" && site.kind !== "stone_wall_segment") return false;
   if (wallConstructionPriority(state) === "priority") return false;
   const resource = site.kind === "palisade_segment" ? "timber" : "stone";
+  if (state.wallConstructionReserve?.resource !== resource
+    || !state.wallConstructionReserve.sources.some(source => source.floor > 0)) return false;
   if ((constructionDeliveryNeed(site)[resource] ?? 0) <= 0) return false;
   const destination = { kind: "construction_site" as const, siteId: site.id };
   const inventory = createDeliveryInventoryPort();
   const sourceStocks = state.buildings.flatMap((building: Building) => {
-    if (routes.fromBuildingToDestination(building.id, destination) === null) return [];
     const available = inventory.availableStock(building, resource);
-    return available > 0 ? [{ id: building.id, available }] : [];
+    if (available <= 0 || routes.fromBuildingToDestination(building.id, destination) === null) return [];
+    return [{ id: building.id, available }];
   });
   if (resource === "timber" && state.treasuryTimber > 0 && state.buildings.some((building) =>
     building.kind === "house" && routes.fromBuildingToDestination(building.id, destination) !== null)) {
