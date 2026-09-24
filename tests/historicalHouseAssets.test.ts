@@ -1,17 +1,20 @@
 import { authoredAssetPath } from "../scripts/runtimeAssetProvenance";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { historicalHouseAssetManifest } from "../src/render/historicalHouseAssetManifest.generated";
 import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "../src/render/historicalHouseAssets";
 import { houseCompoundAssetManifest } from "../src/render/houseCompoundAssetManifest.generated";
 import { tileToScreen } from "../src/render/iso";
 
-test("historical house authored registrations retain original-size provenance and bounded crops", () => {
+test("available historical house originals retain size provenance and all authored crops remain bounded", async (context) => {
   for (const meta of [...historicalHouseAssetManifest, ...houseCompoundAssetManifest]) {
-    const png = readFileSync(authoredAssetPath(meta.url));
-    assert.equal(png.readUInt32BE(16), meta.width);
-    assert.equal(png.readUInt32BE(20), meta.height);
+    const source = authoredAssetPath(meta.url);
+    await context.test(meta.url, { skip: existsSync(source) ? false : `Optional original unavailable: ${source}; runtime hashes remain mandatory` }, () => {
+      const png = readFileSync(source);
+      assert.equal(png.readUInt32BE(16), meta.width);
+      assert.equal(png.readUInt32BE(20), meta.height);
+    });
     assert.ok(meta.alphaBounds.x + meta.alphaBounds.width <= meta.width);
     assert.ok(meta.alphaBounds.y + meta.alphaBounds.height <= meta.height);
   }

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "fixtures": [
+    {
+      "source": "feudal-lord-simulator/output/free-city-stage0-v2/natural-v7/d11-final-20260921T054214Z/runs/seed3/final-state.json",
+      "testCommit": "41e1833c93b4f2d0437958dbdad46b53d6c341f1",
+      "fixture": "construction-endpoint-seed3.json.gz",
+      "sourceCommit": "0c91b47be613069c42e5522bca2fd42ea4e80cb1",
+      "sourceCommitNote": "Recorded in sibling summary.json source.commit",
+      "tick": 1200000,
+      "sourceSha256": "84376049e0f726e63d875657f7c123a1e901696da501fd8bd88ecf23d00d1c45",
+      "fixtureSha256": "798ece85927e677a2e485fc50a8cb87550f321fe97042c0d30a857ce2c6f37ed",
+      "decompressedSha256": "604007d74e3b5e69a6ac048229219058ef0e8546ece1fdc4048b7b2fcd217557",
+      "originalBytes": 4375317,
+      "decompressedBytes": 533198,
+      "fixtureBytes": 28349,
+      "transform": "Only pathCache replaced by {}; all authoritative world, resident, cargo, construction and observation data retained. JSON compacted and gzip-compressed."
+    },
+    {
+      "source": "feudal-lord-simulator/output/free-city-stage0-v2/v7-material-dispatch/history/pre-proclaim-state.json",
+      "testCommit": "41e1833c93b4f2d0437958dbdad46b53d6c341f1",
+      "fixture": "construction-pre-proclaim-seed3.json.gz",
+      "sourceCommit": "0c91b47be613069c42e5522bca2fd42ea4e80cb1",
+      "sourceCommitNote": "Historical replay uses the same frozen source snapshot; confirmed by history.mjs and baseline-manifest.json head",
+      "tick": 856440,
+      "sourceSha256": "14171e893fd3444e758450e79d06045d9f898d28b7bdcd48722ede7417d387a7",
+      "fixtureSha256": "7841f15e2a037b1a4c5e84d32fe9b9bd6ec9f08b87b3c37b0f308bdedb527935",
+      "decompressedSha256": "648b115500d074f6b89790d13f27a5a4cca467cb745ed610aff19e0fc7dccc95",
+      "originalBytes": 3682535,
+      "decompressedBytes": 493736,
+      "fixtureBytes": 26054,
+      "transform": "Only pathCache replaced by {}; all authoritative world, resident, cargo, construction and observation data retained. JSON compacted and gzip-compressed."
+    },
+    {
+      "source": "output/playtest-a-double-prime/seeds/final-689bda7/seed3/final-state.json",
+      "testCommit": "5d9c43e8a55e51c6f4f4375ebbf9252b80d95e7e",
+      "sourceCommit": "689bda7facef3c8777c928fb2904bf1ff9a27826",
+      "fixture": "church-gap-seed3.json.gz",
+      "sourceCommitNote": "Commit recorded in original run directory name, resolved against repository history",
+      "tick": 1200000,
+      "sourceSha256": "37cb17fd9072d30abbe951d6021ea5ad7535a24e17e9a97d09773f5a826094fe",
+      "fixtureSha256": "89fc313c588196cfc76ed999163f83e3ec5cc5f5d45c699788d23f4717b732aa",
+      "decompressedSha256": "604d0d636c063724d4a08a40531ddee02607468dd0a7fa38788970124956b7e1",
+      "originalBytes": 1372433,
+      "decompressedBytes": 975552,
+      "fixtureBytes": 50822,
+      "transform": "Only pathCache replaced by {}; all authoritative world, resident, cargo, construction and observation data retained. JSON compacted and gzip-compressed."
+    }
+  ]
+}

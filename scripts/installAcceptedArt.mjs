@@ -7,9 +7,19 @@ import { parseWorldAssetManifest } from './worldAssetManifest.ts';
 import { BUILDING_SPECS, renderScaleForWorldAsset } from './worldAssetContracts.ts';
 import { measureTerrainSeams, assertTerrainSeams, buildTerrainTile2x2 } from './terrainTexturePipeline.ts';
 const require = createRequire(import.meta.url);
-const sharp = require(process.env.SHARP_MODULE_PATH ?? '/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const sourceRoot = path.resolve(process.argv[2] ?? path.join(root, '../feudal-lord-simulator/output'));
+const sourceArgument = process.argv[2] ?? process.env.ACCEPTED_ART_SOURCE_ROOT;
+if (!sourceArgument) {
+  throw new Error('Accepted art source directory is required: pass it as the first argument or set ACCEPTED_ART_SOURCE_ROOT.');
+}
+const sourceRoot = path.resolve(sourceArgument);
+const sharpModule = process.env.SHARP_MODULE_PATH ?? 'sharp';
+let sharp;
+try {
+  sharp = require(sharpModule);
+} catch (error) {
+  throw new Error(`Unable to load the optional art tool sharp (${sharpModule}). Install sharp in the module search path or set SHARP_MODULE_PATH. Runtime play and npm test do not require this tool.`, { cause: error });
+}
 const evidence = path.join(root, 'docs/asset-evidence/accepted-art');
 const manifestPath = path.join(root, 'public/assets/world_asset_manifest.json');
 const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));

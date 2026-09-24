@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import { constructionLogisticsAction } from '../src/engine/autoplayConstructionLogistics';
 import { decideNextAction } from '../src/engine/autoplay';
 import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
@@ -9,8 +10,10 @@ import { gameReducer } from '../src/state/gameStore';
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 import { carterPathTravelCost } from '../src/agents/carterTravelCost';
 import { getTile } from '../src/world/grid';
-const root = '/Users/rexxa/github/feudal-lord-simulator/output/free-city-stage0-v2';
-function endpoint(): GameState { return JSON.parse(readFileSync(`${root}/natural-v7/d11-final-20260921T054214Z/runs/seed3/final-state.json`, 'utf8')); }
+function fixture(name: string): GameState {
+  return JSON.parse(gunzipSync(readFileSync(new URL(`./fixtures/autoplay/${name}.json.gz`, import.meta.url))).toString('utf8'));
+}
+function endpoint(): GameState { return fixture('construction-endpoint-seed3'); }
 function routeCost(state: GameState): number {
   const source = state.buildings.find(b => b.id === 'construction-site-000072');
   const target = state.constructionSites.find(s => s.id === 'palisade-000070-segment-027-stone');
@@ -45,7 +48,6 @@ test('real food recovery wins over an available optional material shortcut', () 
 });
 
 test('shared prefix still rejects the last service pad and may retain only a safe leading tile', async () => {
-  const { gunzipSync } = await import('node:zlib');
   const { roadPrefixAction } = await import('../src/engine/autoplayRoadPrefix');
   const { serviceSafeRoadAction } = await import('../src/engine/autoplayServiceSpace');
   const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/service-space-normal-97560.json.gz', import.meta.url))).toString('utf8'));
@@ -58,7 +60,7 @@ test('shared prefix still rejects the last service pad and may retain only a saf
 
 test('genuine preproclamation builds the same first prefix and a shorter finite active route', async () => {
   const { confirmStoneTownProclamation } = await import('../src/engine/era');
-  const before: GameState = JSON.parse(readFileSync(`${root}/v7-material-dispatch/history/pre-proclaim-state.json`, 'utf8'));
+  const before = fixture('construction-pre-proclaim-seed3');
   const state = confirmStoneTownProclamation(before);
   assert.notEqual(state, before);
   assert.deepEqual(constructionLogisticsAction(state), { kind: 'place_road', from: { tx: 3, ty: 21 }, to: { tx: 3, ty: 21 } });

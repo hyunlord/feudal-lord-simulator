@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { registerRuntimeAsset, runtimeAssetCrop } from "../src/render/runtimeAssetCoordinates";
 import { runtimeAssetDerivatives } from "../src/render/runtimeAssetDerivatives.generated";
@@ -27,17 +27,23 @@ test("derived crops preserve registration under base URLs and reject mismatched 
   }
 });
 
-test("every runtime derivative and immutable source matches its own SHA and dimensions", () => {
+test("every runtime derivative matches its SHA and dimensions even without the source archive", () => {
   for (const meta of runtimeAssetDerivatives) {
     const runtime = readFileSync(`public/${meta.url}`);
-    const original = readFileSync(`docs/asset-evidence/runtime-sources/${meta.url.slice("assets/".length)}`);
-    for (const [bytes, width, height, hash] of [
-      [runtime, meta.width, meta.height, meta.sha256],
-      [original, meta.originalWidth, meta.originalHeight, meta.originalSha256],
-    ] as const) {
-      assert.equal(bytes.readUInt32BE(16), width);
-      assert.equal(bytes.readUInt32BE(20), height);
-      assert.equal(createHash("sha256").update(bytes).digest("hex"), hash);
-    }
+    assert.equal(runtime.readUInt32BE(16), meta.width);
+    assert.equal(runtime.readUInt32BE(20), meta.height);
+    assert.equal(createHash("sha256").update(runtime).digest("hex"), meta.sha256);
+  }
+});
+
+test("available immutable originals match their own SHA and dimensions", async (context) => {
+  for (const meta of runtimeAssetDerivatives) {
+    const source = `docs/asset-evidence/runtime-sources/${meta.url.slice("assets/".length)}`;
+    await context.test(meta.url, { skip: existsSync(source) ? false : `Optional original unavailable: ${source}; runtime derivative verified separately` }, () => {
+      const original = readFileSync(source);
+      assert.equal(original.readUInt32BE(16), meta.originalWidth);
+      assert.equal(original.readUInt32BE(20), meta.originalHeight);
+      assert.equal(createHash("sha256").update(original).digest("hex"), meta.originalSha256);
+    });
   }
 });

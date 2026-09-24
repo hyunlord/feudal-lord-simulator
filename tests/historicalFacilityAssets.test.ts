@@ -2,7 +2,7 @@ import { authoredAssetPath } from "../scripts/runtimeAssetProvenance";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import type { Building } from "../src/content/buildingConfig";
 import { historicalFacilityManifest } from "../src/render/historicalFacilityManifest";
@@ -12,12 +12,15 @@ const facility = (kind: Building["kind"], workers = 0): Building => ({
   id: kind, kind, tx: 3, ty: 7, workers, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0,
 });
 
-test("facility source images stay identical to provenance and crop registrations remain in bounds", () => {
+test("available facility source images stay identical to provenance and crop registrations remain in bounds", async (context) => {
   for (const asset of historicalFacilityManifest) {
-    const image = readFileSync(authoredAssetPath(asset.url));
-    assert.equal(createHash("sha256").update(image).digest("hex"), asset.sha256);
-    assert.equal(image.readUInt32BE(16), asset.width);
-    assert.equal(image.readUInt32BE(20), asset.height);
+    const source = authoredAssetPath(asset.url);
+    await context.test(asset.url, { skip: existsSync(source) ? false : `Optional original unavailable: ${source}; runtime hashes remain mandatory` }, () => {
+      const image = readFileSync(source);
+      assert.equal(createHash("sha256").update(image).digest("hex"), asset.sha256);
+      assert.equal(image.readUInt32BE(16), asset.width);
+      assert.equal(image.readUInt32BE(20), asset.height);
+    });
     assert.ok(asset.source.x + asset.source.width <= asset.width);
     assert.ok(asset.source.y + asset.source.height <= asset.height);
   }

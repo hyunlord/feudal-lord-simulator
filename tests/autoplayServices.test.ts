@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { gunzipSync } from 'node:zlib';
 import { DEFAULT_GAME_STATE, gameReducer } from '../src/state/gameStore';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../src/content/buildingConfig';
 import { buildingFootprintDistance } from '../src/geometry/buildingDistance';
@@ -77,7 +78,7 @@ test('Given all homes served by a staffed market When urban planning runs Then t
 });
 
 test('Given the seed 3 church gap When planning a safe church road Then a real road action is available without sacrificing another home', () => {
-  const state: GameState = JSON.parse(readFileSync(new URL('../output/playtest-a-double-prime/seeds/final-689bda7/seed3/final-state.json', import.meta.url), 'utf8'));
+  const state: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay/church-gap-seed3.json.gz', import.meta.url))).toString('utf8'));
   const candidate = serviceCandidate('church', { tx: 6, ty: 9 }, 'candidate');
 
   assert.equal(preservesAutoplayServiceSpace(state, { kind: 'place_building', building: 'church', tx: 4, ty: 11 }), false);
