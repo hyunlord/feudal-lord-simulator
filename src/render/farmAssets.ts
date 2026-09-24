@@ -8,6 +8,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { createFarmCanopyCache } from "./farmCanopyCache";
 import { CROP_REGISTRATION, FARM_SOIL_SAMPLE, cropDestination, farmCropRoots, farmSoilTiles, type CropStage } from "./farmCropLayout";
+import { frameBuildingVariant } from "./buildingVariants";
+import { variantImage } from "./buildingVariantAssets";
 
 const farmFiles = {
   worked: "wheat_farm_worked-v3.png",
@@ -71,6 +73,10 @@ export function drawFarmDetail(context: CanvasRenderingContext2D, building: Buil
   if (building.kind !== "wheat_farm") return false;
   void preloadFarmAssets();
   const stage = farmGrowthStage(building);
+  // Mixed farm (V1 variant): one painting per growth stage in the wheat-farm frame, drawn like the full-farm fallback.
+  const variant = frameBuildingVariant(building);
+  const mixed = variant !== null && "stages" in variant ? variantImage(variant.stages[stage].url, FARM_REGISTRATION.width, FARM_REGISTRATION.height) : null;
+  if (mixed !== null) { drawFullFarm(context, building, buildings, mixed); return true; }
   if (farmLayersReady()) {
     if (stage === "worked") return true;
     const crop = cropAssets.find(candidate => candidate.stage === stage);
@@ -92,6 +98,11 @@ export function drawFarmDetail(context: CanvasRenderingContext2D, building: Buil
   }
   const asset = assets.find(candidate => candidate.stage === stage);
   if (asset?.status !== "ready" || asset.image === null) return false;
+  drawFullFarm(context, building, buildings, asset.image);
+  return true;
+}
+
+function drawFullFarm(context: CanvasRenderingContext2D, building: Building, buildings: readonly Building[], image: HTMLImageElement): void {
   const center = farmGroundCenter(building);
   const r = FARM_REGISTRATION;
   context.save();
@@ -108,13 +119,12 @@ export function drawFarmDetail(context: CanvasRenderingContext2D, building: Buil
     { start: 0, height: r.anchorY, scale: r.upperScaleY },
     { start: r.anchorY, height: r.height - r.anchorY, scale: r.lowerScaleY },
   ]) {
-    drawCroppedWorldSprite(context, asset.image,
+    drawCroppedWorldSprite(context, image,
       { x: 0, y: section.start, width: r.width, height: section.height },
       { x: center.x - r.anchorX * r.scaleX, y: center.y + (section.start - r.anchorY) * section.scale,
         width: r.width * r.scaleX, height: section.height * section.scale }, false);
   }
   context.restore();
-  return true;
 }
 
 

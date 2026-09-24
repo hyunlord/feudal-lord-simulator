@@ -8,6 +8,8 @@ import { RAMPS } from "../content/palette";
 import type { HouseCondition } from "../population/houseCondition";
 import { historicalHouseAssetMeta, historicalHouseSpriteRect } from "./historicalHouseAssets";
 import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
+import { frameBuildingVariant } from "./buildingVariants";
+import { BUILDING_VARIANT_OVERLAY_REGISTRATION } from "./buildingVariantOverlay.generated";
 
 export type HouseConditionContext = Pick<CanvasRenderingContext2D, "globalAlpha" | "fillStyle" | "beginPath" | "moveTo" | "lineTo" | "closePath" | "fill" | "save" | "restore" | "drawImage" | "imageSmoothingEnabled"> & { getTransform(): CanvasTransform };
 
@@ -111,8 +113,25 @@ export function drawHouseCondition(
 function conditionFrame(building: Building, level: number) {
   if (building.houseLot === undefined) {
     const meta = historicalHouseAssetMeta(level);
-    return meta === null ? null : { meta, rect: historicalHouseSpriteRect(building, meta) };
+    return meta === null ? null : { meta, rect: variantRegisteredRect(building, meta.alphaBounds, historicalHouseSpriteRect(building, meta)) };
   }
   const meta = houseCompoundAssetMeta(building, level);
-  return meta === null ? null : { meta, rect: houseCompoundSpriteRect(building, meta) };
+  return meta === null ? null : { meta, rect: variantRegisteredRect(building, meta.alphaBounds, houseCompoundSpriteRect(building, meta)) };
+}
+
+/**
+ * Overlays are authored on the base body. On a variant they follow scripts/registerVariantOverlays.py:
+ * variant point = scale * base point + (dx, dy) in authored pixels, so the whole overlay frame moves and scales.
+ */
+function variantRegisteredRect(building: Building, bounds: Readonly<{ x: number; y: number; width: number; height: number }>,
+  rect: Readonly<{ x: number; y: number; width: number; height: number }>) {
+  const url = frameBuildingVariant(building)?.url ?? null;
+  const registration = url === null ? undefined : BUILDING_VARIANT_OVERLAY_REGISTRATION.find(entry => entry.url === url);
+  if (registration === undefined) return rect;
+  const perX = rect.width / bounds.width; const perY = rect.height / bounds.height;
+  return {
+    x: rect.x + ((registration.scale - 1) * bounds.x + registration.dx) * perX,
+    y: rect.y + ((registration.scale - 1) * bounds.y + registration.dy) * perY,
+    width: rect.width * registration.scale, height: rect.height * registration.scale,
+  };
 }

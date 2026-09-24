@@ -24,6 +24,7 @@ import { drawStartingLandmark } from "./drawStartingLandmarks";
 import { drawWalker } from "./drawWalkers";
 import type { TileRange, ViewportSize } from "./renderer";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
+import { worldSpriteVariantImage } from "./buildingVariantAssets";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 import { applyInkOutline, snapToPixel } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
@@ -159,7 +160,7 @@ function drawBuildingDetail(
       return;
     }
     const spriteKey = buildingSpriteKey(building, visualState.houseLevel);
-    const spriteDrawn = drawWorldSprite(context, spriteKey, building.tx, building.ty, spriteOptions);
+    const spriteDrawn = drawWorldSprite(context, spriteKey, building.tx, building.ty, { ...spriteOptions, image: worldSpriteVariantImage(building, spriteKey) });
     if (spriteDrawn) {
       drawKindDetail(context, { hideProblemMarker: true,
         architecture: spriteMeta(spriteKey)?.bakedArchitecture === true ? "baked" : "procedural",

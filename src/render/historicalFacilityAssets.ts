@@ -11,6 +11,8 @@ import { tileToScreen, TILE_H } from "./iso";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
+import { frameBuildingVariant, type BuildingVariant } from "./buildingVariants";
+import { variantSprite } from "./buildingVariantAssets";
 
 type Meta = typeof historicalFacilityManifest[number];
 type Asset = { readonly meta: Meta; readonly url: string; status: "idle" | "loading" | "ready" | "missing"; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null; rasterError: string | null };
@@ -107,13 +109,25 @@ export function historicalFacilitySpriteRect(building: Building) {
 }
 
 export function drawHistoricalFacility(context: CanvasRenderingContext2D, building: Building, state: GameState): boolean {
-  if (drawAnimatedMill(context, building)) return true;
+  const variant = frameBuildingVariant(building);
+  // The windmill variant is one static painting (sails included) in the mill-v2 frame, so it skips the animated mill.
+  if (variant?.id !== "windmill" && drawAnimatedMill(context, building)) return true;
   const id = historicalFacilityAssetId(building, state);
   if (id === null) return false;
   void preloadHistoricalFacilityAssets();
   const asset = assets.find(candidate => candidate.meta.id === id);
   const rect = historicalFacilitySpriteRect(building);
   if (asset?.status !== "ready" || asset.image === null || rect === null) return false;
-  drawCroppedWorldSprite(context, asset.raster?.image ?? asset.image, asset.raster?.source ?? asset.meta.source, rect, false, true);
+  const url = facilityVariantUrl(variant, id);
+  const sprite = url === null ? null : variantSprite(url, asset.meta.width, asset.meta.height, asset.meta.source,
+    Math.ceil(asset.meta.displayWidth * asset.meta.source.height / asset.meta.source.width * 3));
+  drawCroppedWorldSprite(context, sprite?.image ?? asset.raster?.image ?? asset.image, sprite?.source ?? asset.raster?.source ?? asset.meta.source, rect, false, true);
   return true;
+}
+
+/** A market keeps its variant between active and quiet; a variant without a quiet painting shows the base quiet stalls. */
+function facilityVariantUrl(variant: BuildingVariant | null, id: HistoricalFacilityAssetId): string | null {
+  if (variant === null) return null;
+  if (id === "market_quiet") return "quiet" in variant ? variant.quiet.url : null;
+  return variant.url;
 }

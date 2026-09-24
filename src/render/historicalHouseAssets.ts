@@ -5,6 +5,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { tileToScreen, TILE_W, TILE_H } from "./iso";
 import { historicalHouseAssetManifest } from "./historicalHouseAssetManifest.generated";
+import { frameBuildingVariant } from "./buildingVariants";
+import { variantSprite } from "./buildingVariantAssets";
 
 export type HistoricalHouseAssetMeta = Readonly<{
   level: 0 | 1 | 2 | 3 | 4;
@@ -80,7 +82,10 @@ export function drawHistoricalHouse(context: CanvasRenderingContext2D, building:
   void preloadHistoricalHouseAssets();
   const record = records.find(candidate => candidate.meta.level === builtLevel);
   if (record?.status !== "ready" || record.image === null) return false;
-  drawCroppedWorldSprite(context, record.raster?.image ?? record.image, record.raster?.source ?? record.meta.alphaBounds,
-    historicalHouseSpriteRect(building, record.meta), false, true);
+  const rect = historicalHouseSpriteRect(building, record.meta);
+  const url = frameBuildingVariant(building)?.url ?? null;
+  const variant = url === null ? null : variantSprite(url, record.meta.width, record.meta.height, record.meta.alphaBounds, Math.ceil(rect.height * 2));
+  drawCroppedWorldSprite(context, variant?.image ?? record.raster?.image ?? record.image,
+    variant?.source ?? record.raster?.source ?? record.meta.alphaBounds, rect, false, true);
   return true;
 }

@@ -9,6 +9,11 @@ import { TERRAIN_TEXTURE_KEYS, getTerrainPattern, terrainTextureKeyFor, type Ter
 import { terrainVariation } from "../src/world/terrain";
 import type { Tile } from "../src/world/world.types";
 import type { GameState } from "../src/engine/engine.types";
+import { setBoundaryV2Enabled } from "../src/render/renderBoundaryFlag";
+
+// These tests pin the previous ground renderer (RENDER_BOUNDARY_V2 off, still shipped behind the settings toggle);
+// the curved ground has its own tests in boundaryRender.test.ts.
+setBoundaryV2Enabled(false);
 
 type RecordedCall =
   | `beginPath` | `clip` | `closePath` | `createPattern:${TerrainTextureKey}`

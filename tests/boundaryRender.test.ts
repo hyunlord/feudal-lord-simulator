@@ -185,13 +185,14 @@ test("Given a zoomed-out view of the whole seed 2 map When it is drawn again The
   setBoundaryV2Enabled(false);
 });
 
-test("Given query, stored choice and default When the flag is resolved Then the URL wins, then the stored choice, and the default is off", () => {
+test("Given query, stored choice and default When the flag is resolved Then the URL wins, then the stored choice, and the default is on", () => {
   const storage = (value: string | null) => ({ getItem: () => value });
-  assert.equal(resolveBoundaryV2Flag({}), false);
+  assert.equal(resolveBoundaryV2Flag({}), true);
+  assert.equal(resolveBoundaryV2Flag({ storage: storage("0") }), false);
   assert.equal(resolveBoundaryV2Flag({ storage: storage("1") }), true);
   assert.equal(resolveBoundaryV2Flag({ search: "?render-boundary-v2=0", storage: storage("1") }), false);
   assert.equal(resolveBoundaryV2Flag({ search: "?phase10-proof=1&render-boundary-v2=1", storage: storage("0") }), true);
-  assert.equal(resolveBoundaryV2Flag({ storage: { getItem: () => { throw new Error("blocked"); } } }), false);
+  assert.equal(resolveBoundaryV2Flag({ storage: { getItem: () => { throw new Error("blocked"); } } }), true);
 });
 
 test("Given the curved-ground render modules When their source is read Then patterns are only used with path fill (no fillRect, B11 P-F1)", () => {

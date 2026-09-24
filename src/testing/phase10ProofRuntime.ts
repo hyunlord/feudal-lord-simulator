@@ -19,6 +19,7 @@ import { installRenderStageProbe, type RenderStageSnapshot } from "../render/ren
 import { worldRasterCacheDiagnostics } from "../render/worldRasterCache";
 import { groundBoundaryDiagnostics, resetGroundBoundaryForProof } from "../render/drawTerrainBoundaryV2";
 import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
+import { buildingVariantAssetStatuses } from "../render/buildingVariantAssets";
 
 type ProofLocation = {
   readonly hostname: string;
@@ -91,6 +92,8 @@ export type Phase10ProofRuntimePort = {
     /** RENDER_BOUNDARY_V2 ground chunks and the onboarding guidance memo. */
     readonly boundary: ReturnType<typeof groundBoundaryDiagnostics> | null;
     readonly onboardingMemo: ReturnType<typeof onboardingWorldGuidanceMemoStats>;
+    /** Wave 2 visual variant images (V1). */
+    readonly variants: ReturnType<typeof buildingVariantAssetStatuses>;
   };
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
   readonly resetBoundary: (reverseInput: boolean) => void;
@@ -142,6 +145,7 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       rasterCache: context === null ? null : worldRasterCacheDiagnostics(context),
       boundary: context === null ? null : groundBoundaryDiagnostics(context),
       onboardingMemo: onboardingWorldGuidanceMemoStats(),
+      variants: buildingVariantAssetStatuses(),
     }),
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
   };

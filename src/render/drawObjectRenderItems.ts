@@ -17,6 +17,7 @@ import { bridgeAt } from "../world/bridges";
 import { sortRenderItems } from "./objectRenderSort";
 import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
+import { beginBuildingVariantFrame } from "./buildingVariants";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -42,6 +43,7 @@ export function drawObjectRenderItems(
   const probe = renderStageProbe.current;
   probe?.enter("farmland");
   beginFarmCanopyFrame();
+  beginBuildingVariantFrame(input.state);
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
   // RENDER_BOUNDARY_V2 draws field soil and road ribbons in the ground chunks, under frontage and objects.

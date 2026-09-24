@@ -12,6 +12,14 @@ import { constructionSiteRenderSignature, drawConstructionSite } from "../src/re
 import { drawObjectRenderItems } from "../src/render/drawObjectRenderItems";
 import { getObjectRenderViewMode, toggleObjectRenderViewMode } from "../src/render/objectRenderViewMode";
 import type { RenderQueueItem } from "../src/render/objectRenderOrder";
+import { setBoundaryV2Enabled } from "../src/render/renderBoundaryFlag";
+import { setBuildingVariantsEnabled } from "../src/render/buildingVariants";
+
+// These tests pin the previous ground renderer (RENDER_BOUNDARY_V2 off, still shipped behind the settings toggle);
+// the curved ground has its own tests in boundaryRender.test.ts.
+setBoundaryV2Enabled(false);
+// ...and the base building art (Wave 2 variants have their own tests in buildingVariants.test.ts).
+setBuildingVariantsEnabled(false);
 
 type LoggedContext = CanvasRenderingContext2D & { readonly calls: readonly string[] };
 

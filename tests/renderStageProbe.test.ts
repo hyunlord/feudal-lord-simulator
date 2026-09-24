@@ -17,6 +17,9 @@ const { createConstructionCompletionTracker } = await import("../src/render/cons
 const { COUNTED_CANVAS_METHODS, RENDER_STAGES, RENDER_STAGE_GROUPS, installRenderStageProbe, renderStageProbe } =
   await import("../src/render/renderStageProbe");
 const { installPhase10ProofRuntime } = await import("../src/testing/phase10ProofRuntime");
+// These tests pin the previous ground renderer (RENDER_BOUNDARY_V2 off, still shipped behind the settings toggle);
+// the curved ground has its own tests in boundaryRender.test.ts.
+(await import("../src/render/renderBoundaryFlag")).setBoundaryV2Enabled(false);
 
 const LOTS24 = JSON.parse(readFileSync(new URL("../fixtures/determinism/seed1/final-state.json", import.meta.url), "utf8")) as GameState;
 

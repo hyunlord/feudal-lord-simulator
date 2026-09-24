@@ -6,6 +6,8 @@ import type { Building } from "../content/buildingConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { tileToScreen, TILE_W, TILE_H } from "./iso";
 import { houseCompoundAssetManifest } from "./houseCompoundAssetManifest.generated";
+import { frameBuildingVariant } from "./buildingVariants";
+import { variantSprite } from "./buildingVariantAssets";
 
 type Axis = "horizontal" | "vertical";
 export type HouseCompoundAssetMeta = Readonly<{
@@ -68,6 +70,8 @@ export function drawHouseCompoundSprite(context: CanvasRenderingContext2D, build
   if (record?.status !== "ready" || record.image === null) return false;
   const rect = houseCompoundSpriteRect(building, record.meta);
   const bounds = record.meta.alphaBounds;
-  drawCroppedWorldSprite(context, record.raster?.image ?? record.image, record.raster?.source ?? bounds, rect, false, true);
+  const url = frameBuildingVariant(building)?.url ?? null;
+  const variant = url === null ? null : variantSprite(url, record.meta.width, record.meta.height, bounds, Math.ceil(rect.height * 2));
+  drawCroppedWorldSprite(context, variant?.image ?? record.raster?.image ?? record.image, variant?.source ?? record.raster?.source ?? bounds, rect, false, true);
   return true;
 }

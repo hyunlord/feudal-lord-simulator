@@ -15,6 +15,8 @@ export type WorldSpriteOptions = {
   readonly tint?: PaletteColor;
   readonly flipX?: boolean;
   readonly viewport?: { readonly width: number; readonly height: number };
+  /** Same-size replacement image drawn with this sprite's registration (visual variants). */
+  readonly image?: CanvasImageSource | null;
 };
 
 export type WorldSpriteContext = {
@@ -86,7 +88,7 @@ function drawAtWorldAnchor(
     recordWorldSpriteDraw({ key, drawn: false, reason: "meta_missing" });
     return false;
   }
-  const image = getSprite(key);
+  const image = options.image ?? getSprite(key);
   if (image === null) {
     recordWorldSpriteDraw({ key, drawn: false, reason: "image_missing" });
     return false;

@@ -15,6 +15,11 @@ import {
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import { shade, withAlpha } from "../src/render/style";
 import type { Tile } from "../src/world/world.types";
+import { setBoundaryV2Enabled } from "../src/render/renderBoundaryFlag";
+
+// These tests pin the previous ground renderer (RENDER_BOUNDARY_V2 off, still shipped behind the settings toggle);
+// the curved ground has its own tests in boundaryRender.test.ts.
+setBoundaryV2Enabled(false);
 
 function recordingContext(calls: string[]): CanvasRenderingContext2D {
   let fillStyle = "";

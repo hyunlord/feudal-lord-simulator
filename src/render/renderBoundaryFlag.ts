@@ -1,10 +1,10 @@
-// RENDER_BOUNDARY_V2: curved ground (road ribbons, forest and field outlines, ground chunk cache). Default off until
-// the owner decides otherwise. Precedence: URL query `render-boundary-v2=1|0` > the settings toggle (per browser) >
+// RENDER_BOUNDARY_V2: curved ground (road ribbons, forest and field outlines, ground chunk cache). Default on since
+// V1 (owner decision 2026-09-24, after the D1a gates); the settings toggle and `render-boundary-v2=0` turn it off. Precedence: URL query `render-boundary-v2=1|0` > the settings toggle (per browser) >
 // default. With the flag off the renderer takes exactly the previous code path.
 
 export const RENDER_BOUNDARY_V2_QUERY = "render-boundary-v2";
 export const RENDER_BOUNDARY_V2_STORAGE_KEY = "feudal.renderBoundaryV2";
-const RENDER_BOUNDARY_V2_DEFAULT = false;
+const RENDER_BOUNDARY_V2_DEFAULT = true;
 
 type FlagEnvironment = {
   readonly search?: string;

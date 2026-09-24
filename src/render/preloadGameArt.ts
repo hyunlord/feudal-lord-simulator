@@ -13,12 +13,13 @@ import { preloadConstructionArtAssets } from "./constructionArtAssets";
 import { preloadGateAssets } from "./gateArtAssets";
 import { preloadBridgeWaterAssets } from "./bridgeWaterAssets";
 import { preloadTimberWallAssets } from "./timberWallAssets";
+import { preloadBuildingVariantAssets } from "./buildingVariantAssets";
 
 export async function preloadGameArt(): Promise<void> {
   await Promise.all([
     registerHouseConditionArt(HOUSE_CONDITION_ART), preloadWorldAssets(), preloadHistoricalHouseAssets(), preloadHistoricalFacilityAssets(),
     preloadHouseCompoundAssets(), preloadFarmAssets(), preloadStoneWallAssets(),
     preloadRuntimeActorAssets(), preloadMillAssets(), preloadConstructionArtAssets(),
-    preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(), preloadTownLandscapeAssets(),
+    preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(), preloadTownLandscapeAssets(), preloadBuildingVariantAssets(),
   ]);
 }
