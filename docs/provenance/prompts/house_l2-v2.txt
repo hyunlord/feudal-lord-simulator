@@ -1,0 +1,71 @@
+Create ONE production-ready building sprite for a browser-based 2D historical city-building game.
+
+SETTING:
+Southern or south-eastern England, approximately AD 1300–1450. Use ordinary vernacular building traditions appropriate to the stated social class and function. Do not use a generic fantasy-medieval mixture.
+
+CAMERA:
+Strict orthographic 2:1 isometric projection. Ground-plane axes must run at exactly ±26.565 degrees from horizontal. All world verticals must remain perfectly vertical. No perspective convergence, no wide-angle lens, no three-quarter perspective camera.
+
+GAME SCALE:
+One logical ground tile represents approximately 6 m by 6 m and renders as 64 by 32 pixels in the game. Keep all structural walls inside the stated footprint. Roof eaves and upper-floor jetties may visually overhang slightly. Doors keep the same human height across every building.
+
+LIGHTING AND STYLE:
+Soft daylight from the upper-left, shadows falling lower-right. Readable hand-painted game sprite with physically understandable structure, restrained detail, muted natural materials, no photorealism, no exaggerated fantasy silhouette. Match one consistent world with the existing project houses, storehouse, well, logging camp and sawmill, but correct any historical errors specified below.
+
+MATERIAL LANGUAGE:
+Weathered oak timber, warm off-white lime plaster or limewashed wattle-and-daub, local grey-brown rubble stone only where structurally appropriate, straw or reed thatch, and small irregular flat clay peg tiles where explicitly requested.
+
+OUTPUT:
+Single isolated asset, true transparent RGBA background. No terrain base, no grass platform, no vignette, no decorative frame, no text, no labels, no people, no permanent stock piles. Clean alpha edges. Keep the ground-contact anchor centered and technically usable in an isometric tile engine.
+
+ABSOLUTE EXCLUSIONS UNLESS THE ASSET-SPECIFIC PROMPT EXPLICITLY OVERRIDES THEM:
+No terracotta chimney pots.
+No blue or cyan reflective window glass.
+No large regular glazed windows.
+No sash windows.
+No Victorian or Georgian architecture.
+No modern bricks.
+No decorative Tudor-revival black-and-white patterning.
+No pantiles or S-shaped roof tiles.
+No Mediterranean barrel-tile roof.
+No slate roof.
+No ornate castle turrets, pinnacles or château roofs on civilian houses.
+No Renaissance or Classical cornices.
+No gutters or downpipes.
+No modern hardware.
+No fantasy ornament.
+Do not add a chimney simply because the building is described as medieval.
+Do not add glass simply because the building has windows.
+
+
+ASSET: house_l2 — Artisan House
+
+Create a compact two-storey artisan's house and workplace on a busy southern English market-town street, circa AD 1300–1450.
+
+STRUCTURE:
+Oak box-frame construction, warm limewashed wattle-and-daub infill, slightly more regular carpentry than lower housing levels. The upper floor may project forward in a modest practical jetty. Do not exaggerate the jetty.
+
+GROUND FLOOR:
+Include either a plain household doorway or one broad wooden shuttered work/shop opening facing the street. The shop opening should look like medieval carpentry, not a modern glass storefront.
+
+ROOF:
+Small, flat, handmade clay peg tiles in muted terracotta, brown-red and weathered orange. Tiles must be individually irregular and gently uneven.
+NO pantiles.
+NO S-shaped tiles.
+NO Mediterranean barrel tiles.
+
+HEATING:
+No external chimney. The house is heated by an internal open hearth.
+
+WINDOWS:
+Small irregular dark unglazed openings with solid wooden shutters. There is no glass behind the shutters.
+
+WEALTH CUE:
+Show advancement through a second floor, more regular framing, better maintenance, street-facing work space and fire-resistant tiled roofing — not through stone monumentalism or luxury ornament.
+
+Apply the shared project art-bible prompt.
+
+
+REFERENCE AND CANVAS CONTROL:
+The supplied project image is only a style and camera reference, not a historically correct target. Replace its round roof tiles with small FLAT overlapping rectangular peg tiles, remove its chimney completely, remove ALL glass and stone window surrounds, reduce stone to a very low rubble footing. Keep warm brown oak rather than black decorative timbers. Include one clearly readable ground-floor wooden workshop opening with a fold-down wooden counter, empty of goods, next to a plain household door. Upper floor slightly jettied. Small dark unglazed windows with solid plank shutters, no muntin grids. Exactly two occupied floors.
+Use a square transparent canvas with generous upper margin. Normalized to a 1024-square canvas, ground footprint corners are approximately (512,640), (812,790), (512,940), (212,790), width600 depth300. Fit walls inside this invisible diamond; do NOT draw the diamond or a base. The eaves can slightly overhang. Ground axes exactly 2:1, existing source image must not override this camera. Output one isolated building only, no comparisons, no labels. The plain roof has no chimney, no roof vent, no dormer, no smoke; an interior open hearth explains the absent external stack. Keep openings truly dark and matte, never blue. Real alpha transparency.

@@ -20,6 +20,8 @@ import { GameCanvas } from "./render/GameCanvas";
 import { applyPalisadeIntent, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
+import { useSaveSystemContext } from "./state/saveSystem";
+import { formatNewGameArchiveNotice, SAVE_COPY } from "./content/saveCopy.ko";
 import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
 import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMaterialWave";
 import { BuildSeals } from "./ui/BuildMenu";
@@ -83,7 +85,9 @@ export function App() {
   const [selectedTool, setSelectedTool] = useState<PlacementTool | null>(null);
   const [problemOnly, setProblemOnly] = useState(false);
   const [overlayMode, setOverlayMode] = useState<OverlayMode>("none");
-  const [welcomeVisible, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
+  const [welcomeOpen, setWelcomeVisible] = useState(() => !readWelcomeDismissed());
+  const saveSystem = useSaveSystemContext();
+  const welcomeVisible = welcomeOpen || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const palisadeDraftRef = useRef(palisadeDraft);
   const gameStateRef = useRef(state);
@@ -233,6 +237,17 @@ export function App() {
   const dismissWelcome = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
+    if (saveSystem.offerContinue) saveSystem.declineContinue();
+  };
+  const startNewGameOverSave = () => {
+    writeWelcomeDismissed();
+    setWelcomeVisible(false);
+    saveSystem.startNewGame();
+  };
+  const continueSavedGame = () => {
+    writeWelcomeDismissed();
+    setWelcomeVisible(false);
+    saveSystem.continueLatest();
   };
 
   return (
@@ -316,12 +331,25 @@ export function App() {
           </div>
         </aside>
       </div>
-      {welcomeVisible ? <WelcomeParchment onDismiss={dismissWelcome} /> : null}
+      {welcomeVisible ? <WelcomeParchment
+        onDismiss={dismissWelcome}
+        continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
+        archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
+        onContinue={continueSavedGame}
+        onNewGame={startNewGameOverSave}
+      /> : null}
     </main>
   );
 }
 
-function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
+function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame }: {
+  readonly onDismiss: () => void;
+  readonly continueLine: string | null;
+  readonly archiveNotice: string | null;
+  readonly onContinue: () => void;
+  readonly onNewGame: () => void;
+}) {
+  const [confirmingNewGame, setConfirmingNewGame] = useState(false);
   const dialogRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     dialogRef.current?.focus();
@@ -330,9 +358,13 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
   const consumeDismissal = (event: MouseEvent | PointerEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    onDismiss();
+    // With a saved city on offer the player must choose explicitly; a stray click must not start over.
+    if (continueLine === null) onDismiss();
   };
   const containKeyboard = (event: ReactKeyboardEvent) => {
+    event.stopPropagation();
+  };
+  const keepChoice = (event: MouseEvent | PointerEvent) => {
     event.stopPropagation();
   };
 
@@ -354,7 +386,31 @@ function WelcomeParchment({ onDismiss }: { readonly onDismiss: () => void }) {
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
-        <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
+        {continueLine === null ? <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p> : (
+          <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
+            <p>{continueLine}</p>
+            <button className="autoplay-toggle save-control-button" type="button"
+              onPointerDown={keepChoice} onClick={event => { keepChoice(event); onContinue(); }}>
+              {SAVE_COPY.continueGame}
+            </button>
+            {confirmingNewGame ? <>
+              <p role="status">{archiveNotice}</p>
+              <button className="autoplay-toggle save-control-button" type="button"
+                onPointerDown={keepChoice} onClick={event => { keepChoice(event); onNewGame(); }}>
+                {SAVE_COPY.startNewGame}
+              </button>
+              <button className="autoplay-toggle save-control-button" type="button"
+                onPointerDown={keepChoice} onClick={event => { keepChoice(event); setConfirmingNewGame(false); }}>
+                {SAVE_COPY.cancel}
+              </button>
+            </> : (
+              <button className="autoplay-toggle save-control-button" type="button"
+                onPointerDown={keepChoice} onClick={event => { keepChoice(event); setConfirmingNewGame(true); }}>
+                {SAVE_COPY.newGame}
+              </button>
+            )}
+          </div>
+        )}
       </section>
     </div>
   );

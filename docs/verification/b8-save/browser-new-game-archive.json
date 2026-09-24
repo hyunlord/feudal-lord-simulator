@@ -1,0 +1,138 @@
+{
+  "url": "http://127.0.0.1:4183/",
+  "chrome": "Chrome/153.0.8010.53",
+  "startedAt": "2026-09-23T23:23:37.989Z",
+  "strayClickKeptWelcome": true,
+  "notice": "새 게임을 시작하면 이어하던 도시(0분째 · 인구 20)는 '이전 도시' 칸에 보관됩니다.",
+  "noticeButtons": [
+    {
+      "text": "이어하기",
+      "height": 44,
+      "width": 382
+    },
+    {
+      "text": "시작",
+      "height": 44,
+      "width": 382
+    },
+    {
+      "text": "취소",
+      "height": 44,
+      "width": 382
+    }
+  ],
+  "noticeShot": "newgame-1-confirm.jpg",
+  "previousAfterStart": {
+    "slot": "previous",
+    "slots": [
+      "auto-1@733"
+    ],
+    "summary": "0분째 · 인구 20 · 촌락 시대",
+    "tick": 733,
+    "population": 20,
+    "treasuryTimber": 70,
+    "treasuryCoin": 0,
+    "buildings": 9,
+    "houses": 4,
+    "constructionSites": 1,
+    "walkers": 5,
+    "stock": {
+      "logs": 30,
+      "timber": 1
+    },
+    "stateSha256": "b2810950060cd2a59b4614b6b3827280f63e8f719cdbbb5aac0eee70e9834ec0",
+    "bytes": 430565
+  },
+  "slotsAfterRotation": [
+    "auto-2@279",
+    "auto-1@208",
+    "auto-3@138"
+  ],
+  "previousAfterRotation": {
+    "slot": "previous",
+    "slots": [
+      "auto-2@279",
+      "auto-1@208",
+      "auto-3@138"
+    ],
+    "summary": "0분째 · 인구 20 · 촌락 시대",
+    "tick": 733,
+    "population": 20,
+    "treasuryTimber": 70,
+    "treasuryCoin": 0,
+    "buildings": 9,
+    "houses": 4,
+    "constructionSites": 1,
+    "walkers": 5,
+    "stock": {
+      "logs": 30,
+      "timber": 1
+    },
+    "stateSha256": "b2810950060cd2a59b4614b6b3827280f63e8f719cdbbb5aac0eee70e9834ec0",
+    "bytes": 430565
+  },
+  "loadListLabels": [
+    "자동 저장 2",
+    "자동 저장 1",
+    "자동 저장 3",
+    "이전 도시"
+  ],
+  "listShot": "newgame-2-load-list.jpg",
+  "loadedPrevious": {
+    "slot": "manual",
+    "slots": [
+      "manual@733",
+      "auto-2@279",
+      "auto-1@208",
+      "auto-3@138"
+    ],
+    "summary": "0분째 · 인구 20 · 촌락 시대",
+    "tick": 733,
+    "population": 20,
+    "treasuryTimber": 70,
+    "treasuryCoin": 0,
+    "buildings": 9,
+    "houses": 4,
+    "constructionSites": 1,
+    "walkers": 5,
+    "stock": {
+      "logs": 30,
+      "timber": 1
+    },
+    "stateSha256": "b2810950060cd2a59b4614b6b3827280f63e8f719cdbbb5aac0eee70e9834ec0",
+    "bytes": 430565
+  },
+  "afterLoadShot": "newgame-3-previous-loaded.jpg",
+  "cityA": {
+    "slot": "auto-1",
+    "slots": [
+      "auto-1@733"
+    ],
+    "summary": "0분째 · 인구 20 · 촌락 시대",
+    "tick": 733,
+    "population": 20,
+    "treasuryTimber": 70,
+    "treasuryCoin": 0,
+    "buildings": 9,
+    "houses": 4,
+    "constructionSites": 1,
+    "walkers": 5,
+    "stock": {
+      "logs": 30,
+      "timber": 1
+    },
+    "stateSha256": "b2810950060cd2a59b4614b6b3827280f63e8f719cdbbb5aac0eee70e9834ec0",
+    "bytes": 430565
+  },
+  "checks": {
+    "strayClickKeptWelcome": true,
+    "noticeMentionsCity": true,
+    "buttons44px": true,
+    "archivedIsCityA": true,
+    "rotationReplacedAllAutos": true,
+    "previousSurvivedRotation": true,
+    "listShowsPrevious": true,
+    "loadedPreviousIsCityA": true
+  },
+  "passed": true
+}

@@ -13,6 +13,7 @@ export type GameAction = import("../engine/autoplayFoodTransient").FoodTransient
 type GameCommand =
   | { readonly type: "record_autoplay_food_confirmation" }
   | { readonly type: "restart_settlement" }
+  | { readonly type: "load_saved_state"; readonly state: GameState }
   | { readonly type: "merge_houses"; readonly sourceBuildingId: string; readonly targetBuildingId: string }
   | {
       readonly type: "commit_simulation_state";

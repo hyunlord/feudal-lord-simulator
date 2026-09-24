@@ -6,6 +6,7 @@ import { decideNextAction } from "../engine/autoplay";
 import { sampleAutoplayDecision, type AutoplayDecisionCache, type AutoplayDecision } from "./autoplayDecisionCache";
 import type { GameState, GameSpeed } from "../engine/engine.types";
 import { useGameStore } from "../state/gameStore";
+import { SaveControls } from "./SaveControls";
 import {
   autoplayActionLabel,
   AUTOPLAY_TICK_CADENCE,
@@ -116,6 +117,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
           자동 발전
         </button>
         <span className="autoplay-hint">{autoplayEnabled ? autoplayActionLabel(nextAction) : "자동 발전 꺼짐"}</span>
+        <SaveControls />
       </div></details>
     </div>
   );

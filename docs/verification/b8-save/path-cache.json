@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "measurement": "pathCache share of the save and 24,000-tick result with pathCache emptied at load (separate processes)",
+  "rows": [
+    {
+      "file": "fixtures/saves/v1/new-game.save.json",
+      "tick": 0,
+      "population": 12,
+      "pathCacheEntries": 0,
+      "saveBytes": 289569,
+      "saveBytesWithoutPathCache": 289569,
+      "pathCacheShare": 0,
+      "ticks": 24000,
+      "sameResultWithEmptiedCache": true,
+      "withCache": {
+        "hash": "76bc03ffec0c3f05f7112ae5f16e06b866abe4b209daf7e595ce5e437e992a88",
+        "tick": 8640,
+        "ms": 716.8000829999999,
+        "pathCacheEntriesAfter": 1
+      },
+      "emptied": {
+        "hash": "76bc03ffec0c3f05f7112ae5f16e06b866abe4b209daf7e595ce5e437e992a88",
+        "tick": 8640,
+        "ms": 788.6227920000001,
+        "pathCacheEntriesAfter": 1
+      }
+    },
+    {
+      "file": "fixtures/saves/v1/population-176.save.json",
+      "tick": 27471,
+      "population": 176,
+      "pathCacheEntries": 13,
+      "saveBytes": 848535,
+      "saveBytesWithoutPathCache": 846199,
+      "pathCacheShare": 0.0028,
+      "ticks": 24000,
+      "sameResultWithEmptiedCache": false,
+      "withCache": {
+        "hash": "8c1b5f167ecc9c4190261eba453a319b6518022a8d5e9f66c5ecca7fd95e3956",
+        "tick": 51471,
+        "ms": 4868.747583,
+        "pathCacheEntriesAfter": 13
+      },
+      "emptied": {
+        "hash": "80eb4ff90a8adc26125c9d88044a1da1dd985f3ae2a224834196d2111f40b2a0",
+        "tick": 51471,
+        "ms": 4962.367,
+        "pathCacheEntriesAfter": 11
+      }
+    },
+    {
+      "file": "fixtures/saves/v1/palisade-construction.save.json",
+      "tick": 90976,
+      "population": 462,
+      "pathCacheEntries": 0,
+      "saveBytes": 960384,
+      "saveBytesWithoutPathCache": 960384,
+      "pathCacheShare": 0,
+      "ticks": 24000,
+      "sameResultWithEmptiedCache": true,
+      "withCache": {
+        "hash": "a299448da4e724bc29bd72aed91464efcad25a6a114969a298b9018e95e221d5",
+        "tick": 114976,
+        "ms": 77118.14875,
+        "pathCacheEntriesAfter": 472
+      },
+      "emptied": {
+        "hash": "a299448da4e724bc29bd72aed91464efcad25a6a114969a298b9018e95e221d5",
+        "tick": 114976,
+        "ms": 76842.721083,
+        "pathCacheEntriesAfter": 472
+      }
+    },
+    {
+      "file": "fixtures/determinism/seed1/final-state.json",
+      "tick": 679251,
+      "population": 768,
+      "pathCacheEntries": 219,
+      "saveBytes": 1587365,
+      "saveBytesWithoutPathCache": 1021201,
+      "pathCacheShare": 0.3567,
+      "ticks": 24000,
+      "sameResultWithEmptiedCache": true,
+      "withCache": {
+        "hash": "d75d1dc908d384b191453bb07a50bccffec57fcadfcad522c2ba4a8346b9d6c5",
+        "tick": 703251,
+        "ms": 44825.250833000006,
+        "pathCacheEntriesAfter": 219
+      },
+      "emptied": {
+        "hash": "d75d1dc908d384b191453bb07a50bccffec57fcadfcad522c2ba4a8346b9d6c5",
+        "tick": 703251,
+        "ms": 44862.620458,
+        "pathCacheEntriesAfter": 219
+      }
+    }
+  ]
+}

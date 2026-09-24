@@ -1,0 +1,40 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import { advanceTick } from "../src/engine/tick";
+import { placementSpendableResource } from "../src/world/placement";
+import { decodeSave } from "../src/save/saveCodec";
+import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
+import { canonicalStateHash } from "../scripts/verifySaveDeterminism";
+
+test("schema v1 reaches v2 without inventing timber observation history", () => {
+  const bytes = new Uint8Array(readFileSync("fixtures/saves/v1/population-176.save.json"));
+  const original = JSON.parse(new TextDecoder().decode(bytes));
+  const { envelope, migratedFrom } = decodeSave(bytes);
+  assert.equal(SAVE_SCHEMA_VERSION, 2);
+  assert.equal(migratedFrom, 1);
+  assert.equal(envelope.schemaVersion, 2);
+  assert.deepEqual(envelope.state, original.state);
+  const next = advanceTick({ ...envelope.state, wallConstructionPriority: "balanced",
+    wallConstructionReserve: { resource: "timber", sources: [], proclaimedTick: envelope.state.tick } });
+  assert.equal(next.timberProductionWindow?.availableTimber, placementSpendableResource(next, "timber"));
+  assert.equal(next.timberProductionWindow?.lastAvailableIncreaseTick, next.tick);
+});
+
+test("schema v1 corruption is rejected before migration", () => {
+  const text = readFileSync("fixtures/saves/v1/population-176.save.json", "utf8");
+  const corrupted = text.replace(/"treasuryTimber":\d+/, '"treasuryTimber":999999');
+  assert.notEqual(corrupted, text);
+  assert.throws(() => decodeSave(new TextEncoder().encode(corrupted)), /checksum mismatch/);
+  for (const checksum of [123, null, {}]) {
+    const malformed = { ...JSON.parse(corrupted), checksum };
+    assert.throws(() => decodeSave(new TextEncoder().encode(JSON.stringify(malformed))), /checksum must be a string/);
+  }
+});
+
+test("gameplay determinism excludes only the root path cache", () => {
+  const state = { tick: 12, treasuryTimber: 34, pathCache: { route: [{ tx: 1, ty: 2 }] } };
+  assert.equal(canonicalStateHash(state), canonicalStateHash({ ...state, pathCache: {} }));
+  assert.notEqual(canonicalStateHash(state), canonicalStateHash({ ...state, treasuryTimber: 35 }));
+  assert.notEqual(canonicalStateHash({ nested: { pathCache: 1 } }), canonicalStateHash({ nested: { pathCache: 2 } }));
+});

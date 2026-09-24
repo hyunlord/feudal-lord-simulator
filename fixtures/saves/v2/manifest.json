@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 2,
+  "fixtures": [
+    {
+      "id": "new-game",
+      "description": "DEFAULT_GAME_STATE before the first tick",
+      "migratedFrom": 1,
+      "sourceFile": "fixtures/saves/v1/new-game.save.json",
+      "sourceSha256": "ecc5e1a2af42099c955bd35ab75ba3fa48f8c67a034a7e4949b5fccf5f75eaa6",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "new-game.save.json",
+      "bytes": 289625,
+      "tick": 0,
+      "population": 12,
+      "era": "hamlet",
+      "buildings": 8,
+      "houses": 4,
+      "palisadeSegments": 0,
+      "completedPalisadeSegments": 0,
+      "saveSerializeMs": 0.93
+    },
+    {
+      "id": "population-176",
+      "description": "autoplay growth from the default opening, first tick with population >= 176",
+      "migratedFrom": 1,
+      "sourceFile": "fixtures/saves/v1/population-176.save.json",
+      "sourceSha256": "70aac4ab07668b1e52f79587f1a3d8f7b66a7a4b3ae83ecf312773238ad762eb",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "population-176.save.json",
+      "bytes": 848591,
+      "tick": 27471,
+      "population": 176,
+      "era": "hamlet",
+      "buildings": 30,
+      "houses": 15,
+      "palisadeSegments": 0,
+      "completedPalisadeSegments": 0,
+      "saveSerializeMs": 1.91
+    },
+    {
+      "id": "palisade-construction",
+      "description": "autoplay growth, palisade proclaimed and segments still under construction",
+      "migratedFrom": 1,
+      "sourceFile": "fixtures/saves/v1/palisade-construction.save.json",
+      "sourceSha256": "13b51f3dd916ec2d6ccfbd8f0057c465f13bf3983c6e604cb099b20ae22c7154",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "palisade-construction.save.json",
+      "bytes": 960440,
+      "tick": 90976,
+      "population": 462,
+      "era": "palisade",
+      "buildings": 57,
+      "houses": 24,
+      "palisadeSegments": 33,
+      "completedPalisadeSegments": 1,
+      "saveSerializeMs": 2.23
+    }
+  ],
+  "v0Fixtures": [
+    "fixtures/determinism/seed1/final-state.json"
+  ]
+}
