@@ -187,7 +187,7 @@ test("resolveBuildingRoute chooses the shortest deterministic access-pair road p
     { tx: 6, ty: 3 },
   ]);
   assert.deepEqual(result.pathCache, {
-    "road:7:farm-a->mill-a": result.path,
+    "road:7:pair:farm-a|mill-a": result.path,
   });
 });
 
@@ -215,7 +215,7 @@ test("resolveRoadToBuildingRoute connects the current road tile to the nearest b
   ]);
 });
 
-test("resolveBuildingRoute reuses forward and reverse cached building-pair paths", () => {
+test("resolveBuildingRoute reuses one canonical building-pair path in both directions", () => {
   // Given
   const source = building("logging-a", "logging_camp", { tx: 1, ty: 1 });
   const destination = building("sawmill-a", "sawmill", { tx: 5, ty: 1 });
@@ -224,25 +224,19 @@ test("resolveBuildingRoute reuses forward and reverse cached building-pair paths
     { tx: 3, ty: 1 },
     { tx: 4, ty: 1 },
   ];
-  const forwardState = worldFromGrid(grassGrid(7, 4), [source, destination], {
-    "road:7:logging-a->sawmill-a": cachedPath,
-  });
-  const reverseState = worldFromGrid(grassGrid(7, 4), [source, destination], {
-    "road:7:sawmill-a->logging-a": [...cachedPath].reverse(),
+  const state = worldFromGrid(grassGrid(7, 4), [source, destination], {
+    "road:7:pair:logging-a|sawmill-a": cachedPath,
   });
 
   // When
-  const forward = resolveBuildingRoute(forwardState, source, destination);
-  const reverse = resolveBuildingRoute(reverseState, source, destination);
+  const forward = resolveBuildingRoute(state, source, destination);
+  const reverse = resolveBuildingRoute(state, destination, source);
 
   // Then
   assert.equal(forward.path, cachedPath);
-  assert.deepEqual(forward.pathCache, forwardState.pathCache);
-  assert.deepEqual(reverse.path, cachedPath);
-  assert.deepEqual(reverse.pathCache, {
-    ...reverseState.pathCache,
-    "road:7:logging-a->sawmill-a": cachedPath,
-  });
+  assert.deepEqual(forward.pathCache, state.pathCache);
+  assert.deepEqual(reverse.path, [...cachedPath].reverse());
+  assert.deepEqual(reverse.pathCache, state.pathCache);
 });
 
 test("resolveBuildingRoute ignores stale revision cache entries and returns null without caching failures", () => {
@@ -250,7 +244,7 @@ test("resolveBuildingRoute ignores stale revision cache entries and returns null
   const source = building("house-a", "house", { tx: 1, ty: 1 });
   const destination = building("well-a", "well", { tx: 4, ty: 1 });
   const state = worldFromGrid(grassGrid(6, 4), [source, destination], {
-    "road:6:house-a->well-a": [
+    "road:6:pair:house-a|well-a": [
       { tx: 2, ty: 1 },
       { tx: 3, ty: 1 },
     ],
