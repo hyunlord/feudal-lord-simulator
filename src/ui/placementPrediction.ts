@@ -18,6 +18,7 @@ import { predictionStateKey } from './predictionCache';
 import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
 import { PLACEMENT_REASON_LABELS, predictionCheck } from './predictionRegistry';
 import type { PlacementPrediction, PredictionLine } from './predictionTypes';
+import { zonePlacementLines } from './zonePrediction';
 import { ROAD_PLACEMENT_COPY } from './roadPlacementCopy.ko';
 
 const SERVICES: Partial<Record<BuildingKind, HouseholdService>> = { well: 'water', market: 'market', church: 'church' };
@@ -65,7 +66,7 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
       return home !== undefined && (kind !== 'granary' || home.level < 4)
         && buildingFootprintDistance(b, candidate) <= radius;
     }).map(b => b.id);
-    const lines: PredictionLine[] = [...failureLine(placement)];
+    const lines: PredictionLine[] = [...failureLine(placement), ...zonePlacementLines(state, kind, tile)];
     if (service !== undefined) {
       const allocation = allocateHouseServices({ houses: virtual.houses, buildings: virtual.buildings, roadService: marketRoadService(virtual) });
       const provider = allocation.providers.get(candidate.id);

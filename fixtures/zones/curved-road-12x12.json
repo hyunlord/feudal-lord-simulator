@@ -1,0 +1,115 @@
+{
+ "id": "curved-road-12x12",
+ "description": "12x12 grass grid with one curved road rasterised by the v3-A R-road rule (Catmull-Rom through control points, 4-connected cells) and a burgage polygon covering both sides. Branch tests add a 3-cell road off every road cell whose neighbours allow a clean T-junction.",
+ "width": 12,
+ "height": 12,
+ "roadControlPoints": [
+  {
+   "x": 0,
+   "y": 4
+  },
+  {
+   "x": 6,
+   "y": 3
+  },
+  {
+   "x": 11,
+   "y": 6
+  }
+ ],
+ "roadCells": [
+  {
+   "tx": 0,
+   "ty": 4
+  },
+  {
+   "tx": 1,
+   "ty": 4
+  },
+  {
+   "tx": 2,
+   "ty": 4
+  },
+  {
+   "tx": 2,
+   "ty": 3
+  },
+  {
+   "tx": 3,
+   "ty": 3
+  },
+  {
+   "tx": 4,
+   "ty": 3
+  },
+  {
+   "tx": 5,
+   "ty": 3
+  },
+  {
+   "tx": 6,
+   "ty": 3
+  },
+  {
+   "tx": 7,
+   "ty": 3
+  },
+  {
+   "tx": 7,
+   "ty": 4
+  },
+  {
+   "tx": 8,
+   "ty": 4
+  },
+  {
+   "tx": 9,
+   "ty": 4
+  },
+  {
+   "tx": 9,
+   "ty": 5
+  },
+  {
+   "tx": 10,
+   "ty": 5
+  },
+  {
+   "tx": 10,
+   "ty": 6
+  },
+  {
+   "tx": 11,
+   "ty": 6
+  }
+ ],
+ "burgageStroke": {
+  "tool": "polygon",
+  "points": [
+   {
+    "x": 0.5,
+    "y": 0.5
+   },
+   {
+    "x": 6,
+    "y": 0.25
+   },
+   {
+    "x": 11.5,
+    "y": 1
+   },
+   {
+    "x": 11.75,
+    "y": 11
+   },
+   {
+    "x": 6,
+    "y": 11.75
+   },
+   {
+    "x": 0.25,
+    "y": 11
+   }
+  ]
+ }
+}

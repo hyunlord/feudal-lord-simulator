@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 6,
+  "fixtures": [
+    {
+      "id": "new-game",
+      "description": "DEFAULT_GAME_STATE before the first tick",
+      "migratedFrom": 5,
+      "sourceFile": "fixtures/saves/v5/new-game.save.json",
+      "sourceSha256": "79d52cd929eb3d5493ec3b6df4ccdc12a0d8f2b26ba48efaf768b41d7632e4a8",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "new-game.save.json",
+      "bytes": 289775,
+      "tick": 0,
+      "population": 12,
+      "era": "hamlet",
+      "buildings": 8,
+      "houses": 4,
+      "palisadeSegments": 0,
+      "completedPalisadeSegments": 0,
+      "saveSerializeMs": 0.95
+    },
+    {
+      "id": "population-176",
+      "description": "autoplay growth from the default opening, first tick with population >= 176",
+      "migratedFrom": 5,
+      "sourceFile": "fixtures/saves/v5/population-176.save.json",
+      "sourceSha256": "15042047d0e3d3c91de7256cc3b6947805fe1a527a1fefe8abde3b4c26b841c0",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "population-176.save.json",
+      "bytes": 848741,
+      "tick": 27471,
+      "population": 176,
+      "era": "hamlet",
+      "buildings": 30,
+      "houses": 15,
+      "palisadeSegments": 0,
+      "completedPalisadeSegments": 0,
+      "saveSerializeMs": 2.14
+    },
+    {
+      "id": "palisade-construction",
+      "description": "autoplay growth, palisade proclaimed and segments still under construction",
+      "migratedFrom": 5,
+      "sourceFile": "fixtures/saves/v5/palisade-construction.save.json",
+      "sourceSha256": "9e5527d3865385f0b6c3aff7d43ca0022e664f5242f736ecd320b90611f685b5",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "palisade-construction.save.json",
+      "bytes": 960590,
+      "tick": 90976,
+      "population": 462,
+      "era": "palisade",
+      "buildings": 57,
+      "houses": 24,
+      "palisadeSegments": 33,
+      "completedPalisadeSegments": 1,
+      "saveSerializeMs": 2.11
+    },
+    {
+      "id": "timber-shortage",
+      "migratedFrom": 5,
+      "sourceFile": "fixtures/saves/v5/timber-shortage.save.json",
+      "sourceSha256": "3fd829b0e83f8f43ad70156cd57ed86c5e8a62073806f9f7498b1c2d7b33e7b3",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
+      "file": "timber-shortage.save.json",
+      "bytes": 9554855,
+      "tick": 92684,
+      "population": 466,
+      "era": "palisade",
+      "buildings": 57,
+      "houses": 24,
+      "palisadeSegments": 33,
+      "completedPalisadeSegments": 2,
+      "saveSerializeMs": 26.39
+    },
+    {
+      "id": "zoned-opening",
+      "description": "DEFAULT_GAME_STATE plus a road, a burgage brush, an arable block and the first ZoneFillAgent batch (actions only, no ticks)",
+      "provenance": "Built by scripts/buildZoneFixtures.ts --zoned-save through the reducer actions road/zone_paint/place_building. Not a growth run.",
+      "file": "zoned-opening.save.json",
+      "bytes": 291845,
+      "tick": 0,
+      "population": 12,
+      "era": "hamlet",
+      "buildings": 8,
+      "houses": 4,
+      "constructionSites": 5,
+      "zones": 2
+    }
+  ],
+  "v0Fixtures": [
+    "fixtures/determinism/seed1/final-state.json"
+  ]
+}

@@ -22,6 +22,7 @@ import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
 import { setWallConstructionPriority } from "../engine/constructionReserve";
+import { eraseZone, paintZone, removeZone } from "../zones/zoneEdits";
 import { constructionSiteId } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import type { GameSpeed } from "../engine/engine.types";
@@ -76,6 +77,8 @@ export const DEFAULT_GAME_STATE: GameState = {
   roadRevision: 0,
   pathCache: {},
   scenarioId: DEFAULT_SCENARIO_ID,
+  zones: [],
+  nextZoneOrdinal: 1,
 };
 
 export const GameStoreContext = createContext<GameStoreContextValue | null>(null);
@@ -153,6 +156,12 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return confirmStoneTownProclamation(state);
     case "set_wall_construction_priority":
       return setWallConstructionPriority(state, action.priority);
+    case "zone_paint":
+      return paintZone(state, action.kind, action.stroke);
+    case "zone_erase":
+      return eraseZone(state, action.stroke);
+    case "zone_remove":
+      return removeZone(state, action.id);
     default:
       return assertNever(action);
   }

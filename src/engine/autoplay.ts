@@ -1,3 +1,4 @@
+import { zoneFillAction } from "../zones/zoneFillAgent";
 import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } from './autoplaySearchBudget';
 import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
@@ -262,6 +263,11 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
 }
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+  // Spec Z-15: only a town with painted zones consults ZoneFillAgent; with no zone this is never called.
+  if ((state.zones?.length ?? 0) > 0) {
+    const fill = zoneFillAction(state);
+    if (fill !== null) return fill;
+  }
   resetAutoplayServiceSearch();
   return runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
 }

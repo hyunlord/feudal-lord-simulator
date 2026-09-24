@@ -1,5 +1,6 @@
 import { migrateV3ToV4 } from './v3ToV4';
 import { migrateV4ToV5 } from './v4ToV5';
+import { migrateV5ToV6 } from './v5ToV6';
 import { SAVE_SCHEMA_VERSION } from "../saveTypes";
 import { migrateV0ToV1 } from "./v0ToV1";
 import { migrateV2ToV3 } from "./v2ToV3";
@@ -18,6 +19,7 @@ export const SAVE_MIGRATIONS: readonly SaveMigration[] = [
   { from: 2, to: 3, migrate: migrateV2ToV3 },
   { from: 3, to: 4, migrate: migrateV3ToV4 },
   { from: 4, to: 5, migrate: migrateV4ToV5 },
+  { from: 5, to: 6, migrate: migrateV5ToV6 },
 ];
 
 export class SaveMigrationError extends Error {}
