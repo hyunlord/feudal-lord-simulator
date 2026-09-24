@@ -248,7 +248,7 @@ test("reserve deadlock cause offers an explicit non-hover priority action", () =
   // Given: the goal model reports a blocked balanced wall construction.
   const model = {
     ...buildEraConsoleModel({ state: state({ era: "palisade" }), draft: null }),
-    diagnostic: "비축분 때문에 공사가 멈춤 · 목재 생산이 막힘(창고 가득 참: 석재 200/200) → 공사 우선으로 바꾸거나 창고를 늘리세요",
+    diagnostic: "비축분 때문에 공사가 멈춤 · 목재 생산이 막힘(창고 가득 참 400/400 · 가장 많은 재고 석재) → 공사 우선으로 바꾸거나 창고를 늘리세요",
     reserveDeadlock: true,
     wallProgress: "성벽 0/12",
   };
@@ -264,7 +264,7 @@ test("reserve deadlock cause offers an explicit non-hover priority action", () =
   }));
 
   // Then: the cause and one-tap recovery are present without hover.
-  assert.match(markup, /창고 가득 참: 석재 200\/200/);
+  assert.match(markup, /창고 가득 참 400\/400 · 가장 많은 재고 석재/);
   assert.match(markup, />공사 우선으로 전환<\/button>/);
 });
 

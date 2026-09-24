@@ -229,7 +229,7 @@ test('E3: a wall site and selected card expose the seed 3 reserve deadlock cause
   // When / Then: the map label and selected site repeat the actionable diagnosis.
   const access = constructionAccessModel(current, wall);
   assert.equal(access.cause, 'reserve_deadlock');
-  assert.match(access.label, /창고 가득 참: 석재 400\/400/);
+  assert.match(access.label, /창고 가득 참 400\/400 · 가장 많은 재고 석재/);
   assert.equal(currentConstructionSiteLabel(current, wall), '🪵 비축 교착 · 창고 가득');
   assert.match(constructionSiteCardModel(wall, { accessState: current }).rows.find(row => row.label === '원인')?.value ?? '',
     /공사 우선으로 바꾸거나 창고를 늘리세요/);
