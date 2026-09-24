@@ -1,0 +1,24 @@
+state=/Users/rexxa/feudal-lord-analysis/R1/raw/perf/states/lots24-l4.json ringSteps=132 simplifiedVertices=49
+steps chaikin3: curveVertices=1056 links=8064 latticeBlocked=132 mismatchedLinks=0 maxDevFromLattice=0.094 minClearanceToOccupiedCell=1.000
+vertices chaikin4: curveVertices=784 links=8064 latticeBlocked=132 mismatchedLinks=12 maxDevFromLattice=0.844 minClearanceToOccupiedCell=0.288
+  e.g. 39,20->39,21 lattice=true curve=false
+  e.g. 38,21->39,21 lattice=true curve=false
+  e.g. 39,21->40,21 lattice=false curve=true
+  e.g. 39,21->39,22 lattice=false curve=true
+  e.g. 57,36->57,37 lattice=true curve=false
+  e.g. 62,36->62,37 lattice=true curve=false
+avg3 chaikin3: curveVertices=1056 links=8064 latticeBlocked=132 mismatchedLinks=0 maxDevFromLattice=0.349 minClearanceToOccupiedCell=0.885
+avg5 chaikin3: curveVertices=1056 links=8064 latticeBlocked=132 mismatchedLinks=76 maxDevFromLattice=0.594 minClearanceToOccupiedCell=0.532
+  e.g. 39,20->39,21 lattice=true curve=false
+  e.g. 43,20->43,21 lattice=true curve=false
+  e.g. 38,21->39,21 lattice=true curve=false
+  e.g. 39,21->40,21 lattice=false curve=true
+  e.g. 39,21->39,22 lattice=false curve=true
+  e.g. 42,21->43,21 lattice=false curve=true
+avg9 chaikin3: curveVertices=1056 links=8064 latticeBlocked=132 mismatchedLinks=126 maxDevFromLattice=1.094 minClearanceToOccupiedCell=0.000
+  e.g. 39,20->39,21 lattice=true curve=false
+  e.g. 40,20->40,21 lattice=true curve=false
+  e.g. 42,20->42,21 lattice=true curve=false
+  e.g. 43,20->43,21 lattice=true curve=false
+  e.g. 38,21->39,21 lattice=true curve=false
+  e.g. 40,21->41,21 lattice=false curve=true

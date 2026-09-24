@@ -1,0 +1,93 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>p4 canvas bench</title></head>
+<body><pre id="out">running</pre>
+<script>
+// Probe P4 (design evidence, not product code). Relative Canvas2D costs for ground strategies.
+// Each iteration ends with getImageData(0,0,1,1) to force the queued work to complete.
+const params = new URLSearchParams(location.search);
+const DPR = Number(params.get('dpr') || 1);
+const VW = 1280, VH = 800, TW = 64, TH = 32;
+const canvas = document.createElement('canvas');
+canvas.width = VW * DPR; canvas.height = VH * DPR;
+document.body.appendChild(canvas);
+const ctx = canvas.getContext('2d');
+ctx.scale(DPR, DPR);
+
+function makeTexture(seed, base) {
+  const c = document.createElement('canvas'); c.width = c.height = 512;
+  const g = c.getContext('2d'); g.fillStyle = base; g.fillRect(0, 0, 512, 512);
+  let s = seed; const r = () => (s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  for (let i = 0; i < 3000; i++) { g.fillStyle = `rgba(${40 + r() * 60},${60 + r() * 80},${30 + r() * 40},${0.25 * r()})`; g.fillRect(r() * 512, r() * 512, 2 + r() * 6, 1 + r() * 3); }
+  return c;
+}
+const textures = [makeTexture(1, '#8a9a5b'), makeTexture(2, '#4b6b3a'), makeTexture(3, '#9c8b6e'), makeTexture(4, '#b59f5e')];
+const patterns = textures.map(t => ctx.createPattern(t, 'repeat'));
+
+// visible tile set roughly like a 1280x800 viewport at zoom 1 (~1,100 diamonds incl. margin)
+const tiles = [];
+for (let ty = 0; ty < 64; ty++) for (let tx = 0; tx < 64; tx++) {
+  const sx = (tx - ty) * TW / 2 + VW / 2, sy = (tx + ty) * TH / 2 - 600;
+  if (sx > -TW && sx < VW + TW && sy > -TH && sy < VH + TH) tiles.push({ tx, ty, sx, sy, k: (tx * 7 + ty * 13) % 4 });
+}
+function diamond(t) { ctx.beginPath(); ctx.moveTo(t.sx, t.sy - TH / 2); ctx.lineTo(t.sx + TW / 2, t.sy); ctx.lineTo(t.sx, t.sy + TH / 2); ctx.lineTo(t.sx - TW / 2, t.sy); ctx.closePath(); }
+
+// 40 blobby regions, ~175 vertices each (~7,000 total, matches probe P3 contour size for the grown city)
+let rs = 7; const rnd = () => (rs = (rs * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+const regions = [];
+for (let i = 0; i < 40; i++) {
+  const cx = rnd() * VW, cy = rnd() * VH, R = 80 + rnd() * 220, p = new Path2D();
+  const ph = [rnd() * 6, rnd() * 6, rnd() * 6];
+  for (let v = 0; v < 175; v++) {
+    const a = v / 175 * Math.PI * 2, rr = R * (1 + 0.18 * Math.sin(3 * a + ph[0]) + 0.1 * Math.sin(5 * a + ph[1]) + 0.05 * Math.sin(11 * a + ph[2]));
+    const x = cx + rr * Math.cos(a), y = cy + rr * 0.5 * Math.sin(a);
+    v === 0 ? p.moveTo(x, y) : p.lineTo(x, y);
+  }
+  p.closePath(); regions.push({ p, k: i % 4 });
+}
+// 1,000-segment road ribbon network as one Path2D stroked with a pattern
+const roads = new Path2D();
+for (let r = 0; r < 12; r++) { let x = rnd() * VW, y = rnd() * VH, a = rnd() * 6.28; roads.moveTo(x, y); for (let s = 0; s < 85; s++) { a += (rnd() - 0.5) * 0.3; x += Math.cos(a) * 12; y += Math.sin(a) * 6; roads.lineTo(x, y); } }
+
+// chunk cache: 4 offscreen chunks 1024x512 (device px) composed once
+const chunks = [];
+for (let i = 0; i < 6; i++) { const c = document.createElement('canvas'); c.width = 1024 * DPR / 1; c.height = 512 * DPR; const g = c.getContext('2d'); g.drawImage(textures[i % 4], 0, 0, c.width, c.height); chunks.push(c); }
+
+const strategies = {
+  'A current: per-tile diamond x3 fills (base, pattern a0.6, variation)': () => {
+    for (const t of tiles) {
+      ctx.fillStyle = '#8a9a5b'; diamond(t); ctx.fill();
+      diamond(t); ctx.save(); ctx.globalAlpha = 0.6; ctx.fillStyle = patterns[t.k]; ctx.fill(); ctx.restore();
+      ctx.fillStyle = 'rgba(255,250,235,0.05)'; diamond(t); ctx.fill();
+    }
+  },
+  'A0 phase16-style: per-tile clip + fillRect pattern': () => {
+    for (const t of tiles) { ctx.save(); diamond(t); ctx.clip(); ctx.fillStyle = patterns[t.k]; ctx.fillRect(t.sx - TW / 2, t.sy - TH / 2, TW, TH); ctx.restore(); }
+  },
+  'B region fills: base rect + 40 Path2D pattern fills + contour strokes + road ribbon': () => {
+    ctx.fillStyle = patterns[0]; ctx.fillRect(0, 0, VW, VH);
+    for (const r of regions) { ctx.fillStyle = patterns[r.k]; ctx.fill(r.p); }
+    ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(40,35,20,0.55)'; for (const r of regions) ctx.stroke(r.p);
+    ctx.lineWidth = 22; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.strokeStyle = patterns[2]; ctx.stroke(roads);
+    ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(60,45,25,0.6)'; ctx.stroke(roads);
+  },
+  'C region via clip: 40 x (clip Path2D + fillRect pattern)': () => {
+    ctx.fillStyle = patterns[0]; ctx.fillRect(0, 0, VW, VH);
+    for (const r of regions) { ctx.save(); ctx.clip(r.p); ctx.fillStyle = patterns[r.k]; ctx.fillRect(0, 0, VW, VH); ctx.restore(); }
+  },
+  'D cached ground: 6 chunk drawImage blits': () => {
+    let i = 0; for (const c of chunks) { ctx.drawImage(c, (i % 3) * 512 - 100, Math.floor(i / 3) * 256 - 50, 1024, 512); i++; }
+  },
+};
+
+function run(fn, n) {
+  const times = [];
+  for (let i = 0; i < 8; i++) { fn(); ctx.getImageData(0, 0, 1, 1); }
+  for (let i = 0; i < n; i++) { const t0 = performance.now(); fn(); ctx.getImageData(0, 0, 1, 1); times.push(performance.now() - t0); }
+  times.sort((a, b) => a - b);
+  return { p50: times[Math.floor(n * 0.5)], p95: times[Math.floor(n * 0.95)] };
+}
+const lines = [`dpr=${DPR} viewport=${VW}x${VH} visibleTiles=${tiles.length} regions=40x175v`];
+for (const [name, fn] of Object.entries(strategies)) { const r = run(fn, 60); lines.push(`${name}: p50=${r.p50.toFixed(2)}ms p95=${r.p95.toFixed(2)}ms`); }
+document.getElementById('out').textContent = lines.join('\n');
+document.title = 'done';
+</script></body></html>

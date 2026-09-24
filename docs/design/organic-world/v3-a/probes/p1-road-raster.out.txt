@@ -1,0 +1,28 @@
+straight 0deg: arc=20.0 cells=21 cells/arc=1.05 4conn=true maxCellCentreToIntent=0.000
+  S1 chaikin3: maxDevFromIntent=0.000 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.000 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=2
+  S2 avg5+chaikin2: maxDevFromIntent=0.000 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=2
+straight 45deg: arc=22.6 cells=33 cells/arc=1.46 4conn=true maxCellCentreToIntent=0.707
+  S1 chaikin3: maxDevFromIntent=0.530 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.412 ribbonOutsideCells=2.8% outside>0.25tile=0 cellCentresNotUnderRibbon=33
+  S2 avg5+chaikin2: maxDevFromIntent=0.389 ribbonOutsideCells=2.5% outside>0.25tile=0 cellCentresNotUnderRibbon=4
+straight 26.6deg (2:1): arc=22.4 cells=31 cells/arc=1.39 4conn=true maxCellCentreToIntent=0.447
+  S1 chaikin3: maxDevFromIntent=0.300 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.224 ribbonOutsideCells=6.0% outside>0.25tile=0 cellCentresNotUnderRibbon=22
+  S2 avg5+chaikin2: maxDevFromIntent=0.067 ribbonOutsideCells=7.0% outside>0.25tile=0 cellCentresNotUnderRibbon=22
+gentle arc r~12: arc=18.9 cells=25 cells/arc=1.33 4conn=true maxCellCentreToIntent=0.707
+  S1 chaikin3: maxDevFromIntent=0.530 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.388 ribbonOutsideCells=3.4% outside>0.25tile=0 cellCentresNotUnderRibbon=17
+  S2 avg5+chaikin2: maxDevFromIntent=0.388 ribbonOutsideCells=5.1% outside>0.25tile=0 cellCentresNotUnderRibbon=8
+tight arc r~3: arc=4.7 cells=7 cells/arc=1.49 4conn=true maxCellCentreToIntent=0.583
+  S1 chaikin3: maxDevFromIntent=0.418 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.236 ribbonOutsideCells=3.2% outside>0.25tile=0 cellCentresNotUnderRibbon=5
+  S2 avg5+chaikin2: maxDevFromIntent=0.182 ribbonOutsideCells=9.1% outside>0.25tile=0 cellCentresNotUnderRibbon=4
+S-curve: arc=29.9 cells=41 cells/arc=1.37 4conn=true maxCellCentreToIntent=0.645
+  S1 chaikin3: maxDevFromIntent=0.478 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.326 ribbonOutsideCells=3.9% outside>0.25tile=0 cellCentresNotUnderRibbon=32
+  S2 avg5+chaikin2: maxDevFromIntent=0.286 ribbonOutsideCells=7.8% outside>0.25tile=0 cellCentresNotUnderRibbon=14
+river-hugging wiggle: arc=21.5 cells=25 cells/arc=1.17 4conn=true maxCellCentreToIntent=0.647
+  S1 chaikin3: maxDevFromIntent=0.514 ribbonOutsideCells=0.0% outside>0.25tile=0 cellCentresNotUnderRibbon=0
+  S3 avg3+chaikin3: maxDevFromIntent=0.514 ribbonOutsideCells=2.8% outside>0.25tile=0 cellCentresNotUnderRibbon=10
+  S2 avg5+chaikin2: maxDevFromIntent=0.524 ribbonOutsideCells=6.7% outside>0.25tile=0 cellCentresNotUnderRibbon=10

@@ -1,0 +1,12 @@
+dpr=1 viewport=1280x800 visibleTiles=1161 regions=40x175v
+A current: per-tile diamond x3 fills (base, pattern a0.6, variation): p50=364.70ms p95=372.30ms
+A0 phase16-style: per-tile clip + fillRect pattern: p50=359.20ms p95=363.90ms
+B region fills: base rect + 40 Path2D pattern fills + contour strokes + road ribbon: p50=25.10ms p95=26.70ms
+C region via clip: 40 x (clip Path2D + fillRect pattern): p50=19.50ms p95=20.50ms
+D cached ground: 6 chunk drawImage blits: p50=1.70ms p95=2.00ms
+dpr=2 viewport=1280x800 visibleTiles=1161 regions=40x175v
+A current: per-tile diamond x3 fills (base, pattern a0.6, variation): p50=371.50ms p95=381.80ms
+A0 phase16-style: per-tile clip + fillRect pattern: p50=383.90ms p95=410.10ms
+B region fills: base rect + 40 Path2D pattern fills + contour strokes + road ribbon: p50=71.10ms p95=73.10ms
+C region via clip: 40 x (clip Path2D + fillRect pattern): p50=61.60ms p95=62.80ms
+D cached ground: 6 chunk drawImage blits: p50=5.50ms p95=7.30ms
