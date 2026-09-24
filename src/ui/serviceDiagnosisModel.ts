@@ -1,3 +1,4 @@
+import { SERVICE_DIAGNOSIS_COPY } from './serviceDiagnosisCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import type { GameState } from '../engine/engine.types';
 import { householdServices } from '../engine/householdServices';
@@ -33,7 +34,7 @@ export function serviceDiagnosis(state: GameState, home: Building, service: Hous
     case 'outside': label = service === 'water' ? `우물이 너무 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}` : `${name}${service === 'church' ? '가' : '이'} 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`; break;
     case 'understaffed': label = `가까운 ${name}의 일꾼이 부족합니다`; break;
     case 'unreachable': label = `${name}까지 연결된 도로가 없습니다`; break;
-    case 'capacity': label = `${name} 수용량 부족 — 가까운 곳에 추가 시설이 필요합니다`; break;
+    case 'capacity': label = SERVICE_DIAGNOSIS_COPY.capacity(name, access?.earlierHomesUsingCapacity ?? 0); break;
   }
   return { kind, label, distance, serviceRadius };
 }

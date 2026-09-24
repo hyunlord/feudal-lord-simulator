@@ -10,6 +10,7 @@ export interface ServiceAccess {
   readonly kind: ServiceAccessKind;
   readonly providerId: string | null;
   readonly demand: number;
+  readonly earlierHomesUsingCapacity?: number;
 }
 export type HouseServices = Readonly<Record<HouseholdService, ServiceAccess>>;
 export interface ServiceProviderAllocation {
@@ -38,11 +39,22 @@ export const HOUSEHOLD_SERVICE_CONFIG = {
 } as const;
 const SERVICES = ['water', 'market', 'church'] as const;
 
+// Opening homes precede numbered construction sites. The persisted construction
+// ordinal is the requested completion-priority key; no duplicate save field is needed.
+function houseServicePriority(id: string): number {
+  const ordinal = /^construction-site-(\d+)$/.exec(id)?.[1];
+  return ordinal === undefined ? -1 : Number(ordinal);
+}
+function compareHomes(a: House, b: House): number {
+  return houseServicePriority(a.buildingId) - houseServicePriority(b.buildingId)
+    || a.buildingId.localeCompare(b.buildingId);
+}
+
 export function allocateHouseServices(input: ServiceAllocationInput): ServiceAllocation {
   const providers = new Map<string, ServiceProviderAllocation>();
   const houses = new Map<string, HouseServices>();
   const buildingsById = new Map(input.buildings.map(b => [b.id, b]));
-  const homes = [...input.houses].sort((a, b) => a.buildingId.localeCompare(b.buildingId));
+  const homes = [...input.houses].sort(compareHomes);
   for (const house of homes) {
     const demand = houseLotArea(buildingsById.get(house.buildingId));
     const missing: ServiceAccess = { kind: 'missing', providerId: null, demand };
@@ -65,20 +77,55 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
         .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
       return [{ house, demand, nearby, staffed, reachable }];
     });
-    // Reserve constrained homes first; flexible neighbours can use the next provider.
-    // Two-lot homes stay indivisible and precede singles with equal alternatives.
-    candidates.sort((a, b) => a.reachable.length - b.reachable.length || b.demand - a.demand
-      || a.house.buildingId.localeCompare(b.house.buildingId));
+    const assigned = new Map<string, string>();
+    const candidatesById = new Map(candidates.map(candidate => [candidate.house.buildingId, candidate]));
     for (const { house, demand, nearby, staffed, reachable } of candidates) {
       const current = houses.get(house.buildingId);
       if (current === undefined) continue;
       const available = reachable.filter(p => (providers.get(p.id)?.used ?? 0) + demand <= config.capacity);
-      const provider = available[0];
+      let provider = available[0];
+      // A newer home may move an older neighbour to an available alternative, but
+      // never remove its service. One-hop moves are bounded by homes × providers.
+      // Commit a move only when all of the newer home's indivisible demand fits.
+      if (provider === undefined) for (const target of reachable) {
+        let space = config.capacity - (providers.get(target.id)?.used ?? 0);
+        const moves: { readonly homeId: string; readonly targetId: string; readonly demand: number }[] = [];
+        const extraUse = new Map<string, number>();
+        for (const [homeId, providerId] of assigned) {
+          if (providerId !== target.id || space >= demand) continue;
+          const older = candidatesById.get(homeId);
+          if (older === undefined) continue;
+          const alternative = older.reachable.find(p => p.id !== target.id
+            && (providers.get(p.id)?.used ?? 0) + (extraUse.get(p.id) ?? 0) + older.demand <= config.capacity);
+          if (alternative === undefined) continue;
+          moves.push({ homeId, targetId: alternative.id, demand: older.demand });
+          extraUse.set(alternative.id, (extraUse.get(alternative.id) ?? 0) + older.demand);
+          space += older.demand;
+        }
+        if (space < demand) continue;
+        for (const move of moves) {
+          const olderServices = houses.get(move.homeId);
+          const source = providers.get(target.id);
+          const destination = providers.get(move.targetId);
+          if (olderServices === undefined || source === undefined || destination === undefined) continue;
+          houses.set(move.homeId, { ...olderServices, [service]: { ...olderServices[service], providerId: move.targetId } });
+          providers.set(target.id, { ...source, used: source.used - move.demand });
+          providers.set(move.targetId, { ...destination, used: destination.used + move.demand });
+          assigned.set(move.homeId, move.targetId);
+        }
+        provider = target;
+        break;
+      }
       const kind: ServiceAccessKind = provider !== undefined ? 'served'
         : facilities.length === 0 ? 'missing' : nearby.length === 0 ? 'outside'
         : staffed.length === 0 ? 'understaffed' : reachable.length === 0 ? 'unreachable' : 'capacity';
-      houses.set(house.buildingId, { ...current, [service]: { kind, providerId: provider?.id ?? null, demand } });
+      const reachableIds = new Set(reachable.map(p => p.id));
+      const earlierHomesUsingCapacity = kind === 'capacity'
+        ? [...assigned.values()].filter(id => reachableIds.has(id)).length : undefined;
+      houses.set(house.buildingId, { ...current, [service]: { kind, providerId: provider?.id ?? null, demand,
+        ...(earlierHomesUsingCapacity === undefined ? {} : { earlierHomesUsingCapacity }) } });
       if (provider !== undefined) {
+        assigned.set(house.buildingId, provider.id);
         const allocation = providers.get(provider.id);
         if (allocation !== undefined) providers.set(provider.id, { ...allocation, used: allocation.used + demand });
       }
