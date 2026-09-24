@@ -10,6 +10,8 @@
 
 ## 마지막 종료 작업
 
+**D1a 곡선 렌더 1단계**(Claude Code, 렌더·경계층·온보딩 캐시·에셋·테스트만): 플래그 `RENDER_BOUNDARY_V2`(기본 **끔**, 설정 메뉴 토글·URL `render-boundary-v2=1`)를 켜면 도로가 셀 사슬에서 파생한 굽은 리본(흙길/석재길 스트립, 전환 섞기)으로, 숲 가장자리와 밭 무리가 공유 윤곽선 + 데칼로 그려진다. 경계층 `src/world/boundary`(변 소유·파생·비저장), 8×8 지면 청크 캐시. 관문 5개 통과: ①도로 중심선 도로 칸 밖 최대 0.125칸·숲 0.25·밭 0.125(seed1~5·12×12), ②역순 입력·재로드 화면 SHA 동일, ③24필지 켬 frameWork 3.8/8.8 ms(B11 11.6/14.3), GPU Commit 55~70% 감소, ④도로 설치·철거·밭 완공 직후 같은 프레임 갱신·오래된 그림 0, ⑤끔이면 픽셀 동일 10/10. 온보딩 안내 메모로 새 게임 중앙값 16.1→4.7 ms. Astra 에셋 7장 설치·대장 7행(지시서의 8장 중 1장은 ZIP에 런타임 파일이 없음). 기본 켬 여부는 사용자 결정. [D1a 보고서](verification/d1a/REPORT.md).
+
 **B11 렌더 계측**(Claude Code, 렌더·스크립트·테스트만): 증빙 모드 전용 단계별 시간·canvas 호출 수(`src/render/renderStageProbe.ts`, 단계 합 = frameWork 99.9~100%, 증빙 모드 밖 미실행 테스트), 벤치 `scripts/renderStageBenchmark.mjs`. P-F1(초반 도시 프레임 150~200ms)은 headed·headless 모두 GPU에서 재현됐고, 원인은 도로 칸 패턴 `fillRect`였다. 다각형 `fill`로 바꿔 수정했다(그림 동일, 인구 176 rAF 150→16.7ms). 기준선 14칸과 D1a 제안은 [B11 보고서](verification/b11-render-metrics/REPORT.md). 다음 후보: 새 게임 온보딩 오버레이 14ms/프레임.
 
 **S0**: B8 merge `7968bcf`, 이식성 `dba23cb`, 공통 좌표 타입 `afb3321`, 검증 도구 `e97d6a8`·`3c52fa4`, 상태 기록 `b8e9fb4`·48필지 `ca70fbc`. 새 임시 클론 전체 2442/2442(Phase 9 포함), typecheck·build, 저장 결정론2/2·실제 이어하기, 문서 지도22/22를 확인했다. 종료 증빙 커밋에서도 새 클론 전체 검증을 실행하며 최종 receipt는 `/tmp/fls-s0-final-verification.json`. [S0 보고서](../output/trunk-baseline/REPORT.md).
