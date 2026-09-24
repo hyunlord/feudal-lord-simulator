@@ -1,4 +1,4 @@
-import { autoplaySearchExhausted } from './autoplaySearchBudget';
+import { autoplaySearchExhausted, autoplaySearchWorkUsed, spendAutoplaySearch } from './autoplaySearchBudget';
 import { searchBudgetedServicePlan, type ServiceBudgetSearch } from './autoplayServiceBudget';
 import { autoplayConstructionSources } from './autoplayConstructionSources';
 import { HOUSEHOLD_SERVICE_CONFIG } from '../population/serviceAllocation';
@@ -10,6 +10,30 @@ import { findAutoplayServiceWitness, type ServiceSpaceWitness } from './autoplay
 import { projectServiceAction, serviceCandidate, serviceFootprint, serviceSpaceBuildings, serviceTileKey } from './autoplayServiceSpaceRoutes';
 
 type Layout = { readonly signature: string; budget?: ServiceBudgetSearch; readonly tiles: GameState['tiles']; readonly geometry: string; readonly witnesses: Map<string, ServiceSpaceWitness | null>; readonly decisions: Map<string, boolean> };
+type Proof<T> = { readonly value: T; readonly work: number };
+type ProofMemo = { budget?: Proof<ServiceBudgetSearch>; readonly witnesses: Map<string, Proof<ServiceSpaceWitness | null>> };
+/** Only completed active proofs survive decisions; every hit replays its cold work cost.
+ * Layout/terrain/walls/paused state and ordered building/supply IDs invalidate the memo.
+ * Stock magnitudes, staffing, tick and home status do not affect future staffed proofs;
+ * stock-driven supply membership is included. Inactive/unbounded proofs never enter.
+ * Retain at most 32 layouts. Natural seed3 repeated-advisor median: 807 -> 276 ms;
+ * actions and charged work were identical (S8-search-budget.md). */
+const proofMemos = new Map<string, ProofMemo>();
+let proofMemoHits = 0;
+export function clearAutoplayServiceProofMemo(): void { proofMemos.clear(); proofMemoHits = 0; }
+export function autoplayServiceProofMemoStats(): { readonly layouts: number; readonly entries: number; readonly hits: number } {
+  return { layouts: proofMemos.size, entries: [...proofMemos.values()].reduce((sum, memo) => sum + memo.witnesses.size + Number(memo.budget !== undefined), 0), hits: proofMemoHits };
+}
+function proofMemoFor(layout: Layout, state: GameState): ProofMemo {
+  const key = layout.signature + JSON.stringify([serviceSpaceBuildings(state).map(building => building.id), autoplayConstructionSources(state).map(source => source.id)]);
+  const memo = proofMemos.get(key) ?? { witnesses: new Map() };
+  proofMemos.delete(key); proofMemos.set(key, memo);
+  if (proofMemos.size > 32) {
+    const oldest = proofMemos.keys().next().value;
+    if (oldest !== undefined) proofMemos.delete(oldest);
+  }
+  return memo;
+}
 let byState = new WeakMap<GameState, Layout>();
 const tileKeys = new WeakMap<GameState['tiles'], string>();
 const layouts = new Map<string, Layout>();
@@ -75,16 +99,41 @@ function layoutFor(state: GameState): Layout {
 }
 function budgetFor(layout: Layout, state: GameState): ServiceBudgetSearch {
   if (layout.budget !== undefined) return layout.budget;
+  const before = autoplaySearchWorkUsed();
+  const memo = before === undefined ? undefined : proofMemoFor(layout, state);
+  if (memo?.budget !== undefined) {
+    proofMemoHits++;
+    if (!spendAutoplaySearch(memo.budget.work)) return { witness: null, complete: false };
+    layout.budget = memo.budget.value;
+    return layout.budget;
+  }
   const result = searchBudgetedServicePlan(state);
-  if (result.complete) layout.budget = result;
+  if (result.complete) {
+    layout.budget = result;
+    const after = autoplaySearchWorkUsed();
+    if (memo !== undefined && before !== undefined && after !== undefined && !autoplaySearchExhausted()) memo.budget = { value: result, work: after - before };
+  }
   return result;
 }
 
 function witnessFor(layout: Layout, state: GameState, home: ReturnType<typeof serviceSpaceBuildings>[number]): ServiceSpaceWitness | null {
   const cached = layout.witnesses.get(home.id);
   if (cached !== undefined) return cached;
+  const before = autoplaySearchWorkUsed();
+  const memo = before === undefined ? undefined : proofMemoFor(layout, state);
+  const proof = memo?.witnesses.get(home.id);
+  if (proof !== undefined) {
+    proofMemoHits++;
+    if (!spendAutoplaySearch(proof.work)) return null;
+    layout.witnesses.set(home.id, proof.value);
+    return proof.value;
+  }
   const witness = findAutoplayServiceWitness(state, home);
-  if (!autoplaySearchExhausted()) layout.witnesses.set(home.id, witness);
+  if (!autoplaySearchExhausted()) {
+    layout.witnesses.set(home.id, witness);
+    const after = autoplaySearchWorkUsed();
+    if (memo !== undefined && before !== undefined && after !== undefined) memo.witnesses.set(home.id, { value: witness, work: after - before });
+  }
   return witness;
 }
 
