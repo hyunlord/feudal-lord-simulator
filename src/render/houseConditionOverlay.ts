@@ -123,10 +123,13 @@ function conditionFrame(building: Building, level: number) {
  * Overlays are authored on the base body. On a variant they follow scripts/registerVariantOverlays.py:
  * variant point = scale * base point + (dx, dy) in authored pixels, so the whole overlay frame moves and scales.
  */
+const OVERLAY_REGISTRATION = new Map<string, (typeof BUILDING_VARIANT_OVERLAY_REGISTRATION)[number]>(
+  BUILDING_VARIANT_OVERLAY_REGISTRATION.map(entry => [entry.url, entry]));
+
 function variantRegisteredRect(building: Building, bounds: Readonly<{ x: number; y: number; width: number; height: number }>,
   rect: Readonly<{ x: number; y: number; width: number; height: number }>) {
   const url = frameBuildingVariant(building)?.url ?? null;
-  const registration = url === null ? undefined : BUILDING_VARIANT_OVERLAY_REGISTRATION.find(entry => entry.url === url);
+  const registration = url === null ? undefined : OVERLAY_REGISTRATION.get(url);
   if (registration === undefined) return rect;
   const perX = rect.width / bounds.width; const perY = rect.height / bounds.height;
   return {

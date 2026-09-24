@@ -1,0 +1,441 @@
+{
+  "seed1": {
+    "pools": [
+      {
+        "pool": "building:chapel",
+        "count": 1,
+        "byVariant": {
+          "base": 1
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:house_l4",
+        "count": 24,
+        "byVariant": {
+          "base": 6,
+          "inn": 6,
+          "courtyard": 8,
+          "wing": 4
+        },
+        "topShare": 0.3333333333333333,
+        "adjacentPairs": 16,
+        "adjacentSame": 1
+      },
+      {
+        "pool": "building:market",
+        "count": 2,
+        "byVariant": {
+          "b": 1,
+          "base": 1
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:mill",
+        "count": 9,
+        "byVariant": {
+          "base": 3,
+          "windmill": 6
+        },
+        "topShare": 0.6666666666666666,
+        "adjacentPairs": 3,
+        "adjacentSame": 1
+      },
+      {
+        "pool": "building:storehouse",
+        "count": 4,
+        "byVariant": {
+          "c": 2,
+          "base": 2
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 1,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:well",
+        "count": 3,
+        "byVariant": {
+          "b": 1,
+          "base": 1,
+          "c": 1
+        },
+        "topShare": 0.3333333333333333,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:wheat_farm",
+        "count": 20,
+        "byVariant": {
+          "mixed": 9,
+          "base": 11
+        },
+        "topShare": 0.55,
+        "adjacentPairs": 8,
+        "adjacentSame": 2
+      }
+    ],
+    "adjacentPairs": 28,
+    "adjacentSame": 4,
+    "adjacentSameShare": 0.14285714285714285
+  },
+  "seed2": {
+    "pools": [
+      {
+        "pool": "building:chapel",
+        "count": 1,
+        "byVariant": {
+          "stone": 1
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:house_l4",
+        "count": 24,
+        "byVariant": {
+          "base": 6,
+          "wing": 6,
+          "inn": 5,
+          "courtyard": 7
+        },
+        "topShare": 0.2916666666666667,
+        "adjacentPairs": 14,
+        "adjacentSame": 1
+      },
+      {
+        "pool": "building:market",
+        "count": 2,
+        "byVariant": {
+          "c": 1,
+          "base": 1
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:mill",
+        "count": 10,
+        "byVariant": {
+          "base": 4,
+          "windmill": 6
+        },
+        "topShare": 0.6,
+        "adjacentPairs": 3,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:storehouse",
+        "count": 4,
+        "byVariant": {
+          "c": 2,
+          "b": 2
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 1,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:well",
+        "count": 3,
+        "byVariant": {
+          "b": 1,
+          "c": 1,
+          "base": 1
+        },
+        "topShare": 0.3333333333333333,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:wheat_farm",
+        "count": 20,
+        "byVariant": {
+          "base": 13,
+          "mixed": 7
+        },
+        "topShare": 0.65,
+        "adjacentPairs": 11,
+        "adjacentSame": 3
+      }
+    ],
+    "adjacentPairs": 29,
+    "adjacentSame": 4,
+    "adjacentSameShare": 0.13793103448275862
+  },
+  "seed3": {
+    "pools": [
+      {
+        "pool": "building:chapel",
+        "count": 1,
+        "byVariant": {
+          "b": 1
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:house_l3",
+        "count": 11,
+        "byVariant": {
+          "clothier": 5,
+          "shop": 2,
+          "storage": 4
+        },
+        "topShare": 0.45454545454545453,
+        "adjacentPairs": 3,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:house_l4",
+        "count": 13,
+        "byVariant": {
+          "inn": 4,
+          "base": 3,
+          "wing": 4,
+          "courtyard": 2
+        },
+        "topShare": 0.3076923076923077,
+        "adjacentPairs": 7,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:market",
+        "count": 2,
+        "byVariant": {
+          "b": 1,
+          "c": 1
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:mill",
+        "count": 8,
+        "byVariant": {
+          "base": 5,
+          "windmill": 3
+        },
+        "topShare": 0.625,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:storehouse",
+        "count": 3,
+        "byVariant": {
+          "c": 1,
+          "base": 2
+        },
+        "topShare": 0.6666666666666666,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:well",
+        "count": 7,
+        "byVariant": {
+          "b": 3,
+          "c": 2,
+          "base": 2
+        },
+        "topShare": 0.42857142857142855,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:wheat_farm",
+        "count": 19,
+        "byVariant": {
+          "base": 9,
+          "mixed": 10
+        },
+        "topShare": 0.5263157894736842,
+        "adjacentPairs": 6,
+        "adjacentSame": 0
+      }
+    ],
+    "adjacentPairs": 16,
+    "adjacentSame": 0,
+    "adjacentSameShare": 0
+  },
+  "seed4": {
+    "pools": [
+      {
+        "pool": "building:chapel",
+        "count": 1,
+        "byVariant": {
+          "stone": 1
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:house_l4",
+        "count": 24,
+        "byVariant": {
+          "wing": 4,
+          "inn": 9,
+          "base": 5,
+          "courtyard": 6
+        },
+        "topShare": 0.375,
+        "adjacentPairs": 16,
+        "adjacentSame": 1
+      },
+      {
+        "pool": "building:market",
+        "count": 2,
+        "byVariant": {
+          "c": 2
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:mill",
+        "count": 9,
+        "byVariant": {
+          "base": 6,
+          "windmill": 3
+        },
+        "topShare": 0.6666666666666666,
+        "adjacentPairs": 2,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:storehouse",
+        "count": 3,
+        "byVariant": {
+          "b": 1,
+          "c": 2
+        },
+        "topShare": 0.6666666666666666,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:well",
+        "count": 3,
+        "byVariant": {
+          "c": 3
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:wheat_farm",
+        "count": 20,
+        "byVariant": {
+          "base": 9,
+          "mixed": 11
+        },
+        "topShare": 0.55,
+        "adjacentPairs": 9,
+        "adjacentSame": 1
+      }
+    ],
+    "adjacentPairs": 27,
+    "adjacentSame": 2,
+    "adjacentSameShare": 0.07407407407407407
+  },
+  "seed5": {
+    "pools": [
+      {
+        "pool": "building:chapel",
+        "count": 1,
+        "byVariant": {
+          "base": 1
+        },
+        "topShare": 1,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:house_l4",
+        "count": 24,
+        "byVariant": {
+          "courtyard": 6,
+          "inn": 8,
+          "base": 4,
+          "wing": 6
+        },
+        "topShare": 0.3333333333333333,
+        "adjacentPairs": 9,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:market",
+        "count": 2,
+        "byVariant": {
+          "b": 1,
+          "base": 1
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:mill",
+        "count": 9,
+        "byVariant": {
+          "windmill": 5,
+          "base": 4
+        },
+        "topShare": 0.5555555555555556,
+        "adjacentPairs": 1,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:storehouse",
+        "count": 3,
+        "byVariant": {
+          "c": 1,
+          "base": 2
+        },
+        "topShare": 0.6666666666666666,
+        "adjacentPairs": 0,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:well",
+        "count": 6,
+        "byVariant": {
+          "b": 2,
+          "base": 3,
+          "c": 1
+        },
+        "topShare": 0.5,
+        "adjacentPairs": 1,
+        "adjacentSame": 0
+      },
+      {
+        "pool": "building:wheat_farm",
+        "count": 21,
+        "byVariant": {
+          "mixed": 10,
+          "base": 11
+        },
+        "topShare": 0.5238095238095238,
+        "adjacentPairs": 9,
+        "adjacentSame": 1
+      }
+    ],
+    "adjacentPairs": 20,
+    "adjacentSame": 1,
+    "adjacentSameShare": 0.05
+  }
+}

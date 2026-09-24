@@ -13,7 +13,8 @@ import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteR
 // authored frame, so every draw keeps using the base's crop and destination rectangle. Rasters are made once per
 // (url, crop, height) exactly like the base sprites, so a variant costs no more per frame than its base.
 type Crop = Readonly<{ x: number; y: number; width: number; height: number }>;
-type Record = { status: "loading" | "ready" | "missing"; image: HTMLImageElement | null; rasters: Map<string, RasterizedWorldSprite | null>; loaded: Promise<void> };
+// Rasters are keyed by the caller's crop object (a stable manifest record) and the raster height: no per-draw strings.
+type Record = { status: "loading" | "ready" | "missing"; image: HTMLImageElement | null; rasters: Map<Crop, Map<number, RasterizedWorldSprite | null>>; loaded: Promise<void> };
 const records = new Map<string, Record>();
 
 function record(url: string, originalWidth: number, originalHeight: number): Record | null {
@@ -46,13 +47,14 @@ export function variantSprite(url: string, originalWidth: number, originalHeight
   const image = variantImage(url, originalWidth, originalHeight);
   if (image === null) return null;
   const entry = records.get(url) as Record;
-  const key = `${source.x},${source.y},${source.width},${source.height}@${rasterHeight}`;
-  if (!entry.rasters.has(key)) {
-    let raster: RasterizedWorldSprite | null = null;
+  let byHeight = entry.rasters.get(source);
+  if (byHeight === undefined) { byHeight = new Map(); entry.rasters.set(source, byHeight); }
+  let raster = byHeight.get(rasterHeight);
+  if (raster === undefined) {
+    raster = null;
     try { raster = rasterizeWorldSprite(image, source, rasterHeight); } catch (error) { if (!(error instanceof Error)) throw error; }
-    entry.rasters.set(key, raster);
+    byHeight.set(rasterHeight, raster);
   }
-  const raster = entry.rasters.get(key) ?? null;
   return raster === null ? { image, source } : { image: raster.image, source: raster.source };
 }
 
