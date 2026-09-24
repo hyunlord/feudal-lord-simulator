@@ -66,4 +66,3 @@ export function loggedContext(): LoggedContext {
   };
   return context as unknown as LoggedContext;
 }
-
