@@ -1,6 +1,6 @@
 import { observeMaterialReturn } from './materialActivity';
 import { BALANCE } from "../content/balanceConfig";
-import { WALL_CARRY_COST_FACTOR } from '../engine/wallCarryRoute';
+import { WALL_CARRY_COST_FACTOR } from '../content/wallConstructionConfig';
 import type { Building } from "../content/buildingConfig";
 import {
   hasArrivedAtPathEnd,

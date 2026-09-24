@@ -12,6 +12,7 @@ import type { GameState } from "../engine/engine.types";
 import { constructionSiteAnchor } from "../economy/construction";
 import { remainingCarterTravelCost } from '../agents/carterTravelCost';
 import { getTile } from '../world/grid';
+import { stoneReplacementSiteId } from '../engine/era';
 
 export type WalkerDiagnosisModel = {
   readonly walkerId: string;
@@ -155,8 +156,10 @@ function carterDiagnosis(
     ? undefined : state.constructionSites.find(site => site.id === wallSiteId);
   const wallDelivery = constructionSite?.kind === 'palisade_segment' || constructionSite?.kind === 'stone_wall_segment'
     || (wallSiteId !== null && state.palisade?.segments.some(segment =>
-      segment.constructionSiteId === wallSiteId
-      || segment.replacementConstructionSiteId === wallSiteId) === true);
+      segment.id === wallSiteId
+      || segment.constructionSiteId === wallSiteId
+      || segment.replacementConstructionSiteId === wallSiteId
+      || stoneReplacementSiteId(segment.id) === wallSiteId) === true);
   const travelCost = wallDelivery
     ? remainingCarterTravelCost(walker, tile => getTile(state, tile)?.hasRoad === true)
     : remainingDistance;

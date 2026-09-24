@@ -1,12 +1,11 @@
 import type { WallConstructionSite } from '../economy/construction';
+import { WALL_CARRY_COST_FACTOR } from '../content/wallConstructionConfig';
 import { canTraverseRoadBoundary } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
 import { getOrthogonalRoadNeighbors } from '../world/roadGraph';
 import { isPointInsidePalisade, type TileEdgePoint } from '../world/palisadeGeometry';
 import type { GameState } from './engine.types';
 import { palisadeRingPoints, palisadeStepPoints } from './palisadeSegments';
-
-export const WALL_CARRY_COST_FACTOR = 2.0;
 
 export type WallCarryRoute = Readonly<{
   path: readonly TileCoordinate[];

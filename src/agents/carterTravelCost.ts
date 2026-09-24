@@ -1,4 +1,4 @@
-import { WALL_CARRY_COST_FACTOR } from '../engine/wallCarryRoute';
+import { WALL_CARRY_COST_FACTOR } from '../content/wallConstructionConfig';
 import type { CarterWalker, TilePos } from './walker.types';
 
 const distance = (from: TilePos, to: TilePos): number =>

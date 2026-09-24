@@ -37,6 +37,25 @@ function cacheKey(
   return `road:${state.roadRevision}${roadTopologySignature(state.palisade)}:${sourceId}->${destinationId}`;
 }
 
+// Tile-array identity invalidates this signature after immutable occupancy or terrain edits.
+// Wall carrying depends on blocked cells, but not on building IDs, stocks, or worker counts;
+// roadRevision already covers road edits. Natural 10k warm wall-route lookups: 0.67 ms
+// before the signature and 4.2 ms after (local median batch; route setup excluded).
+const wallSiteTileSignatures = new WeakMap<GameState['tiles'], string>();
+
+function wallSiteTileSignature(state: GameState): string {
+  const cached = wallSiteTileSignatures.get(state.tiles);
+  if (cached !== undefined) return cached;
+  const blocked: string[] = [];
+  state.tiles.forEach((tile, index) => {
+    if (tile.buildingId !== null) blocked.push(`b${index}`);
+    if (tile.terrain === 'water') blocked.push(`w${index}`);
+  });
+  const signature = blocked.join(',');
+  wallSiteTileSignatures.set(state.tiles, signature);
+  return signature;
+}
+
 // The revision and completed-wall signature invalidate graph changes. Stable building IDs
 // determine access footprints; inventory, tick, and caller direction do not affect the graph.
 // Warm 100k natural-city lookups measured 26.55 ms before and 22.21 ms after this key change.
@@ -237,7 +256,9 @@ export function resolveBuildingToConstructionSiteRoute(
   destination: ConstructionSite,
 ): RouteResolution {
   const destinationId = `construction_site:${destination.id}`;
-  const forwardKey = cacheKey(state, source.id, destinationId);
+  const wallSite = destination.kind === 'palisade_segment' || destination.kind === 'stone_wall_segment';
+  const routeKey = cacheKey(state, source.id, destinationId);
+  const forwardKey = wallSite ? `${routeKey}:wall-tiles:${wallSiteTileSignature(state)}` : routeKey;
   const forwardPath = state.pathCache[forwardKey];
   if (forwardPath !== undefined) {
     return { path: forwardPath, pathCache: state.pathCache };
@@ -246,8 +267,7 @@ export function resolveBuildingToConstructionSiteRoute(
   const starts = buildingRoadAccessTiles(state, source);
   const destinations = constructionSiteRoadAccessTiles(state, destination);
   const direct = shortestRoadPathBetweenAccessTiles(state, starts, destinations);
-  const carried = destination.kind === 'palisade_segment' || destination.kind === 'stone_wall_segment'
-    ? wallCarryRoute(state, starts, destination) : null;
+  const carried = wallSite ? wallCarryRoute(state, starts, destination) : null;
   const path = carried !== null && (direct === null || carried.cost < direct.length - 1)
     ? carried.path : direct;
   if (path === null) return { path: null, pathCache: state.pathCache };

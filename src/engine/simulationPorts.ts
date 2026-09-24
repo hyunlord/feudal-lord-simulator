@@ -30,6 +30,7 @@ import {
 } from "./routing";
 import type { CarterDestination } from "../agents/walker.types";
 import { canTraverseWallCarryEdge, isWallCarryTile, wallCarrySiteAccessTile } from './wallCarryRoute';
+import { stoneReplacementSiteId } from './era';
 
 export interface SimulationRoutePorts {
   readonly delivery: DeliveryRoutePort;
@@ -151,8 +152,10 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
       if (destination.kind !== 'construction_site') return false;
       const site = findSite(state, destination.siteId);
       const stillOnWall = state.palisade?.segments.some(segment =>
-        segment.constructionSiteId === destination.siteId
-        || segment.replacementConstructionSiteId === destination.siteId) === true;
+        segment.id === destination.siteId
+        || segment.constructionSiteId === destination.siteId
+        || segment.replacementConstructionSiteId === destination.siteId
+        || stoneReplacementSiteId(segment.id) === destination.siteId) === true;
       return (site?.kind === 'palisade_segment' || site?.kind === 'stone_wall_segment' || stillOnWall)
         && isWallCarryTile(state, tile);
     },
