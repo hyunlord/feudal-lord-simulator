@@ -39,8 +39,8 @@ export function hashNumbers(values: readonly number[], start = 2_166_136_261): n
 }
 
 /** Symmetric moving average whose window shrinks near the ends, so both ends stay exactly pinned. */
-export function pinnedMovingAverage(points: readonly BoundaryPoint[], window: number): BoundaryPoint[] {
-  const half = Math.floor(window / 2);
+export function pinnedMovingAverage(points: readonly BoundaryPoint[], size: number): BoundaryPoint[] {
+  const half = Math.floor(size / 2);
   const last = points.length - 1;
   return points.map((point, index) => {
     const reach = Math.min(half, index, last - index);
@@ -55,8 +55,8 @@ export function pinnedMovingAverage(points: readonly BoundaryPoint[], window: nu
 }
 
 /** Moving average around a closed loop (no pinned point, so a ring road has no arbitrary seam). */
-export function cyclicMovingAverage(points: readonly BoundaryPoint[], window: number): BoundaryPoint[] {
-  const half = Math.min(Math.floor(window / 2), Math.floor((points.length - 1) / 2));
+export function cyclicMovingAverage(points: readonly BoundaryPoint[], size: number): BoundaryPoint[] {
+  const half = Math.min(Math.floor(size / 2), Math.floor((points.length - 1) / 2));
   const count = points.length;
   return points.map((point, index) => {
     let sumX = 0; let sumY = 0;
@@ -139,9 +139,9 @@ export function nearestPointNearVertex(point: BoundaryPoint, smoothed: readonly 
   const count = smoothed.length;
   if (count < 2) return smoothed[0] ?? point;
   const scale = 2 ** rounds;
-  const window: BoundaryPoint[] = [];
-  for (let offset = -scale; offset <= scale; offset += 1) window.push(smoothed[(((index * scale + offset) % count) + count) % count] as BoundaryPoint);
-  return nearestPointOnPolyline(point, window, false);
+  const span: BoundaryPoint[] = [];
+  for (let offset = -scale; offset <= scale; offset += 1) span.push(smoothed[(((index * scale + offset) % count) + count) % count] as BoundaryPoint);
+  return nearestPointOnPolyline(point, span, false);
 }
 
 /** Distance from a point to the square of tile (tx,ty); 0 inside. */
