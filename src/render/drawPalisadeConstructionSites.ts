@@ -11,6 +11,8 @@ import {
 } from "./drawPalisadeSegments";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, snapToPixel } from "./style";
+import type { GameState } from "../engine/engine.types";
+import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
 
 type Point = {
   readonly x: number;
@@ -19,6 +21,7 @@ type Point = {
 
 type DrawPalisadeConstructionSiteInput = {
   readonly site: WallConstructionSite;
+  readonly state?: GameState | undefined;
   readonly schedule: PalisadeConstructionSchedule;
   readonly zoom: number;
 };
@@ -40,7 +43,9 @@ export function drawPalisadeConstructionSite(
     });
     return;
   }
-  const label = constructionOnSiteLabel(input.site);
+  const label = input.state === undefined
+    ? constructionOnSiteLabel(input.site)
+    : currentConstructionSiteLabel(input.state, input.site);
   if (label !== "") {
     drawLabel(context, {
       text: label,

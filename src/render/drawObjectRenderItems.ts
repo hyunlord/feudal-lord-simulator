@@ -74,9 +74,10 @@ export function drawObjectRenderItems(
       const presentationProgress = input.constructionProgress?.get(item.id)
         ?? item.presentationProgress;
       const drawInput = presentationProgress === undefined
-        ? { site: item.site, schedule: item.schedule, zoom: input.zoom, viewMode }
+        ? { site: item.site, state: input.state, schedule: item.schedule, zoom: input.zoom, viewMode }
         : {
             site: item.site,
+            state: input.state,
             schedule: item.schedule,
             zoom: input.zoom,
             presentationProgress,

@@ -1,5 +1,5 @@
 import type { ConstructionSite } from '../economy/construction';
-import { constructionDeliveryNeed, isBuildingConstructionSite } from '../economy/construction';
+import { constructionDeliveryNeed, constructionOnSiteLabel, isBuildingConstructionSite } from '../economy/construction';
 import { RESOURCE_TYPES } from '../content/resourceConfig';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
@@ -160,6 +160,17 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
     suggestedRoad,
     missingRoadTiles: suggestedRoad.filter(tile => getTile(state, tile)?.hasRoad !== true),
   };
+}
+
+export function currentConstructionSiteLabel(state: GameState, site: ConstructionSite): string {
+  if (site.stall !== 'awaiting_materials' && site.stall !== 'no_route') {
+    return constructionOnSiteLabel(site);
+  }
+  const access = constructionAccessModel(state, site);
+  if (access.cause === 'road_disconnected' || access.cause === 'no_route' || access.cause === 'wall_blocked') {
+    return `🚧 ${access.label}`;
+  }
+  return constructionOnSiteLabel(site);
 }
 
 export function groupedConstructionCause(state: GameState, cause: ConstructionAccessCause): string | null {

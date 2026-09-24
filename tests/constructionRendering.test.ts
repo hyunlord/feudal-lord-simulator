@@ -13,6 +13,7 @@ import {
   drawConstructionSite,
 } from "../src/render/drawConstructionSites";
 import { drawPalisadeRun, drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
+import { building, state as makeState } from "./stoneWallConversionFixtures";
 
 type LoggedContext = CanvasRenderingContext2D & {
   readonly calls: readonly string[];
@@ -191,6 +192,31 @@ test("drawConstructionSite writes the exact current stall label with delivered a
   // Then
   assert.ok(context.calls.includes("measureText:🪵 목재 오는 중 (12/40)"));
   assert.ok(context.calls.includes("fillText:🪵 목재 오는 중 (12/40),10,-16"));
+});
+
+test("drawConstructionSite shows the live road break before the stored delivery stall catches up", () => {
+  // Given
+  const stalledSite = site({ kind: "well", tx: 5, ty: 5 });
+  const state = makeState({
+    width: 8, height: 8, palisade: null, houses: [], walkers: [],
+    buildings: [building("source", "storehouse", 1, 1, { inventory: { timber: 20 } })],
+    constructionSites: [stalledSite],
+    tiles: Array.from({ length: 64 }, (_, index) => {
+      const tx = index % 8, ty = Math.floor(index / 8);
+      return {
+        tx, ty, terrain: "grass" as const, hasRoad: tx === 2 && ty === 3,
+        buildingId: tx === 5 && ty === 5 ? stalledSite.id : null,
+      };
+    }),
+  });
+  const context = loggedContext();
+
+  // When
+  drawConstructionSite(context, { site: stalledSite, state, zoom: 1 });
+
+  // Then
+  assert.ok(context.calls.includes("measureText:🚧 도로 미연결"));
+  assert.equal(context.calls.some(call => call.includes("목재 오는 중")), false);
 });
 
 test("drawConstructionSite gives queued palisade segments a dashed gate-order label without a stall label", () => {

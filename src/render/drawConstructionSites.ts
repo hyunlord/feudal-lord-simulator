@@ -21,6 +21,8 @@ import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel } from "./style";
 import { drawWorldSpriteAtWorldAnchor } from "./worldSprite";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
+import type { GameState } from "../engine/engine.types";
+import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
 export {
   createConstructionCompletionTracker,
   constructionCompletionEffects,
@@ -32,6 +34,7 @@ export {
 
 type DrawConstructionSiteInput = {
   readonly site: ConstructionSite;
+  readonly state?: GameState;
   readonly schedule?: PalisadeConstructionSchedule;
   readonly zoom: number;
   readonly presentationProgress?: number;
@@ -77,6 +80,7 @@ export function drawConstructionSite(
   if (isPalisadeConstructionSite(input.site) || isStoneWallConstructionSite(input.site)) {
     drawPalisadeConstructionSite(context, {
       site: input.site,
+      state: input.state,
       schedule: input.schedule ?? { kind: "active" },
       zoom: input.zoom,
     });
@@ -99,7 +103,7 @@ export function drawConstructionSite(
     baseRadiusX: 20 + footprint.width * 15,
     baseRadiusY: 5 + footprint.height * 3,
   });
-  drawSiteLabel(context, input.site, anchor, input.zoom);
+  drawSiteLabel(context, input.site, input.state, anchor, input.zoom);
   if (!drawConstructionArt(context, input.site, constructionSiteRenderSignature(input.site, presentationProgress ?? undefined))) drawConstructionStageBand(context, {
     signature: constructionSiteRenderSignature(
       input.site,
@@ -167,10 +171,11 @@ function drawBuilderMarker(
 function drawSiteLabel(
   context: CanvasRenderingContext2D,
   site: ConstructionSite,
+  state: GameState | undefined,
   anchor: Point,
   zoom: number,
 ): void {
-  const label = constructionOnSiteLabel(site);
+  const label = state === undefined ? constructionOnSiteLabel(site) : currentConstructionSiteLabel(state, site);
   if (label === "") return;
   const x = snapToPixel(anchor.x - 22);
   const y = snapToPixel(anchor.y - 64);
