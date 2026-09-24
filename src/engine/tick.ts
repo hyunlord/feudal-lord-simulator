@@ -1,6 +1,6 @@
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from './distributorAccess';
-import { runProduction } from './simulationProduction';
+import { recordTimberAvailability, runProduction } from './simulationProduction';
 export { runProduction } from './simulationProduction';
 import { refreshMaterialResult } from './autoplayMaterialLifecycle';
 import type { MaterialActivity } from '../agents/materialActivity';
@@ -212,7 +212,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     routes: routePorts.roaming,
   });
 
-  return recordMaterialActivity({
+  return recordMaterialActivity(recordTimberAvailability({
     ...progressed,
     buildings: [...spawnedDistributors.buildings],
     constructionSites: [...spawnedCarters.constructionSites],
@@ -220,7 +220,7 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryTimber: spawnedCarters.treasuryTimber,
     treasuryCoin: progressed.treasuryCoin,
     pathCache: routePorts.getPathCache(),
-  }, materialEvents);
+  }), materialEvents);
 }
 
 export function advanceTick(state: GameState): GameState {

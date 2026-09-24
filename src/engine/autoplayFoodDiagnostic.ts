@@ -54,6 +54,7 @@ export function diagnosticAction(action: AutoplayAction): DiagnosticAction {
     case 'place_building': return { kind: action.kind, building: action.building, tx: action.tx, ty: action.ty, foodTransient };
     case 'place_road': return { kind: action.kind, from: { ...action.from }, to: { ...action.to }, foodTransient };
     case 'proclaim_era': return { kind: action.kind, foodTransient };
+    case 'set_wall_construction_priority': return { kind: action.kind, foodTransient };
     case 'none': return { kind: action.kind, foodTransient };
   }
 }

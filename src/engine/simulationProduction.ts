@@ -8,6 +8,7 @@ import { forestHarvestsAfterProduction } from './forestHarvests';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { productionOperation, stepProduction } from '../economy/production';
+import { placementSpendableResource } from '../world/placement';
 import type { GameState } from './engine.types';
 
 export function runProduction(state: GameState): GameState {
@@ -73,5 +74,34 @@ function timberProductionWindow(state: GameState, produced: number): NonNullable
   const startTick = Math.max(0, state.tick - 2399);
   const existing = state.timberProductionWindow?.productionTicks.filter(tick => tick >= startTick && tick <= state.tick) ?? [];
   const productionTicks = produced === 0 ? existing : [...existing, ...Array.from({ length: produced }, () => state.tick)];
-  return { startTick, throughTick: state.tick, produced: productionTicks.length, productionTicks };
+  return {
+    startTick,
+    throughTick: state.tick,
+    produced: productionTicks.length,
+    productionTicks,
+    ...(state.timberProductionWindow?.availableTimber === undefined
+      ? {}
+      : { availableTimber: state.timberProductionWindow.availableTimber }),
+    ...(state.timberProductionWindow?.lastAvailableIncreaseTick === undefined
+      ? {}
+      : { lastAvailableIncreaseTick: state.timberProductionWindow.lastAvailableIncreaseTick }),
+  };
+}
+
+export function recordTimberAvailability(state: GameState): GameState {
+  const window = state.timberProductionWindow;
+  if (window === undefined) return state;
+  if (state.wallConstructionReserve?.resource !== 'timber' || state.wallConstructionPriority === 'priority') return state;
+  const availableTimber = placementSpendableResource(state, 'timber');
+  const lastAvailableIncreaseTick = window.availableTimber === undefined || availableTimber > window.availableTimber
+    ? state.tick
+    : window.lastAvailableIncreaseTick ?? state.tick;
+  return {
+    ...state,
+    timberProductionWindow: {
+      ...window,
+      availableTimber,
+      lastAvailableIncreaseTick,
+    },
+  };
 }

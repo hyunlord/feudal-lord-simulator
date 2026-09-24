@@ -5,6 +5,7 @@ import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
 import { buildingRoadAccessTiles, constructionSiteRoadAccessTiles } from '../engine/routing';
 import { wallCarryRoute } from '../engine/wallCarryRoute';
+import { reserveDeadlock } from '../engine/reserveDeadlock';
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from '../engine/simulationPorts';
 import { roadPlacementFailure } from '../engine/roadPlacement';
 import { constructionMaterialSources } from '../agents/deliveryConstruction';
@@ -13,10 +14,11 @@ import { canTraverseRoadBoundary } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
 import { canPlaceRoad, existingRoadComponent } from '../world/roadGraph';
 import { WALL_CARRY_COPY } from './wallCarryCopy.ko';
+import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 
 export type ConstructionAccessCause =
   | 'road_disconnected' | 'no_route' | 'wall_blocked'
-  | 'no_material' | 'no_workers' | 'reserve_held' | 'none';
+  | 'no_material' | 'no_workers' | 'reserve_held' | 'reserve_deadlock' | 'none';
 
 export type ConstructionAccessModel = Readonly<{
   cause: ConstructionAccessCause;
@@ -33,6 +35,7 @@ const LABELS = {
   no_material: '자재 없음',
   no_workers: '일꾼 없음',
   reserve_held: '비축분 유지 중',
+  reserve_deadlock: CONSTRUCTION_DEADLOCK_COPY.shortLabel,
   none: '',
 } as const satisfies Record<ConstructionAccessCause, string>;
 
@@ -136,10 +139,11 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
   const existingAccess = constructionSiteRoadAccessTiles(state, site);
   const wallSite = site.kind === 'palisade_segment' || site.kind === 'stone_wall_segment';
   const liveWallRoute = wallSite && hasMaterialRoute(state, site);
+  const deadlock = site.stall === 'reserve_held' ? reserveDeadlock(state) : null;
   let cause: ConstructionAccessCause = 'none';
   if (site.stall === 'no_builders') cause = 'no_workers';
   else if (site.stall === 'no_material_source') cause = 'no_material';
-  else if (site.stall === 'reserve_held') cause = 'reserve_held';
+  else if (site.stall === 'reserve_held') cause = deadlock?.siteIds.includes(site.id) ? 'reserve_deadlock' : 'reserve_held';
   else if (!liveWallRoute && (site.stall === 'no_route' || (existingAccess.length === 0 && site.stall !== 'none'))) {
     if (existingAccess.length === 0) cause = 'road_disconnected';
     else {
@@ -159,7 +163,9 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
     ? suggestedConstructionRoad(state, site, accessTiles) : [];
   return {
     cause,
-    label: LABELS[cause],
+    label: cause === 'reserve_deadlock' && deadlock !== null
+      ? CONSTRUCTION_DEADLOCK_COPY.cause(deadlock.blockedResource, deadlock.used, deadlock.capacity)
+      : LABELS[cause],
     accessTiles: cause === 'road_disconnected' || cause === 'no_route' || cause === 'wall_blocked' ? accessTiles : [],
     suggestedRoad,
     missingRoadTiles: suggestedRoad.filter(tile => getTile(state, tile)?.hasRoad !== true),
@@ -169,6 +175,9 @@ export function constructionAccessModel(state: GameState, site: ConstructionSite
 const currentLabelCache = new WeakMap<GameState, WeakMap<ConstructionSite, string>>();
 
 export function currentConstructionSiteLabel(state: GameState, site: ConstructionSite): string {
+  if (site.stall === 'reserve_held' && reserveDeadlock(state)?.siteIds.includes(site.id)) {
+    return CONSTRUCTION_DEADLOCK_COPY.site;
+  }
   if (site.stall !== 'awaiting_materials' && site.stall !== 'no_route') {
     return constructionOnSiteLabel(site);
   }
@@ -221,6 +230,7 @@ export function currentConstructionSiteLabel(state: GameState, site: Constructio
 
 export function groupedConstructionCause(state: GameState, cause: ConstructionAccessCause): string | null {
   if (cause === 'none') return null;
-  const count = state.constructionSites.filter(site => constructionAccessModel(state, site).cause === cause).length;
-  return count > 1 ? `공사 ${count}구간이 같은 이유로 대기: ${LABELS[cause]}` : LABELS[cause];
+  const matching = state.constructionSites.map(site => constructionAccessModel(state, site)).filter(model => model.cause === cause);
+  const label = matching[0]?.label ?? LABELS[cause];
+  return matching.length > 1 ? CONSTRUCTION_DEADLOCK_COPY.grouped(matching.length, label) : label;
 }

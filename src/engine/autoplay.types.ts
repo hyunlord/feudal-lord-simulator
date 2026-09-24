@@ -9,4 +9,5 @@ type AutoplayCommand =
   | { readonly kind: "place_building"; readonly building: BuildingKind; readonly tx: number; readonly ty: number }
   | { readonly kind: "place_road"; readonly from: TilePos; readonly to: TilePos }
   | { readonly kind: "proclaim_era"; readonly candidatePath?: PalisadePath }
+  | { readonly kind: "set_wall_construction_priority"; readonly priority: "priority" }
   | { readonly kind: "none" };

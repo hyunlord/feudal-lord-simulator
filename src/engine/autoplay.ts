@@ -10,6 +10,7 @@ import { houseLotArea } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import { HOUSING_CONFIG } from "../content/housingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
+import { storageCapacityBlock } from "../economy/storage";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { buildingRoadAccessTiles } from "./routing";
 import type { GameState } from "./engine.types";
@@ -26,6 +27,7 @@ import { preserveRoadExpansion } from "./autoplayExpansion";
 import { networkRoadAction } from "./autoplayNetworkRoads";
 import { urbanServiceAction } from './autoplayServices';
 import { waterAction } from "./autoplayWater";
+import { reserveDeadlock } from "./reserveDeadlock";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
 export type { AutoplayAction } from "./autoplay.types";
@@ -148,6 +150,11 @@ function roadAccessAction(state: GameState): AutoplayAction {
 
 function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
   if (kind === 'market') return urbanServiceAction(state);
+  const output = BUILDING_CONFIG_BY_KIND[kind].production?.output;
+  // A full material destination cannot accept another producer's output.
+  if (output === 'logs' || output === 'timber' || output === 'stone_raw' || output === 'stone') {
+    if (storageCapacityBlock(state.buildings, output) !== null) return NONE;
+  }
   const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
   if ((["timber", "stone"] as const).some(resource => (cost[resource] ?? 0) > placementSpendableResource(state, resource))) return NONE;
   const site = findBuildSite(state, kind, (coordinate) =>
@@ -213,6 +220,7 @@ function storageAction(state: GameState): AutoplayAction {
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
   let metadata: FoodTransientMetadata = {};
+  if (reserveDeadlock(state) !== null) return { kind: 'set_wall_construction_priority', priority: 'priority' };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
       (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, (current: GameState) => urbanServiceAction(current, diagnostic), waterAction, materialRecoveryAction,

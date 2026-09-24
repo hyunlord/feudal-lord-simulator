@@ -1,4 +1,5 @@
 import { SEMANTIC_PALETTE } from '../content/palette';
+import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 
 export const CAUSE_REGISTRY = {
   water: { color: SEMANTIC_PALETTE.water, glyphId: 'water', glyphText: '물', shortLabel: '물' },
@@ -9,6 +10,7 @@ export const CAUSE_REGISTRY = {
   wall: { color: SEMANTIC_PALETTE.stoneDark, glyphId: 'wall', glyphText: '벽', shortLabel: '성벽' },
   workers: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'workers', glyphText: '일', shortLabel: '일꾼' },
   construction_access: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'construction_access', glyphText: '공', shortLabel: '공사 접근' },
+  reserve_deadlock: { color: SEMANTIC_PALETTE.vermilion, glyphId: 'reserve_deadlock', glyphText: '비', shortLabel: CONSTRUCTION_DEADLOCK_COPY.shortLabel },
 } as const;
 export type CauseId = keyof typeof CAUSE_REGISTRY;
 export type CauseDetail = Readonly<{

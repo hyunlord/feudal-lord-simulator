@@ -57,6 +57,8 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
       return { type: "place_road_line", start: action.from, destination: action.to };
     case "proclaim_era":
       return state === undefined ? null : eraGameAction(state, action.candidatePath);
+    case "set_wall_construction_priority":
+      return { type: "set_wall_construction_priority", priority: action.priority };
     case "none":
       return null;
     default:

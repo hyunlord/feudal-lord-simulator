@@ -16,6 +16,7 @@ const GLYPH_SHAPES: Readonly<Record<keyof typeof CAUSE_REGISTRY, readonly (reado
   wall: [[-11,11],[-11,-11],[-5,-11],[-5,-5],[0,-5],[0,-11],[6,-11],[6,-5],[11,-5],[11,11]],
   workers: [[0,-12],[10,-5],[8,10],[-8,10],[-10,-5]],
   construction_access: [[-12,-9],[12,-9],[12,9],[-12,9]],
+  reserve_deadlock: [[-12,-9],[12,-9],[12,9],[-12,9]],
 };
 
 export function causeMarkersForState(state: GameState, zoom: number): readonly CauseMarker[] {

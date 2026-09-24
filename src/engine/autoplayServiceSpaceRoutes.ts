@@ -43,7 +43,7 @@ export function projectServiceAction(state: GameState, action: AutoplayAction): 
       const road = new Set(roadLine(action.from, action.to).map(serviceTileKey));
       return { ...state, tiles: state.tiles.map(tile => road.has(serviceTileKey(tile)) ? { ...tile, hasRoad: true } : tile) };
     }
-    case 'none': case 'proclaim_era': return state;
+    case 'none': case 'proclaim_era': case 'set_wall_construction_priority': return state;
   }
 }
 

@@ -196,6 +196,55 @@ test('same cause is grouped across sites without hiding site diagnosis', () => {
   assert.equal(groupedConstructionCause(grouped, 'road_disconnected'), '공사 2구간이 같은 이유로 대기: 도로 미연결');
 });
 
+test('E3: a wall site and selected card expose the seed 3 reserve deadlock cause', () => {
+  // Given: two stone-full stores, stagnant timber, and a held wall site.
+  const wall = timberSite(0, { stall: 'reserve_held' });
+  const current = makeState({
+    tick: 703610,
+    wallTick: 703610,
+    width: 8,
+    height: 8,
+    tiles: Array.from({ length: 64 }, (_, index) => ({
+      tx: index % 8, ty: Math.floor(index / 8), terrain: 'grass' as const,
+      buildingId: null, hasRoad: Math.floor(index / 8) === 1,
+    })),
+    treasuryTimber: 0,
+    buildings: [
+      building('logging-camp-a', 'logging_camp', 2, 2, { workers: 3, inventory: { logs: 20 }, productionProgress: 49 }),
+      building('storehouse-a', 'storehouse', 4, 2, { inventory: { timber: 36, stone_raw: 13, stone: 151 } }),
+      building('storehouse-b', 'storehouse', 6, 2, { inventory: { stone: 200 } }),
+    ],
+    constructionSites: [wall],
+    palisade: palisade([palisadeSegment(0, { completed: false, constructionSiteId: wall.id })]),
+    wallConstructionPriority: 'balanced',
+    wallConstructionReserve: { resource: 'timber', sources: [
+      { id: 'storehouse-a', floor: 50 }, { id: 'storehouse-b', floor: 11 },
+    ], proclaimedTick: 84600 },
+    timberProductionWindow: {
+      startTick: 701211, throughTick: 703610, produced: 0, productionTicks: [],
+      availableTimber: 36, lastAvailableIncreaseTick: 701210,
+    },
+  });
+
+  // When / Then: the map label and selected site repeat the actionable diagnosis.
+  const access = constructionAccessModel(current, wall);
+  assert.equal(access.cause, 'reserve_deadlock');
+  assert.match(access.label, /창고 가득 참: 석재 400\/400/);
+  assert.equal(currentConstructionSiteLabel(current, wall), '🪵 비축 교착 · 창고 가득');
+  assert.match(constructionSiteCardModel(wall, { accessState: current }).rows.find(row => row.label === '원인')?.value ?? '',
+    /공사 우선으로 바꾸거나 창고를 늘리세요/);
+
+  // Given: timber has increased during the same observation window.
+  const recovering = { ...current, timberProductionWindow: {
+    startTick: 701211, throughTick: 703610, produced: 1, productionTicks: [703610],
+    availableTimber: 37, lastAvailableIncreaseTick: 703610,
+  } };
+
+  // When / Then: an ordinary reserve hold is not presented as a deadlock.
+  assert.equal(constructionAccessModel(recovering, wall).cause, 'reserve_held');
+  assert.equal(constructionAccessModel({ ...current, wallConstructionPriority: 'priority' }, wall).cause, 'reserve_held');
+});
+
 test('a wall segment label can be selected directly without a tile hover', () => {
   const wall = timberSite(0, { stall: 'no_route' });
   const state = { ...disconnectedFixture(), constructionSites: [wall] };

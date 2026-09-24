@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import { KO_UI } from "../content/locale.ko";
 import { canProclaimStoneTownEra, evaluateEraRequirements } from "../engine/era";
 import { recentCoinIncome } from "../engine/coinLedger";
+import { reserveDeadlock } from "../engine/reserveDeadlock";
 import { canAdvanceConstructionWork } from "../economy/construction";
 import type { WallConstructionPriority } from "../engine/constructionReserve";
 import type { Era } from "../content/eraConfig";
@@ -12,6 +13,7 @@ import { A_QUADRUPLE_PRIME_WALL_COPY as WALL_COPY, palisadeFailureLabel } from '
 import { palisadeFootprintsForState, proposalSummaryForState } from "./eraConsoleModel";
 import { draftPalisadePredictionLines, proposalPredictionLines } from "./wallPrediction";
 import type { PredictionLine } from "./predictionTypes";
+import { CONSTRUCTION_DEADLOCK_COPY } from './constructionDeadlockCopy.ko';
 
 export type EraConsoleAction = {
   readonly enabled: boolean;
@@ -41,6 +43,7 @@ export type EraConsoleModel = {
   };
   readonly wallProgress: string | null;
   readonly diagnostic: string | null;
+  readonly reserveDeadlock: boolean;
   readonly irreversibleNotice: string | null;
 };
 
@@ -79,6 +82,7 @@ export function buildEraConsoleModel(input: {
     : predictionLines;
   const marketCount = input.state.buildings.filter(building => building.kind === 'market').length;
   const recentIncome = recentCoinIncome(input.state);
+  const deadlock = reserveDeadlock(input.state);
   const coinHint = input.state.era === 'palisade'
     ? marketCount === 0
       ? '시장 0개 · 수입원 없음 · 시장이 창고의 남는 물자를 팔 때 들어옵니다'
@@ -113,7 +117,9 @@ export function buildEraConsoleModel(input: {
         : palisadeFailureLabel(input.draft.failureReason),
     },
     wallProgress: wallProgress(input.state),
-    diagnostic: null,
+    diagnostic: deadlock === null ? null : CONSTRUCTION_DEADLOCK_COPY.cause(
+      deadlock.blockedResource, deadlock.used, deadlock.capacity),
+    reserveDeadlock: deadlock !== null,
     irreversibleNotice: input.state.palisade === null
       ? null
       : A_TRIPLE_PRIME_WALL_COPY.proclamationNotice,
@@ -187,15 +193,18 @@ export function EraConsole({
         </p>
       ) : null}
       {model.wallProgress === null ? null : <p className="era-wall-progress">{model.wallProgress}</p>}
+      {model.diagnostic === null ? null : <p className="era-diagnostic">{model.diagnostic}</p>}
       {model.wallProgress !== null && onPriorityChange !== undefined ? (
         <div className="era-wall-priority" role="group" aria-label="성벽 공사 자재 우선순위">
           <button type="button" aria-pressed={priority === 'balanced'}
             onClick={() => onPriorityChange('balanced')}>{priority === 'balanced' ? '✓ ' : ''}균형 · 25% 비축</button>
           <button type="button" aria-pressed={priority === 'priority'}
             onClick={() => onPriorityChange('priority')}>{priority === 'priority' ? '✓ ' : ''}공사 우선</button>
+          {model.reserveDeadlock && priority === 'balanced' ? (
+            <button type="button" onClick={() => onPriorityChange('priority')}>{CONSTRUCTION_DEADLOCK_COPY.action}</button>
+          ) : null}
         </div>
       ) : null}
-      {model.diagnostic === null ? null : <p className="era-diagnostic">{model.diagnostic}</p>}
       {model.irreversibleNotice === null ? null : (
         <p className="era-irrevocable">{model.irreversibleNotice}</p>
       )}

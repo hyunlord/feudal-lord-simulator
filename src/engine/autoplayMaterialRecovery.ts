@@ -1,7 +1,7 @@
 import { parseMaterialRecovery } from './autoplayMaterialParse';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
-import { availableStock } from '../economy/storage';
+import { availableStock, storageCapacityBlock } from '../economy/storage';
 import { availableWorkers } from '../population/labour';
 import { currentMaterialEpisode } from './autoplayMaterialEpisode';
 import { materialBuildCandidate, materialDemand } from './autoplayMaterialCandidates';
@@ -24,6 +24,7 @@ export function qualifiedMaterialCycle(state: GameState) {
 export function materialRecoveryAction(state: GameState): AutoplayAction {
   const qualified = qualifiedMaterialCycle(state);
   if (qualified === null || state.constructionSites.some(site => site.kind === 'masonry')) return { kind: 'none' };
+  if (storageCapacityBlock(state.buildings, 'stone') !== null) return { kind: 'none' };
   const required = BUILDING_CONFIG_BY_KIND.masonry.workersRequired;
   const staffing = state.buildings.reduce((sum, home) => sum + BUILDING_CONFIG_BY_KIND[home.kind].workersRequired, 0)
     + state.constructionSites.filter(isBuildingConstructionSite).reduce((sum, site) => sum + BUILDING_CONFIG_BY_KIND[site.kind].workersRequired, 0);

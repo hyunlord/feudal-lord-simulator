@@ -244,6 +244,30 @@ test("era console labels the proclaimed Stone Town current era without enabling 
   assert.equal(model.action.reason, "이미 석조 도시가 선포되었습니다");
 });
 
+test("reserve deadlock cause offers an explicit non-hover priority action", () => {
+  // Given: the goal model reports a blocked balanced wall construction.
+  const model = {
+    ...buildEraConsoleModel({ state: state({ era: "palisade" }), draft: null }),
+    diagnostic: "비축분 때문에 공사가 멈춤 · 목재 생산이 막힘(창고 가득 참: 석재 200/200) → 공사 우선으로 바꾸거나 창고를 늘리세요",
+    reserveDeadlock: true,
+    wallProgress: "성벽 0/12",
+  };
+
+  // When: the visible goal panel is rendered with the existing priority intent.
+  const markup = renderToStaticMarkup(createElement(EraConsole, {
+    model,
+    priority: "balanced",
+    onPriorityChange: () => undefined,
+    onBeginProposal: () => undefined,
+    onConfirmProposal: () => undefined,
+    onCancelProposal: () => undefined,
+  }));
+
+  // Then: the cause and one-tap recovery are present without hover.
+  assert.match(markup, /창고 가득 참: 석재 200\/200/);
+  assert.match(markup, />공사 우선으로 전환<\/button>/);
+});
+
 test("era console source uses presentation-only draft state and Escape without simulation mutation", async () => {
   // Given / When
   const appSource = await readFile(APP_SOURCE, "utf8");
