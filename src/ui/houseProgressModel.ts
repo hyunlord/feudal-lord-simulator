@@ -1,3 +1,4 @@
+import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { HOUSING_CONFIG, type HousingRequirement } from '../content/housingConfig';
 import type { GameState } from '../engine/engine.types';
@@ -45,13 +46,13 @@ function serviceBlocker(state: GameState, home: Building, service: HouseholdServ
   const definition = BUILDING_CONFIG_BY_KIND[config.kind];
   const providers = state.buildings.filter(b => b.kind === config.kind)
     .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
-  const eligible = providers.find(b => buildingFootprintDistance(home, b) <= definition.serviceRadius
+  const eligible = providers.find(b => b.operationPaused !== true && buildingFootprintDistance(home, b) <= definition.serviceRadius
     && b.workers >= definition.workersRequired && (!config.roadRequired || road(home, b)));
   const allocation = eligible === undefined ? undefined : householdServices(state).providers.get(eligible.id);
   const usage = allocation === undefined ? '' : ` · 담당 ${allocation.used}/${allocation.capacity}필지`;
   const distance = eligible === undefined ? diagnosis.distance : buildingFootprintDistance(home, eligible);
   return {
-    causeId: diagnosis.kind === 'unreachable' ? 'delivery' : diagnosis.kind === 'understaffed' ? 'workers' : service,
+    causeId: diagnosis.kind === 'paused' ? 'operation_paused' : diagnosis.kind === 'unreachable' ? 'delivery' : diagnosis.kind === 'understaffed' ? 'workers' : service,
     requirement: service, reason: diagnosis.kind,
     label: `${diagnosis.label}${usage}${['capacity', 'understaffed', 'unreachable'].includes(diagnosis.kind) && Number.isFinite(distance) ? ` · 거리 ${distance} / 범위 ${diagnosis.serviceRadius}` : ''}`,
     ...(eligible === undefined ? {} : { providerId: eligible.id }),
@@ -123,6 +124,8 @@ function deriveHouse(state: GameState, house: House, home: Building, road: RoadS
 }
 function deriveFacility(state: GameState, building: Building): BuildingCausePresentation {
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  if (building.operationPaused === true) return { buildingId: building.id, name: definition.name, status: 'blocked',
+    blocker: { causeId: 'operation_paused', requirement: 'production', reason: 'paused', label: BUILDING_OPERATION_COPY.paused }, summary: BUILDING_OPERATION_COPY.paused };
   const marker = problemMarkerKind({ kind: building.kind, visualState: buildBuildingVisualState(building, []) });
   if (marker === null) return { buildingId: building.id, name: definition.name, status: 'normal', blocker: null, summary: `${definition.name} 운영 정보` };
   const road = buildingHasRequiredRoadAccess(state, building);

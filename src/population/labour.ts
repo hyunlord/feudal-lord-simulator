@@ -88,21 +88,24 @@ function allocateBuildingWorkers(
   buildings: readonly Building[],
   available: number,
   eligible: LabourEligibility,
+  protectTimberChain = false,
 ): BuildingLabourResult {
   const ordered = [...buildings].sort((a, b) => a.id.localeCompare(b.id));
-  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => b.kind === kind && eligible(b))?.id);
+  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => b.kind === kind && b.operationPaused !== true && eligible(b))?.id);
+  const coreTimberIds = ['logging_camp', 'sawmill'].map(kind => ordered.find(b => b.kind === kind && b.operationPaused !== true && eligible(b))?.id);
   const priority = (building: Building): number => {
     const coreIndex = coreFoodIds.indexOf(building.id);
     if (coreIndex >= 0) return coreIndex;
-    if (foodBuilding(building)) return 3;
-    if (["sawmill", "logging_camp", "storehouse"].includes(building.kind)) return 4;
-    return 5;
+    if (protectTimberChain && coreTimberIds.includes(building.id)) return 3;
+    if (foodBuilding(building)) return 4;
+    if (["sawmill", "logging_camp", "storehouse"].includes(building.kind)) return 5;
+    return 6;
   };
   let remaining = available;
   const assigned = new Map<string, number>();
   ordered.sort((a, b) => priority(a) - priority(b) || a.id.localeCompare(b.id));
   for (const building of ordered) {
-    const workers = eligible(building)
+    const workers = building.operationPaused !== true && eligible(building)
       ? Math.min(remaining, BUILDING_CONFIG_BY_KIND[building.kind].workersRequired)
       : 0;
     assigned.set(building.id, workers);
@@ -172,28 +175,34 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
     .sort((a, b) => isWallConstructionSite(a) && isWallConstructionSite(b) && a.wallId === b.wallId
       ? a.order - b.order || a.id.localeCompare(b.id)
       : a.id.localeCompare(b.id));
-  const ordinaryTarget = readySites.find((site) => !isWallConstructionSite(site));
-  const buildingBudget = Math.max(0, available - reservation.reservedWorkers);
-  const foodResult = allocateBuildingWorkers(buildings.filter(foodBuilding), buildingBudget, eligible);
-  const ordinaryReserved = ordinaryTarget === undefined ? 0 : Math.min(1, foodResult.idleWorkers);
-  const otherResult = allocateBuildingWorkers(
-    buildings.filter((building) => !foodBuilding(building)),
-    foodResult.idleWorkers - ordinaryReserved,
-    eligible,
-  );
-  const staffed = new Map([...foodResult.buildings, ...otherResult.buildings].map((b) => [b.id, b]));
-  let remaining = otherResult.idleWorkers;
+  // R1 S5-F2: reserve a capped construction floor before the normal production pool.
+  // A single essential food chain remains first; with prepared work the timber chain
+  // precedes duplicate food facilities, so expansion cannot starve its own materials.
+  const minimum = readySites.length === 0 ? 0
+    : Math.min(available, readySites.length * MAX_BUILDERS_PER_SITE,
+      Math.max(MAX_BUILDERS_PER_SITE, Math.ceil(available * BALANCE.CONSTRUCTION_MIN_WORKER_SHARE)));
+  const reservedTotal = Math.max(reservation.reservedWorkers, minimum);
+  const staffed = allocateBuildingWorkers(buildings, available - reservedTotal, eligible, readySites.length > 0);
+  let remaining = staffed.idleWorkers;
+  let reservedRemaining = reservedTotal;
+  let wallReservedRemaining = reservation.reservedWorkers;
   const allocations = new Map<string, number>();
   let palisadeAssignedBuilders = 0;
-  let reservedRemaining = reservation.reservedWorkers;
-
+  // Ceremony shares are part of (not additional to) the construction floor.
+  for (const site of readySites.filter(isWallConstructionSite)) {
+    const assigned = Math.min(wallReservedRemaining, MAX_BUILDERS_PER_SITE);
+    allocations.set(site.id, assigned);
+    reservedRemaining -= assigned;
+    wallReservedRemaining -= assigned;
+  }
   for (const site of readySites) {
-    const wallReserved = isWallConstructionSite(site) ? Math.min(reservedRemaining, MAX_BUILDERS_PER_SITE) : 0;
-    reservedRemaining -= wallReserved;
-    const guaranteed = wallReserved + (site.id === ordinaryTarget?.id ? ordinaryReserved : 0);
-    const extra = Math.min(remaining, MAX_BUILDERS_PER_SITE - guaranteed);
-    allocations.set(site.id, guaranteed + extra);
-    if (isWallConstructionSite(site)) palisadeAssignedBuilders += guaranteed + extra;
+    const preassigned = allocations.get(site.id) ?? 0;
+    const guaranteed = Math.min(reservedRemaining, MAX_BUILDERS_PER_SITE - preassigned);
+    reservedRemaining -= guaranteed;
+    const extra = Math.min(remaining, MAX_BUILDERS_PER_SITE - preassigned - guaranteed);
+    const assigned = preassigned + guaranteed + extra;
+    allocations.set(site.id, assigned);
+    if (isWallConstructionSite(site)) palisadeAssignedBuilders += assigned;
     remaining -= extra;
   }
   const palisadeEraLabour = palisadeEraLabourWithAssignment(
@@ -202,7 +211,7 @@ export function allocateBuildingAndConstructionLabour<TSite extends Construction
   );
 
   return {
-    buildings: buildings.map((building) => staffed.get(building.id) ?? building),
+    buildings: staffed.buildings,
     constructionSites: constructionSites.map((site) => {
       const assignedBuilders = allocations.get(site.id) ?? 0;
       return {

@@ -94,6 +94,9 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }
   switch (action.type) {
+    case "set_building_operation":
+      return { ...state, buildings: state.buildings.map(building => building.id === action.buildingId && building.kind !== 'house'
+        ? { ...building, operationPaused: action.paused, ...(action.paused ? { workers: 0 } : {}) } : building) };
     case "record_autoplay_food_confirmation": return state;
     case "restart_settlement":
       return state;

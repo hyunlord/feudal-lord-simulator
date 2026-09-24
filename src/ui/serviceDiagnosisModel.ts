@@ -32,6 +32,7 @@ export function serviceDiagnosis(state: GameState, home: Building, service: Hous
     case 'served': label = service === 'water' ? `우물에서 ${distance}칸` : `${name} 이용 가능 — 거리 ${distance} / 범위 ${serviceRadius}${usage}`; break;
     case 'missing': label = service === 'water' ? '우물이 없습니다' : `${name} 없음`; break;
     case 'outside': label = service === 'water' ? `우물이 너무 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}` : `${name}${service === 'church' ? '가' : '이'} 멉니다 — 거리 ${distance} / 범위 ${serviceRadius}`; break;
+    case 'paused': label = SERVICE_DIAGNOSIS_COPY.paused; break;
     case 'understaffed': label = `가까운 ${name}의 일꾼이 부족합니다`; break;
     case 'unreachable': label = `${name}까지 연결된 도로가 없습니다`; break;
     case 'capacity': label = SERVICE_DIAGNOSIS_COPY.capacity(name, access?.earlierHomesUsingCapacity ?? 0); break;
@@ -47,6 +48,7 @@ export function providerServiceRows(state: GameState, building: Building): reado
     `서비스 담당 ${provider.used}/${provider.capacity} 주거 필지`,
     '단독 주택 1 · 합필 주택 2필지, 빈집도 자리 유지',
     provider.service === 'water' ? '주민이 가까운 우물을 직접 이용합니다' : '범위 안 주택까지 이어진 도로가 필요합니다',
-    ...(provider.workers < provider.requiredWorkers ? ['서비스 중단: 일꾼 부족'] : []),
+    ...(building.operationPaused === true ? [SERVICE_DIAGNOSIS_COPY.paused]
+      : provider.workers < provider.requiredWorkers ? ['서비스 중단: 일꾼 부족'] : []),
   ];
 }

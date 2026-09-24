@@ -10,13 +10,14 @@ export type ProductionStep = {
 const stock = (building: Building, resource: ResourceType): number =>
   Math.max(0, building.inventory[resource] ?? 0);
 
-export type ProductionOperation = "not_producing" | "no_road" | "understaffed" | "no_input" | "output_full" | "working";
+export type ProductionOperation = "paused" | "not_producing" | "no_road" | "understaffed" | "no_input" | "output_full" | "working";
 
 export function productionOperation(
   building: Building,
   definition: BuildingDefinition,
   hasRoad = true,
 ): ProductionOperation {
+  if (building.operationPaused === true) return "paused";
   const production = definition.production;
   if (production === null) return "not_producing";
   if (!hasRoad) return "no_road";

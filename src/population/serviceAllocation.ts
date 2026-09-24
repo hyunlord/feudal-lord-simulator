@@ -5,7 +5,7 @@ import type { MarketRoadService } from './marketAccess';
 import type { House } from './population.types';
 
 export type HouseholdService = 'water' | 'market' | 'church';
-export type ServiceAccessKind = 'served' | 'missing' | 'outside' | 'understaffed' | 'unreachable' | 'capacity';
+export type ServiceAccessKind = 'served' | 'missing' | 'outside' | 'paused' | 'understaffed' | 'unreachable' | 'capacity';
 export interface ServiceAccess {
   readonly kind: ServiceAccessKind;
   readonly providerId: string | null;
@@ -72,14 +72,15 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
       if (home === undefined) return [];
       const demand = houseLotArea(home);
       const nearby = facilities.filter(p => buildingFootprintDistance(home, p) <= definition.serviceRadius);
-      const staffed = nearby.filter(p => p.workers >= definition.workersRequired);
+      const operating = nearby.filter(p => p.operationPaused !== true);
+      const staffed = operating.filter(p => p.workers >= definition.workersRequired);
       const reachable = staffed.filter(p => !config.roadRequired || input.roadService?.(home, p) === true)
         .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
-      return [{ house, demand, nearby, staffed, reachable }];
+      return [{ house, demand, nearby, operating, staffed, reachable }];
     });
     const assigned = new Map<string, string>();
     const candidatesById = new Map(candidates.map(candidate => [candidate.house.buildingId, candidate]));
-    for (const { house, demand, nearby, staffed, reachable } of candidates) {
+    for (const { house, demand, nearby, operating, staffed, reachable } of candidates) {
       const current = houses.get(house.buildingId);
       if (current === undefined) continue;
       const available = reachable.filter(p => (providers.get(p.id)?.used ?? 0) + demand <= config.capacity);
@@ -118,7 +119,7 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
       }
       const kind: ServiceAccessKind = provider !== undefined ? 'served'
         : facilities.length === 0 ? 'missing' : nearby.length === 0 ? 'outside'
-        : staffed.length === 0 ? 'understaffed' : reachable.length === 0 ? 'unreachable' : 'capacity';
+        : operating.length === 0 ? 'paused' : staffed.length === 0 ? 'understaffed' : reachable.length === 0 ? 'unreachable' : 'capacity';
       const reachableIds = new Set(reachable.map(p => p.id));
       const earlierHomesUsingCapacity = kind === 'capacity'
         ? [...assigned.values()].filter(id => reachableIds.has(id)).length : undefined;

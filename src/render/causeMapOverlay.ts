@@ -8,6 +8,7 @@ import { tileToScreen } from './iso';
 import { groupCauseMarkers, type CauseMarker } from './causeMarkerLayout';
 
 const GLYPH_SHAPES: Readonly<Record<keyof typeof CAUSE_REGISTRY, readonly (readonly [number, number])[]>> = {
+  operation_paused: [[-10,-10],[10,-10],[10,10],[-10,10]],
   water: [[0,-11],[8,1],[6,8],[0,11],[-6,8],[-8,1]],
   bread: [[-10,-6],[-5,-10],[5,-10],[10,-6],[10,8],[-10,8]],
   delivery: [[-11,-7],[3,-7],[3,-11],[12,0],[3,11],[3,7],[-11,7]],

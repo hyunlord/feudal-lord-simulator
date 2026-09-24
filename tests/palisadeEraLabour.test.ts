@@ -163,7 +163,7 @@ test("Given an active wall site blocked on materials When quota is reserved Then
 }
 );
 
-test("Given proclamation tick boundaries When allocating labour Then offsets 0 and 599 reserve wall labour but 600 restores production priority", () => {
+test("Given proclamation tick boundaries When allocating labour Then offsets 0 and 599 reserve wall labour but 600 releases the ceremony quota while retaining the construction floor", () => {
   // Given
   const farm = building("a-farm", "wheat_farm");
   const wall = wallSite("wall-a-segment-000", 0);
@@ -190,9 +190,9 @@ test("Given proclamation tick boundaries When allocating labour Then offsets 0 a
       reserved: result.diagnostics.palisadeEraLabour.reservedWorkers,
     })),
     [
-      { farmWorkers: 3, wallBuilders: 2, reserved: 2 },
-      { farmWorkers: 3, wallBuilders: 2, reserved: 2 },
-      { farmWorkers: 4, wallBuilders: 1, reserved: 0 },
+      { farmWorkers: 2, wallBuilders: 3, reserved: 2 },
+      { farmWorkers: 2, wallBuilders: 3, reserved: 2 },
+      { farmWorkers: 2, wallBuilders: 3, reserved: 0 },
     ],
   );
 }

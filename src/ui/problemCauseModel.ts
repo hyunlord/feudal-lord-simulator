@@ -1,3 +1,4 @@
+import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { STORABLE_RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import { buildingRoadAccessTiles } from "../engine/routing";
@@ -82,6 +83,7 @@ function outputDestinationCause(
 export function buildingProblemCause(state: GameState, buildingId: string): string | null {
   const building = state.buildings.find((candidate) => candidate.id === buildingId);
   if (building === undefined) return null;
+  if (building.operationPaused === true) return BUILDING_OPERATION_COPY.paused;
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
   const production = definition.production;
   if (production === null) return null;

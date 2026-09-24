@@ -47,6 +47,7 @@ export interface Building {
   readonly ty: number;
   readonly houseLot?: "horizontal" | "vertical";
   readonly workers: number;
+  readonly operationPaused?: boolean;
   readonly inventory: Partial<Record<ResourceType, number>>;
   readonly reserved: Partial<Record<ResourceType, number>>;
   readonly stockReserved: Partial<Record<ResourceType, number>>;

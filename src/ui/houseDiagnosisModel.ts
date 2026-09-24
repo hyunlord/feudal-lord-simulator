@@ -22,7 +22,7 @@ import type { TileCoordinate } from "../world/grid";
 import { existingRoadComponent } from "../world/roadGraph";
 
 export type WaterDiagnosis =
-  | { readonly kind: "capacity" | "understaffed" | "unreachable"; readonly label: string }
+  | { readonly kind: "capacity" | "paused" | "understaffed" | "unreachable"; readonly label: string }
   | { readonly kind: "supplied"; readonly label: string; readonly distance: number }
   | { readonly kind: "no_well"; readonly label: "우물이 없습니다" }
   | {
@@ -68,7 +68,7 @@ export type HouseDiagnosisModel = {
   readonly bread: BreadDiagnosis;
   readonly population: PopulationDiagnosis;
   readonly protection: ProtectionDiagnosis;
-  readonly market: MarketAccessDiagnosis | { readonly kind: "capacity"; readonly label: string };
+  readonly market: MarketAccessDiagnosis | { readonly kind: "capacity" | "paused"; readonly label: string };
   readonly church: ServiceDiagnosis;
   readonly stoneHouse: StoneHouseDiagnosis;
 };
@@ -99,7 +99,7 @@ function servingWaterDiagnosis(state: GameState, home: Building): WaterDiagnosis
     case "served": return { kind: "supplied", label: result.label, distance: result.distance };
     case "missing": return { kind: "no_well", label: "우물이 없습니다" };
     case "outside": return { kind: "well_too_far", label: result.label, distance: result.distance, serviceRadius: result.serviceRadius };
-    case "understaffed": case "unreachable": case "capacity": return { kind: result.kind, label: result.label };
+    case "paused": case "understaffed": case "unreachable": case "capacity": return { kind: result.kind, label: result.label };
   }
 }
 
@@ -108,7 +108,7 @@ function servingMarketDiagnosis(state: GameState, home: Building): HouseDiagnosi
   switch (result.kind) {
     case "served": return { ...result, kind: "within" };
     case "missing": return { kind: "no_market", label: "시장 없음", serviceRadius: result.serviceRadius };
-    case "outside": case "understaffed": case "unreachable": case "capacity": return { ...result, kind: result.kind };
+    case "outside": case "paused": case "understaffed": case "unreachable": case "capacity": return { ...result, kind: result.kind };
   }
 }
 

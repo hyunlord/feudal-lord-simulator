@@ -21,7 +21,7 @@ export function parseGrowthOptions(args: readonly string[]) {
   return { targetLots, maxTicks, seed };
 }
 function serviceCounts(): Record<ServiceAccessKind, number> {
-  return { served: 0, missing: 0, outside: 0, understaffed: 0, unreachable: 0, capacity: 0 };
+  return { served: 0, missing: 0, outside: 0, paused: 0, understaffed: 0, unreachable: 0, capacity: 0 };
 }
 export function houseCapacity(state: GameState): number {
   const buildings = new Map(state.buildings.map(building => [building.id, building]));

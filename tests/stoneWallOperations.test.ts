@@ -33,7 +33,7 @@ test("Given a Stone Town replacement site When cancellation is requested Then ca
   assert.deepEqual(result.ledger.dropped, {});
 });
 
-test("Given Stone Town labour reservation When mixed sites exist Then only the active stone wall site receives the fifty percent target", () => {
+test("Given Stone Town labour reservation When mixed sites exist Then ready stone wall sites share the capped fifty percent target", () => {
   // Given
   const farm = building("farm-a", "wheat_farm", 8, 8);
   const activeStone = stoneSite(0, { delivered: { stone: 25 } });
@@ -65,7 +65,7 @@ test("Given Stone Town labour reservation When mixed sites exist Then only the a
   assert.equal(result.diagnostics.palisadeEraLabour.activeSiteId, activeStone.id);
   assert.deepEqual(result.constructionSites.map((site) => [site.id, site.assignedBuilders]), [
     ["construction-site-000009", 1],
-    ["wall-a-segment-001-stone", 0],
+    ["wall-a-segment-001-stone", 2],
     ["wall-a-segment-000-stone", 3],
   ]);
 });

@@ -1,6 +1,6 @@
 # S2 서비스 배분 (우물·시장·교회: 반경·수용량·일꾼·도로) + 빵 배급자
 
-원본 분석 대상: `47c9aeb`. 아래 S2.R6와 S2-F1은 R1-fix에서 갱신했다. 나머지 항목과 행 번호는 원본 감사 시점의 기록이며 현재 구현을 보증하지 않는다.
+원본 분석 대상: `47c9aeb`. 아래 S2.R4·R6·R7와 S2-F1은 R1-fix에서 갱신했다. 나머지 항목과 행 번호는 원본 감사 시점의 기록이며 현재 구현을 보증하지 않는다.
 프로브: `raw/probes/s1s2_probe.ts` → `s1s2_probe.out.txt`, `raw/probes/s2_greedy_probe.ts` → `s2_greedy_probe.out.txt`.
 
 ## 1. 상태
@@ -35,7 +35,7 @@
 
 **S2.R3 반경 = 발자국 간 맨해튼 간격.** `serviceAllocation.ts:62`, `src/geometry/buildingDistance.ts:buildingFootprintDistance:4-17`. 벽, 물, 지형을 무시한 직선 격자 거리다.
 
-**S2.R4 일꾼 조건.** `serviceAllocation.ts:63`: `workers >= workersRequired`. 우물과 교회는 필요 일꾼이 0이라 항상 통과한다.
+**S2.R4 가동·일꾼 조건(R1-fix).** 가동 중지(`operationPaused === true`) 시설은 수용량을 배분하지 않는다. 활성 시설만 `workers >= workersRequired`를 검사한다. 우물과 교회도 일꾼 수가 0이어도 가동 중지 상태에서는 서비스를 멈춘다. 같은 반경 안에 활성 대체 시설이 있으면 그 시설을 사용한다. 저장 필드·가동 토글은 S5의 R-3 명세를 따른다.
 
 **S2.R5 도로 조건.** `serviceAllocation.ts:64`: `roadRequired`이면 `roadService(home, provider) === true`여야 한다. tick이 쓰는 `roadService`는 `src/engine/marketService.ts:marketRoadService:6-24`다. 집의 도로 접근 타일(`src/engine/routing.ts:buildingRoadAccessTiles:103-124`)과 시설의 접근 타일이 **같은 도로 연결 요소**(`src/world/roadGraph.ts:labelRoadComponents:164-177`)에 하나라도 있으면 된다. 경로 길이 제한은 없다. 성벽은 `canTraverseRoadBoundary`(`roadGraph.ts:55,63`, `routing.ts:120-123`)로 반영하므로 문을 통하면 연결된다.
 
@@ -47,7 +47,7 @@
 5. 용량 부족 집의 파생 `ServiceAccess.earlierHomesUsingCapacity`는 접근 가능한 시설을 이미 쓰는 우선 배정 주택 수를 담는다(필지 수 아님). 원인 등록표의 기존 물/시장/교회 원인을 유지하며 `수용량 부족 · 먼저 지어진 집 N채가 사용 중`으로 설명한다. 저장 상태·스키마 변경 없음.
 6. 회귀: `tests/servicePriority.test.ts`의 R-T1은 우물/시장/교회를 모두 확인, R-T2는 반경 진입 순서와 입력 배열 반전을 확인한다. 기존 단독/합필 독점 접근 테스트도 유지한다.
 
-**S2.R7 실패 사유 우선순위.** `serviceAllocation.ts:77-79`: missing(시설 없음) → outside(반경 안 시설 없음) → understaffed(반경 안 시설 모두 일꾼 부족) → unreachable(도로 연결 없음) → capacity. 우물은 understaffed·unreachable이 될 수 없고, 교회는 understaffed가 될 수 없다.
+**S2.R7 실패 사유 우선순위(R1-fix).** missing(시설 없음) → outside(반경 안 시설 없음) → paused(반경 안 시설 모두 가동 중지) → understaffed(활성 시설 모두 일꾼 부족) → unreachable(도로 연결 없음) → capacity. `paused`는 `시설 가동 중지`로 상세창·원인 모델에 표시한다. 우물·시장·교회 원인군은 유지한다. 가동 중지는 호버 전용 정보가 아니다. `tests/servicePause.test.ts`의 R-T7이 세 시설의 중지·대체 시설 공급과 기존 시장 진단 API를 검증한다.
 
 **S2.R8 파생 계산 시점.** tick T10은 `householdServices(marketSettled)`를 쓴다(`tick.ts:171-172`). T7 노동 배분 뒤의 `workers`, T8 뒤의 houses가 들어간다. UI는 틱이 끝난 state로 다시 계산한다. `updateHousing`의 기본 인자(`housing.ts:177`)는 tick에서 쓰이지 않는다.
 
