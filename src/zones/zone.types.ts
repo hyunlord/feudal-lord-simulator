@@ -55,3 +55,14 @@ export interface Parcel {
   /** Houses (and house construction sites) standing on the plot; their footprints stay whole (Z-13). */
   readonly buildingIds: readonly string[];
 }
+
+/**
+ * One undoable zone edit (spec Z-17, save v9): the zone order before the edit, the earlier versions of
+ * every zone the edit changed or removed, and the ordinal it started from. Zones the edit created are
+ * simply absent from `order`. Undo restores exactly the state before that edit.
+ */
+export interface ZoneUndoRecord {
+  readonly order: readonly string[];
+  readonly previous: readonly Zone[];
+  readonly nextZoneOrdinal: number;
+}

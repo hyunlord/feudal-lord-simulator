@@ -1,6 +1,7 @@
 /**
- * Placement rules v0 (spec Z-11) and the zone mismatch diagnostic (Z-8). The rules run only while at
- * least one zone exists; with no zone every answer equals `canPlaceBuilding` unchanged.
+ * Placement rules (spec Z-11) and the zone mismatch diagnostic (Z-8). Each rule runs only while a zone
+ * of its own kind exists (C1c, Z-11a): houses need a burgage zone only once one is painted, wheat farms an
+ * arable zone only once one is painted. With no such zone every answer equals `canPlaceBuilding`.
  *
  * The zone reasons are their own enum on purpose: `PlacementFailure` is switched over exhaustively by
  * render code this work may not touch, so the zone layer wraps the base check instead of widening it.
@@ -51,10 +52,21 @@ export function zoneHoldingFootprint(state: ZonePlacementWorld, rule: ZoneKind, 
     && interiorPlacementTiles(zone, { width, height }, state.width).has(anchor)) ?? null;
 }
 
+/** Z-11a: a rule is active only while at least one zone of its kind exists. */
+export function zoneRuleActive(state: Pick<GameState, "zones">, rule: ZoneKind): boolean {
+  return zonesOf(state).some(zone => zone.kind === rule);
+}
+
+/** The zone rule that applies to `kind` now, or null (no rule, or no zone of the rule's kind). */
+export function activeZoneRuleFor(state: Pick<GameState, "zones">, kind: BuildingKind): ZoneKind | null {
+  const rule = zoneRuleFor(kind);
+  return rule !== null && zoneRuleActive(state, rule) ? rule : null;
+}
+
 /** Z-11 on its own (no terrain, road or material checks). */
 export function zonePlacementCheck(state: ZonePlacementWorld, kind: BuildingKind, tx: number, ty: number): ZonePlacementCheck {
-  const rule = zoneRuleFor(kind);
-  if (rule === null || zonesOf(state).length === 0) return { ok: true, rule: null, zoneId: null };
+  const rule = activeZoneRuleFor(state, kind);
+  if (rule === null) return { ok: true, rule: null, zoneId: null };
   if (rule === "arable" && footprintInsideWall(state, kind, tx, ty)) {
     return { ok: false, rule, reason: ZonePlacementFailure.arable_inside_wall };
   }
@@ -80,7 +92,7 @@ export interface ZoneMismatch {
 
 /**
  * Z-8: houses and wheat farms (built or under construction) that are not inside a zone of their rule
- * kind while zones exist. Diagnostic only: nothing is moved or demolished.
+ * kind while a zone of that kind exists (Z-11a). Diagnostic only: nothing is moved or demolished.
  */
 export function zoneMismatches(state: GameState): readonly ZoneMismatch[] {
   if (zonesOf(state).length === 0) return [];
@@ -90,7 +102,7 @@ export function zoneMismatches(state: GameState): readonly ZoneMismatch[] {
   ];
   const mismatches: ZoneMismatch[] = [];
   for (const building of placed) {
-    const rule = zoneRuleFor(building.kind);
+    const rule = activeZoneRuleFor(state, building.kind);
     if (rule === null || zoneHoldingFootprint(state, rule, building.kind, building.tx, building.ty) !== null) continue;
     mismatches.push({ buildingId: building.id, kind: building.kind, rule, reason: "zone_mismatch",
       sources: [{ type: "building", id: building.id }] });

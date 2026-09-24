@@ -143,4 +143,6 @@ export interface GameState {
   readonly zones?: readonly import("../zones/zone.types").Zone[];
   /** Ordinal of the next painted zone (save v6); starts at 1. */
   readonly nextZoneOrdinal?: number;
+  /** Undo stack of the last zone paint/erase edits, newest last (save v9, spec Z-17). Absent = empty. */
+  readonly zoneUndo?: readonly import("../zones/zone.types").ZoneUndoRecord[];
 }

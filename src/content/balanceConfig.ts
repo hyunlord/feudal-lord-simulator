@@ -14,8 +14,11 @@ export const BALANCE = {
   WORKERS_PER_RESIDENT: 0.5,
   CONSTRUCTION_MIN_WORKER_SHARE: 0.2,
   STARTING_TIMBER: 120,
-  /** Provisional (B2): one calendar year per minute at 1x; four 300-tick seasons. Tune after player timing. */
-  TICKS_PER_YEAR: 1200,
+  /**
+   * Provisional (C1c): four 1,000-tick seasons, so autoplay's 24-lot victories (280–630k ticks) land in about
+   * 1370–1460 from a 1300 start. Derived only (no state field); tune after player timing.
+   */
+  TICKS_PER_YEAR: 4000,
 } as const;
 
 /**

@@ -1,5 +1,5 @@
+import { autoplayCanPlace } from './autoplayZones';
 import type { Building, BuildingKind } from '../content/buildingConfig';
-import { canPlaceBuilding } from '../world/placement';
 import type { TileCoordinate } from '../world/grid';
 import type { GameState } from './engine.types';
 import { resolveBuildingRoute } from './routing';
@@ -11,7 +11,7 @@ export function lateFoodBuildSites(state: GameState, kind: BuildingKind): readon
   const granaries = state.buildings.filter(building => building.kind === 'granary');
   if (granaries.length === 0) return null;
   return state.tiles.flatMap(tile => {
-    if (!hasAutoplayBuildingClearance(state, kind, tile) || !canPlaceBuilding(state, kind, tile.tx, tile.ty).ok) return [];
+    if (!hasAutoplayBuildingClearance(state, kind, tile) || !autoplayCanPlace(state, kind, tile.tx, tile.ty)) return [];
     const candidate: Building = { id: `autoplay-food-${tile.tx}-${tile.ty}`, kind, tx: tile.tx, ty: tile.ty,
       workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
     const paths = granaries.map(granary => resolveBuildingRoute(state, candidate, granary).path).filter(path => path !== null);

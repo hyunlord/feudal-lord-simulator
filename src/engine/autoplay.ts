@@ -1,3 +1,5 @@
+import { autoplayCanPlace, clearZoneExclusions, excludeZoneRefusal, zoneRefusesAction } from "./autoplayZones";
+import { zoneRuleActive } from "../zones/zonePlacement";
 import { zoneFillAction } from "../zones/zoneFillAgent";
 import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } from './autoplaySearchBudget';
 import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
@@ -21,7 +23,7 @@ import { buildingRoadAccessTiles } from "./routing";
 import type { GameState } from "./engine.types";
 import type { TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
-import { canPlaceBuilding, placementSpendableResource } from "../world/placement";
+import { placementSpendableResource } from "../world/placement";
 import { canTraverseRoadBoundary } from "../world/bridges";
 import { canPlaceRoad, roadLine } from "../world/roadGraph";
 import { hasConnectedConstructionRoute } from "./autoplayConstructionRoute";
@@ -93,7 +95,7 @@ function findBuildSite(
     // Every candidate still needs a service proof; an exhausted phase cannot supply one.
     if (autoplaySearchExhausted()) return null;
     if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
-    if (canPlaceBuilding(state, kind, coordinate.tx, coordinate.ty).ok && preservesAutoplayWallSpace(state, kind, coordinate)
+    if (autoplayCanPlace(state, kind, coordinate.tx, coordinate.ty) && preservesAutoplayWallSpace(state, kind, coordinate)
       && preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })
       && preserveRoadExpansion(state, { ...coordinate, kind })?.kind !== 'none') return coordinate;
   }
@@ -172,7 +174,7 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
   if (autoplaySearchExhausted()) return NONE;
   const roads = roadTiles(state);
-  const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && canPlaceBuilding(state, kind, tile.tx, tile.ty).ok)
+  const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty))
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
@@ -203,6 +205,8 @@ function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): 
 }
 
 function housingAction(state: GameState, policy: AutoplayPolicy): AutoplayAction {
+  // Z-15a: with a burgage zone, houses go only onto plots, through ZoneFillAgent in decideNextAction.
+  if (zoneRuleActive(state, "burgage")) return NONE;
   if (housingLotCount(state) >= policy.maxHousingLots || state.idleWorkers <= 6 || state.population < houseCapacity(state) || breadStock(state) < 20 || hasPendingFoodChain(state) || hasPlannedBuilding(state, "house")) return NONE;
   const roads = new Set(roadTiles(state).map(coordinateKey));
   const accepts = (coordinate: TileCoordinate): boolean =>
@@ -263,11 +267,24 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
 }
 
 export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
-  // Spec Z-15: only a town with painted zones consults ZoneFillAgent; with no zone this is never called.
-  if ((state.zones?.length ?? 0) > 0) {
+  // Spec Z-15: only a town with a burgage zone consults ZoneFillAgent, and only below the policy's lot cap
+  // (C1c); with no burgage zone this is never called.
+  if (zoneRuleActive(state, "burgage") && housingLotCount(state) < policy.maxHousingLots) {
     const fill = zoneFillAction(state);
     if (fill !== null) return fill;
   }
   resetAutoplayServiceSearch();
-  return runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
+  let action = runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
+  // Z-15a: a zone-refused candidate is excluded and the decision retried; it is never sent to the reducer.
+  for (let attempt = 0; attempt < 3 && zoneRefusesAction(state, action); attempt += 1) {
+    excludeZoneRefusal(action);
+    resetAutoplayServiceSearch();
+    action = runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
+  }
+  if (zoneRefusesAction(state, action)) {
+    excludeZoneRefusal(action);
+    action = NONE;
+  }
+  clearZoneExclusions();
+  return action;
 }

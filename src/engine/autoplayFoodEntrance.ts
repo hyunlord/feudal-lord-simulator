@@ -1,6 +1,7 @@
+import { autoplayCanPlace } from './autoplayZones';
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
-import { canPlaceBuilding, placementSpendableResource } from '../world/placement';
+import { placementSpendableResource } from '../world/placement';
 import { canPlaceRoad } from '../world/roadGraph';
 import { getTile } from '../world/grid';
 import { buildingRoadAccessTiles, resolveBuildingRoute } from './routing';
@@ -59,7 +60,7 @@ export function foodEntranceBuildAction(state: GameState, kind: BuildingKind): A
     const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
     if ((['timber', 'stone'] as const).some(resource => placementSpendableResource(projected, resource) < (cost[resource] ?? 0))) continue;
     const site = bestSite(projected, kind, stores);
-    if (site === null || !canPlaceBuilding(projected, kind, site.candidate.tx, site.candidate.ty).ok
+    if (site === null || !autoplayCanPlace(projected, kind, site.candidate.tx, site.candidate.ty)
       || site.distance >= (baseline?.distance ?? Infinity)) continue;
     const roads = projected.tiles.filter(tile => tile.hasRoad).length - state.tiles.filter(tile => tile.hasRoad).length;
     if (best === null || site.distance < best.distance || site.distance === best.distance && roads < best.roads) {

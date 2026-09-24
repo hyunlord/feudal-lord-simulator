@@ -22,7 +22,7 @@ import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
 import { confirmPalisadeProclamation } from "../engine/palisade";
 import { setWallConstructionPriority } from "../engine/constructionReserve";
-import { eraseZone, paintZone, removeZone } from "../zones/zoneEdits";
+import { eraseZone, paintZone, removeZone, undoZoneStroke } from "../zones/zoneEdits";
 import { constructionSiteId } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import type { GameSpeed } from "../engine/engine.types";
@@ -162,6 +162,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return eraseZone(state, action.stroke);
     case "zone_remove":
       return removeZone(state, action.id);
+    case "zone_undo_stroke":
+      return undoZoneStroke(state);
     default:
       return assertNever(action);
   }
