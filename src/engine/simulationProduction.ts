@@ -1,3 +1,4 @@
+import { recordTimberExpansionShortage } from './autoplayTimberRecovery';
 import { recordFoodEfficiency } from './autoplayFoodEfficiency';
 import { recordMaterialProduction } from './autoplayMaterialCycle';
 import { materialRawSource } from './autoplayMaterialRoutes';
@@ -79,6 +80,8 @@ function timberProductionWindow(state: GameState, produced: number): NonNullable
     throughTick: state.tick,
     produced: productionTicks.length,
     productionTicks,
+    ...(state.timberProductionWindow?.expansionShortageSinceTick === undefined ? {}
+      : { expansionShortageSinceTick: state.timberProductionWindow.expansionShortageSinceTick }),
     ...(state.timberProductionWindow?.availableTimber === undefined
       ? {}
       : { availableTimber: state.timberProductionWindow.availableTimber }),
@@ -88,7 +91,8 @@ function timberProductionWindow(state: GameState, produced: number): NonNullable
   };
 }
 
-export function recordTimberAvailability(state: GameState): GameState {
+export function recordTimberAvailability(input: GameState): GameState {
+  const state = recordTimberExpansionShortage(input);
   const observation = state.timberProductionWindow;
   if (observation === undefined) return state;
   if (state.wallConstructionReserve?.resource !== 'timber' || state.wallConstructionPriority === 'priority') return state;

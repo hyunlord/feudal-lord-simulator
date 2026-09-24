@@ -1,3 +1,4 @@
+import { timberExpansionKind } from './autoplayTimberRecovery';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
@@ -179,7 +180,8 @@ function timberAction(state: GameState): AutoplayAction {
   if (placementSpendableResource(state, "timber") > reserve) return NONE;
   if (!hasBuiltOrPlannedBuilding(state, "logging_camp")) return buildAction(state, "logging_camp");
   if (!hasBuiltOrPlannedBuilding(state, "sawmill")) return buildAction(state, "sawmill");
-  return NONE;
+  const expansion = timberExpansionKind(state);
+  return expansion === null ? NONE : buildAction(state, expansion);
 }
 
 function splitsExistingHousePair(state: GameState, coordinate: TileCoordinate): boolean {

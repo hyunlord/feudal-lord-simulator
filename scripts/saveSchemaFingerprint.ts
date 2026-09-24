@@ -21,6 +21,7 @@ export const FINGERPRINT_FIXTURES = [
   "fixtures/saves/v1/population-176.save.json",
   "fixtures/saves/v1/palisade-construction.save.json",
   "fixtures/saves/v3/paused-farm.save.json",
+  "fixtures/saves/v4/timber-shortage.save.json",
   "fixtures/saves/v2/new-game.save.json",
   "fixtures/saves/v2/population-176.save.json",
   "fixtures/saves/v2/palisade-construction.save.json",
