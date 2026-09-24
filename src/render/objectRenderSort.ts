@@ -88,7 +88,6 @@ function renderSortY(item: SortableRenderItem): number {
       return item.walker.position.ty;
     case "building":
       return item.building.ty;
-    case "starting_landmark":
     case "palisade_segment":
     case "construction_site":
     case "bridge_rail":

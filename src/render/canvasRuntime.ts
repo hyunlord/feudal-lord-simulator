@@ -7,7 +7,6 @@ import {
 import { clampPan, clampZoom, type CameraState, type Point } from "./camera";
 import { worldBounds } from "./interactions";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
-import { STARTING_LANDMARKS } from "./startingLandmarks";
 import { runtimeWorldAssetManifest } from "./worldAssetManifest.generated";
 
 const DESKTOP_CONSOLE_HEIGHT = 150;
@@ -18,6 +17,8 @@ const TABLET_MAX_WIDTH = 900;
 const MOBILE_TOP_RAIL_SAFE_INSET = 176;
 const LOW_HEIGHT_MAX = 400;
 const TARGET_ISO_TILE_SPAN = 14;
+/** The compact opening frame still reaches the river crossing east of the village (where the old ford placeholder stood). */
+const OPENING_RIVER_POINT = { tx: 53, ty: 41 } as const;
 export const MIN_OPENING_1X1_BUILDING_SCREEN_PX = 80;
 const MIN_OPENING_1X1_SPRITE_PX = Math.min(openingSpriteMinPx("house_l0"), openingSpriteMinPx("well"));
 const COMPACT_OPENING_MIN_ZOOM = MIN_OPENING_1X1_BUILDING_SCREEN_PX / MIN_OPENING_1X1_SPRITE_PX;
@@ -141,7 +142,7 @@ function openingTopInset(canvas: InitialCameraCanvas): number {
 
 function openingTableauBounds(canvas: InitialCameraCanvas): ScreenBounds {
   const village = openingVillageSpriteBounds();
-  const landmarks = pointBounds(STARTING_LANDMARKS.map(({ tx, ty }) => tileToScreen(tx, ty)));
+  const landmarks = pointBounds([tileToScreen(OPENING_RIVER_POINT.tx, OPENING_RIVER_POINT.ty)]);
   return {
     minX: Math.min(village.minX, landmarks.minX),
     maxX: Math.max(village.maxX, landmarks.maxX),

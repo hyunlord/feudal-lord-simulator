@@ -20,7 +20,6 @@ import { houseMaterialEraFromEra, type HouseMaterialWave } from "./buildingMater
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
 import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor } from "./drawTrees";
-import { drawStartingLandmark } from "./drawStartingLandmarks";
 import { drawWalker } from "./drawWalkers";
 import type { TileRange, ViewportSize } from "./renderer";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
@@ -71,9 +70,7 @@ export function drawBuildings(
     }
   }
   for (const item of items) {
-    if (item.kind === "starting_landmark") {
-      drawStartingLandmark(context, item.landmark, input.zoom);
-    } else if (item.kind === "tree") {
+    if (item.kind === "tree") {
       drawTreeDescriptor(context, {
         tick: input.state.tick,
         tree: item.descriptor,
