@@ -44,20 +44,31 @@ const STATE_WASH: Readonly<Record<ArableStripState, string>> = {
 };
 
 type StateLookup = ReadonlyMap<string, ArableStripState>;
-const lookups = new WeakMap<object, WeakMap<object, WeakMap<object, StateLookup>>>();
+const lookups = new WeakMap<object, WeakMap<object, WeakMap<object, WeakMap<object, StateLookup>>>>();
+const NO_FIELDS: readonly unknown[] = [];
 
-/** Strip id -> crop state for every arable zone, cached on the buildings, construction sites and zones it reads. */
+/**
+ * Strip id -> crop state for every arable zone. Cache (AGENTS rule 10): (a) keyed on the buildings, construction
+ * sites, zones and `arableFields` (C1f: the saved strip records, save v10, which arableStripStates reads for each
+ * strip's stage; before C1f a record change with the same buildings, sites and zones could return stale states); every
+ * one of them is replaced when it changes. (b) Nothing else is read except the calendar through the tick, which moves
+ * with the buildings array (replaced every tick). (c) Unchanged cost: a miss is one arableStripStates pass per arable
+ * zone, a hit a map read.
+ */
 export function arableStripStateLookup(state: GameState): StateLookup {
   const zones = zonesOf(state);
+  const fields = (state.arableFields ?? NO_FIELDS) as object;
   let bySites = lookups.get(state.buildings);
   if (bySites === undefined) { bySites = new WeakMap(); lookups.set(state.buildings, bySites); }
   let byZones = bySites.get(state.constructionSites);
   if (byZones === undefined) { byZones = new WeakMap(); bySites.set(state.constructionSites, byZones); }
-  const cached = byZones.get(zones);
+  let byFields = byZones.get(zones);
+  if (byFields === undefined) { byFields = new WeakMap(); byZones.set(zones, byFields); }
+  const cached = byFields.get(fields);
   if (cached !== undefined) return cached;
   const lookup = new Map<string, ArableStripState>();
   for (const zone of zones) if (zone.kind === "arable") for (const strip of arableStripStates(zone, state).strips) lookup.set(strip.id, strip.state);
-  byZones.set(zones, lookup);
+  byFields.set(fields, lookup);
   return lookup;
 }
 

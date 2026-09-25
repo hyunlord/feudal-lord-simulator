@@ -261,3 +261,11 @@ test("Given the arable scene When the object queue is built Then no grass tuft, 
     assert.equal(crops.has(`${Math.round(item.descriptor.anchorTx)},${Math.round(item.descriptor.anchorTy)}`), false, item.id);
   }
 });
+
+test("Given the same buildings, sites and zones When the saved arable field records change Then the strip state lookup is recomputed (C1f)", () => {
+  const state = c25ZonedState();
+  const first = arableStripStateLookup(state);
+  assert.equal(arableStripStateLookup({ ...state }), first, "same inputs: cached");
+  const records = { ...state, arableFields: [...(state.arableFields ?? [])] };
+  assert.notEqual(arableStripStateLookup(records), first, "a new arableFields array is a new key");
+});
