@@ -278,3 +278,21 @@ test("LB-11 behind a wall autoplay puts a sawmill outside it when a site exists,
   assert.equal(inside(polygon, "sawmill", action.tx, action.ty), false, `sawmill at ${action.tx},${action.ty}`);
   assert.notDeepEqual([action.tx, action.ty], [fallback.tx, fallback.ty]);
 });
+
+test("LB-12 autoplay proclaims the palisade only when its wall leaves room for the lots still wanted", async () => {
+  const { autoplayEraAction, wallPlotRoom } = await import("../src/engine/autoplayEra");
+  const { confirmPalisadeProclamation } = await import("../src/engine/palisade");
+  const { runAutoplaySearch } = await import("../src/engine/autoplaySearchBudget");
+  const { housingLotCount } = await import("../src/population/housing");
+  // The 176-resident hamlet meets every palisade requirement once it has the timber.
+  const state = { ...stateFromSave("fixtures/saves/v10/population-176.save.json"), treasuryTimber: 600 };
+  const noBuild = () => ({ kind: "none" } as const);
+  const open = runAutoplaySearch(() => autoplayEraAction(state, noBuild));
+  assert.ok(open.kind === "proclaim_era" && open.candidatePath !== undefined, "without a lot target it proclaims");
+  const room = wallPlotRoom(confirmPalisadeProclamation(state, open.candidatePath!));
+  const lots = housingLotCount(state);
+  assert.ok(room > 0, "the proposed wall leaves house plots");
+  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, lots + room)).kind, "proclaim_era", "room for every lot still wanted");
+  // Another candidate wall may enclose more; none encloses room for 200 more lots, so the advisor waits and the town grows.
+  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, lots + 200)).kind, "none", "no wall has room: wait and grow");
+});
