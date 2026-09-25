@@ -72,6 +72,7 @@ import type { ControlLayer } from "./ui/tutorial/tutorialModel";
 import { BUILD_MENU_COPY } from "./ui/buildMenuCopy.ko";
 import { AlertStack } from "./ui/AlertStackView";
 import { tutorialTargetCanvasPoint } from "./ui/tutorial/tutorialMapChannel";
+import { readTutorialRecord } from "./ui/tutorial/tutorialStore";
 import { Inspector } from "./ui/InspectorView";
 
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
@@ -312,7 +313,8 @@ export function App() {
   const cancelPalisadeDraft = useCallback(() => setPalisadeDraft(null), []);
   // UX-1: a new game from the welcome starts the tutorial when its toggle is on (campaign only; a city that is not a
   // fresh game, e.g. an injected fixture, never gets one).
-  const [welcomeTutorial, setWelcomeTutorial] = useState(true);
+  // The toggle starts from the stored choice (a player who switched the tutorial off keeps it off), else on.
+  const [welcomeTutorial, setWelcomeTutorial] = useState(() => readTutorialRecord()?.enabled ?? true);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);

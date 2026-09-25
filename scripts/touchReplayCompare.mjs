@@ -13,6 +13,11 @@
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 
+// UX-1: the replay compares input handling, so the build under test runs with the tutorial off (its unlocks would lock
+// the pasture brush); the baseline ignores the key. The categories were renamed (주택 → 생활, 도로 → 길); both match.
+const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
+const CATEGORY_NAME = { '주택': /^(주택|생활)/, '도로': /^(도로|길)$/ };
+
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const url = flags.url ?? 'http://127.0.0.1:4291/';
@@ -90,13 +95,13 @@ const STEPS = [
 ];
 
 async function tool(d, page, category, name) {
-  await d.press(page.locator('button.build-menu-category', { hasText: category }));
+  await d.press(page.locator('button.build-menu-category', { hasText: CATEGORY_NAME[category] ?? category }));
   await d.press(page.locator(`button[aria-label="${name}"]:visible`).first());
   await d.park();
 }
 
 async function session(browser, kind) {
-  const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: url, run: false, hasTouch: kind === 'touch' });
+  const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: url, run: false, hasTouch: kind === 'touch', initScript: TUTORIAL_OFF });
   await page.mouse.move(640, 790);
   const cdp = kind === 'touch' ? await context.newCDPSession(page) : null;
   const device = kind === 'touch' ? touchDevice(page, cdp) : mouseDevice(page);

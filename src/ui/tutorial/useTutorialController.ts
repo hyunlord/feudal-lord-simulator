@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GameState } from "../../engine/engine.types";
+import { canProclaimPalisadeEra } from "../../engine/era";
 import { getSettlementView } from "../../engine/settlementView";
 import type { WorldPoint } from "../../input/inputIntent";
 import { platformServices } from "../../platform/platform";
@@ -9,6 +10,7 @@ import type { ZoneBrushTool } from "../../render/zoneBrushInteraction";
 import type { TileCoordinate } from "../../world/grid";
 import type { ZoneStrokePoint } from "../../zones/zone.types";
 import { buildCategory, type BuildCategory } from "../buildMenuPresentation";
+import { humanizeTicks } from "../gameTimeCopy.ko";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
 import {
   currentStepIndex, newCount, placedCount, stepAction, stepProgress, stepTarget, suggestedBuildingSpot, tutorialAccess,
@@ -107,7 +109,8 @@ export function useTutorialController(input: {
   const acks = useMemo(() => new Set(record?.acks ?? []), [record]);
   const index = enabled ? currentStepIndex(state, acks) : TUTORIAL_STEP_IDS.length;
   const running = enabled && index < TUTORIAL_STEP_IDS.length;
-  const access = useMemo(() => tutorialAccess(enabled, index), [enabled, index]);
+  const defenseOpen = state.era !== "hamlet" || canProclaimPalisadeEra(state);
+  const access = useMemo(() => tutorialAccess(enabled, index, defenseOpen), [enabled, index, defenseOpen]);
   const stepId = running ? TUTORIAL_STEP_IDS[index]! : null;
   const zoneRadius = input.zoneTool?.radius ?? 2;
   const armed = { tool: input.selectedTool, zone: input.zoneTool?.target ?? null, layer: input.layer };
@@ -255,8 +258,8 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
   const goal = view.currentGoal;
   if (goal !== null) {
     const next = goal.criteria.find(item => !item.met) ?? goal.criteria[0];
-    cards.push({ key: "settlement", title: goal.title, why: next?.label ?? goal.description, progress: next === undefined ? null : { current: Math.floor(next.current), target: next.target },
-      ctaLabel: TUTORIAL_COPY.generalCard.cta, status: "active", help: goal.description, hasTarget: false });
+    cards.push({ key: "settlement", title: goal.title, why: humanizeTicks(next?.label ?? goal.description), progress: next === undefined ? null : { current: Math.floor(next.current), target: next.target },
+      ctaLabel: TUTORIAL_COPY.generalCard.cta, status: "active", help: humanizeTicks(goal.description), hasTarget: false });
   }
   if (tutorialRan) {
     const missing = (["market", "chapel"] as const).filter(kind => placedCount(state, kind) === 0);

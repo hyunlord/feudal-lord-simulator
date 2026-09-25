@@ -13,6 +13,8 @@ const [outDir] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const url = flags.url ?? 'http://127.0.0.1:4291/';
 const initScript = () => {
+  // UX-1: the tutorial off (its unlocks would lock the zone tools that X cycles); the replay tests pad input.
+  try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }
   const pad = { id: 'virtual standard pad', index: 0, connected: true, mapping: 'standard', timestamp: 0, axes: [0, 0, 0, 0],
     buttons: Array.from({ length: 17 }, () => ({ pressed: false, touched: false, value: 0 })) };
   Object.defineProperty(navigator, 'getGamepads', { configurable: true, value: () => [pad, null, null, null] });

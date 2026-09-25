@@ -7,6 +7,8 @@ import type { GameState } from "../engine/engine.types";
 import { getSettlementView } from "../engine/settlementView";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { calendarLabel, historicalEra, scenarioOf } from "../engine/scenarioState";
+import { durationLabel, humanizeTicks } from "./gameTimeCopy.ko";
+import { SETTLEMENT_PANEL_COPY } from "./settlementPanelCopy.ko";
 
 export function SettlementPanel({ state, onRestart, developmentContent }: {
   readonly state: GameState;
@@ -47,10 +49,10 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
         <p>가구별 세 끼를 비축합니다. 가구가 늘면 경작지·방앗간·배급 길도 함께 늘리세요.</p>
         {goal === null ? <p>{view.mode === "sandbox" ? SCENARIO_COPY.sandboxGoal : SCENARIO_COPY.allGoalsDone}</p> : <>
           <ul>{goal.criteria.map(item => <li key={item.id}>
-            <span>{item.label}</span><strong>{Math.floor(item.current)}/{item.target}{item.met ? " 충족" : ""}</strong>
+            <span>{humanizeTicks(item.label)}</span><strong>{Math.floor(item.current)}/{item.target}{item.met ? " 충족" : ""}</strong>
           </li>)}</ul>
           {goal.requiredHoldTicks > 0 ? <label className="settlement-hold">
-            연속 유지 {seconds(goal.holdTicks)}/{seconds(goal.requiredHoldTicks)}초 (게임 시간)
+            {SETTLEMENT_PANEL_COPY.hold(durationLabel(goal.holdTicks), durationLabel(goal.requiredHoldTicks))}
             <progress value={goal.holdTicks} max={goal.requiredHoldTicks} />
           </label> : <p>{SCENARIO_COPY.proclaimAndBuildWall}</p>}
         </>}

@@ -161,10 +161,13 @@ const stepAt = (id: TutorialStepId): number => TUTORIAL_STEP_IDS.indexOf(id);
  * What is open at a step index (tutorial on). Direct building of houses, wells and roads from the start; the trade
  * category (the arable brush, then the barn and mill) at the food step; storage (the granary) at the granary step;
  * the zone layer, with plots only, at the zone step; public buildings and the other trade and storage tools when the
- * tutorial ends. Defence follows the era rules; the direction layer stays closed (petitions, P2).
+ * tutorial ends. Defence opens with the palisade stage (`defenseOpen`: the proclamation is possible or done); the
+ * direction layer stays closed (petitions, P2).
  */
-export function tutorialAccess(enabled: boolean, index: number): TutorialAccess {
-  if (!enabled || index >= TUTORIAL_STEP_IDS.length) return ALL_OPEN;
+export function tutorialAccess(enabled: boolean, index: number, defenseOpen = false): TutorialAccess {
+  if (!enabled) return ALL_OPEN;
+  // Finished: everything is open but defence, which waits for the palisade stage (research E: "방어·권리 계속 숨김").
+  if (index >= TUTORIAL_STEP_IDS.length) return defenseOpen ? ALL_OPEN : { ...ALL_OPEN, categories: { ...ALL_OPEN.categories, defense: false } };
   const reached = (id: TutorialStepId) => index >= stepAt(id);
   const trade = reached("arable"); const chain = reached("food_chain"); const storage = reached("granary");
   const zone = reached("zone_unlock");

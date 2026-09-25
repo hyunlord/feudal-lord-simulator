@@ -69,8 +69,9 @@ test("the real app renders every placement tool as an accessible control", () =>
     assert.ok(option);
     assert.match(markup, new RegExp(`aria-label="${option.label}"`));
   }
-  assert.doesNotMatch(markup, /aria-label="채석장"/);
-  assert.doesNotMatch(markup, /aria-label="석공소"/);
+  // UX-1: tools the settlement stage has not opened stay visible, locked, with the stage that opens them.
+  assert.match(markup, /class="build-seal build-tool build-tool--locked"[^>]*aria-label="채석장"[^>]*aria-disabled="true"/);
+  assert.match(markup, /aria-label="석공소"[\s\S]*?🔒<\/span> 시장도시 이후/);
   assert.doesNotMatch(markup, /build-tool--selected/);
 });
 
@@ -257,7 +258,7 @@ test("each tool describes its own immutable guidance even when another tool is s
     selectedTool: "house", state: DEFAULT_GAME_STATE, onSelect: () => undefined,
   }));
   const buttons = [...markup.matchAll(/<button[^>]*class="build-seal[^>]*aria-label="([^"]+)"[^>]*aria-describedby="([^"]+)"[^>]*>([\s\S]*?)<\/button>/g)];
-  assert.equal(buttons.length, buildMenuGroups(DEFAULT_GAME_STATE).flatMap((group) => group.options).length + 1);
+  assert.equal(buttons.length, buildMenuGroups(DEFAULT_GAME_STATE, { includeEraLocked: true }).flatMap((group) => group.options).length + 1);
   for (const button of buttons) {
     const [, label, descriptionId, content] = button;
     assert.ok(descriptionId); assert.ok(content); assert.ok(label);

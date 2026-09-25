@@ -5,6 +5,11 @@
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 
+// UX-1: the replay compares input handling, so the build under test runs with the tutorial off (its unlocks would lock
+// the pasture brush); the baseline ignores the key. The categories were renamed (주택 → 생활, 도로 → 길); both match.
+const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
+const CATEGORY_NAME = { '주택': /^(주택|생활)/, '도로': /^(도로|길)$/ };
+
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const url = flags.url ?? 'http://127.0.0.1:4241/';
@@ -53,7 +58,7 @@ const STEPS = [
 ];
 
 async function tool(page, category, name) {
-  await page.locator('button.build-menu-category', { hasText: category }).click();
+  await page.locator('button.build-menu-category', { hasText: CATEGORY_NAME[category] ?? category }).click();
   await page.locator(`button[aria-label="${name}"]:visible`).first().click();
   await page.mouse.move(640, 790);
 }
@@ -61,7 +66,7 @@ async function drag(page, a, b) { await page.mouse.move(a.x, a.y); await page.mo
 async function clickAt(page, p) { await page.mouse.click(p.x, p.y); await page.waitForTimeout(60); }
 
 async function session(browser, base) {
-  const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: base, run: false });
+  const { context, page } = await openScene(browser, { state: null, tile: [44, 41], baseUrl: base, run: false, initScript: TUTORIAL_OFF });
   await page.mouse.move(640, 790);
   const at = async (tx, ty) => page.evaluate(([x, y]) => { const p = window.__FEUDAL_PHASE10_PROOF__.tileClientPoint({ tx: x, ty: y }); return { x: p.clientX, y: p.clientY }; }, [tx, ty]);
   const rows = [];

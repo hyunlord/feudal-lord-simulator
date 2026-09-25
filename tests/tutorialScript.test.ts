@@ -3,7 +3,9 @@ import { test } from "node:test";
 import type { GameState } from "../src/engine/engine.types";
 import type { PlacementTool } from "../src/render/renderer";
 import { DEFAULT_ZONE_BRUSH_RADIUS } from "../src/render/zoneBrushInteraction";
+import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
+import { isFreshGame } from "../src/ui/tutorial/useTutorialController";
 import {
   currentStepIndex, stepAction, tutorialAccess, TUTORIAL_STEP_IDS,
   type ControlLayer, type TutorialStepId, type TutorialZoneTarget,
@@ -64,10 +66,32 @@ test("Given each step When access is read Then only the script's categories and 
   assert.ok(at("burgage").zoneTargets("burgage") && !at("burgage").zoneTargets("pasture"));
   for (const id of TUTORIAL_STEP_IDS) assert.ok(!at(id).categories.public && !at(id).categories.defense && !at(id).layers.direction, id);
   const done = tutorialAccess(true, TUTORIAL_STEP_IDS.length);
+  assert.equal(done.categories.defense, false, "finished: defence waits for the palisade stage");
+  assert.equal(tutorialAccess(true, TUTORIAL_STEP_IDS.length, true).categories.defense, true);
   const off = tutorialAccess(false, 0);
+  assert.ok(Object.values(off.categories).every(Boolean), "tutorial off: everything open");
   for (const access of [done, off]) {
-    assert.ok(Object.values(access.categories).every(Boolean));
     assert.ok(access.tools("sawmill") && access.tools("market") && access.zoneTargets("pasture") && access.layers.zone);
     assert.equal(access.layers.direction, false);
   }
+});
+
+test("Given the script stopped at every step When the game is saved and loaded Then the tutorial resumes on the same card (gate 3)", () => {
+  const roundTrip = (state: GameState): GameState => decodeSave(encodeSave({ state, createdAt: "2026-09-25T00:00:00.000Z", savedAt: "2026-09-25T00:00:00.000Z" }).bytes).envelope.state as GameState;
+  const seen = new Set<number>();
+  for (let presses = 0; presses <= 24; presses += 1) {
+    const played = playTutorial(DEFAULT_GAME_STATE, presses);
+    const index = currentStepIndex(played.state, played.acks);
+    seen.add(index);
+    assert.equal(currentStepIndex(roundTrip(played.state), played.acks), index, `after ${presses} presses`);
+    // The record lost (another browser): the later predicates still close the earlier acknowledgements.
+    assert.ok(currentStepIndex(roundTrip(played.state), new Set()) <= index);
+  }
+  assert.equal(seen.size, TUTORIAL_STEP_IDS.length + 1, "every step and the end were visited");
+});
+
+test("Given no tutorial record When the state is not a fresh new game Then the tutorial does not start (injected cities, older saves)", () => {
+  assert.equal(isFreshGame(DEFAULT_GAME_STATE), true);
+  assert.equal(isFreshGame({ ...DEFAULT_GAME_STATE, tick: 1 }), false);
+  assert.equal(isFreshGame(playTutorial(DEFAULT_GAME_STATE, 3).state), false);
 });

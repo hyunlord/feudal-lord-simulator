@@ -33,3 +33,8 @@ export const GAME_TIME_COPY = {
     ? calendarDayLabel(firstTick)
     : `${calendarDayLabel(firstTick)}~${calendarDayLabel(lastTick)}`,
 } as const;
+
+/** Content copy the UI cannot rewrite (src/content) may still say "600틱": shown as time, "약 30초". */
+export function humanizeTicks(text: string): string {
+  return text.replace(/(\d[\d,]*)\s*틱/g, (_, digits: string) => durationLabel(Number(digits.replaceAll(",", ""))));
+}

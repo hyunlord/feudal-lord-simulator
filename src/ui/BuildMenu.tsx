@@ -12,7 +12,7 @@ import { A_QUADRUPLE_PRIME_WALL_COPY as WALL_COPY } from "./aQuadruplePrimeWallC
 import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_GAME_STATE } from "../state/gameStore";
 import { BuildGlyph } from "./BuildGlyph";
-import { buildMenuGroups, buildToolAffordability, buildToolTooltipLines, ROAD_TOOL_OPTION, type BuildToolOption } from "./buildMenuModel";
+import { buildMenuGroups, buildToolAffordability, buildToolTooltipLines, eraLockReason, ROAD_TOOL_OPTION, type BuildToolOption } from "./buildMenuModel";
 import { BUILD_CATEGORIES, buildCategory, buildCategorySelection, buildCostLabel, buildThumbnail, type BuildCategory } from "./buildMenuPresentation";
 import { DEFAULT_ZONE_BRUSH_RADIUS, ZONE_BRUSH_RADII, type ZoneBrushTarget, type ZoneBrushTool } from "../render/zoneBrushInteraction";
 import { ZONE_BRUSH_COPY } from "../render/zoneBrushCopy.ko";
@@ -62,7 +62,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   access = OPEN_ACCESS, layer = "direct", onLayerChange, pulse = null, openRequest = null }: BuildSealsProps) {
   const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
-  const options = buildMenuGroups(menuState).flatMap((group) => group.options);
+  // Era-locked buildings stay visible with their lock and the stage that opens them (UX-0 "잠긴 건물은 숨기지 말고").
+  const options = buildMenuGroups(menuState, { includeEraLocked: true }).flatMap((group) => group.options);
   const [inputDevice, setInputDevice] = useState<InputDevice>(() => lastInputDevice());
   useEffect(() => subscribeInputDevice(setInputDevice), []);
   const [category, setCategory] = useState<BuildCategory>(() => {
@@ -128,7 +129,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
 
   const toolButton = (option: BuildToolOption) => {
     const affordability = buildToolAffordability(option.tool, menuState);
-    const locked = !access.tools(option.tool);
+    const eraLock = eraLockReason(option.tool, menuState);
+    const locked = !access.tools(option.tool) || eraLock !== null;
+    const lockText = eraLock ?? TUTORIAL_COPY.lockedTool;
     const toolAffordable = affordability.affordable && !locked;
     const selected = selectedTool === option.tool;
     const thumbnail = buildThumbnail(option.tool);
@@ -136,11 +139,11 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
       <button key={option.tool} type="button"
         className={`build-seal build-tool${selected ? " build-tool--selected" : ""}${locked ? " build-tool--locked" : ""}`}
         aria-label={option.label} aria-describedby={`${id}-tool-${option.tool}`} aria-pressed={selected}
-        aria-disabled={!toolAffordable} data-affordable={String(affordability.affordable)} data-locked={locked ? "true" : undefined}
+        aria-disabled={!toolAffordable} data-affordable={String(affordability.affordable)} data-locked={locked ? eraLock !== null ? "era" : "tutorial" : undefined}
         data-highlighted={highlightedTools.includes(option.tool) ? option.tool : undefined} data-pulse={pulsing(option.tool)}
         onMouseEnter={() => setPreview(option.tool)} onMouseLeave={() => setPreview(null)}
         onFocus={() => setPreview(option.tool)} onBlur={() => setPreview(null)}
-        onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${TUTORIAL_COPY.lockedTool}`); setPinned(null); } else setPinned(option.tool); }}>
+        onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${lockText}`); setPinned(null); } else setPinned(option.tool); }}>
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
           {thumbnail === null ? <BuildGlyph tool={option.tool} /> : <img src={thumbnail} width="80" height="64" alt="" draggable={false} />}
@@ -148,7 +151,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         <span className="build-seal-label" aria-hidden="true">{option.label}</span>
         <span className="build-tool-purpose">{BUILD_CARD_PURPOSE[option.tool]}</span>
         <span className="build-tool-cost">{buildCostLabel(option)}</span>
-        {locked ? <span className="build-tool-lock"><span aria-hidden="true">🔒</span> {TUTORIAL_COPY.locked}</span>
+        {locked ? <span className="build-tool-lock"><span aria-hidden="true">🔒</span> {eraLock ?? TUTORIAL_COPY.locked}</span>
           : !affordability.affordable && <span className="build-tool-shortfall">{shortfallText(option, affordability.spendable)}</span>}
       </button>
     );

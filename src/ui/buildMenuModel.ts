@@ -117,9 +117,9 @@ export const BUILD_TOOL_OPTIONS: readonly BuildToolOption[] = [
   ROAD_TOOL_OPTION,
 ];
 
-export function buildMenuGroups(state: GameState): readonly BuildToolGroup[] {
+export function buildMenuGroups(state: GameState, { includeEraLocked = false }: { readonly includeEraLocked?: boolean } = {}): readonly BuildToolGroup[] {
   const options = BUILDING_TOOL_OPTIONS
-    .filter((option) => isBuildingUnlocked(option.tool, state.era, state.scenarioId))
+    .filter((option) => includeEraLocked || isBuildingUnlocked(option.tool, state.era, state.scenarioId))
     .map((option) => ({
       ...option,
       affordable: buildToolAffordability(option.tool, state).affordable,
@@ -210,4 +210,13 @@ function shortfallLabel(amounts: Partial<Record<ResourceType, number>>): string 
     return String(amounts.timber ?? 0);
   }
   return resourceAmountsLabel(amounts);
+}
+
+/**
+ * UX-0 / UX-1 "해금 안내": a building the settlement stage has not opened yet is shown with a lock and the stage that
+ * opens it (e.g. "시장도시 이후"), not hidden; null when it is open.
+ */
+export function eraLockReason(tool: PlacementTool, state: Pick<GameState, "era" | "scenarioId">): string | null {
+  if (tool === "road" || isBuildingUnlocked(tool, state.era, state.scenarioId)) return null;
+  return SCENARIO_COPY.unlockedAfter(SCENARIO_COPY.stages[buildingUnlockStage(tool, state.scenarioId)]);
 }

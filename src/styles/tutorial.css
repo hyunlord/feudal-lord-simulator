@@ -220,3 +220,12 @@
 /* ---- Left inspector mount (a warning's [보기]); under the steward when both show ---- */
 .left-inspector-mount { position: absolute; top: 68px; left: 12px; z-index: 4; max-height: calc(100% - 300px); pointer-events: none; }
 .steward-advisor ~ .left-inspector-mount { top: 196px; }
+
+/* The settings popover opens downward from the top cluster (it opened upward from the bottom console before UX-1). */
+.hud-time-cluster .command-disclosure { position: relative; }
+.hud-time-cluster .command-popover { top: calc(100% + 8px); bottom: auto; right: 0; z-index: 30; max-height: calc(100vh - 96px); }
+@media (max-width: 1100px) {
+  .hud-time-cluster .command-popover { top: auto; bottom: calc(100% + 8px); }
+}
+/* The zone layer hides the categories (the flex display must not override `hidden`). */
+.build-menu-categories[hidden] { display: none; }
