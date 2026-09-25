@@ -15,7 +15,6 @@ import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { waterSurface } from "./drawWater";
 import { drawBridgeAbutments, drawShoreline } from "./drawShoreline";
 import { preloadShoreAssets, shoreAssetReadiness } from "./terrainVariantAssets";
-import { farmSoilReadiness, preloadFarmAssets } from "./farmAssets";
 import { createGroundChunkCache, groundChunkZoomBucket, type ChunkRasterRequest, type GroundChunkCache } from "./groundChunkCache";
 import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundSceneFrameStart, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
@@ -91,7 +90,6 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const waterReady = waterSurface() !== null;
   probe?.enter("terrain.fill");
   void preloadBoundaryAssets();
-  void preloadFarmAssets();
   const scene = groundBoundaryScene(input.state);
   if (scene.shore.loops.length > 0) void preloadShoreAssets();
   if (scene.zones.zones.length > 0 || scene.yardProps.beds.length + scene.yardProps.hurdles.length > 0) void preloadZoneAssets();
@@ -108,7 +106,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const renderScale = platformServices().window.renderScale();
   const scaleKey = renderScale === 1 ? "" : `|rs${renderScale}`;
   const readiness = `${boundaryAssetReadiness()}:${TERRAIN_TEXTURE_KEYS.map(key => getSprite(key) === null ? 0 : 1).join("")}`
-    + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`;
+    + `:${waterReady ? 1 : 0}`;
   // Zone art readiness only in chunks that draw zones (a zone-free chunk keeps its D1a key), and never in the road
   // chunks, which draw no zone art (C1d: the first painted zone no longer re-rasters every other chunk).
   const zoneReadiness = scene.zones.zones.length > 0 ? `:z${zoneAssetReadiness()}` : "";

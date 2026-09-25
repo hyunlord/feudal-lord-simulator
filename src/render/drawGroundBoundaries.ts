@@ -3,7 +3,6 @@ import type { BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import type { FieldCluster, FieldEdgeDecal, ForestBoundary } from "../world/boundary/terrainBoundaries";
 import { boundaryAsset } from "./boundaryAssets";
 import type { BoundaryAssetKey } from "./boundaryAssetManifest";
-import { drawFarmSoilInClip } from "./farmAssets";
 import { tileToScreen } from "./iso";
 import { getTerrainPattern, terrainPatternQuarterTurn, TERRAIN_TEXTURE_COMPOSITE_OPACITY, type TerrainPatternAssets } from "./terrainPatterns";
 import { drawCroppedWorldSprite } from "./worldSprite";
@@ -75,7 +74,6 @@ export function drawFieldClusters(context: CanvasRenderingContext2D, fields: rea
     context.fillStyle = SEMANTIC_PALETTE.earthDark;
     context.fill("evenodd");
     context.clip("evenodd");
-    for (const farm of field.farms) drawFarmSoilInClip(context, farm);
     context.restore();
   }
   const decals = clusters.flatMap(index => fields[index]?.decals ?? [])

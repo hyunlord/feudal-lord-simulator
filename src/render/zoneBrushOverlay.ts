@@ -5,6 +5,7 @@ import { zonePaintLines } from "../ui/zonePrediction";
 import { cellInsideWall, zonePaintAssessment } from "../zones/zoneEdits";
 import { normalizeZoneStroke, rasterizeZoneStroke } from "../zones/zoneRaster";
 import { ZONE_KIND_CONFIG } from "../content/zoneConfig";
+import { ARABLE_CONFIG } from "../content/arableConfig";
 import type { ZoneStrokePoint } from "../zones/zone.types";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import type { Building } from "../content/buildingConfig";
@@ -70,25 +71,35 @@ export function zoneBrushPreview(state: GameState, view: ZoneBrushView): Preview
 }
 
 /**
- * Cells where no wheat farm covering them would have road access: all four 2x2 footprints that contain the cell have
- * no road access tile by the rules' own test (read only; the rules decide nothing here).
+ * Cells no road-connected farmstead could tend (C1f; before, the test was a 2x2 wheat farm over the cell, a building
+ * C1c-2 retired): arable strips are worked from a farmstead within ARABLE_CONFIG.tendRadius (Manhattan, as the rules'
+ * stripTending), and a farmstead without road access leaves them untended (`farmstead_no_road`). A cell is counted
+ * when no 1x1 farmstead spot within that radius has road access by the rules' own test (read only; the rules decide
+ * nothing here, and placement terrain is not checked, as before).
  */
 function cellsWithoutRoadAccess(state: GameState, cells: readonly number[]): Set<number> {
   const reach = new Map<number, boolean>();
-  const farmReaches = (tx: number, ty: number): boolean => {
+  const farmsteadReaches = (tx: number, ty: number): boolean => {
+    if (tx < 0 || ty < 0 || tx >= state.width || ty >= state.height) return false;
     const key = ty * state.width + tx;
     let value = reach.get(key);
     if (value === undefined) {
-      const farm = { id: "zone-preview-farm", kind: "wheat_farm", tx, ty } as Building;
-      value = tx >= 0 && ty >= 0 && tx + 1 < state.width && ty + 1 < state.height && buildingRoadAccessTiles(state, farm).length > 0;
+      const farmstead = { id: "zone-preview-farmstead", kind: "farmstead", tx, ty } as Building;
+      value = buildingRoadAccessTiles(state, farmstead).length > 0;
       reach.set(key, value);
     }
     return value;
   };
+  const radius = ARABLE_CONFIG.tendRadius;
   const missing = new Set<number>();
   for (const cell of cells) {
     const tx = cell % state.width; const ty = Math.floor(cell / state.width);
-    if (!farmReaches(tx, ty) && !farmReaches(tx - 1, ty) && !farmReaches(tx, ty - 1) && !farmReaches(tx - 1, ty - 1)) missing.add(cell);
+    let found = false;
+    for (let dy = -radius; dy <= radius && !found; dy += 1) {
+      const span = radius - Math.abs(dy);
+      for (let dx = -span; dx <= span && !found; dx += 1) found = farmsteadReaches(tx + dx, ty + dy);
+    }
+    if (!found) missing.add(cell);
   }
   return missing;
 }

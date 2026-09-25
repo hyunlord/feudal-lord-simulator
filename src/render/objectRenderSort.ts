@@ -87,6 +87,7 @@ function renderSortY(item: SortableRenderItem): number {
     case "walker":
       return item.walker.position.ty;
     case "zone_prop":
+    case "farm_prop":
       return item.prop.y;
     case "building":
       return item.building.ty;

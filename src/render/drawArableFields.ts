@@ -2,6 +2,12 @@ import type { GameState } from "../engine/engine.types";
 import { RIDGE_PERIOD, RIDGE_ROWS_PER_STRIP, type ArableField } from "../world/boundary/arableFields";
 import type { BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import { arableStripStates, type ArableStripState } from "../zones/arableStrips";
+
+/**
+ * The strip states the field art draws (C1f): the C1c four plus `harvested` (stubble ridges, Wave 4c), read from the
+ * strip's stage (arableStripStates `stage`; `ripe` stays with the growing art, the other stages map as `state`).
+ */
+export type FieldStripState = ArableStripState | "harvested";
 import { zonesOf } from "../zones/zoneEdits";
 import { RAMPS } from "../content/palette";
 import { tileToScreen } from "./iso";
@@ -28,22 +34,24 @@ const JOIN_FADE = 40;
 const FURROW_STROKE = 1.4;
 const FURROW_ALPHA = 0.75;
 
-const STATE_CODES: Readonly<Record<ArableStripState, string>> = { ploughed: "p", seedling: "s", growing: "g", fallow: "f" };
+const STATE_CODES: Readonly<Record<FieldStripState, string>> = { ploughed: "p", seedling: "s", growing: "g", fallow: "f", harvested: "h" };
 
 /**
- * A light wash over each state's ridges so the four read apart at zoom 0.6, where the painted cues (green dots on the
+ * A light wash over each state's ridges so the states read apart at zoom 0.6, where the painted cues (green dots on the
  * seedling ridges, grass blotches on the fallow ones) shrink to 2-3 px and the three brown strips have nearly the same
  * mean colour (ploughed 102/71/44, seedling 111/80/45, fallow 108/82/51): ploughed darker earth, seedling a fresh
  * green haze, growing a little more gold, fallow a dull olive.
  */
-const STATE_WASH: Readonly<Record<ArableStripState, string>> = {
+const STATE_WASH: Readonly<Record<FieldStripState, string>> = {
   ploughed: withAlpha(RAMPS.earth[0], 0.22),
   seedling: withAlpha(RAMPS.foliage[5], 0.3),
   growing: withAlpha(RAMPS.thatch[5], 0.12),
   fallow: withAlpha(RAMPS.foliage[2], 0.36),
+  // C1f: the stubble ridges' mean (119/89/58) sits between fallow and growing; a pale grey straw wash marks the cut field.
+  harvested: withAlpha(RAMPS.stone[5], 0.24),
 };
 
-type StateLookup = ReadonlyMap<string, ArableStripState>;
+type StateLookup = ReadonlyMap<string, FieldStripState>;
 const lookups = new WeakMap<object, WeakMap<object, WeakMap<object, WeakMap<object, StateLookup>>>>();
 const NO_FIELDS: readonly unknown[] = [];
 
@@ -66,8 +74,8 @@ export function arableStripStateLookup(state: GameState): StateLookup {
   if (byFields === undefined) { byFields = new WeakMap(); byZones.set(zones, byFields); }
   const cached = byFields.get(fields);
   if (cached !== undefined) return cached;
-  const lookup = new Map<string, ArableStripState>();
-  for (const zone of zones) if (zone.kind === "arable") for (const strip of arableStripStates(zone, state).strips) lookup.set(strip.id, strip.state);
+  const lookup = new Map<string, FieldStripState>();
+  for (const zone of zones) if (zone.kind === "arable") for (const strip of arableStripStates(zone, state).strips) lookup.set(strip.id, strip.stage === "harvested" ? "harvested" : strip.state);
   byFields.set(fields, lookup);
   return lookup;
 }
@@ -170,7 +178,7 @@ function cachedPattern(context: CanvasRenderingContext2D, image: CanvasImageSour
 // Joined a | b canvases per crop state (browser image cache, not simulation state): 1024 x 64, crossfaded at both
 // joins so the pair repeats along a row without a seam. Without a DOM (tests) the a image stands in.
 const pairs = new Map<string, CanvasImageSource | null>();
-function ridgePair(state: ArableStripState): CanvasImageSource | null {
+function ridgePair(state: FieldStripState): CanvasImageSource | null {
   const keys = ZONE_VARIANTS.ridge[state] as readonly ZoneAssetKey[];
   const images = keys.map(key => zoneAsset(key));
   if (images.some(image => image === null)) return null;

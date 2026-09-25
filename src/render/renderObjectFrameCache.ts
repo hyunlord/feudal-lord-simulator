@@ -14,6 +14,8 @@ import { walkerVisualAnchor } from "./walkerAnchor";
 import type { ZoneLayer } from "./zoneLayer";
 import { groundBoundaryScene } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
+import { farmProps } from "./farmProps";
+import { hurdleAssetKey } from "./hurdleArt";
 
 type ObjectRenderFrameInput = {
   readonly state: GameState;
@@ -38,7 +40,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input);
+  const staticItems = withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
@@ -103,6 +105,15 @@ const withZoneProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFra
   return visible.length === 0 ? items : mergeObjectRenderItems(items, visible);
 };
 
+/** Farm animals and ox teams (C1f), with the zone props: curved ground on and a zone painted. */
+const withFarmProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
+  if ((input.state.zones ?? []).length === 0 || !boundaryV2Enabled()) return queue;
+  const visible = farmProps(input.state).filter(prop => tileIsVisibleInRange(Math.round(prop.x), Math.round(prop.y), input.range))
+    .map(prop => ({ kind: "farm_prop" as const, id: prop.id, prop, depth: depthKey(Math.round(prop.x), Math.round(prop.y)), anchorTx: Math.round(prop.x) }))
+    .sort(compareObjectRenderItems);
+  return visible.length === 0 ? queue : mergeObjectRenderItems(queue, visible);
+};
+
 /**
  * Grass tufts, bushes and stones stay off the ridge strips of arable zones (C1e): the crop area is ploughed ground.
  * Cached on the static item list and the zone layer (both keep their identity until the ground or the zones change).
@@ -139,7 +150,7 @@ const withYardHurdles = (items: readonly RenderQueueItem[], input: ObjectRenderF
   let all = yardHurdleItems.get(props);
   if (all === undefined) {
     all = props.hurdles.map(piece => ({ kind: "zone_prop" as const, id: piece.id, depth: piece.depth, anchorTx: Math.round(piece.anchor.x),
-      prop: { kind: piece.kind === "corner" ? "hurdle_end_corner" as const : "hurdle_straight" as const, x: piece.anchor.x, y: piece.anchor.y,
+      prop: { kind: hurdleAssetKey(piece), x: piece.anchor.x, y: piece.anchor.y,
         flip: piece.mirror, scale: 1, id: piece.id, depth: piece.depth } }))
       .sort(compareObjectRenderItems);
     yardHurdleItems.set(props, all);

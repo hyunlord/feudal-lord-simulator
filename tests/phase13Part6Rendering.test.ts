@@ -1,8 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { preloadFarmAssets } from "../src/render/farmAssets";
-import { farmMaterialTiles } from "../src/render/farmSoilTexture";
 import type { Walker } from "../src/agents/walker.types";
 import type { Building } from "../src/content/buildingConfig";
 import type { BuildingConstructionSite } from "../src/economy/construction";
@@ -379,68 +377,15 @@ test("outlines view mode keeps fill and stroke silhouettes at thirty five percen
 });
 
 
-test("real object queue draws every farm soil before any crops without per-item soil redraw", async () => {
-  const originalImage = Object.getOwnPropertyDescriptor(globalThis, "Image");
-  const originalCanvas = Object.getOwnPropertyDescriptor(globalThis, "OffscreenCanvas");
-  let allocations = 0;
-  let rasterDraws = 0;
-  class RasterCanvas {
-    src = "";
-    constructor(readonly width: number, readonly height: number) { allocations += 1; }
-    getContext() {
-      return { ...loggedContext(), drawImage: (image: object) => {
-        this.src = `buffer:${String(Reflect.get(image, "src"))}`;
-        rasterDraws += 1;
-      } };
-    }
-  }
-  class LoadedImage {
-    naturalWidth = 0;
-    naturalHeight = 0;
-    onload: (() => void) | null = null;
-    onerror: (() => void) | null = null;
-    value = "";
-    get src() { return this.value; }
-    set src(value: string) {
-      this.value = value;
-      this.naturalWidth = value.includes("/layers/") ? 1254 : 1774;
-      this.naturalHeight = value.includes("/layers/") ? 1254 : 887;
-      this.onload?.();
-    }
-  }
-  Object.defineProperty(globalThis, "Image", { configurable: true, value: LoadedImage });
-  Object.defineProperty(globalThis, "OffscreenCanvas", { configurable: true, value: RasterCanvas });
-  try {
-    await preloadFarmAssets();
-    const farms = [0, 2].map(tx => ({ ...building(`farm-${tx}`), kind: "wheat_farm" as const,
-      tx, ty: 0, productionProgress: 35 }));
-    const context = loggedContext();
-    const render = (target: LoggedContext) => drawObjectRenderItems(target, {
-      state: state({ buildings: farms }), tiles: [],
-      range: { minTx: 0, minTy: 0, maxTx: 4, maxTy: 2 }, zoom: 1,
-      camera: { zoom: 1, panX: 0, panY: 0 }, dpr: 1,
-      viewport: { width: 400, height: 300 },
-      objectRenderItems: farms.map(farm => ({ kind: "building", id: farm.id,
-        building: farm, depth: farm.tx, anchorTx: farm.tx })),
-    });
-    render(context);
-    const draws = context.calls.filter(call => call.startsWith("drawImage:"));
-    const soilCount = farms.reduce((sum, farm) => sum + farmMaterialTiles(farm).length, 0);
-    assert.equal(draws.length, soilCount + 2);
-    assert.ok(draws.slice(0, soilCount).every(call => call.includes("buffer:/assets/buildings/historical-farm/layers/soil_loam-v1.png")));
-    assert.ok(draws.slice(soilCount).every(call => call.includes("buffer:buffer:/assets/buildings/historical-farm/layers/crop_ripe-v1.png")));
-    const coldAllocations = allocations;
-    const coldRasterDraws = rasterDraws;
-    assert.equal(coldRasterDraws, 4 + 288);
-    const warmContext = loggedContext();
-    render(warmContext);
-    assert.deepEqual(warmContext.calls.filter(call => call.startsWith("drawImage:")), draws);
-    assert.equal(allocations, coldAllocations);
-    assert.equal(rasterDraws, coldRasterDraws);
-  } finally {
-    if (originalImage) Object.defineProperty(globalThis, "Image", originalImage);
-    else Reflect.deleteProperty(globalThis, "Image");
-    if (originalCanvas) Object.defineProperty(globalThis, "OffscreenCanvas", originalCanvas);
-    else Reflect.deleteProperty(globalThis, "OffscreenCanvas");
-  }
+test("a retired wheat farm in the object queue draws nothing (C1f: the 2x2 farm art left the runtime)", () => {
+  const farms = [0, 2].map(tx => ({ ...building(`farm-${tx}`), kind: "wheat_farm" as const, tx, ty: 0, productionProgress: 35 }));
+  const context = loggedContext();
+  drawObjectRenderItems(context, {
+    state: state({ buildings: farms }), tiles: [],
+    range: { minTx: 0, minTy: 0, maxTx: 4, maxTy: 2 }, zoom: 1,
+    camera: { zoom: 1, panX: 0, panY: 0 }, dpr: 1,
+    viewport: { width: 400, height: 300 },
+    objectRenderItems: farms.map(farm => ({ kind: "building", id: farm.id, building: farm, depth: farm.tx, anchorTx: farm.tx })),
+  });
+  assert.deepEqual(context.calls.filter(call => call.startsWith("drawImage:")), []);
 });

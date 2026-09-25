@@ -12,6 +12,7 @@ import {
   type LoadStatus,
 } from "../src/render/worldAssets";
 import { WORLD_ASSET_KEYS } from "../scripts/worldAssetContracts";
+import { RETIRED_WORLD_ASSET_KEYS } from "../scripts/worldAssetManifest";
 
 const runAssetScenario = (
   mode: "load" | "error" | "constructor_throw" | "src_throw",
@@ -140,7 +141,8 @@ describe("browser world asset registry", () => {
     };
     const targetEntries = [
       ...["house_l0", "house_l1", "well"].map((key) => ({ key, assetKey: key, targetRatio: 1.8 })),
-      ...["mill", "sawmill", "logging_camp", "masonry", "quarry", "wheat_farm"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
+      // wheat_farm left the published manifest with the retired building (C1f; RETIRED_WORLD_ASSET_KEYS).
+      ...["mill", "sawmill", "logging_camp", "masonry", "quarry"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
       ...["house_l2", "house_l3", "house_l4"].map((key) => ({ key, assetKey: key, targetRatio: 2.6 })),
       ...["barn", "storehouse", "market"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
       { key: "granary", assetKey: "barn", targetRatio: 2.2 },
@@ -216,7 +218,7 @@ describe("browser world asset registry", () => {
     const result = runAssetScenario("load");
 
     assert.equal(result["shared"], true);
-    assert.equal(result["created"], WORLD_ASSET_KEYS.length);
+    assert.equal(result["created"], WORLD_ASSET_KEYS.length - RETIRED_WORLD_ASSET_KEYS.length);
     assert.equal(result["loadingStatus"], "loading");
     assert.equal(result["spriteReady"], true);
     assert.equal(result["unknownSprite"], true);
@@ -227,7 +229,7 @@ describe("browser world asset registry", () => {
     assert.equal(Array.isArray(result["canvasEvents"]), true);
     const canvasEvents = result["canvasEvents"];
     if (!Array.isArray(canvasEvents)) throw new Error("canvasEvents must be an array");
-    assert.equal(canvasEvents.length, 23);
+    assert.equal(canvasEvents.length, 22); // 23 before C1f: the retired wheat farm sprite is no longer rasterized
     assert.deepEqual(
       canvasEvents.filter((event) =>
         isRecord(event) && event["width"] === 46 && event["height"] === 58
@@ -254,7 +256,7 @@ describe("browser world asset registry", () => {
     const result = runAssetScenario("error");
 
     assert.equal(result["shared"], true);
-    assert.equal(result["created"], WORLD_ASSET_KEYS.length);
+    assert.equal(result["created"], WORLD_ASSET_KEYS.length - RETIRED_WORLD_ASSET_KEYS.length);
     assert.equal(result["spriteReady"], false);
     assert.equal(result["unknownSprite"], true);
     assert.equal(result["houseStatus"], "missing");

@@ -7,6 +7,7 @@ import { zonesOf } from "../zones/zoneEdits";
 import { arableStripStates } from "../zones/arableStrips";
 import { arableField, type ArableField, type FurrowStamp } from "../world/boundary/arableFields";
 import { ZONE_VARIANTS, type ZoneAssetKey, type ZonePropKind } from "./zoneAssetManifest";
+import type { HurdleAssetKey } from "./hurdleArt";
 import { burgageParcels } from "../zones/zoneFillAgent";
 import type { Zone, ZoneKind } from "../zones/zone.types";
 
@@ -32,7 +33,7 @@ export type ZoneLayerZone = { readonly id: string; readonly kind: ZoneKind; read
 export type ParcelEdge = { readonly a: BoundaryPoint; readonly b: BoundaryPoint; readonly built: boolean };
 export type FrontageMark = { readonly cell: TileCoordinate; readonly toward: BoundaryPoint; readonly built: boolean };
 export type ZoneProp = {
-  readonly kind: ZonePropKind | "hurdle_straight" | "hurdle_end_corner";
+  readonly kind: ZonePropKind | HurdleAssetKey;
   /** Ground anchor in tile-centre coordinates. */
   readonly x: number; readonly y: number;
   readonly flip: boolean; readonly scale: number; readonly id: string;
@@ -49,6 +50,8 @@ export const VARIANT_REPEAT_RADIUS = 4;
  * tiles while the family has 5 trees; once Wave 4c brings it to 9 or more, within 2 tiles.
  */
 const treeRepeatRadius = (variants: number): number => variants >= 9 ? 2 : 1.5;
+/** Same-species trees are kept apart as far as this where the family allows (C1f: 9 species). */
+const TREE_SPREAD_RADIUS = 4;
 
 export type ZoneLayer = {
   readonly zones: readonly ZoneLayerZone[];
@@ -169,18 +172,24 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
         if (keep >= (edgeCell(index, label) ? 0.45 : 0.9)) continue;
         const jitter = (salt: number): number => ((boundaryHash(index, state.seed, salt) % 1000) / 1000 - 0.5) * 0.24;
         const x = tx + (ty % 2 === 0 ? -0.2 : 0.2) + jitter(43); const y = ty + jitter(47);
-        // Planting neighbours (membership is row-major, so the ones already placed are west and north).
-        const near = new Set<number>();
-        for (let dy = -2; dy <= 0; dy += 1) for (let dx = -2; dx <= 2; dx += 1) {
+        // Planting neighbours (membership is row-major, so the ones already placed are west and north). A variant used
+        // within treeRepeatRadius is out (FS4); among the rest the one whose nearest same tree within
+        // TREE_SPREAD_RADIUS is farthest wins (C1f, 9 species), ties in hash order.
+        const nearest = new Map<number, number>();
+        for (let dy = -TREE_SPREAD_RADIUS; dy <= 0; dy += 1) for (let dx = -TREE_SPREAD_RADIUS; dx <= TREE_SPREAD_RADIUS; dx += 1) {
           const other = treeVariants.get(`${tx + dx},${ty + dy}`);
           const otherProp = other === undefined ? undefined : props[other >> 4];
-          if (other !== undefined && otherProp !== undefined && Math.hypot(otherProp.x - x, otherProp.y - y) < treeRepeatRadius(family.length)) near.add(other & 15);
+          if (other === undefined || otherProp === undefined) continue;
+          const distance = Math.hypot(otherProp.x - x, otherProp.y - y);
+          if (distance < TREE_SPREAD_RADIUS) nearest.set(other & 15, Math.min(nearest.get(other & 15) ?? Infinity, distance));
         }
         const first = boundaryHash(index, state.seed, 53) % family.length;
-        let variant = first;
+        let variant = first; let best = -1;
         for (let tried = 0; tried < family.length; tried += 1) {
           const option = (first + tried) % family.length;
-          if (!near.has(option)) { variant = option; break; }
+          const gap = nearest.get(option) ?? Infinity;
+          if (gap < treeRepeatRadius(family.length)) continue;
+          if (gap > best) { variant = option; best = gap; }
         }
         treeVariants.set(`${tx},${ty}`, (props.length << 4) | variant);
         props.push({ kind: family[variant] as ZonePropKind, x, y, flip: false, scale: 0.92 + ((hash >>> 10) % 16) / 100, id: `zone-prop:${zone.id}:${index}` });
