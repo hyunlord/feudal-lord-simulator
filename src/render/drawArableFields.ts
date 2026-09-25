@@ -3,9 +3,10 @@ import { RIDGE_PERIOD, RIDGE_ROWS_PER_STRIP, type ArableField } from "../world/b
 import type { BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import { arableStripStates, type ArableStripState } from "../zones/arableStrips";
 import { zonesOf } from "../zones/zoneEdits";
-import { PALETTE, RAMPS } from "../content/palette";
+import { RAMPS } from "../content/palette";
 import { tileToScreen } from "./iso";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { joinStripImages } from "./stripJoin";
 import { withAlpha } from "./style";
 import { ZONE_ASSETS, ZONE_VARIANTS, type ZoneAssetKey } from "./zoneAssetManifest";
 import { zoneAsset, zoneAssetRaster } from "./zoneAssets";
@@ -176,53 +177,7 @@ export function joinRidgeStripsForProof(images: readonly HTMLImageElement[]): Ca
 }
 
 function joinStrips(images: readonly HTMLImageElement[]): CanvasImageSource | null {
-  const width = RIDGE_WIDTH * images.length;
-  const joined = canvas2d(width, RIDGE_HEIGHT);
-  if (joined === null) return images[0] ?? null;
-  images.forEach((image, index) => blit(joined.context, image, 0, 0, RIDGE_WIDTH, RIDGE_HEIGHT, index * RIDGE_WIDTH, 0));
-  images.forEach((left, index) => {
-    const right = images[(index + 1) % images.length] as HTMLImageElement;
-    const join = ((index + 1) * RIDGE_WIDTH) % width;
-    const outgoing = canvas2d(JOIN_FADE * 2, RIDGE_HEIGHT); const incoming = canvas2d(JOIN_FADE * 2, RIDGE_HEIGHT);
-    if (outgoing === null || incoming === null) return;
-    // Each image continued across the join (both wrap on their own), weighted 1 -> 0 and 0 -> 1: summed in
-    // premultiplied space ("lighter") that is a straight crossfade.
-    for (const [target, image] of [[outgoing, left], [incoming, right]] as const) {
-      blit(target.context, image, RIDGE_WIDTH - JOIN_FADE, 0, JOIN_FADE, RIDGE_HEIGHT, 0, 0);
-      blit(target.context, image, 0, 0, JOIN_FADE, RIDGE_HEIGHT, JOIN_FADE, 0);
-    }
-    maskX(outgoing.context, JOIN_FADE * 2, RIDGE_HEIGHT, 1, 0);
-    maskX(incoming.context, JOIN_FADE * 2, RIDGE_HEIGHT, 0, 1);
-    for (const offset of join === 0 ? [width - JOIN_FADE, -JOIN_FADE] : [join - JOIN_FADE]) {
-      joined.context.clearRect(offset, 0, JOIN_FADE * 2, RIDGE_HEIGHT);
-      joined.context.globalCompositeOperation = "lighter";
-      blit(joined.context, outgoing.canvas, 0, 0, JOIN_FADE * 2, RIDGE_HEIGHT, offset, 0);
-      blit(joined.context, incoming.canvas, 0, 0, JOIN_FADE * 2, RIDGE_HEIGHT, offset, 0);
-      joined.context.globalCompositeOperation = "source-over";
-    }
-  });
-  return joined.canvas;
-}
-
-function canvas2d(width: number, height: number): { canvas: HTMLCanvasElement; context: CanvasRenderingContext2D } | null {
-  const canvas = document.createElement("canvas");
-  canvas.width = width; canvas.height = height;
-  const context = canvas.getContext("2d");
-  return context === null ? null : { canvas, context };
-}
-
-function blit(context: CanvasRenderingContext2D, image: CanvasImageSource, sx: number, sy: number, width: number, height: number, dx: number, dy: number): void {
-  drawCroppedWorldSprite(context, image, { x: sx, y: sy, width, height }, { x: dx, y: dy, width, height }, false, false);
-}
-
-/** Multiplies alpha by a linear ramp along x, one texel column at a time (the render guards keep gradients out). */
-function maskX(context: CanvasRenderingContext2D, width: number, height: number, from: number, to: number): void {
-  context.globalCompositeOperation = "destination-in";
-  for (let column = 0; column < width; column += 1) {
-    context.fillStyle = withAlpha(PALETTE.ink, from + (to - from) * (column + 0.5) / width);
-    context.beginPath(); context.rect(column, 0, 1, height); context.fill();
-  }
-  context.globalCompositeOperation = "source-over";
+  return joinStripImages(images, RIDGE_WIDTH, RIDGE_HEIGHT, JOIN_FADE);
 }
 
 /** Tests and proof tools: one row's texture period in tiles. */

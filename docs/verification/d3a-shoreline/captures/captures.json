@@ -1,0 +1,185 @@
+{
+  "walkers": "hidden",
+  "rows": [
+    {
+      "file": "seed2-lake-z1.00-before.jpg",
+      "source": "seed 2 final (fixture)",
+      "tile": [
+        50,
+        42
+      ],
+      "zoom": 1,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "seed2-lake-z1.00-after.jpg",
+      "source": "seed 2 final (fixture)",
+      "tile": [
+        50,
+        42
+      ],
+      "zoom": 1,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "seed2-lake-z0.60-before.jpg",
+      "source": "seed 2 final (fixture)",
+      "tile": [
+        50,
+        42
+      ],
+      "zoom": 0.6,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "seed2-lake-z0.60-after.jpg",
+      "source": "seed 2 final (fixture)",
+      "tile": [
+        50,
+        42
+      ],
+      "zoom": 0.6,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "seed2-bridge-z1.00-before.jpg",
+      "source": "seed 2 bridge (real-input road across the west water)",
+      "tile": [
+        5,
+        46
+      ],
+      "zoom": 1,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "seed2-bridge-z1.00-after.jpg",
+      "source": "seed 2 bridge (real-input road across the west water)",
+      "tile": [
+        5,
+        46
+      ],
+      "zoom": 1,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "seed2-bridge-z0.60-before.jpg",
+      "source": "seed 2 bridge (real-input road across the west water)",
+      "tile": [
+        5,
+        46
+      ],
+      "zoom": 0.6,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "seed2-bridge-z0.60-after.jpg",
+      "source": "seed 2 bridge (real-input road across the west water)",
+      "tile": [
+        5,
+        46
+      ],
+      "zoom": 0.6,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "river-z1.00-before.jpg",
+      "source": "24-lot town river with two real-input bridges",
+      "tile": [
+        22,
+        7
+      ],
+      "zoom": 1,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "river-z1.00-after.jpg",
+      "source": "24-lot town river with two real-input bridges",
+      "tile": [
+        22,
+        7
+      ],
+      "zoom": 1,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "river-z0.60-before.jpg",
+      "source": "24-lot town river with two real-input bridges",
+      "tile": [
+        22,
+        7
+      ],
+      "zoom": 0.6,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "river-z0.60-after.jpg",
+      "source": "24-lot town river with two real-input bridges",
+      "tile": [
+        22,
+        7
+      ],
+      "zoom": 0.6,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "seed2-bridge-z2.00-closeup-before.jpg",
+      "source": "seed 2 bridge",
+      "tile": [
+        5,
+        46
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "seed2-bridge-z2.00-closeup-after.jpg",
+      "source": "seed 2 bridge",
+      "tile": [
+        5,
+        46
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "river-x-bridge-z2.00-closeup-before.jpg",
+      "source": "24-lot river x bridge",
+      "tile": [
+        24,
+        8
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "river-x-bridge-z2.00-closeup-after.jpg",
+      "source": "24-lot river x bridge",
+      "tile": [
+        24,
+        8
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4213/"
+    },
+    {
+      "file": "river-y-bridge-z2.00-closeup-before.jpg",
+      "source": "24-lot river y bridge",
+      "tile": [
+        17,
+        5
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4214/"
+    },
+    {
+      "file": "river-y-bridge-z2.00-closeup-after.jpg",
+      "source": "24-lot river y bridge",
+      "tile": [
+        17,
+        5
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4213/"
+    }
+  ]
+}

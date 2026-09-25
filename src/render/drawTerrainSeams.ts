@@ -48,6 +48,7 @@ export function drawTerrainTransitions(
   zoom: number,
   terrainPatterns?: TerrainPatternAssets,
   forestFringe = true,
+  shoreline = true,
 ): void {
   for (const neighbour of orthogonalNeighbors(tile)) {
     const neighbourTile = getTile(state, neighbour);
@@ -62,6 +63,8 @@ export function drawTerrainTransitions(
       }
       continue;
     }
+    // The curved shoreline (D3a) replaces the per-tile shore marks on the V2 ground.
+    if (seam === "shoreline" && !shoreline) continue;
     const count = terrainSeamMarkCount(seam, tile.tx, tile.ty, dx, dy, state.seed);
     context.fillStyle = seamColor(seam);
     traceSeam(context, seam, tileCenter(tile), dx, dy, count);

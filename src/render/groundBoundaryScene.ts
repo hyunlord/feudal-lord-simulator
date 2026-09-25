@@ -13,6 +13,8 @@ import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingGrounds, type BuildingApron, type BuildingGrounds } from "../world/boundary/buildingGrounds";
 import { distanceToSegment } from "../world/boundary/boundaryGeometry";
 import { yardProps, type YardProps } from "../world/boundary/yardProps";
+import { shoreline, type Shoreline } from "../world/boundary/shoreline";
+import { bridgeAt, type BridgeSpan } from "../world/bridges";
 
 // Everything the V2 ground pass draws, derived once per ground change and split into 8x8-tile chunks.
 //
@@ -28,7 +30,8 @@ import { yardProps, type YardProps } from "../world/boundary/yardProps";
 //     wall (palisade signature) and the ribbon width. Yard props (C1e: croft beds, hurdles) follow the yards and aprons
 //     and which buildings are houses (building signature). Arable ridge layouts (C1e) follow zone membership and the
 //     tiles; the crop state of each strip is read every frame and enters only the chunk content key of the chunks that
-//     draw that strip (drawTerrainBoundaryV2), since it moves with farm production.
+//     draw that strip (drawTerrainBoundaryV2), since it moves with farm production. The shoreline (D3a) follows the
+//     water cells (tiles) and the bridges (road tiles on water: tiles, plus the palisade signature that bridgeAt reads).
 // (b) Left out on purpose: walkers, stocks, ticks, crop growth, house levels, construction progress. None of them is
 //     read by road chains, forest or field outlines (crop state only changes what is drawn inside a field, which
 //     stays in the live object pass), so they cannot change a scene.
@@ -53,6 +56,8 @@ export type GroundBoundaryScene = {
   /** Building yards and aprons (C1d), and the croft beds and hurdles in house yards (C1e). */
   readonly grounds: BuildingGrounds;
   readonly yardProps: YardProps;
+  /** Curved water edge, shallow band decals and bridge ends (D3a). */
+  readonly shore: Shoreline;
   readonly forest: ForestBoundary;
   readonly fields: readonly FieldCluster[];
   readonly chunks: readonly GroundChunkPlan[];
@@ -72,6 +77,9 @@ export type GroundChunkPlan = {
   /** Yards and aprons whose bounds reach the chunk. */
   readonly yards: readonly number[];
   readonly aprons: readonly number[];
+  /** Shoreline loops that reach the chunk, and whether the chunk otherwise lies inside water (odd enclosing loops). */
+  readonly waterLoops: readonly number[];
+  readonly waterParity: boolean;
   /** Croft beds (C1e) and arable strip runs (zone layer `arableBands`) whose bounds reach the chunk. */
   readonly beds: readonly number[];
   readonly arableBands: readonly number[];
@@ -144,12 +152,13 @@ export function groundBoundarySceneStats(): { readonly builds: number; readonly 
 }
 
 export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
-  ground?: Pick<GroundBoundaryScene, "roads" | "forest" | "fields" | "ribbons" | "grounds" | "yardProps" | "chunks">): GroundBoundaryScene {
+  ground?: Pick<GroundBoundaryScene, "roads" | "forest" | "fields" | "ribbons" | "grounds" | "yardProps" | "shore" | "chunks">): GroundBoundaryScene {
   const started = typeof performance === "undefined" ? 0 : performance.now();
   const tiles = reverseInput ? [...state.tiles].reverse() : state.tiles;
   const grid = { width: state.width, height: state.height, tiles };
   const roads = ground?.roads ?? roadCenterlineGraph({ ...grid, palisade: state.palisade });
   const forest = ground?.forest ?? forestBoundary(grid, state.seed);
+  const shore = ground?.shore ?? shoreline({ ...grid, seed: state.seed, bridges: bridgeSpans(state, tiles) });
   const farms = state.buildings.filter(building => building.kind === "wheat_farm")
     .map(farm => ({ id: farm.id, tx: farm.tx, ty: farm.ty, ...buildingFootprint(farm) }));
   const fields = ground?.fields ?? fieldClusters(grid, reverseInput ? [...farms].reverse() : farms);
@@ -179,6 +188,7 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
   const bedBounds = yard.beds.map(bed => bed.bounds);
   const arableBandBounds = zones.arableBands.map(band => band.bounds);
 
+  const waterBounds = shore.loops.map(loop => loop.bounds);
   const forestBounds = forest.loops.map((loop, index) => boundsOf([...loop.smoothed, ...(forest.decals[index] ?? []).map(decal => decal.anchor)], PRIMITIVE_MARGIN));
   const fieldBounds = fields.map(field => boundsOf([...field.loops.flatMap(loop => loop.smoothed), ...field.decals.map(decal => decal.anchor)], PRIMITIVE_MARGIN));
   const chainBounds = roads.chains.map(chain => boundsOf(chain.centreline, PRIMITIVE_MARGIN));
@@ -203,7 +213,7 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
       chunks.push({ ...previous, zoneIndexes, zoneChains, arableBands, groundKey: hashNumbers([previous.groundBaseKey, ...zonePart(box, zoneIndexes, zoneChains)]) });
     }
     const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
-    return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, yardProps: yard, forest, fields, chunks, buildMs };
+    return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, yardProps: yard, shore, forest, fields, chunks, buildMs };
   }
   for (let cy = 0; cy < rows; cy += 1) for (let cx = 0; cx < columns; cx += 1) {
     const box = chunkTileBounds(cx, cy);
@@ -213,6 +223,9 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
     const centre = { x: (box.left + box.right) / 2, y: (box.top + box.bottom) / 2 };
     // Beyond the map edge counts as forest (the mask's outside value), so a point enclosed by no loop is forest.
     const enclosing = 1 + forest.loops.filter((loop, index) => !forestLoops.includes(index) && pointInPolygon(centre, loop.smoothed)).length;
+    const waterLoops = hits(waterBounds);
+    // Beyond the map counts as land for water: a chunk inside water without an outline in it lies in an odd number of loops.
+    const waterParity = shore.loops.filter((loop, index) => !waterLoops.includes(index) && pointInPolygon(centre, loop.smoothed)).length % 2 === 1;
     const fieldIndexes = hits(fieldBounds);
     const chains = hits(chainBounds);
     const fixedPoints = hits(fixedBounds);
@@ -232,6 +245,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
     }
     const groundBaseKey = hashNumbers([
       state.seed, enclosing % 2, ...tileValues,
+      // Water (D3a): the outline, shallow decals and bridge lock of every shore loop the chunk draws.
+      ...(waterLoops.length === 0 && !waterParity ? [] : [-10, waterParity ? 1 : 0, ...waterLoops.map(index => shore.loops[index]?.drawHash ?? 0)]),
       ...forestLoops.flatMap(index => [forest.loops[index]?.hash ?? 0, forestDecalHashes[index] ?? 0]),
       ...fieldIndexes.flatMap(index => [fields[index]?.hash ?? 0, fieldDecalHashes[index] ?? 0]),
       // Yards and aprons (C1d) enter with their full hashes, like zones; a chunk without any keeps its key.
@@ -251,12 +266,23 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
       ...plazas.flatMap(index => [roads.plazaLoops[index]?.hash ?? 0, roads.plazaLoops[index]?.material === "stone" ? 1 : 0]),
     ]);
     chunks.push({
-      cx, cy, forestLoops, forestParity: enclosing % 2 === 1, fieldClusters: fieldIndexes, zoneIndexes, zoneChains, yards, aprons, beds, arableBands, chains, fixedPoints, plazas,
+      cx, cy, forestLoops, forestParity: enclosing % 2 === 1, waterLoops, waterParity, fieldClusters: fieldIndexes, zoneIndexes, zoneChains, yards, aprons, beds, arableBands, chains, fixedPoints, plazas,
       groundKey, groundBaseKey, roadKey, hasRoads: chains.length + fixedPoints.length + plazas.length > 0,
     });
   }
   const buildMs = typeof performance === "undefined" ? 0 : performance.now() - started;
-  return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, yardProps: yard, forest, fields, chunks, buildMs };
+  return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, yardProps: yard, shore, forest, fields, chunks, buildMs };
+}
+
+/** Every bridge span once (bridgeAt lists it for each of its water tiles), in tile order. */
+function bridgeSpans(state: GameState, tiles: readonly Tile[]): BridgeSpan[] {
+  const spans = new Map<string, BridgeSpan>();
+  for (const tile of tiles) {
+    if (tile.terrain !== "water" || !tile.hasRoad) continue;
+    const span = bridgeAt(state, tile);
+    if (span !== null) spans.set(span.banks.map(bank => `${bank.tx},${bank.ty}`).join("|"), span);
+  }
+  return [...spans.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([, span]) => span);
 }
 
 /** Shoulder tufts stay this far off an apron: a tuft crop (40 source px at 0.8) reaches ~0.2 tile from its anchor. */

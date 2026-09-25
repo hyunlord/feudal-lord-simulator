@@ -1,0 +1,115 @@
+{
+  "url": "http://127.0.0.1:4213/",
+  "log": [
+    {
+      "scene": "seed2-bridge",
+      "source": "C1e seed 2 arable scene (C1b natural snapshot + C1d / C1e real-input play)",
+      "input": "real mouse input (road tool drag)",
+      "timberBefore": 0,
+      "timberAfter": 0,
+      "steps": [
+        {
+          "drag": [
+            [
+              5,
+              44
+            ],
+            [
+              5,
+              48
+            ]
+          ],
+          "bridgeTiles": [
+            [
+              5,
+              45
+            ],
+            [
+              5,
+              46
+            ],
+            [
+              5,
+              47
+            ]
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "scene": "river-bridges",
+      "source": "24-lot town fixture (fixtures/determinism/seed1 final state)",
+      "input": "real mouse input (road tool drag)",
+      "timberBefore": 0,
+      "timberAfter": 0,
+      "steps": [
+        {
+          "drag": [
+            [
+              22,
+              8
+            ],
+            [
+              26,
+              8
+            ]
+          ],
+          "bridgeTiles": [
+            [
+              23,
+              8
+            ],
+            [
+              24,
+              8
+            ],
+            [
+              25,
+              8
+            ]
+          ]
+        },
+        {
+          "drag": [
+            [
+              17,
+              3
+            ],
+            [
+              17,
+              7
+            ]
+          ],
+          "bridgeTiles": [
+            [
+              17,
+              4
+            ],
+            [
+              17,
+              5
+            ],
+            [
+              17,
+              6
+            ],
+            [
+              23,
+              8
+            ],
+            [
+              24,
+              8
+            ],
+            [
+              25,
+              8
+            ]
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}
