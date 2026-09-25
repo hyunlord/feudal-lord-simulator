@@ -1,7 +1,7 @@
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfig';
 import { availableStock } from '../economy/storage';
-import { canPlaceBuilding, placementSpendableResource } from '../world/placement';
+import { canPlaceBuildingBeforeRoad, placementSpendableResource } from '../world/placement';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { canStaffRecurringGranary } from './autoplayRecurringDeliveryStaffing';
@@ -40,7 +40,7 @@ export function foodTransportGranaryAction(state: GameState): AutoplayAction {
   if (mills.length === 0) return NONE;
   const farms = state.buildings.filter(b => b.kind === 'farmstead' && b.workers >= BUILDING_CONFIG_BY_KIND.farmstead.workersRequired);
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, 'granary', tile)
-    && canPlaceBuilding(state, 'granary', tile.tx, tile.ty).ok)
+    && canPlaceBuildingBeforeRoad(state, 'granary', tile.tx, tile.ty).ok)
     .map(tile => ({ tile, proximity: Math.min(...mills.map(m => Math.abs(m.tx - tile.tx) + Math.abs(m.ty - tile.ty))) }))
     .sort((a, b) => a.proximity - b.proximity || a.tile.ty - b.tile.ty || a.tile.tx - b.tile.tx);
   let best: { action: AutoplayAction; improvement: number; homes: number; roads: number } | null = null;

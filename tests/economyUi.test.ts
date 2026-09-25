@@ -191,7 +191,8 @@ test("the onboarding task list replaces the distant population objective in the 
   assert.ok(statusIndex >= 0 && statusIndex < consoleIndex);
   assert.ok(railIndex >= 0 && railIndex < consoleIndex);
   assert.ok(tasksIndex > railIndex && tasksIndex < consoleIndex);
-  assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
+  // FIX-1: the opening well already serves the village at tick 0; the old first frame showed a false well warning.
+  assert.match(markup.slice(statusIndex, consoleIndex), /정착지는 안정적입니다/);
   assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
   assert.match(markup.slice(tasksIndex), /길을 놓아 오두막을 이으세요/);
   assert.doesNotMatch(markup.slice(tasksIndex), /숲 옆에 벌목소를 지으세요/);
@@ -251,9 +252,10 @@ test("settlement guidance priority follows the exact Phase 4F blocker order", ()
     breadStock: 1,
     lastServicedTick: 0,
   }));
+  // FIX-1: a stable town also holds a season of stored food.
   const granary = {
     ...building({ id: "granary", kind: "granary", tx: 2, ty: 2, workers: 2 }),
-    inventory: {},
+    inventory: { bread: 100 },
   };
   const farm = building({ id: "farm", kind: "wheat_farm", tx: 3, ty: 3, workers: 1 });
   const openingHouse = DEFAULT_GAME_STATE.buildings[0];

@@ -1,8 +1,14 @@
 # 현재 상태
 
-갱신: 2026-09-25(BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
+
+- **FIX-1 판정 진실성 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, UI 변경 없음): [판정 진실성 명세](design/placement-status-truth.md) PT-1~PT-4, [보고서](verification/fix1-truth/REPORT.md), 결정 FX1~FX3.
+  - 도로가 필요한 건물은 도로가 닿아야 설치된다(거부 이유 `도로 연결 없음`). 체크리스트의 ✗와 설치 판정이 같아졌다.
+  - 새 게임 첫 화면부터 오프닝 우물 공급이 참이다(거짓 "우물이 필요합니다" 제거).
+  - '안정'에는 식량 비축 한 계절(1,000틱)이 필요하다. 미달이면 `식량 비축 부족`.
+  - 가드레일 5/5, 다섯 seed 최종 상태가 기준선 `baseline-c96e6ed`와 같다(봇은 원래 도로 없는 자리에 짓지 않았다).
 
 - **BOT-1 자동 성장 복구 — 관문 통과(가드레일 5/5, 3회차), 본선 병합**(Claude Code, 봇만, 규칙 파일 diff 0): [자동 성장 복구 명세](design/autoplay-recovery.md) AR-1~AR-7, [보고서](verification/bot1-autoplay/REPORT.md), 결정 BT1~BT8. 새 기준선 [`seeds/baseline-c96e6ed.json`](../seeds/baseline-c96e6ed.json).
   - `granary_gap`(성 안 곡창 공백), `market_gap`(시장 반경 밖 집), `market_relocation`(상한에서 닿지 않는 집 헐고 반경 안에 다시), `timber_demand`(기다리는 목재 대비 생산 부족 → 목재 시설), `interior_plots`(남은 필지보다 성 안 집 자리를 적게 남기는 배치 거부, 성 안 자리부터 집 찾기).
@@ -99,6 +105,7 @@
 
 ## 다음 작업
 
+- **MOVE-1**: 사용자가 다음 지시서를 보낸다. FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H)은 UX-1 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
 

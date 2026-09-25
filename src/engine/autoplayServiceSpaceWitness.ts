@@ -4,7 +4,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfi
 import { buildingFootprint, houseLotArea } from '../geometry/buildingFootprint';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { allocateHouseServices, HOUSEHOLD_SERVICE_CONFIG } from '../population/serviceAllocation';
-import { canPlaceBuilding } from '../world/placement';
+import { canPlaceBuildingBeforeRoad } from '../world/placement';
 import type { GameState } from './engine.types';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
 import { marketRoadService } from './marketService';
@@ -31,7 +31,7 @@ function candidatePads(state: GameState, home: Building, kind: UrbanService, rea
       tx <= Math.min(state.width - definition.width, home.tx + homeSize.width - 1 + definition.serviceRadius); tx++) {
       const candidate = serviceCandidate(kind, { tx, ty }, `service-space-${kind}`);
       if (buildingFootprintDistance(home, candidate) > definition.serviceRadius || !hasAutoplayBuildingClearance(state, kind, candidate) || !reachable(candidate)) continue;
-      const placement = canPlaceBuilding(future, kind, tx, ty);
+      const placement = canPlaceBuildingBeforeRoad(future, kind, tx, ty);
       if (placement.ok || placement.reason === 'insufficient_materials') candidates.push(candidate);
     }
   }

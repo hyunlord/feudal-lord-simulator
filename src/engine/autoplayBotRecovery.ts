@@ -10,7 +10,7 @@ import { housingLotCount } from '../population/housing';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { buildingRoadAccessTiles } from './routing';
 import { allocateHouseServices, type ServiceAllocation } from '../population/serviceAllocation';
-import { canPlaceBuilding, isBuildingUnlocked, placementSpendableResource } from '../world/placement';
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked, placementSpendableResource } from '../world/placement';
 import { householdServices } from './householdServices';
 import { marketRoadService } from './marketService';
 import { serviceAccessDistances } from './autoplayServiceAccess';
@@ -217,14 +217,14 @@ export function marketGapAction(state: GameState, collector?: BotRecoveryCollect
   const candidates = state.tiles.flatMap(tile => {
     const candidate = serviceCandidate('market', tile, 'autoplay-market-gap');
     if (!gap.some(home => buildingFootprintDistance(home, candidate) <= definition.serviceRadius)
-      || !hasAutoplayBuildingClearance(state, 'market', tile) || !canPlaceBuilding(state, 'market', tile.tx, tile.ty).ok
+      || !hasAutoplayBuildingClearance(state, 'market', tile) || !canPlaceBuildingBeforeRoad(state, 'market', tile.tx, tile.ty).ok
       || !preservesAutoplayWallSpace(state, 'market', tile)) return [];
     return [candidate];
   });
   const roadDistance = serviceAccessDistances(state);
   const ranked = candidates.flatMap(candidate => {
     const distance = roadDistance(candidate);
-    if (!Number.isFinite(distance) || !hasConnectedConstructionRoute(state, candidate)) return [];
+    if (!Number.isFinite(distance) || !canPlaceBuilding(state, 'market', candidate.tx, candidate.ty).ok || !hasConnectedConstructionRoute(state, candidate)) return [];
     const gain = marketGain(state, current, gap, candidate);
     return gain === null || gain === 0 ? [] : [{ candidate, gain, distance }];
   }).sort((a, b) => b.gain - a.gain || a.distance - b.distance || a.candidate.ty - b.candidate.ty || a.candidate.tx - b.candidate.tx);

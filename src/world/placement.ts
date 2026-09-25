@@ -19,6 +19,7 @@ import { getTile, isInBounds, type TileCoordinate } from "./grid";
 import type { Tile, WorldView } from "./world.types";
 import { palisadePathHasBuildingClearance, type PalisadeFootprint } from "./palisadeGeometry";
 import type { WallBoundary } from "./wallTraversal";
+import { canTraverseRoadBoundary } from "./bridges";
 
 export enum PlacementFailure {
   occupied = "occupied",
@@ -48,7 +49,7 @@ type ResourceWorldView = WorldView & {
   readonly constructionSites?: readonly ConstructionSite[];
   readonly era?: Era;
   readonly scenarioId?: string;
-  readonly palisade?: Pick<WallBoundary, "segments"> | null;
+  readonly palisade?: WallBoundary | null;
 };
 
 const ERA_STAGE_INDEX = {
@@ -146,7 +147,39 @@ export function hasBuildingWallClearance(world: ResourceWorldView, footprint: Pa
   );
 }
 
+/**
+ * FIX-1: a building that needs a road (`requiresRoad`) is placed only where one of its footprint's edge tiles is a
+ * road it can reach across the wall line (as routing's `buildingRoadAccessTiles`, the placement checklist's "도로 연결"). Checked
+ * after every other rule, so `needs_road` means the site is legal once a road reaches it.
+ */
 export function canPlaceBuilding(
+  world: ResourceWorldView,
+  kind: BuildingKind,
+  tx: number,
+  ty: number,
+): PlacementResult {
+  const site = canPlaceBuildingBeforeRoad(world, kind, tx, ty);
+  if (!site.ok || !BUILDING_CONFIG_BY_KIND[kind].requiresRoad) return site;
+  return hasFootprintRoadAccess(world, kind, tx, ty) ? site : { ok: false, reason: PlacementFailure.needs_road };
+}
+
+/** A road on a tile edge-adjacent to the footprint, reachable across the wall line (same test as routing's access tiles). */
+function hasFootprintRoadAccess(world: ResourceWorldView, kind: BuildingKind, tx: number, ty: number): boolean {
+  const { width, height } = BUILDING_CONFIG_BY_KIND[kind];
+  const edges: TileCoordinate[] = [];
+  for (let dx = 0; dx < width; dx += 1) edges.push({ tx: tx + dx, ty: ty - 1 }, { tx: tx + dx, ty: ty + height });
+  for (let dy = 0; dy < height; dy += 1) edges.push({ tx: tx - 1, ty: ty + dy }, { tx: tx + width, ty: ty + dy });
+  return edges.some(road => getTile(world, road)?.hasRoad === true && canTraverseRoadBoundary(world, {
+    tx: Math.max(tx, Math.min(road.tx, tx + width - 1)),
+    ty: Math.max(ty, Math.min(road.ty, ty + height - 1)),
+  }, road));
+}
+
+/**
+ * Every placement rule except road access: the site is free, legal and affordable. Planners that lay the road first
+ * (the advisor's road-first searches, future-layout proofs) ask this.
+ */
+export function canPlaceBuildingBeforeRoad(
   world: ResourceWorldView,
   kind: BuildingKind,
   tx: number,

@@ -6,7 +6,7 @@ import { computePalisadeProposalForState, palisadeCoreFootprintsForState, palisa
 import { confirmPalisadeProclamation } from '../src/engine/palisade';
 import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from '../src/engine/autoplayWallSpace';
-import { canPlaceBuilding } from '../src/world/placement';
+import { canPlaceBuildingBeforeRoad } from '../src/world/placement';
 import { computePalisadeProposal, palisadePathEnclosesFootprints, palisadePathHasBuildingClearance, validatePalisadeCandidate } from '../src/world/palisadeGeometry';
 
 test('default wall encloses the living core while excluding the shoreline extraction branch', () => {
@@ -85,7 +85,7 @@ test('the first wall chooses a shorter valid living perimeter in a prepared town
 test('a shorter proposal does not turn a blocked opening into an autoplay food exclusion', () => {
   const state = createGrowthOpening(2).state;
   const candidate = { tx: 35, ty: 35 };
-  assert.equal(canPlaceBuilding(state, 'farmstead', candidate.tx, candidate.ty).ok, true);
+  assert.equal(canPlaceBuildingBeforeRoad(state, 'farmstead', candidate.tx, candidate.ty).ok, true);
   assert.equal(palisadeCoreProposalForState(state).ok, false);
   assert.equal(computePalisadeProposalForState(state).ok, true);
   assert.equal(preservesAutoplayWallSpace(state, 'farmstead', candidate), true);

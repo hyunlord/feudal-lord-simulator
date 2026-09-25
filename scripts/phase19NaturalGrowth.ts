@@ -12,12 +12,12 @@ import { createGrowthOpening } from "./phase21OpeningTranslation";
 import { createAutoplayTraceDriver } from "./economyHarnessAutoplay";
 import { fullServicePopulation, growthGuards, growthSnapshot, invalidGrowthResources, parseGrowthOptions, prosperityEligible } from "./phase19GrowthMetrics";
 import { createGrowthObservations, timingSummary } from "./phase19GrowthObservations";
-import { canPlaceBuilding } from "../src/world/placement";
+import { canPlaceBuildingBeforeRoad } from "../src/world/placement";
 
 export function terrainResourcePreflight(state: GameState) {
   const quarryWorld = { ...state, era: "palisade" as const, treasuryTimber: 999 };
   const rockTiles = state.tiles.filter(tile => tile.terrain === "rock").length;
-  const legalQuarryFootprints = state.tiles.filter(tile => canPlaceBuilding(quarryWorld, "quarry", tile.tx, tile.ty).ok).length;
+  const legalQuarryFootprints = state.tiles.filter(tile => canPlaceBuildingBeforeRoad(quarryWorld, "quarry", tile.tx, tile.ty).ok).length;
   const failures = rockTiles === 0 ? [
     `seed ${state.seed} has no rock terrain; stone-town victory cannot be claimed because quarry is the only raw stone source`,
   ] : [];
