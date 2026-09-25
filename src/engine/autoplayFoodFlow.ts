@@ -39,13 +39,13 @@ type FoodFlowActivity = Partial<Pick<FoodFlowWindow,
   'wheatProduced' | 'breadProduced' | 'wheatExported' | 'breadExported' | 'farmFullTicks' | 'farmReadyTicks'>>;
 
 export function foodFlowLayout(state: GameState): string {
-  return state.buildings.filter(b => ['wheat_farm', 'mill', 'granary', 'market', 'house'].includes(b.kind))
+  return state.buildings.filter(b => ['farmstead', 'mill', 'granary', 'market', 'house'].includes(b.kind))
     .map(b => `${b.id}:${b.kind}:${b.tx},${b.ty}:${b.workers >= BUILDING_CONFIG_BY_KIND[b.kind].workersRequired}:${buildingHasRequiredRoadAccess(state, b)}`).join('|');
 }
 
 export function foodFlowRoutes(state: GameState): string {
   const granaries = state.buildings.filter(b => b.kind === 'granary');
-  return state.buildings.filter(b => b.kind === 'wheat_farm' || b.kind === 'mill' || b.kind === 'market' || b.kind === 'house')
+  return state.buildings.filter(b => b.kind === 'farmstead' || b.kind === 'mill' || b.kind === 'market' || b.kind === 'house')
     .map(b => `${b.id}:${granaries.filter(g => resolveBuildingRoute(state, b, g).path !== null).map(g => g.id).join(',')}`).join('|');
 }
 

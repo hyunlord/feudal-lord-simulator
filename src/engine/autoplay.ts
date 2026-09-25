@@ -158,7 +158,7 @@ function roadAccessAction(state: GameState): AutoplayAction {
   return NONE;
 }
 
-function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
+function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate: TileCoordinate) => boolean = () => true): AutoplayAction {
   if (kind === 'market') return urbanServiceAction(state);
   const output = BUILDING_CONFIG_BY_KIND[kind].production?.output;
   // A full material destination cannot accept another producer's output.
@@ -167,14 +167,14 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
   }
   const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
   if ((["timber", "stone"] as const).some(resource => (cost[resource] ?? 0) > placementSpendableResource(state, resource))) return NONE;
-  const site = findBuildSite(state, kind, (coordinate) =>
+  const site = findBuildSite(state, kind, (coordinate) => accepts(coordinate) && (
     !BUILDING_CONFIG_BY_KIND[kind].requiresRoad ||
-    hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate)),
+    hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate))),
   );
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
   if (autoplaySearchExhausted()) return NONE;
   const roads = roadTiles(state);
-  const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty))
+  const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty) && accepts(tile))
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {

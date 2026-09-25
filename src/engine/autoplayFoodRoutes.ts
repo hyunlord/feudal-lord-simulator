@@ -20,7 +20,7 @@ export function foodRouteRepairAction(state: GameState): AutoplayAction {
       stranded.sources.flatMap(b => sourceAccess(state, b)));
   }
   const disconnected = state.buildings.filter(building => {
-    if (building.kind === 'mill' || building.kind === 'wheat_farm') {
+    if (building.kind === 'mill' || building.kind === 'farmstead') {
       return !granaries.some(granary => resolveBuildingRoute(state, building, granary).path !== null);
     }
     return occupied.has(building.id)
@@ -34,7 +34,7 @@ export function foodRouteRepairAction(state: GameState): AutoplayAction {
 }
 
 export function strandedFoodSupply(state: GameState): { readonly sources: readonly Building[]; readonly targets: readonly Building[] } | null {
-  const food = state.buildings.filter(b => b.kind === 'granary' || b.kind === 'mill' || b.kind === 'wheat_farm');
+  const food = state.buildings.filter(b => b.kind === 'granary' || b.kind === 'mill' || b.kind === 'farmstead');
   const breadSources = food.filter(b => availableStock(b, 'bread') > 0);
   const occupied = breadSources.length === 0 ? []
     : state.houses.filter(h => h.residents > 0 && h.breadStock < houseFoodRation(h));

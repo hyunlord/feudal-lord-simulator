@@ -1,11 +1,17 @@
 export type EfficiencyMetrics = Readonly<{
-  lots: number; farms: number; mills: number; chronicZeroWheatMills: number;
+  lots: number; arableCells: number; farmsteads: number; mills: number; chronicZeroWheatMills: number;
   chronicZeroWheatKnown: boolean; chronicZeroWheatObservedTicks: number;
   granaries: number; markets: number; churches: number; population: number;
   idleWorkers: number; buildings: number; warnings: number;
   coveredTicks: number; fullWindow: boolean; known: boolean;
   rawStarvedTicks: number; eligibleMillTicks: number;
 }>;
+
+/**
+ * AF-14 facility cap that replaced "mills ≤ wheat farms": arable zone cells per housing lot. Provisional 10 for the
+ * first C1c-2 guardrail run; the final value is the largest observed × 1.2 (docs/verification/c1c2-arable).
+ */
+export const ARABLE_CELLS_PER_LOT_CAP = 10;
 
 export function efficientAcceptance(metrics: EfficiencyMetrics) {
   const finite = Object.values(metrics).every(value => typeof value === 'boolean' || Number.isFinite(value) && value >= 0);
@@ -16,7 +22,7 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
     ? metrics.chronicZeroWheatMills / metrics.mills : null;
   const checks = {
     validMetrics: finite,
-    mills: metrics.mills <= metrics.farms,
+    arableCells: metrics.lots > 0 && metrics.arableCells <= metrics.lots * ARABLE_CELLS_PER_LOT_CAP,
     granaries: metrics.granaries <= Math.ceil(metrics.lots / 4) + 1,
     markets: metrics.markets <= Math.ceil(metrics.lots / 24) + 1,
     churches: metrics.churches <= Math.ceil(metrics.lots / 32) + 1,
@@ -24,7 +30,8 @@ export function efficientAcceptance(metrics: EfficiencyMetrics) {
     observedMillActivity: metrics.eligibleMillTicks > 0,
     warnings: warningRatio !== null && warningRatio < 0.1,
   };
-  return { passed: Object.values(checks).every(Boolean), checks, metrics, rawStarvationRatio, warningRatio, idleRatio,
+  const arableCellsPerLot = metrics.lots > 0 ? metrics.arableCells / metrics.lots : null;
+  return { passed: Object.values(checks).every(Boolean), checks, metrics, rawStarvationRatio, warningRatio, idleRatio, arableCellsPerLot,
     zeroWheatMillRatio,
     highIdleDiagnostic: idleRatio !== null && idleRatio > 0.25 };
 }

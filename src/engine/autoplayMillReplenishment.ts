@@ -11,7 +11,7 @@ export function shouldRetryAutoplayAfterMillReplenishment(previous: GameState, c
   if (oldMills.size !== mills.length || mills.some(mill => !oldMills.has(mill.id))) return false;
   if (!mills.some(mill => (oldMills.get(mill.id)?.inventory.wheat ?? 0) === 0)) return false;
   if (hasActiveFoodObservation(current) || current.constructionSites.some(site => isBuildingConstructionSite(site)
-    && (site.kind === 'wheat_farm' || site.kind === 'mill' || site.kind === 'granary'))) return false;
+    && (site.kind === 'farmstead' || site.kind === 'mill' || site.kind === 'granary'))) return false;
   return measuredFoodDecision(previous).reason === 'wheat_transport_blocked'
     && measuredFoodDecision(current).reason === 'wheat_transport_blocked';
 }

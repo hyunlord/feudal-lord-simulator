@@ -15,7 +15,7 @@ export interface FoodPoolSnapshot {
 
 // A global flow can qualify a buffer only when every food facility shares its supply pool.
 export function foodSupplyPoolIds(state: GameState): readonly string[] {
-  const food = state.buildings.filter(b => ['wheat_farm', 'mill', 'granary', 'house'].includes(b.kind));
+  const food = state.buildings.filter(b => ['farmstead', 'mill', 'granary', 'house'].includes(b.kind));
   const anchor = food.find(b => b.kind === 'granary');
   if (anchor === undefined || food.some(b => b.id !== anchor.id && resolveBuildingRoute(state, b, anchor).path === null)) return [];
   return food.map(b => b.id);
@@ -106,7 +106,7 @@ export function breadBufferCoversDeficit(state: GameState, sample: FoodFlowWindo
 }
 
 export function canStaffFoodExpansion(state: GameState, kind: BuildingKind): boolean {
-  if (kind !== 'wheat_farm' && kind !== 'mill') return true;
+  if (kind !== 'farmstead' && kind !== 'mill') return true;
   const required = BUILDING_CONFIG_BY_KIND[kind].workersRequired;
   const existing = state.buildings.reduce((sum, b) => sum + BUILDING_CONFIG_BY_KIND[b.kind].workersRequired, 0);
   const planned = state.constructionSites.filter(isBuildingConstructionSite)

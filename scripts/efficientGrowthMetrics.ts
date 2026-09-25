@@ -10,7 +10,8 @@ export function efficientGrowthMetrics(state: GameState, millObservation: MillZe
   const buildings = [...new Map(state.buildings.map(building => [building.id, building])).values()];
   const count = (kind: string) => buildings.filter(building => building.kind === kind).length;
   const food = foodEfficiencyMetrics(state);
-  return efficientAcceptance({ ...food, lots: housingLotCount(state), farms: count('wheat_farm'), mills: count('mill'),
+  const arableCells = (state.zones ?? []).filter(zone => zone.kind === 'arable').reduce((sum, zone) => sum + zone.membership.length, 0);
+  return efficientAcceptance({ ...food, lots: housingLotCount(state), arableCells, farmsteads: count('farmstead'), mills: count('mill'),
     chronicZeroWheatMills: millObservation.millIds.length,
     chronicZeroWheatKnown: millObservation.known,
     chronicZeroWheatObservedTicks: millObservation.stableTicks,
