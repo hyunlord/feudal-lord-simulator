@@ -21,7 +21,7 @@ export interface MeasuredFoodDecision {
  * AF-13: wheat comes once a year, so grain is judged by the expected harvest (`arableSupplyShort`), not by a
  * 2,400-tick flow; bread and mills keep the measured rules (A⁵-1 margin, starvation and transport checks).
  */
-export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
+export function measuredFoodDecision(state: GameState, options: { readonly ignoreGrain?: boolean } = {}): MeasuredFoodDecision {
   const sample = foodEfficiencyMetrics(state);
   if (!sample.fullWindow || !sample.known) return { kind: null, reason: 'observation_warmup' };
   const facilities = state.buildings.filter(b => ['farmstead', 'mill', 'granary'].includes(b.kind));
@@ -38,7 +38,8 @@ export function measuredFoodDecision(state: GameState): MeasuredFoodDecision {
     return { kind: null, reason: 'food_route_blocked' };
   }
   if (strandedFoodSupply(state) !== null) return { kind: null, reason: 'food_route_blocked' };
-  const grainShort = arableSupplyShort(state);
+  // `ignoreGrain`: the grain step had nothing to do, so the bread and mill rules decide on their own.
+  const grainShort = options.ignoreGrain !== true && arableSupplyShort(state);
   const missedMeals = sample.consumedBread < sample.requestedBread;
   const breadDeficit = sample.requestedBread + sample.breadExported - sample.breadProduced;
   const breadMarginDeficit = sample.requestedBread > 0

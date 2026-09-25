@@ -88,7 +88,13 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   };
   if (recovery !== null) {
     buildReason = 'recovery_selected';
-    return finish(foodBuildAction(recovery), buildReason);
+    const action = foodBuildAction(recovery);
+    // AF-13: a grain shortage with no field or farmstead to add must not hide a mill the bread rules ask for.
+    if (action.kind === 'none' && recovery === 'farmstead') {
+      const bread = measuredFoodDecision(state, { ignoreGrain: true });
+      if (bread.kind === 'mill') return finish(foodBuildAction('mill'), buildReason);
+    }
+    return finish(action, buildReason);
   }
   if (completeChain) return finish({ kind: 'none' }, decision?.reason ?? 'observation_warmup');
   if (wheatCount < target && wheatCount <= millCount) return finish(foodBuildAction("farmstead"), buildReason);
