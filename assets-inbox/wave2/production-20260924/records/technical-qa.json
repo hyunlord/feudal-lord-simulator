@@ -1,0 +1,1348 @@
+{
+  "assets": [
+    {
+      "id": "house_l0_garden-v1",
+      "size": [
+        153,
+        153
+      ],
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "crop": [
+        176,
+        371,
+        937,
+        718
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        20.985645933014354,
+        53.19148458125035,
+        112.73684210526315,
+        86.38746278717069
+      ],
+      "scale": 0.12031680053923495,
+      "bounds": [
+        21,
+        53,
+        113,
+        87
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l0_pen-v1",
+      "size": [
+        153,
+        153
+      ],
+      "pivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "crop": [
+        196,
+        336,
+        891,
+        655
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        20.985645933014354,
+        56.70281765018606,
+        112.73684210526315,
+        82.87612971823498
+      ],
+      "scale": 0.126528442317916,
+      "bounds": [
+        21,
+        57,
+        113,
+        83
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l1_artisan-v1",
+      "size": [
+        139,
+        139
+      ],
+      "pivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "crop": [
+        114,
+        197,
+        1052,
+        947
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        15.185805422647526,
+        24.242561445958486,
+        112.95135566188198,
+        101.67769373745459
+      ],
+      "scale": 0.10736820880407032,
+      "bounds": [
+        15,
+        24,
+        113,
+        102
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l1_garden-v1",
+      "size": [
+        139,
+        139
+      ],
+      "pivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "crop": [
+        115,
+        267,
+        1057,
+        833
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        15.185805422647526,
+        36.905610655174954,
+        112.95135566188198,
+        89.01464452823812
+      ],
+      "scale": 0.1068603175609101,
+      "bounds": [
+        15,
+        37,
+        113,
+        89
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l2_brewer-v1",
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "crop": [
+        123,
+        155,
+        1018,
+        1022
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        14.421052631578952,
+        18.565270114024116,
+        113.07416267942584,
+        113.51846194339214
+      ],
+      "scale": 0.11107481599157744,
+      "bounds": [
+        14,
+        19,
+        113,
+        113
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l2_weaver-v1",
+      "promoted": true,
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "manualEdits": "byte-for-byte copy; ID only; no generation"
+    },
+    {
+      "id": "house_l2_garden-v1",
+      "promoted": true,
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "manualEdits": "byte-for-byte copy; ID only; no generation"
+    },
+    {
+      "id": "house_l3_storage-v1",
+      "size": [
+        142,
+        142
+      ],
+      "pivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "crop": [
+        161,
+        147,
+        932,
+        961
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        17.891547049441783,
+        21.509076534488784,
+        113.01116427432217,
+        116.5276060811412
+      ],
+      "scale": 0.12125661402824267,
+      "bounds": [
+        18,
+        22,
+        113,
+        116
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l3_shop-v1",
+      "size": [
+        142,
+        142
+      ],
+      "pivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "crop": [
+        166,
+        89,
+        975,
+        1044
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        17.891547049441783,
+        17.027805177278864,
+        113.01116427432217,
+        121.00887743835112
+      ],
+      "scale": 0.11590888643520222,
+      "bounds": [
+        18,
+        17,
+        113,
+        121
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l3_clothier-v1",
+      "size": [
+        142,
+        142
+      ],
+      "pivot": [
+        74.39712918660287,
+        138.03668261562999
+      ],
+      "crop": [
+        131,
+        86,
+        1043,
+        1087
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        17.89154704944179,
+        20.258029148527214,
+        113.01116427432216,
+        117.77865346710277
+      ],
+      "scale": 0.1083520271086502,
+      "bounds": [
+        18,
+        20,
+        113,
+        118
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l4_courtyard-v1",
+      "size": [
+        161,
+        161
+      ],
+      "pivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "crop": [
+        186,
+        68,
+        861,
+        1082
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        25.421052631578945,
+        15.261161032662955,
+        113.11084529505584,
+        142.14394263559862
+      ],
+      "scale": 0.13137148117892664,
+      "bounds": [
+        25,
+        15,
+        114,
+        142
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l4_wing-v1",
+      "size": [
+        161,
+        161
+      ],
+      "pivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "crop": [
+        183,
+        83,
+        855,
+        1121
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        26.30672019030628,
+        11.42663476874003,
+        111.33951017760117,
+        145.97846889952154
+      ],
+      "scale": 0.13022164933052768,
+      "bounds": [
+        26,
+        11,
+        112,
+        146
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l4_inn-v1",
+      "size": [
+        161,
+        161
+      ],
+      "pivot": [
+        81.97647527910686,
+        157.40510366826157
+      ],
+      "crop": [
+        182,
+        87,
+        910,
+        1069
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        25.421052631578945,
+        24.530934854619062,
+        113.11084529505584,
+        132.8741688136425
+      ],
+      "scale": 0.12429763219236906,
+      "bounds": [
+        25,
+        25,
+        114,
+        132
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_l1_thatch-v1",
+      "size": [
+        139,
+        139
+      ],
+      "pivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "crop": [
+        135,
+        220,
+        994,
+        950
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        16.629361202048173,
+        20.72807017543859,
+        110.06424410308068,
+        105.19218500797449
+      ],
+      "scale": 0.11072861579786789,
+      "bounds": [
+        17,
+        21,
+        110,
+        105
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_pair_l3_horizontal_courtyard-v1",
+      "size": [
+        209,
+        167
+      ],
+      "pivot": [
+        105.3944365192582,
+        163.72549019607843
+      ],
+      "crop": [
+        96,
+        75,
+        1196,
+        984
+      ],
+      "sourceSize": [
+        1403,
+        1121
+      ],
+      "placement": [
+        20.57203994293866,
+        24.15151322099743,
+        169.6447931526391,
+        139.573976975081
+      ],
+      "scale": 0.1418434725356514,
+      "bounds": [
+        21,
+        24,
+        169,
+        139
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 8,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_pair_l3_vertical_workshop-v1",
+      "size": [
+        183,
+        183
+      ],
+      "pivot": [
+        92.52153110047847,
+        170.44976076555025
+      ],
+      "crop": [
+        50,
+        85,
+        1135,
+        1097
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        10.043062200956939,
+        11.015610311320984,
+        164.95693779904306,
+        159.43415045422927
+      ],
+      "scale": 0.14533650907404674,
+      "bounds": [
+        10,
+        11,
+        165,
+        159
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_pair_l4_horizontal_hall-v1",
+      "size": [
+        204,
+        204
+      ],
+      "pivot": [
+        103.38277511961722,
+        201.88516746411483
+      ],
+      "crop": [
+        127,
+        133,
+        1024,
+        1018
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        18.870813397129183,
+        33.851618570574146,
+        169.02392344497608,
+        168.03354889354068
+      ],
+      "scale": 0.16506242523923445,
+      "bounds": [
+        19,
+        34,
+        169,
+        166
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 26,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "house_pair_l4_vertical_court-v1",
+      "size": [
+        184,
+        184
+      ],
+      "pivot": [
+        94.34768740031897,
+        174.46251993620416
+      ],
+      "crop": [
+        66,
+        63,
+        1121,
+        1096
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        12.69537480063795,
+        14.799835530761868,
+        163.30462519936205,
+        159.6626844054423
+      ],
+      "scale": 0.1456776317567904,
+      "bounds": [
+        13,
+        15,
+        163,
+        159
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 4
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "farm_mixed_seedling-v1",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "crop": [
+        67,
+        50,
+        1636,
+        820
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "placement": [
+        23.976836142656794,
+        15.990980834272818,
+        335.18048780487806,
+        168
+      ],
+      "scale": 0.2048780487804878,
+      "bounds": [
+        24,
+        16,
+        335,
+        168
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur; copy exact ripe pasture pixels x>=207 to preserve cows/shed/hay; crop-state image uses same ripe registration",
+      "pasturePreservedFrom": {
+        "id": "farm_mixed_ripe-v1",
+        "x": 207
+      }
+    },
+    {
+      "id": "farm_mixed_growing-v1",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "crop": [
+        67,
+        50,
+        1636,
+        820
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "placement": [
+        23.976836142656794,
+        15.990980834272818,
+        335.18048780487806,
+        168
+      ],
+      "scale": 0.2048780487804878,
+      "bounds": [
+        24,
+        16,
+        335,
+        168
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur; copy exact ripe pasture pixels x>=207 to preserve cows/shed/hay; crop-state image uses same ripe registration",
+      "pasturePreservedFrom": {
+        "id": "farm_mixed_ripe-v1",
+        "x": 207
+      }
+    },
+    {
+      "id": "farm_mixed_ripe-v1",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "crop": [
+        67,
+        50,
+        1636,
+        820
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "placement": [
+        23.976836142656794,
+        15.990980834272818,
+        335.18048780487806,
+        168
+      ],
+      "scale": 0.2048780487804878,
+      "bounds": [
+        24,
+        16,
+        335,
+        168
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "farm_mixed_worked-v1",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "crop": [
+        67,
+        50,
+        1636,
+        820
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "placement": [
+        23.976836142656794,
+        15.990980834272818,
+        335.18048780487806,
+        168
+      ],
+      "scale": 0.2048780487804878,
+      "bounds": [
+        24,
+        16,
+        335,
+        168
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur; copy exact ripe pasture pixels x>=207 to preserve cows/shed/hay; crop-state image uses same ripe registration; native worked source bounds registered to ripe source bounds before final uniform scaling",
+      "pasturePreservedFrom": {
+        "id": "farm_mixed_ripe-v1",
+        "x": 207
+      }
+    },
+    {
+      "id": "farm_pastoral_spring-v1",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "crop": [
+        74,
+        57,
+        1632,
+        811
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "placement": [
+        22.53132172203786,
+        15.990980834272818,
+        338.0715166461159,
+        168
+      ],
+      "scale": 0.20715166461159062,
+      "bounds": [
+        23,
+        16,
+        338,
+        168
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "farm_pastoral_summer-v1",
+      "promoted": true,
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "manualEdits": "byte-for-byte copy; ID only; no generation"
+    },
+    {
+      "id": "farm_pastoral_winter-v1",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "crop": [
+        82,
+        61,
+        1643,
+        810
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "placement": [
+        21.181894859910642,
+        15.990980834272818,
+        340.77037037037036,
+        168
+      ],
+      "scale": 0.2074074074074074,
+      "bounds": [
+        21,
+        16,
+        341,
+        168
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "well_b-v1",
+      "promoted": true,
+      "size": [
+        72,
+        80
+      ],
+      "pivot": [
+        36,
+        64
+      ],
+      "manualEdits": "byte-for-byte copy; ID only; no generation"
+    },
+    {
+      "id": "well_c-v1",
+      "size": [
+        72,
+        80
+      ],
+      "pivot": [
+        36,
+        64
+      ],
+      "crop": [
+        284,
+        541,
+        735,
+        410
+      ],
+      "sourceSize": [
+        1190,
+        1322
+      ],
+      "placement": [
+        15,
+        40.57142857142857,
+        42,
+        23.428571428571427
+      ],
+      "scale": 0.05714285714285714,
+      "bounds": [
+        15,
+        41,
+        42,
+        23
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "storehouse_b-v1",
+      "size": [
+        160,
+        136
+      ],
+      "pivot": [
+        80,
+        120
+      ],
+      "crop": [
+        88,
+        14,
+        1228,
+        1076
+      ],
+      "sourceSize": [
+        1360,
+        1156
+      ],
+      "placement": [
+        16.089219330855016,
+        8,
+        127.82156133828997,
+        112
+      ],
+      "scale": 0.10408921933085502,
+      "bounds": [
+        16,
+        8,
+        128,
+        112
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "storehouse_c-v1",
+      "size": [
+        160,
+        136
+      ],
+      "pivot": [
+        80,
+        120
+      ],
+      "crop": [
+        95,
+        136,
+        1154,
+        891
+      ],
+      "sourceSize": [
+        1360,
+        1156
+      ],
+      "placement": [
+        8,
+        8.818024263431539,
+        144,
+        111.18197573656846
+      ],
+      "scale": 0.12478336221837089,
+      "bounds": [
+        8,
+        9,
+        144,
+        111
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "windmill-v1",
+      "size": [
+        142,
+        142
+      ],
+      "pivot": [
+        71.84928229665071,
+        131.01594896331738
+      ],
+      "crop": [
+        160,
+        67,
+        850,
+        1088
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        23.79617723285486,
+        8,
+        96.10621012759171,
+        123.01594896331738
+      ],
+      "scale": 0.11306612956187259,
+      "bounds": [
+        24,
+        8,
+        96,
+        123
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "market_active_b-v1",
+      "promoted": true,
+      "size": [
+        224,
+        224
+      ],
+      "pivot": [
+        114.59011164274321,
+        213.6395534290271
+      ],
+      "manualEdits": "byte-for-byte copy; ID only; no generation"
+    },
+    {
+      "id": "market_active_c-v1",
+      "size": [
+        224,
+        224
+      ],
+      "pivot": [
+        114.59011164274321,
+        213.6395534290271
+      ],
+      "crop": [
+        78,
+        197,
+        1117,
+        911
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        13.18022328548642,
+        48.224319241988724,
+        202.81977671451358,
+        165.41523418703838
+      ],
+      "scale": 0.18157544916250096,
+      "bounds": [
+        13,
+        48,
+        203,
+        166
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "market_quiet_b-v1",
+      "size": [
+        224,
+        224
+      ],
+      "pivot": [
+        114.59011164274321,
+        213.6395534290271
+      ],
+      "crop": [
+        78,
+        426,
+        1136,
+        712
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        13.590111642743196,
+        87.03391962621019,
+        202.00000000000003,
+        126.60563380281691
+      ],
+      "scale": 0.17781690140845072,
+      "bounds": [
+        14,
+        87,
+        202,
+        127
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 0,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "chapel_b-v1",
+      "size": [
+        133,
+        133
+      ],
+      "pivot": [
+        69.57575757575758,
+        126.10606060606061
+      ],
+      "crop": [
+        160,
+        92,
+        985,
+        1048
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        14.151515151515156,
+        8.167774188586378,
+        110.84848484848484,
+        117.93828641747423
+      ],
+      "scale": 0.11253653284110136,
+      "bounds": [
+        14,
+        8,
+        111,
+        117
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 10,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    },
+    {
+      "id": "chapel_stone-v1",
+      "size": [
+        133,
+        133
+      ],
+      "pivot": [
+        69.57575757575758,
+        126.10606060606061
+      ],
+      "crop": [
+        130,
+        163,
+        1012,
+        947
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "placement": [
+        14.151515151515156,
+        22.377290693496235,
+        110.84848484848484,
+        103.72876991256437
+      ],
+      "scale": 0.10953407593723799,
+      "bounds": [
+        14,
+        22,
+        111,
+        103
+      ],
+      "padding": {
+        "top": 8,
+        "left": 8,
+        "right": 8,
+        "bottom": 8
+      },
+      "clearedMarginPixels": 11,
+      "manualEdits": "alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur"
+    }
+  ],
+  "streetZooms": [
+    1,
+    0.6
+  ],
+  "farmFacilityPanelScale": "farms0.7 facilities1; extra inset0.6 of panel",
+  "sameHouseReferenceCrop": true,
+  "noGameInstallation": true
+}

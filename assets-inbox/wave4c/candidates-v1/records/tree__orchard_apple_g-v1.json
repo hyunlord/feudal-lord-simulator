@@ -1,0 +1,11 @@
+{
+  "id": "tree/orchard_apple_g-v1",
+  "prompt": "Create ONE new transparent RGBA game sprite tree/orchard_apple_g-v1. Reference image is our own existing apple tree, STYLE AND SCALE reference only. New silhouette: mature apple tree leaning distinctly LEFT, trunk base stays centered, asymmetrical low clustered canopy, a few muted russet apples in broad readable clusters. South England 1300–1450, hand-painted city-builder sprite, fixed SW orthographic 2:1 isometric camera, upper-left soft light, restrained olive green, warm weathered brown wood. Match reference painterly broad shapes and small-game readability, NOT photorealism, no tiny leaves or noise. SOURCE contract 256x256, single full tree including root contact within frame; centered trunk ground pivot near (128,244), canopy lobes 18–28 pixels at target256, canopy width200px height180px. Transparent background, genuine alpha. Contact AO ONLY directly at trunk, no cast shadow, no grass/soil base, no text, no border, no multiple views. Render high quality but deliberately simple large brush masses suited to downscale exactly once to256x256. Do not mirror the reference; draw an actual different branching structure.",
+  "references": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4c-v1/references/astra-wave4c-reference-files/orchard_apple_c-v1.png"
+  ],
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "status": "candidate"
+}

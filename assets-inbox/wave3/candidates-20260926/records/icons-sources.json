@@ -1,0 +1,308 @@
+[
+  {
+    "id": "icon_resource_chain_sheet",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-dd61337f-54e8-4369-8ad8-826a9837353a.png",
+    "prompt": "Use case: style-transfer. Create ONE production game icon atlas, exactly TEN different resource icons on genuinely transparent RGBA background, arranged in FIVE equal columns and TWO equal rows, generous equal transparent separation; no text, numbers, labels or borders. Attached images are this project's approved UI P0 resource/style references only. Match their hand-painted muted earth colours, fine dark outline, simple chunky readable forms and soft upper-left light. This atlas will be cut into 96x96 icons then shown at24x24, so make each silhouette unique and clear at that size, no microdetails or decorative frame. Southern England 1300-1450. Read order left-to-right first row then second: (1) BARLEY: pale golden drooping grain ear with LONG awns; (2) MALT: squat open folded-mouth sack exposing broad dark toasted grain, NOT hops; (3) ALE: broad wooden stave cask with small plain wooden bung, no beer mug foam; (4) FLEECE: irregular low fluffy cream sheep fleece heap, NOT cotton twig; (5) YARN: two elongated oval wound skeins with visible big central openings. Second row (6) RAW CLOTH: loose pale beige woven fabric roll with ragged fringe; (7) FULLED CLOTH: thick compact ivory cloth folded into a chunky square pad; (8) DYED CLOTH: loosely draped muted woad blue cloth roll; (9) FINISHED CLOTH: neat tied stack of folded cloth bolts with a broad binding band, muted madder russet; (10) DYES: three squat small earthenware dye pots grouped triangularly, muted blue/red/yellow pigment surfaces, no glass chemistry vials. No hops anywhere, no saturated primary colours, no modern machines. Each icon isolated within its own cell, all ten fully present, no overlap.",
+    "cols": 5,
+    "rows": 2,
+    "referencePaths": [
+      "icon_resource_sheet.png",
+      "icon_cause_family_sheet.png"
+    ],
+    "manualEdits": "RGBA cell crop, alpha bounds >=8; uniform single resize into 80x80 within96x96 cells, repacked horizontal. Native alpha preserved.",
+    "reason": "Clear resource and building silhouettes; muted palette; edit replaces closed brewing apparatus with open cauldron.",
+    "cells": [
+      {
+        "sourceBounds": [
+          43,
+          146,
+          293,
+          288
+        ],
+        "targetCell": [
+          0,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          392,
+          142,
+          291,
+          269
+        ],
+        "targetCell": [
+          96,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          730,
+          134,
+          313,
+          280
+        ],
+        "targetCell": [
+          192,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          1082,
+          173,
+          316,
+          237
+        ],
+        "targetCell": [
+          288,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          1443,
+          166,
+          299,
+          256
+        ],
+        "targetCell": [
+          384,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          25,
+          495,
+          330,
+          308
+        ],
+        "targetCell": [
+          480,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          355,
+          525,
+          341,
+          246
+        ],
+        "targetCell": [
+          576,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          719,
+          514,
+          322,
+          273
+        ],
+        "targetCell": [
+          672,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          1082,
+          525,
+          324,
+          255
+        ],
+        "targetCell": [
+          768,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          1436,
+          516,
+          308,
+          271
+        ],
+        "targetCell": [
+          864,
+          0,
+          96,
+          96
+        ]
+      }
+    ],
+    "output": "icons/icon_resource_chain_sheet.png"
+  },
+  {
+    "id": "icon_building_chain_sheet",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-4685890e-ce63-4704-b39d-333fb8cf3d5c.png",
+    "prompt": "Use case: lighting-weather/style-transfer. Keep EXACT eight silhouettes and placement of first image. Change ONLY palette and painted surface to match the subdued second reference game icon sheet: dusty muted brown oak, grey beige stone, grey olive bush, muted terracotta roofs, low-saturation slate blue cloth and dusty brick-red cloth. Remove the bright saturated blue/red/yellow toy appearance. Gentle soft light, thin dark outlines not thick black, readable broad handpainted forms. NO shape/layout change, NO new objects or text. Genuine fully transparent background and transparent gaps between all8 icons. Output same4x2atlas.",
+    "cols": 4,
+    "rows": 2,
+    "attempts": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-226d5f72-862a-4405-84d3-294fd73264aa.png",
+        "prompt": "Use case: style-transfer. Create ONE game building-icon atlas with exactly EIGHT icons in FOUR equal columns TWO equal rows, true transparent background. Match attached project UI P0 references: restrained hand-painted low-saturation earth tones, thin dark outline, soft upper-left light. Intended final96x96 each and24px display, prioritize completely distinct silhouettes, one dominant functional identifying shape pericon, no busy surroundings or text. Read left-to-right top row: 1 MALT KILN low thatched stone house with single squat drying-kiln stone flue (no modern chimney pot), 2 ALEHOUSE two-story timber/plaster house with very legible leafy BUSH on a projecting pole above door (ale-stake), no hops and NO chimney, 3 BREWHOUSE broad copper cauldron and wooden brewing vat beneath small open lean-to, 4 WOOLHOUSE broad dark timber storehouse with large central opening full of pale fleece bales. Bottom row: 5 WEAVER HOUSE timber gable house with a large visible rectangular treadle loom in open ground-floor frontage no chimney; 6 FULLING MILL water-powered timber building whose large WATERWHEEL dominates its silhouette (never a windmill); 7 DYEHOUSE two large round dye vats of muted woad blue and madder red plus low workshop shed; 8 CLOTH HALL long horizontal building with three conspicuous ground-floor arches and cloth rolls. Southern English1300-1450. No labels, numerals, letters, watermark, frames, grid lines, backdrop, ground plate. Each icon fully inside own equal cell with clear transparent separation, same visual weight.",
+        "selected": false
+      },
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-84b2bac8-8402-4c32-adc5-637142a587b6.png",
+        "prompt": "Use case: precise-object-edit. Edit this eight-icon atlas. Preserve the 4 columns x2 rows, building identities, scale and muted handpainted palette. Make ALL background around and between icons COMPLETELY TRANSPARENT alpha0. Remove every broad coloured glow, vignette, soft shadow haze. Only actual solid building shapes and crisp antialiased edges remain. Replace third icon top row's domed closed copper apparatus with a simple OPEN round copper BREWING CAULDRON with open dark mouth and NO lid/dome or distillation pipe; preserve wooden tub and lean-to. Simplify detail and use thin dark outlines to match small UI icons at24pixels. No glass panes on houses: dark unglazed openings with shutters. Do not add text or gridlines. True transparent RGBA output.",
+        "selected": false
+      },
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-cc4cba9e-e401-4a5d-b684-8722cc67fefe.png",
+        "prompt": "Use case: precise-object-edit. Improve small-size silhouette readability of these EIGHT transparent building icons, keep same4x2cells. All icons will be only24pixels so function must be visible. Change top row icon2 alehouse into a LOW horizontal timber alehouse with a very large leafy bush on a long projecting pole extending to LEFT, plain open doorway, no chimney. Change top row icon4 wool warehouse into a LOW WIDE rectangular flat-front storehouse with extremely large open door and THREE oversized round wool bales protruding across doorway, no tall gable silhouette. Change bottom row icon1 weaver into a dominant LARGE treadle loom with obvious rectangular frame, crossbeam and hanging ivory warp, only a tiny house roof behind it, so it reads as LOOM not generic house. Preserve the five other icons exactly (malt kiln, open brewing cauldron under lean-to, waterwheel, dye vats, long arcade hall). Match existing thin-outline muted painted style. Fully transparent RGBA, no ground shadows, no words/numerals, allobjectsinsidecell with padding.",
+        "selected": false
+      },
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-4685890e-ce63-4704-b39d-333fb8cf3d5c.png",
+        "prompt": "Use case: lighting-weather/style-transfer. Keep EXACT eight silhouettes and placement of first image. Change ONLY palette and painted surface to match the subdued second reference game icon sheet: dusty muted brown oak, grey beige stone, grey olive bush, muted terracotta roofs, low-saturation slate blue cloth and dusty brick-red cloth. Remove the bright saturated blue/red/yellow toy appearance. Gentle soft light, thin dark outlines not thick black, readable broad handpainted forms. NO shape/layout change, NO new objects or text. Genuine fully transparent background and transparent gaps between all8 icons. Output same4x2atlas.",
+        "selected": true
+      }
+    ],
+    "referencePaths": [
+      "icon_resource_sheet.png",
+      "icon_cause_family_sheet.png"
+    ],
+    "manualEdits": "RGBA cell crop, alpha bounds >=8; uniform single resize into 80x80 within96x96 cells, repacked horizontal. Native alpha preserved.",
+    "reason": "Clear resource and building silhouettes; muted palette; edit replaces closed brewing apparatus with open cauldron.",
+    "cells": [
+      {
+        "sourceBounds": [
+          10,
+          175,
+          374,
+          286
+        ],
+        "targetCell": [
+          0,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          384,
+          217,
+          384,
+          243
+        ],
+        "targetCell": [
+          96,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          768,
+          175,
+          384,
+          295
+        ],
+        "targetCell": [
+          192,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          1152,
+          259,
+          370,
+          200
+        ],
+        "targetCell": [
+          288,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          12,
+          553,
+          372,
+          367
+        ],
+        "targetCell": [
+          384,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          384,
+          569,
+          384,
+          362
+        ],
+        "targetCell": [
+          480,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          768,
+          647,
+          384,
+          277
+        ],
+        "targetCell": [
+          576,
+          0,
+          96,
+          96
+        ]
+      },
+      {
+        "sourceBounds": [
+          1152,
+          619,
+          377,
+          296
+        ],
+        "targetCell": [
+          672,
+          0,
+          96,
+          96
+        ]
+      }
+    ],
+    "output": "icons/icon_building_chain_sheet.png"
+  }
+]

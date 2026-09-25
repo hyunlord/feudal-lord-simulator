@@ -1,0 +1,2331 @@
+[
+  {
+    "id": "wk_child_m_01-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-0427-7051-8a9d-1bafab8463bb/exec-aee1e301-cc01-4506-aa04-76610aa2527b.png",
+    "prompt": "Use case: identity-preserve. EDIT TARGET image is exact 296x148 transparent sprite sheet, eight medieval CHILD BOY poses arranged 4 columns x2 rows of74x74 cells. Keep all eight same positions, silhouettes, head size, body proportions, legs, shoes, feet and gait exactly. Do NOT regenerate the character poses. Only repaint hair, skin and clothing surfaces inside existing shapes. Variant01: simple muted moss-olive wool tunic with a plain tan belt, brown soft shoes unchanged, warm brown short bare hair, pale weathered natural skin. Southern England1300–1450 painterly isometric game sprite matching original brushwork. Four directions across NE SE SW NW, row0 androw1 opposite walking steps MUST remain exact from original. Preserve direction of faces and all arms. No coif, no objects, no facial hair, no backdrop, actual transparent background, no text. Output same layout and proportions as target. Clothing and hair identical costume across all directions and frames. All feet pixels and leg pose unchanged. This is a reskin edit only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_01-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_01-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_child_template_m-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:02:16.511Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 78% native paint +22% original shading. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-15 through cell bottom (entire lower legs/feet). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 35,
+          "y0": 22,
+          "x1": 53,
+          "y1": 66,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 187,
+          "y0": 118,
+          "x1": 332,
+          "y1": 407,
+          "w": 146,
+          "h": 290
+        },
+        "protectedYFrom": 51,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 365,
+        "eligiblePixels": 381,
+        "headAlphaCentroids": {
+          "template": [
+            45.356669677807886,
+            26.246913580246915
+          ],
+          "final": [
+            45.356669677807886,
+            26.246913580246915
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 104,
+          "y0": 23,
+          "x1": 122,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 597,
+          "y0": 126,
+          "x1": 737,
+          "y1": 412,
+          "w": 141,
+          "h": 287
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 376,
+        "eligiblePixels": 388,
+        "headAlphaCentroids": {
+          "template": [
+            113.61793317355139,
+            27.2502467221204
+          ],
+          "final": [
+            113.61793317355139,
+            27.2502467221204
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 23,
+          "x1": 191,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1009,
+          "y0": 122,
+          "x1": 1147,
+          "y1": 409,
+          "w": 139,
+          "h": 288
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 370,
+        "eligiblePixels": 387,
+        "headAlphaCentroids": {
+          "template": [
+            181.01204324620227,
+            27.085671274120706
+          ],
+          "final": [
+            181.01204324620227,
+            27.085671274120706
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 23,
+          "x1": 261,
+          "y1": 67,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1417,
+          "y0": 121,
+          "x1": 1559,
+          "y1": 410,
+          "w": 143,
+          "h": 290
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 387,
+        "eligiblePixels": 401,
+        "headAlphaCentroids": {
+          "template": [
+            249.4798226742291,
+            26.93598018123737
+          ],
+          "final": [
+            249.4798226742291,
+            26.93598018123737
+          ]
+        }
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 34,
+          "y0": 96,
+          "x1": 54,
+          "y1": 140,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 187,
+          "y0": 557,
+          "x1": 335,
+          "y1": 842,
+          "w": 149,
+          "h": 286
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 385,
+        "eligiblePixels": 397,
+        "headAlphaCentroids": {
+          "template": [
+            45.59820489446743,
+            100.08723090947339
+          ],
+          "final": [
+            45.59820489446743,
+            100.08723090947339
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 105,
+          "y0": 96,
+          "x1": 124,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 599,
+          "y0": 560,
+          "x1": 743,
+          "y1": 846,
+          "w": 145,
+          "h": 287
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 405,
+        "eligiblePixels": 414,
+        "headAlphaCentroids": {
+          "template": [
+            114.88967497898571,
+            100.24747828523395
+          ],
+          "final": [
+            114.88967497898571,
+            100.24747828523395
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 172,
+          "y0": 96,
+          "x1": 191,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 1004,
+          "y0": 560,
+          "x1": 1154,
+          "y1": 843,
+          "w": 151,
+          "h": 284
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 399,
+        "eligiblePixels": 420,
+        "headAlphaCentroids": {
+          "template": [
+            180.41046099290782,
+            100.35372340425532
+          ],
+          "final": [
+            180.41046099290782,
+            100.35372340425532
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 96,
+          "x1": 260,
+          "y1": 140,
+          "w": 20,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1416,
+          "y0": 559,
+          "x1": 1563,
+          "y1": 844,
+          "w": 148,
+          "h": 286
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 378,
+        "eligiblePixels": 390,
+        "headAlphaCentroids": {
+          "template": [
+            249.63876874279123,
+            100.16724336793541
+          ],
+          "final": [
+            249.63876874279123,
+            100.16724336793541
+          ]
+        }
+      }
+    ],
+    "status": "candidate",
+    "visualQA": {
+      "verdict": "pass with native limitation disclosed",
+      "score": 92,
+      "observations": "Final at original 296x148 preserves thin child body, clear olive/brown-hair versus russet/flax-hair distinction; all directions bare-headed and same tunic hem. Alpha silhouette unchanged. Native gait failed and was not accepted; original feet/leg RGBA is retained in final.",
+      "scope": "Offline sprite appearance and pixel registration only; no game installation or runtime animation test."
+    }
+  },
+  {
+    "id": "wk_child_m_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-0427-7051-8a9d-1bafab8463bb/exec-c6b94df4-aa78-4435-864f-212d9b56d02c.png",
+    "prompt": "Use case: identity-preserve. EDIT TARGET image is exact 296x148 transparent sprite sheet, eight medieval CHILD BOY poses arranged 4 columns x2 rows of74x74 cells. Keep all eight same positions, silhouettes, head size, body proportions, legs, shoes, feet and gait exactly. Do NOT regenerate the character poses. Only repaint hair, skin and clothing surfaces inside existing shapes. Variant02: simple muted brick-russet wool tunic with a plain tan belt, brown soft shoes unchanged, flaxen short bare hair, pale weathered natural skin. Southern England1300–1450 painterly isometric game sprite matching original brushwork. Four directions across NE SE SW NW, row0 androw1 opposite walking steps MUST remain exact from original. Preserve direction of faces and all arms. No coif, no objects, no facial hair, no backdrop, actual transparent background, no text. Output same layout and proportions as target. Clothing and hair identical costume across all directions and frames. All feet pixels and leg pose unchanged. This is a reskin edit only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_02-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_02-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_child_template_m-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:02:51.429Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 78% native paint +22% original shading. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-15 through cell bottom (entire lower legs/feet). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 35,
+          "y0": 22,
+          "x1": 53,
+          "y1": 66,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 194,
+          "y0": 126,
+          "x1": 334,
+          "y1": 400,
+          "w": 141,
+          "h": 275
+        },
+        "protectedYFrom": 51,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 364,
+        "eligiblePixels": 381,
+        "headAlphaCentroids": {
+          "template": [
+            45.356669677807886,
+            26.246913580246915
+          ],
+          "final": [
+            45.356669677807886,
+            26.246913580246915
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 104,
+          "y0": 23,
+          "x1": 122,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 605,
+          "y0": 130,
+          "x1": 740,
+          "y1": 407,
+          "w": 136,
+          "h": 278
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 368,
+        "eligiblePixels": 388,
+        "headAlphaCentroids": {
+          "template": [
+            113.61793317355139,
+            27.2502467221204
+          ],
+          "final": [
+            113.61793317355139,
+            27.2502467221204
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 23,
+          "x1": 191,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1010,
+          "y0": 129,
+          "x1": 1145,
+          "y1": 405,
+          "w": 136,
+          "h": 277
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 376,
+        "eligiblePixels": 387,
+        "headAlphaCentroids": {
+          "template": [
+            181.01204324620227,
+            27.085671274120706
+          ],
+          "final": [
+            181.01204324620227,
+            27.085671274120706
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 23,
+          "x1": 261,
+          "y1": 67,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1415,
+          "y0": 127,
+          "x1": 1557,
+          "y1": 404,
+          "w": 143,
+          "h": 278
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 387,
+        "eligiblePixels": 401,
+        "headAlphaCentroids": {
+          "template": [
+            249.4798226742291,
+            26.93598018123737
+          ],
+          "final": [
+            249.4798226742291,
+            26.93598018123737
+          ]
+        }
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 34,
+          "y0": 96,
+          "x1": 54,
+          "y1": 140,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 193,
+          "y0": 556,
+          "x1": 335,
+          "y1": 839,
+          "w": 143,
+          "h": 284
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 380,
+        "eligiblePixels": 397,
+        "headAlphaCentroids": {
+          "template": [
+            45.59820489446743,
+            100.08723090947339
+          ],
+          "final": [
+            45.59820489446743,
+            100.08723090947339
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 105,
+          "y0": 96,
+          "x1": 124,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 606,
+          "y0": 558,
+          "x1": 747,
+          "y1": 841,
+          "w": 142,
+          "h": 284
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 399,
+        "eligiblePixels": 414,
+        "headAlphaCentroids": {
+          "template": [
+            114.88967497898571,
+            100.24747828523395
+          ],
+          "final": [
+            114.88967497898571,
+            100.24747828523395
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 172,
+          "y0": 96,
+          "x1": 191,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 1001,
+          "y0": 558,
+          "x1": 1150,
+          "y1": 839,
+          "w": 150,
+          "h": 282
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 400,
+        "eligiblePixels": 420,
+        "headAlphaCentroids": {
+          "template": [
+            180.41046099290782,
+            100.35372340425532
+          ],
+          "final": [
+            180.41046099290782,
+            100.35372340425532
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 96,
+          "x1": 260,
+          "y1": 140,
+          "w": 20,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1415,
+          "y0": 558,
+          "x1": 1559,
+          "y1": 841,
+          "w": 145,
+          "h": 284
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 373,
+        "eligiblePixels": 390,
+        "headAlphaCentroids": {
+          "template": [
+            249.63876874279123,
+            100.16724336793541
+          ],
+          "final": [
+            249.63876874279123,
+            100.16724336793541
+          ]
+        }
+      }
+    ],
+    "status": "candidate",
+    "visualQA": {
+      "verdict": "pass with native limitation disclosed",
+      "score": 92,
+      "observations": "Final at original 296x148 preserves thin child body, clear olive/brown-hair versus russet/flax-hair distinction; all directions bare-headed and same tunic hem. Alpha silhouette unchanged. Native gait failed and was not accepted; original feet/leg RGBA is retained in final.",
+      "scope": "Offline sprite appearance and pixel registration only; no game installation or runtime animation test."
+    }
+  },
+  {
+    "id": "wk_child_f_01-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-4aea-7493-a5a3-54df30981268/exec-e491cbe0-516c-4649-81ba-de8b1e207ed1.png",
+    "prompt": "Use case: identity-preserve. EDIT TARGET image1 actor_child_template_f-v1.png; project style reference image2 wk_labor_f_01-v1.png. Create wk_child_f_01-v1 by repainting ONLY clothing hair and skin on the exact existing CHILD GIRL 4-column 2-row walk sprite sheet. Keep exact original canvas 288x144 layout, transparent background, each sprite pixel silhouette, head location, arms, legs, shoes and foot placement. Columns face NE SE SW NW; row0 frame0 and row1 frame1 must preserve opposite forward foot, never duplicate poses. Outfit one consistent simple muted dusty olive wool child kirtle with small cream linen coif, youthful face, no wimple, no widow outfit, no objects. Child proportions unchanged, NOT adult. Same coif shape and garment length all directions. Soft top-left light, broad painterly game shapes. Preserve original feet/shoes unchanged. No shadow, no labels, no grid. Do not generate a new arrangement; reskin attached template in place.",
+    "references": [
+      "actor_child_template_f-v1.png",
+      "wk_labor_f_01-v1.png"
+    ],
+    "tool": "image_gen",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "notes": "Native edit source. Pose lock achieved mechanically in final, not native generation.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_f_01-v1.png",
+    "selected": true,
+    "size": [
+      296,
+      148
+    ],
+    "manualEdits": "Native source per-cell bounding-box registration by Canvas; exact original template alpha and bottom9px restored per-cell pixel-for-pixel. Original head silhouette locked; generated garment/head paint clipped. Prompt mistakenly specified288x144; actual output uses authoritative296x148 template.",
+    "validation": {
+      "alphaMaxDiff": 0,
+      "paintCoverageFraction": 0.9550820616181975,
+      "cells": [
+        {
+          "col": 0,
+          "row": 0,
+          "sourceCrop": [
+            162,
+            138,
+            287,
+            404
+          ],
+          "targetBounds": [
+            29,
+            24,
+            47,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headFinalAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 0,
+          "sourceCrop": [
+            609,
+            138,
+            732,
+            404
+          ],
+          "targetBounds": [
+            105,
+            25,
+            122,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 73,
+          "headTemplateAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headFinalAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 0,
+          "sourceCrop": [
+            1023,
+            142,
+            1146,
+            406
+          ],
+          "targetBounds": [
+            175,
+            25,
+            192,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 80,
+          "headTemplateAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headFinalAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 0,
+          "sourceCrop": [
+            1461,
+            136,
+            1586,
+            404
+          ],
+          "targetBounds": [
+            249,
+            24,
+            267,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headFinalAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 0,
+          "row": 1,
+          "sourceCrop": [
+            173,
+            564,
+            289,
+            829
+          ],
+          "targetBounds": [
+            31,
+            97,
+            47,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headFinalAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 1,
+          "sourceCrop": [
+            617,
+            558,
+            737,
+            823
+          ],
+          "targetBounds": [
+            106,
+            96,
+            123,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headFinalAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 1,
+          "sourceCrop": [
+            1012,
+            559,
+            1133,
+            823
+          ],
+          "targetBounds": [
+            172,
+            96,
+            190,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headFinalAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 1,
+          "sourceCrop": [
+            1465,
+            564,
+            1579,
+            829
+          ],
+          "targetBounds": [
+            250,
+            97,
+            266,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 86,
+          "headTemplateAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headFinalAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "wk_child_f_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-4aea-7493-a5a3-54df30981268/exec-6e1f1e64-133f-471a-995d-35b06a1133a1.png",
+    "prompt": "Use case: identity-preserve. Edit ONLY the attached actor_child_template_f-v1 transparent 4-column x2-row sprite sheet. Preserve CHILD girl exact silhouettes, pose, frame layout, foot positions and head positions. Repaint clothes/hair/skin only; do not invent new poses or grow into adults. wk_child_f_02-v1: muted dusty blue simple wool kirtle, ochre-brown close fitting cloth cap with visible brown hair, youthful face. Same cap and garment length for NE SE SW NW, 2 complementary walk frames. Pixel-for-pixel feet and legs, arms and all outer silhouette remain from input. Top-left soft game lighting, original painterly style. No objects, no beard, no wimple, no apron added, no labels, no grid, no shadows, real transparent background. Sheet original288x144, retain original arrangement with eight distinct tiny figures. Different palette/head cloth from cream-coif olive first variant; entirely template reskin, no free generation.",
+    "references": [
+      "actor_child_template_f-v1.png"
+    ],
+    "tool": "image_gen",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "notes": "Native edit source. Pose lock achieved mechanically in final, not native generation.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_f_02-v1.png",
+    "selected": true,
+    "size": [
+      296,
+      148
+    ],
+    "manualEdits": "Native source per-cell bounding-box registration by Canvas; exact original template alpha and bottom9px restored per-cell pixel-for-pixel. Original head silhouette locked; generated garment/head paint clipped. Prompt mistakenly specified288x144; actual output uses authoritative296x148 template.",
+    "validation": {
+      "alphaMaxDiff": 0,
+      "paintCoverageFraction": 0.940685286495825,
+      "cells": [
+        {
+          "col": 0,
+          "row": 0,
+          "sourceCrop": [
+            161,
+            135,
+            288,
+            400
+          ],
+          "targetBounds": [
+            29,
+            24,
+            47,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headFinalAlphaCentroid": [
+            38.731368186874306,
+            29.235817575083427
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 0,
+          "sourceCrop": [
+            611,
+            135,
+            733,
+            405
+          ],
+          "targetBounds": [
+            105,
+            25,
+            122,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 73,
+          "headTemplateAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headFinalAlphaCentroid": [
+            112.1328813559322,
+            30.18532687651332
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 0,
+          "sourceCrop": [
+            1024,
+            140,
+            1147,
+            405
+          ],
+          "targetBounds": [
+            175,
+            25,
+            192,
+            68
+          ],
+          "protectedFeetY": 59,
+          "headRegionY": [
+            25,
+            35
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 80,
+          "headTemplateAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headFinalAlphaCentroid": [
+            183.968094902768,
+            30.5018688045068
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 0,
+          "sourceCrop": [
+            1460,
+            135,
+            1589,
+            405
+          ],
+          "targetBounds": [
+            249,
+            24,
+            267,
+            67
+          ],
+          "protectedFeetY": 58,
+          "headRegionY": [
+            24,
+            34
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 87,
+          "headTemplateAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headFinalAlphaCentroid": [
+            255.49008015462454,
+            29.215053152180094
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 0,
+          "row": 1,
+          "sourceCrop": [
+            169,
+            566,
+            292,
+            830
+          ],
+          "targetBounds": [
+            31,
+            97,
+            47,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headFinalAlphaCentroid": [
+            38.71959145775302,
+            102.21803484625048
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 1,
+          "row": 1,
+          "sourceCrop": [
+            616,
+            561,
+            739,
+            821
+          ],
+          "targetBounds": [
+            106,
+            96,
+            123,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headFinalAlphaCentroid": [
+            113.08731757653186,
+            101.34131000933615
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 2,
+          "row": 1,
+          "sourceCrop": [
+            1009,
+            561,
+            1132,
+            821
+          ],
+          "targetBounds": [
+            172,
+            96,
+            190,
+            138
+          ],
+          "protectedFeetY": 129,
+          "headRegionY": [
+            96,
+            106
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 82,
+          "headTemplateAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headFinalAlphaCentroid": [
+            181.2155633223684,
+            101.39643297697368
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        },
+        {
+          "col": 3,
+          "row": 1,
+          "sourceCrop": [
+            1465,
+            567,
+            1584,
+            830
+          ],
+          "targetBounds": [
+            250,
+            97,
+            266,
+            140
+          ],
+          "protectedFeetY": 131,
+          "headRegionY": [
+            97,
+            107
+          ],
+          "footRegionRgbaMaxDiff": 0,
+          "protectedOpaqueFootPixels": 86,
+          "headTemplateAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headFinalAlphaCentroid": [
+            256.4371575439191,
+            102.24176693215838
+          ],
+          "headAlphaCentroidDisplacementPx": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "wk_elder_m_01-v1",
+    "role": "actorSheet",
+    "size": [
+      296,
+      148
+    ],
+    "path": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_m_01-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-877d-7713-aeef-ca2e4240701a/exec-65622524-46cb-4d18-9170-09815a33d364.png",
+    "prompt": "Use case: identity-preserve. Edit the supplied 296x148 transparent sprite sheet ONLY, preserving precisely all eight figures, their pixel positions, body silhouettes, feet, alternate stride poses, head centers and four viewing directions. This is a medieval southern English 1300-1450 city-builder elder male reskin, ID wk_elder_m_01-v1. Four columns and two animation rows EXACTLY as supplied. Change clothing surface to a muted slate-olive long wool gown within the original coat silhouette, gray hair and short gray beard visible consistently in the two front-facing views, bare gray-haired head in all four directions. Painterly broad readable forms, matching original subdued brown/olive project style. Do NOT change anatomy, poses, legs, shoes, gait, lighting, composition or sprite scale. Do not add cane, staff, accessories, shadow, text or panel borders. Actual transparent background. Preserve template foot pixels unchanged; head centers unchanged. A precise clothing/hair repaint over the supplied template, never a newly posed sheet.",
+    "references": [
+      "actor_elder_template_m-v1.png"
+    ],
+    "tool": "image_gen.imagegen + Node.js PNG registration",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "selected": true,
+    "status": "candidate",
+    "manualEdits": "Per-cell source bounding-box registration and direct area downsample; apply generated RGB only within exact original template alpha; all cell-relative y>=43 lower body and foot RGBA pixels restored unchanged. Original silhouette retained; head alpha centroid therefore unchanged. No recolor-only substitution.",
+    "notes": "Native pose drift corrected mechanically, not native pixel-exact success. Grey hair/beard and garment repaint are generated. Long-gown hem limited to original template coat contour to preserve pixel pose; does not extend to ankles. Head <=2px evidence measures alpha support in head ROI, not semantic face landmark tracking."
+  },
+  {
+    "id": "wk_elder_m_02-v1",
+    "role": "actorSheet",
+    "size": [
+      296,
+      148
+    ],
+    "path": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_m_02-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-877d-7713-aeef-ca2e4240701a/exec-3ed01d97-35b4-4f92-8d6e-8e7f9a4a8eaa.png",
+    "prompt": "Use case: identity-preserve. PRECISE RESKIN EDIT of supplied 296x148 transparent sprite sheet, not free generation. Asset wk_elder_m_02-v1. Keep eight figures at exact same coordinates, four columns two alternate walking rows, same head centers and pixel silhouettes. Change ONLY clothing/hair/skin paint: elderly medieval southern English man (1300-1450), faded muted blue-gray wool long gown constrained to existing coat and leg silhouette, soft brown close-fitting wool cap on ALL eight figures, gray short beard under cap on both front views, gray hair at cap edge on back views. No staff or possessions. Painterly restrained earthy tones, large readable cloth folds and beard. Preserve all original feet/shoes and leg poses EXACTLY; first and second walking frame remain different as template. No changing stance, size, locations or direction; do not add background, ground shadow, letters, panels or borders. Transparent RGBA. Garment may only be repainted over existing body pixels; no widening silhouette.",
+    "references": [
+      "actor_elder_template_m-v1.png"
+    ],
+    "tool": "image_gen.imagegen + Node.js PNG registration",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "selected": true,
+    "status": "candidate",
+    "manualEdits": "Per-cell source bounding-box registration and direct area downsample; apply generated RGB only within exact original template alpha; all cell-relative y>=43 lower body and foot RGBA pixels restored unchanged. Original silhouette retained; head alpha centroid therefore unchanged. No recolor-only substitution.",
+    "notes": "Native pose drift corrected mechanically, not native pixel-exact success. Grey hair/beard and garment repaint are generated. Long-gown hem limited to original template coat contour to preserve pixel pose; does not extend to ankles. Head <=2px evidence measures alpha support in head ROI, not semantic face landmark tracking."
+  },
+  {
+    "id": "wk_elder_f_01-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-3c8ef0e3-7c8b-450a-a00e-49c8a0315bc5.png",
+    "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_01-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a warm ivory linen wimple, long muted blue-grey wool gown with dull ochre narrow belt. Identical wimple silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_01-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_01-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_elder_template_f-v1.png",
+      "wk_reskin_P6_widow_f-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:03:22.901Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 90% native paint +10% original shading; native paint area-sampled over5x5 before final registration. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-6 through cell bottom (lower shoe/contact region; all other pose silhouette retained via original alpha). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity. Prompt originally misstated288x144; measured final296x148 is authoritative. Native02 first coif attempt retained veil and was rejected; second edit selected. Full prompt is preserved verbatim.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 26,
+          "y0": 9,
+          "x1": 52,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 146,
+          "y0": 51,
+          "x1": 324,
+          "y1": 405,
+          "w": 179,
+          "h": 355
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 880,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 98,
+          "y0": 9,
+          "x1": 123,
+          "y1": 67,
+          "w": 26,
+          "h": 59
+        },
+        "sourceCrop": {
+          "x0": 570,
+          "y0": 51,
+          "x1": 744,
+          "y1": 405,
+          "w": 175,
+          "h": 355
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 880,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 11,
+          "x1": 199,
+          "y1": 67,
+          "w": 27,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1013,
+          "y0": 57,
+          "x1": 1191,
+          "y1": 405,
+          "w": 179,
+          "h": 349
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 871,
+        "eligiblePixels": 903
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 9,
+          "x1": 269,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 1423,
+          "y0": 51,
+          "x1": 1607,
+          "y1": 405,
+          "w": 185,
+          "h": 355
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 863,
+        "eligiblePixels": 894
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 29,
+          "y0": 83,
+          "x1": 53,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 165,
+          "y0": 479,
+          "x1": 329,
+          "y1": 832,
+          "w": 165,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 850,
+        "eligiblePixels": 873
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 99,
+          "y0": 81,
+          "x1": 124,
+          "y1": 138,
+          "w": 26,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 574,
+          "y0": 470,
+          "x1": 752,
+          "y1": 823,
+          "w": 179,
+          "h": 354
+        },
+        "protectedYFrom": 132,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 860,
+        "eligiblePixels": 901
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 170,
+          "y0": 81,
+          "x1": 197,
+          "y1": 137,
+          "w": 28,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 994,
+          "y0": 472,
+          "x1": 1174,
+          "y1": 823,
+          "w": 181,
+          "h": 352
+        },
+        "protectedYFrom": 131,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 871,
+        "eligiblePixels": 904
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 83,
+          "x1": 267,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1420,
+          "y0": 479,
+          "x1": 1582,
+          "y1": 832,
+          "w": 163,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 823,
+        "eligiblePixels": 856
+      }
+    ]
+  },
+  {
+    "id": "wk_elder_f_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-9f7453bc-003e-4ce2-99f5-879e8b1e77e9.png",
+    "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_02-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a muted taupe fitted linen coif with grey hair at the temples, long muted sage-olive wool gown with warm umber apron and narrow belt. Identical fitted coif silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_02-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_02-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_elder_template_f-v1.png",
+      "wk_reskin_P6_widow_f-v1.png"
+    ],
+    "attempt": 2,
+    "selected": false,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:05:24.539Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 90% native paint +10% original shading; native paint area-sampled over5x5 before final registration. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-6 through cell bottom (lower shoe/contact region; all other pose silhouette retained via original alpha). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity. Prompt originally misstated288x144; measured final296x148 is authoritative. Native02 first coif attempt retained veil and was rejected; second edit selected. Full prompt is preserved verbatim.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 26,
+          "y0": 9,
+          "x1": 52,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 144,
+          "y0": 48,
+          "x1": 321,
+          "y1": 404,
+          "w": 178,
+          "h": 357
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 875,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 98,
+          "y0": 9,
+          "x1": 123,
+          "y1": 67,
+          "w": 26,
+          "h": 59
+        },
+        "sourceCrop": {
+          "x0": 567,
+          "y0": 54,
+          "x1": 738,
+          "y1": 408,
+          "w": 172,
+          "h": 355
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 875,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 11,
+          "x1": 199,
+          "y1": 67,
+          "w": 27,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1025,
+          "y0": 66,
+          "x1": 1202,
+          "y1": 408,
+          "w": 178,
+          "h": 343
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 859,
+        "eligiblePixels": 903
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 9,
+          "x1": 269,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 1437,
+          "y0": 54,
+          "x1": 1614,
+          "y1": 404,
+          "w": 178,
+          "h": 351
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 857,
+        "eligiblePixels": 894
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 29,
+          "y0": 83,
+          "x1": 53,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 165,
+          "y0": 478,
+          "x1": 325,
+          "y1": 831,
+          "w": 161,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 834,
+        "eligiblePixels": 873
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 99,
+          "y0": 81,
+          "x1": 124,
+          "y1": 138,
+          "w": 26,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 571,
+          "y0": 478,
+          "x1": 747,
+          "y1": 828,
+          "w": 177,
+          "h": 351
+        },
+        "protectedYFrom": 132,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 863,
+        "eligiblePixels": 901
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 170,
+          "y0": 81,
+          "x1": 197,
+          "y1": 137,
+          "w": 28,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1014,
+          "y0": 481,
+          "x1": 1192,
+          "y1": 822,
+          "w": 179,
+          "h": 342
+        },
+        "protectedYFrom": 131,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 860,
+        "eligiblePixels": 904
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 83,
+          "x1": 267,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1439,
+          "y0": 478,
+          "x1": 1598,
+          "y1": 833,
+          "w": 160,
+          "h": 356
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 818,
+        "eligiblePixels": 856
+      }
+    ],
+    "reason": "Long veil not distinct from01; rejected for headcover difference."
+  },
+  {
+    "id": "wk_elder_f_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-bb9f3f5d-0948-441d-8117-5d92ce839453.png",
+    "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_02-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a muted taupe fitted linen coif with grey hair at the temples, long muted sage-olive wool gown with warm umber apron and narrow belt. Identical fitted coif silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.\nTargeted correction: the first attempt retained a long ivory veil. REPLACE THAT HEAD COVER with a SMALL CLOSE FITTING TAUPE COIF tied under chin, grey hair visible at temples. No long fabric hanging down back. All eight cells show same small coif. Keep each original template head outline/position. Actual edit template image is296x148, eight74px cells; previous288x144 description was erroneous. Preserve296x148 final layout. Keep everything else from this instruction.",
+    "history": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-bfc7-77a0-89aa-91ef8535e55e/exec-9f7453bc-003e-4ce2-99f5-879e8b1e77e9.png",
+        "prompt": "Use case: identity-preserve. Edit image 1, an existing 288x144 transparent game sprite sheet, NOT free generation. Preserve every cell location, exact pose, walking foot alternation, body outline, head centre and frame order. The sheet has 4 columns directions and 2 rows walk frames, each cell72x72. Image 2 is solely painterly elderly-woman garment inspiration. Reskin image1 into wk_elder_f_02-v1: elderly Southern English woman 1300–1450, pale aged skin and a little grey hair visible beneath a muted taupe fitted linen coif with grey hair at the temples, long muted sage-olive wool gown with warm umber apron and narrow belt. Identical fitted coif silhouette and gown length in all four directions and both frames. Paint fabric folds and skin with soft project hand painted brushwork. No widow black requirement. Do not add props or staff. CRITICAL leave ALL feet, ankles, lower leg poses and the bottom14px of each original cell unchanged. Keep arms/hands where they are. Exact original body silhouette and head position, just paint replacement clothes, skin and hair inside original sprite. Genuine transparent background. No words or grids. Preserve source canvas aspect2:1 and original character placements even if output is larger. Soft upper-left light, minimal tiny contact shadow only.",
+        "selected": false,
+        "reason": "Long veil not distinct from01; rejected for headcover difference."
+      }
+    ],
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_02-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_f_02-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_elder_template_f-v1.png",
+      "wk_reskin_P6_widow_f-v1.png"
+    ],
+    "attempt": 2,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:05:24.539Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 90% native paint +10% original shading; native paint area-sampled over5x5 before final registration. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-6 through cell bottom (lower shoe/contact region; all other pose silhouette retained via original alpha). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity. Prompt originally misstated288x144; measured final296x148 is authoritative. Native02 first coif attempt retained veil and was rejected; second edit selected. Full prompt is preserved verbatim.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 26,
+          "y0": 9,
+          "x1": 52,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 144,
+          "y0": 48,
+          "x1": 321,
+          "y1": 404,
+          "w": 178,
+          "h": 357
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 875,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 98,
+          "y0": 9,
+          "x1": 123,
+          "y1": 67,
+          "w": 26,
+          "h": 59
+        },
+        "sourceCrop": {
+          "x0": 567,
+          "y0": 54,
+          "x1": 738,
+          "y1": 408,
+          "w": 172,
+          "h": 355
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 875,
+        "eligiblePixels": 912
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 11,
+          "x1": 199,
+          "y1": 67,
+          "w": 27,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1025,
+          "y0": 66,
+          "x1": 1202,
+          "y1": 408,
+          "w": 178,
+          "h": 343
+        },
+        "protectedYFrom": 61,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 859,
+        "eligiblePixels": 903
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 9,
+          "x1": 269,
+          "y1": 66,
+          "w": 27,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 1437,
+          "y0": 54,
+          "x1": 1614,
+          "y1": 404,
+          "w": 178,
+          "h": 351
+        },
+        "protectedYFrom": 60,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 857,
+        "eligiblePixels": 894
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 29,
+          "y0": 83,
+          "x1": 53,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 165,
+          "y0": 478,
+          "x1": 325,
+          "y1": 831,
+          "w": 161,
+          "h": 354
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 834,
+        "eligiblePixels": 873
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 99,
+          "y0": 81,
+          "x1": 124,
+          "y1": 138,
+          "w": 26,
+          "h": 58
+        },
+        "sourceCrop": {
+          "x0": 571,
+          "y0": 478,
+          "x1": 747,
+          "y1": 828,
+          "w": 177,
+          "h": 351
+        },
+        "protectedYFrom": 132,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 863,
+        "eligiblePixels": 901
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 170,
+          "y0": 81,
+          "x1": 197,
+          "y1": 137,
+          "w": 28,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1014,
+          "y0": 481,
+          "x1": 1192,
+          "y1": 822,
+          "w": 179,
+          "h": 342
+        },
+        "protectedYFrom": 131,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 860,
+        "eligiblePixels": 904
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 243,
+          "y0": 83,
+          "x1": 267,
+          "y1": 139,
+          "w": 25,
+          "h": 57
+        },
+        "sourceCrop": {
+          "x0": 1439,
+          "y0": 478,
+          "x1": 1598,
+          "y1": 833,
+          "w": 160,
+          "h": 356
+        },
+        "protectedYFrom": 133,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 818,
+        "eligiblePixels": 856
+      }
+    ]
+  },
+  {
+    "id": "wall/stone_gate_v3_nwse-v1",
+    "role": "module",
+    "size": [
+      512,
+      384
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-fda8-7290-8f21-0ab86b593203/exec-ff5cd5b5-4d7a-4f02-8669-0e5bf7671caa.png",
+    "prompt": "Use case: sketch-to-render. Make ONE transparent-background hand-painted isometric medieval English stone gate sprite. First image is EXACT topology guide: retain its canvas aspect 384:320, fixed outer silhouette, long diagonal baseline falling toward the right (NW-SE axis), the two low side piers/towers, and MOST IMPORTANT the entire large transparent curved arch opening. Do not shrink or fill the opening. Do not make lintel. Paint this exact structural mask, not a taller or narrower gate. Second image stone_gate_v2 is ONLY material/art style reference, not proportions. Third and fourth images give exact desaturated grey-brown stone tone and block scale. Southern England 1300–1450. Stones irregular but coarse 12–16 pixels at final384-wide size, little mortar, no fine noise. Arch ring is radial wedge stones with clearly curved intrados, no horizontal slab across opening. Arch clear span204 of384 canvas pixels, straight jamb20, arch rise64, ring24, local vertical tower height112; ground slope1:2. Match first image geometry pixel-for-pixel when reduced to384x320. Add only tiny low crenellation indications within the existing top silhouette, do not grow towers or parapet height. Quiet flat top walk with muted highlights, left-upper soft light. Alpha transparent opening AND exterior, no background, no ground plane, no foliage, no doors, no people, no text, no cast shadow. Keep tall stone body texture consistent with project references. Output a single precisely aligned sprite, no grid or panels.",
+    "references": [
+      "gates-nwse-topology.png",
+      "stone_gate_v2-v1.png",
+      "stone_face_a-v2.png",
+      "stone_top_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Candidate. Guide supplied before generation; native followed topology but changed outer pier widths, so final canvas enlarged to512x384 and registration documented.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_gate_v3_nwse-v1.png",
+    "manualEdits": "Native image→final512x384 single Canvas affine registration: portal groundpoints span204px, baseline slope 0.5, maximum local vertical rise112px. Independent axis paint; no mirror. No arbitrary runtime scaling. Final PNG 3px Euclidean nearest opaque RGB bleed into alpha0 pixels only; visible RGBA byte-identical.",
+    "geometry": {
+      "id": "wall/stone_gate_v3_nwse-v1",
+      "size": [
+        512,
+        384
+      ],
+      "axis": "nwse",
+      "portalSpanSource": 204,
+      "portalFeet": [
+        [
+          150,
+          198
+        ],
+        [
+          354,
+          300
+        ]
+      ],
+      "pivot": [
+        252,
+        249
+      ],
+      "groundSlope": 0.5,
+      "localVerticalHeight": 112,
+      "sourcePortalAnchors": [
+        [
+          439,
+          661
+        ],
+        [
+          1029,
+          1013
+        ]
+      ],
+      "sourceGroundSlope": 0.5966101694915255,
+      "sourceMaximumRise": 580.4711864406781,
+      "affine": [
+        0.34576271186440677,
+        0.05776739240753906,
+        0,
+        0.19294670022599986,
+        -1.78983050847458,
+        45.102345883704444
+      ],
+      "wallSockets": [
+        [
+          32.7864406779661,
+          139.39322033898304
+        ],
+        [
+          435.6,
+          340.8
+        ]
+      ],
+      "interpretation": "Height112px measured vertically above each local groundpoint; full isometric bounding box also includes diagonal ground-axis drop. Native generated topology differs from guide; calibrated with source portal anchors; no runtime horizontal stretching.",
+      "mask": "Preserved native alpha; topology supplied before generation; clear passage stays alpha0.",
+      "opaqueBBox": [
+        27,
+        60,
+        456,
+        333
+      ],
+      "openingSamples": [
+        {
+          "x": 166,
+          "groundY": 206,
+          "innerArchY": 162,
+          "clearHeight": 43
+        },
+        {
+          "x": 201,
+          "groundY": 223.5,
+          "innerArchY": 166,
+          "clearHeight": 56.5
+        },
+        {
+          "x": 252,
+          "groundY": 249,
+          "innerArchY": 185,
+          "clearHeight": 63
+        },
+        {
+          "x": 303,
+          "groundY": 274.5,
+          "innerArchY": 215,
+          "clearHeight": 58.5
+        },
+        {
+          "x": 338,
+          "groundY": 292,
+          "innerArchY": 247,
+          "clearHeight": 44
+        }
+      ]
+    },
+    "generatedAt": "2026-09-25T13:05:11.569Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "selectionReason": "Independent axis generation preserved broad curved opening, stone tone, low height; final portal registered at204px without game scaling.",
+    "sourceSha256": "59f741aea56e6611867e56aad38dcbe080e084b99af1d5a06efc87385b09a7b3",
+    "runtimeSha256": "925bf39f9a3d3f502746c456b9bd415bcc2bf99fd9b4bb754f89a28409248952",
+    "bleedValidation": {
+      "radius": 3,
+      "hiddenPixels": 1656,
+      "allAlphaUnchanged": true,
+      "visibleRGBUnchanged": true
+    }
+  },
+  {
+    "id": "wall/stone_gate_v3_nesw-v1",
+    "role": "module",
+    "size": [
+      512,
+      384
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-fda8-7290-8f21-0ab86b593203/exec-b6f6743f-c3cf-4937-a227-f98d0347877c.png",
+    "prompt": "Use case: sketch-to-render. Make ONE transparent-background hand-painted isometric medieval English stone gate sprite. First image is EXACT topology guide: retain its canvas aspect 384:320, fixed outer silhouette, long diagonal baseline rising toward the right (NE-SW axis), the two low side piers/towers, and MOST IMPORTANT the entire large transparent curved arch opening. Do not shrink or fill the opening. Do not make lintel. Paint this exact structural mask, not a taller or narrower gate. Second image stone_gate_v2 is ONLY material/art style reference, not proportions. Third and fourth images give exact desaturated grey-brown stone tone and block scale. Southern England 1300–1450. Stones irregular but coarse 12–16 pixels at final384-wide size, little mortar, no fine noise. Arch ring is radial wedge stones with clearly curved intrados, no horizontal slab across opening. Arch clear span204 of384 canvas pixels, straight jamb20, arch rise64, ring24, local vertical tower height112; ground slope1:2. Match first image geometry pixel-for-pixel when reduced to384x320. Add only tiny low crenellation indications within the existing top silhouette, do not grow towers or parapet height. Quiet flat top walk with muted highlights, left-upper soft light. Alpha transparent opening AND exterior, no background, no ground plane, no foliage, no doors, no people, no text, no cast shadow. Keep tall stone body texture consistent with project references. Output a single precisely aligned sprite, no grid or panels.",
+    "references": [
+      "gates-nesw-topology.png",
+      "stone_gate_v2-v1.png",
+      "stone_face_a-v2.png",
+      "stone_top_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Candidate. Guide supplied before generation; native followed topology but changed outer pier widths, so final canvas enlarged to512x384 and registration documented.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_gate_v3_nesw-v1.png",
+    "manualEdits": "Native image→final512x384 single Canvas affine registration: portal groundpoints span204px, baseline slope -0.5, maximum local vertical rise112px. Independent axis paint; no mirror. No arbitrary runtime scaling. Final PNG 3px Euclidean nearest opaque RGB bleed into alpha0 pixels only; visible RGBA byte-identical.",
+    "geometry": {
+      "id": "wall/stone_gate_v3_nesw-v1",
+      "size": [
+        512,
+        384
+      ],
+      "axis": "nesw",
+      "portalSpanSource": 204,
+      "portalFeet": [
+        [
+          150,
+          300
+        ],
+        [
+          354,
+          198
+        ]
+      ],
+      "pivot": [
+        252,
+        249
+      ],
+      "groundSlope": -0.5,
+      "localVerticalHeight": 112,
+      "sourcePortalAnchors": [
+        [
+          382,
+          984
+        ],
+        [
+          1008,
+          614
+        ]
+      ],
+      "sourceGroundSlope": -0.5910543130990416,
+      "sourceMaximumRise": 533.4536741214058,
+      "affine": [
+        0.3258785942492013,
+        -0.03884589168293713,
+        0,
+        0.20995262650400368,
+        25.51437699680511,
+        108.24574614294238
+      ],
+      "wallSockets": [
+        [
+          51.584664536741215,
+          349.2076677316294
+        ],
+        [
+          432.8626198083067,
+          158.56869009584665
+        ]
+      ],
+      "interpretation": "Height112px measured vertically above each local groundpoint; full isometric bounding box also includes diagonal ground-axis drop. Native generated topology differs from guide; calibrated with source portal anchors; no runtime horizontal stretching.",
+      "mask": "Preserved native alpha; topology supplied before generation; clear passage stays alpha0.",
+      "opaqueBBox": [
+        48,
+        74,
+        439,
+        330
+      ],
+      "openingSamples": [
+        {
+          "x": 166,
+          "groundY": 292,
+          "innerArchY": 253,
+          "clearHeight": 38
+        },
+        {
+          "x": 201,
+          "groundY": 274.5,
+          "innerArchY": 220,
+          "clearHeight": 53.5
+        },
+        {
+          "x": 252,
+          "groundY": 249,
+          "innerArchY": 190,
+          "clearHeight": 58
+        },
+        {
+          "x": 303,
+          "groundY": 223.5,
+          "innerArchY": 171,
+          "clearHeight": 51.5
+        },
+        {
+          "x": 338,
+          "groundY": 206,
+          "innerArchY": 167,
+          "clearHeight": 38
+        }
+      ]
+    },
+    "generatedAt": "2026-09-25T13:06:15.057Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "selectionReason": "Independent axis generation preserved broad curved opening, stone tone, low height; final portal registered at204px without game scaling.",
+    "sourceSha256": "18ff3a44f271e473ddcb72d1fb34b4ed71f1896f35f306d6fd5d9cb7d6db9c8c",
+    "runtimeSha256": "2866d5585412c6e800c2eb352ca49c142d0b8bbc21fe3d1c4c88bd1012499477",
+    "bleedValidation": {
+      "radius": 3,
+      "hiddenPixels": 1309,
+      "allAlphaUnchanged": true,
+      "visibleRGBUnchanged": true
+    }
+  },
+  {
+    "id": "water/shallow_d-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "deep_a-v1.png",
+      "shallow_a-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/additional/deep_a-v1.png",
+      "/tmp/astra-wave5c-work-20260925/additional/shallow_a-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Create ONE seamless opaque top-down game water texture, aspect ratio 2:1, delivered design resolution 256x128. Reference image 1 is the approved deep water, reference 2 is the previous shallow water. Make shallow water variant D in EXACTLY the muted grey olive teal hue family of image 1, only very modestly lighter (about 4 RGB levels brighter); remove the extra cyan/blue of image 2. Broad softly painted ripple forms, 8–12 pixels minimum at final 256x128 scale. Ripple phase D: gently staggered short horizontal arcs, no large distinctive center feature. Perfectly tileable BOTH axes. Whole image opaque, no border, no shoreline, no transparency, no objects, no sparkle noise or 1–4px grain. Preserve restrained painterly game texture. No text.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-ac3ddc2d-45a1-4611-a3c5-8fdc6caf2df6.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/water/shallow_d-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-ac3ddc2d-45a1-4611-a3c5-8fdc6caf2df6.png",
+    "manualEdits": "Canvas one-pass resize to 256x128; mean RGB matched to deep_a+4 levels; contrast .65; paired edge collar X16/Y12px; opaque RGBA.",
+    "notes": "Candidate: same deep-water hue, modest lighter level; wave phase differs.",
+    "generatedAt": "2026-09-25T13:04:04.723Z",
+    "candidates": 1,
+    "selectionReason": "Broad low-contrast ripples, muted hue continuity."
+  },
+  {
+    "id": "water/shallow_e-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "deep_a-v1.png",
+      "shallow_a-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/additional/deep_a-v1.png",
+      "/tmp/astra-wave5c-work-20260925/additional/shallow_a-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Create ONE seamless opaque top-down game water texture, aspect ratio 2:1, delivered design resolution 256x128. Reference image 1 is approved deep water; image 2 is prior shallow water. New shallow variant E must use EXACT muted grey olive teal hue of image 1 with only a very slight lightness increase (about 4 RGB levels). Less blue and murkier than image 2. Broad painted low-contrast wave motifs 8–12px at 256x128, E phase offset with longer shallow meandering ripples clustered across left and lower thirds, distinct from D but same density. Perfectly seamless on BOTH X and Y. Entire opaque rectangle. No shore, no border, no objects, no speckle noise, no tiny grain, no foam, no text. Same painterly rendering as project references.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-fb32dba6-6973-487a-af4b-dc7f6cde93a2.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/water/shallow_e-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-fb32dba6-6973-487a-af4b-dc7f6cde93a2.png",
+    "manualEdits": "Canvas one-pass resize to 256x128; mean RGB matched to deep_a+4 levels; contrast .65; paired edge collar X16/Y12px; opaque RGBA.",
+    "notes": "Candidate: same deep-water hue, modest lighter level; wave phase differs.",
+    "generatedAt": "2026-09-25T13:04:27.863Z",
+    "candidates": 1,
+    "selectionReason": "Broad low-contrast ripples, muted hue continuity."
+  },
+  {
+    "id": "wall/stone_pillar_135_b-v1",
+    "role": "module",
+    "size": [
+      1774,
+      887
+    ],
+    "references": [
+      "stone_pillar_135-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/astra-wave5c-reference-files/stone_pillar_135-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Reference is this project's existing 135-degree stone wall buttress. Make ONE newly painted LEFT-TURN 135-degree corner buttress B, not a horizontal flip or recolor. Keep existing canvas aspect 2:1, centered isolated object, same size and bottom-center registration, same vertical height and block scale, identical grey warm limestone/rubble palette and painterly material. Change the actual footprint: two unequal wings meet at an obtuse 135 degree corner, primary long wing extends back-left from the front bend, short return wing turns to rear-right; clearly show 135-degree bent cap and plinth plan, not a right-angle square column. Faceted cap follows bend, quoins at exposed bend, battered lower foot. Transparent background everywhere outside object, no ground plane, no cast shadow, soft top-left light, right face shaded. Reference object's body occupies approximately x630..1145 y100..790 in 1774x887 canvas; keep this registration and visual scale. Broad masonry joint grouping. No battlements, no roof, no doorway, no text.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-00e1ad81-c41c-42b2-9eb2-8c2d99be34e8.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_pillar_135_b-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-00e1ad81-c41c-42b2-9eb2-8c2d99be34e8.png",
+    "manualEdits": "Canvas single bbox registration to reference pillar bbox; saturated edge-fringe alpha cleanup; 3px invisible RGB bleed. No flip.",
+    "notes": "Candidate: independently repainted left/right long-wing geometry, fixed reference registration; obtuse corner visual target requires runtime socket verification.",
+    "generatedAt": "2026-09-25T13:05:00.221Z",
+    "candidates": 1,
+    "selectionReason": "Distinct long-wing side, material and top-left light retained."
+  },
+  {
+    "id": "wall/stone_pillar_135_c-v1",
+    "role": "module",
+    "size": [
+      1774,
+      887
+    ],
+    "references": [
+      "stone_pillar_135-v1.png"
+    ],
+    "refs": [
+      "/tmp/astra-wave5c-work-20260925/astra-wave5c-reference-files/stone_pillar_135-v1.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Paint ONE RIGHT-TURN 135-degree corner buttress C as a true newly drawn counterpart of project reference. Not a mirrored bitmap: redraw masonry with light still from top-left and different joint placement. Same 1774x887 2:1 transparent canvas, body centered around x630..1145 y100..790, same height, pivot, scale, stone block size, grey warm limestone and rubble painting. Actual footprint two unequal wings form obtuse 135-degree turn: primary long wing extends toward rear-right from the front bend, shorter return turns rear-left. Broad long RIGHT side and narrower LEFT return, versus B's long left side. Show bent polygon top cap and matching plinth, genuine obtuse 135-degree corner not 90-degree square pillar. Quoin blocks articulate bend, sloped lower foot. Same restrained historical English stonework 1300-1450. Fully transparent exterior; no floor or cast shadow, no battlements, no text.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-af33a1bd-5c07-47b0-9a09-34616d0771c0.png",
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "status": "candidate",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_pillar_135_c-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a9-426b-7ed2-9bda-36437f5c4d13/exec-af33a1bd-5c07-47b0-9a09-34616d0771c0.png",
+    "manualEdits": "Canvas single bbox registration to reference pillar bbox; saturated edge-fringe alpha cleanup; 3px invisible RGB bleed. No flip.",
+    "notes": "Candidate: independently repainted left/right long-wing geometry, fixed reference registration; obtuse corner visual target requires runtime socket verification.",
+    "generatedAt": "2026-09-25T13:05:24.984Z",
+    "candidates": 1,
+    "selectionReason": "Distinct long-wing side, material and top-left light retained."
+  }
+]

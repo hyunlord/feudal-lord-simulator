@@ -1,0 +1,15 @@
+{
+  "id": "wk_servant_m_02-v1",
+  "template": "actor_civilian_man-v1.png",
+  "group": "servant",
+  "sex": "m",
+  "design": "muted brick-red madder tunic, pale linen tied coif, small darker madder livery cuff",
+  "prompt": "Use case: identity-preserve. EDIT THE ATTACHED EXACT 8-CELL SPRITE SHEET, a rigid pose template. Keep original 4 columns NE,SE,SW,NW and 2 gait rows, exact camera/body outline, head locations, hand and elbow positions, legs, boots and shadows. Clothes/headwear ONLY: young clean-shaven adult household servant in muted brick-red madder practical mid-thigh wool tunic, pale warm linen close tied coif with short ties, natural grey hose. A small narrow slightly darker madder-red household livery cuff patch repeats on one cuff. NO heraldic text. Different from grey-tunic blue-cap servant. England 1300–1450; hand-painted tiny project sprites, muted dyes, soft upperleft light. All eight cells same outfit. Empty hands, no bags/tools/props. Preserve foot silhouettes and gait exactly. Transparent RGBA, sheet aspect2:1. Do not invent or rearrange poses. This is template clothes editing, not free-generated people.",
+  "refs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/templates/actor_civilian_man-v1.png"
+  ],
+  "tool": "builtin image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw": "sources/wk_servant_m_02-v1-edit.png"
+}

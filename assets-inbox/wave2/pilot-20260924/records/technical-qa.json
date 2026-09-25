@@ -1,0 +1,371 @@
+{
+  "assets": [
+    {
+      "assetId": "house_l2_brewer-pilot",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        53,
+        92,
+        1042,
+        1051
+      ],
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "bounds": [
+        14,
+        18,
+        113,
+        114
+      ],
+      "scaleUniform": 0.1085164709015603,
+      "placement": [
+        14.421052631578952,
+        18.03292113987638,
+        113.07416267942584,
+        114.05081091753988
+      ],
+      "mappedSourceRegistration": [
+        574,
+        1143
+      ],
+      "pivotMappingError": 0,
+      "margin": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 4
+      },
+      "marginClearCount": 0,
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur"
+    },
+    {
+      "assetId": "house_l2_weaver-pilot",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        131,
+        53,
+        995,
+        1103
+      ],
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "bounds": [
+        15,
+        8,
+        112,
+        124
+      ],
+      "scaleUniform": 0.11249658391424865,
+      "placement": [
+        14.991083473953168,
+        8,
+        111.93410099467741,
+        124.08373205741626
+      ],
+      "mappedSourceRegistration": [
+        628.5,
+        1156
+      ],
+      "pivotMappingError": 0,
+      "margin": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 4
+      },
+      "marginClearCount": 0,
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur"
+    },
+    {
+      "assetId": "house_l2_garden-pilot",
+      "sourceSize": [
+        1211,
+        1299
+      ],
+      "sourceCrop": [
+        17,
+        101,
+        1132,
+        1143
+      ],
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "bounds": [
+        14,
+        18,
+        113,
+        114
+      ],
+      "scaleUniform": 0.09988883628924544,
+      "placement": [
+        14.421052631578952,
+        17.91079217880872,
+        113.07416267942584,
+        114.17293987860754
+      ],
+      "mappedSourceRegistration": [
+        583,
+        1244
+      ],
+      "pivotMappingError": 0,
+      "margin": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 4
+      },
+      "marginClearCount": 0,
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur"
+    },
+    {
+      "assetId": "wheat_farm_pastoral_ripe-pilot",
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        43,
+        48,
+        1687,
+        819
+      ],
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "bounds": [
+        19,
+        16,
+        346,
+        168
+      ],
+      "scaleUniform": 0.20512820512820512,
+      "placement": [
+        18.5414390194548,
+        15.990980834272818,
+        346.05128205128204,
+        168
+      ],
+      "mappedSourceRegistration": [
+        886.5,
+        867
+      ],
+      "pivotMappingError": 0,
+      "margin": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 8
+      },
+      "marginClearCount": 0,
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur"
+    },
+    {
+      "assetId": "well_b-pilot",
+      "sourceSize": [
+        1190,
+        1322
+      ],
+      "sourceCrop": [
+        353,
+        405,
+        506,
+        706
+      ],
+      "size": [
+        72,
+        80
+      ],
+      "pivot": [
+        36,
+        64
+      ],
+      "bounds": [
+        19,
+        17,
+        34,
+        47
+      ],
+      "scaleUniform": 0.06719367588932806,
+      "placement": [
+        19,
+        16.56126482213439,
+        34,
+        47.43873517786561
+      ],
+      "mappedSourceRegistration": [
+        606,
+        1111
+      ],
+      "pivotMappingError": 0,
+      "margin": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 8
+      },
+      "marginClearCount": 0,
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur"
+    },
+    {
+      "assetId": "market_active_b-pilot",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        85,
+        248,
+        1112,
+        697
+      ],
+      "size": [
+        224,
+        224
+      ],
+      "pivot": [
+        114.59011164274322,
+        213.6395534290271
+      ],
+      "bounds": [
+        14,
+        87,
+        202,
+        127
+      ],
+      "scaleUniform": 0.18165467625899281,
+      "placement": [
+        13.590111642743224,
+        87.02624407650912,
+        202,
+        126.61330935251799
+      ],
+      "mappedSourceRegistration": [
+        641,
+        945
+      ],
+      "pivotMappingError": 0,
+      "margin": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 8
+      },
+      "marginClearCount": 0,
+      "nativeRequestedSizeHonored": false,
+      "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur"
+    }
+  ],
+  "boundsFormat": "x,y,width,height",
+  "house": {
+    "referencePixelSize": [
+      137,
+      137
+    ],
+    "referenceCrop": [
+      14.421052631578947,
+      6.773524720893142,
+      113.07416267942584,
+      125.31020733652312
+    ],
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "sourcePixelToScreenAtZoom1": 0.4980801861842801,
+    "referenceCropDisplay": [
+      56.32,
+      62.41453140096618
+    ],
+    "fullCanvasPreview": false,
+    "cropNote": "All street and silhouette sprites use the same legacy L2 crop, pivot and screen density. Reference pixels beyond legacy crop are clipped exactly as the renderer does. No per-candidate normalization during preview.",
+    "paddingException": "User explicitly authorized only house bottom4px, top/left/right8px"
+  },
+  "preview": {
+    "order": [
+      "기준",
+      "양조",
+      "기준",
+      "직조",
+      "기준",
+      "생계",
+      "기준",
+      "양조"
+    ],
+    "sceneSize": [
+      784,
+      190
+    ],
+    "pivots": [
+      [
+        56,
+        128
+      ],
+      [
+        150,
+        128
+      ],
+      [
+        244,
+        128
+      ],
+      [
+        338,
+        128
+      ],
+      [
+        432,
+        128
+      ],
+      [
+        526,
+        128
+      ],
+      [
+        620,
+        128
+      ],
+      [
+        714,
+        128
+      ]
+    ],
+    "groundY": 128,
+    "zoom1BoardGroundY": 281,
+    "zoom06BoardGroundY": 229.8,
+    "offline": true
+  }
+}

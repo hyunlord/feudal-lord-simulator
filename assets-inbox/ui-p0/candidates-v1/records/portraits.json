@@ -1,0 +1,92 @@
+[
+  {
+    "id": "ui/advisor_steward_portrait_neutral",
+    "file": "assets/ui/advisor_steward_portrait_neutral.png",
+    "width": 192,
+    "height": 192,
+    "status": "candidate",
+    "role": "청지기 초상 neutral",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "prompt": "Use case: historical-scene / game UI portrait. Create ONE square portrait, not a sheet. Input image is project-owned STYLE REFERENCE only: reproduce its finely painted muted traditional tempera-like small-character portrait technique, quiet earthy shadows and soft precise face modelling; do not reproduce the merchant's hat, rich blue coat or beard. Subject: ONE male English town steward aged 43, southern England c.1350. Consistent identity design for later expression variants: broad but lean face, slightly crooked long nose, hazel grey eyes, short wavy ash-brown hair with grey at temples, short closely trimmed brown beard. NO HAT. Plain undyed linen collar beneath muted warm grey-brown wool tunic, modest leather strap, simple small leather purse and two small iron keys visibly pinned at lower chest. No ornate costume, jewelry, crown, fur, modern clothes. Bust portrait facing almost front, turned only 10 degrees toward viewer's left, gaze toward viewer, both shoulders fully across lower image. Head top at y=0.10, eye line at y=0.37, shoulders outer tips around y=0.73, chest/purse/keys visible to bottom. Calm neutral mouth, approachable but reserved. Uniform muted warm grey background matching reference, full square, no medallion/frame. Low saturation ochre/oak/parchment palette, subtle thin edges, no cartoon contour or shine. No text, letters, numbers, marks, logo or watermark. Return square raster, high-quality face readable when reduced to192x192.",
+        "raw": "sources/portraits/steward-neutral-raw.png",
+        "refs": [
+          "references/portrait-style-P1.png"
+        ],
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Full-square uniform downsample to192×192. No crop, warp, color replacement, or expression compositing.",
+    "qa": {
+      "identity": "same steward across three expression edits",
+      "accessories": "no hat; purse and two keys present",
+      "text": "none",
+      "alignment": "Manual landmarks in records/portraits-alignment.md; uncertainty ±1 px at192px, not automated face-tracking.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "ui/advisor_steward_portrait_concern",
+    "file": "assets/ui/advisor_steward_portrait_concern.png",
+    "width": 192,
+    "height": 192,
+    "status": "candidate",
+    "role": "청지기 초상 concern",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "prompt": "Use case: identity-preserve expression edit. Edit this exact steward portrait. Keep same man, head silhouette, eyes POSITION, nose, hair, beard, age, shoulder position, clothing, purse, keys, background, lighting, camera and full square crop. Change ONLY facial expression through brows, eyelids, mouth corners and tiny cheek creases. Do not move the head, rescale body or shift portrait at all. No text, icon, border or new accessories. Preserve muted hand-painted appearance and restrained palette. Expression: gentle worried concern, inner eyebrows slightly raised and knitted, upper eyelids subtly tenser, mouth closed with corners slightly lowered. He is calmly explaining a difficulty, not angry, frightened or caricatured. Clearly distinguish from neutral at192px.",
+        "raw": "sources/portraits/steward-concern-raw.png",
+        "refs": [
+          "sources/portraits/steward-neutral-raw.png"
+        ],
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Full-square uniform downsample to192×192. No crop, warp, color replacement, or expression compositing.",
+    "qa": {
+      "identity": "same steward across three expression edits",
+      "accessories": "no hat; purse and two keys present",
+      "text": "none",
+      "alignment": "Manual landmarks in records/portraits-alignment.md; uncertainty ±1 px at192px, not automated face-tracking.",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "ui/advisor_steward_portrait_success",
+    "file": "assets/ui/advisor_steward_portrait_success.png",
+    "width": 192,
+    "height": 192,
+    "status": "candidate",
+    "role": "청지기 초상 success",
+    "generationRecords": [
+      {
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null,
+        "prompt": "Use case: identity-preserve expression edit. Edit this exact steward portrait. Keep same man, head silhouette, eyes POSITION, nose, hair, beard, age, shoulder position, clothing, purse, keys, background, lighting, camera and full square crop. Change ONLY facial expression through brows, eyelids, mouth corners and tiny cheek creases. Do not move the head, rescale body or shift portrait at all. No text, icon, border or new accessories. Preserve muted hand-painted appearance and restrained palette. Expression: quiet approving satisfaction, relaxed brows and modest warm CLOSED-mouth smile, cheeks gently lifted and slightly narrowed eyes. No teeth. Same serious competent steward, not laughing or exaggerated. Clearly distinguish from neutral at192px.",
+        "raw": "sources/portraits/steward-success-raw.png",
+        "refs": [
+          "sources/portraits/steward-neutral-raw.png"
+        ],
+        "originalWidth": 1254,
+        "originalHeight": 1254
+      }
+    ],
+    "processing": "Full-square uniform downsample to192×192. No crop, warp, color replacement, or expression compositing.",
+    "qa": {
+      "identity": "same steward across three expression edits",
+      "accessories": "no hat; purse and two keys present",
+      "text": "none",
+      "alignment": "Manual landmarks in records/portraits-alignment.md; uncertainty ±1 px at192px, not automated face-tracking.",
+      "runtime": "not installed"
+    }
+  }
+]

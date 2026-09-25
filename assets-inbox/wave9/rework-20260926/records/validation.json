@@ -1,0 +1,100 @@
+{
+  "asset_count": 8,
+  "exact_requested_ids": true,
+  "check_png_count": 1,
+  "all_asset_checks_pass": true,
+  "retired_ids_absent": true,
+  "previous_delivery_files_checked": 40,
+  "all_previous_delivery_files_unchanged": true,
+  "game_installed": false,
+  "checks": [
+    {
+      "id": "decal/fresh_graves_a-v1",
+      "width": 128,
+      "height": 64,
+      "transparent_pixels": 3920,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": null,
+      "canvas_same_as_source": null,
+      "visible_rgb_mean": 66.24,
+      "pass": true
+    },
+    {
+      "id": "decal/fresh_graves_b-v1",
+      "width": 128,
+      "height": 64,
+      "transparent_pixels": 4289,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": null,
+      "canvas_same_as_source": null,
+      "visible_rgb_mean": 70.31,
+      "pass": true
+    },
+    {
+      "id": "event/plague_shut_l1-v1",
+      "width": 139,
+      "height": 139,
+      "transparent_pixels": 18739,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": 0,
+      "canvas_same_as_source": true,
+      "visible_rgb_mean": 49.82,
+      "pass": true
+    },
+    {
+      "id": "event/plague_shut_l2-v1",
+      "width": 137,
+      "height": 137,
+      "transparent_pixels": 17382,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": 0,
+      "canvas_same_as_source": true,
+      "visible_rgb_mean": 51.09,
+      "pass": true
+    },
+    {
+      "id": "event/plague_shut_l3-v1",
+      "width": 142,
+      "height": 142,
+      "transparent_pixels": 18479,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": 0,
+      "canvas_same_as_source": true,
+      "visible_rgb_mean": 50.81,
+      "pass": true
+    },
+    {
+      "id": "prop/bier_shroud_ne-v1",
+      "width": 64,
+      "height": 32,
+      "transparent_pixels": 1482,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": null,
+      "canvas_same_as_source": null,
+      "visible_rgb_mean": 70.13,
+      "pass": true
+    },
+    {
+      "id": "prop/bier_shroud_nw-v1",
+      "width": 64,
+      "height": 32,
+      "transparent_pixels": 1494,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": null,
+      "canvas_same_as_source": null,
+      "visible_rgb_mean": 83.58,
+      "pass": true
+    },
+    {
+      "id": "signifier/hungry_queue-v1",
+      "width": 128,
+      "height": 64,
+      "transparent_pixels": 6882,
+      "invisible_rgb_bleed": 0,
+      "door_alpha_pixels": null,
+      "canvas_same_as_source": null,
+      "visible_rgb_mean": 40.42,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+[
+  {
+    "id": "held_yarn_bundle_NE-v1",
+    "file": "assets/props/held_yarn_bundle_NE-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_yarn_bundle_NE-v1",
+        "kind": "yarn_bundle",
+        "direction": "NE",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/held_bundle_wool_NE-v1.png"
+        ],
+        "prompt": "Edit project prop reference into ONE isolated detachable bundle of muted woad blue and natural cream wool yarn skeins tied together with plain cord, visibly twisted long yarn loops NOT raw fleece, small handgrip cord at top. Southern England1300-1450 painterly 2:1 isometric game sprite, soft upper-left light. Direction NE: back-right quarter view. No person, hand, ground, castshadow, words or frame. True transparent RGBA. Center object with15%clearborder, broad readable at32px. Preserve attached restrained project art style. Output one object only.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-e6067c36-0dd5-4c43-84f9-d20fb08455d5.png",
+        "source": "sources/props/held_yarn_bundle_NE-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        592,
+        68,
+        580,
+        748
+      ],
+      "uniformScale": 0.0374331550802139,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_yarn_bundle_NE-v1.png"
+    },
+    "anchor": {
+      "x": 16,
+      "y": 6,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: blue/cream yarn and tied loops consistent; front/back arrangement changes, exact3Didentity unverified",
+    "sha256": "bd921282629dc67534c3e100a1f2bc81d994c3ae8dd296dadcef6f3514438564"
+  },
+  {
+    "id": "held_ale_jug_NE-v1",
+    "file": "assets/props/held_ale_jug_NE-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_ale_jug_NE-v1",
+        "kind": "ale_jug",
+        "direction": "NE",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/held_jug_NE-v1.png"
+        ],
+        "prompt": "Edit project prop reference into ONE isolated detachable medieval unglazed brown earthenware ale pitcher, broad rounded belly, short spout, ONE clear curved handle on viewer RIGHT for NE back-right orientation, no lid, no decoration. Southern England1300-1450 painterly 2:1 isometric game sprite, soft upper-left light. Direction NE: back-right quarter view. No person, hand, ground, castshadow, words or frame. True transparent RGBA. Center object with15%clearborder, broad readable at32px. Preserve attached restrained project art style. Output one object only.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-471c1b40-a396-4648-80a1-01bf8a577d60.png",
+        "source": "sources/props/held_ale_jug_NE-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        638,
+        101,
+        544,
+        671
+      ],
+      "uniformScale": 0.041728763040238454,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_ale_jug_NE-v1.png"
+    },
+    "anchor": {
+      "x": 24,
+      "y": 13,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: right handle NE/SE and left handle SW/NW; mouth/spout changes distinguish pairs; exact3Didentity unverified",
+    "sha256": "03d2dab9cccd53355eb0d115a54b7e617ed9d4b7f649429bfc5d6f6c68b24ed0"
+  },
+  {
+    "id": "held_yarn_bundle_SE-v1",
+    "file": "assets/props/held_yarn_bundle_SE-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_yarn_bundle_SE-v1",
+        "kind": "yarn_bundle",
+        "direction": "SE",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/props/held_yarn_bundle_NE-v1.png"
+        ],
+        "prompt": "EDIT the attached SAME blue and cream tied yarn skeins into a genuine different isometric viewing angle: SE. Preserve exact materials, proportions, upper-left light, style. Front-right: cream skein foreground-left, blue skein behind-right; knot crossing visible in front. This is a physical viewpoint edit, NOT a mirrored or rotated flat bitmap. One object only on true transparent RGBA; no text, hand, person, ground, shadow, border. Broad shapes readable at32px.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-e5d0e8aa-db59-42c0-b5a2-779540adae42.png",
+        "source": "sources/props/held_yarn_bundle_SE-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        628,
+        55,
+        526,
+        771
+      ],
+      "uniformScale": 0.03631647211413749,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_yarn_bundle_SE-v1.png"
+    },
+    "anchor": {
+      "x": 16,
+      "y": 6,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: blue/cream yarn and tied loops consistent; front/back arrangement changes, exact3Didentity unverified",
+    "sha256": "d88ca77a49148c25472970da47f3a89d2cb86b9323e2a55b377b4d7f3b3d9e24"
+  },
+  {
+    "id": "held_yarn_bundle_SW-v1",
+    "file": "assets/props/held_yarn_bundle_SW-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_yarn_bundle_SW-v1",
+        "kind": "yarn_bundle",
+        "direction": "SW",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/props/held_yarn_bundle_NE-v1.png"
+        ],
+        "prompt": "EDIT the attached SAME blue and cream tied yarn skeins into a genuine different isometric viewing angle: SW. Preserve exact materials, proportions, upper-left light, style. Front-left: blue skein foreground-right, cream left; show loop openings at lower ends. This is a physical viewpoint edit, NOT a mirrored or rotated flat bitmap. One object only on true transparent RGBA; no text, hand, person, ground, shadow, border. Broad shapes readable at32px.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-30bd6d8e-253e-4e1d-80b1-862b377b0992.png",
+        "source": "sources/props/held_yarn_bundle_SW-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        627,
+        63,
+        552,
+        766
+      ],
+      "uniformScale": 0.03655352480417755,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_yarn_bundle_SW-v1.png"
+    },
+    "anchor": {
+      "x": 16,
+      "y": 6,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: blue/cream yarn and tied loops consistent; front/back arrangement changes, exact3Didentity unverified",
+    "sha256": "9283ba44aac6f0d0ead64ec7f4d63d5411d25a90d5dd4d929d16183e18b29421"
+  },
+  {
+    "id": "held_yarn_bundle_NW-v1",
+    "file": "assets/props/held_yarn_bundle_NW-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_yarn_bundle_NW-v1",
+        "kind": "yarn_bundle",
+        "direction": "NW",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/props/held_yarn_bundle_NE-v1.png"
+        ],
+        "prompt": "EDIT the attached SAME blue and cream tied yarn skeins into a genuine different isometric viewing angle: NW. Preserve exact materials, proportions, upper-left light, style. Back-left: backside of skeins with transverse binding, cream right blue left; grip knot hidden behind top loop. This is a physical viewpoint edit, NOT a mirrored or rotated flat bitmap. One object only on true transparent RGBA; no text, hand, person, ground, shadow, border. Broad shapes readable at32px.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-e7aed79a-9cc9-404a-a34a-b5be313a6c25.png",
+        "source": "sources/props/held_yarn_bundle_NW-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        614,
+        33,
+        547,
+        790
+      ],
+      "uniformScale": 0.035443037974683546,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_yarn_bundle_NW-v1.png"
+    },
+    "anchor": {
+      "x": 16,
+      "y": 6,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: blue/cream yarn and tied loops consistent; front/back arrangement changes, exact3Didentity unverified",
+    "sha256": "35195a3a9ee534f6a334c38be6a5af687245480e0c7cb88af0a130944a238fe1"
+  },
+  {
+    "id": "held_ale_jug_SE-v1",
+    "file": "assets/props/held_ale_jug_SE-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_ale_jug_SE-v1",
+        "kind": "ale_jug",
+        "direction": "SE",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/props/held_ale_jug_NE-v1.png"
+        ],
+        "prompt": "EDIT the attached SAME plain medieval clay ale pitcher into a genuine different isometric viewing angle: SE. Preserve exact materials, proportions, upper-left light, style. FRONT-RIGHT view: rotate object toward viewer so spout projects to LOWER-LEFT, handle visible on far UPPER-RIGHT rim edge; both near front mouth and spout clear. This is a physical viewpoint edit, NOT a mirrored or rotated flat bitmap. One object only on true transparent RGBA; no text, hand, person, ground, shadow, border. Broad shapes readable at32px.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-2baacb83-0846-4a60-a72f-8f62fe62b430.png",
+        "source": "sources/props/held_ale_jug_SE-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        633,
+        104,
+        535,
+        685
+      ],
+      "uniformScale": 0.040875912408759124,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_ale_jug_SE-v1.png"
+    },
+    "anchor": {
+      "x": 24,
+      "y": 13,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: right handle NE/SE and left handle SW/NW; mouth/spout changes distinguish pairs; exact3Didentity unverified",
+    "sha256": "728993d86a3bfb956cd5fd513ab76dbed7d00f1a0755416e4260d1377a4355eb"
+  },
+  {
+    "id": "held_ale_jug_SW-v1",
+    "file": "assets/props/held_ale_jug_SW-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_ale_jug_SW-v1",
+        "kind": "ale_jug",
+        "direction": "SW",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/props/held_ale_jug_NE-v1.png"
+        ],
+        "prompt": "EDIT the attached SAME plain medieval clay ale pitcher into a genuine different isometric viewing angle: SW. Preserve exact materials, proportions, upper-left light, style. FRONT-LEFT view: spout points LOWER-RIGHT, handle on viewer LEFT; reveal front of curved grip. This is a physical viewpoint edit, NOT a mirrored or rotated flat bitmap. One object only on true transparent RGBA; no text, hand, person, ground, shadow, border. Broad shapes readable at32px.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-7a19a18a-a81a-46bf-9cb8-bd612ddbc62d.png",
+        "source": "sources/props/held_ale_jug_SW-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        616,
+        88,
+        533,
+        697
+      ],
+      "uniformScale": 0.040172166427546625,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_ale_jug_SW-v1.png"
+    },
+    "anchor": {
+      "x": 8,
+      "y": 13,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: right handle NE/SE and left handle SW/NW; mouth/spout changes distinguish pairs; exact3Didentity unverified",
+    "sha256": "aeae197a5307ce65f4677219eaa6853817948ae32fe71a38c9d3cdf2f69a6e9a"
+  },
+  {
+    "id": "held_ale_jug_NW-v1",
+    "file": "assets/props/held_ale_jug_NW-v1.png",
+    "role": "object",
+    "width": 32,
+    "height": 32,
+    "generationRecords": [
+      {
+        "id": "held_ale_jug_NW-v1",
+        "kind": "ale_jug",
+        "direction": "NW",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/props/held_ale_jug_NE-v1.png"
+        ],
+        "prompt": "EDIT the attached SAME plain medieval clay ale pitcher into a genuine different isometric viewing angle: NW. Preserve exact materials, proportions, upper-left light, style. BACK-LEFT view: spout points UPPER-RIGHT, handle viewer LEFT partly obscured behind body. This is a physical viewpoint edit, NOT a mirrored or rotated flat bitmap. One object only on true transparent RGBA; no text, hand, person, ground, shadow, border. Broad shapes readable at32px.",
+        "generatedPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-125f6f30-c51e-48bc-ac47-561a86c74297.png",
+        "source": "sources/props/held_ale_jug_NW-v1.png",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "cropAlphaThreshold": 32,
+      "crop": [
+        622,
+        103,
+        524,
+        666
+      ],
+      "uniformScale": 0.042042042042042045,
+      "method": "alpha bounding-box crop then single uniform downscale; no flip",
+      "source": "sources/props/held_ale_jug_NW-v1.png"
+    },
+    "anchor": {
+      "x": 8,
+      "y": 13,
+      "method": "visual estimate at final32px; provisional contact, not runtime-tested",
+      "uncertaintyPx": 2
+    },
+    "qa": "candidate: right handle NE/SE and left handle SW/NW; mouth/spout changes distinguish pairs; exact3Didentity unverified",
+    "sha256": "0b8342fc82de6c10aa6acd16e467c93981834bd606c2a9556eb4b52db9263a71"
+  }
+]

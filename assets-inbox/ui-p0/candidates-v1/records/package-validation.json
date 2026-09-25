@@ -1,0 +1,183 @@
+{
+  "assets": 43,
+  "iconCells": 57,
+  "expectedCsvRows": 43,
+  "proofs": 3,
+  "dimensionsMatch": true,
+  "generationRecordsPresent": true,
+  "gameInstalled": false,
+  "hashes": [
+    {
+      "id": "ui/frame_hud_strip_top",
+      "sha": "1237177afc414b4a3780221fc6aa13260c37cbde57b4e932f1bf81e5a2baea9f"
+    },
+    {
+      "id": "ui/frame_hud_strip_bottom",
+      "sha": "b2c5f68e33674b205cfbf1e8bf598427ae4fba3c94dee7585ccc7c45645d6ddf"
+    },
+    {
+      "id": "ui/frame_panel_light",
+      "sha": "4d621ebb07318848b0514524bca567490b0c37f6cc1ce9822af15db0d3e7ba17"
+    },
+    {
+      "id": "ui/frame_panel_dark",
+      "sha": "a8615f9ca59b29942f66d4008cf6ab6d8bd91137561bd60281a8dbc5b9b859aa"
+    },
+    {
+      "id": "ui/frame_objective_normal",
+      "sha": "c2ab636762cd5f3680970f3904c2aeff6afe0a18627837611a71cd37a6e62466"
+    },
+    {
+      "id": "ui/frame_objective_complete",
+      "sha": "5838cdeb462c96aa2d7cc5901d9cdb85520a4f4516dc730de5b9d7ac96e795e1"
+    },
+    {
+      "id": "ui/frame_objective_warn",
+      "sha": "688f0dd3882dfc6f4f27e3d7aeab1fd6e1ae9d62bace59b338fab949bb28b73b"
+    },
+    {
+      "id": "ui/frame_advisor_normal",
+      "sha": "9cc6e08b9763fc70b83d45a92734b073641ef5bd03be7b19583b5b4e3c5c1258"
+    },
+    {
+      "id": "ui/frame_advisor_warn",
+      "sha": "49a3d577bc2f4cc0321b3c277a6f24a5235f1d745d72eb1acb9515ec6c7a18bb"
+    },
+    {
+      "id": "ui/advisor_portrait_frame",
+      "sha": "e8513c6d5c65c9b90832a4eadde4fb60e52b058689a0d84a43155836507de3a6"
+    },
+    {
+      "id": "ui/frame_tooltip",
+      "sha": "710f3ea26532b692f06ad63a61b0859d643a222f885d45c585e488cd93069dd2"
+    },
+    {
+      "id": "ui/frame_modal",
+      "sha": "c130f73d27b73e6974bdd3f4ec8bae31b8f7e00b20a4595b715c58d3cbec4261"
+    },
+    {
+      "id": "ui/button_primary_base",
+      "sha": "2c7d8812bb3e9d42535c99cf48972f06cef788a251785e0dcd89c7e725456969"
+    },
+    {
+      "id": "ui/button_secondary_base",
+      "sha": "566f2cd218bfcc7ba218a747f1fc03f580bb4884b20cb084898d5899af5427dc"
+    },
+    {
+      "id": "ui/button_icon_square_base",
+      "sha": "c0aec66ee81b0c9d979d964a35080339dd88a56cb86bd2a47005fa6ffb8bc1b1"
+    },
+    {
+      "id": "ui/tab_build_base",
+      "sha": "f41a9c98cc621a9e7d6680557d5c6d9d69595083faa47818670468013f1dbe7b"
+    },
+    {
+      "id": "ui/chip_condition_base",
+      "sha": "b2acf62a3cf705e29c3f02b814823b493e5525e7c05dd2811dd4e2379a5ad41e"
+    },
+    {
+      "id": "ui/texture_vellum_light",
+      "sha": "f4b207a8070c397f6406985c9ebece9d94e189040795acaaa5a2f08b7fd0f1b5"
+    },
+    {
+      "id": "ui/texture_vellum_dark",
+      "sha": "f3543728fe82ccafd15a8113486c0757b258b4a8ddd4e2d17b1207eaba53f722"
+    },
+    {
+      "id": "ui/divider_manuscript_light",
+      "sha": "cd94f8ae3c8ef669f645035b6130395e4e17da7d45e48b1f021c7fc5ad99c195"
+    },
+    {
+      "id": "ui/divider_manuscript_dark",
+      "sha": "e8f3c6d86eb1bef5f2fb91e292ba3156afd43053707005e8bcd9bbe2fcee51ad"
+    },
+    {
+      "id": "ui/banner_unlock",
+      "sha": "e933b1d96eff24b5820ddca6b9f9e9976cdfaaad8a87f361fdd807f271d7a975"
+    },
+    {
+      "id": "ui/toast_small",
+      "sha": "9f5b558aacbf3b311df2a0ad3edf54f34c99c31adde3be0fcc01accb5246566c"
+    },
+    {
+      "id": "ui/icon_resource_sheet",
+      "sha": "915ff4df0d78b1a70bb458accbd1ba3cd3f9f2c6375512e3f9590907b149e716"
+    },
+    {
+      "id": "ui/icon_build_category_sheet",
+      "sha": "b8a169bf132c9872ff495b74f36181caaddca436543b57e5ec25e3fb5a4cd958"
+    },
+    {
+      "id": "ui/icon_layer_mode_sheet",
+      "sha": "65b6285b0616f16940564c1d52e52ea5a9a035eac51c79a0f0a1f9ca4a4d03c5"
+    },
+    {
+      "id": "ui/icon_first_session_buildings_sheet",
+      "sha": "97371b6721e0587ecf980487b7acbbbaf95a0a7275df8dd5b5bf4b83d98f3134"
+    },
+    {
+      "id": "ui/icon_prediction_sheet",
+      "sha": "ca42d8f2c821a5699892abdec042748084ced7fb5791bbd9788a4b0efb671a6a"
+    },
+    {
+      "id": "ui/icon_cause_family_sheet",
+      "sha": "1ab10b5c682631ea46af77650625d7112226acbd35da30f6cc31a350df0eaec6"
+    },
+    {
+      "id": "ui/icon_alert_priority_sheet",
+      "sha": "f336bbc3b0923a937dea5e4ec7be20166c61af8f2399a37fb362169b452e04dc"
+    },
+    {
+      "id": "ui/icon_time_sheet",
+      "sha": "a12f88284abcdc24c943ebb8a83998acb351322c895a0ba782ae438701c6e408"
+    },
+    {
+      "id": "ui/icon_objective_action_sheet",
+      "sha": "ebca291a3f1b90aafb400605f8d93c8d337b5b713cfe7bbb50e60d0205d00d69"
+    },
+    {
+      "id": "ui/icon_lock_new_sheet",
+      "sha": "df7cda4bfa527d32a992759e63d8fc6a9edb7f3b0cb47baffbc8073fe32fd883"
+    },
+    {
+      "id": "ui/warning_map_marker_sheet",
+      "sha": "8b5a7e126d7543c3be06e4171e0ecc8dc9f89cf2612376d7b1fc7467b5125e4a"
+    },
+    {
+      "id": "ui/cursor_select",
+      "sha": "420f10a3c8ede7442f8dad46c08fcdf8779391340ac51214b459cc788a8c46d5"
+    },
+    {
+      "id": "ui/cursor_place_valid",
+      "sha": "f4a59cc2ce31d49cef73048dae50f960ba41b9181f401a2cda3d172220ac124e"
+    },
+    {
+      "id": "ui/cursor_place_invalid",
+      "sha": "e883c0394a3f88ae203ab86d3ddc8387b22d43fa38bd2a8bfe00fd1e386ffee0"
+    },
+    {
+      "id": "ui/cursor_road_draw",
+      "sha": "95aed8a8b5c681ea4a9cfff7b6f5c3e8e0ba02eb49ae48d4092ccd3fb0f3c80f"
+    },
+    {
+      "id": "ui/cursor_zone_brush",
+      "sha": "5e4e93bfdb3b2b671479ad8936f5c7ab29c1884b0562de8152ce52548ad92f15"
+    },
+    {
+      "id": "ui/cursor_inspect",
+      "sha": "cf9dee7faa7bb03b54a60fb78eee8ac55320df8015de73e4188d358dcdf5c9ed"
+    },
+    {
+      "id": "ui/advisor_steward_portrait_neutral",
+      "sha": "07f3c0b5566d8246947ed7be39874e98166471cc46aafcd33769e554deb06d73"
+    },
+    {
+      "id": "ui/advisor_steward_portrait_concern",
+      "sha": "bea33fada7ca6260a7300e5521bc6c59b5751b40e48d74600baf3f68a78db35d"
+    },
+    {
+      "id": "ui/advisor_steward_portrait_success",
+      "sha": "cf9c9a25d72b71c7b37c9396fd3740081bb4d55a6be8c2835682cb6737786bf1"
+    }
+  ]
+}

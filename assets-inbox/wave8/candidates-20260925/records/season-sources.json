@@ -1,0 +1,258 @@
+[
+  {
+    "id": "season_strip",
+    "width": 1024,
+    "height": 48,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-886102d1-d1b1-454d-80fd-b032db1884ca.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nA very thin horizontal seasonal timeline band exact intended ratio1024:48. Render entire band inside a wide canvas with transparency above and below if necessary. Four equal quarter segments, left to right muted sage spring with spare bud motif; warm straw summer with sun motif; muted russet autumn with oak leaf motif; grey ivory winter with bare twig frost motif. Smooth restrained tonal transitions at quarters, ultra thin brown outer edge. Same 48px band height throughout. Each quarter motif only near its left end, leaving most of band plain for markers. NOT tileable, not repeating. No letters. Make band flat functional and read at height24px.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement. Four painted quarters separately registered to exact256px widths using source boundaries33,472,915,1360,1799.",
+    "crop": [
+      33,
+      374,
+      1766,
+      111
+    ],
+    "destination": [
+      0,
+      0,
+      1024,
+      48
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/season_strip.png"
+  },
+  {
+    "id": "season_pin",
+    "width": 32,
+    "height": 48,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-49187be1-8c43-4ef5-80cb-d46a48e224fa.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne narrow current-time location pointer pin, intended32x48px. Small round bronze/ochre head tapering to a long downward triangular point, simple dark brown outline, clean silhouette, transparent. No jewel, no rune, no pin shadow.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement.",
+    "crop": [
+      307,
+      320,
+      405,
+      769
+    ],
+    "destination": [
+      4.413524057217165,
+      2,
+      23.17295188556567,
+      44
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/season_pin.png"
+  },
+  {
+    "id": "season_event_sow",
+    "width": 32,
+    "height": 32,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-4a6853fe-ea28-42d6-8564-99d4bf3e0b9e.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne sowing event icon intended32x32px, readable24px: TWO broad simple sprouting leaves rising from one dark seed in a small earth clod. Compact diagonal botanical silhouette, muted sage, clear dark outline, no pot, no hands, no extra background.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement.",
+    "crop": [
+      338,
+      315,
+      588,
+      626
+    ],
+    "destination": [
+      2.8498402555910545,
+      2,
+      26.30031948881789,
+      28
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/season_event_sow.png"
+  },
+  {
+    "id": "season_event_harvest",
+    "width": 32,
+    "height": 32,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-a94a31fc-b748-4045-b5ee-c17e92841c6f.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne harvest event icon intended32x32px readable24px: tied compact sheaf of THREE broad golden grain heads, angled slightly, short stems tied across at bottom. Distinct tall flared sheaf silhouette, ochre and brown. No scythe, basket, or extra objects.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement.",
+    "crop": [
+      279,
+      160,
+      760,
+      926
+    ],
+    "destination": [
+      4.509719222462202,
+      2,
+      22.980561555075596,
+      28
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/season_event_harvest.png"
+  },
+  {
+    "id": "season_event_period_end",
+    "width": 32,
+    "height": 32,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-e76fe4c2-55cc-4169-9682-5781cdd5a527.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne period-end event icon intended32x32px readable24px: single chunky gold medieval coin seen at slight angle, circular disk with plain undecorated face and short visible thickness on right. Simple brown rim, warm muted ochre center, no engraving or symbol at all, no currency sign, no clock. Clean circular silhouette.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement.",
+    "crop": [
+      287,
+      236,
+      698,
+      723
+    ],
+    "destination": [
+      2.484094052558783,
+      2,
+      27.031811894882434,
+      28
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/season_event_period_end.png"
+  },
+  {
+    "id": "season_event_market_day",
+    "width": 32,
+    "height": 32,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-af0c3a11-f5fc-455e-b5b6-d93456d0775f.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne market-day event icon intended32x32px readable24px: small open market stall, broad pitched awning with scalloped lower edge, two supporting posts and a horizontal counter, open transparent space below canopy. Muted rust/cream canvas and brown wood. One stall only, no merchandise specks, no people. Distinct low wide canopy silhouette.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement.",
+    "crop": [
+      141,
+      290,
+      972,
+      707
+    ],
+    "destination": [
+      2,
+      5.816872427983538,
+      28,
+      20.366255144032923
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/season_event_market_day.png"
+  },
+  {
+    "id": "pause_vignette",
+    "width": 1024,
+    "height": 640,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-00779fb8-7a34-4235-8397-c3c5b7aea941.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne full-screen pause vignette overlay intended1024x640 landscape. Entire center large rounded rectangular area fully TRANSPARENT. Only a subtle dark warm-brown translucent tint at outermost canvas edges, gently feathering inward with restrained natural painterly edge. No frame, no corners, no parchment panel, no objects, no glow, no bright center fill. The central75 percent width and70 percent height is empty fully transparent. This overlays the live game unobtrusively.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas resize; multiply original alpha by smooth edge envelope, cap opacity130/255; central75%width70%height forced transparent. No replacement artwork.",
+    "crop": [
+      0,
+      0,
+      1586,
+      992
+    ],
+    "destination": [
+      0,
+      0,
+      1024,
+      640
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/pause_vignette.png"
+  },
+  {
+    "id": "pause_badge",
+    "width": 128,
+    "height": 48,
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-4ab6-7993-9b21-55c0056fbd75/exec-db50a405-8b36-454b-8472-30a212505d9f.png",
+    "prompt": "Create one production candidate raster UI asset for a hand-painted southern English medieval town builder 1300–1450, matching only the supplied project's resource icon sheet and P0 banner: muted warm vellum, brown outlines, spare ochre, restrained painterly flat shapes, C direction 80 percent functional 20 percent decoration. NO text, numbers, letters, watermarks, mockup labels, decorative frame unless specified. True transparent PNG background. Shapes must read at tiny HUD sizes; broad clean silhouette, no tiny grain or photorealism.\nOne small horizontal pause badge intended128x48px, warm plain vellum rectangle with ultra thin simple brown border like reference banner, small compact brown hourglass silhouette at LEFT taking one quarter width, rest completely blank for code text. No seal. No ornate corners. Transparent outside small rectangular badge. Keep broad flat empty center.",
+    "references": [
+      "icon_resource_sheet.png",
+      "banner_unlock.png"
+    ],
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "selected": true,
+    "reason": "Single candidate retains P0 muted outlined forms; normalized for final tiny HUD display.",
+    "candidateCount": 1,
+    "status": "candidate",
+    "manualEdits": "Canvas alpha-bounds crop at alpha>16; resize native artwork to exact specified canvas; small icons keep aspect and2px gutter. No procedural replacement.",
+    "crop": [
+      408,
+      224,
+      1235,
+      319
+    ],
+    "destination": [
+      0,
+      0,
+      128,
+      48
+    ],
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/time/pause_badge.png"
+  }
+]

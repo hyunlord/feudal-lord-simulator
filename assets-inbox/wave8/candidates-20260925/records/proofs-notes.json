@@ -1,0 +1,192 @@
+{
+  "addedText": false,
+  "originalHUDText": true,
+  "checks": [
+    {
+      "file": "01_roles_hud.png",
+      "size": [
+        1280,
+        800
+      ],
+      "roles": [
+        [
+          "frame_season_ledger",
+          28,
+          230,
+          390,
+          293
+        ],
+        [
+          "frame_chronicle_page",
+          432,
+          175,
+          290,
+          363
+        ],
+        [
+          "frame_petition",
+          35,
+          535,
+          384,
+          256
+        ],
+        [
+          "frame_objective_drawer",
+          980,
+          185,
+          230,
+          460
+        ]
+      ],
+      "method": "Original desktop HUD cropped from project reference. New panels blank; no temporary titles."
+    },
+    {
+      "file": "02_season_icons_slices.png",
+      "size": [
+        1800,
+        2600
+      ],
+      "iconRows": {
+        "colorY": 163,
+        "silhouetteY": 207,
+        "order": [
+          "water",
+          "food",
+          "transport",
+          "zone",
+          "labour",
+          "finance",
+          "danger",
+          "rights"
+        ],
+        "size": 24
+      },
+      "sliceLayout": "six panels in contract order; native above 1.5x stretched, both shown @0.5",
+      "pausePreview": "bottom right"
+    },
+    {
+      "file": "03_keyart_comparison.png",
+      "size": [
+        1920,
+        1680
+      ],
+      "top": "title + emblem; mode select and original stone city right",
+      "middle": [
+        "loading_1315_famine",
+        "loading_1337_war",
+        "loading_1348_plague"
+      ],
+      "bottom": "unobstructed title, original houses, transparent emblem"
+    }
+  ],
+  "nineSlice": [
+    {
+      "id": "frame_season_ledger",
+      "native": [
+        512,
+        384
+      ],
+      "stress": [
+        768,
+        576
+      ],
+      "insets": [
+        460,
+        136,
+        38,
+        44
+      ],
+      "cornerChannelMismatches": 0
+    },
+    {
+      "id": "frame_chronicle_page",
+      "native": [
+        512,
+        640
+      ],
+      "stress": [
+        768,
+        960
+      ],
+      "insets": [
+        66,
+        112,
+        24,
+        98
+      ],
+      "cornerChannelMismatches": 0
+    },
+    {
+      "id": "frame_petition",
+      "native": [
+        384,
+        256
+      ],
+      "stress": [
+        576,
+        384
+      ],
+      "insets": [
+        128,
+        172,
+        50,
+        54
+      ],
+      "cornerChannelMismatches": 0
+    },
+    {
+      "id": "frame_objective_drawer",
+      "native": [
+        256,
+        512
+      ],
+      "stress": [
+        384,
+        768
+      ],
+      "insets": [
+        154,
+        40,
+        24,
+        24
+      ],
+      "cornerChannelMismatches": 0
+    },
+    {
+      "id": "frame_minimap",
+      "native": [
+        256,
+        256
+      ],
+      "stress": [
+        384,
+        384
+      ],
+      "insets": [
+        146,
+        42,
+        24,
+        24
+      ],
+      "cornerChannelMismatches": 0
+    },
+    {
+      "id": "frame_overlay_legend",
+      "native": [
+        192,
+        256
+      ],
+      "stress": [
+        288,
+        384
+      ],
+      "insets": [
+        16,
+        24,
+        16,
+        16
+      ],
+      "cornerChannelMismatches": 0
+    }
+  ]
+}

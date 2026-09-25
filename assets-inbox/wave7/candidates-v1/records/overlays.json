@@ -1,0 +1,903 @@
+[
+  {
+    "id": "season/roof_snow_l0-v1",
+    "file": "assets/season/roof_snow_l0-v1.png",
+    "width": 153,
+    "height": 153,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l0. Generate ONLY a transparent RGBA isolated overlay of thin creamy white snow resting along the EXISTING roof ridge and lower eaves. Keep exactly the target image camera, canvas proportion, roof coordinates and scale. Entire house including roof tiles, walls and all ground must be absent/transparent in output: ONLY narrow snow strips. No chimney, no smoke, no ground snow, no text, no box, no checkerboard. Do not redesign the roof. Sparse thick readable painterly snow edges with muted blue grey undersides, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/overlays/snow-l0-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "a": [
+          462,
+          397
+        ],
+        "b": [
+          799,
+          574
+        ],
+        "width": 66
+      },
+      "anchors": [
+        [
+          [
+            58,
+            47
+          ],
+          [
+            100,
+            68
+          ]
+        ],
+        [
+          [
+            23,
+            72
+          ],
+          [
+            90,
+            110
+          ]
+        ],
+        [
+          [
+            91,
+            110
+          ],
+          [
+            132,
+            91
+          ]
+        ]
+      ],
+      "mask": "sources/overlays/snow-l0-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 667,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+      "finalSha256": "fda2da780fff502d3b338c6a878b1cf736a1f344d8bac98219f4f2551eb24ad5"
+    }
+  },
+  {
+    "id": "overlay/boarded_l0-v1",
+    "file": "assets/overlay/boarded_l0-v1.png",
+    "width": 153,
+    "height": 153,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l0. Generate ONLY a transparent RGBA isolated overlay of weathered brown wooden planks nailed across existing front door and windows. Keep exactly target camera and canvas proportion, opening coordinates and scale. Entire house, roof, walls and ground must be absent/transparent: ONLY short horizontal or diagonal boards confined to existing openings. No chimney, no smoke, no text, no backdrop, no checkerboard. Broad readable painterly boards, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/overlays/boards-l0-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "left": [
+          244,
+          598,
+          150,
+          229
+        ]
+      },
+      "anchors": [
+        [
+          37,
+          86,
+          13,
+          18
+        ],
+        [
+          57,
+          97,
+          14,
+          25
+        ]
+      ],
+      "mask": "sources/overlays/boards-l0-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 428,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+      "finalSha256": "673473f17ddbf083a47ac4f55b829a4a5dbdad96f287315cce98735752210f90"
+    }
+  },
+  {
+    "id": "season/roof_snow_l1-v1",
+    "file": "assets/season/roof_snow_l1-v1.png",
+    "width": 139,
+    "height": 139,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l1. Generate ONLY a transparent RGBA isolated overlay of thin creamy white snow resting along the EXISTING roof ridge and lower eaves. Keep exactly the target image camera, canvas proportion, roof coordinates and scale. Entire house including roof tiles, walls and all ground must be absent/transparent in output: ONLY narrow snow strips. No chimney, no smoke, no ground snow, no text, no box, no checkerboard. Do not redesign the roof. Sparse thick readable painterly snow edges with muted blue grey undersides, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l1-v2.png"
+        ],
+        "rawFile": "sources/overlays/snow-l1-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "a": [
+          380,
+          210
+        ],
+        "b": [
+          960,
+          549
+        ],
+        "width": 65
+      },
+      "anchors": [
+        [
+          [
+            44,
+            22
+          ],
+          [
+            112,
+            60
+          ]
+        ],
+        [
+          [
+            17,
+            58
+          ],
+          [
+            84,
+            94
+          ]
+        ],
+        [
+          [
+            112,
+            60
+          ],
+          [
+            128,
+            74
+          ]
+        ]
+      ],
+      "mask": "sources/overlays/snow-l1-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 738,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+      "finalSha256": "cf412403704556649635b4f66e1ad5a8a31e85c1572bfd65d33b811f8daf779c"
+    }
+  },
+  {
+    "id": "overlay/boarded_l1-v1",
+    "file": "assets/overlay/boarded_l1-v1.png",
+    "width": 139,
+    "height": 139,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l1. Generate ONLY a transparent RGBA isolated overlay of weathered brown wooden planks nailed across existing front door and windows. Keep exactly target camera and canvas proportion, opening coordinates and scale. Entire house, roof, walls and ground must be absent/transparent: ONLY short horizontal or diagonal boards confined to existing openings. No chimney, no smoke, no text, no backdrop, no checkerboard. Broad readable painterly boards, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l1-v2.png"
+        ],
+        "rawFile": "sources/overlays/boards-l1-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "left": [
+          178,
+          482,
+          198,
+          284
+        ],
+        "right": [
+          879,
+          663,
+          160,
+          263
+        ]
+      },
+      "anchors": [
+        [
+          28,
+          73,
+          14,
+          19
+        ],
+        [
+          55,
+          89,
+          13,
+          24
+        ],
+        [
+          100,
+          87,
+          13,
+          24
+        ]
+      ],
+      "mask": "sources/overlays/boards-l1-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 617,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+      "finalSha256": "2995ed6a7f33af59794dd56aeae3e944a32cf5ecd3e246640c922859b7122dbc"
+    }
+  },
+  {
+    "id": "season/roof_snow_l2-v1",
+    "file": "assets/season/roof_snow_l2-v1.png",
+    "width": 137,
+    "height": 137,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l2. Generate ONLY a transparent RGBA isolated overlay of thin creamy white snow resting along the EXISTING roof ridge and lower eaves. Keep exactly the target image camera, canvas proportion, roof coordinates and scale. Entire house including roof tiles, walls and all ground must be absent/transparent in output: ONLY narrow snow strips. No chimney, no smoke, no ground snow, no text, no box, no checkerboard. Do not redesign the roof. Sparse thick readable painterly snow edges with muted blue grey undersides, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l2-v2.png"
+        ],
+        "rawFile": "sources/overlays/snow-l2-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "a": [
+          327,
+          88
+        ],
+        "b": [
+          955,
+          462
+        ],
+        "width": 54
+      },
+      "anchors": [
+        [
+          [
+            36,
+            9
+          ],
+          [
+            108,
+            45
+          ]
+        ],
+        [
+          [
+            16,
+            44
+          ],
+          [
+            84,
+            80
+          ]
+        ],
+        [
+          [
+            109,
+            46
+          ],
+          [
+            123,
+            63
+          ]
+        ]
+      ],
+      "mask": "sources/overlays/snow-l2-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 829,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+      "finalSha256": "427197edf0f73d74e483783c1f7fe45919e0f53df9a03ad2969813a5db3b0ae8"
+    }
+  },
+  {
+    "id": "overlay/boarded_l2-v1",
+    "file": "assets/overlay/boarded_l2-v1.png",
+    "width": 137,
+    "height": 137,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l2. Generate ONLY a transparent RGBA isolated overlay of weathered brown wooden planks nailed across existing front door and windows. Keep exactly target camera and canvas proportion, opening coordinates and scale. Entire house, roof, walls and ground must be absent/transparent: ONLY short horizontal or diagonal boards confined to existing openings. No chimney, no smoke, no text, no backdrop, no checkerboard. Broad readable painterly boards, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l2-v2.png"
+        ],
+        "rawFile": "sources/overlays/boards-l2-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "left": [
+          211,
+          330,
+          166,
+          250
+        ],
+        "right": [
+          901,
+          447,
+          140,
+          251
+        ]
+      },
+      "anchors": [
+        [
+          28,
+          57,
+          15,
+          20
+        ],
+        [
+          64,
+          78,
+          13,
+          17
+        ],
+        [
+          31,
+          88,
+          24,
+          17
+        ],
+        [
+          64,
+          101,
+          12,
+          22
+        ],
+        [
+          100,
+          95,
+          11,
+          18
+        ],
+        [
+          100,
+          68,
+          10,
+          15
+        ]
+      ],
+      "mask": "sources/overlays/boards-l2-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 1185,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+      "finalSha256": "7cd345f4cf53a03f2e933130d3288382cfbf86e56bfb127f216f3eaa0ce0d59b"
+    }
+  },
+  {
+    "id": "season/roof_snow_l3-v1",
+    "file": "assets/season/roof_snow_l3-v1.png",
+    "width": 142,
+    "height": 142,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l3. Generate ONLY a transparent RGBA isolated overlay of thin creamy white snow resting along the EXISTING roof ridge and lower eaves. Keep exactly the target image camera, canvas proportion, roof coordinates and scale. Entire house including roof tiles, walls and all ground must be absent/transparent in output: ONLY narrow snow strips. No chimney, no smoke, no ground snow, no text, no box, no checkerboard. Do not redesign the roof. Sparse thick readable painterly snow edges with muted blue grey undersides, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l3-v2.png"
+        ],
+        "rawFile": "sources/overlays/snow-l3-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "a": [
+          393,
+          91
+        ],
+        "b": [
+          926,
+          398
+        ],
+        "width": 65
+      },
+      "anchors": [
+        [
+          [
+            43,
+            9
+          ],
+          [
+            111,
+            48
+          ]
+        ],
+        [
+          [
+            19,
+            51
+          ],
+          [
+            51,
+            30
+          ]
+        ],
+        [
+          [
+            51,
+            30
+          ],
+          [
+            89,
+            84
+          ]
+        ],
+        [
+          [
+            111,
+            48
+          ],
+          [
+            129,
+            66
+          ]
+        ]
+      ],
+      "mask": "sources/overlays/snow-l3-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 906,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+      "finalSha256": "a050ca439ba87692ae9897c45f48f78086b846dc6987037316bd2f5be7a67ca6"
+    }
+  },
+  {
+    "id": "overlay/boarded_l3-v1",
+    "file": "assets/overlay/boarded_l3-v1.png",
+    "width": 142,
+    "height": 142,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l3. Generate ONLY a transparent RGBA isolated overlay of weathered brown wooden planks nailed across existing front door and windows. Keep exactly target camera and canvas proportion, opening coordinates and scale. Entire house, roof, walls and ground must be absent/transparent: ONLY short horizontal or diagonal boards confined to existing openings. No chimney, no smoke, no text, no backdrop, no checkerboard. Broad readable painterly boards, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l3-v2.png"
+        ],
+        "rawFile": "sources/overlays/boards-l3-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "left": [
+          368,
+          318,
+          138,
+          223
+        ],
+        "right": [
+          858,
+          578,
+          124,
+          204
+        ]
+      },
+      "anchors": [
+        [
+          44,
+          45,
+          11,
+          16
+        ],
+        [
+          39,
+          66,
+          11,
+          16
+        ],
+        [
+          68,
+          81,
+          12,
+          16
+        ],
+        [
+          68,
+          111,
+          12,
+          21
+        ],
+        [
+          35,
+          97,
+          23,
+          15
+        ],
+        [
+          103,
+          77,
+          11,
+          17
+        ],
+        [
+          103,
+          108,
+          11,
+          16
+        ]
+      ],
+      "mask": "sources/overlays/boards-l3-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 1044,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+      "finalSha256": "fed66223de7d985856560026d4db3799db5532a55740154db0a8252845a58e13"
+    }
+  },
+  {
+    "id": "season/roof_snow_l4-v1",
+    "file": "assets/season/roof_snow_l4-v1.png",
+    "width": 161,
+    "height": 161,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l4. Generate ONLY a transparent RGBA isolated overlay of thin creamy white snow resting along the EXISTING roof ridge and lower eaves. Keep exactly the target image camera, canvas proportion, roof coordinates and scale. Entire house including roof tiles, walls and all ground must be absent/transparent in output: ONLY narrow snow strips. No chimney, no smoke, no ground snow, no text, no box, no checkerboard. Do not redesign the roof. Sparse thick readable painterly snow edges with muted blue grey undersides, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l4-v2.png"
+        ],
+        "rawFile": "sources/overlays/snow-l4-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "a": [
+          320,
+          124
+        ],
+        "b": [
+          816,
+          409
+        ],
+        "width": 48
+      },
+      "anchors": [
+        [
+          [
+            45,
+            13
+          ],
+          [
+            116,
+            51
+          ]
+        ],
+        [
+          [
+            26,
+            42
+          ],
+          [
+            94,
+            82
+          ]
+        ],
+        [
+          [
+            116,
+            51
+          ],
+          [
+            136,
+            72
+          ]
+        ]
+      ],
+      "mask": "sources/overlays/snow-l4-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 841,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+      "finalSha256": "c01fcd139f7cec68d505c92e318e66fe09d3bccdc628bef24cf55ab1d2f8ad81"
+    }
+  },
+  {
+    "id": "overlay/boarded_l4-v1",
+    "file": "assets/overlay/boarded_l4-v1.png",
+    "width": 161,
+    "height": 161,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input is exact registration target house_l4. Generate ONLY a transparent RGBA isolated overlay of weathered brown wooden planks nailed across existing front door and windows. Keep exactly target camera and canvas proportion, opening coordinates and scale. Entire house, roof, walls and ground must be absent/transparent: ONLY short horizontal or diagonal boards confined to existing openings. No chimney, no smoke, no text, no backdrop, no checkerboard. Broad readable painterly boards, upper left light. Output square canvas maintaining original placement.\n",
+        "references": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/house_l4-v2.png"
+        ],
+        "rawFile": "sources/overlays/boards-l4-raw.png"
+      }
+    ],
+    "processing": {
+      "sourceMapping": {
+        "left": [
+          306,
+          365,
+          141,
+          156
+        ],
+        "right": [
+          822,
+          448,
+          108,
+          154
+        ]
+      },
+      "anchors": [
+        [
+          48,
+          61,
+          13,
+          16
+        ],
+        [
+          77,
+          78,
+          10,
+          16
+        ],
+        [
+          49,
+          86,
+          13,
+          16
+        ],
+        [
+          80,
+          103,
+          10,
+          15
+        ],
+        [
+          85,
+          130,
+          9,
+          16
+        ],
+        [
+          43,
+          111,
+          32,
+          18
+        ],
+        [
+          110,
+          76,
+          14,
+          17
+        ],
+        [
+          110,
+          103,
+          13,
+          17
+        ],
+        [
+          110,
+          130,
+          13,
+          15
+        ]
+      ],
+      "mask": "sources/overlays/boards-l4-mask.png",
+      "method": "Generated isolated material, explicit piece registration to original pixel coordinates, masked transparent output"
+    },
+    "qa": {
+      "originalUnmodified": true,
+      "alignedBy": "Explicit pixel anchors and visual composite, not dimensions alone",
+      "status": "candidate",
+      "nonzeroAlphaPixels": 1396,
+      "outsideRegisteredMaskPixels": 0,
+      "viewedComposite": true,
+      "sourceScaleTests": [
+        1,
+        0.6,
+        0.3
+      ],
+      "readability": ".6 house-native scale: snow and blocked openings identifiable; .3 diagnostic: snow visible, board grain collapses",
+      "sourceSha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+      "finalSha256": "012a36efd4cdb9c1ccd799134687ccefa0467fa512911939f0a8f4624354312a"
+    }
+  }
+]

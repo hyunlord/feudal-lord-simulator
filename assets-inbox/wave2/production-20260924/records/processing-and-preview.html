@@ -1,0 +1,60 @@
+<!doctype html><meta charset="utf-8"><script>
+(async()=>{try{
+const cfg=await(await fetch('/config')).json(),C=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
+const load=u=>new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>j(new Error(u));i.src=u;});
+const save=async(c,p)=>fetch('/save/'+encodeURIComponent(p),{method:'POST',body:await new Promise(r=>c.toBlob(r,'image/png'))});
+const bounds=(d,w,h)=>{let l=w,t=h,r=-1,b=-1;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(d[(y*w+x)*4+3]>2){l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x);b=Math.max(b,y);}return[l,t,r-l+1,b-t+1];};
+const assets={},refs={},metrics=[];
+for(const name of Object.keys(cfg.references))refs[name]=await load('/ref/'+name);
+const raw=await Promise.all(cfg.assets.map((a,i)=>load('/source/'+i)));
+const baseIndex=cfg.assets.findIndex(a=>a.id==='farm_mixed_ripe-v1');
+const clean=im=>{const c=C(im.width,im.height),g=c.getContext('2d',{willReadFrequently:true});g.drawImage(im,0,0);const d=g.getImageData(0,0,c.width,c.height);for(let k=0;k<d.data.length;k+=4)if(d.data[k+3]<=2)d.data.fill(0,k,k+4);g.putImageData(d,0,0);return{c,bb:bounds(d.data,c.width,c.height)};};
+const cleanRaw=raw.map(clean);
+for(let n=0;n<cfg.assets.length;n++){
+ const a=cfg.assets[n],ct=a.contract,[w,h]=ct.size,c=C(w,h),g=c.getContext('2d',{willReadFrequently:true});
+ if(a.promoted){g.drawImage(raw[n],0,0);assets[a.id]=c;metrics.push({id:a.id,promoted:true,size:[w,h],pivot:ct.pivot,manualEdits:'byte-for-byte copy; ID only; no generation'});continue;}
+ let {c:sc,bb}=cleanRaw[n];const house=a.id.startsWith('house_'),bottom=house?4:8;
+ const maxW=Math.min(ct.crop[2],2*(ct.pivot[0]-8),2*(w-8-ct.pivot[0]));
+ let boxW=maxW,boxH=Math.min(ct.crop[3],ct.pivot[1]-8);
+ if(a.id.startsWith('farm_')){boxW=352;boxH=168;}
+ if(a.id==='well_c-v1'){boxW=42;boxH=56;}
+ if(a.id==='market_quiet_b-v1')boxW=202;
+ if(a.id.startsWith('farm_mixed_')){
+  const ripe=cleanRaw[baseIndex];
+  if(sc.width!==ripe.c.width||sc.height!==ripe.c.height){const aligned=C(ripe.c.width,ripe.c.height);aligned.getContext('2d').drawImage(sc,0,0,aligned.width,aligned.height);sc=aligned;}
+  if(a.id==='farm_mixed_worked-v1'){const aligned=C(ripe.c.width,ripe.c.height);aligned.getContext('2d').drawImage(sc,...bb,...ripe.bb);sc=aligned;}
+  bb=ripe.bb;
+ }
+ const scale=Math.min(boxW/bb[2],boxH/bb[3]),dw=bb[2]*scale,dh=bb[3]*scale,dx=ct.pivot[0]-dw/2,dy=ct.pivot[1]-dh;
+ g.imageSmoothingQuality='high';g.drawImage(sc,...bb,dx,dy,dw,dh);
+ let d=g.getImageData(0,0,w,h),cut=0;for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=(y*w+x)*4;if(x<8||x>=w-8||y<8||y>=h-bottom){if(d.data[k+3])cut++;d.data.fill(0,k,k+4);}else if(d.data[k+3]<=2)d.data.fill(0,k,k+4);}
+ g.putImageData(d,0,0);assets[a.id]=c;
+ metrics.push({id:a.id,size:[w,h],pivot:ct.pivot,crop:bb,sourceSize:[raw[n].width,raw[n].height],placement:[dx,dy,dw,dh],scale,bounds:bounds(d.data,w,h),padding:{top:8,left:8,right:8,bottom},clearedMarginPixels:cut,manualEdits:'alpha<=2 cleanup; meaningful crop; uniform scale; reference pivot registration; transparent margins; no recolor or blur'});
+}
+// Preserve the pasture side of all crop states using the same registered base pixels.
+const ripe=assets['farm_mixed_ripe-v1'],rm=metrics.find(m=>m.id==='farm_mixed_ripe-v1');
+if(ripe&&rm){const seam=Math.ceil(rm.placement[0]+(cleanRaw[baseIndex].c.width*.54-rm.crop[0])*rm.scale);for(const state of ['seedling','growing','worked']){const id='farm_mixed_'+state+'-v1',c=assets[id];if(!c)continue;const g=c.getContext('2d');g.clearRect(seam,0,c.width-seam,c.height);g.drawImage(ripe,seam,0,c.width-seam,c.height,seam,0,c.width-seam,c.height);metrics.find(m=>m.id===id).pasturePreservedFrom={id:'farm_mixed_ripe-v1',x:seam};}}
+for(const a of cfg.assets)if(!a.promoted)await save(assets[a.id],'assets/'+a.id+'.png');
+const fill=(g,x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y,w,h);};
+const text=(g,s,x,y,size=17,col='#ebe6d8')=>{g.font=`${size}px "Apple SD Gothic Neo",sans-serif`;g.fillStyle=col;g.fillText(s,x,y);};
+const cross=(g,x,y)=>{g.strokeStyle='#8ddfd9';g.beginPath();g.moveTo(x-3,y);g.lineTo(x+3,y);g.moveTo(x,y-3);g.lineTo(x,y+3);g.stroke();};
+const mono=im=>{const c=C(im.width,im.height),g=c.getContext('2d');g.drawImage(im,0,0);g.globalCompositeOperation='source-in';g.fillStyle='#20271f';g.fillRect(0,0,c.width,c.height);return c;};
+const groups=[['L1','house_l1-v2.png','house_l1_artisan-v1','house_l1_garden-v1','house_l1_thatch-v1'],['L2','house_l2-v2.png','house_l2_brewer-v1','house_l2_weaver-v1','house_l2_garden-v1'],['L3','house_l3-v2.png','house_l3_storage-v1','house_l3_shop-v1','house_l3_clothier-v1'],['L4','house_l4-v2.png','house_l4_courtyard-v1','house_l4_wing-v1','house_l4_inn-v1']];
+const drawRegistered=(g,im,ct,x,y,z,black=false)=>{const k=ct.screenScale*z,ky=(ct.screenScaleY??ct.screenScale)*z,[sx,sy,sw,sh]=ct.crop;g.drawImage(black?mono(im):im,sx,sy,sw,sh,x+(sx-ct.pivot[0])*k,y+(sy-ct.pivot[1])*ky,sw*k,sh*ky);};
+for(const [pass,z] of [1,.6].entries()){
+ const c=C(1440,1080),g=c.getContext('2d');fill(g,0,0,c.width,c.height,'#222b24');text(g,`Wave 2 본 제작 · 등급별 거리 · 줌 ${z}`,32,45,28);text(g,'각 등급 기준 + 변형 3채 · 동일 피벗 / 노란 접지선 / 청록 십자 · 게임 미설치 오프라인 합성',32,78,17);
+ for(let row=0;row<4;row++){const group=groups[row],ct=cfg.references[group[1]],y=270+row*205;fill(g,32,y-155,1376,178,'#6b7359');text(g,group[0],45,y-124,24);const ims=[refs[group[1]],...group.slice(2).map(id=>assets[id])];g.strokeStyle='#e4c77e';g.setLineDash([4,4]);g.beginPath();g.moveTo(140,y);g.lineTo(1360,y);g.stroke();g.setLineDash([]);for(let j=0;j<4;j++){const x=235+j*340;drawRegistered(g,ims[j],ct,x,y,z);cross(g,x,y);text(g,j===0?'기준':group[j+1].replace('-v1',''),x-130,y+43,15);}}
+ text(g,'원본 픽셀의 렌더 배율을 그대로 적용. PNG를 100%로 열어 비교. 세부 소품은 확대하지 않았습니다.',32,1050,17);await save(c,pass?'checks/02-streets-zoom06.png':'checks/01-streets-zoom1.png');
+}
+// All seven farms and ten facilities, paired with their own baseline at native pixel scale.
+const ids=cfg.assets.filter(a=>!a.id.startsWith('house_'));
+const board=C(1800,Math.ceil(ids.length/3)*450+150),bg=board.getContext('2d');fill(bg,0,0,board.width,board.height,'#222b24');text(bg,'Wave 2 · 농장 7상태와 시설 10종 · 왼쪽 기준 / 오른쪽 후보',30,40,27);text(bg,'농장 0.7×원본 / 시설 1×원본. 아래 작은 복제는 각 패널의 0.6배. 게임 캡처 아님.',30,76,17);
+for(let i=0;i<ids.length;i++){const a=ids[i],x=20+(i%3)*595,y=110+Math.floor(i/3)*450;fill(bg,x,y,580,430,'#6b7359');text(bg,a.id,x+12,y+25,16);const im=assets[a.id],r=refs[a.reference],k=a.id.startsWith('farm_')?.7:1;bg.drawImage(r,x+18,y+45,r.width*k,r.height*k);bg.drawImage(im,x+304,y+45,im.width*k,im.height*k);bg.drawImage(im,x+400,y+280,im.width*k*.6,im.height*k*.6);}
+await save(board,'checks/03-farms-facilities.png');
+const allGroups=[['L0','house_l0-v3.png','house_l0_garden-v1','house_l0_pen-v1'],...groups,...cfg.assets.filter(a=>a.id.startsWith('house_pair')).map(a=>[a.id,a.reference,a.id])];
+const sil=C(1600,allGroups.length*200+125),sg=sil.getContext('2d');fill(sg,0,0,sil.width,sil.height,'#222b24');text(sg,'Wave 2 · 실루엣 검사 · 같은 등급의 기준과 변형',30,42,27);text(sg,'색을 제거한 알파 외곽 · 원본 1× 표시 · 피벗 공통 높이. 색만 바꾼 변형 여부 확인.',30,78,17);
+for(let i=0;i<allGroups.length;i++){const row=allGroups[i],y=115+i*200;fill(sg,20,y,1560,180,'#adb39d');text(sg,row[0],32,y+24,15,'#20271f');const ims=[refs[row[1]],...row.slice(2).map(id=>assets[id])];const ct=cfg.references[row[1]];for(let j=0;j<ims.length;j++){const im=ims[j],x=330+j*330,gy=y+172;sg.drawImage(mono(im),x-ct.pivot[0],gy-ct.pivot[1]);cross(sg,x,gy);}}
+await save(sil,'checks/04-silhouettes.png');
+await fetch('/save/records%2Ftechnical-qa.json',{method:'POST',body:JSON.stringify({assets:metrics,streetZooms:[1,.6],farmFacilityPanelScale:'farms0.7 facilities1; extra inset0.6 of panel',sameHouseReferenceCrop:true,noGameInstallation:true},null,2)});await fetch('/done');
+}catch(e){await fetch('/error',{method:'POST',body:e.stack||String(e)});}})();
+</script>

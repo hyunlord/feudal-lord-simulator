@@ -1,0 +1,178 @@
+{
+  "assets": 17,
+  "sheetCells": 57,
+  "alphaNote": "Generated native alpha preserved; resampling may leave max253/254 rather than255. No whitening or flattening.",
+  "checks": [
+    {
+      "id": "ui/icon_resource_sheet",
+      "width": 864,
+      "height": 96,
+      "transparentPixels": 43559,
+      "nearOpaquePixels": 30883,
+      "maximumAlpha": 254,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_build_category_sheet",
+      "width": 576,
+      "height": 96,
+      "transparentPixels": 28360,
+      "nearOpaquePixels": 22871,
+      "maximumAlpha": 255,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_layer_mode_sheet",
+      "width": 288,
+      "height": 96,
+      "transparentPixels": 16983,
+      "nearOpaquePixels": 9478,
+      "maximumAlpha": 253,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_first_session_buildings_sheet",
+      "width": 1152,
+      "height": 96,
+      "transparentPixels": 60208,
+      "nearOpaquePixels": 38146,
+      "maximumAlpha": 255,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_prediction_sheet",
+      "width": 384,
+      "height": 96,
+      "transparentPixels": 20878,
+      "nearOpaquePixels": 14540,
+      "maximumAlpha": 254,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_cause_family_sheet",
+      "width": 672,
+      "height": 96,
+      "transparentPixels": 35262,
+      "nearOpaquePixels": 26157,
+      "maximumAlpha": 255,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_alert_priority_sheet",
+      "width": 288,
+      "height": 96,
+      "transparentPixels": 15535,
+      "nearOpaquePixels": 11305,
+      "maximumAlpha": 254,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_time_sheet",
+      "width": 384,
+      "height": 96,
+      "transparentPixels": 19582,
+      "nearOpaquePixels": 15286,
+      "maximumAlpha": 255,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_objective_action_sheet",
+      "width": 384,
+      "height": 96,
+      "transparentPixels": 22875,
+      "nearOpaquePixels": 12811,
+      "maximumAlpha": 254,
+      "hotspot": null
+    },
+    {
+      "id": "ui/icon_lock_new_sheet",
+      "width": 288,
+      "height": 96,
+      "transparentPixels": 17272,
+      "nearOpaquePixels": 9626,
+      "maximumAlpha": 254,
+      "hotspot": null
+    },
+    {
+      "id": "ui/warning_map_marker_sheet",
+      "width": 192,
+      "height": 96,
+      "transparentPixels": 12015,
+      "nearOpaquePixels": 5990,
+      "maximumAlpha": 255,
+      "hotspot": null
+    },
+    {
+      "id": "ui/cursor_select",
+      "width": 64,
+      "height": 64,
+      "transparentPixels": 2955,
+      "nearOpaquePixels": 1063,
+      "maximumAlpha": 254,
+      "hotspot": [
+        8,
+        6
+      ]
+    },
+    {
+      "id": "ui/cursor_place_valid",
+      "width": 64,
+      "height": 64,
+      "transparentPixels": 2940,
+      "nearOpaquePixels": 1081,
+      "maximumAlpha": 254,
+      "hotspot": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "ui/cursor_place_invalid",
+      "width": 64,
+      "height": 64,
+      "transparentPixels": 2842,
+      "nearOpaquePixels": 1179,
+      "maximumAlpha": 254,
+      "hotspot": [
+        6,
+        6
+      ]
+    },
+    {
+      "id": "ui/cursor_road_draw",
+      "width": 64,
+      "height": 64,
+      "transparentPixels": 2939,
+      "nearOpaquePixels": 1015,
+      "maximumAlpha": 254,
+      "hotspot": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "ui/cursor_zone_brush",
+      "width": 64,
+      "height": 64,
+      "transparentPixels": 2920,
+      "nearOpaquePixels": 1051,
+      "maximumAlpha": 254,
+      "hotspot": [
+        7,
+        6
+      ]
+    },
+    {
+      "id": "ui/cursor_inspect",
+      "width": 64,
+      "height": 64,
+      "transparentPixels": 2890,
+      "nearOpaquePixels": 1104,
+      "maximumAlpha": 255,
+      "hotspot": [
+        7,
+        6
+      ]
+    }
+  ]
+}

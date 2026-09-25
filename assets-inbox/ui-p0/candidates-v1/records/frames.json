@@ -1,0 +1,965 @@
+[
+  {
+    "id": "ui/frame_hud_strip_top",
+    "file": "assets/ui/frame_hud_strip_top.png",
+    "width": 256,
+    "height": 256,
+    "role": "dark oak HUD top frame, thin warm parchment single edge, minute dot at corners",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. dark oak HUD top frame, thin warm parchment single edge, minute dot at corners. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_dark.png"
+      ],
+      "raw": "sources/frames/frame_hud_strip_top-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-679d4dff-8818-44ba-9e80-906327e55dd7.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_hud_strip_top",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_hud_strip_bottom",
+    "file": "assets/ui/frame_hud_strip_bottom.png",
+    "width": 256,
+    "height": 256,
+    "role": "dark oak HUD bottom frame, subtly lighter upper edge single rule, minute corner dots",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. dark oak HUD bottom frame, subtly lighter upper edge single rule, minute corner dots. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_dark.png"
+      ],
+      "raw": "sources/frames/frame_hud_strip_bottom-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-0af01968-2301-48fd-9b49-6cc62cecdc6a.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_hud_strip_bottom",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_panel_light",
+    "file": "assets/ui/frame_panel_light.png",
+    "width": 192,
+    "height": 192,
+    "role": "warm light parchment information panel, remove all corner curls; one tiny dot per corner",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. warm light parchment information panel, remove all corner curls; one tiny dot per corner. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 192:192, straight-on UI texture not perspective, no presentation board. Output intended 192x192. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_light.png"
+      ],
+      "raw": "sources/frames/frame_panel_light-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-661f5ea1-9e60-4a02-9b8b-5382ec8c9ad6.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_panel_light",
+        "width": 192,
+        "height": 192,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      },
+      "contract": "Pilot native32px cap retained"
+    }
+  },
+  {
+    "id": "ui/frame_panel_dark",
+    "file": "assets/ui/frame_panel_dark.png",
+    "width": 192,
+    "height": 192,
+    "role": "flat dark oak information panel, remove all corner curls; one tiny warm dot per corner",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. flat dark oak information panel, remove all corner curls; one tiny warm dot per corner. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 192:192, straight-on UI texture not perspective, no presentation board. Output intended 192x192. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_dark.png"
+      ],
+      "raw": "sources/frames/frame_panel_dark-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-e8333fee-d7f5-4e5a-a006-754a5ef16305.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_panel_dark",
+        "width": 192,
+        "height": 192,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_objective_normal",
+    "file": "assets/ui/frame_objective_normal.png",
+    "width": 256,
+    "height": 256,
+    "role": "normal objective warm parchment card, single ink border and tiny dot; no decorative curls",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. normal objective warm parchment card, single ink border and tiny dot; no decorative curls. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 32px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_objective.png"
+      ],
+      "raw": "sources/frames/frame_objective_normal-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-27e07c12-2908-48f3-8ec2-f0f24bb6bcfe.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_objective_normal",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_objective_complete",
+    "file": "assets/ui/frame_objective_complete.png",
+    "width": 256,
+    "height": 256,
+    "role": "complete objective warm parchment card, single ink border, small subdued red wax seal without any text at bottom right contained entirely inside 32pixel corner of final256canvas",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. complete objective warm parchment card, single ink border, small subdued red wax seal without any text at bottom right contained entirely inside 32pixel corner of final256canvas. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 32px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_objective.png"
+      ],
+      "raw": "sources/frames/frame_objective_complete-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-be51d70a-5ec7-4a4e-92a2-2d2b4ba876c4.png",
+      "modelVersion": null,
+      "seed": null,
+      "bodySource": "assets/ui/frame_objective_normal.png"
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_objective_complete",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_objective_warn",
+    "file": "assets/ui/frame_objective_warn.png",
+    "width": 256,
+    "height": 256,
+    "role": "warning objective warm parchment card, single ink border and small dull brown-red ink smudge confined to upper right 32pixel corner final256canvas",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. warning objective warm parchment card, single ink border and small dull brown-red ink smudge confined to upper right 32pixel corner final256canvas. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 32px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_objective.png"
+      ],
+      "raw": "sources/frames/frame_objective_warn-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-c91f9d06-b9ff-472e-9546-9f5ae07b102b.png",
+      "modelVersion": null,
+      "seed": null,
+      "bodySource": "assets/ui/frame_objective_normal.png"
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_objective_warn",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_advisor_normal",
+    "file": "assets/ui/frame_advisor_normal.png",
+    "width": 256,
+    "height": 192,
+    "role": "advisor panel rectangular warm parchment plain BODY ONLY, remove entire portrait circle and seal. Single thin border tiny dots. No portrait no circle",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. advisor panel rectangular warm parchment plain BODY ONLY, remove entire portrait circle and seal. Single thin border tiny dots. No portrait no circle. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:192, straight-on UI texture not perspective, no presentation board. Output intended 256x192. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_advisor.png"
+      ],
+      "raw": "sources/frames/frame_advisor_normal-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-dec4898a-a85b-4c63-86aa-520040dd6902.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_advisor_normal",
+        "width": 256,
+        "height": 192,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_advisor_warn",
+    "file": "assets/ui/frame_advisor_warn.png",
+    "width": 256,
+    "height": 192,
+    "role": "advisor warning panel rectangular warm parchment BODY ONLY, remove circle and seal. Singlethin border with small dull ink stain upper right corner. No portrait no circle",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. advisor warning panel rectangular warm parchment BODY ONLY, remove circle and seal. Singlethin border with small dull ink stain upper right corner. No portrait no circle. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:192, straight-on UI texture not perspective, no presentation board. Output intended 256x192. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_advisor.png"
+      ],
+      "raw": "sources/frames/frame_advisor_warn-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-fa0596e1-fe60-40e7-a9cc-8daba0714a20.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_advisor_warn",
+        "width": 256,
+        "height": 192,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/advisor_portrait_frame",
+    "file": "assets/ui/advisor_portrait_frame.png",
+    "width": 192,
+    "height": 192,
+    "role": "ONLY a circular portrait frame: very thin two concentric muted brown ink circles, perfectly centered, outerdiameter180 innerdiameter172. Transparent inside AND outside ring. No panel no face no ornament no shadow",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. ONLY a circular portrait frame: very thin two concentric muted brown ink circles, perfectly centered, outerdiameter180 innerdiameter172. Transparent inside AND outside ring. No panel no face no ornament no shadow. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 192:192, straight-on UI texture not perspective, no presentation board. Output intended 192x192. Edge details must be confined to 8px native edge strip; center must be almost flat. Actual transparent RGBA background.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_advisor.png"
+      ],
+      "raw": "sources/frames/advisor_portrait_frame-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-38e5b7a1-bb24-49f2-902e-40553ff13f77.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": null,
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "not applicable",
+      "limitations": "Fixed circle overlay; do not nine-slice.",
+      "technical": {
+        "id": "advisor_portrait_frame",
+        "width": 192,
+        "height": 192,
+        "alphaCenter": 0
+      }
+    }
+  },
+  {
+    "id": "ui/frame_tooltip",
+    "file": "assets/ui/frame_tooltip.png",
+    "width": 128,
+    "height": 128,
+    "role": "very plain light parchment tooltip square single thin brown border, zero decoration",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. very plain light parchment tooltip square single thin brown border, zero decoration. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 128:128, straight-on UI texture not perspective, no presentation board. Output intended 128x128. Edge details must be confined to 12px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_light.png"
+      ],
+      "raw": "sources/frames/frame_tooltip-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-3dcbcb76-127c-4467-9d0a-6d1fecf85e12.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_tooltip",
+        "width": 128,
+        "height": 128,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/frame_modal",
+    "file": "assets/ui/frame_modal.png",
+    "width": 256,
+    "height": 256,
+    "role": "light parchment modal square single fine brown border tiny dot corners; blank flat light center",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. light parchment modal square single fine brown border tiny dot corners; blank flat light center. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 32px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_light.png"
+      ],
+      "raw": "sources/frames/frame_modal-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-b4b41013-1727-446f-92c9-64fb3f6a0290.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "frame_modal",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/button_primary_base",
+    "file": "assets/ui/button_primary_base.png",
+    "width": 128,
+    "height": 72,
+    "role": "rectangular warm parchment primary button with fine darker ink edge, removecornerflourishes, one dot eachcorner; entirelyblank",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. rectangular warm parchment primary button with fine darker ink edge, removecornerflourishes, one dot eachcorner; entirelyblank. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 128:72, straight-on UI texture not perspective, no presentation board. Output intended 128x72. Edge details must be confined to 12px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/button_primary_base.png"
+      ],
+      "raw": "sources/frames/button_primary_base-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-fbd25c1b-c657-44ef-ba0e-13c157864b06.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "button_primary_base",
+        "width": 128,
+        "height": 72,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/button_secondary_base",
+    "file": "assets/ui/button_secondary_base.png",
+    "width": 128,
+    "height": 72,
+    "role": "rectangular quiet desaturated lighter parchment secondary button fine muted edge, no curls only tinycornerdots; entirelyblank",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. rectangular quiet desaturated lighter parchment secondary button fine muted edge, no curls only tinycornerdots; entirelyblank. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 128:72, straight-on UI texture not perspective, no presentation board. Output intended 128x72. Edge details must be confined to 12px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/button_primary_base.png"
+      ],
+      "raw": "sources/frames/button_secondary_base-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-c12216ce-ca32-452d-baff-909c67b52d40.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "button_secondary_base",
+        "width": 128,
+        "height": 72,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/button_icon_square_base",
+    "file": "assets/ui/button_icon_square_base.png",
+    "width": 72,
+    "height": 72,
+    "role": "square parchment button fine ink edge and tinycornerdots, entirely blank no icon",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. square parchment button fine ink edge and tinycornerdots, entirely blank no icon. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 72:72, straight-on UI texture not perspective, no presentation board. Output intended 72x72. Edge details must be confined to 10px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/button_primary_base.png"
+      ],
+      "raw": "sources/frames/button_icon_square_base-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-ae8bae2a-37b9-4f0f-a811-9c65419f750f.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 10,
+      "top": 10,
+      "right": 10,
+      "bottom": 10,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "button_icon_square_base",
+        "width": 72,
+        "height": 72,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/tab_build_base",
+    "file": "assets/ui/tab_build_base.png",
+    "width": 144,
+    "height": 72,
+    "role": "rectangular oak build tab base, single subtle ochreedge, no selectedhighlight no text no icon",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. rectangular oak build tab base, single subtle ochreedge, no selectedhighlight no text no icon. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 144:72, straight-on UI texture not perspective, no presentation board. Output intended 144x72. Edge details must be confined to 12px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_dark.png"
+      ],
+      "raw": "sources/frames/tab_build_base-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-2348ad0a-a31a-407e-b03d-eb4fbe73e2c4.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "tab_build_base",
+        "width": 144,
+        "height": 72,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/chip_condition_base",
+    "file": "assets/ui/chip_condition_base.png",
+    "width": 144,
+    "height": 48,
+    "role": "simple rectangular light parchment condition chip, very fine quiet edge, no symbol no words",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. simple rectangular light parchment condition chip, very fine quiet edge, no symbol no words. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 144:48, straight-on UI texture not perspective, no presentation board. Output intended 144x48. Edge details must be confined to 8px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/button_primary_base.png"
+      ],
+      "raw": "sources/frames/chip_condition_base-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-3e535460-0620-4d03-9eb8-5146352b4a5c.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 8,
+      "top": 8,
+      "right": 8,
+      "bottom": 8,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "chip_condition_base",
+        "width": 144,
+        "height": 48,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/texture_vellum_light",
+    "file": "assets/ui/texture_vellum_light.png",
+    "width": 256,
+    "height": 256,
+    "role": "seamless XY tile of extremely faint lowfrequency light parchment, NO edges NO frame NOornaments; very flat lowcontrastcenter",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. seamless XY tile of extremely faint lowfrequency light parchment, NO edges NO frame NOornaments; very flat lowcontrastcenter. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 8px native edge strip; center must be almost flat. Tile must be seamless.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/texture_vellum_light.png"
+      ],
+      "raw": "sources/frames/texture_vellum_light-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-4c38952e-3add-4259-941b-de1bb43347b4.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": null,
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "not applicable",
+      "limitations": "Terminal pixel equality tested; runtime tiling not tested.",
+      "technical": {
+        "id": "texture_vellum_light",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "seamMaximumRGBA": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "id": "ui/texture_vellum_dark",
+    "file": "assets/ui/texture_vellum_dark.png",
+    "width": 256,
+    "height": 256,
+    "role": "seamless XY tile of extremely faint lowfrequency dark oak vellum, NO edges NO frame NOornaments; very flatlowcontrast",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. seamless XY tile of extremely faint lowfrequency dark oak vellum, NO edges NO frame NOornaments; very flatlowcontrast. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 256:256, straight-on UI texture not perspective, no presentation board. Output intended 256x256. Edge details must be confined to 8px native edge strip; center must be almost flat. Tile must be seamless.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/texture_vellum_light.png"
+      ],
+      "raw": "sources/frames/texture_vellum_dark-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-7ef1e9c4-5990-4476-844d-1b00e3c77a7d.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": null,
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "not applicable",
+      "limitations": "Terminal pixel equality tested; runtime tiling not tested.",
+      "technical": {
+        "id": "texture_vellum_dark",
+        "width": 256,
+        "height": 256,
+        "alphaCenter": 255,
+        "seamMaximumRGBA": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "id": "ui/divider_manuscript_light",
+    "file": "assets/ui/divider_manuscript_light.png",
+    "width": 128,
+    "height": 16,
+    "role": "transparent background horizontal single thin dark brown manuscript rule centeredvertically spanningfullwidth, tiny ink dot in center, repeatable horizontally; no curls",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. transparent background horizontal single thin dark brown manuscript rule centeredvertically spanningfullwidth, tiny ink dot in center, repeatable horizontally; no curls. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 128:16, straight-on UI texture not perspective, no presentation board. Output intended 128x16. Edge details must be confined to 8px native edge strip; center must be almost flat. Actual transparent RGBA background.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_light.png"
+      ],
+      "raw": "sources/frames/divider_manuscript_light-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-f3cd2b89-f4de-4546-ac79-3d5d33249174.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": null,
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "not applicable",
+      "limitations": "",
+      "technical": {
+        "id": "divider_manuscript_light",
+        "width": 128,
+        "height": 16,
+        "alphaCenter": 45,
+        "seamMaximumRGBA": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "id": "ui/divider_manuscript_dark",
+    "file": "assets/ui/divider_manuscript_dark.png",
+    "width": 128,
+    "height": 16,
+    "role": "transparent background horizontal single thin muted tan manuscript rule centeredvertically spanningfullwidth, tiny dot atcenter, repeatable horizontally; no curls",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. transparent background horizontal single thin muted tan manuscript rule centeredvertically spanningfullwidth, tiny dot atcenter, repeatable horizontally; no curls. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 128:16, straight-on UI texture not perspective, no presentation board. Output intended 128x16. Edge details must be confined to 8px native edge strip; center must be almost flat. Actual transparent RGBA background.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_dark.png"
+      ],
+      "raw": "sources/frames/divider_manuscript_dark-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-97a9dba5-b1fa-41c5-babc-216ab24a907f.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": null,
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "not applicable",
+      "limitations": "",
+      "technical": {
+        "id": "divider_manuscript_dark",
+        "width": 128,
+        "height": 16,
+        "alphaCenter": 67,
+        "seamMaximumRGBA": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    }
+  },
+  {
+    "id": "ui/banner_unlock",
+    "file": "assets/ui/banner_unlock.png",
+    "width": 800,
+    "height": 128,
+    "role": "wide horizontal light parchment announcement banner, simple thin ink rectangular border, small understated mutedred seal at farleft within48pixel final800canvas; nolettering nofolds",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. wide horizontal light parchment announcement banner, simple thin ink rectangular border, small understated mutedred seal at farleft within48pixel final800canvas; nolettering nofolds. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 800:128, straight-on UI texture not perspective, no presentation board. Output intended 800x128. Edge details must be confined to 48px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_objective.png"
+      ],
+      "raw": "sources/frames/banner_unlock-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-974e7e8e-4168-4b46-8158-56eb21f1cc15.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry. Actual source bordered area 1983×330 cropped; generated seal resized32×32 and placed8,8 inside fixed48px corner.",
+    "nineSlice": {
+      "left": 48,
+      "top": 48,
+      "right": 48,
+      "bottom": 48,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "banner_unlock",
+        "width": 800,
+        "height": 128,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  },
+  {
+    "id": "ui/toast_small",
+    "file": "assets/ui/toast_small.png",
+    "width": 640,
+    "height": 96,
+    "role": "wide horizontal light parchment toast notification rectangle, single quiet browninkborder, tinycornerdots; completely blank noicons",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. wide horizontal light parchment toast notification rectangle, single quiet browninkborder, tinycornerdots; completely blank noicons. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 640:96, straight-on UI texture not perspective, no presentation board. Output intended 640x96. Edge details must be confined to 24px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_light.png"
+      ],
+      "raw": "sources/frames/toast_small-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-e94c1215-6e5d-4313-87f4-a9c03ad1b0c2.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Generated original preserved. Exact canvas registration and downsample. Opaque flat reading fields normalized to pilot palette; generated edge and corner ink retained. Texture contrast compressed and opposing terminal pixels matched; dark texture palette corrected. Toast source cropped to actual bordered rectangle. Objective variants share registered geometry.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "toast_small",
+        "width": 640,
+        "height": 96,
+        "alphaCenter": 255,
+        "fixedCornerEqual": true,
+        "allFourCornersEqual": true
+      }
+    }
+  }
+]

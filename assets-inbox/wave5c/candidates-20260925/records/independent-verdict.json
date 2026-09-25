@@ -1,0 +1,13 @@
+{
+  "scope": "Wave5c 14 assets and 3 proof PNGs",
+  "verdict": "partial",
+  "score": 84,
+  "category_match": true,
+  "reviewer_conflict": "Reviewer created the 2 child-female assets; other 12 assets independently inspected.",
+  "observed": {"allFinalPngViewed": 14, "proofPngViewed": 3, "actorTemplateAlphaMaxDiff": 0, "actorCellBottom11RowsRgbaMaxDiff": 0, "waterEdgeMaxDiffX": 0, "waterEdgeMaxDiffY": 0},
+  "differences": ["Elder male 01 and02 retain original short tunic silhouette rather than requested long gown.", "Gates are low segmental arches, not semicircular tall gatehouses.", "Slight shallow/deep brightness boundary remains; no in-game edge sampling was performed."],
+  "suggestions": ["Retain partial status and gown limitation in final QA and delivery summary.", "Use final512x384 gate geometry metadata, local-height interpretation, and socket coordinates during later integration.", "Validate water shoreline edge and runtime scale only in separately authorized game integration."],
+  "reasoning": "Original gait and alpha are preserved with measured exact pixels; native repaint is visible. Gate openings show true curvature compared with supplied flat lintel screenshot. Water family contrast is reduced and seams match numerically. Two requested long gowns remain visibly unmet.",
+  "gameInstalled": false,
+  "runtimeValidated": false
+}

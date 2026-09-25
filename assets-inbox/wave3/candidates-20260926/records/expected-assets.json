@@ -1,0 +1,821 @@
+{
+  "count": 82,
+  "counts": {
+    "A": 10,
+    "B": 16,
+    "C": 21,
+    "D": 12,
+    "E": 16,
+    "F": 5,
+    "G": 2
+  },
+  "note": "IDs literal brief notation; package directories may add organizational prefixes for cart/work/workers/icons. Building IDs are unversioned in brief. Five check PNGs are additional, not assets. 20column generated CSV needs82asset rows. All candidate; no game install.",
+  "checks": [
+    "01 ale chain zoom1.0 and0.6",
+    "02 textile chain zoom1.0 and0.6",
+    "03 piles21 and loads12 at0.3source scale",
+    "04 buildings16 with existing mill sawmill L2 atsame scale",
+    "05 icons18 at24px with existingicons"
+  ],
+  "assets": [
+    {
+      "id": "field/ridge_barley_growing_a-v1",
+      "section": "A",
+      "width": 512,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG",
+      "repeat": "X only",
+      "alpha": "transparent Y-edge fade",
+      "minMotifPx": 8
+    },
+    {
+      "id": "field/ridge_barley_growing_b-v1",
+      "section": "A",
+      "width": 512,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG",
+      "repeat": "X only",
+      "alpha": "transparent Y-edge fade",
+      "minMotifPx": 8
+    },
+    {
+      "id": "field/ridge_barley_ripe_a-v1",
+      "section": "A",
+      "width": 512,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG",
+      "repeat": "X only",
+      "alpha": "transparent Y-edge fade",
+      "minMotifPx": 8
+    },
+    {
+      "id": "field/ridge_barley_ripe_b-v1",
+      "section": "A",
+      "width": 512,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG",
+      "repeat": "X only",
+      "alpha": "transparent Y-edge fade",
+      "minMotifPx": 8
+    },
+    {
+      "id": "pasture/sheepfold-v1",
+      "section": "A",
+      "width": 256,
+      "height": 192,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pasture/shearing_pen-v1",
+      "section": "A",
+      "width": 256,
+      "height": 192,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pasture/wash_pool-v1",
+      "section": "A",
+      "width": 192,
+      "height": 128,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "yard/tenter_frames_a-v1",
+      "section": "A",
+      "width": 384,
+      "height": 192,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "yard/tenter_frames_b-v1",
+      "section": "A",
+      "width": 384,
+      "height": 192,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "yard/tenter_frames_dyed-v1",
+      "section": "A",
+      "width": 384,
+      "height": 192,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "bld/malthouse_a",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/malthouse_b",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/alehouse_a",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "L2 lot",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/alehouse_b",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "L2 lot",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/brewhouse",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/woolhouse",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/weaver_house_a",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "L2 lot",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/weaver_house_b",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "L2 lot",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/fulling_mill_nwse",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x3",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "axis-specific"
+    },
+    {
+      "id": "bld/fulling_mill_nesw",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x3",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "axis-specific"
+    },
+    {
+      "id": "bld/dyehouse_a",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/dyehouse_b",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "2x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/cloth_hall",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "3x2",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/shepherd_hut",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "1x1",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/dyehouse_state_active-overlay",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "dyehouse canvas",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "bld/fulling_mill_wheel_sheet",
+      "section": "B",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "footprint": "4 frames",
+      "sizeBasis": "No exact pixel size specified in brief; same reference facility/house canvas-pivot contract. Overlay must match dyehouse canvas; wheel sheet exactly4frames.",
+      "orientation": "SW"
+    },
+    {
+      "id": "pile/barley_sacks_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/barley_sacks_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/barley_sacks_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/malt_sacks_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/malt_sacks_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/malt_sacks_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/ale_barrels_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/ale_barrels_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/ale_barrels_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/fleece_heap_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/fleece_heap_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/fleece_heap_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/wool_bales_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/wool_bales_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/wool_bales_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/yarn_skeins_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/yarn_skeins_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/yarn_skeins_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/cloth_bolts_raw_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/cloth_bolts_raw_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/cloth_bolts_raw_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_barley_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_barley_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_malt_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_malt_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_ale_barrels_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_ale_barrels_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_wool_bales_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_wool_bales_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_cloth_raw_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_cloth_raw_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_cloth_dyed_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_cloth_dyed_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "work_distaff_ne-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_distaff_se-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_distaff_sw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_distaff_nw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shepherd_crook_ne-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shepherd_crook_se-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shepherd_crook_sw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shepherd_crook_nw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shears_ne-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shears_se-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shears_sw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_shears_nw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_dye_paddle_ne-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_dye_paddle_se-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_dye_paddle_sw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "work_dye_paddle_nw-v1",
+      "section": "E",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "maxWidth": 32,
+      "maxHeight": 32,
+      "pivot": "handle anchor"
+    },
+    {
+      "id": "wk_alewife-v1",
+      "section": "F",
+      "width": 312,
+      "height": 156,
+      "status": "candidate",
+      "format": "PNG",
+      "template": "actor_civilian_woman-v1.png",
+      "layout": "4 columns 2 rows, template exact layout",
+      "feetDisplacementPx": 0,
+      "maxHeadDisplacementPx": 2,
+      "sizeBasis": "Measured attached template exact dimensions"
+    },
+    {
+      "id": "wk_maltster-v1",
+      "section": "F",
+      "width": 294,
+      "height": 147,
+      "status": "candidate",
+      "format": "PNG",
+      "template": "actor_civilian_man-v1.png",
+      "layout": "4 columns 2 rows, template exact layout",
+      "feetDisplacementPx": 0,
+      "maxHeadDisplacementPx": 2,
+      "sizeBasis": "Measured attached template exact dimensions"
+    },
+    {
+      "id": "wk_shepherd-v1",
+      "section": "F",
+      "width": 294,
+      "height": 147,
+      "status": "candidate",
+      "format": "PNG",
+      "template": "actor_civilian_man-v1.png",
+      "layout": "4 columns 2 rows, template exact layout",
+      "feetDisplacementPx": 0,
+      "maxHeadDisplacementPx": 2,
+      "sizeBasis": "Measured attached template exact dimensions"
+    },
+    {
+      "id": "wk_fuller-v1",
+      "section": "F",
+      "width": 294,
+      "height": 147,
+      "status": "candidate",
+      "format": "PNG",
+      "template": "actor_civilian_man-v1.png",
+      "layout": "4 columns 2 rows, template exact layout",
+      "feetDisplacementPx": 0,
+      "maxHeadDisplacementPx": 2,
+      "sizeBasis": "Measured attached template exact dimensions"
+    },
+    {
+      "id": "wk_wool_merchant-v1",
+      "section": "F",
+      "width": 285,
+      "height": 142,
+      "status": "candidate",
+      "format": "PNG",
+      "template": "actor_merchant-v1.png",
+      "layout": "4 columns 2 rows, template exact layout",
+      "feetDisplacementPx": 0,
+      "maxHeadDisplacementPx": 2,
+      "sizeBasis": "Measured attached template exact dimensions"
+    },
+    {
+      "id": "icon_resource_chain_sheet",
+      "section": "G",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "cellCount": 10,
+      "sizeBasis": "96px cells x10 specified; sheet arrangement not explicitly prescribed",
+      "legibilityPx": 24
+    },
+    {
+      "id": "icon_building_chain_sheet",
+      "section": "G",
+      "width": null,
+      "height": null,
+      "status": "candidate",
+      "format": "PNG",
+      "cellWidth": 96,
+      "cellHeight": 96,
+      "cellCount": 8,
+      "sizeBasis": "96px cells x8 specified; sheet arrangement not explicitly prescribed",
+      "legibilityPx": 24
+    }
+  ]
+}

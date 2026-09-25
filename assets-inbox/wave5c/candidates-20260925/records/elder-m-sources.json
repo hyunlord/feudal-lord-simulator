@@ -1,0 +1,46 @@
+[
+  {
+    "id": "wk_elder_m_01-v1",
+    "role": "actorSheet",
+    "size": [
+      296,
+      148
+    ],
+    "path": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_m_01-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-877d-7713-aeef-ca2e4240701a/exec-65622524-46cb-4d18-9170-09815a33d364.png",
+    "prompt": "Use case: identity-preserve. Edit the supplied 296x148 transparent sprite sheet ONLY, preserving precisely all eight figures, their pixel positions, body silhouettes, feet, alternate stride poses, head centers and four viewing directions. This is a medieval southern English 1300-1450 city-builder elder male reskin, ID wk_elder_m_01-v1. Four columns and two animation rows EXACTLY as supplied. Change clothing surface to a muted slate-olive long wool gown within the original coat silhouette, gray hair and short gray beard visible consistently in the two front-facing views, bare gray-haired head in all four directions. Painterly broad readable forms, matching original subdued brown/olive project style. Do NOT change anatomy, poses, legs, shoes, gait, lighting, composition or sprite scale. Do not add cane, staff, accessories, shadow, text or panel borders. Actual transparent background. Preserve template foot pixels unchanged; head centers unchanged. A precise clothing/hair repaint over the supplied template, never a newly posed sheet.",
+    "references": [
+      "actor_elder_template_m-v1.png"
+    ],
+    "tool": "image_gen.imagegen + Node.js PNG registration",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "selected": true,
+    "status": "candidate",
+    "manualEdits": "Per-cell source bounding-box registration and direct area downsample; apply generated RGB only within exact original template alpha; all cell-relative y>=43 lower body and foot RGBA pixels restored unchanged. Original silhouette retained; head alpha centroid therefore unchanged. No recolor-only substitution.",
+    "notes": "Native pose drift corrected mechanically, not native pixel-exact success. Grey hair/beard and garment repaint are generated. Long-gown hem limited to original template coat contour to preserve pixel pose; does not extend to ankles. Head <=2px evidence measures alpha support in head ROI, not semantic face landmark tracking."
+  },
+  {
+    "id": "wk_elder_m_02-v1",
+    "role": "actorSheet",
+    "size": [
+      296,
+      148
+    ],
+    "path": "/tmp/astra-wave5c-candidates-20260925/actors/wk_elder_m_02-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-877d-7713-aeef-ca2e4240701a/exec-3ed01d97-35b4-4f92-8d6e-8e7f9a4a8eaa.png",
+    "prompt": "Use case: identity-preserve. PRECISE RESKIN EDIT of supplied 296x148 transparent sprite sheet, not free generation. Asset wk_elder_m_02-v1. Keep eight figures at exact same coordinates, four columns two alternate walking rows, same head centers and pixel silhouettes. Change ONLY clothing/hair/skin paint: elderly medieval southern English man (1300-1450), faded muted blue-gray wool long gown constrained to existing coat and leg silhouette, soft brown close-fitting wool cap on ALL eight figures, gray short beard under cap on both front views, gray hair at cap edge on back views. No staff or possessions. Painterly restrained earthy tones, large readable cloth folds and beard. Preserve all original feet/shoes and leg poses EXACTLY; first and second walking frame remain different as template. No changing stance, size, locations or direction; do not add background, ground shadow, letters, panels or borders. Transparent RGBA. Garment may only be repainted over existing body pixels; no widening silhouette.",
+    "references": [
+      "actor_elder_template_m-v1.png"
+    ],
+    "tool": "image_gen.imagegen + Node.js PNG registration",
+    "model": "not exposed",
+    "attempt": 1,
+    "candidates": 1,
+    "selected": true,
+    "status": "candidate",
+    "manualEdits": "Per-cell source bounding-box registration and direct area downsample; apply generated RGB only within exact original template alpha; all cell-relative y>=43 lower body and foot RGBA pixels restored unchanged. Original silhouette retained; head alpha centroid therefore unchanged. No recolor-only substitution.",
+    "notes": "Native pose drift corrected mechanically, not native pixel-exact success. Grey hair/beard and garment repaint are generated. Long-gown hem limited to original template coat contour to preserve pixel pose; does not extend to ankles. Head <=2px evidence measures alpha support in head ROI, not semantic face landmark tracking."
+  }
+]

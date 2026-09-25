@@ -1,0 +1,447 @@
+{
+  "assetCounts": {
+    "workers": 28,
+    "props": 24,
+    "overlays": 2
+  },
+  "proofCount": 3,
+  "overlapCells": 224,
+  "maxHeadSilhouetteProxy": 1.25846680453411,
+  "maxFootSupportDifference": 0,
+  "independentAnatomicalHeadLimitCertified": false,
+  "gameInstalled": false,
+  "rows": [
+    {
+      "file": "assets/workers/wk_artisan_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 34316,
+      "visiblePixels": 9492,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_artisan_f_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33937,
+      "visiblePixels": 9871,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_artisan_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32822,
+      "visiblePixels": 10986,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_artisan_m_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32759,
+      "visiblePixels": 11049,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_gentry_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33259,
+      "visiblePixels": 10549,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_gentry_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 31080,
+      "visiblePixels": 12728,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_labor_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 34124,
+      "visiblePixels": 9684,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_labor_f_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33933,
+      "visiblePixels": 9875,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_labor_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33201,
+      "visiblePixels": 10607,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_labor_m_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33091,
+      "visiblePixels": 10717,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_labor_m_03-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33078,
+      "visiblePixels": 10730,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_merchant_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33663,
+      "visiblePixels": 10145,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_merchant_f_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33428,
+      "visiblePixels": 10380,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_merchant_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 31093,
+      "visiblePixels": 12715,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_merchant_m_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 31045,
+      "visiblePixels": 12763,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_monk_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33419,
+      "visiblePixels": 10389,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_nun_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32862,
+      "visiblePixels": 10946,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_poor_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33255,
+      "visiblePixels": 10553,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_poor_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32305,
+      "visiblePixels": 11503,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_priest_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33419,
+      "visiblePixels": 10389,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_servant_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32862,
+      "visiblePixels": 10946,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_servant_f_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32862,
+      "visiblePixels": 10946,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_servant_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 31728,
+      "visiblePixels": 12080,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_textile_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33414,
+      "visiblePixels": 10394,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_textile_f_02-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33649,
+      "visiblePixels": 10159,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_textile_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32793,
+      "visiblePixels": 11015,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_visitor_f_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 33279,
+      "visiblePixels": 10529,
+      "pass": true
+    },
+    {
+      "file": "assets/workers/wk_visitor_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 32286,
+      "visiblePixels": 11522,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_cloth_NE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 748,
+      "visiblePixels": 276,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_cloth_NW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 742,
+      "visiblePixels": 282,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_cloth_SE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 742,
+      "visiblePixels": 282,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_cloth_SW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 748,
+      "visiblePixels": 276,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_wool_NE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 823,
+      "visiblePixels": 201,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_wool_NW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 830,
+      "visiblePixels": 194,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_wool_SE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 846,
+      "visiblePixels": 178,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_bundle_wool_SW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 836,
+      "visiblePixels": 188,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_jug_NE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 792,
+      "visiblePixels": 232,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_jug_NW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 801,
+      "visiblePixels": 223,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_jug_SE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 786,
+      "visiblePixels": 238,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_jug_SW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 789,
+      "visiblePixels": 235,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_loaf_NE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 842,
+      "visiblePixels": 182,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_loaf_NW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 830,
+      "visiblePixels": 194,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_loaf_SE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 842,
+      "visiblePixels": 182,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_loaf_SW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 840,
+      "visiblePixels": 184,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_axe_NE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 839,
+      "visiblePixels": 185,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_axe_NW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 838,
+      "visiblePixels": 186,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_axe_SE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 827,
+      "visiblePixels": 197,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_axe_SW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 822,
+      "visiblePixels": 202,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_hammer_NE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 824,
+      "visiblePixels": 200,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_hammer_NW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 841,
+      "visiblePixels": 183,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_hammer_SE-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 830,
+      "visiblePixels": 194,
+      "pass": true
+    },
+    {
+      "file": "assets/props/held_tool_hammer_SW-v1.png",
+      "width": 32,
+      "height": 32,
+      "clearPixels": 833,
+      "visiblePixels": 191,
+      "pass": true
+    },
+    {
+      "file": "assets/overlays/overlay_cloak_f-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 34823,
+      "visiblePixels": 8985,
+      "pass": true
+    },
+    {
+      "file": "assets/overlays/overlay_cloak_m-v1.png",
+      "width": 296,
+      "height": 148,
+      "clearPixels": 35400,
+      "visiblePixels": 8408,
+      "pass": true
+    }
+  ]
+}

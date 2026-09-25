@@ -1,0 +1,313 @@
+{
+  "spec": "ASSET_PIPELINE_SPEC_v1.md",
+  "brief": "ASTRA_Wave4_파일럿_의뢰서.md",
+  "status": "candidate",
+  "counts": {
+    "assets": 12,
+    "checks": 3,
+    "csvRows": 12,
+    "strip": 5,
+    "fill": 3,
+    "decal": 2,
+    "object": 1,
+    "module": 1
+  },
+  "global": {
+    "sourceTilePx": [
+      128,
+      64
+    ],
+    "zoom1Scale": 0.5,
+    "zoom06Scale": 0.3,
+    "minimumNonsemanticTexturePx": [
+      8,
+      12
+    ],
+    "sourceOnlyProjectZip": true,
+    "noGameInstallation": true,
+    "alphaRGBBleedPx": [
+      2,
+      4
+    ],
+    "engineValidation": "not run / out of scope"
+  },
+  "assets": [
+    {
+      "id": "road/earth_strip_a-v2",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "wheelRut": 8,
+        "soilPatch": 12
+      },
+      "worldSpan": {
+        "longitudinalTiles": 4
+      }
+    },
+    {
+      "id": "road/earth_strip_b-v2",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0,
+        "profileMatches": "road/earth_strip_a-v2"
+      },
+      "minMotif": {
+        "wheelRut": 8,
+        "soilPatch": 12
+      },
+      "worldSpan": {
+        "longitudinalTiles": 4
+      }
+    },
+    {
+      "id": "shore/shoreline_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X only",
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "bankContour": [
+          12,
+          16
+        ]
+      },
+      "worldSpan": {
+        "longitudinalTiles": 4
+      }
+    },
+    {
+      "id": "water/shallow_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": {
+        "kind": "none",
+        "constant": 255
+      },
+      "minMotif": {
+        "ripple": [
+          10,
+          14
+        ]
+      },
+      "worldSpan": {
+        "tiles": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "ground/pasture_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": {
+        "kind": "none",
+        "constant": 255
+      },
+      "minMotif": {
+        "grassMass": [
+          10,
+          16
+        ]
+      },
+      "worldSpan": {
+        "tiles": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "prop/haycock_a-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "pivotConvention": "bottom-center ground contact"
+      },
+      "minMotif": {
+        "silhouette": 24
+      },
+      "worldSpan": {
+        "footprint": "not specified; record authored placement bounds"
+      }
+    },
+    {
+      "id": "prop/haycock_b-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "pivotConvention": "bottom-center ground contact"
+      },
+      "minMotif": {
+        "silhouette": 24
+      },
+      "worldSpan": {
+        "footprint": "not specified; record authored placement bounds"
+      }
+    },
+    {
+      "id": "wall/palisade_face_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "alpha": {
+        "kind": "top silhouette only; body opaque",
+        "bottomAlpha": 255,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "plank": [
+          10,
+          14
+        ],
+        "post": 16
+      },
+      "worldSpan": {
+        "longitudinalTiles": 4
+      }
+    },
+    {
+      "id": "wall/stone_face_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "alpha": {
+        "kind": "top silhouette only; body opaque",
+        "bottomAlpha": 255,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "stone": [
+          12,
+          20
+        ]
+      },
+      "worldSpan": {
+        "longitudinalTiles": 4
+      }
+    },
+    {
+      "id": "ground/orchard_floor_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": {
+        "kind": "none",
+        "constant": 255
+      },
+      "minMotif": {
+        "patch": [
+          12,
+          20
+        ]
+      },
+      "worldSpan": {
+        "tiles": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "id": "tree/orchard_apple_c-v1",
+      "role": "object",
+      "size": [
+        256,
+        256
+      ],
+      "repeat": "none",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "pivotConvention": "ground contact",
+        "shadow": "contact AO only"
+      },
+      "minMotif": {
+        "trunk": [
+          8,
+          10
+        ],
+        "crownMass": [
+          16,
+          24
+        ]
+      },
+      "worldSpan": {
+        "footprint": "match project orchard apparent tree scale; exact engine footprint not supplied"
+      }
+    },
+    {
+      "id": "module/bridge_abutment_ne_a-v1",
+      "role": "module",
+      "size": [
+        256,
+        192
+      ],
+      "repeat": "none",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "socketMarkers": "two thin in-image lines at land and water connections"
+      },
+      "minMotif": {
+        "structure": [
+          12,
+          16
+        ]
+      },
+      "worldSpan": {
+        "bridgeWidthTiles": 1,
+        "axis": "NE-SW",
+        "footprint": "one abutment only; record authored occupied polygon and socket coordinates"
+      }
+    }
+  ]
+}

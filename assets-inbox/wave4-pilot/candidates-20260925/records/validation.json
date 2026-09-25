@@ -1,0 +1,194 @@
+{
+  "status": "technical_checks_pass",
+  "pngCount": 15,
+  "assetCount": 12,
+  "roadAlphaIdentical": true,
+  "moduleInterior": {
+    "insetFraction": 0.05,
+    "samples": 8280,
+    "alphaBelow250": 0
+  },
+  "assets": [
+    {
+      "id": "road/earth_strip_a-v2",
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 0,
+      "decodedTransparentRGBPixels": 0,
+      "sha256": "170ce5d640cff3a6aab09fc5a8377878fff71f7de6214860c0b294fb6cc173be"
+    },
+    {
+      "id": "road/earth_strip_b-v2",
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 0,
+      "decodedTransparentRGBPixels": 0,
+      "sha256": "24c4b6e7496db3540438269128cb012d6fe017b56849bae5b263650dae9e81f7"
+    },
+    {
+      "id": "shore/shoreline_a-v1",
+      "size": [
+        512,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 0,
+      "decodedTransparentRGBPixels": 0,
+      "sha256": "037a4bd5162c997f1566f28abd47be973a7c72de17fbcbafd849c73f913dfc95"
+    },
+    {
+      "id": "water/shallow_a-v1",
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 0,
+      "decodedTransparentRGBPixels": 0,
+      "sha256": "fa56a7e84f8464ae4afe094ff3ebe2ef792ee18d86b4cc044d36bc7cdccdfac0"
+    },
+    {
+      "id": "ground/pasture_a-v1",
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 0,
+      "decodedTransparentRGBPixels": 0,
+      "sha256": "47b3318828ef91e8d73b95fcaf12eb08aaaa687263d053a8e93773db5d8e4090"
+    },
+    {
+      "id": "prop/haycock_a-v1",
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 707,
+      "decodedTransparentRGBPixels": 707,
+      "sha256": "7531a8817a6b042c8cd5152ddbf0062b0e86f569d13346017a2da93d64ab564a"
+    },
+    {
+      "id": "prop/haycock_b-v1",
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 644,
+      "decodedTransparentRGBPixels": 644,
+      "sha256": "42bf67528aad5e618205b25b9ea932b04031419444d4955d1ee6973508424cae"
+    },
+    {
+      "id": "wall/palisade_face_a-v1",
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 2303,
+      "decodedTransparentRGBPixels": 2305,
+      "sha256": "9027515c4cec326285ed228fe6ec729d7f09682efb5107e2352422a6f19c3acc"
+    },
+    {
+      "id": "wall/stone_face_a-v1",
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 1061,
+      "decodedTransparentRGBPixels": 1061,
+      "sha256": "b5695e475cf7bf97d882c67afe58a0fae8c4af9ac975a81adbfad21d9257a01f"
+    },
+    {
+      "id": "ground/orchard_floor_a-v1",
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 0,
+      "decodedTransparentRGBPixels": 0,
+      "sha256": "36430f5a5c8022a86286f8ce885ec79ef32d62857f2c3dddf41b0f69447abee9"
+    },
+    {
+      "id": "tree/orchard_apple_c-v1",
+      "size": [
+        256,
+        256
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 2132,
+      "decodedTransparentRGBPixels": 2132,
+      "sha256": "3806c241d195a6e8ab2d071e6883218909e0489993c4651d61eb91f79704a060"
+    },
+    {
+      "id": "module/bridge_abutment_ne_a-v1",
+      "size": [
+        256,
+        192
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "rgbBleedRadius": 3,
+      "rgbBleedPixels": 1656,
+      "decodedTransparentRGBPixels": 1656,
+      "sha256": "67b573610e69ce06acbea4936069ed2899c88a3d2992c7ddb7bf4709d8f2e1cf"
+    }
+  ],
+  "limits": "Minimum semantic motif and visible repetition assessed visually, not proven by seam equality. No engine/DPR/performance validation."
+}

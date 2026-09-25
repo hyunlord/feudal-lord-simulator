@@ -1,0 +1,30 @@
+{
+  "reviewer": "independent native subagent",
+  "status": "candidate_with_zoom06_legibility_limitations",
+  "runtime_integration_verified": false,
+  "human_blind_test_performed": false,
+  "technical_png_count_certified": false,
+  "review_method": "Direct visual inspection of proofs01-04 and all ten snow/boards house composites at 4x; final proof04 rechecked after root notification",
+  "proof04_sha256": "f2c608d1f102733240e3ee32ea17e14eeef490e4a94e3396767e884067586888",
+  "proof03_reviewed_sha256": "3c0949a7c2c1cc4846325597bc01872d8779065be893549a525f218fec7e5048",
+  "proof03_pending": "Root to recheck regenerated frost arrangement; roof and boards composites reviewed separately",
+  "observed_technical_visual_blockers": [],
+  "checks": {
+    "no_watermill": "pass_visual",
+    "no_house_chimneys": "pass_visual",
+    "five_snow_overlays_follow_actual_roofs": "pass_visual_not_zero_pixel_metric",
+    "five_board_overlays_cover_actual_openings": "pass_visual_not_zero_pixel_metric",
+    "cart_load_attachment_both_axes_both_carts": "pass_visual",
+    "all_cargo_shape_semantics_at_strict_source03": "not_fully_met",
+    "proof04_six_signifiers_twelve_piles_present": "pass_visual",
+    "pile_family_and_quantity_progression": "visible_with_small_stage1_limitations"
+  },
+  "limitations": [
+    "Strict .3 timber/log and bread/grainsack cargo cannot all be certified immediately distinguishable by shape without labels",
+    "32px bar_latch and bundle_family_prop become 9.6px canvases; specific semantic meanings remain weak",
+    "Boarded vacancy is subtle against existing timber at zoom0.6",
+    "Footprint trail needs game context to mean interrupted road",
+    "Small stage1 bread and sacks have limited internal motif detail at strict source0.3",
+    "Proof01 normalizes runtime references and attached cargo/hand prop x2; strict new-source0.3 swatches and other proofs govern small-size certification"
+  ]
+}

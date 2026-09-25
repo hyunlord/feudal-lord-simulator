@@ -1,0 +1,40 @@
+{
+  "id": "overlay_cloak_merchant_m-v1",
+  "file": "assets/overlays/overlay_cloak_merchant_m-v1.png",
+  "role": "walker_overlay",
+  "width": 296,
+  "height": 148,
+  "generationRecords": [
+    {
+      "tool": "image_gen.imagegen",
+      "mode": "template image edit",
+      "model": null,
+      "seed": null,
+      "prompt": "Use case: precise-object-edit. Input is a merchant sprite sheet, four directions NE SE SW NW, two walk frames. Produce only a detachable muted dark woad blue winter wool cloak overlay for the EXACT eight merchant poses. Retain exact body position and shoulder alignment. Remove human body, skin, hands, legs and hat from output, keep only the cloak. No hood: neck opening must start below the existing merchant hat and face, leave entire hat and face unobstructed. Short practical half cloak below waist, open front reveals hands and gait. Transparent openings and background, no shirt or trousers. Eight cloak layers in same 4 columns 2 rows at identical input coordinates, 2:1 sheet. Same hand-painted South England 1300-1450 style. No added people or props, no labels, no grid.",
+      "referenced_image_paths": [
+        "templates/actor_merchant-v1.png"
+      ],
+      "raw": "sources/walkers/overlay-raw.png"
+    }
+  ],
+  "processing": {
+    "script": "records/walkers-overlay.cjs",
+    "registration": "per-cell content box to torso at master y31..94, hat excluded",
+    "cellSize": [
+      74,
+      74
+    ],
+    "masterCell": [
+      148,
+      148
+    ]
+  },
+  "qa": {
+    "status": "candidate",
+    "hatClipping": "none, overlay starts below head at y31 master",
+    "limitations": [
+      "Cloak partly occludes hands and carried inventory if present; only empty merchant template tested",
+      "Independent garment animation consistency requires runtime check"
+    ]
+  }
+}

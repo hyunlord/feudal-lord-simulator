@@ -1,0 +1,21 @@
+{
+  "status": "candidate-pass-with-notes",
+  "assetCount": 37,
+  "proofCount": 3,
+  "independentAssetCount": 31,
+  "selfReviewedAssets": ["chronicle_initial_a", "chronicle_initial_b", "chronicle_initial_c", "seal_petition_accept", "seal_petition_reject", "seal_petition_price"],
+  "requiredFixes": [],
+  "criteria": {
+    "p0Style": "pass",
+    "unlabelledFrameRoles": "pass",
+    "nineSliceDeclaredInsetsAt1xAnd1_5x": "pass",
+    "icons24pxColorAndBlackSilhouette": "pass",
+    "bellInfoBadThreatDistinctContours": "pass",
+    "titleDawnFinalRevision": "pass",
+    "keyartProjectWorldStyle": "pass",
+    "noTextNumbersVisual": "pass",
+    "emblemTransparency": "pass"
+  },
+  "limitations": ["Declared minimum sizes and insets only", "Ledger header slots and centered ornaments do not automatically reflow", "No engine installation or runtime testing", "Six ornaments self-reviewed; other31 independently reviewed", "Viewer must show actual24px rows at100%"],
+  "evidence": ["checks/01_roles_hud.png", "checks/02_season_icons_slices.png", "checks/03_keyart_comparison.png", "/tmp/astra-wave8-work-20260925/icons-qa.png", "/tmp/astra-wave8-work-20260925/frames-stretch-proof.png"]
+}

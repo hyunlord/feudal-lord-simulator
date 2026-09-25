@@ -1,0 +1,72 @@
+[
+  {
+    "id": "wk_mason-v1",
+    "file": "assets/workers/wk_mason-v1.png",
+    "width": 296,
+    "height": 148,
+    "role": "construction worker reskin sheet, 4 directions x 2 frames",
+    "pivot": "Each 74x74 cell retains exact source pixel coordinates; no recentering",
+    "generationRecords": [
+      {
+        "prompt": "EDIT THE PROVIDED EXISTING SPRITE SHEET ONLY. Reskin clothing of these same eight people as medieval English masons. Four columns NE SE SW NW, two rows walking frame0 frame1. KEEP THE EXACT SAME poses, silhouettes, head sizes, hood heads, faces, hands, legs and boots positions; no new people and no relayout. Change torso garment ONLY to dusty warm grey wool and a thick russet leather working apron over front abdomen and thighs, leather neck strap. Back-facing figures show apron waist strap and dusty wool back, NOT front apron. Preserve all eight distinct orientations. No tools or loose props. Transparent RGBA, no text, no background. Same 2:1 sheet composition, 4 equal columns and 2 equal rows. Original tiny hand-painted painterly medieval game style. Clothing reskin not character redesign.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/actor_civilian_man-v1.png",
+          "sources/workers/template-padded.png"
+        ],
+        "rawFile": "sources/workers/mason-raw.png",
+        "tool": "builtin imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": "294x147 source padded right 2px and bottom 1px to296x148 without rescaling. Builtin edit registered by per-cell alpha bounds. Generated clothing only, source head/hands/legs/boots and complete alpha silhouette retained verbatim.",
+    "qa": {
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "headFootMaxDifferencePx": 0,
+      "overlay": "records/workers-overlay.png",
+      "table": "records/workers-overlay-table.md",
+      "status": "candidate, not installed"
+    }
+  },
+  {
+    "id": "wk_carpenter-v1",
+    "file": "assets/workers/wk_carpenter-v1.png",
+    "width": 296,
+    "height": 148,
+    "role": "construction worker reskin sheet, 4 directions x 2 frames",
+    "pivot": "Each 74x74 cell retains exact source pixel coordinates; no recentering",
+    "generationRecords": [
+      {
+        "prompt": "EDIT THE PROVIDED EXISTING SPRITE SHEET ONLY. Reskin clothing of these exact same eight people as medieval English carpenters. Four columns NE SE SW NW, two rows walking frame0 frame1. KEEP EXACT SAME poses, silhouettes, head sizes, hood heads, faces, hands, legs and boots positions; no new people and no relayout. Change torso garment ONLY to muted ochre-tan wool tunic with prominent dark brown leather tool belt around waist, two short leather tool-loop pouches at hips. No modern clothes. Back-facing figures show belt across back, front-facing show buckle. Preserve all eight distinct orientations. No handheld tools or loose props. Transparent RGBA, no text, no background. Same 2:1 sheet composition, 4 equal columns and 2 equal rows. Original tiny hand-painted painterly medieval game style. Clothing reskin not character redesign.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/actor_civilian_man-v1.png",
+          "sources/workers/template-padded.png"
+        ],
+        "rawFile": "sources/workers/carpenter-raw.png",
+        "tool": "builtin imagegen",
+        "model": "not provided",
+        "seed": "not provided"
+      }
+    ],
+    "processing": "294x147 source padded right 2px and bottom 1px to296x148 without rescaling. Builtin edit registered by per-cell alpha bounds. Generated clothing only, source head/hands/legs/boots and complete alpha silhouette retained verbatim.",
+    "qa": {
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "headFootMaxDifferencePx": 0,
+      "overlay": "records/workers-overlay.png",
+      "table": "records/workers-overlay-table.md",
+      "status": "candidate, not installed"
+    }
+  }
+]

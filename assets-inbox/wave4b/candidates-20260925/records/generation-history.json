@@ -1,0 +1,1133 @@
+[
+  {
+    "id": "field/soil_a-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "prompt": "Use case: historical-scene. Hand-painted game material for southern England 1300–1450, matching the attached PROJECT-OWNED images in restrained warm earthy brown, olive and wheat ochre paint. Camera strictly flat TOP DOWN, no perspective and no isometric diamond. Large deliberate softly edged opaque brush planes, absolutely NO photographic texture, NO tiny speckle, NO individual grain or tiny grass blades, no object focal point, no border, vignette, label, text, watermark, directional cast shadow. Every visible nonsemantic shape at least 12 logical pixels wide, line features 8–10 logical pixels. Think of a final tiny game asset, not detailed illustration. ROLE fill / field soil A. SOURCE_SIZE 256x128, WORLD_SPAN 2x2 tiles. Entire rectangular canvas filled fully opaque. XY seamless repeat. Warm medium brown cultivated soil, extremely quiet broad irregular paint patches 20–40 logical pixels, only 5–8 percent tonal variation. NO furrows, rows or seedlings. Do not draw all the reference detail; use ONLY its earth palette and simple painted light. Scale-similar broad paint planes everywhere, no central bright patch. Output one rectangular material map.",
+    "references": [
+      "wheat_farm_seedling-v3.png",
+      "vegetable.png"
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Representative A; low-frequency soil without ridges.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-74e9ca13-c3f7-48c3-b412-2e92d9c51476.png"
+  },
+  {
+    "id": "field/ridge_ploughed_a-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-97ea10b4-d119-41a0-9c47-af4647ac16c7.png",
+    "prompt": "Use case: historical-scene. Hand-painted game material for southern England 1300–1450, matching the attached PROJECT-OWNED images in restrained warm earthy brown, olive and wheat ochre paint. Camera strictly flat TOP DOWN, no perspective and no isometric diamond. Large deliberate softly edged opaque brush planes, absolutely NO photographic texture, NO tiny speckle, NO individual grain or tiny grass blades, no object focal point, no border, vignette, label, text, watermark, directional cast shadow. Every visible nonsemantic shape at least 12 logical pixels wide, line features 8–10 logical pixels. Think of a final tiny game asset, not detailed illustration. ROLE strip / cultivated field ridge. SOURCE_SIZE 512x64. WORLD_SPAN four tiles horizontally. REPEAT X ONLY, left and right cut edges continue seamlessly. No left-right transparent margins. Y edges transparent fade 8 logical pixels. Very wide narrow ribbon 8:1 aspect of painted material, centered in transparent canvas if necessary. EXACTLY TWO long cultivated rows run horizontally all the way left to right, never diagonally, no third row. Each row has an 8–10 logical pixel thick core, occupies upper and lower thirds of the 64pixel ribbon. Quiet brown soil between them. All states must share the same two-row centerline and broad outer silhouette. No perspective. Fresh plough state A: two dark chocolate earth furrows, broad warm brown raised banks, few broad 16–24px earth clods. Two furrows are visible 8–10px thick continuous gently handmade dark horizontal lines.",
+    "references": [
+      "wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Representative A; parent applies exact X seam/Y fade."
+  },
+  {
+    "id": "field/ridge_seedling_a-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-e02c7235-c220-49c0-b2cd-27108e2600a1.png",
+    "prompt": "Use case: historical-scene. Hand-painted game material for southern England 1300–1450, matching the attached PROJECT-OWNED images in restrained warm earthy brown, olive and wheat ochre paint. Camera strictly flat TOP DOWN, no perspective and no isometric diamond. Large deliberate softly edged opaque brush planes, absolutely NO photographic texture, NO tiny speckle, NO individual grain or tiny grass blades, no object focal point, no border, vignette, label, text, watermark, directional cast shadow. Every visible nonsemantic shape at least 12 logical pixels wide, line features 8–10 logical pixels. Think of a final tiny game asset, not detailed illustration. ROLE strip / cultivated field ridge. SOURCE_SIZE 512x64. WORLD_SPAN four tiles horizontally. REPEAT X ONLY, left and right cut edges continue seamlessly. No left-right transparent margins. Y edges transparent fade 8 logical pixels. Very wide narrow ribbon 8:1 aspect of painted material, centered in transparent canvas if necessary. EXACTLY TWO long cultivated rows run horizontally all the way left to right, never diagonally, no third row. Each row has an 8–10 logical pixel thick core, occupies upper and lower thirds of the 64pixel ribbon. Quiet brown soil between them. All states must share the same two-row centerline and broad outer silhouette. No perspective. Seedling state A: along each of the two rows, interrupted olive green seedling marks, each mark a LARGE simple clump 18–26 pixels long and 10–14 pixels thick, separated by 10–20px brown gaps. No individual leaves or blades. A clearly green dotted row at game scale.",
+    "references": [
+      "wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Representative A; parent applies exact X seam/Y fade."
+  },
+  {
+    "id": "field/ridge_growing_a-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-2e98f171-138b-47a2-8f17-10545a5d585d.png",
+    "prompt": "Use case: historical-scene. Hand-painted game material for southern England 1300–1450, matching the attached PROJECT-OWNED images in restrained warm earthy brown, olive and wheat ochre paint. Camera strictly flat TOP DOWN, no perspective and no isometric diamond. Large deliberate softly edged opaque brush planes, absolutely NO photographic texture, NO tiny speckle, NO individual grain or tiny grass blades, no object focal point, no border, vignette, label, text, watermark, directional cast shadow. Every visible nonsemantic shape at least 12 logical pixels wide, line features 8–10 logical pixels. Think of a final tiny game asset, not detailed illustration. ROLE strip / cultivated field ridge. SOURCE_SIZE 512x64. WORLD_SPAN four tiles horizontally. REPEAT X ONLY, left and right cut edges continue seamlessly. No left-right transparent margins. Y edges transparent fade 8 logical pixels. Very wide narrow ribbon 8:1 aspect of painted material, centered in transparent canvas if necessary. EXACTLY TWO long cultivated rows run horizontally all the way left to right, never diagonally, no third row. Each row has an 8–10 logical pixel thick core, occupies upper and lower thirds of the 64pixel ribbon. Quiet brown soil between them. All states must share the same two-row centerline and broad outer silhouette. No perspective. Growing wheat state A: along each two rows, ochre wheat clumps as LARGE painted sheaves, each 22–32px long and 14–20px wide. Only 2–3 broad tapered painted lobes per clump, NO individually drawn stalks or grains. Strong wheat ochre silhouette at zoom0.6, dark brown soil between rows.",
+    "references": [
+      "wheat_farm_ripe-v4.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Representative A; parent applies exact X seam/Y fade."
+  },
+  {
+    "id": "field/ridge_fallow_a-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-267fce0f-1772-4cb9-a042-0eaecc6c3d1f.png",
+    "prompt": "Use case: historical-scene. Hand-painted game material for southern England 1300–1450, matching the attached PROJECT-OWNED images in restrained warm earthy brown, olive and wheat ochre paint. Camera strictly flat TOP DOWN, no perspective and no isometric diamond. Large deliberate softly edged opaque brush planes, absolutely NO photographic texture, NO tiny speckle, NO individual grain or tiny grass blades, no object focal point, no border, vignette, label, text, watermark, directional cast shadow. Every visible nonsemantic shape at least 12 logical pixels wide, line features 8–10 logical pixels. Think of a final tiny game asset, not detailed illustration. ROLE strip / cultivated field ridge. SOURCE_SIZE 512x64. WORLD_SPAN four tiles horizontally. REPEAT X ONLY, left and right cut edges continue seamlessly. No left-right transparent margins. Y edges transparent fade 8 logical pixels. Very wide narrow ribbon 8:1 aspect of painted material, centered in transparent canvas if necessary. EXACTLY TWO long cultivated rows run horizontally all the way left to right, never diagonally, no third row. Each row has an 8–10 logical pixel thick core, occupies upper and lower thirds of the 64pixel ribbon. Quiet brown soil between them. All states must share the same two-row centerline and broad outer silhouette. No perspective. Fallow state A: the two rows have scattered broad dull olive grass smudges interleaved with warm brown bare soil. Grass clumps 18–30px long and 12–18px thick, irregular merged groups with flat broad brush planes; no grass blades. Less regularly dotted and more diffuse than seedling, clearly untended.",
+    "references": [
+      "pasture.png",
+      "wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Representative A; parent applies exact X seam/Y fade."
+  },
+  {
+    "id": "field/soil_a-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "prompt": "Edit target attached: soil A material. Preserve its warm brown mean color and flat rectangular XY-repeating fully opaque role. REPLACE all brush granulation and little mottled flecks with just 10 to 14 very broad, nearly uniform, opaque painted areas across the WHOLE 256x128 logical map. Each painted area 30–70 logical pixels wide. Flat broad paint planes, quiet 5 percent differences, edges softly angular at 12–20px scale. No granulation, microbrush texture, noise, clumps, specks, pebbles, linework, rows, vignette or central focal blob. This must read as quiet cultivated earth at 0.3 scale, not camouflage or a pebbly surface. Keep fully opaque canvas and XY seamless repeat. One single material map.",
+    "references": [
+      "wheat_farm_seedling-v3.png",
+      "vegetable.png"
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Targeted edit removes microbrush mottling; previous generated soil A is edit target, project refs inherited.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-cf4566df-913f-42d0-83f0-d738e30a7d67.png",
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-74e9ca13-c3f7-48c3-b412-2e92d9c51476.png"
+  },
+  {
+    "id": "field/soil_b-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "prompt": "Precise material variant of attached approved soil A. Create field/soil_b-v1, ROLE fill, 256x128 logical pixels, fully opaque XY seamless repeat. KEEP exactly the same warm brown palette, quiet contrast, low-frequency flat painted planes and broad 30–70pixel feature sizes. Change ONLY the arrangement and brush edges of those broad earth areas: new irregular pattern of about 10–14 broad planes rather than copying or recoloring the original. NO small specks, microtexture, furrows, foliage, perspective, focal bright patch, text or border. All 4 edges seamlessly repeat. One single rectangular soil map.",
+    "references": [
+      "wheat_farm_seedling-v3.png",
+      "vegetable.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "B made after parent 12x12 zoom0.6 representative pass; changed broad paint arrangement only.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-7d087f91-fab0-4274-b53d-ccca7544d7d1.png",
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-cf4566df-913f-42d0-83f0-d738e30a7d67.png"
+  },
+  {
+    "id": "field/ridge_ploughed_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-dd772449-88f3-45e5-aa37-43e9926d324d.png",
+    "prompt": "Precise material variant of attached approved ridge A. ROLE strip, SOURCE_SIZE 512x64 logical pixels, four tiles, X ONLY seamless, Y fade8px. KEEP exactly the TWO horizontal row centerlines, their width and broad silhouette, palette and contrast, matching overall body height and transparent padding. Change only broad brush gesture/clump positions and individual earth shapes to produce distinct B; do not mirror, recolor, add rows, dense small texture or new elements. Details below8–12logicalpixels forbidden. No text, shadow, border or perspective.  Two dark broad ploughed grooves remain continuous. Shift broad clod grouping and raised-bank brush planes only.",
+    "references": [
+      "wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "B after parent12x12 .6 gate; same two-row geometry, changed broad brush planes.",
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-97ea10b4-d119-41a0-9c47-af4647ac16c7.png"
+  },
+  {
+    "id": "field/ridge_seedling_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-4f869233-37f4-4ce6-b0bf-1bda87782e06.png",
+    "prompt": "Precise material variant of attached approved ridge A. ROLE strip, SOURCE_SIZE 512x64 logical pixels, four tiles, X ONLY seamless, Y fade8px. KEEP exactly the TWO horizontal row centerlines, their width and broad silhouette, palette and contrast, matching overall body height and transparent padding. Change only broad brush gesture/clump positions and individual earth shapes to produce distinct B; do not mirror, recolor, add rows, dense small texture or new elements. Details below8–12logicalpixels forbidden. No text, shadow, border or perspective.  Two rows of large olive green 18–26px long and10–14px thick seedling clumps. Shift their spacing/phase asymmetrically between upper and lower row, vary simple broad clump shapes, same total density. No tiny leaves.",
+    "references": [
+      "wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "B after parent12x12 .6 gate; same two-row geometry, changed broad clump phase.",
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-e02c7235-c220-49c0-b2cd-27108e2600a1.png"
+  },
+  {
+    "id": "field/ridge_growing_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-2b260916-ecc3-48e6-8ae7-8f56d7a1bdee.png",
+    "prompt": "Precise material variant of attached approved ridge A. ROLE strip, SOURCE_SIZE 512x64 logical pixels, four tiles, X ONLY seamless, Y fade8px. KEEP exactly the TWO horizontal row centerlines, their width and broad silhouette, palette and contrast, matching overall body height and transparent padding. Change only broad brush gesture/clump positions and individual earth shapes to produce distinct B; do not mirror, recolor, add rows, dense small texture or new elements. Details below8–12logicalpixels forbidden. No text, shadow, border or perspective.  Growing wheat ochre: vary each broad tuft lean and paint gesture, alternate two broad tapered lobes and three broad lobes, uneven spacing, same two row centers. Large 22–32pixel tufts, no individual fine stalks, grain or comb pattern. Preserve ochre mean and brown earth.",
+    "references": [
+      "wheat_farm_ripe-v4.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "B after parent12x12 .6 gate; same two-row geometry, changed broad wheat brush lean.",
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-2e98f171-138b-47a2-8f17-10545a5d585d.png"
+  },
+  {
+    "id": "field/ridge_fallow_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-8a28ce1f-b4d8-42ec-8b58-d3c841b57fee.png",
+    "prompt": "Precise material variant of attached approved ridge A. ROLE strip, SOURCE_SIZE 512x64 logical pixels, four tiles, X ONLY seamless, Y fade8px. KEEP exactly the TWO horizontal row centerlines, their width and broad silhouette, palette and contrast, matching overall body height and transparent padding. Change only broad brush gesture/clump positions and individual earth shapes to produce distinct B; do not mirror, recolor, add rows, dense small texture or new elements. Details below8–12logicalpixels forbidden. No text, shadow, border or perspective.  Fallow state B: two diffuse irregular olive grass rows with open brown gaps, same clump scale18–30px and dull olive hue. Shift grass distribution toward different broad merged groups, no brightseedling dots and no individual blades. Preserve the flat broad painted quality.",
+    "references": [
+      "pasture.png",
+      "wheat_farm_seedling-v3.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "B after parent12x12 .6 gate; same two-row geometry, changed broad fallow-grass brush distribution.",
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-7e9c-7d91-9535-597f9467d3e8/exec-267fce0f-1772-4cb9-a042-0eaecc6c3d1f.png"
+  },
+  {
+    "id": "water/shallow_b-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "shallow_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/shallow_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant water/shallow_b-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. B: reposition the broad soft wave bands into a gentle diagonal rising rhythm, no isolated highlight. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE fill; top-down orthographic flat rectangle, logical SOURCE_SIZE 256x128, WORLD_SPAN 2x2 tiles, REPEAT seamless XY, ALPHA entirely opaque with full bleed on every edge. No border or transparent margin. Retain muted blue-grey-green water, quiet broad wave strokes each 10–14 logical pixels across. No foam or sparkling flecks. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-c5138481-9ae4-4adb-b4c4-2d0d00a73793.png",
+    "suggestedSourceCrop": [
+      0,
+      0,
+      1774,
+      887
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Full opaque rectangle",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "water/shallow_c-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "shallow_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/shallow_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant water/shallow_c-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. C: reposition the broad soft wave bands into gently horizontal broken arcs, no isolated highlight. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE fill; top-down orthographic flat rectangle, logical SOURCE_SIZE 256x128, WORLD_SPAN 2x2 tiles, REPEAT seamless XY, ALPHA entirely opaque with full bleed on every edge. No border or transparent margin. Retain muted blue-grey-green water, quiet broad wave strokes each 10–14 logical pixels across. No foam or sparkling flecks. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-7a623aeb-c132-452d-8bc6-e05704f3cc05.png",
+    "suggestedSourceCrop": [
+      0,
+      0,
+      1774,
+      887
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Full opaque rectangle",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "ground/pasture_b-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "pasture_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/pasture_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant ground/pasture_b-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. B: rearrange the same broad quiet olive grazing patches into slightly longer low horizontal forms. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE fill; top-down orthographic flat rectangle, logical SOURCE_SIZE 256x128, WORLD_SPAN 2x2 tiles, REPEAT seamless XY, ALPHA entirely opaque with full bleed on every edge. No border or transparent margin. Broad low-frequency matte pigment shapes, minimum 12–20 logical pixels, same diffuse low contrast as the approved reference. Do not add grass blades or speckles. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-a819c5cf-d4d9-442c-9470-13196455d924.png",
+    "suggestedSourceCrop": [
+      0,
+      0,
+      1774,
+      887
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Full opaque rectangle",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "ground/pasture_c-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "pasture_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/pasture_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant ground/pasture_c-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. C: rearrange the same broad quiet olive grazing patches into rounded interlocking irregular forms dispersed evenly. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE fill; top-down orthographic flat rectangle, logical SOURCE_SIZE 256x128, WORLD_SPAN 2x2 tiles, REPEAT seamless XY, ALPHA entirely opaque with full bleed on every edge. No border or transparent margin. Broad low-frequency matte pigment shapes, minimum 12–20 logical pixels, same diffuse low contrast as the approved reference. Do not add grass blades or speckles. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-a413375b-3224-496f-a528-3637efcfbe67.png",
+    "suggestedSourceCrop": [
+      0,
+      0,
+      1774,
+      887
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Full opaque rectangle",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "ground/orchard_floor_b-v1",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "references": [
+      "orchard_floor_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/orchard_floor_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant ground/orchard_floor_b-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. B: rearrange the same quiet broad grass and brown cultivation patches, shorter gently staggered horizontal sweeps. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE fill; top-down orthographic flat rectangle, logical SOURCE_SIZE 256x128, WORLD_SPAN 2x2 tiles, REPEAT seamless XY, ALPHA entirely opaque with full bleed on every edge. No border or transparent margin. Broad low-frequency matte pigment shapes, minimum 12–20 logical pixels, same diffuse low contrast as the approved reference. Do not add grass blades or speckles. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-23750508-a931-4e58-ac53-10a7173e1511.png",
+    "suggestedSourceCrop": [
+      0,
+      0,
+      1774,
+      887
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Full opaque rectangle",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "wall/palisade_face_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      128
+    ],
+    "references": [
+      "palisade_face_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/palisade_face_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant wall/palisade_face_b-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. B: retain exact stake positions, silhouettes, crossbar heights and spacing; repaint broad wood face brush planes with slightly varied placements of tan and brown within the SAME tonal range. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE strip; frontal orthographic wall cross-section, logical SOURCE_SIZE 512x128, WORLD_SPAN 4 tiles, REPEAT seamless X ONLY; do not repeat Y. Full width with no end caps and no left/right margins. Actual transparent background ONLY above the irregular top silhouette. Body and bottom fully opaque all the way to bottom edge. Preserve reference top silhouette and bottom placement precisely. Stake widths 10–14 logical pixels, main supports 16 pixels or larger. Broad smooth wood planes with just a few wide brush shades; absolutely NO thin grain scratches. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-dce78575-5920-41c2-a8a6-bf5ba95fb48c.png",
+    "suggestedSourceCrop": [
+      0,
+      96,
+      2172,
+      533
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Native edge contamination/padding; must register to exact pilot alpha, clean edge RGB and fill body/bottom fully opaque",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "wall/palisade_face_c-v1",
+    "role": "strip",
+    "size": [
+      512,
+      128
+    ],
+    "references": [
+      "palisade_face_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/palisade_face_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant wall/palisade_face_c-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. C: retain exact stake positions, silhouettes, crossbar heights and spacing; repaint the quiet broad wood face brush planes differently from the reference, using warm planes on different stake sides. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE strip; frontal orthographic wall cross-section, logical SOURCE_SIZE 512x128, WORLD_SPAN 4 tiles, REPEAT seamless X ONLY; do not repeat Y. Full width with no end caps and no left/right margins. Actual transparent background ONLY above the irregular top silhouette. Body and bottom fully opaque all the way to bottom edge. Preserve reference top silhouette and bottom placement precisely. Stake widths 10–14 logical pixels, main supports 16 pixels or larger. Broad smooth wood planes with just a few wide brush shades; absolutely NO thin grain scratches. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-e02c8868-e800-4944-aa21-0c39e607abd1.png",
+    "suggestedSourceCrop": [
+      0,
+      97,
+      2170,
+      534
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Native edge contamination/padding; must register to exact pilot alpha, clean edge RGB and fill body/bottom fully opaque",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "wall/stone_face_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      128
+    ],
+    "references": [
+      "stone_face_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/stone_face_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant wall/stone_face_b-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. B: retain exact wall dimensions, battlement silhouette and horizontal course heights; repaint stone face brush planes, subtly redistribute within-course stone joints and broad warm grey planes. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE strip; frontal orthographic wall cross-section, logical SOURCE_SIZE 512x128, WORLD_SPAN 4 tiles, REPEAT seamless X ONLY; do not repeat Y. Full width with no end caps and no left/right margins. Actual transparent background ONLY above the irregular top silhouette. Body and bottom fully opaque all the way to bottom edge. Preserve reference top silhouette and bottom placement precisely. Stone blocks 12–20 logical pixels, quiet mortar, broad flat warm grey stone planes. No tiny pockmarks, no stone speckles. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-0c4cdf89-f19d-42f6-929e-98fb8dcb20d3.png",
+    "suggestedSourceCrop": [
+      0,
+      88,
+      2170,
+      559
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Native edge contamination/padding; must register to exact pilot alpha, clean edge RGB and fill body/bottom fully opaque",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "wall/stone_face_c-v1",
+    "role": "strip",
+    "size": [
+      512,
+      128
+    ],
+    "references": [
+      "stone_face_a-v1.png"
+    ],
+    "referencePath": "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/stone_face_a-v1.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native source; parent performs exact sizing, seam, pilot alpha and palette normalization.",
+    "prompt": "Use case: precise-object-edit. Produce ONE production game texture variant wall/stone_face_c-v1. Input image is the approved pilot and edit target, not a mood board. Historical hand-painted southern English town 1300–1450, profile S_England_1300_1450_v1. C: retain exact wall dimensions, battlement silhouette and horizontal course heights; repaint stone face brush planes with different subdued broad ochre-grey placements and slightly varied horizontal stone lengths. Preserve the approved family's palette range, low contrast, motif scale and visual density exactly; vary only broad brush placement. ROLE strip; frontal orthographic wall cross-section, logical SOURCE_SIZE 512x128, WORLD_SPAN 4 tiles, REPEAT seamless X ONLY; do not repeat Y. Full width with no end caps and no left/right margins. Actual transparent background ONLY above the irregular top silhouette. Body and bottom fully opaque all the way to bottom edge. Preserve reference top silhouette and bottom placement precisely. Stone blocks 12–20 logical pixels, quiet mortar, broad flat warm grey stone planes. No tiny pockmarks, no stone speckles. Soft even upper-left daylight, no cast shadows, no focal point, no vignette. The final will be viewed at 0.3 scale: keep broad shapes readable, NOT intricate. Absolutely no 1–4px grain, random noise, photo texture, text, watermark, grid or decorative objects. Render the entire single texture rectangle, not a sheet or showcase. If larger native output is required, scale all motif widths proportionally to preserve these final logical pixel widths.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-e0d6a89f-efe5-459d-9591-3afe357a4b06.png",
+    "suggestedSourceCrop": [
+      0,
+      89,
+      2170,
+      543
+    ],
+    "visualReview": {
+      "status": "native source accepted for normalization",
+      "motif": "Broad quiet planes; no intended fine grain",
+      "palette": "Visually in pilot family; quantitative final matching deferred to parent",
+      "alpha": "Native edge contamination/padding; must register to exact pilot alpha, clean edge RGB and fill body/bottom fully opaque",
+      "seams": "Native approximate; exact repeat repair deferred to parent"
+    }
+  },
+  {
+    "id": "fence/hurdle_end_corner-v1",
+    "role": "module",
+    "size": [
+      128,
+      96
+    ],
+    "prompt": "ROLE module / exact-topology painted wooden hurdle corner. Image1 BLACK WHITE MASK is geometry authority. Its center post is at TOP of image. Left and right outer posts are DOWN at bottom corners. This is an upward pointing chevron shape like roof ^, NOT downward V. Paint this EXACT mask, keep full128x96 proportional canvas. Ground corner at(64,56); leftgroundport(0,88); rightgroundport(128,88). Rails slope DOWN from centralpost to bothouterposts, two bigrails eachside. White occupied, black fullytransparent. Image2 is approved straightfence broad simple aged timber paint: use samewarmbrown color and broad facehighlights, no finegrain. Preserve originalmask EXACTLY and no reposition. ContactAOonly softupperleft illumination. No ground, scenery, text, markers. GenerateONE128x96conceptually sprite. Materialpaint needs broad rough strokes at least8px, no tinygrain or knots.",
+    "references": [
+      "hurdle_end_corner-topology.png",
+      "hurdle_straight-v1"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/hurdle_end_corner-topology.png",
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-f589ab70-5814-48b3-8ecd-4c67c4bb03fb.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-d7651c7e-be71-4414-a5e4-8e5c24e82722.png",
+    "attempt": 2,
+    "selected": true,
+    "notes": "First candidate reversed V orientation; second enforces center back high and broad timber planes. Final socket mask corrected after generation; geometry registration required. Original mask archived as hurdle_end_corner-generation-mask-v1.svg.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:58:12.233Z"
+  },
+  {
+    "id": "fence/hurdle_end_corner-v1",
+    "role": "module",
+    "size": [
+      128,
+      96
+    ],
+    "references": [
+      "farm_pastoral_summer-v1.png",
+      "hurdle_end_corner-topology.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/hurdle_end_corner-topology.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png"
+    ],
+    "prompt": "ROLE module / medieval hurdle corner with endposts. First image strict black-white occupied mask128x96: preserve full canvas and every white rail/post silhouette, black transparent. Second projectfarm palette only. Paint one angled corner of aged split oak fence in isometric2:1. Two stout broad horizontal rails on eacharm, post atmiddlecorner and twoendposts. Groundcorner(64,56), outer sockets(0,88) and(128,88); exact one-tile vectors64,+/-32. Crisp broad painterly tan/brown plane marks, rail10–14px, mutedwood. Soft upper-left light,no castshadow, no soilpatch. Structural shape FIRST, do not roundoffpostpositions. No tiny wattle or grain, no nails, no text or visible coloredmarkers. True transparent RGBA. One isolated module, no scene. Render at128x96conceptualscale, mayoutputlarger butretainfullframe mask coordinates proportionally.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-2ab9096f-2543-4706-9e57-ac127c9bea62.png",
+    "attempt": 1,
+    "selected": false,
+    "notes": "Fullcanvas mask placement; parent normalizes and checks sockets. Final socket mask corrected after generation; geometry registration required. Original mask archived as hurdle_end_corner-generation-mask-v1.svg.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:55:07.178Z"
+  },
+  {
+    "id": "fence/hurdle_straight-v1",
+    "role": "module",
+    "size": [
+      128,
+      64
+    ],
+    "references": [
+      "farm_pastoral_summer-v1.png",
+      "hurdle_straight-topology.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/hurdle_straight-topology.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png"
+    ],
+    "prompt": "ROLE module / medieval timber hurdle straight one-tile segment. Image1 is mandatory black-white topology mask128x64: paint ONLY its white occupied silhouette; black becomes true transparent alpha. Preserve exact fullcanvas framing, endpoint posts positions, two open gaps and two diagonal horizontal rails. Do not bbox center or alter orientation. Ground sockets final(32,60) and(96,28); vector(64,-32), NE-SW isometric. Image2 project farm fence reference for muted aged warm oak brushwork. Broad split-wood rails10–14px perceived widths, stout endposts, sparse broad painted planes, no micrograin, no tiny woven sticks. Soft upper-left lighting, no castshadow or soilpatch. Medieval England1300–1450 wooden hurdles, no metal.128x64 output concept; keep entire mask architecture and straight modular rail seams. Transparent RGBA background, no text, no socket colored markings, no grid, no photographicnoise. ONE module only.\nCORRECTION: This is a tiny game sprite, not a high-detail painting. Replace ALL mottled speckles and thin grain lines with very broad almost flat color planes. Soil has maximum6 quiet irregular patches across WHOLE BED, each patch at least16px at128wide. Cabbage max5 simple leafshapes, leek max3 bluntleafshapes perclump. Woodrails have only ONE broad highlight and ONE broad shadow plane, absolutely no grain streaks/knots. Do not add detail on enlargement. Keep subjectgeometry, 3cropmasses or2rails, fullframe/transparentbackground.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-f589ab70-5814-48b3-8ecd-4c67c4bb03fb.png",
+    "attempt": 2,
+    "selected": true,
+    "notes": "Second attempt simplifies microtexture. Prior attempt retained in history. Final socket mask corrected after generation; geometry registration required. Original mask archived as hurdle_straight-generation-mask-v1.svg.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:56:21.069Z"
+  },
+  {
+    "id": "fence/hurdle_straight-v1",
+    "role": "module",
+    "size": [
+      128,
+      64
+    ],
+    "references": [
+      "farm_pastoral_summer-v1.png",
+      "hurdle_straight-topology.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/hurdle_straight-topology.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png"
+    ],
+    "prompt": "ROLE module / medieval timber hurdle straight one-tile segment. Image1 is mandatory black-white topology mask128x64: paint ONLY its white occupied silhouette; black becomes true transparent alpha. Preserve exact fullcanvas framing, endpoint posts positions, two open gaps and two diagonal horizontal rails. Do not bbox center or alter orientation. Ground sockets final(32,60) and(96,28); vector(64,-32), NE-SW isometric. Image2 project farm fence reference for muted aged warm oak brushwork. Broad split-wood rails10–14px perceived widths, stout endposts, sparse broad painted planes, no micrograin, no tiny woven sticks. Soft upper-left lighting, no castshadow or soilpatch. Medieval England1300–1450 wooden hurdles, no metal.128x64 output concept; keep entire mask architecture and straight modular rail seams. Transparent RGBA background, no text, no socket colored markings, no grid, no photographicnoise. ONE module only.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-72275f7e-6033-41db-a469-10ff055d36e8.png",
+    "attempt": 1,
+    "selected": false,
+    "notes": "Native representative; parent normalization and zoom06 gate pending. Final socket mask corrected after generation; geometry registration required. Original mask archived as hurdle_straight-generation-mask-v1.svg.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:54:24.100Z"
+  },
+  {
+    "id": "field/furrow_stamp_a-v1",
+    "role": "decal",
+    "size": [
+      128,
+      64
+    ],
+    "references": [
+      "vegetable.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/vegetable.png"
+    ],
+    "prompt": "ROLE decal / short medieval field furrow stamp, variant A. Southern England 1300–1450 painterly isometric 2:1 game ground decal. Use attached project vegetable sprite only for warm soil palette and broad hand-painted brushwork. A SINGLE short shallow diagonal furrow from lower-left toward upper-right, 0.75 to 1.5 tiles long, with two raised warm brown earth shoulders and one dark groove. Final source128x64, meaningful groove8–12px wide, raised soil clumps12–20px, broad simple planes. Both tips taper naturally with transparent alpha. True transparent RGBA background, no rectangular ground patch, no crops, no grass, no cast shadow, no outline, no lettering. Soft upper-left light. Keep8px clear margins. Absolutely no micro-grain, little pebbles, thin hatching or details smaller than8px at final size. Crisp painterly edges, not blurred. Render ONE isolated asset only.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-517aa79a-870e-45bf-9867-c24fbd49ea84.png",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native representative; parent normalization and zoom06 gate pending.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:53:12.611Z"
+  },
+  {
+    "id": "field/furrow_stamp_b-v1",
+    "role": "decal",
+    "size": [
+      128,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-b1e04205-580d-4933-9e47-e0ac967070f7.png",
+    "prompt": "ROLE decal / field/furrow_stamp_b-v1. Native NEW variation of approved project sprite reference. SouthernEngland1300–1450, isometric2:1SW fixed, hand-painted mutedwarmbrownsoil/olivegreen palette. Preserve sourcefamily scale, alpha, light and broadform sizes, change ONLY brushmarks and masslayout as described: B: slightly shorter and thicker groove, middle-leftearthshoulder broken into3large masses; broad darkgroove centered, lowerlefttiprounded andupperrighttipnarrow. Final source128x64; groove8–12px; earthmotifs12–20px; vegetablemasses18–24px. Broadsimple surfaces, no tinygrain, no1–4pxnoise, no thinleaflines. TransparentRGBA,8pxmargin, bottomcentercontact, softupperleft,no castshadow. No text, props, animals, tools, orrectangularbackground. Furrowstamp has NO crops, shortsinglefurrow; croftbedhas exactly3cropmasses, max3broadleavesperleek and5largecabbageleaves. Crispedges, notblurred. Do notmirrorreference; redrawtruevariant.",
+    "references": [
+      "furrow_stamp_a-v1"
+    ],
+    "paths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-517aa79a-870e-45bf-9867-c24fbd49ea84.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Generated after parent zoom0.6 representative gate. Native newvariant, no mirror.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:59:12.720Z"
+  },
+  {
+    "id": "field/furrow_stamp_c-v1",
+    "role": "decal",
+    "size": [
+      128,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-2085f692-2dfd-444e-8f45-c5c44723777a.png",
+    "prompt": "ROLE decal / field/furrow_stamp_c-v1. Native NEW variation of approved project sprite reference. SouthernEngland1300–1450, isometric2:1SW fixed, hand-painted mutedwarmbrownsoil/olivegreen palette. Preserve sourcefamily scale, alpha, light and broadform sizes, change ONLY brushmarks and masslayout as described: C: longer gently bowedgroove with continuousupperleftshoulder andtwobroadgapsonlowerside. Bothendstaper. Keep sameNE-SWisometricaxis. Final source128x64; groove8–12px; earthmotifs12–20px; vegetablemasses18–24px. Broadsimple surfaces, no tinygrain, no1–4pxnoise, no thinleaflines. TransparentRGBA,8pxmargin, bottomcentercontact, softupperleft,no castshadow. No text, props, animals, tools, orrectangularbackground. Furrowstamp has NO crops, shortsinglefurrow; croftbedhas exactly3cropmasses, max3broadleavesperleek and5largecabbageleaves. Crispedges, notblurred. Do notmirrorreference; redrawtruevariant.",
+    "references": [
+      "furrow_stamp_a-v1"
+    ],
+    "paths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-517aa79a-870e-45bf-9867-c24fbd49ea84.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Generated after parent zoom0.6 representative gate. Native newvariant, no mirror.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:59:41.921Z"
+  },
+  {
+    "id": "field/furrow_stamp_d-v1",
+    "role": "decal",
+    "size": [
+      128,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-c09eafb7-6aa9-414d-b243-a6455d37877c.png",
+    "prompt": "ROLE decal / field/furrow_stamp_d-v1. Native NEW variation of approved project sprite reference. SouthernEngland1300–1450, isometric2:1SW fixed, hand-painted mutedwarmbrownsoil/olivegreen palette. Preserve sourcefamily scale, alpha, light and broadform sizes, change ONLY brushmarks and masslayout as described: D: mediumlengthgroove with large earthbulges concentratednearupperright and flat broadlowerleftshoulder, differentpaintstrokepositions. Keep sameNE-SWisometricaxis. Final source128x64; groove8–12px; earthmotifs12–20px; vegetablemasses18–24px. Broadsimple surfaces, no tinygrain, no1–4pxnoise, no thinleaflines. TransparentRGBA,8pxmargin, bottomcentercontact, softupperleft,no castshadow. No text, props, animals, tools, orrectangularbackground. Furrowstamp has NO crops, shortsinglefurrow; croftbedhas exactly3cropmasses, max3broadleavesperleek and5largecabbageleaves. Crispedges, notblurred. Do notmirrorreference; redrawtruevariant.",
+    "references": [
+      "furrow_stamp_a-v1"
+    ],
+    "paths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-517aa79a-870e-45bf-9867-c24fbd49ea84.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Generated after parent zoom0.6 representative gate. Native newvariant, no mirror.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T18:00:13.695Z"
+  },
+  {
+    "id": "garden/croft_bed_a-v1",
+    "role": "decal",
+    "size": [
+      128,
+      96
+    ],
+    "references": [
+      "vegetable.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/vegetable.png"
+    ],
+    "prompt": "ROLE decal / cottage croft bed A. Southern England1300–1450 hand-painted isometric2:1 game sprite matching attached project vegetable palette and brushwork. One isolated large raised garden bed with TWO broad warm brown soil ridges, simple cabbage mass at left and TWO stout leek leaf masses at right, total only3 vegetable masses. Final128x96, each ridge12–16px wide, cabbage/leaf mass18–24px. Use big simple legible planes with minimal broad brush marks. Small irregular earth support only under bed, transparent RGBA around it,8px margins. Bottom center contact, soft upper-left light, only tight contact AO. No fence, tools, containers, text, phototexture, micro-noise, tiny leaves or fine streaks. Do not reproduce entire reference patch: crop composition to1–2 big ridges and3 crops. ONE isolated sprite.\nCORRECTION: This is a tiny game sprite, not a high-detail painting. Replace ALL mottled speckles and thin grain lines with very broad almost flat color planes. Soil has maximum6 quiet irregular patches across WHOLE BED, each patch at least16px at128wide. Cabbage max5 simple leafshapes, leek max3 bluntleafshapes perclump. Woodrails have only ONE broad highlight and ONE broad shadow plane, absolutely no grain streaks/knots. Do not add detail on enlargement. Keep subjectgeometry, 3cropmasses or2rails, fullframe/transparentbackground.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-87f4b188-1d32-451d-92dc-3eca0b6b889d.png",
+    "attempt": 2,
+    "selected": true,
+    "notes": "Second attempt simplifies microtexture. Prior attempt retained in history.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:55:47.041Z"
+  },
+  {
+    "id": "garden/croft_bed_a-v1",
+    "role": "decal",
+    "size": [
+      128,
+      96
+    ],
+    "references": [
+      "vegetable.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/vegetable.png"
+    ],
+    "prompt": "ROLE decal / cottage croft bed A. Southern England1300–1450 hand-painted isometric2:1 game sprite matching attached project vegetable palette and brushwork. One isolated large raised garden bed with TWO broad warm brown soil ridges, simple cabbage mass at left and TWO stout leek leaf masses at right, total only3 vegetable masses. Final128x96, each ridge12–16px wide, cabbage/leaf mass18–24px. Use big simple legible planes with minimal broad brush marks. Small irregular earth support only under bed, transparent RGBA around it,8px margins. Bottom center contact, soft upper-left light, only tight contact AO. No fence, tools, containers, text, phototexture, micro-noise, tiny leaves or fine streaks. Do not reproduce entire reference patch: crop composition to1–2 big ridges and3 crops. ONE isolated sprite.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-a8f5dcbd-3e7e-48f1-902d-d75d48240188.png",
+    "attempt": 1,
+    "selected": false,
+    "notes": "Native representative; parent normalization and zoom06 gate pending.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:53:53.093Z"
+  },
+  {
+    "id": "garden/croft_bed_b-v1",
+    "role": "decal",
+    "size": [
+      128,
+      96
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-581f6080-db80-4fd4-8067-0167f47e5cc2.png",
+    "prompt": "ROLE decal / garden/croft_bed_b-v1. Native NEW variation of approved project sprite reference. SouthernEngland1300–1450, isometric2:1SW fixed, hand-painted mutedwarmbrownsoil/olivegreen palette. Preserve sourcefamily scale, alpha, light and broadform sizes, change ONLY brushmarks and masslayout as described: B: TWO large raisedsoilridges. TWO bigcabbageclumps positionedupperleftandlowerright; ONE short broadleekclumpupperright. Different3massplacementfromreference, sameoverallbedfootprint. Final source128x96; groove8–12px; earthmotifs12–20px; vegetablemasses18–24px. Broadsimple surfaces, no tinygrain, no1–4pxnoise, no thinleaflines. TransparentRGBA,8pxmargin, bottomcentercontact, softupperleft,no castshadow. No text, props, animals, tools, orrectangularbackground. Furrowstamp has NO crops, shortsinglefurrow; croftbedhas exactly3cropmasses, max3broadleavesperleek and5largecabbageleaves. Crispedges, notblurred. Do notmirrorreference; redrawtruevariant.",
+    "references": [
+      "croft_bed_a-v1"
+    ],
+    "paths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-87f4b188-1d32-451d-92dc-3eca0b6b889d.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Generated after parent zoom0.6 representative gate. Native newvariant, no mirror.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T18:00:57.245Z"
+  },
+  {
+    "id": "garden/croft_bed_c-v1",
+    "role": "decal",
+    "size": [
+      128,
+      96
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-257106a4-10fa-4d50-aab9-9e60d5303cd7.png",
+    "prompt": "ROLE decal / garden/croft_bed_c-v1. Native NEW variation of approved project sprite reference. SouthernEngland1300–1450, isometric2:1SW fixed, hand-painted mutedwarmbrownsoil/olivegreen palette. Preserve sourcefamily scale, alpha, light and broadform sizes, change ONLY brushmarks and masslayout as described: C: ONE wide raisedgardenbed withtwo broad ridgelobes andclearcentralfurrow. ONE largecabbageonright; TWO squat leekclumpsonleftandbackcenter. Samebedfootprint, visiblydifferent3massplacementfromreference. Final source128x96; groove8–12px; earthmotifs12–20px; vegetablemasses18–24px. Broadsimple surfaces, no tinygrain, no1–4pxnoise, no thinleaflines. TransparentRGBA,8pxmargin, bottomcentercontact, softupperleft,no castshadow. No text, props, animals, tools, orrectangularbackground. Furrowstamp has NO crops, shortsinglefurrow; croftbedhas exactly3cropmasses, max3broadleavesperleek and5largecabbageleaves. Crispedges, notblurred. Do notmirrorreference; redrawtruevariant.",
+    "references": [
+      "croft_bed_a-v1"
+    ],
+    "paths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-87f4b188-1d32-451d-92dc-3eca0b6b889d.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Generated after parent zoom0.6 representative gate. Native newvariant, no mirror.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T18:01:37.746Z"
+  },
+  {
+    "id": "module/bridge_abutment_nw_a-v1",
+    "role": "module",
+    "size": [
+      256,
+      192
+    ],
+    "references": [
+      "bridge_abutment_ne_a-v1.png",
+      "bridge_abutment_nw-topology.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-work-20260925/bridge_abutment_nw-topology.png",
+      "/tmp/astra-wave4b-work-20260925/astra-wave4b-reference-files/bridge_abutment_ne_a-v1.png"
+    ],
+    "prompt": "ROLE module / bridge abutment NW-SE axis, medievalEngland1300–1450. Image1 is mandatory new black-white topology mask256x192: paint exactly white occupied shape, black true transparent. Image2 approved NE abutment style/material reference. Create NEW painterly abutment with lighting FROM UPPER LEFT, NOT image reflection. Preserve fullcanvas and target geometry: land socket endpoints(152,36),(24,100), center(88,68); water endpoints(232,76),(104,140), center(168,108). Single1tilewide low wood landing attached to small grassyearthlandbank upper-left, openwateredge lower-right supported bystoutposts. About6broadwoodplanks,12–20px forms. Same mutedwarmbrownbeige palette/alphasilhouette/design/height asapprovedreference rotatedaxis butnewlighting. No fullbridge, riverorbackground, no tinygrain, no text, no socketcoloredmarkers, no longshadow. Crispbroadhandpainted surfaces. ContactAOonly. Retain256x192fullcanvas placementfrommask, nevercenterorzoom.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-c273-7353-a2cf-a441aa2e82e5/exec-41bbc313-c35c-45b0-81c1-ec80f753598e.png",
+    "attempt": 1,
+    "selected": false,
+    "notes": "Fullcanvas mask placement; parent normalizes and checks sockets.",
+    "model": "not exposed by native image_gen",
+    "generatedAt": "2026-09-24T17:54:21.894Z"
+  },
+  {
+    "id": "prop/haycock_c-v1",
+    "role": "decal",
+    "size": [
+      128,
+      128
+    ],
+    "references": [
+      "haycock_a-v1.png",
+      "haycock_b-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE decal, standalone candidate game sprite prop/haycock_c-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: A medium height asymmetric haycock, apex leaning clearly left, broad right skirt and narrow left base. Different contour from both examples. Match exactly reference muted ochre hay gold palette, soft upper-left light, simple broad paint planes and volume. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 128×128, keep8px transparent margins, bottom-center ground anchor at(64,120). Preserve reference family apparent scale and paint-form size. Hay masses at least24px at128size, only5–7large softly delineated ochre clumps, no individual straw, no rope, no bale. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-e5c9d16a-a94c-4bdf-bb50-d1dd0c165252.png"
+  },
+  {
+    "id": "prop/haycock_d-v1",
+    "role": "decal",
+    "size": [
+      128,
+      128
+    ],
+    "references": [
+      "haycock_a-v1.png",
+      "haycock_b-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE decal, standalone candidate game sprite prop/haycock_d-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: A tall slender loosely heaped haycock with upright rounded summit and pinched waist, narrow oval base. Height/width ratio about1.05; reference A is wider. Match exactly reference muted ochre hay gold palette, soft upper-left light, simple broad paint planes and volume. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 128×128, keep8px transparent margins, bottom-center ground anchor at(64,120). Preserve reference family apparent scale and paint-form size. Hay masses at least24px at128size, only5–7large softly delineated ochre clumps, no individual straw, no rope, no bale. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-90cf03e1-b3e1-4ac4-9755-c8a14a35560f.png"
+  },
+  {
+    "id": "prop/haycock_e-v1",
+    "role": "decal",
+    "size": [
+      128,
+      128
+    ],
+    "references": [
+      "haycock_a-v1.png",
+      "haycock_b-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE decal, standalone candidate game sprite prop/haycock_e-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: A squat wide haycock with blunt double-lobed low summit, broad flattened oval skirt and an uneven rightward droop; height/width ratio0.55. Not mirror of any other heap. Match exactly reference muted ochre hay gold palette, soft upper-left light, simple broad paint planes and volume. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 128×128, keep8px transparent margins, bottom-center ground anchor at(64,120). Preserve reference family apparent scale and paint-form size. Hay masses at least24px at128size, only5–7large softly delineated ochre clumps, no individual straw, no rope, no bale. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-11941f86-ad12-42c4-a4e0-2df603d22367.png"
+  },
+  {
+    "id": "prop/haycock_f-v1",
+    "role": "decal",
+    "size": [
+      128,
+      128
+    ],
+    "references": [
+      "haycock_a-v1.png",
+      "haycock_b-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE decal, standalone candidate game sprite prop/haycock_f-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: A medium rounded haycock with a distinct broad off-center summit toward right and left flared folded skirt, about0.8height/width. Loose coherent single heap, notmirror. Match exactly reference muted ochre hay gold palette, soft upper-left light, simple broad paint planes and volume. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 128×128, keep8px transparent margins, bottom-center ground anchor at(64,120). Preserve reference family apparent scale and paint-form size. Hay masses at least24px at128size, only5–7large softly delineated ochre clumps, no individual straw, no rope, no bale. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-af41072c-417e-4934-9b14-b64ba9bdc168.png"
+  },
+  {
+    "id": "tree/orchard_apple_d-v1",
+    "role": "object",
+    "size": [
+      256,
+      256
+    ],
+    "references": [
+      "orchard_apple_c-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE object, standalone candidate game sprite tree/orchard_apple_d-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: An apple orchard tree: rounded compact asymmetric crown with left crown higher, short stout forked trunk, right lower large branch. Distinct silhouette from reference with three principal large lobes rather than broad umbrella. Match exactly reference muted ochre olive foliage palette, warm brown trunk, soft upper-left light, chunky painterly foliage clusters and branch proportions. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 256×256, keep8px transparent margins, bottom-center ground anchor at(128,248). Preserve reference family apparent scale and paint-form size. Foliage masses16–24px at256size, branches and trunk8–10pxwide, no separate individual leaves or small fruit specks; fruit barely implied only by species crown. Avoid flowers. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-4b80751c-c35c-48d0-b0ea-f71fc05ca054.png"
+  },
+  {
+    "id": "tree/orchard_pear_e-v1",
+    "role": "object",
+    "size": [
+      256,
+      256
+    ],
+    "references": [
+      "orchard_apple_c-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE object, standalone candidate game sprite tree/orchard_pear_e-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: A pear orchard tree: distinctly upright oval crown narrower and taller than reference, central forked weathered trunk, asymmetrical upright branches, crown with six large ascending lobes. Preserve overall sprite boundingbox scale, narrower crown. Match exactly reference muted ochre olive foliage palette, warm brown trunk, soft upper-left light, chunky painterly foliage clusters and branch proportions. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 256×256, keep8px transparent margins, bottom-center ground anchor at(128,248). Preserve reference family apparent scale and paint-form size. Foliage masses16–24px at256size, branches and trunk8–10pxwide, no separate individual leaves or small fruit specks; fruit barely implied only by species crown. Avoid flowers. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-418df831-7195-4ca1-b0f0-9a07922d714f.png"
+  },
+  {
+    "id": "tree/orchard_plum_f-v1",
+    "role": "object",
+    "size": [
+      256,
+      256
+    ],
+    "references": [
+      "orchard_apple_c-v1.png"
+    ],
+    "prompt": "Use case: historical-scene. ROLE object, standalone candidate game sprite tree/orchard_plum_f-v1. Southern England1300–1450 painterly city builder. Input images are project-owned approved family references only. Make ONE new variant: A plum orchard tree: low broad gently arching dome canopy with one lateral branch extending left and a dip in upper-right crown, bent stout trunk with low fork; distinct new silhouette notmirror. Match exactly reference muted ochre olive foliage palette, warm brown trunk, soft upper-left light, chunky painterly foliage clusters and branch proportions. Isometric fixed southwest2:1 game view. Transparent RGBA background, no scene, no ground disk, contact AO only immediately below object, no cast shadow. Source target 256×256, keep8px transparent margins, bottom-center ground anchor at(128,248). Preserve reference family apparent scale and paint-form size. Foliage masses16–24px at256size, branches and trunk8–10pxwide, no separate individual leaves or small fruit specks; fruit barely implied only by species crown. Avoid flowers. Flat clean broad colored brush planes; all texture forms at least8–12px at target resolution. No micrograin, hatching, tiny flecks, noise, text, watermark, checkerboard painted into background, photorealism, dark outline. Change silhouette and paint placement only, preserve approved family style.",
+    "attempt": 1,
+    "selected": true,
+    "notes": "Native generated distinct silhouette; parent performs exact target size normalization and alpha QA. Visually inspected native output: distinctive unmirrored silhouette, approved family coarse paint and palette; native colored low-alpha fringe requires RGB bleed cleanup. All seven are candidate, no game installation.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-524c-7303-83ec-b623b4e29561/exec-5b55360f-311d-413e-bcbe-16cc995065f0.png"
+  },
+  {
+    "id": "road/earth_strip_a-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-9726411d-4e58-4fa5-9751-1299cdab4a85.png",
+    "prompt": "ROLE: strip / medieval English earth road. Generate ONE horizontal flat top-down road strip asset earth_strip_a-v3. Input 1 earth_strip-v1.png is authoritative warm brown palette and clearly defined hand-painted brushwork reference. Input 2 earth_strip_a-v2.png is ONLY a reference for irregular broken grassy shoulders and LOW wheel-rut contrast; do NOT copy its soft blurry washed-out painting. SOURCE_SIZE 512x64 logical pixels, full width, WORLD_SPAN 4 tiles. X ONLY seamless: left and right ends continue without caps or margins. Top and bottom alpha fade 12 logical pixels, transparent background, no Y repeat. Keep the same road width and centerline. Make strong deliberate opaque brush shapes of compacted warm earth, crisp broad patches with restrained value shifts, a few simple broad dry grass shoulder shapes; every painted material shape at least 8-12 logical pixels, shoulder interruptions 12-16. Two wheel paths only 7-10 pixels broad and low contrast, segmented and quietly buried in painterly earth; never dark continuous rails. Upper/lower shoulders break at different positions, never synchronized crossbars. Southern England 1300-1450, soft even upper-left light, no cast shadows. Painterly but not photographic, not blurred or airbrushed, no speckles/grains/thin blades, no objects, no text, no watermark. Native output may be larger but compose a single 8:1 strip across full width with transparent extra canvas if needed. Preserve readability after logical asset is shown at 0.3 scale.",
+    "references": [
+      "earth_strip-v1.png",
+      "earth_strip_a-v2.png"
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Rejected by parent final-size QA: microtexture."
+  },
+  {
+    "id": "shore/shoreline_b-v1",
+    "role": "strip",
+    "size": [
+      512,
+      96
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-d1161da8-f8d2-447c-9907-b98f4daec783.png",
+    "prompt": "ROLE strip / shoreline_b-v1. Edit the provided approved shoreline_a-v1 project reference into family variation B. LOCK exact same width and height 512x96 logical pixels, same upper grass-earth/lower shallow water proportions, identical alpha profile (12px top/bottom fade), same olive grass, muted warm grey-brown damp bank and desaturated blue-green water color range, same simple broad brushwork and 12-16px material shapes. Change ONLY lateral positions and brush contours: upper grass edge has a longer shallow indentation near first quarter and two shallower interruptions toward right; redistribute existing broad soil tongues and quiet horizontal water strokes without increasing contrast or density. No new objects. Flat top-down surface profile, NOT perspective, not full river. X ONLY seamless full-width without transparent end margins or bank end caps. Y does NOT repeat. True transparent PNG top and bottom, soft even upper-left light, no cast shadows. Southern England 1300-1450 painterly city builder. Simple distinct opaque brush shapes, no airbrush softness, no microscopic blades/sand/speckle/grain under 8-12 logical pixels. No text, frame, vignette, focal point. One asset only.",
+    "references": [
+      "shoreline_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Approved pilot family variation, only brush placement changed."
+  },
+  {
+    "id": "shore/shoreline_c-v1",
+    "role": "strip",
+    "size": [
+      512,
+      96
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-cc925df3-4f97-4efe-97ce-043f360d9aac.png",
+    "prompt": "ROLE strip / shoreline_c-v1. Edit the provided approved shoreline_a-v1 project reference into family variation C. LOCK exact same width and height 512x96 logical pixels, same upper grass-earth/lower shallow water proportions, identical alpha profile (12px top/bottom fade), same olive grass, muted warm grey-brown damp bank and desaturated blue-green water color range, same simple broad brushwork and 12-16px material shapes. Change ONLY lateral positions and brush contours: upper grass edge has two broad shallow grass tongues at one-third and three-quarters with a gently recessed middle; redistribute existing broad soil tongues and quiet horizontal water strokes without increasing contrast or density. No new objects. Flat top-down surface profile, NOT perspective, not full river. X ONLY seamless full-width without transparent end margins or bank end caps. Y does NOT repeat. True transparent PNG top and bottom, soft even upper-left light, no cast shadows. Southern England 1300-1450 painterly city builder. Simple distinct opaque brush shapes, no airbrush softness, no microscopic blades/sand/speckle/grain under 8-12 logical pixels. No text, frame, vignette, focal point. One asset only.",
+    "references": [
+      "shoreline_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Approved pilot family variation, only brush placement changed."
+  },
+  {
+    "id": "shore/shoreline_d-v1",
+    "role": "strip",
+    "size": [
+      512,
+      96
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-7b1f2740-40f0-4c36-843f-a103d5d28c7c.png",
+    "prompt": "ROLE strip / shoreline_d-v1. Edit the provided approved shoreline_a-v1 project reference into family variation D. LOCK exact same width and height 512x96 logical pixels, same upper grass-earth/lower shallow water proportions, identical alpha profile (12px top/bottom fade), same olive grass, muted warm grey-brown damp bank and desaturated blue-green water color range, same simple broad brushwork and 12-16px material shapes. Change ONLY lateral positions and brush contours: upper grass edge alternates three unequal low grass shelves, with the longest broad soil exposure just right of center and a shallower leftmost bay; redistribute existing broad soil tongues and quiet horizontal water strokes without increasing contrast or density. No new objects. Flat top-down surface profile, NOT perspective, not full river. X ONLY seamless full-width without transparent end margins or bank end caps. Y does NOT repeat. True transparent PNG top and bottom, soft even upper-left light, no cast shadows. Southern England 1300-1450 painterly city builder. Simple distinct opaque brush shapes, no airbrush softness, no microscopic blades/sand/speckle/grain under 8-12 logical pixels. No text, frame, vignette, focal point. One asset only.",
+    "references": [
+      "shoreline_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Approved pilot family variation, only brush placement changed."
+  },
+  {
+    "id": "road/earth_strip_a-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-c80b6fa9-0f41-4c62-b71b-2587fc4e9b3e.png",
+    "prompt": "ROLE: strip / medieval English earth road. Generate ONE horizontal flat top-down road strip asset earth_strip_a-v3. Input 1 earth_strip-v1.png is authoritative warm brown palette and clearly defined hand-painted brushwork reference. Input 2 earth_strip_a-v2.png is ONLY a reference for irregular broken grassy shoulders and LOW wheel-rut contrast; do NOT copy its soft blurry washed-out painting. SOURCE_SIZE 512x64 logical pixels, full width, WORLD_SPAN 4 tiles. X ONLY seamless: left and right ends continue without caps or margins. Top and bottom alpha fade 12 logical pixels, transparent background, no Y repeat. Keep the same road width and centerline. Make strong deliberate opaque brush shapes of compacted warm earth, crisp broad patches with restrained value shifts, a few simple broad dry grass shoulder shapes; every painted material shape at least 8-12 logical pixels, shoulder interruptions 12-16. Two wheel paths only 7-10 pixels broad and low contrast, segmented and quietly buried in painterly earth; never dark continuous rails. Upper/lower shoulders break at different positions, never synchronized crossbars. Southern England 1300-1450, soft even upper-left light, no cast shadows. Painterly but not photographic, not blurred or airbrushed, no speckles/grains/thin blades, no objects, no text, no watermark. Native output may be larger but compose a single 8:1 strip across full width with transparent extra canvas if needed. Preserve readability after logical asset is shown at 0.3 scale.\nCRITICAL REVISION: Previous candidate failed because it had dense stipple, scratches and microscopic grass at final 512x64. REPLACE ALL tiny surface texture with deliberately coarse opaque brush patches, each minimum 8-12 pixels at final 512x64. That means only about 40 to 60 patches across the full 512 length, and only 4 to 6 broad forms across the road width. Each green shoulder is made of broad flat chunks, never individual grass blades. Broad clean-edged gouache daubs of 3 or 4 muted tones, same v1 brown/olive palette. Keep tactile angular paint edges and visible brush shape without grain, dots, speckles or scratchy dry-brush microdetail. Road center has only a few LARGE flattened ochre strokes and two very low-contrast wide broken wheel pathways. Do NOT smear or blur: use fewer much larger well-defined shapes. No textured paper. Exact 8:1 horizontal material strip, transparent above/below.",
+    "references": [
+      "earth_strip-v1.png",
+      "earth_strip_a-v2.png"
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Revision coarse opaque brush shapes; pending parent representative gate."
+  },
+  {
+    "id": "road/earth_strip_b-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-eb585b3a-10c8-43d7-b13c-a33fd287da4e.png",
+    "prompt": "ROLE strip / road earth_strip_b-v3. Create native family variation B of image1 revised earth road A; image2 earth_strip-v1 is only brush/palette reference. Preserve image1 road width, centerline, warm brown/olive palette, low rut contrast, broad clearly painted material-shape scale. Change placement ONLY: several longer ochre daubs in left half, two broad greener shoulder bites in lower right, upper shoulder interrupted at different positions, no symmetric sleepers. Flat top-down no perspective. 512x64 logical output, 4tiles span, X ONLY seamless full width with no end cap/margin, Ytransparentfade12px. At final512x64 each patch minimum8-12px, shoulder12-16; roughly40-60broad marks across whole length. Two lowcontrast7-10px wheelpaths irregularly interrupted by earth strokes, no dark rails. Broad opaque clean-edged gouache blocks and deliberate brush contours. NO grain/stipple/scratches/tiny grass blades/dots, no photographic soil, no blurred airbrush or softened washed-outv2. England1300-1450 painterlygameasset, soft upper-leftlight no castshadow, no objects/text/vignette. Keep transparent surroundings, single continuous8:1 strip.",
+    "references": [
+      "earth_strip_a-v3 (generated attempt2)",
+      "earth_strip-v1.png"
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "After parent roadA .6 gate PASS; varied brush positions. Rejected final-size QA: interior comb/grain."
+  },
+  {
+    "id": "road/earth_strip_c-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-11d5ba7e-252b-4d64-b5eb-2b4a3c8772c7.png",
+    "prompt": "ROLE strip / road earth_strip_c-v3. Create native family variation C of image1 revised earth road A; image2 earth_strip-v1 is only brush/palette reference. Preserve image1 road width, centerline, warm brown/olive palette, low rut contrast, broad clearly painted material-shape scale. Change placement ONLY: several broad pale earth daubs centered toward right, two broad grass shoulder bites near upper left and upper middle, lower shoulder interrupted at unrelated positions, no symmetric sleepers. Flat top-down no perspective. 512x64 logical output, 4tiles span, X ONLY seamless full width with no end cap/margin, Ytransparentfade12px. At final512x64 each patch minimum8-12px, shoulder12-16; roughly40-60broad marks across whole length. Two lowcontrast7-10px wheelpaths irregularly interrupted by earth strokes, no dark rails. Broad opaque clean-edged gouache blocks and deliberate brush contours. NO grain/stipple/scratches/tiny grass blades/dots, no photographic soil, no blurred airbrush or softened washed-outv2. England1300-1450 painterlygameasset, soft upper-leftlight no castshadow, no objects/text/vignette. Keep transparent surroundings, single continuous8:1 strip.",
+    "references": [
+      "earth_strip_a-v3 (generated attempt2)",
+      "earth_strip-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "After parent roadA .6 gate PASS; varied brush positions."
+  },
+  {
+    "id": "road/earth_strip_d-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-1c6770a9-ffae-43f1-b6b4-f2d0e9620878.png",
+    "prompt": "ROLE strip / road earth_strip_d-v3. Create native family variation D of image1 revised earth road A; image2 earth_strip-v1 is only brush/palette reference. Preserve image1 road width, centerline, warm brown/olive palette, low rut contrast, broad clearly painted material-shape scale. Change placement ONLY: several broad flattened warm brown soil daubs spread asymmetrically, broad yellow-ochre brush openings in middle-left and far right, three low green shoulder masses differently spaced above and below, no symmetric sleepers. Flat top-down no perspective. 512x64 logical output, 4tiles span, X ONLY seamless full width with no end cap/margin, Ytransparentfade12px. At final512x64 each patch minimum8-12px, shoulder12-16; roughly40-60broad marks across whole length. Two lowcontrast7-10px wheelpaths irregularly interrupted by earth strokes, no dark rails. Broad opaque clean-edged gouache blocks and deliberate brush contours. NO grain/stipple/scratches/tiny grass blades/dots, no photographic soil, no blurred airbrush or softened washed-outv2. England1300-1450 painterlygameasset, soft upper-leftlight no castshadow, no objects/text/vignette. Keep transparent surroundings, single continuous8:1 strip.",
+    "references": [
+      "earth_strip_a-v3 (generated attempt2)",
+      "earth_strip-v1.png"
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "After parent roadA .6 gate PASS; varied brush positions. Rejected final-size QA: interior comb/grain."
+  },
+  {
+    "id": "road/earth_strip_b-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-194c6424-c357-4736-bfe4-e1fcc3cb166e.png",
+    "prompt": "Precise object edit of the attached project road strip B. Preserve EXACT large patch arrangement, silhouette, broken green shoulders, broad ochre placements, road width, warm muted palette and low-contrast wheel paths. Change ONLY interior surface finish: repaint ALL little grain, parallel comb lines, scratch marks, dotted brush texture and short fine grass marks into flat solid opaque gouache color planes. Each independent color plane is at least 8-12 pixels wide at final 512x64 logical size, preferably 16-24. Keep large hand-painted irregular edges sharp and well defined; NO global blur, NO smearing, NO soft airbrush. The interior of each broad patch is smooth uniformly colored opaque paint, not textured paper, not drybrush. There must be no horizontal hatching or fine grooves at all. Retain single horizontal 8:1 top-down strip, X seamless only and transparent surrounding background; top and bottom fade12 logical pixels. Do not add stones, blades, sand, grain, objects or text. This is medieval England1300-1450 citybuilder road material. Keep familyidentity unchanged.",
+    "references": [
+      "earth_strip_b-v3 (generated attempt1 edit target)"
+    ],
+    "attempt": 2,
+    "selected": false,
+    "notes": "Targeted native removal of interior microtexture, broad shape preserved. Rejected by parent: too flat vector-like."
+  },
+  {
+    "id": "road/earth_strip_d-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-23e191b2-7fd9-4ead-893a-91e0746ac957.png",
+    "prompt": "Precise object edit of the attached project road strip D. Preserve EXACT large patch arrangement, silhouette, broken green shoulders, broad ochre placements, road width, warm muted palette and low-contrast wheel paths. Change ONLY interior surface finish: repaint ALL little grain, parallel comb lines, scratch marks, dotted brush texture and short fine grass marks into flat solid opaque gouache color planes. Each independent color plane is at least 8-12 pixels wide at final 512x64 logical size, preferably 16-24. Keep large hand-painted irregular edges sharp and well defined; NO global blur, NO smearing, NO soft airbrush. The interior of each broad patch is smooth uniformly colored opaque paint, not textured paper, not drybrush. There must be no horizontal hatching or fine grooves at all. Retain single horizontal 8:1 top-down strip, X seamless only and transparent surrounding background; top and bottom fade12 logical pixels. Do not add stones, blades, sand, grain, objects or text. This is medieval England1300-1450 citybuilder road material. Keep familyidentity unchanged.",
+    "references": [
+      "earth_strip_d-v3 (generated attempt1 edit target)"
+    ],
+    "attempt": 2,
+    "selected": false,
+    "notes": "Targeted native removal of interior microtexture, broad shape preserved. Rejected by parent: too flat vector-like."
+  },
+  {
+    "id": "road/earth_strip_b-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-7a32f705-6401-4eb6-99b2-7cb0205fe9e5.png",
+    "prompt": "Targeted painterly finish edit. Image1 is road B edit target, image2 approved road A is the finish/motif-scale reference, image3 original v1 is handpainted style reference only. Preserve image1's exact large patch arrangement, broken shoulders, road width, muted brown/olive palette and low wheel-rut contrast. Replace the flat vector-like interiors with substantial visible dry-brush PATCHES like image2: broad layered opaque ochre and umber brush strokes with slight tonal variation, crisp uneven handpainted brush boundaries. Each substantial stroke must be 8-12 pixels WIDE in final512x64 logical size, many 16-24px; not thin scratches. Use broad paint facets within existing larger planes, about30-45 patches across512px, restrained value contrast. This is coarse handpainted gouache, not flat posterized vector shapes and not soft blurred airbrush. NO1-4px grain, hatching, stipple, tiny blades, photographic dirt, papertexture or fine bristle lines. Keep readable brushwork at0.3scale. Single top-down8:1 strip, Xonly seamless full width, Yfade12px into truealpha, no end caps, no perspective, no text/objects/shadows. Keep all other geometry untouched.",
+    "references": [
+      "earth_strip_b-v3 (generated attempt2 edit target)",
+      "earth_strip_a-v3 (generated attempt2)",
+      "earth_strip-v1.png"
+    ],
+    "attempt": 3,
+    "selected": true,
+    "notes": "Targeted coarse painterly finish between grainy and flatvector extremes; parent final QA required."
+  },
+  {
+    "id": "road/earth_strip_d-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-ca5875be-7451-4ca5-a402-0fd73cf5d1d6.png",
+    "prompt": "Targeted painterly finish edit. Image1 is road D edit target, image2 approved road A is the finish/motif-scale reference, image3 original v1 is handpainted style reference only. Preserve image1's exact large patch arrangement, broken shoulders, road width, muted brown/olive palette and low wheel-rut contrast. Replace the flat vector-like interiors with substantial visible dry-brush PATCHES like image2: broad layered opaque ochre and umber brush strokes with slight tonal variation, crisp uneven handpainted brush boundaries. Each substantial stroke must be 8-12 pixels WIDE in final512x64 logical size, many 16-24px; not thin scratches. Use broad paint facets within existing larger planes, about30-45 patches across512px, restrained value contrast. This is coarse handpainted gouache, not flat posterized vector shapes and not soft blurred airbrush. NO1-4px grain, hatching, stipple, tiny blades, photographic dirt, papertexture or fine bristle lines. Keep readable brushwork at0.3scale. Single top-down8:1 strip, Xonly seamless full width, Yfade12px into truealpha, no end caps, no perspective, no text/objects/shadows. Keep all other geometry untouched.",
+    "references": [
+      "earth_strip_d-v3 (generated attempt2 edit target)",
+      "earth_strip_a-v3 (generated attempt2)",
+      "earth_strip-v1.png"
+    ],
+    "attempt": 3,
+    "selected": false,
+    "notes": "Targeted coarse painterly finish between grainy and flatvector extremes; parent final QA required. Rejected baked checkerboard exterior; native alpha repair follows."
+  },
+  {
+    "id": "road/earth_strip_d-v3",
+    "role": "strip",
+    "size": [
+      512,
+      64
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d489-f80e-7e32-9038-ae0abfdde213/exec-a32c8389-3a10-4997-b74b-e44fdf4a24a6.png",
+    "prompt": "Background extraction ONLY. Keep every pixel of the painted horizontal brown road and olive green broken shoulders exactly unchanged. Remove the grey/white checkerboard surrounding the road completely and replace with genuine transparent RGBA alpha=0. The checkerboard is an unwanted baked background, NOT art. Do not paint a checkerboard, do not put the strip on any background. Preserve the coarse broad brushwork, colors, full-width strip and irregular upper/lower contour. Transparent PNG output. No other edits.",
+    "references": [
+      "earth_strip_d-v3 (generated attempt3 edit target)"
+    ],
+    "attempt": 4,
+    "selected": true,
+    "notes": "Native background extraction of attempt3; coarse painterly finish preserved. Parent QA required."
+  },
+  {
+    "id": "module/bridge_abutment_nw_a-v1",
+    "role": "module",
+    "size": [
+      256,
+      192
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d48a-272b-76a1-829e-7c1fb2b2f823/exec-da8eb02a-f3ca-4fbf-ac2b-c500629d4351.png",
+    "prompt": "Use case: precise-object-edit. ROLE module / medieval timber bridge abutment NW-SE, final logical canvas 256x192. IMAGE 1 is the edit target, IMAGE 2 is the exact occupied topology mask, black = transparent, white = permitted occupied material. Preserve full 4:3 frame and exact object placement; NO crop, NO recenter, NO mirror, NO rotation. Repair ONLY the wooden deck painting: the rear ends currently look like stepped stairs or bent boards. Replace that with a SINGLE FLAT CONTINUOUS PLANE of six broad straight wooden planks, ALL flush at both ends, completely covering this exact logical quadrilateral in clockwise order: (152,36), (24,100), (104,140), (232,76). The back edge from (152,36) to (232,76) is one straight line, NOT stairs; other three deck edges also straight. No stepped tiers, no arching or curling boards. Plank divisions run parallel to vector(128,-64), within the flat deck plane. At final size planks are 12-20px broad, use quiet large tan/brown brush planes with absolutely no fine wood grain, no scratches, no tiny knots. Retain support posts below deck at water end and small earth bank at land side, within mask. Maintain approved muted warm oak palette, soft upper-left light, no baked ground shadow. Genuine transparent RGBA outside mask. Remove colored socket markers from painting (those are metadata applied later). Historical southern English town 1300-1450. Output one isolated sprite, full256x192 proportional canvas, not a scene, no text, no borders. Exact deck topology takes precedence over old image paint.",
+    "references": [
+      "bridge_abutment_nw_a-v1.png (corrected candidate edit target)",
+      "bridge_abutment_nw-topology.png"
+    ],
+    "paths": [
+      "/tmp/astra-wave4b-candidates-20260925/module/bridge_abutment_nw_a-v1.png",
+      "/tmp/astra-wave4b-work-20260925/bridge_abutment_nw-topology.png"
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Native repaint removes rear staircase artifact; full-frame output, no mirror or bbox crop. Native deck does NOT adhere exactly to coordinates, so final requires continuous quadrilateral registration, not per-row clamp. Source deck approximate logical corners clockwise [[147.1,40.5],[51.6,88.2],[132.4,138.8],[236.7,85.4]] to target [[152,36],[24,100],[104,140],[232,76]]. Apply exact topology afterward; clean native low-alpha colored edge contamination. One flat planar warp preserves flush deck and avoids staircase artifacts.",
+    "sourceDeckQuad": [
+      [
+        147.1,
+        40.5
+      ],
+      [
+        51.6,
+        88.2
+      ],
+      [
+        132.4,
+        138.8
+      ],
+      [
+        236.7,
+        85.4
+      ]
+    ],
+    "targetDeckQuad": [
+      [
+        152,
+        36
+      ],
+      [
+        24,
+        100
+      ],
+      [
+        104,
+        140
+      ],
+      [
+        232,
+        76
+      ]
+    ],
+    "model": "not exposed by native image_gen"
+  }
+]

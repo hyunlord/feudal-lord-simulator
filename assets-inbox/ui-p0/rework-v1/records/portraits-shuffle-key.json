@@ -1,0 +1,10 @@
+{
+  "literalPixels": 96,
+  "order": {
+    "A": "success",
+    "B": "concern",
+    "C": "neutral"
+  },
+  "randomMethod": "crypto.randomInt Fisher-Yates; reject unchanged original order",
+  "blindJudgePending": false
+}

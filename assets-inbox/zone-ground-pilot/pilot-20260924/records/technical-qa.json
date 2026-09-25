@@ -1,0 +1,88 @@
+[
+  {
+    "file": "orchard_tree_apple-pilot.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGBA",
+    "sha256": "88341247e12f0997b997cae38ea5f70c359a8769a8bbc730d5082f5cd22b354a",
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "transparent_fraction": 0.7591705322265625,
+    "opaque_fraction": 0.14083480834960938
+  },
+  {
+    "file": "orchard_tree_pear-pilot.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGBA",
+    "sha256": "7aa1c1a91b84a81e3196fbedcb352b497a204b150c4120667056a12f57eac4c1",
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "transparent_fraction": 0.7565269470214844,
+    "opaque_fraction": 0.10509109497070312
+  },
+  {
+    "file": "zone_surface_croft-pilot.png",
+    "size": [
+      1024,
+      1024
+    ],
+    "mode": "RGB",
+    "sha256": "5aa1fdca46520834fc37c17c3d783dc5a13c848e01778bdeff46fa33acfc2350",
+    "seam_horizontal_mean_absolute_rgb_difference": 13.693359375,
+    "seam_vertical_mean_absolute_rgb_difference": 13.142252604166666,
+    "internal_horizontal_mean_absolute_rgb_difference": 9.889509383145976,
+    "internal_vertical_mean_absolute_rgb_difference": 9.64152710318915,
+    "note": "Descriptive metric only; not proof of invisible seams or mathematical periodicity."
+  },
+  {
+    "file": "zone_surface_open_field-pilot.png",
+    "size": [
+      1024,
+      1024
+    ],
+    "mode": "RGB",
+    "sha256": "f2be942bc02119bae8a6e03f6a2f0608c3799c083c67aa67ebf004ef2c838820",
+    "seam_horizontal_mean_absolute_rgb_difference": 18.683919270833332,
+    "seam_vertical_mean_absolute_rgb_difference": 18.778971354166668,
+    "internal_horizontal_mean_absolute_rgb_difference": 16.560133530364126,
+    "internal_vertical_mean_absolute_rgb_difference": 13.700432691328608,
+    "note": "Descriptive metric only; not proof of invisible seams or mathematical periodicity."
+  },
+  {
+    "file": "zone_surface_pasture-pilot.png",
+    "size": [
+      1024,
+      1024
+    ],
+    "mode": "RGB",
+    "sha256": "6e3f5cc1705351a61527b4ad2869c1886dbfa99b4b5e36486a7e5d5d581369c3",
+    "seam_horizontal_mean_absolute_rgb_difference": 14.7724609375,
+    "seam_vertical_mean_absolute_rgb_difference": 13.589192708333334,
+    "internal_horizontal_mean_absolute_rgb_difference": 11.957961354981265,
+    "internal_vertical_mean_absolute_rgb_difference": 11.01395125651678,
+    "note": "Descriptive metric only; not proof of invisible seams or mathematical periodicity."
+  },
+  {
+    "file": "zone_surfaces_preview-pilot.png",
+    "size": [
+      2200,
+      1850
+    ],
+    "mode": "RGB",
+    "sha256": "fc566c279302f4118079b19c8b0d7682084fb5b13d3a11e082984a4d3f7f5126"
+  },
+  {
+    "file": "zone_surfaces_repeat_check-pilot.png",
+    "size": [
+      9408,
+      3256
+    ],
+    "mode": "RGB",
+    "sha256": "7119b5146a951f608e2208f16074fb520d753c025b365fa037e74712df4b3524"
+  }
+]

@@ -1,0 +1,447 @@
+{
+  "schema": 1,
+  "priority": "ASSET_PIPELINE_SPEC_v1.md, then Wave4d specific sizes/content",
+  "counts": {
+    "assets": 22,
+    "checks": 3,
+    "csvRows": 22
+  },
+  "sourceToScreen": {
+    "zoom1": 0.5,
+    "zoom06": 0.3,
+    "zoom135": 0.675
+  },
+  "common": {
+    "sourceResizes": 1,
+    "rgbBleedPx": [
+      2,
+      4
+    ],
+    "castShadows": false,
+    "noMicroNoise": true,
+    "stripRepeat": "X only; do not compare Y edges",
+    "status": "candidate",
+    "install": false
+  },
+  "assets": [
+    {
+      "id": "wall/stone_face_a-v2",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "alpha": "upper rough silhouette only; body and bottom opaque",
+      "minMotif": 12,
+      "blockCoreRange": [
+        12,
+        16
+      ],
+      "lowerShadowY": [
+        96,
+        127
+      ],
+      "join": {
+        "canvasY": 32,
+        "topOverlap": 16
+      },
+      "noCrenellations": true
+    },
+    {
+      "id": "wall/stone_face_b-v2",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "alpha": "upper rough silhouette only; body and bottom opaque",
+      "minMotif": 12,
+      "blockCoreRange": [
+        12,
+        16
+      ],
+      "lowerShadowY": [
+        96,
+        127
+      ],
+      "join": {
+        "canvasY": 32,
+        "topOverlap": 16
+      },
+      "noCrenellations": true
+    },
+    {
+      "id": "wall/stone_face_c-v2",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "alpha": "upper rough silhouette only; body and bottom opaque",
+      "minMotif": 12,
+      "blockCoreRange": [
+        12,
+        16
+      ],
+      "lowerShadowY": [
+        96,
+        127
+      ],
+      "join": {
+        "canvasY": 32,
+        "topOverlap": 16
+      },
+      "noCrenellations": true
+    },
+    {
+      "id": "wall/stone_top_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        48
+      ],
+      "repeat": "X",
+      "alpha": "silhouette only; front join opaque",
+      "minMotif": 12,
+      "crenellation": {
+        "period": 32,
+        "width": 16,
+        "height": 14,
+        "allowedHeight": [
+          12,
+          16
+        ],
+        "phase": 0
+      },
+      "join": {
+        "faceCanvasY": 32,
+        "overlap": 16,
+        "drawOrder": [
+          "face",
+          "top"
+        ]
+      }
+    },
+    {
+      "id": "wall/stone_top_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        48
+      ],
+      "repeat": "X",
+      "alpha": "silhouette only; front join opaque",
+      "minMotif": 12,
+      "crenellation": {
+        "period": 32,
+        "width": 16,
+        "height": 14,
+        "allowedHeight": [
+          12,
+          16
+        ],
+        "phase": 0
+      },
+      "join": {
+        "faceCanvasY": 32,
+        "overlap": 16,
+        "drawOrder": [
+          "face",
+          "top"
+        ]
+      }
+    },
+    {
+      "id": "wall/stone_face_diag_top-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X",
+      "alpha": "two outer silhouettes; central walkway opaque",
+      "minMotif": 12,
+      "noSideFace": true,
+      "crenellationPeriod": 32
+    },
+    {
+      "id": "wall/stone_tower_corner-v1",
+      "role": "module",
+      "size": [
+        1774,
+        887
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "sizeStatus": "matched existing reserved palisade tower canvas; inferred runtime registration",
+      "socketStatus": "module lane owns exact mask and sockets",
+      "noMirror": true
+    },
+    {
+      "id": "wall/palisade_face_a-v2",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "alpha": "upper pointed silhouette only; body and bottom opaque",
+      "minMotif": 10,
+      "postWidth": [
+        10,
+        14
+      ],
+      "structuralPostMin": 16,
+      "lowerShadow": true
+    },
+    {
+      "id": "wall/palisade_face_b-v2",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "alpha": "upper pointed silhouette only; body and bottom opaque",
+      "minMotif": 10,
+      "postWidth": [
+        10,
+        14
+      ],
+      "structuralPostMin": 16,
+      "lowerShadow": true
+    },
+    {
+      "id": "wall/palisade_top-v1",
+      "role": "strip",
+      "size": [
+        512,
+        48
+      ],
+      "repeat": "X",
+      "alpha": "outer silhouette only; log cores opaque",
+      "minMotif": 10,
+      "content": "row of round log cross sections",
+      "joinStatus": "pair to actual face registration; avoid duplicate top rows"
+    },
+    {
+      "id": "wall/palisade_face_diag_top-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X",
+      "alpha": "outer silhouette only; log cores opaque",
+      "minMotif": 10,
+      "noSideFace": true
+    },
+    {
+      "id": "water/deep_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": "opaque",
+      "minMotif": 8,
+      "waveWidth": [
+        8,
+        12
+      ],
+      "worldSpan": "2x2 tiles",
+      "phaseVariant": true,
+      "paletteAnchor": "shallow_a-v1.png",
+      "suggestedMeanRGB": [
+        80,
+        114,
+        120
+      ]
+    },
+    {
+      "id": "water/deep_b-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": "opaque",
+      "minMotif": 8,
+      "waveWidth": [
+        8,
+        12
+      ],
+      "worldSpan": "2x2 tiles",
+      "phaseVariant": true,
+      "paletteAnchor": "shallow_a-v1.png",
+      "suggestedMeanRGB": [
+        80,
+        114,
+        120
+      ]
+    },
+    {
+      "id": "water/deep_c-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": "opaque",
+      "minMotif": 8,
+      "waveWidth": [
+        8,
+        12
+      ],
+      "worldSpan": "2x2 tiles",
+      "phaseVariant": true,
+      "paletteAnchor": "shallow_a-v1.png",
+      "suggestedMeanRGB": [
+        80,
+        114,
+        120
+      ]
+    },
+    {
+      "id": "shore/shoreline_e-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X",
+      "alpha": "Y-edge fade 12px",
+      "minMotif": 12,
+      "edgeMotif": [
+        12,
+        16
+      ],
+      "waterPalette": "deep family"
+    },
+    {
+      "id": "shore/shoreline_f-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X",
+      "alpha": "Y-edge fade 12px",
+      "minMotif": 12,
+      "edgeMotif": [
+        12,
+        16
+      ],
+      "waterPalette": "deep family"
+    },
+    {
+      "id": "shore/reeds_a-v1",
+      "role": "decal",
+      "size": [
+        96,
+        96
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "pivot": [
+        48,
+        88
+      ],
+      "pivotStatus": "proposed 8px bottom clearance",
+      "shadow": "none",
+      "silhouetteDistinct": true
+    },
+    {
+      "id": "shore/reeds_b-v1",
+      "role": "decal",
+      "size": [
+        96,
+        96
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "pivot": [
+        48,
+        88
+      ],
+      "pivotStatus": "proposed 8px bottom clearance",
+      "shadow": "none",
+      "silhouetteDistinct": true
+    },
+    {
+      "id": "shore/reeds_c-v1",
+      "role": "decal",
+      "size": [
+        96,
+        96
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "pivot": [
+        48,
+        88
+      ],
+      "pivotStatus": "proposed 8px bottom clearance",
+      "shadow": "none",
+      "silhouetteDistinct": true
+    },
+    {
+      "id": "shore/mudstone_a-v1",
+      "role": "decal",
+      "size": [
+        64,
+        48
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "pivot": [
+        32,
+        40
+      ],
+      "pivotStatus": "proposed 8px bottom clearance",
+      "shadow": "contact only",
+      "noTinyGravel": true
+    },
+    {
+      "id": "shore/mudstone_b-v1",
+      "role": "decal",
+      "size": [
+        64,
+        48
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "pivot": [
+        32,
+        40
+      ],
+      "pivotStatus": "proposed 8px bottom clearance",
+      "shadow": "contact only",
+      "noTinyGravel": true
+    },
+    {
+      "id": "module/bridge_abutment_se_a-v1",
+      "role": "module",
+      "size": [
+        256,
+        192
+      ],
+      "repeat": "none",
+      "alpha": "transparent RGBA",
+      "minMotif": 16,
+      "socketStatus": "module lane owns front SE socket mask, match prior NE rules"
+    }
+  ]
+}

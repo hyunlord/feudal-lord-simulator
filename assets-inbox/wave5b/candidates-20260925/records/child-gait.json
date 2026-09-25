@@ -1,0 +1,146 @@
+{
+  "id": "actor_child-v1",
+  "status": "candidate",
+  "cell": [
+    74,
+    74
+  ],
+  "sheet": [
+    296,
+    148
+  ],
+  "directionOrder": [
+    "NE",
+    "SE",
+    "SW",
+    "NW"
+  ],
+  "frameRows": [
+    0,
+    1
+  ],
+  "contactY": 67,
+  "opaqueSoleY": 66,
+  "visibleHeight": 42,
+  "adultVisibleHeight": "64–65 px",
+  "heightRatio": "0.646–0.656",
+  "overallVerdict": "fail",
+  "reason": "All three native attempts fail. Third attempt uses literal frame0 duplicated into row1 and requests feet-only redraw. Wider stride and slight body drift do not establish alternating anatomical leading foot.",
+  "directions": [
+    {
+      "direction": "NE",
+      "frame0": {
+        "toe": [
+          42,
+          58
+        ],
+        "lead": "uncertain",
+        "reason": "Forward up-right shoe; down-left leg remains straight behind."
+      },
+      "frame1": {
+        "toe": [
+          42,
+          57
+        ],
+        "lead": "uncertain",
+        "reason": "Same up-right forward shoe and down-left trailing leg; no visible swapped leg connection."
+      },
+      "verdict": "fail"
+    },
+    {
+      "direction": "SE",
+      "frame0": {
+        "toe": [
+          42,
+          65
+        ],
+        "lead": "uncertain",
+        "reason": "Screen-right visible leg straight down-right; screen-left foot bent behind."
+      },
+      "frame1": {
+        "toe": [
+          43,
+          65
+        ],
+        "lead": "uncertain",
+        "reason": "Same screen-right straight leg leads. Feet-only redraw did not reverse hip/knee connection."
+      },
+      "verdict": "fail"
+    },
+    {
+      "direction": "SW",
+      "frame0": {
+        "toe": [
+          31,
+          65
+        ],
+        "lead": "uncertain",
+        "reason": "Screen-left visible leg straight down-left; screen-right shoe bent behind."
+      },
+      "frame1": {
+        "toe": [
+          31,
+          65
+        ],
+        "lead": "uncertain",
+        "reason": "Same screen-left forward leg silhouette, no opposite half-step."
+      },
+      "verdict": "fail"
+    },
+    {
+      "direction": "NW",
+      "frame0": {
+        "toe": [
+          33,
+          58
+        ],
+        "lead": "uncertain",
+        "reason": "Forward up-left shoe; down-right leg remains straight behind."
+      },
+      "frame1": {
+        "toe": [
+          33,
+          58
+        ],
+        "lead": "uncertain",
+        "reason": "Same up-left leading shoe and down-right trailing leg pattern retained."
+      },
+      "verdict": "fail"
+    }
+  ],
+  "costumeConsistency": {
+    "bareHead": "pass",
+    "shortChestnutHair": "pass",
+    "ochreKneeTunic": "pass",
+    "brownHoseShoes": "pass",
+    "beardAbsent": "pass",
+    "propsAbsent": "pass",
+    "notes": "Rounded face and large head differentiate child from adult references. Small tunic hem/arm shifts remain between generated views; feet-only edit also slightly redrew unrequested body pixels."
+  },
+  "attempts": [
+    {
+      "path": "A/attempts/child_initial_failed.png",
+      "verdict": "fail"
+    },
+    {
+      "path": "A/attempts/child_feet_only_redraw.png",
+      "verdict": "fail"
+    },
+    {
+      "path": "A/attempts/child_frame0_duplicated_input.png",
+      "role": "Literal native top row copied pixel-for-pixel to bottom row before editing",
+      "verdict": "input"
+    },
+    {
+      "path": "A/attempts/child_from_frame0_feet_only_native.png",
+      "verdict": "fail",
+      "reason": "Feet-only edit requested from literal duplicated frame0. Calf/hip visible connection still same leading leg in all four columns."
+    },
+    {
+      "path": "A/attempts/child_from_frame0_feet_only_normalized.png",
+      "verdict": "fail"
+    }
+  ],
+  "manualEdits": "Canvas only mechanical per-cell alpha bbox crop, aspect-preserving single downsample to 42 px body height, horizontal centering x37, ground boundary y67; no feet painted or mirrored algorithmically.",
+  "verification": "Native and normalized sheets visually inspected. Toe marks show visible leading shoe, not proof of anatomical L/R identity."
+}

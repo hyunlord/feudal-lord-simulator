@@ -1,0 +1,12 @@
+{
+  "canvas":[256,256],"eyeLine":112,"shoulderLine":208,
+  "preserveFullCanvas":true,"normalization":"Native tunic and gown resampled once directly to 256. Hood and hat use exact P4/P1 source pixel cutouts after native edit trials; no resampling for original source pixels.",
+  "hoodOpening":[[78,80],[95,77],[128,88],[157,107],[171,129],[176,147],[184,165],[175,190],[161,207],[139,221],[112,207],[94,186],[74,171],[65,147],[65,113],[69,94]],
+  "hoodTunicSplit":[[0,211],[43,191],[85,208],[127,225],[162,211],[218,189],[256,206]],
+  "hoodBackgroundCleanup":"Remove reference RGB background within maxchannel difference10. No color edit to garment.",
+  "tunic":"Native reconstructed garment under original hood, original P4 lower cloth region preserves reproduction. This region includes historical cowl continuation; logical garment partition is for this pilot only.",
+  "mask":"White RGB, tunic alpha only where R>1.20G and R>1.3B, excluding central tie rectangle x130..148 y222..255. Linen stays unmasked. Hood separate layer never tinted.",
+  "hat":"P1 exact contour polygon manually registered; pixels unchanged, transparent where face was.",
+  "gown":"Native P1 gown edit selected, original full canvas preserved without bounding-box normalization.",
+  "limitations":"P4 garment is visibly a hood/cape rather than separately visible tunic; lower cloth assigned to logical tunic for requested cloth1 recoloring. Exact source visible regions retained, reconstructed hidden sections remain native candidates. Mask has subpixel alpha edges, no claims of production-ready layer library."
+}

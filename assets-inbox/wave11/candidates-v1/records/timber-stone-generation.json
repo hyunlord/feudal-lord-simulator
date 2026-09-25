@@ -1,0 +1,863 @@
+[
+  {
+    "d": [
+      "timber",
+      "small",
+      "house_l0-v3.png",
+      153,
+      153
+    ],
+    "prompt": "Edit the attached project building into its CONSTRUCTION FRAME STAGE. Preserve exactly the isometric camera, building footprint corner positions and contact baseline, canvas composition, muted handpainted style. Transparent RGBA isolated object. Remove the entire roof and plaster walls, leaving a clearly readable standing OAK POST AND BEAM WALL FRAME, low stone sill, open interior, with one wall frame still lying flat inside the footprint being assembled on the ground. No roof rafters yet. No people, no material piles, no loose stacks, no yard, no tools scattered, no grass, no text, no chimney, no broad cast shadow. Keep large clear structural members legible at 60% of the original small image.",
+    "stage": "frame",
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-18aea1ba-5093-42db-82f7-61c79f3d9149.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-18aea1ba-5093-42db-82f7-61c79f3d9149.png",
+    "rawFile": "sources/timber-stone/timber-small-frame.png",
+    "sourceAnchors": [
+      [
+        191,
+        715
+      ],
+      [
+        480,
+        541
+      ],
+      [
+        751,
+        1063
+      ]
+    ],
+    "targetAnchors": [
+      [
+        27,
+        108
+      ],
+      [
+        62,
+        88
+      ],
+      [
+        91,
+        138
+      ]
+    ],
+    "transform": [
+      0.11428571428571428,
+      -0.008787346221441126,
+      0,
+      0.10034745368967538,
+      6.157142857142858,
+      37.92995374017735
+    ],
+    "file": "assets/kit_timber/stage_frame_small-v1.png",
+    "clearedLowAlphaPixels": 11278
+  },
+  {
+    "d": [
+      "stone",
+      "medium",
+      "masonry-v2.png",
+      138,
+      138
+    ],
+    "prompt": "Edit the attached project building into its CONSTRUCTION FRAME STAGE. Preserve exactly the isometric camera, building footprint corner positions and contact baseline, canvas composition, muted handpainted style. Transparent RGBA isolated object. Replace complete building with HALF HEIGHT RUBBLE STONE WALLS with door gap, stout OAK TIMBER SCAFFOLD around the walls, one small mortar tub INSIDE the footprint and a short plank ramp. No roof yet. No people, no material piles, no loose stacks, no yard, no tools scattered, no grass, no text, no chimney, no broad cast shadow. Keep large clear structural members legible at 60% of the original small image.",
+    "stage": "frame",
+    "hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-2cb89840-735c-42d1-89ad-fa7a17be8c71.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-2cb89840-735c-42d1-89ad-fa7a17be8c71.png",
+    "rawFile": "sources/timber-stone/stone-medium-frame.png",
+    "sourceAnchors": [
+      [
+        205,
+        798
+      ],
+      [
+        1040,
+        970
+      ],
+      [
+        748,
+        1095
+      ]
+    ],
+    "targetAnchors": [
+      [
+        22,
+        100
+      ],
+      [
+        119,
+        103
+      ],
+      [
+        80,
+        125
+      ]
+    ],
+    "transform": [
+      0.11616766467065869,
+      -0.022050595411354536,
+      0,
+      0.1244898091190758,
+      -4.353892215568866,
+      5.177504382305202
+    ],
+    "file": "assets/kit_stone/stage_frame_medium-v1.png",
+    "clearedLowAlphaPixels": 13432
+  },
+  {
+    "d": [
+      "timber",
+      "small",
+      "house_l0-v3.png",
+      153,
+      153
+    ],
+    "stage": "plot",
+    "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-small-plot.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-739dd500-d940-4007-9136-d2a4929bbfc3.png",
+    "sourceAnchors": [
+      [
+        243,
+        778
+      ],
+      [
+        505,
+        617
+      ],
+      [
+        736,
+        1068
+      ]
+    ],
+    "targetAnchors": [
+      [
+        27,
+        108
+      ],
+      [
+        62,
+        88
+      ],
+      [
+        91,
+        138
+      ]
+    ],
+    "clearedLowAlphaPixels": 23807,
+    "transform": [
+      0.12981744421906694,
+      -0.006243844663443899,
+      0,
+      0.1140628117899236,
+      -4.051724137931032,
+      20.7763866806563
+    ],
+    "file": "assets/kit_timber/stage_plot_small-v1.png"
+  },
+  {
+    "d": [
+      "timber",
+      "small",
+      "house_l0-v3.png",
+      153,
+      153
+    ],
+    "stage": "foundation",
+    "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a LOW SINGLE COURSE RUBBLE STONE SILL outline and heavy OAK GROUND SILL BEAMS on top, open bare interior. No upright wall posts yet, no roof. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-small-foundation.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-d94d4ba3-c274-4004-b895-713ec7fe04a4.png",
+    "sourceAnchors": [
+      [
+        227,
+        792
+      ],
+      [
+        490,
+        639
+      ],
+      [
+        742,
+        1091
+      ]
+    ],
+    "targetAnchors": [
+      [
+        27,
+        108
+      ],
+      [
+        62,
+        88
+      ],
+      [
+        91,
+        138
+      ]
+    ],
+    "clearedLowAlphaPixels": 7500,
+    "transform": [
+      0.12427184466019417,
+      -0.008829208801260226,
+      0,
+      0.11554194826972915,
+      -0.05145631067960821,
+      18.495007368260588
+    ],
+    "file": "assets/kit_timber/stage_foundation_small-v1.png"
+  },
+  {
+    "d": [
+      "timber",
+      "small",
+      "house_l0-v3.png",
+      153,
+      153
+    ],
+    "stage": "roof",
+    "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed one storey timber-framed cream wattle-and-daub walls and OPEN EXPOSED OAK ROOF RAFTERS, without any roof covering. Preserve the reference height and ground footprint, no chimney. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-small-roof.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-71c2f433-5b55-432f-8af5-0902ee1a942c.png",
+    "sourceAnchors": [
+      [
+        263,
+        877
+      ],
+      [
+        1001,
+        954
+      ],
+      [
+        717,
+        1105
+      ]
+    ],
+    "targetAnchors": [
+      [
+        27,
+        108
+      ],
+      [
+        126,
+        118
+      ],
+      [
+        91,
+        138
+      ]
+    ],
+    "clearedLowAlphaPixels": 8114,
+    "transform": [
+      0.13414634146341464,
+      -0.0002250461344575638,
+      0,
+      0.13202706554843743,
+      -6.731707317073173,
+      -7.728549352617293
+    ],
+    "file": "assets/kit_timber/stage_roof_small-v1.png"
+  },
+  {
+    "d": [
+      "timber",
+      "medium",
+      "house_l2-v2.png",
+      137,
+      137
+    ],
+    "stage": "frame",
+    "prompt": "Edit the attached project building into its FRAME CONSTRUCTION STAGE. OPEN OAK POST AND BEAM WALL FRAME matching the reference's TWO STOREYS, heavy cornerposts and diagonal braces. Low stone sill. All plaster and roof removed. One assembled wallframe lies flat INSIDE the footprint being raised, no loose beam piles. No roof rafters yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-medium-frame.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-b5fe5361-b310-4bba-a28d-324565863910.png",
+    "sourceAnchors": [
+      [
+        204,
+        844
+      ],
+      [
+        1024,
+        1005
+      ],
+      [
+        757,
+        1176
+      ]
+    ],
+    "targetAnchors": [
+      [
+        23,
+        104
+      ],
+      [
+        117,
+        112
+      ],
+      [
+        85,
+        131
+      ]
+    ],
+    "clearedLowAlphaPixels": 35922,
+    "transform": [
+      0.11463414634146342,
+      -0.0092299966704329,
+      0,
+      0.09669936192394396,
+      -1.081707317073171,
+      24.268657856959607
+    ],
+    "file": "assets/kit_timber/stage_frame_medium-v1.png"
+  },
+  {
+    "d": [
+      "stone",
+      "medium",
+      "masonry-v2.png",
+      138,
+      138
+    ],
+    "stage": "plot",
+    "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-medium-plot.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-9e933b2b-603b-4a4b-8198-4a80e7b13599.png",
+    "sourceAnchors": [
+      [
+        224,
+        763
+      ],
+      [
+        1028,
+        924
+      ],
+      [
+        754,
+        1074
+      ]
+    ],
+    "targetAnchors": [
+      [
+        22,
+        100
+      ],
+      [
+        119,
+        103
+      ],
+      [
+        80,
+        125
+      ]
+    ],
+    "clearedLowAlphaPixels": 33843,
+    "transform": [
+      0.12064676616915423,
+      -0.018771931954782228,
+      0,
+      0.11237660429593113,
+      -7.9962686567164205,
+      18.461563680075756
+    ],
+    "file": "assets/kit_stone/stage_plot_medium-v1.png"
+  },
+  {
+    "d": [
+      "timber",
+      "medium",
+      "house_l2-v2.png",
+      137,
+      137
+    ],
+    "stage": "roof",
+    "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed two storey timber-framed cream wattle-and-daub walls and OPEN EXPOSED OAK ROOF RAFTERS, without any roof covering. Preserve the reference height and ground footprint, no chimney. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-medium-roof.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-33c6cbbb-1830-4311-b225-815a85ca8580.png",
+    "sourceAnchors": [
+      [
+        215,
+        923
+      ],
+      [
+        1037,
+        997
+      ],
+      [
+        746,
+        1177
+      ]
+    ],
+    "targetAnchors": [
+      [
+        23,
+        104
+      ],
+      [
+        117,
+        112
+      ],
+      [
+        85,
+        131
+      ]
+    ],
+    "clearedLowAlphaPixels": 18181,
+    "transform": [
+      0.11435523114355231,
+      0.00020059707128275927,
+      0,
+      0.10587985415412934,
+      -0.9476885644768842,
+      6.229766245412833
+    ],
+    "file": "assets/kit_timber/stage_roof_medium-v1.png"
+  },
+  {
+    "d": [
+      "timber",
+      "medium",
+      "house_l2-v2.png",
+      137,
+      137
+    ],
+    "stage": "foundation",
+    "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a LOW SINGLE COURSE RUBBLE STONE SILL outline and heavy OAK GROUND SILL BEAMS on top, open bare interior. No upright wall posts yet, no roof. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-medium-foundation.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-99dbd0cc-04e4-422c-a365-3e64273f4d72.png",
+    "sourceAnchors": [
+      [
+        212,
+        795
+      ],
+      [
+        1020,
+        984
+      ],
+      [
+        775,
+        1151
+      ]
+    ],
+    "targetAnchors": [
+      [
+        23,
+        104
+      ],
+      [
+        117,
+        112
+      ],
+      [
+        85,
+        131
+      ]
+    ],
+    "clearedLowAlphaPixels": 10366,
+    "transform": [
+      0.11633663366336634,
+      -0.012441997119856985,
+      0,
+      0.09551922578224574,
+      -3.4121287128712865,
+      30.699918892524323
+    ],
+    "file": "assets/kit_timber/stage_foundation_medium-v1.png"
+  },
+  {
+    "d": [
+      "stone",
+      "medium",
+      "masonry-v2.png",
+      138,
+      138
+    ],
+    "stage": "foundation",
+    "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a low rubble-stone foundation perimeter rising TWO OR THREE COURSES with clean door gap; open bare interior. Broad readable pale stone ground-plan, no upper walls, scaffold or roof yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-medium-foundation.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-f9d03564-1a17-48d8-b670-980a0d07ebc9.png",
+    "sourceAnchors": [
+      [
+        187,
+        774
+      ],
+      [
+        1053,
+        914
+      ],
+      [
+        744,
+        1110
+      ]
+    ],
+    "targetAnchors": [
+      [
+        22,
+        100
+      ],
+      [
+        119,
+        103
+      ],
+      [
+        80,
+        125
+      ]
+    ],
+    "clearedLowAlphaPixels": 5609,
+    "transform": [
+      0.11200923787528869,
+      -0.011699750230051268,
+      0,
+      0.09379988356588856,
+      -1.1403002309468846,
+      29.586743413021836
+    ],
+    "file": "assets/kit_stone/stage_foundation_medium-v1.png"
+  },
+  {
+    "d": [
+      "stone",
+      "medium",
+      "masonry-v2.png",
+      138,
+      138
+    ],
+    "stage": "roof",
+    "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed LOW RUBBLE STONE BASE WALLS with oak-and-cream half-timber UPPER GABLES matching this mixed masonry reference; OPEN EXPOSED OAK ROOF RAFTERS, no tile covering. This is NOT a fully stone house. Preserve reference footprint and height. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-medium-roof-clean.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-9a23e596-ae47-4382-b3b1-14363a12875d.png",
+    "sourceAnchors": [
+      [
+        217,
+        908
+      ],
+      [
+        1035,
+        959
+      ],
+      [
+        693,
+        1140
+      ]
+    ],
+    "targetAnchors": [
+      [
+        22,
+        100
+      ],
+      [
+        119,
+        103
+      ],
+      [
+        80,
+        125
+      ]
+    ],
+    "clearedLowAlphaPixels": 10101,
+    "transform": [
+      0.11858190709046455,
+      -0.003498489425981873,
+      0,
+      0.11493655589123868,
+      -2.954767726161382,
+      -3.603220543806657
+    ],
+    "file": "assets/kit_stone/stage_roof_medium-v1.png",
+    "previousRawFile": "sources/timber-stone/stone-medium-roof.png"
+  },
+  {
+    "d": [
+      "stone",
+      "large",
+      "storehouse.png",
+      160,
+      136
+    ],
+    "stage": "frame",
+    "prompt": "Edit the attached project building into its FRAME CONSTRUCTION STAGE. HALF HEIGHT RUBBLE STONE WALLS, taller than foundation, large door gap, stout OAK TIMBER SCAFFOLD and small mortar tub INSIDE footprint; short plank ramp. No roof. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-large-frame.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-56c69159-90e0-46a2-bd1a-118e697bef0a.png",
+    "sourceAnchors": [
+      [
+        118,
+        727
+      ],
+      [
+        1230,
+        830
+      ],
+      [
+        780,
+        1028
+      ]
+    ],
+    "targetAnchors": [
+      [
+        19,
+        94
+      ],
+      [
+        146,
+        95
+      ],
+      [
+        92,
+        121
+      ]
+    ],
+    "clearedLowAlphaPixels": 20257,
+    "transform": [
+      0.11420863309352518,
+      -0.0093049083391489,
+      0,
+      0.11016561236052018,
+      4.220323741007196,
+      15.0075789979214
+    ],
+    "file": "assets/kit_stone/stage_frame_large-v1.png"
+  },
+  {
+    "d": [
+      "stone",
+      "large",
+      "storehouse.png",
+      160,
+      136
+    ],
+    "stage": "plot",
+    "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-large-plot.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-ed9fd23f-6f32-4d5d-84bc-ec0d5b46e9a4.png",
+    "sourceAnchors": [
+      [
+        162,
+        624
+      ],
+      [
+        1213,
+        770
+      ],
+      [
+        813,
+        977
+      ]
+    ],
+    "targetAnchors": [
+      [
+        19,
+        94
+      ],
+      [
+        146,
+        95
+      ],
+      [
+        92,
+        121
+      ]
+    ],
+    "clearedLowAlphaPixels": 54114,
+    "transform": [
+      0.120837297811608,
+      -0.013005649430889596,
+      0,
+      0.10047217501277372,
+      -3.4081826831588984,
+      33.41227799983332
+    ],
+    "file": "assets/kit_stone/stage_plot_large-v1.png"
+  },
+  {
+    "d": [
+      "stone",
+      "large",
+      "storehouse.png",
+      160,
+      136
+    ],
+    "stage": "foundation",
+    "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a low rubble-stone foundation perimeter rising TWO OR THREE COURSES with clean door gap; open bare interior. Broad readable pale stone ground-plan, no upper walls, scaffold or roof yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-large-foundation.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-3b0a9f20-f45d-4f76-95ef-bb15a522b109.png",
+    "sourceAnchors": [
+      [
+        174,
+        723
+      ],
+      [
+        1218,
+        801
+      ],
+      [
+        792,
+        992
+      ]
+    ],
+    "targetAnchors": [
+      [
+        19,
+        94
+      ],
+      [
+        146,
+        95
+      ],
+      [
+        92,
+        121
+      ]
+    ],
+    "clearedLowAlphaPixels": 7818,
+    "transform": [
+      0.12164750957854406,
+      -0.007896592042367345,
+      0,
+      0.1185133601568142,
+      -3.255747126436777,
+      9.68884762199525
+    ],
+    "file": "assets/kit_stone/stage_foundation_large-v1.png"
+  },
+  {
+    "d": [
+      "timber",
+      "medium",
+      "house_l2-v2.png",
+      137,
+      137
+    ],
+    "stage": "plot",
+    "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+    ],
+    "rawFile": "sources/timber-stone/timber-medium-plot.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-07845c93-4b8e-486f-82ee-824b36f8fad3.png",
+    "sourceAnchors": [
+      [
+        247,
+        831
+      ],
+      [
+        1005,
+        973
+      ],
+      [
+        766,
+        1122
+      ]
+    ],
+    "targetAnchors": [
+      [
+        23,
+        104
+      ],
+      [
+        117,
+        112
+      ],
+      [
+        85,
+        131
+      ]
+    ],
+    "clearedLowAlphaPixels": 21727,
+    "transform": [
+      0.12401055408970976,
+      -0.01025326797385621,
+      0,
+      0.11107026143790849,
+      -8.811345646437996,
+      14.233169934640529
+    ],
+    "file": "assets/kit_timber/stage_plot_medium-v1.png"
+  },
+  {
+    "d": [
+      "stone",
+      "large",
+      "storehouse.png",
+      160,
+      136
+    ],
+    "stage": "roof",
+    "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed LOW RUBBLE STONE BASE WALLS with oak-and-cream half-timber UPPER GABLES matching this mixed masonry reference; OPEN EXPOSED OAK ROOF RAFTERS, no tile covering. This is NOT a fully stone house. Preserve reference footprint and height. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+    ],
+    "rawFile": "sources/timber-stone/stone-large-roof.png",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d92f-6524-7370-b2e2-c430f163110c/exec-fa689ab9-23eb-426c-933c-f7cc199c79cd.png",
+    "sourceAnchors": [
+      [
+        139,
+        796
+      ],
+      [
+        1229,
+        842
+      ],
+      [
+        791,
+        1045
+      ]
+    ],
+    "targetAnchors": [
+      [
+        19,
+        94
+      ],
+      [
+        146,
+        95
+      ],
+      [
+        92,
+        121
+      ]
+    ],
+    "clearedLowAlphaPixels": 10363,
+    "transform": [
+      0.11651376146788991,
+      -0.004113197856000795,
+      0,
+      0.11920403615306233,
+      1.3211009174311847,
+      -0.3146782758534954
+    ],
+    "file": "assets/kit_stone/stage_roof_large-v1.png"
+  }
+]

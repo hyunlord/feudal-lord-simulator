@@ -1,0 +1,23 @@
+{
+  "id": "wk_priest_m_01-v1",
+  "group": "priest",
+  "sex": "m",
+  "template": "actor_cleric-v3.png",
+  "design": "parish priest, plain charcoal long secular clerical gown, visible tonsure hair ring, no monastic cowl, no liturgical vestments, empty hands",
+  "index": 22,
+  "prompt": "Use case: identity-preserve. EDIT THE ATTACHED EXACT 8-CELL SPRITE SHEET. It is a rigid pose template, not inspiration. Keep 4 columns NE,SE,SW,NW and 2 gait rows, exactly original camera, body contours, face position, hand positions, elbow angle, leg poses, shoes and shadows. Change clothing/headwear ONLY to: parish priest, plain charcoal long secular clerical gown, visible tonsure hair ring, no monastic cowl, no liturgical vestments, empty hands. England 1300–1450, tiny hand-painted project art, muted historical wool/linen. No objects held, no bags, no tools, no text. Preserve every original head/foot location. Do not invent poses or rearrange cells. Preserve bottom shoes pixels. All 8 must be same outfit and recognizable direction. Transparent RGBA, sheet aspect2:1. Priest must have no cowl, monk has black cowl; nun has black veil and white wimple. Plain servant red cuff is muted madder, not heraldic badge. This is a clothes-only pixel-aligned reskin of input.",
+  "refs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/templates/actor_cleric-v3.png"
+  ],
+  "tool": "builtin image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw": "sources/wk_priest_m_01-v1-edit2.png",
+  "correction": {
+    "prompt": "Edit this exact eight cell priest sprite sheet. Remove ALL white collar parts and white neck tabs from EVERY cell. Replace each white collar with plain unadorned charcoal grey cloth neckline blending into robe. This is a 1300–1450 English parish priest, NO modern Roman collar, NO clerical white tab, no standing collar. Keep tonsure, gown, all eight poses, directions, hands, feet and transparent background EXACTLY unchanged. No cowl or hood.",
+    "refs": [
+      "sources/wk_priest_m_01-v1-edit.png"
+    ],
+    "reason": "Remove anachronistic white clerical collar generated in first edit"
+  }
+}

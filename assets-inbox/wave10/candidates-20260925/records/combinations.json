@@ -1,0 +1,442 @@
+{
+  "seed": 20260925,
+  "method": "20-face coverage plus four adult resamples, Fisher-Yates order, independent layer draws; children no aging/beard",
+  "scenarios": [
+    {
+      "id": "01",
+      "face": "pt_face_f_08",
+      "age": "pt_age_f_mature_a",
+      "hair": "pt_hair_f_04",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_04_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_f_08.png",
+        "layers/pt_age_f_mature_a.png",
+        "layers/pt_hair_f_04.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "02",
+      "face": "pt_face_m_01",
+      "age": "pt_age_m_old_b",
+      "hair": "pt_hair_m_03",
+      "beard": "pt_beard_03",
+      "garment": "pt_garment_work_tunic",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_03_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_m_01.png",
+        "layers/pt_age_m_old_b.png",
+        "layers/pt_hair_m_03.png",
+        "layers/pt_beard_03.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png"
+      ]
+    },
+    {
+      "id": "03",
+      "face": "pt_face_m_02",
+      "age": "pt_age_m_mature_a",
+      "hair": "pt_hair_m_01",
+      "beard": "pt_beard_04",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": "pt_hat_brim",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_01_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_02.png",
+        "layers/pt_age_m_mature_a.png",
+        "layers/pt_hair_m_01.png",
+        "layers/pt_beard_04.png",
+        "pilot-reuse/pt_hat_brim-v1.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "04",
+      "face": "pt_face_c_01",
+      "age": null,
+      "hair": "pt_hair_m_09",
+      "beard": null,
+      "garment": "pt_garment_work_tunic",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_09_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_c_01.png",
+        "layers/pt_hair_m_09.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png"
+      ]
+    },
+    {
+      "id": "05",
+      "face": "pt_face_c_03",
+      "age": null,
+      "hair": "pt_hair_f_09",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_09_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_c_03.png",
+        "layers/pt_hair_f_09.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "06",
+      "face": "pt_face_f_03",
+      "age": null,
+      "hair": "pt_hair_f_05",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_05_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_f_03.png",
+        "layers/pt_hair_f_05.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "07",
+      "face": "pt_face_m_08",
+      "age": null,
+      "hair": "pt_hair_m_05",
+      "beard": "pt_beard_06",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_05_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_08.png",
+        "layers/pt_hair_m_05.png",
+        "layers/pt_beard_06.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "08",
+      "face": "pt_face_m_06",
+      "age": "pt_age_m_mature_a",
+      "hair": "pt_hair_m_03",
+      "beard": "pt_beard_05",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": "pt_hood",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_03_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_06.png",
+        "layers/pt_age_m_mature_a.png",
+        "layers/pt_hair_m_03.png",
+        "layers/pt_beard_05.png",
+        "pilot-reuse/pt_hood-v1.png"
+      ]
+    },
+    {
+      "id": "09",
+      "face": "pt_face_m_07",
+      "age": "pt_age_m_mature_a",
+      "hair": "pt_hair_m_07",
+      "beard": "pt_beard_02",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": "pt_hood",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_07_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_07.png",
+        "layers/pt_age_m_mature_a.png",
+        "layers/pt_hair_m_07.png",
+        "layers/pt_beard_02.png",
+        "pilot-reuse/pt_hood-v1.png"
+      ]
+    },
+    {
+      "id": "10",
+      "face": "pt_face_f_04",
+      "age": "pt_age_f_mature_a",
+      "hair": "pt_hair_f_06",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_06_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_f_04.png",
+        "layers/pt_age_f_mature_a.png",
+        "layers/pt_hair_f_06.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "11",
+      "face": "pt_face_m_03",
+      "age": "pt_age_m_mature_a",
+      "hair": "pt_hair_m_05",
+      "beard": "pt_beard_06",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_05_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_03.png",
+        "layers/pt_age_m_mature_a.png",
+        "layers/pt_hair_m_05.png",
+        "layers/pt_beard_06.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "12",
+      "face": "pt_face_m_04",
+      "age": "pt_age_m_old_a",
+      "hair": "pt_hair_m_07",
+      "beard": "pt_beard_08",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": "pt_hat_brim",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_07_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_04.png",
+        "layers/pt_age_m_old_a.png",
+        "layers/pt_hair_m_07.png",
+        "layers/pt_beard_08.png",
+        "pilot-reuse/pt_hat_brim-v1.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "13",
+      "face": "pt_face_f_07",
+      "age": "pt_age_f_old_a",
+      "hair": "pt_hair_f_01",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_01_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_f_07.png",
+        "layers/pt_age_f_old_a.png",
+        "layers/pt_hair_f_01.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "14",
+      "face": "pt_face_m_05",
+      "age": "pt_age_m_old_a",
+      "hair": "pt_hair_m_03",
+      "beard": "pt_beard_09",
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_03_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_m_05.png",
+        "layers/pt_age_m_old_a.png",
+        "layers/pt_hair_m_03.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "15",
+      "face": "pt_face_c_04",
+      "age": null,
+      "hair": "pt_hair_f_09",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_09_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_c_04.png",
+        "layers/pt_hair_f_09.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "16",
+      "face": "pt_face_m_02",
+      "age": null,
+      "hair": "pt_hair_m_05",
+      "beard": "pt_beard_08",
+      "garment": "pt_garment_work_tunic",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_05_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_m_02.png",
+        "layers/pt_hair_m_05.png",
+        "layers/pt_beard_08.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png"
+      ]
+    },
+    {
+      "id": "17",
+      "face": "pt_face_c_02",
+      "age": null,
+      "hair": "pt_hair_m_09",
+      "beard": null,
+      "garment": "pt_garment_work_tunic",
+      "headwear": "pt_hood",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_09_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_c_02.png",
+        "layers/pt_hair_m_09.png",
+        "pilot-reuse/pt_hood-v1.png"
+      ]
+    },
+    {
+      "id": "18",
+      "face": "pt_face_f_02",
+      "age": "pt_age_f_old_a",
+      "hair": "pt_hair_f_09",
+      "beard": null,
+      "garment": "pt_garment_work_tunic",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_09_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_f_02.png",
+        "layers/pt_age_f_old_a.png",
+        "layers/pt_hair_f_09.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png"
+      ]
+    },
+    {
+      "id": "19",
+      "face": "pt_face_f_05",
+      "age": "pt_age_f_mature_a",
+      "hair": "pt_hair_f_05",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_05_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_f_05.png",
+        "layers/pt_age_f_mature_a.png",
+        "layers/pt_hair_f_05.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "20",
+      "face": "pt_face_f_01",
+      "age": "pt_age_f_old_b",
+      "hair": "pt_hair_f_03",
+      "beard": null,
+      "garment": "pt_garment_merchant_gown",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_03_rear.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png",
+        "layers/pt_face_f_01.png",
+        "layers/pt_age_f_old_b.png",
+        "layers/pt_hair_f_03.png",
+        "pilot-reuse/pt_garment_merchant_gown-v1.png"
+      ]
+    },
+    {
+      "id": "21",
+      "face": "pt_face_f_03",
+      "age": "pt_age_f_old_a",
+      "hair": "pt_hair_f_03",
+      "beard": null,
+      "garment": "pt_garment_work_tunic",
+      "headwear": "pt_hood",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_03_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_f_03.png",
+        "layers/pt_age_f_old_a.png",
+        "layers/pt_hair_f_03.png",
+        "pilot-reuse/pt_hood-v1.png"
+      ]
+    },
+    {
+      "id": "22",
+      "face": "pt_face_m_05",
+      "age": "pt_age_m_mature_a",
+      "hair": "pt_hair_m_05",
+      "beard": "pt_beard_02",
+      "garment": "pt_garment_work_tunic",
+      "headwear": null,
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_m_05_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_m_05.png",
+        "layers/pt_age_m_mature_a.png",
+        "layers/pt_hair_m_05.png",
+        "layers/pt_beard_02.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png"
+      ]
+    },
+    {
+      "id": "23",
+      "face": "pt_face_f_07",
+      "age": null,
+      "hair": "pt_hair_f_01",
+      "beard": null,
+      "garment": "pt_garment_work_tunic",
+      "headwear": "pt_hood",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_01_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_f_07.png",
+        "layers/pt_hair_f_01.png",
+        "pilot-reuse/pt_hood-v1.png"
+      ]
+    },
+    {
+      "id": "24",
+      "face": "pt_face_f_06",
+      "age": "pt_age_f_old_b",
+      "hair": "pt_hair_f_05",
+      "beard": null,
+      "garment": "pt_garment_work_tunic",
+      "headwear": "pt_hat_brim",
+      "skin_tone_rule": "independent of garment/class/morality",
+      "layers": [
+        "layers/pt_hair_f_05_rear.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png",
+        "layers/pt_face_f_06.png",
+        "layers/pt_age_f_old_b.png",
+        "layers/pt_hair_f_05.png",
+        "pilot-reuse/pt_hat_brim-v1.png",
+        "pilot-reuse/pt_garment_work_tunic-v1.png"
+      ]
+    }
+  ]
+}

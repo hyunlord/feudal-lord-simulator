@@ -1,0 +1,181 @@
+{
+  "checks": [
+    {
+      "id": "icon_overlay_water",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 3010,
+      "bbox": [
+        19,
+        8,
+        76,
+        87
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_food",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 3649,
+      "bbox": [
+        8,
+        19,
+        87,
+        76
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_transport",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 2025,
+      "bbox": [
+        8,
+        26,
+        87,
+        69
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_zone",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 2258,
+      "bbox": [
+        8,
+        22,
+        87,
+        73
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_labour",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 3802,
+      "bbox": [
+        8,
+        9,
+        87,
+        86
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_finance",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 3969,
+      "bbox": [
+        8,
+        13,
+        87,
+        82
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_danger",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 2706,
+      "bbox": [
+        22,
+        8,
+        73,
+        87
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_overlay_rights",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 3161,
+      "bbox": [
+        20,
+        8,
+        75,
+        87
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_alert_bell_info",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 1571,
+      "bbox": [
+        25,
+        19,
+        70,
+        76
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_alert_bell_bad",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 2211,
+      "bbox": [
+        8,
+        26,
+        87,
+        69
+      ],
+      "outside8px": 0,
+      "pass": true
+    },
+    {
+      "id": "icon_alert_bell_threat",
+      "size": [
+        96,
+        96
+      ],
+      "alphaVisible": 3397,
+      "bbox": [
+        8,
+        10,
+        87,
+        85
+      ],
+      "outside8px": 0,
+      "pass": true
+    }
+  ],
+  "visual": "Inspected icons-qa.png at actual24px. All11 categorical silhouettes distinct. Cart wheels and handle recognizable; labour finger separation softer at24 but crossed hammer remains clear. Bells preserve info small58px, bad2lowbells, threat80px withringingrays. P0 dark outlines and warm painterly blocking preserved; no text/numbers observed."
+}

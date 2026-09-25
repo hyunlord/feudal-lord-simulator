@@ -1,0 +1,278 @@
+{
+  "id": "wk_monk_m_01-v1",
+  "template": "templates/actor_cleric-v3.png",
+  "files": {
+    "master": "masters/wk_monk_m_01-v1.png",
+    "final": "assets/workers/wk_monk_m_01-v1.png",
+    "raw": "sources/wk_monk_m_01-v1-edit.png"
+  },
+  "generationRecords": [
+    "records/wk_monk_m_01-v1-generation.json"
+  ],
+  "processing": {
+    "method": "template EDIT; percell raw bbox registration; original alpha silhouette restored; original face/hand skin color-mask and lower feet pixels restored; exact 50 percent downsample",
+    "mask": "skin R>140,G>90,R>1.15G,G>1.15B within front SE face x78..87 / SW x63..72 y18..30 excluding monk or outer7px hand ROI y59..86; feet y>=138 or male y>=98 or darkbrown y>=130; alpha template locked; edited missing edge RGB nearest valid edit pixel12px",
+    "cells": [
+      {
+        "direction": "NE",
+        "frame": 0,
+        "templateBounds": {
+          "x": 66,
+          "y": 20,
+          "w": 55,
+          "h": 114
+        },
+        "rawBounds": {
+          "x": 60,
+          "y": 15,
+          "w": 65,
+          "h": 124
+        },
+        "source": [
+          60,
+          15,
+          65,
+          124
+        ],
+        "destination": [
+          66,
+          20,
+          55,
+          114
+        ],
+        "protectedSkin": 27,
+        "protectedFoot": 1534,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "SE",
+        "frame": 0,
+        "templateBounds": {
+          "x": 49,
+          "y": 19,
+          "w": 54,
+          "h": 115
+        },
+        "rawBounds": {
+          "x": 44,
+          "y": 16,
+          "w": 65,
+          "h": 124
+        },
+        "source": [
+          192,
+          16,
+          65,
+          124
+        ],
+        "destination": [
+          49,
+          19,
+          54,
+          115
+        ],
+        "protectedSkin": 67,
+        "protectedFoot": 1511,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "SW",
+        "frame": 0,
+        "templateBounds": {
+          "x": 45,
+          "y": 21,
+          "w": 53,
+          "h": 113
+        },
+        "rawBounds": {
+          "x": 41,
+          "y": 16,
+          "w": 63,
+          "h": 124
+        },
+        "source": [
+          337,
+          16,
+          63,
+          124
+        ],
+        "destination": [
+          45,
+          21,
+          53,
+          113
+        ],
+        "protectedSkin": 58,
+        "protectedFoot": 1495,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "NW",
+        "frame": 0,
+        "templateBounds": {
+          "x": 35,
+          "y": 19,
+          "w": 58,
+          "h": 117
+        },
+        "rawBounds": {
+          "x": 24,
+          "y": 15,
+          "w": 65,
+          "h": 125
+        },
+        "source": [
+          468,
+          15,
+          65,
+          125
+        ],
+        "destination": [
+          35,
+          19,
+          58,
+          117
+        ],
+        "protectedSkin": 21,
+        "protectedFoot": 1545,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "NE",
+        "frame": 1,
+        "templateBounds": {
+          "x": 59,
+          "y": 14,
+          "w": 57,
+          "h": 113
+        },
+        "rawBounds": {
+          "x": 54,
+          "y": 12,
+          "w": 67,
+          "h": 123
+        },
+        "source": [
+          54,
+          160,
+          67,
+          123
+        ],
+        "destination": [
+          59,
+          14,
+          57,
+          113
+        ],
+        "protectedSkin": 14,
+        "protectedFoot": 1480,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "SE",
+        "frame": 1,
+        "templateBounds": {
+          "x": 47,
+          "y": 15,
+          "w": 59,
+          "h": 112
+        },
+        "rawBounds": {
+          "x": 42,
+          "y": 14,
+          "w": 69,
+          "h": 121
+        },
+        "source": [
+          190,
+          162,
+          69,
+          121
+        ],
+        "destination": [
+          47,
+          15,
+          59,
+          112
+        ],
+        "protectedSkin": 63,
+        "protectedFoot": 1480,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "SW",
+        "frame": 1,
+        "templateBounds": {
+          "x": 43,
+          "y": 16,
+          "w": 59,
+          "h": 112
+        },
+        "rawBounds": {
+          "x": 38,
+          "y": 14,
+          "w": 68,
+          "h": 121
+        },
+        "source": [
+          334,
+          162,
+          68,
+          121
+        ],
+        "destination": [
+          43,
+          16,
+          59,
+          112
+        ],
+        "protectedSkin": 58,
+        "protectedFoot": 1480,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      },
+      {
+        "direction": "NW",
+        "frame": 1,
+        "templateBounds": {
+          "x": 32,
+          "y": 14,
+          "w": 57,
+          "h": 115
+        },
+        "rawBounds": {
+          "x": 27,
+          "y": 12,
+          "w": 67,
+          "h": 123
+        },
+        "source": [
+          471,
+          160,
+          67,
+          123
+        ],
+        "destination": [
+          32,
+          14,
+          57,
+          115
+        ],
+        "protectedSkin": 9,
+        "protectedFoot": 1480,
+        "headClaim": "alpha silhouette locked; anatomical head landmark must be manually reviewed; not proof of zero anatomical drift"
+      }
+    ]
+  },
+  "qa": {
+    "status": "candidate; local visual QA completed, root proof audit pending",
+    "historical": "muted historical color design; religious order Benedictine",
+    "limitations": [
+      "Raw edit does not preserve exact pixels",
+      "Alpha equality is engineered and not independent anatomical head proof",
+      "Small protected brown garment fragments possible near feet",
+      "No in-game integration or animation playback verified"
+    ],
+    "alphaMismatchPixels": 0,
+    "visual": "Outfits readable; priest tonsure/no cowl and monk cowl/nun veil differentiated. No old orange apron visible in final nun."
+  }
+}

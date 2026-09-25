@@ -1,0 +1,378 @@
+[
+  {
+    "id": "wall/stone_face_rubble_a-v2",
+    "file": "assets/wall/stone_face_rubble_a-v2.png",
+    "role": "strip",
+    "width": 512,
+    "height": 128,
+    "status": "candidate",
+    "sha256": "90c9b5188b0b3f04c5bdbd408935b5a8677f2c346a8f0c37480d9e35338656fe",
+    "generationRecords": [
+      {
+        "prompt": "ROLE strip stone_face_rubble_a-v2. EDIT reference wall face texture only. Southern England 1300-1450 painted game texture. Front orthographic flat rectangular wall face, no perspective. Replace rectangular ashlar grid with irregular small rubble stones matching SECOND reference gate infill masonry, warm grey-brown mortar, muted broad shapes, individual stones 12-20px at512x128. Same entire face height as first input. X seamless repeat, Y edges later faded, NO castellations, no scenery, no focal damage, no text. Image should be wide horizontal4:1 texture filling canvas. Quiet rubble, large readable shapes, not photographic grain.",
+        "references": [
+          {
+            "file": "astra-wave4e-reference-files/stone_face_a-v2.png",
+            "sha256": "da62cc62342d5e5b0c909c850c7c9d990dbeeda62502211dc235c300fe2f9c1c"
+          },
+          {
+            "file": "astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png",
+            "sha256": "87617861532cd0491d6ea2daf8cf6b2ab0edd8dcc6b65806b18194c1e659065b"
+          }
+        ],
+        "source": "sources/wall/stone_face_rubble_a-v2.png",
+        "model": null,
+        "seed": null,
+        "tool": "image_gen"
+      }
+    ],
+    "processing": "Crop full face black/transparent topbottom margins y115..609; one resize512x128; X24px symmetric seam blend firstlastcolumns identical; Y8px alpha fade. No mirroring.",
+    "sockets": null,
+    "qa": {
+      "repeat": "X seam equal; four repeats inproof",
+      "alpha": "RGBA",
+      "limitation": "mortar size seen at0.3scale; Yfade requires topstripoverlay"
+    }
+  },
+  {
+    "id": "wall/stone_face_rubble_b-v2",
+    "file": "assets/wall/stone_face_rubble_b-v2.png",
+    "role": "strip",
+    "width": 512,
+    "height": 128,
+    "status": "candidate",
+    "sha256": "b9193168858c10dacfa966335fab0b4f855d75c443bebb850046a833f7034ca6",
+    "generationRecords": [
+      {
+        "prompt": "Edit first input rubble wall texture into variant B. Keep full wide straight wall face same height, neutral warm grey tones, same stone scale. Change all stone arrangement, a little flatter grey limestone and fewer ochre stones. Broad quiet irregular rubble 12-20px at512x128, no focal patches. 4:1 horizontal front elevation, X seamless only. No crenellations, text, perspective, decorations. Transparent margins only.",
+        "references": [
+          {
+            "file": "l/stone_face_rubble_a-v2.png",
+            "sha256": "9bcc29dd01a568fe9de807fe907843285c5a9603cf900b870a1b49f1fdc1676e"
+          },
+          {
+            "file": "astra-wave4e-reference-files/stone_face_a-v2.png",
+            "sha256": "da62cc62342d5e5b0c909c850c7c9d990dbeeda62502211dc235c300fe2f9c1c"
+          }
+        ],
+        "source": "sources/wall/stone_face_rubble_b-v2-corrected.png",
+        "model": null,
+        "seed": null,
+        "tool": "image_gen"
+      },
+      {
+        "prompt": "Edit only masonry layout of this strip variant B to STRONGLY IRREGULAR UNCUT RUBBLE. No brick/ashlar courses, no long horizontal mortar lines, no same-size rectangularblock grid. Interlocking irregular lumpy polygon stones of mixedsize,small wedge packing stones, mortar discontinuous. Match second rubble A and third gate original infill. Keep muted GREYlimestone, lessochre thanA. Front elevation horizontalrectangle; fillswholeface, no crenellations/no ground/no perspective/no text. final512x128 Xrepeat quiettexture.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_b-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_a-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png"
+        ],
+        "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425/exec-5ff7fcf7-a9dd-46ab-a82a-952405785b10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      {
+        "prompt": "Edit only masonry layout of this strip variant B to STRONGLY IRREGULAR UNCUT RUBBLE. No brick/ashlar courses, no long horizontal mortar lines, no same-size rectangularblock grid. Interlocking irregular lumpy polygon stones of mixedsize,small wedge packing stones, mortar discontinuous. Match second rubble A and third gate original infill. Keep muted GREYlimestone, lessochre thanA. Front elevation horizontalrectangle; fillswholeface, no crenellations/no ground/no perspective/no text. final512x128 Xrepeat quiettexture.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_b-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_a-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png"
+        ],
+        "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425/exec-5ff7fcf7-a9dd-46ab-a82a-952405785b10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      {
+        "prompt": "Edit only masonry layout of this strip variant B to STRONGLY IRREGULAR UNCUT RUBBLE. No brick/ashlar courses, no long horizontal mortar lines, no same-size rectangularblock grid. Interlocking irregular lumpy polygon stones of mixedsize,small wedge packing stones, mortar discontinuous. Match second rubble A and third gate original infill. Keep muted GREYlimestone, lessochre thanA. Front elevation horizontalrectangle; fillswholeface, no crenellations/no ground/no perspective/no text. final512x128 Xrepeat quiettexture.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_b-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_a-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png"
+        ],
+        "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425/exec-5ff7fcf7-a9dd-46ab-a82a-952405785b10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      {
+        "prompt": "Edit only masonry layout of this strip variant B to STRONGLY IRREGULAR UNCUT RUBBLE. No brick/ashlar courses, no long horizontal mortar lines, no same-size rectangularblock grid. Interlocking irregular lumpy polygon stones of mixedsize,small wedge packing stones, mortar discontinuous. Match second rubble A and third gate original infill. Keep muted GREYlimestone, lessochre thanA. Front elevation horizontalrectangle; fillswholeface, no crenellations/no ground/no perspective/no text. final512x128 Xrepeat quiettexture.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_b-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/wall/stone_face_rubble_a-v2.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png"
+        ],
+        "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425/exec-5ff7fcf7-a9dd-46ab-a82a-952405785b10.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      }
+    ],
+    "processing": "Crop full face black/transparent topbottom margins y0..792; one resize512x128; X24px symmetric seam blend firstlastcolumns identical; Y8px alpha fade. No mirroring.",
+    "sockets": null,
+    "qa": {
+      "repeat": "X seam equal; four repeats inproof",
+      "alpha": "RGBA",
+      "limitation": "mortar size seen at0.3scale; Yfade requires topstripoverlay"
+    }
+  },
+  {
+    "id": "wall/stone_gate_v2-v1",
+    "file": "assets/wall/stone_gate_v2-v1.png",
+    "role": "module",
+    "width": 512,
+    "height": 512,
+    "status": "candidate",
+    "sha256": "a6139d786cac6ce1251d53762cef93a3ff8ef2335bfc7d0906e318a239e6ab20",
+    "generationRecords": [
+      {
+        "prompt": "ROLE module stone gate v2. Precise input edit: preserve FIRST image entire composition, every outline, arch opening, tower proportions, all pixel positions and same512 square canvas. SECOND image is topology mask white=paint, black must stay transparent. Repaint stone only to match muted warm grey-brown v2 wall reference3 and top reference4: irregular rubble infill, larger dressed arch voussoirs/corner quoins, softly painted not noisy photographic. Southern England1300-1450, upperleft light. No added doors, no objects, no castshadow. True transparent background and arch opening. Same camera NW-SE axis and pivot.",
+        "references": [
+          {
+            "file": "astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png",
+            "sha256": "87617861532cd0491d6ea2daf8cf6b2ab0edd8dcc6b65806b18194c1e659065b"
+          },
+          {
+            "file": "l/gate_part_stone_arch_nw_se-v1-mask.png",
+            "sha256": "054fac2a7ecdcc6c0276a2e577fa5bd5d2377e5c984f4b7ecdd8987b0ae86460"
+          },
+          {
+            "file": "astra-wave4e-reference-files/stone_face_a-v2.png",
+            "sha256": "da62cc62342d5e5b0c909c850c7c9d990dbeeda62502211dc235c300fe2f9c1c"
+          },
+          {
+            "file": "astra-wave4e-reference-files/stone_top_a-v1.png",
+            "sha256": "9762b7265c362f040bf6ef922ef1567232a19fa8d8c2ac84629d2db11f295751"
+          }
+        ],
+        "source": "sources/wall/stone_gate_v2-v1.png",
+        "model": null,
+        "seed": null,
+        "tool": "image_gen"
+      }
+    ],
+    "processing": "One wholecanvas resize512x512; original templatealpha restored exactly including passage; missinggeneratededgeRGB filledfrom original. No perpart move/flip.",
+    "sockets": {
+      "basis": "same NW-SE reference canvas; existing runtime pivot preserved by no translation",
+      "pivot": [
+        256,
+        480
+      ],
+      "pivotStatus": "candidate nominal only; reference contains no authoritative numeric pivot",
+      "wallContacts": [
+        [
+          65,
+          305
+        ],
+        [
+          461,
+          450
+        ]
+      ],
+      "portal": {
+        "center": [
+          265,
+          360
+        ],
+        "width": 145
+      },
+      "mask": "sources/wall/gate_part_stone_arch_nw_se-v1-mask.png"
+    },
+    "qa": {
+      "repeat": "none",
+      "alpha": "originaltemplate alpha exact",
+      "limitation": "numeric socket alignment and runtime occlusion not validated"
+    }
+  },
+  {
+    "id": "wall/palisade_gate_v2-v1",
+    "file": "assets/wall/palisade_gate_v2-v1.png",
+    "role": "module",
+    "width": 512,
+    "height": 512,
+    "status": "candidate",
+    "sha256": "3e664c1567fa3a3b44810953f14884072b3b15879f64adaa4cdf32e4e82984a8",
+    "generationRecords": [
+      {
+        "prompt": "ROLE module palisade gate v2. EDIT first image frame paint only, preserve exact entire silhouette, position, open passage and512square canvas. Second image is white paint topology mask. Match weathered grey brown oak of third palisade reference, broad handpainted strokes with readable joints and mortise pegs. Southern England1300-1450, upperleft lighting, no long shadow, no added gate doors or beam geometry. Genuine transparency. Same NW-SE direction and pivot.",
+        "references": [
+          {
+            "file": "astra-wave4e-reference-files/gate_part_timber_frame_nw_se-v1.png",
+            "sha256": "256798da63b0ad52dbafda7b24c33828c090af332bb96a894fc7e98eac5d467b"
+          },
+          {
+            "file": "l/gate_part_timber_frame_nw_se-v1-mask.png",
+            "sha256": "45927d11cd13b4d6e6eb50ca86ee39059fd2c51b142e3277b1781d7e8b9428a7"
+          },
+          {
+            "file": "astra-wave4e-reference-files/palisade_straight_nw_se.png",
+            "sha256": "78c29d66e27372c6e451f8850033f3d56925d1df33a206a7dddd5230aba5e689"
+          }
+        ],
+        "source": "sources/wall/palisade_gate_v2-v1.png",
+        "model": null,
+        "seed": null,
+        "tool": "image_gen"
+      }
+    ],
+    "processing": "One wholecanvas resize512x512; original templatealpha restored exactly including passage; missinggeneratededgeRGB filledfrom original. No perpart move/flip.",
+    "sockets": {
+      "basis": "same NW-SE reference canvas; existing runtime pivot preserved by no translation",
+      "pivot": [
+        256,
+        480
+      ],
+      "pivotStatus": "candidate nominal only; reference contains no authoritative numeric pivot",
+      "wallContacts": [
+        [
+          65,
+          305
+        ],
+        [
+          461,
+          450
+        ]
+      ],
+      "portal": {
+        "center": [
+          265,
+          360
+        ],
+        "width": 145
+      },
+      "mask": "sources/wall/gate_part_timber_frame_nw_se-v1-mask.png"
+    },
+    "qa": {
+      "repeat": "none",
+      "alpha": "originaltemplate alpha exact",
+      "limitation": "numeric socket alignment and runtime occlusion not validated"
+    }
+  },
+  {
+    "id": "wall/stone_pillar_135-v1",
+    "file": "assets/wall/stone_pillar_135-v1.png",
+    "role": "module",
+    "width": 1774,
+    "height": 887,
+    "status": "candidate",
+    "sha256": "40863c249ebf6668d96d3a0a41c875d86fe83e2a1acf3111a923674c178737b6",
+    "generationRecords": [
+      {
+        "prompt": "ROLE module. Fill WHITE mask silhouette with one isolated ANGULAR STONE BUTTRESS for a135-degree plan corner. Black region becomes true transparent. Wide1774x887 composition retained; structure within white footprint; no cylinder, no round tower. Two short socket faces meet obtuse135degrees in plan, central chamfered angular pier, broad coping on top, muted warmgrey rubble matching gate reference2 and v2 wall3, squared quoins at corners. 2:1isometric fixed camera, upperleft soft light. No side wall arms, no grass/ground or shadows, no text. Footprint contact point940,810 in1774x887 design.",
+        "references": [
+          {
+            "file": "l/stone_pillar_135-mask.png",
+            "sha256": "de7dd7d36496b04ba53aa9e5f50c7a0f38446f668200159e6ede655d887103da"
+          },
+          {
+            "file": "astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png",
+            "sha256": "87617861532cd0491d6ea2daf8cf6b2ab0edd8dcc6b65806b18194c1e659065b"
+          },
+          {
+            "file": "astra-wave4e-reference-files/stone_face_a-v2.png",
+            "sha256": "da62cc62342d5e5b0c909c850c7c9d990dbeeda62502211dc235c300fe2f9c1c"
+          }
+        ],
+        "source": "sources/wall/stone_pillar_135-v1-corrected.png",
+        "model": null,
+        "seed": null,
+        "tool": "image_gen"
+      },
+      {
+        "prompt": "Precise geometry correction of this stone buttress. Make an OBTUSE135degree plan corner, NOT90degrees: front outer face wide and a narrow chamfer bevel, two socket sides splay out at135degrees. Top coping a broad flattened pentagonal slab, plain solid top WITHOUT crenellations or arrow slots. One short chunky angular pier matching adjoining plainwall face height, not a miniaturetower. Preserve grey rubble/quoins, 2:1isometric, upperleftlight, transparent background, wide1774x887canvas, centerplacement. Paint within white area of second mask, blacktransparent.",
+        "refs": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/stone_pillar_135-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/wall/stone_pillar_135-mask.png"
+        ],
+        "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d818-8304-7d93-a593-a00a65d81425/exec-4d7989b9-8e8d-4fa4-b247-469a7ecc9299.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      }
+    ],
+    "processing": "Native1774x887 preserved. Topology mask supplied beforepaint; imagegen silhouette is candidate, not exact occupancy certification.",
+    "sockets": {
+      "pivot": [
+        940,
+        810
+      ],
+      "contacts": [
+        [
+          700,
+          650
+        ],
+        [
+          1090,
+          685
+        ]
+      ],
+      "planAngle": 135,
+      "mask": "sources/wall/stone_pillar_135-mask.png",
+      "status": "proposed painter sockets; runtime geometric alignment not verified",
+      "plan": {
+        "origin": [
+          0,
+          0
+        ],
+        "incoming": [
+          -1,
+          0
+        ],
+        "outgoing": [
+          0.7071067811865476,
+          0.7071067811865476
+        ],
+        "angleDegrees": 135,
+        "limitation": "exact authored socket vectors; bitmap surface alignment not certified"
+      }
+    },
+    "qa": {
+      "repeat": "none",
+      "alpha": "RGBA",
+      "limitation": "135degree sockets proposed; sprite is obtuse/chamfered but exact planar angle needs runtime fit"
+    }
+  },
+  {
+    "id": "wall/stone_tower_corner_b-v1",
+    "file": "assets/wall/stone_tower_corner_b-v1.png",
+    "role": "module",
+    "width": 1774,
+    "height": 887,
+    "status": "candidate",
+    "sha256": "3709cc720e23388c884aa5f4ebdc9e24c2a18f9ae4ea39d6a9b14fc1a653bcda",
+    "generationRecords": [
+      {
+        "prompt": "ROLE module. EDIT reference round tower into SQUARE tower B entirely within first WHITE topology silhouette; black becomes transparent. Same1774x887canvas and basepivot900,855. SQUARE PLAN tower with two flat orthogonal visible walls, angular dressed corner quoins, open crenellated square rooftop walkway, modest buttressed base. Not round or polygonal circular tower. Match muted warmgrey handpainted rubble of reference gate3, 2:1isometric upperleftlighting. Entire solitary tower, no side arms, no ground,no shadow,no heraldry,no text. SouthernEngland1300-1450.",
+        "references": [
+          {
+            "file": "l/stone_tower_corner_b-mask.png",
+            "sha256": "092ab3c2868c3c78096d9b4f83d55b58a633247277be5f1b04bd752f591fef8c"
+          },
+          {
+            "file": "astra-wave4e-reference-files/stone_tower_corner-v1.png",
+            "sha256": "27af40224b1be9ecd7e46f74db626faf1de83ca623b60c6e2bb1ed86a700ad53"
+          },
+          {
+            "file": "astra-wave4e-reference-files/gate_part_stone_arch_nw_se-v1.png",
+            "sha256": "87617861532cd0491d6ea2daf8cf6b2ab0edd8dcc6b65806b18194c1e659065b"
+          }
+        ],
+        "source": "sources/wall/stone_tower_corner_b-v1.png",
+        "model": null,
+        "seed": null,
+        "tool": "image_gen"
+      }
+    ],
+    "processing": "Native1774x887 preserved. Topology mask supplied beforepaint; imagegen silhouette is candidate, not exact occupancy certification.",
+    "sockets": {
+      "pivot": [
+        900,
+        855
+      ],
+      "contacts": [
+        [
+          630,
+          690
+        ],
+        [
+          1120,
+          715
+        ]
+      ],
+      "planAngle": 90,
+      "mask": "sources/wall/stone_tower_corner_b-mask.png",
+      "status": "proposed painter sockets; runtime geometric alignment not verified"
+    },
+    "qa": {
+      "repeat": "none",
+      "alpha": "RGBA",
+      "limitation": "numeric socket alignment and runtime occlusion not validated"
+    }
+  }
+]

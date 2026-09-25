@@ -1,0 +1,254 @@
+{
+  "assets": [
+    {
+      "id": "hurdle_gate-v1",
+      "source": "sources/fence__hurdle_gate-v1.png",
+      "sourceSha256": "7cca9ec6291e2a6979feee6b139df98f20e4d7bc09fb80d6b001beb5739d1e22",
+      "nativeSize": [
+        1774,
+        887
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "pivot": [
+        64,
+        44
+      ],
+      "ports": [
+        [
+          32,
+          60
+        ],
+        [
+          96,
+          28
+        ]
+      ],
+      "nativeSamplingAffine": [
+        12.45,
+        0,
+        1.625,
+        15,
+        181.6,
+        -121
+      ],
+      "onePassNativeToTarget": true,
+      "method": "4x4 footprint sampling of independently painted native image; exact approved topology alpha; nearest painted edge extrusion only where mask registration crosses source alpha; reference-average RGB normalization to existing straight/north timber; no mirrored art",
+      "referenceMeanRGB": [
+        153,
+        116,
+        65
+      ],
+      "toneScale": [
+        1.3864290678050233,
+        1.3214996429091466,
+        1.2618302120871978
+      ],
+      "transparentRGBDilation": 3,
+      "bleedPixels": 699,
+      "sha256": "b51749af62f59d82cd4c4d3faf42d95c0a7aa048f7e94320cb0c25c5f7ff1579"
+    },
+    {
+      "id": "hurdle_half-v1",
+      "source": "sources/fence__hurdle_half-v1.png",
+      "sourceSha256": "cf3a50d3ca38d516e533232bb3a913a0bb9cf1f04f8ba193a16353ea8a62193f",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "pivot": [
+        32,
+        48
+      ],
+      "ports": [
+        [
+          16,
+          56
+        ],
+        [
+          48,
+          40
+        ]
+      ],
+      "nativeSamplingAffine": [
+        16.56,
+        0,
+        -3,
+        11.54,
+        100,
+        352
+      ],
+      "onePassNativeToTarget": true,
+      "method": "4x4 footprint sampling of independently painted native image; exact approved topology alpha; nearest painted edge extrusion only where mask registration crosses source alpha; reference-average RGB normalization to existing straight/north timber; no mirrored art",
+      "referenceMeanRGB": [
+        153,
+        116,
+        65
+      ],
+      "toneScale": [
+        1.5066624267851099,
+        1.4863259613202888,
+        1.5719467956469164
+      ],
+      "transparentRGBDilation": 3,
+      "bleedPixels": 490,
+      "sha256": "8b81796572db3ae89666de9336034599745052de4493bf5e6d866d46f04b5f59"
+    },
+    {
+      "id": "hurdle_corner_e-v1",
+      "source": "sources/fence__hurdle_corner_e-v1.png",
+      "sourceSha256": "cfb24496973f64f37d9481a3e51d3452758f48678ac09e545b5301135440b683",
+      "nativeSize": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        60
+      ],
+      "ports": [
+        [
+          0,
+          28
+        ],
+        [
+          0,
+          92
+        ]
+      ],
+      "nativeSamplingAffine": [
+        10.69,
+        0,
+        0.4609,
+        10.328125,
+        0,
+        57.8125
+      ],
+      "onePassNativeToTarget": true,
+      "method": "4x4 footprint sampling of independently painted native image; exact approved topology alpha; nearest painted edge extrusion only where mask registration crosses source alpha; reference-average RGB normalization to existing straight/north timber; no mirrored art",
+      "referenceMeanRGB": [
+        153,
+        116,
+        65
+      ],
+      "toneScale": [
+        1.3443624506607172,
+        1.3081534930640906,
+        1.3286489939316513
+      ],
+      "transparentRGBDilation": 3,
+      "bleedPixels": 943,
+      "sha256": "66f0fa08db83db46cb1f4c6cfa218a03283631cc6a403d76d4bed8ad5a398497"
+    },
+    {
+      "id": "hurdle_corner_s-v1",
+      "source": "sources/fence__hurdle_corner_s-v1.png",
+      "sourceSha256": "26326b33ba484d0923948baa4c9993e0eb66a152c7af47fa71daeee8974f3170",
+      "nativeSize": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        64
+      ],
+      "ports": [
+        [
+          0,
+          32
+        ],
+        [
+          128,
+          32
+        ]
+      ],
+      "nativeSamplingAffine": [
+        11.3125,
+        0,
+        0,
+        10.875,
+        0,
+        200
+      ],
+      "onePassNativeToTarget": true,
+      "method": "4x4 footprint sampling of independently painted native image; exact approved topology alpha; nearest painted edge extrusion only where mask registration crosses source alpha; reference-average RGB normalization to existing straight/north timber; no mirrored art",
+      "referenceMeanRGB": [
+        153,
+        116,
+        65
+      ],
+      "toneScale": [
+        1.3552532423749653,
+        1.292710208867839,
+        1.267167132216015
+      ],
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1028,
+      "sha256": "a5ddbf57c020456fe4eb116010896b55def0fc231a696050813cb059e08553c1"
+    },
+    {
+      "id": "hurdle_corner_w-v1",
+      "source": "sources/fence__hurdle_corner_w-v1.png",
+      "sourceSha256": "07b05d0d6013c572aebb84eb6eaa4d3d19586ae26881c1dfad5bf8fee6950c77",
+      "nativeSize": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        60
+      ],
+      "ports": [
+        [
+          128,
+          28
+        ],
+        [
+          128,
+          92
+        ]
+      ],
+      "nativeSamplingAffine": [
+        10.125,
+        0,
+        -0.4453,
+        10.078125,
+        152,
+        88.8
+      ],
+      "onePassNativeToTarget": true,
+      "method": "4x4 footprint sampling of independently painted native image; exact approved topology alpha; nearest painted edge extrusion only where mask registration crosses source alpha; reference-average RGB normalization to existing straight/north timber; no mirrored art",
+      "referenceMeanRGB": [
+        153,
+        116,
+        65
+      ],
+      "toneScale": [
+        1.3462800969288673,
+        1.2829197483928942,
+        1.2290692607118852
+      ],
+      "transparentRGBDilation": 3,
+      "bleedPixels": 943,
+      "sha256": "e63d8632dfc3315729d548c1a23577c9addab04e080b684c66919c5ee60a1814"
+    }
+  ]
+}

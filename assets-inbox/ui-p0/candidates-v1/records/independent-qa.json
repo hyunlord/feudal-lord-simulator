@@ -1,0 +1,37 @@
+{
+  "status": "candidate-delivery-pass",
+  "assetCount": 43,
+  "iconCells": 57,
+  "proofCount": 3,
+  "visualInspection": [
+    "hud-desktop-1280x800",
+    "hud-tablet-1180x820",
+    "icons-24px",
+    "icons-48px",
+    "cursor-hotspots",
+    "frames-review",
+    "portraits-inspection",
+    "objective-advisor"
+  ],
+  "resolvedFindings": [
+    "isolated road-cell ink fragment",
+    "non-status ground and map olive colors changed to ochre"
+  ],
+  "meanHsvS": {
+    "bread": {
+      "pilot": 0.722477,
+      "p0": 0.524122
+    },
+    "money": {
+      "pilot": 0.771941,
+      "p0": 0.614112
+    },
+    "alphaThreshold": 200
+  },
+  "limitations": [
+    "Small portrait concern/neutral needs accompanying text",
+    "24px building subdetails need labels",
+    "Production corner/seam measurements reviewed not independently rerun",
+    "No runtime installation or input/DPR/performance verification"
+  ]
+}

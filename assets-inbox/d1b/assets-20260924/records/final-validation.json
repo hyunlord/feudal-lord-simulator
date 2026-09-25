@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-24",
+  "pngCount": 4,
+  "pngDecodeAndSizesPass": true,
+  "alphaGuttersPass": true,
+  "roadEdgeColumnRGBAEqual": true,
+  "csvRows": 4,
+  "csvColumns": 20,
+  "csvHeaderMatchesD1": true,
+  "csvExactPromptsPass": true,
+  "csvRuntimeHashesPass": true,
+  "allCandidate": true,
+  "images": [
+    {
+      "path": "road/stone_strip-v1.png",
+      "size": [
+        512,
+        64
+      ],
+      "mode": "RGBA",
+      "sha256": "dff9499a42112e79900cb009dbf49894cf0e6f687e178a9a3ab2d3322290a83d"
+    },
+    {
+      "path": "boundary/forest_fringe_c-v1.png",
+      "size": [
+        128,
+        96
+      ],
+      "mode": "RGBA",
+      "sha256": "a36884d9fec0176f8e5177d2c8412393395c31a734c6c76ee43317c0620ba6fb"
+    },
+    {
+      "path": "checks/01-stone-repeat-transition.png",
+      "size": [
+        1600,
+        1020
+      ],
+      "mode": "RGBA",
+      "sha256": "e6ca1cc08e49477e261e8cc5dc6052777371baf1c630f15ae6daf27f0c3955a7"
+    },
+    {
+      "path": "checks/02-forest-sequence.png",
+      "size": [
+        1120,
+        720
+      ],
+      "mode": "RGBA",
+      "sha256": "c61c15aa2832b42d0fae2ceb0748b1c8630cee6f27fe65c4d56dd7cb6dcb8d31"
+    }
+  ],
+  "gameInstalled": false,
+  "nativeRequestedSizeHonored": false
+}

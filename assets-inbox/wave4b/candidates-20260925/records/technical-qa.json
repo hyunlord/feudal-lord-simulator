@@ -1,0 +1,1741 @@
+{
+  "assets": [
+    {
+      "id": "road/earth_strip_a-v3",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        261,
+        2172,
+        219
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": {
+        "method": "reduce longitudinal row-mean luma profile; retain per-row local brush differences",
+        "roi": [
+          32,
+          18,
+          480,
+          46
+        ],
+        "beforeSD": 9.227228454455016,
+        "targetSD": 5.5
+      },
+      "quadRegistration": null,
+      "alphaReference": "/ref/earth_strip_a-v2.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        60
+      ],
+      "topology": null
+    },
+    {
+      "id": "road/earth_strip_b-v3",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        220,
+        2172,
+        269
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": {
+        "method": "reduce longitudinal row-mean luma profile; retain per-row local brush differences",
+        "roi": [
+          32,
+          18,
+          480,
+          46
+        ],
+        "beforeSD": 11.545674881656305,
+        "targetSD": 5.5
+      },
+      "quadRegistration": null,
+      "alphaReference": "/ref/earth_strip_a-v2.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        60
+      ],
+      "topology": null
+    },
+    {
+      "id": "road/earth_strip_c-v3",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        252,
+        2172,
+        227
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": {
+        "method": "reduce longitudinal row-mean luma profile; retain per-row local brush differences",
+        "roi": [
+          32,
+          18,
+          480,
+          46
+        ],
+        "beforeSD": 12.308058607966219,
+        "targetSD": 5.5
+      },
+      "quadRegistration": null,
+      "alphaReference": "/ref/earth_strip_a-v2.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        60
+      ],
+      "topology": null
+    },
+    {
+      "id": "road/earth_strip_d-v3",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        216,
+        2172,
+        284
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": {
+        "method": "reduce longitudinal row-mean luma profile; retain per-row local brush differences",
+        "roi": [
+          32,
+          18,
+          480,
+          46
+        ],
+        "beforeSD": 6.390745653321743,
+        "targetSD": 5.5
+      },
+      "quadRegistration": null,
+      "alphaReference": "/ref/earth_strip_a-v2.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        60
+      ],
+      "topology": null
+    },
+    {
+      "id": "shore/shoreline_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "shore/shoreline_b-v1",
+      "source": [
+        2170,
+        725
+      ],
+      "size": [
+        512,
+        96
+      ],
+      "crop": [
+        0,
+        161,
+        2170,
+        398
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        96
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/shoreline_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        92
+      ],
+      "topology": null
+    },
+    {
+      "id": "shore/shoreline_c-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        96
+      ],
+      "crop": [
+        0,
+        196,
+        2172,
+        350
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        96
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/shoreline_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        92
+      ],
+      "topology": null
+    },
+    {
+      "id": "shore/shoreline_d-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        96
+      ],
+      "crop": [
+        0,
+        178,
+        2172,
+        368
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        96
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/shoreline_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        2,
+        512,
+        92
+      ],
+      "topology": null
+    },
+    {
+      "id": "water/shallow_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "water/shallow_b-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/shallow_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "water/shallow_c-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/shallow_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "ground/pasture_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "ground/pasture_b-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/pasture_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "ground/pasture_c-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/pasture_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "prop/haycock_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "prop/haycock_b-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "prop/haycock_c-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "crop": [
+        174,
+        475,
+        935,
+        633
+      ],
+      "place": [
+        8,
+        44.17540106951871,
+        112,
+        75.82459893048129
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/haycock_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        8,
+        44,
+        112,
+        76
+      ],
+      "topology": null
+    },
+    {
+      "id": "prop/haycock_d-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "crop": [
+        290,
+        267,
+        695,
+        812
+      ],
+      "place": [
+        16.06896551724138,
+        8,
+        95.86206896551724,
+        112
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/haycock_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        16,
+        8,
+        96,
+        112
+      ],
+      "topology": null
+    },
+    {
+      "id": "prop/haycock_e-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "crop": [
+        103,
+        569,
+        1068,
+        478
+      ],
+      "place": [
+        8,
+        69.87265917602997,
+        112,
+        50.12734082397004
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/haycock_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        8,
+        70,
+        112,
+        50
+      ],
+      "topology": null
+    },
+    {
+      "id": "prop/haycock_f-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "crop": [
+        160,
+        548,
+        1020,
+        565
+      ],
+      "place": [
+        8,
+        57.96078431372549,
+        112,
+        62.03921568627451
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/haycock_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        8,
+        58,
+        112,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "ground/orchard_floor_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "ground/orchard_floor_b-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/orchard_floor_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "tree/orchard_apple_c-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "tree/orchard_apple_d-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "crop": [
+        126,
+        251,
+        1071,
+        897
+      ],
+      "place": [
+        8,
+        46.991596638655466,
+        240,
+        201.00840336134453
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/orchard_apple_c-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        8,
+        47,
+        240,
+        201
+      ],
+      "topology": null
+    },
+    {
+      "id": "tree/orchard_pear_e-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "crop": [
+        284,
+        59,
+        733,
+        1132
+      ],
+      "place": [
+        50.29681978798587,
+        8,
+        155.40636042402826,
+        240
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/orchard_apple_c-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        50,
+        8,
+        156,
+        240
+      ],
+      "topology": null
+    },
+    {
+      "id": "tree/orchard_plum_f-v1",
+      "source": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "crop": [
+        43,
+        319,
+        1172,
+        834
+      ],
+      "place": [
+        8,
+        77.21501706484642,
+        240,
+        170.78498293515358
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/orchard_apple_c-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        8,
+        77,
+        240,
+        171
+      ],
+      "topology": null
+    },
+    {
+      "id": "wall/palisade_face_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "wall/palisade_face_b-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "crop": [
+        0,
+        96,
+        2172,
+        533
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/palisade_face_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "wall/palisade_face_c-v1",
+      "source": [
+        2170,
+        725
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "crop": [
+        0,
+        97,
+        2170,
+        534
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/palisade_face_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "wall/stone_face_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "wall/stone_face_b-v1",
+      "source": [
+        2170,
+        725
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "crop": [
+        0,
+        88,
+        2170,
+        559
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/stone_face_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "wall/stone_face_c-v1",
+      "source": [
+        2170,
+        725
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "crop": [
+        0,
+        89,
+        2170,
+        543
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": "/ref/stone_face_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "module/bridge_abutment_ne_a-v1",
+      "promoted": true,
+      "operation": "byte-identical copy outside Canvas"
+    },
+    {
+      "id": "module/bridge_abutment_nw_a-v1",
+      "source": [
+        1448,
+        1086
+      ],
+      "size": [
+        256,
+        192
+      ],
+      "crop": [
+        0,
+        0,
+        1448,
+        1086
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        192
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": {
+        "from": [
+          [
+            147.1,
+            40.5
+          ],
+          [
+            51.6,
+            88.2
+          ],
+          [
+            132.4,
+            138.8
+          ],
+          [
+            236.7,
+            85.4
+          ]
+        ],
+        "to": [
+          [
+            152,
+            36
+          ],
+          [
+            24,
+            100
+          ],
+          [
+            104,
+            140
+          ],
+          [
+            232,
+            76
+          ]
+        ],
+        "method": "one continuous homography, direct raw-to-final bilinear sample"
+      },
+      "alphaReference": "/ref/bridge_abutment_ne_a-v1.png",
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        13,
+        35,
+        219,
+        141
+      ],
+      "topology": {
+        "operation": "exact silhouette mask and nearest opaque texture fill within mask; socket markers",
+        "sockets": {
+          "land": {
+            "center": [
+              88,
+              68
+            ],
+            "endpoints": [
+              [
+                152,
+                36
+              ],
+              [
+                24,
+                100
+              ]
+            ]
+          },
+          "water": {
+            "center": [
+              168,
+              108
+            ],
+            "endpoints": [
+              [
+                232,
+                76
+              ],
+              [
+                104,
+                140
+              ]
+            ]
+          },
+          "walkablePolygon": [
+            [
+              152,
+              36
+            ],
+            [
+              24,
+              100
+            ],
+            [
+              104,
+              140
+            ],
+            [
+              232,
+              76
+            ]
+          ],
+          "projectedWidth": [
+            128,
+            64
+          ],
+          "axis": "NW-SE"
+        }
+      }
+    },
+    {
+      "id": "field/soil_a-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/soil_b-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        256,
+        128
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_ploughed_a-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        175,
+        2172,
+        362
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_ploughed_b-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        169,
+        2172,
+        377
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_seedling_a-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        224,
+        2172,
+        299
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_seedling_b-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        219,
+        2172,
+        309
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_growing_a-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        200,
+        2172,
+        336
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_growing_b-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        198,
+        2172,
+        342
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_fallow_a-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        202,
+        2172,
+        325
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/ridge_fallow_b-v1",
+      "source": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "crop": [
+        0,
+        201,
+        2172,
+        328
+      ],
+      "place": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/furrow_stamp_a-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "crop": [
+        413,
+        210,
+        972,
+        518
+      ],
+      "place": [
+        18.965250965250966,
+        8,
+        90.06949806949807,
+        48
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        19,
+        8,
+        90,
+        48
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/furrow_stamp_b-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "crop": [
+        402,
+        197,
+        1009,
+        570
+      ],
+      "place": [
+        21.515789473684208,
+        8,
+        84.96842105263158,
+        48
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        22,
+        8,
+        84,
+        48
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/furrow_stamp_c-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "crop": [
+        398,
+        205,
+        1023,
+        518
+      ],
+      "place": [
+        16.602316602316606,
+        8,
+        94.79536679536679,
+        48
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        17,
+        8,
+        94,
+        48
+      ],
+      "topology": null
+    },
+    {
+      "id": "field/furrow_stamp_d-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "crop": [
+        369,
+        171,
+        1135,
+        594
+      ],
+      "place": [
+        18.14141414141414,
+        7.999999999999993,
+        91.71717171717172,
+        48.00000000000001
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        18,
+        8,
+        92,
+        48
+      ],
+      "topology": null
+    },
+    {
+      "id": "garden/croft_bed_a-v1",
+      "source": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "crop": [
+        131,
+        96,
+        1220,
+        919
+      ],
+      "place": [
+        10.898803046789986,
+        8,
+        106.20239390642003,
+        80
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        11,
+        8,
+        106,
+        80
+      ],
+      "topology": null
+    },
+    {
+      "id": "garden/croft_bed_b-v1",
+      "source": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "crop": [
+        134,
+        151,
+        1204,
+        854
+      ],
+      "place": [
+        8,
+        8.558139534883722,
+        112,
+        79.44186046511628
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        8,
+        9,
+        112,
+        79
+      ],
+      "topology": null
+    },
+    {
+      "id": "garden/croft_bed_c-v1",
+      "source": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "crop": [
+        124,
+        95,
+        1236,
+        925
+      ],
+      "place": [
+        10.55135135135135,
+        8,
+        106.8972972972973,
+        80
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        11,
+        8,
+        106,
+        80
+      ],
+      "topology": null
+    },
+    {
+      "id": "fence/hurdle_straight-v1",
+      "source": [
+        1774,
+        887
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "crop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "place": [
+        0,
+        0,
+        128,
+        64
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        27,
+        2,
+        74,
+        58
+      ],
+      "topology": {
+        "operation": "exact silhouette mask and nearest opaque texture fill within mask; socket markers",
+        "sockets": {
+          "start": [
+            32,
+            60
+          ],
+          "end": [
+            96,
+            28
+          ],
+          "vector": [
+            64,
+            -32
+          ],
+          "note": "one logical tile NE-SW; endpoint x-edge socket exception to decal margins"
+        }
+      }
+    },
+    {
+      "id": "fence/hurdle_end_corner-v1",
+      "source": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "crop": [
+        0,
+        0,
+        1448,
+        1086
+      ],
+      "place": [
+        0,
+        0,
+        128,
+        96
+      ],
+      "singleResize": true,
+      "rutContrastAdjustment": null,
+      "quadRegistration": null,
+      "alphaReference": null,
+      "postprocess": "single resize; approved family mean palette alignment; reference alpha for nonwall strips; X-only/XY edge correction32px; no blur filter",
+      "bounds": [
+        0,
+        30,
+        128,
+        58
+      ],
+      "topology": {
+        "operation": "exact silhouette mask and nearest opaque texture fill within mask; socket markers",
+        "sockets": {
+          "start": [
+            0,
+            88
+          ],
+          "end": [
+            128,
+            88
+          ],
+          "corner": [
+            64,
+            56
+          ],
+          "vectors": [
+            [
+              64,
+              -32
+            ],
+            [
+              64,
+              32
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "partial": false,
+  "total": 53
+}

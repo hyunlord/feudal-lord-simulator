@@ -1,0 +1,13 @@
+{
+  "id": "P4",
+  "tool": "image_gen",
+  "mode": "edit",
+  "model": null,
+  "seed": null,
+  "prompt": "EDIT THE FIRST IMAGE, an approved game walk-cycle template sheet. Do not invent new poses or a new sheet layout. Precisely preserve its 4 columns x 2 rows, transparent gutters, every head center, hand position, foot contact, leg shape, body lean and opposite stride in each cell. This is a pixel-registered clothing-only reskin. The second image is clothing/color reference only, NOT a pose source. Keep original small painterly sprite detail and contact shadow. No labels, gridlines, ground, background, props, bags, purse, cane or baskets. Remove the old pouch from belt. Output transparent PNG sheet at exactly same 2:1 aspect ratio. Four directions left-to-right NE, SE, SW, NW and two original gait frames top/bottom MUST STAY EXACT. Do not redraw or reposition feet or hands. South England 1300-1450. Only recolor existing hood and short tunic to muted madder red matching portrait; retain hood construction, all folds/pose positions and grey-brown hose. No separate hat.",
+  "referenceInputs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/templates/masters/P4.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/references/pt_pilot_P4-v1_128.png"
+  ],
+  "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d6ef-53b8-7ec0-a1fd-06703e0c62d8/exec-c569af04-9834-4d48-9a2f-3f00a288a606.png"
+}

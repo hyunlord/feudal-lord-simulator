@@ -1,0 +1,207 @@
+{
+  "assets": [
+    {
+      "id": "actor_child-v1",
+      "size": [
+        296,
+        148
+      ],
+      "role": "walker-sheet",
+      "cell": [
+        74,
+        74
+      ],
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "groundBoundaryY": 67,
+      "soleOpaqueY": 66,
+      "status": "candidate"
+    },
+    {
+      "id": "actor_elder_m-v1",
+      "size": [
+        296,
+        148
+      ],
+      "role": "walker-sheet",
+      "cell": [
+        74,
+        74
+      ],
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "groundBoundaryY": 67,
+      "soleOpaqueY": 66,
+      "status": "candidate"
+    },
+    {
+      "id": "actor_elder_f-v1",
+      "size": [
+        296,
+        148
+      ],
+      "role": "walker-sheet",
+      "cell": [
+        74,
+        74
+      ],
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "frames": 2,
+      "groundBoundaryY": 67,
+      "soleOpaqueY": 66,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_face_m_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_age_m_old-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_hair_m_short_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_hair_m_short_01_rear-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_hair_m_grey_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_hair_m_grey_01_rear-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_beard_m_01-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_hood-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_hat_brim-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_garment_work_tunic-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_garment_merchant_gown-v1",
+      "size": [
+        256,
+        256
+      ],
+      "role": "portrait-layer",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    },
+    {
+      "id": "pt_garment_work_tunic-v1_mask",
+      "size": [
+        256,
+        256
+      ],
+      "role": "color-mask",
+      "eyeLineY": 112,
+      "shoulderY": 208,
+      "status": "candidate"
+    }
+  ],
+  "newAssetCount": 15,
+  "checkCount": 6,
+  "reusedStaffCount": 4,
+  "rearNaming": "_rear before -v1, no change to logical hair identity",
+  "gaitAcceptance": "Anatomical left/right leading-foot forward projection reverses sign; uncertain limb identity is not a pass"
+}

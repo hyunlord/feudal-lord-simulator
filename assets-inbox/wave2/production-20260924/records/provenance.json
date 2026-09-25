@@ -1,0 +1,1227 @@
+{
+  "generatedAt": "2026-09-24T13:28:30.961Z",
+  "generationCalls": 35,
+  "selectedAssets": 35,
+  "newSelectedCandidates": 30,
+  "promotedByteIdentical": 5,
+  "verificationPngs": 4,
+  "model": "not exposed",
+  "seed": "not provided",
+  "referenceZip": {
+    "path": "/Users/rexxa/Downloads/astra-wave2-production-reference.zip",
+    "sha256": "cec63bd48c1182e52c1368ffb7c2811c7638272fa53eddb0bdf60a129c662c02"
+  },
+  "references": [
+    {
+      "filename": "chapel-v2.png",
+      "sha256": "0876420e8bdf69828b860d3ef808dc6fa22b5f3ac789afe087408391e8e60a87"
+    },
+    {
+      "filename": "house_l0-v3.png",
+      "sha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09"
+    },
+    {
+      "filename": "house_l1-v2.png",
+      "sha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac"
+    },
+    {
+      "filename": "house_l2-v2.png",
+      "sha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e"
+    },
+    {
+      "filename": "house_l2_brewer-pilot.png",
+      "sha256": "713f3973064f48d9f25fbc0e0ea6926ab35df667f0754bfed298d2e62837d03c"
+    },
+    {
+      "filename": "house_l2_garden-pilot.png",
+      "sha256": "6ae78452f454825a0a44fcb64c2509e59af2b8e3578762a64ab1d2367cbd8247"
+    },
+    {
+      "filename": "house_l2_weaver-pilot.png",
+      "sha256": "2aed1cd89d5ba88f62137a5e81ac9b3417e3ed3fd985709906cc055b9838b2ed"
+    },
+    {
+      "filename": "house_l3-v2.png",
+      "sha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc"
+    },
+    {
+      "filename": "house_l4-v2.png",
+      "sha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8"
+    },
+    {
+      "filename": "house_pair_l3_horizontal-v2.png",
+      "sha256": "0b9d9bb5a9d70a0982f7aed9a87a85e9bcaa470801f96402d6b04af311abb980"
+    },
+    {
+      "filename": "house_pair_l3_vertical-v2.png",
+      "sha256": "a86fee01caeca604d0fe5b2521d53a5d2310b002bc1907735a3888b52ffb51b9"
+    },
+    {
+      "filename": "house_pair_l4_horizontal-v2.png",
+      "sha256": "a566dbd2fb48057171d7fca97ab9c63178abe1ccf93d73c825b39b16b8e302c6"
+    },
+    {
+      "filename": "house_pair_l4_vertical-v2.png",
+      "sha256": "b2e76b6e2eaf8a3f8d84998f3dcc851d739fe04c7e841fccafa9057cd31135a9"
+    },
+    {
+      "filename": "market_active-v2.png",
+      "sha256": "c1dda89871ac0270737e607a2bd487a6532088695259444ff32395141a6bc0ef"
+    },
+    {
+      "filename": "market_active_b-pilot.png",
+      "sha256": "17987bb6163a9dd7b14962a3e7aff7fe7e2e944da669a244b860b589072c5845"
+    },
+    {
+      "filename": "market_quiet-v2.png",
+      "sha256": "6db439b052b90d99e12e1de2418f94000942840d64e38e2dc51342154e76e47b"
+    },
+    {
+      "filename": "mill-v2.png",
+      "sha256": "e945f13541ebe7ee8ff03ed0a491828fd8a291a2d33833c763aab16ac2861a52"
+    },
+    {
+      "filename": "storehouse.png",
+      "sha256": "34a128ea26c8efff6143d0b816777280757666364e3782bb35696c98db5de782"
+    },
+    {
+      "filename": "well.png",
+      "sha256": "8cfeda1db0dcbee81282db95013b411a1456c0eb572361ada361570470a0ad70"
+    },
+    {
+      "filename": "well_b-pilot.png",
+      "sha256": "fe53488ef06058e63bcc16bdc32519366585d7a072b25b24c8e8825a46f5bfe0"
+    },
+    {
+      "filename": "wheat_farm_growing-v3.png",
+      "sha256": "c57cefff4b1eb32921a4aa58592f3eeb1f0c05cfaa447852a0d4cb90da79d4cb"
+    },
+    {
+      "filename": "wheat_farm_pastoral_ripe-pilot.png",
+      "sha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b"
+    },
+    {
+      "filename": "wheat_farm_ripe-v4.png",
+      "sha256": "0c954dd543045d5b3717a592aa9eeacd99a86d1b67d87ece40b8c1f5f27d14f2"
+    },
+    {
+      "filename": "wheat_farm_seedling-v3.png",
+      "sha256": "41147c575c7fb02da5941bb3cb7c3e35d58eee36a302eb3d98d9327499faf001"
+    },
+    {
+      "filename": "wheat_farm_worked-v3.png",
+      "sha256": "4a0b04162c44db697a376d7df48f491f7d08eb4349d341ec5bd0f9513ddb259f"
+    }
+  ],
+  "originalPilotCsv": {
+    "path": "/tmp/astra-wave2-assets-20260924/assets.csv",
+    "sha256": "7f3cac8d7ce87693fdfbab7a201cc9ebff854208f95d4a8148cd7ee1462035cb"
+  },
+  "compositionSource": {
+    "path": "records/processing-and-preview.html",
+    "sha256": "9c7a98977bf6bd92ef448efa53869f149e36f17dc7db64e1f686a0a484ad2ead"
+  },
+  "assets": [
+    {
+      "assetId": "house_l0_garden-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-4891579b-c22e-4ba3-b22a-8fc35ee9986f.png",
+      "selectedSourceSha256": "bf49c3143a45e894731de374080a287cad7fdf9af42073126a13886bb98835c2",
+      "outputSha256": "c320744da6a2b850b0c078c36f2357166840a3d43e2a028acb8e31b28ec8348a",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-4891579b-c22e-4ba3-b22a-8fc35ee9986f.png",
+          "sha256": "bf49c3143a45e894731de374080a287cad7fdf9af42073126a13886bb98835c2"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l0_pen-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-de51e9b4-f51b-496a-aaa8-070c0eabb1e5.png",
+      "selectedSourceSha256": "7e936a947e6e3dfd47d9feaf50752c84bde5424f7564a6841fb1ab46c8b4683c",
+      "outputSha256": "22551b82a740af2ab8c06d966992c6d052fc1ab04dcfa7eecf4b7d509e48d7ca",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-de51e9b4-f51b-496a-aaa8-070c0eabb1e5.png",
+          "sha256": "7e936a947e6e3dfd47d9feaf50752c84bde5424f7564a6841fb1ab46c8b4683c"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l1_artisan-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-43c307d8-bf75-4209-bc98-a3515df3ccd9.png",
+      "selectedSourceSha256": "4c2f93ca1f4d53b306e2e34d0d07d8f5cd229f8d37d7455e9f727291f1c20f7f",
+      "outputSha256": "903f214c669da374ec2663ee32307d3e28ddbef9ab49baac0e3857bc6b8e811e",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-43c307d8-bf75-4209-bc98-a3515df3ccd9.png",
+          "sha256": "4c2f93ca1f4d53b306e2e34d0d07d8f5cd229f8d37d7455e9f727291f1c20f7f"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l1_garden-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d9e5467c-5351-4fcc-88aa-bac9e5626e6f.png",
+      "selectedSourceSha256": "38da00d1c84d75b2e8d5b1d36924456152d358d76c8f60c46cc0e225afae881b",
+      "outputSha256": "bb2ef7a7c0849de21f4d6ca1fd602b52f979dae2101dfb7613ede2df29f8a809",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d9e5467c-5351-4fcc-88aa-bac9e5626e6f.png",
+          "sha256": "38da00d1c84d75b2e8d5b1d36924456152d358d76c8f60c46cc0e225afae881b"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l2_brewer-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-6826b747-f673-4bc7-9ed0-87a08e87f849.png",
+      "selectedSourceSha256": "912c15cd753b93f1d13865766462f2f011d85d02074a1280c004cd5af9083434",
+      "outputSha256": "85495f678089cf03b05f7f3f3f4d8f4a08849052febee2d7d7824e0c7704ec67",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-148bddc9-6c81-4587-8351-b031bfd1398b.png",
+          "sha256": "f62fc6d6152ba655fb07a025abffa045d8a10cde703ed560049e7fe9688fc79e"
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-6826b747-f673-4bc7-9ed0-87a08e87f849.png",
+          "sha256": "912c15cd753b93f1d13865766462f2f011d85d02074a1280c004cd5af9083434"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l2_weaver-v1",
+      "promotedFrom": "house_l2_weaver-pilot",
+      "priorRuntimeSha256": "2aed1cd89d5ba88f62137a5e81ac9b3417e3ed3fd985709906cc055b9838b2ed",
+      "suppliedPilotSha256": "2aed1cd89d5ba88f62137a5e81ac9b3417e3ed3fd985709906cc055b9838b2ed",
+      "outputSha256": "2aed1cd89d5ba88f62137a5e81ac9b3417e3ed3fd985709906cc055b9838b2ed",
+      "byteIdentical": true,
+      "newGenerationCalls": 0,
+      "inheritedRecord": {
+        "assetId": "house_l2_weaver-pilot",
+        "version": "pilot",
+        "runtimePath": "assets/house_l2_weaver-pilot.png",
+        "runtimeSha256": "2aed1cd89d5ba88f62137a5e81ac9b3417e3ed3fd985709906cc055b9838b2ed",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-99a35b53-e7f1-4c96-8fcd-b4003570f975.png",
+        "sourceSha256": "a276849e2f680814d51d211d1a7595a5f2fb6c25524314df20d44e449b6460a7",
+        "tool": "image_gen; Canvas 2D mechanical normalization",
+        "model": "not exposed",
+        "generatedAt": "2026-09-24T12:45:10.744Z",
+        "prompt": "ATTEMPT 1 (NOT SELECTED)\nUse case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 is exact L2 wealth/scale baseline; image2 L1 lower tier, image3 L3 upper tier NOT to imitate. Target137x137. L2 WEAVER'S ARTISAN HOUSE: exactly TWO modest storeys, same main body size as baseline. Use a simple asymmetric shortened roof eave and a visible timber yarn-drying frame projecting from the side as a distinctive squared OPEN silhouette. The frame has a few broad pale hanging yarn hanks (not a giant sail or laundry sheets), readably different from barrels or a garden. Large STREET-FACING OPEN UNGLAZED WORKROOM WINDOW for loom light with plain timber shutters; clear dark opening, no glass or shiny grid, no glazing mullions. Narrow backyard. Main entrance shifted along frontage compared with baseline. Change the roof outline without adding a projecting L3 front gable or extra floor. Keep the drying frame large enough to read at low zoom but lower than the house eaves. No people, signs or luxury textiles on the entire house. Main body >=85% baseline height, not enlarged.\n\nATTEMPT 2 (SELECTED)\nUse case: precise-object-edit. The FIRST image is our newly generated project candidate house_l2_weaver-pilot, to edit. The SECOND image is the attached project house_l2-v2.png, the ONLY external style reference for this edit. Keep this candidate's whole architecture, camera, outer silhouette, proportions, annexes, yard, props, timber framing, limewash, openings, palette and genuine transparent alpha UNCHANGED.\nMake ONE material correction: replace ALL roof-slope tiles with medieval southern English FLAT PEG TILES. Flat small rectangular terracotta plates in staggered overlapping courses. Each tile face is planar and matte. Straight squared lower edges; shallow simple horizontal overlap seams. NO concave channels, NO convex barrels, NO curved S-profile, NO rolled scallop faces, NO pantiles, NO Mediterranean barrel-tile troughs. Only the very top ridge capping may be rounded. Reduce highlight contrast so tiles read as broad flat courses at the final137x137 sprite, not glittery scales. Exact same roof geometry and silhouette. This is not a recolor: correct the tile cross-section.\n\nNo added people, plants, extra props, glass, lettering, watermarks, background or ground plate. Keep the output square and alpha transparent. Leave the supplied reference untouched; return only the corrected candidate.",
+        "referenceInputs": "attempt 1: project style references=house_l2-v2.png; house_l1-v2.png; house_l3-v2.png\nattempt 2: project style references=house_l2-v2.png; generated candidate edit target=exec-1710b675-50d1-482c-9631-da2559054d0b.png",
+        "seed": "not provided",
+        "candidates": "2 generated candidates; selected attempt 2; 외부 실 건조 틀과 열린 창의 실루엣; 평기와 수정본 선택",
+        "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur; source 1254x1254 -> final 137x137; source crop=[131,53,995,1103]; pivot=[70.95813397129187,132.08373205741626]",
+        "artBible": "AB_2026-09-19_v1",
+        "historicalProfile": "S_England_1300_1450_v1",
+        "owner": "Astra Wave2 candidate task",
+        "usedIn": "Wave2 후보 검토; 게임 미설치",
+        "status": "candidate",
+        "notes": "후보 경로, 게임 설치 경로 아님. 도구가 큰 원본을 반환하여 축소. 날짜는 원본 파일 mtime UTC. 프롬프트와 실제 시각 검수는 별도; README 및 독립 검수 참조."
+      }
+    },
+    {
+      "assetId": "house_l2_garden-v1",
+      "promotedFrom": "house_l2_garden-pilot",
+      "priorRuntimeSha256": "6ae78452f454825a0a44fcb64c2509e59af2b8e3578762a64ab1d2367cbd8247",
+      "suppliedPilotSha256": "6ae78452f454825a0a44fcb64c2509e59af2b8e3578762a64ab1d2367cbd8247",
+      "outputSha256": "6ae78452f454825a0a44fcb64c2509e59af2b8e3578762a64ab1d2367cbd8247",
+      "byteIdentical": true,
+      "newGenerationCalls": 0,
+      "inheritedRecord": {
+        "assetId": "house_l2_garden-pilot",
+        "version": "pilot",
+        "runtimePath": "assets/house_l2_garden-pilot.png",
+        "runtimeSha256": "6ae78452f454825a0a44fcb64c2509e59af2b8e3578762a64ab1d2367cbd8247",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-7d090d0c-7a43-49aa-a530-4dd07d032252.png",
+        "sourceSha256": "ac857cfa7637e1ceaf91edefaf0ed917996435b3f2df8ff24f926d86ddfb2e44",
+        "tool": "image_gen; Canvas 2D mechanical normalization",
+        "model": "not exposed",
+        "generatedAt": "2026-09-24T13:01:30.608Z",
+        "prompt": "ATTEMPT 1 (NOT SELECTED)\nUse case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 L2 main house is the exact body size/tier baseline; image2 L3 is an upper tier NOT to imitate; images3 and4 give subdued cultivated soil/grass colors only. Target137x137. L2 SUBSISTENCE GARDEN ARTISAN HOUSE: TWO modest storeys, main body same size as baseline, simple modest tile gable roof with a small low shed joined behind. Do not make a large manor, many wings or a rich L3 front gable. A single small orchard tree with a coherent rounded crown peeks beside the rear wall, and two broad short vegetable beds occupy the tiny visible side/back yard. One very small empty rough timber/wattle poultry-or-pig enclosure, and the little shed. Large simple silhouettes of orchard crown and shed are the cues; vegetable beds are secondary. No actual animals or people needed. Position yard on visible side so it is legible; keep the ground compact and flat without a raised diamond base. The house body remains >=85% baseline height, tree lower than house roof, no broad landscape extending far past the house. Shift front door and shutter openings from baseline. Distinct roof-plus-low-shed-plus-tree outline, not just recolored L2.\n\nATTEMPT 2 (NOT SELECTED)\nUse case: precise-object-edit. The FIRST image is our newly generated project candidate house_l2_garden-pilot, to edit. The SECOND image is the attached project house_l2-v2.png, the ONLY external style reference for this edit. Keep this candidate's whole architecture, camera, outer silhouette, proportions, annexes, yard, props, timber framing, limewash, openings, palette and genuine transparent alpha UNCHANGED.\nMake ONE material correction: replace ALL roof-slope tiles with medieval southern English FLAT PEG TILES. Flat small rectangular terracotta plates in staggered overlapping courses. Each tile face is planar and matte. Straight squared lower edges; shallow simple horizontal overlap seams. NO concave channels, NO convex barrels, NO curved S-profile, NO rolled scallop faces, NO pantiles, NO Mediterranean barrel-tile troughs. Only the very top ridge capping may be rounded. Reduce highlight contrast so tiles read as broad flat courses at the final137x137 sprite, not glittery scales. Exact same roof geometry and silhouette. This is not a recolor: correct the tile cross-section.\n\nNo added people, plants, extra props, glass, lettering, watermarks, background or ground plate. Keep the output square and alpha transparent. Leave the supplied reference untouched; return only the corrected candidate.\n\nATTEMPT 3 (NOT SELECTED)\nUse case: precise-object-edit. Image1 is our current GARDEN candidate; image2 is the supplied original house_l2-v2 size/tier reference. Preserve the EXACT SAME two-storey main house at the SAME size, the now-flat peg tile roof, camera, timber/limewash materials and openings. Re-arrange ONLY the garden props to solve excessive side-yard WIDTH. Current yard extends too far to the right and forces the house to shrink when fitted into137x137. TUCK the small shed, 2 short vegetable beds and little empty poultry/pig pen into a much NARROWER rear/side yard, largely BEHIND the right wall and visible as compact partial shapes. Move the orchard tree inward so its rounded crown peeks from behind the rear roof edge rather than stretching far sideways. The crown remains lower than the highest roof ridge. Keep all four garden cues present but with strong overlap/occlusion and no broad empty ground patch. Entire image-content width should be only about 10% wider than the main house eaves, while the main body HEIGHT and WIDTH are unchanged. Do not simply scale the whole image down or make the building skinny. Prefer partial visible fence and two stubby bed rows beside the wall to a big full courtyard. Keep flat ground and transparent background, no raised tile slab, no added people or animals. Preserve large simple silhouettes. No chimney, glass, fancy L3 gable or third storey. Return only the compact garden variant.\n\nATTEMPT 4 (SELECTED)\nUse case: precise-object-edit. First image is our current project GARDEN L2 candidate, 1254x1254 working image. Second is the supplied original house_l2-v2 size/tier reference. This is a narrow composition correction to keep the MAIN HOUSE full-sized inside a137x137 delivery.\nKeep the entire main two-storey house, roof, door, windows, limewash, ground-contact corner and camera UNCHANGED in pixel size and position. Do NOT shrink the house. Its left roof edge is near x110 and the far right main eave near x905 in this1254px image.\nONLY compress/rearrange the side garden attachments: the outermost garden currently extends to x1100. Move the little pen/fence, bed rows and tree's rightmost outline INWARD so ALL painted material ends at x990 or earlier, leaving x1000..1253 fully transparent. Preserve the left extent near x110 and top/bottom positions of the main house. This means the final meaningful image is taller than it is wide, approximately880px wide by945px high. Do NOT achieve this with global image distortion. Repaint/reposition only the garden props into the available narrow strip behind/beside the wall.\nKeep the small low shed, ONE orchard tree rounded crown behind the roof, TWO short tiny vegetable bed rows, and a small empty wattle pen/fence fragment visible as overlapping partial shapes. The tree can be partially hidden by the roof. Crops and pen may be just a narrow vertical strip at x905..985. No broad ground patio and no extension far to the right. The tree must stay lower than the roof ridge. Preserve flat planar peg tiles, no S-profile tiles, no chimney, no glass, no people, no animals. Genuine alpha background. Return the corrected candidate only.",
+        "referenceInputs": "attempt 1: project style references=house_l2-v2.png; house_l3-v2.png; wheat_farm_ripe-v4.png; pasture.png\nattempt 2: project style references=house_l2-v2.png; generated candidate edit target=exec-48bbb8d5-96d1-4fc9-a720-32a9e00aa17d.png\nattempt 3: project style references=house_l2-v2.png; generated candidate edit target=exec-778d28a6-1af8-4447-b966-60d03f0b1cff.png\nattempt 4: project style references=house_l2-v2.png; generated candidate edit target=exec-2cb4d397-7b20-454e-949a-0a4eff6f3dad.png",
+        "seed": "not provided",
+        "candidates": "4 generated candidates; selected attempt 4; 과수·뒤뜰 실루엣. 본채 축소를 줄인 4차 선택; 기준과 정확한 외곽 크기 동일은 아님",
+        "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur; source 1211x1299 -> final 137x137; source crop=[17,101,1132,1143]; pivot=[70.95813397129187,132.08373205741626]",
+        "artBible": "AB_2026-09-19_v1",
+        "historicalProfile": "S_England_1300_1450_v1",
+        "owner": "Astra Wave2 candidate task",
+        "usedIn": "Wave2 후보 검토; 게임 미설치",
+        "status": "candidate",
+        "notes": "후보 경로, 게임 설치 경로 아님. 도구가 큰 원본을 반환하여 축소. 날짜는 원본 파일 mtime UTC. 프롬프트와 실제 시각 검수는 별도; README 및 독립 검수 참조."
+      }
+    },
+    {
+      "assetId": "house_l3_storage-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4b5ed971-2b40-464b-ad82-3d0dcf5771d7.png",
+      "selectedSourceSha256": "4072983699f794b7b8168cd84d1d859fdab0b469d2cd7d0ffbc310b798c920c4",
+      "outputSha256": "6359e01ea0d65d6e8694030def5895f4238a1f027d2e6f0f597cbbf88adda7c2",
+      "inheritedPilotIds": [
+        "house_l2_weaver-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4b5ed971-2b40-464b-ad82-3d0dcf5771d7.png",
+          "sha256": "4072983699f794b7b8168cd84d1d859fdab0b469d2cd7d0ffbc310b798c920c4"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l3_shop-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4da210a8-3250-45d4-8eb9-05b2ae6780aa.png",
+      "selectedSourceSha256": "271a67deeb4f078ab927ec8fcac8a1f41d969021d32c65adc0b05ca46bb90dfa",
+      "outputSha256": "0af07bc0aa8564093df93ca3c768e7c297817da53d343f5a4acec088a945f386",
+      "inheritedPilotIds": [
+        "house_l2_weaver-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4da210a8-3250-45d4-8eb9-05b2ae6780aa.png",
+          "sha256": "271a67deeb4f078ab927ec8fcac8a1f41d969021d32c65adc0b05ca46bb90dfa"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l3_clothier-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-522584e7-fcbc-4d43-9f2f-8f1646a57081.png",
+      "selectedSourceSha256": "f844c0441c624d87f947856dc12cc4b08655e6985af65b8e69c178bf5f9a8fc1",
+      "outputSha256": "5774a6291eeb32d2eb36826d503f32ea9355bfa539c464e2100e5f3a84f36ed6",
+      "inheritedPilotIds": [
+        "house_l2_weaver-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-522584e7-fcbc-4d43-9f2f-8f1646a57081.png",
+          "sha256": "f844c0441c624d87f947856dc12cc4b08655e6985af65b8e69c178bf5f9a8fc1"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l4_courtyard-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4313249f-5bac-4c7b-b40b-ea6f5b400139.png",
+      "selectedSourceSha256": "2d2c4d5dd43c17a5e9eb611676ed2cfdcc1fcba5ad5a59a226fbbf412f6bc01b",
+      "outputSha256": "1b3dfc1ce568a18b3730b65617692584208fcfc50c2de8ea5ca109e394864530",
+      "inheritedPilotIds": [
+        "house_l2_weaver-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4313249f-5bac-4c7b-b40b-ea6f5b400139.png",
+          "sha256": "2d2c4d5dd43c17a5e9eb611676ed2cfdcc1fcba5ad5a59a226fbbf412f6bc01b"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l4_wing-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-dfcd5a68-1177-4a95-a0ea-d9fb7c9ad6cc.png",
+      "selectedSourceSha256": "b631af8473927eddc43a9a8b29e02212719529dd0db2675cbdb79117b7abe10d",
+      "outputSha256": "b29e6d8b5ef95da98833c971fb2478852423a8bef0e80bc6d0f19fe5b60486a1",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1e943bc2-6c41-412f-8fcd-6867285b1423.png",
+          "sha256": "58adb66c9506ea85c356aa416110a0f597e4fdb6b91e75416516d79ca394f4b6"
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-dfcd5a68-1177-4a95-a0ea-d9fb7c9ad6cc.png",
+          "sha256": "b631af8473927eddc43a9a8b29e02212719529dd0db2675cbdb79117b7abe10d"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l4_inn-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1d6cbb26-4eb9-448a-961e-477080b1ece0.png",
+      "selectedSourceSha256": "a9fd81d624e27c0e3a77adb2971ecb32c3bc2b9dbb2df9f61715495981600dd5",
+      "outputSha256": "117bf700f4681d91f619f1bb4807ba3374851a410e70702ae378f4cdabecaf24",
+      "inheritedPilotIds": [
+        "house_l2_weaver-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1d6cbb26-4eb9-448a-961e-477080b1ece0.png",
+          "sha256": "a9fd81d624e27c0e3a77adb2971ecb32c3bc2b9dbb2df9f61715495981600dd5"
+        }
+      ]
+    },
+    {
+      "assetId": "house_l1_thatch-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d086fc9b-705f-4e5e-87fd-cf5d347f4a0e.png",
+      "selectedSourceSha256": "4c7ab44cb0603ae7e39545c00e793effc35d9c007b304946eb77638eb5b075ca",
+      "outputSha256": "c0d1b1d0639d480baf16a2f6459876dc4d46e980e84dbc88a4bde71c283a8ac2",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d086fc9b-705f-4e5e-87fd-cf5d347f4a0e.png",
+          "sha256": "4c7ab44cb0603ae7e39545c00e793effc35d9c007b304946eb77638eb5b075ca"
+        }
+      ]
+    },
+    {
+      "assetId": "house_pair_l3_horizontal_courtyard-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-cd381cab-1f67-46d0-aa62-e151dba93b9e.png",
+      "selectedSourceSha256": "d2033afaa6542fbaf6e939eff037902ed3b6573ed09b1176b48eb64913823ef4",
+      "outputSha256": "f17ec618c83e71ba9d4c8d99d35fc8ca0bba6ffb297f5f5671599c780f09c451",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-cd381cab-1f67-46d0-aa62-e151dba93b9e.png",
+          "sha256": "d2033afaa6542fbaf6e939eff037902ed3b6573ed09b1176b48eb64913823ef4"
+        }
+      ]
+    },
+    {
+      "assetId": "house_pair_l3_vertical_workshop-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-5000c3e2-d1ea-4a74-8db1-d1fc95a837cb.png",
+      "selectedSourceSha256": "a99b22624a4230e71ba0806d1c5079d866e7508c69d0691f5f4124ce53de03cd",
+      "outputSha256": "930c08eb25720658a6271b78258bd11dde00d0f20a5a889d2a40d1ad50e598a5",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-5000c3e2-d1ea-4a74-8db1-d1fc95a837cb.png",
+          "sha256": "a99b22624a4230e71ba0806d1c5079d866e7508c69d0691f5f4124ce53de03cd"
+        }
+      ]
+    },
+    {
+      "assetId": "house_pair_l4_horizontal_hall-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-8e978d09-f42a-461c-bd9e-a65e5d6f4bfe.png",
+      "selectedSourceSha256": "e3344795e8cef64b012f72d8dd4536a6db1315a0ff9cba713723bd81f3a20cf1",
+      "outputSha256": "ff8167308be2fbd9713f67ee18e6ec7f2a66178c2b1133c6c3241fb84a1f29dd",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-8e978d09-f42a-461c-bd9e-a65e5d6f4bfe.png",
+          "sha256": "e3344795e8cef64b012f72d8dd4536a6db1315a0ff9cba713723bd81f3a20cf1"
+        }
+      ]
+    },
+    {
+      "assetId": "house_pair_l4_vertical_court-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-0f051495-56c3-41bd-828b-818b567b8edb.png",
+      "selectedSourceSha256": "6c798bdcfc20aaca9ad36034f83b060f0895897023a65ec025a3ade3b92feed3",
+      "outputSha256": "533122e7b7cd8b7af217e94e69ac9ec069a619eb34c76ff53cbbb76654dfd9a5",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-d32187bf-92ac-4d3b-a962-c8f7a76a82df.png",
+          "sha256": "a62abaf44ba2b7415e2b6186164d742ae0d66ad9f5b4138c0fb7dff1096c5006"
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-0f051495-56c3-41bd-828b-818b567b8edb.png",
+          "sha256": "6c798bdcfc20aaca9ad36034f83b060f0895897023a65ec025a3ade3b92feed3"
+        }
+      ]
+    },
+    {
+      "assetId": "farm_mixed_seedling-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-fd3b4065-3356-496c-b25a-ec7169c7c733.png",
+      "selectedSourceSha256": "5152fb5e1cb6aaedb6277de157fb13dbc05422c75cf39c1c88cbe30920c27283",
+      "outputSha256": "95d030a064126a1cb4881ffa702c990dc08ba6864432e0a75acdeaf47b694415",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-3db8365f-7223-4b57-a99f-974479b17e0a.png",
+          "sha256": "69be67ee5a7a99e43d26fd064f6fe7fcd9e3872358c35ca83f33b70f22c69a4c"
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-fd3b4065-3356-496c-b25a-ec7169c7c733.png",
+          "sha256": "5152fb5e1cb6aaedb6277de157fb13dbc05422c75cf39c1c88cbe30920c27283"
+        }
+      ]
+    },
+    {
+      "assetId": "farm_mixed_growing-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-8c5dd4e3-32af-436d-a40b-be45f500f509.png",
+      "selectedSourceSha256": "5f556b432f70d42718297cb12a76dc5e9245b46f66d5c3803851ba2291add83e",
+      "outputSha256": "7b6e2bdb5c5f8a4c5a0800bf69ffa1b1e72c6ae357ffb8b6e272d39398825009",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-8c5dd4e3-32af-436d-a40b-be45f500f509.png",
+          "sha256": "5f556b432f70d42718297cb12a76dc5e9245b46f66d5c3803851ba2291add83e"
+        }
+      ]
+    },
+    {
+      "assetId": "farm_mixed_ripe-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+      "selectedSourceSha256": "e0ed3d789ff0023b214bc8b3beca732c7e07b1f26160f5c76646dc2e442cd27c",
+      "outputSha256": "640255f8eedd2a1e6b780e63cdccc51daae17b3828957c06e69074c70ee24233",
+      "inheritedPilotIds": [
+        "wheat_farm_pastoral_ripe-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+          "sha256": "e0ed3d789ff0023b214bc8b3beca732c7e07b1f26160f5c76646dc2e442cd27c"
+        }
+      ]
+    },
+    {
+      "assetId": "farm_mixed_worked-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-801166b8-4e07-494b-b4a0-624645902ec3.png",
+      "selectedSourceSha256": "dba5e14a412296b6d5ac3c0d194f81ceb40c43ba6009c6d75533592e562de6c4",
+      "outputSha256": "fe50ba116567c4d00ded80d7cf2fd7b597f8f8fe0f5686ab52dd7170031273dd",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-801166b8-4e07-494b-b4a0-624645902ec3.png",
+          "sha256": "dba5e14a412296b6d5ac3c0d194f81ceb40c43ba6009c6d75533592e562de6c4"
+        }
+      ]
+    },
+    {
+      "assetId": "farm_pastoral_spring-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-edb7ee19-793b-40fc-8469-2455d457877a.png",
+      "selectedSourceSha256": "ab4968943560fa5b1ca2f67a3c545b69581dd29d5c9a4703b9ed848a6248ec7c",
+      "outputSha256": "9136f8eb6e4b1ec0f137c344f574677a0d4f26688b861e94a50d21ca484593ae",
+      "inheritedPilotIds": [
+        "wheat_farm_pastoral_ripe-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-edb7ee19-793b-40fc-8469-2455d457877a.png",
+          "sha256": "ab4968943560fa5b1ca2f67a3c545b69581dd29d5c9a4703b9ed848a6248ec7c"
+        }
+      ]
+    },
+    {
+      "assetId": "farm_pastoral_summer-v1",
+      "promotedFrom": "wheat_farm_pastoral_ripe-pilot",
+      "priorRuntimeSha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b",
+      "suppliedPilotSha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b",
+      "outputSha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b",
+      "byteIdentical": true,
+      "newGenerationCalls": 0,
+      "inheritedRecord": {
+        "assetId": "wheat_farm_pastoral_ripe-pilot",
+        "version": "pilot",
+        "runtimePath": "assets/wheat_farm_pastoral_ripe-pilot.png",
+        "runtimeSha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-658ae0df-2f4b-4cd7-9f79-1345fd4acaf6.png",
+        "sourceSha256": "d719dcfe74b0277c28b09d3700efbaa8a51423aebdf438f3030af5a9e7c30d3a",
+        "tool": "image_gen; Canvas 2D mechanical normalization",
+        "model": "not exposed",
+        "generatedAt": "2026-09-24T12:41:11.853Z",
+        "prompt": "ATTEMPT 1 (SELECTED)\nUse case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 sets the exact2x2 land footprint and southern tip, image2 gives summer pasture color and low fence finish, image3 is modest rural thatch/material context only, not a house to reproduce. Target384x192. SUMMER PASTORAL FARM as a same-wealth alternative to a ripe wheat farm: REPLACE all wheat with an irregular olive grazed grassy footprint. A small low woven hazel/wattle hurdle sheep pen, THREE OR FOUR sheep with large simple wool bodies clearly distinct from grass, ONE coherent golden hay mound, ONE tiny low thatched open-sided shed. Sheep white is warm muted cream not luminous white, no large livestock barn or rich stone structures. Make the enclosure and hay/shed silhouettes readable at game display scale. Same overall2:1 isometric ground area and southern contact as ripe wheat, flat open edges with alpha breakup, no raised base slab, no rectilinear wheat planting lines, no wheat crop. Keep most ground as pasture; structures secondary, low enough not to turn the farm into a town building. No people.",
+        "referenceInputs": "attempt 1: project style references=wheat_farm_ripe-v4.png; pasture.png; house_l1-v2.png",
+        "seed": "not provided",
+        "candidates": "1 generated candidates; selected attempt 1; 밀밭과 구별되는 양·허들·건초·헛간",
+        "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur; source 1774x887 -> final 384x192; source crop=[43,48,1687,819]; pivot=[191.56708004509582,183.99098083427282]",
+        "artBible": "AB_2026-09-19_v1",
+        "historicalProfile": "S_England_1300_1450_v1",
+        "owner": "Astra Wave2 candidate task",
+        "usedIn": "Wave2 후보 검토; 게임 미설치",
+        "status": "candidate",
+        "notes": "후보 경로, 게임 설치 경로 아님. 도구가 큰 원본을 반환하여 축소. 날짜는 원본 파일 mtime UTC. 프롬프트와 실제 시각 검수는 별도; README 및 독립 검수 참조."
+      }
+    },
+    {
+      "assetId": "farm_pastoral_winter-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-bf4dd826-6c3d-4dd6-8791-07a161d787fe.png",
+      "selectedSourceSha256": "999fdcc651513d5566a08f06cc4287ecc9bf44d7a3c72059bdef66f7ec1a088c",
+      "outputSha256": "7564790ae4d650ee6881b61af965ef7f9943b250479414b54c2c3e327f47dcd4",
+      "inheritedPilotIds": [
+        "wheat_farm_pastoral_ripe-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-bf4dd826-6c3d-4dd6-8791-07a161d787fe.png",
+          "sha256": "999fdcc651513d5566a08f06cc4287ecc9bf44d7a3c72059bdef66f7ec1a088c"
+        }
+      ]
+    },
+    {
+      "assetId": "well_b-v1",
+      "promotedFrom": "well_b-pilot",
+      "priorRuntimeSha256": "fe53488ef06058e63bcc16bdc32519366585d7a072b25b24c8e8825a46f5bfe0",
+      "suppliedPilotSha256": "fe53488ef06058e63bcc16bdc32519366585d7a072b25b24c8e8825a46f5bfe0",
+      "outputSha256": "fe53488ef06058e63bcc16bdc32519366585d7a072b25b24c8e8825a46f5bfe0",
+      "byteIdentical": true,
+      "newGenerationCalls": 0,
+      "inheritedRecord": {
+        "assetId": "well_b-pilot",
+        "version": "pilot",
+        "runtimePath": "assets/well_b-pilot.png",
+        "runtimeSha256": "fe53488ef06058e63bcc16bdc32519366585d7a072b25b24c8e8825a46f5bfe0",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-25644473-18c9-4bd9-abea-42a48fea38b4.png",
+        "sourceSha256": "f2d193856c35606390d4c38c61cd6ceda95237ee10798bdc1bedb62cdb68d082",
+        "tool": "image_gen; Canvas 2D mechanical normalization",
+        "model": "not exposed",
+        "generatedAt": "2026-09-24T12:42:35.866Z",
+        "prompt": "ATTEMPT 1 (SELECTED)\nUse case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 well is the exact scale/camera/ground contact reference; images2/3 only hand-painted wood/stone finish. Target72x80. WELL VARIANT B: completely ROOFLESS low round warm-grey rubble stone well curb, dark open well mouth; one plain stout oak bucket post with a short supporting cross-arm and a wooden bucket on a rope. NO roof, NO canopy, NO tall stone tower, no metal pump. The asymmetric single post and visible open circular stone rim must be a clearly different silhouette from the roofed reference. Preserve the stone ring ground diameter and location relative to baseline; open shaft lower than reference roof, use empty alpha space above rather than scaling it huge to fill the frame. Large readable stone ring and bucket, not many tiny decorative stones. No grass plate, no people or animals.",
+        "referenceInputs": "attempt 1: project style references=well.png; house_l2-v2.png; market_active-v2.png",
+        "seed": "not provided",
+        "candidates": "1 generated candidates; selected attempt 1; 지붕 없는 돌 테두리와 두레박 기둥",
+        "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur; source 1190x1322 -> final 72x80; source crop=[353,405,506,706]; pivot=[36,64]",
+        "artBible": "AB_2026-09-19_v1",
+        "historicalProfile": "S_England_1300_1450_v1",
+        "owner": "Astra Wave2 candidate task",
+        "usedIn": "Wave2 후보 검토; 게임 미설치",
+        "status": "candidate",
+        "notes": "후보 경로, 게임 설치 경로 아님. 도구가 큰 원본을 반환하여 축소. 날짜는 원본 파일 mtime UTC. 프롬프트와 실제 시각 검수는 별도; README 및 독립 검수 참조."
+      }
+    },
+    {
+      "assetId": "well_c-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-6aeb6330-19d8-46d3-afbd-5b133620a06d.png",
+      "selectedSourceSha256": "80df7735429b73953b5b3997530fb3df9fd00dcb99413568347abbfa7d1cd551",
+      "outputSha256": "7639b46efba64bf33e0b6674f417de202f6e09b8de3cfad5a4f04b114a66901e",
+      "inheritedPilotIds": [
+        "well_b-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-6aeb6330-19d8-46d3-afbd-5b133620a06d.png",
+          "sha256": "80df7735429b73953b5b3997530fb3df9fd00dcb99413568347abbfa7d1cd551"
+        }
+      ]
+    },
+    {
+      "assetId": "storehouse_b-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-85100b0e-2bac-4463-8c24-b08ddbafebc6.png",
+      "selectedSourceSha256": "f2066533b3818a37c0a0ae1241c0bf0fae7c713d2489752660dd8cbd4820ae0d",
+      "outputSha256": "6306f8f931b314962169fb7577278325f0eb77d05af363bf5d972e89315f257d",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-fd5e34cb-2dde-4be7-9437-9f1c6ed03768.png",
+          "sha256": "d15da3681c94263f4ee53d4591c34dd194f1cf2bcde3e529f3645b95764e08a2"
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-85100b0e-2bac-4463-8c24-b08ddbafebc6.png",
+          "sha256": "f2066533b3818a37c0a0ae1241c0bf0fae7c713d2489752660dd8cbd4820ae0d"
+        }
+      ]
+    },
+    {
+      "assetId": "storehouse_c-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-0d73048f-50c5-421e-8ba2-d6e9b29cfff6.png",
+      "selectedSourceSha256": "57d06a499362dead21b294e9a542863333980d5b6124edde78f26c17b0290e46",
+      "outputSha256": "983a32d0a4cfc60ec50b0bb2068065c376b4a56ad88c0ca15ee5a30acc7d16b2",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-0d73048f-50c5-421e-8ba2-d6e9b29cfff6.png",
+          "sha256": "57d06a499362dead21b294e9a542863333980d5b6124edde78f26c17b0290e46"
+        }
+      ]
+    },
+    {
+      "assetId": "windmill-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-4edecec4-5c94-4825-a4ac-b7ebfba29d72.png",
+      "selectedSourceSha256": "e5915db9f9a7a07b89f953dc1254f6bc43038206faf12364c2989233d5de5ccb",
+      "outputSha256": "de5f6e7ce03a04d907e11b6ab072ce62d88e7bcdae8a1c51ab2301afdd05d5b1",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-4edecec4-5c94-4825-a4ac-b7ebfba29d72.png",
+          "sha256": "e5915db9f9a7a07b89f953dc1254f6bc43038206faf12364c2989233d5de5ccb"
+        }
+      ]
+    },
+    {
+      "assetId": "market_active_b-v1",
+      "promotedFrom": "market_active_b-pilot",
+      "priorRuntimeSha256": "17987bb6163a9dd7b14962a3e7aff7fe7e2e944da669a244b860b589072c5845",
+      "suppliedPilotSha256": "17987bb6163a9dd7b14962a3e7aff7fe7e2e944da669a244b860b589072c5845",
+      "outputSha256": "17987bb6163a9dd7b14962a3e7aff7fe7e2e944da669a244b860b589072c5845",
+      "byteIdentical": true,
+      "newGenerationCalls": 0,
+      "inheritedRecord": {
+        "assetId": "market_active_b-pilot",
+        "version": "pilot",
+        "runtimePath": "assets/market_active_b-pilot.png",
+        "runtimeSha256": "17987bb6163a9dd7b14962a3e7aff7fe7e2e944da669a244b860b589072c5845",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-2fadeef8-199b-4feb-b246-1c881bbee5a5.png",
+        "sourceSha256": "4922092f57394f51b53cbb926e29665b2af032dd213048dde3ad1f35b9b16a2b",
+        "tool": "image_gen; Canvas 2D mechanical normalization",
+        "model": "not exposed",
+        "generatedAt": "2026-09-24T12:41:56.221Z",
+        "prompt": "ATTEMPT 1 (SELECTED)\nUse case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 exact active-market size/wealth/footprint/camera reference; image2 construction finish only. Target224x224. ACTIVE MARKET VARIANT B: a clearly NEW STALL ARRANGEMENT, not merely new canopy colors. Use TWO unequal long low stalls in an open offset L arrangement with one short uncovered counter, a clear open gap/walkway between; unlike the three separated similar roofed booths in the reference. One longer shallow sagging linen awning, one compact lean-to linen awning lower than the first, asymmetric silhouettes. Muted flax cream and faded earth-red small awning panels, not bright colors or striped festival tents. Goods must differ: BIG light wool bundles on one table, a few clearly rolled muted cloth bolts on another, broad shallow wicker fish baskets with a few simplified silvery-grey fish. Keep same modest market wealth and overall footprint/height as reference, no merchant hall, towers, pennants or wooden raised ground plate. Simple oak posts, rough counters, genuine open alpha gaps between stalls. No people, text or signs.",
+        "referenceInputs": "attempt 1: project style references=market_active-v2.png; house_l2-v2.png",
+        "seed": "not provided",
+        "candidates": "1 generated candidates; selected attempt 1; 두 좌판과 차양의 새 배치, 양모·직물 덩어리",
+        "manualEdits": "remove alpha<=2 source flecks; crop meaningful alpha bounds; uniform scale preserving projection; register cropped bottom-center to supplied reference pivot; enforce transparent margins; no repaint/recolor/sharpen/blur; source 1254x1254 -> final 224x224; source crop=[85,248,1112,697]; pivot=[114.59011164274322,213.6395534290271]",
+        "artBible": "AB_2026-09-19_v1",
+        "historicalProfile": "S_England_1300_1450_v1",
+        "owner": "Astra Wave2 candidate task",
+        "usedIn": "Wave2 후보 검토; 게임 미설치",
+        "status": "candidate",
+        "notes": "후보 경로, 게임 설치 경로 아님. 도구가 큰 원본을 반환하여 축소. 날짜는 원본 파일 mtime UTC. 프롬프트와 실제 시각 검수는 별도; README 및 독립 검수 참조."
+      }
+    },
+    {
+      "assetId": "market_active_c-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-919462e3-5a9d-4e3e-8804-48273f80236b.png",
+      "selectedSourceSha256": "63c04bee70aa4264e0085cb2585ba4dc90f67427f1f082515f640b8039574237",
+      "outputSha256": "6198c18c7372b5a9054556b88df807b41cd025ebea2521e6c39679e83de045cc",
+      "inheritedPilotIds": [
+        "market_active_b-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-919462e3-5a9d-4e3e-8804-48273f80236b.png",
+          "sha256": "63c04bee70aa4264e0085cb2585ba4dc90f67427f1f082515f640b8039574237"
+        }
+      ]
+    },
+    {
+      "assetId": "market_quiet_b-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-e6fd75de-771d-43c5-bab4-e927ccc0c175.png",
+      "selectedSourceSha256": "26c25fd67a82d13a99e164e349398d4b3f81321c2f97c668f318dbbbb18597fe",
+      "outputSha256": "26208c3356607ec596ff5cab41eb4573dac36fbda4bcd32f00ed2fd978a7e28f",
+      "inheritedPilotIds": [
+        "market_active_b-pilot"
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-e6fd75de-771d-43c5-bab4-e927ccc0c175.png",
+          "sha256": "26c25fd67a82d13a99e164e349398d4b3f81321c2f97c668f318dbbbb18597fe"
+        }
+      ]
+    },
+    {
+      "assetId": "chapel_b-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-26620767-2dd4-4dcb-8fd0-ab7958768f10.png",
+      "selectedSourceSha256": "3f191d19c39b20f8fc6e7341456114240cc328b7406b62e8b42207735b5360d8",
+      "outputSha256": "44c6a5d5241c60be762d48ac5a4f4754bbcbf012deae680f8ab6f9a1212c971d",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-26620767-2dd4-4dcb-8fd0-ab7958768f10.png",
+          "sha256": "3f191d19c39b20f8fc6e7341456114240cc328b7406b62e8b42207735b5360d8"
+        }
+      ]
+    },
+    {
+      "assetId": "chapel_stone-v1",
+      "selectedSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-2240ea49-3609-4230-a7ae-8c8426aa7df9.png",
+      "selectedSourceSha256": "9e7b36ffcc9a8d7092bcdd22c58f383e6affceed1300a0d1f6981bb9f74e2ce4",
+      "outputSha256": "071c6c726a549b0c6a4d69828b1dacd32bfb8c1378baa5c8b27d8469bae10646",
+      "inheritedPilotIds": [],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-2240ea49-3609-4230-a7ae-8c8426aa7df9.png",
+          "sha256": "9e7b36ffcc9a8d7092bcdd22c58f383e6affceed1300a0d1f6981bb9f74e2ce4"
+        }
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "id": "house_l0_garden-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-4891579b-c22e-4ba3-b22a-8fc35ee9986f.png",
+      "sha256": "bf49c3143a45e894731de374080a287cad7fdf9af42073126a13886bb98835c2",
+      "generatedAt": "2026-09-24T13:15:55.978Z",
+      "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l0_garden-v1, target153x153. Reference house_l0-v3 is the SAME low single-storey peasant hut body and thatched roofing to retain. Create a materially distinct garden silhouette: compact garden with exactly two short broad raised vegetable ridges tucked against side of hut, modest stacked firewood at front side. Shift door position and shallow thatch eave outline from reference, but retain body scale and poverty. Keep yard very compact so house does not shrink to make room. No fence enclosing whole composition, no animals.",
+      "references": [
+        "house_l0-v3.png"
+      ]
+    },
+    {
+      "id": "house_l0_pen-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-de51e9b4-f51b-496a-aaa8-070c0eabb1e5.png",
+      "sha256": "7e936a947e6e3dfd47d9feaf50752c84bde5424f7564a6841fb1ab46c8b4683c",
+      "generatedAt": "2026-09-24T13:17:02.572Z",
+      "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l0_pen-v1, target153x153. Reference house_l0-v3 is exact SAME low single-storey hut tier. Keep its modest main house body scale and brown thatch roof. Distinct silhouette through compact open wattle pig/chicken pen appended to right side, no shed or barn, fence only, one small pig and two chickens as simple readable shapes. Small gate facing foreground. Change window and door placement from reference and create slightly asymmetrical thatched hip roof. Pen small enough main hut remains same size. Avoid enlarged sprawling farm compound.",
+      "references": [
+        "house_l0-v3.png"
+      ]
+    },
+    {
+      "id": "house_l1_artisan-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-43c307d8-bf75-4209-bc98-a3515df3ccd9.png",
+      "sha256": "4c2f93ca1f4d53b306e2e34d0d07d8f5cd229f8d37d7455e9f727291f1c20f7f",
+      "generatedAt": "2026-09-24T13:18:04.304Z",
+      "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l1_artisan-v1, target139x139. Reference house_l1-v2 is EXACT main one-storey cottage body scale to retain. Create artisan variant with compact street-facing wooden workbench beneath a simple low brown cloth awning projecting from eave. Readable two or three wooden hand tools, no modern equipment. Keep a similarly simple thatched gabled roof, small unglazed window and changed door placement. Workbench and awning must form distinct broad silhouette at front-left, not merely painted on wall. No extra workshop building. Compact subject, house main body does not shrink.",
+      "references": [
+        "house_l1-v2.png"
+      ]
+    },
+    {
+      "id": "house_l1_garden-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d9e5467c-5351-4fcc-88aa-bac9e5626e6f.png",
+      "sha256": "38da00d1c84d75b2e8d5b1d36924456152d358d76c8f60c46cc0e225afae881b",
+      "generatedAt": "2026-09-24T13:19:16.683Z",
+      "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l1_garden-v1 target139x139. Reference house_l1-v2 main one-storey cottage body, thatch gable and wealth MUST stay same size. Add compact subsistence garden tucked beside it: two short broad vegetable beds, ONE modest orchard tree low crown behind side corner, tiny wattle poultry pen. No additional barn. Arrange in a shallow narrow side strip, not wide farmyard, so main cottage remains dominant full-size. Tree lower than roof ridge. Change door and unglazed window layout enough to form distinct garden household. Hand-painted big simple shapes to remain readable at small game scale.",
+      "references": [
+        "house_l1-v2.png"
+      ]
+    },
+    {
+      "id": "house_l1_thatch-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-d086fc9b-705f-4e5e-87fd-cf5d347f4a0e.png",
+      "sha256": "4c7ab44cb0603ae7e39545c00e793effc35d9c007b304946eb77638eb5b075ca",
+      "generatedAt": "2026-09-24T13:20:19.737Z",
+      "prompt": "Use case: historical-scene. Create one candidate transparent RGBA game sprite for medieval southern England 1300–1450, profile S_England_1300_1450_v1, AB_2026-09-19_v1. Only supplied project image is style reference. Match its fixed SW 2:1 isometric camera, muted warm earthy palette, broad hand painted readable shapes, soft upper-left light. Preserve same tier main house size and modest wealth, no added storey, no grand upgrade. Actual delivery is small pixels; prioritize bold silhouette, not tiny texture. Isolated complete subject on genuinely transparent background, no backdrop, no text or watermark, no people. Oak timber, limewashed panels, rubble foundation. Absolutely no chimneys or chimney pots, glass, slate, S tiles or pantiles, fantasy, modern objects. Keep top and sides empty by at least 6 percent and bottom about 3 percent. Ground contact at lower center. Asset house_l1_thatch-v1 target139x139. Precise material variant of supplied house_l1-v2. Keep EXACT same single-storey cottage body, door, windows, framing, SW view and projection, footprint and wealth. Give the roof a distinctly thick, soft, rounded straw-thatched silhouette: slightly drooping rounded deep eaves and a heavy raised continuous thatch ridge, instead of reference's thin hard eaves and regular courses. This is material geometry differentiation, NOT recoloring. No extra props, no extra buildings or rooms. Brown-gold dry straw, coarse broad bundled straw masses with restrained detail. Preserve all rest unchanged.",
+      "references": [
+        "house_l1-v2.png"
+      ]
+    },
+    {
+      "id": "house_l2_brewer-v1",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-148bddc9-6c81-4587-8351-b031bfd1398b.png",
+      "sha256": "f62fc6d6152ba655fb07a025abffa045d8a10cde703ed560049e7fe9688fc79e",
+      "generatedAt": "2026-09-24T13:21:17.678Z",
+      "prompt": "Use case: precise-object-edit. Edit supplied PROJECT pilot house_l2_brewer-pilot.png only. Preserve the approved brewer house IDENTICALLY: same body, two storeys, flat clay peg-tile roofs, small lower brewing annex, timber frame, limewash panels, barrel positions, windows, palette, projection, overall dimensions and transparent cutout. The ONLY change: add one small very LOW roof-ridge wooden ventilation opening along the MAIN roof ridge: a short horizontal black slit beneath a low sloping wooden weather cap. Clearly readable as a squat open ridge vent, NOT vertical chimney, NOT pipe, NOT chimney pot, NOT tower, NOT cupola. Length about 8 percent of roof ridge, height no more than 3 percent of whole house. Keep no rising smoke. Southern England1300–1450; subdued existing browns and soft upper-left light. Genuinely transparent RGBA background. Final137x137 sprite; preserve crop and bottom ground-contact/pivot. Do not redraw, upscale building, change framing, add yard, add a door, or change any other feature. No glass, slate or curved S/pan tiles, text or watermark.",
+      "references": [
+        "house_l2_brewer-pilot.png"
+      ]
+    },
+    {
+      "id": "house_l2_brewer-v1",
+      "attempt": 2,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-c9b4-7fa1-8d3b-3c677fe04426/exec-6826b747-f673-4bc7-9ed0-87a08e87f849.png",
+      "sha256": "912c15cd753b93f1d13865766462f2f011d85d02074a1280c004cd5af9083434",
+      "generatedAt": "2026-09-24T13:24:57.806Z",
+      "prompt": "Use case: precise-object-edit. Edit ONLY roof-ridge ventilation slit of supplied approved project brewer house sprite. Existing tan bump is too small. Replace that bump with a LOW WIDE wooden ridge ventilator near same ridge position. Critical small-size readability: on final 137x137px canvas its near-black horizontal OPEN AIR SLIT should measure roughly18px wide by2-3px high, with very thin sloping brown weathercap and low timber supports. The opening is a clear black elongated shape on roof ridge, not a pale patch. No smoke. NOT chimney, no vertical shaft, pipe, pot, cupola or tower. Keep roof ridge vent low, horizontal, length roughly one quarter of roof ridge. Preserve EVERYTHING ELSE exactly as provided: house body and silhouette, two-storey facade, door/windows, lean-to brewing annex, all barrels, warm peg-tile roof, timber frame, muted palette, SW 2:1 isometric camera, upper-left light and original ground contact. No new material, no changed size or wealth. Southern England1300-1450. Transparent RGBA background, no ground plane, no text, no watermark. Native output can be larger but opening dimensions must remain readable when reduced to final137px. Match source design and keep all other features fixed.",
+      "references": [
+        "house_l2_brewer-v1.png"
+      ]
+    },
+    {
+      "id": "house_l3_storage-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4b5ed971-2b40-464b-ad82-3d0dcf5771d7.png",
+      "sha256": "4072983699f794b7b8168cd84d1d859fdab0b469d2cd7d0ffbc310b798c920c4",
+      "generatedAt": "2026-09-24T13:16:39.567Z",
+      "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 142×142 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L3 merchant house STORAGE variant: same two-storey L3 reference proportions, prominent wide double timber loading door on street side, clearly recessed cellar stair opening at lower side, and compact low rear storage annex with a lean-to roof that changes the outline. Keep main house dominant and storehouse annex small. Roof profile should include modest offset low annex; no third floor.",
+      "references": [
+        "house_l3-v2.png",
+        "house_l2_weaver-pilot.png"
+      ]
+    },
+    {
+      "id": "house_l3_shop-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4da210a8-3250-45d4-8eb9-05b2ae6780aa.png",
+      "sha256": "271a67deeb4f078ab927ec8fcac8a1f41d969021d32c65adc0b05ca46bb90dfa",
+      "generatedAt": "2026-09-24T13:17:33.383Z",
+      "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 142×142 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L3 merchant house SHOP variant: same two-storey L3 reference scale. Add a broad street-facing ochre linen awning with two stout posts, an open display counter underneath, and a small hanging pictorial merchant sign without letters. Awning projects noticeably to alter silhouette while main gabled body retains same tier. No rear warehouse annex, no cellar stairs.",
+      "references": [
+        "house_l3-v2.png",
+        "house_l2_weaver-pilot.png"
+      ]
+    },
+    {
+      "id": "house_l3_clothier-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-522584e7-fcbc-4d43-9f2f-8f1646a57081.png",
+      "sha256": "f844c0441c624d87f947856dc12cc4b08655e6985af65b8e69c178bf5f9a8fc1",
+      "generatedAt": "2026-09-24T13:18:21.378Z",
+      "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 142×142 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L3 merchant CLOTHIER house: same two-storey L3 reference scale, broad open unglazed workshop shutter bay on front with three large muted woven cloth rolls on counter, a small timber tenter frame in compact side/rear yard holding one plain pale cloth panel. Tenter frame should extend a little past side outline, recognizable at small size; overall silhouette different from broad awning and storage annex variants. No extra floor.",
+      "references": [
+        "house_l3-v2.png",
+        "house_l2_weaver-pilot.png"
+      ]
+    },
+    {
+      "id": "house_l4_courtyard-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-4313249f-5bac-4c7b-b40b-ea6f5b400139.png",
+      "sha256": "2d2c4d5dd43c17a5e9eb611676ed2cfdcc1fcba5ad5a59a226fbbf412f6bc01b",
+      "generatedAt": "2026-09-24T13:19:19.554Z",
+      "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 161×161 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L4 grand house COURTYARD variant: same three-storey reference body and wealth. A compact low rubble courtyard wall with a distinct arched timber gate wraps a tiny front/side court; a small low round stone well inside. Main tall house remains dominant, narrow court close to walls, courtyard adds stepped low silhouette. No castle tower or extra floor.",
+      "references": [
+        "house_l4-v2.png",
+        "house_l2_weaver-pilot.png"
+      ]
+    },
+    {
+      "id": "house_l4_wing-v1",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1e943bc2-6c41-412f-8fcd-6867285b1423.png",
+      "sha256": "58adb66c9506ea85c356aa416110a0f597e4fdb6b91e75416516d79ca394f4b6",
+      "generatedAt": "2026-09-24T13:20:10.712Z",
+      "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 161×161 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L4 grand house REAR WING variant: same three-storey main reference body and wealth. One short lower two-storey rear wing extends behind to the right, with a clearly offset perpendicular gable and visibly higher rubble stone foundation. Compact L plan, no courtyard wall, no extra floors, main tall gable remains dominant.",
+      "references": [
+        "house_l4-v2.png",
+        "house_l2_weaver-pilot.png"
+      ]
+    },
+    {
+      "id": "house_l4_wing-v1",
+      "attempt": 2,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-dfcd5a68-1177-4a95-a0ea-d9fb7c9ad6cc.png",
+      "sha256": "b631af8473927eddc43a9a8b29e02212719529dd0db2675cbdb79117b7abe10d",
+      "generatedAt": "2026-09-24T13:24:24.385Z",
+      "prompt": "Use case: precise-object-edit. Edit image 1, our project candidate, using image 2 ONLY as exact same-tier scale and style reference. ONE transparent isolated SW 2:1 isometric medieval southern English L4 house sprite. Correct ONLY the oversized side wing: preserve tall THREE STOREY main house, main roof, doors, shutters, colors, oak framing and planar flat clay peg tiles, and the main house height. Move the lower rear wing almost completely BEHIND the main house, so just a narrow strip of its perpendicular gable and high rubble plinth projects on RIGHT; maximum extra width 12% of main house width, not the present 30%. Main building must occupy at least 85% of the whole silhouette width and 100% of height. Do not shrink main house, do not widen full footprint. Clearly three full floors, same reference wealth. Only compact behind-wing structural change. Flat rectangular tiles not S/pantiles. No chimney, glass, text, people, background tile. Genuine transparent background. Target final161×161, tiny sprite, chunky shape.",
+      "references": [
+        "exec-1e943bc2-6c41-412f-8fcd-6867285b1423.png",
+        "house_l4-v2.png"
+      ]
+    },
+    {
+      "id": "house_l4_inn-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38d-f281-7991-83f9-e25312fadbaa/exec-1d6cbb26-4eb9-448a-961e-477080b1ece0.png",
+      "sha256": "a9fd81d624e27c0e3a77adb2971ecb32c3bc2b9dbb2df9f61715495981600dd5",
+      "generatedAt": "2026-09-24T13:20:59.212Z",
+      "prompt": "Use case: historical-scene. Create ONE isolated hand-painted game building sprite with genuine transparent PNG background. SOUTHWEST 2:1 isometric viewpoint, exactly matching the supplied project references, southern England 1300–1450. Match oak timber framing, cream limewash, warm muted flat rectangular clay peg tiles, rubble footing and top-left soft light. Roof tiles must be FLAT planar rectangular shingles, NOT curved S tiles/pantiles, NOT slate. No chimney shaft or chimney pot, no glass, no text, no people, no fantasy. Only supplied project artwork as references. This is a tiny game sprite ultimately delivered at 161×161 px: forms must be chunky, readable in silhouette, very restrained details, not photoreal. Preserve reference main building's wealth tier, height and dominant mass. Structural changes must read clearly and are not mere recoloring. Place entire compact building close to center with transparent breathing room, lowest footing near bottom center; no cast-shadow plate, no background ground tile, no perspective camera. Keep all props tight against building and do not spread width excessively.\nPrimary request: L4 grand house INN variant: same three-storey main reference body and wealth. Large arched double main entrance, small broad stable doorway attached in a compact low side bay, projecting small wooden inn sign bearing only a simple tankard pictogram, no letters. Stepped low stable roof visibly changes outline. No courtyard wall and no long rear wing.",
+      "references": [
+        "house_l4-v2.png",
+        "house_l2_weaver-pilot.png"
+      ]
+    },
+    {
+      "id": "house_pair_l3_horizontal_courtyard-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-cd381cab-1f67-46d0-aa62-e151dba93b9e.png",
+      "sha256": "d2033afaa6542fbaf6e939eff037902ed3b6573ed09b1176b48eb64913823ef4",
+      "generatedAt": "2026-09-24T13:16:43.846Z",
+      "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l3_horizontal_courtyard-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L3 merchant merged horizontal lot. Two two-storey houses separated by a narrow visible shared open courtyard and shared timber gate at front, buildings flank this courtyard. Distinct two roof silhouettes with a notch between, same compact horizontal two-lot envelope, no third storey. Final delivery canvas 209x167 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+      "references": [
+        "house_pair_l3_horizontal-v2.png"
+      ]
+    },
+    {
+      "id": "house_pair_l3_vertical_workshop-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-5000c3e2-d1ea-4a74-8db1-d1fc95a837cb.png",
+      "sha256": "a99b22624a4230e71ba0806d1c5079d866e7508c69d0691f5f4124ce53de03cd",
+      "generatedAt": "2026-09-24T13:17:48.899Z",
+      "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l3_vertical_workshop-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L3 merchant merged depth-oriented lot. Front two-storey residence with a rear lower workshop, broad workbench and plain little awning on workshop side, tools as two or three bold shapes. Keep depth-oriented lot and main two-storey front volume. Roofline and awning visibly different from reference, no third storey. Final delivery canvas 183x183 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+      "references": [
+        "house_pair_l3_vertical-v2.png"
+      ]
+    },
+    {
+      "id": "house_pair_l4_horizontal_hall-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-8e978d09-f42a-461c-bd9e-a65e5d6f4bfe.png",
+      "sha256": "e3344795e8cef64b012f72d8dd4536a6db1315a0ff9cba713723bd81f3a20cf1",
+      "generatedAt": "2026-09-24T13:18:46.647Z",
+      "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l4_horizontal_hall-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L4 prosperous merged horizontal lot. Merchant hall variant with one broad dominant pitched hall roof, subordinate attached wing to one side, large timber hall doorway. Maintain reference L4 wall height, wealth tier and compact footprint, no tower or extra storey. Distinct dominant long roof and smaller wing silhouette. Final delivery canvas 204x204 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+      "references": [
+        "house_pair_l4_horizontal-v2.png"
+      ]
+    },
+    {
+      "id": "house_pair_l4_vertical_court-v1",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-d32187bf-92ac-4d3b-a962-c8f7a76a82df.png",
+      "sha256": "a62abaf44ba2b7415e2b6186164d742ae0d66ad9f5b4138c0fb7dff1096c5006",
+      "generatedAt": "2026-09-24T13:19:53.156Z",
+      "prompt": "Use case: historical-scene. Generate one isolated transparent PNG game building sprite for house_pair_l4_vertical_court-v1. Reference image 1 is the sole project-owned style, view, tier and footprint reference. L4 prosperous merged depth-oriented lot. Tall principal residence of reference L4 height, compact visible courtyard beside/rear it with low stable building and broad stable double doors. Keep same long-depth lot envelope and wealth tier, no extra storey. Strong silhouette notch between main roof and low stable roof, tiny timber courtyard gate. No animals needed. Final delivery canvas 184x184 pixels, so design bold readable silhouettes for tiny game display, not fine texture. Match reference precisely in 2:1 isometric SW view, warm oak half-timbering, muted limewash, rubble footing, terracotta flat rectangular peg roof tiles. Southern England 1300-1450. Preserve reference's visual scale and ground bottom-center anchor; keep compact building composition with clear transparent margin, 8px equivalent at top and sides and 4px bottom. Genuinely transparent background with alpha, no ground rectangle, no scene, no other buildings, no labels. Soft top-left sunlight with minimal short contact shadow. Structural variation required, not recoloring. Unglazed dark or shuttered windows. NO chimney shafts or pots, no glass panes, no slate roofs, no curved S/pan tiles, no fantasy ornament. Flat rectangular tile courses must be flat rather than tubes. Painterly project style, crisp large forms, no blur, no watermark.",
+      "references": [
+        "house_pair_l4_vertical-v2.png"
+      ]
+    },
+    {
+      "id": "house_pair_l4_vertical_court-v1",
+      "attempt": 2,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-1f06-76d1-aeb1-7f826986bf95/exec-0f051495-56c3-41bd-828b-818b567b8edb.png",
+      "sha256": "6c798bdcfc20aaca9ad36034f83b060f0895897023a65ec025a3ade3b92feed3",
+      "generatedAt": "2026-09-24T13:20:59.025Z",
+      "prompt": "Use case: precise-object-edit. Edit this project candidate only: REMOVE the small low connecting roof over the courtyard between the tall left residence and right stable. In its place show a clearly OPEN TO SKY compact stone-paved courtyard behind the existing short timber gate, with visible pavement and a little dark empty ground space. Keep tall residence, stable, doors, all dimensions, exact SW isometric viewpoint, colors, alpha transparency, roof tiles and ground anchor unchanged. No new props, chimney, windows or people. The two main roofs must now be separated by a visible notch/open courtyard, not joined by a covered porch. Preserve genuinely transparent background.",
+      "references": [
+        "exec-d32187bf-92ac-4d3b-a962-c8f7a76a82df.png"
+      ]
+    },
+    {
+      "id": "farm_mixed_ripe-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+      "sha256": "e0ed3d789ff0023b214bc8b3beca732c7e07b1f26160f5c76646dc2e442cd27c",
+      "generatedAt": "2026-09-24T13:16:26.256Z",
+      "prompt": "Use case: historical-scene. Create ONE transparent game sprite farm_mixed_ripe-v1, southern England 1300–1450. Input 1 wheat_farm_ripe-v4 is crop style and exact SW 2:1 isometric ground-diamond reference; input 2 pastoral pilot is grass, shed, animal and rendering style reference. Final delivery 384x192 pixels, all sides transparent margin 8px, whole 2x2 tile rhombus fully in frame. Half this single rhombus is mature golden wheat, other half olive pasture with EXACTLY TWO dairy cows, ONE modest hay mound, ONE little thatched open shed. A medieval mixed smallholding, no machinery. IMPORTANT layout to enable four state edits: divide diamond with a straight diagonal boundary from top apex to bottom apex (vertical in image); wheat occupies LEFT half of diamond, pasture with cows/hay/shed occupies RIGHT half. Keep all cow/shed/hay silhouettes wholly to right of canvas center, no overlap into wheat half. Cows large readable simplified brown-and-cream silhouettes, not sheep. Wheat rows follow isometric ground axis, irregular hand cultivated. Painterly broad forms matching supplied project images, muted greens warm earth, soft top-left daylight, minimal ground shadow. Transparent outside ground footprint, no opaque backdrop. No text, no watermark, no grid, no stone plinth or floating extruded tile, no modern objects, no chimney, no tiny noisy detailing. Same camera and footprint height as reference. This is the ripe base of an animation: crop half will change later but pastoral half must remain fixed.",
+      "references": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_pastoral_ripe-pilot.png"
+      ]
+    },
+    {
+      "id": "farm_pastoral_spring-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-edb7ee19-793b-40fc-8469-2455d457877a.png",
+      "sha256": "ab4968943560fa5b1ca2f67a3c545b69581dd29d5c9a4703b9ed848a6248ec7c",
+      "generatedAt": "2026-09-24T13:16:45.023Z",
+      "prompt": "Use case: precise-object-edit / season. Edit supplied wheat_farm_pastoral_ripe-pilot project sprite into farm_pastoral_spring-v1. ONE transparent PNG, same entire image composition, exact SW 2:1 viewpoint, ground rhombus shape and every shed/fence/hay position invariant. Final 384x192 with 8px transparent margins. Keep same medieval English 1300–1450 painterly style, same sheep species, same four mature sheep and their approximate positions, same thatched open shed at left-front, same hay mound near lower middle, same wattle enclosure footprint on right. Change to spring: slightly fresher muted grass with distinct larger clumps, add TWO small lambs inside enclosure adjacent to adults (readable baby sheep silhouettes, not merely color change). No new structures. Top-left soft sunlight, no long shadows. Preserve alpha background. No modern fencing, no text, no grid, no flowers everywhere, no watermarks. Lambs and fresh grass broad recognizable forms at zoom0.6; avoid microdetail.",
+      "references": [
+        "wheat_farm_pastoral_ripe-pilot.png"
+      ]
+    },
+    {
+      "id": "farm_pastoral_winter-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-bf4dd826-6c3d-4dd6-8791-07a161d787fe.png",
+      "sha256": "999fdcc651513d5566a08f06cc4287ecc9bf44d7a3c72059bdef66f7ec1a088c",
+      "generatedAt": "2026-09-24T13:16:52.878Z",
+      "prompt": "Use case: precise-object-edit / season. Edit supplied wheat_farm_pastoral_ripe-pilot project sprite into farm_pastoral_winter-v1. ONE genuinely transparent PNG, same exact SW 2:1 viewpoint, ground rhombus and shed/fence positions, same tiny thatched shed in left foreground and wattle enclosure on right. Final delivery384x192 all8pxalpha margins. Preserve same four adult sheep species but group ALL FOUR inside pen tightly near its sheltered far side, leaving foreground pasture empty. Dry subdued straw/olive-brown winter grass, visibly reduced hay mound almost consumed, a few loose straw chunks. NO snow blanket, no new buildings, no additional animals. This must differ in animal grouping and hay silhouette, not merely hue. Same southern England1300–1450 project painterly broad forms, warm earth, soft upper-left daylight, minimal shadows. Preserve transparent background. No modern objects, no text, no watermark, no floating stone slab. Exact same footprint and tier as supplied summer pilot.",
+      "references": [
+        "wheat_farm_pastoral_ripe-pilot.png"
+      ]
+    },
+    {
+      "id": "farm_mixed_seedling-v1",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-3db8365f-7223-4b57-a99f-974479b17e0a.png",
+      "sha256": "69be67ee5a7a99e43d26fd064f6fe7fcd9e3872358c35ca83f33b70f22c69a4c",
+      "generatedAt": "2026-09-24T13:17:25.400Z",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the LEFT crop half of input1 farm_mixed_ripe native base to make farm_mixed_seedling-v1. Input2 is project wheat seedling reference for exact crop state. Replace tall ripe golden wheat on LEFT of image center with low parallel warm brown ridges and tiny short fresh green seedlings like input2. Keep EXACT same camera, whole rhombus, canvas framing, alpha boundaries, and every pixel of RIGHT pastoral half: two cows, shed, hay mound, grass, position, size, color all unchanged. The ground dividing line goes top apex to bottom apex approximately vertical through center. Do not move, alter or recolor any pasture objects. No remaining ripe wheat. Same medieval England painterly game style, simple readable rows at 384x192 final, 8pxalpha margins. No text/watermarks/modern objects. Genuine transparent background.",
+      "references": [
+        "exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+        "wheat_farm_seedling-v3.png"
+      ]
+    },
+    {
+      "id": "farm_mixed_seedling-v1",
+      "attempt": 2,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-fd3b4065-3356-496c-b25a-ec7169c7c733.png",
+      "sha256": "5152fb5e1cb6aaedb6277de157fb13dbc05422c75cf39c1c88cbe30920c27283",
+      "generatedAt": "2026-09-24T13:25:09.656Z",
+      "prompt": "Use case: precise-object-edit. Edit input1 farm_mixed_seedling-v1 candidate to fix seedling readability ONLY in the LEFT crop half. Keep exact same 1774x887 canvas framing, ground diamond extents, two cows, thatched shed, hay mound and all RIGHT pastoral content unchanged. Existing tiny seedlings vanish when resized to384x192. Replace them with CLEARLY VISIBLE cohesive clumps of young GREEN wheat shoots along the same brown ridges: each clump about20-30px wide and15px high on this1774px original, broad few-leaf silhouettes, dull fresh green distinct against warm dark soil. Many small but bold green clusters create obvious intermittent GREEN dotted rows even at finalgamezoom0.6. Shoots must remain VERY SHORT, only1/5 height of growing wheat, NO seedheads, NO golden stalks. Brown soil still dominates; this is sprouting seedling stage not developed green wheat. Change crop plants only; do not enlarge or rotate field, do not shift any animal/building/hay. Preserve genuine transparent background, medievalEnglish painterly style and softtop-left light. No text, blur, modern items, or watermark. Output identical framing and dimensions if possible.",
+      "references": [
+        "exec-3db8365f-7223-4b57-a99f-974479b17e0a.png"
+      ]
+    },
+    {
+      "id": "farm_mixed_growing-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-8c5dd4e3-32af-436d-a40b-be45f500f509.png",
+      "sha256": "5f556b432f70d42718297cb12a76dc5e9245b46f66d5c3803851ba2291add83e",
+      "generatedAt": "2026-09-24T13:17:47.603Z",
+      "prompt": "Use case: precise-object-edit. Edit ONLY LEFT crop half of input1 farm_mixed_ripe base to create farm_mixed_growing-v1. Input2 wheat_farm_growing-v3 is crop-state reference. Replace golden ripe wheat LEFT of image center with shorter growing green wheat in separated rows with brown earth visible, sparse pale immature heads, matching input2 crop maturity and olive green. Keep exactly the whole original canvas/framing/transparent ground shape and all RIGHT pastoral half pixels: TWO cows, thatch shed, hay mound, grass stay identical in position,size,color. Do not change pasture. Boundary top-to-bottom apex approximately x50%. Same SW2:1isometric perspective, medieval England1300–1450, painterly muted palette, top-left daylight. Final384x192px eightpxalpha margins, readable broad crop shapes, no text/watermarks/modern objects. Only crop half changes.",
+      "references": [
+        "exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+        "wheat_farm_growing-v3.png"
+      ]
+    },
+    {
+      "id": "farm_mixed_worked-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-47f8-7381-8f29-f8f2a025682b/exec-801166b8-4e07-494b-b4a0-624645902ec3.png",
+      "sha256": "dba5e14a412296b6d5ac3c0d194f81ceb40c43ba6009c6d75533592e562de6c4",
+      "generatedAt": "2026-09-24T13:18:10.658Z",
+      "prompt": "Use case: precise-object-edit. Edit ONLY LEFT crop half of input1 farm_mixed_ripe base to make farm_mixed_worked-v1. Input2 wheat_farm_worked-v3 is crop state reference. REMOVE every standing wheat stalk from left half, replace with worked bare warm-brown earth and clear short parallel shallow ridges/furrows matching input2. Tiny leftover stubble permitted only barely sparse, no green growing crop. All RIGHT half pastoral pixels must stay exactly unchanged: two cows, thatched little shed, full hay mound, grass, every position/size/color. Same canvas framing ground diamond alpha silhouette SW2:1camera. Division approximately image center from top apex to bottom apex. No alterations outside crop half. Final384x192 alpha8margins, medievalEngland1300–1450 handpainted project mutedpalette top-left light. Transparent background, no text/no watermark/no modern machinery marks.",
+      "references": [
+        "exec-c1c9b916-792f-4042-8baa-601195be8079.png",
+        "wheat_farm_worked-v3.png"
+      ]
+    },
+    {
+      "id": "well_c-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-6aeb6330-19d8-46d3-afbd-5b133620a06d.png",
+      "sha256": "80df7735429b73953b5b3997530fb3df9fd00dcb99413568347abbfa7d1cd551",
+      "generatedAt": "2026-09-24T13:17:10.676Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target72x80. Low circular rough stone well rim, no roof, no tall pulley frame. Beside rim a low broad wooden platform holding two water tubs/buckets. Distinct low and wide silhouette from roofed well and pilot upright bucket post. Keep rim diameter same as reference; compact footprint.",
+      "references": [
+        "well.png",
+        "well_b-pilot.png"
+      ]
+    },
+    {
+      "id": "storehouse_b-v1",
+      "attempt": 1,
+      "selected": false,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-fd5e34cb-2dde-4be7-9437-9f1c6ed03768.png",
+      "sha256": "d15da3681c94263f4ee53d4591c34dd194f1cf2bcde3e529f3645b95764e08a2",
+      "generatedAt": "2026-09-24T13:17:59.238Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target160x136. Storehouse B: a timber storehouse on a visibly raised rough rubble-stone basement, broad loading doors on opposite visible side from reference, short timber access ramp. Same tier and footprint, roof ridge and annex rearranged distinct silhouette. Weathered oak planks with simple flat reddish peg tile roof.",
+      "references": [
+        "storehouse.png"
+      ]
+    },
+    {
+      "id": "storehouse_b-v1",
+      "attempt": 2,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-85100b0e-2bac-4463-8c24-b08ddbafebc6.png",
+      "sha256": "f2066533b3818a37c0a0ae1241c0bf0fae7c713d2489752660dd8cbd4820ae0d",
+      "generatedAt": "2026-09-24T13:18:54.039Z",
+      "prompt": "Precise object edit of attached generated warehouse. Change ONLY roof material and cargo doorway side. All roof surfaces must be FLAT RECTANGULAR clay peg tiles, thin flat rectangles overlapping like flat cards, matte muted brick brown, absolutely NO rounded barrels, NO curved channels, NO cylindrical ridges or S-shaped pantiles. Shift large loading doorway to right visible facade underneath right roof, left face planks. Preserve raised stone basement, scale, SW view, overall building silhouette, wooden ramp appropriate to loading door, transparent background. Southern England1300–1450. No text or glass or chimney.",
+      "references": [
+        "exec-fd5e34cb-2dde-4be7-9437-9f1c6ed03768.png"
+      ]
+    },
+    {
+      "id": "storehouse_c-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-0d73048f-50c5-421e-8ba2-d6e9b29cfff6.png",
+      "sha256": "57d06a499362dead21b294e9a542863333980d5b6124edde78f26c17b0290e46",
+      "generatedAt": "2026-09-24T13:20:01.115Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target160x136. Storehouse C: a low long barn warehouse, lower roof ridge and elongated single gable roof, large broad wooden cargo doors, a small simple two-wheeled wooden handcart at its side. Same total footprint and tier as reference, no larger building. Flat reddish peg tile roof. Clear low long silhouette, cart clearly readable. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+      "references": [
+        "storehouse.png"
+      ]
+    },
+    {
+      "id": "windmill-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-4edecec4-5c94-4825-a4ac-b7ebfba29d72.png",
+      "sha256": "e5915db9f9a7a07b89f953dc1254f6bc43038206faf12364c2989233d5de5ccb",
+      "generatedAt": "2026-09-24T13:21:12.597Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target142x142. Post mill: replace reference building with a compact genuine medieval English timber POST MILL. Boxlike timber mill body supported above ground on a single massive central wooden post and open crossed timber trestle, short access ladder, FOUR broad wooden lattice sails attached to front hub. Distinct narrow elevated body silhouette. NOT a stone tower mill, NOT a watermill, no waterwheel. Same footprint, height envelope, viewpoint and visual wealth as supplied mill. Flat peg tiled small saddle roof, exposed support clearly visible. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+      "references": [
+        "mill-v2.png"
+      ]
+    },
+    {
+      "id": "market_active_c-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-919462e3-5a9d-4e3e-8804-48273f80236b.png",
+      "sha256": "63c04bee70aa4264e0085cb2585ba4dc90f67427f1f082515f640b8039574237",
+      "generatedAt": "2026-09-24T13:22:19.608Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target224x224. Market C: compact livestock market arrangement different from both references, a small low wattle sheep pen with two sheep and two geese, one simple canvas-covered grain stall with large grain sacks and wooden balance scales. Keep same marketplace footprint/tier, irregular triangular arrangement; animal pen and sacks strongly readable, muted off-white canvas. No people or lettering.",
+      "references": [
+        "market_active-v2.png",
+        "market_active_b-pilot.png"
+      ]
+    },
+    {
+      "id": "market_quiet_b-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-e6fd75de-771d-43c5-bab4-e927ccc0c175.png",
+      "sha256": "26c25fd67a82d13a99e164e349398d4b3f81321c2f97c668f318dbbbb18597fe",
+      "generatedAt": "2026-09-24T13:23:18.955Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nPRECISE EDIT. Image1 is the edit target, the approved two-stall activeB pilot. Image2 is only quiet-market material reference. Final target224x224. Keep EXACTLY image1 two-stall L layout, all wood posts, counters, ground footprint, lower corners, perspective, colors and framing. Change only market operating state: roll/fold the two fabric awnings tightly along their own existing roof rails and remove displayed wares so counters are bare, keep a few shut baskets beneath. Do NOT add a third stall; do NOT relocate, resize or redesign either booth. Genuine transparent background retained.",
+      "references": [
+        "market_active_b-pilot.png",
+        "market_quiet-v2.png"
+      ]
+    },
+    {
+      "id": "chapel_b-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-26620767-2dd4-4dcb-8fd0-ab7958768f10.png",
+      "sha256": "3f191d19c39b20f8fc6e7341456114240cc328b7406b62e8b42207735b5360d8",
+      "generatedAt": "2026-09-24T13:24:21.492Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target133x133. Chapel B same small parish chapel body tier/footprint. Replace reference masonry bell tower with a modest OPEN timber bell hanger holding one small bronze bell above gable, no enclosed belfry. Add a small oak timber entrance porch with low pitched flat peg tile roof. Limewashed rubble stone chapel walls, tall narrow unglazed dark slit windows. Distinct timber porch and open hanger silhouette, not a large church. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+      "references": [
+        "chapel-v2.png"
+      ]
+    },
+    {
+      "id": "chapel_stone-v1",
+      "attempt": 1,
+      "selected": true,
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d38e-75d7-7481-b472-9fb0e929ae62/exec-2240ea49-3609-4230-a7ae-8c8426aa7df9.png",
+      "sha256": "9e7b36ffcc9a8d7092bcdd22c58f383e6affceed1300a0d1f6981bb9f74e2ce4",
+      "generatedAt": "2026-09-24T13:25:23.102Z",
+      "prompt": "Use case: historical-scene. Create one isolated production game sprite, genuine transparent RGBA background, no background board or ground diamond. Southern England market town 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match the attached project sprite's hand-painted muted warm earth palette, SW isometric 2:1 projection, top-left soft sunlight, restrained short contact shadow. Large simple forms readable at half-size and zoom0.6. Same footprint, same wealth scale as reference. No text, watermark, people, glass, chimney shafts/pots, slate, S-shaped tiles; any tiles are flat rectangular peg tiles with straight overlapping rows. Keep all content fully visible with transparent margin equivalent to8pixels final canvas. No recolor-only variant.\nFinal target133x133. Chapel stone variant same small parish chapel tier and footprint. Exposed irregular warm grey rubble stone walls with chunky buttresses, very narrow dark unglazed slit windows, broad plain round-arched doorway. Lower simple gable and squat open stone bellcote, distinctly heavier low outline than reference, no large tower. Flat muted terracotta peg tile roof. No glass, no leaded windows. Material variant also changes roofline and buttress silhouette. Roof tiles MUST be visibly FLAT MATTE rectangles like thin cards, no rounded/cylindrical tiles anywhere. Avoid orange saturation.",
+      "references": [
+        "chapel-v2.png"
+      ]
+    }
+  ],
+  "csv": {
+    "columns": 20,
+    "rows": 39,
+    "priorHeaderMatch": true,
+    "fullTextRoundtrip": true
+  },
+  "noGameInstallation": true,
+  "rawSourcesPackaged": false
+}

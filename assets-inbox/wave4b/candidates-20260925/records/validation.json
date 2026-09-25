@@ -1,0 +1,1186 @@
+{
+  "status": "pass",
+  "assets": 53,
+  "newAssets": 43,
+  "promotions": 10,
+  "pngCount": 57,
+  "repeatAssets": 32,
+  "hurdleSocketVector": [
+    64,
+    -32
+  ],
+  "hurdlePortAlphaMaxDiff": 0,
+  "bridgeDeck": {
+    "samples": 8280,
+    "alphaBelow250": 0
+  },
+  "results": [
+    {
+      "id": "road/earth_strip_a-v3",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        146.0509588068182,
+        121.1537198153409,
+        89.84565873579545
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "6b7317a918e77dfe895ae9d6efd885f6e07a55c1442bfb2a6fd9563210f38a68"
+    },
+    {
+      "id": "road/earth_strip_b-v3",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        146.07865767045453,
+        121.47691761363636,
+        89.38054865056819
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "510cf2ee815a79ab65d46b8f166dd638d28ed76a8b071fbc147cd3a0a217fbfb"
+    },
+    {
+      "id": "road/earth_strip_c-v3",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        145.22465376420453,
+        120.22629616477273,
+        89.38276811079545
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "955af2b7c4dc8cd8495b17fea50e52763b38cec495acd73b19af461bd7d17637"
+    },
+    {
+      "id": "road/earth_strip_d-v3",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        144.72243430397728,
+        119.97634055397727,
+        88.34792258522727
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "8a5cd614acaeb79ab5afc8435a85a3a8d6e187ce9d94a387545362df0005a37a"
+    },
+    {
+      "id": "shore/shoreline_a-v1",
+      "promoted": true,
+      "size": [
+        512,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        100.38237561677632,
+        116.09164268092105,
+        99.31617495888158
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "037a4bd5162c997f1566f28abd47be973a7c72de17fbcbafd849c73f913dfc95"
+    },
+    {
+      "id": "shore/shoreline_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        103.71635999177632,
+        119.71962376644737,
+        103.1484375
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "e641bdf408b395d83adf641598a1990017a560a670715cc42121d7e3778ea593"
+    },
+    {
+      "id": "shore/shoreline_c-v1",
+      "promoted": false,
+      "size": [
+        512,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        100.05954461348684,
+        115.92811986019737,
+        99.65339740953948
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "ffe64a527db2abaad570ed457e1b5d55c6e4cf900aab2b8ff1c811b16fde6a83"
+    },
+    {
+      "id": "shore/shoreline_d-v1",
+      "promoted": false,
+      "size": [
+        512,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        100.16971628289474,
+        116.31149773848684,
+        99.81828227796052
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "42539fe74d150fbb629fd8837fbff56c62e182912e900578a59b9d1c9b7863da"
+    },
+    {
+      "id": "water/shallow_a-v1",
+      "promoted": true,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        97.00747680664062,
+        135.02487182617188,
+        143.02053833007812
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "fa56a7e84f8464ae4afe094ff3ebe2ef792ee18d86b4cc044d36bc7cdccdfac0"
+    },
+    {
+      "id": "water/shallow_b-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        96.62838745117188,
+        134.96005249023438,
+        142.82138061523438
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "f1a71e30db8842734f38f1e60698a7b2a34a770a1e4fad66b1593a7a0d7dd361"
+    },
+    {
+      "id": "water/shallow_c-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        96.6031494140625,
+        134.71762084960938,
+        143.40078735351562
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "f59e6c5ec38aab77f13d6b8be70eb22a26fd3566654f1979eee4ccebcacf2c66"
+    },
+    {
+      "id": "ground/pasture_a-v1",
+      "promoted": true,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        142.99453735351562,
+        146.00320434570312,
+        87.986572265625
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "47b3318828ef91e8d73b95fcaf12eb08aaaa687263d053a8e93773db5d8e4090"
+    },
+    {
+      "id": "ground/pasture_b-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        143.18798828125,
+        145.616455078125,
+        87.66583251953125
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "c53bd1c6194ad47ee7c2131f18d3366d8cc1283da6cd9e1cd84c96fee2fdc259"
+    },
+    {
+      "id": "ground/pasture_c-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        142.53140258789062,
+        145.90386962890625,
+        88.22528076171875
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "79f0e614e753605b3ef13dace1e731e51f1bf6f43fa438174131dffe2745ae44"
+    },
+    {
+      "id": "prop/haycock_a-v1",
+      "promoted": true,
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        184.62125387530142,
+        144.38718566999657,
+        76.78212194281778
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 707,
+      "sha256": "7531a8817a6b042c8cd5152ddbf0062b0e86f569d13346017a2da93d64ab564a"
+    },
+    {
+      "id": "prop/haycock_b-v1",
+      "promoted": true,
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        202.086716937355,
+        161.9509860788863,
+        84.92111368909512
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 644,
+      "sha256": "42bf67528aad5e618205b25b9ea932b04031419444d4955d1ee6973508424cae"
+    },
+    {
+      "id": "prop/haycock_c-v1",
+      "promoted": false,
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        184.3246834129126,
+        144.7876271538302,
+        76.43906996055637
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 592,
+      "hiddenRGBPixels": 592,
+      "sha256": "654df17eafe4380f8abb918f37a4a349b9b48954b9a95926710b6ae363dfe27c"
+    },
+    {
+      "id": "prop/haycock_d-v1",
+      "promoted": false,
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        184.79833777638387,
+        144.76854320213266,
+        77.08279755370864
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 639,
+      "hiddenRGBPixels": 639,
+      "sha256": "548035be3000ea8703a8665ea255b3c47a389f5a94ae67385d0093562aee512a"
+    },
+    {
+      "id": "prop/haycock_e-v1",
+      "promoted": false,
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        184.3549272577546,
+        144.06807576173483,
+        76.80071369750206
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 574,
+      "hiddenRGBPixels": 574,
+      "sha256": "846b2859bb37ed5c9f8d31e26c5d9043aeec697e44000d7ce22d9e1cd2c93e70"
+    },
+    {
+      "id": "prop/haycock_f-v1",
+      "promoted": false,
+      "size": [
+        128,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        184.9102030829459,
+        144.87912894543675,
+        76.65524834842182
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 554,
+      "hiddenRGBPixels": 554,
+      "sha256": "47ba04b1e863c580c85497f714292215344021be1aeb86a4502df76f2afac275"
+    },
+    {
+      "id": "ground/orchard_floor_a-v1",
+      "promoted": true,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        127.02377319335938,
+        127.93621826171875,
+        80.93612670898438
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "36430f5a5c8022a86286f8ce885ec79ef32d62857f2c3dddf41b0f69447abee9"
+    },
+    {
+      "id": "ground/orchard_floor_b-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        127.04608154296875,
+        127.71478271484375,
+        81.239013671875
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "731edf7e2d0a0b5662aa2cf5127fc5f2a591a391c47a5aa3e6d164e45a9a5b2d"
+    },
+    {
+      "id": "tree/orchard_apple_c-v1",
+      "promoted": true,
+      "size": [
+        256,
+        256
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        119.95231607629428,
+        122.09247275204359,
+        67.99169788828338
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 2132,
+      "sha256": "3806c241d195a6e8ab2d071e6883218909e0489993c4651d61eb91f79704a060"
+    },
+    {
+      "id": "tree/orchard_apple_d-v1",
+      "promoted": false,
+      "size": [
+        256,
+        256
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        119.90461082910322,
+        121.6093062605753,
+        68.31421319796954
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1842,
+      "hiddenRGBPixels": 1842,
+      "sha256": "df34a39a913b43c12a621a047af0bbda9568da88e94d54daea99fb313f21741f"
+    },
+    {
+      "id": "tree/orchard_pear_e-v1",
+      "promoted": false,
+      "size": [
+        256,
+        256
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        120.15767511177347,
+        122.50486835568803,
+        67.96477893691008
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1652,
+      "hiddenRGBPixels": 1652,
+      "sha256": "ca45bfa3299dc8978918163a41692767af2677d0e907cfb2acb4c2f89eb9cf61"
+    },
+    {
+      "id": "tree/orchard_plum_f-v1",
+      "promoted": false,
+      "size": [
+        256,
+        256
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        119.49280767181673,
+        121.78083983145251,
+        68.17067854894174
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1691,
+      "hiddenRGBPixels": 1691,
+      "sha256": "ee2bbfda13aed5613a9cd6499b441f728b710c25e7beaaf597a32acb0d154580"
+    },
+    {
+      "id": "wall/palisade_face_a-v1",
+      "promoted": true,
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        138.4877092495994,
+        107.85320991442501,
+        78.84015205755003
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 2305,
+      "sha256": "9027515c4cec326285ed228fe6ec729d7f09682efb5107e2352422a6f19c3acc"
+    },
+    {
+      "id": "wall/palisade_face_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        138.60325253145137,
+        108.18584432852613,
+        78.63366404145785
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 2303,
+      "hiddenRGBPixels": 2299,
+      "sha256": "f55bfa5869513365531bf6ec52eff22195a59ee2117855fde5cc96f2bb365f91"
+    },
+    {
+      "id": "wall/palisade_face_c-v1",
+      "promoted": false,
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        138.46641778323277,
+        107.98675462820906,
+        79.18195765572261
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 2303,
+      "hiddenRGBPixels": 2299,
+      "sha256": "dc907dfed94eb9690b472ca7f10b5f8dfe307a637672d336994092a7243cac48"
+    },
+    {
+      "id": "wall/stone_face_a-v1",
+      "promoted": true,
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        164.50196318815128,
+        148.4013850002485,
+        127.86784513179039
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 1061,
+      "sha256": "b5695e475cf7bf97d882c67afe58a0fae8c4af9ac975a81adbfad21d9257a01f"
+    },
+    {
+      "id": "wall/stone_face_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        164.07142028793427,
+        148.64447242424745,
+        127.46397508324912
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1061,
+      "hiddenRGBPixels": 1061,
+      "sha256": "1ffd7053b7d3cbd727bff98a1ecd6393153bc245978f9bc98053a2c68c043460"
+    },
+    {
+      "id": "wall/stone_face_c-v1",
+      "promoted": false,
+      "size": [
+        512,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 255,
+      "minAlpha": 0,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": 0,
+      "meanOpaqueRGB": [
+        164.4767979324398,
+        148.72695946057885,
+        127.41669289773198
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1061,
+      "hiddenRGBPixels": 1061,
+      "sha256": "da921b0b0166c336d0fcbc7309d8d48da1d3e7e9c70a2c92771257522c815421"
+    },
+    {
+      "id": "module/bridge_abutment_ne_a-v1",
+      "promoted": true,
+      "size": [
+        256,
+        192
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        137.5429274292743,
+        112.14005740057401,
+        79.82804428044281
+      ],
+      "rgbBleedRadius": "inherited",
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 1656,
+      "sha256": "67b573610e69ce06acbea4936069ed2899c88a3d2992c7ddb7bf4709d8f2e1cf"
+    },
+    {
+      "id": "module/bridge_abutment_nw_a-v1",
+      "promoted": false,
+      "size": [
+        256,
+        192
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        149.5543647095371,
+        118.62674743709226,
+        81.79450139794967
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1738,
+      "hiddenRGBPixels": 1738,
+      "sha256": "83f62144ea59c03645385ddd7dcbceb017d2c3d25d510778fff7744e752e32c1"
+    },
+    {
+      "id": "field/soil_a-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        115.68157958984375,
+        80.67776489257812,
+        52.3209228515625
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "a6e420c49ba630010f065cbca9c2d3d365b2c18ff9dd698a074d73ed4582e1f6"
+    },
+    {
+      "id": "field/soil_b-v1",
+      "promoted": false,
+      "size": [
+        256,
+        128
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 255,
+      "bottomMinAlpha": 255,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        120.41366577148438,
+        82.24429321289062,
+        53.963897705078125
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "hiddenRGBPixels": 0,
+      "sha256": "aaa8b1e39b0cc3f959ac0d484207e782c89d577364faef0de693901256c1c674"
+    },
+    {
+      "id": "field/ridge_ploughed_a-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 120,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        102.1486328125,
+        71.1548828125,
+        43.5378125
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1016,
+      "hiddenRGBPixels": 1016,
+      "sha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829"
+    },
+    {
+      "id": "field/ridge_ploughed_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 122,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        102.122109375,
+        72.134453125,
+        46.2443359375
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1248,
+      "hiddenRGBPixels": 1248,
+      "sha256": "80eda18980bfc507dc30568f938ef7cb53f4c7c8d1c5097a659de1bc7168f257"
+    },
+    {
+      "id": "field/ridge_seedling_a-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 120,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        109.5462890625,
+        78.8060546875,
+        43.7791015625
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1001,
+      "hiddenRGBPixels": 1001,
+      "sha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e"
+    },
+    {
+      "id": "field/ridge_seedling_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 14,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        113.130078125,
+        81.0058203125,
+        46.2082421875
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1024,
+      "hiddenRGBPixels": 1024,
+      "sha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf"
+    },
+    {
+      "id": "field/ridge_growing_a-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 125,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        132.9725,
+        92.66921875,
+        50.30890625
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 860,
+      "hiddenRGBPixels": 860,
+      "sha256": "ca54c4a88b343357a7440045e0169fab406c6a2a30595eda582c4cf955578231"
+    },
+    {
+      "id": "field/ridge_growing_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 18,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        134.8621875,
+        92.651171875,
+        50.78109375
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1024,
+      "hiddenRGBPixels": 1024,
+      "sha256": "93c26c343aacbe564402cc22164fc20a6dd5c54d4739179672c2c385b5265a42"
+    },
+    {
+      "id": "field/ridge_fallow_a-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 109,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        107.77015625,
+        81.999140625,
+        51.229375
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 912,
+      "hiddenRGBPixels": 912,
+      "sha256": "5e78645f7af2a3c5a38688a9f32d2db1867204956d969f449722e49bb5336fc1"
+    },
+    {
+      "id": "field/ridge_fallow_b-v1",
+      "promoted": false,
+      "size": [
+        512,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 13,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        107.6411328125,
+        81.6244921875,
+        50.846171875
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1024,
+      "hiddenRGBPixels": 1024,
+      "sha256": "f4cf8b312f17399a797191172a21ee5370091d9c5861894e0312f3ad8af6bbeb"
+    },
+    {
+      "id": "field/furrow_stamp_a-v1",
+      "promoted": false,
+      "size": [
+        128,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        97.29721362229103,
+        63.73684210526316,
+        40.65696594427244
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 530,
+      "hiddenRGBPixels": 530,
+      "sha256": "9fc8a1234e4cdda9f48c5b7ac538ab039213d632d8db9ab62d455a055c4b664c"
+    },
+    {
+      "id": "field/furrow_stamp_b-v1",
+      "promoted": false,
+      "size": [
+        128,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        102.84948002189381,
+        66.94581280788178,
+        41.81226053639847
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 500,
+      "hiddenRGBPixels": 500,
+      "sha256": "cbd3d115c0f4b1d864124ab001a22320f6a283d020fec2b7ee86849bc03745d7"
+    },
+    {
+      "id": "field/furrow_stamp_c-v1",
+      "promoted": false,
+      "size": [
+        128,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        98.81761786600497,
+        64.26054590570719,
+        38.80583126550869
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 552,
+      "hiddenRGBPixels": 552,
+      "sha256": "b1bbd786794c1952b5be6471eaf031cd2484612ac5eebe35186faf0e01b626e7"
+    },
+    {
+      "id": "field/furrow_stamp_d-v1",
+      "promoted": false,
+      "size": [
+        128,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        95.91950646298473,
+        63.9406580493537,
+        38.53936545240893
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 529,
+      "hiddenRGBPixels": 529,
+      "sha256": "35e2b86dc70b00270cef3c51ffac656deff86db1fc2dc548ff9fda32e5d3a115"
+    },
+    {
+      "id": "garden/croft_bed_a-v1",
+      "promoted": false,
+      "size": [
+        128,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        113.49135514018691,
+        87.1357476635514,
+        46.01985981308411
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 712,
+      "hiddenRGBPixels": 712,
+      "sha256": "75e56d9e4440c2799ae805b47308eda9a8b279727aa9f168b0689b98252cf843"
+    },
+    {
+      "id": "garden/croft_bed_b-v1",
+      "promoted": false,
+      "size": [
+        128,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        120.90278884462151,
+        97.04362549800797,
+        48.60816733067729
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 719,
+      "hiddenRGBPixels": 719,
+      "sha256": "8151e5c22fdaf1112b6805385e83d0992afd4ca31a0c47062cbee7205ea3c55f"
+    },
+    {
+      "id": "garden/croft_bed_c-v1",
+      "promoted": false,
+      "size": [
+        128,
+        96
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        120.86230876216968,
+        92.28604543347241,
+        48.743625405656005
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 707,
+      "hiddenRGBPixels": 707,
+      "sha256": "a7388b68560e5e469408a67fac516962cad9be35de9692e0fbbd0a4067693a61"
+    },
+    {
+      "id": "fence/hurdle_straight-v1",
+      "promoted": false,
+      "size": [
+        128,
+        64
+      ],
+      "xEdgeMaxRGBA": 0,
+      "yEdgeMaxRGBA": 224,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        155.93900804289544,
+        119.77949061662198,
+        70.328418230563
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 626,
+      "hiddenRGBPixels": 626,
+      "sha256": "163add14852b5b069c5e938d161e2ccbdb859c8bb8167a073d7d662eee151634"
+    },
+    {
+      "id": "fence/hurdle_end_corner-v1",
+      "promoted": false,
+      "size": [
+        128,
+        96
+      ],
+      "xEdgeMaxRGBA": 94,
+      "yEdgeMaxRGBA": 0,
+      "minAlpha": 0,
+      "bottomMinAlpha": 0,
+      "alphaReferenceMaxDiff": null,
+      "meanOpaqueRGB": [
+        150.72483766233765,
+        111.01907467532467,
+        60.57183441558441
+      ],
+      "rgbBleedRadius": 3,
+      "bleedPixels": 808,
+      "hiddenRGBPixels": 808,
+      "sha256": "089ac5f4e2b9d7c808af72068ebecbfbdce81d0b62b2ef917c8677f99f3296cb"
+    }
+  ],
+  "limits": "Pixel topology and offline image checks only. No game installation or runtime pathfinding, DPR or performance verification."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "construction/roof_frame_thatch-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-5052-7362-af04-c5838897ea7a/exec-99a4a12c-a1fd-4f23-a4ab-821a592c7b32.png",
+    "prompt": "Use case: precise-object-edit. Edit target: attached construction_roof_frame-v1.png only. Create the thatch variant of this same medieval English roof construction stage, 1300–1450. Keep the exact 2:1 isometric view, rectangular roof footprint, silhouette extent, principal timber trusses, ridge axis, camera and placement. Existing rafters currently read as a tile roof framework. Change it to an unfinished thatching framework: add widely spaced broad hazel battens lashed across rafters and cover only the bottom quarter of each roof slope with two or three chunky laid courses of dull golden straw bundles; the ridge and upper framework must remain open and visibly under construction. This is not a completed roof or a whole building. Straw must read in broad simple clumps, no individual noisy hairs. Match reference brown wood, olive-gold straw and soft upper-left painterly lighting. Transparent RGBA background, no baked checkerboard, no ground patch, no people, no labels. Output composition exactly 512×256, artwork in the same location as the reference with transparent breathing room; no perspective change.",
+    "references": [
+      "construction_roof_frame-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:47:20.735Z",
+    "finalPath": "construction/roof_frame_thatch-v1.png",
+    "manualEdits": "Native repaint bbox registered to approved roof reference alpha bbox(51,14)-(460,237), one Canvas downscale to512×256; transparent edge cleanup and hiddenRGB bleed2px. Same canvas/pivot coordinate contract; no runtime install."
+  },
+  {
+    "id": "construction/well_stages-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-5052-7362-af04-c5838897ea7a/exec-5bc98022-1940-464a-b388-73975e8da984.png",
+    "prompt": "Use case: precise-object-edit. Input image well.png is the approved completed medieval English game well, 72×80 pixels, isometric 2:1, warm rubble stone ring, two oak uprights and tile roof. Produce ONE transparent sprite SHEET with THREE equal cells in a single horizontal row, representing construction stages of this exact same well. Each logical cell72×80, total216×80. All three wells have identical centre and ground footprint and ground point at local(36,64); leave blank transparent space above early stages. Cell1: dark shallow oval excavation hole with warm brown freshly dug earth lip, no masonry or timber. Cell2: incomplete low circular rubble stone ring, about three courses high, visibly empty dark opening and partly unfinished top; no timber supports yet. Cell3: completed same stone ring, two timber uprights and bare open triangular oak roof rafters in exact same roof orientation as reference, NO tiles, NO thatch, clearly roof frame construction stage. Progress pit->stone->open roof frame. Keep stone colour, wood, ground ellipse and scale consistent with the approved reference. At final tiny display scale, use broad low-detail brushwork and a clearly dark opening; no micro-noise. Transparent RGBA background, no checkerboard, no ground square, no text/numbers, no border, no labels, no people, no extra bucket outside footprint. Separate all3cells with clear transparent margins. Soft upper-left light, only tight contact AO.",
+    "references": [
+      "well.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:47:20.735Z",
+    "finalPath": "construction/well_stages-v1.png",
+    "manualEdits": "Native sheet split into3cells, each uniformly resized once by ground/base width to36px; ground bases centeredx38 and bottomy64 matching approved well footprint; sheet216×80, cells72×80, pivot(36,64). Source crop/scale recorded metrics; transparent alpha cleanup and hiddenRGB bleed2px."
+  }
+]

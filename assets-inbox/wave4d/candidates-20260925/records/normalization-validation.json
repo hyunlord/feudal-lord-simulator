@@ -1,0 +1,332 @@
+[
+  {
+    "id": "wall/stone_face_a-v2",
+    "size": [
+      512,
+      128
+    ],
+    "bleedPixels": 1175,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 255,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/stone_face_b-v2",
+    "size": [
+      512,
+      128
+    ],
+    "bleedPixels": 970,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 255,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/stone_face_c-v2",
+    "size": [
+      512,
+      128
+    ],
+    "bleedPixels": 952,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 255,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/stone_top_a-v1",
+    "size": [
+      512,
+      48
+    ],
+    "bleedPixels": 0,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 113,
+    "minAlpha": 186,
+    "maxAlpha": 253,
+    "bottomMin": 188,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/stone_top_b-v1",
+    "size": [
+      512,
+      48
+    ],
+    "bleedPixels": 0,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 116,
+    "minAlpha": 181,
+    "maxAlpha": 254,
+    "bottomMin": 190,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/stone_face_diag_top-v1",
+    "size": [
+      512,
+      64
+    ],
+    "bleedPixels": 3168,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 128,
+    "minAlpha": 0,
+    "maxAlpha": 254,
+    "bottomMin": 0,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/stone_tower_corner-v1",
+    "size": [
+      1774,
+      887
+    ],
+    "bleedPixels": 6097,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 0,
+    "repeat": "none"
+  },
+  {
+    "id": "wall/palisade_face_a-v2",
+    "size": [
+      512,
+      128
+    ],
+    "bleedPixels": 1744,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 255,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/palisade_face_b-v2",
+    "size": [
+      512,
+      128
+    ],
+    "bleedPixels": 1724,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 255,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/palisade_top-v1",
+    "size": [
+      512,
+      48
+    ],
+    "bleedPixels": 2945,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 0,
+    "repeat": "X"
+  },
+  {
+    "id": "wall/palisade_face_diag_top-v1",
+    "size": [
+      512,
+      64
+    ],
+    "bleedPixels": 2804,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 0,
+    "repeat": "X"
+  },
+  {
+    "id": "water/deep_a-v1",
+    "size": [
+      256,
+      128
+    ],
+    "bleedPixels": 0,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 255,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "XY"
+  },
+  {
+    "id": "water/deep_b-v1",
+    "size": [
+      256,
+      128
+    ],
+    "bleedPixels": 0,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 255,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "XY"
+  },
+  {
+    "id": "water/deep_c-v1",
+    "size": [
+      256,
+      128
+    ],
+    "bleedPixels": 0,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 255,
+    "maxAlpha": 255,
+    "bottomMin": 255,
+    "repeat": "XY"
+  },
+  {
+    "id": "shore/shoreline_e-v1",
+    "size": [
+      512,
+      96
+    ],
+    "bleedPixels": 1024,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "X"
+  },
+  {
+    "id": "shore/shoreline_f-v1",
+    "size": [
+      512,
+      96
+    ],
+    "bleedPixels": 991,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 97,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "X"
+  },
+  {
+    "id": "shore/reeds_a-v1",
+    "size": [
+      96,
+      96
+    ],
+    "bleedPixels": 1133,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "none"
+  },
+  {
+    "id": "shore/reeds_b-v1",
+    "size": [
+      96,
+      96
+    ],
+    "bleedPixels": 781,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "none"
+  },
+  {
+    "id": "shore/reeds_c-v1",
+    "size": [
+      96,
+      96
+    ],
+    "bleedPixels": 748,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "none"
+  },
+  {
+    "id": "shore/mudstone_a-v1",
+    "size": [
+      64,
+      48
+    ],
+    "bleedPixels": 311,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "none"
+  },
+  {
+    "id": "shore/mudstone_b-v1",
+    "size": [
+      64,
+      48
+    ],
+    "bleedPixels": 308,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 253,
+    "bottomMin": 0,
+    "repeat": "none"
+  },
+  {
+    "id": "module/bridge_abutment_se_a-v1",
+    "size": [
+      256,
+      192
+    ],
+    "bleedPixels": 1588,
+    "rgbBleedRadius": 3,
+    "xEdgeMaxDiff": 0,
+    "yEdgeMaxDiff": 0,
+    "minAlpha": 0,
+    "maxAlpha": 255,
+    "bottomMin": 0,
+    "repeat": "none"
+  }
+]

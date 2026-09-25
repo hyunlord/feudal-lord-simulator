@@ -1,0 +1,362 @@
+{
+  "id": "wk_artisan_m_01-v1",
+  "status": "candidate",
+  "template": "templates/actor_civilian_man-v1.png",
+  "design": "muted olive green knee tunic, low round grey felt cap, tan leather working apron",
+  "files": {
+    "master": "masters/wk_artisan_m_01-v1.png",
+    "final": "assets/workers/wk_artisan_m_01-v1.png",
+    "raw": "sources/wk_artisan_m_01-v1-raw.png"
+  },
+  "generationRecords": [
+    "records/wk_artisan_m_01-v1-generation.json"
+  ],
+  "processing": {
+    "method": "AI edit of approved input sheet; each edited cell bbox registered to template bbox; original lower legs/shoes and selected face/hand pixels restored; 50% final resize",
+    "rawSize": [
+      1774,
+      887
+    ],
+    "masterSize": [
+      592,
+      296
+    ],
+    "finalSize": [
+      296,
+      148
+    ],
+    "frames": [
+      {
+        "direction": "NE",
+        "frame": 0,
+        "templateBounds": {
+          "x": 62,
+          "y": 5,
+          "w": 60,
+          "h": 130
+        },
+        "rawNormalizedBounds": {
+          "x": 60,
+          "y": 3,
+          "w": 68,
+          "h": 136
+        },
+        "registration": {
+          "source": [
+            60,
+            3,
+            68,
+            136
+          ],
+          "destination": [
+            62,
+            5,
+            60,
+            130
+          ]
+        },
+        "protectedPixels": 7408,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.5644774272210896,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SE",
+        "frame": 0,
+        "templateBounds": {
+          "x": 43,
+          "y": 6,
+          "w": 58,
+          "h": 131
+        },
+        "rawNormalizedBounds": {
+          "x": 44,
+          "y": 3,
+          "w": 64,
+          "h": 137
+        },
+        "registration": {
+          "source": [
+            192,
+            3,
+            64,
+            137
+          ],
+          "destination": [
+            43,
+            6,
+            58,
+            131
+          ]
+        },
+        "protectedPixels": 7606,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.23841705523154613,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SW",
+        "frame": 0,
+        "templateBounds": {
+          "x": 46,
+          "y": 6,
+          "w": 57,
+          "h": 130
+        },
+        "rawNormalizedBounds": {
+          "x": 52,
+          "y": 3,
+          "w": 62,
+          "h": 137
+        },
+        "registration": {
+          "source": [
+            348,
+            3,
+            62,
+            137
+          ],
+          "destination": [
+            46,
+            6,
+            57,
+            130
+          ]
+        },
+        "protectedPixels": 7541,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.24955517175688446,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "NW",
+        "frame": 0,
+        "templateBounds": {
+          "x": 25,
+          "y": 5,
+          "w": 61,
+          "h": 131
+        },
+        "rawNormalizedBounds": {
+          "x": 33,
+          "y": 3,
+          "w": 66,
+          "h": 137
+        },
+        "registration": {
+          "source": [
+            477,
+            3,
+            66,
+            137
+          ],
+          "destination": [
+            25,
+            5,
+            61,
+            131
+          ]
+        },
+        "protectedPixels": 7470,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.3992788242370573,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "NE",
+        "frame": 1,
+        "templateBounds": {
+          "x": 62,
+          "y": 4,
+          "w": 62,
+          "h": 131
+        },
+        "rawNormalizedBounds": {
+          "x": 60,
+          "y": 4,
+          "w": 69,
+          "h": 136
+        },
+        "registration": {
+          "source": [
+            60,
+            152,
+            69,
+            136
+          ],
+          "destination": [
+            62,
+            4,
+            62,
+            131
+          ]
+        },
+        "protectedPixels": 7378,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.6423804407351964,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SE",
+        "frame": 1,
+        "templateBounds": {
+          "x": 45,
+          "y": 3,
+          "w": 61,
+          "h": 133
+        },
+        "rawNormalizedBounds": {
+          "x": 45,
+          "y": 4,
+          "w": 66,
+          "h": 137
+        },
+        "registration": {
+          "source": [
+            193,
+            152,
+            66,
+            137
+          ],
+          "destination": [
+            45,
+            3,
+            61,
+            133
+          ]
+        },
+        "protectedPixels": 7590,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.5453840684228991,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SW",
+        "frame": 1,
+        "templateBounds": {
+          "x": 42,
+          "y": 5,
+          "w": 62,
+          "h": 130
+        },
+        "rawNormalizedBounds": {
+          "x": 49,
+          "y": 4,
+          "w": 67,
+          "h": 137
+        },
+        "registration": {
+          "source": [
+            345,
+            152,
+            67,
+            137
+          ],
+          "destination": [
+            42,
+            5,
+            62,
+            130
+          ]
+        },
+        "protectedPixels": 7597,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.5396740408960441,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "NW",
+        "frame": 1,
+        "templateBounds": {
+          "x": 24,
+          "y": 5,
+          "w": 62,
+          "h": 129
+        },
+        "rawNormalizedBounds": {
+          "x": 31,
+          "y": 4,
+          "w": 68,
+          "h": 136
+        },
+        "registration": {
+          "source": [
+            475,
+            152,
+            68,
+            136
+          ],
+          "destination": [
+            24,
+            5,
+            62,
+            129
+          ]
+        },
+        "protectedPixels": 7387,
+        "protectedRegions": {
+          "footY": 99,
+          "femaleSupportAlpha": null,
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.26289907414355634,
+        "footProtectedDifferencePx": 0
+      }
+    ]
+  },
+  "qa": {
+    "headMetric": "Alpha-weighted centroid within top34 master pixel rows; silhouette proxy, not anatomical landmark truth",
+    "maxHeadProxyDeltaFinalPx": 0.6423804407351964,
+    "footDifferencePx": 0,
+    "anatomicalHead": "Template selected face pixels preserved; backside head center not independently inferred",
+    "limitations": [
+      "Raw model output not pixel precise; final registration and protected compositing enforce lower-leg/foot constraints.",
+      "Head centroid is silhouette proxy. Clothing alpha/arm contour can differ from template outside protected selected hands.",
+      "Per-cell visual review required."
+    ],
+    "visualReview": {
+      "reviewer": "producing agent",
+      "viewed": "all ten master sheets (592x296), all eight cells visible",
+      "directions": "NE/SE/SW/NW body orientation retained; wardrobe consistent across eight cells",
+      "colorRule": "muted woad, madder, weld and natural wool; no bright scarlet/uniform purple/deep black",
+      "noProps": true,
+      "protectedPixels": "Original selected anatomical face/hand and lower-leg/shoe pixels are retained; this is controlled compositing, not raw model accuracy."
+    }
+  }
+}

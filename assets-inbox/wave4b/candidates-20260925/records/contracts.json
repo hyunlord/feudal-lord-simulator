@@ -1,0 +1,2008 @@
+{
+  "spec": "ASSET_PIPELINE_SPEC_v1.md",
+  "brief": "ASTRA_Wave4b_본제작_의뢰서.md",
+  "status": "candidate",
+  "countConflict": {
+    "requested": 46,
+    "tableA": 34,
+    "tableB": 19,
+    "enumerated": 53,
+    "promotionsClaimed": 9,
+    "promotionsActual": 10,
+    "awaitingParentUserResolution": false,
+    "resolution": "User confirmed 53 assets + 4 checks + CSV 53 rows; 10 promotions + 43 new"
+  },
+  "global": {
+    "sourceTile": [
+      128,
+      64
+    ],
+    "zoomScales": {
+      "1.0": 0.5,
+      "0.6": 0.3,
+      "1.35": 0.675
+    },
+    "noGameInstallation": true,
+    "noMicroNoise": true,
+    "stripRepeat": "X only",
+    "fillRepeat": "XY",
+    "alphaRGBBleed": [
+      2,
+      4
+    ],
+    "noMirror": [
+      "tree",
+      "haycock",
+      "module"
+    ],
+    "promotionByteIdentityRequired": true,
+    "variantsRetain": [
+      "width",
+      "alpha profile",
+      "color range",
+      "motif size"
+    ],
+    "newFamilyGate": "1-2 representatives in 12x12 scene at zoom0.6 before expansion"
+  },
+  "assets": [
+    {
+      "section": "A",
+      "family": "earth",
+      "id": "road/earth_strip_a-v3",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "earth_strip-v1.png",
+        "earth_strip_a-v2.png",
+        "earth_strip_b-v2.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "track": [
+          7,
+          10
+        ],
+        "patch": [
+          8,
+          12
+        ],
+        "shoulder": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4,
+      "inheritance": "v1 brushwork + v2 broken shoulders and low rut contrast"
+    },
+    {
+      "section": "A",
+      "family": "earth",
+      "id": "road/earth_strip_b-v3",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "earth_strip-v1.png",
+        "earth_strip_a-v2.png",
+        "earth_strip_b-v2.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "track": [
+          7,
+          10
+        ],
+        "patch": [
+          8,
+          12
+        ],
+        "shoulder": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4,
+      "inheritance": "v1 brushwork + v2 broken shoulders and low rut contrast"
+    },
+    {
+      "section": "A",
+      "family": "earth",
+      "id": "road/earth_strip_c-v3",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "earth_strip-v1.png",
+        "earth_strip_a-v2.png",
+        "earth_strip_b-v2.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "track": [
+          7,
+          10
+        ],
+        "patch": [
+          8,
+          12
+        ],
+        "shoulder": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4,
+      "inheritance": "v1 brushwork + v2 broken shoulders and low rut contrast"
+    },
+    {
+      "section": "A",
+      "family": "earth",
+      "id": "road/earth_strip_d-v3",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "earth_strip-v1.png",
+        "earth_strip_a-v2.png",
+        "earth_strip_b-v2.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "track": [
+          7,
+          10
+        ],
+        "patch": [
+          8,
+          12
+        ],
+        "shoulder": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4,
+      "inheritance": "v1 brushwork + v2 broken shoulders and low rut contrast"
+    },
+    {
+      "section": "A",
+      "family": "shore",
+      "id": "shore/shoreline_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "shoreline_a-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "shoreline_a-v1.png",
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "bank": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4
+    },
+    {
+      "section": "A",
+      "family": "shore",
+      "id": "shore/shoreline_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "shoreline_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "bank": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4
+    },
+    {
+      "section": "A",
+      "family": "shore",
+      "id": "shore/shoreline_c-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "shoreline_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "bank": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4
+    },
+    {
+      "section": "A",
+      "family": "shore",
+      "id": "shore/shoreline_d-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "shoreline_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 12,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "bank": [
+          12,
+          16
+        ]
+      },
+      "worldSpanTiles": 4
+    },
+    {
+      "section": "A",
+      "family": "shallow",
+      "id": "water/shallow_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "shallow_a-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "shallow_a-v1.png",
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "wave": [
+          10,
+          14
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "shallow",
+      "id": "water/shallow_b-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "shallow_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "wave": [
+          10,
+          14
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "shallow",
+      "id": "water/shallow_c-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "shallow_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "wave": [
+          10,
+          14
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "pasture",
+      "id": "ground/pasture_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "pasture_a-v1.png",
+        "pasture.png"
+      ],
+      "promoted": true,
+      "promotionSource": "pasture_a-v1.png",
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          10,
+          16
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "pasture",
+      "id": "ground/pasture_b-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "pasture_a-v1.png",
+        "pasture.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          10,
+          16
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "pasture",
+      "id": "ground/pasture_c-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "pasture_a-v1.png",
+        "pasture.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          10,
+          16
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "haycock",
+      "id": "prop/haycock_a-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "haycock_a-v1.png",
+        "haycock_b-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "haycock_a-v1.png",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "core": 24
+      },
+      "variation": "height, lean, base silhouette; never mirror"
+    },
+    {
+      "section": "A",
+      "family": "haycock",
+      "id": "prop/haycock_b-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "haycock_a-v1.png",
+        "haycock_b-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "haycock_b-v1.png",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "core": 24
+      },
+      "variation": "height, lean, base silhouette; never mirror"
+    },
+    {
+      "section": "A",
+      "family": "haycock",
+      "id": "prop/haycock_c-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "haycock_a-v1.png",
+        "haycock_b-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "core": 24
+      },
+      "variation": "height, lean, base silhouette; never mirror"
+    },
+    {
+      "section": "A",
+      "family": "haycock",
+      "id": "prop/haycock_d-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "haycock_a-v1.png",
+        "haycock_b-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "core": 24
+      },
+      "variation": "height, lean, base silhouette; never mirror"
+    },
+    {
+      "section": "A",
+      "family": "haycock",
+      "id": "prop/haycock_e-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "haycock_a-v1.png",
+        "haycock_b-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "core": 24
+      },
+      "variation": "height, lean, base silhouette; never mirror"
+    },
+    {
+      "section": "A",
+      "family": "haycock",
+      "id": "prop/haycock_f-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "haycock_a-v1.png",
+        "haycock_b-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "core": 24
+      },
+      "variation": "height, lean, base silhouette; never mirror"
+    },
+    {
+      "section": "A",
+      "family": "orchard_floor",
+      "id": "ground/orchard_floor_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "orchard_floor_a-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "orchard_floor_a-v1.png",
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "orchard_floor",
+      "id": "ground/orchard_floor_b-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "orchard_floor_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ]
+    },
+    {
+      "section": "A",
+      "family": "orchard_tree",
+      "id": "tree/orchard_apple_c-v1",
+      "role": "object",
+      "size": [
+        256,
+        256
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "orchard_apple_c-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "orchard_apple_c-v1.png",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "crown": [
+          16,
+          24
+        ],
+        "trunk": [
+          8,
+          10
+        ]
+      },
+      "camera": "SW fixed",
+      "variation": "crown silhouette; never mirror",
+      "nameStatus": "reference exact"
+    },
+    {
+      "section": "A",
+      "family": "orchard_tree",
+      "id": "tree/orchard_apple_d-v1",
+      "role": "object",
+      "size": [
+        256,
+        256
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "orchard_apple_c-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "crown": [
+          16,
+          24
+        ],
+        "trunk": [
+          8,
+          10
+        ]
+      },
+      "camera": "SW fixed",
+      "variation": "crown silhouette; never mirror",
+      "nameStatus": "proposed full ID; brief gives suffix only"
+    },
+    {
+      "section": "A",
+      "family": "orchard_tree",
+      "id": "tree/orchard_pear_e-v1",
+      "role": "object",
+      "size": [
+        256,
+        256
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "orchard_apple_c-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "crown": [
+          16,
+          24
+        ],
+        "trunk": [
+          8,
+          10
+        ]
+      },
+      "camera": "SW fixed",
+      "variation": "crown silhouette; never mirror",
+      "nameStatus": "proposed full ID; brief gives suffix only"
+    },
+    {
+      "section": "A",
+      "family": "orchard_tree",
+      "id": "tree/orchard_plum_f-v1",
+      "role": "object",
+      "size": [
+        256,
+        256
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "orchard_apple_c-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "crown": [
+          16,
+          24
+        ],
+        "trunk": [
+          8,
+          10
+        ]
+      },
+      "camera": "SW fixed",
+      "variation": "crown silhouette; never mirror",
+      "nameStatus": "proposed full ID; brief gives suffix only"
+    },
+    {
+      "section": "A",
+      "family": "palisade",
+      "id": "wall/palisade_face_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "palisade_face_a-v1.png",
+        "palisade_straight_nw_se.png"
+      ],
+      "promoted": true,
+      "promotionSource": "palisade_face_a-v1.png",
+      "alpha": {
+        "kind": "top silhouette transparent; wall body and bottom opaque",
+        "yFade": false,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "board": [
+          10,
+          14
+        ],
+        "post": 16
+      },
+      "worldSpanTiles": 4,
+      "camera": "frontal cross-section"
+    },
+    {
+      "section": "A",
+      "family": "palisade",
+      "id": "wall/palisade_face_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "palisade_face_a-v1.png",
+        "palisade_straight_nw_se.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "top silhouette transparent; wall body and bottom opaque",
+        "yFade": false,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "board": [
+          10,
+          14
+        ],
+        "post": 16
+      },
+      "worldSpanTiles": 4,
+      "camera": "frontal cross-section"
+    },
+    {
+      "section": "A",
+      "family": "palisade",
+      "id": "wall/palisade_face_c-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "palisade_face_a-v1.png",
+        "palisade_straight_nw_se.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "top silhouette transparent; wall body and bottom opaque",
+        "yFade": false,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "board": [
+          10,
+          14
+        ],
+        "post": 16
+      },
+      "worldSpanTiles": 4,
+      "camera": "frontal cross-section"
+    },
+    {
+      "section": "A",
+      "family": "stone",
+      "id": "wall/stone_face_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "stone_face_a-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "stone_face_a-v1.png",
+      "alpha": {
+        "kind": "top silhouette transparent; wall body and bottom opaque",
+        "yFade": false,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "stone": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": 4,
+      "camera": "frontal cross-section"
+    },
+    {
+      "section": "A",
+      "family": "stone",
+      "id": "wall/stone_face_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "stone_face_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "top silhouette transparent; wall body and bottom opaque",
+        "yFade": false,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "stone": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": 4,
+      "camera": "frontal cross-section"
+    },
+    {
+      "section": "A",
+      "family": "stone",
+      "id": "wall/stone_face_c-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "stone_face_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "top silhouette transparent; wall body and bottom opaque",
+        "yFade": false,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "stone": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": 4,
+      "camera": "frontal cross-section"
+    },
+    {
+      "section": "A",
+      "family": "bridge",
+      "id": "module/bridge_abutment_ne_a-v1",
+      "role": "module",
+      "size": [
+        256,
+        192
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "bridge_abutment_ne_a-v1.png"
+      ],
+      "promoted": true,
+      "promotionSource": "bridge_abutment_ne_a-v1.png",
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "threshold": 16
+      },
+      "axis": "NE-SW",
+      "normalization": "full canvas; never alpha-bbox fit",
+      "sizeNote": "Inherited accepted pilot exact 256x192; spec approximate table range differs"
+    },
+    {
+      "section": "A",
+      "family": "bridge",
+      "id": "module/bridge_abutment_nw_a-v1",
+      "role": "module",
+      "size": [
+        256,
+        192
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "bridge_abutment_ne_a-v1.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "threshold": 16
+      },
+      "axis": "NW-SE",
+      "normalization": "full canvas; never alpha-bbox fit",
+      "sizeNote": "Inherited accepted pilot exact 256x192; spec approximate table range differs"
+    },
+    {
+      "section": "B",
+      "family": "field_soil",
+      "id": "field/soil_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ],
+      "noRidges": true
+    },
+    {
+      "section": "B",
+      "family": "field_soil",
+      "id": "field/soil_b-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "opaque",
+        "alpha": 255
+      },
+      "minMotif": {
+        "patch": [
+          12,
+          20
+        ]
+      },
+      "worldSpanTiles": [
+        2,
+        2
+      ],
+      "noRidges": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_ploughed_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "ploughed",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_ploughed_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "ploughed",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_seedling_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "seedling",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_seedling_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "seedling",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_growing_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "growing",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_growing_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "growing",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_fallow_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "fallow",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_ridge",
+      "id": "field/ridge_fallow_b-v1",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png",
+        "wheat_farm_seedling-v3.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "Y-edge fade",
+        "px": 8,
+        "xPadding": 0
+      },
+      "minMotif": {
+        "ridge": [
+          7,
+          10
+        ],
+        "nonsemantic": [
+          8,
+          12
+        ]
+      },
+      "worldSpanTiles": 4,
+      "state": "fallow",
+      "rows": [
+        1,
+        2
+      ],
+      "sameStateOutlineAcrossVariants": true
+    },
+    {
+      "section": "B",
+      "family": "field_furrow",
+      "id": "field/furrow_stamp_a-v1",
+      "role": "decal",
+      "size": [
+        128,
+        64
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact",
+        "endFade": true
+      },
+      "minMotif": {
+        "furrow": [
+          8,
+          12
+        ]
+      },
+      "lengthTiles": [
+        0.75,
+        1.5
+      ]
+    },
+    {
+      "section": "B",
+      "family": "field_furrow",
+      "id": "field/furrow_stamp_b-v1",
+      "role": "decal",
+      "size": [
+        128,
+        64
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact",
+        "endFade": true
+      },
+      "minMotif": {
+        "furrow": [
+          8,
+          12
+        ]
+      },
+      "lengthTiles": [
+        0.75,
+        1.5
+      ]
+    },
+    {
+      "section": "B",
+      "family": "field_furrow",
+      "id": "field/furrow_stamp_c-v1",
+      "role": "decal",
+      "size": [
+        128,
+        64
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact",
+        "endFade": true
+      },
+      "minMotif": {
+        "furrow": [
+          8,
+          12
+        ]
+      },
+      "lengthTiles": [
+        0.75,
+        1.5
+      ]
+    },
+    {
+      "section": "B",
+      "family": "field_furrow",
+      "id": "field/furrow_stamp_d-v1",
+      "role": "decal",
+      "size": [
+        128,
+        64
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "wheat_farm_ripe-v4.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact",
+        "endFade": true
+      },
+      "minMotif": {
+        "furrow": [
+          8,
+          12
+        ]
+      },
+      "lengthTiles": [
+        0.75,
+        1.5
+      ]
+    },
+    {
+      "section": "B",
+      "family": "croft",
+      "id": "garden/croft_bed_a-v1",
+      "role": "decal",
+      "size": [
+        128,
+        96
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "vegetable.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "ridge": [
+          12,
+          16
+        ],
+        "semanticCore": [
+          18,
+          24
+        ]
+      },
+      "beds": [
+        1,
+        2
+      ],
+      "cropClumps": [
+        2,
+        3
+      ]
+    },
+    {
+      "section": "B",
+      "family": "croft",
+      "id": "garden/croft_bed_b-v1",
+      "role": "decal",
+      "size": [
+        128,
+        96
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "vegetable.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "ridge": [
+          12,
+          16
+        ],
+        "semanticCore": [
+          18,
+          24
+        ]
+      },
+      "beds": [
+        1,
+        2
+      ],
+      "cropClumps": [
+        2,
+        3
+      ]
+    },
+    {
+      "section": "B",
+      "family": "croft",
+      "id": "garden/croft_bed_c-v1",
+      "role": "decal",
+      "size": [
+        128,
+        96
+      ],
+      "repeat": "none",
+      "referenceFiles": [
+        "vegetable.png"
+      ],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "ridge": [
+          12,
+          16
+        ],
+        "semanticCore": [
+          18,
+          24
+        ]
+      },
+      "beds": [
+        1,
+        2
+      ],
+      "cropClumps": [
+        2,
+        3
+      ]
+    },
+    {
+      "section": "B",
+      "family": "hurdle",
+      "id": "fence/hurdle_straight-v1",
+      "role": "module",
+      "size": [
+        128,
+        64
+      ],
+      "repeat": "none",
+      "referenceFiles": [],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "board": [
+          10,
+          14
+        ]
+      },
+      "axis": "NE-SW",
+      "worldSpanTiles": 1,
+      "missingRequestedReference": "pastoral farm fence"
+    },
+    {
+      "section": "B",
+      "family": "hurdle",
+      "id": "fence/hurdle_end_corner-v1",
+      "role": "module",
+      "size": [
+        128,
+        96
+      ],
+      "repeat": "none",
+      "referenceFiles": [],
+      "promoted": false,
+      "promotionSource": null,
+      "alpha": {
+        "kind": "transparent RGBA",
+        "rgbBleedPx": [
+          2,
+          4
+        ],
+        "pivot": "bottom center contact"
+      },
+      "minMotif": {
+        "board": [
+          10,
+          14
+        ]
+      },
+      "socketCount": 2,
+      "missingRequestedReference": "pastoral farm fence"
+    }
+  ],
+  "moduleRecommendations": {
+    "bridgeNE": {
+      "id": "module/bridge_abutment_ne_a-v1",
+      "canvas": [
+        256,
+        192
+      ],
+      "axis": "NE-SW",
+      "land": {
+        "center": [
+          168,
+          68
+        ],
+        "endpoints": [
+          [
+            104,
+            36
+          ],
+          [
+            232,
+            100
+          ]
+        ]
+      },
+      "water": {
+        "center": [
+          88,
+          108
+        ],
+        "endpoints": [
+          [
+            24,
+            76
+          ],
+          [
+            152,
+            140
+          ]
+        ]
+      },
+      "walkablePolygon": [
+        [
+          104,
+          36
+        ],
+        [
+          232,
+          100
+        ],
+        [
+          152,
+          140
+        ],
+        [
+          24,
+          76
+        ]
+      ],
+      "projectedWidth": [
+        128,
+        64
+      ],
+      "normalization": "Retain full canvas; never alpha-bbox fit. Parent overlays exact socket vectors after normalization.",
+      "topologyMask": "module-topology.svg"
+    },
+    "bridgeNW": {
+      "id": "module/bridge_abutment_nw_a-v1",
+      "canvas": [
+        256,
+        192
+      ],
+      "axis": "NW-SE",
+      "land": {
+        "center": [
+          88,
+          68
+        ],
+        "endpoints": [
+          [
+            152,
+            36
+          ],
+          [
+            24,
+            100
+          ]
+        ]
+      },
+      "water": {
+        "center": [
+          168,
+          108
+        ],
+        "endpoints": [
+          [
+            232,
+            76
+          ],
+          [
+            104,
+            140
+          ]
+        ]
+      },
+      "walkablePolygon": [
+        [
+          152,
+          36
+        ],
+        [
+          24,
+          100
+        ],
+        [
+          104,
+          140
+        ],
+        [
+          232,
+          76
+        ]
+      ],
+      "projectedWidth": [
+        -128,
+        64
+      ],
+      "normalization": "Topology coordinates only reflected; repaint lighting and art, not image mirror"
+    },
+    "hurdleStraight": {
+      "canvas": [
+        128,
+        64
+      ],
+      "axis": "NE-SW",
+      "socketA": [
+        32,
+        52
+      ],
+      "socketB": [
+        96,
+        20
+      ],
+      "translation": [
+        64,
+        -32
+      ],
+      "worldSpanTiles": 1,
+      "join": "Next sprite translated exactly +[64,-32]; attachment and endpoint post profiles identical. Shared post ownership avoids doubled-dark seam.",
+      "normalization": "Fixed full canvas; no alpha-bbox fit"
+    },
+    "hurdleCorner": {
+      "canvas": [
+        128,
+        96
+      ],
+      "pivot": [
+        64,
+        72
+      ],
+      "socketA": [
+        32,
+        56
+      ],
+      "socketB": [
+        96,
+        56
+      ],
+      "junction": [
+        64,
+        72
+      ],
+      "arms": "Two half-tile legs NE and NW meet at bottom center. Each leg displacement +/-32,-16.",
+      "normalization": "Fixed full canvas; no alpha-bbox fit",
+      "note": "End/corner in one module, two explicit sockets. Thin marker vectors exempt from material motif minima."
+    }
+  },
+  "counts": {
+    "assets": 53,
+    "checks": 4,
+    "csvRows": 53,
+    "promotions": 10,
+    "new": 43
+  }
+}

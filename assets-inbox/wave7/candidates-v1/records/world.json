@@ -1,0 +1,650 @@
+[
+  {
+    "id": "season/frost_patch_a-v1",
+    "file": "assets/season/frost_patch_a-v1.png",
+    "width": 128,
+    "height": 64,
+    "role": "decal",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "id": "frost_patch_a",
+        "prompt": "ROLE: decal / frost_patch_a. Generate one separate transparent RGBA sprite for hand-painted medieval England city builder, matching the muted warm painterly softness of project ridge reference in conversation. SOURCE_SIZE target128x64, nonrepeating scatter decal, isometric ground-plane 2:1 projection, no perspective. A loose irregular spread of THREE broad thin frost/snow crust fragments, subdued chalk grey-white, no blue glow. Transparent gaps and transparent outside, no soil/grass backing, no ground island, no cast shadow, no border or hard tile edge. Large simplified shapes, each main frost patch at least 20% of canvas width, no crystalline micro detail. Soft upper-left light. Fill central90% width and75% height, detached fragments irregularly balanced, not a rectangular cover. True transparency. No letters, numbers, text, watermark.",
+        "references": [],
+        "rawFile": "sources/world/frost_patch_a.png",
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png"
+        ],
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 4827,
+        "partial": 3059,
+        "opaque": 306
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "63f13f63e4bbaec71c343e4b1e0eee4a841c4b9285e1b643f0fc8568538efc0b"
+  },
+  {
+    "id": "season/leaves_a-v1",
+    "file": "assets/season/leaves_a-v1.png",
+    "width": 96,
+    "height": 48,
+    "role": "decal",
+    "pivot": {
+      "x": 48,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "id": "leaves_a",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 96x48. Subject: Three loose clusters of broad fallen autumn leaves, faded ochre and muted russet. Clear leaf groups not tiny confetti.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/leaves_a.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-8e5e64d6-56a1-4114-ba5e-0c830334f075.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 2386,
+        "partial": 2053,
+        "opaque": 169
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "95f8a92da9c6a7476666d70aaeac444005d50c6dcaced9740b92d3880b0cc0be"
+  },
+  {
+    "id": "season/dry_grass_a-v1",
+    "file": "assets/season/dry_grass_a-v1.png",
+    "width": 96,
+    "height": 48,
+    "role": "decal",
+    "pivot": {
+      "x": 48,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "id": "dry_grass_a",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 96x48. Subject: Four low dry summer grass tufts, grey straw ochre, broad blades in a sparse irregular spread. No soil.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/dry_grass_a.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-28390cb8-296f-4f27-86ff-2cde058782c0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 2632,
+        "partial": 1906,
+        "opaque": 70
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Subdued dry vegetation tufts; individual blades merge at0.3scale.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "cce298bda39108b56dd88c4928f6602a793b101aebcde00d9f3f428f5f1c16a6"
+  },
+  {
+    "id": "signifier/tall_grass_plot-v1",
+    "file": "assets/signifier/tall_grass_plot-v1.png",
+    "width": 128,
+    "height": 64,
+    "role": "decal",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "id": "tall_grass_plot",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 128x64. Subject: An irregular low patch of tall wild unkempt grass occupying an empty plot. Muted olive sage green upright clumps, no cultivated rows, no dirt. Distinct from low dry grass.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/tall_grass_plot.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-00b6ebea-e795-4abd-a018-fe22dcfea38a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 3416,
+        "partial": 4711,
+        "opaque": 65
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "2d833bc79c3e5ccd9e1ea21223c1306662495272e779d53f67d4835a2a4f06a2"
+  },
+  {
+    "id": "signifier/footprints_dotted_ne-v1",
+    "file": "assets/signifier/footprints_dotted_ne-v1.png",
+    "width": 128,
+    "height": 64,
+    "role": "decal",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "id": "footprints_dotted_ne",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 128x64. Subject: A broken path signifier: THREE pairs of broad brown muddy boot impressions and THREE thick short ochre dashes, NE to SW isometric axis rising right (bottom-left to top-right), transparent between impressions. Simplify shapes strongly, no backing ground.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/footprints_dotted_ne.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-dcfbf11d-6bb2-4dd4-9630-b69a075b3245.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 6794,
+        "partial": 1245,
+        "opaque": 153
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "71fe52b2ab1eb55942295366e0f99ad8d22414f4faf9785b2fbe56dd66ef6cbf"
+  },
+  {
+    "id": "signifier/footprints_dotted_nw-v1",
+    "file": "assets/signifier/footprints_dotted_nw-v1.png",
+    "width": 128,
+    "height": 64,
+    "role": "decal",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "id": "footprints_dotted_nw",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 128x64. Subject: A broken path signifier: THREE pairs of broad brown muddy boot impressions and THREE thick short ochre dashes, NW to SE isometric axis descending right (top-left to bottom-right), transparent between impressions. Simplify shapes strongly, no backing ground.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/footprints_dotted_nw.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-e7391919-2146-45c9-bf2c-011a55a796c5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 6874,
+        "partial": 1146,
+        "opaque": 172
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "3b7bf6b5095f11422be98d3f463902b7aadbfc581c14c3857e710f8ad700f3a3"
+  },
+  {
+    "id": "signifier/empty_stall-v1",
+    "file": "assets/signifier/empty_stall-v1.png",
+    "width": 96,
+    "height": 96,
+    "role": "object",
+    "pivot": {
+      "x": 48,
+      "y": 94
+    },
+    "generationRecords": [
+      {
+        "id": "empty_stall",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 96x96. Subject: One single EMPTY simple medieval market stall in SW-facing isometric view: plain brown timber trestle counter with vacant top and small faded tan awning, absolutely no goods baskets or people. Very simple chunky silhouette.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/empty_stall.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-9967d69c-708e-44b9-a5f9-de7c70d4573c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1254,
+          "height": 1254,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 4914,
+        "partial": 3949,
+        "opaque": 353
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "9d324d415a60378d5b5dd97f66c2ba1967d36467d8432ef69432666cae0baec6"
+  },
+  {
+    "id": "signifier/bundle_family_prop-v1",
+    "file": "assets/signifier/bundle_family_prop-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": {
+      "x": 16,
+      "y": 30
+    },
+    "generationRecords": [
+      {
+        "id": "bundle_family_prop",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 32x32. Subject: One medieval departing-family luggage bundle: a LARGE rounded dusty russet cloth sack tied with a thick cream rope, slung on a short brown carrying stick. No people. Extremely simplified, four large color masses, readable as luggage at nine pixels wide.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/bundle_family_prop.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-b33215b4-8d15-46ae-9958-65d68ecf77d1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1254,
+          "height": 1254,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 520,
+        "partial": 452,
+        "opaque": 52
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "LIMITED: 32px source becomes9.6px; tiny silhouette remains but family-departure or stopped-work meaning is not independently readable. Larger zoom / contextual presentation needed.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "5f6c0e398558500d1919e91e6713854b1c1202569bb73942dcfd3b90a2fbd4d2"
+  },
+  {
+    "id": "signifier/bar_latch-v1",
+    "file": "assets/signifier/bar_latch-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": {
+      "x": 16,
+      "y": 30
+    },
+    "generationRecords": [
+      {
+        "id": "bar_latch",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source size 32x32. Subject: One isolated medieval stopped-work wooden locking bar latch: THICK horizontal dark oak bar held by TWO chunky muted iron brackets. No door behind it. Extremely simplified, three broad dark masses with warm edge, readable at nine pixels.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/bar_latch.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-45ca6d00-b937-4aea-9416-422c6960cbf6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1254,
+          "height": 1254,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 621,
+        "partial": 353,
+        "opaque": 50
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "LIMITED: 32px source becomes9.6px; tiny silhouette remains but family-departure or stopped-work meaning is not independently readable. Larger zoom / contextual presentation needed.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "8286cbc0adc7372f003435b84911dcdf82676cfa3d1a197f08ebf0c395bc3b52"
+  },
+  {
+    "id": "season/frost_patch_b-v1",
+    "file": "assets/season/frost_patch_b-v1.png",
+    "width": 128,
+    "height": 64,
+    "role": "decal",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "id": "frost_patch_b",
+        "prompt": "ROLE: decal / frost_patch_a. Generate one separate transparent RGBA sprite for hand-painted medieval England city builder, matching the muted warm painterly softness of project ridge reference in conversation. SOURCE_SIZE target128x64, nonrepeating scatter decal, isometric ground-plane 2:1 projection, no perspective. A loose irregular spread of THREE broad thin frost/snow crust fragments, subdued chalk grey-white, no blue glow. Transparent gaps and transparent outside, no soil/grass backing, no ground island, no cast shadow, no border or hard tile edge. Large simplified shapes, each main frost patch at least 20% of canvas width, no crystalline micro detail. Soft upper-left light. Fill central90% width and75% height, detached fragments irregularly balanced, not a rectangular cover. True transparency. No letters, numbers, text, watermark. Independent variant b: two wide ragged crescent fragments and one smaller off-center clump, no central focal point.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/frost_patch_b-original.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-1f42aebc-a363-4ad1-8106-47cda6e6bd05.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        },
+        "status": "rejected-ring-composition"
+      },
+      {
+        "id": "frost_patch_b",
+        "prompt": "Targeted edit of this frost decal ONLY. REPLACE the circular/ring layout with THREE irregular SOLID frost crust fragments: one broad jagged roughly triangular patch on the left, a shorter solid patch to its lower right and one compact chip upper right. Each fragment is filled, without any internal hole. Arrange in an asymmetric broken diagonal scattering, absolutely NO ring, circle, wreath, horseshoe, C-shape, oval, donut, enclosed transparent center or geometric outline. Keep original muted chalk grey-white hand-painted style, soft upper-left light, isometric ground plane, no cast shadow or blue glow, no soil/ground backing, no other objects. True transparent RGBA background and transparent gaps between fragments. Sprite target128x64; broad simple forms readable at38x19px. No text or symbols.",
+        "references": [
+          "sources/world/frost_patch_b-edit-input.png"
+        ],
+        "submittedReferencePath": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/assets/season/frost_patch_b-v1.png",
+        "rawFile": "sources/world/frost_patch_b.png",
+        "revisionReason": "Replace rejected ring composition with separate solid asymmetric fragments",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-b651aa92-dfea-43b6-8ed4-35c11ae7703c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 5046,
+        "partial": 2908,
+        "opaque": 238
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Corrected to separate asymmetric solid frost crust fragments; no enclosed ring or central hole. Thin snow patches distinguish at0.3scale.",
+      "referenceMode": "Initial generation: project PNGs viewed as conversation style context. Revision: exact prior128x64candidate submitted as edit reference and preserved separately."
+    },
+    "sha256": "c04d5b287510ca2518201cc1589a794c3662597240181913a70dc1e7a288206b"
+  },
+  {
+    "id": "season/frost_patch_c-v1",
+    "file": "assets/season/frost_patch_c-v1.png",
+    "width": 128,
+    "height": 64,
+    "role": "decal",
+    "pivot": {
+      "x": 64,
+      "y": 62
+    },
+    "generationRecords": [
+      {
+        "id": "frost_patch_c",
+        "prompt": "ROLE: decal / frost_patch_a. Generate one separate transparent RGBA sprite for hand-painted medieval England city builder, matching the muted warm painterly softness of project ridge reference in conversation. SOURCE_SIZE target128x64, nonrepeating scatter decal, isometric ground-plane 2:1 projection, no perspective. A loose irregular spread of THREE broad thin frost/snow crust fragments, subdued chalk grey-white, no blue glow. Transparent gaps and transparent outside, no soil/grass backing, no ground island, no cast shadow, no border or hard tile edge. Large simplified shapes, each main frost patch at least 20% of canvas width, no crystalline micro detail. Soft upper-left light. Fill central90% width and75% height, detached fragments irregularly balanced, not a rectangular cover. True transparency. No letters, numbers, text, watermark. Independent variant c: five scattered unequal low frost islands loosely sweeping around an open transparent center, each broad shape simple.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/frost_patch_c-original.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-fa3c3c56-302f-408d-a5e1-430fe0cac67b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        },
+        "status": "rejected-ring-composition"
+      },
+      {
+        "id": "frost_patch_c",
+        "prompt": "Targeted edit of this frost decal ONLY. REPLACE the circular/ring layout with FOUR irregular SOLID shallow snow crust fragments: a broad lopsided solid slab upper left, an unequal block lower middle and two small irregular chips toward the right. Each fragment is filled, without any internal hole. Arrange in an asymmetric broken diagonal scattering, absolutely NO ring, circle, wreath, horseshoe, C-shape, oval, donut, enclosed transparent center or geometric outline. Keep original muted chalk grey-white hand-painted style, soft upper-left light, isometric ground plane, no cast shadow or blue glow, no soil/ground backing, no other objects. True transparent RGBA background and transparent gaps between fragments. Sprite target128x64; broad simple forms readable at38x19px. No text or symbols.",
+        "references": [
+          "sources/world/frost_patch_c-edit-input.png"
+        ],
+        "submittedReferencePath": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/assets/season/frost_patch_c-v1.png",
+        "rawFile": "sources/world/frost_patch_c.png",
+        "revisionReason": "Replace rejected ring composition with separate solid asymmetric fragments",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-ed53a596-e9d3-45c9-b500-91b303973acc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 5309,
+        "partial": 2640,
+        "opaque": 243
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Corrected to separate asymmetric solid frost crust fragments; no enclosed ring or central hole. Thin snow patches distinguish at0.3scale.",
+      "referenceMode": "Initial generation: project PNGs viewed as conversation style context. Revision: exact prior128x64candidate submitted as edit reference and preserved separately."
+    },
+    "sha256": "526b7c8b0c1f48a04a544682a5b3ef5e961f5b333aa174caa03266874b0339bb"
+  },
+  {
+    "id": "season/leaves_b-v1",
+    "file": "assets/season/leaves_b-v1.png",
+    "width": 96,
+    "height": 48,
+    "role": "decal",
+    "pivot": {
+      "x": 48,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "id": "leaves_b",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source96x48. Fallen autumn leaves scattering decal, muted grey ochre and dusty russet, three broad simplified clusters. One crescent-shaped cluster left and two smaller loose clusters right. No individual tiny confetti.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/leaves_b.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-94655b22-1f1e-483d-b954-5e7041cd3a77.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 2419,
+        "partial": 1998,
+        "opaque": 191
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "46655eb8036284018d0e3b7a8e4250ef0408f604cb275c74bd3cfbe0d5975222"
+  },
+  {
+    "id": "season/leaves_c-v1",
+    "file": "assets/season/leaves_c-v1.png",
+    "width": 96,
+    "height": 48,
+    "role": "decal",
+    "pivot": {
+      "x": 48,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "id": "leaves_c",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target source96x48. Fallen autumn leaves scattering decal, muted grey ochre and dusty russet, three broad simplified clusters. Two oak-leaf clusters spread apart along shallow diagonal and one broad curled leaf inbetween. No individual tiny confetti.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/leaves_c.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-d4b72d8b-8a09-48f5-a04b-13a4584380ec.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 2996,
+        "partial": 1465,
+        "opaque": 147
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Type silhouette distinguishable in synthetic0.3scale inspection; no runtime certification.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "ae47f56c0b476891280101cf0d3b9ca3aa2a46a72cfb644894ed0cbfb39ab84d"
+  },
+  {
+    "id": "season/dry_grass_b-v1",
+    "file": "assets/season/dry_grass_b-v1.png",
+    "width": 96,
+    "height": 48,
+    "role": "decal",
+    "pivot": {
+      "x": 48,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "id": "dry_grass_b",
+        "prompt": "Use case: historical-scene. ROLE: transparent separated game decal/object sprite. Match project ridge and market reference hand-painted subdued medieval England style, soft upper-left light, isometric 2:1 ground-plane, no perspective. One asset only, no sheet. True transparent RGBA background, no checkerboard painted into image, no ground or soil island, no baked wide shadow, contact AO only on objects. Shape occupies central90% canvas. Low-frequency broad forms to survive drastic reduction; NO MICRO NOISE, no text letters numbers watermarks border. Target96x48. THREE dry summer grass tufts in a broad irregular shallow arc. Muted straw grey ochre with broad blunt clustered blades, each tuft a substantial 24px silhouette at final scale. Fewer much wider blades than a botanical grass illustration. One low tuft left, two broad unequal tufts right. Transparent gaps, no backing grass mat or soil.",
+        "references": [],
+        "contextReferences": [
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/ridge_growing_a-v1.png",
+          "references/astra-wave7-package/reference-files/astra-wave7-reference-files/market_quiet-v2.png"
+        ],
+        "rawFile": "sources/world/dry_grass_b.png",
+        "toolOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-6158-78c0-b005-8cb5bc119520/exec-a8029808-3cc1-4260-807c-1930e5a16de1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "rawSize": {
+          "width": 1774,
+          "height": 887,
+          "channels": 4
+        }
+      }
+    ],
+    "processing": "Generated RGBA preserved; sharp alpha-aware trim threshold2 then one uniform resize within target minus4px; composite onto separate exact target RGBA canvas, bottom2px padding. No paint-over, mirror, color replacement or ground insertion.",
+    "qa": {
+      "status": "candidate",
+      "alpha": {
+        "zero": 2865,
+        "partial": 1622,
+        "opaque": 121
+      },
+      "exactDimensions": true,
+      "transparent": true,
+      "zoom06SourceScale": 0.3,
+      "readability": "Subdued dry vegetation tufts; individual blades merge at0.3scale.",
+      "referenceMode": "Project PNGs inspected in conversation as style context; no reference path attachment in imagegen call."
+    },
+    "sha256": "29335eacb6e128c5f4b4c4d2e0c8b00cf83be23b00ba45f5bb43523e122756c4"
+  }
+]

@@ -1,0 +1,186 @@
+[
+  [
+    "frame_hud_strip_top",
+    256,
+    256,
+    "dark oak HUD top frame, thin warm parchment single edge, minute dot at corners",
+    "frame_panel_dark",
+    24
+  ],
+  [
+    "frame_hud_strip_bottom",
+    256,
+    256,
+    "dark oak HUD bottom frame, subtly lighter upper edge single rule, minute corner dots",
+    "frame_panel_dark",
+    24
+  ],
+  [
+    "frame_panel_light",
+    192,
+    192,
+    "warm light parchment information panel, remove all corner curls; one tiny dot per corner",
+    "frame_panel_light",
+    32
+  ],
+  [
+    "frame_panel_dark",
+    192,
+    192,
+    "flat dark oak information panel, remove all corner curls; one tiny warm dot per corner",
+    "frame_panel_dark",
+    24
+  ],
+  [
+    "frame_objective_normal",
+    256,
+    256,
+    "normal objective warm parchment card, single ink border and tiny dot; no decorative curls",
+    "frame_objective",
+    32
+  ],
+  [
+    "frame_objective_complete",
+    256,
+    256,
+    "complete objective warm parchment card, single ink border, small subdued red wax seal without any text at bottom right contained entirely inside 32pixel corner of final256canvas",
+    "frame_objective",
+    32
+  ],
+  [
+    "frame_objective_warn",
+    256,
+    256,
+    "warning objective warm parchment card, single ink border and small dull brown-red ink smudge confined to upper right 32pixel corner final256canvas",
+    "frame_objective",
+    32
+  ],
+  [
+    "frame_advisor_normal",
+    256,
+    192,
+    "advisor panel rectangular warm parchment plain BODY ONLY, remove entire portrait circle and seal. Single thin border tiny dots. No portrait no circle",
+    "frame_advisor",
+    24
+  ],
+  [
+    "frame_advisor_warn",
+    256,
+    192,
+    "advisor warning panel rectangular warm parchment BODY ONLY, remove circle and seal. Singlethin border with small dull ink stain upper right corner. No portrait no circle",
+    "frame_advisor",
+    24
+  ],
+  [
+    "advisor_portrait_frame",
+    192,
+    192,
+    "ONLY a circular portrait frame: very thin two concentric muted brown ink circles, perfectly centered, outerdiameter180 innerdiameter172. Transparent inside AND outside ring. No panel no face no ornament no shadow",
+    "frame_advisor",
+    0
+  ],
+  [
+    "frame_tooltip",
+    128,
+    128,
+    "very plain light parchment tooltip square single thin brown border, zero decoration",
+    "frame_panel_light",
+    12
+  ],
+  [
+    "frame_modal",
+    256,
+    256,
+    "light parchment modal square single fine brown border tiny dot corners; blank flat light center",
+    "frame_panel_light",
+    32
+  ],
+  [
+    "button_primary_base",
+    128,
+    72,
+    "rectangular warm parchment primary button with fine darker ink edge, removecornerflourishes, one dot eachcorner; entirelyblank",
+    "button_primary_base",
+    12
+  ],
+  [
+    "button_secondary_base",
+    128,
+    72,
+    "rectangular quiet desaturated lighter parchment secondary button fine muted edge, no curls only tinycornerdots; entirelyblank",
+    "button_primary_base",
+    12
+  ],
+  [
+    "button_icon_square_base",
+    72,
+    72,
+    "square parchment button fine ink edge and tinycornerdots, entirely blank no icon",
+    "button_primary_base",
+    10
+  ],
+  [
+    "tab_build_base",
+    144,
+    72,
+    "rectangular oak build tab base, single subtle ochreedge, no selectedhighlight no text no icon",
+    "frame_panel_dark",
+    12
+  ],
+  [
+    "chip_condition_base",
+    144,
+    48,
+    "simple rectangular light parchment condition chip, very fine quiet edge, no symbol no words",
+    "button_primary_base",
+    8
+  ],
+  [
+    "texture_vellum_light",
+    256,
+    256,
+    "seamless XY tile of extremely faint lowfrequency light parchment, NO edges NO frame NOornaments; very flat lowcontrastcenter",
+    "texture_vellum_light",
+    0
+  ],
+  [
+    "texture_vellum_dark",
+    256,
+    256,
+    "seamless XY tile of extremely faint lowfrequency dark oak vellum, NO edges NO frame NOornaments; very flatlowcontrast",
+    "texture_vellum_light",
+    0
+  ],
+  [
+    "divider_manuscript_light",
+    128,
+    16,
+    "transparent background horizontal single thin dark brown manuscript rule centeredvertically spanningfullwidth, tiny ink dot in center, repeatable horizontally; no curls",
+    "frame_panel_light",
+    0
+  ],
+  [
+    "divider_manuscript_dark",
+    128,
+    16,
+    "transparent background horizontal single thin muted tan manuscript rule centeredvertically spanningfullwidth, tiny dot atcenter, repeatable horizontally; no curls",
+    "frame_panel_dark",
+    0
+  ],
+  [
+    "banner_unlock",
+    800,
+    128,
+    "wide horizontal light parchment announcement banner, simple thin ink rectangular border, small understated mutedred seal at farleft within48pixel final800canvas; nolettering nofolds",
+    "frame_objective",
+    48
+  ],
+  [
+    "toast_small",
+    640,
+    96,
+    "wide horizontal light parchment toast notification rectangle, single quiet browninkborder, tinycornerdots; completely blank noicons",
+    "frame_panel_light",
+    24
+  ]
+]

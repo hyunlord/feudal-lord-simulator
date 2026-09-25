@@ -1,0 +1,6 @@
+{
+  "status":"candidate",
+  "roof":{"dimensions":[512,256],"alphaBBox":[51,14,460,237],"referenceAlphaBBox":[51,14,460,237],"registration":"bounding-box and canvas matched to existing roof stage; preserve consumer's existing pivot unchanged","visual":"Open ridge and rafters remain readable; broad straw courses distinguish unfinished thatch from tile rafters. Some strand texture survives source art but broad courses dominate at reduced size.","pass":true},
+  "well":{"dimensions":[216,80],"cellSize":[72,80],"frameCount":3,"cellOrder":["pit","stone_ring","open_roof_frame"],"pivotPerCell":[36,64],"pivotEvidence":"public/assets/world_asset_manifest.json well entry anchor x36 y64, renderScale0.72","groundBottomPerCell":[64,64,64],"baseWidth":36,"baseCenterX":38,"baseEvidence":"Approved well visible base bbox x20..56 y44..64; native construction art was separately registered to this footprint and groundline.","visual":"Pit is low dark oval, stone stage visibly taller light ring, open roof frame towers above ring. Three silhouettes distinct. Completed tile roof remains distinguishable from stage3 bare rafters.","pass":true},
+  "limitations":["No game installation or runtime verification. Exact pixel identity of internal structural timbers is not claimed; roof canvas and extent match reference."]
+}

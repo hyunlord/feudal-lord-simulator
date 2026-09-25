@@ -1,0 +1,364 @@
+{
+  "actor_child-v1": {
+    "id": "actor_child-v1",
+    "status": "candidate",
+    "cell": [
+      74,
+      74
+    ],
+    "sheet": [
+      296,
+      148
+    ],
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "frameRows": [
+      0,
+      1
+    ],
+    "contactY": 67,
+    "opaqueSoleY": 66,
+    "visibleHeight": 42,
+    "adultVisibleHeight": "64–65 px",
+    "heightRatio": "0.646–0.656",
+    "overallVerdict": "fail",
+    "reason": "Initial native generation and mandatory feet-only frame1 redraw both retain the same projected leading-leg silhouette. Do not approve as alternating walk.",
+    "directions": [
+      {
+        "direction": "NE",
+        "frame0": {
+          "toe": [
+            42,
+            58
+          ],
+          "lead": "uncertain",
+          "reason": "Forward up-right shoe; down-left leg remains straight behind."
+        },
+        "frame1": {
+          "toe": [
+            42,
+            57
+          ],
+          "lead": "uncertain",
+          "reason": "Same up-right forward shoe and down-left trailing leg; no visible swapped leg connection."
+        },
+        "verdict": "fail"
+      },
+      {
+        "direction": "SE",
+        "frame0": {
+          "toe": [
+            42,
+            65
+          ],
+          "lead": "uncertain",
+          "reason": "Screen-right visible leg straight down-right; screen-left foot bent behind."
+        },
+        "frame1": {
+          "toe": [
+            43,
+            65
+          ],
+          "lead": "uncertain",
+          "reason": "Same screen-right straight leg leads. Feet-only redraw did not reverse hip/knee connection."
+        },
+        "verdict": "fail"
+      },
+      {
+        "direction": "SW",
+        "frame0": {
+          "toe": [
+            31,
+            65
+          ],
+          "lead": "uncertain",
+          "reason": "Screen-left visible leg straight down-left; screen-right shoe bent behind."
+        },
+        "frame1": {
+          "toe": [
+            31,
+            65
+          ],
+          "lead": "uncertain",
+          "reason": "Same screen-left forward leg silhouette, no opposite half-step."
+        },
+        "verdict": "fail"
+      },
+      {
+        "direction": "NW",
+        "frame0": {
+          "toe": [
+            33,
+            58
+          ],
+          "lead": "uncertain",
+          "reason": "Forward up-left shoe; down-right leg remains straight behind."
+        },
+        "frame1": {
+          "toe": [
+            33,
+            58
+          ],
+          "lead": "uncertain",
+          "reason": "Same up-left leading shoe and down-right trailing leg pattern retained."
+        },
+        "verdict": "fail"
+      }
+    ],
+    "costumeConsistency": {
+      "bareHead": "pass",
+      "shortChestnutHair": "pass",
+      "ochreKneeTunic": "pass",
+      "brownHoseShoes": "pass",
+      "beardAbsent": "pass",
+      "propsAbsent": "pass",
+      "notes": "Rounded face and large head differentiate child from adult references. Small tunic hem/arm shifts remain between generated views; feet-only edit also slightly redrew unrequested body pixels."
+    },
+    "attempts": [
+      {
+        "path": "A/attempts/child_initial_failed.png",
+        "verdict": "fail"
+      },
+      {
+        "path": "A/attempts/child_feet_only_redraw.png",
+        "verdict": "fail"
+      }
+    ],
+    "manualEdits": "Canvas only mechanical per-cell alpha bbox crop, aspect-preserving single downsample to 42 px body height, horizontal centering x37, ground boundary y67; no feet painted or mirrored algorithmically.",
+    "verification": "Native and normalized sheets visually inspected. Toe marks show visible leading shoe, not proof of anatomical L/R identity.",
+    "summary": "FAIL: same leading-foot silhouette in both frames"
+  },
+  "actor_elder_m-v1": {
+    "id": "actor_elder_m-v1",
+    "status": "candidate",
+    "overall": "fail",
+    "reason": "SE and SW repeat the same projected leading foot after two explicit feet-only native edit attempts. NE/NW exchange visible shoe positions, but anatomical leg identity is partly obscured by long gown and cannot be certified.",
+    "sheet": [
+      296,
+      148
+    ],
+    "cell": [
+      74,
+      74
+    ],
+    "groundBoundaryY": 67,
+    "normalization": "Each native cell alpha>32 bounding box uniformly scaled to 61px height, centered x37 and bottom boundary67, one Canvas resample. No feet painted algorithmically.",
+    "directions": [
+      {
+        "direction": "NE",
+        "frame0": {
+          "toe": [
+            32,
+            64
+          ],
+          "lead": "left",
+          "reason": "Visible low shoe at screen-left, other shoe tucked upper-right."
+        },
+        "frame1": {
+          "toe": [
+            49,
+            64
+          ],
+          "lead": "right",
+          "reason": "Visible low shoe switches screen-right, other shoe tucked upper-left."
+        },
+        "verdict": "uncertain",
+        "note": "Projected shoe exchange yes; anatomical identity under gown occluded."
+      },
+      {
+        "direction": "SE",
+        "frame0": {
+          "toe": [
+            49,
+            64
+          ],
+          "lead": "right",
+          "reason": "Low extended shoe screen-right."
+        },
+        "frame1": {
+          "toe": [
+            49,
+            64
+          ],
+          "lead": "right",
+          "reason": "Same low screen-right shoe remains after feet-only edits."
+        },
+        "verdict": "fail"
+      },
+      {
+        "direction": "SW",
+        "frame0": {
+          "toe": [
+            29,
+            64
+          ],
+          "lead": "left",
+          "reason": "Low extended shoe screen-left."
+        },
+        "frame1": {
+          "toe": [
+            29,
+            64
+          ],
+          "lead": "left",
+          "reason": "Same low screen-left shoe remains after feet-only edits."
+        },
+        "verdict": "fail"
+      },
+      {
+        "direction": "NW",
+        "frame0": {
+          "toe": [
+            47,
+            64
+          ],
+          "lead": "right",
+          "reason": "Visible low shoe screen-right, other upper-left."
+        },
+        "frame1": {
+          "toe": [
+            27,
+            64
+          ],
+          "lead": "left",
+          "reason": "Visible low shoe switches screen-left."
+        },
+        "verdict": "uncertain",
+        "note": "Projected shoe exchange yes; anatomical identity under gown occluded."
+      }
+    ],
+    "directionConsistency": {
+      "hair": "pass: bald crown grey side hair all eight views",
+      "beard": "pass in front and front-quarter views; hidden correctly from rear",
+      "hat": "pass: bare head all directions",
+      "gown": "pass: same grey-olive lower-calf gown across directions",
+      "posture": "pass: forward neck and slightly hunched upper back",
+      "heldObject": "none, staff excluded"
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "result": "FAIL all directions repeat foot; knee-length gown too short"
+      },
+      {
+        "number": 2,
+        "result": "Feet-only attempt: rear views exchange shoe positions; front views fail; gown still short"
+      },
+      {
+        "number": 3,
+        "result": "Long gown corrected; front views still fail"
+      },
+      {
+        "number": 4,
+        "result": "Long-gown feet-only attempt: front views still fail. Native tool did not keep upper-body pixels exactly identical despite explicit request; diagnostic attempt, not pixel-preserving edit."
+      },
+      {
+        "number": 5,
+        "result": "Strict duplicated-frame0 input feet-only edit: FAIL all four directions repeat same projected leading foot. Selected previous attempt4 as better candidate, while diagnostic attempt5 supplied."
+      }
+    ],
+    "summary": "FAIL in front views; rear views anatomically uncertain"
+  },
+  "actor_elder_f-v1": {
+    "assetId": "actor_elder_f-v1",
+    "groundBoundaryY": 67,
+    "opaqueSoleY": 66,
+    "nativeGaitVerdict": "fail",
+    "redrawGaitVerdict": "uncertain",
+    "directions": [
+      {
+        "direction": "NE",
+        "frame0": {
+          "toe": [
+            31.2,
+            64.5
+          ],
+          "lead": "uncertain",
+          "screenSide": "left",
+          "reason": "Visible projecting shoe; anatomical leg hidden by long hem."
+        },
+        "frame1": {
+          "toe": [
+            51.5,
+            59.1
+          ],
+          "lead": "uncertain",
+          "screenSide": "right",
+          "reason": "Feet-only redraw moves visible projecting shoe to opposite screen side; anatomical continuity still not provable."
+        },
+        "verdict": "uncertain"
+      },
+      {
+        "direction": "SE",
+        "frame0": {
+          "toe": [
+            47.7,
+            64.3
+          ],
+          "lead": "uncertain",
+          "screenSide": "right",
+          "reason": "Visible projecting shoe; anatomical leg hidden by long hem."
+        },
+        "frame1": {
+          "toe": [
+            26,
+            63.8
+          ],
+          "lead": "uncertain",
+          "screenSide": "left",
+          "reason": "Feet-only redraw moves visible projecting shoe to opposite screen side; anatomical continuity still not provable."
+        },
+        "verdict": "uncertain"
+      },
+      {
+        "direction": "SW",
+        "frame0": {
+          "toe": [
+            26.2,
+            64.3
+          ],
+          "lead": "uncertain",
+          "screenSide": "left",
+          "reason": "Visible projecting shoe; anatomical leg hidden by long hem."
+        },
+        "frame1": {
+          "toe": [
+            35.6,
+            64.3
+          ],
+          "lead": "uncertain",
+          "screenSide": "right",
+          "reason": "Feet-only redraw moves visible projecting shoe to opposite screen side; anatomical continuity still not provable."
+        },
+        "verdict": "uncertain"
+      },
+      {
+        "direction": "NW",
+        "frame0": {
+          "toe": [
+            46.1,
+            64.3
+          ],
+          "lead": "uncertain",
+          "screenSide": "right",
+          "reason": "Visible projecting shoe; anatomical leg hidden by long hem."
+        },
+        "frame1": {
+          "toe": [
+            24.2,
+            64.1
+          ],
+          "lead": "uncertain",
+          "screenSide": "left",
+          "reason": "Feet-only redraw moves visible projecting shoe to opposite screen side; anatomical continuity still not provable."
+        },
+        "verdict": "uncertain"
+      }
+    ],
+    "summary": "UNCERTAIN: shoe side changes, leg linkage hidden by gown"
+  }
+}

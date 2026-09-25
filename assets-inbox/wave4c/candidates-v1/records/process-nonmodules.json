@@ -1,0 +1,544 @@
+{
+  "method": "single native-to-target resample; full canvas farmstead registration; no silhouette painting, no mirror; precise strip alpha/X seam per spec",
+  "assets": [
+    {
+      "id": "tree/orchard_apple_g-v1",
+      "source": "sources/tree__orchard_apple_g-v1.png",
+      "sourceSha256": "7433df5679293fabbd6f8aa31f9198de858e00b71b2e6d64cd488acf8ebfc721",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "sourceCrop": [
+        39,
+        271,
+        1195,
+        890
+      ],
+      "destinationRect": [
+        11.999999999999986,
+        88.63506395786305,
+        208.6079759217457,
+        155.36493604213695
+      ],
+      "singleResize": true,
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaBounds": [
+        12,
+        89,
+        209,
+        155
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1660,
+      "target": "assets/tree/orchard_apple_g-v1.png",
+      "sha256": "588f154a8b0794b6860ee9a404025e6e62e0db430475f9fb103c8749babac20a"
+    },
+    {
+      "id": "tree/orchard_apple_h-v1",
+      "source": "sources/tree__orchard_apple_h-v1.png",
+      "sourceSha256": "82ed99e0663f117e8e696c20483b44017ff50b949dbec055f88cc3af5e6d377c",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "sourceCrop": [
+        35,
+        379,
+        1178,
+        782
+      ],
+      "destinationRect": [
+        12.196776929601356,
+        90.12044105173877,
+        231.80322307039864,
+        153.87955894826123
+      ],
+      "singleResize": true,
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaBounds": [
+        12,
+        90,
+        232,
+        154
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1689,
+      "target": "assets/tree/orchard_apple_h-v1.png",
+      "sha256": "7c80bba7ede468b1b7a59f452b568c868f918926c5904f9d93b3da556c13b531"
+    },
+    {
+      "id": "tree/orchard_pear_i-v1",
+      "source": "sources/tree__orchard_pear_i-v1.png",
+      "sourceSha256": "28b6eeab2e9592d6a1deb3ca2d39a210257a828ed3f42cd5dfe4bab71ecb4f30",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "sourceCrop": [
+        341,
+        40,
+        606,
+        1155
+      ],
+      "destinationRect": [
+        70.75324675324676,
+        12,
+        121.72467532467532,
+        232
+      ],
+      "singleResize": true,
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaBounds": [
+        71,
+        12,
+        121,
+        232
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1977,
+      "target": "assets/tree/orchard_pear_i-v1.png",
+      "sha256": "924fa99b8bb3e6d1fb57eaa2d3fbd20da084d8db198b97cc207b8bd88dbc91fb"
+    },
+    {
+      "id": "tree/orchard_plum_j-v1",
+      "source": "sources/tree__orchard_plum_j-v1.png",
+      "sourceSha256": "9e397dd67111d8b21be6aebfe98488961ee729f8ce6716369edb83c6c0442be6",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "sourceCrop": [
+        36,
+        143,
+        1204,
+        1005
+      ],
+      "destinationRect": [
+        12,
+        50.98675496688742,
+        231.23178807947022,
+        193.01324503311258
+      ],
+      "singleResize": true,
+      "pivot": [
+        128,
+        244
+      ],
+      "alphaBounds": [
+        12,
+        51,
+        231,
+        193
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 2621,
+      "target": "assets/tree/orchard_plum_j-v1.png",
+      "sha256": "7a1b5e5de20682af913489b9239769886dae8021d0f28d141e64e7163513958a"
+    },
+    {
+      "id": "field/ridge_stubble_a-v1",
+      "source": "sources/field__ridge_stubble_a-v1.png",
+      "sourceSha256": "29f7aab1c30b19575445452e6e1dc287e2a79a866acce52b2d5ae00c07644cc2",
+      "nativeSize": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "sourceCrop": [
+        0,
+        245,
+        2172,
+        241
+      ],
+      "destinationRect": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "pivot": [
+        256,
+        32
+      ],
+      "alphaBounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "seam": {
+        "method": "X-edge matched paired crossfade, 24px each edge; no Y repeat",
+        "alpha": "exact reference growing alpha, unchanged per pixel"
+      },
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1022,
+      "target": "assets/field/ridge_stubble_a-v1.png",
+      "sha256": "ae916a1c3246e4d5adc55a52d850376955642d6830df458263f55dc96a5f960c"
+    },
+    {
+      "id": "field/ridge_stubble_b-v1",
+      "source": "sources/field__ridge_stubble_b-v1.png",
+      "sourceSha256": "c0553a8eebcbe28f73bd01eeef706a0ee1f3a98346fa87c2689baaddf56ea2d2",
+      "nativeSize": [
+        2172,
+        724
+      ],
+      "size": [
+        512,
+        64
+      ],
+      "sourceCrop": [
+        0,
+        245,
+        2172,
+        236
+      ],
+      "destinationRect": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "singleResize": true,
+      "pivot": [
+        256,
+        32
+      ],
+      "alphaBounds": [
+        0,
+        1,
+        512,
+        62
+      ],
+      "seam": {
+        "method": "X-edge matched paired crossfade, 24px each edge; no Y repeat",
+        "alpha": "exact reference growing alpha, unchanged per pixel"
+      },
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1022,
+      "target": "assets/field/ridge_stubble_b-v1.png",
+      "sha256": "9be2b901ea4612be97a95d07b0860c5bade34e3ec1545115b9241ee4394956ee"
+    },
+    {
+      "id": "farmstead_a-v1",
+      "source": "sources/farmstead_a-v1.png",
+      "sourceSha256": "5de0a9f6dcc6e6b00a1e8b38442f7230b601d1fe6c4dcb1e591e852cf4359c3b",
+      "nativeSize": [
+        1359,
+        1157
+      ],
+      "size": [
+        160,
+        136
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1359,
+        1157
+      ],
+      "destinationRect": [
+        0,
+        0,
+        160,
+        136
+      ],
+      "singleResize": true,
+      "pivot": [
+        80,
+        120
+      ],
+      "alphaBounds": [
+        13,
+        14,
+        134,
+        112
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1399,
+      "target": "assets/farmstead_a-v1.png",
+      "sha256": "b1ed6db5a0c20ec5a70e58b81b9f707294184f83c5fc551cc446445aa9166846"
+    },
+    {
+      "id": "farmstead_b-v1",
+      "source": "sources/farmstead_b-v1.png",
+      "sourceSha256": "3a45375903fff1c6988654a57096e1beffa566259dc0578a28802fc2bc82528d",
+      "nativeSize": [
+        1359,
+        1157
+      ],
+      "size": [
+        160,
+        136
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1359,
+        1157
+      ],
+      "destinationRect": [
+        0,
+        0,
+        160,
+        136
+      ],
+      "singleResize": true,
+      "pivot": [
+        80,
+        120
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        146,
+        121
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1571,
+      "target": "assets/farmstead_b-v1.png",
+      "sha256": "2d56aed77a53f12f9dfb094dab401cc48a696a0910e53ac0a25d23cd68f1a95f"
+    },
+    {
+      "id": "farmstead_working-v1",
+      "source": "sources/farmstead_working-v1.png",
+      "sourceSha256": "8a94be5dbda176d9c93d5194c2c0af0ab349a59446d9f5948523abcb7992b00c",
+      "nativeSize": [
+        1359,
+        1157
+      ],
+      "size": [
+        160,
+        136
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1359,
+        1157
+      ],
+      "destinationRect": [
+        0,
+        0,
+        160,
+        136
+      ],
+      "singleResize": true,
+      "pivot": [
+        80,
+        120
+      ],
+      "alphaBounds": [
+        13,
+        13,
+        134,
+        113
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1502,
+      "target": "assets/farmstead_working-v1.png",
+      "sha256": "05f62c38400629af88b6e29243fe78e8d90b36cd990869172294245cbf7fac1f"
+    },
+    {
+      "id": "animal/ox_plough_team-v1",
+      "source": "sources/animal__ox_plough_team-v1-regenerate.png",
+      "sourceSha256": "100027e67f8e7c6cd4795660ba0386c61041bcada7574cf0e81b10484eeb8911",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "size": [
+        192,
+        128
+      ],
+      "sourceCrop": [
+        47,
+        67,
+        1454,
+        881
+      ],
+      "destinationRect": [
+        8,
+        13.359009628610721,
+        176,
+        106.64099037138928
+      ],
+      "singleResize": true,
+      "pivot": [
+        96,
+        120
+      ],
+      "alphaBounds": [
+        8,
+        13,
+        176,
+        107
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 2197,
+      "target": "assets/animal/ox_plough_team-v1.png",
+      "sha256": "b40a841b580880c575cb843821ba402381064b2d92ea9885d49d31342d6e673b"
+    },
+    {
+      "id": "animal/ox_cart_hay-v1",
+      "source": "sources/animal__ox_cart_hay-v1.png",
+      "sourceSha256": "4205835e1629e5631f4be572e4e0072904a1681c8766e8dcd3bec9845693f49e",
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "size": [
+        192,
+        128
+      ],
+      "sourceCrop": [
+        122,
+        80,
+        1349,
+        863
+      ],
+      "destinationRect": [
+        8.463499420625723,
+        8.000000000000014,
+        175.07300115874855,
+        111.99999999999999
+      ],
+      "singleResize": true,
+      "pivot": [
+        96,
+        120
+      ],
+      "alphaBounds": [
+        9,
+        8,
+        175,
+        112
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1395,
+      "target": "assets/animal/ox_cart_hay-v1.png",
+      "sha256": "8b406adbda172f94c6b65890f23058f5e3ac26e4feca260dc7140078a59fb577"
+    },
+    {
+      "id": "animal/sheep_flock-v1",
+      "source": "sources/animal__sheep_flock-v1.png",
+      "sourceSha256": "f21b26cb809a2a9f62f7f90bc56d8b335caf54d196cd884c7cba8fe5513065df",
+      "nativeSize": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "sourceCrop": [
+        181,
+        207,
+        1143,
+        714
+      ],
+      "destinationRect": [
+        8,
+        18.036745406824153,
+        112,
+        69.96325459317585
+      ],
+      "singleResize": true,
+      "pivot": [
+        64,
+        88
+      ],
+      "alphaBounds": [
+        8,
+        18,
+        112,
+        70
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 939,
+      "target": "assets/animal/sheep_flock-v1.png",
+      "sha256": "77bb4712641f8d56517f74f7e80157c6deb40a1bc2f29c5197347badfc561945"
+    },
+    {
+      "id": "animal/cattle_pair-v1",
+      "source": "sources/animal__cattle_pair-v1.png",
+      "sourceSha256": "770a0b6fa344853115e8ccd3ea7f7315d0391eed3298efa603b5c959b24da043",
+      "nativeSize": [
+        1448,
+        1086
+      ],
+      "size": [
+        128,
+        96
+      ],
+      "sourceCrop": [
+        250,
+        130,
+        1030,
+        758
+      ],
+      "destinationRect": [
+        9.646437994722952,
+        8,
+        108.7071240105541,
+        80
+      ],
+      "singleResize": true,
+      "pivot": [
+        64,
+        88
+      ],
+      "alphaBounds": [
+        10,
+        8,
+        108,
+        80
+      ],
+      "seam": null,
+      "transparentRGBDilation": 3,
+      "bleedPixels": 1026,
+      "target": "assets/animal/cattle_pair-v1.png",
+      "sha256": "2a87515ebf312141f99270e079e3c5b3ac36bcd86a7dac61548bab8043446760"
+    }
+  ]
+}

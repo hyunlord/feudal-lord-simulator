@@ -1,0 +1,62 @@
+[
+  {
+    "id": "bar_latch",
+    "file": "assets/signifier/bar_latch-v2.png",
+    "width": 48,
+    "height": 48,
+    "role": "detached status signifier",
+    "pivot": {
+      "x": 24,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project signifier into a more readable 48x48 transparent RGBA game sprite. Preserve its medieval hand-painted isometric style, horizontal heavy OAK BAR held across TWO SHORT UPRIGHT BRACKETS, representing a closed worksite latch. Enlarge thick crossbar silhouette, simplify tiny fittings, muted warm brown with soft upper-left light. Object fills 88 percent width. Only detached latch hardware, no door, house, ground, broad shadow, text, labels or background. Genuine transparent background. Must remain distinct from a tied cloth bundle when shown at 14 pixels wide. One object only.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/signifier/bar_latch-v1.png"
+        ],
+        "rawFile": "sources/signifiers/bar_latch-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": [
+      "Alpha>8 bounds; uniform Lanczos resize into44x44; transparent48x48 canvas; bottom46 anchor."
+    ],
+    "qa": {
+      "status": "candidate",
+      "runtime": "not installed"
+    }
+  },
+  {
+    "id": "bundle_family_prop",
+    "file": "assets/signifier/bundle_family_prop-v2.png",
+    "width": 48,
+    "height": 48,
+    "role": "detached status signifier",
+    "pivot": {
+      "x": 24,
+      "y": 46
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit attached project tied family travelling bundle into a more readable 48x48 transparent RGBA game sprite. Preserve medieval hand-painted isometric style: ONE PLUMP DUSTY RUSSET CLOTH BUNDLE, broad rounded pear silhouette, bold knotted top with two clear short cloth tails. Simplify microfolds; soft upper-left light, restrained earth palette. Fill 85 percent canvas. Only detached bundle, no person, stick, house, ground, broad shadow, text, labels or backdrop. Genuine transparent background. Distinct from a straight wooden latch even at 14 pixels wide.",
+        "references": [
+          "output/astra-wave7-candidates-v1/assets/signifier/bundle_family_prop-v1.png"
+        ],
+        "rawFile": "sources/signifiers/bundle_family_prop-raw.png",
+        "tool": "builtin image_gen",
+        "model": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": [
+      "Alpha>8 bounds; uniform Lanczos resize into44x44; transparent48x48 canvas; bottom46 anchor."
+    ],
+    "qa": {
+      "status": "candidate",
+      "runtime": "not installed"
+    }
+  }
+]

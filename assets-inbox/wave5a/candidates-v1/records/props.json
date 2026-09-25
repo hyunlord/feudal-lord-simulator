@@ -1,0 +1,1704 @@
+[
+  {
+    "kind": "tool_axe",
+    "direction": "NE",
+    "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_axe_NE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-568142da-7f26-465a-b3b6-049d89b200c8.png",
+    "id": "held_tool_axe_NE-v1",
+    "file": "assets/props/held_tool_axe_NE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 13,
+      "y": 19,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 237
+    },
+    "alpha": {
+      "transparent": 839,
+      "partial": 185,
+      "opaque": 0
+    },
+    "sha256": "60759e58fdfb9f86b508e0eedc2ed36120140db8cc7228a07cba5f87598fa3c5",
+    "sourceSha256": "2bb333c333a34f66e426827b43ab75983946db1f3a85de9760dc166867a18b9c",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 421,
+        "y": 311,
+        "width": 545,
+        "height": 637
+      },
+      "scale": 0.04395604395604396,
+      "offset": [
+        4.021978021978022,
+        1.9999999999999982
+      ],
+      "maximumVisibleEdge": 28
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_axe",
+    "direction": "SE",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_axe_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_axe_SE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-818aecbf-3e2d-4eb9-9419-c9b00004f75a.png",
+    "id": "held_tool_axe_SE-v1",
+    "file": "assets/props/held_tool_axe_SE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 19,
+      "y": 19,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 827,
+      "partial": 197,
+      "opaque": 0
+    },
+    "sha256": "8ae76a91430274fcadbf1133eb6929a6c2cd06732c8173a671a6171e77057cdc",
+    "sourceSha256": "083df849adc9a7062a6afc23cdcd779205036a82b53de106c798fde1a5ab9860",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_axe_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 310,
+        "y": 291,
+        "width": 633,
+        "height": 690
+      },
+      "scale": 0.04057971014492753,
+      "offset": [
+        3.1565217391304365,
+        2.0000000000000018
+      ],
+      "maximumVisibleEdge": 28
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_axe",
+    "direction": "SW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_axe_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_axe_SW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-99a2d762-a435-4fc6-8f79-d2153a50ff99.png",
+    "id": "held_tool_axe_SW-v1",
+    "file": "assets/props/held_tool_axe_SW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 13,
+      "y": 18,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested; snapped to nearest alpha>=200 grip-edge pixel",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252,
+      "originalVisualEstimate": [
+        13,
+        19
+      ],
+      "snapDistancePx": 1
+    },
+    "alpha": {
+      "transparent": 822,
+      "partial": 202,
+      "opaque": 0
+    },
+    "sha256": "8eef452c826f4832ae3e9b5219831b0db7d89d359042443a63ec8e878b5ca8c7",
+    "sourceSha256": "388bbba76b9926a9bacc2e30cb7299ecb56170727a40df7995ca5ebc7fee93e1",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_axe_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 327,
+        "y": 270,
+        "width": 710,
+        "height": 737
+      },
+      "scale": 0.037991858887381276,
+      "offset": [
+        2.5128900949796478,
+        2
+      ],
+      "maximumVisibleEdge": 28
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_axe",
+    "direction": "NW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_axe_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_axe_NW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-dbe8b0fb-0630-401c-ad9b-504918e9c096.png",
+    "id": "held_tool_axe_NW-v1",
+    "file": "assets/props/held_tool_axe_NW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 19,
+      "y": 19,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 838,
+      "partial": 186,
+      "opaque": 0
+    },
+    "sha256": "9d5d59cac0b36c7106e50842a18147facff93473d188faaaabc9555177f25ada",
+    "sourceSha256": "ec78a1ffc9b74f2354b6151bbb7b89e4120762d20d01897dc6a7be3a39388982",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval one-handed work axe, plain weathered ash handle, simple asymmetric dark forged iron axe head. NOT a fantasy weapon, no double blade, no modern polished steel. Grip anchor middle of woodhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_axe_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 345,
+        "y": 282,
+        "width": 592,
+        "height": 701
+      },
+      "scale": 0.039942938659058486,
+      "offset": [
+        4.176890156918688,
+        2
+      ],
+      "maximumVisibleEdge": 28
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_hammer",
+    "direction": "NE",
+    "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_hammer_NE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-de576203-5ac3-4d19-bda3-4991b8bb0a11.png",
+    "id": "held_tool_hammer_NE-v1",
+    "file": "assets/props/held_tool_hammer_NE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 14,
+      "y": 20,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 249
+    },
+    "alpha": {
+      "transparent": 824,
+      "partial": 200,
+      "opaque": 0
+    },
+    "sha256": "ef82913f1a25f2cec045a34b30fbb4eeda7d63e2e7e43699ba3af5ab6559792e",
+    "sourceSha256": "11ca64c4bada7709cfbf5cf511f82cd34fc178f3723da406ba7e259b59b6efca",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 357,
+        "y": 337,
+        "width": 600,
+        "height": 600
+      },
+      "scale": 0.04,
+      "offset": [
+        4,
+        4
+      ],
+      "maximumVisibleEdge": 24
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_hammer",
+    "direction": "SE",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_hammer_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_hammer_SE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-daa891cf-0797-4789-8e46-afd8af29960c.png",
+    "id": "held_tool_hammer_SE-v1",
+    "file": "assets/props/held_tool_hammer_SE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 18,
+      "y": 20,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 830,
+      "partial": 194,
+      "opaque": 0
+    },
+    "sha256": "ac048acbb4d61ebd004137dac74e7f00d15214e288dad95ef26fffe5679b673c",
+    "sourceSha256": "29c032092947cc0af9d973f6e1e61f8ad7f07eeefe93238f296f09e57d174b1d",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_hammer_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 354,
+        "y": 348,
+        "width": 577,
+        "height": 580
+      },
+      "scale": 0.041379310344827586,
+      "offset": [
+        4.062068965517241,
+        4
+      ],
+      "maximumVisibleEdge": 24
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_hammer",
+    "direction": "SW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_hammer_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_hammer_SW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-9a1e6c42-34bc-4570-af47-d5b17ead8703.png",
+    "id": "held_tool_hammer_SW-v1",
+    "file": "assets/props/held_tool_hammer_SW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 14,
+      "y": 20,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 158
+    },
+    "alpha": {
+      "transparent": 833,
+      "partial": 191,
+      "opaque": 0
+    },
+    "sha256": "2e6cf985c4f6823d4b618652a761cec3f4fdc19fd8fb9a6fb44c3808a41e4677",
+    "sourceSha256": "87f2d44e0f377e691ce7d3db8a0494f6408e4c449c04bfc0928b74074da7a8c9",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_hammer_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 360,
+        "y": 349,
+        "width": 604,
+        "height": 585
+      },
+      "scale": 0.039735099337748346,
+      "offset": [
+        4,
+        4.377483443708609
+      ],
+      "maximumVisibleEdge": 24
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "tool_hammer",
+    "direction": "NW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_hammer_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_tool_hammer_NW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-48822876-ad4e-45d2-92e3-59b8d0ce8bec.png",
+    "id": "held_tool_hammer_NW-v1",
+    "file": "assets/props/held_tool_hammer_NW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 18,
+      "y": 20,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 841,
+      "partial": 183,
+      "opaque": 0
+    },
+    "sha256": "f0f4a57253fac1c758e8e9d48c163c61d1768ec89b6f1b45e75b567eac7b98b3",
+    "sourceSha256": "d3734503b28cee750b1ccad2b76288bf64784ea5e1d9b27544178f91a855b224",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval carpenter's hammer, plain short oak handle and compact rectangular dark forged iron head, no modern rubber grip, no brightsteel, no branding. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_tool_hammer_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 310,
+        "y": 321,
+        "width": 603,
+        "height": 610
+      },
+      "scale": 0.03934426229508197,
+      "offset": [
+        4.137704918032785,
+        3.9999999999999982
+      ],
+      "maximumVisibleEdge": 24
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SW and SE/NW near-pairs; tool identity preserved but back/front differences weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_cloth",
+    "direction": "NE",
+    "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_cloth_NE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-99c6870e-c09b-41c6-a7d1-52f1842e07c9.png",
+    "id": "held_bundle_cloth_NE-v1",
+    "file": "assets/props/held_bundle_cloth_NE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 748,
+      "partial": 276,
+      "opaque": 0
+    },
+    "sha256": "f5c03a73b48efeb4db8dfbcf7dff67c23085bb7caf151257dc0c3308fa526d41",
+    "sourceSha256": "f8e4964aa9a1a9982674dd0b8e3d62e09cb736fb12c1d01b6ad40166f6d45894",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 303,
+        "y": 324,
+        "width": 646,
+        "height": 604
+      },
+      "scale": 0.034055727554179564,
+      "offset": [
+        5,
+        5.715170278637771
+      ],
+      "maximumVisibleEdge": 22
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE and SW/NW near-pairs; fold stack and loop preserved but view separation weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_cloth",
+    "direction": "SE",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_cloth_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_cloth_SE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-3a88946d-4909-465c-b3c5-8b67bbfb6606.png",
+    "id": "held_bundle_cloth_SE-v1",
+    "file": "assets/props/held_bundle_cloth_SE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 742,
+      "partial": 282,
+      "opaque": 0
+    },
+    "sha256": "7727c535d2173f94161014b2af926c2c71f72a6cdafd105c21538f379676287f",
+    "sourceSha256": "2df6978c02d9ecd3ddf271fbf0e287348273a1bbfa07be4f5a9abc478d9ace5a",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_cloth_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 302,
+        "y": 308,
+        "width": 652,
+        "height": 622
+      },
+      "scale": 0.03374233128834356,
+      "offset": [
+        5,
+        5.506134969325153
+      ],
+      "maximumVisibleEdge": 22
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE and SW/NW near-pairs; fold stack and loop preserved but view separation weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_cloth",
+    "direction": "SW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_cloth_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_cloth_SW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-55a2ce56-afd3-46db-954a-68ed1af38c35.png",
+    "id": "held_bundle_cloth_SW-v1",
+    "file": "assets/props/held_bundle_cloth_SW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 748,
+      "partial": 276,
+      "opaque": 0
+    },
+    "sha256": "0cd86076a1b64ff38b885cffab6039b64a3fca38342737426376bd6dd297f962",
+    "sourceSha256": "c2f4b04cd6e59af7f6d875f7e675843fdf5a9cf99020d903b7b9bb39d1e59237",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_cloth_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 347,
+        "y": 350,
+        "width": 577,
+        "height": 547
+      },
+      "scale": 0.038128249566724434,
+      "offset": [
+        5,
+        5.571923743500868
+      ],
+      "maximumVisibleEdge": 22
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE and SW/NW near-pairs; fold stack and loop preserved but view separation weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_cloth",
+    "direction": "NW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_cloth_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_cloth_NW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-5746927d-94e4-4b68-905a-77096567db8f.png",
+    "id": "held_bundle_cloth_NW-v1",
+    "file": "assets/props/held_bundle_cloth_NW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 742,
+      "partial": 282,
+      "opaque": 0
+    },
+    "sha256": "a93092a4a8bcf4e6ac846079e52a505c7e58e46d2be26999a1bacc5a7974e244",
+    "sourceSha256": "320da4943f80a8a1810c2149945d4cf6a32d0a184fcdaffafac9d5ef2cfac7fd",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small compact bundle of folded muted woad blue and madder brick red woolcloth, tied together with plain flax cord. Rectangular folded fabric, one loopknot centered at top for carrying. Grip anchor top knot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_cloth_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 337,
+        "y": 355,
+        "width": 584,
+        "height": 569
+      },
+      "scale": 0.03767123287671233,
+      "offset": [
+        5,
+        5.282534246575343
+      ],
+      "maximumVisibleEdge": 22
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE and SW/NW near-pairs; fold stack and loop preserved but view separation weak.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_wool",
+    "direction": "NE",
+    "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_wool_NE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-1590507d-3afc-43cf-9a1b-b07ab928f5a0.png",
+    "id": "held_bundle_wool_NE-v1",
+    "file": "assets/props/held_bundle_wool_NE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 17,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested; snapped to nearest alpha>=200 grip-edge pixel",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252,
+      "originalVisualEstimate": [
+        16,
+        7
+      ],
+      "snapDistancePx": 1
+    },
+    "alpha": {
+      "transparent": 823,
+      "partial": 201,
+      "opaque": 0
+    },
+    "sha256": "d9ea899186bf4696e004e51dcde854f9551b61f90afb03b24a51c53a7d3b27bb",
+    "sourceSha256": "15a292aeb47971b697634c3531d0dd3882afb4d69743e9f13ae394898f2d4db2",
+    "rawSize": [
+      1774,
+      887
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 693,
+        "y": 198,
+        "width": 393,
+        "height": 497
+      },
+      "scale": 0.04024144869215292,
+      "offset": [
+        8.092555331991953,
+        6
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_wool",
+    "direction": "SE",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_wool_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_wool_SE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-ccfcad19-eda2-4526-a5cf-fee13c91c062.png",
+    "id": "held_bundle_wool_SE-v1",
+    "file": "assets/props/held_bundle_wool_SE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 846,
+      "partial": 178,
+      "opaque": 0
+    },
+    "sha256": "a51276d466addc063574371fe8c9d9b60b6c506de52aacce0e18c220ba26b757",
+    "sourceSha256": "c5ca5d494b8f8bcb98033f557a709e7fb245c948cfb4ff8644fe8ba7862e1052",
+    "rawSize": [
+      1774,
+      887
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_wool_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 670,
+        "y": 158,
+        "width": 436,
+        "height": 580
+      },
+      "scale": 0.034482758620689655,
+      "offset": [
+        8.482758620689655,
+        6
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_wool",
+    "direction": "SW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_wool_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_wool_SW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-f79af753-ea63-437f-95ba-291957b57cb7.png",
+    "id": "held_bundle_wool_SW-v1",
+    "file": "assets/props/held_bundle_wool_SW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 836,
+      "partial": 188,
+      "opaque": 0
+    },
+    "sha256": "cd08f23b21dcad33e1c8c374d3cee4961ec7f475a7535766af6f7e6e1997e707",
+    "sourceSha256": "5f7bd2edb4a8007840af882c14ddabc74e883d92645b11f943169dad5b183ce9",
+    "rawSize": [
+      1774,
+      887
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_wool_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 678,
+        "y": 187,
+        "width": 411,
+        "height": 528
+      },
+      "scale": 0.03787878787878788,
+      "offset": [
+        8.21590909090909,
+        6
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "bundle_wool",
+    "direction": "NW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_wool_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_bundle_wool_NW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-53a6add1-d312-4a62-9905-14ac3de47616.png",
+    "id": "held_bundle_wool_NW-v1",
+    "file": "assets/props/held_bundle_wool_NW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 7,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "top cord-loop grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 243
+    },
+    "alpha": {
+      "transparent": 830,
+      "partial": 194,
+      "opaque": 0
+    },
+    "sha256": "d1175f7db963a02cbaa6445d0b6ec79dcd785a1d7c24294f1029f7324a09818c",
+    "sourceSha256": "b9e4699a14fc7ddbb25021f18b333bfbde3179f0d7c07ac7d771e0e8408f2325",
+    "rawSize": [
+      1774,
+      887
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small tied bundle of unspun undyed cream sheepwool, gently lumpy rawfleece, bound with plain flax string and small carryingloop at top. No basket, no bag. Grip anchor topstringknot. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_bundle_wool_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 677,
+        "y": 159,
+        "width": 441,
+        "height": 559
+      },
+      "scale": 0.03577817531305903,
+      "offset": [
+        8.110912343470483,
+        6
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "jug",
+    "direction": "NE",
+    "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_jug_NE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-9d213a25-190c-41ef-98f8-bf096c6529db.png",
+    "id": "held_jug_NE-v1",
+    "file": "assets/props/held_jug_NE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 22,
+      "y": 15,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 792,
+      "partial": 232,
+      "opaque": 0
+    },
+    "sha256": "286d35cf86075fc443926eb115adb3ea3fb7d0956bc9ac3647d78d6a6dc01c29",
+    "sourceSha256": "bd34d8b610ece829c51a343555bab18e40a79ff69ca8b112f5891572c77156b6",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 403,
+        "y": 351,
+        "width": 467,
+        "height": 592
+      },
+      "scale": 0.033783783783783786,
+      "offset": [
+        8.111486486486486,
+        6
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE/SW all expose right-side handle; NW left handle. Rotation sequence is not proven geometrically consistent.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "jug",
+    "direction": "SE",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_jug_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_jug_SE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-457b4b81-2ec2-4d01-b85e-98172727ad22.png",
+    "id": "held_jug_SE-v1",
+    "file": "assets/props/held_jug_SE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 22,
+      "y": 14,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 786,
+      "partial": 238,
+      "opaque": 0
+    },
+    "sha256": "1dd5b154ab541914c896c72063f6359eb25fef620390f70cdc117eeb4d4a4b2c",
+    "sourceSha256": "73802871f515b7e14d6bc418152fda0e79adda03d895231b50c9484c738ef08a",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_jug_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 411,
+        "y": 354,
+        "width": 479,
+        "height": 581
+      },
+      "scale": 0.03442340791738382,
+      "offset": [
+        7.755593803786576,
+        6.000000000000002
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE/SW all expose right-side handle; NW left handle. Rotation sequence is not proven geometrically consistent.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "jug",
+    "direction": "SW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_jug_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_jug_SW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-15c77797-7666-4b8a-b2fa-85fa4d7c6b91.png",
+    "id": "held_jug_SW-v1",
+    "file": "assets/props/held_jug_SW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 23,
+      "y": 15,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 789,
+      "partial": 235,
+      "opaque": 0
+    },
+    "sha256": "5698bfd33a0b8a7c0071a39928d3ba236fd8f1887ee397b1c84238876a6e0b42",
+    "sourceSha256": "c93da0ac6ca115ac092da9e7d22864476f04cd3314fc217435c63a16e268961c",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_jug_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 402,
+        "y": 336,
+        "width": 505,
+        "height": 606
+      },
+      "scale": 0.033003300330033,
+      "offset": [
+        7.666666666666668,
+        6.000000000000002
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE/SW all expose right-side handle; NW left handle. Rotation sequence is not proven geometrically consistent.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "jug",
+    "direction": "NW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_jug_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_jug_NW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-00a1ae54-7edf-409b-9e06-3d5de63d346c.png",
+    "id": "held_jug_NW-v1",
+    "file": "assets/props/held_jug_NW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 10,
+      "y": 15,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "handle grip",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 801,
+      "partial": 223,
+      "opaque": 0
+    },
+    "sha256": "88e73a297d4c44afb0e0c340b68345903375bc5d10dcfef11e3a5a99c6a2267b",
+    "sourceSha256": "f295a51c2b432ea288bdecde81131eac5dfe17c19acb124f6a430f968a3a98a9",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small medieval buff brown earthenware jug with a single curved handle, small spout and mattepatchy transparentbrown glaze, no decoration, no modernlogo. Grip anchor middle ofhandle. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_jug_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 408,
+        "y": 346,
+        "width": 445,
+        "height": 587
+      },
+      "scale": 0.034071550255536626,
+      "offset": [
+        8.419080068143101,
+        6
+      ],
+      "maximumVisibleEdge": 20
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Partial: NE/SE/SW all expose right-side handle; NW left handle. Rotation sequence is not proven geometrically consistent.",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "loaf",
+    "direction": "NE",
+    "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_loaf_NE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-f87744db-fc43-40b0-ae68-5e1bc1f90408.png",
+    "id": "held_loaf_NE-v1",
+    "file": "assets/props/held_loaf_NE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 21,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "underside support",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 842,
+      "partial": 182,
+      "opaque": 0
+    },
+    "sha256": "dbd3dc7cf6cdb513d96c6a7ab9c80ec70ec7159abe915b07fc7fbbf68be1d7be",
+    "sourceSha256": "b69094243a7981f3e5c89e85f96e14cd2eb28b07d4cf819de02ee9ac270c3c24",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Asset type: ONE isolated detachable carried prop sprite for existing historical walkers. Input images are project art style references only, NOT human generation targets. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Southern England 1300–1450, small painterly 2:1 isometric elevated game camera, upper-left soft light, broad readable shapes at 32x32. Direction NE: the human carrier would face upper-right; show the prop from its BACK-RIGHT quarter. One object only centered with 12 percent padding, no person or hand, no ground or cast shadow. Genuine transparent RGBA background. No words, grid, label, anchor dot, border or vignette. Match the attached muted hand-painted sprite style.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/held_purse_SE-v1.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/references/astra-wave5a-reference-files/actor_merchant-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 360,
+        "y": 422,
+        "width": 547,
+        "height": 427
+      },
+      "scale": 0.03290676416819013,
+      "offset": [
+        7,
+        8.974405850091408
+      ],
+      "maximumVisibleEdge": 18
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "loaf",
+    "direction": "SE",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_loaf_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_loaf_SE-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-2b5d7fe5-8104-451d-bfa8-dc9d33acb78b.png",
+    "id": "held_loaf_SE-v1",
+    "file": "assets/props/held_loaf_SE-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 21,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "underside support",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 842,
+      "partial": 182,
+      "opaque": 0
+    },
+    "sha256": "e916bc47c4455e75618d895a5f294837251155a5c4377c72992ab9131219115f",
+    "sourceSha256": "974df459bfc8b83b1934e837e33775807e8bca79d779e5fb385b84f662b6b061",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SE view as a separate transparent sprite. FRONT-RIGHT quarter view, carrier faces lower-right. Rotate shape so front-facing details and right side read, compared to NE rear-right. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_loaf_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 342,
+        "y": 424,
+        "width": 568,
+        "height": 452
+      },
+      "scale": 0.03169014084507042,
+      "offset": [
+        7,
+        8.838028169014084
+      ],
+      "maximumVisibleEdge": 18
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "loaf",
+    "direction": "SW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_loaf_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_loaf_SW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-a094389a-63a9-48d0-9d9a-4286712cd532.png",
+    "id": "held_loaf_SW-v1",
+    "file": "assets/props/held_loaf_SW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 21,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "underside support",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 253
+    },
+    "alpha": {
+      "transparent": 840,
+      "partial": 184,
+      "opaque": 0
+    },
+    "sha256": "de1109a608fa414032120ed6fcf470f2dfa943cd74ea5024a9a9626f1b3d01ea",
+    "sourceSha256": "7a980e09f5496a7b0567ee50ec33cbf423df982d06d2c7b79a3eb75796c0f575",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its SW view as a separate transparent sprite. FRONT-LEFT quarter view, carrier faces lower-left. Actual geometry turn, front and left side, not a flipped raster. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_loaf_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 361,
+        "y": 423,
+        "width": 561,
+        "height": 441
+      },
+      "scale": 0.03208556149732621,
+      "offset": [
+        6.999999999999998,
+        8.925133689839573
+      ],
+      "maximumVisibleEdge": 18
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  },
+  {
+    "kind": "loaf",
+    "direction": "NW",
+    "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_loaf_NE-v1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "source": "sources/props/held_loaf_NW-v1.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d70a-136c-7630-8487-039c101a9bc9/exec-176bd1fd-f7f8-45f3-80fa-8955b1cbacf1.png",
+    "id": "held_loaf_NW-v1",
+    "file": "assets/props/held_loaf_NW-v1.png",
+    "width": 32,
+    "height": 32,
+    "anchor": {
+      "x": 16,
+      "y": 21,
+      "space": "32x32 PNG pixel coordinates, origin upper-left",
+      "role": "underside support",
+      "method": "Manual visual estimate on final PNG, integration alignment not yet tested",
+      "uncertaintyPx": 2,
+      "alphaAtEstimatedPoint": 252
+    },
+    "alpha": {
+      "transparent": 830,
+      "partial": 194,
+      "opaque": 0
+    },
+    "sha256": "2fb98ccf9a6943c47ffd14fd963a5e66fa0362e60c5915d7adce5da96de9baf6",
+    "sourceSha256": "b72e8c36a7f50be2a755d8083e6b260e12af88c969c160e6fb1c3bf0f0f79e66",
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Edit target is the attached isolated NE held prop. Create its NW view as a separate transparent sprite. BACK-LEFT quarter view, carrier faces upper-left. Rear surfaces and left side, do not merely flip the NE image. Upper-left lighting unchanged. Same object's design, proportions, muted colors, material, cord loops and handle construction. A small rustic oval medieval bread loaf, warm muted ocherbrown crust, one natural split seam across top, simple handformed rough shape. No plate, no cloth. Grip anchor undersidecenter. Fixed elevated 2:1 isometric game camera and upper-left illumination. No horizontal flip. ONE object, no human or hand, no floor/shadow/text/anchor mark/grid. True transparent RGBA. Centered with padding for final32x32sprite; broad handpainteddetails.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/sources/props/held_loaf_NE-v1.png"
+        ],
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Uniform significant-alpha-bounds (alpha greater than 32) crop/downscale on 32x32 transparent canvas; no painting, recoloring or mirroring",
+      "sourceBounds": {
+        "x": 358,
+        "y": 399,
+        "width": 535,
+        "height": 462
+      },
+      "scale": 0.03364485981308411,
+      "offset": [
+        7,
+        8.22803738317757
+      ],
+      "maximumVisibleEdge": 18
+    },
+    "status": "candidate",
+    "visualReview": {
+      "historicalMaterials": "No modern rubber/plastic, branding or fantasy blade observed",
+      "palette": "Muted iron/wood/earthenware; cloth woad blue and madder brick red; wool undyedcream",
+      "lighting": "Upper-left highlight kept, independent view edits not raster mirroring",
+      "directionConsistency": "Weak: near-radial shape makes front/back quarter identity difficult to establish; no geometry proof",
+      "runtimeStatus": "Candidate only; hand fit, occlusion and animation not tested in game"
+    }
+  }
+]

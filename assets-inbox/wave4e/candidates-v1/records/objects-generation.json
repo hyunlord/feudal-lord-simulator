@@ -1,0 +1,76 @@
+[
+  {
+    "id": "hurdle_quarter-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/objects/hurdle_quarter-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4c-v1/assets/fence/hurdle_half-v1.png"
+    ],
+    "prompt": "EDIT topology reference1 with weathered warm oak painted surface matching reference2. One miniature medieval wooden hurdle fence quarter length, two posts and two rails. Preserve exact white topology and black empty areas reference1, same camera rising right slope0.5. Paint white regions only with thick readable golden oak grain. Transparent background no ground no shadow no text. Final contract32x64, enlarged generation acceptable keep exact normalized post positions. Rails/posts broad, no extra structure."
+  },
+  {
+    "id": "sheep_flock_b-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/sheep_flock-v1.png"
+    ],
+    "prompt": "EDIT attached own project sheep sprite into independent variant B: exactly THREE medieval small cream wool sheep in a loose triangular group, one grazing left, one standing side view right, one smaller rear-facing sheep behind. Distinct individual legs silhouettes. Same fixed elevated isometric2:1 game painterly style muted warm cream/oak hues upper-left soft light. Transparent RGBA background, no ground platform, contact AO only no cast shadow, no text. Final128x96 landscape target, whole animals inside frame, no mirror of reference."
+  },
+  {
+    "id": "farmstead_winter-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/farmstead_a-v1.png"
+    ],
+    "prompt": "EDIT reference barn to WINTER non-snow condition. Preserve EXACT original barn roof/body silhouette, camera, canvas framing, location and contact pivot80,120 on160x136 target. Warm thatched roof and timber-frame closed wooden double doors, winter dry yard no grass and NO snow. Remove cart/plough in front-right yard replace with compact stacked firewood under low small rain cover next to building, transparent around individual objects, no added platform. Hand-painted medieval England1300-1450 same materials, upper-left soft light contact AO only. No text no new building mass."
+  },
+  {
+    "id": "hurdle_three_quarter-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/objects/hurdle_three_quarter-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4c-v1/assets/fence/hurdle_half-v1.png"
+    ],
+    "prompt": "ROLE module medieval wood hurdle 3/4 tile. EDIT black/white topology reference1: paint ONLY exact white posts/rails warm weathered oak matching reference2. White two posts and two broad rails rise to right with slope0.5; preserve normalized geometry and empty holes. Target96x64, enlarge whole canvas as needed. True transparent RGBA black regions become transparent. Broad painted woodgrain muted ochre, no ground no shadow no extra rail no text no checkered background. Fixed isometric SW and upper-left light.",
+    "transform": [
+      15.3542,
+      18.5385,
+      2.8526,
+      44.5,
+      -177.6
+    ]
+  },
+  {
+    "id": "hurdle_gate_short-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/sources/objects/hurdle_gate_short-v1-mask.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/hurdle_gate-v1.png"
+    ],
+    "prompt": "ROLE module medieval wood hurdle HALF-TILE short gate. EDIT topology reference1 precisely: two posts, two rails and one diagonal brace. Paint white geometry with muted warm weathered oak from reference2, simple iron hinge/latch on gate, same rising-right slope0.5, preserve exact normalized ports and all black empty holes transparent. Final64x64 square contract. Transparent RGBA no checker no ground no shadows no text. Fixed SW isometric medieval hand-painted small game sprite, broad woodgrain. Not a mirror or cropped previous gate.",
+    "transform": [
+      23.59,
+      14.615,
+      -3.63,
+      -77.44,
+      269.64
+    ]
+  },
+  {
+    "id": "sheep_flock_c-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/sheep_flock-v1.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/assets/animal/sheep_flock_b-v1.png"
+    ],
+    "prompt": "EDIT attached project sheep art into independently painted variant C: EXACTLY FOUR sheep in curved diagonal single-file cluster, three cream sheep plus EXACTLY ONE charcoal BLACK sheep prominently at front left. A cream sheep behind black faces away, two sheep at right graze different directions. Clear separate body and leg silhouettes, avoid overlap of heads. Same fixed high SW isometric2:1 camera muted painted medieval English game art. True transparent RGBA, no ground pad no text, tiny contact AO only, no cast shadow. Final128x96 landscape canvas. No mirror or duplication of reference layout."
+  },
+  {
+    "id": "sheep_flock_d-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/sheep_flock-v1.png"
+    ],
+    "prompt": "EDIT project sheep flock reference into independent variant D: EXACTLY FIVE small cream wool sheep, widely spread staggered shallow zigzag, two grazing with heads low, one smaller young sheep in middle, two standing facing opposite diagonals. Different composition than reference, no reuse or mirror. Painterly medieval English game sprite fixed high SW isometric2:1 camera upper-left soft light muted cream natural wool. Transparent RGBA no ground patch no text no platform, contact AO only. Final128x96 wholegroup fullyinsideframe clear legs and heads."
+  },
+  {
+    "id": "pig_pair-v1",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave4e-candidates-v1/references/astra-wave4e-reference-files/sheep_flock-v1.png"
+    ],
+    "prompt": "Use project animal reference solely for hand-painted small-game sprite STYLE and camera; create TWO medieval woodland grazing DOMESTIC PIGS, lean bristly brown-gray long-snouted pigs not modern pink round commercial breed, one mottled brown and one dark charcoal. One noses downward left, second stands facing right behind, separate silhouettes. Fixed SW high isometric2:1 upper-left soft light, broad readable shapes. Genuine transparent RGBA no grass island no ground no text no cast shadow contact AO only. Final128x96 whole pair insideframe. Independently drawn no mirror."
+  }
+]

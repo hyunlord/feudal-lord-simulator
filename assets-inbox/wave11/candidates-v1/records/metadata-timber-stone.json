@@ -1,0 +1,1663 @@
+[
+  {
+    "id": "kit_timber/stage_frame_small-v1",
+    "file": "assets/kit_timber/stage_frame_small-v1.png",
+    "width": 153,
+    "height": 153,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l0-v3.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          62,
+          88
+        ],
+        [
+          91,
+          138
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its CONSTRUCTION FRAME STAGE. Preserve exactly the isometric camera, building footprint corner positions and contact baseline, canvas composition, muted handpainted style. Transparent RGBA isolated object. Remove the entire roof and plaster walls, leaving a clearly readable standing OAK POST AND BEAM WALL FRAME, low stone sill, open interior, with one wall frame still lying flat inside the footprint being assembled on the ground. No roof rafters yet. No people, no material piles, no loose stacks, no yard, no tools scattered, no grass, no text, no chimney, no broad cast shadow. Keep large clear structural members legible at 60% of the original small image.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-small-frame.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          191,
+          715
+        ],
+        [
+          480,
+          541
+        ],
+        [
+          751,
+          1063
+        ]
+      ],
+      "targetAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          62,
+          88
+        ],
+        [
+          91,
+          138
+        ]
+      ],
+      "transform": [
+        0.11428571428571428,
+        -0.008787346221441126,
+        0,
+        0.10034745368967538,
+        6.157142857142858,
+        37.92995374017735
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 11278
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        0.9857142857142875,
+        0.9857142857142875,
+        0.9857142857142804
+      ],
+      "maxContactResidualPx": 0.9857142857142875,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "f769e5dcbcfd53f4a2c00aea1eb7f89179bdf8767ba32c93d1ef21270af524e1"
+  },
+  {
+    "id": "kit_stone/stage_frame_medium-v1",
+    "file": "assets/kit_stone/stage_frame_medium-v1.png",
+    "width": 138,
+    "height": 138,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "masonry-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its CONSTRUCTION FRAME STAGE. Preserve exactly the isometric camera, building footprint corner positions and contact baseline, canvas composition, muted handpainted style. Transparent RGBA isolated object. Replace complete building with HALF HEIGHT RUBBLE STONE WALLS with door gap, stout OAK TIMBER SCAFFOLD around the walls, one small mortar tub INSIDE the footprint and a short plank ramp. No roof yet. No people, no material piles, no loose stacks, no yard, no tools scattered, no grass, no text, no chimney, no broad cast shadow. Keep large clear structural members legible at 60% of the original small image.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-medium-frame.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          205,
+          798
+        ],
+        [
+          1040,
+          970
+        ],
+        [
+          748,
+          1095
+        ]
+      ],
+      "targetAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ],
+      "transform": [
+        0.11616766467065869,
+        -0.022050595411354536,
+        0,
+        0.1244898091190758,
+        -4.353892215568866,
+        5.177504382305202
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 13432
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        2.539520958083834,
+        2.539520958083827,
+        2.539520958083841
+      ],
+      "maxContactResidualPx": 2.539520958083841,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "3000f6a8acc8c755b41be527d57c202b355712222de624cdc4205467a3a95b5a"
+  },
+  {
+    "id": "kit_timber/stage_plot_small-v1",
+    "file": "assets/kit_timber/stage_plot_small-v1.png",
+    "width": 153,
+    "height": 153,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l0-v3.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          62,
+          88
+        ],
+        [
+          91,
+          138
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-small-plot.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          243,
+          778
+        ],
+        [
+          505,
+          617
+        ],
+        [
+          736,
+          1068
+        ]
+      ],
+      "targetAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          62,
+          88
+        ],
+        [
+          91,
+          138
+        ]
+      ],
+      "transform": [
+        0.12981744421906694,
+        -0.006243844663443899,
+        0,
+        0.1140628117899236,
+        -4.051724137931032,
+        20.7763866806563
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 23807
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        0.49391480730223236,
+        0.49391480730223236,
+        0.49391480730223236
+      ],
+      "maxContactResidualPx": 0.49391480730223236,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Survey pegs readable; family material identity cannot be certified at plot stage",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "eec6ab326d845eb0c27d39e9171b0e4a7f47acb5f0c20680633a164ec21c0b5d"
+  },
+  {
+    "id": "kit_timber/stage_foundation_small-v1",
+    "file": "assets/kit_timber/stage_foundation_small-v1.png",
+    "width": 153,
+    "height": 153,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l0-v3.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          62,
+          88
+        ],
+        [
+          91,
+          138
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a LOW SINGLE COURSE RUBBLE STONE SILL outline and heavy OAK GROUND SILL BEAMS on top, open bare interior. No upright wall posts yet, no roof. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-small-foundation.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          227,
+          792
+        ],
+        [
+          490,
+          639
+        ],
+        [
+          742,
+          1091
+        ]
+      ],
+      "targetAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          62,
+          88
+        ],
+        [
+          91,
+          138
+        ]
+      ],
+      "transform": [
+        0.12427184466019417,
+        -0.008829208801260226,
+        0,
+        0.11554194826972915,
+        -0.05145631067960821,
+        18.495007368260588
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 7500
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.1582524271844683,
+        1.1582524271844648,
+        1.1582524271844648
+      ],
+      "maxContactResidualPx": 1.1582524271844683,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Low sill vs pale stone courses readable; fine material detail limited",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "46b9bd65ce53a32e2f958dc6b237b77f25e79cca57bcb20667450863f8f36308"
+  },
+  {
+    "id": "kit_timber/stage_roof_small-v1",
+    "file": "assets/kit_timber/stage_roof_small-v1.png",
+    "width": 153,
+    "height": 153,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l0-v3.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          126,
+          118
+        ],
+        [
+          91,
+          138
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed one storey timber-framed cream wattle-and-daub walls and OPEN EXPOSED OAK ROOF RAFTERS, without any roof covering. Preserve the reference height and ground footprint, no chimney. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-small-roof.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          263,
+          877
+        ],
+        [
+          1001,
+          954
+        ],
+        [
+          717,
+          1105
+        ]
+      ],
+      "targetAnchors": [
+        [
+          27,
+          108
+        ],
+        [
+          126,
+          118
+        ],
+        [
+          91,
+          138
+        ]
+      ],
+      "transform": [
+        0.13414634146341464,
+        -0.0002250461344575638,
+        0,
+        0.13202706554843743,
+        -6.731707317073173,
+        -7.728549352617293
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 8114
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.5487804878048763,
+        1.5487804878048763,
+        1.5487804878048763
+      ],
+      "maxContactResidualPx": 1.5487804878048763,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "6eccb2cb7a2b6bdc12b8e8c3531b2a51bcf7c8b42088b0aed736c740747dc84e"
+  },
+  {
+    "id": "kit_timber/stage_frame_medium-v1",
+    "file": "assets/kit_timber/stage_frame_medium-v1.png",
+    "width": 137,
+    "height": 137,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l2-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its FRAME CONSTRUCTION STAGE. OPEN OAK POST AND BEAM WALL FRAME matching the reference's TWO STOREYS, heavy cornerposts and diagonal braces. Low stone sill. All plaster and roof removed. One assembled wallframe lies flat INSIDE the footprint being raised, no loose beam piles. No roof rafters yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-medium-frame.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          204,
+          844
+        ],
+        [
+          1024,
+          1005
+        ],
+        [
+          757,
+          1176
+        ]
+      ],
+      "targetAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ],
+      "transform": [
+        0.11463414634146342,
+        -0.0092299966704329,
+        0,
+        0.09669936192394396,
+        -1.081707317073171,
+        24.268657856959607
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 35922
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        0.6963414634146332,
+        0.6963414634146261,
+        0.6963414634146403
+      ],
+      "maxContactResidualPx": 0.6963414634146403,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "c2ad088dd92323da1c62bd7c8335b2de8f183bc7aa32610e07031582412834a1"
+  },
+  {
+    "id": "kit_stone/stage_plot_medium-v1",
+    "file": "assets/kit_stone/stage_plot_medium-v1.png",
+    "width": 138,
+    "height": 138,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "masonry-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-medium-plot.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          224,
+          763
+        ],
+        [
+          1028,
+          924
+        ],
+        [
+          754,
+          1074
+        ]
+      ],
+      "targetAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ],
+      "transform": [
+        0.12064676616915423,
+        -0.018771931954782228,
+        0,
+        0.11237660429593113,
+        -7.9962686567164205,
+        18.461563680075756
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 33843
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        2.971393034825873,
+        2.9713930348258657,
+        2.9713930348258657
+      ],
+      "maxContactResidualPx": 2.971393034825873,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Survey pegs readable; family material identity cannot be certified at plot stage",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "272a8dd00a855aeddb5247c314d1bb8015b46444cfb0fe9f9d584aef3fd5b76d"
+  },
+  {
+    "id": "kit_timber/stage_roof_medium-v1",
+    "file": "assets/kit_timber/stage_roof_medium-v1.png",
+    "width": 137,
+    "height": 137,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l2-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed two storey timber-framed cream wattle-and-daub walls and OPEN EXPOSED OAK ROOF RAFTERS, without any roof covering. Preserve the reference height and ground footprint, no chimney. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-medium-roof.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          215,
+          923
+        ],
+        [
+          1037,
+          997
+        ],
+        [
+          746,
+          1177
+        ]
+      ],
+      "targetAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ],
+      "transform": [
+        0.11435523114355231,
+        0.00020059707128275927,
+        0,
+        0.10587985415412934,
+        -0.9476885644768842,
+        6.229766245412833
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 18181
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        0.6386861313868621,
+        0.6386861313868621,
+        0.6386861313868621
+      ],
+      "maxContactResidualPx": 0.6386861313868621,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "c63ae6809b5274a6dde0b87f67cd6070fb95172097f5b5f833d75bbd96d643df"
+  },
+  {
+    "id": "kit_timber/stage_foundation_medium-v1",
+    "file": "assets/kit_timber/stage_foundation_medium-v1.png",
+    "width": 137,
+    "height": 137,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l2-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a LOW SINGLE COURSE RUBBLE STONE SILL outline and heavy OAK GROUND SILL BEAMS on top, open bare interior. No upright wall posts yet, no roof. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-medium-foundation.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          212,
+          795
+        ],
+        [
+          1020,
+          984
+        ],
+        [
+          775,
+          1151
+        ]
+      ],
+      "targetAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ],
+      "transform": [
+        0.11633663366336634,
+        -0.012441997119856985,
+        0,
+        0.09551922578224574,
+        -3.4121287128712865,
+        30.699918892524323
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 10366
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.7487623762376217,
+        1.7487623762376074,
+        1.7487623762376359
+      ],
+      "maxContactResidualPx": 1.7487623762376359,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Low sill vs pale stone courses readable; fine material detail limited",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "37b5b206c967065273085914c51efc35ec84a4e82a6c013540b440a3d72abe3e"
+  },
+  {
+    "id": "kit_stone/stage_foundation_medium-v1",
+    "file": "assets/kit_stone/stage_foundation_medium-v1.png",
+    "width": 138,
+    "height": 138,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "masonry-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a low rubble-stone foundation perimeter rising TWO OR THREE COURSES with clean door gap; open bare interior. Broad readable pale stone ground-plan, no upper walls, scaffold or roof yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-medium-foundation.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          187,
+          774
+        ],
+        [
+          1053,
+          914
+        ],
+        [
+          744,
+          1110
+        ]
+      ],
+      "targetAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ],
+      "transform": [
+        0.11200923787528869,
+        -0.011699750230051268,
+        0,
+        0.09379988356588856,
+        -1.1403002309468846,
+        29.586743413021836
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 5609
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        2.194572748267902,
+        2.1945727482678876,
+        2.1945727482678876
+      ],
+      "maxContactResidualPx": 2.194572748267902,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Low sill vs pale stone courses readable; fine material detail limited",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "eee2dd5da8c3e334026441f9e5b7bd4959f84f0ba6993c0edc1aa77d222c7528"
+  },
+  {
+    "id": "kit_stone/stage_roof_medium-v1",
+    "file": "assets/kit_stone/stage_roof_medium-v1.png",
+    "width": 138,
+    "height": 138,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "masonry-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed LOW RUBBLE STONE BASE WALLS with oak-and-cream half-timber UPPER GABLES matching this mixed masonry reference; OPEN EXPOSED OAK ROOF RAFTERS, no tile covering. This is NOT a fully stone house. Preserve reference footprint and height. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/masonry-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-medium-roof.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      },
+      {
+        "prompt": "Precise local edit of attached construction sprite. Remove ONLY the loose rectangular stone block sitting ON TOP of the front-left masonry workbench and the small hammer/tool lying beside it. Leave the low attached masonry counter/plinth itself, but its TOP must be completely EMPTY, a clean flat stone slab. Do not add any other object. Preserve every other part exactly: open timber rafters, cream gable, oak posts, masonry base, shutter, isometric camera, building silhouette, canvas, contact feet, transparent RGBA. No people, no loose building supplies, no piles, no tools. This is a construction-stage building sprite.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave11-candidates-v1/sources/timber-stone/stone-medium-roof.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-medium-roof-clean.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          217,
+          908
+        ],
+        [
+          1035,
+          959
+        ],
+        [
+          693,
+          1140
+        ]
+      ],
+      "targetAnchors": [
+        [
+          22,
+          100
+        ],
+        [
+          119,
+          103
+        ],
+        [
+          80,
+          125
+        ]
+      ],
+      "transform": [
+        0.11858190709046455,
+        -0.003498489425981873,
+        0,
+        0.11493655589123868,
+        -2.954767726161382,
+        -3.603220543806657
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 10101
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        0.7775061124694247,
+        0.7775061124694389,
+        0.7775061124694389
+      ],
+      "maxContactResidualPx": 0.7775061124694389,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test.",
+      "correction": "Removed loose block and hammer on counter via targeted builtin edit. Counter retained empty."
+    },
+    "sha256": "3eb3bf9c1a5d2e78515915e331d99efd1a4b9b8b453f26c5e9587cd90d172ae6"
+  },
+  {
+    "id": "kit_stone/stage_frame_large-v1",
+    "file": "assets/kit_stone/stage_frame_large-v1.png",
+    "width": 160,
+    "height": 136,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "storehouse.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its FRAME CONSTRUCTION STAGE. HALF HEIGHT RUBBLE STONE WALLS, taller than foundation, large door gap, stout OAK TIMBER SCAFFOLD and small mortar tub INSIDE footprint; short plank ramp. No roof. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-large-frame.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          118,
+          727
+        ],
+        [
+          1230,
+          830
+        ],
+        [
+          780,
+          1028
+        ]
+      ],
+      "targetAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ],
+      "transform": [
+        0.11420863309352518,
+        -0.0093049083391489,
+        0,
+        0.11016561236052018,
+        4.220323741007196,
+        15.0075789979214
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 20257
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.3030575539568332,
+        1.303057553956819,
+        1.3030575539568332
+      ],
+      "maxContactResidualPx": 1.3030575539568332,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "a7110fcddc20a201010ef58a7d319c7373cf6d63416120f41f3212388e402058"
+  },
+  {
+    "id": "kit_stone/stage_plot_large-v1",
+    "file": "assets/kit_stone/stage_plot_large-v1.png",
+    "width": 160,
+    "height": 136,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "storehouse.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-large-plot.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          162,
+          624
+        ],
+        [
+          1213,
+          770
+        ],
+        [
+          813,
+          977
+        ]
+      ],
+      "targetAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ],
+      "transform": [
+        0.120837297811608,
+        -0.013005649430889596,
+        0,
+        0.10047217501277372,
+        -3.4081826831588984,
+        33.41227799983332
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 54114
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        2.8325404376784036,
+        2.8325404376784036,
+        2.8325404376784036
+      ],
+      "maxContactResidualPx": 2.8325404376784036,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Survey pegs readable; family material identity cannot be certified at plot stage",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "db6efee45c2b24975d8b398c32e52ae3261c1ef5417efcac2488e2e9730b9ef6"
+  },
+  {
+    "id": "kit_stone/stage_foundation_large-v1",
+    "file": "assets/kit_stone/stage_foundation_large-v1.png",
+    "width": 160,
+    "height": 136,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "storehouse.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its FOUNDATION CONSTRUCTION STAGE. Only a low rubble-stone foundation perimeter rising TWO OR THREE COURSES with clean door gap; open bare interior. Broad readable pale stone ground-plan, no upper walls, scaffold or roof yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-large-foundation.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          174,
+          723
+        ],
+        [
+          1218,
+          801
+        ],
+        [
+          792,
+          992
+        ]
+      ],
+      "targetAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ],
+      "transform": [
+        0.12164750957854406,
+        -0.007896592042367345,
+        0,
+        0.1185133601568142,
+        -3.255747126436777,
+        9.68884762199525
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 7818
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.0890804597701091,
+        1.0890804597701162,
+        1.0890804597701162
+      ],
+      "maxContactResidualPx": 1.0890804597701162,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Low sill vs pale stone courses readable; fine material detail limited",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "d75a7a19c1202deebd87475ae576eca4ec1808718cca94560833ff702139b97d"
+  },
+  {
+    "id": "kit_timber/stage_plot_medium-v1",
+    "file": "assets/kit_timber/stage_plot_medium-v1.png",
+    "width": 137,
+    "height": 137,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "house_l2-v2.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its PLOT CONSTRUCTION STAGE. Only corner survey pegs and one or two intermediary pegs joined by thin taut marking cord outlining the building's exact rectangular ground footprint. Bare earth visible only as a very thin subtle trace immediately inside that footprint; no raised foundation yet. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l2-v2.png"
+        ],
+        "rawFile": "sources/timber-stone/timber-medium-plot.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          247,
+          831
+        ],
+        [
+          1005,
+          973
+        ],
+        [
+          766,
+          1122
+        ]
+      ],
+      "targetAnchors": [
+        [
+          23,
+          104
+        ],
+        [
+          117,
+          112
+        ],
+        [
+          85,
+          131
+        ]
+      ],
+      "transform": [
+        0.12401055408970976,
+        -0.01025326797385621,
+        0,
+        0.11107026143790849,
+        -8.811345646437996,
+        14.233169934640529
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 21727
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.180738786279683,
+        1.18073878627969,
+        1.1807387862796759
+      ],
+      "maxContactResidualPx": 1.18073878627969,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Survey pegs readable; family material identity cannot be certified at plot stage",
+      "historical": "Oak framed, low rubble sill; assembled raising frame lies inside frame-stage footprint",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "55db472d9453a88941ddb404d6e4a1950bc8ab813d2130590c59268cf75f12ed"
+  },
+  {
+    "id": "kit_stone/stage_roof_large-v1",
+    "file": "assets/kit_stone/stage_roof_large-v1.png",
+    "width": 160,
+    "height": 136,
+    "role": "object",
+    "status": "candidate",
+    "pivot": {
+      "mode": "inherit-reference",
+      "reference": "storehouse.png",
+      "canvasOffset": [
+        0,
+        0
+      ],
+      "contactAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ]
+    },
+    "generationRecords": [
+      {
+        "prompt": "Edit the attached project building into its ROOF CONSTRUCTION STAGE. Completed LOW RUBBLE STONE BASE WALLS with oak-and-cream half-timber UPPER GABLES matching this mixed masonry reference; OPEN EXPOSED OAK ROOF RAFTERS, no tile covering. This is NOT a fully stone house. Preserve reference footprint and height. Fixed orthographic isometric camera; match attached building's foundation corner locations, canvas composition and base contact position. Genuine transparent RGBA outside object. Southern England circa 1300–1450, project handpainted warm oak/muted gray limestone, upper-left light, bold structural silhouettes. NO people, NO material piles or stacked supplies, NO vegetation/yard, NO text or labels, NO chimney, NO large ground platform or broad cast shadow. Stage is a standalone small game sprite, legible at 60% native display.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/storehouse.png"
+        ],
+        "rawFile": "sources/timber-stone/stone-large-roof.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "method": "Single final affine resample from generated source, zero x-from-y shear to keep posts upright; minimax horizontal contact fit, exact three Y contacts",
+      "sourceAnchors": [
+        [
+          139,
+          796
+        ],
+        [
+          1229,
+          842
+        ],
+        [
+          791,
+          1045
+        ]
+      ],
+      "targetAnchors": [
+        [
+          19,
+          94
+        ],
+        [
+          146,
+          95
+        ],
+        [
+          92,
+          121
+        ]
+      ],
+      "transform": [
+        0.11651376146788991,
+        -0.004113197856000795,
+        0,
+        0.11920403615306233,
+        1.3211009174311847,
+        -0.3146782758534954
+      ],
+      "alphaFloor": 2,
+      "clearedLowAlphaPixels": 10363
+    },
+    "qa": {
+      "canvasMatchesReference": true,
+      "pivotOffsetZero": true,
+      "contactResidualPx": [
+        1.483486238532116,
+        1.483486238532123,
+        1.4834862385321088
+      ],
+      "maxContactResidualPx": 1.483486238532123,
+      "anchorScope": "Manually selected visible sill/contact centers. Small timber back anchor inferred; this is not a pixel-identical footprint guarantee.",
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Main structural family and stage readable, mortar tub/fine joinery not independently identifiable",
+      "historical": "Rubble walls, timber scaffold and mortar tub at frame; mixed masonry/timber completed walls at roof",
+      "limits": "Generated perspective differs slightly from completed reference; manual contact registration max value supplied. No runtime installation/collision test."
+    },
+    "sha256": "1dafe969d757c72f01a388fd763db51de73d6969f8b0068d127a03215f5fd57a"
+  },
+  {
+    "id": "kit_timber/raising_frame-v1",
+    "file": "assets/kit_timber/raising_frame-v1.png",
+    "width": 128,
+    "height": 96,
+    "role": "object",
+    "status": "candidate",
+    "pivot": [
+      64,
+      90
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Using the attached project's oak timberwork style, create ONE isolated medieval raising frame: a rectangular OAK WALL FRAME assembled FLAT ON THE GROUND, thick joined perimeter beams, 3 vertical studs and one diagonal brace, ready for raising. Entire frame lies horizontally in the isometric ground plane (2:1 diamond), not standing. 14th century England, warm weathered oak, handpainted game sprite, upper-left light, transparent RGBA background. This is a joined structure, NOT a pile of loose timbers. No people, tools, rope, text, grass, building, ground platform or broad shadow. Bold simple beams distinguishable at 0.3 scale. Target 128x96.",
+        "references": [
+          "references/astra-wave11/astra-wave11-reference-files/house_l0-v3.png"
+        ],
+        "rawFile": "sources/timber-stone/raising_frame.png",
+        "tool": "builtin imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "processing": {
+      "alphaTrim": [
+        71,
+        139,
+        1306,
+        830
+      ],
+      "scale": 0.09188361408882083,
+      "alphaFloor": 2,
+      "pivot": [
+        64,
+        90
+      ],
+      "target": [
+        128,
+        96
+      ]
+    },
+    "qa": {
+      "lyingFlat": true,
+      "joinedWallFrame": true,
+      "people": false,
+      "materialHeaps": false,
+      "zoom06": "Joined rectangular silhouette readable; individual tenons not readable",
+      "limits": "Prop anchors not a building footprint"
+    }
+  }
+]

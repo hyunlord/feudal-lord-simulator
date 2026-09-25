@@ -1,0 +1,977 @@
+[
+  {
+    "id": "wk_alewife-v1",
+    "ref": "actor_civilian_woman-v1.png",
+    "prompt": "Use case: identity-preserve precise-object-edit. PILOT 2 TEMPLATE RESKIN, NOT FREE GENERATION. First input is the exact walking sprite sheet to edit. Second input is the project's accepted textile clothing reskin showing the painterly style. Edit CLOTHING ONLY to depict an alewife, plain linen apron and head kerchief with rolled sleeves. Muted rust dress. No brewing props, no hops. Southern England 1300-1450. EXACTLY preserve first image's four columns and two rows, all eight poses, direction order, alternate forward foot between rows, body proportions, head center, BOTH FOOT silhouettes and both foot positions. Do not redesign, reposition, recenter or enlarge people. Keep original boots, foot pixels, gait, original face and head size. Clothing changes conform tightly to original body. Each frame depicts the SAME costume in four viewing directions; consistent hat, hem length, bag and apron. Transparent RGBA background, no ground, no cast shadow, no tile squares or labels. Preserve original sheet aspect ratio 2:1 and original cell locations, ample clear cell gutters. Soft upper-left light, low saturation broad hand-painted game brushwork readable at tiny native sprite size. No text, no watermark, no accessories not requested. This is an edit of eight existing poses, not eight new poses.",
+    "refs": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/actor_civilian_woman-v1.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/wk_textile_f_01-v1.png"
+    ],
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-db4c-72c3-9bea-c00d25bbabe2/exec-4edb5740-ffa0-4a7e-90f2-3ddc4e720d92.png",
+    "registration": [
+      {
+        "row": 0,
+        "col": 0,
+        "templateBox": {
+          "l": 27,
+          "t": 6,
+          "r": 55,
+          "b": 69,
+          "w": 29,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 142,
+          "t": 27,
+          "r": 327,
+          "b": 405,
+          "w": 186,
+          "h": 379
+        },
+        "headEnd": 21,
+        "feetStart": 47
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "templateBox": {
+          "l": 103,
+          "t": 6,
+          "r": 130,
+          "b": 70,
+          "w": 28,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 578,
+          "t": 27,
+          "r": 757,
+          "b": 410,
+          "w": 180,
+          "h": 384
+        },
+        "headEnd": 21,
+        "feetStart": 48
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "templateBox": {
+          "l": 183,
+          "t": 7,
+          "r": 209,
+          "b": 70,
+          "w": 27,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1017,
+          "t": 33,
+          "r": 1200,
+          "b": 412,
+          "w": 184,
+          "h": 380
+        },
+        "headEnd": 22,
+        "feetStart": 48
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "templateBox": {
+          "l": 256,
+          "t": 6,
+          "r": 284,
+          "b": 69,
+          "w": 29,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1447,
+          "t": 28,
+          "r": 1633,
+          "b": 406,
+          "w": 187,
+          "h": 379
+        },
+        "headEnd": 21,
+        "feetStart": 47
+      },
+      {
+        "row": 1,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 83,
+          "r": 56,
+          "b": 146,
+          "w": 26,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 158,
+          "t": 469,
+          "r": 329,
+          "b": 846,
+          "w": 172,
+          "h": 378
+        },
+        "headEnd": 98,
+        "feetStart": 124
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "templateBox": {
+          "l": 104,
+          "t": 81,
+          "r": 131,
+          "b": 145,
+          "w": 28,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 581,
+          "t": 467,
+          "r": 762,
+          "b": 846,
+          "w": 182,
+          "h": 380
+        },
+        "headEnd": 96,
+        "feetStart": 123
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "templateBox": {
+          "l": 179,
+          "t": 81,
+          "r": 207,
+          "b": 145,
+          "w": 29,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 1014,
+          "t": 469,
+          "r": 1195,
+          "b": 844,
+          "w": 182,
+          "h": 376
+        },
+        "headEnd": 96,
+        "feetStart": 123
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "templateBox": {
+          "l": 256,
+          "t": 83,
+          "r": 281,
+          "b": 146,
+          "w": 26,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1449,
+          "t": 469,
+          "r": 1617,
+          "b": 846,
+          "w": 169,
+          "h": 378
+        },
+        "headEnd": 98,
+        "feetStart": 124
+      }
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/workers/wk_alewife-v1.png",
+    "manualEdits": "Per-cell native generated clothing mapped to original template geometry, restricted to torso region 23%-65% of actor height. Original alpha silhouette, head top 23%, BOTH legs/boots bottom35% retained exactly byte-for-byte. No frames swapped; original canvas and eight poses preserved. Final lossless raw PNG RGBA restoration of protected regions avoids Canvas premultiplication rounding; saved-file pixel validation executed.",
+    "status": "candidate",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T15:27:46.448Z",
+    "candidates": 1
+  },
+  {
+    "id": "wk_maltster-v1",
+    "ref": "actor_civilian_man-v1.png",
+    "prompt": "Use case: identity-preserve precise-object-edit. PILOT 2 TEMPLATE RESKIN, NOT FREE GENERATION. First input is the exact walking sprite sheet to edit. Second input is the project's accepted textile clothing reskin showing the painterly style. Edit CLOTHING ONLY to depict a maltster in coarse muted brown tunic with pale flour-dusted apron. No props. Southern England 1300-1450. EXACTLY preserve first image's four columns and two rows, all eight poses, direction order, alternate forward foot between rows, body proportions, head center, BOTH FOOT silhouettes and both foot positions. Do not redesign, reposition, recenter or enlarge people. Keep original boots, foot pixels, gait, original face and head size. Clothing changes conform tightly to original body. Each frame depicts the SAME costume in four viewing directions; consistent hat, hem length, bag and apron. Transparent RGBA background, no ground, no cast shadow, no tile squares or labels. Preserve original sheet aspect ratio 2:1 and original cell locations, ample clear cell gutters. Soft upper-left light, low saturation broad hand-painted game brushwork readable at tiny native sprite size. No text, no watermark, no accessories not requested. This is an edit of eight existing poses, not eight new poses.",
+    "refs": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/actor_civilian_man-v1.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/wk_textile_f_01-v1.png"
+    ],
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-db4c-72c3-9bea-c00d25bbabe2/exec-927f942f-f610-4459-b4cf-c83c3528c359.png",
+    "registration": [
+      {
+        "row": 0,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 3,
+          "r": 60,
+          "b": 66,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 159,
+          "t": 15,
+          "r": 354,
+          "b": 402,
+          "w": 196,
+          "h": 388
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "templateBox": {
+          "l": 95,
+          "t": 3,
+          "r": 123,
+          "b": 67,
+          "w": 29,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 556,
+          "t": 17,
+          "r": 743,
+          "b": 402,
+          "w": 188,
+          "h": 386
+        },
+        "headEnd": 18,
+        "feetStart": 45
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "templateBox": {
+          "l": 170,
+          "t": 3,
+          "r": 197,
+          "b": 66,
+          "w": 28,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 999,
+          "t": 12,
+          "r": 1183,
+          "b": 400,
+          "w": 185,
+          "h": 389
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 3,
+          "r": 262,
+          "b": 66,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1400,
+          "t": 14,
+          "r": 1594,
+          "b": 402,
+          "w": 195,
+          "h": 389
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 1,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 76,
+          "r": 60,
+          "b": 139,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 168,
+          "t": 466,
+          "r": 364,
+          "b": 843,
+          "w": 197,
+          "h": 378
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "templateBox": {
+          "l": 96,
+          "t": 75,
+          "r": 125,
+          "b": 140,
+          "w": 30,
+          "h": 66
+        },
+        "generatedBox": {
+          "l": 566,
+          "t": 459,
+          "r": 753,
+          "b": 843,
+          "w": 188,
+          "h": 385
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "templateBox": {
+          "l": 168,
+          "t": 76,
+          "r": 198,
+          "b": 139,
+          "w": 31,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 992,
+          "t": 455,
+          "r": 1183,
+          "b": 841,
+          "w": 192,
+          "h": 387
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 76,
+          "r": 262,
+          "b": 139,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1400,
+          "t": 465,
+          "r": 1597,
+          "b": 843,
+          "w": 198,
+          "h": 379
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      }
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/workers/wk_maltster-v1.png",
+    "manualEdits": "Per-cell native generated clothing mapped to original template geometry, restricted to torso region 23%-65% of actor height. Original alpha silhouette, head top 23%, BOTH legs/boots bottom35% retained exactly byte-for-byte. No frames swapped; original canvas and eight poses preserved. Final lossless raw PNG RGBA restoration of protected regions avoids Canvas premultiplication rounding; saved-file pixel validation executed.",
+    "status": "candidate",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T15:27:46.480Z",
+    "candidates": 1
+  },
+  {
+    "id": "wk_shepherd-v1",
+    "ref": "actor_civilian_man-v1.png",
+    "prompt": "Use case: identity-preserve precise-object-edit. PILOT 2 TEMPLATE RESKIN, NOT FREE GENERATION. First input is the exact walking sprite sheet to edit. Second input is the project's accepted textile clothing reskin showing the painterly style. Edit CLOTHING ONLY to depict a shepherd in muted olive hooded shoulder cloak and small brown leather shoulder bag. Do not hide the separated walking legs, no crook or props. Southern England 1300-1450. EXACTLY preserve first image's four columns and two rows, all eight poses, direction order, alternate forward foot between rows, body proportions, head center, BOTH FOOT silhouettes and both foot positions. Do not redesign, reposition, recenter or enlarge people. Keep original boots, foot pixels, gait, original face and head size. Clothing changes conform tightly to original body. Each frame depicts the SAME costume in four viewing directions; consistent hat, hem length, bag and apron. Transparent RGBA background, no ground, no cast shadow, no tile squares or labels. Preserve original sheet aspect ratio 2:1 and original cell locations, ample clear cell gutters. Soft upper-left light, low saturation broad hand-painted game brushwork readable at tiny native sprite size. No text, no watermark, no accessories not requested. This is an edit of eight existing poses, not eight new poses.",
+    "refs": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/actor_civilian_man-v1.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/wk_textile_f_01-v1.png"
+    ],
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-db4c-72c3-9bea-c00d25bbabe2/exec-a16f8e4a-1786-41c4-a52c-7642477cef7e.png",
+    "registration": [
+      {
+        "row": 0,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 3,
+          "r": 60,
+          "b": 66,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 171,
+          "t": 8,
+          "r": 370,
+          "b": 443,
+          "w": 200,
+          "h": 436
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "templateBox": {
+          "l": 95,
+          "t": 3,
+          "r": 123,
+          "b": 67,
+          "w": 29,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 550,
+          "t": 11,
+          "r": 740,
+          "b": 443,
+          "w": 191,
+          "h": 433
+        },
+        "headEnd": 18,
+        "feetStart": 45
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "templateBox": {
+          "l": 170,
+          "t": 3,
+          "r": 197,
+          "b": 66,
+          "w": 28,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 994,
+          "t": 8,
+          "r": 1184,
+          "b": 443,
+          "w": 191,
+          "h": 436
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 3,
+          "r": 262,
+          "b": 66,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1364,
+          "t": 8,
+          "r": 1565,
+          "b": 443,
+          "w": 202,
+          "h": 436
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 1,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 76,
+          "r": 60,
+          "b": 139,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 172,
+          "t": 444,
+          "r": 376,
+          "b": 834,
+          "w": 205,
+          "h": 391
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "templateBox": {
+          "l": 96,
+          "t": 75,
+          "r": 125,
+          "b": 140,
+          "w": 30,
+          "h": 66
+        },
+        "generatedBox": {
+          "l": 556,
+          "t": 444,
+          "r": 752,
+          "b": 838,
+          "w": 197,
+          "h": 395
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "templateBox": {
+          "l": 168,
+          "t": 76,
+          "r": 198,
+          "b": 139,
+          "w": 31,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 983,
+          "t": 444,
+          "r": 1184,
+          "b": 838,
+          "w": 202,
+          "h": 395
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 76,
+          "r": 262,
+          "b": 139,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1363,
+          "t": 444,
+          "r": 1565,
+          "b": 834,
+          "w": 203,
+          "h": 391
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      }
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/workers/wk_shepherd-v1.png",
+    "manualEdits": "Per-cell native generated clothing mapped to original template geometry, restricted to torso region 23%-65% of actor height. Original alpha silhouette, head top 23%, BOTH legs/boots bottom35% retained exactly byte-for-byte. No frames swapped; original canvas and eight poses preserved. Final lossless raw PNG RGBA restoration of protected regions avoids Canvas premultiplication rounding; saved-file pixel validation executed.",
+    "status": "candidate",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T15:27:46.501Z",
+    "candidates": 1
+  },
+  {
+    "id": "wk_fuller-v1",
+    "ref": "actor_civilian_man-v1.png",
+    "prompt": "Use case: identity-preserve precise-object-edit. PILOT 2 TEMPLATE RESKIN, NOT FREE GENERATION. First input is the exact walking sprite sheet to edit. Second input is the project's accepted textile clothing reskin showing the painterly style. Edit CLOTHING ONLY to depict a fuller in muted grey-brown tunic, rolled leg garments with wet dark hose. No props. Southern England 1300-1450. EXACTLY preserve first image's four columns and two rows, all eight poses, direction order, alternate forward foot between rows, body proportions, head center, BOTH FOOT silhouettes and both foot positions. Do not redesign, reposition, recenter or enlarge people. Keep original boots, foot pixels, gait, original face and head size. Clothing changes conform tightly to original body. Each frame depicts the SAME costume in four viewing directions; consistent hat, hem length, bag and apron. Transparent RGBA background, no ground, no cast shadow, no tile squares or labels. Preserve original sheet aspect ratio 2:1 and original cell locations, ample clear cell gutters. Soft upper-left light, low saturation broad hand-painted game brushwork readable at tiny native sprite size. No text, no watermark, no accessories not requested. This is an edit of eight existing poses, not eight new poses.",
+    "refs": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/actor_civilian_man-v1.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/wk_textile_f_01-v1.png"
+    ],
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-db4c-72c3-9bea-c00d25bbabe2/exec-66a52f08-ff06-4b65-9abd-7c5665ebf5d4.png",
+    "registration": [
+      {
+        "row": 0,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 3,
+          "r": 60,
+          "b": 66,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 170,
+          "t": 9,
+          "r": 367,
+          "b": 393,
+          "w": 198,
+          "h": 385
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "templateBox": {
+          "l": 95,
+          "t": 3,
+          "r": 123,
+          "b": 67,
+          "w": 29,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 548,
+          "t": 10,
+          "r": 737,
+          "b": 443,
+          "w": 190,
+          "h": 434
+        },
+        "headEnd": 18,
+        "feetStart": 45
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "templateBox": {
+          "l": 170,
+          "t": 3,
+          "r": 197,
+          "b": 66,
+          "w": 28,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 988,
+          "t": 10,
+          "r": 1175,
+          "b": 398,
+          "w": 188,
+          "h": 389
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 3,
+          "r": 262,
+          "b": 66,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1367,
+          "t": 9,
+          "r": 1568,
+          "b": 397,
+          "w": 202,
+          "h": 389
+        },
+        "headEnd": 18,
+        "feetStart": 44
+      },
+      {
+        "row": 1,
+        "col": 0,
+        "templateBox": {
+          "l": 31,
+          "t": 76,
+          "r": 60,
+          "b": 139,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 171,
+          "t": 445,
+          "r": 367,
+          "b": 831,
+          "w": 197,
+          "h": 387
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "templateBox": {
+          "l": 96,
+          "t": 75,
+          "r": 125,
+          "b": 140,
+          "w": 30,
+          "h": 66
+        },
+        "generatedBox": {
+          "l": 556,
+          "t": 444,
+          "r": 748,
+          "b": 834,
+          "w": 193,
+          "h": 391
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "templateBox": {
+          "l": 168,
+          "t": 76,
+          "r": 198,
+          "b": 139,
+          "w": 31,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 987,
+          "t": 446,
+          "r": 1182,
+          "b": 832,
+          "w": 196,
+          "h": 387
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 76,
+          "r": 262,
+          "b": 139,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1366,
+          "t": 445,
+          "r": 1572,
+          "b": 832,
+          "w": 207,
+          "h": 388
+        },
+        "headEnd": 91,
+        "feetStart": 117
+      }
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/workers/wk_fuller-v1.png",
+    "manualEdits": "Per-cell native edit clothing mapped within original alpha silhouette; original head exact; both boots preserved in conservative front bottom12% and rear lateral lower30% masks; generated rolled legwear and wet hose retained between tunic and boot masks. All boot RGBA exact; alpha exact. Final lossless raw PNG RGBA restoration of protected regions avoids Canvas premultiplication rounding; saved-file pixel validation executed.",
+    "status": "candidate",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T15:27:46.523Z",
+    "candidates": 1
+  },
+  {
+    "id": "wk_wool_merchant-v1",
+    "ref": "actor_merchant-v1.png",
+    "prompt": "Use case: identity-preserve precise-object-edit. PILOT 2 TEMPLATE RESKIN, NOT FREE GENERATION. First input is the exact walking sprite sheet to edit. Second input is the project's accepted textile clothing reskin showing the painterly style. Edit CLOTHING ONLY to depict a wool merchant wearing a good muted deep brown wool gown and modest wool merchant hat. No props. Southern England 1300-1450. EXACTLY preserve first image's four columns and two rows, all eight poses, direction order, alternate forward foot between rows, body proportions, head center, BOTH FOOT silhouettes and both foot positions. Do not redesign, reposition, recenter or enlarge people. Keep original boots, foot pixels, gait, original face and head size. Clothing changes conform tightly to original body. Each frame depicts the SAME costume in four viewing directions; consistent hat, hem length, bag and apron. Transparent RGBA background, no ground, no cast shadow, no tile squares or labels. Preserve original sheet aspect ratio 2:1 and original cell locations, ample clear cell gutters. Soft upper-left light, low saturation broad hand-painted game brushwork readable at tiny native sprite size. No text, no watermark, no accessories not requested. This is an edit of eight existing poses, not eight new poses.",
+    "refs": [
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/actor_merchant-v1.png",
+      "/tmp/astra-wave3-work-20260926/astra-wave3-reference-files/wk_textile_f_01-v1.png"
+    ],
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-db4c-72c3-9bea-c00d25bbabe2/exec-961573e3-79b1-465b-8a7e-750fa451d18e.png",
+    "registration": [
+      {
+        "row": 0,
+        "col": 0,
+        "templateBox": {
+          "l": 24,
+          "t": 2,
+          "r": 51,
+          "b": 65,
+          "w": 28,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 138,
+          "t": 8,
+          "r": 342,
+          "b": 410,
+          "w": 205,
+          "h": 403
+        },
+        "headEnd": 17,
+        "feetStart": 43
+      },
+      {
+        "row": 0,
+        "col": 1,
+        "templateBox": {
+          "l": 90,
+          "t": 2,
+          "r": 121,
+          "b": 66,
+          "w": 32,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 566,
+          "t": 5,
+          "r": 781,
+          "b": 412,
+          "w": 216,
+          "h": 408
+        },
+        "headEnd": 17,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 2,
+        "templateBox": {
+          "l": 162,
+          "t": 2,
+          "r": 193,
+          "b": 66,
+          "w": 32,
+          "h": 65
+        },
+        "generatedBox": {
+          "l": 1010,
+          "t": 5,
+          "r": 1227,
+          "b": 414,
+          "w": 218,
+          "h": 410
+        },
+        "headEnd": 17,
+        "feetStart": 44
+      },
+      {
+        "row": 0,
+        "col": 3,
+        "templateBox": {
+          "l": 232,
+          "t": 2,
+          "r": 261,
+          "b": 65,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1441,
+          "t": 5,
+          "r": 1644,
+          "b": 412,
+          "w": 204,
+          "h": 408
+        },
+        "headEnd": 17,
+        "feetStart": 43
+      },
+      {
+        "row": 1,
+        "col": 0,
+        "templateBox": {
+          "l": 23,
+          "t": 73,
+          "r": 52,
+          "b": 136,
+          "w": 30,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 141,
+          "t": 453,
+          "r": 347,
+          "b": 853,
+          "w": 207,
+          "h": 401
+        },
+        "headEnd": 88,
+        "feetStart": 114
+      },
+      {
+        "row": 1,
+        "col": 1,
+        "templateBox": {
+          "l": 93,
+          "t": 73,
+          "r": 120,
+          "b": 136,
+          "w": 28,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 580,
+          "t": 450,
+          "r": 781,
+          "b": 853,
+          "w": 202,
+          "h": 404
+        },
+        "headEnd": 88,
+        "feetStart": 114
+      },
+      {
+        "row": 1,
+        "col": 2,
+        "templateBox": {
+          "l": 163,
+          "t": 73,
+          "r": 193,
+          "b": 136,
+          "w": 31,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1011,
+          "t": 450,
+          "r": 1224,
+          "b": 855,
+          "w": 214,
+          "h": 406
+        },
+        "headEnd": 88,
+        "feetStart": 114
+      },
+      {
+        "row": 1,
+        "col": 3,
+        "templateBox": {
+          "l": 233,
+          "t": 72,
+          "r": 263,
+          "b": 135,
+          "w": 31,
+          "h": 64
+        },
+        "generatedBox": {
+          "l": 1449,
+          "t": 453,
+          "r": 1656,
+          "b": 853,
+          "w": 208,
+          "h": 401
+        },
+        "headEnd": 87,
+        "feetStart": 113
+      }
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/workers/wk_wool_merchant-v1.png",
+    "manualEdits": "Per-cell native generated clothing mapped to original template geometry, restricted to torso region 23%-65% of actor height. Original alpha silhouette, head top 23%, BOTH legs/boots bottom35% retained exactly byte-for-byte. No frames swapped; original canvas and eight poses preserved. Final lossless raw PNG RGBA restoration of protected regions avoids Canvas premultiplication rounding; saved-file pixel validation executed.",
+    "status": "candidate",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T15:27:46.543Z",
+    "candidates": 1
+  }
+]

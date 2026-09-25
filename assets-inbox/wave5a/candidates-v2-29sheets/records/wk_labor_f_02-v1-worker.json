@@ -1,0 +1,362 @@
+{
+  "id": "wk_labor_f_02-v1",
+  "status": "candidate",
+  "template": "templates/actor_civilian_woman-v1.png",
+  "design": "natural cool grey-brown long kirtle, faded rust wrapped headcloth with narrow tails, no apron",
+  "files": {
+    "master": "masters/wk_labor_f_02-v1.png",
+    "final": "assets/workers/wk_labor_f_02-v1.png",
+    "raw": "sources/wk_labor_f_02-v1-raw.png"
+  },
+  "generationRecords": [
+    "records/wk_labor_f_02-v1-generation.json"
+  ],
+  "processing": {
+    "method": "AI edit of approved input sheet; each edited cell bbox registered to template bbox; original lower legs/shoes and selected face/hand pixels restored; 50% final resize",
+    "rawSize": [
+      1774,
+      887
+    ],
+    "masterSize": [
+      592,
+      296
+    ],
+    "finalSize": [
+      296,
+      148
+    ],
+    "frames": [
+      {
+        "direction": "NE",
+        "frame": 0,
+        "templateBounds": {
+          "x": 51,
+          "y": 11,
+          "w": 56,
+          "h": 123
+        },
+        "rawNormalizedBounds": {
+          "x": 48,
+          "y": 9,
+          "w": 63,
+          "h": 131
+        },
+        "registration": {
+          "source": [
+            48,
+            9,
+            63,
+            131
+          ],
+          "destination": [
+            51,
+            11,
+            56,
+            123
+          ]
+        },
+        "protectedPixels": 3303,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.7025141763077638,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SE",
+        "frame": 0,
+        "templateBounds": {
+          "x": 48,
+          "y": 11,
+          "w": 52,
+          "h": 124
+        },
+        "rawNormalizedBounds": {
+          "x": 49,
+          "y": 9,
+          "w": 59,
+          "h": 131
+        },
+        "registration": {
+          "source": [
+            197,
+            9,
+            59,
+            131
+          ],
+          "destination": [
+            48,
+            11,
+            52,
+            124
+          ]
+        },
+        "protectedPixels": 3484,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.20640715528456263,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SW",
+        "frame": 0,
+        "templateBounds": {
+          "x": 50,
+          "y": 13,
+          "w": 53,
+          "h": 122
+        },
+        "rawNormalizedBounds": {
+          "x": 54,
+          "y": 11,
+          "w": 60,
+          "h": 129
+        },
+        "registration": {
+          "source": [
+            350,
+            11,
+            60,
+            129
+          ],
+          "destination": [
+            50,
+            13,
+            53,
+            122
+          ]
+        },
+        "protectedPixels": 3435,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.4778453592735761,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "NW",
+        "frame": 0,
+        "templateBounds": {
+          "x": 41,
+          "y": 11,
+          "w": 56,
+          "h": 123
+        },
+        "rawNormalizedBounds": {
+          "x": 49,
+          "y": 10,
+          "w": 62,
+          "h": 129
+        },
+        "registration": {
+          "source": [
+            493,
+            10,
+            62,
+            129
+          ],
+          "destination": [
+            41,
+            11,
+            56,
+            123
+          ]
+        },
+        "protectedPixels": 3314,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.5367683535419433,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "NE",
+        "frame": 1,
+        "templateBounds": {
+          "x": 58,
+          "y": 9,
+          "w": 50,
+          "h": 122
+        },
+        "rawNormalizedBounds": {
+          "x": 57,
+          "y": 10,
+          "w": 56,
+          "h": 129
+        },
+        "registration": {
+          "source": [
+            57,
+            158,
+            56,
+            129
+          ],
+          "destination": [
+            58,
+            9,
+            50,
+            122
+          ]
+        },
+        "protectedPixels": 3290,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.23961333611141,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SE",
+        "frame": 1,
+        "templateBounds": {
+          "x": 50,
+          "y": 6,
+          "w": 53,
+          "h": 123
+        },
+        "rawNormalizedBounds": {
+          "x": 50,
+          "y": 6,
+          "w": 61,
+          "h": 130
+        },
+        "registration": {
+          "source": [
+            198,
+            154,
+            61,
+            130
+          ],
+          "destination": [
+            50,
+            6,
+            53,
+            123
+          ]
+        },
+        "protectedPixels": 3494,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.6216537083986847,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "SW",
+        "frame": 1,
+        "templateBounds": {
+          "x": 44,
+          "y": 6,
+          "w": 55,
+          "h": 123
+        },
+        "rawNormalizedBounds": {
+          "x": 48,
+          "y": 8,
+          "w": 61,
+          "h": 128
+        },
+        "registration": {
+          "source": [
+            344,
+            156,
+            61,
+            128
+          ],
+          "destination": [
+            44,
+            6,
+            55,
+            123
+          ]
+        },
+        "protectedPixels": 3485,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.267318555679403,
+        "footProtectedDifferencePx": 0
+      },
+      {
+        "direction": "NW",
+        "frame": 1,
+        "templateBounds": {
+          "x": 42,
+          "y": 9,
+          "w": 49,
+          "h": 122
+        },
+        "rawNormalizedBounds": {
+          "x": 49,
+          "y": 10,
+          "w": 54,
+          "h": 129
+        },
+        "registration": {
+          "source": [
+            493,
+            158,
+            54,
+            129
+          ],
+          "destination": [
+            42,
+            9,
+            49,
+            122
+          ]
+        },
+        "protectedPixels": 3285,
+        "protectedRegions": {
+          "footY": 126,
+          "femaleSupportAlpha": "entire lower body local y100..147 exact template alpha including lifted shoe silhouette and garment hem; edited gown RGB retained above126, nearest edited RGB fill if required; original shoe RGB below126",
+          "face": "front views y14..27, center +/-6, template warm-skin selector",
+          "hands": "y65..81, lateral >23px, template warm-skin selector"
+        },
+        "headProxyDeltaFinalPx": 0.3467466086663611,
+        "footProtectedDifferencePx": 0
+      }
+    ]
+  },
+  "qa": {
+    "headMetric": "Alpha-weighted centroid within top34 master pixel rows; silhouette proxy, not anatomical landmark truth",
+    "maxHeadProxyDeltaFinalPx": 0.7025141763077638,
+    "footDifferencePx": 0,
+    "anatomicalHead": "Template selected face pixels preserved; backside head center not independently inferred",
+    "limitations": [
+      "Raw model output not pixel precise; final registration and protected compositing enforce lower-leg/foot constraints.",
+      "Head centroid is silhouette proxy. Clothing alpha/arm contour can differ from template outside protected selected hands.",
+      "Per-cell visual review required."
+    ],
+    "visualReview": {
+      "reviewer": "producing agent",
+      "viewed": "all ten master sheets (592x296), all eight cells visible",
+      "directions": "NE/SE/SW/NW body orientation retained; wardrobe consistent across eight cells",
+      "colorRule": "muted woad, madder, weld and natural wool; no bright scarlet/uniform purple/deep black",
+      "noProps": true,
+      "protectedPixels": "Original selected anatomical face/hand and lower-leg/shoe pixels are retained; this is controlled compositing, not raw model accuracy."
+    }
+  }
+}

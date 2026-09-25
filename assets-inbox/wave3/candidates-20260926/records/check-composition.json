@@ -1,0 +1,16 @@
+{
+  "tool": "Canvas2D deterministic composition",
+  "sourceScales": {
+    "zoom1": 0.5,
+    "zoom06": 0.3
+  },
+  "workerFrames": "template4columns2rows; frame0 column1 in world scene",
+  "cart": "Wave7 handcart column0; cargo96x64 native, anchor48,48 translated to cart bed; no extra rescale",
+  "sceneContext": "plain olive background, schematic earth path and river; not new asset output",
+  "sourceFiles": [
+    "checks.cjs",
+    "icons.cjs"
+  ],
+  "artifactChecks": 5,
+  "proofOnly": true
+}

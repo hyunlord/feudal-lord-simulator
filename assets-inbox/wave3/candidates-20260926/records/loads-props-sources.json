@@ -1,0 +1,1440 @@
+[
+  {
+    "id": "cart_load_barley_ne-v1",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. Subject: three tall tied barley grain sacks, upright elongated sack silhouette with tightly tied necks, pale straw tan. Orientation NE, load long axis runs lower-left to upper-right, like reference. Distinguish from malt which uses squat open sacks. 96x64 final canvas composition.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-6a7ad51e-9cc1-498f-b2f1-f14da75b1440.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:21:51.919Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_barley_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        527,
+        225,
+        1058,
+        834
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.052545155993431854,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 0,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          31,
+          80
+        ],
+        "drawOffset": [
+          -17,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_barley_nw-v1",
+    "kind": "barley",
+    "dir": "nw",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three tall tied barley grain sacks, upright elongated sack silhouette with tightly tied necks, pale straw tan. Orientation NW, load long axis runs upper-left to lower-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-56630ff9-e668-40c2-b5ce-e444c13fb084.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:23:05.756Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_barley_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        514,
+        183,
+        1021,
+        832
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.04930662557781202,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 3,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          52,
+          80
+        ],
+        "drawOffset": [
+          4,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_malt_ne-v1",
+    "kind": "malt",
+    "dir": "ne",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three SHORT SQUAT broad low sacks of malt, folded-open wide mouths showing flat pale toasted grain surfaces; dark warm oatmeal fabric; conspicuously low wide sack silhouettes unlike tall tied barley sacks. Orientation NE, load long axis runs lower-left to upper-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-89866e64-5149-4d6d-9fff-46f223b379ff.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:23:31.747Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_malt_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        322,
+        196,
+        1268,
+        875
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.040169133192389,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 0,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          31,
+          80
+        ],
+        "drawOffset": [
+          -17,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_malt_nw-v1",
+    "kind": "malt",
+    "dir": "nw",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three SHORT SQUAT broad low sacks of malt, folded-open wide mouths showing flat pale toasted grain surfaces; dark warm oatmeal fabric; conspicuously low wide sack silhouettes unlike tall tied barley sacks. Orientation NW, load long axis runs upper-left to lower-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-47a7ec4a-5df1-421b-afd0-21e9da3199f9.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:24:06.737Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_malt_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        357,
+        167,
+        1203,
+        831
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.04491725768321513,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 3,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          52,
+          80
+        ],
+        "drawOffset": [
+          4,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_ale_barrels_ne-v1",
+    "kind": "ale_barrels",
+    "dir": "ne",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three small stout rounded wooden ale barrels, dark oak staves with broad dark hoops, two lying sideways and one upright, strong barrel silhouettes, no hops. Orientation NE, load long axis runs lower-left to upper-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-8945c387-292e-4e69-861e-30afd94307d4.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:24:41.446Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_ale_barrels_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        510,
+        257,
+        1032,
+        796
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.059369202226345084,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 0,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          31,
+          80
+        ],
+        "drawOffset": [
+          -17,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_ale_barrels_nw-v1",
+    "kind": "ale_barrels",
+    "dir": "nw",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three small stout rounded wooden ale barrels, dark oak staves with broad dark hoops, two lying sideways and one upright, strong barrel silhouettes, no hops. Orientation NW, load long axis runs upper-left to lower-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-342b7ebf-6125-4c55-99c9-00b8314fe21d.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:25:08.330Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_ale_barrels_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        463,
+        219,
+        1032,
+        769
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.05818181818181818,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 3,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          52,
+          80
+        ],
+        "drawOffset": [
+          4,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_wool_bales_ne-v1",
+    "kind": "wool_bales",
+    "dir": "ne",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: two bulky RECTANGULAR ivory wool bales tied with a bold simple crossed rope, rounded corners but boxy rectangular silhouette, visible fleecy white masses. Orientation NE, load long axis runs lower-left to upper-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-fa3c76a9-b9dd-49bb-9a27-821d1f17d7a7.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:25:42.595Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_wool_bales_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        484,
+        240,
+        1090,
+        797
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.05745062836624776,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 0,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          31,
+          80
+        ],
+        "drawOffset": [
+          -17,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_wool_bales_nw-v1",
+    "kind": "wool_bales",
+    "dir": "nw",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: two bulky RECTANGULAR ivory wool bales tied with a bold simple crossed rope, rounded corners but boxy rectangular silhouette, visible fleecy white masses. Orientation NW, load long axis runs upper-left to lower-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-e462b049-2840-439b-9343-bf909c9f9e80.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:26:28.301Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_wool_bales_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        451,
+        234,
+        1091,
+        801
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.0564373897707231,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 3,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          52,
+          80
+        ],
+        "drawOffset": [
+          4,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_cloth_raw_ne-v1",
+    "kind": "cloth_raw",
+    "dir": "ne",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three LONG CYLINDRICAL rolls of undyed oatmeal-grey woven cloth, visibly rolled circular ends and one broad folded cloth flap, neat narrow bolt silhouettes, no rope sack. Orientation NE, load long axis runs lower-left to upper-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-d9e29826-6b72-4f14-8894-7a11bc3000d2.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:27:00.681Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_raw_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        479,
+        260,
+        1115,
+        765
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.059748427672955975,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 0,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          31,
+          80
+        ],
+        "drawOffset": [
+          -17,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_cloth_raw_nw-v1",
+    "kind": "cloth_raw",
+    "dir": "nw",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three LONG CYLINDRICAL rolls of undyed oatmeal-grey woven cloth, visibly rolled circular ends and one broad folded cloth flap, neat narrow bolt silhouettes, no rope sack. Orientation NW, load long axis runs upper-left to lower-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-9cc56bd1-654b-44e2-b801-8629847820a3.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:27:33.467Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_raw_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        496,
+        271,
+        1041,
+        730
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.06971677559912855,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 3,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          52,
+          80
+        ],
+        "drawOffset": [
+          4,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_cloth_dyed_ne-v1",
+    "kind": "cloth_dyed",
+    "dir": "ne",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three LONG CYLINDRICAL rolls of dyed woven cloth, dull woad slate blue, muted madder dusty russet red and muted weld ochre yellow; low saturation, visible rolled circular ends and one broad folded cloth flap. Orientation NE, load long axis runs lower-left to upper-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-a8430a2d-7536-4029-8999-84f52fec05e3.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:28:15.655Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_dyed_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        469,
+        209,
+        1148,
+        761
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.055964653902798235,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 0,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          31,
+          80
+        ],
+        "drawOffset": [
+          -17,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "cart_load_cloth_dyed_nw-v1",
+    "kind": "cloth_dyed",
+    "dir": "nw",
+    "prompt": "ROLE object / small detachable medieval game cargo. Southern England 1300-1450. Match attached project grain-sack cargo reference painterly natural muted tan/olive/brown palette and 2:1 isometric camera. TRUE transparent RGBA background, no floor, no cart, no wheels, no person, no text, no framing, no broad shadow. Cargo alone intended for final 96x64 pixels, draw broad simple crisp readable forms with no tiny texture noise. Soft upper-left light, short contact AO only. One compact cluster, centered with transparent room around all sides. BACKGROUND MUST BE ALPHA ZERO EVERYWHERE outside object contour; no glow, no fog, no vignette, no floor shadow, no drop shadow. Subject: three LONG CYLINDRICAL rolls of dyed woven cloth, dull woad slate blue, muted madder dusty russet red and muted weld ochre yellow; low saturation, visible rolled circular ends and one broad folded cloth flap. Orientation NW, load long axis runs upper-left to lower-right. 96x64 final canvas composition. Reference is palette and cargo scale only, replace its cargo with requested subject.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-74c57666-7a83-4c5f-95d1-5ec0e71037ff.png",
+    "refs": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:28:40.441Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_dyed_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        467,
+        232,
+        1116,
+        788
+      ],
+      "target": [
+        96,
+        64
+      ],
+      "scale": 0.05755395683453238,
+      "loadBasePivot": [
+        48,
+        48
+      ],
+      "cartHandPlacement": {
+        "reference": "cart_hand-v4.png",
+        "sheet": [
+          314,
+          157
+        ],
+        "frameColumns": 4,
+        "frameIndex": 3,
+        "frameSize": [
+          78.5,
+          157
+        ],
+        "deckAnchor": [
+          52,
+          80
+        ],
+        "drawOffset": [
+          4,
+          32
+        ],
+        "note": "Load base48,48 aligned to measured cart deck anchor. Cart drawn at native size before common0.3preview; ordering cart then cargo."
+      }
+    },
+    "references": [
+      "cart_load_grainsack_ne-v1.png"
+    ],
+    "status": "candidate",
+    "manualEdits": "Native alpha preserved. Alpha>32 bounds crop; uniform single Canvas resize into max38x32 at bottomcenter48,48. No mirrored variants."
+  },
+  {
+    "id": "work_distaff_ne-v1",
+    "kind": "distaff",
+    "dir": "ne",
+    "prompt": "ROLE object / detachable worker hand prop. Create one small wool-wrapped DISTAFF and a drop SPINDLE hanging on a short thread beside it: a wooden staff with a broad off-white pear-shaped wool bundle near its top, tiny wooden spindle below at its side. Not a spinning wheel. No wheel. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NE; actual view of tool held by a worker facing NE. Tool principal axis runs from grip near lower middle toward upper right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-790eb607-eb26-4759-9c70-30a4d2606a63.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:30:05.622Z",
+    "bbox": [
+      408,
+      77,
+      965,
+      1155
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_distaff_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        408,
+        77,
+        965,
+        1155
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        155.96,
+        776.16
+      ],
+      "handleGripNative": [
+        563.96,
+        853.16
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.02319109461966605
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_distaff_se-v1",
+    "kind": "distaff",
+    "dir": "se",
+    "prompt": "ROLE object / detachable worker hand prop. Create one small wool-wrapped DISTAFF and a drop SPINDLE hanging on a short thread beside it: a wooden staff with a broad off-white pear-shaped wool bundle near its top, tiny wooden spindle below at its side. Not a spinning wheel. No wheel. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SE; actual view of tool held by a worker facing SE. Tool principal axis runs from grip near lower middle toward lower right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-c4eacf47-500d-437b-bb6a-362cb55855fa.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:30:45.196Z",
+    "bbox": [
+      312,
+      87,
+      934,
+      1131
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_distaff_se-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        312,
+        87,
+        934,
+        1131
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        416.74,
+        730.8
+      ],
+      "handleGripNative": [
+        728.74,
+        817.8
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.024630541871921183
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_distaff_sw-v1",
+    "kind": "distaff",
+    "dir": "sw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one small wool-wrapped DISTAFF and a drop SPINDLE hanging on a short thread beside it: a wooden staff with a broad off-white pear-shaped wool bundle near its top, tiny wooden spindle below at its side. Not a spinning wheel. No wheel. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SW; actual view of tool held by a worker facing SW. Tool principal axis runs from grip near lower middle toward lower left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-e4efecf1-cc1c-401d-b526-596eb29dfb92.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:31:28.147Z",
+    "bbox": [
+      187,
+      73,
+      908,
+      1072
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_distaff_sw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        187,
+        73,
+        908,
+        1072
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        540.75,
+        719.28
+      ],
+      "handleGripNative": [
+        727.75,
+        792.28
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.025025025025025027
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_distaff_nw-v1",
+    "kind": "distaff",
+    "dir": "nw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one small wool-wrapped DISTAFF and a drop SPINDLE hanging on a short thread beside it: a wooden staff with a broad off-white pear-shaped wool bundle near its top, tiny wooden spindle below at its side. Not a spinning wheel. No wheel. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NW; actual view of tool held by a worker facing NW. Tool principal axis runs from grip near lower middle toward upper left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-1cda6a91-5cff-4c37-95ab-3f7127df92c7.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:32:10.018Z",
+    "bbox": [
+      311,
+      96,
+      813,
+      1073
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_distaff_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        311,
+        96,
+        813,
+        1073
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        376.5,
+        683.9
+      ],
+      "handleGripNative": [
+        687.5,
+        779.9
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.026319637373885072
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shepherd_crook_ne-v1",
+    "kind": "shepherd_crook",
+    "dir": "ne",
+    "prompt": "ROLE object / detachable worker hand prop. Create one shepherd's wooden CROOK, long slim weathered stick with a large clearly hooked curved upper end, unmistakable hook silhouette. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NE; actual view of tool held by a worker facing NE. Tool principal axis runs from grip near lower middle toward upper right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-0dbbb827-8e49-481c-a3c0-5c26bda670e6.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:33:03.420Z",
+    "bbox": [
+      464,
+      82,
+      1135,
+      1178
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shepherd_crook_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        464,
+        82,
+        1135,
+        1178
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        187.88000000000002,
+        767.1999999999999
+      ],
+      "handleGripNative": [
+        651.88,
+        849.1999999999999
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.023461939520333683
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shepherd_crook_se-v1",
+    "kind": "shepherd_crook",
+    "dir": "se",
+    "prompt": "ROLE object / detachable worker hand prop. Create one shepherd's wooden CROOK, long slim weathered stick with a large clearly hooked curved upper end, unmistakable hook silhouette. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SE; actual view of tool held by a worker facing SE. Tool principal axis runs from grip near lower middle toward lower right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-340ad709-7872-4600-ad73-92adcdd27d5c.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:33:44.184Z",
+    "bbox": [
+      124,
+      118,
+      1130,
+      1134
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shepherd_crook_se-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        124,
+        118,
+        1130,
+        1134
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        684.08,
+        670.5600000000001
+      ],
+      "handleGripNative": [
+        808.08,
+        788.5600000000001
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.02046544263828792
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shepherd_crook_sw-v1",
+    "kind": "shepherd_crook",
+    "dir": "sw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one shepherd's wooden CROOK, long slim weathered stick with a large clearly hooked curved upper end, unmistakable hook silhouette. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SW; actual view of tool held by a worker facing SW. Tool principal axis runs from grip near lower middle toward lower left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-944999e3-1f0a-42a9-a930-bc4969738fe7.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:34:29.259Z",
+    "bbox": [
+      126,
+      103,
+      1175,
+      1161
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shepherd_crook_sw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        126,
+        103,
+        1175,
+        1161
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        367.15,
+        761.76
+      ],
+      "handleGripNative": [
+        493.15,
+        864.76
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.020532375155826062
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shepherd_crook_nw-v1",
+    "kind": "shepherd_crook",
+    "dir": "nw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one shepherd's wooden CROOK, long slim weathered stick with a large clearly hooked curved upper end, unmistakable hook silhouette. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NW; actual view of tool held by a worker facing NW. Tool principal axis runs from grip near lower middle toward upper left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-fe475a9f-a313-4998-904c-207c4d1b3cbb.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:35:05.598Z",
+    "bbox": [
+      199,
+      112,
+      1021,
+      1138
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shepherd_crook_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        199,
+        112,
+        1021,
+        1138
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        575.4,
+        718.1999999999999
+      ],
+      "handleGripNative": [
+        774.4,
+        830.1999999999999
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.024330900243309004
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shears_ne-v1",
+    "kind": "shears",
+    "dir": "ne",
+    "prompt": "ROLE object / detachable worker hand prop. Create one pair of medieval spring wool SHEARS, a single U-shaped dark iron spring loop at the heel with two broad short pointed blades opening into a V, no modern finger rings. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NE; actual view of tool held by a worker facing NE. Tool principal axis runs from grip near lower middle toward upper right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-0c45ba41-a68f-48d3-91a7-e963e5d230e9.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:36:01.195Z",
+    "bbox": [
+      278,
+      146,
+      1209,
+      1101
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shears_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        278,
+        146,
+        1209,
+        1101
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        195.51,
+        706.7
+      ],
+      "handleGripNative": [
+        473.51,
+        852.7
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.01903492909488912
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shears_se-v1",
+    "kind": "shears",
+    "dir": "se",
+    "prompt": "ROLE object / detachable worker hand prop. Create one pair of medieval spring wool SHEARS, a single U-shaped dark iron spring loop at the heel with two broad short pointed blades opening into a V, no modern finger rings. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SE; actual view of tool held by a worker facing SE. Tool principal axis runs from grip near lower middle toward lower right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-9b993996-0d58-4349-8fc0-7ca468e60e59.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:36:38.958Z",
+    "bbox": [
+      206,
+      330,
+      1075,
+      975
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shears_se-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        206,
+        330,
+        1075,
+        975
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        234.63000000000002,
+        180.60000000000002
+      ],
+      "handleGripNative": [
+        440.63,
+        510.6
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.02153316106804479
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shears_sw-v1",
+    "kind": "shears",
+    "dir": "sw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one pair of medieval spring wool SHEARS, a single U-shaped dark iron spring loop at the heel with two broad short pointed blades opening into a V, no modern finger rings. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SW; actual view of tool held by a worker facing SW. Tool principal axis runs from grip near lower middle toward lower left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-71f4cac0-a800-4d87-8717-2d0d49043add.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:37:18.903Z",
+    "bbox": [
+      57,
+      264,
+      1203,
+      1055
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shears_sw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        57,
+        264,
+        1203,
+        1055
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        882.4200000000001,
+        221.48000000000002
+      ],
+      "handleGripNative": [
+        939.4200000000001,
+        485.48
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.0158654608916389
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_shears_nw-v1",
+    "kind": "shears",
+    "dir": "nw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one pair of medieval spring wool SHEARS, a single U-shaped dark iron spring loop at the heel with two broad short pointed blades opening into a V, no modern finger rings. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NW; actual view of tool held by a worker facing NW. Tool principal axis runs from grip near lower middle toward upper left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-b83e6036-5b77-4a2f-826a-ab26f3d16b30.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:37:58.053Z",
+    "bbox": [
+      199,
+      211,
+      1001,
+      1026
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_shears_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        199,
+        211,
+        1001,
+        1026
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        641.6,
+        619.4
+      ],
+      "handleGripNative": [
+        840.6,
+        830.4
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.021820448877805484
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_dye_paddle_ne-v1",
+    "kind": "dye_paddle",
+    "dir": "ne",
+    "prompt": "ROLE object / detachable worker hand prop. Create one long wooden DYE STIRRING PADDLE, broad flat oval blade at upper end, slim long wooden handle, a muted blue-grey dye stain on the paddle blade. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NE; actual view of tool held by a worker facing NE. Tool principal axis runs from grip near lower middle toward upper right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-04ff3d94-7069-4882-b869-f94f26adfdec.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:38:55.772Z",
+    "bbox": [
+      242,
+      127,
+      1188,
+      1124
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_dye_paddle_ne-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        242,
+        127,
+        1188,
+        1124
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        264.88000000000005,
+        727.81
+      ],
+      "handleGripNative": [
+        506.88000000000005,
+        854.81
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.020554381019497303
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_dye_paddle_se-v1",
+    "kind": "dye_paddle",
+    "dir": "se",
+    "prompt": "ROLE object / detachable worker hand prop. Create one long wooden DYE STIRRING PADDLE, broad flat oval blade at upper end, slim long wooden handle, a muted blue-grey dye stain on the paddle blade. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SE; actual view of tool held by a worker facing SE. Tool principal axis runs from grip near lower middle toward lower right; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-5d27b4ff-a710-47f2-98aa-648073c6b621.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:39:32.571Z",
+    "bbox": [
+      50,
+      243,
+      1206,
+      1070
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_dye_paddle_se-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        50,
+        243,
+        1206,
+        1070
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        832.3199999999999,
+        611.98
+      ],
+      "handleGripNative": [
+        882.3199999999999,
+        854.98
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.016820453671664747
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_dye_paddle_sw-v1",
+    "kind": "dye_paddle",
+    "dir": "sw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one long wooden DYE STIRRING PADDLE, broad flat oval blade at upper end, slim long wooden handle, a muted blue-grey dye stain on the paddle blade. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction SW; actual view of tool held by a worker facing SW. Tool principal axis runs from grip near lower middle toward lower left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-2ae9c73f-bb2a-4178-95f7-36b785ed7527.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:40:10.640Z",
+    "bbox": [
+      71,
+      234,
+      1188,
+      1015
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_dye_paddle_sw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        71,
+        234,
+        1188,
+        1015
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        815.41,
+        210.87
+      ],
+      "handleGripNative": [
+        886.41,
+        444.87
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.017169276805533415
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  },
+  {
+    "id": "work_dye_paddle_nw-v1",
+    "kind": "dye_paddle",
+    "dir": "nw",
+    "prompt": "ROLE object / detachable worker hand prop. Create one long wooden DYE STIRRING PADDLE, broad flat oval blade at upper end, slim long wooden handle, a muted blue-grey dye stain on the paddle blade. Southern England 1300-1450, painterly miniature isometric game art in the attached project work-prop reference palette/style, but draw only the requested tool, NOT a breadbasket. True transparent RGBA background, exactly one tool, no person, no hands, no floor, no shadows, no glow, no text, no display stand. 32x32 final sprite: bold simple silhouette with smooth big color blocks, minimal detail, no tiny noise. Camera 2:1 isometric, view direction NW; actual view of tool held by a worker facing NW. Tool principal axis runs from grip near lower middle toward upper left; perspective shortens far end accordingly. The bare handle grip is at 50% across and 62.5% down the square. Keep all tool parts inside square with 2px final margins. No hand or marker at grip. Soft upper-left light, muted warm brown wood and dark grey iron or off-white wool. Alpha-zero everywhere outside tool edges. Single requested direction only, not a sheet.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-8f0d6361-38db-4aca-84cd-893e207497d3.png",
+    "refs": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "generatedAt": "2026-09-25T15:40:49.724Z",
+    "bbox": [
+      74,
+      93,
+      1165,
+      1182
+    ],
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/props/work_dye_paddle_nw-v1.png",
+    "normalization": {
+      "sourceBBox": [
+        74,
+        93,
+        1165,
+        1182
+      ],
+      "target": [
+        32,
+        32
+      ],
+      "handleGripInBBox": [
+        818.25,
+        805.86
+      ],
+      "handleGripNative": [
+        892.25,
+        898.86
+      ],
+      "targetHandleAnchor": [
+        16,
+        20
+      ],
+      "scale": 0.017109685304002444
+    },
+    "manualEdits": "Native RGBA alpha preserved; crop and uniform single Canvas resize; manually selected physical handle grip translated exactly to common anchor16,20. Independent direction generation, no mirroring. Runtime hand placement not tested.",
+    "references": [
+      "work_breadbasket_se-v1.png"
+    ],
+    "status": "candidate"
+  }
+]

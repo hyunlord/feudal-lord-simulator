@@ -1,0 +1,500 @@
+[
+  {
+    "id": "work/work_shovel-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-fd96-7c43-b2fa-79e97ae6ba1e/exec-5ca2e064-406e-4d8d-a6c1-9606a0cc0197.png",
+    "prompt": "Use case: historical-scene. Create a transparent game sprite sheet with FOUR isolated tiny medieval work props ONLY, no people, no hands, no ground, no lettering. Project references supplied: builder and farmer sheets define painterly muted brown/olive/iron-grey material and 2:1 isometric camera; sack reference defines cloth. Southern England 1300–1450. Four equal horizontal square cells LEFT TO RIGHT NE, SE, SW, NW, redraw each view with coherent top-left soft light, do not mirror. Each object stays within its own cell with generous transparent separation. Target final sheet 128x32, four32x32 cells, so simple large readable silhouettes, no microtexture. Native larger image permitted for clean reduction. Grip point visible and central in each square. True transparent alpha, no checkerboard painted in pixels, no text or labels, no cast shadows. Subject: one wooden-shaft medieval iron shovel per cell, blade planted downward, handle leaning from the centre grip toward the upper left in NE, upper right SE, upper left SW, upper right NW with blade perspective distinctly changing for each view. Long shaft, broad blunt iron spade, bare wood handle, no modern D handle. Keep complete shovel within each cell, long axis mostly vertical.",
+    "references": [
+      "actor_builder-v1.png",
+      "held_sack_SE-v1.png",
+      "actor_farmer-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/work/work_shovel-v1.png",
+    "geometry": [
+      {
+        "sourceBox": [
+          149,
+          55,
+          415,
+          597
+        ],
+        "scale": 0.055248618784530384,
+        "offset": [
+          8.624309392265193,
+          1
+        ]
+      },
+      {
+        "sourceBox": [
+          702,
+          71,
+          955,
+          597
+        ],
+        "scale": 0.056925996204933584,
+        "offset": [
+          8.77039848197343,
+          1
+        ]
+      },
+      {
+        "sourceBox": [
+          1199,
+          66,
+          1464,
+          587
+        ],
+        "scale": 0.05747126436781609,
+        "offset": [
+          8.356321839080465,
+          1
+        ]
+      },
+      {
+        "sourceBox": [
+          1756,
+          67,
+          2025,
+          589
+        ],
+        "scale": 0.05736137667304015,
+        "offset": [
+          8.25621414913958,
+          1
+        ]
+      }
+    ],
+    "size": [
+      128,
+      32
+    ],
+    "cellSize": [
+      32,
+      32
+    ],
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "manualEdits": "Per-direction alpha bbox crop and uniform Canvas resampling to fit30x30 within32x32 cells; preserved native alpha; no mirror/rotation/recolour. Packed4cells horizontal.",
+    "reason": "Selected independently painted four directions with matching lighting and readable silhouette.",
+    "registration": {
+      "id": "work/work_shovel-v1",
+      "pivots": [
+        [
+          11,
+          5
+        ],
+        [
+          22,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          22,
+          5
+        ]
+      ],
+      "attach": "hands",
+      "layer": "front",
+      "handRestoreSize": [
+        4,
+        5
+      ]
+    },
+    "status": "candidate",
+    "qa": "Four separately drawn directions; true alpha;32pxcells. Hand/shoulder pivots manually calibrated. Static proof needed; no gait or work animation claim."
+  },
+  {
+    "id": "work/work_hammer-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-fd96-7c43-b2fa-79e97ae6ba1e/exec-14d34e73-8183-4bd1-aadd-f6b355a64992.png",
+    "prompt": "Use case: historical-scene. Create a transparent game sprite sheet with FOUR isolated tiny medieval work props ONLY, no people, no hands, no ground, no lettering. Project references supplied: builder and farmer sheets define painterly muted brown/olive/iron-grey material and 2:1 isometric camera; sack reference defines cloth. Southern England 1300–1450. Four equal horizontal square cells LEFT TO RIGHT NE, SE, SW, NW, redraw each view with coherent top-left soft light, do not mirror. Each object stays within its own cell with generous transparent separation. Target final sheet 128x32, four32x32 cells, so simple large readable silhouettes, no microtexture. Native larger image permitted for clean reduction. Grip point visible and central in each square. True transparent alpha, no checkerboard painted in pixels, no text or labels, no cast shadows. Subject: four medieval carpenter mallets/short iron hammers, a stubby rectangular dark forged iron head on short brown wood handle, posed raised for hammering. Grip near bottom of shaft, head above grip. Each direction shows different front/side/top proportions, NE back-right,SE front-right,SW front-left,NW back-left. Blunt square head not claw hammer, no anvil, no sparks, no modern rubber.",
+    "references": [
+      "actor_builder-v1.png",
+      "held_sack_SE-v1.png",
+      "actor_farmer-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/work/work_hammer-v1.png",
+    "geometry": [
+      {
+        "sourceBox": [
+          198,
+          126,
+          454,
+          534
+        ],
+        "scale": 0.07334963325183375,
+        "offset": [
+          6.574572127139364,
+          0.9999999999999982
+        ]
+      },
+      {
+        "sourceBox": [
+          676,
+          128,
+          947,
+          533
+        ],
+        "scale": 0.07389162561576355,
+        "offset": [
+          5.950738916256157,
+          0.9999999999999982
+        ]
+      },
+      {
+        "sourceBox": [
+          1198,
+          126,
+          1478,
+          534
+        ],
+        "scale": 0.07334963325183375,
+        "offset": [
+          5.69437652811736,
+          0.9999999999999982
+        ]
+      },
+      {
+        "sourceBox": [
+          1703,
+          133,
+          1958,
+          538
+        ],
+        "scale": 0.07389162561576355,
+        "offset": [
+          6.541871921182263,
+          0.9999999999999982
+        ]
+      }
+    ],
+    "size": [
+      128,
+      32
+    ],
+    "cellSize": [
+      32,
+      32
+    ],
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "manualEdits": "Per-direction alpha bbox crop and uniform Canvas resampling to fit30x30 within32x32 cells; preserved native alpha; no mirror/rotation/recolour. Packed4cells horizontal.",
+    "reason": "Selected independently painted four directions with matching lighting and readable silhouette.",
+    "registration": {
+      "id": "work/work_hammer-v1",
+      "pivots": [
+        [
+          9,
+          26
+        ],
+        [
+          10,
+          26
+        ],
+        [
+          22,
+          26
+        ],
+        [
+          23,
+          26
+        ]
+      ],
+      "attach": "hands",
+      "layer": "front",
+      "handRestoreSize": [
+        4,
+        5
+      ]
+    },
+    "status": "candidate",
+    "qa": "Four separately drawn directions; true alpha;32pxcells. Hand/shoulder pivots manually calibrated. Static proof needed; no gait or work animation claim."
+  },
+  {
+    "id": "work/work_sickle-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-fd96-7c43-b2fa-79e97ae6ba1e/exec-be30a79b-e79d-4c06-bcad-8a750d771e5e.png",
+    "prompt": "Use case: historical-scene. Create a transparent game sprite sheet with FOUR isolated tiny medieval work props ONLY, no people, no hands, no ground, no lettering. Project references supplied: builder and farmer sheets define painterly muted brown/olive/iron-grey material and 2:1 isometric camera; sack reference defines cloth. Southern England 1300–1450. Four equal horizontal square cells LEFT TO RIGHT NE, SE, SW, NW, redraw each view with coherent top-left soft light, do not mirror. Each object stays within its own cell with generous transparent separation. Target final sheet 128x32, four32x32 cells, so simple large readable silhouettes, no microtexture. Native larger image permitted for clean reduction. Grip point visible and central in each square. True transparent alpha, no checkerboard painted in pixels, no text or labels, no cast shadows. Subject: each cell contains a small medieval curved sickle together with one compact bundle of ripe ochre wheat. Short brown wooden grip centred in the cell, hooked dull iron blade curving beside wheat ears. Bundle is held together at same grip location with simple cord. Four genuinely different isometric views of same harvest-tool-and-sheaf, crescent silhouette obvious at 32px. No scythe, no person, no hand, no loose floating clutter.",
+    "references": [
+      "actor_builder-v1.png",
+      "held_sack_SE-v1.png",
+      "actor_farmer-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/work/work_sickle-v1.png",
+    "geometry": [
+      {
+        "sourceBox": [
+          126,
+          135,
+          469,
+          519
+        ],
+        "scale": 0.07792207792207792,
+        "offset": [
+          2.5974025974025974,
+          1
+        ]
+      },
+      {
+        "sourceBox": [
+          630,
+          135,
+          1016,
+          533
+        ],
+        "scale": 0.07518796992481203,
+        "offset": [
+          1.4511278195488728,
+          1
+        ]
+      },
+      {
+        "sourceBox": [
+          1171,
+          139,
+          1541,
+          525
+        ],
+        "scale": 0.07751937984496124,
+        "offset": [
+          1.620155038759691,
+          1
+        ]
+      },
+      {
+        "sourceBox": [
+          1702,
+          143,
+          2078,
+          522
+        ],
+        "scale": 0.07894736842105263,
+        "offset": [
+          1.1184210526315752,
+          1
+        ]
+      }
+    ],
+    "size": [
+      128,
+      32
+    ],
+    "cellSize": [
+      32,
+      32
+    ],
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "manualEdits": "Per-direction alpha bbox crop and uniform Canvas resampling to fit30x30 within32x32 cells; preserved native alpha; no mirror/rotation/recolour. Packed4cells horizontal.",
+    "reason": "Selected independently painted four directions with matching lighting and readable silhouette.",
+    "registration": {
+      "id": "work/work_sickle-v1",
+      "pivots": [
+        [
+          9,
+          24
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          10,
+          24
+        ],
+        [
+          24,
+          24
+        ]
+      ],
+      "attach": "hands",
+      "layer": "front",
+      "handRestoreSize": [
+        4,
+        5
+      ]
+    },
+    "status": "candidate",
+    "qa": "Four separately drawn directions; true alpha;32pxcells. Hand/shoulder pivots manually calibrated. Static proof needed; no gait or work animation claim."
+  },
+  {
+    "id": "work/work_carry_beam-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-fd96-7c43-b2fa-79e97ae6ba1e/exec-869e3a24-3980-4b6c-bec1-cee98ebd0c5d.png",
+    "prompt": "Use case: historical-scene. Create a transparent game sprite sheet with FOUR isolated tiny medieval work props ONLY, no people, no hands, no ground, no lettering. Project references supplied: builder and farmer sheets define painterly muted brown/olive/iron-grey material and 2:1 isometric camera; sack reference defines cloth. Southern England 1300–1450. Four equal horizontal square cells LEFT TO RIGHT NE, SE, SW, NW, redraw each view with coherent top-left soft light, do not mirror. Each object stays within its own cell with generous transparent separation. Target final sheet 128x32, four32x32 cells, so simple large readable silhouettes, no microtexture. Native larger image permitted for clean reduction. Grip point visible and central in each square. True transparent alpha, no checkerboard painted in pixels, no text or labels, no cast shadows. Subject: each cell contains one medieval shoulder carrying beam/yoke with exactly TWO hanging burlap sacks, one at each end on short rope. Beam centre is shoulder support point, visible bare central wood. Low compact load, broad readable two-sack silhouette. Isometric directions NE SE SW NW, beam follows transverse shoulder axis: forNE/SW descends screen right, forSE/NW rises screen right. Show different near/far bag occlusion, not mirror. Keep sacks small, muted warm grey cloth like supplied sack reference, simple tied necks. No person no hands no harness.",
+    "references": [
+      "actor_builder-v1.png",
+      "held_sack_SE-v1.png",
+      "actor_farmer-v1.png"
+    ],
+    "selected": false,
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "reason": "Rejected: SE yoke slope followed wrong diagonal"
+  },
+  {
+    "id": "work/work_carry_beam-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-fd96-7c43-b2fa-79e97ae6ba1e/exec-6d80db80-8851-4d55-aeee-0380e9b1199b.png",
+    "prompt": "Use case: historical-scene. Create a transparent game sprite sheet with FOUR isolated tiny medieval work props ONLY, no people, no hands, no ground, no lettering. Project references supplied: builder and farmer sheets define painterly muted brown/olive/iron-grey material and 2:1 isometric camera; sack reference defines cloth. Southern England 1300–1450. Four equal horizontal square cells LEFT TO RIGHT NE, SE, SW, NW, redraw each view with coherent top-left soft light, do not mirror. Each object stays within its own cell with generous transparent separation. Target final sheet 128x32, four32x32 cells, so simple large readable silhouettes, no microtexture. Native larger image permitted for clean reduction. Grip point visible and central in each square. True transparent alpha, no checkerboard painted in pixels, no text or labels, no cast shadows. Subject four shoulder yokes with TWO hanging sacks each. CRITICAL direction rule: LEFT cell beam runs from screen upper-left to lower-right. SECOND cell beam runs from screen lower-left to upper-right. THIRD cell beam runs upper-left to lower-right. FOURTH cell beam runs lower-left to upper-right. Each viewed independently, lights stay top-left, do not mirror. Exactly two rough linen sacks tied to two ends, bare middle shoulder grip; no people. Painterly small simple prop. Four distinct perspective drawings. Correct SECOND cell to rise to the right unlike first.",
+    "references": [
+      "actor_builder-v1.png",
+      "held_sack_SE-v1.png",
+      "actor_farmer-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25",
+    "tool": "image_gen",
+    "model": "not exposed",
+    "candidateCount": 2,
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/work/work_carry_beam-v1.png",
+    "geometry": [
+      {
+        "sourceBox": [
+          63,
+          152,
+          488,
+          560
+        ],
+        "scale": 0.07042253521126761,
+        "offset": [
+          1,
+          1.598591549295774
+        ]
+      },
+      {
+        "sourceBox": [
+          594,
+          160,
+          1024,
+          561
+        ],
+        "scale": 0.06960556844547564,
+        "offset": [
+          1,
+          2.0092807424593975
+        ]
+      },
+      {
+        "sourceBox": [
+          1148,
+          156,
+          1564,
+          551
+        ],
+        "scale": 0.07194244604316546,
+        "offset": [
+          1,
+          1.7553956834532372
+        ]
+      },
+      {
+        "sourceBox": [
+          1697,
+          156,
+          2112,
+          555
+        ],
+        "scale": 0.07211538461538461,
+        "offset": [
+          1,
+          1.5769230769230784
+        ]
+      }
+    ],
+    "size": [
+      128,
+      32
+    ],
+    "cellSize": [
+      32,
+      32
+    ],
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "manualEdits": "Per-direction alpha bbox crop and uniform Canvas resampling to fit30x30 within32x32 cells; preserved native alpha; no mirror/rotation/recolour. Packed4cells horizontal.",
+    "reason": "Selected independently painted four directions with matching lighting and readable silhouette.",
+    "registration": {
+      "id": "work/work_carry_beam-v1",
+      "pivots": [
+        [
+          16,
+          11
+        ],
+        [
+          16,
+          11
+        ],
+        [
+          16,
+          11
+        ],
+        [
+          16,
+          11
+        ]
+      ],
+      "attach": "shoulders",
+      "layer": "behind-then-near-half-front",
+      "nearRects": [
+        [
+          16,
+          0,
+          16,
+          32
+        ],
+        [
+          0,
+          0,
+          16,
+          32
+        ],
+        [
+          16,
+          0,
+          16,
+          32
+        ],
+        [
+          0,
+          0,
+          16,
+          32
+        ]
+      ]
+    },
+    "status": "candidate",
+    "qa": "Four separately drawn directions; true alpha;32pxcells. Hand/shoulder pivots manually calibrated. Static proof needed; no gait or work animation claim."
+  }
+]
