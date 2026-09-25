@@ -1,0 +1,5894 @@
+[
+  {
+    "variant": "baseline",
+    "width": 1440,
+    "height": 900,
+    "routeHits": [],
+    "errors": [],
+    "state": {
+      "tick": 0,
+      "wallTick": 0,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3
+        }
+      ],
+      "walkers": []
+    },
+    "render": {
+      "camera": {
+        "zoom": 1.62037037037037,
+        "lod": "full"
+      },
+      "assets": [
+        {
+          "key": "house_l0",
+          "category": "building",
+          "url": "/assets/buildings/house_l0.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l1",
+          "category": "building",
+          "url": "/assets/buildings/house_l1.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l2",
+          "category": "building",
+          "url": "/assets/buildings/house_l2.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l3",
+          "category": "building",
+          "url": "/assets/buildings/house_l3.png",
+          "status": "ready"
+        },
+        {
+          "key": "mill",
+          "category": "building",
+          "url": "/assets/buildings/mill.png",
+          "status": "ready"
+        },
+        {
+          "key": "barn",
+          "category": "building",
+          "url": "/assets/buildings/barn.png",
+          "status": "ready"
+        },
+        {
+          "key": "well",
+          "category": "building",
+          "url": "/assets/buildings/well.png",
+          "status": "ready"
+        },
+        {
+          "key": "storehouse",
+          "category": "building",
+          "url": "/assets/buildings/storehouse.png",
+          "status": "ready"
+        },
+        {
+          "key": "wheat_farm",
+          "category": "building",
+          "url": "/assets/buildings/wheat_farm.png",
+          "status": "ready"
+        },
+        {
+          "key": "logging_camp",
+          "category": "building",
+          "url": "/assets/buildings/logging_camp.png",
+          "status": "ready"
+        },
+        {
+          "key": "sawmill",
+          "category": "building",
+          "url": "/assets/buildings/sawmill.png",
+          "status": "ready"
+        },
+        {
+          "key": "quarry",
+          "category": "building",
+          "url": "/assets/buildings/quarry.png",
+          "status": "ready"
+        },
+        {
+          "key": "masonry",
+          "category": "building",
+          "url": "/assets/buildings/masonry.png",
+          "status": "ready"
+        },
+        {
+          "key": "market",
+          "category": "building",
+          "url": "/assets/buildings/market.png",
+          "status": "ready"
+        },
+        {
+          "key": "church",
+          "category": "building",
+          "url": "/assets/buildings/church.png",
+          "status": "ready"
+        },
+        {
+          "key": "keep",
+          "category": "building",
+          "url": "/assets/buildings/keep.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l4",
+          "category": "building",
+          "url": "/assets/buildings/house_l4.png",
+          "status": "ready"
+        },
+        {
+          "key": "stone_wall_segment",
+          "category": "building",
+          "url": "/assets/buildings/stone_wall_segment.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_large",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_large.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_small",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_small.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_tall",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_short",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_short.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_birch",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_birch.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_dead",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_dead.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_fresh",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_fresh.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_old",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_old.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_a",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_a.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_b",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_b.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass_tuft",
+          "category": "foliage",
+          "url": "/assets/foliage/grass_tuft.png",
+          "status": "ready"
+        },
+        {
+          "key": "field_stone",
+          "category": "foliage",
+          "url": "/assets/foliage/field_stone.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass",
+          "category": "terrain",
+          "url": "/assets/terrain/grass.png",
+          "status": "ready"
+        },
+        {
+          "key": "forest_floor",
+          "category": "terrain",
+          "url": "/assets/terrain/forest_floor.png",
+          "status": "ready"
+        },
+        {
+          "key": "water",
+          "category": "terrain",
+          "url": "/assets/terrain/water.png",
+          "status": "ready"
+        },
+        {
+          "key": "rock",
+          "category": "terrain",
+          "url": "/assets/terrain/rock.png",
+          "status": "ready"
+        },
+        {
+          "key": "packed_earth_road",
+          "category": "terrain",
+          "url": "/assets/terrain/packed_earth_road.png",
+          "status": "ready"
+        }
+      ],
+      "spriteDraws": {
+        "recent": [
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_b",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_b",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          }
+        ]
+      }
+    },
+    "cottage": {
+      "clientX": 863.7037037037037,
+      "clientY": 468
+    },
+    "overflow": false
+  },
+  {
+    "variant": "candidate",
+    "width": 1440,
+    "height": 900,
+    "routeHits": [
+      "buildings/house_l0.png",
+      "foliage/tree_oak_large.png",
+      "terrain/grass.png"
+    ],
+    "errors": [],
+    "state": {
+      "tick": 0,
+      "wallTick": 0,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3
+        }
+      ],
+      "walkers": []
+    },
+    "render": {
+      "camera": {
+        "zoom": 1.62037037037037,
+        "lod": "full"
+      },
+      "assets": [
+        {
+          "key": "house_l0",
+          "category": "building",
+          "url": "/assets/buildings/house_l0.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l1",
+          "category": "building",
+          "url": "/assets/buildings/house_l1.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l2",
+          "category": "building",
+          "url": "/assets/buildings/house_l2.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l3",
+          "category": "building",
+          "url": "/assets/buildings/house_l3.png",
+          "status": "ready"
+        },
+        {
+          "key": "mill",
+          "category": "building",
+          "url": "/assets/buildings/mill.png",
+          "status": "ready"
+        },
+        {
+          "key": "barn",
+          "category": "building",
+          "url": "/assets/buildings/barn.png",
+          "status": "ready"
+        },
+        {
+          "key": "well",
+          "category": "building",
+          "url": "/assets/buildings/well.png",
+          "status": "ready"
+        },
+        {
+          "key": "storehouse",
+          "category": "building",
+          "url": "/assets/buildings/storehouse.png",
+          "status": "ready"
+        },
+        {
+          "key": "wheat_farm",
+          "category": "building",
+          "url": "/assets/buildings/wheat_farm.png",
+          "status": "ready"
+        },
+        {
+          "key": "logging_camp",
+          "category": "building",
+          "url": "/assets/buildings/logging_camp.png",
+          "status": "ready"
+        },
+        {
+          "key": "sawmill",
+          "category": "building",
+          "url": "/assets/buildings/sawmill.png",
+          "status": "ready"
+        },
+        {
+          "key": "quarry",
+          "category": "building",
+          "url": "/assets/buildings/quarry.png",
+          "status": "ready"
+        },
+        {
+          "key": "masonry",
+          "category": "building",
+          "url": "/assets/buildings/masonry.png",
+          "status": "ready"
+        },
+        {
+          "key": "market",
+          "category": "building",
+          "url": "/assets/buildings/market.png",
+          "status": "ready"
+        },
+        {
+          "key": "church",
+          "category": "building",
+          "url": "/assets/buildings/church.png",
+          "status": "ready"
+        },
+        {
+          "key": "keep",
+          "category": "building",
+          "url": "/assets/buildings/keep.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l4",
+          "category": "building",
+          "url": "/assets/buildings/house_l4.png",
+          "status": "ready"
+        },
+        {
+          "key": "stone_wall_segment",
+          "category": "building",
+          "url": "/assets/buildings/stone_wall_segment.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_large",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_large.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_small",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_small.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_tall",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_short",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_short.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_birch",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_birch.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_dead",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_dead.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_fresh",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_fresh.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_old",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_old.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_a",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_a.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_b",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_b.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass_tuft",
+          "category": "foliage",
+          "url": "/assets/foliage/grass_tuft.png",
+          "status": "ready"
+        },
+        {
+          "key": "field_stone",
+          "category": "foliage",
+          "url": "/assets/foliage/field_stone.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass",
+          "category": "terrain",
+          "url": "/assets/terrain/grass.png",
+          "status": "ready"
+        },
+        {
+          "key": "forest_floor",
+          "category": "terrain",
+          "url": "/assets/terrain/forest_floor.png",
+          "status": "ready"
+        },
+        {
+          "key": "water",
+          "category": "terrain",
+          "url": "/assets/terrain/water.png",
+          "status": "ready"
+        },
+        {
+          "key": "rock",
+          "category": "terrain",
+          "url": "/assets/terrain/rock.png",
+          "status": "ready"
+        },
+        {
+          "key": "packed_earth_road",
+          "category": "terrain",
+          "url": "/assets/terrain/packed_earth_road.png",
+          "status": "ready"
+        }
+      ],
+      "spriteDraws": {
+        "recent": [
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_b",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_b",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          }
+        ]
+      }
+    },
+    "cottage": {
+      "clientX": 863.7037037037037,
+      "clientY": 468
+    },
+    "overflow": false
+  },
+  {
+    "variant": "baseline",
+    "width": 768,
+    "height": 1024,
+    "routeHits": [],
+    "errors": [],
+    "state": {
+      "tick": 0,
+      "wallTick": 0,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3
+        }
+      ],
+      "walkers": []
+    },
+    "render": {
+      "camera": {
+        "zoom": 1.62037037037037,
+        "lod": "full"
+      },
+      "assets": [
+        {
+          "key": "house_l0",
+          "category": "building",
+          "url": "/assets/buildings/house_l0.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l1",
+          "category": "building",
+          "url": "/assets/buildings/house_l1.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l2",
+          "category": "building",
+          "url": "/assets/buildings/house_l2.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l3",
+          "category": "building",
+          "url": "/assets/buildings/house_l3.png",
+          "status": "ready"
+        },
+        {
+          "key": "mill",
+          "category": "building",
+          "url": "/assets/buildings/mill.png",
+          "status": "ready"
+        },
+        {
+          "key": "barn",
+          "category": "building",
+          "url": "/assets/buildings/barn.png",
+          "status": "ready"
+        },
+        {
+          "key": "well",
+          "category": "building",
+          "url": "/assets/buildings/well.png",
+          "status": "ready"
+        },
+        {
+          "key": "storehouse",
+          "category": "building",
+          "url": "/assets/buildings/storehouse.png",
+          "status": "ready"
+        },
+        {
+          "key": "wheat_farm",
+          "category": "building",
+          "url": "/assets/buildings/wheat_farm.png",
+          "status": "ready"
+        },
+        {
+          "key": "logging_camp",
+          "category": "building",
+          "url": "/assets/buildings/logging_camp.png",
+          "status": "ready"
+        },
+        {
+          "key": "sawmill",
+          "category": "building",
+          "url": "/assets/buildings/sawmill.png",
+          "status": "ready"
+        },
+        {
+          "key": "quarry",
+          "category": "building",
+          "url": "/assets/buildings/quarry.png",
+          "status": "ready"
+        },
+        {
+          "key": "masonry",
+          "category": "building",
+          "url": "/assets/buildings/masonry.png",
+          "status": "ready"
+        },
+        {
+          "key": "market",
+          "category": "building",
+          "url": "/assets/buildings/market.png",
+          "status": "ready"
+        },
+        {
+          "key": "church",
+          "category": "building",
+          "url": "/assets/buildings/church.png",
+          "status": "ready"
+        },
+        {
+          "key": "keep",
+          "category": "building",
+          "url": "/assets/buildings/keep.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l4",
+          "category": "building",
+          "url": "/assets/buildings/house_l4.png",
+          "status": "ready"
+        },
+        {
+          "key": "stone_wall_segment",
+          "category": "building",
+          "url": "/assets/buildings/stone_wall_segment.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_large",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_large.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_small",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_small.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_tall",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_short",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_short.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_birch",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_birch.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_dead",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_dead.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_fresh",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_fresh.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_old",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_old.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_a",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_a.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_b",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_b.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass_tuft",
+          "category": "foliage",
+          "url": "/assets/foliage/grass_tuft.png",
+          "status": "ready"
+        },
+        {
+          "key": "field_stone",
+          "category": "foliage",
+          "url": "/assets/foliage/field_stone.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass",
+          "category": "terrain",
+          "url": "/assets/terrain/grass.png",
+          "status": "ready"
+        },
+        {
+          "key": "forest_floor",
+          "category": "terrain",
+          "url": "/assets/terrain/forest_floor.png",
+          "status": "ready"
+        },
+        {
+          "key": "water",
+          "category": "terrain",
+          "url": "/assets/terrain/water.png",
+          "status": "ready"
+        },
+        {
+          "key": "rock",
+          "category": "terrain",
+          "url": "/assets/terrain/rock.png",
+          "status": "ready"
+        },
+        {
+          "key": "packed_earth_road",
+          "category": "terrain",
+          "url": "/assets/terrain/packed_earth_road.png",
+          "status": "ready"
+        }
+      ],
+      "spriteDraws": {
+        "recent": [
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "barn",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "storehouse",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "well",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "logging_camp",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_b",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          }
+        ]
+      }
+    },
+    "cottage": {
+      "clientX": 460.70370370370364,
+      "clientY": 533
+    },
+    "overflow": false
+  },
+  {
+    "variant": "candidate",
+    "width": 768,
+    "height": 1024,
+    "routeHits": [
+      "buildings/house_l0.png",
+      "foliage/tree_oak_large.png",
+      "terrain/grass.png"
+    ],
+    "errors": [],
+    "state": {
+      "tick": 0,
+      "wallTick": 0,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3
+        }
+      ],
+      "walkers": []
+    },
+    "render": {
+      "camera": {
+        "zoom": 1.62037037037037,
+        "lod": "full"
+      },
+      "assets": [
+        {
+          "key": "house_l0",
+          "category": "building",
+          "url": "/assets/buildings/house_l0.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l1",
+          "category": "building",
+          "url": "/assets/buildings/house_l1.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l2",
+          "category": "building",
+          "url": "/assets/buildings/house_l2.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l3",
+          "category": "building",
+          "url": "/assets/buildings/house_l3.png",
+          "status": "ready"
+        },
+        {
+          "key": "mill",
+          "category": "building",
+          "url": "/assets/buildings/mill.png",
+          "status": "ready"
+        },
+        {
+          "key": "barn",
+          "category": "building",
+          "url": "/assets/buildings/barn.png",
+          "status": "ready"
+        },
+        {
+          "key": "well",
+          "category": "building",
+          "url": "/assets/buildings/well.png",
+          "status": "ready"
+        },
+        {
+          "key": "storehouse",
+          "category": "building",
+          "url": "/assets/buildings/storehouse.png",
+          "status": "ready"
+        },
+        {
+          "key": "wheat_farm",
+          "category": "building",
+          "url": "/assets/buildings/wheat_farm.png",
+          "status": "ready"
+        },
+        {
+          "key": "logging_camp",
+          "category": "building",
+          "url": "/assets/buildings/logging_camp.png",
+          "status": "ready"
+        },
+        {
+          "key": "sawmill",
+          "category": "building",
+          "url": "/assets/buildings/sawmill.png",
+          "status": "ready"
+        },
+        {
+          "key": "quarry",
+          "category": "building",
+          "url": "/assets/buildings/quarry.png",
+          "status": "ready"
+        },
+        {
+          "key": "masonry",
+          "category": "building",
+          "url": "/assets/buildings/masonry.png",
+          "status": "ready"
+        },
+        {
+          "key": "market",
+          "category": "building",
+          "url": "/assets/buildings/market.png",
+          "status": "ready"
+        },
+        {
+          "key": "church",
+          "category": "building",
+          "url": "/assets/buildings/church.png",
+          "status": "ready"
+        },
+        {
+          "key": "keep",
+          "category": "building",
+          "url": "/assets/buildings/keep.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l4",
+          "category": "building",
+          "url": "/assets/buildings/house_l4.png",
+          "status": "ready"
+        },
+        {
+          "key": "stone_wall_segment",
+          "category": "building",
+          "url": "/assets/buildings/stone_wall_segment.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_large",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_large.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_small",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_small.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_tall",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_short",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_short.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_birch",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_birch.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_dead",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_dead.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_fresh",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_fresh.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_old",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_old.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_a",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_a.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_b",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_b.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass_tuft",
+          "category": "foliage",
+          "url": "/assets/foliage/grass_tuft.png",
+          "status": "ready"
+        },
+        {
+          "key": "field_stone",
+          "category": "foliage",
+          "url": "/assets/foliage/field_stone.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass",
+          "category": "terrain",
+          "url": "/assets/terrain/grass.png",
+          "status": "ready"
+        },
+        {
+          "key": "forest_floor",
+          "category": "terrain",
+          "url": "/assets/terrain/forest_floor.png",
+          "status": "ready"
+        },
+        {
+          "key": "water",
+          "category": "terrain",
+          "url": "/assets/terrain/water.png",
+          "status": "ready"
+        },
+        {
+          "key": "rock",
+          "category": "terrain",
+          "url": "/assets/terrain/rock.png",
+          "status": "ready"
+        },
+        {
+          "key": "packed_earth_road",
+          "category": "terrain",
+          "url": "/assets/terrain/packed_earth_road.png",
+          "status": "ready"
+        }
+      ],
+      "spriteDraws": {
+        "recent": [
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "barn",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "storehouse",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "well",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "logging_camp",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_b",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          }
+        ]
+      }
+    },
+    "cottage": {
+      "clientX": 460.70370370370364,
+      "clientY": 533
+    },
+    "overflow": false
+  },
+  {
+    "variant": "baseline",
+    "width": 375,
+    "height": 812,
+    "routeHits": [],
+    "errors": [],
+    "state": {
+      "tick": 0,
+      "wallTick": 0,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3
+        }
+      ],
+      "walkers": []
+    },
+    "render": {
+      "camera": {
+        "zoom": 1.62037037037037,
+        "lod": "full"
+      },
+      "assets": [
+        {
+          "key": "house_l0",
+          "category": "building",
+          "url": "/assets/buildings/house_l0.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l1",
+          "category": "building",
+          "url": "/assets/buildings/house_l1.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l2",
+          "category": "building",
+          "url": "/assets/buildings/house_l2.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l3",
+          "category": "building",
+          "url": "/assets/buildings/house_l3.png",
+          "status": "ready"
+        },
+        {
+          "key": "mill",
+          "category": "building",
+          "url": "/assets/buildings/mill.png",
+          "status": "ready"
+        },
+        {
+          "key": "barn",
+          "category": "building",
+          "url": "/assets/buildings/barn.png",
+          "status": "ready"
+        },
+        {
+          "key": "well",
+          "category": "building",
+          "url": "/assets/buildings/well.png",
+          "status": "ready"
+        },
+        {
+          "key": "storehouse",
+          "category": "building",
+          "url": "/assets/buildings/storehouse.png",
+          "status": "ready"
+        },
+        {
+          "key": "wheat_farm",
+          "category": "building",
+          "url": "/assets/buildings/wheat_farm.png",
+          "status": "ready"
+        },
+        {
+          "key": "logging_camp",
+          "category": "building",
+          "url": "/assets/buildings/logging_camp.png",
+          "status": "ready"
+        },
+        {
+          "key": "sawmill",
+          "category": "building",
+          "url": "/assets/buildings/sawmill.png",
+          "status": "ready"
+        },
+        {
+          "key": "quarry",
+          "category": "building",
+          "url": "/assets/buildings/quarry.png",
+          "status": "ready"
+        },
+        {
+          "key": "masonry",
+          "category": "building",
+          "url": "/assets/buildings/masonry.png",
+          "status": "ready"
+        },
+        {
+          "key": "market",
+          "category": "building",
+          "url": "/assets/buildings/market.png",
+          "status": "ready"
+        },
+        {
+          "key": "church",
+          "category": "building",
+          "url": "/assets/buildings/church.png",
+          "status": "ready"
+        },
+        {
+          "key": "keep",
+          "category": "building",
+          "url": "/assets/buildings/keep.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l4",
+          "category": "building",
+          "url": "/assets/buildings/house_l4.png",
+          "status": "ready"
+        },
+        {
+          "key": "stone_wall_segment",
+          "category": "building",
+          "url": "/assets/buildings/stone_wall_segment.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_large",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_large.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_small",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_small.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_tall",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_short",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_short.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_birch",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_birch.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_dead",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_dead.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_fresh",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_fresh.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_old",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_old.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_a",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_a.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_b",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_b.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass_tuft",
+          "category": "foliage",
+          "url": "/assets/foliage/grass_tuft.png",
+          "status": "ready"
+        },
+        {
+          "key": "field_stone",
+          "category": "foliage",
+          "url": "/assets/foliage/field_stone.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass",
+          "category": "terrain",
+          "url": "/assets/terrain/grass.png",
+          "status": "ready"
+        },
+        {
+          "key": "forest_floor",
+          "category": "terrain",
+          "url": "/assets/terrain/forest_floor.png",
+          "status": "ready"
+        },
+        {
+          "key": "water",
+          "category": "terrain",
+          "url": "/assets/terrain/water.png",
+          "status": "ready"
+        },
+        {
+          "key": "rock",
+          "category": "terrain",
+          "url": "/assets/terrain/rock.png",
+          "status": "ready"
+        },
+        {
+          "key": "packed_earth_road",
+          "category": "terrain",
+          "url": "/assets/terrain/packed_earth_road.png",
+          "status": "ready"
+        }
+      ],
+      "spriteDraws": {
+        "recent": [
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "barn",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "storehouse",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "well",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "logging_camp",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          }
+        ]
+      }
+    },
+    "cottage": {
+      "clientX": 224.1252723311547,
+      "clientY": 422.73662551440316
+    },
+    "overflow": false
+  },
+  {
+    "variant": "candidate",
+    "width": 375,
+    "height": 812,
+    "routeHits": [
+      "buildings/house_l0.png",
+      "foliage/tree_oak_large.png",
+      "terrain/grass.png"
+    ],
+    "errors": [],
+    "state": {
+      "tick": 0,
+      "wallTick": 0,
+      "population": 12,
+      "idleWorkers": 0,
+      "treasuryTimber": 120,
+      "roadRevision": 0,
+      "buildings": [
+        {
+          "id": "house-44-40-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-40-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-44-42-0",
+          "kind": "house",
+          "tx": 44,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "house-46-42-0",
+          "kind": "house",
+          "tx": 46,
+          "ty": 42,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "well-45-41-0",
+          "kind": "well",
+          "tx": 45,
+          "ty": 41,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "granary-42-37-0",
+          "kind": "granary",
+          "tx": 42,
+          "ty": 37,
+          "inventory": {
+            "bread": 30
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "logging-camp-50-40-0",
+          "kind": "logging_camp",
+          "tx": 50,
+          "ty": 40,
+          "inventory": {},
+          "productionProgress": 0,
+          "problemCause": null
+        },
+        {
+          "id": "storehouse-41-40-0",
+          "kind": "storehouse",
+          "tx": 41,
+          "ty": 40,
+          "inventory": {
+            "logs": 20
+          },
+          "productionProgress": 0,
+          "problemCause": null
+        }
+      ],
+      "constructionSites": [],
+      "houses": [
+        {
+          "buildingId": "house-46-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-40-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-44-42-0",
+          "residents": 3
+        },
+        {
+          "buildingId": "house-46-42-0",
+          "residents": 3
+        }
+      ],
+      "walkers": []
+    },
+    "render": {
+      "camera": {
+        "zoom": 1.62037037037037,
+        "lod": "full"
+      },
+      "assets": [
+        {
+          "key": "house_l0",
+          "category": "building",
+          "url": "/assets/buildings/house_l0.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l1",
+          "category": "building",
+          "url": "/assets/buildings/house_l1.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l2",
+          "category": "building",
+          "url": "/assets/buildings/house_l2.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l3",
+          "category": "building",
+          "url": "/assets/buildings/house_l3.png",
+          "status": "ready"
+        },
+        {
+          "key": "mill",
+          "category": "building",
+          "url": "/assets/buildings/mill.png",
+          "status": "ready"
+        },
+        {
+          "key": "barn",
+          "category": "building",
+          "url": "/assets/buildings/barn.png",
+          "status": "ready"
+        },
+        {
+          "key": "well",
+          "category": "building",
+          "url": "/assets/buildings/well.png",
+          "status": "ready"
+        },
+        {
+          "key": "storehouse",
+          "category": "building",
+          "url": "/assets/buildings/storehouse.png",
+          "status": "ready"
+        },
+        {
+          "key": "wheat_farm",
+          "category": "building",
+          "url": "/assets/buildings/wheat_farm.png",
+          "status": "ready"
+        },
+        {
+          "key": "logging_camp",
+          "category": "building",
+          "url": "/assets/buildings/logging_camp.png",
+          "status": "ready"
+        },
+        {
+          "key": "sawmill",
+          "category": "building",
+          "url": "/assets/buildings/sawmill.png",
+          "status": "ready"
+        },
+        {
+          "key": "quarry",
+          "category": "building",
+          "url": "/assets/buildings/quarry.png",
+          "status": "ready"
+        },
+        {
+          "key": "masonry",
+          "category": "building",
+          "url": "/assets/buildings/masonry.png",
+          "status": "ready"
+        },
+        {
+          "key": "market",
+          "category": "building",
+          "url": "/assets/buildings/market.png",
+          "status": "ready"
+        },
+        {
+          "key": "church",
+          "category": "building",
+          "url": "/assets/buildings/church.png",
+          "status": "ready"
+        },
+        {
+          "key": "keep",
+          "category": "building",
+          "url": "/assets/buildings/keep.png",
+          "status": "ready"
+        },
+        {
+          "key": "house_l4",
+          "category": "building",
+          "url": "/assets/buildings/house_l4.png",
+          "status": "ready"
+        },
+        {
+          "key": "stone_wall_segment",
+          "category": "building",
+          "url": "/assets/buildings/stone_wall_segment.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_large",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_large.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_oak_small",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_oak_small.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_tall",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_pine_short",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_pine_short.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_birch",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_birch.png",
+          "status": "ready"
+        },
+        {
+          "key": "tree_dead",
+          "category": "foliage",
+          "url": "/assets/foliage/tree_dead.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_fresh",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_fresh.png",
+          "status": "ready"
+        },
+        {
+          "key": "stump_old",
+          "category": "foliage",
+          "url": "/assets/foliage/stump_old.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_a",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_a.png",
+          "status": "ready"
+        },
+        {
+          "key": "shrub_b",
+          "category": "foliage",
+          "url": "/assets/foliage/shrub_b.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass_tuft",
+          "category": "foliage",
+          "url": "/assets/foliage/grass_tuft.png",
+          "status": "ready"
+        },
+        {
+          "key": "field_stone",
+          "category": "foliage",
+          "url": "/assets/foliage/field_stone.png",
+          "status": "ready"
+        },
+        {
+          "key": "grass",
+          "category": "terrain",
+          "url": "/assets/terrain/grass.png",
+          "status": "ready"
+        },
+        {
+          "key": "forest_floor",
+          "category": "terrain",
+          "url": "/assets/terrain/forest_floor.png",
+          "status": "ready"
+        },
+        {
+          "key": "water",
+          "category": "terrain",
+          "url": "/assets/terrain/water.png",
+          "status": "ready"
+        },
+        {
+          "key": "rock",
+          "category": "terrain",
+          "url": "/assets/terrain/rock.png",
+          "status": "ready"
+        },
+        {
+          "key": "packed_earth_road",
+          "category": "terrain",
+          "url": "/assets/terrain/packed_earth_road.png",
+          "status": "ready"
+        }
+      ],
+      "spriteDraws": {
+        "recent": [
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "barn",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "storehouse",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "well",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "house_l0",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "logging_camp",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_tall",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "field_stone",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_small",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_oak_large",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_dead",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "field_stone",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "tree_pine_short",
+            "drawn": true,
+            "reason": "drawn"
+          },
+          {
+            "key": "tree_birch",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "grass_tuft",
+            "drawn": false,
+            "reason": "culled"
+          },
+          {
+            "key": "shrub_a",
+            "drawn": false,
+            "reason": "culled"
+          }
+        ]
+      }
+    },
+    "cottage": {
+      "clientX": 224.1252723311547,
+      "clientY": 422.73662551440316
+    },
+    "overflow": false
+  }
+]

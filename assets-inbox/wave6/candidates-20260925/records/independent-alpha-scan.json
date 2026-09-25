@@ -1,0 +1,376 @@
+[
+  {
+    "file": "construction/pile_stone_1-v1.png",
+    "size": [
+      96,
+      64
+    ],
+    "clear": 5422,
+    "opaque": 499,
+    "partial": 223,
+    "bbox": [
+      28,
+      32,
+      67,
+      55
+    ],
+    "sha256": "6eccadacc0a526ea5797aad0a235b8c431c7d96b78db6469f67e2a82e398a295"
+  },
+  {
+    "file": "construction/pile_stone_2-v1.png",
+    "size": [
+      96,
+      64
+    ],
+    "clear": 4655,
+    "opaque": 1170,
+    "partial": 319,
+    "bbox": [
+      20,
+      18,
+      75,
+      55
+    ],
+    "sha256": "9acb35c320345bf2fba46230de5fc68d9264eabdb38901166cdd38bc81767b29"
+  },
+  {
+    "file": "construction/pile_stone_3-v1.png",
+    "size": [
+      96,
+      64
+    ],
+    "clear": 4068,
+    "opaque": 1760,
+    "partial": 316,
+    "bbox": [
+      15,
+      8,
+      80,
+      55
+    ],
+    "sha256": "19402246f37d5f018a81c6cca23097cf7b7ef81a677dae8d0cd6690a0738cd37"
+  },
+  {
+    "file": "construction/pile_wood_1-v1.png",
+    "size": [
+      96,
+      64
+    ],
+    "clear": 5615,
+    "opaque": 363,
+    "partial": 166,
+    "bbox": [
+      29,
+      32,
+      66,
+      55
+    ],
+    "sha256": "49bed4b5afece8675f1aba0c38db21380d2e094223687c93224ca4577c957973"
+  },
+  {
+    "file": "construction/pile_wood_2-v1.png",
+    "size": [
+      96,
+      64
+    ],
+    "clear": 4695,
+    "opaque": 1184,
+    "partial": 265,
+    "bbox": [
+      21,
+      18,
+      74,
+      55
+    ],
+    "sha256": "b1837da835d86b26185495dcfa4134a718695e1621444279afa34c00c3dac740"
+  },
+  {
+    "file": "construction/pile_wood_3-v1.png",
+    "size": [
+      96,
+      64
+    ],
+    "clear": 4032,
+    "opaque": 1814,
+    "partial": 298,
+    "bbox": [
+      18,
+      8,
+      77,
+      55
+    ],
+    "sha256": "086d178a6d2b0b42ef11e55b5ea943527c2beacdcfd36c5af12d4b32d63ba3a4"
+  },
+  {
+    "file": "construction/roof_frame_thatch-v1.png",
+    "size": [
+      512,
+      256
+    ],
+    "clear": 84119,
+    "opaque": 6,
+    "partial": 46947,
+    "bbox": [
+      51,
+      14,
+      460,
+      237
+    ],
+    "sha256": "2c056010140ca03d325ac8f59c77158b6902a960108c2417430e445fb340f6d0"
+  },
+  {
+    "file": "construction/sign_post-v1.png",
+    "size": [
+      32,
+      64
+    ],
+    "clear": 1423,
+    "opaque": 241,
+    "partial": 384,
+    "bbox": [
+      4,
+      12,
+      27,
+      55
+    ],
+    "sha256": "17a96d09797190d9e72b0fb03cb1670396d352b72facc760c08faf8de769ec50"
+  },
+  {
+    "file": "construction/well_stages-v1.png",
+    "size": [
+      216,
+      80
+    ],
+    "clear": 14783,
+    "opaque": 0,
+    "partial": 2497,
+    "bbox": [
+      20,
+      11,
+      203,
+      64
+    ],
+    "sha256": "7a7e28d44d3b428999dee62d93123d36a56ea80bea51ba070bccf875a2f2ac5b"
+  },
+  {
+    "file": "fx/completion_burst-v1.png",
+    "size": [
+      384,
+      128
+    ],
+    "clear": 31539,
+    "opaque": 62,
+    "partial": 17551,
+    "bbox": [
+      8,
+      18,
+      375,
+      119
+    ],
+    "sha256": "a68a6d7b7809c9580d073732ec94dfc0566d220e90b8ec1af620b6e3a5469819"
+  },
+  {
+    "file": "fx/dust_puff.png",
+    "size": [
+      32,
+      32
+    ],
+    "clear": 639,
+    "opaque": 44,
+    "partial": 341,
+    "bbox": [
+      2,
+      13,
+      29,
+      29
+    ],
+    "sha256": "a6f20fa6fd632e40d04327c13597e1d1441cbe78e0b93438c58b4f4aea4bb2cb"
+  },
+  {
+    "file": "fx/fire_large.png",
+    "size": [
+      96,
+      96
+    ],
+    "clear": 5324,
+    "opaque": 242,
+    "partial": 3650,
+    "bbox": [
+      13,
+      2,
+      83,
+      93
+    ],
+    "sha256": "6adee08c013e2787a26d22e74d99524538b7a9677b301cabbd7a5af4ccfaed82"
+  },
+  {
+    "file": "fx/fire_small.png",
+    "size": [
+      48,
+      64
+    ],
+    "clear": 1722,
+    "opaque": 142,
+    "partial": 1208,
+    "bbox": [
+      5,
+      2,
+      43,
+      61
+    ],
+    "sha256": "babdeb0fed0ecf95afdab7c1f1babf1b7c39eab16583c08a778730f842fc98d1"
+  },
+  {
+    "file": "fx/hammer_sparks-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "clear": 649,
+    "opaque": 43,
+    "partial": 332,
+    "bbox": [
+      2,
+      13,
+      29,
+      29
+    ],
+    "sha256": "35a57939f22c0e9c83d9741207e14793daa17618829196395727ddf546dc2c28"
+  },
+  {
+    "file": "fx/smoke_chimney_a.png",
+    "size": [
+      32,
+      64
+    ],
+    "clear": 1122,
+    "opaque": 82,
+    "partial": 844,
+    "bbox": [
+      2,
+      2,
+      29,
+      61
+    ],
+    "sha256": "c97e586fdcb4715e36884847261b2c1ffaa38232eaf48383bac5022492b68053"
+  },
+  {
+    "file": "fx/smoke_chimney_b.png",
+    "size": [
+      32,
+      64
+    ],
+    "clear": 1140,
+    "opaque": 35,
+    "partial": 873,
+    "bbox": [
+      3,
+      2,
+      28,
+      61
+    ],
+    "sha256": "c7a11a4c16074095ec81ff89034c444df002283c184041744db19bb67f34654d"
+  },
+  {
+    "file": "marker/stake_empty_plot.png",
+    "size": [
+      32,
+      48
+    ],
+    "clear": 993,
+    "opaque": 103,
+    "partial": 440,
+    "bbox": [
+      5,
+      2,
+      26,
+      45
+    ],
+    "sha256": "a6a002b7fe937ca51c5c18475f5fd252954322d6366e0e39fbc80c6da2a10e1e"
+  },
+  {
+    "file": "work/work_carry_beam-v1.png",
+    "size": [
+      128,
+      32
+    ],
+    "clear": 2605,
+    "opaque": 0,
+    "partial": 1491,
+    "bbox": [
+      1,
+      2,
+      126,
+      29
+    ],
+    "sha256": "3ae96c8dc596e9fe8960c010162096c0a2d7a722e17a0ac08262a8c3869c6257"
+  },
+  {
+    "file": "work/work_hammer-v1.png",
+    "size": [
+      128,
+      32
+    ],
+    "clear": 2744,
+    "opaque": 0,
+    "partial": 1352,
+    "bbox": [
+      7,
+      1,
+      120,
+      30
+    ],
+    "sha256": "7886872606b93a40432457d094bab2179bc7da6257896356cbbb0963065ff652"
+  },
+  {
+    "file": "work/work_pose_overlay_m.png",
+    "size": [
+      74,
+      74
+    ],
+    "clear": 4672,
+    "opaque": 0,
+    "partial": 804,
+    "bbox": [
+      20,
+      3,
+      57,
+      44
+    ],
+    "sha256": "6f6006cf3974fd0b65bc2026c37556c9e857aaf589ac427c2934777004723222"
+  },
+  {
+    "file": "work/work_shovel-v1.png",
+    "size": [
+      128,
+      32
+    ],
+    "clear": 3335,
+    "opaque": 0,
+    "partial": 761,
+    "bbox": [
+      9,
+      1,
+      119,
+      30
+    ],
+    "sha256": "6ecf6a1cc7ffa3bb6f953ce3578c8f03f503f8b3f967484dbb30d0e84bc5950b"
+  },
+  {
+    "file": "work/work_sickle-v1.png",
+    "size": [
+      128,
+      32
+    ],
+    "clear": 1990,
+    "opaque": 0,
+    "partial": 2106,
+    "bbox": [
+      3,
+      1,
+      126,
+      30
+    ],
+    "sha256": "347cd0f5a5b46f0b627856dae9c1d47ef8c5fd1e40aa3eb3b5166b059e85708c"
+  }
+]

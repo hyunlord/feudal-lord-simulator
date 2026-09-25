@@ -1,0 +1,533 @@
+{
+  "assets": [
+    {
+      "id": "road/earth_strip_a-v2",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        0,
+        242,
+        2172,
+        244
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "alpha": "Y-edge fade12px",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X-only cosine edge-difference correction48px",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "bounds": [
+        0,
+        2,
+        512,
+        60
+      ]
+    },
+    {
+      "id": "road/earth_strip_b-v2",
+      "role": "strip",
+      "size": [
+        512,
+        64
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        0,
+        226,
+        2172,
+        270
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        64
+      ],
+      "repeat": "X only",
+      "alpha": "Y-edge fade12px",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X-only cosine edge-difference correction48px",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "bounds": [
+        0,
+        2,
+        512,
+        60
+      ]
+    },
+    {
+      "id": "shore/shoreline_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        96
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        0,
+        127,
+        2172,
+        471
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        96
+      ],
+      "repeat": "X only",
+      "alpha": "Y-edge fade12px",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X-only cosine edge-difference correction48px",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "bounds": [
+        0,
+        2,
+        512,
+        92
+      ]
+    },
+    {
+      "id": "water/shallow_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": "opaque",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": {
+        "mean": [
+          83.81533813476562,
+          140.44351196289062,
+          157.9898681640625
+        ],
+        "target": [
+          97,
+          135,
+          143
+        ],
+        "contrast": 0.55
+      },
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X and Y cosine edge-difference correction",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ]
+    },
+    {
+      "id": "ground/pasture_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": "opaque",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": {
+        "mean": [
+          149.97189331054688,
+          155.52774047851562,
+          94.00753784179688
+        ],
+        "target": [
+          143,
+          146,
+          88
+        ],
+        "contrast": 0.35
+      },
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X and Y cosine edge-difference correction",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ]
+    },
+    {
+      "id": "prop/haycock_a-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        1313,
+        1198
+      ],
+      "sourceCrop": [
+        236,
+        355,
+        889,
+        643
+      ],
+      "placement": [
+        8,
+        38.99212598425197,
+        112,
+        81.00787401574803
+      ],
+      "repeat": "none",
+      "alpha": "transparentRGBA",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius3 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "none",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1029,
+      "bounds": [
+        8,
+        39,
+        112,
+        81
+      ]
+    },
+    {
+      "id": "prop/haycock_b-v1",
+      "role": "decal",
+      "size": [
+        128,
+        128
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        42,
+        413,
+        1173,
+        559
+      ],
+      "placement": [
+        8,
+        66.62574595055413,
+        112,
+        53.37425404944587
+      ],
+      "repeat": "none",
+      "alpha": "transparentRGBA",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius3 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "none",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 901,
+      "bounds": [
+        8,
+        67,
+        112,
+        53
+      ]
+    },
+    {
+      "id": "wall/palisade_face_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sourceCrop": [
+        0,
+        107,
+        2172,
+        617
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "alpha": "opaque body, transparent top silhouette",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": {
+        "top35pxContrast": 0.45,
+        "target": [
+          154,
+          126,
+          88
+        ]
+      },
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X-only cosine edge-difference correction48px",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 3179,
+      "bounds": [
+        0,
+        0,
+        512,
+        128
+      ]
+    },
+    {
+      "id": "wall/stone_face_a-v1",
+      "role": "strip",
+      "size": [
+        512,
+        128
+      ],
+      "sourceSize": [
+        1983,
+        793
+      ],
+      "sourceCrop": [
+        0,
+        149,
+        1983,
+        592
+      ],
+      "placement": [
+        0,
+        0,
+        512,
+        128
+      ],
+      "repeat": "X only",
+      "alpha": "opaque body, transparent top silhouette",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X-only cosine edge-difference correction48px",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 1089,
+      "bounds": [
+        0,
+        0,
+        512,
+        128
+      ]
+    },
+    {
+      "id": "ground/orchard_floor_a-v1",
+      "role": "fill",
+      "size": [
+        256,
+        128
+      ],
+      "sourceSize": [
+        1774,
+        887
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1774,
+        887
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "alpha": "opaque",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": {
+        "mean": [
+          129.0118408203125,
+          122.24420166015625,
+          82.80685424804688
+        ],
+        "target": [
+          127,
+          128,
+          81
+        ],
+        "contrast": 0.35
+      },
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "X and Y cosine edge-difference correction",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 0,
+      "bounds": [
+        0,
+        0,
+        256,
+        128
+      ]
+    },
+    {
+      "id": "tree/orchard_apple_c-v1",
+      "role": "object",
+      "size": [
+        256,
+        256
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceCrop": [
+        88,
+        227,
+        1088,
+        846
+      ],
+      "placement": [
+        8,
+        61.382352941176464,
+        240,
+        186.61764705882354
+      ],
+      "repeat": "none",
+      "alpha": "transparentRGBA",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius3 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "none",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 3018,
+      "bounds": [
+        8,
+        61,
+        240,
+        187
+      ]
+    },
+    {
+      "id": "module/bridge_abutment_ne_a-v1",
+      "role": "module",
+      "size": [
+        256,
+        192
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceCrop": [
+        0,
+        0,
+        1448,
+        1086
+      ],
+      "placement": [
+        0,
+        0,
+        256,
+        192
+      ],
+      "repeat": "none",
+      "alpha": "transparentRGBA",
+      "sourceToTargetResizes": 1,
+      "colorAdjustment": null,
+      "noiseCleanup": "edge-aware low-contrast RGB averaging radius4 at final resolution; silhouette/high-contrast shapes retained",
+      "seamCorrection": "none",
+      "rgbBleedRadius": 3,
+      "bleedPixels": 2138,
+      "bounds": [
+        24,
+        27,
+        209,
+        141
+      ]
+    }
+  ],
+  "partial": false,
+  "scene": {
+    "logicalGrid": [
+      12,
+      12
+    ],
+    "tileSource": [
+      128,
+      64
+    ],
+    "zooms": [
+      1,
+      0.6
+    ],
+    "sourceScale": [
+      0.5,
+      0.3
+    ],
+    "objectTreePlacementScale": 0.36,
+    "wallAffine": [
+      0.375,
+      -0.1875,
+      0,
+      0.7,
+      160,
+      470
+    ],
+    "wallRepeats": 4
+  },
+  "previousRoadLoaded": true
+}

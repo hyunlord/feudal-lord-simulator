@@ -1,0 +1,742 @@
+[
+  {
+    "id": "pt_age_f_mature_a",
+    "sex": "f",
+    "age": "mature",
+    "variant": "a",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_f_mature_a only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Mature age fifty, sparse shallow eye corner creases, two delicate forehead lines and light cheek folds. Variant A: delicate fan-shaped eye-corner creases strongest, faint nasolabial folds. Soft rounded feminine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_f_mature_a.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "9958521b78bf47baa367c70a0a49b6086bc151ddff36f414c7e2bda71f6681bb"
+  },
+  {
+    "id": "pt_age_f_old_a",
+    "sex": "f",
+    "age": "old",
+    "variant": "a",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_f_old_a only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Old age seventy-five, numerous fine branching crowfeet, three faint forehead creases, delicate cheek folds, broken jowl shadow strokes; visibly older but not scarred. Variant A: delicate fan-shaped eye-corner creases strongest, faint nasolabial folds. Soft rounded feminine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_f_old_a.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "e3b0798fed73d570d4ea04bb88296e5ef3f2b69aeef6d5b875b60192d7891a68"
+  },
+  {
+    "id": "pt_age_f_old_b",
+    "sex": "f",
+    "age": "old",
+    "variant": "b",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_f_old_b only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Old age seventy-five, numerous fine branching crowfeet, three faint forehead creases, delicate cheek folds, broken jowl shadow strokes; visibly older but not scarred. Variant B: broken shallow forehead lines strongest, understated under-eye bags and fine lower cheek creases. Soft rounded feminine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_f_old_b.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "42d8deee71527809e4c135461943d550ee171ad9de65a0b8ddf52386c37c7b85"
+  },
+  {
+    "id": "pt_age_m_mature_a",
+    "kind": "age",
+    "prompt": "Generate an AGING WRINKLE DECAL only. Transparent square PNG. Do not draw a portrait or skin at all. Imagine extremely sparse delicate sepia ink etched wrinkle strokes floating on clear glass. Approximately eight isolated curved hairline strokes around normalized coordinates: eye corner (0.48,0.46), forehead (0.40,0.34), cheek fold (0.46,0.59), chin crease (0.49,0.70). Output marks only, 98% canvas empty transparent. Brown lines each extremely thin, translucent alpha 20-80%, gently blended outer edge, subtly lit from upper left. NO SKIN-COLORED PATCHES, no flesh surface, no filled polygons, no face parts, no eyes, no lips. This is pt_age_m_mature_a replacement, universal modular face age45 overlay for eye-line y112 in 256px canvas, portrait looking left in 3/4. Full exact canvas with large empty margins. Only the drawn wrinkles, no labels. Hand-painted historical game style.",
+    "source": "provenance/raw/pt_age_m_mature_a.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "9d20dc4b2e296e3199ab448873d6b807e14c6add95a9083e64264539b7657dfd"
+  },
+  {
+    "id": "pt_age_m_old_a",
+    "sex": "m",
+    "age": "old",
+    "variant": "a",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_m_old_a only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Old age seventy-five, numerous fine branching crowfeet, three faint forehead creases, delicate cheek folds, broken jowl shadow strokes; visibly older but not scarred. Variant A: delicate fan-shaped eye-corner creases strongest, faint nasolabial folds. Slightly angular masculine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_m_old_a.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "e80a10c5a0469ad5867e5934e1305553179e42f91d58418ae5b40f7be1b1245e"
+  },
+  {
+    "id": "pt_beard_01",
+    "kind": "beard",
+    "label": "short full chin beard",
+    "color": "dark brown",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_01, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: short full chin beard. Color dark brown. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_01.png",
+    "source_sha256": "ecaf1859348a234baa7d56d8b6923f0529c766d7a77759cf35c4a5a2292e51d9"
+  },
+  {
+    "id": "pt_beard_02",
+    "kind": "beard",
+    "label": "long tapering full beard down to y211",
+    "color": "brown",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_02, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: long tapering full beard down to y211. Color brown. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_02.png",
+    "source_sha256": "499b37164b203ebc39d5cd657cbabb0b33558b93d27b7e93a676cbb5910f27fa"
+  },
+  {
+    "id": "pt_beard_03",
+    "kind": "beard",
+    "label": "mustache ONLY, no chin or cheeks",
+    "color": "auburn",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_03, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: mustache ONLY, no chin or cheeks. Color auburn. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_03.png",
+    "source_sha256": "99754c06dce3ab7bbda5226cd4c23856576766ed56fdbbbb524641dbb521cf1c"
+  },
+  {
+    "id": "pt_beard_04",
+    "kind": "beard",
+    "label": "sideburns ONLY at both temples down cheeks, no chin or mustache",
+    "color": "dark brown",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_04, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: sideburns ONLY at both temples down cheeks, no chin or mustache. Color dark brown. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_04.png",
+    "source_sha256": "fd9823725ca88d5b9a8c98ee2cdb6f548568fc725c16ba104718cc27eef7922f"
+  },
+  {
+    "id": "pt_beard_05",
+    "kind": "beard",
+    "label": "short neatly trimmed close beard with clean edge",
+    "color": "golden brown",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_05, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: short neatly trimmed close beard with clean edge. Color golden brown. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_05.png",
+    "source_sha256": "a8529cc993d7388d31a66efe7f91424c4da62520b1795bbdfe9351fad43cc662"
+  },
+  {
+    "id": "pt_beard_06",
+    "kind": "beard",
+    "label": "rough uneven medium stubble beard",
+    "color": "brown",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_06, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: rough uneven medium stubble beard. Color brown. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_06.png",
+    "source_sha256": "f2e9fb20af3761fd06c1c294adc0b3de547407f06ef88415a6435936952fb5c6"
+  },
+  {
+    "id": "pt_beard_07",
+    "kind": "beard",
+    "label": "short grey beard",
+    "color": "grey",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_07, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: short grey beard. Color grey. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_07.png",
+    "source_sha256": "893f44b958b3865b25786d0a7fe0a1d142cd44606a3b0d70a5d5d8157e398295"
+  },
+  {
+    "id": "pt_beard_08",
+    "kind": "beard",
+    "label": "long grey beard down to y220",
+    "color": "grey",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_08, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: long grey beard down to y220. Color grey. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_08.png",
+    "source_sha256": "3eeb950229ef44e1a1e826db0c5c960c96eda47f522258f511222e31f40ccd5c"
+  },
+  {
+    "id": "pt_beard_10",
+    "kind": "beard",
+    "label": "young sparse beard, a few fine chin and upper-lip hairs",
+    "color": "brown",
+    "prompt": "Create ONE isolated facial-hair OVERLAY pt_beard_10, target transparent 256x256 RGBA square (or proportional higher resolution). References: bald face is placement guide and must NOT appear; second image is isolated beard example. SAME painterly art, soft upper-left illumination, same LEFT-facing 3/4 direction. Exact required style: young sparse beard, a few fine chin and upper-lip hairs. Color brown. Only facial hair pixels with genuine transparent alpha; no skin, no face, no eyes, no garment, no backdrop, no labels. Fixed registration in 256 canvas: mouth center (92,151), upper lip y145, near cheek hair roots (145,128), far cheek (76,137), chin bottom around (104,176). Mustache center at (91,147). Preserve vacant top half of canvas and surrounding negative space, DO NOT enlarge beard to fill canvas. Must fit the supplied face without moving. Non-mustache beard styles keep mouth opening transparent and render natural loose hair tips. No social status or moral implication in grooming.",
+    "source": "provenance/raw/pt_beard_10.png",
+    "source_sha256": "7de3c66581e181605cdbb3ac605eae983b2c116b2e5ac81cd915a170d185eddf"
+  },
+  {
+    "id": "pt_face_c_01",
+    "kind": "face",
+    "label": "pt_face_c_01",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_c_01. DISTINCT IDENTITY: boy aged 10, round soft child face, short button nose, straight fine eyebrows, large eyes; no facial hair. Skin: medium warm.",
+    "source": "provenance/raw/pt_face_c_01.png",
+    "registration": {
+      "width": 256,
+      "height": 254,
+      "x": 0,
+      "y": 3,
+      "before_eye_y": 110.16551621955261,
+      "before_neck_bottom": 211,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "2faeaf3b3fa52227890585db8976342fd65bf4c04df25ada0a2951e85cedb222"
+  },
+  {
+    "id": "pt_face_c_02",
+    "kind": "face",
+    "label": "pt_face_c_02",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_c_02. DISTINCT IDENTITY: boy aged 16, lanky adolescent angular face, long narrow nose, thick straight brows; no facial hair. Skin: light warm.",
+    "source": "provenance/raw/pt_face_c_02.png",
+    "registration": {
+      "width": 256,
+      "height": 215,
+      "x": 0,
+      "y": 23,
+      "before_eye_y": 105.69405132693278,
+      "before_neck_bottom": 225,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "4fb06497ee55a4af0d86a8a875e4e9d540453c36f521b6c27e95cba6c02d156b"
+  },
+  {
+    "id": "pt_face_c_03",
+    "kind": "face",
+    "label": "pt_face_c_03",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_c_03. DISTINCT IDENTITY: girl aged 10, heart-shaped soft child face, broad tiny nose, thin round brows, large eyes. Skin: medium olive.",
+    "source": "provenance/raw/pt_face_c_03.png",
+    "registration": {
+      "width": 256,
+      "height": 237,
+      "x": 0,
+      "y": 9,
+      "before_eye_y": 110.77142252670751,
+      "before_neck_bottom": 219,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "489859ca705b5909cef4de01265152495dfb0ccf02c9a106153af1c2056d0aa5"
+  },
+  {
+    "id": "pt_face_c_04",
+    "kind": "face",
+    "label": "pt_face_c_04",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_c_04. DISTINCT IDENTITY: girl aged 16, oval youthful adolescent face, gently upturned nose, arched soft brows. Skin: deep warm brown.",
+    "source": "provenance/raw/pt_face_c_04.png",
+    "registration": {
+      "width": 256,
+      "height": 232,
+      "x": 0,
+      "y": 14,
+      "before_eye_y": 107.72475586828216,
+      "before_neck_bottom": 218,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "2cc2a030b56714588b3780ac84caa79ce4ff4202187a9842c5d0f2c22fe5caa2"
+  },
+  {
+    "id": "pt_face_f_01",
+    "kind": "face",
+    "label": "pt_face_f_01",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_01. DISTINCT IDENTITY: adult woman, oval face, medium straight nose, soft broad jaw, softly arched eyebrows, almond eyes. Skin: medium warm.",
+    "source": "provenance/raw/pt_face_f_01.png",
+    "registration": {
+      "width": 256,
+      "height": 231,
+      "x": 0,
+      "y": 20,
+      "before_eye_y": 102.4034759141401,
+      "before_neck_bottom": 213,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "3ae088833c1c893bf097279ed6b8270643eee3090e635cde1ae9c1267ce57a17"
+  },
+  {
+    "id": "pt_face_f_02",
+    "kind": "face",
+    "label": "pt_face_f_02",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_02. DISTINCT IDENTITY: adult woman, round full cheeks, short chin, small upturned nose, broad rounded eyebrows, large eyes. Skin: light warm.",
+    "source": "provenance/raw/pt_face_f_02.png",
+    "registration": {
+      "width": 256,
+      "height": 238,
+      "x": 0,
+      "y": 10,
+      "before_eye_y": 109.59682857549217,
+      "before_neck_bottom": 217,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "98301303deda736d6e15e616f2436ea3eb1c2b73bfb262da2e35b49fbc6d9511"
+  },
+  {
+    "id": "pt_face_f_03",
+    "kind": "face",
+    "label": "pt_face_f_03",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_03. DISTINCT IDENTITY: adult woman, angular long face, pronounced cheekbones, aquiline nose, thin straight eyebrows, narrow eyes. Skin: medium olive.",
+    "source": "provenance/raw/pt_face_f_03.png",
+    "registration": {
+      "width": 256,
+      "height": 238,
+      "x": 0,
+      "y": 13,
+      "before_eye_y": 106.48283064596174,
+      "before_neck_bottom": 214,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "c959ae6fb2347d21d3ddc1a81d6588fd792cac91f8726690c4d76046b087860a"
+  },
+  {
+    "id": "pt_face_f_04",
+    "kind": "face",
+    "label": "pt_face_f_04",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_04. DISTINCT IDENTITY: adult woman, square jaw, broad temples, short broad nose, low thick eyebrows, wide-set eyes. Skin: deep warm brown.",
+    "source": "provenance/raw/pt_face_f_04.png",
+    "registration": {
+      "width": 256,
+      "height": 220,
+      "x": 0,
+      "y": 23,
+      "before_eye_y": 103.60746044843279,
+      "before_neck_bottom": 220,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "fc4b9ef278f5259c848355ad02913c6b36a44a1ce46b348fd1459a07ed306ae4"
+  },
+  {
+    "id": "pt_face_f_05",
+    "kind": "face",
+    "label": "pt_face_f_05",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_05. DISTINCT IDENTITY: adult woman, heart-shaped face, pointed chin, long fine nose, high arch eyebrows, deep-set eyes. Skin: medium warm.",
+    "source": "provenance/raw/pt_face_f_05.png",
+    "registration": {
+      "width": 256,
+      "height": 238,
+      "x": 0,
+      "y": 13,
+      "before_eye_y": 106.63823463209599,
+      "before_neck_bottom": 214,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "b40df2e19efb0d086b2afd4181d977defdaccd23877a3574965111d005b26c3c"
+  },
+  {
+    "id": "pt_face_f_06",
+    "kind": "face",
+    "label": "pt_face_f_06",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_06. DISTINCT IDENTITY: adult woman, broad oval face, generous lower cheeks, convex nose, fine low eyebrows, close-set eyes. Skin: light warm.",
+    "source": "provenance/raw/pt_face_f_06.png",
+    "registration": {
+      "width": 256,
+      "height": 245,
+      "x": 0,
+      "y": 8,
+      "before_eye_y": 108.51698960538701,
+      "before_neck_bottom": 213,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "f1c3c29a7ef2be665807ef838ae8514129cc25d506fdea1fc73784da751aebb7"
+  },
+  {
+    "id": "pt_face_f_07",
+    "kind": "face",
+    "label": "pt_face_f_07",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_07. DISTINCT IDENTITY: adult woman, narrow diamond face, firm chin, small concave nose, thick angled eyebrows, bright round eyes. Skin: medium olive.",
+    "source": "provenance/raw/pt_face_f_07.png",
+    "registration": {
+      "width": 256,
+      "height": 225,
+      "x": 0,
+      "y": 17,
+      "before_eye_y": 108.23766153507995,
+      "before_neck_bottom": 222,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "626780f9257bf6ecbfbbdff448c85c4325d045bc6be09e4a6540e5635c7749a9"
+  },
+  {
+    "id": "pt_face_f_08",
+    "kind": "face",
+    "label": "pt_face_f_08",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_f_08. DISTINCT IDENTITY: adult woman, long rounded jawline, wide flat nose bridge, full lips, softly curved eyebrows, small almond eyes. Skin: deep warm brown.",
+    "source": "provenance/raw/pt_face_f_08.png",
+    "registration": {
+      "width": 256,
+      "height": 209,
+      "x": 0,
+      "y": 31,
+      "before_eye_y": 99.56766732687075,
+      "before_neck_bottom": 222,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "786e8b4736d4465d89bbbbf33527c5250935c49ec8ecdefee8063ef9fb90cb60"
+  },
+  {
+    "id": "pt_face_m_01",
+    "kind": "face",
+    "prompt": "Create ONE production portrait face layer pt_face_m_01 for a modular historical city-builder, using supplied image as exact registration and painting-style reference. Output transparent RGBA PNG square, target 256x256. No hair, no beard, no clothing, no backdrop, no labels. Head and neck only. Preserve exact reference head scale, eye-line y=112 of 256, neck terminating around y=212, shoulder registration y=208, bald crown at y=45, looking LEFT in same three-quarter angle, soft upper-left lighting, warm muted finely painted texture. Adult man with broad square jaw, straight medium nose, level thick eyebrows, wide temples, neutral expression. Keep reference alignment so existing reference hair, hood and garments fit unmodified. Genuinely transparent background, not painted checkerboard. Skin complexion has no association with social class, occupation, morality. This is one of 20 distinct identities.",
+    "source": "provenance/raw/pt_face_m_01.png",
+    "registration": {
+      "width": 256,
+      "height": 246,
+      "x": 0,
+      "y": 5,
+      "before_eye_y": 111.73114552584586,
+      "before_neck_bottom": 216,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "ffa3407a244c30bccf8805e67d70013e2870905b7d2889716adb021a99a1e7c9"
+  },
+  {
+    "id": "pt_face_m_02",
+    "kind": "face",
+    "label": "pt_face_m_02",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_02. DISTINCT IDENTITY: long oval face, narrow tapered chin, long aquiline nose, thin angled eyebrows, deep-set eyes, narrower temples. Skin: light warm.",
+    "source": "provenance/raw/pt_face_m_02.png",
+    "registration": {
+      "width": 256,
+      "height": 233,
+      "x": 0,
+      "y": 14,
+      "before_eye_y": 107.96915664483072,
+      "before_neck_bottom": 218,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "c1e7758ed2bc57486fc50a7b09cb1c194f8adcb82a7a4b6d4be0519f72897490"
+  },
+  {
+    "id": "pt_face_m_03",
+    "kind": "face",
+    "label": "pt_face_m_03",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_03. DISTINCT IDENTITY: broad round face, soft full cheeks, short broad nose, softly curved bushy eyebrows, wide-set eyes. Skin: medium olive.",
+    "source": "provenance/raw/pt_face_m_03.png",
+    "registration": {
+      "width": 256,
+      "height": 236,
+      "x": 0,
+      "y": 12,
+      "before_eye_y": 108.41113615413542,
+      "before_neck_bottom": 217,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "180f872ca4795104608a0b40c53eac59dd75a2ff1373c53ca14eea88e0afbb3d"
+  },
+  {
+    "id": "pt_face_m_04",
+    "kind": "face",
+    "label": "pt_face_m_04",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_04. DISTINCT IDENTITY: angular diamond face, prominent high cheekbones, pointed chin, slightly concave nose bridge, straight sparse eyebrows. Skin: deep warm brown.",
+    "source": "provenance/raw/pt_face_m_04.png",
+    "registration": {
+      "width": 256,
+      "height": 245,
+      "x": 0,
+      "y": 6,
+      "before_eye_y": 110.39458444268894,
+      "before_neck_bottom": 215,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "8756130e8cfd3230d5450caf9e5f831d84f65da3f199ac631efcdec5db77a31a"
+  },
+  {
+    "id": "pt_face_m_05",
+    "kind": "face",
+    "label": "pt_face_m_05",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_05. DISTINCT IDENTITY: rectangular face, strong long chin, large convex hooked nose, arched fine eyebrows, close-set eyes. Skin: medium warm.",
+    "source": "provenance/raw/pt_face_m_05.png",
+    "registration": {
+      "width": 256,
+      "height": 212,
+      "x": 0,
+      "y": 27,
+      "before_eye_y": 102.07516351614606,
+      "before_neck_bottom": 223,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "c4915b8ddf7e83282a2ee85e1e96ea47807c7c1202c358f3f6de845507f2b1a8"
+  },
+  {
+    "id": "pt_face_m_06",
+    "kind": "face",
+    "label": "pt_face_m_06",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_06. DISTINCT IDENTITY: short heart-shaped face, broad upper temples, small chin, button nose, thick rounded eyebrows, larger eyes. Skin: light warm.",
+    "source": "provenance/raw/pt_face_m_06.png",
+    "registration": {
+      "width": 256,
+      "height": 251,
+      "x": 0,
+      "y": 3,
+      "before_eye_y": 110.91885111225807,
+      "before_neck_bottom": 213,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "4341a403e7ea06eb933c2ac544c8e5350839080217815ce2b397cc685d0e46b4"
+  },
+  {
+    "id": "pt_face_m_07",
+    "kind": "face",
+    "label": "pt_face_m_07",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_07. DISTINCT IDENTITY: wide heavy jaw, flatter broad nose, thick lips, low straight eyebrows, narrow eyes. Skin: medium olive.",
+    "source": "provenance/raw/pt_face_m_07.png",
+    "registration": {
+      "width": 256,
+      "height": 225,
+      "x": 0,
+      "y": 21,
+      "before_eye_y": 103.09463174827445,
+      "before_neck_bottom": 217,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "e6a68688620fd179b08013d5ba5c47204bd489645915ff32d2d3f68aa075ce45"
+  },
+  {
+    "id": "pt_face_m_08",
+    "kind": "face",
+    "label": "pt_face_m_08",
+    "prompt": "Create ONE production modular portrait FACE ONLY layer, historical painterly city-builder. Reference is exact registration and style anchor. TRANSPARENT RGBA background. Square canvas mapping to 256x256; scaled proportionally if larger. Face LEFT in identical 3/4 view. Eye centers y=112/256 (far eye x=78, near eye x=110), crown near (133,45), ear near (169,124), neck ends near y=212, shoulder attachment y=208. Preserve these anchors and head scale exactly for same existing hood and hair. Soft upper-left light. Muted warm hand-painted fine texture matching reference, not photorealistic. Head and neck only, completely BALD, no beard, NO hair, NO clothing, no background, no label. Neutral calm expression. Identity varies via jaw, nose, cheeks and brows; DO NOT copy reference identity. Skin shade independent of class, wealth, morality, occupation. Asset pt_face_m_08. DISTINCT IDENTITY: slender oblong face, cleft chin, long straight narrow nose, gently arched brows, asymmetrical smile lines. Skin: deep warm brown.",
+    "source": "provenance/raw/pt_face_m_08.png",
+    "registration": {
+      "width": 256,
+      "height": 242,
+      "x": 0,
+      "y": 10,
+      "before_eye_y": 108.12835772409639,
+      "before_neck_bottom": 214,
+      "target_eye_y": 112,
+      "target_neck_bottom": 212
+    },
+    "source_sha256": "f8f0f4493f134bcb84a9d879e406553b7d224a033240a6795e5bdf0d36f08bb2"
+  },
+  {
+    "id": "pt_hair_f_01",
+    "kind": "hair",
+    "label": "center-parted smooth hair tied into a low bun",
+    "color": "dark brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_01 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: center-parted smooth hair tied into a low bun. Color: dark brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_01.png",
+    "source_sha256": "576ad7a29fddb8bc40b9eb1726dca492e56d5c1fb72a67d0ab1e5cb1c2c37a67"
+  },
+  {
+    "id": "pt_hair_f_02",
+    "kind": "hair",
+    "label": "braids pinned and coiled up at the back",
+    "color": "auburn",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_02 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: braids pinned and coiled up at the back. Color: auburn. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_02.png",
+    "source_sha256": "f3233b1053d5a4c2056c5c04026f6cfee3b1391f9905fad7911d38a56787b190"
+  },
+  {
+    "id": "pt_hair_f_03",
+    "kind": "hair",
+    "label": "loose long hair flowing behind shoulders",
+    "color": "golden brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_03 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: loose long hair flowing behind shoulders. Color: golden brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_03.png",
+    "source_sha256": "2d13e05e882664af831980a5be192763b97aa88f48ed0c5a497a3df01329fd34"
+  },
+  {
+    "id": "pt_hair_f_04",
+    "label": "베일 아래 최소 머리",
+    "style": "Tightly slicked CENTER-PART hair fully flattened against skull, cropped face edge only and tiny low knot behind neck. Intended under a veil: NO flowing locks, NO fringe over forehead, NO curls, minimal volume.",
+    "color": "brown",
+    "kind": "hair",
+    "prompt": "Use the attached face only as registration guide; output hair ALONE on transparency, NO face. ONE 2:1 sheet with two equal square cells: LEFT front layer, RIGHT rear layer. Each cell is a256 logical canvas. Tightly slicked CENTER-PART hair fully flattened against skull, cropped face edge only and tiny low knot behind neck. Intended under a veil: NO flowing locks, NO fringe over forehead, NO curls, minimal volume. Color brown. Precisely match attached portrait skull: top x130 y48, left temple x76 y95, visible right ear x175 y127, face eyes y112, neck bottom y212. Hair should slightly overlap the skull edge to avoid transparent seams. Front and rear both use same original canvas positions, NOT centered isolated objects, NOT different viewpoints. Head points LEFT three-quarter. Painterly historically grounded portrait, upper-left gentle light. Keep rear mostly transparent except actual hair behind skull; no skin, no eyes, no clothing, no labels, no divider line. Sparse hairstyles must have appropriate sparse silhouettes.",
+    "source": "provenance/raw/pt_hair_f_04.png",
+    "revision": 3,
+    "registration": {
+      "width": 248,
+      "height": 248,
+      "x": 4,
+      "y": 6
+    },
+    "source_sha256": "95d41e83f4bec1474b88799656d2d76ba5535f0b7e2b85e7b3f8ffb1fd1dd689"
+  },
+  {
+    "id": "pt_hair_f_05",
+    "label": "윔플 아래 최소 머리",
+    "style": "EXTREMELY MINIMAL flat hair edge for beneath a wimple. Only narrow smooth brown contour at temples, forehead entirely open, all other hair tightly bound in tiny low bun. No voluminous swoops or loose hair strands.",
+    "color": "dark brown",
+    "kind": "hair",
+    "prompt": "Use the attached face only as registration guide; output hair ALONE on transparency, NO face. ONE 2:1 sheet with two equal square cells: LEFT front layer, RIGHT rear layer. Each cell is a256 logical canvas. EXTREMELY MINIMAL flat hair edge for beneath a wimple. Only narrow smooth brown contour at temples, forehead entirely open, all other hair tightly bound in tiny low bun. No voluminous swoops or loose hair strands. Color dark brown. Precisely match attached portrait skull: top x130 y48, left temple x76 y95, visible right ear x175 y127, face eyes y112, neck bottom y212. Hair should slightly overlap the skull edge to avoid transparent seams. Front and rear both use same original canvas positions, NOT centered isolated objects, NOT different viewpoints. Head points LEFT three-quarter. Painterly historically grounded portrait, upper-left gentle light. Keep rear mostly transparent except actual hair behind skull; no skin, no eyes, no clothing, no labels, no divider line. Sparse hairstyles must have appropriate sparse silhouettes.",
+    "source": "provenance/raw/pt_hair_f_05.png",
+    "revision": 3,
+    "registration": {
+      "width": 244,
+      "height": 244,
+      "x": 6,
+      "y": 10
+    },
+    "source_sha256": "f986c2623ab52c3a53ac94ab08ce0f9e93e627d5e6b487c7b893ee7d79148e0f"
+  },
+  {
+    "id": "pt_hair_f_06",
+    "kind": "hair",
+    "label": "minimal narrow center part with tucked sides for under a head covering",
+    "color": "auburn",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_06 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: minimal narrow center part with tucked sides for under a head covering. Color: auburn. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_06.png",
+    "source_sha256": "b538a95fbc76b2ac8f85146f8468af85941c85433401ae829388effa73116edc"
+  },
+  {
+    "id": "pt_hair_f_07",
+    "kind": "hair",
+    "label": "grey center-parted hair tied low",
+    "color": "grey",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_07 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: grey center-parted hair tied low. Color: grey. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_07.png",
+    "source_sha256": "faa779e172658e7ae82968dc18fe89064ff310851a0f0579b34759663d2739c2"
+  },
+  {
+    "id": "pt_hair_f_08",
+    "kind": "hair",
+    "label": "grey swept-back hair tied into a higher coil",
+    "color": "grey",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_08 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: grey swept-back hair tied into a higher coil. Color: grey. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_08.png",
+    "source_sha256": "0d3850a57cdcbf3b6c3466afe6343d480b96a83a4b91b52f93e38fc971665f82"
+  },
+  {
+    "id": "pt_hair_f_09",
+    "kind": "hair",
+    "label": "child short bob ending above neck",
+    "color": "brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_f_09 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: child short bob ending above neck. Color: brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_f_09.png",
+    "source_sha256": "c6a73433d86491ebb9aac86adbe0760bcfbd16930d686c7a0547ecc46592f29b"
+  },
+  {
+    "id": "pt_hair_m_01",
+    "kind": "hair",
+    "label": "short tight curls",
+    "color": "dark brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_01 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: short tight curls. Color: dark brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_01.png",
+    "source_sha256": "594c60bab1c82ed1b357a53302e461661ab7fc2868f8711baaf1b5661f6ce3e6"
+  },
+  {
+    "id": "pt_hair_m_02",
+    "kind": "hair",
+    "label": "short straight cropped hair",
+    "color": "brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_02 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: short straight cropped hair. Color: brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_02.png",
+    "source_sha256": "5379bd9a8dc1ee855213f47ae82a70452bbe53ceb40ec9d9e266f390529e61a8"
+  },
+  {
+    "id": "pt_hair_m_03",
+    "kind": "hair",
+    "label": "medium wavy ear-length hair",
+    "color": "auburn",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_03 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: medium wavy ear-length hair. Color: auburn. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_03.png",
+    "source_sha256": "c2183b600542085a9893f0263d30a468ae9cf2b702017412f327fa0b87e19440"
+  },
+  {
+    "id": "pt_hair_m_04",
+    "label": "후퇴 머리선",
+    "style": "RECEDING M-SHAPED hairline. Very short, thin hair close to skull, deep bare temple recesses, small center forelock. NO shoulder-length, NO thick waves, no exaggerated long hair.",
+    "color": "brown",
+    "kind": "hair",
+    "prompt": "Use the attached face only as registration guide; output hair ALONE on transparency, NO face. ONE 2:1 sheet with two equal square cells: LEFT front layer, RIGHT rear layer. Each cell is a256 logical canvas. RECEDING M-SHAPED hairline. Very short, thin hair close to skull, deep bare temple recesses, small center forelock. NO shoulder-length, NO thick waves, no exaggerated long hair. Color brown. Precisely match attached portrait skull: top x130 y48, left temple x76 y95, visible right ear x175 y127, face eyes y112, neck bottom y212. Hair should slightly overlap the skull edge to avoid transparent seams. Front and rear both use same original canvas positions, NOT centered isolated objects, NOT different viewpoints. Head points LEFT three-quarter. Painterly historically grounded portrait, upper-left gentle light. Keep rear mostly transparent except actual hair behind skull; no skin, no eyes, no clothing, no labels, no divider line. Sparse hairstyles must have appropriate sparse silhouettes.",
+    "source": "provenance/raw/pt_hair_m_04.png",
+    "revision": 3,
+    "registration": {
+      "width": 244,
+      "height": 244,
+      "x": 6,
+      "y": 10
+    },
+    "source_sha256": "fd89d2e6a61a18da2aec2b285ea236801ae5eeebde85fae041f3c4891cd2b51d"
+  },
+  {
+    "id": "pt_hair_m_05",
+    "label": "대머리 가장자리",
+    "style": "BALD: no top hair whatsoever. Only narrow close-cropped fringe directly touching visible ear and nape. Front panel ONLY short thin tuft overlapping skull at x163..186 y83..137 and tiny far temple tuft x72..80 y100..115. No detached tufts. Rear panel tiny closely fitted nape fringe.",
+    "color": "brown",
+    "kind": "hair",
+    "prompt": "Use the attached face only as registration guide; output hair ALONE on transparency, NO face. ONE 2:1 sheet with two equal square cells: LEFT front layer, RIGHT rear layer. Each cell is a256 logical canvas. BALD: no top hair whatsoever. Only narrow close-cropped fringe directly touching visible ear and nape. Front panel ONLY short thin tuft overlapping skull at x163..186 y83..137 and tiny far temple tuft x72..80 y100..115. No detached tufts. Rear panel tiny closely fitted nape fringe. Color brown. Precisely match attached portrait skull: top x130 y48, left temple x76 y95, visible right ear x175 y127, face eyes y112, neck bottom y212. Hair should slightly overlap the skull edge to avoid transparent seams. Front and rear both use same original canvas positions, NOT centered isolated objects, NOT different viewpoints. Head points LEFT three-quarter. Painterly historically grounded portrait, upper-left gentle light. Keep rear mostly transparent except actual hair behind skull; no skin, no eyes, no clothing, no labels, no divider line. Sparse hairstyles must have appropriate sparse silhouettes.",
+    "source": "provenance/raw/pt_hair_m_05.png",
+    "revision": 3,
+    "registration": {
+      "rear_offset_y": -28
+    },
+    "source_sha256": "1aa0840727f244cea52bdbb7d3338cc1aa012db7f1b443627b53939576501821"
+  },
+  {
+    "id": "pt_hair_m_06",
+    "kind": "hair",
+    "label": "tonsure ring with fully shaved circular crown",
+    "color": "dark brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_06 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: tonsure ring with fully shaved circular crown. Color: dark brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_06.png",
+    "source_sha256": "1048c095bbf94f358091a22676d1f47277cb239e4f034c41ed3477daf2e7a6f1"
+  },
+  {
+    "id": "pt_hair_m_07",
+    "kind": "hair",
+    "label": "short neatly cropped grey hair",
+    "color": "grey",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_07 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: short neatly cropped grey hair. Color: grey. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_07.png",
+    "source_sha256": "3c5f086726f0f03f339261345b3f2753b1f05f2dc64bae20c74d177a649f6d14"
+  },
+  {
+    "id": "pt_hair_m_08",
+    "kind": "hair",
+    "label": "medium length grey wavy hair",
+    "color": "grey",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_08 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: medium length grey wavy hair. Color: grey. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_08.png",
+    "source_sha256": "f5b2c2bad9b65667a69fda71ac4d5d2f4ab843a67cbef0f8f1172c65f937872a"
+  },
+  {
+    "id": "pt_hair_m_09",
+    "kind": "hair",
+    "label": "youthful shaggy uneven hair",
+    "color": "golden brown",
+    "prompt": "Create ONE logical modular HAIRSTYLE asset pt_hair_m_09 as a TWO-PANEL transparent sprite sheet, 512x256 logical canvas (or exact proportional higher resolution), left cell FRONT and right cell REAR, each cell exactly square 256x256. No text, no divider. Hair only; all face, scalp skin, neck, clothing and background pixels transparent. Reference 1 is head registration only and must NOT appear in output; references 2 and 3 demonstrate isolated front hair and isolated rear hair. Match painterly texture and soft upper-left light. Face would point LEFT in same three-quarter view. In EACH cell use identical global head anchors: bald crown near (133,45), eye-line y112, ear (169,124), nape near (176,180), shoulder y208; empty space preserved. LEFT front layer includes crown, forehead bangs, visible side hair; RIGHT rear layer only hair behind face/ear/neck. Rear is drawn BEHIND face, front above face. Exact hairstyle: youthful shaggy uneven hair. Color: golden brown. Distinct historical English 1300-1450 natural hair, no modern accessories. No face, no floating skin fragments, no torso. Two matching complementary parts, not two complete wigs. Output true transparent alpha.",
+    "source": "provenance/raw/pt_hair_m_09.png",
+    "source_sha256": "d0f1e6f885787e94c4d7a14b584f3e58e9902eae1d5e20c3b645da8207b377e2"
+  },
+  {
+    "id": "pt_age_f_mature_b",
+    "sex": "f",
+    "age": "mature",
+    "variant": "b",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_f_mature_b only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Mature age fifty, sparse shallow eye corner creases, two delicate forehead lines and light cheek folds. Variant B: broken shallow forehead lines strongest, understated under-eye bags and fine lower cheek creases. Soft rounded feminine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_f_mature_b.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "d95090baf528cd218be41e39b5a32632c50b519c6b5f8242584217e19f9675d0"
+  },
+  {
+    "id": "pt_age_m_mature_b",
+    "sex": "m",
+    "age": "mature",
+    "variant": "b",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_m_mature_b only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Mature age fifty, sparse shallow eye corner creases, two delicate forehead lines and light cheek folds. Variant B: broken shallow forehead lines strongest, understated under-eye bags and fine lower cheek creases. Slightly angular masculine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_m_mature_b.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "26b4c19ce9fb53ac6393af0b9219e444d12aa33f1956845111c0325869e5276a"
+  },
+  {
+    "id": "pt_age_m_old_b",
+    "sex": "m",
+    "age": "old",
+    "variant": "b",
+    "kind": "age",
+    "prompt": "Generate ONE AGING WRINKLE DECAL pt_age_m_old_b only. True transparent square PNG. NO portrait, NO skin patches or fill whatsoever. Very fine softly painted translucent sepia wrinkle strokes on clear empty glass. Old age seventy-five, numerous fine branching crowfeet, three faint forehead creases, delicate cheek folds, broken jowl shadow strokes; visibly older but not scarred. Variant B: broken shallow forehead lines strongest, understated under-eye bags and fine lower cheek creases. Slightly angular masculine-compatible crease flow. Pixel registration in a 256x256 full canvas: forehead lines x85..128 y83..95, near outer eye corner x122 y114 with crowfeet spreading right to x135 y121; cheek curved folds x109..121 y140..157; jowl fine arcs x113..132 y176..186. Whole face, not rendered, points LEFT in 3/4. At least 96 percent of canvas entirely empty transparent; strokes very thin (0.5 to 1 pixels at 256px), alpha 15 to 45 percent, smooth feathered edges. Marks are subtle natural wrinkles, NOT scars, paint, tattoos or thick dark stripes. NO eyes, NO brows, NO lips, NO face, NO flesh, no text, no backdrop. Upper-left soft light suggested by a very faint thin highlight parallel to selected wrinkles. Preserve vacant margins, do not enlarge marks to fill canvas.",
+    "source": "provenance/raw/pt_age_m_old_b.png",
+    "revision": 2,
+    "registration": {
+      "alpha_clip": "intersection of all 20 final face alpha masks; no outside-face marks"
+    },
+    "source_sha256": "95452084e3376becf12ca8ae3e793e30885ba2de96054b936b020490c302d4de"
+  }
+]

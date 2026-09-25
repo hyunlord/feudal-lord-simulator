@@ -1,0 +1,11 @@
+{
+  "prompt": "Use case: ui-mockup. Produce ONE reusable blank square UI panel asset ONLY, front-facing no perspective. Style reference attached is our own medieval England hand-painted game building palette, NOT subject. 80% functional flat UI,20% restrained manuscript edge. Warm off-white center perfectly flat uniform #E1D1AE, no grain or stains in reading area. Delicate ink-brown double-line rectangular border. Tiny sober hand-painted manuscript curls ONLY inside each corner occupying at most outer 1/6 width. All four middle edges straight uninterrupted stretchable. No bevel, glow, shadows, text, numbers, symbols, bars, icons, selection or focus highlight. Panel fills canvas edge-to-edge, no outside margin. Square intended downsample192x192 with32pxcornercaps. Entire background opaque panel fill. Exact clean geometry and unobtrusive thin boundary. No heavy fantasy ornament.",
+  "inputImages": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+  ],
+  "tool": "builtin image_gen",
+  "model": null,
+  "seed": null,
+  "raw": "sources/frames/frame_panel_light-raw.png",
+  "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-77834841-4e12-4ba2-9b6c-13f8c2666949.png"
+}

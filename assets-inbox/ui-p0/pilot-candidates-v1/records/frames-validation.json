@@ -1,0 +1,66 @@
+{
+  "frames": [
+    {
+      "id": "frame_panel_light",
+      "capsLogical": 16,
+      "cornerPixelEquality": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "frame_panel_dark",
+      "capsLogical": 12,
+      "cornerPixelEquality": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "frame_objective",
+      "capsLogical": 16,
+      "cornerPixelEquality": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "frame_advisor",
+      "capsLogical": 16,
+      "cornerPixelEquality": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "button_primary_base",
+      "capsLogical": 6,
+      "cornerPixelEquality": [
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "vellum": {
+    "seamX": 0,
+    "seamY": 0,
+    "redStandardDeviation": 0.5174607951403134
+  },
+  "advisor": {
+    "circleNative96": true,
+    "circleLogical48": true,
+    "method": "fixed overlay, no anisotropic scale"
+  },
+  "center": "exact flat palette after generated-edge extraction",
+  "runtimeIntegration": false
+}

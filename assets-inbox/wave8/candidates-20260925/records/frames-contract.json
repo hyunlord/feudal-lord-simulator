@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "style": "P0 flat warm parchment, thin umber rules, 80% functional 20% decoration",
+  "stretchFillRGBA": [
+    221,
+    207,
+    167,
+    255
+  ],
+  "assets": [
+    {
+      "id": "frame_season_ledger",
+      "size": [
+        512,
+        384
+      ],
+      "insets": [
+        460,
+        136,
+        38,
+        44
+      ],
+      "contentRects": [
+        [
+          44,
+          144,
+          422,
+          192
+        ]
+      ],
+      "minSize": [
+        512,
+        384
+      ],
+      "fixedRegions": "Three header slots x44..450,y48..118 protected entirely by top-left460x136. Horizontal stretch corridor x460..474 is blank. Original minimum width512 mandatory; no centered reflow.",
+      "file": "frames/frame_season_ledger.png",
+      "stretchTest": [
+        1,
+        1.5
+      ]
+    },
+    {
+      "id": "frame_chronicle_page",
+      "size": [
+        512,
+        640
+      ],
+      "insets": [
+        66,
+        112,
+        24,
+        98
+      ],
+      "contentRects": [
+        [
+          72,
+          122,
+          408,
+          410
+        ]
+      ],
+      "minSize": [
+        512,
+        640
+      ],
+      "fixedRegions": "Top-left vine x0..66,y0..112; bottom-left vine x0..66,y542..640. Continuous plain left line stretches vertically. Title upper region expands horizontally; no text baked.",
+      "file": "frames/frame_chronicle_page.png",
+      "stretchTest": [
+        1,
+        1.5
+      ]
+    },
+    {
+      "id": "frame_petition",
+      "size": [
+        384,
+        256
+      ],
+      "insets": [
+        128,
+        172,
+        50,
+        54
+      ],
+      "contentRects": [
+        [
+          136,
+          38,
+          190,
+          158
+        ]
+      ],
+      "minSize": [
+        384,
+        256
+      ],
+      "fixedRegions": "Portrait ring normalized to true circle and placed entirely within top-left128x172; red seal fixed in bottom-right50x54. Application portrait crop center70,111 radius44.",
+      "file": "frames/frame_petition.png",
+      "stretchTest": [
+        1,
+        1.5
+      ]
+    },
+    {
+      "id": "frame_objective_drawer",
+      "size": [
+        256,
+        512
+      ],
+      "insets": [
+        154,
+        40,
+        24,
+        24
+      ],
+      "contentRects": [
+        [
+          32,
+          48,
+          192,
+          432
+        ]
+      ],
+      "minSize": [
+        256,
+        512
+      ],
+      "fixedRegions": "Finger pull entirely top-left154x40. Side wood continuous stretch. Empty list interior.",
+      "file": "frames/frame_objective_drawer.png",
+      "stretchTest": [
+        1,
+        1.5
+      ]
+    },
+    {
+      "id": "frame_minimap",
+      "size": [
+        256,
+        256
+      ],
+      "insets": [
+        146,
+        42,
+        24,
+        24
+      ],
+      "contentRects": [
+        [
+          32,
+          50,
+          192,
+          174
+        ]
+      ],
+      "minSize": [
+        256,
+        256
+      ],
+      "fixedRegions": "Compass diamond at x116..143,y0..27 entirely top-left146x42. Map interior blank.",
+      "file": "frames/frame_minimap.png",
+      "stretchTest": [
+        1,
+        1.5
+      ]
+    },
+    {
+      "id": "frame_overlay_legend",
+      "size": [
+        192,
+        256
+      ],
+      "insets": [
+        16,
+        24,
+        16,
+        16
+      ],
+      "contentRects": [
+        [
+          24,
+          32,
+          144,
+          200
+        ]
+      ],
+      "minSize": [
+        192,
+        256
+      ],
+      "fixedRegions": "thin double border",
+      "file": "frames/frame_overlay_legend.png",
+      "stretchTest": [
+        1,
+        1.5
+      ]
+    }
+  ]
+}

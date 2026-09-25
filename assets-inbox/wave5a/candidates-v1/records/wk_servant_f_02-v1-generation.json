@@ -1,0 +1,16 @@
+{
+  "id": "wk_servant_f_02-v1",
+  "group": "servant",
+  "sex": "f",
+  "template": "actor_civilian_woman-v1.png",
+  "design": "young adult, muted yellow-green long practical gown, light-grey tied headscarf, no apron, same narrow madder red livery cuff patch",
+  "index": 21,
+  "prompt": "Use case: identity-preserve. EDIT THE ATTACHED EXACT 8-CELL SPRITE SHEET. It is a rigid pose template, not inspiration. Keep 4 columns NE,SE,SW,NW and 2 gait rows, exactly original camera, body contours, face position, hand positions, elbow angle, leg poses, shoes and shadows. Change clothing/headwear ONLY to: young adult, muted yellow-green long practical gown, light-grey tied headscarf, no apron, same narrow madder red livery cuff patch. England 1300–1450, tiny hand-painted project art, muted historical wool/linen. No objects held, no bags, no tools, no text. Preserve every original head/foot location. Do not invent poses or rearrange cells. Preserve bottom shoes pixels. All 8 must be same outfit and recognizable direction. Transparent RGBA, sheet aspect2:1. Priest must have no cowl, monk has black cowl; nun has black veil and white wimple. Plain servant red cuff is muted madder, not heraldic badge. This is a clothes-only pixel-aligned reskin of input.",
+  "refs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/templates/actor_civilian_woman-v1.png"
+  ],
+  "tool": "builtin image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw": "sources/wk_servant_f_02-v1-edit.png"
+}

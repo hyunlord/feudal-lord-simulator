@@ -1,0 +1,526 @@
+[
+  {
+    "id": "season/roof_snow_l0-v2",
+    "file": "assets/season/roof_snow_l0-v2.png",
+    "width": 153,
+    "height": 153,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Original PNG had no pivot metadata; identical canvas and zero offset."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: lighting-weather. Edit target attached exact L0 medieval thatch cottage. Generate roof-only winter snow layer on true transparent RGBA, same original square framing and isometric camera. Thick broad ivory settled snow blankets 70% of ALL visible sloping thatched roof surface, center included, with a few large irregular melted gaps exposing thatch. Broad continuous painted snow sheets, subtle cool gray shade, granular texture. Keep entire roof shape, original placement and geometry. Remove walls, ground and house; only roof-shaped snow, transparent gaps. No narrow ridge/eave-only stripes, no outline, no cloud, no chimney, no smoke, no text. Snow must remain readable at house native scale 92px. Reference is original target house, not style only.\n",
+        "references": [
+          "output/astra-wave7-candidates-v1/references/house_l0-v3.png"
+        ],
+        "rawFile": "sources/snow/l0-raw-v1.png"
+      }
+    ],
+    "processing": {
+      "method": "Built-in edit per original; neutral snow pixels extracted from generated roof material; manually traced original roof-region polygon and triangle registration; no house repainting. Original exposed through transparent melted gaps.",
+      "roofMask": "sources/snow/l0-roof-region-mask.png",
+      "registration": {
+        "roofRegionPixels": 3655,
+        "coveredRoofPixels": 2792,
+        "alphaThreshold": 128,
+        "coverage": 0.7638850889192886,
+        "polygons": [
+          [
+            [
+              58,
+              46
+            ],
+            [
+              103,
+              66
+            ],
+            [
+              134,
+              93
+            ],
+            [
+              91,
+              111
+            ],
+            [
+              20,
+              72
+            ]
+          ]
+        ],
+        "sourceQuad": [
+          [
+            491,
+            455
+          ],
+          [
+            829,
+            632
+          ],
+          [
+            1105,
+            860
+          ],
+          [
+            779,
+            1009
+          ],
+          [
+            171,
+            702
+          ]
+        ]
+      },
+      "script": "records/snow-process.cjs"
+    },
+    "qa": {
+      "status": "candidate",
+      "alphaThreshold": 128,
+      "roofRegionPixels": 3655,
+      "coveredRoofPixels": 2792,
+      "coverage": 0.7638850889192886,
+      "outsideRoofPixels": 0,
+      "sameOriginalCanvas": true,
+      "originalUnmodified": true,
+      "native06SnowReadable": true,
+      "visualProof": "records/snow-l0-registration.png",
+      "sha256": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c"
+    }
+  },
+  {
+    "id": "season/roof_snow_l1-v2",
+    "file": "assets/season/roof_snow_l1-v2.png",
+    "width": 139,
+    "height": 139,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Original PNG had no pivot metadata; identical canvas and zero offset."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: lighting-weather. Edit target attached exact L1 medieval house. Generate ONLY snow roof overlay on genuinely transparent RGBA with original square canvas framing and isometric camera. Broad thick ivory settled snow blankets 70% of ENTIRE sloping thatch roof including center; several large irregular thawed gaps showing original roofing when composited. Snow forms substantial contiguous sheets with soft bluegray contact shade and fine granular painted texture. Keep exact silhouette, roof planes, geometry, framing and original placement. House walls/doors/windows/ground absent: roof snow only, rest transparent.  No narrow stripe-only ridge/eave snow, no outline, no cloud, no chimney, no text. Warm historical painterly game sprite; winter blanket must read at .6 native house scale.\n",
+        "references": [
+          "output/astra-wave7-candidates-v1/references/house_l1-v2.png"
+        ],
+        "rawFile": "sources/snow/l1-raw-v1.png"
+      }
+    ],
+    "processing": {
+      "method": "Built-in edit per original; neutral snow pixels extracted from generated roof material; manually traced original roof-region polygon and triangle registration; no house repainting. Original exposed through transparent melted gaps.",
+      "roofMask": "sources/snow/l1-roof-region-mask.png",
+      "registration": {
+        "roofRegionPixels": 3849,
+        "coveredRoofPixels": 2699,
+        "alphaThreshold": 128,
+        "coverage": 0.7012210963886724,
+        "polygons": [
+          [
+            [
+              43,
+              20
+            ],
+            [
+              113,
+              59
+            ],
+            [
+              85,
+              96
+            ],
+            [
+              15,
+              59
+            ]
+          ],
+          [
+            [
+              113,
+              59
+            ],
+            [
+              130,
+              75
+            ],
+            [
+              125,
+              77
+            ],
+            [
+              109,
+              64
+            ]
+          ]
+        ],
+        "sourceQuad": [
+          [
+            392,
+            279
+          ],
+          [
+            979,
+            612
+          ],
+          [
+            748,
+            950
+          ],
+          [
+            136,
+            596
+          ]
+        ]
+      },
+      "script": "records/snow-process.cjs"
+    },
+    "qa": {
+      "status": "candidate",
+      "alphaThreshold": 128,
+      "roofRegionPixels": 3849,
+      "coveredRoofPixels": 2699,
+      "coverage": 0.7012210963886724,
+      "outsideRoofPixels": 0,
+      "sameOriginalCanvas": true,
+      "originalUnmodified": true,
+      "native06SnowReadable": true,
+      "visualProof": "records/snow-l1-registration.png",
+      "sha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e"
+    }
+  },
+  {
+    "id": "season/roof_snow_l2-v2",
+    "file": "assets/season/roof_snow_l2-v2.png",
+    "width": 137,
+    "height": 137,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Original PNG had no pivot metadata; identical canvas and zero offset."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: lighting-weather / background-extraction. EDIT TARGET is the attached exact medieval L2 house sprite. Create ONLY THE SNOW OVERLAY, on genuinely transparent RGBA background; remove the house from output but preserve its exact roof projection in the same full square canvas. Broad thick settled winter snow blankets 70 percent of the ENTIRE sloping orange tile roof surface, including its middle, with irregular thawed gaps revealing 30 percent of original tiles when composited. Snow is opaque soft ivory with subtle cool bluegray contact shading and granular painted texture; large contiguous snow sheets, not stripes, not just eave or ridge lines, not outline, not cloud. Roof location: large quadrilateral from (28%,4%) through (80%,31%) (64%,59%) (10%,32%) of original canvas, plus narrow far right roof plane. Keep original framing, camera, scale and roof geometry. No house walls, no windows, no tiles painted into snow, no background, no text, no chimney, no smoke. Snow only, transparency in gaps and everywhere off roof. Isometric game asset painterly style matching original. Broad white roof blanket must remain clearly visible when house is only 82 pixels tall.\n",
+        "references": [
+          "output/astra-wave7-candidates-v1/references/house_l2-v2.png"
+        ],
+        "rawFile": "sources/snow/l2-raw-v1.png"
+      }
+    ],
+    "processing": {
+      "method": "Built-in edit per original; neutral snow pixels extracted from generated roof material; manually traced original roof-region polygon and triangle registration; no house repainting. Original exposed through transparent melted gaps.",
+      "roofMask": "sources/snow/l2-roof-region-mask.png",
+      "registration": {
+        "roofRegionPixels": 3666,
+        "coveredRoofPixels": 2889,
+        "alphaThreshold": 128,
+        "coverage": 0.7880523731587561,
+        "polygons": [
+          [
+            [
+              36,
+              7
+            ],
+            [
+              110,
+              44
+            ],
+            [
+              85,
+              81
+            ],
+            [
+              14,
+              44
+            ]
+          ],
+          [
+            [
+              110,
+              44
+            ],
+            [
+              127,
+              63
+            ],
+            [
+              123,
+              65
+            ],
+            [
+              107,
+              48
+            ]
+          ]
+        ],
+        "sourceQuad": [
+          [
+            337,
+            81
+          ],
+          [
+            1000,
+            440
+          ],
+          [
+            780,
+            793
+          ],
+          [
+            119,
+            441
+          ]
+        ]
+      },
+      "script": "records/snow-process.cjs"
+    },
+    "qa": {
+      "status": "candidate",
+      "alphaThreshold": 128,
+      "roofRegionPixels": 3666,
+      "coveredRoofPixels": 2889,
+      "coverage": 0.7880523731587561,
+      "outsideRoofPixels": 0,
+      "sameOriginalCanvas": true,
+      "originalUnmodified": true,
+      "native06SnowReadable": true,
+      "visualProof": "records/snow-l2-registration.png",
+      "sha256": "af53c4c70620f3de88bd957e65b908467fb1939ce95cc06c1eca42a6bcac4043"
+    }
+  },
+  {
+    "id": "season/roof_snow_l3-v2",
+    "file": "assets/season/roof_snow_l3-v2.png",
+    "width": 142,
+    "height": 142,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Original PNG had no pivot metadata; identical canvas and zero offset."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: lighting-weather. Edit target attached exact L3 medieval house. Generate ONLY snow roof overlay on genuinely transparent RGBA with original square canvas framing and isometric camera. Broad thick ivory settled snow blankets 70% of ENTIRE sloping tile roof including center; several large irregular thawed gaps showing original roofing when composited. Snow forms substantial contiguous sheets with soft bluegray contact shade and fine granular painted texture. Keep exact silhouette, roof planes, geometry, framing and original placement. House walls/doors/windows/ground absent: roof snow only, rest transparent. Preserve the prominent front gable: snow on sloping roof planes, never across triangular wall or timber front. No narrow stripe-only ridge/eave snow, no outline, no cloud, no chimney, no text. Warm historical painterly game sprite; winter blanket must read at .6 native house scale.\n",
+        "references": [
+          "output/astra-wave7-candidates-v1/references/house_l3-v2.png"
+        ],
+        "rawFile": "sources/snow/l3-raw-v1.png"
+      }
+    ],
+    "processing": {
+      "method": "Built-in edit per original; neutral snow pixels extracted from generated roof material; manually traced original roof-region polygon and triangle registration; no house repainting. Original exposed through transparent melted gaps.",
+      "roofMask": "sources/snow/l3-roof-region-mask.png",
+      "registration": {
+        "roofRegionPixels": 2641,
+        "coveredRoofPixels": 1879,
+        "alphaThreshold": 128,
+        "coverage": 0.7114729269216206,
+        "polygons": [
+          [
+            [
+              43,
+              7
+            ],
+            [
+              112,
+              47
+            ],
+            [
+              89,
+              85
+            ],
+            [
+              51,
+              31
+            ]
+          ],
+          [
+            [
+              43,
+              7
+            ],
+            [
+              51,
+              31
+            ],
+            [
+              18,
+              53
+            ]
+          ],
+          [
+            [
+              112,
+              47
+            ],
+            [
+              131,
+              66
+            ],
+            [
+              127,
+              69
+            ],
+            [
+              109,
+              52
+            ]
+          ]
+        ],
+        "sourceQuad": [
+          [
+            384,
+            207
+          ],
+          [
+            996,
+            562
+          ],
+          [
+            769,
+            912
+          ],
+          [
+            449,
+            447
+          ]
+        ]
+      },
+      "script": "records/snow-process.cjs"
+    },
+    "qa": {
+      "status": "candidate",
+      "alphaThreshold": 128,
+      "roofRegionPixels": 2641,
+      "coveredRoofPixels": 1879,
+      "coverage": 0.7114729269216206,
+      "outsideRoofPixels": 0,
+      "sameOriginalCanvas": true,
+      "originalUnmodified": true,
+      "native06SnowReadable": true,
+      "visualProof": "records/snow-l3-registration.png",
+      "sha256": "41c424fda13031e43e85a6b94cba496aaf414ac69b74ccb4a498308aa6f1c2ae"
+    }
+  },
+  {
+    "id": "season/roof_snow_l4-v2",
+    "file": "assets/season/roof_snow_l4-v2.png",
+    "width": 161,
+    "height": 161,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Original PNG had no pivot metadata; identical canvas and zero offset."
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: lighting-weather. Edit target attached exact L4 medieval house. Generate ONLY snow roof overlay on genuinely transparent RGBA with original square canvas framing and isometric camera. Broad thick ivory settled snow blankets 70% of ENTIRE sloping tile roof including center; several large irregular thawed gaps showing original roofing when composited. Snow forms substantial contiguous sheets with soft bluegray contact shade and fine granular painted texture. Keep exact silhouette, roof planes, geometry, framing and original placement. House walls/doors/windows/ground absent: roof snow only, rest transparent.  No narrow stripe-only ridge/eave snow, no outline, no cloud, no chimney, no text. Warm historical painterly game sprite; winter blanket must read at .6 native house scale.\n",
+        "references": [
+          "output/astra-wave7-candidates-v1/references/house_l4-v2.png"
+        ],
+        "rawFile": "sources/snow/l4-raw-v1.png"
+      }
+    ],
+    "processing": {
+      "method": "Built-in edit per original; neutral snow pixels extracted from generated roof material; manually traced original roof-region polygon and triangle registration; no house repainting. Original exposed through transparent melted gaps.",
+      "roofMask": "sources/snow/l4-roof-region-mask.png",
+      "registration": {
+        "roofRegionPixels": 3283,
+        "coveredRoofPixels": 2270,
+        "alphaThreshold": 128,
+        "coverage": 0.6914407554066403,
+        "polygons": [
+          [
+            [
+              45,
+              12
+            ],
+            [
+              118,
+              50
+            ],
+            [
+              96,
+              83
+            ],
+            [
+              25,
+              43
+            ]
+          ],
+          [
+            [
+              118,
+              50
+            ],
+            [
+              138,
+              71
+            ],
+            [
+              134,
+              74
+            ],
+            [
+              115,
+              55
+            ]
+          ]
+        ],
+        "sourceQuad": [
+          [
+            317,
+            158
+          ],
+          [
+            968,
+            543
+          ],
+          [
+            779,
+            842
+          ],
+          [
+            138,
+            453
+          ]
+        ]
+      },
+      "script": "records/snow-process.cjs"
+    },
+    "qa": {
+      "status": "candidate",
+      "alphaThreshold": 128,
+      "roofRegionPixels": 3283,
+      "coveredRoofPixels": 2270,
+      "coverage": 0.6914407554066403,
+      "outsideRoofPixels": 0,
+      "sameOriginalCanvas": true,
+      "originalUnmodified": true,
+      "native06SnowReadable": true,
+      "visualProof": "records/snow-l4-registration.png",
+      "sha256": "414108d8367039573613a1300f1bff97ef062357102023fa8d065c17be1106a8"
+    }
+  }
+]

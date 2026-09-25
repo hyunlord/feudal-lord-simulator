@@ -1,0 +1,276 @@
+[
+  {
+    "id": "overlay_cloak_m-v1",
+    "status": "candidate_experiment",
+    "source": "sources/overlay_cloak_m-raw.png",
+    "cells": [
+      {
+        "direction": "NE",
+        "frame": 0,
+        "sourceBox": {
+          "x": 125,
+          "y": 10,
+          "w": 265,
+          "h": 362
+        },
+        "destBox": {
+          "x": 60,
+          "y": 3,
+          "w": 65,
+          "h": 96
+        }
+      },
+      {
+        "direction": "SE",
+        "frame": 0,
+        "sourceBox": {
+          "x": 119,
+          "y": 9,
+          "w": 249,
+          "h": 368
+        },
+        "destBox": {
+          "x": 40,
+          "y": 4,
+          "w": 64,
+          "h": 97
+        }
+      },
+      {
+        "direction": "SW",
+        "frame": 0,
+        "sourceBox": {
+          "x": 112,
+          "y": 11,
+          "w": 238,
+          "h": 365
+        },
+        "destBox": {
+          "x": 43,
+          "y": 4,
+          "w": 62,
+          "h": 96
+        }
+      },
+      {
+        "direction": "NW",
+        "frame": 0,
+        "sourceBox": {
+          "x": 57,
+          "y": 11,
+          "w": 268,
+          "h": 364
+        },
+        "destBox": {
+          "x": 23,
+          "y": 4,
+          "w": 65,
+          "h": 96
+        }
+      },
+      {
+        "direction": "NE",
+        "frame": 1,
+        "sourceBox": {
+          "x": 111,
+          "y": 13,
+          "w": 284,
+          "h": 355
+        },
+        "destBox": {
+          "x": 59,
+          "y": 2,
+          "w": 67,
+          "h": 97
+        }
+      },
+      {
+        "direction": "SE",
+        "frame": 1,
+        "sourceBox": {
+          "x": 120,
+          "y": 9,
+          "w": 247,
+          "h": 366
+        },
+        "destBox": {
+          "x": 42,
+          "y": 2,
+          "w": 66,
+          "h": 98
+        }
+      },
+      {
+        "direction": "SW",
+        "frame": 1,
+        "sourceBox": {
+          "x": 101,
+          "y": 10,
+          "w": 247,
+          "h": 362
+        },
+        "destBox": {
+          "x": 40,
+          "y": 3,
+          "w": 67,
+          "h": 97
+        }
+      },
+      {
+        "direction": "NW",
+        "frame": 1,
+        "sourceBox": {
+          "x": 56,
+          "y": 12,
+          "w": 273,
+          "h": 361
+        },
+        "destBox": {
+          "x": 22,
+          "y": 3,
+          "w": 66,
+          "h": 96
+        }
+      }
+    ],
+    "method": "clothing-only template image edit, percell content registration to originalupperbody; no underbody painted;50%downsample",
+    "limitations": "Sleeve/face openings require visual compositing check; only baseline male/female tested, not arbitrary28reskins"
+  },
+  {
+    "id": "overlay_cloak_f-v1",
+    "status": "candidate_experiment",
+    "source": "sources/overlay_cloak_f-raw.png",
+    "cells": [
+      {
+        "direction": "NE",
+        "frame": 0,
+        "sourceBox": {
+          "x": 122,
+          "y": 24,
+          "w": 219,
+          "h": 398
+        },
+        "destBox": {
+          "x": 49,
+          "y": 10,
+          "w": 60,
+          "h": 111
+        }
+      },
+      {
+        "direction": "SE",
+        "frame": 0,
+        "sourceBox": {
+          "x": 128,
+          "y": 22,
+          "w": 206,
+          "h": 396
+        },
+        "destBox": {
+          "x": 45,
+          "y": 10,
+          "w": 58,
+          "h": 111
+        }
+      },
+      {
+        "direction": "SW",
+        "frame": 0,
+        "sourceBox": {
+          "x": 137,
+          "y": 22,
+          "w": 212,
+          "h": 392
+        },
+        "destBox": {
+          "x": 48,
+          "y": 12,
+          "w": 58,
+          "h": 109
+        }
+      },
+      {
+        "direction": "NW",
+        "frame": 0,
+        "sourceBox": {
+          "x": 113,
+          "y": 24,
+          "w": 224,
+          "h": 398
+        },
+        "destBox": {
+          "x": 39,
+          "y": 10,
+          "w": 60,
+          "h": 111
+        }
+      },
+      {
+        "direction": "NE",
+        "frame": 1,
+        "sourceBox": {
+          "x": 137,
+          "y": 16,
+          "w": 213,
+          "h": 383
+        },
+        "destBox": {
+          "x": 56,
+          "y": 8,
+          "w": 55,
+          "h": 110
+        }
+      },
+      {
+        "direction": "SE",
+        "frame": 1,
+        "sourceBox": {
+          "x": 132,
+          "y": 14,
+          "w": 214,
+          "h": 379
+        },
+        "destBox": {
+          "x": 47,
+          "y": 4,
+          "w": 58,
+          "h": 112
+        }
+      },
+      {
+        "direction": "SW",
+        "frame": 1,
+        "sourceBox": {
+          "x": 131,
+          "y": 14,
+          "w": 215,
+          "h": 376
+        },
+        "destBox": {
+          "x": 41,
+          "y": 5,
+          "w": 60,
+          "h": 110
+        }
+      },
+      {
+        "direction": "NW",
+        "frame": 1,
+        "sourceBox": {
+          "x": 107,
+          "y": 17,
+          "w": 217,
+          "h": 384
+        },
+        "destBox": {
+          "x": 39,
+          "y": 8,
+          "w": 55,
+          "h": 110
+        }
+      }
+    ],
+    "method": "clothing-only template image edit, percell content registration to originalupperbody; no underbody painted;50%downsample",
+    "limitations": "Sleeve/face openings require visual compositing check; only baseline male/female tested, not arbitrary28reskins"
+  }
+]

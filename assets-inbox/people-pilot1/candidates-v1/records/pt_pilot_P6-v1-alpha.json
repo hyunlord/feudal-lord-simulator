@@ -1,0 +1,11 @@
+{
+  "id": "pt_pilot_P6-v1-alpha",
+  "prompt": "Edit ONLY the BACKGROUND of this exact portrait: remove every background pixel and make it genuinely TRANSPARENT alpha0. Preserve the old widow figure exactly: face/age/wrinkles, head pose looking screenleft, cream neck-wimple+veil, grey-blue gown, silhouette, paint, placement and canvasdimensions. Do not regenerate her identity or clothing. No solid coloured background, no halo, no cast shadow, no words. Output RGBA with transparency. This transparent figure will be composited on a precise flat background for a game portrait.",
+  "references": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-people-pilot-v1/sources/pt_pilot_P6-v1.png"
+  ],
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0bfce-1c2e-7111-9a4a-0cbb7435d757/exec-b84169a8-5643-4d94-8d22-9ddab358bc52.png"
+}

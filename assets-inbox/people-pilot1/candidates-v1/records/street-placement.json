@@ -1,0 +1,68 @@
+{
+  "kind": "offline composite",
+  "screenshotUnscaled": true,
+  "zoom": 1,
+  "bodyHeightSource": "runtimeActorAssets32 * VILLAGER_WORLD_SCALE0.55",
+  "placements": [
+    {
+      "person": 1,
+      "direction": "NE",
+      "foot": [
+        711,
+        508
+      ],
+      "bodyHeight": 17.6,
+      "cellDrawSize": 22.18784893267652
+    },
+    {
+      "person": 2,
+      "direction": "SE",
+      "foot": [
+        718,
+        553
+      ],
+      "bodyHeight": 17.6,
+      "cellDrawSize": 21.810278440731903
+    },
+    {
+      "person": 3,
+      "direction": "SW",
+      "foot": [
+        773,
+        568
+      ],
+      "bodyHeight": 17.6,
+      "cellDrawSize": 21.706666666666667
+    },
+    {
+      "person": 4,
+      "direction": "NW",
+      "foot": [
+        805,
+        525
+      ],
+      "bodyHeight": 17.6,
+      "cellDrawSize": 21.706666666666667
+    },
+    {
+      "person": 5,
+      "direction": "NE",
+      "foot": [
+        843,
+        510
+      ],
+      "bodyHeight": 17.6,
+      "cellDrawSize": 21.8230563002681
+    },
+    {
+      "person": 6,
+      "direction": "SE",
+      "foot": [
+        710,
+        474
+      ],
+      "bodyHeight": 17.6,
+      "cellDrawSize": 21.81826906598115
+    }
+  ]
+}

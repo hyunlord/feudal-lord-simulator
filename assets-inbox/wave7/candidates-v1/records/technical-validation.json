@@ -1,0 +1,776 @@
+{
+  "count": 77,
+  "pass": true,
+  "checks": [
+    {
+      "id": "cart_load_bread_ne-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5389,
+      "visiblePixels": 755,
+      "semiTransparentPixels": 706,
+      "sha256": "e1a55c9991a2366d3ef5fab4b2aa3538395fd0ab55daeffa7e707c15384d897b"
+    },
+    {
+      "id": "cart_load_bread_nw-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5423,
+      "visiblePixels": 721,
+      "semiTransparentPixels": 667,
+      "sha256": "72b21c39c3eba87d87a30327bb8ae35873218ac01ed31b260f044f234725d86c"
+    },
+    {
+      "id": "cart_load_grainsack_ne-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5590,
+      "visiblePixels": 554,
+      "semiTransparentPixels": 508,
+      "sha256": "61b5e8545e1719608c3ae16ea04d78fb71b54fc69b5e7befcc31c18b7dcb96c9"
+    },
+    {
+      "id": "cart_load_grainsack_nw-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5539,
+      "visiblePixels": 605,
+      "semiTransparentPixels": 561,
+      "sha256": "5259ce23d09617005064098161c1460b99219e46c94e64371ec6b307ac2a4cbe"
+    },
+    {
+      "id": "cart_load_log_ne-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5411,
+      "visiblePixels": 733,
+      "semiTransparentPixels": 679,
+      "sha256": "73c5fcde0050e5c83398a68b691a9f051054ade8f9df69b1fc9d5d96c2803c73"
+    },
+    {
+      "id": "cart_load_log_nw-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5456,
+      "visiblePixels": 688,
+      "semiTransparentPixels": 638,
+      "sha256": "a19d1bfad456494a858c59f9a9c14483cf045c584c64c590708c6552c075ec5d"
+    },
+    {
+      "id": "cart_load_rawstone_ne-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5489,
+      "visiblePixels": 655,
+      "semiTransparentPixels": 601,
+      "sha256": "777c24284823f4cbbae8aa53ff7e453fc83ca988efa0ba36b7b15a0219ffe228"
+    },
+    {
+      "id": "cart_load_rawstone_nw-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5572,
+      "visiblePixels": 572,
+      "semiTransparentPixels": 525,
+      "sha256": "b43cc7ffc5a2a50402d31a7bfc52a6dd0ad9c18b41d358ddaf6065326fbfe1f8"
+    },
+    {
+      "id": "cart_load_stone_ne-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5531,
+      "visiblePixels": 613,
+      "semiTransparentPixels": 563,
+      "sha256": "823cfc3797a48aee83d4e88ef6eb0670c27e2b9a86fda3fdca04385f93ccacd6"
+    },
+    {
+      "id": "cart_load_stone_nw-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5483,
+      "visiblePixels": 661,
+      "semiTransparentPixels": 615,
+      "sha256": "ed7816104ecff8b7b6d8338ed37570836e9a0a3202279bcecdad4a8d6d863fcf"
+    },
+    {
+      "id": "cart_load_timber_ne-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5560,
+      "visiblePixels": 584,
+      "semiTransparentPixels": 539,
+      "sha256": "c21201698e5f6046994bf17e9d393334334c528afb59ff99e2bf8f0fa1240076"
+    },
+    {
+      "id": "cart_load_timber_nw-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5623,
+      "visiblePixels": 521,
+      "semiTransparentPixels": 480,
+      "sha256": "0b328e92214cee1f25ce450b06f84870acea9a4e0d5ec2466310e341555f07de"
+    },
+    {
+      "id": "fx/roof_smoke_weak_sheet-v1",
+      "width": 192,
+      "height": 80,
+      "hasAlpha": true,
+      "transparentPixels": 10423,
+      "visiblePixels": 4937,
+      "semiTransparentPixels": 4937,
+      "sha256": "9d409f147a5273bce371743533ff9e48a75b428d1e544b974e09b92c7b207823"
+    },
+    {
+      "id": "fx/oven_smoke_sheet-v1",
+      "width": 256,
+      "height": 96,
+      "hasAlpha": true,
+      "transparentPixels": 15915,
+      "visiblePixels": 8661,
+      "semiTransparentPixels": 8516,
+      "sha256": "ed8908e615b055c78c1cb499687e878d40482c4bd45a7d5f7de40756bf94aeb2"
+    },
+    {
+      "id": "fx/roof_smoke_sheet-v1",
+      "width": 192,
+      "height": 80,
+      "hasAlpha": true,
+      "transparentPixels": 9910,
+      "visiblePixels": 5450,
+      "semiTransparentPixels": 5445,
+      "sha256": "5e3860c88899051dd82b0a4ca7b0a2e97092decdbb4d9591dceef9d0628047b0"
+    },
+    {
+      "id": "fx/dust_puff_sheet-v1",
+      "width": 256,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 8300,
+      "visiblePixels": 3988,
+      "semiTransparentPixels": 3897,
+      "sha256": "2dc9999684cd1f98b2deae413a0299ffae5f18e20ac628f1797e88bdfa428f24"
+    },
+    {
+      "id": "fx/plus_float-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 690,
+      "visiblePixels": 334,
+      "semiTransparentPixels": 301,
+      "sha256": "f685df2c2bc140c77515e05b348ecffa5a1eccd5d46b77f21685f87e67e861bd"
+    },
+    {
+      "id": "construction/roof_frame_small-v1",
+      "width": 128,
+      "height": 96,
+      "hasAlpha": true,
+      "transparentPixels": 7352,
+      "visiblePixels": 4936,
+      "semiTransparentPixels": 4320,
+      "sha256": "a6c6daf7b9ccaa7711c5e6b7f8ce5ca1b18b8789644a0a99b1e9a9aaf843a634"
+    },
+    {
+      "id": "construction/roof_frame_medium-v1",
+      "width": 192,
+      "height": 144,
+      "hasAlpha": true,
+      "transparentPixels": 17099,
+      "visiblePixels": 10549,
+      "semiTransparentPixels": 9349,
+      "sha256": "5d616fc8944c7cdddc20e04f5349913569c2b8765a1698c5ad610f60667dccb3"
+    },
+    {
+      "id": "construction/roof_frame_large-v1",
+      "width": 256,
+      "height": 192,
+      "hasAlpha": true,
+      "transparentPixels": 28029,
+      "visiblePixels": 21123,
+      "semiTransparentPixels": 18617,
+      "sha256": "eff6f14b6e1086736bad05cc2c25b22f99d53e02daa9ddb69dcdf80c25f58f08"
+    },
+    {
+      "id": "construction/roof_frame_stone_large-v1",
+      "width": 256,
+      "height": 224,
+      "hasAlpha": true,
+      "transparentPixels": 35015,
+      "visiblePixels": 22329,
+      "semiTransparentPixels": 20679,
+      "sha256": "2c03c7424370aa49cd0608441911d7c1f07a694bf21a29fa7868919f9a9d136a"
+    },
+    {
+      "id": "work/work_seedbag_ne-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 653,
+      "visiblePixels": 371,
+      "semiTransparentPixels": 323,
+      "sha256": "b06c459787020082fe83180f7f3be9abbd44f7460826ca59860e40008e54e41d"
+    },
+    {
+      "id": "work/work_seedbag_se-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 683,
+      "visiblePixels": 341,
+      "semiTransparentPixels": 292,
+      "sha256": "9f36ef0c6d5917ef587f0959ee9759f8ff217f5b14afb3fe163c20ea2a18e242"
+    },
+    {
+      "id": "work/work_seedbag_sw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 627,
+      "visiblePixels": 397,
+      "semiTransparentPixels": 346,
+      "sha256": "f06f5d16949ddfb3e946c1fde007601ff1f65cadff73bc00848ea0f43df5487c"
+    },
+    {
+      "id": "work/work_seedbag_nw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 732,
+      "visiblePixels": 292,
+      "semiTransparentPixels": 244,
+      "sha256": "9b3be7ea1a878188c2897a3fbe1b5589e660008e9ba20637590d9c161d616c5a"
+    },
+    {
+      "id": "work/work_plough_ne-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 766,
+      "visiblePixels": 258,
+      "semiTransparentPixels": 228,
+      "sha256": "33846aea809254bc7eb1a62a10408aa9144042196226236b2b63e66bce231536"
+    },
+    {
+      "id": "work/work_plough_se-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 812,
+      "visiblePixels": 212,
+      "semiTransparentPixels": 191,
+      "sha256": "314f2952b89e9c70fb79b8544437669378e3ea3fc5e4a97601304c4e2b99da50"
+    },
+    {
+      "id": "work/work_plough_sw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 793,
+      "visiblePixels": 231,
+      "semiTransparentPixels": 210,
+      "sha256": "1b6cc9945f2abe4ae18a9faded31a8314666a202e7dedb2e5d1cd992e0a304f9"
+    },
+    {
+      "id": "work/work_plough_nw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 805,
+      "visiblePixels": 219,
+      "semiTransparentPixels": 192,
+      "sha256": "3e9dc4694b4195f6b2c8807fe6be8f5609c550893dfa5e0bfe1cf0fba6289e39"
+    },
+    {
+      "id": "work/work_breadbasket_ne-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 460,
+      "visiblePixels": 564,
+      "semiTransparentPixels": 510,
+      "sha256": "2f219d63408a4c1e356d58bc796b6f63a0dea8e0505866af8252445ea7f1a2ff"
+    },
+    {
+      "id": "work/work_breadbasket_se-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 457,
+      "visiblePixels": 567,
+      "semiTransparentPixels": 507,
+      "sha256": "c56c9280ea4b9dce4d8457450324187a222e358c4185f513548cb4581311c01a"
+    },
+    {
+      "id": "work/work_breadbasket_sw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 467,
+      "visiblePixels": 557,
+      "semiTransparentPixels": 500,
+      "sha256": "a3d3e0dfd823e7d61967cc64c787832fef994391266151f5887d18beead0fd82"
+    },
+    {
+      "id": "work/work_breadbasket_nw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 462,
+      "visiblePixels": 562,
+      "semiTransparentPixels": 503,
+      "sha256": "04a014a39bab168cdeb8540e6d4a9ca91212c8aed17d2827d121be3b33e621ab"
+    },
+    {
+      "id": "work/work_waterbucket_ne-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 664,
+      "visiblePixels": 360,
+      "semiTransparentPixels": 314,
+      "sha256": "2f3c91633a8b1f22af4a1ac975f52d789ebe9fc9f85d88b34eb697b5870fee4d"
+    },
+    {
+      "id": "work/work_waterbucket_se-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 608,
+      "visiblePixels": 416,
+      "semiTransparentPixels": 366,
+      "sha256": "a4be5ef4235b848dd8e630da16c4c5753dee98478a213deac8d2f27e1c0dc77f"
+    },
+    {
+      "id": "work/work_waterbucket_sw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 678,
+      "visiblePixels": 346,
+      "semiTransparentPixels": 305,
+      "sha256": "816b4dae6bc9d45e4878bad2aced091fd4fcc219836d6454a5e1a3a7893c9ff1"
+    },
+    {
+      "id": "work/work_waterbucket_nw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 613,
+      "visiblePixels": 411,
+      "semiTransparentPixels": 355,
+      "sha256": "38f531423f4cdcf64b1b163069098cfd4817aa3281fae0c07e7ade1f2212448e"
+    },
+    {
+      "id": "work/work_coinpurse_ne-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 832,
+      "visiblePixels": 192,
+      "semiTransparentPixels": 160,
+      "sha256": "42fc3abed3a8c2af45110ba6ea00e57fac19bacc1b6c25edb19e183fde9c394d"
+    },
+    {
+      "id": "work/work_coinpurse_se-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 855,
+      "visiblePixels": 169,
+      "semiTransparentPixels": 141,
+      "sha256": "753d8ad70c6af33a2bf7dc7dbcc4bc6afe8d0ea47a81b275e1c1e72116523f83"
+    },
+    {
+      "id": "work/work_coinpurse_sw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 838,
+      "visiblePixels": 186,
+      "semiTransparentPixels": 153,
+      "sha256": "4f6a193aeabf86548df5d757661a19e6123e58a61d795aa90d50a74371cd3a07"
+    },
+    {
+      "id": "work/work_coinpurse_nw-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 856,
+      "visiblePixels": 168,
+      "semiTransparentPixels": 140,
+      "sha256": "32481a696f8b6e5cfbf4cac5e9c85ec9f6b463feb0a9406fa47ecc0af8c3946c"
+    },
+    {
+      "id": "pile/sheaves_2-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 4635,
+      "visiblePixels": 1509,
+      "semiTransparentPixels": 1419,
+      "sha256": "b9d0d6d71adbeabee33b7c6d216e3697accf2c656d2951bfb69cac1528f58b0b"
+    },
+    {
+      "id": "pile/sacks_2-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 4353,
+      "visiblePixels": 1791,
+      "semiTransparentPixels": 1675,
+      "sha256": "1873413fd1cf056a5cb15413c232454375646eab4db057b372e480a5bd180654"
+    },
+    {
+      "id": "pile/bread_2-v1",
+      "width": 64,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 1864,
+      "visiblePixels": 1208,
+      "semiTransparentPixels": 1133,
+      "sha256": "4f3d3556ca4769e0f6df232c968bad01e3bf14121958c8a590ea21f3ba954e05"
+    },
+    {
+      "id": "pile/crates_2-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 4283,
+      "visiblePixels": 1861,
+      "semiTransparentPixels": 1757,
+      "sha256": "953450fa1776e7d5b0b6d0ba73b2fc4aac405028dcf952af150e78d997953fd7"
+    },
+    {
+      "id": "pile/sheaves_3-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3858,
+      "visiblePixels": 2286,
+      "semiTransparentPixels": 2199,
+      "sha256": "d213bcc5a66fc9d9de0c9247b1a268532dbf7a14a67be6471bb6b1560165671a"
+    },
+    {
+      "id": "pile/sheaves_1-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5544,
+      "visiblePixels": 600,
+      "semiTransparentPixels": 550,
+      "sha256": "4d9bdf6878b9c3537c5b044c489ebb53705efe9e32f924db1ced5c1d37d63656"
+    },
+    {
+      "id": "pile/sacks_1-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5339,
+      "visiblePixels": 805,
+      "semiTransparentPixels": 740,
+      "sha256": "38492b235bf33f0ed22a4d64e7972875624e37b3409a07137f8445abbc19aebf"
+    },
+    {
+      "id": "pile/sacks_3-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3684,
+      "visiblePixels": 2460,
+      "semiTransparentPixels": 2347,
+      "sha256": "037edff3ea80d0e99ddcccfa88676a14aecd0a7be937c446f961d278213e87d4"
+    },
+    {
+      "id": "pile/bread_1-v1",
+      "width": 64,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 2489,
+      "visiblePixels": 583,
+      "semiTransparentPixels": 539,
+      "sha256": "c67efa51d469410d0f86c1d34acbe0a1f51872ea8c2028410274db083befb73c"
+    },
+    {
+      "id": "pile/bread_3-v1",
+      "width": 64,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 1604,
+      "visiblePixels": 1468,
+      "semiTransparentPixels": 1376,
+      "sha256": "21a0532eaa45c7c636c94a31ace06e82084edaa0e1e9869af973c1eb93c06eaa"
+    },
+    {
+      "id": "pile/crates_1-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5069,
+      "visiblePixels": 1075,
+      "semiTransparentPixels": 1008,
+      "sha256": "f40f5216d05b9c874da2529eeab26b4385213180411e88aac856ea26e9f853a3"
+    },
+    {
+      "id": "pile/crates_3-v1",
+      "width": 96,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3264,
+      "visiblePixels": 2880,
+      "semiTransparentPixels": 2758,
+      "sha256": "9d3b9f13544386d591e61d5c9dfe6f80d35580513b9a6d26e4d882263a6b822a"
+    },
+    {
+      "id": "season/roof_snow_l0-v1",
+      "width": 153,
+      "height": 153,
+      "hasAlpha": true,
+      "transparentPixels": 22742,
+      "visiblePixels": 667,
+      "semiTransparentPixels": 667,
+      "sha256": "fda2da780fff502d3b338c6a878b1cf736a1f344d8bac98219f4f2551eb24ad5"
+    },
+    {
+      "id": "overlay/boarded_l0-v1",
+      "width": 153,
+      "height": 153,
+      "hasAlpha": true,
+      "transparentPixels": 22981,
+      "visiblePixels": 428,
+      "semiTransparentPixels": 428,
+      "sha256": "673473f17ddbf083a47ac4f55b829a4a5dbdad96f287315cce98735752210f90"
+    },
+    {
+      "id": "season/roof_snow_l1-v1",
+      "width": 139,
+      "height": 139,
+      "hasAlpha": true,
+      "transparentPixels": 18583,
+      "visiblePixels": 738,
+      "semiTransparentPixels": 738,
+      "sha256": "cf412403704556649635b4f66e1ad5a8a31e85c1572bfd65d33b811f8daf779c"
+    },
+    {
+      "id": "overlay/boarded_l1-v1",
+      "width": 139,
+      "height": 139,
+      "hasAlpha": true,
+      "transparentPixels": 18704,
+      "visiblePixels": 617,
+      "semiTransparentPixels": 617,
+      "sha256": "2995ed6a7f33af59794dd56aeae3e944a32cf5ecd3e246640c922859b7122dbc"
+    },
+    {
+      "id": "season/roof_snow_l2-v1",
+      "width": 137,
+      "height": 137,
+      "hasAlpha": true,
+      "transparentPixels": 17940,
+      "visiblePixels": 829,
+      "semiTransparentPixels": 829,
+      "sha256": "427197edf0f73d74e483783c1f7fe45919e0f53df9a03ad2969813a5db3b0ae8"
+    },
+    {
+      "id": "overlay/boarded_l2-v1",
+      "width": 137,
+      "height": 137,
+      "hasAlpha": true,
+      "transparentPixels": 17584,
+      "visiblePixels": 1185,
+      "semiTransparentPixels": 1185,
+      "sha256": "7cd345f4cf53a03f2e933130d3288382cfbf86e56bfb127f216f3eaa0ce0d59b"
+    },
+    {
+      "id": "season/roof_snow_l3-v1",
+      "width": 142,
+      "height": 142,
+      "hasAlpha": true,
+      "transparentPixels": 19258,
+      "visiblePixels": 906,
+      "semiTransparentPixels": 904,
+      "sha256": "a050ca439ba87692ae9897c45f48f78086b846dc6987037316bd2f5be7a67ca6"
+    },
+    {
+      "id": "overlay/boarded_l3-v1",
+      "width": 142,
+      "height": 142,
+      "hasAlpha": true,
+      "transparentPixels": 19120,
+      "visiblePixels": 1044,
+      "semiTransparentPixels": 1044,
+      "sha256": "fed66223de7d985856560026d4db3799db5532a55740154db0a8252845a58e13"
+    },
+    {
+      "id": "season/roof_snow_l4-v1",
+      "width": 161,
+      "height": 161,
+      "hasAlpha": true,
+      "transparentPixels": 25080,
+      "visiblePixels": 841,
+      "semiTransparentPixels": 841,
+      "sha256": "c01fcd139f7cec68d505c92e318e66fe09d3bccdc628bef24cf55ab1d2f8ad81"
+    },
+    {
+      "id": "overlay/boarded_l4-v1",
+      "width": 161,
+      "height": 161,
+      "hasAlpha": true,
+      "transparentPixels": 24525,
+      "visiblePixels": 1396,
+      "semiTransparentPixels": 1396,
+      "sha256": "012a36efd4cdb9c1ccd799134687ccefa0467fa512911939f0a8f4624354312a"
+    },
+    {
+      "id": "season/frost_patch_a-v1",
+      "width": 128,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 4827,
+      "visiblePixels": 3365,
+      "semiTransparentPixels": 3059,
+      "sha256": "63f13f63e4bbaec71c343e4b1e0eee4a841c4b9285e1b643f0fc8568538efc0b"
+    },
+    {
+      "id": "season/leaves_a-v1",
+      "width": 96,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 2386,
+      "visiblePixels": 2222,
+      "semiTransparentPixels": 2053,
+      "sha256": "95f8a92da9c6a7476666d70aaeac444005d50c6dcaced9740b92d3880b0cc0be"
+    },
+    {
+      "id": "season/dry_grass_a-v1",
+      "width": 96,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 2632,
+      "visiblePixels": 1976,
+      "semiTransparentPixels": 1906,
+      "sha256": "cce298bda39108b56dd88c4928f6602a793b101aebcde00d9f3f428f5f1c16a6"
+    },
+    {
+      "id": "signifier/tall_grass_plot-v1",
+      "width": 128,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 3416,
+      "visiblePixels": 4776,
+      "semiTransparentPixels": 4711,
+      "sha256": "2d833bc79c3e5ccd9e1ea21223c1306662495272e779d53f67d4835a2a4f06a2"
+    },
+    {
+      "id": "signifier/footprints_dotted_ne-v1",
+      "width": 128,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 6794,
+      "visiblePixels": 1398,
+      "semiTransparentPixels": 1245,
+      "sha256": "71fe52b2ab1eb55942295366e0f99ad8d22414f4faf9785b2fbe56dd66ef6cbf"
+    },
+    {
+      "id": "signifier/footprints_dotted_nw-v1",
+      "width": 128,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 6874,
+      "visiblePixels": 1318,
+      "semiTransparentPixels": 1146,
+      "sha256": "3b7bf6b5095f11422be98d3f463902b7aadbfc581c14c3857e710f8ad700f3a3"
+    },
+    {
+      "id": "signifier/empty_stall-v1",
+      "width": 96,
+      "height": 96,
+      "hasAlpha": true,
+      "transparentPixels": 4914,
+      "visiblePixels": 4302,
+      "semiTransparentPixels": 3949,
+      "sha256": "9d324d415a60378d5b5dd97f66c2ba1967d36467d8432ef69432666cae0baec6"
+    },
+    {
+      "id": "signifier/bundle_family_prop-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 520,
+      "visiblePixels": 504,
+      "semiTransparentPixels": 452,
+      "sha256": "5f6c0e398558500d1919e91e6713854b1c1202569bb73942dcfd3b90a2fbd4d2"
+    },
+    {
+      "id": "signifier/bar_latch-v1",
+      "width": 32,
+      "height": 32,
+      "hasAlpha": true,
+      "transparentPixels": 621,
+      "visiblePixels": 403,
+      "semiTransparentPixels": 353,
+      "sha256": "8286cbc0adc7372f003435b84911dcdf82676cfa3d1a197f08ebf0c395bc3b52"
+    },
+    {
+      "id": "season/frost_patch_b-v1",
+      "width": 128,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5046,
+      "visiblePixels": 3146,
+      "semiTransparentPixels": 2908,
+      "sha256": "c04d5b287510ca2518201cc1589a794c3662597240181913a70dc1e7a288206b"
+    },
+    {
+      "id": "season/frost_patch_c-v1",
+      "width": 128,
+      "height": 64,
+      "hasAlpha": true,
+      "transparentPixels": 5309,
+      "visiblePixels": 2883,
+      "semiTransparentPixels": 2640,
+      "sha256": "526b7c8b0c1f48a04a544682a5b3ef5e961f5b333aa174caa03266874b0339bb"
+    },
+    {
+      "id": "season/leaves_b-v1",
+      "width": 96,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 2419,
+      "visiblePixels": 2189,
+      "semiTransparentPixels": 1998,
+      "sha256": "46655eb8036284018d0e3b7a8e4250ef0408f604cb275c74bd3cfbe0d5975222"
+    },
+    {
+      "id": "season/leaves_c-v1",
+      "width": 96,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 2996,
+      "visiblePixels": 1612,
+      "semiTransparentPixels": 1465,
+      "sha256": "ae47f56c0b476891280101cf0d3b9ca3aa2a46a72cfb644894ed0cbfb39ab84d"
+    },
+    {
+      "id": "season/dry_grass_b-v1",
+      "width": 96,
+      "height": 48,
+      "hasAlpha": true,
+      "transparentPixels": 2865,
+      "visiblePixels": 1743,
+      "semiTransparentPixels": 1622,
+      "sha256": "29335eacb6e128c5f4b4c4d2e0c8b00cf83be23b00ba45f5bb43523e122756c4"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+[
+  {
+    "id": "wall/stone_gate_v3_nwse-v1",
+    "role": "module",
+    "size": [
+      512,
+      384
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-fda8-7290-8f21-0ab86b593203/exec-ff5cd5b5-4d7a-4f02-8669-0e5bf7671caa.png",
+    "prompt": "Use case: sketch-to-render. Make ONE transparent-background hand-painted isometric medieval English stone gate sprite. First image is EXACT topology guide: retain its canvas aspect 384:320, fixed outer silhouette, long diagonal baseline falling toward the right (NW-SE axis), the two low side piers/towers, and MOST IMPORTANT the entire large transparent curved arch opening. Do not shrink or fill the opening. Do not make lintel. Paint this exact structural mask, not a taller or narrower gate. Second image stone_gate_v2 is ONLY material/art style reference, not proportions. Third and fourth images give exact desaturated grey-brown stone tone and block scale. Southern England 1300–1450. Stones irregular but coarse 12–16 pixels at final384-wide size, little mortar, no fine noise. Arch ring is radial wedge stones with clearly curved intrados, no horizontal slab across opening. Arch clear span204 of384 canvas pixels, straight jamb20, arch rise64, ring24, local vertical tower height112; ground slope1:2. Match first image geometry pixel-for-pixel when reduced to384x320. Add only tiny low crenellation indications within the existing top silhouette, do not grow towers or parapet height. Quiet flat top walk with muted highlights, left-upper soft light. Alpha transparent opening AND exterior, no background, no ground plane, no foliage, no doors, no people, no text, no cast shadow. Keep tall stone body texture consistent with project references. Output a single precisely aligned sprite, no grid or panels.",
+    "references": [
+      "gates-nwse-topology.png",
+      "stone_gate_v2-v1.png",
+      "stone_face_a-v2.png",
+      "stone_top_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Candidate. Guide supplied before generation; native followed topology but changed outer pier widths, so final canvas enlarged to512x384 and registration documented.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_gate_v3_nwse-v1.png",
+    "manualEdits": "Native image→final512x384 single Canvas affine registration: portal groundpoints span204px, baseline slope 0.5, maximum local vertical rise112px. Independent axis paint; no mirror. No arbitrary runtime scaling. Final PNG 3px Euclidean nearest opaque RGB bleed into alpha0 pixels only; visible RGBA byte-identical.",
+    "geometry": {
+      "id": "wall/stone_gate_v3_nwse-v1",
+      "size": [
+        512,
+        384
+      ],
+      "axis": "nwse",
+      "portalSpanSource": 204,
+      "portalFeet": [
+        [
+          150,
+          198
+        ],
+        [
+          354,
+          300
+        ]
+      ],
+      "pivot": [
+        252,
+        249
+      ],
+      "groundSlope": 0.5,
+      "localVerticalHeight": 112,
+      "sourcePortalAnchors": [
+        [
+          439,
+          661
+        ],
+        [
+          1029,
+          1013
+        ]
+      ],
+      "sourceGroundSlope": 0.5966101694915255,
+      "sourceMaximumRise": 580.4711864406781,
+      "affine": [
+        0.34576271186440677,
+        0.05776739240753906,
+        0,
+        0.19294670022599986,
+        -1.78983050847458,
+        45.102345883704444
+      ],
+      "wallSockets": [
+        [
+          32.7864406779661,
+          139.39322033898304
+        ],
+        [
+          435.6,
+          340.8
+        ]
+      ],
+      "interpretation": "Height112px measured vertically above each local groundpoint; full isometric bounding box also includes diagonal ground-axis drop. Native generated topology differs from guide; calibrated with source portal anchors; no runtime horizontal stretching.",
+      "mask": "Preserved native alpha; topology supplied before generation; clear passage stays alpha0.",
+      "opaqueBBox": [
+        27,
+        60,
+        456,
+        333
+      ],
+      "openingSamples": [
+        {
+          "x": 166,
+          "groundY": 206,
+          "innerArchY": 162,
+          "clearHeight": 43
+        },
+        {
+          "x": 201,
+          "groundY": 223.5,
+          "innerArchY": 166,
+          "clearHeight": 56.5
+        },
+        {
+          "x": 252,
+          "groundY": 249,
+          "innerArchY": 185,
+          "clearHeight": 63
+        },
+        {
+          "x": 303,
+          "groundY": 274.5,
+          "innerArchY": 215,
+          "clearHeight": 58.5
+        },
+        {
+          "x": 338,
+          "groundY": 292,
+          "innerArchY": 247,
+          "clearHeight": 44
+        }
+      ]
+    },
+    "generatedAt": "2026-09-25T13:05:11.569Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "selectionReason": "Independent axis generation preserved broad curved opening, stone tone, low height; final portal registered at204px without game scaling.",
+    "sourceSha256": "59f741aea56e6611867e56aad38dcbe080e084b99af1d5a06efc87385b09a7b3",
+    "runtimeSha256": "925bf39f9a3d3f502746c456b9bd415bcc2bf99fd9b4bb754f89a28409248952",
+    "bleedValidation": {
+      "radius": 3,
+      "hiddenPixels": 1656,
+      "allAlphaUnchanged": true,
+      "visibleRGBUnchanged": true
+    }
+  },
+  {
+    "id": "wall/stone_gate_v3_nesw-v1",
+    "role": "module",
+    "size": [
+      512,
+      384
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-fda8-7290-8f21-0ab86b593203/exec-b6f6743f-c3cf-4937-a227-f98d0347877c.png",
+    "prompt": "Use case: sketch-to-render. Make ONE transparent-background hand-painted isometric medieval English stone gate sprite. First image is EXACT topology guide: retain its canvas aspect 384:320, fixed outer silhouette, long diagonal baseline rising toward the right (NE-SW axis), the two low side piers/towers, and MOST IMPORTANT the entire large transparent curved arch opening. Do not shrink or fill the opening. Do not make lintel. Paint this exact structural mask, not a taller or narrower gate. Second image stone_gate_v2 is ONLY material/art style reference, not proportions. Third and fourth images give exact desaturated grey-brown stone tone and block scale. Southern England 1300–1450. Stones irregular but coarse 12–16 pixels at final384-wide size, little mortar, no fine noise. Arch ring is radial wedge stones with clearly curved intrados, no horizontal slab across opening. Arch clear span204 of384 canvas pixels, straight jamb20, arch rise64, ring24, local vertical tower height112; ground slope1:2. Match first image geometry pixel-for-pixel when reduced to384x320. Add only tiny low crenellation indications within the existing top silhouette, do not grow towers or parapet height. Quiet flat top walk with muted highlights, left-upper soft light. Alpha transparent opening AND exterior, no background, no ground plane, no foliage, no doors, no people, no text, no cast shadow. Keep tall stone body texture consistent with project references. Output a single precisely aligned sprite, no grid or panels.",
+    "references": [
+      "gates-nesw-topology.png",
+      "stone_gate_v2-v1.png",
+      "stone_face_a-v2.png",
+      "stone_top_a-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Candidate. Guide supplied before generation; native followed topology but changed outer pier widths, so final canvas enlarged to512x384 and registration documented.",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/wall/stone_gate_v3_nesw-v1.png",
+    "manualEdits": "Native image→final512x384 single Canvas affine registration: portal groundpoints span204px, baseline slope -0.5, maximum local vertical rise112px. Independent axis paint; no mirror. No arbitrary runtime scaling. Final PNG 3px Euclidean nearest opaque RGB bleed into alpha0 pixels only; visible RGBA byte-identical.",
+    "geometry": {
+      "id": "wall/stone_gate_v3_nesw-v1",
+      "size": [
+        512,
+        384
+      ],
+      "axis": "nesw",
+      "portalSpanSource": 204,
+      "portalFeet": [
+        [
+          150,
+          300
+        ],
+        [
+          354,
+          198
+        ]
+      ],
+      "pivot": [
+        252,
+        249
+      ],
+      "groundSlope": -0.5,
+      "localVerticalHeight": 112,
+      "sourcePortalAnchors": [
+        [
+          382,
+          984
+        ],
+        [
+          1008,
+          614
+        ]
+      ],
+      "sourceGroundSlope": -0.5910543130990416,
+      "sourceMaximumRise": 533.4536741214058,
+      "affine": [
+        0.3258785942492013,
+        -0.03884589168293713,
+        0,
+        0.20995262650400368,
+        25.51437699680511,
+        108.24574614294238
+      ],
+      "wallSockets": [
+        [
+          51.584664536741215,
+          349.2076677316294
+        ],
+        [
+          432.8626198083067,
+          158.56869009584665
+        ]
+      ],
+      "interpretation": "Height112px measured vertically above each local groundpoint; full isometric bounding box also includes diagonal ground-axis drop. Native generated topology differs from guide; calibrated with source portal anchors; no runtime horizontal stretching.",
+      "mask": "Preserved native alpha; topology supplied before generation; clear passage stays alpha0.",
+      "opaqueBBox": [
+        48,
+        74,
+        439,
+        330
+      ],
+      "openingSamples": [
+        {
+          "x": 166,
+          "groundY": 292,
+          "innerArchY": 253,
+          "clearHeight": 38
+        },
+        {
+          "x": 201,
+          "groundY": 274.5,
+          "innerArchY": 220,
+          "clearHeight": 53.5
+        },
+        {
+          "x": 252,
+          "groundY": 249,
+          "innerArchY": 190,
+          "clearHeight": 58
+        },
+        {
+          "x": 303,
+          "groundY": 223.5,
+          "innerArchY": 171,
+          "clearHeight": 51.5
+        },
+        {
+          "x": 338,
+          "groundY": 206,
+          "innerArchY": 167,
+          "clearHeight": 38
+        }
+      ]
+    },
+    "generatedAt": "2026-09-25T13:06:15.057Z",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "candidateCount": 1,
+    "selectionReason": "Independent axis generation preserved broad curved opening, stone tone, low height; final portal registered at204px without game scaling.",
+    "sourceSha256": "18ff3a44f271e473ddcb72d1fb34b4ed71f1896f35f306d6fd5d9cb7d6db9c8c",
+    "runtimeSha256": "2866d5585412c6e800c2eb352ca49c142d0b8bbc21fe3d1c4c88bd1012499477",
+    "bleedValidation": {
+      "radius": 3,
+      "hiddenPixels": 1309,
+      "allAlphaUnchanged": true,
+      "visibleRGBUnchanged": true
+    }
+  }
+]

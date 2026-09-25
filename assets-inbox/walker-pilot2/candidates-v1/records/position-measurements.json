@@ -1,0 +1,898 @@
+[
+  {
+    "id": "P1",
+    "direction": "NE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      84,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      86,
+      23
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      64.63635674965911,
+      132.03954345740115
+    ],
+    "footCandidateMaster": [
+      64.63635674965911,
+      132.03954345740115
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "SE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      79,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      80,
+      25
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      88.47805702866805,
+      133.25739758665745
+    ],
+    "footCandidateMaster": [
+      88.47805702866805,
+      133.25739758665745
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "SW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      69,
+      24
+    ],
+    "candidateHeadMasterPx": [
+      68,
+      25
+    ],
+    "headDistanceFinalPx": 0.71,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      56.53036531451175,
+      133.38002533674603
+    ],
+    "footCandidateMaster": [
+      56.53036531451175,
+      133.38002533674603
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "NW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      66,
+      21
+    ],
+    "candidateHeadMasterPx": [
+      65,
+      22
+    ],
+    "headDistanceFinalPx": 0.71,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      80.89331655839987,
+      132.0292191953167
+    ],
+    "footCandidateMaster": [
+      80.89331655839987,
+      132.0292191953167
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "NE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      84,
+      24
+    ],
+    "candidateHeadMasterPx": [
+      85,
+      24
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      62.227135350014976,
+      131.56380864214339
+    ],
+    "footCandidateMaster": [
+      62.227135350014976,
+      131.56380864214339
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "SE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      80,
+      25
+    ],
+    "candidateHeadMasterPx": [
+      81,
+      27
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      91.18871877021657,
+      132.0082560611195
+    ],
+    "footCandidateMaster": [
+      91.18871877021657,
+      132.0082560611195
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "SW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      67,
+      26
+    ],
+    "candidateHeadMasterPx": [
+      68,
+      27
+    ],
+    "headDistanceFinalPx": 0.71,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      55.81608116293155,
+      132.08028467595398
+    ],
+    "footCandidateMaster": [
+      55.81608116293155,
+      132.08028467595398
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P1",
+    "direction": "NW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      68,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      67,
+      23
+    ],
+    "headDistanceFinalPx": 0.71,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      87.65642055255493,
+      131.19899329807993
+    ],
+    "footCandidateMaster": [
+      87.65642055255493,
+      131.19899329807993
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "NE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      95,
+      21
+    ],
+    "candidateHeadMasterPx": [
+      94,
+      22
+    ],
+    "headDistanceFinalPx": 0.71,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      80.66416441616698,
+      129.9702934041287
+    ],
+    "footCandidateMaster": [
+      80.66416441616698,
+      129.9702934041287
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "SE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      81,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      80,
+      25
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      89.76508875739646,
+      130.9873559638742
+    ],
+    "footCandidateMaster": [
+      89.76508875739646,
+      130.9873559638742
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "SW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      69,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      68,
+      25
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      58.31723845828039,
+      130.50032728812906
+    ],
+    "footCandidateMaster": [
+      58.31723845828039,
+      130.50032728812906
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "NW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      57,
+      21
+    ],
+    "candidateHeadMasterPx": [
+      57,
+      22
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      66.68896502595068,
+      130.65188778452458
+    ],
+    "footCandidateMaster": [
+      66.68896502595068,
+      130.65188778452458
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "NE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      95,
+      21
+    ],
+    "candidateHeadMasterPx": [
+      94,
+      22
+    ],
+    "headDistanceFinalPx": 0.71,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      79.96353706529597,
+      130.19492410248174
+    ],
+    "footCandidateMaster": [
+      79.96353706529597,
+      130.19492410248174
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "SE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      85,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      84,
+      25
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      91.36268759354395,
+      130.445087172849
+    ],
+    "footCandidateMaster": [
+      91.36268759354395,
+      130.445087172849
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "SW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      67,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      66,
+      24
+    ],
+    "headDistanceFinalPx": 1.12,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      58.316364269242484,
+      130.13335943958577
+    ],
+    "footCandidateMaster": [
+      58.316364269242484,
+      130.13335943958577
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P4",
+    "direction": "NW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      57,
+      21
+    ],
+    "candidateHeadMasterPx": [
+      57,
+      22
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      67.41367037780617,
+      129.88319036320496
+    ],
+    "footCandidateMaster": [
+      67.41367037780617,
+      129.88319036320496
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "NE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      84,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      84,
+      23
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      68.13625936687566,
+      129.7175409083958
+    ],
+    "footCandidateMaster": [
+      68.13625936687566,
+      129.7175409083958
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "SE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      74,
+      26
+    ],
+    "candidateHeadMasterPx": [
+      77,
+      25
+    ],
+    "headDistanceFinalPx": 1.58,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      86.55267601974539,
+      130.38074824629774
+    ],
+    "footCandidateMaster": [
+      86.55267601974539,
+      130.38074824629774
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "SW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      75,
+      26
+    ],
+    "candidateHeadMasterPx": [
+      74,
+      29
+    ],
+    "headDistanceFinalPx": 1.58,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      63.18888817768674,
+      130.39838699353518
+    ],
+    "footCandidateMaster": [
+      63.18888817768674,
+      130.39838699353518
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "NW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      65,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      65,
+      23
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      77.4311033631147,
+      129.6854071329992
+    ],
+    "footCandidateMaster": [
+      77.4311033631147,
+      129.6854071329992
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "NE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      85,
+      20
+    ],
+    "candidateHeadMasterPx": [
+      86,
+      20
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      67.86976217440544,
+      128.73182332955832
+    ],
+    "footCandidateMaster": [
+      67.86976217440544,
+      128.73182332955832
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "SE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      74,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      77,
+      24
+    ],
+    "headDistanceFinalPx": 1.58,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      90.74012158054711,
+      128.10638297872342
+    ],
+    "footCandidateMaster": [
+      90.74012158054711,
+      128.10638297872342
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "SW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      67,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      69,
+      23
+    ],
+    "headDistanceFinalPx": 1,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      55.546728971962615,
+      128
+    ],
+    "footCandidateMaster": [
+      55.546728971962615,
+      128
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P5",
+    "direction": "NW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      65,
+      20
+    ],
+    "candidateHeadMasterPx": [
+      65,
+      21
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      80.31116279069768,
+      128.7153488372093
+    ],
+    "footCandidateMaster": [
+      80.31116279069768,
+      128.7153488372093
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "NE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      84,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      84,
+      22
+    ],
+    "headDistanceFinalPx": 0,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      68.13625936687566,
+      129.7175409083958
+    ],
+    "footCandidateMaster": [
+      68.13625936687566,
+      129.7175409083958
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "SE",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      74,
+      26
+    ],
+    "candidateHeadMasterPx": [
+      76,
+      26
+    ],
+    "headDistanceFinalPx": 1,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      86.55267601974539,
+      130.38074824629774
+    ],
+    "footCandidateMaster": [
+      86.55267601974539,
+      130.38074824629774
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "SW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      75,
+      26
+    ],
+    "candidateHeadMasterPx": [
+      73,
+      29
+    ],
+    "headDistanceFinalPx": 1.8,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      63.18888817768674,
+      130.39838699353518
+    ],
+    "footCandidateMaster": [
+      63.18888817768674,
+      130.39838699353518
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "NW",
+    "frame": 0,
+    "templateHeadMasterPx": [
+      65,
+      22
+    ],
+    "candidateHeadMasterPx": [
+      65,
+      22
+    ],
+    "headDistanceFinalPx": 0,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      77.4311033631147,
+      129.6854071329992
+    ],
+    "footCandidateMaster": [
+      77.4311033631147,
+      129.6854071329992
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "NE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      85,
+      20
+    ],
+    "candidateHeadMasterPx": [
+      85,
+      21
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      67.86976217440544,
+      128.73182332955832
+    ],
+    "footCandidateMaster": [
+      67.86976217440544,
+      128.73182332955832
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "SE",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      74,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      77,
+      25
+    ],
+    "headDistanceFinalPx": 1.8,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "near_threshold_not_certified",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      90.74012158054711,
+      128.10638297872342
+    ],
+    "footCandidateMaster": [
+      90.74012158054711,
+      128.10638297872342
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "SW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      67,
+      23
+    ],
+    "candidateHeadMasterPx": [
+      67,
+      24
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      55.546728971962615,
+      128
+    ],
+    "footCandidateMaster": [
+      55.546728971962615,
+      128
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  },
+  {
+    "id": "P6",
+    "direction": "NW",
+    "frame": 1,
+    "templateHeadMasterPx": [
+      65,
+      20
+    ],
+    "candidateHeadMasterPx": [
+      65,
+      21
+    ],
+    "headDistanceFinalPx": 0.5,
+    "manualPointUncertaintyFinalPx": 1,
+    "thresholdVerdict": "visually_consistent_with_tolerance",
+    "footVerdict": "visually_same_pose_and_contact; use raster preservation check for quantitative result",
+    "footTemplateMaster": [
+      80.31116279069768,
+      128.7153488372093
+    ],
+    "footCandidateMaster": [
+      80.31116279069768,
+      128.7153488372093
+    ],
+    "footSilhouetteDistanceFinalPx": 0,
+    "footPass": true,
+    "headCentralEstimatePass": true
+  }
+]

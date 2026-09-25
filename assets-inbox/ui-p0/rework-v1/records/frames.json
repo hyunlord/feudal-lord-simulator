@@ -1,0 +1,558 @@
+[
+  {
+    "id": "ui/frame_objective_normal",
+    "file": "assets/ui/frame_objective_normal.png",
+    "width": 256,
+    "height": 256,
+    "role": "Manuscript objective card: TWO CLEAR DISTINCT parallel dark brown ink border rules separated by pale parchment gap on all sides. One small hand-painted ink flower in upper left corner only. Both rules visibly readable at 50% scale, unlike faint prior edge.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_objective_normal, intended 256x256. Manuscript objective card: TWO CLEAR DISTINCT parallel dark brown ink border rules separated by pale parchment gap on all sides. One small hand-painted ink flower in upper left corner only. Both rules visibly readable at 50% scale, unlike faint prior edge. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 32 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_objective_normal.png"
+      ],
+      "raw": "sources/frames/frame_objective_normal-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": [
+        {
+          "prompt": "Edit this image. Retain ONE flower only TOP LEFT. Remove flowers and square flower boxes from other THREE corners, use plain continuous mitered double-line corners. CRITICAL center reading area perfectly flat solid #E1D1AE, NO mottling, stains, gradient, lighting. Preserve straight sides and overall dimensions. NO text or numbers. No presentation background. Nine-slice UI asset, ornament confined to outer12% and top-left corner only when requested.",
+          "raw": "sources/frames/frame_objective_normal-revised.png"
+        }
+      ]
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 65,
+      "minimumTargetHeight": 65
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_objective_normal",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "ef47fd89cad95cfc16ae4f40395daf6682f2b7bc8e1c71f955ff47dabb24a5b4",
+            "d18339e043d4f8163b7c4ae709349f0212580a706ebf799fafa097c7046d63df",
+            "6e3e2cd3a3ceff46ca9e53fa848be1271dc8273739178d02c66bf20e8a050da7",
+            "a91de3afb4eaf25886e99bb58bc9d87facededa68bb48b2cd2f2fbb300641222"
+          ],
+          [
+            "ef47fd89cad95cfc16ae4f40395daf6682f2b7bc8e1c71f955ff47dabb24a5b4",
+            "d18339e043d4f8163b7c4ae709349f0212580a706ebf799fafa097c7046d63df",
+            "6e3e2cd3a3ceff46ca9e53fa848be1271dc8273739178d02c66bf20e8a050da7",
+            "a91de3afb4eaf25886e99bb58bc9d87facededa68bb48b2cd2f2fbb300641222"
+          ]
+        ]
+      }
+    },
+    "revised": true
+  },
+  {
+    "id": "ui/frame_objective_complete",
+    "file": "assets/ui/frame_objective_complete.png",
+    "width": 256,
+    "height": 256,
+    "role": "Completed manuscript objective card: TWO CLEAR DISTINCT parallel dark brown border rules. Thin muted warm GOLD HIGHLIGHT along TOP EDGE only. Small circular red wax seal at LOWER RIGHT CORNER, contained entirely in last 32 native pixels.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_objective_complete, intended 256x256. Completed manuscript objective card: TWO CLEAR DISTINCT parallel dark brown border rules. Thin muted warm GOLD HIGHLIGHT along TOP EDGE only. Small circular red wax seal at LOWER RIGHT CORNER, contained entirely in last 32 native pixels. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 32 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_objective_normal.png"
+      ],
+      "raw": "sources/frames/frame_objective_complete-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": [
+        {
+          "prompt": "Edit this image. REMOVE ALL flowers, leaf scrolls, square cornerboxes. Keep red waxseal lower right. Other3corners mustplain mitered double lines. Keep goldTOPline. CRITICAL center reading area perfectly flat solid #E1D1AE, NO mottling, stains, gradient, lighting. Preserve straight sides and overall dimensions. NO text or numbers. No presentation background. Nine-slice UI asset, ornament confined to outer12% and top-left corner only when requested.",
+          "raw": "sources/frames/frame_objective_complete-revised.png"
+        }
+      ]
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 65,
+      "minimumTargetHeight": 65
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_objective_complete",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "0064e9151b8628b6dc7e1ee0d5747a75f9d757a3f9ee9c2041f7eba450bd582d",
+            "0f6ce5ad07dbfdc384ab7a3e8656ffe095099ef26f5a984a7ac9cb39fbf2d32c",
+            "0533abde7297732738761b961564616167d35601fbcba7d87dbb29bacf16fc81",
+            "dc7b99487651d6dac0f67c1b7d9757a68ff4f20abb1976731f0992b58e5a84d5"
+          ],
+          [
+            "0064e9151b8628b6dc7e1ee0d5747a75f9d757a3f9ee9c2041f7eba450bd582d",
+            "0f6ce5ad07dbfdc384ab7a3e8656ffe095099ef26f5a984a7ac9cb39fbf2d32c",
+            "0533abde7297732738761b961564616167d35601fbcba7d87dbb29bacf16fc81",
+            "dc7b99487651d6dac0f67c1b7d9757a68ff4f20abb1976731f0992b58e5a84d5"
+          ]
+        ]
+      }
+    },
+    "revised": true
+  },
+  {
+    "id": "ui/frame_objective_warn",
+    "file": "assets/ui/frame_objective_warn.png",
+    "width": 256,
+    "height": 256,
+    "role": "Warning manuscript objective card: TWO CLEAR DISTINCT parallel border rules, outer dark brown and INNER visibly OCHRE RED. Tiny ink blot at TOP LEFT corner.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_objective_warn, intended 256x256. Warning manuscript objective card: TWO CLEAR DISTINCT parallel border rules, outer dark brown and INNER visibly OCHRE RED. Tiny ink blot at TOP LEFT corner. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 32 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_objective_normal.png"
+      ],
+      "raw": "sources/frames/frame_objective_warn-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": [
+        {
+          "prompt": "Edit this image. REMOVE ALL flowers and cornerboxes. Plain continuous mitered double border all4corners. Keep TOPLEFT inkblot, innerredline. CRITICAL center reading area perfectly flat solid #E1D1AE, NO mottling, stains, gradient, lighting. Preserve straight sides and overall dimensions. NO text or numbers. No presentation background. Nine-slice UI asset, ornament confined to outer12% and top-left corner only when requested.",
+          "raw": "sources/frames/frame_objective_warn-revised.png"
+        }
+      ]
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 65,
+      "minimumTargetHeight": 65
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_objective_warn",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "0e03470ce963de0eea26a0ac88bce08f084e6144d25c2ba028f75fc8f8c60651",
+            "5d464972875837062126e7fb3c34ee231df119a104be932d1a6dfb10b7abe5c2",
+            "73f3bc3de08ff3a948a77b661fb9db4194eb7c792fe579cd6b783a007c4d89c9",
+            "53f8dd4c04c2584669ed2394f874b30257b7b1e8b1a208903c64a604c210a3e2"
+          ],
+          [
+            "0e03470ce963de0eea26a0ac88bce08f084e6144d25c2ba028f75fc8f8c60651",
+            "5d464972875837062126e7fb3c34ee231df119a104be932d1a6dfb10b7abe5c2",
+            "73f3bc3de08ff3a948a77b661fb9db4194eb7c792fe579cd6b783a007c4d89c9",
+            "53f8dd4c04c2584669ed2394f874b30257b7b1e8b1a208903c64a604c210a3e2"
+          ]
+        ]
+      }
+    },
+    "revised": true
+  },
+  {
+    "id": "ui/frame_advisor_normal",
+    "file": "assets/ui/frame_advisor_normal.png",
+    "width": 256,
+    "height": 192,
+    "role": "Advisor message SCROLL: straight horizontal TOP AND BOTTOM; LEFT AND RIGHT ends rolled vertically into narrow parchment cylinders with small spiral cross sections at top and bottom corners. NOT curled top/bottom. Strongly recognizable scroll silhouette. Empty left portrait reserve, no circle and no portrait.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_advisor_normal, intended 256x192. Advisor message SCROLL: straight horizontal TOP AND BOTTOM; LEFT AND RIGHT ends rolled vertically into narrow parchment cylinders with small spiral cross sections at top and bottom corners. NOT curled top/bottom. Strongly recognizable scroll silhouette. Empty left portrait reserve, no circle and no portrait. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 24 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_advisor_normal.png"
+      ],
+      "raw": "sources/frames/frame_advisor_normal-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": []
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 49,
+      "minimumTargetHeight": 49
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_advisor_normal",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "51376722abb84674d98e500ed5f5bb3edaf18cdc7334b47c4f7f17c4d6687f9d",
+            "665c6ca07795816f136d4b269501f3ee09a3713c6eba1c9bba6d0c8d28d9d5fe",
+            "9aab828093f9806e69eda501b10e1e52811e0a4e4eabc4efaed86c0126a3448e",
+            "f38bb3f93a4887730b0da9942a0a995397b48a3d4c6ad569a5e4b479179da7cd"
+          ],
+          [
+            "51376722abb84674d98e500ed5f5bb3edaf18cdc7334b47c4f7f17c4d6687f9d",
+            "665c6ca07795816f136d4b269501f3ee09a3713c6eba1c9bba6d0c8d28d9d5fe",
+            "9aab828093f9806e69eda501b10e1e52811e0a4e4eabc4efaed86c0126a3448e",
+            "f38bb3f93a4887730b0da9942a0a995397b48a3d4c6ad569a5e4b479179da7cd"
+          ]
+        ]
+      },
+      "portraitReservedArea": {
+        "x": 32,
+        "y": 32,
+        "width": 80,
+        "height": 128,
+        "note": "Blank left reading area; portrait and separate accepted circular frame composited at runtime; not baked into scroll."
+      }
+    },
+    "revised": false
+  },
+  {
+    "id": "ui/frame_advisor_warn",
+    "file": "assets/ui/frame_advisor_warn.png",
+    "width": 256,
+    "height": 192,
+    "role": "Warning advisor message SCROLL: straight horizontal TOP AND BOTTOM; LEFT AND RIGHT ends rolled vertically into narrow parchment cylinders with small spiral cross sections at top and bottom corners. NOT curled top/bottom. Visible thin OCHRE RED INNER BORDER on all sides. Empty left portrait reserve, no circle no portrait.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_advisor_warn, intended 256x192. Warning advisor message SCROLL: straight horizontal TOP AND BOTTOM; LEFT AND RIGHT ends rolled vertically into narrow parchment cylinders with small spiral cross sections at top and bottom corners. NOT curled top/bottom. Visible thin OCHRE RED INNER BORDER on all sides. Empty left portrait reserve, no circle no portrait. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 24 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_advisor_normal.png"
+      ],
+      "raw": "sources/frames/frame_advisor_warn-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": []
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 49,
+      "minimumTargetHeight": 49
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_advisor_warn",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "df929505f2a2ae68113d7b6461dc7847b9a1bc0aa1e4986f684ee013f309ea21",
+            "0b9d4264b27fb154288933323e546f27dd0ff338688beed2887cfd66ab6819f7",
+            "a32546b4821039d4dcacb09c935d2601baa247378b2866c5b28760dc14d15dc7",
+            "ac9bd8c7b739fdfac2f7562e177eaa728086325392076ba0fbc29d609945b070"
+          ],
+          [
+            "df929505f2a2ae68113d7b6461dc7847b9a1bc0aa1e4986f684ee013f309ea21",
+            "0b9d4264b27fb154288933323e546f27dd0ff338688beed2887cfd66ab6819f7",
+            "a32546b4821039d4dcacb09c935d2601baa247378b2866c5b28760dc14d15dc7",
+            "ac9bd8c7b739fdfac2f7562e177eaa728086325392076ba0fbc29d609945b070"
+          ]
+        ]
+      },
+      "portraitReservedArea": {
+        "x": 32,
+        "y": 32,
+        "width": 80,
+        "height": 128,
+        "note": "Blank left reading area; portrait and separate accepted circular frame composited at runtime; not baked into scroll."
+      }
+    },
+    "revised": false
+  },
+  {
+    "id": "ui/frame_modal",
+    "file": "assets/ui/frame_modal.png",
+    "width": 256,
+    "height": 256,
+    "role": "Heavy modal window: clearly THICK DARK OAK WOOD frame all four sides, about 18 of 256 pixels wide. Narrow decorative carved oak band along TOP EDGE, simple repeated diagonal notches. Strongest heaviest frame of family. Pale clean flat central reading area. No corners flowers or metal.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_modal, intended 256x256. Heavy modal window: clearly THICK DARK OAK WOOD frame all four sides, about 18 of 256 pixels wide. Narrow decorative carved oak band along TOP EDGE, simple repeated diagonal notches. Strongest heaviest frame of family. Pale clean flat central reading area. No corners flowers or metal. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 32 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_modal.png"
+      ],
+      "raw": "sources/frames/frame_modal-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": []
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 65,
+      "minimumTargetHeight": 65
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_modal",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "14de1cb1926e8a55e5688f46ba12facf7bbd7d5672cf6732c5da777920b3fe25",
+            "6a2d766e60c4622db16bcb465be642e412972b01f9226d3cdbb27c68d5e09d28",
+            "5cfb95a9df7958310883c1de248e1d6f3fa377772b1ff966a31cc60dbc1b90f8",
+            "cf5b5b6ef298f5fa5e66a22354a85670239a0280eb85603d070d82ca55f08594"
+          ],
+          [
+            "14de1cb1926e8a55e5688f46ba12facf7bbd7d5672cf6732c5da777920b3fe25",
+            "6a2d766e60c4622db16bcb465be642e412972b01f9226d3cdbb27c68d5e09d28",
+            "5cfb95a9df7958310883c1de248e1d6f3fa377772b1ff966a31cc60dbc1b90f8",
+            "cf5b5b6ef298f5fa5e66a22354a85670239a0280eb85603d070d82ca55f08594"
+          ]
+        ]
+      }
+    },
+    "revised": false
+  },
+  {
+    "id": "ui/frame_panel_light",
+    "file": "assets/ui/frame_panel_light.png",
+    "width": 192,
+    "height": 192,
+    "role": "General light panel: one DISTINCT MEDIUM WEIGHT DARK BROWN outer border rule, thicker than tooltip, quiet simple beveled parchment edge. NO double border, NO flowers, NO wax seal, NO scroll.",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Use case precise-object-edit. Edit reference UI texture into ONE candidate asset frame_panel_light, intended 192x192. General light panel: one DISTINCT MEDIUM WEIGHT DARK BROWN outer border rule, thicker than tooltip, quiet simple beveled parchment edge. NO double border, NO flowers, NO wax seal, NO scroll. Keep warm muted medieval hand-painted ink and parchment, C direction 80% functional 20% period ornament. Straight-on 2D UI not perspective. IMPORTANT CENTER UNIFORMLY FLAT solid warm parchment #E1D1AE, no stains no noise no gradient no lighting no texture across reading field. Edge details only outer 32 native pixels. Nine-slice suitable: decorative motifs in four fixed corners; continuous straight edge lines; side scroll shaft constant width for stretching. Entire canvas is asset rectangle edge-to-edge with no outside margin, shadow, background or presentation board. No letters, digits, labels, text, icons in center, progress bar fill, or active state glow. Output only one image.",
+      "references": [
+        "astra-ui-p0-rework-reference-files/frame_objective_normal.png"
+      ],
+      "raw": "sources/frames/frame_panel_light-raw.png",
+      "modelVersion": null,
+      "seed": null,
+      "revisions": [
+        {
+          "prompt": "Edit this image. Reduce border to one FLAT darkbrown ink rule about2%width. Remove ALL bevels,metalstuds,raised corners,3Dlighting. Not wood. Plain parchment panel with single visible ink rectangle. CRITICAL center reading area perfectly flat solid #E1D1AE, NO mottling, stains, gradient, lighting. Preserve straight sides and overall dimensions. NO text or numbers. No presentation background. Nine-slice UI asset, ornament confined to outer12% and top-left corner only when requested.",
+          "raw": "sources/frames/frame_panel_light-revised.png"
+        }
+      ]
+    },
+    "processing": "Native size registration and flat reading-field normalization; generated edge artwork preserved. No product integration. Center normalized to #DECDA8 matching generated edge parchment; source originals retain their generated low-contrast texture. Recommended renderCapScale=1 gives readable roles; .5 is optional reduced density, not proof standard.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 65,
+      "minimumTargetHeight": 65
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "technical": {
+        "id": "ui/frame_panel_light",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "82ac516a673b4d01c95c46be5c7d2e1262d89ddc2f32d4471646d977ae1a52c3",
+            "b0a38284726c32dd84b04fecce3e274c37f623d34a7a7d35f4c0bd2238ea9722",
+            "422cc6213e1f605391e53cf089551c966499513e397529d407a56c0fcb47a9c0",
+            "af4824e83a2d3652a74c3c4041f380926396bc0010a5a475242c4af4e1d6feff"
+          ],
+          [
+            "82ac516a673b4d01c95c46be5c7d2e1262d89ddc2f32d4471646d977ae1a52c3",
+            "b0a38284726c32dd84b04fecce3e274c37f623d34a7a7d35f4c0bd2238ea9722",
+            "422cc6213e1f605391e53cf089551c966499513e397529d407a56c0fcb47a9c0",
+            "af4824e83a2d3652a74c3c4041f380926396bc0010a5a475242c4af4e1d6feff"
+          ]
+        ]
+      }
+    },
+    "revised": true
+  },
+  {
+    "id": "ui/frame_tooltip",
+    "file": "assets/ui/frame_tooltip.png",
+    "width": 128,
+    "height": 128,
+    "role": "very plain light parchment tooltip square single thin brown border, zero decoration",
+    "status": "candidate",
+    "generationRecords": {
+      "tool": "image_gen.imagegen",
+      "prompt": "Edit the attached approved medieval game UI pilot into one production candidate asset. very plain light parchment tooltip square single thin brown border, zero decoration. Direction: 80% functionality 20% historical ornament. Warm muted parchment/oak palette. Much more restrained corners than reference: single line and at most one dot, no filigree, no leaves. Central reading area uniform and clean. Keep thin hand-painted ink feeling, no photorealism. No letters, no numbers, no text, no bar fill, no focus ring. Deliver ONE isolated asset, full canvas aspect 128:128, straight-on UI texture not perspective, no presentation board. Output intended 128x128. Edge details must be confined to 12px native edge strip; center must be almost flat. Panel fills whole canvas edge to edge, no exterior background or shadow.",
+      "references": [
+        "references/astra-ui-p0-reference-files/pilot_assets/frame_panel_light.png"
+      ],
+      "raw": "sources/frames/frame_tooltip-prior-raw.png",
+      "rawOriginalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d891-c550-7570-b4ac-306c284a3494/exec-3dcbcb76-127c-4467-9d0a-6d1fecf85e12.png",
+      "modelVersion": null,
+      "seed": null
+    },
+    "processing": "Byte-identical reuse of accepted P0 tooltip; original generation provenance retained.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 1,
+      "minimumTargetWidth": 25,
+      "minimumTargetHeight": 25
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat opaque",
+      "limitations": "",
+      "technical": {
+        "id": "ui/frame_tooltip",
+        "sizes": [
+          [
+            200,
+            80
+          ],
+          [
+            600,
+            400
+          ]
+        ],
+        "allFourCornersEqual": true,
+        "cornerHashes": [
+          [
+            "cf918c643b6ac4293322ca87f4b9127a74ef69853b8de8f33db52081bb63a67e",
+            "1043f3fefe533fb40501074bad834dec15eef722d820bd4b96237e8b7f524e2c",
+            "f439754eb038d4f44cb9e036a8312ec36ea10f90ca5fbd1c10ba924f6c575d46",
+            "d79bb3b60a9e55d6d13689604baded7c721d22cf6a38bfa5bb3fb529f20e2714"
+          ],
+          [
+            "cf918c643b6ac4293322ca87f4b9127a74ef69853b8de8f33db52081bb63a67e",
+            "1043f3fefe533fb40501074bad834dec15eef722d820bd4b96237e8b7f524e2c",
+            "f439754eb038d4f44cb9e036a8312ec36ea10f90ca5fbd1c10ba924f6c575d46",
+            "d79bb3b60a9e55d6d13689604baded7c721d22cf6a38bfa5bb3fb529f20e2714"
+          ]
+        ]
+      }
+    },
+    "reused": true,
+    "priorPackage": "astra-ui-p0-candidates-v1"
+  }
+]

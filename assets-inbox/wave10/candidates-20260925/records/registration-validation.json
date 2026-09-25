@@ -1,0 +1,132 @@
+{
+  "measurement": "macOS Vision face landmarks; mean of two detected eye centers; top-left coordinates",
+  "target_eye_y": 112,
+  "tolerance": 2,
+  "face_count": 20,
+  "all_mean_eye_lines_within_tolerance": true,
+  "min_mean_eye_y": 110.63440917003982,
+  "max_mean_eye_y": 113.33457863368639,
+  "shoulder": "Original pilot garments reused without translation or resizing, design reference y208; bare face layers include neck only. No new garment geometry.",
+  "rows": [
+    {
+      "id": "pt_face_c_01",
+      "mean_eye_y": 113.33457863368639,
+      "near_eye_y": 111.77548052300033,
+      "far_eye_y": 114.89367674437244
+    },
+    {
+      "id": "pt_face_c_02",
+      "mean_eye_y": 110.63440917003982,
+      "near_eye_y": 110.43711797210472,
+      "far_eye_y": 110.83170036797492
+    },
+    {
+      "id": "pt_face_c_03",
+      "mean_eye_y": 111.10497305113554,
+      "near_eye_y": 109.70274839768292,
+      "far_eye_y": 112.50719770458818
+    },
+    {
+      "id": "pt_face_c_04",
+      "mean_eye_y": 110.87018148070058,
+      "near_eye_y": 109.86858595676404,
+      "far_eye_y": 111.87177700463712
+    },
+    {
+      "id": "pt_face_f_01",
+      "mean_eye_y": 111.82336465163189,
+      "near_eye_y": 110.65524952722126,
+      "far_eye_y": 112.99147977604252
+    },
+    {
+      "id": "pt_face_f_02",
+      "mean_eye_y": 111.73221283030844,
+      "near_eye_y": 110.43662392827294,
+      "far_eye_y": 113.02780173234396
+    },
+    {
+      "id": "pt_face_f_03",
+      "mean_eye_y": 110.98184001587742,
+      "near_eye_y": 109.58121373934107,
+      "far_eye_y": 112.38246629241378
+    },
+    {
+      "id": "pt_face_f_04",
+      "mean_eye_y": 111.84358872368466,
+      "near_eye_y": 110.40848213783465,
+      "far_eye_y": 113.27869530953467
+    },
+    {
+      "id": "pt_face_f_05",
+      "mean_eye_y": 112.34518417708466,
+      "near_eye_y": 111.36332884480726,
+      "far_eye_y": 113.32703950936207
+    },
+    {
+      "id": "pt_face_f_06",
+      "mean_eye_y": 112.10733506589827,
+      "near_eye_y": 110.637628024139,
+      "far_eye_y": 113.57704210765753
+    },
+    {
+      "id": "pt_face_f_07",
+      "mean_eye_y": 111.87635792303658,
+      "near_eye_y": 111.24796844039338,
+      "far_eye_y": 112.50474740567977
+    },
+    {
+      "id": "pt_face_f_08",
+      "mean_eye_y": 111.94670589049409,
+      "near_eye_y": 110.86914718419742,
+      "far_eye_y": 113.02426459679077
+    },
+    {
+      "id": "pt_face_m_01",
+      "mean_eye_y": 112.54343526660998,
+      "near_eye_y": 112.90407730094171,
+      "far_eye_y": 112.18279323227823
+    },
+    {
+      "id": "pt_face_m_02",
+      "mean_eye_y": 111.76300796863723,
+      "near_eye_y": 111.31757991457039,
+      "far_eye_y": 112.20843602270406
+    },
+    {
+      "id": "pt_face_m_03",
+      "mean_eye_y": 110.982074105306,
+      "near_eye_y": 110.33389553396167,
+      "far_eye_y": 111.63025267665034
+    },
+    {
+      "id": "pt_face_m_04",
+      "mean_eye_y": 112.35305843769856,
+      "near_eye_y": 111.0037836618964,
+      "far_eye_y": 113.70233321350072
+    },
+    {
+      "id": "pt_face_m_05",
+      "mean_eye_y": 111.40210938763266,
+      "near_eye_y": 110.65677615625039,
+      "far_eye_y": 112.14744261901494
+    },
+    {
+      "id": "pt_face_m_06",
+      "mean_eye_y": 111.43943768687222,
+      "near_eye_y": 110.76073112062886,
+      "far_eye_y": 112.11814425311559
+    },
+    {
+      "id": "pt_face_m_07",
+      "mean_eye_y": 111.21943894184797,
+      "near_eye_y": 110.69219984265244,
+      "far_eye_y": 111.7466780410435
+    },
+    {
+      "id": "pt_face_m_08",
+      "mean_eye_y": 111.66987952958758,
+      "near_eye_y": 111.07419330808382,
+      "far_eye_y": 112.26556575109134
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "initial": {
+    "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly six icons in a 3-column 2-row regular grid, row-major: compact medieval timber house with a tiny well sidekick; broad curving dirt road; two wheat stalks and a sickle over tiny furrow base; large tied sack in front of simple storehouse silhouette; small full medieval chapel with belfry; three pointed wooden palisade posts. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+    ],
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw": "sources/icons/icon_build_category_sheet-initial.png",
+    "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-cb0a65ec-8f8f-42ea-a4f7-8f96db27e89f.png"
+  },
+  "revision": {
+    "prompt": "Edit this exact six-icon sheet, preserve grid and all six subjects. Correct ONLY: remove the chimney from the top-left house roof, leaving continuous roof; replace every green grass/leaf tuft beside the road with muted warm ochre-brown dry tufts, NO green anywhere. Remove the little crates and barrel from storage icon bottom-left, keeping the large sack and simple warehouse. Keep the same brushwork, warm cream/oak/inkbrown plus dull brickred roofs. Transparent background, absolutely no text or numbers. No new subjects.",
+    "references": [
+      "sources/icons/icon_build_category_sheet-initial.png"
+    ],
+    "raw": "sources/icons/icon_build_category_sheet.png",
+    "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-72a66782-6398-4aa0-8146-dc3b060fba75.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null
+  }
+}

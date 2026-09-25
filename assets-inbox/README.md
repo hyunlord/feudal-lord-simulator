@@ -21,3 +21,5 @@ Astra가 보낸 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS로 커밋�
 모든 PNG의 SHA-256이 같은 폴더 대장의 `runtimeSha256`과 같다. Wave 4b는 두 번 받았다
 (`to_ClaudeCode_C1e.zip` 03:16, `to_ClaudeCode_C1e (1).zip` 08:47). 두 번째 ZIP의 PNG는 IDAT가 같고 C2PA
 `caBX` 청크(약 5.7KB)만 더 붙어 있어 대장 SHA와 다르다. 여기에는 대장과 같은 첫 번째 ZIP의 바이트를 둔다.
+
+INBOX-1(2026-09-26)부터 새 묶음은 `<wave>/<batch>/{assets,proofs,records}`에 두고, 모든 PNG의 상태는 [`INBOX_LEDGER.csv`](INBOX_LEDGER.csv)에 적는다. 구조·상태 뜻·찾는 법: [`docs/ASSET_INBOX.md`](../docs/ASSET_INBOX.md).

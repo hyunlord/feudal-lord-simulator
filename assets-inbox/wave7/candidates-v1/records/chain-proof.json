@@ -1,0 +1,41 @@
+{
+  "synthetic": true,
+  "sourceWorldTile": [
+    128,
+    64
+  ],
+  "sceneTiles": [
+    12,
+    12
+  ],
+  "zoom1": 0.5,
+  "zoom06": 0.3,
+  "references": {
+    "ridge": "references/ridge_growing_a-v1.png",
+    "house": "references/house_l2-v2.png",
+    "mill": "references/mill-v2.png",
+    "cart": "references/cart_hand-v4.png",
+    "worker": "references/actor_civilian_man-v1.png",
+    "load": "assets/cart_load_grainsack_nw-v1.png",
+    "sheaves": "assets/pile/sheaves_2-v1.png",
+    "bread": "assets/pile/bread_2-v1.png",
+    "sacks": "assets/pile/sacks_2-v1.png",
+    "basket": "assets/work/work_breadbasket_sw-v1.png",
+    "smoke": "assets/fx/roof_smoke_sheet-v1.png",
+    "oven": "assets/fx/oven_smoke_sheet-v1.png"
+  },
+  "houseReferenceScaleAtSource": 2,
+  "cartReferenceScaleAtSource": 2,
+  "workerReferenceScaleAtSource": 2,
+  "loadScaleAtSource": 2,
+  "otherNewPropsScaleAtSource": 1,
+  "roofSmokeAnchor": [
+    1346,
+    324
+  ],
+  "ovenSmokeAnchor": [
+    1055,
+    380
+  ],
+  "caveat": "Attached runtime carts/actors are normalized x2; cart loads and held props likewise x2 for attachment. Their strict original0.3 readability is checked separately in proofs02/04 and lane records."
+}

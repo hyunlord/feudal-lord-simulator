@@ -1,0 +1,12 @@
+{
+  "remove": [
+    "event/plague_door_mark-v1",
+    "prop/coffin_ne-v1",
+    "prop/coffin_nw-v1"
+  ],
+  "replace_mapping": {
+    "prop/coffin_ne-v1": "prop/bier_shroud_ne-v1",
+    "prop/coffin_nw-v1": "prop/bier_shroud_nw-v1"
+  },
+  "scope": "Delta archive only. Previous delivery and game files preserved untouched."
+}

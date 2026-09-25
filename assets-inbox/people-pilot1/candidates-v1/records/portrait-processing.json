@@ -1,0 +1,272 @@
+[
+  {
+    "id": "P1",
+    "source": "sources/pt_pilot_P1-v1.png",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "sourceLandmarks": {
+      "id": "P1",
+      "eyes": [
+        [
+          390,
+          402
+        ],
+        [
+          522,
+          403
+        ]
+      ],
+      "shoulderY": 856,
+      "anchorX": 627
+    },
+    "landmarkMethod": "Visual manual annotation: pupil centers and upper-arm/shoulder contour break; not anatomical tracking.",
+    "transform": {
+      "type": "uniform scale plus translation; no rotation or reflection",
+      "scale": 0.21168687982359427,
+      "translate": [
+        -4.7276736493936085,
+        26.79603087100331
+      ]
+    },
+    "registeredEyeYs": [
+      111.8941565600882,
+      112.10584343991181
+    ],
+    "registeredShoulderY": 208,
+    "background": "#8e8575 opaque RGBA",
+    "files": [
+      "assets/portraits/pt_pilot_P1-v1.png",
+      "assets/portraits/pt_pilot_P1-v1_128.png",
+      "assets/portraits/pt_pilot_P1-v1_96.png"
+    ],
+    "derivatives": "Each output sampled directly from native source; no chained resizing.",
+    "limitations": ""
+  },
+  {
+    "id": "P2",
+    "source": "sources/pt_pilot_P2-v1.png",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "sourceLandmarks": {
+      "id": "P2",
+      "eyes": [
+        [
+          404,
+          376
+        ],
+        [
+          525,
+          367
+        ]
+      ],
+      "shoulderY": 858,
+      "anchorX": 627
+    },
+    "landmarkMethod": "Visual manual annotation: pupil centers and upper-arm/shoulder contour break; not anatomical tracking.",
+    "transform": {
+      "type": "uniform scale plus translation; no rotation or reflection",
+      "scale": 0.197327852004111,
+      "translate": [
+        4.275436793422415,
+        38.692702980472774
+      ]
+    },
+    "registeredEyeYs": [
+      112.8879753340185,
+      111.11202466598151
+    ],
+    "registeredShoulderY": 208,
+    "background": "#8e8575 opaque RGBA",
+    "files": [
+      "assets/portraits/pt_pilot_P2-v1.png",
+      "assets/portraits/pt_pilot_P2-v1_128.png",
+      "assets/portraits/pt_pilot_P2-v1_96.png"
+    ],
+    "derivatives": "Each output sampled directly from native source; no chained resizing.",
+    "limitations": ""
+  },
+  {
+    "id": "P3",
+    "source": "sources/pt_pilot_P3-v1.png",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "sourceLandmarks": {
+      "id": "P3",
+      "eyes": [
+        [
+          389,
+          391
+        ],
+        [
+          525,
+          392
+        ]
+      ],
+      "shoulderY": 873,
+      "anchorX": 627
+    },
+    "landmarkMethod": "Visual manual annotation: pupil centers and upper-arm/shoulder contour break; not anatomical tracking.",
+    "transform": {
+      "type": "uniform scale plus translation; no rotation or reflection",
+      "scale": 0.19937694704049844,
+      "translate": [
+        2.990654205607484,
+        33.94392523364486
+      ]
+    },
+    "registeredEyeYs": [
+      111.90031152647975,
+      112.09968847352025
+    ],
+    "registeredShoulderY": 208,
+    "background": "#8e8575 opaque RGBA",
+    "files": [
+      "assets/portraits/pt_pilot_P3-v1.png",
+      "assets/portraits/pt_pilot_P3-v1_128.png",
+      "assets/portraits/pt_pilot_P3-v1_96.png"
+    ],
+    "derivatives": "Each output sampled directly from native source; no chained resizing.",
+    "limitations": ""
+  },
+  {
+    "id": "P4",
+    "source": "sources/pt_pilot_P4-v1.png",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "sourceLandmarks": {
+      "id": "P4",
+      "eyes": [
+        [
+          393,
+          402
+        ],
+        [
+          524,
+          400
+        ]
+      ],
+      "shoulderY": 858,
+      "anchorX": 627
+    },
+    "landmarkMethod": "Visual manual annotation: pupil centers and upper-arm/shoulder contour break; not anatomical tracking.",
+    "transform": {
+      "type": "uniform scale plus translation; no rotation or reflection",
+      "scale": 0.2100656455142232,
+      "translate": [
+        -3.711159737417944,
+        27.763676148796506
+      ]
+    },
+    "registeredEyeYs": [
+      112.21006564551423,
+      111.78993435448578
+    ],
+    "registeredShoulderY": 208,
+    "background": "#8e8575 opaque RGBA",
+    "files": [
+      "assets/portraits/pt_pilot_P4-v1.png",
+      "assets/portraits/pt_pilot_P4-v1_128.png",
+      "assets/portraits/pt_pilot_P4-v1_96.png"
+    ],
+    "derivatives": "Each output sampled directly from native source; no chained resizing.",
+    "limitations": ""
+  },
+  {
+    "id": "P5",
+    "source": "sources/pt_pilot_P5-v1.png",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "sourceLandmarks": {
+      "id": "P5",
+      "eyes": [
+        [
+          409,
+          350
+        ],
+        [
+          526,
+          341
+        ]
+      ],
+      "shoulderY": 790,
+      "anchorX": 627
+    },
+    "landmarkMethod": "Visual manual annotation: pupil centers and upper-arm/shoulder contour break; not anatomical tracking.",
+    "transform": {
+      "type": "uniform scale plus translation; no rotation or reflection",
+      "scale": 0.21597300337457817,
+      "translate": [
+        -7.415073115860508,
+        37.38132733408324
+      ]
+    },
+    "registeredEyeYs": [
+      112.9718785151856,
+      111.02812148481439
+    ],
+    "registeredShoulderY": 208,
+    "background": "#8e8575 opaque RGBA",
+    "files": [
+      "assets/portraits/pt_pilot_P5-v1.png",
+      "assets/portraits/pt_pilot_P5-v1_128.png",
+      "assets/portraits/pt_pilot_P5-v1_96.png"
+    ],
+    "derivatives": "Each output sampled directly from native source; no chained resizing.",
+    "limitations": ""
+  },
+  {
+    "id": "P6",
+    "source": "sources/pt_pilot_P6-v1-alpha.png",
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "sourceLandmarks": {
+      "id": "P6",
+      "eyes": [
+        [
+          398,
+          374
+        ],
+        [
+          522,
+          368
+        ]
+      ],
+      "shoulderY": 855,
+      "anchorX": 627
+    },
+    "landmarkMethod": "Visual manual annotation: pupil centers and upper-arm/shoulder contour break; not anatomical tracking.",
+    "transform": {
+      "type": "uniform scale plus translation; no rotation or reflection",
+      "scale": 0.19834710743801653,
+      "translate": [
+        3.636363636363626,
+        38.41322314049586
+      ]
+    },
+    "registeredEyeYs": [
+      112.59504132231405,
+      111.40495867768594
+    ],
+    "registeredShoulderY": 208,
+    "background": "#8e8575 opaque RGBA",
+    "files": [
+      "assets/portraits/pt_pilot_P6-v1.png",
+      "assets/portraits/pt_pilot_P6-v1_128.png",
+      "assets/portraits/pt_pilot_P6-v1_96.png"
+    ],
+    "derivatives": "Each output sampled directly from native source; no chained resizing.",
+    "limitations": "Selected imagegen alpha edit; prior opaque-background source retained separately."
+  }
+]

@@ -1,0 +1,936 @@
+{
+  "chapel-v2.png": {
+    "size": [
+      133,
+      133
+    ],
+    "referenceSha256": "0876420e8bdf69828b860d3ef808dc6fa22b5f3ac789afe087408391e8e60a87",
+    "pivot": [
+      69.57575757575758,
+      126.10606060606061
+    ],
+    "crop": [
+      13.363636363636363,
+      5.833333333333334,
+      112.42424242424242,
+      120.27272727272728
+    ],
+    "screenScale": 0.4981132075471698,
+    "screenScaleY": 0.4981132075471698,
+    "displaySize": [
+      56,
+      59.90943396226415
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      126,
+      55,
+      1060,
+      1134
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalFacilityManifest.ts:historicalFacilityManifest",
+      "src/render/historicalFacilityAssets.ts:historicalFacilitySpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-facilities-v1/chapel-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "house_l0-v3.png": {
+    "size": [
+      153,
+      153
+    ],
+    "referenceSha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+    "pivot": [
+      77.35406698564593,
+      139.57894736842104
+    ],
+    "crop": [
+      20.985645933014354,
+      46.11961722488038,
+      112.73684210526315,
+      93.45933014354067
+    ],
+    "screenScale": 0.4995704948646125,
+    "screenScaleY": 0.4995704948646126,
+    "displaySize": [
+      56.32,
+      46.68952380952381
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      172,
+      378,
+      924,
+      766
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalHouseAssetManifest.generated.ts:historicalHouseAssetManifest",
+      "src/render/historicalHouseAssets.ts:historicalHouseSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l0-v3.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 148,
+      "geometricBoundary": 149,
+      "sourcePixelGapToBoundary": 0,
+      "screenPixelGapAtZoom1": 0,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_l1-v2.png": {
+    "size": [
+      139,
+      139
+    ],
+    "referenceSha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+    "pivot": [
+      71.66148325358851,
+      125.92025518341308
+    ],
+    "crop": [
+      15.185805422647528,
+      20.728070175438596,
+      112.95135566188198,
+      105.19218500797449
+    ],
+    "screenScale": 0.4986217267599071,
+    "screenScaleY": 0.49862172675990707,
+    "displaySize": [
+      56.32,
+      52.45110893032385
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      137,
+      187,
+      1019,
+      949
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalHouseAssetManifest.generated.ts:historicalHouseAssetManifest",
+      "src/render/historicalHouseAssets.ts:historicalHouseSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l1-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 134,
+      "geometricBoundary": 135,
+      "sourcePixelGapToBoundary": 0,
+      "screenPixelGapAtZoom1": 0,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_l2-v2.png": {
+    "size": [
+      137,
+      137
+    ],
+    "referenceSha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "crop": [
+      14.421052631578947,
+      6.773524720893142,
+      113.07416267942584,
+      125.31020733652312
+    ],
+    "screenScale": 0.4980801861842801,
+    "screenScaleY": 0.4980801861842801,
+    "displaySize": [
+      56.32,
+      62.41453140096618
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      132,
+      62,
+      1035,
+      1147
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalHouseAssetManifest.generated.ts:historicalHouseAssetManifest",
+      "src/render/historicalHouseAssets.ts:historicalHouseSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l2-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 132,
+      "geometricBoundary": 133,
+      "sourcePixelGapToBoundary": 0,
+      "screenPixelGapAtZoom1": 0,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_l3-v2.png": {
+    "size": [
+      142,
+      142
+    ],
+    "referenceSha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+    "pivot": [
+      74.39712918660287,
+      138.03668261562999
+    ],
+    "crop": [
+      17.891547049441787,
+      7.247208931419458,
+      113.01116427432217,
+      130.78947368421052
+    ],
+    "screenScale": 0.4983578424454543,
+    "screenScaleY": 0.4983578424454543,
+    "displaySize": [
+      56.32,
+      65.17995991983967
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      158,
+      64,
+      998,
+      1155
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalHouseAssetManifest.generated.ts:historicalHouseAssetManifest",
+      "src/render/historicalHouseAssets.ts:historicalHouseSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l3-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 137,
+      "geometricBoundary": 138,
+      "sourcePixelGapToBoundary": 0.036682615629985094,
+      "screenPixelGapAtZoom1": 0.01828106918061527,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_l4-v2.png": {
+    "size": [
+      161,
+      161
+    ],
+    "referenceSha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+    "pivot": [
+      81.97647527910686,
+      157.40510366826157
+    ],
+    "crop": [
+      25.42105263157895,
+      11.426634768740033,
+      113.11084529505584,
+      145.97846889952154
+    ],
+    "screenScale": 0.49791865539583047,
+    "screenScaleY": 0.4979186553958305,
+    "displaySize": [
+      56.32,
+      72.68540295119183
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      198,
+      89,
+      881,
+      1137
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalHouseAssetManifest.generated.ts:historicalHouseAssetManifest",
+      "src/render/historicalHouseAssets.ts:historicalHouseSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_l4-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 156,
+      "geometricBoundary": 157,
+      "sourcePixelGapToBoundary": 0.4051036682615745,
+      "screenPixelGapAtZoom1": 0.20170867379672178,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_pair_l3_horizontal-v2.png": {
+    "size": [
+      209,
+      167
+    ],
+    "referenceSha256": "0b9d9bb5a9d70a0982f7aed9a87a85e9bcaa470801f96402d6b04af311abb980",
+    "pivot": [
+      105.3944365192582,
+      163.72549019607843
+    ],
+    "crop": [
+      20.57203994293866,
+      4.614081996434938,
+      169.6447931526391,
+      159.11140819964348
+    ],
+    "screenScale": 0.4979816853205069,
+    "screenScaleY": 0.49875588015533096,
+    "displaySize": [
+      84.48,
+      79.35775043936732
+    ],
+    "originalSize": [
+      1402,
+      1122
+    ],
+    "originalCrop": [
+      138,
+      31,
+      1138,
+      1069
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/houseCompoundAssetManifest.generated.ts:houseCompoundAssetManifest",
+      "src/render/houseCompoundAssets.ts:houseCompoundSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_pair_l3_horizontal-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 162,
+      "geometricBoundary": 163,
+      "sourcePixelGapToBoundary": 0.7254901960784252,
+      "screenPixelGapAtZoom1": 0.3618425012891586,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_pair_l3_vertical-v2.png": {
+    "size": [
+      183,
+      183
+    ],
+    "referenceSha256": "a86fee01caeca604d0fe5b2521d53a5d2310b002bc1907735a3888b52ffb51b9",
+    "pivot": [
+      92.52153110047847,
+      170.44976076555025
+    ],
+    "crop": [
+      7.880382775119618,
+      10.944976076555024,
+      169.2822966507177,
+      159.50478468899522
+    ],
+    "screenScale": 0.499048049745619,
+    "screenScaleY": 0.499048049745619,
+    "displaySize": [
+      84.48,
+      79.60055172413793
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      54,
+      75,
+      1160,
+      1093
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/houseCompoundAssetManifest.generated.ts:houseCompoundAssetManifest",
+      "src/render/houseCompoundAssets.ts:houseCompoundSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_pair_l3_vertical-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 178,
+      "geometricBoundary": 179,
+      "sourcePixelGapToBoundary": 0,
+      "screenPixelGapAtZoom1": 0,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_pair_l4_horizontal-v2.png": {
+    "size": [
+      204,
+      204
+    ],
+    "referenceSha256": "a566dbd2fb48057171d7fca97ab9c63178abe1ccf93d73c825b39b16b8e302c6",
+    "pivot": [
+      103.38277511961722,
+      201.88516746411483
+    ],
+    "crop": [
+      18.870813397129186,
+      7.483253588516746,
+      169.02392344497608,
+      194.40191387559807
+    ],
+    "screenScale": 0.4998109041499179,
+    "screenScaleY": 0.49981090414991797,
+    "displaySize": [
+      84.48,
+      97.16419634263715
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      116,
+      46,
+      1039,
+      1195
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/houseCompoundAssetManifest.generated.ts:houseCompoundAssetManifest",
+      "src/render/houseCompoundAssets.ts:houseCompoundSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_pair_l4_horizontal-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 199,
+      "geometricBoundary": 200,
+      "sourcePixelGapToBoundary": 1.8851674641148293,
+      "screenPixelGapAtZoom1": 0.9422272547132409,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "house_pair_l4_vertical-v2.png": {
+    "size": [
+      184,
+      184
+    ],
+    "referenceSha256": "b2e76b6e2eaf8a3f8d84998f3dcc851d739fe04c7e841fccafa9057cd31135a9",
+    "pivot": [
+      94.34768740031897,
+      174.46251993620416
+    ],
+    "crop": [
+      9.830940988835726,
+      8.5103668261563,
+      169.0334928229665,
+      165.95215311004785
+    ],
+    "screenScale": 0.4997826086956522,
+    "screenScaleY": 0.49978260869565216,
+    "displaySize": [
+      84.48,
+      82.94
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      67,
+      58,
+      1152,
+      1131
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/houseCompoundAssetManifest.generated.ts:houseCompoundAssetManifest",
+      "src/render/houseCompoundAssets.ts:houseCompoundSpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-houses/house_pair_l4_vertical-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true,
+    "padding": {
+      "left": 8,
+      "right": 8,
+      "top": 8,
+      "bottom": 4
+    },
+    "paddingGroundGap": {
+      "lastAllowedPaintRow": 179,
+      "geometricBoundary": 180,
+      "sourcePixelGapToBoundary": 0,
+      "screenPixelGapAtZoom1": 0,
+      "recommendation": "Keep exact manifest pivot; paint only y < height-4. Do not shift pivot or stretch image. Record unavoidable subpixel gap."
+    }
+  },
+  "market_active-v2.png": {
+    "size": [
+      224,
+      224
+    ],
+    "referenceSha256": "c1dda89871ac0270737e607a2bd487a6532088695259444ff32395141a6bc0ef",
+    "pivot": [
+      114.59011164274321,
+      213.6395534290271
+    ],
+    "crop": [
+      6.251993620414673,
+      8.931419457735247,
+      216.6762360446571,
+      204.70813397129186
+    ],
+    "screenScale": 0.49843952420209636,
+    "screenScaleY": 0.49843952420209636,
+    "displaySize": [
+      108,
+      102.03462489694971
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      35,
+      50,
+      1213,
+      1146
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalFacilityManifest.ts:historicalFacilityManifest",
+      "src/render/historicalFacilityAssets.ts:historicalFacilitySpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-facilities-v1/market_active-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "market_quiet-v2.png": {
+    "size": [
+      224,
+      224
+    ],
+    "referenceSha256": "6db439b052b90d99e12e1de2418f94000942840d64e38e2dc51342154e76e47b",
+    "pivot": [
+      114.59011164274321,
+      213.6395534290271
+    ],
+    "crop": [
+      6.251993620414673,
+      8.931419457735247,
+      216.6762360446571,
+      204.70813397129186
+    ],
+    "screenScale": 0.49843952420209636,
+    "screenScaleY": 0.49843952420209636,
+    "displaySize": [
+      108,
+      102.03462489694971
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      35,
+      50,
+      1213,
+      1146
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalFacilityManifest.ts:historicalFacilityManifest",
+      "src/render/historicalFacilityAssets.ts:historicalFacilitySpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-facilities-v1/market_quiet-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "mill-v2.png": {
+    "size": [
+      142,
+      142
+    ],
+    "referenceSha256": "e945f13541ebe7ee8ff03ed0a491828fd8a291a2d33833c763aab16ac2861a52",
+    "pivot": [
+      71.84928229665071,
+      131.01594896331738
+    ],
+    "crop": [
+      13.814992025518341,
+      7.586921850079745,
+      116.06858054226475,
+      123.42902711323764
+    ],
+    "screenScale": 0.4997045688766747,
+    "screenScaleY": 0.4997045688766747,
+    "displaySize": [
+      58,
+      61.678048780487806
+    ],
+    "originalSize": [
+      1254,
+      1254
+    ],
+    "originalCrop": [
+      122,
+      67,
+      1025,
+      1090
+    ],
+    "registration": "crop-bottom-center",
+    "sourceEvidence": [
+      "src/render/historicalFacilityManifest.ts:historicalFacilityManifest",
+      "src/render/historicalFacilityAssets.ts:historicalFacilitySpriteRect",
+      "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop"
+    ],
+    "comment": "Supplied static mill fallback. drawHistoricalFacility first attempts drawAnimatedMill with different body/sails registration; flattened PNG is not automatically live animated mill.",
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-facilities-v1/mill-v2.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "storehouse.png": {
+    "size": [
+      160,
+      136
+    ],
+    "referenceSha256": "34a128ea26c8efff6143d0b816777280757666364e3782bb35696c98db5de782",
+    "pivot": [
+      80,
+      120
+    ],
+    "crop": [
+      0,
+      0,
+      160,
+      136
+    ],
+    "screenScale": 0.5176470588235295,
+    "registration": "worldSprite anchor",
+    "comment": "destinationRect rounds physical output pixels after zoom/DPR. screenScale is nominal density.",
+    "sourceEvidence": [
+      "src/render/worldAssetManifest.generated.ts:runtimeWorldAssetManifest",
+      "src/render/worldSprite.ts:destinationRect"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/storehouse.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": null
+  },
+  "well.png": {
+    "size": [
+      72,
+      80
+    ],
+    "referenceSha256": "8cfeda1db0dcbee81282db95013b411a1456c0eb572361ada361570470a0ad70",
+    "pivot": [
+      36,
+      64
+    ],
+    "crop": [
+      0,
+      0,
+      72,
+      80
+    ],
+    "screenScale": 0.72,
+    "registration": "worldSprite anchor",
+    "comment": "destinationRect rounds physical output pixels after zoom/DPR. screenScale is nominal density.",
+    "sourceEvidence": [
+      "src/render/worldAssetManifest.generated.ts:runtimeWorldAssetManifest",
+      "src/render/worldSprite.ts:destinationRect"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/well.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": null
+  },
+  "wheat_farm_growing-v3.png": {
+    "size": [
+      384,
+      192
+    ],
+    "referenceSha256": "c57cefff4b1eb32921a4aa58592f3eeb1f0c05cfaa447852a0d4cb90da79d4cb",
+    "pivot": [
+      191.56708004509582,
+      183.99098083427282
+    ],
+    "crop": [
+      0,
+      0,
+      384,
+      192
+    ],
+    "screenScale": 0.36056910569105693,
+    "screenScaleY": null,
+    "registration": "south-ground-point; actual renderer origin is groundCenter",
+    "groundCenter": [
+      191.56708004509582,
+      114.7237880496054
+    ],
+    "upperScaleY": 0.34948778565799843,
+    "lowerScaleY": 0.4619791666666667,
+    "groundCorners": {
+      "west": [
+        14.069898534385569,
+        114.7237880496054
+      ],
+      "east": [
+        369.06426155580607,
+        114.7237880496054
+      ],
+      "north": [
+        191.56708004509582,
+        23.161217587373166
+      ],
+      "south": [
+        191.56708004509582,
+        183.99098083427282
+      ]
+    },
+    "comment": "screenScale horizontal only. Fallback splits PNG at groundCenter.y with upperScaleY/lowerScaleY then clips farmBoundary. Preferred renderer separate soil/crop layers. Pilot south pivot is authoring contract, not drop-in runtime compatibility.",
+    "sourceEvidence": [
+      "src/render/farmGeometry.ts:FARM_REGISTRATION",
+      "src/render/farmGeometry.ts:farmGroundPoint",
+      "src/render/farmAssets.ts:drawFarmDetail",
+      "src/render/farmAssets.ts:drawFarmSoil"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-farm/wheat_farm_growing-v3.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "wheat_farm_ripe-v4.png": {
+    "size": [
+      384,
+      192
+    ],
+    "referenceSha256": "0c954dd543045d5b3717a592aa9eeacd99a86d1b67d87ece40b8c1f5f27d14f2",
+    "pivot": [
+      191.56708004509582,
+      183.99098083427282
+    ],
+    "crop": [
+      0,
+      0,
+      384,
+      192
+    ],
+    "screenScale": 0.36056910569105693,
+    "screenScaleY": null,
+    "registration": "south-ground-point; actual renderer origin is groundCenter",
+    "groundCenter": [
+      191.56708004509582,
+      114.7237880496054
+    ],
+    "upperScaleY": 0.34948778565799843,
+    "lowerScaleY": 0.4619791666666667,
+    "groundCorners": {
+      "west": [
+        14.069898534385569,
+        114.7237880496054
+      ],
+      "east": [
+        369.06426155580607,
+        114.7237880496054
+      ],
+      "north": [
+        191.56708004509582,
+        23.161217587373166
+      ],
+      "south": [
+        191.56708004509582,
+        183.99098083427282
+      ]
+    },
+    "comment": "screenScale horizontal only. Fallback splits PNG at groundCenter.y with upperScaleY/lowerScaleY then clips farmBoundary. Preferred renderer separate soil/crop layers. Pilot south pivot is authoring contract, not drop-in runtime compatibility.",
+    "sourceEvidence": [
+      "src/render/farmGeometry.ts:FARM_REGISTRATION",
+      "src/render/farmGeometry.ts:farmGroundPoint",
+      "src/render/farmAssets.ts:drawFarmDetail",
+      "src/render/farmAssets.ts:drawFarmSoil"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-farm/wheat_farm_ripe-v4.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "wheat_farm_seedling-v3.png": {
+    "size": [
+      384,
+      192
+    ],
+    "referenceSha256": "41147c575c7fb02da5941bb3cb7c3e35d58eee36a302eb3d98d9327499faf001",
+    "pivot": [
+      191.56708004509582,
+      183.99098083427282
+    ],
+    "crop": [
+      0,
+      0,
+      384,
+      192
+    ],
+    "screenScale": 0.36056910569105693,
+    "screenScaleY": null,
+    "registration": "south-ground-point; actual renderer origin is groundCenter",
+    "groundCenter": [
+      191.56708004509582,
+      114.7237880496054
+    ],
+    "upperScaleY": 0.34948778565799843,
+    "lowerScaleY": 0.4619791666666667,
+    "groundCorners": {
+      "west": [
+        14.069898534385569,
+        114.7237880496054
+      ],
+      "east": [
+        369.06426155580607,
+        114.7237880496054
+      ],
+      "north": [
+        191.56708004509582,
+        23.161217587373166
+      ],
+      "south": [
+        191.56708004509582,
+        183.99098083427282
+      ]
+    },
+    "comment": "screenScale horizontal only. Fallback splits PNG at groundCenter.y with upperScaleY/lowerScaleY then clips farmBoundary. Preferred renderer separate soil/crop layers. Pilot south pivot is authoring contract, not drop-in runtime compatibility.",
+    "sourceEvidence": [
+      "src/render/farmGeometry.ts:FARM_REGISTRATION",
+      "src/render/farmGeometry.ts:farmGroundPoint",
+      "src/render/farmAssets.ts:drawFarmDetail",
+      "src/render/farmAssets.ts:drawFarmSoil"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-farm/wheat_farm_seedling-v3.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  },
+  "wheat_farm_worked-v3.png": {
+    "size": [
+      384,
+      192
+    ],
+    "referenceSha256": "4a0b04162c44db697a376d7df48f491f7d08eb4349d341ec5bd0f9513ddb259f",
+    "pivot": [
+      191.56708004509582,
+      183.99098083427282
+    ],
+    "crop": [
+      0,
+      0,
+      384,
+      192
+    ],
+    "screenScale": 0.36056910569105693,
+    "screenScaleY": null,
+    "registration": "south-ground-point; actual renderer origin is groundCenter",
+    "groundCenter": [
+      191.56708004509582,
+      114.7237880496054
+    ],
+    "upperScaleY": 0.34948778565799843,
+    "lowerScaleY": 0.4619791666666667,
+    "groundCorners": {
+      "west": [
+        14.069898534385569,
+        114.7237880496054
+      ],
+      "east": [
+        369.06426155580607,
+        114.7237880496054
+      ],
+      "north": [
+        191.56708004509582,
+        23.161217587373166
+      ],
+      "south": [
+        191.56708004509582,
+        183.99098083427282
+      ]
+    },
+    "comment": "screenScale horizontal only. Fallback splits PNG at groundCenter.y with upperScaleY/lowerScaleY then clips farmBoundary. Preferred renderer separate soil/crop layers. Pilot south pivot is authoring contract, not drop-in runtime compatibility.",
+    "sourceEvidence": [
+      "src/render/farmGeometry.ts:FARM_REGISTRATION",
+      "src/render/farmGeometry.ts:farmGroundPoint",
+      "src/render/farmAssets.ts:drawFarmDetail",
+      "src/render/farmAssets.ts:drawFarmSoil"
+    ],
+    "baselinePath": "/Users/rexxa/github/feudal-lord-simulator-playable/public/assets/buildings/historical-farm/wheat_farm_worked-v3.png",
+    "baselineBytesMatch": true,
+    "derivativeManifestMatches": true
+  }
+}

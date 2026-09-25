@@ -1,0 +1,640 @@
+[
+  {
+    "id": "wk_child_m_01-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-0427-7051-8a9d-1bafab8463bb/exec-aee1e301-cc01-4506-aa04-76610aa2527b.png",
+    "prompt": "Use case: identity-preserve. EDIT TARGET image is exact 296x148 transparent sprite sheet, eight medieval CHILD BOY poses arranged 4 columns x2 rows of74x74 cells. Keep all eight same positions, silhouettes, head size, body proportions, legs, shoes, feet and gait exactly. Do NOT regenerate the character poses. Only repaint hair, skin and clothing surfaces inside existing shapes. Variant01: simple muted moss-olive wool tunic with a plain tan belt, brown soft shoes unchanged, warm brown short bare hair, pale weathered natural skin. Southern England1300–1450 painterly isometric game sprite matching original brushwork. Four directions across NE SE SW NW, row0 androw1 opposite walking steps MUST remain exact from original. Preserve direction of faces and all arms. No coif, no objects, no facial hair, no backdrop, actual transparent background, no text. Output same layout and proportions as target. Clothing and hair identical costume across all directions and frames. All feet pixels and leg pose unchanged. This is a reskin edit only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_01-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_01-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_child_template_m-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:02:16.511Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 78% native paint +22% original shading. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-15 through cell bottom (entire lower legs/feet). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 35,
+          "y0": 22,
+          "x1": 53,
+          "y1": 66,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 187,
+          "y0": 118,
+          "x1": 332,
+          "y1": 407,
+          "w": 146,
+          "h": 290
+        },
+        "protectedYFrom": 51,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 365,
+        "eligiblePixels": 381,
+        "headAlphaCentroids": {
+          "template": [
+            45.356669677807886,
+            26.246913580246915
+          ],
+          "final": [
+            45.356669677807886,
+            26.246913580246915
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 104,
+          "y0": 23,
+          "x1": 122,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 597,
+          "y0": 126,
+          "x1": 737,
+          "y1": 412,
+          "w": 141,
+          "h": 287
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 376,
+        "eligiblePixels": 388,
+        "headAlphaCentroids": {
+          "template": [
+            113.61793317355139,
+            27.2502467221204
+          ],
+          "final": [
+            113.61793317355139,
+            27.2502467221204
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 23,
+          "x1": 191,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1009,
+          "y0": 122,
+          "x1": 1147,
+          "y1": 409,
+          "w": 139,
+          "h": 288
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 370,
+        "eligiblePixels": 387,
+        "headAlphaCentroids": {
+          "template": [
+            181.01204324620227,
+            27.085671274120706
+          ],
+          "final": [
+            181.01204324620227,
+            27.085671274120706
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 23,
+          "x1": 261,
+          "y1": 67,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1417,
+          "y0": 121,
+          "x1": 1559,
+          "y1": 410,
+          "w": 143,
+          "h": 290
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 387,
+        "eligiblePixels": 401,
+        "headAlphaCentroids": {
+          "template": [
+            249.4798226742291,
+            26.93598018123737
+          ],
+          "final": [
+            249.4798226742291,
+            26.93598018123737
+          ]
+        }
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 34,
+          "y0": 96,
+          "x1": 54,
+          "y1": 140,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 187,
+          "y0": 557,
+          "x1": 335,
+          "y1": 842,
+          "w": 149,
+          "h": 286
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 385,
+        "eligiblePixels": 397,
+        "headAlphaCentroids": {
+          "template": [
+            45.59820489446743,
+            100.08723090947339
+          ],
+          "final": [
+            45.59820489446743,
+            100.08723090947339
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 105,
+          "y0": 96,
+          "x1": 124,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 599,
+          "y0": 560,
+          "x1": 743,
+          "y1": 846,
+          "w": 145,
+          "h": 287
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 405,
+        "eligiblePixels": 414,
+        "headAlphaCentroids": {
+          "template": [
+            114.88967497898571,
+            100.24747828523395
+          ],
+          "final": [
+            114.88967497898571,
+            100.24747828523395
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 172,
+          "y0": 96,
+          "x1": 191,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 1004,
+          "y0": 560,
+          "x1": 1154,
+          "y1": 843,
+          "w": 151,
+          "h": 284
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 399,
+        "eligiblePixels": 420,
+        "headAlphaCentroids": {
+          "template": [
+            180.41046099290782,
+            100.35372340425532
+          ],
+          "final": [
+            180.41046099290782,
+            100.35372340425532
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 96,
+          "x1": 260,
+          "y1": 140,
+          "w": 20,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1416,
+          "y0": 559,
+          "x1": 1563,
+          "y1": 844,
+          "w": 148,
+          "h": 286
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 378,
+        "eligiblePixels": 390,
+        "headAlphaCentroids": {
+          "template": [
+            249.63876874279123,
+            100.16724336793541
+          ],
+          "final": [
+            249.63876874279123,
+            100.16724336793541
+          ]
+        }
+      }
+    ],
+    "status": "candidate",
+    "visualQA": {
+      "verdict": "pass with native limitation disclosed",
+      "score": 92,
+      "observations": "Final at original 296x148 preserves thin child body, clear olive/brown-hair versus russet/flax-hair distinction; all directions bare-headed and same tunic hem. Alpha silhouette unchanged. Native gait failed and was not accepted; original feet/leg RGBA is retained in final.",
+      "scope": "Offline sprite appearance and pixel registration only; no game installation or runtime animation test."
+    }
+  },
+  {
+    "id": "wk_child_m_02-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8a8-0427-7051-8a9d-1bafab8463bb/exec-c6b94df4-aa78-4435-864f-212d9b56d02c.png",
+    "prompt": "Use case: identity-preserve. EDIT TARGET image is exact 296x148 transparent sprite sheet, eight medieval CHILD BOY poses arranged 4 columns x2 rows of74x74 cells. Keep all eight same positions, silhouettes, head size, body proportions, legs, shoes, feet and gait exactly. Do NOT regenerate the character poses. Only repaint hair, skin and clothing surfaces inside existing shapes. Variant02: simple muted brick-russet wool tunic with a plain tan belt, brown soft shoes unchanged, flaxen short bare hair, pale weathered natural skin. Southern England1300–1450 painterly isometric game sprite matching original brushwork. Four directions across NE SE SW NW, row0 androw1 opposite walking steps MUST remain exact from original. Preserve direction of faces and all arms. No coif, no objects, no facial hair, no backdrop, actual transparent background, no text. Output same layout and proportions as target. Clothing and hair identical costume across all directions and frames. All feet pixels and leg pose unchanged. This is a reskin edit only.",
+    "output": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_02-v1.png",
+    "finalPath": "/tmp/astra-wave5c-candidates-20260925/actors/wk_child_m_02-v1.png",
+    "role": "actor-sheet",
+    "size": [
+      296,
+      148
+    ],
+    "references": [
+      "actor_child_template_m-v1.png"
+    ],
+    "attempt": 1,
+    "selected": true,
+    "tool": "image_gen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25T13:02:51.429Z",
+    "manualEdits": "Per-cell row-wise registration of generated hair/cloth surfaces to template alpha; 78% native paint +22% original shading. Exact original alpha globally. Original RGBA retained from each cell bounding-box bottom-15 through cell bottom (entire lower legs/feet). No recolour-only substitute. Native output gait failed; final gait restored by protected template pixels.",
+    "notes": "Native image repeats leading foot between rows. Delivered composite retains original template gait pixel-for-pixel in protected lower regions; head centroid here measures alpha geometry, not facial landmark identity.",
+    "cells": [
+      {
+        "column": 0,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 35,
+          "y0": 22,
+          "x1": 53,
+          "y1": 66,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 194,
+          "y0": 126,
+          "x1": 334,
+          "y1": 400,
+          "w": 141,
+          "h": 275
+        },
+        "protectedYFrom": 51,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 364,
+        "eligiblePixels": 381,
+        "headAlphaCentroids": {
+          "template": [
+            45.356669677807886,
+            26.246913580246915
+          ],
+          "final": [
+            45.356669677807886,
+            26.246913580246915
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 104,
+          "y0": 23,
+          "x1": 122,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 605,
+          "y0": 130,
+          "x1": 740,
+          "y1": 407,
+          "w": 136,
+          "h": 278
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 368,
+        "eligiblePixels": 388,
+        "headAlphaCentroids": {
+          "template": [
+            113.61793317355139,
+            27.2502467221204
+          ],
+          "final": [
+            113.61793317355139,
+            27.2502467221204
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 173,
+          "y0": 23,
+          "x1": 191,
+          "y1": 67,
+          "w": 19,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1010,
+          "y0": 129,
+          "x1": 1145,
+          "y1": 405,
+          "w": 136,
+          "h": 277
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 376,
+        "eligiblePixels": 387,
+        "headAlphaCentroids": {
+          "template": [
+            181.01204324620227,
+            27.085671274120706
+          ],
+          "final": [
+            181.01204324620227,
+            27.085671274120706
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 0,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 23,
+          "x1": 261,
+          "y1": 67,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1415,
+          "y0": 127,
+          "x1": 1557,
+          "y1": 404,
+          "w": 143,
+          "h": 278
+        },
+        "protectedYFrom": 52,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 387,
+        "eligiblePixels": 401,
+        "headAlphaCentroids": {
+          "template": [
+            249.4798226742291,
+            26.93598018123737
+          ],
+          "final": [
+            249.4798226742291,
+            26.93598018123737
+          ]
+        }
+      },
+      {
+        "column": 0,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 34,
+          "y0": 96,
+          "x1": 54,
+          "y1": 140,
+          "w": 21,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 193,
+          "y0": 556,
+          "x1": 335,
+          "y1": 839,
+          "w": 143,
+          "h": 284
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 380,
+        "eligiblePixels": 397,
+        "headAlphaCentroids": {
+          "template": [
+            45.59820489446743,
+            100.08723090947339
+          ],
+          "final": [
+            45.59820489446743,
+            100.08723090947339
+          ]
+        }
+      },
+      {
+        "column": 1,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 105,
+          "y0": 96,
+          "x1": 124,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 606,
+          "y0": 558,
+          "x1": 747,
+          "y1": 841,
+          "w": 142,
+          "h": 284
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 399,
+        "eligiblePixels": 414,
+        "headAlphaCentroids": {
+          "template": [
+            114.88967497898571,
+            100.24747828523395
+          ],
+          "final": [
+            114.88967497898571,
+            100.24747828523395
+          ]
+        }
+      },
+      {
+        "column": 2,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 172,
+          "y0": 96,
+          "x1": 191,
+          "y1": 141,
+          "w": 20,
+          "h": 46
+        },
+        "sourceCrop": {
+          "x0": 1001,
+          "y0": 558,
+          "x1": 1150,
+          "y1": 839,
+          "w": 150,
+          "h": 282
+        },
+        "protectedYFrom": 126,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 400,
+        "eligiblePixels": 420,
+        "headAlphaCentroids": {
+          "template": [
+            180.41046099290782,
+            100.35372340425532
+          ],
+          "final": [
+            180.41046099290782,
+            100.35372340425532
+          ]
+        }
+      },
+      {
+        "column": 3,
+        "frame": 1,
+        "templateCrop": {
+          "x0": 241,
+          "y0": 96,
+          "x1": 260,
+          "y1": 140,
+          "w": 20,
+          "h": 45
+        },
+        "sourceCrop": {
+          "x0": 1415,
+          "y0": 558,
+          "x1": 1559,
+          "y1": 841,
+          "w": 145,
+          "h": 284
+        },
+        "protectedYFrom": 125,
+        "feetProtectedRGBAMaxDiff": 0,
+        "alphaMaxDiff": 0,
+        "headAlphaCentroidDisplacementPx": 0,
+        "paintedPixels": 373,
+        "eligiblePixels": 390,
+        "headAlphaCentroids": {
+          "template": [
+            249.63876874279123,
+            100.16724336793541
+          ],
+          "final": [
+            249.63876874279123,
+            100.16724336793541
+          ]
+        }
+      }
+    ],
+    "status": "candidate",
+    "visualQA": {
+      "verdict": "pass with native limitation disclosed",
+      "score": 92,
+      "observations": "Final at original 296x148 preserves thin child body, clear olive/brown-hair versus russet/flax-hair distinction; all directions bare-headed and same tunic hem. Alpha silhouette unchanged. Native gait failed and was not accepted; original feet/leg RGBA is retained in final.",
+      "scope": "Offline sprite appearance and pixel registration only; no game installation or runtime animation test."
+    }
+  }
+]

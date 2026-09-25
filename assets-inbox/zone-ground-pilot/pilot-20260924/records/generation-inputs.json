@@ -1,0 +1,37 @@
+[
+  {
+    "key": "open",
+    "prompt": "Use case: historical-scene. Create one 1024x1024 PNG seamless tileable TOP-DOWN ground texture for a hand-painted medieval city-building game, asset zone_surface_open_field-pilot. Southern England 1300–1450, profile S_England_1300_1450_v1, art bible AB_2026-09-19_v1. Long narrow parallel ridge-and-furrow open-field strips running vertically, subtly irregular hand-cultivated widths; alternating freshly ploughed warm brown earth, young olive green shoots, growing muted golden wheat, and fallow grass. Shallow furrows, gently raised ridges. All strips continue through top/bottom edges, left/right edges tile perfectly; no border, no perspective, no isometric diamond, no land platform. Uniform fine painterly texture density with soft even upper-left daylight, almost no cast shadows. No singular landmarks or standout objects; no modern machinery tracks or mechanically precise planting; no buildings, fences, people, animals, text, stones or large flowers. Match the project's shown wheat, vegetable, and pasture sprites in earthy muted palette and small-scale hand-painted readability, but do NOT copy their isometric camera, isolated tile silhouette or pasture fence. Fill every pixel with ground. Make all four edges mathematically seamless, without edge darkening or vignette. Output only this one square texture.",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-bc3a2c55-469c-434d-8878-82d0db860f49.png",
+    "model": null,
+    "seed": null
+  },
+  {
+    "key": "croft",
+    "prompt": "Create one seamless 1024x1024 PNG TOP-DOWN tileable croft garden ground texture. Medieval southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Short hand-cultivated raised beds of cabbage, broad beans, leeks and herbs, mixed small rows aligned vertically with narrow warm brown earth paths between. Smaller, denser, more varied than long open-field strips. Modest cabbage sizes, softly irregular beds, restrained olive greens, warm brown soil. Fill entire square with continuous ground, no perspective, no isometric diamond, no margins. Mathematically seamless four edges with continuing plant/path patterns, no distinctive focal objects, no heavy dark border or vignette. Soft even daylight from upper left, almost no cast shadows. Painterly small-scale game texture matching only the supplied project vegetable and pasture references in palette and brushwork; do not copy isolated diamond shape or fence. No buildings, fences, people, animals, modern machinery, regular machine sowing, plastics, metal, large flowers, fantasy plants, text or logos. Output one texture only.",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-f6b9ca9d-f881-4ad8-95eb-c4d2d3e422d4.png",
+    "model": null,
+    "seed": null
+  },
+  {
+    "key": "pasture",
+    "prompt": "Create one seamless 1024x1024 PNG TOP-DOWN tileable common pasture ground texture, medieval southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Uneven closely grazed late-summer olive grass with many softly dispersed tufts and restrained dry straw tones, faint low-contrast animal-trodden traces blended into grass, sparse tiny clover and dandelion barely perceptible. Homogeneous visual density without large obvious patches, no unique stones, flowers or focal objects; no large crossing paths. Muted natural palette, warm soil just visible below. Soft even upper-left daylight, no strong cast shadows. Four edges perfectly seamless, no border or vignette, full square ground with no perspective or isometric diamond. Hand-painted painterly game style matching supplied project pasture and vegetable images in palette and readable brushwork; OMIT fence, isolated tile silhouette and crops. No animals, people, buildings, fences, text, fantasy plants, modern objects. Output one texture only.",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-600e3d61-9505-4738-95ef-4b091f41802d.png",
+    "model": null,
+    "seed": null
+  },
+  {
+    "key": "apple",
+    "prompt": "Create one single apple orchard tree game sprite, transparent PNG background, about 512x512 source, isolated whole tree centered with unclipped modest spreading crown and weathered trunk, a few small dull apples barely visible. Medieval southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match attached project orchard.png exactly in 2:1 isometric orthographic viewpoint, small-scale silhouette, warm brown trunk, late-summer olive foliage and hand-painted brushwork. Crown somewhat wider than tall; modest sparse old orchard tree, not luxuriant fantasy foliage. Soft upper-left daylight, very faint small contact shadow at roots only. Genuine alpha transparency, no background colour or painted checkerboard, no grass base or ground tile, no frame, no label, no people/animals/buildings/fences. One tree only.",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-5150e2d5-ac89-4bfb-a84c-b7d70035cd98.png",
+    "model": null,
+    "seed": null
+  },
+  {
+    "key": "pear",
+    "prompt": "Create one single pear orchard tree game sprite, transparent PNG background, about 512x512 source, isolated whole tree centered with unclipped modest slightly taller/narrower crown than an apple tree and weathered trunk, very few tiny muted green-gold pears barely visible. Medieval southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Match attached project orchard.png in 2:1 isometric orthographic viewpoint, small-scale proportions, warm brown trunk, late-summer olive foliage and hand-painted brushwork. Modest sparse orchard tree, not luxuriant fantasy foliage. Soft upper-left daylight, very faint small contact shadow at roots only. Genuine alpha transparency, no background colour or painted checkerboard, no grass base or ground tile, no frame, no label, no people/animals/buildings/fences. One tree only.",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-8478018e-48d0-4621-915a-255f4746a4c7.png",
+    "model": null,
+    "seed": null
+  }
+]

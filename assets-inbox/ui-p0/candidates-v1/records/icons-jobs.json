@@ -1,0 +1,293 @@
+[
+  {
+    "id": "icon_resource_sheet",
+    "cells": [
+      "three villagers",
+      "bread loaf",
+      "timber logs",
+      "stone blocks",
+      "dull ochre coins",
+      "spring budding branch",
+      "summer sun",
+      "autumn fallen oak leaf",
+      "winter snowflake"
+    ],
+    "prompt": "Edit this exact 9-icon resource sheet. Preserve all nine icons and order, spacing, sizes, transparent background and thin soft outlines. Change ONLY the spring twig icon in slot6: replace olive green leaves with warm taupe-brown unopened buds and parchment-white blossom buds. No green or blue. All other icons unchanged, especially four seasons as twig/sun/leaf/snowflake. Matte lower-chroma palette, no glossy gold and no modern calendar. No letters or numbers.",
+    "raw": "sources/icons/icon_resource_sheet-edit-raw.png",
+    "refs": [
+      "sources/icons/icon_resource_sheet-edit-input.png"
+    ],
+    "history": [
+      {
+        "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 9 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: three villagers; bread loaf; timber logs; stone blocks; dull ochre coins; spring budding branch; summer sun; autumn fallen oak leaf; winter snowflake. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+        "referencePaths": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+        ],
+        "rawPath": "sources/icons/icon_resource_sheet-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "edited": true
+  },
+  {
+    "id": "icon_build_category_sheet",
+    "cells": [
+      "small house and well",
+      "earthen road",
+      "field with sickle",
+      "sack beside warehouse",
+      "chapel",
+      "wooden palisade"
+    ],
+    "prompt": "Edit this exact icon sheet, preserving icon count, order, silhouettes, thin soft outlines, transparent background and same framing. Only replace every green grassy base and every green plant/leaf patch with warm grey-brown, ochre-taupe earth tones. No green or blue anywhere in this non-status sheet. The cultivated field still has visible crop rows, now muted brown-ochre. No saturation increase. No gold gloss. No text or digits. Remove any tiny stray fragment outside the separate icons. Keep all icons separated by generous clear transparent gaps. Do not add or remove any icon.",
+    "raw": "sources/icons/icon_build_category_sheet-edit-raw.png",
+    "refs": [
+      "sources/icons/icon_build_category_sheet-edit-input.png"
+    ],
+    "history": [
+      {
+        "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 6 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: small house and well; earthen road; field with sickle; sack beside warehouse; chapel; wooden palisade. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+        "referencePaths": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+        ],
+        "rawPath": "sources/icons/icon_build_category_sheet-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "edited": true
+  },
+  {
+    "id": "icon_layer_mode_sheet",
+    "cells": [
+      "hand holding hammer",
+      "paintbrush over patch of earth",
+      "rolled parchment with wax seal"
+    ],
+    "prompt": "Edit this exact icon sheet, preserving icon count, order, silhouettes, thin soft outlines, transparent background and same framing. Only replace every green grassy base and every green plant/leaf patch with warm grey-brown, ochre-taupe earth tones. No green or blue anywhere in this non-status sheet. The cultivated field still has visible crop rows, now muted brown-ochre. No saturation increase. No gold gloss. No text or digits. Remove any tiny stray fragment outside the separate icons. Keep all icons separated by generous clear transparent gaps. Do not add or remove any icon.",
+    "raw": "sources/icons/icon_layer_mode_sheet-edit-raw.png",
+    "refs": [
+      "sources/icons/icon_layer_mode_sheet-edit-input.png"
+    ],
+    "history": [
+      {
+        "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 3 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: hand holding hammer; paintbrush over patch of earth; rolled parchment with wax seal. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+        "referencePaths": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+        ],
+        "rawPath": "sources/icons/icon_layer_mode_sheet-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "edited": true
+  },
+  {
+    "id": "icon_first_session_buildings_sheet",
+    "cells": [
+      "thatched hut",
+      "well",
+      "road",
+      "cultivated field",
+      "barn",
+      "windmill",
+      "grain silo with grain sack",
+      "warehouse with crates",
+      "chapel",
+      "market awning",
+      "land allotment with two survey stakes",
+      "wooden palisade"
+    ],
+    "prompt": "Edit this exact icon sheet, preserving icon count, order, silhouettes, thin soft outlines, transparent background and same framing. Only replace every green grassy base and every green plant/leaf patch with warm grey-brown, ochre-taupe earth tones. No green or blue anywhere in this non-status sheet. The cultivated field still has visible crop rows, now muted brown-ochre. No saturation increase. No gold gloss. No text or digits. Remove any tiny stray fragment outside the separate icons. Keep all icons separated by generous clear transparent gaps. Do not add or remove any icon.",
+    "raw": "sources/icons/icon_first_session_buildings_sheet-edit-raw.png",
+    "refs": [
+      "sources/icons/icon_first_session_buildings_sheet-edit-input.png"
+    ],
+    "history": [
+      {
+        "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 12 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: thatched hut; well; road; cultivated field; barn; windmill; grain silo with grain sack; warehouse with crates; chapel; market awning; land allotment with two survey stakes; wooden palisade. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+        "referencePaths": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+        ],
+        "rawPath": "sources/icons/icon_first_session_buildings_sheet-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "edited": true
+  },
+  {
+    "id": "icon_prediction_sheet",
+    "cells": [
+      "speech bubble containing three dots",
+      "checkmark",
+      "warning diamond with central dot",
+      "cross X"
+    ],
+    "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 4 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: speech bubble containing three dots; checkmark; warning diamond with central dot; cross X. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+    "raw": "sources/icons/icon_prediction_sheet-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+    ]
+  },
+  {
+    "id": "icon_cause_family_sheet",
+    "cells": [
+      "water droplet",
+      "bread loaf",
+      "road junction",
+      "hand holding tool",
+      "storage crate",
+      "protective shield",
+      "sealed parchment"
+    ],
+    "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 7 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: water droplet; bread loaf; road junction; hand holding tool; storage crate; protective shield; sealed parchment. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+    "raw": "sources/icons/icon_cause_family_sheet-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+    ]
+  },
+  {
+    "id": "icon_alert_priority_sheet",
+    "cells": [
+      "warning diamond central dot",
+      "urgent triangle central dot",
+      "speech bubble with three dots"
+    ],
+    "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 3 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: warning diamond central dot; urgent triangle central dot; speech bubble with three dots. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+    "raw": "sources/icons/icon_alert_priority_sheet-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+    ]
+  },
+  {
+    "id": "icon_time_sheet",
+    "cells": [
+      "two pause bars",
+      "single right play triangle",
+      "two right chevrons",
+      "three right chevrons"
+    ],
+    "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 4 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: two pause bars; single right play triangle; two right chevrons; three right chevrons. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+    "raw": "sources/icons/icon_time_sheet-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+    ]
+  },
+  {
+    "id": "icon_objective_action_sheet",
+    "cells": [
+      "hammer tool",
+      "map with location pin",
+      "open blank book with candle",
+      "upward chevron"
+    ],
+    "prompt": "Edit this exact four-icon transparent sheet. Preserve all four icons, ordering, coordinates and thin soft brown outlines. Change ONLY the second icon map terrain from green/olive to warm ochre and grey-brown. No green or blue. Keep map pin muted red. Other three icons unchanged. No text or numbers. Actual transparent background. No added objects.",
+    "raw": "sources/icons/icon_objective_action_sheet-edit-raw.png",
+    "refs": [
+      "sources/icons/icon_objective_action_sheet-edit-input.png"
+    ],
+    "history": [
+      {
+        "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 4 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: hammer tool; map with location pin; open blank book with candle; upward chevron. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+        "referencePaths": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+        ],
+        "rawPath": "sources/icons/icon_objective_action_sheet-raw.png",
+        "tool": "image_gen.imagegen",
+        "modelVersion": null,
+        "seed": null
+      }
+    ],
+    "edited": true
+  },
+  {
+    "id": "icon_lock_new_sheet",
+    "cells": [
+      "padlock",
+      "four point spark",
+      "open blank book"
+    ],
+    "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 3 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: padlock; four point spark; open blank book. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+    "raw": "sources/icons/icon_lock_new_sheet-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+    ]
+  },
+  {
+    "id": "warning_map_marker_sheet",
+    "cells": [
+      "ochre diamond with central dark dot and short downward pointer",
+      "muted red triangle with central dark dot and short downward pointer"
+    ],
+    "prompt": "Create one transparent PNG UI icon sprite sheet for a medieval southern England city builder. Exactly 2 separate icons in ONE horizontal row, equal square cells, generous transparent gaps, each centered in its cell, no panels or background. Ordered left to right: ochre diamond with central dark dot and short downward pointer; muted red triangle with central dark dot and short downward pointer. Reference 1 is the approved UI pilot style, reference 2 is the world art palette. Required adjustment relative to pilot: much thinner softer brown outlines, reduced saturation, matte hand-painted earth pigment, restrained shading, NOT glossy mobile-game vector badges. Bread is muted oak tan not orange, coins dull ochre not bright yellow or gold. Warm gray stone, faded brown wood, parchment offwhite. Status muted moss/ochre/red allowed. Strong distinct silhouette survives 24 pixels; simplify tiny details. No letters, no digits, no words, no calendar grids, no labels, no drop shadow halos. Actual transparent alpha background. Each icon occupies about 75% of its own cell; all icons fully visible.",
+    "raw": "sources/icons/warning_map_marker_sheet-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/icon_resource_sheet.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/세계_화풍_건물.png"
+    ]
+  },
+  {
+    "id": "cursor_select",
+    "prompt": "Edit the supplied medieval UI cursor design into ONE isolated cursor: plain arrow with no badge. Transparent alpha PNG square composition. Retain the upper-left pointing arrow shape with sharp pointing tip at upper left, pale parchment fill and thin soft brown outline, reducing outline thickness and color saturation compared with reference. Matte earth pigment no shiny golden edge. No text, letters or digits. No background. Entire cursor and badge fully inside canvas with clean transparent margin, centered, to be exported at64x64. Only one cursor, not a sheet. The arrow pointing tip must be visually unambiguous for measured click hotspot.",
+    "raw": "sources/icons/cursor_select-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/cursor_sheet.png"
+    ]
+  },
+  {
+    "id": "cursor_place_valid",
+    "prompt": "Edit the supplied medieval UI cursor design into ONE isolated cursor: small muted moss green checkmark beside lower right of arrow. Transparent alpha PNG square composition. Retain the upper-left pointing arrow shape with sharp pointing tip at upper left, pale parchment fill and thin soft brown outline, reducing outline thickness and color saturation compared with reference. Matte earth pigment no shiny golden edge. No text, letters or digits. No background. Entire cursor and badge fully inside canvas with clean transparent margin, centered, to be exported at64x64. Only one cursor, not a sheet. The arrow pointing tip must be visually unambiguous for measured click hotspot.",
+    "raw": "sources/icons/cursor_place_valid-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/cursor_sheet.png"
+    ]
+  },
+  {
+    "id": "cursor_place_invalid",
+    "prompt": "Edit the supplied medieval UI cursor design into ONE isolated cursor: small muted dusty red X beside lower right of arrow. Transparent alpha PNG square composition. Retain the upper-left pointing arrow shape with sharp pointing tip at upper left, pale parchment fill and thin soft brown outline, reducing outline thickness and color saturation compared with reference. Matte earth pigment no shiny golden edge. No text, letters or digits. No background. Entire cursor and badge fully inside canvas with clean transparent margin, centered, to be exported at64x64. Only one cursor, not a sheet. The arrow pointing tip must be visually unambiguous for measured click hotspot.",
+    "raw": "sources/icons/cursor_place_invalid-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/cursor_sheet.png"
+    ]
+  },
+  {
+    "id": "cursor_road_draw",
+    "prompt": "Edit the supplied medieval UI cursor design into ONE isolated cursor: small earthen road swatch beside lower right of arrow. Transparent alpha PNG square composition. Retain the upper-left pointing arrow shape with sharp pointing tip at upper left, pale parchment fill and thin soft brown outline, reducing outline thickness and color saturation compared with reference. Matte earth pigment no shiny golden edge. No text, letters or digits. No background. Entire cursor and badge fully inside canvas with clean transparent margin, centered, to be exported at64x64. Only one cursor, not a sheet. The arrow pointing tip must be visually unambiguous for measured click hotspot.",
+    "raw": "sources/icons/cursor_road_draw-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/cursor_sheet.png"
+    ]
+  },
+  {
+    "id": "cursor_zone_brush",
+    "prompt": "Edit the supplied medieval UI cursor design into ONE isolated cursor: small wooden paintbrush beside lower right of arrow. Transparent alpha PNG square composition. Retain the upper-left pointing arrow shape with sharp pointing tip at upper left, pale parchment fill and thin soft brown outline, reducing outline thickness and color saturation compared with reference. Matte earth pigment no shiny golden edge. No text, letters or digits. No background. Entire cursor and badge fully inside canvas with clean transparent margin, centered, to be exported at64x64. Only one cursor, not a sheet. The arrow pointing tip must be visually unambiguous for measured click hotspot.",
+    "raw": "sources/icons/cursor_zone_brush-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/cursor_sheet.png"
+    ]
+  },
+  {
+    "id": "cursor_inspect",
+    "prompt": "Edit the supplied medieval UI cursor design into ONE isolated cursor: small simple magnifying glass beside lower right of arrow. Transparent alpha PNG square composition. Retain the upper-left pointing arrow shape with sharp pointing tip at upper left, pale parchment fill and thin soft brown outline, reducing outline thickness and color saturation compared with reference. Matte earth pigment no shiny golden edge. No text, letters or digits. No background. Entire cursor and badge fully inside canvas with clean transparent margin, centered, to be exported at64x64. Only one cursor, not a sheet. The arrow pointing tip must be visually unambiguous for measured click hotspot.",
+    "raw": "sources/icons/cursor_inspect-raw.png",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-p0-candidates-v1/references/astra-ui-p0-reference-files/pilot_assets/cursor_sheet.png"
+    ]
+  }
+]

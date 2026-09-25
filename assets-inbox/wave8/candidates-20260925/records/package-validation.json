@@ -1,0 +1,415 @@
+{
+  "assets": 37,
+  "checks": 3,
+  "dimensions": true,
+  "requiredTransparency": true,
+  "results": [
+    {
+      "id": "frame_chronicle_page",
+      "file": "frames/frame_chronicle_page.png",
+      "size": [
+        512,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 327665
+    },
+    {
+      "id": "frame_minimap",
+      "file": "frames/frame_minimap.png",
+      "size": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 64686
+    },
+    {
+      "id": "frame_objective_drawer",
+      "file": "frames/frame_objective_drawer.png",
+      "size": [
+        256,
+        512
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 130166
+    },
+    {
+      "id": "frame_overlay_legend",
+      "file": "frames/frame_overlay_legend.png",
+      "size": [
+        192,
+        256
+      ],
+      "alphaMin": 206,
+      "alphaMax": 255,
+      "visiblePixels": 49152
+    },
+    {
+      "id": "frame_petition",
+      "file": "frames/frame_petition.png",
+      "size": [
+        384,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 98219
+    },
+    {
+      "id": "frame_season_ledger",
+      "file": "frames/frame_season_ledger.png",
+      "size": [
+        512,
+        384
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 172638
+    },
+    {
+      "id": "icon_alert_bell_bad",
+      "file": "icons/icon_alert_bell_bad.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 2195
+    },
+    {
+      "id": "icon_alert_bell_info",
+      "file": "icons/icon_alert_bell_info.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 1560
+    },
+    {
+      "id": "icon_alert_bell_threat",
+      "file": "icons/icon_alert_bell_threat.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 3381
+    },
+    {
+      "id": "icon_overlay_danger",
+      "file": "icons/icon_overlay_danger.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 2698
+    },
+    {
+      "id": "icon_overlay_finance",
+      "file": "icons/icon_overlay_finance.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 3960
+    },
+    {
+      "id": "icon_overlay_food",
+      "file": "icons/icon_overlay_food.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 3640
+    },
+    {
+      "id": "icon_overlay_labour",
+      "file": "icons/icon_overlay_labour.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 3789
+    },
+    {
+      "id": "icon_overlay_rights",
+      "file": "icons/icon_overlay_rights.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 3150
+    },
+    {
+      "id": "icon_overlay_transport",
+      "file": "icons/icon_overlay_transport.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 2014
+    },
+    {
+      "id": "icon_overlay_water",
+      "file": "icons/icon_overlay_water.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 3003
+    },
+    {
+      "id": "icon_overlay_zone",
+      "file": "icons/icon_overlay_zone.png",
+      "size": [
+        96,
+        96
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 2250
+    },
+    {
+      "id": "keyart_mode_select",
+      "file": "keyart/keyart_mode_select.png",
+      "size": [
+        1280,
+        720
+      ],
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "visiblePixels": 921600
+    },
+    {
+      "id": "keyart_title_bg",
+      "file": "keyart/keyart_title_bg.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "visiblePixels": 2073600
+    },
+    {
+      "id": "keyart_title_emblem",
+      "file": "keyart/keyart_title_emblem.png",
+      "size": [
+        512,
+        512
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 117604
+    },
+    {
+      "id": "loading_1315_famine",
+      "file": "keyart/loading_1315_famine.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "visiblePixels": 2073600
+    },
+    {
+      "id": "loading_1337_war",
+      "file": "keyart/loading_1337_war.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "visiblePixels": 2073600
+    },
+    {
+      "id": "loading_1348_plague",
+      "file": "keyart/loading_1348_plague.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "visiblePixels": 2073600
+    },
+    {
+      "id": "chronicle_initial_a",
+      "file": "ornaments/chronicle_initial_a.png",
+      "size": [
+        128,
+        128
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 13485
+    },
+    {
+      "id": "chronicle_initial_b",
+      "file": "ornaments/chronicle_initial_b.png",
+      "size": [
+        128,
+        128
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 14400
+    },
+    {
+      "id": "chronicle_initial_c",
+      "file": "ornaments/chronicle_initial_c.png",
+      "size": [
+        128,
+        128
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 12695
+    },
+    {
+      "id": "seal_petition_accept",
+      "file": "ornaments/seal_petition_accept.png",
+      "size": [
+        64,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 2301
+    },
+    {
+      "id": "seal_petition_price",
+      "file": "ornaments/seal_petition_price.png",
+      "size": [
+        64,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 1954
+    },
+    {
+      "id": "seal_petition_reject",
+      "file": "ornaments/seal_petition_reject.png",
+      "size": [
+        64,
+        64
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "visiblePixels": 2172
+    },
+    {
+      "id": "pause_badge",
+      "file": "time/pause_badge.png",
+      "size": [
+        128,
+        48
+      ],
+      "alphaMin": 130,
+      "alphaMax": 254,
+      "visiblePixels": 6144
+    },
+    {
+      "id": "pause_vignette",
+      "file": "time/pause_vignette.png",
+      "size": [
+        1024,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 130,
+      "visiblePixels": 161050
+    },
+    {
+      "id": "season_event_harvest",
+      "file": "time/season_event_harvest.png",
+      "size": [
+        32,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 327
+    },
+    {
+      "id": "season_event_market_day",
+      "file": "time/season_event_market_day.png",
+      "size": [
+        32,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 365
+    },
+    {
+      "id": "season_event_period_end",
+      "file": "time/season_event_period_end.png",
+      "size": [
+        32,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 604
+    },
+    {
+      "id": "season_event_sow",
+      "file": "time/season_event_sow.png",
+      "size": [
+        32,
+        32
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 384
+    },
+    {
+      "id": "season_pin",
+      "file": "time/season_pin.png",
+      "size": [
+        32,
+        48
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 578
+    },
+    {
+      "id": "season_strip",
+      "file": "time/season_strip.png",
+      "size": [
+        1024,
+        48
+      ],
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "visiblePixels": 49068
+    }
+  ]
+}

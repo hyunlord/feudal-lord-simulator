@@ -1,0 +1,166 @@
+[
+  {
+    "id": "seal_petition_accept",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-2e37606d-18f3-442e-87ff-a4f7e4aee05a.png",
+    "prompt": "Create one raster game UI asset seal_petition_accept, final intended 64x64 RGBA transparent. Project reference 1 is the P0 frame palette/style, reference 2 its icon painting vocabulary. Medieval southern England 1300-1450 functional UI, 80 percent function 20 percent ornament. A single small red-brown wax seal, somewhat irregular circular outer silhouette, restrained warm highlights top-left, dark brown clean readable outlines, broad painted shapes no tiny noise. In its center one very large simple ivory CHECK MARK, no letters or numbers. The check must remain legible at 24px. Keep entire seal within a square with modest transparent perimeter; genuinely transparent outside. No ribbon tails, no paper, no text, no watermark, no extra objects. Handpainted flat UI, muted colours precisely same game as refs.",
+    "references": [
+      "frame_objective_normal.png",
+      "icon_resource_sheet.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T14:11:44.149Z",
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/ornaments/seal_petition_accept.png",
+    "manualEdits": "Canvas single-pass alpha-bbox crop and proportional resample to 64 square with 4px perimeter; no painted content changes.",
+    "crop": [
+      223,
+      200,
+      1044,
+      1021
+    ],
+    "status": "candidate",
+    "candidates": 1,
+    "reason": "Selected first candidate: clear check/cross/coin-plus-check symbol at 24px, restrained red wax family.",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed"
+  },
+  {
+    "id": "seal_petition_reject",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-47aae851-60e6-4efd-85d7-9d694e938486.png",
+    "prompt": "Create one raster UI asset seal_petition_reject for medieval southern England citybuilder. Same painted material, muted red wax colour, ivory symbol, dark brown contour and warm light as reference1 existing approved accept seal. Change central CHECK to a large simple rejection CROSS formed by two broad diagonal bars, recognizable symbol not text. Change outer contour to subtly squarer four-lobed red wax shape so different seal silhouette, same overall size/weight. Native intended64x64, must read at24px. 80% functional20% ornament. Flat front view. Broad simple forms, no micro noise. Genuine transparent background, modest clear perimeter. No letters, numbers, ribbons, paper, watermark, modern glossy sheen. Reference2 is project P0 icon style. One asset only.",
+    "references": [
+      "seal_petition_accept (generated candidate)",
+      "icon_resource_sheet.png"
+    ],
+    "referenceInputPaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-2e37606d-18f3-442e-87ff-a4f7e4aee05a.png",
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/icon_resource_sheet.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T14:13:11.713Z",
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/ornaments/seal_petition_reject.png",
+    "manualEdits": "Canvas single-pass alpha-bbox crop and proportional resample to 64 square with 4px perimeter; no painted content changes.",
+    "crop": [
+      184,
+      190,
+      1071,
+      1055
+    ],
+    "status": "candidate",
+    "candidates": 1,
+    "reason": "Selected first candidate: clear check/cross/coin-plus-check symbol at 24px, restrained red wax family.",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed"
+  },
+  {
+    "id": "seal_petition_price",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-48f0dcb3-3f73-4c69-968b-f8b8b53367ed.png",
+    "prompt": "Create single raster medieval game UI seal_petition_price, same red-brown wax painting as reference1 approved accept seal, same muted warm cream/darkbrown outline palette as project reference2. Symbol means acceptance conditional on payment: one LARGE simple round ochre GOLD COIN disk at left/upper center and one ivory CHECK MARK over lower-right. Coin unlettered, no numeric or currency marks. Both shapes broad simple readable at final24px. Seal outer silhouette distinct: broad softly horizontal irregular wax oval with one little lower wax drip, no ribbon. Intended64x64 RGBA with transparent background and modest clear perimeter. 80% function20%ornament; flat frontview, soft top-left painted highlight, avoid fussy tiny marks, no text or letters anywhere, no paper, no watermark, no photoreal sheen. One asset only.",
+    "references": [
+      "seal_petition_accept (generated candidate)",
+      "icon_resource_sheet.png"
+    ],
+    "referenceInputPaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-2e37606d-18f3-442e-87ff-a4f7e4aee05a.png",
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/icon_resource_sheet.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T14:14:14.607Z",
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/ornaments/seal_petition_price.png",
+    "manualEdits": "Canvas single-pass alpha-bbox crop and proportional resample to 64 square with 4px perimeter; no painted content changes.",
+    "crop": [
+      134,
+      181,
+      1127,
+      1083
+    ],
+    "status": "candidate",
+    "candidates": 1,
+    "reason": "Selected first candidate: clear check/cross/coin-plus-check symbol at 24px, restrained red wax family.",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed"
+  },
+  {
+    "id": "chronicle_initial_a",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-3b3f5571-9951-4b07-aefd-375fbda774c4.png",
+    "prompt": "Single raster chronicle_initial_a: a BLANK decorative manuscript initial-letter BED for functional medieval southern England1300-1450 citybuilder UI. There is NO letter. A simple thin square double ruled brown frame, tiny understated olive vine curling only around upper-left corner and left edge, one small faded terracotta leaf accent. Large absolutely empty warm light cream vellum center occupying middle70% for code to insert a letter later. Match reference1 P0frame precisely in brown lineweight restraint and beige palette; ref2 vellum material. 80% function20% decoration. Intended128x128 PNG; ornament must remain broad and restrained not dense illumination. Outer corners clear transparent, modest transparent perimeter; opaque blank vellum inside frame. Straight frontview flat UI. No text, no letters, no numerals, no glyphs, no symbols in central blank, no faux writing, no gilding, no fantasy, no flourish beyond single modest vine.",
+    "references": [
+      "frame_objective_normal.png",
+      "texture_vellum_light.png"
+    ],
+    "referenceInputPaths": [
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/frame_objective_normal.png",
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/texture_vellum_light.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T14:15:00.415Z",
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/ornaments/chronicle_initial_a.png",
+    "manualEdits": "Canvas single-pass alpha-bbox crop and proportional resample to 128 square with 4px perimeter; no painted content changes.",
+    "crop": [
+      58,
+      43,
+      1179,
+      1177
+    ],
+    "status": "candidate",
+    "candidates": 1,
+    "reason": "Selected first candidate: empty center, distinct upper-left/lower-right/top-balanced vine arrangement, P0 cream and brown palette.",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed"
+  },
+  {
+    "id": "chronicle_initial_b",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-11e0489c-f532-41d4-89e0-2d2674b06650.png",
+    "prompt": "Single raster chronicle_initial_b: BLANK decorative manuscript initial-letter BED, no actual letter. Functional medieval southern England1300-1450 citybuilder. Match reference1 P0 thin brown double rules, creamvellum, restrained 80%function20%decoration. Reference2 vellum. Composition distinct from upper-left vine variant: a simple rectangular double-brown-line frame with two modest curved vine arcs along BOTTOM edge meeting an understated three-leaf olive cluster in LOWER RIGHT, top and left bare straight rules. Large absolutely empty cream vellum center occupying central70% for code-added initial. No letter no text no numeral no faux writing. Intended128x128, genuine transparent outer margin, opaque vellum inside. Frontview. Broad legible shapes, muted olive and faint rust leaf accents, no gold, no ornate medievalfantasy illuminated border, no dense microdetail. One asset only.",
+    "references": [
+      "frame_objective_normal.png",
+      "texture_vellum_light.png"
+    ],
+    "referenceInputPaths": [
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/frame_objective_normal.png",
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/texture_vellum_light.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T14:15:57.838Z",
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/ornaments/chronicle_initial_b.png",
+    "manualEdits": "Canvas single-pass alpha-bbox crop and proportional resample to 128 square with 4px perimeter; no painted content changes.",
+    "crop": [
+      73,
+      72,
+      1180,
+      1179
+    ],
+    "status": "candidate",
+    "candidates": 1,
+    "reason": "Selected first candidate: empty center, distinct upper-left/lower-right/top-balanced vine arrangement, P0 cream and brown palette.",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed"
+  },
+  {
+    "id": "chronicle_initial_c",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-1786-7f91-83c4-6f0015eb2f5a/exec-e083d2cd-3a73-4f81-8eb8-6e9649297a42.png",
+    "prompt": "Single raster chronicle_initial_c: BLANK decorative manuscript initial-letter BED, no actual letter. Functional medieval southern England1300-1450citybuilder. Match project reference1 P0 thin brown ruled frame/cream palette, ref2vellum. 80% function20% decoration. Distinct arrangement: simple rectangular brown thin double ruled frame with a small paired vine leaf sprig centered across TOP rule, and two tiny inward leaf tips at middle left and right; entirely bare bottom line. Symmetric balanced sparse decoration, not the upper-left or lower-right heavy variants. Preserve central70% completely empty creamvellum square for code-rendered letter. No glyph no letter no number no words or faux writing anywhere. Muted olive leaves and tiny faded terracotta accent, restrained broad handpainted shapes, not gold filigree. Intended128x128RGBA with modest genuine transparent outer perimeter and opaque vellum inside. Frontview flat UI. One asset only.",
+    "references": [
+      "frame_objective_normal.png",
+      "texture_vellum_light.png"
+    ],
+    "referenceInputPaths": [
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/frame_objective_normal.png",
+      "/tmp/astra-wave8-work-20260925/astra-wave8-reference-files/texture_vellum_light.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T14:17:01.051Z",
+    "finalPath": "/tmp/astra-wave8-candidates-20260925/ornaments/chronicle_initial_c.png",
+    "manualEdits": "Canvas single-pass alpha-bbox crop and proportional resample to 128 square with 4px perimeter; no painted content changes.",
+    "crop": [
+      37,
+      24,
+      1216,
+      1180
+    ],
+    "status": "candidate",
+    "candidates": 1,
+    "reason": "Selected first candidate: empty center, distinct upper-left/lower-right/top-balanced vine arrangement, P0 cream and brown palette.",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed"
+  }
+]

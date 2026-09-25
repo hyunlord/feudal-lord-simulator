@@ -1,0 +1,65 @@
+<!doctype html><meta charset="utf-8"><script>
+(async()=>{try{
+const cfg=await(await fetch('/config')).json(),C=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
+const load=u=>new Promise((r,j)=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>j(new Error(u));i.src=u;});
+const save=async(c,p)=>fetch('/save/'+encodeURIComponent(p),{method:'POST',body:await new Promise(r=>c.toBlob(r,'image/png'))});
+const text=(g,s,x,y,size=18,color='#eee9d8')=>{g.font=`${size}px "Apple SD Gothic Neo",sans-serif`;g.fillStyle=color;g.fillText(s,x,y);};
+const fill=(g,x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y,w,h);};
+const bb=(d,w,h)=>{let l=w,t=h,r=0,b=0;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(d[(y*w+x)*4+3]>24){l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x+1);b=Math.max(b,y+1);}return[l,t,r-l,b-t];};
+const assets={},metrics=[];
+function quiet(d,w,h,radius){const src=new Uint8ClampedArray(d);for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=(y*w+x)*4;if(src[k+3]<128)continue;let sums=[0,0,0],n=0;for(let dy=-radius;dy<=radius;dy++)for(let dx=-radius;dx<=radius;dx++){const xx=(x+dx+w)%w,yy=Math.max(0,Math.min(h-1,y+dy)),j=(yy*w+xx)*4;if(src[j+3]<128)continue;if(Math.max(...[0,1,2].map(c=>Math.abs(src[j+c]-src[k+c])))>22)continue;for(let c=0;c<3;c++)sums[c]+=src[j+c];n++;}if(n)for(let c=0;c<3;c++)d[k+c]=sums[c]/n;}}
+function periodic(d,w,h,axis){const len=axis==='x'?w:h,rows=axis==='x'?h:w,band=Math.min(48,Math.floor(len/4));const idx=(p,q)=>axis==='x'?(q*w+p)*4:(p*w+q)*4;for(let q=0;q<rows;q++)for(let c=0;c<4;c++){const first=d[idx(0,q)+c],last=d[idx(len-1,q)+c],mid=(first+last)/2;for(let t=0;t<band;t++){const weight=(1+Math.cos(Math.PI*t/band))/2;d[idx(t,q)+c]+= (mid-first)*weight;d[idx(len-1-t,q)+c]+=(mid-last)*weight;}d[idx(0,q)+c]=d[idx(len-1,q)+c]=Math.round(mid);}}
+function bleed(d,w,h){const src=new Uint8ClampedArray(d);let count=0;for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=(y*w+x)*4;if(src[k+3])continue;let best=null,dist=99;for(let yy=Math.max(0,y-3);yy<=Math.min(h-1,y+3);yy++)for(let xx=Math.max(0,x-3);xx<=Math.min(w-1,x+3);xx++){const j=(yy*w+xx)*4,dd=(x-xx)**2+(y-yy)**2;if(src[j+3]>64&&dd<dist){best=j;dist=dd;}}if(best!==null){for(let c=0;c<3;c++)d[k+c]=src[best+c];count++;}}return count;}
+for(let i=0;i<cfg.assets.length;i++){
+ const a=cfg.assets[i],im=await load('/source/'+i),sc=C(im.width,im.height),sg=sc.getContext('2d');sg.drawImage(im,0,0);const si=sg.getImageData(0,0,im.width,im.height);const bounds=bb(si.data,im.width,im.height);const [w,h]=a.size,c=C(w,h),g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';let crop=[0,0,im.width,im.height],placement=[0,0,w,h];
+ const isFill=a.role==='fill',isWall=a.id.startsWith('wall/'),isStrip=a.role==='strip',isObject=a.role==='object'||a.role==='decal';
+ if(isStrip){crop=[0,bounds[1],im.width,bounds[3]];g.drawImage(sc,...crop,0,0,w,h);}
+ else if(isObject){crop=bounds;const maxW=w-16,maxH=h-16,k=Math.min(maxW/bounds[2],maxH/bounds[3]);placement=[(w-bounds[2]*k)/2,h-8-bounds[3]*k,bounds[2]*k,bounds[3]*k];g.drawImage(sc,...crop,...placement);}
+ else g.drawImage(sc,0,0,w,h);
+ const d=g.getImageData(0,0,w,h);quiet(d.data,w,h,isObject?3:4);
+ let colorAdjustment=null;if(a.id==='wall/palisade_face_a-v1'){for(let yy=0;yy<35;yy++)for(let xx=0;xx<w;xx++){const k=(yy*w+xx)*4;for(let ch=0;ch<3;ch++)d.data[k+ch]=[154,126,88][ch]+(d.data[k+ch]-[154,126,88][ch])*.45;}colorAdjustment={top35pxContrast:.45,target:[154,126,88]};}
+ if(isFill){let mean=[0,0,0];for(let k=0;k<d.data.length;k+=4)for(let c=0;c<3;c++)mean[c]+=d.data[k+c]/(w*h);const contrast=a.id==='water/shallow_a-v1'?.55:.35;const target=a.id==='water/shallow_a-v1'?[97,135,143]:a.id==='ground/pasture_a-v1'?[143,146,88]:[127,128,81];for(let k=0;k<d.data.length;k+=4)for(let c=0;c<3;c++)d.data[k+c]=target[c]+(d.data[k+c]-mean[c])*contrast;colorAdjustment={mean,target,contrast};}
+ if(a.id.startsWith('road/')){for(let x=0;x<w;x++)for(let y=0;y<h;y++){const k=(y*w+x)*4;if(d.data[k+3]>=128)continue;let nearest=-1;for(let step=1;step<h&&nearest<0;step++)for(const yy of [y-step,y+step])if(yy>=0&&yy<h&&d.data[(yy*w+x)*4+3]>=128){nearest=(yy*w+x)*4;break;}if(nearest>=0)for(let c=0;c<3;c++)d.data[k+c]=d.data[nearest+c];}}
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){const k=(y*w+x)*4;
+  if(isFill)d.data[k+3]=255;
+  if(isStrip&&!isWall){const fade=Math.max(0,Math.min(1,y/12,(h-1-y)/12));d.data[k+3]=a.id.startsWith('road/')?Math.round(255*fade):Math.min(d.data[k+3],Math.round(255*fade));}
+  if(isWall){if(y>=h*.35)d.data[k+3]=255;else if(d.data[k+3]<32)d.data[k+3]=0;}
+  if(isObject&&(x<8||x>=w-8||y<8||y>=h-8))d.data[k+3]=0;
+  if(d.data[k+3]<8)d.data[k+3]=0;
+ }
+ if(isStrip||isFill)periodic(d.data,w,h,'x');if(isFill)periodic(d.data,w,h,'y');
+ const bleedPixels=bleed(d.data,w,h);
+ // Restore equality after nearest-colour alpha bleed, including transparent RGB.
+ if(isStrip||isFill)for(let y=0;y<h;y++)for(let k=0;k<4;k++)d.data[(y*w+w-1)*4+k]=d.data[y*w*4+k];
+ if(isFill)for(let x=0;x<w;x++)for(let k=0;k<4;k++)d.data[((h-1)*w+x)*4+k]=d.data[x*4+k];
+ g.putImageData(d,0,0);
+ if(a.role==='module'){const mask=C(w,h),mg=mask.getContext('2d');mg.fillStyle='white';mg.fill(new Path2D('M104 36 L232 100 L152 140 L24 76 Z M24 76 L40 84 L40 140 L24 132 Z M136 132 L152 140 L152 176 L136 168 Z M216 92 L232 100 L232 142 L216 134 Z M86 27 L104 28 L232 92 L243 110 L226 127 L196 132 L168 116 L150 100 L98 74 L81 55 Z'));g.globalCompositeOperation='destination-in';g.drawImage(mask,0,0);g.globalCompositeOperation='source-over';const deck=g.getImageData(0,0,w,h),before=new Uint8ClampedArray(deck.data);for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){const dx=xx+.5-104,dy=yy+.5-36,u=(dx+2*dy)/256,v=(2*dy-dx)/160,k=(yy*w+xx)*4;if(u>.015&&u<.985&&v>.015&&v<.985&&deck.data[k+3]<255){let best=-1,dd=1e9;for(let oy=-12;oy<=12;oy++)for(let ox=-12;ox<=12;ox++){const nx=xx+ox,ny=yy+oy;if(nx<0||nx>=w||ny<0||ny>=h)continue;const j=(ny*w+nx)*4;if(before[j+3]>240&&ox*ox+oy*oy<dd){best=j;dd=ox*ox+oy*oy;}}if(best>=0){for(let ch=0;ch<3;ch++)deck.data[k+ch]=before[best+ch];deck.data[k+3]=255;}}}g.putImageData(deck,0,0);g.lineWidth=1;g.strokeStyle='#cbb785';g.beginPath();g.moveTo(104,36);g.lineTo(232,100);g.stroke();g.strokeStyle='#80a7a0';g.beginPath();g.moveTo(24,76);g.lineTo(152,140);g.stroke();}
+ assets[a.id]=c;await save(c,a.id+'.png');metrics.push({id:a.id,role:a.role,size:a.size,sourceSize:[im.width,im.height],sourceCrop:crop,placement,repeat:isFill?'XY':isStrip?'X only':'none',alpha:isFill?'opaque':isWall?'opaque body, transparent top silhouette':isStrip?'Y-edge fade12px':'transparentRGBA',sourceToTargetResizes:1,colorAdjustment,noiseCleanup:'edge-aware low-contrast RGB averaging radius'+(isObject?3:4)+' at final resolution; silhouette/high-contrast shapes retained',seamCorrection:isStrip?'X-only cosine edge-difference correction48px':isFill?'X and Y cosine edge-difference correction':'none',rgbBleedRadius:3,bleedPixels,bounds:bb(g.getImageData(0,0,w,h).data,w,h)});
+}
+const grass=await load('/ref/grass.png'),oldRoad=await load('/ref/earth_strip-v1.png'),oldTree=await load('/ref/orchard.png');
+// Twelve-by-twelve isometric tile field, original tile128x64. Scene source coordinates.
+const world=C(1736,1024),g=world.getContext('2d');g.translate(100,150);g.save();g.beginPath();g.moveTo(768,0);g.lineTo(1536,384);g.lineTo(768,768);g.lineTo(0,384);g.closePath();g.clip();g.fillStyle=g.createPattern(grass,'repeat');g.fillRect(0,0,1536,768);
+const patt=(id,draw)=>{if(!assets[id])return;g.save();draw();g.clip();g.fillStyle=g.createPattern(assets[id],'repeat');g.fillRect(0,0,1536,768);g.restore();};
+const bank=t=>{const u=1-t;return[u*u*u*720+3*u*u*t*780+3*u*t*t*1190+t*t*t*1600,u*u*u*810+3*u*u*t*390+3*u*t*t*510+t*t*t*520];};
+patt('water/shallow_a-v1',()=>{g.beginPath();for(let i=0;i<=100;i++){const p=bank(i/100);if(!i)g.moveTo(...p);else g.lineTo(...p);}for(let i=100;i>=0;i--){const p=bank(i/100);g.lineTo(p[0],p[1]+200);}g.closePath();});
+patt('ground/pasture_a-v1',()=>{g.beginPath();g.ellipse(565,565,280,110,-.1,0,Math.PI*2);});
+patt('ground/orchard_floor_a-v1',()=>{g.beginPath();g.ellipse(1055,280,280,105,.1,0,Math.PI*2);});
+function ribbon(ids,fn,steps=160){let dist=0;const available=ids.filter(id=>assets[id]);if(!available.length)return;for(let i=0;i<steps;i++){const p=fn(i/steps),q=fn((i+1)/steps),len=Math.hypot(q[0]-p[0],q[1]-p[1]);let offset=0;g.save();g.translate(...p);g.rotate(Math.atan2(q[1]-p[1],q[0]-p[0]));while(offset<len-.00001){const phase=dist+offset,im=assets[available[Math.floor(phase/512)%available.length]],sx=phase%512,sw=Math.min(len-offset,512-sx);g.drawImage(im,sx,0,sw,im.height,offset,-im.height/2,sw+.3,im.height);offset+=sw;}g.restore();dist+=len;}}
+ribbon(['road/earth_strip_a-v2','road/earth_strip_b-v2'],t=>[210+1080*t,250+85*Math.sin(t*Math.PI*2)]);
+ribbon(['shore/shoreline_a-v1'],bank);
+const place=(id,x,y,k=1)=>{let im=assets[id];if(im)g.drawImage(im,x-im.width*k/2,y-im.height*k,im.width*k,im.height*k);};
+place('prop/haycock_a-v1',440,570);place(assets['prop/haycock_b-v1']?'prop/haycock_b-v1':'prop/haycock_a-v1',625,635);place('prop/haycock_a-v1',750,570,.85);
+// Existing orchard is displayed at native113x80 to distinguish reference scale explicitly.
+for(let i=0;i<6;i++){let x=885+(i%3)*155+(i%2?10:-6),y=260+Math.floor(i/3)*95;if(i%2===0)place('tree/orchard_apple_c-v1',x,y,.36);else g.drawImage(oldTree,x-oldTree.width/2,y-oldTree.height);}
+if(assets['wall/palisade_face_a-v1']){g.save();g.transform(.375,-.1875,0,.7,160,470);for(let i=0;i<4;i++)g.drawImage(assets['wall/palisade_face_a-v1'],i*512,-128);g.restore();}
+if(assets['module/bridge_abutment_ne_a-v1'])g.drawImage(assets['module/bridge_abutment_ne_a-v1'],1002,402);
+g.restore();
+for(const [index,z] of [1,.6].entries()){const board=C(1120,800),bg=board.getContext('2d');fill(bg,0,0,1120,800,'#202a26');text(bg,`Wave4 family 검사 · 12×12 · 줌 ${z}`,25,38,26);text(bg,`원본 타일128×64 → 화면 ${64*z}×${32*z} / 에셋 배율 ${.5*z} / 오프라인 합성`,25,73,17);bg.drawImage(world,30,100,world.width*.5*z,world.height*.5*z);let tx=680;for(const id of ['prop/haycock_a-v1','prop/haycock_b-v1','tree/orchard_apple_c-v1']){const im=assets[id];if(im){bg.drawImage(im,tx,485-im.height*.5*z,im.width*.5*z,im.height*.5*z);tx+=im.width*.5*z+22;}}text(bg,'개별 형상: 원본 × '+(.5*z)+' (과수 추가 축소 없음)',650,520,15);text(bg,'흙길 · 물가/얕은 물 · 목초지/건초 · 과수원 · 목책 · 교대',25,675,18);text(bg,'색깔 표시는 교대 소켓. 신규/기존 과수 혼합. 검수 판정은 SELF_QA.md에 기록.',25,710,17);text(bg,`후보 ${cfg.assets.length}/12장. 신규 과수는 기존 과수 높이에 맞춰 추가 0.36배 배치. 게임 실행·DPR 성능 검증 아님.`,25,747,16);await save(board,index?'checks/03-scene-zoom06.png':'checks/02-scene-zoom1.png');}
+const strips=cfg.assets.filter(a=>a.role==='strip'),fills=cfg.assets.filter(a=>a.role==='fill');const repeat=C(2180,strips.reduce((h,a)=>h+a.size[1]+65,80)+fills.length*450+160),rg=repeat.getContext('2d');fill(rg,0,0,repeat.width,repeat.height,'#252e29');text(rg,'반복 검사 · strip X4 / fill 3×3 · 원본 픽셀 1:1',24,40,25);let y=80;
+for(const a of strips){text(rg,a.id+' — X only',24,y,18);const im=assets[a.id];fill(rg,24,y+12,2048,im.height,'#67755c');for(let i=0;i<4;i++)rg.drawImage(im,24+i*im.width,y+12);for(let i=1;i<4;i++){rg.strokeStyle='#d6b471';rg.beginPath();rg.moveTo(24+i*im.width,y+7);rg.lineTo(24+i*im.width,y+11);rg.stroke();}y+=im.height+65;}
+for(const a of fills){text(rg,a.id+' — XY',24,y,18);const im=assets[a.id];for(let yy=0;yy<3;yy++)for(let xx=0;xx<3;xx++)rg.drawImage(im,24+xx*im.width,y+12+yy*im.height);text(rg,'주기성은 seam 수치와 별도 시각 판정',840,y+55,20);y+=450;}
+rg.drawImage(oldRoad,24,y+10,256,32);rg.drawImage(assets['road/earth_strip_a-v2'],320,y+10,256,32);text(rg,'이전 v1 / 신규 v2 A · 0.5배 비교',600,y+35,18);y+=50;
+text(rg,'표시선은 그림 밖에만 배치. RGBA 경계 일치 및 내부 대비는 records/validation.json 참고.',24,y+35,18);await save(repeat,'checks/01-repeat.png');
+await fetch('/save/records%2Ftechnical-qa.json',{method:'POST',body:JSON.stringify({assets:metrics,partial:cfg.assets.length<12,scene:{logicalGrid:[12,12],tileSource:[128,64],zooms:[1,.6],sourceScale:[.5,.3],objectTreePlacementScale:.36,wallAffine:[.375,-.1875,0,.7,160,470],wallRepeats:4},previousRoadLoaded:true},null,2)});await fetch('/done');
+}catch(e){await fetch('/error',{method:'POST',body:e.stack||String(e)});}})();
+</script>

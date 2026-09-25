@@ -1,0 +1,747 @@
+{
+  "assets": 82,
+  "checks": 5,
+  "csvRows": 82,
+  "csvColumns": 20,
+  "fullPromptRoundtrip": true,
+  "files": [
+    {
+      "file": "bld/alehouse_a.png",
+      "width": 137,
+      "height": 137,
+      "transparentPixels": 9552,
+      "visiblePixels": 9217,
+      "xEndpointMaxRGBA": null,
+      "sha256": "21d18e57cf502b21559dbed0e9c43a75c895467967c62704e036a6682cf25520"
+    },
+    {
+      "file": "bld/alehouse_b.png",
+      "width": 137,
+      "height": 137,
+      "transparentPixels": 9599,
+      "visiblePixels": 9170,
+      "xEndpointMaxRGBA": null,
+      "sha256": "96b30a47828c925c469be6b1a4aa4d9bfe7f41a1a38d5058349020cf95fa94e6"
+    },
+    {
+      "file": "bld/brewhouse.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 11275,
+      "visiblePixels": 10485,
+      "xEndpointMaxRGBA": null,
+      "sha256": "8d0dcc7118a6c17f4f4d744d6580967fbb98f6efd60bada6034fc071620ab69b"
+    },
+    {
+      "file": "bld/cloth_hall.png",
+      "width": 200,
+      "height": 160,
+      "transparentPixels": 16338,
+      "visiblePixels": 15662,
+      "xEndpointMaxRGBA": null,
+      "sha256": "def9d60baad48d5722308f7274ded5e4b9111c80b597c4820bd959d021ad30e5"
+    },
+    {
+      "file": "bld/dyehouse_a.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 11554,
+      "visiblePixels": 10206,
+      "xEndpointMaxRGBA": null,
+      "sha256": "5a3d6dc7d4d31b22f91453599f42b6eccbb7e8b22f6635cc6c246090813ad34a"
+    },
+    {
+      "file": "bld/dyehouse_b.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 11411,
+      "visiblePixels": 10349,
+      "xEndpointMaxRGBA": null,
+      "sha256": "12b95535772714e0bfe7a91c10f1bca3bbf9bab95b254ba83dc4787fc868785d"
+    },
+    {
+      "file": "bld/dyehouse_state_active-overlay.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 20882,
+      "visiblePixels": 878,
+      "xEndpointMaxRGBA": null,
+      "sha256": "af616e6f306ec400dc52e0c25f2ac036ab41395308e57da0e95ec8df7ed675da"
+    },
+    {
+      "file": "bld/fulling_mill_nesw.png",
+      "width": 200,
+      "height": 160,
+      "transparentPixels": 16245,
+      "visiblePixels": 15755,
+      "xEndpointMaxRGBA": null,
+      "sha256": "924692a2c6491b041963fcfe5ea716690c4344b79a5149213496b68d9b5521c0"
+    },
+    {
+      "file": "bld/fulling_mill_nwse.png",
+      "width": 200,
+      "height": 160,
+      "transparentPixels": 16296,
+      "visiblePixels": 15704,
+      "xEndpointMaxRGBA": null,
+      "sha256": "85a158ba38a8c6845908da035d9ff0434d56ffa6b381536b872e09116170d1bf"
+    },
+    {
+      "file": "bld/fulling_mill_wheel_sheet.png",
+      "width": 256,
+      "height": 64,
+      "transparentPixels": 10944,
+      "visiblePixels": 5440,
+      "xEndpointMaxRGBA": null,
+      "sha256": "a925057d0175bd5224bb31fb4f93ee300b929208dc84cf9b158263e0015ba38e"
+    },
+    {
+      "file": "bld/malthouse_a.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 11342,
+      "visiblePixels": 10418,
+      "xEndpointMaxRGBA": null,
+      "sha256": "c41fcb44347568593d0407110f2bdf5402f2b0f77ced769baa7212156310a751"
+    },
+    {
+      "file": "bld/malthouse_b.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 13215,
+      "visiblePixels": 8545,
+      "xEndpointMaxRGBA": null,
+      "sha256": "a29f300d99a6435e9855d3db1e24ea0ceb955d0b859d6616f8b1955b5c152b84"
+    },
+    {
+      "file": "bld/shepherd_hut.png",
+      "width": 122,
+      "height": 122,
+      "transparentPixels": 7693,
+      "visiblePixels": 7191,
+      "xEndpointMaxRGBA": null,
+      "sha256": "29506fe186ca9d96dec0cd3b34e4aec93af4c56b3edb409d845265eef32bb221"
+    },
+    {
+      "file": "bld/weaver_house_a.png",
+      "width": 137,
+      "height": 137,
+      "transparentPixels": 9905,
+      "visiblePixels": 8864,
+      "xEndpointMaxRGBA": null,
+      "sha256": "1a447eb9406e497dee48e863136f31f083e9f01111893d86ab6b3280a960d6af"
+    },
+    {
+      "file": "bld/weaver_house_b.png",
+      "width": 137,
+      "height": 137,
+      "transparentPixels": 10381,
+      "visiblePixels": 8388,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2ba8c09b215cfa9d310aab87a5a39151dc55cd00beb25d27878b18fbc640e0cf"
+    },
+    {
+      "file": "bld/woolhouse.png",
+      "width": 160,
+      "height": 136,
+      "transparentPixels": 11658,
+      "visiblePixels": 10102,
+      "xEndpointMaxRGBA": null,
+      "sha256": "874bdc74800a5ba2dc136340e58dbd1df8a4608f911f995e07090d84911cba4f"
+    },
+    {
+      "file": "field/ridge_barley_growing_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "transparentPixels": 11413,
+      "visiblePixels": 21355,
+      "xEndpointMaxRGBA": 0,
+      "sha256": "e54ff0e94c84e4bae7c747fa06a28e7f9f83baa518070d1158e9a17bb96a80e4"
+    },
+    {
+      "file": "field/ridge_barley_growing_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "transparentPixels": 11853,
+      "visiblePixels": 20915,
+      "xEndpointMaxRGBA": 0,
+      "sha256": "b22794f4fd4deb371d2e1afd905c6356ab13af1529a9f73e2ad9116349b3cc2d"
+    },
+    {
+      "file": "field/ridge_barley_ripe_a-v1.png",
+      "width": 512,
+      "height": 64,
+      "transparentPixels": 10923,
+      "visiblePixels": 21845,
+      "xEndpointMaxRGBA": 0,
+      "sha256": "3c3dfdb0f858f637d33ae08b820e1f0a87dd57a2f982bab5d8a5d560a47a2e3c"
+    },
+    {
+      "file": "field/ridge_barley_ripe_b-v1.png",
+      "width": 512,
+      "height": 64,
+      "transparentPixels": 10539,
+      "visiblePixels": 22229,
+      "xEndpointMaxRGBA": 0,
+      "sha256": "484ef128832272452e4cb1fbdff54ea2c8d900b2f78172f02f6f09b92aad197f"
+    },
+    {
+      "file": "icons/icon_building_chain_sheet.png",
+      "width": 768,
+      "height": 96,
+      "transparentPixels": 41210,
+      "visiblePixels": 32518,
+      "xEndpointMaxRGBA": null,
+      "sha256": "4b5892f545773b37ea36fe4aa368ae28fdbece6a70a64f5ab6f7ddd2ede2f2ff"
+    },
+    {
+      "file": "icons/icon_resource_chain_sheet.png",
+      "width": 960,
+      "height": 96,
+      "transparentPixels": 53081,
+      "visiblePixels": 39079,
+      "xEndpointMaxRGBA": null,
+      "sha256": "df46184b01a2511c84270f251781c88b329e222342cff79a52bbab0fba55f490"
+    },
+    {
+      "file": "loads/cart_load_ale_barrels_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5465,
+      "visiblePixels": 679,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2fabbefc39d0777e24827bfbc78b4ed00eed14e4b226e7a17fd1f4537529fa02"
+    },
+    {
+      "file": "loads/cart_load_ale_barrels_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5425,
+      "visiblePixels": 719,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2dacbdd102f4a088aa44e788d98178ef4c5ce73ab2dbc34aff6bacaecf6eea2d"
+    },
+    {
+      "file": "loads/cart_load_barley_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5597,
+      "visiblePixels": 547,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2f56e5f1d9bee7f878f97dea5870da4b6b770c4165e6e1ab875eceb03021fd91"
+    },
+    {
+      "file": "loads/cart_load_barley_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5655,
+      "visiblePixels": 489,
+      "xEndpointMaxRGBA": null,
+      "sha256": "e04038dfc62d263037d98024485fd587ffc1a98bf7510eec9ab408ac27ab40c9"
+    },
+    {
+      "file": "loads/cart_load_cloth_dyed_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5483,
+      "visiblePixels": 661,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2b73490628fec1bd4bc6ce80fdce0f312a486c0b890750618882bba3454d159b"
+    },
+    {
+      "file": "loads/cart_load_cloth_dyed_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5437,
+      "visiblePixels": 707,
+      "xEndpointMaxRGBA": null,
+      "sha256": "d178d313f0ce58a948cf29ed53d9f797d372a4644f71c1591cf0734a205e0dee"
+    },
+    {
+      "file": "loads/cart_load_cloth_raw_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5503,
+      "visiblePixels": 641,
+      "xEndpointMaxRGBA": null,
+      "sha256": "dbc5e9eb070ce653b41c99892b1d40f729717be86c31abcf34f20decfbb6b10f"
+    },
+    {
+      "file": "loads/cart_load_cloth_raw_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5457,
+      "visiblePixels": 687,
+      "xEndpointMaxRGBA": null,
+      "sha256": "685d0af2450348118f616a025c2c154d8305910767d260cfdf2e9af4349b563c"
+    },
+    {
+      "file": "loads/cart_load_malt_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5537,
+      "visiblePixels": 607,
+      "xEndpointMaxRGBA": null,
+      "sha256": "1c25db03f62dbece64e302569425f948125be364e7d29d2b529026a4f9feb24b"
+    },
+    {
+      "file": "loads/cart_load_malt_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5410,
+      "visiblePixels": 734,
+      "xEndpointMaxRGBA": null,
+      "sha256": "8725a007d7c2dc413da76b39f429c90784492fc4d339db7f5a541ac75a03da3b"
+    },
+    {
+      "file": "loads/cart_load_wool_bales_ne-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5452,
+      "visiblePixels": 692,
+      "xEndpointMaxRGBA": null,
+      "sha256": "16772ed484e7fd9bbc1e979186ed1642a0fcfb662bcdcc294e450ae0bced6e8f"
+    },
+    {
+      "file": "loads/cart_load_wool_bales_nw-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5409,
+      "visiblePixels": 735,
+      "xEndpointMaxRGBA": null,
+      "sha256": "7636f25429f90d4290b4061777fbd7b1cf87cdf51d5c260db43e2d300206e37d"
+    },
+    {
+      "file": "pasture/shearing_pen-v1.png",
+      "width": 256,
+      "height": 192,
+      "transparentPixels": 24378,
+      "visiblePixels": 24774,
+      "xEndpointMaxRGBA": null,
+      "sha256": "e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058"
+    },
+    {
+      "file": "pasture/sheepfold-v1.png",
+      "width": 256,
+      "height": 192,
+      "transparentPixels": 31132,
+      "visiblePixels": 18020,
+      "xEndpointMaxRGBA": null,
+      "sha256": "254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824"
+    },
+    {
+      "file": "pasture/wash_pool-v1.png",
+      "width": 192,
+      "height": 128,
+      "transparentPixels": 14721,
+      "visiblePixels": 9855,
+      "xEndpointMaxRGBA": null,
+      "sha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f"
+    },
+    {
+      "file": "pile/ale_barrels_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5419,
+      "visiblePixels": 725,
+      "xEndpointMaxRGBA": null,
+      "sha256": "40e8ab1abcc6b8287d5191794a11106699da1cc9411ad9904d64ca87d1b07d85"
+    },
+    {
+      "file": "pile/ale_barrels_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4537,
+      "visiblePixels": 1607,
+      "xEndpointMaxRGBA": null,
+      "sha256": "6e968c43e62a3e0baf63f3dab1286aec1968743cb08d6697acadc13c9de49c9c"
+    },
+    {
+      "file": "pile/ale_barrels_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4334,
+      "visiblePixels": 1810,
+      "xEndpointMaxRGBA": null,
+      "sha256": "d4c64fe8baaacb65662dd62c506b4c453497e873d4908b085e74df5f0f82617c"
+    },
+    {
+      "file": "pile/barley_sacks_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5705,
+      "visiblePixels": 439,
+      "xEndpointMaxRGBA": null,
+      "sha256": "909855e7b84272c581e693a621fda1692de9af841a34df99cb8023790968ff06"
+    },
+    {
+      "file": "pile/barley_sacks_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4924,
+      "visiblePixels": 1220,
+      "xEndpointMaxRGBA": null,
+      "sha256": "100d3dc891e780897ed5e7e210764b8683ad28a2e7374ab3d4e0b7637bdf2ad3"
+    },
+    {
+      "file": "pile/barley_sacks_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4313,
+      "visiblePixels": 1831,
+      "xEndpointMaxRGBA": null,
+      "sha256": "3917b88d5dc2bf11ed988792f356d897b75093e5235b2379482148cf772f9d94"
+    },
+    {
+      "file": "pile/cloth_bolts_raw_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5210,
+      "visiblePixels": 934,
+      "xEndpointMaxRGBA": null,
+      "sha256": "8797cfbff38477a155e33f39763eb00f86bb69e77211676237ee7407f5bf899e"
+    },
+    {
+      "file": "pile/cloth_bolts_raw_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4863,
+      "visiblePixels": 1281,
+      "xEndpointMaxRGBA": null,
+      "sha256": "9d567c8bed22a67ccbbc37d426ba9ed4e6a452a1a9dc9c4089ca781f0fa1f65f"
+    },
+    {
+      "file": "pile/cloth_bolts_raw_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4869,
+      "visiblePixels": 1275,
+      "xEndpointMaxRGBA": null,
+      "sha256": "fef27aff37b185a670e9b5ed76f547c1305a3ec73d99c01452f3d8ce615758cc"
+    },
+    {
+      "file": "pile/fleece_heap_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5614,
+      "visiblePixels": 530,
+      "xEndpointMaxRGBA": null,
+      "sha256": "8661625dce9585ccd368c8ff65e097036d197440fd7d68596fe09ffed4984bd1"
+    },
+    {
+      "file": "pile/fleece_heap_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4775,
+      "visiblePixels": 1369,
+      "xEndpointMaxRGBA": null,
+      "sha256": "1b733f25ffc43bde189476c4095ace3872788b34e7434957929613d12d106724"
+    },
+    {
+      "file": "pile/fleece_heap_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4212,
+      "visiblePixels": 1932,
+      "xEndpointMaxRGBA": null,
+      "sha256": "3692f314f04f849fbad91375a43e81b01f01f46acbf99cfebab382c6fa64e358"
+    },
+    {
+      "file": "pile/malt_sacks_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5382,
+      "visiblePixels": 762,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2b16965e0433e92b20093173006f59e164d450d4af6f3bf3497f1664e3c12ed6"
+    },
+    {
+      "file": "pile/malt_sacks_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4717,
+      "visiblePixels": 1427,
+      "xEndpointMaxRGBA": null,
+      "sha256": "440a6c94cadc396f09ab9f0d1096a1e0b9511474b9156ab0982c0ea52968d806"
+    },
+    {
+      "file": "pile/malt_sacks_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 3647,
+      "visiblePixels": 2497,
+      "xEndpointMaxRGBA": null,
+      "sha256": "4019ed1b8292952454e223fa9afcb5a53bbe2badf2c122a42e7ac6b6980b322e"
+    },
+    {
+      "file": "pile/wool_bales_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5398,
+      "visiblePixels": 746,
+      "xEndpointMaxRGBA": null,
+      "sha256": "4a4396b9d20543f6e48854ff43a2498e9c8ee1af3702a960988b22a0b3d341e7"
+    },
+    {
+      "file": "pile/wool_bales_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4669,
+      "visiblePixels": 1475,
+      "xEndpointMaxRGBA": null,
+      "sha256": "49b79e2cedc94b48711297c3be36f2c47664d6fa5a11c1c611e43df8ceef01cf"
+    },
+    {
+      "file": "pile/wool_bales_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 3925,
+      "visiblePixels": 2219,
+      "xEndpointMaxRGBA": null,
+      "sha256": "0ba97091b0acfc0dd7b77bbc3328f95409c80c49dfdae0284efc37aeb91ccf4e"
+    },
+    {
+      "file": "pile/yarn_skeins_1-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 5207,
+      "visiblePixels": 937,
+      "xEndpointMaxRGBA": null,
+      "sha256": "ab4d4af4481222bcce03ecc20174ad3acd9057243d35103846c06daba231268b"
+    },
+    {
+      "file": "pile/yarn_skeins_2-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4734,
+      "visiblePixels": 1410,
+      "xEndpointMaxRGBA": null,
+      "sha256": "43eb0888eee5e4fb610c7c0448a266cdbde33422337c3a3c5cdc6fffd1cdbf63"
+    },
+    {
+      "file": "pile/yarn_skeins_3-v1.png",
+      "width": 96,
+      "height": 64,
+      "transparentPixels": 4484,
+      "visiblePixels": 1660,
+      "xEndpointMaxRGBA": null,
+      "sha256": "ccd75c2da07c89165a1d90e593f9371e95f19459cd96184ffbe1139e565e566f"
+    },
+    {
+      "file": "props/work_distaff_ne-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 923,
+      "visiblePixels": 101,
+      "xEndpointMaxRGBA": null,
+      "sha256": "7c52a85b4745ee7e855f833fedeb36fada1faaabbd8e20c7d020752c868dfcdf"
+    },
+    {
+      "file": "props/work_distaff_nw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 914,
+      "visiblePixels": 110,
+      "xEndpointMaxRGBA": null,
+      "sha256": "2f9a466f67b9e694c99ce437db876c62ccca6a7a4a966a10ee0c82d8093d7dd7"
+    },
+    {
+      "file": "props/work_distaff_se-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 910,
+      "visiblePixels": 114,
+      "xEndpointMaxRGBA": null,
+      "sha256": "955e34b2de405be411909ad884a88373d55bb760be40ec93bc7909eb05e51d40"
+    },
+    {
+      "file": "props/work_distaff_sw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 907,
+      "visiblePixels": 117,
+      "xEndpointMaxRGBA": null,
+      "sha256": "6b650f813f0fedd47bc7853e60a64bfba989d3c78a7d075d0bb0905b7a4cb794"
+    },
+    {
+      "file": "props/work_dye_paddle_ne-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 962,
+      "visiblePixels": 62,
+      "xEndpointMaxRGBA": null,
+      "sha256": "8a586e3462b3ccd00e1405ade76043c8c4c584f240234954b4158b28c7cb5504"
+    },
+    {
+      "file": "props/work_dye_paddle_nw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 969,
+      "visiblePixels": 55,
+      "xEndpointMaxRGBA": null,
+      "sha256": "12cfeca936719018e8058fe15a5296eb7da0c0a517604bfe82d5866775dea133"
+    },
+    {
+      "file": "props/work_dye_paddle_se-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 977,
+      "visiblePixels": 47,
+      "xEndpointMaxRGBA": null,
+      "sha256": "662644b08e09e7c3cf60f1bed6581fda271be59b0645a7c9985c43411aa513e9"
+    },
+    {
+      "file": "props/work_dye_paddle_sw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 981,
+      "visiblePixels": 43,
+      "xEndpointMaxRGBA": null,
+      "sha256": "cb2dcadcadf633d22fbaa7e95ef1e6bf697385e2b068e5ce9d48125071da93b5"
+    },
+    {
+      "file": "props/work_shears_ne-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 911,
+      "visiblePixels": 113,
+      "xEndpointMaxRGBA": null,
+      "sha256": "8c5c0c7665bab11d97171dabddc268a99621f49fa1b59e35eafbe5905d2adae0"
+    },
+    {
+      "file": "props/work_shears_nw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 926,
+      "visiblePixels": 98,
+      "xEndpointMaxRGBA": null,
+      "sha256": "da3d50a553737949bb5b222b9979062ee73283d1e042deae025f0b237c4fccd5"
+    },
+    {
+      "file": "props/work_shears_se-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 931,
+      "visiblePixels": 93,
+      "xEndpointMaxRGBA": null,
+      "sha256": "42dbc4d7b54689631da275d7dab966dbc6b81eba4bee34a4df9ee573455e54c6"
+    },
+    {
+      "file": "props/work_shears_sw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 961,
+      "visiblePixels": 63,
+      "xEndpointMaxRGBA": null,
+      "sha256": "fd14c249938e58bde90be917e3338a8840ee089f2e1e1cd4e2b2e67731f843e7"
+    },
+    {
+      "file": "props/work_shepherd_crook_ne-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 969,
+      "visiblePixels": 55,
+      "xEndpointMaxRGBA": null,
+      "sha256": "1b37582a3efeee6846f56ab24409b7ba78b6638fe67f3b84540c455295fb8d23"
+    },
+    {
+      "file": "props/work_shepherd_crook_nw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 960,
+      "visiblePixels": 64,
+      "xEndpointMaxRGBA": null,
+      "sha256": "0ce88ad1694d181d34c81f831be32350a9c6cde61f38805ad96ad2998f085df0"
+    },
+    {
+      "file": "props/work_shepherd_crook_se-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 972,
+      "visiblePixels": 52,
+      "xEndpointMaxRGBA": null,
+      "sha256": "dca8cb8d396093d581a9831a277a9cf7e460bac1fd3a3fb5a29d7fd67c4dd0eb"
+    },
+    {
+      "file": "props/work_shepherd_crook_sw-v1.png",
+      "width": 32,
+      "height": 32,
+      "transparentPixels": 964,
+      "visiblePixels": 60,
+      "xEndpointMaxRGBA": null,
+      "sha256": "768d6ef04ddad3acdeefa0945816200bac78549c308423c361e0c1cb7cc807c5"
+    },
+    {
+      "file": "workers/wk_alewife-v1.png",
+      "width": 312,
+      "height": 156,
+      "transparentPixels": 38088,
+      "visiblePixels": 10584,
+      "xEndpointMaxRGBA": null,
+      "sha256": "7a0af84bf045cb86f027fbc863e296739f23b3714dbc3456b3f1f479c4132a32"
+    },
+    {
+      "file": "workers/wk_fuller-v1.png",
+      "width": 294,
+      "height": 147,
+      "transparentPixels": 32971,
+      "visiblePixels": 10247,
+      "xEndpointMaxRGBA": null,
+      "sha256": "22e285bb41e2db2f0ae4eafdbe63ec6e47c4ea938edfb561c427416ae7e26db7"
+    },
+    {
+      "file": "workers/wk_maltster-v1.png",
+      "width": 294,
+      "height": 147,
+      "transparentPixels": 32971,
+      "visiblePixels": 10247,
+      "xEndpointMaxRGBA": null,
+      "sha256": "51a88b5419c7183aa54a4bb860e06c27e60a79edf4cb92743a6fac3cd2bb6a65"
+    },
+    {
+      "file": "workers/wk_shepherd-v1.png",
+      "width": 294,
+      "height": 147,
+      "transparentPixels": 32971,
+      "visiblePixels": 10247,
+      "xEndpointMaxRGBA": null,
+      "sha256": "1c3e5e964495758ed80aee55f434c4698c560762db4a5b98345cf08833e14d49"
+    },
+    {
+      "file": "workers/wk_wool_merchant-v1.png",
+      "width": 285,
+      "height": 142,
+      "transparentPixels": 29891,
+      "visiblePixels": 10579,
+      "xEndpointMaxRGBA": null,
+      "sha256": "6ea88d26c798aca68fe8877af25ae826076bb506ccea66e6dfae2bd3079f2a2c"
+    },
+    {
+      "file": "yard/tenter_frames_a-v1.png",
+      "width": 384,
+      "height": 192,
+      "transparentPixels": 60538,
+      "visiblePixels": 13190,
+      "xEndpointMaxRGBA": null,
+      "sha256": "958430122112831e3674bb54d29d267b03a3d098a335df674f32bbb9a9ae937b"
+    },
+    {
+      "file": "yard/tenter_frames_b-v1.png",
+      "width": 384,
+      "height": 192,
+      "transparentPixels": 51505,
+      "visiblePixels": 22223,
+      "xEndpointMaxRGBA": null,
+      "sha256": "d1467b6d2f2c4678f26aca2c27f3b715424c6d47c280256f651555aab1623ac9"
+    },
+    {
+      "file": "yard/tenter_frames_dyed-v1.png",
+      "width": 384,
+      "height": 192,
+      "transparentPixels": 51124,
+      "visiblePixels": 22604,
+      "xEndpointMaxRGBA": null,
+      "sha256": "982f05b4fe07ab217511e669057e609d2715142cf36f9a65055216ef906f3604"
+    }
+  ]
+}

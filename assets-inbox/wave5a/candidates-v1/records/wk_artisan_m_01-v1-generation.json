@@ -1,0 +1,11 @@
+{
+  "id": "wk_artisan_m_01-v1",
+  "prompt": "Use case: identity-preserve, precise-object-edit. EDIT the ATTACHED EXISTING WALKER TEMPLATE, not free generation. wk_artisan_m_01-v1. Change ONLY clothing/headwear to muted olive green knee tunic, low round grey felt cap, tan leather working apron. Preserve original exact eight cell positions, original headcenter, face, handpositions, footpixels and all anatomical poses. 4 columns NE SE SW NW and 2 rows frame0 frame1 unchanged. Same person seen in all8cells, same clothes and headwear. Historical southernEngland1300-1450, low saturation woad/madder/weld/natural wool, hand-painted sprite style same as input. No props or bags, original emptyhands. No modern features,no lettering,no ground. True transparentRGBA. Do not resize/recenter anyfigure. Strict referencepixel pose template: clothes/headwear edit only; no differentgait. Skin/feet/handpixels must remainoriginal.",
+  "refs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave5a-candidates-v1/templates/actor_civilian_man-v1.png"
+  ],
+  "tool": "image_gen built-in EDIT",
+  "model": null,
+  "seed": null,
+  "outputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-6ec0-7401-9af7-3d8334e972ba as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d709-6ec0-7401-9af7-3d8334e972ba/exec-3cb2602e-d001-4c41-8fb4-6aae578a8c90.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+}

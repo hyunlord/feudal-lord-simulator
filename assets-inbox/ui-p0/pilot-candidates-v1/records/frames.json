@@ -1,0 +1,246 @@
+[
+  {
+    "id": "ui/frame_panel_light",
+    "file": "assets/ui/frame_panel_light.png",
+    "width": 192,
+    "height": 192,
+    "role": "frame_panel_light",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. Produce ONE reusable blank square UI panel asset ONLY, front-facing no perspective. Style reference attached is our own medieval England hand-painted game building palette, NOT subject. 80% functional flat UI,20% restrained manuscript edge. Warm off-white center perfectly flat uniform #E1D1AE, no grain or stains in reading area. Delicate ink-brown double-line rectangular border. Tiny sober hand-painted manuscript curls ONLY inside each corner occupying at most outer 1/6 width. All four middle edges straight uninterrupted stretchable. No bevel, glow, shadows, text, numbers, symbols, bars, icons, selection or focus highlight. Panel fills canvas edge-to-edge, no outside margin. Square intended downsample192x192 with32pxcornercaps. Entire background opaque panel fill. Exact clean geometry and unobtrusive thin boundary. No heavy fantasy ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/frame_panel_light-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-77834841-4e12-4ba2-9b6c-13f8c2666949.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5,
+      "method": "standard"
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": ""
+    }
+  },
+  {
+    "id": "ui/frame_panel_dark",
+    "file": "assets/ui/frame_panel_dark.png",
+    "width": 192,
+    "height": 192,
+    "role": "frame_panel_dark",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. NEW single reusable UI raster asset. Attached input is approved palette and thin manuscript edge FAMILY reference. 192x192 square dark panel, perfectly flat uniform oak #514334 center, no wood grain. Fine warm parchment thin line ONLY upper edge with tiny corner manuscript curls at upper corners. All other sides plain fine dark ink line. No ornament on bottom. 80% functional clean reading area,20% historicaledge ONLY. Orthographic front-on perfectlyalignedrectangle fills entireimagewithoutoutside margin. NO text,numbers,bar interiors, selectionrectangles,highlights,watermarks,objects. Match subtlelineweightandmutedwarmcolors. Minimal sober medievalSouthernEngland1300-1450 manuscript aesthetic, not fantasy game ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/sources/frames/frame_panel_light-raw.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/frame_panel_dark-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-5550a681-71c3-4dd2-8d29-892840fdc58f.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": {
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 24,
+      "sourceScale": 2,
+      "renderCapScale": 0.5,
+      "method": "standard"
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": ""
+    }
+  },
+  {
+    "id": "ui/frame_objective",
+    "file": "assets/ui/frame_objective.png",
+    "width": 256,
+    "height": 256,
+    "role": "frame_objective",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. NEW single reusable UI raster asset. Attached input is approved palette and thin manuscript edge FAMILY reference. 256x256 square objective panel flat warm #E1D1AE center, thin manuscript border; ONLY ONE tiny ink-brown leaf curl at TOP LEFT. Other corners completely plain. No symbols in center. 80% functional clean reading area,20% historicaledge ONLY. Orthographic front-on perfectlyalignedrectangle fills entireimagewithoutoutside margin. NO text,numbers,bar interiors, selectionrectangles,highlights,watermarks,objects. Match subtlelineweightandmutedwarmcolors. Minimal sober medievalSouthernEngland1300-1450 manuscript aesthetic, not fantasy game ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/sources/frames/frame_panel_light-raw.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/frame_objective-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-8c5d742a-d423-40a5-b6d7-e694edbb31be.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5,
+      "method": "standard"
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": ""
+    }
+  },
+  {
+    "id": "ui/frame_advisor",
+    "file": "assets/ui/frame_advisor.png",
+    "width": 256,
+    "height": 192,
+    "role": "frame_advisor",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. NEW single reusable UI raster asset. Attached input is approved palette and thin manuscript edge FAMILY reference. 256x192 landscape advisor panel. FLAT warm offwhite rectangular blank body. Left side circular EMPTY portrait slot exactly96x96 proportion relative256x192 body, centered x56 y96 (on256x192coordinate). Ring thin inkbrown, EMPTY interior warm flat no portrait. Tiny brick red wax seal motif at lower right corner ONLY. Ring is fullyinsideleft112px. Straight thin border. No scrollcurl outside frame. No text. 80% functional clean reading area,20% historicaledge ONLY. Orthographic front-on perfectlyalignedrectangle fills entireimagewithoutoutside margin. NO text,numbers,bar interiors, selectionrectangles,highlights,watermarks,objects. Match subtlelineweightandmutedwarmcolors. Minimal sober medievalSouthernEngland1300-1450 manuscript aesthetic, not fantasy game ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/sources/frames/frame_panel_light-raw.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/frame_advisor-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-01d434b0-1d08-4bfe-8115-76c1b3d16ffe.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": {
+      "left": 32,
+      "top": 32,
+      "right": 32,
+      "bottom": 32,
+      "sourceScale": 2,
+      "renderCapScale": 0.5,
+      "method": "Nine-slice blank body plus fixed 96x96 source circle inserted at 16,48; at logical1x circle48x48. See frames-render.cjs."
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": "Generic nine-slice alone distorts portrait: supplied fixed-circle compositor is required."
+    }
+  },
+  {
+    "id": "ui/button_primary_base",
+    "file": "assets/ui/button_primary_base.png",
+    "width": 128,
+    "height": 72,
+    "role": "button_primary_base",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. NEW single reusable UI raster asset. Attached input is approved palette and thin manuscript edge FAMILY reference. 128x72 landscape button base. Perfectly flat uniform warm parchment center, fine oakbrown boundary with subtle manuscript ink littlecornernotches confinedouter8px. No icon, no lettering, no hover highlight, no shadows, no bevel. 80% functional clean reading area,20% historicaledge ONLY. Orthographic front-on perfectlyalignedrectangle fills entireimagewithoutoutside margin. NO text,numbers,bar interiors, selectionrectangles,highlights,watermarks,objects. Match subtlelineweightandmutedwarmcolors. Minimal sober medievalSouthernEngland1300-1450 manuscript aesthetic, not fantasy game ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/sources/frames/frame_panel_light-raw.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/button_primary_base-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-4dde9b6f-b85c-4a22-a643-5685307382ca.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 0.5,
+      "method": "standard"
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": ""
+    }
+  },
+  {
+    "id": "ui/button_icon_square_base",
+    "file": "assets/ui/button_icon_square_base.png",
+    "width": 72,
+    "height": 72,
+    "role": "button_icon_square_base",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. NEW single reusable UI raster asset. Attached input is approved palette and thin manuscript edge FAMILY reference. 72x72 square icon button base. Perfectly flat parchment empty center, fine oakbrown handinkedboundary, minute cornernotch. No icons or text. NO selectionhighlight or shadow. 80% functional clean reading area,20% historicaledge ONLY. Orthographic front-on perfectlyalignedrectangle fills entireimagewithoutoutside margin. NO text,numbers,bar interiors, selectionrectangles,highlights,watermarks,objects. Match subtlelineweightandmutedwarmcolors. Minimal sober medievalSouthernEngland1300-1450 manuscript aesthetic, not fantasy game ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/sources/frames/frame_panel_light-raw.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/button_icon_square_base-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-28abdab5-5c5e-459a-ac2a-104903d12793.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": {
+      "left": 12,
+      "top": 12,
+      "right": 12,
+      "bottom": 12,
+      "sourceScale": 2,
+      "renderCapScale": 0.5,
+      "method": "standard"
+    },
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": ""
+    }
+  },
+  {
+    "id": "ui/texture_vellum_light",
+    "file": "assets/ui/texture_vellum_light.png",
+    "width": 256,
+    "height": 256,
+    "role": "texture_vellum_light",
+    "status": "candidate",
+    "generationRecords": {
+      "prompt": "Use case: ui-mockup. NEW single reusable UI raster asset. Attached input is approved palette and thin manuscript edge FAMILY reference. 256x256 square seamless tile light vellum. NO border, NOcorners, NO decorativeelements. Extremely subtle broad low frequency paper texture on #E1D1AE, tonal variation less than3levelsRGB, visuallyalmostflat. Even light. Seamless alloppositeedges. 80% functional clean reading area,20% historicaledge ONLY. Orthographic front-on perfectlyalignedrectangle fills entireimagewithoutoutside margin. NO text,numbers,bar interiors, selectionrectangles,highlights,watermarks,objects. Match subtlelineweightandmutedwarmcolors. Minimal sober medievalSouthernEngland1300-1450 manuscript aesthetic, not fantasy game ornament.",
+      "inputImages": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/sources/frames/frame_panel_light-raw.png"
+      ],
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": null,
+      "raw": "sources/frames/texture_vellum_light-raw.png",
+      "originalPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-6ee9-7670-8311-768b3e7616aa/exec-5727072c-011f-41b9-888c-562e26d0aeac.png"
+    },
+    "processing": "Generated original preserved; downsample to requested canvas; flat reading field normalized to palette. Generated corner art and edge retained. Vellum contrast compressed and opposing terminal pixel rows/columns matched.",
+    "nineSlice": null,
+    "qa": {
+      "text": "none",
+      "numbers": "none",
+      "barInterior": "none",
+      "center": "flat",
+      "limitations": ""
+    }
+  }
+]

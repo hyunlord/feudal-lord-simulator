@@ -1,0 +1,192 @@
+[
+  {
+    "id": "frame_hud_strip_top",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_hud_strip_bottom",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_panel_light",
+    "width": 192,
+    "height": 192,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_panel_dark",
+    "width": 192,
+    "height": 192,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_objective_normal",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_objective_complete",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_objective_warn",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_advisor_normal",
+    "width": 256,
+    "height": 192,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_advisor_warn",
+    "width": 256,
+    "height": 192,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "advisor_portrait_frame",
+    "width": 192,
+    "height": 192,
+    "alphaCenter": 0
+  },
+  {
+    "id": "frame_tooltip",
+    "width": 128,
+    "height": 128,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "frame_modal",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "button_primary_base",
+    "width": 128,
+    "height": 72,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "button_secondary_base",
+    "width": 128,
+    "height": 72,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "button_icon_square_base",
+    "width": 72,
+    "height": 72,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "tab_build_base",
+    "width": 144,
+    "height": 72,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "chip_condition_base",
+    "width": 144,
+    "height": 48,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "texture_vellum_light",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "seamMaximumRGBA": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  {
+    "id": "texture_vellum_dark",
+    "width": 256,
+    "height": 256,
+    "alphaCenter": 255,
+    "seamMaximumRGBA": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  {
+    "id": "divider_manuscript_light",
+    "width": 128,
+    "height": 16,
+    "alphaCenter": 45,
+    "seamMaximumRGBA": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  {
+    "id": "divider_manuscript_dark",
+    "width": 128,
+    "height": 16,
+    "alphaCenter": 67,
+    "seamMaximumRGBA": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  {
+    "id": "banner_unlock",
+    "width": 800,
+    "height": 128,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  },
+  {
+    "id": "toast_small",
+    "width": 640,
+    "height": 96,
+    "alphaCenter": 255,
+    "fixedCornerEqual": true,
+    "allFourCornersEqual": true
+  }
+]

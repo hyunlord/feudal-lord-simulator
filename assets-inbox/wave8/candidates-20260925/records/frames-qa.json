@@ -1,0 +1,146 @@
+[
+  {
+    "id": "frame_season_ledger",
+    "size": [
+      512,
+      384
+    ],
+    "target": [
+      768,
+      576
+    ],
+    "cornerRGBAmaxDifference": 0,
+    "cornerChannelsCompared": 358560,
+    "status": "pass",
+    "insets": [
+      460,
+      136,
+      38,
+      44
+    ],
+    "minSize": [
+      512,
+      384
+    ]
+  },
+  {
+    "id": "frame_chronicle_page",
+    "size": [
+      512,
+      640
+    ],
+    "target": [
+      768,
+      960
+    ],
+    "cornerRGBAmaxDifference": 0,
+    "cornerChannelsCompared": 75600,
+    "status": "pass",
+    "insets": [
+      66,
+      112,
+      24,
+      98
+    ],
+    "minSize": [
+      512,
+      640
+    ]
+  },
+  {
+    "id": "frame_petition",
+    "size": [
+      384,
+      256
+    ],
+    "target": [
+      576,
+      384
+    ],
+    "cornerRGBAmaxDifference": 0,
+    "cornerChannelsCompared": 160912,
+    "status": "pass",
+    "insets": [
+      128,
+      172,
+      50,
+      54
+    ],
+    "minSize": [
+      384,
+      256
+    ]
+  },
+  {
+    "id": "frame_objective_drawer",
+    "size": [
+      256,
+      512
+    ],
+    "target": [
+      384,
+      768
+    ],
+    "cornerRGBAmaxDifference": 0,
+    "cornerChannelsCompared": 45568,
+    "status": "pass",
+    "insets": [
+      154,
+      40,
+      24,
+      24
+    ],
+    "minSize": [
+      256,
+      512
+    ]
+  },
+  {
+    "id": "frame_minimap",
+    "size": [
+      256,
+      256
+    ],
+    "target": [
+      384,
+      384
+    ],
+    "cornerRGBAmaxDifference": 0,
+    "cornerChannelsCompared": 44880,
+    "status": "pass",
+    "insets": [
+      146,
+      42,
+      24,
+      24
+    ],
+    "minSize": [
+      256,
+      256
+    ]
+  },
+  {
+    "id": "frame_overlay_legend",
+    "size": [
+      192,
+      256
+    ],
+    "target": [
+      288,
+      384
+    ],
+    "cornerRGBAmaxDifference": 0,
+    "cornerChannelsCompared": 5120,
+    "status": "pass",
+    "insets": [
+      16,
+      24,
+      16,
+      16
+    ],
+    "minSize": [
+      192,
+      256
+    ]
+  }
+]

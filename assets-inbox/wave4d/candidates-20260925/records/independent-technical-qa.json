@@ -1,0 +1,293 @@
+{
+  "assetCount": 22,
+  "pngCount": 25,
+  "assets": [
+    {
+      "id": "wall/stone_face_a-v2",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 255,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "da62cc62342d5e5b0c909c850c7c9d990dbeeda62502211dc235c300fe2f9c1c"
+    },
+    {
+      "id": "wall/stone_face_b-v2",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 255,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "81033b1d780b6b6cec17ec020a7c7d68452fbffe3dc2f2539e3856ef5c934755"
+    },
+    {
+      "id": "wall/stone_face_c-v2",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 255,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "0c7b85888ea4c8c8b3ca23904669f66c05a13cfaa23b41bc2c5f0b243a1a8917"
+    },
+    {
+      "id": "wall/stone_top_a-v1",
+      "size": [
+        512,
+        48
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 113,
+      "alphaMin": 186,
+      "alphaMax": 253,
+      "sha256": "9762b7265c362f040bf6ef922ef1567232a19fa8d8c2ac84629d2db11f295751"
+    },
+    {
+      "id": "wall/stone_top_b-v1",
+      "size": [
+        512,
+        48
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 116,
+      "alphaMin": 181,
+      "alphaMax": 254,
+      "sha256": "261428e9fb88bd3de9f14b67976fac455e6d40dfe16788fa33f17d5c4b8d53c0"
+    },
+    {
+      "id": "wall/stone_face_diag_top-v1",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 128,
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "sha256": "0b572589f3abbbe3ae5110e786bffb870ebcfe489d4b04e109f1325121ceb774"
+    },
+    {
+      "id": "wall/stone_tower_corner-v1",
+      "size": [
+        1774,
+        887
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "27af40224b1be9ecd7e46f74db626faf1de83ca623b60c6e2bb1ed86a700ad53"
+    },
+    {
+      "id": "wall/palisade_face_a-v2",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 255,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "11df8678fd92866e0b48e313a284ee549519cf6918778d94d2f6293e219834d9"
+    },
+    {
+      "id": "wall/palisade_face_b-v2",
+      "size": [
+        512,
+        128
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 255,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "5426ebe2a639d809a13c70e9833edcc370ce603fd87de58c9d8969c5163b3069"
+    },
+    {
+      "id": "wall/palisade_top-v1",
+      "size": [
+        512,
+        48
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "bca0edb8271d6a24ab523cffc5d9b795428a87b87d2f8bd9bb4df4641584eedb"
+    },
+    {
+      "id": "wall/palisade_face_diag_top-v1",
+      "size": [
+        512,
+        64
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "a2b9286656fcd1bb8216ddce2250bee767c026cde81577571a13413755faba98"
+    },
+    {
+      "id": "water/deep_a-v1",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "sha256": "6e75254ff53937623e95da192da448cff58695fceff6263d5e1fbdadb1f81ed7"
+    },
+    {
+      "id": "water/deep_b-v1",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "sha256": "f6a2d4de1c4f9985fb058b6eb3439232e7f286db2166f6f5a7f678f152839eb2"
+    },
+    {
+      "id": "water/deep_c-v1",
+      "size": [
+        256,
+        128
+      ],
+      "repeat": "XY",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 255,
+      "alphaMax": 255,
+      "sha256": "e9421915c368cca4259ac60ff153e87dda99ba80f0999038b6126cb548d051a8"
+    },
+    {
+      "id": "shore/shoreline_e-v1",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "c356222ede7dbad723c7462c54de85c57a41b8f330259e519edb0824afc33438"
+    },
+    {
+      "id": "shore/shoreline_f-v1",
+      "size": [
+        512,
+        96
+      ],
+      "repeat": "X",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 97,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "b64523339bf2960bfc466c87cc176b4d5ec67f2aef26cbfedbe717fd8c74219a"
+    },
+    {
+      "id": "shore/reeds_a-v1",
+      "size": [
+        96,
+        96
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "c3ae2f3cb31e50a81cd488363cf9ad19eb48b846307819bd48a726df8cf9e327"
+    },
+    {
+      "id": "shore/reeds_b-v1",
+      "size": [
+        96,
+        96
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "ae74081b35691bdcf37b6797c99cfc3dde132cd9ee99b1efbea00b3881808c5b"
+    },
+    {
+      "id": "shore/reeds_c-v1",
+      "size": [
+        96,
+        96
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "a14a51e9d77e81f86fd3b4a0a72d0ee6003b3cd80cd45c5647d9c24dd9308a8d"
+    },
+    {
+      "id": "shore/mudstone_a-v1",
+      "size": [
+        64,
+        48
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "c976d33a98ecb78123410a905018b5a553a47328bc3b42025f46decf7e5b46d0"
+    },
+    {
+      "id": "shore/mudstone_b-v1",
+      "size": [
+        64,
+        48
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "sha256": "ccaac4db5f41dfb07b360432e3f797029c9764d4ec15838e00c7364acd8c3cf1"
+    },
+    {
+      "id": "module/bridge_abutment_se_a-v1",
+      "size": [
+        256,
+        192
+      ],
+      "repeat": "none",
+      "edgeDeltaX": 0,
+      "edgeDeltaY": 0,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "7b126c2afdd3e38a029959e32339bf179e4ae973e760242d46ade4ba217ae9f4"
+    }
+  ],
+  "limitations": "Edge equality is not proof of invisible texture repetition. Offline candidate checks only."
+}

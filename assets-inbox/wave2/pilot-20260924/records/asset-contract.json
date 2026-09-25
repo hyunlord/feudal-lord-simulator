@@ -1,0 +1,147 @@
+{
+  "status": "candidate",
+  "baselineRepository": "/Users/rexxa/github/feudal-lord-simulator-playable",
+  "baselineCommit": "403cfa9",
+  "house": {
+    "referencePixelSize": [
+      137,
+      137
+    ],
+    "referenceCrop": [
+      14.421052631578947,
+      6.773524720893142,
+      113.07416267942584,
+      125.31020733652312
+    ],
+    "pivot": [
+      70.95813397129187,
+      132.08373205741626
+    ],
+    "sourcePixelToScreenAtZoom1": 0.4980801861842801,
+    "referenceCropDisplay": [
+      56.32,
+      62.41453140096618
+    ],
+    "fullCanvasPreview": false,
+    "cropNote": "All street and silhouette sprites use the same legacy L2 crop, pivot and screen density. Reference pixels beyond legacy crop are clipped exactly as the renderer does. No per-candidate normalization during preview.",
+    "paddingException": "User explicitly authorized only house bottom4px, top/left/right8px"
+  },
+  "assets": [
+    {
+      "assetId": "house_l2_brewer-pilot",
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "padding": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 4
+      }
+    },
+    {
+      "assetId": "house_l2_weaver-pilot",
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "padding": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 4
+      }
+    },
+    {
+      "assetId": "house_l2_garden-pilot",
+      "size": [
+        137,
+        137
+      ],
+      "pivot": [
+        70.95813397129187,
+        132.08373205741626
+      ],
+      "padding": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 4
+      }
+    },
+    {
+      "assetId": "wheat_farm_pastoral_ripe-pilot",
+      "size": [
+        384,
+        192
+      ],
+      "pivot": [
+        191.56708004509582,
+        183.99098083427282
+      ],
+      "padding": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 8
+      }
+    },
+    {
+      "assetId": "well_b-pilot",
+      "size": [
+        72,
+        80
+      ],
+      "pivot": [
+        36,
+        64
+      ],
+      "padding": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 8
+      }
+    },
+    {
+      "assetId": "market_active_b-pilot",
+      "size": [
+        224,
+        224
+      ],
+      "pivot": [
+        114.59011164274322,
+        213.6395534290271
+      ],
+      "padding": {
+        "left": 8,
+        "right": 8,
+        "top": 8,
+        "bottom": 8
+      }
+    }
+  ],
+  "userException": "주택 3종 하단만 약4px; 좌우·상단8px; L2 137×137 피벗 약70.96,132.08 우선",
+  "evidence": [
+    "src/render/historicalHouseAssetManifest.generated.ts:historicalHouseAssetManifest",
+    "src/render/historicalHouseAssets.ts:historicalHouseSpriteRect",
+    "src/render/runtimeAssetCoordinates.ts:runtimeAssetCrop",
+    "src/render/worldSprite.ts:destinationRect",
+    "src/render/farmGeometry.ts:FARM_REGISTRATION",
+    "src/render/farmAssets.ts:drawFarmDetail"
+  ],
+  "limitations": [
+    "PNG does not encode runtime pivot; this sidecar is the candidate contract.",
+    "Farm uses a layered, piecewise-scaled current renderer; flattened candidate is not verified as a drop-in replacement.",
+    "Equal pivot and crop do not imply equal painted main-body extents."
+  ]
+}

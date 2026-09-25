@@ -1,0 +1,407 @@
+[
+  {
+    "id": "field/ridge_barley_ripe_a-v1",
+    "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.",
+    "refs": [
+      "ridge_barley_ripe_a-v1.png"
+    ],
+    "width": 512,
+    "height": 64,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-f0fd9acc-1047-4a8f-a82d-e2839e475389.png",
+    "generatedAt": "2026-09-25T15:33:14.234Z",
+    "selectionReason": "Independent visual review correction: asymmetrical drooping heads and long awns, no paired fans.",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/field/ridge_barley_ripe_a-v1.png",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      237,
+      2172,
+      237
+    ],
+    "pivot": [
+      256,
+      32
+    ],
+    "manualEdits": "Canvas alpha-bounds crop, one resample to 512x48 inside 512x64; 8px Y margin/fade; deterministic 16px X-edge color/alpha cross-blend, exact endpoint equality. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "04df51063cc252947a1a2bfb7ffdf6d07be07c71e9753c9e318dc93af202d22f",
+    "runtimeSha256": "3c3dfdb0f858f637d33ae08b820e1f0a87dd57a2f982bab5d8a5d560a47a2e3c",
+    "attempts": [
+      {
+        "prompt": "ROLE strip. Historical-scene game asset, southern England 1300-1450, hand-painted citybuilder matching attached project ridge reference palette/brushwork. ONE barley growing ridge strip 512x64 pixels, top-down flat horizontal ribbon, no perspective, X axis seamless repeated end-to-end with no left/right padding. Y edges transparent 8 pixels plus organic 8px fade. Two shallow parallel earth ridges, broad soft yellow-green barley clumps with long-awned nodding barley heads, NOT wheat upright spikes. Whole motif clumps 18-24px, broad leaf wedges and grouped awns, no 1-4px noise. Muted olive/pale yellow-green, warm soil, soft even light no shadow. Real transparent RGBA background, no checker pattern baked. Across full width evenly flowing with natural varied clump spacing, no standout objects. No text, labels, frame, border, flowers, hops, people. Reference is style only; replace wheat shapes with unmistakable drooping long awned barley.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-b94aaca1-7924-46a2-8564-eae5b5feabc8.png",
+        "refs": [
+          "ridge_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:22:17.681Z",
+        "selectionReason": "Rejected after independent review: paired fan/chevron rhythm."
+      },
+      {
+        "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-f0fd9acc-1047-4a8f-a82d-e2839e475389.png",
+        "generatedAt": "2026-09-25T15:33:14.234Z",
+        "refs": [
+          "ridge_barley_ripe_a-v1.png"
+        ],
+        "selectionReason": "Accepted revision: individual bent stems, asymmetric long drooping awned heads; braid removed."
+      }
+    ]
+  },
+  {
+    "id": "field/ridge_barley_growing_a-v1",
+    "width": 512,
+    "height": 64,
+    "refs": [
+      "ridge_barley_growing_a-v1.png"
+    ],
+    "prompt": "Use case precise-object-edit, COLOR ONLY. Attached project barley strip has correct plant shape but wrongly looks RIPE GOLD. Change ONLY all barley heads, awns, stems and leaves to unmistakably living immature OLIVE GREEN, with cool pale sage green highlights and medium muted leafy GREEN midtones. Absolutely NO cream/gold/yellow/brown on crop itself, retain warm brown earth only. Green ears as well as green leaves! At thumbnail size must immediately read GREEN GROWING BARLEY not dry straw. Keep EXACT shapes, arrangement, bent necks, long awns, irregular spacing, transparent outer silhouette, X strip layout and all soil unchanged. Do not redesign or add anything. Transparent RGBA background, soft diffuse light same handpainted style, no text. Preserve 512x64 strip intended size and X-only seamless role. Muted natural green not neon, but strong enough green difference from strawgold harvest.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-94b1d09f-0105-4051-9ab7-f9748ce052d5.png",
+    "generatedAt": "2026-09-25T15:37:20.230Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/field/ridge_barley_growing_a-v1.png",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      234,
+      2172,
+      277
+    ],
+    "pivot": [
+      256,
+      32
+    ],
+    "manualEdits": "Canvas alpha-bounds crop, one resample to 512x48 inside 512x64; 8px Y margin/fade; deterministic 16px X-edge color/alpha cross-blend, exact endpoint equality. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "f379e7f6f894569ede9e9a0978477d21b862bc85f56af1035904cc3f5f5c3764",
+    "runtimeSha256": "e54ff0e94c84e4bae7c747fa06a28e7f9f83baa518070d1158e9a17bb96a80e4",
+    "attempts": [
+      {
+        "prompt": "ROLE strip. ONE growing BARLEY ridge material for hand-painted medieval England citybuilder. Match attached project's brushwork and warm soil but crop is fresh PALE OLIVE GREEN, immature barley ears GREEN with a few pale awns, not golden mature grain. 512x64 horizontal flat top-down ribbon, X seamless only full width no X padding, Y 8px fully transparent plus organic alpha fade. Two earth ridges with broad GREEN leaves and drooping long-awned immature barley heads. Broad 18-24px clumps, 8-12px brush forms, no micro-noise. Soft diffuse light no shadow. Genuine transparent RGBA. No labels text frame border people hops flowers. Even varied clumps across width, no focal point.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-1ba70a94-2b26-4fbe-b119-f1ba7a788ab9.png",
+        "refs": [
+          "ridge_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:24:16.758Z",
+        "selectionReason": "Rejected after independent review: pairedfan braid rhythm."
+      },
+      {
+        "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.\nTHIS VARIANT: GROWING immature PALE OLIVE GREEN HEADS and green long awns, no gold ripegrain. Variant A geometry: close irregular overlapping bentstems, 1-3 elongated heads per loosegroup, avoid equalspacing. Use reference1 as incorrect plant target to replace; reference2 shows the corrected barley head vocabulary only, preserve its long beard but create different positions. Do not repeat identical two-row plumes. No mirrored pairs.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-21bbd3ad-785b-4fe5-98ac-46cf2587bc3f.png",
+        "generatedAt": "2026-09-25T15:34:20.717Z",
+        "refs": [
+          "ridge_barley_growing_a-v1.png",
+          "ridge_barley_ripe_a-v1_corrected.png"
+        ]
+      },
+      {
+        "prompt": "Use case precise-object-edit, COLOR ONLY. Attached project barley strip has correct plant shape but wrongly looks RIPE GOLD. Change ONLY all barley heads, awns, stems and leaves to unmistakably living immature OLIVE GREEN, with cool pale sage green highlights and medium muted leafy GREEN midtones. Absolutely NO cream/gold/yellow/brown on crop itself, retain warm brown earth only. Green ears as well as green leaves! At thumbnail size must immediately read GREEN GROWING BARLEY not dry straw. Keep EXACT shapes, arrangement, bent necks, long awns, irregular spacing, transparent outer silhouette, X strip layout and all soil unchanged. Do not redesign or add anything. Transparent RGBA background, soft diffuse light same handpainted style, no text. Preserve 512x64 strip intended size and X-only seamless role. Muted natural green not neon, but strong enough green difference from strawgold harvest.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-94b1d09f-0105-4051-9ab7-f9748ce052d5.png",
+        "refs": [
+          "ridge_barley_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:37:20.230Z",
+        "selectionReason": "Color-only correction: immature green ears and leaves distinguish growing from ripe."
+      }
+    ],
+    "selectionReason": "Color-only correction: immature green ears and leaves distinguish growing from ripe."
+  },
+  {
+    "id": "pasture/sheepfold-v1",
+    "width": 256,
+    "height": 192,
+    "refs": [
+      "farmstead_a-v1.png",
+      "sheep_flock-v1.png"
+    ],
+    "prompt": "ROLE module. ONE empty medieval English sheepfold pasture module, 256x192 transparent RGBA sprite, 2:1 isometric SW view. Match attached game farmstead weathered timber muted olive/warm brown palette, hand-painted broad readable forms. Low woven hazel hurdles enclose an irregular rectangular pen with a simple open gap entrance at front left, lightly trodden earth inside, few broad grass clumps at feet. NO sheep or humans (separate game sprites). No building, roof, machinery, metal wire. Large sparse wicker bands not tiny noisy weave; structural shapes minimum 8-12px at target size. Entire isolated module fits with 8px transparent margin all sides, bottom center contact pivot, soft upper-left light contact AO only no long shadow, no surrounding terrain square or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-50c03df7-1102-4a19-8942-a3da3e1d8b02.png",
+    "generatedAt": "2026-09-25T15:25:04.163Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/pasture/sheepfold-v1.png",
+    "nativeSize": [
+      1448,
+      1086
+    ],
+    "crop": [
+      100,
+      198,
+      1284,
+      715
+    ],
+    "pivot": [
+      128,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "068419976e9dd944afea14ef89dd2b33e466f09a2ec8b5680d9e1807615540f8",
+    "runtimeSha256": "254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824"
+  },
+  {
+    "id": "pasture/shearing_pen-v1",
+    "width": 256,
+    "height": 192,
+    "refs": [
+      "farmstead_a-v1.png",
+      "sheep_flock-v1.png"
+    ],
+    "prompt": "ROLE module. ONE medieval English SHEARING PEN module 256x192, genuine transparent RGBA, SW 2:1 isometric. Match attached game farmstead weathered timber and sheep fleece cream, painterly game style. A small low open-sided hazel hurdle pen, a simple stout wooden shearing support frame, and a clearly visible large cream freshly shorn loose FLEECE HEAP in front corner. Distinct from empty sheepfold: pen smaller, open working side, wooden restraint frame and fleece are main silhouettes. NO sheep no person no machine no steel modern fence. Broad 12-24px forms and sparse texture, soft upper-left light contact AO only. Isolated entire module 8px empty margin, bottom-center ground pivot, no terrain tile, text, numbers or watermark.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-d3b6bdac-5b06-4602-962c-eff90d3f0c1b.png",
+    "generatedAt": "2026-09-25T15:25:42.628Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/pasture/shearing_pen-v1.png",
+    "nativeSize": [
+      1448,
+      1086
+    ],
+    "crop": [
+      221,
+      218,
+      1008,
+      670
+    ],
+    "pivot": [
+      128,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "1cd51cd5e61c4051eae8d562f5adee5a8b478ba32069e3564a00041863a6ec10",
+    "runtimeSha256": "e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058"
+  },
+  {
+    "id": "yard/tenter_frames_a-v1",
+    "width": 384,
+    "height": 192,
+    "refs": [
+      "farmstead_a-v1.png"
+    ],
+    "prompt": "ROLE module. ONE line of medieval English EMPTY TENTER FRAMES used to stretch fulled woollen cloth; 384x192 genuine transparent RGBA isolated SW 2:1 isometric game sprite. Three sturdy open rectangular wooden frames in a row receding gently along the 2:1 isometric ground axis; no cloth in this empty version. Simple weathered wooden uprights and crossbars, small restrained hook indications not tiny noisy points. Match reference game timber painterly muted warm brown and olive style. Wide sparse readable silhouettes, beams 8-12px or broader at source size, all frames comfortably inside 8px transparent margins. Bottom-center ground pivot, soft top-left light contact AO only, no broad grass island, people, modern metal rigging, ropes maze, letters numbers or border.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-d31e239e-e1a8-4c3a-9643-d58c3356ce88.png",
+    "generatedAt": "2026-09-25T15:26:17.067Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/yard/tenter_frames_a-v1.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      235,
+      46,
+      1391,
+      786
+    ],
+    "pivot": [
+      192,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "ef069a8e3836127a05efaf1cea4c658690ad7e5dff2130f9d2bb9e669a5c07f7",
+    "runtimeSha256": "958430122112831e3674bb54d29d267b03a3d098a335df674f32bbb9a9ae937b"
+  },
+  {
+    "id": "field/ridge_barley_growing_b-v1",
+    "width": 512,
+    "height": 64,
+    "refs": [
+      "ridge_barley_growing_b-v1.png"
+    ],
+    "prompt": "Use case precise-object-edit, COLOR ONLY. Attached project barley strip has correct plant shape but wrongly looks RIPE GOLD. Change ONLY all barley heads, awns, stems and leaves to unmistakably living immature OLIVE GREEN, with cool pale sage green highlights and medium muted leafy GREEN midtones. Absolutely NO cream/gold/yellow/brown on crop itself, retain warm brown earth only. Green ears as well as green leaves! At thumbnail size must immediately read GREEN GROWING BARLEY not dry straw. Keep EXACT shapes, arrangement, bent necks, long awns, irregular spacing, transparent outer silhouette, X strip layout and all soil unchanged. Do not redesign or add anything. Transparent RGBA background, soft diffuse light same handpainted style, no text. Preserve 512x64 strip intended size and X-only seamless role. Muted natural green not neon, but strong enough green difference from strawgold harvest.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-7ef3c858-79ba-490b-be55-330076931c5d.png",
+    "generatedAt": "2026-09-25T15:37:49.196Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/field/ridge_barley_growing_b-v1.png",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      234,
+      2172,
+      232
+    ],
+    "pivot": [
+      256,
+      32
+    ],
+    "manualEdits": "Canvas alpha-bounds crop, one resample to 512x48 inside 512x64; 8px Y margin/fade; deterministic 16px X-edge color/alpha cross-blend, exact endpoint equality. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "76084418c68e4b4f1dadea4cd902ed48d79794cba333863086dca9e12ef75573",
+    "runtimeSha256": "b22794f4fd4deb371d2e1afd905c6356ab13af1529a9f73e2ad9116349b3cc2d",
+    "attempts": [
+      {
+        "prompt": "ROLE strip. Create actual DIFFERENT SILHOUETTES not recoloring: variant B growing green BARLEY ridge game strip. Match attached game's hand-painted warm soil and broad motifs. 512x64 flat top-down strip X-only seamless, no X margins, 8px transparent Y margin plus fade. Two earth ridges. Asymmetrical groups of wide olive-green leaves and drooping GREEN immature barley ears with visibly long grouped awns; alternate low forked clumps and taller nodding clumps, irregular spacing. NOT wheat upright spikes; NOT ripe gold. Broad 18-24px clumps 8-12px brush forms no micro-noise. Soft even light no shadows. Actual RGBA transparency. No text border hops machinery people flowers.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-14887760-b070-4bf6-8e5d-98e68e952416.png",
+        "refs": [
+          "ridge_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:27:30.544Z",
+        "selectionReason": "Rejected after independent review: pairedfan braid rhythm."
+      },
+      {
+        "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.\nTHIS VARIANT: GROWING immature PALE OLIVE GREEN HEADS and green long awns, no gold ripegrain. Variant B geometry: sparse groups of 2-3 elongated drooping heads separated by larger exposedearth gaps; several heads point left, most lean right; lowgreen leafribbons unevenly dispersed. Use reference1 as incorrect plant target to replace; reference2 shows the corrected barley head vocabulary only, preserve its long beard but create different positions. Do not repeat identical two-row plumes. No mirrored pairs.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-b6e12ade-6c80-4eaa-9cdf-f20ae38c1b80.png",
+        "generatedAt": "2026-09-25T15:34:49.017Z",
+        "refs": [
+          "ridge_barley_growing_b-v1.png",
+          "ridge_barley_ripe_a-v1_corrected.png"
+        ]
+      },
+      {
+        "prompt": "Use case precise-object-edit, COLOR ONLY. Attached project barley strip has correct plant shape but wrongly looks RIPE GOLD. Change ONLY all barley heads, awns, stems and leaves to unmistakably living immature OLIVE GREEN, with cool pale sage green highlights and medium muted leafy GREEN midtones. Absolutely NO cream/gold/yellow/brown on crop itself, retain warm brown earth only. Green ears as well as green leaves! At thumbnail size must immediately read GREEN GROWING BARLEY not dry straw. Keep EXACT shapes, arrangement, bent necks, long awns, irregular spacing, transparent outer silhouette, X strip layout and all soil unchanged. Do not redesign or add anything. Transparent RGBA background, soft diffuse light same handpainted style, no text. Preserve 512x64 strip intended size and X-only seamless role. Muted natural green not neon, but strong enough green difference from strawgold harvest.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-7ef3c858-79ba-490b-be55-330076931c5d.png",
+        "refs": [
+          "ridge_barley_growing_b-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:37:49.196Z",
+        "selectionReason": "Color-only correction: immature green ears and leaves distinguish growing from ripe."
+      }
+    ],
+    "selectionReason": "Color-only correction: immature green ears and leaves distinguish growing from ripe."
+  },
+  {
+    "id": "field/ridge_barley_ripe_b-v1",
+    "width": 512,
+    "height": 64,
+    "refs": [
+      "ridge_barley_ripe_b-v1.png",
+      "ridge_barley_ripe_a-v1_corrected.png"
+    ],
+    "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.\nTHIS VARIANT: RIPE cream pale straw heads and dullolive stems. Variant B geometry: sparse groups of 2-3 elongated drooping heads separated by larger exposedearth gaps; several heads point left, most lean right; lowgreen leafribbons unevenly dispersed. Use reference1 as incorrect plant target to replace; reference2 shows the corrected barley head vocabulary only, preserve its long beard but create different positions. Do not repeat identical two-row plumes. No mirrored pairs.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-4e60263c-c229-43e7-af36-5c53baa78f5c.png",
+    "generatedAt": "2026-09-25T15:35:13.424Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/field/ridge_barley_ripe_b-v1.png",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      249,
+      2172,
+      220
+    ],
+    "pivot": [
+      256,
+      32
+    ],
+    "manualEdits": "Canvas alpha-bounds crop, one resample to 512x48 inside 512x64; 8px Y margin/fade; deterministic 16px X-edge color/alpha cross-blend, exact endpoint equality. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "e22feb95d1c57d69d4fe54566e47e1ac8b54827a4e32c3d93dfb445f3f83950f",
+    "runtimeSha256": "484ef128832272452e4cb1fbdff54ea2c8d900b2f78172f02f6f09b92aad197f",
+    "attempts": [
+      {
+        "prompt": "ROLE strip. One ripe BARLEY ridge variant B, 512x64 horizontal flat top-down strip, X seamless only no X padding, Y8px transparent margin then8px organicfade. Same handpainted citybuilder warmsoil mutedpalette as project reference but barley heads PALE straw creamgold with LONG AWNS AND BENT NODDING NECKS, not upright wheat. Two shallow earth ridges. Genuine silhouette variation: loose asymmetric pairs of large bowed ears clustered farther apart, alternating direction, some lower leaf sprays, no uniform braided golden rope. Broad18-24px clumps,8-12px forms, soft even light no shadows no micro-noise. Actual transparentRGBA background. No text border flowers people hops or modern machinery.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-56ef026a-af0b-43d6-ad4e-2e448af31b31.png",
+        "refs": [
+          "ridge_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:28:00.895Z",
+        "selectionReason": "Rejected after independent review: pairedfan braid rhythm."
+      },
+      {
+        "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.\nTHIS VARIANT: RIPE cream pale straw heads and dullolive stems. Variant B geometry: sparse groups of 2-3 elongated drooping heads separated by larger exposedearth gaps; several heads point left, most lean right; lowgreen leafribbons unevenly dispersed. Use reference1 as incorrect plant target to replace; reference2 shows the corrected barley head vocabulary only, preserve its long beard but create different positions. Do not repeat identical two-row plumes. No mirrored pairs.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-4e60263c-c229-43e7-af36-5c53baa78f5c.png",
+        "generatedAt": "2026-09-25T15:35:13.424Z",
+        "refs": [
+          "ridge_barley_ripe_b-v1.png",
+          "ridge_barley_ripe_a-v1_corrected.png"
+        ]
+      }
+    ],
+    "selectionReason": "Targeted botanical correction: asymmetric bentstems longawn noddingheads."
+  },
+  {
+    "id": "pasture/wash_pool-v1",
+    "width": 192,
+    "height": 128,
+    "refs": [
+      "farmstead_a-v1.png"
+    ],
+    "prompt": "ROLE module. Isolated medieval southern England SHEEP WASH POOL 192x128 transparentRGBA game sprite,2:1 SW isometric. Match attached project warm weathered natural colors and handpainted broad brushwork. One shallow small irregular oval basin of subdued grey-green water, low broad rough stone lip around three sides, open shallow muddy entry ramp on front side for sheep to walk in. Water not brightblue. A tiny ripple broad enough to read, sparse natural stone blocks 12-20px. NO sheep people buildings hoses pumps taps modern masonry. Groundcontact bottomcenter,8px clear margins,softupperleftlight contactAO only,no longshadow,no terrain tile or text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-c5976574-2ee0-422b-a220-2e5dad646137.png",
+    "generatedAt": "2026-09-25T15:28:36.050Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/pasture/wash_pool-v1.png",
+    "nativeSize": [
+      1536,
+      1024
+    ],
+    "crop": [
+      294,
+      274,
+      950,
+      455
+    ],
+    "pivot": [
+      96,
+      120
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "7ab013b8cc0df2566383dd3280f68019261fa950f4c1cc108bfde7a382f22d1c",
+    "runtimeSha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f"
+  },
+  {
+    "id": "yard/tenter_frames_b-v1",
+    "width": 384,
+    "height": 192,
+    "refs": [
+      "tenter_frames_a-v1.png"
+    ],
+    "prompt": "Use case precise-object-edit. ROLE module. Edit attached EMPTY project tenter frame to three taut undyed cream woollen CLOTH rectangles, one within each bay, stretched to hooks at all four edges. Preserve EXACT same wooden frame geometry, silhouettes, 2:1 SW view, canvas composition, pivots and timber tone. Cloth must be stretched tensioned flat on hooks all edges not hanging laundry, no sag. 384x192 target transparentRGBA sprite,8px transparent margins, softupperleftlightcontactAOonly. Broad painterly forms readable at0.3scale,no micro-noise. No people, text, symbols, surrounding terrain. Existing image is project asset reference and precise geometry edit target.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-18c20d4c-0752-4334-841a-af8662eb301d.png",
+    "generatedAt": "2026-09-25T15:29:24.664Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/yard/tenter_frames_b-v1.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      234,
+      43,
+      1393,
+      791
+    ],
+    "pivot": [
+      192,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "35b01e276fa1f9c6f7cf56eb9cfa497203a74858c69fda3c046f09491cbeb22e",
+    "runtimeSha256": "d1467b6d2f2c4678f26aca2c27f3b715424c6d47c280256f651555aab1623ac9"
+  },
+  {
+    "id": "yard/tenter_frames_dyed-v1",
+    "width": 384,
+    "height": 192,
+    "refs": [
+      "tenter_frames_a-v1.png"
+    ],
+    "prompt": "Use case precise-object-edit. ROLE module. Edit attached EMPTY project tenter frame to three taut DYED woollen CLOTH rectangles, one within each bay: muted dusty Woad blue, low-saturation clay Madder red, muted straw Weld yellow. No bright primary colors. Preserve EXACT same wooden frame geometry, silhouettes, 2:1 SW view, canvas composition, pivots and timber tone. Cloth must be stretched tensioned flat on hooks all edges not hanging laundry, no sag. 384x192 target transparentRGBA sprite,8px transparent margins, softupperleftlightcontactAOonly. Broad painterly forms readable at0.3scale,no micro-noise. No people, text, symbols, surrounding terrain. Existing image is project asset reference and precise geometry edit target.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-2a732024-9278-4b45-874d-eada65238709.png",
+    "generatedAt": "2026-09-25T15:29:59.240Z",
+    "outputPath": "/tmp/astra-wave3-candidates-20260926/yard/tenter_frames_dyed-v1.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      231,
+      44,
+      1396,
+      789
+    ],
+    "pivot": [
+      192,
+      184
+    ],
+    "manualEdits": "Canvas alpha-bounds crop; one proportional resample to specified canvas inside 8px margins, bottom-center contact; source alpha retained. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "status": "candidate",
+    "sourceSha256": "179ab1423ba680534ff8a6f7b9b99fef88cb68f4d6b7041cd8e95cff9ed53405",
+    "runtimeSha256": "982f05b4fe07ab217511e669057e609d2715142cf36f9a65055216ef906f3604"
+  }
+]

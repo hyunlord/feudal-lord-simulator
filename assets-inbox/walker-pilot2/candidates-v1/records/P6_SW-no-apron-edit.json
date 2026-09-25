@@ -1,0 +1,10 @@
+{
+  "prompt": "Precise localized EDIT of the attached sprite pair. Keep both existing figures pixel-for-pixel unchanged EXCEPT the skirt front. Remove the rectangular separate apron panel completely: erase its horizontal lower hem and side border by continuing the same grey-blue gown folds all the way to the existing dress bottom hem. There must be ONE continuous skirt, no second short panel or apron. Preserve exact faces, wimple/veil, arms, hands, shoes, torso, all silhouette, positions, two vertical cells and transparent background. Do not generate new poses or new sprites. Only edit clothing fabric inside existing skirt to remove rectangular apron silhouette.",
+  "referenceInputs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/sources/P6_SW.png"
+  ],
+  "sourcePath": "sources/P6_SW_no-apron.png",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null
+}

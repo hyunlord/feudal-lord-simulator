@@ -1,0 +1,25 @@
+{
+  "roi": "x32..479,y18..45; weighted RGB luma row-mean SD; proxy not full perceptual contrast",
+  "measurements": [
+    {
+      "file": "earth_strip-v1.png",
+      "rowMeanLumaSD": 11.103737281186843
+    },
+    {
+      "file": "earth_strip_a-v3.png",
+      "rowMeanLumaSD": 5.55682754514029
+    },
+    {
+      "file": "earth_strip_b-v3.png",
+      "rowMeanLumaSD": 5.443863243280406
+    },
+    {
+      "file": "earth_strip_c-v3.png",
+      "rowMeanLumaSD": 5.528139585029218
+    },
+    {
+      "file": "earth_strip_d-v3.png",
+      "rowMeanLumaSD": 5.521531542772889
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "keyart_title_bg",
+    "w": 1920,
+    "h": 1080,
+    "s": "Wide 16:9 opaque background, requested 1920x1080. Early 1300 market town at dawn viewed from gently elevated hillside. Modest timber palisade encloses timber and plaster houses, one simple square parish church tower, small market with cloth stalls, winding shallow river on right and long narrow ridge-and-furrow open-field strips in foreground. Upper center 35 percent width and upper 30 percent height is uncluttered pale overcast dawn sky, kept quiet for a later emblem. Human scale everyday settlement. No stone enclosing wall: use palisade. No giant sun or atmospheric glare.",
+    "width": 1920,
+    "height": 1080,
+    "prompt": "Use case: lighting-weather. Targeted lighting-only edit of this exact game illustration. Preserve ALL composition, buildings, palisade, river, field strips, people, painted style and broad forms exactly. Change time from broad daylight to QUIET DAWN just before sunrise: cool muted grey-olive foreground in low soft early morning light, pale grey-blue sky, a faint warm cream-peach band at distant upper-left horizon. Reduce overall sunlit brightness. No orange spectacle, no bright sun disc, no fog blur, no dramatic shafts, no glow, no cinematic contrast. Upper-center sky remains uncluttered for emblem overlay. No letters, words, numbers or UI. Opaque wide16:9 PNG1920x1080.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-2aeccc5f-a721-40d1-823b-261f9a6699f3.png",
+    "references": [
+      "exec-65a6cffd-cfbe-4698-b79e-1d118ca0f2ed.png"
+    ],
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25",
+    "localSource": "keyart-source-0.png",
+    "finalPath": "keyart/keyart_title_bg.png",
+    "manualEdits": "Canvas 2D high-quality centered cover resize from 1672x941 to 1920x1080; opaque PNG, negligible aspect-ratio center crop only.",
+    "referenceInputPaths": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-65a6cffd-cfbe-4698-b79e-1d118ca0f2ed.png"
+    ],
+    "supportingProjectReferences": [
+      "세계_석벽도시.jpg",
+      "세계_주택화풍.png"
+    ],
+    "attempts": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-65a6cffd-cfbe-4698-b79e-1d118ca0f2ed.png",
+        "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Wide 16:9 opaque background, requested 1920x1080. Early 1300 market town at dawn viewed from gently elevated hillside. Modest timber palisade encloses timber and plaster houses, one simple square parish church tower, small market with cloth stalls, winding shallow river on right and long narrow ridge-and-furrow open-field strips in foreground. Upper center 35 percent width and upper 30 percent height is uncluttered pale overcast dawn sky, kept quiet for a later emblem. Human scale everyday settlement. No stone enclosing wall: use palisade. No giant sun or atmospheric glare.",
+        "references": [
+          "세계_석벽도시.jpg",
+          "세계_주택화풍.png"
+        ],
+        "selected": false,
+        "reason": "First painting reads daytime rather than requested dawn."
+      },
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-2aeccc5f-a721-40d1-823b-261f9a6699f3.png",
+        "prompt": "Use case: lighting-weather. Targeted lighting-only edit of this exact game illustration. Preserve ALL composition, buildings, palisade, river, field strips, people, painted style and broad forms exactly. Change time from broad daylight to QUIET DAWN just before sunrise: cool muted grey-olive foreground in low soft early morning light, pale grey-blue sky, a faint warm cream-peach band at distant upper-left horizon. Reduce overall sunlit brightness. No orange spectacle, no bright sun disc, no fog blur, no dramatic shafts, no glow, no cinematic contrast. Upper-center sky remains uncluttered for emblem overlay. No letters, words, numbers or UI. Opaque wide16:9 PNG1920x1080.",
+        "references": [
+          "exec-65a6cffd-cfbe-4698-b79e-1d118ca0f2ed.png"
+        ],
+        "selected": true,
+        "reason": "Targeted cool quiet dawn lighting; original town composition and open logo sky preserved."
+      }
+    ],
+    "candidateCount": 2,
+    "reason": "Selected candidate; visually inspected hand-painted project palette, distinct requested composition and absence of lettering. ",
+    "status": "candidate"
+  },
+  {
+    "id": "keyart_title_emblem",
+    "w": 512,
+    "h": 512,
+    "s": "Single 512x512 truly TRANSPARENT background emblem cutout, isolated with ample clear margin. Simple medieval shield supporting a small crenellated stone wall tower and two restrained wheat ears, warm muted grey, dull ochre and dark brown. Compact balanced readable silhouette, hand-painted game UI emblem, worn materials, 80 percent function 20 percent ornament. No crown, no ribbon, no letters, no invented heraldic text, no background scene. Alpha transparent exterior.",
+    "width": 512,
+    "height": 512,
+    "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Single 512x512 truly TRANSPARENT background emblem cutout, isolated with ample clear margin. Simple medieval shield supporting a small crenellated stone wall tower and two restrained wheat ears, warm muted grey, dull ochre and dark brown. Compact balanced readable silhouette, hand-painted game UI emblem, worn materials, 80 percent function 20 percent ornament. No crown, no ribbon, no letters, no invented heraldic text, no background scene. Alpha transparent exterior.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-d90f6693-16bd-4f8a-9f2a-dafff6adb16a.png",
+    "references": [
+      "세계_석벽도시.jpg",
+      "세계_주택화풍.png"
+    ],
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25",
+    "localSource": "keyart-source-1.png",
+    "finalPath": "keyart/keyart_title_emblem.png",
+    "manualEdits": "Canvas 2D high-quality centered cover resize from 1254x1254 to 512x512; native transparency preserved, no background keying.",
+    "reason": "Selected candidate; visually inspected hand-painted project palette, distinct requested composition and absence of lettering. ",
+    "attempts": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-d90f6693-16bd-4f8a-9f2a-dafff6adb16a.png",
+        "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Single 512x512 truly TRANSPARENT background emblem cutout, isolated with ample clear margin. Simple medieval shield supporting a small crenellated stone wall tower and two restrained wheat ears, warm muted grey, dull ochre and dark brown. Compact balanced readable silhouette, hand-painted game UI emblem, worn materials, 80 percent function 20 percent ornament. No crown, no ribbon, no letters, no invented heraldic text, no background scene. Alpha transparent exterior.",
+        "references": [
+          "세계_석벽도시.jpg",
+          "세계_주택화풍.png"
+        ],
+        "selected": true,
+        "reason": "Genuine native transparent exterior confirmed by full alpha histogram."
+      },
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-58e9a390-04d1-4378-87c5-d59649290312.png",
+        "prompt": "Use case: background-extraction. Edit this exact shield, stone tower and wheat emblem. Preserve the painted emblem shape, colours, geometry and all details exactly. Remove ONLY the solid black exterior background. Output a genuine RGBA PNG with alpha=0 outside the emblem, NOT a black backdrop, NOT a checkerboard painted in the image. 512x512 square with the complete emblem fitting inside clear margin. No text, no letters, no numbers. This is a transparent game UI cutout. Keep shield, wheat, tower opaque.",
+        "references": [
+          "exec-d90f6693-16bd-4f8a-9f2a-dafff6adb16a.png"
+        ],
+        "selected": false,
+        "reason": "Unnecessary background-extraction retry after overstrict alpha255 gate; original already transparent. Rejected to preserve original painted detail."
+      }
+    ],
+    "candidateCount": 2,
+    "status": "candidate"
+  },
+  {
+    "id": "loading_1348_plague",
+    "w": 1920,
+    "h": 1080,
+    "s": "Wide 16:9 opaque loading background 1920x1080. Quiet deserted southern English market-town street during 1348 plague. Eye-level slightly elevated view down crooked muddy lane between modest timber plaster houses matching reference house construction and roof forms; closed shutters and vacant small market stall. Two doors bear small simple painted diagonal cross marks ONLY, no words. Restrained sad stillness. No corpses, no horror, no plague-doctor mask, no spectacle. Foreground doorway and empty lane carry the composition, modest parish tower far away.",
+    "width": 1920,
+    "height": 1080,
+    "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Wide 16:9 opaque loading background 1920x1080. Quiet deserted southern English market-town street during 1348 plague. Eye-level slightly elevated view down crooked muddy lane between modest timber plaster houses matching reference house construction and roof forms; closed shutters and vacant small market stall. Two doors bear small simple painted diagonal cross marks ONLY, no words. Restrained sad stillness. No corpses, no horror, no plague-doctor mask, no spectacle. Foreground doorway and empty lane carry the composition, modest parish tower far away.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-5068434f-e233-4045-b132-e20af069ae68.png",
+    "references": [
+      "세계_석벽도시.jpg",
+      "세계_주택화풍.png"
+    ],
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25",
+    "localSource": "keyart-source-2.png",
+    "finalPath": "keyart/loading_1348_plague.png",
+    "manualEdits": "Canvas 2D high-quality centered cover resize from 1672x941 to 1920x1080; opaque PNG, negligible aspect-ratio center crop only.",
+    "candidateCount": 1,
+    "reason": "Selected candidate; visually inspected hand-painted project palette, distinct requested composition and absence of lettering. Requested diagonal door crosses retained as pictograms.",
+    "status": "candidate"
+  },
+  {
+    "id": "loading_1315_famine",
+    "w": 1920,
+    "h": 1080,
+    "s": "Wide 16:9 opaque loading background 1920x1080. Southern England famine of1315: broad rain-soaked open fields of long ridge-and-furrow strips, weather-beaten wheat stems and fallen ears bent low in foreground puddles, muddy soil, distant few small thatched timber cottages and hedgerow beneath low grey sky. Rain shown sparingly in painterly strokes, no blur/filter. Quiet restrained hardship, no dead people, no spectacle. Composition mostly field and sky, visibly different from town street and title.",
+    "width": 1920,
+    "height": 1080,
+    "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Wide 16:9 opaque loading background 1920x1080. Southern England famine of1315: broad rain-soaked open fields of long ridge-and-furrow strips, weather-beaten wheat stems and fallen ears bent low in foreground puddles, muddy soil, distant few small thatched timber cottages and hedgerow beneath low grey sky. Rain shown sparingly in painterly strokes, no blur/filter. Quiet restrained hardship, no dead people, no spectacle. Composition mostly field and sky, visibly different from town street and title.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-d0d2be72-80e0-4443-be83-c1a0108ecbc3.png",
+    "references": [
+      "세계_석벽도시.jpg",
+      "세계_주택화풍.png"
+    ],
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25",
+    "localSource": "keyart-source-3.png",
+    "finalPath": "keyart/loading_1315_famine.png",
+    "manualEdits": "Canvas 2D high-quality centered cover resize from 1672x941 to 1920x1080; opaque PNG, negligible aspect-ratio center crop only.",
+    "candidateCount": 1,
+    "reason": "Selected candidate; visually inspected hand-painted project palette, distinct requested composition and absence of lettering. ",
+    "status": "candidate"
+  },
+  {
+    "id": "loading_1337_war",
+    "w": 1920,
+    "h": 1080,
+    "s": "Wide 16:9 opaque loading background 1920x1080. Southern English market-town edge in1337. Modest royal messenger on a small horse in simple wool cloak delivers a completely blank folded writ to a village official, while a small restrained requisition column of cart, draught horse and six townspeople carrying sacks moves along lane behind. Fourteenth-century ordinary tunics, coifs and hoods, no late armour, no heroic poses. Timber-plaster houses and palisade, everyday scale. No battle, no violence, no extravagant banners; any cloth or seal completely unlettered. Distinct human-scale narrative composition.",
+    "width": 1920,
+    "height": 1080,
+    "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Wide 16:9 opaque loading background 1920x1080. Southern English market-town edge in1337. Modest royal messenger on a small horse in simple wool cloak delivers a completely blank folded writ to a village official, while a small restrained requisition column of cart, draught horse and six townspeople carrying sacks moves along lane behind. Fourteenth-century ordinary tunics, coifs and hoods, no late armour, no heroic poses. Timber-plaster houses and palisade, everyday scale. No battle, no violence, no extravagant banners; any cloth or seal completely unlettered. Distinct human-scale narrative composition.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-8faa61c2-00eb-43af-a7a8-8d0e88af6727.png",
+    "references": [
+      "세계_석벽도시.jpg",
+      "세계_주택화풍.png"
+    ],
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25",
+    "localSource": "keyart-source-4.png",
+    "finalPath": "keyart/loading_1337_war.png",
+    "manualEdits": "Canvas 2D high-quality centered cover resize from 1672x941 to 1920x1080; opaque PNG, negligible aspect-ratio center crop only.",
+    "candidateCount": 1,
+    "reason": "Selected candidate; visually inspected hand-painted project palette, distinct requested composition and absence of lettering. ",
+    "status": "candidate"
+  },
+  {
+    "id": "keyart_mode_select",
+    "w": 1280,
+    "h": 720,
+    "s": "Wide 16:9 opaque menu background1280x720. Modest lord's oak desk viewed from high oblique angle, large unfolded parchment map with ONLY pictorial winding river, roads and tiny field/building shapes, closed and open account book with completely BLANK unruled pages, simple wooden seal stamp and red wax disc, small earthenware inkpot and quill. No writing whatsoever on map, book, stamps or any object. Restrained medieval materials, same warm hand-painted game art. A few large grouped objects and quiet negative space for later menu, no labels, no numbers, no UI borders, no sumptuous treasure.",
+    "width": 1280,
+    "height": 720,
+    "prompt": "Use case: historical-scene. A single finished candidate game keyart illustration for a historical city builder set in southern England 1300–1450. Use ONLY the two supplied project images as style references: image1 is the game's world screenshot, image2 is the game's actual house art. Match their hand-painted readable shapes, earthy olive grass, warm plaster and dark timber, restrained ochre thatch/terracotta, simple grey masonry. Broad brush shapes and modest real buildings, soft upper-left daylight. Translate the game asset art into a cohesive wide illustration with clearly drawn edges. Not photorealistic, not cinematic concept art, no fantasy, no grand castle, no cathedral, no epic scale, no glowing effects. Do not copy any UI from reference1. Absolutely NO letters, writing, numbers, typography, watermark, logos or UI anywhere. Wide 16:9 opaque menu background1280x720. Modest lord's oak desk viewed from high oblique angle, large unfolded parchment map with ONLY pictorial winding river, roads and tiny field/building shapes, closed and open account book with completely BLANK unruled pages, simple wooden seal stamp and red wax disc, small earthenware inkpot and quill. No writing whatsoever on map, book, stamps or any object. Restrained medieval materials, same warm hand-painted game art. A few large grouped objects and quiet negative space for later menu, no labels, no numbers, no UI borders, no sumptuous treasure.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8e7-c9c2-7270-8e58-c416f1fa2551/exec-3a7423b2-58ac-4969-9ae4-7adcb166ed82.png",
+    "references": [
+      "세계_석벽도시.jpg",
+      "세계_주택화풍.png"
+    ],
+    "selected": true,
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generatedAt": "2026-09-25",
+    "localSource": "keyart-source-5.png",
+    "finalPath": "keyart/keyart_mode_select.png",
+    "manualEdits": "Canvas 2D high-quality centered cover resize from 1672x941 to 1280x720; opaque PNG, negligible aspect-ratio center crop only.",
+    "candidateCount": 1,
+    "reason": "Selected candidate; visually inspected hand-painted project palette, distinct requested composition and absence of lettering. ",
+    "status": "candidate"
+  }
+]

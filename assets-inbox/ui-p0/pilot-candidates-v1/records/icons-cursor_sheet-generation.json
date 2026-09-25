@@ -1,0 +1,24 @@
+{
+  "initial": {
+    "prompt": "Create transparent PNG artwork only for historical city-builder UI, 80% functional 20% medieval character. Use attached project's building art for PALETTE and brushwork only. Hand-painted clean pictogram icons, bold DARK INK BROWN outline, warm BONE/off-white and OAK brown fills, very low detail, no surrounding panels, no text labels, NO LETTERS, NO NUMBERS, no progress bars, no highlight or selection rectangles. No photographic texture. Maximum silhouette distinction when shrunk to 24px. All icons equally sized and centered within equal grid cells, generous empty spacing, no cell lines or background. exactly four icons in a 2-column 2-row regular grid row-major: cream arrow pointer with ink outline; same arrow pointer with small mossgreen checkmark beside lower right; same arrow pointer with brickred crossed circle beside lower right; same arrow pointer with small curving brown road trail beside lower right. Arrow points up-left in all four.. Muted brick red is sole general accent. Green and blue ONLY for status symbols. Transparent background with genuine alpha, no checkerboard painted. Front-facing pictogram style, no complex illustration. Do not reproduce houses from reference. Output landscape canvas for grids or very wide landscape for single row.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-ui-pilot-candidates-v1/references/astra-ui-pilot-reference-files/03_세계_화풍_건물.png"
+    ],
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw": "sources/icons/cursor_sheet-initial.png",
+    "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-23e318b6-8856-4c5c-9e6e-36f8538fb1eb.png"
+  },
+  "revision": {
+    "prompt": "Edit this exact four-cursor sprite sheet without changing positions or other artwork. In bottom-right road-drawing cursor ONLY recolor all green roadside grass tufts to muted warm dry ochre brown. Keep top-right checkmark moss green because it is a status signal. Keep all four arrows, red blocked symbol, same hand-painted style. True transparent background, no words, letters or numbers. No other modifications.",
+    "references": [
+      "sources/icons/cursor_sheet-initial.png"
+    ],
+    "raw": "sources/icons/cursor_sheet.png",
+    "originalSource": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d876-b100-7bc2-a296-275f21e9528b/exec-bc7a91fa-0ba3-4f3c-ac14-c4befab23518.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null
+  }
+}

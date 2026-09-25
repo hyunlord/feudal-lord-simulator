@@ -1,0 +1,386 @@
+[
+  {
+    "kind": "purse",
+    "direction": "NE",
+    "file": "assets/props/held_purse_NE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      14.57,
+      10.12
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_purse_NE-v1.png",
+    "crop": {
+      "x": 388,
+      "y": 353,
+      "w": 511,
+      "h": 561
+    },
+    "uniformScale": 0.024955436720142603,
+    "sha256": "44ad2ec1bc716e5e10966ad1f86d3100bc269d495d7e3e5ec6ce0717faf67d4e"
+  },
+  {
+    "kind": "purse",
+    "direction": "SE",
+    "file": "assets/props/held_purse_SE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16.77,
+      10.12
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_purse_SE-v1.png",
+    "crop": {
+      "x": 474,
+      "y": 418,
+      "w": 329,
+      "h": 419
+    },
+    "uniformScale": 0.03341288782816229,
+    "sha256": "ece6789eeca0bb90f9c894404f0340df5d9eab9b1d9e869d2e4daac6a0997920"
+  },
+  {
+    "kind": "purse",
+    "direction": "SW",
+    "file": "assets/props/held_purse_SW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      14.64,
+      10.12
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_purse_SW-v1.png",
+    "crop": {
+      "x": 438,
+      "y": 376,
+      "w": 379,
+      "h": 481
+    },
+    "uniformScale": 0.029106029106029108,
+    "sha256": "0b1c7502e90cd8f3759b73e5a14532f9e4edade1c98a7d2b090896bec8b2202f"
+  },
+  {
+    "kind": "purse",
+    "direction": "NW",
+    "file": "assets/props/held_purse_NW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16.6,
+      10.12
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_purse_NW-v1.png",
+    "crop": {
+      "x": 418,
+      "y": 354,
+      "w": 467,
+      "h": 539
+    },
+    "uniformScale": 0.025974025974025976,
+    "sha256": "f5cdd925dc94aac357425aa1d11d2c8d730137dbf77ade8a8d199860077f81a4"
+  },
+  {
+    "kind": "sack",
+    "direction": "NE",
+    "file": "assets/props/held_sack_NE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.79,
+      12.4
+    ],
+    "anchorMeaning": "tied neck",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_sack_NE-v1.png",
+    "crop": {
+      "x": 737,
+      "y": 250,
+      "w": 300,
+      "h": 395
+    },
+    "uniformScale": 0.05063291139240506,
+    "sha256": "7a143bb6934f6f3c482fa11466183d1073618a3d5ec40d4fd663c6a09e7f4522"
+  },
+  {
+    "kind": "sack",
+    "direction": "SE",
+    "file": "assets/props/held_sack_SE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16.26,
+      12.4
+    ],
+    "anchorMeaning": "tied neck",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_sack_SE-v1.png",
+    "crop": {
+      "x": 411,
+      "y": 365,
+      "w": 406,
+      "h": 546
+    },
+    "uniformScale": 0.03663003663003663,
+    "sha256": "332fff589a8f3cc555263279698d8aa5c3b8ddeddc99a322be4609e1d2a8e37b"
+  },
+  {
+    "kind": "sack",
+    "direction": "SW",
+    "file": "assets/props/held_sack_SW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      14.59,
+      12.4
+    ],
+    "anchorMeaning": "tied neck",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_sack_SW-v1.png",
+    "crop": {
+      "x": 429,
+      "y": 356,
+      "w": 407,
+      "h": 557
+    },
+    "uniformScale": 0.03590664272890485,
+    "sha256": "ada51d56cde38426b30c49850b818b2f66201ad897db2102d36f4212b964aeb0"
+  },
+  {
+    "kind": "sack",
+    "direction": "NW",
+    "file": "assets/props/held_sack_NW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      14.65,
+      12.4
+    ],
+    "anchorMeaning": "tied neck",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_sack_NW-v1.png",
+    "crop": {
+      "x": 423,
+      "y": 349,
+      "w": 413,
+      "h": 578
+    },
+    "uniformScale": 0.03460207612456748,
+    "sha256": "1bb088bc33e89892fd97ab8c62831ab14eb1ce79e996c981acdd8785b12637d8"
+  },
+  {
+    "kind": "basket",
+    "direction": "NE",
+    "file": "assets/props/held_basket_NE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16.27,
+      6.9
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_basket_NE-v1.png",
+    "crop": {
+      "x": 701,
+      "y": 233,
+      "w": 388,
+      "h": 437
+    },
+    "uniformScale": 0.04576659038901602,
+    "sha256": "5caa0f122a6340d5aab85c1373e0c806210c1e478eff90b2265c59bd2268f1c9"
+  },
+  {
+    "kind": "basket",
+    "direction": "SE",
+    "file": "assets/props/held_basket_SE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.59,
+      6.9
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_basket_SE-v1.png",
+    "crop": {
+      "x": 372,
+      "y": 320,
+      "w": 524,
+      "h": 635
+    },
+    "uniformScale": 0.031496062992125984,
+    "sha256": "3b3a73ae6d6c35dac5906a5c1636c89ec8de13cbc311516d9f62c4005a6c8e00"
+  },
+  {
+    "kind": "basket",
+    "direction": "SW",
+    "file": "assets/props/held_basket_SW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      16.06,
+      6.9
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_basket_SW-v1.png",
+    "crop": {
+      "x": 384,
+      "y": 314,
+      "w": 518,
+      "h": 640
+    },
+    "uniformScale": 0.03125,
+    "sha256": "f4c603e6147214b3d18bc9066d1e7b74d2fef4b71c860ccfa0837b352385a1c5"
+  },
+  {
+    "kind": "basket",
+    "direction": "NW",
+    "file": "assets/props/held_basket_NW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.5,
+      6.9
+    ],
+    "anchorMeaning": "top handle/loop",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_basket_NW-v1.png",
+    "crop": {
+      "x": 368,
+      "y": 314,
+      "w": 520,
+      "h": 625
+    },
+    "uniformScale": 0.032,
+    "sha256": "61ba99dc4f0125da2f98eba493505321e9106e411a305d0509164b30585615b1"
+  },
+  {
+    "kind": "staff",
+    "direction": "NE",
+    "file": "assets/props/held_staff_NE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.4,
+      16
+    ],
+    "anchorMeaning": "midshaft grip",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_staff_NE-v1.png",
+    "crop": {
+      "x": 485,
+      "y": 211,
+      "w": 291,
+      "h": 900
+    },
+    "uniformScale": 0.03111111111111111,
+    "sha256": "e654121218d3390e8b09ac28b30360320bb4bd93bf1c1c7659a0e9fff0ec57f6"
+  },
+  {
+    "kind": "staff",
+    "direction": "SE",
+    "file": "assets/props/held_staff_SE-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.4,
+      16
+    ],
+    "anchorMeaning": "midshaft grip",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_staff_SE-v1.png",
+    "crop": {
+      "x": 492,
+      "y": 200,
+      "w": 284,
+      "h": 854
+    },
+    "uniformScale": 0.03278688524590164,
+    "sha256": "c55421365b9e9c3748c374a9ee97acbf828d589a6d9b93196860ec6e30f123d6"
+  },
+  {
+    "kind": "staff",
+    "direction": "SW",
+    "file": "assets/props/held_staff_SW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.4,
+      16
+    ],
+    "anchorMeaning": "midshaft grip",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_staff_SW-v1.png",
+    "crop": {
+      "x": 482,
+      "y": 198,
+      "w": 305,
+      "h": 859
+    },
+    "uniformScale": 0.03259604190919674,
+    "sha256": "fc49cf1abb510a737750b7b13e4e1b26d547e897772bb03e5babe3b27b0d40fc"
+  },
+  {
+    "kind": "staff",
+    "direction": "NW",
+    "file": "assets/props/held_staff_NW-v1.png",
+    "size": [
+      32,
+      32
+    ],
+    "anchor": [
+      15.5,
+      16
+    ],
+    "anchorMeaning": "midshaft grip",
+    "anchorMethod": "visible attachment row alpha centroid, candidate for runtime calibration",
+    "source": "sources/held_staff_NW-v1.png",
+    "crop": {
+      "x": 481,
+      "y": 195,
+      "w": 305,
+      "h": 862
+    },
+    "uniformScale": 0.03248259860788863,
+    "sha256": "5411c7d3489b8897065607b2a76048804fcce36dbde0c19da202677e5a5b97b7"
+  }
+]

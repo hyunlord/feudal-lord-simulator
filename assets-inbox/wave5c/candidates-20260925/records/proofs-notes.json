@@ -1,0 +1,11 @@
+{
+  "status": "candidate",
+  "scope": "Offline Canvas 2D reference composites, no game installation or runtime validation",
+  "files": [
+    {"file":"checks/01-actors-overlay-street.png","size":[1980,3200],"verdict":"pass","notes":"Eight reskin rows with template, final and additive alpha overlay. Neutral silhouette shows matching geometry, not matching paint. Adult/child/elder street uses identical source-cell registration at source100% and60%; not an assumed game zoom mapping."},
+    {"file":"checks/02-gates-wall-sockets.png","size":[1700,1850],"verdict":"pass with candidate review","notes":"Both true axis sprites rendered at own512x384 canvas, source100%, gamezoom1=.5source and .6=.3source. Exact JSON sockets; two128source tiles of wall each side. Goldsocket markers and cyanportal span line. Arch remains shallow segmented under112source height limit but is visibly curved rather than a straight lintel. Pillars shown with equal canvas scaling, not game scale."},
+    {"file":"checks/03-water-cross-section-repeat.png","size":[1700,2200],"verdict":"pass","notes":"Unblended D/deep/E joins allow honest tone comparison. Source2x inspection, zoom1/.6 strips, separate3x3 XY repeats and12x12 zoom.6 stress tests. Old shallow visibly brighter/cyan; corrected shallow close to deep; no hard seam line apparent. Stress rows D then E."}
+  ],
+  "visualScore": 92,
+  "assetFilesModified": false
+}

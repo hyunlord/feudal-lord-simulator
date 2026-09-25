@@ -1,0 +1,14 @@
+{
+  "id": "P6",
+  "dir": "SE",
+  "prompt": "PRECISE INPUT IMAGE EDIT, not free generation. Image 1 is an approved two-cell walking sprite template, direction SE, top frame0 and bottom frame1. Image2 is clothing/head identity reference only. Edit ONLY clothes and head covering on Image1: Older widow P6: linen WIMPLE covering neck and chin with draping pale VEIL, grey-blue gown. Old face. NO APRON, NO BELT POUCH. Match portrait grey-blue and old widow identity. Preserve EXACT all original pixel positions, silhouette, body tilt, arm angles, bare hands, both visible brown shoes, gait phases, transparent margins and shadow. Do NOT change figure orientation or invent a walk cycle. Keep exact two vertically stacked 148x148 cells layout, total canvas148x296, or exact proportional upscale. Feet and head centers must stay at identical positions. Remove handheld and belt props; empty hands kept exactly original. Coat/dress fabric follows original folds/silhouette, same hem and shoe exposure. Transparent RGBA background. Medieval handpainted small game sprite, retain original soft-painted style and lighting. No extra persons, no text, no border. This is local wardrobe editing of both provided template cells, not drawing new figures.",
+  "referenceInputs": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/templates/P6_SE_pair.png",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-walker-pilot2-v1/references/pt_pilot_P6-v1_128.png"
+  ],
+  "sourcePath": "sources/P6_SE.png",
+  "tool": "image_gen",
+  "model": null,
+  "seed": null,
+  "method": "edit referenced template pair"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "house_l1_tile-v1",
+  "size": [
+    139,
+    139
+  ],
+  "pivot": [
+    71.66148325358851,
+    125.92025518341308
+  ],
+  "referenceCrop": [
+    15.185805422647528,
+    20.728070175438596,
+    112.95135566188198,
+    105.19218500797449
+  ],
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "sourceCrop": [
+    131,
+    180,
+    996,
+    928
+  ],
+  "scale": 0.11335364763790354,
+  "placement": [
+    15.211366729912555,
+    20.72807017543859,
+    112.90023304735192,
+    105.19218500797449
+  ],
+  "padding": {
+    "left": 8,
+    "right": 8,
+    "top": 8,
+    "bottom": 4
+  },
+  "manualEdits": "alpha<=2 cleanup; meaningful bounds crop; uniform downsample; unchanged reference pivot; transparent padding"
+}

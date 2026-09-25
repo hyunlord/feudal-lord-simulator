@@ -1,0 +1,53 @@
+<!doctype html><meta charset="utf-8"><script>
+(async()=>{try{
+const C=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
+const load=u=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=u;});
+const save=async(c,p)=>{const b=await new Promise(r=>c.toBlob(r,'image/png'));await fetch('/save/'+encodeURIComponent(p),{method:'POST',body:b});};
+const bounds=(d,w,h)=>{let l=w,t=h,r=-1,b=-1;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(d[(y*w+x)*4+3]>2){l=Math.min(l,x);t=Math.min(t,y);r=Math.max(r,x);b=Math.max(b,y);}return[l,t,r-l+1,b-t+1];};
+const refs=await Promise.all([0,1,2,3,4,5,6].map(i=>load('/ref/'+i))),sources=await Promise.all([0,1].map(i=>load('/source/'+i))),assets=[],metrics=[];
+for(let n=0;n<2;n++){
+ const src=sources[n],sc=C(src.width,src.height),sg=sc.getContext('2d');sg.drawImage(src,0,0);const bb=bounds(sg.getImageData(0,0,sc.width,sc.height).data,sc.width,sc.height),w=n===0?512:128,h=n===0?64:96,c=C(w,h),g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';
+ const dw=n===0?512:112,dh=n===0?48:24;g.drawImage(src,...bb,(w-dw)/2,h-8-dh,dw,dh);
+ let im=g.getImageData(0,0,w,h),d=im.data;
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){const i=(y*w+x)*4;if(y<8||y>=h-8||(n===1&&(x<8||x>=w-8))){d.fill(0,i,i+4);continue;}const f=n===0?Math.min(1,(y-7)/8,(h-8-y)/8):Math.min(1,(x-7)/8,(w-8-x)/8);d[i+3]=Math.round(d[i+3]*f);if(d[i+3]<2)d.fill(0,i,i+4);}
+ let seamBefore=null;
+ if(n===0){
+  seamBefore=0;for(let y=0;y<h;y++)for(let k=0;k<4;k++)seamBefore=Math.max(seamBefore,Math.abs(d[(y*w)*4+k]-d[(y*w+w-1)*4+k]));
+  const p=464,overlap=48,pc=C(p,h),pg=pc.getContext('2d'),pi=pg.createImageData(p,h);
+  for(let y=0;y<h;y++)for(let x=0;x<p;x++){const z=(x+232)%p,oi=(y*p+x)*4,ia=(y*w+z)*4,ib=(y*w+p+z)*4;const blend=z<overlap?z/overlap:1;const aa=d[ia+3],ab=z<overlap?d[ib+3]:aa;const a=aa*blend+ab*(1-blend);for(let k=0;k<3;k++)pi.data[oi+k]=a?(d[ia+k]*aa*blend+(z<overlap?d[ib+k]:d[ia+k])*ab*(1-blend))/a:0;pi.data[oi+3]=a;}
+  pg.putImageData(pi,0,0);g.clearRect(0,0,w,h);g.drawImage(pc,0,0,w,h);im=g.getImageData(0,0,w,h);d=im.data;
+  for(let y=0;y<h;y++)for(let k=0;k<4;k++){const a=(y*w)*4+k,b=(y*w+w-1)*4+k,v=Math.round((d[a]+d[b])/2);d[a]=v;d[b]=v;}
+ }
+ g.putImageData(im,0,0);const id=n===0?'road/stone_strip-v1':'boundary/forest_fringe_c-v1';await save(c,id+'.png');assets.push(c);
+ let violations=0;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if((y<8||y>=h-8||(n===1&&(x<8||x>=w-8)))&&d[(y*w+x)*4+3])violations++;
+ let seam=0;if(n===0)for(let y=0;y<h;y++)for(let k=0;k<4;k++)seam=Math.max(seam,Math.abs(d[(y*w)*4+k]-d[(y*w+w-1)*4+k]));
+ metrics.push({assetId:id,sourceSize:[src.width,src.height],sourceCrop:bb,size:[w,h],alphaBounds:bounds(d,w,h),alphaPaddingViolations:violations,seamBeforeMaxRGBA:seamBefore,seamMaxRGBA:n===0?seam:null,pivot:n===0?[256,32]:[64,88],nativeRequestedSizeHonored:src.width===w&&src.height===h,manualEdits:n===0?'alpha bounds crop; fit 512x48 at y8; 8px inward coverage taper; 48px premultiplied-alpha cyclic overlap gives 464px period, rotate232px and resample to512; average outermost RGBA columns':'alpha bounds crop; nonuniform resize to112x24 (initial proportional16px height rejected); bottom at88; explicit8px gutters; 8px horizontal coverage taper'});
+}
+const text=(g,s,x,y,size=18,col='#e4e7d9')=>{g.font=`${size}px "Apple SD Gothic Neo",sans-serif`;g.fillStyle=col;g.fillText(s,x,y);};
+const fill=(g,x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y,w,h);};
+const tilegrass=(g,x,y,w,h)=>{g.fillStyle=g.createPattern(refs[3],'repeat');g.fillRect(x,y,w,h);};
+const road=C(1600,1020),g=road.getContext('2d');fill(g,0,0,1600,1020,'#202a24');text(g,'D1b · 석재길 반복과 흙길 연결',32,42,28);text(g,'512px 전체 × 3 · 표시선은 그림 밖 · 아래 배율 비교는 원본 픽셀 100%로 확인',32,76,18);
+tilegrass(g,32,110,1536,64);for(let i=0;i<3;i++)g.drawImage(assets[0],32+i*512,110);for(const x of [544,1056]){g.strokeStyle='#ebc47b';g.beginPath();g.moveTo(x,91);g.lineTo(x,108);g.moveTo(x,177);g.lineTo(x,195);g.stroke();text(g,'접합',x-17,217,15,'#ebc47b');}
+text(g,'줌 1.0 · 석재길 256×32px × 3',32,265,18);tilegrass(g,32,282,768,46);for(let i=0;i<3;i++)g.drawImage(assets[0],32+i*256,289,256,32);
+text(g,'줌 0.6 · 석재길 153.6×19.2px × 3',32,369,18);tilegrass(g,32,385,462,38);for(let i=0;i<3;i++)g.drawImage(assets[0],32+i*153.6,393,153.6,19.2);
+text(g,'기준 흙길 · 같은 줌 1.0 / 0.6',880,265,18);tilegrass(g,880,282,660,141);g.drawImage(refs[0],900,289,256,32);g.drawImage(refs[0],900,393,153.6,19.2);
+const scene=C(900,230),s=scene.getContext('2d');tilegrass(s,0,0,900,230);
+const trans=C(512,64),tg=trans.getContext('2d');tg.drawImage(refs[0],0,0);const a=tg.getImageData(0,0,512,64),sg=assets[0].getContext('2d'),b=sg.getImageData(0,0,512,64);for(let y=0;y<64;y++)for(let x=0;x<512;x++){const t=Math.max(0,Math.min(1,(x-224)/64)),i=(y*512+x)*4,aa=a.data[i+3]*(1-t),ba=b.data[i+3]*t,al=aa+ba;for(let k=0;k<3;k++)a.data[i+k]=al?(a.data[i+k]*aa+b.data[i+k]*ba)/al:0;a.data[i+3]=al;}tg.putImageData(a,0,0);
+const pt=t=>({x:32+832*t,y:114+47*Math.sin(2*Math.PI*t)});let last=pt(0),arc=0;for(let i=1;i<=1100;i++){const t=i/1100,p=pt(t),dx=p.x-last.x,dy=p.y-last.y,len=Math.hypot(dx,dy),ang=Math.atan2(dy,dx);let img,ux;if(t<.46){img=refs[0];ux=(arc*2)%510;}else if(t>.54){img=assets[0];ux=(arc*2)%510;}else{img=trans;ux=224+(t-.46)/.08*64;}s.save();s.translate(last.x,last.y);s.rotate(ang);s.drawImage(img,Math.min(510,ux),0,2,64,-.3,-16,len+.65,32);s.restore();last=p;arc+=len;}
+text(g,'흙길 → 석재길 · 한 곡선 / 줌 1.0',32,490,21);g.drawImage(scene,32,511);text(g,'같은 곡선 · 줌 0.6',980,490,21);g.drawImage(scene,980,511,540,138);
+text(g,'직접 접합 비교 · 전환 보정 없음',980,700,18);tilegrass(g,980,717,540,56);g.drawImage(refs[0],980,728,256,32);g.drawImage(assets[0],1236,728,256,32);
+text(g,'곡선 예시는 약 0.08 경로 구간에서 두 재질을 교차 합성한 검토용 처리. 별도 전환 에셋·게임 코드 납품 아님.',32,820,18);text(g,'스트립 중심선 y=32 / 상하 완전 투명 8px / 같은 512×64 캔버스 / 외곽 열 RGBA 차이 0',32,858,18);text(g,'원본 생성은 요청보다 큰 캔버스에서 반환되어 축소·알파·반복 이음부를 정리함. 실제 수정은 CSV에 기록.',32,922,18);
+await save(road,'checks/01-stone-repeat-transition.png');
+const forest=C(1120,720),f=forest.getContext('2d');fill(f,0,0,1120,720,'#202a24');text(f,'D1b · 숲 A, C, B, C, A, B, C',32,42,28);text(f,'동일 간격·동일 크기 · 무작위 회전/색 변화 없음 · C의 낮은 실루엣으로 비교',32,78,18);
+const seq=[refs[1],assets[1],refs[2],assets[1],refs[1],refs[2],assets[1]],labels=['A','C','B','C','A','B','C'];
+const row=C(490,116),r=row.getContext('2d');tilegrass(r,0,0,490,116);r.fillStyle=r.createPattern(refs[4],'repeat');r.fillRect(0,0,490,67);for(let i=0;i<7;i++)r.drawImage(seq[i],14+i*64,25,64,48);
+text(f,'줌 1.0 · PNG 0.5배 / 타일 64×32px',32,132,21);f.drawImage(row,32,153);for(let i=0;i<7;i++)text(f,labels[i],73+i*64,294,16);
+text(f,'줌 0.6 · PNG 0.3배 / 타일 38.4×19.2px',32,358,21);f.drawImage(row,32,381,294,69.6);for(let i=0;i<7;i++)text(f,labels[i],55+i*38.4,478,14);
+text(f,'납품 원본 1:1 · A / C / B',620,132,21);tilegrass(f,620,153,430,116);f.drawImage(refs[1],632,157);f.drawImage(assets[1],776,157);f.drawImage(refs[2],920,157);
+text(f,'C는 접지 높이를 맞추고 상단에 투명 여백을 둠.',620,330,17);text(f,'A·B의 큰 잎 덩어리 사이에 낮은 풀덤을 삽입.',620,360,17);text(f,'동일 C는 3회 재사용하므로 모양 자체는 동일.',620,390,17);text(f,'짧은 배열의 리듬과 형태 재사용을 구분해 검수.',620,420,17);
+text(f,'첨부 ZIP의 A·B는 수정 없이 사용. 게임 설치·런타임 검증 없이 만든 후보 검토용 합성.',32,597,18);text(f,'투명 여백 사방 8px / C 접지 피벗 (64,88) / 알파 있는 범위는 기술 기록 참조',32,636,18);
+await save(forest,'checks/02-forest-sequence.png');
+await fetch('/save/records%2Ftechnical-qa.json',{method:'POST',body:JSON.stringify({assets:metrics,boundsFormat:'x,y,width,height',preview:{forestSequence:labels,forestSpacingAtZoom1:64,scale1:.5,scale06:.3,transition:'crossfade over t=.46..54 of curve; approx 70 screen px; offline only',noGameInstallation:true}},null,2)});
+await fetch('/done');
+}catch(e){await fetch('/error',{method:'POST',body:String(e.stack||e)})}})();
+</script>

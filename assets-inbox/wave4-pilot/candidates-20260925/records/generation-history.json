@@ -1,0 +1,303 @@
+[
+  {
+    "id": "water/shallow_a-v1",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/water.png"
+    ],
+    "prompt": "ROLE: fill; southern English medieval city-builder 1300–1450 painterly terrain. Flat overhead material canvas, FULL opaque rectangular 2:1 aspect ratio. Target source 256x128 pixels spanning 2x2 game tiles, shown at 0.3x during play. XY seamless: opposing left/right AND top/bottom edges connect. Paint broad calm low-contrast color fields, clean deliberate flat brush masses, no focal feature. Every visible brush mark must be at least 12-20 target pixels wide, approximately 5-8 percent of entire image width. Extremely simplified, absolutely NO fine texture layer. No tiny grass blades, grain, speckles, cracks, photo texture, white glints, border, vignette, text, isolated stone/flower, shadows, isometric diamond or scene. Lighting even diffuse. Reference images are project-owned palette references only: do NOT copy their obsolete fine noise. SUBJECT: turbid shallow blue-green water with subtle riverbed color beneath. A few very broad submerged mossy teal planes and gentle thick water wave shapes 10-14 target pixels thick. Quiet surface without foam or white highlights. Muted desaturated water reference palette, slightly greener shallows. Whole canvas water, no banks or land.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-de46-7f90-a215-c0840b364967/exec-d72f582c-386f-4acc-9739-476519b06117.png",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "attempt": 1,
+    "selected": true,
+    "notes": "Broad water masses; requires final XY seam normalization"
+  },
+  {
+    "id": "ground/pasture_a-v1",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png"
+    ],
+    "prompt": "ROLE: fill; southern English medieval city-builder 1300–1450 painterly terrain. Flat overhead material canvas, FULL opaque rectangular 2:1 aspect ratio. Target source 256x128 pixels spanning 2x2 game tiles, shown at 0.3x during play. XY seamless: opposing left/right AND top/bottom edges connect. Paint broad calm low-contrast color fields, clean deliberate flat brush masses, no focal feature. Every visible brush mark must be at least 12-20 target pixels wide, approximately 5-8 percent of entire image width. Extremely simplified, absolutely NO fine texture layer. No tiny grass blades, grain, speckles, cracks, photo texture, white glints, border, vignette, text, isolated stone/flower, shadows, isometric diamond or scene. Lighting even diffuse. Reference images are project-owned palette references only: do NOT copy their obsolete fine noise. SUBJECT: quiet late summer grazed pasture. Match grass reference's muted olive hue but slightly more yellow olive, broad faint areas of flattened straw-toned grass. NO drawn individual grass. Two or three close-value paint colors in broad organic interlocking patches, no prominent dark blotch. Uniformly distributed pastoral surface rather than a scene.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-de46-7f90-a215-c0840b364967/exec-010ef406-9d52-4654-bcd7-a90749926965.png",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Rejected fine brush noise smaller than minimum motif"
+  },
+  {
+    "id": "ground/orchard_floor_a-v1",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/forest_floor.png"
+    ],
+    "prompt": "ROLE: fill; southern English medieval city-builder 1300–1450 painterly terrain. Flat overhead material canvas, FULL opaque rectangular 2:1 aspect ratio. Target source 256x128 pixels spanning 2x2 game tiles, shown at 0.3x during play. XY seamless: opposing left/right AND top/bottom edges connect. Paint broad calm low-contrast color fields, clean deliberate flat brush masses, no focal feature. Every visible brush mark must be at least 12-20 target pixels wide, approximately 5-8 percent of entire image width. Extremely simplified, absolutely NO fine texture layer. No tiny grass blades, grain, speckles, cracks, photo texture, white glints, border, vignette, text, isolated stone/flower, shadows, isometric diamond or scene. Lighting even diffuse. Reference images are project-owned palette references only: do NOT copy their obsolete fine noise. SUBJECT: orchard ground only, muted olive grass merging with warm brown cultivated soil in broad quiet irregular fields. Very faint cultivation lanes suggested by soft-edged wide earth bands, not rows of fine lines. Minimal earthy hand-painted color shapes. No trees, roots, fruit, leaves, individual grass, objects or distinct central patches. More brown earth than pasture while remaining equally quiet.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-de46-7f90-a215-c0840b364967/exec-34f58d13-663a-4dae-be09-d91a47394ac7.png",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Rejected fine brush noise smaller than minimum motif"
+  },
+  {
+    "id": "ground/pasture_a-v1",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png"
+    ],
+    "prompt": "Create an extremely simple FLAT GOUACHE COLOR BLOCK terrain material. ROLE fill, target256x128 full opaque rectangular2:1, XY seamless. Only 15-25 large overlapping irregular organic COLOR PLANES across entire image. Each plane smooth solid color inside, broad clean edges, minimum diameter ONE TWELFTH of image width. Absolutely ZERO small brush dabs or texture inside these planes: NOT impressionist, NOT stippled, NOT photographic. Palette is attached project's yellow olive grass, muted pastel warm yellow olive with very subtle flattened straw olive patches. Image reads as quiet grazed pasture at tiny scale through LOW FREQUENCY COLOR ONLY. No individual blades or grass drawing. Hand painted broad gouache shape edges, even lighting no shadow. No center focal shape, no frame, no border, no text, no diamond, no perspective. All edges fill completely. No grain, hatching, flecks, wrinkles, cracks, dots, fine irregular outlines or mottled micro noise. The reference gives ONLY COLOR; discard its textured surface entirely.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-de46-7f90-a215-c0840b364967/exec-ec1d27db-1be2-459f-af66-715bf4be0528.png",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Selected broad low-frequency flat gouache planes without fine brush noise; final XY seam normalization required"
+  },
+  {
+    "id": "ground/orchard_floor_a-v1",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/forest_floor.png"
+    ],
+    "prompt": "Create an extremely simple FLAT GOUACHE COLOR BLOCK terrain material. ROLE fill, target256x128 full opaque rectangular2:1, XY seamless. Only 15-25 large overlapping irregular organic COLOR PLANES across entire image. Each plane smooth solid color inside, broad clean edges, minimum diameter ONE TWELFTH of image width. Absolutely ZERO small brush dabs or texture inside these planes: NOT impressionist, NOT stippled, NOT photographic. Palette is attached project's muted olive grass and warm subdued brown soil. SUBJECT: orchard ground, broad subdued brown earth bands meandering horizontally among olive grass fields as faint cultivation traces, equal earth/grass. Low contrast, no dark focal blotch. Image reads as quietly cultivated orchard earth beneath trees at tiny scale through LOW FREQUENCY COLOR ONLY. No trees, leaves, roots, fruit, individual blades or grass drawing. Hand painted broad gouache shape edges, even lighting no shadow. No center focal shape, no frame, no border, no text, no diamond, no perspective. All edges fill completely. No grain, hatching, flecks, wrinkles, cracks, dots, fine irregular outlines or mottled micro noise. The references give ONLY COLORS; discard their textured surfaces entirely.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-de46-7f90-a215-c0840b364967/exec-370c2501-df53-4d8c-ab3a-f9f268acad45.png",
+    "role": "fill",
+    "size": [
+      256,
+      128
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Selected broad low-frequency flat gouache planes without fine brush noise; final XY seam normalization required"
+  },
+  {
+    "id": "wall/palisade_face_a-v1",
+    "size": [
+      512,
+      128
+    ],
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/palisade_corner-v2.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/palisade_terminal-v2.png"
+    ],
+    "role": "strip",
+    "attempt": 1,
+    "prompt": "ROLE strip / palisade wall face for procedural extrusion. Create ONE hand-painted medieval English1300-1450 game texture,512x128 final design,4:1 aspect. Attached project sprites are WOOD COLOR AND PAINT STYLE reference only: weathered warm brown oak, buff exposed cut tips. Unwrap into perfectly straight horizontal ORTHOGRAPHIC FRONT elevation, no perspective, no corner, no diagonal, no endposts, no gate. X ONLY seamless repeating, logs continue right through both horizontal borders without side margin. Solid opaque wooden wall body right down to bottom image edge, NO bottom fade or ground. Only area above irregular pointed log tops transparent. Tall pointed timber stakes10-14px wide at final size; occasional broader16px posts not endposts. Around36-40 broad vertical stakes across512width. Each stake has2-3 broad color planes, NO fine woodgrain, bark lines, knots, speckles or scratches. One or two quiet broad horizontal timber brace bands. Tip silhouette simple with restrained varied heights, avoid focal tall post. Light soft upper-left no cast shadows, colors match supplied wood but one level quieter. Readable at30percent display. Paint using broad simple shapes, all nonstructural color patches minimum12px final resolution. No rope microdetail, nails, text, border, vignette, ground shadow or isometric shape. Output true transparent PNG only above top silhouette.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-5ecf3637-6550-4bda-8e89-6d5ee4bce68d.png",
+    "notes": "Native orthographic front face, ~39 stakes wide, continuous opaque bottom and transparent top silhouette. Low alpha colored edge speckles visible at tips in native output require parent alpha fringe cleanup/RGB bleed; no silhouette cutoff. No isolated endposts.",
+    "selected": false
+  },
+  {
+    "id": "wall/palisade_face_a-v1",
+    "size": [
+      512,
+      128
+    ],
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-5ecf3637-6550-4bda-8e89-6d5ee4bce68d.png"
+    ],
+    "role": "strip",
+    "attempt": 2,
+    "prompt": "Precise-object-edit of supplied palisade candidate. Retain EXACT straight front elevation, overall layout, pointed stake silhouette, two horizontal braces, warm muted wood palette, genuine transparent top and opaque bottom edge. REMOVE ALL texture inside the wood. Paint each stake using JUST TWO LARGE UNBROKEN FLAT COLOR PLANES, smoothly bounded, like simple gouache cut-paper facets. Absolutely zero wood grain, cracks, thin lines, knots, dots, streaks, flecks or brushgrain, zero scratches on horizontal braces. This is a tiny game material strip512x128: each stake about13px wide, intended to display at0.3scale. Each stake body needs calm solid color, not texture. Keep tips as plain two-tone triangular wood shapes. No bright or special posts at either left/right edge: both ends ordinary muted midbrown stakes of same brightness/width as middle, no framing. X seamlessly repeats, no endcaps,no side margins. All material extends down to bottom fully opaque, transparency only above points, no ground. Same number roughly39 stakes. No shadows between stakes beyond quiet broad facet boundary. NO microscopic variation whatsoever, particularly no 1-3px features. Simple broad sculptural painted shapes preserve medieval game silhouette without photoreal texture. Output transparent PNG.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-22131e15-d472-48cc-8674-4ef8a5ceedf4.png",
+    "notes": "QA correction2: removed all interior grain/cracks/speckles; stakes now broad uninterrupted color facets. Source silhouette/brace positions retained; parent applies same X seam normalization and low-alpha tip-fringe cleanup.",
+    "selected": true
+  },
+  {
+    "id": "road/earth_strip_a-v2",
+    "size": [
+      512,
+      64
+    ],
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/earth_strip-v1.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png"
+    ],
+    "role": "strip",
+    "attempt": 1,
+    "prompt": "ROLE strip / earth road. Create ONE game texture asset, straight horizontal flat top-down material ribbon, final design resolution 512x64, aspect 8:1, spanning 4 game tiles. Reference image1 earth_strip-v1 is color/width reference; image2 grass only palette reference. Southern England 1300-1450 hand-painted muted warm earth and olive grass. X-axis ONLY seamlessly repeats left to right, content reaches both horizontal edges with no endcaps or left/right margins. NOT a scene, NOT isometric diamond, no perspective. Two VERY FAINT broad wheel tracks run horizontally, each 8px thick at final size, HALF the reference contrast, warm taupe packed dirt between, no dark rails. Broad simple patches of dirt and shoulder grass, each patch at least12px final size (~2.5% entire width); irregular chunked shoulders, top and bottom patterns DIFFERENT. Genuinely transparent above/below, Y-edge alpha fade12px. Art must remain simple and readable after display at 0.3x. Paint solid calm broad brush shapes, only around25-30large changes across width; no fine texture. No tiny grass blades, grains, speckles, stones, photographic noise, hairlines, text, border, vignette, central focalpatch or shadows. If generating larger canvas keep motifs proportionally HUGE; do not add detail. Output transparent PNG with single horizontal ribbon.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-e616588c-ff9b-4233-9e01-670284168f07.png",
+    "notes": "Native broad road shoulders and reduced wheel-track contrast; raw canvas has transparent vertical framing; parent will crop ribbon, normalize once and seam-correct X only.",
+    "selected": true
+  },
+  {
+    "id": "shore/shoreline_a-v1",
+    "size": [
+      512,
+      96
+    ],
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/water.png"
+    ],
+    "role": "strip",
+    "attempt": 1,
+    "prompt": "ROLE strip / shoreline material cross-section. Create ONE hand-painted game material ribbon for southern England1300-1450, final design512x96 aspect16:3. Input1 grass palette, input2 water palette only; simplify both profoundly. Flat top-down, straight horizontally unwrapped shoreline cross-section, no perspective, no isometric diamond or complete river. Upper half muted damp brown earth and olive coarse grass BLOCKS; lower half cloudy green-blue shallow water. Large irregular earth bank contour between, bumps12-16px at final512px width. X only seamless, material reaches left/right image edges, absolutely no endcaps or horizontal margins. Top and bottom12px alpha fade to genuine transparency. Entire width uniformly quiet without main feature. Broad opaque painted shapes, restrained soft upper-left illumination, no cast shadows. Minimum nonsemantic motif12px at finalresolution, watermarks10-14px thick; no individual fine grass blades, ripples thinner than10px, pebbles, sandgrain, noise, texture grain, speckles, reeds, text, whitehalo. Distant game view shrinks image to0.3x so keep chunky simple low-frequency masses, at most25large contour changes across width. Do not make a landscape; make reusable straight horizontal strip.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-5d516b01-747d-4711-987f-07cb298bda5b.png",
+    "notes": "Native horizontal material crosssection, broad brown bank/olive ground/cloudy water, no complete river. Parent crops transparent Y framing and normalizes/fades.",
+    "selected": true
+  },
+  {
+    "id": "road/earth_strip_b-v2",
+    "size": [
+      512,
+      64
+    ],
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-e616588c-ff9b-4233-9e01-670284168f07.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png"
+    ],
+    "role": "strip",
+    "attempt": 1,
+    "prompt": "Use case precise-object-edit. ROLE strip / earth road B. Edit candidate road A supplied image1 into B, preserving its width, straight horizontal centerline, two very low contrast broad wheel tracks, muted warm taupe earth/olive palette and transparent Y profile. Image2 project grass is palette reference only. Change ONLY broad stain placement and broad grass shoulder silhouettes, making a real different variant: upper shoulder has three broad shallow incursions at different positions than lower shoulder's five broad low clusters; distribute soil patches differently across full width, without single focal patch. Do not mirror, recolor or simply shift A. Final design512x64, X ONLY seamless repeating fullwidth no side margins,endcaps or perspective. Genuinely transparent12px Y-edge fade. Flat top-down horizontal road material, not scene. Extremely simple calm painterly masses: each soil/grass blob at least12px at finalwidth, wheel tracks8px wide lowcontrast; no individual blades, grains,speckles,pebbles,finebrush scratches or photo texture. Keep at most25 broad shoulder shapes across512width; opacity/shape match A, top and bottom edge rhythms DIFFERENT. Soft even upperleft lighting no cast shadows,no text,borders,vignette or central focalmark. England1300-1450. If outputcanvas larger, scale these shapes proportionally, absolutely no extra detail.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d400-ab4f-7391-8f1c-6597bae49a1d/exec-f0ab7f99-d9b6-4811-ab22-e1d68da8d375.png",
+    "notes": "Created after parent zoom0.6 representative gate. Repositioned broad olive shoulders and warm earth stains; maintains A tracks,width,palette. Parent applies shared Y12/Xseam normalization.",
+    "selected": true
+  },
+  {
+    "id": "prop/haycock_a-v1",
+    "role": "decal",
+    "size": [
+      128,
+      128
+    ],
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png"
+    ],
+    "attempt": 2,
+    "prompt": "Edit target: this generated haycock. Preserve its conical silhouette, muted ochre colors, camera and true transparent background. CRITICAL CORRECTION: replace all the hundreds of tiny brush streaks with about SIX very large smooth hand-painted straw clumps. Each clump covers roughly a sixth of the whole pile; separate them with broad gentle tonal changes only. Completely clean smooth matte color within each large clump, NO individual straw fibers, NO tiny brush flecks, NO mottling, NO texture noise whatsoever. This asset will be 128x128 and displayed only38pixels wide: the smallest allowed meaningful painted region is12pixels on the final128canvas. Six broad clumps should still read as loose old hay, not rocks. Retain only weak tight contact AO, no terrain or cast shadow. Transparent background and8pxfinalmargins. No other changes, text or marks.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-17ad-7130-9a80-7371d815fe35/exec-b5b11a80-b4e0-47b9-b961-37b941b20c5c.png",
+    "initialPrompt": "ROLE: decal / loose medieval haycock. Use case: historical-scene game asset. Create ONE isolated loose conical haycock for a southern English market town, 1300–1450. Reference image 1 is project-owned farm sprite: match its muted warm straw palette and painted material feeling, specifically the hay mound; reference 2 is project-owned grass palette only. FINAL DELIVERY 128x128 px with genuine transparent RGBA, intended final display only 38x38 pixels at zoom 0.6. Compose centered within 8px safe margins, base contact at bottom center (64,120). Camera fixed southwest 2:1 isometric, no perspective. The silhouette is a squat natural loose cone, leaning very slightly left, broad irregular rounded base. Think in FIVE OR SIX very large coherent straw masses, each 24-40 px wide on the final 128px canvas. Paint with quiet broad opaque brush shapes and a few broad soft ochre-to-brown value changes. Every nonsemantic texture mark must be at least 8-12 final pixels. No individual hay fibers, no fine straw lines, no stippling, no photographic grain, no little grass blades. This must stay simple and clearly read as a loose medieval hay mound at tiny game scale; natural muted painterly art, not glossy cartoon. Soft upper-left light; extremely weak tight contact AO beneath the base only. No cast shadow, no ground patch, no grass pedestal, no square or cylindrical modern bale, no straps, no pole, no other objects, no labels or text or watermark. Actual transparent background, not a painted checkerboard. Output only the single haycock.",
+    "initialReferences": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/grass.png"
+    ],
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-17ad-7130-9a80-7371d815fe35/exec-f63173c0-f883-41a4-984f-cd293b55d0bd.png",
+    "notes": "Selected native simplified revision after initial texture was too fine. Uniform fit/downscale, alpha margin and scene QA remain parent-owned. Original images untouched. Native model not exposed.",
+    "selected": true
+  },
+  {
+    "id": "tree/orchard_apple_c-v1",
+    "role": "object",
+    "size": [
+      256,
+      256
+    ],
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/orchard.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png"
+    ],
+    "attempt": 2,
+    "prompt": "Edit this generated orchard tree, preserving forked trunk, two unequal rounded crowns, silhouette, muted olive palette, camera and actual transparent background. CRITICAL simplification: replace the hundreds of tiny leaf dabs with only12-18 large smooth irregular foliage cushions. Each cushion occupies at least one tenth of crown width, corresponding to16-24pixels in final256canvas. Within each cushion use smooth gently shaded opaque painterly color, NO little leaf shapes, no mottling, no speckles or stipples, no high frequency brush texture. Crown edge should have only about20 broad round lobes total, not little serrations. Simplify trunk to three broad clean weathered brown planes with no bark speckles or tiny cracks. Remove ALL individual apples to avoid tiny red microdots. This is a low-frequency game sprite displayed only77pixels wide. Preserve stout branching geometry8-10px minimum at256final. Weak contact AO only, no large shadow, no ground patch, true transparency,8pxfinalsafe margins. No text or other objects.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-17ad-7130-9a80-7371d815fe35/exec-92abe675-7d68-4942-a011-564db11de0ab.png",
+    "initialPrompt": "ROLE: object / orchard apple tree C. Use case: historical-scene game sprite. Create ONE isolated modest apple orchard tree, southern England 1300–1450, true transparent RGBA. Input 1 is the project's existing orchard tree, camera and species/wealth reference; input 2 supplies muted hand-painted game color. New silhouette must be genuinely different: rounder crown split into two broad unequal lobes with a small open V cleft, sturdy forked weathered trunk, no sprawling horizontal old-tree canopy. Keep same modest orchard scale rather than tall forest tree. Fixed southwest 2:1 isometric game camera, no perspective or horizon. FINAL DELIVERY 256x256px, actual game zoom 0.6 displays about77x77pixels. Keep all paint inside8px transparent margins, lower-middle trunk foot exactly bottom-center vicinity(128,248). Use broad simple olive and muted yellow-green foliage masses; each coherent foliage cluster16-24 finalpixels or bigger; trunk and principal branches8-10 finalpixels wide. About12-18 large foliage masses, never hundreds of individual leaves. Very few muted small apple-colored mass accents if any; fruit must never introduce microdots. Low-frequency painterly material, restrained top-left highlight and broad form shading, no little leaf strokes or speckles, no detail under8-12finalpixels, no photographic noise. Very weak tight contact AO only directly at trunk foot. No broad baked shadow, no ground patch, no grass platform, no container, no fence, no other trees, no text/watermark. True transparent background, not a checkerboard painting. Output one centered tree.",
+    "initialReferences": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/orchard.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/farm_pastoral_summer-v1.png"
+    ],
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-17ad-7130-9a80-7371d815fe35/exec-bd3c6778-9f88-4d4c-8c58-c382e7e2ab2c.png",
+    "notes": "Selected native simplified revision after initial texture was too fine. Uniform fit/downscale, alpha margin and scene QA remain parent-owned. Original images untouched. Native model not exposed.",
+    "selected": true
+  },
+  {
+    "id": "prop/haycock_b-v1",
+    "role": "decal",
+    "size": [
+      128,
+      128
+    ],
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-17ad-7130-9a80-7371d815fe35/exec-b5b11a80-b4e0-47b9-b961-37b941b20c5c.png"
+    ],
+    "attempt": 1,
+    "prompt": "ROLE: decal / loose medieval haycock B. Create a genuinely new geometric variant of this approved haycock A; this image is the project's own generated candidate used as material/style reference. Preserve its exact muted straw ochre family, smooth low-frequency hand-painted broad clumps, southwest2:1 isometric camera, soft upper-left light and true transparent RGBA. CHANGE THE SILHOUETTE: make a much lower and wider loose mound, about1.8times wide as tall, gently leaning toward the right with its peak clearly off-center to right. Left shoulder slopes gradually, right shoulder steeper. Broad base irregular and flatter; one broad skirt of loose straw on left. Not mirroring, not recoloring, not same tall cone. Recompose only SIX to EIGHT large smooth coherent straw clumps, each24pixels or larger in final128x128. Pure broad opaque painted surfaces and gentle form shading; absolutely no individual hay fibers, tiny brush flecks, grain, mottling or markings under8-12finalpixels. FINALSIZE128x128,8pxtransparent safe margins and bottom-center contact(64,120). Weak tight contact AO only. No broad cast shadow, no ground patch, no grass, no pole, no straps, no square/cylindrical modern bale, no text. Must read as loose medieval hay at only38px display width. Produce one isolated low wide hay mound.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-17ad-7130-9a80-7371d815fe35/exec-e3e0724a-cb57-4182-b45d-dde8c247451c.png",
+    "notes": "Parent gated haycock A at zoom0.6 before B generation. New lower wider leaning-right silhouette, broad six clumps, no mirroring or recolor. Generated candidate A is material/style input, originally sourced only from supplied project images. Native model not exposed. Parent handles final uniform normalization.",
+    "selected": true
+  },
+  {
+    "id": "wall/stone_face_a-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-5693-7392-a6f8-c73e5aabff3f/exec-b56cfc82-3ca1-4630-9f7b-fbabd8213651.png",
+    "prompt": "ROLE: strip / medieval rubble stone wall face, asset wall/stone_face_a-v1. Create ONE game MATERIAL STRIP, target 512x128 pixels, four tiles long. Historical-scene, southern England market town 1300–1450, restrained hand-painted city-builder material. The two supplied project sprites are PALETTE AND BRUSHWORK REFERENCES ONLY; do not copy their isometric geometry.\nCAMERA: exactly straight-on ORTHOGRAPHIC FRONT ELEVATION of the vertical stone face. A perfectly horizontal long rectangular band across the full image width. Zero perspective, zero isometric slant. No visible side ends, no visible top walkway, no back wall, no thickness, no plinth, no ground plane. Wall extends beyond BOTH LEFT AND RIGHT image edges.\nREPEAT: X ONLY seamless material. Entire 512px width occupied from left to right with matching stone pattern at the join; no side margins or end caps. Y must NOT repeat.\nALPHA: genuine transparent RGBA above upper silhouette only. One shallow crenellated battlement rhythm restricted to the UPPER 22 pixels: broad simple merlons alternating shallow gaps. Below y=24, solid opaque stone face continues all the way through BOTTOM image edge; absolutely NO transparent bottom margin or ground shadow.\nFORM SIZE at final 512x128: irregular rubble blocks 12–20px broad, with sparse larger blocks. About six to seven loose courses. Paint stones as broad quiet flat muted warm grey/taupe limestone masses with soft ochre variation. Broad low-contrast mortar only, not crisp black outlines. No shadow or bevel around each separate stone. Surface smooth painterly broad patches, buildings must be more detailed than this strip. No chips, pores, grains, scratches, or tiny marks smaller than 8–12px at final size. Do not draw noise inside the blocks. Large restrained brushwork and very low surface contrast.\nLIGHT: extremely gentle even upper-left daylight, no cast shadow, no directional baked shadow. Match muted warm greys of references, not vivid orange or cool blue.\nCOMPOSITION: full-width material elevation only, without border, central focal object, vignette, text, watermark, scene, tower, gate, buttress or corner. Battlements belong only along the top edge, never vertical stripe repetition through entire panel. Deliver the isolated horizontally tileable front-face band.",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/stone_wall_straight_nw_se-v3.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/stone_wall_straight_ne_sw-v3.png"
+    ],
+    "role": "strip",
+    "size": [
+      512,
+      128
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Initial native candidate: correct front elevation but too much fine stone grain and bevel lighting; rejected in favor of simplified second candidate."
+  },
+  {
+    "id": "wall/stone_face_a-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-5693-7392-a6f8-c73e5aabff3f/exec-f2b1e357-7716-4796-b40c-e4f7bd118796.png",
+    "prompt": "Precise material simplification EDIT of supplied generated wall face. Preserve its exact orthographic frontal geometry, full-width continuous horizontal body, top-only crenellation silhouette, warm taupe limestone palette. Eliminate ALL per-stone bevel lighting and dark drop shadows. Remove the granular speckled texture COMPLETELY. Repaint each stone interior as a calm single broad color mass with at most ONE softly varying broad brush patch, like an economical hand-painted low-detail strategy-game terrain texture. Mortar is broad and nearly same value as stones: lower mortar contrast by 70 percent. NO small brush marks, chips, noise, grains or scratches. It should look markedly FLATTER and simpler, not rounded 3D blocks. Stone boundaries remain quietly legible by adjacent broad tones. At final 512x128 pixels stones should be 12-20 pixels, paint patches minimum8-12px. Retain irregular rubble arrangement; not neat modern bricks. Keep full-width material strip X-only repeat. No lateral endcap or margin. Genuine transparency above battlement edge ONLY; make opaque wall meet very bottom canvas edge with no bottom empty band. Crop away empty transparent overhead so crenellation rises from y0 and lowest notch is y22 of final128. No scene, text, grass, tower, pedestal, strong shadows or photo texture. The input is a draft EDIT TARGET, retain only project hand-painted muted warm-grey color character.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-5693-7392-a6f8-c73e5aabff3f/exec-b56cfc82-3ca1-4630-9f7b-fbabd8213651.png"
+    ],
+    "role": "strip",
+    "size": [
+      512,
+      128
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Native edit removes granular stone interiors and strongly reduces mortar contrast. Correct orthographic front, top-only crenellation; broad quiet warm grey/taupe blocks. Native overhead and bottom empty area must be cropped before exact 512x128 normalization, X seam matching and alpha clean. Residual light top edges belong broad painterly shape, no per-stone cast shadows. Parent must verify final minimum motif / edge continuity.",
+    "styleReferences": [
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/stone_wall_straight_nw_se-v3.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/stone_wall_straight_ne_sw-v3.png"
+    ]
+  },
+  {
+    "id": "module/bridge_abutment_ne_a-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-9085-78a0-b246-7a9e2b9461af/exec-2c341c22-e303-4a35-bf9e-fc5c2418c9f2.png",
+    "prompt": "Use case: sketch-to-render. ROLE: module / bridge abutment. SOURCE_SIZE 256x192 logical pixels. WORLD_SPAN: NE-SW bridge one tile wide, only the short shore-end abutment. REPEAT none. ALPHA true transparent RGBA. MIN_MOTIF structural timber 12-16 logical px, all painterly marks at least 8-12 logical px. LIGHT soft upper-left, contact AO only. PALETTE supplied project images. NO_MICRO_NOISE true.\nImage 1 is the exact monochrome topology mask EDIT TARGET: white is permitted subject coverage; black must become fully transparent. Preserve its 4:3 canvas and all white shape positions precisely, never center or rescale the silhouette. Image 2 is ONLY project timber color/brushwork reference; image 3 ONLY earth tone reference.\nRender the white mask as ONE small medieval southern-English 1300-1450 timber bridge ABUTMENT, viewed in fixed southwest 2:1 isometric projection. The broad top parallelogram is a very short deck of 5 or 6 broad worn planks; low chunky oak support posts extend downward in the masked vertical fingers. The small irregular shape along the upper/right land-facing edge is quiet compact warm mud bank. It is NOT a whole bridge, not a pier, not a river scene. No rails, stairs, parapets or tall parts. Leave every exterior pixel transparent.\nExact normalized-in-256x192 geometry: land socket line from (104,36) to (232,100), center (168,68); water socket line from (24,76) to (152,140), center (88,108). Walking deck polygon is [(104,36),(232,100),(152,140),(24,76)]. Parallel port lines slope down-right at 2:1; axis from southwest (88,108) toward northeast (168,68). Thin neutral light brown socket marker lines on these two deck edges, no arrows, text or dots. Keep the deck surface exactly in that quadrilateral. Timber is muted ochre-brown and weathered, with only broad hand-painted planes and 8-12px-or-larger low contrast worn color shapes; absolutely no fine woodgrain, nails, rope strands, tiny chips or photograph texture. These broad simplified shapes must survive final rendering at 0.3x. Output one isolated true transparent game sprite retaining the mask proportions and positions, no background, no cast shadow, no vignette, no decorative border, no text.",
+    "references": [
+      "/tmp/astra-wave4-work-20260925/module-topology.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/palisade_terminal-v2.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/earth_strip-v1.png"
+    ],
+    "role": "module",
+    "size": [
+      256,
+      192
+    ],
+    "attempt": 1,
+    "selected": false,
+    "notes": "Native render of prebuilt topology mask. First rejected for excessive microtexture and small topology drift. Native dimensions1448x1086. Full canvas mapping only."
+  },
+  {
+    "id": "module/bridge_abutment_ne_a-v1",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-9085-78a0-b246-7a9e2b9461af/exec-6811b1f8-f36e-4d3c-87b2-db5ca68ee9e4.png",
+    "prompt": "Use case: sketch-to-render. ROLE: module / bridge abutment. SOURCE_SIZE 256x192 logical pixels. WORLD_SPAN: NE-SW bridge one tile wide, only the short shore-end abutment. REPEAT none. ALPHA true transparent RGBA. MIN_MOTIF structural timber 12-16 logical px, all painterly marks at least 8-12 logical px. LIGHT soft upper-left, contact AO only. PALETTE supplied project images. NO_MICRO_NOISE true.\nImage 1 is the exact monochrome topology mask EDIT TARGET: white is permitted subject coverage; black must become fully transparent. Preserve its 4:3 canvas and all white shape positions precisely, never center or rescale the silhouette. Image 2 is ONLY project timber color/brushwork reference; image 3 ONLY earth tone reference.\nRender the white mask as ONE small medieval southern-English 1300-1450 timber bridge ABUTMENT, viewed in fixed southwest 2:1 isometric projection. The broad top parallelogram is a very short deck of 5 or 6 broad worn planks; low chunky oak support posts extend downward in the masked vertical fingers. The small irregular shape along the upper/right land-facing edge is quiet compact warm mud bank. It is NOT a whole bridge, not a pier, not a river scene. No rails, stairs, parapets or tall parts. Leave every exterior pixel transparent.\nExact normalized-in-256x192 geometry: land socket line from (104,36) to (232,100), center (168,68); water socket line from (24,76) to (152,140), center (88,108). Walking deck polygon is [(104,36),(232,100),(152,140),(24,76)]. Parallel port lines slope down-right at 2:1; axis from southwest (88,108) toward northeast (168,68). Thin neutral light brown socket marker lines on these two deck edges, no arrows, text or dots. Keep the deck surface exactly in that quadrilateral. Timber is muted ochre-brown and weathered, with only broad hand-painted planes and 8-12px-or-larger low contrast worn color shapes; absolutely no fine woodgrain, nails, rope strands, tiny chips or photograph texture. These broad simplified shapes must survive final rendering at 0.3x. Output one isolated true transparent game sprite retaining the mask proportions and positions, no background, no cast shadow, no vignette, no decorative border, no text.\nTARGETED SECOND PASS: previous rendering has too many tiny woodgrain marks. Repaint surface into VERY BROAD low contrast clean hand-painted color planes, no scratches, speckles or grain lines. Use second mask's topology STRICTLY; the previous candidate is first input edit target and mask second input. At output final logical256x192, ALL color patches at least 10px across. Five simple broad planks, clean posts, plain mudbank. No stippling. Exact four deck corners MUST match mask [(104,36),(232,100),(152,140),(24,76)], not centered within mask. Reduce wooden microdetail to near-zero; retain large structural silhouette.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d401-9085-78a0-b246-7a9e2b9461af/exec-2c341c22-e303-4a35-bf9e-fc5c2418c9f2.png",
+      "/tmp/astra-wave4-work-20260925/module-topology.png",
+      "/tmp/astra-wave4-work-20260925/astra-wave4-reference-files/palisade_terminal-v2.png"
+    ],
+    "role": "module",
+    "size": [
+      256,
+      192
+    ],
+    "attempt": 2,
+    "selected": true,
+    "notes": "Selected: much broader simplified timber planes; mask-generated short abutmentment only, no river or bridge span. Native model dimensions1448x1086; model name not exposed. Preserve full canvas then enforce topology-mask alpha and overlay exact socket markers. Art corners approximate intended sockets; deterministic overlay establishes exact contract ports, not native precision. Mask is technical input, not external art."
+  }
+]

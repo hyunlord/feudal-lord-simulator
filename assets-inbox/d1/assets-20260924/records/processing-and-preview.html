@@ -1,0 +1,65 @@
+<!doctype html><meta charset="utf-8"><script>
+(async()=>{try{
+const C=(w,h)=>Object.assign(document.createElement('canvas'),{width:w,height:h});
+const load=url=>new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=url;});
+const save=async(c,p)=>{const b=await new Promise(r=>c.toBlob(r,'image/png'));await fetch('/save/'+encodeURIComponent(p),{method:'POST',body:b});};
+const bbox=(d,w,h)=>{let x0=w,y0=h,x1=-1,y1=-1;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if(d[(y*w+x)*4+3]>2){x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}return[x0,y0,x1-x0+1,y1-y0+1];};
+const images=await Promise.all([0,1,2,3,4].map(i=>load('/source/'+i))),refs=await Promise.all([0,1,2,3].map(i=>load('/ref/'+i))),screen=await load('/screenshot');
+const ids=['road/earth_strip-v1','boundary/forest_fringe_a-v1','boundary/forest_fringe_b-v1','boundary/field_furrow-v1','boundary/grass_edge-v1'];const assets=[],metrics=[];
+for(let n=0;n<5;n++){
+ const src=images[n],sc=C(src.width,src.height),sg=sc.getContext('2d',{willReadFrequently:true});sg.drawImage(src,0,0);const b=bbox(sg.getImageData(0,0,sc.width,sc.height).data,sc.width,sc.height);const w=n===0?512:128,h=(n===1||n===2)?96:64,c=C(w,h),g=c.getContext('2d',{willReadFrequently:true});g.imageSmoothingQuality='high';
+ let dw,dh;if(n===0){dw=512;dh=48}else{const f=Math.min(112/b[2],(h-16)/b[3]);dw=Math.floor(b[2]*f);dh=Math.floor(b[3]*f)}
+ g.drawImage(src,...b,Math.floor((w-dw)/2),h-8-dh,dw,dh);
+ const im=g.getImageData(0,0,w,h),d=im.data;
+ for(let y=0;y<h;y++)for(let x=0;x<w;x++){let i=(y*w+x)*4;if(y<8||y>=h-8||(n!==0&&(x<8||x>=w-8))){d.fill(0,i,i+4);}else{let f=1;if(n===0)f=Math.min(1,(y-7)/8,(h-8-y)/8);else f=Math.min(1,(x-7)/8,(w-8-x)/8);d[i+3]=Math.round(d[i+3]*f);if(d[i+3]<2)d.fill(0,i,i+4);}}
+ let seamBefore=null;
+ if(n===0){
+   let diff=0;for(let y=0;y<h;y++)for(let k=0;k<4;k++)diff+=Math.abs(d[(y*w)*4+k]-d[(y*w+w-1)*4+k]);seamBefore=diff/(h*4);
+   const original=new Uint8ClampedArray(d);
+   for(let y=8;y<h-8;y++){
+     const profile=[0,0,0,0];let weight=0;for(let x of [...Array(16).keys(),...Array.from({length:16},(_,i)=>w-16+i)]){const i=(y*w+x)*4,a=original[i+3]/255;for(let k=0;k<3;k++)profile[k]+=original[i+k]*a;profile[3]+=original[i+3];weight+=a;}
+     for(let k=0;k<3;k++)profile[k]=weight?Math.round(profile[k]/weight):0;profile[3]=Math.round(profile[3]/32);
+     for(let x=0;x<w;x++){const dist=Math.min(x,w-1-x);if(dist>=40)continue;const t=dist<16?1:1-(dist-16)/24;const i=(y*w+x)*4;for(let k=0;k<4;k++)d[i+k]=Math.round(original[i+k]*(1-t)+profile[k]*t);}
+   }
+ }
+ g.putImageData(im,0,0);await save(c,ids[n]+'.png');assets.push(c);
+ let padViolations=0;for(let y=0;y<h;y++)for(let x=0;x<w;x++)if((y<8||y>=h-8||(n!==0&&(x<8||x>=w-8)))&&d[(y*w+x)*4+3])padViolations++;
+ let seamMax=0,bandMax=0;if(n===0){for(let y=0;y<h;y++)for(let k=0;k<4;k++){seamMax=Math.max(seamMax,Math.abs(d[(y*w)*4+k]-d[(y*w+w-1)*4+k]));for(let x=0;x<16;x++)bandMax=Math.max(bandMax,Math.abs(d[(y*w+x)*4+k]-d[(y*w+w-16+x)*4+k]));}}
+ metrics.push({assetId:ids[n],sourceSize:[src.width,src.height],sourceAlphaBounds:b,size:[w,h],alphaBounds:bbox(d,w,h),pivot:[w/2,h-8],padViolations,seamBeforeMeanRGBA:seamBefore,seamMaxRGBA:n===0?seamMax:null,end16BandMaxRGBA:n===0?bandMax:null,manualEdits:'crop alpha bounds >2; fit target interior; browser high-quality resampling; explicit 8px alpha gutter; non-blur coverage taper'+(n===0?'; periodic 16px edge profile matched, 24px linear transition into source on each side':''),nativeRequestedSizeHonored:src.width===w&&src.height===h});
+}
+const text=(g,s,x,y,size=18,col='#e4e7d9')=>{g.font=`${size}px "Apple SD Gothic Neo",sans-serif`;g.fillStyle=col;g.fillText(s,x,y);};
+const panel=(g,x,y,w,h,col)=>{g.fillStyle=col;g.fillRect(x,y,w,h)};
+const checker=(g,x,y,w,h)=>{for(let yy=0;yy<h;yy+=8)for(let xx=0;xx<w;xx+=8){g.fillStyle=((xx+yy)/8)%2?'#576155':'#64705f';g.fillRect(x+xx,y+yy,8,8)}};
+// Check 1: exact three full 512px files, repeated without overlap.
+const check=C(1600,540),g=check.getContext('2d');panel(g,0,0,1600,540,'#202a24');text(g,'D1 · 흙길 스트립 반복 검사',32,40,27);text(g,'512×64 PNG 전체를 3장 이어 붙임 · 좌우 여백 예외 승인 · 경계선은 그림 밖에 표시',32,73,17);
+checker(g,32,116,1536,64);for(let i=0;i<3;i++)g.drawImage(assets[0],32+i*512,116);
+for(let x of [544,1056]){g.strokeStyle='#efd08c';g.lineWidth=1;g.beginPath();g.moveTo(x,96);g.lineTo(x,114);g.moveTo(x,182);g.lineTo(x,200);g.stroke();text(g,'이음',x-17,218,15,'#efd08c');}
+text(g,'줌 1.0 · 256×32px씩 (64×32px / 타일)',32,272,18);for(let i=0;i<3;i++)g.drawImage(assets[0],32+i*256,288,256,32);
+text(g,'줌 0.6 · 153.6×19.2px씩',32,368,18);for(let i=0;i<3;i++)g.drawImage(assets[0],32+i*153.6,387,153.6,19.2);
+text(g,'끝 16px RGBA 일치 / 최외곽 열 차이 0 · 픽셀 값 일치는 기술 검사이며, 시각적 반복감 검수는 별도',32,477,17);
+await save(check,'checks/01-strip-repeat.png');
+// Scene drawn at actual zoom1 CSS pixel scale, subsequently reduced uniformly to 0.6.
+const scene=C(720,530),s=scene.getContext('2d');s.fillStyle=s.createPattern(refs[0],'repeat');s.fillRect(0,0,720,530);
+const point=t=>({x:45+625*t,y:132+52*Math.sin(2*Math.PI*t)});
+let last=point(0),arc=0;for(let i=1;i<=850;i++){const p=point(i/850),dx=p.x-last.x,dy=p.y-last.y,len=Math.hypot(dx,dy),a=Math.atan2(dy,dx);s.save();s.translate(last.x,last.y);s.rotate(a);s.drawImage(assets[0],(arc*2)%510,0,2,64,-.3,-16,len+.65,32);s.restore();arc+=len;last=p;}
+// Grass edge follows the upper side of a few road sections at native half scale.
+for(const t of [.25,.33,.42,.65,.73]){const p=point(t),a=Math.atan2(104*Math.PI*Math.cos(2*Math.PI*t),625);s.save();s.translate(p.x+Math.sin(a)*13,p.y-Math.cos(a)*13);s.rotate(a+Math.atan(.5));s.drawImage(assets[4],-32,-16,64,32);s.restore();}
+// Forest boundary: the same A/B assets, not regenerated, six placements with small deterministic offsets.
+s.fillStyle=s.createPattern(refs[1],'repeat');s.fillRect(30,250,358,63);
+for(let i=0;i<6;i++){const y=315+[0,2,-1,1,-2,0][i];s.drawImage(assets[1+i%2],31+i*53,y-44,64,48);}
+// Two adjacent 2x2-cell fields: each existing farm picture covers 128x64px here.
+s.drawImage(refs[3],430,330,128,64);s.drawImage(refs[3],494,362,128,64);s.drawImage(assets[3],494,362,64,32);
+// Native-size isolated samples share the same grass, for honest low-zoom readability.
+s.drawImage(assets[1],50,420,64,48);s.drawImage(assets[2],128,420,64,48);s.drawImage(assets[3],230,430,64,32);s.drawImage(assets[4],335,430,64,32);
+text(s,'S 흙길 + 잔디 경계',28,33,16,'#233421');text(s,'A / B × 3 · 6개',30,238,16,'#233421');text(s,'기존 밀밭 2장 + 고랑',437,313,16,'#233421');text(s,'개별 형태 비교',30,411,16,'#233421');
+const board=C(1700,1100),b=board.getContext('2d');panel(b,0,0,1700,1100,'#202a24');text(b,'D1 · 실제 납품 PNG 배율 검토',32,42,28);text(b,'오프라인 합성 / 게임 설치 아님 · 확대해서 읽는 그림이 아니라 아래 배율 그대로 비교',32,77,18);
+text(b,'줌 1.0 · 타일 64×32px',32,120,21);b.drawImage(scene,32,142);
+text(b,'줌 0.6 · 타일 38.4×19.2px',32,721,21);b.drawImage(scene,32,742,432,318);
+text(b,'기존 게임 캡처 · 전체 화면 축소',802,120,21);b.drawImage(screen,802,142,864,486);
+text(b,'기존 게임 캡처 일부 · 원본 픽셀 1:1 (표시 배율 메타 미확인)',802,681,18);b.drawImage(screen,348,145,700,300,802,703,700,300);
+text(b,'밀밭은 기존 그림을 2×2셀 영역에 놓은 비교용 배치. D1의 최종 UV·밀도·가림 판정은 설치 후 별도.',802,1050,15);
+await save(board,'checks/02-game-scale-preview.png');
+await fetch('/save/records%2Ftechnical-qa.json',{method:'POST',body:JSON.stringify({assets:metrics,preview:{method:'Canvas2D composition from final deliverables; road strip sampled along an approximate S, A/B alternate 6; existing wheat sprites adjacent; grass edge placed on road; 1.0 and .6 actual CSS scale',screenshot:'corrected-screenshot-04-final-observation.png',screenshotNativeZoom:'unknown',wheatDisplayFootprint:'comparison 2x2 cells per existing sprite',mainScenePx:[720,530],zoom06ScenePx:[432,318]}},null,2)});
+await fetch('/done');
+}catch(e){await fetch('/error',{method:'POST',body:String(e.stack||e)})}})();
+</script>

@@ -1,0 +1,11 @@
+{
+ "sheetSize":[128,32],"cellSize":[32,32],"directionOrder":["NE","SE","SW","NW"],
+ "builder":{"reference":"actor_builder-v1.png","cellSize":[83,83],"frame":0,"hands":[[58,44],[56,42],[26,44],[24,45]],"shoulders":[[49,26],[46,27],[37,27],[34,27]]},
+ "tools":[
+  {"id":"work/work_shovel-v1","pivots":[[11,5],[22,5],[11,5],[22,5]],"attach":"hands","layer":"front","handRestoreSize":[4,5]},
+  {"id":"work/work_hammer-v1","pivots":[[9,26],[10,26],[22,26],[23,26]],"attach":"hands","layer":"front","handRestoreSize":[4,5]},
+  {"id":"work/work_sickle-v1","pivots":[[9,24],[24,24],[10,24],[24,24]],"attach":"hands","layer":"front","handRestoreSize":[4,5]},
+  {"id":"work/work_carry_beam-v1","pivots":[[16,11],[16,11],[16,11],[16,11]],"attach":"shoulders","layer":"behind-then-near-half-front","nearRects":[[16,0,16,32],[0,0,16,32],[16,0,16,32],[0,0,16,32]]}
+ ],
+ "notes":"Coordinates manually inspected in original83px builder cells and final32px prop cells; source-resolution static proof only. Draw tool, then restore original4x5 hand crop centred on anchor for gripping. Carry: full tool behind actor, then nearRects in front. Frame1 hands need separate integration registration. Hammer raisedhead via long handle above unchanged resting hand, no claim of hammer animation. Shovel end within about4px of source groundline: small final placement offset may be needed for animation."
+}

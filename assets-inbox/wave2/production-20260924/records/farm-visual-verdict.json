@@ -1,0 +1,25 @@
+{
+  "scope": "farm7",
+  "verdict": "candidate_pass_static_preview",
+  "score": 93,
+  "revision": "seedling attempt2 final normalized",
+  "resolvedIssue": "Short broad green seedling clusters remain visible as green dotted rows versus bare worked soil.",
+  "previewScale": "farms 0.7 original; inset0.6 of panel =0.42 original; not game runtime zoom",
+  "viewed": 7,
+  "checkViewed": "03-farms-facilities.png",
+  "sizeAndPaddingPass": true,
+  "mixedPastureRgbaInvariant": {
+    "x": 207,
+    "pass": true
+  },
+  "workedRegistrationPass": true,
+  "summerByteIdentical": true,
+  "issues": [
+    {
+      "severity": "low",
+      "id": "seasonal_edge_variation",
+      "details": "Spring bbox width338 vs summer346 vs winter341; same top/bottom and nominal pivot."
+    }
+  ],
+  "gameRuntimeTested": false
+}

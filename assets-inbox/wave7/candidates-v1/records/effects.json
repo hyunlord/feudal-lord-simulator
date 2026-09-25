@@ -1,0 +1,359 @@
+[
+  {
+    "id": "fx/roof_smoke_weak_sheet-v1",
+    "file": "assets/fx/roof_smoke_weak_sheet-v1.png",
+    "width": 192,
+    "height": 80,
+    "role": "decal",
+    "pivot": {
+      "x": 24,
+      "y": 76
+    },
+    "frameSize": {
+      "width": 48,
+      "height": 80,
+      "count": 4
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Create ONE transparent RGBA game VFX sprite sheet: weak smoke escaping a medieval thatch roof gap (no chimney). Exactly FOUR animation frames in one horizontal row, equal cells. Target sheet 192x80, each cell 48x80; generate larger if needed at exact aspect 2.4:1. Each frame is a very faint slim warm gray wisp, soft handpainted broad shapes, sparse, subtle curl slightly right, grounded emission origin at same bottom-center (cell x24,y76) every frame. Full alpha empty gutters at cell boundaries, all smoke within its cell, no clipping. A continuous gentle cyclic oscillation with four equally advanced phases; similar height/width and density in all four, final returns gently to first, not a fade-in sequence. Intended bread-deficit weak household fire. Medieval city-builder painterly muted palette, soft upper-left light. Smoke ONLY. No roof, chimney, house, oven, ground, text, numbers, labels, frame borders, checkerboard painted into image, no white background. Genuine transparent alpha with semitransparent plume. Preserve 5 percent transparent margin.",
+        "references": [],
+        "rawFile": "sources/effects/roof_smoke_weak_sheet-raw.png",
+        "originalWidth": 1942,
+        "originalHeight": 809,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Split source into four equal cells; alpha bounds threshold3; common scale across frames; single resize from source; bottom-center registration; transparent RGBA composite.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 10423,
+      "partialAlphaPixels": 4937,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": "Four distinct drawn phases; frame4-to1 aesthetic continuity requires runtime timing validation.",
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable.",
+      "cyclicAlphaMeanAbsoluteDifference": [
+        17.17,
+        14.99,
+        24.09,
+        4.18
+      ]
+    }
+  },
+  {
+    "id": "fx/oven_smoke_sheet-v1",
+    "file": "assets/fx/oven_smoke_sheet-v1.png",
+    "width": 256,
+    "height": 96,
+    "role": "decal",
+    "pivot": {
+      "x": 32,
+      "y": 92
+    },
+    "frameSize": {
+      "width": 64,
+      "height": 96,
+      "count": 4
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. Transparent RGBA medieval city-builder animation VFX sprite sheet, smoke ONLY from communal bread oven beside a POST WINDMILL. Exactly FOUR frames equally spaced one horizontal row, equal cells 64x96 target, total256x96. Render larger same aspect if required. Identical bottom-center emission point in all frames. Dense warm charcoal-gray smoke in rounded curling handpainted shapes with semitransparent edges, significantly darker and thicker than pale house smoke, upper-left lighting. Each plume fills central60 percent cell width and80 percent height, generous completely transparent gutters and outer margins. Four successive cyclic gentle billowing phases with similar volume, phase4 close to phase1 for looping. No building, no oven body, no windmill body, absolutely no waterwheel, chimney, house, fire, text, number, border, checkerboard or backdrop. Genuine transparent alpha.",
+        "references": [],
+        "rawFile": "sources/effects/oven_smoke_sheet-raw.png",
+        "originalWidth": 1983,
+        "originalHeight": 793,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Split source into four equal cells; alpha bounds threshold3; common scale across frames; single resize from source; bottom-center registration; transparent RGBA composite.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 15915,
+      "partialAlphaPixels": 8516,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": "Four distinct drawn phases; frame4-to1 aesthetic continuity requires runtime timing validation.",
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable.",
+      "cyclicAlphaMeanAbsoluteDifference": [
+        36.06,
+        34.65,
+        24.19,
+        15.3
+      ]
+    }
+  },
+  {
+    "id": "fx/roof_smoke_sheet-v1",
+    "file": "assets/fx/roof_smoke_sheet-v1.png",
+    "width": 192,
+    "height": 80,
+    "role": "decal",
+    "pivot": {
+      "x": 24,
+      "y": 76
+    },
+    "frameSize": {
+      "width": 48,
+      "height": 80,
+      "count": 4
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: stylized-concept. ONE transparent RGBA game VFX sprite sheet, pale smoke escaping medieval house thatch ridge gaps (no chimney). EXACTLY FOUR frames evenly spaced in single horizontal row. Target total192x80, each48x80; generate larger same2.4:1aspect if required. Warm light gray diffuse translucent curling smoke, moderate density, denser and broader than a faint weak wisp but much lighter than charcoal oven smoke. Four sequential cyclic rising curls of stable mass and size, fourth phase visually returns to first. Same bottom-center emission point every cell. Broad painterly shapes legible after severe downscale, muted medieval city-builder palette. Each plume stays central60percent of own cell with full transparent gutters, margin8percent. Smoke ONLY, no roof chimney house furnace building fire ground text borders numbers or checkerboard. Real transparent background, semitransparent plume.",
+        "references": [],
+        "rawFile": "sources/effects/roof_smoke_sheet-raw.png",
+        "originalWidth": 1942,
+        "originalHeight": 809,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Split source into four equal cells; alpha bounds threshold3; common scale across frames; single resize from source; bottom-center registration; transparent RGBA composite.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 9910,
+      "partialAlphaPixels": 5445,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": "Four distinct drawn phases; frame4-to1 aesthetic continuity requires runtime timing validation.",
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable.",
+      "cyclicAlphaMeanAbsoluteDifference": [
+        30.28,
+        33.41,
+        41.3,
+        1.09
+      ]
+    }
+  },
+  {
+    "id": "fx/dust_puff_sheet-v1",
+    "file": "assets/fx/dust_puff_sheet-v1.png",
+    "width": 256,
+    "height": 48,
+    "role": "decal",
+    "pivot": {
+      "x": 32,
+      "y": 44
+    },
+    "frameSize": {
+      "width": 64,
+      "height": 48,
+      "count": 4
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case stylized-concept. ONE transparent RGBA medieval game dust-puff sprite sheet. Exactly FOUR frames in single horizontal row, equal cells64x48 target total256x48. If large generation choose very wide canvas. Read left to right: small low ocher-gray dust puff, broad billowing dust, wider dispersing dust, sparse dissipating dust. Low elliptical particle shapes in isometric ground plane, soft broad handpainted forms, upper-left lighting, quiet muted earth. Same ground pivot bottom-center each cell. No ground painted, only airborne dust clouds. Full transparent gutters separating cells, no cropping. Each fits85percent cell. No smoke columns, fire, rocks, tools, text, border, labels, background or checkerboard. Genuine transparent alpha with feathered dust edges.",
+        "references": [],
+        "rawFile": "sources/effects/dust_puff_sheet-raw.png",
+        "originalWidth": 1983,
+        "originalHeight": 793,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Split source into four equal cells; alpha bounds threshold3; common scale across frames; single resize from source; bottom-center registration; transparent RGBA composite.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 8300,
+      "partialAlphaPixels": 3897,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": "Four distinct drawn phases; frame4-to1 aesthetic continuity requires runtime timing validation.",
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable."
+    }
+  },
+  {
+    "id": "fx/plus_float-v1",
+    "file": "assets/fx/plus_float-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "decal",
+    "pivot": {
+      "x": 16,
+      "y": 26
+    },
+    "frameSize": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case stylized-concept. Create one small game floating gain marker, target32x32 transparentRGBA. One bold simple pale warm-ivory PLUS SIGN (+), chunky equal-length arms, dark muted brown thin edge, behind it a tiny irregular muted moss-green handpainted daub. Small readable world-space gain symbol for medieval city builder, painterly matte finish upper-left light. Only authorized symbol is '+'. No numbers letters additional marks coins text UI box border extruded bevel or glow. Centered occupies75percent canvas with transparent padding, true transparent background. Single icon not sheet.",
+        "references": [],
+        "rawFile": "sources/effects/plus_float-raw.png",
+        "originalWidth": 1254,
+        "originalHeight": 1254,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha bounds threshold3; aspect-preserving single resize from source; lower-center transparent canvas. Dimensions chosen because construction brief has no numeric canvas size.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 690,
+      "partialAlphaPixels": 301,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": null,
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable."
+    }
+  },
+  {
+    "id": "construction/roof_frame_small-v1",
+    "file": "assets/construction/roof_frame_small-v1.png",
+    "width": 128,
+    "height": 96,
+    "role": "object",
+    "pivot": {
+      "x": 64,
+      "y": 90
+    },
+    "frameSize": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. ONE transparent RGBA small roof construction frame game asset. Reference image is STYLE and ISOMETRIC CAMERA reference only. Match weathered warm-brown sawn oak, warm upper-left light, quiet medieval painterly game style. Create SMALL simple triangular gabled roof frame for hut or well: three stout open oak trusses tied by one ridgebeam and two wallplates, few thick diagonal braces, clear large holes. No walls, no roof cover, no house body, no foundation or surrounding ground, no tools or workers. Isometric orthographic two ground axes2:1, front left gable visible, ridge recedes upper-right same as reference. Target128x96 canvas; centered fit with8percent transparent margin, object lower-center pivot. No black outlines, micro noise, long cast shadow, text or checkerboard. Genuine transparent background and transparent open gaps.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/construction_roof_frame-v1.png"
+        ],
+        "rawFile": "sources/effects/roof_frame_small-raw.png",
+        "originalWidth": 1448,
+        "originalHeight": 1086,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha bounds threshold3; aspect-preserving single resize from source; lower-center transparent canvas. Dimensions chosen because construction brief has no numeric canvas size.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 7352,
+      "partialAlphaPixels": 4320,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": null,
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable."
+    }
+  },
+  {
+    "id": "construction/roof_frame_medium-v1",
+    "file": "assets/construction/roof_frame_medium-v1.png",
+    "width": 192,
+    "height": 144,
+    "role": "object",
+    "pivot": {
+      "x": 96,
+      "y": 138
+    },
+    "frameSize": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. ONE transparent RGBA medium roof construction frame game asset. Reference image is STYLE and ISOMETRIC CAMERA reference only. Match weathered warm-brown sawn oak, warm upper-left light, quiet medieval painterly game style. Create MEDIUM triangular gabled roof frame for L2/L3 timber house or barn: five stout open oak trusses, taller steeper gable than hut, joined by ridgebeam two wallplates and three long purlins, clear large holes. This is a larger complex frame rather than enlarged small hut. No walls, no roof cover, no house body, no foundation or surrounding ground, no tools or workers. Isometric orthographic two ground axes2:1, front left gable visible, ridge recedes upper-right same as reference. Target192x144 canvas; centered fit with8percent transparent margin, object lower-center pivot. No black outlines, micro noise, long cast shadow, text or checkerboard. Genuine transparent background and transparent open gaps.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/construction_roof_frame-v1.png"
+        ],
+        "rawFile": "sources/effects/roof_frame_medium-raw.png",
+        "originalWidth": 1448,
+        "originalHeight": 1086,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha bounds threshold3; aspect-preserving single resize from source; lower-center transparent canvas. Dimensions chosen because construction brief has no numeric canvas size.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 17099,
+      "partialAlphaPixels": 9349,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": null,
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable."
+    }
+  },
+  {
+    "id": "construction/roof_frame_large-v1",
+    "file": "assets/construction/roof_frame_large-v1.png",
+    "width": 256,
+    "height": 192,
+    "role": "object",
+    "pivot": {
+      "x": 128,
+      "y": 186
+    },
+    "frameSize": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. ONE transparent RGBA large roof construction frame game asset. Reference image is STYLE and ISOMETRIC CAMERA reference only. Match weathered warm-brown sawn oak, warm upper-left light, quiet medieval painterly game style. Create LARGE tall steep-pitched gabled roof frame for substantial L4 merchant house or small church nave: seven strong open oak trusses, heavy kingposts and crossbeams, multiple continuous purlins and longitudinal diagonal bracing, prominent end-gable silhouette, large open gaps. More substantial than medium barn frame, visibly taller. No walls, no roof cover, no house body, no foundation or surrounding ground, no tools or workers. Isometric orthographic two ground axes2:1, front left gable visible, ridge recedes upper-right same as reference. Target256x192 canvas; centered fit with8percent transparent margin, object lower-center pivot. No black outlines, micro noise, long cast shadow, text or checkerboard. Genuine transparent background and transparent open gaps.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/construction_roof_frame-v1.png"
+        ],
+        "rawFile": "sources/effects/roof_frame_large-raw.png",
+        "originalWidth": 1448,
+        "originalHeight": 1086,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha bounds threshold3; aspect-preserving single resize from source; lower-center transparent canvas. Dimensions chosen because construction brief has no numeric canvas size.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 28029,
+      "partialAlphaPixels": 18617,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": null,
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable."
+    }
+  },
+  {
+    "id": "construction/roof_frame_stone_large-v1",
+    "file": "assets/construction/roof_frame_stone_large-v1.png",
+    "width": 256,
+    "height": 224,
+    "role": "object",
+    "pivot": {
+      "x": 128,
+      "y": 218
+    },
+    "frameSize": null,
+    "generationRecords": [
+      {
+        "prompt": "Use case historical-scene. One LARGE STONE-CONSTRUCTION ROOF FRAME overlay for medieval stone church or tower, transparent RGBA target256x224. Reference only for muted weathered oak style and isometric2:1 orthographic camera. Draw heavy squared oak roof-centering assembly: two tall open arch-shaped timber centering ribs braced by horizontal timber ties, four massive temporary upright supports, diagonal shores and slender work platform planks. Stone-building construction identifiable by arch-centering profile and robust vertical shoring; NO masonry building body or walls, no finished roof, no enclosing solid mass, no ground foundation, no people tools debris. Southern England1300-1450 handpainted city-builder style, warm gray-brown oak, soft upper-left lighting, broad structural timbers and clear transparent gaps. Front-left face visible, depth receding upper-right. Fit isolated entire assembly within8percent transparent margins; lower-center ground pivot. No giant cast shadow, photographic grain, text border numbers or checkerboard. Real transparent alpha.",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/references/astra-wave7-package/reference-files/astra-wave7-reference-files/construction_roof_frame-v1.png"
+        ],
+        "rawFile": "sources/effects/roof_frame_stone_large-raw.png",
+        "originalWidth": 1341,
+        "originalHeight": 1173,
+        "tool": "builtin imagegen",
+        "modelVersion": "not supplied",
+        "seed": "not supplied"
+      }
+    ],
+    "processing": "Alpha bounds threshold3; aspect-preserving single resize from source; lower-center transparent canvas. Dimensions chosen because construction brief has no numeric canvas size.",
+    "qa": {
+      "status": "candidate",
+      "zeroAlphaPixels": 35015,
+      "partialAlphaPixels": 20679,
+      "nontransparentBoundaryPixels": 0,
+      "representativeScale": 0.3,
+      "runtimeIntegration": false,
+      "animation": null,
+      "visualReview": "Inspected native and/or0.3scale contact sheet; no baked buildings; frame boundaries transparent; construction sizes distinguishable."
+    }
+  }
+]

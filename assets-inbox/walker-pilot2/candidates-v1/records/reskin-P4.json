@@ -1,0 +1,267 @@
+{
+  "id": "P4",
+  "status": "candidate",
+  "source": "sources/P4-sheet-edit.png",
+  "generationRecord": "records/generation-P4.json",
+  "method": "Imagegen template-sheet edit, per-cell bounding-box registration, original lower legs/boots pixels retained; final 50% resize. This is controlled compositing, NOT proof that raw imagegen preserved pixels.",
+  "rawPrecision": "not pixel exact; see rawNormalizedBounds",
+  "headFootValidation": "root final audit pending",
+  "frames": [
+    {
+      "direction": "NE",
+      "frame": 0,
+      "templateBounds": {
+        "x": 62,
+        "y": 5,
+        "w": 60,
+        "h": 130
+      },
+      "rawNormalizedBounds": {
+        "x": 59,
+        "y": 3,
+        "w": 68,
+        "h": 134
+      },
+      "registration": {
+        "source": [
+          59,
+          3,
+          68,
+          134
+        ],
+        "destination": [
+          62,
+          5,
+          60,
+          130
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "SE",
+      "frame": 0,
+      "templateBounds": {
+        "x": 43,
+        "y": 6,
+        "w": 58,
+        "h": 131
+      },
+      "rawNormalizedBounds": {
+        "x": 40,
+        "y": 4,
+        "w": 64,
+        "h": 135
+      },
+      "registration": {
+        "source": [
+          188,
+          4,
+          64,
+          135
+        ],
+        "destination": [
+          43,
+          6,
+          58,
+          131
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "SW",
+      "frame": 0,
+      "templateBounds": {
+        "x": 46,
+        "y": 6,
+        "w": 57,
+        "h": 130
+      },
+      "rawNormalizedBounds": {
+        "x": 43,
+        "y": 4,
+        "w": 63,
+        "h": 134
+      },
+      "registration": {
+        "source": [
+          339,
+          4,
+          63,
+          134
+        ],
+        "destination": [
+          46,
+          6,
+          57,
+          130
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "NW",
+      "frame": 0,
+      "templateBounds": {
+        "x": 25,
+        "y": 5,
+        "w": 61,
+        "h": 131
+      },
+      "rawNormalizedBounds": {
+        "x": 22,
+        "y": 3,
+        "w": 67,
+        "h": 135
+      },
+      "registration": {
+        "source": [
+          466,
+          3,
+          67,
+          135
+        ],
+        "destination": [
+          25,
+          5,
+          61,
+          131
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "NE",
+      "frame": 1,
+      "templateBounds": {
+        "x": 62,
+        "y": 4,
+        "w": 62,
+        "h": 131
+      },
+      "rawNormalizedBounds": {
+        "x": 59,
+        "y": 2,
+        "w": 70,
+        "h": 135
+      },
+      "registration": {
+        "source": [
+          59,
+          150,
+          70,
+          135
+        ],
+        "destination": [
+          62,
+          4,
+          62,
+          131
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "SE",
+      "frame": 1,
+      "templateBounds": {
+        "x": 45,
+        "y": 4,
+        "w": 61,
+        "h": 132
+      },
+      "rawNormalizedBounds": {
+        "x": 42,
+        "y": 2,
+        "w": 67,
+        "h": 136
+      },
+      "registration": {
+        "source": [
+          190,
+          150,
+          67,
+          136
+        ],
+        "destination": [
+          45,
+          4,
+          61,
+          132
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "SW",
+      "frame": 1,
+      "templateBounds": {
+        "x": 42,
+        "y": 5,
+        "w": 62,
+        "h": 130
+      },
+      "rawNormalizedBounds": {
+        "x": 39,
+        "y": 3,
+        "w": 68,
+        "h": 135
+      },
+      "registration": {
+        "source": [
+          335,
+          151,
+          68,
+          135
+        ],
+        "destination": [
+          42,
+          5,
+          62,
+          130
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    },
+    {
+      "direction": "NW",
+      "frame": 1,
+      "templateBounds": {
+        "x": 24,
+        "y": 5,
+        "w": 62,
+        "h": 129
+      },
+      "rawNormalizedBounds": {
+        "x": 20,
+        "y": 2,
+        "w": 69,
+        "h": 135
+      },
+      "registration": {
+        "source": [
+          464,
+          150,
+          69,
+          135
+        ],
+        "destination": [
+          24,
+          5,
+          62,
+          129
+        ]
+      },
+      "protectedPixels": 7252,
+      "protectedRegion": "all local y>=99; hands remain image-edited and registered"
+    }
+  ]
+}

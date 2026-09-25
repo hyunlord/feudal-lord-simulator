@@ -1,0 +1,178 @@
+{
+  "measurements": [
+    {
+      "id": "construction/pile_stone_1-v1",
+      "size": [
+        96,
+        64
+      ],
+      "bbox": [
+        28,
+        32,
+        68,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 722,
+      "pivot": [
+        48,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    },
+    {
+      "id": "construction/pile_stone_2-v1",
+      "size": [
+        96,
+        64
+      ],
+      "bbox": [
+        20,
+        18,
+        76,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 1489,
+      "pivot": [
+        48,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    },
+    {
+      "id": "construction/pile_stone_3-v1",
+      "size": [
+        96,
+        64
+      ],
+      "bbox": [
+        15,
+        8,
+        81,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 2076,
+      "pivot": [
+        48,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    },
+    {
+      "id": "construction/pile_wood_1-v1",
+      "size": [
+        96,
+        64
+      ],
+      "bbox": [
+        29,
+        32,
+        67,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 529,
+      "pivot": [
+        48,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    },
+    {
+      "id": "construction/pile_wood_2-v1",
+      "size": [
+        96,
+        64
+      ],
+      "bbox": [
+        21,
+        18,
+        75,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 1449,
+      "pivot": [
+        48,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    },
+    {
+      "id": "construction/pile_wood_3-v1",
+      "size": [
+        96,
+        64
+      ],
+      "bbox": [
+        18,
+        8,
+        78,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 2112,
+      "pivot": [
+        48,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    },
+    {
+      "id": "construction/sign_post-v1",
+      "size": [
+        32,
+        64
+      ],
+      "bbox": [
+        4,
+        12,
+        28,
+        56
+      ],
+      "alpha": [
+        0,
+        255
+      ],
+      "nonzeroPixels": 625,
+      "pivot": [
+        16,
+        56
+      ],
+      "sizePass": true,
+      "edgeMarginPass": true
+    }
+  ],
+  "visual": {
+    "scale05": "pass",
+    "scale03": "pass - each family shows low/medium/high quantity silhouettes; stone versus timber type readable through block versus long beam geometry",
+    "referenceTone": "pass muted warm wood and limestone grey",
+    "limits": "native images larger than delivery; final normalized once. Pixel microtexture lost in reduction, broad silhouettes preserved. No runtime game installation or rendering tested."
+  }
+}

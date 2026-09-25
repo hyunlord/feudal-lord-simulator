@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "work/work_seedbag_ne-v1",
+    "file": "assets/work/work_seedbag_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      17,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "shoulder",
+      "source": [
+        17,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 0,
+      "walkerPoint": [
+        38,
+        19
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated soft rough ochre linen seed sack slung from one thick short shoulder strap, open folded lip exposing a single broad muted grain mass, shoulder attachment at strap crown. View: NORTHEAST, viewed from behind wearer walking away toward upper-right; far/back of object emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_seedbag_ne-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1278,
+          1230
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 340,
+        "top": 85,
+        "width": 664,
+        "height": 1052
+      },
+      "scale": 0.026615969581749048,
+      "targetBox": [
+        7,
+        2,
+        18,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "ne",
+      "type": "seedbag",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_seedbag_se-v1",
+    "file": "assets/work/work_seedbag_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      12,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "shoulder",
+      "source": [
+        12,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 1,
+      "walkerPoint": [
+        34,
+        19
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated soft rough ochre linen seed sack slung from one thick short shoulder strap, open folded lip exposing a single broad muted grain mass, shoulder attachment at strap crown. View: SOUTHEAST, viewed from front-right wearer approaching lower-right; right-front side emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_seedbag_se-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1230,
+          1278
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 401,
+        "top": 89,
+        "width": 588,
+        "height": 1046
+      },
+      "scale": 0.02676864244741874,
+      "targetBox": [
+        8,
+        2,
+        16,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "se",
+      "type": "seedbag",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_seedbag_sw-v1",
+    "file": "assets/work/work_seedbag_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      20,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "shoulder",
+      "source": [
+        20,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 2,
+      "walkerPoint": [
+        36,
+        19
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated soft rough ochre linen seed sack slung from one thick short shoulder strap, open folded lip exposing a single broad muted grain mass, shoulder attachment at strap crown. View: SOUTHWEST, viewed from front-left wearer approaching lower-left; left-front side emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_seedbag_sw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1247,
+          1261
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 257,
+        "top": 84,
+        "width": 818,
+        "height": 1099
+      },
+      "scale": 0.025477707006369428,
+      "targetBox": [
+        5,
+        2,
+        21,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "sw",
+      "type": "seedbag",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_seedbag_nw-v1",
+    "file": "assets/work/work_seedbag_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      11,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "shoulder",
+      "source": [
+        11,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 3,
+      "walkerPoint": [
+        40,
+        19
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated soft rough ochre linen seed sack slung from one thick short shoulder strap, open folded lip exposing a single broad muted grain mass, shoulder attachment at strap crown. View: NORTHWEST, viewed from behind wearer walking away toward upper-left; back-left face emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_seedbag_nw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1216,
+          1293
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 417,
+        "top": 82,
+        "width": 564,
+        "height": 1093
+      },
+      "scale": 0.025617566331198535,
+      "targetBox": [
+        9,
+        2,
+        14,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "nw",
+      "type": "seedbag",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_plough_ne-v1",
+    "file": "assets/work/work_plough_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      25,
+      5
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        25,
+        5
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 0,
+      "walkerPoint": [
+        33,
+        35
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated simple small medieval wooden ard plough, ONE long slanting wooden beam with single broad dark iron share at its lower end and two upward short wooden steering grips at upper end, no wheels, no modern components; hand grip at upper steering handle. View: NORTHEAST, viewed from behind wearer walking away toward upper-right; far/back of object emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_plough_ne-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1478,
+          1064
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 339,
+        "top": 45,
+        "width": 983,
+        "height": 958
+      },
+      "scale": 0.028484231943031537,
+      "targetBox": [
+        2,
+        2,
+        28,
+        27
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "ne",
+      "type": "plough",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_plough_se-v1",
+    "file": "assets/work/work_plough_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      7,
+      5
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        7,
+        5
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 1,
+      "walkerPoint": [
+        29,
+        34
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated simple small medieval wooden ard plough, ONE long slanting wooden beam with single broad dark iron share at its lower end and two upward short wooden steering grips at upper end, no wheels, no modern components; hand grip at upper steering handle. View: SOUTHEAST, viewed from front-right wearer approaching lower-right; right-front side emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_plough_se-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1536,
+          1024
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 160,
+        "top": 17,
+        "width": 1204,
+        "height": 957
+      },
+      "scale": 0.023255813953488372,
+      "targetBox": [
+        2,
+        5,
+        28,
+        22
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "se",
+      "type": "plough",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_plough_sw-v1",
+    "file": "assets/work/work_plough_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      24,
+      6
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        24,
+        6
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 2,
+      "walkerPoint": [
+        29,
+        35
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated simple small medieval wooden ard plough, ONE long slanting wooden beam with single broad dark iron share at its lower end and two upward short wooden steering grips at upper end, no wheels, no modern components; hand grip at upper steering handle. View: SOUTHWEST, viewed from front-left wearer approaching lower-left; left-front side emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_plough_sw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1536,
+          1024
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 347,
+        "top": 80,
+        "width": 962,
+        "height": 859
+      },
+      "scale": 0.029106029106029108,
+      "targetBox": [
+        2,
+        3,
+        28,
+        25
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "sw",
+      "type": "plough",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_plough_nw-v1",
+    "file": "assets/work/work_plough_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      7,
+      6
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        7,
+        6
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 3,
+      "walkerPoint": [
+        41,
+        36
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated simple small medieval wooden ard plough, ONE long slanting wooden beam with single broad dark iron share at its lower end and two upward short wooden steering grips at upper end, no wheels, no modern components; hand grip at upper steering handle. View: NORTHWEST, viewed from behind wearer walking away toward upper-left; back-left face emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_plough_nw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1536,
+          1024
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 259,
+        "top": 65,
+        "width": 1025,
+        "height": 892
+      },
+      "scale": 0.027317073170731707,
+      "targetBox": [
+        2,
+        4,
+        28,
+        24
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "nw",
+      "type": "plough",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_breadbasket_ne-v1",
+    "file": "assets/work/work_breadbasket_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      15,
+      4
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        15,
+        4
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 0,
+      "walkerPoint": [
+        33,
+        35
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated low oval wicker basket with exactly three broad golden brown bread loaves and thick arched handle, attached by handle to forearm. View: NORTHEAST, viewed from behind wearer walking away toward upper-right; far/back of object emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_breadbasket_ne-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1312,
+          1199
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 186,
+        "top": 100,
+        "width": 1051,
+        "height": 971
+      },
+      "scale": 0.02664129400570885,
+      "targetBox": [
+        2,
+        3,
+        28,
+        26
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "ne",
+      "type": "breadbasket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_breadbasket_se-v1",
+    "file": "assets/work/work_breadbasket_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      15,
+      4
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        15,
+        4
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 1,
+      "walkerPoint": [
+        29,
+        34
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated low oval wicker basket with exactly three broad golden brown bread loaves and thick arched handle, attached by handle to forearm. View: SOUTHEAST, viewed from front-right wearer approaching lower-right; right-front side emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_breadbasket_se-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1536,
+          1024
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 317,
+        "top": 66,
+        "width": 915,
+        "height": 864
+      },
+      "scale": 0.030601092896174863,
+      "targetBox": [
+        2,
+        3,
+        28,
+        26
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "se",
+      "type": "breadbasket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_breadbasket_sw-v1",
+    "file": "assets/work/work_breadbasket_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      13,
+      5
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        13,
+        5
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 2,
+      "walkerPoint": [
+        29,
+        35
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable carried work prop. Create ONE isolated breadbasket sprite, southwest-facing view for a Southern England 1300–1450 hand-painted isometric city game. A low oval muted brown wicker basket with three big golden brown bread loaves, thick arched handle. Real transparent RGBA background, no person, hand, ground, shadow, scenery, text, letters, border, labels or watermark. Camera elevated isometric, orthographic; southwest means front-facing camera with near left side visible; basket long axis screen lower-left to upper-right, thick handle clearly at top. Soft upper-left light, broad simplified brush shapes, very restrained detail, final 32×32 sprite legibility. Basket body fills central lower 65% of square, top handle grip at normalized (0.50,0.30), room around all edges. Designed to hang at adult walker's forearm; warm muted medieval project palette. Render a single object only, with genuinely empty transparent corners.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_breadbasket_sw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 179,
+        "top": 228,
+        "width": 970,
+        "height": 862
+      },
+      "scale": 0.0288659793814433,
+      "targetBox": [
+        2,
+        3,
+        28,
+        25
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "sw",
+      "type": "breadbasket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_breadbasket_nw-v1",
+    "file": "assets/work/work_breadbasket_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      13,
+      4
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        13,
+        4
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 3,
+      "walkerPoint": [
+        41,
+        36
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated low oval wicker basket with exactly three broad golden brown bread loaves and thick arched handle, attached by handle to forearm. View: NORTHWEST, viewed from behind wearer walking away toward upper-left; back-left face emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_breadbasket_nw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1347,
+          1167
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 220,
+        "top": 85,
+        "width": 920,
+        "height": 963
+      },
+      "scale": 0.029075804776739357,
+      "targetBox": [
+        2,
+        2,
+        27,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "nw",
+      "type": "breadbasket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_waterbucket_ne-v1",
+    "file": "assets/work/work_waterbucket_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      18,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        18,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 0,
+      "walkerPoint": [
+        33,
+        35
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated wooden stave water bucket hanging from one thick curved rope handle, blue grey dark water opening, heavy body slightly tilted with weight, hand attachment at handle crown. View: NORTHEAST, viewed from behind wearer walking away toward upper-right; far/back of object emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_waterbucket_ne-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1222,
+          1287
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 315,
+        "top": 101,
+        "width": 649,
+        "height": 1040
+      },
+      "scale": 0.026923076923076925,
+      "targetBox": [
+        7,
+        2,
+        17,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "ne",
+      "type": "waterbucket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_waterbucket_se-v1",
+    "file": "assets/work/work_waterbucket_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      17,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        17,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 1,
+      "walkerPoint": [
+        29,
+        34
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated wooden stave water bucket hanging from one thick curved rope handle, blue grey dark water opening, heavy body slightly tilted with weight, hand attachment at handle crown. View: SOUTHEAST, viewed from front-right wearer approaching lower-right; right-front side emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_waterbucket_se-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1223,
+          1286
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 266,
+        "top": 58,
+        "width": 731,
+        "height": 1143
+      },
+      "scale": 0.024496937882764653,
+      "targetBox": [
+        7,
+        2,
+        18,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "se",
+      "type": "waterbucket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_waterbucket_sw-v1",
+    "file": "assets/work/work_waterbucket_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      17,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        17,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 2,
+      "walkerPoint": [
+        29,
+        35
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated wooden stave water bucket hanging from one thick curved rope handle, blue grey dark water opening, heavy body slightly tilted with weight, hand attachment at handle crown. View: SOUTHWEST, viewed from front-left wearer approaching lower-left; left-front side emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_waterbucket_sw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1261,
+          1247
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 343,
+        "top": 30,
+        "width": 667,
+        "height": 1145
+      },
+      "scale": 0.02445414847161572,
+      "targetBox": [
+        8,
+        2,
+        16,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "sw",
+      "type": "waterbucket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_waterbucket_nw-v1",
+    "file": "assets/work/work_waterbucket_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      18,
+      3
+    ],
+    "attachmentPoint": {
+      "kind": "hand-or-forearm",
+      "source": [
+        18,
+        3
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 3,
+      "walkerPoint": [
+        41,
+        36
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated wooden stave water bucket hanging from one thick curved rope handle, blue grey dark water opening, heavy body slightly tilted with weight, hand attachment at handle crown. View: NORTHWEST, viewed from behind wearer walking away toward upper-left; back-left face emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_waterbucket_nw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1295,
+          1214
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 358,
+        "top": 90,
+        "width": 645,
+        "height": 1021
+      },
+      "scale": 0.02742409402546523,
+      "targetBox": [
+        7,
+        2,
+        18,
+        28
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "nw",
+      "type": "waterbucket",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_coinpurse_ne-v1",
+    "file": "assets/work/work_coinpurse_ne-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      18,
+      8
+    ],
+    "attachmentPoint": {
+      "kind": "waist",
+      "source": [
+        18,
+        8
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 0,
+      "walkerPoint": [
+        38,
+        39
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated small rounded dark brown leather coin pouch with gathered neck and single thick short belt attachment loop, one tiny dull gold coin edge visible, waist attachment at top loop. View: NORTHEAST, viewed from behind wearer walking away toward upper-right; far/back of object emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_coinpurse_ne-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1323,
+          1189
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 356,
+        "top": 112,
+        "width": 621,
+        "height": 952
+      },
+      "scale": 0.01995798319327731,
+      "targetBox": [
+        10,
+        6,
+        12,
+        19
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "ne",
+      "type": "coinpurse",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_coinpurse_se-v1",
+    "file": "assets/work/work_coinpurse_se-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      13,
+      8
+    ],
+    "attachmentPoint": {
+      "kind": "waist",
+      "source": [
+        13,
+        8
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 1,
+      "walkerPoint": [
+        34,
+        39
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated small rounded dark brown leather coin pouch with gathered neck and single thick short belt attachment loop, one tiny dull gold coin edge visible, waist attachment at top loop. View: SOUTHEAST, viewed from front-right wearer approaching lower-right; right-front side emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_coinpurse_se-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1301,
+          1209
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 415,
+        "top": 143,
+        "width": 559,
+        "height": 924
+      },
+      "scale": 0.020562770562770564,
+      "targetBox": [
+        10,
+        6,
+        11,
+        19
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "se",
+      "type": "coinpurse",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_coinpurse_sw-v1",
+    "file": "assets/work/work_coinpurse_sw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      18,
+      8
+    ],
+    "attachmentPoint": {
+      "kind": "waist",
+      "source": [
+        18,
+        8
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 2,
+      "walkerPoint": [
+        36,
+        39
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated small rounded dark brown leather coin pouch with gathered neck and single thick short belt attachment loop, one tiny dull gold coin edge visible, waist attachment at top loop. View: SOUTHWEST, viewed from front-left wearer approaching lower-left; left-front side emphasized, axis upper-right to lower-left. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_coinpurse_sw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1247,
+          1261
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 327,
+        "top": 93,
+        "width": 658,
+        "height": 1008
+      },
+      "scale": 0.018849206349206348,
+      "targetBox": [
+        10,
+        6,
+        12,
+        19
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "sw",
+      "type": "coinpurse",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  },
+  {
+    "id": "work/work_coinpurse_nw-v1",
+    "file": "assets/work/work_coinpurse_nw-v1.png",
+    "width": 32,
+    "height": 32,
+    "role": "object",
+    "pivot": [
+      16,
+      8
+    ],
+    "attachmentPoint": {
+      "kind": "waist",
+      "source": [
+        16,
+        8
+      ],
+      "walkerFrameSize": [
+        74,
+        72
+      ],
+      "walkerFrameIndex": 3,
+      "walkerPoint": [
+        40,
+        39
+      ],
+      "layer": "front with hand restored for hand props"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: historical-scene. ROLE object / detachable work prop. Generate exactly ONE isolated small rounded dark brown leather coin pouch with gathered neck and single thick short belt attachment loop, one tiny dull gold coin edge visible, waist attachment at top loop. View: NORTHWEST, viewed from behind wearer walking away toward upper-left; back-left face emphasized, axis upper-left to lower-right. Southern England 1300–1450 medieval isometric hand-painted city game. Orthographic elevated isometric camera, soft upper-left light, muted earth browns, simple broad painted shapes. This will be downscaled to a 32×32 RGBA sprite: bold continuous silhouette and no tiny texture. Draw this directional view freshly; do not mirror another drawing. Entire object centered with generous transparent margins, attachment point clearly visible near top center. TRUE transparent background, no people, hands, arm, ground, shadow, scenery, checkerboard, text, letters, labels, logo or watermark. Keep period materials honest and object shape legible. No other objects.",
+        "references": [],
+        "contextReferences": [
+          "work_hammer-v1.png",
+          "actor_civilian_man-v1.png"
+        ],
+        "rawFile": "sources/props/work_coinpurse_nw-v1.png",
+        "tool": "builtin image_gen",
+        "model": "not exposed",
+        "seed": "not exposed",
+        "rawSize": [
+          1254,
+          1254
+        ]
+      }
+    ],
+    "processing": {
+      "crop": {
+        "left": 359,
+        "top": 95,
+        "width": 540,
+        "height": 930
+      },
+      "scale": 0.02043010752688172,
+      "targetBox": [
+        10,
+        6,
+        11,
+        19
+      ],
+      "method": "alpha bounds threshold 8; one sharp Lanczos downscale; transparent padding; no mirror; no painted replacement"
+    },
+    "qa": {
+      "status": "candidate",
+      "direction": "nw",
+      "type": "coinpurse",
+      "scale03": "Not a readability pass: 32px prop is 9.6 screen px; job identity often indistinct.",
+      "animation": "not verified",
+      "registration": "manual contact anchor; needs gait-specific runtime integration",
+      "alpha": "RGBA with transparent margins",
+      "directionConsistency": "distinct generated views; not mirrored; view-dependent object construction varies, see props-direction-consistency.md"
+    }
+  }
+]

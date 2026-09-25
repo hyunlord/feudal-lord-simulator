@@ -1,0 +1,30 @@
+{
+  "method": "Blind AI static recognition from the sole supplied proof image; not a human user experiment",
+  "proof": "proofs/02-portraits-shuffled.png",
+  "proof_sha256": "8ae7d28cf6d321365201c7af691dc5ca69e9406013b18d32fdb7119911fc902d",
+  "first_guesses": [
+    {
+      "label": "A",
+      "classification": "success",
+      "confidence": "high",
+      "pixel_cues": "Broad open smile, visible bright teeth, raised cheek shapes, relaxed eyes and lifted head.",
+      "uncertainty": "Reads as happiness or satisfaction; success is inferred from the provided three-class vocabulary."
+    },
+    {
+      "label": "B",
+      "classification": "concern",
+      "confidence": "high",
+      "pixel_cues": "Lowered head and gaze, drawn brow, downturned mouth and subdued facial pose.",
+      "uncertainty": "Could also read as sadness or disappointment at this size."
+    },
+    {
+      "label": "C",
+      "classification": "neutral",
+      "confidence": "medium-high",
+      "pixel_cues": "Level gaze and head, closed mostly level mouth, composed face without the smile of A or lowered pose of B.",
+      "uncertainty": "Slight brow tension can read as seriousness; neutral is the best fit among the three offered classes."
+    }
+  ],
+  "answer_key_accessed": false,
+  "other_images_accessed": false
+}

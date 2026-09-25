@@ -1,0 +1,279 @@
+[
+  {
+    "id": "house_l2_brewer-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l1-v2.png",
+      "house_l3-v2.png",
+      "market_active-v2.png"
+    ],
+    "detail": "Image1 is the L2 size/tier baseline; image2 L1 is the lower tier, image3 L3 is the upper tier NOT to imitate; image4 is only wood/barrel material context. Target canvas137x137. L2 BREWER'S ARTISAN HOUSE, a household ale-brewing home: keep TWO storeys and the modest reference main-house volume. A simple quieter roof ridge, not the L3 projecting front gable. Add an unmistakably LOW side/back lean-to malt drying roof that extends the silhouette, with a small roof smoke opening only, NO CHIMNEY and NO smoke plume. Two or three BIG readable upright wooden brewing vats beside the rear/side lean-to, visible from this SW camera. The barrels and low roof are the identity cues, not colored signs. Rear yard use visible on one side, compact footprint, no huge ground plate. Move door and shutter locations relative to baseline. Dark open unglazed shuttered openings; no decorative extra upper floor. Vats should be broad simple wood silhouettes, roughly12–18px across in the delivered137px sprite. Main house should remain at least about85% of reference body height, and not taller or grander. Do not add people.",
+    "prompt": "Use case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 is the L2 size/tier baseline; image2 L1 is the lower tier, image3 L3 is the upper tier NOT to imitate; image4 is only wood/barrel material context. Target canvas137x137. L2 BREWER'S ARTISAN HOUSE, a household ale-brewing home: keep TWO storeys and the modest reference main-house volume. A simple quieter roof ridge, not the L3 projecting front gable. Add an unmistakably LOW side/back lean-to malt drying roof that extends the silhouette, with a small roof smoke opening only, NO CHIMNEY and NO smoke plume. Two or three BIG readable upright wooden brewing vats beside the rear/side lean-to, visible from this SW camera. The barrels and low roof are the identity cues, not colored signs. Rear yard use visible on one side, compact footprint, no huge ground plate. Move door and shutter locations relative to baseline. Dark open unglazed shuttered openings; no decorative extra upper floor. Vats should be broad simple wood silhouettes, roughly12–18px across in the delivered137px sprite. Main house should remain at least about85% of reference body height, and not taller or grander. Do not add people.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l1-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l3-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/market_active-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-a215b2f4-2ee7-47f6-a0ce-60d852399a4d.png",
+    "attempt": 1,
+    "selected": false
+  },
+  {
+    "id": "house_l2_weaver-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l1-v2.png",
+      "house_l3-v2.png"
+    ],
+    "detail": "Image1 is exact L2 wealth/scale baseline; image2 L1 lower tier, image3 L3 upper tier NOT to imitate. Target137x137. L2 WEAVER'S ARTISAN HOUSE: exactly TWO modest storeys, same main body size as baseline. Use a simple asymmetric shortened roof eave and a visible timber yarn-drying frame projecting from the side as a distinctive squared OPEN silhouette. The frame has a few broad pale hanging yarn hanks (not a giant sail or laundry sheets), readably different from barrels or a garden. Large STREET-FACING OPEN UNGLAZED WORKROOM WINDOW for loom light with plain timber shutters; clear dark opening, no glass or shiny grid, no glazing mullions. Narrow backyard. Main entrance shifted along frontage compared with baseline. Change the roof outline without adding a projecting L3 front gable or extra floor. Keep the drying frame large enough to read at low zoom but lower than the house eaves. No people, signs or luxury textiles on the entire house. Main body >=85% baseline height, not enlarged.",
+    "prompt": "Use case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 is exact L2 wealth/scale baseline; image2 L1 lower tier, image3 L3 upper tier NOT to imitate. Target137x137. L2 WEAVER'S ARTISAN HOUSE: exactly TWO modest storeys, same main body size as baseline. Use a simple asymmetric shortened roof eave and a visible timber yarn-drying frame projecting from the side as a distinctive squared OPEN silhouette. The frame has a few broad pale hanging yarn hanks (not a giant sail or laundry sheets), readably different from barrels or a garden. Large STREET-FACING OPEN UNGLAZED WORKROOM WINDOW for loom light with plain timber shutters; clear dark opening, no glass or shiny grid, no glazing mullions. Narrow backyard. Main entrance shifted along frontage compared with baseline. Change the roof outline without adding a projecting L3 front gable or extra floor. Keep the drying frame large enough to read at low zoom but lower than the house eaves. No people, signs or luxury textiles on the entire house. Main body >=85% baseline height, not enlarged.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l1-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l3-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-1710b675-50d1-482c-9631-da2559054d0b.png",
+    "attempt": 1,
+    "selected": false
+  },
+  {
+    "id": "house_l2_garden-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l3-v2.png",
+      "wheat_farm_ripe-v4.png",
+      "pasture.png"
+    ],
+    "detail": "Image1 L2 main house is the exact body size/tier baseline; image2 L3 is an upper tier NOT to imitate; images3 and4 give subdued cultivated soil/grass colors only. Target137x137. L2 SUBSISTENCE GARDEN ARTISAN HOUSE: TWO modest storeys, main body same size as baseline, simple modest tile gable roof with a small low shed joined behind. Do not make a large manor, many wings or a rich L3 front gable. A single small orchard tree with a coherent rounded crown peeks beside the rear wall, and two broad short vegetable beds occupy the tiny visible side/back yard. One very small empty rough timber/wattle poultry-or-pig enclosure, and the little shed. Large simple silhouettes of orchard crown and shed are the cues; vegetable beds are secondary. No actual animals or people needed. Position yard on visible side so it is legible; keep the ground compact and flat without a raised diamond base. The house body remains >=85% baseline height, tree lower than house roof, no broad landscape extending far past the house. Shift front door and shutter openings from baseline. Distinct roof-plus-low-shed-plus-tree outline, not just recolored L2.",
+    "prompt": "Use case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 L2 main house is the exact body size/tier baseline; image2 L3 is an upper tier NOT to imitate; images3 and4 give subdued cultivated soil/grass colors only. Target137x137. L2 SUBSISTENCE GARDEN ARTISAN HOUSE: TWO modest storeys, main body same size as baseline, simple modest tile gable roof with a small low shed joined behind. Do not make a large manor, many wings or a rich L3 front gable. A single small orchard tree with a coherent rounded crown peeks beside the rear wall, and two broad short vegetable beds occupy the tiny visible side/back yard. One very small empty rough timber/wattle poultry-or-pig enclosure, and the little shed. Large simple silhouettes of orchard crown and shed are the cues; vegetable beds are secondary. No actual animals or people needed. Position yard on visible side so it is legible; keep the ground compact and flat without a raised diamond base. The house body remains >=85% baseline height, tree lower than house roof, no broad landscape extending far past the house. Shift front door and shutter openings from baseline. Distinct roof-plus-low-shed-plus-tree outline, not just recolored L2.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l3-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/wheat_farm_ripe-v4.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/pasture.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-48bbb8d5-96d1-4fc9-a720-32a9e00aa17d.png",
+    "attempt": 1,
+    "selected": false
+  },
+  {
+    "id": "wheat_farm_pastoral_ripe-pilot",
+    "size": [
+      384,
+      192
+    ],
+    "ref": "wheat_farm_ripe-v4.png",
+    "refs": [
+      "wheat_farm_ripe-v4.png",
+      "pasture.png",
+      "house_l1-v2.png"
+    ],
+    "detail": "Image1 sets the exact2x2 land footprint and southern tip, image2 gives summer pasture color and low fence finish, image3 is modest rural thatch/material context only, not a house to reproduce. Target384x192. SUMMER PASTORAL FARM as a same-wealth alternative to a ripe wheat farm: REPLACE all wheat with an irregular olive grazed grassy footprint. A small low woven hazel/wattle hurdle sheep pen, THREE OR FOUR sheep with large simple wool bodies clearly distinct from grass, ONE coherent golden hay mound, ONE tiny low thatched open-sided shed. Sheep white is warm muted cream not luminous white, no large livestock barn or rich stone structures. Make the enclosure and hay/shed silhouettes readable at game display scale. Same overall2:1 isometric ground area and southern contact as ripe wheat, flat open edges with alpha breakup, no raised base slab, no rectilinear wheat planting lines, no wheat crop. Keep most ground as pasture; structures secondary, low enough not to turn the farm into a town building. No people.",
+    "prompt": "Use case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 sets the exact2x2 land footprint and southern tip, image2 gives summer pasture color and low fence finish, image3 is modest rural thatch/material context only, not a house to reproduce. Target384x192. SUMMER PASTORAL FARM as a same-wealth alternative to a ripe wheat farm: REPLACE all wheat with an irregular olive grazed grassy footprint. A small low woven hazel/wattle hurdle sheep pen, THREE OR FOUR sheep with large simple wool bodies clearly distinct from grass, ONE coherent golden hay mound, ONE tiny low thatched open-sided shed. Sheep white is warm muted cream not luminous white, no large livestock barn or rich stone structures. Make the enclosure and hay/shed silhouettes readable at game display scale. Same overall2:1 isometric ground area and southern contact as ripe wheat, flat open edges with alpha breakup, no raised base slab, no rectilinear wheat planting lines, no wheat crop. Keep most ground as pasture; structures secondary, low enough not to turn the farm into a town building. No people.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/wheat_farm_ripe-v4.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/pasture.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l1-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-658ae0df-2f4b-4cd7-9f79-1345fd4acaf6.png",
+    "attempt": 1,
+    "selected": true
+  },
+  {
+    "id": "well_b-pilot",
+    "size": [
+      72,
+      80
+    ],
+    "ref": "well.png",
+    "refs": [
+      "well.png",
+      "house_l2-v2.png",
+      "market_active-v2.png"
+    ],
+    "detail": "Image1 well is the exact scale/camera/ground contact reference; images2/3 only hand-painted wood/stone finish. Target72x80. WELL VARIANT B: completely ROOFLESS low round warm-grey rubble stone well curb, dark open well mouth; one plain stout oak bucket post with a short supporting cross-arm and a wooden bucket on a rope. NO roof, NO canopy, NO tall stone tower, no metal pump. The asymmetric single post and visible open circular stone rim must be a clearly different silhouette from the roofed reference. Preserve the stone ring ground diameter and location relative to baseline; open shaft lower than reference roof, use empty alpha space above rather than scaling it huge to fill the frame. Large readable stone ring and bucket, not many tiny decorative stones. No grass plate, no people or animals.",
+    "prompt": "Use case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 well is the exact scale/camera/ground contact reference; images2/3 only hand-painted wood/stone finish. Target72x80. WELL VARIANT B: completely ROOFLESS low round warm-grey rubble stone well curb, dark open well mouth; one plain stout oak bucket post with a short supporting cross-arm and a wooden bucket on a rope. NO roof, NO canopy, NO tall stone tower, no metal pump. The asymmetric single post and visible open circular stone rim must be a clearly different silhouette from the roofed reference. Preserve the stone ring ground diameter and location relative to baseline; open shaft lower than reference roof, use empty alpha space above rather than scaling it huge to fill the frame. Large readable stone ring and bucket, not many tiny decorative stones. No grass plate, no people or animals.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/well.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/market_active-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-25644473-18c9-4bd9-abea-42a48fea38b4.png",
+    "attempt": 1,
+    "selected": true
+  },
+  {
+    "id": "market_active_b-pilot",
+    "size": [
+      224,
+      224
+    ],
+    "ref": "market_active-v2.png",
+    "refs": [
+      "market_active-v2.png",
+      "house_l2-v2.png"
+    ],
+    "detail": "Image1 exact active-market size/wealth/footprint/camera reference; image2 construction finish only. Target224x224. ACTIVE MARKET VARIANT B: a clearly NEW STALL ARRANGEMENT, not merely new canopy colors. Use TWO unequal long low stalls in an open offset L arrangement with one short uncovered counter, a clear open gap/walkway between; unlike the three separated similar roofed booths in the reference. One longer shallow sagging linen awning, one compact lean-to linen awning lower than the first, asymmetric silhouettes. Muted flax cream and faded earth-red small awning panels, not bright colors or striped festival tents. Goods must differ: BIG light wool bundles on one table, a few clearly rolled muted cloth bolts on another, broad shallow wicker fish baskets with a few simplified silvery-grey fish. Keep same modest market wealth and overall footprint/height as reference, no merchant hall, towers, pennants or wooden raised ground plate. Simple oak posts, rough counters, genuine open alpha gaps between stalls. No people, text or signs.",
+    "prompt": "Use case: stylized-concept. Create ONE transparent PNG production sprite candidate for Feudal Lord Simulator, southern England 1300–1450, S_England_1300_1450_v1 / AB_2026-09-19_v1. Reference images are ONLY the attached project-owned game sprites. Match their fixed SW-facing 2:1 isometric camera and hand-painted game finish, warm oak timber, warm off-white limewash, modest rubble bases, muted flat terracotta peg tiles or thatch. Soft top-left daylight. Genuine alpha background, no painted checkerboard, no backdrop, no text, labels or watermark, no UI. Leave at least 8px transparent on each side at requested final dimensions. Use large coherent forms readable at zoom1 (64x32 screen pixels per tile) and .6. Avoid miniature noisy detail. No chimney shaft or pot, no glass window panes, no slate, no S-shaped pantiles, no modern objects, no fantasy elements, no luxurious ornament, no raised square diorama pedestal. Do not merely recolor or mirror the original: the outer silhouette, roof profile, openings and occupational attachments must change. Preserve the original's wealth tier, main-body scale, camera and southern footprint ground contact, not an upgrade. Return only the requested new variant, not a comparison sheet.\nImage1 exact active-market size/wealth/footprint/camera reference; image2 construction finish only. Target224x224. ACTIVE MARKET VARIANT B: a clearly NEW STALL ARRANGEMENT, not merely new canopy colors. Use TWO unequal long low stalls in an open offset L arrangement with one short uncovered counter, a clear open gap/walkway between; unlike the three separated similar roofed booths in the reference. One longer shallow sagging linen awning, one compact lean-to linen awning lower than the first, asymmetric silhouettes. Muted flax cream and faded earth-red small awning panels, not bright colors or striped festival tents. Goods must differ: BIG light wool bundles on one table, a few clearly rolled muted cloth bolts on another, broad shallow wicker fish baskets with a few simplified silvery-grey fish. Keep same modest market wealth and overall footprint/height as reference, no merchant hall, towers, pennants or wooden raised ground plate. Simple oak posts, rough counters, genuine open alpha gaps between stalls. No people, text or signs.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/market_active-v2.png",
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-2fadeef8-199b-4feb-b246-1c881bbee5a5.png",
+    "attempt": 1,
+    "selected": true
+  },
+  {
+    "id": "house_l2_brewer-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l1-v2.png",
+      "house_l3-v2.png",
+      "market_active-v2.png"
+    ],
+    "detail": "Image1 is the L2 size/tier baseline; image2 L1 is the lower tier, image3 L3 is the upper tier NOT to imitate; image4 is only wood/barrel material context. Target canvas137x137. L2 BREWER'S ARTISAN HOUSE, a household ale-brewing home: keep TWO storeys and the modest reference main-house volume. A simple quieter roof ridge, not the L3 projecting front gable. Add an unmistakably LOW side/back lean-to malt drying roof that extends the silhouette, with a small roof smoke opening only, NO CHIMNEY and NO smoke plume. Two or three BIG readable upright wooden brewing vats beside the rear/side lean-to, visible from this SW camera. The barrels and low roof are the identity cues, not colored signs. Rear yard use visible on one side, compact footprint, no huge ground plate. Move door and shutter locations relative to baseline. Dark open unglazed shuttered openings; no decorative extra upper floor. Vats should be broad simple wood silhouettes, roughly12–18px across in the delivered137px sprite. Main house should remain at least about85% of reference body height, and not taller or grander. Do not add people.",
+    "prompt": "Use case: precise-object-edit. The FIRST image is our newly generated project candidate house_l2_brewer-pilot, to edit. The SECOND image is the attached project house_l2-v2.png, the ONLY external style reference for this edit. Keep this candidate's whole architecture, camera, outer silhouette, proportions, annexes, yard, props, timber framing, limewash, openings, palette and genuine transparent alpha UNCHANGED.\nMake ONE material correction: replace ALL roof-slope tiles with medieval southern English FLAT PEG TILES. Flat small rectangular terracotta plates in staggered overlapping courses. Each tile face is planar and matte. Straight squared lower edges; shallow simple horizontal overlap seams. NO concave channels, NO convex barrels, NO curved S-profile, NO rolled scallop faces, NO pantiles, NO Mediterranean barrel-tile troughs. Only the very top ridge capping may be rounded. Reduce highlight contrast so tiles read as broad flat courses at the final137x137 sprite, not glittery scales. Exact same roof geometry and silhouette. This is not a recolor: correct the tile cross-section.\nAlso remove the little raised roof vent BOX on the lower malt lean-to. Replace it with a tiny flush dark smoke opening in the roof surface, no shaft, no cap, no little legs, no protruding chimney. Preserve the two large vats and small barrel, all architecture and lean-to silhouette.\nNo added people, plants, extra props, glass, lettering, watermarks, background or ground plate. Keep the output square and alpha transparent. Leave the supplied reference untouched; return only the corrected candidate.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-244341cc-4096-4ad5-9a25-57b9a12cd244.png",
+    "attempt": 2,
+    "selected": false,
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-a215b2f4-2ee7-47f6-a0ce-60d852399a4d.png"
+  },
+  {
+    "id": "house_l2_weaver-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l1-v2.png",
+      "house_l3-v2.png"
+    ],
+    "detail": "Image1 is exact L2 wealth/scale baseline; image2 L1 lower tier, image3 L3 upper tier NOT to imitate. Target137x137. L2 WEAVER'S ARTISAN HOUSE: exactly TWO modest storeys, same main body size as baseline. Use a simple asymmetric shortened roof eave and a visible timber yarn-drying frame projecting from the side as a distinctive squared OPEN silhouette. The frame has a few broad pale hanging yarn hanks (not a giant sail or laundry sheets), readably different from barrels or a garden. Large STREET-FACING OPEN UNGLAZED WORKROOM WINDOW for loom light with plain timber shutters; clear dark opening, no glass or shiny grid, no glazing mullions. Narrow backyard. Main entrance shifted along frontage compared with baseline. Change the roof outline without adding a projecting L3 front gable or extra floor. Keep the drying frame large enough to read at low zoom but lower than the house eaves. No people, signs or luxury textiles on the entire house. Main body >=85% baseline height, not enlarged.",
+    "prompt": "Use case: precise-object-edit. The FIRST image is our newly generated project candidate house_l2_weaver-pilot, to edit. The SECOND image is the attached project house_l2-v2.png, the ONLY external style reference for this edit. Keep this candidate's whole architecture, camera, outer silhouette, proportions, annexes, yard, props, timber framing, limewash, openings, palette and genuine transparent alpha UNCHANGED.\nMake ONE material correction: replace ALL roof-slope tiles with medieval southern English FLAT PEG TILES. Flat small rectangular terracotta plates in staggered overlapping courses. Each tile face is planar and matte. Straight squared lower edges; shallow simple horizontal overlap seams. NO concave channels, NO convex barrels, NO curved S-profile, NO rolled scallop faces, NO pantiles, NO Mediterranean barrel-tile troughs. Only the very top ridge capping may be rounded. Reduce highlight contrast so tiles read as broad flat courses at the final137x137 sprite, not glittery scales. Exact same roof geometry and silhouette. This is not a recolor: correct the tile cross-section.\n\nNo added people, plants, extra props, glass, lettering, watermarks, background or ground plate. Keep the output square and alpha transparent. Leave the supplied reference untouched; return only the corrected candidate.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-99a35b53-e7f1-4c96-8fcd-b4003570f975.png",
+    "attempt": 2,
+    "selected": true,
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-1710b675-50d1-482c-9631-da2559054d0b.png"
+  },
+  {
+    "id": "house_l2_garden-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l3-v2.png",
+      "wheat_farm_ripe-v4.png",
+      "pasture.png"
+    ],
+    "detail": "Image1 L2 main house is the exact body size/tier baseline; image2 L3 is an upper tier NOT to imitate; images3 and4 give subdued cultivated soil/grass colors only. Target137x137. L2 SUBSISTENCE GARDEN ARTISAN HOUSE: TWO modest storeys, main body same size as baseline, simple modest tile gable roof with a small low shed joined behind. Do not make a large manor, many wings or a rich L3 front gable. A single small orchard tree with a coherent rounded crown peeks beside the rear wall, and two broad short vegetable beds occupy the tiny visible side/back yard. One very small empty rough timber/wattle poultry-or-pig enclosure, and the little shed. Large simple silhouettes of orchard crown and shed are the cues; vegetable beds are secondary. No actual animals or people needed. Position yard on visible side so it is legible; keep the ground compact and flat without a raised diamond base. The house body remains >=85% baseline height, tree lower than house roof, no broad landscape extending far past the house. Shift front door and shutter openings from baseline. Distinct roof-plus-low-shed-plus-tree outline, not just recolored L2.",
+    "prompt": "Use case: precise-object-edit. The FIRST image is our newly generated project candidate house_l2_garden-pilot, to edit. The SECOND image is the attached project house_l2-v2.png, the ONLY external style reference for this edit. Keep this candidate's whole architecture, camera, outer silhouette, proportions, annexes, yard, props, timber framing, limewash, openings, palette and genuine transparent alpha UNCHANGED.\nMake ONE material correction: replace ALL roof-slope tiles with medieval southern English FLAT PEG TILES. Flat small rectangular terracotta plates in staggered overlapping courses. Each tile face is planar and matte. Straight squared lower edges; shallow simple horizontal overlap seams. NO concave channels, NO convex barrels, NO curved S-profile, NO rolled scallop faces, NO pantiles, NO Mediterranean barrel-tile troughs. Only the very top ridge capping may be rounded. Reduce highlight contrast so tiles read as broad flat courses at the final137x137 sprite, not glittery scales. Exact same roof geometry and silhouette. This is not a recolor: correct the tile cross-section.\n\nNo added people, plants, extra props, glass, lettering, watermarks, background or ground plate. Keep the output square and alpha transparent. Leave the supplied reference untouched; return only the corrected candidate.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-778d28a6-1af8-4447-b966-60d03f0b1cff.png",
+    "attempt": 2,
+    "selected": false,
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-48bbb8d5-96d1-4fc9-a720-32a9e00aa17d.png"
+  },
+  {
+    "id": "house_l2_brewer-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l1-v2.png",
+      "house_l3-v2.png",
+      "market_active-v2.png"
+    ],
+    "detail": "Image1 is the L2 size/tier baseline; image2 L1 is the lower tier, image3 L3 is the upper tier NOT to imitate; image4 is only wood/barrel material context. Target canvas137x137. L2 BREWER'S ARTISAN HOUSE, a household ale-brewing home: keep TWO storeys and the modest reference main-house volume. A simple quieter roof ridge, not the L3 projecting front gable. Add an unmistakably LOW side/back lean-to malt drying roof that extends the silhouette, with a small roof smoke opening only, NO CHIMNEY and NO smoke plume. Two or three BIG readable upright wooden brewing vats beside the rear/side lean-to, visible from this SW camera. The barrels and low roof are the identity cues, not colored signs. Rear yard use visible on one side, compact footprint, no huge ground plate. Move door and shutter locations relative to baseline. Dark open unglazed shuttered openings; no decorative extra upper floor. Vats should be broad simple wood silhouettes, roughly12–18px across in the delivered137px sprite. Main house should remain at least about85% of reference body height, and not taller or grander. Do not add people.",
+    "prompt": "Use case: precise-object-edit. Image1 is the current project BREWER candidate to edit; image2 is the supplied house_l2-v2 reference for scale only. Preserve the exact two-storey main house, its flat planar peg-tile roof, camera, style, material colors, doors, windows and transparent background. Correct ONLY the attached brewing yard: make its low lean-to and vats more compact horizontally, tucked tight against the side wall, so the entire composite silhouette is about 10–15% narrower while the main house remains unchanged. Keep TWO large wooden vats readable under the low roof, plus the small barrel if it fits. Do not cut off any part, no collage edge, no recoloring as a substitute. The low annex must not create the impression of a second large house. On the low lean-to roof add ONE clear small dark rectangular flush opening where a few tiles are absent, roughly 1/12 of the lean-to roof width, open black/brown interior, no frame projecting upwards, no lid, no chimney, no smoke plume. This is a necessary smoke hole, not a skylight (NO GLASS). Everything else stays invariant. No S-profile tiles. Return one transparent PNG only.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-909f5d73-3bb5-4725-8343-2ababdeb89e3.png",
+    "attempt": 3,
+    "selected": true,
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-244341cc-4096-4ad5-9a25-57b9a12cd244.png"
+  },
+  {
+    "id": "house_l2_garden-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l3-v2.png",
+      "wheat_farm_ripe-v4.png",
+      "pasture.png"
+    ],
+    "detail": "Image1 L2 main house is the exact body size/tier baseline; image2 L3 is an upper tier NOT to imitate; images3 and4 give subdued cultivated soil/grass colors only. Target137x137. L2 SUBSISTENCE GARDEN ARTISAN HOUSE: TWO modest storeys, main body same size as baseline, simple modest tile gable roof with a small low shed joined behind. Do not make a large manor, many wings or a rich L3 front gable. A single small orchard tree with a coherent rounded crown peeks beside the rear wall, and two broad short vegetable beds occupy the tiny visible side/back yard. One very small empty rough timber/wattle poultry-or-pig enclosure, and the little shed. Large simple silhouettes of orchard crown and shed are the cues; vegetable beds are secondary. No actual animals or people needed. Position yard on visible side so it is legible; keep the ground compact and flat without a raised diamond base. The house body remains >=85% baseline height, tree lower than house roof, no broad landscape extending far past the house. Shift front door and shutter openings from baseline. Distinct roof-plus-low-shed-plus-tree outline, not just recolored L2.",
+    "prompt": "Use case: precise-object-edit. Image1 is our current GARDEN candidate; image2 is the supplied original house_l2-v2 size/tier reference. Preserve the EXACT SAME two-storey main house at the SAME size, the now-flat peg tile roof, camera, timber/limewash materials and openings. Re-arrange ONLY the garden props to solve excessive side-yard WIDTH. Current yard extends too far to the right and forces the house to shrink when fitted into137x137. TUCK the small shed, 2 short vegetable beds and little empty poultry/pig pen into a much NARROWER rear/side yard, largely BEHIND the right wall and visible as compact partial shapes. Move the orchard tree inward so its rounded crown peeks from behind the rear roof edge rather than stretching far sideways. The crown remains lower than the highest roof ridge. Keep all four garden cues present but with strong overlap/occlusion and no broad empty ground patch. Entire image-content width should be only about 10% wider than the main house eaves, while the main body HEIGHT and WIDTH are unchanged. Do not simply scale the whole image down or make the building skinny. Prefer partial visible fence and two stubby bed rows beside the wall to a big full courtyard. Keep flat ground and transparent background, no raised tile slab, no added people or animals. Preserve large simple silhouettes. No chimney, glass, fancy L3 gable or third storey. Return only the compact garden variant.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-2cb4d397-7b20-454e-949a-0a4eff6f3dad.png",
+    "attempt": 3,
+    "selected": false,
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-778d28a6-1af8-4447-b966-60d03f0b1cff.png"
+  },
+  {
+    "id": "house_l2_garden-pilot",
+    "size": [
+      137,
+      137
+    ],
+    "ref": "house_l2-v2.png",
+    "refs": [
+      "house_l2-v2.png",
+      "house_l3-v2.png",
+      "wheat_farm_ripe-v4.png",
+      "pasture.png"
+    ],
+    "detail": "Image1 L2 main house is the exact body size/tier baseline; image2 L3 is an upper tier NOT to imitate; images3 and4 give subdued cultivated soil/grass colors only. Target137x137. L2 SUBSISTENCE GARDEN ARTISAN HOUSE: TWO modest storeys, main body same size as baseline, simple modest tile gable roof with a small low shed joined behind. Do not make a large manor, many wings or a rich L3 front gable. A single small orchard tree with a coherent rounded crown peeks beside the rear wall, and two broad short vegetable beds occupy the tiny visible side/back yard. One very small empty rough timber/wattle poultry-or-pig enclosure, and the little shed. Large simple silhouettes of orchard crown and shed are the cues; vegetable beds are secondary. No actual animals or people needed. Position yard on visible side so it is legible; keep the ground compact and flat without a raised diamond base. The house body remains >=85% baseline height, tree lower than house roof, no broad landscape extending far past the house. Shift front door and shutter openings from baseline. Distinct roof-plus-low-shed-plus-tree outline, not just recolored L2.",
+    "prompt": "Use case: precise-object-edit. First image is our current project GARDEN L2 candidate, 1254x1254 working image. Second is the supplied original house_l2-v2 size/tier reference. This is a narrow composition correction to keep the MAIN HOUSE full-sized inside a137x137 delivery.\nKeep the entire main two-storey house, roof, door, windows, limewash, ground-contact corner and camera UNCHANGED in pixel size and position. Do NOT shrink the house. Its left roof edge is near x110 and the far right main eave near x905 in this1254px image.\nONLY compress/rearrange the side garden attachments: the outermost garden currently extends to x1100. Move the little pen/fence, bed rows and tree's rightmost outline INWARD so ALL painted material ends at x990 or earlier, leaving x1000..1253 fully transparent. Preserve the left extent near x110 and top/bottom positions of the main house. This means the final meaningful image is taller than it is wide, approximately880px wide by945px high. Do NOT achieve this with global image distortion. Repaint/reposition only the garden props into the available narrow strip behind/beside the wall.\nKeep the small low shed, ONE orchard tree rounded crown behind the roof, TWO short tiny vegetable bed rows, and a small empty wattle pen/fence fragment visible as overlapping partial shapes. The tree can be partially hidden by the roof. Crops and pen may be just a narrow vertical strip at x905..985. No broad ground patio and no extension far to the right. The tree must stay lower than the roof ridge. Preserve flat planar peg tiles, no S-profile tiles, no chimney, no glass, no people, no animals. Genuine alpha background. Return the corrected candidate only.",
+    "references": [
+      "/tmp/astra-wave2-work-20260924/references/astra-wave2-reference-files/house_l2-v2.png"
+    ],
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-7d090d0c-7a43-49aa-a530-4dd07d032252.png",
+    "attempt": 4,
+    "selected": true,
+    "editTarget": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-2cb4d397-7b20-454e-949a-0a4eff6f3dad.png"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "status": "candidate",
+  "visual_verdict": "NEEDS_REVISION",
+  "same_identity": "PASS_VISUAL",
+  "aging_readability_96px": "NEEDS_REVISION",
+  "all_24_distinct_96px": "NEEDS_REVISION",
+  "confusable_pairs": [
+    [
+      "04",
+      "18"
+    ],
+    [
+      "21",
+      "23"
+    ],
+    [
+      "07",
+      "11"
+    ]
+  ],
+  "proof_sha256": {
+    "03-beards.png": "bb3d3f932eb79948486c61714ab93e7b498749cbd8bb8383e5b77f6457c0962d",
+    "01-faces-age.png": "c50e227502f7a74b16ee8dcfa4bb3ead29cc9820aa3a64ab3f7b8ed74b53019c",
+    "04-random-24.png": "bd6def9f3a2b2e6287f06d67dde7c79229f5d17bec2dc745d1837de2967516ae",
+    "02-hair.png": "a795d7f4a6051de9bc9d4634e50ad0fac5063961ccbffb4b2fee42862a3fbbd5"
+  },
+  "game_installation": "NOT_PERFORMED",
+  "qa_files": [
+    "검수표.md",
+    "검수표.csv",
+    "independent-visual-qa.md"
+  ]
+}

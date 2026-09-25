@@ -1,0 +1,24 @@
+{
+  "verdict": "candidate-pass-with-test-limitation",
+  "reviewer": "w6_overlay",
+  "independentAssetCount": 21,
+  "selfReviewedAssets": [
+    "work/work_pose_overlay_m"
+  ],
+  "totalAssetCount": 22,
+  "checkImageCount": 3,
+  "alphaScanPass": true,
+  "pilesThreeLevelsAtSourceScale03": "pass",
+  "wellPivot": "same declared (36,64), y64 ground verified offline",
+  "toolGrip": "conditional pass static frame0 with hand restoration and carry occlusion layers",
+  "overlayPureSourceOver": "fail: old arms remain",
+  "overlayMaskedReplacement": "offline experiment pass; self-reviewed",
+  "runtimeTested": false,
+  "remainingNotes": [
+    "Smoke variants differ subtly; mass repetition untested",
+    "Tool animation/frame1 untested",
+    "Marker ribbon and prop details reduce to silhouette at low scale",
+    "CSV and ZIP verification owned by parent"
+  ],
+  "hashes": "independent-alpha-scan.json"
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "fx/completion_burst-v1",
+    "w": 384,
+    "h": 128,
+    "ref": "effect_dust-v1.png",
+    "subject": "Exactly three distinct frames in a horizontal evenly spaced 3-cell sprite sheet, each square128x128. Same ground anchor bottom center in all3cells: frame0 small expanding warm sawdust and ochre dust arc, frame1 broader sawdust dusty puff with two tiny restrained cream glints, frame2 dissipating dust wisps. Quiet building-completion signal, not explosion, not magic, no large stars. Each frame entirely separated by transparent space.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-a5bd8d7d-6fe5-49d1-b41e-afc8428e2c7e.png",
+    "prompt": "ROLE: transparent effect sprite, nonrepeating. Medieval southern England1300–1450 hand-painted isometric city-builder. Project reference is style and muted palette only; do not copy its sheet. Exactly three distinct frames in a horizontal evenly spaced 3-cell sprite sheet, each square128x128. Same ground anchor bottom center in all3cells: frame0 small expanding warm sawdust and ochre dust arc, frame1 broader sawdust dusty puff with two tiny restrained cream glints, frame2 dissipating dust wisps. Quiet building-completion signal, not explosion, not magic, no large stars. Each frame entirely separated by transparent space. Target 384x128px, use broad shapes designed for display at0.3scale. True transparent RGBA background, no checkerboard drawn, no text, grid, border, vignette, watermark, modern or fantasy effect. Soft top-left lighting, no long cast shadow, no photographic granular texture. Retain gentle translucent alpha for dust. Render the requested sprite sheet only.",
+    "references": [
+      "effect_dust-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:45:16.655Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/completion_burst-v1.png",
+    "pivot": [
+      64,
+      120
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "fx/hammer_sparks-v1",
+    "w": 32,
+    "h": 32,
+    "ref": "effect_dust-v1.png",
+    "subject": "One tiny compact warm grey-brown impact dust puff for a hammer strike, two or three broad dusty lobes, no hammer, no metal spark shower, no glow. Readable simple shape even at10px display.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-e705e63c-b262-437b-b068-ef8324aa7563.png",
+    "prompt": "ROLE transparent effect sprite. Southern England1300–1450 handpainted citybuilder; attached projectdust reference palette and brushwork only. One tiny compact warm grey-brown impact dust puff for a hammer strike, two or three broad dusty lobes, no hammer, no metal spark shower, no glow. Readable simple shape even at10px display. Target32x32px. Simple large masses,no granular detail. True transparent RGBA background, centered subject with margins. No text,watermark, checkerboard,glow,backdrop,longshadow. Muted warm natural colours. Paint just one sprite.",
+    "references": [
+      "effect_dust-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:46:13.825Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/hammer_sparks-v1.png",
+    "pivot": [
+      16,
+      30
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "fx/smoke_chimney_a",
+    "w": 32,
+    "h": 64,
+    "ref": "effect_smoke-v1.png",
+    "subject": "One single narrow curling pale warm-grey chimney smoke plume. Base narrow at bottom center, rises diagonally left then curls right; three broad translucent lobes, simple silhouette. No chimney or other object.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-ed59c0f6-d753-4632-b9aa-7d5ab1be0393.png",
+    "prompt": "ROLE transparent effect sprite. Southern England1300–1450 handpainted citybuilder; attached projectsmoke reference palette and brushwork only. One single narrow curling pale warm-grey chimney smoke plume. Base narrow at bottom center, rises diagonally left then curls right; three broad translucent lobes, simple silhouette. No chimney or other object. Target32x64px. Simple large masses, no granular detail. True transparent RGBA background, centered whole subject with margins. No text,watermark,checkerboard,glow,backdrop,longshadow. Muted warm natural colours. Paint just one sprite.",
+    "references": [
+      "effect_smoke-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:46:47.624Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/smoke_chimney_a.png",
+    "pivot": [
+      16,
+      62
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "fx/smoke_chimney_b",
+    "w": 32,
+    "h": 64,
+    "ref": "effect_smoke-v1.png",
+    "subject": "One single narrow pale warm-grey chimney smoke plume variant B, differs in silhouette: narrow base bottom center, rightward low bend and leftward high lobe, slightly broken top. Three broad translucent lobes only. No chimney or other object.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-e047244f-f0d8-4621-aece-0da9145302cc.png",
+    "prompt": "ROLE transparent effect sprite. Southern England1300–1450 handpainted citybuilder; attached projectsmoke reference palette and brushwork only. One single narrow pale warm-grey chimney smoke plume variant B, differs in silhouette: narrow base bottom center, rightward low bend and leftward high lobe, slightly broken top. Three broad translucent lobes only. No chimney or other object. Target32x64px. Simple large masses,no granular detail. True transparent RGBA background, centered whole subject with margins. No text,watermark,checkerboard,glow,backdrop,longshadow. Muted warm natural colours. Paint just one sprite.",
+    "references": [
+      "effect_smoke-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:48:20.955Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/smoke_chimney_b.png",
+    "pivot": [
+      16,
+      62
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "fx/dust_puff",
+    "w": 32,
+    "h": 32,
+    "ref": "effect_dust-v1.png",
+    "subject": "One low broad warm ochre-grey dust puff marking placement confirmation, flat ground base, asymmetrical three plump dusty lobes, clean large simple masses. No debris specks, no object.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-f1835396-9efe-48e4-ba43-124efe10f0a4.png",
+    "prompt": "ROLE transparent effect sprite. Southern England1300–1450 handpainted citybuilder; attached projectdust reference palette and brushwork only. One low broad warm ochre-grey dust puff marking placement confirmation, flat ground base, asymmetrical three plump dusty lobes, clean large simple masses. No debris specks, no object. Target32x32px. Simple large masses,no granular detail. True transparent RGBA background, centered whole subject with margins. No text,watermark,checkerboard,glow,backdrop,longshadow. Muted warm natural colours. Paint just one sprite.",
+    "references": [
+      "effect_dust-v1.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:49:22.442Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/dust_puff.png",
+    "pivot": [
+      16,
+      30
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "fx/fire_small",
+    "w": 48,
+    "h": 64,
+    "ref": "house_l0-v3.png",
+    "subject": "One small building-fire effect only, three restrained painterly ochre-orange flame tongues and small warm pale core over dark ember base. Entire fire visible bottomcenter anchor. Medieval building fire, no fuel object, no ground slab. No huge glow, no neon, no micro sparks.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-403f212f-15e3-48b7-8bd0-8c39e3d86645.png",
+    "prompt": "ROLE transparent effect sprite. Southern England1300–1450 handpainted citybuilder; attached projecthouse reference palette and brushwork only. Do NOT render the house. One small building-fire effect only, three restrained painterly ochre-orange flame tongues and small warm pale core over dark ember base. Entire fire visible bottomcenter anchor. Medieval building fire, no fuel object, no ground slab. No huge glow, no neon, no micro sparks. Target48x64px, primitive broad warm colour flame shapes legible at14x19px display. True transparent RGBA background, centered entire isolated fire with margins. No text,watermark,checkerboard,backdrop,longshadow. Paint just one effect sprite.",
+    "references": [
+      "house_l0-v3.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:50:18.658Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/fire_small.png",
+    "pivot": [
+      24,
+      62
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "fx/fire_large",
+    "w": 96,
+    "h": 96,
+    "ref": "house_l0-v3.png",
+    "subject": "One larger building-fire effect only, broad base and five interlocking strong ochre-orange flame masses, two taller tongues, warm pale core and dark rusty ember base. Entire fire visible bottomcenter anchor. Distinct broad irregular silhouette from smallfire. No fuel object, ground slab, huge glow, neon, or micro sparks.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-6b283507-3fd2-4b34-8ee5-0731e36630c2.png",
+    "prompt": "ROLE transparent effect sprite. Southern England1300–1450 handpainted citybuilder; attached projecthouse reference palette and brushwork only. Do NOT render the house. One larger building-fire effect only, broad base and five interlocking strong ochre-orange flame masses, two taller tongues, warm pale core and dark rusty ember base. Entire fire visible bottomcenter anchor. Distinct broad irregular silhouette from smallfire. No fuel object, ground slab, huge glow, neon, or micro sparks. Target96x96px, primitive broad warm colour flame shapes legible at29x29px display. True transparent RGBA background, centered entire isolated fire with margins. No text,watermark,checkerboard,backdrop,longshadow. Paint just one effect sprite.",
+    "references": [
+      "house_l0-v3.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:51:38.331Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/fx/fire_large.png",
+    "pivot": [
+      48,
+      94
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  },
+  {
+    "id": "marker/stake_empty_plot",
+    "w": 32,
+    "h": 48,
+    "ref": "house_l0-v3.png",
+    "subject": "One single short rough weathered wooden survey stake with an unmarked faded linen ribbon tied near upper part. 2:1 isometric game prop, base bottomcenter, slightly crooked split wood point on top, pale ochre ribbon streams to right. No writing, no symbols, no signboard, no surrounding ground. Chunky simple visible wood and ribbon.",
+    "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d8ce-9c3d-7bd1-b909-22956738dc55/exec-a5d1b425-e9b6-4734-a02f-94348450529f.png",
+    "prompt": "ROLE transparent object marker. Southern England1300–1450 handpainted citybuilder; attached projecthouse reference palette and brushwork only. Do NOT render the house. One single short rough weathered wooden survey stake with an unmarked faded linen ribbon tied near upper part. 2:1 isometric game prop, base bottomcenter, slightly crooked split wood point on top, pale ochre ribbon streams to right. No writing, no symbols, no signboard, no surrounding ground. Chunky simple visible wood and ribbon. Target32x48px, chunky simple visible silhouette legible at10x14px display. True transparent RGBA background, centered entire isolated marker with margins. Soft upper-left light,contact AO only. No text,watermark,checkerboard,backdrop,longshadow,micrograin. Paint just one marker sprite.",
+    "references": [
+      "house_l0-v3.png"
+    ],
+    "selected": true,
+    "generatedAt": "2026-09-25T13:52:12.816Z",
+    "finalPath": "/tmp/astra-wave6-candidates-20260925/marker/stake_empty_plot.png",
+    "pivot": [
+      16,
+      46
+    ],
+    "manualEdits": "Generated alpha bbox (threshold8) cropped per cell; one Lanczos3 fit to exact target; transparent canvas; bottom-centred anchor. Original generated alpha preserved. No procedural repaint.",
+    "reason": "Selected only generated candidate: project-tone painterly silhouette, alpha preserved; inspected source-size and 0.3-scale on olive background.",
+    "status": "candidate",
+    "model": "not exposed by native tool",
+    "tool": "image_gen.imagegen; Sharp mechanical crop/resize"
+  }
+]

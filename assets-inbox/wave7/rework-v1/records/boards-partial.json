@@ -1,0 +1,737 @@
+[
+  {
+    "id": "overlay/boarded_l0-v2",
+    "file": "assets/overlay/boarded_l0-v2.png",
+    "width": 153,
+    "height": 153,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input image is exact house_l0 registration target, native canvas 153 x 153. Produce ONLY isolated wooden vacancy barricades on transparent RGBA canvas: house, walls, roof, ground ALL absent. 2 existing opening rectangles in native coordinates x,y,w,h: [[37,86,13,18],[57,97,14,25]]. EACH opening must get exactly TWO VERY THICK diagonal planks crossing as bold X, in those precise opening positions. Each beam width about 35 percent of opening width. Muted pale weathered oak with dark brown edges, visibly lighter than house brown timbers, a few dark iron nails. Chunky painterly medieval game sprite. Crossed boards must remain clearly legible when the entire house is drawn at .6 native size. Boards can overhang opening frames only by 1-2 native pixels. NO horizontal laths, no shutter panels, no many tiny slats, no random wall decorations. Keep full square canvas, original camera and opening positions. Only the 2 wooden X pieces, true alpha transparency everywhere else. No checkerboard, no text.\n",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/references/house_l0-v3.png"
+        ],
+        "rawFile": "sources/boards/l0-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated X pieces, connected component crops registered to verified native opening rectangles; 1 px modest overhang; generated alpha preserved",
+      "mappings": [
+        {
+          "source": [
+            318,
+            737,
+            132,
+            179
+          ],
+          "target": [
+            36,
+            85,
+            15,
+            20
+          ],
+          "opening": [
+            37,
+            86,
+            13,
+            18
+          ]
+        },
+        {
+          "source": [
+            525,
+            854,
+            150,
+            228
+          ],
+          "target": [
+            56,
+            96,
+            16,
+            27
+          ],
+          "opening": [
+            57,
+            97,
+            14,
+            25
+          ]
+        }
+      ],
+      "mask": "sources/boards/l0-mask.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sourceScaleTests": [
+        1,
+        0.6
+      ],
+      "viewedComposite": false,
+      "originalUnmodified": true
+    }
+  },
+  {
+    "id": "overlay/boarded_l1-v2",
+    "file": "assets/overlay/boarded_l1-v2.png",
+    "width": 139,
+    "height": 139,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input image is exact house_l1 registration target, native canvas 139 x 139. Produce ONLY isolated wooden vacancy barricades on transparent RGBA canvas: house, walls, roof, ground ALL absent. 3 existing opening rectangles in native coordinates x,y,w,h: [[28,73,14,19],[55,89,13,24],[100,87,13,24]]. EACH opening must get exactly TWO VERY THICK diagonal planks crossing as bold X, in those precise opening positions. Each beam width about 35 percent of opening width. Muted pale weathered oak with dark brown edges, visibly lighter than house brown timbers, a few dark iron nails. Chunky painterly medieval game sprite. Crossed boards must remain clearly legible when the entire house is drawn at .6 native size. Boards can overhang opening frames only by 1-2 native pixels. NO horizontal laths, no shutter panels, no many tiny slats, no random wall decorations. Keep full square canvas, original camera and opening positions. Only the 3 wooden X pieces, true alpha transparency everywhere else. No checkerboard, no text.\n",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/references/house_l1-v2.png"
+        ],
+        "rawFile": "sources/boards/l1-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated X pieces, connected component crops registered to verified native opening rectangles; 1 px modest overhang; generated alpha preserved",
+      "mappings": [
+        {
+          "source": [
+            255,
+            678,
+            164,
+            198
+          ],
+          "target": [
+            27,
+            72,
+            16,
+            21
+          ],
+          "opening": [
+            28,
+            73,
+            14,
+            19
+          ]
+        },
+        {
+          "source": [
+            538,
+            835,
+            158,
+            236
+          ],
+          "target": [
+            54,
+            88,
+            15,
+            26
+          ],
+          "opening": [
+            55,
+            89,
+            13,
+            24
+          ]
+        },
+        {
+          "source": [
+            908,
+            831,
+            160,
+            240
+          ],
+          "target": [
+            99,
+            86,
+            15,
+            26
+          ],
+          "opening": [
+            100,
+            87,
+            13,
+            24
+          ]
+        }
+      ],
+      "mask": "sources/boards/l1-mask.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sourceScaleTests": [
+        1,
+        0.6
+      ],
+      "viewedComposite": false,
+      "originalUnmodified": true
+    }
+  },
+  {
+    "id": "overlay/boarded_l2-v2",
+    "file": "assets/overlay/boarded_l2-v2.png",
+    "width": 137,
+    "height": 137,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input image is exact house_l2 registration target, native canvas 137 x 137. Produce only a transparent RGBA overlay of wooden vacancy barricades at its existing door and windows; DELETE every house pixel, roof, wall, ground. Six opening rectangles in native coordinates (x,y,w,h): (28,57,15,20), (64,78,13,17), (31,88,24,17), (64,101,12,22), (100,95,11,18), (100,68,10,15). EACH opening gets exactly TWO VERY THICK diagonal planks crossing as bold X. Each beam width is about 35 percent of opening width, NOT thin slats. Muted pale weathered oak with dark brown edges, visibly lighter than brown house timbers, iron nail dots, chunky painterly game sprite. X crosses must read even when whole house is 82px tall. Boards can overhang frames by 2 native pixels only. Do NOT create shutter panels or horizontal laths, do NOT create many tiny planks. Keep original camera, opening placement and full square canvas. All except the six wooden X barricades is actual alpha transparency, no checkerboard, no text.\n",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/references/house_l2-v2.png"
+        ],
+        "rawFile": "sources/boards/l2-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated X pieces, connected component crops registered to verified native opening rectangles; 1 px modest overhang; generated alpha preserved",
+      "mappings": [
+        {
+          "source": [
+            284,
+            570,
+            132,
+            167
+          ],
+          "target": [
+            27,
+            56,
+            17,
+            22
+          ],
+          "opening": [
+            28,
+            57,
+            15,
+            20
+          ]
+        },
+        {
+          "source": [
+            619,
+            779,
+            118,
+            148
+          ],
+          "target": [
+            63,
+            77,
+            15,
+            19
+          ],
+          "opening": [
+            64,
+            78,
+            13,
+            17
+          ]
+        },
+        {
+          "source": [
+            304,
+            869,
+            196,
+            164
+          ],
+          "target": [
+            30,
+            87,
+            26,
+            19
+          ],
+          "opening": [
+            31,
+            88,
+            24,
+            17
+          ]
+        },
+        {
+          "source": [
+            611,
+            960,
+            120,
+            201
+          ],
+          "target": [
+            63,
+            100,
+            14,
+            24
+          ],
+          "opening": [
+            64,
+            101,
+            12,
+            22
+          ]
+        },
+        {
+          "source": [
+            894,
+            916,
+            115,
+            158
+          ],
+          "target": [
+            99,
+            94,
+            13,
+            20
+          ],
+          "opening": [
+            100,
+            95,
+            11,
+            18
+          ]
+        },
+        {
+          "source": [
+            898,
+            674,
+            106,
+            133
+          ],
+          "target": [
+            99,
+            67,
+            12,
+            17
+          ],
+          "opening": [
+            100,
+            68,
+            10,
+            15
+          ]
+        }
+      ],
+      "mask": "sources/boards/l2-mask.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sourceScaleTests": [
+        1,
+        0.6
+      ],
+      "viewedComposite": false,
+      "originalUnmodified": true
+    }
+  },
+  {
+    "id": "overlay/boarded_l3-v2",
+    "file": "assets/overlay/boarded_l3-v2.png",
+    "width": 142,
+    "height": 142,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input image is exact house_l3 registration target, native canvas 142 x 142. Produce ONLY isolated wooden vacancy barricades on transparent RGBA canvas: house, walls, roof, ground ALL absent. 7 existing opening rectangles in native coordinates x,y,w,h: [[44,45,11,16],[39,66,11,16],[68,81,12,16],[68,111,12,21],[35,97,23,15],[103,77,11,17],[103,108,11,16]]. EACH opening must get exactly TWO VERY THICK diagonal planks crossing as bold X, in those precise opening positions. Each beam width about 35 percent of opening width. Muted pale weathered oak with dark brown edges, visibly lighter than house brown timbers, a few dark iron nails. Chunky painterly medieval game sprite. Crossed boards must remain clearly legible when the entire house is drawn at .6 native size. Boards can overhang opening frames only by 1-2 native pixels. NO horizontal laths, no shutter panels, no many tiny slats, no random wall decorations. Keep full square canvas, original camera and opening positions. Only the 7 wooden X pieces, true alpha transparency everywhere else. No checkerboard, no text.\n",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/references/house_l3-v2.png"
+        ],
+        "rawFile": "sources/boards/l3-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated X pieces, connected component crops registered to verified native opening rectangles; 1 px modest overhang; generated alpha preserved",
+      "mappings": [
+        {
+          "source": [
+            424,
+            366,
+            116,
+            149
+          ],
+          "target": [
+            43,
+            44,
+            13,
+            18
+          ],
+          "opening": [
+            44,
+            45,
+            11,
+            16
+          ]
+        },
+        {
+          "source": [
+            391,
+            563,
+            123,
+            153
+          ],
+          "target": [
+            38,
+            65,
+            13,
+            18
+          ],
+          "opening": [
+            39,
+            66,
+            11,
+            16
+          ]
+        },
+        {
+          "source": [
+            644,
+            731,
+            125,
+            155
+          ],
+          "target": [
+            67,
+            80,
+            14,
+            18
+          ],
+          "opening": [
+            68,
+            81,
+            12,
+            16
+          ]
+        },
+        {
+          "source": [
+            645,
+            973,
+            124,
+            196
+          ],
+          "target": [
+            67,
+            110,
+            14,
+            23
+          ],
+          "opening": [
+            68,
+            111,
+            12,
+            21
+          ]
+        },
+        {
+          "source": [
+            313,
+            880,
+            231,
+            149
+          ],
+          "target": [
+            34,
+            96,
+            25,
+            17
+          ],
+          "opening": [
+            35,
+            97,
+            23,
+            15
+          ]
+        },
+        {
+          "source": [
+            922,
+            685,
+            118,
+            165
+          ],
+          "target": [
+            102,
+            76,
+            13,
+            19
+          ],
+          "opening": [
+            103,
+            77,
+            11,
+            17
+          ]
+        },
+        {
+          "source": [
+            924,
+            993,
+            116,
+            146
+          ],
+          "target": [
+            102,
+            107,
+            13,
+            18
+          ],
+          "opening": [
+            103,
+            108,
+            11,
+            16
+          ]
+        }
+      ],
+      "mask": "sources/boards/l3-mask.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sourceScaleTests": [
+        1,
+        0.6
+      ],
+      "viewedComposite": false,
+      "originalUnmodified": true
+    }
+  },
+  {
+    "id": "overlay/boarded_l4-v2",
+    "file": "assets/overlay/boarded_l4-v2.png",
+    "width": 161,
+    "height": 161,
+    "role": "object-overlay",
+    "pivot": {
+      "mode": "inherit-original",
+      "overlayOffset": [
+        0,
+        0
+      ],
+      "note": "Draw on identical original canvas at zero offset; no pivot metadata was supplied with reference PNG"
+    },
+    "generationRecords": [
+      {
+        "prompt": "Use case: precise-object-edit. Input image is exact house_l4 registration target, native canvas 161 x 161. Produce ONLY isolated wooden vacancy barricades on transparent RGBA canvas: house, walls, roof, ground ALL absent. 9 existing opening rectangles in native coordinates x,y,w,h: [[48,61,13,16],[77,78,10,16],[49,86,13,16],[80,103,10,15],[85,130,9,16],[43,111,32,18],[110,76,14,17],[110,103,13,17],[110,130,13,15]]. EACH opening must get exactly TWO VERY THICK diagonal planks crossing as bold X, in those precise opening positions. Each beam width about 35 percent of opening width. Muted pale weathered oak with dark brown edges, visibly lighter than house brown timbers, a few dark iron nails. Chunky painterly medieval game sprite. Crossed boards must remain clearly legible when the entire house is drawn at .6 native size. Boards can overhang opening frames only by 1-2 native pixels. NO horizontal laths, no shutter panels, no many tiny slats, no random wall decorations. Keep full square canvas, original camera and opening positions. Only the 9 wooden X pieces, true alpha transparency everywhere else. No checkerboard, no text.\n",
+        "references": [
+          "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave7-candidates-v1/references/house_l4-v2.png"
+        ],
+        "rawFile": "sources/boards/l4-raw.png"
+      }
+    ],
+    "processing": {
+      "method": "Generated X pieces, connected component crops registered to verified native opening rectangles; 1 px modest overhang; generated alpha preserved",
+      "mappings": [
+        {
+          "source": [
+            380,
+            473,
+            100,
+            130
+          ],
+          "target": [
+            47,
+            60,
+            15,
+            18
+          ],
+          "opening": [
+            48,
+            61,
+            13,
+            16
+          ]
+        },
+        {
+          "source": [
+            615,
+            583,
+            91,
+            132
+          ],
+          "target": [
+            76,
+            77,
+            12,
+            18
+          ],
+          "opening": [
+            77,
+            78,
+            10,
+            16
+          ]
+        },
+        {
+          "source": [
+            384,
+            673,
+            101,
+            131
+          ],
+          "target": [
+            48,
+            85,
+            15,
+            18
+          ],
+          "opening": [
+            49,
+            86,
+            13,
+            16
+          ]
+        },
+        {
+          "source": [
+            638,
+            775,
+            89,
+            128
+          ],
+          "target": [
+            79,
+            102,
+            12,
+            17
+          ],
+          "opening": [
+            80,
+            103,
+            10,
+            15
+          ]
+        },
+        {
+          "source": [
+            678,
+            966,
+            87,
+            125
+          ],
+          "target": [
+            84,
+            129,
+            11,
+            18
+          ],
+          "opening": [
+            85,
+            130,
+            9,
+            16
+          ]
+        },
+        {
+          "source": [
+            340,
+            846,
+            234,
+            137
+          ],
+          "target": [
+            42,
+            110,
+            34,
+            20
+          ],
+          "opening": [
+            43,
+            111,
+            32,
+            18
+          ]
+        },
+        {
+          "source": [
+            847,
+            569,
+            106,
+            139
+          ],
+          "target": [
+            109,
+            75,
+            16,
+            19
+          ],
+          "opening": [
+            110,
+            76,
+            14,
+            17
+          ]
+        },
+        {
+          "source": [
+            845,
+            773,
+            105,
+            138
+          ],
+          "target": [
+            109,
+            102,
+            15,
+            19
+          ],
+          "opening": [
+            110,
+            103,
+            13,
+            17
+          ]
+        },
+        {
+          "source": [
+            851,
+            965,
+            102,
+            127
+          ],
+          "target": [
+            109,
+            129,
+            15,
+            17
+          ],
+          "opening": [
+            110,
+            130,
+            13,
+            15
+          ]
+        }
+      ],
+      "mask": "sources/boards/l4-mask.png"
+    },
+    "qa": {
+      "status": "candidate",
+      "sourceScaleTests": [
+        1,
+        0.6
+      ],
+      "viewedComposite": false,
+      "originalUnmodified": true
+    }
+  }
+]

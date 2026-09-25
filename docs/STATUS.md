@@ -4,6 +4,8 @@
 
 ## 현재 단계
 
+- **INBOX-1 Astra 산출물 전량 보관 — 본선 커밋**(Claude Code, inbox·docs만): `/tmp/astra-*.zip` 30개와 `output/astra-*` 13개를 `assets-inbox/<wave>/<batch>/{assets,proofs,records}`에 받은 바이트 그대로 보관, 장부 [`assets-inbox/INBOX_LEDGER.csv`](../assets-inbox/INBOX_LEDGER.csv) 1,380행(= inbox PNG 1,380장), 구조·상태 뜻 [`ASSET_INBOX.md`](ASSET_INBOX.md). `ui-p0/`는 UX-2 브랜치와 같은 경로·같은 바이트. `sources/`·`references/`(약 826MB)는 보관하지 않음. Wave 12·Wave 10 재작업·Wave 3 재작업은 아직 없음.
+
 - **MOVE-1 주민 이동 v0 — 관문 통과, 본선 병합**(Claude Code, 표현 워커, 시뮬레이션 0줄, 렌더는 V2 매핑 표 줄만): [주민 이동 명세](design/resident-movement.md) RM-1~RM-7, [보고서](verification/move1-residents/REPORT.md), 결정 MV1~MV5.
   - 가구 어른이 우물·시장·교회에 걷고, 헛간 일꾼이 들일을 오간다. 시장일 방문객, 교회↔예배당 성직자, 성문 경비가 있다. 모두 상태와 틱에서 파생하며 저장하지 않는다(v11 그대로).
   - 설치된 계급군 12개가 모두 걷는다. seed 2 도시 1년: 화면당 시트 22~33종, 여성 47.5%.

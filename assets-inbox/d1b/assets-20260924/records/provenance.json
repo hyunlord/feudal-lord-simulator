@@ -1,0 +1,80 @@
+{
+  "generatedCandidates": 2,
+  "generationTool": "image_gen",
+  "model": "not exposed",
+  "seed": "not provided",
+  "rejectedRequestBeforeGeneration": "7 reference paths exceeded tool limit5; no image generated; each successful call used5 ZIP-only references",
+  "referenceZip": {
+    "path": "/Users/rexxa/Downloads/astra-D1b-reference-files.zip",
+    "sha256": "e56ad5b4b8c2644df886d4461cbfcdf1b68d08ed2102b4c240789023420a3c4e"
+  },
+  "references": [
+    {
+      "filename": "earth_strip-v1.png",
+      "sha256": "63ad1612eabc38c52a522d20bc6cb72504337f91eab51ac42b937812639b732f"
+    },
+    {
+      "filename": "forest_floor.png",
+      "sha256": "dee8eb3c4c016f92ee212df5f5517a8c16a03e493e57b22a130fb74d347b3799"
+    },
+    {
+      "filename": "forest_fringe_a-v1.png",
+      "sha256": "6393ecd9131b4b77a671d462a4b531f86294c70bd2e08f1bca3e8bb6a5b6eac1"
+    },
+    {
+      "filename": "forest_fringe_b-v1.png",
+      "sha256": "b40ddd959a4db9d698429422a7788af92f3d2a6723667e47efaa24b717c4b465"
+    },
+    {
+      "filename": "grass.png",
+      "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+    },
+    {
+      "filename": "packed_earth_road.png",
+      "sha256": "d9c7d7c69424615971e6343e945c5767b9ffca69dda51de8e500913596aca2a9"
+    },
+    {
+      "filename": "wheat_farm_ripe-v4.png",
+      "sha256": "0c954dd543045d5b3717a592aa9eeacd99a86d1b67d87ece40b8c1f5f27d14f2"
+    }
+  ],
+  "sources": [
+    {
+      "id": "road/stone_strip-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-e32fc286-e3b0-4317-9f83-09fa9f4c7cfa.png",
+      "prompt": "Use case: precise-object-edit. Create road/stone_strip-v1, a transparent PNG game road texture for Feudal Lord Simulator, southern England 1300–1450, profile S_England_1300_1450_v1 and AB_2026-09-19_v1.\nINPUTS: Image 1 earth_strip-v1.png is the exact width, edge coverage, value structure and road direction reference to preserve while changing the surface material. Image 2 packed_earth_road.png is the warm earth palette reference. Image 3 grass.png and Image 4 forest_floor.png are palette references. Image 5 forest_fringe_a-v1.png shows the project's painterly finish. Use no other image sources.\nTARGET: exactly 512x64 pixels if supported. An 8:1 long horizontal strip of road with real alpha, viewed perfectly vertically from above, not isometric, not perspective. Road covers the entire left-to-right width without empty side margins. Keep rows 0..7 and 56..63 transparent, art in the middle 48px, matching the supplied dirt road's apparent width. Left and right ends must repeat seamlessly; matching 16px end bands. Upper/lower edges have irregular small missing stones revealing earth and sparse olive grass and inward alpha coverage breakup, not a blurry glow.\nChange only the road material into irregular differently sized flat rubble and rounded cobbles packed into warm dirt, modest olive moss in sparse joints. Southern English market town road inside the walls in 1300–1450. A few larger coherent stone shapes amid medium ones, mostly warm grey-brown with very restrained light upper surfaces and darker joints. Worn slightly smoother/lighter in the middle, edge value structure similar to the dirt road. No brick pattern, rectangular blocks, regular paving grid, Roman slabs, modern paving, polished rocks, dark outlining, long shadows.\nFINAL DISPLAY READABILITY: At zoom 1 this whole strip is 256x32 pixels; at .6 it is 154x19 pixels. Design only about 3 to 4 staggered irregular stone widths across the 48px road thickness. Most main stones should occupy about 10–22px horizontally and 8–14px vertically in the final 512x64 file, so they remain coherent 3–6px shapes at .6. Do not fill with tiny gravel or detailed microtexture. Muted warm earth-compatible palette; visibly stone but neither bright white nor blue. Soft even upper-left sunlight without strong directional cast shadows.\nNo text, watermark, ground plate, frame, checkerboard painted in the pixels, scenery, plants outside the edge, buildings, animals or people. True transparent background. Keep dirt road reference unmodified in all files; return the new stone strip only.",
+      "references": [
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/earth_strip-v1.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/packed_earth_road.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/grass.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/forest_floor.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/forest_fringe_a-v1.png"
+      ],
+      "sha256": "6ee83285b8b71e134fd13a11e76fcfd9ef4ef5fd4bcb5c32fcd86f047c594043",
+      "generatedAt": "2026-09-24T05:47:05.169Z"
+    },
+    {
+      "id": "boundary/forest_fringe_c-v1",
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-0a0e8e86-8e3a-49ab-be12-48c12317ff77.png",
+      "prompt": "Use case: stylized-concept. Create boundary/forest_fringe_c-v1, a transparent 2:1 isometric game decal for Feudal Lord Simulator, southern England 1300–1450, profile S_England_1300_1450_v1 and AB_2026-09-19_v1.\nINPUTS: Image 1 earth_strip-v1.png is palette context only. Images 2 forest_fringe_a-v1.png and 3 forest_fringe_b-v1.png are the exact brushwork, olive leaf colors, warm leaf litter and scale references. Images 4 grass.png and 5 forest_floor.png are project palette/style context. Use no other references.\nTARGET: exact 128x96 pixel transparent PNG if supported. 8px completely transparent margin on every side; bottom-center ground contact (64,88). Same 2:1 isometric ground plane as A and B. A is tall left-heavy and B is tall right-heavy. C MUST HAVE A DIFFERENT LOW, WIDE SILHOUETTE: a loosely spread leaf-litter smear with just THREE OR FOUR small squat grass tufts scattered horizontally, uneven spacing and unequal tuft sizes, an open gap between two tufts, absolutely no tall fern or tall dominant leaf mass. Maximum painted height around 23–28px in the final image, spanning about 104–112px width, mostly near the bottom; plenty of empty alpha above. Broad low scalloped forms, short wide leaves. The tallest tuft is no more than half the tall A/B clumps. Keep the overall ground plane shallow, not a big solid oval pedestal.\nIt will be placed in sequence A,C,B,C,A,B,C. The low C must interrupt the tall-left/tall-right repeating wave. Do not copy A or B and simply flip them. Match their muted yellow-olive colors and crisp hand-painted chunky leaf treatment, but avoid dark outlines and noisy tiny strokes. Sparse warm brown litter between the tufts, no bright flowers, rocks or trunks. Real alpha gaps and naturally disappearing left/right tips. Soft upper-left light, at most a tiny contact shadow, no long shadow and no blur or smeared edges.\nDISPLAY: whole128x96 becomes64x48 at zoom1 and38.4x28.8 at .6. Each tuft should be a single broad readable color/silhouette mass rather than many detailed blades. No fine grain that vanishes on reduction. No text, watermark, painted checkerboard, rectangular tile base, scenery, animals or modern/fantasy objects. Return only the new C decal; preserve the supplied A/B files unchanged.",
+      "references": [
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/earth_strip-v1.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/forest_fringe_a-v1.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/forest_fringe_b-v1.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/grass.png",
+        "/tmp/astra-D1b-work-20260924/references/astra-D1b-reference-files/forest_floor.png"
+      ],
+      "sha256": "caf724f0736e706c0ae5d6c529b3e7646ede690956258db7999b419fca686aad",
+      "generatedAt": "2026-09-24T05:46:14.830Z"
+    }
+  ],
+  "csv": {
+    "columns": 20,
+    "rows": 4,
+    "headerMatchesPriorD1": true,
+    "fullTextRoundtripPassed": true,
+    "statusAllCandidate": true
+  },
+  "noGameInstallation": true,
+  "rawSourcesPackaged": false
+}

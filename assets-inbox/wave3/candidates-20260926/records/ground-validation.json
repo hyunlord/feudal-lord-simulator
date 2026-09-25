@@ -1,0 +1,166 @@
+{
+  "count": 10,
+  "results": [
+    {
+      "id": "field/ridge_barley_ripe_a-v1",
+      "size": [
+        512,
+        64
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": 0,
+      "nonzeroAlphaPixels": 21845,
+      "zeroAlphaPixels": 10923,
+      "pivot": [
+        256,
+        32
+      ],
+      "sha256": "3c3dfdb0f858f637d33ae08b820e1f0a87dd57a2f982bab5d8a5d560a47a2e3c"
+    },
+    {
+      "id": "field/ridge_barley_growing_a-v1",
+      "size": [
+        512,
+        64
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": 0,
+      "nonzeroAlphaPixels": 21355,
+      "zeroAlphaPixels": 11413,
+      "pivot": [
+        256,
+        32
+      ],
+      "sha256": "e54ff0e94c84e4bae7c747fa06a28e7f9f83baa518070d1158e9a17bb96a80e4"
+    },
+    {
+      "id": "pasture/sheepfold-v1",
+      "size": [
+        256,
+        192
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": null,
+      "nonzeroAlphaPixels": 18020,
+      "zeroAlphaPixels": 31132,
+      "pivot": [
+        128,
+        184
+      ],
+      "sha256": "254f5fce93678df38ec5665cbe1ffb5d1431477af6c8da3eb1a26f793c23e824"
+    },
+    {
+      "id": "pasture/shearing_pen-v1",
+      "size": [
+        256,
+        192
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": null,
+      "nonzeroAlphaPixels": 24774,
+      "zeroAlphaPixels": 24378,
+      "pivot": [
+        128,
+        184
+      ],
+      "sha256": "e199eb13969f5cd61e9f8724321c0649ed4a4fca727dbd6c3abc6eda03094058"
+    },
+    {
+      "id": "yard/tenter_frames_a-v1",
+      "size": [
+        384,
+        192
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": null,
+      "nonzeroAlphaPixels": 13190,
+      "zeroAlphaPixels": 60538,
+      "pivot": [
+        192,
+        184
+      ],
+      "sha256": "958430122112831e3674bb54d29d267b03a3d098a335df674f32bbb9a9ae937b"
+    },
+    {
+      "id": "field/ridge_barley_growing_b-v1",
+      "size": [
+        512,
+        64
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": 0,
+      "nonzeroAlphaPixels": 20915,
+      "zeroAlphaPixels": 11853,
+      "pivot": [
+        256,
+        32
+      ],
+      "sha256": "b22794f4fd4deb371d2e1afd905c6356ab13af1529a9f73e2ad9116349b3cc2d"
+    },
+    {
+      "id": "field/ridge_barley_ripe_b-v1",
+      "size": [
+        512,
+        64
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": 0,
+      "nonzeroAlphaPixels": 22229,
+      "zeroAlphaPixels": 10539,
+      "pivot": [
+        256,
+        32
+      ],
+      "sha256": "484ef128832272452e4cb1fbdff54ea2c8d900b2f78172f02f6f09b92aad197f"
+    },
+    {
+      "id": "pasture/wash_pool-v1",
+      "size": [
+        192,
+        128
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": null,
+      "nonzeroAlphaPixels": 9855,
+      "zeroAlphaPixels": 14721,
+      "pivot": [
+        96,
+        120
+      ],
+      "sha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f"
+    },
+    {
+      "id": "yard/tenter_frames_b-v1",
+      "size": [
+        384,
+        192
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": null,
+      "nonzeroAlphaPixels": 22223,
+      "zeroAlphaPixels": 51505,
+      "pivot": [
+        192,
+        184
+      ],
+      "sha256": "d1467b6d2f2c4678f26aca2c27f3b715424c6d47c280256f651555aab1623ac9"
+    },
+    {
+      "id": "yard/tenter_frames_dyed-v1",
+      "size": [
+        384,
+        192
+      ],
+      "marginViolations": 0,
+      "xSeamMaxRGBA": null,
+      "nonzeroAlphaPixels": 22604,
+      "zeroAlphaPixels": 51124,
+      "pivot": [
+        192,
+        184
+      ],
+      "sha256": "982f05b4fe07ab217511e669057e609d2715142cf36f9a65055216ef906f3604"
+    }
+  ],
+  "visual": "Offline preview 0.5 and0.3 inspected; green/ripe phases, empty/shearing pens, wash pool and empty/cloth/dyed tenter discernible. Barley awns individually subordinate at0.3; broad nodding heads retained. No runtime game QA."
+}
