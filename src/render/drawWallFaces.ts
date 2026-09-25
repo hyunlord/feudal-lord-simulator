@@ -1,5 +1,5 @@
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
-import { hashNumbers, type BoundaryPoint } from "../world/boundary/boundaryGeometry";
+import { boundaryHash, type BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import { GATE_HALF_CLEARANCE } from "../world/wallTraversal";
 import type { WallBaselines, WallChain, WallMaterial, WallNode, WallPillar } from "../world/boundary/wallBaseline";
 import { drawRegisteredGate } from "./gateArtRenderer";
@@ -287,7 +287,7 @@ const MODULES = {
 } as const satisfies Record<string, Module>;
 /** Drum or square tower at a 90 degree corner: by a hash of the corner (tile-edge lattice point), about half each. */
 export function cornerTowerVariant(point: BoundaryPoint): "drum" | "square" {
-  return (hashNumbers([Math.round(point.x * 2), Math.round(point.y * 2), 4]) & 1) === 0 ? "drum" : "square";
+  return ((boundaryHash(Math.round(point.x * 2) * 4099 + Math.round(point.y * 2), 0, 97) >>> 3) & 1) === 0 ? "drum" : "square";
 }
 function drawCornerTower(context: CanvasRenderingContext2D, point: BoundaryPoint): boolean {
   return drawModuleSprite(context, MODULES[cornerTowerVariant(point)], point) || drawModuleSprite(context, MODULES.drum, point);
