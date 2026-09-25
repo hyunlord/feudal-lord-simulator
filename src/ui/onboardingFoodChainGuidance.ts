@@ -13,7 +13,7 @@ import {
   type GuidanceGeometryWorld,
 } from "./onboardingGuidanceGeometry";
 
-const FOOD_CHAIN_KINDS = ["wheat_farm", "mill", "granary"] as const satisfies readonly BuildingKind[];
+const FOOD_CHAIN_KINDS = ["farmstead", "mill", "granary"] as const satisfies readonly BuildingKind[];
 const LOCAL_PREP_RADIUS = 3;
 
 type FoodGuidanceWorld = Pick<

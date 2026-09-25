@@ -1,6 +1,6 @@
 import { BALANCE } from '../content/balanceConfig';
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from '../content/buildingConfig';
-import { expectedAnnualWheat } from '../zones/arableOutlook';
+import { annualWheatNeed } from './autoplayArable';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { housingLotCount } from '../population/housing';
 import type { GameState } from './engine.types';
@@ -16,8 +16,8 @@ const MILL_YEAR_WHEAT = Math.floor(BALANCE.TICKS_PER_YEAR * (BUILDING_CONFIG_BY_
 
 export function foodFacilityWithinLimit(state: GameState, kind: BuildingKind): boolean {
   switch (kind) {
-    // AF-13: mills up to what the expected harvest can keep busy (plus one), and never while one stands empty.
-    case 'mill': return foodFacilityCount(state, 'mill') < Math.ceil(expectedAnnualWheat(state) / MILL_YEAR_WHEAT) + 1
+    // AF-13: mills up to what a year of the homes' bread needs (10% spare, at least one), never while one stands empty.
+    case 'mill': return foodFacilityCount(state, 'mill') < Math.max(1, Math.ceil(annualWheatNeed(state) * 1.1 / MILL_YEAR_WHEAT))
       && state.buildings.every(building => building.kind !== 'mill' || (building.inventory.wheat ?? 0) > 0);
     case 'granary': return foodFacilityCount(state, 'granary') < Math.ceil(housingLotCount(state) / 4) + 1;
     default: return true;

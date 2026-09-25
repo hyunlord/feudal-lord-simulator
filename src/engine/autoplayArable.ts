@@ -29,7 +29,7 @@ import { resolveBuildingRoute } from "./routing";
 import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
 
 /** AF-13: the planner keeps the expected harvest this far above a year's need (growth headroom). */
-export const ARABLE_MARGIN_PERMILLE = 1200;
+export const ARABLE_MARGIN_PERMILLE = 1350;
 
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
 const BLOCK = 2;
