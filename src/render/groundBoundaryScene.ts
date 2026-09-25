@@ -14,6 +14,7 @@ import { buildingGrounds, type BuildingApron, type BuildingGrounds } from "../wo
 import { distanceToSegment } from "../world/boundary/boundaryGeometry";
 import { yardProps, type YardProps } from "../world/boundary/yardProps";
 import { shoreline, type Shoreline } from "../world/boundary/shoreline";
+import { wallBaselinesFor } from "./wallBaselineCache";
 import { bridgeAt, type BridgeSpan } from "../world/bridges";
 
 // Everything the V2 ground pass draws, derived once per ground change and split into 8x8-tile chunks.
@@ -31,7 +32,9 @@ import { bridgeAt, type BridgeSpan } from "../world/bridges";
 //     and which buildings are houses (building signature). Arable ridge layouts (C1e) follow zone membership and the
 //     tiles; the crop state of each strip is read every frame and enters only the chunk content key of the chunks that
 //     draw that strip (drawTerrainBoundaryV2), since it moves with farm production. The shoreline (D3a) follows the
-//     water cells (tiles) and the bridges (road tiles on water: tiles, plus the palisade signature that bridgeAt reads).
+//     water cells (tiles) and the bridges (road tiles on water: tiles, plus the palisade signature that bridgeAt reads),
+//     and snaps to the water-side wall baselines (D3b: completed edges and gates are in the palisade signature, the
+//     materials in the wall material signature, since a material join pins the baseline).
 // (b) Left out on purpose: walkers, stocks, ticks, crop growth, house levels, construction progress. None of them is
 //     read by road chains, forest or field outlines (crop state only changes what is drawn inside a field, which
 //     stays in the live object pass), so they cannot change a scene.
@@ -93,7 +96,7 @@ export type GroundChunkPlan = {
   readonly hasRoads: boolean;
 };
 
-type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; readonly seed: number; readonly farms: string; readonly buildings: string;
+type SceneKey = { readonly tiles: readonly Tile[]; readonly palisade: string; readonly wallMaterials: string; readonly seed: number; readonly farms: string; readonly buildings: string;
   readonly reversed: boolean; readonly width: number; readonly strips: string; readonly zones: string };
 let last: { readonly key: SceneKey; readonly scene: GroundBoundaryScene } | null = null;
 let reverseInputForProof = false;
@@ -120,6 +123,7 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
   const key: SceneKey = {
     tiles: state.tiles,
     palisade: palisadeSignature(state.palisade),
+    wallMaterials: wallMaterialSignature(state.palisade),
     seed: state.seed,
     farms: farmList.map(farm => `${farm.id}@${farm.tx},${farm.ty}`).join("|"),
     buildings: buildingSignature(state.buildings),
@@ -128,7 +132,7 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
     strips: roadStripSignature(),
     zones: zoneSignature(zonesOf(state)),
   };
-  const sameGround = last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.seed === key.seed
+  const sameGround = last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.wallMaterials === key.wallMaterials && last.key.seed === key.seed
     && last.key.farms === key.farms && last.key.buildings === key.buildings && last.key.reversed === key.reversed && last.key.width === key.width && last.key.strips === key.strips;
   if (sameGround && last?.key.zones === key.zones) return (last as NonNullable<typeof last>).scene;
   if (sameGround && deferZoneRebuilds && last !== null && (deferredAtFrame === null || deferredAtFrame === sceneFrame)) {
@@ -158,7 +162,7 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
   const grid = { width: state.width, height: state.height, tiles };
   const roads = ground?.roads ?? roadCenterlineGraph({ ...grid, palisade: state.palisade });
   const forest = ground?.forest ?? forestBoundary(grid, state.seed);
-  const shore = ground?.shore ?? shoreline({ ...grid, seed: state.seed, bridges: bridgeSpans(state, tiles) });
+  const shore = ground?.shore ?? shoreline({ ...grid, seed: state.seed, bridges: bridgeSpans(state, tiles), walls: waterSideWalls(state) });
   const farms = state.buildings.filter(building => building.kind === "wheat_farm")
     .map(farm => ({ id: farm.id, tx: farm.tx, ty: farm.ty, ...buildingFootprint(farm) }));
   const fields = ground?.fields ?? fieldClusters(grid, reverseInput ? [...farms].reverse() : farms);
@@ -274,6 +278,20 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
   return { width: state.width, height: state.height, columns, rows, roads, ribbons, zones, grounds, yardProps: yard, shore, forest, fields, chunks, buildMs };
 }
 
+/** The drawn wall baselines' water-side stretches in tile-centre coordinates (D3b: the shoreline shares them). */
+function waterSideWalls(state: GameState): BoundaryPoint[][] {
+  const lines: BoundaryPoint[][] = [];
+  for (const chain of wallBaselinesFor(state).walls.chains) {
+    let run: BoundaryPoint[] = [];
+    for (const sample of chain.samples) {
+      if (sample.water) run.push({ x: sample.point.x - 0.5, y: sample.point.y - 0.5 });
+      else { if (run.length > 1) lines.push(run); run = []; }
+    }
+    if (run.length > 1) lines.push(run);
+  }
+  return lines;
+}
+
 /** Every bridge span once (bridgeAt lists it for each of its water tiles), in tile order. */
 function bridgeSpans(state: GameState, tiles: readonly Tile[]): BridgeSpan[] {
   const spans = new Map<string, BridgeSpan>();
@@ -340,6 +358,17 @@ function buildingSignature(buildings: GameState["buildings"]): string {
   if (cached !== undefined) return cached;
   const signature = buildings.map(building => `${building.id}:${building.kind}@${building.tx},${building.ty}${building.houseLot ?? ""}`).join("|");
   buildingSignatures.set(buildings, signature);
+  return signature;
+}
+
+/** Materials of the completed segments (D3b: a material join pins the wall baseline the shoreline shares). */
+const wallMaterialSignatures = new WeakMap<object, string>();
+function wallMaterialSignature(palisade: GameState["palisade"]): string {
+  if (palisade === null) return "";
+  const cached = wallMaterialSignatures.get(palisade);
+  if (cached !== undefined) return cached;
+  const signature = palisade.segments.filter(segment => segment.completed).map(segment => `${segment.id}:${segment.material}`).sort().join("|");
+  wallMaterialSignatures.set(palisade, signature);
   return signature;
 }
 

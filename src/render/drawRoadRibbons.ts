@@ -460,8 +460,10 @@ function canvas2d(width: number, height: number): { canvas: HTMLCanvasElement; c
 }
 
 /**
- * Multiplies alpha by a piecewise linear profile along x or y (stops are [fraction of the size, alpha]), one texel
- * line at a time (the render guards keep canvas gradients out of the game).
+ * Multiplies alpha by a piecewise linear profile along x or y (stops are [fraction of the size, alpha]). The profile is
+ * painted one texel line at a time into its own canvas (the render guards keep canvas gradients out) and applied once
+ * with destination-in: destination-in clears everything outside the shape drawn, so applying it line by line (as until
+ * D3b) left only the last line and emptied the join crossfades and the rut masks.
  */
 function mask(context: CanvasRenderingContext2D, width: number, height: number, axis: "x" | "y", stops: readonly (readonly [number, number])[]): void {
   const size = axis === "x" ? width : height;
@@ -474,13 +476,16 @@ function mask(context: CanvasRenderingContext2D, width: number, height: number, 
     }
     return last[1];
   };
-  context.globalCompositeOperation = "destination-in";
+  const ramp = canvas2d(width, height);
+  if (ramp === null) return;
   for (let line = 0; line < size; line += 1) {
-    context.fillStyle = withAlpha(PALETTE.ink, Math.max(0, Math.min(1, profile((line + 0.5) / size))));
-    context.beginPath();
-    if (axis === "x") context.rect(line, 0, 1, height); else context.rect(0, line, width, 1);
-    context.fill();
+    ramp.context.fillStyle = withAlpha(PALETTE.ink, Math.max(0, Math.min(1, profile((line + 0.5) / size))));
+    ramp.context.beginPath();
+    if (axis === "x") ramp.context.rect(line, 0, 1, height); else ramp.context.rect(0, line, width, 1);
+    ramp.context.fill();
   }
+  context.globalCompositeOperation = "destination-in";
+  blit(context, ramp.canvas, 0, 0, width, height, 0, 0);
   context.globalCompositeOperation = "source-over";
 }
 

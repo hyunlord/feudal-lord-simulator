@@ -16,9 +16,14 @@ import {
 import type { StoneWallNode } from "./stoneWallTopology";
 import { drawStoneWall } from "./stoneWallRenderer";
 import { applyInkOutline, applyPaletteStroke, snapToPixel } from "./style";
+import { drawWallFaceSlice, drawWallModules, type WallFaceSlice } from "./drawWallFaces";
+import type { WallNode, WallPillar } from "../world/boundary/wallBaseline";
+import { wallFaceReadiness } from "./terrainVariantAssets";
 
 type DrawPalisadeSegmentInput = {
   readonly segment: PalisadeSegment;
+  /** Curved ground (D3b): this unit edge's stretch of extruded face and the modules it owns. */
+  readonly face?: { readonly slice: WallFaceSlice | null; readonly nodes: readonly WallNode[]; readonly pillars: readonly WallPillar[] } | undefined;
   readonly stoneNodes?: readonly StoneWallNode[] | undefined;
   readonly gate: TileEdgePoint | null;
   readonly gates?: readonly TileEdgePoint[] | undefined;
@@ -41,9 +46,13 @@ export type PalisadeRunStyle =
 
 export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: DrawPalisadeSegmentInput): void {
   const points = palisadeScreenPath([...input.segment.edgePath,
-    ...(input.stoneNodes ?? []).flatMap(node => [node.point, ...node.neighbors])]);
+    ...(input.stoneNodes ?? []).flatMap(node => [node.point, ...node.neighbors]),
+    ...(input.face?.nodes ?? []).flatMap(node => [node.point, ...node.neighbors])]);
   if (points.length === 0) return;
-  const key = JSON.stringify([input, stoneWallAssetStatuses(), gateAssetStatuses(), timberWallAssetStatus()]);
+  // A face slice enters the key by its chain hash and range (the samples themselves are large).
+  const face = input.face === undefined ? null : { chain: input.face.slice?.chain.hash ?? null, t0: input.face.slice?.t0, t1: input.face.slice?.t1,
+    material: input.face.slice?.chain.material, nodes: input.face.nodes, pillars: input.face.pillars, faces: wallFaceReadiness() };
+  const key = JSON.stringify([{ ...input, face }, stoneWallAssetStatuses(), gateAssetStatuses(), timberWallAssetStatus()]);
   drawCachedWorldRaster(context, key, {
     left: Math.min(...points.map(point => point.x)) - 96,
     right: Math.max(...points.map(point => point.x)) + 96,
@@ -56,6 +65,11 @@ export function drawPalisadeSegmentUncached(
   context: CanvasRenderingContext2D,
   input: DrawPalisadeSegmentInput,
 ): void {
+  if (input.face !== undefined) {
+    if (input.face.slice !== null) drawWallFaceSlice(context, input.face.slice);
+    drawWallModules(context, input.face.nodes, input.face.pillars, input.segment.material === "stone" ? "stone" : "timber", input.zoom);
+    return;
+  }
   if (input.segment.material === "stone") {
     drawStoneWall(context, { path: input.segment.edgePath, gate: input.gate, gates: input.gates, nodes: input.stoneNodes });
     return;

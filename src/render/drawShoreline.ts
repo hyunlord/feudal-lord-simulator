@@ -4,7 +4,7 @@ import { SHALLOW_DEPTH, type Shoreline, type ShoreLoop } from "../world/boundary
 import { tileToScreen } from "./iso";
 import { joinStripImages } from "./stripJoin";
 import { applyTextureStroke, withAlpha } from "./style";
-import { ABUTMENT_DISPLAY_WIDTH, shoreAsset, shoreAssetRaster } from "./terrainVariantAssets";
+import { ABUTMENT_DISPLAY_WIDTH, shoreAsset, shoreAssetRaster, shoreSurface } from "./terrainVariantAssets";
 import { TERRAIN_VARIANTS, type ShoreAssetKey } from "./terrainVariantManifest";
 import { waterPattern } from "./drawWater";
 import { drawCroppedWorldSprite } from "./worldSprite";
@@ -89,7 +89,7 @@ function drawShallowBand(context: CanvasRenderingContext2D, loop: ShoreLoop, see
   if (typeof context.createPattern !== "function") return;
   const variants = TERRAIN_VARIANTS.shallowWater;
   const pick = hashOf(loop.hash, seed) % variants.length;
-  const image = shoreAsset(variants[pick] as ShoreAssetKey);
+  const image = shoreSurface(variants[pick] as ShoreAssetKey);
   const pattern = image === null ? null : cachedPattern(context, image);
   context.save();
   context.transform(ISO.a, ISO.b, ISO.c, ISO.d, 0, 0);
@@ -169,6 +169,8 @@ function drawShoreStrip(context: CanvasRenderingContext2D, loop: ShoreLoop, tile
     const length = Math.hypot(b.x - a.x, b.y - a.y);
     const start = arc; arc += length;
     if (length === 0) continue;
+    // Along a wall standing on the water the wall is the edge: no shore strip under it (D3b).
+    if (loop.walled[index] === true && loop.walled[(index + 1) % count] === true) continue;
     if (Math.max(a.x, b.x) < tileBounds.left - margin || Math.min(a.x, b.x) > tileBounds.right + margin
       || Math.max(a.y, b.y) < tileBounds.top - margin || Math.min(a.y, b.y) > tileBounds.bottom + margin) continue;
     const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };
@@ -227,7 +229,7 @@ function cachedPattern(context: CanvasRenderingContext2D, image: CanvasImageSour
 let joinedStrip: CanvasImageSource | null = null;
 function shoreStripCanvas(): CanvasImageSource | null {
   if (joinedStrip !== null) return joinedStrip;
-  const images = TERRAIN_VARIANTS.shoreline.map(key => shoreAsset(key));
+  const images = TERRAIN_VARIANTS.shoreline.map(key => shoreSurface(key));
   if (images.some(image => image === null)) return null;
   joinedStrip = typeof document === "undefined" ? images[0] as HTMLImageElement : joinStripImages(images as HTMLImageElement[], STRIP_WIDTH, STRIP_HEIGHT, STRIP_JOIN_FADE);
   return joinedStrip;

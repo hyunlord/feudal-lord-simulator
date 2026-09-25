@@ -6,13 +6,13 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // shore strips): each image wraps on its own, so at every join both images are continued across it and crossfaded
 // over `fade` source px either side (summed in premultiplied space, "lighter"). Browser only (needs a canvas).
 
-export function joinStripImages(images: readonly HTMLImageElement[], stripWidth: number, stripHeight: number, fade: number): CanvasImageSource | null {
+export function joinStripImages(images: readonly CanvasImageSource[], stripWidth: number, stripHeight: number, fade: number): CanvasImageSource | null {
   const width = stripWidth * images.length;
   const joined = canvas2d(width, stripHeight);
   if (joined === null) return images[0] ?? null;
   images.forEach((image, index) => blit(joined.context, image, 0, 0, stripWidth, stripHeight, index * stripWidth, 0));
   images.forEach((left, index) => {
-    const right = images[(index + 1) % images.length] as HTMLImageElement;
+    const right = images[(index + 1) % images.length] as CanvasImageSource;
     const join = ((index + 1) * stripWidth) % width;
     const outgoing = canvas2d(fade * 2, stripHeight); const incoming = canvas2d(fade * 2, stripHeight);
     if (outgoing === null || incoming === null) return;
@@ -46,13 +46,19 @@ function blit(context: CanvasRenderingContext2D, image: CanvasImageSource, sx: n
   drawCroppedWorldSprite(context, image, { x: sx, y: sy, width, height }, { x: dx, y: dy, width, height }, false, false);
 }
 
-/** Multiplies alpha by a linear ramp along x, one texel column at a time (the render guards keep gradients out). */
+/**
+ * Multiplies alpha by a linear ramp along x (the render guards keep canvas gradients out). The ramp is painted into its
+ * own canvas one texel column at a time and applied once with destination-in: destination-in clears everything outside
+ * the shape being drawn, so applying it column by column would leave only the last column.
+ */
 function maskX(context: CanvasRenderingContext2D, width: number, height: number, from: number, to: number): void {
-  context.globalCompositeOperation = "destination-in";
+  const ramp = canvas2d(width, height);
+  if (ramp === null) return;
   for (let column = 0; column < width; column += 1) {
-    context.fillStyle = withAlpha(PALETTE.ink, from + (to - from) * (column + 0.5) / width);
-    context.beginPath(); context.rect(column, 0, 1, height); context.fill();
+    ramp.context.fillStyle = withAlpha(PALETTE.ink, from + (to - from) * (column + 0.5) / width);
+    ramp.context.beginPath(); ramp.context.rect(column, 0, 1, height); ramp.context.fill();
   }
+  context.globalCompositeOperation = "destination-in";
+  blit(context, ramp.canvas, 0, 0, width, height, 0, 0);
   context.globalCompositeOperation = "source-over";
 }
-

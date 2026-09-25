@@ -15,10 +15,14 @@ import { BOUNDARY_CHAIKIN_ROUNDS } from "./terrainBoundaries";
 //  - Land side: every loop records which side of its travel direction is land (strips lie land side up).
 //  - Decals: small code-drawn shallow stones and waterweed (8-12 px at 128 px per tile) every ~2.4 tiles of shore, in
 //    the shallow band, kept off bridges.
+//  - Walls (D3b): where a completed wall stands on the water's edge, the outline takes the wall's drawn baseline (the
+//    points within WALL_SNAP of a water-side wall stretch move onto it) and is marked `walled`: the shore strip stops
+//    there (the wall is the edge), the water and shallows run up to the wall.
 
 export const BRIDGE_LOCK_FULL = 0.5;
 export const BRIDGE_LOCK_REACH = 0.8;
 export const SHALLOW_DEPTH = 0.6;
+export const WALL_SNAP = 0.45;
 const DECAL_SPACING = 2.4;
 const DECAL_DEPTH_MIN = 0.46;
 const DECAL_DEPTH_MAX = 0.58;
@@ -31,6 +35,8 @@ export type ShoreLoop = CellContourLoop & {
   readonly smoothed: readonly BoundaryPoint[];
   /** +1: land lies to the right of travel (normal (-t.y, t.x) points into water); -1: the other way. */
   readonly landSide: 1 | -1;
+  /** Per smoothed point: it lies on a water-side wall baseline (D3b). */
+  readonly walled: readonly boolean[];
   readonly decals: readonly ShoreDecal[];
   readonly bounds: BoundaryBounds;
   /** Covers the smoothed (and locked) line, the land side and the decals. */
@@ -55,6 +61,8 @@ export type ShorelineInput = {
   readonly tiles: readonly Tile[];
   readonly seed: number;
   readonly bridges: readonly BridgeSpan[];
+  /** Water-side stretches of the drawn wall baselines, tile-centre coordinates (D3b). */
+  readonly walls?: readonly (readonly BoundaryPoint[])[];
 };
 
 export function shoreline(input: ShorelineInput): Shoreline {
@@ -62,13 +70,16 @@ export function shoreline(input: ShorelineInput): Shoreline {
   for (const tile of input.tiles) cells[tile.ty * input.width + tile.tx] = tile;
   const isWater = (tx: number, ty: number): boolean => cells[ty * input.width + tx]?.terrain === "water";
   const bridgeEnds = bridgeEndsOf(input.bridges);
+  const snap = wallSnapper(input.walls ?? []);
   const loops = cellContourLoops({ width: input.width, height: input.height, inside: isWater, outside: false }).map(loop => {
-    const smoothed = chaikinClosed(loop.points, BOUNDARY_CHAIKIN_ROUNDS).map(point => lockToBridges(point, bridgeEnds));
+    const snapped = chaikinClosed(loop.points, BOUNDARY_CHAIKIN_ROUNDS).map(point => snap(lockToBridges(point, bridgeEnds)));
+    const smoothed = snapped.map(entry => entry.point);
+    const walled = snapped.map(entry => entry.walled);
     const landSide = landSideOf(smoothed, isWater, input.width, input.height);
     const decals = shoreDecals(smoothed, landSide, isWater, input, bridgeEnds, loop.hash);
     const bounds = boundsOf([...smoothed, ...decals.map(decal => decal.anchor)], 1);
-    return { ...loop, smoothed, landSide, decals, bounds,
-      drawHash: hashNumbers([loop.hash, landSide, ...smoothed.flatMap(point => [point.x, point.y]),
+    return { ...loop, smoothed, landSide, walled, decals, bounds,
+      drawHash: hashNumbers([loop.hash, landSide, ...smoothed.flatMap(point => [point.x, point.y]), ...walled.map(flag => flag ? 1 : 0),
         ...decals.flatMap(decal => [decal.anchor.x, decal.anchor.y, decal.kind === "stone" ? 1 : 2, decal.blobs.length])]) };
   });
   return { loops, bridgeEnds };
@@ -151,4 +162,29 @@ function shoreDecals(line: readonly BoundaryPoint[], landSide: 1 | -1, isWater: 
     arc += length;
   }
   return decals;
+}
+
+/** Nearest point on the water-side wall stretches within WALL_SNAP (bucketed by tile), or the point itself. */
+function wallSnapper(walls: readonly (readonly BoundaryPoint[])[]): (point: BoundaryPoint) => { point: BoundaryPoint; walled: boolean } {
+  const buckets = new Map<string, [BoundaryPoint, BoundaryPoint][]>();
+  for (const line of walls) for (let index = 1; index < line.length; index += 1) {
+    const a = line[index - 1] as BoundaryPoint; const b = line[index] as BoundaryPoint;
+    for (let y = Math.floor(Math.min(a.y, b.y) - 1); y <= Math.ceil(Math.max(a.y, b.y) + 1); y += 1) {
+      for (let x = Math.floor(Math.min(a.x, b.x) - 1); x <= Math.ceil(Math.max(a.x, b.x) + 1); x += 1) {
+        const key = `${x},${y}`; const list = buckets.get(key);
+        if (list === undefined) buckets.set(key, [[a, b]]); else list.push([a, b]);
+      }
+    }
+  }
+  return point => {
+    let best: BoundaryPoint | null = null; let distance = WALL_SNAP;
+    for (const [a, b] of buckets.get(`${Math.floor(point.x)},${Math.floor(point.y)}`) ?? []) {
+      const dx = b.x - a.x; const dy = b.y - a.y; const length = dx * dx + dy * dy;
+      const t = length === 0 ? 0 : Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / length));
+      const candidate = { x: a.x + dx * t, y: a.y + dy * t };
+      const d = Math.hypot(candidate.x - point.x, candidate.y - point.y);
+      if (d < distance) { distance = d; best = candidate; }
+    }
+    return best === null ? { point, walled: false } : { point: best, walled: true };
+  };
 }

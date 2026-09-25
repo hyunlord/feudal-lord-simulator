@@ -1,6 +1,6 @@
 // Astra Wave 4b pieces for the curved shore, wall and bridge render (D3), installed and registered by C1e. D3a draws
-// the shoreline strips, shallow water fills and bridge abutments (SHORE_ASSET_KEYS, loaded by terrainVariantAssets);
-// the palisade and stone wall faces wait for D3b and are not loaded. Provenance rows in docs/provenance/assets.csv (status
+// the shoreline strips, shallow water fills and bridge abutments (SHORE_ASSET_KEYS), D3b the palisade and stone wall
+// faces (WALL_FACE_KEYS); both are loaded on demand by terrainVariantAssets. Provenance rows in docs/provenance/assets.csv (status
 // runtime: the files ship in public/assets), candidates kept in assets-inbox/wave4b. Roles as in zoneAssetManifest.
 export const TERRAIN_VARIANT_ASSETS = [
   { "key": "shoreline_a", "url": "assets/shore/shoreline_a-v1.png", "width": 512, "height": 96, "role": "strip" },
@@ -31,6 +31,8 @@ export const TERRAIN_VARIANTS = {
   bridgeAbutment: ["bridge_abutment_ne_a", "bridge_abutment_nw_a"],
 } as const satisfies Record<string, readonly TerrainVariantKey[]>;
 
-/** The pieces D3a draws (loaded on demand); the wall faces stay registered only. */
+/** The pieces D3a draws, and the wall faces D3b draws (each group loaded on demand). */
 export const SHORE_ASSET_KEYS = [...TERRAIN_VARIANTS.shoreline, ...TERRAIN_VARIANTS.shallowWater, ...TERRAIN_VARIANTS.bridgeAbutment] as const;
 export type ShoreAssetKey = (typeof SHORE_ASSET_KEYS)[number];
+export const WALL_FACE_KEYS = [...TERRAIN_VARIANTS.palisadeFace, ...TERRAIN_VARIANTS.stoneFace] as const;
+export type WallFaceKey = (typeof WALL_FACE_KEYS)[number];
