@@ -26,7 +26,7 @@ import { LedgerPanelView } from "../src/ui/LedgerPanel";
 import { ledgerPanelModel } from "../src/ui/ledgerPanelModel";
 import { ledgerBalanceTrace } from "../scripts/ledgerBalanceTrace";
 
-const BASELINE = JSON.parse(readFileSync("fixtures/ledger/world-baseline-8911323.json", "utf8")) as {
+const BASELINE = JSON.parse(readFileSync("fixtures/ledger/world-baseline-55e1522a.json", "utf8")) as {
   readonly cases: Record<string, { readonly kind: string; readonly ticks: number; readonly stateFile: string | null;
     readonly finalWorldHashWithoutMoney: string }>;
 };

@@ -75,3 +75,5 @@ B2 첨부 `ROADMAP_v3.md`는 B1에서 설치한 `ROADMAP.md`와 바이트가 같
 |---|---|---:|---|
 | `claude_F0A/PLAYER_FLOW_DESIGN_v1.md` | [player-flow.md](player-flow.md) | 11849 | `c1867f49f864227ce192f57e3519fd1daabe500c38d0be6bec13ffdf193900ab` |
 | `claude_F0A/VISIBILITY_DESIGN_v1.md` | [visibility.md](visibility.md) | 7689 | `be7efbfd8ef664ef5298267e9783a802d732521b43c2ea0c78df3360a1669211` |
+
+이관 뒤 수정: `player-flow.md`는 사용자 지시(F0-A 3회차)로 F4·루프 3층·1장 대본의 "첫 겨울 시험"을 "첫 겨울나기와 봄 보릿고개"로 고치고, 상태 줄을 "F1~F6 확정"으로 바꿨다(결정 FP9). 위 SHA는 이관 때 원문이다.
