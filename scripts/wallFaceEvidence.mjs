@@ -51,7 +51,7 @@ async function captures(outDir) {
       const { context, page } = await openScene(browser, { state: { ...view.state, walkers: [] }, tile: view.tile, baseUrl: base, dpr: 1, zoom: view.zoom, run: false });
       await ready(page); await page.mouse.move(640, 790); await page.waitForTimeout(600);
       const file = `${view.name}-${label}.jpg`;
-      await writeFile(join(outDir, file), await page.screenshot({ type: 'jpeg', quality: 76, ...(view.clip === undefined ? {} : { clip: view.clip }) }));
+      await writeFile(join(outDir, file), await page.screenshot({ type: 'jpeg', quality: 70, ...(view.clip === undefined ? {} : { clip: view.clip }) }));
       rows.push({ file, source: view.source, tile: view.tile, zoom: view.zoom, build: base });
       await context.close();
     }

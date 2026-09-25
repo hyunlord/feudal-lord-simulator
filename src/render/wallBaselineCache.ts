@@ -5,7 +5,7 @@ import { wallFaceSlices, type WallFaceSlice } from "./drawWallFaces";
 // Wall baselines per state (D3b). Cache (AGENTS rule 10): (a) keyed on the palisade object and the tiles array
 // (identity: every segment, completion, material or gate change replaces the palisade; every terrain change replaces
 // the tiles, which decide the water-side flags); (b) nothing else is read (walkers, ticks and construction progress
-// of unfinished segments do not change a completed wall's line); (c) Node 0.5-2.4 ms per seed 1-5 fixture on a miss
+// of unfinished segments do not change a completed wall's line); (c) Node 0.7-2.1 ms per fixture on a miss (12 ms on the first, JIT)
 // (docs/verification/d3b-walls/REPORT.md), 0 on a hit.
 
 type Entry = { readonly walls: WallBaselines; readonly slices: ReadonlyMap<string, WallFaceSlice> };
