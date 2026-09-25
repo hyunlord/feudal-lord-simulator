@@ -26,6 +26,7 @@ import { tileToScreen } from "../render/iso";
 import { APRON_TARGET_DEPTH } from "../world/boundary/buildingGrounds";
 import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
 import { buildingVariantAssetStatuses } from "../render/buildingVariantAssets";
+import { drawCroppedWorldSprite } from "../render/worldSprite";
 import { composedLookForProof, resetWalkerComposerForProof, walkerAppearance, walkerComposerStats } from "../render/walkerComposer";
 import type { WalkerPropKind, WalkerSheetId } from "../render/walkerLook";
 
@@ -193,7 +194,9 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       const canvas = document.createElement("canvas");
       const size = composed[0]!.width;
       canvas.width = 4 * size; canvas.height = 2 * size;
-      composed.forEach((cell, index) => canvas.getContext("2d")?.drawImage(cell, (index % 4) * size, Math.floor(index / 4) * size));
+      const context2d = canvas.getContext("2d");
+      if (context2d !== null) composed.forEach((cell, index) => drawCroppedWorldSprite(context2d, cell, { x: 0, y: 0, width: size, height: size },
+        { x: (index % 4) * size, y: Math.floor(index / 4) * size, width: size, height: size }, false, false));
       return canvas.toDataURL("image/png");
     },
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },

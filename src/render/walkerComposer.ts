@@ -2,7 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import { assetUrlForBase } from "./worldAssets";
-import { createTintCanvas } from "./worldSprite";
+import { createTintCanvas, drawCroppedWorldSprite } from "./worldSprite";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
 import { walkerCloakManifest, walkerPropManifest } from "./walkerSheetManifest.generated";
 import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerLook, type WalkerPropKind, type WalkerSheetId } from "./walkerLook";
@@ -68,13 +68,12 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
   if (body === null || (cloak !== null && cloakImage === null) || (propImages !== null && Object.values(propImages).some(image => image === null))) return null;
   const started = typeof performance === "undefined" ? 0 : performance.now();
   const canvas = createTintCanvas(4 * WALKER_COMPOSED_CELL, 2 * WALKER_COMPOSED_CELL);
-  const context = canvas?.getContext("2d") as CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null | undefined;
+  const context = canvas?.getContext("2d") as CanvasRenderingContext2D | null | undefined;
   if (canvas === null || context === null || context === undefined) return null;
-  context.imageSmoothingEnabled = true;
   context.imageSmoothingQuality = "high";
-  // The shipped legacy PNGs are downscaled derivatives of the 1774x887 sheets (runtimeAssetDerivatives): crop by the
-  // image's own pixels, whose cells keep the 4 x 2 layout.
-  const sheetCellWidth = body.naturalWidth / 4; const sheetCellHeight = body.naturalHeight / 2;
+  // Sheet coordinates are the manifest's (legacy: 1774x887); the shipped legacy PNGs are downscaled derivatives, which
+  // registerRuntimeAsset maps (drawCroppedWorldSprite crops through that registry).
+  const sheetCellWidth = sheet.width / 4; const sheetCellHeight = sheet.height / 2;
   for (const frame of sheet.frames) {
     const column = DIRECTION_COLUMN[frame.direction]; const row = frame.gaitFrame;
     const originX = column * WALKER_COMPOSED_CELL + WALKER_PAD; const originY = row * WALKER_COMPOSED_CELL + WALKER_PAD;
@@ -85,11 +84,13 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
       const hand = rightHand(frame);
       const image = propImages[frame.direction]!;
       const size = 32 * PROP_SCALE;
-      context.drawImage(image, 0, 0, 32, 32, originX + hand.x - entry.anchor.x * PROP_SCALE, originY + hand.y - entry.anchor.y * PROP_SCALE, size, size);
+      drawCroppedWorldSprite(context, image, { x: 0, y: 0, width: 32, height: 32 },
+        { x: originX + hand.x - entry.anchor.x * PROP_SCALE, y: originY + hand.y - entry.anchor.y * PROP_SCALE, width: size, height: size }, false, true);
     };
     if (!near) drawProp();
-    context.drawImage(body, column * sheetCellWidth, row * sheetCellHeight, sheetCellWidth, sheetCellHeight, originX, originY, WALKER_CELL, WALKER_CELL);
-    if (cloakImage !== null) context.drawImage(cloakImage, column * WALKER_CELL, row * WALKER_CELL, WALKER_CELL, WALKER_CELL, originX, originY, WALKER_CELL, WALKER_CELL);
+    const cellBox = { x: originX, y: originY, width: WALKER_CELL, height: WALKER_CELL };
+    drawCroppedWorldSprite(context, body, { x: column * sheetCellWidth, y: row * sheetCellHeight, width: sheetCellWidth, height: sheetCellHeight }, cellBox, false, true);
+    if (cloakImage !== null) drawCroppedWorldSprite(context, cloakImage, { x: column * WALKER_CELL, y: row * WALKER_CELL, width: WALKER_CELL, height: WALKER_CELL }, cellBox, false, true);
     if (near) drawProp();
   }
   // One small image per cell: a draw reads only its own cell. Drawing a sub-rectangle of one 432x216 look image read
@@ -98,9 +99,10 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
   const cells: Cell[] = [];
   for (let row = 0; row < 2; row += 1) for (let column = 0; column < 4; column += 1) {
     const cell = createTintCanvas(WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL);
-    const cellContext = cell?.getContext("2d") as CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null | undefined;
+    const cellContext = cell?.getContext("2d") as CanvasRenderingContext2D | null | undefined;
     if (cell === null || cellContext === null || cellContext === undefined) return null;
-    cellContext.drawImage(canvas, column * WALKER_COMPOSED_CELL, row * WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL, 0, 0, WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL);
+    drawCroppedWorldSprite(cellContext, canvas, { x: column * WALKER_COMPOSED_CELL, y: row * WALKER_COMPOSED_CELL, width: WALKER_COMPOSED_CELL, height: WALKER_COMPOSED_CELL },
+      { x: 0, y: 0, width: WALKER_COMPOSED_CELL, height: WALKER_COMPOSED_CELL }, false, false);
     cells[column + 4 * row] = "transferToImageBitmap" in cell ? cell.transferToImageBitmap() : cell;
   }
   const stored: Composed = cells;
@@ -164,8 +166,9 @@ export function drawComposedWalker(context: CanvasRenderingContext2D, state: Gam
   const factor = 32 * scale / frame.figureHeight;
   const cell = canvas[DIRECTION_COLUMN[presentation.direction] + 4 * presentation.gaitFrame];
   if (cell === undefined) return false;
-  context.drawImage(cell, footX - (WALKER_PAD + frame.foot.x) * factor, footY - (WALKER_PAD + frame.foot.y) * factor,
-    WALKER_COMPOSED_CELL * factor, WALKER_COMPOSED_CELL * factor);
+  drawCroppedWorldSprite(context, cell, { x: 0, y: 0, width: WALKER_COMPOSED_CELL, height: WALKER_COMPOSED_CELL }, {
+    x: footX - (WALKER_PAD + frame.foot.x) * factor, y: footY - (WALKER_PAD + frame.foot.y) * factor,
+    width: WALKER_COMPOSED_CELL * factor, height: WALKER_COMPOSED_CELL * factor }, false, true);
   return true;
 }
 
