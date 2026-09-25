@@ -279,3 +279,19 @@ test("LB-11 behind a wall autoplay puts a sawmill outside it when a site exists,
   assert.notDeepEqual([action.tx, action.ty], [fallback.tx, fallback.ty]);
 });
 
+
+test("LB-12 autoplay proclaims the palisade only with a wall of six cells per wanted lot", async () => {
+  const { autoplayEraAction, wallInteriorCells } = await import("../src/engine/autoplayEra");
+  const { confirmPalisadeProclamation } = await import("../src/engine/palisade");
+  const { runAutoplaySearch } = await import("../src/engine/autoplaySearchBudget");
+  // The 176-resident hamlet meets every palisade requirement once it has the timber.
+  const state = { ...stateFromSave("fixtures/saves/v10/population-176.save.json"), treasuryTimber: 600 };
+  const noBuild = () => ({ kind: "none" } as const);
+  const open = runAutoplaySearch(() => autoplayEraAction(state, noBuild));
+  assert.ok(open.kind === "proclaim_era" && open.candidatePath !== undefined, "without a lot target it proclaims");
+  const cells = wallInteriorCells(confirmPalisadeProclamation(state, open.candidatePath!));
+  const perLot = LABOUR_BALANCE.wallCellsPerLot;
+  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, Math.floor(cells / perLot))).kind, "proclaim_era", `${cells} cells hold ${Math.floor(cells / perLot)} lots`);
+  // No candidate wall encloses six cells for 60 lots: the advisor waits and the town grows on.
+  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, 60)).kind, "none");
+});
