@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-25(TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
@@ -45,6 +45,8 @@
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
+
+**INSTALL-4e Wave 4e 설치 + Wave 5b**(Claude Code, 렌더·경계층 `yardProps`·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population·성벽 논리 0줄): Wave 4e 35장 inbox(C2PA `caBX`는 설치본에서 뺌, 35/35 대장 SHA)·설치·대장 35행, Wave 5b 15장 inbox(초상 12 candidate, 아이·노인 3 rejected) + 성인 시트에서 스크립트로 파생한 아이·노인 템플릿 4장(Astra 참조, 미설치). 석벽 정면 잡석 기본·성문 옆 2칸 ashlar, 성문 v2(옛 알파·등록 그대로, NE-SW 반전), 90° 사각 탑 b(해시)·탑은 닿은 모든 팔이 그림, 135° 기둥, 깊은 물 물가 띠 기본, SW·NW b 교대, 나루 등록만, 허들 1/4·3/4·짧은 문, 양 무리 b·c·d, 숲 가장자리 돼지, 겨울 헛간, 워커 7·상인 외투·실 꾸러미·에일 단지. 관문 ⓪①②③⑤⑥⑦ 통과(통로 0.044~0.065칸, 호수 ΔE 11.9 → 9.1, 편중 최대 53 → 38%, p95 100~109%), ④ 부분(닫힌 마당 2 → 4 / 19, 빈틈 31 → 28). 결정 IN4e1~IN4e6. [보고서](verification/install4e/REPORT.md).
 
 **TOUCH-1 터치·게임패드 입력 v0**(Claude Code, 렌더·UI·input·스크립트·테스트·문서만, 엔진 0줄): 0항 V2 겨울 캡처의 빈 손수레는 캡처 자르기였다(수레꾼 15명 모두 그려짐, 코드 변경 없음). 터치 번역기(한 손가락 = 마우스 왼쪽 버튼, 두 손가락 = 이동·핀치, 길게 = 상세, 두 손가락 탭 = 취소), 게임패드 번역기(지도 커서 + A/B/X/Y·LB/RB·트리거), 지도 누르면 포커스 복귀, 입력 장치별 하단 안내. B9 13단계 터치 재생 13/13, 가상 패드 재생 통과, 포커스 본선 실패 → 통과, C25 6/6 동일. [입력 의도 IN-7~IN-9](design/input-intents.md), [보고서](verification/touch1-input/REPORT.md).
 

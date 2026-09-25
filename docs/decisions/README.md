@@ -160,6 +160,12 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | WK3 | 겨울 외투: 달력 계절 3에 성별 외투를 겹친다. 성직자는 없음. 머리가 외투 밖으로 60px 넘게 나오는 시트(상인 템플릿 3장·옛 농부·벌목·경비)도 없음 | 렌더 결정(V2) | 2026-09-25 | [주민 합성기 WC-5](../design/walker-composer.md) |
 | OB1 | 온보딩 안내 메모 키: 틱마다 바뀌는 필드(tick·walkers·buildings 등 12개)는 식별자 비교에서 빼고, 대신 건물·공사장의 id·종류·자리 서명 + 60틱 표본(App `guidanceSample`과 같음)을 본다. 나머지 필드는 식별자 비교. 헛간 후보 찾기는 경작지 옆 칸만(모서리 제외) 먼저 거른다 | 결함 수정(C1f 0-B, 새 게임 198ms → 3.1ms/프레임) | 2026-09-25 | [C1f 보고서](../verification/c1f-farmstead/REPORT.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
+| IN4e1 | 성문 v2는 옛 NW-SE 성문 조각과 알파가 같아 옛 등록을 그대로 쓰고, NE-SW 성문은 v2를 좌우 반전(등록도 반전)해 쓴다. 벽 띠 경로에서만 v2, 띠 끔·곡선 지면 끔은 옛 조각. 통로(논리) 그대로, 통로 중심 0.044~0.065칸·땅선 0° | 렌더 결정(INSTALL-4e, 지시서 "통로 논리 그대로 그림만") | 2026-09-25 | [성벽 WL-7](../design/wall-faces.md) |
+| IN4e2 | 석벽 정면 기본은 잡석 a·b, ashlar v2 a·b·c는 성문에서 2.8칸(여유 0.8 + 2) 안, 0.5칸 알파 넘김. 90° 탑은 격자점 해시로 원통 / 사각 b, 탑은 닿은 모든 팔이 그린다(앞쪽 모서리 가림 수정). 135° 기둥은 반전 없이 | 렌더 결정(INSTALL-4e) | 2026-09-25 | [성벽 WL-7](../design/wall-faces.md) |
+| IN4e3 | 물가 띠 기본 풀은 `shoreline_deep_{a,b}`, 4b·4d 띠 a–f는 등록만(얕은 물 풀). y 다리 앞쪽은 SW 교대, x 다리 뒤쪽은 NW a / NW b 해시. 나루는 등록만 | 렌더 결정(INSTALL-4e) | 2026-09-25 | [물가 SH-5](../design/shoreline.md) |
+| IN4e4 | 마당 울타리: 한쪽 끝부터 1/4·1/2·3/4 채워진 변은 그 길이의 판, 앞변에 온전한 변이 없고 1/2 변이 있으면 짧은 문. 돼지는 공유림 구역, 없으면 숲 가장자리 변 48개 중 하나꼴로 0.8칸 밖 풀밭(과수원·목초지 아님, 8칸 간격). 달력 겨울 헛간은 `farmstead_winter` | 렌더 결정(INSTALL-4e) | 2026-09-25 | [경작지 띠 FS-6](../design/field-strips.md) |
+| IN4e5 | 상인 외투는 상인 템플릿 몸(상인 남 2·귀족 남 1)만, 머리 튀어나옴 검사 없이(모자 제외해 그린 외투). WK3의 상인 템플릿 제외를 바꾼다. 직물 +실 꾸러미, 하인 +에일 단지(각 1/3) | 렌더 결정(INSTALL-4e, 지시서 "상인 외투는 actor_merchant 몸에만") | 2026-09-25 | [주민 합성기 WC-9](../design/walker-composer.md) |
+| IN4e6 | Wave 5b 아이·노인 자유 생성 시트 3장은 `rejected`(보행 교대 실패). 성인 시민 시트에서 스크립트로 파생한 템플릿 4장(`scripts/deriveActorTemplates.ts`, 결정론)을 Astra 재스킨 참조로 두고 설치하지 않는다(Wave 5c) | 확정(INSTALL-4e 지시서 추가 절) | 2026-09-25 | [assets-inbox/derived-templates](../../assets-inbox/derived-templates/README.md) |
 
 ## R1-fix 확정 규칙
 
