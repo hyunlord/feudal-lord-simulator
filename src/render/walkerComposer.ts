@@ -50,11 +50,13 @@ function imageFor(url: string, width: number | null, height: number | null): HTM
 }
 
 type ComposeKey = `${WalkerSheetId}|${WalkerPropKind | "-"}|${"male" | "female" | "-"}`;
-const composed = new Map<ComposeKey, OffscreenCanvas | HTMLCanvasElement>();
+/** A composed look: an ImageBitmap where OffscreenCanvas can hand one over, else the canvas itself. */
+type Composed = ImageBitmap | OffscreenCanvas | HTMLCanvasElement;
+const composed = new Map<ComposeKey, Composed>();
 const stats = { composed: 0, evicted: 0, composeMsTotal: 0, composeMsMax: 0, firstComposeMs: null as number | null };
 
 /** Draws the composed cells of a key, or returns null while one of its images is still loading. */
-function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): OffscreenCanvas | HTMLCanvasElement | null {
+function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): Composed | null {
   const key: ComposeKey = `${sheetId}|${prop ?? "-"}|${cloak ?? "-"}`;
   const hit = composed.get(key);
   if (hit !== undefined) { composed.delete(key); composed.set(key, hit); return hit; }
@@ -89,15 +91,20 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
     if (cloakImage !== null) context.drawImage(cloakImage, column * WALKER_CELL, row * WALKER_CELL, WALKER_CELL, WALKER_CELL, originX, originY, WALKER_CELL, WALKER_CELL);
     if (near) drawProp();
   }
+  // An ImageBitmap is uploaded once and drawn from the GPU; a main-thread OffscreenCanvas was re-read on every draw
+  // (walkers stage 0.12 -> 0.63 ms for 21 walkers on lots24, measured before this handover).
+  const stored: Composed = "transferToImageBitmap" in canvas ? canvas.transferToImageBitmap() : canvas;
   const elapsed = typeof performance === "undefined" ? 0 : performance.now() - started;
   stats.composed += 1; stats.composeMsTotal += elapsed; stats.composeMsMax = Math.max(stats.composeMsMax, elapsed);
   stats.firstComposeMs ??= elapsed;
-  composed.set(key, canvas);
+  composed.set(key, stored);
   while (composed.size > CACHE_LIMIT) {
     const oldest = composed.keys().next().value as ComposeKey;
+    const evicted = composed.get(oldest);
+    if (evicted !== undefined && "close" in evicted) evicted.close();
     composed.delete(oldest); stats.evicted += 1;
   }
-  return canvas;
+  return stored;
 }
 
 type SheetFrame = ReturnType<typeof walkerSheet>["frames"][number];
@@ -161,7 +168,7 @@ export function walkerComposerStats() {
 }
 
 /** Evidence: the composed 8 cells of a look (composes it once its images are loaded; null while they load). */
-export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): OffscreenCanvas | HTMLCanvasElement | null {
+export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): Composed | null {
   return composedCanvas(sheetId, prop, cloak);
 }
 
