@@ -271,7 +271,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     }
     return carryFoodTransient(NONE, metadata);
   }
-  const eraPhase = () => autoplayEraAction(state, buildAction);
+  const eraPhase = () => autoplayEraAction(state, buildAction, policy.maxHousingLots);
   for (const decide of [
     () => waterAction(state),
     () => roadAccessAction(state),
