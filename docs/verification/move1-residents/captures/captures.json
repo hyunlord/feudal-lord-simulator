@@ -1,0 +1,122 @@
+[
+ {
+  "scene": "weekday",
+  "label": "before",
+  "view": "town",
+  "file": "town-weekday-before.jpg",
+  "tick": 349000,
+  "walkers": 29,
+  "residents": 0,
+  "sheets": 15
+ },
+ {
+  "scene": "weekday",
+  "label": "before",
+  "view": "street",
+  "file": "street-weekday-before.jpg",
+  "tick": 349000,
+  "walkers": 29,
+  "residents": 0,
+  "sheets": 15
+ },
+ {
+  "scene": "weekday",
+  "label": "after",
+  "view": "town",
+  "file": "town-weekday-after.jpg",
+  "tick": 349000,
+  "walkers": 61,
+  "residents": 32,
+  "sheets": 25
+ },
+ {
+  "scene": "weekday",
+  "label": "after",
+  "view": "street",
+  "file": "street-weekday-after.jpg",
+  "tick": 349000,
+  "walkers": 61,
+  "residents": 32,
+  "sheets": 25
+ },
+ {
+  "scene": "marketday",
+  "label": "before",
+  "view": "town",
+  "file": "town-marketday-before.jpg",
+  "tick": 349250,
+  "walkers": 23,
+  "residents": 0,
+  "sheets": 15
+ },
+ {
+  "scene": "marketday",
+  "label": "before",
+  "view": "street",
+  "file": "street-marketday-before.jpg",
+  "tick": 349250,
+  "walkers": 23,
+  "residents": 0,
+  "sheets": 15
+ },
+ {
+  "scene": "marketday",
+  "label": "after",
+  "view": "town",
+  "file": "town-marketday-after.jpg",
+  "tick": 349250,
+  "walkers": 59,
+  "residents": 36,
+  "sheets": 29
+ },
+ {
+  "scene": "marketday",
+  "label": "after",
+  "view": "street",
+  "file": "street-marketday-after.jpg",
+  "tick": 349250,
+  "walkers": 59,
+  "residents": 36,
+  "sheets": 29
+ },
+ {
+  "scene": "winter",
+  "label": "before",
+  "view": "town",
+  "file": "town-winter-before.jpg",
+  "tick": 351000,
+  "walkers": 22,
+  "residents": 0,
+  "sheets": 14
+ },
+ {
+  "scene": "winter",
+  "label": "before",
+  "view": "street",
+  "file": "street-winter-before.jpg",
+  "tick": 351000,
+  "walkers": 22,
+  "residents": 0,
+  "sheets": 14
+ },
+ {
+  "scene": "winter",
+  "label": "after",
+  "view": "town",
+  "file": "town-winter-after.jpg",
+  "tick": 351000,
+  "walkers": 55,
+  "residents": 33,
+  "sheets": 30
+ },
+ {
+  "scene": "winter",
+  "label": "after",
+  "view": "street",
+  "file": "street-winter-after.jpg",
+  "tick": 351000,
+  "walkers": 55,
+  "residents": 33,
+  "sheets": 30
+ }
+]
