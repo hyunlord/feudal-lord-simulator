@@ -26,6 +26,7 @@ import { tileToScreen } from "../render/iso";
 import { APRON_TARGET_DEPTH } from "../world/boundary/buildingGrounds";
 import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
 import { buildingVariantAssetStatuses } from "../render/buildingVariantAssets";
+import { resetWalkerComposerForProof, walkerAppearance, walkerComposerStats } from "../render/walkerComposer";
 
 type ProofLocation = {
   readonly hostname: string;
@@ -103,7 +104,14 @@ export type Phase10ProofRuntimePort = {
     /** Zones (C1b evidence): kind and owned cells per zone, derived plots, zone art status. */
     readonly zones: { readonly list: readonly { readonly id: string; readonly kind: string; readonly cells: number }[]; readonly parcels: number;
       readonly assets: ReturnType<typeof zoneAssetStatuses> };
+    /** V2 walker composer: composed looks cache (entries, bytes, compose times) and image statuses. */
+    readonly walkers: ReturnType<typeof walkerComposerStats>;
   };
+  /** V2 evidence: every walker's look (sheet, band, sex, occupation), held prop and cloak this frame, at its position. */
+  readonly walkerLooks: () => readonly { readonly id: string; readonly tx: number; readonly ty: number; readonly sheetId: string; readonly band: string;
+    readonly sex: string; readonly occupation: string; readonly prop: string | null; readonly cloak: string | null }[];
+  /** V2 evidence: drop composed looks (a fresh session). */
+  readonly resetWalkerComposer: () => void;
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
   readonly resetBoundary: (reverseInput: boolean) => void;
   /**
@@ -168,7 +176,14 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       variants: buildingVariantAssetStatuses(),
       zones: { list: (input.stateRef.current.zones ?? []).map(zone => ({ id: zone.id, kind: zone.kind, cells: zone.membership.length })),
         parcels: burgageParcels(input.stateRef.current).length, assets: zoneAssetStatuses() },
+      walkers: walkerComposerStats(),
     }),
+    walkerLooks: () => input.stateRef.current.walkers.map(walker => {
+      const { look, prop, cloak } = walkerAppearance(input.stateRef.current, walker);
+      return { id: walker.id, tx: walker.position.tx, ty: walker.position.ty, sheetId: look.sheetId, band: look.band, sex: look.sex,
+        occupation: look.occupation, prop, cloak };
+    }),
+    resetWalkerComposer: () => resetWalkerComposerForProof(),
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
     wedgeProbe: () => wedgeProbe(input.canvas, input.cameraRef.current, input.stateRef.current),
     groundOnly: (enabled) => setObjectPassForProof(!enabled),

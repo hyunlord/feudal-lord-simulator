@@ -6,7 +6,8 @@ import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha } from 
 import { walkerVisualAnchor } from "./walkerAnchor";
 import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
 import { walkerPresentationFor } from "./walkerPresentation";
-import { drawRuntimeActor } from "./runtimeActorAssets";
+import { drawRuntimeActor, drawRuntimeHandcart } from "./runtimeActorAssets";
+import { composedWalkerReady, drawComposedWalker, walkerAppearance } from "./walkerComposer";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 
 const VILLAGER_WORLD_SCALE = 0.55;
@@ -27,7 +28,7 @@ export function drawWalkers(
   zoom = 1,
 ): void {
   for (const walker of [...state.walkers].sort(compareWalkersForRender)) {
-    drawWalker(context, walker, zoom);
+    drawWalker(context, walker, zoom, "normal", state);
   }
 }
 
@@ -55,6 +56,7 @@ export function drawWalker(
   walker: Walker,
   zoom: number,
   viewMode: ObjectRenderViewMode = "normal",
+  state: GameState | null = null,
 ): void {
   const anchor = walkerVisualAnchor(walker.position);
   const transform = context.getTransform?.();
@@ -72,7 +74,10 @@ export function drawWalker(
 
   drawWalkerShadow(context, footX, footY, scale);
   const presentation = walkerPresentationFor(walker);
-  if (!drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
+  // V2: the composed look (sheet, held prop, winter cloak) above the legacy LOD zoom; the legacy actor while its
+  // images load, the procedural sprite below that zoom.
+  const composed = state !== null && zoom > RUNTIME_ACTOR_MIN_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale);
+  if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
     drawWalkerHalo(context, footX, footY, scale);
     drawProceduralWalkerSprite(context, {
       footX,
@@ -82,9 +87,24 @@ export function drawWalker(
       presentation,
     });
   }
-  if (walker.kind !== "builder" && walker.cargo !== null) {
+  const loafInHand = composed && walkerAppearance(state!, walker).prop === "loaf";
+  if (walker.kind !== "builder" && walker.cargo !== null && !loafInHand) {
     drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
   }
+}
+
+const RUNTIME_ACTOR_MIN_ZOOM = 0.7;
+
+function drawComposedWalkerWithCart(context: CanvasRenderingContext2D, state: GameState, walker: Walker,
+  presentation: ReturnType<typeof walkerPresentationFor>, footX: number, footY: number, scale: number): boolean {
+  // The cart is drawn only once the body is known to draw, so a loading look never leaves a cart without a carter.
+  if (!composedWalkerReady(state, walker)) return false;
+  const handcart = walker.kind === "carter";
+  const cartBehind = presentation.direction === "SE" || presentation.direction === "SW";
+  if (handcart && cartBehind) drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
+  drawComposedWalker(context, state, walker, presentation, footX, footY, scale);
+  if (handcart && !cartBehind) drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
+  return true;
 }
 
 function drawWalkerSilhouette(

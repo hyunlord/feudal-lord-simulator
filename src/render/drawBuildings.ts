@@ -88,7 +88,7 @@ export function drawBuildings(
         spriteOptions,
       });
     } else if (item.kind === "walker") {
-      drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal");
+      drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal", input.state);
     } else if (item.kind === "zone_prop") {
       if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop);
     } else if (item.kind === "farm_prop") {

@@ -87,15 +87,16 @@ export function drawRuntimeActor(context: CanvasRenderingContext2D, presentation
   const image = loader.image(presentation.role);
   if (frame === null || image === null) return false;
   const cartBehind = presentation.direction === "SE" || presentation.direction === "SW";
-  if (handcart && cartBehind) drawHandcart(context, presentation.direction, footX, footY, scale);
+  if (handcart && cartBehind) drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
   const raster = loader.raster(presentation.role, frame);
   drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? frame.source,
     actorFrameDestination(frame, footX, footY, scale), false, true);
-  if (handcart && !cartBehind) drawHandcart(context, presentation.direction, footX, footY, scale);
+  if (handcart && !cartBehind) drawRuntimeHandcart(context, presentation.direction, footX, footY, scale);
   return true;
 }
 
-function drawHandcart(context: CanvasRenderingContext2D, direction: WalkerPresentationDirection,
+/** The handcart of a carter, its handles at the carter's hands (also drawn behind / in front of a V2 composed walker). */
+export function drawRuntimeHandcart(context: CanvasRenderingContext2D, direction: WalkerPresentationDirection,
   footX: number, footY: number, scale: number): void {
   const meta = runtimeActorManifest.find(asset => asset.id === "handcart");
   const frame = meta?.frames.find(candidate => candidate.direction === direction);
