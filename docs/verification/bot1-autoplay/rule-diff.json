@@ -6,15 +6,47 @@
   "otherSourceChanged": [
     {
       "file": "src/engine/autoplay.ts",
-      "lines": 9
+      "lines": 69
+    },
+    {
+      "file": "src/engine/autoplayActions.ts",
+      "lines": 4
     },
     {
       "file": "src/engine/autoplayBotRecovery.ts",
-      "lines": 232
+      "lines": 303
     },
     {
       "file": "src/engine/autoplayFoodDiagnostic.ts",
-      "lines": 3
+      "lines": 9
+    },
+    {
+      "file": "src/engine/autoplayInteriorPlots.ts",
+      "lines": 99
+    },
+    {
+      "file": "src/engine/autoplayServices.ts",
+      "lines": 12
+    },
+    {
+      "file": "src/engine/autoplayTimberDemand.ts",
+      "lines": 58
+    },
+    {
+      "file": "src/engine/autoplayZones.ts",
+      "lines": 6
+    },
+    {
+      "file": "src/ui/autoplayCopy.ko.ts",
+      "lines": 1
+    },
+    {
+      "file": "src/ui/autoplayDecisionCache.ts",
+      "lines": 2
+    },
+    {
+      "file": "src/ui/autoplayPresentation.ts",
+      "lines": 6
     }
   ]
 }

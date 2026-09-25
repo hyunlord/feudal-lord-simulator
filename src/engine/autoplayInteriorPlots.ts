@@ -14,9 +14,10 @@ import type { GameState } from './engine.types';
  * BOT-1 AR-7 interior house plots (decision BT8). Behind a wall every new lot must stand inside it (the L4 protection,
  * `preservesAutoplayWallSpace`), and the interior is small (seed 3: 156 cells for 24 lots). Guardrail run 2 stopped
  * seed 3 at 22 lots:
- * - From 103,000 ticks the town wanted a house and a site passed every placement check, but the house search walked
- *   the whole map in row order and spent its phase budget on service-space proofs of earlier interior cells; it never
- *   reached the site. For 26,000 ticks no house was placed.
+ * - From 103,000 ticks the town wanted a house. The one interior cell beside a road failed the service-space check, and
+ *   cells one road tile away passed every placement check, but the road-first fallback looked only at the 24 cells
+ *   nearest a road, all outside the wall. For 26,000 ticks no house was placed. Searching the interior cells instead
+ *   needs a service-space proof per cell, past the ordinary phase budget.
  * - Meanwhile a mill with its roads and a church inside the wall took the cells the last lots needed.
  * So the housing rule searches these sites first, and a placement that leaves fewer of them than lots still to build,
  * and fewer than before, is not made: the advisor refuses such a road or production/storage building, and the service
@@ -53,7 +54,7 @@ function interiorRoadReach(state: GameState): { readonly roads: ReadonlySet<stri
 /**
  * Interior house sites: free cells inside the wall where a house may stand now (placement rule, materials aside;
  * forest is cleared) that a road reaches or can reach: road frontage now, or a neighbour joined to an interior road
- * through cells a road may still take. Cells shut in by buildings are not sites (seed 3 kept ten such cells).
+ * through cells a road may still take. Cells shut in by buildings are not sites (a seed 3 replay left ten such cells).
  */
 export function interiorHouseSites(state: GameState): readonly TileCoordinate[] {
   if (state.palisade === null) return [];
