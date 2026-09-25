@@ -99,8 +99,8 @@ function virtualBlock(anchor: TileCoordinate): Building {
 }
 
 /**
- * C3 (LB-11): before the palisade, a block stays one tile clear of the wall autoplay would propose around today's core,
- * so the fields do not take the land the walled town will need for its plots (Z-9 keeps arable out of a built wall;
+ * C3 (LB-11): before the palisade, a block preferably stays one tile clear of the wall autoplay would propose around
+ * today's core, so the fields do not take the land the walled town will need for its plots (Z-9 keeps arable out of a built wall;
  * decision M12-R04 keeps large fields out of the walled town).
  */
 function outsidePlannedWall(state: GameState, anchor: TileCoordinate): boolean {
@@ -112,10 +112,10 @@ function outsidePlannedWall(state: GameState, anchor: TileCoordinate): boolean {
     width: BLOCK + 2 * margin, height: BLOCK + 2 * margin }).some(corner => isPointInsidePalisade(corner, proposal.path));
 }
 
-/** The block keeps the land autoplay needs for walls and services, like an old farm did. */
-function blockKeepsSpace(state: GameState, anchor: TileCoordinate): boolean {
-  return hasAutoplayBuildingClearance(state, "wheat_farm", anchor) && preservesAutoplayWallSpace(state, "wheat_farm", anchor)
-    && outsidePlannedWall(state, anchor)
+/** The block keeps the land autoplay needs for walls and services, like an old farm did (and, preferred, the plots). */
+function blockKeepsSpace(state: GameState, anchor: TileCoordinate, clearOfPlannedWall = false): boolean {
+  return hasAutoplayBuildingClearance(state, "wheat_farm", anchor) && (!clearOfPlannedWall || outsidePlannedWall(state, anchor))
+    && preservesAutoplayWallSpace(state, "wheat_farm", anchor)
     && preservesAutoplayServiceSpace(state, { kind: "place_building", building: "wheat_farm", tx: anchor.tx, ty: anchor.ty });
 }
 
@@ -174,24 +174,27 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
     }
   }
   extension.sort((a, b) => Number(b.touches) - Number(a.touches) || a.distance - b.distance || a.anchor.ty - b.anchor.ty || a.anchor.tx - b.anchor.tx);
-  for (const candidate of extension) {
-    if (autoplaySearchExhausted()) return NONE;
-    if (blockKeepsSpace(state, candidate.anchor)) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(candidate.anchor) };
-  }
   fresh.sort((a, b) => a.distance - b.distance || a.anchor.ty - b.anchor.ty || a.anchor.tx - b.anchor.tx);
-  let best: { anchor: TileCoordinate; route: number } | null = null;
-  let checked = 0;
-  for (const candidate of fresh) {
-    if (checked >= 24 || autoplaySearchExhausted()) break;
-    if (!farmsteadRoomBeside(state, candidate.anchor, zoneCells) || !blockKeepsSpace(state, candidate.anchor)) continue;
-    checked += 1;
-    const block = virtualBlock(candidate.anchor);
-    const routes = granaries.map(granary => resolveBuildingRoute(state, block, granary).path).filter(path => path !== null);
-    if (routes.length === 0) continue;
-    const route = Math.min(...routes.map(path => path.length));
-    if (best === null || route < best.route) best = { anchor: candidate.anchor, route };
+  // LB-11: blocks clear of the planned wall first; only when none qualifies, the AF-13 search as before.
+  for (const clearOfPlannedWall of state.era === "hamlet" ? [true, false] : [false]) {
+    for (const candidate of extension) {
+      if (autoplaySearchExhausted()) return NONE;
+      if (blockKeepsSpace(state, candidate.anchor, clearOfPlannedWall)) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(candidate.anchor) };
+    }
+    let best: { anchor: TileCoordinate; route: number } | null = null;
+    let checked = 0;
+    for (const candidate of fresh) {
+      if (checked >= 24 || autoplaySearchExhausted()) break;
+      if (!farmsteadRoomBeside(state, candidate.anchor, zoneCells) || !blockKeepsSpace(state, candidate.anchor, clearOfPlannedWall)) continue;
+      checked += 1;
+      const block = virtualBlock(candidate.anchor);
+      const routes = granaries.map(granary => resolveBuildingRoute(state, block, granary).path).filter(path => path !== null);
+      if (routes.length === 0) continue;
+      const route = Math.min(...routes.map(path => path.length));
+      if (best === null || route < best.route) best = { anchor: candidate.anchor, route };
+    }
+    if (best !== null) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(best.anchor) };
   }
-  if (best !== null) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(best.anchor) };
   return newFarmsteadAllowed ? fieldRoadAction(state, zoneCells) : NONE;
 }
 

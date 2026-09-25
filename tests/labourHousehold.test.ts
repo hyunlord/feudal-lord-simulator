@@ -89,14 +89,16 @@ test("L3 LB-4 facilities and the construction floor come first; field hands only
   const demands = allocateLabourDemands({ state, buildings: labour.buildings, houses: [], remaining: labour.idleWorkers,
     constructionWorkers: 3, adults: 18, tick: state.tick, eligible: () => true });
   const need = farmsteadFieldNeed(FIELD_CELLS, state.tick);
-  assert.equal(need, FIELD_CELLS, "harvest: 24 cells × 0.5 × 2");
-  assert.equal(demands.buildings.find(entry => entry.kind === "farmstead")?.fieldHands, 2, "only the two left over become field hands");
-  assert.deepEqual(demands.summary, { adults: 18, facility: 13, construction: 3, fieldHands: 2, hauling: 0, household: 0, idle: 0 });
+  assert.equal(need, 2 * FIELD_CELLS, "harvest: 24 cells × 1 × 2");
+  // The two left over: the granary's hauler (its mill is in reach, LB-7) first, then one field hand.
+  assert.equal(demands.buildings.find(entry => entry.kind === "granary")?.haulers, 1);
+  assert.equal(demands.buildings.find(entry => entry.kind === "farmstead")?.fieldHands, 1, "only what is left becomes field hands");
+  assert.deepEqual(demands.summary, { adults: 18, facility: 13, construction: 3, fieldHands: 1, hauling: 1, household: 0, idle: 0 });
   // With spare adults the day pool fills the whole seasonal need (and a granary with a mill in reach gets its hauler).
   const rich = allocateLabourDemands({ state, buildings: labour.buildings.map(entry => entry.kind === "mill" ? { ...entry, workers: 2 } : entry),
-    houses: [], remaining: 40, constructionWorkers: 3, adults: 56, tick: state.tick, eligible: () => true });
+    houses: [], remaining: 60, constructionWorkers: 3, adults: 76, tick: state.tick, eligible: () => true });
   assert.equal(rich.buildings.find(entry => entry.kind === "farmstead")?.fieldHands, need - 4);
-  assert.equal(rich.summary.idle, 40 - (need - 4) - LABOUR_BALANCE.haulersPerGranary);
+  assert.equal(rich.summary.idle, 60 - (need - 4) - LABOUR_BALANCE.haulersPerGranary);
 });
 
 test("L4 LB-5 harvest need ×2 is met from the day pool and the strips finish at full speed", () => {
@@ -104,7 +106,7 @@ test("L4 LB-5 harvest need ×2 is met from the day pool and the strips finish at
   assert.equal(laborSeason(bandStart("sowing")).permille, 2000);
   assert.equal(laborSeason(bandStart("early_summer")).permille, 1000);
   assert.equal(farmsteadFieldNeed(FIELD_CELLS, bandStart("harvest")), 2 * farmsteadFieldNeed(FIELD_CELLS, bandStart("early_summer")));
-  // Ripe 24-cell field at the start of the harvest band: the farmstead's 4 workers alone versus 4 + 20 hands.
+  // Ripe 24-cell field at the start of the harvest band: the farmstead's 4 workers alone versus 4 + 44 hands.
   const start = townWithBigField(bandStart("harvest"));
   const ripe: GameState = { ...start, arableFields: (() => {
     const layouts = arableLayouts(start);
@@ -123,7 +125,7 @@ test("L4 LB-5 harvest need ×2 is met from the day pool and the strips finish at
   const need = farmsteadFieldNeed(FIELD_CELLS, bandStart("harvest"));
   const full = harvestTicks(need - 4);
   const crewOnly = harvestTicks(0);
-  // 24 cells × 90 worker-ticks: 90 ticks at the full 24-person need, 540 with the crew alone (the C1c-2 speed).
+  // 24 cells × 90 worker-ticks: 45 ticks at the full 48-person need, 540 with the crew alone (the C1c-2 speed).
   assert.ok(full !== null && full <= Math.ceil(FIELD_CELLS * 90 / need) + 1, `full staff harvested in ${full}`);
   assert.ok(crewOnly !== null && crewOnly >= Math.floor(FIELD_CELLS * 90 / 4) - 1, `crew alone harvested in ${crewOnly}`);
 });
@@ -137,7 +139,7 @@ test("L5 LB-5 early winter halves the need: field hands go home, idle rises and 
   };
   const harvest = allocate(bandStart("harvest")).summary;
   const winter = allocate(bandStart("early_winter")).summary;
-  assert.equal(farmsteadFieldNeed(FIELD_CELLS, bandStart("early_winter")), 6, "24 × 0.5 × 0.5");
+  assert.equal(farmsteadFieldNeed(FIELD_CELLS, bandStart("early_winter")), 12, "24 × 1 × 0.5");
   assert.ok(winter.fieldHands < harvest.fieldHands, `hands ${harvest.fieldHands} → ${winter.fieldHands}`);
   assert.ok(winter.idle > harvest.idle, `idle ${harvest.idle} → ${winter.idle}`);
   const free = houses.flatMap(entry => householdSlots(entry)).filter(slot => slot.craftId === null).length;
