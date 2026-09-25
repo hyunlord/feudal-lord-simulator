@@ -71,7 +71,7 @@ test("the real app renders every placement tool as an accessible control", () =>
   }
   // UX-1: tools the settlement stage has not opened stay visible, locked, with the stage that opens them.
   assert.match(markup, /class="build-seal build-tool build-tool--locked"[^>]*aria-label="채석장"[^>]*aria-disabled="true"/);
-  assert.match(markup, /aria-label="석공소"[\s\S]*?🔒<\/span> 시장도시 이후/);
+  assert.match(markup, /aria-label="석공소"[\s\S]*?data-icon="lock.locked"[^>]*><\/span> 시장도시 이후/);
   assert.doesNotMatch(markup, /build-tool--selected/);
 });
 

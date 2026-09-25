@@ -1,0 +1,328 @@
+/* UX-2 UI art skin: the Astra P0 frames, buttons, icons and cursors over the UX-1 structure (no layout or information
+   change). Loaded last (src/main.tsx) so it only re-dresses what the earlier sheets placed.
+   - Frames are CSS 9-slices (`border-image`). The art is drawn at twice the CSS size (sourceScale 2), so a slice of
+     N source px is N/2 CSS px wide and a DPR 2 screen shows it 1:1. Insets come from src/ui/uiArtManifest.generated.ts.
+     Where a frame's edge carries a pattern the edge repeats (`round`) rather than stretches.
+   - The layout border widths stay as they were; `border-image-width` paints the frame into the padding under the text.
+   - Button states are code, not art: brightness for hover / pressed, a 1 px offset for active, the focus ring.
+   - Mobile rules hold: targets stay >= 44 px (the floor in uiConsole.css), text >= 12 px, nothing only on hover. */
+
+.app-shell {
+  /* Design tokens (colours sampled from the art: flat reading field, oak field, ink rule, wax seal, icon status). */
+  --parchment: #decda8;
+  --parchment-light: #e1d1ae;
+  --oak: #514334;
+  --ink: #3b2a1c;
+  --ink-soft: #5c4a36;
+  --seal-red: #a85038;
+  --status-ok: #687040;
+  --status-warn: #b8883c;
+  --status-block: #a85038;
+  --status-info: #7a6650;
+  /* Spacing: multiples of 8 (a half step of 4 for icon gaps). */
+  --space-half: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  /* Type: body sans, titles and the steward serif (both OFL, bundled via @fontsource; docs/provenance/fonts). */
+  --ui-font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --ui-font-serif: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
+  --ui-body-font: var(--ui-font-sans);
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-16: 16px;
+  --text-18: 18px;
+  /* 9-slice widths in CSS px (= source inset / 2). */
+  --slice-strip: 12px;
+  --slice-panel: 16px;
+  --slice-card: 16px;
+  --slice-advisor: 12px;
+  --slice-button: 6px;
+  --slice-square: 5px;
+  --slice-chip: 4px;
+  --slice-tooltip: 6px;
+  --slice-banner: 24px;
+  --slice-toast: 12px;
+  font-family: var(--ui-font-sans);
+}
+
+/* ---- Icons ---- */
+.app-shell .ui-icon, .welcome-parchment .ui-icon { display: inline-block; flex: none; vertical-align: middle; }
+
+/* ---- HUD strips: resource bar and time cluster (top), the court console (bottom) ---- */
+.app-shell .resource-bar {
+  border-image: url("/assets/ui-p0/frame_hud_strip_top.png") 24 fill / var(--slice-strip) / 0 stretch;
+  background: none;
+  box-shadow: none;
+}
+.app-shell .hud-time-cluster {
+  color: var(--parchment-light);
+  background: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_hud_strip_top.png") 24 fill / var(--slice-strip) / 0 stretch;
+}
+.app-shell .hud-time-cluster .hud-date { display: inline-flex; gap: var(--space-half); align-items: center; font-family: var(--ui-font-serif); font-weight: 600; }
+.app-shell .court-console {
+  background: none;
+  border: 0;
+  border-image: url("/assets/ui-p0/frame_hud_strip_bottom.png") 24 fill / var(--slice-strip) / 0 stretch;
+}
+.app-shell .court-console::before { display: none; }
+
+/* ---- Buttons: primary, secondary, square icon; states in code ---- */
+.app-shell :is(.goal-card-cta, .steward-button),
+.app-shell .build-menu .build-tool {
+  color: var(--ink);
+  background: none;
+  border-color: transparent;
+  border-image: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--slice-button) / 0 stretch;
+}
+.app-shell .goal-card-cta { font-family: var(--ui-font-sans); font-weight: 700; }
+.app-shell :is(.goal-card-secondary, .goal-drawer-toggle, .control-layer, .hud-undo, .tutorial-switch, .zone-radius-button,
+  .zone-polygon-toggle, .alert-stack-inspect, .autoplay-toggle, .save-control-button, .overlay-seal),
+.app-shell .command-disclosure > summary,
+.welcome-parchment :is(.tutorial-switch, .save-control-button, .autoplay-toggle) {
+  display: inline-flex;
+  gap: var(--space-half);
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  background: none;
+  border-color: transparent;
+  border-radius: 0;
+  border-image: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--slice-button) / 0 stretch;
+}
+.app-shell :is(.speed-seal, .goal-card-help > summary, .left-inspector-close, .build-info-toggle) {
+  display: inline-grid;
+  place-items: center;
+  color: var(--ink);
+  background: none;
+  border-color: transparent;
+  border-radius: 0;
+  border-image: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--slice-square) / 0 stretch;
+}
+.app-shell .speed-seal { width: 44px; height: 44px; padding: 2px; }
+/* Pressed / on: lighter field and a seal-red inner rule; hover lighter (mouse only, never the only cue); active sinks 1 px. */
+.app-shell :is(.speed-seal, .control-layer, .tutorial-switch, .zone-radius-button, .zone-polygon-toggle, .autoplay-toggle, .overlay-seal)[aria-pressed="true"],
+.app-shell .tutorial-switch[aria-checked="true"],
+.welcome-parchment .tutorial-switch[aria-checked="true"],
+.app-shell .command-disclosure[open] > summary {
+  color: var(--ink);
+  font-weight: 700;
+  filter: brightness(1.08);
+  box-shadow: inset 0 0 0 2px var(--seal-red);
+}
+.app-shell :is(button, summary):not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
+.app-shell :is(button, summary):not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
+.app-shell :is(button, summary):focus-visible, .welcome-parchment :is(button, summary):focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
+.app-shell .hud-undo:disabled { filter: grayscale(0.6); opacity: 0.6; }
+
+/* ---- Control layers and category tabs (oak) ---- */
+.app-shell .control-layer { gap: var(--space-half); padding: 4px 10px; font-size: var(--text-13); }
+.app-shell .control-layer--locked { filter: grayscale(0.7); opacity: 0.7; }
+.app-shell .build-menu-category {
+  display: inline-flex;
+  gap: var(--space-half);
+  align-items: center;
+  color: var(--parchment-light);
+  background: none;
+  border: 0;
+  border-image: url("/assets/ui-p0/tab_build_base.png") 12 fill / var(--slice-button) / 0 stretch;
+}
+.app-shell .build-menu-category:hover { background: none; }
+.app-shell .build-menu-category[aria-pressed="true"] {
+  color: var(--parchment-light);
+  background: none;
+  filter: brightness(1.45);
+  box-shadow: inset 0 -3px 0 var(--status-warn);
+}
+.app-shell .build-menu-category--locked { filter: grayscale(0.7); opacity: 0.6; }
+/* The zone-layer button keeps the category class (UX-1); it is a parchment layer button, not an oak tab. */
+.app-shell .control-layer.build-menu-category { color: var(--ink); border-image: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--slice-button) / 0 stretch; }
+.app-shell .control-layer.build-menu-category[aria-pressed="true"] { filter: brightness(1.08); box-shadow: inset 0 0 0 2px var(--seal-red); }
+
+/* ---- Build cards: normal · selected · locked · short ---- */
+.app-shell .build-menu .build-tool { border-width: 2px; border-radius: 0; outline: none; }
+.app-shell .build-menu .build-tool:hover { background: none; }
+.app-shell .build-menu .build-tool--selected { filter: brightness(1.08); box-shadow: inset 0 0 0 3px var(--seal-red); outline: none; }
+.app-shell .build-menu .build-tool--locked { filter: grayscale(0.6) brightness(0.95); opacity: 0.8; }
+.app-shell .build-menu .build-tool[aria-disabled="true"] { color: var(--ink-soft); }
+.app-shell :is(.build-tool-shortfall, .build-tool-lock) {
+  display: inline-flex;
+  gap: 2px;
+  align-items: center;
+  padding: 1px 6px;
+  color: var(--ink);
+  background: none;
+  border: 1px solid transparent;
+  border-image: url("/assets/ui-p0/chip_condition_base.png") 8 fill / var(--slice-chip) / 0 stretch;
+}
+.app-shell .build-tool-shortfall { color: var(--status-block); font-weight: 700; }
+.app-shell .build-menu .build-seal-label { color: var(--ink); }
+
+/* ---- Panels ---- */
+.app-shell :is(.build-menu-body, .command-popover) {
+  color: var(--parchment-light);
+  background: url("/assets/ui-p0/texture_vellum_dark.png") repeat;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_panel_dark.png") 24 / var(--slice-strip) / 0 stretch;
+}
+.app-shell :is(.left-inspector, .goal-drawer, .build-menu-details, .prediction-panel) {
+  color: var(--ink);
+  background: var(--parchment) url("/assets/ui-p0/texture_vellum_light.png") repeat;
+  border: 3px solid transparent;
+  border-radius: 0;
+  border-image: url("/assets/ui-p0/frame_panel_light.png") 32 fill / var(--slice-panel) / 0 stretch;
+}
+.app-shell .left-inspector-heading {
+  padding: 12px 12px 10px 16px;
+  background: url("/assets/ui-p0/divider_manuscript_light.png") bottom / 100% 8px no-repeat;
+  border-bottom: 0;
+}
+.app-shell .left-inspector-title h2 { color: var(--ink); font-family: var(--ui-font-serif); }
+.app-shell .left-inspector-state { color: var(--ink-soft); }
+.app-shell .left-inspector-close { width: 44px; height: 44px; }
+.app-shell .left-inspector-body { padding: 8px 16px 16px; }
+.app-shell .left-inspector-body h3 { color: var(--ink-soft); font-family: var(--ui-font-serif); }
+.app-shell .left-inspector-line { border-left-color: var(--parchment-light); }
+.app-shell .left-inspector-line--block { border-left-color: var(--status-block); }
+.app-shell .left-inspector-actions li:not(.left-inspector-empty) { border-left-color: var(--status-warn); }
+.app-shell .goal-drawer { padding: 12px 16px; }
+.app-shell .goal-drawer-log span { display: inline-flex; gap: 2px; align-items: center; }
+.app-shell .build-menu-details { padding: 16px; }
+
+/* ---- Goal cards: normal · complete · warning ---- */
+.app-shell .goal-card {
+  padding: 14px 16px 12px;
+  color: var(--ink);
+  background: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_objective_normal.png") 32 fill / var(--slice-card) / 0 stretch;
+}
+.app-shell .goal-card--done, .app-shell .goal-card--already {
+  border-image: url("/assets/ui-p0/frame_objective_complete.png") 32 fill / var(--slice-card) / 0 stretch;
+  animation: goal-card-seal 1500ms ease-out both;
+}
+.app-shell .goal-card--warn { border-image: url("/assets/ui-p0/frame_objective_warn.png") 32 fill / var(--slice-card) / 0 stretch; }
+@keyframes goal-card-seal {
+  0% { filter: brightness(1.12); }
+  60% { filter: none; }
+  100% { opacity: 0.2; }
+}
+.app-shell .goal-card-title { font-family: var(--ui-font-serif); font-weight: 600; }
+.app-shell .goal-card-status { display: inline-flex; gap: var(--space-half); align-items: center; }
+.app-shell .goal-card-bar { height: 6px; background-color: color-mix(in srgb, var(--oak) 22%, var(--parchment)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 30%, transparent); }
+.app-shell .goal-card-bar > span { background-color: var(--status-warn); }
+.app-shell .goal-card-help > summary { width: 44px; height: 44px; }
+.app-shell :is(.goal-card-help > p, .build-menu-pinned) {
+  color: var(--ink);
+  background: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_tooltip.png") 12 fill / var(--slice-tooltip) / 0 stretch;
+}
+
+/* ---- Steward: scroll body, round portrait frame, three expressions ---- */
+.app-shell .steward-advisor {
+  padding: 12px 18px;
+  color: var(--ink);
+  background: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_advisor_normal.png") 24 fill / var(--slice-advisor) / 0 stretch;
+}
+.app-shell .steward-advisor--concern { border-image: url("/assets/ui-p0/frame_advisor_warn.png") 24 fill / var(--slice-advisor) / 0 stretch; }
+.app-shell .steward-portrait { position: relative; display: block; overflow: visible; color: transparent; background: none; }
+.app-shell .steward-portrait-face {
+  position: absolute;
+  inset: 6px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+/* The round frame is a fixed-size overlay over the face (Astra note: composed apart from the portrait). */
+.app-shell .steward-portrait::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: image-set(url("/assets/ui-p0/portraits/advisor_portrait_frame-96.png") 1x, url("/assets/ui-p0/advisor_portrait_frame.png") 2x) center / 100% 100% no-repeat;
+}
+.app-shell .steward-name { font-family: var(--ui-font-serif); font-weight: 600; }
+.app-shell .steward-line { font-family: var(--ui-font-serif); }
+
+/* ---- Unlock banner, pause plate, warning rows, status line ---- */
+.app-shell .unlock-banner {
+  display: inline-flex;
+  gap: var(--space-1);
+  align-items: center;
+  padding: 12px 32px;
+  font-family: var(--ui-font-serif);
+  color: var(--ink);
+  background: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/banner_unlock.png") 48 fill / var(--slice-banner) / 0 stretch;
+}
+.app-shell :is(.pause-veil-label, .alert-stack-row, .settlement-status) {
+  color: var(--ink);
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 0;
+  border-image: url("/assets/ui-p0/toast_small.png") 24 fill / var(--slice-toast) / 0 stretch;
+}
+.app-shell .pause-veil-label { display: inline-flex; gap: var(--space-half); align-items: center; padding: 8px 20px; }
+.app-shell .alert-stack-row { grid-template-columns: 32px minmax(0, 1fr) auto; padding: 6px 8px 6px 12px; }
+.app-shell .alert-stack-row--immediate { box-shadow: inset 3px 0 0 var(--status-block); }
+.app-shell .alert-stack-row--caution { box-shadow: inset 3px 0 0 var(--status-warn); }
+.app-shell .alert-stack-cause { color: var(--ink-soft); }
+.app-shell .settlement-status { padding: 8px 16px; }
+.app-shell .prediction-line-symbol { width: 24px; height: 24px; }
+.app-shell .cause-legend-key { display: inline-flex; flex-wrap: wrap; gap: var(--space-half); align-items: center; }
+.app-shell .resource-bar__disclosure { width: 16px; height: 16px; margin-left: auto; background-size: auto 16px; transform: rotate(180deg); }
+
+/* ---- Welcome (modal) ---- */
+.welcome-parchment {
+  color: var(--ink, #3b2a1c);
+  background: #decda8 url("/assets/ui-p0/texture_vellum_light.png") repeat;
+  border: 4px solid transparent;
+  border-image: url("/assets/ui-p0/frame_modal.png") 32 / 16px / 0 stretch;
+  box-shadow: 0 8px 32px rgb(20 16 10 / 45%);
+}
+.welcome-parchment h2 { font-family: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif; font-weight: 600; }
+
+/* ---- Cursors (1x 32 px copy, 2x the 64 px original; hotspot in CSS px) ---- */
+.app-shell .game-canvas { cursor: image-set(url("/assets/ui-p0/cursors/cursor_select-32.png") 1x, url("/assets/ui-p0/cursor_select.png") 2x) 4 3, default; }
+.app-shell .game-canvas--inspect { cursor: image-set(url("/assets/ui-p0/cursors/cursor_inspect-32.png") 1x, url("/assets/ui-p0/cursor_inspect.png") 2x) 4 3, pointer; }
+.app-shell .game-canvas--road { cursor: image-set(url("/assets/ui-p0/cursors/cursor_road_draw-32.png") 1x, url("/assets/ui-p0/cursor_road_draw.png") 2x) 3 4, crosshair; }
+.app-shell .game-canvas--zone { cursor: image-set(url("/assets/ui-p0/cursors/cursor_zone_brush-32.png") 1x, url("/assets/ui-p0/cursor_zone_brush.png") 2x) 4 3, crosshair; }
+.app-shell .game-canvas--place { cursor: image-set(url("/assets/ui-p0/cursors/cursor_place_valid-32.png") 1x, url("/assets/ui-p0/cursor_place_valid.png") 2x) 3 4, crosshair; }
+.app-shell .game-canvas--place[data-placement="blocked"] { cursor: image-set(url("/assets/ui-p0/cursors/cursor_place_invalid-32.png") 1x, url("/assets/ui-p0/cursor_place_invalid.png") 2x) 3 3, not-allowed; }
+
+/* ---- Fixes from the first capture pass ---- */
+.app-shell .control-layer, .app-shell .build-menu-category { flex: 0 0 auto; white-space: nowrap; }
+.app-shell :is(.build-tool-shortfall, .build-tool-lock) { font-size: var(--text-12); }
+.app-shell .resource-bar__disclosure { width: 24px; height: 24px; background-size: auto 24px; transform: rotate(180deg) scale(0.67); }
+.app-shell .resource-bar__more { background: none; border: 0; }
+.app-shell .resource-bar__more > summary {
+  display: flex;
+  align-items: center;
+  color: var(--ink);
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--slice-button) / 0 stretch;
+}
+.app-shell .resource-bar__more[open] {
+  color: var(--parchment-light);
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_panel_dark.png") 24 fill / var(--slice-strip) / 0 stretch;
+}
+/* Tablet (<= 1100 px): each layer and category button stacks its icon over its label so the whole row fits. */
+@media (max-width: 1100px) {
+  .app-shell :is(.control-layer, .build-menu-category) { flex-direction: column; gap: 0; padding: 2px 6px; font-size: var(--text-12); line-height: 1.2; }
+  .app-shell :is(.control-layer, .build-menu-category) .ui-icon:first-child { width: 24px; height: 24px; }
+  .app-shell :is(.build-menu-category-lock, .control-layer-lock) { position: absolute; top: 2px; right: 2px; }
+  .app-shell :is(.control-layer, .build-menu-category) { position: relative; }
+}
+.app-shell .map-overview {
+  background: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/frame_panel_dark.png") 24 fill / var(--slice-strip) / 0 stretch;
+}
+.welcome-parchment:focus { outline: none; }

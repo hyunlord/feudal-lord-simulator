@@ -4,7 +4,6 @@
 
 export const TUTORIAL_COPY = {
   stewardName: "청지기",
-  stewardMonogram: "청",
   cards: {
     greet: { title: "영지를 둘러보세요", why: "먼저 사람들이 살아갈 물과 길부터 챙깁니다.", cta: "시작하기" },
     well: { title: "집 가까이에 우물 설치", why: "우물은 반경 6칸 안의 집에 물을 댑니다. 밝게 표시된 집이 물을 받습니다.", cta: "우물 놓기", place: "표시한 자리에 우물 놓기" },
@@ -51,8 +50,8 @@ export const TUTORIAL_COPY = {
   layers: { direct: "직접", zone: "구역", direction: "방향" },
   layerGroup: "조작 층위",
   progress: (current: number, target: number) => `${current}/${target}`,
-  alreadyDone: "이미 갖춰짐 ✓",
-  done: "완료 ✓",
+  alreadyDone: "이미 갖춰짐",
+  done: "완료",
   drawer: "목표 기록",
   drawerEmpty: "아직 마친 목표가 없습니다",
   cardsLabel: "목표 카드",

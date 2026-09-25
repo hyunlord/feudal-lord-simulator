@@ -3,6 +3,7 @@ import { SCENARIO_COPY } from "./content/scenario/scenarioCopy.ko";
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
@@ -64,7 +65,9 @@ import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
 import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
 import { steppedPlacementTool } from "./render/placementToolCycle";
-import { calendarLabel } from "./engine/scenarioState";
+import { calendarLabel, stateCalendar } from "./engine/scenarioState";
+import { UiIcon } from "./ui/UiIcon";
+import { alertStackRows } from "./ui/alertStackModel";
 import { useTutorialController } from "./ui/tutorial/useTutorialController";
 import { GoalCards, GoalDrawer, PauseVeil, StewardAdvisor, TutorialToggle, UnlockBanner } from "./ui/tutorial/TutorialShell";
 import { TUTORIAL_COPY } from "./ui/tutorial/tutorialCopy.ko";
@@ -80,6 +83,8 @@ const ZONE_TOOL_PREFIX = "zone:";
 const ZONE_TOOL_OFF = "zone:off";
 
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
+/** UX-2: the season icon beside the date (calendar season index → resource-sheet cell). */
+const SEASON_ICON = ["spring", "summer", "autumn", "winter"] as const;
 
 export function nextOnboardingPresentationCommit(input: {
   readonly gameState: GameState;
@@ -266,6 +271,10 @@ export function App() {
     }
   }, INTENT_ORDER.app), [setSpeed]);
 
+  // UX-2: an immediate warning in the town puts the active goal cards in their warning frame (same sampled state as
+  // the warning stack, recomputed only when that sample changes).
+  const guidanceState = guidanceSnapshotRef.current.state;
+  const immediateWarning = useMemo(() => alertStackRows(guidanceState).some(row => row.severity === "immediate"), [guidanceState]);
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
   const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null
     ? null
@@ -383,7 +392,7 @@ export function App() {
         />
         <PauseVeil paused={speed === 0 && !welcomeVisible} />
         <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria}>
-          <span className="hud-date" data-testid="hud-calendar">{calendarLabel(state)}</span>
+          <span className="hud-date" data-testid="hud-calendar"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} />} />
         </div>
@@ -397,7 +406,7 @@ export function App() {
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
         <aside ref={railRef} className={`right-info-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail}>
-          <GoalCards tutorial={tutorial} drawerOpen={drawerOpen} onToggleDrawer={() => setDrawerOpen(open => !open)} />
+          <GoalCards tutorial={tutorial} drawerOpen={drawerOpen} warn={immediateWarning} onToggleDrawer={() => setDrawerOpen(open => !open)} />
           <GoalDrawer open={drawerOpen} log={tutorial.log}>
           <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
             <EraConsole

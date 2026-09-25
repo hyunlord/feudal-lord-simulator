@@ -45,7 +45,7 @@ test("the calendar sits beside the speed controls, not in the resource bar (UX-1
   const bar = renderToStaticMarkup(createElement(ResourceBar, { state: { ...DEFAULT_GAME_STATE, tick: 2 * 4000 + 1000 }, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined }));
   assert.doesNotMatch(bar, /resource-calendar/);
   const app = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
-  assert.match(app, /class="hud-time-cluster"[^>]*><span class="hud-date" data-testid="hud-calendar">1300년 봄<\/span>/);
+  assert.match(app, /class="hud-time-cluster"[^>]*><span class="hud-date" data-testid="hud-calendar"><span class="ui-icon" aria-hidden="true" data-icon="resource.spring"[^>]*><\/span>1300년 봄<\/span>/);
 });
 
 test("T3 the stone-wall action is disabled with a reason when the scenario turns the project off", () => {

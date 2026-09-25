@@ -8,6 +8,7 @@ import { sampleAutoplayDecision, type AutoplayDecisionCache, type AutoplayDecisi
 import type { GameState, GameSpeed } from "../engine/engine.types";
 import { useGameStore } from "../state/gameStore";
 import { SaveControls } from "./SaveControls";
+import { UiIcon } from "./UiIcon";
 import { BoundaryRenderToggle } from "../render/BoundaryRenderToggle";
 import {
   autoplayActionLabel,
@@ -17,15 +18,16 @@ import {
   publishAutoplayPulse,
 } from "./autoplayPresentation";
 
+/** UX-2: the painted time icons (pause · play · two and three chevrons). */
 const SPEED_SEALS: readonly {
   readonly speed: GameSpeed;
   readonly label: string;
-  readonly paths: readonly string[];
+  readonly icon: "pause" | "play" | "fast" | "fastest";
 }[] = [
-  { speed: 0, label: KO_UI.speeds.paused, paths: ["M8 6v12", "M16 6v12"] },
-  { speed: 1, label: KO_UI.speeds.normal, paths: ["m9 6 8 6-8 6Z"] },
-  { speed: 3, label: KO_UI.speeds.threefold, paths: ["m5 6 7 6-7 6Z", "m12 6 7 6-7 6Z"] },
-  { speed: 5, label: KO_UI.speeds.fivefold, paths: ["m3 6 6 6-6 6Z", "m9 6 6 6-6 6Z", "m15 6 6 6-6 6Z"] },
+  { speed: 0, label: KO_UI.speeds.paused, icon: "pause" },
+  { speed: 1, label: KO_UI.speeds.normal, icon: "play" },
+  { speed: 3, label: KO_UI.speeds.threefold, icon: "fast" },
+  { speed: 5, label: KO_UI.speeds.fivefold, icon: "fastest" },
 ];
 
 export function speedToIntervalMs(speed: GameSpeed): number | null {
@@ -104,9 +106,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
             aria-pressed={speed === option.speed}
             onClick={() => onChange(option.speed)}
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round">
-              {option.paths.map((path) => <path key={path} d={path} />)}
-            </svg>
+            <UiIcon sheet="time" cell={option.icon} size={32} />
           </button>
         ))}
       </div>

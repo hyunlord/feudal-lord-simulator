@@ -2,6 +2,7 @@ import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { OnboardingGuidanceTarget } from "../ui/onboardingWorldGuidance";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { applyInkOutline, applyPaletteStroke, snapToPixel, withAlpha } from "./style";
+import { drawUiFrame } from '../ui/uiArt';
 
 export type OnboardingGuidanceOverlayInput = {
   readonly targets: readonly OnboardingGuidanceTarget[];
@@ -80,7 +81,7 @@ function drawTargetPlaque(
   const padding = 5 / zoom;
   const labelX = snapToPixel(center.sx + TILE_W / 2);
   const labelY = snapToPixel(center.sy - TILE_H / 2 - 6 / zoom);
-  context.font = `${fontSize}px Georgia, serif`;
+  context.font = `600 ${fontSize}px "Noto Serif KR", Georgia, serif`;
 
   const plaqueWidth = snapToPixel(context.measureText(target.label).width + padding * 2);
   const plaqueHeight = snapToPixel(fontSize + padding * 2);
@@ -100,10 +101,13 @@ function drawTargetPlaque(
   const textX = snapToPixel(plaqueX + padding);
   const textY = snapToPixel(plaqueY + fontSize + padding);
 
-  context.fillStyle = SEMANTIC_PALETTE.vellum;
-  context.fillRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
-  applyInkOutline(context, zoom);
-  context.strokeRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
+  // UX-2: the tooltip frame (9-slice) once loaded; the flat vellum plaque with an ink rule until then.
+  if (!drawUiFrame(context, 'frame_tooltip', plaqueX, plaqueY, plaqueWidth, plaqueHeight, 6 / zoom)) {
+    context.fillStyle = SEMANTIC_PALETTE.vellum;
+    context.fillRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
+    applyInkOutline(context, zoom);
+    context.strokeRect(plaqueX, plaqueY, plaqueWidth, plaqueHeight);
+  }
   context.fillStyle = SEMANTIC_PALETTE.ink;
   context.fillText(target.label, textX, textY);
 }

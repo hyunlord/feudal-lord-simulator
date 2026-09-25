@@ -3,6 +3,7 @@ import type { ReactElement } from "react";
 import type { GameState } from "../engine/engine.types";
 import { INSPECTOR_COPY } from "./inspectorCopy.ko";
 import { inspectorModel } from "./inspectorModel";
+import { UiIcon } from "./UiIcon";
 
 export type InspectorProps = Readonly<{
   state: GameState;
@@ -23,7 +24,7 @@ export function Inspector({ state, buildingId, onClose }: InspectorProps): React
           <p className="left-inspector-state">{model.stateLine}</p>
         </div>
         <button type="button" className="left-inspector-close" aria-label={INSPECTOR_COPY.close} onClick={() => onClose()}>
-          {INSPECTOR_COPY.closeGlyph}
+          <UiIcon sheet="prediction" cell="block" />
         </button>
       </header>
       <div className="left-inspector-body">
