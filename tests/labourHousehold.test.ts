@@ -280,18 +280,23 @@ test("LB-11 behind a wall autoplay puts a sawmill outside it when a site exists,
 });
 
 
-test("LB-12 autoplay proclaims the palisade only with a wall of six cells per wanted lot", async () => {
+test("LB-12 autoplay proclaims the palisade with a wall of six cells per wanted lot when one exists, else as before", async () => {
   const { autoplayEraAction, wallInteriorCells } = await import("../src/engine/autoplayEra");
   const { confirmPalisadeProclamation } = await import("../src/engine/palisade");
   const { runAutoplaySearch } = await import("../src/engine/autoplaySearchBudget");
   // The 176-resident hamlet meets every palisade requirement once it has the timber.
   const state = { ...stateFromSave("fixtures/saves/v10/population-176.save.json"), treasuryTimber: 600 };
   const noBuild = () => ({ kind: "none" } as const);
-  const open = runAutoplaySearch(() => autoplayEraAction(state, noBuild));
-  assert.ok(open.kind === "proclaim_era" && open.candidatePath !== undefined, "without a lot target it proclaims");
-  const cells = wallInteriorCells(confirmPalisadeProclamation(state, open.candidatePath!));
+  const cellsOf = (action: ReturnType<typeof autoplayEraAction>) => {
+    assert.ok(action.kind === "proclaim_era" && action.candidatePath !== undefined);
+    return wallInteriorCells(confirmPalisadeProclamation(state, action.candidatePath!));
+  };
+  const first = cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild)));
   const perLot = LABOUR_BALANCE.wallCellsPerLot;
-  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, Math.floor(cells / perLot))).kind, "proclaim_era", `${cells} cells hold ${Math.floor(cells / perLot)} lots`);
-  // No candidate wall encloses six cells for 60 lots: the advisor waits and the town grows on.
-  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, 60)).kind, "none");
+  // A target the first wall already holds keeps that wall.
+  assert.equal(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, Math.floor(first / perLot)))), first);
+  // One lot more than the first wall holds: a roomier candidate is taken if the search has one, never a smaller wall.
+  assert.ok(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, Math.floor(first / perLot) + 1))) >= first);
+  // No candidate holds 60 lots: the advisor still proclaims with the first acceptable wall (it never waits on room).
+  assert.equal(cellsOf(runAutoplaySearch(() => autoplayEraAction(state, noBuild, 60))), first);
 });
