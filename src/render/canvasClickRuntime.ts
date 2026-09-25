@@ -8,6 +8,7 @@ import { getTile } from "../world/grid";
 import { createPlacementFeedback } from "./placementFeedback";
 import { townLandscapeAssetReady } from "./townLandscapeAssets";
 import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
+import { playPlacementSound } from "../audio/soundDirector";
 
 type SelectRuntimeInput = {
   readonly world: WorldPoint;
@@ -56,5 +57,6 @@ export function handleCanvasSelect(input: SelectRuntimeInput): void {
     return;
   }
   refs.feedbackRef.current = resolution.attempt.feedback;
+  playPlacementSound(resolution.attempt);
   if (resolution.attempt.action !== null) dispatch(resolution.attempt.action);
 }

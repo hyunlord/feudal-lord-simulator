@@ -6,6 +6,7 @@ import { createTintCanvas, drawCroppedWorldSprite } from "./worldSprite";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
 import { walkerCloakManifest, walkerPropManifest } from "./walkerSheetManifest.generated";
 import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerCloakKind, type WalkerLook, type WalkerPropKind, type WalkerSheetId } from "./walkerLook";
+import { constructionStageIndex, constructionWorkProgress } from "./constructionVisibility";
 
 // V2 walker composer (spec docs/design/walker-composer.md WC-6..WC-8): a look (sheet + held prop + winter cloak) is
 // composed once into a canvas of its 8 cells (4 directions x 2 gait frames) and drawn from there every frame.
@@ -64,7 +65,9 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
   const sheet = walkerSheet(sheetId);
   const body = imageFor(sheet.url, sheet.width, sheet.height);
   const cloakImage = cloak === null ? null : imageFor(walkerCloakManifest[cloak].url, 296, 148);
-  const propImages = prop === null ? null : Object.fromEntries(Object.entries(walkerPropManifest[prop]).map(([direction, entry]) => [direction, imageFor(entry.url, 32, 32)]));
+  // F0-V work tools are one 128 px sheet with a 32 px cell per direction (`cell`, `sheetWidth`).
+  const propImages = prop === null ? null : Object.fromEntries(Object.entries(walkerPropManifest[prop]).map(([direction, entry]) =>
+    [direction, imageFor(entry.url, "sheetWidth" in entry ? entry.sheetWidth : 32, 32)]));
   if (body === null || (cloak !== null && cloakImage === null) || (propImages !== null && Object.values(propImages).some(image => image === null))) return null;
   const started = typeof performance === "undefined" ? 0 : performance.now();
   const canvas = createTintCanvas(4 * WALKER_COMPOSED_CELL, 2 * WALKER_COMPOSED_CELL);
@@ -84,7 +87,7 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
       const hand = rightHand(frame);
       const image = propImages[frame.direction]!;
       const size = 32 * PROP_SCALE;
-      drawCroppedWorldSprite(context, image, { x: 0, y: 0, width: 32, height: 32 },
+      drawCroppedWorldSprite(context, image, { x: ("cell" in entry ? entry.cell : 0) * 32, y: 0, width: 32, height: 32 },
         { x: originX + hand.x - entry.anchor.x * PROP_SCALE, y: originY + hand.y - entry.anchor.y * PROP_SCALE, width: size, height: size }, false, true);
     };
     if (!near) drawProp();
@@ -143,7 +146,7 @@ function lookOf(state: GameState, walker: Walker): WalkerLook {
 /** The look, prop and cloak a walker is drawn with this frame (also the evidence scripts' read-out). */
 export function walkerAppearance(state: GameState, walker: Walker) {
   const look = lookOf(state, walker);
-  return { look, prop: walkerHeldProp(look, walker), cloak: walkerCloak(state, look) };
+  return { look, prop: walkerHeldProp(look, walker, builderSiteStage(state, walker)), cloak: walkerCloak(state, look) };
 }
 
 /** Whether the walker's composed look can be drawn now (composes it on first call once its images are loaded). */
@@ -188,4 +191,11 @@ export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKin
 export function resetWalkerComposerForProof(): void {
   composed.clear(); lookCache.clear(); lastWalkers = null;
   Object.assign(stats, { composed: 0, evicted: 0, composeMsTotal: 0, composeMsMax: 0, firstComposeMs: null });
+}
+
+/** F0-V: the stage (0 plot .. 3 roof) of the site a builder works on, or null (not a builder, or its site is gone). */
+function builderSiteStage(state: Pick<GameState, "constructionSites">, walker: Walker): number | null {
+  if (walker.kind !== "builder" || "resident" in walker || !("siteId" in walker)) return null;
+  const site = state.constructionSites.find(candidate => candidate.id === walker.siteId);
+  return site === undefined ? null : constructionStageIndex(constructionWorkProgress(site));
 }

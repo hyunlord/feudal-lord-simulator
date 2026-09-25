@@ -17,6 +17,7 @@ import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { roadAlignedWalkers } from "./walkerRoadAlignment";
 import { renderStageProbe } from "./renderStageProbe";
 import { beginGroundSceneFrame } from "./groundBoundaryScene";
+import { observeSoundFrame } from "../audio/soundDirector";
 
 export type CanvasFrameRefs = Readonly<{
   cameraRef: { current: CameraState };
@@ -99,6 +100,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     input.publishPrediction?.(lines.length === 0 ? { ...base, cursor }
       : { ...base, cursor, prediction: { lines } as unknown as NonNullable<typeof preview.prediction> }, input.refs.cameraRef.current);
   }
+  // F0-V: the frame's world sounds (deliveries, stages, completions, hammering, carts, spring).
+  observeSoundFrame(input.state, input.refs.cameraRef.current, input.canvas.getBoundingClientRect(), nowMs);
   probe?.frameEnd();
 }
 

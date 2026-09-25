@@ -41,6 +41,7 @@ import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderStageProbe } from "./renderStageProbe";
 import { forgetGoneConstructionSites } from "./constructionMoments";
+import { drawWorldSigns } from "./worldSigns";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -143,6 +144,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
       }),
     overhang: () => {
       probe?.enter("effects");
+      drawWorldSigns(input.context, input.state, input.camera, input.viewport); // F0-V world signs
       drawConstructionCompletionEffects(input.context, {
         effects: constructionEffects,
         zoom: input.camera.zoom,

@@ -96,17 +96,20 @@ export function drawRuntimeActor(context: CanvasRenderingContext2D, presentation
 }
 
 /** The handcart of a carter, its handles at the carter's hands (also drawn behind / in front of a V2 composed walker). */
+/** Draws the handcart at the walker's hands; returns where (F0-V: the cart payload sits on its bed). */
 export function drawRuntimeHandcart(context: CanvasRenderingContext2D, direction: WalkerPresentationDirection,
-  footX: number, footY: number, scale: number): void {
+  footX: number, footY: number, scale: number): { readonly x: number; readonly y: number; readonly width: number; readonly height: number } | null {
   const meta = runtimeActorManifest.find(asset => asset.id === "handcart");
   const frame = meta?.frames.find(candidate => candidate.direction === direction);
   const image = loader.image("handcart");
-  if (frame === undefined || image === null) return;
+  if (frame === undefined || image === null) return null;
   const factor = 32 * scale / frame.source.width;
   const raster = loader.raster("handcart", frame);
-  drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? frame.source, {
+  const rect = {
     x: footX - (frame.handles.x - frame.source.x) * factor,
     y: footY - 14 * scale - (frame.handles.y - frame.source.y) * factor,
     width: frame.source.width * factor, height: frame.source.height * factor,
-  }, false, true);
+  };
+  drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? frame.source, rect, false, true);
+  return rect;
 }

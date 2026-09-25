@@ -68,6 +68,8 @@ import { steppedPlacementTool } from "./render/placementToolCycle";
 import { calendarLabel, stateCalendar } from "./engine/scenarioState";
 import { UiIcon } from "./ui/UiIcon";
 import { setPresentationSpeed } from "./render/presentationSpeed";
+import { playSound, unlockAudio } from "./audio/audioEngine";
+import { AudioControls } from "./ui/AudioControls";
 import { COMPLETION_GROUP_MS, COMPLETION_TOAST_MS, completedSiteNames } from "./ui/completionToast";
 import { COMPLETION_TOAST_COPY } from "./ui/completionToastCopy.ko";
 import { alertStackRows } from "./ui/alertStackModel";
@@ -232,6 +234,7 @@ export function App() {
           setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: "cancel" } }));
           return "handled";
         }
+        if (selectedToolRef.current !== null || palisadeDraftRef.current !== null) playSound("place_cancel");
         setPalisadeDraft(null);
         setSelectedTool(null);
         setZoneTool(null);
@@ -278,7 +281,22 @@ export function App() {
   // UX-2: an immediate warning in the town puts the active goal cards in their warning frame (same sampled state as
   // the warning stack, recomputed only when that sample changes).
   const guidanceState = guidanceSnapshotRef.current.state;
-  const immediateWarning = useMemo(() => alertStackRows(guidanceState).some(row => row.severity === "immediate"), [guidanceState]);
+  const alertRows = useMemo(() => alertStackRows(guidanceState), [guidanceState]);
+  const immediateWarning = alertRows.some(row => row.severity === "immediate");
+  // F0-V: a warning row that appears plays its tier (urgent / caution); the unlock banner plays the info sound.
+  const heardAlertsRef = useRef<ReadonlySet<string> | null>(null);
+  useEffect(() => {
+    const ids = new Set(alertRows.map(row => row.id));
+    const heard = heardAlertsRef.current;
+    heardAlertsRef.current = ids;
+    if (heard === null) return;
+    const fresh = alertRows.filter(row => !heard.has(row.id));
+    if (fresh.some(row => row.severity === "immediate")) playSound("alert_urgent");
+    else if (fresh.length > 0) playSound("alert_warn");
+  }, [alertRows]);
+  useEffect(() => { if (tutorial.banner !== null) playSound("alert_info"); }, [tutorial.banner]);
+  // Sound starts with the player's first input intent (a press or key, so the browser's autoplay rule allows it).
+  useEffect(() => platformServices().input.subscribe(() => { unlockAudio(import.meta.env?.BASE_URL ?? "/"); return undefined; }, INTENT_ORDER.world - 1), []);
   // F0-V: completions grouped into one toast (names within COMPLETION_GROUP_MS, shown for COMPLETION_TOAST_MS).
   const previousCompletionStateRef = useRef(state);
   const [completionToast, setCompletionToast] = useState<{ readonly names: readonly string[]; readonly firstAtMs: number } | null>(null);
@@ -410,7 +428,7 @@ export function App() {
         <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria}>
           <span className="hud-date" data-testid="hud-calendar"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
-            extraSettings={<TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} />} />
+            extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
         <StewardAdvisor advisor={tutorial.advisor} onDismiss={tutorial.dismissAdvisor} />
         <div className="left-inspector-mount"><Inspector state={state} buildingId={inspectedId} onClose={() => setInspectedId(null)} /></div>

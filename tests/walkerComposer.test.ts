@@ -125,7 +125,7 @@ test("Given the Wave 5a, 4e and 5c sheets When the manifest is read Then all 44 
     assert.deepEqual(sheet.directionOrder, ["NE", "SE", "SW", "NW"]);
   }
   const props = Object.values(walkerPropManifest).flatMap(directions => Object.values(directions));
-  assert.equal(props.length, 24 + 8);
+  assert.equal(props.length, 24 + 8 + 8, "Wave 5a 24, Wave 4e 8, F0-V work tools 8");
   for (const prop of props) readFileSync(new URL(`../public/${prop.url}`, import.meta.url));
   assert.deepEqual(Object.keys(walkerCloakManifest).sort(), ["female", "male", "merchant"]);
   for (const cloak of Object.values(walkerCloakManifest)) readFileSync(new URL(`../public/${cloak.url}`, import.meta.url));

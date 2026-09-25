@@ -34,6 +34,7 @@ import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 import {
   OBJECT_OUTLINE_ALPHA,
 } from "./occlusionModel";
+import { drawHouseRoofSmoke, drawMillOvenSmoke } from "./roofSmoke";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -144,6 +145,7 @@ function drawBuildingDetail(
     if (detailLevel !== "full" || !drawHouseCompoundSprite(context, building, visualState.houseLevel)) {
       drawHouseCompound(context, building, visualState.houseLevel, detailLevel);
     } else drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
+    if (detailLevel === "full") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, input.nowMs ?? 0);
     drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
     return;
   }
@@ -157,6 +159,9 @@ function drawBuildingDetail(
       : drawHistoricalFacility(context, building, input.state);
     if (historical) {
       if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
+      // F0-V: roof smoke of a lived-in house, the mill oven's smoke while it runs.
+      if (building.kind === "house") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, input.nowMs ?? 0);
+      if (building.kind === "mill") drawMillOvenSmoke(context, building, input.nowMs ?? 0);
       drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center,
         kind: building.kind, zoom: input.zoom, visualState });
       return;
