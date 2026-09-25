@@ -10,7 +10,7 @@
  *   free road-side cell for its farmstead, nearest the granaries by road.
  */
 import { ARABLE_CONFIG } from "../content/arableConfig";
-import { BALANCE } from "../content/balanceConfig";
+import { BALANCE, LABOUR_BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
 import type { TileCoordinate } from "../geometry/tileGeometry";
@@ -27,6 +27,8 @@ import type { AutoplayAction } from "./autoplay.types";
 import type { GameState } from "./engine.types";
 import { resolveBuildingRoute } from "./routing";
 import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
+import { palisadeCoreProposalForState } from "./palisadeFootprints";
+import { footprintCorners, isPointInsidePalisade } from "../world/palisadeGeometry";
 
 /** AF-13: the planner keeps the expected harvest this far above a year's need (growth headroom). */
 export const ARABLE_MARGIN_PERMILLE = 1200;
@@ -96,9 +98,24 @@ function virtualBlock(anchor: TileCoordinate): Building {
   return { id: "autoplay-field-block", kind: "wheat_farm", ...anchor, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
 }
 
+/**
+ * C3 (LB-11): before the palisade, a block stays one tile clear of the wall autoplay would propose around today's core,
+ * so the fields do not take the land the walled town will need for its plots (Z-9 keeps arable out of a built wall;
+ * decision M12-R04 keeps large fields out of the walled town).
+ */
+function outsidePlannedWall(state: GameState, anchor: TileCoordinate): boolean {
+  if (state.era !== "hamlet") return true;
+  const proposal = palisadeCoreProposalForState(state);
+  if (!proposal.ok) return true;
+  const margin = LABOUR_BALANCE.fieldWallMargin;
+  return !footprintCorners({ id: "autoplay-field-margin", tx: anchor.tx - margin, ty: anchor.ty - margin,
+    width: BLOCK + 2 * margin, height: BLOCK + 2 * margin }).some(corner => isPointInsidePalisade(corner, proposal.path));
+}
+
 /** The block keeps the land autoplay needs for walls and services, like an old farm did. */
 function blockKeepsSpace(state: GameState, anchor: TileCoordinate): boolean {
   return hasAutoplayBuildingClearance(state, "wheat_farm", anchor) && preservesAutoplayWallSpace(state, "wheat_farm", anchor)
+    && outsidePlannedWall(state, anchor)
     && preservesAutoplayServiceSpace(state, { kind: "place_building", building: "wheat_farm", tx: anchor.tx, ty: anchor.ty });
 }
 

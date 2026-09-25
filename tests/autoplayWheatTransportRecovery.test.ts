@@ -20,14 +20,21 @@ test('R-T15 an observed transport bottleneck yields a bounded recovery action in
   // Given the unchanged A5-1 seed 1 natural final state, migrated to v10 (as an old save opens) and run a
   // fixed, deterministic 3,600 ticks so the newly-placed farmstead is staffed and the expected-harvest
   // measurement settles (the tick right after migration is a transient staffing/measurement window, not the
-  // town's steady state). At that point the actual cause is a measured bread deficit behind a stocked mill.
+  // town's steady state).
   const { advanceTick } = await import('../src/engine/tick');
+  const { replayFoodObservation } = await import('./foodEfficiencyObservationFixture');
   let state: GameState = loadWheatTransportTown();
   for (let tick = 0; tick < 3600; tick += 1) state = advanceTick(state);
-  assert.deepEqual(measuredFoodDecision(state), { kind: 'mill', reason: 'actual_bread_deficit' });
+  // LB-7 (C3): with an intake cart per mill and granary pushes, the measured bread deficit behind stocked mills that
+  // this town showed under the one-cart rule is gone: every mill holds wheat and the supply is sufficient.
+  assert.ok(state.buildings.filter(b => b.kind === 'mill').every(b => (b.inventory.wheat ?? 0) > 0));
+  assert.deepEqual(measuredFoodDecision(state), { kind: null, reason: 'food_supply_sufficient' });
+  // When the same town then observes a window where bread falls short behind those stocked mills (replayed flow).
+  const short = replayFoodObservation(state, { wheat: 1000, bread: 40, exports: 0 });
+  assert.deepEqual(measuredFoodDecision(short), { kind: 'mill', reason: 'actual_bread_deficit' });
   const diagnostic: FoodDiagnosticCollector = {};
   // When the full advisor evaluates it through its actual priority and search budget.
-  const action = decideNextAction(state, { maxHousingLots: 24 }, diagnostic);
+  const action = decideNextAction(short, { maxHousingLots: 24 }, diagnostic);
   // Then the cause has an actionable response rather than an eternal none.
   assert.notEqual(action.kind, 'none');
   assert.equal(diagnostic.food?.reason, 'recovery_selected');

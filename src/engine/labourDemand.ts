@@ -1,10 +1,10 @@
-import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building } from "../content/buildingConfig";
+import { operationSuspended, type Building } from "../content/buildingConfig";
 import { LABOUR_BALANCE, SEASON_BALANCE } from "../content/balanceConfig";
-import type { GameState } from "../engine/engine.types";
-import { buildingFootprintDistance } from "../geometry/buildingDistance";
+import type { GameState } from "./engine.types";
 import { arableLayouts, inYearTick, stripTending } from "../zones/arableFields";
-import { householdSlotDemand } from "./householdSlots";
-import type { House } from "./population.types";
+import { pushableMill } from "../agents/millPush";
+import { householdSlotDemand } from "../population/householdSlots";
+import type { House } from "../population/population.types";
 
 /** LB-4: where the adults went on one tick (`GameState.labour`, save v11). */
 export interface LabourSummary {
@@ -60,13 +60,6 @@ export function tendedCellsByFarmstead(state: GameState): ReadonlyMap<string, nu
   return value;
 }
 
-/** LB-7: a staffed, operating mill a granary could push wheat to. */
-export function pushableMill(granary: Building, mill: Building): boolean {
-  return mill.kind === "mill" && !operationSuspended(mill)
-    && mill.workers >= BUILDING_CONFIG_BY_KIND.mill.workersRequired
-    && buildingFootprintDistance(granary, mill) <= LABOUR_BALANCE.pushRadius;
-}
-
 export interface LabourDemandInput {
   readonly state: GameState;
   /** Buildings after the facility allocation (their `workers` set). */
@@ -81,8 +74,8 @@ export interface LabourDemandInput {
 }
 
 /**
- * LB-4 tiers 6, 7 and 9 on what the R1-fix allocation left: farmstead field hands (LB-5, by building id), granary
- * haulers (LB-7) and household slots (LB-8). Writes `fieldHands`/`haulers` on the buildings (absent when 0).
+ * LB-4 tiers 7–9 on what the R1-fix allocation left: granary haulers (LB-7), farmstead field hands (LB-5, by
+ * building id) and household slots (LB-8). Writes `fieldHands`/`haulers` on the buildings (absent when 0).
  */
 export function allocateLabourDemands(input: LabourDemandInput): { readonly buildings: readonly Building[]; readonly summary: LabourSummary } {
   let remaining = Math.max(0, Math.floor(input.remaining));
@@ -91,18 +84,18 @@ export function allocateLabourDemands(input: LabourDemandInput): { readonly buil
   const haulers = new Map<string, number>();
   const ordered = [...input.buildings].sort((a, b) => a.id.localeCompare(b.id));
   const operating = (building: Building) => !operationSuspended(building) && input.eligible(building);
-  for (const building of ordered) {
-    if (building.kind !== "farmstead" || !operating(building)) continue;
-    const need = farmsteadFieldNeed(tended.get(building.id) ?? 0, input.tick);
-    const assigned = Math.min(remaining, Math.max(0, need - building.workers));
-    if (assigned > 0) hands.set(building.id, assigned);
-    remaining -= assigned;
-  }
   const mills = ordered.filter(building => building.kind === "mill");
   for (const building of ordered) {
     if (building.kind !== "granary" || !operating(building) || !mills.some(mill => pushableMill(building, mill))) continue;
     const assigned = Math.min(remaining, LABOUR_BALANCE.haulersPerGranary);
     if (assigned > 0) haulers.set(building.id, assigned);
+    remaining -= assigned;
+  }
+  for (const building of ordered) {
+    if (building.kind !== "farmstead" || !operating(building)) continue;
+    const need = farmsteadFieldNeed(tended.get(building.id) ?? 0, input.tick);
+    const assigned = Math.min(remaining, Math.max(0, need - building.workers));
+    if (assigned > 0) hands.set(building.id, assigned);
     remaining -= assigned;
   }
   const householdDemand = input.houses.reduce((total, house) => total + householdSlotDemand(house), 0);

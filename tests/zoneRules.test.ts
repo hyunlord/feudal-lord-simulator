@@ -89,7 +89,7 @@ test("Z-17 gate ②: three strokes, two undone, equal the one-stroke state (zone
 
   const bytes = encodeSave({ state: third, createdAt: "2026-09-25T00:00:00.000Z", savedAt: "2026-09-25T00:00:00.000Z", gameVersion: "test" }).bytes;
   const loaded = decodeSave(bytes).envelope.state;
-  assert.equal(SAVE_SCHEMA_VERSION, 10);
+  assert.ok(SAVE_SCHEMA_VERSION >= 10, "v11 adds households (LB-10) on top");
   assert.deepEqual(loaded.zoneUndo, third.zoneUndo);
   const loadedUndone = gameReducer(gameReducer(loaded, { type: "zone_undo_stroke" }), { type: "zone_undo_stroke" });
   assert.deepEqual(loadedUndone.zones, first.zones);

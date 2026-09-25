@@ -105,7 +105,7 @@ export interface GameState {
    */
   idleWorkers: number;
   /** LB-4 (save v11): where the adults went this tick. Recomputed every tick; absent before the first v11 tick. */
-  readonly labour?: import("../population/labourDemand").LabourSummary;
+  readonly labour?: import("./labourDemand").LabourSummary;
   treasuryTimber: number;
   treasuryCoin: number;
   /**

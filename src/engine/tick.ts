@@ -32,7 +32,7 @@ import {
   availableWorkers,
   builderWalkersForSites,
 } from "../population/labour";
-import { allocateLabourDemands } from "../population/labourDemand";
+import { allocateLabourDemands } from "./labourDemand";
 import { withHouseholdMembers } from "../population/householdMembers";
 import { createMulberry32, createRoamingJunctionSeed } from "./prng";
 import {

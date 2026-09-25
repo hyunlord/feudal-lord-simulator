@@ -25,14 +25,14 @@
   3. 준비된 공사가 있으면 핵심 벌목장·제재소 한 쌍
   4. 나머지 식량 시설
   5. 벌목·제재·창고, 그 밖의 시설
-  6. 헛간 계절 일손(LB-5)
-  7. 곡창 거점 운반(LB-7)
-  8. 공사 추가 인력(부지당 3명까지)
+  6. 공사 추가 인력(부지당 3명까지)
+  7. 헛간 계절 일손(LB-5)
+  8. 곡창 거점 운반(LB-7)
   9. 가내 생산 슬롯(LB-8)
   10. 남은 성인 = 유휴
-  - 1~5와 8은 R1-fix 배정(`allocateBuildingAndConstructionLabour`) 그대로다. 새 수요 6·7·9는 그 배정이 남긴 성인에서만 나온다. 지시서의 잠정안(식량 시설 > 헛간 계절 > 공사 최소 몫 > 그 밖의 시설)과 다른 점은 결정 LB2에 적었다.
-  - `GameState.idleWorkers`는 R1-fix 뜻(시설·공사에 배정되지 않은 성인 = 새 시설이 쓸 수 있는 인력)을 유지한다. 자동 성장의 시설 판단이 이것을 쓴다.
-  - `GameState.labour`(저장 v11, 틱마다 다시 계산)는 `{ adults, facility, construction, fieldHands, hauling, household, idle }`이다. `idle`이 유휴 노동이다.
+  - 1~6은 R1-fix 배정(`allocateBuildingAndConstructionLabour`) 그대로다. 새 수요 7~9(`allocateLabourDemands`)는 그 배정이 남긴 성인에서만 나온다. 지시서의 잠정안(식량 시설 > 헛간 계절 > 공사 최소 몫 > 그 밖의 시설)과 다른 점과 이유는 결정 LB2에 적었다.
+  - `GameState.idleWorkers`는 R1-fix 뜻(시설·공사에 배정되지 않은 성인 = 새 시설이 쓸 수 있는 인력)을 유지한다. 자동 성장의 시설 판단과 `일꾼 부족` 원인이 이것을 쓴다.
+  - `GameState.labour`(저장 v11, 틱마다 다시 계산)는 `{ adults, facility, construction, fieldHands, hauling, household, idle }`이고 합이 `adults`다. `idle`이 유휴 노동이다.
 - **LB-6 가구별 배분표(파생)**: `householdLabour(state)`는 LB-4의 배정 결과를 집에 나눈다. 집은 id 순, 일자리는 LB-4 순위·건물 id 순으로 채운다. 상세창 줄은 `성인 3 · 방앗간 1 · 가내 1 · 일용 1`(`householdLabourRows`)이다. 저장하지 않는다.
 
 ## 계절 노동
@@ -46,10 +46,11 @@
 ## 방앗간 운반
 
 - **LB-7 방앗간 수레 두 대와 곡창 거점 운반**
-  - 방앗간은 수레 두 대를 둔다. 본 수레는 빵을 내보낸다(빵 8 이상이면 출발). 입고 수레(`cart: "intake"`)는 밀만 가져온다. 밀 + 들어올 밀이 12 미만이면 출발한다. 두 수레의 적재량은 12(`carterCapacity`)다.
-  - 곡창 거점 운반: 곡창은 운반꾼 한 명(일용 풀, LB-4의 7)이 있으면 반경 `pushRadius` 안의 방앗간 중 밀 + 들어올 밀이 가장 적은 곳에 밀을 12까지 밀어낸다(`cart: "push"`).
+  - 방앗간은 수레 두 대를 둔다. 본 수레는 빵만 내보낸다(빵 8 이상이면 그 빵을, 아니면 가진 빵을). 입고 수레(`cart: "intake"`)는 밀만 가져온다. 밀 + 들어올 밀이 12(`millWheatTarget`) 미만이면 가장 가까운 곡창·헛간 곳간으로 간다. 두 수레의 적재량은 12(`carterCapacity`)다.
+  - 곡창 거점 운반: 운반꾼 한 명(일용 풀, LB-4의 8)이 있는 곡창은 대지 거리 12칸(`pushRadius`) 안에서 일꾼을 다 채운 방앗간 중 밀 + 들어올 밀이 24(`millPushTarget`) 미만인 곳에 밀을 12까지 밀어낸다(`cart: "push"`). 가장 적게 가진 곳, 다음 경로가 짧은 곳, 다음 id 순이다. 입고 수레가 길에 있어도 한 짐을 더 얹는다.
+  - 방앗간 창고는 20 → 32다(오는 두 짐 + 빵 한 짐).
   - 곡창이 없는 초반에는 방앗간이 헛간 곳간에서 밀을 바로 가져온다(AF-9 그대로).
-  - 자동 성장의 방앗간 상한은 운반 계수 2(AF-13, 수레 하나 왕복)를 `LABOUR_BALANCE.millHaulingFactorPermille`로 낮춘다.
+  - 자동 성장의 방앗간 상한은 AF-13의 운반 계수 2(수레 하나 왕복)를 `LABOUR_BALANCE.millHaulingFactorPermille`로 둔다.
 
 ## 가내 생산 슬롯
 
@@ -68,4 +69,4 @@
 
 ## 저장
 
-- **LB-10 v10→v11**(`migrateStateV10ToV11`): 집마다 `members`를 LB-1로 만들고(seed 생성), `labour`를 LB-4로 다시 계산한다. 인구·주민 수·건물·재고는 그대로다. 수레·일손 필드는 없으면 0이다.
+- **LB-10 v10→v11**(`migrateStateV10ToV11`): 집마다 `members`를 LB-1로 만든다(seed 생성). 인구·주민 수·건물·재고는 그대로다. `labour`·`Building.fieldHands`/`haulers`·`House.crafts`·`CarterWalker.cart`는 없으면 없음(0)이고, 다음 틱이 규칙대로 채운다(그 전까지 자원바는 `idleWorkers`를 보인다).

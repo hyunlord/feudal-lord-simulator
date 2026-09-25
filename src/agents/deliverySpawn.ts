@@ -5,7 +5,7 @@ import {
   type Building,
 } from "../content/buildingConfig";
 import { LABOUR_BALANCE } from "../content/balanceConfig";
-import { pushableMill } from "../population/labourDemand";
+import { pushableMill } from "./millPush";
 import type { ResourceType } from "../content/resourceConfig";
 import {
   activeCarterHomes,

@@ -1,5 +1,5 @@
 import type { BuildingKind } from "../content/buildingConfig";
-import type { GameState } from "../engine/engine.types";
+import type { GameState } from "./engine.types";
 
 /** LB-6: one household's share of the tick's labour allocation (derived, not stored). */
 export interface HouseholdLabour {

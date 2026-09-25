@@ -83,8 +83,9 @@ test("delivery arrival deposits cargo, releases capacity, returns home, then des
 
 test("fetch arrival withdraws the claimed source stock and delivers it into reserved home space", () => {
   const mill = building("mill", "mill");
+  // LB-7: the mill's intake cart loads 12 (`carterCapacity`).
   const granary = building("granary", "granary", {
-    inventory: { wheat: 9 },
+    inventory: { wheat: 13 },
   });
   const outbound = line([0, 0], [1, 0]);
   const returning = [...outbound].reverse();
@@ -109,7 +110,7 @@ test("fetch arrival withdraws the claimed source stock and delivers it into rese
   });
   const returningCarter = collected.walkers[0] as CarterWalker;
 
-  assert.deepEqual(returningCarter.cargo, { resource: "wheat", amount: 8 });
+  assert.deepEqual(returningCarter.cargo, { resource: "wheat", amount: 12 });
   assert.equal(
     collected.buildings.find(({ id }) => id === granary.id)?.inventory.wheat,
     1,
@@ -129,7 +130,7 @@ test("fetch arrival withdraws the claimed source stock and delivers it into rese
   assert.deepEqual(delivered.walkers, []);
   assert.equal(
     delivered.buildings.find(({ id }) => id === mill.id)?.inventory.wheat,
-    8,
+    12,
   );
   assert.equal(
     delivered.buildings.find(({ id }) => id === mill.id)?.reserved.wheat ?? 0,

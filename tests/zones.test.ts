@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { migrateStateV10ToV11 } from "../src/save/migrations/v10ToV11";
 import { migrateStateV9ToV10 } from "../src/save/migrations/v9ToV10";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -55,9 +56,9 @@ test("Z-1 a new game and every migrated save start with no zone and ordinal 1", 
   const original = JSON.parse(readFileSync("fixtures/saves/v5/population-176.save.json", "utf8")).state;
   const { coinLedger: _coinLedger, ...originalRest } = original;
   // v6 -> v7 (B3) then swaps the income window for a ledger holding the opening balance.
-  // v9 -> v10 (C1c-2) then turns the wheat farms into arable fields and farmsteads (spec AF-12).
-  assert.deepEqual(v5.envelope.state, migrateStateV9ToV10({ ...originalRest, zones: [], nextZoneOrdinal: 1, ledger: { entries: [{ id: "ledger-000001", tick: original.tick, account: "cash", category: "opening_balance", amount: original.treasuryCoin,
-    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } }));
+  // v9 -> v10 (C1c-2) then turns the wheat farms into arable fields and farmsteads (spec AF-12); v10 -> v11 adds households.
+  assert.deepEqual(v5.envelope.state, migrateStateV10ToV11(migrateStateV9ToV10({ ...originalRest, zones: [], nextZoneOrdinal: 1, ledger: { entries: [{ id: "ledger-000001", tick: original.tick, account: "cash", category: "opening_balance", amount: original.treasuryCoin,
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } })));
 });
 
 test("Z-1 empty zones do not change the simulation: a migrated save runs 1,200 ticks to the same state", () => {

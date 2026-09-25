@@ -26,6 +26,7 @@ export function productionOperation(
   if (production.input !== null && stock(building, production.input) < production.inputPerOutput) return "no_input";
   const released = production.input === null ? 0 : production.inputPerOutput;
   if (availableSpace(building, definition) + released < 1) return "output_full";
+  if (production.outputHoldLimit !== undefined && stock(building, production.output) >= production.outputHoldLimit) return "output_full";
   return "working";
 }
 

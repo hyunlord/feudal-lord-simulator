@@ -24,6 +24,8 @@ export interface ProductionSpec {
   readonly input: ResourceType | null;
   readonly inputPerOutput: number;
   readonly ticksPerOutput: number;
+  /** LB-7: production waits (`output_full`) while this much output is still in the building, keeping room for input. */
+  readonly outputHoldLimit?: number;
 }
 
 export interface BuildingDefinition {
@@ -199,8 +201,9 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
       input: "wheat",
       inputPerOutput: 2,
       ticksPerOutput: 30,
+      outputHoldLimit: 16,
     },
-    /** LB-7: room for two 12-wheat loads on their way and a bread load (was 20 with one 8-load cart). */
+    /** LB-7: half for wheat (two 12-loads on their way), half for bread waiting to go out (was 20 with one 8-load cart). */
     storageCapacity: 32,
     serviceRadius: 0,
     /** LB-7: both mill carts (bread out, wheat in) load 12. */

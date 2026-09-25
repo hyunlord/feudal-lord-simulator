@@ -1,5 +1,4 @@
 import { BALANCE } from "../content/balanceConfig";
-import { createHouseholdSeed, householdMemberHash } from "../engine/prng";
 import type { House, HouseholdMembers } from "./population.types";
 
 export type MemberSex = "female" | "male";
@@ -7,6 +6,38 @@ export type MemberAgeBand = "child" | "adult" | "elder";
 export interface MemberProfile {
   readonly sex: MemberSex;
   readonly ageBand: MemberAgeBand;
+}
+
+const FNV_OFFSET = 0x811c_9dc5;
+const FNV_PRIME = 0x0100_0193;
+
+function mix(hash: number, value: number): number {
+  let mixed = hash >>> 0;
+  let word = value >>> 0;
+  for (let byte = 0; byte < 4; byte += 1) {
+    mixed = Math.imul(mixed ^ (word & 0xff), FNV_PRIME) >>> 0;
+    word >>>= 8;
+  }
+  return mixed;
+}
+
+function avalanche(value: number): number {
+  let mixed = value >>> 0;
+  mixed = Math.imul(mixed ^ (mixed >>> 16), 0x85eb_ca6b) >>> 0;
+  mixed = Math.imul(mixed ^ (mixed >>> 13), 0xc2b2_ae35) >>> 0;
+  return (mixed ^ (mixed >>> 16)) >>> 0;
+}
+
+/** LB-1: a household's member seed, from the game seed and the house's building id (FNV-1a, stable across saves). */
+export function createHouseholdSeed(stateSeed: number, buildingId: string): number {
+  let hash = mix(FNV_OFFSET, Math.trunc(stateSeed));
+  for (let index = 0; index < buildingId.length; index += 1) hash = mix(hash, buildingId.charCodeAt(index));
+  return avalanche(hash);
+}
+
+/** LB-2: one member's hash, from the household seed and the member's index. */
+function householdMemberHash(seed: number, index: number): number {
+  return avalanche(mix(mix(FNV_OFFSET, seed), index));
 }
 
 const wholeNonnegative = (value: number): number => (Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0);

@@ -1,9 +1,9 @@
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { LABOUR_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
-import { householdLabour } from "../population/householdLabour";
+import { householdLabour } from "../engine/householdLabour";
 import { craftDefinition, householdSlots } from "../population/householdSlots";
-import { farmsteadFieldNeed, idleLabourPermille, tendedCellsByFarmstead } from "../population/labourDemand";
+import { farmsteadFieldNeed, idleLabourPermille, tendedCellsByFarmstead } from "../engine/labourDemand";
 import type { CauseDetail } from "./causeRegistry";
 import { buildingSource } from "../contracts";
 import { HOUSEHOLD_LABOUR_COPY as LABOUR_COPY } from "./householdLabourCopy.ko";
