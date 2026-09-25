@@ -1,7 +1,9 @@
 // C3 gates ③ and ④ from efficientGrowthRun output folders: idle labour, raw shortage and bread ratio over the
 // stable interval (complete 2,400-tick windows that start at or after the final stableSince, as in C1c-2 A8).
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { GameState } from '../src/engine/engine.types';
+import { availableWorkers } from '../src/population/labour';
 
 type Row = Record<string, number | null>;
 
@@ -15,7 +17,18 @@ export function labourGateSummary(directory: string) {
   const idleAtWindowEnds = windows.filter(row => (row.population ?? 0) > 0)
     .map(row => (row.labourIdle ?? row.idleWorkers ?? 0) / (row.population ?? 1));
   const final = summary.final ?? {};
+  // L1: in the final state the households' adults add up to the old labour pool and adults + children to population.
+  const finalPath = resolve(directory, 'final-state.json');
+  const state: GameState | null = existsSync(finalPath) ? JSON.parse(readFileSync(finalPath, 'utf8')) : null;
+  const households = state === null ? null : {
+    adults: state.houses.reduce((sum, house) => sum + (house.members?.adults ?? 0), 0),
+    children: state.houses.reduce((sum, house) => sum + (house.members?.children ?? 0), 0),
+    population: state.population, labourPool: availableWorkers(state.population),
+  };
   return {
+    householdsMatch: households === null ? null
+      : households.adults === households.labourPool && households.adults + households.children === households.population,
+    households,
     seed: summary.seed, guardrail: summary.guardrail?.passed ?? null, victoryTick: summary.victoryTick,
     stopReason: summary.stopReason, stableSince, stableWindows: windows.length,
     stableBreadRatio: ratio(total('breadProduced'), total('requestedBread')),

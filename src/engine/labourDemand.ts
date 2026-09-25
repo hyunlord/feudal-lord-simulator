@@ -37,8 +37,9 @@ export function farmsteadFieldNeed(tendedCells: number, tick: number): number {
 
 /**
  * Cache (rule 10). (a) Key: the tending map identity, which `stripTending` memoises on layouts, tiles and farmstead
- * positions. (b) Cell counts depend only on the layouts and the tending, both inside that key. (c) One pass over
- * the strips per miss; measured in the C3 report together with the tending cache.
+ * positions. (b) Cell counts depend only on the layouts and the tending, both inside that key. (c) Migrated seed-2
+ * town (5 farmsteads, `scripts/labourCacheBench.ts`): 0.156 ms a call with a cold key (layout, tending and this pass
+ * rebuilt) against 0.0017 ms warm; the whole per-tick labour-demand step is 0.055 ms warm.
  */
 let tendedMemo: { tending: unknown; value: ReadonlyMap<string, number> } | null = null;
 

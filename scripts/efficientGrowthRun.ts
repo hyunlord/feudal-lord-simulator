@@ -27,7 +27,7 @@ export function runEfficientGrowth(args: readonly string[]) {
   // C1c-2 gate ③: food flow per 2,400-tick window, so the stable interval's bread and raw-wheat ratios are measured.
   const foodPeriods: Record<string, number | null>[] = [];
   // C3 gate ③: idle adults ÷ population (LB-9), sampled every 100 ticks over the stable interval.
-  const labourSamples: { tick: number; idle: number; population: number; fieldHands: number; hauling: number }[] = [];
+  const labourSamples: { tick: number; idle: number; population: number; fieldHands: number; hauling: number; mills: number; wheatlessMills: number }[] = [];
   let money200Tick: number | null = null;
   let stoneProclaimedTick: number | null = null;
   const report = runPhase19NaturalGrowth({ ...options,
@@ -40,8 +40,10 @@ export function runEfficientGrowth(args: readonly string[]) {
       if (period !== null) moneyPeriods.push({ ...period, stableSince });
       if (state.tick % 2400 === 0) foodPeriods.push(foodPeriodSample(state, stableSince));
       if (stableSince !== null && state.tick % 100 === 0 && state.labour !== undefined && state.population > 0) {
+        const mills = state.buildings.filter(building => building.kind === 'mill');
         labourSamples.push({ tick: state.tick, idle: state.labour.idle, population: state.population,
-          fieldHands: state.labour.fieldHands, hauling: state.labour.hauling });
+          fieldHands: state.labour.fieldHands, hauling: state.labour.hauling,
+          mills: mills.length, wheatlessMills: mills.filter(mill => (mill.inventory.wheat ?? 0) === 0).length });
       }
       if (checkpoint && state.tick % 12_000 === 0) {
         writeFileSync(resolve(output, 'last-observed-state.json'), JSON.stringify(state));
@@ -81,15 +83,18 @@ export function runEfficientGrowth(args: readonly string[]) {
 }
 
 /** C3 gate ③: mean idle ÷ population over the samples taken since the final stable interval began. */
-function stableLabourSummary(samples: readonly { tick: number; idle: number; population: number; fieldHands: number; hauling: number }[], stableSince: number | null) {
+function stableLabourSummary(samples: readonly { tick: number; idle: number; population: number; fieldHands: number; hauling: number; mills: number; wheatlessMills: number }[], stableSince: number | null) {
   const stable = stableSince === null ? [] : samples.filter(sample => sample.tick >= stableSince);
-  if (stable.length === 0) return { samples: 0, meanIdleRatio: null, maxIdleRatio: null, minIdleRatio: null, meanFieldHands: null, meanHauling: null };
+  if (stable.length === 0) return { samples: 0, meanIdleRatio: null, maxIdleRatio: null, minIdleRatio: null, meanFieldHands: null, meanHauling: null, wheatlessMillShare: null };
   const ratios = stable.map(sample => sample.idle / sample.population);
   const mean = (values: readonly number[]) => values.reduce((sum, value) => sum + value, 0) / values.length;
   return { samples: stable.length, meanIdleRatio: Number(mean(ratios).toFixed(4)),
     maxIdleRatio: Number(Math.max(...ratios).toFixed(4)), minIdleRatio: Number(Math.min(...ratios).toFixed(4)),
     meanFieldHands: Number(mean(stable.map(sample => sample.fieldHands)).toFixed(1)),
-    meanHauling: Number(mean(stable.map(sample => sample.hauling)).toFixed(1)) };
+    meanHauling: Number(mean(stable.map(sample => sample.hauling)).toFixed(1)),
+    // L7: share of mill samples holding no wheat at all (whatever their bread), comparable across the rule change.
+    wheatlessMillShare: Number((stable.reduce((sum, sample) => sum + sample.wheatlessMills, 0)
+      / Math.max(1, stable.reduce((sum, sample) => sum + sample.mills, 0))).toFixed(4)) };
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
