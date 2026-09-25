@@ -11,7 +11,7 @@ import type { GameState } from "../engine/engine.types";
 import { buildingHasRequiredRoadAccess } from "../engine/roadAccess";
 import type { TileCoordinate } from "../geometry/tileGeometry";
 import type { ArableField, ArableStage, ArableStripRecord } from "./arable.types";
-import { cellInsideWall, zonesOf } from "./zoneEdits";
+import { zonesOf } from "./zoneEdits";
 import { cellCoordinate } from "./zoneRaster";
 import type { Zone } from "./zone.types";
 
@@ -73,7 +73,7 @@ export interface ArableZoneLayout {
   readonly strips: readonly ArableLayoutStrip[];
 }
 
-type LayoutWorld = Pick<GameState, "width" | "height" | "tiles" | "zones" | "palisade" | "arableFields">;
+type LayoutWorld = Pick<GameState, "width" | "height" | "tiles" | "zones" | "arableFields">;
 
 function mainAxis(cells: readonly TileCoordinate[]): "x" | "y" {
   if (cells.length === 0) return "x";
@@ -92,13 +92,13 @@ export function zoneMainAxis(zone: Pick<Zone, "membership">, width: number): "x"
 
 /**
  * AF-1: a member cell grows crops when it is open land (grass or woodland) with no road and no building or
- * construction site (both mark `tile.buildingId`), outside the wall.
+ * construction site (both mark `tile.buildingId`). The wall rule (Z-9) governs painting: arable is never painted
+ * inside the wall, but a field a later wall encloses keeps being worked, as the old wheat farms were.
  */
 export function cultivableArableCell(state: LayoutWorld, index: number): boolean {
   const tile = state.tiles[index];
   if (tile === undefined || tile.hasRoad || tile.buildingId !== null) return false;
-  if (tile.terrain !== "grass" && tile.terrain !== "forest") return false;
-  return !cellInsideWall(state, index);
+  return tile.terrain === "grass" || tile.terrain === "forest";
 }
 
 function zoneLayout(state: LayoutWorld, zone: Zone, axis: "x" | "y"): ArableZoneLayout {
@@ -142,12 +142,12 @@ function zoneLayout(state: LayoutWorld, zone: Zone, axis: "x" | "y"): ArableZone
 }
 
 /**
- * Cache (rule 10). (a) Key: the identities of `tiles`, `zones` and `palisade`, and the fields' fixed axes as a
- * string. (b) Nothing else feeds the layout: cultivability reads only tiles (a construction site marks its tiles
- * too) and the wall polygon, and the axis only the field records. (c) Measured in the C1c-2
+ * Cache (rule 10). (a) Key: the identities of `tiles` and `zones`, and the fields' fixed axes as a string.
+ * (b) Nothing else feeds the layout: cultivability reads only tiles (a construction site marks its tiles too), and
+ * the axis only the field records. (c) Measured in the C1c-2
  * report (tick bench): without it every tick re-rasterised every field.
  */
-let layoutMemo: { tiles: unknown; zones: unknown; palisade: unknown; axes: string; value: readonly ArableZoneLayout[] } | null = null;
+let layoutMemo: { tiles: unknown; zones: unknown; axes: string; value: readonly ArableZoneLayout[] } | null = null;
 
 export function arableLayouts(state: LayoutWorld): readonly ArableZoneLayout[] {
   const zones = zonesOf(state).filter(zone => zone.kind === "arable");
@@ -155,11 +155,11 @@ export function arableLayouts(state: LayoutWorld): readonly ArableZoneLayout[] {
   const fields = state.arableFields ?? [];
   const axes = fields.map(field => `${field.zoneId}${field.axis}`).join(",");
   if (layoutMemo !== null && layoutMemo.tiles === state.tiles && layoutMemo.zones === state.zones
-    && layoutMemo.palisade === state.palisade && layoutMemo.axes === axes) return layoutMemo.value;
+    && layoutMemo.axes === axes) return layoutMemo.value;
   const byZone = new Map(fields.map(field => [field.zoneId, field.axis]));
   const value = [...zones].sort((a, b) => a.id.localeCompare(b.id))
     .map(zone => zoneLayout(state, zone, byZone.get(zone.id) ?? zoneMainAxis(zone, state.width)));
-  layoutMemo = { tiles: state.tiles, zones: state.zones, palisade: state.palisade, axes, value };
+  layoutMemo = { tiles: state.tiles, zones: state.zones, axes, value };
   return value;
 }
 

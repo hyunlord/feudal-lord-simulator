@@ -43,10 +43,6 @@ export interface ArableMigrationSummary {
   readonly farmsteads: number;
   /** Farmsteads that found no free road-side cell near their field (diagnostic). */
   readonly unplacedFarmsteads: number;
-  /** Farm cells that lay inside the wall, where arable is forbidden (Z-9). */
+  /** Converted cells the wall already enclosed (kept as fields, AF-1; arable cannot be painted there, Z-9). */
   readonly cellsInsideWall: number;
-  /** Farms with a cell inside the wall whose field moved to the nearest free block outside it. */
-  readonly relocatedFarms: number;
-  /** Farms inside the wall that found no free block outside it (their land is lost; diagnostic). */
-  readonly droppedFarms: number;
 }

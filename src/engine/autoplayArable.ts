@@ -26,6 +26,7 @@ import { preservesAutoplayWallSpace } from "./autoplayWallSpace";
 import type { AutoplayAction } from "./autoplay.types";
 import type { GameState } from "./engine.types";
 import { resolveBuildingRoute } from "./routing";
+import { plannedBuildingRoadAction } from "./autoplayConstructionRoads";
 
 /** AF-13: the planner keeps the expected harvest this far above a year's need (growth headroom). */
 export const ARABLE_MARGIN_PERMILLE = 1200;
@@ -87,6 +88,11 @@ function blockKeepsSpace(state: GameState, anchor: TileCoordinate): boolean {
     && preservesAutoplayServiceSpace(state, { kind: "place_building", building: "wheat_farm", tx: anchor.tx, ty: anchor.ty });
 }
 
+function touchesRoad(state: GameState, cells: readonly TileCoordinate[]): boolean {
+  return cells.some(cell => [[cell.tx - 1, cell.ty], [cell.tx + 1, cell.ty], [cell.tx, cell.ty - 1], [cell.tx, cell.ty + 1]].some(([nx, ny]) =>
+    nx! >= 0 && ny! >= 0 && nx! < state.width && ny! < state.height && state.tiles[ny! * state.width + nx!]!.hasRoad));
+}
+
 const farthest = (building: Pick<Building, "tx" | "ty">, cells: readonly TileCoordinate[]) =>
   Math.max(...cells.map(cell => Math.abs(cell.tx - building.tx) + Math.abs(cell.ty - building.ty)));
 
@@ -128,7 +134,8 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
         const touches = cells.some(cell => [[cell.tx - 1, cell.ty], [cell.tx + 1, cell.ty], [cell.tx, cell.ty - 1], [cell.tx, cell.ty + 1]]
           .some(([nx, ny]) => arableCells.has(ny! * state.width + nx!)));
         extension.push({ anchor, touches, distance: Math.min(...reach) });
-      } else if (newFarmsteadAllowed && granaries.length > 0) {
+      } else if (newFarmsteadAllowed && granaries.length > 0 && touchesRoad(state, cells)) {
+        // A new field touches a road like the old farm did, so its harvest and farmstead are reachable.
         fresh.push({ anchor, distance: Math.min(...granaries.map(granary => Math.abs(granary.tx - tx) + Math.abs(granary.ty - ty))) });
       }
     }
@@ -151,7 +158,33 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
     const route = Math.min(...routes.map(path => path.length));
     if (best === null || route < best.route) best = { anchor: candidate.anchor, route };
   }
-  return best === null ? NONE : { kind: "paint_zone", zone: "arable", stroke: blockStroke(best.anchor) };
+  if (best !== null) return { kind: "paint_zone", zone: "arable", stroke: blockStroke(best.anchor) };
+  return newFarmsteadAllowed ? fieldRoadAction(state, zoneCells) : NONE;
+}
+
+/**
+ * No block beside a road qualifies: like the old farm search, lay a road toward the nearest open block that keeps
+ * the wall and service space (up to 24 candidates by distance to the road network).
+ */
+function fieldRoadAction(state: GameState, zoneCells: ReadonlySet<number>): AutoplayAction {
+  const roads = state.tiles.filter(tile => tile.hasRoad);
+  if (roads.length === 0) return NONE;
+  const open: { anchor: TileCoordinate; distance: number }[] = [];
+  for (let ty = 1; ty < state.height - BLOCK; ty += 1) {
+    for (let tx = 1; tx < state.width - BLOCK; tx += 1) {
+      const cells = blockCells({ tx, ty });
+      if (!cells.every(cell => openFieldCell(state, cell.tx, cell.ty, zoneCells))) continue;
+      open.push({ anchor: { tx, ty }, distance: Math.min(...roads.map(road => Math.abs(road.tx - tx) + Math.abs(road.ty - ty))) });
+    }
+  }
+  open.sort((a, b) => a.distance - b.distance || a.anchor.ty - b.anchor.ty || a.anchor.tx - b.anchor.tx);
+  for (const candidate of open.slice(0, 24)) {
+    if (autoplaySearchExhausted()) return NONE;
+    if (!blockKeepsSpace(state, candidate.anchor)) continue;
+    const road = plannedBuildingRoadAction(state, virtualBlock(candidate.anchor));
+    if (road.kind !== "none") return road;
+  }
+  return NONE;
 }
 
 /**

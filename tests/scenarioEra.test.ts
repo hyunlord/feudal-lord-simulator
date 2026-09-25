@@ -62,7 +62,8 @@ test("SC-5 unlocks come from stages: the church moves to market town, everything
   const before = { quarry: "palisade", masonry: "palisade", market: "palisade", church: "stone_town", keep: "stone_town" } as const;
   for (const { kind } of BUILDING_CONFIG) {
     const firstEra = (["hamlet", "palisade", "stone_town"] as const).find(era => isBuildingUnlocked(kind, era));
-    const expected = kind === "church" ? "palisade" : (before as Record<string, string>)[kind] ?? "hamlet";
+    // AF-12: the retired wheat farm is never unlocked; the farmstead opens with the village.
+    const expected = kind === "wheat_farm" ? undefined : kind === "church" ? "palisade" : (before as Record<string, string>)[kind] ?? "hamlet";
     assert.equal(firstEra, expected, kind);
   }
 });

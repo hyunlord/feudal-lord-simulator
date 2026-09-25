@@ -41,7 +41,10 @@ test("Z-11 with no zone every building and tile answers exactly as canPlaceBuild
   for (const state of [structuredClone(DEFAULT_GAME_STATE), town()]) {
     for (const definition of BUILDING_CONFIG) {
       for (const { tx, ty } of tiles(state)) {
-        assert.deepEqual(canPlaceBuildingWithZones(state, definition.kind, tx, ty), canPlaceBuilding(state, definition.kind, tx, ty));
+        const base = canPlaceBuilding(state, definition.kind, tx, ty);
+        // AF-8: a farmstead needs an arable zone beside it even before any zone exists.
+        const expected = definition.kind === "farmstead" && base.ok ? { ok: false, reason: ZonePlacementFailure.outside_zone, rule: "arable" } : base;
+        assert.deepEqual(canPlaceBuildingWithZones(state, definition.kind, tx, ty), expected);
       }
     }
   }
@@ -67,20 +70,17 @@ test("Z-11 with zones, a wheat farm needs arable land outside the wall and a hou
   const zoned = gameReducer(plain, { type: "zone_paint", kind: "arable", stroke: TOWN.strokes.outsideArable });
   const arable = new Set(zonesOf(zoned)[0]!.membership);
   const inArable = (tx: number, ty: number) => [0, 1].every(dy => [0, 1].every(dx => arable.has((ty + dy) * zoned.width + tx + dx)));
-  const farmInside = firstSpot(zoned, "wheat_farm", inArable);
-  const farmOutside = firstSpot(zoned, "wheat_farm", (tx, ty) => !inArable(tx, ty) && !cellInsideWall(zoned, ty * zoned.width + tx));
-  const farmInWall = firstSpot(zoned, "wheat_farm", (tx, ty) => cellInsideWall(zoned, ty * zoned.width + tx));
-  assert.ok(farmInside !== null && farmOutside !== null && farmInWall !== null);
-  assert.deepEqual(canPlaceBuildingWithZones(zoned, "wheat_farm", farmInside.tx, farmInside.ty), { ok: true });
-  assert.notEqual(placeBuilding(zoned, "wheat_farm", farmInside), zoned);
-  assert.deepEqual(canPlaceBuildingWithZones(zoned, "wheat_farm", farmOutside.tx, farmOutside.ty),
+  // AF-8 (C1c-2): the wheat farm is retired; the farmstead stands in or beside an arable zone.
+  const beside = (tx: number, ty: number) => [[tx, ty], [tx - 1, ty], [tx + 1, ty], [tx, ty - 1], [tx, ty + 1]].some(([x, y]) => arable.has(y! * zoned.width + x!));
+  const farmsteadBeside = firstSpot(zoned, "farmstead", beside);
+  const farmsteadAway = firstSpot(zoned, "farmstead", (tx, ty) => !beside(tx, ty));
+  assert.ok(farmsteadBeside !== null && farmsteadAway !== null && !inArable(0, 0));
+  assert.deepEqual(canPlaceBuildingWithZones(zoned, "farmstead", farmsteadBeside.tx, farmsteadBeside.ty), { ok: true });
+  assert.notEqual(placeBuilding(zoned, "farmstead", farmsteadBeside), zoned);
+  assert.deepEqual(canPlaceBuildingWithZones(zoned, "farmstead", farmsteadAway.tx, farmsteadAway.ty),
     { ok: false, reason: ZonePlacementFailure.outside_zone, rule: "arable" });
-  assert.equal(placeBuilding(zoned, "wheat_farm", farmOutside), zoned);
-  assert.deepEqual(canPlaceBuildingWithZones(zoned, "wheat_farm", farmInWall.tx, farmInWall.ty),
-    { ok: false, reason: ZonePlacementFailure.arable_inside_wall, rule: "arable" });
-  assert.equal(placeBuilding(zoned, "wheat_farm", farmInWall), zoned);
-  // The same outside spot is legal again once the zones are gone.
-  assert.notEqual(placeBuilding(plain, "wheat_farm", farmOutside), plain);
+  assert.equal(placeBuilding(zoned, "farmstead", farmsteadAway), zoned);
+  assert.equal(placeBuilding(zoned, "wheat_farm", farmsteadBeside), zoned, "the retired wheat farm is refused everywhere");
   // Houses (C1c, Z-11a): an arable zone alone leaves houses free; once a burgage zone exists they need it.
   const house = firstSpot(zoned, "house", () => true)!;
   assert.deepEqual(canPlaceBuildingWithZones(zoned, "house", house.tx, house.ty), { ok: true });
@@ -108,10 +108,12 @@ test("Z-16 cause rows and placement preview lines for the zone rules", () => {
     buildingPlacementPrediction(zoned, kind, { tx, ty }).lines.filter(line => line.id === "zone").map(line => ({ severity: "severity" in line ? line.severity : null, text: line.text, sources: "sources" in line ? line.sources : [] }));
   const house = firstSpot(zoned, "house", (tx, ty) => burgageSet.has(ty * zoned.width + tx))!;
   assert.deepEqual(lineOf("house", house.tx, house.ty), [{ severity: "ok", text: "필지 구역 안 · 배치 가능", sources: [{ type: "zone", id: burgage!.id }] }]);
-  const farm = firstSpot(zoned, "wheat_farm", (tx, ty) => [0, 1].every(dy => [0, 1].every(dx => arableSet.has((ty + dy) * zoned.width + tx + dx))))!;
-  assert.deepEqual(lineOf("wheat_farm", farm.tx, farm.ty), [{ severity: "ok", text: "경작지 구역 안 · 배치 가능", sources: [{ type: "zone", id: arable!.id }] }]);
-  const outside = firstSpot(zoned, "wheat_farm", (tx, ty) => !arableSet.has(ty * zoned.width + tx) && !cellInsideWall(zoned, ty * zoned.width + tx))!;
-  assert.deepEqual(lineOf("wheat_farm", outside.tx, outside.ty), [{ severity: "block", text: "경작지 구역 밖", sources: [] }]);
+  // AF-8: the farmstead is the building the arable rule places now (in or beside the field).
+  const beside = (tx: number, ty: number) => [[tx, ty], [tx - 1, ty], [tx + 1, ty], [tx, ty - 1], [tx, ty + 1]].some(([x, y]) => arableSet.has(y! * zoned.width + x!));
+  const farmstead = firstSpot(zoned, "farmstead", beside)!;
+  assert.deepEqual(lineOf("farmstead", farmstead.tx, farmstead.ty), [{ severity: "ok", text: "경작지 구역 안 · 배치 가능", sources: [{ type: "zone", id: arable!.id }] }]);
+  const outside = firstSpot(zoned, "farmstead", (tx, ty) => !beside(tx, ty) && !cellInsideWall(zoned, ty * zoned.width + tx))!;
+  assert.deepEqual(lineOf("farmstead", outside.tx, outside.ty), [{ severity: "block", text: "경작지 구역 밖", sources: [] }]);
   const houseOutside = firstSpot(zoned, "house", (tx, ty) => !burgageSet.has(ty * zoned.width + tx))!;
   assert.deepEqual(lineOf("house", houseOutside.tx, houseOutside.ty), [{ severity: "block", text: "필지 구역 밖", sources: [] }]);
   assert.deepEqual(lineOf("well", house.tx, house.ty), []);

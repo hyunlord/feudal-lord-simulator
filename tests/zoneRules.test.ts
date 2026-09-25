@@ -14,7 +14,7 @@ import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { zonePaintLines } from "../src/ui/zonePrediction";
 import { canPlaceBuilding } from "../src/world/placement";
-import { arableStripStates, wheatFarmStripState } from "../src/zones/arableStrips";
+import { arableStripStates } from "../src/zones/arableStrips";
 import { cellInsideWall, zonePaintAssessment, zonesOf } from "../src/zones/zoneEdits";
 import { burgageParcels } from "../src/zones/zoneFillAgent";
 import { canPlaceBuildingWithZones, zoneMismatches, ZonePlacementFailure } from "../src/zones/zonePlacement";
@@ -47,9 +47,12 @@ test("Z-11a gate ①: with only an arable zone every house spot is open; with on
 
   const burgageOnly = gameReducer(town(), { type: "zone_paint", kind: "burgage", stroke: TOWN.strokes.outsideBurgage });
   assert.deepEqual(zonesOf(burgageOnly).map(zone => zone.kind), ["burgage"]);
-  const farmSpots = spots(burgageOnly, "wheat_farm");
-  assert.ok(farmSpots.length > 0);
-  for (const { tx, ty } of farmSpots) assert.deepEqual(canPlaceBuildingWithZones(burgageOnly, "wheat_farm", tx, ty), { ok: true });
+  // C1c-2: the wheat farm is retired (no spot anywhere); its arable rule now places the farmstead, which needs an
+  // arable zone beside it whatever other zones exist (AF-8).
+  assert.deepEqual(spots(burgageOnly, "wheat_farm"), []);
+  const farmsteadSpots = spots(burgageOnly, "farmstead");
+  assert.ok(farmsteadSpots.length > 0);
+  for (const { tx, ty } of farmsteadSpots) assert.equal(canPlaceBuildingWithZones(burgageOnly, "farmstead", tx, ty).ok, false);
   // Only the active rule reports mismatches: the town's houses are not "outside" an arable-only zone map.
   assert.ok(zoneMismatches(arableOnly).every(mismatch => mismatch.kind === "wheat_farm"));
   assert.ok(zoneMismatches(burgageOnly).every(mismatch => mismatch.kind === "house"));
@@ -57,7 +60,7 @@ test("Z-11a gate ①: with only an arable zone every house spot is open; with on
   for (const kind of ["pasture", "hay_meadow", "woodland_common", "orchard"] as const) {
     const painted = gameReducer(town(), { type: "zone_paint", kind, stroke: TOWN.strokes.outsideBurgage });
     assert.equal(zonesOf(painted)[0]?.kind, kind);
-    for (const building of ["house", "wheat_farm"] as const) {
+    for (const building of ["house", "mill"] as const) {
       const first = spots(painted, building)[0]!;
       assert.deepEqual(canPlaceBuildingWithZones(painted, building, first.tx, first.ty), { ok: true });
     }
@@ -86,7 +89,7 @@ test("Z-17 gate ②: three strokes, two undone, equal the one-stroke state (zone
 
   const bytes = encodeSave({ state: third, createdAt: "2026-09-25T00:00:00.000Z", savedAt: "2026-09-25T00:00:00.000Z", gameVersion: "test" }).bytes;
   const loaded = decodeSave(bytes).envelope.state;
-  assert.equal(SAVE_SCHEMA_VERSION, 9);
+  assert.equal(SAVE_SCHEMA_VERSION, 10);
   assert.deepEqual(loaded.zoneUndo, third.zoneUndo);
   const loadedUndone = gameReducer(gameReducer(loaded, { type: "zone_undo_stroke" }), { type: "zone_undo_stroke" });
   assert.deepEqual(loadedUndone.zones, first.zones);
@@ -156,29 +159,24 @@ test("Z-9a a stroke that crosses the wall line keeps exactly the cells outside i
   assert.equal(arable.cells.length, any.cells.length - inside);
 });
 
-test("Z-18 arable strip states: strips along the main axis, fallow without farms, the covering farm's stage otherwise", () => {
+test("Z-18 / AF-2 arable strip states: strips along the main axis over the zone's open cells, fallow until a farmstead works them", () => {
   const state = gameReducer(town(), { type: "zone_paint", kind: "arable", stroke: TOWN.strokes.outsideArable });
   const zone = zonesOf(state)[0]!;
   const layout = arableStripStates(zone, state);
   assert.deepEqual(arableStripStates(zone, state), layout, "deterministic");
   const cells = layout.strips.flatMap(strip => strip.cells.map(cell => cell.ty * state.width + cell.tx)).sort((a, b) => a - b);
-  assert.deepEqual(cells, zone.membership, "the strips cover the zone exactly once");
+  // AF-1: cells under a road, building or site grow nothing and belong to no strip.
+  const open = zone.membership.filter(index => { const tile = state.tiles[index]!; return !tile.hasRoad && tile.buildingId === null
+    && (tile.terrain === "grass" || tile.terrain === "forest"); });
+  assert.deepEqual(cells, open, "the strips cover the zone's open cells exactly once");
   for (const strip of layout.strips) {
     const lines = new Set(strip.cells.map(cell => layout.axis === "x" ? cell.ty : cell.tx));
     assert.equal(lines.size, 1, "a strip lies on one line along the main axis");
+    assert.equal(strip.stage, "fallow");
+    assert.equal(strip.state, "fallow");
+    assert.equal(strip.crop, "wheat");
+    assert.ok(strip.yieldEstimate > 0);
   }
-  const farms = state.buildings.filter(building => building.kind === "wheat_farm");
-  const farmCells = new Set(farms.flatMap(farm => [0, 1].flatMap(dy => [0, 1].map(dx => `${farm.tx + dx},${farm.ty + dy}`))));
-  for (const strip of layout.strips) {
-    const covered = strip.cells.some(cell => farmCells.has(`${cell.tx},${cell.ty}`));
-    assert.equal(strip.farmId !== null, covered);
-    if (!covered) assert.equal(strip.state, "fallow");
-  }
-  const farm = { id: "farm", kind: "wheat_farm" as const, tx: 0, ty: 0, workers: 4, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
-  assert.deepEqual([0, 14, 27, 39].map(progress => wheatFarmStripState({ ...farm, productionProgress: progress })),
-    ["ploughed", "seedling", "growing", "growing"]);
-  assert.equal(wheatFarmStripState({ ...farm, workers: 0 }), "fallow");
-  assert.equal(wheatFarmStripState({ ...farm, operationPaused: true }), "fallow");
 });
 
 test("calendar: a provisional 4,000-tick year of four 1,000-tick seasons; era years unchanged", () => {

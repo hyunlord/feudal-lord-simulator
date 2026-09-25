@@ -2,6 +2,7 @@ import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import {
   BUILDING_CONFIG,
   BUILDING_CONFIG_BY_KIND,
+  isRetiredBuildingKind,
   type BuildingKind,
 } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
@@ -100,7 +101,8 @@ export const ROAD_TOOL_OPTION: BuildToolOption = {
   requirements: ["요구 조건 없음"],
 };
 
-const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.map((definition) => ({
+// AF-12: retired kinds (the wheat farm) have no build tool.
+const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.filter(definition => !isRetiredBuildingKind(definition.kind)).map((definition) => ({
   tool: definition.kind,
   label: definition.name,
   timberCost: definition.buildCost.timber ?? 0,

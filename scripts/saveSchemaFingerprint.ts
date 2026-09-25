@@ -27,6 +27,7 @@ export const FINGERPRINT_FIXTURES = [
   "fixtures/saves/v7/ledger-rollup.save.json",
   "fixtures/saves/v8/money-arrears.save.json",
   "fixtures/saves/v9/zone-undo.save.json",
+  "fixtures/saves/v10/four-farms.save.json",
   "fixtures/saves/v2/new-game.save.json",
   "fixtures/saves/v2/population-176.save.json",
   "fixtures/saves/v2/palisade-construction.save.json",
