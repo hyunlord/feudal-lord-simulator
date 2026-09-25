@@ -95,4 +95,30 @@ export const SEASON_BALANCE = {
   ],
 } as const;
 
-export const BALANCE_CONFIG = { ...BALANCE, money: MONEY_BALANCE, labour: LABOUR_BALANCE, season: SEASON_BALANCE } as const;
+/**
+ * F0-A pressure (spec `docs/design/flow-pressure.md`, FP-*): the season ledger, the failure ladder's stages 1–2 and
+ * the winter test. A season is a quarter of the calendar year (1,000 ticks).
+ */
+export const PRESSURE_BALANCE = {
+  /** FP-1: one calendar season; season ledgers close on its multiples. */
+  seasonTicks: BALANCE.TICKS_PER_YEAR / 4,
+  /** FP-1: closed season ledgers kept (the newest eight, two years). */
+  seasonLedgerHistory: 8,
+  /** FP-3: households are checked for a food shortage every this many ticks (divides a season and a meal interval). */
+  sampleTicks: 50,
+  /** FP-3: at most this many households leave (stage 2) per calendar season (F3: "필지 1~2개 황폐"). */
+  maxDeparturesPerSeason: 2,
+  /**
+   * FP-3: stage 2 never leaves fewer than this many homes lived in — the opening village's four. Two departures from
+   * a four-home village leave too few adults to staff its mill, and the town starves empty (seed 5, first winter).
+   */
+  minOccupiedHouses: 4,
+  /** FP-3: an abandoned house stands empty at least this long before a new household may take it. */
+  resettleAfterTicks: BALANCE.TICKS_PER_YEAR / 4,
+  /** FP-4: bread a household eats in winter, permille of its ration (heating stands in for fuel, which is not a resource). */
+  winterRationPermille: 1200,
+  /** FP-4: in-year tick where winter starts (the calendar's fourth season; arable growth stops there too). */
+  winterFrom: (BALANCE.TICKS_PER_YEAR / 4) * 3,
+} as const;
+
+export const BALANCE_CONFIG = { ...BALANCE, money: MONEY_BALANCE, labour: LABOUR_BALANCE, season: SEASON_BALANCE, pressure: PRESSURE_BALANCE } as const;
