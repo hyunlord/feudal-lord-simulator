@@ -15,11 +15,13 @@ export function foodFacilityCount(state: GameState, kind: BuildingKind): number 
 const MILL_YEAR_WHEAT = Math.floor(BALANCE.TICKS_PER_YEAR * (BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2)
   / (BUILDING_CONFIG_BY_KIND.mill.production?.ticksPerOutput ?? 30));
 
+const MILL_HAULING_FACTOR = 2;
+
 export function foodFacilityWithinLimit(state: GameState, kind: BuildingKind): boolean {
   switch (kind) {
-    // AF-13: mills up to what the larger of a year's need and the expected harvest can keep busy, plus one; never
-    // while one stands empty.
-    case 'mill': return foodFacilityCount(state, 'mill') < Math.ceil(Math.max(annualWheatNeed(state), expectedAnnualWheat(state)) / MILL_YEAR_WHEAT) + 1
+    // AF-13: mills up to twice what the larger of a year's need and the expected harvest could keep busy (a mill's one
+    // carter spends about half its time hauling wheat in and bread out), plus one; never while one stands empty.
+    case 'mill': return foodFacilityCount(state, 'mill') < Math.ceil(Math.max(annualWheatNeed(state), expectedAnnualWheat(state)) * MILL_HAULING_FACTOR / MILL_YEAR_WHEAT) + 1
       && state.buildings.every(building => building.kind !== 'mill' || (building.inventory.wheat ?? 0) > 0);
     case 'granary': return foodFacilityCount(state, 'granary') < Math.ceil(housingLotCount(state) / 4) + 1;
     default: return true;
