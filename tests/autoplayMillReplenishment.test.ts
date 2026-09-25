@@ -5,8 +5,7 @@ import { gunzipSync } from 'node:zlib';
 import type { GameState } from '../src/engine/engine.types';
 import { advanceTick } from '../src/engine/tick';
 import { sampleAutoplayDecision } from '../src/ui/autoplayDecisionCache';
-import { shouldRetryAutoplayAfterMillReplenishment as retryAtCurrentMargin } from '../src/engine/autoplayMillReplenishment';
-import { ARABLE_MARGIN_PERMILLE, withArableMargin, YEAR_RATION_PERMILLE } from '../src/engine/autoplayArable';
+import { shouldRetryAutoplayAfterMillReplenishment } from '../src/engine/autoplayMillReplenishment';
 import { migrateStateV9ToV10 } from '../src/save/migrations/v9ToV10';
 import { underPreK4Unlocks } from './preK4UnlockScenario';
 
@@ -14,14 +13,6 @@ import { underPreK4Unlocks } from './preK4UnlockScenario';
 // it is migrated on load like an old save. Migration hands the new farmstead(s) zero workers (labour has not
 // been reallocated since); the town was otherwise fully staffed, so that is corrected here rather than by
 // running ticks (which would drift away from the exact captured replenishment moment the fixture exists for).
-/**
- * F0-A (FP-6): the planner's year need now includes the winter ration (× 1.05). This town was planned for a year
- * without it, so at today's need its grain reads short and the food decision is `grain_short`, not the transport
- * block this retry is about. The retry is judged at the margin the town was planned with (1.2 ÷ 1.05).
- */
-const shouldRetryAutoplayAfterMillReplenishment = (previous: GameState, current: GameState): boolean =>
-  withArableMargin(Math.floor(ARABLE_MARGIN_PERMILLE * 1000 / YEAR_RATION_PERMILLE), () => retryAtCurrentMargin(previous, current));
-
 function naturalTown(): GameState {
   // Captured under the pre-K4-1 unlock table (church locked until stone town); see preK4UnlockScenario.ts.
   const raw: GameState = JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/autoplay-recovery/mill-replenishment-seed2-324000.json.gz', import.meta.url))).toString());

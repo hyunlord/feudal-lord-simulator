@@ -43,6 +43,7 @@ import { timberDemandExpansionKind } from './autoplayTimberDemand';
 import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorPlots';
 import { ARABLE_MARGIN_PERMILLE, NAIVE_ARABLE_MARGIN_PERMILLE, withArableMargin } from './autoplayArable';
 import { winterReserveAction } from './autoplayWinterReserve';
+import { barnMillAction } from './autoplayBarnMill';
 /** The advisor's outward action: the placement actions plus BOT-1's house relocation (`demolish_house`). */
 export type { AdvisorAction as AutoplayAction } from './autoplayBotRecovery';
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
@@ -306,8 +307,10 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   };
   // F0-A (FP-6): the autumn winter-reserve check, before the ordinary food step; the naive variant has none.
   const winterReserve = (current: GameState): AutoplayAction => policy.naiveReserve === true ? NONE : winterReserveAction(current, buildAction);
+  // F0-A (AR-8): a mill beside a barn the mills cannot empty while homes lose their levels (seed 4, run 1).
+  const barnMill = (current: GameState): AutoplayAction => barnMillAction(current, buildAction, diagnostic);
   if (state.era === "stone_town") {
-    for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve,
+    for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
       (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
@@ -328,6 +331,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => granaryGap(state),
     () => timberAction(state, diagnostic),
     () => winterReserve(state),
+    () => barnMill(state),
     () => foodAction(state, buildAction, diagnostic),
     housingPhase,
     servicePhase,
