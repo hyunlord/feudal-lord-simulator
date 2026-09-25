@@ -5,6 +5,7 @@ import type { GameState } from "../engine/engine.types";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "../engine/simulationPorts";
 import { getTile, type TileCoordinate } from "../world/grid";
 import { canPlaceBuildingWithZones } from "../zones/zonePlacement";
+import { arableAdjacentOrigins } from "./onboardingArableGuidance";
 import { canPlaceRoad } from "../world/roadGraph";
 import {
   completedCoreOnboardingBuildings,
@@ -75,35 +76,56 @@ export function firstRoadTargetForOnboarding(state: GuidanceWorld): TileCoordina
   return candidates.find((candidate) => canPlaceRoad(state, candidate)) ?? null;
 }
 
-// Memo for the per-frame guidance overlay (B11: ~14 ms per frame on a new game).
+// Memo for the per-frame guidance overlay (B11: ~14 ms per frame on a new game; C1f 0-B: ~200 ms after C1c-2).
 // Cache (AGENTS rule 10):
-// (a) Key: the identity of every top-level GameState field except `tick`, `walkers` and `pathCache`. State updates
-//     are immutable, so an unchanged field keeps its identity.
-// (b) Left out: `tick` is only copied into a trial construction site's startedTick, which no route or placement check
-//     reads; `walkers` is not read by any guidance rule; `pathCache` is a route cache whose contents never change a
-//     route result. So a key match means the same targets.
-// (c) Measured before/after `frameWorkMs` on the new-game benchmark: docs/verification/d1a/REPORT.md.
-const GUIDANCE_KEY_IGNORED: ReadonlySet<string> = new Set(["tick", "walkers", "pathCache"]);
-let guidanceMemo: { readonly fields: readonly string[]; readonly values: readonly unknown[]; readonly targets: readonly OnboardingGuidanceTarget[] } | null = null;
+// (a) Key, three parts:
+//     - the identity of every top-level GameState field that does not change every tick (tiles, zones, era, stock
+//       and so on): an edit replaces them, so a change recomputes at once;
+//     - buildings and construction sites by id, kind and origin (their arrays are new every tick because of their
+//       production and work state): placing, finishing, cancelling or demolishing recomputes at once;
+//     - the guidance sample, floor(tick / GUIDANCE_SAMPLE_TICKS), for everything that moves every tick (houses,
+//       settlement, the autoplay flow records, building stocks): at most one recompute per sample (3 s at 1x), the
+//       same cadence as the onboarding task panel (App `guidanceSample`), so the map hint and the task text agree.
+// (b) Left out: `walkers` and `pathCache` (no guidance rule reads them; a route cache never changes a route result)
+//     and `tick` itself beyond its sample. What the sample defers is a target that depends on stock arriving or a
+//     house level changing; it catches up within one sample.
+// (c) New game frameWork: C1c-2 trunk median 201.5 / p95 207.9 ms -> docs/verification/c1f-farmstead/REPORT.md (0-B).
+const GUIDANCE_SAMPLE_TICKS = 60;
+/** Fields replaced every tick: compared through the structural signature or the sample instead of identity. */
+const GUIDANCE_KEY_PER_TICK: ReadonlySet<string> = new Set(["tick", "walkers", "pathCache", "buildings", "constructionSites", "houses",
+  "settlement", "wallTick", "autoplayFoodFlow", "autoplayRecurringDelivery", "autoplayEmptyHomes", "timberProductionWindow"]);
+let guidanceMemo: { readonly fields: readonly string[]; readonly values: readonly unknown[]; readonly structure: string; readonly sample: number;
+  readonly targets: readonly OnboardingGuidanceTarget[] } | null = null;
 let guidanceMemoStats = { hits: 0, misses: 0 };
 
 export function onboardingWorldGuidanceMemoStats(): Readonly<{ hits: number; misses: number }> {
   return { ...guidanceMemoStats };
 }
 
+/** Buildings and construction sites by id, kind and origin (not their per-tick work state). */
+function guidanceStructure(state: GuidanceWorld): string {
+  let signature = "";
+  for (const building of state.buildings) signature += `${building.id}:${building.kind}:${building.tx},${building.ty};`;
+  signature += "|";
+  for (const site of state.constructionSites) signature += `${site.id}:${site.kind}:${"tx" in site ? `${site.tx},${site.ty}` : ""};`;
+  return signature;
+}
+
 export function onboardingWorldGuidanceTargets(
   state: GuidanceWorld,
 ): readonly OnboardingGuidanceTarget[] {
-  const fields = Object.keys(state).filter(field => !GUIDANCE_KEY_IGNORED.has(field)).sort();
+  const fields = Object.keys(state).filter(field => !GUIDANCE_KEY_PER_TICK.has(field)).sort();
   const values = fields.map(field => (state as unknown as Record<string, unknown>)[field]);
-  if (guidanceMemo !== null && guidanceMemo.fields.length === fields.length
+  const structure = guidanceStructure(state);
+  const sample = Math.floor(state.tick / GUIDANCE_SAMPLE_TICKS);
+  if (guidanceMemo !== null && guidanceMemo.sample === sample && guidanceMemo.structure === structure && guidanceMemo.fields.length === fields.length
     && guidanceMemo.fields.every((field, index) => field === fields[index] && guidanceMemo?.values[index] === values[index])) {
     guidanceMemoStats = { ...guidanceMemoStats, hits: guidanceMemoStats.hits + 1 };
     return guidanceMemo.targets;
   }
   guidanceMemoStats = { ...guidanceMemoStats, misses: guidanceMemoStats.misses + 1 };
   const targets = computeOnboardingWorldGuidanceTargets(state);
-  guidanceMemo = { fields, values, targets };
+  guidanceMemo = { fields, values, structure, sample, targets };
   return targets;
 }
 
@@ -177,7 +199,10 @@ function firstBuildableOriginForKind(
   candidateOrigins: readonly TileCoordinate[],
 ): TileCoordinate | null {
   const timberRoads = kind === "storehouse" ? timberDeliveryRoads(state) : null;
+  const farmsteadOrigins = kind === "farmstead" ? arableAdjacentOrigins(state) : null;
+  if (farmsteadOrigins !== null && farmsteadOrigins.size === 0) return null;
   for (const origin of candidateOrigins) {
+    if (farmsteadOrigins !== null && !farmsteadOrigins.has(origin.ty * state.width + origin.tx)) continue;
     if (reservedOverlaps(kind, origin, reserved)) continue;
     if (kind === "well" && !wellCompletesTask(state, origin)) continue;
     if (timberRoads !== null && !storehouseOnTimberDeliveryRoad(state, origin, timberRoads)) continue;
