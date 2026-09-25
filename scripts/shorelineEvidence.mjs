@@ -6,7 +6,8 @@
 //   captures: before (--base) / after (--url) at zoom 1.0 and 0.6, walkers hidden: the seed 2 lake (fixture), the seed 2
 //             bridge and the 24-lot river with its bridges (saved bridge states), plus 2x close-ups of the bridge ends.
 //   PLAYWRIGHT_MODULE=... node scripts/shorelineEvidence.mjs captures <outDir> --seed2Bridge <s> --riverBridges <s> --base <url> [--url ...]
-//   flag:     gate 5, curved ground off (`render-boundary-v2=0`): canvas SHA-256 of the same views in both builds must match.
+//   flag:     gate 5, curved ground off (`render-boundary-v2=0`): an FNV-1a hash over the canvas RGBA of the same views in
+//             both builds (software raster) must match.
 //   PLAYWRIGHT_MODULE=... node scripts/shorelineEvidence.mjs flag <out.json> --seed2Bridge <s> --riverBridges <s> --base <url> [--url ...]
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';

@@ -113,6 +113,9 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | FS3 | 집 마당 소품: 텃밭 이랑은 뒤 띠(집 뒤면 보이는 끝 1개), 허들은 잘리지 않고 이웃 마당·frontage가 아닌 1칸 변마다, 북쪽 꼭짓점만 코너 조각(Wave 4b), 문·다른 코너·반 칸은 4c 의뢰 | 렌더 결정(C1e) | 2026-09-25 | [경작지 띠 FS-3](../design/field-strips.md) |
 | FS4 | 변형 선택: 바닥은 구역 단위 근거리 거부, 데칼은 4칸 거부(없으면 생략), 과수는 심은 이웃 1.5칸 기준(1그루/칸 × 5장에서는 4칸 기준 불가), 나무·건초더미 반전 없음. 흙길 v3 등록, 기본 v1 | 확정(사용자, D3a 지시서 0절): 과수는 인접(1.5칸) 중복 없음, Wave 4c로 9종이 되면 반경 2 | 2026-09-25 | [경작지 띠 FS-4](../design/field-strips.md) |
 | RS1 | 흙길 스트립 기본 = v3(Wave 4b 4장 a→b→c→d), v1·v2는 선택지 | 확정(사용자, D3a 지시서 0절) | 2026-09-25 | [C1e 보고서](../verification/c1e-fields/REPORT.md) · `ROAD_STRIP_CHOICE` |
+| SH1 | 물가: 물 칸 marching squares + Chaikin 2(숲과 같은 경로), 지도 밖 = 육지, 물은 V2 지면 청크로 옮김(실시간 물 패스 없음), 칸 단위 물가 자국 끔 | 렌더 결정(D3a) | 2026-09-25 | [물가 곡선 SH-1·SH-3](../design/shoreline.md) |
+| SH2 | 다리 끝 물가 잠금 ±0.5칸(0.8까지 완화), 교대는 뒤쪽 끝만(x축 NW, y축 NE, Wave 4b 두 장), 앞쪽 끝·나루 모듈은 Astra 후보 | 렌더 결정(D3a) | 2026-09-25 | [물가 곡선 SH-2](../design/shoreline.md) |
+| SH3 | 얕은 물: 윤곽을 따라 0.6칸까지 6겹 획으로 페이드, 물가 띠는 88행에서 끊음, 얕은 돌·물풀은 코드 데칼 | 렌더 결정(D3a) | 2026-09-25 | [물가 곡선 SH-3](../design/shoreline.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
 
 ## R1-fix 확정 규칙

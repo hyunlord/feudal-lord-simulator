@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-25(C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
@@ -32,6 +32,8 @@
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
+
+**D3a 물가 곡선**(Claude Code, 렌더·경계층·테스트·스크립트·문서만): 곡선 지면에서 물이 칸 덩어리 대신 굽은 물가(물 칸 marching squares + Chaikin 2, 숲과 같은 경로)로 보인다. 물은 지면 청크로 옮겼다: 깊은 물(예전 무늬) → 얕은 물(`shallow_{a,b,c}`, 0.6칸 페이드) → 코드 얕은 돌·물풀 → 물가 띠(`shoreline_{a..d}`, 16칸 주기). 다리 끝은 둑 경계에 ±0.5칸 직선 잠금, 뒤쪽 끝에 Wave 4b 교대(x NW, y NE). 칸 단위 물가 자국은 V2에서 끔. 0절: 흙길 기본 v3(RS1), 과수 인접 규칙 확정(FS4). 관문: ①윤곽 최대 0.25칸·다리 접점 0.000칸·0°, ②역순 입력·브라우저 12/12, ③실제 입력 다리 3개 캡처(seed 2, 24필지 강), ④p95 97~105%, ⑤플래그 끔 12/12 픽셀 동일, ⑥C25 갱신, ⑦깨끗한 클론. 앞쪽 교대·나루·갈대 데칼은 Astra 후보. [D3a 보고서](verification/d3a-shoreline/REPORT.md), [명세](design/shoreline.md).
 
 **C1e 경작지 띠·텃밭·울타리·변형 설치**(Claude Code, 렌더·경계층·에셋·테스트·스크립트·문서만): 경작지 구역은 흙 바닥 위에 C1c `arableStripStates` 띠를 0.5칸 이랑 줄 2개씩(a|b 8칸 주기, 4칸 안 줄끼리 위상 다름), headland 0.2칸, 띠 이음 고랑 도장, 상태별 옅은 덧칠(줌 0.6 구분)로 그린다. 밀밭 footprint·도로·건물 칸은 비우고, 작물 칸의 풀덤·돌은 뺐다. 집 마당에 텃밭 이랑(뒤 띠)과 Wave 4b 허들(잘리지 않은 1칸 변, 북쪽 코너 조각). 변형: 구역별 바닥, 건초더미 6·과수 5(반전 없음), 흙길 v3 등록(기본 v1), 물가·얕은 물·벽 면·교대는 D3용 등록만. 0절 `assets-inbox/` LFS 규칙과 후보 101장, 대장 Wave 4b 53행(전부 runtime). 0-A: Z = `zone_undo_stroke`, BG1 확정. 관문: ①seed 2 성 밖 실제 입력 장면에서 4상태·y축 띠·headland 0.2, ②줄 위상·이음 seam 0, ③허들 9·텃밭 3 캡처와 4c 필요 자리 11곳, ④4칸 안 동일 변형 0(과수만 이웃 기준, 결정 FS4 확인 대기), ⑤p95 71~102%, ⑥C25 구역 판 갱신·브라우저 12/12·역순 6/6, ⑦깨끗한 클론. [C1e 보고서](verification/c1e-fields/REPORT.md), [명세](design/field-strips.md).
 
