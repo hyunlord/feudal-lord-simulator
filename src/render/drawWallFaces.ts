@@ -11,34 +11,49 @@ import { preloadStoneWallAssets, stoneWallMaterial } from "./stoneWallAssets";
 import type { StoneWallNode } from "./stoneWallTopology";
 import { joinStripImages } from "./stripJoin";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { preloadWallFaceAssets, wallFaceAsset } from "./terrainVariantAssets";
 import { TERRAIN_VARIANTS, type WallFaceKey } from "./terrainVariantManifest";
 import { drawGateMarker, drawPost } from "./timberGateRenderer";
 import { preloadTimberWallAssets } from "./timberWallAssets";
 
-// Wall faces (D3b, RENDER_BOUNDARY_V2 only): completed walls are the Wave 4b face strips extruded along the wall
-// baselines (world/boundary/wallBaseline), and modules stand on the nodes. Each object-queue wall item is one unit edge
-// of the logic path; it draws the stretch of face whose raw arc position lies on that edge, so the depth order of the
-// wall pieces is the existing one.
-//  - Extrusion: every baseline sample pair is one quad from the projected baseline straight up FACE_HEIGHT (a tile's
-//    screen height, the strip's 128 source px), textured by an affine map (u = arc length at 128 px per tile, plus a
-//    phase hashed per chain; v = height). The three variants are joined a | b | c (12-tile period).
-//  - Tone: the strips are lit front elevations; a face turned toward the lower right (a wall along the tile y axis)
-//    takes a dark wash of FACE_SHADE, one along the x axis none, others in between (the old pieces' light rule).
-//  - Gates: the face stops GATE_HALF_CLEARANCE short of a gate; the existing gate art (or its fallback) stands there.
-//  - Modules (existing pieces, no new art): stone uses the masonry piers, taller at towers; timber uses the posts.
+// Wall strips (D3b; v2 two-layer strips D3b-2; RENDER_WALL_STRIPS on the curved ground): completed walls are strips
+// extruded along the wall baselines (world/boundary/wallBaseline), and modules stand on the nodes. Each object-queue
+// wall item is one unit edge of the logic path; it draws the stretch whose raw arc position lies on that edge, so the
+// depth order of the wall pieces is the existing one.
+//  - Face (Wave 4d v2, no battlements): every baseline sample pair is one quad from the projected front line straight
+//    up FACE_HEIGHT (the strip's 128 source px), textured by an affine map (u = arc length at 205 px per tile, plus a
+//    phase hashed per chain; v = height). Variants joined a | b | c (stone, 12 tiles) or a | b (timber, 8 tiles).
+//  - Top (Wave 4d, the wall walk with the merlons, or the stake tops): a strip of TOP_SOURCE_HEIGHT source px sheared
+//    from the face's top edge (its bottom row, the merlons) back to the wall's rear line raised by TOP_HEIGHT, so the
+//    wall has a readable top and thickness (stone: the rear line is 0.15 tile behind the baseline).
+//  - Seen end-on (a run whose screen direction is within 60 degrees of vertical: along the tile diagonal) the face has
+//    no width; such a run draws the diag_top strip, a top view across the wall's thickness, at wall height instead.
+//  - Tone: a face turned toward the lower right (a wall along the tile y axis) takes a dark wash of FACE_SHADE.
+//  - Gates: the strip stops GATE_HALF_CLEARANCE short of a gate; the existing gate art (or its fallback) stands there.
+//  - Modules: a stone tower (90 degree corner) is the Wave 4d corner tower; other stone nodes use the masonry piers,
+//    timber the posts.
 
-export const FACE_HEIGHT = 32;
+/**
+ * Face height at zoom 1 (D3b-2): 20 px, so face + top (about 28 px) stays under the gate arch and near the old pieces'
+ * height (D3b's 32 px face was twice the pieces). The strip's 128 source rows map to it; along the wall the texture
+ * keeps the same scale (205 source px per tile), so the stones keep their proportions.
+ */
+export const FACE_HEIGHT = 20;
 const FACE_WIDTH = 512;
 const FACE_SOURCE_HEIGHT = 128;
-const FACE_PX_PER_TILE = 128;
+const FACE_PX_PER_TILE = 205;
 const FACE_JOIN_FADE = 48;
 const FACE_SHADE = 0.22;
-/** Wall thickness (tiles) and the cap's height as a share of the face (below the merlons / stake points). */
+const TOP_SOURCE_HEIGHT = 48;
+/** The top strip's own screen height (48 source px at the face's 128 px = FACE_HEIGHT scale). */
+export const TOP_HEIGHT = FACE_HEIGHT * TOP_SOURCE_HEIGHT / FACE_SOURCE_HEIGHT;
+const DIAG_SOURCE_HEIGHT = 64;
+/** Face runs: screen direction at least this far from vertical (|dx| / length); steeper runs draw the diag top. */
+const FACE_MIN_SPREAD = 0.5;
+/** Wall thickness (tiles): the face stands half of it in front of the baseline, the top reaches half of it behind. */
 const WALL_THICKNESS: Readonly<Record<WallMaterial, number>> = { stone: 0.3, timber: 0.16 };
-const CAP_FRACTION: Readonly<Record<WallMaterial, number>> = { stone: 0.78, timber: 0.84 };
-const CAP_COLOUR: Readonly<Record<WallMaterial, string>> = { stone: SEMANTIC_PALETTE.stone, timber: SEMANTIC_PALETTE.earthDark };
-/** The wall body seen end-on (a run along the tile diagonal shows only this and its cap). */
+/** The wall body seen end-on (the side of a run's end). */
 const SIDE_COLOUR: Readonly<Record<WallMaterial, string>> = { stone: SEMANTIC_PALETTE.stoneDark, timber: SEMANTIC_PALETTE.earthDark };
 /** Quads overlap by this much along the line so antialiased joins leave no hairline (tile units). */
 const QUAD_OVERLAP = 0.005;
@@ -78,13 +93,19 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
   for (const sample of samples) if (sample.t > low && sample.t < high) stretch.push({ point: sample.point, t: sample.t });
   stretch.push({ point: pointAt(high), t: high });
   const face = faceCanvas(chain.material);
-  const pattern = face === null || typeof context.createPattern !== "function" ? null : cachedPattern(context, face);
+  const top = topCanvas(chain.material);
+  const diag = diagCanvas(chain.material);
+  const canPattern = typeof context.createPattern === "function";
+  const pattern = face === null || !canPattern ? null : cachedPattern(context, face);
+  const topPattern = top === null || !canPattern ? null : cachedPattern(context, top);
+  const diagPattern = diag === null || !canPattern ? null : cachedPattern(context, diag);
   // Arc length (world tiles) from the chain start to `low`, then along the stretch.
   const arcStart = arcTo(chain, low);
   const phase = (chain.hash % 12) * FACE_PX_PER_TILE;
-  // Two passes: the body (end faces and cap) of the whole stretch first, then the textured front faces, so a later
-  // segment's end face never paints over an earlier segment's front face.
-  for (const pass of ["body", "face"] as const) {
+  const half = WALL_THICKNESS[chain.material] / 2;
+  // Three passes: the body (end faces) of the whole stretch, then the faces (or the end-on top views), then the tops,
+  // so a later segment's end face never paints over an earlier face and every top lies over the faces below it.
+  for (const pass of ["body", "face", "top"] as const) {
     let arc = arcStart;
     for (let index = 0; index < stretch.length - 1; index += 1) {
       const a = stretch[index] as { point: BoundaryPoint }; const b = stretch[index + 1] as { point: BoundaryPoint };
@@ -92,37 +113,45 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
       const segment = Math.hypot(dx, dy);
       if (segment === 0) continue;
       const ext = { x: dx / segment * QUAD_OVERLAP, y: dy / segment * QUAD_OVERLAP };
-      // Thickness: the textured face stands on the side toward the camera (world normal with n . (1, 1) >= 0); the cap
-      // joins it to the back side at cap height. A run along the tile diagonal (1, 1) is edge-on on screen: only its
-      // body (end faces and cap) shows, which is what a wall seen along its length looks like.
+      // The face stands on the side toward the camera (world normal with n . (1, 1) >= 0), the top reaches the back.
       let n = { x: -dy / segment, y: dx / segment };
       if (n.x + n.y < 0) n = { x: -n.x, y: -n.y };
-      const half = WALL_THICKNESS[chain.material] / 2;
       const front = (point: BoundaryPoint, sign: number) => screenOf({ x: point.x + n.x * half + ext.x * sign, y: point.y + n.y * half + ext.y * sign });
       const back = (point: BoundaryPoint, sign: number) => screenOf({ x: point.x - n.x * half + ext.x * sign, y: point.y - n.y * half + ext.y * sign });
       const fa = front(a.point, -1); const fb = front(b.point, 1);
+      const ba = back(a.point, -1); const bb = back(b.point, 1);
+      const sa = screenOf({ x: a.point.x + n.x * half, y: a.point.y + n.y * half }); const sb = screenOf({ x: b.point.x + n.x * half, y: b.point.y + n.y * half });
+      const screenLength = Math.hypot(sb.x - sa.x, sb.y - sa.y);
+      const faceRun = screenLength > 0 && Math.abs(sb.x - sa.x) / screenLength >= FACE_MIN_SPREAD;
+      const u0 = arc * FACE_PX_PER_TILE + phase; const u1 = (arc + segment) * FACE_PX_PER_TILE + phase;
+      arc += segment;
       if (pass === "body") {
-        const ba = back(a.point, -1); const bb = back(b.point, 1);
-        const capHeight = FACE_HEIGHT * CAP_FRACTION[chain.material];
         context.beginPath();
-        context.moveTo(ba.x, ba.y); context.lineTo(fa.x, fa.y); context.lineTo(fa.x, fa.y - capHeight); context.lineTo(ba.x, ba.y - capHeight);
+        context.moveTo(ba.x, ba.y); context.lineTo(fa.x, fa.y); context.lineTo(fa.x, fa.y - FACE_HEIGHT); context.lineTo(ba.x, ba.y - FACE_HEIGHT);
         context.closePath();
         context.fillStyle = SIDE_COLOUR[chain.material];
         context.fill();
-        context.beginPath();
-        context.moveTo(fa.x, fa.y - capHeight); context.lineTo(fb.x, fb.y - capHeight); context.lineTo(bb.x, bb.y - capHeight); context.lineTo(ba.x, ba.y - capHeight);
-        context.closePath();
-        context.fillStyle = CAP_COLOUR[chain.material];
-        context.fill();
         continue;
       }
-      const sa = screenOf({ x: a.point.x + n.x * half, y: a.point.y + n.y * half }); const sb = screenOf({ x: b.point.x + n.x * half, y: b.point.y + n.y * half });
-      if (Math.hypot(sb.x - sa.x, sb.y - sa.y) < 0.05) { arc += segment; continue; }
+      if (pass === "face" && !faceRun) {
+        // End-on: the top view across the thickness at wall height (u along the wall, v from the back to the front).
+        quad(context, [ba, bb, fb, fa].map(point => ({ x: point.x, y: point.y - FACE_HEIGHT })) as Quad,
+          diagPattern, strip(ba, bb, fa, u0, u1, DIAG_SOURCE_HEIGHT, FACE_HEIGHT), SIDE_COLOUR[chain.material]);
+        continue;
+      }
+      if (!faceRun || screenLength < 0.05) continue;
+      if (pass === "top") {
+        // Sheared from the face's top edge (the strip's bottom row) to the rear line raised by TOP_HEIGHT.
+        const rise = FACE_HEIGHT + TOP_HEIGHT;
+        const backTopA = { x: ba.x, y: ba.y - rise }; const backTopB = { x: bb.x, y: bb.y - rise };
+        quad(context, [backTopA, backTopB, { x: fb.x, y: fb.y - FACE_HEIGHT }, { x: fa.x, y: fa.y - FACE_HEIGHT }],
+          topPattern, strip(ba, bb, fa, u0, u1, TOP_SOURCE_HEIGHT, rise, FACE_HEIGHT), CAP_FALLBACK[chain.material]);
+        continue;
+      }
       context.beginPath();
       context.moveTo(fa.x, fa.y); context.lineTo(fb.x, fb.y); context.lineTo(fb.x, fb.y - FACE_HEIGHT); context.lineTo(fa.x, fa.y - FACE_HEIGHT);
       context.closePath();
       if (pattern !== null) {
-        const u0 = arc * FACE_PX_PER_TILE + phase; const u1 = (arc + segment) * FACE_PX_PER_TILE + phase;
         const ma = (sb.x - sa.x) / (u1 - u0); const mb = (sb.y - sa.y) / (u1 - u0);
         const matrix = { a: ma, b: mb, c: 0, d: FACE_HEIGHT / FACE_SOURCE_HEIGHT, e: sa.x - ma * u0, f: sa.y - mb * u0 - FACE_HEIGHT };
         pattern.setTransform(matrix);
@@ -145,9 +174,30 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
         context.fill();
         context.globalAlpha = previousAlpha;
       }
-      arc += segment;
     }
   }
+}
+
+type Quad = [BoundaryPoint, BoundaryPoint, BoundaryPoint, BoundaryPoint];
+const CAP_FALLBACK: Readonly<Record<WallMaterial, string>> = { stone: SEMANTIC_PALETTE.stoneDark, timber: SEMANTIC_PALETTE.earthDark };
+
+/**
+ * Pattern transform of a strip laid from the rear line (row 0) to the front line (last row): u runs along a -> b over
+ * [u0, u1], v from the rear line raised by `rise` down to the front line raised by `frontRise` (screen px).
+ */
+function strip(rearA: BoundaryPoint, rearB: BoundaryPoint, frontA: BoundaryPoint, u0: number, u1: number, rows: number, rise: number, frontRise = rise): Matrix {
+  const du = { x: (rearB.x - rearA.x) / (u1 - u0), y: (rearB.y - rearA.y) / (u1 - u0) };
+  const origin = { x: rearA.x, y: rearA.y - rise };
+  const dv = { x: (frontA.x - rearA.x) / rows, y: (frontA.y - frontRise - origin.y) / rows };
+  return { a: du.x, b: du.y, c: dv.x, d: dv.y, e: origin.x - du.x * u0, f: origin.y - du.y * u0 };
+}
+
+function quad(context: CanvasRenderingContext2D, corners: Quad, pattern: CanvasPattern | null, matrix: Matrix, fallback: string): void {
+  context.beginPath();
+  corners.forEach((point, index) => { if (index === 0) context.moveTo(point.x, point.y); else context.lineTo(point.x, point.y); });
+  context.closePath();
+  if (pattern !== null) { pattern.setTransform(matrix); context.fillStyle = pattern; } else context.fillStyle = fallback;
+  context.fill();
 }
 
 function arcTo(chain: WallChain, t: number): number {
@@ -174,11 +224,33 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
       else drawGateMarker(context, node.neighbors.flatMap(point => [point, node.point]), node.point, zoom, legacy);
       continue;
     }
+    if (node.kind === "tower" && kind === "stone" && drawCornerTower(context, node.point)) continue;
     const size = node.kind === "tower" ? { radius: 0.2, height: FACE_HEIGHT + 10, post: { width: 11, height: FACE_HEIGHT + 10 } }
       : { radius: 0.15, height: FACE_HEIGHT + 4, post: { width: 9, height: FACE_HEIGHT + 4 } };
     drawModule(context, node.point, kind, size, zoom);
   }
   for (const pillar of pillars) drawModule(context, pillar.point, pillar.material, { radius: 0.12, height: FACE_HEIGHT + 2, post: { width: 8, height: FACE_HEIGHT + 2 } }, zoom);
+}
+
+// Wave 4d corner tower (1774 x 887 source): the drum only (the painted wall stubs left and right would not follow the
+// wall's arms; the strips meet the drum instead), its base centre as the anchor, and its display height (above the
+// wall walk: FACE_HEIGHT + TOP_HEIGHT is about 28 px at zoom 1).
+const TOWER_CROP = { x: 690, y: 214, width: 396, height: 597 } as const;
+const TOWER_ANCHOR = { x: 887, y: 790 } as const;
+const TOWER_HEIGHT = 44;
+let towerRaster: RasterizedWorldSprite | null | undefined;
+function drawCornerTower(context: CanvasRenderingContext2D, point: BoundaryPoint): boolean {
+  const image = wallFaceAsset(TERRAIN_VARIANTS.stoneTower[0] as WallFaceKey);
+  if (image === null) return false;
+  // One high-quality downscale at twice the display height (browser image cache, not state).
+  if (towerRaster === undefined) towerRaster = typeof document === "undefined" ? null : rasterizeWorldSprite(image, TOWER_CROP, TOWER_HEIGHT * 2);
+  const scale = TOWER_HEIGHT / TOWER_CROP.height;
+  const at = screenOf(point);
+  const destination = { x: at.x - (TOWER_ANCHOR.x - TOWER_CROP.x) * scale, y: at.y - (TOWER_ANCHOR.y - TOWER_CROP.y) * scale,
+    width: TOWER_CROP.width * scale, height: TOWER_HEIGHT };
+  if (towerRaster !== null) drawCroppedWorldSprite(context, towerRaster.image, towerRaster.source, destination, false, true);
+  else drawCroppedWorldSprite(context, image, TOWER_CROP, destination, false, true);
+  return true;
 }
 
 function drawModule(context: CanvasRenderingContext2D, point: BoundaryPoint, material: WallMaterial,
@@ -226,6 +298,25 @@ function faceCanvas(material: WallMaterial): CanvasImageSource | null {
   if (canvas === null) return null;
   joined.set(material, canvas);
   return canvas;
+}
+
+// The top strips (stone a | b; timber one image) and the end-on top views, loaded with the faces.
+const joinedTops = new Map<WallMaterial, CanvasImageSource>();
+function topCanvas(material: WallMaterial): CanvasImageSource | null {
+  const cached = joinedTops.get(material);
+  if (cached !== undefined) return cached;
+  const keys = (material === "stone" ? TERRAIN_VARIANTS.stoneTop : TERRAIN_VARIANTS.palisadeTop) as readonly WallFaceKey[];
+  const images = keys.map(key => wallFaceAsset(key));
+  if (images.some(image => image === null)) return null;
+  const canvas = typeof document === "undefined" || images.length === 1 ? images[0] as HTMLImageElement
+    : joinStripImages(images as HTMLImageElement[], FACE_WIDTH, TOP_SOURCE_HEIGHT, FACE_JOIN_FADE);
+  if (canvas === null) return null;
+  joinedTops.set(material, canvas);
+  return canvas;
+}
+
+function diagCanvas(material: WallMaterial): CanvasImageSource | null {
+  return wallFaceAsset((material === "stone" ? TERRAIN_VARIANTS.stoneDiagTop[0] : TERRAIN_VARIANTS.palisadeDiagTop[0]) as WallFaceKey);
 }
 
 // The joined face as an ink silhouette (same alpha), for the direction shade.

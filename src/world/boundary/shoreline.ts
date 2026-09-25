@@ -23,13 +23,16 @@ export const BRIDGE_LOCK_FULL = 0.5;
 export const BRIDGE_LOCK_REACH = 0.8;
 export const SHALLOW_DEPTH = 0.6;
 export const WALL_SNAP = 0.45;
-const DECAL_SPACING = 2.4;
+/** Decal spacing along the shore (D3b-2: 1.5 .. 2.5 tiles, hashed per decal). */
+const DECAL_SPACING_MIN = 1.5;
+const DECAL_SPACING_SPAN = 1;
 const DECAL_DEPTH_MIN = 0.46;
 const DECAL_DEPTH_MAX = 0.58;
 const DECAL_BRIDGE_CLEARANCE = 1.2;
 
 export type ShoreBlob = { readonly dx: number; readonly dy: number; readonly rx: number; readonly ry: number };
-export type ShoreDecal = { readonly anchor: BoundaryPoint; readonly kind: "stone" | "weed"; readonly blobs: readonly ShoreBlob[] };
+/** `variant` picks the sprite of the kind (Wave 4d reeds a..c / mudstones a, b), `flip` mirrors it. */
+export type ShoreDecal = { readonly anchor: BoundaryPoint; readonly kind: "stone" | "weed"; readonly variant: number; readonly flip: boolean; readonly blobs: readonly ShoreBlob[] };
 
 export type ShoreLoop = CellContourLoop & {
   readonly smoothed: readonly BoundaryPoint[];
@@ -80,7 +83,7 @@ export function shoreline(input: ShorelineInput): Shoreline {
     const bounds = boundsOf([...smoothed, ...decals.map(decal => decal.anchor)], 1);
     return { ...loop, smoothed, landSide, walled, decals, bounds,
       drawHash: hashNumbers([loop.hash, landSide, ...smoothed.flatMap(point => [point.x, point.y]), ...walled.map(flag => flag ? 1 : 0),
-        ...decals.flatMap(decal => [decal.anchor.x, decal.anchor.y, decal.kind === "stone" ? 1 : 2, decal.blobs.length])]) };
+        ...decals.flatMap(decal => [decal.anchor.x, decal.anchor.y, decal.kind === "stone" ? 1 : 2, decal.variant, decal.flip ? 1 : 0, decal.blobs.length])]) };
   });
   return { loops, bridgeEnds };
 }
@@ -134,7 +137,7 @@ function shoreDecals(line: readonly BoundaryPoint[], landSide: 1 | -1, isWater: 
   input: ShorelineInput, ends: readonly BridgeEnd[], loopHash: number): ShoreDecal[] {
   const decals: ShoreDecal[] = [];
   let arc = 0;
-  let next = DECAL_SPACING * (0.3 + 0.7 * ((boundaryHash(loopHash, input.seed, 91) % 1000) / 1000));
+  let next = DECAL_SPACING_MIN * (0.3 + 0.7 * ((boundaryHash(loopHash, input.seed, 91) % 1000) / 1000));
   for (let index = 0; index < line.length; index += 1) {
     const a = line[index] as BoundaryPoint; const b = line[(index + 1) % line.length] as BoundaryPoint;
     const length = Math.hypot(b.x - a.x, b.y - a.y);
@@ -155,9 +158,10 @@ function shoreDecals(line: readonly BoundaryPoint[], landSide: 1 | -1, isWater: 
           blobs.push({ dx: ((h % 100) / 99 - 0.5) * 0.16, dy: (((h >>> 7) % 100) / 99 - 0.5) * 0.1,
             rx: 0.035 + ((h >>> 14) % 100) / 99 * 0.015, ry: 0.025 + ((h >>> 21) % 100) / 99 * 0.012 });
         }
-        decals.push({ anchor, kind: ((hash >>> 4) % 5) < 3 ? "stone" : "weed", blobs });
+        const kind = ((hash >>> 4) % 5) < 3 ? "stone" : "weed";
+        decals.push({ anchor, kind, variant: (hash >>> 12) % (kind === "stone" ? 2 : 3), flip: ((hash >>> 15) & 1) === 1, blobs });
       }
-      next += DECAL_SPACING;
+      next += DECAL_SPACING_MIN + DECAL_SPACING_SPAN * ((boundaryHash(Math.round(next * 64), loopHash, 95) % 1000) / 999);
     }
     arc += length;
   }
