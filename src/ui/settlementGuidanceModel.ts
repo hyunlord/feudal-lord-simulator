@@ -5,6 +5,8 @@ import { houseHasFood } from "../population/houseFood";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { placementSpendableResource } from "../world/placement";
+import { idleLabourHighlighted } from "./householdLabourModel";
+import { HOUSEHOLD_LABOUR_COPY } from "./householdLabourCopy.ko";
 
 export type SettlementProblemKind = "water" | "bread" | "labour" | "storage";
 
@@ -21,6 +23,8 @@ export type SettlementGuidance = {
   readonly statusLine: string;
   readonly priority: SettlementProblemGlyph | null;
   readonly problems: readonly SettlementProblemGlyph[];
+  /** LB-9: goal-panel line `일손 남음 N` while any adult is idle. */
+  readonly idleLine: string | null;
 };
 
 const PROBLEM_GLYPHS: Record<SettlementProblemKind, SettlementProblemGlyph> = {
@@ -57,6 +61,7 @@ export function settlementGuidance(state: GameState): SettlementGuidance {
     statusLine: priority?.label ?? "정착지는 안정적입니다",
     priority,
     problems,
+    idleLine: (state.labour?.idle ?? 0) > 0 ? HOUSEHOLD_LABOUR_COPY.idleLine(state.labour?.idle ?? 0) : null,
   };
 }
 
@@ -75,6 +80,7 @@ function guidancePriority(state: GameState): SettlementProblemGlyph | null {
   if (placementSpendableResource(state, "timber") < 30) {
     return { kind: "storage", glyph: "箱", label: "목재가 부족합니다" };
   }
+  if (idleLabourHighlighted(state)) return { ...PROBLEM_GLYPHS.labour, label: HOUSEHOLD_LABOUR_COPY.idleHint };
   return null;
 }
 

@@ -200,7 +200,8 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
       inputPerOutput: 2,
       ticksPerOutput: 30,
     },
-    storageCapacity: 20,
+    /** LB-7: room for two 12-wheat loads on their way and a bread load (was 20 with one 8-load cart). */
+    storageCapacity: 32,
     serviceRadius: 0,
     /** LB-7: both mill carts (bread out, wheat in) load 12. */
     carterCapacity: LABOUR_BALANCE.millCartCapacity,

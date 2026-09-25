@@ -207,7 +207,7 @@ function pushCandidate(granary: Building, buildings: readonly Building[], invent
   const stock = Math.min(amountOf(granary.inventory, "wheat"), inventory.availableStock(granary, "wheat"));
   if (stock === 0) return null;
   const candidates = buildings.flatMap((mill) => {
-    if (!pushableMill(granary, mill) || millWheat(mill) >= LABOUR_BALANCE.millWheatTarget) return [];
+    if (!pushableMill(granary, mill) || millWheat(mill) >= LABOUR_BALANCE.millPushTarget) return [];
     const space = inventory.availableSpace(mill);
     if (space === 0) return [];
     const path = routes.betweenBuildings(granary.id, mill.id);

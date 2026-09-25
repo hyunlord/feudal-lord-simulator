@@ -70,8 +70,10 @@ export const LABOUR_BALANCE = {
   haulersPerGranary: 1,
   /** LB-7: load of a mill's carts (bread out, wheat in) and of a granary's push cart. */
   millCartCapacity: 12,
-  /** LB-7: a mill's intake cart (and a granary push) tops its wheat up to this. */
+  /** LB-7: a mill's intake cart leaves while the mill's wheat plus wheat on its way is below this. */
   millWheatTarget: 12,
+  /** LB-7: a granary pushes to a mill whose wheat plus wheat on its way is below this (a second load on top). */
+  millPushTarget: 24,
   /** LB-7: autoplay mill cap = max(need, expected harvest) × this ÷ a mill's year of wheat, + 1 (AF-13 had 2000‰). */
   millHaulingFactorPermille: 2000,
   /** LB-9: idle adults ÷ population above this shows the idle-labour hint (the A″ threshold). */
