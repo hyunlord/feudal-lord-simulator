@@ -9,8 +9,11 @@ test("Given unchanged guidance inputs When targets are asked again Then the memo
   const first = onboardingWorldGuidanceTargets(DEFAULT_GAME_STATE);
   const before = onboardingWorldGuidanceMemoStats();
 
-  // When: only fields no guidance rule reads change (tick, walkers, route cache).
-  const again = onboardingWorldGuidanceTargets({ ...DEFAULT_GAME_STATE, tick: 99, walkers: [], pathCache: {} });
+  // When: within one guidance sample (60 ticks), only per-tick fields change (tick, walkers, route cache, new arrays
+  // of the same buildings and sites and houses).
+  const again = onboardingWorldGuidanceTargets({ ...DEFAULT_GAME_STATE, tick: 59, walkers: [], pathCache: {},
+    buildings: DEFAULT_GAME_STATE.buildings.map(building => ({ ...building })), constructionSites: [...DEFAULT_GAME_STATE.constructionSites],
+    houses: [...DEFAULT_GAME_STATE.houses] });
 
   // Then
   assert.equal(again, first);
@@ -30,4 +33,18 @@ test("Given a changed guidance input When targets are asked Then they are recomp
   assert.equal(onboardingWorldGuidanceMemoStats().misses, before.misses + 1);
   onboardingWorldGuidanceTargets({ ...DEFAULT_GAME_STATE, era: DEFAULT_GAME_STATE.era });
   assert.deepEqual(onboardingWorldGuidanceTargets({ ...withRoad }), targets);
+});
+
+test("Given the guidance memo When the sample changes or a building is placed Then it recomputes at once (C1f 0-B)", () => {
+  // Given
+  onboardingWorldGuidanceTargets(DEFAULT_GAME_STATE);
+  const before = onboardingWorldGuidanceMemoStats();
+
+  // When: the next 60-tick sample, then the same sample with one more building
+  onboardingWorldGuidanceTargets({ ...DEFAULT_GAME_STATE, tick: 60 });
+  const moved = { ...DEFAULT_GAME_STATE, tick: 60, buildings: [...DEFAULT_GAME_STATE.buildings, { ...DEFAULT_GAME_STATE.buildings[0]!, id: "house-test", tx: 3, ty: 3 }] };
+  onboardingWorldGuidanceTargets(moved);
+
+  // Then
+  assert.equal(onboardingWorldGuidanceMemoStats().misses, before.misses + 2);
 });

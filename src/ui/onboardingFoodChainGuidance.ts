@@ -12,6 +12,7 @@ import {
   reserveFootprint,
   type GuidanceGeometryWorld,
 } from "./onboardingGuidanceGeometry";
+import { arableAdjacentOrigins } from "./onboardingArableGuidance";
 
 const FOOD_CHAIN_KINDS = ["farmstead", "mill", "granary"] as const satisfies readonly BuildingKind[];
 const LOCAL_PREP_RADIUS = 3;
@@ -86,9 +87,12 @@ function roadTargetUnlockingFoodChainHousePrep(
 ): TileCoordinate | null {
   const currentHouseCount = housePrepCount(currentTargets);
   const currentFoodCount = foodTargetKindCount(currentTargets, kinds);
+  // A kind no road can help is done too: a farmstead needs an arable zone beside it (Z-11), and a road never adds one
+  // (C1f 0-B: without this every new game tried every road on every guidance update).
   if (currentHouseCount === onboardingPopulationHouseTargetCount && kinds.every((kind) =>
     currentTargets.some((target) => target.kind === kind)
     || Object.keys(constructionShortfalls(state, BUILDING_CONFIG_BY_KIND[kind].buildCost)).length > 0
+    || (kind === "farmstead" && arableAdjacentOrigins(state).size === 0)
   )) return null;
   let best: { readonly origin: TileCoordinate; readonly foodCount: number; readonly houseCount: number } | null = null;
 

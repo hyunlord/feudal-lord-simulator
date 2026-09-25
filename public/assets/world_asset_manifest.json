@@ -1566,29 +1566,6 @@
       "alphaPolicy": "transparent-native-alpha"
     },
     {
-      "key": "wheat_farm",
-      "category": "building",
-      "path": "public/assets/buildings/wheat_farm.png",
-      "sha256": "bafb0ce1a93d9467f9f02b8efde14f9b9218ab3d806d2f4d1f2b311ebbb4c59e",
-      "width": 160,
-      "height": 96,
-      "renderScale": 0.7333333333333334,
-      "anchor": {
-        "x": 80,
-        "y": 80
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64050602,
-        "candidate": 2
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
       "key": "logging_camp",
       "category": "building",
       "path": "public/assets/buildings/logging_camp.png",

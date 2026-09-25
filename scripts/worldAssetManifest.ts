@@ -396,12 +396,22 @@ export const parseWorldAssetManifest = (value: unknown): WorldAssetManifest => {
   return { version: 1, acceptedReferences, foliageSelections, parchmentMetrics, assets };
 };
 
+/**
+ * World asset keys a published manifest may leave out because the game retired what they drew (C1f: the 2x2 wheat
+ * farm, retired by C1c-2; its sprite is in assets-inbox/retired). The generation contracts keep them, so older release
+ * pipelines still produce and verify them; a manifest either has every key or every key but these.
+ */
+export const RETIRED_WORLD_ASSET_KEYS: readonly string[] = ["wheat_farm"];
+
 export const assertExactWorldAssetKeys = (assets: readonly WorldAsset[]): void => {
   const keys = assets.map((asset) => asset.key);
   if (new Set(keys).size !== keys.length) throw new WorldAssetManifestError("duplicate world asset key");
   const actual = [...keys].sort();
-  const expected = [...WORLD_ASSET_KEYS].sort();
-  if (actual.length !== expected.length || actual.some((key, index) => key !== expected[index])) {
+  const complete = [...WORLD_ASSET_KEYS].sort();
+  const current = complete.filter((key) => !RETIRED_WORLD_ASSET_KEYS.includes(key));
+  const matches = (expected: readonly string[]) => actual.length === expected.length && actual.every((key, index) => key === expected[index]);
+  const expected = actual.some((key) => RETIRED_WORLD_ASSET_KEYS.includes(key)) ? complete : current;
+  if (!matches(complete) && !matches(current)) {
     throw new WorldAssetManifestError(`world asset keys ${actual.join(",")} did not match ${expected.join(",")}`);
   }
 };

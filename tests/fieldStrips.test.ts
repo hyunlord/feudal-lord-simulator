@@ -21,6 +21,7 @@ import { migrateStateV9ToV10 } from "../src/save/migrations/v9ToV10";
 import { inYearTick, stepArableFields } from "../src/zones/arableFields";
 import { HEADLAND, RIDGE_PERIOD, RIDGE_REPEAT_RADIUS, RIDGE_ROWS_PER_STRIP, RIDGE_SPAN } from "../src/world/boundary/arableFields";
 import { YARD_SUBCELLS } from "../src/world/boundary/buildingGrounds";
+import type { HurdlePiece } from "../src/world/boundary/yardProps";
 import { objectRenderItemsForFrame } from "../src/render/renderObjectFrameCache";
 import { setBoundaryV2Enabled } from "../src/render/renderBoundaryFlag";
 
@@ -161,7 +162,7 @@ test("Given the zoned boards When decals and fills pick variants Then no family 
     assert.equal(pairsWithin(props.filter(prop => prop.kind.startsWith("haycock")).map(prop => ({ x: prop.x, y: prop.y, v: prop.kind })), 4), 0, "haycocks");
     assert.equal(pairsWithin(scene.zones.fields.flatMap(field => field?.stamps ?? []).map(stamp => ({ x: stamp.anchor.x, y: stamp.anchor.y, v: String(stamp.variant) })), 4), 0, "furrow stamps");
     assert.equal(pairsWithin(scene.yardProps.beds.map(bed => ({ x: bed.anchor.x, y: bed.anchor.y, v: String(bed.variant) })), 4), 0, "croft beds");
-    assert.equal(pairsWithin(props.filter(prop => prop.kind.startsWith("orchard")).map(prop => ({ x: prop.x, y: prop.y, v: prop.kind })), 1.5), 0, "orchard neighbours");
+    assert.equal(pairsWithin(props.filter(prop => prop.kind.startsWith("orchard")).map(prop => ({ x: prop.x, y: prop.y, v: prop.kind })), 2), 0, "orchard: no same species within 2 tiles (9 species, FS4)");
     assert.ok(props.every(prop => !prop.flip), "trees and haycocks are real variants, never mirrored");
     // Floors: same-kind zones within 4 tiles of each other take different variants (two zones never share an edge pattern).
     const zones = scene.zones.zones;
@@ -176,7 +177,18 @@ test("Given the zoned boards When decals and fills pick variants Then no family 
   assert.equal(new Set(ROAD_STRIP_SETS.earth.v3.images).size, 4);
 });
 
-test("Given house yards When hurdles and beds are placed Then panels sit on whole yard edges that no road, yard or frontage takes, meet post to post, and beds lie inside their yard", () => {
+/** The edges a hurdle piece covers (tile-centre coordinates; straight / gate one tile, half half a tile, corner two arms). */
+function hurdleEdges(piece: HurdlePiece): readonly { readonly from: { x: number; y: number }; readonly to: { x: number; y: number } }[] {
+  const { x, y } = piece.anchor;
+  if (piece.kind === "corner") {
+    const arms = piece.vertex === "east" ? [[-1, 0], [0, 1]] : piece.vertex === "south" ? [[-1, 0], [0, -1]] : piece.vertex === "west" ? [[1, 0], [0, -1]] : [[1, 0], [0, 1]];
+    return arms.map(([dx, dy]) => ({ from: { x, y }, to: { x: x + (dx as number), y: y + (dy as number) } }));
+  }
+  const length = piece.kind === "half" ? 0.5 : 1;
+  return [{ from: { x, y }, to: piece.mirror ? { x: x - length, y } : { x, y: y - length } }];
+}
+
+test("Given house yards When hurdles and beds are placed Then panels sit on whole yard edges that no road or other yard takes, meet post to post, the gate stands on the frontage side, and beds lie inside their yard", () => {
   for (const state of [arableScene(), ...([1, 3, 5] as const).map(seed => seedGroundState(seed))]) {
     const scene = buildGroundBoundaryScene(state);
     const { yards, aprons } = scene.grounds;
@@ -188,25 +200,22 @@ test("Given house yards When hurdles and beds are placed Then panels sit on whol
     for (const piece of scene.yardProps.hurdles) {
       const yard = yardOf.get(piece.buildingId);
       assert.ok(yard !== undefined);
-      // Posts on the yard rectangle's whole-tile lattice: socket (64, -32) = one tile along -y, mirrored one along -x.
-      assert.ok(Number.isInteger(piece.anchor.x) && Number.isInteger(piece.anchor.y), piece.id);
-      const ends = piece.kind === "corner"
-        ? [{ x: piece.anchor.x, y: piece.anchor.y + 1 }, { x: piece.anchor.x + 1, y: piece.anchor.y }]
-        : [piece.mirror ? { x: piece.anchor.x - 1, y: piece.anchor.y } : { x: piece.anchor.x, y: piece.anchor.y - 1 }];
-      for (const end of [piece.anchor, ...ends]) {
-        const { tx, ty, width, height } = yard.footprint;
-        assert.ok(end.x >= tx - 1 && end.x <= tx + width && end.y >= ty - 1 && end.y <= ty + height, `${piece.id} post off its yard rectangle`);
-      }
-      // The panel's inner side is this yard, its outer side no other yard, and it is not on the frontage side.
-      const from = piece.kind === "corner" ? ends[0]! : piece.anchor; const to = piece.kind === "corner" ? piece.anchor : ends[0]!;
-      const mid = { x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 };
-      const along = { x: to.x - from.x, y: to.y - from.y };
+      const { tx, ty, width, height } = yard.footprint;
+      // Posts on the yard rectangle's lattice: whole tiles, halves only for half panels.
+      assert.ok(Number.isInteger(piece.anchor.x * 2) && Number.isInteger(piece.anchor.y * 2), piece.id);
+      if (piece.kind !== "half") assert.ok(Number.isInteger(piece.anchor.x) && Number.isInteger(piece.anchor.y), piece.id);
+      const centre = { x: tx + (width - 1) / 2, y: ty + (height - 1) / 2 };
       const apron = aprons.find(candidate => candidate.buildingId === piece.buildingId);
-      const centre = { x: yard.footprint.tx + (yard.footprint.width - 1) / 2, y: yard.footprint.ty + (yard.footprint.height - 1) / 2 };
-      const outward = along.x === 0 ? { x: Math.sign(mid.x - centre.x), y: 0 } : { x: 0, y: Math.sign(mid.y - centre.y) };
-      assert.ok(apron === undefined || apron.normal.x !== outward.x || apron.normal.y !== outward.y, `${piece.id} on the frontage`);
-      const outside = at(yard, mid.x + outward.x / 16, mid.y + outward.y / 16);
-      assert.ok(outside === undefined, `${piece.id} against yard ${outside}`);
+      for (const { from, to } of hurdleEdges(piece)) {
+        for (const end of [from, to]) assert.ok(end.x >= tx - 1 && end.x <= tx + width && end.y >= ty - 1 && end.y <= ty + height, `${piece.id} post off its yard rectangle`);
+        // The panel's inner side is this yard, its outer side no other yard.
+        const mid = { x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 };
+        const outward = from.y === to.y ? { x: 0, y: Math.sign(mid.y - centre.y) } : { x: Math.sign(mid.x - centre.x), y: 0 };
+        assert.equal(at(yard, mid.x - outward.x / 16, mid.y - outward.y / 16), piece.buildingId, `${piece.id} inner side`);
+        const outside = at(yard, mid.x + outward.x / 16, mid.y + outward.y / 16);
+        assert.ok(outside === undefined, `${piece.id} against yard ${outside}`);
+        if (piece.kind === "gate") assert.ok(apron !== undefined && apron.normal.x === outward.x && apron.normal.y === outward.y, `${piece.id} gate off the frontage side`);
+      }
     }
     for (const bed of scene.yardProps.beds) {
       const yard = yardOf.get(bed.buildingId);
@@ -214,10 +223,80 @@ test("Given house yards When hurdles and beds are placed Then panels sit on whol
       assert.equal(at(yard, bed.anchor.x, bed.anchor.y), bed.buildingId, "bed inside its yard");
     }
   }
-  // The real-input cottages: at least one north corner piece and panels on both axes.
+  // The real-input cottages: corners, a gate and panels on both axes.
   const hurdles = buildGroundBoundaryScene(arableScene()).yardProps.hurdles;
   assert.ok(hurdles.some(piece => piece.kind === "corner"));
-  assert.ok(hurdles.some(piece => piece.kind === "straight" && piece.mirror) && hurdles.some(piece => piece.kind === "straight" && !piece.mirror));
+  assert.ok(hurdles.some(piece => piece.kind === "gate"));
+  assert.ok(hurdles.some(piece => piece.mirror) && hurdles.some(piece => !piece.mirror));
+});
+
+test("Given fenced house yards When their rings are checked Then each edge is covered once, what stays open cannot be fenced, one gate stands on a fenceable frontage side and every vertex between two panels is a corner piece (C1f)", () => {
+  let yardsChecked = 0; let gates = 0; let corners = 0; let halves = 0;
+  for (const state of [arableScene(), c25ZonedState(), ...([1, 2, 3, 4, 5] as const).map(seed => seedGroundState(seed))]) {
+    const scene = buildGroundBoundaryScene(state);
+    const { yards, aprons } = scene.grounds;
+    const owner = new Map<number, string>();
+    for (const yard of yards) for (const subcell of yard.subcells) owner.set(subcell, yard.buildingId);
+    const byYard = new Map<string, HurdlePiece[]>();
+    for (const piece of scene.yardProps.hurdles) byYard.set(piece.buildingId, [...(byYard.get(piece.buildingId) ?? []), piece]);
+    for (const [buildingId, pieces] of byYard) {
+      const yard = yards.find(candidate => candidate.buildingId === buildingId)!;
+      const at = (x: number, y: number): string | undefined =>
+        owner.get(Math.floor((y + 0.5) * YARD_SUBCELLS) * yard.subcellStride + Math.floor((x + 0.5) * YARD_SUBCELLS));
+      yardsChecked += 1;
+      const { tx, ty, width, height } = yard.footprint;
+      const left = tx - 1; const top = ty - 1; const right = tx + width; const bottom = ty + height;
+      // Half-tile coverage of the rectangle's sides.
+      const cover = new Map<string, number>();
+      for (const piece of pieces) for (const { from, to } of hurdleEdges(piece)) {
+        const steps = Math.round(Math.hypot(to.x - from.x, to.y - from.y) * 2);
+        for (let k = 0; k < steps; k += 1) {
+          const a = { x: from.x + (to.x - from.x) * k / steps, y: from.y + (to.y - from.y) * k / steps };
+          const b = { x: from.x + (to.x - from.x) * (k + 1) / steps, y: from.y + (to.y - from.y) * (k + 1) / steps };
+          const key = `${Math.min(a.x, b.x)},${Math.min(a.y, b.y)},${a.y === b.y ? "x" : "y"}`;
+          cover.set(key, (cover.get(key) ?? 0) + 1);
+        }
+      }
+      for (const [key, count] of cover) assert.equal(count, 1, `${buildingId} edge ${key} covered ${count} times`);
+      const centre = { x: tx + (width - 1) / 2, y: ty + (height - 1) / 2 };
+      const halfOpen: string[] = [];
+      for (const [line, alongX] of [[top, true], [bottom, true], [left, false], [right, false]] as const) {
+        for (let along = alongX ? left : top; along < (alongX ? right : bottom) - 1e-9; along += 0.5) {
+          const key = alongX ? `${along},${line},x` : `${line},${along},y`;
+          if (cover.has(key)) continue;
+          const mid = alongX ? { x: along + 0.25, y: line } : { x: line, y: along + 0.25 };
+          const outward = alongX ? { x: 0, y: Math.sign(line - centre.y) } : { x: Math.sign(line - centre.x), y: 0 };
+          const inner = at(mid.x - outward.x / 16, mid.y - outward.y / 16); const outer = at(mid.x + outward.x / 16, mid.y + outward.y / 16);
+          // Open half-edge: the yard does not fill it (a cut or the rounded corner), or another yard lies outside.
+          if (inner === buildingId && outer === undefined) halfOpen.push(key);
+        }
+      }
+      // What stays open must be a rounded-corner sliver or part of an edge cut other than in half (listed as a want).
+      for (const key of halfOpen) {
+        const [xs, ys, axis] = key.split(",");
+        const x = Number(xs); const y = Number(ys);
+        const corner = (axis === "x" ? (x === left || x + 0.5 === right) : (y === top || y + 0.5 === bottom));
+        const wanted = scene.yardProps.wants.some(want => want.buildingId === buildingId && want.kind === "half"
+          && Math.abs(want.at.x - (axis === "x" ? Math.floor(x) + 0.5 : x)) < 1e-9 && Math.abs(want.at.y - (axis === "x" ? y : Math.floor(y) + 0.5)) < 1e-9);
+        assert.ok(corner || wanted, `${buildingId} half-edge ${key} fenceable but open`);
+      }
+      const gateCount = pieces.filter(piece => piece.kind === "gate").length;
+      assert.ok(gateCount <= 1, `${buildingId} gates ${gateCount}`);
+      const apron = aprons.find(candidate => candidate.buildingId === buildingId);
+      const frontFenced = apron !== undefined && pieces.some(piece => piece.kind === "straight" && hurdleEdges(piece).some(({ from, to }) =>
+        (from.y === to.y ? { x: 0, y: Math.sign(from.y - centre.y) } : { x: Math.sign(from.x - centre.x), y: 0 }).x === apron.normal.x
+        && (from.y === to.y ? { x: 0, y: Math.sign(from.y - centre.y) } : { x: Math.sign(from.x - centre.x), y: 0 }).y === apron.normal.y));
+      if (frontFenced) assert.equal(gateCount, 1, `${buildingId} fenced frontage side without a gate`);
+      // No vertex joins two straight panels: a corner piece stands there instead.
+      const straightEnds = new Map<string, number>();
+      for (const piece of pieces) if (piece.kind === "straight") for (const { from, to } of hurdleEdges(piece)) for (const end of [from, to]) {
+        if ((end.x === left || end.x === right) && (end.y === top || end.y === bottom)) straightEnds.set(`${end.x},${end.y}`, (straightEnds.get(`${end.x},${end.y}`) ?? 0) + 1);
+      }
+      for (const [vertex, count] of straightEnds) assert.ok(count < 2, `${buildingId} vertex ${vertex} joins two straight panels`);
+      gates += gateCount; corners += pieces.filter(piece => piece.kind === "corner").length; halves += pieces.filter(piece => piece.kind === "half").length;
+    }
+  }
+  assert.ok(yardsChecked > 5 && gates > 0 && corners > 0 && halves > 0, `yards ${yardsChecked}, gates ${gates}, corners ${corners}, halves ${halves}`);
 });
 
 test("Given the arable scene When it is built from tiles in reverse order Then fields, floors and yard props are identical", () => {
@@ -260,4 +339,28 @@ test("Given the arable scene When the object queue is built Then no grass tuft, 
     if (item.kind !== "groundCover") continue;
     assert.equal(crops.has(`${Math.round(item.descriptor.anchorTx)},${Math.round(item.descriptor.anchorTy)}`), false, item.id);
   }
+});
+
+test("Given the same buildings, sites and zones When the saved arable field records change Then the strip state lookup is recomputed (C1f)", () => {
+  const state = c25ZonedState();
+  const first = arableStripStateLookup(state);
+  assert.equal(arableStripStateLookup({ ...state }), first, "same inputs: cached");
+  const records = { ...state, arableFields: [...(state.arableFields ?? [])] };
+  assert.notEqual(arableStripStateLookup(records), first, "a new arableFields array is a new key");
+});
+
+test("Given the C25 orchard with 9 species When trees pick variants Then none repeats within 2 tiles (the rule) and, with the farthest-first pick, none within 3 (C1f)", () => {
+  const trees = buildGroundBoundaryScene(c25ZonedState()).zones.props.filter(prop => prop.kind.startsWith("orchard"));
+  assert.ok(trees.length >= 10 && new Set(trees.map(tree => tree.kind)).size === 9, `trees ${trees.length}`);
+  let nearest = Infinity; let within4 = 0;
+  for (let i = 0; i < trees.length; i += 1) for (let j = i + 1; j < trees.length; j += 1) {
+    const a = trees[i]!; const b = trees[j]!;
+    if (a.kind !== b.kind) continue;
+    const distance = Math.hypot(a.x - b.x, a.y - b.y);
+    nearest = Math.min(nearest, distance); if (distance < 4) within4 += 1;
+  }
+  assert.ok(nearest >= 3, `same species ${nearest.toFixed(2)} tiles apart`);
+  // Within 4 tiles: 10 of these 12 trees are mutually closer than 4, so 9 species force at least one same pair there;
+  // the farthest-first pick reaches that floor.
+  assert.ok(within4 <= 1, `same-species pairs within 4 tiles: ${within4}`);
 });

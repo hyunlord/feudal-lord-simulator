@@ -147,6 +147,11 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | WL7 | 벽 띠 v2: 정면 20px(원본 128행, 205px/칸) + 윗면 7.5px(48행, 톱니 행을 정면 윗변에, 뒤쪽 선 0.15칸 뒤로 기울여), 세로 벽은 diag_top 평면, 석벽 90° 모서리는 Wave 4d 탑(원통만), 135°·목책은 기존 조각, 명도 잡음 없음 | 렌더 결정(D3b-2) | 2026-09-25 | [성벽 곡선 WL-6](../design/wall-faces.md) |
 | SH4 | 깊은 물 = Wave 4d deep a|b|c(절반 크기, seed 위상), D3b 색 보정 제거, 물가 띠 물 쪽 56→88행 알파 페이드, 물가 띠 6장, 갈대·돌 스프라이트(1.5–2.5칸, 반전), 앞쪽 교대 SE(y 다리는 반전) | 렌더 결정(D3b-2) | 2026-09-25 | [물가 곡선 SH-4](../design/shoreline.md) |
 | WL8 | `RENDER_WALL_STRIPS` 기본 켬(v2 띠), 명도 잡음 없음. WL6의 기본 끔을 대체 | 확정(사용자, 2026-09-25 D3b-2 3중 비교 캡처 확인) | 2026-09-25 | [성벽 곡선 WL-6](../design/wall-faces.md) · [D3b-2 보고서](../verification/d3b2-walls/REPORT.md) |
+| FS5 | 헛간 그림: Wave 4c `farmstead_a`·`b`를 V1 변형 규칙으로, 담당 띠 가운데 하나라도 `ripe`이면 `farmstead_working`(가중치 0 상태 그림). 창고 틀(160×136, 피벗 80,120)·정렬을 쓰고 1×1이라 0.75배. C1c-2에 헛간 상태 필드가 없어 띠 단계로 판정 | 렌더 결정(C1f, 지시서 "없으면 띠 단계로") | 2026-09-25 | [경작지 띠 FS-5](../design/field-strips.md) · [C1f 보고서](../verification/c1f-farmstead/REPORT.md) |
+| FS6 | 농사 소품(표시 전용, 움직임 없음): 헛간마다 첫 `ploughed` 띠 가운데 칸에 쟁기 팀, 첫 `harvested` 띠 가운데 칸에 건초 수레. 목초지 14칸당 1무리(최소 1, 2.5칸 간격, 양 2 : 소 1). 그루터기 = `harvested` 단계 `ridge_stubble_{a,b}` + stone5 α0.24 덧칠 | 렌더 결정(C1f) | 2026-09-25 | [경작지 띠 FS-5](../design/field-strips.md) |
+| FS7 | 밀밭 그림 퇴역: `wheat_farm` 4상태·밭 층 4·옛 단일 그림·혼합형 농장 4장을 `assets-inbox/retired/`로(대장 `retired`), 게시 매니페스트에서만 뺌(`RETIRED_WORLD_ASSET_KEYS`, 생성 계약 유지), 남은 `wheat_farm` 건물은 그리지 않음. 목축형 농장은 원래 설치 전(C5) | 확정(C1f 지시서) | 2026-09-25 | [경작지 띠 FS-5](../design/field-strips.md) · `tests/wheatFarmRetired.test.ts` |
+| FS8 | 과수 9종: 반경 2칸 거부(FS4) 뒤 남은 변형 중 4칸 안 같은 나무가 가장 먼 것을 고른다. C25 과수원은 12그루 중 10그루가 서로 4칸 안(클리크 10)이라 9종으로 4칸 안 0쌍은 불가, 1쌍(3.09칸)이 하한이며 여기에 닿음 | 렌더 결정(C1f, 관문 ④ 해석) | 2026-09-25 | [경작지 띠 FS-4](../design/field-strips.md) |
+| OB1 | 온보딩 안내 메모 키: 틱마다 바뀌는 필드(tick·walkers·buildings 등 12개)는 식별자 비교에서 빼고, 대신 건물·공사장의 id·종류·자리 서명 + 60틱 표본(App `guidanceSample`과 같음)을 본다. 나머지 필드는 식별자 비교. 헛간 후보 찾기는 경작지 옆 칸만(모서리 제외) 먼저 거른다 | 결함 수정(C1f 0-B, 새 게임 198ms → 3.1ms/프레임) | 2026-09-25 | [C1f 보고서](../verification/c1f-farmstead/REPORT.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
 
 ## R1-fix 확정 규칙

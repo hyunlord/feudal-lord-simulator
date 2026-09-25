@@ -163,6 +163,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
   const roads = ground?.roads ?? roadCenterlineGraph({ ...grid, palisade: state.palisade });
   const forest = ground?.forest ?? forestBoundary(grid, state.seed);
   const shore = ground?.shore ?? shoreline({ ...grid, seed: state.seed, bridges: bridgeSpans(state, tiles), walls: waterSideWalls(state) });
+  // Field clusters outline 2x2 wheat farms; the building is retired (C1c-2; v10 saves hold none) and its art too (C1f),
+  // so only an unmigrated test state still gets an outline here.
   const farms = state.buildings.filter(building => building.kind === "wheat_farm")
     .map(farm => ({ id: farm.id, tx: farm.tx, ty: farm.ty, ...buildingFootprint(farm) }));
   const fields = ground?.fields ?? fieldClusters(grid, reverseInput ? [...farms].reverse() : farms);

@@ -18,20 +18,23 @@ const assignmentIds = (state: Pick<GameState, "seed" | "buildings" | "houses">) 
 
 function variantImages(): { readonly pool: string; readonly url: string }[] {
   return BUILDING_VARIANT_POOLS.flatMap(pool => pool.variants.flatMap(variant => {
-    const images = "stages" in variant ? Object.values(variant.stages) : [variant, ...("quiet" in variant ? [variant.quiet] : [])];
+    const images = [variant, ...("quiet" in variant ? [variant.quiet] : [])];
     return images.flatMap(image => image.url === null ? [] : [{ pool: pool.pool, url: image.url }]);
   }));
 }
 
-test("Given the Wave 2 manifest When its images are listed Then all 32 installed files are used and the pastoral hold set is not", () => {
-  const images = variantImages();
-  assert.equal(images.length, 32);
-  assert.equal(new Set(images.map(image => image.url)).size, 32);
+test("Given the Wave 2 manifest When its images are listed Then the 28 installed files are used and the pastoral hold and retired mixed farm sets are not", () => {
+  // 32 installed by V1; the four mixed-farm paintings were retired with the wheat farm (C1f, assets-inbox/retired).
+  const images = variantImages().filter(image => image.url.includes("/variants-wave2/"));
+  assert.equal(images.length, 28);
+  assert.equal(new Set(images.map(image => image.url)).size, 28);
+  assert.ok(variantImages().every(image => !image.url.includes("farm_mixed")));
   for (const image of images) assert.ok(existsSync(new URL(`../public/${image.url}`, import.meta.url)), image.url);
   assert.ok(images.every(image => !image.url.includes("pastoral") && !image.url.includes("thatch")));
   for (const pool of BUILDING_VARIANT_POOLS) {
     assert.ok(pool.pool.startsWith("building:"), "namespace:id");
-    assert.ok(pool.variants.every(variant => variant.weight > 0));
+    // Weight 0 = a state image, never picked by the variant rule (C1f: the farmstead's harvest art).
+    assert.ok(pool.variants.every(variant => variant.weight > 0 || (pool.kind === "farmstead" && variant.id === "working")), pool.pool);
   }
 });
 

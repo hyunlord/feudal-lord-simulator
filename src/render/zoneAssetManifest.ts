@@ -48,6 +48,25 @@ export const ZONE_ASSETS = [
   // corner covers the north vertex of a yard, (2, 87) -> (64, 55) -> (126, 87). Mirrored, the straight runs along +x.
   { "key": "hurdle_straight", "url": "assets/yards/hurdle_straight-v1.png", "width": 128, "height": 64, "role": "module", "displayWidth": 64, "anchorX": 32, "anchorY": 59 },
   { "key": "hurdle_end_corner", "url": "assets/yards/hurdle_end_corner-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 64, "anchorY": 55 },
+  // Wave 4c (C1f): hurdle gate (the straight panel's frame and sockets), half panel (sockets (16, 55) -> (51, 39) = half
+  // a tile along -y), corners at the east (vertex foot (67, 59), arms to (3, 27) / (3, 91)), south ((64, 63), arms to
+  // (0, 31) / (128, 31)) and west ((61, 59), arms to (125, 27) / (125, 91)) vertices, anchored on the vertex post;
+  // four more orchard trees (the Wave 4b scale); stubble ridges for harvested strips; farm animal props.
+  { "key": "hurdle_gate", "url": "assets/yards/hurdle_gate-v1.png", "width": 128, "height": 64, "role": "module", "displayWidth": 64, "anchorX": 32, "anchorY": 59 },
+  { "key": "hurdle_half", "url": "assets/yards/hurdle_half-v1.png", "width": 64, "height": 64, "role": "module", "displayWidth": 32, "anchorX": 16, "anchorY": 55 },
+  { "key": "hurdle_corner_e", "url": "assets/yards/hurdle_corner_e-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 67, "anchorY": 59 },
+  { "key": "hurdle_corner_s", "url": "assets/yards/hurdle_corner_s-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 64, "anchorY": 63 },
+  { "key": "hurdle_corner_w", "url": "assets/yards/hurdle_corner_w-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 61, "anchorY": 59 },
+  { "key": "orchard_apple_g", "url": "assets/zones/orchard_apple_g-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "orchard_apple_h", "url": "assets/zones/orchard_apple_h-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "orchard_pear_i", "url": "assets/zones/orchard_pear_i-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "orchard_plum_j", "url": "assets/zones/orchard_plum_j-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "ridge_stubble_a", "url": "assets/fields/ridge_stubble_a-v1.png", "width": 512, "height": 64, "role": "strip" },
+  { "key": "ridge_stubble_b", "url": "assets/fields/ridge_stubble_b-v1.png", "width": 512, "height": 64, "role": "strip" },
+  { "key": "ox_plough_team", "url": "assets/zones/animals/ox_plough_team-v1.png", "width": 192, "height": 128, "role": "prop", "displayWidth": 46, "anchorX": 96, "anchorY": 116 },
+  { "key": "ox_cart_hay", "url": "assets/zones/animals/ox_cart_hay-v1.png", "width": 192, "height": 128, "role": "prop", "displayWidth": 46, "anchorX": 96, "anchorY": 116 },
+  { "key": "sheep_flock", "url": "assets/zones/animals/sheep_flock-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 84 },
+  { "key": "cattle_pair", "url": "assets/zones/animals/cattle_pair-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 84 },
 ] as const;
 
 export type ZoneAssetKey = (typeof ZONE_ASSETS)[number]["key"];
@@ -65,11 +84,13 @@ export const ZONE_VARIANTS = {
     seedling: ["ridge_seedling_a", "ridge_seedling_b"],
     growing: ["ridge_growing_a", "ridge_growing_b"],
     fallow: ["ridge_fallow_a", "ridge_fallow_b"],
+    harvested: ["ridge_stubble_a", "ridge_stubble_b"],
   },
   furrow: ["furrow_stamp_a", "furrow_stamp_b", "furrow_stamp_c", "furrow_stamp_d"],
   croftBed: ["croft_bed_a", "croft_bed_b", "croft_bed_c"],
   haycock: ["haycock_a", "haycock_b", "haycock_c", "haycock_d", "haycock_e", "haycock_f"],
-  orchardTree: ["orchard_tree", "orchard_apple_c", "orchard_apple_d", "orchard_pear_e", "orchard_plum_f"],
+  orchardTree: ["orchard_tree", "orchard_apple_c", "orchard_apple_d", "orchard_pear_e", "orchard_plum_f",
+    "orchard_apple_g", "orchard_apple_h", "orchard_pear_i", "orchard_plum_j"],
 } as const satisfies Record<string, readonly string[] | Record<string, readonly ZoneAssetKey[]>>;
 
 export type ZonePropKind = (typeof ZONE_VARIANTS)["haycock"][number] | (typeof ZONE_VARIANTS)["orchardTree"][number];

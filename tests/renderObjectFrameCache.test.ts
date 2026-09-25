@@ -138,7 +138,7 @@ test("objectRenderItemsForFrame reuses the static object queue when only walkers
   assert.deepEqual(
     secondFrame.map((item) => `${item.kind}:${item.id}`),
     // The house's yard edge toward the open cell carries a hurdle panel (C1e, curved ground on by default).
-    ["building:building-1", "zone_prop:yard-hurdle:building-1:straight:1,1", "walker:walker-1"],
+    ["building:building-1", "zone_prop:yard-hurdle:building-1:half:0,1", "zone_prop:yard-hurdle:building-1:straight:1,1", "zone_prop:yard-hurdle:building-1:half:1,1", "walker:walker-1"],
   );
 });
 

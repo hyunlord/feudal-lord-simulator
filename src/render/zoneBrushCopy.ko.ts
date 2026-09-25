@@ -1,4 +1,7 @@
+import { ARABLE_CONFIG } from "../content/arableConfig";
 import type { ZoneKind } from "../zones/zone.types";
+
+const ARABLE_TEND_RADIUS = ARABLE_CONFIG.tendRadius;
 
 // Player-facing copy for the zone brush (C1b). Zone kind names and cause labels stay in src/zones/zoneCopy.ko.ts.
 
@@ -7,7 +10,7 @@ export const ZONE_BRUSH_COPY = {
   eraser: "지우개",
   cardHint: {
     burgage: "도로를 따라 칠하면 집터(필지)가 나뉩니다",
-    arable: "밀밭을 지을 땅 · 성벽 안은 안 됩니다",
+    arable: "밀을 기를 땅 · 헛간이 가꿉니다 · 성벽 안은 안 됩니다",
     pasture: "가축을 풀 땅",
     orchard: "과수를 심을 땅",
   } as const satisfies Partial<Record<ZoneKind, string>>,
@@ -29,5 +32,5 @@ export const ZONE_BRUSH_COPY = {
   outsideArable: "경작지 구역 밖입니다 — 경작지 구역 안에 지으세요",
   outsideZone: "구역 밖입니다",
   arableInsideWall: "성내 경작지 금지 — 밀밭은 성벽 밖 경작지에 지으세요",
-  noRoadAccessCells: (cells: number) => `도로 접근 없는 칸 ${cells} — 밀밭을 지으려면 도로가 닿아야 합니다`,
+  noRoadAccessCells: (cells: number) => `헛간이 닿지 못하는 칸 ${cells} — 경작지는 도로에 닿은 헛간이 가까이(${ARABLE_TEND_RADIUS}칸 안) 있어야 가꿉니다`,
 } as const;

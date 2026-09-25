@@ -112,23 +112,8 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
   // 4) timberWallAssets.ts — static single-quoted literal for the palisade gate flank.
   add("assets/buildings/historical-gate/palisade_straight_nw_se.png", "src/render/timberWallAssets.ts");
 
-  // 5) farmSoilTexture.ts — static soil texture literal.
-  add("assets/buildings/historical-farm/layers/soil_loam-v1.png", "src/render/farmSoilTexture.ts");
-
-  // 6) farmAssets.ts — two template-literal families built from closed constant sets.
-  //    farmFiles: src/render/farmAssets.ts:12-17
-  for (const file of [
-    "wheat_farm_worked-v3.png",
-    "wheat_farm_seedling-v3.png",
-    "wheat_farm_growing-v3.png",
-    "wheat_farm_ripe-v4.png",
-  ]) {
-    add(`assets/buildings/historical-farm/${file}`, "src/render/farmAssets.ts (farmFiles)");
-  }
-  //    cropStages: src/render/farmAssets.ts:33-35 -> assets/buildings/historical-farm/layers/crop_${stage}-v1.png
-  for (const stage of ["seedling", "growing", "ripe"]) {
-    add(`assets/buildings/historical-farm/layers/crop_${stage}-v1.png`, "src/render/farmAssets.ts (cropStages)");
-  }
+  // 5-6) farmSoilTexture.ts / farmAssets.ts (wheat farm soil, stage paintings and crop layers): retired with the
+  //      wheat farm (C1f); the files are in assets-inbox/retired and their ledger rows have status `retired`.
 
   // 7) stoneWallAssets.ts + stoneWallGeometry.ts STONE_WALL_SOURCES.
   for (const filename of ["stone_wall_straight_nw_se-v3.png", "stone_wall_straight_ne_sw-v3.png"]) {
