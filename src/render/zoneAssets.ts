@@ -17,8 +17,8 @@ export function preloadZoneAssets(): Promise<void> {
       const exact = image.naturalWidth === asset.width && image.naturalHeight === asset.height;
       entry.image = exact ? image : null;
       entry.status = exact ? "ready" : "missing";
-      if (exact && asset.role === "prop") {
-        // Props shrink 6x or more; one high-quality downscale at twice the display size keeps them clean.
+      if (exact && "displayWidth" in asset) {
+        // Props, decals and modules shrink 4x or more; one high-quality downscale at twice the display size keeps them clean.
         try { entry.raster = rasterizeWorldSprite(image, { x: 0, y: 0, width: asset.width, height: asset.height }, Math.ceil(asset.displayWidth * asset.height / asset.width * 2)); }
         catch (error) { if (!(error instanceof Error)) throw error; entry.raster = null; }
       }
@@ -38,11 +38,12 @@ export function zoneAssetRaster(key: ZoneAssetKey): RasterizedWorldSprite | null
   return entries.get(key)?.raster ?? null;
 }
 
-/** One bit per asset; part of the ground chunk key of chunks that draw zones. */
-export function zoneAssetReadiness(): number {
-  let bits = 0;
-  ZONE_ASSETS.forEach((asset, index) => { if (entries.get(asset.key)?.status === "ready") bits |= 1 << index; });
-  return bits;
+/**
+ * One character per asset (1 = ready), for `keys` or every zone asset; part of the ground chunk key of chunks that
+ * draw zone or yard art (a string: there are more assets than bits in a number).
+ */
+export function zoneAssetReadiness(keys?: readonly ZoneAssetKey[]): string {
+  return (keys ?? ZONE_ASSETS.map(asset => asset.key)).map(key => entries.get(key)?.status === "ready" ? "1" : "0").join("");
 }
 
 export function zoneAssetStatuses(): readonly { readonly key: ZoneAssetKey; readonly status: Entry["status"] }[] {

@@ -1,0 +1,120 @@
+{
+  "url": "http://127.0.0.1:4213/",
+  "snapshot": "docs/verification/c1d-yard/scene/seed2-zone-scene-state.json.gz",
+  "input": "real mouse and keyboard only",
+  "polygon": [
+    [
+      46.5,
+      48.5
+    ],
+    [
+      56.5,
+      48.5
+    ],
+    [
+      56.5,
+      60.5
+    ],
+    [
+      46.5,
+      60.5
+    ]
+  ],
+  "log": [
+    {
+      "atS": 0,
+      "step": "opened",
+      "tick": 305973
+    },
+    {
+      "atS": 1,
+      "step": "arable polygon",
+      "zones": [
+        {
+          "id": "zone-000001",
+          "kind": "burgage",
+          "cells": 56
+        },
+        {
+          "id": "zone-000002",
+          "kind": "arable",
+          "cells": 118
+        }
+      ]
+    },
+    {
+      "atS": 14,
+      "step": "paused with the strips in these states",
+      "tick": 307092,
+      "strips": [
+        {
+          "zone": "zone-000002",
+          "axis": "y",
+          "strips": [
+            {
+              "id": "zone-000002:y47:49",
+              "state": "growing",
+              "farm": "construction-site-000056",
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y48:49",
+              "state": "growing",
+              "farm": "construction-site-000056",
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y49:49",
+              "state": "ploughed",
+              "farm": "construction-site-000053",
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y50:49",
+              "state": "ploughed",
+              "farm": "construction-site-000053",
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y51:49",
+              "state": "seedling",
+              "farm": "construction-site-000058",
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y52:49",
+              "state": "seedling",
+              "farm": "construction-site-000058",
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y53:49",
+              "state": "fallow",
+              "farm": null,
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y54:49",
+              "state": "fallow",
+              "farm": null,
+              "cells": 12
+            },
+            {
+              "id": "zone-000002:y55:50",
+              "state": "fallow",
+              "farm": null,
+              "cells": 11
+            },
+            {
+              "id": "zone-000002:y56:50",
+              "state": "fallow",
+              "farm": null,
+              "cells": 11
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

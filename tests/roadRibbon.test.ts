@@ -99,10 +99,10 @@ test("Given ribbon widths 0.55, 0.65 and 0.75 When the scene is rebuilt Then the
   assert.equal(resolveRoadRibbonWidth(""), 0.65, "default width is 0.65 (owner decision, C1b)");
 });
 
-test("Given the earth strip sets When the choice changes Then one manifest line decides v1 or the alternating v2 pair and the road chunks re-key", () => {
+test("Given the earth strip sets When the choice changes Then one manifest line decides v3 or the alternating v2 pair and the road chunks re-key", () => {
   // Given
   const state = fixedSceneState();
-  const v1 = buildGroundBoundaryScene(state);
+  const v3 = buildGroundBoundaryScene(state);
 
   // When
   setRoadStripOverride("v2");
@@ -111,13 +111,13 @@ test("Given the earth strip sets When the choice changes Then one manifest line 
   setRoadStripOverride(null);
 
   // Then
-  assert.equal(ROAD_STRIP_CHOICE.earth, "v1", "default stays v1 until the owner chooses");
+  assert.equal(ROAD_STRIP_CHOICE.earth, "v3", "owner decision RS1 (D3a): earth v3 by default");
   assert.deepEqual(set, ROAD_STRIP_SETS.earth.v2);
   assert.deepEqual(set.images, ["earth_strip_a_v2", "earth_strip_b_v2"]);
   assert.equal(set.rutContrast, 1, "v2 was painted with quiet ruts");
-  assert.deepEqual(roadStripSet("earth"), ROAD_STRIP_SETS.earth.v1);
-  assert.notDeepEqual(v2.chunks.map(chunk => chunk.roadKey), v1.chunks.map(chunk => chunk.roadKey));
-  assert.deepEqual(v2.roads, v1.roads);
+  assert.deepEqual(roadStripSet("earth"), ROAD_STRIP_SETS.earth.v3);
+  assert.notDeepEqual(v2.chunks.map(chunk => chunk.roadKey), v3.chunks.map(chunk => chunk.roadKey));
+  assert.deepEqual(v2.roads, v3.roads);
 });
 
 test("Given every fixture When the portal lock reshapes chain ends Then the D1a tolerance (0.25 tile outside the road cells) still holds", () => {

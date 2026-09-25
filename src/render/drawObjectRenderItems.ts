@@ -5,6 +5,7 @@ import type { CameraState } from "./camera";
 import { drawBuildings } from "./drawBuildings";
 import { beginFarmCanopyFrame, drawFarmSoil } from "./farmAssets";
 import { drawConstructionSite } from "./drawConstructionSites";
+import { wallBaselinesFor } from "./wallBaselineCache";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { RenderQueueItem } from "./objectRenderOrder";
@@ -17,6 +18,7 @@ import { bridgeAt } from "../world/bridges";
 import { sortRenderItems } from "./objectRenderSort";
 import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
+import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { beginBuildingVariantFrame } from "./buildingVariants";
 
 type DrawObjectRenderItemsInput = {
@@ -48,6 +50,7 @@ export function drawObjectRenderItems(
   const viewMode = getObjectRenderViewMode();
   // RENDER_BOUNDARY_V2 draws field soil and road ribbons in the ground chunks, under frontage and objects.
   const boundaryV2 = boundaryV2Enabled();
+  const wallStrips = boundaryV2 && wallStripsEnabled();
   if (viewMode !== "outlines" && !boundaryV2) {
     for (const item of input.objectRenderItems) {
       if (item.kind === "building") {
@@ -104,6 +107,7 @@ export function drawObjectRenderItems(
         gate: item.gate,
         gates: item.gates,
         zoom: input.zoom,
+        ...(wallStrips ? { face: wallFaceFor(input.state, item) } : {}),
       });
       continue;
     }
@@ -148,4 +152,19 @@ export function drawObjectRenderItems(
     });
     context.restore();
   }
+}
+
+/**
+ * Wall strips (D3b, RENDER_WALL_STRIPS on the curved ground): the wall item's unit edge draws its stretch of the extruded face and the modules it owns (the
+ * item id is `<material>:<unit edge key>`, the key wallBaseline uses). An edge whose chain has the other material (a
+ * timber edge a stone segment replaced) draws nothing.
+ */
+function wallFaceFor(state: DrawObjectRenderItemsInput["state"], item: { readonly id: string; readonly segment: { readonly material?: string } }) {
+  const { walls, slices } = wallBaselinesFor(state);
+  const separator = item.id.indexOf(":");
+  const key = item.id.slice(separator + 1);
+  const material = item.segment.material === "stone" ? "stone" : "timber";
+  const slice = slices.get(key) ?? null;
+  const own = slice !== null && slice.chain.material === material;
+  return { slice: own ? slice : null, nodes: own ? walls.nodes.filter(node => node.owner === key) : [], pillars: own ? walls.pillars.filter(pillar => pillar.owner === key) : [] };
 }

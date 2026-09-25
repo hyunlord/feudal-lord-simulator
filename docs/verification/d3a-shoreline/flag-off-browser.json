@@ -1,0 +1,143 @@
+{
+  "url": "http://127.0.0.1:4213/",
+  "base": "http://127.0.0.1:4214/",
+  "query": "render-boundary-v2=0",
+  "raster": "software (--disable-gpu)",
+  "hash": "FNV-1a over canvas RGBA",
+  "identical": 12,
+  "of": 12,
+  "rows": [
+    {
+      "view": "seed2-lake-z1.00",
+      "dpr": 1,
+      "before": "1280x800:b50c20b9",
+      "after": "1280x800:b50c20b9",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-lake-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:f73e403c",
+      "after": "2560x1600:f73e403c",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-lake-z0.60",
+      "dpr": 1,
+      "before": "1280x800:e7152853",
+      "after": "1280x800:e7152853",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-lake-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:f03310ec",
+      "after": "2560x1600:f03310ec",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-bridge-z1.00",
+      "dpr": 1,
+      "before": "1280x800:3fb590d",
+      "after": "1280x800:3fb590d",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-bridge-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:8a154008",
+      "after": "2560x1600:8a154008",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-bridge-z0.60",
+      "dpr": 1,
+      "before": "1280x800:f389000b",
+      "after": "1280x800:f389000b",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-bridge-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:708ac732",
+      "after": "2560x1600:708ac732",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "river-z1.00",
+      "dpr": 1,
+      "before": "1280x800:9edfe8dd",
+      "after": "1280x800:9edfe8dd",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "river-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:c9d82f7f",
+      "after": "2560x1600:c9d82f7f",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "river-z0.60",
+      "dpr": 1,
+      "before": "1280x800:a26db2d0",
+      "after": "1280x800:a26db2d0",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    },
+    {
+      "view": "river-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:a1aa9950",
+      "after": "2560x1600:a1aa9950",
+      "flagOn": [
+        false,
+        false
+      ],
+      "identical": true
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "limit": {
+    "outline": 0.35,
+    "contact": 0.15,
+    "tangentDegrees": 5
+  },
+  "rows": [
+    {
+      "scene": "seed1",
+      "loops": 3,
+      "samples": 4084,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 80,
+      "bridgeEnds": []
+    },
+    {
+      "scene": "seed2",
+      "loops": 2,
+      "samples": 2926,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 58,
+      "bridgeEnds": []
+    },
+    {
+      "scene": "seed3",
+      "loops": 4,
+      "samples": 3804,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 74,
+      "bridgeEnds": []
+    },
+    {
+      "scene": "seed4",
+      "loops": 2,
+      "samples": 1842,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 37,
+      "bridgeEnds": []
+    },
+    {
+      "scene": "seed5",
+      "loops": 3,
+      "samples": 2141,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 41,
+      "bridgeEnds": []
+    },
+    {
+      "scene": "seed2-bridge",
+      "loops": 2,
+      "samples": 2945,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 57,
+      "bridgeEnds": [
+        {
+          "axis": "y",
+          "mid": {
+            "x": 5,
+            "y": 44.5
+          },
+          "back": true,
+          "contactOffset": 0,
+          "tangentDegrees": 0
+        },
+        {
+          "axis": "y",
+          "mid": {
+            "x": 5,
+            "y": 47.5
+          },
+          "back": false,
+          "contactOffset": 0,
+          "tangentDegrees": 0
+        }
+      ]
+    },
+    {
+      "scene": "river-bridges",
+      "loops": 3,
+      "samples": 4120,
+      "maxTiles": 0.25,
+      "over035": 0,
+      "decals": 77,
+      "bridgeEnds": [
+        {
+          "axis": "y",
+          "mid": {
+            "x": 17,
+            "y": 3.5
+          },
+          "back": true,
+          "contactOffset": 0,
+          "tangentDegrees": 0
+        },
+        {
+          "axis": "y",
+          "mid": {
+            "x": 17,
+            "y": 6.5
+          },
+          "back": false,
+          "contactOffset": 0,
+          "tangentDegrees": 0
+        },
+        {
+          "axis": "x",
+          "mid": {
+            "x": 22.5,
+            "y": 8
+          },
+          "back": true,
+          "contactOffset": 0,
+          "tangentDegrees": 0
+        },
+        {
+          "axis": "x",
+          "mid": {
+            "x": 25.5,
+            "y": 8
+          },
+          "back": false,
+          "contactOffset": 0,
+          "tangentDegrees": 0
+        }
+      ]
+    }
+  ]
+}

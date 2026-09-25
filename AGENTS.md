@@ -46,7 +46,8 @@
 14. **브랜치**: 작업 브랜치는 그 작업이 끝나면 본선에 합친다. 본선에 합치지 않은 브랜치를 다음 작업까지 남기지 않는다. 본선에서 작업 중인 에이전트가 있으면 다른 에이전트는 본선을 자기 브랜치로 merge해 충돌을 미리 푼다. 본선은 제품 작업 브랜치를 뜻하며 main 병합·배포·브랜치 삭제는 명시 지시가 있을 때만 한다.
 15. **읽는 순서**: `docs/STATUS.md` → 지시서 → `docs/design/DESIGN_MASTER.md` 관련 절 → `docs/decisions/README.md`.
 16. **문서 갱신**: 작업 완료 시 `docs/STATUS.md` 갱신, 결정을 바꾸면 같은 커밋에서 설계서·결정 목록 갱신.
-17. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
+17. **에셋 받은 편지함**: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS로 커밋한다(설치 여부와 무관). 설치는 여기서 꺼내 `public/assets/`로 옮기고, 불채택은 inbox에 남긴 채 대장 상태 `rejected`.
+18. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
 
 ### 보고 양식
 맨 위 한 줄 판정: `관문: 통과/실패 — <관문 지표>`. 이어서 커밋 / 관문 결과 / 가드레일(해당 시) / 필수 조건(마지막 커밋 기준 전체 회귀 N/N · typecheck · build) / 다음 후보 / 소요 시간. A4 2장 이내.

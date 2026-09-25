@@ -1,0 +1,188 @@
+{
+  "url": "http://localhost:4231/",
+  "base": "http://localhost:4232/",
+  "query": "&render-wall-strips=1",
+  "baseQuery": "",
+  "raster": "software (--disable-gpu)",
+  "hash": "FNV-1a over canvas RGBA",
+  "identical": 16,
+  "of": 16,
+  "rows": [
+    {
+      "view": "seed2-south-z1.00",
+      "dpr": 1,
+      "before": "1280x800:3d91a5e7",
+      "after": "1280x800:3d91a5e7",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-south-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:c9218104",
+      "after": "2560x1600:c9218104",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-south-z0.60",
+      "dpr": 1,
+      "before": "1280x800:3605e0eb",
+      "after": "1280x800:3605e0eb",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed2-south-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:8f21121e",
+      "after": "2560x1600:8f21121e",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed3-stone-z1.00",
+      "dpr": 1,
+      "before": "1280x800:bdfbc7b9",
+      "after": "1280x800:bdfbc7b9",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed3-stone-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:ad9812cb",
+      "after": "2560x1600:ad9812cb",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed3-stone-z0.60",
+      "dpr": 1,
+      "before": "1280x800:52e2a18f",
+      "after": "1280x800:52e2a18f",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "seed3-stone-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:4cf02e0b",
+      "after": "2560x1600:4cf02e0b",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "natural-timber-z1.00",
+      "dpr": 1,
+      "before": "1280x800:abfdf93f",
+      "after": "1280x800:abfdf93f",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "natural-timber-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:9f53e52b",
+      "after": "2560x1600:9f53e52b",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "natural-timber-z0.60",
+      "dpr": 1,
+      "before": "1280x800:158cd236",
+      "after": "1280x800:158cd236",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "natural-timber-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:57ef369",
+      "after": "2560x1600:57ef369",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "building-z1.00",
+      "dpr": 1,
+      "before": "1280x800:e4906662",
+      "after": "1280x800:e4906662",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "building-z1.00",
+      "dpr": 2,
+      "before": "2560x1600:389fea8e",
+      "after": "2560x1600:389fea8e",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "building-z0.60",
+      "dpr": 1,
+      "before": "1280x800:99fb43d0",
+      "after": "1280x800:99fb43d0",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    },
+    {
+      "view": "building-z0.60",
+      "dpr": 2,
+      "before": "2560x1600:eb583642",
+      "after": "2560x1600:eb583642",
+      "flagOn": [
+        true,
+        true
+      ],
+      "identical": true
+    }
+  ]
+}

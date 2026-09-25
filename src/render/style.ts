@@ -91,6 +91,14 @@ export function applyPaletteStroke(
   context.lineCap = "round";
 }
 
+/** A textured band stroke (D3a shallow water): a pattern or palette colour at a width in the current user space. */
+export function applyTextureStroke(context: PaletteStrokeContext, style: CanvasPattern | PaletteColor, width: number): void {
+  context.strokeStyle = style;
+  context.lineWidth = width;
+  context.lineJoin = "round";
+  context.lineCap = "round";
+}
+
 export function drawFlatDiamondShadow(
   context: Pick<
     CanvasRenderingContext2D,

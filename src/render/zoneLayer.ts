@@ -4,6 +4,9 @@ import { boundaryHash, boundsOf, hashNumbers, type BoundaryBounds, type Boundary
 import { zoneBoundaryLayout, type ZoneBoundaryLayout } from "../world/boundary/zoneBoundaries";
 import type { Tile } from "../world/world.types";
 import { zonesOf } from "../zones/zoneEdits";
+import { arableStripStates } from "../zones/arableStrips";
+import { arableField, type ArableField, type FurrowStamp } from "../world/boundary/arableFields";
+import { ZONE_VARIANTS, type ZoneAssetKey, type ZonePropKind } from "./zoneAssetManifest";
 import { burgageParcels } from "../zones/zoneFillAgent";
 import type { Zone, ZoneKind } from "../zones/zone.types";
 
@@ -15,17 +18,37 @@ import type { Zone, ZoneKind } from "../zones/zone.types";
 //    frontage cell's road side. Plots with a house draw their lines lighter.
 //  - Props: orchard trees on a quincunx planting grid with limited jitter, thinned on the zone edge; 1-3 haycocks per
 //    pasture zone on interior cells. Only on grass cells with no road or building.
+//  - Variants (C1e, spec 6: position hash + deterministic near rejection): a zone's floor (pasture 3, orchard 2, arable
+//    soil 2) differs from every same-family zone within VARIANT_REPEAT_RADIUS when one is free, and starts at its own
+//    offset; haycocks (6) never repeat within that radius (a haycock with no free variant is dropped); orchard trees
+//    (5, planted one per cell) never repeat among their planting neighbours (1.5 tiles). Trees are real variants and
+//    are no longer mirrored (spec 5).
+//  - Arable fields (C1e): ridge strips along the engine's strip read model, see world/boundary/arableFields.
 
-/** `hash` covers the kind and every ring point: a zone's fill is one path, so any change to it re-rasters its chunks. */
-export type ZoneLayerZone = { readonly id: string; readonly kind: ZoneKind; readonly bounds: BoundaryBounds; readonly hash: number };
+/** `hash` covers the kind, the floor, every ring point and the arable layout: a zone's fill is one path, so any change to it re-rasters its chunks. */
+export type ZoneLayerZone = { readonly id: string; readonly kind: ZoneKind; readonly bounds: BoundaryBounds;
+  /** Floor texture variant (null: the kind's flat tone) and its offset in tiles. */
+  readonly floor: ZoneAssetKey | null; readonly floorOffset: BoundaryPoint; readonly hash: number };
 export type ParcelEdge = { readonly a: BoundaryPoint; readonly b: BoundaryPoint; readonly built: boolean };
 export type FrontageMark = { readonly cell: TileCoordinate; readonly toward: BoundaryPoint; readonly built: boolean };
 export type ZoneProp = {
-  readonly kind: "orchard_tree" | "orchard_apple_c" | "haycock_a" | "haycock_b";
+  readonly kind: ZonePropKind | "hurdle_straight" | "hurdle_end_corner";
   /** Ground anchor in tile-centre coordinates. */
   readonly x: number; readonly y: number;
   readonly flip: boolean; readonly scale: number; readonly id: string;
+  /** Draw order key when the anchor is not the prop's depth (fence panels: their middle). */
+  readonly depth?: number;
 };
+
+/** One arable strip run in a zone (for chunk keys: its crop state is read every frame, not stored here). */
+export type ZoneArableBand = { readonly zoneIndex: number; readonly stripId: string; readonly bounds: BoundaryBounds };
+
+export const VARIANT_REPEAT_RADIUS = 4;
+/**
+ * Orchard trees never repeat a variant among their planting neighbours (decision FS4, confirmed with D3a): within 1.5
+ * tiles while the family has 5 trees; once Wave 4c brings it to 9 or more, within 2 tiles.
+ */
+const treeRepeatRadius = (variants: number): number => variants >= 9 ? 2 : 1.5;
 
 export type ZoneLayer = {
   readonly zones: readonly ZoneLayerZone[];
@@ -33,11 +56,22 @@ export type ZoneLayer = {
   readonly parcelEdges: readonly ParcelEdge[];
   readonly frontage: readonly FrontageMark[];
   readonly props: readonly ZoneProp[];
+  /** Arable layout per zone (null for other kinds), and every drawn strip run. */
+  readonly fields: readonly (ArableField | null)[];
+  readonly arableBands: readonly ZoneArableBand[];
   /** Changes whenever anything above changes (chunk content keys). */
   readonly signature: number;
 };
 
-export const EMPTY_ZONE_LAYER: ZoneLayer = { zones: [], outlines: { chains: [], rings: [] }, parcelEdges: [], frontage: [], props: [], signature: 0 };
+export const EMPTY_ZONE_LAYER: ZoneLayer = { zones: [], outlines: { chains: [], rings: [] }, parcelEdges: [], frontage: [], props: [], fields: [], arableBands: [], signature: 0 };
+
+const FLOOR_FAMILY: Partial<Record<ZoneKind, readonly ZoneAssetKey[]>> = {
+  pasture: ZONE_VARIANTS.pastureFloor, orchard: ZONE_VARIANTS.orchardFloor, arable: ZONE_VARIANTS.soil,
+};
+
+function boundsGap(a: BoundaryBounds, b: BoundaryBounds): number {
+  return Math.hypot(Math.max(0, a.left - b.right, b.left - a.right), Math.max(0, a.top - b.bottom, b.top - a.bottom));
+}
 
 /** Part of the ground scene key: kinds, ordinals and membership of every zone. */
 export function zoneSignature(zones: readonly Zone[]): string {
@@ -51,9 +85,32 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
   const labels = new Int32Array(width * height).fill(-1);
   zones.forEach((zone, index) => { for (const cell of zone.membership) if (cell >= 0 && cell < labels.length) labels[cell] = index; });
   const outlines = zoneBoundaryLayout({ width, height, labels, zoneCount: zones.length });
-  const layerZones = zones.map((zone, index) => ({ id: zone.id, kind: zone.kind,
-    bounds: boundsOf((outlines.rings[index] ?? []).flat(), 0),
-    hash: hashNumbers([zone.kind.length * 31 + zone.kind.charCodeAt(0), ...(outlines.rings[index] ?? []).flatMap(ring => [ring.length, ...ring.flatMap(point => [point.x, point.y])])]) }));
+  const placedStamps: FurrowStamp[] = [];
+  const fields = zones.map(zone => zone.kind !== "arable" ? null : arableField({ zoneId: zone.id, zoneOrdinal: zone.createdOrdinal,
+    layout: arableStripStates(zone, state), mapWidth: width, mapHeight: height, cells, seed: state.seed, placedStamps }));
+  const floors: { readonly key: ZoneAssetKey | null; readonly bounds: BoundaryBounds }[] = [];
+  const layerZones = zones.map((zone, index) => {
+    const bounds = boundsOf((outlines.rings[index] ?? []).flat(), 0);
+    const family = FLOOR_FAMILY[zone.kind];
+    const hash = boundaryHash(zone.createdOrdinal, state.seed, 79);
+    let floor: ZoneAssetKey | null = null;
+    if (family !== undefined) {
+      const near = new Set(floors.filter(other => other.key !== null && family.includes(other.key) && boundsGap(other.bounds, bounds) < VARIANT_REPEAT_RADIUS).map(other => other.key));
+      const first = hash % family.length;
+      floor = family[first] as ZoneAssetKey;
+      for (let tried = 0; tried < family.length; tried += 1) {
+        const option = family[(first + tried) % family.length] as ZoneAssetKey;
+        if (!near.has(option)) { floor = option; break; }
+      }
+    }
+    floors.push({ key: floor, bounds });
+    const floorOffset = { x: ((hash >>> 8) % 8) * 0.25, y: ((hash >>> 11) % 8) * 0.25 };
+    return { id: zone.id, kind: zone.kind, bounds, floor, floorOffset,
+      hash: hashNumbers([zone.kind.length * 31 + zone.kind.charCodeAt(0), floor === null ? -1 : floor.length * 31 + floor.charCodeAt(floor.length - 1),
+        floorOffset.x, floorOffset.y, fields[index]?.hash ?? 0,
+        ...(outlines.rings[index] ?? []).flatMap(ring => [ring.length, ...ring.flatMap(point => [point.x, point.y])])]) };
+  });
+  const arableBands: ZoneArableBand[] = fields.flatMap((field, zoneIndex) => field === null ? [] : field.bands.map(band => ({ zoneIndex, stripId: band.stripId, bounds: band.bounds })));
 
   const parcels = burgageParcels(state);
   const plotOf = new Int32Array(width * height).fill(-1);
@@ -98,8 +155,11 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
     });
   };
   const props: ZoneProp[] = [];
+  const haycocks: ZoneProp[] = [];
+  const treeVariants = new Map<string, number>();
   zones.forEach((zone, label) => {
     if (zone.kind === "orchard") {
+      const family = ZONE_VARIANTS.orchardTree;
       for (const index of zone.membership) {
         if (!free(index)) continue;
         const tx = index % width; const ty = Math.floor(index / width);
@@ -109,25 +169,50 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
         if (keep >= (edgeCell(index, label) ? 0.45 : 0.9)) continue;
         const jitter = (salt: number): number => ((boundaryHash(index, state.seed, salt) % 1000) / 1000 - 0.5) * 0.24;
         const x = tx + (ty % 2 === 0 ? -0.2 : 0.2) + jitter(43); const y = ty + jitter(47);
-        const variant = boundaryHash(index, state.seed, 53) % 5;
-        props.push({ kind: variant < 2 ? "orchard_apple_c" : "orchard_tree", x, y, flip: variant === 3, scale: 0.92 + ((hash >>> 10) % 16) / 100, id: `zone-prop:${zone.id}:${index}` });
+        // Planting neighbours (membership is row-major, so the ones already placed are west and north).
+        const near = new Set<number>();
+        for (let dy = -2; dy <= 0; dy += 1) for (let dx = -2; dx <= 2; dx += 1) {
+          const other = treeVariants.get(`${tx + dx},${ty + dy}`);
+          const otherProp = other === undefined ? undefined : props[other >> 4];
+          if (other !== undefined && otherProp !== undefined && Math.hypot(otherProp.x - x, otherProp.y - y) < treeRepeatRadius(family.length)) near.add(other & 15);
+        }
+        const first = boundaryHash(index, state.seed, 53) % family.length;
+        let variant = first;
+        for (let tried = 0; tried < family.length; tried += 1) {
+          const option = (first + tried) % family.length;
+          if (!near.has(option)) { variant = option; break; }
+        }
+        treeVariants.set(`${tx},${ty}`, (props.length << 4) | variant);
+        props.push({ kind: family[variant] as ZonePropKind, x, y, flip: false, scale: 0.92 + ((hash >>> 10) % 16) / 100, id: `zone-prop:${zone.id}:${index}` });
       }
     } else if (zone.kind === "pasture") {
+      const family = ZONE_VARIANTS.haycock;
       const inner = zone.membership.filter(index => free(index) && !edgeCell(index, label));
       const pool = inner.length > 0 ? inner : zone.membership.filter(free);
       const count = Math.min(pool.length, 1 + boundaryHash(zone.createdOrdinal, state.seed, 59) % 3, Math.ceil(zone.membership.length / 6));
       const chosen = [...pool].sort((a, b) => boundaryHash(a, state.seed, 61) - boundaryHash(b, state.seed, 61) || a - b).slice(0, count);
       for (const index of chosen) {
         const tx = index % width; const ty = Math.floor(index / width);
-        props.push({ kind: boundaryHash(index, state.seed, 67) % 2 === 0 ? "haycock_a" : "haycock_b", x: tx, y: ty + 0.1, flip: false, scale: 1, id: `zone-prop:${zone.id}:${index}` });
+        const at = { x: tx, y: ty + 0.1 };
+        const near = new Set(haycocks.filter(other => Math.hypot(other.x - at.x, other.y - at.y) < VARIANT_REPEAT_RADIUS).map(other => other.kind));
+        const first = boundaryHash(index, state.seed, 67) % family.length;
+        let kind: ZonePropKind | null = null;
+        for (let tried = 0; tried < family.length; tried += 1) {
+          const option = family[(first + tried) % family.length] as ZonePropKind;
+          if (!near.has(option)) { kind = option; break; }
+        }
+        if (kind === null) continue;
+        const prop: ZoneProp = { kind, x: at.x, y: at.y, flip: false, scale: 1, id: `zone-prop:${zone.id}:${index}` };
+        haycocks.push(prop);
+        props.push(prop);
       }
     }
   });
   const signature = hashNumbers([
-    ...zones.flatMap((zone, index) => [index, zone.kind.length, zone.membership.length, hashNumbers(zone.membership)]),
+    ...zones.flatMap((zone, index) => [index, zone.kind.length, zone.membership.length, hashNumbers(zone.membership), layerZones[index]?.hash ?? 0]),
     ...outlines.chains.map(chain => chain.hash),
     ...parcelEdges.flatMap(edge => [edge.a.x, edge.a.y, edge.b.x, edge.b.y, edge.built ? 1 : 0]),
     ...frontage.flatMap(mark => [mark.cell.tx, mark.cell.ty, mark.toward.x, mark.toward.y, mark.built ? 1 : 0]),
   ]);
-  return { zones: layerZones, outlines, parcelEdges, frontage, props, signature };
+  return { zones: layerZones, outlines, parcelEdges, frontage, props, fields, arableBands, signature };
 }

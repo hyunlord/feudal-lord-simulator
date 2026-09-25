@@ -11,19 +11,18 @@ import type { ZoneLayer } from "./zoneLayer";
 // rings, and every outline chain is stroked once, so two zones that touch draw exactly one line between them.
 // Patterns are world-aligned (the chunk raster draws in world coordinates) and only used with path fill.
 
-type ZoneStyle = { readonly tone: PaletteColor; readonly toneAlpha: number; readonly line: PaletteColor; readonly texture: "pasture_fill" | "orchard_floor_fill" | null; readonly hatch: boolean };
+type ZoneStyle = { readonly tone: PaletteColor; readonly toneAlpha: number; readonly line: PaletteColor; readonly textureAlpha: number; readonly hatch: boolean };
 
 export const ZONE_STYLES: Readonly<Record<ZoneKind, ZoneStyle>> = {
-  // Plots: warm earth tone; arable: brown with a light furrow hatch; pasture and orchard: their Wave 4 floors.
-  burgage: { tone: RAMPS.earth[4], toneAlpha: 0.32, line: RAMPS.earth[2], texture: null, hatch: false },
-  arable: { tone: RAMPS.earth[2], toneAlpha: 0.32, line: RAMPS.earth[1], texture: null, hatch: true },
-  pasture: { tone: RAMPS.foliage[4], toneAlpha: 0.2, line: RAMPS.foliage[2], texture: "pasture_fill", hatch: false },
-  orchard: { tone: RAMPS.foliage[3], toneAlpha: 0.2, line: RAMPS.foliage[1], texture: "orchard_floor_fill", hatch: false },
-  hay_meadow: { tone: RAMPS.thatch[4], toneAlpha: 0.2, line: RAMPS.thatch[2], texture: null, hatch: false },
-  woodland_common: { tone: RAMPS.foliage[2], toneAlpha: 0.2, line: RAMPS.foliage[0], texture: null, hatch: false },
+  // Plots: warm earth tone; arable: its soil fill (C1e; brown with a light furrow hatch until the art loads); pasture
+  // and orchard: their Wave 4 floors. The floor variant of each zone is chosen in the zone layer.
+  burgage: { tone: RAMPS.earth[4], toneAlpha: 0.32, line: RAMPS.earth[2], textureAlpha: 0.9, hatch: false },
+  arable: { tone: RAMPS.earth[2], toneAlpha: 0.32, line: RAMPS.earth[1], textureAlpha: 1, hatch: true },
+  pasture: { tone: RAMPS.foliage[4], toneAlpha: 0.2, line: RAMPS.foliage[2], textureAlpha: 0.9, hatch: false },
+  orchard: { tone: RAMPS.foliage[3], toneAlpha: 0.2, line: RAMPS.foliage[1], textureAlpha: 0.9, hatch: false },
+  hay_meadow: { tone: RAMPS.thatch[4], toneAlpha: 0.2, line: RAMPS.thatch[2], textureAlpha: 0.9, hatch: false },
+  woodland_common: { tone: RAMPS.foliage[2], toneAlpha: 0.2, line: RAMPS.foliage[0], textureAlpha: 0.9, hatch: false },
 };
-/** Texture fills are drawn at this opacity so the zone keeps a soft join with the grass around it. */
-const TEXTURE_ALPHA = 0.9;
 const OUTLINE_ALPHA = 0.75;
 const SHARED_OUTLINE_ALPHA = 0.55;
 
@@ -32,23 +31,25 @@ export function drawZoneFills(context: CanvasRenderingContext2D, layer: ZoneLaye
     const zone = layer.zones[index]; const rings = layer.outlines.rings[index];
     if (zone === undefined || rings === undefined || rings.length === 0) continue;
     const style = ZONE_STYLES[zone.kind];
-    const texture = style.texture === null ? null : zoneAsset(style.texture);
+    const texture = zone.floor === null ? null : zoneAsset(zone.floor);
     const pattern = texture === null ? null : cachedPattern(context, texture);
     traceRings(context, rings);
     const previousAlpha = context.globalAlpha;
     if (pattern !== null) {
-      // 256x128 source = 2x2 tiles: half scale in screen space, anchored at the world origin.
-      pattern.setTransform({ a: 0.5, b: 0, c: 0, d: 0.5, e: 0, f: 0 });
-      context.globalAlpha = previousAlpha * TEXTURE_ALPHA;
+      // 256x128 source = 2x2 tiles: half scale in screen space, anchored at the world origin plus the zone's offset.
+      // Texture fills keep a soft join with the grass around them (textureAlpha < 1), except arable soil.
+      const offset = tileToScreen(zone.floorOffset.x, zone.floorOffset.y);
+      pattern.setTransform({ a: 0.5, b: 0, c: 0, d: 0.5, e: offset.sx, f: offset.sy });
+      context.globalAlpha = previousAlpha * style.textureAlpha;
       context.fillStyle = pattern;
       context.fill("evenodd");
     } else {
       context.fillStyle = withAlpha(style.tone, style.toneAlpha);
       context.fill("evenodd");
-    }
-    if (style.hatch) {
-      const hatch = hatchPattern(context);
-      if (hatch !== null) { context.fillStyle = hatch; context.fill("evenodd"); }
+      if (style.hatch) {
+        const hatch = hatchPattern(context);
+        if (hatch !== null) { context.fillStyle = hatch; context.fill("evenodd"); }
+      }
     }
     context.globalAlpha = previousAlpha;
   }

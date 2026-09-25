@@ -137,7 +137,8 @@ test("objectRenderItemsForFrame reuses the static object queue when only walkers
   assert.equal(sortCalls, 0, `expected static queue cache to avoid Array.sort, got ${sortCalls}`);
   assert.deepEqual(
     secondFrame.map((item) => `${item.kind}:${item.id}`),
-    ["building:building-1", "walker:walker-1"],
+    // The house's yard edge toward the open cell carries a hurdle panel (C1e, curved ground on by default).
+    ["building:building-1", "zone_prop:yard-hurdle:building-1:straight:1,1", "walker:walker-1"],
   );
 });
 

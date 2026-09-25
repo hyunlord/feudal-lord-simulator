@@ -1,0 +1,88 @@
+{
+  "url": "http://127.0.0.1:4214/",
+  "metric": "opaque-row coverage across each join (holes) and the colour step at the join vs the strip own p95",
+  "seams": 7,
+  "rows": [
+    {
+      "strip": "palisade face",
+      "opaqueRows": 106,
+      "holePixelsAtJoins": 30528,
+      "p95": 31.4,
+      "joinSteps": [
+        0,
+        0,
+        0
+      ],
+      "seam": true
+    },
+    {
+      "strip": "stone face",
+      "opaqueRows": 108,
+      "holePixelsAtJoins": 31104,
+      "p95": 6.3,
+      "joinSteps": [
+        0,
+        0,
+        0
+      ],
+      "seam": true
+    },
+    {
+      "strip": "shoreline",
+      "opaqueRows": 76,
+      "holePixelsAtJoins": 29184,
+      "p95": 1.1,
+      "joinSteps": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "seam": true
+    },
+    {
+      "strip": "ridge ploughed",
+      "opaqueRows": 50,
+      "holePixelsAtJoins": 8000,
+      "p95": 1.7,
+      "joinSteps": [
+        0,
+        0
+      ],
+      "seam": true
+    },
+    {
+      "strip": "ridge seedling",
+      "opaqueRows": 50,
+      "holePixelsAtJoins": 8000,
+      "p95": 3.2,
+      "joinSteps": [
+        0,
+        0
+      ],
+      "seam": true
+    },
+    {
+      "strip": "ridge growing",
+      "opaqueRows": 50,
+      "holePixelsAtJoins": 8000,
+      "p95": 9.9,
+      "joinSteps": [
+        0,
+        0
+      ],
+      "seam": true
+    },
+    {
+      "strip": "ridge fallow",
+      "opaqueRows": 50,
+      "holePixelsAtJoins": 8000,
+      "p95": 2.2,
+      "joinSteps": [
+        0,
+        0
+      ],
+      "seam": true
+    }
+  ]
+}

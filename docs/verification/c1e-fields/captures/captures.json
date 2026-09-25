@@ -1,0 +1,305 @@
+{
+  "url": "http://127.0.0.1:4213/",
+  "walkers": "hidden",
+  "marks": "G gate (frontage) · C corner the set lacks · H half panel",
+  "rows": [
+    {
+      "file": "arable-z1.00.jpg",
+      "source": "seed 2 arable scene (natural snapshot + C1d and C1e real-input play)",
+      "tile": [
+        51.5,
+        54.5
+      ],
+      "zoom": 1,
+      "query": null,
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "arable-z0.60.jpg",
+      "source": "seed 2 arable scene (natural snapshot + C1d and C1e real-input play)",
+      "tile": [
+        51.5,
+        54.5
+      ],
+      "zoom": 0.6,
+      "query": null,
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "arable-z2.00-closeup.jpg",
+      "source": "seed 2 arable scene",
+      "tile": [
+        50.5,
+        51.5
+      ],
+      "zoom": 2,
+      "query": null,
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "yard-z1.00.jpg",
+      "source": "seed 2 zone scene (C1d real-input cottages)",
+      "tile": [
+        37.5,
+        44
+      ],
+      "zoom": 1,
+      "query": null,
+      "wants": [
+        {
+          "buildingId": "construction-site-000033",
+          "kind": "gate",
+          "at": {
+            "x": 60.5,
+            "y": 41
+          }
+        },
+        {
+          "buildingId": "construction-site-000033",
+          "kind": "gate",
+          "at": {
+            "x": 61.5,
+            "y": 41
+          }
+        },
+        {
+          "buildingId": "construction-site-000035",
+          "kind": "gate",
+          "at": {
+            "x": 61,
+            "y": 41.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000071",
+          "kind": "half",
+          "at": {
+            "x": 46.5,
+            "y": 50
+          }
+        },
+        {
+          "buildingId": "construction-site-000071",
+          "kind": "half",
+          "at": {
+            "x": 45,
+            "y": 48.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000071",
+          "kind": "corner",
+          "at": {
+            "x": 45,
+            "y": 50
+          }
+        },
+        {
+          "buildingId": "construction-site-000072",
+          "kind": "half",
+          "at": {
+            "x": 38.5,
+            "y": 43
+          }
+        },
+        {
+          "buildingId": "construction-site-000072",
+          "kind": "gate",
+          "at": {
+            "x": 39,
+            "y": 44.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000072",
+          "kind": "corner",
+          "at": {
+            "x": 37,
+            "y": 45
+          }
+        },
+        {
+          "buildingId": "construction-site-000073",
+          "kind": "gate",
+          "at": {
+            "x": 38,
+            "y": 42.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000073",
+          "kind": "corner",
+          "at": {
+            "x": 36,
+            "y": 44
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file": "yard-z0.60.jpg",
+      "source": "seed 2 zone scene (C1d real-input cottages)",
+      "tile": [
+        37.5,
+        44
+      ],
+      "zoom": 0.6,
+      "query": null,
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "yard-z2.00-closeup.jpg",
+      "source": "seed 2 zone scene (C1d real-input cottages)",
+      "tile": [
+        37.5,
+        43.8
+      ],
+      "zoom": 2,
+      "query": null,
+      "wants": [
+        {
+          "buildingId": "construction-site-000033",
+          "kind": "gate",
+          "at": {
+            "x": 60.5,
+            "y": 41
+          }
+        },
+        {
+          "buildingId": "construction-site-000033",
+          "kind": "gate",
+          "at": {
+            "x": 61.5,
+            "y": 41
+          }
+        },
+        {
+          "buildingId": "construction-site-000035",
+          "kind": "gate",
+          "at": {
+            "x": 61,
+            "y": 41.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000071",
+          "kind": "half",
+          "at": {
+            "x": 46.5,
+            "y": 50
+          }
+        },
+        {
+          "buildingId": "construction-site-000071",
+          "kind": "half",
+          "at": {
+            "x": 45,
+            "y": 48.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000071",
+          "kind": "corner",
+          "at": {
+            "x": 45,
+            "y": 50
+          }
+        },
+        {
+          "buildingId": "construction-site-000072",
+          "kind": "half",
+          "at": {
+            "x": 38.5,
+            "y": 43
+          }
+        },
+        {
+          "buildingId": "construction-site-000072",
+          "kind": "gate",
+          "at": {
+            "x": 39,
+            "y": 44.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000072",
+          "kind": "corner",
+          "at": {
+            "x": 37,
+            "y": 45
+          }
+        },
+        {
+          "buildingId": "construction-site-000073",
+          "kind": "gate",
+          "at": {
+            "x": 38,
+            "y": 42.5
+          }
+        },
+        {
+          "buildingId": "construction-site-000073",
+          "kind": "corner",
+          "at": {
+            "x": 36,
+            "y": 44
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "file": "road-v1-z1.00.jpg",
+      "source": "24-lot town (fixtures/determinism/seed1 final state)",
+      "tile": [
+        37,
+        31
+      ],
+      "zoom": 1,
+      "query": "&road-strip=v1",
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "road-v1-z0.60.jpg",
+      "source": "24-lot town (fixtures/determinism/seed1 final state)",
+      "tile": [
+        37,
+        31
+      ],
+      "zoom": 0.6,
+      "query": "&road-strip=v1",
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "road-v3-z1.00.jpg",
+      "source": "24-lot town (fixtures/determinism/seed1 final state)",
+      "tile": [
+        37,
+        31
+      ],
+      "zoom": 1,
+      "query": "&road-strip=v3",
+      "wants": null,
+      "errors": []
+    },
+    {
+      "file": "road-v3-z0.60.jpg",
+      "source": "24-lot town (fixtures/determinism/seed1 final state)",
+      "tile": [
+        37,
+        31
+      ],
+      "zoom": 0.6,
+      "query": "&road-strip=v3",
+      "wants": null,
+      "errors": []
+    }
+  ]
+}

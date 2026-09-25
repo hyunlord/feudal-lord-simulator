@@ -14,7 +14,8 @@ import type { ZoneBrushView } from "./zoneBrushOverlay";
 // tool is armed; otherwise every handler returns false and the canvas keeps its usual behaviour.
 //  - Mouse: left drag paints (Space + drag still pans, middle drag pans); Shift+click or the polygon toggle places
 //    polygon vertices, double-click closes; right click / Esc cancels the gesture; [ ] (or the card buttons) set the
-//    radius 1..3; the wheel always zooms (C1d); Z reports that stroke undo is not available yet.
+//    radius 1..3; the wheel always zooms (C1d); Z undoes the last paint or erase (`zone_undo_stroke`, C1c Z-17; a
+//    stroke in progress is cancelled first, like Esc).
 //  - Touch: one finger paints, two fingers pan the camera (and drop a stroke in progress). No hover is needed:
 //    the preview follows the finger.
 
@@ -124,10 +125,14 @@ export function zoneKeyDown(context: Context, event: KeyboardEvent): boolean {
     return true;
   }
   if (event.code === "KeyZ") {
-    // The engine has no stroke undo yet (C1c hand-off); do not fake one with an inverse erase.
     event.preventDefault();
+    // A stroke in progress is not recorded yet: Z drops it, as Esc does, and undoes nothing.
+    if (context.zone.gestureRef.current !== null) { zoneCancel(context); return true; }
+    const undoable = (context.state().zoneUndo?.length ?? 0) > 0;
+    if (undoable) context.dispatch({ type: "zone_undo_stroke" });
     const point = context.zone.pointRef.current;
-    context.refs.feedbackRef.current = createPlacementFeedback({ kind: "failure", message: ZONE_BRUSH_COPY.undoUnavailable,
+    context.refs.feedbackRef.current = createPlacementFeedback({ kind: undoable ? "success" : "failure",
+      message: undoable ? ZONE_BRUSH_COPY.undone : ZONE_BRUSH_COPY.nothingToUndo,
       anchor: { kind: "tile", tile: point === null ? { tx: 0, ty: 0 } : { tx: Math.floor(point.x), ty: Math.floor(point.y) } }, nowMs: performance.now() });
     return true;
   }
