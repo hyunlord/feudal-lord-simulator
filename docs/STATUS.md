@@ -1,8 +1,13 @@
 # 현재 상태
 
-갱신: 2026-09-26(UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-26(INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
+
+- **INSTALL-5c Wave 5c 설치 — 관문 ①~⑦ 통과(③ 곧은 벽 성문만), 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·표현 워커·경계층 기둥 필드·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population·성벽 논리 0줄): 지시서 ZIP이 없어 사용자 요청 한 줄 + Wave 5c 대장·판정표로 진행(IN5c1). [보고서](verification/install5c/REPORT.md), RM-8·WC-10·WL-8·SH-6, 결정 IN5c1~IN5c4.
+  - 아이·노인 8시트: 노인은 노인 몸, 아이는 시장·교회 길 절반에 어른 0.3칸 옆 동행(상한 40의 남은 자리만, 어른은 MOVE-1 그대로). 1년 545번 동행·실패 0.
+  - 석문 v3(축마다 한 장, 통로 배율 51.2/204, 늘이기 없음), 135° 기둥 b·c(축 팔 방향), 얕은 물 d·e(물가 밝은 테두리 2.5~3.8 → 0.5~1.4). p95 98~102%.
+  - 발견: 고정 장면 석벽 성문 8/10이 90° 꺾인 점에 있어 성문 그림이 안 그려진다(본선도 같음) → 다음 후보.
 
 - **UX-2 UI 그림 입히기 — 관문 ①~⑦ 통과(④ 부분), ⑧ 사용자 판정 대기, 본선 병합**(Claude Code, 렌더·UI·스타일·에셋·대장·스크립트·테스트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): [UI 아트 스킨 명세](design/ui-art-skin.md) US-1~US-7, [보고서](verification/ux2-ui-art/REPORT.md), 결정 UX2-1~UX2-4.
   - Astra P0 43장(초판 29 + 재작업 14, `caBX` 제거)과 파생 54장(아이콘 24/32/48/64, 커서 32, 초상 96)을 설치했다. 대장 97행, 받은 편지함 `ui-p0`(초판 12 superseded · 파일럿 12).
