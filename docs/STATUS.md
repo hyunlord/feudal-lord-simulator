@@ -1,8 +1,13 @@
 # 현재 상태
 
-갱신: 2026-09-25(FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
+
+- **MOVE-1 주민 이동 v0 — 관문 통과, 본선 병합**(Claude Code, 표현 워커, 시뮬레이션 0줄, 렌더는 V2 매핑 표 줄만): [주민 이동 명세](design/resident-movement.md) RM-1~RM-7, [보고서](verification/move1-residents/REPORT.md), 결정 MV1~MV5.
+  - 가구 어른이 우물·시장·교회에 걷고, 헛간 일꾼이 들일을 오간다. 시장일 방문객, 교회↔예배당 성직자, 성문 경비가 있다. 모두 상태와 틱에서 파생하며 저장하지 않는다(v11 그대로).
+  - 설치된 계급군 12개가 모두 걷는다. seed 2 도시 1년: 화면당 시트 22~33종, 여성 47.5%.
+  - 아이·노인 시트는 설치되지 않아 노인은 어른 몸, 아이는 걷지 않는다.
 
 - **FIX-1 판정 진실성 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, UI 변경 없음): [판정 진실성 명세](design/placement-status-truth.md) PT-1~PT-4, [보고서](verification/fix1-truth/REPORT.md), 결정 FX1~FX3.
   - 도로가 필요한 건물은 도로가 닿아야 설치된다(거부 이유 `도로 연결 없음`). 체크리스트의 ✗와 설치 판정이 같아졌다.
@@ -105,7 +110,7 @@
 
 ## 다음 작업
 
-- **MOVE-1**: 사용자가 다음 지시서를 보낸다. FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H)은 UX-1 몫이다.
+- **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
 
