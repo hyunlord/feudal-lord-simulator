@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-25(V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
@@ -45,6 +45,8 @@
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
+
+**PLAY-1 상시 플레이 서버**(Claude Code, 배포 스크립트·문서만, 게임 코드 0줄): DGX Spark(Tailscale `100.70.109.50:4173`)에 본선 빌드를 상시 서빙한다. 5분마다 본선이 바뀌었으면 빌드해 원자적으로 바꿔 끼우고, 실패하면 이전 빌드를 유지한다. 상태 페이지는 `/status`, 게임 왼쪽 위에 커밋 7자리를 띄운다. systemd 사용자 단위(linger). [운영 문서](PLAY_SERVER.md), [보고서](verification/play1-server/REPORT.md).
 
 **V2 주민 합성기**(Claude Code, 렌더·UI 문구·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): Wave 5a 55장 inbox(+초상화 파일럿 6)·설치·대장 55행. 걷는 사람이 표시 직업(종류+짐) → 계급군 가중 추첨으로 워커 29종·옛 직업 그림 가운데 한 장을 입고(성별은 householdMembers, 없으면 해시 50:50), 오른손에 소지품(빵·망치·도끼·물병·꾸러미), 달력 겨울에 외투를 겹친다. 모습마다 8칸을 한 번 합성해 칸별 비트맵으로 캐시(상한 64, 23.9MB). 관문 ①③④⑤⑥ 통과, ② 부분 통과(사용자 결정 WK1: 2칸 기준은 이동하는 워커에 부적합, 계급별 편중 ≤ 60%로 판정, 최대 53%; 시트 추가는 Astra 후보). SettlementPanel "밀밭" 안내 두 줄 → "경작지". [명세](design/walker-composer.md), [보고서](verification/v2-walkers/REPORT.md).
 

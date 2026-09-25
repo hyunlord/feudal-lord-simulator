@@ -1,6 +1,8 @@
 [Unit]
 Description=Feudal Lord Simulator play server (PLAY-1, tailnet only)
 After=network-online.target
+# Keep retrying while Tailscale comes up at boot (observed: about 1 minute of EADDRNOTAVAIL after a reboot).
+StartLimitIntervalSec=0
 
 [Service]
 Type=simple
