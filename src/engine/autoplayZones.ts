@@ -9,7 +9,7 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingC
 import { zonesOf } from "../zones/zoneEdits";
 import { canPlaceBuilding } from "../world/placement";
 import { zonePlacementCheck } from "../zones/zonePlacement";
-import type { AutoplayAction } from "./autoplay.types";
+import type { AdvisorAction } from "./autoplayBotRecovery";
 import type { GameState } from "./engine.types";
 
 const excluded = new Set<string>();
@@ -40,12 +40,12 @@ function coversArableCell(state: GameState, kind: BuildingKind, tx: number, ty: 
 }
 
 /** True when the action is a placement the zone rules refuse. */
-export function zoneRefusesAction(state: GameState, action: AutoplayAction): boolean {
+export function zoneRefusesAction(state: GameState, action: AdvisorAction): boolean {
   return action.kind === "place_building" && !zonePlacementCheck(state, action.building, action.tx, action.ty).ok;
 }
 
 /** Excludes a refused placement for the rest of the current decision and counts it. */
-export function excludeZoneRefusal(action: AutoplayAction): void {
+export function excludeZoneRefusal(action: AdvisorAction): void {
   if (action.kind !== "place_building") return;
   excluded.add(key(action.building, action.tx, action.ty));
   rejections += 1;

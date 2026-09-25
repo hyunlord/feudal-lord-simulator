@@ -1,8 +1,13 @@
 # 현재 상태
 
-갱신: 2026-09-25(INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
+
+- **BOT-1 자동 성장 복구 — 관문 통과(가드레일 5/5, 3회차), 본선 병합**(Claude Code, 봇만, 규칙 파일 diff 0): [자동 성장 복구 명세](design/autoplay-recovery.md) AR-1~AR-7, [보고서](verification/bot1-autoplay/REPORT.md), 결정 BT1~BT8. 새 기준선 [`seeds/baseline-c96e6ed.json`](../seeds/baseline-c96e6ed.json).
+  - `granary_gap`(성 안 곡창 공백), `market_gap`(시장 반경 밖 집), `market_relocation`(상한에서 닿지 않는 집 헐고 반경 안에 다시), `timber_demand`(기다리는 목재 대비 생산 부족 → 목재 시설), `interior_plots`(남은 필지보다 성 안 집 자리를 적게 남기는 배치 거부, 성 안 자리부터 집 찾기).
+  - 3회차 승리 틱: seed 1 141,655 · seed 2 220,940 · seed 3 L4 24/24(168,000틱 점검) · seed 4 184,460 · seed 5 301,657. seed 1·2·4·5는 기준선 5b138e0보다 빠르고, seed 3은 기준선(123,210)보다 늦다(기록만).
+  - 전체 회귀 2,833/2,833(B1~B7 포함).
 
 - **C3 노동 모델·가내 생산 슬롯·계절 노동·방앗간 운반 관문 통과·본선 병합**(Claude Code, 엔진 세션, 렌더 0줄): [노동 명세](design/labour.md) LB-1~LB-14, [보고서](verification/c3-labour/REPORT.md), 결정 LB1~LB9.
   - 집마다 가구 구성원 `members {adults, children, seed}`(저장 v11). 성인 합 = 기존 노동력. 성별·나이대는 파생(`householdMembers`).
@@ -94,7 +99,6 @@
 
 ## 다음 작업
 
-- **C4 전 선행 — 자동 성장 배급·목재 보강**(봇만, 가드레일 5/5 관문): C3가 드러낸 자동 성장 약점 두 가지를 고친다. seed 3은 성 안 곡창이 하나뿐이라 서쪽 집 5채에 빵이 닿지 않아 L4 19/24에서 멈춘다. seed 2는 제재소 1 · 벌목장 2로 목재·돌이 모자라 교회·석조 공사가 밀린다. 원인·재현 상태(`repro-seed2-348000`·`repro-seed3-468000`)·수정 방향은 [C3 보고서](verification/c3-labour/REPORT.md)에 있다. 통과하면 C3 기준선을 새로 만든다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
 
@@ -107,5 +111,6 @@
 - 설계서 12·13.0절의 권고안 일괄 확정, Steam Deck 출시 목표 수준.
 - 자동 성장 기본 상한 8→24, 한 판 시간·틱 속도, 새 L3/L4 후보 설치.
 - D24 자재 재관측은 보류 유지.
+- **시장 상한·반경 규칙 검토(C4 앞)**: 시장 상한 `필지 ÷ 24 + 1`(가드레일 `markets`)과 시장 반경 8은 성벽 여유와 맞물린다. 선포가 마지막 시장 자리를 가져가면 두 시장이 24집에 닿지 못한다(BOT-1 seed 2: 선포 직전 24, 직후 23). 지금은 봇이 닿지 않는 집을 헐고 옮겨 넘긴다(결정 BT7). C4 착수 전에 상한·반경·벽 여유 규칙을 그대로 둘지 정한다. 근거: [자동 성장 복구 명세](design/autoplay-recovery.md) "원인 조사".
 
 [결정 목록](decisions/README.md)의 상태를 참조한다. 설계서 14절의 기준선 교체 문구보다 최신 S0 지시서의 상태 기록·기존 기준선 보존이 우선한다. [문서 지도](README.md)에 원문 간 시점 차이를 기록했다.

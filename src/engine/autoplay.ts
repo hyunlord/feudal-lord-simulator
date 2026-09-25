@@ -38,7 +38,11 @@ import { waterAction } from "./autoplayWater";
 import { reserveDeadlock } from "./reserveDeadlock";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
-export type { AutoplayAction } from "./autoplay.types";
+import { granaryGapAction, keepsHouseInMarketReach, marketGapAction, marketRelocationAction, recordBotRecovery, type AdvisorAction, type BotRecoveryCollector } from './autoplayBotRecovery';
+import { timberDemandExpansionKind } from './autoplayTimberDemand';
+import { interiorHouseSites, keepsInteriorHouseSites } from './autoplayInteriorPlots';
+/** The advisor's outward action: the placement actions plus BOT-1's house relocation (`demolish_house`). */
+export type { AdvisorAction as AutoplayAction } from './autoplayBotRecovery';
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
 export interface AutoplayPolicy { readonly maxHousingLots: number }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
@@ -89,9 +93,10 @@ function findBuildSite(
   state: GameState,
   kind: BuildingKind,
   accepts: (coordinate: TileCoordinate) => boolean = () => true,
+  candidates?: readonly TileCoordinate[],
 ): TileCoordinate | null {
   if (autoplaySearchExhausted()) return null;
-  const coordinates = lateFoodBuildSites(state, kind) ?? state.tiles.filter(tile =>
+  const coordinates = candidates ?? lateFoodBuildSites(state, kind) ?? state.tiles.filter(tile =>
     tile.tx > 0 && tile.ty > 0 && tile.tx < state.width - 1 && tile.ty < state.height - 1);
   for (const coordinate of coordinates) {
     // Every candidate still needs a service proof; an exhausted phase cannot supply one.
@@ -210,7 +215,16 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
   return NONE;
 }
 
-function timberAction(state: GameState): AutoplayAction {
+function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): AutoplayAction {
+  // BOT-1 (BT6): timber for the waiting construction, decided while the stock to build the facility is there.
+  const demand = timberDemandExpansionKind(state);
+  if (demand !== null) {
+    const action = buildAction(state, demand);
+    if (action.kind !== "none") {
+      recordBotRecovery(diagnostic, "timber_demand", [], action);
+      return action;
+    }
+  }
   const reserve = hasBuiltOrPlannedBuilding(state, "logging_camp") ? 120 : 39;
   if (placementSpendableResource(state, "timber") > reserve) return NONE;
   if (!hasBuiltOrPlannedBuilding(state, "logging_camp")) return buildAction(state, "logging_camp");
@@ -241,10 +255,16 @@ function housingAction(state: GameState, policy: AutoplayPolicy): AutoplayAction
       { tx: coordinate.tx, ty: coordinate.ty + 1 },
       { tx: coordinate.tx - 1, ty: coordinate.ty },
     ].some((neighbor) => roads.has(coordinateKey(neighbor)));
+  // BOT-1 (AR-5): with the markets at the policy's cap, a new lot goes where a standing market reaches it.
+  const reach = keepsHouseInMarketReach(state, policy.maxHousingLots);
+  // BOT-1 (AR-7): behind a wall a lot can only stand inside it; search those sites, not the map in row order.
+  const candidates = state.palisade === null ? undefined : interiorHouseSites(state);
   const site = findBuildSite(state, "house", (coordinate) =>
-    accepts(coordinate) && !splitsExistingHousePair(state, coordinate)
-  ) ?? findBuildSite(state, "house", accepts);
-  return site === null ? buildAction(state, "house") : preserveRoadExpansion(state, { ...site, kind: "house" }) ?? { kind: "place_building", building: "house", tx: site.tx, ty: site.ty };
+    accepts(coordinate) && !splitsExistingHousePair(state, coordinate) && reach(coordinate), candidates
+  ) ?? findBuildSite(state, "house", (coordinate) => accepts(coordinate) && reach(coordinate), candidates);
+  const interior = candidates === undefined ? null : new Set(candidates.map(coordinateKey));
+  const roadFirst = (coordinate: TileCoordinate): boolean => reach(coordinate) && (interior === null || interior.has(coordinateKey(coordinate)));
+  return site === null ? buildAction(state, "house", roadFirst) : preserveRoadExpansion(state, { ...site, kind: "house" }) ?? { kind: "place_building", building: "house", tx: site.tx, ty: site.ty };
 }
 
 function storageAction(state: GameState): AutoplayAction {
@@ -263,47 +283,68 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   if (reserveDeadlock(state) !== null) return { kind: 'set_wall_construction_priority', priority: 'priority' };
   // LB-14 (C3): a dense walled town's church and market search needs the era phase's work too (seed 2 kept a church
   // unbuilt for 100,000+ ticks at 192: every probe failed within the budget, at 768 the same search finds the site).
-  const serviceDecision = (current: GameState) => urbanServiceAction(current, diagnostic);
+  // BOT-1 (AR-7): behind a wall the market or church takes a site that leaves the remaining lots their house sites.
+  const serviceDecision = (current: GameState) => urbanServiceAction(current, diagnostic,
+    action => keepsInteriorHouseSites(current, action, policy.maxHousingLots, "check"));
+  // BOT-1: walled homes out of every granary's road reach get a granary beside them (LB9 seed 3).
+  const granaryGap = (current: GameState) => granaryGapAction(current, buildAction, diagnostic);
+  // BOT-1: walled homes out of every market's reach get the market the service-space guard refuses (LB9 seed 2).
+  const marketGap = (current: GameState) => marketGapAction(current, diagnostic);
+  // BOT-1 (AR-7): behind a wall, a road or building that takes the house sites the remaining lots need is refused.
+  const keepsSites = (action: AutoplayAction): boolean => {
+    if (action.kind === "none" || keepsInteriorHouseSites(state, action, policy.maxHousingLots)) return true;
+    recordBotRecovery(diagnostic, "interior_plots", [], action, "refused");
+    return false;
+  };
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, serviceDecision, waterAction, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
-      if (action.kind !== "none") return carryFoodTransient(action, metadata);
+      if (action.kind !== "none" && keepsSites(action)) return carryFoodTransient(action, metadata);
     }
     return carryFoodTransient(NONE, metadata);
   }
   const eraPhase = () => autoplayEraAction(state, buildAction, policy.maxHousingLots);
   const servicePhase = () => serviceDecision(state);
+  const housingPhase = () => housingAction(state, policy);
   for (const decide of [
     () => waterAction(state),
     () => roadAccessAction(state),
     () => networkRoadAction(state),
     () => constructionRoadAction(state),
-    () => timberAction(state),
+    // BOT-1: the granary site inside the wall before timber takes the stock (houses fill the interior for free).
+    () => granaryGap(state),
+    () => timberAction(state, diagnostic),
     () => foodAction(state, buildAction, diagnostic),
-    () => housingAction(state, policy),
+    housingPhase,
     servicePhase,
+    () => marketGap(state),
     () => storageAction(state),
     eraPhase,
   ]) {
     // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the
     // centre that first layout probe can exceed an ordinary phase, so the era phase gets four phases' work.
-    const action = runAutoplaySearchPhase(decide, decide === eraPhase || decide === servicePhase ? ERA_PHASE_SEARCH_WORK : undefined);
+    // BOT-1 (AR-7): so does housing behind a wall, whose interior sites each need a service-space proof.
+    const wide = decide === eraPhase || decide === servicePhase || (decide === housingPhase && state.palisade !== null);
+    const action = runAutoplaySearchPhase(decide, wide ? ERA_PHASE_SEARCH_WORK : undefined);
     if (action.foodTransient !== undefined) metadata = action;
-    if (action.kind !== "none") return carryFoodTransient(action, metadata);
+    if (action.kind !== "none" && keepsSites(action)) return carryFoodTransient(action, metadata);
   }
   return carryFoodTransient(NONE, metadata);
 }
 
-export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AdvisorAction {
   // Spec Z-15: only a town with a burgage zone consults ZoneFillAgent, and only below the policy's lot cap
   // (C1c); with no burgage zone this is never called.
   if (zoneRuleActive(state, "burgage") && housingLotCount(state) < policy.maxHousingLots) {
     const fill = zoneFillAction(state);
     if (fill !== null) return fill;
   }
+  // BOT-1 (AR-5): a home no market can reach any more is demolished so its lot is rebuilt in reach.
+  const relocation = marketRelocationAction(state, policy.maxHousingLots, diagnostic);
+  if (relocation.kind !== "none") return relocation;
   resetAutoplayServiceSearch();
   let action = runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
   // Z-15a: a zone-refused candidate is excluded and the decision retried; it is never sent to the reducer.

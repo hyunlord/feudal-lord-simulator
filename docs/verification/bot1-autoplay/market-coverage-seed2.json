@@ -1,0 +1,8 @@
+{"description":"BOT-1 seed 2 market coverage (scripts/marketCoverageProbe.ts): the most homes the markets the cap allows (lots/24+1) can reach from standing markets plus free market sites, around the palisade proclamation at 70,089 (natural states of the seed 2 run, same trajectory as guardrail run 1), the C3 stall fixture and guardrail run 1 at 540,000.","rows":[
+{"tick":70080,"homes":24,"markets":0,"freeMarkets":2,"reachedNow":0,"bestReach":24,"bestSites":[{"tx":47,"ty":27},{"tx":43,"ty":40}],"freeSites":365},
+{"tick":70140,"homes":24,"markets":0,"freeMarkets":2,"reachedNow":0,"bestReach":23,"bestSites":[{"tx":47,"ty":27},{"tx":40,"ty":35}],"freeSites":162},
+{"tick":72960,"homes":24,"markets":0,"freeMarkets":2,"reachedNow":0,"bestReach":23,"bestSites":[{"tx":47,"ty":27},{"tx":40,"ty":35}],"freeSites":160},
+{"tick":74409,"homes":24,"markets":1,"freeMarkets":1,"reachedNow":17,"bestReach":23,"bestSites":[{"tx":41,"ty":32}],"freeSites":157},
+{"tick":408000,"homes":24,"markets":1,"freeMarkets":1,"reachedNow":17,"bestReach":22,"bestSites":[{"tx":40,"ty":34}],"freeSites":131},
+{"tick":612000,"homes":24,"markets":2,"freeMarkets":0,"reachedNow":23,"bestReach":23,"bestSites":[],"freeSites":121}
+]}
