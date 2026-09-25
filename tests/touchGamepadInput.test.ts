@@ -19,7 +19,7 @@ import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import type { GameAction } from "../src/state/gameStore.types";
 
 // TOUCH-1: the touch and gamepad translators run end to end (translator -> bus -> canvas handler -> game actions)
-// and must produce what the mouse produces for the same operation (docs/design/input-intents.md IN-6, IN-7).
+// and must produce what the mouse produces for the same operation (docs/design/input-intents.md IN-7, IN-8).
 
 const RECT = { left: 0, top: 0, width: 1280, height: 800 };
 
@@ -150,4 +150,17 @@ test("Given a gamepad When X arms a zone brush and A is held while the stick mov
   plain.setPad({ press: [1] }); plain.gamepad.frame(0, 16);
   const cancel = plain.intents.find(intent => intent.kind === "cancel");
   assert.ok(cancel !== undefined && cancel.kind === "cancel" && cancel.world !== undefined);
+});
+
+test("Given the zone brush or a building tool When two fingers drag Then the camera moves and nothing is painted or placed (gate 3)", () => {
+  for (const [tool, zoneTool] of [[null, { target: "pasture", radius: 2, polygon: false }], ["house", null]] as const) {
+    const run = runtime(DEFAULT_GAME_STATE, tool, zoneTool as ZoneBrushTool | null);
+    const before = run.refs.cameraRef.current;
+    run.touch.start([{ clientX: 600, clientY: 400 }, { clientX: 680, clientY: 400 }]);
+    run.touch.move([{ clientX: 560, clientY: 360 }, { clientX: 640, clientY: 360 }]);
+    run.touch.end(0);
+    assert.deepEqual(run.actions, [], `${tool ?? "zone"}: no action`);
+    assert.equal(run.refs.cameraRef.current.panX, before.panX - 40);
+    assert.equal(run.refs.cameraRef.current.panY, before.panY - 40);
+  }
 });

@@ -3,7 +3,7 @@ import { reportInputDevice } from "./inputDevice";
 import type { InputIntent } from "./inputIntent";
 import type { ArmedTools, MouseKeyboardTranslator, Outcome } from "./mouseKeyboardTranslator";
 
-// Touch -> input intents (TOUCH-1, design master 13.1 rule 3; spec docs/design/input-intents.md IN-6). One finger
+// Touch -> input intents (TOUCH-1, design master 13.1 rule 3; spec docs/design/input-intents.md IN-7). One finger
 // drives the mouse translator's left button, so a finger does exactly what the mouse does on the same point (same
 // canvas -> world path, same 4 px drag threshold, same tool rules): without a stroke tool a drag pans, with the road /
 // zone / palisade tool it draws, a tap selects or places (a double tap is a double click: closes a zone polygon).

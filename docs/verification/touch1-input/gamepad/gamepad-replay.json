@@ -1,0 +1,111 @@
+{
+  "url": "http://127.0.0.1:4291/",
+  "pass": true,
+  "rows": [
+    {
+      "label": "RB until the hut tool is armed",
+      "cursor": {
+        "clientX": 640,
+        "clientY": 400,
+        "tx": 44,
+        "ty": 41
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": true,
+      "pastureArmed": false,
+      "hint": "A 확정 · B 취소 · 왼쪽 스틱 커서 · 오른쪽 스틱 이동 · 트리거 확대 · LB/RB 도구 · X 구역"
+    },
+    {
+      "label": "cursor on (48,38)",
+      "cursor": {
+        "clientX": 863.1434119404296,
+        "clientY": 415.93881513860197,
+        "tx": 48,
+        "ty": 38
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": true,
+      "pastureArmed": false,
+      "hint": "A 확정 · B 취소 · 왼쪽 스틱 커서 · 오른쪽 스틱 이동 · 트리거 확대 · LB/RB 도구 · X 구역"
+    },
+    {
+      "label": "A places a hut",
+      "cursor": {
+        "clientX": 863.1434119404296,
+        "clientY": 415.93881513860197,
+        "tx": 48,
+        "ty": 38
+      },
+      "device": "gamepad",
+      "sites": "house@48,38",
+      "zones": "",
+      "hutArmed": true,
+      "pastureArmed": false,
+      "hint": "A 확정 · B 취소 · 왼쪽 스틱 커서 · 오른쪽 스틱 이동 · 트리거 확대 · LB/RB 도구 · X 구역"
+    },
+    {
+      "label": "B disarms",
+      "cursor": {
+        "clientX": 863.1434119404296,
+        "clientY": 415.93881513860197,
+        "tx": 48,
+        "ty": 38
+      },
+      "device": "gamepad",
+      "sites": "house@48,38",
+      "zones": "",
+      "hutArmed": false,
+      "pastureArmed": false,
+      "hint": "A 확정 · B 취소 · 왼쪽 스틱 커서 · 오른쪽 스틱 이동 · 트리거 확대 · LB/RB 도구 · X 구역"
+    },
+    {
+      "label": "B on the site cancels it",
+      "cursor": {
+        "clientX": 863.1434119404296,
+        "clientY": 415.93881513860197,
+        "tx": 48,
+        "ty": 38
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": false,
+      "pastureArmed": false,
+      "hint": "A 확정 · B 취소 · 왼쪽 스틱 커서 · 오른쪽 스틱 이동 · 트리거 확대 · LB/RB 도구 · X 구역"
+    },
+    {
+      "label": "X x3 = pasture brush",
+      "cursor": {
+        "clientX": 863.1434119404296,
+        "clientY": 415.93881513860197,
+        "tx": 48,
+        "ty": 38
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "",
+      "hutArmed": false,
+      "pastureArmed": true,
+      "hint": "드래그하여 목초지 구역을 칠하세요 · [ ] 붓 크기 · 휠 확대 · Shift 다각형 · Z 되돌리기 · Esc 취소"
+    },
+    {
+      "label": "A held + stick (52,46) -> (55,46) paints",
+      "cursor": {
+        "clientX": 830.7266451783967,
+        "clientY": 655.3421903853168,
+        "tx": 55,
+        "ty": 46
+      },
+      "device": "gamepad",
+      "sites": "",
+      "zones": "pasture:25",
+      "hutArmed": false,
+      "pastureArmed": true,
+      "hint": "드래그하여 목초지 구역을 칠하세요 · [ ] 붓 크기 · 휠 확대 · Shift 다각형 · Z 되돌리기 · Esc 취소"
+    }
+  ]
+}

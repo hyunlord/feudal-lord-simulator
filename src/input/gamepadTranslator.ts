@@ -4,7 +4,7 @@ import type { InputIntent, WorldPoint } from "./inputIntent";
 import type { ArmedTools, MouseKeyboardTranslator } from "./mouseKeyboardTranslator";
 
 // Gamepad (Gamepad API, standard mapping) -> input intents (TOUCH-1, design master 13.1 rule 4; spec
-// docs/design/input-intents.md IN-7; action ids in controllerActions.ts). Polled once per frame.
+// docs/design/input-intents.md IN-8; action ids in controllerActions.ts). Polled once per frame.
 //  - Map cursor: a point on the world plane. Left stick moves it (radial dead zone, speed CURSOR_TILES_PER_S rising to
 //    CURSOR_MAX_TILES_PER_S while held), the d-pad steps one tile (repeat while held). The cursor is what the mouse
 //    pointer is for the mouse: each move emits `point` (hover, placement ghost, brush cursor). Near the viewport edge

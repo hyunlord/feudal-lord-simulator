@@ -20,7 +20,7 @@ import { ZONE_KIND_LABELS } from "../zones/zoneCopy.ko";
 import { platformServices } from "../platform/platform";
 import { INTENT_ORDER } from "../input/intentBus";
 import { lastInputDevice, subscribeInputDevice, type InputDevice } from "../input/inputDevice";
-import { INPUT_HINT_COPY } from "./inputHintCopy.ko";
+import { INPUT_HINT_COPY, ZONE_BRUSH_HINT_COPY } from "./inputHintCopy.ko";
 
 /** Zone cards (C1b): plots, arable, pasture, orchard and the eraser. Hay meadow and woodland come with C1c. */
 const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: string; readonly hint: string; readonly glyph: string; readonly thumbnail: string | null }[] = [
@@ -182,8 +182,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           <p className={buildToolAffordability(selectedOption.tool, menuState).affordable ? "build-menu-ready" : "build-menu-shortfall"}>{buildToolTooltipLines(selectedOption.tool, menuState).at(-1)}</p>
         </>}
       </div>
-      <div className="build-menu-instruction">{zoneTool !== null ? zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraserStatus
-        : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target]) : INPUT_HINT_COPY[inputDevice]}</div>
+      <div className="build-menu-instruction">{zoneTool === null ? INPUT_HINT_COPY[inputDevice]
+        : inputDevice === "mouse" ? zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraserStatus : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target])
+        : zoneTool.target === "erase" ? ZONE_BRUSH_HINT_COPY[inputDevice].eraser : ZONE_BRUSH_HINT_COPY[inputDevice].status(ZONE_KIND_LABELS[zoneTool.target])}</div>
     </div>
   );
 }
