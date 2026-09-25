@@ -74,7 +74,7 @@ test("era console exposes four independent gauges exact tooltip and enabled prop
     ["chapel", "예배당", 1, 1, true],
     ["timber", "목재", 800, 250, true],
   ]);
-  assert.equal(model.tooltip, "선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 600틱)");
+  assert.equal(model.tooltip, "선포 후 자재가 준비된 성벽 부지에 필요한 만큼만 일꾼을 배정합니다 (최대 40%, 약 30초)");
   assert.equal(model.action.enabled, true);
   assert.equal(model.action.label, "목책 긋기");
   assert.match(model.proposal.label, /둘레 \d+칸/);

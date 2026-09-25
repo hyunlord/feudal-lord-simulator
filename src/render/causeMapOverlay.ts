@@ -2,34 +2,32 @@ import { applyPaletteStroke } from './style';
 import type { GameState } from '../engine/engine.types';
 import { buildingFootprint } from '../geometry/buildingFootprint';
 import { SEMANTIC_PALETTE } from '../content/palette';
-import { CAUSE_REGISTRY } from '../ui/causeRegistry';
+import { CAUSE_REGISTRY, causeMarkerSeverity, type CauseMarkerSeverity } from '../ui/causeRegistry';
 import { buildingCauseSnapshot } from '../ui/houseProgressModel';
 import { tileToScreen } from './iso';
 import { groupCauseMarkers, type CauseMarker } from './causeMarkerLayout';
 
-const GLYPH_SHAPES: Readonly<Record<keyof typeof CAUSE_REGISTRY, readonly (readonly [number, number])[]>> = {
-  storage_overflow: [[-11,11],[-11,-6],[-5,-6],[-5,-12],[5,-12],[5,-6],[11,-6],[11,11]],
-  operation_paused: [[-10,-10],[10,-10],[10,10],[-10,10]],
-  water: [[0,-11],[8,1],[6,8],[0,11],[-6,8],[-8,1]],
-  bread: [[-10,-6],[-5,-10],[5,-10],[10,-6],[10,8],[-10,8]],
-  delivery: [[-11,-7],[3,-7],[3,-11],[12,0],[3,11],[3,7],[-11,7]],
-  market: [[-11,-8],[0,-12],[11,-8],[9,10],[-9,10]],
-  church: [[0,-13],[11,-3],[11,11],[-11,11],[-11,-3]],
-  wall: [[-11,11],[-11,-11],[-5,-11],[-5,-5],[0,-5],[0,-11],[6,-11],[6,-5],[11,-5],[11,11]],
-  workers: [[0,-12],[10,-5],[8,10],[-8,10],[-10,-5]],
-  construction_access: [[-12,-9],[12,-9],[12,9],[-12,9]],
-  reserve_deadlock: [[-12,-9],[12,-9],[12,9],[-12,9]],
+/** The shape carries the severity (UX1): ▲ act now, ◆ caution. The cause stays in the colour and the glyph. */
+const SEVERITY_SHAPES: Readonly<Record<CauseMarkerSeverity, { readonly points: readonly (readonly [number, number])[]; readonly textY: number }>> = {
+  block: { points: [[0,-15],[15,11],[-15,11]], textY: 4 },
+  warn: { points: [[0,-15],[15,0],[0,15],[-15,0]], textY: 1 },
 };
 
+/**
+ * One marker per building, for its first cause and only when that cause needs the player (causeMarkerSeverity);
+ * a house waiting out its promotion keeps its progress ring. Zoomed out, groupCauseMarkers clusters them by cell.
+ */
 export function causeMarkersForState(state: GameState, zoom: number): readonly CauseMarker[] {
   const snapshot = buildingCauseSnapshot(state);
   return groupCauseMarkers([...state.buildings].sort((a,b) => a.id.localeCompare(b.id)).flatMap(building => {
     const cause = snapshot.get(building.id);
-    if (cause === undefined || cause.status === 'normal') return [];
+    if (cause === undefined) return [];
+    const severity = causeMarkerSeverity(cause);
+    if (severity === null && cause.status !== 'ready') return [];
     const size = buildingFootprint(building);
     const anchor = tileToScreen(building.tx + (size.width - 1) / 2, building.ty + (size.height - 1) / 2);
-    return [{ x: anchor.sx + 16, y: anchor.sy - 42, buildingIds: [building.id],
-      causeId: cause.blocker?.causeId ?? null, risk: cause.status === 'risk',
+    return [{ x: anchor.sx + 16, y: anchor.sy - 42, buildingIds: [building.id], tile: { tx: building.tx, ty: building.ty },
+      causeId: severity === null ? null : cause.blocker?.causeId ?? null, severity,
       ...(cause.status === 'ready' && 'requiredTicks' in cause && cause.requiredTicks !== null
         ? { progressFraction: cause.progressTicks / cause.requiredTicks } : {}) }];
   }), zoom);
@@ -45,7 +43,7 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
   context.save();
   if (problemOnly) for (const building of state.buildings) {
     const cause = snapshot.get(building.id);
-    if (cause?.blocker === undefined || cause.blocker === null) continue;
+    if (cause?.blocker === undefined || cause.blocker === null || causeMarkerSeverity(cause) === null) continue;
     const size = buildingFootprint(building);
     const corners = [[building.tx - .5, building.ty - .5], [building.tx + size.width - .5, building.ty - .5],
       [building.tx + size.width - .5, building.ty + size.height - .5], [building.tx - .5, building.ty + size.height - .5]] as const;
@@ -60,7 +58,7 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
     context.translate(marker.x, marker.y);
     context.scale(1 / zoom, 1 / zoom);
     const entry = Object.entries(CAUSE_REGISTRY).find(([id]) => id === marker.causeId)?.[1];
-    if (entry === undefined) {
+    if (entry === undefined || marker.severity === null) {
       applyPaletteStroke(context, SEMANTIC_PALETTE.sage, 0.5);
       context.beginPath(); context.arc(0, 0, 8, 0, Math.PI * 2); context.stroke();
       if (marker.progressFraction !== undefined) {
@@ -69,16 +67,15 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
           -Math.PI / 2 + Math.max(0, Math.min(1, marker.progressFraction)) * Math.PI * 2); context.stroke();
       }
     } else {
-      const points = GLYPH_SHAPES[entry.glyphId];
+      const shape = SEVERITY_SHAPES[marker.severity];
       context.beginPath();
-      points.forEach(([x,y], index) => { if (index === 0) context.moveTo(x,y); else context.lineTo(x,y); });
+      shape.points.forEach(([x,y], index) => { if (index === 0) context.moveTo(x,y); else context.lineTo(x,y); });
       context.closePath(); context.fillStyle = SEMANTIC_PALETTE.vellum; context.fill();
       applyPaletteStroke(context, entry.color, 0.5); context.stroke();
-      if (marker.risk) { applyPaletteStroke(context, SEMANTIC_PALETTE.vermilion, 0.5); context.strokeRect(-15,-15,30,30); }
       context.fillStyle = SEMANTIC_PALETTE.ink;
       context.font = 'bold 12px "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
       context.textAlign = 'center'; context.textBaseline = 'middle';
-      context.fillText(marker.buildingIds.length > 1 ? String(marker.buildingIds.length) : entry.glyphText, 0, 1);
+      context.fillText(marker.buildingIds.length > 1 ? String(marker.buildingIds.length) : entry.glyphText, 0, shape.textY);
     }
     context.restore();
   }

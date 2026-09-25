@@ -169,32 +169,32 @@ test("economy overlay controls expose compact visible labels without changing ac
   assert.match(markup, /class="overlay-label overlay-label--compact" aria-hidden="true">길/);
 });
 
-test("economy overlay controls render inside the right console recess instead of as persistent floating UI", () => {
+test("economy overlay controls render inside the right console recess, the speed seals in the top time cluster (UX-1)", () => {
   // Given / When
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
   assert.ok(markup.indexOf('class="ledger-recess"') < markup.indexOf('aria-label="경제 보기"'));
   assert.ok(markup.indexOf('class="court-ledger"') < markup.indexOf('aria-label="경제 보기"'));
-  assert.ok(markup.indexOf('aria-label="경제 보기"') < markup.indexOf('class="speed-seals"'));
+  const cluster = markup.indexOf('class="hud-time-cluster"');
+  assert.ok(cluster >= 0 && cluster < markup.indexOf('class="speed-seals"'));
+  assert.ok(markup.indexOf('class="speed-seals"') < markup.indexOf('aria-label="영주 명령대"'));
 });
 
-test("the onboarding task list replaces the distant population objective in the right console", () => {
+test("goal cards replace the ordered task list in the right rail, and the status line waits for the game to run (UX-1, UX-0)", () => {
   // Given / When
   const markup = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
 
   // Then
-  const statusIndex = markup.indexOf('aria-label="정착지 상태"');
   const consoleIndex = markup.indexOf('aria-label="영주 명령대"');
   const railIndex = markup.indexOf('aria-label="영지 안내"');
-  const tasksIndex = markup.indexOf('aria-label="현재 과업"');
-  assert.ok(statusIndex >= 0 && statusIndex < consoleIndex);
+  const cardsIndex = markup.indexOf('class="goal-cards"');
   assert.ok(railIndex >= 0 && railIndex < consoleIndex);
-  assert.ok(tasksIndex > railIndex && tasksIndex < consoleIndex);
-  assert.match(markup.slice(statusIndex, consoleIndex), /우물이 필요합니다/);
-  assert.doesNotMatch(markup.slice(statusIndex, consoleIndex), /목표: 인구/);
-  assert.match(markup.slice(tasksIndex), /길을 놓아 오두막을 이으세요/);
-  assert.doesNotMatch(markup.slice(tasksIndex), /숲 옆에 벌목소를 지으세요/);
+  assert.ok(cardsIndex > railIndex && cardsIndex < consoleIndex);
+  assert.doesNotMatch(markup, /aria-label="현재 과업"/);
+  assert.doesNotMatch(markup, /길을 놓아 오두막을 이으세요/);
+  // Tick 0: water and bread are not computed yet, so no "우물이 필요합니다" (UX-0 false warning).
+  assert.doesNotMatch(markup, /우물이 필요합니다/);
 });
 
 test("sixty-tick guidance sampling does not schedule state from an effect on every simulation tick", async () => {

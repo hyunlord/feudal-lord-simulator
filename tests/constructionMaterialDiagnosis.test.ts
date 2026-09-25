@@ -105,7 +105,7 @@ test("Given an active material carter When diagnosing a construction site Then i
   assert.equal(diagnostics.length, 1);
   assert.deepEqual(diagnostics[0], {
     resource: "timber",
-    label: "목재 12/30 · 예약 8 · 창고 북서쪽 5칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 33틱",
+    label: "목재 12/30 · 예약 8 · 창고 북서쪽 5칸 · 운반 carter-a · 남은 길 4.5칸 · 예상 약 2초",
     delivered: 12,
     required: 30,
     reserved: 8,

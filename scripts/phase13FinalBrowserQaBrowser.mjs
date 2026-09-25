@@ -187,11 +187,11 @@ export async function selectedConstructionProgress(client) {
       value: row.querySelector("dd")?.textContent?.trim() ?? "",
     }));
     const progress = rows.find((row) => row.label === "건축 작업")?.value ?? "";
-    const match = progress.match(/(\\d+)\\/(\\d+)틱/);
+    const match = progress.match(/^(\\d+)%/);
     return {
       name: card.querySelector("h2")?.textContent?.trim() ?? "",
       progressText: progress,
-      progress: match === null ? null : Number(match[1]) / Number(match[2]),
+      progress: match === null ? null : Number(match[1]) / 100,
     };
   })()`, false);
 }

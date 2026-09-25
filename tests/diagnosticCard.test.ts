@@ -82,7 +82,7 @@ test("walker card renders route, mission and cancellation facts", () => {
     },
   }));
   assert.match(markup, /aria-label="운반인 임무 진단"/);
-  for (const label of ["통나무 4", "벌목소", "제재소", "배송 취소", "거리 7", "예상 88틱", "지난 집 2", "도로가 끊김"]) {
+  for (const label of ["통나무 4", "벌목소", "제재소", "배송 취소", "거리 7", "예상 약 4초", "지난 집 2", "도로가 끊김"]) {
     assert.match(markup, new RegExp(label));
   }
 });

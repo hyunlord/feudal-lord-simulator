@@ -23,6 +23,7 @@ import { drawWorldSpriteAtWorldAnchor } from "./worldSprite";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 import type { GameState } from "../engine/engine.types";
 import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
+import { constructionSiteLabelBoxes, type ConstructionLabelEntry } from "./constructionSiteLabelLayout";
 export {
   createConstructionCompletionTracker,
   constructionCompletionEffects,
@@ -103,7 +104,7 @@ export function drawConstructionSite(
     baseRadiusX: 20 + footprint.width * 15,
     baseRadiusY: 5 + footprint.height * 3,
   });
-  drawSiteLabel(context, input.site, input.state, anchor, input.zoom);
+  drawSiteLabel(context, input.site, input.state, input.zoom);
   if (!drawConstructionArt(context, input.site, constructionSiteRenderSignature(input.site, presentationProgress ?? undefined))) drawConstructionStageBand(context, {
     signature: constructionSiteRenderSignature(
       input.site,
@@ -172,21 +173,42 @@ function drawSiteLabel(
   context: CanvasRenderingContext2D,
   site: ConstructionSite,
   state: GameState | undefined,
-  anchor: Point,
   zoom: number,
 ): void {
   const label = state === undefined ? constructionOnSiteLabel(site) : currentConstructionSiteLabel(state, site);
   if (label === "") return;
-  const x = snapToPixel(anchor.x - 22);
-  const y = snapToPixel(anchor.y - 64);
   context.font = `${Math.round(12 / Math.max(zoom, 0.5))}px Georgia, serif`;
-  const width = Math.ceil(context.measureText(label).width);
-  context.fillStyle = SEMANTIC_PALETTE.vellum;
-  context.fillRect(x - 4, y - 13, width + 8, 18);
+  const box = constructionSiteLabelBoxes(labelEntriesThrough(state, site, label), zoom,
+    text => context.measureText(text).width).get(site.id);
+  if (box === undefined) return;
   applyInkOutline(context, zoom);
-  context.strokeRect(x - 4, y - 13, width + 8, 18);
+  context.beginPath();
+  context.moveTo(snapToPixel(box.leaderX), snapToPixel(box.leaderTopY));
+  context.lineTo(snapToPixel(box.leaderX), snapToPixel(box.leaderBottomY));
+  context.stroke();
+  const x = snapToPixel(box.x);
+  const y = snapToPixel(box.y);
+  context.fillStyle = SEMANTIC_PALETTE.vellum;
+  context.fillRect(x, y, box.width, box.height);
+  context.strokeRect(x, y, box.width, box.height);
   context.fillStyle = PALETTE.ink;
-  context.fillText(label, x, y);
+  context.fillText(label, snapToPixel(box.textX), snapToPixel(box.textY));
+}
+
+/**
+ * Labelled building sites up to and including `site`, in state order: the stagger is greedy in that order, so the
+ * sites after this one cannot move its label. Wall sites draw their own queue labels and take no part.
+ */
+function labelEntriesThrough(state: GameState | undefined, site: ConstructionSite, label: string): readonly ConstructionLabelEntry[] {
+  if (state === undefined) return [{ site, label }];
+  const entries: ConstructionLabelEntry[] = [];
+  for (const other of state.constructionSites) {
+    if (other.id === site.id) return [...entries, { site, label }];
+    if (isPalisadeConstructionSite(other) || isStoneWallConstructionSite(other)) continue;
+    const otherLabel = currentConstructionSiteLabel(state, other);
+    if (otherLabel !== "") entries.push({ site: other, label: otherLabel });
+  }
+  return [...entries, { site, label }];
 }
 
 function siteAnchor(site: ConstructionSite): Point {

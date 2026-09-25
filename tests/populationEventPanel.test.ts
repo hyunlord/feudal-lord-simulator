@@ -34,9 +34,9 @@ test("population panel renders newest grouped causes as house-selecting buttons"
 
   // Then
   assert.match(markup, /인구 2명 감소 — 굶주림/);
-  assert.match(markup, /틱 100~101/);
+  assert.match(markup, /1년차 봄 10일\)/);
   assert.match(markup, /인구 1명 증가 — 성장/);
-  assert.match(markup, /틱 50/);
+  assert.match(markup, /1년차 봄 5일/);
   assert.equal((markup.match(/<button/g) ?? []).length, 2);
   assert.ok(markup.indexOf("굶주림") < markup.indexOf("성장"));
 });

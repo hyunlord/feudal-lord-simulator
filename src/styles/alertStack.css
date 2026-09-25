@@ -1,0 +1,57 @@
+/* Warning stack: right side under the goal cards. The mount decides position; this sizes and draws the rows. */
+.alert-stack {
+  width: min(320px, calc(100vw - 32px));
+  pointer-events: auto;
+  font-family: var(--ui-body-font);
+  color: var(--palette-ink);
+}
+.alert-stack-list {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.alert-stack-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 4px 4px 4px 8px;
+  border: 2px solid var(--palette-earth);
+  border-left-width: 4px;
+  border-radius: 2px;
+  background: var(--palette-vellum);
+}
+.alert-stack-row--immediate { border-left-color: var(--palette-vermilion); }
+.alert-stack-row--caution { border-left-color: var(--palette-gold); }
+.alert-stack-shape { font-size: 16px; line-height: 1; text-align: center; }
+.alert-stack-row--immediate .alert-stack-shape { color: var(--palette-vermilion); }
+.alert-stack-row--caution .alert-stack-shape { color: var(--palette-gold-dark); }
+.alert-stack-text { min-width: 0; }
+.alert-stack-title,
+.alert-stack-cause {
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
+.alert-stack-title { font-size: 14px; line-height: 1.4; }
+.alert-stack-title strong { font-weight: 700; }
+.alert-stack-cause { font-size: 12px; line-height: 1.4; color: var(--palette-ink-light); }
+.alert-stack-inspect {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 10px;
+  font: 600 13px/1 var(--ui-body-font);
+  color: var(--palette-ink);
+  border: 1px solid var(--palette-earth-dark);
+  border-top-color: var(--palette-vellum);
+  border-radius: 2px;
+  background: var(--palette-parchment-dark);
+  cursor: pointer;
+}
+.alert-stack-inspect:active { background: var(--palette-parchment); }
+.alert-stack-inspect:focus-visible { outline: 2px solid var(--palette-gold); outline-offset: 2px; }

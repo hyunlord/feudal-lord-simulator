@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { BALANCE } from "../content/balanceConfig";
 import { KO_UI } from "../content/locale.ko";
@@ -35,9 +35,11 @@ export function speedToIntervalMs(speed: GameSpeed): number | null {
 type SpeedSealsProps = {
   readonly speed: GameSpeed;
   readonly onChange: (speed: GameSpeed) => void;
+  /** UX-1: more settings rows (the tutorial toggle). */
+  readonly extraSettings?: ReactNode;
 };
 
-export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
+export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) {
   const { state, dispatch } = useGameStore();
   const [autoplayEnabled, setAutoplayEnabled] = useState(false);
   const latestTickRef = useRef(state.tick);
@@ -119,6 +121,7 @@ export function SpeedSeals({ speed, onChange }: SpeedSealsProps) {
           자동 발전
         </button>
         <span className="autoplay-hint">{autoplayEnabled ? autoplayActionLabel(nextAction) : "자동 발전 꺼짐"}</span>
+        {extraSettings}
         <BoundaryRenderToggle />
         <SaveControls />
       </div></details>

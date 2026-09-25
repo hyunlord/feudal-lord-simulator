@@ -28,13 +28,12 @@ import { PALETTE_CSS_VARIABLES } from "./styles/paletteVariables";
 import { createHouseMaterialWave, palisadeCenter } from "./render/buildingMaterialWave";
 import { BuildSeals } from "./ui/BuildMenu";
 import { EconomyOverlayControls, toggleOverlayByKey } from "./ui/EconomyOverlayControls";
-import { OnboardingTasks, SettlementStatusLine } from "./ui/InfoPanel";
+import { SettlementStatusLine } from "./ui/InfoPanel";
 import { ResourceBar } from "./ui/ResourceBar";
 import { SettlementPanel } from "./ui/SettlementPanel";
 import { PopulationEventPanel } from "./ui/PopulationEventPanel";
 import {
   createOnboardingPresentationState,
-  getOnboardingTaskView,
   type OnboardingPresentationState,
   updateOnboardingPresentationState,
 } from "./ui/onboardingTaskModel";
@@ -65,6 +64,15 @@ import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
 import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
 import { steppedPlacementTool } from "./render/placementToolCycle";
+import { calendarLabel } from "./engine/scenarioState";
+import { useTutorialController } from "./ui/tutorial/useTutorialController";
+import { GoalCards, GoalDrawer, PauseVeil, StewardAdvisor, TutorialToggle, UnlockBanner } from "./ui/tutorial/TutorialShell";
+import { TUTORIAL_COPY } from "./ui/tutorial/tutorialCopy.ko";
+import type { ControlLayer } from "./ui/tutorial/tutorialModel";
+import { BUILD_MENU_COPY } from "./ui/buildMenuCopy.ko";
+import { AlertStack } from "./ui/AlertStackView";
+import { tutorialTargetCanvasPoint } from "./ui/tutorial/tutorialMapChannel";
+import { Inspector } from "./ui/InspectorView";
 
 /** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
 const ZONE_TOOL_PREFIX = "zone:";
@@ -100,6 +108,11 @@ export function App() {
   const welcomeVisible = welcomeOpen || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [zoneTool, setZoneTool] = useState<ZoneBrushTool | null>(null);
+  // UX-1: the control layer (직접 / 구역 / 방향) and the goal drawer.
+  const [layer, setLayer] = useState<ControlLayer>("direct");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  // UX-1: the left inspector (a warning's `[보기]`: cause and action of that building).
+  const [inspectedId, setInspectedId] = useState<string | null>(null);
   const palisadeDraftRef = useRef(palisadeDraft);
   const gameStateRef = useRef(state);
   palisadeDraftRef.current = palisadeDraft;
@@ -115,6 +128,19 @@ export function App() {
   const previousPopulationStateRef = useRef(state);
   const previousDistributorRouteStateRef = useRef(state);
   const [presentationNowMs, setPresentationNowMs] = useState(() => Date.now());
+  // UX-0 H: the goal rail turns see-through while the tutorial's map target lies under it (checked on the 100 ms clock).
+  const railRef = useRef<HTMLElement | null>(null);
+  const [railSeeThrough, setRailSeeThrough] = useState(false);
+  useEffect(() => {
+    const point = tutorialTargetCanvasPoint(); const rail = railRef.current; const canvas = rail?.parentElement?.querySelector("canvas");
+    let under = false;
+    if (point !== null && rail !== null && canvas !== null && canvas !== undefined) {
+      const box = rail.getBoundingClientRect(); const origin = canvas.getBoundingClientRect();
+      const x = origin.left + point.x; const y = origin.top + point.y;
+      under = x >= box.left - 24 && x <= box.right + 24 && y >= box.top - 24 && y <= box.bottom + 24;
+    }
+    if (under !== railSeeThrough) setRailSeeThrough(under);
+  }, [presentationNowMs]); // eslint-disable-line react-hooks/exhaustive-deps
   const [onboardingPresentation, setOnboardingPresentation] = useState(
     createOnboardingPresentationState,
   );
@@ -170,7 +196,15 @@ export function App() {
     );
   }, [presentationNowMs, state.era]);
 
-  const selectPlacementTool = (tool: PlacementTool | null) => { setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) setZoneTool(null); };
+  const tutorial = useTutorialController({ state, paused: speed === 0, selectedTool, zoneTool, layer, setLayer, nowMs: presentationNowMs,
+    onOpenDrawer: () => setDrawerOpen(true) });
+  // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
+  const accessRef = useRef(tutorial.access);
+  accessRef.current = tutorial.access;
+  const selectPlacementTool = (tool: PlacementTool | null) => {
+    if (tool !== null && !accessRef.current.tools(tool)) return;
+    setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) { setZoneTool(null); setLayer("direct"); }
+  };
   // The app shell's input intents (B9): after the map's handler, before menus (src/input/intentBus.ts). Esc / Z on a
   // palisade draft cancel or undo it (not while typing), Esc otherwise disarms every tool; O and 1-4 toggle views;
   // tool and speed intents come from the build menu, the speed seals and Q / E / Space.
@@ -206,6 +240,10 @@ export function App() {
         if (intent.toolId === ZONE_TOOL_OFF) { setPalisadeDraft(null); setSelectedTool(null); setZoneTool(null); return "handled"; }
         if (intent.toolId?.startsWith(ZONE_TOOL_PREFIX) === true) {
           const target = intent.toolId.slice(ZONE_TOOL_PREFIX.length) as ZoneBrushTool["target"];
+          const access = accessRef.current;
+          const arableFromTrade = target === "arable" && access.arableCard;
+          if (!access.zoneTargets(target) && !arableFromTrade) return "handled";
+          setLayer(access.layers.zone && !(arableFromTrade && !access.zoneTargets(target)) ? "zone" : "direct");
           setPalisadeDraft(null);
           setSelectedTool(null);
           setZoneTool(current => ({ target, radius: current?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: current?.polygon ?? false }));
@@ -236,8 +274,7 @@ export function App() {
       startedAtMs: eraPresentation.ceremony.startedAtMs,
       targetMaterialEra: eraPresentation.ceremony.targetEra === "stone_town" ? "stone" : "palisade",
     });
-  const onboardingView = getOnboardingTaskView(state, onboardingPresentation);
-  const highlightedTools = onboardingView.current?.highlightTools ?? [];
+  const highlightedTools: readonly PlacementTool[] = [];
   const eraModel = buildEraConsoleModel({ state, draft: palisadeDraft });
   const beginPalisadeDraw = () => {
     if (!canProclaimPalisadeEra(state)) return;
@@ -273,22 +310,31 @@ export function App() {
     setPalisadeDraft(null);
   };
   const cancelPalisadeDraft = useCallback(() => setPalisadeDraft(null), []);
+  // UX-1: a new game from the welcome starts the tutorial when its toggle is on (campaign only; a city that is not a
+  // fresh game, e.g. an injected fixture, never gets one).
+  const [welcomeTutorial, setWelcomeTutorial] = useState(true);
   const dismissWelcome = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     if (saveSystem.offerContinue) saveSystem.declineContinue();
+    else tutorial.startNewGame(welcomeTutorial, state);
   };
   const startNewGameOverSave = (scenarioId: string) => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     dispatch({ type: "start_new_game", scenarioId });
     saveSystem.startNewGame();
+    tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, null);
   };
   const startScenarioWithoutSave = (scenarioId: string) => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     if (scenarioId !== DEFAULT_SCENARIO_ID) dispatch({ type: "start_new_game", scenarioId });
+    tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, scenarioId === DEFAULT_SCENARIO_ID ? state : null);
   };
+  // Undo (UX-1 HUD "undo"): cancels the newest construction site; the tutorial draws attention to it after the well.
+  const newestSite = [...state.constructionSites].reverse().find(site => site.kind !== "palisade_segment" && site.kind !== "stone_wall_segment");
+  const undoLastSite = () => { if (newestSite !== undefined) dispatch({ type: "cancel_construction", siteId: newestSite.id }); };
   const continueSavedGame = () => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
@@ -333,13 +379,24 @@ export function App() {
           zoneTool={zoneTool}
           onZoneRadiusChange={radius => setZoneTool(current => current === null ? current : { ...current, radius })}
         />
+        <PauseVeil paused={speed === 0 && !welcomeVisible} />
+        <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria}>
+          <span className="hud-date" data-testid="hud-calendar">{calendarLabel(state)}</span>
+          <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
+            extraSettings={<TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} />} />
+        </div>
+        <StewardAdvisor advisor={tutorial.advisor} onDismiss={tutorial.dismissAdvisor} />
+        <div className="left-inspector-mount"><Inspector state={state} buildingId={inspectedId} onClose={() => setInspectedId(null)} /></div>
+        <UnlockBanner text={tutorial.banner} />
         <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
         <EraCeremonyBanner
           ceremony={visibleCeremony}
           nowMs={presentationNowMs}
           onDismiss={() => setEraPresentation(dismissEraCeremony)}
         />
-        <aside className="right-info-rail" aria-label={KO_UI.informationRail}>
+        <aside ref={railRef} className={`right-info-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail}>
+          <GoalCards tutorial={tutorial} drawerOpen={drawerOpen} onToggleDrawer={() => setDrawerOpen(open => !open)} />
+          <GoalDrawer open={drawerOpen} log={tutorial.log}>
           <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
             <EraConsole
               model={eraModel}
@@ -354,12 +411,14 @@ export function App() {
               onProclaimStoneTown={proclaimStoneTown}
             />
           } />
-          <OnboardingTasks view={onboardingView} state={state} warningState={guidanceSnapshotRef.current.state} />
+          </GoalDrawer>
+          <AlertStack state={guidanceSnapshotRef.current.state} onInspect={setInspectedId} />
           {problemOnly ? <CauseLegend /> : null}
         </aside>
         <aside className="court-console" aria-label={KO_UI.courtConsole}>
           <div className="court-recess map-recess">
-            <details className="command-disclosure"><summary>지도</summary><div className="command-popover"><MapShield grid={state} /></div></details>
+            <button type="button" className="hud-undo" disabled={newestSite === undefined} aria-label={BUILD_MENU_COPY.undoHint}
+              data-attention={tutorial.cards.some(card => card.key === "well_done") ? "true" : undefined} onClick={undoLastSite}>{BUILD_MENU_COPY.undo}</button>
           </div>
           <div className="court-recess seal-recess">
             <BuildSeals
@@ -375,13 +434,18 @@ export function App() {
               }}
               palisadeDrawing={palisadeDraft?.mode === 'draw'}
               onStartPalisadeDrawing={beginPalisadeDraw}
+              access={tutorial.access}
+              layer={layer}
+              onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
+              pulse={tutorial.pulse}
+              openRequest={tutorial.openRequest}
             />
           </div>
           <div className="court-recess ledger-recess">
+            <details className="command-disclosure"><summary>지도</summary><div className="command-popover"><MapShield grid={state} /></div></details>
             <details className="command-disclosure ledger-stack"><summary>보기</summary><div className="command-popover">
               <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />
             </div></details>
-            <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }} />
           </div>
         </aside>
       </div>
@@ -392,12 +456,16 @@ export function App() {
         onContinue={continueSavedGame}
         onNewGame={startNewGameOverSave}
         onChooseMode={startScenarioWithoutSave}
+        tutorialEnabled={welcomeTutorial}
+        onTutorialChange={setWelcomeTutorial}
       /> : null}
     </main>
   );
 }
 
-function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode }: {
+function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode, tutorialEnabled, onTutorialChange }: {
+  readonly tutorialEnabled: boolean;
+  readonly onTutorialChange: (enabled: boolean) => void;
   readonly onDismiss: () => void;
   readonly continueLine: string | null;
   readonly archiveNotice: string | null;
@@ -442,6 +510,7 @@ function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, 
         <h2>영지에 오신 것을 환영합니다</h2>
         <p>아래 건설 메뉴에서 건물을 고르고, 지도를 클릭해 지으세요.</p>
         <p>마우스 휠로 확대, 드래그로 이동합니다.</p>
+        <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
         {continueLine === null ? <>
           <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId)} keepChoice={keepChoice} />
           <p className="welcome-dismiss">(아무 곳이나 클릭하여 시작)</p>
@@ -478,10 +547,13 @@ function ScenarioModeButtons({ onChoose, keepChoice }: {
   readonly keepChoice: (event: MouseEvent | PointerEvent) => void;
 }) {
   return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
-    {CORE_SCENARIOS.map(scenario => <button key={scenario.id} className="autoplay-toggle save-control-button" type="button"
-      data-scenario={scenario.id} onPointerDown={keepChoice} onClick={event => { keepChoice(event); onChoose(scenario.id); }}>
-      {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
-    </button>)}
+    {CORE_SCENARIOS.map(scenario => <div key={scenario.id}>
+      <button className="autoplay-toggle save-control-button" type="button"
+        data-scenario={scenario.id} onPointerDown={keepChoice} onClick={event => { keepChoice(event); onChoose(scenario.id); }}>
+        {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
+      </button>
+      <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}</p>
+    </div>)}
   </div>;
 }
 

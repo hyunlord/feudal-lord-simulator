@@ -79,7 +79,7 @@ test("house inspector exposes Korean identity and service state", () => {
     "건축 단계 2 · 관리 양호",
     "대지 1×1칸",
     "물 있음",
-    "마지막 빵 29틱 전",
+    "마지막 빵 약 1초 전",
   ]);
 });
 

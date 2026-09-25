@@ -146,21 +146,21 @@ test("world asset registry keeps the source scale cache as a runtime dependency"
   assert.match(cacheSource, /\bscaledWorldAssetSource\b/);
 });
 
-test("renderFrame derives and draws onboarding world guidance without changing its public input", async () => {
+test("renderFrame draws the tutorial step's map target through the guidance overlay without changing its public input (UX-1)", async () => {
   // Given
   const source = await readFile(new URL("../src/render/renderer.ts", import.meta.url), "utf8");
 
   // When
-  const importsGuidance = /import\s+\{\s*onboardingWorldGuidanceTargets\s*\}\s+from\s+"..\/ui\/onboardingWorldGuidance";/.test(source);
+  const importsTarget = /import\s+\{[^}]*\btutorialMapTarget\b[^}]*\}\s+from\s+"..\/ui\/tutorial\/tutorialMapChannel";/.test(source);
   const importsOverlay = /import\s+\{\s*drawOnboardingGuidanceOverlay\s*\}\s+from\s+"\.\/onboardingGuidanceOverlay";/.test(source);
-  const callsOverlay = /drawOnboardingGuidanceOverlay\(input\.context,\s*\{\s*targets:\s*onboardingWorldGuidanceTargets\(input\.state\),\s*zoom:\s*input\.camera\.zoom,\s*\}\);/.test(source);
+  const callsOverlay = /drawOnboardingGuidanceOverlay\(input\.context,\s*\{\s*targets:\s*tutorialTarget === null \? \[\]/.test(source);
   const frameInputBlock = source.match(/export type RenderFrameInput = \{[\s\S]*?\};/)?.[0] ?? "";
 
   // Then
-  assert.equal(importsGuidance, true);
+  assert.equal(importsTarget, true);
   assert.equal(importsOverlay, true);
   assert.equal(callsOverlay, true);
-  assert.equal(/onboarding/i.test(frameInputBlock), false);
+  assert.equal(/onboarding|tutorial/i.test(frameInputBlock), false);
 });
 
 test("renderFrame computes the object queue once and reuses it across ground and object passes", async () => {

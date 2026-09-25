@@ -1,0 +1,61 @@
+/* Left inspector (selected building or construction site). The mount decides position; this draws the card. */
+.left-inspector {
+  width: min(300px, calc(100vw - 32px));
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: auto;
+  border: 3px solid var(--palette-earth-dark);
+  border-top-color: var(--palette-earth);
+  border-bottom-color: var(--palette-ink);
+  border-radius: 2px;
+  background: var(--palette-vellum);
+  font-family: var(--ui-body-font);
+  color: var(--palette-ink);
+}
+.left-inspector-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  align-items: start;
+  gap: 8px;
+  padding: 8px 8px 8px 12px;
+  border-bottom: 2px solid var(--palette-earth);
+  background: var(--palette-ink-muted);
+}
+.left-inspector-title { min-width: 0; }
+.left-inspector-title h2 { margin: 0; font: 600 18px/1.3 var(--ui-body-font); color: var(--palette-vellum); }
+.left-inspector-state { margin: 2px 0 0; font-size: 13px; line-height: 1.4; color: var(--palette-parchment-dark); word-break: keep-all; overflow-wrap: anywhere; }
+.left-inspector-close {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--palette-earth-dark);
+  border-radius: 2px;
+  background: var(--palette-ink);
+  color: var(--palette-parchment);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.left-inspector-close:active { color: var(--palette-gold); background: var(--palette-ink-light); }
+.left-inspector-close:focus-visible { outline: 2px solid var(--palette-gold); outline-offset: 2px; }
+.left-inspector-body {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px 12px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.left-inspector-body h3 { margin: 4px 0 0; font: 700 14px/1.4 var(--ui-body-font); color: var(--palette-ink-light); }
+.left-inspector-why,
+.left-inspector-actions { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.left-inspector-why li,
+.left-inspector-actions li { font-size: 14px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+.left-inspector-line { padding-left: 10px; border-left: 3px solid var(--palette-parchment-dark); }
+.left-inspector-line--block { font-weight: 700; border-left-color: var(--palette-vermilion); }
+.left-inspector-actions li:not(.left-inspector-empty) { padding-left: 10px; border-left: 3px solid var(--palette-gold); }
+.left-inspector-empty { color: var(--palette-ink-light); font-size: 13px; }

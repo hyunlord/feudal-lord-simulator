@@ -11,19 +11,32 @@ test('O no longer toggles legacy outlines while its button remains independent',
 
 import { groupCauseMarkers, hitCauseMarker } from '../src/render/causeMarkerLayout';
 
-test('low zoom groups only nearby equal causes and preserves all member hit targets', () => {
-  const markers = [
-    { x: 0, y: 0, buildingIds: ['a'], causeId: 'water', risk: false },
-    { x: 20, y: 0, buildingIds: ['b'], causeId: 'water', risk: true },
-    { x: 20, y: 0, buildingIds: ['c'], causeId: 'bread', risk: false },
-    { x: 200, y: 0, buildingIds: ['d'], causeId: 'water', risk: false },
-  ];
-  assert.equal(groupCauseMarkers(markers, 0.9).length, 4);
+type TestMarker = Parameters<typeof groupCauseMarkers>[0][number];
+const marker = (id: string, tx: number, ty: number, causeId: string | null, severity: 'block' | 'warn' | null): TestMarker =>
+  ({ x: (tx - ty) * 32, y: (tx + ty) * 16, buildingIds: [id], tile: { tx, ty }, causeId, severity });
+
+test('zoomed out below 0.8, every cause in a 6x6 cell merges into one counted marker led by the most urgent', () => {
+  const markers = [marker('a', 0, 0, 'water', 'warn'), marker('b', 3, 2, 'bread', 'block'),
+    marker('c', 7, 1, 'water', 'warn'), marker('d', 1, 1, null, null)];
+  assert.equal(groupCauseMarkers(markers, 0.8).length, 4, 'at 0.8 and above every building keeps its own marker');
   const grouped = groupCauseMarkers(markers, 0.6);
-  assert.equal(grouped.length, 3);
+  assert.equal(grouped.length, 2, 'one marker per occupied cell; the promotion ring drops out');
   assert.deepEqual(grouped[0]?.buildingIds, ['a', 'b']);
-  assert.equal(grouped[0]?.risk, true);
-  assert.equal(hitCauseMarker(grouped, { x: 200, y: 0 }, 0.6)?.buildingIds[0], 'd');
+  assert.equal(grouped[0]?.severity, 'block');
+  assert.equal(grouped[0]?.causeId, 'bread');
+  assert.equal(grouped[0]?.x, (markers[0]!.x + markers[1]!.x) / 2);
+  assert.equal(grouped[0]?.y, (markers[0]!.y + markers[1]!.y) / 2);
+  assert.deepEqual(grouped[1]?.buildingIds, ['c']);
+  assert.equal(hitCauseMarker(grouped, { x: markers[2]!.x, y: markers[2]!.y }, 0.6)?.buildingIds[0], 'c');
+});
+
+test('cell clusters are deterministic regardless of input order', () => {
+  const markers = [marker('a', 0, 0, 'water', 'warn'), marker('b', 5, 5, 'water', 'warn'), marker('c', 2, 4, 'bread', 'warn')];
+  const grouped = groupCauseMarkers(markers, 0.5);
+  assert.equal(grouped.length, 1);
+  assert.deepEqual(grouped[0]?.buildingIds, ['a', 'b', 'c']);
+  assert.equal(grouped[0]?.causeId, 'water', 'with no immediate member the first caution leads');
+  assert.deepEqual(groupCauseMarkers([...markers].reverse(), 0.5), grouped);
 });
 
 import { isProblemViewShortcut } from '../src/ui/problemViewShortcut';
@@ -34,14 +47,3 @@ test('problem-only shortcut ignores repeat and editable focus', () => {
   assert.equal(isProblemViewShortcut('Escape', false, false), false);
 });
 
-
-test('low zoom clusters transitive neighbors with a deterministic anchor regardless of input order', () => {
-  const markers = [
-    { x: 0, y: 0, buildingIds: ['a'], causeId: 'water', risk: false },
-    { x: 50, y: 0, buildingIds: ['b'], causeId: 'water', risk: false },
-    { x: 100, y: 0, buildingIds: ['c'], causeId: 'water', risk: true },
-  ];
-  const grouped = groupCauseMarkers(markers, 0.6);
-  assert.deepEqual(grouped, [{ ...markers[0], buildingIds: ['a', 'b', 'c'], risk: true }]);
-  assert.deepEqual(groupCauseMarkers([...markers].reverse(), 0.6), grouped);
-});

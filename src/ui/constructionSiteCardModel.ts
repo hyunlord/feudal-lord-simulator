@@ -1,4 +1,5 @@
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
+import { GAME_TIME_COPY } from "./gameTimeCopy.ko";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
   constructionOnSiteLabel,
@@ -61,6 +62,15 @@ function materialParts(site: ConstructionSite, valueForResource: (resource: Reso
     const required = amount(site.required, resource);
     return required === 0 ? [] : valueForResource(resource) ?? [];
   });
+}
+
+/** Each assigned builder adds one builder tick per tick (economy/construction), so the crew sets the time left. */
+function builderWorkLabel(site: ConstructionSite): string {
+  const required = Math.max(1, site.requiredBuilderTicks);
+  const percent = Math.min(100, Math.floor((site.builderTicks / required) * 100));
+  const remaining = Math.max(0, site.requiredBuilderTicks - site.builderTicks);
+  return GAME_TIME_COPY.builderWork(percent, site.assignedBuilders,
+    site.assignedBuilders > 0 && remaining > 0 ? Math.ceil(remaining / site.assignedBuilders) : null);
 }
 
 function securedLabel(site: ConstructionSite): string {
@@ -127,7 +137,7 @@ export function constructionSiteCardModel(
       { label: "부지", value: `${anchor.tx}, ${anchor.ty} · ${name}` },
       { label: "자재 확보", value: securedLabel(site) },
       { label: "자재 배달", value: deliveryLabel(site) },
-      { label: "건축 작업", value: `${site.builderTicks}/${site.requiredBuilderTicks}틱 · 일꾼 ${site.assignedBuilders}명` },
+      { label: "건축 작업", value: builderWorkLabel(site) },
       ...materialDiagnosisRows(site, options),
       ...(options.accessState === undefined ? [] : (() => {
         const access = constructionAccessModel(options.accessState, site);

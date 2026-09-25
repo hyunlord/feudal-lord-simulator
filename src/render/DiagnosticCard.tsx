@@ -1,4 +1,5 @@
 import { BUILDING_OPERATION_COPY } from '../ui/buildingOperationCopy.ko';
+import { durationLabel } from "../ui/gameTimeCopy.ko";
 import type { ReactElement } from "react";
 import { BALANCE } from "../content/balanceConfig";
 
@@ -119,7 +120,7 @@ function WalkerCard({ model }: { readonly model: WalkerDiagnosisModel }): ReactE
         )}
         <div><dt>목적</dt><dd>{model.destinationLabel}</dd></div>
         <div><dt>상태</dt><dd>{model.statusLabel}</dd></div>
-        <div><dt>남은 길</dt><dd>거리 {model.remainingDistance} · 예상 {model.etaTicks}틱</dd></div>
+        <div><dt>남은 길</dt><dd>거리 {model.remainingDistance} · 예상 {durationLabel(model.etaTicks)}</dd></div>
         <div><dt>통과</dt><dd>지난 집 {model.housesPassed}</dd></div>
         {model.tilesTravelled === null ? null : (
           <div><dt>순회</dt><dd>이동 {model.tilesTravelled}칸</dd></div>

@@ -165,6 +165,9 @@ function LedgerLabel({ full, compact }: LedgerLabelProps) {
   );
 }
 
+/** Ticks (one second at 1x) before the settlement status line speaks. */
+const STATUS_WARMUP_TICKS = 20;
+
 type SettlementStatusLineProps = {
   readonly state: GameState;
   readonly selectedTool?: PlacementTool | null;
@@ -179,6 +182,8 @@ export function SettlementStatusLine({
   const guidance = settlementGuidance(state);
   const activeToolStatus =
     selectedTool === null ? null : getPlacementToolStatus(feedbackPlacementTool(selectedTool));
+  // UX-0: before the game has run, water and bread supply are not computed yet ("우물이 필요합니다" at tick 0 was false).
+  if (activeToolStatus === null && placementFeedbackMessage === null && state.tick < STATUS_WARMUP_TICKS) return null;
   const statusLine = activeToolStatus ?? placementFeedbackMessage ?? guidance.statusLine;
   const showProblemGlyph = activeToolStatus === null && placementFeedbackMessage === null;
 

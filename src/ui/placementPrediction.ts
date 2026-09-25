@@ -16,7 +16,8 @@ import { getTile, type TileCoordinate } from '../world/grid';
 import { canPlaceBuilding, constructionShortfalls, PlacementFailure, type PlacementResult } from '../world/placement';
 import { predictionStateKey } from './predictionCache';
 import { A_TRIPLE_PRIME_ROAD_COPY } from './aTriplePrimeRoadCopy';
-import { PLACEMENT_REASON_LABELS, predictionCheck } from './predictionRegistry';
+import { PLACEMENT_REASON_LABELS, predictionCheck, predictionRecommendation } from './predictionRegistry';
+import { PLACEMENT_CHECKLIST_COPY } from './placementChecklistCopy.ko';
 import type { PlacementPrediction, PredictionLine } from './predictionTypes';
 import { zonePlacementLines } from './zonePrediction';
 import { ROAD_PLACEMENT_COPY } from './roadPlacementCopy.ko';
@@ -79,7 +80,9 @@ export function buildingPlacementPrediction(state: GameState, kind: BuildingKind
     if (kind === 'granary') lines.push({ id: 'granary', severity: 'info', sources: [], text: `L3 곡창 거리 조건 ${houseIds.length}가구 · 빵 배송은 별도` });
     if (radius !== null) lines.push({ id: 'range', severity: 'info', sources: [], text: `범위 ${radius}칸 · 실제 대상은 주택 윤곽으로 표시` });
     const road = buildingRoadAccessTiles(virtual, candidate).length > 0;
-    lines.push(predictionCheck('road', '도로 연결', road, !definition.requiresRoad ? '(운영에 불필요)' : ''));
+    // Placement does not check roads (canPlaceBuilding never returns needs_road), so a missing road is advice, not a block.
+    lines.push(predictionRecommendation('road', road ? PLACEMENT_CHECKLIST_COPY.roadConnected : PLACEMENT_CHECKLIST_COPY.roadRecommended, road,
+      !definition.requiresRoad ? PLACEMENT_CHECKLIST_COPY.roadNotNeeded : ''));
     lines.push(predictionCheck('materials', '자재', Object.keys(constructionShortfalls(state, definition.buildCost)).length === 0));
     if (kind === 'wheat_farm' || kind === 'mill' || kind === 'granary') {
       const delivery = hasConnectedConstructionRoute(state, candidate);

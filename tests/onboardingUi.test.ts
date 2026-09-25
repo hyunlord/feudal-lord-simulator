@@ -143,7 +143,11 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
       placementFeedbackMessage: "도로가 필요합니다",
     }),
   );
+  // UX-0: the fallback waits one second of play (tick 20) before speaking; at tick 0 supply is not computed yet.
   const fallback = renderToStaticMarkup(
+    createElement(SettlementStatusLine, { state: { ...DEFAULT_GAME_STATE, tick: 20 }, selectedTool: null }),
+  );
+  const beforePlay = renderToStaticMarkup(
     createElement(SettlementStatusLine, { state: DEFAULT_GAME_STATE, selectedTool: null }),
   );
 
@@ -153,10 +157,11 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
   assert.match(feedback, /도로가 필요합니다/);
   assert.doesNotMatch(feedback, /우물이 필요합니다/);
   assert.match(fallback, /우물이 필요합니다/);
+  assert.equal(beforePlay, "");
   assert.equal(getPlacementToolStatus({ kind: "road" }), "드래그하여 길을 놓으세요 · 취소하려면 Esc");
 });
 
-test("right rail renders era gauges plus exactly one current imperative", () => {
+test("right rail renders the goal cards, and the era gauges in the goal drawer (UX-1)", () => {
   // Given / When
   const markup = renderApp();
   const railMarkup = markup.slice(
@@ -165,14 +170,12 @@ test("right rail renders era gauges plus exactly one current imperative", () => 
   );
 
   // Then
+  assert.match(railMarkup, /class="goal-cards"/);
+  assert.match(railMarkup, /class="goal-drawer" hidden=""/);
   assert.match(railMarkup, /aria-label="시대 선포"/);
   assert.equal((railMarkup.match(/class="era-requirement(?: era-requirement--met)?"/g) ?? []).length, 4);
-  assert.match(railMarkup, /aria-label="현재 과업"/);
-  assert.match(railMarkup, /data-task-state="current"/);
-  assert.match(railMarkup, /길을 놓아 오두막을 이으세요/);
-  assert.equal((railMarkup.match(/data-task-state="current"/g) ?? []).length, 1);
-  assert.doesNotMatch(railMarkup, /data-task-state="next"/);
-  assert.doesNotMatch(railMarkup, /숲 옆에 벌목소를 지으세요/);
+  assert.ok((railMarkup.match(/class="goal-card"/g) ?? []).length <= 2);
+  assert.doesNotMatch(railMarkup, /aria-label="현재 과업"/);
   assert.doesNotMatch(railMarkup, /목표: 인구 50명 · 현재/);
 });
 

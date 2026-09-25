@@ -13,6 +13,7 @@ import {
   drawConstructionSite,
 } from "../src/render/drawConstructionSites";
 import { drawPalisadeRun, drawPalisadeSegment } from "../src/render/drawPalisadeSegments";
+import { constructionSiteLabelAnchor, constructionSiteLabelBoxes } from "../src/render/constructionSiteLabelLayout";
 import { building, state as makeState } from "./stoneWallConversionFixtures";
 import { loggedContext } from "./constructionRenderingFixtures";
 
@@ -123,7 +124,48 @@ test("drawConstructionSite writes the exact current stall label with delivered a
 
   // Then
   assert.ok(context.calls.includes("measureText:🪵 목재 오는 중 (12/40)"));
-  assert.ok(context.calls.includes("fillText:🪵 목재 오는 중 (12/40),10,-16"));
+  // The 2x2 storehouse footprint centre is (32, 64); the roof-stage art tops out 52 px above it (y 12).
+  assert.ok(context.calls.includes("fillText:🪵 목재 오는 중 (12/40),-40,-5"));
+  assert.ok(context.calls.includes("fillRect:-44,-18,152,18"), "box centred on the footprint, above the art");
+});
+
+test("drawConstructionSite ties its label to its own footprint with a leader line down to the site", () => {
+  // Given
+  const context = loggedContext();
+
+  // When
+  drawConstructionSite(context, { site: site(), zoom: 1 });
+
+  // Then: a vertical stroke from the box's bottom centre to the footprint centre, drawn with the ink outline.
+  const leader = context.calls.indexOf("moveTo:32,0");
+  assert.ok(leader > 0);
+  assert.equal(context.calls[leader + 1], "lineTo:32,64");
+  assert.equal(context.calls[leader + 2], "stroke");
+  assert.ok(context.calls.slice(0, leader).includes("strokeStyle:#2A2118"));
+});
+
+test("neighbouring construction labels step up instead of overlapping", () => {
+  // Given: two labelled sites side by side whose labels would share a row.
+  const first = site({ id: "construction-site-000001", stall: "no_builders", delivered: { timber: 40 } });
+  const second = site({ id: "construction-site-000002", tx: 3, ty: 1, stall: "no_builders", delivered: { timber: 40 } });
+  const state = makeState({ width: 8, height: 8, palisade: null, houses: [], walkers: [], buildings: [],
+    constructionSites: [first, second] });
+
+  // When
+  const boxes = constructionSiteLabelBoxes([{ site: first, label: "👷 일꾼 없음" }, { site: second, label: "👷 일꾼 없음" }], 1, text => text.length * 8);
+  const firstContext = loggedContext();
+  const secondContext = loggedContext();
+  drawConstructionSite(firstContext, { site: first, state, zoom: 1 });
+  drawConstructionSite(secondContext, { site: second, state, zoom: 1 });
+
+  // Then
+  const a = boxes.get(first.id);
+  const b = boxes.get(second.id);
+  assert.ok(a !== undefined && b !== undefined);
+  assert.ok(b.y + b.height <= a.y, "the later label sits a full row above the earlier one");
+  assert.equal(b.leaderX, constructionSiteLabelAnchor(second).x, "still centred on its own site");
+  assert.ok(firstContext.calls.includes(`fillRect:${a.x},${a.y},${a.width},${a.height}`));
+  assert.ok(secondContext.calls.includes(`fillRect:${b.x},${b.y},${b.width},${b.height}`));
 });
 
 test("drawConstructionSite shows the live road break before the stored delivery stall catches up", () => {

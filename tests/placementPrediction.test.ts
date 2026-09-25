@@ -48,7 +48,23 @@ test('invalid reason is Korean and road access does not invent a placement rejec
   assert.match(buildingPlacementPrediction(state,'well',{tx:3,ty:5}).lines[0]?.text??'',/점유 충돌/);
   const disconnected=buildingPlacementPrediction(state,'market',{tx:6,ty:10});
   assert.equal(disconnected.placement.ok,true);
-  assert.equal(severityOf(disconnected.lines.find(l=>l.id==='road')),'block');
+  assert.equal(severityOf(disconnected.lines.find(l=>l.id==='road')),'warn');
+  assert.equal(disconnected.lines.find(l=>l.id==='road')?.text,'도로 연결 권장');
+});
+test('road line is a recommendation: ✓ when connected, never a block, and a real block stays the first line',()=>{
+  const state=fixture();
+  const connected=buildingPlacementPrediction(state,'market',{tx:6,ty:3});
+  assert.equal(severityOf(connected.lines.find(l=>l.id==='road')),'ok');
+  assert.equal(connected.lines.find(l=>l.id==='road')?.text,'도로 연결');
+  const free=buildingPlacementPrediction(state,'well',{tx:9,ty:10});
+  const blocked={...state,tiles:state.tiles.map(t=>t.tx===9&&t.ty===10?{...t,buildingId:'home'}:t)};
+  const refused=buildingPlacementPrediction(blocked,'well',{tx:9,ty:10});
+  assert.equal(free.placement.ok,true);
+  assert.equal(refused.placement.ok,false);
+  assert.equal(severityOf(refused.lines[0]),'block');
+  assert.equal(refused.lines[0]?.id,'placement');
+  assert.deepEqual(refused.lines.filter(line=>severityOf(line)==='block').map(line=>line.id),['placement']);
+  assert.equal(severityOf(refused.lines.find(l=>l.id==='road')),'warn');
 });
 test('bridge counts and costs use current road rules and distinguish patterns',()=>{
   const state=fixture(); state.tiles=state.tiles.map(t=>t.ty===10 && t.tx>=5 && t.tx<=7?{...t,terrain:'water'}:t);
@@ -91,8 +107,8 @@ test('disconnected well reports no road while remaining legal and supplying wate
   const state=fixture();
   const prediction=buildingPlacementPrediction(state,'well',{tx:6,ty:3});
   assert.equal(prediction.placement.ok,true);
-  assert.equal(severityOf(prediction.lines.find(line=>line.id==='road')),'block');
-  assert.match(prediction.lines.find(line=>line.id==='road')?.text??'',/운영에 불필요/);
+  assert.equal(severityOf(prediction.lines.find(line=>line.id==='road')),'warn');
+  assert.match(prediction.lines.find(line=>line.id==='road')?.text??'',/도로 연결 권장 \(운영에 불필요\)/);
   assert.match(prediction.lines.find(line=>line.id==='supply')?.text??'',/1\/12필지/);
 });
 test('food placement distinguishes a local road from a material delivery route',()=>{

@@ -8,7 +8,8 @@ import { SCENARIOS } from "../src/content/scenario/registry";
 import { SCENARIO_COPY } from "../src/content/scenario/scenarioCopy.ko";
 import type { GameState } from "../src/engine/engine.types";
 import { createSaveSummary } from "../src/save/saveSummary";
-import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
+import { DEFAULT_GAME_STATE, GameProvider, gameReducer } from "../src/state/gameStore";
+import { App } from "../src/App";
 import { buildEraConsoleModel } from "../src/ui/EraConsole";
 import { openGoalFitsScenario } from "../src/ui/onboardingTaskModel";
 import { ResourceBar } from "../src/ui/ResourceBar";
@@ -40,9 +41,11 @@ test("a completed stone wall is a victory-screen bonus, not a victory condition"
   assert.ok(!panel(timber).includes(SCENARIO_COPY.stoneWallBonus));
 });
 
-test("the resource bar shows the calendar beside the five resource cells", () => {
-  const markup = renderToStaticMarkup(createElement(ResourceBar, { state: { ...DEFAULT_GAME_STATE, tick: 2 * 4000 + 1000 }, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined }));
-  assert.match(markup, /data-testid="resource-calendar"><strong>1302년 여름<\/strong>/);
+test("the calendar sits beside the speed controls, not in the resource bar (UX-1 HUD)", () => {
+  const bar = renderToStaticMarkup(createElement(ResourceBar, { state: { ...DEFAULT_GAME_STATE, tick: 2 * 4000 + 1000 }, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined }));
+  assert.doesNotMatch(bar, /resource-calendar/);
+  const app = renderToStaticMarkup(createElement(GameProvider, null, createElement(App)));
+  assert.match(app, /class="hud-time-cluster"[^>]*><span class="hud-date" data-testid="hud-calendar">1300년 봄<\/span>/);
 });
 
 test("T3 the stone-wall action is disabled with a reason when the scenario turns the project off", () => {

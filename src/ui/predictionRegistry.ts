@@ -12,6 +12,11 @@ export const PLACEMENT_REASON_LABELS = {
   [PlacementFailure.locked_era]: '아직 해금되지 않은 시설',
 } as const satisfies Record<PlacementFailure, string>;
 
+/** A condition that helps but never refuses placement: a met one reads ✓, an unmet one a caution, never ×. */
+export function predictionRecommendation(id: string, label: string, ok: boolean, detail = ''): PredictionLine {
+  return { ...predictionCheck(id, label, ok, detail), severity: ok ? 'ok' : 'warn' };
+}
+
 export function predictionCheck(id: string, label: string, ok: boolean, detail = ''): PredictionLine {
   return { id, severity: ok ? 'ok' : 'block', text: `${label}${detail === '' ? '' : ` ${detail}`}`, sources: [] };
 }

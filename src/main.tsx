@@ -10,6 +10,9 @@ import "./styles/uiConsole.css";
 import "./styles/uiBoundaries.css";
 import "./styles/inspector.css";
 import "./styles/settlement.css";
+import "./styles/tutorial.css";
+import "./styles/alertStack.css";
+import "./styles/uiInspector.css";
 
 const rootElement = document.getElementById("root");
 

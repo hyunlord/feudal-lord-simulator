@@ -1,0 +1,222 @@
+/* UX-1 onboarding shell (research E): goal cards, steward, unlock banner, pause veil, pulse, locks, control layers,
+   the top-right time cluster. Flat structure only; the manuscript edges and painted icons come with UX-2.
+   Mobile rules: targets >= 44 px, text >= 12 px, nothing only on hover. */
+
+/* ---- Top-right cluster: date, speed, settings (research E "HUD 재배치안") ---- */
+/* contrast-audit selector=".hud-time-cluster" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.hud-time-cluster {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 8px;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  border: 1px solid var(--palette-ink);
+}
+.hud-time-cluster .hud-date { font-size: 14px; font-weight: 700; white-space: nowrap; }
+.hud-time-cluster .speed-control-stack { display: flex; gap: 6px; align-items: center; }
+.hud-time-cluster .speed-seal { min-width: 44px; min-height: 44px; }
+
+/* The goal rail sits under the cluster; see-through while a map target lies beneath it (UX-0 H). */
+.right-info-rail { top: 68px; }
+.right-info-rail--see-through { opacity: 0.45; }
+.right-info-rail--see-through:focus-within, .right-info-rail--see-through:active { opacity: 1; }
+
+/* ---- Goal cards ---- */
+/* contrast-audit selector=".goal-card" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.goal-cards { display: grid; gap: 8px; }
+.goal-card {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  border: 1px solid var(--palette-ink);
+}
+.goal-card-heading { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+.goal-card-title { margin: 0; font-size: 18px; line-height: 1.25; }
+.goal-card-count { font-size: 14px; font-weight: 700; white-space: nowrap; }
+.goal-card-bar { display: block; height: 6px; background-color: var(--palette-parchment-dark); }
+.goal-card-bar > span { display: block; height: 100%; background-color: var(--palette-gold-dark); transition: width 400ms ease-out; }
+.goal-card-why {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goal-card-actions { display: flex; gap: 8px; align-items: center; }
+.goal-card-cta {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 6px 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--palette-vellum);
+  cursor: pointer;
+  background-color: var(--palette-ink);
+  border: 1px solid var(--palette-ink);
+}
+.goal-card-cta:focus-visible { outline: 2px solid var(--palette-gold); outline-offset: 2px; }
+.goal-card-secondary {
+  min-height: 44px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--palette-ink);
+  cursor: pointer;
+  background-color: var(--palette-parchment);
+  border: 1px solid var(--palette-ink);
+}
+.goal-card-help { position: relative; }
+.goal-card-help > summary {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid var(--palette-ink);
+}
+.goal-card-help > summary::-webkit-details-marker { display: none; }
+.goal-card-help > p { position: absolute; right: 0; z-index: 3; width: 260px; margin: 4px 0 0; padding: 8px; font-size: 13px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.goal-card--done, .goal-card--already { border-color: var(--palette-gold-dark); animation: goal-card-success 1500ms ease-out both; }
+.goal-card-status { margin: 0; font-size: 14px; font-weight: 700; }
+@keyframes goal-card-success {
+  0% { background-color: var(--palette-gold); }
+  60% { background-color: var(--palette-vellum); }
+  100% { opacity: 0.2; }
+}
+.goal-drawer-toggle { min-height: 44px; font-size: 13px; color: var(--palette-ink); cursor: pointer; background-color: var(--palette-parchment); border: 1px solid var(--palette-ink); }
+/* contrast-audit selector=".goal-drawer" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.goal-drawer { max-height: 50vh; padding: 8px 10px; overflow: auto; font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.goal-drawer-log { margin: 0 0 8px; padding-left: 18px; }
+.goal-drawer-empty { margin: 0 0 8px; }
+
+/* ---- Steward (96 px portrait slot) ---- */
+/* contrast-audit selector=".steward-advisor" fg="--palette-ink" bg="--palette-vellum" size="14" role="body" */
+.steward-advisor {
+  position: absolute;
+  top: 68px;
+  left: 12px;
+  z-index: 4;
+  display: flex;
+  gap: 10px;
+  width: min(400px, calc(100% - 24px));
+  padding: 10px;
+  color: var(--palette-ink);
+  background-color: var(--palette-vellum);
+  border: 1px solid var(--palette-ink);
+}
+.steward-portrait {
+  display: grid;
+  flex: 0 0 96px;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--palette-vellum);
+  background-color: var(--palette-ink);
+}
+.steward-body { display: grid; gap: 6px; align-content: start; }
+.steward-name { font-size: 13px; }
+.steward-line { margin: 0; font-size: 14px; line-height: 1.45; }
+.steward-button { justify-self: start; min-height: 44px; padding: 4px 12px; font-size: 13px; cursor: pointer; background-color: var(--palette-parchment); border: 1px solid var(--palette-ink); }
+
+/* ---- Unlock banner ---- */
+/* contrast-audit selector=".unlock-banner" fg="--palette-ink" bg="--palette-gold" size="16" role="body" */
+.unlock-banner {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  z-index: 5;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--palette-ink);
+  pointer-events: none;
+  background-color: var(--palette-gold);
+  border: 1px solid var(--palette-ink);
+  transform: translateX(-50%);
+}
+
+/* ---- Pause veil (UX-0 A) ---- */
+.pause-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-color: rgb(20 16 10 / 18%); }
+/* contrast-audit selector=".pause-veil-label" fg="--palette-vellum" bg="--palette-ink" size="14" role="body" */
+.pause-veil-label {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--palette-vellum);
+  background-color: var(--palette-ink);
+  transform: translateX(-50%);
+}
+
+/* ---- Pulse: twice, then still (research E "Highlight") ---- */
+[data-pulse] { animation: tutorial-pulse 700ms ease-in-out 2; }
+@keyframes tutorial-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--palette-gold); }
+  50% { box-shadow: 0 0 0 5px var(--palette-gold); }
+}
+
+/* ---- Locks ---- */
+.build-menu-category--locked, .control-layer--locked, .build-tool--locked { opacity: 0.55; }
+.build-menu-category-lock, .control-layer-lock { margin-left: 3px; font-size: 12px; }
+.build-tool-lock { font-size: 12px; font-weight: 700; }
+.build-menu-lock-note { font-weight: 700; }
+.build-tool-purpose { font-size: 12px; }
+.build-menu-pick { font-size: 13px; font-style: italic; }
+
+/* ---- Control layers: 직접 / 구역 / 방향 ---- */
+.control-layers { display: flex; gap: 4px; }
+.control-layer {
+  min-width: 56px;
+  min-height: 44px;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: var(--palette-ink);
+  cursor: pointer;
+  background-color: var(--palette-parchment);
+  border: 1px solid var(--palette-ink);
+}
+.control-layer[aria-pressed="true"] { font-weight: 700; color: var(--palette-vellum); background-color: var(--palette-ink); }
+
+/* ---- Undo (UX-1: the well step's 5 s attention) ---- */
+.hud-undo { min-width: 44px; min-height: 44px; padding: 4px 10px; font-size: 13px; cursor: pointer; background-color: var(--palette-parchment); border: 1px solid var(--palette-ink); }
+.hud-undo[data-attention="true"] { animation: tutorial-pulse 700ms ease-in-out 7; }
+.hud-undo:disabled { cursor: default; opacity: 0.5; }
+
+/* ---- Welcome: tutorial toggle and mode lines ---- */
+.tutorial-toggle { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; min-height: 44px; font-size: 14px; }
+.tutorial-switch { min-height: 44px; padding: 4px 12px; font-size: 14px; cursor: pointer; background-color: var(--palette-parchment); border: 1px solid var(--palette-ink); }
+.tutorial-switch[aria-checked="true"] { font-weight: 700; color: var(--palette-vellum); background-color: var(--palette-ink); }
+.tutorial-toggle small { flex-basis: 100%; font-size: 12px; }
+.welcome-mode-line { margin: 2px 0 8px; font-size: 13px; }
+
+@media (max-width: 900px) {
+  .steward-advisor { top: auto; bottom: 214px; width: calc(100% - 24px); }
+  .steward-portrait { flex-basis: 64px; width: 64px; height: 64px; font-size: 28px; }
+}
+
+/* ---- Top row: the resource bar leaves the right end to the time cluster (research E HUD sketch) ---- */
+.app-shell .resource-bar { right: auto; width: min(880px, calc(100% - 400px)); margin-inline: 0; }
+.build-menu-toprow { display: flex; gap: 10px; align-items: center; min-width: 0; }
+.build-menu-toprow .build-menu-categories { flex: 1 1 auto; }
+@media (max-width: 1100px) {
+  .app-shell .resource-bar { width: calc(100% - 24px); }
+  .hud-time-cluster { top: auto; bottom: 214px; }
+}
+
+/* ---- Left inspector mount (a warning's [보기]); under the steward when both show ---- */
+.left-inspector-mount { position: absolute; top: 68px; left: 12px; z-index: 4; max-height: calc(100% - 300px); pointer-events: none; }
+.steward-advisor ~ .left-inspector-mount { top: 196px; }

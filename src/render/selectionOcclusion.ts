@@ -6,6 +6,18 @@ type Input = Parameters<typeof buildingSpriteOverlapsCursorTile>[0] & {
   readonly selectionMode: boolean;
 };
 
+/**
+ * Whether hovering may outline the building in front of the cursor tile (UX1). With nothing armed and nothing
+ * selected, a bare hover reading as "the house vanished" looked like a demolition, so the reveal runs only while a
+ * placement tool is armed (aiming at ground behind a building) or a building is selected.
+ */
+export function hoverOcclusionActive(input: {
+  readonly toolArmed: boolean;
+  readonly selectedBuildingId: string | null;
+}): boolean {
+  return input.toolArmed || input.selectedBuildingId !== null;
+}
+
 /** Reveal the hovered ground tile without changing the global render mode. */
 export function outlinesOccludingBuilding(input: Input): boolean {
   if (!input.selectionMode || input.building.kind === "wheat_farm") return false;

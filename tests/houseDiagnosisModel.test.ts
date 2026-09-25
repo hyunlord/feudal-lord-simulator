@@ -285,7 +285,7 @@ test("house diagnosis names starvation as the active population decline", () => 
 
   // Then
   assert.equal(model.population.kind, "declining");
-  assert.equal(model.population.label, "감소 중 — 식량 없음, 330틱 경과");
+  assert.equal(model.population.label, "감소 중 — 식량 없음, 약 17초 경과");
 });
 
 test("house diagnosis does not claim decline during an explicit founding grace", () => {

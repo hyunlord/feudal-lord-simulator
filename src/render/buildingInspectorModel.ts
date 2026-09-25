@@ -1,4 +1,5 @@
 import { storageOverflowCause } from '../ui/storageOverflowModel';
+import { durationLabel } from "../ui/gameTimeCopy.ko";
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { ResourceType } from "../content/resourceConfig";
@@ -57,7 +58,7 @@ export function buildingInspectorModel(
     const condition = house === undefined ? "maintained" : houseCondition(house);
     const breadService = house?.lastServicedTick === undefined || house.lastServicedTick === 0
       ? "빵 배급 전"
-      : `마지막 빵 ${Math.max(0, state.tick - house.lastServicedTick)}틱 전`;
+      : `마지막 빵 ${durationLabel(state.tick - house.lastServicedTick)} 전`;
     return {
       kind: building.kind,
       name: `${HOUSE_NAMES[builtLevel] ?? HOUSE_NAMES[0]}${building.houseLot === undefined ? "" : " · 합필 주택"}`,

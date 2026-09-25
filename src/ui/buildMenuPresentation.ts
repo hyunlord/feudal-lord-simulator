@@ -4,28 +4,31 @@ import type { BuildToolOption } from "./buildMenuModel";
 import { getHistoricalFacilityPresentation } from "../render/historicalFacilityAssets";
 import { historicalHouseAssetMeta } from "../render/historicalHouseAssets";
 import { BRIDGE_TIMBER_PER_TILE } from "../world/bridges";
+import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
+import type { BuildCategoryKey } from "./tutorial/tutorialModel";
 
+// UX-1 build menu (research E "건설 메뉴 재분류"): six categories; zones left the categories for the control layer switch
+// (직접 / 구역 / 방향, BuildMenu.tsx). The labels live in tutorialCopy.ko.ts.
 export const BUILD_CATEGORIES = [
-  { key: "dwelling", label: "주택" },
-  { key: "road", label: "도로" },
-  { key: "production", label: "생산" },
-  { key: "storage", label: "저장" },
-  { key: "public", label: "공공" },
-  { key: "defense", label: "방어" },
-  { key: "zone", label: "구역" },
-] as const;
+  { key: "living", label: TUTORIAL_COPY.categories.living },
+  { key: "paths", label: TUTORIAL_COPY.categories.paths },
+  { key: "trade", label: TUTORIAL_COPY.categories.trade },
+  { key: "storage", label: TUTORIAL_COPY.categories.storage },
+  { key: "public", label: TUTORIAL_COPY.categories.public },
+  { key: "defense", label: TUTORIAL_COPY.categories.defense },
+] as const satisfies readonly { readonly key: BuildCategoryKey; readonly label: string }[];
 export type BuildCategory = typeof BUILD_CATEGORIES[number]["key"];
 
 export function buildCategorySelection(category: BuildCategory): PlacementTool | null {
-  return category === "road" ? "road" : null;
+  return category === "paths" ? "road" : null;
 }
 
 export function buildCategory(tool: PlacementTool): BuildCategory {
   const categories = {
-    house: "dwelling", road: "road", wheat_farm: "production", farmstead: "production", mill: "production",
-    logging_camp: "production", sawmill: "production", quarry: "production", masonry: "production",
-    storehouse: "storage", granary: "storage", well: "public", chapel: "public",
-    church: "public", market: "public", keep: "defense",
+    house: "living", well: "living", road: "paths",
+    wheat_farm: "trade", farmstead: "trade", mill: "trade", logging_camp: "trade", sawmill: "trade", quarry: "trade", masonry: "trade",
+    storehouse: "storage", granary: "storage", market: "storage",
+    chapel: "public", church: "public", keep: "defense",
   } as const satisfies Record<PlacementTool, BuildCategory>;
   return categories[tool];
 }

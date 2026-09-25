@@ -1,4 +1,5 @@
 import { houseHasFood, houseIsStarving } from "../population/houseFood";
+import { durationLabel } from "./gameTimeCopy.ko";
 import { serviceDiagnosis, type ServiceDiagnosis } from "./serviceDiagnosisModel";
 import type { Building } from "../content/buildingConfig";
 import { historicalHouseAssetMeta } from "../render/historicalHouseAssets";
@@ -117,7 +118,7 @@ function populationDiagnosis(state: GameState, house: House): PopulationDiagnosi
   if (houseIsStarving(house, state.tick)) {
     return {
       kind: "declining",
-      label: `감소 중 — 식량 없음, ${elapsedTicks}틱 경과`,
+      label: `감소 중 — 식량 없음, ${durationLabel(elapsedTicks)} 경과`,
       elapsedTicks,
     };
   }

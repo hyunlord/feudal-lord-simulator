@@ -1,4 +1,5 @@
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
+import { durationLabel } from "./gameTimeCopy.ko";
 import type { CarterWalker, TilePos, Walker } from "../agents/walker.types";
 import { BALANCE } from "../content/balanceConfig";
 import { remainingCarterTravelCost } from '../agents/carterTravelCost';
@@ -175,7 +176,7 @@ function carrierLabel(
   const source = facts === null
     ? "공급처 확인 불가"
     : `${facts.label} ${facts.directionLabel} ${facts.distance}칸`;
-  return `${prefix} · ${source} · 운반 ${carrier.id} · 남은 길 ${remainingPathDistance}칸 · 예상 ${etaTicks}틱`;
+  return `${prefix} · ${source} · 운반 ${carrier.id} · 남은 길 ${remainingPathDistance}칸 · 예상 ${durationLabel(etaTicks)}`;
 }
 
 export function constructionMaterialDiagnosis(

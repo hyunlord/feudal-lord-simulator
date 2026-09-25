@@ -22,7 +22,8 @@ import { drawOnboardingGuidanceOverlay } from "./onboardingGuidanceOverlay";
 import { objectRenderItemsForFrame } from "./renderObjectFrameCache";
 import { computeVisibleTileRange, visibleTilesInDrawOrder } from "./renderVisibility";
 import type { ViewportSize } from "./renderVisibility";
-import { onboardingWorldGuidanceTargets } from "../ui/onboardingWorldGuidance";
+import { setTutorialTargetCanvasPoint, tutorialMapTarget } from "../ui/tutorial/tutorialMapChannel";
+import { tileToScreen } from "./iso";
 import { drawSelectedWalkerPath } from "./diagnosticPathOverlay";
 import { drawHighlightedHouses } from "./diagnosticOverlays";
 import {
@@ -200,8 +201,17 @@ export const renderFrame = (input: RenderFrameInput): void => {
   probe?.enter("overlay.cause");
   drawCauseMap(input.context, input.state, input.camera.zoom, input.problemOnly ?? false);
   probe?.enter("overlay.onboarding");
+  // UX-1: the tutorial step's halo (the goal card's suggested spot) replaces the old per-task map guidance, which had
+  // no card of its own any more (UX-0: it pointed at spots off the road).
+  const tutorialTarget = tutorialMapTarget();
+  if (tutorialTarget === null) setTutorialTargetCanvasPoint(null);
+  else {
+    const focus = tileToScreen(tutorialTarget.focus.tx, tutorialTarget.focus.ty);
+    setTutorialTargetCanvasPoint({ x: focus.sx * input.camera.zoom + input.camera.panX, y: focus.sy * input.camera.zoom + input.camera.panY });
+  }
   drawOnboardingGuidanceOverlay(input.context, {
-    targets: onboardingWorldGuidanceTargets(input.state),
+    targets: tutorialTarget === null ? [] : [{ kind: "road", label: tutorialTarget.label, origin: tutorialTarget.focus,
+      ...(tutorialTarget.tiles.length > 1 ? { region: tutorialTarget.tiles } : {}) }],
     zoom: input.camera.zoom,
   });
   probe?.enter("overlay.feedback");

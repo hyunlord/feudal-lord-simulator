@@ -18,6 +18,13 @@ const TABLET_MAX_WIDTH = 900;
 const MOBILE_TOP_RAIL_SAFE_INSET = 176;
 const LOW_HEIGHT_MAX = 400;
 const TARGET_ISO_TILE_SPAN = 14;
+/**
+ * A new game opens on a small work area rather than the whole starting village: the four cottages, the well and the
+ * road ring around them (tiles 43..47 x 39..43, five iso tiles across) with that much again as context. At 1280x800
+ * this fits at zoom 2 (the camera maximum), at 1280x720 at 1.78; smaller and compact viewports keep the 80px sprite
+ * floor (about 1.62).
+ */
+const OPENING_WORK_AREA_TILE_SPAN = 10;
 /** The compact opening frame still reaches the river crossing east of the village (where the old ford placeholder stood). */
 const OPENING_RIVER_POINT = { tx: 53, ty: 41 } as const;
 export const MIN_OPENING_1X1_BUILDING_SCREEN_PX = 80;
@@ -107,9 +114,10 @@ export function cameraAfterViewportResize(input: ViewportResizeCameraInput): Cam
 
 function startingHouseZoom(canvas: InitialCameraCanvas, useCompactOpeningFloor: boolean): number {
   const usableHeight = usableViewportHeight(canvas);
+  const tileSpan = useCompactOpeningFloor ? OPENING_WORK_AREA_TILE_SPAN : TARGET_ISO_TILE_SPAN;
   const fittedZoom = Math.min(
-    canvas.clientWidth / (TILE_W * TARGET_ISO_TILE_SPAN),
-    usableHeight / (TILE_H * TARGET_ISO_TILE_SPAN),
+    canvas.clientWidth / (TILE_W * tileSpan),
+    usableHeight / (TILE_H * tileSpan),
   );
   return clampZoom(
     useCompactOpeningFloor

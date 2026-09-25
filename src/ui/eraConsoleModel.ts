@@ -7,6 +7,7 @@ import {
   type PalisadeFootprint,
   type PalisadePath,
 } from "../world/palisadeGeometry";
+import { GAME_TIME_COPY } from "./gameTimeCopy.ko";
 
 export type PalisadeProposalSummary =
   | {
@@ -41,7 +42,7 @@ export function proposalSummaryForState(
 export function proposalCostLabel(perimeterSteps: number): string {
   const timber = perimeterSteps * TIMBER_PER_WALL_STEP;
   const segments = Math.ceil(perimeterSteps / MAX_SEGMENT_STEPS);
-  return `둘레 ${perimeterSteps}칸 · 목재 ${timber} · 공사 ${segments}구간 · 일꾼 ${segments * 120}틱`;
+  return `둘레 ${perimeterSteps}칸 · 목재 ${timber} · 공사 ${segments}구간 · ${GAME_TIME_COPY.oneWorkerLabour(segments * 120)}`;
 }
 
 export function proposalCostLabelForPath(path: PalisadePath): string {

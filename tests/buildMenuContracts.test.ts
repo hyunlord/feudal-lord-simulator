@@ -162,7 +162,8 @@ test("task-driven highlights are semantic attributes and keep unaffordable seals
 });
 
 test("category presentation covers every existing tool and preserves the canonical unlock filter", () => {
-  assert.deepEqual(BUILD_CATEGORIES.map((category) => category.label), ["주택", "도로", "생산", "저장", "공공", "방어", "구역"]);
+  // UX-1 regrouping: zones left the categories for the 직접 / 구역 / 방향 layer switch.
+  assert.deepEqual(BUILD_CATEGORIES.map((category) => category.label), ["생활", "길", "생업", "저장·유통", "공공·신앙", "방어"]);
   assert.equal(buildCategory("keep"), "defense");
   assert.equal(buildCategory("church"), "public");
   const opening = buildMenuGroups(DEFAULT_GAME_STATE).flatMap((group) => group.options);
@@ -186,9 +187,9 @@ test("selected tool opens its own category and exposes full cost and requirement
   const markup = renderToStaticMarkup(createElement(BuildSeals, {
     selectedTool: "logging_camp", state: DEFAULT_GAME_STATE, onSelect: () => undefined,
   }));
-  assert.match(markup, /<section[^>]*aria-label="생산 도구"/);
-  assert.doesNotMatch(markup, /<section[^>]*hidden=""[^>]*aria-label="생산 도구"/);
-  assert.match(markup, /<section[^>]*hidden=""[^>]*aria-label="주택 도구"/);
+  assert.match(markup, /<section[^>]*aria-label="생업 도구"/);
+  assert.doesNotMatch(markup, /<section[^>]*hidden=""[^>]*aria-label="생업 도구"/);
+  assert.match(markup, /<section[^>]*hidden=""[^>]*aria-label="생활 도구"/);
   assert.match(markup, /build-tool--selected[^>]*aria-label="벌목소"/);
   assert.match(markup, /숲 인접 필요/);
   assert.match(markup, /목재 15/);
@@ -241,13 +242,13 @@ test("opening category follows the current task, while an explicit selected tool
   const opening = renderToStaticMarkup(createElement(BuildSeals, {
     selectedTool: null, state: DEFAULT_GAME_STATE, highlightedTools: ["logging_camp"], onSelect: () => undefined,
   }));
-  assert.doesNotMatch(opening, /<section[^>]*hidden=""[^>]*aria-label="생산 도구"/);
-  assert.match(opening, /<section[^>]*hidden=""[^>]*aria-label="주택 도구"/);
+  assert.doesNotMatch(opening, /<section[^>]*hidden=""[^>]*aria-label="생업 도구"/);
+  assert.match(opening, /<section[^>]*hidden=""[^>]*aria-label="생활 도구"/);
   const selected = renderToStaticMarkup(createElement(BuildSeals, {
     selectedTool: "house", state: DEFAULT_GAME_STATE, highlightedTools: ["logging_camp"], onSelect: () => undefined,
   }));
-  assert.doesNotMatch(selected, /<section[^>]*hidden=""[^>]*aria-label="주택 도구"/);
-  assert.match(selected, /<section[^>]*hidden=""[^>]*aria-label="생산 도구"/);
+  assert.doesNotMatch(selected, /<section[^>]*hidden=""[^>]*aria-label="생활 도구"/);
+  assert.match(selected, /<section[^>]*hidden=""[^>]*aria-label="생업 도구"/);
 });
 
 

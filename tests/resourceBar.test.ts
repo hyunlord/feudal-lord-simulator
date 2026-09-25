@@ -53,7 +53,7 @@ test("Given stocked bread When resource bar renders Then food duration has expli
     buildings: [{ id: house.buildingId, kind: "house", tx: 0, ty: 0, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 },
       { id: "granary", kind: "granary", tx: 1, ty: 0, workers: 0, inventory: { bread: 4 }, reserved: {}, stockReserved: {}, productionProgress: 0 }],
   });
-  assert.match(html, /1가구 기준 약 80게임초/);
+  assert.match(html, /1가구 기준 약 1분/);
   assert.doesNotMatch(html, /가구분 · 1끼/);
 });
 

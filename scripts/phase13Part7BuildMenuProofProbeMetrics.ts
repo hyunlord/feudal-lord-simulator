@@ -19,7 +19,8 @@ export function browserMeasurementMetricsExpression(groupLabels: readonly string
     // This SSR geometry fixture opens the real drawer before revealing categories.
     // React interaction is verified separately by the live game UI checks.
     drawer.hidden = false;
-    const categories = Array.from(document.querySelectorAll('.build-menu-category'));
+    // UX-1: the category row only (the 구역 layer button shares the class to open the zone cards).
+    const categories = Array.from(document.querySelectorAll('.build-menu-categories .build-menu-category'));
     const panels = Array.from(document.querySelectorAll('.build-menu-tools'));
     const originalHidden = panels.map((panel) => panel.hidden);
     const measurements = [];

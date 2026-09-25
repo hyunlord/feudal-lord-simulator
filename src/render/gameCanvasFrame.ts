@@ -12,6 +12,7 @@ import { CANVAS_SURROUND_COLOR } from "./worldBackdrop";
 import type { ConstructionCompletionTracker } from "./constructionCompletionEffects";
 import { drawConstructionAccessOverlay } from './constructionAccessOverlay';
 import { renderStageProbe } from "./renderStageProbe";
+import { hoverOcclusionActive } from "./selectionOcclusion";
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -78,7 +79,10 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.completionTracker,
     hoveredTile: input.hoveredTile,
-    selectionMode: input.selectedTool === null && input.palisadeDraft == null && input.zoneBrush == null,
+    selectionMode: hoverOcclusionActive({
+      toolArmed: input.selectedTool !== null || input.palisadeDraft != null || input.zoneBrush != null,
+      selectedBuildingId: input.selectedBuildingId ?? null,
+    }),
   });
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {
     probe?.enter("overlay.constructionAccess");

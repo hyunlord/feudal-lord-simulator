@@ -1,4 +1,5 @@
 import { houseIsStarving } from "../population/houseFood";
+import { calendarDayLabel, GAME_TIME_COPY } from "./gameTimeCopy.ko";
 import type { GameState } from "../engine/engine.types";
 import type { House } from "../population/population.types";
 
@@ -100,8 +101,8 @@ export function groupPopulationEvents(
 
 export function populationGroupLabel(group: PopulationEventGroup): string {
   const tickLabel = group.firstTick === group.lastTick
-    ? `틱 ${group.firstTick}`
-    : `틱 ${group.firstTick}~${group.lastTick}`;
+    ? calendarDayLabel(group.firstTick)
+    : GAME_TIME_COPY.calendarSpan(group.firstTick, group.lastTick);
   switch (group.cause) {
     case "growth":
       return `인구 ${group.count}명 증가 — 성장 (${tickLabel})`;
