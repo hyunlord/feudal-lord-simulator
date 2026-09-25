@@ -218,7 +218,7 @@ function pushCandidate(granary: Building, buildings: readonly Building[], invent
     || left.path.length - right.path.length || left.building.id.localeCompare(right.building.id))[0] ?? null;
 }
 
-/** LB-7: mills' intake carts, then granary pushes (a granary needs a hauler from the day pool). */
+/** LB-7: mills' intake carts, then granary pushes (a granary needs a hauler from the day pool), after the main carts. */
 function spawnSecondCarts(input: DeliveryStepInput, start: readonly Building[], walkers: Walker[]): readonly Building[] {
   let buildings = start;
   const intake = activeCarterHomes(walkers, "intake");
@@ -250,7 +250,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
   let constructionSites = input.constructionSites ?? [];
   let treasuryTimber = input.treasuryTimber ?? 0;
   const walkers: Walker[] = [...input.walkers];
-  let buildings = spawnSecondCarts(input, input.buildings, walkers);
+  let buildings = input.buildings;
   const busyHomes = activeCarterHomes(walkers);
 
   if (constructionSites.length > 0) {
@@ -314,5 +314,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     }
   }
 
+  // LB-7: second carts go after every main cart, so producers and barns keep first claim on their own stock.
+  buildings = spawnSecondCarts(input, buildings, walkers);
   return { buildings, constructionSites, walkers: walkers.sort(byId), treasuryTimber };
 }
