@@ -125,11 +125,12 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // B2/K4-1: this stone-town city has no completed stone wall, so its prosperity hold now counts (0 -> 120).
   // C2 (spec M-1): the market no longer pays the treasury, so the ledger and treasury differ from B3 (13740b9c…).
   // Without any money field the state is the pre-C2 one (4950b10 gives 6a7136ec… for the same stripped state).
-  // C1c-2 (AF-13): the autoplay food-flow and recurring-delivery layout keys list farmsteads, not wheat farms, so
-  // only those two bookkeeping records differ from d823005 (cb416e16… / 6a7136ec…); the world itself is identical.
-  assert.equal(hash(warm), '7d16e1345231776c29206b79a68eab5c7c4a5d0bb1e5a096565be8285fa94534');
+  // C1c-2: the food-flow and recurring-delivery layout keys list farmsteads (AF-13), and a converter with nothing in
+  // store fetches from its producer while deliveries leave claimed stock alone (AF-9), so carters, buildings and the
+  // path cache differ from d823005 (cb416e16… / 6a7136ec…). Cold and warm caches still agree (below).
+  assert.equal(hash(warm), '03db9d5426700b9a3b8953a24784e036a99078096f65f4230db0c68d0add0831');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'dc77fe0b0751fef983833330f5074ea048972022129340ef1d85982553042f31');
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '144a486d7c821c5fd048f0a17536ee9f18e87382d2aa34d1eb3ca65e1d6a2816');
   assert.equal(hash(coldState), hash(warm));
 });

@@ -8,10 +8,11 @@ export type EfficiencyMetrics = Readonly<{
 }>;
 
 /**
- * AF-14 facility cap that replaced "mills ≤ wheat farms": arable zone cells per housing lot. Provisional 10 for the
- * first C1c-2 guardrail run; the final value is the largest observed × 1.2 (docs/verification/c1c2-arable).
+ * AF-14 facility cap that replaced "mills ≤ wheat farms": arable zone cells per housing lot. The largest value any
+ * seed reached in the C1c-2 guardrail run at 5b138e0 (seed 2: 192 cells / 24 lots = 8.0, every 2,400-tick sample
+ * included) × 1.2 (docs/verification/c1c2-arable/REPORT.md). The run itself used the provisional 10.
  */
-export const ARABLE_CELLS_PER_LOT_CAP = 10;
+export const ARABLE_CELLS_PER_LOT_CAP = 9.6;
 
 export function efficientAcceptance(metrics: EfficiencyMetrics) {
   const finite = Object.values(metrics).every(value => typeof value === 'boolean' || Number.isFinite(value) && value >= 0);

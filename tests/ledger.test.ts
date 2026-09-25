@@ -26,7 +26,7 @@ import { LedgerPanelView } from "../src/ui/LedgerPanel";
 import { ledgerPanelModel } from "../src/ui/ledgerPanelModel";
 import { ledgerBalanceTrace } from "../scripts/ledgerBalanceTrace";
 
-const BASELINE = JSON.parse(readFileSync("fixtures/ledger/world-baseline-4950b10.json", "utf8")) as {
+const BASELINE = JSON.parse(readFileSync("fixtures/ledger/world-baseline-5b138e0.json", "utf8")) as {
   readonly cases: Record<string, { readonly kind: string; readonly ticks: number; readonly stateFile: string | null;
     readonly finalWorldHashWithoutMoney: string }>;
 };
@@ -60,7 +60,7 @@ for (const [name, expected] of Object.entries(BASELINE.cases)) {
   // B3 gate 1 compared the treasury with the pre-ledger code. C2 changes the money rules on purpose (spec M-*),
   // so the trace now checks that the cached treasury equals the ledger's cash balance on every tick and that the
   // world without money fields is still the pre-C2 world (no upkeep went unpaid in these cases).
-  test(`L-10 ${name}: the cache matches the ledger on every tick and the money-free world is the pre-C2 world`, async () => {
+  test(`L-10 ${name}: the cache matches the ledger on every tick and the money-free world is the pinned C1c-2 world`, async () => {
     const result = await ledgerBalanceTrace(".", expected.kind, expected.ticks, expected.stateFile ?? undefined);
     assert.equal(result.cacheMismatches, 0);
     assert.equal(result.finalWorldHashWithoutMoney, expected.finalWorldHashWithoutMoney);
