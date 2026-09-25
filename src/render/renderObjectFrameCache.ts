@@ -14,7 +14,7 @@ import { walkerVisualAnchor } from "./walkerAnchor";
 import type { ZoneLayer } from "./zoneLayer";
 import { groundBoundaryScene } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
-import { farmProps } from "./farmProps";
+import { farmProps, type FarmProp } from "./farmProps";
 import { hurdleAssetKey } from "./hurdleArt";
 
 type ObjectRenderFrameInput = {
@@ -106,12 +106,21 @@ const withZoneProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFra
 };
 
 /** Farm animals and ox teams (C1f), with the zone props: curved ground on and a zone painted. */
+// Cache: the last merge, keyed on the incoming queue, the farm prop list (cached on its inputs) and the visible range;
+// an unchanged frame returns the same queue (no sort, no merge).
+let lastFarmMerge: { readonly queue: readonly RenderQueueItem[]; readonly props: readonly FarmProp[]; readonly range: string; readonly result: readonly RenderQueueItem[] } | null = null;
 const withFarmProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
   if ((input.state.zones ?? []).length === 0 || !boundaryV2Enabled()) return queue;
-  const visible = farmProps(input.state).filter(prop => tileIsVisibleInRange(Math.round(prop.x), Math.round(prop.y), input.range))
+  const props = farmProps(input.state);
+  if (props.length === 0) return queue;
+  const range = `${input.range.minTx},${input.range.minTy},${input.range.maxTx},${input.range.maxTy}`;
+  if (lastFarmMerge !== null && lastFarmMerge.queue === queue && lastFarmMerge.props === props && lastFarmMerge.range === range) return lastFarmMerge.result;
+  const visible = props.filter(prop => tileIsVisibleInRange(Math.round(prop.x), Math.round(prop.y), input.range))
     .map(prop => ({ kind: "farm_prop" as const, id: prop.id, prop, depth: depthKey(Math.round(prop.x), Math.round(prop.y)), anchorTx: Math.round(prop.x) }))
     .sort(compareObjectRenderItems);
-  return visible.length === 0 ? queue : mergeObjectRenderItems(queue, visible);
+  const result = visible.length === 0 ? queue : mergeObjectRenderItems(queue, visible);
+  lastFarmMerge = { queue, props, range, result };
+  return result;
 };
 
 /**

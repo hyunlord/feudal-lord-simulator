@@ -380,11 +380,13 @@ function wallMaterialSignature(palisade: GameState["palisade"]): string {
  * when they change).
  */
 const clearedArableSignatures = new WeakMap<object, WeakMap<object, string>>();
+const NO_HARVESTS: readonly unknown[] = [];
 function clearedArableSignature(state: GameState): string {
+  if (!(state.zones ?? []).some(zone => zone.kind === "arable")) return "";
   const zones = zonesOf(state);
-  const harvests = state.forestHarvests ?? [];
-  let byHarvests = clearedArableSignatures.get(zones);
-  if (byHarvests === undefined) { byHarvests = new WeakMap(); clearedArableSignatures.set(zones, byHarvests); }
+  const harvests = (state.forestHarvests ?? NO_HARVESTS) as object;
+  let byHarvests = clearedArableSignatures.get(zones as object);
+  if (byHarvests === undefined) { byHarvests = new WeakMap(); clearedArableSignatures.set(zones as object, byHarvests); }
   const cached = byHarvests.get(harvests);
   if (cached !== undefined) return cached;
   const cleared = clearedCells(state);

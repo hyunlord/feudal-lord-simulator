@@ -50,15 +50,24 @@ function pastureAnimals(state: Pick<GameState, "zones" | "width" | "seed">): rea
   return props;
 }
 
+/** All farm props, cached on the pasture list and the farmstead field work (both cached on their own inputs). */
+const propCache = new WeakMap<object, WeakMap<object, readonly FarmProp[]>>();
 export function farmProps(state: GameState): readonly FarmProp[] {
-  const props = [...pastureAnimals(state)];
-  for (const [farmsteadId, work] of farmsteadFieldWork(state)) {
+  const pasture = pastureAnimals(state);
+  const fieldWork = farmsteadFieldWork(state);
+  let byWork = propCache.get(pasture);
+  if (byWork === undefined) { byWork = new WeakMap(); propCache.set(pasture, byWork); }
+  const cached = byWork.get(fieldWork);
+  if (cached !== undefined) return cached;
+  const props = [...pasture];
+  for (const [farmsteadId, work] of fieldWork) {
     for (const [cells, kind] of [[work.ploughed, "ox_plough_team"], [work.harvested, "ox_cart_hay"]] as const) {
       if (cells === null || cells.length === 0) continue;
       const cell = cells[Math.floor(cells.length / 2)] as { readonly tx: number; readonly ty: number };
       props.push({ kind, x: cell.tx, y: cell.ty, id: `farm-prop:${farmsteadId}:${kind}` });
     }
   }
+  byWork.set(fieldWork, props);
   return props;
 }
 
