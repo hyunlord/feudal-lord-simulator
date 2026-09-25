@@ -23,7 +23,7 @@
 | ④ 아이콘 24 px 실루엣 | 57개를 24 px 사본으로 밝은 바탕·참나무 바탕·실루엣 세 줄로 깔았다. 같은 시트 안 쌍의 실루엣 겹침(IoU)이 0.85를 넘는 쌍이 셋이다. 첫 세션 건물 헛간~창고 0.913(한 화면에 같이 나오지 않는다), 자원 인구~빵 0.872, 분류 저장~방어 0.859. 셋 다 색과 안쪽 형태(목책 이빨, 세 사람)로는 갈린다. **부분 통과**로 적고 Astra 후보로 넘긴다 | `proof/icons-24px.jpg`, `proof/art-proof.json` |
 | ⑤ 글꼴 라이선스·출처 | Noto Sans KR 400·700, Noto Serif KR 600(`@fontsource` 5.3.0 고정, OFL 1.1). 라이선스 전문은 `docs/provenance/fonts/`와 빌드의 `public/licenses/fonts/`에 있다 | [`fonts/README.md`](../../provenance/fonts/README.md) |
 | ⑥ 성능 p95 ≤ 110% | 본선 대비 새 게임 95%, 24필지 정지 102%, 끌기 100%, DPR 2 97%, 인구 176 48%(본선 쪽 튀는 값). C25 Node 판은 그대로다(`tests/c25Board.test.ts` 통과, 캔버스는 시트가 없는 Node에서 옛 벡터를 그린다). 브라우저 판은 두 번 열어 6/6 같고, 본선과는 다르다. 판 위 HUD 틀과 지도 마커 그림 때문이다(UX-1과 같은 방식) | `perf/*.json.gz`, `c25-board-browser.json` |
-| ⑦ 깨끗한 클론 | 필수 조건 절 | |
+| ⑦ 깨끗한 클론 | `5584cb3`에서 typecheck·2,900/2,900·build 통과 | 필수 조건 절 |
 | ⑧ 사용자 10분 플레이 | **대기** | |
 
 성능 표(프레임 작업 ms, 3라운드 × 240프레임, 첫 라운드 버림, 1280×800, `scripts/renderStageBenchmark.mjs`):
@@ -58,8 +58,7 @@
 - **DPR 2:** 틀은 2x 원본이 1:1로 보이고, 아이콘·커서·초상은 `image-set` 1x·2x로 고른다.
 
 ## 필수 조건
-- 마지막 커밋의 전체 회귀, typecheck, build, 깨끗한 클론은 병합 커밋에서 다시 잰다(STATUS에 해시와 수를 적는다).
-- 작업 중 결과: 전체 2,900/2,900(`925827a`), typecheck 0, build 통과.
+- **깨끗한 클론 `5584cb3`**(로컬 저장소에서 새로 clone → 그 해시 checkout → `git lfs pull` → `npm ci`): typecheck 통과, 전체 회귀 **2,900/2,900**, build 통과. 이 기록 커밋은 문서만 바꾼다.
 - 글꼴이 들어가 빌드가 커졌다. `dist`는 49 MB이고, woff2·woff 분할 파일이 744개다. 브라우저는 쓴 글자의 구간만 받는다.
 
 ## 넘길 것(Astra 후보)
