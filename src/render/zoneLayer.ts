@@ -44,7 +44,11 @@ export type ZoneProp = {
 export type ZoneArableBand = { readonly zoneIndex: number; readonly stripId: string; readonly bounds: BoundaryBounds };
 
 export const VARIANT_REPEAT_RADIUS = 4;
-const TREE_NEIGHBOUR_RADIUS = 1.5;
+/**
+ * Orchard trees never repeat a variant among their planting neighbours (decision FS4, confirmed with D3a): within 1.5
+ * tiles while the family has 5 trees; once Wave 4c brings it to 9 or more, within 2 tiles.
+ */
+const treeRepeatRadius = (variants: number): number => variants >= 9 ? 2 : 1.5;
 
 export type ZoneLayer = {
   readonly zones: readonly ZoneLayerZone[];
@@ -169,8 +173,8 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
         const near = new Set<number>();
         for (let dy = -2; dy <= 0; dy += 1) for (let dx = -2; dx <= 2; dx += 1) {
           const other = treeVariants.get(`${tx + dx},${ty + dy}`);
-          const otherProp = other === undefined ? undefined : props[other >> 3];
-          if (other !== undefined && otherProp !== undefined && Math.hypot(otherProp.x - x, otherProp.y - y) < TREE_NEIGHBOUR_RADIUS) near.add(other & 7);
+          const otherProp = other === undefined ? undefined : props[other >> 4];
+          if (other !== undefined && otherProp !== undefined && Math.hypot(otherProp.x - x, otherProp.y - y) < treeRepeatRadius(family.length)) near.add(other & 15);
         }
         const first = boundaryHash(index, state.seed, 53) % family.length;
         let variant = first;
@@ -178,7 +182,7 @@ export function buildZoneLayer(state: GameState, cells: readonly (Tile | undefin
           const option = (first + tried) % family.length;
           if (!near.has(option)) { variant = option; break; }
         }
-        treeVariants.set(`${tx},${ty}`, (props.length << 3) | variant);
+        treeVariants.set(`${tx},${ty}`, (props.length << 4) | variant);
         props.push({ kind: family[variant] as ZonePropKind, x, y, flip: false, scale: 0.92 + ((hash >>> 10) % 16) / 100, id: `zone-prop:${zone.id}:${index}` });
       }
     } else if (zone.kind === "pasture") {

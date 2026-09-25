@@ -40,8 +40,11 @@ export const ROAD_STRIP_SETS = {
   },
 } as const satisfies Record<string, Record<string, RoadStripSet>>;
 
-/** Which set each road material draws. Swapping a strip is this one line (the URL query `road-strip=v1|v2|v3` overrides earth for comparisons). */
-export const ROAD_STRIP_CHOICE = { earth: "v1", stone: "v1" } as const;
+/**
+ * Which set each road material draws. Swapping a strip is this one line (the URL query `road-strip=v1|v2|v3` overrides
+ * earth for comparisons). Earth v3 since D3a (owner decision after the C1e v1 / v3 captures); v1 stays selectable.
+ */
+export const ROAD_STRIP_CHOICE = { earth: "v3", stone: "v1" } as const;
 
 export type RoadStripSet = {
   readonly images: readonly BoundaryAssetKey[];
