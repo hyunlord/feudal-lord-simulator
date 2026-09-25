@@ -8,6 +8,7 @@ export type BuildingKind =
   | "granary"
   | "chapel"
   | "wheat_farm"
+  | "farmstead"
   | "mill"
   | "logging_camp"
   | "sawmill"
@@ -36,6 +37,13 @@ export interface BuildingDefinition {
   readonly production: ProductionSpec | null;
   readonly storageCapacity: number;
   readonly serviceRadius: number;
+  /**
+   * Arable spec AF-9: the building stores this resource harvested from the arable strips it tends (its barn)
+   * and its carter hauls it like production output. It is not produced by `stepProduction`.
+   */
+  readonly fieldOutput?: ResourceType;
+  /** AF-9: load of this building's carter when it hauls out (default `BALANCE.CARTER_CAPACITY`). The farmstead's ox cart. */
+  readonly carterCapacity?: number;
 }
 
 export interface Building {
@@ -52,6 +60,17 @@ export interface Building {
   readonly reserved: Partial<Record<ResourceType, number>>;
   readonly stockReserved: Partial<Record<ResourceType, number>>;
   readonly productionProgress: number;
+}
+
+/**
+ * Arable spec AF-12: kinds that can no longer be placed (menu, reducer, autoplay). The wheat farm gave way to
+ * arable zone strips tended from a farmstead; saves convert old farms (v9→v10). The definition stays so
+ * pre-migration states and the render session's sprites keep compiling until the render cleanup.
+ */
+export const RETIRED_BUILDING_KINDS: readonly BuildingKind[] = ["wheat_farm"];
+
+export function isRetiredBuildingKind(kind: BuildingKind): boolean {
+  return RETIRED_BUILDING_KINDS.includes(kind);
 }
 
 /**
@@ -145,6 +164,21 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     },
     storageCapacity: 20,
     serviceRadius: 0,
+  },
+  farmstead: {
+    kind: "farmstead",
+    name: "헛간",
+    width: 1,
+    height: 1,
+    workersRequired: 4,
+    buildCost: { timber: 20 },
+    requiresAdjacentTerrain: null,
+    requiresRoad: true,
+    production: null,
+    storageCapacity: 1000,
+    serviceRadius: 0,
+    fieldOutput: "wheat",
+    carterCapacity: 60,
   },
   mill: {
     kind: "mill",

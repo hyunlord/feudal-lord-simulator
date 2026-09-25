@@ -59,7 +59,7 @@ export function deliverCandidate(
     const path = routes.betweenBuildings(producer.id, building.id);
     if (path === null || path.length === 0) return [];
     const amount = Math.min(
-      BALANCE.CARTER_CAPACITY,
+      BUILDING_CONFIG_BY_KIND[producer.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY,
       stock,
       storageIntakeSpace(building, resource, inventory.availableSpace(building)),
     );
@@ -80,7 +80,8 @@ export function fetchCandidate(
   if (homeSpace === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
   const candidates = buildings.flatMap((building) => {
-    if (building.kind !== storeKind) return [];
+    // AF-9: a mill may also fetch wheat straight from a farmstead's barn.
+    if (building.kind !== storeKind && BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput !== resource) return [];
     const path = routes.betweenBuildings(converter.id, building.id);
     if (path === null || path.length === 0) return [];
     const amount = Math.min(

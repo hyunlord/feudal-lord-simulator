@@ -7,7 +7,7 @@ const STAGES: readonly StageDef[] = [
   {
     id: "village",
     enterWhen: { all: [] },
-    unlocks: ["house", "well", "storehouse", "granary", "chapel", "wheat_farm", "mill", "logging_camp", "sawmill"],
+    unlocks: ["house", "well", "storehouse", "granary", "chapel", "wheat_farm", "farmstead", "mill", "logging_camp", "sawmill"],
   },
   {
     id: "market_town",

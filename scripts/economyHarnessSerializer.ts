@@ -76,6 +76,7 @@ function normalizeConstructionSite(site: ConstructionSite) {
     case "granary":
     case "chapel":
     case "wheat_farm":
+    case "farmstead":
     case "mill":
     case "logging_camp":
     case "sawmill":

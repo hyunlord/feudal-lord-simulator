@@ -22,7 +22,7 @@ export function buildCategorySelection(category: BuildCategory): PlacementTool |
 
 export function buildCategory(tool: PlacementTool): BuildCategory {
   const categories = {
-    house: "dwelling", road: "road", wheat_farm: "production", mill: "production",
+    house: "dwelling", road: "road", wheat_farm: "production", farmstead: "production", mill: "production",
     logging_camp: "production", sawmill: "production", quarry: "production", masonry: "production",
     storehouse: "storage", granary: "storage", well: "public", chapel: "public",
     church: "public", market: "public", keep: "defense",
@@ -31,7 +31,7 @@ export function buildCategory(tool: PlacementTool): BuildCategory {
 }
 
 export function buildThumbnail(tool: PlacementTool): string | null {
-  if (tool === "road") return null;
+  if (tool === "road" || tool === "farmstead") return null;
   if (tool === "house") return historicalHouseAssetMeta(0)?.url ?? null;
   const facility = getHistoricalFacilityPresentation(tool);
   if (facility !== null) return facility.url;

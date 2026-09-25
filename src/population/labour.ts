@@ -80,9 +80,15 @@ export function allocateLabour(
 export type LabourEligibility = (building: Building) => boolean;
 
 const FOOD_KINDS = ["wheat_farm", "mill", "granary"] as const;
+/** AF-7: a farmstead is the grain producer of the food chain, in the wheat farm's labour slot. */
+const GRAIN_KINDS: readonly string[] = ["wheat_farm", "farmstead"];
 
 function foodBuilding(building: Building): boolean {
-  return FOOD_KINDS.some((kind) => kind === building.kind);
+  return building.kind === "farmstead" || FOOD_KINDS.some((kind) => kind === building.kind);
+}
+
+function sameFoodSlot(building: Building, kind: (typeof FOOD_KINDS)[number]): boolean {
+  return kind === "wheat_farm" ? GRAIN_KINDS.includes(building.kind) : building.kind === kind;
 }
 
 function allocateBuildingWorkers(
@@ -92,7 +98,7 @@ function allocateBuildingWorkers(
   protectTimberChain = false,
 ): BuildingLabourResult {
   const ordered = [...buildings].sort((a, b) => a.id.localeCompare(b.id));
-  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => b.kind === kind && !operationSuspended(b) && eligible(b))?.id);
+  const coreFoodIds = FOOD_KINDS.map((kind) => ordered.find((b) => sameFoodSlot(b, kind) && !operationSuspended(b) && eligible(b))?.id);
   const coreTimberIds = ['logging_camp', 'sawmill'].map(kind => ordered.find(b => b.kind === kind && !operationSuspended(b) && eligible(b))?.id);
   const priority = (building: Building): number => {
     const coreIndex = coreFoodIds.indexOf(building.id);

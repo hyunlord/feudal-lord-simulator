@@ -2,6 +2,7 @@ import { scenarioById } from "../content/scenario/registry";
 import { STAGE_ORDER, type StageId } from "../content/scenario/types";
 import {
   BUILDING_CONFIG_BY_KIND,
+  isRetiredBuildingKind,
   type Building,
   type BuildingDefinition,
   type BuildingKind,
@@ -68,6 +69,7 @@ export function isBuildingUnlocked(
   era: Era = "hamlet",
   scenarioId?: string,
 ): boolean {
+  if (isRetiredBuildingKind(kind)) return false;
   return ERA_STAGE_INDEX[era] >= STAGE_ORDER.indexOf(buildingUnlockStage(kind, scenarioId));
 }
 

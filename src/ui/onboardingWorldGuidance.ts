@@ -46,6 +46,7 @@ const BUILDING_TARGET_LABELS = {
   granary: "여기에 곡창을 지으세요",
   chapel: "여기에 예배당을 지으세요",
   wheat_farm: "여기에 밀밭을 지으세요",
+  farmstead: "여기에 헛간을 지으세요",
   mill: "여기에 방앗간을 지으세요",
   logging_camp: "여기에 벌목소를 지으세요",
   sawmill: "여기에 제재소를 지으세요",

@@ -63,6 +63,7 @@ export const CONSTRUCTION = {
     granary: 800,
     chapel: 600,
     wheat_farm: 500,
+    farmstead: 400,
     quarry: 700,
     masonry: 600,
     market: 700,
