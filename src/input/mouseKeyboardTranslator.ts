@@ -26,6 +26,8 @@ export type ArmedTools = {
   readonly zonePolygon: boolean;
   readonly palisade: boolean;
   readonly road: boolean;
+  /** Any placement tool is armed (road or a building); the controller's B then disarms instead of cancelling a site. */
+  readonly tool?: boolean;
 };
 
 type CanvasRect = { readonly left: number; readonly top: number; readonly width: number; readonly height: number };
@@ -100,6 +102,25 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
   return {
     /** A pan gesture is in progress (keyboard and edge scrolling wait for it). */
     panning: () => gesture?.kind === "pan",
+    /** A press is held (touch and controller translators ask before starting their own gestures). */
+    pressing: () => gesture !== null,
+
+    /**
+     * Drop the press in progress without finishing it (TOUCH-1: a second finger lands). A stroke is cancelled like a
+     * right click (the road preview, a zone stroke or a palisade drag is dropped); a pan just stops. The rest of the
+     * press does nothing and its click is swallowed.
+     */
+    abortPress(pointer: Pick<PointerData, "clientX" | "clientY">): void {
+      if (gesture === null) return;
+      const ended = gesture;
+      gesture = null;
+      strokeCancelled = true;
+      suppressClick = true;
+      if (ended.kind === "stroke") context.emit({ kind: "cancel", world: worldAt(canvasPoint(pointer)) });
+    },
+
+    /** The next click is spent (a long press became `inspect`). */
+    swallowClick(): void { suppressClick = true; },
 
     pointerDown(pointer: PointerData): Outcome {
       if (pointer.button === 2 && gesture?.kind === "stroke" && gesture.tool === "road") return NONE;

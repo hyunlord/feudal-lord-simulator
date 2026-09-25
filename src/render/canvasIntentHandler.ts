@@ -106,6 +106,10 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
         refs.cameraRef.current = deps.clampCamera(refs.cameraRef.current);
         return;
       }
+      case "inspect":
+        // A long press (TOUCH-1): the hover card of what is there, as the mouse pointer resting on it shows.
+        updateCanvasHover(worldToCanvas(intent.world, refs.cameraRef.current), canvas, refs, stateRef.current, selectedToolRef.current, deps.setHoveredBuilding);
+        return "handled";
       case "strokeBegin": return strokeBegin(intent) ? "handled" : undefined;
       case "strokeMove": strokeMove(intent.world); return "handled";
       case "strokeEnd": strokeEnd(intent); return "handled";

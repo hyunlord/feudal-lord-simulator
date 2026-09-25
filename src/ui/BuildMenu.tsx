@@ -19,6 +19,8 @@ import { ZONE_BRUSH_COPY } from "../render/zoneBrushCopy.ko";
 import { ZONE_KIND_LABELS } from "../zones/zoneCopy.ko";
 import { platformServices } from "../platform/platform";
 import { INTENT_ORDER } from "../input/intentBus";
+import { lastInputDevice, subscribeInputDevice, type InputDevice } from "../input/inputDevice";
+import { INPUT_HINT_COPY } from "./inputHintCopy.ko";
 
 /** Zone cards (C1b): plots, arable, pasture, orchard and the eraser. Hay meadow and woodland come with C1c. */
 const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: string; readonly hint: string; readonly glyph: string; readonly thumbnail: string | null }[] = [
@@ -45,6 +47,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
   const options = buildMenuGroups(menuState).flatMap((group) => group.options);
+  const [inputDevice, setInputDevice] = useState<InputDevice>(() => lastInputDevice());
+  useEffect(() => subscribeInputDevice(setInputDevice), []);
   const [category, setCategory] = useState<BuildCategory>(() => {
     const initialTool = selectedTool ?? highlightedTools[0] ?? "house";
     return buildCategory(initialTool);
@@ -179,7 +183,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         </>}
       </div>
       <div className="build-menu-instruction">{zoneTool !== null ? zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraserStatus
-        : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target]) : "클릭 설치 · Esc/우클릭 취소 · 휠 확대 · O 문제 보기"}</div>
+        : ZONE_BRUSH_COPY.status(ZONE_KIND_LABELS[zoneTool.target]) : INPUT_HINT_COPY[inputDevice]}</div>
     </div>
   );
 }

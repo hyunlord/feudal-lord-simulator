@@ -5,7 +5,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { createIntentBus, INTENT_ORDER } from "../src/input/intentBus";
 import type { InputIntent } from "../src/input/inputIntent";
 import { createMouseKeyboardTranslator, type ArmedTools } from "../src/input/mouseKeyboardTranslator";
-import { createZoneTouchTranslator } from "../src/input/zoneTouchTranslator";
+import { createTouchTranslator } from "../src/input/touchTranslator";
 import { clampPan, type CameraState } from "../src/render/camera";
 import { createCanvasIntentHandler } from "../src/render/canvasIntentHandler";
 import { createCanvasMutableRefs } from "../src/render/canvasRuntimeRefs";
@@ -168,8 +168,9 @@ function runtimeFor(state: GameState, tool: PlacementTool | null, zoneTool: Zone
     const screen = tileToScreen(tx, ty);
     return { clientX: screen.sx * refs.cameraRef.current.zoom + refs.cameraRef.current.panX, clientY: screen.sy * refs.cameraRef.current.zoom + refs.cameraRef.current.panY };
   };
-  return { translator, actions, stateRef, refs, client, selection: () => selection, touch: createZoneTouchTranslator({ bounds: () => RECT, camera: () => refs.cameraRef.current,
-    armed: () => ({ zone: zoneToolRef.current !== null, zonePolygon: false, palisade: false, road: false }), emit: intent => bus.emit(intent) }) };
+  return { translator, actions, stateRef, refs, client, bus, selection: () => selection, touch: createTouchTranslator({ bounds: () => RECT, camera: () => refs.cameraRef.current,
+    armed: () => ({ zone: zoneToolRef.current !== null, zonePolygon: false, palisade: false, road: tool === "road", tool: tool !== null || zoneToolRef.current !== null }),
+    emit: intent => bus.emit(intent), mouse: translator, setTimeout: () => 1, clearTimeout: () => undefined }) };
 }
 
 test("Given the road tool When a road is dragged through the intents Then the same place_road_line action as the old drag resolver", () => {

@@ -1,8 +1,21 @@
+import { reportInputDevice } from "./inputDevice";
 import type { MouseKeyboardTranslator, Outcome } from "./mouseKeyboardTranslator";
-import type { createZoneTouchTranslator } from "./zoneTouchTranslator";
+import type { TouchTranslator } from "./touchTranslator";
 
 // The only place that listens to DOM input events (B9 gate 1): each listener hands the event's plain data to a
 // translator and applies what it asks for (preventDefault / stopImmediatePropagation). Nothing here knows the game.
+// TOUCH-1: a press on the map (mouse or touch) takes the keyboard focus back from a button or card, so the map's
+// shortcuts work at once (a clicked speed seal kept the focus and swallowed WASD / Q / E / Space before); and each
+// device reports itself as the last input device.
+
+/** Drop the focus of a control (not a text field being typed in) when the map is pressed. */
+function releaseControlFocus(): void {
+  if (typeof document === "undefined") return;
+  const active = document.activeElement;
+  if (typeof HTMLElement === "undefined" || !(active instanceof HTMLElement) || active === document.body) return;
+  if (active.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName)) return;
+  active.blur();
+}
 
 type GameCanvasEventHandlers = {
   readonly resize: () => void;
@@ -62,11 +75,11 @@ export function bindMouseKeyboard(canvas: EventSource, translator: MouseKeyboard
     canvas,
     handlers: {
       resize,
-      keyDown: event => applyOutcome(event, translator.keyDown(key(event))),
+      keyDown: event => { reportInputDevice("mouse"); applyOutcome(event, translator.keyDown(key(event))); },
       keyUp: event => applyOutcome(event, translator.keyUp(key(event))),
       blurWindow: () => translator.focusLost(),
-      startDrag: event => applyOutcome(event, translator.pointerDown(pointer(event))),
-      movePointer: event => applyOutcome(event, translator.pointerMove(pointer(event))),
+      startDrag: event => { reportInputDevice("mouse"); releaseControlFocus(); applyOutcome(event, translator.pointerDown(pointer(event))); },
+      movePointer: event => { if (event.movementX !== 0 || event.movementY !== 0) reportInputDevice("mouse"); applyOutcome(event, translator.pointerMove(pointer(event))); },
       leaveCanvas: () => translator.leave(),
       clickCanvas: event => applyOutcome(event, translator.click(pointer(event))),
       contextMenuCanvas: event => applyOutcome(event, translator.contextMenu(pointer(event))),
@@ -76,10 +89,10 @@ export function bindMouseKeyboard(canvas: EventSource, translator: MouseKeyboard
   });
 }
 
-/** Touch on the game canvas -> the zone touch translator. */
-export function bindZoneTouch(canvas: EventSource, translator: ReturnType<typeof createZoneTouchTranslator>): () => void {
+/** Touch on the game canvas -> the touch translator (all gestures; the browser makes no mouse events of its own). */
+export function bindTouch(canvas: EventSource, translator: TouchTranslator): () => void {
   const points = (list: TouchList) => Array.from({ length: list.length }, (_, index) => list[index] as Touch).map(touch => ({ clientX: touch.clientX, clientY: touch.clientY }));
-  const start = (event: TouchEvent) => applyOutcome(event, translator.start(points(event.touches)));
+  const start = (event: TouchEvent) => { releaseControlFocus(); applyOutcome(event, translator.start(points(event.touches))); };
   const move = (event: TouchEvent) => applyOutcome(event, translator.move(points(event.touches)));
   const end = (event: TouchEvent) => applyOutcome(event, translator.end(event.touches.length));
   canvas.addEventListener("touchstart", start, { passive: false });

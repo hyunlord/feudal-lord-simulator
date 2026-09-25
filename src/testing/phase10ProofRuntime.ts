@@ -8,7 +8,8 @@ import type { GameState } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
 import { worldToCanvas, type CameraState } from "../render/camera";
 import { renderDetailLevel, type RenderDetailLevel } from "../render/buildingVisualState";
-import { tileCenter } from "../render/picking";
+import { pickTile, tileCenter } from "../render/picking";
+import { lastInputDevice } from "../input/inputDevice";
 import { worldAssetStatuses, type AssetStatus } from "../render/worldAssets";
 import {
   installWorldSpriteDrawProbe,
@@ -114,6 +115,10 @@ export type Phase10ProofRuntimePort = {
     readonly sex: string; readonly occupation: string; readonly prop: string | null; readonly cloak: string | null }[];
   /** V2 evidence: drop composed looks (a fresh session). */
   readonly resetWalkerComposer: () => void;
+  /** TOUCH-1 evidence: the gamepad map cursor as a client point and the tile under it (null before the pad is used). */
+  readonly gamepadCursor: () => { readonly clientX: number; readonly clientY: number; readonly tx: number; readonly ty: number } | null;
+  /** TOUCH-1 evidence: the last input device (mouse, touch, gamepad). */
+  readonly inputDevice: () => string;
   /** V2 evidence: a composed look's 8 cells as a PNG data URL (null while its images load). */
   readonly walkerComposite: (sheetId: string, prop: string | null, cloak: "male" | "female" | null) => string | null;
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
@@ -136,6 +141,8 @@ type InstallPhase10ProofRuntimeInput = {
   readonly cameraRef: MutableRefObject<CameraState>;
   readonly stateRef: MutableRefObject<GameState>;
   readonly location: ProofLocation;
+  /** TOUCH-1: the gamepad map cursor on the world plane (null before the pad is used). */
+  readonly gamepadCursor?: () => { readonly x: number; readonly y: number } | null;
 };
 
 declare global {
@@ -188,6 +195,15 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
         occupation: look.occupation, prop, cloak };
     }),
     resetWalkerComposer: () => resetWalkerComposerForProof(),
+    gamepadCursor: () => {
+      const cursor = input.gamepadCursor?.() ?? null;
+      if (cursor === null) return null;
+      const rect = input.canvas.getBoundingClientRect();
+      const canvasPoint = worldToCanvas(cursor, input.cameraRef.current);
+      const tile = pickTile(cursor);
+      return { clientX: rect.left + canvasPoint.x, clientY: rect.top + canvasPoint.y, tx: tile?.tx ?? -1, ty: tile?.ty ?? -1 };
+    },
+    inputDevice: () => lastInputDevice(),
     walkerComposite: (sheetId, prop, cloak) => {
       const composed = composedLookForProof(sheetId as WalkerSheetId, prop as WalkerPropKind | null, cloak);
       if (composed === null) return null;
