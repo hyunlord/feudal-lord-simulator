@@ -1,0 +1,177 @@
+{
+  "url": "http://127.0.0.1:4291/",
+  "scene": "seed2-winter",
+  "clip": {
+    "x": 390,
+    "y": 200,
+    "width": 500,
+    "height": 375
+  },
+  "carters": [
+    {
+      "id": "carter:construction-site-000001:351000",
+      "tx": 44,
+      "ty": 36,
+      "x": 320,
+      "y": 304,
+      "sheet": "legacy_logger",
+      "cloak": null,
+      "prop": null,
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000002:350941",
+      "tx": 44.73999999999997,
+      "ty": 30,
+      "x": 751.3599999999979,
+      "y": 135.67999999999893,
+      "sheet": "wk_servant_f_02",
+      "cloak": "female",
+      "prop": null,
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000005:350881",
+      "tx": 46.43999999999997,
+      "ty": 36,
+      "x": 476.15999999999804,
+      "y": 382.079999999999,
+      "sheet": "legacy_farmer",
+      "cloak": null,
+      "prop": null,
+      "insideV2Clip": true
+    },
+    {
+      "id": "carter:construction-site-000010:350801",
+      "tx": 47,
+      "ty": 34.780000000000044,
+      "x": 590.0799999999972,
+      "y": 360.9600000000014,
+      "sheet": "wk_servant_m_01",
+      "cloak": "male",
+      "prop": "jug",
+      "insideV2Clip": true
+    },
+    {
+      "id": "carter:construction-site-000017:350976",
+      "tx": 44.639999999999986,
+      "ty": 32,
+      "x": 616.9599999999991,
+      "y": 196.47999999999956,
+      "sheet": "wk_labor_f_02",
+      "cloak": "female",
+      "prop": "loaf",
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000021:350840",
+      "tx": 45.599999999999966,
+      "ty": 32,
+      "x": 678.3999999999978,
+      "y": 227.1999999999989,
+      "sheet": "wk_labor_m_01",
+      "cloak": "male",
+      "prop": null,
+      "insideV2Clip": true
+    },
+    {
+      "id": "carter:construction-site-000024:350991",
+      "tx": 45,
+      "ty": 31.260000000000005,
+      "x": 687.3599999999997,
+      "y": 184.32000000000016,
+      "sheet": "wk_labor_m_01",
+      "cloak": "male",
+      "prop": null,
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000030:350904",
+      "tx": 42,
+      "ty": 29.559999999999945,
+      "x": 604.1600000000035,
+      "y": 33.919999999998254,
+      "sheet": "wk_labor_f_02",
+      "cloak": "female",
+      "prop": "loaf",
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000030:intake:350991",
+      "tx": 50.14,
+      "ty": 34,
+      "x": 840.96,
+      "y": 436.48,
+      "sheet": "wk_labor_m_02",
+      "cloak": "male",
+      "prop": null,
+      "insideV2Clip": true
+    },
+    {
+      "id": "carter:construction-site-000034:intake:350911",
+      "tx": 46.400000000000006,
+      "ty": 36,
+      "x": 473.60000000000036,
+      "y": 380.8000000000002,
+      "sheet": "wk_servant_m_02",
+      "cloak": "male",
+      "prop": null,
+      "insideV2Clip": true
+    },
+    {
+      "id": "carter:construction-site-000045:350657",
+      "tx": 51.99999999999994,
+      "ty": 26,
+      "x": 1471.9999999999964,
+      "y": 239.99999999999818,
+      "sheet": "wk_labor_f_01",
+      "cloak": "female",
+      "prop": null,
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000046:350754",
+      "tx": 51.55999999999986,
+      "ty": 33,
+      "x": 995.839999999991,
+      "y": 449.9199999999955,
+      "sheet": "wk_labor_f_01",
+      "cloak": "female",
+      "prop": null,
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:construction-site-000047:350357",
+      "tx": 44.979999999999634,
+      "ty": 36,
+      "x": 382.7199999999766,
+      "y": 335.3599999999883,
+      "sheet": "wk_labor_f_01",
+      "cloak": "female",
+      "prop": null,
+      "insideV2Clip": false
+    },
+    {
+      "id": "carter:granary-42-37-0:push:350963",
+      "tx": 47,
+      "ty": 37.18000000000002,
+      "x": 436.47999999999865,
+      "y": 437.7600000000007,
+      "sheet": "wk_labor_m_01",
+      "cloak": "male",
+      "prop": null,
+      "insideV2Clip": true
+    },
+    {
+      "id": "carter:logging-camp-50-40-0:350939",
+      "tx": 43.459999999999965,
+      "ty": 36,
+      "x": 285.4399999999978,
+      "y": 286.7199999999989,
+      "sheet": "wk_labor_f_02",
+      "cloak": "female",
+      "prop": null,
+      "insideV2Clip": false
+    }
+  ]
+}
