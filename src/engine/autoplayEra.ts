@@ -51,10 +51,13 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
         return result;
       };
       // LB-12: a wall with room for every wanted lot first; failing that, any wall the old rule accepted.
+      // The wider candidate search (64 anchor/margin attempts instead of 8) is geometry only; each wall it finds is
+      // inspected at most once, and at most eight are inspected in all.
       const roomyProposal = computeReachablePalisadeProposalForState(state, path => {
+        if (inspected.size >= 8 && !inspected.has(JSON.stringify(path))) return false;
         const result = inspect(path);
         return result !== null && result.allowed && result.roomy;
-      }, 8, markAutoplaySearchLimit);
+      }, 64, () => undefined);
       if (roomyProposal.ok) return { kind: 'proclaim_era', candidatePath: roomyProposal.path };
       const proposal = computeReachablePalisadeProposalForState(state, path => inspect(path)?.allowed === true, 8, markAutoplaySearchLimit);
       if (proposal.ok) return { kind: 'proclaim_era', candidatePath: proposal.path };
