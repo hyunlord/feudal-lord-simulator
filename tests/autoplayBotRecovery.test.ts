@@ -2,8 +2,9 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import test from "node:test";
 
+import { houseFoodRation } from "../src/content/houseFoodConfig";
 import { decideNextAction } from "../src/engine/autoplay";
-import { granaryGapHouses, marketGapAction, marketGapHouses, type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
+import { granaryGapAction, granaryGapHouses, insideWall, marketGapAction, marketGapHouses, type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
 import type { GameState } from "../src/engine/engine.types";
 import { householdServices } from "../src/engine/householdServices";
 import { advanceTick } from "../src/engine/tick";
@@ -14,6 +15,8 @@ import { loadAutoplayFixture } from "../scripts/autoplayStallProbe";
 // Natural autoplay states (C3 engine 056d8dc, efficientGrowthRun 24 lots) where seeds 2 and 3 stood still (decision LB9).
 const SEED2_STALL = "fixtures/autoplay/seed2-408000.json.gz";
 const SEED3_STALL = "fixtures/autoplay/seed3-792000.json.gz";
+// Natural BOT-1 autoplay state (ce19c57, seed 3): the advisor's first granary_gap decision, right after the palisade.
+const SEED3_GRANARY_GAP = "fixtures/autoplay/seed3-42908.json.gz";
 const POLICY = { maxHousingLots: 24 } as const;
 
 function runWithAdvisor(state: GameState, ticks: number): GameState {
@@ -22,6 +25,30 @@ function runWithAdvisor(state: GameState, ticks: number): GameState {
   for (let step = 0; step < ticks; step += 1) current = advanceTick(driver.apply(current));
   return current;
 }
+
+test("B1 seed 3: walled homes out of every granary's reach get a granary inside the wall beside them, and hold bread", () => {
+  const state = loadAutoplayFixture(SEED3_GRANARY_GAP);
+  const gap = granaryGapHouses(state);
+  assert.equal(gap.length, 3);
+  for (const home of gap) {
+    const house = state.houses.find(candidate => candidate.buildingId === home.id);
+    assert.ok(house !== undefined && house.breadStock <= houseFoodRation(house), `${home.id} is down to its last ration`);
+  }
+  const collector: BotRecoveryCollector = {};
+  const diagnostic: BotRecoveryCollector = {};
+  const first = decideNextAction(state, POLICY, diagnostic);
+  assert.equal(diagnostic.recovery?.[0]?.kind, "granary_gap", "the advisor takes the recovery (a road toward the site first)");
+  assert.equal(first.kind, "place_road");
+  assert.notEqual(granaryGapAction(state, () => ({ kind: "none" }), collector).kind, "place_building");
+  assert.equal(collector.recovery?.[0]?.note, "no_site");
+  const later = runWithAdvisor(state, 2_700);
+  const granaries = later.buildings.filter(building => building.kind === "granary");
+  const added = granaries.filter(granary => !state.buildings.some(old => old.id === granary.id));
+  assert.equal(added.length, 1);
+  assert.ok(insideWall(later, "granary", added[0]!), "the new granary stands inside the wall");
+  assert.deepEqual(granaryGapHouses(later), []);
+  for (const home of gap) assert.ok((later.houses.find(house => house.buildingId === home.id)?.breadStock ?? 0) > 0, `${home.id} holds bread`);
+});
 
 test("B2 a town whose homes are fed and served reports no granary or market gap", () => {
   const seed2 = loadAutoplayFixture(SEED2_STALL);
