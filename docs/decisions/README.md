@@ -138,6 +138,10 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | WL7 | 벽 띠 v2: 정면 20px(원본 128행, 205px/칸) + 윗면 7.5px(48행, 톱니 행을 정면 윗변에, 뒤쪽 선 0.15칸 뒤로 기울여), 세로 벽은 diag_top 평면, 석벽 90° 모서리는 Wave 4d 탑(원통만), 135°·목책은 기존 조각, 명도 잡음 없음 | 렌더 결정(D3b-2) | 2026-09-25 | [성벽 곡선 WL-6](../design/wall-faces.md) |
 | SH4 | 깊은 물 = Wave 4d deep a|b|c(절반 크기, seed 위상), D3b 색 보정 제거, 물가 띠 물 쪽 56→88행 알파 페이드, 물가 띠 6장, 갈대·돌 스프라이트(1.5–2.5칸, 반전), 앞쪽 교대 SE(y 다리는 반전) | 렌더 결정(D3b-2) | 2026-09-25 | [물가 곡선 SH-4](../design/shoreline.md) |
 | WL8 | `RENDER_WALL_STRIPS` 기본 켬(v2 띠), 명도 잡음 없음. WL6의 기본 끔을 대체 | 확정(사용자, 2026-09-25 D3b-2 3중 비교 캡처 확인) | 2026-09-25 | [성벽 곡선 WL-6](../design/wall-faces.md) · [D3b-2 보고서](../verification/d3b2-walls/REPORT.md) |
+| OB1 | 새 게임 온보딩 안내 회귀(프레임당 약 198ms) 수정: 헛간 후보를 경작지 옆 칸으로만 좁히고(구역 규칙과 같은 집합), 도로로 풀 수 없는 헛간은 도로 탐색을 멈추고, 안내 메모 키 = 틱마다 바뀌지 않는 필드 식별자 + 건물·공사 id/종류/위치 + 60틱 표본 | 결함 수정(C1f 0-B) | 2026-09-25 | [C1f 보고서](../verification/c1f-farmstead/REPORT.md) |
+| FS5 | 헛간 그림 a·b(V1 규칙) + 수확철(담당 띠 ripe) working, 창고 틀·0.75배. 띠 다섯 상태(그루터기 = harvested), 베어 낸 숲 위 밭도 이랑, 농사 소품(목초지 양·소, 헛간 띠의 쟁기 팀·건초 수레) 표시 전용 | 렌더 결정(C1f) | 2026-09-25 | [경작지 띠 FS-5](../design/field-strips.md) |
+| FS6 | 밀밭 그림 퇴역: 2×2 단계 그림·작물 층·흙 질감·혼합/목축형 농장 변형을 런타임에서 빼고 `assets-inbox/retired/`로(대장 retired). 목축형은 C5 양 시스템에서 재검토 | 렌더 결정(C1f) | 2026-09-25 | [C1f 보고서](../verification/c1f-farmstead/REPORT.md) |
+| FS7 | 마당 허들 고리 닫기: frontage 변 가운데 1칸에 문 1개, 도로로 반만 남은 변에 반 칸, 양쪽 변이 직선인 꼭짓점마다 방향별 코너(n Wave 4b, e/s/w Wave 4c, 반전 없음). 과수 9종 반경 2(FS4), 남은 변형은 4칸 안 같은 나무가 가장 먼 것 | 렌더 결정(C1f) | 2026-09-25 | [경작지 띠 FS-3·FS-4](../design/field-strips.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
 
 ## R1-fix 확정 규칙

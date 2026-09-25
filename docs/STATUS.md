@@ -39,6 +39,8 @@
 
 ## 마지막 종료 작업
 
+**C1f 헛간·밀밭 퇴역·울타리·과수·그루터기·농사 소품 + 0-B 온보딩 회귀**(Claude Code, 렌더·경계층·에셋·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠 0줄): 0-B 새 게임 onboarding 안내가 헛간 자리를 지도 전체·도로 후보마다 찾던 회귀를 고쳐 frameWork 168.6 → 2.7ms(p95 3.7). Wave 4c 18장 inbox·설치·대장 18행(받은 PNG의 C2PA 청크 제외 바이트 = 대장 SHA). 헛간 a·b + 수확철 working, 밀밭 그림 14개 파일 retired, 마당 허들 고리(문·반 칸·방향별 코너), 과수 9종(반경 2), 그루터기 띠(다섯 상태), 벌목지 위 밭 이랑, 농사 소품(양·소·쟁기 팀·건초 수레). 관문: ①②③⑤⑥⑦ 통과, ④ 3칸 0(4칸 기준은 9종으로 불가). [보고서](verification/c1f-farmstead/REPORT.md).
+
 **D3b-2 성벽 띠 v2 + 깊은 물·물가 소품**(Claude Code, 렌더·경계층·에셋·테스트·스크립트·문서만, 성벽 논리·엔진 0줄): Wave 4d 22장 inbox·설치·대장 22행. 벽 띠를 정면 20px + 윗면(흉벽·윗길) 7.5px 2층으로 다시 만들고 세로 벽은 diag_top, 석벽 90° 모서리는 Wave 4d 탑(원통만). 사용자 승인으로 `RENDER_WALL_STRIPS` 기본 켬(WL8, 명도 잡음 없음). 깊은 물 Wave 4d로 교체·D3b 색 보정 제거·물가 띠 물 쪽 페이드·물가 띠 6장·갈대·돌 스프라이트·앞쪽 교대. 관문: ①121/121·편차 0.20·곡선 지면 끔 16/16, ②3중 비교 8화면, ③물가 명도 테두리 +5~12 → −1~+5 L*, ④도시 5칸 C1e 대비 92~107%(새 게임은 본선 C1c-2의 온보딩 오버레이 198ms/프레임 회귀, C1f에서 다룸), ⑤기본값 전환. [보고서](verification/d3b2-walls/REPORT.md).
 
 **B9 입력 의도·플랫폼 계층·모바일/Deck 감사**(Claude Code, 렌더·UI·`src/platform`·`src/input`·`App.tsx`만, 엔진·구역·저장·콘텐츠·`src/state` 0줄): DOM 입력은 `src/input` 번역기만 받고 지도 조작·도구·속도·되돌리기는 `PlatformServices.input` 의도 흐름을 거친다(13.1 12종 + 기기 무관 확장 8종). `PlatformServices`(storage·preferences·window·locale·input) 웹 구현, 해상도 배율 0.75/1/1.25(설정), 컨트롤러 액션 ID 표, 새 키(Enter·Q/E·+/−·Space 탭 일시정지), "금화" → 돈. 관문: ①정적 검사 위반 62 → 0, ②호버 전용 9 → 0, ③44px 미만 186 → 0·12px 미만 선언 8 → 0, ④옛/새 빌드 입력 재생 13/13 동일·C25 SHA 동일·2811/2811, ⑤저장 경로 정적 검사·왕복, ⑥깨끗한 클론. 결정 IN1–IN3·PL1–PL2. [보고서](verification/b9-input/REPORT.md), [명세](design/input-intents.md).
