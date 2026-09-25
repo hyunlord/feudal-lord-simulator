@@ -1,0 +1,23 @@
+{
+  "description": "Money-free world state after C3 (engine 9b5a18c: households, labour v2 with field hands and granary haulers, two mill carts, save v11) for the in-repo cases, from scripts/ledgerBalanceTrace.ts . <case> <ticks> [state]. finalWorldHashWithoutMoney is canonicalStateHash of the final state without treasuryCoin, coinLedger, ledger, money and Building.upkeepUnpaid. C3 changes the world by design (field hands speed the strips, mills haul with two carts, spec LB-*), so the C1c-2 world of 5b138e0 no longer applies; this pins the C3 world. The cache must still match the ledger on every tick.",
+  "sourceCommit": "9b5a18c",
+  "previousBaseline": "world-baseline-5b138e0.json (C1c-2 world, removed; see git history)",
+  "cases": {
+    "newGame10000": {
+      "kind": "new-game",
+      "startTick": 0,
+      "endTick": 10000,
+      "ticks": 10000,
+      "stateFile": null,
+      "finalWorldHashWithoutMoney": "193a3b021128a2592da42675f190562c6d703da99e4e0c5915e7dab555b9910f"
+    },
+    "seed1City2400": {
+      "kind": "state",
+      "startTick": 679251,
+      "endTick": 681651,
+      "ticks": 2400,
+      "stateFile": "fixtures/determinism/seed1/final-state.json",
+      "finalWorldHashWithoutMoney": "d40aa36c05a1305e2eaad173ae7f5f226fd2b7117404903e7b5c4e620b6be994"
+    }
+  }
+}

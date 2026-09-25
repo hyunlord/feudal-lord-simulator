@@ -12,6 +12,7 @@ import { carryFoodTransient, type FoodTransientMetadata } from './autoplayFoodTr
 import { autoplayEraAction } from './autoplayEra';
 import { preservesAutoplayServiceSpace, serviceSafeRoadAction } from './autoplayServiceSpace';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
+import { footprintCorners, isPointInsidePalisade } from "../world/palisadeGeometry";
 import { housingLotCount } from "../population/housing";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
@@ -159,6 +160,20 @@ function roadAccessAction(state: GameState): AutoplayAction {
   return NONE;
 }
 
+/**
+ * LB-11 (C3): behind a wall, production and storage go outside it when a site exists, so the walled plots stay for
+ * houses, services and granaries. With better hauling the town grows mills and timber works earlier; inside a
+ * palisade they took the last plots (seed 3 stopped short of 24 lots).
+ */
+const OUTSIDE_WALL_KINDS: ReadonlySet<BuildingKind> = new Set(["mill", "farmstead", "sawmill", "logging_camp", "quarry", "masonry", "storehouse"]);
+
+function outsideWall(state: GameState, kind: BuildingKind, coordinate: TileCoordinate): boolean {
+  const polygon = state.palisade?.polygon;
+  if (polygon === undefined) return true;
+  const { width, height } = BUILDING_CONFIG_BY_KIND[kind];
+  return !footprintCorners({ id: "autoplay-outside-wall", ...coordinate, width, height }).every(corner => isPointInsidePalisade(corner, polygon));
+}
+
 function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate: TileCoordinate) => boolean = () => true): AutoplayAction {
   if (kind === 'market') return urbanServiceAction(state);
   const output = BUILDING_CONFIG_BY_KIND[kind].production?.output;
@@ -168,10 +183,13 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
   }
   const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
   if ((["timber", "stone"] as const).some(resource => (cost[resource] ?? 0) > placementSpendableResource(state, resource))) return NONE;
-  const site = findBuildSite(state, kind, (coordinate) => accepts(coordinate) && (
-    !BUILDING_CONFIG_BY_KIND[kind].requiresRoad ||
-    hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate))),
-  );
+  const routed = (coordinate: TileCoordinate) => !BUILDING_CONFIG_BY_KIND[kind].requiresRoad
+    || hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate));
+  if (state.palisade !== null && OUTSIDE_WALL_KINDS.has(kind)) {
+    const outside = findBuildSite(state, kind, (coordinate) => outsideWall(state, kind, coordinate) && accepts(coordinate) && routed(coordinate));
+    if (outside !== null) return preserveRoadExpansion(state, { ...outside, kind }) ?? { kind: "place_building", building: kind, tx: outside.tx, ty: outside.ty };
+  }
+  const site = findBuildSite(state, kind, (coordinate) => accepts(coordinate) && routed(coordinate));
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
   if (autoplaySearchExhausted()) return NONE;
   const roads = roadTiles(state);
