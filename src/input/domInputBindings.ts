@@ -97,7 +97,7 @@ export function bindTouch(canvas: EventSource, translator: TouchTranslator): () 
   const covered = (point: { readonly clientX: number; readonly clientY: number }) => {
     if (typeof document === "undefined" || typeof document.elementFromPoint !== "function") return false;
     const element = document.elementFromPoint(point.clientX, point.clientY);
-    return element !== null && element !== (canvas as unknown as Element);
+    return element !== null && !Object.is(element, canvas);
   };
   const start = (event: TouchEvent) => { releaseControlFocus(); applyOutcome(event, translator.start(points(event.touches))); };
   const move = (event: TouchEvent) => applyOutcome(event, translator.move(points(event.touches).map(point => ({ ...point, covered: covered(point) }))));

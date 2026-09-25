@@ -2,7 +2,7 @@ import { PALETTE } from "../content/palette";
 import { worldToCanvas, type CameraState, type Point } from "./camera";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { pickTile } from "./picking";
-import { withAlpha } from "./style";
+import { applyTextureStroke, withAlpha } from "./style";
 
 // Controller map cursor (TOUCH-1): the tile under the gamepad cursor, outlined, and the cursor point itself. Drawn
 // over the frame in canvas CSS pixels while the gamepad is the last input device.
@@ -23,15 +23,13 @@ export function drawMapCursor(context: CanvasRenderingContext2D, cursor: Point, 
       context.closePath();
       context.fillStyle = withAlpha(PALETTE.gold, 0.18);
       context.fill();
-      context.lineWidth = 2;
-      context.strokeStyle = withAlpha(PALETTE.gold, 0.95);
+      applyTextureStroke(context, PALETTE.gold, 2);
       context.stroke();
     }
     const at = worldToCanvas(cursor, camera);
     context.beginPath();
     context.arc(at.x, at.y, 5, 0, Math.PI * 2);
-    context.lineWidth = 2;
-    context.strokeStyle = withAlpha(PALETTE.ink, 0.9);
+    applyTextureStroke(context, PALETTE.ink, 2);
     context.stroke();
     context.beginPath();
     context.arc(at.x, at.y, 3, 0, Math.PI * 2);
