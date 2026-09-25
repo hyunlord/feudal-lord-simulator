@@ -16,6 +16,8 @@ export const HOUSEHOLD_LABOUR_COPY = {
   idleShortLabel: "일손 남음",
   idleLine: (count: number) => `일손 남음 ${count}`,
   idleHint: "일손이 남습니다 — 건설을 늘리거나 경작지·헛간을 넓히세요",
+  /** An understaffed building while adults could still take the job (field hands and idle, LB-4): a road problem. */
+  assignableWorkersRoad: (count: number) => `배정할 수 있는 일꾼 ${count}명 — 도로 연결 확인`,
   /** LB-5 farmstead detail row. */
   farmsteadFieldHands: (hands: number, need: number) => `들일 일손 ${hands} · 이번 철 필요 ${need}`,
   /** LB-7 granary detail row. */

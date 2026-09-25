@@ -76,8 +76,6 @@ export const LABOUR_BALANCE = {
   millPushTarget: 24,
   /** LB-7: autoplay mill cap = a year's wheat need × this ÷ a mill's year of wheat, + 1 (AF-13: max(need, harvest) × 2). */
   millHaulingFactorPermille: 1300,
-  /** LB-11: before the palisade, autoplay paints field blocks at least this many tiles outside its proposed wall. */
-  fieldWallMargin: 1,
   /** LB-9: idle adults ÷ population above this shows the idle-labour hint (the A″ threshold). */
   idleHintPermille: 250,
 } as const;

@@ -255,3 +255,4 @@ test("L10 LB-10 a v10 save migrates: members are seeded, population and resident
     assert.deepEqual(decodeSave(encodeSave({ state, ...TIMES }).bytes).envelope.state.houses, state.houses, `${file} round trip`);
   }
 });
+
