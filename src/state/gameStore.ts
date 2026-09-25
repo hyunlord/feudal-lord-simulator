@@ -37,6 +37,7 @@ import {
   openingVillageHouses,
   withOpeningVillageServices,
 } from "./openingVillage";
+import { withPreviousResidentWalkers, withResidentWalkers } from "./residentWalkerState";
 import type {
   GameAction,
   GameProviderProps,
@@ -239,8 +240,10 @@ export function GameProvider({ children }: GameProviderProps) {
     };
   }, [dispatch]);
 
+  // MOVE-1: the published state carries the presentation walkers of its tick; the simulation keeps `stateRef`.
   const value = useMemo(
-    () => ({ state, previousRenderState: previousRenderStateRef.current, interpolationAlpha, dispatch, speed, setSpeed }),
+    () => ({ state: withResidentWalkers(state), previousRenderState: withPreviousResidentWalkers(previousRenderStateRef.current, state),
+      interpolationAlpha, dispatch, speed, setSpeed }),
     [dispatch, interpolationAlpha, setSpeed, speed, state],
   );
   return createElement(GameStoreContext.Provider, { value },
