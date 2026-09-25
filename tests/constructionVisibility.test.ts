@@ -8,6 +8,9 @@ import {
 import { COMPLETION_SEQUENCE_MS, constructionCompletionEffectsForFrame, createConstructionCompletionTracker } from "../src/render/constructionCompletionEffects";
 import { setPresentationSpeed } from "../src/render/presentationSpeed";
 import { calendarArrivalLabel } from "../src/ui/calendarArrival";
+import { drawConstructionGhost, GHOST_ALPHA } from "../src/render/constructionGhost";
+import { constructionPlaqueModel } from "../src/render/constructionPlaque";
+import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 const barn = (patch: Record<string, unknown> = {}) => ({ ...createConstructionSite({ ordinal: 7, kind: "farmstead", tx: 4, ty: 4, startedTick: 0 }), ...patch });
 
@@ -64,4 +67,23 @@ test("F0-V completion sequence: 1.2 s at 1x, only the 0.4 s dust at 5x", () => {
     assert.equal(constructionCompletionEffectsForFrame(tracker, [], lasts + 11, [site.id]).length, 0);
   }
   setPresentationSpeed(1);
+});
+
+test("F0-V plaque: zoomed out, nearby sites with the same blocker show one icon with the group's count", () => {
+  const site = (ordinal: number, tx: number) => ({ ...createConstructionSite({ ordinal, kind: "well", tx, ty: 38, startedTick: 0 }), stall: "no_builders" as const });
+  const far = { ...createConstructionSite({ ordinal: 3, kind: "well", tx: 20, ty: 10, startedTick: 0 }), stall: "no_builders" as const };
+  const state = { ...DEFAULT_GAME_STATE, constructionSites: [site(1, 47), site(2, 49), far] };
+  const counts = (zoom: number) => state.constructionSites.map(item => constructionPlaqueModel(state, item, 0, zoom).blockerCount);
+  assert.deepEqual(counts(0.6), [2, 0, 1], "the first near site leads its group; the far one stands alone");
+  assert.deepEqual(counts(1), [1, 1, 1], "closer in, every blocked site shows its own icon");
+});
+
+test("F0-V ghost: the completed building shows faintly over the plot and foundation, not from the frame on", () => {
+  assert.ok(GHOST_ALPHA >= 0.2 && GHOST_ALPHA <= 0.25);
+  const drawn: number[] = [];
+  const context = { save() {}, restore() {}, globalAlpha: 1 } as unknown as CanvasRenderingContext2D;
+  const site = createConstructionSite({ ordinal: 1, kind: "farmstead", tx: 50, ty: 41, startedTick: 0 });
+  for (const progress of [0, 0.3, 0.6, 0.9]) drawn.push(drawConstructionGhost(context, DEFAULT_GAME_STATE, site, progress) ? 1 : 0);
+  assert.deepEqual(drawn, [0, 0, 0, 0], "no art in Node, so nothing is drawn at any stage");
+  assert.equal(drawConstructionGhost(context, DEFAULT_GAME_STATE, createConstructionSite({ ordinal: 2, kind: "well", tx: 1, ty: 1, startedTick: 0 }), 0), false, "the well keeps its own stages");
 });

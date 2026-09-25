@@ -43,6 +43,7 @@ export function drawObjectRenderItems(
   input: DrawObjectRenderItemsInput,
 ): void {
   const probe = renderStageProbe.current;
+  const spriteOptions = { camera: input.camera, dpr: input.dpr, viewport: input.viewport }; // the site ghost's culling
   probe?.enter("farmland");
   beginBuildingVariantFrame(input.state);
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
@@ -78,7 +79,7 @@ export function drawObjectRenderItems(
       const presentationProgress = input.constructionProgress?.get(item.id)
         ?? item.presentationProgress;
       const drawInput = presentationProgress === undefined
-        ? { site: item.site, state: input.state, schedule: item.schedule, zoom: input.zoom, viewMode, nowMs: input.nowMs ?? 0 }
+        ? { site: item.site, state: input.state, schedule: item.schedule, zoom: input.zoom, viewMode, nowMs: input.nowMs ?? 0, spriteOptions }
         : {
             site: item.site,
             state: input.state,
@@ -87,6 +88,7 @@ export function drawObjectRenderItems(
             presentationProgress,
             viewMode,
             nowMs: input.nowMs ?? 0,
+            spriteOptions,
           };
       drawConstructionSite(context, drawInput);
       continue;

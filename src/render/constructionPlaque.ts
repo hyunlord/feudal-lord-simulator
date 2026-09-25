@@ -21,7 +21,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // (`constructionSiteLabelAnchor`, UX-0 F), carries, top to bottom, the name, the four-cell stage bar (brown = the
 // delivered share in the materials phase, gold = the stage cells in the work phase), the calendar arrival or the owed
 // material, and the blocker icon beside the bar. It never moves between stages (the anchor is the completed height).
-// Zoom LOD: below 0.8 the bar (and a blocker) only; from 0.8 the lines; the name from 1.2 or when blocked.
+// Zoom LOD: below 0.8 the bar (and a blocker, one icon with a count for nearby sites of the same cause) only; from
+// 0.8 the lines; the name from 1.2 or when blocked.
 // Sizes are screen pixels (drawn in world space, divided by the zoom, clamped at 0.5 like the old label).
 
 const BLOCKER_ICON: Readonly<Record<ConstructionBlocker, UiIconCell<"cause">>> = {
@@ -37,7 +38,29 @@ export type ConstructionPlaque = {
   readonly share: number;
   readonly line: string | null;
   readonly blocker: ConstructionBlocker | null;
+  /** Zoomed out, nearby sites with the same blocker show one icon: the first in state order carries the group's size,
+   * the others 0 (no icon). Closer in, every blocked site carries 1. */
+  readonly blockerCount: number;
 };
+
+const GROUP_ZOOM = 0.8;
+const GROUP_REACH = 6 * 32; // world px between two sites' anchors (six tiles along a row)
+
+function blockerGroupCount(state: GameState, site: ConstructionSite, blocker: ConstructionBlocker | null, zoom: number): number {
+  if (blocker === null) return 0;
+  if (zoom >= GROUP_ZOOM) return 1;
+  const own = constructionSiteLabelAnchor(site);
+  let count = 0;
+  for (const other of state.constructionSites) {
+    if (isPalisadeConstructionSite(other) || isStoneWallConstructionSite(other)) continue;
+    const at = constructionSiteLabelAnchor(other);
+    if (Math.hypot(at.x - own.x, at.topY - own.topY) > GROUP_REACH) continue;
+    if (constructionBlocker(other, currentConstructionStall(state, other)) !== blocker) continue;
+    if (other.id === site.id) { if (count > 0) return 0; } // an earlier near site of the same cause leads
+    count += 1;
+  }
+  return count;
+}
 
 /** What the plaque says for a site at this tick (pure but for the arrival memory: shown arrivals only move earlier). */
 export function constructionPlaqueModel(state: GameState, site: ConstructionSite, progress: number, zoom: number): ConstructionPlaque {
@@ -53,6 +76,7 @@ export function constructionPlaqueModel(state: GameState, site: ConstructionSite
   return {
     name: zoom >= 1.2 || blocker !== null ? constructionSiteDisplayName(site) : null,
     cells: constructionBarCells(progress), phase, share: constructionMaterialShare(site), line, blocker,
+    blockerCount: blockerGroupCount(state, site, blocker, zoom),
   };
 }
 
@@ -105,8 +129,20 @@ export function drawConstructionPlaque(context: CanvasRenderingContext2D, state:
   if (plaque.name !== null) { context.fillText(plaque.name, box.x + box.width / 2, y + 11 * scale, box.width - 6 * scale); y += 15 * scale; }
   drawBar(context, plaque, box.x + 4 * scale, y + 1 * scale, box.width - 8 * scale, 5 * scale, scale, zoom);
   y += 8 * scale;
+  context.fillStyle = PALETTE.ink;
   if (plaque.line !== null) context.fillText(plaque.line, box.x + box.width / 2, y + 12 * scale, box.width - 6 * scale);
-  if (plaque.blocker !== null) drawUiIcon(context, "cause", BLOCKER_ICON[plaque.blocker], box.x - 11 * scale, box.y + box.height / 2, 20 * scale);
+  if (plaque.blocker !== null && plaque.blockerCount > 0) {
+    // A vellum tab on the plaque's left edge: the cause icon alone is lost against grass and shadow. A group's count
+    // sits inside the tab (widened), on vellum like the rest of the plaque.
+    const tab = 24 * scale, wide = plaque.blockerCount > 1 ? 16 * scale : 0;
+    const tx = box.x - tab - wide + 1 * scale, ty = box.y + (box.height - tab) / 2;
+    context.fillStyle = SEMANTIC_PALETTE.vellum;
+    context.fillRect(snapToPixel(tx), snapToPixel(ty), snapToPixel(tab + wide), snapToPixel(tab));
+    context.strokeRect(snapToPixel(tx), snapToPixel(ty), snapToPixel(tab + wide), snapToPixel(tab));
+    drawUiIcon(context, "cause", BLOCKER_ICON[plaque.blocker], tx + tab / 2, ty + tab / 2, 20 * scale);
+    context.fillStyle = PALETTE.ink;
+    if (wide > 0) context.fillText(CONSTRUCTION_PLAQUE_COPY.blockerCount(plaque.blockerCount), tx + tab + wide / 2 - 1 * scale, ty + tab / 2 + 4 * scale);
+  }
   context.restore();
 }
 

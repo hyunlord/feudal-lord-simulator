@@ -19,7 +19,7 @@ import {
 import { drawPalisadeConstructionSite } from "./drawPalisadeConstructionSites";
 import { tileToScreen } from "./iso";
 import { applyInkOutline, drawGroundingShadow, snapToPixel } from "./style";
-import { drawWorldSpriteAtWorldAnchor } from "./worldSprite";
+import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
 import type { GameState } from "../engine/engine.types";
 import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
@@ -27,6 +27,7 @@ import { constructionSiteLabelBoxes, type ConstructionLabelEntry } from "./const
 import { drawConstructionPiles, drawConstructionPlaque, drawConstructionSign, drawWellStage } from "./constructionPlaque";
 import { constructionMoment, CROSSFADE_MS, drawSiteDust } from "./constructionMoments";
 import { constructionWorkProgress } from "./constructionVisibility";
+import { drawConstructionGhost, drawConstructionSignIcon } from "./constructionGhost";
 export {
   createConstructionCompletionTracker,
   constructionCompletionEffects,
@@ -45,6 +46,8 @@ type DrawConstructionSiteInput = {
   readonly viewMode?: ObjectRenderViewMode;
   /** F0-V: wall-clock ms of the frame (stage crossfade, dust); absent in tests that draw one still frame. */
   readonly nowMs?: number;
+  /** F0-V: the frame's sprite options (camera, DPR, viewport) for the completed-building ghost. */
+  readonly spriteOptions?: WorldSpriteOptions;
 };
 
 type Point = {
@@ -128,7 +131,9 @@ export function drawConstructionSite(
   const fade = moment === null || moment.previousStage === null ? 1 : Math.min(1, moment.stageAgeMs / CROSSFADE_MS);
   if (fade < 1 && moment?.previousStage !== null && moment?.previousStage !== undefined) drawStage(SIGNATURES[moment.previousStage], null, 1 - fade);
   drawStage(signature, presentationProgress, fade);
+  if (input.state !== undefined) drawConstructionGhost(context, input.state, input.site, progress, input.spriteOptions);
   drawConstructionSign(context, input.site);
+  drawConstructionSignIcon(context, input.site);
   drawConstructionPiles(context, input.site, progress);
   if (moment !== null) drawSiteDust(context, input.site, moment);
   // F0-V: the builders are the real builder walkers at the site; the static marker (a builder sprite, else a gold

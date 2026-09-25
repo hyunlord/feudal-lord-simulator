@@ -13,8 +13,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //  - S1 empty plot: a stake on each burgage plot with no house and no house site yet ("여기 지을 수 있음").
 //  - S2 road cut: dirt footprints from a building that needs a road but touches none, toward the nearest road.
 //  - S4 cold house: residents but no bread in store, so no smoke (roofSmoke) — only its emphasis is drawn here.
-// At most MAX_EMPHASIS signs are emphasised (a slow ring), road cut first, then cold houses, then empty plots,
-// nearest the view's centre first. Everything is read from the state; nothing is stored.
+// At most MAX_EMPHASIS signs in view are emphasised (a steady ring), road cut first, then cold houses, then empty
+// plots, nearest the view's centre first. Everything is read from the state; nothing is stored.
 export type WorldSignKind = "road_cut" | "cold_house" | "empty_plot";
 export type WorldSign = Readonly<{ kind: WorldSignKind; tx: number; ty: number; toward: { readonly tx: number; readonly ty: number } | null }>;
 export const MAX_EMPHASIS = 3;
@@ -38,12 +38,19 @@ export function worldSigns(state: GameState): readonly WorldSign[] {
   const signs: WorldSign[] = [];
   for (const building of state.buildings) {
     if (!BUILDING_CONFIG_BY_KIND[building.kind].requiresRoad || buildingRoadAccessTiles(state, building).length > 0) continue;
-    signs.push({ kind: "road_cut", tx: building.tx, ty: building.ty, toward: nearestRoad(state, building.tx, building.ty) });
+    const toward = nearestRoad(state, building.tx, building.ty);
+    // The track starts from the footprint's edge tile nearest that road (a farm's anchor is under its field).
+    const size = buildingFootprint(building);
+    const edge = toward === null ? { tx: building.tx, ty: building.ty }
+      : { tx: Math.max(building.tx, Math.min(building.tx + size.width - 1, toward.tx)), ty: Math.max(building.ty, Math.min(building.ty + size.height - 1, toward.ty)) };
+    signs.push({ kind: "road_cut", tx: edge.tx, ty: edge.ty, toward });
   }
   for (const house of state.houses) {
     if (house.residents <= 0 || house.breadStock > 0) continue;
     const building = state.buildings.find(candidate => candidate.id === house.buildingId);
-    if (building !== undefined) signs.push({ kind: "cold_house", tx: building.tx, ty: building.ty, toward: null });
+    if (building === undefined) continue;
+    const size = buildingFootprint(building); // the ring goes round the footprint's middle, not its top corner
+    signs.push({ kind: "cold_house", tx: building.tx + (size.width - 1) / 2, ty: building.ty + (size.height - 1) / 2, toward: null });
   }
   for (const parcel of burgageParcels(state)) {
     if (parcel.cells.some(cell => occupied.has(cell.ty * state.width + cell.tx))) continue;
@@ -64,10 +71,12 @@ function nearestRoad(state: GameState, tx: number, ty: number): { readonly tx: n
   return best === null ? null : { tx: best.tx, ty: best.ty };
 }
 
-/** The emphasised signs: priority, then nearest to `centre` (world screen coordinates). */
-export function emphasisedSigns(signs: readonly WorldSign[], centre: { readonly x: number; readonly y: number }): readonly WorldSign[] {
+/** The emphasised signs among those within `reach` of `centre` (world screen coordinates; an off-screen sign never
+ * takes a ring from one in view): priority, then nearest first. */
+export function emphasisedSigns(signs: readonly WorldSign[], centre: { readonly x: number; readonly y: number }, reach = Infinity): readonly WorldSign[] {
   const distance = (sign: WorldSign) => { const at = tileToScreen(sign.tx, sign.ty); return Math.hypot(at.sx - centre.x, at.sy - centre.y); };
-  return [...signs].sort((a, b) => PRIORITY[a.kind] - PRIORITY[b.kind] || distance(a) - distance(b)).slice(0, MAX_EMPHASIS);
+  return signs.filter(sign => distance(sign) <= reach)
+    .sort((a, b) => PRIORITY[a.kind] - PRIORITY[b.kind] || distance(a) - distance(b)).slice(0, MAX_EMPHASIS);
 }
 
 export function drawWorldSigns(context: CanvasRenderingContext2D, state: GameState,
@@ -87,29 +96,32 @@ export function drawWorldSigns(context: CanvasRenderingContext2D, state: GameSta
     }
   }
   // The emphasis is a steady ring (a frame is a function of the state and the camera only: no wall-clock pulse).
-  for (const sign of emphasisedSigns(signs, centre)) {
+  for (const sign of emphasisedSigns(signs, centre, Math.hypot(viewport.width, viewport.height) / 2 / zoom)) {
     const at = tileToScreen(sign.tx, sign.ty);
-    applyPaletteStroke(context, sign.kind === "empty_plot" ? SEMANTIC_PALETTE.vellum : PALETTE.gold, 1.8 / Math.max(zoom, 0.5));
-    context.globalAlpha = 0.75;
-    context.beginPath();
-    context.ellipse(at.sx, at.sy + 4, 26, 13, 0, 0, Math.PI * 2);
-    context.stroke();
+    context.globalAlpha = 0.9;
+    // Ink under the colour: the ring stays readable over thatch, tile roofs, soil and grass alike.
+    for (const [colour, stroke] of [[PALETTE.ink, 4.2], [sign.kind === "empty_plot" ? SEMANTIC_PALETTE.vellum : PALETTE.gold, 2.2]] as const) {
+      applyPaletteStroke(context, colour, Math.max(zoom, 0.5) / stroke); // line width stroke / zoom (the helper takes 1 / width)
+      context.beginPath();
+      context.ellipse(at.sx, at.sy + 4, 26, 13, 0, 0, Math.PI * 2);
+      context.stroke();
+    }
     context.globalAlpha = 1;
   }
   context.restore();
 }
 
-/** Footprints in the dirt from the building toward the road (every half tile, fading with distance). */
+/** Footprints from the building's edge to the road (about every third of a tile, fading toward the road). */
 function drawDirtTrack(context: CanvasRenderingContext2D, from: { readonly sx: number; readonly sy: number }, to: { readonly sx: number; readonly sy: number }): void {
   const length = Math.hypot(to.sx - from.sx, to.sy - from.sy);
-  const steps = Math.max(2, Math.min(10, Math.floor(length / 18)));
-  context.fillStyle = SEMANTIC_PALETTE.earthDark;
-  for (let index = 1; index <= steps; index += 1) {
-    const t = index / (steps + 1);
-    const side = index % 2 === 0 ? 3 : -3;
-    context.globalAlpha = 0.55 * (1 - t * 0.6);
+  const steps = Math.max(3, Math.min(12, Math.floor(length / 10)));
+  context.fillStyle = PALETTE.ink;
+  for (let index = 0; index <= steps; index += 1) {
+    const t = index / steps;
+    const side = index % 2 === 0 ? 3.5 : -3.5;
+    context.globalAlpha = 0.7 * (1 - t * 0.5);
     context.beginPath();
-    context.ellipse(from.sx + (to.sx - from.sx) * t + side, from.sy + (to.sy - from.sy) * t + 6, 3, 1.6, 0, 0, Math.PI * 2);
+    context.ellipse(from.sx + (to.sx - from.sx) * t + side, from.sy + (to.sy - from.sy) * t + 8, 4, 2, 0, 0, Math.PI * 2);
     context.fill();
   }
   context.globalAlpha = 1;

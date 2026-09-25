@@ -35,7 +35,7 @@ test("F0-V smoke anchors: every house art the game draws has a ridge point insid
   assert.ok(anchors.every(([, anchor]) => anchor.fx > 0 && anchor.fx < 1 && anchor.fy >= 0 && anchor.fy < 0.5));
 });
 
-test("F0-V world signs: road cut, cold house and empty plot appear only under their condition; at most three are emphasised, road cut first", () => {
+test("F0-V world signs: road cut, cold house and empty plot appear only under their condition; at most three in view are emphasised, road cut first", () => {
   const base = DEFAULT_GAME_STATE;
   const signs = worldSigns(base);
   for (const sign of signs) assert.ok(["road_cut", "cold_house", "empty_plot"].includes(sign.kind));
@@ -50,6 +50,8 @@ test("F0-V world signs: road cut, cold house and empty plot appear only under th
   const emphasised = emphasisedSigns(many, { x: 0, y: 0 });
   assert.equal(emphasised.length, MAX_EMPHASIS);
   assert.deepEqual(emphasised.map(sign => sign.kind), ["road_cut", "cold_house", "empty_plot"]);
+  const inView = emphasisedSigns(many, { x: 0, y: 0 }, 400);
+  assert.ok(!inView.some(sign => sign.kind === "road_cut"), "the road cut at (20,20) is out of view and takes no ring");
 });
 
 test("F0-V sounds: the 15 P0 sounds are installed, on three buses, with at most four loops", () => {

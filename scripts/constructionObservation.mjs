@@ -3,7 +3,8 @@
 // its barn (timber 20: several carter arrivals). The camera zooms in on the watched site. A capture is taken
 // whenever the site's delivered share or stage changes, and at 0.3 / 0.7 / 1.1 s after it completes. The site
 // history (delivered, builder ticks, stall per 100 ms sample) is written next to the captures.
-//   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/constructionObservation.mjs <outDir> [--url ...] [--kind farmstead]
+//   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/constructionObservation.mjs <outDir> [--url ...] [--kind farmstead] [--speed 5]
+// With --speed 5 the site is watched at 5x (the completion keeps only its dust and sound).
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
@@ -11,6 +12,7 @@ const [outDir] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const url = flags.url ?? 'http://127.0.0.1:4241/';
 const kind = flags.kind ?? 'farmstead';
+const speedLabel = flags.speed === '5' ? '5배속' : '1배속';
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE);
 await mkdir(outDir, { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
@@ -56,7 +58,7 @@ const stageOf = site => { const p = site.requiredBuilderTicks === 0 ? 1 : site.b
 let last = null; const started = Date.now();
 await page.waitForTimeout(600);
 await shot('placed', `site placed (paused), delivered ${JSON.stringify(watched.delivered)} of ${JSON.stringify(watched.required)}`);
-await page.getByRole('button', { name: '1배속', exact: true }).click();
+await page.getByRole('button', { name: speedLabel, exact: true }).click();
 for (let t = 0; t < 900; t += 1) {
   const site = (await sites()).find(candidate => candidate.id === watched.id);
   const tick = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state().tick);
@@ -74,5 +76,5 @@ for (let t = 0; t < 900; t += 1) {
   await page.waitForTimeout(100);
 }
 await browser.close();
-await writeFile(join(outDir, 'observation.json'), JSON.stringify({ url, kind, site: watched, shots, rows }, null, 1) + '\n');
+await writeFile(join(outDir, 'observation.json'), JSON.stringify({ url, kind, speed: speedLabel, site: watched, shots, rows }, null, 1) + '\n');
 console.log(JSON.stringify({ shots: shots.map(s => s.file), samples: rows.length }));
