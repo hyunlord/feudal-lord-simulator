@@ -1,0 +1,143 @@
+{
+ "description": "FIX-1 guardrail at 15ae3bb: scripts/efficientGrowthRun.ts 24 1200000 <out> <seed> --checkpoint, pinned worktree, five seeds in parallel. Compared with seeds/baseline-c96e6ed.json.",
+ "commit": "15ae3bb",
+ "baseline": "seeds/baseline-c96e6ed.json",
+ "seeds": {
+  "1": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 141655,
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "3ef4c15c51d247cc06c4edcc2e4b65fd45580b0d8d01161f1665805d42bb0fea",
+   "sameFinalStateAsBaseline": true,
+   "elapsedSeconds": 346
+  },
+  "2": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 220940,
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "718a6ad5ac7211ff24ccfc7c165c7e5a1dd37e3fc9b1ff37b1ee0288f9254f12",
+   "sameFinalStateAsBaseline": true,
+   "elapsedSeconds": 320
+  },
+  "3": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 129027,
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "d4d4705b09603db1b0d3217f6626585d3c2cabf1c04a52a64230325795c70283",
+   "sameFinalStateAsBaseline": true,
+   "elapsedSeconds": 742
+  },
+  "4": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 184460,
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "7b1a329ea790195557f04b471e558e79547eb8936b308f8ca3354812d1a6b77a",
+   "sameFinalStateAsBaseline": true,
+   "elapsedSeconds": 288
+  },
+  "5": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 301657,
+   "stopReason": "target-scale-stable",
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "7732acd4d7b6dfdf61ebf593f3c9b65aac8c75a1a7704032900bcf927e0d1fdb",
+   "sameFinalStateAsBaseline": true,
+   "elapsedSeconds": 450
+  }
+ },
+ "note": "All five final states equal the baseline. PT-1: the advisor never placed a road-required building without road access, so no action changed. PT-2: the tick-0 water flag is the value the first tick sets anyway (seed 1's opening keeps DEFAULT_GAME_STATE); nothing reads it earlier, so no trajectory changed. PT-3 is a status-line judgment outside the tick."
+}
