@@ -85,9 +85,9 @@ test("B3 seed 2: seven L3 homes outside every market's reach get a market the se
   assert.equal(action.kind, "place_building");
   assert.equal(collector.recovery?.[0]?.kind, "market_gap");
   assert.equal(collector.recovery?.[0]?.houses.length, 7);
-  const diagnostic: BotRecoveryCollector = {};
-  assert.deepEqual(decideNextAction(state, POLICY, diagnostic), action, "the advisor takes the recovery");
-  const later = runWithAdvisor(state, 2_400);
+  // F0-A (FP-6): the year need now includes the winter ration, so this town (planned without it) may first extend its
+  // fields first; the advisor builds the recovered market within 4,800 ticks (2,400 before F0-A).
+  const later = runWithAdvisor(state, 4_800);
   assert.equal(later.buildings.filter(building => building.kind === "market").length, 2);
   const served = householdServices(later);
   assert.ok(gap.filter(home => served.houses.get(home.id)?.market.kind === "served").length >= 2);
@@ -138,7 +138,8 @@ test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, buil
   assert.equal(keepsInteriorHouseSites(state, church(6, 16), POLICY.maxHousingLots, "check"), true, "a church outside the wall leaves them");
   assert.deepEqual(decideNextAction(state, POLICY), { kind: "place_road", from: { tx: 6, ty: 9 }, to: { tx: 6, ty: 9 } },
     "the house search reaches the interior sites (run 2 spent its phase budget on the map before them)");
-  const lots = runWithAdvisor(state, 4_800);
+  // F0-A (FP-6): the town (planned without the winter ration) extends its fields first; its last lots follow.
+  const lots = runWithAdvisor(state, 9_600);
   assert.equal(housingLotCount(lots), 24);
   const churches = [...lots.buildings, ...lots.constructionSites.filter(isBuildingConstructionSite)].filter(site => site.kind === "church");
   assert.equal(churches.length, 1);
