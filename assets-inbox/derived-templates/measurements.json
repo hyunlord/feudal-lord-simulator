@@ -1,0 +1,1464 @@
+{
+  "generatedBy": "scripts/deriveActorTemplates.ts",
+  "definitions": {
+    "grid": "296x148, 74x74 cells, columns NE SE SW NW, rows gait frame 0 / 1; coordinates are cell-local pixels",
+    "opaque": "alpha >= 128",
+    "foot": "x = midpoint of the opaque span in the lowest opaque row, y = that row",
+    "headTopY": "first opaque row",
+    "headCentreX": "alpha-weighted centre x of the top 20% of the figure rows",
+    "figureHeight": "foot.y - headTopY + 1",
+    "gates": {
+      "footPx": 1,
+      "childHeightRatio": [
+        0.65,
+        0.72
+      ],
+      "elderHeightRatio": [
+        0.92,
+        0.97
+      ]
+    }
+  },
+  "parameters": {
+    "child": {
+      "scale": 0.65,
+      "headFraction": 0.3,
+      "headScale": 1.25,
+      "headRampFraction": 0.4
+    },
+    "elder": {
+      "verticalScale": 0.95,
+      "hipFraction": 0.5,
+      "leanDegrees": 8,
+      "upperBodyDropPx": 1,
+      "facing": {
+        "NE": 1,
+        "SE": 1,
+        "SW": -1,
+        "NW": -1
+      }
+    }
+  },
+  "sheets": {
+    "actor_child_template_m": {
+      "file": "assets-inbox/derived-templates/actor_child_template_m-v1.png",
+      "sha256": "650c7b66d5284ed76f416f6195aecfc515f7a138b3f549d2c0b9282109363cc8",
+      "source": "docs/asset-evidence/runtime-sources/runtime-actors-v1/actor_civilian_man-v1.png",
+      "cells": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 41.5,
+              "y": 66
+            },
+            "headTopY": 3,
+            "headCentreX": 46.21,
+            "figureHeight": 64
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 41,
+              "y": 66
+            },
+            "headTopY": 23,
+            "headCentreX": 44.99,
+            "figureHeight": 44
+          },
+          "footDelta": {
+            "x": -0.5,
+            "y": 0
+          },
+          "heightRatio": 0.688,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 45.5,
+              "y": 67
+            },
+            "headTopY": 3,
+            "headCentreX": 35.95,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 45.5,
+              "y": 67
+            },
+            "headTopY": 24,
+            "headCentreX": 39.45,
+            "figureHeight": 44
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.677,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 29,
+              "y": 67
+            },
+            "headTopY": 3,
+            "headCentreX": 35.9,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 29,
+              "y": 67
+            },
+            "headTopY": 23,
+            "headCentreX": 33.09,
+            "figureHeight": 45
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.692,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 32,
+              "y": 67
+            },
+            "headTopY": 3,
+            "headCentreX": 26.5,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 32,
+              "y": 67
+            },
+            "headTopY": 23,
+            "headCentreX": 27.74,
+            "figureHeight": 45
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.692,
+          "pass": true
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 40,
+              "y": 66
+            },
+            "headTopY": 2,
+            "headCentreX": 46.7,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 40,
+              "y": 66
+            },
+            "headTopY": 22,
+            "headCentreX": 45.4,
+            "figureHeight": 45
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.692,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 46,
+              "y": 66
+            },
+            "headTopY": 2,
+            "headCentreX": 37.41,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 46,
+              "y": 66
+            },
+            "headTopY": 23,
+            "headCentreX": 40.65,
+            "figureHeight": 44
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.677,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28.5,
+              "y": 66
+            },
+            "headTopY": 3,
+            "headCentreX": 35.22,
+            "figureHeight": 64
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28.5,
+              "y": 66
+            },
+            "headTopY": 23,
+            "headCentreX": 32.64,
+            "figureHeight": 44
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.688,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 32,
+              "y": 66
+            },
+            "headTopY": 3,
+            "headCentreX": 26.93,
+            "figureHeight": 64
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 32,
+              "y": 66
+            },
+            "headTopY": 23,
+            "headCentreX": 28.19,
+            "figureHeight": 44
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.688,
+          "pass": true
+        }
+      ]
+    },
+    "actor_elder_template_m": {
+      "file": "assets-inbox/derived-templates/actor_elder_template_m-v1.png",
+      "sha256": "7221d225988a2c5feca5fa19fcc2940182029d418849f6623e98cfdface59a2d",
+      "source": "docs/asset-evidence/runtime-sources/runtime-actors-v1/actor_civilian_man-v1.png",
+      "cells": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 41.5,
+              "y": 66
+            },
+            "headTopY": 3,
+            "headCentreX": 46.21,
+            "figureHeight": 64
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 41.5,
+              "y": 66
+            },
+            "headTopY": 7,
+            "headCentreX": 49.69,
+            "figureHeight": 60
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.938,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 45.5,
+              "y": 67
+            },
+            "headTopY": 3,
+            "headCentreX": 35.95,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 45.5,
+              "y": 67
+            },
+            "headTopY": 8,
+            "headCentreX": 39.2,
+            "figureHeight": 60
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.923,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 29,
+              "y": 67
+            },
+            "headTopY": 3,
+            "headCentreX": 35.9,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 29,
+              "y": 67
+            },
+            "headTopY": 7,
+            "headCentreX": 32.47,
+            "figureHeight": 61
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.938,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 32,
+              "y": 67
+            },
+            "headTopY": 3,
+            "headCentreX": 26.5,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 32,
+              "y": 67
+            },
+            "headTopY": 7,
+            "headCentreX": 22.97,
+            "figureHeight": 61
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.938,
+          "pass": true
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 40,
+              "y": 66
+            },
+            "headTopY": 2,
+            "headCentreX": 46.7,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 40,
+              "y": 66
+            },
+            "headTopY": 7,
+            "headCentreX": 49.87,
+            "figureHeight": 60
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.923,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 46,
+              "y": 66
+            },
+            "headTopY": 2,
+            "headCentreX": 37.41,
+            "figureHeight": 65
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 46,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 40.92,
+            "figureHeight": 61
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.938,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28.5,
+              "y": 66
+            },
+            "headTopY": 3,
+            "headCentreX": 35.22,
+            "figureHeight": 64
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28.5,
+              "y": 66
+            },
+            "headTopY": 7,
+            "headCentreX": 31.85,
+            "figureHeight": 60
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.938,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 32,
+              "y": 66
+            },
+            "headTopY": 3,
+            "headCentreX": 26.93,
+            "figureHeight": 64
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 32,
+              "y": 66
+            },
+            "headTopY": 7,
+            "headCentreX": 23.47,
+            "figureHeight": 60
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.938,
+          "pass": true
+        }
+      ]
+    },
+    "actor_child_template_f": {
+      "file": "assets-inbox/derived-templates/actor_child_template_f-v1.png",
+      "sha256": "7261328d417fa7b614575190cac8ad11241aeeb65a216e9c16ef3f97a6deec81",
+      "source": "docs/asset-evidence/runtime-sources/runtime-actors-v1/actor_civilian_woman-v1.png",
+      "cells": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 34.5,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 40.61,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 34.5,
+              "y": 66
+            },
+            "headTopY": 25,
+            "headCentreX": 38.99,
+            "figureHeight": 42
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.689,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 43.5,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 34.97,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 44,
+              "y": 66
+            },
+            "headTopY": 25,
+            "headCentreX": 38.22,
+            "figureHeight": 42
+          },
+          "footDelta": {
+            "x": 0.5,
+            "y": 0
+          },
+          "heightRatio": 0.689,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 30.5,
+              "y": 66
+            },
+            "headTopY": 7,
+            "headCentreX": 39.02,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 31,
+              "y": 66
+            },
+            "headTopY": 26,
+            "headCentreX": 35.96,
+            "figureHeight": 41
+          },
+          "footDelta": {
+            "x": 0.5,
+            "y": 0
+          },
+          "heightRatio": 0.683,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 37.5,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 31.63,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 38,
+              "y": 66
+            },
+            "headTopY": 25,
+            "headCentreX": 33.25,
+            "figureHeight": 42
+          },
+          "footDelta": {
+            "x": 0.5,
+            "y": 0
+          },
+          "heightRatio": 0.689,
+          "pass": true
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 33.5,
+              "y": 64
+            },
+            "headTopY": 5,
+            "headCentreX": 41.02,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 34,
+              "y": 64
+            },
+            "headTopY": 24,
+            "headCentreX": 38.98,
+            "figureHeight": 41
+          },
+          "footDelta": {
+            "x": 0.5,
+            "y": 0
+          },
+          "heightRatio": 0.683,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 44.5,
+              "y": 63
+            },
+            "headTopY": 3,
+            "headCentreX": 35.77,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 45,
+              "y": 63
+            },
+            "headTopY": 22,
+            "headCentreX": 39.18,
+            "figureHeight": 42
+          },
+          "footDelta": {
+            "x": 0.5,
+            "y": 0
+          },
+          "heightRatio": 0.689,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28,
+              "y": 63
+            },
+            "headTopY": 4,
+            "headCentreX": 36.35,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 27.5,
+              "y": 63
+            },
+            "headTopY": 22,
+            "headCentreX": 33.22,
+            "figureHeight": 42
+          },
+          "footDelta": {
+            "x": -0.5,
+            "y": 0
+          },
+          "heightRatio": 0.7,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 39.5,
+              "y": 64
+            },
+            "headTopY": 5,
+            "headCentreX": 31.87,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 40,
+              "y": 64
+            },
+            "headTopY": 24,
+            "headCentreX": 34.19,
+            "figureHeight": 41
+          },
+          "footDelta": {
+            "x": 0.5,
+            "y": 0
+          },
+          "heightRatio": 0.683,
+          "pass": true
+        }
+      ]
+    },
+    "actor_elder_template_f": {
+      "file": "assets-inbox/derived-templates/actor_elder_template_f-v1.png",
+      "sha256": "6a38760f141748164e992eec208c015ecd2dd5b91bd0c972504c109a5af9e3b9",
+      "source": "docs/asset-evidence/runtime-sources/runtime-actors-v1/actor_civilian_woman-v1.png",
+      "cells": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 34.5,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 40.61,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 34.5,
+              "y": 66
+            },
+            "headTopY": 10,
+            "headCentreX": 43.93,
+            "figureHeight": 57
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.934,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 43.5,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 34.97,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 43.5,
+              "y": 66
+            },
+            "headTopY": 10,
+            "headCentreX": 38.2,
+            "figureHeight": 57
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.934,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 30.5,
+              "y": 66
+            },
+            "headTopY": 7,
+            "headCentreX": 39.02,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 30.5,
+              "y": 66
+            },
+            "headTopY": 11,
+            "headCentreX": 35.88,
+            "figureHeight": 56
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.933,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 37.5,
+              "y": 66
+            },
+            "headTopY": 6,
+            "headCentreX": 31.63,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "foot": {
+              "x": 37.5,
+              "y": 66
+            },
+            "headTopY": 10,
+            "headCentreX": 28.33,
+            "figureHeight": 57
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.934,
+          "pass": true
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 33.5,
+              "y": 64
+            },
+            "headTopY": 5,
+            "headCentreX": 41.02,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "NE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 33.5,
+              "y": 64
+            },
+            "headTopY": 9,
+            "headCentreX": 44.31,
+            "figureHeight": 56
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.933,
+          "pass": true
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 44.5,
+              "y": 63
+            },
+            "headTopY": 3,
+            "headCentreX": 35.77,
+            "figureHeight": 61
+          },
+          "derived": {
+            "direction": "SE",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 44.5,
+              "y": 63
+            },
+            "headTopY": 7,
+            "headCentreX": 38.99,
+            "figureHeight": 57
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.934,
+          "pass": true
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28,
+              "y": 63
+            },
+            "headTopY": 4,
+            "headCentreX": 36.35,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "SW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 28,
+              "y": 63
+            },
+            "headTopY": 8,
+            "headCentreX": 33.25,
+            "figureHeight": 56
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.933,
+          "pass": true
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "adult": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 39.5,
+              "y": 64
+            },
+            "headTopY": 5,
+            "headCentreX": 31.87,
+            "figureHeight": 60
+          },
+          "derived": {
+            "direction": "NW",
+            "gaitFrame": 1,
+            "foot": {
+              "x": 39.5,
+              "y": 64
+            },
+            "headTopY": 9,
+            "headCentreX": 28.58,
+            "figureHeight": 56
+          },
+          "footDelta": {
+            "x": 0,
+            "y": 0
+          },
+          "heightRatio": 0.933,
+          "pass": true
+        }
+      ]
+    }
+  },
+  "manifestCheck": {
+    "legacy_civilian_man": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 43.72,
+          "y": 67.24
+        },
+        "manifestFigureHeight": 64.57,
+        "measuredFoot": {
+          "x": 41.5,
+          "y": 66
+        },
+        "measuredFigureHeight": 64,
+        "footYDelta": -0.24,
+        "footXDelta": -1.72
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 39.63,
+          "y": 68.24
+        },
+        "manifestFigureHeight": 65.07,
+        "measuredFoot": {
+          "x": 45.5,
+          "y": 67
+        },
+        "measuredFigureHeight": 65,
+        "footYDelta": -0.24,
+        "footXDelta": 6.37
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 34.71,
+          "y": 67.74
+        },
+        "manifestFigureHeight": 64.74,
+        "measuredFoot": {
+          "x": 29,
+          "y": 67
+        },
+        "measuredFigureHeight": 65,
+        "footYDelta": 0.26,
+        "footXDelta": -5.21
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 30.2,
+          "y": 67.74
+        },
+        "manifestFigureHeight": 65.07,
+        "measuredFoot": {
+          "x": 32,
+          "y": 67
+        },
+        "measuredFigureHeight": 65,
+        "footYDelta": 0.26,
+        "footXDelta": 2.3
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 42.88,
+          "y": 67.16
+        },
+        "manifestFigureHeight": 65.07,
+        "measuredFoot": {
+          "x": 40,
+          "y": 66
+        },
+        "measuredFigureHeight": 65,
+        "footYDelta": -0.16,
+        "footXDelta": -2.38
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 40.71,
+          "y": 67.66
+        },
+        "manifestFigureHeight": 65.74,
+        "measuredFoot": {
+          "x": 46,
+          "y": 66
+        },
+        "measuredFigureHeight": 65,
+        "footYDelta": -0.66,
+        "footXDelta": 5.79
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 30.87,
+          "y": 67.33
+        },
+        "manifestFigureHeight": 64.74,
+        "measuredFoot": {
+          "x": 28.5,
+          "y": 66
+        },
+        "measuredFigureHeight": 64,
+        "footYDelta": -0.33,
+        "footXDelta": -1.87
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 29.87,
+          "y": 66.99
+        },
+        "manifestFigureHeight": 64.57,
+        "measuredFoot": {
+          "x": 32,
+          "y": 66
+        },
+        "measuredFigureHeight": 64,
+        "footYDelta": 0.01,
+        "footXDelta": 2.63
+      }
+    ],
+    "legacy_civilian_woman": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 38.54,
+          "y": 66.91
+        },
+        "manifestFigureHeight": 61.4,
+        "measuredFoot": {
+          "x": 34.5,
+          "y": 66
+        },
+        "measuredFigureHeight": 61,
+        "footYDelta": 0.09,
+        "footXDelta": -3.54
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 36.71,
+          "y": 67.41
+        },
+        "manifestFigureHeight": 61.74,
+        "measuredFoot": {
+          "x": 43.5,
+          "y": 66
+        },
+        "measuredFigureHeight": 61,
+        "footYDelta": -0.41,
+        "footXDelta": 7.29
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 38.79,
+          "y": 67.41
+        },
+        "manifestFigureHeight": 60.74,
+        "measuredFoot": {
+          "x": 30.5,
+          "y": 66
+        },
+        "measuredFigureHeight": 60,
+        "footYDelta": -0.41,
+        "footXDelta": -7.79
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "manifestFoot": {
+          "x": 35.29,
+          "y": 66.74
+        },
+        "manifestFigureHeight": 61.07,
+        "measuredFoot": {
+          "x": 37.5,
+          "y": 66
+        },
+        "measuredFigureHeight": 61,
+        "footYDelta": 0.26,
+        "footXDelta": 2.71
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 39.21,
+          "y": 65.49
+        },
+        "manifestFigureHeight": 60.74,
+        "measuredFoot": {
+          "x": 33.5,
+          "y": 64
+        },
+        "measuredFigureHeight": 60,
+        "footYDelta": -0.49,
+        "footXDelta": -5.21
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 39.79,
+          "y": 64.32
+        },
+        "manifestFigureHeight": 61.24,
+        "measuredFoot": {
+          "x": 44.5,
+          "y": 63
+        },
+        "measuredFigureHeight": 61,
+        "footYDelta": -0.32,
+        "footXDelta": 5.21
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 34.29,
+          "y": 63.99
+        },
+        "manifestFigureHeight": 60.74,
+        "measuredFoot": {
+          "x": 28,
+          "y": 63
+        },
+        "measuredFigureHeight": 60,
+        "footYDelta": 0.01,
+        "footXDelta": -5.79
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "manifestFoot": {
+          "x": 34.71,
+          "y": 65.49
+        },
+        "manifestFigureHeight": 60.74,
+        "measuredFoot": {
+          "x": 39.5,
+          "y": 64
+        },
+        "measuredFigureHeight": 60,
+        "footYDelta": -0.49,
+        "footXDelta": 5.29
+      }
+    ]
+  },
+  "facingCheck": {
+    "actor_civilian_man": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": null
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": 22.5
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": -20.6
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": null
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": null
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": 21.8
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": -20.1
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": null
+      }
+    ],
+    "actor_civilian_woman": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": 2.1
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": -0.4
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": -0.1
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": 1.6
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": 3.1
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-right",
+        "skinCentreMinusHeadCentreNativePx": -0.8
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": -0.2
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "assumedFacing": "screen-left",
+        "skinCentreMinusHeadCentreNativePx": 1.6
+      }
+    ]
+  },
+  "gate": {
+    "pass": true,
+    "failures": []
+  }
+}
