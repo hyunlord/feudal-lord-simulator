@@ -1,4 +1,5 @@
-// Runtime images for RENDER_BOUNDARY_V2 (Astra D1/D1b, installed by D1a; Wave 4 earth strip v2 by D1a-2; provenance
+// Runtime images for RENDER_BOUNDARY_V2 (Astra D1/D1b, installed by D1a; Wave 4 earth strip v2 by D1a-2; Wave 4b earth
+// strip v3 by C1e; provenance
 // rows in docs/provenance/assets.csv). Strips are top-down 512x64 textures repeated along a road ribbon; decals are
 // 2:1 isometric, 128 source px per tile.
 export const BOUNDARY_ASSETS = [
@@ -6,6 +7,10 @@ export const BOUNDARY_ASSETS = [
   { "key": "stone_strip", "url": "assets/road/stone_strip-v1.png", "width": 512, "height": 64 },
   { "key": "earth_strip_a_v2", "url": "assets/road/earth_strip_a-v2.png", "width": 512, "height": 64 },
   { "key": "earth_strip_b_v2", "url": "assets/road/earth_strip_b-v2.png", "width": 512, "height": 64 },
+  { "key": "earth_strip_a_v3", "url": "assets/road/earth_strip_a-v3.png", "width": 512, "height": 64 },
+  { "key": "earth_strip_b_v3", "url": "assets/road/earth_strip_b-v3.png", "width": 512, "height": 64 },
+  { "key": "earth_strip_c_v3", "url": "assets/road/earth_strip_c-v3.png", "width": 512, "height": 64 },
+  { "key": "earth_strip_d_v3", "url": "assets/road/earth_strip_d-v3.png", "width": 512, "height": 64 },
   { "key": "forest_fringe_a", "url": "assets/boundary/forest_fringe_a-v1.png", "width": 128, "height": 96 },
   { "key": "forest_fringe_b", "url": "assets/boundary/forest_fringe_b-v1.png", "width": 128, "height": 96 },
   { "key": "forest_fringe_c", "url": "assets/boundary/forest_fringe_c-v1.png", "width": 128, "height": 96 },
@@ -18,7 +23,7 @@ export type BoundaryAssetKey = (typeof BOUNDARY_ASSETS)[number]["key"];
 /**
  * Road strip sets (D1a-2 C07). `images` alternate span by span along a ribbon (a, b, a, b; the joins are crossfaded).
  * `artRows` are the strip rows that span the ribbon width, chosen so every set has the same visible (50% alpha)
- * width: v1 is opaque in rows 13..50 of 8..56, v2 in rows 6..57 of 0..64. `rutContrast` (0..1) scales how strongly
+ * width: v1 is opaque in rows 13..50 of 8..56, v2 and v3 (same alpha profile) in rows 6..57 of 0..64. `rutContrast` (0..1) scales how strongly
  * the wheel ruts read against the crown: v1 draws them harder than the road width, so the renderer blends them
  * toward a vertically blurred copy; v2 was painted quiet and takes 1.
  */
@@ -26,13 +31,16 @@ export const ROAD_STRIP_SETS = {
   earth: {
     v1: { "images": ["earth_strip"], "artRows": [8, 56], "rutContrast": 0.45 },
     v2: { "images": ["earth_strip_a_v2", "earth_strip_b_v2"], "artRows": [0, 64], "rutContrast": 1 },
+    // v3 (Wave 4b): v1's brushwork with v2's broken shoulders and quiet ruts; four spans a, b, c, d, so no span repeats
+    // within 12 tiles along a ribbon.
+    v3: { "images": ["earth_strip_a_v3", "earth_strip_b_v3", "earth_strip_c_v3", "earth_strip_d_v3"], "artRows": [0, 64], "rutContrast": 1 },
   },
   stone: {
     v1: { "images": ["stone_strip"], "artRows": [8, 56], "rutContrast": 0.7 },
   },
 } as const satisfies Record<string, Record<string, RoadStripSet>>;
 
-/** Which set each road material draws. Swapping a strip is this one line (the URL query `road-strip=v1|v2` overrides earth for comparisons). */
+/** Which set each road material draws. Swapping a strip is this one line (the URL query `road-strip=v1|v2|v3` overrides earth for comparisons). */
 export const ROAD_STRIP_CHOICE = { earth: "v1", stone: "v1" } as const;
 
 export type RoadStripSet = {

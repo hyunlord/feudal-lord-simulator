@@ -7,6 +7,9 @@ import { drawRoadRibbons } from "./drawRoadRibbons";
 import { drawZoneFills, drawZoneLines } from "./drawZones";
 import { clipOutYards, drawAprons, drawYards } from "./drawBuildingGrounds";
 import { preloadZoneAssets, zoneAssetReadiness } from "./zoneAssets";
+import { arableStripStateLookup, drawArableFields, stripStateKey } from "./drawArableFields";
+import { drawCroftBeds } from "./drawYardProps";
+import { ZONE_VARIANTS } from "./zoneAssetManifest";
 import { drawGroundDecalDetail } from "./drawTerrainDetails";
 import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { drawHistoricalWater } from "./drawWater";
@@ -27,6 +30,8 @@ import { getSprite } from "./worldAssets";
 // harvests and art loading, which the chunk key deliberately leaves out (they cost ~1 ms on the B11 baseline).
 // C1d: yards and aprons replace the live building frontage pads and paths, and a building's contact shadow moved to
 // the object pass (drawn just before the building, directly under its body), so demolishing it removes it at once.
+// C1e: arable zones draw soil + ridge strips + furrow stamps right after the zone fills; croft beds sit on the house
+// yards; hurdles are object-pass props.
 
 export type TerrainV2Input = {
   readonly state: GameState;
@@ -81,7 +86,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   void preloadBoundaryAssets();
   void preloadFarmAssets();
   const scene = groundBoundaryScene(input.state);
-  if (scene.zones.zones.length > 0) void preloadZoneAssets();
+  if (scene.zones.zones.length > 0 || scene.yardProps.beds.length + scene.yardProps.hurdles.length > 0) void preloadZoneAssets();
   const cache = groundChunkCacheFor(context);
   cache.beginFrame(groundSceneFrameStart());
   const transform = typeof context.getTransform === "function" ? context.getTransform() : null;
@@ -93,7 +98,11 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   // Zone art readiness only in chunks that draw zones (a zone-free chunk keeps its D1a key), and never in the road
   // chunks, which draw no zone art (C1d: the first painted zone no longer re-rasters every other chunk).
   const zoneReadiness = scene.zones.zones.length > 0 ? `:z${zoneAssetReadiness()}` : "";
-  const groundReadiness = (plan: GroundChunkPlan): string => plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness;
+  // Croft bed art only in chunks with beds; crop states only in chunks with arable strips (read this frame).
+  const bedReadiness = scene.yardProps.beds.length > 0 ? `:b${zoneAssetReadiness(ZONE_VARIANTS.croftBed)}` : "";
+  const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
+  const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
+    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
   const visible = visibleChunks(scene, input.range);
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
     id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
@@ -154,8 +163,10 @@ function drawGroundChunk(
       { x: bounds.right + 4, y: bounds.bottom + 4 }, { x: bounds.left - 4, y: bounds.bottom + 4 }]);
     drawZoneFills(context, scene.zones, plan.zoneIndexes);
     context.restore();
+    if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state));
   }
   drawYards(context, scene.grounds, plan.yards, input.state.seed);
+  if (plan.beds.length > 0) drawCroftBeds(context, scene.yardProps, plan.beds);
   drawFieldClusters(context, scene.fields, plan.fieldClusters);
   if (plan.zoneIndexes.length + plan.zoneChains.length > 0) drawZoneLines(context, scene.zones, plan.zoneChains, bounds, zoom);
   drawAprons(context, scene.grounds, plan.aprons, scene.ribbons.width);

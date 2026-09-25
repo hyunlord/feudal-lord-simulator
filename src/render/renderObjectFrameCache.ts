@@ -11,6 +11,7 @@ import {
 import type { TileRange } from "./renderVisibility";
 import { tileIsVisibleInRange } from "./renderVisibility";
 import { walkerVisualAnchor } from "./walkerAnchor";
+import type { ZoneLayer } from "./zoneLayer";
 import { groundBoundaryScene } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 
@@ -37,7 +38,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withZoneProps(staticObjectRenderItemsForFrame(input), input);
+  const staticItems = withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
@@ -87,15 +88,61 @@ const staticObjectRenderItemsForFrame = (
  * ground scene, which is cached on the same inputs as the zone outlines, so they never go stale against them.
  */
 const zonePropItems = new WeakMap<object, readonly ObjectRenderItem[]>();
-const withZoneProps = (items: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
-  if ((input.state.zones ?? []).length === 0 || !boundaryV2Enabled()) return items;
+const withZoneProps = (queue: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
+  if ((input.state.zones ?? []).length === 0 || !boundaryV2Enabled()) return queue;
   const layer = groundBoundaryScene(input.state).zones;
+  const items = withoutCoverOnCrops(queue, layer);
   if (layer.props.length === 0) return items;
   let all = zonePropItems.get(layer);
   if (all === undefined) {
     all = layer.props.map(prop => ({ kind: "zone_prop" as const, id: prop.id, prop, depth: depthKey(Math.round(prop.x), Math.round(prop.y)), anchorTx: Math.round(prop.x) }))
       .sort(compareObjectRenderItems);
     zonePropItems.set(layer, all);
+  }
+  const visible = all.filter(item => item.kind === "zone_prop" && tileIsVisibleInRange(Math.round(item.prop.x), Math.round(item.prop.y), input.range));
+  return visible.length === 0 ? items : mergeObjectRenderItems(items, visible);
+};
+
+/**
+ * Grass tufts, bushes and stones stay off the ridge strips of arable zones (C1e): the crop area is ploughed ground.
+ * Cached on the static item list and the zone layer (both keep their identity until the ground or the zones change).
+ */
+const coverFilters = new WeakMap<object, WeakMap<object, readonly RenderQueueItem[]>>();
+const withoutCoverOnCrops = (items: readonly RenderQueueItem[], layer: ZoneLayer): readonly RenderQueueItem[] => {
+  if (layer.arableBands.length === 0) return items;
+  let byLayer = coverFilters.get(items);
+  if (byLayer === undefined) { byLayer = new WeakMap(); coverFilters.set(items, byLayer); }
+  const cached = byLayer.get(layer);
+  if (cached !== undefined) return cached;
+  const crops = new Set<string>();
+  for (const field of layer.fields) {
+    if (field === null) continue;
+    for (const band of field.bands) for (let along = band.from; along <= band.to; along += 1) {
+      crops.add(field.axis === "x" ? `${along},${band.line}` : `${band.line},${along}`);
+    }
+  }
+  const kept = items.filter(item => item.kind !== "groundCover" || !crops.has(`${Math.round(item.descriptor.anchorTx)},${Math.round(item.descriptor.anchorTy)}`));
+  byLayer.set(layer, kept);
+  return kept;
+};
+
+/**
+ * Yard hurdles (C1e) join the queue while curved ground is on; like zone props they come from the ground scene, whose
+ * key covers the buildings, roads and wall the yards are cut from. Each panel sorts by the middle of the edge it
+ * covers, so a panel behind a house draws before it and one in front after it.
+ */
+const yardHurdleItems = new WeakMap<object, readonly ObjectRenderItem[]>();
+const withYardHurdles = (items: readonly RenderQueueItem[], input: ObjectRenderFrameInput): readonly RenderQueueItem[] => {
+  if (!boundaryV2Enabled()) return items;
+  const props = groundBoundaryScene(input.state).yardProps;
+  if (props.hurdles.length === 0) return items;
+  let all = yardHurdleItems.get(props);
+  if (all === undefined) {
+    all = props.hurdles.map(piece => ({ kind: "zone_prop" as const, id: piece.id, depth: piece.depth, anchorTx: Math.round(piece.anchor.x),
+      prop: { kind: piece.kind === "corner" ? "hurdle_end_corner" as const : "hurdle_straight" as const, x: piece.anchor.x, y: piece.anchor.y,
+        flip: piece.mirror, scale: 1, id: piece.id, depth: piece.depth } }))
+      .sort(compareObjectRenderItems);
+    yardHurdleItems.set(props, all);
   }
   const visible = all.filter(item => item.kind === "zone_prop" && tileIsVisibleInRange(Math.round(item.prop.x), Math.round(item.prop.y), input.range));
   return visible.length === 0 ? items : mergeObjectRenderItems(items, visible);
