@@ -3,7 +3,7 @@
   "paused": true,
   "rows": [
     {
-      "file": "street-summer-z2.00-before.jpg",
+      "file": "street-summer-z2.00-dpr2-before.jpg",
       "season": "summer",
       "tick": 349000,
       "tile": [
@@ -11,12 +11,19 @@
         35
       ],
       "zoom": 2,
+      "dpr": 2,
+      "clip": {
+        "x": 390,
+        "y": 200,
+        "width": 500,
+        "height": 375
+      },
       "build": "http://127.0.0.1:4282/",
       "looks": null,
       "composer": null
     },
     {
-      "file": "street-summer-z2.00-after.jpg",
+      "file": "street-summer-z2.00-dpr2-after.jpg",
       "season": "summer",
       "tick": 349000,
       "tile": [
@@ -24,6 +31,13 @@
         35
       ],
       "zoom": 2,
+      "dpr": 2,
+      "clip": {
+        "x": 390,
+        "y": 200,
+        "width": 500,
+        "height": 375
+      },
       "build": "http://127.0.0.1:4281/",
       "looks": [
         {
@@ -349,9 +363,9 @@
       "composer": {
         "composed": 19,
         "evicted": 0,
-        "composeMsTotal": 0.7999999523162842,
-        "composeMsMax": 0.20000004768371582,
-        "firstComposeMs": 0.10000002384185791,
+        "composeMsTotal": 6.600000023841858,
+        "composeMsMax": 1.2000000476837158,
+        "firstComposeMs": 1.2000000476837158,
         "cached": 19,
         "cacheLimit": 64,
         "bytesPerCanvas": 373248,
@@ -382,7 +396,7 @@
       }
     },
     {
-      "file": "street-winter-z2.00-before.jpg",
+      "file": "street-winter-z2.00-dpr2-before.jpg",
       "season": "winter",
       "tick": 351000,
       "tile": [
@@ -390,12 +404,19 @@
         35
       ],
       "zoom": 2,
+      "dpr": 2,
+      "clip": {
+        "x": 390,
+        "y": 200,
+        "width": 500,
+        "height": 375
+      },
       "build": "http://127.0.0.1:4282/",
       "looks": null,
       "composer": null
     },
     {
-      "file": "street-winter-z2.00-after.jpg",
+      "file": "street-winter-z2.00-dpr2-after.jpg",
       "season": "winter",
       "tick": 351000,
       "tile": [
@@ -403,6 +424,13 @@
         35
       ],
       "zoom": 2,
+      "dpr": 2,
+      "clip": {
+        "x": 390,
+        "y": 200,
+        "width": 500,
+        "height": 375
+      },
       "build": "http://127.0.0.1:4281/",
       "looks": [
         {
@@ -651,9 +679,9 @@
       "composer": {
         "composed": 14,
         "evicted": 0,
-        "composeMsTotal": 0.6000001430511475,
-        "composeMsMax": 0.20000004768371582,
-        "firstComposeMs": 0.10000002384185791,
+        "composeMsTotal": 5.200000286102295,
+        "composeMsMax": 0.6000000238418579,
+        "firstComposeMs": 0.30000007152557373,
         "cached": 14,
         "cacheLimit": 64,
         "bytesPerCanvas": 373248,

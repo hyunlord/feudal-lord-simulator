@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-25(C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
@@ -45,6 +45,8 @@
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
+
+**V2 주민 합성기**(Claude Code, 렌더·UI 문구·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state·population 0줄): Wave 5a 55장 inbox(+초상화 파일럿 6)·설치·대장 55행. 걷는 사람이 표시 직업(종류+짐) → 계급군 가중 추첨으로 워커 29종·옛 직업 그림 가운데 한 장을 입고(성별은 householdMembers, 없으면 해시 50:50), 오른손에 소지품(빵·망치·도끼·물병·꾸러미), 달력 겨울에 외투를 겹친다. 모습마다 8칸을 한 번 합성해 칸별 비트맵으로 캐시(상한 64, 23.9MB). 관문 ①③④⑤⑥ 통과, ② 편중 ≤ 60% 통과·2칸 안 같은 시트 0은 결정론과 충돌해 부분(결정 WK1, 사용자 확인 대기). SettlementPanel "밀밭" 안내 두 줄 → "경작지". [명세](design/walker-composer.md), [보고서](verification/v2-walkers/REPORT.md).
 
 **C1f 헛간 그림·밀밭 퇴역·울타리 고리·과수 9종·그루터기·농사 소품**(Claude Code, 렌더·경계층·UI 안내 계산·에셋·대장·테스트·스크립트·문서만, 엔진·구역·저장·콘텐츠·state 0줄): 0-B 새 게임 온보딩 회귀를 먼저 고쳤다(안내 메모 키 = 구조 서명 + 60틱 표본, 헛간 후보 경작지 옆 칸만, 새 게임 frameWork 201.5/207.9 → 3.1/4.6ms, 결정 OB1). Wave 4c 18장 inbox·설치·대장 18행. 헛간 a·b(V1 변형) + 담당 띠가 여물면 `working`(창고 틀·0.75배, 결정 FS5). 밀밭 4상태·밭 층·옛 그림·혼합형 농장 13장 퇴역(`assets-inbox/retired/`, 대장 `retired`, 결정 FS7). 허들 문·반 칸·코너 e/s/w로 마당 고리를 닫음. 과수 9종(반경 2 + 가장 먼 것, 결정 FS8). `harvested` 띠에 그루터기. 쟁기 팀·건초 수레·양·소(표시 전용, 결정 FS6). 관문: ①헛간 3상태·창고 비교 캡처, ②밀밭 그림 참조 0·v9 저장 전/후, ③고리 테스트(울타리 가능한 변 전부·문 1·코너)·소켓 캡처, ④9종 반경 2 중복 0·C25 4칸 안 1쌍(클리크 하한), ⑤5상태 ΔE ≥ 10.2, ⑥도시 5칸 p95 100~102%(D3b 대비), ⑦결정론·C25 갱신·2803/2803·깨끗한 클론. 0-B 새 게임 2.9/4.2ms. [보고서](verification/c1f-farmstead/REPORT.md), [명세 FS-5](design/field-strips.md). 후속: 벌목지 위 경작지에도 이랑(이주 장면 3/14 → 14/14, 결정 FS9), 농사 소품·병합 큐 프레임 캐시.
 

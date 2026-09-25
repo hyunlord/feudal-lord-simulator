@@ -3,7 +3,7 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/walkerEvidence.mjs <outDir> --base <url> [--url ...]
 // Scenes (docs/verification/v2-walkers/scene/, from scripts/walkerLookEvidence.ts): the C3 seed 2 city run without
 // input to its first summer (tick 349,000) and winter (tick 351,000) sample.
-//  - streets: the market / mill quarter (48,36) at zoom 2, before (legacy actors) and after (composed looks), summer
+//  - streets: the market / mill quarter (48,35) at zoom 2, DPR 2 (500x375 CSS px), before (legacy actors) and after (composed looks), summer
 //    and winter; the looks on screen are written next to the shots.
 //  - cells: composed looks read back from the composer (window proof port walkerComposite): the 32 cells (4 body
 //    templates x 4 directions x 2 gait frames) with a held prop, and the winter cloak on / off.
@@ -17,7 +17,7 @@ const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, ind
 const url = flags.url ?? 'http://127.0.0.1:4281/';
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const load = async path => JSON.parse(gunzipSync(await readFile(join(ROOT, path))).toString('utf8'));
-const CLIP = { x: 240, y: 100, width: 800, height: 600 };
+const CLIP = { x: 390, y: 200, width: 500, height: 375 };
 
 const ready = page => page.waitForFunction(() => {
   const d = window.__FEUDAL_PHASE10_PROOF__.diagnosis();
@@ -33,13 +33,13 @@ const rows = [];
 for (const season of ['summer', 'winter']) {
   const state = await load(`docs/verification/v2-walkers/scene/seed2-${season}.json.gz`);
   for (const [label, base] of [...(flags.base ? [['before', flags.base]] : []), ['after', url]]) {
-    const { context, page } = await openScene(browser, { state, tile: [48, 35], baseUrl: base, dpr: 1, zoom: 2, run: false });
+    const { context, page } = await openScene(browser, { state, tile: [48, 35], baseUrl: base, dpr: 2, zoom: 2, run: false });
     await ready(page); await page.mouse.move(640, 790); await page.waitForTimeout(400);
-    const file = `street-${season}-z2.00-${label}.jpg`;
-    await writeFile(join(outDir, file), await page.screenshot({ type: 'jpeg', quality: 78, clip: CLIP }));
+    const file = `street-${season}-z2.00-dpr2-${label}.jpg`;
+    await writeFile(join(outDir, file), await page.screenshot({ type: 'jpeg', quality: 74, clip: CLIP }));
     const looks = label === 'after' ? await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.walkerLooks()) : null;
     const stats = label === 'after' ? await page.evaluate(() => { const { keys, images, ...rest } = window.__FEUDAL_PHASE10_PROOF__.diagnosis().walkers; return { ...rest, keys }; }) : null;
-    rows.push({ file, season, tick: state.tick, tile: [48, 35], zoom: 2, build: base, looks, composer: stats });
+    rows.push({ file, season, tick: state.tick, tile: [48, 35], zoom: 2, dpr: 2, clip: CLIP, build: base, looks, composer: stats });
     await context.close();
   }
 }
