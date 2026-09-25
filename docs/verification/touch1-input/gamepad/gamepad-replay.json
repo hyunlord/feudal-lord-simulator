@@ -20,8 +20,8 @@
     {
       "label": "cursor on (48,38)",
       "cursor": {
-        "clientX": 863.1434119404296,
-        "clientY": 415.93881513860197,
+        "clientX": 861.1669547246688,
+        "clientY": 415.79763962319043,
         "tx": 48,
         "ty": 38
       },
@@ -35,8 +35,8 @@
     {
       "label": "A places a hut",
       "cursor": {
-        "clientX": 863.1434119404296,
-        "clientY": 415.93881513860197,
+        "clientX": 861.1669547246688,
+        "clientY": 415.79763962319043,
         "tx": 48,
         "ty": 38
       },
@@ -50,8 +50,8 @@
     {
       "label": "B disarms",
       "cursor": {
-        "clientX": 863.1434119404296,
-        "clientY": 415.93881513860197,
+        "clientX": 861.1669547246688,
+        "clientY": 415.79763962319043,
         "tx": 48,
         "ty": 38
       },
@@ -65,8 +65,8 @@
     {
       "label": "B on the site cancels it",
       "cursor": {
-        "clientX": 863.1434119404296,
-        "clientY": 415.93881513860197,
+        "clientX": 861.1669547246688,
+        "clientY": 415.79763962319043,
         "tx": 48,
         "ty": 38
       },
@@ -80,8 +80,8 @@
     {
       "label": "X x3 = pasture brush",
       "cursor": {
-        "clientX": 863.1434119404296,
-        "clientY": 415.93881513860197,
+        "clientX": 861.1669547246688,
+        "clientY": 415.79763962319043,
         "tx": 48,
         "ty": 38
       },
@@ -90,13 +90,13 @@
       "zones": "",
       "hutArmed": false,
       "pastureArmed": true,
-      "hint": "드래그하여 목초지 구역을 칠하세요 · [ ] 붓 크기 · 휠 확대 · Shift 다각형 · Z 되돌리기 · Esc 취소"
+      "hint": "A를 누른 채 커서를 움직여 목초지 구역을 칠하세요 · X 다음 붓 · B 취소"
     },
     {
       "label": "A held + stick (52,46) -> (55,46) paints",
       "cursor": {
-        "clientX": 830.7266451783967,
-        "clientY": 655.3421903853168,
+        "clientX": 829.6882799129229,
+        "clientY": 654.8025400105132,
         "tx": 55,
         "ty": 46
       },
@@ -105,7 +105,7 @@
       "zones": "pasture:25",
       "hutArmed": false,
       "pastureArmed": true,
-      "hint": "드래그하여 목초지 구역을 칠하세요 · [ ] 붓 크기 · 휠 확대 · Shift 다각형 · Z 되돌리기 · Esc 취소"
+      "hint": "A를 누른 채 커서를 움직여 목초지 구역을 칠하세요 · X 다음 붓 · B 취소"
     }
   ]
 }

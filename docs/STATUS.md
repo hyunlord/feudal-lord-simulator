@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-25(PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
@@ -45,6 +45,8 @@
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
+
+**TOUCH-1 터치·게임패드 입력 v0**(Claude Code, 렌더·UI·input·스크립트·테스트·문서만, 엔진 0줄): 0항 V2 겨울 캡처의 빈 손수레는 캡처 자르기였다(수레꾼 15명 모두 그려짐, 코드 변경 없음). 터치 번역기(한 손가락 = 마우스 왼쪽 버튼, 두 손가락 = 이동·핀치, 길게 = 상세, 두 손가락 탭 = 취소), 게임패드 번역기(지도 커서 + A/B/X/Y·LB/RB·트리거), 지도 누르면 포커스 복귀, 입력 장치별 하단 안내. B9 13단계 터치 재생 13/13, 가상 패드 재생 통과, 포커스 본선 실패 → 통과, C25 6/6 동일. [입력 의도 IN-7~IN-9](design/input-intents.md), [보고서](verification/touch1-input/REPORT.md).
 
 **PLAY-1 상시 플레이 서버**(Claude Code, 배포 스크립트·문서만, 게임 코드 0줄): DGX Spark(Tailscale `100.70.109.50:4173`)에 본선 빌드를 상시 서빙한다. 5분마다 본선이 바뀌었으면 빌드해 원자적으로 바꿔 끼우고, 실패하면 이전 빌드를 유지한다. 상태 페이지는 `/status`, 게임 왼쪽 위에 커밋 7자리를 띄운다. systemd 사용자 단위(linger). [운영 문서](PLAY_SERVER.md), [보고서](verification/play1-server/REPORT.md).
 
