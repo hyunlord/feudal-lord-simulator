@@ -1,0 +1,127 @@
+{
+  "source": "four-farms",
+  "autoplay": false,
+  "ticks": 24000,
+  "migration": {
+    "convertedFarms": 4,
+    "farmsteads": 1,
+    "unplacedFarmsteads": 0,
+    "cellsInsideWall": 0
+  },
+  "start": {
+    "tick": 15162,
+    "population": 132,
+    "lots": 9,
+    "l4": 0
+  },
+  "end": {
+    "tick": 39162,
+    "population": 132,
+    "lots": 9,
+    "l4": 0,
+    "farmsteads": 1,
+    "arableCells": 16
+  },
+  "total": {
+    "breadProduced": 1168,
+    "requestedBread": 1233,
+    "rawStarvedTicks": 12951,
+    "eligibleMillTicks": 48000,
+    "wheatProduced": 2292
+  },
+  "breadRatio": 0.9472830494728305,
+  "rawStarvationRatio": 0.2698125,
+  "minimumWindowBread": 85,
+  "windows": [
+    {
+      "tick": 17562,
+      "population": 145,
+      "breadProduced": 120,
+      "requestedBread": 117,
+      "rawStarvedTicks": 1223,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 51
+    },
+    {
+      "tick": 19962,
+      "population": 154,
+      "breadProduced": 146,
+      "requestedBread": 128,
+      "rawStarvedTicks": 378,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 331
+    },
+    {
+      "tick": 22362,
+      "population": 155,
+      "breadProduced": 85,
+      "requestedBread": 128,
+      "rawStarvedTicks": 2270,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 382
+    },
+    {
+      "tick": 24762,
+      "population": 154,
+      "breadProduced": 151,
+      "requestedBread": 132,
+      "rawStarvedTicks": 292,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 0
+    },
+    {
+      "tick": 27162,
+      "population": 131,
+      "breadProduced": 93,
+      "requestedBread": 129,
+      "rawStarvedTicks": 1978,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 382
+    },
+    {
+      "tick": 29562,
+      "population": 142,
+      "breadProduced": 98,
+      "requestedBread": 125,
+      "rawStarvedTicks": 1892,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 51
+    },
+    {
+      "tick": 31962,
+      "population": 130,
+      "breadProduced": 146,
+      "requestedBread": 117,
+      "rawStarvedTicks": 378,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 331
+    },
+    {
+      "tick": 34362,
+      "population": 141,
+      "breadProduced": 85,
+      "requestedBread": 117,
+      "rawStarvedTicks": 2270,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 382
+    },
+    {
+      "tick": 36762,
+      "population": 142,
+      "breadProduced": 151,
+      "requestedBread": 121,
+      "rawStarvedTicks": 292,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 0
+    },
+    {
+      "tick": 39162,
+      "population": 132,
+      "breadProduced": 93,
+      "requestedBread": 119,
+      "rawStarvedTicks": 1978,
+      "eligibleMillTicks": 4800,
+      "wheatProduced": 382
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "strips": 30,
+  "cold": {
+    "label": "cold key (fresh tiles each call)",
+    "calls": 2000,
+    "msPerCall": 0.2774
+  },
+  "warm": {
+    "label": "warm key (same state)",
+    "calls": 2000,
+    "msPerCall": 0.0184
+  }
+}

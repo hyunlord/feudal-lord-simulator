@@ -4,7 +4,7 @@
 
 ## 현재 단계
 
-- **C1c-2 밀밭 건물 → 경작지 구역 + 헛간**(Claude Code, 엔진 세션): [경작지 명세](design/arable-fields.md) AF-1~AF-14, [보고서](verification/c1c2-arable/REPORT.md), 결정 A1~A7.
+- **C1c-2 밀밭 건물 → 경작지 구역 + 헛간**(Claude Code, 엔진 세션, **관문 ③ 미달로 본선 미병합** — 브랜치 `claude/c1c2-arable`, 원료 부족 기준 결정 대기): [경작지 명세](design/arable-fields.md) AF-1~AF-14, [보고서](verification/c1c2-arable/REPORT.md), 결정 A1~A7.
   - 밀은 경작지 띠에서 1년에 한 번 난다(갈이·파종 → 성장 → 여묾 → 수확 → 겨울 휴경). 헛간(일꾼 4·곳간 1000·수레 60)이 반경 10칸의 띠를 맡는다. headland 0.75, `baseYieldPerCell` 34.
   - 밀밭은 퇴역했다(짓기 불가·메뉴 없음). 저장 v10(`arableFields`, `arableMigration`)에서 옛 밀밭은 제자리 경작지 + 헛간으로 바뀌고, 다음 수확까지 쓸 밀이 곳간에 들어간다.
   - 자동 성장은 곡식을 예상 수확으로 판단한다(필요량 × 1.2 미만이면 2×2 경작지를 칠하거나 헛간을 짓는다). 가드레일의 `방앗간 ≤ 밀밭` 조건은 `경작지 칸 ≤ 필지 × 상한`으로 바꿨다.
