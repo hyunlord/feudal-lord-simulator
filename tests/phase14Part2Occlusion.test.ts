@@ -219,7 +219,8 @@ test("Given an intentionally misordered render queue When drawing objects Then n
 
   // Then
   const lastSiteOrBuilding = Math.max(
-    lastIndexWhere(context.calls, (call) => call.startsWith("measureText:🪵")),
+    // F0-V: a site with a state draws its plaque (name and line) instead of the stall label; walkers draw no text.
+    lastIndexWhere(context.calls, (call) => call.startsWith("fillText:")),
     lastIndexWhere(context.calls, (call) => call === "lineTo:60,48"),
   );
   const firstWalkerBody = context.calls.findIndex((call, index) =>

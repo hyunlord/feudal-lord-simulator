@@ -13,6 +13,8 @@ import { placementSpendableResource } from "../world/placement";
 import { economyStockTotals } from "./ledgerModel";
 import { ResourceArtwork, type ResourceArtworkKind } from "./ResourceArtwork";
 import { RESOURCE_BAR_COPY } from "./resourceBarCopy.ko";
+import { calendarArrivalLabel } from "./calendarArrival";
+import { scenarioOf } from "../engine/scenarioState";
 import { UiIcon } from "./UiIcon";
 
 type ResourceBarProps = {
@@ -53,7 +55,9 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
   }, 0);
   const ration = state.houses.reduce((total, house) => total + (house.residents > 0 ? houseFoodRation(house) : 0), 0);
   const durationTicks = ration > 0 ? Math.floor(stock.bread * HOUSE_FOOD_INTERVAL / ration) : 0;
-  const breadLabel = portions === null ? "입주 가구 없음" : RESOURCE_BAR_COPY.breadDuration(occupiedLots, durationTicks);
+  // F0-V: the stock reads as the calendar point it lasts until, never as a duration.
+  const breadLabel = portions === null ? "입주 가구 없음"
+    : RESOURCE_BAR_COPY.breadUntil(occupiedLots, calendarArrivalLabel(state.tick, state.tick + durationTicks, scenarioOf(state).startYear));
   const breadTitle = RESOURCE_BAR_COPY.breadDetail(HOUSE_FOOD_INTERVAL);
   return (
     <section className="resource-bar" aria-label="영지 자원 현황">

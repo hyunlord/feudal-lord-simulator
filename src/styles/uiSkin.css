@@ -326,3 +326,22 @@
   border-image: url("/assets/ui-p0/frame_panel_dark.png") 24 fill / var(--slice-strip) / 0 stretch;
 }
 .welcome-parchment:focus { outline: none; }
+
+/* ---- F0-V completion toast (grouped, 4 s): the toast frame under the top bar ---- */
+.app-shell .completion-toast {
+  position: absolute;
+  top: 128px;
+  left: 50%;
+  z-index: 5;
+  display: inline-flex;
+  gap: var(--space-half);
+  align-items: center;
+  padding: 8px 20px;
+  font-family: var(--ui-font-serif);
+  font-size: var(--text-14);
+  color: var(--ink);
+  pointer-events: none;
+  border: 2px solid transparent;
+  border-image: url("/assets/ui-p0/toast_small.png") 24 fill / var(--slice-toast) / 0 stretch;
+  transform: translateX(-50%);
+}

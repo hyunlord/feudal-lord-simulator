@@ -151,7 +151,7 @@ test("neighbouring construction labels step up instead of overlapping", () => {
   const state = makeState({ width: 8, height: 8, palisade: null, houses: [], walkers: [], buildings: [],
     constructionSites: [first, second] });
 
-  // When
+  // When: the label layout still steps rows, and F0-V's site plaques (drawn with a state) step the same way.
   const boxes = constructionSiteLabelBoxes([{ site: first, label: "👷 일꾼 없음" }, { site: second, label: "👷 일꾼 없음" }], 1, text => text.length * 8);
   const firstContext = loggedContext();
   const secondContext = loggedContext();
@@ -164,8 +164,13 @@ test("neighbouring construction labels step up instead of overlapping", () => {
   assert.ok(a !== undefined && b !== undefined);
   assert.ok(b.y + b.height <= a.y, "the later label sits a full row above the earlier one");
   assert.equal(b.leaderX, constructionSiteLabelAnchor(second).x, "still centred on its own site");
-  assert.ok(firstContext.calls.includes(`fillRect:${a.x},${a.y},${a.width},${a.height}`));
-  assert.ok(secondContext.calls.includes(`fillRect:${b.x},${b.y},${b.width},${b.height}`));
+  const plaque = (calls: readonly string[]) => calls.filter(call => call.startsWith("fillRect:")).map(call => call.slice(9).split(",").map(Number))
+    .find(([, , width, height]) => width === 72 && height! > 10);
+  const firstPlaque = plaque(firstContext.calls);
+  const secondPlaque = plaque(secondContext.calls);
+  assert.ok(firstPlaque !== undefined && secondPlaque !== undefined, "each site draws a 72 px plaque");
+  assert.ok(secondPlaque[1]! + secondPlaque[3]! <= firstPlaque[1]!, "the later plaque sits above the earlier one");
+  assert.equal(secondPlaque[0]! + 36, constructionSiteLabelAnchor(second).x, "centred on its own site");
 });
 
 test("drawConstructionSite shows the live road break before the stored delivery stall catches up", () => {
@@ -188,9 +193,9 @@ test("drawConstructionSite shows the live road break before the stored delivery 
   // When
   drawConstructionSite(context, { site: stalledSite, state, zoom: 1 });
 
-  // Then
-  assert.ok(context.calls.includes("measureText:🚧 도로 미연결"));
-  assert.equal(context.calls.some(call => call.includes("목재 오는 중")), false);
+  // Then: F0-V's plaque names the live road break (the blocker), not the stored delivery stall.
+  assert.ok(context.calls.some(call => call.startsWith("fillText:길 끊김")), JSON.stringify(context.calls.filter(call => call.startsWith("fillText"))));
+  assert.equal(context.calls.some(call => call.includes("목재 오는 중") || call.includes("목재 0/")), false);
 });
 
 test("drawConstructionSite gives queued palisade segments a dashed gate-order label without a stall label", () => {

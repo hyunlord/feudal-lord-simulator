@@ -234,3 +234,22 @@ export function groupedConstructionCause(state: GameState, cause: ConstructionAc
   const label = matching[0]?.label ?? LABELS[cause];
   return matching.length > 1 ? CONSTRUCTION_DEADLOCK_COPY.grouped(matching.length, label) : label;
 }
+
+// F0-V: the site's live stall kind (the stored stall, or for awaiting materials / no route the stall recomputed from
+// the live routes, as currentConstructionSiteLabel does), for the site plaque's blocker icon. Cache: keyed by the
+// state object and the site object (both immutable per tick), so every input of the recomputation is in the key; it
+// runs once per site per state instead of once per frame (measurement: the F0-V report's frame-time table).
+const liveStallCache = new WeakMap<GameState, WeakMap<ConstructionSite, ConstructionSite['stall']>>();
+export function currentConstructionStall(state: GameState, site: ConstructionSite): ConstructionSite['stall'] {
+  if (site.stall !== 'awaiting_materials' && site.stall !== 'no_route') return site.stall;
+  const cached = liveStallCache.get(state)?.get(site);
+  if (cached !== undefined) return cached;
+  const stall = constructionStall(site, constructionMaterialSources({
+    site, buildings: state.buildings, routes: createSimulationRoutePorts(state).delivery,
+    inventory: createDeliveryInventoryPort(), treasuryTimber: state.treasuryTimber,
+  }));
+  let stateCache = liveStallCache.get(state);
+  if (stateCache === undefined) { stateCache = new WeakMap(); liveStallCache.set(state, stateCache); }
+  stateCache.set(site, stall);
+  return stall;
+}

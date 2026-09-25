@@ -1,4 +1,3 @@
-import { BALANCE } from '../content/balanceConfig';
 import type { GameState } from '../engine/engine.types';
 import { palisadePerimeterSteps, type PalisadePath } from '../world/palisadeGeometry';
 import { placementSpendableResource } from '../world/placement';
@@ -10,6 +9,9 @@ import { getTile } from '../world/grid';
 import type { PredictionLine } from './predictionTypes';
 import { WALL_CARRY_COPY } from './wallCarryCopy.ko';
 import { GAME_TIME_COPY } from './gameTimeCopy.ko';
+import { calendarArrivalLabel } from './calendarArrival';
+import { scenarioOf } from '../engine/scenarioState';
+import { WALL_ETA_COPY } from './calendarArrivalCopy.ko';
 
 const TIMBER_PER_STEP = 15;
 const STEPS_PER_SEGMENT = 4;
@@ -90,8 +92,9 @@ function predictionLines(state: GameState, path: PalisadePath, access: PalisadeR
     const productionTicks = deficit === 0 || window === undefined
       ? 0 : Math.ceil(deficit * (window.throughTick - window.startTick + 1) / window.produced);
     const minimumTicks = Math.max(productionTicks, Math.ceil(labourTicks / MAX_BUILDERS_PER_SEGMENT));
-    const minutes = Math.max(1, Math.ceil(minimumTicks / (BALANCE.TICKS_PER_SECOND * 60)));
-    lines.push({ id: 'eta', severity: 'info', sources: [], text: `예상 완공 최소 약 ${minutes}분 (1× · 최근 실생산 기준, 운송 제외)` });
+    // F0-V: the earliest completion as a calendar arrival point (never a duration).
+    const when = calendarArrivalLabel(state.tick, state.tick + minimumTicks, scenarioOf(state).startYear);
+    lines.push({ id: 'eta', severity: 'info', sources: [], text: WALL_ETA_COPY.earliest(when) });
   }
   if (available <= cost + Math.floor(available * 0.25)) {
     lines.push({ id: 'reserve-risk', severity: 'warn', sources: [], text: '공사 중 가용 목재가 비축분 근처까지 낮아질 수 있습니다' });

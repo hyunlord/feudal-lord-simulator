@@ -40,6 +40,7 @@ import { drawPalisadeDraftOverlay } from './palisadeDraftOverlay';
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import { renderStageProbe } from "./renderStageProbe";
+import { forgetGoneConstructionSites } from "./constructionMoments";
 
 export { ambientOffset, objectPhase, type AmbientInput } from "./renderMotion";
 export {
@@ -103,6 +104,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
     includeGroundCover: renderDetailLevel(input.camera.zoom) === "full",
     renderWalkers: input.renderWalkers,
   });
+  forgetGoneConstructionSites(input.state.constructionSites);
   const constructionEffects = constructionCompletionEffectsForFrame(
     input.completionTracker ?? createConstructionCompletionTracker(),
     input.state.constructionSites,

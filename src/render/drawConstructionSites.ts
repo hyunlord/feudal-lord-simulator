@@ -24,6 +24,9 @@ import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionMode
 import type { GameState } from "../engine/engine.types";
 import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
 import { constructionSiteLabelBoxes, type ConstructionLabelEntry } from "./constructionSiteLabelLayout";
+import { drawConstructionPiles, drawConstructionPlaque, drawConstructionSign, drawWellStage } from "./constructionPlaque";
+import { constructionMoment, CROSSFADE_MS, drawSiteDust } from "./constructionMoments";
+import { constructionWorkProgress } from "./constructionVisibility";
 export {
   createConstructionCompletionTracker,
   constructionCompletionEffects,
@@ -40,6 +43,8 @@ type DrawConstructionSiteInput = {
   readonly zoom: number;
   readonly presentationProgress?: number;
   readonly viewMode?: ObjectRenderViewMode;
+  /** F0-V: wall-clock ms of the frame (stage crossfade, dust); absent in tests that draw one still frame. */
+  readonly nowMs?: number;
 };
 
 type Point = {
@@ -104,18 +109,39 @@ export function drawConstructionSite(
     baseRadiusX: 20 + footprint.width * 15,
     baseRadiusY: 5 + footprint.height * 3,
   });
-  drawSiteLabel(context, input.site, input.state, input.zoom);
-  if (!drawConstructionArt(context, input.site, constructionSiteRenderSignature(input.site, presentationProgress ?? undefined))) drawConstructionStageBand(context, {
-    signature: constructionSiteRenderSignature(
-      input.site,
-      presentationProgress ?? undefined,
-    ),
-    anchor,
-    zoom: input.zoom,
-    progress: presentationProgress,
-  });
-  drawBuilderMarker(context, input.site, anchor, input.zoom);
+  // F0-V: a building site with a state draws its plaque (name, stage bar, arrival / owed material, blocker) after its
+  // art; without a state (a still test frame) the UX-1 stall label stays.
+  if (input.state === undefined) drawSiteLabel(context, input.site, input.state, input.zoom);
+  const progress = constructionWorkProgress(input.site, presentationProgress ?? undefined);
+  const moment = input.state === undefined || input.nowMs === undefined ? null
+    : constructionMoment(input.site, input.nowMs, input.state.tick - input.site.startedTick < 8, presentationProgress ?? undefined);
+  const signature = constructionSiteRenderSignature(input.site, presentationProgress ?? undefined);
+  const drawStage = (stage: ConstructionRenderSignature, stageProgress: number | null, alpha: number) => {
+    context.save();
+    context.globalAlpha *= alpha;
+    const drawn = input.site.kind === "well" ? drawWellStage(context, input.site, stageProgressFor(stage))
+      : drawConstructionArt(context, input.site, stage);
+    if (!drawn) drawConstructionStageBand(context, { signature: stage, anchor, zoom: input.zoom, progress: stageProgress });
+    context.restore();
+  };
+  // The stage change fades the previous stage's art out over CROSSFADE_MS (visibility design 2절 작업 국면).
+  const fade = moment === null || moment.previousStage === null ? 1 : Math.min(1, moment.stageAgeMs / CROSSFADE_MS);
+  if (fade < 1 && moment?.previousStage !== null && moment?.previousStage !== undefined) drawStage(SIGNATURES[moment.previousStage], null, 1 - fade);
+  drawStage(signature, presentationProgress, fade);
+  drawConstructionSign(context, input.site);
+  drawConstructionPiles(context, input.site, progress);
+  if (moment !== null) drawSiteDust(context, input.site, moment);
+  // F0-V: the builders are the real builder walkers at the site; the static marker (a builder sprite, else a gold
+  // square) stays only for still test frames without a state.
+  if (input.state === undefined) drawBuilderMarker(context, input.site, anchor, input.zoom);
+  if (input.state !== undefined && (input.viewMode ?? "normal") === "normal") drawConstructionPlaque(context, input.state, input.site, progress, input.zoom);
 }
+
+const SIGNATURES = ["plot", "foundation", "frame", "roof"] as const satisfies readonly ConstructionRenderSignature[];
+function stageProgressFor(stage: ConstructionRenderSignature): number {
+  return stage === "plot" ? 0 : stage === "foundation" ? 0.25 : stage === "frame" ? 0.55 : 0.85;
+}
+
 
 function drawConstructionSiteSilhouette(
   context: CanvasRenderingContext2D,
