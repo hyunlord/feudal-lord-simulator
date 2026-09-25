@@ -26,9 +26,9 @@ export function waitingTimberNeed(state: GameState): number {
 
 /** Timber made per window by the town now (the tick's rolling 2,400-tick record). */
 function timberMadePerWindow(state: GameState): number | null {
-  const window = state.timberProductionWindow;
-  if (window === undefined || state.tick < TIMBER_DEMAND_WINDOW_TICKS) return null;
-  return window.produced;
+  const record = state.timberProductionWindow;
+  if (record === undefined || state.tick < TIMBER_DEMAND_WINDOW_TICKS) return null;
+  return record.produced;
 }
 
 /** Logs per tick the camps cut against logs per tick the sawmills saw: the short side gets the next facility. */
