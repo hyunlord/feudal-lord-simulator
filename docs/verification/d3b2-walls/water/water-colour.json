@@ -1,0 +1,511 @@
+{
+  "walkers": "hidden",
+  "method": "mean RGB of 3x3 canvas patches: edge = 0.08 / 0.2 / 0.35 tile into the water from a straight bank (water tiles with land on one side), deep = centres of water tiles 3+ tiles from land; lightness = CIE L* difference to deep, deltaE = CIE76 to deep, rim = largest edge lightness difference",
+  "rows": [
+    {
+      "view": "lake-seed2-z1.00",
+      "source": "seed 2 final: the lake inside the stone wall",
+      "tile": [
+        50,
+        40
+      ],
+      "zoom": 1,
+      "before": {
+        "edge0.08": {
+          "rgb": [
+            115.5,
+            118.5,
+            109.8
+          ],
+          "patches": 19
+        },
+        "edge0.2": {
+          "rgb": [
+            106.2,
+            108.4,
+            100.1
+          ],
+          "patches": 19
+        },
+        "edge0.35": {
+          "rgb": [
+            102.5,
+            103.3,
+            92.3
+          ],
+          "patches": 19
+        },
+        "deep": {
+          "rgb": [
+            83.3,
+            90.4,
+            75.8
+          ],
+          "patches": 1
+        },
+        "deepLightness": 37.4,
+        "edgeMinusDeepLightness": [
+          12,
+          8,
+          6
+        ],
+        "edgeDeltaE": [
+          12.7,
+          9.2,
+          7
+        ],
+        "rimLightness": 12
+      },
+      "after": {
+        "edge0.08": {
+          "rgb": [
+            115.5,
+            125.3,
+            117.8
+          ],
+          "patches": 19
+        },
+        "edge0.2": {
+          "rgb": [
+            106.9,
+            118.8,
+            112.9
+          ],
+          "patches": 19
+        },
+        "edge0.35": {
+          "rgb": [
+            102.9,
+            114.4,
+            108
+          ],
+          "patches": 19
+        },
+        "deep": {
+          "rgb": [
+            79.9,
+            116.1,
+            124.1
+          ],
+          "patches": 1
+        },
+        "deepLightness": 46.5,
+        "edgeMinusDeepLightness": [
+          5,
+          2.3,
+          0.5
+        ],
+        "edgeDeltaE": [
+          13.5,
+          11.6,
+          11.7
+        ],
+        "rimLightness": 5
+      }
+    },
+    {
+      "view": "lake-seed2-z2.00",
+      "source": "seed 2 final: lake edge, reeds and stones",
+      "tile": [
+        52,
+        42
+      ],
+      "zoom": 2,
+      "before": {
+        "edge0.08": {
+          "rgb": [
+            104.4,
+            109.2,
+            101.7
+          ],
+          "patches": 16
+        },
+        "edge0.2": {
+          "rgb": [
+            108.1,
+            112.7,
+            106.5
+          ],
+          "patches": 16
+        },
+        "edge0.35": {
+          "rgb": [
+            104.4,
+            106.3,
+            96
+          ],
+          "patches": 16
+        },
+        "deep": {
+          "rgb": [
+            81,
+            88.7,
+            73.9
+          ],
+          "patches": 1
+        },
+        "deepLightness": 36.6,
+        "edgeMinusDeepLightness": [
+          8.9,
+          10.3,
+          7.9
+        ],
+        "edgeDeltaE": [
+          10.1,
+          11.8,
+          8.8
+        ],
+        "rimLightness": 10.3
+      },
+      "after": {
+        "edge0.08": {
+          "rgb": [
+            104.6,
+            116.8,
+            110.3
+          ],
+          "patches": 16
+        },
+        "edge0.2": {
+          "rgb": [
+            108.5,
+            124,
+            120.4
+          ],
+          "patches": 16
+        },
+        "edge0.35": {
+          "rgb": [
+            105.8,
+            118.6,
+            112
+          ],
+          "patches": 16
+        },
+        "deep": {
+          "rgb": [
+            79.3,
+            115.8,
+            123.8
+          ],
+          "patches": 1
+        },
+        "deepLightness": 46.4,
+        "edgeMinusDeepLightness": [
+          1.6,
+          4.3,
+          2.3
+        ],
+        "edgeDeltaE": [
+          11.7,
+          10.5,
+          11.7
+        ],
+        "rimLightness": 4.3
+      }
+    },
+    {
+      "view": "lake-natural-z1.00",
+      "source": "seed 2 natural chain: lake and river with bridges",
+      "tile": [
+        50,
+        40
+      ],
+      "zoom": 1,
+      "before": {
+        "edge0.08": {
+          "rgb": [
+            100.8,
+            106.3,
+            98.1
+          ],
+          "patches": 19
+        },
+        "edge0.2": {
+          "rgb": [
+            86.1,
+            92.3,
+            87.8
+          ],
+          "patches": 19
+        },
+        "edge0.35": {
+          "rgb": [
+            92.3,
+            94.8,
+            85
+          ],
+          "patches": 19
+        },
+        "deep": {
+          "rgb": [
+            83.3,
+            90.4,
+            75.8
+          ],
+          "patches": 1
+        },
+        "deepLightness": 37.4,
+        "edgeMinusDeepLightness": [
+          6.9,
+          1.1,
+          2.3
+        ],
+        "edgeDeltaE": [
+          8,
+          6.3,
+          4.3
+        ],
+        "rimLightness": 6.9
+      },
+      "after": {
+        "edge0.08": {
+          "rgb": [
+            97.8,
+            111,
+            104.5
+          ],
+          "patches": 19
+        },
+        "edge0.2": {
+          "rgb": [
+            85.2,
+            103.1,
+            101.6
+          ],
+          "patches": 19
+        },
+        "edge0.35": {
+          "rgb": [
+            93.9,
+            110.1,
+            106.3
+          ],
+          "patches": 19
+        },
+        "deep": {
+          "rgb": [
+            79.9,
+            116.1,
+            124.1
+          ],
+          "patches": 1
+        },
+        "deepLightness": 46.5,
+        "edgeMinusDeepLightness": [
+          -1,
+          -4.4,
+          -1.5
+        ],
+        "edgeDeltaE": [
+          11.3,
+          9.1,
+          9.5
+        ],
+        "rimLightness": -1
+      }
+    },
+    {
+      "view": "river-x-bridge-z2.00",
+      "source": "24-lot river x bridge (D3a real-input state): back NW and front SE abutments",
+      "tile": [
+        24,
+        8
+      ],
+      "zoom": 2,
+      "before": {
+        "edge0.08": {
+          "rgb": [
+            90.1,
+            109.5,
+            108.9
+          ],
+          "patches": 4
+        },
+        "edge0.2": {
+          "rgb": [
+            88.3,
+            105.3,
+            106.2
+          ],
+          "patches": 4
+        },
+        "edge0.35": {
+          "rgb": [
+            87.9,
+            103.1,
+            100
+          ],
+          "patches": 4
+        },
+        "deep": {
+          "rgb": [
+            87.4,
+            95.9,
+            84.3
+          ],
+          "patches": 8
+        },
+        "deepLightness": 39.6,
+        "edgeMinusDeepLightness": [
+          5.1,
+          3.6,
+          2.7
+        ],
+        "edgeDeltaE": [
+          9.2,
+          8.9,
+          6.3
+        ],
+        "rimLightness": 5.1
+      },
+      "after": {
+        "edge0.08": {
+          "rgb": [
+            92.1,
+            121.9,
+            122.8
+          ],
+          "patches": 4
+        },
+        "edge0.2": {
+          "rgb": [
+            91.3,
+            124.8,
+            129.4
+          ],
+          "patches": 4
+        },
+        "edge0.35": {
+          "rgb": [
+            89.9,
+            125,
+            129.9
+          ],
+          "patches": 4
+        },
+        "deep": {
+          "rgb": [
+            81.6,
+            115.7,
+            121.8
+          ],
+          "patches": 8
+        },
+        "deepLightness": 46.4,
+        "edgeMinusDeepLightness": [
+          2.6,
+          3.6,
+          3.6
+        ],
+        "edgeDeltaE": [
+          4.2,
+          3.7,
+          3.7
+        ],
+        "rimLightness": 3.6
+      }
+    },
+    {
+      "view": "river-y-bridge-z2.00",
+      "source": "24-lot river y bridge (D3a real-input state): back NE and front SW (mirrored SE) abutments",
+      "tile": [
+        17,
+        5
+      ],
+      "zoom": 2,
+      "before": {
+        "edge0.08": {
+          "rgb": [
+            92.8,
+            112.1,
+            110.5
+          ],
+          "patches": 4
+        },
+        "edge0.2": {
+          "rgb": [
+            89.1,
+            105.8,
+            106.2
+          ],
+          "patches": 4
+        },
+        "edge0.35": {
+          "rgb": [
+            88.8,
+            104.5,
+            102.5
+          ],
+          "patches": 4
+        },
+        "deep": {
+          "rgb": [
+            83.7,
+            91.4,
+            78.3
+          ],
+          "patches": 1
+        },
+        "deepLightness": 37.8,
+        "edgeMinusDeepLightness": [
+          7.9,
+          5.6,
+          5.1
+        ],
+        "edgeDeltaE": [
+          11.4,
+          10.5,
+          9
+        ],
+        "rimLightness": 7.9
+      },
+      "after": {
+        "edge0.08": {
+          "rgb": [
+            95.3,
+            123.4,
+            122.6
+          ],
+          "patches": 4
+        },
+        "edge0.2": {
+          "rgb": [
+            92,
+            124.2,
+            127.8
+          ],
+          "patches": 4
+        },
+        "edge0.35": {
+          "rgb": [
+            90.8,
+            124.5,
+            128
+          ],
+          "patches": 4
+        },
+        "deep": {
+          "rgb": [
+            77.2,
+            112.2,
+            121
+          ],
+          "patches": 1
+        },
+        "deepLightness": 45.1,
+        "edgeMinusDeepLightness": [
+          4.6,
+          4.8,
+          4.8
+        ],
+        "edgeDeltaE": [
+          7.5,
+          5.7,
+          5.8
+        ],
+        "rimLightness": 4.8
+      }
+    }
+  ]
+}

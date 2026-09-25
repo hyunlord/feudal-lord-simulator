@@ -143,6 +143,9 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | IN3 | 정적 검사 범위: 패널·저장·선포 확정 같은 UI 명령 버튼은 DOM `click` 유지(버튼 활성화는 키보드·터치·컨트롤러 포커스에서도 같은 이벤트). 처리기에 이벤트 객체를 넘기거나 참조로 달지 않는다 | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-4](../design/input-intents.md) |
 | PL1 | `PlatformServices` = storage(B8 SaveStorage + ready)·preferences·window(DPR·전체화면·render scale)·locale·input. 웹 구현 1개가 localStorage·IndexedDB·DPR·navigator를 부르는 유일한 곳 | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-5](../design/input-intents.md) |
 | PL2 | 해상도 배율 0.75/1/1.25(설정, 기본 1): 캔버스 내부 해상도 = CSS × DPR × 배율, 지면 청크 키에 배율(1이면 키 불변) | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-6](../design/input-intents.md) |
+| WL7 | 벽 띠 v2: 정면 20px(원본 128행, 205px/칸) + 윗면 7.5px(48행, 톱니 행을 정면 윗변에, 뒤쪽 선 0.15칸 뒤로 기울여), 세로 벽은 diag_top 평면, 석벽 90° 모서리는 Wave 4d 탑(원통만), 135°·목책은 기존 조각, 명도 잡음 없음 | 렌더 결정(D3b-2) | 2026-09-25 | [성벽 곡선 WL-6](../design/wall-faces.md) |
+| SH4 | 깊은 물 = Wave 4d deep a|b|c(절반 크기, seed 위상), D3b 색 보정 제거, 물가 띠 물 쪽 56→88행 알파 페이드, 물가 띠 6장, 갈대·돌 스프라이트(1.5–2.5칸, 반전), 앞쪽 교대 SE(y 다리는 반전) | 렌더 결정(D3b-2) | 2026-09-25 | [물가 곡선 SH-4](../design/shoreline.md) |
+| WL8 | `RENDER_WALL_STRIPS` 기본 켬(v2 띠), 명도 잡음 없음. WL6의 기본 끔을 대체 | 확정(사용자, 2026-09-25 D3b-2 3중 비교 캡처 확인) | 2026-09-25 | [성벽 곡선 WL-6](../design/wall-faces.md) · [D3b-2 보고서](../verification/d3b2-walls/REPORT.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
 
 ## R1-fix 확정 규칙

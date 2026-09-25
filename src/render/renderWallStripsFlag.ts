@@ -1,14 +1,15 @@
-// RENDER_WALL_STRIPS: completed walls as extruded face strips along the smoothed wall baseline (D3b), on top of the
-// curved ground (RENDER_BOUNDARY_V2). Default off (owner decision 2026-09-25: the strips have no wall walk or parapet
-// and read too light to be walls); off, finished walls are the previous per-edge pieces. The shoreline keeps sharing
-// the wall baseline, the water tint and the strip join fix either way; only the shore strip under a wall follows this
-// flag (the face strip is what covers it). Precedence: URL query `render-wall-strips=1|0` > stored choice > default.
+// RENDER_WALL_STRIPS: completed walls as extruded strips along the smoothed wall baseline, on top of the curved ground
+// (RENDER_BOUNDARY_V2). History: D3b v1 strips were turned off by default (owner decision 2026-09-25, WL6: no wall
+// walk or parapet, too light); D3b-2 v2 strips (face + top, Wave 4d) are on by default (owner approval 2026-09-25 of
+// the three-way captures, WL8). Off (`render-wall-strips=0`), finished walls are the previous per-edge pieces. The
+// shoreline shares the wall baseline either way; only the shore strip under a wall follows this flag (the face strip
+// is what covers it). Precedence: URL query `render-wall-strips=1|0` > stored choice > default.
 
 import { platformServices } from "../platform/platform";
 
 export const RENDER_WALL_STRIPS_QUERY = "render-wall-strips";
 export const RENDER_WALL_STRIPS_STORAGE_KEY = "feudal.renderWallStrips";
-const RENDER_WALL_STRIPS_DEFAULT = false;
+const RENDER_WALL_STRIPS_DEFAULT = true;
 
 type FlagEnvironment = {
   readonly search?: string;

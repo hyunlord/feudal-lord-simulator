@@ -68,15 +68,15 @@ function groundOps(context: CanvasRenderingContext2D, state: GameState): number 
 // Seed 2 south: the stone wall standing on the lake (the D3b shoreline capture).
 const LAKE_WALL = [46, 45] as const;
 
-test("Given query, stored choice and default When the wall strips flag is resolved Then the URL wins, then the stored choice, and the default is off", () => {
+test("Given query, stored choice and default When the wall strips flag is resolved Then the URL wins, then the stored choice, and the default is on (v2 strips, WL8)", () => {
   const storage = (value: string | null) => ({ getItem: () => value });
-  assert.equal(resolveWallStripsFlag({}), false);
-  assert.equal(wallStripsEnabled(), false);
+  assert.equal(resolveWallStripsFlag({}), true);
+  assert.equal(wallStripsEnabled(), true);
   assert.equal(resolveWallStripsFlag({ storage: storage("1") }), true);
   assert.equal(resolveWallStripsFlag({ storage: storage("0") }), false);
   assert.equal(resolveWallStripsFlag({ search: "?render-wall-strips=0", storage: storage("1") }), false);
   assert.equal(resolveWallStripsFlag({ search: "?render-boundary-v2=1&render-wall-strips=1", storage: storage("0") }), true);
-  assert.equal(resolveWallStripsFlag({ storage: { getItem: () => { throw new Error("blocked"); } } }), false);
+  assert.equal(resolveWallStripsFlag({ storage: { getItem: () => { throw new Error("blocked"); } } }), true);
 });
 
 test("Given curved ground on and wall strips off When the lake wall is drawn Then no wall face code runs and the shore strip is drawn under the wall", async () => {

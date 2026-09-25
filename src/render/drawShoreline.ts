@@ -11,13 +11,15 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 
 // Water in the ground chunks (D3a, RENDER_BOUNDARY_V2 only). Order inside a chunk, after the land and the forest:
-//  1. deep water: the existing water surface, one even-odd path from the shoreline loops (+ the chunk rectangle when the
-//     chunk lies wholly inside water), world-screen aligned exactly like the old per-tile water;
+//  1. deep water: the Wave 4d deep fills joined a | b | c (D3b-2; the old surface until they load), one even-odd path
+//     from the shoreline loops (+ the chunk rectangle when the chunk lies wholly inside water), world-screen aligned at
+//     half scale (a 256x128 fill = 2x2 tiles) with a phase from the seed, so chunks join without seams;
 //  2. shallow band: `shallow_{a,b,c}` (one variant and phase per loop, hashed) stroked along the outline in world
 //     space, clipped to the water, six stacked widths (1.2 .. 0.4 tile) so it fades out by SHALLOW_DEPTH;
-//  3. code-drawn shallow stones and waterweed blobs;
-//  4. shore strips: `shoreline_{a,b,c,d}` joined a | b | c | d (16-tile period) and laid along the outline segment by
-//     segment (texture u = arc length, v across; land up), the painted waterline on the outline.
+//  3. shore strips: `shoreline_{a..f}` joined a | b | c | d | e | f (24-tile period) and laid along the outline segment
+//     by segment (texture u = arc length, v across; land up), the painted waterline on the outline;
+//  4. reeds and mudstones (Wave 4d sprites, mirrored by hash) at the scattered decal anchors, over the strips; the
+//     D3a code-drawn blobs until the sprites load.
 // Bridge abutments are drawn live after the bridge decks (drawTerrainBoundaryV2), with the decks.
 
 const STRIP_WIDTH = 512;
@@ -59,7 +61,7 @@ export function drawShoreline(context: CanvasRenderingContext2D, shore: Shorelin
   if (loops.length === 0 && !parity) return;
   // 1. Deep water.
   traceWater(context, shore, loops, parity, chunk);
-  const deep = waterPattern(context);
+  const deep = deepWaterPattern(context, seed) ?? waterPattern(context);
   context.fillStyle = deep ?? SEMANTIC_PALETTE.water;
   context.fill("evenodd");
   if (loops.length === 0) return;
@@ -71,16 +73,78 @@ export function drawShoreline(context: CanvasRenderingContext2D, shore: Shorelin
     const loop = shore.loops[index];
     if (loop !== undefined) drawShallowBand(context, loop, seed);
   }
-  for (const index of loops) {
-    const loop = shore.loops[index];
-    if (loop !== undefined) drawShoreDecals(context, loop, tileBounds);
+  const sprites = decalSpritesReady();
+  if (!sprites) {
+    for (const index of loops) {
+      const loop = shore.loops[index];
+      if (loop !== undefined) drawShoreDecals(context, loop, tileBounds);
+    }
   }
   context.restore();
-  // 4. Shore strips (they reach over the land too).
+  // 3. Shore strips (they reach over the land too).
   for (const index of loops) {
     const loop = shore.loops[index];
     if (loop !== undefined) drawShoreStrip(context, loop, tileBounds);
   }
+  // 4. Reeds and mudstones over the strips (not clipped: reeds stand above the waterline).
+  if (sprites) {
+    for (const index of loops) {
+      const loop = shore.loops[index];
+      if (loop !== undefined) drawDecalSprites(context, loop, tileBounds);
+    }
+  }
+}
+
+/** A smoothed sprite, mirrored about its own vertical centre line when asked (decals, the SW abutment). */
+function drawMirrorableSprite(context: CanvasRenderingContext2D, image: CanvasImageSource, source: { x: number; y: number; width: number; height: number },
+  destination: { x: number; y: number; width: number; height: number }, mirrored: boolean): void {
+  if (!mirrored) { drawCroppedWorldSprite(context, image, source, destination, false, true); return; }
+  const centre = destination.x + destination.width / 2;
+  context.save();
+  context.translate(centre, 0); context.scale(-1, 1); context.translate(-centre, 0);
+  drawCroppedWorldSprite(context, image, source, destination, false, true);
+  context.restore();
+}
+
+/** Display widths at zoom 1 (source 96x96 reeds, 64x48 mudstones at 128 source px per tile along the shore). */
+const DECAL_WIDTH = { weed: 24, stone: 16 } as const;
+function decalSpritesReady(): boolean {
+  return [...TERRAIN_VARIANTS.shoreReeds, ...TERRAIN_VARIANTS.shoreStones].every(key => shoreAsset(key) !== null);
+}
+
+function drawDecalSprites(context: CanvasRenderingContext2D, loop: ShoreLoop, tileBounds: BoundaryBounds): void {
+  for (const decal of loop.decals) {
+    if (decal.anchor.x < tileBounds.left - 1 || decal.anchor.x > tileBounds.right + 1 || decal.anchor.y < tileBounds.top - 1 || decal.anchor.y > tileBounds.bottom + 1) continue;
+    const family = decal.kind === "stone" ? TERRAIN_VARIANTS.shoreStones : TERRAIN_VARIANTS.shoreReeds;
+    const image = shoreAsset(family[decal.variant % family.length] as ShoreAssetKey);
+    if (image === null) continue;
+    const width = DECAL_WIDTH[decal.kind]; const height = width * image.naturalHeight / image.naturalWidth;
+    const at = tileToScreen(decal.anchor.x, decal.anchor.y);
+    // Bottom centre on the anchor (a mudstone sits a little into the water: its lower third below the anchor).
+    const sink = decal.kind === "stone" ? height / 3 : height * 0.12;
+    drawMirrorableSprite(context, image, { x: 0, y: 0, width: image.naturalWidth, height: image.naturalHeight },
+      { x: at.sx - width / 2, y: at.sy - height + sink, width, height }, decal.flip);
+  }
+}
+
+// Browser image cache: the three deep fills joined once (the a image alone in Node).
+let joinedDeep: CanvasImageSource | null = null;
+const DEEP_WIDTH = 256;
+const DEEP_HEIGHT = 128;
+const DEEP_JOIN_FADE = 32;
+function deepWaterPattern(context: CanvasRenderingContext2D, seed: number): CanvasPattern | null {
+  if (typeof context.createPattern !== "function") return null;
+  if (joinedDeep === null) {
+    const images = TERRAIN_VARIANTS.deepWater.map(key => shoreAsset(key));
+    if (images.some(image => image === null)) return null;
+    joinedDeep = typeof document === "undefined" ? images[0] as HTMLImageElement : joinStripImages(images as HTMLImageElement[], DEEP_WIDTH, DEEP_HEIGHT, DEEP_JOIN_FADE);
+    if (joinedDeep === null) return null;
+  }
+  const pattern = cachedPattern(context, joinedDeep);
+  if (pattern === null) return null;
+  const phase = { x: hashOf(seed, 17) % (DEEP_WIDTH * 3), y: hashOf(seed, 29) % DEEP_HEIGHT };
+  pattern.setTransform({ a: 0.5, b: 0, c: 0, d: 0.5, e: -phase.x * 0.5, f: -phase.y * 0.5 });
+  return pattern;
 }
 
 /** World (tile-centre) -> world-screen matrix of the iso projection. */
@@ -198,19 +262,22 @@ function drawShoreStrip(context: CanvasRenderingContext2D, loop: ShoreLoop, tile
   }
 }
 
-/** Bridge abutments (Wave 4b): at the back end of every bridge, the NW module for x bridges, the NE one for y bridges. */
+/**
+ * Bridge abutments: at the back end of every bridge the Wave 4b NW module (x bridges) or NE module (y bridges); at the
+ * front end (D3b-2) the Wave 4d SE module (x bridges) or the same module mirrored as SW (y bridges).
+ */
 export function drawBridgeAbutments(context: CanvasRenderingContext2D, shore: Shoreline): void {
   for (const end of shore.bridgeEnds) {
-    if (!end.back) continue;
-    const key: ShoreAssetKey = end.axis === "x" ? "bridge_abutment_nw_a" : "bridge_abutment_ne_a";
+    const key: ShoreAssetKey = end.back ? (end.axis === "x" ? "bridge_abutment_nw_a" : "bridge_abutment_ne_a") : "bridge_abutment_se_a";
+    const mirrored = !end.back && end.axis === "y";
     const raster = shoreAssetRaster(key);
     const image = raster?.image ?? shoreAsset(key);
     if (image === null) continue;
     const source = raster?.source ?? { x: 0, y: 0, width: ABUTMENT_SIZE.width, height: ABUTMENT_SIZE.height };
     const width = ABUTMENT_DISPLAY_WIDTH; const height = width * ABUTMENT_SIZE.height / ABUTMENT_SIZE.width;
     const at = tileToScreen(end.mid.x, end.mid.y);
-    drawCroppedWorldSprite(context, image, source, { x: at.sx - width * ABUTMENT_ANCHOR.x / ABUTMENT_SIZE.width,
-      y: at.sy - height * ABUTMENT_ANCHOR.y / ABUTMENT_SIZE.height, width, height }, false, true);
+    drawMirrorableSprite(context, image, source, { x: at.sx - width * ABUTMENT_ANCHOR.x / ABUTMENT_SIZE.width,
+      y: at.sy - height * ABUTMENT_ANCHOR.y / ABUTMENT_SIZE.height, width, height }, mirrored);
   }
 }
 

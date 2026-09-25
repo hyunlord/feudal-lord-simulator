@@ -39,7 +39,7 @@ function loadAll(keys: readonly LoadedKey[]): Promise<void> {
       const exact = image.naturalWidth === asset.width && image.naturalHeight === asset.height;
       entry.image = exact ? image : null;
       entry.status = exact ? "ready" : "missing";
-      if (exact && asset.role === "module") {
+      if (exact && asset.role === "module" && key.startsWith("bridge_abutment")) {
         try { entry.raster = rasterizeWorldSprite(image, { x: 0, y: 0, width: asset.width, height: asset.height }, Math.ceil(ABUTMENT_DISPLAY_WIDTH * asset.height / asset.width * 2)); }
         catch (error) { if (!(error instanceof Error)) throw error; entry.raster = null; }
       }
@@ -60,36 +60,31 @@ export function wallFaceReadiness(): string {
 }
 
 /**
- * Shallow water and shore strips as drawn (D3b colour correction): the Wave 4b shallows (97/135/143) and the strips'
- * water half (94/123/124) are lighter and bluer than the old deep water surface (88/95/81, mean of its drawn crop), so
- * they are pulled toward it once per image, in this cache: shallows by SHALLOW_TINT, the strip's water rows by a ramp
- * from 0 at the waterline to STRIP_TINT two tiles' worth of rows below it. The tint colour is the palette stone ramp's
- * second step (86/86/84), the palette colour nearest the deep mean. Browser only; the raw image in Node.
+ * Shallow water and shore strips as drawn (browser image cache, once per image; the raw image in Node).
+ *  - D3b pulled the Wave 4b shallows (97/135/143) and the strips' water half (94/123/124) toward the old deep water
+ *    surface (88/95/81) by 45%. D3b-2 draws the Wave 4d deep fills, the same blue-grey family, so the tint is gone.
+ *  - D3b-2 fades each strip's water half instead: its own water colour differs a little per variant (a..d lighter
+ *    than the deep fill, e / f darker) and it used to end in a hard edge at the drawn cut (row 88), which read as a
+ *    band along the shore. Alpha now falls linearly from 1 at STRIP_FADE_FROM to 0 at the cut, so the strip keeps its
+ *    painted waterline and mud and melts into the shallows below.
  */
-export const SHALLOW_TINT = 0.45;
-export const STRIP_TINT = 0.45;
-const STRIP_WATERLINE_ROW = 42;
-const STRIP_TINT_FULL_ROW = 60;
+const STRIP_FADE_FROM = 56;
+const STRIP_FADE_TO = 88;
 export function shoreSurface(key: ShoreAssetKey): CanvasImageSource | null {
   const entry = entries.get(key);
   if (entry === undefined || entry.image === null) return null;
   if (entry.tinted !== undefined) return entry.tinted ?? entry.image;
-  const shallow = (TERRAIN_VARIANTS.shallowWater as readonly string[]).includes(key);
   const strip = (TERRAIN_VARIANTS.shoreline as readonly string[]).includes(key);
-  if ((!shallow && !strip) || typeof document === "undefined") { entry.tinted = null; return entry.image; }
+  if (!strip || typeof document === "undefined") { entry.tinted = null; return entry.image; }
   const image = entry.image;
   const canvas = document.createElement("canvas"); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;
   const paint = canvas.getContext("2d");
   if (paint === null) { entry.tinted = null; return image; }
   drawCroppedWorldSprite(paint, image, { x: 0, y: 0, width: canvas.width, height: canvas.height }, { x: 0, y: 0, width: canvas.width, height: canvas.height }, false, false);
-  paint.globalCompositeOperation = "source-atop";
-  if (shallow) {
-    paint.fillStyle = withAlpha(RAMPS.stone[1], SHALLOW_TINT); paint.fillRect(0, 0, canvas.width, canvas.height);
-  } else {
-    for (let row = STRIP_WATERLINE_ROW; row < canvas.height; row += 1) {
-      const amount = STRIP_TINT * Math.min(1, (row - STRIP_WATERLINE_ROW) / (STRIP_TINT_FULL_ROW - STRIP_WATERLINE_ROW));
-      paint.fillStyle = withAlpha(RAMPS.stone[1], amount); paint.fillRect(0, row, canvas.width, 1);
-    }
+  paint.globalCompositeOperation = "destination-out";
+  for (let row = STRIP_FADE_FROM; row < canvas.height; row += 1) {
+    const cut = Math.min(1, (row - STRIP_FADE_FROM) / (STRIP_FADE_TO - STRIP_FADE_FROM));
+    paint.fillStyle = withAlpha(RAMPS.stone[1], cut); paint.fillRect(0, row, canvas.width, 1);
   }
   paint.globalCompositeOperation = "source-over";
   entry.tinted = canvas;
