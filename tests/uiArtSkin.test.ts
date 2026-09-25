@@ -33,10 +33,11 @@ test("Given the UI art manifest When its files are listed Then every url exists 
 });
 
 test("Given an icon at 24, 32 and 48 CSS px When styled Then the 1x and 2x copies are the size and its double (no run-time scaling)", () => {
-  for (const [size, x1, x2] of [[24, 24, 48], [32, 32, 64], [48, 48, 96]] as const) {
+  // The 2x copy of the 48 px icon is the 96 px original (no size suffix).
+  for (const [size, x1, x2] of [[24, "-24", "-48"], [32, "-32", "-64"], [48, "-48", ""]] as const) {
     const style = uiIconStyle("time", "play", size);
     assert.equal(style.width, `${size}px`);
-    assert.match(String(style.backgroundImage), new RegExp(`icon_time_sheet${x1 === 96 ? "" : `-${x1}`}\\.png"\\) 1x, url\\("[^"]*icon_time_sheet${x2 === 96 ? "" : `-${x2}`}\\.png"\\) 2x`));
+    assert.match(String(style.backgroundImage), new RegExp(`icon_time_sheet${x1}\\.png"\\) 1x, url\\("[^"]*icon_time_sheet${x2}\\.png"\\) 2x`));
     assert.equal(style.backgroundSize, `${4 * size}px ${size}px`);
     assert.equal(style.backgroundPosition, `${-size}px 0`);
   }
