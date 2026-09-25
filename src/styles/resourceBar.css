@@ -77,7 +77,7 @@
 .resource-bar__secondary, .resource-bar__trend { font-size: var(--font-meta); line-height: 17px; }
 .resource-bar__trend { display: block; color: var(--palette-vellum); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .resource-bar__more { position: absolute; right: 0; top: calc(100% + 4px); max-width: min(420px, calc(100vw - 24px)); font-size: var(--font-meta); background: var(--palette-ink); border: 1px solid var(--palette-earth); }
-.resource-bar__more summary { padding: 2px 8px; cursor: pointer; }
+.resource-bar__more summary { padding: 12px 8px; cursor: pointer; }
 .resource-bar__more p { padding: 0 12px; }
 .resource-bar__more:focus-within { outline: 2px solid var(--palette-gold); }
 @media (max-width: 850px) {

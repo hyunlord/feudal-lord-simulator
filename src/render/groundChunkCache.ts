@@ -4,7 +4,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //
 // Cache (AGENTS rule 10):
 // (a) Key per (layer, chunk): the chunk's content key (a hash of exactly the primitives it draws, see
-//     groundBoundaryScene.ts) + asset readiness bits + zoom bucket (0.05) + device pixel ratio.
+//     groundBoundaryScene.ts) + asset readiness bits + zoom bucket (0.05) + device pixel ratio; the render scale
+//     (B9 setting 0.75 / 1 / 1.25) is part of the raster scale and, when not 1, of the content key (drawTerrainBoundaryV2).
 // (b) Camera pan is not in the key: a raster is in world units and only its device-pixel destination moves.
 //     Zoom inside one 0.05 bucket reuses the raster with a slight resample; crossing a bucket re-rasters (at most
 //     ZOOM_RERASTER_BUDGET chunks per frame; the rest are drawn from their previous zoom until their turn). A

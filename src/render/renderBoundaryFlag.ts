@@ -2,6 +2,8 @@
 // V1 (owner decision 2026-09-24, after the D1a gates); the settings toggle and `render-boundary-v2=0` turn it off. Precedence: URL query `render-boundary-v2=1|0` > the settings toggle (per browser) >
 // default. With the flag off the renderer takes exactly the previous code path.
 
+import { platformServices } from "../platform/platform";
+
 export const RENDER_BOUNDARY_V2_QUERY = "render-boundary-v2";
 export const RENDER_BOUNDARY_V2_STORAGE_KEY = "feudal.renderBoundaryV2";
 const RENDER_BOUNDARY_V2_DEFAULT = true;
@@ -23,10 +25,9 @@ export function resolveBoundaryV2Flag(environment: FlagEnvironment): boolean {
 }
 
 function browserEnvironment(): FlagEnvironment {
-  if (typeof window === "undefined") return {};
-  let storage: Storage | null = null;
-  try { storage = window.localStorage; } catch { storage = null; }
-  return { search: window.location.search, storage };
+  // The stored choice lives in the platform preferences (B9); the URL query stays a web-only override.
+  const preferences = platformServices().preferences;
+  return { search: typeof window === "undefined" ? "" : window.location.search, storage: { getItem: key => preferences.get(key) } };
 }
 
 let enabled = resolveBoundaryV2Flag(browserEnvironment());
@@ -38,9 +39,7 @@ export function boundaryV2Enabled(): boolean {
 
 /** Settings toggle and tests. `persist` stores the choice for this browser (the URL query still wins on reload). */
 export function setBoundaryV2Enabled(value: boolean, persist = false): void {
-  if (persist && typeof window !== "undefined") {
-    try { window.localStorage.setItem(RENDER_BOUNDARY_V2_STORAGE_KEY, value ? "1" : "0"); } catch { /* storage blocked */ }
-  }
+  if (persist) platformServices().preferences.set(RENDER_BOUNDARY_V2_STORAGE_KEY, value ? "1" : "0");
   if (enabled === value) return;
   enabled = value;
   for (const listener of listeners) listener(value);

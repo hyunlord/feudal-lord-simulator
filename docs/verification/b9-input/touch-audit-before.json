@@ -1,0 +1,1051 @@
+{
+  "url": "http://127.0.0.1:4242/",
+  "viewport": "1280x800",
+  "minTarget": 44,
+  "minText": 12,
+  "summary": {
+    "smallTargets": 186,
+    "smallText": 0,
+    "uniqueSmallTargets": 40,
+    "uniqueSmallText": 0
+  },
+  "rows": [
+    {
+      "state": "welcome",
+      "note": "",
+      "targets": 2,
+      "texts": 6,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "hud",
+      "note": "",
+      "targets": 19,
+      "texts": 38,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "build-menu",
+      "note": "first category open",
+      "targets": 21,
+      "texts": 42,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "zone-brush",
+      "note": "zone card armed",
+      "targets": 23,
+      "texts": 41,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "ledger",
+      "note": "finance cell open",
+      "targets": 28,
+      "texts": 55,
+      "smallTargets": [
+        {
+          "element": "button.ledger-panel__tab \"현금\"",
+          "width": 38.5,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__tab \"목적 기금\"",
+          "width": 64.4,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__tab \"미납 의무\"",
+          "width": 64.4,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__tab \"현물 의무\"",
+          "width": 64.4,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__tab \"최근 2,400틱\"",
+          "width": 86.1,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__tab \"지난 기간\"",
+          "width": 64.4,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__tab \"전체\"",
+          "width": 38.5,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__source \"·이월 잔액 · 1건 +38274\"",
+          "width": 139.8,
+          "height": 25.5
+        },
+        {
+          "element": "button.ledger-panel__entry \"679251틱 · 이월 잔액 +38274\"",
+          "width": 169.5,
+          "height": 25.5
+        },
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "population",
+      "note": "population drawer open",
+      "targets": 19,
+      "texts": 40,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "resource-detail",
+      "note": "",
+      "targets": 19,
+      "texts": 41,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 418,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "settlement",
+      "note": "",
+      "targets": 21,
+      "texts": 60,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "map",
+      "note": "",
+      "targets": 20,
+      "texts": 37,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "view",
+      "note": "",
+      "targets": 25,
+      "texts": 44,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.overlay-seal \"문제만 보기, 단축키 O\"",
+          "width": 94.4,
+          "height": 34
+        },
+        {
+          "element": "button.overlay-seal \"물 보기, 단축키 1\"",
+          "width": 34.8,
+          "height": 34
+        },
+        {
+          "element": "button.overlay-seal \"일손 보기, 단축키 2\"",
+          "width": 48.7,
+          "height": 34
+        },
+        {
+          "element": "button.overlay-seal \"배급 보기, 단축키 3\"",
+          "width": 48.7,
+          "height": 34
+        },
+        {
+          "element": "button.overlay-seal \"연결된 길 보기, 단축키 4\"",
+          "width": 80.6,
+          "height": 34
+        },
+        {
+          "element": "button.overlay-seal \"윤곽 보기\"",
+          "width": 48.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "settings",
+      "note": "",
+      "targets": 22,
+      "texts": 44,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.autoplay-toggle \"자동 발전\"",
+          "width": 77.6,
+          "height": 34
+        },
+        {
+          "element": "button.autoplay-toggle \"곡선 지면\"",
+          "width": 77.6,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    },
+    {
+      "state": "diagnostic-card",
+      "note": "house house-44-40-0 selected",
+      "targets": 23,
+      "texts": 57,
+      "smallTargets": [
+        {
+          "element": "summary \"자원 상세\"",
+          "width": 78.2,
+          "height": 20
+        },
+        {
+          "element": "button.inspector-close \"상세 정보 닫기\"",
+          "width": 32,
+          "height": 32
+        },
+        {
+          "element": "summary \"주택 발전 조건\"",
+          "width": 298,
+          "height": 40
+        },
+        {
+          "element": "button.diagnostic-card-merge \"오른쪽 아래 주택과 2×1 합필\"",
+          "width": 298,
+          "height": 38
+        },
+        {
+          "element": "button.diagnostic-card-cancel \"주택 철거\"",
+          "width": 85.6,
+          "height": 38
+        },
+        {
+          "element": "summary \"지도\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.build-menu-category \"주택\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"도로\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"생산·\"",
+          "width": 60.5,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"저장\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"공공\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"방어\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "button.build-menu-category \"구역\"",
+          "width": 54,
+          "height": 32
+        },
+        {
+          "element": "summary \"보기\"",
+          "width": 45.7,
+          "height": 34
+        },
+        {
+          "element": "button.speed-seal \"일시 정지\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"1배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"3배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "button.speed-seal \"5배속\"",
+          "width": 36,
+          "height": 32
+        },
+        {
+          "element": "summary \"설정\"",
+          "width": 45.7,
+          "height": 34
+        }
+      ],
+      "smallText": []
+    }
+  ]
+}

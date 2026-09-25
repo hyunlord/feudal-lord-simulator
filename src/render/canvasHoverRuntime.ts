@@ -1,27 +1,23 @@
-import { getTile } from '../world/grid';
 import { causeHoverTarget } from './causeMapInteraction';
-import { townLandscapeAssetReady } from './townLandscapeAssets';
-import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from './townLandscape';
-import { clientToCanvas } from './camera';
+import { canvasToWorld, type Point } from './camera';
 import { hoveredBuildingPosition } from './canvasRuntime';
-import { pointerTile } from './interactions';
-import { updateCameraEdgePoint, type CameraInputState, type GameCanvasRuntimeInput } from './gameCanvasRuntimeInput';
+import { pickTile } from './picking';
+import type { GameCanvasRuntimeInput } from './gameCanvasRuntimeInput';
 import type { CanvasMutableRefs } from './canvasRuntimeRefs';
 import type { GameState } from '../engine/engine.types';
 import type { PlacementTool } from './renderer';
 
-export function updateCanvasHover(event: MouseEvent, canvas: HTMLCanvasElement, refs: CanvasMutableRefs,
-  cameraInput: CameraInputState, state: GameState, selectedTool: PlacementTool | null,
+/**
+ * The pointer is at `point` (canvas pixels; the `point` intent): hover tile, cause marker under it, hover card. The
+ * town landscape line is no longer a hover tooltip (B9): selecting the tile shows it (canvasClickRuntime.ts).
+ */
+export function updateCanvasHover(point: Point, canvas: HTMLCanvasElement, refs: CanvasMutableRefs,
+  state: GameState, selectedTool: PlacementTool | null,
   setHoveredBuilding: GameCanvasRuntimeInput['setHoveredBuilding']): void {
   const bounds = canvas.getBoundingClientRect();
-  const point = clientToCanvas(event, bounds);
-  updateCameraEdgePoint(cameraInput, point);
-  refs.hoverRef.current = pointerTile(event, bounds, refs.cameraRef.current);
-  const ground = refs.hoverRef.current === null ? null : getTile(state, refs.hoverRef.current);
-  const landscape = ground === null ? null : townLandscapeAt(state, ground);
-  canvas.title = selectedTool === null && landscape !== null && townLandscapeAssetReady(landscape) ? TOWN_LANDSCAPE_TOOLTIP : '';
+  refs.hoverRef.current = pickTile(canvasToWorld(point, refs.cameraRef.current));
   const target = causeHoverTarget(state, refs.cameraRef.current, point, selectedTool, refs.hoverRef.current);
   refs.hoverRef.current = target.tile;
   setHoveredBuilding(target.buildingId === null ? null : { buildingId: target.buildingId,
-    clusterCount: target.clusterCount, ...hoveredBuildingPosition(event, bounds) });
+    clusterCount: target.clusterCount, ...hoveredBuildingPosition({ clientX: point.x + bounds.left, clientY: point.y + bounds.top }, bounds) });
 }

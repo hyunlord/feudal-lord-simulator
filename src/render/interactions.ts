@@ -104,12 +104,18 @@ export function releaseTileFromMouseUp(
 }
 
 export function zoomAtPoint(input: ZoomInput): CameraState {
-  const before = canvasToWorld(input.canvasPoint, input.camera);
-  const zoom = clampZoom(input.camera.zoom * (input.deltaY > 0 ? 0.9 : 1.1));
+  return zoomByFactor({ camera: input.camera, anchor: input.canvasPoint, factor: input.deltaY > 0 ? 0.9 : 1.1,
+    viewport: input.viewport, world: input.world });
+}
+
+/** Zoom by `factor` keeping the world point under `anchor` (canvas pixels) in place (the `zoom` input intent). */
+export function zoomByFactor(input: Readonly<{ camera: CameraState; anchor: Point; factor: number; viewport: ViewportBounds; world: WorldBounds }>): CameraState {
+  const before = canvasToWorld(input.anchor, input.camera);
+  const zoom = clampZoom(input.camera.zoom * input.factor);
   const camera = {
     zoom,
-    panX: input.canvasPoint.x - before.x * zoom,
-    panY: input.canvasPoint.y - before.y * zoom,
+    panX: input.anchor.x - before.x * zoom,
+    panY: input.anchor.y - before.y * zoom,
   };
   return clampPan(camera, input.viewport, input.world);
 }

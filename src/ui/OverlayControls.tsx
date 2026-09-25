@@ -1,10 +1,10 @@
-import { useEffect, useId, useMemo, useState, type PointerEvent } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 
 import { KO_UI } from "../content/locale.ko";
 import { SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { TerrainType } from "../content/terrainConfig";
+import { platformServices } from "../platform/platform";
 import {
-  MINIMAP_CAMERA_JUMP_EVENT,
   MINIMAP_VIEWPORT_EVENT,
   type MinimapViewportRect,
 } from "../render/minimapCameraJump";
@@ -97,13 +97,14 @@ export function MapOverview({ grid, onJumpToTile, viewportRect }: MapOverviewPro
     window.addEventListener(MINIMAP_VIEWPORT_EVENT, updateViewport);
     return () => window.removeEventListener(MINIMAP_VIEWPORT_EVENT, updateViewport);
   }, [viewportRect]);
-  const jumpToTile = (event: PointerEvent<HTMLButtonElement>) => {
-    const tile = minimapTileFromClientPoint(event, event.currentTarget.getBoundingClientRect(), grid);
+  // A press on the map overview is a camera jump: the `lookAt` input intent (B9), handled by the map.
+  const jumpToTile = (point: MinimapClientPoint, rect: MinimapClientRect) => {
+    const tile = minimapTileFromClientPoint(point, rect, grid);
     if (onJumpToTile !== undefined) {
       onJumpToTile(tile);
       return;
     }
-    window.dispatchEvent(new CustomEvent(MINIMAP_CAMERA_JUMP_EVENT, { detail: tile }));
+    platformServices().input.emit({ kind: "lookAt", tile });
   };
 
   return (
@@ -112,7 +113,7 @@ export function MapOverview({ grid, onJumpToTile, viewportRect }: MapOverviewPro
         type="button"
         className="map-overview"
         aria-label={KO_UI.map.jumpLabel}
-        onPointerDown={jumpToTile}
+        onPointerDown={event => jumpToTile({ clientX: event.clientX, clientY: event.clientY }, event.currentTarget.getBoundingClientRect())}
       >
         <svg viewBox="0 0 120 120" role="img" aria-labelledby={titleId}>
           <title id={titleId}>{KO_UI.map.title}</title>

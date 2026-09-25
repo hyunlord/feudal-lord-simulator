@@ -170,7 +170,7 @@ function drawGatePreview(context: CanvasRenderingContext2D, point: TileEdgePoint
   context.fillRect(anchor.x - 8 / zoom, anchor.y - 8 / zoom, 16 / zoom, 16 / zoom);
   context.strokeRect(anchor.x - 8 / zoom, anchor.y - 8 / zoom, 16 / zoom, 16 / zoom);
   context.fillStyle = PALETTE.ink;
-  context.font = `bold ${11 / zoom}px sans-serif`;
+  context.font = `bold ${12 / zoom}px sans-serif`;
   context.fillText(A_QUADRUPLE_PRIME_WALL_COPY.gateGlyph, anchor.x - 6 / zoom, anchor.y + 4 / zoom);
 }
 

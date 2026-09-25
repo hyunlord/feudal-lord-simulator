@@ -29,3 +29,11 @@
   .app-shell .settlement-status { padding: 4px 8px; }
   .app-shell .settlement-priority { font-size: var(--font-body); }
 }
+
+/* Touch target floor (B9, design master 13.1 rule 5): every control is at least 44x44 CSS px for touch and the Steam
+   Deck. It only raises minimums (`!important` so the many older size rules and media queries cannot lower them); a
+   control that is already larger keeps its size. Checked by tests/touchTargets.test.ts and scripts/touchTargetAudit.mjs. */
+.app-shell :is(button, summary, [role="button"], [role="tab"], a[href], select, input:not([type="hidden"])):not(.visually-hidden) {
+  min-width: 44px !important;
+  min-height: 44px !important;
+}

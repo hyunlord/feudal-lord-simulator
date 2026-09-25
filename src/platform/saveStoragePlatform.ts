@@ -1,5 +1,6 @@
 import { MemorySaveStorage, type SaveStorage } from "../save/saveStorage";
 import { IndexedDbSaveStorage, openSaveDatabase } from "./indexedDbSaveStorage";
+import { platformServices } from "./platform";
 
 /**
  * Reserved adapters (interface only, not implemented in B8):
@@ -19,8 +20,8 @@ export interface PlatformSaveStorage {
 
 const OPEN_TIMEOUT_MS = 3_000;
 
-/** The only place that picks a save adapter. */
-export async function openPlatformSaveStorage(
+/** The only place that picks a web save adapter (used by the web platform's storage). */
+export async function openWebSaveAdapter(
   environment: { readonly indexedDB?: IDBFactory } = globalThis,
 ): Promise<PlatformSaveStorage> {
   const factory = environment.indexedDB;
@@ -33,4 +34,17 @@ export async function openPlatformSaveStorage(
     }
   }
   return { storage: new MemorySaveStorage(), kind: "memory", persistent: false };
+}
+
+/**
+ * Saves for the game (B9): the platform's storage (PlatformServices.storage) and how it was opened. With an explicit
+ * `environment` (tests of the adapter choice) the web adapter is opened directly instead.
+ */
+export async function openPlatformSaveStorage(
+  environment?: { readonly indexedDB?: IDBFactory },
+): Promise<PlatformSaveStorage> {
+  if (environment !== undefined) return openWebSaveAdapter(environment);
+  const { storage } = platformServices();
+  const { kind, persistent } = await storage.ready();
+  return { storage, kind, persistent };
 }

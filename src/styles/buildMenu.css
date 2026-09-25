@@ -38,3 +38,7 @@
 .zone-radius { display: inline-flex; gap: 4px; }
 .zone-radius-button, .zone-polygon-toggle { min-width: 44px; min-height: 44px; padding: 0 8px; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-earth); cursor: pointer; font: var(--font-body)/20px var(--ui-body-font); }
 .zone-radius-button[aria-pressed="true"], .zone-polygon-toggle[aria-pressed="true"] { outline: 2px solid var(--palette-gold, currentColor); outline-offset: -2px; font-weight: 700; }
+/* Tap paths for what used to be hover-only tooltips (B9): the lines of a tapped card that cannot be built yet, and the
+   polygon hint while the polygon toggle is pressed. */
+.build-menu-pinned { margin: 0 0 8px; padding: 6px 8px; font-size: var(--font-meta); line-height: 1.5; color: var(--palette-ink); background: var(--palette-vellum); border: 1px solid var(--palette-earth); }
+.zone-polygon-hint { font-size: var(--font-meta); line-height: 1.4; }

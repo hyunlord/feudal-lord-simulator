@@ -66,8 +66,9 @@ test("app starts with no armed placement tool and consumes welcome dismissal loc
   assert.match(source, /inert=\{welcomeVisible \? true : undefined\}/);
   assert.match(source, /aria-hidden=\{welcomeVisible \? true : undefined\}/);
   assert.match(source, /feudal-lord-simulator:welcome-dismissed:v1/);
-  assert.match(source, /localStorage\.setItem\(WELCOME_DISMISSED_KEY, "1"\)/);
-  assert.match(source, /localStorage\.getItem\(WELCOME_DISMISSED_KEY\) === "1"/);
+  // B9: the dismissal is kept in the platform preferences (PlatformServices), not localStorage directly.
+  assert.match(source, /platformServices\(\)\.preferences\.set\(WELCOME_DISMISSED_KEY, "1"\)/);
+  assert.match(source, /platformServices\(\)\.preferences\.get\(WELCOME_DISMISSED_KEY\) === "1"/);
   assert.match(source, /setWelcomeVisible\(false\)/);
   assert.match(source, /onPointerDown=\{consumeDismissal\}/);
   assert.match(source, /onClick=\{consumeDismissal\}/);

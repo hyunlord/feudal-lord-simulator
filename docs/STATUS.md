@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-25(D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-25(B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 ## 현재 단계
 
@@ -32,6 +32,8 @@
 - 남은 어댑터 한 곳: `src/render/placementPredictionRuntime.ts:29-30`이 아직 옛 `tone` 줄을 만든다. `toPredictionLine`이 표시 전에 변환한다. D1a 병합 뒤 `severity`로 옮기고 `LegacyPredictionLine`을 지운다.
 
 ## 마지막 종료 작업
+
+**B9 입력 의도·플랫폼 계층·모바일/Deck 감사**(Claude Code, 렌더·UI·`src/platform`·`src/input`·`App.tsx`만, 엔진·구역·저장·콘텐츠·`src/state` 0줄): DOM 입력은 `src/input` 번역기만 받고 지도 조작·도구·속도·되돌리기는 `PlatformServices.input` 의도 흐름을 거친다(13.1 12종 + 기기 무관 확장 8종). `PlatformServices`(storage·preferences·window·locale·input) 웹 구현, 해상도 배율 0.75/1/1.25(설정), 컨트롤러 액션 ID 표, 새 키(Enter·Q/E·+/−·Space 탭 일시정지), "금화" → 돈. 관문: ①정적 검사 위반 62 → 0, ②호버 전용 9 → 0, ③44px 미만 186 → 0·12px 미만 선언 8 → 0, ④옛/새 빌드 입력 재생 13/13 동일·C25 SHA 동일·2811/2811, ⑤저장 경로 정적 검사·왕복, ⑥깨끗한 클론. 결정 IN1–IN3·PL1–PL2. [보고서](verification/b9-input/REPORT.md), [명세](design/input-intents.md).
 
 **D3b 후속: 벽 띠 플래그 분리**(Claude Code, 렌더·테스트·스크립트·문서만, 성벽 논리 0줄): 사용자 검토(윗면·흉벽 없이 밝아 벽으로 안 읽힘)로 면 띠·모듈을 `RENDER_WALL_STRIPS`(URL `render-wall-strips=1`, 기본 **끔**)로 분리했다. 기본이면 완공 벽은 예전 칸 조각이다. 물가 공유선·색 보정·띠 이음 수정은 켬 유지, 벽 밑 물가 띠 생략만 띠 켬일 때. 관문: 띠 켬 = D3b 16/16, 곡선 지면 끔 = D3b 16/16, 띠 끔이면 면 코드 0회, C25 기본 판 갱신(띠 켬 = D3b 판 12/12), 2775/2775. 결정 WL6. [보고서](verification/d3b-wall-flag/REPORT.md).
 

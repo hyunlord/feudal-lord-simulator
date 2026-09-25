@@ -5,7 +5,7 @@ export function SaveControls() {
   const save = useSaveSystemContext();
   return (
     <div className="save-controls" role="group" aria-label={SAVE_COPY.saveControlsLabel}>
-      <button className="autoplay-toggle save-control-button" type="button" disabled={!save.ready || save.busy} onClick={save.saveNow}>
+      <button className="autoplay-toggle save-control-button" type="button" disabled={!save.ready || save.busy} onClick={() => save.saveNow()}>
         {SAVE_COPY.saveNow}
       </button>
       <span className="autoplay-hint">{SAVE_COPY.loadRecent}</span>

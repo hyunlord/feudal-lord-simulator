@@ -15,6 +15,7 @@ import type { GameState } from "../engine/engine.types";
 import { placementSpendableResource } from "../world/placement";
 import { economyStockTotals } from "./ledgerModel";
 import { ResourceArtwork, type ResourceArtworkKind } from "./ResourceArtwork";
+import { RESOURCE_BAR_COPY } from "./resourceBarCopy.ko";
 
 type ResourceBarProps = {
   readonly state: GameState;
@@ -58,17 +59,17 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
   const breadTitle = `현재 입주 필지당 평균 소비량 기준, ${Math.floor(HOUSE_FOOD_INTERVAL / BALANCE.TICKS_PER_SECOND)}초(게임 시간) 1끼. 합필은 2필지. 운송 중인 물량 포함, 가구 비축 제외. 공급 도달을 보장하지 않음.`;
   return (
     <section className="resource-bar" aria-label="영지 자원 현황">
-      <button type="button" className="resource-bar__cell resource-bar__population" aria-label="인구 기록" aria-expanded={populationDrawerOpen} aria-controls="population-ledger-drawer" onClick={onPopulationDrawerToggle}>
+      <button type="button" className="resource-bar__cell resource-bar__population" aria-label="인구 기록" aria-expanded={populationDrawerOpen} aria-controls="population-ledger-drawer" onClick={() => onPopulationDrawerToggle()}>
         <ResourceArtwork kind="population" />
         <span className="resource-bar__detail">
           <span className="resource-bar__primary"><span>인구</span><strong>{state.population}</strong></span>
-          <span className="resource-bar__trend" title="최근 최대 2,400틱 UI 관측 순증감 · 명">{trend("population")}</span>
+          <span className="resource-bar__trend">{trend("population")}</span>
           <span className="resource-bar__secondary">유휴 일꾼 <b>{state.idleWorkers}</b><span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span>
         </span>
       </button>
-      <ResourceCell kind="bread" label="빵" value={stock.bread} secondary={`${breadLabel}${breadFull ? " · 가득" : ""}`} title={breadTitle} trend={trend("bread")} />
-      <ResourceCell kind="timber" label="가용 목재" value={timber} trend={trend("timber")} secondary={`공사 예약 ${timberReserved}${woodFull ? " · 가득" : ""}`} title={`목재 전체 보유량 ${stock.timber} · 건설 가능 ${timber} · 실제 예약·운송 중 물량 제외`} />
-      <ResourceCell kind="stone" label="가용 석재" value={stone} trend={trend("stone")} secondaryKind="stone_raw" secondary={`원석 ${stock.stone_raw}${stoneFull ? " · 가득" : ""}`} title={`석재 전체 보유량 ${stock.stone} · 건설 가능 ${stone} · 실제 예약·운송 중 물량 제외`} />
+      <ResourceCell kind="bread" label="빵" value={stock.bread} secondary={`${breadLabel}${breadFull ? " · 가득" : ""}`} trend={trend("bread")} />
+      <ResourceCell kind="timber" label="가용 목재" value={timber} trend={trend("timber")} secondary={`공사 예약 ${timberReserved}${woodFull ? " · 가득" : ""}`} />
+      <ResourceCell kind="stone" label="가용 석재" value={stone} trend={trend("stone")} secondaryKind="stone_raw" secondary={`원석 ${stock.stone_raw}${stoneFull ? " · 가득" : ""}`} />
       <button type="button" className="resource-bar__cell resource-bar__coin" aria-label="재정 수입과 지출 상세" aria-expanded={coinOpen} aria-controls="resource-coin-detail" onClick={() => setCoinOpen(!coinOpen)}>
         <ResourceArtwork kind="coin" />
         <span className="resource-bar__detail"><span className="resource-bar__primary"><span>재정</span><strong>{stock.coin}</strong></span>
@@ -76,7 +77,7 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
       </button>
       <span className="resource-bar__cell resource-bar__calendar" aria-label={SCENARIO_COPY.calendarAria} data-testid="resource-calendar"><strong>{calendarLabel(state)}</strong></span>
       {coinOpen ? <LedgerPanel id="resource-coin-detail" state={state} onHighlightBuildings={onHighlightBuildings} /> : null}
-      <details className="resource-bar__more"><summary>자원 상세</summary><p>밀 {stock.wheat} · 원목 {stock.logs} · 원석 {stock.stone_raw}</p><p>{breadTitle}</p><p>추세: 최근 최대 2,400틱 관측 순증감. 목재·석재는 건설 가용량 기준입니다.</p></details>
+      <details className="resource-bar__more"><summary>자원 상세</summary><p>밀 {stock.wheat} · 원목 {stock.logs} · 원석 {stock.stone_raw}</p><p>{breadTitle}</p><p>{RESOURCE_BAR_COPY.timberDetail(stock.timber, timber)}</p><p>{RESOURCE_BAR_COPY.stoneDetail(stock.stone, stone)}</p><p>추세: 최근 최대 2,400틱 관측 순증감. 목재·석재는 건설 가용량 기준입니다.</p><p>{RESOURCE_BAR_COPY.populationTrend}</p></details>
     </section>
   );
 }
@@ -88,16 +89,15 @@ type ResourceCellProps = {
   readonly secondary: string;
   readonly trend: string;
   readonly secondaryKind?: ResourceArtworkKind;
-  readonly title?: string;
 };
 
-function ResourceCell({ kind, label, value, trend, secondary, secondaryKind, title = "영지 전체 보유량 · 건물 재고와 운송 중인 물량 포함" }: ResourceCellProps) {
+function ResourceCell({ kind, label, value, trend, secondary, secondaryKind }: ResourceCellProps) {
   return (
-    <div className="resource-bar__cell" title={title}>
+    <div className="resource-bar__cell">
       <ResourceArtwork kind={kind} />
       <span className="resource-bar__detail">
         <span className="resource-bar__primary"><span>{label}</span><strong>{value}</strong></span>
-        <span className="resource-bar__trend" title="최근 최대 2,400틱 UI 관측 순증감 · 표시한 보유량과 같은 단위">{trend}</span>
+        <span className="resource-bar__trend">{trend}</span>
         <span className="resource-bar__secondary">{secondaryKind && <ResourceArtwork kind={secondaryKind} small />}{secondary}</span>
       </span>
     </div>

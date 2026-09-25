@@ -11,16 +11,15 @@ import {
   type PointerEvent,
 } from "react";
 
-import { isProblemViewShortcut } from "./ui/problemViewShortcut";
 import { CauseLegend } from "./ui/CauseLegend";
 import { KO_UI } from "./content/locale.ko";
-import type { GameState, OverlayMode } from "./engine/engine.types";
+import type { GameSpeed, GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
 import { canProclaimPalisadeEra } from "./engine/era";
 import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
 import { applyPalisadeIntent, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
-import type { ZoneBrushTool } from "./render/zoneBrushInteraction";
+import { DEFAULT_ZONE_BRUSH_RADIUS, type ZoneBrushTool } from "./render/zoneBrushInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameStore } from "./state/gameStore";
 import { useSaveSystemContext } from "./state/saveSystem";
@@ -62,6 +61,14 @@ import {
   observeDistributorRouteHistory,
   type DistributorRouteHistory,
 } from "./ui/distributorRouteHistory";
+import { platformServices } from "./platform/platform";
+import { INTENT_ORDER } from "./input/intentBus";
+import { SPEED_STEPS, speedStepOf } from "./input/inputIntent";
+import { steppedPlacementTool } from "./render/placementToolCycle";
+
+/** `toolSelect` ids of the zone brushes (B9): `zone:<target>` arms one, `zone:off` disarms. */
+const ZONE_TOOL_PREFIX = "zone:";
+const ZONE_TOOL_OFF = "zone:off";
 
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
 
@@ -163,36 +170,62 @@ export function App() {
     );
   }, [presentationNowMs, state.era]);
 
-  useEffect(() => {
-    const keyDown = (event: KeyboardEvent) => {
-      const target = event.target;
-      const editable = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
-      if (!editable && palisadeDraftRef.current !== null && (event.code === "Escape" || event.code === "KeyZ")) {
-        event.preventDefault();
-        setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: event.code === "Escape" ? "cancel" : "undo" } }));
-        return;
-      }
-      if (event.code === "Escape") {
-        event.preventDefault();
+  const selectPlacementTool = (tool: PlacementTool | null) => { setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) setZoneTool(null); };
+  // The app shell's input intents (B9): after the map's handler, before menus (src/input/intentBus.ts). Esc / Z on a
+  // palisade draft cancel or undo it (not while typing), Esc otherwise disarms every tool; O and 1-4 toggle views;
+  // tool and speed intents come from the build menu, the speed seals and Q / E / Space.
+  const speedRef = useRef(speed);
+  const resumeSpeedRef = useRef<GameSpeed>(speed === 0 ? 1 : speed);
+  speedRef.current = speed;
+  if (speed !== 0) resumeSpeedRef.current = speed;
+  const selectedToolRef = useRef(selectedTool);
+  selectedToolRef.current = selectedTool;
+  useEffect(() => platformServices().input.subscribe((intent, context) => {
+    switch (intent.kind) {
+      case "cancel":
+        if (intent.world !== undefined) return;
+        if (context.target !== "text" && palisadeDraftRef.current !== null) {
+          setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: "cancel" } }));
+          return "handled";
+        }
         setPalisadeDraft(null);
         setSelectedTool(null);
         setZoneTool(null);
-        return;
-      }
-      if (event.code === "KeyO") {
-        if (!isProblemViewShortcut(event.code, event.repeat, editable)) return;
-        event.preventDefault();
+        return "handled";
+      case "undo":
+        if (context.target === "text" || palisadeDraftRef.current === null) return;
+        setPalisadeDraft(current => current === null ? null : applyPalisadeIntent({ state: gameStateRef.current, draft: current, intent: { type: "undo" } }));
+        return "handled";
+      case "problemView":
         setProblemOnly(value => !value);
+        return "handled";
+      case "overlayToggle":
+        setOverlayMode(mode => toggleOverlayByKey(`Digit${intent.slot}`, mode));
+        return "handled";
+      case "toolSelect":
+        if (intent.toolId === ZONE_TOOL_OFF) { setPalisadeDraft(null); setSelectedTool(null); setZoneTool(null); return "handled"; }
+        if (intent.toolId?.startsWith(ZONE_TOOL_PREFIX) === true) {
+          const target = intent.toolId.slice(ZONE_TOOL_PREFIX.length) as ZoneBrushTool["target"];
+          setPalisadeDraft(null);
+          setSelectedTool(null);
+          setZoneTool(current => ({ target, radius: current?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: current?.polygon ?? false }));
+          return "handled";
+        }
+        selectPlacementTool(intent.toolId as PlacementTool | null);
+        return "handled";
+      case "toolStep":
+        selectPlacementTool(steppedPlacementTool(gameStateRef.current, selectedToolRef.current, intent.step));
+        return "handled";
+      case "speed":
+        setSpeed(SPEED_STEPS[intent.value]);
+        return "handled";
+      case "pauseToggle":
+        setSpeed(speedRef.current === 0 ? resumeSpeedRef.current : 0);
+        return "handled";
+      default:
         return;
-      }
-      const nextMode = toggleOverlayByKey(event.code, overlayMode);
-      if (nextMode === overlayMode) return;
-      event.preventDefault();
-      setOverlayMode(nextMode);
-    };
-    window.addEventListener("keydown", keyDown);
-    return () => window.removeEventListener("keydown", keyDown);
-  }, [overlayMode]);
+    }
+  }, INTENT_ORDER.app), [setSpeed]);
 
   const visibleCeremony = visibleEraCeremony(eraPresentation, presentationNowMs);
   const houseMaterialWave = eraPresentation.ceremony === null || state.palisade === null
@@ -333,9 +366,13 @@ export function App() {
               selectedTool={selectedTool}
               state={state}
               highlightedTools={highlightedTools}
-              onSelect={tool => { setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) setZoneTool(null); }}
+              onSelect={tool => { platformServices().input.emit({ kind: "toolSelect", toolId: tool }); }}
               zoneTool={zoneTool}
-              onZoneToolChange={tool => { setPalisadeDraft(null); setSelectedTool(null); setZoneTool(tool); }}
+              onZoneToolChange={tool => {
+                // Arming another zone tool (or none) is a tool choice; radius and polygon are settings of the armed one.
+                if (tool === null || tool.target !== zoneTool?.target) platformServices().input.emit({ kind: "toolSelect", toolId: tool === null ? ZONE_TOOL_OFF : `${ZONE_TOOL_PREFIX}${tool.target}` });
+                else setZoneTool(tool);
+              }}
               palisadeDrawing={palisadeDraft?.mode === 'draw'}
               onStartPalisadeDrawing={beginPalisadeDraw}
             />
@@ -344,7 +381,7 @@ export function App() {
             <details className="command-disclosure ledger-stack"><summary>보기</summary><div className="command-popover">
               <EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />
             </div></details>
-            <SpeedSeals speed={speed} onChange={setSpeed} />
+            <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }} />
           </div>
         </aside>
       </div>
@@ -449,19 +486,9 @@ function ScenarioModeButtons({ onChoose, keepChoice }: {
 }
 
 function readWelcomeDismissed(): boolean {
-  if (typeof window === "undefined") return false;
-  try {
-    return window.localStorage.getItem(WELCOME_DISMISSED_KEY) === "1";
-  } catch (_error) {
-    return false;
-  }
+  return platformServices().preferences.get(WELCOME_DISMISSED_KEY) === "1";
 }
 
 function writeWelcomeDismissed(): void {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(WELCOME_DISMISSED_KEY, "1");
-  } catch (_error) {
-    return;
-  }
+  platformServices().preferences.set(WELCOME_DISMISSED_KEY, "1");
 }

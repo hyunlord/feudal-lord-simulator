@@ -1,7 +1,7 @@
 :root {
   --font-body: 16px;
   --font-meta: 13px;
-  --font-badge: 11px;
+  --font-badge: 12px;
   font-family: Georgia, "Times New Roman", serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -890,6 +890,7 @@ button {
 }
 
 .build-seal:hover + .seal-tooltip,
+.build-seal[aria-pressed="true"] + .seal-tooltip,
 .build-seal:focus-visible + .seal-tooltip {
   display: block;
   visibility: visible;

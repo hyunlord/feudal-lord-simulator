@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { GameState } from "../src/engine/engine.types";
 import type { CanvasMutableRefs } from "../src/render/canvasRuntimeRefs";
-import { createZoneBrushContext, zoneKeyDown } from "../src/render/canvasZoneBrushRuntime";
+import { createZoneBrushContext, zoneUndo } from "../src/render/canvasZoneBrushRuntime";
 import { ZONE_BRUSH_COPY } from "../src/render/zoneBrushCopy.ko";
 import { gameReducer } from "../src/state/gameStore";
 import type { GameAction } from "../src/state/gameStore.types";
@@ -28,7 +28,8 @@ function brushContext(state: GameState) {
     dragRef: { current: { mode: "none" } }, spacePressed: { current: false }, suppressClick: { current: false } } as unknown as CanvasMutableRefs;
   const context = createZoneBrushContext({ toolRef: { current: { target: "pasture", radius: 2, polygon: false } }, radiusRef: { current: undefined },
     refs, stateRef, dispatch: action => { actions.push(action); stateRef.current = gameReducer(stateRef.current, action); }, clampCamera: camera => camera });
-  const key = (code: string) => zoneKeyDown(context, { code, preventDefault: () => undefined, stopImmediatePropagation: () => undefined } as unknown as KeyboardEvent);
+  // Z arrives as the `undo` intent (B9: the keyboard translator maps KeyZ to it).
+  const key = (code: "KeyZ") => code === "KeyZ" && zoneUndo(context);
   return { context, stateRef, actions, refs, key };
 }
 

@@ -27,7 +27,7 @@
 .app-shell .autoplay-control { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .app-shell .autoplay-toggle { min-height: 32px; padding: 4px 8px; font: var(--font-body)/24px var(--ui-body-font); }
 .app-shell .autoplay-hint { color: var(--palette-parchment); font-size: var(--font-meta); }
-.app-shell .right-info-rail { display: flex; flex-direction: column; overscroll-behavior: contain; top: calc(var(--resource-height) + 34px); max-height: calc(100% - var(--resource-height) - var(--command-height) - 94px); overflow-y: auto; }
+.app-shell .right-info-rail { display: flex; flex-direction: column; overscroll-behavior: contain; top: calc(var(--resource-height) + 56px); max-height: calc(100% - var(--resource-height) - var(--command-height) - 116px); overflow-y: auto; }
 .app-shell .right-info-rail > * { flex: 0 0 auto; }
 .development-panel { color: var(--palette-ink); background: var(--palette-vellum); border: 1px solid var(--palette-ink-light); }
 .development-panel > summary { padding: 8px 12px; cursor: pointer; font: var(--font-body)/24px var(--ui-body-font); }
@@ -37,8 +37,8 @@
 .app-shell .top-population-drawer .population-event-panel { max-height: min(50vh, 360px); }
 .app-shell button:focus-visible, .app-shell summary:focus-visible { outline: 2px solid var(--palette-gold); outline-offset: 2px; }
 @media (max-width: 900px) {
-  .app-shell { --command-height: 140px; }
-  .app-shell .court-console { grid-template-columns: 56px minmax(0, 1fr); grid-template-rows: 88px 34px; gap: 4px 12px; }
+  .app-shell { --command-height: 150px; }
+  .app-shell .court-console { grid-template-columns: 56px minmax(0, 1fr); grid-template-rows: 88px 44px; gap: 4px 12px; }
   .app-shell .seal-recess { grid-column: 1 / -1; grid-row: 1; }
   .app-shell .map-recess { grid-column: 1; grid-row: 2; padding: 0; }
   .app-shell .ledger-recess { grid-column: 2; grid-row: 2; justify-content: flex-end; padding: 0; }

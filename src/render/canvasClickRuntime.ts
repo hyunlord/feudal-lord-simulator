@@ -1,11 +1,16 @@
 import { causeMarkerAtCanvasPoint } from "./causeMapInteraction";
 import { resolveCanvasClick } from "./canvasClickResolution";
-import type { Point } from "./camera";
+import { worldToCanvas } from "./camera";
 import type { CanvasMutableRefs } from "./canvasRuntimeRefs";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
+import type { WorldPoint } from "../input/inputIntent";
+import { getTile } from "../world/grid";
+import { createPlacementFeedback } from "./placementFeedback";
+import { townLandscapeAssetReady } from "./townLandscapeAssets";
+import { townLandscapeAt, TOWN_LANDSCAPE_TOOLTIP } from "./townLandscape";
 
-type ClickRuntimeInput = {
-  readonly event: MouseEvent;
+type SelectRuntimeInput = {
+  readonly world: WorldPoint;
   readonly canvas: HTMLCanvasElement;
   readonly refs: CanvasMutableRefs;
   readonly stateRef: { current: GameCanvasRuntimeInput["state"] };
@@ -13,40 +18,41 @@ type ClickRuntimeInput = {
   readonly palisadeDraftRef: { current: GameCanvasRuntimeInput["palisadeDraft"] };
   readonly setSelection: GameCanvasRuntimeInput["setSelection"];
   readonly dispatch: GameCanvasRuntimeInput["dispatch"];
-  readonly canvasPoint: (event: MouseEvent) => Point;
-  readonly clearSuppressClickTimeout: () => void;
 };
 
-export function handleCanvasClick(input: ClickRuntimeInput): void {
-  const { event, canvas, refs, stateRef, selectedToolRef, palisadeDraftRef,
-    setSelection, dispatch, canvasPoint, clearSuppressClickTimeout } = input;
+/** The `select` intent on the map: select what is there, or place with the armed tool. */
+export function handleCanvasSelect(input: SelectRuntimeInput): void {
+  const { world, canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, setSelection, dispatch } = input;
   if (palisadeDraftRef.current !== null) return;
-  const bounds = canvas.getBoundingClientRect();
+  const point = worldToCanvas(world, refs.cameraRef.current);
   const resolution = resolveCanvasClick({
-    suppressClick: refs.suppressClick.current,
-    spacePressed: refs.spacePressed.current,
-    dragMode: refs.dragRef.current.mode === "palisade" || refs.dragRef.current.mode === "zone" ? "none" : refs.dragRef.current.mode,
+    // The translator already swallowed clicks that ended a drag and clicks while Space is held.
+    suppressClick: false,
+    spacePressed: false,
+    dragMode: "none",
     hover: refs.hoverRef.current,
     selectedTool: selectedToolRef.current,
     state: stateRef.current,
-    point: canvasPoint(event),
+    point,
     camera: refs.cameraRef.current,
-    viewport: bounds,
+    viewport: canvas.getBoundingClientRect(),
     nowMs: performance.now(),
   });
-  if (resolution.kind === "ignored") {
-    if (!resolution.clearSuppression) return;
-    refs.suppressClick.current = false;
-    clearSuppressClickTimeout();
-    return;
-  }
+  if (resolution.kind === "ignored") return;
   if (resolution.kind === "selection") {
-    const buildingId = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, canvasPoint(event))?.buildingIds[0] : undefined;
+    const buildingId = selectedToolRef.current === null ? causeMarkerAtCanvasPoint(stateRef.current, refs.cameraRef.current, point)?.buildingIds[0] : undefined;
     if (buildingId !== undefined) {
-      setSelection({ kind: "building", buildingId, position: canvasPoint(event) });
+      setSelection({ kind: "building", buildingId, position: point });
       return;
     }
     setSelection(resolution.selection);
+    // Nothing to select on town landscape: its line (once a hover tooltip) answers the tap instead.
+    const tile = refs.hoverRef.current;
+    const ground = resolution.selection === null && selectedToolRef.current === null && tile !== null ? getTile(stateRef.current, tile) : null;
+    const landscape = ground === null ? null : townLandscapeAt(stateRef.current, ground);
+    if (tile !== null && landscape !== null && townLandscapeAssetReady(landscape)) {
+      refs.feedbackRef.current = createPlacementFeedback({ kind: "success", message: TOWN_LANDSCAPE_TOOLTIP, anchor: { kind: "tile", tile }, nowMs: performance.now() });
+    }
     return;
   }
   refs.feedbackRef.current = resolution.attempt.feedback;

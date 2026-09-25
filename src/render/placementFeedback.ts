@@ -106,7 +106,7 @@ const RESOURCE_LABELS = {
   timber: "목재",
   stone_raw: "원석",
   stone: "석재",
-  coin: "금화",
+  coin: "돈",
 } as const satisfies Record<ResourceType, string>;
 
 function resourceAmountsLabel(amounts: Partial<Record<ResourceType, number>>): string {

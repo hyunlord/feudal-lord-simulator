@@ -8,7 +8,7 @@ import { DEFAULT_PLACEMENT_TOOL } from "./interactions";
 import type { PlacementTool } from "./renderer";
 import { useGameStore } from "../state/gameStore";
 import { buildingInspectorModel } from "./buildingInspectorModel";
-import { BuildingInspector, type HoveredBuilding } from "./BuildingInspector";
+import { BuildingInspector, buildingCauseLine, type HoveredBuilding } from "./BuildingInspector";
 import { useGameCanvasRuntime } from "./useGameCanvasRuntime";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { PalisadeDraftState } from "./palisadeDraftInteraction";
@@ -142,6 +142,7 @@ export function GameCanvas({
               onToggle: () => dispatch({ type: 'set_building_operation', buildingId: selection.buildingId,
                 paused: state.buildings.find(building => building.id === selection.buildingId)?.operationPaused !== true }) },
           })}
+          causeLine={selection.kind === 'building' ? buildingCauseLine(state, selection.buildingId) : null}
           causeSummary={selection.kind === 'building' ? houseProgressModel(state, selection.buildingId) : null}
           onClose={() => { setSelection(null); setHoveredBuilding(null); }}
           onCancelConstruction={cancelConstruction}

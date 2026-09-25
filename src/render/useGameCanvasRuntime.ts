@@ -1,32 +1,29 @@
-import { isCanvasKeyboardControl } from "./canvasKeyboardTarget";
-import { updateCanvasHover } from "./canvasHoverRuntime";
-import { cancelRoadPreview } from "./cancelRoadPreview";
 import { createPredictionPublisher } from "./placementPredictionRuntime";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { useEffect, useRef } from "react";
-import { bindZoneTouch, createZoneBrushContext, zoneBrushView, zoneCancel, zoneKeyDown, zoneMouseDown, zoneMouseMove, zoneMouseUp } from "./canvasZoneBrushRuntime";
+import { createZoneBrushContext, zoneBrushView } from "./canvasZoneBrushRuntime";
 
-import { clampPan, clientToCanvas, type CameraState, type Point } from "./camera";
+import { clampPan, type CameraState } from "./camera";
 import { cameraAfterViewportResize, initialCamera, resizeCanvas } from "./canvasRuntime";
 import { createCanvasMutableRefs } from "./canvasRuntimeRefs";
-import { releaseTileFromMouseUp, worldBounds, zoomAtPoint } from "./interactions";
-import { installMinimapCameraJumpRuntime, publishMinimapViewport } from "./minimapCameraJump";
-import { bindGameCanvasEvents } from "./gameCanvasEvents";
+import { worldBounds } from "./interactions";
+import { publishMinimapViewport } from "./minimapCameraJump";
 import { preloadGameArt } from "./preloadGameArt";
-import { handleCanvasClick } from "./canvasClickRuntime";
-import { createCanvasContextMenuHandler } from "./canvasContextMenuHandler";
-import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
-import { resolveCanvasKeyDown } from "./canvasKeyboardResolution";
-import { advancePalisadeDraftDrag, beginPalisadeDraftDrag, finishPalisadeDraftDrag } from "./canvasPalisadeDraftRuntime";
-import { applyPalisadeIntent } from './palisadeDraftInteraction';
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
-import { toggleObjectRenderViewMode } from "./objectRenderViewMode";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
 import { setGroundSceneZoneDeferral } from "./groundBoundaryScene";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
-import { advanceCameraMotion, cameraInputKeyDown, cameraInputKeyUp, createCameraInputState, resetCameraInputState, shouldAdvanceCameraMotion, updateCameraEdgePoint } from "./gameCanvasRuntimeInput";
+import { createCanvasIntentHandler } from "./canvasIntentHandler";
+import { bindMouseKeyboard, bindZoneTouch } from "../input/domInputBindings";
+import { createMouseKeyboardTranslator, type ArmedTools } from "../input/mouseKeyboardTranslator";
+import { createZoneTouchTranslator } from "../input/zoneTouchTranslator";
+import { INTENT_ORDER } from "../input/intentBus";
+import { platformServices } from "../platform/platform";
+
+// Game canvas runtime: frame loop, camera, and input. Input goes DOM event -> translator (src/input) -> intent bus
+// (PlatformServices.input) -> handlers; the map's handler (canvasIntentHandler.ts) runs first, the app shell's after.
 
 export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   const {
@@ -58,198 +55,55 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     void preloadGameArt();
 
     const refs = createCanvasMutableRefs(initialCamera(canvas, stateRef.current));
-    const cameraInput = createCameraInputState();
     const publishPrediction = createPredictionPublisher(value => setPrediction?.(value));
-    let frameId = 0, lastFrameAtMs = performance.now(), suppressClickTimeout: number | null = null, userControlledCamera = false;
+    const bus = platformServices().input;
+    let frameId = 0, lastFrameAtMs = performance.now(), userControlledCamera = false;
     const viewport = () => {
       const rect = canvas.getBoundingClientRect(); return { width: rect.width, height: rect.height };
     };
-    const clampCamera = (camera: CameraState): CameraState => clampPan(camera, viewport(), worldBounds(stateRef.current.width, stateRef.current.height));
+    const world = () => worldBounds(stateRef.current.width, stateRef.current.height);
+    const clampCamera = (camera: CameraState): CameraState => clampPan(camera, viewport(), world());
     const zoneContext = createZoneBrushContext({ toolRef: zoneToolRef, radiusRef: zoneRadiusRef, refs, stateRef, dispatch, clampCamera });
+    const armed = (): ArmedTools => ({
+      zone: zoneToolRef.current !== null,
+      zonePolygon: zoneToolRef.current?.polygon === true || zoneContext.zone.gestureRef.current?.mode === "polygon",
+      palisade: palisadeDraftRef.current !== null,
+      road: selectedToolRef.current === "road",
+    });
+    const disposeHandler = bus.subscribe(createCanvasIntentHandler({
+      canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, zone: zoneContext, dispatch, setSelection, setHoveredBuilding,
+      onPalisadeDraftChange, clampCamera, viewport, world, markUserControlled: () => { userControlledCamera = true; },
+    }), INTENT_ORDER.world);
+    const translator = createMouseKeyboardTranslator({
+      bounds: () => canvas.getBoundingClientRect(), camera: () => refs.cameraRef.current, world, armed,
+      emit: (intent, context) => bus.emit(intent, context),
+    });
+    const touch = createZoneTouchTranslator({ bounds: () => canvas.getBoundingClientRect(), camera: () => refs.cameraRef.current, armed,
+      emit: intent => bus.emit(intent) });
     const resize = () => {
       refs.pixelRatioRef.current = resizeCanvas(canvas, context);
       refs.cameraRef.current = cameraAfterViewportResize({ camera: refs.cameraRef.current, canvas, state: stateRef.current, userControlled: userControlledCamera });
     };
     const drawFrame = () => {
       const nowMs = performance.now();
-      if (shouldAdvanceCameraMotion(refs.dragRef.current)) {
-        const nextCamera = advanceCameraMotion({ input: cameraInput, camera: refs.cameraRef.current, nowMs, previousMs: lastFrameAtMs, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height) });
-        if (nextCamera !== refs.cameraRef.current) {
-          refs.cameraRef.current = nextCamera;
-          userControlledCamera = true;
-        }
-      }
+      translator.frame(nowMs, lastFrameAtMs, viewport());
       lastFrameAtMs = nowMs;
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
       drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current });
       if (work !== null) work.recordFrame(performance.now() - startedAt);
-      publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: worldBounds(stateRef.current.width, stateRef.current.height), grid: stateRef.current });
+      publishMinimapViewport({ target: window, camera: refs.cameraRef.current, viewport: viewport(), world: world(), grid: stateRef.current });
       frameId = requestAnimationFrame(drawFrame);
-    };
-    const canvasPoint = (event: MouseEvent | WheelEvent): Point => clientToCanvas(event, canvas.getBoundingClientRect());
-    const updateHover = (event: MouseEvent) => updateCanvasHover(event, canvas, refs, cameraInput, stateRef.current, selectedToolRef.current, setHoveredBuilding);
-    const clearSuppressClickTimeout = () => {
-      if (suppressClickTimeout !== null) {
-        window.clearTimeout(suppressClickTimeout);
-        suppressClickTimeout = null;
-      }
-    };
-    const resetDrag = () => { refs.dragRef.current = { mode: "none", startCanvasPoint: null, startCamera: null, lastCanvasPoint: null, roadStart: null, moved: false }; };
-    const startDrag = (event: MouseEvent) => {
-      if (event.button === 2 && refs.dragRef.current.mode === "road") return;
-      if (event.button === 0) refs.roadCancelled.current = false;
-      updateHover(event);
-      if (zoneMouseDown(zoneContext, event, canvasPoint(event))) return;
-      const palisadeDrag = beginPalisadeDraftDrag({ button: event.button, hover: refs.hoverRef.current,
-        draft: palisadeDraftRef.current, point: canvasPoint(event), camera: refs.cameraRef.current,
-        state: stateRef.current });
-      if (palisadeDrag !== null) {
-        palisadeDraftRef.current = palisadeDrag.draft;
-        onPalisadeDraftChange?.(palisadeDrag.draft);
-        refs.dragRef.current = palisadeDrag.drag;
-        event.preventDefault();
-        return;
-      }
-      const result = beginCanvasDrag({ button: event.button, point: canvasPoint(event), hover: refs.hoverRef.current, spacePressed: refs.spacePressed.current, selectedTool: selectedToolRef.current });
-      refs.dragRef.current = result.drag;
-      if (result.preventDefault) event.preventDefault();
-    };
-    const movePointer = (event: MouseEvent) => {
-      updateHover(event);
-      zoneMouseMove(zoneContext, canvasPoint(event));
-      const nextDraft = advancePalisadeDraftDrag({
-        drag: refs.dragRef.current,
-        state: stateRef.current,
-        draft: palisadeDraftRef.current,
-        hover: refs.hoverRef.current,
-        point: canvasPoint(event),
-        camera: refs.cameraRef.current,
-      });
-      if (nextDraft !== null) {
-        palisadeDraftRef.current = nextDraft;
-        onPalisadeDraftChange?.(nextDraft);
-      }
-      const result = advanceCanvasDrag({
-        drag: refs.dragRef.current,
-        point: canvasPoint(event),
-        camera: refs.cameraRef.current,
-      });
-      if (refs.dragRef.current.mode === "pan" && result.drag.moved) userControlledCamera = true;
-      refs.dragRef.current = result.drag;
-      refs.cameraRef.current = clampCamera(result.camera);
-      if (result.suppressClick) refs.suppressClick.current = true;
-    };
-    const finishDrag = (event: MouseEvent) => {
-      if (refs.roadCancelled.current && event.button !== 0) return;
-      const drag = refs.roadCancelled.current ? { ...refs.dragRef.current, moved: true } : refs.dragRef.current;
-      refs.roadCancelled.current = false;
-      zoneMouseUp(zoneContext);
-      if (drag.mode === 'palisade') {
-        const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
-        if (nextDraft !== palisadeDraftRef.current) {
-          palisadeDraftRef.current = nextDraft;
-          onPalisadeDraftChange?.(nextDraft);
-        }
-      }
-      const destination = releaseTileFromMouseUp(event, canvas.getBoundingClientRect(), refs.cameraRef.current);
-      const attempt = finishedRoadAttempt(stateRef.current, drag, destination, performance.now());
-      if (attempt !== null) {
-        refs.feedbackRef.current = attempt.feedback;
-        if (attempt.action !== null) dispatch(attempt.action);
-      }
-      resetDrag();
-      clearSuppressClickTimeout();
-      if (!drag.moved) {
-        refs.suppressClick.current = false;
-        return;
-      }
-      refs.suppressClick.current = true;
-      suppressClickTimeout = window.setTimeout(() => {
-        refs.suppressClick.current = false;
-        suppressClickTimeout = null;
-      }, 0);
-    };
-    const clickCanvas = (event: MouseEvent) => zoneToolRef.current !== null ? undefined : handleCanvasClick({ event, canvas, refs, stateRef,
-      selectedToolRef, palisadeDraftRef, setSelection, dispatch, canvasPoint, clearSuppressClickTimeout });
-    const defaultContextMenu = createCanvasContextMenuHandler({ canvas, dispatch, refs, selectedToolRef, setSelection, stateRef });
-    const contextMenuCanvas = (event: MouseEvent) => {
-      if (palisadeDraftRef.current !== null) {
-        event.preventDefault();
-        const nextDraft = applyPalisadeIntent({ state: stateRef.current, draft: palisadeDraftRef.current,
-          intent: { type: 'cancel' } });
-        palisadeDraftRef.current = nextDraft;
-        onPalisadeDraftChange?.(nextDraft);
-        return;
-      }
-      if (zoneToolRef.current !== null) { event.preventDefault(); zoneCancel(zoneContext); return; }
-      if (cancelRoadPreview(refs)) event.preventDefault(); else defaultContextMenu(event);
-    };
-    const wheel = (event: WheelEvent) => {
-      event.preventDefault();
-      userControlledCamera = true;
-      refs.cameraRef.current = zoomAtPoint({
-        camera: refs.cameraRef.current,
-        canvasPoint: canvasPoint(event),
-        deltaY: event.deltaY,
-        viewport: viewport(),
-        world: worldBounds(stateRef.current.width, stateRef.current.height),
-      });
-    };
-    const keyDown = (event: KeyboardEvent) => {
-      if (isCanvasKeyboardControl(event.target)) return;
-      if (zoneKeyDown(zoneContext, event)) return;
-      if (event.code === "Escape") cancelRoadPreview(refs);
-      const cameraKey = cameraInputKeyDown(cameraInput, event.key, performance.now());
-      const result = resolveCanvasKeyDown({
-        code: event.code,
-        key: event.key,
-        camera: refs.cameraRef.current,
-        spacePressed: refs.spacePressed.current,
-        viewport: viewport(),
-        world: worldBounds(stateRef.current.width, stateRef.current.height),
-      });
-      if (result.camera !== refs.cameraRef.current) userControlledCamera = true;
-      refs.cameraRef.current = result.camera;
-      refs.spacePressed.current = result.spacePressed;
-      toggleObjectRenderViewMode(result.toggleOutlinesView);
-      if (result.dismissSelection) setSelection(null);
-      if (result.preventDefault || cameraKey) event.preventDefault();
-    };
-    const keyUp = (event: KeyboardEvent) => {
-      const cameraKey = cameraInputKeyUp(cameraInput, event.key, performance.now());
-      if (event.code === "Space") refs.spacePressed.current = false;
-      if (isCanvasKeyboardControl(event.target)) return;
-      if (event.code === "Space" || cameraKey) event.preventDefault();
-    };
-    const leaveCanvas = () => { zoneContext.zone.pointRef.current = null; canvas.title = ""; updateCameraEdgePoint(cameraInput, null); refs.hoverRef.current = null; setHoveredBuilding(null); };
-    const blurWindow = () => {
-      if (palisadeDraftRef.current?.activeGesture !== null && palisadeDraftRef.current !== null) {
-        const nextDraft = finishPalisadeDraftDrag(stateRef.current, palisadeDraftRef.current);
-        palisadeDraftRef.current = nextDraft;
-        onPalisadeDraftChange?.(nextDraft);
-      }
-      resetCameraInputState(cameraInput);
-      refs.spacePressed.current = false;
-      refs.hoverRef.current = null;
-      setHoveredBuilding(null);
-      refs.suppressClick.current = false;
-      clearSuppressClickTimeout();
-      resetDrag();
     };
     resize();
     const disposeAutoplayPulse = installAutoplayPulseRuntime(refs.feedbackRef);
     const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location });
-    const disposeMinimapJump = installMinimapCameraJumpRuntime({ cameraRef: refs.cameraRef, markUserControlled: () => { userControlledCamera = true; }, target: window, viewport, world: () => worldBounds(stateRef.current.width, stateRef.current.height) });
-    const disposeEvents = bindGameCanvasEvents({
-      canvas,
-      handlers: { resize, keyDown, keyUp, blurWindow, startDrag, movePointer, leaveCanvas, clickCanvas, contextMenuCanvas, wheel, finishDrag },
-    });
-    const disposeZoneTouch = bindZoneTouch(canvas, zoneContext); setGroundSceneZoneDeferral(true);
+    const disposeEvents = bindMouseKeyboard(canvas, translator, resize);
+    const disposeZoneTouch = bindZoneTouch(canvas, touch); setGroundSceneZoneDeferral(true);
     frameId = requestAnimationFrame(drawFrame);
     return () => {
       disposeZoneTouch(); setGroundSceneZoneDeferral(false);
-      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeMinimapJump(); disposeEvents(); disposeProofRuntime(); clearSuppressClickTimeout();
+      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeHandler();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction]);
 }

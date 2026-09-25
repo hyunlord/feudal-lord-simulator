@@ -44,9 +44,9 @@ export function LedgerPanelView({ id, model, onSelectAccount, onSelectWindow, on
       </div>
       <p className="ledger-panel__total"><b>{model.total}</b> {LEDGER_COPY.money}</p>
       {model.categories.length > 0 ? <><h3>{LEDGER_COPY.byCategory}</h3><ul>{model.categories.map(row => <li key={row.key}>{row.text}</li>)}</ul></> : null}
-      {model.sources.length > 0 ? <><h3>{LEDGER_COPY.bySource}</h3><ul>{model.sources.map(row => (
+      {model.sources.length > 0 ? <><h3>{LEDGER_COPY.bySource}</h3><p className="ledger-panel__hint">{LEDGER_COPY.highlightHint}</p><ul>{model.sources.map(row => (
         <li key={row.key}>
-          <button type="button" className="ledger-panel__source" data-source={row.key} title={LEDGER_COPY.highlightHint} disabled={row.buildingIds.length === 0} onClick={() => onHighlightBuildings(row.buildingIds)}>
+          <button type="button" className="ledger-panel__source" data-source={row.key} disabled={row.buildingIds.length === 0} onClick={() => onHighlightBuildings(row.buildingIds)}>
             <span className="ledger-panel__glyph" style={{ color: row.color }} aria-hidden="true">{row.glyph}</span>{row.text}
           </button>
         </li>

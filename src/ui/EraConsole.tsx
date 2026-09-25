@@ -224,19 +224,19 @@ export function EraConsole({
           className="era-action"
           type="button"
           disabled={!model.action.enabled}
-          onClick={actionHandler}
+          onClick={() => actionHandler?.()}
           aria-describedby="era-action-reason"
         >
           {model.action.label}
         </button>
         {model.proposal.recommendEnabled ? (
-          <button className="era-action era-action--secondary" type="button" onClick={onBeginProposal}>{WALL_COPY.recommend}</button>
+          <button className="era-action era-action--secondary" type="button" onClick={() => onBeginProposal()}>{WALL_COPY.recommend}</button>
         ) : null}
         {model.draft.canErase ? (
-          <button className="era-action era-action--secondary" type="button" onClick={onEraseDraftSegment}>{WALL_COPY.eraseSegment}</button>
+          <button className="era-action era-action--secondary" type="button" onClick={() => onEraseDraftSegment?.()}>{WALL_COPY.eraseSegment}</button>
         ) : null}
         {model.draft.editing ? (
-          <button className="era-action era-action--secondary" type="button" onClick={onCancelProposal}>
+          <button className="era-action era-action--secondary" type="button" onClick={() => onCancelProposal()}>
             {WALL_COPY.cancelDraft}
           </button>
         ) : null}

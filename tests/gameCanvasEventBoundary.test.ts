@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { bindGameCanvasEvents } from '../src/render/gameCanvasEvents';
+import { bindGameCanvasEvents } from '../src/input/domInputBindings';
 
 test('wheel and context menu prevent browser defaults only on canvas and release on cleanup', () => {
   // Given
