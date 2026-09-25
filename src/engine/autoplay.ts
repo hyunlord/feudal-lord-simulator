@@ -38,6 +38,7 @@ import { waterAction } from "./autoplayWater";
 import { reserveDeadlock } from "./reserveDeadlock";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
+import { granaryGapAction, marketGapAction } from './autoplayBotRecovery';
 export type { AutoplayAction } from "./autoplay.types";
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
 export interface AutoplayPolicy { readonly maxHousingLots: number }
@@ -264,9 +265,13 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   // LB-14 (C3): a dense walled town's church and market search needs the era phase's work too (seed 2 kept a church
   // unbuilt for 100,000+ ticks at 192: every probe failed within the budget, at 768 the same search finds the site).
   const serviceDecision = (current: GameState) => urbanServiceAction(current, diagnostic);
+  // BOT-1: walled homes out of every granary's road reach get a granary beside them (LB9 seed 3).
+  const granaryGap = (current: GameState) => granaryGapAction(current, buildAction, diagnostic);
+  // BOT-1: walled homes out of every market's reach get the market the service-space guard refuses (LB9 seed 2).
+  const marketGap = (current: GameState) => marketGapAction(current, diagnostic);
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, serviceDecision, waterAction, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
       const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
@@ -283,8 +288,10 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => constructionRoadAction(state),
     () => timberAction(state),
     () => foodAction(state, buildAction, diagnostic),
+    () => granaryGap(state),
     () => housingAction(state, policy),
     servicePhase,
+    () => marketGap(state),
     () => storageAction(state),
     eraPhase,
   ]) {

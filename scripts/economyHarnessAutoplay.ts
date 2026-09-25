@@ -9,12 +9,14 @@ import { gameReducer } from "../src/state/gameStore";
 import { AUTOPLAY_TICK_CADENCE, canRunAutoplayAtTick } from "../src/ui/autoplayPresentation";
 import { hashEconomyState } from "./economyHarnessSerializer";
 import { shouldRetryAutoplayAfterMillReplenishment } from '../src/engine/autoplayMillReplenishment';
+import type { BotRecoveryDiagnostic } from '../src/engine/autoplayBotRecovery';
 
 export interface AdvisorDiagnosticReceipt {
   readonly schemaVersion: 1;
   readonly tick: number;
   readonly food: FoodDiagnostic;
   readonly services?: readonly ServicePlanningDiagnostic[];
+  readonly recovery?: readonly BotRecoveryDiagnostic[];
   readonly search?: AutoplaySearchDiagnostic;
   readonly advisorAction: DiagnosticAction;
   readonly gameActionType: string | null;
@@ -106,6 +108,7 @@ export function createAutoplayTraceDriver(input: {
         if (input.onDiagnostic === undefined || diagnostic === undefined) return next;
         const receipt: AdvisorDiagnosticReceipt = { schemaVersion: 1, tick: state.tick,
           ...(diagnostic.search === undefined ? {} : { search: diagnostic.search }),
+          ...(diagnostic.recovery === undefined ? {} : { recovery: diagnostic.recovery }),
           food: diagnostic.food ?? initialFoodDiagnostic(state), services: diagnostic.services ?? [], advisorAction: diagnosticAction(advisorAction),
           gameActionType, result, newSiteIds: next.constructionSites.filter(site =>
             !state.constructionSites.some(old => old.id === site.id)).map(site => site.id) };

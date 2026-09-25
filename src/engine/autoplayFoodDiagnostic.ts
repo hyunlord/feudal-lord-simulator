@@ -4,6 +4,7 @@ import type { ServicePlanningCollector } from './autoplayServices';
 import type { AutoplayAction } from './autoplay.types';
 import type { AutoplayFoodTransientConfirmation } from './autoplayFoodTransient';
 import type { GameState } from './engine.types';
+import type { BotRecoveryCollector } from './autoplayBotRecovery';
 
 export type FoodDiagnosticReason = MeasuredFoodReason | 'food_route_repair' | 'transport_storage_selected' | 'transport_capacity_selected' | 'facility_limit' | 'not_reached' | 'no_housing' | 'pending_chain' | 'active_observation'
   | 'coverage_selected' | 'recovery_deferred' | 'recovery_selected' | 'repeat_blocked' | 'staff_blocked'
@@ -40,7 +41,7 @@ export interface FoodDiagnostic {
   readonly details: 'not_captured';
 }
 // One-call accumulator, owned by the driver; never supplied to its external observer.
-export interface FoodDiagnosticCollector extends ServicePlanningCollector, SearchDiagnosticCollector { food?: FoodDiagnostic }
+export interface FoodDiagnosticCollector extends ServicePlanningCollector, SearchDiagnosticCollector, BotRecoveryCollector { food?: FoodDiagnostic }
 export function transientSummary(value: AutoplayFoodTransientConfirmation | null | undefined): FoodTransientSummary {
   if (value === undefined) return 'not_evaluated';
   if (value === null) return null;
