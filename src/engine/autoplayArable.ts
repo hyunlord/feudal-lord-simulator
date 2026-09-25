@@ -93,6 +93,9 @@ function touchesRoad(state: GameState, cells: readonly TileCoordinate[]): boolea
     nx! >= 0 && ny! >= 0 && nx! < state.width && ny! < state.height && state.tiles[ny! * state.width + nx!]!.hasRoad));
 }
 
+const nearest = (building: Pick<Building, "tx" | "ty">, cells: readonly TileCoordinate[]) =>
+  Math.min(...cells.map(cell => Math.abs(cell.tx - building.tx) + Math.abs(cell.ty - building.ty)));
+
 const farthest = (building: Pick<Building, "tx" | "ty">, cells: readonly TileCoordinate[]) =>
   Math.max(...cells.map(cell => Math.abs(cell.tx - building.tx) + Math.abs(cell.ty - building.ty)));
 
@@ -124,6 +127,7 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
   const extension: { anchor: TileCoordinate; touches: boolean; distance: number }[] = [];
   const fresh: { anchor: TileCoordinate; distance: number }[] = [];
   const granaries = state.buildings.filter(building => building.kind === "granary");
+  const farmsteads = state.buildings.filter(building => building.kind === "farmstead");
   for (let ty = 1; ty < state.height - BLOCK; ty += 1) {
     for (let tx = 1; tx < state.width - BLOCK; tx += 1) {
       const anchor = { tx, ty };
@@ -134,7 +138,12 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
         const touches = cells.some(cell => [[cell.tx - 1, cell.ty], [cell.tx + 1, cell.ty], [cell.tx, cell.ty - 1], [cell.tx, cell.ty + 1]]
           .some(([nx, ny]) => arableCells.has(ny! * state.width + nx!)));
         extension.push({ anchor, touches, distance: Math.min(...reach) });
-      } else if (newFarmsteadAllowed && granaries.length > 0 && touchesRoad(state, cells)) {
+      } else if (newFarmsteadAllowed && granaries.length > 0 && touchesRoad(state, cells)
+        // A new field lies beyond every full farmstead's reach and apart from the other fields, so a farmstead of its
+        // own is built for it; a full farmstead would otherwise take it and nothing would count (AF-8, AF-10).
+        && farmsteads.every(building => nearest(building, cells) > ARABLE_CONFIG.tendRadius)
+        && !cells.some(cell => [[cell.tx - 1, cell.ty], [cell.tx + 1, cell.ty], [cell.tx, cell.ty - 1], [cell.tx, cell.ty + 1]]
+          .some(([nx, ny]) => arableCells.has(ny! * state.width + nx!)))) {
         // A new field touches a road like the old farm did, so its harvest and farmstead are reachable.
         fresh.push({ anchor, distance: Math.min(...granaries.map(granary => Math.abs(granary.tx - tx) + Math.abs(granary.ty - ty))) });
       }
@@ -169,11 +178,13 @@ export function fieldBlockAction(state: GameState, newFarmsteadAllowed: boolean)
 function fieldRoadAction(state: GameState, zoneCells: ReadonlySet<number>): AutoplayAction {
   const roads = state.tiles.filter(tile => tile.hasRoad);
   if (roads.length === 0) return NONE;
+  const farmsteads = state.buildings.filter(building => building.kind === "farmstead");
   const open: { anchor: TileCoordinate; distance: number }[] = [];
   for (let ty = 1; ty < state.height - BLOCK; ty += 1) {
     for (let tx = 1; tx < state.width - BLOCK; tx += 1) {
       const cells = blockCells({ tx, ty });
       if (!cells.every(cell => openFieldCell(state, cell.tx, cell.ty, zoneCells))) continue;
+      if (farmsteads.some(building => nearest(building, cells) <= ARABLE_CONFIG.tendRadius)) continue;
       open.push({ anchor: { tx, ty }, distance: Math.min(...roads.map(road => Math.abs(road.tx - tx) + Math.abs(road.ty - ty))) });
     }
   }
