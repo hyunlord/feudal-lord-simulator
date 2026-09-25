@@ -57,10 +57,10 @@ export const MONEY_BALANCE = {
  * demands below take only what the R1-fix facility and construction allocation leaves (LB-4).
  */
 export const LABOUR_BALANCE = {
-  /** LB-4: order in which a short labour pool is filled (report value; tiers 1–5 and 8 are the R1-fix allocation). */
+  /** LB-4: order in which a short labour pool is filled (report value; tiers 1–6 are the R1-fix allocation). */
   priority: [
     "construction_floor", "core_food", "core_timber_while_building", "other_food", "other_facilities",
-    "field_hands", "hauling", "construction_extra", "household_slots",
+    "construction_extra", "field_hands", "hauling", "household_slots",
   ],
   /** LB-8: household production slots by house level L0…L4. */
   householdSlotsByLevel: [0, 1, 1, 2, 2],
@@ -74,8 +74,8 @@ export const LABOUR_BALANCE = {
   millWheatTarget: 12,
   /** LB-7: a granary pushes to a mill whose wheat plus wheat on its way is below this (a second load on top). */
   millPushTarget: 24,
-  /** LB-7: autoplay mill cap = max(need, expected harvest) × this ÷ a mill's year of wheat, + 1 (AF-13 had 2000‰). */
-  millHaulingFactorPermille: 2000,
+  /** LB-7: autoplay mill cap = a year's wheat need × this ÷ a mill's year of wheat, + 1 (AF-13: max(need, harvest) × 2). */
+  millHaulingFactorPermille: 1300,
   /** LB-9: idle adults ÷ population above this shows the idle-labour hint (the A″ threshold). */
   idleHintPermille: 250,
 } as const;
