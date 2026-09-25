@@ -1,0 +1,34 @@
+{
+  "base": "http://127.0.0.1:4312/",
+  "url": "http://127.0.0.1:4311/",
+  "rows": [
+    {
+      "build": "trunk",
+      "device": "mouse",
+      "focusBefore": "BUTTON:일시 정지",
+      "focusAfter": "BODY:",
+      "roadArmedByE": true
+    },
+    {
+      "build": "trunk",
+      "device": "touch",
+      "focusBefore": "BUTTON:일시 정지",
+      "focusAfter": "BODY:",
+      "roadArmedByE": true
+    },
+    {
+      "build": "touch1",
+      "device": "mouse",
+      "focusBefore": "BUTTON:일시 정지",
+      "focusAfter": "BODY:",
+      "roadArmedByE": true
+    },
+    {
+      "build": "touch1",
+      "device": "touch",
+      "focusBefore": "BUTTON:일시 정지",
+      "focusAfter": "BODY:",
+      "roadArmedByE": true
+    }
+  ]
+}

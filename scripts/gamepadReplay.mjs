@@ -1,6 +1,6 @@
 // TOUCH-1 gate 2: a gamepad session with a virtual pad (navigator.getGamepads replaced before the page loads; the
 // translator polls it every frame like a real pad), paused, from the default new game:
-//   1. RB until the hut tool is armed, the left stick drives the map cursor onto tile (48,38), A places a hut.
+//   1. RB until the hut tool is armed, the left stick drives the map cursor onto tile (48,38), A places a hut. FIX-1 (needs_road) moved the hut to (48,40), beside the opening road (47,40).
 //   2. B disarms (a tool is armed), B again with the cursor on the new site cancels it (the aimed cancel).
 //   3. X three times = pasture brush; cursor to (52,46), A held while the stick moves the cursor to (55,46) = a stroke.
 // Afterwards: the site appeared and went, the pasture zone has cells. A capture shows the map cursor.
@@ -62,8 +62,8 @@ await tap(0 + 3); // Y: pause toggle (wakes the pad), again to stay paused
 await tap(3);
 for (let i = 0; i < 40 && !(await snapshot('')).hutArmed; i += 1) await tap(RB);
 rows.push(await snapshot('RB until the hut tool is armed'));
-await steer(48, 38);
-rows.push(await snapshot('cursor on (48,38)'));
+await steer(48, 40);
+rows.push(await snapshot('cursor on (48,40)'));
 await page.screenshot({ path: join(outDir, 'gamepad-cursor-hut.jpg'), type: 'jpeg', quality: 75, clip: { x: 340, y: 150, width: 600, height: 450 } });
 await tap(A);
 rows.push(await snapshot('A places a hut'));
@@ -83,6 +83,6 @@ await context.close(); await browser.close();
 const placed = rows.find(row => row.label === 'A places a hut');
 const cancelled = rows.find(row => row.label === 'B on the site cancels it');
 const painted = rows.at(-1);
-const result = { url, pass: placed.sites.includes('house@48,38') && !cancelled.sites.includes('house@48,38') && /pasture:\d+/.test(painted.zones), rows };
+const result = { url, pass: placed.sites.includes('house@48,40') && !cancelled.sites.includes('house@48,40') && /pasture:\d+/.test(painted.zones), rows };
 await writeFile(join(outDir, 'gamepad-replay.json'), `${JSON.stringify(result, null, 2)}\n`);
 console.log(JSON.stringify(result, null, 1));

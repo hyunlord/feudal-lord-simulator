@@ -1,0 +1,87 @@
+{
+ "url": "http://127.0.0.1:4311/",
+ "presses": 11,
+ "beforeSave": {
+  "card": "food_chain",
+  "cardText": "헛간과 방앗간 짓기",
+  "categories": [
+   "living:open",
+   "paths:open",
+   "trade:open",
+   "storage:locked",
+   "public:locked",
+   "defense:locked"
+  ],
+  "layers": [
+   "direct:open",
+   "zone:locked",
+   "direction:locked"
+  ],
+  "lockedTools": 5,
+  "eraLockedTools": 5,
+  "tick": 177
+ },
+ "afterResume": {
+  "card": "food_chain",
+  "cardText": "헛간과 방앗간 짓기",
+  "categories": [
+   "living:open",
+   "paths:open",
+   "trade:open",
+   "storage:locked",
+   "public:locked",
+   "defense:locked"
+  ],
+  "layers": [
+   "direct:open",
+   "zone:locked",
+   "direction:locked"
+  ],
+  "lockedTools": 5,
+  "eraLockedTools": 5,
+  "tick": 179
+ },
+ "off": {
+  "card": "settlement",
+  "cardText": "자립 마을",
+  "categories": [
+   "living:open",
+   "paths:open",
+   "trade:open",
+   "storage:open",
+   "public:open",
+   "defense:open"
+  ],
+  "layers": [
+   "direct:open",
+   "zone:open",
+   "direction:locked"
+  ],
+  "lockedTools": 0,
+  "eraLockedTools": 5,
+  "tick": 179
+ },
+ "onAgain": {
+  "card": "food_chain",
+  "cardText": "헛간과 방앗간 짓기",
+  "categories": [
+   "living:open",
+   "paths:open",
+   "trade:open",
+   "storage:locked",
+   "public:locked",
+   "defense:locked"
+  ],
+  "layers": [
+   "direct:open",
+   "zone:locked",
+   "direction:locked"
+  ],
+  "lockedTools": 5,
+  "eraLockedTools": 5,
+  "tick": 179
+ },
+ "resumeIdentical": true,
+ "offOpensAll": true,
+ "onRestores": true
+}
