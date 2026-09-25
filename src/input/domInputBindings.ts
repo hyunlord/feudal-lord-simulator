@@ -92,8 +92,15 @@ export function bindMouseKeyboard(canvas: EventSource, translator: MouseKeyboard
 /** Touch on the game canvas -> the touch translator (all gestures; the browser makes no mouse events of its own). */
 export function bindTouch(canvas: EventSource, translator: TouchTranslator): () => void {
   const points = (list: TouchList) => Array.from({ length: list.length }, (_, index) => list[index] as Touch).map(touch => ({ clientX: touch.clientX, clientY: touch.clientY }));
+  // A touch keeps its events on the canvas it started on; a mouse move over a control goes to the control. Mark moves
+  // over a control so a stroke does not follow the finger under the UI either (touchTranslator.ts).
+  const covered = (point: { readonly clientX: number; readonly clientY: number }) => {
+    if (typeof document === "undefined" || typeof document.elementFromPoint !== "function") return false;
+    const element = document.elementFromPoint(point.clientX, point.clientY);
+    return element !== null && element !== (canvas as unknown as Element);
+  };
   const start = (event: TouchEvent) => { releaseControlFocus(); applyOutcome(event, translator.start(points(event.touches))); };
-  const move = (event: TouchEvent) => applyOutcome(event, translator.move(points(event.touches)));
+  const move = (event: TouchEvent) => applyOutcome(event, translator.move(points(event.touches).map(point => ({ ...point, covered: covered(point) }))));
   const end = (event: TouchEvent) => applyOutcome(event, translator.end(event.touches.length));
   canvas.addEventListener("touchstart", start, { passive: false });
   canvas.addEventListener("touchmove", move, { passive: false });

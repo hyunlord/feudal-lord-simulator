@@ -10,14 +10,20 @@ import type { ArmedTools, MouseKeyboardTranslator, Outcome } from "./mouseKeyboa
 // On top of that:
 //  - Two fingers always move the camera, tool or not: the midpoint's motion pans, the distance ratio zooms around the
 //    midpoint. A second finger drops the one-finger press in progress (a stroke is cancelled, like a right click).
+//  - A one-finger move over a page control (the build menu, a panel) is not passed on: the mouse's moves there go to
+//    the control, not the canvas, so a mouse stroke does not follow the pointer under the UI and neither does a
+//    finger (a touch keeps sending its moves to the canvas it started on). The release still ends the stroke at the
+//    finger, as the window-level mouse up does.
 //  - A one-finger hold of LONG_PRESS_MS without moving = `inspect` at that point (no stroke tool armed); its tap is
 //    swallowed.
 //  - A two-finger tap (both down and up within TWO_TAP_MS, moving less than TAP_SLOP) = cancel: the global cancel
-//    (disarm, like Esc) while a tool or a press is armed, else the cancel aimed at the map (the construction site
-//    there, like a right click).
+//    (disarm, like Esc) while a tool is armed, else the cancel aimed at the map (the construction site there, like a
+//    right click). A second finger that lands on a stroke in progress only drops that stroke (the right click
+//    during a road drag), without the extra cancel.
 // Everything is preventDefault-ed: the browser makes no mouse events or scrolling of its own on the canvas.
 
-type TouchPoint = { readonly clientX: number; readonly clientY: number };
+/** `covered`: a page control lies over the canvas at this point (the DOM binding hit-tests each move). */
+type TouchPoint = { readonly clientX: number; readonly clientY: number; readonly covered?: boolean };
 type CanvasRect = { readonly left: number; readonly top: number };
 
 export type TouchTranslatorContext = {
@@ -40,7 +46,9 @@ const PREVENT: Outcome = { preventDefault: true };
 type Mode =
   | { readonly kind: "idle" }
   | { readonly kind: "one"; readonly start: TouchPoint; last: TouchPoint; moved: boolean; timer: number | null; inspected: boolean }
-  | { readonly kind: "two"; readonly startedAt: number; readonly startMid: Point; readonly startDistance: number; mid: Point; distance: number; moved: boolean };
+  | { readonly kind: "two"; readonly startedAt: number; readonly startMid: Point; readonly startDistance: number; mid: Point; distance: number; moved: boolean;
+      /** The second finger dropped a one-finger press: that is the whole gesture, lifting both is no cancel tap. */
+      readonly droppedPress: boolean };
 
 export function createTouchTranslator(context: TouchTranslatorContext) {
   const now = context.now ?? (() => performance.now());
@@ -57,9 +65,10 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
   const strokeTool = () => { const armed = context.armed(); return armed.zone || armed.road || armed.palisade; };
   const stopTimer = () => { if (mode.kind === "one" && mode.timer !== null) { clearTimer(mode.timer); mode.timer = null; } };
   const beginTwo = (touches: readonly TouchPoint[]) => {
+    const droppedPress = mode.kind === "one" && context.mouse.pressing() && strokeTool();
     if (mode.kind === "one") { stopTimer(); context.mouse.abortPress(mode.last); }
     const { mid, distance } = pairOf(touches);
-    mode = { kind: "two", startedAt: now(), startMid: mid, startDistance: distance, mid, distance, moved: false };
+    mode = { kind: "two", startedAt: now(), startMid: mid, startDistance: distance, mid, distance, moved: false, droppedPress };
   };
 
   return {
@@ -93,7 +102,7 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
         const touch = touches[0] as TouchPoint;
         mode.last = touch;
         if (!mode.moved && Math.hypot(touch.clientX - mode.start.clientX, touch.clientY - mode.start.clientY) > TAP_SLOP) { mode.moved = true; stopTimer(); }
-        context.mouse.pointerMove(touch);
+        if (touch.covered !== true) context.mouse.pointerMove(touch);
         return PREVENT;
       }
       if (touches.length >= 2) {
@@ -125,7 +134,7 @@ export function createTouchTranslator(context: TouchTranslatorContext) {
         const ended = mode;
         mode = { kind: "idle" };
         lastTap = null;
-        if (!ended.moved && now() - ended.startedAt <= TWO_TAP_MS) {
+        if (!ended.moved && !ended.droppedPress && now() - ended.startedAt <= TWO_TAP_MS) {
           const armed = context.armed();
           const busy = armed.zone || armed.road || armed.palisade || armed.tool === true || context.mouse.pressing();
           context.emit(busy ? { kind: "cancel" } : { kind: "cancel", world: canvasToWorld(ended.mid, context.camera()) });

@@ -46,8 +46,9 @@ const MODES = {
 const WIDTH = 1280, HEIGHT = 800;
 
 /** Opens the game with an injected state (null = DEFAULT_GAME_STATE) centred on a tile, 1× speed running. */
-export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true, zoom = 1 }) {
-  const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr });
+export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true, zoom = 1, hasTouch = false, initScript = null }) {
+  const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr, hasTouch });
+  if (initScript !== null) await context.addInitScript(initScript);
   const page = await context.newPage();
   await page.routeWebSocket('**', socket => socket.close());
   if (state !== null) {

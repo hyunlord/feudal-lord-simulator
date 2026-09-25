@@ -1,0 +1,501 @@
+{
+  "url": "http://127.0.0.1:4291/",
+  "identical": 13,
+  "of": 13,
+  "rows": [
+    {
+      "step": "road tool, drag a road line",
+      "identical": true,
+      "exactCamera": true,
+      "cameraDelta": {
+        "dx": 0,
+        "dy": 0,
+        "dz": 0
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "road tool, drag a road line",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44",
+        "roadRevision": 1,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 640,
+        "cameraY": 400,
+        "zoom": 1,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "road tool, drag a road line",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44",
+        "roadRevision": 1,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 640,
+        "cameraY": 400,
+        "zoom": 1,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "road tool, click one tile twice (place, remove)",
+      "identical": true,
+      "exactCamera": true,
+      "cameraDelta": {
+        "dx": 0,
+        "dy": 0,
+        "dz": 0
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "road tool, click one tile twice (place, remove)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 640,
+        "cameraY": 400,
+        "zoom": 1,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "road tool, click one tile twice (place, remove)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 640,
+        "cameraY": 400,
+        "zoom": 1,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "road tool, drag then right click cancels, release",
+      "identical": true,
+      "exactCamera": true,
+      "cameraDelta": {
+        "dx": 0,
+        "dy": 0,
+        "dz": 0
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "road tool, drag then right click cancels, release",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 640,
+        "cameraY": 400,
+        "zoom": 1,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "road tool, drag then right click cancels, release",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 640,
+        "cameraY": 400,
+        "zoom": 1,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "Esc disarms, left drag pans",
+      "identical": true,
+      "exactCamera": true,
+      "cameraDelta": {
+        "dx": 0,
+        "dy": 0,
+        "dz": 0
+      },
+      "mouseSpread": 0,
+      "movedPx": 98.48857801796105,
+      "mouse": {
+        "step": "Esc disarms, left drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 550,
+        "cameraY": 360,
+        "zoom": 1,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "Esc disarms, left drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 550,
+        "cameraY": 360,
+        "zoom": 1,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "middle drag pans",
+      "identical": true,
+      "exactCamera": true,
+      "cameraDelta": {
+        "dx": 0,
+        "dy": 0,
+        "dz": 0
+      },
+      "mouseSpread": 0,
+      "movedPx": 78.10249675906655,
+      "mouse": {
+        "step": "middle drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610,
+        "cameraY": 410,
+        "zoom": 1,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "middle drag pans",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610,
+        "cameraY": 410,
+        "zoom": 1,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "wheel zoom in and out",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.000002441406195430318,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 2.8144271175497066,
+      "mouse": {
+        "step": "wheel zoom in and out",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610.89,
+        "cameraY": 412.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "wheel zoom in and out",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610.8900024414062,
+        "cameraY": 412.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "house tool, place",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.000002441406195430318,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "house tool, place",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "house@48,38",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610.89,
+        "cameraY": 412.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "house tool, place",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "house@48,38",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610.8900024414062,
+        "cameraY": 412.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "right click the new site cancels it",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.000002441406195430318,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "right click the new site cancels it",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610.89,
+        "cameraY": 412.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "right click the new site cancels it",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 610.8900024414062,
+        "cameraY": 412.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "touch"
+      }
+    },
+    {
+      "step": "Space held + drag pans with the road tool",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.000002441406195430318,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 56.568542494923804,
+      "mouse": {
+        "step": "Space held + drag pans with the road tool",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 570.89,
+        "cameraY": 452.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "Space held + drag pans with the road tool",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 570.8900024414062,
+        "cameraY": 452.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "mouse"
+      }
+    },
+    {
+      "step": "zone brush: paint, radius ], paint",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.000002441406195430318,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "zone brush: paint, radius ], paint",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:18",
+        "zoneUndo": 1,
+        "cameraX": 570.89,
+        "cameraY": 452.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "zone brush: paint, radius ], paint",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "pasture:18",
+        "zoneUndo": 1,
+        "cameraX": 570.8900024414062,
+        "cameraY": 452.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "mouse"
+      }
+    },
+    {
+      "step": "zone brush: Z undoes the last stroke, Esc disarms",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.000002441406195430318,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 0,
+      "mouse": {
+        "step": "zone brush: Z undoes the last stroke, Esc disarms",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 570.89,
+        "cameraY": 452.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "zone brush: Z undoes the last stroke, Esc disarms",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 570.8900024414062,
+        "cameraY": 452.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "mouse"
+      }
+    },
+    {
+      "step": "keyboard pan (D held)",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.4042391553375069,
+        "dy": 0.000007324218813664629,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0.2409215367492834,
+      "movedPx": 379.3099647323486,
+      "mouse": {
+        "step": "keyboard pan (D held)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 191.5800352676514,
+        "cameraY": 452.66999999999985,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "keyboard pan (D held)",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 191.9842744229889,
+        "cameraY": 452.67000732421866,
+        "zoom": 1.0890002441406252,
+        "device": "mouse"
+      }
+    },
+    {
+      "step": "map overview press jumps the camera",
+      "identical": true,
+      "exactCamera": false,
+      "cameraDelta": {
+        "dx": 0.0001718750002055458,
+        "dy": 0.0001093749999654392,
+        "dz": 2.44140625049738e-7
+      },
+      "mouseSpread": 0,
+      "movedPx": 1290.6627680669528,
+      "mouse": {
+        "step": "map overview press jumps the camera",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 1406.6560000000002,
+        "cameraY": 887.8720000000001,
+        "zoom": 1.0890000000000002,
+        "device": "mouse"
+      },
+      "touch": {
+        "step": "map overview press jumps the camera",
+        "roads": "43,39 44,39 45,39 46,39 47,39 43,40 47,40 43,41 44,41 46,41 47,41 48,41 49,41 50,41 43,44 44,44 45,44 46,44 47,44 38,46",
+        "roadRevision": 4,
+        "buildings": 8,
+        "sites": "",
+        "zones": "",
+        "zoneUndo": 0,
+        "cameraX": 1406.6561718750004,
+        "cameraY": 887.872109375,
+        "zoom": 1.0890002441406252,
+        "device": "mouse"
+      }
+    }
+  ]
+}
