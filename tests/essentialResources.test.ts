@@ -4,7 +4,7 @@ import test from "node:test";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { TerrainType } from "../src/content/terrainConfig";
 import type { GameState } from "../src/engine/engine.types";
-import { canPlaceBuilding } from "../src/world/placement";
+import { canPlaceBuildingBeforeRoad } from "../src/world/placement";
 import { canPlaceRoad, getOrthogonalRoadNeighbors } from "../src/world/roadGraph";
 import type { TileCoordinate } from "../src/world/grid";
 import { getTile } from "../src/world/grid";
@@ -37,7 +37,7 @@ function quarryOrigins(state: GameState): readonly TileCoordinate[] {
   const origins: TileCoordinate[] = [];
   for (let ty = 0; ty < state.height; ty += 1) {
     for (let tx = 0; tx < state.width; tx += 1) {
-      if (canPlaceBuilding(quarryWorld, "quarry", tx, ty).ok) origins.push({ tx, ty });
+      if (canPlaceBuildingBeforeRoad(quarryWorld, "quarry", tx, ty).ok) origins.push({ tx, ty });
     }
   }
   return origins;

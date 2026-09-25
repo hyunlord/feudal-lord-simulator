@@ -9,7 +9,7 @@ const [outDir] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, index, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[index + 1]]] : pairs, []));
 const url = flags.url ?? 'http://127.0.0.1:4213/';
 const width = Number(flags.width ?? 1280); const height = Number(flags.height ?? 800);
-const STEPS = ['greet', 'well', 'well_done', 'house', 'road', 'arable', 'arable_limits', 'food_chain', 'granary', 'zone_unlock', 'burgage', 'burgage_done', 'wrap_up'];
+const STEPS = ['greet', 'well', 'well_done', 'road', 'house', 'arable', 'arable_limits', 'food_chain', 'granary', 'zone_unlock', 'burgage', 'burgage_done', 'wrap_up'];
 
 // Gate 2: what the script (work order section 2, research E) opens at each step, written out independently of the model.
 const OPEN_BY_STEP = (step) => {

@@ -33,7 +33,8 @@ export const PROOF_SCENARIOS = [
   {
     name: "hamlet",
     state: DEFAULT_GAME_STATE,
-    expectedButtons: 10,
+    // UX-1: the tools the stage has not opened stay visible (locked, with the stage that opens them).
+    expectedButtons: 15,
     maxCompactRows: 3,
   },
   {

@@ -2,7 +2,7 @@ import type { BuildingKind } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import type { PlacementTool } from "../../render/renderer";
 import type { ZoneBrushTarget } from "../../render/zoneBrushInteraction";
-import { OPENING_VILLAGE_CENTER, openingVillageBuildings } from "../../state/openingVillage";
+import { applyOpeningVillageToTile, OPENING_VILLAGE_CENTER, openingVillageBuildings } from "../../state/openingVillage";
 import { canPlaceRoad } from "../../world/roadGraph";
 import { getTile, type TileCoordinate } from "../../world/grid";
 import { canPlaceBuildingWithZones } from "../../zones/zonePlacement";
@@ -23,11 +23,11 @@ import { ONBOARDING_ARABLE_CELLS } from "../onboardingBuildingTaskProgress";
 //    same input intents a click or a drag sends (gate 1: the whole script plays by pressing the card buttons only).
 
 export type TutorialStepId =
-  | "greet" | "well" | "well_done" | "house" | "road" | "arable" | "arable_limits"
+  | "greet" | "well" | "well_done" | "road" | "house" | "arable" | "arable_limits"
   | "food_chain" | "granary" | "zone_unlock" | "burgage" | "burgage_done" | "wrap_up";
 
 export const TUTORIAL_STEP_IDS = [
-  "greet", "well", "well_done", "house", "road", "arable", "arable_limits",
+  "greet", "well", "well_done", "road", "house", "arable", "arable_limits",
   "food_chain", "granary", "zone_unlock", "burgage", "burgage_done", "wrap_up",
 ] as const satisfies readonly TutorialStepId[];
 
@@ -85,6 +85,11 @@ function besideRoad(state: GameState, tile: TileCoordinate): boolean {
   return CARDINAL.some(offset => getTile(state, { tx: tile.tx + offset.tx, ty: tile.ty + offset.ty })?.hasRoad === true);
 }
 
+/** Road tiles the player laid (not the opening village's own road ring). */
+function newRoadTiles(state: GameState): number {
+  return state.tiles.filter(tile => tile.hasRoad && !applyOpeningVillageToTile({ ...tile, hasRoad: false, buildingId: null }).hasRoad).length;
+}
+
 function zoneCells(state: Pick<GameState, "zones">, kind: string): number {
   return zonesOf(state).filter(zone => zone.kind === kind).reduce((sum, zone) => sum + zone.membership.length, 0);
 }
@@ -93,8 +98,8 @@ function zoneCells(state: Pick<GameState, "zones">, kind: string): number {
 function stepPredicate(id: TutorialStepId): ((state: GameState) => boolean) | null {
   switch (id) {
     case "well": return state => newCount(state, "well") >= 1;
+    case "road": return state => newRoadTiles(state) >= 1;
     case "house": return state => newHouses(state).length >= 1;
-    case "road": return state => newHouses(state).some(house => besideRoad(state, house));
     case "arable": return state => zoneCells(state, "arable") >= ONBOARDING_ARABLE_CELLS;
     case "food_chain": return state => placedCount(state, "farmstead") >= 1 && placedCount(state, "mill") >= 1;
     case "granary": return state => newCount(state, "granary") >= 1;
@@ -107,8 +112,8 @@ function stepPredicate(id: TutorialStepId): ((state: GameState) => boolean) | nu
 export function stepProgress(state: GameState, id: TutorialStepId): TutorialProgress | null {
   switch (id) {
     case "well": return { current: Math.min(1, newCount(state, "well")), target: 1 };
+    case "road": return { current: Math.min(1, newRoadTiles(state)), target: 1 };
     case "house": return { current: Math.min(1, newHouses(state).length), target: 1 };
-    case "road": return { current: newHouses(state).some(house => besideRoad(state, house)) ? 1 : 0, target: 1 };
     case "arable": return { current: Math.min(ONBOARDING_ARABLE_CELLS, zoneCells(state, "arable")), target: ONBOARDING_ARABLE_CELLS };
     case "food_chain": return { current: Math.min(1, placedCount(state, "farmstead")) + Math.min(1, placedCount(state, "mill")), target: 2 };
     case "granary": return { current: Math.min(1, newCount(state, "granary")), target: 1 };
@@ -231,28 +236,31 @@ export function suggestedBuildingSpot(state: GameState, kind: BuildingKind): Til
   return null;
 }
 
-/** The house spot: one free tile off a road (so the next card links it), clear of other buildings. */
-export function suggestedHouseSpot(state: GameState): { readonly house: TileCoordinate; readonly road: TileCoordinate } | null {
-  for (const origin of candidates(state)) {
-    if (!placeable(state, "house", origin) || !clearOfBuildings(state, "house", origin) || besideRoad(state, origin)) continue;
+/**
+ * The road tile the card lays (FIX-1: houses and workplaces need a road): a free tile beside the existing road with a
+ * buildable, clear house spot beside it, so the next card builds on the new road.
+ */
+export function suggestedRoadExtension(state: GameState): { readonly road: TileCoordinate; readonly house: TileCoordinate } | null {
+  for (const tile of candidates(state)) {
+    if (!canPlaceRoad(state, tile) || !besideRoad(state, tile)) continue;
     for (const offset of CARDINAL) {
-      const link = { tx: origin.tx + offset.tx, ty: origin.ty + offset.ty };
-      if (canPlaceRoad(state, link) && besideRoad(state, link)) return { house: origin, road: link };
+      const house = { tx: tile.tx + offset.tx, ty: tile.ty + offset.ty };
+      if (besideRoad(state, house) || !clearOfBuildings(state, "house", house)) continue;
+      if (getTile(state, house)?.terrain !== "grass" || getTile(state, house)?.hasRoad === true) continue;
+      return { road: tile, house };
     }
   }
   return null;
 }
 
-/** The road tile that links the newest house to the network (a free side tile beside an existing road). */
-export function suggestedRoadTile(state: GameState): TileCoordinate | null {
-  for (const house of newHouses(state)) {
-    if (besideRoad(state, house)) continue;
-    for (const offset of CARDINAL) {
-      const link = { tx: house.tx + offset.tx, ty: house.ty + offset.ty };
-      if (canPlaceRoad(state, link) && besideRoad(state, link)) return link;
-    }
+/** The house spot: beside a road tile the player laid (the card before), else the nearest road-side spot. */
+export function suggestedHouseSpot(state: GameState): TileCoordinate | null {
+  const laid = state.tiles.filter(tile => tile.hasRoad && !applyOpeningVillageToTile({ ...tile, hasRoad: false, buildingId: null }).hasRoad);
+  for (const road of laid) for (const offset of CARDINAL) {
+    const house = { tx: road.tx + offset.tx, ty: road.ty + offset.ty };
+    if (placeable(state, "house", house) && clearOfBuildings(state, "house", house)) return house;
   }
-  return null;
+  return suggestedBuildingSpot(state, "house");
 }
 
 function nearZone(state: GameState, origin: TileCoordinate, kind: string): boolean {
@@ -305,11 +313,11 @@ export function stepAction(state: GameState, id: TutorialStepId, armed: { readon
   switch (id) {
     case "greet": return { kind: "ack", step: id, resume: true };
     case "well": return building("well", suggestedBuildingSpot(state, "well"));
-    case "house": return building("house", suggestedHouseSpot(state)?.house ?? null);
     case "road": {
-      const tile = suggestedRoadTile(state);
+      const tile = suggestedRoadExtension(state)?.road ?? null;
       return armed.tool === "road" ? tile === null ? null : { kind: "place", tool: "road", tile } : { kind: "arm", tool: "road" };
     }
+    case "house": return building("house", suggestedHouseSpot(state));
     case "arable": {
       if (armed.zone !== "arable") return { kind: "armZone", target: "arable" };
       const suggestion = suggestedZoneStroke(state, "arable", zoneRadius);
@@ -336,8 +344,8 @@ export function stepTarget(state: GameState, id: TutorialStepId, zoneRadius: num
     : { tiles: kind === undefined ? [tile] : footprintTiles(kind, tile), focus: tile };
   switch (id) {
     case "well": return single(suggestedBuildingSpot(state, "well"), "well");
-    case "house": return single(suggestedHouseSpot(state)?.house ?? null, "house");
-    case "road": return single(suggestedRoadTile(state));
+    case "road": return single(suggestedRoadExtension(state)?.road ?? null);
+    case "house": return single(suggestedHouseSpot(state), "house");
     case "arable": case "burgage": {
       const suggestion = suggestedZoneStroke(state, id, zoneRadius);
       return suggestion === null ? null : { tiles: suggestion.cells, focus: suggestion.cells[Math.floor(suggestion.cells.length / 2)]! };

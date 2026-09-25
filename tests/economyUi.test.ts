@@ -251,9 +251,10 @@ test("settlement guidance priority follows the exact Phase 4F blocker order", ()
     breadStock: 1,
     lastServicedTick: 0,
   }));
+  // FIX-1: a stable town also holds a season of stored food.
   const granary = {
     ...building({ id: "granary", kind: "granary", tx: 2, ty: 2, workers: 2 }),
-    inventory: {},
+    inventory: { bread: 100 },
   };
   const farm = building({ id: "farm", kind: "wheat_farm", tx: 3, ty: 3, workers: 1 });
   const openingHouse = DEFAULT_GAME_STATE.buildings[0];

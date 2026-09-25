@@ -1,7 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from '../content/buildingConfig';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { housingLotCount } from '../population/housing';
-import { canPlaceBuilding } from '../world/placement';
+import { canPlaceBuildingBeforeRoad } from '../world/placement';
 import type { TileCoordinate } from '../world/grid';
 import { canPlaceRoad, roadLine } from '../world/roadGraph';
 import { insideWall } from './autoplayBotRecovery';
@@ -62,7 +62,7 @@ export function interiorHouseSites(state: GameState): readonly TileCoordinate[] 
   return state.tiles.flatMap(tile => {
     if (tile.hasRoad || !insideWall(state, 'house', tile) || !hasAutoplayBuildingClearance(state, 'house', tile)) return [];
     if (!SIDES.some(({ dx, dy }) => { const next = key({ tx: tile.tx + dx, ty: tile.ty + dy }); return roads.has(next) || reach.has(next); })) return [];
-    const placement = canPlaceBuilding(state, 'house', tile.tx, tile.ty);
+    const placement = canPlaceBuildingBeforeRoad(state, 'house', tile.tx, tile.ty);
     return placement.ok || placement.reason === 'insufficient_materials' ? [{ tx: tile.tx, ty: tile.ty }] : [];
   });
 }

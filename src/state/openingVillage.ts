@@ -3,6 +3,8 @@ import {
   type Building,
 } from "../content/buildingConfig";
 import type { House } from "../population/population.types";
+import type { GameState } from "../engine/engine.types";
+import { householdServices } from "../engine/householdServices";
 import type { Tile } from "../world/world.types";
 
 export const OPENING_VILLAGE_CENTER = { tx: 45, ty: 41 } as const;
@@ -138,4 +140,18 @@ export function applyOpeningVillageToTile(tile: Tile): Tile {
     buildingId: building?.id ?? tile.buildingId,
     hasRoad: tile.hasRoad || hasRoad,
   };
+}
+
+/**
+ * FIX-1: a new game shows the services its village already has. Houses are created without water and the tick sets
+ * `hasWater` from the service allocation (`updateHousing`), so a paused first frame reported a missing well beside
+ * the village well. The same allocation runs once here when the state is made; nothing else changes (bread still
+ * arrives by distribution, and the opening grace covers it).
+ */
+export function withOpeningVillageServices<State extends GameState>(state: State): State {
+  const services = householdServices(state);
+  return { ...state, houses: state.houses.map(house => {
+    const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
+    return hasWater === house.hasWater ? house : { ...house, hasWater };
+  }) };
 }

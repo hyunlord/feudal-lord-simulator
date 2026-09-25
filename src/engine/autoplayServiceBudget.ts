@@ -4,7 +4,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfi
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { houseLotArea } from '../geometry/buildingFootprint';
 import { HOUSEHOLD_SERVICE_CONFIG, allocateHouseServices } from '../population/serviceAllocation';
-import { canPlaceBuilding } from '../world/placement';
+import { canPlaceBuildingBeforeRoad } from '../world/placement';
 import type { GameState } from './engine.types';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
 import { marketRoadService } from './marketService';
@@ -75,7 +75,7 @@ export function searchBudgetedServicePlan(state: GameState): ServiceBudgetSearch
       let mask = 0n;
       homes.forEach((home, index) => { if (buildingFootprintDistance(home, building) <= BUILDING_CONFIG_BY_KIND[kind].serviceRadius && potentialConnectivity(home, building)) mask |= 1n << BigInt(index); });
       if (mask === 0n || !sources.some(source => potentialConnectivity(source, building)) || !hasAutoplayBuildingClearance(staffedState, kind, tile)) continue;
-      const placement = canPlaceBuilding({ ...staffedState, era: 'stone_town' }, kind, tile.tx, tile.ty);
+      const placement = canPlaceBuildingBeforeRoad({ ...staffedState, era: 'stone_town' }, kind, tile.tx, tile.ty);
       if (!placement.ok && placement.reason !== 'insufficient_materials') continue;
       result.push({ building, mask, occupied: new Set(serviceFootprint(building).map(serviceTileKey)) });
     }

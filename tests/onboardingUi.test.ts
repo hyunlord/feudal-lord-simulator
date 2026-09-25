@@ -143,9 +143,11 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
       placementFeedbackMessage: "도로가 필요합니다",
     }),
   );
-  // UX-0: the fallback waits one second of play (tick 20) before speaking; at tick 0 supply is not computed yet.
+  // FIX-1 waters the opening village at tick 0, so the blocker fallback is shown on a village without water; UX-0: the
+  // line also waits one second of play (tick 20) before speaking.
+  const unwatered = { ...DEFAULT_GAME_STATE, tick: 20, houses: DEFAULT_GAME_STATE.houses.map(house => ({ ...house, hasWater: false })) };
   const fallback = renderToStaticMarkup(
-    createElement(SettlementStatusLine, { state: { ...DEFAULT_GAME_STATE, tick: 20 }, selectedTool: null }),
+    createElement(SettlementStatusLine, { state: unwatered, selectedTool: null }),
   );
   const beforePlay = renderToStaticMarkup(
     createElement(SettlementStatusLine, { state: DEFAULT_GAME_STATE, selectedTool: null }),

@@ -35,6 +35,7 @@ import {
   applyOpeningVillageToTile,
   openingVillageBuildings,
   openingVillageHouses,
+  withOpeningVillageServices,
 } from "./openingVillage";
 import type {
   GameAction,
@@ -54,7 +55,7 @@ const INITIAL_WORLD = buildWorldGrid({ width: 64, height: 64, seed: WORLD_SEED }
 const STARTING_BUILDINGS = openingVillageBuildings();
 const STARTING_HOUSES = openingVillageHouses();
 
-export const DEFAULT_GAME_STATE: GameState = {
+export const DEFAULT_GAME_STATE: GameState = withOpeningVillageServices({
   tick: 0,
   seed: WORLD_SEED,
   tiles: INITIAL_WORLD.tiles.map(applyOpeningVillageToTile),
@@ -79,7 +80,7 @@ export const DEFAULT_GAME_STATE: GameState = {
   scenarioId: DEFAULT_SCENARIO_ID,
   zones: [],
   nextZoneOrdinal: 1,
-};
+});
 
 export const GameStoreContext = createContext<GameStoreContextValue | null>(null);
 

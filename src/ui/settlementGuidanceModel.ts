@@ -7,6 +7,8 @@ import type { GameState } from "../engine/engine.types";
 import { placementSpendableResource } from "../world/placement";
 import { idleLabourHighlighted } from "./householdLabourModel";
 import { HOUSEHOLD_LABOUR_COPY } from "./householdLabourCopy.ko";
+import { foodReserveShort } from "../population/foodReserve";
+import { SETTLEMENT_GUIDANCE_COPY } from "./settlementGuidanceCopy.ko";
 
 export type SettlementProblemKind = "water" | "bread" | "labour" | "storage";
 
@@ -81,6 +83,8 @@ function guidancePriority(state: GameState): SettlementProblemGlyph | null {
     return { kind: "storage", glyph: "箱", label: "목재가 부족합니다" };
   }
   if (idleLabourHighlighted(state)) return { ...PROBLEM_GLYPHS.labour, label: HOUSEHOLD_LABOUR_COPY.idleHint };
+  // FIX-1: household larders can be full while the stores run out; "stable" needs a season of stored food.
+  if (foodReserveShort(state)) return { ...PROBLEM_GLYPHS.bread, label: SETTLEMENT_GUIDANCE_COPY.foodReserveShort };
   return null;
 }
 

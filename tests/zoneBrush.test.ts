@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { canPlaceBuilding } from "../src/world/placement";
 import test from "node:test";
 
 import type { GameState } from "../src/engine/engine.types";
@@ -125,9 +126,15 @@ test("Given a plot zone When a house is previewed inside and outside it Then ins
   const inside = (state.zones?.[0]?.membership ?? []).map(cell => ({ tx: cell % state.width, ty: Math.floor(cell / state.width) }))
     .find(tile => placementPreview(state, "house", tile, null).ok);
 
+  // FIX-1: an outside lot a road reaches, so the refusal is the zone's and not the road's.
+  const members = new Set(state.zones?.[0]?.membership ?? []);
+  const lot = state.tiles.find(tile => !members.has(tile.ty * state.width + tile.tx) && canPlaceBuilding(state, "house", tile.tx, tile.ty).ok);
+  assert.ok(lot !== undefined);
+  const tile = { tx: lot.tx, ty: lot.ty };
+
   // When
-  const outside = placementPreview(state, "house", { tx: 10, ty: 50 }, null);
-  const attempt = resolveBuildingPlacementAttempt({ state, tool: "house", tile: { tx: 10, ty: 50 }, nowMs: 0 });
+  const outside = placementPreview(state, "house", tile, null);
+  const attempt = resolveBuildingPlacementAttempt({ state, tool: "house", tile, nowMs: 0 });
 
   // Then
   assert.ok(inside !== undefined, "some plot cell takes a house");

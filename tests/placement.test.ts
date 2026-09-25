@@ -226,7 +226,7 @@ test("canPlaceBuilding accepts rock footprint tiles when other requirements pass
   assert.deepEqual(result, { ok: true });
 });
 
-test("canPlaceBuilding accepts road-required buildings without orthogonal road adjacency", () => {
+test("FIX-1 canPlaceBuilding needs an orthogonal road beside a road-required building (a diagonal road is not access)", () => {
   // Given
   const diagonalRoad = setTile(grassGrid(5, 5), 0, 0, { hasRoad: true });
   const orthogonalRoad = setTile(grassGrid(5, 5), 1, 0, { hasRoad: true });
@@ -236,7 +236,7 @@ test("canPlaceBuilding accepts road-required buildings without orthogonal road a
   const orthogonalResult = canPlaceBuilding(worldFromGrid(orthogonalRoad), "storehouse", 1, 1);
 
   // Then
-  assert.deepEqual(diagonalResult, { ok: true });
+  assert.deepEqual(diagonalResult, { ok: false, reason: PlacementFailure.needs_road });
   assert.deepEqual(orthogonalResult, { ok: true });
 });
 

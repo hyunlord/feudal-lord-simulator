@@ -10,7 +10,7 @@ import { advanceTick } from "../src/engine/tick";
 import { buildingInspectorModel } from "../src/render/buildingInspectorModel";
 import { resolveRoadRemovalAttempt } from "../src/render/interactions";
 import { onboardingWorldGuidanceTargets } from "../src/ui/onboardingWorldGuidance";
-import { canPlaceBuilding } from "../src/world/placement";
+import { canPlaceBuilding, PlacementFailure } from "../src/world/placement";
 import type { Tile } from "../src/world/world.types";
 import type { House } from "../src/population/population.types";
 
@@ -129,7 +129,7 @@ function activeCarter(homeBuildingId: string): CarterWalker {
   };
 }
 
-test("Given valid terrain without adjacent road When placing a road-required building Then placement succeeds", () => {
+test("FIX-1 Given valid terrain without adjacent road When placing a road-required building Then placement is refused as needs_road", () => {
   // Given
   const initial = state({
     buildings: [],
@@ -141,9 +141,8 @@ test("Given valid terrain without adjacent road When placing a road-required bui
   const placed = placeBuilding(initial, "logging_camp", { tx: 2, ty: 2 });
 
   // Then
-  assert.deepEqual(checked, { ok: true });
-  assert.notEqual(placed, initial);
-  assert.equal(placed.constructionSites[0]?.kind, "logging_camp");
+  assert.deepEqual(checked, { ok: false, reason: PlacementFailure.needs_road });
+  assert.equal(placed, initial);
 });
 
 test("Given invalid physical terrain When placing without a road Then hard terrain constraints still fail", () => {
@@ -265,9 +264,10 @@ test("Given the road tool over an existing road When resolving removal Then it d
 test("Given onboarding needs logging camp When forest-adjacent candidates exist Then guidance exposes a region not one fixed point", () => {
   // Given
   const home = building({ id: "house-0-0-0", kind: "house", tx: 0, ty: 0 });
+  // FIX-1: guidance marks only sites a road reaches, so a road runs along the forest.
   const initial = state({
     buildings: [home],
-    roads: [[1, 0]],
+    roads: [[1, 0], [1, 1], [1, 2], [2, 2], [3, 2], [4, 2]],
     width: 5,
     height: 5,
     terrain: (tx, ty) => (tx === 3 && ty === 3 ? "forest" : "grass"),

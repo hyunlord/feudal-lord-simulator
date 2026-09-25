@@ -15,7 +15,7 @@ import { hasAutoplayBuildingClearance } from '../src/engine/autoplaySetback';
 import { buildingFootprintDistance } from '../src/geometry/buildingDistance';
 import { housingLotCount } from '../src/population/housing';
 import type { TileCoordinate } from '../src/world/grid';
-import { canPlaceBuilding } from '../src/world/placement';
+import { canPlaceBuildingBeforeRoad } from '../src/world/placement';
 import { loadAutoplayFixture } from './autoplayStallProbe';
 
 const REACH = BUILDING_CONFIG_BY_KIND.market.serviceRadius;
@@ -33,7 +33,7 @@ export function marketCoverage(state: GameState) {
   const covered = markets.reduce((mask, market) => mask | maskOf(market), 0n);
   const unlocked = { ...state, era: 'stone_town' as const };
   const sites = state.tiles.flatMap(tile => {
-    const placement = canPlaceBuilding(unlocked, 'market', tile.tx, tile.ty);
+    const placement = canPlaceBuildingBeforeRoad(unlocked, 'market', tile.tx, tile.ty);
     if ((!placement.ok && placement.reason !== 'insufficient_materials') || !hasAutoplayBuildingClearance(state, 'market', tile)) return [];
     const mask = maskOf(footprint('market', tile));
     return mask === 0n ? [] : [{ tile: { tx: tile.tx, ty: tile.ty }, mask }];

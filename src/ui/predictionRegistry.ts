@@ -6,16 +6,11 @@ export const PLACEMENT_REASON_LABELS = {
   [PlacementFailure.wall_clearance]: '성벽과 너무 가까움',
   [PlacementFailure.wrong_terrain]: '설치할 수 없는 지형',
   [PlacementFailure.out_of_bounds]: '영지 밖',
-  [PlacementFailure.needs_road]: '도로에서 너무 멂',
+  [PlacementFailure.needs_road]: '도로 연결 없음',
   [PlacementFailure.needs_adjacent_terrain]: '필요한 지형이 인접하지 않음',
   [PlacementFailure.insufficient_materials]: '자재 부족',
   [PlacementFailure.locked_era]: '아직 해금되지 않은 시설',
 } as const satisfies Record<PlacementFailure, string>;
-
-/** A condition that helps but never refuses placement: a met one reads ✓, an unmet one a caution, never ×. */
-export function predictionRecommendation(id: string, label: string, ok: boolean, detail = ''): PredictionLine {
-  return { ...predictionCheck(id, label, ok, detail), severity: ok ? 'ok' : 'warn' };
-}
 
 export function predictionCheck(id: string, label: string, ok: boolean, detail = ''): PredictionLine {
   return { id, severity: ok ? 'ok' : 'block', text: `${label}${detail === '' ? '' : ` ${detail}`}`, sources: [] };

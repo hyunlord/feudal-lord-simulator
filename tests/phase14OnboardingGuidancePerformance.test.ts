@@ -39,7 +39,8 @@ function guidanceFixture(existingKinds: readonly BuildingKind[]): {
   const width = 8;
   const height = 8;
   const tiles = grassGrid(width, height);
-  tiles[1] = { ...tiles[1]!, hasRoad: true };
+  // FIX-1: cottages need a road, so the road runs four tiles: frontage for the four cottage markers the food step wants.
+  for (const index of [1, 2, 3, 4]) tiles[index] = { ...tiles[index]!, hasRoad: true };
   let tileReads = 0;
   const observedTiles = new Proxy(tiles, {
     get(target, property, receiver) {

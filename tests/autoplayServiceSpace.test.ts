@@ -14,7 +14,7 @@ import type { GameState } from '../src/engine/engine.types';
 import { gameReducer } from '../src/state/gameStore';
 import { BUILDING_CONFIG_BY_KIND, type Building } from '../src/content/buildingConfig';
 import { buildingFootprintDistance } from '../src/geometry/buildingDistance';
-import { canPlaceBuilding } from '../src/world/placement';
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad } from '../src/world/placement';
 import { hasAutoplayBuildingClearance } from '../src/engine/autoplaySetback';
 import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
 import { findAutoplayServiceWitness } from '../src/engine/autoplayServiceSpaceWitness';
@@ -31,7 +31,7 @@ function futureMarkets(state: GameState, home: Building): number {
       workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
     if (buildingFootprintDistance(home, candidate) > BUILDING_CONFIG_BY_KIND.market.serviceRadius
       || !hasAutoplayBuildingClearance(state, 'market', tile)) return false;
-    const placement = canPlaceBuilding({ ...state, era: 'stone_town' }, 'market', tile.tx, tile.ty);
+    const placement = canPlaceBuildingBeforeRoad({ ...state, era: 'stone_town' }, 'market', tile.tx, tile.ty);
     return placement.ok || placement.reason === 'insufficient_materials';
   }).length;
 }
