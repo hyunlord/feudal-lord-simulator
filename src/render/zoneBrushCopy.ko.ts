@@ -10,7 +10,7 @@ export const ZONE_BRUSH_COPY = {
   eraser: "지우개",
   cardHint: {
     burgage: "도로를 따라 칠하면 집터(필지)가 나뉩니다",
-    arable: "밀밭을 지을 땅 · 성벽 안은 안 됩니다",
+    arable: "밀을 기를 땅 · 헛간이 가꿉니다 · 성벽 안은 안 됩니다",
     pasture: "가축을 풀 땅",
     orchard: "과수를 심을 땅",
   } as const satisfies Partial<Record<ZoneKind, string>>,
