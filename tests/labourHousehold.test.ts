@@ -256,3 +256,25 @@ test("L10 LB-10 a v10 save migrates: members are seeded, population and resident
   }
 });
 
+
+test("LB-11 behind a wall autoplay puts a sawmill outside it when a site exists, else searches as before", async () => {
+  const { autoplayBuildAction } = await import("../src/engine/autoplay");
+  const { footprintCorners, isPointInsidePalisade } = await import("../src/world/palisadeGeometry");
+  const base = stateFromSave("fixtures/saves/v10/palisade-construction.save.json");
+  assert.ok(base.palisade !== null, "the fixture has a proclaimed palisade");
+  const inside = (polygon: NonNullable<GameState["palisade"]>["polygon"], kind: "sawmill" | "storehouse", tx: number, ty: number) =>
+    footprintCorners({ id: kind, tx, ty, width: BUILDING_CONFIG_BY_KIND[kind].width, height: BUILDING_CONFIG_BY_KIND[kind].height })
+      .every(corner => isPointInsidePalisade(corner, polygon));
+  // Its real wall encloses every road, so there is no outside site yet: the search falls back to the old one.
+  const fallback = autoplayBuildAction(base, "sawmill");
+  assert.ok(fallback.kind === "place_building" && inside(base.palisade!.polygon, "sawmill", fallback.tx, fallback.ty));
+  // A wall line around that first choice's row leaves the other routed sites (two rows down) outside it: one of those
+  // is taken instead.
+  const polygon = [{ x: fallback.tx - 2, y: fallback.ty - 1 }, { x: fallback.tx + 3, y: fallback.ty - 1 },
+    { x: fallback.tx + 3, y: fallback.ty + 1 }, { x: fallback.tx - 2, y: fallback.ty + 1 }, { x: fallback.tx - 2, y: fallback.ty - 1 }];
+  const walled: GameState = { ...base, palisade: { ...base.palisade!, polygon } };
+  const action = autoplayBuildAction(walled, "sawmill");
+  assert.ok(action.kind === "place_building", "a sawmill site");
+  assert.equal(inside(polygon, "sawmill", action.tx, action.ty), false, `sawmill at ${action.tx},${action.ty}`);
+  assert.notDeepEqual([action.tx, action.ty], [fallback.tx, fallback.ty]);
+});

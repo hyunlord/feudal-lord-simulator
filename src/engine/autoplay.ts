@@ -174,6 +174,11 @@ function outsideWall(state: GameState, kind: BuildingKind, coordinate: TileCoord
   return !footprintCorners({ id: "autoplay-outside-wall", ...coordinate, width, height }).every(corner => isPointInsidePalisade(corner, polygon));
 }
 
+/** The advisor's placement search for one building kind (exported for the LB-11 scenario test). */
+export function autoplayBuildAction(state: GameState, kind: BuildingKind): AutoplayAction {
+  return runAutoplaySearch(() => buildAction(state, kind));
+}
+
 function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate: TileCoordinate) => boolean = () => true): AutoplayAction {
   if (kind === 'market') return urbanServiceAction(state);
   const output = BUILDING_CONFIG_BY_KIND[kind].production?.output;
