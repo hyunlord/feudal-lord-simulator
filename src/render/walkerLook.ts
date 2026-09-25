@@ -21,7 +21,8 @@ export type WalkerClassBand = WalkerSheet["classBand"];
 export type WalkerPropKind = keyof typeof walkerPropManifest;
 /** Winter cloaks: men's and women's (Wave 5a) and the merchant's (Wave 4e, merchant template bodies only). */
 export type WalkerCloakKind = keyof typeof walkerCloakManifest;
-export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor";
+export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor"
+  | "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard";
 
 export interface WalkerLook {
   readonly sheetId: WalkerSheetId;
@@ -41,11 +42,19 @@ export const OCCUPATION_BANDS: Readonly<Record<WalkerOccupation, readonly (reado
   carter: [["labor", 2], ["servant", 1], ["textile", 1]],
   coin_carter: [["merchant", 2], ["servant", 1]],
   distributor: [["servant", 2], ["merchant", 1], ["poor", 1]],
+  water_fetcher: [["servant", 2], ["labor", 2], ["poor", 1]],
+  marketgoer: [["merchant", 2], ["artisan", 2], ["textile", 1], ["servant", 1], ["gentry", 1]],
+  churchgoer: [["labor", 2], ["artisan", 1], ["merchant", 1], ["gentry", 1], ["textile", 1], ["servant", 1], ["poor", 1]],
+  field_hand: [["labor", 3], ["poor", 1], ["servant", 1]],
+  market_visitor: [["visitor", 3], ["poor", 1], ["textile", 1]],
+  clergy: [["priest", 2], ["monk", 1], ["nun", 1]],
+  guard: [["guard", 1]],
 };
 
 /** WC-1: legacy occupation art (holds its tool) joins the men's candidates of its own occupation only. */
 const LEGACY_SHEET_BY_OCCUPATION: Readonly<Partial<Record<WalkerOccupation, WalkerSheetId>>> = {
   builder: "legacy_builder", farmer: "legacy_farmer", logger: "legacy_logger", quarryman: "legacy_carter", carter: "legacy_carter",
+  field_hand: "legacy_farmer", guard: "legacy_guard",
 };
 /** The templates are the civilian / merchant / cleric bodies the reskins were painted over: never drawn themselves. */
 const TEMPLATE_SHEETS: ReadonlySet<WalkerSheetId> = new Set(["legacy_civilian_man", "legacy_civilian_woman", "legacy_merchant", "legacy_cleric"]);
@@ -63,6 +72,7 @@ function walkerKey(walkerId: string): number {
 }
 
 export function walkerOccupation(walker: Walker): WalkerOccupation {
+  if ("resident" in walker) return (walker as { readonly resident: { readonly occupation: WalkerOccupation } }).resident.occupation;
   if (walker.kind === "builder") return "builder";
   if (walker.kind === "distributor") return "distributor";
   return occupationForResource(walker.cargo?.resource ?? walker.reservation.resource);
