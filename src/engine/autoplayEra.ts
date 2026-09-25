@@ -7,37 +7,27 @@ import { preservesAutoplayServiceSpace } from './autoplayServiceSpace';
 import { evaluateEraRequirements } from './era';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
-import { housingLotCount } from '../population/housing';
 import { LABOUR_BALANCE } from '../content/balanceConfig';
-import { hasAutoplayBuildingClearance } from './autoplaySetback';
-import { autoplayCanPlace } from './autoplayZones';
-import { preservesAutoplayWallSpace } from './autoplayWallSpace';
+import { housingLotCount } from '../population/housing';
+import { cellInsideWall } from '../zones/zoneEdits';
 
 const NONE = { kind: 'none' } as const;
 function hasBuiltOrPlannedBuilding(state: GameState, kind: BuildingKind): boolean {
   return state.buildings.some(building => building.kind === kind)
     || state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === kind);
 }
-/**
- * LB-12 (C3): free grass inside a projected wall where the advisor could still place a house once it stands.
- * A wall that leaves fewer than the lots the policy still wants is not proclaimed yet: the town grows on and the next
- * proposal encloses more. Faster food growth used to meet the palisade requirements while the core was small, and
- * the wall then fenced seed 3 in at 19–22 lots (gate ② regression).
- */
-export function wallPlotRoom(state: GameState): number {
-  const polygon = state.palisade?.polygon;
-  if (polygon === undefined) return 0;
-  let room = 0;
-  for (const tile of state.tiles) {
-    if (tile.terrain !== "grass" || tile.hasRoad || tile.buildingId !== null) continue;
-    // The house placement the advisor itself uses (clearance, legality incl. wall clearance, inside the wall); a road
-    // to the plot may still be laid later, as the housing search does.
-    if (hasAutoplayBuildingClearance(state, "house", tile) && autoplayCanPlace(state, "house", tile.tx, tile.ty)
-      && preservesAutoplayWallSpace(state, "house", tile)) room += 1;
-  }
-  return room;
+/** LB-12: cells a (projected) wall encloses. */
+export function wallInteriorCells(state: GameState): number {
+  let cells = 0;
+  for (let index = 0; index < state.tiles.length; index += 1) if (cellInsideWall(state, index)) cells += 1;
+  return cells;
 }
 
+/**
+ * LB-12 (C3): autoplay proclaims the palisade with a wall that encloses at least `wallCellsPerLot` cells for every lot
+ * its policy wants, or once it has every lot. Faster growth met the palisade requirements while seed 3's core was
+ * small; its wall enclosed 135 cells and the 24th plot never fitted (the old rules proclaimed later, 147 cells).
+ */
 export function autoplayEraAction(state: GameState, buildAction: (state: GameState, kind: BuildingKind) => AutoplayAction, targetLots = Infinity): AutoplayAction {
   if (state.population < 60 || state.constructionSites.some(isBuildingConstructionSite)) return NONE;
   const unmet = evaluateEraRequirements(state).filter(requirement => !requirement.met);
@@ -51,10 +41,9 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
         if (inspected.size >= 8) { markAutoplaySearchLimit(); return false; }
         if (!spendAutoplaySearch(4)) return false;
         const projected = confirmPalisadeProclamation(state, path);
-        // Half again as many plots as lots still wanted: wells, markets and mills inside the wall take plots later too.
-        const wanted = Math.ceil(Math.max(0, targetLots - housingLotCount(state)) * LABOUR_BALANCE.wallPlotRoomPermille / 1000);
-        const allowed = projected !== state && (wanted === 0 || !Number.isFinite(wanted) || wallPlotRoom(projected) >= wanted)
-          && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
+        const roomy = !Number.isFinite(targetLots) || housingLotCount(state) >= targetLots
+          || wallInteriorCells(projected) >= targetLots * LABOUR_BALANCE.wallCellsPerLot;
+        const allowed = projected !== state && roomy && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
         inspected.set(key, allowed);
         return allowed;
       }, 8, markAutoplaySearchLimit);

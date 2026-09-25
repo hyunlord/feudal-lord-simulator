@@ -261,17 +261,21 @@ function storageAction(state: GameState): AutoplayAction {
 function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
   let metadata: FoodTransientMetadata = {};
   if (reserveDeadlock(state) !== null) return { kind: 'set_wall_construction_priority', priority: 'priority' };
+  // LB-14 (C3): a dense walled town's church and market search needs the era phase's work too (seed 2 kept a church
+  // unbuilt for 100,000+ ticks at 192: every probe failed within the budget, at 768 the same search finds the site).
+  const serviceDecision = (current: GameState) => urbanServiceAction(current, diagnostic);
   if (state.era === "stone_town") {
     for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction,
-      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, (current: GameState) => urbanServiceAction(current, diagnostic), waterAction, materialRecoveryAction,
+      (current: GameState) => foodAction(current, buildAction, diagnostic), constructionLogisticsAction, serviceDecision, waterAction, materialRecoveryAction,
       (current: GameState) => housingAction(current, policy)]) {
-      const action = runAutoplaySearchPhase(() => decide(state));
+      const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
       if (action.foodTransient !== undefined) metadata = action;
       if (action.kind !== "none") return carryFoodTransient(action, metadata);
     }
     return carryFoodTransient(NONE, metadata);
   }
   const eraPhase = () => autoplayEraAction(state, buildAction, policy.maxHousingLots);
+  const servicePhase = () => serviceDecision(state);
   for (const decide of [
     () => waterAction(state),
     () => roadAccessAction(state),
@@ -280,13 +284,13 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => timberAction(state),
     () => foodAction(state, buildAction, diagnostic),
     () => housingAction(state, policy),
-    () => urbanServiceAction(state, diagnostic),
+    servicePhase,
     () => storageAction(state),
     eraPhase,
   ]) {
     // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the
     // centre that first layout probe can exceed an ordinary phase, so the era phase gets four phases' work.
-    const action = runAutoplaySearchPhase(decide, decide === eraPhase ? ERA_PHASE_SEARCH_WORK : undefined);
+    const action = runAutoplaySearchPhase(decide, decide === eraPhase || decide === servicePhase ? ERA_PHASE_SEARCH_WORK : undefined);
     if (action.foodTransient !== undefined) metadata = action;
     if (action.kind !== "none") return carryFoodTransient(action, metadata);
   }

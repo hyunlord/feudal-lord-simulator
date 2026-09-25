@@ -76,8 +76,8 @@ export const LABOUR_BALANCE = {
   millPushTarget: 24,
   /** LB-7: autoplay mill cap = a year's wheat need × this ÷ a mill's year of wheat, + 1 (AF-13: max(need, harvest) × 2). */
   millHaulingFactorPermille: 1300,
-  /** LB-12: a proposed palisade must leave plots for this many permille of the lots the policy still wants. */
-  wallPlotRoomPermille: 1500,
+  /** LB-12: autoplay's palisade encloses at least this many cells per lot its policy wants (the old rules' tightest town: 147 ÷ 24). */
+  wallCellsPerLot: 6,
   /** LB-9: idle adults ÷ population above this shows the idle-labour hint (the A″ threshold). */
   idleHintPermille: 250,
 } as const;
