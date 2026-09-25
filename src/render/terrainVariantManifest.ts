@@ -10,6 +10,8 @@ export const TERRAIN_VARIANT_ASSETS = [
   { "key": "shallow_a", "url": "assets/shore/shallow_a-v1.png", "width": 256, "height": 128, "role": "fill" },
   { "key": "shallow_b", "url": "assets/shore/shallow_b-v1.png", "width": 256, "height": 128, "role": "fill" },
   { "key": "shallow_c", "url": "assets/shore/shallow_c-v1.png", "width": 256, "height": 128, "role": "fill" },
+  { "key": "shallow_d", "url": "assets/shore/shallow_d-v1.png", "width": 256, "height": 128, "role": "fill" },
+  { "key": "shallow_e", "url": "assets/shore/shallow_e-v1.png", "width": 256, "height": 128, "role": "fill" },
   { "key": "palisade_face_a", "url": "assets/wall/palisade_face_a-v1.png", "width": 512, "height": 128, "role": "strip" },
   { "key": "palisade_face_b", "url": "assets/wall/palisade_face_b-v1.png", "width": 512, "height": 128, "role": "strip" },
   { "key": "palisade_face_c", "url": "assets/wall/palisade_face_c-v1.png", "width": 512, "height": 128, "role": "strip" },
@@ -54,6 +56,12 @@ export const TERRAIN_VARIANT_ASSETS = [
   { "key": "palisade_gate_v2", "url": "assets/wall/palisade_gate_v2-v1.png", "width": 512, "height": 512, "role": "module" },
   { "key": "stone_pillar_135", "url": "assets/wall/stone_pillar_135-v1.png", "width": 1774, "height": 887, "role": "module" },
   { "key": "stone_tower_corner_b", "url": "assets/wall/stone_tower_corner_b-v1.png", "width": 1774, "height": 887, "role": "module" },
+  // Wave 5c (INSTALL-5c): stone gate v3 painted per axis (512 x 384, portal feet in its geometry record), the 135
+  // degree pillar's left- and right-turn buttresses (same frame and registration as stone_pillar_135), shallow water d / e.
+  { "key": "stone_gate_v3_nwse", "url": "assets/wall/stone_gate_v3_nwse-v1.png", "width": 512, "height": 384, "role": "module" },
+  { "key": "stone_gate_v3_nesw", "url": "assets/wall/stone_gate_v3_nesw-v1.png", "width": 512, "height": 384, "role": "module" },
+  { "key": "stone_pillar_135_b", "url": "assets/wall/stone_pillar_135_b-v1.png", "width": 1774, "height": 887, "role": "module" },
+  { "key": "stone_pillar_135_c", "url": "assets/wall/stone_pillar_135_c-v1.png", "width": 1774, "height": 887, "role": "module" },
   { "key": "shoreline_deep_a", "url": "assets/shore/shoreline_deep_a-v1.png", "width": 512, "height": 96, "role": "strip" },
   { "key": "shoreline_deep_b", "url": "assets/shore/shoreline_deep_b-v1.png", "width": 512, "height": 96, "role": "strip" },
   { "key": "bridge_abutment_sw_a", "url": "assets/module/bridge_abutment_sw_a-v1.png", "width": 256, "height": 192, "role": "module" },
@@ -71,7 +79,9 @@ export const TERRAIN_VARIANTS = {
   shorelineShallow: ["shoreline_a", "shoreline_b", "shoreline_c", "shoreline_d", "shoreline_e", "shoreline_f"],
   /** Registered only (no ferry logic yet). */
   ferry: ["ferry_landing"],
-  shallowWater: ["shallow_a", "shallow_b", "shallow_c"],
+  /** Wave 5c d / e: the deep water's hue, a little lighter (INSTALL-5c). Wave 4b a-c stay registered, no longer drawn. */
+  shallowWater: ["shallow_d", "shallow_e"],
+  shallowWaterV1: ["shallow_a", "shallow_b", "shallow_c"],
   deepWater: ["deep_a", "deep_b", "deep_c"],
   shoreReeds: ["reeds_a", "reeds_b", "reeds_c"],
   shoreStones: ["mudstone_a", "mudstone_b"],
@@ -88,8 +98,11 @@ export const TERRAIN_VARIANTS = {
   palisadeDiagTop: ["palisade_diag_top"],
   stoneDiagTop: ["stone_diag_top"],
   stoneTower: ["stone_tower_corner", "stone_tower_corner_b"],
-  stonePillar: ["stone_pillar_135"],
+  /** Wave 4e pillar (registered, no longer drawn) and Wave 5c left-turn b / right-turn c (INSTALL-5c). */
+  stonePillar: ["stone_pillar_135", "stone_pillar_135_b", "stone_pillar_135_c"],
   stoneGate: ["stone_gate_v2"],
+  /** Wave 5c gate v3, one painting per axis (NW-SE, NE-SW): the wall strips' stone gate (INSTALL-5c). */
+  stoneGateV3: ["stone_gate_v3_nwse", "stone_gate_v3_nesw"],
   palisadeGate: ["palisade_gate_v2"],
   bridgeAbutment: ["bridge_abutment_ne_a", "bridge_abutment_nw_a", "bridge_abutment_se_a", "bridge_abutment_sw_a", "bridge_abutment_nw_b"],
 } as const satisfies Record<string, readonly TerrainVariantKey[]>;
@@ -100,5 +113,6 @@ export const SHORE_ASSET_KEYS = [...TERRAIN_VARIANTS.shoreline, ...TERRAIN_VARIA
 export type ShoreAssetKey = (typeof SHORE_ASSET_KEYS)[number];
 export const WALL_FACE_KEYS = [...TERRAIN_VARIANTS.palisadeFace, ...TERRAIN_VARIANTS.stoneFace, ...TERRAIN_VARIANTS.palisadeTop,
   ...TERRAIN_VARIANTS.stoneTop, ...TERRAIN_VARIANTS.palisadeDiagTop, ...TERRAIN_VARIANTS.stoneDiagTop, ...TERRAIN_VARIANTS.stoneTower,
-  ...TERRAIN_VARIANTS.stoneFaceGate, ...TERRAIN_VARIANTS.stonePillar, ...TERRAIN_VARIANTS.stoneGate, ...TERRAIN_VARIANTS.palisadeGate] as const;
+  ...TERRAIN_VARIANTS.stoneFaceGate, ...TERRAIN_VARIANTS.stonePillar, ...TERRAIN_VARIANTS.stoneGate, ...TERRAIN_VARIANTS.palisadeGate,
+  ...TERRAIN_VARIANTS.stoneGateV3] as const;
 export type WallFaceKey = (typeof WALL_FACE_KEYS)[number];

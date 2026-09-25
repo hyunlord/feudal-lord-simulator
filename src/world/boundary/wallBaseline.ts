@@ -30,7 +30,10 @@ export type WallNodeKind = "gate" | "terminal" | "junction" | "join" | "tower" |
 export type WallNode = { readonly point: TileEdgePoint; readonly kind: WallNodeKind; readonly materials: readonly WallMaterial[];
   /** The lattice points one unit edge away (the gate art and the portal branches read them). */
   readonly neighbors: readonly TileEdgePoint[]; readonly owner: string };
-export type WallPillar = { readonly point: BoundaryPoint; readonly material: WallMaterial; readonly owner: string };
+/** `corner` and `arms`: the bend's lattice point and its lattice neighbours (tile-edge space), so the render can tell a
+ * left from a right turn (INSTALL-5c). Not part of the baseline hash (the point already is). */
+export type WallPillar = { readonly point: BoundaryPoint; readonly material: WallMaterial; readonly owner: string;
+  readonly corner: TileEdgePoint; readonly arms: readonly TileEdgePoint[] };
 export type WallSample = { readonly point: BoundaryPoint; readonly t: number; readonly water: boolean };
 export type WallChain = {
   readonly material: WallMaterial;
@@ -161,7 +164,7 @@ export function wallBaselines(palisade: PalisadeState | null | undefined, grid: 
       const d = Math.hypot(sample.point.x - point.x, sample.point.y - point.y);
       if (d < distance) { distance = d; best = sample.point; }
     }
-    return { point: best, material, owner: ownerOf(entry.edges) };
+    return { point: best, material, owner: ownerOf(entry.edges), corner: point, arms: entry.edges.map(edgeKey => other(edgeKey, point)).sort(comparePoint) };
   }).sort((a, b) => a.point.x - b.point.x || a.point.y - b.point.y);
   const hash = hashNumbers([...chains.map(chain => chain.hash), ...nodes.flatMap(node => [node.point.x, node.point.y, node.kind.length]),
     ...pillars.flatMap(pillar => [pillar.point.x, pillar.point.y])]);

@@ -22,7 +22,7 @@ export type WalkerPropKind = keyof typeof walkerPropManifest;
 /** Winter cloaks: men's and women's (Wave 5a) and the merchant's (Wave 4e, merchant template bodies only). */
 export type WalkerCloakKind = keyof typeof walkerCloakManifest;
 export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor"
-  | "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard";
+  | "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard" | "child_companion";
 
 export interface WalkerLook {
   readonly sheetId: WalkerSheetId;
@@ -49,7 +49,10 @@ export const OCCUPATION_BANDS: Readonly<Record<WalkerOccupation, readonly (reado
   market_visitor: [["visitor", 3], ["poor", 1], ["textile", 1]],
   clergy: [["priest", 2], ["monk", 1], ["nun", 1]],
   guard: [["guard", 1]],
+  child_companion: [["child", 1]],
 };
+/** INSTALL-5c: an elder of the household walks in an elder body whatever the errand (Wave 5c elder reskins). */
+export const ELDER_BANDS: readonly (readonly [WalkerClassBand, number])[] = [["elder", 1]];
 
 /** WC-1: legacy occupation art (holds its tool) joins the men's candidates of its own occupation only. */
 const LEGACY_SHEET_BY_OCCUPATION: Readonly<Partial<Record<WalkerOccupation, WalkerSheetId>>> = {
@@ -124,8 +127,11 @@ function trinketFor(band: WalkerClassBand, key: number, seed: number): WalkerPro
 export function walkerLook(state: Pick<GameState, "houses" | "seed">, walker: Walker): WalkerLook {
   const key = walkerKey(walker.id);
   const occupation = walkerOccupation(walker);
-  const sex = walkerSex(state, walker, key);
-  const pool = OCCUPATION_BANDS[occupation].flatMap(([band, weight]) => {
+  // INSTALL-5c: a household member's age band (MOVE-1 tag): a child companion wears its own sex, an elder the elder bodies.
+  const member = "resident" in walker ? (walker as { readonly resident: { readonly ageBand: string; readonly sex: MemberSex } }).resident : null;
+  const sex = member?.ageBand === "child" ? member.sex : walkerSex(state, walker, key);
+  const bands = member?.ageBand === "elder" ? ELDER_BANDS : OCCUPATION_BANDS[occupation];
+  const pool = bands.flatMap(([band, weight]) => {
     const sheets = walkerCandidates(occupation, band, sex, key, state.seed);
     return sheets.map(sheetId => ({ sheetId, weight: weight / sheets.length }));
   });

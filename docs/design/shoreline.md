@@ -54,6 +54,12 @@
   - 물가 띠 위에 그리고 물 영역으로 자르지 않는다(갈대는 물가선 위로 올라온다). 그림이 준비되기 전에는 예전 타원이다.
 - **앞쪽 교대:** 다리 앞쪽 끝에 `bridge_abutment_se_a`를 쓴다. x 다리는 SE 그대로, y 다리는 좌우 반전(SW)이다. 뒤쪽 끝은 SH-2 그대로다.
 
+## SH-6 얕은 물 d·e (INSTALL-5c)
+- **채움:** 얕은 물 채움 풀을 Wave 5c `shallow_d`·`shallow_e`로 바꿨다. 깊은 물과 같은 색 계열에 약 4 RGB 밝고, X·Y 이음이 같다.
+- **옛 채움:** Wave 4b `shallow_a–c`는 등록만 남긴다(`shallowWaterV1`).
+- **효과:** 물가 안쪽 밝은 테두리(가장자리 명도 − 깊은 물 명도의 최댓값)가 2.5~3.8에서 0.5~1.4로 줄었다. 강의 0.35칸 ΔE는 3.3 → 1.0, 4.4 → 2.4로 줄었다. 호수의 0.35칸 ΔE 약 11은 그대로다(색상보다 채도 차이가 남는다).
+- **측정:** `scripts/wallStripsV2Evidence.mjs water`, 결과는 `docs/verification/install5c/water/`.
+
 ## SH-5 깊은 물 물가 띠·교대 b·나루 (INSTALL-4e)
 
 근거: INSTALL-4e 지시서, Wave 4e.

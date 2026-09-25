@@ -20,7 +20,7 @@ import type { Tile } from "../world/world.types";
  *    render reads for its occupation (`walkerOccupation`).
  */
 
-export type ResidentOccupation = "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard";
+export type ResidentOccupation = "water_fetcher" | "marketgoer" | "churchgoer" | "field_hand" | "market_visitor" | "clergy" | "guard" | "child_companion";
 export type ResidentPurpose = "well" | "market" | "church" | "field" | "visit" | "clergy" | "patrol";
 
 export interface ResidentTag {
@@ -69,6 +69,10 @@ export const isMarketDay = (tick: number): boolean => weekday(absoluteDay(tick))
 const walkerKey = (id: string): number => hashNumbers(Array.from(id, char => char.charCodeAt(0)));
 const SEX_SALT = 1;
 const MEMBER_SALT = 5;
+const CHILD_SALT = 6;
+/** INSTALL-5c: on half the household trips to market and church (family outings) a child walks beside the adult, this far to the side. */
+const COMPANION_PURPOSES: ReadonlySet<ResidentPurpose> = new Set(["market", "church"]);
+const COMPANION_OFFSET = 0.3;
 const hashOf = (text: string, seed: number, salt: number): number => boundaryHash(walkerKey(text), seed, salt);
 
 interface Route {
@@ -385,7 +389,8 @@ export function residentWalkers(state: GameState): readonly ResidentWalker[] {
   const { plan, walkers } = tripPlan(state);
   const cached = walkers.get(state.tick);
   if (cached !== undefined) return cached;
-  const walking = activeTrips(state, plan).flatMap(trip => {
+  const active = activeTrips(state, plan);
+  const walking = active.flatMap(trip => {
     const walker = walkerOnRoute(trip, state.tick - trip.startTick, tripTag(state, trip));
     return walker === null ? [] : [walker];
   });
@@ -397,9 +402,39 @@ export function residentWalkers(state: GameState): readonly ResidentWalker[] {
       return count < QUOTA[walker.resident.purpose];
     })
     .slice(0, RESIDENT_WALKER_CAP);
+  // INSTALL-5c: the children walk beside the adults kept above. They take only the cap's free places (RM-5 holds, and
+  // the adults are MOVE-1's), in the adults' priority order, outside the purpose quotas.
+  const trips = new Map(active.map(trip => [trip.id, trip]));
+  let free = RESIDENT_WALKER_CAP - result.length;
+  const withChildren = result.flatMap(walker => {
+    const trip = trips.get(walker.id);
+    const child = trip === undefined || free <= 0 ? null : childCompanion(state, trip, walker);
+    if (child === null) return [walker];
+    free -= 1;
+    return [walker, child];
+  });
   if (walkers.size >= 4) walkers.delete(walkers.keys().next().value!);
-  walkers.set(state.tick, result);
-  return result;
+  walkers.set(state.tick, withChildren);
+  return withChildren;
+}
+
+/**
+ * INSTALL-5c: the household's child (hashed pick) beside an adult on half its market and church trips (hash bit): the adult's position moved
+ * COMPANION_OFFSET tiles to its right (perpendicular to the road segment), same route, same stay. A household with no
+ * child, or an adult without a house (visitors, clergy, guards), walks alone.
+ */
+function childCompanion(state: GameState, trip: ActiveTrip, adult: ResidentWalker): ResidentWalker | null {
+  if (!COMPANION_PURPOSES.has(trip.purpose) || trip.houseId === null || ((hashOf(trip.id, state.seed, CHILD_SALT) >>> 3) & 1) === 0) return null;
+  const household = householdMembers(state, trip.houseId);
+  const children = household?.members.map((member, index) => ({ member, index })).filter(({ member }) => member.ageBand === "child") ?? [];
+  if (children.length === 0) return null;
+  const pick = children[(hashOf(trip.id, state.seed, CHILD_SALT) >>> 4) % children.length]!;
+  const from = adult.path[adult.pathIndex]!;
+  const to = adult.path[Math.min(adult.path.length - 1, adult.pathIndex + 1)]!;
+  const length = Math.hypot(to.tx - from.tx, to.ty - from.ty) || 1;
+  const side = { tx: -(to.ty - from.ty) / length * COMPANION_OFFSET, ty: (to.tx - from.tx) / length * COMPANION_OFFSET };
+  return { ...adult, id: `${adult.id}:child`, position: { tx: adult.position.tx + side.tx, ty: adult.position.ty + side.ty },
+    resident: { ...adult.resident, occupation: "child_companion", memberIndex: pick.index, sex: pick.member.sex, ageBand: "child" } };
 }
 
 export function isResidentWalker(walker: { readonly id: string }): walker is ResidentWalker {

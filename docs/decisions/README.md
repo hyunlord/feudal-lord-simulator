@@ -191,6 +191,10 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | IN4e4 | 마당 울타리: 한쪽 끝부터 1/4·1/2·3/4 채워진 변은 그 길이의 판, 앞변에 온전한 변이 없고 1/2 변이 있으면 짧은 문. 돼지는 공유림 구역, 없으면 숲 가장자리 변 48개 중 하나꼴로 0.8칸 밖 풀밭(과수원·목초지 아님, 8칸 간격). 달력 겨울 헛간은 `farmstead_winter` | 렌더 결정(INSTALL-4e) | 2026-09-25 | [경작지 띠 FS-6](../design/field-strips.md) |
 | IN4e5 | 상인 외투는 상인 템플릿 몸(상인 남 2·귀족 남 1)만, 머리 튀어나옴 검사 없이(모자 제외해 그린 외투). WK3의 상인 템플릿 제외를 바꾼다. 직물 +실 꾸러미, 하인 +에일 단지(각 1/3) | 렌더 결정(INSTALL-4e, 지시서 "상인 외투는 actor_merchant 몸에만") | 2026-09-25 | [주민 합성기 WC-9](../design/walker-composer.md) |
 | IN4e6 | Wave 5b 아이·노인 자유 생성 시트 3장은 `rejected`(보행 교대 실패). 성인 시민 시트에서 스크립트로 파생한 템플릿 4장(`scripts/deriveActorTemplates.ts`, 결정론)을 Astra 재스킨 참조로 두고 설치하지 않는다(Wave 5c) | 확정(INSTALL-4e 지시서 추가 절) | 2026-09-25 | [assets-inbox/derived-templates](../../assets-inbox/derived-templates/README.md) |
+| IN5c1 | 지시서 ZIP(`to_ClaudeCode_INSTALL5c.zip`)을 찾지 못해, 사용자 요청 한 줄(아이·노인 워커 · 석문 v3 · 135° 기둥 · 얕은 물)과 Wave 5c 대장·검수 기록(INBOX-1 보관, 판정표 confirmed 14장)으로 진행했다 | 진행 판단(사용자 요청 2026-09-26) | 2026-09-26 | [보고서](../verification/install5c/REPORT.md) |
+| IN5c2 | 아이는 혼자 걷지 않고, 집안 어른의 시장·교회 길 절반에 0.3칸 옆으로 동행한다. 상한 40의 남은 자리만 쓰므로 어른은 MOVE-1 그대로다. 노인은 심부름과 무관하게 노인 몸 | 사용자 요청("아이는 어른과 동행") + 렌더 결정 | 2026-09-26 | [RM-8](../design/resident-movement.md) · [WC-10](../design/walker-composer.md) |
+| IN5c3 | 석문 v3는 통로 폭에 맞춘 한 배율로 통째로 그린다(판 늘이기 없음). 꺾인 점의 성문(고정 장면 8/10)은 본선처럼 석조 덩어리로 남긴다 | 렌더 결정 | 2026-09-26 | [WL-8](../design/wall-faces.md) |
+| IN5c4 | 135° 기둥 b·c는 축 팔의 화면 방향으로 고른다(기둥에 격자점·두 팔을 더함, 기준선 해시 불변). 얕은 물 채움은 d·e로 바꾸고 a–c는 등록만 | 렌더 결정 | 2026-09-26 | [WL-8](../design/wall-faces.md) · [SH-6](../design/shoreline.md) |
 
 ## R1-fix 확정 규칙
 

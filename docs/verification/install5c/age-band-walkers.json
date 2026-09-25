@@ -1,0 +1,26 @@
+{
+ "scene": "docs/verification/c3-labour/repro-seed2-348000.json.gz, one year, advanceTick only",
+ "sceneChild": {
+  "tx": 48.96,
+  "ty": 33.7,
+  "id": "resident-market:construction-site-000011:construction-site-000044:0@348338:child"
+ },
+ "sampleTicks": 50,
+ "samples": 80,
+ "residents": 3067,
+ "adults": 2333,
+ "companions": 545,
+ "elders": 189,
+ "sheets": {
+  "wk_child_f_02": 170,
+  "wk_child_m_02": 148,
+  "wk_child_m_01": 129,
+  "wk_child_f_01": 98,
+  "wk_elder_f_01": 55,
+  "wk_elder_f_02": 52,
+  "wk_elder_m_01": 45,
+  "wk_elder_m_02": 37
+ },
+ "failures": [],
+ "failureCount": 0
+}

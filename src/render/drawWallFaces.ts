@@ -256,7 +256,7 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
     drawModule(context, node.point, kind, size, zoom);
   }
   for (const pillar of pillars) {
-    if (pillar.material === "stone" && drawPillar135(context, pillar.point)) continue;
+    if (pillar.material === "stone" && drawPillar135(context, pillar)) continue;
     drawModule(context, pillar.point, pillar.material, { radius: 0.12, height: FACE_HEIGHT + 2, post: { width: 8, height: FACE_HEIGHT + 2 } }, zoom);
   }
 }
@@ -273,9 +273,10 @@ const TOWER_HEIGHT = 44;
 const TOWER_B_CROP = { x: 567, y: 17, width: 640, height: 845 } as const;
 const TOWER_B_ANCHOR = { x: 900, y: 855 } as const;
 const TOWER_B_HEIGHT = 48;
-// Wave 4e 135 degree pillar (same frame): a chamfered buttress for the pillars at 135 degree bends, anchored on its
-// painted ground pivot (940, 810), 30 px high (the wall face and top are about 28 px), 22 px wide. The sprite has
-// no per-bend orientation (the pillar knows its point only); it is drawn as painted.
+// 135 degree pillar (same frame): a chamfered buttress for the pillars at 135 degree bends, anchored on its painted
+// ground pivot (940, 810), 30 px high (the wall face and top are about 28 px), 22 px wide. Wave 5c (INSTALL-5c) paints a
+// left-turn b (long wing back-left) and a right-turn c (long wing back-right) in the Wave 4e pillar's registration:
+// the bend's axis arm (the lattice x or y edge, the straight wall) picks the side its long wing points to.
 const PILLAR_CROP = { x: 630, y: 101, width: 517, height: 692 } as const;
 const PILLAR_ANCHOR = { x: 940, y: 810 } as const;
 const PILLAR_HEIGHT = 30;
@@ -284,6 +285,8 @@ const MODULES = {
   drum: { key: "stone_tower_corner", crop: TOWER_CROP, anchor: TOWER_ANCHOR, height: TOWER_HEIGHT },
   square: { key: "stone_tower_corner_b", crop: TOWER_B_CROP, anchor: TOWER_B_ANCHOR, height: TOWER_B_HEIGHT },
   pillar: { key: "stone_pillar_135", crop: PILLAR_CROP, anchor: PILLAR_ANCHOR, height: PILLAR_HEIGHT },
+  pillarLeft: { key: "stone_pillar_135_b", crop: PILLAR_CROP, anchor: PILLAR_ANCHOR, height: PILLAR_HEIGHT },
+  pillarRight: { key: "stone_pillar_135_c", crop: PILLAR_CROP, anchor: PILLAR_ANCHOR, height: PILLAR_HEIGHT },
 } as const satisfies Record<string, Module>;
 /** Drum or square tower at a 90 degree corner: by a hash of the corner (tile-edge lattice point), about half each. */
 export function cornerTowerVariant(point: BoundaryPoint): "drum" | "square" {
@@ -292,8 +295,16 @@ export function cornerTowerVariant(point: BoundaryPoint): "drum" | "square" {
 function drawCornerTower(context: CanvasRenderingContext2D, point: BoundaryPoint): boolean {
   return drawModuleSprite(context, MODULES[cornerTowerVariant(point)], point) || drawModuleSprite(context, MODULES.drum, point);
 }
-function drawPillar135(context: CanvasRenderingContext2D, point: BoundaryPoint): boolean {
-  return drawModuleSprite(context, MODULES.pillar, point);
+/** Which way a 135 degree bend's long wing runs on screen: the axis arm's screen x (x - y in tile-edge space). */
+export function pillarTurn(pillar: Pick<WallPillar, "corner" | "arms">): "left" | "right" {
+  const lattice = pillar.corner;
+  const axis = pillar.arms.find(arm => arm.x === lattice.x || arm.y === lattice.y) ?? pillar.arms[0];
+  if (axis === undefined) return "left";
+  return (axis.x - lattice.x) - (axis.y - lattice.y) < 0 ? "left" : "right";
+}
+function drawPillar135(context: CanvasRenderingContext2D, pillar: WallPillar): boolean {
+  return drawModuleSprite(context, pillarTurn(pillar) === "left" ? MODULES.pillarLeft : MODULES.pillarRight, pillar.point)
+    || drawModuleSprite(context, MODULES.pillar, pillar.point);
 }
 // One high-quality downscale per module at twice its display height (browser image cache, not state).
 const moduleRasters = new Map<WallFaceKey, RasterizedWorldSprite | null>();

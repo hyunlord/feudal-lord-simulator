@@ -113,9 +113,12 @@ test("Given the composer cache When it is full Then it holds at most 25 MB of co
   assert.ok(CACHE_LIMIT * 4 * WALKER_COMPOSED_CELL * 2 * WALKER_COMPOSED_CELL * 4 <= 25_000_000);
 });
 
-test("Given the Wave 5a and 4e sheets When the manifest is read Then all 36 walkers, 32 props and the three cloaks are installed with the ledger bytes", () => {
+test("Given the Wave 5a, 4e and 5c sheets When the manifest is read Then all 44 walkers, 32 props and the three cloaks are installed with the ledger bytes", () => {
   const wave5a = walkerSheetManifest.filter(sheet => !sheet.legacy);
-  assert.equal(wave5a.length, 29 + 7);
+  assert.equal(wave5a.length, 29 + 7 + 8);
+  // INSTALL-5c: the child and elder bodies (4 each), no winter cloak.
+  assert.deepEqual(wave5a.filter(sheet => sheet.classBand === "child" || sheet.classBand === "elder").map(sheet => `${sheet.classBand}:${sheet.cloak}`).sort(),
+    [...Array(4).fill("child:null"), ...Array(4).fill("elder:null")]);
   for (const sheet of wave5a) {
     const bytes = readFileSync(new URL(`../public/${sheet.url}`, import.meta.url));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), sheet.sha256, sheet.id);

@@ -13,6 +13,7 @@ Per frame, in 74 px cell units (the legacy sheets are read at 296/1774 like the 
   - hands: rows 28..42 (Wave 5a `protectedRegions.hands` y65..81 at 1/2 = 32..40, widened by 4 px up and 2 px down;
     lower rows catch flared skirts), the side's outermost silhouette column (alpha > 100) is the hanging hand; the
     anchor is the middle row of that column's run, 2 px inward. Measured on the template, used by its reskins.
+  - Wave 5c (INSTALL-5c) adds the child and elder reskins (bands `child` / `elder`), measured on their own alpha.
   - Wave 4e (INSTALL-4e) adds seven reskins of the same format (women's labour and servant sheets, the poor), the
     yarn bundle and ale jug props (anchor: the ledger's `socketsOrAnchor`) and the merchant's winter cloak.
 Winter cloak: the Wave 5a cloak was painted over the civilian templates; a sheet takes it when at most
@@ -161,6 +162,51 @@ for name, template in reskins:
                    "season": "all", "directionOrder": DIRECTIONS,
                    "cloak": None if band in CLERGY or (cloak != "merchant" and poke > CLOAK_POKE_LIMIT) else cloak, "cloakPoke": poke,
                    "frames": frames_of(actors[template], template_hands[template])})
+
+# INSTALL-5c: the Wave 5c child and elder reskins (296x148, the INSTALL-4e derived templates' alpha exactly, so their
+# own silhouettes are measured): foot = midpoint of the lowest opaque row (alpha >= 128), figure height = foot row -
+# first opaque row + 1 (assets-inbox/derived-templates/measurements.json definitions); hands on the rows at 39-61 % of
+# the figure from its head (where the adult rows 28..42 sit on its 64 px figure). No winter cloak: the Wave 5a / 4e
+# cloaks were painted over adult bodies and do not fit a child or a stooped elder.
+def own_frames(image):
+    alpha = np.array(image)[..., 3]
+    frames = []
+    hands_by = {}
+    for gait in range(2):
+        for index, direction in enumerate(DIRECTIONS):
+            cell = alpha[gait * 74:(gait + 1) * 74, index * 74:(index + 1) * 74]
+            rows_ = np.nonzero((cell >= 128).any(axis=1))[0]
+            top, bottom = int(rows_.min()), int(rows_.max())
+            xs = np.nonzero(cell[bottom] >= 128)[0]
+            height = bottom - top + 1
+            band_top, band_bottom = top + round(0.39 * height), top + round(0.61 * height)
+            hands = {}
+            opaque = cell > 100
+            for side in ("left", "right"):
+                spans = [(y, int(np.nonzero(opaque[y])[0].min()) if side == "left" else int(np.nonzero(opaque[y])[0].max()))
+                         for y in range(band_top, band_bottom + 1) if opaque[y].any()]
+                outer = min(x for _, x in spans) if side == "left" else max(x for _, x in spans)
+                run = [y for y, x in spans if x == outer]
+                hands[side] = {"x": outer + 2 if side == "left" else outer - 2, "y": run[len(run) // 2]}
+            frames.append({"direction": direction, "gaitFrame": gait,
+                           "foot": {"x": round((int(xs.min()) + int(xs.max())) / 2, 2), "y": float(bottom)},
+                           "figureHeight": float(height), "hands": hands})
+    return frames
+
+
+wave5c = list(csv.DictReader(open(ROOT / "assets-inbox/wave5c/candidates-20260925/records/assets.csv", encoding="utf-8-sig")))
+for row in wave5c:
+    name = Path(row["runtimePath"]).name
+    match = re.match(r"wk_(child|elder)_([mf])_(\d+)-v1\.png", name)
+    if match is None:
+        continue
+    band, sex = match.group(1), "male" if match.group(2) == "m" else "female"
+    path = ROOT / "public/assets/walkers-v2" / name
+    image = sheet_image(path)
+    sheets.append({"id": name[:-len("-v1.png")], "url": f"assets/walkers-v2/{name}", "width": 296, "height": 148,
+                   "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "classBand": band, "sex": sex, "occupationTags": [],
+                   "legacy": False, "holdsTool": False, "template": f"{band}_{match.group(2)}", "season": "all",
+                   "directionOrder": DIRECTIONS, "cloak": None, "cloakPoke": None, "frames": own_frames(image)})
 
 props = {}
 for row in rows:

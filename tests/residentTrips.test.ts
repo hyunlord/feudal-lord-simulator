@@ -4,7 +4,7 @@ import test from "node:test";
 import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
 import { householdMembers } from "../src/population/householdMembers";
-import { OCCUPATION_BANDS, walkerLook, walkerLooks, walkerSheet } from "../src/render/walkerLook";
+import { OCCUPATION_BANDS, walkerLook, walkerLooks, walkerSheet, ELDER_BANDS } from "../src/render/walkerLook";
 import { walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { withResidentWalkers } from "../src/state/residentWalkerState";
@@ -58,7 +58,8 @@ test("RM-1 a household walker's tag is one of its house's adults, and the drawn 
       if (tag.houseId === null) continue;
       household += 1;
       const member = householdMembers(state, tag.houseId)?.members[tag.memberIndex ?? -1];
-      assert.ok(member !== undefined && member.ageBand !== "child");
+      // INSTALL-5c: a child is only ever a companion beside its trip's adult (id `<adult>:child`).
+      assert.ok(member !== undefined && (member.ageBand !== "child") === !walker.id.endsWith(":child"));
       assert.deepEqual({ sex: member.sex, ageBand: member.ageBand }, { sex: tag.sex, ageBand: tag.ageBand });
       assert.equal(walker.homeBuildingId, tag.houseId);
     }
@@ -95,7 +96,8 @@ test("RM-4 guards wear the guard sheet (male legacy art) and clergy the clergy b
 test("V2 mapping: every installed class band has a walking occupation, and every resident occupation draws from both sexes", () => {
   const bands = new Set(walkerSheetManifest.filter(sheet => !["legacy_civilian_man", "legacy_civilian_woman", "legacy_merchant", "legacy_cleric"].includes(sheet.id))
     .map(sheet => sheet.classBand));
-  const mapped = new Set(Object.values(OCCUPATION_BANDS).flatMap(rows => rows.map(([band]) => band)));
+  // INSTALL-5c: the elder band is drawn by age (ELDER_BANDS), whatever the errand.
+  const mapped = new Set([...Object.values(OCCUPATION_BANDS), ELDER_BANDS].flatMap(rows => rows.map(([band]) => band)));
   assert.deepEqual([...bands].filter(band => !mapped.has(band)), []);
   const residentOccupations: readonly ResidentOccupation[] = ["water_fetcher", "marketgoer", "churchgoer", "field_hand", "market_visitor", "clergy"];
   for (const occupation of residentOccupations) {
@@ -105,4 +107,26 @@ test("V2 mapping: every installed class band has a walking occupation, and every
     }
   }
   assert.equal(walkerSheet("legacy_guard").classBand, "guard");
+});
+
+test("INSTALL-5c a child walks only beside an adult of its household on a market or church trip, 0.3 tiles to the side, in a child body; elders wear elder bodies", () => {
+  let children = 0, elders = 0;
+  for (const state of SAMPLES) {
+    const walkers = residentWalkers(state);
+    const byId = new Map(walkers.map(walker => [walker.id, walker]));
+    assert.ok(walkers.filter(walker => walker.resident.ageBand !== "child").length <= RESIDENT_WALKER_CAP, "the adults keep the MOVE-1 cap");
+    for (const walker of walkers) {
+      const band = walkerSheet(walkerLook(state, walker).sheetId).classBand;
+      if (walker.resident.ageBand === "elder") { elders += 1; assert.equal(band, "elder", walker.id); }
+      if (walker.resident.ageBand !== "child") { assert.notEqual(band, "child", walker.id); continue; }
+      children += 1;
+      const adult = byId.get(walker.id.slice(0, -":child".length));
+      assert.ok(adult !== undefined && ["market", "church"].includes(walker.resident.purpose), walker.id);
+      assert.equal(walker.resident.houseId, adult.resident.houseId);
+      assert.ok(Math.abs(Math.hypot(walker.position.tx - adult.position.tx, walker.position.ty - adult.position.ty) - 0.3) < 1e-9);
+      assert.equal(band, "child");
+      assert.equal(walkerLook(state, walker).sex, walker.resident.sex);
+    }
+  }
+  assert.ok(children > 0 && elders > 0, `children ${children}, elders ${elders}`);
 });
