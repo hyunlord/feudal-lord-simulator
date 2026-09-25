@@ -1,3 +1,4 @@
+import { unitEdgeKey } from "../world/boundary/wallBaseline";
 import { causeBuildingAlpha } from "./causeMapOverlay";
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
@@ -153,5 +154,9 @@ function wallFaceFor(state: DrawObjectRenderItemsInput["state"], item: { readonl
   const material = item.segment.material === "stone" ? "stone" : "timber";
   const slice = slices.get(key) ?? null;
   const own = slice !== null && slice.chain.material === material;
-  return { slice: own ? slice : null, nodes: own ? walls.nodes.filter(node => node.owner === key) : [], pillars: own ? walls.pillars.filter(pillar => pillar.owner === key) : [] };
+  // A stone tower is drawn by each arm it joins (INSTALL-4e), not by its owner alone: at a corner whose arms sort to the
+  // same depth the arm drawn after the owner painted its face over the tower; drawn again after that arm, it stays whole.
+  const drawsNode = (node: (typeof walls.nodes)[number]): boolean => node.owner === key
+    || (node.kind === "tower" && node.materials.includes("stone") && node.neighbors.some(neighbor => unitEdgeKey(node.point, neighbor) === key));
+  return { slice: own ? slice : null, nodes: own ? walls.nodes.filter(drawsNode) : [], pillars: own ? walls.pillars.filter(pillar => pillar.owner === key) : [] };
 }

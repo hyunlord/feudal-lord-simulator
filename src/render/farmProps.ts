@@ -16,7 +16,8 @@ import { zoneAsset, zoneAssetRaster } from "./zoneAssets";
 //    within FLOCK_REPEAT_RADIUS in the same zone.
 //  - Pigs (Wave 4e pig pair, INSTALL-4e): woodland common zones take one pair per PASTURE_CELLS_PER_PROP cells like the
 //    pasture; with no such zone, pairs stand rarely on the forest edge (one fringe edge in PIG_EDGE_ODDS by the edge's
-//    hash, as the fringe decals are picked), at least PIG_SPACING tiles apart and never on an orchard cell.
+//    hash, as the fringe decals are picked), stepped PIG_STEP out of the trees onto open grass (no road, building or
+//    orchard), at least PIG_SPACING tiles apart.
 //  - Farmsteads (C1c-2 arableStripStates): while a strip it tends is `ploughed`, the ox plough team stands on that
 //    strip's middle cell; while one is `harvested`, the ox hay cart does (first such strip in layout order).
 // Drawn in the object pass like zone props (bottom-centre anchor from the zone asset manifest, never mirrored).
@@ -29,6 +30,7 @@ const PROP_SPACING = 2.5;
 const FLOCK_REPEAT_RADIUS = 5;
 const PIG_EDGE_ODDS = 48;
 const PIG_SPACING = 8;
+const PIG_STEP = 0.8;
 
 function hash(a: number, b: number): number {
   let h = (Math.imul(a, 0x9e3779b1) ^ Math.imul(b + 0x7f4a7c15, 0x85ebca6b)) >>> 0;
@@ -95,10 +97,21 @@ function woodlandPigs(state: GameState): readonly FarmProp[] {
   }
   if (woodland.length === 0) {
     const orchard = new Set(zones.filter(zone => zone.kind === "orchard").flatMap(zone => zone.membership));
+    const cells = new Map(state.tiles.map(tile => [tile.ty * state.width + tile.tx, tile]));
+    const openGrass = (x: number, y: number): boolean => {
+      const index = Math.round(y) * state.width + Math.round(x);
+      const tile = cells.get(index);
+      return tile !== undefined && tile.terrain === "grass" && !tile.hasRoad && tile.buildingId === null && !orchard.has(index);
+    };
     for (const decal of forest.decals.flat()) {
-      if (boundaryHash(decal.edgeKey, state.seed, 61) % PIG_EDGE_ODDS !== 0) continue;
-      const x = decal.anchor.x; const y = decal.anchor.y;
-      if (orchard.has(Math.round(y) * state.width + Math.round(x))) continue;
+      const edgeHash = boundaryHash(decal.edgeKey, state.seed, 61);
+      if (edgeHash % PIG_EDGE_ODDS !== 0) continue;
+      // Out of the trees: PIG_STEP from the edge onto the open grass beside it (the first free side in the edge's hash order).
+      const sides = [[PIG_STEP, 0], [0, PIG_STEP], [-PIG_STEP, 0], [0, -PIG_STEP]] as const;
+      const start = (edgeHash >>> 8) % sides.length;
+      const side = [0, 1, 2, 3].map(step => sides[(start + step) % sides.length]!).find(([dx, dy]) => openGrass(decal.anchor.x + dx, decal.anchor.y + dy));
+      if (side === undefined) continue;
+      const x = decal.anchor.x + side[0]; const y = decal.anchor.y + side[1];
       if (pigs.some(other => Math.hypot(other.x - x, other.y - y) < PIG_SPACING)) continue;
       pigs.push({ kind: "pig_pair", x, y, id: `farm-prop:forest-edge:${decal.edgeKey}` });
     }

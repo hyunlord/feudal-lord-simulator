@@ -53,7 +53,9 @@ const sheets = [
   ['wk_textile_f_02', 'bundle_wool', 'civilian woman template'], ['wk_artisan_m_02', 'tool_axe', 'civilian man template'],
   ['wk_poor_m_01', 'bundle_cloth', 'civilian man template'], ['legacy_carter', 'loaf', 'legacy carter'],
 ];
-const cloaks = [['wk_labor_m_01', 'male'], ['wk_servant_f_01', 'female'], ['wk_gentry_f_01', 'female'], ['legacy_carter', 'male'], ['legacy_builder', 'male']];
+const cloaks = [['wk_labor_m_01', 'male'], ['wk_servant_f_01', 'female'], ['wk_gentry_f_01', 'female'], ['legacy_carter', 'male'], ['legacy_builder', 'male'],
+  // INSTALL-4e: the Wave 4e merchant cloak on the merchant template bodies, and a Wave 4e women's labour sheet.
+  ['wk_merchant_m_01', 'merchant'], ['wk_gentry_m_01', 'merchant'], ['wk_labor_f_03', 'female']];
 const urls = await page.evaluate(async ({ sheets, cloaks }) => {
   const proof = window.__FEUDAL_PHASE10_PROOF__;
   const read = async (...args) => { for (let i = 0; i < 100; i += 1) { const value = proof.walkerComposite(...args); if (value !== null) return value; await new Promise(r => setTimeout(r, 50)); } return null; };

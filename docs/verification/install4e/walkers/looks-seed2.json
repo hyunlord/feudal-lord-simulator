@@ -1,0 +1,894 @@
+{
+  "scene": "docs/verification/c3-labour/repro-seed2-348000.json.gz, one year without input (advanceTick), sampled every 50 ticks",
+  "samples": 81,
+  "distinctWalkers": 653,
+  "sexes": {
+    "male": 337,
+    "female": 316
+  },
+  "gate1": {
+    "samples": 81,
+    "sameAfterSaveRoundTripAndClone": 81
+  },
+  "gate2": {
+    "adjacentSameSheetPairs": 86,
+    "samplesWithPairs": 55,
+    "bandShares": [
+      {
+        "band": "artisan",
+        "walkers": 21,
+        "sheets": {
+          "wk_artisan_m_01": 7,
+          "wk_artisan_f_01": 4,
+          "wk_artisan_f_02": 8,
+          "wk_artisan_m_02": 2
+        },
+        "topSheet": "wk_artisan_f_02",
+        "topShare": 0.381
+      },
+      {
+        "band": "labor",
+        "walkers": 380,
+        "sheets": {
+          "wk_labor_m_02": 46,
+          "wk_labor_m_01": 39,
+          "wk_labor_m_03": 56,
+          "wk_labor_f_03": 41,
+          "legacy_farmer": 32,
+          "legacy_logger": 13,
+          "wk_labor_f_05": 43,
+          "wk_labor_f_02": 37,
+          "wk_labor_f_04": 36,
+          "wk_labor_f_01": 36,
+          "legacy_carter": 1
+        },
+        "topSheet": "wk_labor_m_03",
+        "topShare": 0.147
+      },
+      {
+        "band": "merchant",
+        "walkers": 16,
+        "sheets": {
+          "wk_merchant_m_02": 5,
+          "wk_merchant_m_01": 5,
+          "wk_merchant_f_02": 6
+        },
+        "topSheet": "wk_merchant_f_02",
+        "topShare": 0.375
+      },
+      {
+        "band": "poor",
+        "walkers": 111,
+        "sheets": {
+          "wk_poor_f_01": 25,
+          "wk_poor_m_02": 27,
+          "wk_poor_f_02": 27,
+          "wk_poor_m_01": 32
+        },
+        "topSheet": "wk_poor_m_01",
+        "topShare": 0.288
+      },
+      {
+        "band": "servant",
+        "walkers": 125,
+        "sheets": {
+          "wk_servant_f_03": 13,
+          "wk_servant_m_01": 38,
+          "wk_servant_m_02": 34,
+          "wk_servant_f_02": 13,
+          "wk_servant_f_01": 13,
+          "wk_servant_f_04": 14
+        },
+        "topSheet": "wk_servant_m_01",
+        "topShare": 0.304
+      }
+    ]
+  },
+  "walkerSamplesWithProp": 880,
+  "walkerSamplesWithCloak": 435,
+  "pairs": [
+    {
+      "tick": 348050,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000038:push:348012",
+          "b": "distributor:construction-site-000038:347880",
+          "sheet": "wk_servant_f_01",
+          "distance": 1.98
+        }
+      ]
+    },
+    {
+      "tick": 348100,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000010:348001",
+          "b": "carter:construction-site-000038:push:348084",
+          "sheet": "wk_poor_m_02",
+          "distance": 0.9
+        }
+      ]
+    },
+    {
+      "tick": 348150,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:348001",
+          "b": "distributor:construction-site-000051:347880",
+          "sheet": "wk_servant_m_02",
+          "distance": 0.51
+        }
+      ]
+    },
+    {
+      "tick": 348200,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000034:348031",
+          "b": "carter:construction-site-000042:348073",
+          "sheet": "wk_labor_f_02",
+          "distance": 0.94
+        },
+        {
+          "a": "carter:construction-site-000045:347711",
+          "b": "carter:construction-site-000049:348151",
+          "sheet": "wk_poor_m_02",
+          "distance": 1.96
+        }
+      ]
+    },
+    {
+      "tick": 348250,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:348159",
+          "b": "carter:construction-site-000042:348217",
+          "sheet": "wk_labor_m_03",
+          "distance": 0.81
+        },
+        {
+          "a": "carter:construction-site-000049:348151",
+          "b": "carter:construction-site-000051:push:348244",
+          "sheet": "wk_poor_m_02",
+          "distance": 0
+        }
+      ]
+    },
+    {
+      "tick": 348300,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000049:348151",
+          "b": "carter:construction-site-000051:push:348244",
+          "sheet": "wk_poor_m_02",
+          "distance": 0
+        }
+      ]
+    },
+    {
+      "tick": 348350,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:348301",
+          "b": "carter:construction-site-000024:348211",
+          "sheet": "wk_labor_f_05",
+          "distance": 1.69
+        },
+        {
+          "a": "carter:construction-site-000021:348211",
+          "b": "carter:construction-site-000046:348066",
+          "sheet": "wk_labor_f_04",
+          "distance": 0.52
+        }
+      ]
+    },
+    {
+      "tick": 348450,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:348430",
+          "b": "distributor:construction-site-000025:348240",
+          "sheet": "wk_poor_f_01",
+          "distance": 0.71
+        }
+      ]
+    },
+    {
+      "tick": 348600,
+      "pairs": [
+        {
+          "a": "carter:granary-42-37-0:push:348541",
+          "b": "distributor:construction-site-000025:348360",
+          "sheet": "wk_poor_f_02",
+          "distance": 1.26
+        }
+      ]
+    },
+    {
+      "tick": 348650,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:348541",
+          "b": "carter:construction-site-000017:348590",
+          "sheet": "legacy_farmer",
+          "distance": 1.42
+        }
+      ]
+    },
+    {
+      "tick": 348700,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:348581",
+          "b": "carter:construction-site-000030:intake:348691",
+          "sheet": "wk_labor_f_01",
+          "distance": 0.24
+        },
+        {
+          "a": "carter:construction-site-000005:348581",
+          "b": "carter:construction-site-000051:push:348488",
+          "sheet": "wk_labor_f_01",
+          "distance": 0.22
+        },
+        {
+          "a": "carter:construction-site-000030:intake:348691",
+          "b": "carter:construction-site-000051:push:348488",
+          "sheet": "wk_labor_f_01",
+          "distance": 0.46
+        },
+        {
+          "a": "carter:construction-site-000034:348627",
+          "b": "carter:construction-site-000040:348610",
+          "sheet": "wk_labor_m_02",
+          "distance": 0.98
+        }
+      ]
+    },
+    {
+      "tick": 348750,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000025:push:348710",
+          "b": "carter:construction-site-000051:push:348732",
+          "sheet": "wk_labor_f_03",
+          "distance": 0.02
+        }
+      ]
+    },
+    {
+      "tick": 348850,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:348701",
+          "b": "distributor:construction-site-000051:348720",
+          "sheet": "wk_servant_f_03",
+          "distance": 0.19
+        },
+        {
+          "a": "carter:construction-site-000030:348831",
+          "b": "carter:construction-site-000042:348844",
+          "sheet": "wk_labor_m_03",
+          "distance": 0.95
+        }
+      ]
+    },
+    {
+      "tick": 348900,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000038:push:348852",
+          "b": "carter:construction-site-000041:348841",
+          "sheet": "wk_labor_f_03",
+          "distance": 1.46
+        },
+        {
+          "a": "distributor:construction-site-000025:348600",
+          "b": "distributor:granary-42-37-0:348720",
+          "sheet": "wk_poor_f_01",
+          "distance": 1
+        }
+      ]
+    },
+    {
+      "tick": 348950,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:348889",
+          "b": "carter:construction-site-000041:348841",
+          "sheet": "wk_labor_f_03",
+          "distance": 1.22
+        }
+      ]
+    },
+    {
+      "tick": 349000,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000024:348868",
+          "b": "carter:construction-site-000040:348896",
+          "sheet": "wk_labor_m_02",
+          "distance": 0.96
+        }
+      ]
+    },
+    {
+      "tick": 349050,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:349027",
+          "b": "carter:construction-site-000046:348738",
+          "sheet": "wk_labor_m_01",
+          "distance": 0.9
+        }
+      ]
+    },
+    {
+      "tick": 349100,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:349033",
+          "b": "distributor:granary-42-37-0:349080",
+          "sheet": "wk_poor_m_01",
+          "distance": 1.71
+        }
+      ]
+    },
+    {
+      "tick": 349200,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:349033",
+          "b": "distributor:granary-42-37-0:349080",
+          "sheet": "wk_poor_m_01",
+          "distance": 0.39
+        }
+      ]
+    },
+    {
+      "tick": 349300,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:intake:349295",
+          "b": "carter:logging-camp-50-40-0:349211",
+          "sheet": "wk_labor_m_03",
+          "distance": 0.68
+        }
+      ]
+    },
+    {
+      "tick": 349350,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:349241",
+          "b": "carter:construction-site-000040:349261",
+          "sheet": "wk_labor_m_01",
+          "distance": 0.34
+        },
+        {
+          "a": "carter:construction-site-000030:intake:349341",
+          "b": "carter:construction-site-000042:349331",
+          "sheet": "wk_servant_m_02",
+          "distance": 0.92
+        }
+      ]
+    },
+    {
+      "tick": 349400,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:intake:349355",
+          "b": "distributor:construction-site-000051:349200",
+          "sheet": "wk_poor_m_02",
+          "distance": 0.29
+        }
+      ]
+    },
+    {
+      "tick": 349450,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:intake:349431",
+          "b": "carter:construction-site-000021:349311",
+          "sheet": "wk_labor_m_02",
+          "distance": 1.8
+        },
+        {
+          "a": "carter:construction-site-000010:349409",
+          "b": "carter:construction-site-000034:349211",
+          "sheet": "wk_labor_f_04",
+          "distance": 1.2
+        }
+      ]
+    },
+    {
+      "tick": 349500,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000042:349331",
+          "b": "distributor:construction-site-000025:349440",
+          "sheet": "wk_servant_m_02",
+          "distance": 1.74
+        }
+      ]
+    },
+    {
+      "tick": 349600,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000021:349590",
+          "b": "carter:construction-site-000050:349351",
+          "sheet": "wk_labor_f_02",
+          "distance": 1.74
+        },
+        {
+          "a": "carter:construction-site-000038:push:349594",
+          "b": "carter:construction-site-000040:intake:349565",
+          "sheet": "legacy_farmer",
+          "distance": 0.23
+        }
+      ]
+    },
+    {
+      "tick": 349650,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000010:349409",
+          "b": "carter:logging-camp-50-40-0:349643",
+          "sheet": "wk_labor_f_04",
+          "distance": 0.64
+        },
+        {
+          "a": "carter:construction-site-000030:349641",
+          "b": "carter:construction-site-000042:349611",
+          "sheet": "wk_labor_f_03",
+          "distance": 1.32
+        },
+        {
+          "a": "carter:construction-site-000049:349351",
+          "b": "distributor:construction-site-000051:349560",
+          "sheet": "wk_servant_f_02",
+          "distance": 0.15
+        }
+      ]
+    },
+    {
+      "tick": 349700,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:349617",
+          "b": "carter:granary-42-37-0:push:349651",
+          "sheet": "wk_labor_m_02",
+          "distance": 0.24
+        },
+        {
+          "a": "carter:construction-site-000010:349653",
+          "b": "carter:construction-site-000046:349410",
+          "sheet": "wk_labor_m_01",
+          "distance": 0.18
+        },
+        {
+          "a": "carter:construction-site-000034:349601",
+          "b": "carter:construction-site-000050:349351",
+          "sheet": "wk_labor_f_02",
+          "distance": 1.99
+        }
+      ]
+    },
+    {
+      "tick": 349750,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000040:349749",
+          "b": "distributor:granary-42-37-0:349560",
+          "sheet": "wk_servant_m_02",
+          "distance": 1.85
+        }
+      ]
+    },
+    {
+      "tick": 349800,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000021:349590",
+          "b": "carter:construction-site-000034:349601",
+          "sheet": "wk_labor_f_02",
+          "distance": 0.92
+        },
+        {
+          "a": "carter:construction-site-000040:349749",
+          "b": "distributor:granary-42-37-0:349560",
+          "sheet": "wk_servant_m_02",
+          "distance": 1.52
+        }
+      ]
+    },
+    {
+      "tick": 349850,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:349818",
+          "b": "carter:construction-site-000010:349653",
+          "sheet": "wk_labor_m_01",
+          "distance": 0.98
+        }
+      ]
+    },
+    {
+      "tick": 349900,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000045:349513",
+          "b": "carter:construction-site-000047:349027",
+          "sheet": "wk_labor_f_03",
+          "distance": 1.04
+        }
+      ]
+    },
+    {
+      "tick": 350050,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000017:349882",
+          "b": "carter:construction-site-000041:350021",
+          "sheet": "legacy_farmer",
+          "distance": 0.66
+        }
+      ]
+    },
+    {
+      "tick": 350100,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000005:350021",
+          "b": "carter:construction-site-000038:push:350085",
+          "sheet": "wk_servant_f_04",
+          "distance": 0.84
+        }
+      ]
+    },
+    {
+      "tick": 350150,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000042:350051",
+          "b": "distributor:granary-42-37-0:350040",
+          "sheet": "wk_poor_m_01",
+          "distance": 1.15
+        }
+      ]
+    },
+    {
+      "tick": 350200,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000030:350011",
+          "b": "distributor:construction-site-000051:349920",
+          "sheet": "wk_servant_m_02",
+          "distance": 1.91
+        },
+        {
+          "a": "carter:construction-site-000042:350051",
+          "b": "carter:granary-42-37-0:push:350167",
+          "sheet": "wk_poor_m_01",
+          "distance": 0.44
+        }
+      ]
+    },
+    {
+      "tick": 350250,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:350181",
+          "b": "carter:construction-site-000017:intake:350248",
+          "sheet": "wk_labor_m_03",
+          "distance": 1.81
+        },
+        {
+          "a": "carter:construction-site-000021:intake:350228",
+          "b": "distributor:construction-site-000038:350160",
+          "sheet": "wk_poor_m_01",
+          "distance": 1.99
+        }
+      ]
+    },
+    {
+      "tick": 350300,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000017:350170",
+          "b": "distributor:construction-site-000051:350280",
+          "sheet": "wk_servant_m_01",
+          "distance": 1.01
+        }
+      ]
+    },
+    {
+      "tick": 350350,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:350181",
+          "b": "carter:construction-site-000041:350311",
+          "sheet": "wk_labor_m_03",
+          "distance": 0.84
+        },
+        {
+          "a": "carter:construction-site-000021:intake:350318",
+          "b": "carter:construction-site-000024:350201",
+          "sheet": "wk_servant_m_02",
+          "distance": 1.89
+        },
+        {
+          "a": "carter:construction-site-000030:350339",
+          "b": "distributor:construction-site-000025:349800",
+          "sheet": "wk_poor_f_01",
+          "distance": 0.84
+        }
+      ]
+    },
+    {
+      "tick": 350450,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000001:350423",
+          "b": "carter:construction-site-000034:intake:350375",
+          "sheet": "wk_labor_f_01",
+          "distance": 1.82
+        },
+        {
+          "a": "carter:construction-site-000002:350382",
+          "b": "carter:construction-site-000017:350401",
+          "sheet": "wk_labor_f_02",
+          "distance": 0.66
+        },
+        {
+          "a": "distributor:construction-site-000051:350280",
+          "b": "distributor:granary-42-37-0:350280",
+          "sheet": "wk_servant_m_01",
+          "distance": 0
+        }
+      ]
+    },
+    {
+      "tick": 350500,
+      "pairs": [
+        {
+          "a": "distributor:construction-site-000051:350280",
+          "b": "distributor:granary-42-37-0:350280",
+          "sheet": "wk_servant_m_01",
+          "distance": 0.3
+        }
+      ]
+    },
+    {
+      "tick": 350600,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:350499",
+          "b": "carter:construction-site-000021:intake:350589",
+          "sheet": "wk_labor_f_05",
+          "distance": 1.23
+        },
+        {
+          "a": "carter:construction-site-000021:intake:350589",
+          "b": "carter:construction-site-000024:350451",
+          "sheet": "wk_labor_f_05",
+          "distance": 1.94
+        }
+      ]
+    },
+    {
+      "tick": 350700,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000045:350657",
+          "b": "carter:construction-site-000046:350082",
+          "sheet": "wk_labor_f_05",
+          "distance": 0.5
+        }
+      ]
+    },
+    {
+      "tick": 351000,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000021:350840",
+          "b": "carter:construction-site-000024:350991",
+          "sheet": "wk_labor_m_01",
+          "distance": 0.95
+        },
+        {
+          "a": "carter:construction-site-000034:intake:350911",
+          "b": "distributor:construction-site-000025:350640",
+          "sheet": "wk_servant_m_02",
+          "distance": 0.41
+        }
+      ]
+    },
+    {
+      "tick": 351200,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000017:intake:351181",
+          "b": "distributor:construction-site-000038:351120",
+          "sheet": "wk_servant_f_02",
+          "distance": 1.66
+        }
+      ]
+    },
+    {
+      "tick": 351300,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000017:intake:351291",
+          "b": "carter:construction-site-000021:intake:351291",
+          "sheet": "wk_labor_f_05",
+          "distance": 1.05
+        }
+      ]
+    },
+    {
+      "tick": 351400,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000045:351143",
+          "b": "distributor:granary-42-37-0:351240",
+          "sheet": "wk_poor_m_02",
+          "distance": 1.03
+        }
+      ]
+    },
+    {
+      "tick": 351450,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:intake:351425",
+          "b": "carter:logging-camp-50-40-0:351371",
+          "sheet": "wk_labor_f_05",
+          "distance": 0.6
+        },
+        {
+          "a": "carter:construction-site-000030:351444",
+          "b": "carter:construction-site-000049:351291",
+          "sheet": "legacy_farmer",
+          "distance": 0.42
+        }
+      ]
+    },
+    {
+      "tick": 351500,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000045:351143",
+          "b": "distributor:granary-42-37-0:351240",
+          "sheet": "wk_poor_m_02",
+          "distance": 1.08
+        }
+      ]
+    },
+    {
+      "tick": 351550,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000038:push:351541",
+          "b": "carter:construction-site-000049:351291",
+          "sheet": "legacy_farmer",
+          "distance": 0
+        }
+      ]
+    },
+    {
+      "tick": 351700,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000001:351700",
+          "b": "carter:construction-site-000010:351631",
+          "sheet": "wk_labor_m_03",
+          "distance": 0.44
+        },
+        {
+          "a": "carter:construction-site-000021:intake:351681",
+          "b": "carter:construction-site-000040:intake:351681",
+          "sheet": "wk_servant_m_01",
+          "distance": 1.38
+        },
+        {
+          "a": "carter:construction-site-000021:intake:351681",
+          "b": "distributor:construction-site-000025:351600",
+          "sheet": "wk_servant_m_01",
+          "distance": 1.94
+        },
+        {
+          "a": "carter:construction-site-000040:351621",
+          "b": "carter:construction-site-000051:push:351531",
+          "sheet": "wk_servant_m_02",
+          "distance": 1.8
+        }
+      ]
+    },
+    {
+      "tick": 351750,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000002:351701",
+          "b": "distributor:construction-site-000051:351600",
+          "sheet": "wk_poor_m_01",
+          "distance": 0.32
+        },
+        {
+          "a": "carter:construction-site-000040:351621",
+          "b": "carter:construction-site-000041:351747",
+          "sheet": "wk_servant_m_02",
+          "distance": 0.58
+        }
+      ]
+    },
+    {
+      "tick": 351850,
+      "pairs": [
+        {
+          "a": "distributor:construction-site-000038:351840",
+          "b": "distributor:granary-42-37-0:351720",
+          "sheet": "wk_poor_f_02",
+          "distance": 1
+        }
+      ]
+    },
+    {
+      "tick": 351900,
+      "pairs": [
+        {
+          "a": "distributor:construction-site-000038:351840",
+          "b": "distributor:granary-42-37-0:351720",
+          "sheet": "wk_poor_f_02",
+          "distance": 1
+        }
+      ]
+    },
+    {
+      "tick": 351950,
+      "pairs": [
+        {
+          "a": "distributor:construction-site-000038:351840",
+          "b": "distributor:granary-42-37-0:351720",
+          "sheet": "wk_poor_f_02",
+          "distance": 1
+        }
+      ]
+    },
+    {
+      "tick": 352000,
+      "pairs": [
+        {
+          "a": "carter:construction-site-000003:351982",
+          "b": "carter:construction-site-000005:351982",
+          "sheet": "wk_labor_f_01",
+          "distance": 1.57
+        },
+        {
+          "a": "carter:construction-site-000024:351881",
+          "b": "carter:construction-site-000051:push:351989",
+          "sheet": "wk_servant_f_03",
+          "distance": 1.12
+        },
+        {
+          "a": "distributor:construction-site-000038:351840",
+          "b": "distributor:granary-42-37-0:351720",
+          "sheet": "wk_poor_f_02",
+          "distance": 1
+        }
+      ]
+    }
+  ],
+  "scenes": {
+    "summer": {
+      "tick": 349000,
+      "season": 1,
+      "walkers": 29
+    },
+    "winter": {
+      "tick": 351000,
+      "season": 3,
+      "walkers": 22
+    }
+  }
+}
