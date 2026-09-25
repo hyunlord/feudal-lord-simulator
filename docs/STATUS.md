@@ -4,11 +4,11 @@
 
 ## 현재 단계
 
-- **BOT-1 자동 성장 복구 — 관문 미통과(가드레일 4/5, 실행 1회), 본선 미병합**(Claude Code, 봇만, 규칙 파일 diff 0): [자동 성장 복구 명세](design/autoplay-recovery.md) AR-1~AR-4, [보고서](verification/bot1-autoplay/REPORT.md), 결정 BT1~BT5. 브랜치 `claude/bot1-autoplay`.
-  - `granary_gap`: 성 안 집이 가동 곡창에서 도로 12변 넘게 떨어져 빵이 떨어지면 그 곁 성 안에 곡창을 짓는다. seed 3이 L4 24/24로 승리했다(111,841틱).
-  - `market_gap`: 시장 반경 밖 집이 3채 이상이면 실제 서비스 할당으로 확인한 시장 자리를 쓴다. seed 2가 L4 17 → 23/24가 됐다.
-  - seed 2는 목책 선포(70,089틱) 때 벽 여유가 시장 자리를 가져가 시장 두 곳으로 닿는 집이 최대 23이다. 벽 후보 두 개 모두 같다. 봇 판단만으로는 고칠 수 없다.
-  - 목재 빈곤(목책 공사 중 사용 가능 목재 2~4라 S8-F1 확장이 서지 못함)은 원인 기록만 했다. seed 1·4·5는 C3와 최종 상태 해시가 같다.
+- **BOT-1 자동 성장 복구 — 관문 미통과(가드레일 4/5, 전체 실행 2회 모두 사용), 본선 미병합**(Claude Code, 봇만, 규칙 파일 diff 0): [자동 성장 복구 명세](design/autoplay-recovery.md) AR-1~AR-6, [보고서](verification/bot1-autoplay/REPORT.md), 결정 BT1~BT7. 브랜치 `claude/bot1-autoplay`.
+  - `granary_gap`(성 안 곡창 공백), `market_gap`(시장 반경 밖 집), `market_relocation`(상한에서 닿지 않는 집 헐고 반경 안에 다시), `timber_demand`(기다리는 목재 대비 생산 부족 → 목재 시설).
+  - 2회차: seed 1·2·4·5 통과(141,655 · 220,940 · 184,460 · 301,657틱). seed 2는 옮기기로 24/24다.
+  - seed 3은 22필지에서 집 자리가 없어 실패했다(1회차는 통과). 배치 순서가 바뀌어 156칸 성 안에 길이 5칸 더 깔렸다.
+  - 새 기준선은 없다(`baseline-5b138e0` 유지).
 
 - **C3 노동 모델·가내 생산 슬롯·계절 노동·방앗간 운반 관문 통과·본선 병합**(Claude Code, 엔진 세션, 렌더 0줄): [노동 명세](design/labour.md) LB-1~LB-14, [보고서](verification/c3-labour/REPORT.md), 결정 LB1~LB9.
   - 집마다 가구 구성원 `members {adults, children, seed}`(저장 v11). 성인 합 = 기존 노동력. 성별·나이대는 파생(`householdMembers`).
@@ -92,11 +92,10 @@
 
 ## 다음 작업
 
-- **C4 전 선행 — seed 2 시장 도달 결정**(사용자): BOT-1이 seed 3은 고쳤다. seed 2는 목책 선포 뒤 시장 두 곳으로 24집에 닿을 수 없다. 다음 후보는 [BOT-1 보고서](verification/bot1-autoplay/REPORT.md) "다음 후보"에 있다.
-  - 봇이 끝내 시장이 닿지 않는 집을 헐고 옮기는 조치: 게임 액션 `demolish_house`는 이미 있다. 봇 액션 종류와 자동 성장 표시 문구가 필요하다.
-  - 촌락 배치 때 기본 목책 투영.
-  - 시장 상한·반경 설계 결정.
-  - 결정 뒤 가드레일 5/5와 새 기준선을 만든다.
+- **C4 전 선행 — BOT-1 seed 3 성 안 필지**(봇만, 가드레일 5/5 관문): 2회차에서 seed 3이 22필지에 멈췄다. 다음 후보는 [BOT-1 보고서](verification/bot1-autoplay/REPORT.md) "다음 후보"에 있다.
+  - 성 안 빈 집 자리가 남은 필지보다 적어지는 길·건물 배치 금지.
+  - LB-12 벽 여유 필지당 6 → 7칸.
+  - 통과하면 새 기준선을 만들고 merge한다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
 로드맵 v3 엔진 줄의 다음은 **B4 사건**이다. C2가 끝나 돈의 규칙이 생겼다. C3(노동)·E(특허·fee farm)에 넘길 것은 [C2 보고서](verification/c2-money/REPORT.md)에 적었다. 구역 쪽 C1c-2(경작지 구역 경작)와 렌더 C1e(경작지 띠)는 끝났고, 헛간 그림과 밀밭 스프라이트 정리는 렌더 몫으로 남았다. C1b 붓이 생겨 필지 폭 비례 지대(M-2)가 실제 플레이에서 쓰인다. 석벽 프로젝트의 재원·유지비와 시나리오 `economyRules`(제분 독점·직영 판매 플래그)는 C2에서 정했다. K4-2(목책 선택, L4 '성벽 안' 조건 재검토)는 C1에서 한다. [로드맵](design/ROADMAP.md)의 선행 조건을 따른다.
 
