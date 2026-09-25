@@ -214,7 +214,9 @@
 .build-menu-toprow .build-menu-categories { flex: 1 1 auto; }
 @media (max-width: 1100px) {
   .app-shell .resource-bar { width: calc(100% - 24px); }
-  .hud-time-cluster { top: auto; bottom: 214px; }
+  /* The bar takes the full width: the cluster sits under it at the right, the goal rail under the cluster. */
+  .hud-time-cluster { top: 80px; }
+  .right-info-rail { top: 148px; }
 }
 
 /* ---- Left inspector mount (a warning's [보기]); under the steward when both show ---- */
@@ -224,8 +226,14 @@
 /* The settings popover opens downward from the top cluster (it opened upward from the bottom console before UX-1). */
 .hud-time-cluster .command-disclosure { position: relative; }
 .hud-time-cluster .command-popover { top: calc(100% + 8px); bottom: auto; right: 0; z-index: 30; max-height: calc(100vh - 96px); }
-@media (max-width: 1100px) {
-  .hud-time-cluster .command-popover { top: auto; bottom: calc(100% + 8px); }
-}
 /* The zone layer hides the categories (the flex display must not override `hidden`). */
 .build-menu-categories[hidden] { display: none; }
+/* The pause label and the unlock banner sit below the resource bar (72 px tall with its top gap; 120 px when it wraps). */
+.pause-veil-label, .unlock-banner { top: 80px; }
+.steward-advisor, .left-inspector-mount, .right-info-rail { top: 80px; }
+.steward-advisor ~ .left-inspector-mount { top: 208px; }
+@media (max-width: 760px) {
+  .pause-veil-label, .unlock-banner { top: 128px; }
+}
+@media (max-width: 1100px) { .right-info-rail { top: 148px; } }
+@media (max-width: 1100px) { .app-shell .hud-time-cluster { top: 116px; } .app-shell .right-info-rail { top: 232px; max-height: calc(100% - 450px); } }

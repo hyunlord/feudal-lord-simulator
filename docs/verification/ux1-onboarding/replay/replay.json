@@ -8,7 +8,7 @@
  "allSteps": true,
  "locksMatch": true,
  "presses": 22,
- "seconds": 28,
+ "seconds": 27,
  "rows": [
   {
    "step": "greet",
@@ -90,7 +90,7 @@
    "step": "road",
    "locksMatch": true,
    "file": "04-road.jpg",
-   "atSeconds": 6.4,
+   "atSeconds": 6.3,
    "card": "길 한 칸 내기 | 0/1 | 길은 사람과 물자의 통로입니다. 집과 일터는 길가에만 지을 수 있습니다. | 길 놓기 | 위치 보기 | ?",
    "categories": [
     "living:open",
@@ -116,7 +116,7 @@
    "step": "house",
    "locksMatch": true,
    "file": "05-house.jpg",
-   "atSeconds": 8.4,
+   "atSeconds": 8.3,
    "card": "새 길가에 집 짓기 | 0/1 | 집은 목재 없이 짓습니다. 물과 빵이 닿으면 사람들이 들어와 인구가 늡니다. | 집 놓기 | 위치 보기 | ?",
    "categories": [
     "living:open",
@@ -142,7 +142,7 @@
    "step": "arable",
    "locksMatch": true,
    "file": "06-arable.jpg",
-   "atSeconds": 10.5,
+   "atSeconds": 10.3,
    "card": "식량 기반: 경작지 | 0/8 | 밀은 경작지 띠에서 자랍니다. 길가 빈 땅을 경작지로 칠하세요. | 경작지 칠하기 | 위치 보기 | ?",
    "categories": [
     "living:open",
@@ -168,7 +168,7 @@
    "step": "arable_limits",
    "locksMatch": true,
    "file": "07-arable_limits.jpg",
-   "atSeconds": 12.5,
+   "atSeconds": 12.2,
    "card": "칠할 수 없는 땅 알아보기 | 붉은 곳에는 경작할 수 없습니다. 빗금 칸은 길이 닿지 않아 거둔 밀을 옮기지 못합니다. | 알겠습니다 | ?",
    "categories": [
     "living:open",
@@ -193,7 +193,7 @@
    "step": "food_chain",
    "locksMatch": true,
    "file": "08-food_chain.jpg",
-   "atSeconds": 13.7,
+   "atSeconds": 13.4,
    "card": "헛간과 방앗간 짓기 | 0/2 | 헛간이 경작지를 갈고 거두고, 방앗간이 밀을 빵으로 만듭니다. 둘 다 길에 이어야 합니다. | 헛간 놓기 | 위치 보기 | ?",
    "categories": [
     "living:open",
@@ -221,7 +221,7 @@
    "step": "granary",
    "locksMatch": true,
    "file": "09-granary.jpg",
-   "atSeconds": 18.5,
+   "atSeconds": 18,
    "card": "새 곡창 짓기 | 0/1 | 올해 먹을 것만으로는 부족합니다. 수확이 나쁜 해를 버티려면 곡식을 저장해야 합니다. | 곡창 놓기 | 위치 보기 | ?",
    "categories": [
     "living:open",
@@ -247,7 +247,7 @@
    "step": "zone_unlock",
    "locksMatch": true,
    "file": "10-zone_unlock.jpg",
-   "atSeconds": 20.7,
+   "atSeconds": 20.3,
    "card": "땅의 용도 정하기 | 이제 건물 하나씩이 아니라 땅의 용도를 정할 수 있습니다. | 구역 열기 | ?",
    "categories": [
     "living:open",
@@ -272,7 +272,7 @@
    "step": "burgage",
    "locksMatch": true,
    "file": "11-burgage.jpg",
-   "atSeconds": 21.8,
+   "atSeconds": 21.4,
    "card": "첫 필지 구역 칠하기 | 0/1 | 필지 구역 안에서는 사람들이 스스로 집을 짓습니다. 길에 닿는 땅이 필지가 됩니다. | 필지 칠하기 | 위치 보기 | ?",
    "categories": [
     "living:open",
@@ -298,7 +298,7 @@
    "step": "burgage_done",
    "locksMatch": true,
    "file": "12-burgage_done.jpg",
-   "atSeconds": 23.8,
+   "atSeconds": 23.4,
    "card": "사람들이 채우는 땅 | 직접 둔 건물은 그대로 보호됩니다. 구역 안의 집은 사람들이 짓습니다. | 알겠습니다 | ?",
    "categories": [
     "living:open",
@@ -323,7 +323,7 @@
    "step": "wrap_up",
    "locksMatch": true,
    "file": "13-wrap_up.jpg",
-   "atSeconds": 25.2,
+   "atSeconds": 24.6,
    "card": "다음: 시장과 예배당 | 마을이 자라면 시장과 예배당을 갖추어 시장 도시로 키우십시오. | 안내 마치기 | ?",
    "categories": [
     "living:open",
@@ -346,7 +346,7 @@
   }
  ],
  "state": {
-  "tick": 497,
+  "tick": 490,
   "speed": "1배속",
   "sites": [
    "mill@48,42",
