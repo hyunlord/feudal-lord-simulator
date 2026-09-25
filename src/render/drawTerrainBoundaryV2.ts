@@ -19,6 +19,7 @@ import { farmSoilReadiness, preloadFarmAssets } from "./farmAssets";
 import { createGroundChunkCache, groundChunkZoomBucket, type ChunkRasterRequest, type GroundChunkCache } from "./groundChunkCache";
 import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundSceneFrameStart, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
+import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { tileToScreen } from "./iso";
 import { renderStageProbe } from "./renderStageProbe";
 import type { TileRange } from "./renderVisibility";
@@ -106,8 +107,8 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const zoneReadiness = scene.zones.zones.length > 0 ? `:z${zoneAssetReadiness()}` : "";
   // Croft bed art only in chunks with beds; crop states only in chunks with arable strips (read this frame).
   const bedReadiness = scene.yardProps.beds.length > 0 ? `:b${zoneAssetReadiness(ZONE_VARIANTS.croftBed)}` : "";
-  // Shore art only in chunks that draw water.
-  const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}` : "";
+  // Shore art only in chunks that draw water; with wall strips on, the shore strip stops under walls on the water.
+  const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}` : "";
   const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");

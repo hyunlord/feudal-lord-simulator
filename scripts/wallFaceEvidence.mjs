@@ -3,10 +3,12 @@
 //             seed 3 stone town, the seed 2 natural chain (C1e real-input state, finished timber palisade) and the fixed
 //             scene with walls under construction (fixtures/construction-reserve/seed2-113040: 5 timber segments
 //             finished, 14 being built); plus 2x close-ups of a gate, a tower and a finished / unfinished join.
-//   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/wallFaceEvidence.mjs captures <outDir> --base <url> [--url ...]
+//   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/wallFaceEvidence.mjs captures <outDir> --base <url> [--url ...] [--query '&render-wall-strips=1']
 //   flag:     gate 6, curved ground off (`render-boundary-v2=0`): an FNV-1a hash over the canvas RGBA of the same views
-//             in both builds (software raster) must match.
-//   PLAYWRIGHT_MODULE=... node scripts/wallFaceEvidence.mjs flag <out.json> --base <url> [--url ...]
+//             in both builds (software raster) must match. `--query` / `--base-query` replace the query of the build
+//             under test / of the baseline (wall strips split: `--query '&render-wall-strips=1' --base-query ''`
+//             against the D3b build).
+//   PLAYWRIGHT_MODULE=... node scripts/wallFaceEvidence.mjs flag <out.json> --base <url> [--url ...] [--query ...] [--base-query ...]
 //   seams:    join coverage of the face, ridge and shore strips as the game joins them (a | b | c crossfades): the body
 //             rows must stay opaque across every join, and the colour step there must not exceed the strip's own.
 //   PLAYWRIGHT_MODULE=... node scripts/wallFaceEvidence.mjs seams <out.json> [--url ...]
@@ -48,11 +50,11 @@ async function captures(outDir) {
   const rows = [];
   for (const view of list) {
     for (const [label, base] of [['before', flags.base], ['after', url]]) {
-      const { context, page } = await openScene(browser, { state: { ...view.state, walkers: [] }, tile: view.tile, baseUrl: base, dpr: 1, zoom: view.zoom, run: false });
+      const { context, page } = await openScene(browser, { state: { ...view.state, walkers: [] }, tile: view.tile, baseUrl: base, dpr: 1, zoom: view.zoom, run: false, query: label === 'after' ? flags.query ?? '' : '' });
       await ready(page); await page.mouse.move(640, 790); await page.waitForTimeout(600);
       const file = `${view.name}-${label}.jpg`;
       await writeFile(join(outDir, file), await page.screenshot({ type: 'jpeg', quality: 70, ...(view.clip === undefined ? {} : { clip: view.clip }) }));
-      rows.push({ file, source: view.source, tile: view.tile, zoom: view.zoom, build: base });
+      rows.push({ file, source: view.source, tile: view.tile, zoom: view.zoom, build: base, query: label === 'after' ? flags.query ?? '' : '' });
       await context.close();
     }
   }
@@ -64,8 +66,10 @@ async function flag(out) {
   const list = (await views()).filter(view => view.clip === undefined);
   const chromium = await loadChromium();
   const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--disable-gpu'] });
-  const hashOf = async (base, view, dpr) => {
-    const { context, page } = await openScene(browser, { state: { ...view.state, walkers: [] }, tile: view.tile, baseUrl: base, dpr, zoom: view.zoom, run: false, query: '&render-boundary-v2=0' });
+  const query = flags.query ?? '&render-boundary-v2=0';
+  const baseQuery = flags['base-query'] ?? query;
+  const hashOf = async (base, view, dpr, q) => {
+    const { context, page } = await openScene(browser, { state: { ...view.state, walkers: [] }, tile: view.tile, baseUrl: base, dpr, zoom: view.zoom, run: false, query: q });
     await page.waitForTimeout(2_500); await page.mouse.move(640, 790); await page.waitForTimeout(800);
     const hash = await page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(() => {
       const canvas = document.querySelector('canvas');
@@ -79,12 +83,12 @@ async function flag(out) {
   };
   const rows = [];
   for (const view of list) for (const dpr of [1, 2]) {
-    const before = await hashOf(flags.base, view, dpr); const after = await hashOf(url, view, dpr);
+    const before = await hashOf(flags.base, view, dpr, baseQuery); const after = await hashOf(url, view, dpr, query);
     rows.push({ view: view.name, dpr, before: before.hash, after: after.hash, flagOn: [before.v2, after.v2], identical: before.hash === after.hash });
     console.log(JSON.stringify(rows.at(-1)));
   }
   await browser.close();
-  await writeFile(out, `${JSON.stringify({ url, base: flags.base, query: 'render-boundary-v2=0', raster: 'software (--disable-gpu)', hash: 'FNV-1a over canvas RGBA', identical: rows.filter(row => row.identical).length, of: rows.length, rows }, null, 2)}\n`);
+  await writeFile(out, `${JSON.stringify({ url, base: flags.base, query, baseQuery, raster: 'software (--disable-gpu)', hash: 'FNV-1a over canvas RGBA', identical: rows.filter(row => row.identical).length, of: rows.length, rows }, null, 2)}\n`);
 }
 
 async function seams(out) {

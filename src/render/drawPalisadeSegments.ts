@@ -49,10 +49,11 @@ export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: Dr
     ...(input.stoneNodes ?? []).flatMap(node => [node.point, ...node.neighbors]),
     ...(input.face?.nodes ?? []).flatMap(node => [node.point, ...node.neighbors])]);
   if (points.length === 0) return;
-  // A face slice enters the key by its chain hash and range (the samples themselves are large).
+  // A face slice enters the key by its chain hash and range (the samples themselves are large); without one the key
+  // is the pre-D3b key.
   const face = input.face === undefined ? null : { chain: input.face.slice?.chain.hash ?? null, t0: input.face.slice?.t0, t1: input.face.slice?.t1,
     material: input.face.slice?.chain.material, nodes: input.face.nodes, pillars: input.face.pillars, faces: wallFaceReadiness() };
-  const key = JSON.stringify([{ ...input, face }, stoneWallAssetStatuses(), gateAssetStatuses(), timberWallAssetStatus()]);
+  const key = JSON.stringify([face === null ? input : { ...input, face }, stoneWallAssetStatuses(), gateAssetStatuses(), timberWallAssetStatus()]);
   drawCachedWorldRaster(context, key, {
     left: Math.min(...points.map(point => point.x)) - 96,
     right: Math.max(...points.map(point => point.x)) + 96,

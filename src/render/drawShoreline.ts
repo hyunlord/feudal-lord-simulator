@@ -8,6 +8,7 @@ import { ABUTMENT_DISPLAY_WIDTH, shoreAsset, shoreAssetRaster, shoreSurface } fr
 import { TERRAIN_VARIANTS, type ShoreAssetKey } from "./terrainVariantManifest";
 import { waterPattern } from "./drawWater";
 import { drawCroppedWorldSprite } from "./worldSprite";
+import { wallStripsEnabled } from "./renderWallStripsFlag";
 
 // Water in the ground chunks (D3a, RENDER_BOUNDARY_V2 only). Order inside a chunk, after the land and the forest:
 //  1. deep water: the existing water surface, one even-odd path from the shoreline loops (+ the chunk rectangle when the
@@ -138,6 +139,7 @@ function drawShoreDecals(context: CanvasRenderingContext2D, loop: ShoreLoop, til
 }
 
 function drawShoreStrip(context: CanvasRenderingContext2D, loop: ShoreLoop, tileBounds: BoundaryBounds): void {
+  const wallStrips = wallStripsEnabled();
   if (typeof context.createPattern !== "function") return;
   const joined = shoreStripCanvas();
   if (joined === null) return;
@@ -169,8 +171,9 @@ function drawShoreStrip(context: CanvasRenderingContext2D, loop: ShoreLoop, tile
     const length = Math.hypot(b.x - a.x, b.y - a.y);
     const start = arc; arc += length;
     if (length === 0) continue;
-    // Along a wall standing on the water the wall is the edge: no shore strip under it (D3b).
-    if (loop.walled[index] === true && loop.walled[(index + 1) % count] === true) continue;
+    // Along a wall standing on the water the wall face is the edge: no shore strip under it (D3b, wall strips only;
+    // the per-edge pieces leave the strip showing).
+    if (wallStrips && loop.walled[index] === true && loop.walled[(index + 1) % count] === true) continue;
     if (Math.max(a.x, b.x) < tileBounds.left - margin || Math.min(a.x, b.x) > tileBounds.right + margin
       || Math.max(a.y, b.y) < tileBounds.top - margin || Math.min(a.y, b.y) > tileBounds.bottom + margin) continue;
     const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };

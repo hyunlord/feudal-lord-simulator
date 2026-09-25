@@ -121,6 +121,7 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | WL3 | 꼭짓점 모듈은 기존 조각 재사용(석재 교각·목재 기둥·등록 성문), 석벽 탑·성문 전용 그림은 Astra 후보 | 렌더 결정(D3b) | 2026-09-25 | [성벽 곡선 WL-3](../design/wall-faces.md) |
 | WL4 | 물가는 물가 쪽 벽 기준선과 같은 선(0.45칸 안 스냅), 그곳 물가 띠 생략. 얕은 물 45%·물가 띠 물 쪽 45% 색 보정(stone[1]) | 렌더 결정(D3b) | 2026-09-25 | [성벽 곡선 WL-4](../design/wall-faces.md) |
 | WL5 | 띠 잇기·도로 마스크의 `destination-in` 줄별 적용 결함 수정(마스크 캔버스 한 번 적용) | 결함 수정(D3b) | 2026-09-25 | [성벽 곡선 WL-5](../design/wall-faces.md) |
+| WL6 | 면 띠(WL-2·WL-3)를 별도 플래그 `RENDER_WALL_STRIPS`로 분리, **기본 끔**(완공 벽 = 예전 칸 조각). 물가 공유선·색 보정·띠 이음 수정은 켬 유지, 벽 밑 물가 띠 생략은 띠 켬일 때만 | 확정(사용자, 2026-09-25 D3b 검토: 윗면·흉벽 없이 밝은 톤이라 벽으로 안 읽힘) | 2026-09-25 | [성벽 곡선](../design/wall-faces.md) · [보고서](../verification/d3b-wall-flag/REPORT.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
 
 ## R1-fix 확정 규칙

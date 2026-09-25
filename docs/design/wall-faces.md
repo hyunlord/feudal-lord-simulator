@@ -1,7 +1,7 @@
 # 성벽 곡선 — 목책·석벽 면 띠와 모듈 (D3b)
 
 근거: D3b 지시서, 에셋 파이프라인 규격 v1 4.3절, D3a 보고서 "D3b에 넘길 것", Wave 4b 목책·석벽 면(C1e 등록).
-적용: 곡선 지면(`RENDER_BOUNDARY_V2`) 켬일 때만. 끔(V1)은 예전 칸 조각 그대로다(픽셀 동일).
+적용: 면 띠·모듈(WL-2·WL-3)은 곡선 지면(`RENDER_BOUNDARY_V2`)과 별도 플래그 `RENDER_WALL_STRIPS`가 둘 다 켜졌을 때만 그린다. `RENDER_WALL_STRIPS`는 **기본 끔**이다(2026-09-25 사용자 결정 WL6: 윗면·흉벽이 없고 톤이 밝아 벽으로 읽히지 않음). 끄면 완공 벽은 예전 칸 조각이다. 켜려면 URL `render-wall-strips=1`(또는 브라우저 저장값 `feudal.renderWallStrips=1`). 기준선(WL-1), 물가 공유선·색 보정(WL-4), 띠 이음 수정(WL-5)은 곡선 지면이면 늘 켜져 있다. 단 물가 띠를 벽 밑에서 생략하는 규칙은 면 띠가 그 자리를 덮을 때만(띠 켬) 쓴다. 곡선 지면 끔(V1)은 예전 칸 조각 그대로다(픽셀 동일).
 성벽 논리(구간·모서리 경로·성문·차단·운반)는 읽기만 하고 바꾸지 않는다.
 코드: `src/world/boundary/wallBaseline.ts`(기준선), `src/render/drawWallFaces.ts`(면·모듈), `src/render/wallBaselineCache.ts`(캐시).
 
