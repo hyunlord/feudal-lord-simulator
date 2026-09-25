@@ -12,11 +12,8 @@ import { walkerSheetManifest, type walkerPropManifest } from "./walkerSheetManif
 //  - Occupation: the engine has three walker kinds; the render occupation reads the kind and the goods (WC-1).
 //  - Sex: householdMembers (C3 LB-2) when the walker's home building is a counted house, else the walker's hash bit
 //    (50:50). Walkers are workers, so a child or elder profile keeps its sex on the adult body (no child / elder art).
-//  - Class band: weighted by occupation (WC-2), then the sheets of that band and sex, plus the occupation's own legacy
-//    sheet for men, in a hash order.
-//  - Near rejection (V1 rule, WC-3): a walker takes the first sheet of its order that no earlier living walker of the
-//    same home building wears (earlier = spawned earlier, then id). Walkers of one building share its road, so they
-//    are the ones that walk side by side; positions are not used, so a look never changes as walkers pass each other.
+//  - Sheet (WC-2, WC-3): one weighted draw over the sheets of the occupation's class bands for that sex (plus the
+//    occupation's own legacy sheet for men); no near rejection, see walkerLook.
 
 export type WalkerSheet = typeof walkerSheetManifest[number];
 export type WalkerSheetId = WalkerSheet["id"];
@@ -36,9 +33,9 @@ export interface WalkerLook {
 /** WC-2: class band weights per occupation. Bands with no walking occupation yet (gentry, clergy, visitors) wait for C3 / E. */
 export const OCCUPATION_BANDS: Readonly<Record<WalkerOccupation, readonly (readonly [WalkerClassBand, number])[]>> = {
   builder: [["artisan", 3], ["labor", 1]],
-  farmer: [["labor", 1]],
+  farmer: [["labor", 4], ["servant", 1], ["poor", 1]],
   logger: [["labor", 3], ["artisan", 1]],
-  quarryman: [["labor", 1]],
+  quarryman: [["labor", 3], ["poor", 1]],
   carter: [["labor", 2], ["servant", 1], ["textile", 1]],
   coin_carter: [["merchant", 2], ["servant", 1]],
   distributor: [["servant", 2], ["merchant", 1], ["poor", 1]],
@@ -58,7 +55,7 @@ export function walkerSheet(id: WalkerSheetId): WalkerSheet {
   return sheet;
 }
 
-const SALT = { sex: 1, band: 2, order: 3, trinket: 4, member: 5 } as const;
+const SALT = { sex: 1, sheet: 2, order: 3, trinket: 4, member: 5 } as const;
 function walkerKey(walkerId: string): number {
   return hashNumbers(Array.from(walkerId, char => char.charCodeAt(0)));
 }
@@ -85,13 +82,6 @@ function walkerSex(state: Pick<GameState, "houses" | "seed">, walker: Walker, ke
   return (boundaryHash(key, state.seed, SALT.sex) & 1) === 0 ? "female" : "male";
 }
 
-function weightedBand(weights: readonly (readonly [WalkerClassBand, number])[], hash: number): WalkerClassBand {
-  const total = weights.reduce((sum, [, weight]) => sum + weight, 0);
-  let pick = hash % total;
-  for (const [band, weight] of weights) { if (pick < weight) return band; pick -= weight; }
-  return weights[0]![0];
-}
-
 /** The candidate sheets of a walker, in its own hash order (deterministic shuffle of the band's sheets). */
 export function walkerCandidates(occupation: WalkerOccupation, band: WalkerClassBand, sex: MemberSex, key: number, seed: number): readonly WalkerSheetId[] {
   const legacy = LEGACY_SHEET_BY_OCCUPATION[occupation];
@@ -109,31 +99,33 @@ function trinketFor(band: WalkerClassBand, key: number, seed: number): WalkerPro
   return null;
 }
 
-const earlierFirst = (a: Walker, b: Walker) => a.spawnedTick - b.spawnedTick || a.id.localeCompare(b.id);
+/**
+ * WC-3: which sheet a walker wears. Only the walker's own saved facts count (id, home, goods), never the other
+ * walkers: a rule that looked at them (the V1 near rejection) changes a look whenever a neighbour spawns, leaves or
+ * walks by, and so either flips a walker's clothes mid-walk or shows another look after a reload (measured on the seed
+ * 2 city: docs/verification/v2-walkers/REPORT.md, gate 2). Instead the pool is made wide: one weighted draw over the
+ * sheets of every band of the occupation (a sheet weighs its band's weight over the band's sheet count for that sex),
+ * so two walkers of one occupation share a sheet with probability sum(p^2) (0.20-0.33 for the wheat carters, against
+ * 0.5 for the two women's labour sheets alone).
+ */
+export function walkerLook(state: Pick<GameState, "houses" | "seed">, walker: Walker): WalkerLook {
+  const key = walkerKey(walker.id);
+  const occupation = walkerOccupation(walker);
+  const sex = walkerSex(state, walker, key);
+  const pool = OCCUPATION_BANDS[occupation].flatMap(([band, weight]) => {
+    const sheets = walkerCandidates(occupation, band, sex, key, state.seed);
+    return sheets.map(sheetId => ({ sheetId, weight: weight / sheets.length }));
+  });
+  const total = pool.reduce((sum, entry) => sum + entry.weight, 0);
+  let pick = (boundaryHash(key, state.seed, SALT.sheet) / 2 ** 32) * total;
+  const chosen = pool.find(entry => (pick -= entry.weight) < 0) ?? pool[pool.length - 1]!;
+  const band = walkerSheet(chosen.sheetId).classBand;
+  return { sheetId: chosen.sheetId, band, occupation, sex, trinket: trinketFor(band, key, state.seed) };
+}
 
-/** Looks of every walker of the state (pure: WC-1..WC-3). */
+/** Looks of every walker of the state (pure). */
 export function walkerLooks(state: Pick<GameState, "walkers" | "houses" | "seed">): ReadonlyMap<string, WalkerLook> {
-  const looks = new Map<string, WalkerLook>();
-  const byHome = new Map<string, Walker[]>();
-  for (const walker of state.walkers) {
-    const list = byHome.get(walker.homeBuildingId) ?? [];
-    list.push(walker);
-    byHome.set(walker.homeBuildingId, list);
-  }
-  for (const walkers of byHome.values()) {
-    const worn = new Set<WalkerSheetId>();
-    for (const walker of [...walkers].sort(earlierFirst)) {
-      const key = walkerKey(walker.id);
-      const occupation = walkerOccupation(walker);
-      const sex = walkerSex(state, walker, key);
-      const band = weightedBand(OCCUPATION_BANDS[occupation], boundaryHash(key, state.seed, SALT.band));
-      const candidates = walkerCandidates(occupation, band, sex, key, state.seed);
-      const sheetId = candidates.find(id => !worn.has(id)) ?? candidates[0]!;
-      worn.add(sheetId);
-      looks.set(walker.id, { sheetId, band, occupation, sex, trinket: trinketFor(band, key, state.seed) });
-    }
-  }
-  return looks;
+  return new Map(state.walkers.map(walker => [walker.id, walkerLook(state, walker)]));
 }
 
 /**

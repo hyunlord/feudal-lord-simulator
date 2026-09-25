@@ -26,7 +26,8 @@ import { tileToScreen } from "../render/iso";
 import { APRON_TARGET_DEPTH } from "../world/boundary/buildingGrounds";
 import { onboardingWorldGuidanceMemoStats } from "../ui/onboardingWorldGuidance";
 import { buildingVariantAssetStatuses } from "../render/buildingVariantAssets";
-import { resetWalkerComposerForProof, walkerAppearance, walkerComposerStats } from "../render/walkerComposer";
+import { composedLookForProof, resetWalkerComposerForProof, walkerAppearance, walkerComposerStats } from "../render/walkerComposer";
+import type { WalkerPropKind, WalkerSheetId } from "../render/walkerLook";
 
 type ProofLocation = {
   readonly hostname: string;
@@ -112,6 +113,8 @@ export type Phase10ProofRuntimePort = {
     readonly sex: string; readonly occupation: string; readonly prop: string | null; readonly cloak: string | null }[];
   /** V2 evidence: drop composed looks (a fresh session). */
   readonly resetWalkerComposer: () => void;
+  /** V2 evidence: a composed look's 8 cells as a PNG data URL (null while its images load). */
+  readonly walkerComposite: (sheetId: string, prop: string | null, cloak: "male" | "female" | null) => string | null;
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
   readonly resetBoundary: (reverseInput: boolean) => void;
   /**
@@ -184,6 +187,14 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
         occupation: look.occupation, prop, cloak };
     }),
     resetWalkerComposer: () => resetWalkerComposerForProof(),
+    walkerComposite: (sheetId, prop, cloak) => {
+      const composed = composedLookForProof(sheetId as WalkerSheetId, prop as WalkerPropKind | null, cloak);
+      if (composed === null) return null;
+      const canvas = document.createElement("canvas");
+      canvas.width = composed.width; canvas.height = composed.height;
+      canvas.getContext("2d")?.drawImage(composed, 0, 0);
+      return canvas.toDataURL("image/png");
+    },
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },
     wedgeProbe: () => wedgeProbe(input.canvas, input.cameraRef.current, input.stateRef.current),
     groundOnly: (enabled) => setObjectPassForProof(!enabled),

@@ -69,7 +69,9 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
   if (canvas === null || context === null || context === undefined) return null;
   context.imageSmoothingEnabled = true;
   context.imageSmoothingQuality = "high";
-  const sheetCellWidth = sheet.width / 4; const sheetCellHeight = sheet.height / 2;
+  // The shipped legacy PNGs are downscaled derivatives of the 1774x887 sheets (runtimeAssetDerivatives): crop by the
+  // image's own pixels, whose cells keep the 4 x 2 layout.
+  const sheetCellWidth = body.naturalWidth / 4; const sheetCellHeight = body.naturalHeight / 2;
   for (const frame of sheet.frames) {
     const column = DIRECTION_COLUMN[frame.direction]; const row = frame.gaitFrame;
     const originX = column * WALKER_COMPOSED_CELL + WALKER_PAD; const originY = row * WALKER_COMPOSED_CELL + WALKER_PAD;
@@ -156,6 +158,11 @@ export function walkerComposerStats() {
   return { ...stats, cached: composed.size, cacheLimit: CACHE_LIMIT, bytesPerCanvas, cacheBytes: composed.size * bytesPerCanvas,
     cacheBytesLimit: CACHE_LIMIT * bytesPerCanvas, looks: lookCache.size, keys: [...composed.keys()],
     images: [...images.entries()].map(([url, entry]) => ({ url, status: entry.status })) };
+}
+
+/** Evidence: the composed 8 cells of a look (composes it once its images are loaded; null while they load). */
+export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): OffscreenCanvas | HTMLCanvasElement | null {
+  return composedCanvas(sheetId, prop, cloak);
 }
 
 /** Evidence: drop composed canvases and looks (a fresh session). */

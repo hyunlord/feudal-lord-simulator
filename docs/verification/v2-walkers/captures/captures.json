@@ -1,0 +1,754 @@
+{
+  "walkers": "shown",
+  "paused": true,
+  "rows": [
+    {
+      "file": "street-summer-z2.00-before.jpg",
+      "season": "summer",
+      "tick": 349000,
+      "tile": [
+        48,
+        35
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4282/",
+      "looks": null,
+      "composer": null
+    },
+    {
+      "file": "street-summer-z2.00-after.jpg",
+      "season": "summer",
+      "tick": 349000,
+      "tile": [
+        48,
+        35
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4281/",
+      "looks": [
+        {
+          "id": "carter:construction-site-000001:348972",
+          "tx": 43.82000000000001,
+          "ty": 36,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "logger",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000002:348889",
+          "tx": 44.500000000000014,
+          "ty": 30,
+          "sheetId": "wk_labor_f_02",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000003:348795",
+          "tx": 46.39999999999995,
+          "ty": 36,
+          "sheetId": "wk_servant_m_01",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "jug",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000005:348861",
+          "tx": 47.57999999999997,
+          "ty": 34,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000010:348935",
+          "tx": 49.10000000000004,
+          "ty": 34,
+          "sheetId": "wk_labor_m_03",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000017:348973",
+          "tx": 42.219999999999985,
+          "ty": 30,
+          "sheetId": "wk_labor_m_03",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000021:348901",
+          "tx": 51,
+          "ty": 33.139999999999944,
+          "sheetId": "wk_servant_m_02",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000021:intake:348991",
+          "tx": 44,
+          "ty": 29.260000000000005,
+          "sheetId": "wk_poor_f_01",
+          "band": "poor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000024:348868",
+          "tx": 50.51999999999998,
+          "ty": 34,
+          "sheetId": "wk_labor_m_02",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000030:348861",
+          "tx": 45,
+          "ty": 31.460000000000022,
+          "sheetId": "wk_labor_f_02",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000034:348929",
+          "tx": 46.05999999999996,
+          "ty": 36,
+          "sheetId": "wk_labor_m_02",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000034:intake:348845",
+          "tx": 52,
+          "ty": 38.35999999999996,
+          "sheetId": "wk_servant_m_02",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000038:push:348934",
+          "tx": 42,
+          "ty": 29.799999999999983,
+          "sheetId": "wk_servant_m_02",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "jug",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000040:348896",
+          "tx": 49.56000000000006,
+          "ty": 34,
+          "sheetId": "wk_labor_m_02",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000040:intake:348986",
+          "tx": 42,
+          "ty": 27.159999999999997,
+          "sheetId": "wk_labor_m_02",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000041:348841",
+          "tx": 47,
+          "ty": 33.24000000000004,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000042:348844",
+          "tx": 45,
+          "ty": 30.76000000000002,
+          "sheetId": "wk_labor_m_03",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000045:348855",
+          "tx": 52.30000000000008,
+          "ty": 26,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "quarryman",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000046:348738",
+          "tx": 50.31999999999985,
+          "ty": 34,
+          "sheetId": "wk_labor_m_01",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "logger",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000047:347697",
+          "tx": 40.67999999999964,
+          "ty": 42,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "quarryman",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000049:348851",
+          "tx": 51,
+          "ty": 33.860000000000085,
+          "sheetId": "wk_poor_f_01",
+          "band": "poor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000050:348621",
+          "tx": 51,
+          "ty": 33.99999999999994,
+          "sheetId": "legacy_farmer",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000051:push:348732",
+          "tx": 53,
+          "ty": 32.519999999999925,
+          "sheetId": "wk_labor_f_02",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:logging-camp-50-40-0:348923",
+          "tx": 43,
+          "ty": 36.3,
+          "sheetId": "wk_labor_m_02",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "logger",
+          "prop": "tool_axe",
+          "cloak": null
+        },
+        {
+          "id": "distributor:construction-site-000025:348600",
+          "tx": 43.989999999999995,
+          "ty": 36,
+          "sheetId": "wk_poor_f_01",
+          "band": "poor",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "distributor:construction-site-000025:348960",
+          "tx": 51,
+          "ty": 31.010000000000005,
+          "sheetId": "wk_merchant_f_02",
+          "band": "merchant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "distributor:construction-site-000038:348960",
+          "tx": 42,
+          "ty": 27.989999999999995,
+          "sheetId": "wk_merchant_m_01",
+          "band": "merchant",
+          "sex": "male",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "distributor:construction-site-000051:348720",
+          "tx": 47.689999999999955,
+          "ty": 34,
+          "sheetId": "wk_servant_f_01",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "jug",
+          "cloak": null
+        },
+        {
+          "id": "distributor:granary-42-37-0:348960",
+          "tx": 46.989999999999995,
+          "ty": 36,
+          "sheetId": "wk_servant_f_01",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": null
+        }
+      ],
+      "composer": {
+        "composed": 19,
+        "evicted": 0,
+        "composeMsTotal": 0.7999999523162842,
+        "composeMsMax": 0.20000004768371582,
+        "firstComposeMs": 0.10000002384185791,
+        "cached": 19,
+        "cacheLimit": 64,
+        "bytesPerCanvas": 373248,
+        "cacheBytes": 7091712,
+        "cacheBytesLimit": 23887872,
+        "looks": 29,
+        "keys": [
+          "wk_merchant_m_01|loaf|-",
+          "wk_servant_m_02|jug|-",
+          "wk_labor_m_03|-|-",
+          "wk_labor_m_02|tool_axe|-",
+          "wk_poor_f_01|loaf|-",
+          "wk_labor_f_01|-|-",
+          "wk_servant_f_01|jug|-",
+          "wk_merchant_f_02|loaf|-",
+          "wk_servant_m_01|jug|-",
+          "wk_servant_f_01|loaf|-",
+          "wk_labor_m_03|loaf|-",
+          "wk_labor_m_02|loaf|-",
+          "wk_servant_m_02|loaf|-",
+          "wk_labor_m_01|-|-",
+          "wk_labor_m_02|-|-",
+          "wk_poor_f_01|-|-",
+          "legacy_farmer|-|-",
+          "wk_labor_f_02|-|-",
+          "wk_servant_m_02|-|-"
+        ]
+      }
+    },
+    {
+      "file": "street-winter-z2.00-before.jpg",
+      "season": "winter",
+      "tick": 351000,
+      "tile": [
+        48,
+        35
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4282/",
+      "looks": null,
+      "composer": null
+    },
+    {
+      "file": "street-winter-z2.00-after.jpg",
+      "season": "winter",
+      "tick": 351000,
+      "tile": [
+        48,
+        35
+      ],
+      "zoom": 2,
+      "build": "http://127.0.0.1:4281/",
+      "looks": [
+        {
+          "id": "carter:construction-site-000001:351000",
+          "tx": 44,
+          "ty": 36,
+          "sheetId": "legacy_logger",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "logger",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000002:350941",
+          "tx": 44.73999999999997,
+          "ty": 30,
+          "sheetId": "wk_servant_f_02",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": "female"
+        },
+        {
+          "id": "carter:construction-site-000005:350881",
+          "tx": 46.43999999999997,
+          "ty": 36,
+          "sheetId": "legacy_farmer",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": null
+        },
+        {
+          "id": "carter:construction-site-000010:350801",
+          "tx": 47,
+          "ty": 34.780000000000044,
+          "sheetId": "wk_servant_m_01",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": "jug",
+          "cloak": "male"
+        },
+        {
+          "id": "carter:construction-site-000017:350976",
+          "tx": 44.639999999999986,
+          "ty": 32,
+          "sheetId": "wk_labor_f_02",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": "female"
+        },
+        {
+          "id": "carter:construction-site-000021:350840",
+          "tx": 45.599999999999966,
+          "ty": 32,
+          "sheetId": "wk_labor_m_01",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": "male"
+        },
+        {
+          "id": "carter:construction-site-000024:350991",
+          "tx": 45,
+          "ty": 31.260000000000005,
+          "sheetId": "wk_labor_m_01",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": "male"
+        },
+        {
+          "id": "carter:construction-site-000030:350904",
+          "tx": 42,
+          "ty": 29.559999999999945,
+          "sheetId": "wk_labor_f_02",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "farmer",
+          "prop": "loaf",
+          "cloak": "female"
+        },
+        {
+          "id": "carter:construction-site-000030:intake:350991",
+          "tx": 50.14,
+          "ty": 34,
+          "sheetId": "wk_labor_m_02",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": "male"
+        },
+        {
+          "id": "carter:construction-site-000034:intake:350911",
+          "tx": 46.400000000000006,
+          "ty": 36,
+          "sheetId": "wk_servant_m_02",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": "male"
+        },
+        {
+          "id": "carter:construction-site-000045:350657",
+          "tx": 51.99999999999994,
+          "ty": 26,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "quarryman",
+          "prop": null,
+          "cloak": "female"
+        },
+        {
+          "id": "carter:construction-site-000046:350754",
+          "tx": 51.55999999999986,
+          "ty": 33,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "logger",
+          "prop": null,
+          "cloak": "female"
+        },
+        {
+          "id": "carter:construction-site-000047:350357",
+          "tx": 44.979999999999634,
+          "ty": 36,
+          "sheetId": "wk_labor_f_01",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "quarryman",
+          "prop": null,
+          "cloak": "female"
+        },
+        {
+          "id": "carter:granary-42-37-0:push:350963",
+          "tx": 47,
+          "ty": 37.18000000000002,
+          "sheetId": "wk_labor_m_01",
+          "band": "labor",
+          "sex": "male",
+          "occupation": "farmer",
+          "prop": null,
+          "cloak": "male"
+        },
+        {
+          "id": "carter:logging-camp-50-40-0:350939",
+          "tx": 43.459999999999965,
+          "ty": 36,
+          "sheetId": "wk_labor_f_02",
+          "band": "labor",
+          "sex": "female",
+          "occupation": "logger",
+          "prop": null,
+          "cloak": "female"
+        },
+        {
+          "id": "distributor:construction-site-000025:350640",
+          "tx": 45.989999999999995,
+          "ty": 36,
+          "sheetId": "wk_servant_m_02",
+          "band": "servant",
+          "sex": "male",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": "male"
+        },
+        {
+          "id": "distributor:construction-site-000051:350640",
+          "tx": 51,
+          "ty": 29.989999999999995,
+          "sheetId": "wk_servant_f_02",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": "female"
+        },
+        {
+          "id": "distributor:granary-42-37-0:350760",
+          "tx": 45.989999999999995,
+          "ty": 36,
+          "sheetId": "wk_servant_f_01",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": "female"
+        },
+        {
+          "id": "distributor:granary-42-37-0:350880",
+          "tx": 46.989999999999995,
+          "ty": 36,
+          "sheetId": "wk_merchant_m_01",
+          "band": "merchant",
+          "sex": "male",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "distributor:construction-site-000025:351000",
+          "tx": 52,
+          "ty": 38,
+          "sheetId": "wk_servant_f_02",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": "female"
+        },
+        {
+          "id": "distributor:construction-site-000038:351000",
+          "tx": 42,
+          "ty": 29,
+          "sheetId": "wk_merchant_m_01",
+          "band": "merchant",
+          "sex": "male",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": null
+        },
+        {
+          "id": "distributor:construction-site-000051:351000",
+          "tx": 53,
+          "ty": 32,
+          "sheetId": "wk_servant_f_01",
+          "band": "servant",
+          "sex": "female",
+          "occupation": "distributor",
+          "prop": "loaf",
+          "cloak": "female"
+        }
+      ],
+      "composer": {
+        "composed": 14,
+        "evicted": 0,
+        "composeMsTotal": 0.6000001430511475,
+        "composeMsMax": 0.20000004768371582,
+        "firstComposeMs": 0.10000002384185791,
+        "cached": 14,
+        "cacheLimit": 64,
+        "bytesPerCanvas": 373248,
+        "cacheBytes": 5225472,
+        "cacheBytesLimit": 23887872,
+        "looks": 22,
+        "keys": [
+          "wk_servant_f_02|-|female",
+          "wk_labor_f_02|loaf|female",
+          "wk_labor_f_02|-|female",
+          "legacy_logger|-|-",
+          "wk_servant_m_01|jug|male",
+          "wk_servant_m_02|loaf|male",
+          "wk_servant_m_02|-|male",
+          "legacy_farmer|-|-",
+          "wk_merchant_m_01|loaf|-",
+          "wk_labor_m_02|-|male",
+          "wk_labor_m_01|-|male",
+          "wk_labor_f_01|-|female",
+          "wk_servant_f_01|loaf|female",
+          "wk_servant_f_02|loaf|female"
+        ]
+      }
+    },
+    {
+      "file": "cells-props.jpg",
+      "source": [
+        [
+          "wk_labor_m_01",
+          "tool_hammer",
+          "civilian man template"
+        ],
+        [
+          "wk_servant_f_01",
+          "jug",
+          "civilian woman template"
+        ],
+        [
+          "wk_merchant_m_01",
+          "loaf",
+          "merchant template"
+        ],
+        [
+          "wk_priest_m_01",
+          "loaf",
+          "cleric template"
+        ],
+        [
+          "wk_textile_f_02",
+          "bundle_wool",
+          "civilian woman template"
+        ],
+        [
+          "wk_artisan_m_02",
+          "tool_axe",
+          "civilian man template"
+        ],
+        [
+          "wk_poor_m_01",
+          "bundle_cloth",
+          "civilian man template"
+        ],
+        [
+          "legacy_carter",
+          "loaf",
+          "legacy carter"
+        ]
+      ],
+      "build": "http://127.0.0.1:4281/"
+    },
+    {
+      "file": "cells-winter.jpg",
+      "source": [
+        [
+          "wk_labor_m_01",
+          "male"
+        ],
+        [
+          "wk_servant_f_01",
+          "female"
+        ],
+        [
+          "wk_gentry_f_01",
+          "female"
+        ],
+        [
+          "legacy_carter",
+          "male"
+        ],
+        [
+          "legacy_builder",
+          "male"
+        ]
+      ],
+      "build": "http://127.0.0.1:4281/"
+    }
+  ]
+}
