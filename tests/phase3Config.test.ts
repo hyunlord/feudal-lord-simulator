@@ -69,8 +69,9 @@ test("Phase 3 building table includes chapel without changing ordinary building 
     },
     mill: {
       kind: "mill", name: "방앗간", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
-      requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "bread", input: "wheat", inputPerOutput: 2, ticksPerOutput: 30 },
-      storageCapacity: 20, serviceRadius: 0,
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "bread", input: "wheat", inputPerOutput: 2, ticksPerOutput: 30, outputHoldLimit: 16 },
+      // LB-7 (C3): half the room for two 12-wheat carts on their way, half for bread waiting to go out.
+      storageCapacity: 32, serviceRadius: 0, carterCapacity: 12,
     },
     logging_camp: {
       kind: "logging_camp", name: "벌목소", width: 1, height: 1, workersRequired: 3, buildCost: { timber: 15 },

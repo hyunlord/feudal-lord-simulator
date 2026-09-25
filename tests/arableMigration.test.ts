@@ -93,7 +93,7 @@ test("F9 fields are deterministic and survive a v10 save round trip mid-season",
   const bytes = encodeSave({ state: half, createdAt: "2026-09-25T00:00:00.000Z", savedAt: "2026-09-25T00:00:00.000Z", gameVersion: "test" }).bytes;
   const loaded = decodeSave(bytes);
   assert.equal(loaded.envelope.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.equal(SAVE_SCHEMA_VERSION, 10);
+  assert.ok(SAVE_SCHEMA_VERSION >= 10, "fields are saved since v10 (v11 adds households, LB-10)");
   assert.deepEqual(loaded.envelope.state.arableFields, half.arableFields);
   const resumed = runFields(loaded.envelope.state, 1600);
   assert.deepEqual(resumed.arableFields, first.arableFields);

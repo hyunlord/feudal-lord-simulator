@@ -45,10 +45,11 @@ export function byId(
   return left.id.localeCompare(right.id);
 }
 
-export function activeCarterHomes(walkers: readonly Walker[]): Set<string> {
+/** Homes whose main cart is out (LB-7: a second cart does not block the main one). */
+export function activeCarterHomes(walkers: readonly Walker[], cart?: CarterWalker["cart"]): Set<string> {
   return new Set(
     walkers
-      .filter((walker): walker is CarterWalker => walker.kind === "carter")
+      .filter((walker): walker is CarterWalker => walker.kind === "carter" && walker.cart === cart)
       .map((walker) => walker.homeBuildingId),
   );
 }
@@ -61,10 +62,12 @@ export function spawnCarter(params: {
   readonly mission: CarterWalker["mission"];
   readonly cargo: CarterWalker["cargo"];
   readonly reservation: CarterWalker["reservation"];
+  readonly cart?: CarterWalker["cart"];
 }): CarterWalker {
   return {
-    id: `carter:${params.home.id}:${params.tick}`,
+    id: params.cart === undefined ? `carter:${params.home.id}:${params.tick}` : `carter:${params.home.id}:${params.cart}:${params.tick}`,
     kind: "carter",
+    ...(params.cart === undefined ? {} : { cart: params.cart }),
     mission: params.mission,
     phase: "outbound",
     homeBuildingId: params.home.id,

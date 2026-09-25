@@ -373,7 +373,8 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
     const buildingIndex = buildings.findIndex(building => building.id === farmsteadId);
     let farmstead = buildings[buildingIndex];
     if (farmstead === undefined) continue;
-    let budget = Math.max(0, farmstead.workers);
+    // LB-5: seasonal field hands from the day pool work beside the farmstead's own workers (one worker-tick each).
+    let budget = Math.max(0, farmstead.workers) + Math.max(0, farmstead.fieldHands ?? 0);
     if (budget === 0) continue;
     const tasks = work.get(farmsteadId)!.sort((a, b) => TASK_ORDER[a.task] - TASK_ORDER[b.task] || a.field - b.field || a.strip - b.strip);
     for (const entry of tasks) {

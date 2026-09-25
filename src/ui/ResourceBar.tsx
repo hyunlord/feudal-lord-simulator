@@ -64,7 +64,7 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
         <span className="resource-bar__detail">
           <span className="resource-bar__primary"><span>인구</span><strong>{state.population}</strong></span>
           <span className="resource-bar__trend">{trend("population")}</span>
-          <span className="resource-bar__secondary">유휴 일꾼 <b>{state.idleWorkers}</b><span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span>
+          <span className="resource-bar__secondary">유휴 일꾼 <b>{state.labour?.idle ?? state.idleWorkers}</b><span className="resource-bar__disclosure" aria-hidden="true">⌄</span></span>
         </span>
       </button>
       <ResourceCell kind="bread" label="빵" value={stock.bread} secondary={`${breadLabel}${breadFull ? " · 가득" : ""}`} trend={trend("bread")} />

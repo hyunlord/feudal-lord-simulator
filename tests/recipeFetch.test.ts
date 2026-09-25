@@ -17,7 +17,7 @@ test('prefers a feasible first production batch when nearer partial input cannot
  // When choosing one normal fetch load.
  const result=fetchCandidate(home,'wheat',[home,near,far],inventory,routes);
  // Then fetch a normal load from the supply sufficient for the existing recipe.
- assert.equal(result?.building.id,'far');assert.equal(result.amount,8);
+ assert.equal(result?.building.id,'far');assert.equal(result.amount,BUILDING_CONFIG_BY_KIND.mill.carterCapacity);
  assert.deepEqual([home,near,far],before);
 });
 test('keeps legitimate current1 plus nearest1 production completion',()=>{

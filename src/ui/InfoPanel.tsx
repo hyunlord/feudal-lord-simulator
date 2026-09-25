@@ -243,6 +243,7 @@ export function SettlementObjective({ state }: { readonly state: GameState }) {
       {guidance.completedGoal === null ? null : (
         <span className="settlement-complete">인구 {guidance.completedGoal}명 달성</span>
       )}
+      {guidance.idleLine === null ? null : <span className="settlement-idle">{guidance.idleLine}</span>}
     </section>
   );
 }

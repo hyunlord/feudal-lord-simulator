@@ -29,8 +29,11 @@ import { updateHousing } from "../population/housing";
 import type { House } from "../population/population.types";
 import {
   allocateBuildingAndConstructionLabour,
+  availableWorkers,
   builderWalkersForSites,
 } from "../population/labour";
+import { allocateLabourDemands } from "./labourDemand";
+import { withHouseholdMembers } from "../population/householdMembers";
 import { createMulberry32, createRoamingJunctionSeed } from "./prng";
 import {
   createDeliveryInventoryPort,
@@ -161,12 +164,23 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     { era: state.era, tick, eraProclaimedTick: state.eraProclaimedTick },
     (building) => buildingHasRequiredRoadAccess(state, building),
   );
+  // LB-4: field hands, granary haulers and household slots take only what the facility allocation left.
+  const demands = allocateLabourDemands({
+    state,
+    buildings: labour.buildings,
+    houses: state.houses,
+    remaining: labour.idleWorkers,
+    constructionWorkers: labour.constructionSites.reduce((total, site) => total + site.assignedBuilders, 0),
+    adults: availableWorkers(state.population),
+    tick,
+    eligible: (building) => buildingHasRequiredRoadAccess(state, building),
+  });
   const servedHouses = mergeRoamingHouses(state.houses, movedDistributors.houses);
   const marketSettled = settleMarkets({
     ...state,
     tick,
     houses: [...servedHouses],
-    buildings: [...labour.buildings],
+    buildings: [...demands.buildings],
     constructionSites: [...labour.constructionSites],
     walkers: [...movedDistributors.walkers],
     treasuryTimber: movedCarters.treasuryTimber,
@@ -182,10 +196,11 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     tick,
     buildings: [...marketSettled.buildings],
     constructionSites: [...labour.constructionSites],
-    houses: [...housing.houses],
+    houses: [...withHouseholdMembers(housing.houses, state.seed)],
     walkers,
     population: housing.population,
     idleWorkers: labour.idleWorkers,
+    labour: demands.summary,
     treasuryTimber: movedCarters.treasuryTimber,
     treasuryCoin: marketSettled.treasuryCoin,
     ...(marketSettled.ledger === undefined ? {} : { ledger: marketSettled.ledger }),

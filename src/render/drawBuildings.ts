@@ -26,14 +26,14 @@ import { drawZoneProp } from "./zonePropSprites";
 import type { TileRange, ViewportSize } from "./renderer";
 import { drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 import { worldSpriteVariantImage } from "./buildingVariantAssets";
+import { drawFarmsteadSprite } from "./farmsteadArt";
+import { drawFarmProp } from "./farmProps";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
 import { applyInkOutline, snapToPixel } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 import {
   OBJECT_OUTLINE_ALPHA,
 } from "./occlusionModel";
-import { drawFarmsteadSprite } from "./farmsteadArt";
-import { drawFarmProp } from "./farmProps";
 
 type ObjectRenderInput = {
   readonly state: GameState;

@@ -353,10 +353,15 @@ test("Given the same buildings, sites and zones When the saved arable field reco
 test("Given the C25 orchard with 9 species When trees pick variants Then none repeats within 2 tiles (the rule) and, with the farthest-first pick, none within 3 (C1f)", () => {
   const trees = buildGroundBoundaryScene(c25ZonedState()).zones.props.filter(prop => prop.kind.startsWith("orchard"));
   assert.ok(trees.length >= 10 && new Set(trees.map(tree => tree.kind)).size === 9, `trees ${trees.length}`);
-  let nearest = Infinity;
+  let nearest = Infinity; let within4 = 0;
   for (let i = 0; i < trees.length; i += 1) for (let j = i + 1; j < trees.length; j += 1) {
     const a = trees[i]!; const b = trees[j]!;
-    if (a.kind === b.kind) nearest = Math.min(nearest, Math.hypot(a.x - b.x, a.y - b.y));
+    if (a.kind !== b.kind) continue;
+    const distance = Math.hypot(a.x - b.x, a.y - b.y);
+    nearest = Math.min(nearest, distance); if (distance < 4) within4 += 1;
   }
   assert.ok(nearest >= 3, `same species ${nearest.toFixed(2)} tiles apart`);
+  // Within 4 tiles: 10 of these 12 trees are mutually closer than 4, so 9 species force at least one same pair there;
+  // the farthest-first pick reaches that floor.
+  assert.ok(within4 <= 1, `same-species pairs within 4 tiles: ${within4}`);
 });

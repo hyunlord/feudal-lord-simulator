@@ -26,11 +26,13 @@ async function views() {
   const five = await load('docs/verification/c1f-farmstead/scene/arable-five-states.json.gz');
   const c25 = JSON.parse(execFileSync(resolve(ROOT, 'node_modules/.bin/tsx'), ['-e', 'import("./scripts/c25Board.ts").then(m => process.stdout.write(JSON.stringify(m.c25ZonedState())))'], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 2 ** 20 }));
   return [
-    { name: 'barn-idle-z2.00', state: spring, tile: [44, 33], zoom: 2, clip: CLIP, before: true, source: 'spring (+800): farmsteads 41,34 and 46,28 (variants), storehouse 41,37 for comparison' },
-    { name: 'barn-working-z2.00', state: harvest, tile: [44, 33], zoom: 2, clip: CLIP, source: 'harvest (+2500): the same farmsteads with ripe strips -> farmstead_working, hay cart' },
+    { name: 'barn-idle-z2.00', state: spring, tile: [42, 36], zoom: 2, clip: CLIP, before: true, source: 'spring (+800): farmstead 41,34 (variant a), granary 42,34 and storehouse 41,37 beside it for comparison' },
+    { name: 'barn-working-z2.00', state: harvest, tile: [42, 36], zoom: 2, clip: CLIP, source: 'harvest (+2500): the same farmstead with ripe strips -> farmstead_working, hay cart' },
     { name: 'fields-spring-z1.00', state: spring, tile: [52, 36], zoom: 1, before: true, source: 'spring: ploughed / seedling / fallow strips, plough teams' },
+    { name: 'fields-spring-z0.60', state: spring, tile: [52, 38], zoom: 0.6, before: true, source: 'spring at zoom 0.6 (state wash)' },
     { name: 'fields-harvest-z1.00', state: harvest, tile: [52, 36], zoom: 1, before: true, source: 'harvest: growing (ripe) / seedling / fallow / harvested (stubble) strips, hay carts' },
-    ...[1, 0.6].map(zoom => ({ name: `five-states-z${zoom.toFixed(2)}`, state: five, tile: [52, 55], zoom, source: 'prepared five-state board: strips ploughed / seedling / growing / stubble / fallow (x2 each)' })),
+    { name: 'fields-harvest-z0.60', state: harvest, tile: [52, 38], zoom: 0.6, before: true, source: 'harvest at zoom 0.6 (state wash)' },
+    ...[1, 0.6].map(zoom => ({ name: `five-states-z${zoom.toFixed(2)}`, state: five, tile: [52, 55], zoom, source: 'prepared five-state board: strips ploughed / seedling / growing / stubble / fallow (x2 each, west to east)' })),
     { name: 'pasture-z2.00', state: c25, tile: [32, 46], zoom: 2, clip: CLIP, source: 'C25 zoned board: pasture with cattle' },
   ];
 }
@@ -56,4 +58,4 @@ for (const view of await views()) {
   }
 }
 await browser.close();
-await writeFile(join(outDir, 'captures.json'), `${JSON.stringify({ walkers: 'hidden', provenance: 'migrated real-input scene + simulated ticks without input (see header); the five-state and C25 boards are prepared states', rows }, null, 2)}\n`);
+await writeFile(join(outDir, 'captures.json'), `${JSON.stringify({ walkers: 'hidden', provenance: 'migrated real-input scene + simulated ticks without input (see header); C25 board is a prepared state', rows }, null, 2)}\n`);

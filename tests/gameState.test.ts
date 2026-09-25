@@ -465,7 +465,7 @@ test("advance tick starts authored production while preserving opening structure
     1,
   );
   assert.deepEqual(
-    next.houses,
+    next.houses.map(({ members: _members, ...house }) => house),
     state.houses.map((house) => ({
       ...house,
       level: 0,
@@ -475,6 +475,9 @@ test("advance tick starts authored production while preserving opening structure
       promotionTicks: 1,
     })),
   );
+  // LB-1: the first tick gives every household its members; the 12 residents are 6 adults and 6 children.
+  assert.equal(next.houses.reduce((total, house) => total + (house.members?.adults ?? 0), 0), 6);
+  assert.equal(next.houses.reduce((total, house) => total + (house.members?.children ?? 0), 0), 6);
   assert.deepEqual(next.walkers, []);
   assert.deepEqual(next.tiles, state.tiles);
   assert.deepEqual(next.pathCache, state.pathCache);

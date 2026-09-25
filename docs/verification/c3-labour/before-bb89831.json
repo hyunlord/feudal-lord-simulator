@@ -1,0 +1,76 @@
+{
+  "description": "C3 'before' numbers: the trunk engine bb89831 (= C1c-2 engine 5b138e0; final-state SHA-256 and victory ticks equal the C1c-2 guardrail) rerun with scripts/efficientGrowthRun.ts 24 1200000 <out> <seed>, plus a stable-interval sampler (every 100 ticks) for the idle ratio (idleWorkers \u00f7 population, all unassigned adults were idle under the old rules) and the share of mill samples holding no wheat. Bread and raw-shortage ratios are summed over the complete 2,400-tick windows from the final stableSince (scripts/labourGateSummary.ts).",
+  "sourceCommit": "bb89831",
+  "seeds": {
+    "1": {
+      "victoryTick": 579676,
+      "finalStateSha256": "eb1fb208f0b293551588dd8a9687dafd5d8419ea0fb4034c04acc9f68ef8038f",
+      "guardrail": true,
+      "stableWindows": 10,
+      "stableBreadRatio": 1.0382,
+      "stableRawStarvationRatio": 0.5605,
+      "stableIdleRatioMean": 0.3789,
+      "wheatlessMillShare": 0.2905,
+      "mills": 17,
+      "granaries": 7,
+      "farmsteads": 4,
+      "arableCells": 132
+    },
+    "2": {
+      "victoryTick": 355127,
+      "finalStateSha256": "1b3d9229425211e92047be4785a124a5cb19defc68241692cf7abc8ff7c4ef33",
+      "guardrail": true,
+      "stableWindows": 10,
+      "stableBreadRatio": 1.0273,
+      "stableRawStarvationRatio": 0.6301,
+      "stableIdleRatioMean": 0.3555,
+      "wheatlessMillShare": 0.318,
+      "mills": 20,
+      "granaries": 7,
+      "farmsteads": 7,
+      "arableCells": 192
+    },
+    "3": {
+      "victoryTick": 123210,
+      "finalStateSha256": "aa21935bb47089e967e3b430661225d22ac8ba25e4af95e1868029b5f37a3a3c",
+      "guardrail": true,
+      "stableWindows": 9,
+      "stableBreadRatio": 1.0068,
+      "stableRawStarvationRatio": 0.5973,
+      "stableIdleRatioMean": 0.3398,
+      "wheatlessMillShare": 0.3406,
+      "mills": 18,
+      "granaries": 7,
+      "farmsteads": 7,
+      "arableCells": 132
+    },
+    "4": {
+      "victoryTick": 219941,
+      "finalStateSha256": "2faf5653a8ee050de657923b7229793009a74a8e6500a62b41c10bc8be7e0507",
+      "guardrail": true,
+      "stableWindows": 9,
+      "stableBreadRatio": 1.0332,
+      "stableRawStarvationRatio": 0.5625,
+      "stableIdleRatioMean": 0.3685,
+      "wheatlessMillShare": 0.3091,
+      "mills": 17,
+      "granaries": 5,
+      "farmsteads": 6,
+      "arableCells": 160
+    },
+    "5": {
+      "victoryTick": 388399,
+      "finalStateSha256": "06809ee5a11e1f0469d0d06a14c86f45bbf319228a35ca9b02c9254adc7a92ba",
+      "guardrail": true,
+      "stableWindows": 10,
+      "stableBreadRatio": 1.0319,
+      "stableRawStarvationRatio": 0.6089,
+      "stableIdleRatioMean": 0.388,
+      "wheatlessMillShare": 0.3509,
+      "mills": 19,
+      "granaries": 4,
+      "farmsteads": 4,
+      "arableCells": 140
+    }
+  }
+}

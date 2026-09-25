@@ -1,4 +1,5 @@
 import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
+import { HOUSEHOLD_LABOUR_COPY } from "./householdLabourCopy.ko";
 import { outstandingArrears } from '../engine/moneyRules';
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import { BUILDING_OPERATION_COPY } from './buildingOperationCopy.ko';
@@ -106,7 +107,7 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
 
   if (operation === "understaffed") {
     return state.idleWorkers > 0
-      ? `유휴 일꾼 ${state.idleWorkers}명 — 도로 연결 확인`
+      ? HOUSEHOLD_LABOUR_COPY.assignableWorkersRoad(state.idleWorkers)
       : "가용 일꾼이 없습니다";
   }
 

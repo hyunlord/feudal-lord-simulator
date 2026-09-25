@@ -75,7 +75,7 @@ test("labour cause distinguishes no available labour from a disconnected idle po
   assert.equal(buildingProblemCause(state(mill), mill.id), "가용 일꾼이 없습니다");
   assert.equal(
     buildingProblemCause(state(mill, { idleWorkers: 3 }), mill.id),
-    "유휴 일꾼 3명 — 도로 연결 확인",
+    "배정할 수 있는 일꾼 3명 — 도로 연결 확인",
   );
 });
 

@@ -1,3 +1,4 @@
+import { LABOUR_BALANCE } from "./balanceConfig";
 import type { ResourceType } from "./resourceConfig";
 import type { TerrainType } from "./terrainConfig";
 
@@ -23,6 +24,8 @@ export interface ProductionSpec {
   readonly input: ResourceType | null;
   readonly inputPerOutput: number;
   readonly ticksPerOutput: number;
+  /** LB-7: production waits (`output_full`) while this much output is still in the building, keeping room for input. */
+  readonly outputHoldLimit?: number;
 }
 
 export interface BuildingDefinition {
@@ -53,6 +56,10 @@ export interface Building {
   readonly ty: number;
   readonly houseLot?: "horizontal" | "vertical";
   readonly workers: number;
+  /** LB-5 (save v11): a farmstead's seasonal field hands from the day pool, on top of its workers. Absent = 0. */
+  readonly fieldHands?: number;
+  /** LB-7 (save v11): a granary's day labourers pushing wheat to mills in reach. Absent = 0. */
+  readonly haulers?: number;
   readonly operationPaused?: boolean;
   /** Save v8: its upkeep is in arrears (money rule M-6); it stands idle exactly like a paused building. */
   readonly upkeepUnpaid?: true;
@@ -194,9 +201,13 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
       input: "wheat",
       inputPerOutput: 2,
       ticksPerOutput: 30,
+      outputHoldLimit: 16,
     },
-    storageCapacity: 20,
+    /** LB-7: half for wheat (two 12-loads on their way), half for bread waiting to go out (was 20 with one 8-load cart). */
+    storageCapacity: 32,
     serviceRadius: 0,
+    /** LB-7: both mill carts (bread out, wheat in) load 12. */
+    carterCapacity: LABOUR_BALANCE.millCartCapacity,
   },
   logging_camp: {
     kind: "logging_camp",

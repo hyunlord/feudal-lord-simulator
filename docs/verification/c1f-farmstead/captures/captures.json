@@ -1,33 +1,33 @@
 {
   "walkers": "hidden",
-  "provenance": "migrated real-input scene + simulated ticks without input (see header); the five-state and C25 boards are prepared states",
+  "provenance": "migrated real-input scene + simulated ticks without input (see header); C25 board is a prepared state",
   "rows": [
     {
       "file": "barn-idle-z2.00-before.jpg",
-      "source": "spring (+800): farmsteads 41,34 and 46,28 (variants), storehouse 41,37 for comparison",
+      "source": "spring (+800): farmstead 41,34 (variant a), granary 42,34 and storehouse 41,37 beside it for comparison",
       "tile": [
-        44,
-        33
+        42,
+        36
       ],
       "zoom": 2,
       "build": "http://localhost:4272/"
     },
     {
       "file": "barn-idle-z2.00-after.jpg",
-      "source": "spring (+800): farmsteads 41,34 and 46,28 (variants), storehouse 41,37 for comparison",
+      "source": "spring (+800): farmstead 41,34 (variant a), granary 42,34 and storehouse 41,37 beside it for comparison",
       "tile": [
-        44,
-        33
+        42,
+        36
       ],
       "zoom": 2,
       "build": "http://localhost:4271/"
     },
     {
       "file": "barn-working-z2.00-after.jpg",
-      "source": "harvest (+2500): the same farmsteads with ripe strips -> farmstead_working, hay cart",
+      "source": "harvest (+2500): the same farmstead with ripe strips -> farmstead_working, hay cart",
       "tile": [
-        44,
-        33
+        42,
+        36
       ],
       "zoom": 2,
       "build": "http://localhost:4271/"
@@ -53,6 +53,26 @@
       "build": "http://localhost:4271/"
     },
     {
+      "file": "fields-spring-z0.60-before.jpg",
+      "source": "spring at zoom 0.6 (state wash)",
+      "tile": [
+        52,
+        38
+      ],
+      "zoom": 0.6,
+      "build": "http://localhost:4272/"
+    },
+    {
+      "file": "fields-spring-z0.60-after.jpg",
+      "source": "spring at zoom 0.6 (state wash)",
+      "tile": [
+        52,
+        38
+      ],
+      "zoom": 0.6,
+      "build": "http://localhost:4271/"
+    },
+    {
       "file": "fields-harvest-z1.00-before.jpg",
       "source": "harvest: growing (ripe) / seedling / fallow / harvested (stubble) strips, hay carts",
       "tile": [
@@ -73,8 +93,28 @@
       "build": "http://localhost:4271/"
     },
     {
+      "file": "fields-harvest-z0.60-before.jpg",
+      "source": "harvest at zoom 0.6 (state wash)",
+      "tile": [
+        52,
+        38
+      ],
+      "zoom": 0.6,
+      "build": "http://localhost:4272/"
+    },
+    {
+      "file": "fields-harvest-z0.60-after.jpg",
+      "source": "harvest at zoom 0.6 (state wash)",
+      "tile": [
+        52,
+        38
+      ],
+      "zoom": 0.6,
+      "build": "http://localhost:4271/"
+    },
+    {
       "file": "five-states-z1.00-after.jpg",
-      "source": "prepared five-state board: strips ploughed / seedling / growing / stubble / fallow (x2 each)",
+      "source": "prepared five-state board: strips ploughed / seedling / growing / stubble / fallow (x2 each, west to east)",
       "tile": [
         52,
         55
@@ -84,7 +124,7 @@
     },
     {
       "file": "five-states-z0.60-after.jpg",
-      "source": "prepared five-state board: strips ploughed / seedling / growing / stubble / fallow (x2 each)",
+      "source": "prepared five-state board: strips ploughed / seedling / growing / stubble / fallow (x2 each, west to east)",
       "tile": [
         52,
         55

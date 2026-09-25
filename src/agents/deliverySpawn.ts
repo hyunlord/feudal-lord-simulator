@@ -1,8 +1,11 @@
 import { BALANCE } from "../content/balanceConfig";
 import {
   BUILDING_CONFIG_BY_KIND,
+  operationSuspended,
   type Building,
 } from "../content/buildingConfig";
+import { LABOUR_BALANCE } from "../content/balanceConfig";
+import { pushableMill } from "./millPush";
 import type { ResourceType } from "../content/resourceConfig";
 import {
   activeCarterHomes,
@@ -19,6 +22,7 @@ import type {
   DeliveryRoutePort,
   DeliveryStepInput,
   DeliveryStepResult,
+  RouteCandidate,
 } from "./deliveryTypes";
 import type { CarterWalker, Walker } from "./walker.types";
 
@@ -29,6 +33,7 @@ function spawnFetch(params: {
   readonly inputResource: ResourceType;
   readonly inventory: DeliveryInventoryPort;
   readonly routes: DeliveryRoutePort;
+  readonly cart?: CarterWalker["cart"];
 }): { readonly buildings: readonly Building[]; readonly walker: CarterWalker | null } {
   const candidate = fetchCandidate(
     params.building,
@@ -64,6 +69,7 @@ function spawnFetch(params: {
       path: candidate.path,
       mission: "fetch",
       cargo: null,
+      ...(params.cart === undefined ? {} : { cart: params.cart }),
       reservation: {
         destination: { kind: "building", buildingId: reservedHome.id },
         resource: params.inputResource,
@@ -87,8 +93,10 @@ function spawnDelivery(params: {
   readonly outputResource: ResourceType;
   readonly inventory: DeliveryInventoryPort;
   readonly routes: DeliveryRoutePort;
+  readonly candidate?: RouteCandidate | null;
+  readonly cart?: CarterWalker["cart"];
 }): { readonly buildings: readonly Building[]; readonly walker: CarterWalker | null } {
-  const candidate = deliverCandidate(
+  const candidate = params.candidate !== undefined ? params.candidate : deliverCandidate(
     params.building,
     params.outputResource,
     params.buildings,
@@ -130,6 +138,7 @@ function spawnDelivery(params: {
       path: candidate.path,
       mission: "deliver",
       cargo: { resource: params.outputResource, amount: candidate.amount },
+      ...(params.cart === undefined ? {} : { cart: params.cart }),
       reservation: {
         destination: { kind: "building", buildingId: reservedDestination.id },
         resource: params.outputResource,
@@ -163,9 +172,10 @@ function spawnForBuilding(
     const delivery = spawnDelivery({ tick, building, buildings, outputResource: production.output, inventory, routes });
     if (delivery.walker !== null) return delivery;
   }
+  // LB-7: a mill's wheat comes by its intake cart and granary pushes; its main cart only takes bread out.
   if (
-    production.input !== null &&
-    amountOf(building.inventory, production.input) < (building.kind === "mill" ? BALANCE.CARTER_CAPACITY : production.inputPerOutput)
+    production.input !== null && building.kind !== "mill" &&
+    amountOf(building.inventory, production.input) < production.inputPerOutput
   ) {
     const fetch = spawnFetch({
       tick,
@@ -187,18 +197,67 @@ function spawnForBuilding(
   });
 }
 
+/** LB-7: wheat a mill holds plus wheat already on its way (reserved space). */
+function millWheat(mill: Building): number {
+  return amountOf(mill.inventory, "wheat") + amountOf(mill.reserved, "wheat");
+}
+
+/** LB-7: the mill in a granary's reach that most needs wheat (least held + incoming, then route, then id). */
+function pushCandidate(granary: Building, buildings: readonly Building[], inventory: DeliveryInventoryPort, routes: DeliveryRoutePort): RouteCandidate | null {
+  const stock = Math.min(amountOf(granary.inventory, "wheat"), inventory.availableStock(granary, "wheat"));
+  if (stock === 0) return null;
+  const candidates = buildings.flatMap((mill) => {
+    if (!pushableMill(granary, mill) || millWheat(mill) >= LABOUR_BALANCE.millPushTarget) return [];
+    const space = inventory.availableSpace(mill);
+    if (space === 0) return [];
+    const path = routes.betweenBuildings(granary.id, mill.id);
+    if (path === null || path.length === 0) return [];
+    return [{ building: mill, path, amount: Math.min(LABOUR_BALANCE.millCartCapacity, stock, space) }];
+  });
+  return [...candidates].sort((left, right) => millWheat(left.building) - millWheat(right.building)
+    || left.path.length - right.path.length || left.building.id.localeCompare(right.building.id))[0] ?? null;
+}
+
+/** LB-7: mills' intake carts, then granary pushes (a granary needs a hauler from the day pool), after the main carts. */
+function spawnSecondCarts(input: DeliveryStepInput, start: readonly Building[], walkers: Walker[]): readonly Building[] {
+  let buildings = start;
+  const intake = activeCarterHomes(walkers, "intake");
+  for (const mill of [...start].filter(building => building.kind === "mill").sort(byId)) {
+    const current = buildings.find(({ id }) => id === mill.id) ?? mill;
+    if (intake.has(mill.id) || operationSuspended(current) || millWheat(current) >= LABOUR_BALANCE.millWheatTarget) continue;
+    const fetched = spawnFetch({ tick: input.tick, building: current, buildings, inputResource: "wheat",
+      inventory: input.inventory, routes: input.routes, cart: "intake" });
+    if (fetched.walker === null) continue;
+    buildings = fetched.buildings;
+    walkers.push(fetched.walker);
+  }
+  const pushing = activeCarterHomes(walkers, "push");
+  for (const granary of [...start].filter(building => building.kind === "granary" && (building.haulers ?? 0) > 0).sort(byId)) {
+    const current = buildings.find(({ id }) => id === granary.id) ?? granary;
+    if (pushing.has(granary.id) || operationSuspended(current)) continue;
+    const candidate = pushCandidate(current, buildings, input.inventory, input.routes);
+    if (candidate === null) continue;
+    const pushed = spawnDelivery({ tick: input.tick, building: current, buildings, outputResource: "wheat",
+      inventory: input.inventory, routes: input.routes, candidate, cart: "push" });
+    if (pushed.walker === null) continue;
+    buildings = pushed.buildings;
+    walkers.push(pushed.walker);
+  }
+  return buildings;
+}
+
 export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
-  let buildings = input.buildings;
   let constructionSites = input.constructionSites ?? [];
   let treasuryTimber = input.treasuryTimber ?? 0;
   const walkers: Walker[] = [...input.walkers];
+  let buildings = input.buildings;
   const busyHomes = activeCarterHomes(walkers);
 
   if (constructionSites.length > 0) {
     for (const building of [...buildings].sort(byId)) {
       if (busyHomes.has(building.id)) continue;
       const production = BUILDING_CONFIG_BY_KIND[building.kind].production;
-      if (production === null || production.input === null ||
+      if (production === null || production.input === null || building.kind === "mill" ||
           amountOf(building.inventory, production.input) >= production.inputPerOutput) continue;
       const fetched = spawnFetch({
         tick: input.tick,
@@ -255,5 +314,7 @@ export function spawnCarters(input: DeliveryStepInput): DeliveryStepResult {
     }
   }
 
+  // LB-7: second carts go after every main cart, so producers and barns keep first claim on their own stock.
+  buildings = spawnSecondCarts(input, buildings, walkers);
   return { buildings, constructionSites, walkers: walkers.sort(byId), treasuryTimber };
 }

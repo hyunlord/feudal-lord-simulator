@@ -128,9 +128,11 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // C1c-2: the food-flow and recurring-delivery layout keys list farmsteads (AF-13), and a converter with nothing in
   // store fetches from its producer while deliveries leave claimed stock alone (AF-9), so carters, buildings and the
   // path cache differ from d823005 (cb416e16… / 6a7136ec…). Cold and warm caches still agree (below).
-  assert.equal(hash(warm), '03db9d5426700b9a3b8953a24784e036a99078096f65f4230db0c68d0add0831');
+  // C3: households (members), labour v2 (field hands, granary haulers, `labour`) and the mills' intake carts change
+  // houses, buildings and walkers from C1c-2 (03db9d54… / 144a486d…).
+  assert.equal(hash(warm), '2fc10332b0f6364f77105ca9356125711d88c06a8ddfbf9576c873f6ee3f4aa8');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '144a486d7c821c5fd048f0a17536ee9f18e87382d2aa34d1eb3ca65e1d6a2816');
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'b40558e95d3bf56912bfd52ec71839b7cd3ec53344f59124184f0a9f11bab0f1');
   assert.equal(hash(coldState), hash(warm));
 });

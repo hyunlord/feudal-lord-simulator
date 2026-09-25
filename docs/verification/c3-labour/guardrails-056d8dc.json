@@ -1,0 +1,197 @@
+{
+ "description": "C3 gate \u2461 guardrail at 056d8dc: scripts/efficientGrowthRun.ts 24 1200000 <out> <seed>, pinned worktree, five seeds in parallel. Guardrail checks compare with seeds/baseline-7db9df85.json (L4, service gaps, deadlock, chronic zero-wheat mills) and the C1c-2 facility cap (arable cells <= lots x 9.6). victoryTickBefore = C1c-2 baseline 5b138e0. Gate \u2462 idle = labour.idle / population, mean of 100-tick samples over the final stable interval. Gate \u2463 (decision LB8): raw shortage <= 0.30, meals met 100% over the stable interval, final reserve (wheat + bread) > 0; bread made/requested is recorded (before: before-bb89831.json).",
+ "commit": "056d8dc",
+ "seeds": {
+  "1": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 301466,
+   "victoryTickBefore": 579676,
+   "stopReason": "target-scale-stable",
+   "sustainedTicks": 24000,
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "50a9ffb7510785e2d7b33a97f8b73ecce418f281c8a503ed939f8094605f8ceb",
+   "elapsedSeconds": 386,
+   "farmsteadCount": 4,
+   "arableCells": 124,
+   "millCount": 12,
+   "granaryCount": 4,
+   "warningRatio": 0,
+   "chronicZeroWheatMillRatio": 0,
+   "stableWindows": 9,
+   "stableIdleRatioMean": 0.2165,
+   "stableIdleRatioRange": [
+    0.1797,
+    0.3555
+   ],
+   "meanFieldHands": 139.8,
+   "meanHauling": 4,
+   "stableRawStarvationRatio": 0.182,
+   "stableBreadRatio": 1.0149,
+   "stableBreadRatioBefore": 1.0382,
+   "stableMealFulfilment": 1,
+   "stableStoredWheatMean": 1878,
+   "finalReserve": {
+    "bread": 1129,
+    "wheat": 1420
+   },
+   "wheatlessMillShare": 0.0906,
+   "householdsMatch": true,
+   "households": {
+    "adults": 384,
+    "children": 384,
+    "population": 768,
+    "labourPool": 384
+   },
+   "gate3": true,
+   "gate4": true
+  },
+  "2": {
+   "guardrail": "unfinished",
+   "note": "see REPORT (decision LB9)"
+  },
+  "3": {
+   "guardrail": "unfinished",
+   "note": "see REPORT (decision LB9)"
+  },
+  "4": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 284522,
+   "victoryTickBefore": 219941,
+   "stopReason": "target-scale-stable",
+   "sustainedTicks": 24000,
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "cd77fb43aae22a118e2d409eb94463e8206885bd68895fe75d87b2e8809da8a7",
+   "elapsedSeconds": 371,
+   "farmsteadCount": 6,
+   "arableCells": 160,
+   "millCount": 12,
+   "granaryCount": 4,
+   "warningRatio": 0.043478260869565216,
+   "chronicZeroWheatMillRatio": 0,
+   "stableWindows": 9,
+   "stableIdleRatioMean": 0.2008,
+   "stableIdleRatioRange": [
+    0.1641,
+    0.3398
+   ],
+   "meanFieldHands": 133.8,
+   "meanHauling": 4,
+   "stableRawStarvationRatio": 0.1205,
+   "stableBreadRatio": 1.0021,
+   "stableBreadRatioBefore": 1.0332,
+   "stableMealFulfilment": 1,
+   "stableStoredWheatMean": 2507,
+   "finalReserve": {
+    "bread": 1085,
+    "wheat": 1589
+   },
+   "wheatlessMillShare": 0.066,
+   "householdsMatch": true,
+   "households": {
+    "adults": 384,
+    "children": 384,
+    "population": 768,
+    "labourPool": 384
+   },
+   "gate3": true,
+   "gate4": true
+  },
+  "5": {
+   "guardrail": "passed",
+   "checks": {
+    "efficiency": true,
+    "baselineL4": true,
+    "serviceGap": true,
+    "newDeadlock": true,
+    "zeroWheatRegression": true
+   },
+   "efficiencyChecks": {
+    "validMetrics": true,
+    "arableCells": true,
+    "granaries": true,
+    "markets": true,
+    "churches": true,
+    "observedWindow": true,
+    "observedMillActivity": true,
+    "warnings": true
+   },
+   "victoryTick": 337899,
+   "victoryTickBefore": 388399,
+   "stopReason": "target-scale-stable",
+   "sustainedTicks": 24000,
+   "lots": 24,
+   "l4Houses": 24,
+   "finalStateSha256": "41cf3aa3478a0b48ff1a71f50e96449d20568401dc035529ad05774ddf2a4bd7",
+   "elapsedSeconds": 412,
+   "farmsteadCount": 5,
+   "arableCells": 132,
+   "millCount": 11,
+   "granaryCount": 5,
+   "warningRatio": 0.03278688524590164,
+   "chronicZeroWheatMillRatio": 0,
+   "stableWindows": 9,
+   "stableIdleRatioMean": 0.2163,
+   "stableIdleRatioRange": [
+    0.1797,
+    0.3542
+   ],
+   "meanFieldHands": 133.9,
+   "meanHauling": 5,
+   "stableRawStarvationRatio": 0.1549,
+   "stableBreadRatio": 1.0775,
+   "stableBreadRatioBefore": 1.0319,
+   "stableMealFulfilment": 1,
+   "stableStoredWheatMean": 1593,
+   "finalReserve": {
+    "bread": 1264,
+    "wheat": 1213
+   },
+   "wheatlessMillShare": 0.0754,
+   "householdsMatch": true,
+   "households": {
+    "adults": 384,
+    "children": 384,
+    "population": 768,
+    "labourPool": 384
+   },
+   "gate3": true,
+   "gate4": true
+  }
+ }
+}

@@ -131,8 +131,9 @@ test("a producer with no reachable unreserved destination does not spawn", () =>
 
 test("a converter fetches missing input from the nearest store and claims both stock and home space", () => {
   const mill = building("mill", "mill", { inventory: { wheat: 1 } });
+  // LB-7: the mill's intake cart loads 12.
   const granary = building("granary", "granary", {
-    inventory: { wheat: 10 },
+    inventory: { wheat: 20 },
   });
   const result = spawnCarters({
     tick: 14,
@@ -154,22 +155,22 @@ test("a converter fetches missing input from the nearest store and claims both s
   assert.deepEqual(carter.reservation, {
     destination: { kind: "building", buildingId: mill.id },
     resource: "wheat",
-    amount: 8,
+    amount: 12,
     sourceStockClaim: {
       kind: "building",
       buildingId: granary.id,
       resource: "wheat",
-      amount: 8,
+      amount: 12,
     },
     homeCapacityClaim: null,
   });
   assert.equal(
     result.buildings.find(({ id }) => id === mill.id)?.reserved.wheat,
-    8,
+    12,
   );
   assert.equal(
     result.buildings.find(({ id }) => id === granary.id)?.stockReserved.wheat,
-    8,
+    12,
   );
 });
 
@@ -266,8 +267,10 @@ test("grain quota cannot steal real capacity and bread can use the remaining roo
   const granary = building("granary", "granary", { inventory: { wheat: 100, bread: 95 } });
   const result = spawnCarters({ tick: 10, buildings: [farm, mill, granary], walkers: [], inventory: DELIVERY_INVENTORY,
     routes: routePort({ "farm->granary": line([0, 0], [1, 0]), "mill->granary": line([0, 0], [1, 0]) }) });
-  assert.equal(result.walkers.length, 1);
-  assert.deepEqual(result.walkers[0]?.cargo, { resource: "bread", amount: 5 });
+  // LB-7: the mill's intake cart may still fetch wheat; only its main cart carries bread.
+  const main = result.walkers.filter(walker => walker.kind === "carter" && walker.cart === undefined);
+  assert.equal(main.length, 1);
+  assert.deepEqual(main[0]?.cargo, { resource: "bread", amount: 5 });
   assert.equal(result.buildings.find(({ id }) => id === "farm")?.inventory.wheat, 8);
 });
 

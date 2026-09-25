@@ -18,5 +18,10 @@ export function foodPeriodSample(state: GameState, stableSince: number | null): 
     farmsteads: count('farmstead'), mills: count('mill'), granaries: count('granary'),
     storedWheat: state.buildings.reduce((sum, building) => sum + (building.inventory.wheat ?? 0), 0),
     lostWheat: (state.arableFields ?? []).reduce((sum, field) => sum + field.lostWheat, 0),
+    // C3 (LB-4): where the adults went at the window end.
+    population: state.population, idleWorkers: state.idleWorkers,
+    labourFacility: state.labour?.facility ?? null, labourConstruction: state.labour?.construction ?? null,
+    labourFieldHands: state.labour?.fieldHands ?? null, labourHauling: state.labour?.hauling ?? null,
+    labourHousehold: state.labour?.household ?? null, labourIdle: state.labour?.idle ?? null,
   };
 }

@@ -75,3 +75,10 @@ test("construction resource headlines show buildable stock after actual reservat
   assert.ok(html.includes("석재 전체 보유량 41 · 건설 가능 0"));
   assert.ok(html.includes("실제 예약·운송 중 물량 제외"));
 });
+
+test("LB-9 the population cell's idle count is the adults no demand took (labour.idle), not the facility pool", () => {
+  const html = render({ ...DEFAULT_GAME_STATE, population: 40, idleWorkers: 14,
+    labour: { adults: 20, facility: 6, construction: 0, fieldHands: 9, hauling: 1, household: 0, idle: 4 } });
+  assert.ok(html.includes("유휴 일꾼 <b>4</b>"));
+  assert.ok(!html.includes("유휴 일꾼 <b>14</b>"));
+});

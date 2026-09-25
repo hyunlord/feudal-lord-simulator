@@ -90,3 +90,4 @@ function avalanche(value: number): number {
   mixed ^= mixed >>> 16;
   return mixed >>> 0;
 }
+

@@ -99,7 +99,13 @@ export interface GameState {
   houses: House[];
   walkers: Walker[];
   population: number;
+  /**
+   * Adults the R1-fix facility and construction allocation left over: the pool a new facility can staff (autoplay
+   * reads it). Not the idle labour of LB-9 — that is `labour.idle`, after field hands, hauling and household slots.
+   */
   idleWorkers: number;
+  /** LB-4 (save v11): where the adults went this tick. Recomputed every tick; absent before the first v11 tick. */
+  readonly labour?: import("./labourDemand").LabourSummary;
   treasuryTimber: number;
   treasuryCoin: number;
   /**
