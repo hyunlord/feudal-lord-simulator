@@ -21,7 +21,6 @@ let stage2: ReturnType<typeof label> | null = null;
 let maxLeaving = 0;
 let maxAbandoned = 0;
 let departures = 0;
-const winters: { year: number; minReserveTicks: number | null }[] = [];
 let lastState: GameState | null = null;
 runPhase19NaturalGrowth({ targetLots: 24, maxTicks, seed, naiveReserve, onTick: state => {
   lastState = state;
