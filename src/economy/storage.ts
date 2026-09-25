@@ -58,8 +58,9 @@ function rawIntakeUsage(
   building: Building,
   resource: StorableResourceType,
 ): { readonly used: number; readonly capacity: number } | null {
-  const limited: readonly StorableResourceType[] = building.kind === "granary" && resource === "wheat"
-    ? ["wheat"]
+  // LB-7: a granary keeps half its room for each of wheat and bread, so bread cannot crowd out the wheat it pushes to mills.
+  const limited: readonly StorableResourceType[] = building.kind === "granary" && (resource === "wheat" || resource === "bread")
+    ? [resource]
     : building.kind === "storehouse" && (resource === "logs" || resource === "stone_raw")
       ? ["logs", "stone_raw"] : [];
   if (limited.length === 0) return null;
