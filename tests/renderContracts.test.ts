@@ -123,7 +123,7 @@ test("invalid placement reasons use a zoom-stable vellum plaque", () => {
   assert.ok(calls.includes("font:28px Georgia, serif"), "14 CSS-pixel text is preserved at 0.5x zoom");
   assert.ok(
     calls.findIndex((call) => call.startsWith("fillRect:")) <
-      calls.findIndex((call) => call.startsWith("fillText:도로에서 너무 멂")),
+      calls.findIndex((call) => call.startsWith("fillText:도로 연결 없음")),
     "plaque is drawn before its failure label",
   );
 });

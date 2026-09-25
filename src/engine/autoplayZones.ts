@@ -7,7 +7,7 @@
  */
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import { zonesOf } from "../zones/zoneEdits";
-import { canPlaceBuilding } from "../world/placement";
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad } from "../world/placement";
 import { zonePlacementCheck } from "../zones/zonePlacement";
 import type { AdvisorAction } from "./autoplayBotRecovery";
 import type { GameState } from "./engine.types";
@@ -17,9 +17,12 @@ let rejections = 0;
 
 const key = (kind: BuildingKind, tx: number, ty: number) => `${kind}:${tx},${ty}`;
 
-/** `canPlaceBuilding` plus the active zone rule and this decision's exclusions. */
-export function autoplayCanPlace(state: GameState, kind: BuildingKind, tx: number, ty: number): boolean {
-  if (!canPlaceBuilding(state, kind, tx, ty).ok) return false;
+/**
+ * `canPlaceBuilding` plus the active zone rule and this decision's exclusions. `road: 'later'` (FIX-1) skips the road
+ * access rule for the road-first searches, which lay the road before the building.
+ */
+export function autoplayCanPlace(state: GameState, kind: BuildingKind, tx: number, ty: number, road: 'now' | 'later' = 'now'): boolean {
+  if (!(road === 'now' ? canPlaceBuilding : canPlaceBuildingBeforeRoad)(state, kind, tx, ty).ok) return false;
   if (excluded.size > 0 && excluded.has(key(kind, tx, ty))) return false;
   if (kind !== "farmstead" && coversArableCell(state, kind, tx, ty)) return false;
   return zonePlacementCheck(state, kind, tx, ty).ok;

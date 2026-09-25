@@ -1,7 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { buildingRoadAccessTiles } from "../src/engine/routing";
-import { canPlaceBuilding } from "../src/world/placement";
+import { canPlaceBuildingBeforeRoad } from "../src/world/placement";
 import { findExistingRoadPath } from "../src/world/roadGraph";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { getTile, type Grid, type TileCoordinate } from "../src/world/grid";
@@ -21,7 +21,7 @@ function openingIssues(state: GameState): readonly string[] {
   for (const building of state.buildings) {
     const cleared = { ...state, buildings: state.buildings.filter(item => item.id !== building.id),
       tiles: state.tiles.map(tile => tile.buildingId === building.id ? { ...tile, buildingId: null } : tile) };
-    const placement = canPlaceBuilding(cleared, building.kind, building.tx, building.ty);
+    const placement = canPlaceBuildingBeforeRoad(cleared, building.kind, building.tx, building.ty);
     if (!placement.ok && placement.reason !== "insufficient_materials") issues.push(`${building.id}: ${placement.reason}`);
   }
   for (const tile of state.tiles) {

@@ -8,7 +8,7 @@ import { availableWorkers } from '../population/labour';
 import { rankServiceCandidates } from './autoplayServiceCandidates';
 import { rankServiceRoadPlans } from './autoplayServiceRoadPlans';
 import { serviceAccessDistances } from './autoplayServiceAccess';
-import { canPlaceBuilding, isBuildingUnlocked } from '../world/placement';
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad, isBuildingUnlocked } from '../world/placement';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { householdServices } from './householdServices';
@@ -84,7 +84,7 @@ export function urbanServiceAction(state: GameState, diagnostic?: ServicePlannin
       const candidate = candidateBuilding(kind, tile.tx, tile.ty);
       const covered = needsBuilding.filter(home => buildingFootprintDistance(home, candidate) <= definition.serviceRadius);
       if (covered.length === 0 || !hasAutoplayBuildingClearance(state, kind, tile)
-        || !canPlaceBuilding(state, kind, tile.tx, tile.ty).ok) return [];
+        || !canPlaceBuildingBeforeRoad(state, kind, tile.tx, tile.ty).ok) return [];
       return [{ candidate }];
     });
     const roadDistance = serviceAccessDistances(state);
@@ -94,7 +94,8 @@ export function urbanServiceAction(state: GameState, diagnostic?: ServicePlannin
       current, candidates: reachable.map(({ candidate }) => ({ building: candidate, roadDistance: roadDistance(candidate) })) });
     for (const { building: candidate } of ranked) {
       const action = { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty } as const;
-      if (!accepts(action) || !preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, action)) continue;
+      if (!canPlaceBuilding(state, kind, candidate.tx, candidate.ty).ok || !accepts(action) || !preservesAutoplayWallSpace(state, kind, candidate)
+        || !preservesAutoplayServiceSpace(state, action)) continue;
       return action;
     }
     for (const { building: candidate } of rankServiceRoadPlans(state, kind, candidates.map(entry => entry.candidate))) {

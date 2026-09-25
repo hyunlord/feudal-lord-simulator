@@ -19,6 +19,7 @@ import { getTile, isInBounds, type TileCoordinate } from "./grid";
 import type { Tile, WorldView } from "./world.types";
 import { palisadePathHasBuildingClearance, type PalisadeFootprint } from "./palisadeGeometry";
 import type { WallBoundary } from "./wallTraversal";
+import { buildingRoadAccessTiles } from "../engine/routing";
 
 export enum PlacementFailure {
   occupied = "occupied",
@@ -48,7 +49,7 @@ type ResourceWorldView = WorldView & {
   readonly constructionSites?: readonly ConstructionSite[];
   readonly era?: Era;
   readonly scenarioId?: string;
-  readonly palisade?: Pick<WallBoundary, "segments"> | null;
+  readonly palisade?: WallBoundary | null;
 };
 
 const ERA_STAGE_INDEX = {
@@ -146,7 +147,28 @@ export function hasBuildingWallClearance(world: ResourceWorldView, footprint: Pa
   );
 }
 
+/**
+ * FIX-1: a building that needs a road (`requiresRoad`) is placed only where one of its footprint's edge tiles is a
+ * road it can reach across the wall line (`buildingRoadAccessTiles`, the placement checklist's "도로 연결"). Checked
+ * after every other rule, so `needs_road` means the site is legal once a road reaches it.
+ */
 export function canPlaceBuilding(
+  world: ResourceWorldView,
+  kind: BuildingKind,
+  tx: number,
+  ty: number,
+): PlacementResult {
+  const site = canPlaceBuildingBeforeRoad(world, kind, tx, ty);
+  if (!site.ok || !BUILDING_CONFIG_BY_KIND[kind].requiresRoad) return site;
+  const candidate = { id: "placement", kind, tx, ty, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+  return buildingRoadAccessTiles(world, candidate).length > 0 ? site : { ok: false, reason: PlacementFailure.needs_road };
+}
+
+/**
+ * Every placement rule except road access: the site is free, legal and affordable. Planners that lay the road first
+ * (the advisor's road-first searches, future-layout proofs) ask this.
+ */
+export function canPlaceBuildingBeforeRoad(
   world: ResourceWorldView,
   kind: BuildingKind,
   tx: number,

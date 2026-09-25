@@ -8,7 +8,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from '../content/buildingConfi
 import { availableStock } from '../economy/storage';
 import { isBuildingConstructionSite } from '../economy/construction';
 import { buildingFootprint } from '../geometry/buildingFootprint';
-import { canPlaceBuilding, placementSpendableResource } from '../world/placement';
+import { canPlaceBuildingBeforeRoad, placementSpendableResource } from '../world/placement';
 import type { RoamingHouse } from '../agents/roamingTypes';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
@@ -95,7 +95,7 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
   const rangeRecovery = !recurringRecovery && rangeGap.length > 0;
   const distanceToTarget = recurringRecovery || (!rangeRecovery && overloaded.length === 0) ? potentialCoverageDistance(state, outside) : null;
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, 'granary', tile)
-    && canPlaceBuilding(state, 'granary', tile.tx, tile.ty).ok)
+    && canPlaceBuildingBeforeRoad(state, 'granary', tile.tx, tile.ty).ok)
     .map(tile => ({ tile, distance: distanceToTarget?.(coverageGranary(tile))
       ?? Math.min(...outside.map(home => Math.abs(home.tx - tile.tx) + Math.abs(home.ty - tile.ty))) }))
     .filter(candidate => Number.isFinite(candidate.distance))
