@@ -1,0 +1,176 @@
+[
+  {
+    "id": "field/ridge_barley_ripe_a-v1",
+    "width": 512,
+    "height": 64,
+    "prompt": "Use case precise-object-edit. Redesign first attached rejected barley strip to unmistakable RIPE BARLEY, using second attached WHEAT strip ONLY as negative shape comparison and palette reference. The output MUST NOT resemble wheat tufts, fern plumes, braided arch rows, mirrored V leaves, scalloped waves or a row of fountains. Dramatically reduce density: ONE irregular row of just 9-11 separate heads across the full strip, with exposed brown soil gaps. Each head is a DISTINCT elongated narrow capsule, hanging nearly VERTICALLY DOWNWARD from a sharply bent slender inverted-J stem. A long bristly BEARD extends beyond the lower tip of each capsule to about ONE WHOLE EXTRA HEAD LENGTH, grouped into 3-5 broad pale strands so the hanging beard silhouette survives thumbnail scale. Heads narrow and long like hanging paintbrushes, NOT broad feather fans; keep empty air between hanging head and its stem. Some lean left, some right, different stem heights, no regular arches, no paired fans, no horizontal repetitive chevron. Mature BARLEY long awns, pendulous heads. Target512x64, entire active band48px tall plus8px transparent top andbottom margins; heads plus beards28-36px long, spaced35-60px apart. XONLY seamless continuous warmsoil fullwidth without Xpadding, organic Yalpha fade. Low-saturation pale cream straw heads and mutedolive stalks, soft evenlight no shadows. Broad painterly citybuilder style, true transparentRGBA, no finegrain noise, labels, text, people, hops or background square. Preserve strip role and exact targetdimensions but entirely replace crop morphology.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-98a61510-15a8-4ba5-a1ef-1ab12510c298.png",
+    "generatedAt": "2026-09-25T15:52:26.199Z",
+    "refs": [
+      "ridge_barley_ripe_a-v1.png",
+      "ridge_growing_a-v1.png"
+    ],
+    "priorAttempts": [
+      {
+        "prompt": "ROLE strip. Historical-scene game asset, southern England 1300-1450, hand-painted citybuilder matching attached project ridge reference palette/brushwork. ONE barley growing ridge strip 512x64 pixels, top-down flat horizontal ribbon, no perspective, X axis seamless repeated end-to-end with no left/right padding. Y edges transparent 8 pixels plus organic 8px fade. Two shallow parallel earth ridges, broad soft yellow-green barley clumps with long-awned nodding barley heads, NOT wheat upright spikes. Whole motif clumps 18-24px, broad leaf wedges and grouped awns, no 1-4px noise. Muted olive/pale yellow-green, warm soil, soft even light no shadow. Real transparent RGBA background, no checker pattern baked. Across full width evenly flowing with natural varied clump spacing, no standout objects. No text, labels, frame, border, flowers, hops, people. Reference is style only; replace wheat shapes with unmistakable drooping long awned barley.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-b94aaca1-7924-46a2-8564-eae5b5feabc8.png",
+        "refs": [
+          "ridge_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:22:17.681Z",
+        "selectionReason": "Rejected after independent review: paired fan/chevron rhythm."
+      },
+      {
+        "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-f0fd9acc-1047-4a8f-a82d-e2839e475389.png",
+        "generatedAt": "2026-09-25T15:33:14.234Z",
+        "refs": [
+          "ridge_barley_ripe_a-v1.png"
+        ],
+        "selectionReason": "Accepted revision: individual bent stems, asymmetric long drooping awned heads; braid removed."
+      }
+    ],
+    "attempts": [
+      {
+        "id": "field/ridge_barley_ripe_a-v1",
+        "width": 512,
+        "height": 64,
+        "prompt": "Use case precise-object-edit. Redesign first attached rejected barley strip to unmistakable RIPE BARLEY, using second attached WHEAT strip ONLY as negative shape comparison and palette reference. The output MUST NOT resemble wheat tufts, fern plumes, braided arch rows, mirrored V leaves, scalloped waves or a row of fountains. Dramatically reduce density: ONE irregular row of just 9-11 separate heads across the full strip, with exposed brown soil gaps. Each head is a DISTINCT elongated narrow capsule, hanging nearly VERTICALLY DOWNWARD from a sharply bent slender inverted-J stem. A long bristly BEARD extends beyond the lower tip of each capsule to about ONE WHOLE EXTRA HEAD LENGTH, grouped into 3-5 broad pale strands so the hanging beard silhouette survives thumbnail scale. Heads narrow and long like hanging paintbrushes, NOT broad feather fans; keep empty air between hanging head and its stem. Some lean left, some right, different stem heights, no regular arches, no paired fans, no horizontal repetitive chevron. Mature BARLEY long awns, pendulous heads. Target512x64, entire active band48px tall plus8px transparent top andbottom margins; heads plus beards28-36px long, spaced35-60px apart. XONLY seamless continuous warmsoil fullwidth without Xpadding, organic Yalpha fade. Low-saturation pale cream straw heads and mutedolive stalks, soft evenlight no shadows. Broad painterly citybuilder style, true transparentRGBA, no finegrain noise, labels, text, people, hops or background square. Preserve strip role and exact targetdimensions but entirely replace crop morphology.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-98a61510-15a8-4ba5-a1ef-1ab12510c298.png",
+        "generatedAt": "2026-09-25T15:52:26.199Z",
+        "refs": [
+          "ridge_barley_ripe_a-v1.png",
+          "ridge_growing_a-v1.png"
+        ],
+        "priorAttempts": [
+          {
+            "prompt": "ROLE strip. Historical-scene game asset, southern England 1300-1450, hand-painted citybuilder matching attached project ridge reference palette/brushwork. ONE barley growing ridge strip 512x64 pixels, top-down flat horizontal ribbon, no perspective, X axis seamless repeated end-to-end with no left/right padding. Y edges transparent 8 pixels plus organic 8px fade. Two shallow parallel earth ridges, broad soft yellow-green barley clumps with long-awned nodding barley heads, NOT wheat upright spikes. Whole motif clumps 18-24px, broad leaf wedges and grouped awns, no 1-4px noise. Muted olive/pale yellow-green, warm soil, soft even light no shadow. Real transparent RGBA background, no checker pattern baked. Across full width evenly flowing with natural varied clump spacing, no standout objects. No text, labels, frame, border, flowers, hops, people. Reference is style only; replace wheat shapes with unmistakable drooping long awned barley.",
+            "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-b94aaca1-7924-46a2-8564-eae5b5feabc8.png",
+            "refs": [
+              "ridge_growing_a-v1.png"
+            ],
+            "generatedAt": "2026-09-25T15:22:17.681Z",
+            "selectionReason": "Rejected after independent review: paired fan/chevron rhythm."
+          },
+          {
+            "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.",
+            "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-f0fd9acc-1047-4a8f-a82d-e2839e475389.png",
+            "generatedAt": "2026-09-25T15:33:14.234Z",
+            "refs": [
+              "ridge_barley_ripe_a-v1.png"
+            ],
+            "selectionReason": "Accepted revision: individual bent stems, asymmetric long drooping awned heads; braid removed."
+          }
+        ]
+      }
+    ],
+    "selectionReason": "After user rejection, low density of singly hanging long-bearded heads sharply differs from wheat fan clumps.",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave3-fix-20260926/field/ridge_barley_ripe_a-v1.png",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      225,
+      2172,
+      255
+    ],
+    "pivot": [
+      256,
+      32
+    ],
+    "manualEdits": "Canvas alpha-bounds crop, one resample to 512x48 inside 512x64; 8px Y margin/fade; deterministic 16px X-edge color/alpha cross-blend, exact endpoint equality. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "sourceSha256": "7a6c6a0c1598c88649f8db5abaffd2e18069b244e53e0f41b1dbc48bf578e821",
+    "runtimeSha256": "c802e3af1e798e488d0bb0c4bb8c27bc552b598a5d804514c39424bdd86cf303"
+  },
+  {
+    "id": "field/ridge_barley_ripe_b-v1",
+    "width": 512,
+    "height": 64,
+    "prompt": "Use case precise-object-edit. Redesign first attached rejected barley strip to unmistakable RIPE BARLEY, using second attached WHEAT strip ONLY as negative shape comparison and palette reference. The output MUST NOT resemble wheat tufts, fern plumes, braided arch rows, mirrored V leaves, scalloped waves or a row of fountains. Dramatically reduce density: ONE irregular row of just 9-11 separate heads across the full strip, with exposed brown soil gaps. Each head is a DISTINCT elongated narrow capsule, hanging nearly VERTICALLY DOWNWARD from a sharply bent slender inverted-J stem. A long bristly BEARD extends beyond the lower tip of each capsule to about ONE WHOLE EXTRA HEAD LENGTH, grouped into 3-5 broad pale strands so the hanging beard silhouette survives thumbnail scale. Heads narrow and long like hanging paintbrushes, NOT broad feather fans; keep empty air between hanging head and its stem. Some lean left, some right, different stem heights, no regular arches, no paired fans, no horizontal repetitive chevron. Mature BARLEY long awns, pendulous heads. Target512x64, entire active band48px tall plus8px transparent top andbottom margins; heads plus beards28-36px long, spaced35-60px apart. XONLY seamless continuous warmsoil fullwidth without Xpadding, organic Yalpha fade. Low-saturation pale cream straw heads and mutedolive stalks, soft evenlight no shadows. Broad painterly citybuilder style, true transparentRGBA, no finegrain noise, labels, text, people, hops or background square. Preserve strip role and exact targetdimensions but entirely replace crop morphology.\nVARIANT B: use reference3 as approved corrected barley morphology. Create a different irregular distribution with 8-10 heads, alternate left-hanging and right-hanging heads, several pairs close together separated by longer exposedsoil gaps, differences of headheight, NOT mirror image or color-only variation. Same low-saturation palette, same plant sizes and width. Strong emptyspaces and long downward beards.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-c6c7beb1-1272-487e-8e84-6d26e80dcd75.png",
+    "generatedAt": "2026-09-25T15:53:16.271Z",
+    "refs": [
+      "ridge_barley_ripe_b-v1.png",
+      "ridge_growing_a-v1.png",
+      "ridge_barley_ripe_a-v1_corrected.png"
+    ],
+    "priorAttempts": [
+      {
+        "prompt": "ROLE strip. One ripe BARLEY ridge variant B, 512x64 horizontal flat top-down strip, X seamless only no X padding, Y8px transparent margin then8px organicfade. Same handpainted citybuilder warmsoil mutedpalette as project reference but barley heads PALE straw creamgold with LONG AWNS AND BENT NODDING NECKS, not upright wheat. Two shallow earth ridges. Genuine silhouette variation: loose asymmetric pairs of large bowed ears clustered farther apart, alternating direction, some lower leaf sprays, no uniform braided golden rope. Broad18-24px clumps,8-12px forms, soft even light no shadows no micro-noise. Actual transparentRGBA background. No text border flowers people hops or modern machinery.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-56ef026a-af0b-43d6-ad4e-2e448af31b31.png",
+        "refs": [
+          "ridge_growing_a-v1.png"
+        ],
+        "generatedAt": "2026-09-25T15:28:00.895Z",
+        "selectionReason": "Rejected after independent review: pairedfan braid rhythm."
+      },
+      {
+        "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.\nTHIS VARIANT: RIPE cream pale straw heads and dullolive stems. Variant B geometry: sparse groups of 2-3 elongated drooping heads separated by larger exposedearth gaps; several heads point left, most lean right; lowgreen leafribbons unevenly dispersed. Use reference1 as incorrect plant target to replace; reference2 shows the corrected barley head vocabulary only, preserve its long beard but create different positions. Do not repeat identical two-row plumes. No mirrored pairs.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-4e60263c-c229-43e7-af36-5c53baa78f5c.png",
+        "generatedAt": "2026-09-25T15:35:13.424Z",
+        "refs": [
+          "ridge_barley_ripe_b-v1.png",
+          "ridge_barley_ripe_a-v1_corrected.png"
+        ]
+      }
+    ],
+    "attempts": [
+      {
+        "id": "field/ridge_barley_ripe_b-v1",
+        "width": 512,
+        "height": 64,
+        "prompt": "Use case precise-object-edit. Redesign first attached rejected barley strip to unmistakable RIPE BARLEY, using second attached WHEAT strip ONLY as negative shape comparison and palette reference. The output MUST NOT resemble wheat tufts, fern plumes, braided arch rows, mirrored V leaves, scalloped waves or a row of fountains. Dramatically reduce density: ONE irregular row of just 9-11 separate heads across the full strip, with exposed brown soil gaps. Each head is a DISTINCT elongated narrow capsule, hanging nearly VERTICALLY DOWNWARD from a sharply bent slender inverted-J stem. A long bristly BEARD extends beyond the lower tip of each capsule to about ONE WHOLE EXTRA HEAD LENGTH, grouped into 3-5 broad pale strands so the hanging beard silhouette survives thumbnail scale. Heads narrow and long like hanging paintbrushes, NOT broad feather fans; keep empty air between hanging head and its stem. Some lean left, some right, different stem heights, no regular arches, no paired fans, no horizontal repetitive chevron. Mature BARLEY long awns, pendulous heads. Target512x64, entire active band48px tall plus8px transparent top andbottom margins; heads plus beards28-36px long, spaced35-60px apart. XONLY seamless continuous warmsoil fullwidth without Xpadding, organic Yalpha fade. Low-saturation pale cream straw heads and mutedolive stalks, soft evenlight no shadows. Broad painterly citybuilder style, true transparentRGBA, no finegrain noise, labels, text, people, hops or background square. Preserve strip role and exact targetdimensions but entirely replace crop morphology.\nVARIANT B: use reference3 as approved corrected barley morphology. Create a different irregular distribution with 8-10 heads, alternate left-hanging and right-hanging heads, several pairs close together separated by longer exposedsoil gaps, differences of headheight, NOT mirror image or color-only variation. Same low-saturation palette, same plant sizes and width. Strong emptyspaces and long downward beards.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-c6c7beb1-1272-487e-8e84-6d26e80dcd75.png",
+        "generatedAt": "2026-09-25T15:53:16.271Z",
+        "refs": [
+          "ridge_barley_ripe_b-v1.png",
+          "ridge_growing_a-v1.png",
+          "ridge_barley_ripe_a-v1_corrected.png"
+        ],
+        "priorAttempts": [
+          {
+            "prompt": "ROLE strip. One ripe BARLEY ridge variant B, 512x64 horizontal flat top-down strip, X seamless only no X padding, Y8px transparent margin then8px organicfade. Same handpainted citybuilder warmsoil mutedpalette as project reference but barley heads PALE straw creamgold with LONG AWNS AND BENT NODDING NECKS, not upright wheat. Two shallow earth ridges. Genuine silhouette variation: loose asymmetric pairs of large bowed ears clustered farther apart, alternating direction, some lower leaf sprays, no uniform braided golden rope. Broad18-24px clumps,8-12px forms, soft even light no shadows no micro-noise. Actual transparentRGBA background. No text border flowers people hops or modern machinery.",
+            "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-56ef026a-af0b-43d6-ad4e-2e448af31b31.png",
+            "refs": [
+              "ridge_growing_a-v1.png"
+            ],
+            "generatedAt": "2026-09-25T15:28:00.895Z",
+            "selectionReason": "Rejected after independent review: pairedfan braid rhythm."
+          },
+          {
+            "prompt": "Use case precise-object-edit. Completely REDRAW THE BARLEY PLANT SHAPES in attached game strip; keep only muted warm-earth painterly palette and horizontal strip role. The current plants incorrectly form mirrored V-shaped fans like a BRAID; REMOVE ALL paired fans, palm-leaf plumes, chevrons, identical repeating arches. Correct botanical silhouette: individual slender BENT STEMS each carrying ONE elongated drooping BARLEY HEAD with a long parallel beard of AWNS projecting BEYOND the grain head. Stems lean independently, several toward right, some left, and downward, heads overlap asymmetrically in loose unequal clusters. Long heads should look like shaggy narrow commas, not wide feather fans or wheat braid. Fill with ONE broad irregular crop band on quiet brown earth, no two mechanically separated rows. 512x64 target, X axis repeat full width without sidepadding, 8px clear transparent top/bottom plus fade. True transparent RGBA. Ripe pale straw, cream long awns, muted olive stems. Broad 18-30px long comma-shaped head masses at final resolution, deliberately chunky and legible at 0.3 scale, sparse tonal groups not individual micro seeds. Soft diffuse light no directional shadows, no focus feature, no letters numbers machinery people hops border. Southern English14thcentury handpainted citybuilder.\nTHIS VARIANT: RIPE cream pale straw heads and dullolive stems. Variant B geometry: sparse groups of 2-3 elongated drooping heads separated by larger exposedearth gaps; several heads point left, most lean right; lowgreen leafribbons unevenly dispersed. Use reference1 as incorrect plant target to replace; reference2 shows the corrected barley head vocabulary only, preserve its long beard but create different positions. Do not repeat identical two-row plumes. No mirrored pairs.",
+            "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d928-0bf6-71e1-9cb2-511d3aa37ddf/exec-4e60263c-c229-43e7-af36-5c53baa78f5c.png",
+            "generatedAt": "2026-09-25T15:35:13.424Z",
+            "refs": [
+              "ridge_barley_ripe_b-v1.png",
+              "ridge_barley_ripe_a-v1_corrected.png"
+            ]
+          }
+        ]
+      }
+    ],
+    "selectionReason": "After user rejection, low density of singly hanging long-bearded heads sharply differs from wheat fan clumps.",
+    "status": "candidate",
+    "outputPath": "/tmp/astra-wave3-fix-20260926/field/ridge_barley_ripe_b-v1.png",
+    "nativeSize": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      213,
+      2172,
+      274
+    ],
+    "pivot": [
+      256,
+      32
+    ],
+    "manualEdits": "Canvas alpha-bounds crop, one resample to 512x48 inside 512x64; 8px Y margin/fade; deterministic 16px X-edge color/alpha cross-blend, exact endpoint equality. 3px transparent RGB dilation against fringe; strip endpoint RGBA equality enforced.",
+    "sourceSha256": "710aaafa23d6e97252d36ae06487882b35c30aa2e10541333461bbac4d6a5049",
+    "runtimeSha256": "f5737d6614b015f6ecd7366688e03c2d2bf8df3c70d5726447bd1bb5dcd04bb8"
+  }
+]

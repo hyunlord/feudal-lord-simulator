@@ -1,0 +1,360 @@
+[
+  {
+    "id": "animal_walk/ox-v1",
+    "cell": [
+      96,
+      74
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 148
+  },
+  {
+    "id": "animal_walk/horse_draught-v1",
+    "cell": [
+      96,
+      80
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 160
+  },
+  {
+    "id": "animal_walk/horse_riding-v1",
+    "cell": [
+      96,
+      80
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 160
+  },
+  {
+    "id": "animal_walk/sheep_single-v1",
+    "cell": [
+      48,
+      40
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 192,
+    "height": 80
+  },
+  {
+    "id": "animal_walk/pig_single-v1",
+    "cell": [
+      48,
+      40
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 192,
+    "height": 80
+  },
+  {
+    "id": "animal_walk/goose_single-v1",
+    "cell": [
+      32,
+      32
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 128,
+    "height": 64
+  },
+  {
+    "id": "animal_walk/cow_single-v1",
+    "cell": [
+      80,
+      64
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 320,
+    "height": 128
+  },
+  {
+    "id": "animal_walk/dog_herding-v1",
+    "cell": [
+      40,
+      32
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 160,
+    "height": 64
+  },
+  {
+    "id": "cart/ox_cart_body-v1",
+    "cell": [
+      128,
+      96
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 512,
+    "height": 192
+  },
+  {
+    "id": "cart/horse_cart_body-v1",
+    "cell": [
+      128,
+      96
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 512,
+    "height": 192
+  },
+  {
+    "id": "cart/handcart_body-v2",
+    "cell": [
+      96,
+      74
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 148
+  },
+  {
+    "id": "cart/barrow_body-v1",
+    "cell": [
+      64,
+      48
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 256,
+    "height": 96
+  },
+  {
+    "id": "pack/packsaddle_sacks-v1",
+    "cell": [
+      96,
+      80
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 160
+  },
+  {
+    "id": "pack/packsaddle_wool-v1",
+    "cell": [
+      96,
+      80
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 160
+  },
+  {
+    "id": "pack/packsaddle_cloth-v1",
+    "cell": [
+      96,
+      80
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 160
+  },
+  {
+    "id": "rider/saddle_rider_merchant-v1",
+    "cell": [
+      96,
+      80
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 384,
+    "height": 160
+  },
+  {
+    "id": "workers/wk_drover_m-v1",
+    "cell": [
+      74,
+      74
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 296,
+    "height": 148
+  },
+  {
+    "id": "workers/wk_packhorse_leader-v1",
+    "cell": [
+      74,
+      74
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 296,
+    "height": 148
+  },
+  {
+    "id": "workers/wk_goosegirl_f-v1",
+    "cell": [
+      74,
+      74
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 296,
+    "height": 148
+  },
+  {
+    "id": "workers/wk_swineherd_m-v1",
+    "cell": [
+      74,
+      74
+    ],
+    "columns": 4,
+    "rows": 2,
+    "width": 296,
+    "height": 148
+  },
+  {
+    "id": "work/work_whip_ne-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_whip_se-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_whip_sw-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_whip_nw-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_goad_ne-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_goad_se-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_goad_sw-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "work/work_goad_nw-v1",
+    "cell": [
+      48,
+      48
+    ],
+    "width": 48,
+    "height": 48
+  },
+  {
+    "id": "herd/sheep_cluster_moving_a-v1",
+    "columns": 4,
+    "rows": 1,
+    "cell": [
+      128,
+      96
+    ],
+    "width": 512,
+    "height": 96
+  },
+  {
+    "id": "herd/sheep_cluster_moving_b-v1",
+    "columns": 4,
+    "rows": 1,
+    "cell": [
+      144,
+      112
+    ],
+    "width": 576,
+    "height": 112
+  },
+  {
+    "id": "herd/pig_cluster-v1",
+    "columns": 4,
+    "rows": 1,
+    "cell": [
+      128,
+      96
+    ],
+    "width": 512,
+    "height": 96
+  },
+  {
+    "id": "herd/goose_flock_a-v1",
+    "columns": 4,
+    "rows": 1,
+    "cell": [
+      96,
+      74
+    ],
+    "width": 384,
+    "height": 74
+  },
+  {
+    "id": "herd/goose_flock_b-v1",
+    "columns": 4,
+    "rows": 1,
+    "cell": [
+      96,
+      74
+    ],
+    "width": 384,
+    "height": 74
+  },
+  {
+    "id": "herd/cattle_drove-v1",
+    "columns": 4,
+    "rows": 1,
+    "cell": [
+      192,
+      144
+    ],
+    "width": 768,
+    "height": 144
+  }
+]

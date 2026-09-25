@@ -1,0 +1,98 @@
+[
+  {
+    "id": "cart/ox_cart_body-v1",
+    "size": [
+      512,
+      192
+    ],
+    "channels": 4,
+    "rowChangedPixels": 1001,
+    "staticOverlayIdentical": null,
+    "wheelOutsideMask": 0,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "cart/horse_cart_body-v1",
+    "size": [
+      512,
+      192
+    ],
+    "channels": 4,
+    "rowChangedPixels": 912,
+    "staticOverlayIdentical": null,
+    "wheelOutsideMask": 0,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "cart/handcart_body-v2",
+    "size": [
+      384,
+      148
+    ],
+    "channels": 4,
+    "rowChangedPixels": 456,
+    "staticOverlayIdentical": null,
+    "wheelOutsideMask": 0,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "cart/barrow_body-v1",
+    "size": [
+      256,
+      96
+    ],
+    "channels": 4,
+    "rowChangedPixels": 223,
+    "staticOverlayIdentical": null,
+    "wheelOutsideMask": 0,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "pack/packsaddle_sacks-v1",
+    "size": [
+      384,
+      160
+    ],
+    "channels": 4,
+    "rowChangedPixels": 0,
+    "staticOverlayIdentical": true,
+    "wheelOutsideMask": null,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "pack/packsaddle_wool-v1",
+    "size": [
+      384,
+      160
+    ],
+    "channels": 4,
+    "rowChangedPixels": 0,
+    "staticOverlayIdentical": true,
+    "wheelOutsideMask": null,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "pack/packsaddle_cloth-v1",
+    "size": [
+      384,
+      160
+    ],
+    "channels": 4,
+    "rowChangedPixels": 0,
+    "staticOverlayIdentical": true,
+    "wheelOutsideMask": null,
+    "outerBorderAlphaPixels": 0
+  },
+  {
+    "id": "rider/saddle_rider_merchant-v1",
+    "size": [
+      384,
+      160
+    ],
+    "channels": 4,
+    "rowChangedPixels": 0,
+    "staticOverlayIdentical": true,
+    "wheelOutsideMask": null,
+    "outerBorderAlphaPixels": 0
+  }
+]

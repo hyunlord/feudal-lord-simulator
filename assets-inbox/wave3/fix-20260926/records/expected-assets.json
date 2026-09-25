@@ -1,0 +1,98 @@
+{
+  "count": 10,
+  "counts": {
+    "replacements": 10
+  },
+  "note": "User authorized exactly10 revisions. Other72 accepted assets unchanged.",
+  "checks": [
+    "Wheat versus barley, zoom0.6, plus dye before/after"
+  ],
+  "assets": [
+    {
+      "id": "field/ridge_barley_ripe_a-v1",
+      "section": "A",
+      "width": 512,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG",
+      "repeat": "X only",
+      "alpha": "transparent Y-edge fade",
+      "minMotifPx": 8
+    },
+    {
+      "id": "field/ridge_barley_ripe_b-v1",
+      "section": "A",
+      "width": 512,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG",
+      "repeat": "X only",
+      "alpha": "transparent Y-edge fade",
+      "minMotifPx": 8
+    },
+    {
+      "id": "yard/tenter_frames_dyed-v1",
+      "section": "A",
+      "width": 384,
+      "height": 192,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/barley_sacks_1-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/barley_sacks_2-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "pile/barley_sacks_3-v1",
+      "section": "C",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_barley_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_barley_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_cloth_dyed_ne-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    },
+    {
+      "id": "cart_load_cloth_dyed_nw-v1",
+      "section": "D",
+      "width": 96,
+      "height": 64,
+      "status": "candidate",
+      "format": "PNG"
+    }
+  ]
+}

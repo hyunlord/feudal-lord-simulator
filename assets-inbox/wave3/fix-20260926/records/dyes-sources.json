@@ -1,0 +1,134 @@
+[
+  {
+    "id": "tenter_frames_dyed-v1",
+    "category": "yard",
+    "prompt": "Use case: precise-object-edit. Edit the attached existing project sprite ONLY THE FABRIC DYE COLOURS. Keep exact object shapes, all wooden frames/pegs/ropes, cloth folds, dimensions, placement, pivot, lighting, silhouettes and transparent alpha unchanged. Original sprite 384x192. Cloth blue must become dull desaturated woad slate-grey blue; red must become dusty greyish madder brown-red; yellow must become faded grey-yellow ochre. Significantly LESS saturated than the reference. No bright primary highlights, no bright cyan, scarlet, golden yellow. Historical 1300-1450 Southern England natural dyes. The user rejected the current vivid fabric. Preserve painterly game style. Do not add or remove anything. Transparent RGBA alpha outside silhouette; no background, glow, shadow, text. Colour correction only, not a new design.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-d30fed1e-19db-428d-bf58-9d53f5002393.png",
+    "referencePath": "/tmp/astra-wave3-candidates-20260926/yard/tenter_frames_dyed-v1.png",
+    "refs": [
+      "tenter_frames_dyed-v1.png"
+    ],
+    "target": [
+      384,
+      192
+    ],
+    "generatedAt": "2026-09-25T15:52:16.619Z",
+    "outputPath": "/tmp/astra-wave3-fix-20260926/yard/tenter_frames_dyed-v1.png",
+    "manualEdits": "Native edit inspected as colour study, rejected for structural resampling/glow. Final uses ORIGINAL exact pixels, HSV colour-only correction on cloth hue regions (tenter also manual cloth polygons), preserves original alpha bit-for-bit and all positions. No resizing. Blue hue214 Sx0.38 Vx0.95; red hue16 Sx0.38 Vx0.95; yellow hue46 Sx0.32 Vx0.86.",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Original structural pixels retained with visibly muted dye-only correction; native edit unsuitable for exact shape invariants.",
+    "verification": {
+      "size": [
+        384,
+        192
+      ],
+      "alphaDiff": 0,
+      "changedRGBPixels": 10081,
+      "counts": {
+        "blue": 3745,
+        "red": 3573,
+        "yellow": 2763
+      },
+      "meanSaturationBefore": 0.5890726006168036,
+      "meanSaturationAfter": 0.21194320327023375
+    },
+    "finalPixelSource": "/tmp/astra-wave3-candidates-20260926/yard/tenter_frames_dyed-v1.png",
+    "nativeRole": "Edited palette study only; native regenerated pixels NOT used as final pixel source",
+    "tool": "image_gen native edit + JavaScript PNG colour-only correction",
+    "model": "not exposed",
+    "references": [
+      "tenter_frames_dyed-v1.png"
+    ],
+    "pivotPreserved": true,
+    "notes": "Final geometry and alpha are exact original PNG. Native edit not used for final geometry. Hue-region correction can include subpixel cloth/rope blended edge colours on tiny cargo; no moved or repainted structural pixels."
+  },
+  {
+    "id": "cart_load_cloth_dyed_ne-v1",
+    "category": "loads",
+    "prompt": "Use case: precise-object-edit. Edit the attached existing project sprite ONLY THE FABRIC DYE COLOURS. Keep exact object shapes, all wooden frames/pegs/ropes, cloth folds, dimensions, placement, pivot, lighting, silhouettes and transparent alpha unchanged. Original sprite 96x64. Cloth blue must become dull desaturated woad slate-grey blue; red must become dusty greyish madder brown-red; yellow must become faded grey-yellow ochre. Significantly LESS saturated than the reference. No bright primary highlights, no bright cyan, scarlet, golden yellow. Historical 1300-1450 Southern England natural dyes. The user rejected the current vivid fabric. Preserve painterly game style. Do not add or remove anything. Transparent RGBA alpha outside silhouette; no background, glow, shadow, text. Colour correction only, not a new design.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-fde24ecd-e740-4119-bbb3-5c3b18e3dd63.png",
+    "referencePath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_dyed_ne-v1.png",
+    "refs": [
+      "cart_load_cloth_dyed_ne-v1.png"
+    ],
+    "target": [
+      96,
+      64
+    ],
+    "generatedAt": "2026-09-25T15:52:50.189Z",
+    "outputPath": "/tmp/astra-wave3-fix-20260926/loads/cart_load_cloth_dyed_ne-v1.png",
+    "manualEdits": "Native edit inspected as colour study, rejected for structural resampling/glow. Final uses ORIGINAL exact pixels, HSV colour-only correction on cloth hue regions (tenter also manual cloth polygons), preserves original alpha bit-for-bit and all positions. No resizing. Blue hue214 Sx0.38 Vx0.95; red hue16 Sx0.38 Vx0.95; yellow hue46 Sx0.32 Vx0.86.",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Original structural pixels retained with visibly muted dye-only correction; native edit unsuitable for exact shape invariants.",
+    "verification": {
+      "size": [
+        96,
+        64
+      ],
+      "alphaDiff": 0,
+      "changedRGBPixels": 629,
+      "counts": {
+        "blue": 249,
+        "red": 78,
+        "yellow": 304
+      },
+      "meanSaturationBefore": 0.50324905884248,
+      "meanSaturationAfter": 0.17156315147738554
+    },
+    "finalPixelSource": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_dyed_ne-v1.png",
+    "nativeRole": "Edited palette study only; native regenerated pixels NOT used as final pixel source",
+    "tool": "image_gen native edit + JavaScript PNG colour-only correction",
+    "model": "not exposed",
+    "references": [
+      "cart_load_cloth_dyed_ne-v1.png"
+    ],
+    "pivotPreserved": true,
+    "notes": "Final geometry and alpha are exact original PNG. Native edit not used for final geometry. Hue-region correction can include subpixel cloth/rope blended edge colours on tiny cargo; no moved or repainted structural pixels."
+  },
+  {
+    "id": "cart_load_cloth_dyed_nw-v1",
+    "category": "loads",
+    "prompt": "Use case: precise-object-edit. Edit the attached existing project sprite ONLY THE FABRIC DYE COLOURS. Keep exact object shapes, all wooden frames/pegs/ropes, cloth folds, dimensions, placement, pivot, lighting, silhouettes and transparent alpha unchanged. Original sprite 96x64. Cloth blue must become dull desaturated woad slate-grey blue; red must become dusty greyish madder brown-red; yellow must become faded grey-yellow ochre. Significantly LESS saturated than the reference. No bright primary highlights, no bright cyan, scarlet, golden yellow. Historical 1300-1450 Southern England natural dyes. The user rejected the current vivid fabric. Preserve painterly game style. Do not add or remove anything. Transparent RGBA alpha outside silhouette; no background, glow, shadow, text. Colour correction only, not a new design.",
+    "nativePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d927-abd8-7de0-be2d-4eb3c5164670/exec-44a8a313-93f9-490c-a6d0-37939d047436.png",
+    "referencePath": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_dyed_nw-v1.png",
+    "refs": [
+      "cart_load_cloth_dyed_nw-v1.png"
+    ],
+    "target": [
+      96,
+      64
+    ],
+    "generatedAt": "2026-09-25T15:53:21.081Z",
+    "outputPath": "/tmp/astra-wave3-fix-20260926/loads/cart_load_cloth_dyed_nw-v1.png",
+    "manualEdits": "Native edit inspected as colour study, rejected for structural resampling/glow. Final uses ORIGINAL exact pixels, HSV colour-only correction on cloth hue regions (tenter also manual cloth polygons), preserves original alpha bit-for-bit and all positions. No resizing. Blue hue214 Sx0.38 Vx0.95; red hue16 Sx0.38 Vx0.95; yellow hue46 Sx0.32 Vx0.86.",
+    "status": "candidate",
+    "candidates": 1,
+    "selectedReason": "Original structural pixels retained with visibly muted dye-only correction; native edit unsuitable for exact shape invariants.",
+    "verification": {
+      "size": [
+        96,
+        64
+      ],
+      "alphaDiff": 0,
+      "changedRGBPixels": 676,
+      "counts": {
+        "blue": 235,
+        "red": 297,
+        "yellow": 144
+      },
+      "meanSaturationBefore": 0.5112746697070121,
+      "meanSaturationAfter": 0.18571267962777266
+    },
+    "finalPixelSource": "/tmp/astra-wave3-candidates-20260926/loads/cart_load_cloth_dyed_nw-v1.png",
+    "nativeRole": "Edited palette study only; native regenerated pixels NOT used as final pixel source",
+    "tool": "image_gen native edit + JavaScript PNG colour-only correction",
+    "model": "not exposed",
+    "references": [
+      "cart_load_cloth_dyed_nw-v1.png"
+    ],
+    "pivotPreserved": true,
+    "notes": "Final geometry and alpha are exact original PNG. Native edit not used for final geometry. Hue-region correction can include subpixel cloth/rope blended edge colours on tiny cargo; no moved or repainted structural pixels."
+  }
+]

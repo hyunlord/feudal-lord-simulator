@@ -1,0 +1,70 @@
+{
+  "id": "goose_single",
+  "file": "assets/animal_walk/goose_single-v1.png",
+  "cell": [
+    32,
+    32
+  ],
+  "pivot": [
+    16,
+    28
+  ],
+  "results": [
+    {
+      "direction": "ne",
+      "protectedMask": "records/small-animals-goose-protected-0.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 31,
+      "editableRectangles": [
+        [
+          11,
+          25,
+          22,
+          30
+        ]
+      ]
+    },
+    {
+      "direction": "se",
+      "protectedMask": "records/small-animals-goose-protected-1.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 43,
+      "editableRectangles": [
+        [
+          11,
+          24,
+          22,
+          30
+        ]
+      ]
+    },
+    {
+      "direction": "sw",
+      "protectedMask": "records/small-animals-goose-protected-2.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 46,
+      "editableRectangles": [
+        [
+          10,
+          24,
+          22,
+          30
+        ]
+      ]
+    },
+    {
+      "direction": "nw",
+      "protectedMask": "records/small-animals-goose-protected-3.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 32,
+      "editableRectangles": [
+        [
+          10,
+          25,
+          21,
+          30
+        ]
+      ]
+    }
+  ]
+}

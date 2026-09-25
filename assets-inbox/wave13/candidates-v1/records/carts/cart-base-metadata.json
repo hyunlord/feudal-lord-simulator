@@ -1,0 +1,466 @@
+[
+  {
+    "id": "cart/ox_cart_body-v1",
+    "file": "assets/cart/ox_cart_body-v1.png",
+    "cell": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      92
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create a transparent RGBA sprite reference sheet showing ONLY the empty two-wheel ox-cart BODY from attached project reference, REMOVE ox and all cargo. Medieval southern England 1300-1450 muted handpainted brown oak matching reference. Four separate equal square cells across ONE horizontal row on transparent background, generous spacing. Directions LEFT TO RIGHT: NE shafts point upper-right, SE shafts point lower-right, SW shafts point lower-left, NW shafts point upper-left. True 2:1 isometric orthographic camera fixed upper-left light. Empty flat rectangular oak bed with low plank sides, TWO large wooden spoke wheels (one each side) and paired straight shafts with visible front yoke hitch. No animal, no person, no cargo, no text, no scenery, no shadow outside cart. Preserve ox-cart construction and sturdy silhouette from reference, do not mirror output or invent extra wheels. Four actual direction views of SAME cart. Large clear forms for 128x96 cell downsample.",
+        "rawFile": "raw/carts/ox-cart.png",
+        "referenceImages": [
+          "references/cart_ox-v3.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            53,
+            159,
+            440,
+            398
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            4
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            555,
+            178,
+            438,
+            362
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            12
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            1063,
+            176,
+            439,
+            364
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            12
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1563,
+            159,
+            441,
+            399
+          ],
+          "scale": 0.22055137844611528,
+          "placement": [
+            16,
+            4
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1264546,
+      "frame2": "pending wheel animation"
+    },
+    "qa": {}
+  },
+  {
+    "id": "cart/horse_cart_body-v1",
+    "file": "assets/cart/horse_cart_body-v1.png",
+    "cell": [
+      128,
+      96
+    ],
+    "pivot": [
+      64,
+      92
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Transparent RGBA production sprite sheet of one EMPTY medieval horse CART BODY, without horse, people or cargo, inspired by attached project handpainted cart. Four separated views in ONE horizontal row equal cells. LEFT TO RIGHT NE(paired shafts upper-right), SE(shafts lower-right), SW(shafts lower-left), NW(shafts upper-left). Same two-wheel light oak cart eachview, shallow open rectangular bed slightly more refined than oxwagon, slender wheels with six strong spokes, low wooden sideboards, twin long shafts. No metal springs moderncomponents labels grid or background, true 2:1 isometric orthographic, muted honeygraybrown wood upperleftlight, matte brush painted matchingproject. Empty loading deck fully visible. Exactly two wheels percart, no animal/mover. Fit128x96nativecells withroomaroundends.",
+        "rawFile": "raw/carts/horse-cart.png",
+        "referenceImages": [
+          "references/cart_hand-v4.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            62,
+            250,
+            376,
+            348
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            17,
+            5
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            491,
+            260,
+            370,
+            344
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            18,
+            6
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            904,
+            261,
+            377,
+            343
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            17,
+            6
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1334,
+            249,
+            377,
+            351
+          ],
+          "scale": 0.25071225071225073,
+          "placement": [
+            17,
+            4
+          ],
+          "cell": [
+            128,
+            96
+          ],
+          "ground": [
+            64,
+            92
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1337417,
+      "frame2": "pending wheel animation"
+    },
+    "qa": {}
+  },
+  {
+    "id": "cart/handcart_body-v2",
+    "file": "assets/cart/handcart_body-v2.png",
+    "cell": [
+      96,
+      74
+    ],
+    "pivot": [
+      48,
+      70
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Edit attached existing handcart sprite sheet into FOUR views of SAME EMPTY two-wheel medieval handcart, retain original rustic oak color/material/model. ONE HORIZONTAL ROW, directions left-right NE handles upper-right, SE handles lower-right, SW handles lower-left, NW handles upper-left. Generous transparent spacing between exact four views, transparent RGBA. No pusher/person, no cargo, noanimal, no writing. Small low flatdeck with two restrained sideplanks, TWO wooden spoke wheels, paired wooden handhandles. True2:1isometric fixed upperleft light, muted painted projectstyle. Shape should closely match attached cart_hand-v4, native96x74 cellgameasset.",
+        "rawFile": "raw/carts/hand-cart.png",
+        "referenceImages": [
+          "references/cart_hand-v4.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            73,
+            187,
+            395,
+            364
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            13,
+            5
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            589,
+            208,
+            384,
+            353
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            14,
+            7
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            1059,
+            210,
+            390,
+            351
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            13,
+            7
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1572,
+            183,
+            398,
+            368
+          ],
+          "scale": 0.1793478260869565,
+          "placement": [
+            13,
+            4
+          ],
+          "cell": [
+            96,
+            74
+          ],
+          "ground": [
+            48,
+            70
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1304660,
+      "frame2": "pending wheel animation"
+    },
+    "qa": {}
+  },
+  {
+    "id": "cart/barrow_body-v1",
+    "file": "assets/cart/barrow_body-v1.png",
+    "cell": [
+      64,
+      48
+    ],
+    "pivot": [
+      32,
+      44
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create ONE transparent RGBA sprite sheet of FOUR views of SAME medieval SINGLE-wheel handbarrow, handpainted project style matchingattached woodcart. ONE ROW fourequalcells widelyseparated. Left-right NE nosewheel facesupperright, SE nosewheelfaceslowerright, SW noselowerleft, NW noseupperleft. A shallow rectangular oak tray with ONE small wooden wheel atfront center, TWO long handles extending REAR direction, short rear rests. Empty tray; nopeople animals cargo scenery textlabels borders. Medieval1300-1450England, dullweatheredoak/limitediron, fixed upperleftsoftlight and2:1isometricortho. Distinctly wheelbarrow,NOT two-wheel cart. Nativecell64x48 so clearcompact silhouette.",
+        "rawFile": "raw/carts/barrow.png",
+        "referenceImages": [
+          "references/cart_hand-v4.png"
+        ]
+      }
+    ],
+    "processing": {
+      "directions": [
+        {
+          "direction": "ne",
+          "crop": [
+            35,
+            226,
+            405,
+            296
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            7,
+            8
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        },
+        {
+          "direction": "se",
+          "crop": [
+            522,
+            211,
+            412,
+            324
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            7,
+            4
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        },
+        {
+          "direction": "sw",
+          "crop": [
+            1053,
+            208,
+            410,
+            327
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            7,
+            4
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        },
+        {
+          "direction": "nw",
+          "crop": [
+            1578,
+            265,
+            374,
+            240
+          ],
+          "scale": 0.12232415902140673,
+          "placement": [
+            9,
+            15
+          ],
+          "cell": [
+            64,
+            48
+          ],
+          "ground": [
+            32,
+            44
+          ]
+        }
+      ],
+      "removedAlphaPixels": 1381472,
+      "frame2": "pending wheel animation"
+    },
+    "qa": {}
+  }
+]

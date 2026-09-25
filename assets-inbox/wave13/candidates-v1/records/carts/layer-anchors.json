@@ -1,0 +1,306 @@
+[
+  {
+    "kind": "ox",
+    "direction": "NE ↗",
+    "animalOrigin": [
+      54,
+      -31
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      -3,
+      8
+    ],
+    "loadFile": "sources/carts/cart_load_grainsack_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        72,
+        45
+      ],
+      [
+        80,
+        46
+      ],
+      [
+        114,
+        17
+      ],
+      [
+        108,
+        11
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "ox",
+    "direction": "SE ↘",
+    "animalOrigin": [
+      43,
+      40
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      8,
+      -4
+    ],
+    "loadFile": "sources/carts/cart_load_grainsack_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        50,
+        59
+      ],
+      [
+        55,
+        66
+      ],
+      [
+        82,
+        91
+      ],
+      [
+        87,
+        85
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "ox",
+    "direction": "SW ↙",
+    "animalOrigin": [
+      -24,
+      39
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      25,
+      -4
+    ],
+    "loadFile": "sources/carts/cart_load_grainsack_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        76,
+        61
+      ],
+      [
+        68,
+        64
+      ],
+      [
+        45,
+        94
+      ],
+      [
+        51,
+        97
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "ox",
+    "direction": "NW ↖",
+    "animalOrigin": [
+      -20,
+      -31
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      32,
+      8
+    ],
+    "loadFile": "sources/carts/cart_load_grainsack_nw-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        19,
+        11
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        58,
+        56
+      ],
+      [
+        65,
+        48
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "horse",
+    "direction": "NE ↗",
+    "animalOrigin": [
+      54,
+      -31
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      -3,
+      8
+    ],
+    "loadFile": "sources/carts/cart_load_wool_bales_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        72,
+        45
+      ],
+      [
+        80,
+        46
+      ],
+      [
+        114,
+        17
+      ],
+      [
+        108,
+        11
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "horse",
+    "direction": "SE ↘",
+    "animalOrigin": [
+      43,
+      40
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      8,
+      -4
+    ],
+    "loadFile": "sources/carts/cart_load_wool_bales_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        50,
+        59
+      ],
+      [
+        55,
+        66
+      ],
+      [
+        82,
+        91
+      ],
+      [
+        87,
+        85
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "horse",
+    "direction": "SW ↙",
+    "animalOrigin": [
+      -24,
+      39
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      25,
+      -4
+    ],
+    "loadFile": "sources/carts/cart_load_wool_bales_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        76,
+        61
+      ],
+      [
+        68,
+        64
+      ],
+      [
+        45,
+        94
+      ],
+      [
+        51,
+        97
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  },
+  {
+    "kind": "horse",
+    "direction": "NW ↖",
+    "animalOrigin": [
+      -20,
+      -31
+    ],
+    "cartOrigin": [
+      0,
+      0
+    ],
+    "loadOrigin": [
+      32,
+      8
+    ],
+    "loadFile": "sources/carts/cart_load_wool_bales_ne-v1.png",
+    "loadPixelScale": 1,
+    "driverScale": 0.5945945945945946,
+    "nearShaftPolygon": [
+      [
+        19,
+        11
+      ],
+      [
+        14,
+        17
+      ],
+      [
+        58,
+        56
+      ],
+      [
+        65,
+        48
+      ]
+    ],
+    "occlusion": "cart body then animal then near shaft clipped from identical body pixels then cargo; cargo fits current deck, larger loads need frontboard clip."
+  }
+]

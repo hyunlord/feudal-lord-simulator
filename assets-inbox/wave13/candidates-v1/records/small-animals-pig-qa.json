@@ -1,0 +1,142 @@
+{
+  "id": "pig_single",
+  "file": "assets/animal_walk/pig_single-v1.png",
+  "cell": [
+    48,
+    40
+  ],
+  "pivot": [
+    24,
+    36
+  ],
+  "results": [
+    {
+      "direction": "ne",
+      "protectedMask": "records/small-animals-pig-protected-0.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 136,
+      "editableRectangles": [
+        [
+          6,
+          27,
+          11,
+          36
+        ],
+        [
+          13,
+          30,
+          20,
+          37
+        ],
+        [
+          23,
+          23,
+          28,
+          29
+        ],
+        [
+          28,
+          22,
+          34,
+          29
+        ]
+      ]
+    },
+    {
+      "direction": "se",
+      "protectedMask": "records/small-animals-pig-protected-1.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 130,
+      "editableRectangles": [
+        [
+          8,
+          22,
+          14,
+          30
+        ],
+        [
+          14,
+          23,
+          20,
+          29
+        ],
+        [
+          21,
+          29,
+          28,
+          38
+        ],
+        [
+          29,
+          29,
+          34,
+          34
+        ]
+      ]
+    },
+    {
+      "direction": "sw",
+      "protectedMask": "records/small-animals-pig-protected-2.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 140,
+      "editableRectangles": [
+        [
+          13,
+          29,
+          19,
+          35
+        ],
+        [
+          21,
+          29,
+          28,
+          38
+        ],
+        [
+          28,
+          23,
+          34,
+          29
+        ],
+        [
+          34,
+          22,
+          39,
+          31
+        ]
+      ]
+    },
+    {
+      "direction": "nw",
+      "protectedMask": "records/small-animals-pig-protected-3.png",
+      "protectedPixelDifferences": 0,
+      "changedLegPixels": 127,
+      "editableRectangles": [
+        [
+          14,
+          23,
+          20,
+          30
+        ],
+        [
+          20,
+          23,
+          25,
+          28
+        ],
+        [
+          28,
+          30,
+          34,
+          37
+        ],
+        [
+          35,
+          27,
+          40,
+          35
+        ]
+      ]
+    }
+  ]
+}

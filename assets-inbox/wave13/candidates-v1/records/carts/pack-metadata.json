@@ -1,0 +1,490 @@
+[
+  {
+    "id": "pack/packsaddle_sacks-v1",
+    "file": "assets/pack/packsaddle_sacks-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Create transparent RGBA layer of ONLY medieval pack-saddle with TWO large grain sacks hanging symmetrically from sides, fitted to horses in attached reference. DO NOT DRAW ANY HORSE OR PERSON. Just wooden packsaddle padded leather top,ropestraps,and two bulging beige tied sacks. FOUR views ONE horizontalrow equallyseparated: NE facingupperright,rearview;SE lower-rightfrontview;SW lower-leftfrontview;NW upper-leftrearview. Saddletop centeredbetween sacks,widehorse-shaped hollow underarch transparent. The horse willbe drawn beneath as separate layer; cover upperbody butnotheadtaillegs. Mutedprojecthandpainted southernEngland1300-1450 no textmetalmodernbales. Clearlarge sacks silhouettes, lowcontrastrope only. Matchangle2:1isometric/upperleftlight. Final each overlayfits96x80horsecell, actualpackwidth38pxheight28pxaroundback. Renderlarge fordownsample.",
+        "rawFile": "raw/carts/sacks.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "crop": [
+            51,
+            213,
+            400,
+            310
+          ],
+          "placement": [
+            29,
+            25
+          ],
+          "size": [
+            38,
+            29
+          ]
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "crop": [
+            542,
+            214,
+            403,
+            320
+          ],
+          "placement": [
+            28,
+            21
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "crop": [
+            1041,
+            214,
+            403,
+            318
+          ],
+          "placement": [
+            31,
+            20
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "crop": [
+            1533,
+            213,
+            400,
+            310
+          ],
+          "placement": [
+            29,
+            24
+          ],
+          "size": [
+            38,
+            29
+          ]
+        }
+      ],
+      "riderTemplatePolicy": "notapplicable"
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay"
+    }
+  },
+  {
+    "id": "pack/packsaddle_wool-v1",
+    "file": "assets/pack/packsaddle_wool-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Transparent RGBA ONLY medieval woolpack saddle overlay. Use horsesas mountingreference,butDO NOT draw horse/person/bodyparts. Pair of irregular cream RAW WOOL rounded bundles tiedinropenet over simple wooden pack saddle, loosewooltufts visible in silhouette; NOT moderncompressedhaybales, notgrainbags. FOUR equallyspacedviews ONE horizontalrow left-right NEheadingupperright/rearview,SElowerright/frontview,SWlowerleft/frontview,NWupperleft/rearview. Sameunit, saddle arch center between two side woolbundles, fitted acrosshorseback, transparentunderneath. Mutedcream/oakprojecthandpainted,mattesouthEngland1300-1450, orthographic2:1isometric,softupperleftlight. No background textlabels. Actual overlaytargetwidth40pxheight29px within96x80horsecell; largeclearmasses readablezoom.",
+        "rawFile": "raw/carts/wool.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "crop": [
+            23,
+            389,
+            345,
+            275
+          ],
+          "placement": [
+            29,
+            25
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "crop": [
+            368,
+            385,
+            360,
+            270
+          ],
+          "placement": [
+            28,
+            21
+          ],
+          "size": [
+            38,
+            29
+          ]
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "crop": [
+            765,
+            396,
+            339,
+            264
+          ],
+          "placement": [
+            31,
+            20
+          ],
+          "size": [
+            38,
+            30
+          ]
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "crop": [
+            1104,
+            373,
+            348,
+            292
+          ],
+          "placement": [
+            29,
+            24
+          ],
+          "size": [
+            37,
+            31
+          ]
+        }
+      ],
+      "riderTemplatePolicy": "notapplicable"
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay"
+    }
+  },
+  {
+    "id": "pack/packsaddle_cloth-v1",
+    "file": "assets/pack/packsaddle_cloth-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Transparent RGBA ONLY medieval pack saddle carrying CLOTH ROLLS overlay, nohorse orperson. Mountingreference attachedhorses butDRAWONLY load+simpleleather/woodpacksaddle. Four broadlong woollenclothboltsrolledtightly, clearly circularspiral ends, muted madderred,tan,grayblue cloth; twoperflank withropestraps acrosscentral saddle arch. FOURviews ONE horizontalrow equallyspaced left-right NEupperrightrearview,SElowerrightfrontview,SWlowerleftfrontview,NWupperleftrearview. Samepack actualfour directions,2:1isometricsoftupperleftlight, English1300-1450handpaintedprojectstyle. Transparenthollowunderarch, nolegsheadtailfloorlabels. Distinctfromsacksandwoolclumps because longcylindricalrolledboltswithspiralends. Actualoverlay38x28within96x80cellhorse butrenderlargerfordownsample.",
+        "rawFile": "raw/carts/cloth.png",
+        "referenceImages": [
+          "raw/large-animals/horse_draught-base.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "crop": [
+            23,
+            141,
+            475,
+            404
+          ],
+          "placement": [
+            30,
+            25
+          ],
+          "size": [
+            36,
+            31
+          ]
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "crop": [
+            544,
+            141,
+            475,
+            419
+          ],
+          "placement": [
+            29,
+            21
+          ],
+          "size": [
+            35,
+            31
+          ]
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "crop": [
+            1060,
+            150,
+            477,
+            408
+          ],
+          "placement": [
+            32,
+            20
+          ],
+          "size": [
+            36,
+            31
+          ]
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "crop": [
+            1611,
+            140,
+            486,
+            405
+          ],
+          "placement": [
+            29,
+            24
+          ],
+          "size": [
+            37,
+            31
+          ]
+        }
+      ],
+      "riderTemplatePolicy": "notapplicable"
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay"
+    }
+  },
+  {
+    "id": "rider/saddle_rider_merchant-v1",
+    "file": "assets/rider/saddle_rider_merchant-v1.png",
+    "cell": [
+      96,
+      80
+    ],
+    "pivot": [
+      48,
+      76
+    ],
+    "generationRecords": [
+      {
+        "prompt": "Edit reference merchant sprite into separable mounted merchant UPPERBODY + SADDLE layer only, nohorse. Preserve merchanthead/hat/clothes colors and fourview directions from firstrow of reference, keepheadandtorso shape exactly; remove walkinglegs belowwaist and addsmallbrownmedievalriding saddle underhip. Fouractualviews ONE row NE rearupperright,SEfrontlowerright,SWfrontlowerleft,NWrearupperleft. Merchant wearsdull ochre woolcoat,tan cap,pouch,noble silhouette notarmor. Reusepose upperbody ratherthan invent newcharacter. No horse legsorfullbody,nolabelsbackground. TransparentRGBA,mattesameprojectpixelhandpainted. Saddlefits horse96x80cell; riderupperbodyheightabout27px andsaddlewidth22px, noalterheadprofile.",
+        "rawFile": "raw/carts/rider.png",
+        "referenceImages": [
+          "references/actor_merchant-v1.png"
+        ]
+      }
+    ],
+    "processing": {
+      "frames": "second row duplicates first; animal legs animate underneath independently",
+      "registration": [
+        {
+          "direction": "ne",
+          "backAnchor": [
+            48,
+            34
+          ],
+          "saddleCrop": [
+            127,
+            457,
+            294,
+            167
+          ],
+          "upperBodyTemplate": [
+            0,
+            0,
+            71,
+            42
+          ],
+          "upperBodyOutput": [
+            22,
+            7,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        },
+        {
+          "direction": "se",
+          "backAnchor": [
+            47,
+            30
+          ],
+          "saddleCrop": [
+            630,
+            452,
+            302,
+            165
+          ],
+          "upperBodyTemplate": [
+            71,
+            0,
+            71,
+            42
+          ],
+          "upperBodyOutput": [
+            21,
+            3,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        },
+        {
+          "direction": "sw",
+          "backAnchor": [
+            50,
+            29
+          ],
+          "saddleCrop": [
+            1117,
+            452,
+            301,
+            165
+          ],
+          "upperBodyTemplate": [
+            142,
+            0,
+            71,
+            42
+          ],
+          "upperBodyOutput": [
+            24,
+            2,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        },
+        {
+          "direction": "nw",
+          "backAnchor": [
+            48,
+            33
+          ],
+          "saddleCrop": [
+            1628,
+            457,
+            293,
+            167
+          ],
+          "upperBodyTemplate": [
+            213,
+            0,
+            72,
+            42
+          ],
+          "upperBodyOutput": [
+            22,
+            6,
+            52,
+            30
+          ],
+          "headPixelDifferenceAgainstTransformedTemplate": 0,
+          "feet": "notapplicable upperbodyonly"
+        }
+      ],
+      "riderTemplatePolicy": "Generated saddle retained; generated head/torso discarded and original merchant upperbody translated/scaled unchanged, no new human pose."
+    },
+    "qa": {
+      "layerSeparation": "no horse pixels",
+      "direction": "NE SE SW NW",
+      "animation": "stationary overlay"
+    }
+  }
+]
