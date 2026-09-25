@@ -44,7 +44,7 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
       <div className="settlement-progress-body">
         <p className="settlement-calendar">{calendarLabel(state)} · {SCENARIO_COPY.eraLabel(historicalEra(state).name)}</p>
         <p>가구 비축 빵 {bread} · {seconds(HOUSE_FOOD_INTERVAL)}초마다 소비 {ration}</p>
-        <p>가구별 세 끼를 비축합니다. 가구가 늘면 밀밭·방앗간·배급 길도 함께 늘리세요.</p>
+        <p>가구별 세 끼를 비축합니다. 가구가 늘면 경작지·방앗간·배급 길도 함께 늘리세요.</p>
         {goal === null ? <p>{view.mode === "sandbox" ? SCENARIO_COPY.sandboxGoal : SCENARIO_COPY.allGoalsDone}</p> : <>
           <ul>{goal.criteria.map(item => <li key={item.id}>
             <span>{item.label}</span><strong>{Math.floor(item.current)}/{item.target}{item.met ? " 충족" : ""}</strong>
@@ -61,7 +61,7 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
       </div>
     </details>
     <div className="settlement-crisis-slot" aria-live="polite">
-      {view.crisis === "food_shortage" ? <p className="settlement-crisis" role="status">배급 부족이 이어집니다. 밀밭·방앗간의 일손과 곡창에서 집까지의 길을 확인하세요.</p> : null}
+      {view.crisis === "food_shortage" ? <p className="settlement-crisis" role="status">배급 부족이 이어집니다. 경작지·방앗간의 일손과 곡창에서 집까지의 길을 확인하세요.</p> : null}
       {view.crisis === "abandonment_risk" && view.outcome !== "abandoned" ? <p className="settlement-crisis" role="status">주민이 모두 떠났습니다. 집에 물과 빵을 공급해 입주를 회복하세요. {Math.max(0, seconds(SETTLEMENT_CONFIG.abandonmentTicks - view.progress.emptyTicks))}초 남음.</p> : null}
     </div>
     {view.outcome === "abandoned" ? <div className="settlement-restart">
