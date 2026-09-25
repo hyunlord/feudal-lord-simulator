@@ -16,10 +16,10 @@ export type SeasonEvent =
 
 /**
  * The next objective the card suggests (FP-1): `food_reserve` = households are leaving or the stored food will not
- * last a season; `winter_reserve` = autumn or winter comes and the stored food will not last the winter;
- * `resettle` = abandoned houses wait for a season of food. Null = nothing pressing.
+ * last a season; `harvest_reserve` = the food in store and in the fields will not last to the next harvest (the lean
+ * late spring, FP9); `resettle` = abandoned houses wait for a season of food. Null = nothing pressing.
  */
-export type NextObjectiveHint = "food_reserve" | "winter_reserve" | "resettle" | null;
+export type NextObjectiveHint = "food_reserve" | "harvest_reserve" | "resettle" | null;
 
 /** FP-1: one closed season. Income and expense are the cash ledger's entries in (startTick, endTick]. */
 export interface SeasonLedger {
@@ -49,13 +49,16 @@ export interface SeasonTally {
   readonly firstWinterWarning: boolean;
 }
 
-/** FP-4: raised once, at the start of the first autumn whose stored food will not last the winter. */
+/**
+ * FP-4 (FP9): raised once, at the start of the first autumn whose food (in store and still in the fields) will not last
+ * through the winter and the lean spring to the next harvest.
+ */
 export interface FirstWinterWarning {
   readonly tick: number;
-  /** Stored food in ticks at the normal ration. */
+  /** Food in store and in the fields, in ticks at the normal ration. */
   readonly reserveTicks: number;
-  /** A winter's consumption in the same ticks (a season × 1.2). */
-  readonly winterNeedTicks: number;
+  /** Ticks to the next harvest in the same units (winter ticks × 1.2): 3,700 from the start of autumn. */
+  readonly untilHarvestTicks: number;
 }
 
 export interface SeasonState {

@@ -14,7 +14,11 @@
  * - Recovery: stage 1 clears when the shortage ends. An abandoned house takes a new household (one lot's worth of
  *   residents) once it has stood empty a season, has water and the town's stored food lasts a season; one per sample.
  */
-import { PRESSURE_BALANCE } from "../content/balanceConfig";
+import { ARABLE_CONFIG } from "../content/arableConfig";
+import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
+import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
+import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
+import { arableLayouts, stripTending, stripYield } from "../zones/arableFields";
 import { EMPTY_LEDGER } from "../ledger/ledger";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { foodReserveTicks, seasonalFoodReserveShort } from "../population/foodReserve";
@@ -34,7 +38,7 @@ import {
 } from "./season.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
-/** FP-4: a winter's consumption, in ticks of stored food at the normal ration. */
+/** FP-4: a winter's consumption, in ticks of stored food at the normal ration (the bot's autumn check, FP-6). */
 export const WINTER_NEED_TICKS = SEASON * PRESSURE_BALANCE.winterRationPermille / 1000;
 
 const nonNegative = (amount: number | undefined): number => (Number.isFinite(amount) ? Math.max(0, amount ?? 0) : 0);
@@ -81,9 +85,8 @@ function cashFlow(state: GameState, start: number, end: number): { readonly inco
 
 function nextObjectiveHint(state: GameState): NextObjectiveHint {
   if (state.houses.some(house => house.leavingSinceTick !== undefined) || seasonalFoodReserveShort(state, state.tick)) return "food_reserve";
-  const season = calendar(state.tick, scenarioOf(state).startYear).season;
-  const reserve = foodReserveTicks(state);
-  if ((season === 2 || season === 3) && reserve !== null && reserve < WINTER_NEED_TICKS) return "winter_reserve";
+  const reserve = harvestOutlookTicks(state);
+  if (reserve !== null && reserve < ticksUntilNextHarvest(state.tick)) return "harvest_reserve";
   return state.houses.some(house => house.abandonedTick !== undefined) ? "resettle" : null;
 }
 
@@ -178,17 +181,64 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   };
 }
 
-/** FP-4: at the start of autumn, the first time the stored food will not last the winter. */
+/**
+ * FP-4 (decision FP9): ticks at the normal ration from `tick` until the next harvest begins (in-year `growTicks`, the
+ * AF-11 reserve outlook's harvest), a winter tick counting × 1.2. From the start of autumn: 1,000 + 1,200 + 1,500 = 3,700.
+ */
+export function ticksUntilNextHarvest(tick: number): number {
+  const year = BALANCE.TICKS_PER_YEAR;
+  const harvest = ARABLE_CONFIG.growTicks;
+  const from = ((tick % year) + year) % year;
+  const span = from < harvest ? harvest - from : year - from + harvest;
+  let need = 0;
+  for (let at = from, left = span; left > 0;) {
+    const inYear = at % year;
+    const segmentEnd = inYear < PRESSURE_BALANCE.winterFrom ? PRESSURE_BALANCE.winterFrom : year;
+    const length = Math.min(left, segmentEnd - inYear);
+    need += inYear >= PRESSURE_BALANCE.winterFrom ? length * PRESSURE_BALANCE.winterRationPermille / 1000 : length;
+    at += length;
+    left -= length;
+  }
+  return Math.ceil(need);
+}
+
+/**
+ * FP-4 (FP9): the town's food until the next harvest, in ticks at the normal ration: stored food (FIX-1 reserve: bread
+ * and wheat ÷ 2 in buildings and on carts) plus the crop still standing in tended strips (sown, growing and ripe; a
+ * growing crop counted at full growth, a ripe one at what it grew). Null when no house eats.
+ */
+export function harvestOutlookTicks(state: GameState): number | null {
+  const ration = state.houses.reduce((sum, house) => sum + (house.residents > 0 ? houseFoodRation(house) : 0), 0);
+  if (ration <= 0) return null;
+  const stored = foodReserveTicks(state) ?? 0;
+  const layouts = arableLayouts(state);
+  const tending = stripTending(state, layouts);
+  const strips = new Map(layouts.flatMap(layout => layout.strips).map(strip => [strip.id, strip]));
+  let standing = 0;
+  for (const field of state.arableFields ?? []) {
+    for (const record of field.strips) {
+      const strip = strips.get(record.id);
+      if (strip === undefined || tending.get(record.id)?.status !== "tended") continue;
+      if (record.stage === "sown" || record.stage === "growing") standing += stripYield(strip, record, 1000);
+      else if (record.stage === "ripe") standing += stripYield(strip, record, record.completionPermille ?? 1000);
+    }
+  }
+  const wheatPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2;
+  return stored + Math.floor(Math.floor(standing / wheatPerBread) * HOUSE_FOOD_INTERVAL / ration);
+}
+
+/** FP-4 (FP9): at the start of autumn, the first time the food in store and in the fields will not last to the next harvest. */
 function firstWinterWarning(state: GameState, seasons: SeasonState): SeasonState {
   if (seasons.firstWinterWarning !== undefined) return seasons;
   if (calendar(state.tick, scenarioOf(state).startYear).season !== 2 || state.tick % SEASON !== 0) return seasons;
-  const reserve = foodReserveTicks(state);
-  if (reserve === null || reserve >= WINTER_NEED_TICKS) return seasons;
-  return { ...seasons, firstWinterWarning: { tick: state.tick, reserveTicks: reserve, winterNeedTicks: WINTER_NEED_TICKS },
+  const reserve = harvestOutlookTicks(state);
+  const need = ticksUntilNextHarvest(state.tick);
+  if (reserve === null || reserve >= need) return seasons;
+  return { ...seasons, firstWinterWarning: { tick: state.tick, reserveTicks: reserve, untilHarvestTicks: need },
     current: { ...seasons.current, firstWinterWarning: true } };
 }
 
-/** FP-4 goal-card hook `first_winter_warning`: raised in autumn, standing until that winter ends. */
+/** FP-4 goal-card hook `first_winter_warning`: raised in autumn, standing through that winter (the lean spring is the card's next step). */
 export function firstWinterWarningActive(state: Pick<GameState, "tick" | "seasons">): boolean {
   const warning = state.seasons?.firstWinterWarning;
   return warning !== undefined && state.tick >= warning.tick && state.tick < warning.tick + 2 * SEASON;

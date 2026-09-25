@@ -187,8 +187,8 @@ function outsideWall(state: GameState, kind: BuildingKind, coordinate: TileCoord
 }
 
 /** The advisor's placement search for one building kind (exported for the LB-11 scenario test). */
-export function autoplayBuildAction(state: GameState, kind: BuildingKind): AutoplayAction {
-  return runAutoplaySearch(() => buildAction(state, kind));
+export function autoplayBuildAction(state: GameState, kind: BuildingKind, accepts?: (coordinate: TileCoordinate) => boolean): AutoplayAction {
+  return runAutoplaySearch(() => buildAction(state, kind, accepts));
 }
 
 function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate: TileCoordinate) => boolean = () => true): AutoplayAction {

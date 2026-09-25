@@ -9,7 +9,7 @@ import { placeBuilding } from "../src/engine/gameActions";
 import { settleMoneyPeriod } from "../src/engine/moneyRules";
 import { predictPlacementLedger } from "../src/engine/placementLedger";
 import { advanceHistoricalEras, historicalEra } from "../src/engine/scenarioState";
-import { advanceSeasons, firstWinterWarningActive, seasonStock, WINTER_NEED_TICKS } from "../src/engine/seasonPressure";
+import { advanceSeasons, firstWinterWarningActive, harvestOutlookTicks, seasonStock, ticksUntilNextHarvest, WINTER_NEED_TICKS } from "../src/engine/seasonPressure";
 import { advanceTick } from "../src/engine/tick";
 import { LEDGER_PERIOD_TICKS } from "../src/ledger/ledger";
 import { houseLotArea } from "../src/geometry/buildingFootprint";
@@ -268,18 +268,38 @@ test("P8 winter meals eat the ration × 1.2; the other seasons the ration", () =
   assert.equal(WINTER_NEED_TICKS, 1_200);
 });
 
-test("P8 the first-winter warning: autumn opens with less stored food than a winter needs", () => {
+test("P8 the first-winter warning: autumn opens with less food (in store and in the fields) than lasts to the next harvest", () => {
+  // FP9: the hungriest time is the lean late spring before the harvest, not the winter; the warning looks that far.
+  assert.equal(ticksUntilNextHarvest(2 * SEASON), 1_000 + 1_200 + 1_500, "autumn → winter × 1.2 → spring → early summer");
+  assert.equal(ticksUntilNextHarvest(3 * SEASON), 1_200 + 1_500);
+  assert.equal(ticksUntilNextHarvest(1_000), 500);
   const state = hungryTown();
   const autumn = 7 * 4000 + 2 * SEASON;
-  const reserve = foodReserveTicks(state)!;
-  assert.ok(reserve < WINTER_NEED_TICKS);
+  const reserve = harvestOutlookTicks(state)!;
+  assert.ok(reserve < ticksUntilNextHarvest(autumn));
   const warned = advanceSeasons({ ...state, tick: autumn });
-  assert.deepEqual(warned.seasons!.firstWinterWarning, { tick: autumn, reserveTicks: reserve, winterNeedTicks: WINTER_NEED_TICKS });
+  assert.deepEqual(warned.seasons!.firstWinterWarning, { tick: autumn, reserveTicks: reserve, untilHarvestTicks: 3_700 });
   assert.equal(firstWinterWarningActive(warned), true);
   assert.equal(firstWinterWarningActive({ ...warned, tick: autumn + 2 * SEASON }), false, "over when the winter ends");
   const again = advanceSeasons({ ...warned, tick: autumn + 4000 });
   assert.equal(again.seasons!.firstWinterWarning!.tick, autumn, "raised once");
+  // A town whose store lasts a winter (the old test) but not to the next harvest is warned too.
+  const winterOnly = foodTown(Math.ceil(WINTER_NEED_TICKS * 1.5));
+  assert.ok(foodReserveTicks(winterOnly)! >= WINTER_NEED_TICKS && harvestOutlookTicks(winterOnly)! < 3_700);
+  assert.notEqual(advanceSeasons({ ...winterOnly, tick: autumn }).seasons!.firstWinterWarning, undefined);
+  const stocked = foodTown(4_000);
+  assert.ok(harvestOutlookTicks(stocked)! >= 3_700);
+  assert.equal(advanceSeasons({ ...stocked, tick: autumn }).seasons!.firstWinterWarning, undefined, "enough to the harvest: no warning");
 });
+
+/** The hungry town with bread in its granary for about `ticks` of meals (no crop in the fields: the fixture is past harvest). */
+function foodTown(ticks: number): GameState {
+  const state = hungryTown();
+  const ration = state.houses.reduce((sum, house) => sum + (house.residents > 0 ? Math.ceil(house.residents / 8) : 0), 0);
+  const granary = state.buildings.find(building => building.kind === "granary")!;
+  const bread = Math.ceil(ticks * ration / HOUSE_FOOD_INTERVAL);
+  return { ...state, buildings: state.buildings.map(building => building === granary ? { ...building, inventory: { ...building.inventory, bread } } : building) };
+}
 
 test("④ a town on the ladder round-trips through save v12 and runs on identically; two runs agree", () => {
   const state = hungryTown();
@@ -314,4 +334,15 @@ test("④ a v11 save becomes v12: the season opens at its start, the eras due en
   assert.equal(state.population, raw.state.population);
   const later = advanceTick(state);
   assert.equal(later.tick, state.tick + 1);
+});
+
+test("P8 the harvest outlook counts the crop still standing in tended strips", () => {
+  const state = hungryTown();
+  assert.ok((state.arableFields ?? []).length > 0, "the town has fields");
+  const bare = harvestOutlookTicks(state)!;
+  const growing: GameState = { ...state, arableFields: state.arableFields!.map(field => ({ ...field,
+    strips: field.strips.map(strip => ({ ...strip, stage: "growing" as const, sownTick: state.tick })) })) };
+  const withCrop = harvestOutlookTicks(growing)!;
+  assert.ok(withCrop > bare, `standing crop adds food (${bare} → ${withCrop} ticks)`);
+  assert.equal(foodReserveTicks(growing), foodReserveTicks(state), "the FIX-1 store reserve leaves the fields out");
 });
