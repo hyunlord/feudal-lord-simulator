@@ -8,6 +8,7 @@ import { evaluateEraRequirements } from './era';
 import type { GameState } from './engine.types';
 import type { AutoplayAction } from './autoplay.types';
 import { housingLotCount } from '../population/housing';
+import { LABOUR_BALANCE } from '../content/balanceConfig';
 import { hasAutoplayBuildingClearance } from './autoplaySetback';
 import { autoplayCanPlace } from './autoplayZones';
 import { preservesAutoplayWallSpace } from './autoplayWallSpace';
@@ -50,7 +51,8 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
         if (inspected.size >= 8) { markAutoplaySearchLimit(); return false; }
         if (!spendAutoplaySearch(4)) return false;
         const projected = confirmPalisadeProclamation(state, path);
-        const wanted = Math.max(0, targetLots - housingLotCount(state));
+        // Half again as many plots as lots still wanted: wells, markets and mills inside the wall take plots later too.
+        const wanted = Math.ceil(Math.max(0, targetLots - housingLotCount(state)) * LABOUR_BALANCE.wallPlotRoomPermille / 1000);
         const allowed = projected !== state && (wanted === 0 || !Number.isFinite(wanted) || wallPlotRoom(projected) >= wanted)
           && preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected);
         inspected.set(key, allowed);

@@ -292,7 +292,9 @@ test("LB-12 autoplay proclaims the palisade only when its wall leaves room for t
   const room = wallPlotRoom(confirmPalisadeProclamation(state, open.candidatePath!));
   const lots = housingLotCount(state);
   assert.ok(room > 0, "the proposed wall leaves house plots");
-  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, lots + room)).kind, "proclaim_era", "room for every lot still wanted");
+  // LB-12 asks for 1.5 plots per lot still wanted.
+  const wantedFor = (room: number) => lots + Math.floor(room * 1000 / LABOUR_BALANCE.wallPlotRoomPermille);
+  assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, wantedFor(room))).kind, "proclaim_era", "room for every lot still wanted");
   // Another candidate wall may enclose more; none encloses room for 200 more lots, so the advisor waits and the town grows.
   assert.equal(runAutoplaySearch(() => autoplayEraAction(state, noBuild, lots + 200)).kind, "none", "no wall has room: wait and grow");
 });
