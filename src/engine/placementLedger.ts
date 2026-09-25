@@ -4,21 +4,23 @@
  * the same rules the period close and the service allocation use.
  *
  * - `rentPerPeriod` (homes): the rent the home pays per ledger period at the level the site's services give it within
- *   one period (L1 needs water and a 600-tick hold; L2 needs another 2,400, beyond one period). A home without water
- *   never fills and pays nothing. A burgage plot scales the rent by its frontage (M-2).
+ *   one period (L1 needs water and a 600-tick hold; L2 needs another 2,400, beyond one period). A home fills only with
+ *   water and bread, so a home without water, or out of every granary distributor's road reach, pays nothing. A
+ *   burgage plot scales the rent by its frontage (M-2).
  * - `upkeepPerPeriod`: the facility's upkeep per period (M-6), 0 for kinds without upkeep.
  * - `labourDemand`: the adults the building needs to run (its staffing), 0 for a home.
  * - `serviceCoverage`: for a well, market or church, the homes the service allocation would give it; for a granary,
  *   the homes within its L3 radius; for a home, the household services it would receive.
  */
-import { MONEY_BALANCE } from "../content/balanceConfig";
-import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
+import { BALANCE, MONEY_BALANCE } from "../content/balanceConfig";
+import { BUILDING_CONFIG_BY_KIND, operationSuspended, type Building, type BuildingKind } from "../content/buildingConfig";
 import { HOUSING_CONFIG } from "../content/housingConfig";
 import { LEDGER_PERIOD_TICKS } from "../ledger/ledger";
 import { buildingFootprintDistance } from "../geometry/buildingDistance";
 import type { TileCoordinate } from "../geometry/tileGeometry";
 import { allocateHouseServices, type HouseholdService } from "../population/serviceAllocation";
 import type { House } from "../population/population.types";
+import { feasibleDistributorDistance } from "./distributorAccess";
 import type { GameState } from "./engine.types";
 import { marketRoadService } from "./marketService";
 import { homePlots, homeRent } from "./moneyRules";
@@ -85,7 +87,9 @@ export function predictPlacementLedger(state: GameState, kind: BuildingKind, til
   const own = home === null ? undefined : allocation.houses.get(home.buildingId);
   const services = own === undefined ? [] : SERVICES.filter(service => own[service].kind === "served");
   let rentPerPeriod = 0;
-  if (home !== null && services.includes("water")) {
+  const fed = home !== null && world.buildings.some(granary => granary.kind === "granary" && !operationSuspended(granary)
+    && (feasibleDistributorDistance(world, granary, building.id) ?? Infinity) <= BALANCE.DISTRIBUTOR_RANGE);
+  if (home !== null && services.includes("water") && fed) {
     const plot = homePlots(world).get(building.id);
     rentPerPeriod = homeRent({ level: levelWithinPeriod(new Set(services)) }, plot?.width ?? null);
   }

@@ -2,6 +2,7 @@
  * F0-A failure ladder, stages 1–2 (spec docs/design/flow-pressure.md FP-3): what a house's saved pressure fields mean.
  * The engine (`src/engine/seasonPressure.ts`) moves a house between the stages; this module only reads them.
  */
+import { PRESSURE_COPY } from "../content/pressureCopy.ko";
 import type { House } from "./population.types";
 
 /** `settled` = no stage; `leaving` = stage 1 (떠날 준비); `abandoned` = stage 2 (the household left, the house stands empty). */
@@ -17,6 +18,12 @@ export type HousePressureCause = "food_shortage";
 
 export function housePressureCause(house: Pick<House, "leavingSinceTick" | "abandonedTick">): HousePressureCause | null {
   return housePressureStatus(house) === "settled" ? null : "food_shortage";
+}
+
+/** The cause as the player reads it (`식량 부족으로 떠날 준비`); null for a settled house. */
+export function housePressureCauseLabel(house: Pick<House, "leavingSinceTick" | "abandonedTick">): string | null {
+  const cause = housePressureCause(house);
+  return cause === null ? null : PRESSURE_COPY.cause[cause];
 }
 
 /**

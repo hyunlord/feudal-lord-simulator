@@ -8,8 +8,12 @@
 import type { GameState } from "../../engine/engine.types";
 import { initialSeasonState } from "../../engine/seasonPressure";
 import { advanceHistoricalEras } from "../../engine/scenarioState";
+import { SCENARIOS } from "../../content/scenario/registry";
+import { DEFAULT_SCENARIO_ID } from "../../content/scenario/coreScenarios";
 
 export function migrateStateV11ToV12(state: GameState): GameState {
+  // An unknown scenario is the codec's to reject (with its own message) after migration; leave the state as it is.
+  if (SCENARIOS.get(state.scenarioId ?? DEFAULT_SCENARIO_ID) === undefined) return state;
   const withEras = advanceHistoricalEras(state);
   return { ...withEras, seasons: initialSeasonState(withEras) };
 }

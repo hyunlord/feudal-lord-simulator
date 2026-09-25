@@ -9,6 +9,7 @@ import { houseMaterialEraForBuilding } from "./buildingMaterialWave";
 import type { ResourceType } from "../content/resourceConfig";
 import type { House } from "../population/population.types";
 import { houseBuiltLevel, houseCondition, type HouseCondition } from "../population/houseCondition";
+import { housePressureStatus, type HousePressureStatus } from "../population/housePressure";
 
 export type RoofShape =
   | "none"
@@ -45,6 +46,7 @@ export type BuildingVisualState = {
   readonly houseMaterialEra: HouseMaterialEra;
   readonly houseProblem: "water" | "bread" | null;
   readonly production: ProductionVisualState;
+  readonly housePressure?: HousePressureStatus;
 };
 
 export function buildBuildingVisualState(
@@ -64,6 +66,7 @@ export function buildBuildingVisualState(
       era: input.era ?? "hamlet",
     }),
     houseProblem: houseProblem(building, house),
+    housePressure: house === undefined ? "settled" : housePressureStatus(house),
     production: productionVisualState(building),
   };
 }

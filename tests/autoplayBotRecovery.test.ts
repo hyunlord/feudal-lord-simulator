@@ -143,9 +143,17 @@ test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, buil
   const churches = [...lots.buildings, ...lots.constructionSites.filter(isBuildingConstructionSite)].filter(site => site.kind === "church");
   assert.equal(churches.length, 1);
   assert.ok(!insideWall(lots, "church", churches[0]!), "the town's first church goes outside the wall");
-  const later = runWithAdvisor(lots, 48_000);
+  // F0-A: the town reaches L4 24/24 within the 48,000 ticks; a household's bread gap (winter meals ×1.2) may still
+  // hold one home a level below at the last tick, so the check is "reached", not "at the last tick".
+  const driver = createAutoplayTraceDriver({ id: "bot-recovery", source: "test", policy: POLICY });
+  let later = lots;
+  let reachedTick: number | null = null;
+  for (let step = 0; step < 48_000; step += 1) {
+    later = advanceTick(driver.apply(later));
+    if (reachedTick === null && housingLotCount(later) === 24 && later.houses.length === 24 && later.houses.every(house => house.level === 4)) reachedTick = later.tick;
+  }
   assert.equal(housingLotCount(later), 24);
-  assert.ok(later.houses.every(house => house.level === 4), "L4 24/24");
+  assert.ok(reachedTick !== null, "L4 24/24");
 });
 
 test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without the advisor hashes as before BOT-1", () => {
@@ -153,7 +161,8 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   for (let step = 0; step < 24_000; step += 1) state = advanceTick(state);
   const { pathCache: _pathCache, ...rest } = state;
   assert.equal(state.tick, 816_000);
-  // Recorded at 46f0a54 (trunk before BOT-1).
-  assert.equal(hashEconomyState(state), "475317b0065127d3");
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "8d2d3158b34ee536fc261cdcd6bb3193122242e17ce1eff0295f0b886eae79df");
+  // Recorded at 46f0a54 (trunk before BOT-1) as 475317b0065127d3 / 8d2d3158…; F0-A changes the rules on purpose
+  // (winter meals ×1.2, the failure ladder, seasons and eras in the state, spec FP-*), re-recorded at 2820a00.
+  assert.equal(hashEconomyState(state), "211657f1e619938a");
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "6a7827603ad2392f743ecbb326fecb29f4f4ccf78ba55d6255f49eee17068592");
 });

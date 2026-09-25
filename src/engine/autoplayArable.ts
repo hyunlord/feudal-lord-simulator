@@ -10,7 +10,7 @@
  *   free road-side cell for its farmstead, nearest the granaries by road.
  */
 import { ARABLE_CONFIG } from "../content/arableConfig";
-import { BALANCE } from "../content/balanceConfig";
+import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../content/buildingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
 import type { TileCoordinate } from "../geometry/tileGeometry";
@@ -51,13 +51,19 @@ const BLOCK = 2;
 
 export type FarmsteadBuildAction = (state: GameState, kind: BuildingKind, accepts?: (coordinate: TileCoordinate) => boolean) => AutoplayAction;
 
-/** A year of the homes' bread, as wheat. */
+/**
+ * F0-A (FP-4, FP-6): a year eats three seasons at the ration and a winter at × 1.2, so 1.05 years of rations. Without
+ * it the planner sized seed 4's fields for 0.95 of the year and the town stalled at L4 13–16/24 (guardrail run 1).
+ */
+export const YEAR_RATION_PERMILLE = 1000 + (PRESSURE_BALANCE.winterRationPermille - 1000) / 4;
+
+/** A year of the homes' bread, as wheat, winter meals included. */
 export function annualWheatNeed(state: GameState): number {
   const sample = foodEfficiencyMetrics(state);
   const perBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2;
   const measured = sample.known && sample.coveredTicks > 0
     ? Math.ceil((sample.requestedBread + sample.breadExported) * BALANCE.TICKS_PER_YEAR / sample.coveredTicks) * perBread : 0;
-  return Math.max(measured, homeWheatDemand(state, BALANCE.TICKS_PER_YEAR));
+  return Math.ceil(Math.max(measured, homeWheatDemand(state, BALANCE.TICKS_PER_YEAR)) * YEAR_RATION_PERMILLE / 1000);
 }
 
 /** AF-13: the expected harvest falls short of the need with margin (`margin` ‰, default the planner's). */

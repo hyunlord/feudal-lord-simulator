@@ -66,3 +66,12 @@ v3-B 본문은 아래 보조 메모·도판을 참조하지만 ZIP에 없고 현
 ## B2 로드맵 정정 (2026-09-24)
 
 B2 첨부 `ROADMAP_v3.md`는 B1에서 설치한 `ROADMAP.md`와 바이트가 같다(`9cf46da3…`). v2.3의 `## 결정 기록 (2026-09-24)` 절(D1~D7, 2줄)을 v3 끝에 그대로 옮겨 붙였다. 결과 [ROADMAP.md](ROADMAP.md)는 9,999바이트, SHA-256 `c7c7d3ebb04f77f549db23608a0a964345f7df122cae7033d88bd2060607f0ae`. v2.3 원문은 [ROADMAP_v2.3.md](ROADMAP_v2.3.md)에 그대로 있다.
+
+## F0-A 흐름·가시성 설계서 이관 (2026-09-26)
+
+입력: `to_ClaudeCode_F0A.zip`. 본문을 바이트 그대로 복사했다. 흐름 설계서 1절의 결정 F1~F6은 F0-A에서 권고안(★)으로 확정했다([결정 목록](../decisions/README.md) F1~F6). 본문의 "v1 초안" 표기는 원문대로 둔다.
+
+| ZIP 안 원본 | 저장소 파일 | 바이트 | SHA-256 |
+|---|---|---:|---|
+| `claude_F0A/PLAYER_FLOW_DESIGN_v1.md` | [player-flow.md](player-flow.md) | 11849 | `c1867f49f864227ce192f57e3519fd1daabe500c38d0be6bec13ffdf193900ab` |
+| `claude_F0A/VISIBILITY_DESIGN_v1.md` | [visibility.md](visibility.md) | 7689 | `be7efbfd8ef664ef5298267e9783a802d732521b43c2ea0c78df3360a1669211` |
