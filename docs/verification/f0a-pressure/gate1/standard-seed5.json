@@ -1,0 +1,184 @@
+{
+ "seed": 5,
+ "naiveReserve": false,
+ "maxTicks": 16000,
+ "stage1": {
+  "tick": 8300,
+  "year": 1302,
+  "season": "spring",
+  "winterOfYear": null
+ },
+ "stage2": {
+  "tick": 9300,
+  "year": 1302,
+  "season": "summer",
+  "winterOfYear": null
+ },
+ "maxLeaving": 14,
+ "maxAbandoned": 4,
+ "finalTick": 16000,
+ "finalPopulation": 220,
+ "finalHouses": 18,
+ "seasonLedgers": [
+  {
+   "season": 0,
+   "year": 1302,
+   "startTick": 8000,
+   "endTick": 9000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": -8,
+    "wheat": 0,
+    "timber": -32,
+    "stone": 0
+   },
+   "popDelta": 26,
+   "notableEvents": [
+    {
+     "kind": "households_leaving",
+     "count": 14
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 1,
+   "year": 1302,
+   "startTick": 9000,
+   "endTick": 10000,
+   "income": 28,
+   "expense": 20,
+   "stockDelta": {
+    "bread": 9,
+    "wheat": 486,
+    "timber": 11,
+    "stone": 0
+   },
+   "popDelta": -63,
+   "notableEvents": [
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 2,
+   "year": 1302,
+   "startTick": 10000,
+   "endTick": 11000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": 3,
+    "wheat": -132,
+    "timber": -20,
+    "stone": 0
+   },
+   "popDelta": 23,
+   "notableEvents": [
+    {
+     "kind": "households_abandoned",
+     "count": 2
+    },
+    {
+     "kind": "households_resettled",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": "resettle"
+  },
+  {
+   "season": 3,
+   "year": 1302,
+   "startTick": 11000,
+   "endTick": 12000,
+   "income": 69,
+   "expense": 28,
+   "stockDelta": {
+    "bread": 55,
+    "wheat": -202,
+    "timber": 11,
+    "stone": 0
+   },
+   "popDelta": 37,
+   "notableEvents": [
+    {
+     "kind": "households_resettled",
+     "count": 2
+    }
+   ],
+   "nextObjectiveHint": null
+  },
+  {
+   "season": 0,
+   "year": 1303,
+   "startTick": 12000,
+   "endTick": 13000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": -1,
+    "wheat": -152,
+    "timber": -1,
+    "stone": 0
+   },
+   "popDelta": 47,
+   "notableEvents": [],
+   "nextObjectiveHint": "food_reserve"
+  },
+  {
+   "season": 1,
+   "year": 1303,
+   "startTick": 13000,
+   "endTick": 14000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": -40,
+    "wheat": 470,
+    "timber": 10,
+    "stone": 0
+   },
+   "popDelta": 37,
+   "notableEvents": [],
+   "nextObjectiveHint": null
+  },
+  {
+   "season": 2,
+   "year": 1303,
+   "startTick": 14000,
+   "endTick": 15000,
+   "income": 92,
+   "expense": 29,
+   "stockDelta": {
+    "bread": 15,
+    "wheat": -167,
+    "timber": -21,
+    "stone": 0
+   },
+   "popDelta": 0,
+   "notableEvents": [],
+   "nextObjectiveHint": null
+  },
+  {
+   "season": 3,
+   "year": 1303,
+   "startTick": 15000,
+   "endTick": 16000,
+   "income": 0,
+   "expense": 0,
+   "stockDelta": {
+    "bread": 43,
+    "wheat": -240,
+    "timber": 11,
+    "stone": 0
+   },
+   "popDelta": 6,
+   "notableEvents": [],
+   "nextObjectiveHint": null
+  }
+ ]
+}
