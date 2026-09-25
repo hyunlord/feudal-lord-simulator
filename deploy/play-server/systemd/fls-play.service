@@ -1,0 +1,16 @@
+[Unit]
+Description=Feudal Lord Simulator play server (PLAY-1, tailnet only)
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=FLS_PLAY_ROOT=%h/fls-play
+Environment=FLS_PLAY_HOST=100.70.109.50
+Environment=FLS_PLAY_PORT=4173
+ExecStart=/usr/bin/node %h/fls-play/bin/serve.mjs
+# The Tailscale address may come up after the user manager: keep retrying.
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

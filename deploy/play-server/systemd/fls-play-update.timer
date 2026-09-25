@@ -1,0 +1,13 @@
+[Unit]
+Description=Check the trunk every 5 minutes and rebuild the play server when it moved (PLAY-1)
+
+[Timer]
+# OnActiveSec: first check right after the timer starts (install / boot); then every 5 minutes after each check.
+OnActiveSec=1min
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=15s
+Unit=fls-play-update.service
+
+[Install]
+WantedBy=timers.target

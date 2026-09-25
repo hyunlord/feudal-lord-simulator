@@ -1,0 +1,66 @@
+{
+  "url": "http://100.70.109.50:4173/",
+  "proofUrl": "http://127.0.0.1:4174/?phase10-proof=1",
+  "started": "목표형으로 시작",
+  "running": true,
+  "startedReal": "목표형으로 시작",
+  "runningReal": true,
+  "paused": true,
+  "badge": "2b0e9ce",
+  "loaded": {
+    "canvas": 1,
+    "title": "봉건 영주 시뮬레이터"
+  },
+  "gate1": {
+    "frames": 240,
+    "frameCount": 1005,
+    "medianMs": 1.3000000715255737,
+    "p95Ms": 11.5,
+    "tick": 245
+  },
+  "gate5": {
+    "beforeReload": {
+      "stores": [
+        "meta",
+        "slots"
+      ],
+      "keys": {
+        "meta": [
+          "auto-1"
+        ],
+        "slots": [
+          "auto-1"
+        ]
+      }
+    },
+    "afterReload": {
+      "stores": [
+        "meta",
+        "slots"
+      ],
+      "keys": {
+        "meta": [
+          "auto-1"
+        ],
+        "slots": [
+          "auto-1"
+        ]
+      }
+    },
+    "firstScreenButtons": [
+      "인구12유휴 일꾼 0⌄",
+      "재정0돈 · 최근 기간 0⌄",
+      "목책 긋기",
+      "영지 지형 지도",
+      "주택",
+      "도로",
+      "생산·",
+      "저장",
+      "공공",
+      "방어",
+      "구역",
+      "길. 비용 목재 0. 목적 육지 길은 무료. 양쪽 강둑을 직선으로 이으면 최대 8칸 목교를 놓습니다. 다리·접속 길 철거 시 다리 전체를 걷습니다. 조건 요구 조건 없음. 건설 가능 · 보유 없음길육지 무료 · 다리 목재 4/칸"
+    ]
+  },
+  "errors": []
+}

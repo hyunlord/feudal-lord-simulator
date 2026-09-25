@@ -1,0 +1,10 @@
+[Unit]
+Description=Feudal Lord Simulator play server update (PLAY-1): rebuild when the trunk moves
+
+[Service]
+Type=oneshot
+Environment=FLS_PLAY_ROOT=%h/fls-play
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStart=%h/fls-play/bin/update.sh
+TimeoutStartSec=30min
+Nice=10
