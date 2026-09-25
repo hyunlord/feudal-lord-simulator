@@ -1,6 +1,6 @@
 {
   "schemaVersion": 10,
-  "sha256": "5a68bc0a56a3a65b9fc2573d84aa316af39b18327384fb622ea3186bf2f07af1",
+  "sha256": "d1cbc63243abb2ee37112425c24a7d1cf4f3362eec48488c82e35ce0101fdb28",
   "inputs": [
     "DEFAULT_GAME_STATE",
     "fixtures/saves/v1/new-game.save.json",
@@ -67,6 +67,7 @@
     "$.arableFields[].lostWheat:number",
     "$.arableFields[].strips:array",
     "$.arableFields[].strips[].cells:number",
+    "$.arableFields[].strips[].completionPermille:number",
     "$.arableFields[].strips[].crop:string",
     "$.arableFields[].strips[].fertilityPermille:number",
     "$.arableFields[].strips[].id:string",
@@ -79,9 +80,7 @@
     "$.arableFields[]:object",
     "$.arableMigration.cellsInsideWall:number",
     "$.arableMigration.convertedFarms:number",
-    "$.arableMigration.droppedFarms:number",
     "$.arableMigration.farmsteads:number",
-    "$.arableMigration.relocatedFarms:number",
     "$.arableMigration.unplacedFarmsteads:number",
     "$.arableMigration:object",
     "$.autoplayEmptyHomes:array",

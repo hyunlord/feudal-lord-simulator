@@ -42,6 +42,7 @@ export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
 export interface AutoplayPolicy { readonly maxHousingLots: number }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
+const ERA_PHASE_SEARCH_WORK = 768;
 const coordinateKey = (coordinate: TileCoordinate): string => `${coordinate.tx},${coordinate.ty}`;
 function compareCoordinates(left: TileCoordinate, right: TileCoordinate): number {
   return left.ty - right.ty || left.tx - right.tx;
@@ -247,6 +248,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     }
     return carryFoodTransient(NONE, metadata);
   }
+  const eraPhase = () => autoplayEraAction(state, buildAction);
   for (const decide of [
     () => waterAction(state),
     () => roadAccessAction(state),
@@ -257,9 +259,11 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => housingAction(state, policy),
     () => urbanServiceAction(state, diagnostic),
     () => storageAction(state),
-    () => autoplayEraAction(state, buildAction),
+    eraPhase,
   ]) {
-    const action = runAutoplaySearchPhase(decide);
+    // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the
+    // centre that first layout probe can exceed an ordinary phase, so the era phase gets four phases' work.
+    const action = runAutoplaySearchPhase(decide, decide === eraPhase ? ERA_PHASE_SEARCH_WORK : undefined);
     if (action.foodTransient !== undefined) metadata = action;
     if (action.kind !== "none") return carryFoodTransient(action, metadata);
   }
