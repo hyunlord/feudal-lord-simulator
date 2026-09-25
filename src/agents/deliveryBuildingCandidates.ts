@@ -80,8 +80,10 @@ export function fetchCandidate(
   if (homeSpace === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
   const candidates = buildings.flatMap((building) => {
-    // AF-9: a mill may also fetch wheat straight from a farmstead's barn.
-    if (building.kind !== storeKind && BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput !== resource) return [];
+    // AF-9: a converter may also fetch its input straight from where it is made — a mill from a farmstead's barn, a
+    // sawmill from a logging camp — so a store full of other goods cannot stop a chain.
+    const source = BUILDING_CONFIG_BY_KIND[building.kind];
+    if (building.kind !== storeKind && source.fieldOutput !== resource && source.production?.output !== resource) return [];
     const path = routes.betweenBuildings(converter.id, building.id);
     if (path === null || path.length === 0) return [];
     const amount = Math.min(
