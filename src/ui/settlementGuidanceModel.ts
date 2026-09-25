@@ -70,8 +70,6 @@ export function settlementGuidance(state: GameState): SettlementGuidance {
 function guidancePriority(state: GameState): SettlementProblemGlyph | null {
   if (hasWaterProblem(state)) return { ...PROBLEM_GLYPHS.water, label: "우물이 필요합니다" };
   if (hasBreadProblem(state)) return { ...PROBLEM_GLYPHS.bread, label: "식량이 부족합니다" };
-  // FIX-1: household larders can be full while the stores run out; "stable" needs a season of stored food.
-  if (foodReserveShort(state)) return { ...PROBLEM_GLYPHS.bread, label: SETTLEMENT_GUIDANCE_COPY.foodReserveShort };
   if (state.idleWorkers > 0 && hasLabourProblem(state)) {
     return {
       ...PROBLEM_GLYPHS.labour,
@@ -85,6 +83,8 @@ function guidancePriority(state: GameState): SettlementProblemGlyph | null {
     return { kind: "storage", glyph: "箱", label: "목재가 부족합니다" };
   }
   if (idleLabourHighlighted(state)) return { ...PROBLEM_GLYPHS.labour, label: HOUSEHOLD_LABOUR_COPY.idleHint };
+  // FIX-1: household larders can be full while the stores run out; "stable" needs a season of stored food.
+  if (foodReserveShort(state)) return { ...PROBLEM_GLYPHS.bread, label: SETTLEMENT_GUIDANCE_COPY.foodReserveShort };
   return null;
 }
 

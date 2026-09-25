@@ -1,4 +1,4 @@
-import { canPlaceBuilding } from '../src/world/placement';
+import { canPlaceBuilding, canPlaceBuildingBeforeRoad } from '../src/world/placement';
 import { createPalisadeConstructionSite } from '../src/economy/construction';
 import { formatPlacementFailure } from '../src/render/placementFeedback';
 import assert from 'node:assert/strict';
@@ -86,7 +86,8 @@ for (const completed of [false, true]) test(`Given a ${completed ? 'complete' : 
     if (!result.ok) assert.match(formatPlacementFailure({ reason: result.reason, buildingKind: 'house' }), /성벽.*1칸/);
     assert.equal(gameReducer(state, { type: 'place_building', kind: 'house', tx, ty: 6 }), state);
   }
-  for (const tx of [3, 6]) assert.equal(canPlaceBuilding(state, 'house', tx, 6).ok, true);
+  // FIX-1: road access is not this rule; the lots beside the wall are legal once a road reaches them.
+  for (const tx of [3, 6]) assert.equal(canPlaceBuildingBeforeRoad(state, 'house', tx, 6).ok, true);
 });
 
 test('Given an independent wall construction site When placing a building across its path Then the planned wall is protected', () => {
@@ -104,7 +105,7 @@ test('Given a shore-adjacent legal lot without a wall When placing manually Then
   state.constructionSites = [];
   state.treasuryTimber = 1000;
   state.tiles = state.tiles.map(tile => tile.tx === 3 ? { ...tile, terrain: 'water' } : tile);
-  assert.equal(canPlaceBuilding(state, 'house', 4, 4).ok, true);
+  assert.equal(canPlaceBuildingBeforeRoad(state, 'house', 4, 4).ok, true);
   assert.equal(hasAutoplayBuildingClearance(state, 'house', { tx: 4, ty: 4 }), false);
 });
 

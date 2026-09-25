@@ -15,8 +15,9 @@ import {
 import { ONBOARDING_TASKS } from "../src/ui/onboardingTaskModel";
 
 const OPENING_CENTER = { tx: 45, ty: 41 } as const;
-const EXPECTED_ECONOMY_HASH = "839a86230db877de";
-const EXPECTED_OPENING_HASH = "2e036754c2d05951";
+// FIX-1: the opening houses are watered at creation (was 839a86230db877de / 2e036754c2d05951 with hasWater false).
+const EXPECTED_ECONOMY_HASH = "a0b2bbd0dd5b032b";
+const EXPECTED_OPENING_HASH = "efe743579d152e19";
 function roadKeys(): readonly string[] {
   return DEFAULT_GAME_STATE.tiles
     .filter((tile) => tile.hasRoad)

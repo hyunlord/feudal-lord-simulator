@@ -43,12 +43,13 @@ test('understaffed market forecasts no service and failed worker line',()=>{
   assert.equal(severityOf(prediction.lines.find(l=>l.id==='workers')),'block');
   assert.match(prediction.lines.find(l=>l.id==='supply')?.text??'',/0\/24/);
 });
-test('invalid reason is Korean and road access does not invent a placement rejection',()=>{
+test('invalid reason is Korean, and a road-less site is refused as the checklist says (FIX-1)',()=>{
   const state=fixture();
   assert.match(buildingPlacementPrediction(state,'well',{tx:3,ty:5}).lines[0]?.text??'',/점유 충돌/);
   const disconnected=buildingPlacementPrediction(state,'market',{tx:6,ty:10});
-  assert.equal(disconnected.placement.ok,true);
+  assert.deepEqual(disconnected.placement,{ok:false,reason:'needs_road'});
   assert.equal(severityOf(disconnected.lines.find(l=>l.id==='road')),'block');
+  assert.match(disconnected.lines[0]?.text??'',/도로 연결 없음/);
 });
 test('bridge counts and costs use current road rules and distinguish patterns',()=>{
   const state=fixture(); state.tiles=state.tiles.map(t=>t.ty===10 && t.tx>=5 && t.tx<=7?{...t,terrain:'water'}:t);

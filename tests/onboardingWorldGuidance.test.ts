@@ -22,6 +22,7 @@ import {
 } from "../src/ui/onboardingWorldGuidance";
 import { canPlaceRoad } from "../src/world/roadGraph";
 import { placeFinishedBuilding } from "./finishedBuildingFixture";
+import { buildingRoadAccessTiles } from "../src/engine/routing";
 
 function stateWith(input: {
   readonly buildings?: readonly Building[];
@@ -288,6 +289,25 @@ test("onboardingWorldGuidanceTargets guides another house after food, sawmill, s
 
   const settlement = placeGuidedTargets(state, targets);
   assert.equal(settlement.houses.length, state.houses.length + 1);
+});
+
+test("PT-4 every guided site for a building that needs a road has road access, through the chapel (UX-0 #83)", () => {
+  const guided: OnboardingGuidanceTarget[] = [];
+  const record = (state: GameState) => {
+    for (const target of onboardingWorldGuidanceTargets(state)) if (target.kind !== "road") guided.push(target);
+    return state;
+  };
+  const afterSawmill = placeGuidedMarkersUntilKind(record(stateAfterFoodChain()), "sawmill").state;
+  const afterStorage = placeGuidedMarkersUntilKind(record(stateAfterExpandedFood(afterSawmill)), "storehouse").state;
+  let state = record(afterStorage);
+  while (onboardingWorldGuidanceTargets(state)[0]?.kind === "road") state = record(placeGuidedRoad(state));
+  const chapel = requiredGuidanceTarget(state, "chapel");
+  for (const target of [...guided, chapel]) {
+    if (target.kind === "road" || !BUILDING_CONFIG_BY_KIND[target.kind].requiresRoad) continue;
+    const building = { id: "guided", kind: target.kind, tx: target.origin.tx, ty: target.origin.ty, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+    assert.ok(buildingRoadAccessTiles(state, building).length > 0, `${target.kind} at ${target.origin.tx},${target.origin.ty} has road access`);
+  }
+  assert.ok(guided.some(target => target.kind === "storehouse"));
 });
 
 function stateAfterFoodChain(): GameState {

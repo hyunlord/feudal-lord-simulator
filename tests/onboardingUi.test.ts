@@ -143,8 +143,10 @@ test("status line prioritizes armed tool copy before feedback and blocker fallba
       placementFeedbackMessage: "도로가 필요합니다",
     }),
   );
+  // FIX-1: the opening village is watered at tick 0, so the blocker fallback is shown on a village without water.
+  const unwatered = { ...DEFAULT_GAME_STATE, houses: DEFAULT_GAME_STATE.houses.map(house => ({ ...house, hasWater: false })) };
   const fallback = renderToStaticMarkup(
-    createElement(SettlementStatusLine, { state: DEFAULT_GAME_STATE, selectedTool: null }),
+    createElement(SettlementStatusLine, { state: unwatered, selectedTool: null }),
   );
 
   // Then
