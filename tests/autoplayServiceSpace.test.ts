@@ -21,6 +21,7 @@ import { findAutoplayServiceWitness } from '../src/engine/autoplayServiceSpaceWi
 import { projectServiceAction, serviceCandidate, serviceSpaceBuildings } from '../src/engine/autoplayServiceSpaceRoutes';
 import { createConstructionSite } from '../src/economy/construction';
 import { potentialServiceRoads, serviceWitnessRoads } from '../src/engine/autoplayServiceSpaceRoutes';
+import { migrateStateV9ToV10 } from '../src/save/migrations/v9ToV10';
 function naturalBeforeLoss(): GameState {
   return JSON.parse(gunzipSync(readFileSync(new URL('./fixtures/service-space-normal-97560.json.gz', import.meta.url))).toString('utf8'));
 }
@@ -36,7 +37,9 @@ function futureMarkets(state: GameState, home: Building): number {
 }
 
 test('Given the normal97560 legacy hamlet without a measured window When autoplay decides Then it observes before another food expansion', () => {
-  const state = naturalBeforeLoss();
+  // AF-13/v10: migrated first, like a real load, so its 13 pre-v10 wheat farms count as farmsteads instead of
+  // reading as zero and sending the advisor after a fresh grain expansion.
+  const state = migrateStateV9ToV10(naturalBeforeLoss());
   const diagnostic: FoodDiagnosticCollector = {};
   assert.deepEqual(decideNextAction(state, { maxHousingLots: 24 }, diagnostic), { kind: 'none' });
   assert.equal(diagnostic.food?.reason, 'observation_warmup');

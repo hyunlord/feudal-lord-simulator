@@ -10,6 +10,7 @@ import { growthGuardrail } from './growthGuardrail';
 import { createMillZeroWheatObservation, millWheatSamples } from './efficientGrowthMillContinuity';
 import { moneyPeriodSample, type MoneyPeriodSample } from './moneyPeriodRecord';
 import { treasuryBalance } from '../src/ledger/ledger';
+import { foodPeriodSample } from './arableFoodPeriods';
 
 export function runEfficientGrowth(args: readonly string[]) {
   const options = parseGrowthOptions(args);
@@ -23,6 +24,8 @@ export function runEfficientGrowth(args: readonly string[]) {
   const millObservation = createMillZeroWheatObservation();
   let efficiency: ReturnType<typeof efficientGrowthMetrics> | null = null;
   const moneyPeriods: (MoneyPeriodSample & { readonly stableSince: number | null })[] = [];
+  // C1c-2 gate ③: food flow per 2,400-tick window, so the stable interval's bread and raw-wheat ratios are measured.
+  const foodPeriods: Record<string, number | null>[] = [];
   let money200Tick: number | null = null;
   let stoneProclaimedTick: number | null = null;
   const report = runPhase19NaturalGrowth({ ...options,
@@ -33,6 +36,7 @@ export function runEfficientGrowth(args: readonly string[]) {
       if (stoneProclaimedTick === null && state.era === 'stone_town') stoneProclaimedTick = state.eraProclaimedTick;
       const period = moneyPeriodSample(state);
       if (period !== null) moneyPeriods.push({ ...period, stableSince });
+      if (state.tick % 2400 === 0) foodPeriods.push(foodPeriodSample(state, stableSince));
       if (checkpoint && state.tick % 12_000 === 0) {
         writeFileSync(resolve(output, 'last-observed-state.json'), JSON.stringify(state));
         writeFileSync(resolve(output, 'last-diagnostic.json'), JSON.stringify(diagnostics.last, null, 2));
@@ -65,6 +69,7 @@ export function runEfficientGrowth(args: readonly string[]) {
     elapsedSeconds: report.elapsedSeconds };
   writeFileSync(resolve(output, 'summary.json'), JSON.stringify(summary, null, 2));
   writeFileSync(resolve(output, 'money-periods.jsonl'), moneyPeriods.map(period => JSON.stringify(period)).join('\n') + '\n');
+  writeFileSync(resolve(output, 'food-periods.jsonl'), foodPeriods.map(period => JSON.stringify(period)).join('\n') + '\n');
   return summary;
 }
 

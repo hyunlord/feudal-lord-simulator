@@ -17,7 +17,7 @@ import { building, foodBuildRequest, routedStockTown } from './helpers/autoplayF
 function fedTown(): GameState {
   const base = routedStockTown(true);
   const buildings = [building('granary', 'granary', 1, 2, 2),
-    building('mill', 'mill', 5, 2, 2), building('farm', 'wheat_farm', 8, 2, 4),
+    building('mill', 'mill', 5, 2, 2), building('farm', 'farmstead', 8, 2, 4),
     building('home', 'house', 4, 0, 0)];
   const houses = [{ ...base.houses[0], buildingId: 'home', level: 4, builtLevel: 4,
     residents: 32, hasWater: true, breadStock: 8, emptyFoodTicks: 0, lastServicedTick: 6000,

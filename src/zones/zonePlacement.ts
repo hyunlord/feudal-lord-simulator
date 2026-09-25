@@ -63,8 +63,31 @@ export function activeZoneRuleFor(state: Pick<GameState, "zones">, kind: Buildin
   return rule !== null && zoneRuleActive(state, rule) ? rule : null;
 }
 
+/**
+ * AF-8: a farmstead stands in or beside an arable zone — one footprint cell is a member or touches one
+ * orthogonally. Unlike Z-11a this holds before any zone exists: a farmstead tends nothing without a field.
+ */
+export function arableZoneBesideFootprint(state: ZonePlacementWorld, kind: BuildingKind, tx: number, ty: number): Zone | null {
+  const { width, height } = BUILDING_CONFIG_BY_KIND[kind];
+  const cells = new Set<number>();
+  for (let dy = 0; dy < height; dy += 1) {
+    for (let dx = 0; dx < width; dx += 1) {
+      const x = tx + dx;
+      const y = ty + dy;
+      for (const [nx, ny] of [[x, y], [x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]] as const) {
+        if (nx >= 0 && ny >= 0 && nx < state.width && ny < state.height) cells.add(ny * state.width + nx);
+      }
+    }
+  }
+  return zonesOf(state).find(zone => zone.kind === "arable" && zone.membership.some(index => cells.has(index))) ?? null;
+}
+
 /** Z-11 on its own (no terrain, road or material checks). */
 export function zonePlacementCheck(state: ZonePlacementWorld, kind: BuildingKind, tx: number, ty: number): ZonePlacementCheck {
+  if (kind === "farmstead") {
+    const zone = arableZoneBesideFootprint(state, kind, tx, ty);
+    return zone === null ? { ok: false, rule: "arable", reason: ZonePlacementFailure.outside_zone } : { ok: true, rule: "arable", zoneId: zone.id };
+  }
   const rule = activeZoneRuleFor(state, kind);
   if (rule === null) return { ok: true, rule: null, zoneId: null };
   if (rule === "arable" && footprintInsideWall(state, kind, tx, ty)) {
@@ -77,7 +100,7 @@ export function zonePlacementCheck(state: ZonePlacementWorld, kind: BuildingKind
 /** `canPlaceBuilding` followed by the zone rules; the base failure wins when both fail. */
 export function canPlaceBuildingWithZones(state: GameState, kind: BuildingKind, tx: number, ty: number): ZoneAwarePlacementResult {
   const base = canPlaceBuilding(state, kind, tx, ty);
-  if (!base.ok || zonesOf(state).length === 0) return base;
+  if (!base.ok || (zonesOf(state).length === 0 && kind !== "farmstead")) return base;
   const zone = zonePlacementCheck(state, kind, tx, ty);
   return zone.ok ? base : { ok: false, reason: zone.reason, rule: zone.rule };
 }
@@ -102,6 +125,11 @@ export function zoneMismatches(state: GameState): readonly ZoneMismatch[] {
   ];
   const mismatches: ZoneMismatch[] = [];
   for (const building of placed) {
+    if (building.kind === "farmstead") {
+      if (arableZoneBesideFootprint(state, building.kind, building.tx, building.ty) === null) mismatches.push({ buildingId: building.id,
+        kind: building.kind, rule: "arable", reason: "zone_mismatch", sources: [{ type: "building", id: building.id }] });
+      continue;
+    }
     const rule = activeZoneRuleFor(state, building.kind);
     if (rule === null || zoneHoldingFootprint(state, rule, building.kind, building.tx, building.ty) !== null) continue;
     mismatches.push({ buildingId: building.id, kind: building.kind, rule, reason: "zone_mismatch",

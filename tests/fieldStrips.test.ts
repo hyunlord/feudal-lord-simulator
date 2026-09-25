@@ -16,6 +16,9 @@ import { arableStripStateLookup, stripStateKey } from "../src/render/drawArableF
 import { ROAD_STRIP_SETS } from "../src/render/boundaryAssetManifest";
 import { ZONE_VARIANTS } from "../src/render/zoneAssetManifest";
 import { arableStripStates } from "../src/zones/arableStrips";
+import { ARABLE_CONFIG } from "../src/content/arableConfig";
+import { migrateStateV9ToV10 } from "../src/save/migrations/v9ToV10";
+import { inYearTick, stepArableFields } from "../src/zones/arableFields";
 import { HEADLAND, RIDGE_PERIOD, RIDGE_REPEAT_RADIUS, RIDGE_ROWS_PER_STRIP, RIDGE_SPAN } from "../src/world/boundary/arableFields";
 import { YARD_SUBCELLS } from "../src/world/boundary/buildingGrounds";
 import { objectRenderItemsForFrame } from "../src/render/renderObjectFrameCache";
@@ -62,8 +65,29 @@ test("Z during a stroke drops the stroke like Esc and undoes nothing", () => {
 
 const arableScene = (): GameState => JSON.parse(gunzipSync(readFileSync(new URL("./fixtures/boundary/seed2-arable-scene.json.gz", import.meta.url))).toString("utf8")) as GameState;
 
-test("Given the seed 2 arable scene When its strips are laid out Then they follow the zone's axis, show all four crop states, skip the farms and keep a 0.15-0.25 tile headland", () => {
-  const state = arableScene();
+/**
+ * C1c-2 (AF-3, AF-12): strip states come from field records, not from wheat farms, so the scene is opened as a v10 game
+ * (its farms become field cells and a farmstead) and worked from late winter until the farmstead has left strips in
+ * all four C1e states (fallow, ploughed, seedling, growing).
+ */
+function workedArableScene(): GameState {
+  const migrated = migrateStateV9ToV10(arableScene());
+  // Only the field rule runs here, so the farmsteads are staffed as the labour step would staff them.
+  let state: GameState = { ...migrated, tick: migrated.tick - inYearTick(migrated.tick) + ARABLE_CONFIG.fieldWorkFrom, arableFields: [],
+    buildings: migrated.buildings.map(building => building.kind === "farmstead" ? { ...building, workers: 4 } : building) };
+  for (let tick = 0; tick < 6000; tick += 1) {
+    // A game tick rebuilds the building list (labour), which is what the render's strip-state cache keys on.
+    const next = stepArableFields(state).state;
+    const stepped = { ...next, buildings: [...next.buildings] };
+    const seen = new Set(arableStripStateLookup(stepped).values());
+    if (["fallow", "ploughed", "seedling", "growing"].every(stage => seen.has(stage as never))) return stepped;
+    state = { ...stepped, tick: stepped.tick + 1 };
+  }
+  throw new Error("the worked scene never showed all four strip states");
+}
+
+test("Given the seed 2 arable scene When its strips are laid out Then they follow the zone's axis, show all four crop states, skip the buildings and keep a 0.15-0.25 tile headland", () => {
+  const state = workedArableScene();
   const scene = buildGroundBoundaryScene(state);
   const index = scene.zones.zones.findIndex(zone => zone.kind === "arable");
   const field = scene.zones.fields[index];
@@ -76,10 +100,8 @@ test("Given the seed 2 arable scene When its strips are laid out Then they follo
   assert.ok(HEADLAND >= 0.15 && HEADLAND <= 0.25);
   const states = arableStripStateLookup(state);
   assert.deepEqual(new Set(field.bands.map(band => states.get(band.stripId))), new Set(["ploughed", "seedling", "growing", "fallow"]));
-  const farms = new Set<string>();
-  for (const farm of state.buildings.filter(building => building.kind === "wheat_farm")) {
-    for (let dy = 0; dy < 2; dy += 1) for (let dx = 0; dx < 2; dx += 1) farms.add(`${farm.tx + dx},${farm.ty + dy}`);
-  }
+  // No strip lies under a building (the farms are fields now; the farmstead and any other building stay bare, AF-1).
+  const farms = new Set(state.tiles.filter(tile => tile.buildingId !== null).map(tile => `${tile.tx},${tile.ty}`));
   const members = new Set(zone.membership);
   for (const band of field.bands) {
     for (let along = band.from; along <= band.to; along += 1) {

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { migrateStateV9ToV10 } from "../src/save/migrations/v9ToV10";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { advanceTick } from "../src/engine/tick";
@@ -17,9 +18,10 @@ test("schema v1 reaches the latest schema without inventing timber observation h
   // v4 -> v5 adds only the default scenario (spec SC-14); v5 -> v6 adds only empty zones (spec Z-1);
   // v6 -> v7 swaps the income window for a ledger holding the opening balance (spec L-9).
   const { coinLedger: _coinLedger, ...originalRest } = original.state;
-  assert.deepEqual(envelope.state, { ...originalRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
+  // v9 -> v10 turns its wheat farms into arable fields and farmsteads (spec AF-12).
+  assert.deepEqual(envelope.state, migrateStateV9ToV10({ ...originalRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
     ledger: { entries: [{ id: "ledger-000001", tick: original.state.tick, account: "cash", category: "opening_balance", amount: original.state.treasuryCoin,
-    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } });
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } }));
   const next = advanceTick({ ...envelope.state, wallConstructionPriority: "balanced",
     wallConstructionReserve: { resource: "timber", sources: [], proclaimedTick: envelope.state.tick } });
   assert.equal(next.timberProductionWindow?.availableTimber, placementSpendableResource(next, "timber"));

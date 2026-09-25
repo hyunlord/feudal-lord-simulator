@@ -42,6 +42,7 @@ export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
 export interface AutoplayPolicy { readonly maxHousingLots: number }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
 const NONE = { kind: "none" } as const satisfies AutoplayAction;
+const ERA_PHASE_SEARCH_WORK = 768;
 const coordinateKey = (coordinate: TileCoordinate): string => `${coordinate.tx},${coordinate.ty}`;
 function compareCoordinates(left: TileCoordinate, right: TileCoordinate): number {
   return left.ty - right.ty || left.tx - right.tx;
@@ -158,7 +159,7 @@ function roadAccessAction(state: GameState): AutoplayAction {
   return NONE;
 }
 
-function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
+function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate: TileCoordinate) => boolean = () => true): AutoplayAction {
   if (kind === 'market') return urbanServiceAction(state);
   const output = BUILDING_CONFIG_BY_KIND[kind].production?.output;
   // A full material destination cannot accept another producer's output.
@@ -167,14 +168,14 @@ function buildAction(state: GameState, kind: BuildingKind): AutoplayAction {
   }
   const cost = BUILDING_CONFIG_BY_KIND[kind].buildCost;
   if ((["timber", "stone"] as const).some(resource => (cost[resource] ?? 0) > placementSpendableResource(state, resource))) return NONE;
-  const site = findBuildSite(state, kind, (coordinate) =>
+  const site = findBuildSite(state, kind, (coordinate) => accepts(coordinate) && (
     !BUILDING_CONFIG_BY_KIND[kind].requiresRoad ||
-    hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate)),
+    hasConnectedConstructionRoute(state, virtualBuilding(kind, coordinate))),
   );
   if (site !== null) return preserveRoadExpansion(state, { ...site, kind }) ?? { kind: "place_building", building: kind, tx: site.tx, ty: site.ty };
   if (autoplaySearchExhausted()) return NONE;
   const roads = roadTiles(state);
-  const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty))
+  const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, kind, tile) && autoplayCanPlace(state, kind, tile.tx, tile.ty) && accepts(tile))
     .map(tile => ({ tile, distance: Math.min(...roads.map(road => Math.abs(road.tx - tile.tx) + Math.abs(road.ty - tile.ty))) }))
     .sort((a, b) => a.distance - b.distance || compareCoordinates(a.tile, b.tile));
   for (const candidate of candidates.slice(0, 24)) {
@@ -247,6 +248,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     }
     return carryFoodTransient(NONE, metadata);
   }
+  const eraPhase = () => autoplayEraAction(state, buildAction);
   for (const decide of [
     () => waterAction(state),
     () => roadAccessAction(state),
@@ -257,9 +259,11 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => housingAction(state, policy),
     () => urbanServiceAction(state, diagnostic),
     () => storageAction(state),
-    () => autoplayEraAction(state, buildAction),
+    eraPhase,
   ]) {
-    const action = runAutoplaySearchPhase(decide);
+    // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the
+    // centre that first layout probe can exceed an ordinary phase, so the era phase gets four phases' work.
+    const action = runAutoplaySearchPhase(decide, decide === eraPhase ? ERA_PHASE_SEARCH_WORK : undefined);
     if (action.foodTransient !== undefined) metadata = action;
     if (action.kind !== "none") return carryFoodTransient(action, metadata);
   }

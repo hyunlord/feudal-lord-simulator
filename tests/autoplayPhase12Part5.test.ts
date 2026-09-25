@@ -203,13 +203,16 @@ test("Given default autoplay When run past the new promotion holds Then populati
   const finalBuildingKinds = new Set(trace.finalState.buildings.map(({ kind }) => kind));
   const gaps = trace.actions.slice(1).map(({ tick }, index) => tick - (trace.actions[index]?.tick ?? tick));
 
+  // AF-13: the grain slot is now the farmstead, and later grain demand grows an existing farmstead's field
+  // (a `paint_zone` action) rather than placing a second farmstead building, so the bootstrap sequence is
+  // farmstead, then mill, then a second mill as the expected harvest grows.
   const foodBuilds = trace.actions.flatMap(({ action }) => action.kind === 'place_building'
-    && ['wheat_farm', 'mill', 'granary'].includes(action.building) ? [action.building] : []);
-  assert.deepEqual(foodBuilds.slice(0, 3), ['wheat_farm', 'mill', 'wheat_farm']);
+    && ['farmstead', 'mill', 'granary'].includes(action.building) ? [action.building] : []);
+  assert.deepEqual(foodBuilds.slice(0, 3), ['farmstead', 'mill', 'mill']);
   assert.equal(peak >= 100, true, `timeline=${JSON.stringify(trace.population)}`);
   assert.equal(finalPopulation >= 80, true, `timeline=${JSON.stringify(trace.population)}`);
   assert.equal(finalPopulation >= peak * 0.75, true, `timeline=${JSON.stringify(trace.population)}`);
-  assert.equal(buildingKinds.has("wheat_farm"), true);
+  assert.equal(buildingKinds.has("farmstead"), true);
   assert.equal(buildingKinds.has("mill"), true);
   assert.equal(buildingKinds.has("house"), true);
   assert.equal(finalBuildingKinds.has("granary"), true);

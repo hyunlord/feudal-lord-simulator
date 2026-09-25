@@ -10,17 +10,17 @@ import { blocksRepeatedFoodExpansion, hasActiveFoodObservation } from './autopla
 import { foodFacilityCount, foodFacilityWithinLimit } from './autoplayFoodLimits';
 import { measuredFoodDecision } from './autoplayFoodMeasuredDecision';
 import { housingLotCount } from '../population/housing';
-import type { BuildingKind } from '../content/buildingConfig';
+import { arableAction, type FarmsteadBuildAction } from './autoplayArable';
 import { isBuildingConstructionSite } from '../economy/construction';
 import type { AutoplayAction } from './autoplay.types';
 import type { GameState } from './engine.types';
 
-type BuildAction = (state: GameState, kind: BuildingKind) => AutoplayAction;
+type BuildAction = FarmsteadBuildAction;
 
 export function hasPendingFoodChain(state: GameState): boolean {
   return state.constructionSites.some((site) =>
     isBuildingConstructionSite(site) &&
-    (site.kind === "wheat_farm" || site.kind === "mill" || site.kind === "granary")
+    (site.kind === "farmstead" || site.kind === "mill" || site.kind === "granary")
   );
 }
 
@@ -36,7 +36,8 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
     return result;
   };
   if (housingLotCount(state) === 0) return finish({ kind: "none" }, 'no_housing');
-  const wheatCount = foodFacilityCount(state, "wheat_farm");
+  // AF-13: the grain slot is the farmstead (with its field); painted fields waiting for one count as started.
+  const wheatCount = foodFacilityCount(state, "farmstead");
   const millCount = foodFacilityCount(state, "mill");
   const granaryCount = foodFacilityCount(state, "granary");
   const availableBread = state.buildings.reduce((sum, b) => sum + (b.inventory.bread ?? 0), 0)
@@ -69,6 +70,11 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
     if (!foodFacilityWithinLimit(state, kind)) {
       buildReason = 'facility_limit'; return { kind: 'none' };
     }
+    if (kind === 'farmstead') {
+      const action = arableAction(state, buildAction, !completeChain || check('build', kind, 'staff', canStaffFoodExpansion(state, kind)));
+      if (action.kind === 'none') buildReason = 'build_returned_none';
+      return action;
+    }
     if (check('build', kind, 'repeat', blocksRepeatedFoodExpansion(state, kind))) {
       buildReason = 'repeat_blocked'; return { kind: 'none' };
     }
@@ -82,12 +88,18 @@ export function foodAction(state: GameState, buildAction: BuildAction, collector
   };
   if (recovery !== null) {
     buildReason = 'recovery_selected';
-    return finish(foodBuildAction(recovery), buildReason);
+    const action = foodBuildAction(recovery);
+    // AF-13: a grain shortage with no field or farmstead to add must not hide a mill the bread rules ask for.
+    if (action.kind === 'none' && recovery === 'farmstead') {
+      const bread = measuredFoodDecision(state, { ignoreGrain: true });
+      if (bread.kind === 'mill') return finish(foodBuildAction('mill'), buildReason);
+    }
+    return finish(action, buildReason);
   }
   if (completeChain) return finish({ kind: 'none' }, decision?.reason ?? 'observation_warmup');
-  if (wheatCount < target && wheatCount <= millCount) return finish(foodBuildAction("wheat_farm"), buildReason);
+  if (wheatCount < target && wheatCount <= millCount) return finish(foodBuildAction("farmstead"), buildReason);
   if (millCount < target && millCount <= granaryCount) return finish(foodBuildAction("mill"), buildReason);
-  if (wheatCount < target) return finish(foodBuildAction("wheat_farm"), buildReason);
+  if (wheatCount < target) return finish(foodBuildAction("farmstead"), buildReason);
   if (granaryCount < target) return finish(foodBuildAction("granary"), buildReason);
   if (millCount < target) return finish(foodBuildAction("mill"), buildReason);
   return finish({ kind: 'none' }, 'bootstrap_exhausted');

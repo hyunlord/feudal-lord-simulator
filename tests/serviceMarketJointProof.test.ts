@@ -5,6 +5,7 @@ import test from 'node:test';
 import { decideNextAction } from '../src/engine/autoplay';
 import { autoplayActionToGameAction } from '../src/engine/autoplayActions';
 import { gameReducer } from '../src/state/gameStore';
+import { migrateStateV9ToV10 } from '../src/save/migrations/v9ToV10';
 import type { GameState } from '../src/engine/engine.types';
 import { clearAutoplayServiceProofMemo, preservesAutoplayServiceSpace, resetAutoplayServiceSearch } from '../src/engine/autoplayServiceSpace';
 import { runAutoplaySearch, runAutoplaySearchPhase, type SearchDiagnosticCollector } from '../src/engine/autoplaySearchBudget';
@@ -16,7 +17,10 @@ function natural(): GameState {
 
 test('Given natural seed1 after palisade completion When the advisor must establish its first market Then a legal action progresses under the original phase budget', () => {
   clearAutoplayServiceProofMemo();
-  const state = natural();
+  // AF-13/v10: the captured save predates the wheat-farm retirement, so it is migrated (as a real load would)
+  // before the advisor decides; otherwise its 18 legacy wheat farms count as zero farmsteads and the advisor
+  // reaches for a grain action instead of establishing the market this proof is about.
+  const state = migrateStateV9ToV10(natural());
   const diagnostic: FoodDiagnosticCollector = {};
   const action = decideNextAction(state, { maxHousingLots: 24 }, diagnostic);
   const command = autoplayActionToGameAction(action, state);
@@ -25,7 +29,7 @@ test('Given natural seed1 after palisade completion When the advisor must establ
   assert.notEqual(next, state);
   assert.ok(action.kind === 'place_road' || action.kind === 'place_building' && action.building === 'market');
   const warm: FoodDiagnosticCollector = {};
-  assert.deepEqual(decideNextAction(natural(), { maxHousingLots: 24 }, warm), action);
+  assert.deepEqual(decideNextAction(migrateStateV9ToV10(natural()), { maxHousingLots: 24 }, warm), action);
   assert.deepEqual(warm, diagnostic);
 });
 

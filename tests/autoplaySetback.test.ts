@@ -89,12 +89,13 @@ for (const completed of [false, true]) test(`Given a ${completed ? 'complete' : 
   for (const tx of [3, 6]) assert.equal(canPlaceBuilding(state, 'house', tx, 6).ok, true);
 });
 
-test('Given an independent wall construction site When placing a farm across its path Then the planned wall is protected', () => {
+test('Given an independent wall construction site When placing a building across its path Then the planned wall is protected', () => {
   const state = ground();
   state.buildings = [];
   state.constructionSites = [createPalisadeConstructionSite({ id: 'site', wallId: 'wall', segmentIndex: 0, gateDistance: 0, order: 0, path: [{ x: 5, y: 4 }, { x: 5, y: 6 }], startedTick: 0 })];
   state.treasuryTimber = 1000;
-  assert.deepEqual(canPlaceBuilding(state, 'wheat_farm', 4, 4), { ok: false, reason: 'wall_clearance' });
+  // AF-13: the wheat farm is retired (locked_era); a storehouse is the same 2x2 footprint for this wall check.
+  assert.deepEqual(canPlaceBuilding(state, 'storehouse', 4, 4), { ok: false, reason: 'wall_clearance' });
 });
 
 test('Given a shore-adjacent legal lot without a wall When placing manually Then automatic coastline preferences do not restrict the player', () => {
@@ -111,12 +112,13 @@ for (const path of [
   [{ x: 2, y: 5 }, { x: 10, y: 5 }],
   [{ x: 2, y: 2 }, { x: 10, y: 10 }],
   [{ x: 2, y: 10 }, { x: 10, y: 2 }],
-]) test(`Given wall path ${JSON.stringify(path)} Then a crossing farm is rejected by the actual reducer`, () => {
+]) test(`Given wall path ${JSON.stringify(path)} Then a crossing building is rejected by the actual reducer`, () => {
   const state = ground();
   state.buildings = [];
   state.constructionSites = [];
   state.treasuryTimber = 1000;
   state.palisade = { id: 'wall', gate: { x: 5, y: 5 }, polygon: path, segments: [{ id: 'segment', order: 0, edgePath: path, tileCount: 8, completed: true, constructionSiteId: null }] };
-  assert.deepEqual(canPlaceBuilding(state, 'wheat_farm', 5, 5), { ok: false, reason: 'wall_clearance' });
-  assert.equal(gameReducer(state, { type: 'place_building', kind: 'wheat_farm', tx: 5, ty: 5 }), state);
+  // AF-13: the wheat farm is retired (locked_era); a storehouse is the same 2x2 footprint for this wall check.
+  assert.deepEqual(canPlaceBuilding(state, 'storehouse', 5, 5), { ok: false, reason: 'wall_clearance' });
+  assert.equal(gameReducer(state, { type: 'place_building', kind: 'storehouse', tx: 5, ty: 5 }), state);
 });

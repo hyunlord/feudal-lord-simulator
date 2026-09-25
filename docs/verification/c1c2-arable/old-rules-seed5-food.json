@@ -1,0 +1,10 @@
+{
+ "description": "Old wheat-farm rules (trunk d823005), seed-5 stable 24-lot town (tests/fixtures/money/seed5-stable-2ba96a7.json.gz) with the autoplay driver for 24,000 ticks: bread made / requested and mill raw-wheat shortage over ten 2,400-tick windows (same measure as gate 3).",
+ "breadProduced": 6363,
+ "requestedBread": 5760,
+ "breadRatio": 1.1047,
+ "rawStarvedTicks": 263533,
+ "eligibleMillTicks": 454298,
+ "rawStarvationRatio": 0.5801,
+ "mills": 19
+}

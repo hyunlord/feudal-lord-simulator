@@ -10,7 +10,7 @@ import {
   runEconomyHarness,
 } from "../scripts/economyHarness";
 import type { CarterWalker } from "../src/agents/walker.types";
-import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, isRetiredBuildingKind, type Building } from "../src/content/buildingConfig";
 import type { ResourceType } from "../src/content/resourceConfig";
 import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
@@ -96,7 +96,8 @@ test("economy harness fixed scenario has legal building footprints", () => {
       treasuryTimber: 1_000,
     treasuryCoin: 0,
     };
-    assert.deepEqual(canPlaceBuilding(clearedSelf, building.kind, building.tx, building.ty), { ok: true });
+    // The harness keeps its two legacy wheat farms (AF-12: the kind still runs in pre-v10 states); only live kinds must be placeable.
+    if (!isRetiredBuildingKind(building.kind)) assert.deepEqual(canPlaceBuilding(clearedSelf, building.kind, building.tx, building.ty), { ok: true });
 
     for (const key of footprint(building)) {
       const tile = scenario.tiles.find((candidate) => `${candidate.tx},${candidate.ty}` === key);

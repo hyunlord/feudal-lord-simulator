@@ -10,10 +10,19 @@ import { gameReducer } from '../src/state/gameStore';
 import { resolveBuildingToConstructionSiteRoute } from '../src/engine/routing';
 import { carterPathTravelCost } from '../src/agents/carterTravelCost';
 import { getTile } from '../src/world/grid';
+import { createConstructionSite } from '../src/economy/construction';
 function fixture(name: string): GameState {
   return JSON.parse(gunzipSync(readFileSync(new URL(`./fixtures/autoplay/${name}.json.gz`, import.meta.url))).toString('utf8'));
 }
 function endpoint(): GameState { return fixture('construction-endpoint-seed3'); }
+// AF-13: the grain slot is now the farmstead, so this pre-v10 fixture (built directly from wheat farms, still
+// legal and still simulating) reads as food-chain-incomplete under the new counting rule. A pending farmstead
+// site (road-connected, so it needs no extra logistics of its own) marks the food chain as already in
+// progress, matching the fixture's original "food is settled" premise so this corridor test stays about roads.
+function withPendingFoodChain(state: GameState): GameState {
+  const site = createConstructionSite({ ordinal: 999999, kind: 'farmstead', tx: 12, ty: 9, startedTick: state.tick });
+  return { ...state, constructionSites: [...state.constructionSites, site] };
+}
 function routeCost(state: GameState): number {
   const source = state.buildings.find(b => b.id === 'construction-site-000072');
   const target = state.constructionSites.find(s => s.id === 'palisade-000070-segment-027-stone');
@@ -23,7 +32,7 @@ function routeCost(state: GameState): number {
   return carterPathTravelCost(path, tile => getTile(state, tile)?.hasRoad === true);
 }
 test('actual endpoint advisor builds accepted shorter construction corridor without material or queue changes', () => {
-  let state = endpoint(); const original = state;
+  let state = withPendingFoodChain(endpoint()); const original = state;
   assert.equal(routeCost(state), 28);
   for (const expected of [ { kind: 'place_road', from: { tx: 3, ty: 21 }, to: { tx: 3, ty: 21 } }, { kind: 'place_road', from: { tx: 3, ty: 22 }, to: { tx: 3, ty: 36 } } ]) {
     const action = decideNextAction(state, { maxHousingLots: 24 });
@@ -43,8 +52,10 @@ test('real food recovery wins over an available optional material shortcut', () 
     houses: original.houses.map(h => ({ ...h, breadStock: 0 })) };
   assert.equal(constructionLogisticsAction(state).kind, 'place_road');
   const action = decideNextAction(state, { maxHousingLots: 24 });
-  assert.equal(action.kind, 'place_building');
-  if (action.kind === 'place_building') assert.equal(action.building, 'wheat_farm');
+  // AF-13: with every grain source gone and no field painted yet, the grain step paints a field block first
+  // (a farmstead only follows an untended field); the advisor still takes this over the optional road shortcut.
+  assert.equal(action.kind, 'paint_zone');
+  if (action.kind === 'paint_zone') assert.equal(action.zone, 'arable');
 });
 
 test('shared prefix still rejects the last service pad and may retain only a safe leading tile', async () => {

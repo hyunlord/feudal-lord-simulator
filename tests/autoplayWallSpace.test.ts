@@ -13,7 +13,10 @@ test('Given a feasible hamlet When autoplay adds buildings Then completed and pe
   let state = createGrowthOpening(3).state;
   const driver = createAutoplayTraceDriver({ id: 'wall-space-regression', source: 'original seed 3', policy: { maxHousingLots: 24 } });
   const checkedKinds = new Set<string>();
-  while (state.tick <= 6600) {
+  const requiredKinds = ['sawmill', 'farmstead', 'mill', 'chapel'] as const;
+  // AF-13 grows the field before the farmstead, adding steps ahead of chapel; run until every required kind
+  // is seen (bounded generously) instead of a fixed tick, so the check does not depend on host CPU load.
+  while (state.tick <= 20000 && requiredKinds.some(kind => !checkedKinds.has(kind))) {
     const next = driver.apply(state);
     if (next !== state && next.constructionSites !== state.constructionSites) {
       const footprints = palisadeFootprintsForState(next);
@@ -25,7 +28,7 @@ test('Given a feasible hamlet When autoplay adds buildings Then completed and pe
     }
     state = advanceTick(next);
   }
-  for (const kind of ['sawmill', 'wheat_farm', 'mill', 'chapel']) {
+  for (const kind of requiredKinds) {
     assert.ok(checkedKinds.has(kind), `ordinary ${kind} construction must preserve a validated wall`);
   }
   const replacement = driver.appliedActions.find(action => action.advisorAction.kind === 'place_building' && action.advisorAction.building === 'mill')?.advisorAction;
@@ -40,7 +43,11 @@ test('Given a pending footprint When it replaces the same completed plot Then wa
   // Given: replay to immediately before the original loss of wall feasibility.
   let state = createGrowthOpening(3).state;
   const driver = createAutoplayTraceDriver({ id: 'pending-wall-space', source: 'original seed 3', policy: { maxHousingLots: 24 } });
-  while (state.tick < 6600) state = advanceTick(driver.apply(state));
+  // AF-13 adds field-painting steps ahead of the chapel; stop as soon as it is built (bounded generously)
+  // instead of a fixed tick, so this does not depend on host CPU load.
+  while (!state.buildings.some(building => building.kind === 'chapel') && state.tick <= 20000) {
+    state = advanceTick(driver.apply(state));
+  }
   const chapel = state.buildings.find(building => building.kind === 'chapel');
   assert.ok(chapel);
   const pending = { ...state, buildings: state.buildings.filter(building => building.id !== chapel.id),

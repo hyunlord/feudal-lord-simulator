@@ -7,12 +7,12 @@ import { measuredFoodDecision } from '../src/engine/autoplayFoodMeasuredDecision
 import { foodAction } from '../src/engine/autoplayFood';
 import { foodFacilityWithinLimit } from '../src/engine/autoplayFoodLimits';
 import type { GameState } from '../src/engine/engine.types';
-import { building, foodBuildRequest, routedStockTown } from './helpers/autoplayFoodFixtures';
+import { building, foodBuildRequest, routedStockTown, withAmpleGrain } from './helpers/autoplayFoodFixtures';
 
 const REQUIRED_MARGIN_FACTOR = BALANCE.FOOD_PRODUCTION_MARGIN_FACTOR;
 
-function observeFoodMargin(totals: FoodEfficiencyTotals, extraFarm = false): GameState {
-  const base = routedStockTown(true);
+function observeFoodMargin(totals: FoodEfficiencyTotals, extraFarm = false, ample = false): GameState {
+  const base = ample ? withAmpleGrain(routedStockTown(true)) : routedStockTown(true);
   let state: GameState = {
     ...base,
     houses: base.houses.map(house => ({ ...house, breadStock: 8, emptyFoodTicks: 0 })),
@@ -61,7 +61,8 @@ test('E1 Given seed2-like blade-edge wheat output When measured Then the food ad
   const metrics = foodEfficiencyMetrics(state);
   assert.equal(metrics.wheatProduced < metrics.wheatConsumed * REQUIRED_MARGIN_FACTOR, true);
   assert.equal(metrics.breadProduced >= metrics.requestedBread, true);
-  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+  // AF-13: the grain slot is now the farmstead (its field), not the retired wheat farm.
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'farmstead', reason: 'actual_wheat_deficit' });
 });
 
 test('E1 margin acts before a missed meal or an observed raw-starved tick', () => {
@@ -76,10 +77,12 @@ test('E1 margin acts before a missed meal or an observed raw-starved tick', () =
     rawStarvedTicks: 0,
     eligibleMillTicks: FOOD_EFFICIENCY_WINDOW,
   });
-  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'farmstead', reason: 'actual_wheat_deficit' });
 });
 
 test('E2 Given twenty percent production margin When measured Then the food advisor does not expand', () => {
+  // AF-13: grain is judged by the expected harvest, so an ample farmstead/arable supply is given here to
+  // isolate the bread margin logic this test targets.
   const state = observeFoodMargin({
     wheatProduced: 1440,
     wheatConsumed: 1200,
@@ -90,7 +93,7 @@ test('E2 Given twenty percent production margin When measured Then the food advi
     breadExported: 0,
     rawStarvedTicks: 0,
     eligibleMillTicks: FOOD_EFFICIENCY_WINDOW,
-  });
+  }, false, true);
   const metrics = foodEfficiencyMetrics(state);
   assert.equal(metrics.wheatProduced >= metrics.wheatConsumed * REQUIRED_MARGIN_FACTOR, true);
   assert.equal(metrics.breadProduced >= metrics.requestedBread * REQUIRED_MARGIN_FACTOR, true);
@@ -98,6 +101,7 @@ test('E2 Given twenty percent production margin When measured Then the food advi
 });
 
 test('a wheat margin warning chooses mill capacity when stocked mills are the immediate bread bottleneck', () => {
+  // AF-13: an ample farmstead/arable supply isolates the mill-vs-farm choice this test targets.
   const state = observeFoodMargin({
     wheatProduced: 726,
     wheatConsumed: 722,
@@ -108,12 +112,12 @@ test('a wheat margin warning chooses mill capacity when stocked mills are the im
     breadExported: 0,
     rawStarvedTicks: 1300,
     eligibleMillTicks: 12000,
-  }, true);
+  }, true, true);
   assert.deepEqual(measuredFoodDecision(state), { kind: 'mill', reason: 'actual_bread_deficit' });
 });
 
 test('the food advisor falls through to a farm when the measured mill bottleneck meets the mill limit', () => {
-  const state = observeFoodMargin({
+  let state = observeFoodMargin({
     wheatProduced: 726,
     wheatConsumed: 722,
     breadProduced: 361,
@@ -124,7 +128,15 @@ test('the food advisor falls through to a farm when the measured mill bottleneck
     rawStarvedTicks: 1300,
     eligibleMillTicks: 12000,
   });
+  // The mill cap now scales with the measured annual wheat need (not a fixed count), so add mills until it
+  // is genuinely reached rather than pinning a specific mill count to today's constant.
+  for (let extra = 1; foodFacilityWithinLimit(state, 'mill') && extra <= 50; extra += 1) {
+    state = { ...state, buildings: [...state.buildings, { ...building(`mill-extra-${extra}`, 'mill', 11 + extra, 0, 2), inventory: { wheat: 8 } }] };
+  }
   assert.equal(foodFacilityWithinLimit(state, 'mill'), false);
-  assert.deepEqual(measuredFoodDecision(state), { kind: 'wheat_farm', reason: 'actual_wheat_deficit' });
-  assert.deepEqual(foodAction(state, foodBuildRequest), { kind: 'place_building', building: 'wheat_farm', tx: 0, ty: 0 });
+  // AF-13: the grain slot is the farmstead; recovery starts by painting its field (a field precedes the building).
+  assert.deepEqual(measuredFoodDecision(state), { kind: 'farmstead', reason: 'actual_wheat_deficit' });
+  const action = foodAction(state, foodBuildRequest);
+  assert.equal(action.kind, 'paint_zone');
+  assert.equal(action.kind === 'paint_zone' ? action.zone : null, 'arable');
 });

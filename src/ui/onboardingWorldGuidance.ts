@@ -4,7 +4,7 @@ import { createConstructionSite } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "../engine/simulationPorts";
 import { getTile, type TileCoordinate } from "../world/grid";
-import { canPlaceBuilding } from "../world/placement";
+import { canPlaceBuildingWithZones } from "../zones/zonePlacement";
 import { canPlaceRoad } from "../world/roadGraph";
 import {
   completedCoreOnboardingBuildings,
@@ -46,6 +46,7 @@ const BUILDING_TARGET_LABELS = {
   granary: "여기에 곡창을 지으세요",
   chapel: "여기에 예배당을 지으세요",
   wheat_farm: "여기에 밀밭을 지으세요",
+  farmstead: "여기에 헛간을 지으세요",
   mill: "여기에 방앗간을 지으세요",
   logging_camp: "여기에 벌목소를 지으세요",
   sawmill: "여기에 제재소를 지으세요",
@@ -180,8 +181,8 @@ function firstBuildableOriginForKind(
     if (reservedOverlaps(kind, origin, reserved)) continue;
     if (kind === "well" && !wellCompletesTask(state, origin)) continue;
     if (timberRoads !== null && !storehouseOnTimberDeliveryRoad(state, origin, timberRoads)) continue;
-    if (!canPlaceBuilding(state, kind, origin.tx, origin.ty).ok) continue;
-    if (kind === "wheat_farm" && !hasFarmConstructionMaterialRoute(state, origin)) continue;
+    if (!canPlaceBuildingWithZones(state, kind, origin.tx, origin.ty).ok) continue;
+    if (kind === "farmstead" && !hasFarmConstructionMaterialRoute(state, origin)) continue;
     return origin;
   }
   return null;
@@ -190,7 +191,7 @@ function firstBuildableOriginForKind(
 function hasFarmConstructionMaterialRoute(state: GameState, origin: TileCoordinate): boolean {
   const site = createConstructionSite({
     ordinal: state.nextConstructionOrdinal,
-    kind: "wheat_farm",
+    kind: "farmstead",
     tx: origin.tx,
     ty: origin.ty,
     startedTick: state.tick,

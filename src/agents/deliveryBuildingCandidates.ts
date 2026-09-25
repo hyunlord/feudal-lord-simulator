@@ -51,7 +51,8 @@ export function deliverCandidate(
   routes: DeliveryRoutePort,
 ): RouteCandidate | null {
   if (!isStorableResource(resource)) return null;
-  const stock = amountOf(producer.inventory, resource);
+  // Stock another carter already claimed (a mill fetching from a barn, AF-9) stays for that carter.
+  const stock = Math.min(amountOf(producer.inventory, resource), inventory.availableStock(producer, resource));
   if (stock === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
   const candidates = buildings.flatMap((building) => {
@@ -59,7 +60,7 @@ export function deliverCandidate(
     const path = routes.betweenBuildings(producer.id, building.id);
     if (path === null || path.length === 0) return [];
     const amount = Math.min(
-      BALANCE.CARTER_CAPACITY,
+      BUILDING_CONFIG_BY_KIND[producer.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY,
       stock,
       storageIntakeSpace(building, resource, inventory.availableSpace(building)),
     );
@@ -79,8 +80,11 @@ export function fetchCandidate(
   const homeSpace = inventory.availableSpace(converter);
   if (homeSpace === 0) return null;
   const storeKind = STORAGE_KIND_BY_RESOURCE[resource];
-  const candidates = buildings.flatMap((building) => {
-    if (building.kind !== storeKind) return [];
+  // AF-9: a mill also fetches wheat straight from a farmstead's barn. When no store or barn holds the input, a
+  // converter fetches it from the producer that makes it (a sawmill from a logging camp), so a store full of other
+  // goods cannot stop a chain.
+  const from = (accepts: (building: Building) => boolean) => buildings.flatMap((building) => {
+    if (!accepts(building)) return [];
     const path = routes.betweenBuildings(converter.id, building.id);
     if (path === null || path.length === 0) return [];
     const amount = Math.min(
@@ -90,6 +94,9 @@ export function fetchCandidate(
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });
+  const stored = from(building => building.kind === storeKind || BUILDING_CONFIG_BY_KIND[building.kind].fieldOutput === resource);
+  const candidates = stored.length > 0 ? stored
+    : from(building => building.id !== converter.id && BUILDING_CONFIG_BY_KIND[building.kind].production?.output === resource);
   const production = BUILDING_CONFIG_BY_KIND[converter.kind].production;
   const physical = amountOf(converter.inventory, resource);
   const usable = inventory.availableStock(converter, resource);

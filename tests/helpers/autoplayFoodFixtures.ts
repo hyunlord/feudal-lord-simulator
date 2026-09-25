@@ -2,6 +2,7 @@ import { foodFlowLayout, foodFlowRoutes } from '../../src/engine/autoplayFoodFlo
 import { DEFAULT_GAME_STATE } from '../../src/state/gameStore';
 import type { Building, BuildingKind } from '../../src/content/buildingConfig';
 import type { GameState } from '../../src/engine/engine.types';
+import type { Zone } from '../../src/zones/zone.types';
 
 export function building(id: string, kind: BuildingKind, tx: number, ty: number, workers: number): Building {
   return { id, kind, tx, ty, workers, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
@@ -43,6 +44,54 @@ export function routedStockTown(stockIsReachable: boolean): GameState {
       const hasRoad = ty === 1 && (stockIsReachable || tx <= 10 || tx >= 18);
       return { tx, ty, terrain: 'grass', hasRoad, buildingId: null };
     }), pathCache: {},
+  };
+}
+
+/**
+ * AF-13: appends two ample farmsteads (each tending a 31×2 arable block, ~1580 wheat/year) past the
+ * fixture's own map, wired into its existing road network (from the first road tile found) so
+ * `measuredFoodDecision`'s expected-harvest grain check reads "not short" no matter how much bread the
+ * fixture's houses demand. Use this where a test's point is the bread/mill logic downstream of grain, not
+ * the grain decision itself.
+ */
+export function withAmpleGrain(state: GameState): GameState {
+  const width = state.width;
+  const height = state.height;
+  const anchor = state.tiles.find(tile => tile.hasRoad) ?? { tx: 0, ty: 0 };
+  const corridorX = anchor.tx;
+  const corridorRow = height;
+  const farmRow = height + 1;
+  const zoneRow0 = height + 2;
+  const newWidth = Math.max(width, corridorX + 70);
+  const newHeight = height + 4;
+  const oldRows = Array.from({ length: height }, (_, ty) => {
+    const row = state.tiles.slice(ty * width, ty * width + width)
+      .map(tile => tile.tx === corridorX && ty > anchor.ty ? { ...tile, hasRoad: true, buildingId: null } : tile);
+    const pad = Array.from({ length: newWidth - width }, (_, i) => ({ tx: width + i, ty, terrain: 'grass' as const, hasRoad: false, buildingId: null }));
+    return [...row, ...pad];
+  }).flat();
+  const newRows = Array.from({ length: newHeight - height }, (_, offset) => {
+    const ty = height + offset;
+    return Array.from({ length: newWidth }, (_, tx) => ({
+      tx, ty, terrain: 'grass' as const, buildingId: null,
+      hasRoad: (tx === corridorX && ty <= corridorRow) || (ty === corridorRow && tx >= corridorX && tx <= corridorX + 66),
+    }));
+  }).flat();
+  const strip = (colFrom: number): readonly number[] => {
+    const cells: number[] = [];
+    for (let dy = 0; dy < 2; dy += 1) for (let dx = 0; dx < 31; dx += 1) cells.push((zoneRow0 + dy) * newWidth + (colFrom + dx));
+    return cells.sort((a, b) => a - b);
+  };
+  const zones: Zone[] = [
+    { id: 'zone-ample-grain-a', kind: 'arable', strokes: [], membership: strip(corridorX + 1), createdOrdinal: 9001 },
+    { id: 'zone-ample-grain-b', kind: 'arable', strokes: [], membership: strip(corridorX + 35), createdOrdinal: 9002 },
+  ];
+  return {
+    ...state, width: newWidth, height: newHeight, tiles: [...oldRows, ...newRows], pathCache: {},
+    zones: [...(state.zones ?? []), ...zones],
+    buildings: [...state.buildings,
+      building('ample-farmstead-a', 'farmstead', corridorX + 1, farmRow, 4),
+      building('ample-farmstead-b', 'farmstead', corridorX + 35, farmRow, 4)],
   };
 }
 

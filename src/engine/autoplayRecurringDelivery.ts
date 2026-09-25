@@ -50,7 +50,7 @@ export function recordRecurringDelivery(state: GameState, activity: {
   if (previous?.tick === state.tick) return state;
   const rewind = previous !== undefined && previous.tick > state.tick;
   const routes = recurringDeliveryRoutes(state);
-  const completeChain = ['wheat_farm', 'mill', 'granary'].every(kind => state.buildings.some(b => b.kind === kind));
+  const completeChain = ['farmstead', 'mill', 'granary'].every(kind => state.buildings.some(b => b.kind === kind));
   const homes = routes.homes.flatMap(route => {
     const house = state.houses.find(h => h.buildingId === route.buildingId);
     const served = activity.servedHouses.find(h => h.buildingId === route.buildingId);

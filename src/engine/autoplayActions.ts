@@ -48,7 +48,7 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
         ty: action.ty,
         ...(action.materialRecovery === undefined ? {} : { materialRecovery: action.materialRecovery }),
         ...(
-          action.building === "granary" || action.building === "mill" || action.building === "wheat_farm"
+          action.building === "granary" || action.building === "mill"
             ? { autoplayFoodObservation: true }
             : {}
         ),
@@ -59,6 +59,8 @@ function autoplayCommandToGameAction(action: AutoplayAction, state?: GameState):
       return state === undefined ? null : eraGameAction(state, action.candidatePath);
     case "set_wall_construction_priority":
       return { type: "set_wall_construction_priority", priority: action.priority };
+    case "paint_zone":
+      return { type: "zone_paint", kind: action.zone, stroke: action.stroke };
     case "none":
       return null;
     default:

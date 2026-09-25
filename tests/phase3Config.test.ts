@@ -62,6 +62,11 @@ test("Phase 3 building table includes chapel without changing ordinary building 
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "wheat", input: null, inputPerOutput: 0, ticksPerOutput: 40 },
       storageCapacity: 20, serviceRadius: 0,
     },
+    farmstead: {
+      kind: "farmstead", name: "헛간", width: 1, height: 1, workersRequired: 4, buildCost: { timber: 20 },
+      requiresAdjacentTerrain: null, requiresRoad: true,       production: null, storageCapacity: 1000, serviceRadius: 0,
+      fieldOutput: "wheat", carterCapacity: 60,
+    },
     mill: {
       kind: "mill", name: "방앗간", width: 1, height: 1, workersRequired: 2, buildCost: { timber: 30 },
       requiresAdjacentTerrain: null, requiresRoad: true,       production: { output: "bread", input: "wheat", inputPerOutput: 2, ticksPerOutput: 30 },

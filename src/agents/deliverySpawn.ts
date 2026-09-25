@@ -152,8 +152,13 @@ function spawnForBuilding(
   inventory: DeliveryInventoryPort,
   routes: DeliveryRoutePort,
 ): { readonly buildings: readonly Building[]; readonly walker: CarterWalker | null } {
-  const production = BUILDING_CONFIG_BY_KIND[building.kind].production;
-  if (production === null) return { buildings, walker: null };
+  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  const production = definition.production;
+  // AF-9: a farmstead's carter hauls the harvest from its barn like production output.
+  if (production === null) {
+    return definition.fieldOutput === undefined ? { buildings, walker: null }
+      : spawnDelivery({ tick, building, buildings, outputResource: definition.fieldOutput, inventory, routes });
+  }
   if (building.kind === "mill" && amountOf(building.inventory, production.output) >= BALANCE.CARTER_CAPACITY) {
     const delivery = spawnDelivery({ tick, building, buildings, outputResource: production.output, inventory, routes });
     if (delivery.walker !== null) return delivery;

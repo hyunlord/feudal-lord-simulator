@@ -10,6 +10,8 @@ import { buildingHasRequiredRoadAccess, ROAD_ACCESS_MARKER } from "../engine/roa
 import { productionOperation } from "../economy/production";
 import { acceptsResource, availableSpace, storageCapacityBlock, storageIntakeSpace } from "../economy/storage";
 import { existingRoadComponent } from "../world/roadGraph";
+import { farmsteadCause } from "../zones/arableStrips";
+import { ARABLE_CAUSE_LABELS, FARMSTEAD_COPY } from "../zones/arableCopy.ko";
 
 const RESOURCE_LABELS = {
   wheat: "밀",
@@ -89,6 +91,11 @@ export function buildingProblemCause(state: GameState, buildingId: string): stri
   if (building.upkeepUnpaid === true) return MONEY_RULE_COPY.upkeepUnpaidDetail(outstandingArrears(state).byFacility.get(building.id) ?? 0);
   if (building.operationPaused === true) return BUILDING_OPERATION_COPY.paused;
   const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  if (building.kind === "farmstead") {
+    if (!buildingHasRequiredRoadAccess(state, building)) return ROAD_ACCESS_MARKER;
+    const cause = farmsteadCause(state, building.id);
+    return cause === null ? null : cause === "no_field" ? FARMSTEAD_COPY.noField : ARABLE_CAUSE_LABELS[cause];
+  }
   const production = definition.production;
   if (production === null) return null;
 

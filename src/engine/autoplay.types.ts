@@ -10,4 +10,6 @@ type AutoplayCommand =
   | { readonly kind: "place_road"; readonly from: TilePos; readonly to: TilePos }
   | { readonly kind: "proclaim_era"; readonly candidatePath?: PalisadePath }
   | { readonly kind: "set_wall_construction_priority"; readonly priority: "priority" }
+  /** AF-13: autoplay paints an arable field block (a zone stroke). */
+  | { readonly kind: "paint_zone"; readonly zone: import("../zones/zone.types").ZoneKind; readonly stroke: import("../zones/zone.types").ZoneStroke }
   | { readonly kind: "none" };

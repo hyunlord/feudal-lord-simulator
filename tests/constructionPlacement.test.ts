@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { BUILDING_CONFIG, type BuildingKind } from "../src/content/buildingConfig";
+import { BUILDING_CONFIG, isRetiredBuildingKind, type BuildingKind } from "../src/content/buildingConfig";
 import {
   createConstructionSite,
   type ConstructionSite,
@@ -10,7 +10,7 @@ import { advanceTick } from "../src/engine/tick";
 import { advanceFrame } from "../src/engine/frameClock";
 import { placeBuilding, placeRoadLine } from "../src/engine/gameActions";
 import type { GameState } from "../src/engine/engine.types";
-import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
+import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { getTile } from "../src/world/grid";
 
 const VALID_ORIGINS = {
@@ -28,6 +28,7 @@ const VALID_ORIGINS = {
   market: { tx: 24, ty: 1 },
   church: { tx: 27, ty: 1 },
   keep: { tx: 30, ty: 1 },
+  farmstead: { tx: 33, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {
@@ -140,22 +141,25 @@ test("placeBuilding routes every building kind through site placement including 
     stockReserved: {},
     productionProgress: 0,
   };
-  let state: GameState = {
+  // AF-8: a farmstead stands beside an arable zone (cells x 33–34, y 2–3); AF-12: the wheat farm is retired.
+  let state: GameState = gameReducer({
     ...buildableSettlement(2000),
     era: "stone_town",
     buildings: [resourceStore],
-  };
+  }, { type: "zone_paint", kind: "arable", stroke: { tool: "polygon", points: [{ x: 33, y: 2 }, { x: 35, y: 2 }, { x: 35, y: 4 }, { x: 33, y: 4 }] } });
+  const placeable = BUILDING_CONFIG.filter(definition => !isRetiredBuildingKind(definition.kind));
 
   // When
-  for (const definition of BUILDING_CONFIG) {
+  for (const definition of placeable) {
     state = placeBuilding(state, definition.kind, VALID_ORIGINS[definition.kind]);
   }
 
   // Then
   assert.deepEqual(
     constructionSites(state).map((site) => site.kind),
-    BUILDING_CONFIG.map((definition) => definition.kind),
+    placeable.map((definition) => definition.kind),
   );
+  assert.equal(placeBuilding(state, "wheat_farm", { tx: 11, ty: 5 }), state, "a retired kind is refused");
   assert.deepEqual(state.buildings, [resourceStore]);
   assert.deepEqual(state.houses, []);
 });

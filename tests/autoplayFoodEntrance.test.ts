@@ -76,10 +76,12 @@ test('Given the best adjacent pad closes a land passage When its preservation ne
 });
 
 import { foodAction } from '../src/engine/autoplayFood';
-test('Given an incomplete initial food chain When the advisor bootstraps Then it delegates the original farm build without speculative entrance roads',()=>{
+test('Given an incomplete initial food chain When the advisor bootstraps Then it paints the first field block without speculative entrance roads or a build delegate',()=>{
+  // AF-13: the grain bootstrap step is a painted arable block (no farmstead placement yet, since nothing tends
+  // it until a field exists), so the build delegate is never called and no entrance-road logic is engaged.
   const state=structuredClone(DEFAULT_GAME_STATE);
   let requested: string | null=null;
   const action=foodAction(state,(_state,kind)=>{requested=kind;return {kind:'place_building',building:kind,tx:45,ty:37};});
-  assert.equal(requested,'wheat_farm');
-  assert.deepEqual(action,{kind:'place_building',building:'wheat_farm',tx:45,ty:37});
+  assert.equal(requested,null);
+  assert.deepEqual(action,{kind:'paint_zone',zone:'arable',stroke:{tool:'polygon',points:[{x:44,y:37},{x:46,y:37},{x:46,y:39},{x:44,y:39}]}});
 });

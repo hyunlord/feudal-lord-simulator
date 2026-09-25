@@ -85,10 +85,10 @@ test('the first wall chooses a shorter valid living perimeter in a prepared town
 test('a shorter proposal does not turn a blocked opening into an autoplay food exclusion', () => {
   const state = createGrowthOpening(2).state;
   const candidate = { tx: 35, ty: 35 };
-  assert.equal(canPlaceBuilding(state, 'wheat_farm', candidate.tx, candidate.ty).ok, true);
+  assert.equal(canPlaceBuilding(state, 'farmstead', candidate.tx, candidate.ty).ok, true);
   assert.equal(palisadeCoreProposalForState(state).ok, false);
   assert.equal(computePalisadeProposalForState(state).ok, true);
-  assert.equal(preservesAutoplayWallSpace(state, 'wheat_farm', candidate), true);
+  assert.equal(preservesAutoplayWallSpace(state, 'farmstead', candidate), true);
 });
 
 test('a compact legal wall remains selectable when the preliminary two-tile proposal fails clearance', () => {

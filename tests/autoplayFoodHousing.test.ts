@@ -72,6 +72,7 @@ function state(input: {
   readonly population?: number;
   readonly idleWorkers?: number;
   readonly timber?: number;
+  readonly zones?: GameState["zones"];
 }): GameState {
   const houses = input.houses ?? [];
   return {
@@ -96,6 +97,8 @@ function state(input: {
     nextConstructionOrdinal: 1,
     roadRevision: 1,
     pathCache: {},
+    zones: input.zones ?? [],
+    nextZoneOrdinal: (input.zones?.length ?? 0) + 1,
   };
 }
 
@@ -103,20 +106,24 @@ function fullHouse(candidate: Building): House {
   return house(candidate.id, { hasWater: true, breadStock: 40, residents: 22, lastServicedTick: 0, level: 3 });
 }
 
-test("Given low bread and no food chain When autoplay decides repeatedly Then it follows wheat farm, mill, granary priority before timber recovery", () => {
+test("Given low bread and no food chain When autoplay decides repeatedly Then it follows farmstead, mill, granary priority before timber recovery", () => {
   const home = building({ id: "house-a", kind: "house", tx: 5, ty: 5 });
   const well = building({ id: "well-a", kind: "well", tx: 5, ty: 4 });
-  const wheat = building({ id: "wheat-a", kind: "wheat_farm", tx: 2, ty: 2 });
-  const mill = building({ id: "mill-a", kind: "mill", tx: 4, ty: 2 });
+  // AF-13: the grain slot is a farmstead beside an arable zone (not a wheat farm); the zone is pre-painted here
+  // since the field-block/road-toward-a-field search is exercised elsewhere (autoplayArable tests).
+  const zone = { id: "zone-arable-1", kind: "arable" as const, strokes: [], membership: [5 * 12 + 6], createdOrdinal: 1 };
+  const farmstead = building({ id: "farmstead-a", kind: "farmstead", tx: 6, ty: 6, workers: 4 });
+  const mill = building({ id: "mill-a", kind: "mill", tx: 4, ty: 6 });
   const base = {
     houses: [house(home.id, { hasWater: true, breadStock: 0, lastServicedTick: -10_000 })],
     timber: 500,
-    roads: ["1,5", "2,5", "3,5", "5,6", "2,4", "4,3"],
+    roads: ["1,5", "2,5", "3,5", "5,6", "2,4", "4,3", "5,7", "5,8", "5,9"],
+    zones: [zone],
   };
 
-  assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well] })), { kind: "place_building", building: "wheat_farm", tx: 6, ty: 5 });
-  assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well, wheat] })), { kind: "place_building", building: "mill", tx: 4, ty: 6 });
-  assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well, wheat, mill] })), { kind: "place_building", building: "granary", tx: 6, ty: 5 });
+  assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well] })), { kind: "place_building", building: "farmstead", tx: 6, ty: 6 });
+  assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well, farmstead] })), { kind: "place_building", building: "mill", tx: 4, ty: 6 });
+  assert.deepEqual(decideNextAction(state({ ...base, buildings: [home, well, farmstead, mill] })), { kind: "place_building", building: "granary", tx: 3, ty: 7 });
 });
 
 test("Given full housing and a disconnected food chain When autoplay decides Then it repairs roads before adding facilities", () => {

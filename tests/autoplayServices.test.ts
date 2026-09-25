@@ -15,6 +15,7 @@ import { decideNextAction } from '../src/engine/autoplay';
 import { plannedBuildingRoadAction } from '../src/engine/autoplayConstructionRoads';
 import { serviceCandidate } from '../src/engine/autoplayServiceSpaceRoutes';
 import { preservesAutoplayServiceSpace } from '../src/engine/autoplayServiceSpace';
+import type { FoodDiagnosticCollector } from '../src/engine/autoplayFoodDiagnostic';
 import type { GameState } from '../src/engine/engine.types';
 
 function fixture() {
@@ -65,8 +66,13 @@ test('Given the stone town era When a home still lacks civic services Then reach
 test('Given higher town-house rations after stone-town proclamation When food capacity is insufficient Then the advisor still maintains the food chain', () => {
   const state = fixture();
   state.buildings = state.buildings.filter(b => b.kind !== 'market');
-  const action = decideNextAction(state);
-  assert.equal(action.kind === 'place_building' && action.building, 'wheat_farm');
+  // AF-13: with no field painted yet the grain step may first road toward a viable field block before it
+  // can paint one and build the farmstead; any of those is "the advisor takes a grain action".
+  const diagnostic: FoodDiagnosticCollector = {};
+  const action = decideNextAction(state, undefined, diagnostic);
+  assert.notEqual(action.kind, 'none');
+  assert.equal(diagnostic.food?.reached, true);
+  assert.equal(action.kind, diagnostic.food?.action?.kind);
 });
 
 test('Given all homes served by a staffed market When urban planning runs Then the next investment is a nearby church', () => {
@@ -169,9 +175,13 @@ test('Given late-town food expansion When a granary serves the housing quarter T
   state.buildings.push(granary);
   state.tiles = state.tiles.map(tile => tile.tx >= 18 && tile.tx < 20 && tile.ty >= 13 && tile.ty < 15 ? { ...tile, buildingId: granary.id } : tile);
   const action = decideNextAction(state);
-  assert.equal(action.kind === 'place_building' && action.building, 'wheat_farm');
-  if (action.kind !== 'place_building') return;
-  assert.ok(buildingFootprintDistance(granary, { ...template, kind: action.building, tx: action.tx, ty: action.ty }) <= 4);
+  // AF-13: with no field painted yet, the grain step paints a 2x2 field block (the old farm's footprint)
+  // near the granary, rather than placing a farmstead directly.
+  assert.equal(action.kind, 'paint_zone');
+  if (action.kind !== 'paint_zone') return;
+  assert.equal(action.zone, 'arable');
+  const anchor = { tx: Math.min(...action.stroke.points.map(point => point.x)), ty: Math.min(...action.stroke.points.map(point => point.y)) };
+  assert.ok(buildingFootprintDistance(granary, { ...template, kind: 'wheat_farm', tx: anchor.tx, ty: anchor.ty }) <= 4);
 });
 
 
@@ -201,6 +211,7 @@ test('Given a usable granary and an unrelated isolated granary When planning loc
   state.buildings.push({ ...template, id: 'connected-granary', kind: 'granary', tx: 18, ty: 13 },
     { ...template, id: 'isolated-granary', kind: 'granary', tx: 25, ty: 2 });
   state.tiles = state.tiles.map(tile => ({ ...tile, buildingId: state.buildings.find(b => tile.tx >= b.tx && tile.tx < b.tx + BUILDING_CONFIG_BY_KIND[b.kind].width && tile.ty >= b.ty && tile.ty < b.ty + BUILDING_CONFIG_BY_KIND[b.kind].height)?.id ?? null }));
-  const plots = lateFoodBuildSites(state, 'wheat_farm');
+  // AF-13: lateFoodBuildSites only searches for 'mill' or 'farmstead' now; the wheat farm is retired.
+  const plots = lateFoodBuildSites(state, 'mill');
   assert.ok(plots && plots.length > 0);
 });

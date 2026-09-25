@@ -132,7 +132,7 @@ test("Given the same state When it is drawn twice, once from tiles enumerated in
   setBoundaryV2Enabled(false);
 });
 
-test("Given a cached frame When a road is built, a road is removed and a farm completes Then the touched chunks re-raster in that frame and nothing is stale", () => {
+test("Given a cached frame When a road is built, a road is removed and a granary completes Then the touched chunks re-raster in that frame and nothing is stale", () => {
   // Given
   setBoundaryV2Enabled(true);
   const live = recordingCanvas(1280, 800).context;
@@ -147,8 +147,8 @@ test("Given a cached frame When a road is built, a road is removed and a farm co
   const steps: [string, (current: GameState) => GameState][] = [
     ["build road", current => placeRoadLine(current, { tx: 43, ty: 57 }, { tx: 44, ty: 57 })],
     ["remove road", current => removeRoad(current, { tx: 39, ty: 61 })],
-    ["place farm", current => placeBuilding(current, "wheat_farm", { tx: 42, ty: 51 })],
-    ["complete farm", current => completeEligibleConstruction({
+    ["place granary", current => placeBuilding(current, "granary", { tx: 42, ty: 51 })],
+    ["complete granary", current => completeEligibleConstruction({
       ...current, wallTick: current.wallTick + 120,
       constructionSites: current.constructionSites.map(site => ({ ...site, delivered: { ...site.required }, builderTicks: site.requiredBuilderTicks })),
     })],
@@ -163,7 +163,7 @@ test("Given a cached frame When a road is built, a road is removed and a farm co
     assert.ok(cache.stats().lastFrameRasters > 0, `${label}: some chunk re-rastered in the same frame`);
     assert.deepEqual(staleChunks(live, state, CENTRE), [], `${label}: no stale chunk`);
   }
-  assert.ok(state.buildings.some(building => building.kind === "wheat_farm" && building.tx === 42 && building.ty === 51), "farm completed");
+  assert.ok(state.buildings.some(building => building.kind === "granary" && building.tx === 42 && building.ty === 51), "granary completed");
   setBoundaryV2Enabled(false);
 });
 

@@ -150,9 +150,11 @@ export function reserve(
   resource: ResourceType,
   amount: number,
 ): Building {
-  const production = BUILDING_CONFIG_BY_KIND[building.kind].production;
+  const definition = BUILDING_CONFIG_BY_KIND[building.kind];
+  const production = definition.production;
+  // AF-9: a farmstead holds its harvest locally like a producer holds its output.
   const heldLocally =
-    production?.input === resource || production?.output === resource;
+    production?.input === resource || production?.output === resource || definition.fieldOutput === resource;
   if (!acceptsResource(building.kind, resource) && !heldLocally) return building;
   const claim = Math.min(
     requestedAmount(amount),

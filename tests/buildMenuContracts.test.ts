@@ -12,7 +12,8 @@ import { BUILD_CATEGORIES, buildCategory, buildCostLabel, buildThumbnail } from 
 
 test("build menu exposes all building tools plus road in reachable order", () => {
   // Given
-  const buildingKinds = BUILDING_CONFIG.map((definition) => definition.kind);
+  // AF-12: every live kind; the retired wheat farm has no tool.
+  const buildingKinds = BUILDING_CONFIG.map((definition) => definition.kind).filter(kind => kind !== "wheat_farm");
 
   // When
   const tools = BUILD_TOOL_OPTIONS.map((option) => option.tool);
@@ -52,7 +53,7 @@ test("build menu options provide accessible labels for every selectable tool", (
   const labels = BUILD_TOOL_OPTIONS.map((option) => option.label.trim());
 
   // Then
-  assert.equal(labels.length, BUILDING_CONFIG.length + 1);
+  assert.equal(labels.length, BUILDING_CONFIG.length - 1 + 1, "live kinds (all but the retired wheat farm) plus road");
   assert.equal(labels.every((label) => label.length > 0), true);
 });
 
@@ -88,7 +89,7 @@ test("build menu groups buildings while road stays in a dedicated zero-cost cont
   assert.deepEqual(groups.map((group) => group.label), ["주거", "생산", "저장", "서비스"]);
   assert.deepEqual(
     groups.map((group) => group.options.map((option) => option.tool)),
-    [["house"], ["wheat_farm", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well", "chapel"]],
+    [["house"], ["farmstead", "mill", "logging_camp", "sawmill"], ["storehouse", "granary"], ["well", "chapel"]],
   );
   assert.match(appMarkup, /class="build-menu-quick-road"/);
   assert.match(appMarkup, /aria-label="길"/);
@@ -174,7 +175,8 @@ test("category presentation covers every existing tool and preserves the canonic
 test("each thumbnail resolves to its installed artwork including historical chapel", async () => {
   for (const option of BUILD_TOOL_OPTIONS) {
     const path = buildThumbnail(option.tool);
-    if (option.tool === "road") { assert.equal(path, null); continue; }
+    // The farmstead has no artwork yet (render hand-off, AF-12): its glyph stands in.
+    if (option.tool === "road" || option.tool === "farmstead") { assert.equal(path, null); continue; }
     assert.ok(path);
     await access(new URL(`../public${path}`, import.meta.url));
   }

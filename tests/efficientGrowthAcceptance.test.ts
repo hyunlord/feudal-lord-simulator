@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { efficientAcceptance } from '../scripts/efficientGrowthAcceptance';
 
-const metrics = { lots: 24, farms: 10, mills: 10, chronicZeroWheatMills: 1, chronicZeroWheatKnown: true,
+const metrics = { lots: 24, arableCells: 96, farmsteads: 4, mills: 10, chronicZeroWheatMills: 1, chronicZeroWheatKnown: true,
   chronicZeroWheatObservedTicks: 2400, granaries: 7, markets: 2, churches: 2,
   population: 100, idleWorkers: 5, buildings: 100, warnings: 9,
   coveredTicks: 2400, fullWindow: true, known: true, rawStarvedTicks: 199, eligibleMillTicks: 1000 };
@@ -15,7 +15,7 @@ for (const [name, changed] of [
   ['incomplete observation', { coveredTicks: 2399, fullWindow: false }],
   ['unknown observation', { known: false }],
   ['empty eligibility denominator', { eligibleMillTicks: 0 }],
-  ['extra mill', { mills: 11 }], ['extra granary', { granaries: 8 }],
+  ['arable cells over the per-lot cap', { arableCells: 24 * 10 + 1 }], ['extra granary', { granaries: 8 }],
   ['extra market', { markets: 3 }], ['extra church', { churches: 3 }],
 ] as const) test(`efficiency fails ${name}`, () => {
   assert.equal(efficientAcceptance({ ...metrics, ...changed }).passed, false);
@@ -48,9 +48,9 @@ test('capture fails exact ten percent visible warnings and asset failures', asyn
 });
 
 test('v14 seed3-sized excess facilities cannot qualify despite otherwise healthy metrics', () => {
-  const result = efficientAcceptance({ ...metrics, farms: 23, mills: 60, chronicZeroWheatMills: 34, granaries: 11, markets: 8, churches: 6 });
+  const result = efficientAcceptance({ ...metrics, arableCells: 24 * 10 + 1, mills: 60, chronicZeroWheatMills: 34, granaries: 11, markets: 8, churches: 6 });
   assert.equal(result.passed, false);
-  assert.deepEqual([result.checks.mills, result.checks.granaries, result.checks.markets, result.checks.churches], [false, false, false, false]);
+  assert.deepEqual([result.checks.arableCells, result.checks.granaries, result.checks.markets, result.checks.churches], [false, false, false, false]);
 });
 
 test('opt-in efficiency leaves a short legacy simulation state unchanged', async () => {

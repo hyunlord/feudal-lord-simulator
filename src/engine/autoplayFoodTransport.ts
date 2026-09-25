@@ -38,7 +38,7 @@ export function foodTransportGranaryAction(state: GameState): AutoplayAction {
   const mills = state.buildings.filter(b => b.kind === 'mill' && (b.inventory.wheat ?? 0) === 0
     && raw.some(store => Number.isFinite(distance(state, b, store))));
   if (mills.length === 0) return NONE;
-  const farms = state.buildings.filter(b => b.kind === 'wheat_farm' && b.workers >= BUILDING_CONFIG_BY_KIND.wheat_farm.workersRequired);
+  const farms = state.buildings.filter(b => b.kind === 'farmstead' && b.workers >= BUILDING_CONFIG_BY_KIND.farmstead.workersRequired);
   const candidates = state.tiles.filter(tile => hasAutoplayBuildingClearance(state, 'granary', tile)
     && canPlaceBuilding(state, 'granary', tile.tx, tile.ty).ok)
     .map(tile => ({ tile, proximity: Math.min(...mills.map(m => Math.abs(m.tx - tile.tx) + Math.abs(m.ty - tile.ty))) }))

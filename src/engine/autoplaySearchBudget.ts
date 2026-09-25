@@ -33,10 +33,10 @@ export function runAutoplaySearch<T>(run: () => T, diagnostic?: SearchDiagnostic
 }
 
 /** Independent priorities retain their own bounded opportunity after an impossible earlier search. */
-export function runAutoplaySearchPhase<T>(run: () => T): T {
+export function runAutoplaySearchPhase<T>(run: () => T, work = DEFAULT_SEARCH_WORK): T {
   if (active === undefined) return run();
   const parent = active;
-  const phase: SearchContext = { used: 0, limit: Math.min(DEFAULT_SEARCH_WORK, parent.limit), hit: false, exhausted: false };
+  const phase: SearchContext = { used: 0, limit: Math.min(work, parent.limit), hit: false, exhausted: false };
   active = phase;
   try { return run(); }
   finally {

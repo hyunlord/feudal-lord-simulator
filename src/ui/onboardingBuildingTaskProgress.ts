@@ -9,24 +9,29 @@ import { manhattanDistance } from "./onboardingGuidanceGeometry";
 type GuidanceWorld = Pick<
   GameState,
   "buildings" | "height" | "houses" | "tiles" | "treasuryTimber" | "width"
-> & Partial<Pick<GameState, "constructionSites" | "era">>;
+> & Partial<Pick<GameState, "constructionSites" | "era" | "zones">>;
+
+/** Onboarding asks for the land of two old wheat farms before the granary step (AF-12). */
+export const ONBOARDING_ARABLE_CELLS = 8;
+
+export function arableCellCount(state: Partial<Pick<GameState, "zones">>): number {
+  return (state.zones ?? []).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0);
+}
 
 export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly BuildingKind[] {
   if (!hasCompletedBuildingKind(state, "logging_camp")) return hasPendingSiteKind(state, "logging_camp") ? [] : ["logging_camp"];
-  const completedFarms = state.buildings.filter(building => building.kind === "wheat_farm").length;
-  const pendingFarms = state.constructionSites?.filter(site => site.kind === "wheat_farm").length ?? 0;
+  // AF-12: the first grain step is a farmstead beside a painted field; the second is more field (painting, no marker).
+  const completedFarms = state.buildings.filter(building => building.kind === "farmstead").length;
+  const pendingFarms = state.constructionSites?.filter(site => site.kind === "farmstead").length ?? 0;
   if (completedFarms < 1 || !hasCompletedBuildingKind(state, "mill")) {
-    const missingFarm = completedFarms + pendingFarms < 1 ? ["wheat_farm" as const] : [];
+    const missingFarm = completedFarms + pendingFarms < 1 ? ["farmstead" as const] : [];
     const missingMill = !hasCompletedBuildingKind(state, "mill") && !hasPendingSiteKind(state, "mill")
       ? ["mill" as const] : [];
     return [...missingFarm, ...missingMill];
   }
   if (!hasCompletedBuildingKind(state, "sawmill")) return hasPendingSiteKind(state, "sawmill") ? [] : ["sawmill"];
-  if (completedFarms < 2 || !hasCompletedBuildingKind(state, "granary")) {
-    const missingFarm = completedFarms + pendingFarms < 2 ? ["wheat_farm" as const] : [];
-    const missingGranary = !hasCompletedBuildingKind(state, "granary") && !hasPendingSiteKind(state, "granary")
-      ? ["granary" as const] : [];
-    return [...missingFarm, ...missingGranary];
+  if (arableCellCount(state) < ONBOARDING_ARABLE_CELLS || !hasCompletedBuildingKind(state, "granary")) {
+    return !hasCompletedBuildingKind(state, "granary") && !hasPendingSiteKind(state, "granary") ? ["granary"] : [];
   }
   if (!hasPalisadeTimberStorage(state)) return hasPendingSiteKind(state, "storehouse") ? [] : ["storehouse"];
   if (!hasWellWithinHouseRange(state)) return ["well"];
@@ -36,7 +41,7 @@ export function missingCurrentBuildingKinds(state: GuidanceWorld): readonly Buil
 
 export function completedCoreOnboardingBuildings(state: GuidanceWorld): boolean {
   return hasCompletedBuildingKind(state, "logging_camp")
-    && state.buildings.filter(building => building.kind === "wheat_farm").length >= 2
+    && hasCompletedBuildingKind(state, "farmstead") && arableCellCount(state) >= ONBOARDING_ARABLE_CELLS
     && (["mill", "granary", "sawmill", "chapel"] as const)
       .every(kind => hasCompletedBuildingKind(state, kind))
     && hasPalisadeTimberStorage(state)

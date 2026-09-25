@@ -79,7 +79,7 @@ export function foodCoverageAction(state: GameState): AutoplayAction {
   const failed = observation?.kind === 'granary' && (observation.outcome?.deliveredBreadDelta ?? 0) === 0 ? observation : undefined;
   if (failed !== undefined && failed.targetHouseIds === undefined) return NONE;
   if (state.constructionSites.some(site => isBuildingConstructionSite(site)
-    && ['granary', 'mill', 'wheat_farm'].includes(site.kind))) return NONE;
+    && ['granary', 'mill', 'farmstead'].includes(site.kind))) return NONE;
   const recurring = recurringDeliveryHomes(state);
   const requiresProjection = state.idleWorkers < BUILDING_CONFIG_BY_KIND.granary.workersRequired;
   if ((requiresProjection && recurring.length === 0) || !affordable(state)) return NONE;

@@ -87,6 +87,7 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
     "granary",
     "chapel",
     "wheat_farm",
+    "farmstead",
     "mill",
     "logging_camp",
     "sawmill",

@@ -23,6 +23,7 @@ const PURPOSES = {
   granary: "밀과 빵을 보관하고 배급",
   chapel: "마을의 시대 선포 조건을 채우는 예배당",
   wheat_farm: "일꾼이 밀을 재배",
+  farmstead: "일꾼이 경작지를 갈고 거둔 밀을 보관",
   mill: "밀을 빵으로 가공",
   logging_camp: "숲에서 통나무를 생산",
   sawmill: "통나무를 목재로 가공",

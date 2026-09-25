@@ -4,7 +4,7 @@ import { allocateBuildingAndConstructionLabour } from '../population/labour';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import type { GameState } from './engine.types';
 
-const isFood = (building: { readonly kind: string }): boolean => ['wheat_farm', 'mill', 'granary'].includes(building.kind);
+const isFood = (building: { readonly kind: string }): boolean => ['farmstead', 'mill', 'granary'].includes(building.kind);
 
 /** Diagnostic projections use the unchanged allocator, including its builder reservation. */
 export function canStaffRecurringGranary(state: GameState, candidate: Building): boolean {

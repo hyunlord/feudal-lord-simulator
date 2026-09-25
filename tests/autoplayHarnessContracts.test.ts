@@ -134,13 +134,14 @@ test("Given the economy harness When autoplay runs Then it uses the same advisor
 });
 
 test("Given the default opening When autoplay runs for ten minutes Then its first food chain completes and the settlement survives", () => {
+  // AF-13: the grain slot is now the farmstead (the retired wheat farm never gets built).
   const report = trackAutoplayRun({ initialState: DEFAULT_GAME_STATE, ticks: 12_000 });
   const foodKinds = new Set(report.finalState.buildings.map(({ kind }) => kind));
   const pendingFood = report.finalState.constructionSites.filter((site) =>
-    "tx" in site && (site.kind === "wheat_farm" || site.kind === "mill"),
+    "tx" in site && (site.kind === "farmstead" || site.kind === "mill"),
   );
 
-  assert.equal(foodKinds.has("wheat_farm"), true);
+  assert.equal(foodKinds.has("farmstead"), true);
   assert.equal(foodKinds.has("mill"), true);
   assert.equal(pendingFood.length <= 1, true);
   assert.equal(pendingFood.every((site) => site.kind === "mill" && site.startedTick >= 10_000), true);

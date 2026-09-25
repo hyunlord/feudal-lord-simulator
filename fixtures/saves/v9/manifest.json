@@ -135,6 +135,20 @@
       "tick": 0,
       "zones": 3,
       "undoRecords": 4
+    },
+    {
+      "id": "four-farms",
+      "description": "autoplay seed 2 at trunk d823005 (the last wheat-farm rules), first tick with exactly four finished wheat farms and no farm site",
+      "provenance": "Natural growth captured by scripts/captureWheatFarmFixture.ts run in a d823005 worktree (it needs the pre-v10 wheat farm). Source for the C1c-2 migration gate (F5).",
+      "file": "four-farms.save.json",
+      "bytes": 827754,
+      "tick": 15162,
+      "population": 132,
+      "era": "hamlet",
+      "buildings": 22,
+      "houses": 9,
+      "wheatFarms": 4,
+      "sha256": "7a9f04762c135188aca77da3fae7be8ecfc8eecfc5212aad8faefd22f6e4200c"
     }
   ],
   "v0Fixtures": [

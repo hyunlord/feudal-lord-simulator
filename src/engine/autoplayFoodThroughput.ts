@@ -100,7 +100,7 @@ export function startFoodObservation(
   const baseline = { ...foodObservationSnapshot(state), deliveredWheat: 0,
     ...(sample.fullWindow && sample.known ? { breadProduced: sample.breadProduced,
       missedMeals: sample.requestedBread - sample.consumedBread } : {}) };
-  const completeChain = ['wheat_farm', 'mill', 'granary'].every(kind => state.buildings.some(b => b.kind === kind));
+  const completeChain = ['farmstead', 'mill', 'granary'].every(kind => state.buildings.some(b => b.kind === kind));
   return {
     ...observation,
     requiresDeliveredOutcome: completeChain,
@@ -189,7 +189,7 @@ export function blocksRepeatedFoodExpansion(state: GameState, kind: AutoplayFood
       || kind === 'wheat_farm' && observation.requiresDeliveredOutcome === undefined);
 }
 
-export function foodRecoveryKind(state: GameState, _mealDemand: number): 'wheat_farm' | 'mill' | null {
+export function foodRecoveryKind(state: GameState, _mealDemand: number): 'farmstead' | 'mill' | null {
   return measuredFoodDecision(state).kind;
 }
 

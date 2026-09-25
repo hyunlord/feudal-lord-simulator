@@ -25,6 +25,7 @@ export function isBuildingConstructionSite(
     case "granary":
     case "chapel":
     case "wheat_farm":
+    case "farmstead":
     case "mill":
     case "logging_camp":
     case "sawmill":
@@ -62,6 +63,7 @@ export function constructionSiteAnchor(site: ConstructionSite): TileCoordinate {
     case "granary":
     case "chapel":
     case "wheat_farm":
+    case "farmstead":
     case "mill":
     case "logging_camp":
     case "sawmill":
@@ -108,6 +110,7 @@ export function constructionSiteFootprint(site: ConstructionSite): ConstructionS
     case "granary":
     case "chapel":
     case "wheat_farm":
+    case "farmstead":
     case "mill":
     case "logging_camp":
     case "sawmill":
@@ -136,6 +139,7 @@ export function constructionSiteDisplayName(site: ConstructionSite): string {
     case "granary":
     case "chapel":
     case "wheat_farm":
+    case "farmstead":
     case "mill":
     case "logging_camp":
     case "sawmill":
@@ -168,6 +172,7 @@ export function constructionSiteCacheKey(site: ConstructionSite): string {
     case "granary":
     case "chapel":
     case "wheat_farm":
+    case "farmstead":
     case "mill":
     case "logging_camp":
     case "sawmill":

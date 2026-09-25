@@ -2,6 +2,7 @@ import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import {
   BUILDING_CONFIG,
   BUILDING_CONFIG_BY_KIND,
+  isRetiredBuildingKind,
   type BuildingKind,
 } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
@@ -44,6 +45,7 @@ const GROUP_ORDER = ["dwelling", "production", "storage", "service"] as const sa
 const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
   house: "dwelling",
   wheat_farm: "production",
+  farmstead: "production",
   mill: "production",
   logging_camp: "production",
   sawmill: "production",
@@ -62,6 +64,7 @@ const TOOL_GROUPS: Record<PlacementTool, BuildToolGroupKey> = {
 const TOOL_PURPOSES: Record<PlacementTool, string> = {
   house: "주민을 받아 인구 목표를 늘립니다",
   wheat_farm: "밀을 길러 방앗간에 보냅니다",
+  farmstead: "경작지 띠를 갈고 거두어 밀을 곳간에 모읍니다. 경작지 구역 안이나 옆에 짓습니다",
   mill: "밀을 빵으로 바꿔 배급을 돕습니다",
   logging_camp: "숲 가장자리에서 통나무를 냅니다",
   sawmill: "통나무를 목재로 켭니다",
@@ -98,7 +101,8 @@ export const ROAD_TOOL_OPTION: BuildToolOption = {
   requirements: ["요구 조건 없음"],
 };
 
-const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.map((definition) => ({
+// AF-12: retired kinds (the wheat farm) have no build tool.
+const BUILDING_TOOL_OPTIONS: readonly BuildingToolOption[] = BUILDING_CONFIG.filter(definition => !isRetiredBuildingKind(definition.kind)).map((definition) => ({
   tool: definition.kind,
   label: definition.name,
   timberCost: definition.buildCost.timber ?? 0,

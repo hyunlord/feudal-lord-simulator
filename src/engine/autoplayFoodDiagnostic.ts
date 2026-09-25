@@ -10,7 +10,8 @@ export type FoodDiagnosticReason = MeasuredFoodReason | 'food_route_repair' | 't
   | 'build_returned_none' | 'transient_metadata_only' | 'measured_no_recovery' | 'unmeasured_starving_guard'
   | 'bootstrap_selected' | 'bootstrap_exhausted';
 export type FoodCheck = 'not_evaluated' | boolean;
-export type FoodKind = 'wheat_farm' | 'mill' | 'granary';
+/** The food chain slots; `farmstead` is the grain slot (a field block or its farmstead, AF-13). */
+export type FoodKind = 'farmstead' | 'mill' | 'granary';
 export type FoodTransientSummary = Omit<Extract<AutoplayFoodTransientConfirmation, { status: 'pending' }>, 'epoch'>
   | Extract<AutoplayFoodTransientConfirmation, { status: 'failed_until_positive_window' }> | null | 'not_evaluated';
 export interface DiagnosticAction {
@@ -32,7 +33,7 @@ export interface FoodDiagnostic {
   readonly completeChain?: boolean;
   readonly recovery?: FoodKind | null;
   readonly transition?: { readonly defer: boolean; readonly metadata: FoodTransientSummary };
-  readonly observation?: { readonly kind: FoodKind; readonly siteId: string; readonly placedTick: number; readonly completedTick?: number; readonly observeUntilTick?: number; readonly outcome?: NonNullable<GameState['autoplayFoodObservation']>['outcome'] };
+  readonly observation?: { readonly kind: FoodKind | 'wheat_farm'; readonly siteId: string; readonly placedTick: number; readonly completedTick?: number; readonly observeUntilTick?: number; readonly outcome?: NonNullable<GameState['autoplayFoodObservation']>['outcome'] };
   readonly evaluation: { readonly transitionRepeat: FoodCheck; readonly transitionStaff: FoodCheck; readonly buildRepeat: FoodCheck; readonly buildStaff: FoodCheck };
   readonly checks: readonly { readonly phase: 'transition' | 'build'; readonly kind: FoodKind;
     readonly check: 'repeat' | 'staff'; readonly result: FoodCheck }[];
@@ -56,6 +57,7 @@ export function diagnosticAction(action: AutoplayAction): DiagnosticAction {
     case 'place_road': return { kind: action.kind, from: { ...action.from }, to: { ...action.to }, foodTransient };
     case 'proclaim_era': return { kind: action.kind, foodTransient };
     case 'set_wall_construction_priority': return { kind: action.kind, foodTransient };
+    case 'paint_zone': return { kind: action.kind, building: action.zone, tx: Math.floor(action.stroke.points[0]?.x ?? 0), ty: Math.floor(action.stroke.points[0]?.y ?? 0), foodTransient };
     case 'none': return { kind: action.kind, foodTransient };
   }
 }

@@ -5,7 +5,8 @@
  * rest of that decision and counted, so the same refused placement is never proposed twice in a row.
  * With no zone of the rule's kind every answer equals `canPlaceBuilding(...).ok` (zone-free towns unchanged).
  */
-import type { BuildingKind } from "../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
+import { zonesOf } from "../zones/zoneEdits";
 import { canPlaceBuilding } from "../world/placement";
 import { zonePlacementCheck } from "../zones/zonePlacement";
 import type { AutoplayAction } from "./autoplay.types";
@@ -20,7 +21,22 @@ const key = (kind: BuildingKind, tx: number, ty: number) => `${kind}:${tx},${ty}
 export function autoplayCanPlace(state: GameState, kind: BuildingKind, tx: number, ty: number): boolean {
   if (!canPlaceBuilding(state, kind, tx, ty).ok) return false;
   if (excluded.size > 0 && excluded.has(key(kind, tx, ty))) return false;
+  if (kind !== "farmstead" && coversArableCell(state, kind, tx, ty)) return false;
   return zonePlacementCheck(state, kind, tx, ty).ok;
+}
+
+/** AF-13: autoplay keeps buildings off its fields (an old farm was a building; a field is only cells). */
+function coversArableCell(state: GameState, kind: BuildingKind, tx: number, ty: number): boolean {
+  const arable = zonesOf(state).filter(zone => zone.kind === "arable");
+  if (arable.length === 0) return false;
+  const { width, height } = BUILDING_CONFIG_BY_KIND[kind];
+  for (let dy = 0; dy < height; dy += 1) {
+    for (let dx = 0; dx < width; dx += 1) {
+      const index = (ty + dy) * state.width + tx + dx;
+      if (arable.some(zone => zone.membership.includes(index))) return true;
+    }
+  }
+  return false;
 }
 
 /** True when the action is a placement the zone rules refuse. */

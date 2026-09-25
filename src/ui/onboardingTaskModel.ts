@@ -2,7 +2,7 @@ import { scenarioOf, stageOf } from "../engine/scenarioState";
 import { getSettlementView } from "../engine/settlementView";
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
-import { hasPalisadeTimberStorage } from "./onboardingBuildingTaskProgress";
+import { arableCellCount, hasPalisadeTimberStorage, ONBOARDING_ARABLE_CELLS } from "./onboardingBuildingTaskProgress";
 
 export type OnboardingTaskId =
   | "task-1"
@@ -71,9 +71,9 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-3",
-    title: "밀밭과 방앗간을 먼저 지으세요",
-    hint: "첫 밀밭과 방앗간을 길로 이으세요. 목재가 떨어지기 전에 제재소를 지을 수 있도록 남겨둡니다.",
-    highlightTools: ["wheat_farm", "mill"],
+    title: "경작지를 칠하고 헛간과 방앗간을 지으세요",
+    hint: "구역에서 경작지로 길가 땅을 칠하고, 그 옆에 헛간과 방앗간을 길로 이으세요. 목재가 떨어지기 전에 제재소를 지을 수 있도록 남겨둡니다.",
+    highlightTools: ["farmstead", "mill"],
     isComplete: hasFirstFoodChain,
   },
   {
@@ -85,9 +85,9 @@ export const ONBOARDING_TASKS: readonly OnboardingTask[] = [
   },
   {
     id: "task-5",
-    title: "밀밭을 하나 더 짓고 곡창·창고를 갖추세요",
-    hint: "인구 60명을 먹이려면 밀밭 2곳과 곡창이 필요합니다. 목책 목재 250을 모을 창고도 제재소 길에 이으세요.",
-    highlightTools: ["wheat_farm", "granary", "storehouse"],
+    title: "경작지를 넓히고 곡창·창고를 갖추세요",
+    hint: "인구 60명을 먹이려면 경작지 8칸과 곡창이 필요합니다. 수확은 가을에 몰리니 곡창에 비축하세요. 목책 목재 250을 모을 창고도 제재소 길에 이으세요.",
+    highlightTools: ["farmstead", "granary", "storehouse"],
     isComplete: hasExpandedFoodAndStorage,
   },
   {
@@ -226,13 +226,14 @@ function hasPopulationAtLeast(population: number): (state: GameState) => boolean
 }
 
 function hasFirstFoodChain(state: GameState): boolean {
-  return state.buildings.some((building) => building.kind === "wheat_farm")
+  return state.buildings.some((building) => building.kind === "farmstead")
     && state.buildings.some((building) => building.kind === "mill");
 }
 
 function hasExpandedFoodAndStorage(state: GameState): boolean {
   return (
-    state.buildings.filter((building) => building.kind === "wheat_farm").length >= 2 &&
+    state.buildings.some((building) => building.kind === "farmstead") &&
+    arableCellCount(state) >= ONBOARDING_ARABLE_CELLS &&
     state.buildings.some((building) => building.kind === "granary") &&
     hasPalisadeTimberStorage(state)
   );

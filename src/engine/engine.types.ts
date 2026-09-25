@@ -145,4 +145,8 @@ export interface GameState {
   readonly nextZoneOrdinal?: number;
   /** Undo stack of the last zone paint/erase edits, newest last (save v9, spec Z-17). Absent = empty. */
   readonly zoneUndo?: readonly import("../zones/zone.types").ZoneUndoRecord[];
+  /** Crop state of every arable zone's strips (save v10, spec AF-3). Absent = no field worked yet. */
+  readonly arableFields?: readonly import("../zones/arable.types").ArableField[];
+  /** Set once by the v9→v10 migration when it converted wheat farms (spec AF-12). */
+  readonly arableMigration?: import("../zones/arable.types").ArableMigrationSummary;
 }

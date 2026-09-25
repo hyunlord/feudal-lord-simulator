@@ -12,8 +12,12 @@ import { productionOperation, stepProduction } from '../economy/production';
 import { placementSpendableResource } from '../world/placement';
 import type { GameState } from './engine.types';
 import { accrueMilledWheat } from './moneyRules';
+import { stepArableFields } from '../zones/arableFields';
 
-export function runProduction(state: GameState): GameState {
+export function runProduction(input: GameState): GameState {
+  // AF-3…AF-9: the fields advance first; a harvest lands in the barn this tick and counts as wheat produced.
+  const fields = stepArableFields(input);
+  const state = fields.state;
   let forestHarvests = state.forestHarvests ?? [];
   let materialRecord = state.autoplayMaterialRecovery;
   const materialRoutes = materialRecord?.status === 'observing' ? createSimulationRoutePorts(state).delivery : undefined;
@@ -21,7 +25,7 @@ export function runProduction(state: GameState): GameState {
   let rawStarvedTicks = 0;
   let wheatConsumed = 0;
   let observedOutput = 0;
-  let wheatProduced = 0;
+  let wheatProduced = fields.activity.harvestedWheat;
   let farmFullTicks = 0;
   let farmReadyTicks = 0;
   let breadProduced = 0;
