@@ -26,9 +26,9 @@ export function foodReserveTicks(state: FoodReserveWorld): number | null {
 }
 
 /**
- * A settlement is stable only with at least one season of stored food (1,000 ticks = 50 game seconds at 1×; the
- * calendar has no day, `TICKS_PER_YEAR` 4,000 is four seasons). The UX-0 audit city with 30 game seconds of bread
- * and no wheat was reported stable.
+ * A settlement is stable only with at least one season of stored food (1,000 ticks = 90 calendar days = 50 game
+ * seconds at 1×; the year is 4,000 ticks, 360 days). The UX-0 audit city with 30 game seconds of bread and no wheat
+ * was reported stable.
  */
 export const FOOD_RESERVE_STABLE_TICKS = BALANCE.TICKS_PER_YEAR / 4;
 

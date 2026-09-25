@@ -235,14 +235,30 @@ function planSignature(state: GameState): string {
   return `${state.seed}|${state.width}x${state.height}|${gate}|${houses}|${buildings}`;
 }
 
-const plansByTiles = new WeakMap<readonly Tile[], { readonly signature: string; readonly plan: TripPlan }>();
-function tripPlan(state: GameState): TripPlan {
-  const signature = planSignature(state);
+/**
+ * Caches (rule 10). (a) Keys: the plan by the tiles array plus `planSignature` (every other input of `computePlan`);
+ * the signature itself by the identity of the houses and buildings arrays, the palisade and the seed it is made
+ * of; the walkers by plan and tick. (b) The walkers read nothing else: the tick, the seed (in the signature) and the
+ * houses' member profiles (seeded by building id and game seed; counts in the signature). (c) The store derives the
+ * walkers twice a commit (this tick and the previous frame's): without these caches 0.63 ms median / 0.81 ms p95 per
+ * commit on the seed 2 city, with them see the report.
+ */
+const plansByTiles = new WeakMap<readonly Tile[], { readonly signature: string; readonly plan: TripPlan; readonly walkers: Map<number, readonly ResidentWalker[]> }>();
+let lastSignature: { readonly houses: GameState["houses"]; readonly buildings: GameState["buildings"]; readonly palisade: GameState["palisade"]; readonly seed: number; readonly value: string } | null = null;
+function signatureOf(state: GameState): string {
+  if (lastSignature !== null && lastSignature.houses === state.houses && lastSignature.buildings === state.buildings
+    && lastSignature.palisade === state.palisade && lastSignature.seed === state.seed) return lastSignature.value;
+  const value = planSignature(state);
+  lastSignature = { houses: state.houses, buildings: state.buildings, palisade: state.palisade, seed: state.seed, value };
+  return value;
+}
+function tripPlan(state: GameState): { readonly plan: TripPlan; readonly walkers: Map<number, readonly ResidentWalker[]> } {
+  const signature = signatureOf(state);
   const cached = plansByTiles.get(state.tiles);
-  if (cached?.signature === signature) return cached.plan;
-  const plan = computePlan(state);
-  plansByTiles.set(state.tiles, { signature, plan });
-  return plan;
+  if (cached?.signature === signature) return cached;
+  const entry = { signature, plan: computePlan(state), walkers: new Map<number, readonly ResidentWalker[]>() };
+  plansByTiles.set(state.tiles, entry);
+  return entry;
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -366,19 +382,24 @@ function walkerOnRoute(trip: ActiveTrip, age: number, tag: ResidentTag): Residen
  */
 export function residentWalkers(state: GameState): readonly ResidentWalker[] {
   if (state.settlement?.outcome === "abandoned") return [];
-  const plan = tripPlan(state);
+  const { plan, walkers } = tripPlan(state);
+  const cached = walkers.get(state.tick);
+  if (cached !== undefined) return cached;
   const walking = activeTrips(state, plan).flatMap(trip => {
     const walker = walkerOnRoute(trip, state.tick - trip.startTick, tripTag(state, trip));
     return walker === null ? [] : [walker];
   });
   const taken: Partial<Record<ResidentPurpose, number>> = {};
-  return walking.sort((a, b) => PRIORITY[a.resident.purpose] - PRIORITY[b.resident.purpose] || a.spawnedTick - b.spawnedTick || a.id.localeCompare(b.id))
+  const result = walking.sort((a, b) => PRIORITY[a.resident.purpose] - PRIORITY[b.resident.purpose] || a.spawnedTick - b.spawnedTick || a.id.localeCompare(b.id))
     .filter(walker => {
       const count = taken[walker.resident.purpose] ?? 0;
       taken[walker.resident.purpose] = count + 1;
       return count < QUOTA[walker.resident.purpose];
     })
     .slice(0, RESIDENT_WALKER_CAP);
+  if (walkers.size >= 4) walkers.delete(walkers.keys().next().value!);
+  walkers.set(state.tick, result);
+  return result;
 }
 
 export function isResidentWalker(walker: { readonly id: string }): walker is ResidentWalker {
