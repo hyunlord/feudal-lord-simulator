@@ -88,7 +88,7 @@ export function fetchCandidate(
     const path = routes.betweenBuildings(converter.id, building.id);
     if (path === null || path.length === 0) return [];
     const amount = Math.min(
-      BALANCE.CARTER_CAPACITY,
+      BUILDING_CONFIG_BY_KIND[converter.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY,
       homeSpace,
       inventory.availableStock(building, resource),
     );

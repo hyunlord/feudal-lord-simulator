@@ -77,8 +77,13 @@ export interface CarterCancellation {
   readonly releasedReservation: boolean;
 }
 
+/** LB-7 (save v11): a building's second cart — a mill's wheat-only intake cart or a granary's push to mills. */
+export type CarterCart = "intake" | "push";
+
 export interface CarterWalker extends WalkerBase {
   readonly kind: "carter";
+  /** Absent for a building's main cart. */
+  readonly cart?: CarterCart;
   readonly mission: CarterMission;
   readonly phase: CarterPhase;
   readonly destination: CarterDestination;

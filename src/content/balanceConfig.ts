@@ -52,4 +52,43 @@ export const MONEY_BALANCE = {
   stoneWallProjectCost: 200,
 } as const;
 
-export const BALANCE_CONFIG = { ...BALANCE, money: MONEY_BALANCE } as const;
+/**
+ * Labour (spec `docs/design/labour.md`, LB-*). Adults are the old labour pool (`WORKERS_PER_RESIDENT`); the new
+ * demands below take only what the R1-fix facility and construction allocation leaves (LB-4).
+ */
+export const LABOUR_BALANCE = {
+  /** LB-4: order in which a short labour pool is filled (report value; tiers 1–5 and 8 are the R1-fix allocation). */
+  priority: [
+    "construction_floor", "core_food", "core_timber_while_building", "other_food", "other_facilities",
+    "field_hands", "hauling", "construction_extra", "household_slots",
+  ],
+  /** LB-8: household production slots by house level L0…L4. */
+  householdSlotsByLevel: [0, 1, 1, 2, 2],
+  /** LB-7: a granary pushes wheat to mills whose footprint lies within this many tiles (one day labourer each). */
+  pushRadius: 12,
+  /** LB-7: haulers a granary with a mill in reach takes from the day pool. */
+  haulersPerGranary: 1,
+  /** LB-7: load of a mill's carts (bread out, wheat in) and of a granary's push cart. */
+  millCartCapacity: 12,
+  /** LB-7: a mill's intake cart (and a granary push) tops its wheat up to this. */
+  millWheatTarget: 12,
+  /** LB-7: autoplay mill cap = max(need, expected harvest) × this ÷ a mill's year of wheat, + 1 (AF-13 had 2000‰). */
+  millHaulingFactorPermille: 2000,
+  /** LB-9: idle adults ÷ population above this shows the idle-labour hint (the A″ threshold). */
+  idleHintPermille: 250,
+} as const;
+
+/** LB-5: the seasonal labour of the strips a farmstead tends (in-year ticks, 4,000-tick year). */
+export const SEASON_BALANCE = {
+  /** Adults a strip cell needs in a normal season, in permille (so 500 = one adult per two cells). */
+  fieldHandsPerCellPermille: 500,
+  /** Seasonal multipliers in permille, by in-year tick; `from` inclusive, wrapping the year end. */
+  bands: [
+    { name: "sowing", from: 3500, until: 1000, permille: 2000 },
+    { name: "early_summer", from: 1000, until: 1500, permille: 1000 },
+    { name: "harvest", from: 1500, until: 3000, permille: 2000 },
+    { name: "early_winter", from: 3000, until: 3500, permille: 500 },
+  ],
+} as const;
+
+export const BALANCE_CONFIG = { ...BALANCE, money: MONEY_BALANCE, labour: LABOUR_BALANCE, season: SEASON_BALANCE } as const;

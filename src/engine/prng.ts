@@ -90,3 +90,13 @@ function avalanche(value: number): number {
   mixed ^= mixed >>> 16;
   return mixed >>> 0;
 }
+
+/** LB-1: a household's member seed, from the game seed and the house's building id (stable across saves). */
+export function createHouseholdSeed(stateSeed: number, buildingId: string): number {
+  return avalanche(mixString(mixNumber(mixString(FNV_OFFSET, "household-members-v1"), stateSeed), buildingId));
+}
+
+/** LB-2: one member's hash, from the household seed and the member's index. */
+export function householdMemberHash(seed: number, index: number): number {
+  return avalanche(mixNumber(mixNumber(FNV_OFFSET, seed), index));
+}
