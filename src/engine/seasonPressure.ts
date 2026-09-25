@@ -59,8 +59,13 @@ function openTally(state: GameState, startTick: number): SeasonTally {
     eras: [], firstWinterWarning: false };
 }
 
+/** FP-1: the season state of a town that has none yet (new game, a v11 save): the current season opens now. */
+export function initialSeasonState(state: GameState): SeasonState {
+  return { current: openTally(state, seasonStart(state.tick)), history: [] };
+}
+
 function seasonsOf(state: GameState): SeasonState {
-  return state.seasons ?? { current: openTally(state, seasonStart(state.tick)), history: [] };
+  return state.seasons ?? initialSeasonState(state);
 }
 
 /** FP-1: cash income and expense posted in (start, end]; the opening balance is neither. */
@@ -131,7 +136,7 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   const houses = state.houses.map(house => {
     if (house.abandonedTick !== undefined) return house;
     // A house that starved empty is an ordinary empty house (the old rule): it has no household to be short or leave.
-    if (!householdShortOfFood(house, reserveShort)) {
+    if (!householdShortOfFood(house, reserveShort, tick)) {
       if (house.foodShortSinceTick === undefined && house.leavingSinceTick === undefined) return house;
       changed = true;
       return withoutPressure(house);

@@ -21,8 +21,11 @@ export function housePressureCause(house: Pick<House, "leavingSinceTick" | "aban
 
 /**
  * FP-3: a household is short of food when its larder is empty or the town's stored food will not last a season
- * (at the season's consumption). Empty houses have no household to be short.
+ * (at the season's consumption). Empty houses have no household to be short; a household in its starvation grace
+ * (the opening village's first days) is not short either, as it does not starve.
  */
-export function householdShortOfFood(house: Pick<House, "residents" | "breadStock">, townReserveShort: boolean): boolean {
-  return house.residents > 0 && (house.breadStock <= 0 || townReserveShort);
+export function householdShortOfFood(house: Pick<House, "residents" | "breadStock" | "starvationGraceUntilTick">, townReserveShort: boolean,
+  tick: number): boolean {
+  if (house.residents <= 0 || tick <= (house.starvationGraceUntilTick ?? 0)) return false;
+  return house.breadStock <= 0 || townReserveShort;
 }
