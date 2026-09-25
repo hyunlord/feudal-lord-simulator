@@ -16,7 +16,8 @@ import { wallStripsEnabled } from "./renderWallStripsFlag";
 //     half scale (a 256x128 fill = 2x2 tiles) with a phase from the seed, so chunks join without seams;
 //  2. shallow band: `shallow_{a,b,c}` (one variant and phase per loop, hashed) stroked along the outline in world
 //     space, clipped to the water, six stacked widths (1.2 .. 0.4 tile) so it fades out by SHALLOW_DEPTH;
-//  3. shore strips: `shoreline_{a..f}` joined a | b | c | d | e | f (24-tile period) and laid along the outline segment
+//  3. shore strips: `shoreline_deep_{a,b}` (Wave 4e, INSTALL-4e; before: `shoreline_{a..f}`, 24 tiles) joined a | b
+//     (8-tile period) and laid along the outline segment
 //     by segment (texture u = arc length, v across; land up), the painted waterline on the outline;
 //  4. reeds and mudstones (Wave 4d sprites, mirrored by hash) at the scattered decal anchors, over the strips; the
 //     D3a code-drawn blobs until the sprites load.
@@ -263,21 +264,31 @@ function drawShoreStrip(context: CanvasRenderingContext2D, loop: ShoreLoop, tile
 }
 
 /**
- * Bridge abutments: at the back end of every bridge the Wave 4b NW module (x bridges) or NE module (y bridges); at the
- * front end (D3b-2) the Wave 4d SE module (x bridges) or the same module mirrored as SW (y bridges).
+ * Bridge abutments: at the back end of every bridge the Wave 4b NW module (x bridges; INSTALL-4e: or the Wave 4e NW b
+ * module, by a hash of the bridge end) or NE module (y bridges); at the front end (D3b-2) the Wave 4d SE module (x
+ * bridges) or, since INSTALL-4e, the Wave 4e SW module (y bridges; D3b-2 mirrored the SE one there). Each module's
+ * anchor is the middle of its land and water sockets (Wave 4b / 4d (128, 88); Wave 4e NW b (128, 96) from its
+ * front (155, 146) and back (102, 46) sockets, SW a (127, 88)).
  */
+const ABUTMENT_ANCHORS: Partial<Record<ShoreAssetKey, { readonly x: number; readonly y: number }>> = {
+  bridge_abutment_nw_b: { x: 128.5, y: 96 },
+  bridge_abutment_sw_a: { x: 127, y: 88.5 },
+};
 export function drawBridgeAbutments(context: CanvasRenderingContext2D, shore: Shoreline): void {
   for (const end of shore.bridgeEnds) {
-    const key: ShoreAssetKey = end.back ? (end.axis === "x" ? "bridge_abutment_nw_a" : "bridge_abutment_ne_a") : "bridge_abutment_se_a";
-    const mirrored = !end.back && end.axis === "y";
+    const back: ShoreAssetKey = end.axis === "y" ? "bridge_abutment_ne_a"
+      : (hashOf(Math.round(end.mid.x * 2) * 4099 + Math.round(end.mid.y * 2), 17) & 1) === 0 ? "bridge_abutment_nw_a" : "bridge_abutment_nw_b";
+    const key: ShoreAssetKey = end.back ? back : end.axis === "x" ? "bridge_abutment_se_a" : "bridge_abutment_sw_a";
+    const mirrored = false;
+    const anchor = ABUTMENT_ANCHORS[key] ?? ABUTMENT_ANCHOR;
     const raster = shoreAssetRaster(key);
     const image = raster?.image ?? shoreAsset(key);
     if (image === null) continue;
     const source = raster?.source ?? { x: 0, y: 0, width: ABUTMENT_SIZE.width, height: ABUTMENT_SIZE.height };
     const width = ABUTMENT_DISPLAY_WIDTH; const height = width * ABUTMENT_SIZE.height / ABUTMENT_SIZE.width;
     const at = tileToScreen(end.mid.x, end.mid.y);
-    drawMirrorableSprite(context, image, source, { x: at.sx - width * ABUTMENT_ANCHOR.x / ABUTMENT_SIZE.width,
-      y: at.sy - height * ABUTMENT_ANCHOR.y / ABUTMENT_SIZE.height, width, height }, mirrored);
+    drawMirrorableSprite(context, image, source, { x: at.sx - width * anchor.x / ABUTMENT_SIZE.width,
+      y: at.sy - height * anchor.y / ABUTMENT_SIZE.height, width, height }, mirrored);
   }
 }
 
@@ -295,7 +306,7 @@ function cachedPattern(context: CanvasRenderingContext2D, image: CanvasImageSour
   return map.get(image) ?? null;
 }
 
-// Browser image cache: the four shore strips joined once they have loaded (null until then; the a image in Node).
+// Browser image cache: the shore strips joined once they have loaded (null until then; the a image in Node).
 let joinedStrip: CanvasImageSource | null = null;
 function shoreStripCanvas(): CanvasImageSource | null {
   if (joinedStrip !== null) return joinedStrip;

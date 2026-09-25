@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { stateCalendar } from "../src/engine/scenarioState";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 import { gunzipSync } from "node:zlib";
@@ -14,14 +15,16 @@ import { zonesOf } from "../src/zones/zoneEdits";
 // without input: spring +800, harvest +2500) and the prepared five-state board (docs/verification/c1f-farmstead/scene).
 const scene = (name: string): GameState => JSON.parse(gunzipSync(readFileSync(new URL(`../docs/verification/c1f-farmstead/scene/${name}.json.gz`, import.meta.url))).toString("utf8")) as GameState;
 
-test("Given the spring and the harvest When the farmsteads are drawn Then they show their variant, and the working barn while a tended strip is ripe", () => {
+test("Given the ploughing and the harvest When the farmsteads are drawn Then they show the winter barn in calendar winter, the working barn while a tended strip is ripe, else their variant", () => {
+  // `arable-spring` is the ploughing before spring: calendar winter (season 3, day 351), so the Wave 4e winter barn.
   const spring = scene("arable-spring"); const harvest = scene("arable-harvest");
+  assert.equal(stateCalendar(spring).season, 3); assert.equal(stateCalendar(harvest).season, 1);
   const farmsteads = spring.buildings.filter(building => building.kind === "farmstead");
   assert.equal(farmsteads.length, 5);
   for (const farmstead of farmsteads) {
-    assert.match(farmsteadImageUrl(spring, farmstead) ?? "", /farmstead_[ab]-v1\.png$/, `${farmstead.id} in spring`);
+    assert.match(farmsteadImageUrl(spring, farmstead) ?? "", /farmstead_winter-v1\.png$/, `${farmstead.id} in winter`);
     const ripe = farmsteadFieldWork(harvest).get(farmstead.id)?.ripe === true;
-    assert.equal(/farmstead_working-v1\.png$/.test(farmsteadImageUrl(harvest, farmstead) ?? ""), ripe, `${farmstead.id} at harvest`);
+    assert.match(farmsteadImageUrl(harvest, farmstead) ?? "", ripe ? /farmstead_working-v1\.png$/ : /farmstead_[ab]-v1\.png$/, `${farmstead.id} at harvest`);
   }
   assert.ok([...farmsteadFieldWork(harvest).values()].some(work => work.ripe), "control: the harvest scene has a ripe strip");
 });
@@ -37,7 +40,7 @@ test("Given the same state twice When farm props are placed Then they are identi
   assert.ok(farmProps(spring).some(prop => prop.kind === "ox_plough_team"), "spring: a plough team");
   assert.ok(farmProps(harvest).some(prop => prop.kind === "ox_cart_hay"), "harvest: a hay cart");
   const pasture = new Set(zonesOf(zoned).filter(zone => zone.kind === "pasture").flatMap(zone => zone.membership));
-  const animals = farmProps(zoned).filter(prop => prop.kind === "sheep_flock" || prop.kind === "cattle_pair");
+  const animals = farmProps(zoned).filter(prop => prop.kind.startsWith("sheep_flock") || prop.kind === "cattle_pair");
   assert.ok(animals.length > 0);
   for (const animal of animals) assert.ok(pasture.has(animal.y * zoned.width + animal.x), `${animal.id} in pasture`);
 });

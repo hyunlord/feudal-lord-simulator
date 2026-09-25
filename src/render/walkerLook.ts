@@ -4,7 +4,7 @@ import type { ResourceType } from "../content/resourceConfig";
 import { stateCalendar } from "../engine/scenarioState";
 import { householdMembers, type MemberSex } from "../population/householdMembers";
 import { boundaryHash, hashNumbers } from "../world/boundary/boundaryGeometry";
-import { walkerSheetManifest, type walkerPropManifest } from "./walkerSheetManifest.generated";
+import { walkerSheetManifest, type walkerCloakManifest, type walkerPropManifest } from "./walkerSheetManifest.generated";
 
 // V2 walker looks (spec docs/design/walker-composer.md WC-1..WC-5): which sheet, sex, trade item and cloak a walker
 // wears. Pure and derived from the saved state (nothing saved): the same state gives the same looks, before and after
@@ -19,6 +19,8 @@ export type WalkerSheet = typeof walkerSheetManifest[number];
 export type WalkerSheetId = WalkerSheet["id"];
 export type WalkerClassBand = WalkerSheet["classBand"];
 export type WalkerPropKind = keyof typeof walkerPropManifest;
+/** Winter cloaks: men's and women's (Wave 5a) and the merchant's (Wave 4e, merchant template bodies only). */
+export type WalkerCloakKind = keyof typeof walkerCloakManifest;
 export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor";
 
 export interface WalkerLook {
@@ -94,8 +96,9 @@ export function walkerCandidates(occupation: WalkerOccupation, band: WalkerClass
 
 function trinketFor(band: WalkerClassBand, key: number, seed: number): WalkerPropKind | null {
   const roll = boundaryHash(key, seed, SALT.trinket);
-  if (band === "textile") return (roll & 1) === 0 ? "bundle_cloth" : "bundle_wool";
-  if (band === "servant") return roll % 2 === 0 ? "jug" : null;
+  // Wave 4e adds the yarn bundle to the textile band and the ale jug to the servants (a third each; the rest as before).
+  if (band === "textile") return (["bundle_cloth", "bundle_wool", "yarn_bundle"] as const)[roll % 3]!;
+  if (band === "servant") return (["jug", "ale_jug", null] as const)[roll % 3]!;
   return null;
 }
 
@@ -142,6 +145,6 @@ export function walkerHeldProp(look: WalkerLook, walker: Walker): WalkerPropKind
 }
 
 /** WC-5: calendar winter (season 3, 1,000 ticks of the 4,000-tick year): the sheet's cloak, if it takes one. */
-export function walkerCloak(state: Pick<GameState, "tick" | "scenarioId">, look: WalkerLook): "male" | "female" | null {
+export function walkerCloak(state: Pick<GameState, "tick" | "scenarioId">, look: WalkerLook): WalkerCloakKind | null {
   return stateCalendar(state).season === 3 ? walkerSheet(look.sheetId).cloak : null;
 }

@@ -1,5 +1,5 @@
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
-import type { BoundaryPoint } from "../world/boundary/boundaryGeometry";
+import { hashNumbers, type BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import { GATE_HALF_CLEARANCE } from "../world/wallTraversal";
 import type { WallBaselines, WallChain, WallMaterial, WallNode, WallPillar } from "../world/boundary/wallBaseline";
 import { drawRegisteredGate } from "./gateArtRenderer";
@@ -23,7 +23,9 @@ import { preloadTimberWallAssets } from "./timberWallAssets";
 // depth order of the wall pieces is the existing one.
 //  - Face (Wave 4d v2, no battlements): every baseline sample pair is one quad from the projected front line straight
 //    up FACE_HEIGHT (the strip's 128 source px), textured by an affine map (u = arc length at 205 px per tile, plus a
-//    phase hashed per chain; v = height). Variants joined a | b | c (stone, 12 tiles) or a | b (timber, 8 tiles).
+//    phase hashed per chain; v = height). Stone: the Wave 4e rubble faces a | b (5 tiles); within GATE_ASHLAR_TILES of
+//    a gate the Wave 4d ashlar faces a | b | c (12 tiles), which continue the gate art's dressed stone, blended in over
+//    GATE_ASHLAR_BLEND. Timber: a | b (8 tiles).
 //  - Top (Wave 4d, the wall walk with the merlons, or the stake tops): a strip of TOP_SOURCE_HEIGHT source px sheared
 //    from the face's top edge (its bottom row, the merlons) back to the wall's rear line raised by TOP_HEIGHT, so the
 //    wall has a readable top and thickness (stone: the rear line is 0.15 tile behind the baseline).
@@ -31,7 +33,8 @@ import { preloadTimberWallAssets } from "./timberWallAssets";
 //    no width; such a run draws the diag_top strip, a top view across the wall's thickness, at wall height instead.
 //  - Tone: a face turned toward the lower right (a wall along the tile y axis) takes a dark wash of FACE_SHADE.
 //  - Gates: the strip stops GATE_HALF_CLEARANCE short of a gate; the existing gate art (or its fallback) stands there.
-//  - Modules: a stone tower (90 degree corner) is the Wave 4d corner tower; other stone nodes use the masonry piers,
+//  - Modules: a stone tower (90 degree corner) is the Wave 4d drum tower or the Wave 4e square tower b (position
+//    hash), a stone pillar (135 degree bend) the Wave 4e chamfered pillar; other stone nodes use the masonry piers,
 //    timber the posts.
 
 /**
@@ -45,6 +48,10 @@ const FACE_SOURCE_HEIGHT = 128;
 const FACE_PX_PER_TILE = 205;
 const FACE_JOIN_FADE = 48;
 const FACE_SHADE = 0.22;
+/** Ashlar faces reach this far from a gate node along the wall (tiles; the gate's clearance is part of it), ... */
+export const GATE_ASHLAR_TILES = GATE_HALF_CLEARANCE + 2;
+/** ... and fade into the rubble over the last stretch of it. */
+const GATE_ASHLAR_BLEND = 0.5;
 const TOP_SOURCE_HEIGHT = 48;
 /** The top strip's own screen height (48 source px at the face's 128 px = FACE_HEIGHT scale). */
 export const TOP_HEIGHT = FACE_HEIGHT * TOP_SOURCE_HEIGHT / FACE_SOURCE_HEIGHT;
@@ -93,10 +100,17 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
   for (const sample of samples) if (sample.t > low && sample.t < high) stretch.push({ point: sample.point, t: sample.t });
   stretch.push({ point: pointAt(high), t: high });
   const face = faceCanvas(chain.material);
+  const ashlar = chain.material === "stone" && (chain.startKind === "gate" || chain.endKind === "gate") ? gateFaceCanvas() : null;
   const top = topCanvas(chain.material);
   const diag = diagCanvas(chain.material);
   const canPattern = typeof context.createPattern === "function";
   const pattern = face === null || !canPattern ? null : cachedPattern(context, face);
+  const ashlarPattern = ashlar === null || !canPattern ? null : cachedPattern(context, ashlar);
+  // Ashlar weight of a stretch position: 1 up to the blend, then down to 0 at GATE_ASHLAR_TILES from the gate.
+  const ashlarWeight = (t: number): number => {
+    const distance = Math.min(chain.startKind === "gate" ? t : Infinity, chain.endKind === "gate" ? length - t : Infinity);
+    return Math.max(0, Math.min(1, (GATE_ASHLAR_TILES - distance) / GATE_ASHLAR_BLEND));
+  };
   const topPattern = top === null || !canPattern ? null : cachedPattern(context, top);
   const diagPattern = diag === null || !canPattern ? null : cachedPattern(context, diag);
   // Arc length (world tiles) from the chain start to `low`, then along the stretch.
@@ -108,7 +122,7 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
   for (const pass of ["body", "face", "top"] as const) {
     let arc = arcStart;
     for (let index = 0; index < stretch.length - 1; index += 1) {
-      const a = stretch[index] as { point: BoundaryPoint }; const b = stretch[index + 1] as { point: BoundaryPoint };
+      const a = stretch[index] as { point: BoundaryPoint; t: number }; const b = stretch[index + 1] as { point: BoundaryPoint; t: number };
       const dx = b.point.x - a.point.x; const dy = b.point.y - a.point.y;
       const segment = Math.hypot(dx, dy);
       if (segment === 0) continue;
@@ -151,23 +165,35 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
       context.beginPath();
       context.moveTo(fa.x, fa.y); context.lineTo(fb.x, fb.y); context.lineTo(fb.x, fb.y - FACE_HEIGHT); context.lineTo(fa.x, fa.y - FACE_HEIGHT);
       context.closePath();
-      if (pattern !== null) {
-        const ma = (sb.x - sa.x) / (u1 - u0); const mb = (sb.y - sa.y) / (u1 - u0);
-        const matrix = { a: ma, b: mb, c: 0, d: FACE_HEIGHT / FACE_SOURCE_HEIGHT, e: sa.x - ma * u0, f: sa.y - mb * u0 - FACE_HEIGHT };
-        pattern.setTransform(matrix);
-        lastTransform.set(pattern, matrix);
-        context.fillStyle = pattern;
+      const ma = (sb.x - sa.x) / (u1 - u0); const mb = (sb.y - sa.y) / (u1 - u0);
+      const matrix = { a: ma, b: mb, c: 0, d: FACE_HEIGHT / FACE_SOURCE_HEIGHT, e: sa.x - ma * u0, f: sa.y - mb * u0 - FACE_HEIGHT };
+      const weight = ashlarPattern === null ? 0 : ashlarWeight((a.t + b.t) / 2);
+      // The face's own pattern (rubble, or ashlar when wholly beside a gate), then the ashlar over it while blending.
+      const own = weight >= 1 ? ashlarPattern : pattern;
+      if (own !== null) {
+        own.setTransform(matrix);
+        lastTransform.set(own, matrix);
+        context.fillStyle = own;
       } else {
         context.fillStyle = chain.material === "stone" ? SEMANTIC_PALETTE.stone : SEMANTIC_PALETTE.earth;
       }
       context.fill();
+      if (weight > 0 && weight < 1 && ashlarPattern !== null) {
+        ashlarPattern.setTransform(matrix);
+        const previousAlpha = context.globalAlpha;
+        context.globalAlpha = previousAlpha * weight;
+        context.fillStyle = ashlarPattern;
+        context.fill();
+        context.globalAlpha = previousAlpha;
+      }
       // Light: a face along the tile y axis looks lower right (shaded), along x lower left (lit). The wash is the face's
       // own silhouette in ink (same pattern transform), so the transparent tops stay transparent.
       const shade = FACE_SHADE * (dy * dy) / (dx * dx + dy * dy);
-      const shadow = face === null ? null : shadowCanvas(chain.material, face);
-      const shadowPattern = shadow === null || pattern === null ? null : cachedPattern(context, shadow);
-      if (shade > 0.005 && shadowPattern !== null && pattern !== null) {
-        shadowPattern.setTransform(patternTransform(pattern));
+      const shadeFace = weight >= 1 ? ashlar : face;
+      const shadow = shadeFace === null ? null : shadowCanvas(shadeFace);
+      const shadowPattern = shadow === null || own === null ? null : cachedPattern(context, shadow);
+      if (shade > 0.005 && shadowPattern !== null && own !== null) {
+        shadowPattern.setTransform(patternTransform(own));
         const previousAlpha = context.globalAlpha;
         context.globalAlpha = previousAlpha * shade;
         context.fillStyle = shadowPattern;
@@ -219,7 +245,7 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
     const legacy: StoneWallNode = { point: node.point, neighbors: node.neighbors,
       kind: node.kind === "gate" ? "gate" : node.kind === "terminal" ? "terminal" : node.kind === "junction" ? "junction" : "corner" };
     if (node.kind === "gate") {
-      if (drawRegisteredGate(context, legacy, kind)) continue;
+      if (drawRegisteredGate(context, legacy, kind, true)) continue;
       if (kind === "stone") { for (const solid of stoneWallNodeSolids(legacy)) drawMasonrySolid(context, solid, stoneWallMaterial(), false); }
       else drawGateMarker(context, node.neighbors.flatMap(point => [point, node.point]), node.point, zoom, legacy);
       continue;
@@ -229,7 +255,10 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
       : { radius: 0.15, height: FACE_HEIGHT + 4, post: { width: 9, height: FACE_HEIGHT + 4 } };
     drawModule(context, node.point, kind, size, zoom);
   }
-  for (const pillar of pillars) drawModule(context, pillar.point, pillar.material, { radius: 0.12, height: FACE_HEIGHT + 2, post: { width: 8, height: FACE_HEIGHT + 2 } }, zoom);
+  for (const pillar of pillars) {
+    if (pillar.material === "stone" && drawPillar135(context, pillar.point)) continue;
+    drawModule(context, pillar.point, pillar.material, { radius: 0.12, height: FACE_HEIGHT + 2, post: { width: 8, height: FACE_HEIGHT + 2 } }, zoom);
+  }
 }
 
 // Wave 4d corner tower (1774 x 887 source): the drum only (the painted wall stubs left and right would not follow the
@@ -238,18 +267,47 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
 const TOWER_CROP = { x: 690, y: 214, width: 396, height: 597 } as const;
 const TOWER_ANCHOR = { x: 887, y: 790 } as const;
 const TOWER_HEIGHT = 44;
-let towerRaster: RasterizedWorldSprite | null | undefined;
+// Wave 4e square tower b (same 1774 x 887 frame): the whole tower (it has no wall stubs), anchored on its painted ground
+// pivot (900, 855). Its footprint is wider than the drum's, so it is drawn at 36 px wide (0.56 tile, the drum 29 px)
+// rather than at the drum's scale (47 px); 48 px high then, 4 px over the drum.
+const TOWER_B_CROP = { x: 567, y: 17, width: 640, height: 845 } as const;
+const TOWER_B_ANCHOR = { x: 900, y: 855 } as const;
+const TOWER_B_HEIGHT = 48;
+// Wave 4e 135 degree pillar (same frame): a chamfered buttress for the pillars at 135 degree bends, anchored on its
+// painted ground pivot (940, 810), 30 px high (the wall face and top are about 28 px), 22 px wide. The sprite has
+// no per-bend orientation (the pillar knows its point only); it is drawn as painted.
+const PILLAR_CROP = { x: 630, y: 101, width: 517, height: 692 } as const;
+const PILLAR_ANCHOR = { x: 940, y: 810 } as const;
+const PILLAR_HEIGHT = 30;
+type Module = { readonly key: WallFaceKey; readonly crop: typeof TOWER_CROP | typeof TOWER_B_CROP | typeof PILLAR_CROP; readonly anchor: BoundaryPoint; readonly height: number };
+const MODULES = {
+  drum: { key: "stone_tower_corner", crop: TOWER_CROP, anchor: TOWER_ANCHOR, height: TOWER_HEIGHT },
+  square: { key: "stone_tower_corner_b", crop: TOWER_B_CROP, anchor: TOWER_B_ANCHOR, height: TOWER_B_HEIGHT },
+  pillar: { key: "stone_pillar_135", crop: PILLAR_CROP, anchor: PILLAR_ANCHOR, height: PILLAR_HEIGHT },
+} as const satisfies Record<string, Module>;
+/** Drum or square tower at a 90 degree corner: by a hash of the corner (tile-edge lattice point), about half each. */
+export function cornerTowerVariant(point: BoundaryPoint): "drum" | "square" {
+  return (hashNumbers([Math.round(point.x * 2), Math.round(point.y * 2), 4]) & 1) === 0 ? "drum" : "square";
+}
 function drawCornerTower(context: CanvasRenderingContext2D, point: BoundaryPoint): boolean {
-  const image = wallFaceAsset(TERRAIN_VARIANTS.stoneTower[0] as WallFaceKey);
+  return drawModuleSprite(context, MODULES[cornerTowerVariant(point)], point) || drawModuleSprite(context, MODULES.drum, point);
+}
+function drawPillar135(context: CanvasRenderingContext2D, point: BoundaryPoint): boolean {
+  return drawModuleSprite(context, MODULES.pillar, point);
+}
+// One high-quality downscale per module at twice its display height (browser image cache, not state).
+const moduleRasters = new Map<WallFaceKey, RasterizedWorldSprite | null>();
+function drawModuleSprite(context: CanvasRenderingContext2D, module: Module, point: BoundaryPoint): boolean {
+  const image = wallFaceAsset(module.key);
   if (image === null) return false;
-  // One high-quality downscale at twice the display height (browser image cache, not state).
-  if (towerRaster === undefined) towerRaster = typeof document === "undefined" ? null : rasterizeWorldSprite(image, TOWER_CROP, TOWER_HEIGHT * 2);
-  const scale = TOWER_HEIGHT / TOWER_CROP.height;
+  if (!moduleRasters.has(module.key)) moduleRasters.set(module.key, typeof document === "undefined" ? null : rasterizeWorldSprite(image, module.crop, module.height * 2));
+  const raster = moduleRasters.get(module.key) ?? null;
+  const scale = module.height / module.crop.height;
   const at = screenOf(point);
-  const destination = { x: at.x - (TOWER_ANCHOR.x - TOWER_CROP.x) * scale, y: at.y - (TOWER_ANCHOR.y - TOWER_CROP.y) * scale,
-    width: TOWER_CROP.width * scale, height: TOWER_HEIGHT };
-  if (towerRaster !== null) drawCroppedWorldSprite(context, towerRaster.image, towerRaster.source, destination, false, true);
-  else drawCroppedWorldSprite(context, image, TOWER_CROP, destination, false, true);
+  const destination = { x: at.x - (module.anchor.x - module.crop.x) * scale, y: at.y - (module.anchor.y - module.crop.y) * scale,
+    width: module.crop.width * scale, height: module.height };
+  if (raster !== null) drawCroppedWorldSprite(context, raster.image, raster.source, destination, false, true);
+  else drawCroppedWorldSprite(context, image, module.crop, destination, false, true);
   return true;
 }
 
@@ -300,6 +358,18 @@ function faceCanvas(material: WallMaterial): CanvasImageSource | null {
   return canvas;
 }
 
+// The ashlar faces beside gates (a | b | c), joined once loaded like the faces.
+let joinedGateFace: CanvasImageSource | undefined;
+function gateFaceCanvas(): CanvasImageSource | null {
+  if (joinedGateFace !== undefined) return joinedGateFace;
+  const images = (TERRAIN_VARIANTS.stoneFaceGate as readonly WallFaceKey[]).map(key => wallFaceAsset(key));
+  if (images.some(image => image === null)) return null;
+  const canvas = typeof document === "undefined" ? images[0] as HTMLImageElement : joinStripImages(images as HTMLImageElement[], FACE_WIDTH, FACE_SOURCE_HEIGHT, FACE_JOIN_FADE);
+  if (canvas === null) return null;
+  joinedGateFace = canvas;
+  return canvas;
+}
+
 // The top strips (stone a | b; timber one image) and the end-on top views, loaded with the faces.
 const joinedTops = new Map<WallMaterial, CanvasImageSource>();
 function topCanvas(material: WallMaterial): CanvasImageSource | null {
@@ -319,10 +389,10 @@ function diagCanvas(material: WallMaterial): CanvasImageSource | null {
   return wallFaceAsset((material === "stone" ? TERRAIN_VARIANTS.stoneDiagTop[0] : TERRAIN_VARIANTS.palisadeDiagTop[0]) as WallFaceKey);
 }
 
-// The joined face as an ink silhouette (same alpha), for the direction shade.
-const shadows = new Map<WallMaterial, CanvasImageSource>();
-function shadowCanvas(material: WallMaterial, face: CanvasImageSource): CanvasImageSource | null {
-  const cached = shadows.get(material);
+// A joined face as an ink silhouette (same alpha), for the direction shade (browser image cache, per joined face).
+const shadows = new Map<CanvasImageSource, CanvasImageSource>();
+function shadowCanvas(face: CanvasImageSource): CanvasImageSource | null {
+  const cached = shadows.get(face);
   if (cached !== undefined) return cached;
   if (typeof document === "undefined") return null;
   const width = (face as HTMLCanvasElement).width; const height = (face as HTMLCanvasElement).height;
@@ -332,6 +402,6 @@ function shadowCanvas(material: WallMaterial, face: CanvasImageSource): CanvasIm
   paint.fillStyle = PALETTE.ink; paint.fillRect(0, 0, width, height);
   paint.globalCompositeOperation = "destination-in";
   drawCroppedWorldSprite(paint, face, { x: 0, y: 0, width, height }, { x: 0, y: 0, width, height }, false, false);
-  shadows.set(material, canvas);
+  shadows.set(face, canvas);
   return canvas;
 }

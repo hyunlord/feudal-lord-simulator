@@ -1,5 +1,6 @@
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import { stateCalendar } from "../engine/scenarioState";
 import { arableStripStates } from "../zones/arableStrips";
 import { zonesOf } from "../zones/zoneEdits";
 import { variantImage } from "./buildingVariantAssets";
@@ -12,12 +13,15 @@ import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSp
 // farmstead tends is `ripe` (C1c-2 arableStripStates: stage + farmsteadId). The art is painted in the storehouse's
 // frame (160 x 136, ground pivot 80,120), so it is drawn with the storehouse's registration; the farmstead is 1 x 1
 // (C1c-2 A3) against the storehouse's 2 x 2, so it stands on its own tile at FARMSTEAD_SCALE of the storehouse size.
+// In calendar winter (season 3, as the walkers' cloaks) every farmstead shows `farmstead_winter` (Wave 4e, INSTALL-4e:
+// the same barn in winter, no snow; the storehouse frame too); no strip is ripe then.
 
 const FRAME_KEY = "storehouse";
 /** 1x1 barn at 0.75 of the 2x2 storehouse: about 62 px wide at zoom 1 over a 64 px tile. */
 export const FARMSTEAD_SCALE = 0.75;
 const POOL = BUILDING_VARIANT_POOLS.find(pool => pool.kind === "farmstead");
 const WORKING = POOL?.variants.find(variant => variant.id === "working");
+const WINTER = POOL?.variants.find(variant => variant.id === "winter");
 
 /** Per farmstead: harvest on (a tended strip is ripe), and the first tended strip ploughed / harvested (for the props). */
 export type FarmsteadFieldWork = {
@@ -59,9 +63,10 @@ export function farmsteadFieldWork(state: GameState): ReadonlyMap<string, Farmst
   return work;
 }
 
-/** The farmstead image this frame: working during the harvest, else its variant (a / b). */
+/** The farmstead image this frame: working during the harvest, winter in calendar winter, else its variant (a / b). */
 export function farmsteadImageUrl(state: GameState, building: Pick<Building, "id">): string | null {
   if (farmsteadFieldWork(state).get(building.id)?.ripe === true && WORKING !== undefined) return WORKING.url;
+  if (stateCalendar(state).season === 3 && WINTER !== undefined) return WINTER.url;
   return frameBuildingVariant(building)?.url ?? POOL?.variants[0]?.url ?? null;
 }
 

@@ -324,7 +324,8 @@ export const BUILDING_VARIANT_POOLS = [
     "variants": [
       { "id": "a", "weight": 1, "family": "a", "url": "assets/buildings/farmstead/farmstead_a-v1.png", "width": 160, "height": 136 },
       { "id": "b", "weight": 1, "family": "b", "url": "assets/buildings/farmstead/farmstead_b-v1.png", "width": 160, "height": 136 },
-      { "id": "working", "weight": 0, "family": "working", "url": "assets/buildings/farmstead/farmstead_working-v1.png", "width": 160, "height": 136 }
+      { "id": "working", "weight": 0, "family": "working", "url": "assets/buildings/farmstead/farmstead_working-v1.png", "width": 160, "height": 136 },
+      { "id": "winter", "weight": 0, "family": "winter", "url": "assets/buildings/farmstead/farmstead_winter-v1.png", "width": 160, "height": 136 }
     ]
   },
   {

@@ -20,8 +20,8 @@ export function gateArtAxis(node: StoneWallNode): StoneWallAxis | null {
   if (a.x === node.point.x && b.x === node.point.x && (a.y-node.point.y)*(b.y-node.point.y)<0) return 'ascending';
   return null;
 }
-export function gateArtPanels(material: GateMaterial, axis: StoneWallAxis) {
-  const source = GATE_REGISTRATION[material][axis];
+type GateRegistration = { readonly left: { readonly x: number; readonly y: number }; readonly right: { readonly x: number; readonly y: number }; readonly heightScale: number };
+export function gateArtPanels(material: GateMaterial, axis: StoneWallAxis, source: GateRegistration = GATE_REGISTRATION[material][axis]) {
   const half = GATE_HALF_CLEARANCE * 32;
   const flankScale = material === 'stone' ? 0.042 : 0.055;
   return [

@@ -184,7 +184,7 @@ function hurdleEdges(piece: HurdlePiece): readonly { readonly from: { x: number;
     const arms = piece.vertex === "east" ? [[-1, 0], [0, 1]] : piece.vertex === "south" ? [[-1, 0], [0, -1]] : piece.vertex === "west" ? [[1, 0], [0, -1]] : [[1, 0], [0, 1]];
     return arms.map(([dx, dy]) => ({ from: { x, y }, to: { x: x + (dx as number), y: y + (dy as number) } }));
   }
-  const length = piece.kind === "half" ? 0.5 : 1;
+  const length = piece.kind === "half" || piece.kind === "short_gate" ? 0.5 : piece.kind === "quarter" ? 0.25 : piece.kind === "three_quarter" ? 0.75 : 1;
   return [{ from: { x, y }, to: piece.mirror ? { x: x - length, y } : { x, y: y - length } }];
 }
 
@@ -201,9 +201,10 @@ test("Given house yards When hurdles and beds are placed Then panels sit on whol
       const yard = yardOf.get(piece.buildingId);
       assert.ok(yard !== undefined);
       const { tx, ty, width, height } = yard.footprint;
-      // Posts on the yard rectangle's lattice: whole tiles, halves only for half panels.
-      assert.ok(Number.isInteger(piece.anchor.x * 2) && Number.isInteger(piece.anchor.y * 2), piece.id);
-      if (piece.kind !== "half") assert.ok(Number.isInteger(piece.anchor.x) && Number.isInteger(piece.anchor.y), piece.id);
+      // Posts on the yard rectangle's lattice: whole tiles, quarters only for part panels and the short gate (INSTALL-4e).
+      const part = piece.kind === "half" || piece.kind === "quarter" || piece.kind === "three_quarter" || piece.kind === "short_gate";
+      assert.ok(Number.isInteger(piece.anchor.x * 4) && Number.isInteger(piece.anchor.y * 4), piece.id);
+      if (!part) assert.ok(Number.isInteger(piece.anchor.x) && Number.isInteger(piece.anchor.y), piece.id);
       const centre = { x: tx + (width - 1) / 2, y: ty + (height - 1) / 2 };
       const apron = aprons.find(candidate => candidate.buildingId === piece.buildingId);
       for (const { from, to } of hurdleEdges(piece)) {
@@ -214,7 +215,7 @@ test("Given house yards When hurdles and beds are placed Then panels sit on whol
         assert.equal(at(yard, mid.x - outward.x / 16, mid.y - outward.y / 16), piece.buildingId, `${piece.id} inner side`);
         const outside = at(yard, mid.x + outward.x / 16, mid.y + outward.y / 16);
         assert.ok(outside === undefined, `${piece.id} against yard ${outside}`);
-        if (piece.kind === "gate") assert.ok(apron !== undefined && apron.normal.x === outward.x && apron.normal.y === outward.y, `${piece.id} gate off the frontage side`);
+        if (piece.kind === "gate" || piece.kind === "short_gate") assert.ok(apron !== undefined && apron.normal.x === outward.x && apron.normal.y === outward.y, `${piece.id} gate off the frontage side`);
       }
     }
     for (const bed of scene.yardProps.beds) {
@@ -246,10 +247,10 @@ test("Given fenced house yards When their rings are checked Then each edge is co
       yardsChecked += 1;
       const { tx, ty, width, height } = yard.footprint;
       const left = tx - 1; const top = ty - 1; const right = tx + width; const bottom = ty + height;
-      // Half-tile coverage of the rectangle's sides.
+      // Quarter-tile coverage of the rectangle's sides.
       const cover = new Map<string, number>();
       for (const piece of pieces) for (const { from, to } of hurdleEdges(piece)) {
-        const steps = Math.round(Math.hypot(to.x - from.x, to.y - from.y) * 2);
+        const steps = Math.round(Math.hypot(to.x - from.x, to.y - from.y) * 4);
         for (let k = 0; k < steps; k += 1) {
           const a = { x: from.x + (to.x - from.x) * k / steps, y: from.y + (to.y - from.y) * k / steps };
           const b = { x: from.x + (to.x - from.x) * (k + 1) / steps, y: from.y + (to.y - from.y) * (k + 1) / steps };
@@ -261,26 +262,30 @@ test("Given fenced house yards When their rings are checked Then each edge is co
       const centre = { x: tx + (width - 1) / 2, y: ty + (height - 1) / 2 };
       const halfOpen: string[] = [];
       for (const [line, alongX] of [[top, true], [bottom, true], [left, false], [right, false]] as const) {
-        for (let along = alongX ? left : top; along < (alongX ? right : bottom) - 1e-9; along += 0.5) {
+        for (let along = alongX ? left : top; along < (alongX ? right : bottom) - 1e-9; along += 0.25) {
           const key = alongX ? `${along},${line},x` : `${line},${along},y`;
           if (cover.has(key)) continue;
-          const mid = alongX ? { x: along + 0.25, y: line } : { x: line, y: along + 0.25 };
           const outward = alongX ? { x: 0, y: Math.sign(line - centre.y) } : { x: Math.sign(line - centre.x), y: 0 };
-          const inner = at(mid.x - outward.x / 16, mid.y - outward.y / 16); const outer = at(mid.x + outward.x / 16, mid.y + outward.y / 16);
-          // Open half-edge: the yard does not fill it (a cut or the rounded corner), or another yard lies outside.
-          if (inner === buildingId && outer === undefined) halfOpen.push(key);
+          // Open quarter-edge: the yard does not fill both its subcells (a cut or the rounded corner), or another yard
+          // lies outside.
+          const open = [1 / 16, 3 / 16].every(offset => {
+            const mid = alongX ? { x: along + offset, y: line } : { x: line, y: along + offset };
+            return at(mid.x - outward.x / 16, mid.y - outward.y / 16) === buildingId && at(mid.x + outward.x / 16, mid.y + outward.y / 16) === undefined;
+          });
+          if (open) halfOpen.push(key);
         }
       }
       // What stays open must be a rounded-corner sliver or part of an edge cut other than in half (listed as a want).
       for (const key of halfOpen) {
         const [xs, ys, axis] = key.split(",");
         const x = Number(xs); const y = Number(ys);
-        const corner = (axis === "x" ? (x === left || x + 0.5 === right) : (y === top || y + 0.5 === bottom));
+        // The rounded corner (radius 0.35) reaches into the half tile at each end of a side.
+        const corner = (axis === "x" ? (x < left + 0.5 || x + 0.25 > right - 0.5) : (y < top + 0.5 || y + 0.25 > bottom - 0.5));
         const wanted = scene.yardProps.wants.some(want => want.buildingId === buildingId && want.kind === "half"
           && Math.abs(want.at.x - (axis === "x" ? Math.floor(x) + 0.5 : x)) < 1e-9 && Math.abs(want.at.y - (axis === "x" ? y : Math.floor(y) + 0.5)) < 1e-9);
-        assert.ok(corner || wanted, `${buildingId} half-edge ${key} fenceable but open`);
+        assert.ok(corner || wanted, `${buildingId} quarter-edge ${key} fenceable but open`);
       }
-      const gateCount = pieces.filter(piece => piece.kind === "gate").length;
+      const gateCount = pieces.filter(piece => piece.kind === "gate" || piece.kind === "short_gate").length;
       assert.ok(gateCount <= 1, `${buildingId} gates ${gateCount}`);
       const apron = aprons.find(candidate => candidate.buildingId === buildingId);
       const outwardOf = (from: { x: number; y: number }, to: { x: number; y: number }) =>

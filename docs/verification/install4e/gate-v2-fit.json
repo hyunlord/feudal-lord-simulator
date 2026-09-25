@@ -1,0 +1,56 @@
+{
+ "limits": {
+  "passageTiles": 0.15,
+  "angleDeg": 5
+ },
+ "rows": [
+  {
+   "material": "stone",
+   "axis": "descending",
+   "passageOffsetTiles": -0.044,
+   "passageOffGround": 0,
+   "axisAngleDeg": 26.57,
+   "groundLineAngleDeg": 26.57,
+   "groundLineErrorDeg": 0,
+   "painterContactAngleDeg": 17.93,
+   "painterContactErrorDeg": 8.64,
+   "pass": true
+  },
+  {
+   "material": "stone",
+   "axis": "ascending",
+   "passageOffsetTiles": 0.044,
+   "passageOffGround": 0,
+   "axisAngleDeg": -26.57,
+   "groundLineAngleDeg": -26.57,
+   "groundLineErrorDeg": 0,
+   "painterContactAngleDeg": -17.93,
+   "painterContactErrorDeg": 8.64,
+   "pass": true
+  },
+  {
+   "material": "timber",
+   "axis": "descending",
+   "passageOffsetTiles": 0.065,
+   "passageOffGround": 0,
+   "axisAngleDeg": 26.57,
+   "groundLineAngleDeg": 26.57,
+   "groundLineErrorDeg": 0,
+   "painterContactAngleDeg": 16.53,
+   "painterContactErrorDeg": 10.04,
+   "pass": true
+  },
+  {
+   "material": "timber",
+   "axis": "ascending",
+   "passageOffsetTiles": -0.065,
+   "passageOffGround": 0,
+   "axisAngleDeg": -26.57,
+   "groundLineAngleDeg": -26.57,
+   "groundLineErrorDeg": 0,
+   "painterContactAngleDeg": -16.53,
+   "painterContactErrorDeg": 10.04,
+   "pass": true
+  }
+ ]
+}

@@ -74,7 +74,7 @@ export function shoreSurface(key: ShoreAssetKey): CanvasImageSource | null {
   const entry = entries.get(key);
   if (entry === undefined || entry.image === null) return null;
   if (entry.tinted !== undefined) return entry.tinted ?? entry.image;
-  const strip = (TERRAIN_VARIANTS.shoreline as readonly string[]).includes(key);
+  const strip = ([...TERRAIN_VARIANTS.shoreline, ...TERRAIN_VARIANTS.shorelineShallow] as readonly string[]).includes(key);
   if (!strip || typeof document === "undefined") { entry.tinted = null; return entry.image; }
   const image = entry.image;
   const canvas = document.createElement("canvas"); canvas.width = image.naturalWidth; canvas.height = image.naturalHeight;

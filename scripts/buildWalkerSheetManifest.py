@@ -13,9 +13,13 @@ Per frame, in 74 px cell units (the legacy sheets are read at 296/1774 like the 
   - hands: rows 28..42 (Wave 5a `protectedRegions.hands` y65..81 at 1/2 = 32..40, widened by 4 px up and 2 px down;
     lower rows catch flared skirts), the side's outermost silhouette column (alpha > 100) is the hanging hand; the
     anchor is the middle row of that column's run, 2 px inward. Measured on the template, used by its reskins.
+  - Wave 4e (INSTALL-4e) adds seven reskins of the same format (women's labour and servant sheets, the poor), the
+    yarn bundle and ale jug props (anchor: the ledger's `socketsOrAnchor`) and the merchant's winter cloak.
 Winter cloak: the Wave 5a cloak was painted over the civilian templates; a sheet takes it when at most
 CLOAK_POKE_LIMIT head pixels (rows 0..29 of a cell) stay outside the cloak's alpha (a brimmed hat or coif poking out
-beside the hood), and never for the clergy.
+beside the hood), and never for the clergy. The Wave 4e merchant cloak was painted over the merchant template only
+(torso rows from master y31, the hat left out on purpose, so the head poke test does not apply): every sheet on the
+merchant template takes it, and no other sheet does.
 
 Run: python3 scripts/buildWalkerSheetManifest.py
 """
@@ -90,8 +94,15 @@ def hands_of(image):
     return out
 
 
+CLOAK_FILES = {"male": "overlay_cloak_m-v1.png", "female": "overlay_cloak_f-v1.png", "merchant": "overlay_cloak_merchant_m-v1.png"}
+
+
+def cloak_of(template, sex):
+    return "merchant" if template == "merchant" else sex
+
+
 def cloak_poke(image, sex):
-    cloak = np.array(Image.open(ROOT / f"public/assets/walker-props-v1/overlay_cloak_{sex[0]}-v1.png").convert("RGBA"))[..., 3] > 60
+    cloak = np.array(Image.open(ROOT / f"public/assets/walker-props-v1/{CLOAK_FILES[sex]}").convert("RGBA"))[..., 3] > 60
     alpha = np.array(image)[..., 3] > 60
     return max(int((alpha[g * 74:g * 74 + 30, d * 74:d * 74 + 74] & ~cloak[g * 74:g * 74 + 30, d * 74:d * 74 + 74]).sum())
                for g in range(2) for d in range(4))
@@ -122,30 +133,33 @@ for legacy_id, (band, sex, tags) in LEGACY.items():
     image = sheet_image(ROOT / "public" / meta["url"])
     hands = hands_of(image)
     template_hands[legacy_id] = hands
-    poke = cloak_poke(image, sex)
+    cloak = cloak_of(legacy_id, sex)
+    poke = cloak_poke(image, cloak)
     sheets.append({"id": f"legacy_{legacy_id}", "url": meta["url"], "width": meta["width"], "height": meta["height"],
                    "sha256": meta["sha256"], "classBand": band, "sex": sex,
                    "occupationTags": tags, "legacy": True, "holdsTool": legacy_id in HOLDS_TOOL, "template": legacy_id, "season": "all",
-                   "directionOrder": DIRECTIONS, "cloak": None if band in CLERGY or poke > CLOAK_POKE_LIMIT else sex,
+                   "directionOrder": DIRECTIONS, "cloak": None if band in CLERGY or (cloak != "merchant" and poke > CLOAK_POKE_LIMIT) else cloak,
                    "cloakPoke": poke, "frames": frames_of(meta, hands)})
 
 csv.field_size_limit(sys.maxsize)
 rows = list(csv.DictReader(open(ROOT / "assets-inbox/wave5a/provenance-wave5a.csv", encoding="utf-8-sig")))
-for row in rows:
-    if row["type"] != "reskin":
-        continue
-    name = Path(row["file"]).name
+wave4e = list(csv.DictReader(open(ROOT / "assets-inbox/wave4e/provenance-wave4e.csv", encoding="utf-8-sig")))
+# (file name, template) of every reskin: Wave 5a rows name the template, Wave 4e rows carry it in the generation record.
+reskins = [(Path(row["file"]).name, re.search(r"actor_([a-z_]+)-v\d\.png", row["template"]).group(1)) for row in rows if row["type"] == "reskin"]
+reskins += [(Path(row["file"]).name, re.search(r"actor_([a-z_]+)-v\d\.png", json.loads(row["generationRecords"])[0]["template"]).group(1))
+            for row in wave4e if row["role"] == "walker_sheet"]
+for name, template in reskins:
     match = re.match(r"wk_([a-z]+)_([mf])_(\d+)-v1\.png", name)
     band, sex = match.group(1), "male" if match.group(2) == "m" else "female"
-    template = re.search(r"actor_([a-z_]+)-v\d\.png", row["template"]).group(1)
     path = ROOT / "public/assets/walkers-v2" / name
     image = sheet_image(path)
-    poke = cloak_poke(image, sex)
+    cloak = cloak_of(template, sex)
+    poke = cloak_poke(image, cloak)
     sheets.append({"id": name[:-len("-v1.png")], "url": f"assets/walkers-v2/{name}", "width": 296, "height": 148,
                    "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "classBand": band,
                    "sex": sex, "occupationTags": BAND_OCCUPATIONS[band], "legacy": False, "holdsTool": False, "template": template,
                    "season": "all", "directionOrder": DIRECTIONS,
-                   "cloak": None if band in CLERGY or poke > CLOAK_POKE_LIMIT else sex, "cloakPoke": poke,
+                   "cloak": None if band in CLERGY or (cloak != "merchant" and poke > CLOAK_POKE_LIMIT) else cloak, "cloakPoke": poke,
                    "frames": frames_of(actors[template], template_hands[template])})
 
 props = {}
@@ -158,14 +172,24 @@ for row in rows:
     props.setdefault(kind, {})[processing["direction"]] = {
         "url": f"assets/walker-props-v1/{name}", "anchor": {"x": processing["anchor"]["x"], "y": processing["anchor"]["y"]},
         "role": processing["anchor"]["role"]}
+for row in wave4e:
+    name = Path(row["file"]).name
+    if not name.startswith("held_"):
+        continue
+    record = json.loads(row["generationRecords"])
+    record = record[0] if isinstance(record, list) else record
+    anchor = json.loads(row["socketsOrAnchor"])
+    props.setdefault(record["kind"], {})[record["direction"]] = {
+        "url": f"assets/walker-props-v1/{name}", "anchor": {"x": anchor["x"], "y": anchor["y"]},
+        "role": "handle grip" if record["kind"] == "ale_jug" else "top cord-loop grip"}
 
 target = ROOT / "src/render/walkerSheetManifest.generated.ts"
 lines = ["// Generated by scripts/buildWalkerSheetManifest.py (rules in its header). Do not edit by hand.",
          "export const walkerSheetManifest = ["]
 lines += [json.dumps(sheet, separators=(",", ":")) + "," for sheet in sheets]
 lines += ["] as const;", "", f"export const walkerPropManifest = {json.dumps(props, separators=(',', ':'))} as const;", "",
-          'export const walkerCloakManifest = {"male":{"url":"assets/walker-props-v1/overlay_cloak_m-v1.png"},'
-          '"female":{"url":"assets/walker-props-v1/overlay_cloak_f-v1.png"}} as const;', ""]
+          "export const walkerCloakManifest = " + json.dumps({key: {"url": f"assets/walker-props-v1/{file}"} for key, file in CLOAK_FILES.items()},
+                                                            separators=(",", ":")) + " as const;", ""]
 target.write_text("\n".join(lines))
 print(len(sheets), "sheets;", sum(1 for s in sheets if s["cloak"]), "cloaked;", {k: len(v) for k, v in props.items()})
 for s in sheets: print(s["id"], s["classBand"], s["sex"], s["template"], s["cloak"], s["cloakPoke"])

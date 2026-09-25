@@ -43,13 +43,34 @@ export const TERRAIN_VARIANT_ASSETS = [
   { "key": "mudstone_a", "url": "assets/shore/mudstone_a-v1.png", "width": 64, "height": 48, "role": "decal" },
   { "key": "mudstone_b", "url": "assets/shore/mudstone_b-v1.png", "width": 64, "height": 48, "role": "decal" },
   { "key": "bridge_abutment_se_a", "url": "assets/module/bridge_abutment_se_a-v1.png", "width": 256, "height": 192, "role": "module" },
+  // Wave 4e (INSTALL-4e): rubble stone faces (the default stone face; the ashlar v2 faces only beside gates), the gate
+  // v2 modules (painted on the NW-SE gate part's canvas with its alpha, so the gate registration is the old one), the
+  // 135 degree pillar, the square tower b (a second 90 degree tower), shore strips beside deep water, the back-left (SW)
+  // and second back (NW b) bridge abutments, and the ferry landing (registered only: no ferry logic, never drawn).
+  // Candidates kept in assets-inbox/wave4e.
+  { "key": "stone_face_rubble_a", "url": "assets/wall/stone_face_rubble_a-v2.png", "width": 512, "height": 128, "role": "strip" },
+  { "key": "stone_face_rubble_b", "url": "assets/wall/stone_face_rubble_b-v2.png", "width": 512, "height": 128, "role": "strip" },
+  { "key": "stone_gate_v2", "url": "assets/wall/stone_gate_v2-v1.png", "width": 512, "height": 512, "role": "module" },
+  { "key": "palisade_gate_v2", "url": "assets/wall/palisade_gate_v2-v1.png", "width": 512, "height": 512, "role": "module" },
+  { "key": "stone_pillar_135", "url": "assets/wall/stone_pillar_135-v1.png", "width": 1774, "height": 887, "role": "module" },
+  { "key": "stone_tower_corner_b", "url": "assets/wall/stone_tower_corner_b-v1.png", "width": 1774, "height": 887, "role": "module" },
+  { "key": "shoreline_deep_a", "url": "assets/shore/shoreline_deep_a-v1.png", "width": 512, "height": 96, "role": "strip" },
+  { "key": "shoreline_deep_b", "url": "assets/shore/shoreline_deep_b-v1.png", "width": 512, "height": 96, "role": "strip" },
+  { "key": "bridge_abutment_sw_a", "url": "assets/module/bridge_abutment_sw_a-v1.png", "width": 256, "height": 192, "role": "module" },
+  { "key": "bridge_abutment_nw_b", "url": "assets/module/bridge_abutment_nw_b-v1.png", "width": 256, "height": 192, "role": "module" },
+  { "key": "ferry_landing", "url": "assets/module/ferry_landing-v1.png", "width": 256, "height": 192, "role": "module" },
 ] as const;
 
 export type TerrainVariantKey = (typeof TERRAIN_VARIANT_ASSETS)[number]["key"];
 
 /** Variant families for D3 (same selection rule as the zone families: position hash + near rejection). */
 export const TERRAIN_VARIANTS = {
-  shoreline: ["shoreline_a", "shoreline_b", "shoreline_c", "shoreline_d", "shoreline_e", "shoreline_f"],
+  /** Wave 4e strips painted beside the Wave 4d deep water: the default shore (INSTALL-4e). */
+  shoreline: ["shoreline_deep_a", "shoreline_deep_b"],
+  /** Wave 4b / 4d strips (lighter shallow-water side): kept registered with their water-half fade, no longer drawn. */
+  shorelineShallow: ["shoreline_a", "shoreline_b", "shoreline_c", "shoreline_d", "shoreline_e", "shoreline_f"],
+  /** Registered only (no ferry logic yet). */
+  ferry: ["ferry_landing"],
   shallowWater: ["shallow_a", "shallow_b", "shallow_c"],
   deepWater: ["deep_a", "deep_b", "deep_c"],
   shoreReeds: ["reeds_a", "reeds_b", "reeds_c"],
@@ -58,13 +79,19 @@ export const TERRAIN_VARIANTS = {
   palisadeFaceV1: ["palisade_face_a", "palisade_face_b", "palisade_face_c"],
   stoneFaceV1: ["stone_face_a", "stone_face_b", "stone_face_c"],
   palisadeFace: ["palisade_face_v2_a", "palisade_face_v2_b"],
-  stoneFace: ["stone_face_v2_a", "stone_face_v2_b", "stone_face_v2_c"],
+  /** Wave 4e rubble faces: the default stone face (INSTALL-4e). */
+  stoneFace: ["stone_face_rubble_a", "stone_face_rubble_b"],
+  /** Wave 4d ashlar v2 faces: only within GATE_ASHLAR_TILES of a gate, where they continue the gate art's dressed stone. */
+  stoneFaceGate: ["stone_face_v2_a", "stone_face_v2_b", "stone_face_v2_c"],
   palisadeTop: ["palisade_top"],
   stoneTop: ["stone_top_a", "stone_top_b"],
   palisadeDiagTop: ["palisade_diag_top"],
   stoneDiagTop: ["stone_diag_top"],
-  stoneTower: ["stone_tower_corner"],
-  bridgeAbutment: ["bridge_abutment_ne_a", "bridge_abutment_nw_a", "bridge_abutment_se_a"],
+  stoneTower: ["stone_tower_corner", "stone_tower_corner_b"],
+  stonePillar: ["stone_pillar_135"],
+  stoneGate: ["stone_gate_v2"],
+  palisadeGate: ["palisade_gate_v2"],
+  bridgeAbutment: ["bridge_abutment_ne_a", "bridge_abutment_nw_a", "bridge_abutment_se_a", "bridge_abutment_sw_a", "bridge_abutment_nw_b"],
 } as const satisfies Record<string, readonly TerrainVariantKey[]>;
 
 /** The pieces the shore draws (D3a, D3b-2 deep water and decals), and the wall strips (D3b-2 v2), each loaded on demand. */
@@ -72,5 +99,6 @@ export const SHORE_ASSET_KEYS = [...TERRAIN_VARIANTS.shoreline, ...TERRAIN_VARIA
   ...TERRAIN_VARIANTS.shoreReeds, ...TERRAIN_VARIANTS.shoreStones, ...TERRAIN_VARIANTS.bridgeAbutment] as const;
 export type ShoreAssetKey = (typeof SHORE_ASSET_KEYS)[number];
 export const WALL_FACE_KEYS = [...TERRAIN_VARIANTS.palisadeFace, ...TERRAIN_VARIANTS.stoneFace, ...TERRAIN_VARIANTS.palisadeTop,
-  ...TERRAIN_VARIANTS.stoneTop, ...TERRAIN_VARIANTS.palisadeDiagTop, ...TERRAIN_VARIANTS.stoneDiagTop, ...TERRAIN_VARIANTS.stoneTower] as const;
+  ...TERRAIN_VARIANTS.stoneTop, ...TERRAIN_VARIANTS.palisadeDiagTop, ...TERRAIN_VARIANTS.stoneDiagTop, ...TERRAIN_VARIANTS.stoneTower,
+  ...TERRAIN_VARIANTS.stoneFaceGate, ...TERRAIN_VARIANTS.stonePillar, ...TERRAIN_VARIANTS.stoneGate, ...TERRAIN_VARIANTS.palisadeGate] as const;
 export type WallFaceKey = (typeof WALL_FACE_KEYS)[number];

@@ -5,7 +5,7 @@ import { assetUrlForBase } from "./worldAssets";
 import { createTintCanvas, drawCroppedWorldSprite } from "./worldSprite";
 import type { WalkerPresentation, WalkerPresentationDirection } from "./walkerPresentation";
 import { walkerCloakManifest, walkerPropManifest } from "./walkerSheetManifest.generated";
-import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerLook, type WalkerPropKind, type WalkerSheetId } from "./walkerLook";
+import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerCloakKind, type WalkerLook, type WalkerPropKind, type WalkerSheetId } from "./walkerLook";
 
 // V2 walker composer (spec docs/design/walker-composer.md WC-6..WC-8): a look (sheet + held prop + winter cloak) is
 // composed once into a canvas of its 8 cells (4 directions x 2 gait frames) and drawn from there every frame.
@@ -49,7 +49,7 @@ function imageFor(url: string, width: number | null, height: number | null): HTM
   return null;
 }
 
-type ComposeKey = `${WalkerSheetId}|${WalkerPropKind | "-"}|${"male" | "female" | "-"}`;
+type ComposeKey = `${WalkerSheetId}|${WalkerPropKind | "-"}|${WalkerCloakKind | "-"}`;
 /** A composed look: its 8 cells (index column + 4 * gait frame), each an ImageBitmap where OffscreenCanvas can hand one over. */
 type Cell = ImageBitmap | OffscreenCanvas | HTMLCanvasElement;
 type Composed = readonly Cell[];
@@ -57,7 +57,7 @@ const composed = new Map<ComposeKey, Composed>();
 const stats = { composed: 0, evicted: 0, composeMsTotal: 0, composeMsMax: 0, firstComposeMs: null as number | null };
 
 /** Draws the composed cells of a key, or returns null while one of its images is still loading. */
-function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): Composed | null {
+function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null): Composed | null {
   const key: ComposeKey = `${sheetId}|${prop ?? "-"}|${cloak ?? "-"}`;
   const hit = composed.get(key);
   if (hit !== undefined) { composed.delete(key); composed.set(key, hit); return hit; }
@@ -180,7 +180,7 @@ export function walkerComposerStats() {
 }
 
 /** Evidence: the composed 8 cells of a look (composes it once its images are loaded; null while they load). */
-export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: "male" | "female" | null): Composed | null {
+export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null): Composed | null {
   return composedCanvas(sheetId, prop, cloak);
 }
 

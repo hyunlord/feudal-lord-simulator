@@ -9,7 +9,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { CACHE_LIMIT, PROP_SCALE, WALKER_CELL, WALKER_COMPOSED_CELL, WALKER_PAD, rightHand } from "../src/render/walkerComposer";
 import { walkerCloak, walkerHeldProp, walkerLook, walkerLooks, walkerSheet } from "../src/render/walkerLook";
-import { walkerPropManifest, walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
+import { walkerCloakManifest, walkerPropManifest, walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
 
 // V2 walker composer (docs/design/walker-composer.md), on the C3 seed 2 city run to its first summer / winter sample
 // (docs/verification/v2-walkers/scene, scripts/walkerLookEvidence.ts).
@@ -94,7 +94,7 @@ test("Given walkers at work When props are chosen Then builders hold a hammer, b
   assert.equal(walkerHeldProp(look, builder), walkerSheet(look.sheetId).holdsTool ? null : "tool_hammer");
 });
 
-test("Given the calendar When it is winter Then cloaks cover everyone but the clergy and the hat-wearing merchant bodies, and nobody in summer (gate 4)", () => {
+test("Given the calendar When it is winter Then cloaks cover everyone but the clergy, the merchant bodies wear the merchant cloak (INSTALL-4e), and nobody in summer (gate 4)", () => {
   const summer = scene("summer"); const winter = scene("winter");
   for (const walker of winter.walkers) {
     const look = walkerLook(winter, walker);
@@ -102,8 +102,9 @@ test("Given the calendar When it is winter Then cloaks cover everyone but the cl
     assert.equal(walkerCloak(winter, look), walkerSheet(look.sheetId).cloak);
   }
   for (const sheet of walkerSheetManifest) {
-    if (["priest", "monk", "nun"].includes(sheet.classBand) || sheet.template === "merchant") assert.equal(sheet.cloak, null, sheet.id);
-    if (sheet.cloak !== null) assert.equal(sheet.cloak, sheet.sex, sheet.id);
+    if (["priest", "monk", "nun"].includes(sheet.classBand)) assert.equal(sheet.cloak, null, sheet.id);
+    else if (sheet.template === "merchant") assert.equal(sheet.cloak, "merchant", sheet.id);
+    else if (sheet.cloak !== null) assert.equal(sheet.cloak, sheet.sex, sheet.id);
   }
   assert.ok(winter.walkers.some(walker => walkerCloak(winter, walkerLook(winter, walker)) !== null), "control: the winter scene shows cloaks");
 });
@@ -112,15 +113,17 @@ test("Given the composer cache When it is full Then it holds at most 25 MB of co
   assert.ok(CACHE_LIMIT * 4 * WALKER_COMPOSED_CELL * 2 * WALKER_COMPOSED_CELL * 4 <= 25_000_000);
 });
 
-test("Given the Wave 5a sheets When the manifest is read Then all 29 walkers, 24 props and both cloaks are installed with the ledger bytes", () => {
+test("Given the Wave 5a and 4e sheets When the manifest is read Then all 36 walkers, 32 props and the three cloaks are installed with the ledger bytes", () => {
   const wave5a = walkerSheetManifest.filter(sheet => !sheet.legacy);
-  assert.equal(wave5a.length, 29);
+  assert.equal(wave5a.length, 29 + 7);
   for (const sheet of wave5a) {
     const bytes = readFileSync(new URL(`../public/${sheet.url}`, import.meta.url));
     assert.equal(createHash("sha256").update(bytes).digest("hex"), sheet.sha256, sheet.id);
     assert.deepEqual(sheet.directionOrder, ["NE", "SE", "SW", "NW"]);
   }
   const props = Object.values(walkerPropManifest).flatMap(directions => Object.values(directions));
-  assert.equal(props.length, 24);
+  assert.equal(props.length, 24 + 8);
   for (const prop of props) readFileSync(new URL(`../public/${prop.url}`, import.meta.url));
+  assert.deepEqual(Object.keys(walkerCloakManifest).sort(), ["female", "male", "merchant"]);
+  for (const cloak of Object.values(walkerCloakManifest)) readFileSync(new URL(`../public/${cloak.url}`, import.meta.url));
 });

@@ -10,8 +10,11 @@ import { YARD_CORNER_RADIUS, YARD_GROWTH, YARD_SUBCELLS, type BuildingApron, typ
 //    has whole-tile sides). An edge the yard fills exactly -- not clipped by a road, water, the wall or another
 //    footprint -- and that no other yard touches from outside is fenceable; so is the frontage side now.
 //      - Gate: on the frontage side, the fenceable edge nearest the side's middle takes the gate (one per yard).
-//      - Half panel: an edge a cut leaves half filled (one half wholly the yard's, the other half not at all, no other
-//        yard outside) takes a half panel on the filled half.
+//      - Part panels: an edge a cut leaves partly filled -- its quarters (2 of the 8 subcells each) wholly the yard's
+//        from one end, the rest not at all, no other yard outside -- takes the panel of that length on the filled part:
+//        a quarter (Wave 4e), a half (Wave 4c) or a three-quarter (Wave 4e) panel (INSTALL-4e).
+//      - Short gate (Wave 4e, INSTALL-4e): a fenced yard whose frontage side has no whole edge but a half edge takes the
+//        short gate there instead of the half panel (the frontage half nearest the side's middle).
 //      - Corners: at each vertex whose two adjacent edges are both plain panels (not the gate, not halves) the corner
 //        piece of that vertex (north: Wave 4b, east / south / west: Wave 4c) replaces them; never mirrored.
 //      - Every other fenceable edge is one straight panel (one tile along -y; mirrored it runs along +x).
@@ -40,15 +43,15 @@ export type HurdleVertex = "north" | "east" | "south" | "west";
 export type HurdlePiece = {
   readonly id: string;
   readonly buildingId: string;
-  readonly kind: "straight" | "gate" | "half" | "corner";
+  readonly kind: "straight" | "gate" | "half" | "quarter" | "three_quarter" | "short_gate" | "corner";
   /** Corners: which rectangle vertex (each has its own art). */
   readonly vertex?: HurdleVertex;
   /**
-   * Where the piece's anchor post foot stands (straight / gate: the +y / +x end of its edge; half: the +y / +x end of
-   * its half edge; corner: the vertex).
+   * Where the piece's anchor post foot stands (straight / gate: the +y / +x end of its edge; part panels and the short
+   * gate: the +y / +x end of the part they cover; corner: the vertex).
    */
   readonly anchor: BoundaryPoint;
-  /** Straight, gate and half pieces along x are the mirrored panel. */
+  /** Straight, gate, part and short gate pieces along x are the mirrored panel. */
   readonly mirror: boolean;
   /** Draw order: the middle of what the piece covers (x + y). */
   readonly depth: number;
@@ -101,7 +104,8 @@ export function yardProps(input: YardPropsInput): YardProps {
     // Unit edges of the rectangle: whole (fenceable), half (which half), or nothing.
     type Edge = { readonly side: Side["name"]; readonly at: number; readonly alongX: boolean; readonly line: number; readonly frontage: boolean };
     const whole: Edge[] = [];
-    const halves: { readonly edge: Edge; readonly upper: boolean }[] = [];
+    /** Part edges: `quarters` (1..3) of the edge filled from its upper (+) or lower end. */
+    const parts: { readonly edge: Edge; readonly upper: boolean; readonly quarters: 1 | 2 | 3 }[] = [];
     for (const side of SIDES) {
       const alongX = side.normal.y !== 0;
       const line = side.name === "top" ? top : side.name === "bottom" ? bottom : side.name === "left" ? left : right;
@@ -109,7 +113,7 @@ export function yardProps(input: YardPropsInput): YardProps {
       const isFrontage = frontage !== null && frontage.x === side.normal.x && frontage.y === side.normal.y;
       for (let at = start; at < end - 1e-9; at += 1) {
         let idealCount = 0; let filled = 0; let touched = false;
-        const halfFilled = [0, 0]; const halfIdeal = [0, 0];
+        const quarterFilled = [0, 0, 0, 0]; const quarterIdeal = [0, 0, 0, 0];
         for (let k = 0; k < S; k += 1) {
           const along = at + (k + 0.5) / S;
           const inner = line - (side.normal.x + side.normal.y) * 0.5 / S;
@@ -118,18 +122,27 @@ export function yardProps(input: YardPropsInput): YardProps {
           const [ox, oy] = alongX ? [along, outer] : [outer, along];
           if (!ideal(ix, iy)) continue;
           if (other(ox, oy)) touched = true;
-          const half = k < S / 2 ? 0 : 1;
-          idealCount += 1; halfIdeal[half] = (halfIdeal[half] as number) + 1;
-          if (mine(ix, iy)) { filled += 1; halfFilled[half] = (halfFilled[half] as number) + 1; }
+          const quarter = Math.floor(k * 4 / S);
+          idealCount += 1; quarterIdeal[quarter] = (quarterIdeal[quarter] as number) + 1;
+          if (mine(ix, iy)) { filled += 1; quarterFilled[quarter] = (quarterFilled[quarter] as number) + 1; }
         }
         const edge: Edge = { side: side.name, at, alongX, line, frontage: isFrontage };
         const middle = alongX ? { x: at + 0.5, y: line } : { x: line, y: at + 0.5 };
         if (touched) continue;
         if (idealCount >= S / 2 && filled === idealCount) { whole.push(edge); continue; }
-        // A cut: one half wholly the yard's (its ideal part), the other half none of it.
-        const upperWhole = (halfIdeal[1] as number) > 0 && halfFilled[1] === halfIdeal[1] && halfFilled[0] === 0;
-        const lowerWhole = (halfIdeal[0] as number) > 0 && halfFilled[0] === halfIdeal[0] && halfFilled[1] === 0;
-        if (upperWhole || lowerWhole) halves.push({ edge, upper: upperWhole });
+        // A cut: the first m quarters from one end wholly the yard's (their ideal part), the others none of it.
+        // (A quarter the rounded corner leaves without ideal subcells counts as filled; the run must hold some.)
+        const full = (q: number): boolean => quarterFilled[q] === quarterIdeal[q];
+        const empty = (q: number): boolean => quarterFilled[q] === 0;
+        const runIdeal = (qs: readonly number[]): number => qs.reduce((sum, q) => sum + (quarterIdeal[q] as number), 0);
+        let part: { readonly upper: boolean; readonly quarters: 1 | 2 | 3 } | null = null;
+        for (const quarters of [2, 1, 3] as const) {
+          const low = [0, 1, 2, 3].filter(q => q < quarters); const high = [0, 1, 2, 3].filter(q => q >= 4 - quarters);
+          const lower = runIdeal(low) > 0 && [0, 1, 2, 3].every(q => q < quarters ? full(q) : empty(q));
+          const upper = runIdeal(high) > 0 && [0, 1, 2, 3].every(q => q >= 4 - quarters ? full(q) : empty(q));
+          if (lower || upper) { part = { upper, quarters }; break; }
+        }
+        if (part !== null) parts.push({ edge, ...part });
         else if (filled >= S / 4) wants.push({ buildingId: yard.buildingId, kind: "half", at: middle });
       }
     }
@@ -139,11 +152,20 @@ export function yardProps(input: YardPropsInput): YardProps {
     if (frontEdges.length > 0) {
       const mid = frontEdges[0]!.alongX ? (left + right) / 2 : (top + bottom) / 2;
       gate = [...frontEdges].sort((p, q) => Math.abs(p.at + 0.5 - mid) - Math.abs(q.at + 0.5 - mid) || p.at - q.at)[0] ?? null;
-    } else if (frontage !== null && whole.length + halves.length > 0) {
-      // A fenced yard whose frontage side has no whole edge left: no gate can stand (listed; unfenced yards need none).
+    }
+    // No whole frontage edge: the short gate takes the frontage half edge nearest the side's middle (ties: the lower).
+    let shortGate: (typeof parts)[number] | null = null;
+    if (gate === null && frontage !== null && whole.length + parts.length > 0) {
       const alongX = frontage.y !== 0;
-      const line = frontage.y < 0 ? top : frontage.y > 0 ? bottom : frontage.x < 0 ? left : right;
-      wants.push({ buildingId: yard.buildingId, kind: "gate", at: alongX ? { x: (left + right) / 2, y: line } : { x: line, y: (top + bottom) / 2 } });
+      const mid = alongX ? (left + right) / 2 : (top + bottom) / 2;
+      const centre = (part: (typeof parts)[number]): number => part.edge.at + (part.upper ? 0.75 : 0.25);
+      shortGate = parts.filter(part => part.edge.frontage && part.quarters === 2)
+        .sort((p, q) => Math.abs(centre(p) - mid) - Math.abs(centre(q) - mid) || p.edge.at - q.edge.at)[0] ?? null;
+      if (shortGate === null) {
+        // A fenced yard whose frontage side has no whole or half edge left: no gate can stand (listed; unfenced yards need none).
+        const line = frontage.y < 0 ? top : frontage.y > 0 ? bottom : frontage.x < 0 ? left : right;
+        wants.push({ buildingId: yard.buildingId, kind: "gate", at: alongX ? { x: (left + right) / 2, y: line } : { x: line, y: (top + bottom) / 2 } });
+      }
     }
     const plain = new Set(whole.filter(edge => edge !== gate).map(edge => `${edge.side}:${edge.at}`));
     const push = (piece: Omit<HurdlePiece, "id" | "buildingId">): void => {
@@ -169,12 +191,16 @@ export function yardProps(input: YardPropsInput): YardProps {
       if (edge.alongX) push({ kind, anchor: { x: edge.at + 1, y: edge.line }, mirror: true, depth: edge.at + 0.5 + edge.line });
       else push({ kind, anchor: { x: edge.line, y: edge.at + 1 }, mirror: false, depth: edge.line + edge.at + 0.5 });
     }
-    for (const { edge, upper } of halves) {
-      // The half panel covers [at, at + 0.5] (lower) or [at + 0.5, at + 1] (upper); its anchor is that half's +y / +x end.
-      const end = edge.at + (upper ? 1 : 0.5);
-      const middle = edge.at + (upper ? 0.75 : 0.25);
-      if (edge.alongX) push({ kind: "half", anchor: { x: end, y: edge.line }, mirror: true, depth: middle + edge.line });
-      else push({ kind: "half", anchor: { x: edge.line, y: end }, mirror: false, depth: edge.line + middle });
+    for (const part of parts) {
+      // A part panel covers [at, at + q / 4] (lower) or [at + 1 - q / 4, at + 1] (upper); its anchor is that part's
+      // +y / +x end.
+      const { edge, upper, quarters } = part;
+      const length = quarters / 4;
+      const end = upper ? edge.at + 1 : edge.at + length;
+      const middle = end - length / 2;
+      const kind = part === shortGate ? "short_gate" : quarters === 1 ? "quarter" : quarters === 2 ? "half" : "three_quarter";
+      if (edge.alongX) push({ kind, anchor: { x: end, y: edge.line }, mirror: true, depth: middle + edge.line });
+      else push({ kind, anchor: { x: edge.line, y: end }, mirror: false, depth: edge.line + middle });
     }
 
     // Croft beds behind the house.
@@ -210,7 +236,8 @@ export function yardProps(input: YardPropsInput): YardProps {
         hash: hashNumbers([anchor.x, anchor.y, variant, alongX ? 1 : 2]) });
     });
   });
-  const kindCode = (piece: HurdlePiece): number => ({ straight: 2, gate: 3, half: 4, corner: 10 + ["north", "east", "south", "west"].indexOf(piece.vertex ?? "north") })[piece.kind];
+  const kindCode = (piece: HurdlePiece): number => ({ straight: 2, gate: 3, half: 4, quarter: 5, three_quarter: 6, short_gate: 7,
+    corner: 10 + ["north", "east", "south", "west"].indexOf(piece.vertex ?? "north") })[piece.kind];
   const hash = hashNumbers([...beds.map(bed => bed.hash), ...hurdles.flatMap(piece => [piece.anchor.x, piece.anchor.y, kindCode(piece), piece.mirror ? 1 : 0])]);
   return { beds, hurdles, wants, hash };
 }

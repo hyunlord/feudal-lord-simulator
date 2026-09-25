@@ -120,7 +120,7 @@ export type Phase10ProofRuntimePort = {
   /** TOUCH-1 evidence: the last input device (mouse, touch, gamepad). */
   readonly inputDevice: () => string;
   /** V2 evidence: a composed look's 8 cells as a PNG data URL (null while its images load). */
-  readonly walkerComposite: (sheetId: string, prop: string | null, cloak: "male" | "female" | null) => string | null;
+  readonly walkerComposite: (sheetId: string, prop: string | null, cloak: "male" | "female" | "merchant" | null) => string | null;
   /** Gate 2 of the curved ground: rebuild from reversed tile order (true) or normal order (false), dropping rasters. */
   readonly resetBoundary: (reverseInput: boolean) => void;
   /**

@@ -67,6 +67,17 @@ export const ZONE_ASSETS = [
   { "key": "ox_cart_hay", "url": "assets/zones/animals/ox_cart_hay-v1.png", "width": 192, "height": 128, "role": "prop", "displayWidth": 46, "anchorX": 96, "anchorY": 116 },
   { "key": "sheep_flock", "url": "assets/zones/animals/sheep_flock-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 84 },
   { "key": "cattle_pair", "url": "assets/zones/animals/cattle_pair-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 84 },
+  // Wave 4e (INSTALL-4e): hurdle quarter / three-quarter panels and a short (half-tile) gate at the half panel's scale
+  // (2 source px per screen px; posts' feet on row 55, ports quarter (8, 55) -> (24, 47), three-quarter (24, 55) ->
+  // (72, 31), short gate (16, 55) -> (48, 39): 1/4, 3/4 and 1/2 of a tile along -y), sheep flocks b / c / d (the
+  // Wave 4c flock's frame; feet on row 88) and a pig pair (woodland, the same frame).
+  { "key": "hurdle_quarter", "url": "assets/yards/hurdle_quarter-v1.png", "width": 32, "height": 64, "role": "module", "displayWidth": 16, "anchorX": 8, "anchorY": 55 },
+  { "key": "hurdle_three_quarter", "url": "assets/yards/hurdle_three_quarter-v1.png", "width": 96, "height": 64, "role": "module", "displayWidth": 48, "anchorX": 24, "anchorY": 55 },
+  { "key": "hurdle_gate_short", "url": "assets/yards/hurdle_gate_short-v1.png", "width": 64, "height": 64, "role": "module", "displayWidth": 32, "anchorX": 16, "anchorY": 55 },
+  { "key": "sheep_flock_b", "url": "assets/zones/animals/sheep_flock_b-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 88 },
+  { "key": "sheep_flock_c", "url": "assets/zones/animals/sheep_flock_c-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 88 },
+  { "key": "sheep_flock_d", "url": "assets/zones/animals/sheep_flock_d-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 88 },
+  { "key": "pig_pair", "url": "assets/zones/animals/pig_pair-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 88 },
 ] as const;
 
 export type ZoneAssetKey = (typeof ZONE_ASSETS)[number]["key"];
@@ -88,6 +99,7 @@ export const ZONE_VARIANTS = {
   },
   furrow: ["furrow_stamp_a", "furrow_stamp_b", "furrow_stamp_c", "furrow_stamp_d"],
   croftBed: ["croft_bed_a", "croft_bed_b", "croft_bed_c"],
+  sheepFlock: ["sheep_flock", "sheep_flock_b", "sheep_flock_c", "sheep_flock_d"],
   haycock: ["haycock_a", "haycock_b", "haycock_c", "haycock_d", "haycock_e", "haycock_f"],
   orchardTree: ["orchard_tree", "orchard_apple_c", "orchard_apple_d", "orchard_pear_e", "orchard_plum_f",
     "orchard_apple_g", "orchard_apple_h", "orchard_pear_i", "orchard_plum_j"],

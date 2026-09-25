@@ -34,7 +34,7 @@ test("Given the Wave 2 manifest When its images are listed Then the 28 installed
   for (const pool of BUILDING_VARIANT_POOLS) {
     assert.ok(pool.pool.startsWith("building:"), "namespace:id");
     // Weight 0 = a state image, never picked by the variant rule (C1f: the farmstead's harvest art).
-    assert.ok(pool.variants.every(variant => variant.weight > 0 || (pool.kind === "farmstead" && variant.id === "working")), pool.pool);
+    assert.ok(pool.variants.every(variant => variant.weight > 0 || (pool.kind === "farmstead" && (variant.id === "working" || variant.id === "winter"))), pool.pool);
   }
 });
 
