@@ -1,0 +1,110 @@
+{
+  "url": "http://127.0.0.1:4222/",
+  "viewport": "1280x800",
+  "minTarget": 44,
+  "minText": 12,
+  "summary": {
+    "smallTargets": 0,
+    "smallText": 0,
+    "uniqueSmallTargets": 0,
+    "uniqueSmallText": 0
+  },
+  "rows": [
+    {
+      "state": "welcome",
+      "note": "",
+      "targets": 3,
+      "texts": 10,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "hud",
+      "note": "",
+      "targets": 23,
+      "texts": 45,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "build-menu",
+      "note": "first category open",
+      "targets": 26,
+      "texts": 54,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "zone-brush",
+      "note": "zone card armed",
+      "targets": 21,
+      "texts": 43,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "ledger",
+      "note": "finance cell open",
+      "targets": 26,
+      "texts": 57,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "population",
+      "note": "population drawer open",
+      "targets": 17,
+      "texts": 41,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "resource-detail",
+      "note": "",
+      "targets": 18,
+      "texts": 49,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "settlement",
+      "note": "",
+      "targets": 18,
+      "texts": 62,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "map",
+      "note": "",
+      "targets": 19,
+      "texts": 43,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "view",
+      "note": "",
+      "targets": 24,
+      "texts": 50,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "settings",
+      "note": "",
+      "targets": 23,
+      "texts": 54,
+      "smallTargets": [],
+      "smallText": []
+    },
+    {
+      "state": "diagnostic-card",
+      "note": "house house-44-40-0 selected",
+      "targets": 27,
+      "texts": 65,
+      "smallTargets": [],
+      "smallText": []
+    }
+  ]
+}

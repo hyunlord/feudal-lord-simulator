@@ -1,0 +1,530 @@
+{
+ "url": "http://127.0.0.1:4221/",
+ "viewport": {
+  "width": 1024,
+  "height": 768
+ },
+ "remnantCount": 0,
+ "menuAudit": [
+  {
+   "view": "welcome",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "category living",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "category paths",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "category trade",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "category storage",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "category public",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "category defense",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "zone layer",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "popover settings",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "popover map",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "popover view",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  },
+  {
+   "view": "warning row [보기] → inspector",
+   "glyphs": [],
+   "controls": [],
+   "dark": [],
+   "svgs": []
+  }
+ ],
+ "stepsCompleted": 13,
+ "allSteps": true,
+ "locksMatch": true,
+ "presses": 22,
+ "seconds": 40,
+ "rows": [
+  {
+   "step": "greet",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "01-greet.jpg",
+   "atSeconds": 1.9,
+   "card": "영지를 둘러보세요 | 먼저 사람들이 살아갈 물과 길부터 챙깁니다. | 시작하기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:locked",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": "이곳을 시장 도시로 키우십시오. 먼저 사람들이 살아갈 물과 길부터 챙기지요. 목표 카드의 단추를 누르시면 됩니다.",
+   "pressesBefore": 0,
+   "presses": [
+    "시작하기"
+   ]
+  },
+  {
+   "step": "well",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "02-well.jpg",
+   "atSeconds": 3.2,
+   "card": "집 가까이에 우물 설치 | 0/1 | 우물은 반경 6칸 안의 집에 물을 댑니다. 밝게 표시된 집이 물을 받습니다. | 우물 놓기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:locked",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": "밝게 표시된 집이 물을 받습니다. 놓기 전에 예상 공급을 보시고, 표시한 자리에 우물을 두십시오.",
+   "pressesBefore": 1,
+   "presses": [
+    "우물 놓기",
+    "표시한 자리에 우물 놓기"
+   ]
+  },
+  {
+   "step": "well_done",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "03-well_done.jpg",
+   "atSeconds": 5.2,
+   "card": "결과를 먼저 보고 놓기 | 배치 전에 예측을 보고, 빨간 이유가 뜨면 그 이유를 먼저 보십시오. 잘못 놓았으면 되돌리기로 무를 수 있습니다. | 계속",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:locked",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": "좋습니다. 배치 전에 결과를 보고, 빨간 이유가 뜨면 그 이유를 먼저 보십시오. 잘못 두셨다면 되돌리기로 무르면 됩니다.",
+   "pressesBefore": 3,
+   "presses": [
+    "계속"
+   ]
+  },
+  {
+   "step": "road",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "04-road.jpg",
+   "atSeconds": 6.4,
+   "card": "길 한 칸 내기 | 0/1 | 길은 사람과 물자의 통로입니다. 집과 일터는 길가에만 지을 수 있습니다. | 길 놓기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:locked",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": null,
+   "pressesBefore": 4,
+   "presses": [
+    "길 놓기",
+    "표시한 칸에 길 놓기"
+   ]
+  },
+  {
+   "step": "house",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "05-house.jpg",
+   "atSeconds": 8.4,
+   "card": "새 길가에 집 짓기 | 0/1 | 집은 목재 없이 짓습니다. 물과 빵이 닿으면 사람들이 들어와 인구가 늡니다. | 집 놓기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:locked",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": "집은 목재가 들지 않습니다. 물과 빵이 닿는 집에는 사람들이 들어와 살고, 그렇게 인구가 늘어납니다.",
+   "pressesBefore": 6,
+   "presses": [
+    "집 놓기",
+    "표시한 자리에 집 놓기"
+   ]
+  },
+  {
+   "step": "arable",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "06-arable.jpg",
+   "atSeconds": 10.4,
+   "card": "식량 기반: 경작지 | 0/8 | 밀은 경작지 띠에서 자랍니다. 길가 빈 땅을 경작지로 칠하세요. | 경작지 칠하기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": "밀은 경작지 띠에서 자랍니다. 붉은 곳에는 경작할 수 없으니, 길가의 빈 땅을 골라 칠하십시오.",
+   "pressesBefore": 8,
+   "presses": [
+    "경작지 칠하기",
+    "표시한 땅을 경작지로 칠하기"
+   ]
+  },
+  {
+   "step": "arable_limits",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "07-arable_limits.jpg",
+   "atSeconds": 12.3,
+   "card": "칠할 수 없는 땅 알아보기 | 붉은 곳에는 경작할 수 없습니다. 빗금 칸은 길이 닿지 않아 거둔 밀을 옮기지 못합니다. | 알겠습니다",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": null,
+   "pressesBefore": 10,
+   "presses": [
+    "알겠습니다"
+   ]
+  },
+  {
+   "step": "food_chain",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "08-food_chain.jpg",
+   "atSeconds": 13.5,
+   "card": "헛간과 방앗간 짓기 | 0/2 | 헛간이 경작지를 갈고 거두고, 방앗간이 밀을 빵으로 만듭니다. 둘 다 길에 이어야 합니다. | 헛간 놓기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:locked",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": null,
+   "pressesBefore": 11,
+   "presses": [
+    "헛간 놓기",
+    "표시한 자리에 헛간 놓기",
+    "방앗간 놓기",
+    "표시한 자리에 방앗간 놓기"
+   ]
+  },
+  {
+   "step": "granary",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "09-granary.jpg",
+   "atSeconds": 18.1,
+   "card": "새 곡창 짓기 | 0/1 | 올해 먹을 것만으로는 부족합니다. 수확이 나쁜 해를 버티려면 곡식을 저장해야 합니다. | 곡창 놓기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:open",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:locked",
+    "direction:locked"
+   ],
+   "advisor": "올해 먹을 것만 있으면 충분하지 않습니다. 수확이 나쁜 해에 대비해 곡식을 저장하십시오.",
+   "pressesBefore": 15,
+   "presses": [
+    "곡창 놓기",
+    "표시한 자리에 곡창 놓기"
+   ]
+  },
+  {
+   "step": "zone_unlock",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "10-zone_unlock.jpg",
+   "atSeconds": 20.3,
+   "card": "땅의 용도 정하기 | 이제 건물 하나씩이 아니라 땅의 용도를 정할 수 있습니다. | 구역 열기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:open",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:open",
+    "direction:locked"
+   ],
+   "advisor": "이제 건물 하나씩이 아니라 땅의 용도를 정할 수도 있습니다. 아래 왼쪽의 구역 단추가 열렸습니다.",
+   "pressesBefore": 17,
+   "presses": [
+    "구역 열기"
+   ]
+  },
+  {
+   "step": "burgage",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "11-burgage.jpg",
+   "atSeconds": 21.5,
+   "card": "첫 필지 구역 칠하기 | 0/1 | 필지 구역 안에서는 사람들이 스스로 집을 짓습니다. 길에 닿는 땅이 필지가 됩니다. | 필지 칠하기 | 위치 보기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:open",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:open",
+    "direction:locked"
+   ],
+   "advisor": null,
+   "pressesBefore": 18,
+   "presses": [
+    "필지 칠하기",
+    "표시한 땅을 필지로 칠하기"
+   ]
+  },
+  {
+   "step": "burgage_done",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "12-burgage_done.jpg",
+   "atSeconds": 23.5,
+   "card": "사람들이 채우는 땅 | 직접 둔 건물은 그대로 보호됩니다. 구역 안의 집은 사람들이 짓습니다. | 알겠습니다",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:open",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:open",
+    "direction:locked"
+   ],
+   "advisor": "이제 이 안의 성장은 사람들이 맡습니다. 직접 둔 건물은 그대로 보호됩니다. 길만 잘 이어 주십시오.",
+   "pressesBefore": 20,
+   "presses": [
+    "알겠습니다"
+   ]
+  },
+  {
+   "step": "wrap_up",
+   "locksMatch": true,
+   "remnants": {
+    "glyphs": [],
+    "controls": [],
+    "dark": [],
+    "svgs": []
+   },
+   "file": "13-wrap_up.jpg",
+   "atSeconds": 28.3,
+   "card": "다음: 시장과 예배당 | 마을이 자라면 시장과 예배당을 갖추어 시장 도시로 키우십시오. | 안내 마치기",
+   "categories": [
+    "living:open",
+    "paths:open",
+    "trade:open",
+    "storage:open",
+    "public:locked",
+    "defense:locked"
+   ],
+   "layers": [
+    "direct:open",
+    "zone:open",
+    "direction:locked"
+   ],
+   "advisor": "안내는 여기까지입니다. 다음으로 시장과 예배당을 갖추어 마을을 시장 도시로 키우십시오.",
+   "pressesBefore": 21,
+   "presses": [
+    "안내 마치기"
+   ]
+  }
+ ],
+ "state": {
+  "tick": 552,
+  "speed": "1배속",
+  "sites": [
+   "mill@48,42",
+   "granary@47,37"
+  ],
+  "zones": [
+   "arable:22",
+   "burgage:22"
+  ],
+  "buildings": 11
+ },
+ "cardsAfter": [
+  "다음: 시장과 예배당 | 0/2 | 마을이 자라면 시장과 예배당을 갖추어 시장 도시로 키우십시오. | 시장 놓기",
+  "자립 마을 | 22/20 | 인구 | 조건 보기"
+ ]
+}
