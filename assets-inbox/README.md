@@ -17,6 +17,7 @@ Astra가 보낸 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS로 커밋�
 | `wave4e` | INSTALL-4e 지시서 ZIP(`to_ClaudeCode_INSTALL4e (1).zip`) | 35 | `provenance-wave4e.csv`(35행) | INSTALL-4e가 설치(잡석 면·성문 v2·135° 기둥·탑 b·깊은 물 물가 띠·교대·나루·허들 조각·양·돼지·겨울 헛간·워커 7·상인 외투·소지품 2). 받은 PNG에 C2PA `caBX` 청크가 붙어 대장 SHA와 다르다(`caBX`를 빼면 35/35 같음). wave4c와 같이 여기에는 받은 바이트, `public/assets/`에는 `caBX`를 뺀 바이트 |
 | `wave5b` | INSTALL-4e 지시서 ZIP(추가 절) | 15 | `provenance-wave5b.csv`(15행: 초상 레이어 12 `candidate` · 아이·노인 시트 3 `rejected`) | 설치 없음. `A/`의 아이·노인 자유 생성 시트는 보행 교대 실패로 `rejected`(`A/direction-consistency.md`), 대신 `derived-templates/`의 스크립트 파생 4장을 쓴다. `A/checks`·`B/checks` 확인 그림 6장은 대장 행 없이 둔다. 받은 PNG 15/15가 대장 SHA와 같다 |
 | `derived-templates` | INSTALL-4e가 `scripts/deriveActorTemplates.ts`로 생성 | 4 | `provenance-derived-templates.csv` | 성인 시트에서 파생한 아이·노인 템플릿. Astra 재스킨용 참조, 게임에 설치하지 않음(Wave 5c) |
+| `ui-p0` | UX-2 지시서 ZIP(`to_ClaudeCode_UX2 (2).zip`, 초판은 `to_ClaudeCode_UX2.zip`) | 67 | `provenance-ui-p0.csv`(43행) + `provenance-ui-p0-rework.csv`(14행), 파일별 상태 `inbox-status.csv` | UX-2가 설치. `ui/` 43장은 받은 바이트(C2PA `caBX` 있음, 빼면 29장은 P0 대장·14장은 재작업 대장 SHA와 같다) → `public/assets/ui-p0/`에는 `caBX`를 뺀 바이트. `superseded/` 12장은 재작업으로 바뀐 P0 초판(초판 ZIP, `caBX` 없음, P0 대장 SHA와 같음; 툴팁·청지기 neutral은 재작업에서 바뀌지 않아 초판이 따로 없다). `pilot/` 12장은 UI 파일럿(대장 행 없음, 설치하지 않음) |
 
 모든 PNG의 SHA-256이 같은 폴더 대장의 `runtimeSha256`과 같다. Wave 4b는 두 번 받았다
 (`to_ClaudeCode_C1e.zip` 03:16, `to_ClaudeCode_C1e (1).zip` 08:47). 두 번째 ZIP의 PNG는 IDAT가 같고 C2PA
