@@ -48,6 +48,23 @@ export const ZONE_ASSETS = [
   // corner covers the north vertex of a yard, (2, 87) -> (64, 55) -> (126, 87). Mirrored, the straight runs along +x.
   { "key": "hurdle_straight", "url": "assets/yards/hurdle_straight-v1.png", "width": 128, "height": 64, "role": "module", "displayWidth": 64, "anchorX": 32, "anchorY": 59 },
   { "key": "hurdle_end_corner", "url": "assets/yards/hurdle_end_corner-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 64, "anchorY": 55 },
+  // Wave 4c (C1f): hurdle gate (the straight panel's frame), half panel, corners at the east / south / west vertices;
+  // four more orchard trees (the Wave 4b scale); stubble ridges for harvested strips; farm animal props.
+  { "key": "hurdle_gate", "url": "assets/yards/hurdle_gate-v1.png", "width": 128, "height": 64, "role": "module", "displayWidth": 64, "anchorX": 32, "anchorY": 59 },
+  { "key": "hurdle_half", "url": "assets/yards/hurdle_half-v1.png", "width": 64, "height": 64, "role": "module", "displayWidth": 32, "anchorX": 16, "anchorY": 56 },
+  { "key": "hurdle_corner_e", "url": "assets/yards/hurdle_corner_e-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 64, "anchorY": 55 },
+  { "key": "hurdle_corner_s", "url": "assets/yards/hurdle_corner_s-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 64, "anchorY": 55 },
+  { "key": "hurdle_corner_w", "url": "assets/yards/hurdle_corner_w-v1.png", "width": 128, "height": 96, "role": "module", "displayWidth": 64, "anchorX": 64, "anchorY": 55 },
+  { "key": "orchard_apple_g", "url": "assets/zones/orchard_apple_g-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "orchard_apple_h", "url": "assets/zones/orchard_apple_h-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "orchard_pear_i", "url": "assets/zones/orchard_pear_i-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "orchard_plum_j", "url": "assets/zones/orchard_plum_j-v1.png", "width": 256, "height": 256, "role": "prop", "displayWidth": 43, "anchorX": 128, "anchorY": 242 },
+  { "key": "ridge_stubble_a", "url": "assets/fields/ridge_stubble_a-v1.png", "width": 512, "height": 64, "role": "strip" },
+  { "key": "ridge_stubble_b", "url": "assets/fields/ridge_stubble_b-v1.png", "width": 512, "height": 64, "role": "strip" },
+  { "key": "ox_plough_team", "url": "assets/zones/animals/ox_plough_team-v1.png", "width": 192, "height": 128, "role": "prop", "displayWidth": 46, "anchorX": 96, "anchorY": 116 },
+  { "key": "ox_cart_hay", "url": "assets/zones/animals/ox_cart_hay-v1.png", "width": 192, "height": 128, "role": "prop", "displayWidth": 46, "anchorX": 96, "anchorY": 116 },
+  { "key": "sheep_flock", "url": "assets/zones/animals/sheep_flock-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 84 },
+  { "key": "cattle_pair", "url": "assets/zones/animals/cattle_pair-v1.png", "width": 128, "height": 96, "role": "prop", "displayWidth": 30, "anchorX": 64, "anchorY": 84 },
 ] as const;
 
 export type ZoneAssetKey = (typeof ZONE_ASSETS)[number]["key"];
@@ -65,6 +82,7 @@ export const ZONE_VARIANTS = {
     seedling: ["ridge_seedling_a", "ridge_seedling_b"],
     growing: ["ridge_growing_a", "ridge_growing_b"],
     fallow: ["ridge_fallow_a", "ridge_fallow_b"],
+    harvested: ["ridge_stubble_a", "ridge_stubble_b"],
   },
   furrow: ["furrow_stamp_a", "furrow_stamp_b", "furrow_stamp_c", "furrow_stamp_d"],
   croftBed: ["croft_bed_a", "croft_bed_b", "croft_bed_c"],
