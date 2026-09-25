@@ -6,7 +6,7 @@ import type { GameAction } from "../state/gameStore.types";
 import type { TileCoordinate } from "../world/grid";
 import { roadLine } from "../world/roadGraph";
 import { createPlacementFeedback, type PlacementFeedback } from "../render/placementFeedback";
-import { AUTOPLAY_PAINT_ARABLE_LABEL, AUTOPLAY_RESERVE_RECOVERY_LABEL } from './autoplayCopy.ko';
+import { AUTOPLAY_PAINT_ARABLE_LABEL, AUTOPLAY_RELOCATE_HOUSE_LABEL, AUTOPLAY_RESERVE_RECOVERY_LABEL } from './autoplayCopy.ko';
 
 export { autoplayActionToGameAction } from "../engine/autoplayActions";
 
@@ -42,6 +42,7 @@ export function autoplayActionPulseTile(action: AutoplayAction): TileCoordinate 
       return action.stroke.points[0] === undefined ? null : { tx: Math.floor(action.stroke.points[0].x), ty: Math.floor(action.stroke.points[0].y) };
     case "proclaim_era":
     case "set_wall_construction_priority":
+    case "demolish_house":
     case "none":
       return null;
     default:
@@ -61,6 +62,8 @@ export function autoplayActionLabel(action: AutoplayAction): string {
       return "다음: 시대 선포";
     case "set_wall_construction_priority":
       return AUTOPLAY_RESERVE_RECOVERY_LABEL;
+    case "demolish_house":
+      return AUTOPLAY_RELOCATE_HOUSE_LABEL;
     case "none":
       return "다음: 대기";
     default:
@@ -104,6 +107,7 @@ export function autoplayActionFeedback(action: AutoplayAction, nowMs: number): P
     case "paint_zone":
     case "proclaim_era":
     case "set_wall_construction_priority":
+    case "demolish_house":
     case "none":
       return null;
     default:

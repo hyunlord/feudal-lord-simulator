@@ -38,8 +38,10 @@ import { waterAction } from "./autoplayWater";
 import { reserveDeadlock } from "./reserveDeadlock";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import type { AutoplayAction } from "./autoplay.types";
-import { granaryGapAction, marketGapAction } from './autoplayBotRecovery';
-export type { AutoplayAction } from "./autoplay.types";
+import { granaryGapAction, keepsHouseInMarketReach, marketGapAction, marketRelocationAction, recordBotRecovery, type AdvisorAction, type BotRecoveryCollector } from './autoplayBotRecovery';
+import { timberDemandExpansionKind } from './autoplayTimberDemand';
+/** The advisor's outward action: the placement actions plus BOT-1's house relocation (`demolish_house`). */
+export type { AdvisorAction as AutoplayAction } from './autoplayBotRecovery';
 export const AUTOPLAY_MAX_HOUSING_LOTS = 8;
 export interface AutoplayPolicy { readonly maxHousingLots: number }
 const DEFAULT_AUTOPLAY_POLICY = { maxHousingLots: AUTOPLAY_MAX_HOUSING_LOTS } as const;
@@ -211,7 +213,16 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
   return NONE;
 }
 
-function timberAction(state: GameState): AutoplayAction {
+function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): AutoplayAction {
+  // BOT-1 (BT6): timber for the waiting construction, decided while the stock to build the facility is there.
+  const demand = timberDemandExpansionKind(state);
+  if (demand !== null) {
+    const action = buildAction(state, demand);
+    if (action.kind !== "none") {
+      recordBotRecovery(diagnostic, "timber_demand", [], action);
+      return action;
+    }
+  }
   const reserve = hasBuiltOrPlannedBuilding(state, "logging_camp") ? 120 : 39;
   if (placementSpendableResource(state, "timber") > reserve) return NONE;
   if (!hasBuiltOrPlannedBuilding(state, "logging_camp")) return buildAction(state, "logging_camp");
@@ -242,10 +253,12 @@ function housingAction(state: GameState, policy: AutoplayPolicy): AutoplayAction
       { tx: coordinate.tx, ty: coordinate.ty + 1 },
       { tx: coordinate.tx - 1, ty: coordinate.ty },
     ].some((neighbor) => roads.has(coordinateKey(neighbor)));
+  // BOT-1 (AR-5): with the markets at the policy's cap, a new lot goes where a standing market reaches it.
+  const reach = keepsHouseInMarketReach(state, policy.maxHousingLots);
   const site = findBuildSite(state, "house", (coordinate) =>
-    accepts(coordinate) && !splitsExistingHousePair(state, coordinate)
-  ) ?? findBuildSite(state, "house", accepts);
-  return site === null ? buildAction(state, "house") : preserveRoadExpansion(state, { ...site, kind: "house" }) ?? { kind: "place_building", building: "house", tx: site.tx, ty: site.ty };
+    accepts(coordinate) && !splitsExistingHousePair(state, coordinate) && reach(coordinate)
+  ) ?? findBuildSite(state, "house", (coordinate) => accepts(coordinate) && reach(coordinate));
+  return site === null ? buildAction(state, "house", reach) : preserveRoadExpansion(state, { ...site, kind: "house" }) ?? { kind: "place_building", building: "house", tx: site.tx, ty: site.ty };
 }
 
 function storageAction(state: GameState): AutoplayAction {
@@ -286,9 +299,10 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
     () => roadAccessAction(state),
     () => networkRoadAction(state),
     () => constructionRoadAction(state),
-    () => timberAction(state),
-    () => foodAction(state, buildAction, diagnostic),
+    // BOT-1: the granary site inside the wall before timber takes the stock (houses fill the interior for free).
     () => granaryGap(state),
+    () => timberAction(state, diagnostic),
+    () => foodAction(state, buildAction, diagnostic),
     () => housingAction(state, policy),
     servicePhase,
     () => marketGap(state),
@@ -304,13 +318,16 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   return carryFoodTransient(NONE, metadata);
 }
 
-export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+export function decideNextAction(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AdvisorAction {
   // Spec Z-15: only a town with a burgage zone consults ZoneFillAgent, and only below the policy's lot cap
   // (C1c); with no burgage zone this is never called.
   if (zoneRuleActive(state, "burgage") && housingLotCount(state) < policy.maxHousingLots) {
     const fill = zoneFillAction(state);
     if (fill !== null) return fill;
   }
+  // BOT-1 (AR-5): a home no market can reach any more is demolished so its lot is rebuilt in reach.
+  const relocation = marketRelocationAction(state, policy.maxHousingLots, diagnostic);
+  if (relocation.kind !== "none") return relocation;
   resetAutoplayServiceSearch();
   let action = runAutoplaySearch(() => decideNextActionWithinBudget(state, policy, diagnostic), diagnostic);
   // Z-15a: a zone-refused candidate is excluded and the decision retried; it is never sent to the reducer.

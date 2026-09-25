@@ -1,4 +1,4 @@
-import type { AutoplayAction } from "../engine/autoplay.types";
+import type { AutoplayAction } from "../engine/autoplay";
 import { AUTOPLAY_TICK_CADENCE } from "./autoplayPresentation";
 
 export interface AutoplayDecision {

@@ -29,11 +29,11 @@ import type { GameState } from './engine.types';
  * mended by placement (seed 3 at 792,000 ticks has no free granary site inside the wall; seed 2 at 408,000 has no free
  * market site that reaches all seven homes, and a third market would pass the facility cap).
  */
-export type BotRecoveryKind = 'granary_gap' | 'market_gap';
+export type BotRecoveryKind = 'granary_gap' | 'market_gap' | 'market_relocation' | 'timber_demand';
 export interface BotRecoveryDiagnostic {
   readonly kind: BotRecoveryKind;
   readonly houses: readonly string[];
-  readonly action: AutoplayAction['kind'];
+  readonly action: AdvisorAction['kind'];
   readonly building?: BuildingKind;
   readonly tx?: number;
   readonly ty?: number;
@@ -42,7 +42,21 @@ export interface BotRecoveryDiagnostic {
 }
 export interface BotRecoveryCollector { recovery?: readonly BotRecoveryDiagnostic[] }
 
-export function recordBotRecovery(collector: BotRecoveryCollector | undefined, kind: BotRecoveryKind, houses: readonly Building[], action: AutoplayAction,
+/**
+ * AR-5: the one advisor action beyond the placement set (decision BT6): demolish a house the markets can never reach,
+ * so the lot is rebuilt where they do (the game's own `demolish_house`). It is the advisor's outward action type; the
+ * placement pipeline inside the advisor keeps `AutoplayAction`.
+ */
+export interface DemolishHouseAdvice {
+  readonly kind: 'demolish_house';
+  readonly buildingId: string;
+  /** Never set: callers read these off any advisor action. */
+  readonly foodTransient?: never;
+  readonly materialRecovery?: never;
+}
+export type AdvisorAction = AutoplayAction | DemolishHouseAdvice;
+
+export function recordBotRecovery(collector: BotRecoveryCollector | undefined, kind: BotRecoveryKind, houses: readonly Building[], action: AdvisorAction,
   note?: BotRecoveryDiagnostic['note']): void {
   if (collector === undefined) return;
   const placed = action.kind === 'place_building' ? { building: action.building, tx: action.tx, ty: action.ty } : {};
@@ -229,4 +243,61 @@ export function marketGapAction(state: GameState, collector?: BotRecoveryCollect
   }
   recordBotRecovery(collector, 'market_gap', gap, none, 'no_site');
   return none;
+}
+
+/** The market cap for the town the policy wants (the guardrail's `markets` check at the target lots). */
+const targetMarketCap = (targetLots: number): number => Math.ceil(targetLots / 24) + 1;
+
+function marketsAtTargetCap(state: GameState, targetLots: number): readonly Building[] | null {
+  const markets = state.buildings.filter(building => building.kind === 'market');
+  if (markets.length < targetMarketCap(targetLots)
+    || state.constructionSites.some(site => isBuildingConstructionSite(site) && site.kind === 'market')) return null;
+  return markets;
+}
+
+/**
+ * AR-5 `market_relocation`: homes with residents outside every market's reach (inside the wall once one is
+ * proclaimed) while the markets already fill the cap for the policy's lots. No placement can serve them any more
+ * (seed 2: the palisade took the last site that reached (46,39); two markets reach 23 of 24 homes).
+ */
+export function strandedMarketHouses(state: GameState, targetLots: number): readonly Building[] {
+  if (marketsAtTargetCap(state, targetLots) === null) return [];
+  const services = householdServices(state);
+  const homes = new Map(state.buildings.map(building => [building.id, building]));
+  return state.houses.flatMap(house => {
+    const home = homes.get(house.buildingId);
+    if (home === undefined || house.residents === 0 || services.houses.get(house.buildingId)?.market.kind !== 'outside'
+      || (state.palisade !== null && !insideWall(state, 'house', home))) return [];
+    return [home];
+  });
+}
+
+/**
+ * At the lot target the advisor demolishes one stranded home; the housing rule then rebuilds the lot where a standing
+ * market reaches it (`keepsHouseInMarketReach`). Below the target nothing is demolished, so a regrowing town is never
+ * thinned twice.
+ */
+export function marketRelocationAction(state: GameState, targetLots: number, collector?: BotRecoveryCollector): AdvisorAction {
+  const stranded = strandedMarketHouses(state, targetLots);
+  if (stranded.length === 0 || housingLotCount(state) < targetLots) return { kind: 'none' };
+  const target = [...stranded].sort((a, b) => a.id.localeCompare(b.id))[0]!;
+  const action: DemolishHouseAdvice = { kind: 'demolish_house', buildingId: target.id };
+  recordBotRecovery(collector, 'market_relocation', stranded, action);
+  return action;
+}
+
+/**
+ * Once the markets fill the cap for the policy's lots, a new house goes only where a standing market reaches it, and
+ * inside the wall when there is one (otherwise the lot could never reach L4). Before that, every site passes.
+ */
+export function keepsHouseInMarketReach(state: GameState, targetLots: number): (coordinate: TileCoordinate) => boolean {
+  const markets = marketsAtTargetCap(state, targetLots);
+  if (markets === null) return () => true;
+  const reach = BUILDING_CONFIG_BY_KIND.market.serviceRadius;
+  return coordinate => {
+    const home: Building = { id: 'autoplay-market-reach-house', kind: 'house', tx: coordinate.tx, ty: coordinate.ty,
+      workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+    return (state.palisade === null || insideWall(state, 'house', coordinate))
+      && markets.some(market => buildingFootprintDistance(home, market) <= reach);
+  };
 }

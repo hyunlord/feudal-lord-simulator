@@ -1,10 +1,9 @@
 import type { SearchDiagnosticCollector } from './autoplaySearchBudget';
 import type { MeasuredFoodReason } from './autoplayFoodMeasuredDecision';
 import type { ServicePlanningCollector } from './autoplayServices';
-import type { AutoplayAction } from './autoplay.types';
 import type { AutoplayFoodTransientConfirmation } from './autoplayFoodTransient';
 import type { GameState } from './engine.types';
-import type { BotRecoveryCollector } from './autoplayBotRecovery';
+import type { AdvisorAction, BotRecoveryCollector } from './autoplayBotRecovery';
 
 export type FoodDiagnosticReason = MeasuredFoodReason | 'food_route_repair' | 'transport_storage_selected' | 'transport_capacity_selected' | 'facility_limit' | 'not_reached' | 'no_housing' | 'pending_chain' | 'active_observation'
   | 'coverage_selected' | 'recovery_deferred' | 'recovery_selected' | 'repeat_blocked' | 'staff_blocked'
@@ -16,7 +15,7 @@ export type FoodKind = 'farmstead' | 'mill' | 'granary';
 export type FoodTransientSummary = Omit<Extract<AutoplayFoodTransientConfirmation, { status: 'pending' }>, 'epoch'>
   | Extract<AutoplayFoodTransientConfirmation, { status: 'failed_until_positive_window' }> | null | 'not_evaluated';
 export interface DiagnosticAction {
-  readonly kind: AutoplayAction['kind'];
+  readonly kind: AdvisorAction['kind'];
   readonly building?: string;
   readonly tx?: number;
   readonly ty?: number;
@@ -51,7 +50,8 @@ export function transientSummary(value: AutoplayFoodTransientConfirmation | null
     case 'failed_until_positive_window': return { status: value.status, failedTick: value.failedTick };
   }
 }
-export function diagnosticAction(action: AutoplayAction): DiagnosticAction {
+export function diagnosticAction(action: AdvisorAction): DiagnosticAction {
+  if (action.kind === 'demolish_house') return { kind: action.kind, building: 'house', foodTransient: 'not_evaluated' };
   const foodTransient = transientSummary(action.foodTransient);
   switch (action.kind) {
     case 'place_building': return { kind: action.kind, building: action.building, tx: action.tx, ty: action.ty, foodTransient };
