@@ -191,8 +191,9 @@ export function installPhase10ProofRuntime(input: InstallPhase10ProofRuntimeInpu
       const composed = composedLookForProof(sheetId as WalkerSheetId, prop as WalkerPropKind | null, cloak);
       if (composed === null) return null;
       const canvas = document.createElement("canvas");
-      canvas.width = composed.width; canvas.height = composed.height;
-      canvas.getContext("2d")?.drawImage(composed, 0, 0);
+      const size = composed[0]!.width;
+      canvas.width = 4 * size; canvas.height = 2 * size;
+      composed.forEach((cell, index) => canvas.getContext("2d")?.drawImage(cell, (index % 4) * size, Math.floor(index / 4) * size));
       return canvas.toDataURL("image/png");
     },
     resetBoundary: (reverseInput) => { if (context !== null) resetGroundBoundaryForProof(context, reverseInput); },

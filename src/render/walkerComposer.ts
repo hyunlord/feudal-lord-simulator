@@ -15,7 +15,7 @@ import { walkerCloak, walkerHeldProp, walkerLooks, walkerSheet, type WalkerLook,
 //    the near hand (drawn over the body) in SE / NE and the far hand (under the body) in SW / NW. The prop's grip
 //    anchor (Wave 5a ledger) lands on the hand anchor (scripts/buildWalkerSheetManifest.py), at PROP_SCALE.
 //  - Cache: key = sheet | prop | cloak -> canvas, least recently used first out above CACHE_LIMIT. Each canvas is
-//    4*108 x 2*108 px x 4 bytes = 373,248 bytes, so CACHE_LIMIT 64 bounds it at 23.9 MB (<= 25 MB, gate 5). Reason:
+//    8 cells of 108 x 108 px x 4 bytes = 373,248 bytes, so CACHE_LIMIT 64 bounds it at 23.9 MB (<= 25 MB, gate 5). Reason:
 //    composing a look is 8 cells of 2-4 drawImage calls; drawing from the canvas is one. Composition time is recorded
 //    (walkerComposerStats).
 //  - Looks: computed from the state (walkerLooks) the first time a walker is drawn and kept for that walker id while
@@ -50,8 +50,9 @@ function imageFor(url: string, width: number | null, height: number | null): HTM
 }
 
 type ComposeKey = `${WalkerSheetId}|${WalkerPropKind | "-"}|${"male" | "female" | "-"}`;
-/** A composed look: an ImageBitmap where OffscreenCanvas can hand one over, else the canvas itself. */
-type Composed = ImageBitmap | OffscreenCanvas | HTMLCanvasElement;
+/** A composed look: its 8 cells (index column + 4 * gait frame), each an ImageBitmap where OffscreenCanvas can hand one over. */
+type Cell = ImageBitmap | OffscreenCanvas | HTMLCanvasElement;
+type Composed = readonly Cell[];
 const composed = new Map<ComposeKey, Composed>();
 const stats = { composed: 0, evicted: 0, composeMsTotal: 0, composeMsMax: 0, firstComposeMs: null as number | null };
 
@@ -91,17 +92,25 @@ function composedCanvas(sheetId: WalkerSheetId, prop: WalkerPropKind | null, clo
     if (cloakImage !== null) context.drawImage(cloakImage, column * WALKER_CELL, row * WALKER_CELL, WALKER_CELL, WALKER_CELL, originX, originY, WALKER_CELL, WALKER_CELL);
     if (near) drawProp();
   }
-  // An ImageBitmap is uploaded once and drawn from the GPU; a main-thread OffscreenCanvas was re-read on every draw
-  // (walkers stage 0.12 -> 0.63 ms for 21 walkers on lots24, measured before this handover).
-  const stored: Composed = "transferToImageBitmap" in canvas ? canvas.transferToImageBitmap() : canvas;
+  // One small image per cell: a draw reads only its own cell. Drawing a sub-rectangle of one 432x216 look image read
+  // the whole image each time (walkers stage 0.12 -> 0.6 ms for 21 walkers on lots24, measured on both an
+  // OffscreenCanvas and an ImageBitmap of it).
+  const cells: Cell[] = [];
+  for (let row = 0; row < 2; row += 1) for (let column = 0; column < 4; column += 1) {
+    const cell = createTintCanvas(WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL);
+    const cellContext = cell?.getContext("2d") as CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D | null | undefined;
+    if (cell === null || cellContext === null || cellContext === undefined) return null;
+    cellContext.drawImage(canvas, column * WALKER_COMPOSED_CELL, row * WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL, 0, 0, WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL);
+    cells[column + 4 * row] = "transferToImageBitmap" in cell ? cell.transferToImageBitmap() : cell;
+  }
+  const stored: Composed = cells;
   const elapsed = typeof performance === "undefined" ? 0 : performance.now() - started;
   stats.composed += 1; stats.composeMsTotal += elapsed; stats.composeMsMax = Math.max(stats.composeMsMax, elapsed);
   stats.firstComposeMs ??= elapsed;
   composed.set(key, stored);
   while (composed.size > CACHE_LIMIT) {
     const oldest = composed.keys().next().value as ComposeKey;
-    const evicted = composed.get(oldest);
-    if (evicted !== undefined && "close" in evicted) evicted.close();
+    for (const cell of composed.get(oldest) ?? []) if ("close" in cell) cell.close();
     composed.delete(oldest); stats.evicted += 1;
   }
   return stored;
@@ -153,9 +162,9 @@ export function drawComposedWalker(context: CanvasRenderingContext2D, state: Gam
   const frame = walkerSheet(look.sheetId).frames.find(candidate => candidate.direction === presentation.direction && candidate.gaitFrame === presentation.gaitFrame);
   if (frame === undefined) return false;
   const factor = 32 * scale / frame.figureHeight;
-  const column = DIRECTION_COLUMN[presentation.direction];
-  context.drawImage(canvas, column * WALKER_COMPOSED_CELL, presentation.gaitFrame * WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL, WALKER_COMPOSED_CELL,
-    footX - (WALKER_PAD + frame.foot.x) * factor, footY - (WALKER_PAD + frame.foot.y) * factor,
+  const cell = canvas[DIRECTION_COLUMN[presentation.direction] + 4 * presentation.gaitFrame];
+  if (cell === undefined) return false;
+  context.drawImage(cell, footX - (WALKER_PAD + frame.foot.x) * factor, footY - (WALKER_PAD + frame.foot.y) * factor,
     WALKER_COMPOSED_CELL * factor, WALKER_COMPOSED_CELL * factor);
   return true;
 }
