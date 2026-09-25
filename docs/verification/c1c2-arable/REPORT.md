@@ -85,8 +85,9 @@
 
 ## 필수 조건
 
-- 마지막 코드 커밋 `5a7f4a0` 전체 회귀 **2,759/2,759**(Phase 9 포함), typecheck 통과.
-- 깨끗한 클론(보고서 커밋 기준)에서 `npm ci` → typecheck → build → `npm test` → `npm audit`. 결과는 영수증(`receipt.json`, 산출물 ZIP)에 있다.
+- 본선 두 번 병합 뒤(`734fba1`, 본선 `3b1d3f8` 포함) 깨끗한 클론: `npm ci` → typecheck → build → `npm test` **2,816/2,816**(Phase 9 포함) → `npm audit` 0.
+  - 같은 커밋의 로컬 병렬 실행에서는 브라우저 측정 테스트 1개(`phase13Part7BrowserProof`)가 부하로 한 번 실패했다. 단독 실행과 클론에서는 통과했다.
+- 보고서 커밋도 깨끗한 클론으로 확인했다(영수증 `receipt.json`, 산출물 ZIP).
 - 렌더는 약속한 세 곳에 헛간 한 줄씩만 넣었다(`buildingInspectorModel` 용도, `buildingVisualState` 임시 몸체, `historicalFacilityAssets` → null). AGENTS.md 상시 규칙 18번에 이 예외를 적었다(본선의 17번 에셋 받은 편지함과 함께).
 
 ## 결정 (해결)
