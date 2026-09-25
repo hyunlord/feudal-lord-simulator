@@ -5,7 +5,6 @@ import { drawHouseCompoundSprite } from "./houseCompoundAssets";
 import { drawHistoricalHouse } from "./historicalHouseAssets";
 import { drawHistoricalFacility } from "./historicalFacilityAssets";
 import { drawHouseCondition } from "./houseConditionOverlay";
-import { drawFarmDetail, drawFarmSoil } from "./farmAssets";
 import { drawHouseCompound } from "./houseCompound";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
@@ -33,6 +32,8 @@ import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 import {
   OBJECT_OUTLINE_ALPHA,
 } from "./occlusionModel";
+import { drawFarmsteadSprite } from "./farmsteadArt";
+import { drawFarmProp } from "./farmProps";
 
 type ObjectRenderInput = {
   readonly state: GameState;
@@ -48,7 +49,6 @@ type ObjectRenderInput = {
   readonly hoveredTile?: TileCoordinate | null;
   readonly selectionMode?: boolean;
   readonly viewMode?: ObjectRenderViewMode;
-  readonly farmSoilDrawn?: boolean;
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -67,11 +67,6 @@ export function drawBuildings(
     includeGroundCover: renderDetailLevel(input.zoom) === "full",
   });
   const spriteOptions = spriteOptionsFor(input);
-  if (!input.farmSoilDrawn && (input.viewMode ?? "normal") !== "outlines") {
-    for (const item of items) {
-      if (item.kind === "building") drawFarmSoil(context, item.building, input.state.buildings);
-    }
-  }
   for (const item of items) {
     if (item.kind === "tree") {
       drawTreeDescriptor(context, {
@@ -96,6 +91,8 @@ export function drawBuildings(
       drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal");
     } else if (item.kind === "zone_prop") {
       if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop);
+    } else if (item.kind === "farm_prop") {
+      if ((input.viewMode ?? "normal") === "normal") drawFarmProp(context, item.prop);
     } else if (item.kind === "building") {
       drawBuilding(context, input, item.building, spriteOptions);
     }
@@ -140,16 +137,17 @@ function drawBuildingDetail(
     nowMs: input.nowMs ?? 0,
   });
   const detailLevel = renderDetailLevel(input.zoom);
-  if (building.kind === "wheat_farm" && drawFarmDetail(context, building, input.state.buildings)) {
-    if (detailLevel === "full") {
-      drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
-    }
-    return;
-  }
+  // The 2x2 wheat farm is retired (C1c-2: v9 -> v10 saves turn farms into arable fields and a farmstead; C1f: its art
+  // left the runtime). Only an unmigrated test state can still hold one, and it draws nothing.
+  if (building.kind === "wheat_farm") return;
   if (building.kind === "house" && building.houseLot !== undefined) {
     if (detailLevel !== "full" || !drawHouseCompoundSprite(context, building, visualState.houseLevel)) {
       drawHouseCompound(context, building, visualState.houseLevel, detailLevel);
     } else drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
+    drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
+    return;
+  }
+  if (detailLevel === "full" && building.kind === "farmstead" && drawFarmsteadSprite(context, building, input.state, spriteOptions)) {
     drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
     return;
   }

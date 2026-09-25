@@ -7,7 +7,7 @@ import { fieldClusters, forestBoundary, type FieldCluster, type ForestBoundary }
 import { roadTopologySignature } from "../world/roadTopologySignature";
 import type { Tile } from "../world/world.types";
 import { roadRibbonWidth, roadStripSignature } from "./roadRibbonStyle";
-import { buildZoneLayer, zoneSignature, type ZoneLayer } from "./zoneLayer";
+import { buildZoneLayer, clearedCells, zoneSignature, type ZoneLayer } from "./zoneLayer";
 import { zonesOf } from "../zones/zoneEdits";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingGrounds, type BuildingApron, type BuildingGrounds } from "../world/boundary/buildingGrounds";
@@ -130,7 +130,7 @@ export function groundBoundaryScene(state: GameState): GroundBoundaryScene {
     reversed: reverseInputForProof,
     width: roadRibbonWidth(),
     strips: roadStripSignature(),
-    zones: zoneSignature(zonesOf(state)),
+    zones: `${zoneSignature(zonesOf(state))}#${clearedArableSignature(state)}`,
   };
   const sameGround = last !== null && last.key.tiles === key.tiles && last.key.palisade === key.palisade && last.key.wallMaterials === key.wallMaterials && last.key.seed === key.seed
     && last.key.farms === key.farms && last.key.buildings === key.buildings && last.key.reversed === key.reversed && last.key.width === key.width && last.key.strips === key.strips;
@@ -163,6 +163,8 @@ export function buildGroundBoundaryScene(state: GameState, reverseInput = false,
   const roads = ground?.roads ?? roadCenterlineGraph({ ...grid, palisade: state.palisade });
   const forest = ground?.forest ?? forestBoundary(grid, state.seed);
   const shore = ground?.shore ?? shoreline({ ...grid, seed: state.seed, bridges: bridgeSpans(state, tiles), walls: waterSideWalls(state) });
+  // Field clusters outline 2x2 wheat farms; the building is retired (C1c-2; v10 saves hold none) and its art too (C1f),
+  // so only an unmigrated test state still gets an outline here.
   const farms = state.buildings.filter(building => building.kind === "wheat_farm")
     .map(farm => ({ id: farm.id, tx: farm.tx, ty: farm.ty, ...buildingFootprint(farm) }));
   const fields = ground?.fields ?? fieldClusters(grid, reverseInput ? [...farms].reverse() : farms);
@@ -369,6 +371,27 @@ function wallMaterialSignature(palisade: GameState["palisade"]): string {
   if (cached !== undefined) return cached;
   const signature = palisade.segments.filter(segment => segment.completed).map(segment => `${segment.id}:${segment.material}`).sort().join("|");
   wallMaterialSignatures.set(palisade, signature);
+  return signature;
+}
+
+/**
+ * The cleared forest cells inside arable zones (C1f: ridge bands are laid on them too), as part of the zones key: a
+ * forest tile logged inside a field re-lays that field. Cached on the zones and forestHarvests arrays (both replaced
+ * when they change).
+ */
+const clearedArableSignatures = new WeakMap<object, WeakMap<object, string>>();
+function clearedArableSignature(state: GameState): string {
+  const zones = zonesOf(state);
+  const harvests = state.forestHarvests ?? [];
+  let byHarvests = clearedArableSignatures.get(zones);
+  if (byHarvests === undefined) { byHarvests = new WeakMap(); clearedArableSignatures.set(zones, byHarvests); }
+  const cached = byHarvests.get(harvests);
+  if (cached !== undefined) return cached;
+  const cleared = clearedCells(state);
+  const cells: number[] = [];
+  for (const zone of zones) if (zone.kind === "arable") for (const index of zone.membership) if (cleared.has(index)) cells.push(index);
+  const signature = cells.sort((a, b) => a - b).join(",");
+  byHarvests.set(harvests, signature);
   return signature;
 }
 

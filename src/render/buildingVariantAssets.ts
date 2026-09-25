@@ -2,7 +2,6 @@ import { registerRuntimeAssetVariant } from "./runtimeAssetCoordinates";
 import type { Building } from "../content/buildingConfig";
 import { frameBuildingVariant } from "./buildingVariants";
 import { BUILDING_VARIANT_POOLS } from "./buildingVariantManifest";
-import { FARM_REGISTRATION } from "./farmGeometry";
 import { historicalFacilityManifest } from "./historicalFacilityManifest";
 import { historicalHouseAssetManifest } from "./historicalHouseAssetManifest.generated";
 import { houseCompoundAssetManifest } from "./houseCompoundAssetManifest.generated";
@@ -73,7 +72,7 @@ export function worldSpriteVariantImage(building: Pick<Building, "id">, key: str
 export function preloadBuildingVariantAssets(): Promise<void> {
   const loads: Promise<void>[] = [];
   for (const pool of BUILDING_VARIANT_POOLS) for (const variant of pool.variants) {
-    const images = "stages" in variant ? Object.values(variant.stages) : [variant, ...("quiet" in variant ? [variant.quiet] : [])];
+    const images = [variant, ...("quiet" in variant ? [variant.quiet] : [])];
     for (const image of images) {
       if (image.url === null) continue;
       const frame = baseFrame(pool, image);
@@ -90,7 +89,6 @@ function baseFrame(pool: (typeof BUILDING_VARIANT_POOLS)[number], image: { reado
       : houseCompoundAssetManifest.find(entry => entry.level === pool.level && entry.axis === pool.lot);
     if (meta !== undefined) return meta;
   }
-  if (pool.kind === "wheat_farm") return { width: FARM_REGISTRATION.width, height: FARM_REGISTRATION.height };
   const facility = historicalFacilityManifest.find(entry => entry.kind === pool.kind);
   // Wells and storehouses replace world-manifest sprites of the same pixel size.
   return facility ?? image;

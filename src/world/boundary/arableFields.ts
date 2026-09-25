@@ -5,8 +5,8 @@ import { boundaryHash, hashNumbers, type BoundaryBounds, type BoundaryPoint } fr
 // Arable field layout (C1e, asset spec 4.4): how a painted arable zone is filled with ridge strips. Pure and derived
 // (nothing saved or read by rules): the same zone membership, ground and seed always give the same layout.
 //  - Strips: the engine's read model (`arableStripStates`, C1c Z-18) cuts the zone into 1-tile runs parallel to its
-//    main axis. A run is drawn only over cells that can carry crops: grass, no road, no building (a wheat farm keeps
-//    its 2x2 sprite until the engine replaces farms with zone strips, C1c-2).
+//    main axis. A run is drawn only over cells that can carry crops: grass or cleared forest (C1f), no road, no
+//    building.
 //  - Rows: every 1-tile strip is two 0.5-tile ridge rows (the 512x64 strip at 128 px per tile, as painted). Each row
 //    picks a phase in the two-image period (a | b, 8 tiles) so that no row within 4 tiles shows the same image at the
 //    same place: along a row a and b alternate span by span (4 tiles each).
@@ -76,6 +76,11 @@ export type ArableFieldInput = {
   readonly seed: number;
   /** Stamps already placed by earlier zones (near rejection runs across zones); appended to. */
   readonly placedStamps: FurrowStamp[];
+  /**
+   * Cleared forest cells (row-major indexes of `forestHarvests`): logged forest keeps its terrain, and a field may be
+   * laid on it (C1c-2 migrated wheat farms often stood on cleared forest), so such a cell carries crops too (C1f).
+   */
+  readonly cleared?: ReadonlySet<number>;
 };
 
 export function arableField(input: ArableFieldInput): ArableField {
@@ -87,7 +92,8 @@ export function arableField(input: ArableFieldInput): ArableField {
     if (tx < 0 || ty < 0 || tx >= mapWidth || ty >= mapHeight) return false;
     const index = ty * mapWidth + tx;
     const tile = input.cells[index];
-    return member.has(index) && tile !== undefined && tile.terrain === "grass" && !tile.hasRoad && tile.buildingId === null;
+    const ground = tile !== undefined && (tile.terrain === "grass" || (tile.terrain === "forest" && input.cleared?.has(index) === true));
+    return member.has(index) && tile !== undefined && ground && !tile.hasRoad && tile.buildingId === null;
   };
 
   // Bands: runs of drawable cells inside each engine strip.

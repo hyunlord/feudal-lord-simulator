@@ -3,7 +3,6 @@ import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import type { CameraState } from "./camera";
 import { drawBuildings } from "./drawBuildings";
-import { beginFarmCanopyFrame, drawFarmSoil } from "./farmAssets";
 import { drawConstructionSite } from "./drawConstructionSites";
 import { wallBaselinesFor } from "./wallBaselineCache";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
@@ -44,23 +43,13 @@ export function drawObjectRenderItems(
 ): void {
   const probe = renderStageProbe.current;
   probe?.enter("farmland");
-  beginFarmCanopyFrame();
   beginBuildingVariantFrame(input.state);
   const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
-  // RENDER_BOUNDARY_V2 draws field soil and road ribbons in the ground chunks, under frontage and objects.
+  // RENDER_BOUNDARY_V2 draws road ribbons in the ground chunks, under frontage and objects. (The V1 wheat-farm soil
+  // pass that stood here went with the retired farm art, C1f.)
   const boundaryV2 = boundaryV2Enabled();
   const wallStrips = boundaryV2 && wallStripsEnabled();
-  if (viewMode !== "outlines" && !boundaryV2) {
-    for (const item of input.objectRenderItems) {
-      if (item.kind === "building") {
-        context.save();
-        if (input.problemOnly && causeBuildingAlpha(input.state, item.building.id, true) < 1) context.globalAlpha *= 0.4;
-        drawFarmSoil(context, item.building, input.state.buildings);
-        context.restore();
-      }
-    }
-  }
   const stoneGates = input.objectRenderItems.flatMap(item => item.kind === "palisade_segment"
     ? (item.stoneNodes ?? []).filter(node => node.kind === "gate").map(node => node.point) : []);
   // Roads are ground surfaces; repainting them after this queue cuts across roofs.
@@ -127,7 +116,6 @@ export function drawObjectRenderItems(
       hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
       viewMode,
-      farmSoilDrawn: true,
     });
     context.restore();
   }
@@ -148,7 +136,6 @@ export function drawObjectRenderItems(
       hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
       viewMode,
-      farmSoilDrawn: true,
     });
     context.restore();
   }

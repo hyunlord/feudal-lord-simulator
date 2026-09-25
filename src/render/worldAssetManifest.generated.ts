@@ -137,23 +137,6 @@ export const runtimeWorldAssetManifest = {
       }
     },
     {
-      "key": "wheat_farm",
-      "category": "building",
-      "path": "public/assets/buildings/wheat_farm.png",
-      "width": 160,
-      "height": 96,
-      "renderScale": 0.7333333333333334,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 80,
-        "y": 80
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
       "key": "logging_camp",
       "category": "building",
       "path": "public/assets/buildings/logging_camp.png",

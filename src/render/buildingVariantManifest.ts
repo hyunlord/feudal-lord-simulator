@@ -4,7 +4,8 @@
 // `requires: "inside_wall"`: only for a building inside a completed wall (palisadeProtectionForBuilding, the same test as
 // the L4 "protected" requirement). Art bible: thatch outside the walls, flat clay tile inside; so the L1 tile variant
 // is never picked in a town without a finished wall.
-// Not in this manifest on purpose: the pastoral farm set (held until sheep, C5) and the rejected L1 thatch variant.
+// Not in this manifest on purpose: the pastoral farm set (held until sheep, C5), the mixed farm set (retired with the
+// wheat farm, C1f; both in assets-inbox) and the rejected L1 thatch variant.
 // Variant ids are internal only; the building panel keeps the grade names.
 export const BUILDING_VARIANT_POOLS = [
   {
@@ -442,57 +443,4 @@ export const BUILDING_VARIANT_POOLS = [
       }
     ]
   },
-  {
-    "pool": "building:wheat_farm",
-    "namespace": "building",
-    "kind": "wheat_farm",
-    "variants": [
-      {
-        "id": "base",
-        "weight": 1,
-        "family": "base",
-        "url": null
-      },
-      {
-        "id": "mixed",
-        "weight": 1,
-        "family": "mixed",
-        "url": null,
-        "stages": {
-          "worked": {
-            "id": "mixed_worked",
-            "weight": 1,
-            "family": "mixed",
-            "url": "assets/buildings/variants-wave2/farm_mixed_worked-v1.png",
-            "width": 384,
-            "height": 192
-          },
-          "seedling": {
-            "id": "mixed_seedling",
-            "weight": 1,
-            "family": "mixed",
-            "url": "assets/buildings/variants-wave2/farm_mixed_seedling-v1.png",
-            "width": 384,
-            "height": 192
-          },
-          "growing": {
-            "id": "mixed_growing",
-            "weight": 1,
-            "family": "mixed",
-            "url": "assets/buildings/variants-wave2/farm_mixed_growing-v1.png",
-            "width": 384,
-            "height": 192
-          },
-          "ripe": {
-            "id": "mixed_ripe",
-            "weight": 1,
-            "family": "mixed",
-            "url": "assets/buildings/variants-wave2/farm_mixed_ripe-v1.png",
-            "width": 384,
-            "height": 192
-          }
-        }
-      }
-    ]
-  }
 ] as const;

@@ -46,6 +46,14 @@ export type ObjectRenderItem =
       readonly anchorTx: number;
     }
   | {
+      /** Farm animals and ox teams (C1f, farmProps.ts), display only. */
+      readonly kind: "farm_prop";
+      readonly id: string;
+      readonly prop: import("./farmProps").FarmProp;
+      readonly depth: number;
+      readonly anchorTx: number;
+    }
+  | {
       /** Orchard trees and haycocks of painted zones (C1b), from the ground scene's zone layer. */
       readonly kind: "zone_prop";
       readonly id: string;

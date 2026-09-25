@@ -85,6 +85,13 @@ export interface ProvenanceReport {
   totalCsvRows: number;
   missingRows: RuntimeAssetRef[]; // runtime assets with no corresponding CSV row
   orphanRows: CsvRow[]; // CSV rows whose runtimePath is not a currently-enumerated runtime asset
+  /**
+   * Rows with status `retired` (docs/provenance/ASSET_PROVENANCE.md): no longer shipped, the file kept in assets-inbox/.
+   * They are not coverage rows: `totalCsvRows` counts the others. Each must point outside public/ at an existing file
+   * with its hash, and must not be a runtime asset any more (listed in `retiredStillRuntime` otherwise).
+   */
+  retiredRows: CsvRow[];
+  retiredStillRuntime: CsvRow[];
   hashMismatches: MismatchEntry[];
   missingFiles: MissingFileEntry[];
   unreferencedPublicFiles: string[];
@@ -103,7 +110,9 @@ function isUnknownOrEmpty(value: string): boolean {
 
 export function buildReport(allPublicFiles: readonly string[]): ProvenanceReport {
   const runtimeAssets = enumerateRuntimeAssets();
-  const rows = readAssetsCsvRows();
+  const allRows = readAssetsCsvRows();
+  const retiredRows = allRows.filter(row => row.status === "retired");
+  const rows = allRows.filter(row => row.status !== "retired");
   const rowsByRuntimePath = new Map<string, CsvRow>();
   for (const row of rows) rowsByRuntimePath.set(row.runtimePath, row);
 
@@ -116,8 +125,10 @@ export function buildReport(allPublicFiles: readonly string[]): ProvenanceReport
   let completeRows = 0;
   let rowsWithUnknown = 0;
 
-  for (const row of rows) {
-    if (!runtimePaths.has(row.runtimePath)) continue; // orphan rows are reported separately
+  const retiredStillRuntime = retiredRows.filter(row => runtimePaths.has(row.runtimePath) || row.runtimePath.startsWith("public/"));
+  for (const row of [...rows, ...retiredRows]) {
+    const retired = row.status === "retired";
+    if (!retired && !runtimePaths.has(row.runtimePath)) continue; // orphan rows are reported separately
 
     const runtimeAbs = path.join(REPO_ROOT, row.runtimePath);
     if (!existsSync(runtimeAbs)) {
@@ -141,6 +152,7 @@ export function buildReport(allPublicFiles: readonly string[]): ProvenanceReport
       }
     }
 
+    if (retired) continue;
     const hasUnknown = REQUIRED_NON_EMPTY_COLUMNS.some(col => isUnknownOrEmpty(row[col]));
     if (hasUnknown) rowsWithUnknown++;
     else completeRows++;
@@ -151,6 +163,8 @@ export function buildReport(allPublicFiles: readonly string[]): ProvenanceReport
     totalCsvRows: rows.length,
     missingRows,
     orphanRows,
+    retiredRows,
+    retiredStillRuntime,
     hashMismatches,
     missingFiles,
     unreferencedPublicFiles: listUnreferencedPublicFiles(allPublicFiles),
