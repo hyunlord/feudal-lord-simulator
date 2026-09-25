@@ -1,6 +1,6 @@
 # 노동·가구·가내 생산 슬롯·방앗간 운반 명세 (C3)
 
-지시서: C3 노동 모델·가내 생산 슬롯·계절 노동·방앗간 운반. 설계: [콘텐츠 설계서](CONTENT_DESIGN.md) 6절(사람·시간)·3절(가내 생산 = 실제 재고, K3), [설계서](DESIGN_MASTER.md) 7절 노동, R1 명세 [S5](rule-repairs/S5-labour.md)(R-3 공사 최소 몫), [경작지 명세](arable-fields.md) AF-7·AF-9·AF-15. 결정: [결정 목록](../decisions/README.md) LB1~LB7.
+지시서: C3 노동 모델·가내 생산 슬롯·계절 노동·방앗간 운반. 설계: [콘텐츠 설계서](CONTENT_DESIGN.md) 6절(사람·시간)·3절(가내 생산 = 실제 재고, K3), [설계서](DESIGN_MASTER.md) 7절 노동, R1 명세 [S5](rule-repairs/S5-labour.md)(R-3 공사 최소 몫), [경작지 명세](arable-fields.md) AF-7·AF-9·AF-15. 결정: [결정 목록](../decisions/README.md) LB1~LB8.
 
 조항 번호(LB-*)는 `tests/labourHousehold.test.ts`(시나리오 L1~L10)의 테스트 이름에 쓴다. 수치는 `src/content/balanceConfig.ts`의 `LABOUR_BALANCE`(`BALANCE_CONFIG.labour`)·`SEASON_BALANCE`(`BALANCE_CONFIG.season`) 한 곳에 있다.
 
@@ -52,6 +52,10 @@
   - 두 번째 수레(입고·밀어내기)는 모든 본 수레가 나간 뒤에 뜬다. 생산 시설·헛간이 제 재고에 먼저 손을 댄다.
   - 곡창이 없는 초반에는 방앗간이 헛간 곳간에서 밀을 바로 가져온다(AF-9 그대로).
   - 자동 성장의 방앗간 상한은 AF-13의 운반 계수 2(수레 하나 왕복)를 `LABOUR_BALANCE.millHaulingFactorPermille`로 둔다.
+
+- **LB-13 관문 ④ 판정(사용자 결정 LB8)**: 원료 부족 ≤ 0.30은 그대로다. 빵은 seed마다 "안정 구간 빵 생산/요청 ≥ 옛 규칙(bb89831) 값 − 0.01, 그리고 안정 구간 끼니 충족 100%(소비 = 요청)"로 판정한다.
+  - 이유: 생산/요청은 수요가 다 채워지면 1 + 수출분이 천장이다. 곡창·방앗간이 빵으로 차면 남는 생산은 시장 수출로만 빠지므로 여유 지표로 부적합하다. 옛 규칙 1.007~1.038, 새 규칙 1.025~1.041(C3 실행 6회)이 모두 그 천장에 붙어 있다.
+  - 그래서 여유는 끼니 충족률(소비 ÷ 요청)과 비축량(곳간·곡창·방앗간·집의 밀과 빵)으로 본다. 보고서에 seed별로 적는다.
 
 ## 가내 생산 슬롯
 

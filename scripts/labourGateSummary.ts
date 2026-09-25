@@ -25,13 +25,23 @@ export function labourGateSummary(directory: string) {
     children: state.houses.reduce((sum, house) => sum + (house.members?.children ?? 0), 0),
     population: state.population, labourPool: availableWorkers(state.population),
   };
+  // Bread and wheat held at the end of the run (granaries, mills, barns, homes): the reserve the town carries.
+  const reserve = state === null ? null : {
+    bread: state.buildings.reduce((sum, building) => sum + (building.inventory.bread ?? 0), 0)
+      + state.houses.reduce((sum, house) => sum + house.breadStock, 0),
+    wheat: state.buildings.reduce((sum, building) => sum + (building.inventory.wheat ?? 0), 0),
+  };
   return {
+    reserve,
     householdsMatch: households === null ? null
       : households.adults === households.labourPool && households.adults + households.children === households.population,
     households,
     seed: summary.seed, guardrail: summary.guardrail?.passed ?? null, victoryTick: summary.victoryTick,
     stopReason: summary.stopReason, stableSince, stableWindows: windows.length,
     stableBreadRatio: ratio(total('breadProduced'), total('requestedBread')),
+    // LB-13 (user decision LB8): meal fulfilment replaces production/request as the margin measure.
+    stableMealFulfilment: ratio(total('consumedBread'), total('requestedBread')),
+    stableStoredWheatMean: windows.length === 0 ? null : Math.round(total('storedWheat') / windows.length),
     stableRawStarvationRatio: ratio(total('rawStarvedTicks'), total('eligibleMillTicks')),
     stableIdleRatioMean: summary.stableLabour?.meanIdleRatio ?? (idleAtWindowEnds.length > 0
       ? Number((idleAtWindowEnds.reduce((sum, value) => sum + value, 0) / idleAtWindowEnds.length).toFixed(4)) : null),
