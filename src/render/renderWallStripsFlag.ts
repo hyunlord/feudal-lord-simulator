@@ -4,6 +4,8 @@
 // the wall baseline, the water tint and the strip join fix either way; only the shore strip under a wall follows this
 // flag (the face strip is what covers it). Precedence: URL query `render-wall-strips=1|0` > stored choice > default.
 
+import { platformServices } from "../platform/platform";
+
 export const RENDER_WALL_STRIPS_QUERY = "render-wall-strips";
 export const RENDER_WALL_STRIPS_STORAGE_KEY = "feudal.renderWallStrips";
 const RENDER_WALL_STRIPS_DEFAULT = false;
@@ -25,10 +27,9 @@ export function resolveWallStripsFlag(environment: FlagEnvironment): boolean {
 }
 
 function browserEnvironment(): FlagEnvironment {
-  if (typeof window === "undefined") return {};
-  let storage: Storage | null = null;
-  try { storage = window.localStorage; } catch { storage = null; }
-  return { search: window.location.search, storage };
+  // The stored choice lives in the platform preferences (B9); the URL query stays a web-only override.
+  const preferences = platformServices().preferences;
+  return { search: typeof window === "undefined" ? "" : window.location.search, storage: { getItem: key => preferences.get(key) } };
 }
 
 let enabled = resolveWallStripsFlag(browserEnvironment());

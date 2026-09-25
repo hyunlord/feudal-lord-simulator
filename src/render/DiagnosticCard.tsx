@@ -154,7 +154,6 @@ function ConstructionSiteCard({
         className="diagnostic-card-cancel"
         data-action="cancel-construction"
         disabled={!cancellationEnabled}
-        title={cancellation.reason ?? undefined}
         onClick={() => {
           if (cancellationEnabled) onCancelConstruction?.(model.siteId);
         }}
@@ -186,6 +185,7 @@ function cardIdentity(model: DiagnosticCardModel): Readonly<{ name: string; type
 
 export function DiagnosticCard({
   model,
+  causeLine = null,
   causeSummary,
   buildingOperation,
   onDemolishHouse,
@@ -194,6 +194,8 @@ export function DiagnosticCard({
   onClose,
 }: Readonly<{
   model: DiagnosticCardModel;
+  /** The hover tooltip's cause line for a selected building (same text, UI-1 / B9). */
+  causeLine?: string | null;
   causeSummary?: HouseProgressModel | null;
   buildingOperation?: { readonly paused: boolean; readonly onToggle: () => void };
   onDemolishHouse?: (buildingId: string) => void;
@@ -212,8 +214,9 @@ export function DiagnosticCard({
         <header className="inspector-heading">
           <div className="inspector-thumbnail" aria-hidden="true">{identity.art}</div>
           <div><p>{identity.type}</p><h2>{identity.name}</h2></div>
-          {onClose === undefined ? null : <button className="inspector-close" type="button" aria-label="상세 정보 닫기" onClick={onClose}>×</button>}
+          {onClose === undefined ? null : <button className="inspector-close" type="button" aria-label="상세 정보 닫기" onClick={() => onClose()}>×</button>}
         </header>
+        {causeLine === null ? null : <p className="inspector-cause-line" role="status">{causeLine}</p>}
         {causeSummary == null ? null : <div className="inspector-cause-summary">
           다음: {causeSummary.nextLevel === null ? '최고 단계' : `L${causeSummary.nextLevel}`} / {causeSummary.currentLevel === 4 ? '유지 위험' : '첫 방해'}: {causeSummary.blocker?.label ?? (causeSummary.status === 'ready' ? '없음 · 승급 대기' : '없음')}
           {causeSummary.status === 'ready' && causeSummary.remainingTicks !== null && causeSummary.nextLevel !== null ?
@@ -222,7 +225,7 @@ export function DiagnosticCard({
         <div className="inspector-body">
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} /> : null}
-          {model.kind === "building" ? <><p>{model.value.purpose}</p>{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={buildingOperation.onToggle}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
+          {model.kind === "building" ? <><p>{model.value.purpose}</p>{buildingOperation === undefined ? null : <section className="inspector-actions"><button type="button" style={{ minHeight: 44, minWidth: 44 }} aria-pressed={buildingOperation.paused} data-action="toggle-building-operation" onClick={() => buildingOperation.onToggle()}>{buildingOperation.paused ? BUILDING_OPERATION_COPY.resume : BUILDING_OPERATION_COPY.pause}</button><p>{BUILDING_OPERATION_COPY.explanation}</p></section>}<h3>운영과 재고</h3><ul className="inspector-facts">{model.value.rows.map((row) => <li key={row}>{row}</li>)}</ul></> : null}
           {model.kind === "construction_site"
             ? onCancelConstruction === undefined
               ? <ConstructionSiteCard model={model.value} />

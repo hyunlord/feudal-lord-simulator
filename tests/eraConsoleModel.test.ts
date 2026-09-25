@@ -286,7 +286,8 @@ test("era console source uses presentation-only draft state and Escape without s
   assert.doesNotMatch(appSource, /palisadeDraft:\s*state/);
   assert.match(runtimeSource, /palisadeDraftRef/);
   assert.match(appSource, /applyPalisadeIntent/);
-  assert.match(appSource, /event\.code === "Escape"/);
+  // Esc reaches the app shell as the `cancel` input intent (B9, src/input/mouseKeyboardTranslator.ts).
+  assert.match(appSource, /case "cancel":/);
 });
 
 test("hamlet keeps proposal failure details even when all requirements hide the proposal", () => {

@@ -9,6 +9,16 @@ export type HoveredBuilding = {
   readonly y: number;
 };
 
+/**
+ * The cause line the hover tooltip shows for a building (UI-1); the diagnostic card shows the same line when the
+ * building is selected, so tapping gives the same information as hovering (B9, 13.1 rule 1).
+ */
+export function buildingCauseLine(state: GameState, buildingId: string, clusterCount = 1): string | null {
+  const cause = buildingCauseSnapshot(state).get(buildingId);
+  if (cause === undefined) return null;
+  return `${clusterCount > 1 ? `${clusterCount}곳 · ` : ""}${cause.name} · ${cause.summary}`;
+}
+
 export function BuildingInspector({
   state,
   hover,
@@ -21,7 +31,7 @@ export function BuildingInspector({
   if (cause !== undefined) return <aside className="building-inspector cause-tooltip" role="tooltip"
     style={{ left: `clamp(12px, ${hover.x + 16}px, calc(100% - min(720px, 100% - 24px) - 12px))`,
       top: `clamp(calc(var(--resource-height) + 8px), ${hover.y - 48}px, calc(100% - var(--command-height) - 96px))` }}
-    aria-label={`${cause.name} 원인`}>{(hover.clusterCount ?? 1) > 1 ? `${hover.clusterCount}곳 · ` : ""}{cause.name} · {cause.summary}</aside>;
+    aria-label={`${cause.name} 원인`}>{buildingCauseLine(state, hover.buildingId, hover.clusterCount ?? 1)}</aside>;
   const model = buildingInspectorModel(state, hover.buildingId);
   if (model === null) return null;
   return (

@@ -108,7 +108,7 @@ export function CourtLedger({
             type="button"
             aria-expanded={populationDrawerOpen}
             aria-controls="population-ledger-drawer"
-            onClick={onPopulationDrawerToggle}
+            onClick={() => onPopulationDrawerToggle()}
           >
             인구 기록
           </button>

@@ -154,6 +154,16 @@
   background: var(--palette-parchment);
   font: 600 13px/1.5 var(--ui-body-font);
 }
+/* The hover cause line, repeated on the selected card (B9: tapping shows what hovering showed). */
+.inspector-cause-line {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--palette-earth);
+  color: var(--palette-ink);
+  background: var(--palette-parchment);
+  font: 400 13px/1.5 var(--ui-body-font);
+}
 .cause-legend {
   padding: 8px 12px;
   color: var(--palette-vellum);
@@ -164,7 +174,7 @@
 .cause-legend ul { list-style: none; padding: 0; margin: 8px 0; }
 .cause-legend li { display: flex; align-items: center; gap: 8px; }
 .cause-legend-symbol { min-width: 26px; padding: 0 4px; background: var(--palette-vellum); font-weight: 700; }
-.cause-legend small { font-size: 11px; }
+.cause-legend small { font-size: 12px; }
 
 .prediction-panel {
   position: absolute;

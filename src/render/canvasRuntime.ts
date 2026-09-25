@@ -8,6 +8,7 @@ import { clampPan, clampZoom, type CameraState, type Point } from "./camera";
 import { worldBounds } from "./interactions";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { runtimeWorldAssetManifest } from "./worldAssetManifest.generated";
+import { platformServices } from "../platform/platform";
 
 const DESKTOP_CONSOLE_HEIGHT = 150;
 const TABLET_CONSOLE_HEIGHT = 276;
@@ -44,12 +45,18 @@ export type ViewportResizeCameraInput = {
   readonly userControlled: boolean;
 };
 
+/**
+ * Backing store = CSS size x device pixel ratio x render scale (B9: the settings' 0.75 / 1 / 1.25, a performance knob
+ * for high-DPI screens). The drawing transform uses the same product, so the picture keeps its on-screen size and
+ * only its resolution changes; everything downstream reads the ratio from the transform or the returned value.
+ */
 export function resizeCanvas(
   canvas: HTMLCanvasElement,
   context: CanvasRenderingContext2D,
 ): number {
   const bounds = canvas.getBoundingClientRect();
-  const pixelRatio = Math.max(1, window.devicePixelRatio);
+  const platform = platformServices().window;
+  const pixelRatio = platform.devicePixelRatio() * platform.renderScale();
   canvas.width = Math.round(bounds.width * pixelRatio);
   canvas.height = Math.round(bounds.height * pixelRatio);
   context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);

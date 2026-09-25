@@ -130,6 +130,11 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | WL4 | 물가는 물가 쪽 벽 기준선과 같은 선(0.45칸 안 스냅), 그곳 물가 띠 생략. 얕은 물 45%·물가 띠 물 쪽 45% 색 보정(stone[1]) | 렌더 결정(D3b) | 2026-09-25 | [성벽 곡선 WL-4](../design/wall-faces.md) |
 | WL5 | 띠 잇기·도로 마스크의 `destination-in` 줄별 적용 결함 수정(마스크 캔버스 한 번 적용) | 결함 수정(D3b) | 2026-09-25 | [성벽 곡선 WL-5](../design/wall-faces.md) |
 | WL6 | 면 띠(WL-2·WL-3)를 별도 플래그 `RENDER_WALL_STRIPS`로 분리, **기본 끔**(완공 벽 = 예전 칸 조각). 물가 공유선·색 보정·띠 이음 수정은 켬 유지, 벽 밑 물가 띠 생략은 띠 켬일 때만 | 확정(사용자, 2026-09-25 D3b 검토: 윗면·흉벽 없이 밝은 톤이라 벽으로 안 읽힘) | 2026-09-25 | [성벽 곡선](../design/wall-faces.md) · [보고서](../verification/d3b-wall-flag/REPORT.md) |
+| IN1 | 입력은 의도로만: DOM 입력 이벤트는 `src/input` 번역기만 받고, 지도 조작·도구 선택·속도·되돌리기는 `PlatformServices.input` 의도 흐름을 거친다. 13.1의 12종 + 기기 무관 확장 8종(point·focusLost·toolStep·brushSize·overlayToggle·problemView·pauseToggle·lookAt) | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-1·IN-2](../design/input-intents.md) |
+| IN2 | 키보드 기본 배정 중 기존 조작과 겹치는 둘: 방향키·WASD는 카메라 이동 유지(지도 커서 없음), Space는 누른 채 끌기 = 이동 유지 + 끌기 없는 탭 = 일시정지. Enter 확정·Q/E 도구·+/− 확대는 신규 | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-3](../design/input-intents.md) |
+| IN3 | 정적 검사 범위: 패널·저장·선포 확정 같은 UI 명령 버튼은 DOM `click` 유지(버튼 활성화는 키보드·터치·컨트롤러 포커스에서도 같은 이벤트). 처리기에 이벤트 객체를 넘기거나 참조로 달지 않는다 | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-4](../design/input-intents.md) |
+| PL1 | `PlatformServices` = storage(B8 SaveStorage + ready)·preferences·window(DPR·전체화면·render scale)·locale·input. 웹 구현 1개가 localStorage·IndexedDB·DPR·navigator를 부르는 유일한 곳 | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-5](../design/input-intents.md) |
+| PL2 | 해상도 배율 0.75/1/1.25(설정, 기본 1): 캔버스 내부 해상도 = CSS × DPR × 배율, 지면 청크 키에 배율(1이면 키 불변) | 렌더 결정(B9) | 2026-09-25 | [입력 의도 IN-6](../design/input-intents.md) |
 | AI1 | 에셋 받은 편지함: Astra 후보는 받는 즉시 `assets-inbox/<wave>/`에 LFS 커밋, 불채택은 대장 `rejected` | 확정(지시서 C1e 0절) | 2026-09-25 | [assets-inbox/README.md](../../assets-inbox/README.md) · AGENTS 상시 규칙 17 |
 
 ## R1-fix 확정 규칙

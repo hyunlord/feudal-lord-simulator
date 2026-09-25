@@ -76,7 +76,7 @@ export function drawCauseMap(context: CanvasRenderingContext2D, state: GameState
       applyPaletteStroke(context, entry.color, 0.5); context.stroke();
       if (marker.risk) { applyPaletteStroke(context, SEMANTIC_PALETTE.vermilion, 0.5); context.strokeRect(-15,-15,30,30); }
       context.fillStyle = SEMANTIC_PALETTE.ink;
-      context.font = 'bold 11px "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
+      context.font = 'bold 12px "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
       context.textAlign = 'center'; context.textBaseline = 'middle';
       context.fillText(marker.buildingIds.length > 1 ? String(marker.buildingIds.length) : entry.glyphText, 0, 1);
     }

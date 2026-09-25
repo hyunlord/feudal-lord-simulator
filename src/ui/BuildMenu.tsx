@@ -17,6 +17,8 @@ import { BUILD_CATEGORIES, buildCategory, buildCategorySelection, buildCostLabel
 import { DEFAULT_ZONE_BRUSH_RADIUS, ZONE_BRUSH_RADII, type ZoneBrushTarget, type ZoneBrushTool } from "../render/zoneBrushInteraction";
 import { ZONE_BRUSH_COPY } from "../render/zoneBrushCopy.ko";
 import { ZONE_KIND_LABELS } from "../zones/zoneCopy.ko";
+import { platformServices } from "../platform/platform";
+import { INTENT_ORDER } from "../input/intentBus";
 
 /** Zone cards (C1b): plots, arable, pasture, orchard and the eraser. Hay meadow and woodland come with C1c. */
 const ZONE_CARDS: readonly { readonly target: ZoneBrushTarget; readonly label: string; readonly hint: string; readonly glyph: string; readonly thumbnail: string | null }[] = [
@@ -50,18 +52,17 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
   const [catalogOpen, setCatalogOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [preview, setPreview] = useState<PlacementTool | null>(null);
+  // A tapped card that cannot be built yet: its tooltip lines stay visible in the catalogue (no hover needed).
+  const [pinned, setPinned] = useState<PlacementTool | null>(null);
   useEffect(() => {
     if (selectedTool !== null) setCategory(buildCategory(selectedTool));
   }, [selectedTool]);
-  useEffect(() => {
-    const close = (event: KeyboardEvent) => {
-      if (event.code !== "Escape") return;
-      setCatalogOpen(false);
-      setDetailsOpen(false);
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, []);
+  // Esc (the global `cancel` intent, after the map and the app shell) closes the catalog and the details (B9).
+  useEffect(() => platformServices().input.subscribe(intent => {
+    if (intent.kind !== "cancel" || intent.world !== undefined) return;
+    setCatalogOpen(false);
+    setDetailsOpen(false);
+  }, INTENT_ORDER.menu), []);
   const visibleOptions = options.filter((option) => buildCategory(option.tool) === category);
   const palisadeReady = canProclaimPalisadeEra(menuState);
   const unmetPalisade = menuState.era === 'hamlet'
@@ -87,10 +88,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         aria-label={option.label} aria-describedby={`${id}-tool-${option.tool}`} aria-pressed={selected}
         aria-disabled={!toolAffordable} data-affordable={String(toolAffordable)}
         data-highlighted={highlightedTools.includes(option.tool) ? option.tool : undefined}
-        title={buildToolTooltipLines(option.tool, menuState).join("\n")}
         onMouseEnter={() => setPreview(option.tool)} onMouseLeave={() => setPreview(null)}
         onFocus={() => setPreview(option.tool)} onBlur={() => setPreview(null)}
-        onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); } }}>
+        onClick={() => { if (toolAffordable) { onSelect(option.tool); setCatalogOpen(false); setPreview(null); setPinned(null); } else setPinned(option.tool); }}>
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
           {thumbnail === null ? <BuildGlyph tool={option.tool} /> : <img src={thumbnail} width="80" height="64" alt="" draggable={false} />}
@@ -109,7 +109,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         {BUILD_CATEGORIES.map((item) => (
           <button key={item.key} type="button" className="build-menu-category"
             aria-pressed={category === item.key} aria-expanded={catalogOpen && category === item.key} aria-controls={`${id}-${item.key}`}
-            onClick={() => { onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); }}>
+            onClick={() => { onSelect(buildCategorySelection(item.key)); setDetailsOpen(false); setCatalogOpen(!catalogOpen || category !== item.key); setCategory(item.key); setPreview(null); setPinned(null); }}>
             {item.label}
             {options.some((option) => buildCategory(option.tool) === item.key && highlightedTools.includes(option.tool)) && <span className="build-menu-task" aria-label="현재 과업">·</span>}
           </button>
@@ -118,13 +118,13 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
       <div className="build-menu-body" hidden={!catalogOpen}>
         <div className="build-menu-quick-road" role="group" aria-label={KO_UI.roadTool}>{toolButton(ROAD_TOOL_OPTION)}</div>
         <div className="build-menu-catalog">
+          {pinned === null ? null : <p className="build-menu-pinned" role="status">{buildToolTooltipLines(pinned, menuState).join(" · ")}</p>}
           {BUILD_CATEGORIES.map((item) => (
             <section key={item.key} id={`${id}-${item.key}`} hidden={category !== item.key} aria-label={`${item.label} 도구`} className="build-menu-tools">
               {options.filter((option) => buildCategory(option.tool) === item.key).map(toolButton)}
               {item.key === 'defense' && onStartPalisadeDrawing !== undefined ? (
                 <button type="button" className={`build-seal build-tool${palisadeDrawing ? ' build-tool--selected' : ''}`}
                   aria-label={WALL_COPY.drawTool} aria-pressed={palisadeDrawing} aria-disabled={!palisadeReady}
-                  title={palisadeReady ? WALL_COPY.drawHint : palisadeReason}
                   onClick={() => { if (palisadeReady) { onStartPalisadeDrawing(); setCatalogOpen(false); } }}>
                   <span className="build-tool-art" aria-hidden="true">⌁</span>
                   <span className="build-seal-label" aria-hidden="true">{WALL_COPY.drawTool}</span>
@@ -136,7 +136,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
                 const selected = zoneTool?.target === card.target;
                 return (
                   <button key={card.target} type="button" className={`build-seal build-tool zone-tool${selected ? " build-tool--selected" : ""}`}
-                    aria-label={card.label} aria-pressed={selected} title={card.hint} data-zone-tool={card.target}
+                    aria-label={card.label} aria-pressed={selected} data-zone-tool={card.target}
                     onClick={() => { onZoneToolChange({ target: card.target, radius: zoneTool?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: zoneTool?.polygon ?? false }); setCatalogOpen(false); }}>
                     <span className="build-tool-art" aria-hidden="true">
                       {card.thumbnail === null ? <span className="zone-tool-glyph">{card.glyph}</span> : <img src={card.thumbnail} width="80" height="40" alt="" draggable={false} />}
@@ -161,8 +161,9 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
                 onClick={() => onZoneToolChange({ ...zoneTool, radius })}>{ZONE_BRUSH_COPY.radius(radius)}</button>
             ))}
           </span>
-          <button type="button" className="zone-polygon-toggle" aria-pressed={zoneTool.polygon} title={ZONE_BRUSH_COPY.polygonToggleHint}
+          <button type="button" className="zone-polygon-toggle" aria-pressed={zoneTool.polygon}
             onClick={() => onZoneToolChange({ ...zoneTool, polygon: !zoneTool.polygon })}>{ZONE_BRUSH_COPY.polygonToggle}</button>
+          {zoneTool.polygon ? <span className="zone-polygon-hint">{ZONE_BRUSH_COPY.polygonToggleHint}</span> : null}
         </> : palisadeDrawing ? <><strong>{WALL_COPY.drawTool}</strong><span>{WALL_COPY.drawHint}</span></> : <>
           <strong>{detailOption.label}</strong><span>{buildCostLabel(detailOption)}</span>
           {radius !== undefined && radius > 0 && <span>반경 {radius}칸</span>}

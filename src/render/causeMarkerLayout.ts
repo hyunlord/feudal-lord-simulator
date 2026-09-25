@@ -32,6 +32,16 @@ export function groupCauseMarkers(markers: readonly CauseMarker[], zoom: number)
   return groups;
 }
 
+/** Tap radius around a cause icon in screen px: a 44 px target (B9, 13.1 rule 5), wider than the 30 px icon. */
+export const CAUSE_MARKER_HIT_RADIUS_PX = 22;
+
+/** The nearest marker within the tap radius; on a tie the one drawn last (on top). */
 export function hitCauseMarker(markers: readonly CauseMarker[], point: Point, zoom: number): CauseMarker | null {
-  return [...markers].reverse().find(marker => Math.hypot(marker.x - point.x, marker.y - point.y) * zoom <= 15) ?? null;
+  let best: CauseMarker | null = null;
+  let bestDistance = Infinity;
+  for (const marker of markers) {
+    const distance = Math.hypot(marker.x - point.x, marker.y - point.y) * zoom;
+    if (distance <= CAUSE_MARKER_HIT_RADIUS_PX && distance <= bestDistance) { best = marker; bestDistance = distance; }
+  }
+  return best;
 }

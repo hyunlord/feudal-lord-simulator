@@ -20,6 +20,7 @@ import { createGroundChunkCache, groundChunkZoomBucket, type ChunkRasterRequest,
 import { GROUND_CHUNK_TILES, chunkTileBounds, groundBoundaryScene, groundSceneFrameStart, groundBoundarySceneStats, setGroundSceneReverseInput, type GroundBoundaryScene, type GroundChunkPlan } from "./groundBoundaryScene";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
+import { platformServices } from "../platform/platform";
 import { tileToScreen } from "./iso";
 import { renderStageProbe } from "./renderStageProbe";
 import type { TileRange } from "./renderVisibility";
@@ -100,6 +101,12 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const dpr = transform === null || input.zoom <= 0 ? 1 : Math.hypot(transform.a, transform.b) / input.zoom;
   const zoom = groundChunkZoomBucket(input.zoom);
   const scale = zoom * dpr;
+  // Render scale (B9) is already inside `dpr` (the canvas transform carries DPR x render scale) and so inside the
+  // raster scale the cache compares; it is also named in the content key, so a settings change re-rasters the visible
+  // chunks in that frame instead of stretching the old rasters through the zoom-only path. Scale 1 adds nothing: the
+  // keys are the D1a keys.
+  const renderScale = platformServices().window.renderScale();
+  const scaleKey = renderScale === 1 ? "" : `|rs${renderScale}`;
   const readiness = `${boundaryAssetReadiness()}:${TERRAIN_TEXTURE_KEYS.map(key => getSprite(key) === null ? 0 : 1).join("")}`
     + `:${farmSoilReadiness()}:${waterReady ? 1 : 0}`;
   // Zone art readiness only in chunks that draw zones (a zone-free chunk keeps its D1a key), and never in the road
@@ -114,12 +121,12 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
   const visible = visibleChunks(scene, input.range);
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
     // Same ground base = the chunk only changed its zones: its old raster may stand in until the frame budget allows.
-    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}`,
+    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`,
   });
   const roadRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}`, scale, diamond: chunkDiamond(plan),
+    id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
   });
   for (const plan of visible) {
     cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts));
