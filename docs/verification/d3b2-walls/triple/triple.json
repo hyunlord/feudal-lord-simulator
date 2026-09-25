@@ -1,0 +1,323 @@
+{
+  "walkers": "hidden",
+  "renders": {
+    "pieces": "baseline default (per-edge pieces)",
+    "v1": "baseline + render-wall-strips=1 (D3b strips)",
+    "v2": "this build + render-wall-strips=1 (D3b-2 strips)"
+  },
+  "rows": [
+    {
+      "file": "seed3-stone-z1.00-triptych.jpg",
+      "view": "seed3-stone-z1.00",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 3 final (fixture): stone town",
+      "tile": [
+        14,
+        14
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "seed3-stone-z1.00-triptych.jpg",
+      "view": "seed3-stone-z1.00",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 3 final (fixture): stone town",
+      "tile": [
+        14,
+        14
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "seed3-stone-z1.00-triptych.jpg",
+      "view": "seed3-stone-z1.00",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 3 final (fixture): stone town",
+      "tile": [
+        14,
+        14
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "seed3-stone-z0.60-triptych.jpg",
+      "view": "seed3-stone-z0.60",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 3 final (fixture): stone town",
+      "tile": [
+        14,
+        14
+      ],
+      "zoom": 0.6
+    },
+    {
+      "file": "seed3-stone-z0.60-triptych.jpg",
+      "view": "seed3-stone-z0.60",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 3 final (fixture): stone town",
+      "tile": [
+        14,
+        14
+      ],
+      "zoom": 0.6
+    },
+    {
+      "file": "seed3-stone-z0.60-triptych.jpg",
+      "view": "seed3-stone-z0.60",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 3 final (fixture): stone town",
+      "tile": [
+        14,
+        14
+      ],
+      "zoom": 0.6
+    },
+    {
+      "file": "seed2-south-z1.00-triptych.jpg",
+      "view": "seed2-south-z1.00",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 2 final (fixture): stone wall on the lake",
+      "tile": [
+        46,
+        45
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "seed2-south-z1.00-triptych.jpg",
+      "view": "seed2-south-z1.00",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 final (fixture): stone wall on the lake",
+      "tile": [
+        46,
+        45
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "seed2-south-z1.00-triptych.jpg",
+      "view": "seed2-south-z1.00",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 final (fixture): stone wall on the lake",
+      "tile": [
+        46,
+        45
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "natural-timber-z1.00-triptych.jpg",
+      "view": "natural-timber-z1.00",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 2 natural chain (C1e real-input state): timber palisade on the lake",
+      "tile": [
+        50,
+        44
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "natural-timber-z1.00-triptych.jpg",
+      "view": "natural-timber-z1.00",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 natural chain (C1e real-input state): timber palisade on the lake",
+      "tile": [
+        50,
+        44
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "natural-timber-z1.00-triptych.jpg",
+      "view": "natural-timber-z1.00",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 natural chain (C1e real-input state): timber palisade on the lake",
+      "tile": [
+        50,
+        44
+      ],
+      "zoom": 1
+    },
+    {
+      "file": "natural-timber-z0.60-triptych.jpg",
+      "view": "natural-timber-z0.60",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 2 natural chain (C1e real-input state): timber palisade on the lake",
+      "tile": [
+        50,
+        44
+      ],
+      "zoom": 0.6
+    },
+    {
+      "file": "natural-timber-z0.60-triptych.jpg",
+      "view": "natural-timber-z0.60",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 natural chain (C1e real-input state): timber palisade on the lake",
+      "tile": [
+        50,
+        44
+      ],
+      "zoom": 0.6
+    },
+    {
+      "file": "natural-timber-z0.60-triptych.jpg",
+      "view": "natural-timber-z0.60",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 natural chain (C1e real-input state): timber palisade on the lake",
+      "tile": [
+        50,
+        44
+      ],
+      "zoom": 0.6
+    },
+    {
+      "file": "stone-gate-z2.00-triptych.jpg",
+      "view": "stone-gate-z2.00",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 2 final: stone gate",
+      "tile": [
+        53,
+        26
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "stone-gate-z2.00-triptych.jpg",
+      "view": "stone-gate-z2.00",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 final: stone gate",
+      "tile": [
+        53,
+        26
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "stone-gate-z2.00-triptych.jpg",
+      "view": "stone-gate-z2.00",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 final: stone gate",
+      "tile": [
+        53,
+        26
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "stone-tower-z2.00-triptych.jpg",
+      "view": "stone-tower-z2.00",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 2 final: corner tower on the lake",
+      "tile": [
+        44,
+        46
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "stone-tower-z2.00-triptych.jpg",
+      "view": "stone-tower-z2.00",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 final: corner tower on the lake",
+      "tile": [
+        44,
+        46
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "stone-tower-z2.00-triptych.jpg",
+      "view": "stone-tower-z2.00",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 final: corner tower on the lake",
+      "tile": [
+        44,
+        46
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "timber-gate-z2.00-triptych.jpg",
+      "view": "timber-gate-z2.00",
+      "render": "pieces",
+      "build": "http://localhost:4262/",
+      "query": "",
+      "source": "seed 2 natural chain: timber gate",
+      "tile": [
+        52.5,
+        46.5
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "timber-gate-z2.00-triptych.jpg",
+      "view": "timber-gate-z2.00",
+      "render": "v1",
+      "build": "http://localhost:4262/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 natural chain: timber gate",
+      "tile": [
+        52.5,
+        46.5
+      ],
+      "zoom": 2
+    },
+    {
+      "file": "timber-gate-z2.00-triptych.jpg",
+      "view": "timber-gate-z2.00",
+      "render": "v2",
+      "build": "http://localhost:4261/",
+      "query": "&render-wall-strips=1",
+      "source": "seed 2 natural chain: timber gate",
+      "tile": [
+        52.5,
+        46.5
+      ],
+      "zoom": 2
+    }
+  ],
+  "note": "each triptych: pieces | D3b v1 strips | D3b-2 v2 strips (full views scaled to 60%)"
+}

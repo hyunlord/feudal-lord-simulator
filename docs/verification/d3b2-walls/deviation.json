@@ -1,0 +1,107 @@
+{
+  "limit": {
+    "deviation": 0.35,
+    "gateOffset": 0.15,
+    "gateTangentDegrees": 5
+  },
+  "rows": [
+    {
+      "scene": "seed1",
+      "chains": 4,
+      "nodes": {
+        "gate": 2,
+        "tower": 2
+      },
+      "pillars": 20,
+      "maxDeviationTiles": 0.1406,
+      "gateEnds": 4,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 13.2
+    },
+    {
+      "scene": "seed2",
+      "chains": 6,
+      "nodes": {
+        "tower": 5,
+        "gate": 1
+      },
+      "pillars": 8,
+      "maxDeviationTiles": 0.1989,
+      "gateEnds": 2,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 1.3
+    },
+    {
+      "scene": "seed3",
+      "chains": 6,
+      "nodes": {
+        "tower": 3,
+        "gate": 3
+      },
+      "pillars": 8,
+      "maxDeviationTiles": 0.1406,
+      "gateEnds": 6,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 1.4
+    },
+    {
+      "scene": "seed4",
+      "chains": 6,
+      "nodes": {
+        "gate": 2,
+        "tower": 4
+      },
+      "pillars": 10,
+      "maxDeviationTiles": 0.1406,
+      "gateEnds": 4,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 2.5
+    },
+    {
+      "scene": "seed5",
+      "chains": 7,
+      "nodes": {
+        "gate": 2,
+        "tower": 5
+      },
+      "pillars": 14,
+      "maxDeviationTiles": 0.1406,
+      "gateEnds": 4,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 4
+    },
+    {
+      "scene": "natural timber (C1e real input)",
+      "chains": 7,
+      "nodes": {
+        "tower": 6,
+        "gate": 1
+      },
+      "pillars": 3,
+      "maxDeviationTiles": 0.1215,
+      "gateEnds": 2,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 3.1
+    },
+    {
+      "scene": "timber partly built (construction-reserve)",
+      "chains": 3,
+      "nodes": {
+        "terminal": 4,
+        "tower": 1
+      },
+      "pillars": 1,
+      "maxDeviationTiles": 0.1215,
+      "gateEnds": 0,
+      "gateMaxOffsetTiles": 0,
+      "gateMaxTangentDegrees": 0,
+      "buildMs": 0.9
+    }
+  ]
+}
