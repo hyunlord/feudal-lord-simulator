@@ -1,0 +1,1062 @@
+{
+ "description": "BOT-1 timber comparison, seed 2 vs seed 3. Development single-seed runs (natural growth, 24 lots): seed 2 = dev run 2 (same trajectory as guardrail run 1 seed 2 through 312,000: palisade 70,089, first market 72,969, market_gap 74,409); seed 3 = the run-1 capture trace (same code as guardrail run 1). Every 12,000 ticks: spendable timber (placementSpendableResource), construction timber need, S8-F1 shortage window start, timber produced in the current production window. S8-F1 (timberExpansionKind) also needs spendable timber >= the new facility's cost (logging camp 15, sawmill 30) at a decision tick.",
+ "seed2": {
+  "samples": [
+   {
+    "tick": 12000,
+    "era": "hamlet",
+    "lots": 8,
+    "levels": {
+     "1": 1,
+     "2": 7
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 50,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 25,
+    "idle": 31
+   },
+   {
+    "tick": 24000,
+    "era": "hamlet",
+    "lots": 13,
+    "levels": {
+     "0": 1,
+     "2": 5,
+     "3": 7
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 89,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 24,
+    "idle": 89
+   },
+   {
+    "tick": 36000,
+    "era": "hamlet",
+    "lots": 17,
+    "levels": {
+     "1": 4,
+     "2": 1,
+     "3": 12
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 99,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 23,
+    "idle": 121
+   },
+   {
+    "tick": 48000,
+    "era": "hamlet",
+    "lots": 23,
+    "levels": {
+     "1": 2,
+     "2": 6,
+     "3": 15
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 108,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 24,
+    "idle": 180
+   },
+   {
+    "tick": 60000,
+    "era": "hamlet",
+    "lots": 24,
+    "levels": {
+     "2": 2,
+     "3": 22
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 180,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 25,
+    "idle": 213
+   },
+   {
+    "tick": 72000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 146,
+    "stone": 0,
+    "need": {
+     "timber": 1078,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 23,
+    "idle": 219
+   },
+   {
+    "tick": 84000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 936,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 24,
+    "idle": 210
+   },
+   {
+    "tick": 96000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 821,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 16,
+    "idle": 210
+   },
+   {
+    "tick": 108000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 745,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 16,
+    "idle": 210
+   },
+   {
+    "tick": 120000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 681,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 12,
+    "idle": 210
+   },
+   {
+    "tick": 132000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 621,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 11,
+    "idle": 210
+   },
+   {
+    "tick": 144000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 561,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 12,
+    "idle": 210
+   },
+   {
+    "tick": 156000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 509,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 12,
+    "idle": 210
+   },
+   {
+    "tick": 168000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 457,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 12,
+    "idle": 210
+   },
+   {
+    "tick": 180000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 409,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 192000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 361,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 204000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 313,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 12,
+    "idle": 210
+   },
+   {
+    "tick": 216000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 269,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 9,
+    "idle": 210
+   },
+   {
+    "tick": 228000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 2,
+    "stone": 0,
+    "need": {
+     "timber": 225,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 240000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 189,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 252000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 145,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 264000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 3,
+    "stone": 0,
+    "need": {
+     "timber": 101,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 7,
+    "idle": 210
+   },
+   {
+    "tick": 276000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 65,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 288000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 4,
+    "stone": 0,
+    "need": {
+     "timber": 25,
+     "stone": 0
+    },
+    "shortageSince": 76170,
+    "produced": 8,
+    "idle": 210
+   },
+   {
+    "tick": 300000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 0,
+    "market": 2,
+    "church": 0,
+    "timber": 16,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 27,
+    "idle": 206
+   },
+   {
+    "tick": 312000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "3": 24
+    },
+    "sawmill": 1,
+    "logging": 2,
+    "quarry": 1,
+    "market": 2,
+    "church": 0,
+    "timber": 37,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 14,
+    "idle": 199
+   }
+  ],
+  "placements": [
+   {
+    "tick": 31877,
+    "action": "place_building",
+    "building": "granary",
+    "recovery": []
+   },
+   {
+    "tick": 46910,
+    "action": "place_building",
+    "building": "granary",
+    "recovery": []
+   },
+   {
+    "tick": 70089,
+    "action": "proclaim_era",
+    "building": null,
+    "recovery": []
+   },
+   {
+    "tick": 72969,
+    "action": "place_building",
+    "building": "market",
+    "recovery": []
+   },
+   {
+    "tick": 74409,
+    "action": "place_building",
+    "building": "market",
+    "recovery": [
+     "market_gap"
+    ]
+   },
+   {
+    "tick": 75489,
+    "action": "place_building",
+    "building": "logging_camp",
+    "recovery": []
+   }
+  ]
+ },
+ "seed3": {
+  "samples": [
+   {
+    "tick": 12000,
+    "era": "hamlet",
+    "lots": 10,
+    "levels": {
+     "2": 10
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 82,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 25,
+    "idle": 53
+   },
+   {
+    "tick": 24000,
+    "era": "hamlet",
+    "lots": 12,
+    "levels": {
+     "1": 4,
+     "2": 2,
+     "3": 6
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 0,
+    "church": 0,
+    "timber": 152,
+    "stone": 0,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 25,
+    "idle": 75
+   },
+   {
+    "tick": 36000,
+    "era": "palisade",
+    "lots": 12,
+    "levels": {
+     "1": 3,
+     "2": 2,
+     "3": 7
+    },
+    "sawmill": 1,
+    "logging": 1,
+    "quarry": 0,
+    "market": 1,
+    "church": 0,
+    "timber": 92,
+    "stone": 0,
+    "need": {
+     "timber": 783,
+     "stone": 0
+    },
+    "shortageSince": 35285,
+    "produced": 29,
+    "idle": 80
+   },
+   {
+    "tick": 48000,
+    "era": "palisade",
+    "lots": 22,
+    "levels": {
+     "0": 1,
+     "1": 7,
+     "2": 7,
+     "3": 7
+    },
+    "sawmill": 2,
+    "logging": 2,
+    "quarry": 0,
+    "market": 1,
+    "church": 0,
+    "timber": 8,
+    "stone": 0,
+    "need": {
+     "timber": 722,
+     "stone": 0
+    },
+    "shortageSince": 47296,
+    "produced": 22,
+    "idle": 116
+   },
+   {
+    "tick": 60000,
+    "era": "palisade",
+    "lots": 22,
+    "levels": {
+     "1": 7,
+     "2": 4,
+     "3": 11
+    },
+    "sawmill": 3,
+    "logging": 3,
+    "quarry": 0,
+    "market": 1,
+    "church": 0,
+    "timber": 20,
+    "stone": 0,
+    "need": {
+     "timber": 672,
+     "stone": 0
+    },
+    "shortageSince": 56914,
+    "produced": 44,
+    "idle": 126
+   },
+   {
+    "tick": 72000,
+    "era": "palisade",
+    "lots": 22,
+    "levels": {
+     "1": 6,
+     "2": 3,
+     "3": 13
+    },
+    "sawmill": 6,
+    "logging": 3,
+    "quarry": 0,
+    "market": 1,
+    "church": 0,
+    "timber": 25,
+    "stone": 0,
+    "need": {
+     "timber": 592,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 64,
+    "idle": 136
+   },
+   {
+    "tick": 84000,
+    "era": "palisade",
+    "lots": 22,
+    "levels": {
+     "3": 22
+    },
+    "sawmill": 7,
+    "logging": 5,
+    "quarry": 1,
+    "market": 1,
+    "church": 0,
+    "timber": 19,
+    "stone": 31,
+    "need": {
+     "timber": 444,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 79,
+    "idle": 154
+   },
+   {
+    "tick": 96000,
+    "era": "palisade",
+    "lots": 22,
+    "levels": {
+     "3": 22
+    },
+    "sawmill": 9,
+    "logging": 6,
+    "quarry": 1,
+    "market": 1,
+    "church": 0,
+    "timber": 30,
+    "stone": 130,
+    "need": {
+     "timber": 162,
+     "stone": 0
+    },
+    "shortageSince": 95698,
+    "produced": 68,
+    "idle": 147
+   },
+   {
+    "tick": 108000,
+    "era": "palisade",
+    "lots": 22,
+    "levels": {
+     "3": 22
+    },
+    "sawmill": 10,
+    "logging": 6,
+    "quarry": 1,
+    "market": 1,
+    "church": 0,
+    "timber": 136,
+    "stone": 166,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 162,
+    "idle": 141
+   },
+   {
+    "tick": 120000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "1": 1,
+     "2": 1,
+     "3": 1,
+     "4": 21
+    },
+    "sawmill": 10,
+    "logging": 6,
+    "quarry": 1,
+    "market": 1,
+    "church": 2,
+    "timber": 499,
+    "stone": 206,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 163,
+    "idle": 252
+   },
+   {
+    "tick": 132000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "2": 1,
+     "4": 23
+    },
+    "sawmill": 10,
+    "logging": 6,
+    "quarry": 1,
+    "market": 1,
+    "church": 2,
+    "timber": 898,
+    "stone": 258,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 94,
+    "idle": 264
+   },
+   {
+    "tick": 144000,
+    "era": "palisade",
+    "lots": 24,
+    "levels": {
+     "4": 24
+    },
+    "sawmill": 10,
+    "logging": 6,
+    "quarry": 1,
+    "market": 1,
+    "church": 2,
+    "timber": 1287,
+    "stone": 287,
+    "need": {
+     "timber": 0,
+     "stone": 0
+    },
+    "shortageSince": null,
+    "produced": 104,
+    "idle": 270
+   }
+  ],
+  "placements": [
+   {
+    "tick": 34628,
+    "action": "proclaim_era",
+    "building": null,
+    "recovery": []
+   },
+   {
+    "tick": 34748,
+    "action": "place_building",
+    "building": "market",
+    "recovery": []
+   },
+   {
+    "tick": 40508,
+    "action": "place_building",
+    "building": "logging_camp",
+    "recovery": []
+   },
+   {
+    "tick": 42908,
+    "action": "place_road",
+    "building": null,
+    "recovery": [
+     "granary_gap"
+    ]
+   },
+   {
+    "tick": 43028,
+    "action": "place_road",
+    "building": null,
+    "recovery": [
+     "granary_gap"
+    ]
+   },
+   {
+    "tick": 43148,
+    "action": "place_building",
+    "building": "granary",
+    "recovery": [
+     "granary_gap"
+    ]
+   },
+   {
+    "tick": 45308,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 51788,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 56348,
+    "action": "place_building",
+    "building": "logging_camp",
+    "recovery": []
+   },
+   {
+    "tick": 58508,
+    "action": "place_building",
+    "building": "granary",
+    "recovery": []
+   },
+   {
+    "tick": 60308,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 64268,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 68108,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 71948,
+    "action": "place_building",
+    "building": "logging_camp",
+    "recovery": []
+   },
+   {
+    "tick": 73388,
+    "action": "place_building",
+    "building": "granary",
+    "recovery": []
+   },
+   {
+    "tick": 75068,
+    "action": "place_building",
+    "building": "logging_camp",
+    "recovery": []
+   },
+   {
+    "tick": 79388,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 83619,
+    "action": "place_building",
+    "building": "logging_camp",
+    "recovery": []
+   },
+   {
+    "tick": 90588,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 94548,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 98868,
+    "action": "place_building",
+    "building": "sawmill",
+    "recovery": []
+   },
+   {
+    "tick": 106067,
+    "action": "place_building",
+    "building": "church",
+    "recovery": []
+   },
+   {
+    "tick": 108827,
+    "action": "place_building",
+    "building": "church",
+    "recovery": []
+   },
+   {
+    "tick": 143027,
+    "action": "place_building",
+    "building": "granary",
+    "recovery": []
+   }
+  ]
+ }
+}
