@@ -3,8 +3,10 @@ import { createHash } from "node:crypto";
 import test from "node:test";
 
 import { houseFoodRation } from "../src/content/houseFoodConfig";
+import { isBuildingConstructionSite } from "../src/economy/construction";
 import { decideNextAction } from "../src/engine/autoplay";
 import { granaryGapAction, granaryGapHouses, insideWall, marketGapAction, marketGapHouses, strandedMarketHouses, type BotRecoveryCollector } from "../src/engine/autoplayBotRecovery";
+import { housingLotsStillNeeded, interiorHouseSites, keepsInteriorHouseSites } from "../src/engine/autoplayInteriorPlots";
 import { timberDemandExpansionKind } from "../src/engine/autoplayTimberDemand";
 import { timberExpansionKind } from "../src/engine/autoplayTimberRecovery";
 import { housingLotCount } from "../src/population/housing";
@@ -24,6 +26,9 @@ const SEED3_GRANARY_GAP = "fixtures/autoplay/seed3-42908.json.gz";
 // the state 51 ticks after its palisade proclamation (146 timber, 1,078 wall timber waiting).
 const SEED2_STRANDED = "fixtures/autoplay/seed2-1200000.json.gz";
 const SEED2_PALISADE = "fixtures/autoplay/seed2-70140.json.gz";
+// Guardrail run 2 (01c7106; replayed at 5f974bb, same advisor), seed 3 at 120,000 ticks: 21 lots, 16 free interior house
+// sites, no church in any home's reach. Run 2 stopped here at 22 lots (decision BT8).
+const SEED3_INTERIOR = "fixtures/autoplay/seed3-120000.json.gz";
 const POLICY = { maxHousingLots: 24 } as const;
 
 function runWithAdvisor(state: GameState, ticks: number): GameState {
@@ -120,6 +125,27 @@ test("B6 seed 2 right after the palisade: timber is added for the waiting wall w
     + current.constructionSites.filter(site => site.kind === "logging_camp").length;
   const later = runWithAdvisor(state, 3_600);
   assert.ok(camps(later) >= camps(state) + 2, "two logging camps within 3,600 ticks");
+});
+
+test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, builds them, and reaches L4 24/24", () => {
+  const state = loadAutoplayFixture(SEED3_INTERIOR);
+  assert.equal(housingLotCount(state), 21);
+  assert.equal(housingLotsStillNeeded(state, POLICY.maxHousingLots), 3);
+  assert.equal(interiorHouseSites(state).length, 16);
+  const church = (tx: number, ty: number) => ({ kind: "place_building", building: "church", tx, ty }) as const;
+  assert.equal(keepsInteriorHouseSites(state, church(5, 7), POLICY.maxHousingLots, "check"), false,
+    "run 2's church site inside the wall leaves fewer house sites than the three lots still to build");
+  assert.equal(keepsInteriorHouseSites(state, church(6, 16), POLICY.maxHousingLots, "check"), true, "a church outside the wall leaves them");
+  assert.deepEqual(decideNextAction(state, POLICY), { kind: "place_road", from: { tx: 6, ty: 9 }, to: { tx: 6, ty: 9 } },
+    "the house search reaches the interior sites (run 2 spent its phase budget on the map before them)");
+  const lots = runWithAdvisor(state, 4_800);
+  assert.equal(housingLotCount(lots), 24);
+  const churches = [...lots.buildings, ...lots.constructionSites.filter(isBuildingConstructionSite)].filter(site => site.kind === "church");
+  assert.equal(churches.length, 1);
+  assert.ok(!insideWall(lots, "church", churches[0]!), "the town's first church goes outside the wall");
+  const later = runWithAdvisor(lots, 48_000);
+  assert.equal(housingLotCount(later), 24);
+  assert.ok(later.houses.every(house => house.level === 4), "L4 24/24");
 });
 
 test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without the advisor hashes as before BOT-1", () => {

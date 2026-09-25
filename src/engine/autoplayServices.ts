@@ -31,7 +31,9 @@ export type ServicePlanningReason = 'worker_shortage' | 'facility_limit';
 export interface ServicePlanningDiagnostic { readonly service: UrbanService; readonly reason: ServicePlanningReason }
 export interface ServicePlanningCollector { services?: readonly ServicePlanningDiagnostic[] }
 
-export function urbanServiceAction(state: GameState, diagnostic?: ServicePlanningCollector): AutoplayAction {
+/** `accepts` (BOT-1 AR-7): a further bot filter on the market and church placements; every placement passes by default. */
+export function urbanServiceAction(state: GameState, diagnostic?: ServicePlanningCollector,
+  accepts: (action: AutoplayAction) => boolean = () => true): AutoplayAction {
   if (!isBuildingUnlocked('market', state.era, state.scenarioId)) return NONE;
   const current = householdServices(state);
   const roadService = marketRoadService(state);
@@ -91,11 +93,13 @@ export function urbanServiceAction(state: GameState, diagnostic?: ServicePlannin
     const ranked = rankServiceCandidates({ service: kind, allocation: { houses: state.houses, buildings: state.buildings, roadService },
       current, candidates: reachable.map(({ candidate }) => ({ building: candidate, roadDistance: roadDistance(candidate) })) });
     for (const { building: candidate } of ranked) {
-      if (!preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty })) continue;
-      return { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty };
+      const action = { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty } as const;
+      if (!accepts(action) || !preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, action)) continue;
+      return action;
     }
     for (const { building: candidate } of rankServiceRoadPlans(state, kind, candidates.map(entry => entry.candidate))) {
-      if (!preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty })) continue;
+      const action = { kind: 'place_building', building: kind, tx: candidate.tx, ty: candidate.ty } as const;
+      if (!accepts(action) || !preservesAutoplayWallSpace(state, kind, candidate) || !preservesAutoplayServiceSpace(state, action)) continue;
       const road = plannedBuildingRoadAction(state, candidate);
       if (road.kind !== 'none') return road;
     }
